@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ -d botocore ]; 
+  then cd botocore && git pull && cd ..;
+  else git clone https://github.com/boto/botocore;
+fi
+
+if [ -d aws-sdk-php ];
+  then cd aws-sdk-php && git pull && cd ..;
+  else git clone https://github.com/aws/aws-sdk-php;
+fi
+
+if [ -d aws-sdk-js ];
+  then cd aws-sdk-js && git pull && cd ..;
+  else git clone https://github.com/aws/aws-sdk-js;
+fi
