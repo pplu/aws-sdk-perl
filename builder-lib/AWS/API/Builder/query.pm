@@ -6,8 +6,8 @@ class AWS::API::Builder::query {
 
   has struct => (is => 'ro', required => 1);
   has api => (is => 'ro', required => 1);
-  has service => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ endpointPrefix } });
-  has version => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ apiVersion } });
+  has service => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ endpoint_prefix } });
+  has version => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ api_version } });
   has operations => (is => 'ro', lazy => 1, default => sub { [ keys %{ $_[0]->struct->{operations} } ] });
 
   method operation (Str $op) { return $self->struct->{operations}->{ $op } or die "method doesn't exist $op" }
@@ -25,10 +25,13 @@ class AWS::API::Builder::query {
       } else {
         die "Found an input that's not a structure";
       }
-      if ($operation->{ output }{type} eq 'structure'){
+      print Dumper($operation);
+      if      (not keys %{$operation->{ output }}){
+        # There is no output class
+      } elsif ($operation->{ output }{type} eq 'structure'){
         $results .= $self->make_result_class($operation->{ output }{members}, $api_call);
       } else {
-        die "Found an input that's not a structure";
+        die "Found an input that's not a structure " . Dumper($operation);
       } 
     }
 
@@ -143,7 +146,7 @@ class AWS::API::Builder::query {
   method get_caller_class_type ($param_props, $param_name) {
     my $type;
     if (not exists $param_props->{ type }) {
-      $type = 'Str';
+      die "doesn't have a type entry for $param_name with def " . Dumper($param_props);
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'list') {
       my $inner_type = $self->get_caller_class_type($param_props->{members}, $param_name);
       $type = "ArrayRef[$inner_type]";
@@ -155,10 +158,12 @@ class AWS::API::Builder::query {
       $type = 'Str';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'integer') {
       $type = 'Int';
+    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'string') {
+      $type = 'Str';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'structure') {
       # This is an inner class. We have to generate an inner class
-      $type = $param_props->{ class };
-      die "doesn't have a class entry for $param_name with def " . Dumper($param_props) if (not defined $param_props->{ class });
+      $type = $param_props->{ shape_name };
+      die "doesn't have a shape_name entry for $param_name with def " . Dumper($param_props) if (not defined $type);
   
       if ($type !~ /^AWS\:\:/) {
         # If the type isn't in the AWS namespace, we prefix it with our class name,
