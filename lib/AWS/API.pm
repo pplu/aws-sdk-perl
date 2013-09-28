@@ -77,6 +77,15 @@ role AWS::API::Caller {
   }
 }
 
+role AWS::API::MapParser {
+  sub result_to_args {
+    my ($class, $result) = @_;
+    use Data::Dumper;
+    print Dumper($class, $result);
+    return {};
+  }
+}
+
 role AWS::API::ResultParser {
   sub result_to_args {
     my ($class, $result) = @_;

@@ -1,6 +1,7 @@
 use MooseX::Declare;
 class AWS::API::Builder::query {
 
+  use Data::Printer;
   use Data::Dumper;
   use Data::Compare;
 
@@ -20,12 +21,14 @@ class AWS::API::Builder::query {
       my $operation = $self->operation($op);
       my $api_call = $operation->{name};
  
-      if ($operation->{ input }{type} eq 'structure'){
+      if      (not keys %{$operation->{ input }}){
+        # There is no input class
+        $calls .= $self->make_call_class({ }, $api_call); 
+      } elsif ($operation->{ input }{type} eq 'structure'){
         $calls .= $self->make_call_class($operation->{ input }{members}, $api_call);
       } else {
-        die "Found an input that's not a structure";
+        die "Found an input that's not a structure " . Dumper($operation->{ input });
       }
-      print Dumper($operation);
       if      (not keys %{$operation->{ output }}){
         # There is no output class
       } elsif ($operation->{ output }{type} eq 'structure'){
@@ -114,18 +117,28 @@ class AWS::API::Builder::query {
     my $output = '';
   
     foreach my $inner_class (sort keys %{ $self->inner_classes }) {
-      $output .= "class $inner_class with AWS::API::ResultParser {\n";
-      my $members = $self->inner_classes->{ $inner_class }->{members};
-      foreach my $param_name (keys %$members){
-        my $param_props = $members->{ $param_name };
-        my $type = eval { $self->get_caller_class_type($param_props, $param_name) };
-        if ($@) { die "In Inner Class: $inner_class: $@"; }
-        $output .= "  has $param_name => (is => 'ro', isa => '$type'";
-        $output .= ", required => 1" if (defined $param_props->{required} and $param_props->{required} == 1);
-        $output .= ");\n";
+      if ($self->inner_classes->{ $inner_class }->{type} eq 'map'){
+        $output .= "class $inner_class with AWS::API::MapParser {\n";
+        my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members}, '');
+        my $members = $self->inner_classes->{ $inner_class }->{keys}->{enum};
+        foreach my $param_name (@$members){
+          $output .= "  has $param_name => (is => 'ro', isa => '$type'";
+          $output .= ");\n";
+        }
+        $output .= "}\n\n";
+      } else {
+        $output .= "class $inner_class with AWS::API::ResultParser {\n";
+        my $members = $self->inner_classes->{ $inner_class }->{members};
+        foreach my $param_name (keys %$members){
+          my $param_props = $members->{ $param_name };
+          my $type = eval { $self->get_caller_class_type($param_props, $param_name) };
+          if ($@) { die "In Inner Class: $inner_class: $@"; }
+          $output .= "  has $param_name => (is => 'ro', isa => '$type'";
+          $output .= ", required => 1" if (defined $param_props->{required} and $param_props->{required} == 1);
+          $output .= ");\n";
+        }
+        $output .= "}\n\n";
       }
-      $output .= "}\n\n";
-     
     }
   
     return $output;
@@ -134,13 +147,22 @@ class AWS::API::Builder::query {
   has inner_classes => (is => 'rw', isa => 'HashRef', default => sub { {} });
 
   method register_inner_class (Str $class_name, HashRef $definition) {
-    # TODO: die if a $class_name already exists, but has a different $definition (needs a deep
-    #       inspection)
-    if (defined $self->inner_classes->{ $class_name } and not Compare($self->inner_classes->{ $class_name }, $definition)){
-      die "$class_name tried to register with " . Dumper($definition) . "but it was already registered with " . Dumper($self->inner_classes->{ $class_name });
+    if (defined $self->inner_classes->{ $class_name } and not $self->definitions_equal($self->inner_classes->{ $class_name }, $definition)){
+      print "---- New Definition ------\n";
+      p $definition;
+      print "---- Registered Definition ----\n";
+      p $self->inner_classes->{ $class_name };
+      die "$class_name tried to register but was already registered";
     } else {
       $self->inner_classes->{ $class_name } = $definition;
     }
+  }
+
+  method definitions_equal ($left, $right) {
+    return Compare(
+      [ keys %{ $left->{members} } ],
+      [ keys %{ $right->{members} } ]
+    );
   }
 
   method get_caller_class_type ($param_props, $param_name) {
@@ -151,15 +173,31 @@ class AWS::API::Builder::query {
       my $inner_type = $self->get_caller_class_type($param_props->{members}, $param_name);
       $type = "ArrayRef[$inner_type]";
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'timestamp') {
-      # AWS::API::TimeStamp
+      # TODO: AWS::API::TimeStamp
       $type = 'Str';
+    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'long') {
+      #TODO: Check
+      $type = 'Num';
+    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'double') {
+      #TODO: Check
+      $type = 'Int';
+    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'float') {
+      #TODO: Check
+      $type = 'Num';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'boolean') {
-      # Bool
+      # TODO: Bool
       $type = 'Str';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'integer') {
       $type = 'Int';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'string') {
       $type = 'Str';
+    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'blob') {
+      # TODO: check
+      $type = 'Str';
+    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'map') {
+      my $api = $self->api;
+      $type = "${api}::$param_name";
+      $self->register_inner_class($type, $param_props);
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'structure') {
       # This is an inner class. We have to generate an inner class
       $type = $param_props->{ shape_name };
@@ -174,8 +212,10 @@ class AWS::API::Builder::query {
         $self->register_inner_class($type, $param_props);
       }
     }
-    #TODO: change for die when all types are generated
-    die "Unknown type: $param_props->{ type }" if (not defined $type);
+    if (not defined $type) {
+      p $param_props;
+      die "Unknown type: $param_props->{ type }";
+    }
     return $type;
   } 
 }

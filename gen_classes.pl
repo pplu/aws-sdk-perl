@@ -38,7 +38,7 @@ my $namespaces = {
   s3 => 'S3',
   ses => 'SES',
   simpledb => 'SimpleDB',
-  simpleworkflow => 'SimpleWorkflow',
+  swf => 'SimpleWorkflow',
   sns => 'SNS',
   sqs => 'SQS',
   storagegateway => 'StorageGateway',
@@ -72,6 +72,9 @@ sub process_api {
 
   my $type = $struct->{type} or die "Type of API call not found";
 
+  if ($type ne 'query'){
+    die "Skipping $api because $type generation is not implemented yet\n";
+  }
   my $class_maker = "AWS::API::Builder::${type}";
   my $c = $class_maker->new(struct => $struct, api => $api);
 
