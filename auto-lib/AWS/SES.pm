@@ -80,6 +80,12 @@ class AWS::SES::GetIdentityDkimAttributes {
   has _returns => (isa => 'AWS::SES::GetIdentityDkimAttributesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetIdentityDkimAttributesResult');
 }
+class AWS::SES::GetSendStatistics {
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'GetSendStatistics');
+  has _returns => (isa => 'AWS::SES::GetSendStatisticsResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'GetSendStatisticsResult');
+}
 class AWS::SES::VerifyEmailAddress {
   has EmailAddress => (is => 'ro', isa => 'Str', required => 1);
 
@@ -134,6 +140,12 @@ class AWS::SES::DeleteVerifiedEmailAddress {
   has _returns => (isa => 'AWS::SES::DeleteVerifiedEmailAddressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVerifiedEmailAddressResult');
 }
+class AWS::SES::GetSendQuota {
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'GetSendQuota');
+  has _returns => (isa => 'AWS::SES::GetSendQuotaResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'GetSendQuotaResult');
+}
 class AWS::SES::SetIdentityFeedbackForwardingEnabled {
   has ForwardingEnabled => (is => 'ro', isa => 'Str', required => 1);
   has Identity => (is => 'ro', isa => 'Str', required => 1);
@@ -175,6 +187,12 @@ class AWS::SES::SendEmail {
   has _api_call => (isa => 'Str', is => 'ro', default => 'SendEmail');
   has _returns => (isa => 'AWS::SES::SendEmailResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SendEmailResult');
+}
+class AWS::SES::ListVerifiedEmailAddresses {
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'ListVerifiedEmailAddresses');
+  has _returns => (isa => 'AWS::SES::ListVerifiedEmailAddressesResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ListVerifiedEmailAddressesResult');
 }
 class AWS::SES::VerifyDomainDkimResult with AWS::API::ResultParser {
   has DkimTokens => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -222,7 +240,7 @@ class AWS::SES::SendEmailResult with AWS::API::ResultParser {
 class AWS::SES::ListVerifiedEmailAddressesResult with AWS::API::ResultParser {
   has VerifiedEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
 }
-class AWS::SES with AWS::API::Caller {
+class AWS::SES with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'email');
   has version => (is => 'ro', isa => 'Str', default => '2010-12-01');
 

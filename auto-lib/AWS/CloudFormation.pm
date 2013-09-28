@@ -252,7 +252,7 @@ class AWS::CloudFormation::DescribeStackEventsResult with AWS::API::ResultParser
   has StackEvents => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::StackEvent]');
   has NextToken => (is => 'ro', isa => 'Str');
 }
-class AWS::CloudFormation with AWS::API::Caller {
+class AWS::CloudFormation with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'cloudformation');
   has version => (is => 'ro', isa => 'Str', default => '2010-05-15');
 

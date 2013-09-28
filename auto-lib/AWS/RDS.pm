@@ -1032,7 +1032,7 @@ class AWS::RDS::DescribeOrderableDBInstanceOptionsResult with AWS::API::ResultPa
   has Marker => (is => 'ro', isa => 'Str');
   has OrderableDBInstanceOptions => (is => 'ro', isa => 'ArrayRef[AWS::RDS::OrderableDBInstanceOption]');
 }
-class AWS::RDS with AWS::API::Caller {
+class AWS::RDS with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'rds');
   has version => (is => 'ro', isa => 'Str', default => '2013-05-15');
 

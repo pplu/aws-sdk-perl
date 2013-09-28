@@ -313,7 +313,7 @@ class AWS::CloudSearch::DefineRankExpressionResult with AWS::API::ResultParser {
 class AWS::CloudSearch::DescribeIndexFieldsResult with AWS::API::ResultParser {
   has IndexFields => (is => 'ro', isa => 'ArrayRef[AWS::CloudSearch::IndexFieldStatus]', required => 1);
 }
-class AWS::CloudSearch with AWS::API::Caller {
+class AWS::CloudSearch with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'cloudsearch');
   has version => (is => 'ro', isa => 'Str', default => '2011-02-01');
 

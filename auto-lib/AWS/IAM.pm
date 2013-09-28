@@ -826,7 +826,7 @@ class AWS::IAM::ListRolesResult with AWS::API::ResultParser {
   has Roles => (is => 'ro', isa => 'ArrayRef[AWS::IAM::Role]', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
 }
-class AWS::IAM with AWS::API::Caller {
+class AWS::IAM with AWS::API::Caller with AWS::API::SingleEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'iam');
   has version => (is => 'ro', isa => 'Str', default => '2010-05-08');
 

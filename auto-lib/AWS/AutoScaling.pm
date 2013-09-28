@@ -257,6 +257,12 @@ class AWS::AutoScaling::SetDesiredCapacity {
   has _returns => (isa => 'AWS::AutoScaling::SetDesiredCapacityResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetDesiredCapacityResult');
 }
+class AWS::AutoScaling::DescribeTerminationPolicyTypes {
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTerminationPolicyTypes');
+  has _returns => (isa => 'AWS::AutoScaling::DescribeTerminationPolicyTypesResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTerminationPolicyTypesResult');
+}
 class AWS::AutoScaling::DeleteNotificationConfiguration {
   has TopicARN => (is => 'ro', isa => 'Str', required => 1);
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -318,6 +324,12 @@ class AWS::AutoScaling::DescribeAutoScalingGroups {
   has _returns => (isa => 'AWS::AutoScaling::DescribeAutoScalingGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingGroupsResult');
 }
+class AWS::AutoScaling::DescribeAutoScalingNotificationTypes {
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingNotificationTypes');
+  has _returns => (isa => 'AWS::AutoScaling::DescribeAutoScalingNotificationTypesResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingNotificationTypesResult');
+}
 class AWS::AutoScaling::PutNotificationConfiguration {
   has NotificationTypes => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has TopicARN => (is => 'ro', isa => 'Str', required => 1);
@@ -326,6 +338,12 @@ class AWS::AutoScaling::PutNotificationConfiguration {
   has _api_call => (isa => 'Str', is => 'ro', default => 'PutNotificationConfiguration');
   has _returns => (isa => 'AWS::AutoScaling::PutNotificationConfigurationResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'PutNotificationConfigurationResult');
+}
+class AWS::AutoScaling::DescribeScalingProcessTypes {
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeScalingProcessTypes');
+  has _returns => (isa => 'AWS::AutoScaling::DescribeScalingProcessTypesResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeScalingProcessTypesResult');
 }
 class AWS::AutoScaling::DescribeAutoScalingInstances {
   has NextToken => (is => 'ro', isa => 'Str');
@@ -354,6 +372,12 @@ class AWS::AutoScaling::DescribeScalingActivities {
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeScalingActivities');
   has _returns => (isa => 'AWS::AutoScaling::DescribeScalingActivitiesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeScalingActivitiesResult');
+}
+class AWS::AutoScaling::DescribeMetricCollectionTypes {
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMetricCollectionTypes');
+  has _returns => (isa => 'AWS::AutoScaling::DescribeMetricCollectionTypesResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeMetricCollectionTypesResult');
 }
 class AWS::AutoScaling::CreateLaunchConfiguration {
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
@@ -423,6 +447,12 @@ class AWS::AutoScaling::ExecutePolicy {
   has _api_call => (isa => 'Str', is => 'ro', default => 'ExecutePolicy');
   has _returns => (isa => 'AWS::AutoScaling::ExecutePolicyResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ExecutePolicyResult');
+}
+class AWS::AutoScaling::DescribeAdjustmentTypes {
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAdjustmentTypes');
+  has _returns => (isa => 'AWS::AutoScaling::DescribeAdjustmentTypesResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAdjustmentTypesResult');
 }
 class AWS::AutoScaling::SuspendProcesses {
   has ScalingProcesses => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -513,7 +543,7 @@ class AWS::AutoScaling::DescribeScheduledActionsResult with AWS::API::ResultPars
   has NextToken => (is => 'ro', isa => 'Str');
   has ScheduledUpdateGroupActions => (is => 'ro', isa => 'ArrayRef[AWS::AutoScaling::ScheduledUpdateGroupAction]');
 }
-class AWS::AutoScaling with AWS::API::Caller {
+class AWS::AutoScaling with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'autoscaling');
   has version => (is => 'ro', isa => 'Str', default => '2011-01-01');
 

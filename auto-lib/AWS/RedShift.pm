@@ -664,7 +664,7 @@ class AWS::RedShift::DescribeReservedNodesResult with AWS::API::ResultParser {
 class AWS::RedShift::RevokeSnapshotAccessResult with AWS::API::ResultParser {
   has Snapshot => (is => 'ro', isa => 'AWS::RedShift::Snapshot');
 }
-class AWS::RedShift with AWS::API::Caller {
+class AWS::RedShift with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'redshift');
   has version => (is => 'ro', isa => 'Str', default => '2012-12-01');
 

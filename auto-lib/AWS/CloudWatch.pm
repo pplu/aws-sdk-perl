@@ -213,7 +213,7 @@ class AWS::CloudWatch::DescribeAlarmHistoryResult with AWS::API::ResultParser {
   has NextToken => (is => 'ro', isa => 'Str');
   has AlarmHistoryItems => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::AlarmHistoryItem]');
 }
-class AWS::CloudWatch with AWS::API::Caller {
+class AWS::CloudWatch with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'monitoring');
   has version => (is => 'ro', isa => 'Str', default => '2010-08-01');
 

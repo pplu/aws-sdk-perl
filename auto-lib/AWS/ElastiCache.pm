@@ -598,7 +598,7 @@ class AWS::ElastiCache::DescribeCacheClustersResult with AWS::API::ResultParser 
 class AWS::ElastiCache::ModifyReplicationGroupResult with AWS::API::ResultParser {
   has ReplicationGroup => (is => 'ro', isa => 'AWS::ElastiCache::ReplicationGroup');
 }
-class AWS::ElastiCache with AWS::API::Caller {
+class AWS::ElastiCache with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'elasticache');
   has version => (is => 'ro', isa => 'Str', default => '2013-06-15');
 

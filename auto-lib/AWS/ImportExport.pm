@@ -86,7 +86,7 @@ class AWS::ImportExport::GetStatusResult with AWS::API::ResultParser {
   has JobType => (is => 'ro', isa => 'Str');
   has LogKey => (is => 'ro', isa => 'Str');
 }
-class AWS::ImportExport with AWS::API::Caller {
+class AWS::ImportExport with AWS::API::Caller with AWS::API::SingleEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'importexport');
   has version => (is => 'ro', isa => 'Str', default => '2010-06-01');
 

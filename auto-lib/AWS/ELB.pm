@@ -350,7 +350,7 @@ class AWS::ELB::AttachLoadBalancerToSubnetsResult with AWS::API::ResultParser {
 }
 class AWS::ELB::DeleteLoadBalancerListenersResult with AWS::API::ResultParser {
 }
-class AWS::ELB with AWS::API::Caller {
+class AWS::ELB with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'elasticloadbalancing');
   has version => (is => 'ro', isa => 'Str', default => '2012-06-01');
 

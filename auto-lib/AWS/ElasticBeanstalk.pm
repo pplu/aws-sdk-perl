@@ -291,6 +291,12 @@ class AWS::ElasticBeanstalk::DeleteEnvironmentConfiguration {
   has _returns => (isa => 'AWS::ElasticBeanstalk::DeleteEnvironmentConfigurationResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteEnvironmentConfigurationResult');
 }
+class AWS::ElasticBeanstalk::ListAvailableSolutionStacks {
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'ListAvailableSolutionStacks');
+  has _returns => (isa => 'AWS::ElasticBeanstalk::ListAvailableSolutionStacksResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ListAvailableSolutionStacksResult');
+}
 class AWS::ElasticBeanstalk::DescribeEnvironments {
   has EnvironmentIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has ApplicationName => (is => 'ro', isa => 'Str');
@@ -411,6 +417,12 @@ class AWS::ElasticBeanstalk::DescribeApplicationVersions {
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeApplicationVersions');
   has _returns => (isa => 'AWS::ElasticBeanstalk::DescribeApplicationVersionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeApplicationVersionsResult');
+}
+class AWS::ElasticBeanstalk::CreateStorageLocation {
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStorageLocation');
+  has _returns => (isa => 'AWS::ElasticBeanstalk::CreateStorageLocationResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStorageLocationResult');
 }
 class AWS::ElasticBeanstalk::CheckDNSAvailability {
   has CNAMEPrefix => (is => 'ro', isa => 'Str', required => 1);
@@ -541,7 +553,7 @@ class AWS::ElasticBeanstalk::CheckDNSAvailabilityResult with AWS::API::ResultPar
   has FullyQualifiedCNAME => (is => 'ro', isa => 'Str');
   has Available => (is => 'ro', isa => 'Str');
 }
-class AWS::ElasticBeanstalk with AWS::API::Caller {
+class AWS::ElasticBeanstalk with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'elasticbeanstalk');
   has version => (is => 'ro', isa => 'Str', default => '2010-12-01');
 

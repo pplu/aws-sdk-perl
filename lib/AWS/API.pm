@@ -51,19 +51,33 @@ coerce 'AWS::API::StringList',
   from 'ArrayRef',
    via { AWS::API::StringList->new( Value => $_ ) };
 
+role AWS::API::RegionalEndpointCaller {
+  has region => (is => 'rw', isa => 'Str');
+  requires 'service';
+
+  method _api_endpoint {
+    return sprintf 'https://%s.%s.amazonaws.com', $self->service, $self->region;
+  }
+}
+
+role AWS::API::SingleEndpointCaller {
+  requires 'service';
+
+  method _api_endpoint {
+    return sprintf 'https://%s.amazonaws.com', $self->service;
+  }
+}
+
 role AWS::API::Caller {
   use Net::AWS::Caller;
+  requires 'version';
 
   has _caller => (isa => 'Net::AWS::Caller', is => 'ro', lazy => 1, default => sub { Net::AWS::Caller->new(
         AWSAccessKey => $ENV{AWS_ACCESS_KEY},
         AWSSecretKey => $ENV{AWS_SECRET_KEY},
-        region       => $ENV{AWS_REGION},
-        service      => $_[0]->service,
-        version      => $_[0]->version
+        endpoint     => $_[0]->_api_endpoint,
+        version      => $_[0]->version,
   ) });
-
-  requires 'service';
-  requires 'version';
 
   method _api_caller ($action, $params) {
     my %p;

@@ -87,7 +87,7 @@ class AWS::STS::GetSessionTokenResult with AWS::API::ResultParser {
 class AWS::STS::DecodeAuthorizationMessageResult with AWS::API::ResultParser {
   has DecodedMessage => (is => 'ro', isa => 'Str');
 }
-class AWS::STS with AWS::API::Caller {
+class AWS::STS with AWS::API::Caller with AWS::API::SingleEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'sts');
   has version => (is => 'ro', isa => 'Str', default => '2011-06-15');
 

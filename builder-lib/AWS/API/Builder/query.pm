@@ -10,6 +10,7 @@ class AWS::API::Builder::query {
   has service => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ endpoint_prefix } });
   has version => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ api_version } });
   has operations => (is => 'ro', lazy => 1, default => sub { [ keys %{ $_[0]->struct->{operations} } ] });
+  has single_endpoint => (is => 'ro', lazy => 1, default => sub { defined $_[0]->struct->{ global_endpoint } });
 
   method operation (Str $op) { return $self->struct->{operations}->{ $op } or die "method doesn't exist $op" }
 
@@ -53,8 +54,9 @@ class AWS::API::Builder::query {
     my $service = $self->service;
     my $api_version = $self->version;
 
+    my $caller = ($self->single_endpoint)?'SingleEndpointCaller':'RegionalEndpointCaller';
     my $output = '';
-    $output .= "class $api with AWS::API::Caller {\n";
+    $output .= "class $api with AWS::API::Caller with AWS::API::$caller {\n";
     $output .= "  has service => (is => 'ro', isa => 'Str', default => '$service');\n";
     $output .= "  has version => (is => 'ro', isa => 'Str', default => '$api_version');\n\n";
   

@@ -12,13 +12,7 @@ class Net::AWS::Caller {
   has 'AWSSecretKey'       => ( is => 'rw', required => 1 );
   has 'debug'              => ( is => 'rw', required => 0, default => sub { 0 } );
   has 'version'            => ( is => 'rw', required => 1);
-  has 'region'             => ( is => 'rw', required => 1);
-  has 'service'            => ( is => 'rw', required => 1);
-  has 'base_url'           => ( is => 'rw', required => 1, lazy => 1,
-    default     => sub {
-        sprintf 'https://%s.%s.amazonaws.com', $_[0]->service, $_[0]->region;
-    }
-  );
+  has 'endpoint'           => ( is => 'rw', required => 1);
   has 'ua' => (is => 'rw', required => 1, lazy => 1,
     default     => sub {
         HTTP::Tiny->new(
@@ -28,7 +22,7 @@ class Net::AWS::Caller {
   );
   has '_base_url_host' => (is => 'ro', required => 1, lazy => 1,
     default => sub {
-        ($_[0]->ua->_split_url($_[0]->base_url))[1]
+        ($_[0]->ua->_split_url($_[0]->endpoint))[1]
     }
   );
 
@@ -78,7 +72,7 @@ class Net::AWS::Caller {
     my $self   = shift;
     my $params = shift;
 
-    return $self->ua->post_form( $self->base_url, $params );
+    return $self->ua->post_form( $self->endpoint, $params );
   }
 
   sub _process {

@@ -275,7 +275,7 @@ class AWS::SNS::ListTopicsResult with AWS::API::ResultParser {
   has NextToken => (is => 'ro', isa => 'Str');
   has Topics => (is => 'ro', isa => 'ArrayRef[AWS::SNS::Topic]');
 }
-class AWS::SNS with AWS::API::Caller {
+class AWS::SNS with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'sns');
   has version => (is => 'ro', isa => 'Str', default => '2010-03-31');
 

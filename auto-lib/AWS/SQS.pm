@@ -217,7 +217,7 @@ class AWS::SQS::GetQueueAttributesResult with AWS::API::ResultParser {
 class AWS::SQS::GetQueueUrlResult with AWS::API::ResultParser {
   has QueueUrl => (is => 'ro', isa => 'Str');
 }
-class AWS::SQS with AWS::API::Caller {
+class AWS::SQS with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
   has service => (is => 'ro', isa => 'Str', default => 'sqs');
   has version => (is => 'ro', isa => 'Str', default => '2012-11-05');
 
