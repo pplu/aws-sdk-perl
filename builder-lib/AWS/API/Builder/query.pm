@@ -18,7 +18,7 @@ class AWS::API::Builder::query {
     my $output = '';
     my ($calls, $results);
 
-    foreach my $op (@{ $self->operations }){
+    foreach my $op (sort @{ $self->operations }){
       my $operation = $self->operation($op);
       my $api_call = $operation->{name};
  
@@ -60,7 +60,7 @@ class AWS::API::Builder::query {
     $output .= "  has service => (is => 'ro', isa => 'Str', default => '$service');\n";
     $output .= "  has version => (is => 'ro', isa => 'Str', default => '$api_version');\n\n";
   
-    foreach my $op (keys %{ $self->struct->{operations} }){
+    foreach my $op (sort keys %{ $self->struct->{operations} }){
       my $op_name = $self->struct->{operations}->{$op}->{name};
       $output .= "  method $op_name (%args) {\n";
       $output .= "    my \$call = ${api}::${op_name}->new(\%args);\n";
@@ -78,7 +78,7 @@ class AWS::API::Builder::query {
       my $class = "${api}::${api_call}";
       my $output;
       $output .= "class $class {\n";
-      foreach my $param_name (keys %$members){
+      foreach my $param_name (sort keys %$members){
         my $param_props = $members->{ $param_name };
         my $type = eval { $self->get_caller_class_type($param_props, $param_name) };
         if ($@) { die "In input class $class: $@"; }
@@ -101,7 +101,7 @@ class AWS::API::Builder::query {
       my $class = "${api}::${api_call}Result";
       my $output;
       $output .= "class $class with AWS::API::ResultParser {\n";
-      foreach my $param_name (keys %$members){
+      foreach my $param_name (sort keys %$members){
         my $param_props = $members->{ $param_name };
         my $type = eval { $self->get_caller_class_type($param_props, $param_name) };
         if ($@) { die "In output class $class: $@"; }
@@ -123,7 +123,7 @@ class AWS::API::Builder::query {
         $output .= "class $inner_class with AWS::API::MapParser {\n";
         my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members}, '');
         my $members = $self->inner_classes->{ $inner_class }->{keys}->{enum};
-        foreach my $param_name (@$members){
+        foreach my $param_name (sort @$members){
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
           $output .= ");\n";
         }
@@ -131,7 +131,7 @@ class AWS::API::Builder::query {
       } else {
         $output .= "class $inner_class with AWS::API::ResultParser {\n";
         my $members = $self->inner_classes->{ $inner_class }->{members};
-        foreach my $param_name (keys %$members){
+        foreach my $param_name (sort keys %$members){
           my $param_props = $members->{ $param_name };
           my $type = eval { $self->get_caller_class_type($param_props, $param_name) };
           if ($@) { die "In Inner Class: $inner_class: $@"; }
