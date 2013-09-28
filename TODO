@@ -1,4 +1,3 @@
-- single endpoint services
 - Paginated results and iterators
 - JSON callers
 - rest-xml callers
