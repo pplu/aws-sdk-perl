@@ -94,9 +94,7 @@ role AWS::API::Caller {
 role AWS::API::MapParser {
   sub result_to_args {
     my ($class, $result) = @_;
-    use Data::Dumper;
-    print Dumper($class, $result);
-    return {};
+    $class->new(map { ($_->{ key } => $_->{ value}) } @$result);
   }
 }
 
@@ -104,6 +102,7 @@ role AWS::API::ResultParser {
   sub result_to_args {
     my ($class, $result) = @_;
     my %args;
+
     foreach my $key (keys %$result) {
       if (not ref($result->{ $key })) {
         if (defined $result->{ $key }){
@@ -130,6 +129,9 @@ role AWS::API::ResultParser {
         }
       } elsif (exists $result->{ $key }{ member } and not ref($result->{ $key }{ member }) ) {
         $args{ $key } = [ $result->{ $key }{ member } ];
+      } elsif (exists $result->{ $key }{ entry }) {
+        my $att_class = $class->meta->get_attribute($key)->type_constraint->class;
+        $args{ $key } = $att_class->result_to_args( $result->{ $key }{ entry } ); 
       } elsif (ref($result->{ $key }) eq 'HASH') {
         my $att_class = $class->meta->get_attribute($key)->type_constraint;
         $att_class->new(%{ $result->{ $key } });
