@@ -80,7 +80,7 @@ class AWS::API::Builder::query {
       $output .= "class $class {\n";
       foreach my $param_name (sort keys %$members){
         my $param_props = $members->{ $param_name };
-        my $type = eval { $self->get_caller_class_type($param_props, $param_name) };
+        my $type = eval { $self->get_caller_class_type($param_props) };
         if ($@) { die "In input class $class: $@"; }
         $output .= "  has $param_name => (is => 'ro', isa => '$type'";
         $output .= ", required => 1" if (defined $param_props->{required} and $param_props->{required} == 1);
@@ -103,7 +103,7 @@ class AWS::API::Builder::query {
       $output .= "class $class with AWS::API::ResultParser {\n";
       foreach my $param_name (sort keys %$members){
         my $param_props = $members->{ $param_name };
-        my $type = eval { $self->get_caller_class_type($param_props, $param_name) };
+        my $type = eval { $self->get_caller_class_type($param_props) };
         if ($@) { die "In output class $class: $@"; }
         $output .= "  has $param_name => (is => 'ro', isa => '$type'";
         $output .= ", required => 1" if (defined $param_props->{required} and $param_props->{required} == 1);
@@ -121,7 +121,7 @@ class AWS::API::Builder::query {
     foreach my $inner_class (sort keys %{ $self->inner_classes }) {
       if ($self->inner_classes->{ $inner_class }->{type} eq 'map'){
         $output .= "class $inner_class with AWS::API::MapParser {\n";
-        my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members}, '');
+        my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members});
         my $members = $self->inner_classes->{ $inner_class }->{keys}->{enum};
         foreach my $param_name (sort @$members){
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
@@ -133,7 +133,7 @@ class AWS::API::Builder::query {
         my $members = $self->inner_classes->{ $inner_class }->{members};
         foreach my $param_name (sort keys %$members){
           my $param_props = $members->{ $param_name };
-          my $type = eval { $self->get_caller_class_type($param_props, $param_name) };
+          my $type = eval { $self->get_caller_class_type($param_props) };
           if ($@) { die "In Inner Class: $inner_class: $@"; }
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
           $output .= ", required => 1" if (defined $param_props->{required} and $param_props->{required} == 1);
@@ -150,10 +150,12 @@ class AWS::API::Builder::query {
 
   method register_inner_class (Str $class_name, HashRef $definition) {
     if (defined $self->inner_classes->{ $class_name } and not $self->definitions_equal($self->inner_classes->{ $class_name }, $definition)){
-      print "---- New Definition ------\n";
-      p $definition;
       print "---- Registered Definition ----\n";
-      p $self->inner_classes->{ $class_name };
+      my $temp = [ sort keys %{ $self->inner_classes->{ $class_name }->{members} } ];
+      p $temp;
+      print "---- New Definition ------\n";
+      $temp = [ sort keys %{ $definition->{members} } ];
+      p $temp;
       die "$class_name tried to register but was already registered";
     } else {
       $self->inner_classes->{ $class_name } = $definition;
@@ -162,17 +164,19 @@ class AWS::API::Builder::query {
 
   method definitions_equal ($left, $right) {
     return Compare(
-      [ keys %{ $left->{members} } ],
-      [ keys %{ $right->{members} } ]
+      [ sort keys %{ $left->{members} } ],
+      [ sort keys %{ $right->{members} } ]
     );
   }
 
-  method get_caller_class_type ($param_props, $param_name) {
+  method get_caller_class_type ($param_props) {
+    my $param_name = $param_props->{shape_name};
+
     my $type;
     if (not exists $param_props->{ type }) {
       die "doesn't have a type entry for $param_name with def " . Dumper($param_props);
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'list') {
-      my $inner_type = $self->get_caller_class_type($param_props->{members}, $param_name);
+      my $inner_type = $self->get_caller_class_type($param_props->{members});
       $type = "ArrayRef[$inner_type]";
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'timestamp') {
       # TODO: AWS::API::TimeStamp
@@ -210,7 +214,6 @@ class AWS::API::Builder::query {
         # and queue it for building. Else the class is assumed to already be built
         my $api = $self->api;
         $type = "${api}::${type}";
-        $param_props->{ 'class' } = $type;
         $self->register_inner_class($type, $param_props);
       }
     }

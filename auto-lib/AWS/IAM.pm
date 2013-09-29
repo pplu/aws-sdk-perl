@@ -83,23 +83,6 @@ class AWS::IAM::SigningCertificate with AWS::API::ResultParser {
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::IAM::SummaryMap with AWS::API::MapParser {
-  has AccessKeysPerUserQuota => (is => 'ro', isa => 'Int');
-  has AccountMFAEnabled => (is => 'ro', isa => 'Int');
-  has GroupPolicySizeQuota => (is => 'ro', isa => 'Int');
-  has Groups => (is => 'ro', isa => 'Int');
-  has GroupsPerUserQuota => (is => 'ro', isa => 'Int');
-  has GroupsQuota => (is => 'ro', isa => 'Int');
-  has MFADevices => (is => 'ro', isa => 'Int');
-  has MFADevicesInUse => (is => 'ro', isa => 'Int');
-  has ServerCertificates => (is => 'ro', isa => 'Int');
-  has ServerCertificatesQuota => (is => 'ro', isa => 'Int');
-  has SigningCertificatesPerUserQuota => (is => 'ro', isa => 'Int');
-  has UserPolicySizeQuota => (is => 'ro', isa => 'Int');
-  has Users => (is => 'ro', isa => 'Int');
-  has UsersQuota => (is => 'ro', isa => 'Int');
-}
-
 class AWS::IAM::User with AWS::API::ResultParser {
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has CreateDate => (is => 'ro', isa => 'Str', required => 1);
@@ -114,6 +97,23 @@ class AWS::IAM::VirtualMFADevice with AWS::API::ResultParser {
   has QRCodePNG => (is => 'ro', isa => 'Str');
   has SerialNumber => (is => 'ro', isa => 'Str', required => 1);
   has User => (is => 'ro', isa => 'AWS::IAM::User');
+}
+
+class AWS::IAM::summaryMapType with AWS::API::MapParser {
+  has AccessKeysPerUserQuota => (is => 'ro', isa => 'Int');
+  has AccountMFAEnabled => (is => 'ro', isa => 'Int');
+  has GroupPolicySizeQuota => (is => 'ro', isa => 'Int');
+  has Groups => (is => 'ro', isa => 'Int');
+  has GroupsPerUserQuota => (is => 'ro', isa => 'Int');
+  has GroupsQuota => (is => 'ro', isa => 'Int');
+  has MFADevices => (is => 'ro', isa => 'Int');
+  has MFADevicesInUse => (is => 'ro', isa => 'Int');
+  has ServerCertificates => (is => 'ro', isa => 'Int');
+  has ServerCertificatesQuota => (is => 'ro', isa => 'Int');
+  has SigningCertificatesPerUserQuota => (is => 'ro', isa => 'Int');
+  has UserPolicySizeQuota => (is => 'ro', isa => 'Int');
+  has Users => (is => 'ro', isa => 'Int');
+  has UsersQuota => (is => 'ro', isa => 'Int');
 }
 
 class AWS::IAM::AddRoleToInstanceProfile {
@@ -707,7 +707,7 @@ class AWS::IAM::GetAccountPasswordPolicyResult with AWS::API::ResultParser {
   has PasswordPolicy => (is => 'ro', isa => 'AWS::IAM::PasswordPolicy', required => 1);
 }
 class AWS::IAM::GetAccountSummaryResult with AWS::API::ResultParser {
-  has SummaryMap => (is => 'ro', isa => 'AWS::IAM::SummaryMap');
+  has SummaryMap => (is => 'ro', isa => 'AWS::IAM::summaryMapType');
 }
 class AWS::IAM::GetGroupResult with AWS::API::ResultParser {
   has Group => (is => 'ro', isa => 'AWS::IAM::Group', required => 1);

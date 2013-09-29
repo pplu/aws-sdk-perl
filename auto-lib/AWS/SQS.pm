@@ -1,6 +1,6 @@
 use MooseX::Declare;
 use AWS::API;
-class AWS::SQS::Attributes with AWS::API::MapParser {
+class AWS::SQS::AttributeMap with AWS::API::MapParser {
   has ApproximateNumberOfMessages => (is => 'ro', isa => 'Str');
   has ApproximateNumberOfMessagesDelayed => (is => 'ro', isa => 'Str');
   has ApproximateNumberOfMessagesNotVisible => (is => 'ro', isa => 'Str');
@@ -42,7 +42,7 @@ class AWS::SQS::DeleteMessageBatchResultEntry with AWS::API::ResultParser {
 }
 
 class AWS::SQS::Message with AWS::API::ResultParser {
-  has Attributes => (is => 'ro', isa => 'AWS::SQS::Attributes');
+  has Attributes => (is => 'ro', isa => 'AWS::SQS::AttributeMap');
   has Body => (is => 'ro', isa => 'Str');
   has MD5OfBody => (is => 'ro', isa => 'Str');
   has MessageId => (is => 'ro', isa => 'Str');
@@ -89,7 +89,7 @@ class AWS::SQS::ChangeMessageVisibilityBatch {
   has _result_key => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityBatchResult');
 }
 class AWS::SQS::CreateQueue {
-  has Attributes => (is => 'ro', isa => 'AWS::SQS::Attributes');
+  has Attributes => (is => 'ro', isa => 'AWS::SQS::AttributeMap');
   has QueueName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateQueue');
@@ -179,7 +179,7 @@ class AWS::SQS::SendMessageBatch {
   has _result_key => (isa => 'Str', is => 'ro', default => 'SendMessageBatchResult');
 }
 class AWS::SQS::SetQueueAttributes {
-  has Attributes => (is => 'ro', isa => 'AWS::SQS::Attributes', required => 1);
+  has Attributes => (is => 'ro', isa => 'AWS::SQS::AttributeMap', required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SetQueueAttributes');
@@ -198,7 +198,7 @@ class AWS::SQS::DeleteMessageBatchResult with AWS::API::ResultParser {
   has Successful => (is => 'ro', isa => 'ArrayRef[AWS::SQS::DeleteMessageBatchResultEntry]', required => 1);
 }
 class AWS::SQS::GetQueueAttributesResult with AWS::API::ResultParser {
-  has Attributes => (is => 'ro', isa => 'AWS::SQS::Attributes');
+  has Attributes => (is => 'ro', isa => 'AWS::SQS::AttributeMap');
 }
 class AWS::SQS::GetQueueUrlResult with AWS::API::ResultParser {
   has QueueUrl => (is => 'ro', isa => 'Str');
