@@ -15,6 +15,7 @@ role Net::AWS::V4Signature {
 
 role Net::AWS::QueryCaller {
   method _api_caller ($action, $params) {
+    my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
       if (defined $params->$att) {
         my $value = $params->$att;
