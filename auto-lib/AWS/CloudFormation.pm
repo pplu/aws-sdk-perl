@@ -252,7 +252,7 @@ class AWS::CloudFormation::ValidateTemplateResult with AWS::API::ResultParser {
   has Description => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::TemplateParameter]');
 }
-class AWS::CloudFormation with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
+class AWS::CloudFormation with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'cloudformation');
   has version => (is => 'ro', isa => 'Str', default => '2010-05-15');
 

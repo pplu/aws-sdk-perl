@@ -553,7 +553,7 @@ class AWS::ElasticBeanstalk::UpdateEnvironmentResult with AWS::API::ResultParser
 class AWS::ElasticBeanstalk::ValidateConfigurationSettingsResult with AWS::API::ResultParser {
   has Messages => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::ValidationMessage]');
 }
-class AWS::ElasticBeanstalk with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
+class AWS::ElasticBeanstalk with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'elasticbeanstalk');
   has version => (is => 'ro', isa => 'Str', default => '2010-12-01');
 

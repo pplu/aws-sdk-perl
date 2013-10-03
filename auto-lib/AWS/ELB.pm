@@ -350,7 +350,7 @@ class AWS::ELB::SetLoadBalancerPoliciesForBackendServerResult with AWS::API::Res
 }
 class AWS::ELB::SetLoadBalancerPoliciesOfListenerResult with AWS::API::ResultParser {
 }
-class AWS::ELB with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
+class AWS::ELB with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'elasticloadbalancing');
   has version => (is => 'ro', isa => 'Str', default => '2012-06-01');
 

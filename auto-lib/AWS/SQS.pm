@@ -217,7 +217,7 @@ class AWS::SQS::SendMessageBatchResult with AWS::API::ResultParser {
   has Failed => (is => 'ro', isa => 'ArrayRef[AWS::SQS::BatchResultErrorEntry]', required => 1);
   has Successful => (is => 'ro', isa => 'ArrayRef[AWS::SQS::SendMessageBatchResultEntry]', required => 1);
 }
-class AWS::SQS with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
+class AWS::SQS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'sqs');
   has version => (is => 'ro', isa => 'Str', default => '2012-11-05');
 

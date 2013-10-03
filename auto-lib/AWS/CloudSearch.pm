@@ -313,7 +313,7 @@ class AWS::CloudSearch::UpdateStopwordOptionsResult with AWS::API::ResultParser 
 class AWS::CloudSearch::UpdateSynonymOptionsResult with AWS::API::ResultParser {
   has Synonyms => (is => 'ro', isa => 'AWS::CloudSearch::SynonymOptionsStatus', required => 1);
 }
-class AWS::CloudSearch with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
+class AWS::CloudSearch with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'cloudsearch');
   has version => (is => 'ro', isa => 'Str', default => '2011-02-01');
 

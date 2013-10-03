@@ -543,7 +543,7 @@ class AWS::AutoScaling::PutScalingPolicyResult with AWS::API::ResultParser {
 class AWS::AutoScaling::TerminateInstanceInAutoScalingGroupResult with AWS::API::ResultParser {
   has Activity => (is => 'ro', isa => 'AWS::AutoScaling::Activity');
 }
-class AWS::AutoScaling with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
+class AWS::AutoScaling with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'autoscaling');
   has version => (is => 'ro', isa => 'Str', default => '2011-01-01');
 

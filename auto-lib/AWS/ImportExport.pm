@@ -86,7 +86,7 @@ class AWS::ImportExport::UpdateJobResult with AWS::API::ResultParser {
   has Success => (is => 'ro', isa => 'Str');
   has WarningMessage => (is => 'ro', isa => 'Str');
 }
-class AWS::ImportExport with AWS::API::Caller with AWS::API::SingleEndpointCaller {
+class AWS::ImportExport with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'importexport');
   has version => (is => 'ro', isa => 'Str', default => '2010-06-01');
 

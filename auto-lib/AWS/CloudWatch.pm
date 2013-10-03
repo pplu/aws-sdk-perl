@@ -213,7 +213,7 @@ class AWS::CloudWatch::ListMetricsResult with AWS::API::ResultParser {
   has Metrics => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::Metric]');
   has NextToken => (is => 'ro', isa => 'Str');
 }
-class AWS::CloudWatch with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
+class AWS::CloudWatch with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'monitoring');
   has version => (is => 'ro', isa => 'Str', default => '2010-08-01');
 

@@ -55,39 +55,24 @@ role AWS::API::RegionalEndpointCaller {
   has region => (is => 'rw', isa => 'Str');
   requires 'service';
 
+  method endpoint_host {
+    return sprintf '%s.%s.amazonaws.com', $self->service, $self->region;
+  }
+
   method _api_endpoint {
-    return sprintf 'https://%s.%s.amazonaws.com', $self->service, $self->region;
+    return sprintf '%s://%s', 'https', $self->endpoint_host;
   }
 }
 
 role AWS::API::SingleEndpointCaller {
   requires 'service';
 
-  method _api_endpoint {
-    return sprintf 'https://%s.amazonaws.com', $self->service;
+  method endpoint_host {
+    return sprintf '%s.amazonaws.com', $self->service;
   }
-}
 
-role AWS::API::Caller {
-  use Net::AWS::Caller;
-  requires 'version';
-
-  has _caller => (isa => 'Net::AWS::Caller', is => 'ro', lazy => 1, default => sub { Net::AWS::Caller->new(
-        AWSAccessKey => $ENV{AWS_ACCESS_KEY},
-        AWSSecretKey => $ENV{AWS_SECRET_KEY},
-        endpoint     => $_[0]->_api_endpoint,
-        version      => $_[0]->version,
-  ) });
-
-  method _api_caller ($action, $params) {
-    my %p;
-    foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
-      if (defined $params->$att) {
-        my $value = $params->$att;
-        %p = (%p, $att => (ref $value) ? $params->$att->to_params($att) : $value );
-      }
-    }
-    return $self->_caller->send(Action => $action, %p);
+  method _api_endpoint {
+    return sprintf '%s://%s', 'https', $self->endpoint_host;
   }
 }
 

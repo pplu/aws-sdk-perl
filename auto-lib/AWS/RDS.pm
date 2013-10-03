@@ -1032,7 +1032,7 @@ class AWS::RDS::RestoreDBInstanceToPointInTimeResult with AWS::API::ResultParser
 class AWS::RDS::RevokeDBSecurityGroupIngressResult with AWS::API::ResultParser {
   has DBSecurityGroup => (is => 'ro', isa => 'AWS::RDS::DBSecurityGroup');
 }
-class AWS::RDS with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
+class AWS::RDS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'rds');
   has version => (is => 'ro', isa => 'Str', default => '2013-05-15');
 

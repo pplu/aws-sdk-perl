@@ -10,15 +10,20 @@ class AWS::API::Builder::query {
   has service => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ endpoint_prefix } });
   has version => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ api_version } });
   has operations => (is => 'ro', lazy => 1, default => sub { [ keys %{ $_[0]->struct->{operations} } ] });
-  has caller_role => (is => 'ro', lazy => 1, default => sub { defined $_[0]->struct->{ global_endpoint } ? 
-                                                                 'AWS::API::SingleEndpointCaller':
-                                                                 'AWS::API::RegionalEndpointCaller' 
-                                                            } );
+  has endpoint_role => (is => 'ro', lazy => 1, default => sub { defined $_[0]->struct->{ global_endpoint } ? 
+                                                                   'AWS::API::SingleEndpointCaller':
+                                                                   'AWS::API::RegionalEndpointCaller' 
+                                                              } );
+  has signature_role => (is => 'ro', lazy => 1, default => sub { sprintf "Net::AWS::%sSignature", uc $_[0]->struct->{signature_version} } );
+  has parameter_role => (is => 'ro', lazy => 1, default => sub { my $type = $_[0]->struct->{type}; substr($type,0,1) = uc substr($type,0,1); return "Net::AWS::${type}Caller" });
+
   method operation (Str $op) { return $self->struct->{operations}->{ $op } or die "method doesn't exist $op" }
 
   method process_api {
     my $output = '';
     my ($calls, $results);
+
+    print $self->api . " has signature " . $self->signature_role . "\n";
 
     foreach my $op (sort @{ $self->operations }){
       my $operation = $self->operation($op);
@@ -56,9 +61,11 @@ class AWS::API::Builder::query {
     my $service = $self->service;
     my $api_version = $self->version;
 
-    my $caller = $self->caller_role;
+    my $parameter_role = $self->parameter_role;
+    my $signature_role = $self->signature_role;
+    my $endpoint_role  = $self->endpoint_role;
     my $output = '';
-    $output .= "class $api with AWS::API::Caller with $caller {\n";
+    $output .= "class $api with (Net::AWS::Caller, $endpoint_role, $signature_role, $parameter_role) {\n";
     $output .= "  has service => (is => 'ro', isa => 'Str', default => '$service');\n";
     $output .= "  has version => (is => 'ro', isa => 'Str', default => '$api_version');\n\n";
   

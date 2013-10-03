@@ -664,7 +664,7 @@ class AWS::RedShift::RevokeClusterSecurityGroupIngressResult with AWS::API::Resu
 class AWS::RedShift::RevokeSnapshotAccessResult with AWS::API::ResultParser {
   has Snapshot => (is => 'ro', isa => 'AWS::RedShift::Snapshot');
 }
-class AWS::RedShift with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
+class AWS::RedShift with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'redshift');
   has version => (is => 'ro', isa => 'Str', default => '2012-12-01');
 

@@ -1,79 +1,51 @@
 use MooseX::Declare;
 
-class Net::AWS::Caller {
+role Net::AWS::V4Signature {
+  use Net::Amazon::Signature::V4;
+  #requires 'region';
+  requires 'service';
+
+  sub sign {
+    my ($self, $request) = @_;
+    my $sig = Net::Amazon::Signature::V4->new( $self->access_key, $self->secret_key, $self->region, $self->service );
+    my $signed_req = $sig->sign( $request );
+    return $signed_req;
+  }
+}
+
+role Net::AWS::QueryCaller {
+  method _api_caller ($action, $params) {
+    foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+      if (defined $params->$att) {
+        my $value = $params->$att;
+        %p = (%p, $att => (ref $value) ? $params->$att->to_params($att) : $value );
+      }
+    }
+    return $self->send(Action => $action, %p);
+  }
+}
+
+role Net::AWS::Caller {
   use POSIX qw(strftime);
   use Digest::SHA qw(hmac_sha256);
   use MIME::Base64 qw(encode_base64);
-  use HTTP::Tiny;
+  use HTTP::Request::Common;
   use Carp qw(croak);
   use XML::Simple qw(XMLin);
 
-  has 'AWSAccessKey'       => ( is => 'rw', required => 1 );
-  has 'AWSSecretKey'       => ( is => 'rw', required => 1 );
+  has 'access_key'         => ( is => 'rw', isa => 'Str', required => 1, lazy => 1, default => sub { $ENV{AWS_ACCESS_KEY} } );
+  has 'secret_key'         => ( is => 'rw', isa => 'Str', required => 1, lazy => 1, default => sub { $ENV{AWS_SECRET_KEY} } );
   has 'debug'              => ( is => 'rw', required => 0, default => sub { 0 } );
   has 'version'            => ( is => 'rw', required => 1);
-  has 'endpoint'           => ( is => 'rw', required => 1);
+  has 'endpoint'           => ( is => 'rw', required => 1, lazy => 1, default => sub { $_[0]->_api_endpoint });
   has 'ua' => (is => 'rw', required => 1, lazy => 1,
     default     => sub {
+        use HTTP::Tiny;
         HTTP::Tiny->new(
-            'agent' => 'Net::EC2::Tiny ',
+            'agent' => 'AWS Perl SDK 0.1',
         );
     }
   );
-  has '_base_url_host' => (is => 'ro', required => 1, lazy => 1,
-    default => sub {
-        ($_[0]->ua->_split_url($_[0]->endpoint))[1]
-    }
-  );
-
-  sub _timestamp { return strftime("%Y-%m-%dT%H:%M:%SZ",gmtime) }
-  sub _sign {
-    my $self                        = shift;
-    my %args                        = @_;
-    my $action                      = delete $args{Action};
-    
-    croak "Action must be defined!\n" if not defined $action;
-
-    my %sign_hash                   = %args;
-    my $timestamp                   = $self->_timestamp;
-
-    $sign_hash{AWSAccessKeyId}      = $self->AWSAccessKey;
-    $sign_hash{Action}              = $action;
-    $sign_hash{Timestamp}           = $timestamp;
-    $sign_hash{Version}             = $self->version;
-    $sign_hash{SignatureVersion}    = "2";
-    $sign_hash{SignatureMethod}     = "HmacSHA256";
-
-    my $sign_this = "POST\n";
-    $sign_this .= $self->_base_url_host . "\n";
-    $sign_this .= "/\n";
-
-
-    $sign_this .= $self->ua->www_form_urlencode(\%sign_hash);
-
-    warn "QUERY TO SIGN: $sign_this" if $self->debug;
-    my $encoded = encode_base64(hmac_sha256($sign_this, $self->AWSSecretKey), '');
-
-    my %params = (
-        Action                => $action,
-        SignatureVersion      => "2",
-        SignatureMethod       => "HmacSHA256",
-        AWSAccessKeyId        => $self->AWSAccessKey,
-        Timestamp             => $timestamp,
-        Version               => $self->version,
-        Signature             => $encoded,
-        %args
-    );
-
-    return \%params;
-  }
-
-  sub _request {
-    my $self   = shift;
-    my $params = shift;
-
-    return $self->ua->post_form( $self->endpoint, $params );
-  }
 
   sub _process {
     my $self = shift;
@@ -89,10 +61,21 @@ class Net::AWS::Caller {
   }
 
 
-  sub send {
-    my $self     = shift;
-    my $request  = $self->_sign(@_);
-    my $response = $self->_request($request);
+  method send (%params){
+    my $request = POST $self->endpoint . '/', Content => { %params };
+    $request->header( Date => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
+    $request->header( Host => $self->endpoint_host );
+    $request = $self->sign($request);
+    my $headers = {};
+    $request->scan(sub { $headers->{ $_[0] } = $_[1] });
+    my $response = $self->ua->request(
+      $request->method,
+      $request->url,
+      {
+        headers => $headers,
+        content => $request->content
+      }
+    );
     if ( $response->{success} ) {
         my $xml = $self->_process( $response->{content} );
         if ( defined $xml->{Errors} ) {

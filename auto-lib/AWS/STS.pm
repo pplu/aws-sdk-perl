@@ -87,7 +87,7 @@ class AWS::STS::GetFederationTokenResult with AWS::API::ResultParser {
 class AWS::STS::GetSessionTokenResult with AWS::API::ResultParser {
   has Credentials => (is => 'ro', isa => 'AWS::STS::Credentials');
 }
-class AWS::STS with AWS::API::Caller with AWS::API::SingleEndpointCaller {
+class AWS::STS with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'sts');
   has version => (is => 'ro', isa => 'Str', default => '2011-06-15');
 

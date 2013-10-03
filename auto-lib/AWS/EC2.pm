@@ -2758,7 +2758,7 @@ class AWS::EC2::TerminateInstancesResult with AWS::API::ResultParser {
 class AWS::EC2::UnmonitorInstancesResult with AWS::API::ResultParser {
   has InstanceMonitorings => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstanceMonitoring]');
 }
-class AWS::EC2 with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
+class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'ec2');
   has version => (is => 'ro', isa => 'Str', default => '2013-08-15');
 

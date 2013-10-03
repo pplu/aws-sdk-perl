@@ -598,7 +598,7 @@ class AWS::ElastiCache::ResetCacheParameterGroupResult with AWS::API::ResultPars
 class AWS::ElastiCache::RevokeCacheSecurityGroupIngressResult with AWS::API::ResultParser {
   has CacheSecurityGroup => (is => 'ro', isa => 'AWS::ElastiCache::CacheSecurityGroup');
 }
-class AWS::ElastiCache with AWS::API::Caller with AWS::API::RegionalEndpointCaller {
+class AWS::ElastiCache with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'elasticache');
   has version => (is => 'ro', isa => 'Str', default => '2013-06-15');
 
