@@ -43,8 +43,6 @@ role Net::AWS::QueryCaller {
         }
       }
     }
-    use Data::Printer;
-    p %p;
     return %p;
   }
   method _api_caller ($action, $params) {
