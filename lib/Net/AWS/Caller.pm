@@ -14,15 +14,41 @@ role Net::AWS::V4Signature {
 }
 
 role Net::AWS::QueryCaller {
-  method _api_caller ($action, $params) {
+  method _is_internal_type ($att_type) {
+    return ($att_type eq 'Str' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
+  }
+  method _to_params ($params) {
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
       if (defined $params->$att) {
-        my $value = $params->$att;
-        %p = (%p, $att => (ref $value) ? $params->$att->to_params($att) : $value );
+        my $att_type = $params->meta->get_attribute($att)->type_constraint;
+        if ($self->_is_internal_type($att_type)) {
+          $p{ $att } = $params->{$att};
+        } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
+          if ($self->_is_internal_type("$1")){
+            my $i = 1;
+            foreach my $value (@{ $params->$att }){
+              $p{ sprintf("%s.member.%d", $att, $i) } = $value;
+              $i++
+            }
+          } else {
+            my $i = 1;
+            foreach my $value (@{ $params->$att }){
+              $p{ sprintf("%s.member.%d", $att, $i) } = $value->_to_params($att);
+              $i++
+            }
+          }
+        } else {
+          $p{ $att } = $params->$att->to_params($params->{$att});
+        }
       }
     }
-    return $self->send(Action => $action, %p);
+    use Data::Printer;
+    p %p;
+    return %p;
+  }
+  method _api_caller ($action, $params) {
+    return $self->send(Action => $action, $self->_to_params($params));
   }
 }
 
