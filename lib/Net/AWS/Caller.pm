@@ -87,7 +87,7 @@ role Net::AWS::Caller {
 
 
   method send (%params){
-    my $request = POST $self->endpoint . '/', Content => { %params };
+    my $request = POST $self->endpoint, Content => { %params };
     $request->header( Date => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
     $request->header( Host => $self->endpoint_host );
     $request = $self->sign($request);

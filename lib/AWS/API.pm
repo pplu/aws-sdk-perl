@@ -60,7 +60,7 @@ role AWS::API::RegionalEndpointCaller {
   }
 
   method _api_endpoint {
-    return sprintf '%s://%s', 'https', $self->endpoint_host;
+    return sprintf '%s://%s/', 'https', $self->endpoint_host;
   }
 }
 
@@ -72,7 +72,7 @@ role AWS::API::SingleEndpointCaller {
   }
 
   method _api_endpoint {
-    return sprintf '%s://%s', 'https', $self->endpoint_host;
+    return sprintf '%s://%s/', 'https', $self->endpoint_host;
   }
 }
 
