@@ -74,8 +74,12 @@ class AWS::API::Builder::query {
       $output .= "  method $op_name (%args) {\n";
       $output .= "    my \$call = ${api}::${op_name}->new(\%args);\n";
       $output .= "    my \$result = \$self->_api_caller(\$call->_api_call, \$call);\n";
-      $output .= "    my \$o_result = ${api}::${op_name}Result->from_result(\$result->{ \$call->_result_key });\n";
-      $output .= "    return \$o_result;\n";
+      if (keys %{ $self->struct->{operations}->{$op}->{output} } > 0){
+        $output .= "    my \$o_result = ${api}::${op_name}Result->from_result(\$result->{ \$call->_result_key });\n";
+        $output .= "    return \$o_result;\n";
+      } else {
+        $output .= "    return 1\n";
+      }
       $output .= "  }\n\n";
     } 
     $output .= "}\n\n";

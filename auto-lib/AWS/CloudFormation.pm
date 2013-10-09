@@ -259,8 +259,7 @@ class AWS::CloudFormation with (Net::AWS::Caller, AWS::API::RegionalEndpointCall
   method CancelUpdateStack (%args) {
     my $call = AWS::CloudFormation::CancelUpdateStack->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudFormation::CancelUpdateStackResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method CreateStack (%args) {
@@ -273,8 +272,7 @@ class AWS::CloudFormation with (Net::AWS::Caller, AWS::API::RegionalEndpointCall
   method DeleteStack (%args) {
     my $call = AWS::CloudFormation::DeleteStack->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudFormation::DeleteStackResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DescribeStackEvents (%args) {

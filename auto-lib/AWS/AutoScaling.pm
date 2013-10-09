@@ -552,64 +552,55 @@ class AWS::AutoScaling with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller,
   method CreateAutoScalingGroup (%args) {
     my $call = AWS::AutoScaling::CreateAutoScalingGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::CreateAutoScalingGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method CreateLaunchConfiguration (%args) {
     my $call = AWS::AutoScaling::CreateLaunchConfiguration->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::CreateLaunchConfigurationResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method CreateOrUpdateTags (%args) {
     my $call = AWS::AutoScaling::CreateOrUpdateTags->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::CreateOrUpdateTagsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteAutoScalingGroup (%args) {
     my $call = AWS::AutoScaling::DeleteAutoScalingGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::DeleteAutoScalingGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteLaunchConfiguration (%args) {
     my $call = AWS::AutoScaling::DeleteLaunchConfiguration->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::DeleteLaunchConfigurationResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteNotificationConfiguration (%args) {
     my $call = AWS::AutoScaling::DeleteNotificationConfiguration->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::DeleteNotificationConfigurationResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeletePolicy (%args) {
     my $call = AWS::AutoScaling::DeletePolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::DeletePolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteScheduledAction (%args) {
     my $call = AWS::AutoScaling::DeleteScheduledAction->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::DeleteScheduledActionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteTags (%args) {
     my $call = AWS::AutoScaling::DeleteTags->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::DeleteTagsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DescribeAdjustmentTypes (%args) {
@@ -706,29 +697,25 @@ class AWS::AutoScaling with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller,
   method DisableMetricsCollection (%args) {
     my $call = AWS::AutoScaling::DisableMetricsCollection->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::DisableMetricsCollectionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method EnableMetricsCollection (%args) {
     my $call = AWS::AutoScaling::EnableMetricsCollection->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::EnableMetricsCollectionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ExecutePolicy (%args) {
     my $call = AWS::AutoScaling::ExecutePolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::ExecutePolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method PutNotificationConfiguration (%args) {
     my $call = AWS::AutoScaling::PutNotificationConfiguration->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::PutNotificationConfigurationResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method PutScalingPolicy (%args) {
@@ -741,36 +728,31 @@ class AWS::AutoScaling with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller,
   method PutScheduledUpdateGroupAction (%args) {
     my $call = AWS::AutoScaling::PutScheduledUpdateGroupAction->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::PutScheduledUpdateGroupActionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ResumeProcesses (%args) {
     my $call = AWS::AutoScaling::ResumeProcesses->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::ResumeProcessesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method SetDesiredCapacity (%args) {
     my $call = AWS::AutoScaling::SetDesiredCapacity->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::SetDesiredCapacityResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method SetInstanceHealth (%args) {
     my $call = AWS::AutoScaling::SetInstanceHealth->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::SetInstanceHealthResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method SuspendProcesses (%args) {
     my $call = AWS::AutoScaling::SuspendProcesses->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::SuspendProcessesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method TerminateInstanceInAutoScalingGroup (%args) {
@@ -783,8 +765,7 @@ class AWS::AutoScaling with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller,
   method UpdateAutoScalingGroup (%args) {
     my $call = AWS::AutoScaling::UpdateAutoScalingGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::AutoScaling::UpdateAutoScalingGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
 }

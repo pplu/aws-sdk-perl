@@ -654,22 +654,19 @@ class AWS::ElastiCache with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller,
   method DeleteCacheParameterGroup (%args) {
     my $call = AWS::ElastiCache::DeleteCacheParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::ElastiCache::DeleteCacheParameterGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteCacheSecurityGroup (%args) {
     my $call = AWS::ElastiCache::DeleteCacheSecurityGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::ElastiCache::DeleteCacheSecurityGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteCacheSubnetGroup (%args) {
     my $call = AWS::ElastiCache::DeleteCacheSubnetGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::ElastiCache::DeleteCacheSubnetGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteReplicationGroup (%args) {

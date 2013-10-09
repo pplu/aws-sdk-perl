@@ -602,29 +602,25 @@ class AWS::ElasticBeanstalk with (Net::AWS::Caller, AWS::API::RegionalEndpointCa
   method DeleteApplication (%args) {
     my $call = AWS::ElasticBeanstalk::DeleteApplication->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::ElasticBeanstalk::DeleteApplicationResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteApplicationVersion (%args) {
     my $call = AWS::ElasticBeanstalk::DeleteApplicationVersion->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::ElasticBeanstalk::DeleteApplicationVersionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteConfigurationTemplate (%args) {
     my $call = AWS::ElasticBeanstalk::DeleteConfigurationTemplate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::ElasticBeanstalk::DeleteConfigurationTemplateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteEnvironmentConfiguration (%args) {
     my $call = AWS::ElasticBeanstalk::DeleteEnvironmentConfiguration->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::ElasticBeanstalk::DeleteEnvironmentConfigurationResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DescribeApplicationVersions (%args) {
@@ -686,22 +682,19 @@ class AWS::ElasticBeanstalk with (Net::AWS::Caller, AWS::API::RegionalEndpointCa
   method RebuildEnvironment (%args) {
     my $call = AWS::ElasticBeanstalk::RebuildEnvironment->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::ElasticBeanstalk::RebuildEnvironmentResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method RequestEnvironmentInfo (%args) {
     my $call = AWS::ElasticBeanstalk::RequestEnvironmentInfo->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::ElasticBeanstalk::RequestEnvironmentInfoResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method RestartAppServer (%args) {
     my $call = AWS::ElasticBeanstalk::RestartAppServer->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::ElasticBeanstalk::RestartAppServerResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method RetrieveEnvironmentInfo (%args) {
@@ -714,8 +707,7 @@ class AWS::ElasticBeanstalk with (Net::AWS::Caller, AWS::API::RegionalEndpointCa
   method SwapEnvironmentCNAMEs (%args) {
     my $call = AWS::ElasticBeanstalk::SwapEnvironmentCNAMEs->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::ElasticBeanstalk::SwapEnvironmentCNAMEsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method TerminateEnvironment (%args) {

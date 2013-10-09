@@ -224,15 +224,13 @@ class AWS::SQS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method AddPermission (%args) {
     my $call = AWS::SQS::AddPermission->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::SQS::AddPermissionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ChangeMessageVisibility (%args) {
     my $call = AWS::SQS::ChangeMessageVisibility->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::SQS::ChangeMessageVisibilityResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ChangeMessageVisibilityBatch (%args) {
@@ -252,8 +250,7 @@ class AWS::SQS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method DeleteMessage (%args) {
     my $call = AWS::SQS::DeleteMessage->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::SQS::DeleteMessageResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteMessageBatch (%args) {
@@ -266,8 +263,7 @@ class AWS::SQS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method DeleteQueue (%args) {
     my $call = AWS::SQS::DeleteQueue->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::SQS::DeleteQueueResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method GetQueueAttributes (%args) {
@@ -301,8 +297,7 @@ class AWS::SQS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method RemovePermission (%args) {
     my $call = AWS::SQS::RemovePermission->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::SQS::RemovePermissionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method SendMessage (%args) {
@@ -322,8 +317,7 @@ class AWS::SQS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method SetQueueAttributes (%args) {
     my $call = AWS::SQS::SetQueueAttributes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::SQS::SetQueueAttributesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
 }

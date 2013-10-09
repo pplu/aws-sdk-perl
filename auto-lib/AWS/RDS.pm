@@ -1071,8 +1071,7 @@ class AWS::RDS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method AddTagsToResource (%args) {
     my $call = AWS::RDS::AddTagsToResource->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::RDS::AddTagsToResourceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method AuthorizeDBSecurityGroupIngress (%args) {
@@ -1155,15 +1154,13 @@ class AWS::RDS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method DeleteDBParameterGroup (%args) {
     my $call = AWS::RDS::DeleteDBParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::RDS::DeleteDBParameterGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteDBSecurityGroup (%args) {
     my $call = AWS::RDS::DeleteDBSecurityGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::RDS::DeleteDBSecurityGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteDBSnapshot (%args) {
@@ -1176,8 +1173,7 @@ class AWS::RDS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method DeleteDBSubnetGroup (%args) {
     my $call = AWS::RDS::DeleteDBSubnetGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::RDS::DeleteDBSubnetGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteEventSubscription (%args) {
@@ -1190,8 +1186,7 @@ class AWS::RDS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method DeleteOptionGroup (%args) {
     my $call = AWS::RDS::DeleteOptionGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::RDS::DeleteOptionGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DescribeDBEngineVersions (%args) {
@@ -1393,8 +1388,7 @@ class AWS::RDS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method RemoveTagsFromResource (%args) {
     my $call = AWS::RDS::RemoveTagsFromResource->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::RDS::RemoveTagsFromResourceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ResetDBParameterGroup (%args) {

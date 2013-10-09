@@ -220,8 +220,7 @@ class AWS::CloudWatch with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, 
   method DeleteAlarms (%args) {
     my $call = AWS::CloudWatch::DeleteAlarms->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudWatch::DeleteAlarmsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DescribeAlarmHistory (%args) {
@@ -248,15 +247,13 @@ class AWS::CloudWatch with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, 
   method DisableAlarmActions (%args) {
     my $call = AWS::CloudWatch::DisableAlarmActions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudWatch::DisableAlarmActionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method EnableAlarmActions (%args) {
     my $call = AWS::CloudWatch::EnableAlarmActions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudWatch::EnableAlarmActionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method GetMetricStatistics (%args) {
@@ -276,22 +273,19 @@ class AWS::CloudWatch with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, 
   method PutMetricAlarm (%args) {
     my $call = AWS::CloudWatch::PutMetricAlarm->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudWatch::PutMetricAlarmResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method PutMetricData (%args) {
     my $call = AWS::CloudWatch::PutMetricData->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudWatch::PutMetricDataResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method SetAlarmState (%args) {
     my $call = AWS::CloudWatch::SetAlarmState->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudWatch::SetAlarmStateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
 }

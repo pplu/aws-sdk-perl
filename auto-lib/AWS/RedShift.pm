@@ -734,15 +734,13 @@ class AWS::RedShift with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
   method DeleteClusterParameterGroup (%args) {
     my $call = AWS::RedShift::DeleteClusterParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::RedShift::DeleteClusterParameterGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteClusterSecurityGroup (%args) {
     my $call = AWS::RedShift::DeleteClusterSecurityGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::RedShift::DeleteClusterSecurityGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteClusterSnapshot (%args) {
@@ -755,8 +753,7 @@ class AWS::RedShift with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
   method DeleteClusterSubnetGroup (%args) {
     my $call = AWS::RedShift::DeleteClusterSubnetGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::RedShift::DeleteClusterSubnetGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DescribeClusterParameterGroups (%args) {

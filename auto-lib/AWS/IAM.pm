@@ -833,22 +833,19 @@ class AWS::IAM with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS:
   method AddRoleToInstanceProfile (%args) {
     my $call = AWS::IAM::AddRoleToInstanceProfile->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::AddRoleToInstanceProfileResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method AddUserToGroup (%args) {
     my $call = AWS::IAM::AddUserToGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::AddUserToGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ChangePassword (%args) {
     my $call = AWS::IAM::ChangePassword->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::ChangePasswordResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method CreateAccessKey (%args) {
@@ -861,8 +858,7 @@ class AWS::IAM with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS:
   method CreateAccountAlias (%args) {
     my $call = AWS::IAM::CreateAccountAlias->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::CreateAccountAliasResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method CreateGroup (%args) {
@@ -910,113 +906,97 @@ class AWS::IAM with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS:
   method DeactivateMFADevice (%args) {
     my $call = AWS::IAM::DeactivateMFADevice->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeactivateMFADeviceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteAccessKey (%args) {
     my $call = AWS::IAM::DeleteAccessKey->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeleteAccessKeyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteAccountAlias (%args) {
     my $call = AWS::IAM::DeleteAccountAlias->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeleteAccountAliasResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteAccountPasswordPolicy (%args) {
     my $call = AWS::IAM::DeleteAccountPasswordPolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeleteAccountPasswordPolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteGroup (%args) {
     my $call = AWS::IAM::DeleteGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeleteGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteGroupPolicy (%args) {
     my $call = AWS::IAM::DeleteGroupPolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeleteGroupPolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteInstanceProfile (%args) {
     my $call = AWS::IAM::DeleteInstanceProfile->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeleteInstanceProfileResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteLoginProfile (%args) {
     my $call = AWS::IAM::DeleteLoginProfile->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeleteLoginProfileResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteRole (%args) {
     my $call = AWS::IAM::DeleteRole->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeleteRoleResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteRolePolicy (%args) {
     my $call = AWS::IAM::DeleteRolePolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeleteRolePolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteServerCertificate (%args) {
     my $call = AWS::IAM::DeleteServerCertificate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeleteServerCertificateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteSigningCertificate (%args) {
     my $call = AWS::IAM::DeleteSigningCertificate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeleteSigningCertificateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteUser (%args) {
     my $call = AWS::IAM::DeleteUser->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeleteUserResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteUserPolicy (%args) {
     my $call = AWS::IAM::DeleteUserPolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeleteUserPolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteVirtualMFADevice (%args) {
     my $call = AWS::IAM::DeleteVirtualMFADevice->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::DeleteVirtualMFADeviceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method EnableMFADevice (%args) {
     my $call = AWS::IAM::EnableMFADevice->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::EnableMFADeviceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method GetAccountPasswordPolicy (%args) {
@@ -1204,99 +1184,85 @@ class AWS::IAM with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS:
   method PutGroupPolicy (%args) {
     my $call = AWS::IAM::PutGroupPolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::PutGroupPolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method PutRolePolicy (%args) {
     my $call = AWS::IAM::PutRolePolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::PutRolePolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method PutUserPolicy (%args) {
     my $call = AWS::IAM::PutUserPolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::PutUserPolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method RemoveRoleFromInstanceProfile (%args) {
     my $call = AWS::IAM::RemoveRoleFromInstanceProfile->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::RemoveRoleFromInstanceProfileResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method RemoveUserFromGroup (%args) {
     my $call = AWS::IAM::RemoveUserFromGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::RemoveUserFromGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ResyncMFADevice (%args) {
     my $call = AWS::IAM::ResyncMFADevice->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::ResyncMFADeviceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method UpdateAccessKey (%args) {
     my $call = AWS::IAM::UpdateAccessKey->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::UpdateAccessKeyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method UpdateAccountPasswordPolicy (%args) {
     my $call = AWS::IAM::UpdateAccountPasswordPolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::UpdateAccountPasswordPolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method UpdateAssumeRolePolicy (%args) {
     my $call = AWS::IAM::UpdateAssumeRolePolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::UpdateAssumeRolePolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method UpdateGroup (%args) {
     my $call = AWS::IAM::UpdateGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::UpdateGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method UpdateLoginProfile (%args) {
     my $call = AWS::IAM::UpdateLoginProfile->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::UpdateLoginProfileResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method UpdateServerCertificate (%args) {
     my $call = AWS::IAM::UpdateServerCertificate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::UpdateServerCertificateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method UpdateSigningCertificate (%args) {
     my $call = AWS::IAM::UpdateSigningCertificate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::UpdateSigningCertificateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method UpdateUser (%args) {
     my $call = AWS::IAM::UpdateUser->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::IAM::UpdateUserResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method UploadServerCertificate (%args) {

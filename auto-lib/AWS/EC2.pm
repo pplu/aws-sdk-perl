@@ -2765,8 +2765,7 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method ActivateLicense (%args) {
     my $call = AWS::EC2::ActivateLicense->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ActivateLicenseResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method AllocateAddress (%args) {
@@ -2779,8 +2778,7 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method AssignPrivateIpAddresses (%args) {
     my $call = AWS::EC2::AssignPrivateIpAddresses->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::AssignPrivateIpAddressesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method AssociateAddress (%args) {
@@ -2793,8 +2791,7 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method AssociateDhcpOptions (%args) {
     my $call = AWS::EC2::AssociateDhcpOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::AssociateDhcpOptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method AssociateRouteTable (%args) {
@@ -2807,8 +2804,7 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method AttachInternetGateway (%args) {
     my $call = AWS::EC2::AttachInternetGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::AttachInternetGatewayResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method AttachNetworkInterface (%args) {
@@ -2835,15 +2831,13 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method AuthorizeSecurityGroupEgress (%args) {
     my $call = AWS::EC2::AuthorizeSecurityGroupEgress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::AuthorizeSecurityGroupEgressResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method AuthorizeSecurityGroupIngress (%args) {
     my $call = AWS::EC2::AuthorizeSecurityGroupIngress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::AuthorizeSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method BundleInstance (%args) {
@@ -2863,15 +2857,13 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method CancelConversionTask (%args) {
     my $call = AWS::EC2::CancelConversionTask->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::CancelConversionTaskResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method CancelExportTask (%args) {
     my $call = AWS::EC2::CancelExportTask->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::CancelExportTaskResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method CancelReservedInstancesListing (%args) {
@@ -2961,8 +2953,7 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method CreateNetworkAclEntry (%args) {
     my $call = AWS::EC2::CreateNetworkAclEntry->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::CreateNetworkAclEntryResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method CreateNetworkInterface (%args) {
@@ -2975,8 +2966,7 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method CreatePlacementGroup (%args) {
     my $call = AWS::EC2::CreatePlacementGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::CreatePlacementGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method CreateReservedInstancesListing (%args) {
@@ -2989,8 +2979,7 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method CreateRoute (%args) {
     my $call = AWS::EC2::CreateRoute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::CreateRouteResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method CreateRouteTable (%args) {
@@ -3031,8 +3020,7 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method CreateTags (%args) {
     my $call = AWS::EC2::CreateTags->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::CreateTagsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method CreateVolume (%args) {
@@ -3059,8 +3047,7 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method CreateVpnConnectionRoute (%args) {
     my $call = AWS::EC2::CreateVpnConnectionRoute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::CreateVpnConnectionRouteResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method CreateVpnGateway (%args) {
@@ -3073,155 +3060,133 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method DeactivateLicense (%args) {
     my $call = AWS::EC2::DeactivateLicense->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeactivateLicenseResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteCustomerGateway (%args) {
     my $call = AWS::EC2::DeleteCustomerGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteCustomerGatewayResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteDhcpOptions (%args) {
     my $call = AWS::EC2::DeleteDhcpOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteDhcpOptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteInternetGateway (%args) {
     my $call = AWS::EC2::DeleteInternetGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteInternetGatewayResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteKeyPair (%args) {
     my $call = AWS::EC2::DeleteKeyPair->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteKeyPairResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteNetworkAcl (%args) {
     my $call = AWS::EC2::DeleteNetworkAcl->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteNetworkAclResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteNetworkAclEntry (%args) {
     my $call = AWS::EC2::DeleteNetworkAclEntry->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteNetworkAclEntryResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteNetworkInterface (%args) {
     my $call = AWS::EC2::DeleteNetworkInterface->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteNetworkInterfaceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeletePlacementGroup (%args) {
     my $call = AWS::EC2::DeletePlacementGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeletePlacementGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteRoute (%args) {
     my $call = AWS::EC2::DeleteRoute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteRouteResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteRouteTable (%args) {
     my $call = AWS::EC2::DeleteRouteTable->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteRouteTableResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteSecurityGroup (%args) {
     my $call = AWS::EC2::DeleteSecurityGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteSecurityGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteSnapshot (%args) {
     my $call = AWS::EC2::DeleteSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteSnapshotResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteSpotDatafeedSubscription (%args) {
     my $call = AWS::EC2::DeleteSpotDatafeedSubscription->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteSpotDatafeedSubscriptionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteSubnet (%args) {
     my $call = AWS::EC2::DeleteSubnet->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteSubnetResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteTags (%args) {
     my $call = AWS::EC2::DeleteTags->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteTagsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteVolume (%args) {
     my $call = AWS::EC2::DeleteVolume->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteVolumeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteVpc (%args) {
     my $call = AWS::EC2::DeleteVpc->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteVpcResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteVpnConnection (%args) {
     my $call = AWS::EC2::DeleteVpnConnection->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteVpnConnectionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteVpnConnectionRoute (%args) {
     my $call = AWS::EC2::DeleteVpnConnectionRoute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteVpnConnectionRouteResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeleteVpnGateway (%args) {
     my $call = AWS::EC2::DeleteVpnGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeleteVpnGatewayResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DeregisterImage (%args) {
     my $call = AWS::EC2::DeregisterImage->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DeregisterImageResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DescribeAccountAttributes (%args) {
@@ -3514,15 +3479,13 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method DetachInternetGateway (%args) {
     my $call = AWS::EC2::DetachInternetGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DetachInternetGatewayResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DetachNetworkInterface (%args) {
     my $call = AWS::EC2::DetachNetworkInterface->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DetachNetworkInterfaceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DetachVolume (%args) {
@@ -3535,43 +3498,37 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method DetachVpnGateway (%args) {
     my $call = AWS::EC2::DetachVpnGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DetachVpnGatewayResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DisableVgwRoutePropagation (%args) {
     my $call = AWS::EC2::DisableVgwRoutePropagation->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DisableVgwRoutePropagationResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DisassociateAddress (%args) {
     my $call = AWS::EC2::DisassociateAddress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DisassociateAddressResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method DisassociateRouteTable (%args) {
     my $call = AWS::EC2::DisassociateRouteTable->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DisassociateRouteTableResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method EnableVgwRoutePropagation (%args) {
     my $call = AWS::EC2::EnableVgwRoutePropagation->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::EnableVgwRoutePropagationResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method EnableVolumeIO (%args) {
     my $call = AWS::EC2::EnableVolumeIO->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::EnableVolumeIOResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method GetConsoleOutput (%args) {
@@ -3612,22 +3569,19 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method ModifyImageAttribute (%args) {
     my $call = AWS::EC2::ModifyImageAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ModifyImageAttributeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ModifyInstanceAttribute (%args) {
     my $call = AWS::EC2::ModifyInstanceAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ModifyInstanceAttributeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ModifyNetworkInterfaceAttribute (%args) {
     my $call = AWS::EC2::ModifyNetworkInterfaceAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ModifyNetworkInterfaceAttributeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ModifyReservedInstances (%args) {
@@ -3640,22 +3594,19 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method ModifySnapshotAttribute (%args) {
     my $call = AWS::EC2::ModifySnapshotAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ModifySnapshotAttributeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ModifyVolumeAttribute (%args) {
     my $call = AWS::EC2::ModifyVolumeAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ModifyVolumeAttributeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ModifyVpcAttribute (%args) {
     my $call = AWS::EC2::ModifyVpcAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ModifyVpcAttributeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method MonitorInstances (%args) {
@@ -3675,8 +3626,7 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method RebootInstances (%args) {
     my $call = AWS::EC2::RebootInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::RebootInstancesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method RegisterImage (%args) {
@@ -3689,8 +3639,7 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method ReleaseAddress (%args) {
     my $call = AWS::EC2::ReleaseAddress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ReleaseAddressResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ReplaceNetworkAclAssociation (%args) {
@@ -3703,15 +3652,13 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method ReplaceNetworkAclEntry (%args) {
     my $call = AWS::EC2::ReplaceNetworkAclEntry->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ReplaceNetworkAclEntryResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ReplaceRoute (%args) {
     my $call = AWS::EC2::ReplaceRoute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ReplaceRouteResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ReplaceRouteTableAssociation (%args) {
@@ -3724,8 +3671,7 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method ReportInstanceStatus (%args) {
     my $call = AWS::EC2::ReportInstanceStatus->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ReportInstanceStatusResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method RequestSpotInstances (%args) {
@@ -3738,43 +3684,37 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method ResetImageAttribute (%args) {
     my $call = AWS::EC2::ResetImageAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ResetImageAttributeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ResetInstanceAttribute (%args) {
     my $call = AWS::EC2::ResetInstanceAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ResetInstanceAttributeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ResetNetworkInterfaceAttribute (%args) {
     my $call = AWS::EC2::ResetNetworkInterfaceAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ResetNetworkInterfaceAttributeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method ResetSnapshotAttribute (%args) {
     my $call = AWS::EC2::ResetSnapshotAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::ResetSnapshotAttributeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method RevokeSecurityGroupEgress (%args) {
     my $call = AWS::EC2::RevokeSecurityGroupEgress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::RevokeSecurityGroupEgressResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method RevokeSecurityGroupIngress (%args) {
     my $call = AWS::EC2::RevokeSecurityGroupIngress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::RevokeSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method RunInstances (%args) {
@@ -3808,8 +3748,7 @@ class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method UnassignPrivateIpAddresses (%args) {
     my $call = AWS::EC2::UnassignPrivateIpAddresses->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::UnassignPrivateIpAddressesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return 1
   }
 
   method UnmonitorInstances (%args) {
