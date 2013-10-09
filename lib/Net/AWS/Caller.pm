@@ -126,6 +126,7 @@ role Net::AWS::V4Signature {
   #requires 'region';
   requires 'service';
   use HTTP::Request::Common;
+  use POSIX qw(strftime);
 
   sub sign {
     my ($self, $params) = @_;
@@ -178,9 +179,6 @@ role Net::AWS::QueryCaller {
 }
 
 role Net::AWS::Caller {
-  use POSIX qw(strftime);
-  use Digest::SHA qw(hmac_sha256);
-  use MIME::Base64 qw(encode_base64);
   use Carp qw(croak);
   use XML::Simple qw(XMLin);
 
