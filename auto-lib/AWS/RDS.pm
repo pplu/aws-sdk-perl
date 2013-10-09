@@ -162,6 +162,11 @@ class AWS::RDS::EventSubscription with AWS::API::ResultParser {
   has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
 }
 
+class AWS::RDS::Filter with AWS::API::ResultParser {
+  has FilterName => (is => 'ro', isa => 'Str', required => 1);
+  has FilterValue => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+}
+
 class AWS::RDS::IPRange with AWS::API::ResultParser {
   has CIDRIP => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -352,6 +357,7 @@ class AWS::RDS::AuthorizeDBSecurityGroupIngress {
 }
 class AWS::RDS::CopyDBSnapshot {
   has SourceDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Tag]');
   has TargetDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CopyDBSnapshot');
@@ -382,6 +388,7 @@ class AWS::RDS::CreateDBInstance {
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Tag]');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstance');
@@ -398,6 +405,7 @@ class AWS::RDS::CreateDBInstanceReadReplica {
   has Port => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Str');
   has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Tag]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceReadReplica');
   has _returns => (isa => 'AWS::RDS::CreateDBInstanceReadReplicaResult', is => 'ro');
@@ -407,6 +415,7 @@ class AWS::RDS::CreateDBParameterGroup {
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
   has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Tag]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBParameterGroup');
   has _returns => (isa => 'AWS::RDS::CreateDBParameterGroupResult', is => 'ro');
@@ -415,6 +424,7 @@ class AWS::RDS::CreateDBParameterGroup {
 class AWS::RDS::CreateDBSecurityGroup {
   has DBSecurityGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has DBSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Tag]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSecurityGroup');
   has _returns => (isa => 'AWS::RDS::CreateDBSecurityGroupResult', is => 'ro');
@@ -423,6 +433,7 @@ class AWS::RDS::CreateDBSecurityGroup {
 class AWS::RDS::CreateDBSnapshot {
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Tag]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSnapshot');
   has _returns => (isa => 'AWS::RDS::CreateDBSnapshotResult', is => 'ro');
@@ -432,6 +443,7 @@ class AWS::RDS::CreateDBSubnetGroup {
   has DBSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Tag]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSubnetGroup');
   has _returns => (isa => 'AWS::RDS::CreateDBSubnetGroupResult', is => 'ro');
@@ -444,6 +456,7 @@ class AWS::RDS::CreateEventSubscription {
   has SourceIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has SourceType => (is => 'ro', isa => 'Str');
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Tag]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEventSubscription');
   has _returns => (isa => 'AWS::RDS::CreateEventSubscriptionResult', is => 'ro');
@@ -454,6 +467,7 @@ class AWS::RDS::CreateOptionGroup {
   has MajorEngineVersion => (is => 'ro', isa => 'Str', required => 1);
   has OptionGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has OptionGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Tag]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateOptionGroup');
   has _returns => (isa => 'AWS::RDS::CreateOptionGroupResult', is => 'ro');
@@ -525,6 +539,7 @@ class AWS::RDS::DescribeDBEngineVersions {
 }
 class AWS::RDS::DescribeDBInstances {
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
+  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -533,7 +548,7 @@ class AWS::RDS::DescribeDBInstances {
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBInstancesResult');
 }
 class AWS::RDS::DescribeDBLogFiles {
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
+  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has FileLastWritten => (is => 'ro', isa => 'Num');
   has FileSize => (is => 'ro', isa => 'Num');
   has FilenameContains => (is => 'ro', isa => 'Str');
@@ -546,6 +561,7 @@ class AWS::RDS::DescribeDBLogFiles {
 }
 class AWS::RDS::DescribeDBParameterGroups {
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
+  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -565,6 +581,7 @@ class AWS::RDS::DescribeDBParameters {
 }
 class AWS::RDS::DescribeDBSecurityGroups {
   has DBSecurityGroupName => (is => 'ro', isa => 'Str');
+  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -575,6 +592,7 @@ class AWS::RDS::DescribeDBSecurityGroups {
 class AWS::RDS::DescribeDBSnapshots {
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
+  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SnapshotType => (is => 'ro', isa => 'Str');
@@ -585,6 +603,7 @@ class AWS::RDS::DescribeDBSnapshots {
 }
 class AWS::RDS::DescribeDBSubnetGroups {
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -609,6 +628,7 @@ class AWS::RDS::DescribeEventCategories {
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventCategoriesResult');
 }
 class AWS::RDS::DescribeEventSubscriptions {
+  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SubscriptionName => (is => 'ro', isa => 'Str');
@@ -643,6 +663,7 @@ class AWS::RDS::DescribeOptionGroupOptions {
 }
 class AWS::RDS::DescribeOptionGroups {
   has EngineName => (is => 'ro', isa => 'Str');
+  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has MajorEngineVersion => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -668,6 +689,7 @@ class AWS::RDS::DescribeOrderableDBInstanceOptions {
 class AWS::RDS::DescribeReservedDBInstances {
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Str');
+  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has MultiAZ => (is => 'ro', isa => 'Str');
@@ -695,8 +717,8 @@ class AWS::RDS::DescribeReservedDBInstancesOfferings {
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstancesOfferingsResult');
 }
 class AWS::RDS::DownloadDBLogFilePortion {
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has LogFileName => (is => 'ro', isa => 'Str');
+  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has LogFileName => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
   has NumberOfLines => (is => 'ro', isa => 'Int');
 
@@ -786,6 +808,7 @@ class AWS::RDS::PurchaseReservedDBInstancesOffering {
   has DBInstanceCount => (is => 'ro', isa => 'Int');
   has ReservedDBInstanceId => (is => 'ro', isa => 'Str');
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Tag]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedDBInstancesOffering');
   has _returns => (isa => 'AWS::RDS::PurchaseReservedDBInstancesOfferingResult', is => 'ro');
@@ -839,6 +862,7 @@ class AWS::RDS::RestoreDBInstanceFromDBSnapshot {
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Tag]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromDBSnapshot');
   has _returns => (isa => 'AWS::RDS::RestoreDBInstanceFromDBSnapshotResult', is => 'ro');
@@ -859,6 +883,7 @@ class AWS::RDS::RestoreDBInstanceToPointInTime {
   has PubliclyAccessible => (is => 'ro', isa => 'Str');
   has RestoreTime => (is => 'ro', isa => 'Str');
   has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Tag]');
   has TargetDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has UseLatestRestorableTime => (is => 'ro', isa => 'Str');
 

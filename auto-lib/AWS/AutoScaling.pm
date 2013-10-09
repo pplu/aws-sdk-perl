@@ -88,6 +88,7 @@ class AWS::AutoScaling::InstanceMonitoring with AWS::API::ResultParser {
 }
 
 class AWS::AutoScaling::LaunchConfiguration with AWS::API::ResultParser {
+  has AssociatePublicIpAddress => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[AWS::AutoScaling::BlockDeviceMapping]');
   has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
   has EbsOptimized => (is => 'ro', isa => 'Str');
@@ -189,6 +190,7 @@ class AWS::AutoScaling::CreateAutoScalingGroup {
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateAutoScalingGroupResult');
 }
 class AWS::AutoScaling::CreateLaunchConfiguration {
+  has AssociatePublicIpAddress => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[AWS::AutoScaling::BlockDeviceMapping]');
   has EbsOptimized => (is => 'ro', isa => 'Str');
   has IamInstanceProfile => (is => 'ro', isa => 'Str');

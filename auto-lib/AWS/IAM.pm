@@ -629,7 +629,7 @@ class AWS::IAM::UpdateGroup {
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateGroupResult');
 }
 class AWS::IAM::UpdateLoginProfile {
-  has Password => (is => 'ro', isa => 'Str');
+  has Password => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateLoginProfile');
