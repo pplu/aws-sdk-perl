@@ -162,7 +162,8 @@ role Net::AWS::QueryCaller {
           } else {
             my $i = 1;
             foreach my $value (@{ $params->$att }){
-              $p{ sprintf("%s.member.%d", $att, $i) } = $value->_to_params($att);
+              my $complex_value = $value->_to_params($att);
+              map { $p{ sprintf("%s.member.%d.%s", $att, $i, $_) } = $complex_value->{$_} } keys %$complex_value;
               $i++
             }
           }

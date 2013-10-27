@@ -1,6 +1,6 @@
 use MooseX::Declare;
 use AWS::API;
-class AWS::ElasticBeanstalk::ApplicationDescription with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::ApplicationDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ApplicationName => (is => 'ro', isa => 'Str');
   has ConfigurationTemplates => (is => 'ro', isa => 'ArrayRef[Str]');
   has DateCreated => (is => 'ro', isa => 'Str');
@@ -9,7 +9,7 @@ class AWS::ElasticBeanstalk::ApplicationDescription with AWS::API::ResultParser 
   has Versions => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
-class AWS::ElasticBeanstalk::ApplicationVersionDescription with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::ApplicationVersionDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ApplicationName => (is => 'ro', isa => 'Str');
   has DateCreated => (is => 'ro', isa => 'Str');
   has DateUpdated => (is => 'ro', isa => 'Str');
@@ -18,11 +18,11 @@ class AWS::ElasticBeanstalk::ApplicationVersionDescription with AWS::API::Result
   has VersionLabel => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::AutoScalingGroup with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::AutoScalingGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Name => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::ConfigurationOptionDescription with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::ConfigurationOptionDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ChangeSeverity => (is => 'ro', isa => 'Str');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has MaxLength => (is => 'ro', isa => 'Int');
@@ -36,13 +36,13 @@ class AWS::ElasticBeanstalk::ConfigurationOptionDescription with AWS::API::Resul
   has ValueType => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::ConfigurationOptionSetting with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::ConfigurationOptionSetting with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Namespace => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::ConfigurationSettingsDescription with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::ConfigurationSettingsDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ApplicationName => (is => 'ro', isa => 'Str');
   has DateCreated => (is => 'ro', isa => 'Str');
   has DateUpdated => (is => 'ro', isa => 'Str');
@@ -54,7 +54,7 @@ class AWS::ElasticBeanstalk::ConfigurationSettingsDescription with AWS::API::Res
   has TemplateName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::EnvironmentDescription with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::EnvironmentDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ApplicationName => (is => 'ro', isa => 'Str');
   has CNAME => (is => 'ro', isa => 'Str');
   has DateCreated => (is => 'ro', isa => 'Str');
@@ -71,14 +71,14 @@ class AWS::ElasticBeanstalk::EnvironmentDescription with AWS::API::ResultParser 
   has VersionLabel => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::EnvironmentInfoDescription with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::EnvironmentInfoDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
   has InfoType => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has SampleTimestamp => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::EnvironmentResourceDescription with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::EnvironmentResourceDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::AutoScalingGroup]');
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has Instances => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::Instance]');
@@ -87,11 +87,11 @@ class AWS::ElasticBeanstalk::EnvironmentResourceDescription with AWS::API::Resul
   has Triggers => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::Trigger]');
 }
 
-class AWS::ElasticBeanstalk::EnvironmentResourcesDescription with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::EnvironmentResourcesDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has LoadBalancer => (is => 'ro', isa => 'AWS::ElasticBeanstalk::LoadBalancerDescription');
 }
 
-class AWS::ElasticBeanstalk::EventDescription with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::EventDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ApplicationName => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has EventDate => (is => 'ro', isa => 'Str');
@@ -102,54 +102,54 @@ class AWS::ElasticBeanstalk::EventDescription with AWS::API::ResultParser {
   has VersionLabel => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::Instance with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::Instance with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Id => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::LaunchConfiguration with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::LaunchConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Name => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::LoadBalancer with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::LoadBalancer with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Name => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::LoadBalancerDescription with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::LoadBalancerDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Domain => (is => 'ro', isa => 'Str');
   has Listeners => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::Listener]');
   has LoadBalancerName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::OptionRestrictionRegex with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::OptionRestrictionRegex with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Label => (is => 'ro', isa => 'Str');
   has Pattern => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::OptionSpecification with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::OptionSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Namespace => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::S3Location with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::S3Location with (AWS::API::ResultParser, AWS::API::ToParams) {
   has S3Bucket => (is => 'ro', isa => 'Str');
   has S3Key => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::SolutionStackDescription with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::SolutionStackDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has PermittedFileTypes => (is => 'ro', isa => 'ArrayRef[Str]');
   has SolutionStackName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::SourceConfiguration with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::SourceConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ApplicationName => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::Trigger with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::Trigger with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Name => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElasticBeanstalk::ValidationMessage with AWS::API::ResultParser {
+class AWS::ElasticBeanstalk::ValidationMessage with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Message => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');

@@ -1,6 +1,6 @@
 use MooseX::Declare;
 use AWS::API;
-class AWS::ElastiCache::CacheCluster with AWS::API::ResultParser {
+class AWS::ElastiCache::CacheCluster with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str');
@@ -23,7 +23,7 @@ class AWS::ElastiCache::CacheCluster with AWS::API::ResultParser {
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[AWS::ElastiCache::SecurityGroupMembership]');
 }
 
-class AWS::ElastiCache::CacheEngineVersion with AWS::API::ResultParser {
+class AWS::ElastiCache::CacheEngineVersion with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CacheEngineDescription => (is => 'ro', isa => 'Str');
   has CacheEngineVersionDescription => (is => 'ro', isa => 'Str');
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
@@ -31,7 +31,7 @@ class AWS::ElastiCache::CacheEngineVersion with AWS::API::ResultParser {
   has EngineVersion => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::CacheNode with AWS::API::ResultParser {
+class AWS::ElastiCache::CacheNode with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CacheNodeCreateTime => (is => 'ro', isa => 'Str');
   has CacheNodeId => (is => 'ro', isa => 'Str');
   has CacheNodeStatus => (is => 'ro', isa => 'Str');
@@ -40,7 +40,7 @@ class AWS::ElastiCache::CacheNode with AWS::API::ResultParser {
   has SourceCacheNodeId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::CacheNodeTypeSpecificParameter with AWS::API::ResultParser {
+class AWS::ElastiCache::CacheNodeTypeSpecificParameter with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllowedValues => (is => 'ro', isa => 'Str');
   has CacheNodeTypeSpecificValues => (is => 'ro', isa => 'ArrayRef[AWS::ElastiCache::CacheNodeTypeSpecificValue]');
   has DataType => (is => 'ro', isa => 'Str');
@@ -51,80 +51,80 @@ class AWS::ElastiCache::CacheNodeTypeSpecificParameter with AWS::API::ResultPars
   has Source => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::CacheNodeTypeSpecificValue with AWS::API::ResultParser {
+class AWS::ElastiCache::CacheNodeTypeSpecificValue with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::CacheParameterGroup with AWS::API::ResultParser {
+class AWS::ElastiCache::CacheParameterGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::CacheParameterGroupStatus with AWS::API::ResultParser {
+class AWS::ElastiCache::CacheParameterGroupStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CacheNodeIdsToReboot => (is => 'ro', isa => 'ArrayRef[Str]');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has ParameterApplyStatus => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::CacheSecurityGroup with AWS::API::ResultParser {
+class AWS::ElastiCache::CacheSecurityGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CacheSecurityGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[AWS::ElastiCache::EC2SecurityGroup]');
   has OwnerId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::CacheSecurityGroupMembership with AWS::API::ResultParser {
+class AWS::ElastiCache::CacheSecurityGroupMembership with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CacheSecurityGroupName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::CacheSubnetGroup with AWS::API::ResultParser {
+class AWS::ElastiCache::CacheSubnetGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CacheSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Subnets => (is => 'ro', isa => 'ArrayRef[AWS::ElastiCache::Subnet]');
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::EC2SecurityGroup with AWS::API::ResultParser {
+class AWS::ElastiCache::EC2SecurityGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::Endpoint with AWS::API::ResultParser {
+class AWS::ElastiCache::Endpoint with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Address => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
 }
 
-class AWS::ElastiCache::EngineDefaults with AWS::API::ResultParser {
+class AWS::ElastiCache::EngineDefaults with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CacheNodeTypeSpecificParameters => (is => 'ro', isa => 'ArrayRef[AWS::ElastiCache::CacheNodeTypeSpecificParameter]');
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[AWS::ElastiCache::Parameter]');
 }
 
-class AWS::ElastiCache::Event with AWS::API::ResultParser {
+class AWS::ElastiCache::Event with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Date => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::NodeGroup with AWS::API::ResultParser {
+class AWS::ElastiCache::NodeGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has NodeGroupId => (is => 'ro', isa => 'Str');
   has NodeGroupMembers => (is => 'ro', isa => 'ArrayRef[AWS::ElastiCache::NodeGroupMember]');
   has PrimaryEndpoint => (is => 'ro', isa => 'AWS::ElastiCache::Endpoint');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::NotificationConfiguration with AWS::API::ResultParser {
+class AWS::ElastiCache::NotificationConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
   has TopicArn => (is => 'ro', isa => 'Str');
   has TopicStatus => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::Parameter with AWS::API::ResultParser {
+class AWS::ElastiCache::Parameter with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllowedValues => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -135,23 +135,23 @@ class AWS::ElastiCache::Parameter with AWS::API::ResultParser {
   has Source => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::ParameterNameValue with AWS::API::ResultParser {
+class AWS::ElastiCache::ParameterNameValue with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ParameterName => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::PendingModifiedValues with AWS::API::ResultParser {
+class AWS::ElastiCache::PendingModifiedValues with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has NumCacheNodes => (is => 'ro', isa => 'Int');
 }
 
-class AWS::ElastiCache::RecurringCharge with AWS::API::ResultParser {
-  has RecurringChargeAmount => (is => 'ro', isa => 'Int');
+class AWS::ElastiCache::RecurringCharge with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has RecurringChargeAmount => (is => 'ro', isa => 'Num');
   has RecurringChargeFrequency => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::ReplicationGroup with AWS::API::ResultParser {
+class AWS::ElastiCache::ReplicationGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has MemberClusters => (is => 'ro', isa => 'ArrayRef[Str]');
   has NodeGroups => (is => 'ro', isa => 'ArrayRef[AWS::ElastiCache::NodeGroup]');
@@ -160,15 +160,15 @@ class AWS::ElastiCache::ReplicationGroup with AWS::API::ResultParser {
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::ReplicationGroupPendingModifiedValues with AWS::API::ResultParser {
+class AWS::ElastiCache::ReplicationGroupPendingModifiedValues with (AWS::API::ResultParser, AWS::API::ToParams) {
   has PrimaryClusterId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::ReservedCacheNode with AWS::API::ResultParser {
+class AWS::ElastiCache::ReservedCacheNode with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CacheNodeCount => (is => 'ro', isa => 'Int');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
-  has FixedPrice => (is => 'ro', isa => 'Int');
+  has FixedPrice => (is => 'ro', isa => 'Num');
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[AWS::ElastiCache::RecurringCharge]');
@@ -176,26 +176,26 @@ class AWS::ElastiCache::ReservedCacheNode with AWS::API::ResultParser {
   has ReservedCacheNodesOfferingId => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
-  has UsagePrice => (is => 'ro', isa => 'Int');
+  has UsagePrice => (is => 'ro', isa => 'Num');
 }
 
-class AWS::ElastiCache::ReservedCacheNodesOffering with AWS::API::ResultParser {
+class AWS::ElastiCache::ReservedCacheNodesOffering with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
-  has FixedPrice => (is => 'ro', isa => 'Int');
+  has FixedPrice => (is => 'ro', isa => 'Num');
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[AWS::ElastiCache::RecurringCharge]');
   has ReservedCacheNodesOfferingId => (is => 'ro', isa => 'Str');
-  has UsagePrice => (is => 'ro', isa => 'Int');
+  has UsagePrice => (is => 'ro', isa => 'Num');
 }
 
-class AWS::ElastiCache::SecurityGroupMembership with AWS::API::ResultParser {
+class AWS::ElastiCache::SecurityGroupMembership with (AWS::API::ResultParser, AWS::API::ToParams) {
   has SecurityGroupId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ElastiCache::Subnet with AWS::API::ResultParser {
+class AWS::ElastiCache::Subnet with (AWS::API::ResultParser, AWS::API::ToParams) {
   has SubnetAvailabilityZone => (is => 'ro', isa => 'AWS::ElastiCache::AvailabilityZone');
   has SubnetIdentifier => (is => 'ro', isa => 'Str');
 }

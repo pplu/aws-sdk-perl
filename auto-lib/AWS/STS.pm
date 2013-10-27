@@ -1,18 +1,18 @@
 use MooseX::Declare;
 use AWS::API;
-class AWS::STS::AssumedRoleUser with AWS::API::ResultParser {
+class AWS::STS::AssumedRoleUser with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has AssumedRoleId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::STS::Credentials with AWS::API::ResultParser {
+class AWS::STS::Credentials with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AccessKeyId => (is => 'ro', isa => 'Str', required => 1);
   has Expiration => (is => 'ro', isa => 'Str', required => 1);
   has SecretAccessKey => (is => 'ro', isa => 'Str', required => 1);
   has SessionToken => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::STS::FederatedUser with AWS::API::ResultParser {
+class AWS::STS::FederatedUser with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has FederatedUserId => (is => 'ro', isa => 'Str', required => 1);
 }

@@ -1,11 +1,11 @@
 use MooseX::Declare;
 use AWS::API;
-class AWS::ELB::BackendServerDescription with AWS::API::ResultParser {
+class AWS::ELB::BackendServerDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has InstancePort => (is => 'ro', isa => 'Int');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
-class AWS::ELB::HealthCheck with AWS::API::ResultParser {
+class AWS::ELB::HealthCheck with (AWS::API::ResultParser, AWS::API::ToParams) {
   has HealthyThreshold => (is => 'ro', isa => 'Int', required => 1);
   has Interval => (is => 'ro', isa => 'Int', required => 1);
   has Target => (is => 'ro', isa => 'Str', required => 1);
@@ -13,18 +13,18 @@ class AWS::ELB::HealthCheck with AWS::API::ResultParser {
   has UnhealthyThreshold => (is => 'ro', isa => 'Int', required => 1);
 }
 
-class AWS::ELB::Instance with AWS::API::ResultParser {
+class AWS::ELB::Instance with (AWS::API::ResultParser, AWS::API::ToParams) {
   has InstanceId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ELB::InstanceState with AWS::API::ResultParser {
+class AWS::ELB::InstanceState with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has ReasonCode => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ELB::Listener with AWS::API::ResultParser {
+class AWS::ELB::Listener with (AWS::API::ResultParser, AWS::API::ToParams) {
   has InstancePort => (is => 'ro', isa => 'Int', required => 1);
   has InstanceProtocol => (is => 'ro', isa => 'Str');
   has LoadBalancerPort => (is => 'ro', isa => 'Int', required => 1);
@@ -32,12 +32,12 @@ class AWS::ELB::Listener with AWS::API::ResultParser {
   has SSLCertificateId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ELB::ListenerDescription with AWS::API::ResultParser {
+class AWS::ELB::ListenerDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Listener => (is => 'ro', isa => 'AWS::ELB::Listener');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
-class AWS::ELB::LoadBalancerDescription with AWS::API::ResultParser {
+class AWS::ELB::LoadBalancerDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has BackendServerDescriptions => (is => 'ro', isa => 'ArrayRef[AWS::ELB::BackendServerDescription]');
   has CanonicalHostedZoneName => (is => 'ro', isa => 'Str');
@@ -56,23 +56,23 @@ class AWS::ELB::LoadBalancerDescription with AWS::API::ResultParser {
   has VPCId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ELB::Policies with AWS::API::ResultParser {
+class AWS::ELB::Policies with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AppCookieStickinessPolicies => (is => 'ro', isa => 'ArrayRef[AWS::ELB::AppCookieStickinessPolicy]');
   has LBCookieStickinessPolicies => (is => 'ro', isa => 'ArrayRef[AWS::ELB::LBCookieStickinessPolicy]');
   has OtherPolicies => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
-class AWS::ELB::PolicyAttribute with AWS::API::ResultParser {
+class AWS::ELB::PolicyAttribute with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttributeName => (is => 'ro', isa => 'Str');
   has AttributeValue => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ELB::PolicyAttributeDescription with AWS::API::ResultParser {
+class AWS::ELB::PolicyAttributeDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttributeName => (is => 'ro', isa => 'Str');
   has AttributeValue => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ELB::PolicyAttributeTypeDescription with AWS::API::ResultParser {
+class AWS::ELB::PolicyAttributeTypeDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttributeName => (is => 'ro', isa => 'Str');
   has AttributeType => (is => 'ro', isa => 'Str');
   has Cardinality => (is => 'ro', isa => 'Str');
@@ -80,19 +80,19 @@ class AWS::ELB::PolicyAttributeTypeDescription with AWS::API::ResultParser {
   has Description => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ELB::PolicyDescription with AWS::API::ResultParser {
+class AWS::ELB::PolicyDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has PolicyAttributeDescriptions => (is => 'ro', isa => 'ArrayRef[AWS::ELB::PolicyAttributeDescription]');
   has PolicyName => (is => 'ro', isa => 'Str');
   has PolicyTypeName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ELB::PolicyTypeDescription with AWS::API::ResultParser {
+class AWS::ELB::PolicyTypeDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has PolicyAttributeTypeDescriptions => (is => 'ro', isa => 'ArrayRef[AWS::ELB::PolicyAttributeTypeDescription]');
   has PolicyTypeName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::ELB::SourceSecurityGroup with AWS::API::ResultParser {
+class AWS::ELB::SourceSecurityGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has GroupName => (is => 'ro', isa => 'Str');
   has OwnerAlias => (is => 'ro', isa => 'Str');
 }

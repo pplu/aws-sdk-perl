@@ -142,7 +142,7 @@ class AWS::API::Builder::query {
         }
         $output .= "}\n\n";
       } else {
-        $output .= "class $inner_class with AWS::API::ResultParser {\n";
+        $output .= "class $inner_class with (AWS::API::ResultParser, AWS::API::ToParams) {\n";
         my $members = $self->inner_classes->{ $inner_class }->{members};
         foreach my $param_name (sort keys %$members){
           my $param_props = $members->{ $param_name };
@@ -199,7 +199,7 @@ class AWS::API::Builder::query {
       $type = 'Num';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'double') {
       #TODO: Check
-      $type = 'Int';
+      $type = 'Num';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'float') {
       #TODO: Check
       $type = 'Num';

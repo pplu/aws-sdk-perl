@@ -1,14 +1,14 @@
 use MooseX::Declare;
 use AWS::API;
-class AWS::RedShift::AccountWithRestoreAccess with AWS::API::ResultParser {
+class AWS::RedShift::AccountWithRestoreAccess with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AccountId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::AvailabilityZone with AWS::API::ResultParser {
+class AWS::RedShift::AvailabilityZone with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Name => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::Cluster with AWS::API::ResultParser {
+class AWS::RedShift::Cluster with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllowVersionUpgrade => (is => 'ro', isa => 'Str');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
@@ -34,30 +34,30 @@ class AWS::RedShift::Cluster with AWS::API::ResultParser {
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::VpcSecurityGroupMembership]');
 }
 
-class AWS::RedShift::ClusterParameterGroup with AWS::API::ResultParser {
+class AWS::RedShift::ClusterParameterGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has ParameterGroupFamily => (is => 'ro', isa => 'Str');
   has ParameterGroupName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::ClusterParameterGroupStatus with AWS::API::ResultParser {
+class AWS::RedShift::ClusterParameterGroupStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ParameterApplyStatus => (is => 'ro', isa => 'Str');
   has ParameterGroupName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::ClusterSecurityGroup with AWS::API::ResultParser {
+class AWS::RedShift::ClusterSecurityGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::EC2SecurityGroup]');
   has IPRanges => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::IPRange]');
 }
 
-class AWS::RedShift::ClusterSecurityGroupMembership with AWS::API::ResultParser {
+class AWS::RedShift::ClusterSecurityGroupMembership with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::ClusterSubnetGroup with AWS::API::ResultParser {
+class AWS::RedShift::ClusterSubnetGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has SubnetGroupStatus => (is => 'ro', isa => 'Str');
@@ -65,49 +65,49 @@ class AWS::RedShift::ClusterSubnetGroup with AWS::API::ResultParser {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::ClusterVersion with AWS::API::ResultParser {
+class AWS::RedShift::ClusterVersion with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ClusterParameterGroupFamily => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::DefaultClusterParameters with AWS::API::ResultParser {
+class AWS::RedShift::DefaultClusterParameters with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Marker => (is => 'ro', isa => 'Str');
   has ParameterGroupFamily => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::Parameter]');
 }
 
-class AWS::RedShift::EC2SecurityGroup with AWS::API::ResultParser {
+class AWS::RedShift::EC2SecurityGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::Endpoint with AWS::API::ResultParser {
+class AWS::RedShift::Endpoint with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Address => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
 }
 
-class AWS::RedShift::Event with AWS::API::ResultParser {
+class AWS::RedShift::Event with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Date => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::IPRange with AWS::API::ResultParser {
+class AWS::RedShift::IPRange with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CIDRIP => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::OrderableClusterOption with AWS::API::ResultParser {
+class AWS::RedShift::OrderableClusterOption with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::AvailabilityZone]');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::Parameter with AWS::API::ResultParser {
+class AWS::RedShift::Parameter with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllowedValues => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -118,7 +118,7 @@ class AWS::RedShift::Parameter with AWS::API::ResultParser {
   has Source => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::PendingModifiedValues with AWS::API::ResultParser {
+class AWS::RedShift::PendingModifiedValues with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
@@ -127,15 +127,15 @@ class AWS::RedShift::PendingModifiedValues with AWS::API::ResultParser {
   has NumberOfNodes => (is => 'ro', isa => 'Int');
 }
 
-class AWS::RedShift::RecurringCharge with AWS::API::ResultParser {
-  has RecurringChargeAmount => (is => 'ro', isa => 'Int');
+class AWS::RedShift::RecurringCharge with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has RecurringChargeAmount => (is => 'ro', isa => 'Num');
   has RecurringChargeFrequency => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::ReservedNode with AWS::API::ResultParser {
+class AWS::RedShift::ReservedNode with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
-  has FixedPrice => (is => 'ro', isa => 'Int');
+  has FixedPrice => (is => 'ro', isa => 'Num');
   has NodeCount => (is => 'ro', isa => 'Int');
   has NodeType => (is => 'ro', isa => 'Str');
   has OfferingType => (is => 'ro', isa => 'Str');
@@ -144,22 +144,22 @@ class AWS::RedShift::ReservedNode with AWS::API::ResultParser {
   has ReservedNodeOfferingId => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
-  has UsagePrice => (is => 'ro', isa => 'Int');
+  has UsagePrice => (is => 'ro', isa => 'Num');
 }
 
-class AWS::RedShift::ReservedNodeOffering with AWS::API::ResultParser {
+class AWS::RedShift::ReservedNodeOffering with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
-  has FixedPrice => (is => 'ro', isa => 'Int');
+  has FixedPrice => (is => 'ro', isa => 'Num');
   has NodeType => (is => 'ro', isa => 'Str');
   has OfferingType => (is => 'ro', isa => 'Str');
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::RecurringCharge]');
   has ReservedNodeOfferingId => (is => 'ro', isa => 'Str');
-  has UsagePrice => (is => 'ro', isa => 'Int');
+  has UsagePrice => (is => 'ro', isa => 'Num');
 }
 
-class AWS::RedShift::RestoreStatus with AWS::API::ResultParser {
-  has CurrentRestoreRateInMegaBytesPerSecond => (is => 'ro', isa => 'Int');
+class AWS::RedShift::RestoreStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has CurrentRestoreRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
   has ElapsedTimeInSeconds => (is => 'ro', isa => 'Num');
   has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => 'Num');
   has ProgressInMegaBytes => (is => 'ro', isa => 'Num');
@@ -167,15 +167,15 @@ class AWS::RedShift::RestoreStatus with AWS::API::ResultParser {
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::Snapshot with AWS::API::ResultParser {
+class AWS::RedShift::Snapshot with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AccountsWithRestoreAccess => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::AccountWithRestoreAccess]');
-  has ActualIncrementalBackupSizeInMegaBytes => (is => 'ro', isa => 'Int');
+  has ActualIncrementalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has BackupProgressInMegaBytes => (is => 'ro', isa => 'Int');
+  has BackupProgressInMegaBytes => (is => 'ro', isa => 'Num');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
-  has CurrentBackupRateInMegaBytesPerSecond => (is => 'ro', isa => 'Int');
+  has CurrentBackupRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
   has DBName => (is => 'ro', isa => 'Str');
   has ElapsedTimeInSeconds => (is => 'ro', isa => 'Num');
   has Encrypted => (is => 'ro', isa => 'Str');
@@ -189,17 +189,17 @@ class AWS::RedShift::Snapshot with AWS::API::ResultParser {
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
-  has TotalBackupSizeInMegaBytes => (is => 'ro', isa => 'Int');
+  has TotalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::Subnet with AWS::API::ResultParser {
+class AWS::RedShift::Subnet with (AWS::API::ResultParser, AWS::API::ToParams) {
   has SubnetAvailabilityZone => (is => 'ro', isa => 'AWS::RedShift::AvailabilityZone');
   has SubnetIdentifier => (is => 'ro', isa => 'Str');
   has SubnetStatus => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RedShift::VpcSecurityGroupMembership with AWS::API::ResultParser {
+class AWS::RedShift::VpcSecurityGroupMembership with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Status => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupId => (is => 'ro', isa => 'Str');
 }

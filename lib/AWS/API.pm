@@ -83,6 +83,17 @@ role AWS::API::MapParser {
   }
 }
 
+role AWS::API::ToParams {
+  sub _to_params {
+    my ($self) = @_;
+    my $params = {};
+    foreach my $att ($self->meta->get_attribute_list) {
+      $params->{$att} = $self->$att();
+    }
+    return $params;
+  }
+}
+
 role AWS::API::ResultParser {
   sub result_to_args {
     my ($class, $result) = @_;

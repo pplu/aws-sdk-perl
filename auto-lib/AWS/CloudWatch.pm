@@ -1,6 +1,6 @@
 use MooseX::Declare;
 use AWS::API;
-class AWS::CloudWatch::AlarmHistoryItem with AWS::API::ResultParser {
+class AWS::CloudWatch::AlarmHistoryItem with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AlarmName => (is => 'ro', isa => 'Str');
   has HistoryData => (is => 'ro', isa => 'Str');
   has HistoryItemType => (is => 'ro', isa => 'Str');
@@ -8,33 +8,33 @@ class AWS::CloudWatch::AlarmHistoryItem with AWS::API::ResultParser {
   has Timestamp => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudWatch::Datapoint with AWS::API::ResultParser {
-  has Average => (is => 'ro', isa => 'Int');
-  has Maximum => (is => 'ro', isa => 'Int');
-  has Minimum => (is => 'ro', isa => 'Int');
-  has SampleCount => (is => 'ro', isa => 'Int');
-  has Sum => (is => 'ro', isa => 'Int');
+class AWS::CloudWatch::Datapoint with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Average => (is => 'ro', isa => 'Num');
+  has Maximum => (is => 'ro', isa => 'Num');
+  has Minimum => (is => 'ro', isa => 'Num');
+  has SampleCount => (is => 'ro', isa => 'Num');
+  has Sum => (is => 'ro', isa => 'Num');
   has Timestamp => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudWatch::Dimension with AWS::API::ResultParser {
+class AWS::CloudWatch::Dimension with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::CloudWatch::DimensionFilter with AWS::API::ResultParser {
+class AWS::CloudWatch::DimensionFilter with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudWatch::Metric with AWS::API::ResultParser {
+class AWS::CloudWatch::Metric with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Dimensions => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::Dimension]');
   has MetricName => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudWatch::MetricAlarm with AWS::API::ResultParser {
+class AWS::CloudWatch::MetricAlarm with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ActionsEnabled => (is => 'ro', isa => 'Str');
   has AlarmActions => (is => 'ro', isa => 'ArrayRef[Str]');
   has AlarmArn => (is => 'ro', isa => 'Str');
@@ -54,24 +54,24 @@ class AWS::CloudWatch::MetricAlarm with AWS::API::ResultParser {
   has StateUpdatedTimestamp => (is => 'ro', isa => 'Str');
   has StateValue => (is => 'ro', isa => 'Str');
   has Statistic => (is => 'ro', isa => 'Str');
-  has Threshold => (is => 'ro', isa => 'Int');
+  has Threshold => (is => 'ro', isa => 'Num');
   has Unit => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudWatch::MetricDatum with AWS::API::ResultParser {
+class AWS::CloudWatch::MetricDatum with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Dimensions => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::Dimension]');
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has StatisticValues => (is => 'ro', isa => 'AWS::CloudWatch::StatisticSet');
   has Timestamp => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Int');
+  has Value => (is => 'ro', isa => 'Num');
 }
 
-class AWS::CloudWatch::StatisticSet with AWS::API::ResultParser {
-  has Maximum => (is => 'ro', isa => 'Int', required => 1);
-  has Minimum => (is => 'ro', isa => 'Int', required => 1);
-  has SampleCount => (is => 'ro', isa => 'Int', required => 1);
-  has Sum => (is => 'ro', isa => 'Int', required => 1);
+class AWS::CloudWatch::StatisticSet with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Maximum => (is => 'ro', isa => 'Num', required => 1);
+  has Minimum => (is => 'ro', isa => 'Num', required => 1);
+  has SampleCount => (is => 'ro', isa => 'Num', required => 1);
+  has Sum => (is => 'ro', isa => 'Num', required => 1);
 }
 
 class AWS::CloudWatch::DeleteAlarms {
@@ -169,7 +169,7 @@ class AWS::CloudWatch::PutMetricAlarm {
   has OKActions => (is => 'ro', isa => 'ArrayRef[Str]');
   has Period => (is => 'ro', isa => 'Int', required => 1);
   has Statistic => (is => 'ro', isa => 'Str', required => 1);
-  has Threshold => (is => 'ro', isa => 'Int', required => 1);
+  has Threshold => (is => 'ro', isa => 'Num', required => 1);
   has Unit => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'PutMetricAlarm');

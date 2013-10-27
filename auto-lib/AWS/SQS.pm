@@ -15,33 +15,33 @@ class AWS::SQS::AttributeMap with AWS::API::MapParser {
   has VisibilityTimeout => (is => 'ro', isa => 'Str');
 }
 
-class AWS::SQS::BatchResultErrorEntry with AWS::API::ResultParser {
+class AWS::SQS::BatchResultErrorEntry with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Code => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Message => (is => 'ro', isa => 'Str');
   has SenderFault => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::SQS::ChangeMessageVisibilityBatchRequestEntry with AWS::API::ResultParser {
+class AWS::SQS::ChangeMessageVisibilityBatchRequestEntry with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has ReceiptHandle => (is => 'ro', isa => 'Str', required => 1);
   has VisibilityTimeout => (is => 'ro', isa => 'Int');
 }
 
-class AWS::SQS::ChangeMessageVisibilityBatchResultEntry with AWS::API::ResultParser {
+class AWS::SQS::ChangeMessageVisibilityBatchResultEntry with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Id => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::SQS::DeleteMessageBatchRequestEntry with AWS::API::ResultParser {
+class AWS::SQS::DeleteMessageBatchRequestEntry with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has ReceiptHandle => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::SQS::DeleteMessageBatchResultEntry with AWS::API::ResultParser {
+class AWS::SQS::DeleteMessageBatchResultEntry with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Id => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::SQS::Message with AWS::API::ResultParser {
+class AWS::SQS::Message with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Attributes => (is => 'ro', isa => 'AWS::SQS::AttributeMap');
   has Body => (is => 'ro', isa => 'Str');
   has MD5OfBody => (is => 'ro', isa => 'Str');
@@ -49,13 +49,13 @@ class AWS::SQS::Message with AWS::API::ResultParser {
   has ReceiptHandle => (is => 'ro', isa => 'Str');
 }
 
-class AWS::SQS::SendMessageBatchRequestEntry with AWS::API::ResultParser {
+class AWS::SQS::SendMessageBatchRequestEntry with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DelaySeconds => (is => 'ro', isa => 'Int');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has MessageBody => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::SQS::SendMessageBatchResultEntry with AWS::API::ResultParser {
+class AWS::SQS::SendMessageBatchResultEntry with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has MD5OfMessageBody => (is => 'ro', isa => 'Str', required => 1);
   has MessageId => (is => 'ro', isa => 'Str', required => 1);

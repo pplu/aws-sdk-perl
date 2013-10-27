@@ -1,17 +1,17 @@
 use MooseX::Declare;
 use AWS::API;
-class AWS::CloudFormation::Output with AWS::API::ResultParser {
+class AWS::CloudFormation::Output with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has OutputKey => (is => 'ro', isa => 'Str');
   has OutputValue => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudFormation::Parameter with AWS::API::ResultParser {
+class AWS::CloudFormation::Parameter with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ParameterKey => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudFormation::Stack with AWS::API::ResultParser {
+class AWS::CloudFormation::Stack with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
@@ -28,7 +28,7 @@ class AWS::CloudFormation::Stack with AWS::API::ResultParser {
   has TimeoutInMinutes => (is => 'ro', isa => 'Int');
 }
 
-class AWS::CloudFormation::StackEvent with AWS::API::ResultParser {
+class AWS::CloudFormation::StackEvent with (AWS::API::ResultParser, AWS::API::ToParams) {
   has EventId => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str');
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
@@ -41,7 +41,7 @@ class AWS::CloudFormation::StackEvent with AWS::API::ResultParser {
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::CloudFormation::StackResource with AWS::API::ResultParser {
+class AWS::CloudFormation::StackResource with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
@@ -53,7 +53,7 @@ class AWS::CloudFormation::StackResource with AWS::API::ResultParser {
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::CloudFormation::StackResourceDetail with AWS::API::ResultParser {
+class AWS::CloudFormation::StackResourceDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
@@ -66,7 +66,7 @@ class AWS::CloudFormation::StackResourceDetail with AWS::API::ResultParser {
   has StackName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudFormation::StackResourceSummary with AWS::API::ResultParser {
+class AWS::CloudFormation::StackResourceSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
   has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
@@ -75,7 +75,7 @@ class AWS::CloudFormation::StackResourceSummary with AWS::API::ResultParser {
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::CloudFormation::StackSummary with AWS::API::ResultParser {
+class AWS::CloudFormation::StackSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has DeletionTime => (is => 'ro', isa => 'Str');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
@@ -86,12 +86,12 @@ class AWS::CloudFormation::StackSummary with AWS::API::ResultParser {
   has TemplateDescription => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudFormation::Tag with AWS::API::ResultParser {
+class AWS::CloudFormation::Tag with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Key => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudFormation::TemplateParameter with AWS::API::ResultParser {
+class AWS::CloudFormation::TemplateParameter with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DefaultValue => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has NoEcho => (is => 'ro', isa => 'Str');

@@ -1,16 +1,16 @@
 use MooseX::Declare;
 use AWS::API;
-class AWS::CloudSearch::AccessPoliciesStatus with AWS::API::ResultParser {
+class AWS::CloudSearch::AccessPoliciesStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Options => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'AWS::CloudSearch::OptionStatus', required => 1);
 }
 
-class AWS::CloudSearch::DefaultSearchFieldStatus with AWS::API::ResultParser {
+class AWS::CloudSearch::DefaultSearchFieldStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Options => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'AWS::CloudSearch::OptionStatus', required => 1);
 }
 
-class AWS::CloudSearch::DomainStatus with AWS::API::ResultParser {
+class AWS::CloudSearch::DomainStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Created => (is => 'ro', isa => 'Str');
   has Deleted => (is => 'ro', isa => 'Str');
   has DocService => (is => 'ro', isa => 'AWS::CloudSearch::ServiceEndpoint');
@@ -25,7 +25,7 @@ class AWS::CloudSearch::DomainStatus with AWS::API::ResultParser {
   has SearchService => (is => 'ro', isa => 'AWS::CloudSearch::ServiceEndpoint');
 }
 
-class AWS::CloudSearch::IndexField with AWS::API::ResultParser {
+class AWS::CloudSearch::IndexField with (AWS::API::ResultParser, AWS::API::ToParams) {
   has IndexFieldName => (is => 'ro', isa => 'Str', required => 1);
   has IndexFieldType => (is => 'ro', isa => 'Str', required => 1);
   has LiteralOptions => (is => 'ro', isa => 'AWS::CloudSearch::LiteralOptions');
@@ -34,24 +34,24 @@ class AWS::CloudSearch::IndexField with AWS::API::ResultParser {
   has UIntOptions => (is => 'ro', isa => 'AWS::CloudSearch::UIntOptions');
 }
 
-class AWS::CloudSearch::IndexFieldStatus with AWS::API::ResultParser {
+class AWS::CloudSearch::IndexFieldStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Options => (is => 'ro', isa => 'AWS::CloudSearch::IndexField', required => 1);
   has Status => (is => 'ro', isa => 'AWS::CloudSearch::OptionStatus', required => 1);
 }
 
-class AWS::CloudSearch::LiteralOptions with AWS::API::ResultParser {
+class AWS::CloudSearch::LiteralOptions with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DefaultValue => (is => 'ro', isa => 'Str');
   has FacetEnabled => (is => 'ro', isa => 'Str');
   has ResultEnabled => (is => 'ro', isa => 'Str');
   has SearchEnabled => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudSearch::NamedRankExpression with AWS::API::ResultParser {
+class AWS::CloudSearch::NamedRankExpression with (AWS::API::ResultParser, AWS::API::ToParams) {
   has RankExpression => (is => 'ro', isa => 'Str', required => 1);
   has RankName => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::CloudSearch::OptionStatus with AWS::API::ResultParser {
+class AWS::CloudSearch::OptionStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CreationDate => (is => 'ro', isa => 'Str', required => 1);
   has PendingDeletion => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str', required => 1);
@@ -59,46 +59,46 @@ class AWS::CloudSearch::OptionStatus with AWS::API::ResultParser {
   has UpdateVersion => (is => 'ro', isa => 'Int');
 }
 
-class AWS::CloudSearch::RankExpressionStatus with AWS::API::ResultParser {
+class AWS::CloudSearch::RankExpressionStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Options => (is => 'ro', isa => 'AWS::CloudSearch::NamedRankExpression', required => 1);
   has Status => (is => 'ro', isa => 'AWS::CloudSearch::OptionStatus', required => 1);
 }
 
-class AWS::CloudSearch::ServiceEndpoint with AWS::API::ResultParser {
+class AWS::CloudSearch::ServiceEndpoint with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Arn => (is => 'ro', isa => 'Str');
   has Endpoint => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudSearch::SourceAttribute with AWS::API::ResultParser {
+class AWS::CloudSearch::SourceAttribute with (AWS::API::ResultParser, AWS::API::ToParams) {
   has SourceDataCopy => (is => 'ro', isa => 'AWS::CloudSearch::SourceData');
   has SourceDataFunction => (is => 'ro', isa => 'Str', required => 1);
   has SourceDataMap => (is => 'ro', isa => 'AWS::CloudSearch::SourceDataMap');
   has SourceDataTrimTitle => (is => 'ro', isa => 'AWS::CloudSearch::SourceDataTrimTitle');
 }
 
-class AWS::CloudSearch::StemmingOptionsStatus with AWS::API::ResultParser {
+class AWS::CloudSearch::StemmingOptionsStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Options => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'AWS::CloudSearch::OptionStatus', required => 1);
 }
 
-class AWS::CloudSearch::StopwordOptionsStatus with AWS::API::ResultParser {
+class AWS::CloudSearch::StopwordOptionsStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Options => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'AWS::CloudSearch::OptionStatus', required => 1);
 }
 
-class AWS::CloudSearch::SynonymOptionsStatus with AWS::API::ResultParser {
+class AWS::CloudSearch::SynonymOptionsStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Options => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'AWS::CloudSearch::OptionStatus', required => 1);
 }
 
-class AWS::CloudSearch::TextOptions with AWS::API::ResultParser {
+class AWS::CloudSearch::TextOptions with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DefaultValue => (is => 'ro', isa => 'Str');
   has FacetEnabled => (is => 'ro', isa => 'Str');
   has ResultEnabled => (is => 'ro', isa => 'Str');
   has TextProcessor => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudSearch::UIntOptions with AWS::API::ResultParser {
+class AWS::CloudSearch::UIntOptions with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DefaultValue => (is => 'ro', isa => 'Int');
 }
 

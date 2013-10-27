@@ -1,16 +1,16 @@
 use MooseX::Declare;
 use AWS::API;
-class AWS::RDS::AvailabilityZone with AWS::API::ResultParser {
+class AWS::RDS::AvailabilityZone with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Name => (is => 'ro', isa => 'Str');
   has ProvisionedIopsCapable => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::CharacterSet with AWS::API::ResultParser {
+class AWS::RDS::CharacterSet with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CharacterSetDescription => (is => 'ro', isa => 'Str');
   has CharacterSetName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::DBEngineVersion with AWS::API::ResultParser {
+class AWS::RDS::DBEngineVersion with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DBEngineDescription => (is => 'ro', isa => 'Str');
   has DBEngineVersionDescription => (is => 'ro', isa => 'Str');
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
@@ -20,7 +20,7 @@ class AWS::RDS::DBEngineVersion with AWS::API::ResultParser {
   has SupportedCharacterSets => (is => 'ro', isa => 'ArrayRef[AWS::RDS::CharacterSet]');
 }
 
-class AWS::RDS::DBInstance with AWS::API::ResultParser {
+class AWS::RDS::DBInstance with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
@@ -54,25 +54,25 @@ class AWS::RDS::DBInstance with AWS::API::ResultParser {
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[AWS::RDS::VpcSecurityGroupMembership]');
 }
 
-class AWS::RDS::DBInstanceStatusInfo with AWS::API::ResultParser {
+class AWS::RDS::DBInstanceStatusInfo with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Message => (is => 'ro', isa => 'Str');
   has Normal => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusType => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::DBParameterGroup with AWS::API::ResultParser {
+class AWS::RDS::DBParameterGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::DBParameterGroupStatus with AWS::API::ResultParser {
+class AWS::RDS::DBParameterGroupStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has ParameterApplyStatus => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::DBSecurityGroup with AWS::API::ResultParser {
+class AWS::RDS::DBSecurityGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DBSecurityGroupDescription => (is => 'ro', isa => 'Str');
   has DBSecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[AWS::RDS::EC2SecurityGroup]');
@@ -81,12 +81,12 @@ class AWS::RDS::DBSecurityGroup with AWS::API::ResultParser {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::DBSecurityGroupMembership with AWS::API::ResultParser {
+class AWS::RDS::DBSecurityGroupMembership with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DBSecurityGroupName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::DBSnapshot with AWS::API::ResultParser {
+class AWS::RDS::DBSnapshot with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
@@ -105,7 +105,7 @@ class AWS::RDS::DBSnapshot with AWS::API::ResultParser {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::DBSubnetGroup with AWS::API::ResultParser {
+class AWS::RDS::DBSubnetGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DBSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has SubnetGroupStatus => (is => 'ro', isa => 'Str');
@@ -113,31 +113,31 @@ class AWS::RDS::DBSubnetGroup with AWS::API::ResultParser {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::DescribeDBLogFilesDetails with AWS::API::ResultParser {
+class AWS::RDS::DescribeDBLogFilesDetails with (AWS::API::ResultParser, AWS::API::ToParams) {
   has LastWritten => (is => 'ro', isa => 'Num');
   has LogFileName => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Num');
 }
 
-class AWS::RDS::EC2SecurityGroup with AWS::API::ResultParser {
+class AWS::RDS::EC2SecurityGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has EC2SecurityGroupId => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::Endpoint with AWS::API::ResultParser {
+class AWS::RDS::Endpoint with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Address => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
 }
 
-class AWS::RDS::EngineDefaults with AWS::API::ResultParser {
+class AWS::RDS::EngineDefaults with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Parameter]');
 }
 
-class AWS::RDS::Event with AWS::API::ResultParser {
+class AWS::RDS::Event with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Date => (is => 'ro', isa => 'Str');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has Message => (is => 'ro', isa => 'Str');
@@ -145,12 +145,12 @@ class AWS::RDS::Event with AWS::API::ResultParser {
   has SourceType => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::EventCategoriesMap with AWS::API::ResultParser {
+class AWS::RDS::EventCategoriesMap with (AWS::API::ResultParser, AWS::API::ToParams) {
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has SourceType => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::EventSubscription with AWS::API::ResultParser {
+class AWS::RDS::EventSubscription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has CustomerAwsId => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Str');
@@ -162,17 +162,17 @@ class AWS::RDS::EventSubscription with AWS::API::ResultParser {
   has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::Filter with AWS::API::ResultParser {
+class AWS::RDS::Filter with (AWS::API::ResultParser, AWS::API::ToParams) {
   has FilterName => (is => 'ro', isa => 'Str', required => 1);
   has FilterValue => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 }
 
-class AWS::RDS::IPRange with AWS::API::ResultParser {
+class AWS::RDS::IPRange with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CIDRIP => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::Option with AWS::API::ResultParser {
+class AWS::RDS::Option with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[AWS::RDS::DBSecurityGroupMembership]');
   has OptionDescription => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
@@ -183,7 +183,7 @@ class AWS::RDS::Option with AWS::API::ResultParser {
   has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[AWS::RDS::VpcSecurityGroupMembership]');
 }
 
-class AWS::RDS::OptionConfiguration with AWS::API::ResultParser {
+class AWS::RDS::OptionConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str]');
   has OptionName => (is => 'ro', isa => 'Str', required => 1);
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[AWS::RDS::OptionSetting]');
@@ -191,7 +191,7 @@ class AWS::RDS::OptionConfiguration with AWS::API::ResultParser {
   has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
-class AWS::RDS::OptionGroup with AWS::API::ResultParser {
+class AWS::RDS::OptionGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllowsVpcAndNonVpcInstanceMemberships => (is => 'ro', isa => 'Str');
   has EngineName => (is => 'ro', isa => 'Str');
   has MajorEngineVersion => (is => 'ro', isa => 'Str');
@@ -201,12 +201,12 @@ class AWS::RDS::OptionGroup with AWS::API::ResultParser {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::OptionGroupMembership with AWS::API::ResultParser {
+class AWS::RDS::OptionGroupMembership with (AWS::API::ResultParser, AWS::API::ToParams) {
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::OptionGroupOption with AWS::API::ResultParser {
+class AWS::RDS::OptionGroupOption with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DefaultPort => (is => 'ro', isa => 'Int');
   has Description => (is => 'ro', isa => 'Str');
   has EngineName => (is => 'ro', isa => 'Str');
@@ -220,7 +220,7 @@ class AWS::RDS::OptionGroupOption with AWS::API::ResultParser {
   has PortRequired => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::OptionGroupOptionSetting with AWS::API::ResultParser {
+class AWS::RDS::OptionGroupOptionSetting with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllowedValues => (is => 'ro', isa => 'Str');
   has ApplyType => (is => 'ro', isa => 'Str');
   has DefaultValue => (is => 'ro', isa => 'Str');
@@ -229,7 +229,7 @@ class AWS::RDS::OptionGroupOptionSetting with AWS::API::ResultParser {
   has SettingName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::OptionSetting with AWS::API::ResultParser {
+class AWS::RDS::OptionSetting with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllowedValues => (is => 'ro', isa => 'Str');
   has ApplyType => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
@@ -241,7 +241,7 @@ class AWS::RDS::OptionSetting with AWS::API::ResultParser {
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::OrderableDBInstanceOption with AWS::API::ResultParser {
+class AWS::RDS::OrderableDBInstanceOption with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[AWS::RDS::AvailabilityZone]');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
@@ -252,7 +252,7 @@ class AWS::RDS::OrderableDBInstanceOption with AWS::API::ResultParser {
   has Vpc => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::Parameter with AWS::API::ResultParser {
+class AWS::RDS::Parameter with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllowedValues => (is => 'ro', isa => 'Str');
   has ApplyMethod => (is => 'ro', isa => 'Str');
   has ApplyType => (is => 'ro', isa => 'Str');
@@ -265,7 +265,7 @@ class AWS::RDS::Parameter with AWS::API::ResultParser {
   has Source => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::PendingModifiedValues with AWS::API::ResultParser {
+class AWS::RDS::PendingModifiedValues with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
@@ -277,17 +277,17 @@ class AWS::RDS::PendingModifiedValues with AWS::API::ResultParser {
   has Port => (is => 'ro', isa => 'Int');
 }
 
-class AWS::RDS::RecurringCharge with AWS::API::ResultParser {
-  has RecurringChargeAmount => (is => 'ro', isa => 'Int');
+class AWS::RDS::RecurringCharge with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has RecurringChargeAmount => (is => 'ro', isa => 'Num');
   has RecurringChargeFrequency => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::ReservedDBInstance with AWS::API::ResultParser {
+class AWS::RDS::ReservedDBInstance with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceCount => (is => 'ro', isa => 'Int');
   has Duration => (is => 'ro', isa => 'Int');
-  has FixedPrice => (is => 'ro', isa => 'Int');
+  has FixedPrice => (is => 'ro', isa => 'Num');
   has MultiAZ => (is => 'ro', isa => 'Str');
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
@@ -296,34 +296,34 @@ class AWS::RDS::ReservedDBInstance with AWS::API::ResultParser {
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
-  has UsagePrice => (is => 'ro', isa => 'Int');
+  has UsagePrice => (is => 'ro', isa => 'Num');
 }
 
-class AWS::RDS::ReservedDBInstancesOffering with AWS::API::ResultParser {
+class AWS::RDS::ReservedDBInstancesOffering with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
-  has FixedPrice => (is => 'ro', isa => 'Int');
+  has FixedPrice => (is => 'ro', isa => 'Num');
   has MultiAZ => (is => 'ro', isa => 'Str');
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[AWS::RDS::RecurringCharge]');
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str');
-  has UsagePrice => (is => 'ro', isa => 'Int');
+  has UsagePrice => (is => 'ro', isa => 'Num');
 }
 
-class AWS::RDS::Subnet with AWS::API::ResultParser {
+class AWS::RDS::Subnet with (AWS::API::ResultParser, AWS::API::ToParams) {
   has SubnetAvailabilityZone => (is => 'ro', isa => 'AWS::RDS::AvailabilityZone');
   has SubnetIdentifier => (is => 'ro', isa => 'Str');
   has SubnetStatus => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::Tag with AWS::API::ResultParser {
+class AWS::RDS::Tag with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Key => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::VpcSecurityGroupMembership with AWS::API::ResultParser {
+class AWS::RDS::VpcSecurityGroupMembership with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Status => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupId => (is => 'ro', isa => 'Str');
 }

@@ -1,6 +1,6 @@
 use MooseX::Declare;
 use AWS::API;
-class AWS::ImportExport::Job with AWS::API::ResultParser {
+class AWS::ImportExport::Job with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CreationDate => (is => 'ro', isa => 'Str');
   has IsCanceled => (is => 'ro', isa => 'Str');
   has JobId => (is => 'ro', isa => 'Str');

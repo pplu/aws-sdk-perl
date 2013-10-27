@@ -1,6 +1,6 @@
 use MooseX::Declare;
 use AWS::API;
-class AWS::AutoScaling::Activity with AWS::API::ResultParser {
+class AWS::AutoScaling::Activity with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ActivityId => (is => 'ro', isa => 'Str', required => 1);
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Cause => (is => 'ro', isa => 'Str', required => 1);
@@ -13,16 +13,16 @@ class AWS::AutoScaling::Activity with AWS::API::ResultParser {
   has StatusMessage => (is => 'ro', isa => 'Str');
 }
 
-class AWS::AutoScaling::AdjustmentType with AWS::API::ResultParser {
+class AWS::AutoScaling::AdjustmentType with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AdjustmentType => (is => 'ro', isa => 'Str');
 }
 
-class AWS::AutoScaling::Alarm with AWS::API::ResultParser {
+class AWS::AutoScaling::Alarm with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AlarmARN => (is => 'ro', isa => 'Str');
   has AlarmName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::AutoScaling::AutoScalingGroup with AWS::API::ResultParser {
+class AWS::AutoScaling::AutoScalingGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AutoScalingGroupARN => (is => 'ro', isa => 'Str');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -45,7 +45,7 @@ class AWS::AutoScaling::AutoScalingGroup with AWS::API::ResultParser {
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
 }
 
-class AWS::AutoScaling::AutoScalingInstanceDetails with AWS::API::ResultParser {
+class AWS::AutoScaling::AutoScalingInstanceDetails with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
@@ -54,28 +54,28 @@ class AWS::AutoScaling::AutoScalingInstanceDetails with AWS::API::ResultParser {
   has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::AutoScaling::BlockDeviceMapping with AWS::API::ResultParser {
+class AWS::AutoScaling::BlockDeviceMapping with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DeviceName => (is => 'ro', isa => 'Str', required => 1);
   has Ebs => (is => 'ro', isa => 'AWS::AutoScaling::Ebs');
   has VirtualName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::AutoScaling::Ebs with AWS::API::ResultParser {
+class AWS::AutoScaling::Ebs with (AWS::API::ResultParser, AWS::API::ToParams) {
   has SnapshotId => (is => 'ro', isa => 'Str');
   has VolumeSize => (is => 'ro', isa => 'Int');
 }
 
-class AWS::AutoScaling::EnabledMetric with AWS::API::ResultParser {
+class AWS::AutoScaling::EnabledMetric with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Granularity => (is => 'ro', isa => 'Str');
   has Metric => (is => 'ro', isa => 'Str');
 }
 
-class AWS::AutoScaling::Filter with AWS::API::ResultParser {
+class AWS::AutoScaling::Filter with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Name => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
-class AWS::AutoScaling::Instance with AWS::API::ResultParser {
+class AWS::AutoScaling::Instance with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
@@ -83,11 +83,11 @@ class AWS::AutoScaling::Instance with AWS::API::ResultParser {
   has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::AutoScaling::InstanceMonitoring with AWS::API::ResultParser {
+class AWS::AutoScaling::InstanceMonitoring with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Enabled => (is => 'ro', isa => 'Str');
 }
 
-class AWS::AutoScaling::LaunchConfiguration with AWS::API::ResultParser {
+class AWS::AutoScaling::LaunchConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[AWS::AutoScaling::BlockDeviceMapping]');
   has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
@@ -106,25 +106,25 @@ class AWS::AutoScaling::LaunchConfiguration with AWS::API::ResultParser {
   has UserData => (is => 'ro', isa => 'Str');
 }
 
-class AWS::AutoScaling::MetricCollectionType with AWS::API::ResultParser {
+class AWS::AutoScaling::MetricCollectionType with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Metric => (is => 'ro', isa => 'Str');
 }
 
-class AWS::AutoScaling::MetricGranularityType with AWS::API::ResultParser {
+class AWS::AutoScaling::MetricGranularityType with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Granularity => (is => 'ro', isa => 'Str');
 }
 
-class AWS::AutoScaling::NotificationConfiguration with AWS::API::ResultParser {
+class AWS::AutoScaling::NotificationConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has NotificationType => (is => 'ro', isa => 'Str');
   has TopicARN => (is => 'ro', isa => 'Str');
 }
 
-class AWS::AutoScaling::ProcessType with AWS::API::ResultParser {
+class AWS::AutoScaling::ProcessType with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ProcessName => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::AutoScaling::ScalingPolicy with AWS::API::ResultParser {
+class AWS::AutoScaling::ScalingPolicy with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AdjustmentType => (is => 'ro', isa => 'Str');
   has Alarms => (is => 'ro', isa => 'ArrayRef[AWS::AutoScaling::Alarm]');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
@@ -135,7 +135,7 @@ class AWS::AutoScaling::ScalingPolicy with AWS::API::ResultParser {
   has ScalingAdjustment => (is => 'ro', isa => 'Int');
 }
 
-class AWS::AutoScaling::ScheduledUpdateGroupAction with AWS::API::ResultParser {
+class AWS::AutoScaling::ScheduledUpdateGroupAction with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has DesiredCapacity => (is => 'ro', isa => 'Int');
   has EndTime => (is => 'ro', isa => 'Str');
@@ -148,12 +148,12 @@ class AWS::AutoScaling::ScheduledUpdateGroupAction with AWS::API::ResultParser {
   has Time => (is => 'ro', isa => 'Str');
 }
 
-class AWS::AutoScaling::SuspendedProcess with AWS::API::ResultParser {
+class AWS::AutoScaling::SuspendedProcess with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ProcessName => (is => 'ro', isa => 'Str');
   has SuspensionReason => (is => 'ro', isa => 'Str');
 }
 
-class AWS::AutoScaling::Tag with AWS::API::ResultParser {
+class AWS::AutoScaling::Tag with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has PropagateAtLaunch => (is => 'ro', isa => 'Str');
   has ResourceId => (is => 'ro', isa => 'Str');
@@ -161,7 +161,7 @@ class AWS::AutoScaling::Tag with AWS::API::ResultParser {
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class AWS::AutoScaling::TagDescription with AWS::API::ResultParser {
+class AWS::AutoScaling::TagDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Key => (is => 'ro', isa => 'Str');
   has PropagateAtLaunch => (is => 'ro', isa => 'Str');
   has ResourceId => (is => 'ro', isa => 'Str');
