@@ -1,18 +1,39 @@
 use MooseX::Declare;
 use AWS::API;
-class AWS::EC2::AccountAttribute with AWS::API::ResultParser {
+use Moose::Util::TypeConstraints;
+
+enum 'AWS::EC2::SpotInstanceType', [qw(one-time persistent)];
+enum 'AWS::EC2::VolumeState', [qw(creating available in-use deleting error)];
+enum 'AWS::EC2::SnapshotState', [qw(pending completed error)];
+enum 'AWS::EC2::ContainerFormat', [qw(ova)];
+enum 'AWS::EC2::ImageState', [qw(available deregistered)];
+enum 'AWS::EC2::PlacementStrategy', [qw(cluster)];
+enum 'AWS::EC2::VolumeType', [qw(standard io1)];
+enum 'AWS::EC2::PlacementGroupState', [qw(pending available deleting deleted)];
+enum 'AWS::EC2::HypervisorType', [qw(ovm xen)];
+enum 'AWS::EC2::VirtualizationType', [qw(hvm paravirtual)];
+enum 'AWS::EC2::VolumeAttachmentState', [qw(attaching attached detaching detached)];
+enum 'AWS::EC2::ExportEnvironment', [qw(citrix vmware)];
+enum 'AWS::EC2::RuleAction', [qw(allow deny)];
+enum 'AWS::EC2::InstanceType', [qw(t1.micro m1.small m1.medium m1.large m1.xlarge m2.xlarge m2.2xlarge m2.4xlarge m3.xlarge m3.2xlarge c1.medium c1.xlarge hi1.4xlarge hs1.8xlarge cc1.4xlarge cc2.8xlarge cg1.4xlarge cr1.8xlarge)];
+enum 'AWS::EC2::DiskImageFormat', [qw(vmdk vhd)];
+enum 'AWS::EC2::DomainType', [qw(vpc standard)];
+enum 'AWS::EC2::ResourceType', [qw(customer-gateway dhcp-options image instance snapshot spot-instances-request subnet volume vpc vpn-connection vpn-gateway)];
+enum 'AWS::EC2::InstanceStateName', [qw(pending running shutting-down terminated stopping stopped)];
+
+class AWS::EC2::AccountAttribute with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttributeName => (is => 'ro', isa => 'Str');
   has AttributeValues => (is => 'ro', isa => 'ArrayRef[AWS::EC2::AccountAttributeValue]');
 }
 
-class AWS::EC2::AccountAttributeValue with AWS::API::ResultParser {
+class AWS::EC2::AccountAttributeValue with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttributeValue => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::Address with AWS::API::ResultParser {
+class AWS::EC2::Address with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllocationId => (is => 'ro', isa => 'Str');
   has AssociationId => (is => 'ro', isa => 'Str');
-  has Domain => (is => 'ro', isa => 'Str');
+  has Domain => (is => 'ro', isa => 'AWS::EC2::DomainType');
   has InstanceId => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
   has NetworkInterfaceOwnerId => (is => 'ro', isa => 'Str');
@@ -20,33 +41,33 @@ class AWS::EC2::Address with AWS::API::ResultParser {
   has PublicIp => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::AttributeBooleanValue with AWS::API::ResultParser {
+class AWS::EC2::AttributeBooleanValue with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::AttributeValue with AWS::API::ResultParser {
+class AWS::EC2::AttributeValue with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::AvailabilityZone with AWS::API::ResultParser {
+class AWS::EC2::AvailabilityZone with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Messages => (is => 'ro', isa => 'ArrayRef[AWS::EC2::AvailabilityZoneMessage]');
   has RegionName => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has ZoneName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::AvailabilityZoneMessage with AWS::API::ResultParser {
+class AWS::EC2::AvailabilityZoneMessage with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Message => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::BlockDeviceMapping with AWS::API::ResultParser {
+class AWS::EC2::BlockDeviceMapping with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DeviceName => (is => 'ro', isa => 'Str');
   has Ebs => (is => 'ro', isa => 'AWS::EC2::EbsBlockDevice');
   has NoDevice => (is => 'ro', isa => 'Str');
   has VirtualName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::BundleTask with AWS::API::ResultParser {
+class AWS::EC2::BundleTask with (AWS::API::ResultParser, AWS::API::ToParams) {
   has BundleId => (is => 'ro', isa => 'Str');
   has BundleTaskError => (is => 'ro', isa => 'AWS::EC2::BundleTaskError');
   has InstanceId => (is => 'ro', isa => 'Str');
@@ -57,17 +78,17 @@ class AWS::EC2::BundleTask with AWS::API::ResultParser {
   has UpdateTime => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::BundleTaskError with AWS::API::ResultParser {
+class AWS::EC2::BundleTaskError with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Code => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::CancelledSpotInstanceRequest with AWS::API::ResultParser {
+class AWS::EC2::CancelledSpotInstanceRequest with (AWS::API::ResultParser, AWS::API::ToParams) {
   has SpotInstanceRequestId => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::ConversionTask with AWS::API::ResultParser {
+class AWS::EC2::ConversionTask with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ConversionTaskId => (is => 'ro', isa => 'Str', required => 1);
   has ExpirationTime => (is => 'ro', isa => 'Str');
   has ImportInstance => (is => 'ro', isa => 'AWS::EC2::ImportInstanceTaskDetails');
@@ -77,17 +98,17 @@ class AWS::EC2::ConversionTask with AWS::API::ResultParser {
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
 }
 
-class AWS::EC2::CreateVolumePermission with AWS::API::ResultParser {
+class AWS::EC2::CreateVolumePermission with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Group => (is => 'ro', isa => 'Str');
   has UserId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::CreateVolumePermissionModifications with AWS::API::ResultParser {
+class AWS::EC2::CreateVolumePermissionModifications with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Add => (is => 'ro', isa => 'ArrayRef[AWS::EC2::CreateVolumePermission]');
   has Remove => (is => 'ro', isa => 'ArrayRef[AWS::EC2::CreateVolumePermission]');
 }
 
-class AWS::EC2::CustomerGateway with AWS::API::ResultParser {
+class AWS::EC2::CustomerGateway with (AWS::API::ResultParser, AWS::API::ToParams) {
   has BgpAsn => (is => 'ro', isa => 'Str');
   has CustomerGatewayId => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
@@ -96,50 +117,50 @@ class AWS::EC2::CustomerGateway with AWS::API::ResultParser {
   has Type => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::DhcpConfiguration with AWS::API::ResultParser {
+class AWS::EC2::DhcpConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Key => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
-class AWS::EC2::DhcpOptions with AWS::API::ResultParser {
+class AWS::EC2::DhcpOptions with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[AWS::EC2::DhcpConfiguration]');
   has DhcpOptionsId => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
 }
 
-class AWS::EC2::DiskImage with AWS::API::ResultParser {
+class AWS::EC2::DiskImage with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has Image => (is => 'ro', isa => 'AWS::EC2::DiskImageDetail');
   has Volume => (is => 'ro', isa => 'AWS::EC2::VolumeDetail');
 }
 
-class AWS::EC2::DiskImageDetail with AWS::API::ResultParser {
+class AWS::EC2::DiskImageDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Bytes => (is => 'ro', isa => 'Num', required => 1);
   has Format => (is => 'ro', isa => 'Str', required => 1);
   has ImportManifestUrl => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::EC2::EbsBlockDevice with AWS::API::ResultParser {
+class AWS::EC2::EbsBlockDevice with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DeleteOnTermination => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
   has VolumeSize => (is => 'ro', isa => 'Int');
-  has VolumeType => (is => 'ro', isa => 'Str');
+  has VolumeType => (is => 'ro', isa => 'AWS::EC2::VolumeType');
 }
 
-class AWS::EC2::EbsInstanceBlockDevice with AWS::API::ResultParser {
+class AWS::EC2::EbsInstanceBlockDevice with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttachTime => (is => 'ro', isa => 'Str');
   has DeleteOnTermination => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::EbsInstanceBlockDeviceSpecification with AWS::API::ResultParser {
+class AWS::EC2::EbsInstanceBlockDeviceSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DeleteOnTermination => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::ExportTask with AWS::API::ResultParser {
+class AWS::EC2::ExportTask with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has ExportTaskId => (is => 'ro', isa => 'Str');
   has ExportToS3Task => (is => 'ro', isa => 'AWS::EC2::ExportToS3Task');
@@ -148,50 +169,50 @@ class AWS::EC2::ExportTask with AWS::API::ResultParser {
   has StatusMessage => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::ExportToS3Task with AWS::API::ResultParser {
-  has ContainerFormat => (is => 'ro', isa => 'Str');
-  has DiskImageFormat => (is => 'ro', isa => 'Str');
+class AWS::EC2::ExportToS3Task with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has ContainerFormat => (is => 'ro', isa => 'AWS::EC2::ContainerFormat');
+  has DiskImageFormat => (is => 'ro', isa => 'AWS::EC2::DiskImageFormat');
   has S3Bucket => (is => 'ro', isa => 'Str');
   has S3Key => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::ExportToS3TaskSpecification with AWS::API::ResultParser {
-  has ContainerFormat => (is => 'ro', isa => 'Str');
-  has DiskImageFormat => (is => 'ro', isa => 'Str');
+class AWS::EC2::ExportToS3TaskSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has ContainerFormat => (is => 'ro', isa => 'AWS::EC2::ContainerFormat');
+  has DiskImageFormat => (is => 'ro', isa => 'AWS::EC2::DiskImageFormat');
   has S3Bucket => (is => 'ro', isa => 'Str');
   has S3Prefix => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::Filter with AWS::API::ResultParser {
+class AWS::EC2::Filter with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Name => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
-class AWS::EC2::GroupIdentifier with AWS::API::ResultParser {
+class AWS::EC2::GroupIdentifier with (AWS::API::ResultParser, AWS::API::ToParams) {
   has GroupId => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::IamInstanceProfile with AWS::API::ResultParser {
+class AWS::EC2::IamInstanceProfile with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Arn => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::IamInstanceProfileSpecification with AWS::API::ResultParser {
+class AWS::EC2::IamInstanceProfileSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Arn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::IcmpTypeCode with AWS::API::ResultParser {
+class AWS::EC2::IcmpTypeCode with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Code => (is => 'ro', isa => 'Int');
   has Type => (is => 'ro', isa => 'Int');
 }
 
-class AWS::EC2::Image with AWS::API::ResultParser {
+class AWS::EC2::Image with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Architecture => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[AWS::EC2::BlockDeviceMapping]');
   has Description => (is => 'ro', isa => 'Str');
-  has Hypervisor => (is => 'ro', isa => 'Str');
+  has Hypervisor => (is => 'ro', isa => 'AWS::EC2::HypervisorType');
   has ImageId => (is => 'ro', isa => 'Str');
   has ImageLocation => (is => 'ro', isa => 'Str');
   has ImageOwnerAlias => (is => 'ro', isa => 'Str');
@@ -205,18 +226,18 @@ class AWS::EC2::Image with AWS::API::ResultParser {
   has RamdiskId => (is => 'ro', isa => 'Str');
   has RootDeviceName => (is => 'ro', isa => 'Str');
   has RootDeviceType => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::ImageState');
   has StateReason => (is => 'ro', isa => 'AWS::EC2::StateReason');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
-  has VirtualizationType => (is => 'ro', isa => 'Str');
+  has VirtualizationType => (is => 'ro', isa => 'AWS::EC2::VirtualizationType');
 }
 
-class AWS::EC2::ImportInstanceLaunchSpecification with AWS::API::ResultParser {
+class AWS::EC2::ImportInstanceLaunchSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AdditionalInfo => (is => 'ro', isa => 'Str');
   has Architecture => (is => 'ro', isa => 'Str');
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
   has Monitoring => (is => 'ro', isa => 'Str');
   has Placement => (is => 'ro', isa => 'AWS::EC2::Placement');
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
@@ -224,14 +245,14 @@ class AWS::EC2::ImportInstanceLaunchSpecification with AWS::API::ResultParser {
   has UserData => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::ImportInstanceTaskDetails with AWS::API::ResultParser {
+class AWS::EC2::ImportInstanceTaskDetails with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has Platform => (is => 'ro', isa => 'Str');
   has Volumes => (is => 'ro', isa => 'ArrayRef[AWS::EC2::ImportInstanceVolumeDetailItem]', required => 1);
 }
 
-class AWS::EC2::ImportVolumeTaskDetails with AWS::API::ResultParser {
+class AWS::EC2::ImportVolumeTaskDetails with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has BytesConverted => (is => 'ro', isa => 'Num', required => 1);
   has Description => (is => 'ro', isa => 'Str');
@@ -239,18 +260,18 @@ class AWS::EC2::ImportVolumeTaskDetails with AWS::API::ResultParser {
   has Volume => (is => 'ro', isa => 'AWS::EC2::DiskImageVolumeDescription', required => 1);
 }
 
-class AWS::EC2::Instance with AWS::API::ResultParser {
+class AWS::EC2::Instance with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AmiLaunchIndex => (is => 'ro', isa => 'Int');
   has Architecture => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstanceBlockDeviceMapping]');
   has ClientToken => (is => 'ro', isa => 'Str');
   has EbsOptimized => (is => 'ro', isa => 'Str');
-  has Hypervisor => (is => 'ro', isa => 'Str');
+  has Hypervisor => (is => 'ro', isa => 'AWS::EC2::HypervisorType');
   has IamInstanceProfile => (is => 'ro', isa => 'AWS::EC2::IamInstanceProfile');
   has ImageId => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has InstanceLifecycle => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
   has LaunchTime => (is => 'ro', isa => 'Str');
@@ -275,46 +296,46 @@ class AWS::EC2::Instance with AWS::API::ResultParser {
   has StateTransitionReason => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
-  has VirtualizationType => (is => 'ro', isa => 'Str');
+  has VirtualizationType => (is => 'ro', isa => 'AWS::EC2::VirtualizationType');
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::InstanceBlockDeviceMapping with AWS::API::ResultParser {
+class AWS::EC2::InstanceBlockDeviceMapping with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DeviceName => (is => 'ro', isa => 'Str');
   has Ebs => (is => 'ro', isa => 'AWS::EC2::EbsInstanceBlockDevice');
 }
 
-class AWS::EC2::InstanceBlockDeviceMappingSpecification with AWS::API::ResultParser {
+class AWS::EC2::InstanceBlockDeviceMappingSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DeviceName => (is => 'ro', isa => 'Str');
   has Ebs => (is => 'ro', isa => 'AWS::EC2::EbsInstanceBlockDeviceSpecification');
   has NoDevice => (is => 'ro', isa => 'Str');
   has VirtualName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::InstanceCount with AWS::API::ResultParser {
+class AWS::EC2::InstanceCount with (AWS::API::ResultParser, AWS::API::ToParams) {
   has InstanceCount => (is => 'ro', isa => 'Int');
   has State => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::InstanceExportDetails with AWS::API::ResultParser {
+class AWS::EC2::InstanceExportDetails with (AWS::API::ResultParser, AWS::API::ToParams) {
   has InstanceId => (is => 'ro', isa => 'Str');
-  has TargetEnvironment => (is => 'ro', isa => 'Str');
+  has TargetEnvironment => (is => 'ro', isa => 'AWS::EC2::ExportEnvironment');
 }
 
-class AWS::EC2::InstanceLicense with AWS::API::ResultParser {
+class AWS::EC2::InstanceLicense with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Pool => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::InstanceLicenseSpecification with AWS::API::ResultParser {
+class AWS::EC2::InstanceLicenseSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Pool => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::InstanceMonitoring with AWS::API::ResultParser {
+class AWS::EC2::InstanceMonitoring with (AWS::API::ResultParser, AWS::API::ToParams) {
   has InstanceId => (is => 'ro', isa => 'Str');
   has Monitoring => (is => 'ro', isa => 'AWS::EC2::Monitoring');
 }
 
-class AWS::EC2::InstanceNetworkInterface with AWS::API::ResultParser {
+class AWS::EC2::InstanceNetworkInterface with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Association => (is => 'ro', isa => 'AWS::EC2::InstanceNetworkInterfaceAssociation');
   has Attachment => (is => 'ro', isa => 'AWS::EC2::InstanceNetworkInterfaceAttachment');
   has Description => (is => 'ro', isa => 'Str');
@@ -330,7 +351,7 @@ class AWS::EC2::InstanceNetworkInterface with AWS::API::ResultParser {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::InstanceNetworkInterfaceSpecification with AWS::API::ResultParser {
+class AWS::EC2::InstanceNetworkInterfaceSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Str');
   has DeleteOnTermination => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -343,18 +364,18 @@ class AWS::EC2::InstanceNetworkInterfaceSpecification with AWS::API::ResultParse
   has SubnetId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::InstanceState with AWS::API::ResultParser {
+class AWS::EC2::InstanceState with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Code => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'AWS::EC2::InstanceStateName');
 }
 
-class AWS::EC2::InstanceStateChange with AWS::API::ResultParser {
+class AWS::EC2::InstanceStateChange with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CurrentState => (is => 'ro', isa => 'AWS::EC2::InstanceState');
   has InstanceId => (is => 'ro', isa => 'Str');
   has PreviousState => (is => 'ro', isa => 'AWS::EC2::InstanceState');
 }
 
-class AWS::EC2::InstanceStatus with AWS::API::ResultParser {
+class AWS::EC2::InstanceStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has Events => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstanceStatusEvent]');
   has InstanceId => (is => 'ro', isa => 'Str');
@@ -363,30 +384,30 @@ class AWS::EC2::InstanceStatus with AWS::API::ResultParser {
   has SystemStatus => (is => 'ro', isa => 'AWS::EC2::InstanceStatusSummary');
 }
 
-class AWS::EC2::InstanceStatusEvent with AWS::API::ResultParser {
+class AWS::EC2::InstanceStatusEvent with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Code => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has NotAfter => (is => 'ro', isa => 'Str');
   has NotBefore => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::InstanceStatusSummary with AWS::API::ResultParser {
+class AWS::EC2::InstanceStatusSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Details => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstanceStatusDetails]');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::InternetGateway with AWS::API::ResultParser {
+class AWS::EC2::InternetGateway with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Attachments => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InternetGatewayAttachment]');
   has InternetGatewayId => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
 }
 
-class AWS::EC2::InternetGatewayAttachment with AWS::API::ResultParser {
+class AWS::EC2::InternetGatewayAttachment with (AWS::API::ResultParser, AWS::API::ToParams) {
   has State => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::IpPermission with AWS::API::ResultParser {
+class AWS::EC2::IpPermission with (AWS::API::ResultParser, AWS::API::ToParams) {
   has FromPort => (is => 'ro', isa => 'Int');
   has IpProtocol => (is => 'ro', isa => 'Str');
   has IpRanges => (is => 'ro', isa => 'ArrayRef[AWS::EC2::IpRange]');
@@ -394,32 +415,32 @@ class AWS::EC2::IpPermission with AWS::API::ResultParser {
   has UserIdGroupPairs => (is => 'ro', isa => 'ArrayRef[AWS::EC2::UserIdGroupPair]');
 }
 
-class AWS::EC2::IpRange with AWS::API::ResultParser {
+class AWS::EC2::IpRange with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CidrIp => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::KeyPairInfo with AWS::API::ResultParser {
+class AWS::EC2::KeyPairInfo with (AWS::API::ResultParser, AWS::API::ToParams) {
   has KeyFingerprint => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::LaunchPermission with AWS::API::ResultParser {
+class AWS::EC2::LaunchPermission with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Group => (is => 'ro', isa => 'Str');
   has UserId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::LaunchPermissionModifications with AWS::API::ResultParser {
+class AWS::EC2::LaunchPermissionModifications with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Add => (is => 'ro', isa => 'ArrayRef[AWS::EC2::LaunchPermission]');
   has Remove => (is => 'ro', isa => 'ArrayRef[AWS::EC2::LaunchPermission]');
 }
 
-class AWS::EC2::LaunchSpecification with AWS::API::ResultParser {
+class AWS::EC2::LaunchSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AddressingType => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[AWS::EC2::BlockDeviceMapping]');
   has EbsOptimized => (is => 'ro', isa => 'Str');
   has IamInstanceProfile => (is => 'ro', isa => 'AWS::EC2::IamInstanceProfileSpecification');
   has ImageId => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
   has MonitoringEnabled => (is => 'ro', isa => 'Str');
@@ -431,13 +452,13 @@ class AWS::EC2::LaunchSpecification with AWS::API::ResultParser {
   has UserData => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::LaunchSpecification2 with AWS::API::ResultParser {
+class AWS::EC2::LaunchSpecification2 with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AddressingType => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[AWS::EC2::BlockDeviceMapping]');
   has EbsOptimized => (is => 'ro', isa => 'Str');
   has IamInstanceProfile => (is => 'ro', isa => 'AWS::EC2::IamInstanceProfileSpecification');
   has ImageId => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
   has MonitoringEnabled => (is => 'ro', isa => 'Str');
@@ -450,7 +471,7 @@ class AWS::EC2::LaunchSpecification2 with AWS::API::ResultParser {
   has UserData => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::License with AWS::API::ResultParser {
+class AWS::EC2::License with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Capacities => (is => 'ro', isa => 'ArrayRef[AWS::EC2::LicenseCapacity]');
   has LicenseId => (is => 'ro', isa => 'Str');
   has Pool => (is => 'ro', isa => 'Str');
@@ -458,18 +479,18 @@ class AWS::EC2::License with AWS::API::ResultParser {
   has Type => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::LicenseCapacity with AWS::API::ResultParser {
+class AWS::EC2::LicenseCapacity with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Capacity => (is => 'ro', isa => 'Int');
   has EarliestAllowedDeactivationTime => (is => 'ro', isa => 'Str');
   has InstanceCapacity => (is => 'ro', isa => 'Int');
   has State => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::Monitoring with AWS::API::ResultParser {
+class AWS::EC2::Monitoring with (AWS::API::ResultParser, AWS::API::ToParams) {
   has State => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::NetworkAcl with AWS::API::ResultParser {
+class AWS::EC2::NetworkAcl with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Associations => (is => 'ro', isa => 'ArrayRef[AWS::EC2::NetworkAclAssociation]');
   has Entries => (is => 'ro', isa => 'ArrayRef[AWS::EC2::NetworkAclEntry]');
   has IsDefault => (is => 'ro', isa => 'Str');
@@ -478,23 +499,23 @@ class AWS::EC2::NetworkAcl with AWS::API::ResultParser {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::NetworkAclAssociation with AWS::API::ResultParser {
+class AWS::EC2::NetworkAclAssociation with (AWS::API::ResultParser, AWS::API::ToParams) {
   has NetworkAclAssociationId => (is => 'ro', isa => 'Str');
   has NetworkAclId => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::NetworkAclEntry with AWS::API::ResultParser {
+class AWS::EC2::NetworkAclEntry with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CidrBlock => (is => 'ro', isa => 'Str');
   has Egress => (is => 'ro', isa => 'Str');
   has IcmpTypeCode => (is => 'ro', isa => 'AWS::EC2::IcmpTypeCode');
   has PortRange => (is => 'ro', isa => 'AWS::EC2::PortRange');
   has Protocol => (is => 'ro', isa => 'Str');
-  has RuleAction => (is => 'ro', isa => 'Str');
+  has RuleAction => (is => 'ro', isa => 'AWS::EC2::RuleAction');
   has RuleNumber => (is => 'ro', isa => 'Int');
 }
 
-class AWS::EC2::NetworkInterface with AWS::API::ResultParser {
+class AWS::EC2::NetworkInterface with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Association => (is => 'ro', isa => 'AWS::EC2::NetworkInterfaceAssociation');
   has Attachment => (is => 'ro', isa => 'AWS::EC2::NetworkInterfaceAttachment');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
@@ -515,14 +536,14 @@ class AWS::EC2::NetworkInterface with AWS::API::ResultParser {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::NetworkInterfaceAssociation with AWS::API::ResultParser {
+class AWS::EC2::NetworkInterfaceAssociation with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllocationId => (is => 'ro', isa => 'Str');
   has AssociationId => (is => 'ro', isa => 'Str');
   has IpOwnerId => (is => 'ro', isa => 'Str');
   has PublicIp => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::NetworkInterfaceAttachment with AWS::API::ResultParser {
+class AWS::EC2::NetworkInterfaceAttachment with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttachTime => (is => 'ro', isa => 'Str');
   has AttachmentId => (is => 'ro', isa => 'Str');
   has DeleteOnTermination => (is => 'ro', isa => 'Str');
@@ -532,78 +553,78 @@ class AWS::EC2::NetworkInterfaceAttachment with AWS::API::ResultParser {
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::NetworkInterfaceAttachmentChanges with AWS::API::ResultParser {
+class AWS::EC2::NetworkInterfaceAttachmentChanges with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttachmentId => (is => 'ro', isa => 'Str');
   has DeleteOnTermination => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::NetworkInterfacePrivateIpAddress with AWS::API::ResultParser {
+class AWS::EC2::NetworkInterfacePrivateIpAddress with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Association => (is => 'ro', isa => 'AWS::EC2::NetworkInterfaceAssociation');
   has Primary => (is => 'ro', isa => 'Str');
   has PrivateDnsName => (is => 'ro', isa => 'Str');
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::Placement with AWS::API::ResultParser {
+class AWS::EC2::Placement with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
   has Tenancy => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::PlacementGroup with AWS::API::ResultParser {
+class AWS::EC2::PlacementGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has GroupName => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has Strategy => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::PlacementGroupState');
+  has Strategy => (is => 'ro', isa => 'AWS::EC2::PlacementStrategy');
 }
 
-class AWS::EC2::PortRange with AWS::API::ResultParser {
+class AWS::EC2::PortRange with (AWS::API::ResultParser, AWS::API::ToParams) {
   has From => (is => 'ro', isa => 'Int');
   has To => (is => 'ro', isa => 'Int');
 }
 
-class AWS::EC2::PriceSchedule with AWS::API::ResultParser {
+class AWS::EC2::PriceSchedule with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Active => (is => 'ro', isa => 'Str');
   has CurrencyCode => (is => 'ro', isa => 'Str');
-  has Price => (is => 'ro', isa => 'Int');
+  has Price => (is => 'ro', isa => 'Num');
   has Term => (is => 'ro', isa => 'Num');
 }
 
-class AWS::EC2::PriceScheduleSpecification with AWS::API::ResultParser {
+class AWS::EC2::PriceScheduleSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CurrencyCode => (is => 'ro', isa => 'Str');
-  has Price => (is => 'ro', isa => 'Int');
+  has Price => (is => 'ro', isa => 'Num');
   has Term => (is => 'ro', isa => 'Num');
 }
 
-class AWS::EC2::PricingDetail with AWS::API::ResultParser {
+class AWS::EC2::PricingDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Count => (is => 'ro', isa => 'Int');
-  has Price => (is => 'ro', isa => 'Int');
+  has Price => (is => 'ro', isa => 'Num');
 }
 
-class AWS::EC2::PrivateIpAddressSpecification with AWS::API::ResultParser {
+class AWS::EC2::PrivateIpAddressSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Primary => (is => 'ro', isa => 'Str');
   has PrivateIpAddress => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::EC2::ProductCode with AWS::API::ResultParser {
+class AWS::EC2::ProductCode with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ProductCodeId => (is => 'ro', isa => 'Str');
   has ProductCodeType => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::PropagatingVgw with AWS::API::ResultParser {
+class AWS::EC2::PropagatingVgw with (AWS::API::ResultParser, AWS::API::ToParams) {
   has GatewayId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::RecurringCharge with AWS::API::ResultParser {
-  has Amount => (is => 'ro', isa => 'Int');
+class AWS::EC2::RecurringCharge with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Amount => (is => 'ro', isa => 'Num');
   has Frequency => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::Region with AWS::API::ResultParser {
+class AWS::EC2::Region with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Endpoint => (is => 'ro', isa => 'Str');
   has RegionName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::Reservation with AWS::API::ResultParser {
+class AWS::EC2::Reservation with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Groups => (is => 'ro', isa => 'ArrayRef[AWS::EC2::GroupIdentifier]');
   has Instances => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Instance]');
   has OwnerId => (is => 'ro', isa => 'Str');
@@ -611,12 +632,12 @@ class AWS::EC2::Reservation with AWS::API::ResultParser {
   has ReservationId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::ReservedInstanceLimitPrice with AWS::API::ResultParser {
-  has Amount => (is => 'ro', isa => 'Int');
+class AWS::EC2::ReservedInstanceLimitPrice with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Amount => (is => 'ro', isa => 'Num');
   has CurrencyCode => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::ReservedInstances with AWS::API::ResultParser {
+class AWS::EC2::ReservedInstances with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Num');
@@ -624,7 +645,7 @@ class AWS::EC2::ReservedInstances with AWS::API::ResultParser {
   has FixedPrice => (is => 'ro', isa => 'Num');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has InstanceTenancy => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[AWS::EC2::RecurringCharge]');
@@ -635,17 +656,17 @@ class AWS::EC2::ReservedInstances with AWS::API::ResultParser {
   has UsagePrice => (is => 'ro', isa => 'Num');
 }
 
-class AWS::EC2::ReservedInstancesConfiguration with AWS::API::ResultParser {
+class AWS::EC2::ReservedInstancesConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has Platform => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::ReservedInstancesId with AWS::API::ResultParser {
+class AWS::EC2::ReservedInstancesId with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ReservedInstancesId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::ReservedInstancesListing with AWS::API::ResultParser {
+class AWS::EC2::ReservedInstancesListing with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ClientToken => (is => 'ro', isa => 'Str');
   has CreateDate => (is => 'ro', isa => 'Str');
   has InstanceCounts => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstanceCount]');
@@ -658,7 +679,7 @@ class AWS::EC2::ReservedInstancesListing with AWS::API::ResultParser {
   has UpdateDate => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::ReservedInstancesModification with AWS::API::ResultParser {
+class AWS::EC2::ReservedInstancesModification with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ClientToken => (is => 'ro', isa => 'Str');
   has CreateDate => (is => 'ro', isa => 'Str');
   has EffectiveDate => (is => 'ro', isa => 'Str');
@@ -670,18 +691,18 @@ class AWS::EC2::ReservedInstancesModification with AWS::API::ResultParser {
   has UpdateDate => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::ReservedInstancesModificationResult with AWS::API::ResultParser {
+class AWS::EC2::ReservedInstancesModificationResult with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ReservedInstancesId => (is => 'ro', isa => 'Str');
   has TargetConfiguration => (is => 'ro', isa => 'AWS::EC2::ReservedInstancesConfiguration');
 }
 
-class AWS::EC2::ReservedInstancesOffering with AWS::API::ResultParser {
+class AWS::EC2::ReservedInstancesOffering with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Num');
   has FixedPrice => (is => 'ro', isa => 'Num');
   has InstanceTenancy => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
   has Marketplace => (is => 'ro', isa => 'Str');
   has OfferingType => (is => 'ro', isa => 'Str');
   has PricingDetails => (is => 'ro', isa => 'ArrayRef[AWS::EC2::PricingDetail]');
@@ -691,7 +712,7 @@ class AWS::EC2::ReservedInstancesOffering with AWS::API::ResultParser {
   has UsagePrice => (is => 'ro', isa => 'Num');
 }
 
-class AWS::EC2::Route with AWS::API::ResultParser {
+class AWS::EC2::Route with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DestinationCidrBlock => (is => 'ro', isa => 'Str');
   has GatewayId => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
@@ -700,7 +721,7 @@ class AWS::EC2::Route with AWS::API::ResultParser {
   has State => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::RouteTable with AWS::API::ResultParser {
+class AWS::EC2::RouteTable with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Associations => (is => 'ro', isa => 'ArrayRef[AWS::EC2::RouteTableAssociation]');
   has PropagatingVgws => (is => 'ro', isa => 'ArrayRef[AWS::EC2::PropagatingVgw]');
   has RouteTableId => (is => 'ro', isa => 'Str');
@@ -709,18 +730,18 @@ class AWS::EC2::RouteTable with AWS::API::ResultParser {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::RouteTableAssociation with AWS::API::ResultParser {
+class AWS::EC2::RouteTableAssociation with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Main => (is => 'ro', isa => 'Str');
   has RouteTableAssociationId => (is => 'ro', isa => 'Str');
   has RouteTableId => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::RunInstancesMonitoringEnabled with AWS::API::ResultParser {
+class AWS::EC2::RunInstancesMonitoringEnabled with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Enabled => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::EC2::S3Storage with AWS::API::ResultParser {
+class AWS::EC2::S3Storage with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AWSAccessKeyId => (is => 'ro', isa => 'Str');
   has Bucket => (is => 'ro', isa => 'Str');
   has Prefix => (is => 'ro', isa => 'Str');
@@ -728,7 +749,7 @@ class AWS::EC2::S3Storage with AWS::API::ResultParser {
   has UploadPolicySignature => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::SecurityGroup with AWS::API::ResultParser {
+class AWS::EC2::SecurityGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has GroupId => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
@@ -739,20 +760,20 @@ class AWS::EC2::SecurityGroup with AWS::API::ResultParser {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::Snapshot with AWS::API::ResultParser {
+class AWS::EC2::Snapshot with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has OwnerAlias => (is => 'ro', isa => 'Str');
   has OwnerId => (is => 'ro', isa => 'Str');
   has Progress => (is => 'ro', isa => 'Str');
   has SnapshotId => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::SnapshotState');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
   has VolumeId => (is => 'ro', isa => 'Str');
   has VolumeSize => (is => 'ro', isa => 'Int');
 }
 
-class AWS::EC2::SpotDatafeedSubscription with AWS::API::ResultParser {
+class AWS::EC2::SpotDatafeedSubscription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Bucket => (is => 'ro', isa => 'Str');
   has Fault => (is => 'ro', isa => 'AWS::EC2::SpotInstanceStateFault');
   has OwnerId => (is => 'ro', isa => 'Str');
@@ -760,7 +781,7 @@ class AWS::EC2::SpotDatafeedSubscription with AWS::API::ResultParser {
   has State => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::SpotInstanceRequest with AWS::API::ResultParser {
+class AWS::EC2::SpotInstanceRequest with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZoneGroup => (is => 'ro', isa => 'Str');
   has CreateTime => (is => 'ro', isa => 'Str');
   has Fault => (is => 'ro', isa => 'AWS::EC2::SpotInstanceStateFault');
@@ -774,45 +795,45 @@ class AWS::EC2::SpotInstanceRequest with AWS::API::ResultParser {
   has State => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'AWS::EC2::SpotInstanceStatus');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
-  has Type => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'AWS::EC2::SpotInstanceType');
   has ValidFrom => (is => 'ro', isa => 'Str');
   has ValidUntil => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::SpotInstanceStateFault with AWS::API::ResultParser {
+class AWS::EC2::SpotInstanceStateFault with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Code => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::SpotInstanceStatus with AWS::API::ResultParser {
+class AWS::EC2::SpotInstanceStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Code => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has UpdateTime => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::SpotPlacement with AWS::API::ResultParser {
+class AWS::EC2::SpotPlacement with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::SpotPrice with AWS::API::ResultParser {
+class AWS::EC2::SpotPrice with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
   has ProductDescription => (is => 'ro', isa => 'Str');
   has SpotPrice => (is => 'ro', isa => 'Str');
   has Timestamp => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::StateReason with AWS::API::ResultParser {
+class AWS::EC2::StateReason with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Code => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::Storage with AWS::API::ResultParser {
+class AWS::EC2::Storage with (AWS::API::ResultParser, AWS::API::ToParams) {
   has S3 => (is => 'ro', isa => 'AWS::EC2::S3Storage');
 }
 
-class AWS::EC2::Subnet with AWS::API::ResultParser {
+class AWS::EC2::Subnet with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has AvailableIpAddressCount => (is => 'ro', isa => 'Int');
   has CidrBlock => (is => 'ro', isa => 'Str');
@@ -824,25 +845,25 @@ class AWS::EC2::Subnet with AWS::API::ResultParser {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::Tag with AWS::API::ResultParser {
+class AWS::EC2::Tag with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Key => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::TagDescription with AWS::API::ResultParser {
+class AWS::EC2::TagDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Key => (is => 'ro', isa => 'Str');
   has ResourceId => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
+  has ResourceType => (is => 'ro', isa => 'AWS::EC2::ResourceType');
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::UserIdGroupPair with AWS::API::ResultParser {
+class AWS::EC2::UserIdGroupPair with (AWS::API::ResultParser, AWS::API::ToParams) {
   has GroupId => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
   has UserId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::VgwTelemetry with AWS::API::ResultParser {
+class AWS::EC2::VgwTelemetry with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AcceptedRouteCount => (is => 'ro', isa => 'Int');
   has LastStatusChange => (is => 'ro', isa => 'Str');
   has OutsideIpAddress => (is => 'ro', isa => 'Str');
@@ -850,40 +871,40 @@ class AWS::EC2::VgwTelemetry with AWS::API::ResultParser {
   has StatusMessage => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::Volume with AWS::API::ResultParser {
+class AWS::EC2::Volume with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Attachments => (is => 'ro', isa => 'ArrayRef[AWS::EC2::VolumeAttachment]');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CreateTime => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has Size => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::VolumeState');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
   has VolumeId => (is => 'ro', isa => 'Str');
-  has VolumeType => (is => 'ro', isa => 'Str');
+  has VolumeType => (is => 'ro', isa => 'AWS::EC2::VolumeType');
 }
 
-class AWS::EC2::VolumeAttachment with AWS::API::ResultParser {
+class AWS::EC2::VolumeAttachment with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttachTime => (is => 'ro', isa => 'Str');
   has DeleteOnTermination => (is => 'ro', isa => 'Str');
   has Device => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::VolumeAttachmentState');
   has VolumeId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::VolumeDetail with AWS::API::ResultParser {
+class AWS::EC2::VolumeDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Size => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class AWS::EC2::VolumeStatusAction with AWS::API::ResultParser {
+class AWS::EC2::VolumeStatusAction with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Code => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EventId => (is => 'ro', isa => 'Str');
   has EventType => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::VolumeStatusEvent with AWS::API::ResultParser {
+class AWS::EC2::VolumeStatusEvent with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has EventId => (is => 'ro', isa => 'Str');
   has EventType => (is => 'ro', isa => 'Str');
@@ -891,12 +912,12 @@ class AWS::EC2::VolumeStatusEvent with AWS::API::ResultParser {
   has NotBefore => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::VolumeStatusInfo with AWS::API::ResultParser {
+class AWS::EC2::VolumeStatusInfo with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Details => (is => 'ro', isa => 'ArrayRef[AWS::EC2::VolumeStatusDetails]');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::VolumeStatusItem with AWS::API::ResultParser {
+class AWS::EC2::VolumeStatusItem with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Actions => (is => 'ro', isa => 'ArrayRef[AWS::EC2::VolumeStatusAction]');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has Events => (is => 'ro', isa => 'ArrayRef[AWS::EC2::VolumeStatusEvent]');
@@ -904,7 +925,7 @@ class AWS::EC2::VolumeStatusItem with AWS::API::ResultParser {
   has VolumeStatus => (is => 'ro', isa => 'AWS::EC2::VolumeStatusInfo');
 }
 
-class AWS::EC2::Vpc with AWS::API::ResultParser {
+class AWS::EC2::Vpc with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CidrBlock => (is => 'ro', isa => 'Str');
   has DhcpOptionsId => (is => 'ro', isa => 'Str');
   has InstanceTenancy => (is => 'ro', isa => 'Str');
@@ -914,12 +935,12 @@ class AWS::EC2::Vpc with AWS::API::ResultParser {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::VpcAttachment with AWS::API::ResultParser {
+class AWS::EC2::VpcAttachment with (AWS::API::ResultParser, AWS::API::ToParams) {
   has State => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::VpnConnection with AWS::API::ResultParser {
+class AWS::EC2::VpnConnection with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CustomerGatewayConfiguration => (is => 'ro', isa => 'Str');
   has CustomerGatewayId => (is => 'ro', isa => 'Str');
   has Options => (is => 'ro', isa => 'AWS::EC2::VpnConnectionOptions');
@@ -932,15 +953,15 @@ class AWS::EC2::VpnConnection with AWS::API::ResultParser {
   has VpnGatewayId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::VpnConnectionOptions with AWS::API::ResultParser {
+class AWS::EC2::VpnConnectionOptions with (AWS::API::ResultParser, AWS::API::ToParams) {
   has StaticRoutesOnly => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::VpnConnectionOptionsSpecification with AWS::API::ResultParser {
+class AWS::EC2::VpnConnectionOptionsSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
   has StaticRoutesOnly => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::VpnGateway with AWS::API::ResultParser {
+class AWS::EC2::VpnGateway with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
@@ -949,7 +970,7 @@ class AWS::EC2::VpnGateway with AWS::API::ResultParser {
   has VpnGatewayId => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::VpnStaticRoute with AWS::API::ResultParser {
+class AWS::EC2::VpnStaticRoute with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DestinationCidrBlock => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
