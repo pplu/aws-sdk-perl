@@ -1,5 +1,10 @@
 use MooseX::Declare;
 use AWS::API;
+use Moose::Util::TypeConstraints;
+
+enum 'AWS::RDS::ApplyMethod', [qw(immediate pending-reboot)];
+enum 'AWS::RDS::SourceType', [qw(db-instance db-parameter-group db-security-group db-snapshot)];
+
 class AWS::RDS::AvailabilityZone with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Name => (is => 'ro', isa => 'Str');
   has ProvisionedIopsCapable => (is => 'ro', isa => 'Str');
@@ -142,7 +147,7 @@ class AWS::RDS::Event with (AWS::API::ResultParser, AWS::API::ToParams) {
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has Message => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Str');
+  has SourceType => (is => 'ro', isa => 'AWS::RDS::SourceType');
 }
 
 class AWS::RDS::EventCategoriesMap with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -254,7 +259,7 @@ class AWS::RDS::OrderableDBInstanceOption with (AWS::API::ResultParser, AWS::API
 
 class AWS::RDS::Parameter with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllowedValues => (is => 'ro', isa => 'Str');
-  has ApplyMethod => (is => 'ro', isa => 'Str');
+  has ApplyMethod => (is => 'ro', isa => 'AWS::RDS::ApplyMethod');
   has ApplyType => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');

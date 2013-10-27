@@ -1,17 +1,21 @@
 use MooseX::Declare;
 use AWS::API;
+use Moose::Util::TypeConstraints;
+
+enum 'AWS::IAM::statusType', [qw(Active Inactive)];
+
 class AWS::IAM::AccessKey with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AccessKeyId => (is => 'ro', isa => 'Str', required => 1);
   has CreateDate => (is => 'ro', isa => 'Str');
   has SecretAccessKey => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
+  has Status => (is => 'ro', isa => 'AWS::IAM::statusType', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 }
 
 class AWS::IAM::AccessKeyMetadata with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AccessKeyId => (is => 'ro', isa => 'Str');
   has CreateDate => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'AWS::IAM::statusType');
   has UserName => (is => 'ro', isa => 'Str');
 }
 
@@ -78,7 +82,7 @@ class AWS::IAM::ServerCertificateMetadata with (AWS::API::ResultParser, AWS::API
 class AWS::IAM::SigningCertificate with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CertificateBody => (is => 'ro', isa => 'Str', required => 1);
   has CertificateId => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
+  has Status => (is => 'ro', isa => 'AWS::IAM::statusType', required => 1);
   has UploadDate => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 }

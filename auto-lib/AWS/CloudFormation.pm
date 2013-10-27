@@ -1,5 +1,10 @@
 use MooseX::Declare;
 use AWS::API;
+use Moose::Util::TypeConstraints;
+
+enum 'AWS::CloudFormation::StackStatus', [qw(CREATE_IN_PROGRESS CREATE_FAILED CREATE_COMPLETE ROLLBACK_IN_PROGRESS ROLLBACK_FAILED ROLLBACK_COMPLETE DELETE_IN_PROGRESS DELETE_FAILED DELETE_COMPLETE UPDATE_IN_PROGRESS UPDATE_COMPLETE_CLEANUP_IN_PROGRESS UPDATE_COMPLETE UPDATE_ROLLBACK_IN_PROGRESS UPDATE_ROLLBACK_FAILED UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS UPDATE_ROLLBACK_COMPLETE)];
+enum 'AWS::CloudFormation::ResourceStatus', [qw(CREATE_IN_PROGRESS CREATE_FAILED CREATE_COMPLETE DELETE_IN_PROGRESS DELETE_FAILED DELETE_COMPLETE UPDATE_IN_PROGRESS UPDATE_FAILED UPDATE_COMPLETE)];
+
 class AWS::CloudFormation::Output with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has OutputKey => (is => 'ro', isa => 'Str');
@@ -22,7 +27,7 @@ class AWS::CloudFormation::Stack with (AWS::API::ResultParser, AWS::API::ToParam
   has Parameters => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::Parameter]');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
-  has StackStatus => (is => 'ro', isa => 'Str', required => 1);
+  has StackStatus => (is => 'ro', isa => 'AWS::CloudFormation::StackStatus', required => 1);
   has StackStatusReason => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::Tag]');
   has TimeoutInMinutes => (is => 'ro', isa => 'Int');
@@ -33,7 +38,7 @@ class AWS::CloudFormation::StackEvent with (AWS::API::ResultParser, AWS::API::To
   has LogicalResourceId => (is => 'ro', isa => 'Str');
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
   has ResourceProperties => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'Str');
+  has ResourceStatus => (is => 'ro', isa => 'AWS::CloudFormation::ResourceStatus');
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
@@ -45,7 +50,7 @@ class AWS::CloudFormation::StackResource with (AWS::API::ResultParser, AWS::API:
   has Description => (is => 'ro', isa => 'Str');
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'Str', required => 1);
+  has ResourceStatus => (is => 'ro', isa => 'AWS::CloudFormation::ResourceStatus', required => 1);
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
   has StackId => (is => 'ro', isa => 'Str');
@@ -59,7 +64,7 @@ class AWS::CloudFormation::StackResourceDetail with (AWS::API::ResultParser, AWS
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has Metadata => (is => 'ro', isa => 'Str');
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'Str', required => 1);
+  has ResourceStatus => (is => 'ro', isa => 'AWS::CloudFormation::ResourceStatus', required => 1);
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
   has StackId => (is => 'ro', isa => 'Str');
@@ -70,7 +75,7 @@ class AWS::CloudFormation::StackResourceSummary with (AWS::API::ResultParser, AW
   has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'Str', required => 1);
+  has ResourceStatus => (is => 'ro', isa => 'AWS::CloudFormation::ResourceStatus', required => 1);
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
 }
@@ -81,7 +86,7 @@ class AWS::CloudFormation::StackSummary with (AWS::API::ResultParser, AWS::API::
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
-  has StackStatus => (is => 'ro', isa => 'Str', required => 1);
+  has StackStatus => (is => 'ro', isa => 'AWS::CloudFormation::StackStatus', required => 1);
   has StackStatusReason => (is => 'ro', isa => 'Str');
   has TemplateDescription => (is => 'ro', isa => 'Str');
 }

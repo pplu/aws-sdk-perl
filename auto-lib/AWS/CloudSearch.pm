@@ -1,5 +1,11 @@
 use MooseX::Declare;
 use AWS::API;
+use Moose::Util::TypeConstraints;
+
+enum 'AWS::CloudSearch::SourceDataFunction', [qw(Copy TrimTitle Map)];
+enum 'AWS::CloudSearch::IndexFieldType', [qw(uint literal text)];
+enum 'AWS::CloudSearch::OptionState', [qw(RequiresIndexDocuments Processing Active)];
+
 class AWS::CloudSearch::AccessPoliciesStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Options => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'AWS::CloudSearch::OptionStatus', required => 1);
@@ -27,7 +33,7 @@ class AWS::CloudSearch::DomainStatus with (AWS::API::ResultParser, AWS::API::ToP
 
 class AWS::CloudSearch::IndexField with (AWS::API::ResultParser, AWS::API::ToParams) {
   has IndexFieldName => (is => 'ro', isa => 'Str', required => 1);
-  has IndexFieldType => (is => 'ro', isa => 'Str', required => 1);
+  has IndexFieldType => (is => 'ro', isa => 'AWS::CloudSearch::IndexFieldType', required => 1);
   has LiteralOptions => (is => 'ro', isa => 'AWS::CloudSearch::LiteralOptions');
   has SourceAttributes => (is => 'ro', isa => 'ArrayRef[AWS::CloudSearch::SourceAttribute]');
   has TextOptions => (is => 'ro', isa => 'AWS::CloudSearch::TextOptions');
@@ -54,7 +60,7 @@ class AWS::CloudSearch::NamedRankExpression with (AWS::API::ResultParser, AWS::A
 class AWS::CloudSearch::OptionStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CreationDate => (is => 'ro', isa => 'Str', required => 1);
   has PendingDeletion => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str', required => 1);
+  has State => (is => 'ro', isa => 'AWS::CloudSearch::OptionState', required => 1);
   has UpdateDate => (is => 'ro', isa => 'Str', required => 1);
   has UpdateVersion => (is => 'ro', isa => 'Int');
 }
@@ -71,7 +77,7 @@ class AWS::CloudSearch::ServiceEndpoint with (AWS::API::ResultParser, AWS::API::
 
 class AWS::CloudSearch::SourceAttribute with (AWS::API::ResultParser, AWS::API::ToParams) {
   has SourceDataCopy => (is => 'ro', isa => 'AWS::CloudSearch::SourceData');
-  has SourceDataFunction => (is => 'ro', isa => 'Str', required => 1);
+  has SourceDataFunction => (is => 'ro', isa => 'AWS::CloudSearch::SourceDataFunction', required => 1);
   has SourceDataMap => (is => 'ro', isa => 'AWS::CloudSearch::SourceDataMap');
   has SourceDataTrimTitle => (is => 'ro', isa => 'AWS::CloudSearch::SourceDataTrimTitle');
 }

@@ -1,9 +1,17 @@
 use MooseX::Declare;
 use AWS::API;
+use Moose::Util::TypeConstraints;
+
+enum 'AWS::CloudWatch::Statistic', [qw(SampleCount Average Sum Minimum Maximum)];
+enum 'AWS::CloudWatch::StandardUnit', [qw(Seconds Microseconds Milliseconds Bytes Kilobytes Megabytes Gigabytes Terabytes Bits Kilobits Megabits Gigabits Terabits Percent Count Bytes/Second Kilobytes/Second Megabytes/Second Gigabytes/Second Terabytes/Second Bits/Second Kilobits/Second Megabits/Second Gigabits/Second Terabits/Second Count/Second None)];
+enum 'AWS::CloudWatch::StateValue', [qw(OK ALARM INSUFFICIENT_DATA)];
+enum 'AWS::CloudWatch::HistoryItemType', [qw(ConfigurationUpdate StateUpdate Action)];
+enum 'AWS::CloudWatch::ComparisonOperator', [qw(GreaterThanOrEqualToThreshold GreaterThanThreshold LessThanThreshold LessThanOrEqualToThreshold)];
+
 class AWS::CloudWatch::AlarmHistoryItem with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AlarmName => (is => 'ro', isa => 'Str');
   has HistoryData => (is => 'ro', isa => 'Str');
-  has HistoryItemType => (is => 'ro', isa => 'Str');
+  has HistoryItemType => (is => 'ro', isa => 'AWS::CloudWatch::HistoryItemType');
   has HistorySummary => (is => 'ro', isa => 'Str');
   has Timestamp => (is => 'ro', isa => 'Str');
 }
@@ -15,7 +23,7 @@ class AWS::CloudWatch::Datapoint with (AWS::API::ResultParser, AWS::API::ToParam
   has SampleCount => (is => 'ro', isa => 'Num');
   has Sum => (is => 'ro', isa => 'Num');
   has Timestamp => (is => 'ro', isa => 'Str');
-  has Unit => (is => 'ro', isa => 'Str');
+  has Unit => (is => 'ro', isa => 'AWS::CloudWatch::StandardUnit');
 }
 
 class AWS::CloudWatch::Dimension with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -41,7 +49,7 @@ class AWS::CloudWatch::MetricAlarm with (AWS::API::ResultParser, AWS::API::ToPar
   has AlarmConfigurationUpdatedTimestamp => (is => 'ro', isa => 'Str');
   has AlarmDescription => (is => 'ro', isa => 'Str');
   has AlarmName => (is => 'ro', isa => 'Str');
-  has ComparisonOperator => (is => 'ro', isa => 'Str');
+  has ComparisonOperator => (is => 'ro', isa => 'AWS::CloudWatch::ComparisonOperator');
   has Dimensions => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::Dimension]');
   has EvaluationPeriods => (is => 'ro', isa => 'Int');
   has InsufficientDataActions => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -52,10 +60,10 @@ class AWS::CloudWatch::MetricAlarm with (AWS::API::ResultParser, AWS::API::ToPar
   has StateReason => (is => 'ro', isa => 'Str');
   has StateReasonData => (is => 'ro', isa => 'Str');
   has StateUpdatedTimestamp => (is => 'ro', isa => 'Str');
-  has StateValue => (is => 'ro', isa => 'Str');
-  has Statistic => (is => 'ro', isa => 'Str');
+  has StateValue => (is => 'ro', isa => 'AWS::CloudWatch::StateValue');
+  has Statistic => (is => 'ro', isa => 'AWS::CloudWatch::Statistic');
   has Threshold => (is => 'ro', isa => 'Num');
-  has Unit => (is => 'ro', isa => 'Str');
+  has Unit => (is => 'ro', isa => 'AWS::CloudWatch::StandardUnit');
 }
 
 class AWS::CloudWatch::MetricDatum with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -63,7 +71,7 @@ class AWS::CloudWatch::MetricDatum with (AWS::API::ResultParser, AWS::API::ToPar
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has StatisticValues => (is => 'ro', isa => 'AWS::CloudWatch::StatisticSet');
   has Timestamp => (is => 'ro', isa => 'Str');
-  has Unit => (is => 'ro', isa => 'Str');
+  has Unit => (is => 'ro', isa => 'AWS::CloudWatch::StandardUnit');
   has Value => (is => 'ro', isa => 'Num');
 }
 

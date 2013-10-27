@@ -1,5 +1,10 @@
 use MooseX::Declare;
 use AWS::API;
+use Moose::Util::TypeConstraints;
+
+enum 'AWS::AutoScaling::ScalingActivityStatusCode', [qw(WaitingForSpotInstanceRequestId WaitingForSpotInstanceId WaitingForInstanceId PreInService InProgress Successful Failed Cancelled)];
+enum 'AWS::AutoScaling::LifecycleState', [qw(Pending Quarantined InService Terminating Terminated)];
+
 class AWS::AutoScaling::Activity with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ActivityId => (is => 'ro', isa => 'Str', required => 1);
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +14,7 @@ class AWS::AutoScaling::Activity with (AWS::API::ResultParser, AWS::API::ToParam
   has EndTime => (is => 'ro', isa => 'Str');
   has Progress => (is => 'ro', isa => 'Int');
   has StartTime => (is => 'ro', isa => 'Str', required => 1);
-  has StatusCode => (is => 'ro', isa => 'Str', required => 1);
+  has StatusCode => (is => 'ro', isa => 'AWS::AutoScaling::ScalingActivityStatusCode', required => 1);
   has StatusMessage => (is => 'ro', isa => 'Str');
 }
 
@@ -80,7 +85,7 @@ class AWS::AutoScaling::Instance with (AWS::API::ResultParser, AWS::API::ToParam
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
-  has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
+  has LifecycleState => (is => 'ro', isa => 'AWS::AutoScaling::LifecycleState', required => 1);
 }
 
 class AWS::AutoScaling::InstanceMonitoring with (AWS::API::ResultParser, AWS::API::ToParams) {

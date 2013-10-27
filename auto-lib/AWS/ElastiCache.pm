@@ -1,5 +1,9 @@
 use MooseX::Declare;
 use AWS::API;
+use Moose::Util::TypeConstraints;
+
+enum 'AWS::ElastiCache::SourceType', [qw(cache-cluster cache-parameter-group cache-security-group cache-subnet-group)];
+
 class AWS::ElastiCache::CacheCluster with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
@@ -109,7 +113,7 @@ class AWS::ElastiCache::Event with (AWS::API::ResultParser, AWS::API::ToParams) 
   has Date => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Str');
+  has SourceType => (is => 'ro', isa => 'AWS::ElastiCache::SourceType');
 }
 
 class AWS::ElastiCache::NodeGroup with (AWS::API::ResultParser, AWS::API::ToParams) {

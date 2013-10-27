@@ -1,5 +1,9 @@
 use MooseX::Declare;
 use AWS::API;
+use Moose::Util::TypeConstraints;
+
+enum 'AWS::RedShift::SourceType', [qw(cluster cluster-parameter-group cluster-security-group cluster-snapshot)];
+
 class AWS::RedShift::AccountWithRestoreAccess with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AccountId => (is => 'ro', isa => 'Str');
 }
@@ -92,7 +96,7 @@ class AWS::RedShift::Event with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Date => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Str');
+  has SourceType => (is => 'ro', isa => 'AWS::RedShift::SourceType');
 }
 
 class AWS::RedShift::IPRange with (AWS::API::ResultParser, AWS::API::ToParams) {

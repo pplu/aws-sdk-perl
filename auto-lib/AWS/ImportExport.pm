@@ -1,10 +1,14 @@
 use MooseX::Declare;
 use AWS::API;
+use Moose::Util::TypeConstraints;
+
+enum 'AWS::ImportExport::JobType', [qw(Import Export)];
+
 class AWS::ImportExport::Job with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CreationDate => (is => 'ro', isa => 'Str');
   has IsCanceled => (is => 'ro', isa => 'Str');
   has JobId => (is => 'ro', isa => 'Str');
-  has JobType => (is => 'ro', isa => 'Str');
+  has JobType => (is => 'ro', isa => 'AWS::ImportExport::JobType');
 }
 
 class AWS::ImportExport::CancelJob {

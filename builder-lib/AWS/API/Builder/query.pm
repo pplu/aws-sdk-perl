@@ -50,10 +50,29 @@ class AWS::API::Builder::query {
     $output .= "use AWS::API;\n";
     # First call may register more inner classes
     $self->make_inner_classes();
-    $output .= $self->make_inner_classes();
-    $output .= $calls;
-    $output .= $results;
-    $output .= $self->make_api_class;
+    my $inner_output .= $self->make_inner_classes();
+    my $calls_output .= $calls;
+    my $results_output .= $results;
+    my $api_class_output .= $self->make_api_class;
+
+    my $types;
+    if (keys %{ $self->enums }){
+      $types = "use Moose::Util::TypeConstraints;\n\n";
+      foreach my $enum (keys %{ $self->enums }){
+        $types .= "enum '$enum', [qw(" . (join ' ', @{ $self->enums->{ $enum }  }) . ")];\n"
+      }
+      $types .= "\n";
+    } else {
+      $types = '';
+    }
+
+    $output .= $types;
+    $output .= $inner_output;
+    $output .= $calls_output;    
+    $output .= $results_output;    
+    $output .= $api_class_output;
+
+    return $output;
   }
 
   method make_api_class {
@@ -127,7 +146,6 @@ class AWS::API::Builder::query {
       return $output;
   }
 
-  
   method make_inner_classes {
     my $output = '';
   
@@ -146,8 +164,15 @@ class AWS::API::Builder::query {
         my $members = $self->inner_classes->{ $inner_class }->{members};
         foreach my $param_name (sort keys %$members){
           my $param_props = $members->{ $param_name };
-          my $type = eval { $self->get_caller_class_type($param_props) };
-          if ($@) { die "In Inner Class: $inner_class: $@"; }
+
+          my $type;
+          if ($param_props->{enum}) {
+            $type = $self->api . "::" . $param_props->{shape_name};
+            $self->register_enum($type, $param_props->{enum});
+          } else {
+            $type = eval { $self->get_caller_class_type($param_props) };
+            if ($@) { die "In Inner Class: $inner_class: $@"; }
+          }
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
           $output .= ", required => 1" if (defined $param_props->{required} and $param_props->{required} == 1);
           $output .= ");\n";
@@ -158,10 +183,24 @@ class AWS::API::Builder::query {
   
     return $output;
   }
+
+  has enums => (is => 'rw', isa => 'HashRef', default => sub { {} });
+
+  method register_enum (Str $enum_class, ArrayRef $definition) {
+    die "Already an Inner Class" if ($self->inner_classes->{ $enum_class });
+    if (    defined $self->enums->{ $enum_class } 
+        and not $self->enums_equal($self->enums->{ $enum_class }, $definition)
+       ){
+      die "Unequal defs";
+    } else {
+      $self->enums->{ $enum_class } = $definition;
+    }
+  }
   
   has inner_classes => (is => 'rw', isa => 'HashRef', default => sub { {} });
 
   method register_inner_class (Str $class_name, HashRef $definition) {
+    die "Already an Enum" if ($self->enums->{ $class_name });
     if (defined $self->inner_classes->{ $class_name } and not $self->definitions_equal($self->inner_classes->{ $class_name }, $definition)){
       print "---- Registered Definition ----\n";
       my $temp = [ sort keys %{ $self->inner_classes->{ $class_name }->{members} } ];
@@ -173,6 +212,12 @@ class AWS::API::Builder::query {
     } else {
       $self->inner_classes->{ $class_name } = $definition;
     }
+  }
+
+  method enums_equal ($left, $right) {
+    return Compare(
+      $left, $right
+    );
   }
 
   method definitions_equal ($left, $right) {

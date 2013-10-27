@@ -1,5 +1,15 @@
 use MooseX::Declare;
 use AWS::API;
+use Moose::Util::TypeConstraints;
+
+enum 'AWS::ElasticBeanstalk::ValidationSeverity', [qw(error warning)];
+enum 'AWS::ElasticBeanstalk::EnvironmentStatus', [qw(Launching Updating Ready Terminating Terminated)];
+enum 'AWS::ElasticBeanstalk::ConfigurationOptionValueType', [qw(Scalar List)];
+enum 'AWS::ElasticBeanstalk::EnvironmentHealth', [qw(Green Yellow Red Grey)];
+enum 'AWS::ElasticBeanstalk::EventSeverity', [qw(TRACE DEBUG INFO WARN ERROR FATAL)];
+enum 'AWS::ElasticBeanstalk::ConfigurationDeploymentStatus', [qw(deployed pending failed)];
+enum 'AWS::ElasticBeanstalk::EnvironmentInfoType', [qw(tail)];
+
 class AWS::ElasticBeanstalk::ApplicationDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ApplicationName => (is => 'ro', isa => 'Str');
   has ConfigurationTemplates => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -33,7 +43,7 @@ class AWS::ElasticBeanstalk::ConfigurationOptionDescription with (AWS::API::Resu
   has Regex => (is => 'ro', isa => 'AWS::ElasticBeanstalk::OptionRestrictionRegex');
   has UserDefined => (is => 'ro', isa => 'Str');
   has ValueOptions => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ValueType => (is => 'ro', isa => 'Str');
+  has ValueType => (is => 'ro', isa => 'AWS::ElasticBeanstalk::ConfigurationOptionValueType');
 }
 
 class AWS::ElasticBeanstalk::ConfigurationOptionSetting with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -46,7 +56,7 @@ class AWS::ElasticBeanstalk::ConfigurationSettingsDescription with (AWS::API::Re
   has ApplicationName => (is => 'ro', isa => 'Str');
   has DateCreated => (is => 'ro', isa => 'Str');
   has DateUpdated => (is => 'ro', isa => 'Str');
-  has DeploymentStatus => (is => 'ro', isa => 'Str');
+  has DeploymentStatus => (is => 'ro', isa => 'AWS::ElasticBeanstalk::ConfigurationDeploymentStatus');
   has Description => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::ConfigurationOptionSetting]');
@@ -63,17 +73,17 @@ class AWS::ElasticBeanstalk::EnvironmentDescription with (AWS::API::ResultParser
   has EndpointURL => (is => 'ro', isa => 'Str');
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
-  has Health => (is => 'ro', isa => 'Str');
+  has Health => (is => 'ro', isa => 'AWS::ElasticBeanstalk::EnvironmentHealth');
   has Resources => (is => 'ro', isa => 'AWS::ElasticBeanstalk::EnvironmentResourcesDescription');
   has SolutionStackName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'AWS::ElasticBeanstalk::EnvironmentStatus');
   has TemplateName => (is => 'ro', isa => 'Str');
   has VersionLabel => (is => 'ro', isa => 'Str');
 }
 
 class AWS::ElasticBeanstalk::EnvironmentInfoDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
-  has InfoType => (is => 'ro', isa => 'Str');
+  has InfoType => (is => 'ro', isa => 'AWS::ElasticBeanstalk::EnvironmentInfoType');
   has Message => (is => 'ro', isa => 'Str');
   has SampleTimestamp => (is => 'ro', isa => 'Str');
 }
@@ -97,7 +107,7 @@ class AWS::ElasticBeanstalk::EventDescription with (AWS::API::ResultParser, AWS:
   has EventDate => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has RequestId => (is => 'ro', isa => 'Str');
-  has Severity => (is => 'ro', isa => 'Str');
+  has Severity => (is => 'ro', isa => 'AWS::ElasticBeanstalk::EventSeverity');
   has TemplateName => (is => 'ro', isa => 'Str');
   has VersionLabel => (is => 'ro', isa => 'Str');
 }
@@ -153,7 +163,7 @@ class AWS::ElasticBeanstalk::ValidationMessage with (AWS::API::ResultParser, AWS
   has Message => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
-  has Severity => (is => 'ro', isa => 'Str');
+  has Severity => (is => 'ro', isa => 'AWS::ElasticBeanstalk::ValidationSeverity');
 }
 
 class AWS::ElasticBeanstalk::CheckDNSAvailability {
