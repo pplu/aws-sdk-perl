@@ -85,12 +85,13 @@ class AWS::CloudWatch::StatisticSet with (AWS::API::ResultParser, AWS::API::ToPa
 }
 
 
+
 class AWS::CloudWatch::DeleteAlarms {
   has AlarmNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAlarms');
   has _returns => (isa => 'AWS::CloudWatch::DeleteAlarmsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAlarmsResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAlarmsResult');  
 }
 class AWS::CloudWatch::DescribeAlarmHistory {
   has AlarmName => (is => 'ro', isa => 'Str');
@@ -102,7 +103,7 @@ class AWS::CloudWatch::DescribeAlarmHistory {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAlarmHistory');
   has _returns => (isa => 'AWS::CloudWatch::DescribeAlarmHistoryResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmHistoryResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmHistoryResult');  
 }
 class AWS::CloudWatch::DescribeAlarms {
   has ActionPrefix => (is => 'ro', isa => 'Str');
@@ -114,7 +115,7 @@ class AWS::CloudWatch::DescribeAlarms {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAlarms');
   has _returns => (isa => 'AWS::CloudWatch::DescribeAlarmsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmsResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmsResult');  
 }
 class AWS::CloudWatch::DescribeAlarmsForMetric {
   has Dimensions => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::Dimension]');
@@ -126,21 +127,21 @@ class AWS::CloudWatch::DescribeAlarmsForMetric {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAlarmsForMetric');
   has _returns => (isa => 'AWS::CloudWatch::DescribeAlarmsForMetricResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmsForMetricResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmsForMetricResult');  
 }
 class AWS::CloudWatch::DisableAlarmActions {
   has AlarmNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DisableAlarmActions');
   has _returns => (isa => 'AWS::CloudWatch::DisableAlarmActionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DisableAlarmActionsResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DisableAlarmActionsResult');  
 }
 class AWS::CloudWatch::EnableAlarmActions {
   has AlarmNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'EnableAlarmActions');
   has _returns => (isa => 'AWS::CloudWatch::EnableAlarmActionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'EnableAlarmActionsResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'EnableAlarmActionsResult');  
 }
 class AWS::CloudWatch::GetMetricStatistics {
   has Dimensions => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::Dimension]');
@@ -154,7 +155,7 @@ class AWS::CloudWatch::GetMetricStatistics {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetMetricStatistics');
   has _returns => (isa => 'AWS::CloudWatch::GetMetricStatisticsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetMetricStatisticsResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'GetMetricStatisticsResult');  
 }
 class AWS::CloudWatch::ListMetrics {
   has Dimensions => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::DimensionFilter]');
@@ -164,7 +165,7 @@ class AWS::CloudWatch::ListMetrics {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListMetrics');
   has _returns => (isa => 'AWS::CloudWatch::ListMetricsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListMetricsResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ListMetricsResult');  
 }
 class AWS::CloudWatch::PutMetricAlarm {
   has ActionsEnabled => (is => 'ro', isa => 'Str');
@@ -185,7 +186,7 @@ class AWS::CloudWatch::PutMetricAlarm {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'PutMetricAlarm');
   has _returns => (isa => 'AWS::CloudWatch::PutMetricAlarmResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PutMetricAlarmResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'PutMetricAlarmResult');  
 }
 class AWS::CloudWatch::PutMetricData {
   has MetricData => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::MetricDatum]', required => 1);
@@ -193,7 +194,7 @@ class AWS::CloudWatch::PutMetricData {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'PutMetricData');
   has _returns => (isa => 'AWS::CloudWatch::PutMetricDataResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PutMetricDataResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'PutMetricDataResult');  
 }
 class AWS::CloudWatch::SetAlarmState {
   has AlarmName => (is => 'ro', isa => 'Str', required => 1);
@@ -203,29 +204,33 @@ class AWS::CloudWatch::SetAlarmState {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SetAlarmState');
   has _returns => (isa => 'AWS::CloudWatch::SetAlarmStateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SetAlarmStateResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'SetAlarmStateResult');  
 }
 
 class AWS::CloudWatch::DescribeAlarmHistoryResult with AWS::API::ResultParser {
   has AlarmHistoryItems => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::AlarmHistoryItem]');
   has NextToken => (is => 'ro', isa => 'Str');
+
 }
 class AWS::CloudWatch::DescribeAlarmsResult with AWS::API::ResultParser {
   has MetricAlarms => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::MetricAlarm]');
   has NextToken => (is => 'ro', isa => 'Str');
+
 }
 class AWS::CloudWatch::DescribeAlarmsForMetricResult with AWS::API::ResultParser {
   has MetricAlarms => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::MetricAlarm]');
+
 }
 class AWS::CloudWatch::GetMetricStatisticsResult with AWS::API::ResultParser {
   has Datapoints => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::Datapoint]');
   has Label => (is => 'ro', isa => 'Str');
+
 }
 class AWS::CloudWatch::ListMetricsResult with AWS::API::ResultParser {
   has Metrics => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::Metric]');
   has NextToken => (is => 'ro', isa => 'Str');
-}
 
+}
 
 class AWS::CloudWatch with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'monitoring');
@@ -236,70 +241,59 @@ class AWS::CloudWatch with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, 
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
   method DescribeAlarmHistory (%args) {
     my $call = AWS::CloudWatch::DescribeAlarmHistory->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudWatch::DescribeAlarmHistoryResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DescribeAlarms (%args) {
     my $call = AWS::CloudWatch::DescribeAlarms->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudWatch::DescribeAlarmsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DescribeAlarmsForMetric (%args) {
     my $call = AWS::CloudWatch::DescribeAlarmsForMetric->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudWatch::DescribeAlarmsForMetricResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DisableAlarmActions (%args) {
     my $call = AWS::CloudWatch::DisableAlarmActions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
   method EnableAlarmActions (%args) {
     my $call = AWS::CloudWatch::EnableAlarmActions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
   method GetMetricStatistics (%args) {
     my $call = AWS::CloudWatch::GetMetricStatistics->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudWatch::GetMetricStatisticsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method ListMetrics (%args) {
     my $call = AWS::CloudWatch::ListMetrics->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudWatch::ListMetricsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method PutMetricAlarm (%args) {
     my $call = AWS::CloudWatch::PutMetricAlarm->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
   method PutMetricData (%args) {
     my $call = AWS::CloudWatch::PutMetricData->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
   method SetAlarmState (%args) {
     my $call = AWS::CloudWatch::SetAlarmState->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
 }

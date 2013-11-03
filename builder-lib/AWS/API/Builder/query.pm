@@ -10,7 +10,7 @@ class AWS::API::Builder::query {
   has api => (is => 'ro', required => 1);
   has service => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ endpoint_prefix } });
   has version => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ api_version } });
-  has operations => (is => 'ro', lazy => 1, default => sub { [ keys %{ $_[0]->struct->{operations} } ] });
+  has operations => (is => 'ro', lazy => 1, default => sub { [ sort keys %{ $_[0]->struct->{operations} } ] });
   has endpoint_role => (is => 'ro', lazy => 1, default => sub { defined $_[0]->struct->{ global_endpoint } ? 
                                                                    'AWS::API::SingleEndpointCaller':
                                                                    'AWS::API::RegionalEndpointCaller' 
@@ -27,29 +27,32 @@ class AWS::API::Builder::query {
     foreach my $op (sort @{ $self->operations }){
       my $operation = $self->operation($op);
       my $api_call = $operation->{name};
- 
-      if      (not keys %{$operation->{ input }}){
-        # There is no input class
-        $calls .= $self->make_call_class({ }, $api_call); 
+
+      if      (not keys %{$operation->{ input }}) {
+        # There is no input inner classes in a class with no memebers
       } elsif ($operation->{ input }{type} eq 'structure'){
-        $calls .= $self->make_call_class($operation->{ input }{members}, $api_call);
+        if (keys %{ $operation->{ input }{members} }){
+          foreach my $member (keys %{ $operation->{ input }{members} } ) {
+            $operation->{ input }{members}{ $member }->{perl_type} = $self->get_caller_class_type($operation->{ input }{members}{ $member });
+          }
+        }
       } else {
         die "Found an input that's not a structure " . Dumper($operation->{ input });
       }
       if      (not keys %{$operation->{ output }}){
         # There is no output class
       } elsif ($operation->{ output }{type} eq 'structure'){
-        $results .= $self->make_result_class($operation->{ output }{members}, $api_call);
+        foreach my $member (keys %{ $operation->{ output }{members} } ) {
+          $operation->{ output }{members}{ $member }->{perl_type} = $self->get_caller_class_type($operation->{ output }{members}{ $member });
+        }
       } else {
-        die "Found an input that's not a structure " . Dumper($operation);
+        die "Found an output that's not a structure " . Dumper($operation->{ output });
       } 
     }
 
     # First call may register more inner classes
     $self->make_inner_classes();
     my $inner_output .= $self->make_inner_classes();
-    my $calls_output .= $calls;
-    my $results_output .= $results;
 
     my $class = q#
 use MooseX::Declare;
@@ -62,8 +65,31 @@ enum '[% enum_name %]', [qw([% FOR val IN c.enums.$enum_name %][% val %] [% END 
 [% END %]
 
 [% inner_output %]
-[% calls_output %]
-[% results_output %]
+
+[%- FOREACH op_name IN c.operations %]
+[%- operation = c.operation(op_name) %]
+class [% c.api %]::[% operation.name %] {
+[% FOREACH param_name IN operation.input.members.keys.sort -%]
+  has [% param_name %] => (is => 'ro', isa => '[% operation.input.members.$param_name.perl_type %]'
+  [%- IF (operation.input.members.$param_name.required) %], required => 1[% END %]);
+[% END %]
+  has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
+  has _returns => (isa => '[% c.api %]::[% op_name %]Result', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => '[% op_name %]Result');  
+}
+[%- END %]
+
+[%- FOREACH op_name IN c.operations %]
+[%- operation = c.operation(op_name) %]
+[%- IF (operation.output.keys.size) %]
+class [% c.api %]::[% operation.name %]Result with AWS::API::ResultParser {
+[% FOREACH param_name IN operation.output.members.keys.sort -%]
+  has [% param_name %] => (is => 'ro', isa => '[% operation.output.members.$param_name.perl_type %]'
+  [%- IF (operation.output.members.$param_name.required) %], required => 1[% END %]);
+[% END %]
+}
+[%- END %]
+[%- END %]
 
 class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_role %], [% c.parameter_role %]) {
   has service => (is => 'ro', isa => 'Str', default => '[% c.service %]');
@@ -80,40 +106,15 @@ class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_
     return 1
     [%- END %]
   }
-  [% END %]
+  [%- END %]
 }
 #;
     return $self->process_template($class, { c => $self, 
                                              inner_output => $inner_output,
-                                             calls_output => $calls_output,
-                                             results_output => $results_output,
     });
 
 
     return $output;
-  }
-
-  method make_call_class ($members, $api_call) {
-      my $api = $self->api;
-      my $class = "${api}::${api_call}";
-      my $output;
-      $output .= "class $class {\n";
-      foreach my $param_name (sort keys %$members){
-        my $param_props = $members->{ $param_name };
-        my $type = eval { $self->get_caller_class_type($param_props) };
-        if ($@) { die "In input class $class: $@"; }
-        $output .= "  has $param_name => (is => 'ro', isa => '$type'";
-        $output .= ", required => 1" if (defined $param_props->{required} and $param_props->{required} == 1);
-        $output .= ");\n";
-      }
-  
-      $output .= "\n";
-      $output .= "  has _api_call => (isa => 'Str', is => 'ro', default => '$api_call');\n";
-      $output .= "  has _returns => (isa => '${api}::${api_call}Result', is => 'ro');\n";
-      $output .= "  has _result_key => (isa => 'Str', is => 'ro', default => '${api_call}Result');\n";
-      $output .= "}\n";
-  
-      return $output;
   }
 
   method make_result_class ($members, $api_call) {

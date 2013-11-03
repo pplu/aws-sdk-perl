@@ -211,6 +211,7 @@ class AWS::RedShift::VpcSecurityGroupMembership with (AWS::API::ResultParser, AW
 }
 
 
+
 class AWS::RedShift::AuthorizeClusterSecurityGroupIngress {
   has CIDRIP => (is => 'ro', isa => 'Str');
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -219,7 +220,7 @@ class AWS::RedShift::AuthorizeClusterSecurityGroupIngress {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeClusterSecurityGroupIngress');
   has _returns => (isa => 'AWS::RedShift::AuthorizeClusterSecurityGroupIngressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeClusterSecurityGroupIngressResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeClusterSecurityGroupIngressResult');  
 }
 class AWS::RedShift::AuthorizeSnapshotAccess {
   has AccountWithRestoreAccess => (is => 'ro', isa => 'Str', required => 1);
@@ -228,7 +229,7 @@ class AWS::RedShift::AuthorizeSnapshotAccess {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeSnapshotAccess');
   has _returns => (isa => 'AWS::RedShift::AuthorizeSnapshotAccessResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeSnapshotAccessResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeSnapshotAccessResult');  
 }
 class AWS::RedShift::CopyClusterSnapshot {
   has SourceSnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
@@ -237,7 +238,7 @@ class AWS::RedShift::CopyClusterSnapshot {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CopyClusterSnapshot');
   has _returns => (isa => 'AWS::RedShift::CopyClusterSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CopyClusterSnapshotResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CopyClusterSnapshotResult');  
 }
 class AWS::RedShift::CreateCluster {
   has AllowVersionUpgrade => (is => 'ro', isa => 'Str');
@@ -251,8 +252,8 @@ class AWS::RedShift::CreateCluster {
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has DBName => (is => 'ro', isa => 'Str');
   has Encrypted => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
   has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
+  has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
   has NodeType => (is => 'ro', isa => 'Str', required => 1);
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
@@ -262,7 +263,7 @@ class AWS::RedShift::CreateCluster {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
   has _returns => (isa => 'AWS::RedShift::CreateClusterResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterResult');  
 }
 class AWS::RedShift::CreateClusterParameterGroup {
   has Description => (is => 'ro', isa => 'Str', required => 1);
@@ -271,7 +272,7 @@ class AWS::RedShift::CreateClusterParameterGroup {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterParameterGroup');
   has _returns => (isa => 'AWS::RedShift::CreateClusterParameterGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterParameterGroupResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterParameterGroupResult');  
 }
 class AWS::RedShift::CreateClusterSecurityGroup {
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -279,7 +280,7 @@ class AWS::RedShift::CreateClusterSecurityGroup {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterSecurityGroup');
   has _returns => (isa => 'AWS::RedShift::CreateClusterSecurityGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSecurityGroupResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSecurityGroupResult');  
 }
 class AWS::RedShift::CreateClusterSnapshot {
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -287,7 +288,7 @@ class AWS::RedShift::CreateClusterSnapshot {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterSnapshot');
   has _returns => (isa => 'AWS::RedShift::CreateClusterSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSnapshotResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSnapshotResult');  
 }
 class AWS::RedShift::CreateClusterSubnetGroup {
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -296,7 +297,7 @@ class AWS::RedShift::CreateClusterSubnetGroup {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterSubnetGroup');
   has _returns => (isa => 'AWS::RedShift::CreateClusterSubnetGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSubnetGroupResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSubnetGroupResult');  
 }
 class AWS::RedShift::DeleteCluster {
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -305,21 +306,21 @@ class AWS::RedShift::DeleteCluster {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCluster');
   has _returns => (isa => 'AWS::RedShift::DeleteClusterResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterResult');  
 }
 class AWS::RedShift::DeleteClusterParameterGroup {
   has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterParameterGroup');
   has _returns => (isa => 'AWS::RedShift::DeleteClusterParameterGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterParameterGroupResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterParameterGroupResult');  
 }
 class AWS::RedShift::DeleteClusterSecurityGroup {
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterSecurityGroup');
   has _returns => (isa => 'AWS::RedShift::DeleteClusterSecurityGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterSecurityGroupResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterSecurityGroupResult');  
 }
 class AWS::RedShift::DeleteClusterSnapshot {
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
@@ -327,14 +328,14 @@ class AWS::RedShift::DeleteClusterSnapshot {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterSnapshot');
   has _returns => (isa => 'AWS::RedShift::DeleteClusterSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterSnapshotResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterSnapshotResult');  
 }
 class AWS::RedShift::DeleteClusterSubnetGroup {
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterSubnetGroup');
   has _returns => (isa => 'AWS::RedShift::DeleteClusterSubnetGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterSubnetGroupResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterSubnetGroupResult');  
 }
 class AWS::RedShift::DescribeClusterParameterGroups {
   has Marker => (is => 'ro', isa => 'Str');
@@ -343,7 +344,7 @@ class AWS::RedShift::DescribeClusterParameterGroups {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterParameterGroups');
   has _returns => (isa => 'AWS::RedShift::DescribeClusterParameterGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterParameterGroupsResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterParameterGroupsResult');  
 }
 class AWS::RedShift::DescribeClusterParameters {
   has Marker => (is => 'ro', isa => 'Str');
@@ -353,7 +354,7 @@ class AWS::RedShift::DescribeClusterParameters {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterParameters');
   has _returns => (isa => 'AWS::RedShift::DescribeClusterParametersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterParametersResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterParametersResult');  
 }
 class AWS::RedShift::DescribeClusterSecurityGroups {
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str');
@@ -362,7 +363,7 @@ class AWS::RedShift::DescribeClusterSecurityGroups {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterSecurityGroups');
   has _returns => (isa => 'AWS::RedShift::DescribeClusterSecurityGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterSecurityGroupsResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterSecurityGroupsResult');  
 }
 class AWS::RedShift::DescribeClusterSnapshots {
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
@@ -376,7 +377,7 @@ class AWS::RedShift::DescribeClusterSnapshots {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterSnapshots');
   has _returns => (isa => 'AWS::RedShift::DescribeClusterSnapshotsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterSnapshotsResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterSnapshotsResult');  
 }
 class AWS::RedShift::DescribeClusterSubnetGroups {
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
@@ -385,7 +386,7 @@ class AWS::RedShift::DescribeClusterSubnetGroups {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterSubnetGroups');
   has _returns => (isa => 'AWS::RedShift::DescribeClusterSubnetGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterSubnetGroupsResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterSubnetGroupsResult');  
 }
 class AWS::RedShift::DescribeClusterVersions {
   has ClusterParameterGroupFamily => (is => 'ro', isa => 'Str');
@@ -395,7 +396,7 @@ class AWS::RedShift::DescribeClusterVersions {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterVersions');
   has _returns => (isa => 'AWS::RedShift::DescribeClusterVersionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterVersionsResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterVersionsResult');  
 }
 class AWS::RedShift::DescribeClusters {
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
@@ -404,7 +405,7 @@ class AWS::RedShift::DescribeClusters {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusters');
   has _returns => (isa => 'AWS::RedShift::DescribeClustersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClustersResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClustersResult');  
 }
 class AWS::RedShift::DescribeDefaultClusterParameters {
   has Marker => (is => 'ro', isa => 'Str');
@@ -413,7 +414,7 @@ class AWS::RedShift::DescribeDefaultClusterParameters {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDefaultClusterParameters');
   has _returns => (isa => 'AWS::RedShift::DescribeDefaultClusterParametersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDefaultClusterParametersResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDefaultClusterParametersResult');  
 }
 class AWS::RedShift::DescribeEvents {
   has Duration => (is => 'ro', isa => 'Int');
@@ -426,7 +427,7 @@ class AWS::RedShift::DescribeEvents {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEvents');
   has _returns => (isa => 'AWS::RedShift::DescribeEventsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');  
 }
 class AWS::RedShift::DescribeOrderableClusterOptions {
   has ClusterVersion => (is => 'ro', isa => 'Str');
@@ -436,7 +437,7 @@ class AWS::RedShift::DescribeOrderableClusterOptions {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOrderableClusterOptions');
   has _returns => (isa => 'AWS::RedShift::DescribeOrderableClusterOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOrderableClusterOptionsResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOrderableClusterOptionsResult');  
 }
 class AWS::RedShift::DescribeReservedNodeOfferings {
   has Marker => (is => 'ro', isa => 'Str');
@@ -445,7 +446,7 @@ class AWS::RedShift::DescribeReservedNodeOfferings {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodeOfferings');
   has _returns => (isa => 'AWS::RedShift::DescribeReservedNodeOfferingsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodeOfferingsResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodeOfferingsResult');  
 }
 class AWS::RedShift::DescribeReservedNodes {
   has Marker => (is => 'ro', isa => 'Str');
@@ -454,14 +455,14 @@ class AWS::RedShift::DescribeReservedNodes {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodes');
   has _returns => (isa => 'AWS::RedShift::DescribeReservedNodesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodesResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodesResult');  
 }
 class AWS::RedShift::DescribeResize {
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeResize');
   has _returns => (isa => 'AWS::RedShift::DescribeResizeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeResizeResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeResizeResult');  
 }
 class AWS::RedShift::ModifyCluster {
   has AllowVersionUpgrade => (is => 'ro', isa => 'Str');
@@ -479,7 +480,7 @@ class AWS::RedShift::ModifyCluster {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCluster');
   has _returns => (isa => 'AWS::RedShift::ModifyClusterResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterResult');  
 }
 class AWS::RedShift::ModifyClusterParameterGroup {
   has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -487,7 +488,7 @@ class AWS::RedShift::ModifyClusterParameterGroup {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyClusterParameterGroup');
   has _returns => (isa => 'AWS::RedShift::ModifyClusterParameterGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterParameterGroupResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterParameterGroupResult');  
 }
 class AWS::RedShift::ModifyClusterSubnetGroup {
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -496,7 +497,7 @@ class AWS::RedShift::ModifyClusterSubnetGroup {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyClusterSubnetGroup');
   has _returns => (isa => 'AWS::RedShift::ModifyClusterSubnetGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterSubnetGroupResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterSubnetGroupResult');  
 }
 class AWS::RedShift::PurchaseReservedNodeOffering {
   has NodeCount => (is => 'ro', isa => 'Int');
@@ -504,14 +505,14 @@ class AWS::RedShift::PurchaseReservedNodeOffering {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedNodeOffering');
   has _returns => (isa => 'AWS::RedShift::PurchaseReservedNodeOfferingResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedNodeOfferingResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedNodeOfferingResult');  
 }
 class AWS::RedShift::RebootCluster {
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RebootCluster');
   has _returns => (isa => 'AWS::RedShift::RebootClusterResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RebootClusterResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'RebootClusterResult');  
 }
 class AWS::RedShift::ResetClusterParameterGroup {
   has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -520,7 +521,7 @@ class AWS::RedShift::ResetClusterParameterGroup {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ResetClusterParameterGroup');
   has _returns => (isa => 'AWS::RedShift::ResetClusterParameterGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ResetClusterParameterGroupResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ResetClusterParameterGroupResult');  
 }
 class AWS::RedShift::RestoreFromClusterSnapshot {
   has AllowVersionUpgrade => (is => 'ro', isa => 'Str');
@@ -535,7 +536,7 @@ class AWS::RedShift::RestoreFromClusterSnapshot {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreFromClusterSnapshot');
   has _returns => (isa => 'AWS::RedShift::RestoreFromClusterSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreFromClusterSnapshotResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreFromClusterSnapshotResult');  
 }
 class AWS::RedShift::RevokeClusterSecurityGroupIngress {
   has CIDRIP => (is => 'ro', isa => 'Str');
@@ -545,7 +546,7 @@ class AWS::RedShift::RevokeClusterSecurityGroupIngress {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeClusterSecurityGroupIngress');
   has _returns => (isa => 'AWS::RedShift::RevokeClusterSecurityGroupIngressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeClusterSecurityGroupIngressResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeClusterSecurityGroupIngressResult');  
 }
 class AWS::RedShift::RevokeSnapshotAccess {
   has AccountWithRestoreAccess => (is => 'ro', isa => 'Str', required => 1);
@@ -554,85 +555,107 @@ class AWS::RedShift::RevokeSnapshotAccess {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeSnapshotAccess');
   has _returns => (isa => 'AWS::RedShift::RevokeSnapshotAccessResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeSnapshotAccessResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeSnapshotAccessResult');  
 }
 
 class AWS::RedShift::AuthorizeClusterSecurityGroupIngressResult with AWS::API::ResultParser {
   has ClusterSecurityGroup => (is => 'ro', isa => 'AWS::RedShift::ClusterSecurityGroup');
+
 }
 class AWS::RedShift::AuthorizeSnapshotAccessResult with AWS::API::ResultParser {
   has Snapshot => (is => 'ro', isa => 'AWS::RedShift::Snapshot');
+
 }
 class AWS::RedShift::CopyClusterSnapshotResult with AWS::API::ResultParser {
   has Snapshot => (is => 'ro', isa => 'AWS::RedShift::Snapshot');
+
 }
 class AWS::RedShift::CreateClusterResult with AWS::API::ResultParser {
   has Cluster => (is => 'ro', isa => 'AWS::RedShift::Cluster');
+
 }
 class AWS::RedShift::CreateClusterParameterGroupResult with AWS::API::ResultParser {
   has ClusterParameterGroup => (is => 'ro', isa => 'AWS::RedShift::ClusterParameterGroup');
+
 }
 class AWS::RedShift::CreateClusterSecurityGroupResult with AWS::API::ResultParser {
   has ClusterSecurityGroup => (is => 'ro', isa => 'AWS::RedShift::ClusterSecurityGroup');
+
 }
 class AWS::RedShift::CreateClusterSnapshotResult with AWS::API::ResultParser {
   has Snapshot => (is => 'ro', isa => 'AWS::RedShift::Snapshot');
+
 }
 class AWS::RedShift::CreateClusterSubnetGroupResult with AWS::API::ResultParser {
   has ClusterSubnetGroup => (is => 'ro', isa => 'AWS::RedShift::ClusterSubnetGroup');
+
 }
 class AWS::RedShift::DeleteClusterResult with AWS::API::ResultParser {
   has Cluster => (is => 'ro', isa => 'AWS::RedShift::Cluster');
+
 }
 class AWS::RedShift::DeleteClusterSnapshotResult with AWS::API::ResultParser {
   has Snapshot => (is => 'ro', isa => 'AWS::RedShift::Snapshot');
+
 }
 class AWS::RedShift::DescribeClusterParameterGroupsResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
   has ParameterGroups => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::ClusterParameterGroup]');
+
 }
 class AWS::RedShift::DescribeClusterParametersResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::Parameter]');
+
 }
 class AWS::RedShift::DescribeClusterSecurityGroupsResult with AWS::API::ResultParser {
   has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::ClusterSecurityGroup]');
   has Marker => (is => 'ro', isa => 'Str');
+
 }
 class AWS::RedShift::DescribeClusterSnapshotsResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
   has Snapshots => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::Snapshot]');
+
 }
 class AWS::RedShift::DescribeClusterSubnetGroupsResult with AWS::API::ResultParser {
   has ClusterSubnetGroups => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::ClusterSubnetGroup]');
   has Marker => (is => 'ro', isa => 'Str');
+
 }
 class AWS::RedShift::DescribeClusterVersionsResult with AWS::API::ResultParser {
   has ClusterVersions => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::ClusterVersion]');
   has Marker => (is => 'ro', isa => 'Str');
+
 }
 class AWS::RedShift::DescribeClustersResult with AWS::API::ResultParser {
   has Clusters => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::Cluster]');
   has Marker => (is => 'ro', isa => 'Str');
+
 }
 class AWS::RedShift::DescribeDefaultClusterParametersResult with AWS::API::ResultParser {
   has DefaultClusterParameters => (is => 'ro', isa => 'AWS::RedShift::DefaultClusterParameters');
+
 }
 class AWS::RedShift::DescribeEventsResult with AWS::API::ResultParser {
   has Events => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::Event]');
   has Marker => (is => 'ro', isa => 'Str');
+
 }
 class AWS::RedShift::DescribeOrderableClusterOptionsResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
   has OrderableClusterOptions => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::OrderableClusterOption]');
+
 }
 class AWS::RedShift::DescribeReservedNodeOfferingsResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedNodeOfferings => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::ReservedNodeOffering]');
+
 }
 class AWS::RedShift::DescribeReservedNodesResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedNodes => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::ReservedNode]');
+
 }
 class AWS::RedShift::DescribeResizeResult with AWS::API::ResultParser {
   has ImportTablesCompleted => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -642,37 +665,46 @@ class AWS::RedShift::DescribeResizeResult with AWS::API::ResultParser {
   has TargetClusterType => (is => 'ro', isa => 'Str');
   has TargetNodeType => (is => 'ro', isa => 'Str');
   has TargetNumberOfNodes => (is => 'ro', isa => 'Int');
+
 }
 class AWS::RedShift::ModifyClusterResult with AWS::API::ResultParser {
   has Cluster => (is => 'ro', isa => 'AWS::RedShift::Cluster');
+
 }
 class AWS::RedShift::ModifyClusterParameterGroupResult with AWS::API::ResultParser {
   has ParameterGroupName => (is => 'ro', isa => 'Str');
   has ParameterGroupStatus => (is => 'ro', isa => 'Str');
+
 }
 class AWS::RedShift::ModifyClusterSubnetGroupResult with AWS::API::ResultParser {
   has ClusterSubnetGroup => (is => 'ro', isa => 'AWS::RedShift::ClusterSubnetGroup');
+
 }
 class AWS::RedShift::PurchaseReservedNodeOfferingResult with AWS::API::ResultParser {
   has ReservedNode => (is => 'ro', isa => 'AWS::RedShift::ReservedNode');
+
 }
 class AWS::RedShift::RebootClusterResult with AWS::API::ResultParser {
   has Cluster => (is => 'ro', isa => 'AWS::RedShift::Cluster');
+
 }
 class AWS::RedShift::ResetClusterParameterGroupResult with AWS::API::ResultParser {
   has ParameterGroupName => (is => 'ro', isa => 'Str');
   has ParameterGroupStatus => (is => 'ro', isa => 'Str');
+
 }
 class AWS::RedShift::RestoreFromClusterSnapshotResult with AWS::API::ResultParser {
   has Cluster => (is => 'ro', isa => 'AWS::RedShift::Cluster');
+
 }
 class AWS::RedShift::RevokeClusterSecurityGroupIngressResult with AWS::API::ResultParser {
   has ClusterSecurityGroup => (is => 'ro', isa => 'AWS::RedShift::ClusterSecurityGroup');
+
 }
 class AWS::RedShift::RevokeSnapshotAccessResult with AWS::API::ResultParser {
   has Snapshot => (is => 'ro', isa => 'AWS::RedShift::Snapshot');
-}
 
+}
 
 class AWS::RedShift with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'redshift');
@@ -684,240 +716,205 @@ class AWS::RedShift with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
     my $o_result = AWS::RedShift::AuthorizeClusterSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method AuthorizeSnapshotAccess (%args) {
     my $call = AWS::RedShift::AuthorizeSnapshotAccess->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::AuthorizeSnapshotAccessResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method CopyClusterSnapshot (%args) {
     my $call = AWS::RedShift::CopyClusterSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::CopyClusterSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method CreateCluster (%args) {
     my $call = AWS::RedShift::CreateCluster->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::CreateClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method CreateClusterParameterGroup (%args) {
     my $call = AWS::RedShift::CreateClusterParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::CreateClusterParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method CreateClusterSecurityGroup (%args) {
     my $call = AWS::RedShift::CreateClusterSecurityGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::CreateClusterSecurityGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method CreateClusterSnapshot (%args) {
     my $call = AWS::RedShift::CreateClusterSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::CreateClusterSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method CreateClusterSubnetGroup (%args) {
     my $call = AWS::RedShift::CreateClusterSubnetGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::CreateClusterSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DeleteCluster (%args) {
     my $call = AWS::RedShift::DeleteCluster->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DeleteClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DeleteClusterParameterGroup (%args) {
     my $call = AWS::RedShift::DeleteClusterParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
   method DeleteClusterSecurityGroup (%args) {
     my $call = AWS::RedShift::DeleteClusterSecurityGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
   method DeleteClusterSnapshot (%args) {
     my $call = AWS::RedShift::DeleteClusterSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DeleteClusterSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DeleteClusterSubnetGroup (%args) {
     my $call = AWS::RedShift::DeleteClusterSubnetGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
   method DescribeClusterParameterGroups (%args) {
     my $call = AWS::RedShift::DescribeClusterParameterGroups->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeClusterParameterGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DescribeClusterParameters (%args) {
     my $call = AWS::RedShift::DescribeClusterParameters->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeClusterParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DescribeClusters (%args) {
     my $call = AWS::RedShift::DescribeClusters->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeClustersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DescribeClusterSecurityGroups (%args) {
     my $call = AWS::RedShift::DescribeClusterSecurityGroups->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeClusterSecurityGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DescribeClusterSnapshots (%args) {
     my $call = AWS::RedShift::DescribeClusterSnapshots->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeClusterSnapshotsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DescribeClusterSubnetGroups (%args) {
     my $call = AWS::RedShift::DescribeClusterSubnetGroups->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeClusterSubnetGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DescribeClusterVersions (%args) {
     my $call = AWS::RedShift::DescribeClusterVersions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeClusterVersionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DescribeDefaultClusterParameters (%args) {
     my $call = AWS::RedShift::DescribeDefaultClusterParameters->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeDefaultClusterParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DescribeEvents (%args) {
     my $call = AWS::RedShift::DescribeEvents->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeEventsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DescribeOrderableClusterOptions (%args) {
     my $call = AWS::RedShift::DescribeOrderableClusterOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeOrderableClusterOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DescribeReservedNodeOfferings (%args) {
     my $call = AWS::RedShift::DescribeReservedNodeOfferings->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeReservedNodeOfferingsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DescribeReservedNodes (%args) {
     my $call = AWS::RedShift::DescribeReservedNodes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeReservedNodesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DescribeResize (%args) {
     my $call = AWS::RedShift::DescribeResize->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeResizeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method ModifyCluster (%args) {
     my $call = AWS::RedShift::ModifyCluster->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::ModifyClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method ModifyClusterParameterGroup (%args) {
     my $call = AWS::RedShift::ModifyClusterParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::ModifyClusterParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method ModifyClusterSubnetGroup (%args) {
     my $call = AWS::RedShift::ModifyClusterSubnetGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::ModifyClusterSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method PurchaseReservedNodeOffering (%args) {
     my $call = AWS::RedShift::PurchaseReservedNodeOffering->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::PurchaseReservedNodeOfferingResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method RebootCluster (%args) {
     my $call = AWS::RedShift::RebootCluster->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::RebootClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method ResetClusterParameterGroup (%args) {
     my $call = AWS::RedShift::ResetClusterParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::ResetClusterParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method RestoreFromClusterSnapshot (%args) {
     my $call = AWS::RedShift::RestoreFromClusterSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::RestoreFromClusterSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method RevokeClusterSecurityGroupIngress (%args) {
     my $call = AWS::RedShift::RevokeClusterSecurityGroupIngress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::RevokeClusterSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method RevokeSnapshotAccess (%args) {
     my $call = AWS::RedShift::RevokeSnapshotAccess->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::RevokeSnapshotAccessResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
 }

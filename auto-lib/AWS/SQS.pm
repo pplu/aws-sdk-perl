@@ -65,15 +65,16 @@ class AWS::SQS::SendMessageBatchResultEntry with (AWS::API::ResultParser, AWS::A
 }
 
 
+
 class AWS::SQS::AddPermission {
-  has AWSAccountIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has Actions => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has AWSAccountIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has Label => (is => 'ro', isa => 'Str', required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'AddPermission');
   has _returns => (isa => 'AWS::SQS::AddPermissionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AddPermissionResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'AddPermissionResult');  
 }
 class AWS::SQS::ChangeMessageVisibility {
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
@@ -82,7 +83,7 @@ class AWS::SQS::ChangeMessageVisibility {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibility');
   has _returns => (isa => 'AWS::SQS::ChangeMessageVisibilityResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityResult');  
 }
 class AWS::SQS::ChangeMessageVisibilityBatch {
   has Entries => (is => 'ro', isa => 'ArrayRef[AWS::SQS::ChangeMessageVisibilityBatchRequestEntry]', required => 1);
@@ -90,7 +91,7 @@ class AWS::SQS::ChangeMessageVisibilityBatch {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityBatch');
   has _returns => (isa => 'AWS::SQS::ChangeMessageVisibilityBatchResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityBatchResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityBatchResult');  
 }
 class AWS::SQS::CreateQueue {
   has Attributes => (is => 'ro', isa => 'AWS::SQS::AttributeMap');
@@ -98,7 +99,7 @@ class AWS::SQS::CreateQueue {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateQueue');
   has _returns => (isa => 'AWS::SQS::CreateQueueResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateQueueResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateQueueResult');  
 }
 class AWS::SQS::DeleteMessage {
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
@@ -106,7 +107,7 @@ class AWS::SQS::DeleteMessage {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMessage');
   has _returns => (isa => 'AWS::SQS::DeleteMessageResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteMessageResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteMessageResult');  
 }
 class AWS::SQS::DeleteMessageBatch {
   has Entries => (is => 'ro', isa => 'ArrayRef[AWS::SQS::DeleteMessageBatchRequestEntry]', required => 1);
@@ -114,14 +115,14 @@ class AWS::SQS::DeleteMessageBatch {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMessageBatch');
   has _returns => (isa => 'AWS::SQS::DeleteMessageBatchResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteMessageBatchResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteMessageBatchResult');  
 }
 class AWS::SQS::DeleteQueue {
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteQueue');
   has _returns => (isa => 'AWS::SQS::DeleteQueueResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteQueueResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteQueueResult');  
 }
 class AWS::SQS::GetQueueAttributes {
   has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -129,7 +130,7 @@ class AWS::SQS::GetQueueAttributes {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetQueueAttributes');
   has _returns => (isa => 'AWS::SQS::GetQueueAttributesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetQueueAttributesResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'GetQueueAttributesResult');  
 }
 class AWS::SQS::GetQueueUrl {
   has QueueName => (is => 'ro', isa => 'Str', required => 1);
@@ -137,14 +138,14 @@ class AWS::SQS::GetQueueUrl {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetQueueUrl');
   has _returns => (isa => 'AWS::SQS::GetQueueUrlResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetQueueUrlResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'GetQueueUrlResult');  
 }
 class AWS::SQS::ListQueues {
   has QueueNamePrefix => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListQueues');
   has _returns => (isa => 'AWS::SQS::ListQueuesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListQueuesResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ListQueuesResult');  
 }
 class AWS::SQS::ReceiveMessage {
   has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -155,7 +156,7 @@ class AWS::SQS::ReceiveMessage {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ReceiveMessage');
   has _returns => (isa => 'AWS::SQS::ReceiveMessageResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ReceiveMessageResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ReceiveMessageResult');  
 }
 class AWS::SQS::RemovePermission {
   has Label => (is => 'ro', isa => 'Str', required => 1);
@@ -163,7 +164,7 @@ class AWS::SQS::RemovePermission {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RemovePermission');
   has _returns => (isa => 'AWS::SQS::RemovePermissionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RemovePermissionResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'RemovePermissionResult');  
 }
 class AWS::SQS::SendMessage {
   has DelaySeconds => (is => 'ro', isa => 'Int');
@@ -172,7 +173,7 @@ class AWS::SQS::SendMessage {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SendMessage');
   has _returns => (isa => 'AWS::SQS::SendMessageResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SendMessageResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'SendMessageResult');  
 }
 class AWS::SQS::SendMessageBatch {
   has Entries => (is => 'ro', isa => 'ArrayRef[AWS::SQS::SendMessageBatchRequestEntry]', required => 1);
@@ -180,7 +181,7 @@ class AWS::SQS::SendMessageBatch {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SendMessageBatch');
   has _returns => (isa => 'AWS::SQS::SendMessageBatchResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SendMessageBatchResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'SendMessageBatchResult');  
 }
 class AWS::SQS::SetQueueAttributes {
   has Attributes => (is => 'ro', isa => 'AWS::SQS::AttributeMap', required => 1);
@@ -188,41 +189,49 @@ class AWS::SQS::SetQueueAttributes {
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SetQueueAttributes');
   has _returns => (isa => 'AWS::SQS::SetQueueAttributesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SetQueueAttributesResult');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'SetQueueAttributesResult');  
 }
 
 class AWS::SQS::ChangeMessageVisibilityBatchResult with AWS::API::ResultParser {
   has Failed => (is => 'ro', isa => 'ArrayRef[AWS::SQS::BatchResultErrorEntry]', required => 1);
   has Successful => (is => 'ro', isa => 'ArrayRef[AWS::SQS::ChangeMessageVisibilityBatchResultEntry]', required => 1);
+
 }
 class AWS::SQS::CreateQueueResult with AWS::API::ResultParser {
   has QueueUrl => (is => 'ro', isa => 'Str');
+
 }
 class AWS::SQS::DeleteMessageBatchResult with AWS::API::ResultParser {
   has Failed => (is => 'ro', isa => 'ArrayRef[AWS::SQS::BatchResultErrorEntry]', required => 1);
   has Successful => (is => 'ro', isa => 'ArrayRef[AWS::SQS::DeleteMessageBatchResultEntry]', required => 1);
+
 }
 class AWS::SQS::GetQueueAttributesResult with AWS::API::ResultParser {
   has Attributes => (is => 'ro', isa => 'AWS::SQS::AttributeMap');
+
 }
 class AWS::SQS::GetQueueUrlResult with AWS::API::ResultParser {
   has QueueUrl => (is => 'ro', isa => 'Str');
+
 }
 class AWS::SQS::ListQueuesResult with AWS::API::ResultParser {
   has QueueUrls => (is => 'ro', isa => 'ArrayRef[Str]');
+
 }
 class AWS::SQS::ReceiveMessageResult with AWS::API::ResultParser {
   has Messages => (is => 'ro', isa => 'ArrayRef[AWS::SQS::Message]');
+
 }
 class AWS::SQS::SendMessageResult with AWS::API::ResultParser {
   has MD5OfMessageBody => (is => 'ro', isa => 'Str');
   has MessageId => (is => 'ro', isa => 'Str');
+
 }
 class AWS::SQS::SendMessageBatchResult with AWS::API::ResultParser {
   has Failed => (is => 'ro', isa => 'ArrayRef[AWS::SQS::BatchResultErrorEntry]', required => 1);
   has Successful => (is => 'ro', isa => 'ArrayRef[AWS::SQS::SendMessageBatchResultEntry]', required => 1);
-}
 
+}
 
 class AWS::SQS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'sqs');
@@ -233,98 +242,83 @@ class AWS::SQS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
   method ChangeMessageVisibility (%args) {
     my $call = AWS::SQS::ChangeMessageVisibility->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
   method ChangeMessageVisibilityBatch (%args) {
     my $call = AWS::SQS::ChangeMessageVisibilityBatch->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::SQS::ChangeMessageVisibilityBatchResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method CreateQueue (%args) {
     my $call = AWS::SQS::CreateQueue->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::SQS::CreateQueueResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DeleteMessage (%args) {
     my $call = AWS::SQS::DeleteMessage->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
   method DeleteMessageBatch (%args) {
     my $call = AWS::SQS::DeleteMessageBatch->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::SQS::DeleteMessageBatchResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method DeleteQueue (%args) {
     my $call = AWS::SQS::DeleteQueue->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
   method GetQueueAttributes (%args) {
     my $call = AWS::SQS::GetQueueAttributes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::SQS::GetQueueAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method GetQueueUrl (%args) {
     my $call = AWS::SQS::GetQueueUrl->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::SQS::GetQueueUrlResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method ListQueues (%args) {
     my $call = AWS::SQS::ListQueues->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::SQS::ListQueuesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method ReceiveMessage (%args) {
     my $call = AWS::SQS::ReceiveMessage->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::SQS::ReceiveMessageResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method RemovePermission (%args) {
     my $call = AWS::SQS::RemovePermission->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
   method SendMessage (%args) {
     my $call = AWS::SQS::SendMessage->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::SQS::SendMessageResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method SendMessageBatch (%args) {
     my $call = AWS::SQS::SendMessageBatch->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::SQS::SendMessageBatchResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  
   method SetQueueAttributes (%args) {
     my $call = AWS::SQS::SetQueueAttributes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  
 }
