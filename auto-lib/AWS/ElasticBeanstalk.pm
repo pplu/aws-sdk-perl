@@ -1,14 +1,16 @@
+
 use MooseX::Declare;
 use AWS::API;
-use Moose::Util::TypeConstraints;
 
-enum 'AWS::ElasticBeanstalk::ValidationSeverity', [qw(error warning)];
-enum 'AWS::ElasticBeanstalk::EnvironmentStatus', [qw(Launching Updating Ready Terminating Terminated)];
-enum 'AWS::ElasticBeanstalk::ConfigurationOptionValueType', [qw(Scalar List)];
-enum 'AWS::ElasticBeanstalk::EnvironmentHealth', [qw(Green Yellow Red Grey)];
-enum 'AWS::ElasticBeanstalk::EventSeverity', [qw(TRACE DEBUG INFO WARN ERROR FATAL)];
-enum 'AWS::ElasticBeanstalk::ConfigurationDeploymentStatus', [qw(deployed pending failed)];
-enum 'AWS::ElasticBeanstalk::EnvironmentInfoType', [qw(tail)];
+use Moose::Util::TypeConstraints;
+enum 'AWS::ElasticBeanstalk::ConfigurationDeploymentStatus', [qw(deployed pending failed )];
+enum 'AWS::ElasticBeanstalk::ConfigurationOptionValueType', [qw(Scalar List )];
+enum 'AWS::ElasticBeanstalk::EnvironmentHealth', [qw(Green Yellow Red Grey )];
+enum 'AWS::ElasticBeanstalk::EnvironmentInfoType', [qw(tail )];
+enum 'AWS::ElasticBeanstalk::EnvironmentStatus', [qw(Launching Updating Ready Terminating Terminated )];
+enum 'AWS::ElasticBeanstalk::EventSeverity', [qw(TRACE DEBUG INFO WARN ERROR FATAL )];
+enum 'AWS::ElasticBeanstalk::ValidationSeverity', [qw(error warning )];
+
 
 class AWS::ElasticBeanstalk::ApplicationDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ApplicationName => (is => 'ro', isa => 'Str');
@@ -165,6 +167,7 @@ class AWS::ElasticBeanstalk::ValidationMessage with (AWS::API::ResultParser, AWS
   has OptionName => (is => 'ro', isa => 'Str');
   has Severity => (is => 'ro', isa => 'AWS::ElasticBeanstalk::ValidationSeverity');
 }
+
 
 class AWS::ElasticBeanstalk::CheckDNSAvailability {
   has CNAMEPrefix => (is => 'ro', isa => 'Str', required => 1);
@@ -441,6 +444,7 @@ class AWS::ElasticBeanstalk::ValidateConfigurationSettings {
   has _returns => (isa => 'AWS::ElasticBeanstalk::ValidateConfigurationSettingsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ValidateConfigurationSettingsResult');
 }
+
 class AWS::ElasticBeanstalk::CheckDNSAvailabilityResult with AWS::API::ResultParser {
   has Available => (is => 'ro', isa => 'Str');
   has FullyQualifiedCNAME => (is => 'ro', isa => 'Str');
@@ -563,204 +567,205 @@ class AWS::ElasticBeanstalk::UpdateEnvironmentResult with AWS::API::ResultParser
 class AWS::ElasticBeanstalk::ValidateConfigurationSettingsResult with AWS::API::ResultParser {
   has Messages => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::ValidationMessage]');
 }
+
+
 class AWS::ElasticBeanstalk with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'elasticbeanstalk');
   has version => (is => 'ro', isa => 'Str', default => '2010-12-01');
-
+  
   method CheckDNSAvailability (%args) {
     my $call = AWS::ElasticBeanstalk::CheckDNSAvailability->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::CheckDNSAvailabilityResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateApplication (%args) {
     my $call = AWS::ElasticBeanstalk::CreateApplication->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::CreateApplicationResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateApplicationVersion (%args) {
     my $call = AWS::ElasticBeanstalk::CreateApplicationVersion->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::CreateApplicationVersionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateConfigurationTemplate (%args) {
     my $call = AWS::ElasticBeanstalk::CreateConfigurationTemplate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::CreateConfigurationTemplateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateEnvironment (%args) {
     my $call = AWS::ElasticBeanstalk::CreateEnvironment->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::CreateEnvironmentResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateStorageLocation (%args) {
     my $call = AWS::ElasticBeanstalk::CreateStorageLocation->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::CreateStorageLocationResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteApplication (%args) {
     my $call = AWS::ElasticBeanstalk::DeleteApplication->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteApplicationVersion (%args) {
     my $call = AWS::ElasticBeanstalk::DeleteApplicationVersion->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteConfigurationTemplate (%args) {
     my $call = AWS::ElasticBeanstalk::DeleteConfigurationTemplate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteEnvironmentConfiguration (%args) {
     my $call = AWS::ElasticBeanstalk::DeleteEnvironmentConfiguration->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
-  method DescribeApplicationVersions (%args) {
-    my $call = AWS::ElasticBeanstalk::DescribeApplicationVersions->new(%args);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::ElasticBeanstalk::DescribeApplicationVersionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
-
+  
   method DescribeApplications (%args) {
     my $call = AWS::ElasticBeanstalk::DescribeApplications->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::DescribeApplicationsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
+  method DescribeApplicationVersions (%args) {
+    my $call = AWS::ElasticBeanstalk::DescribeApplicationVersions->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::ElasticBeanstalk::DescribeApplicationVersionsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  
   method DescribeConfigurationOptions (%args) {
     my $call = AWS::ElasticBeanstalk::DescribeConfigurationOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::DescribeConfigurationOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeConfigurationSettings (%args) {
     my $call = AWS::ElasticBeanstalk::DescribeConfigurationSettings->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::DescribeConfigurationSettingsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeEnvironmentResources (%args) {
     my $call = AWS::ElasticBeanstalk::DescribeEnvironmentResources->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::DescribeEnvironmentResourcesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeEnvironments (%args) {
     my $call = AWS::ElasticBeanstalk::DescribeEnvironments->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::DescribeEnvironmentsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeEvents (%args) {
     my $call = AWS::ElasticBeanstalk::DescribeEvents->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::DescribeEventsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ListAvailableSolutionStacks (%args) {
     my $call = AWS::ElasticBeanstalk::ListAvailableSolutionStacks->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::ListAvailableSolutionStacksResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method RebuildEnvironment (%args) {
     my $call = AWS::ElasticBeanstalk::RebuildEnvironment->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method RequestEnvironmentInfo (%args) {
     my $call = AWS::ElasticBeanstalk::RequestEnvironmentInfo->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method RestartAppServer (%args) {
     my $call = AWS::ElasticBeanstalk::RestartAppServer->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method RetrieveEnvironmentInfo (%args) {
     my $call = AWS::ElasticBeanstalk::RetrieveEnvironmentInfo->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::RetrieveEnvironmentInfoResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method SwapEnvironmentCNAMEs (%args) {
     my $call = AWS::ElasticBeanstalk::SwapEnvironmentCNAMEs->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method TerminateEnvironment (%args) {
     my $call = AWS::ElasticBeanstalk::TerminateEnvironment->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::TerminateEnvironmentResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method UpdateApplication (%args) {
     my $call = AWS::ElasticBeanstalk::UpdateApplication->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::UpdateApplicationResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method UpdateApplicationVersion (%args) {
     my $call = AWS::ElasticBeanstalk::UpdateApplicationVersion->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::UpdateApplicationVersionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method UpdateConfigurationTemplate (%args) {
     my $call = AWS::ElasticBeanstalk::UpdateConfigurationTemplate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::UpdateConfigurationTemplateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method UpdateEnvironment (%args) {
     my $call = AWS::ElasticBeanstalk::UpdateEnvironment->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::UpdateEnvironmentResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ValidateConfigurationSettings (%args) {
     my $call = AWS::ElasticBeanstalk::ValidateConfigurationSettings->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ElasticBeanstalk::ValidateConfigurationSettingsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
 }
-

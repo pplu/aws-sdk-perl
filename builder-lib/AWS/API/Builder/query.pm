@@ -1,6 +1,7 @@
 use MooseX::Declare;
 class AWS::API::Builder::query {
 
+  use Template;
   use Data::Printer;
   use Data::Dumper;
   use Data::Compare;
@@ -23,8 +24,6 @@ class AWS::API::Builder::query {
     my $output = '';
     my ($calls, $results);
 
-    print $self->api . " has signature " . $self->signature_role . "\n";
-
     foreach my $op (sort @{ $self->operations }){
       my $operation = $self->operation($op);
       my $api_call = $operation->{name};
@@ -46,65 +45,54 @@ class AWS::API::Builder::query {
       } 
     }
 
-    $output .= "use MooseX::Declare;\n";
-    $output .= "use AWS::API;\n";
     # First call may register more inner classes
     $self->make_inner_classes();
     my $inner_output .= $self->make_inner_classes();
     my $calls_output .= $calls;
     my $results_output .= $results;
-    my $api_class_output .= $self->make_api_class;
 
-    my $types;
-    if (keys %{ $self->enums }){
-      $types = "use Moose::Util::TypeConstraints;\n\n";
-      foreach my $enum (keys %{ $self->enums }){
-        $types .= "enum '$enum', [qw(" . (join ' ', @{ $self->enums->{ $enum }  }) . ")];\n"
-      }
-      $types .= "\n";
-    } else {
-      $types = '';
-    }
+    my $class = q#
+use MooseX::Declare;
+use AWS::API;
+[% IF (c.enums.size) %]
+use Moose::Util::TypeConstraints;
+[%- FOR enum_name IN c.enums.keys.sort %]
+enum '[% enum_name %]', [qw([% FOR val IN c.enums.$enum_name %][% val %] [% END %])];
+[%- END %]
+[% END %]
 
-    $output .= $types;
-    $output .= $inner_output;
-    $output .= $calls_output;    
-    $output .= $results_output;    
-    $output .= $api_class_output;
+[% inner_output %]
+[% calls_output %]
+[% results_output %]
+
+class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_role %], [% c.parameter_role %]) {
+  has service => (is => 'ro', isa => 'Str', default => '[% c.service %]');
+  has version => (is => 'ro', isa => 'Str', default => '[% c.version %]');
+  [% FOR op IN c.struct.operations.keys.sort %]
+  [%- op_name = c.struct.operations.$op.name %]
+  method [% op_name %] (%args) {
+    my $call = [% c.api %]::[% op_name %]->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    [%- IF (c.struct.operations.$op.output.size > 0) %]
+    my $o_result = [% c.api %]::[% op_name %]Result->from_result($result->{ $call->_result_key });
+    return $o_result;
+    [%- ELSE %]
+    return 1
+    [%- END %]
+  }
+  [% END %]
+}
+#;
+    return $self->process_template($class, { c => $self, 
+                                             inner_output => $inner_output,
+                                             calls_output => $calls_output,
+                                             results_output => $results_output,
+    });
+
 
     return $output;
   }
 
-  method make_api_class {
-    my $api = $self->api;
-    my $service = $self->service;
-    my $api_version = $self->version;
-
-    my $parameter_role = $self->parameter_role;
-    my $signature_role = $self->signature_role;
-    my $endpoint_role  = $self->endpoint_role;
-    my $output = '';
-    $output .= "class $api with (Net::AWS::Caller, $endpoint_role, $signature_role, $parameter_role) {\n";
-    $output .= "  has service => (is => 'ro', isa => 'Str', default => '$service');\n";
-    $output .= "  has version => (is => 'ro', isa => 'Str', default => '$api_version');\n\n";
-  
-    foreach my $op (sort keys %{ $self->struct->{operations} }){
-      my $op_name = $self->struct->{operations}->{$op}->{name};
-      $output .= "  method $op_name (%args) {\n";
-      $output .= "    my \$call = ${api}::${op_name}->new(\%args);\n";
-      $output .= "    my \$result = \$self->_api_caller(\$call->_api_call, \$call);\n";
-      if (keys %{ $self->struct->{operations}->{$op}->{output} } > 0){
-        $output .= "    my \$o_result = ${api}::${op_name}Result->from_result(\$result->{ \$call->_result_key });\n";
-        $output .= "    return \$o_result;\n";
-      } else {
-        $output .= "    return 1\n";
-      }
-      $output .= "  }\n\n";
-    } 
-    $output .= "}\n\n";
-    return $output;
-  }
-  
   method make_call_class ($members, $api_call) {
       my $api = $self->api;
       my $class = "${api}::${api_call}";
@@ -281,6 +269,13 @@ class AWS::API::Builder::query {
     }
     return $type;
   } 
+
+  method process_template ($template, $vars) {
+    my $tt = Template->new;
+    my $output = '';
+    $tt->process(\$template, $vars, \$output) || die $tt->error();
+    return $output;
+  }
 }
 
 1;

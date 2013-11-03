@@ -1,9 +1,11 @@
+
 use MooseX::Declare;
 use AWS::API;
-use Moose::Util::TypeConstraints;
 
-enum 'AWS::RDS::ApplyMethod', [qw(immediate pending-reboot)];
-enum 'AWS::RDS::SourceType', [qw(db-instance db-parameter-group db-security-group db-snapshot)];
+use Moose::Util::TypeConstraints;
+enum 'AWS::RDS::ApplyMethod', [qw(immediate pending-reboot )];
+enum 'AWS::RDS::SourceType', [qw(db-instance db-parameter-group db-security-group db-snapshot )];
+
 
 class AWS::RDS::AvailabilityZone with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Name => (is => 'ro', isa => 'Str');
@@ -332,6 +334,7 @@ class AWS::RDS::VpcSecurityGroupMembership with (AWS::API::ResultParser, AWS::AP
   has Status => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupId => (is => 'ro', isa => 'Str');
 }
+
 
 class AWS::RDS::AddSourceIdentifierToSubscription {
   has SourceIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -907,6 +910,7 @@ class AWS::RDS::RevokeDBSecurityGroupIngress {
   has _returns => (isa => 'AWS::RDS::RevokeDBSecurityGroupIngressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeDBSecurityGroupIngressResult');
 }
+
 class AWS::RDS::AddSourceIdentifierToSubscriptionResult with AWS::API::ResultParser {
   has EventSubscription => (is => 'ro', isa => 'AWS::RDS::EventSubscription');
 }
@@ -1062,367 +1066,368 @@ class AWS::RDS::RestoreDBInstanceToPointInTimeResult with AWS::API::ResultParser
 class AWS::RDS::RevokeDBSecurityGroupIngressResult with AWS::API::ResultParser {
   has DBSecurityGroup => (is => 'ro', isa => 'AWS::RDS::DBSecurityGroup');
 }
+
+
 class AWS::RDS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'rds');
   has version => (is => 'ro', isa => 'Str', default => '2013-05-15');
-
+  
   method AddSourceIdentifierToSubscription (%args) {
     my $call = AWS::RDS::AddSourceIdentifierToSubscription->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::AddSourceIdentifierToSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method AddTagsToResource (%args) {
     my $call = AWS::RDS::AddTagsToResource->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method AuthorizeDBSecurityGroupIngress (%args) {
     my $call = AWS::RDS::AuthorizeDBSecurityGroupIngress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::AuthorizeDBSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CopyDBSnapshot (%args) {
     my $call = AWS::RDS::CopyDBSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::CopyDBSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateDBInstance (%args) {
     my $call = AWS::RDS::CreateDBInstance->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::CreateDBInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateDBInstanceReadReplica (%args) {
     my $call = AWS::RDS::CreateDBInstanceReadReplica->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::CreateDBInstanceReadReplicaResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateDBParameterGroup (%args) {
     my $call = AWS::RDS::CreateDBParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::CreateDBParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateDBSecurityGroup (%args) {
     my $call = AWS::RDS::CreateDBSecurityGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::CreateDBSecurityGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateDBSnapshot (%args) {
     my $call = AWS::RDS::CreateDBSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::CreateDBSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateDBSubnetGroup (%args) {
     my $call = AWS::RDS::CreateDBSubnetGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::CreateDBSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateEventSubscription (%args) {
     my $call = AWS::RDS::CreateEventSubscription->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::CreateEventSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateOptionGroup (%args) {
     my $call = AWS::RDS::CreateOptionGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::CreateOptionGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteDBInstance (%args) {
     my $call = AWS::RDS::DeleteDBInstance->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DeleteDBInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteDBParameterGroup (%args) {
     my $call = AWS::RDS::DeleteDBParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteDBSecurityGroup (%args) {
     my $call = AWS::RDS::DeleteDBSecurityGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteDBSnapshot (%args) {
     my $call = AWS::RDS::DeleteDBSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DeleteDBSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteDBSubnetGroup (%args) {
     my $call = AWS::RDS::DeleteDBSubnetGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteEventSubscription (%args) {
     my $call = AWS::RDS::DeleteEventSubscription->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DeleteEventSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteOptionGroup (%args) {
     my $call = AWS::RDS::DeleteOptionGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DescribeDBEngineVersions (%args) {
     my $call = AWS::RDS::DescribeDBEngineVersions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeDBEngineVersionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeDBInstances (%args) {
     my $call = AWS::RDS::DescribeDBInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeDBInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeDBLogFiles (%args) {
     my $call = AWS::RDS::DescribeDBLogFiles->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeDBLogFilesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeDBParameterGroups (%args) {
     my $call = AWS::RDS::DescribeDBParameterGroups->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeDBParameterGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeDBParameters (%args) {
     my $call = AWS::RDS::DescribeDBParameters->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeDBParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeDBSecurityGroups (%args) {
     my $call = AWS::RDS::DescribeDBSecurityGroups->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeDBSecurityGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeDBSnapshots (%args) {
     my $call = AWS::RDS::DescribeDBSnapshots->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeDBSnapshotsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeDBSubnetGroups (%args) {
     my $call = AWS::RDS::DescribeDBSubnetGroups->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeDBSubnetGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeEngineDefaultParameters (%args) {
     my $call = AWS::RDS::DescribeEngineDefaultParameters->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeEngineDefaultParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeEventCategories (%args) {
     my $call = AWS::RDS::DescribeEventCategories->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeEventCategoriesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
-  method DescribeEventSubscriptions (%args) {
-    my $call = AWS::RDS::DescribeEventSubscriptions->new(%args);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::RDS::DescribeEventSubscriptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
-
+  
   method DescribeEvents (%args) {
     my $call = AWS::RDS::DescribeEvents->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeEventsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
+  method DescribeEventSubscriptions (%args) {
+    my $call = AWS::RDS::DescribeEventSubscriptions->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RDS::DescribeEventSubscriptionsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  
   method DescribeOptionGroupOptions (%args) {
     my $call = AWS::RDS::DescribeOptionGroupOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeOptionGroupOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeOptionGroups (%args) {
     my $call = AWS::RDS::DescribeOptionGroups->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeOptionGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeOrderableDBInstanceOptions (%args) {
     my $call = AWS::RDS::DescribeOrderableDBInstanceOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeOrderableDBInstanceOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeReservedDBInstances (%args) {
     my $call = AWS::RDS::DescribeReservedDBInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeReservedDBInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeReservedDBInstancesOfferings (%args) {
     my $call = AWS::RDS::DescribeReservedDBInstancesOfferings->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DescribeReservedDBInstancesOfferingsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DownloadDBLogFilePortion (%args) {
     my $call = AWS::RDS::DownloadDBLogFilePortion->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::DownloadDBLogFilePortionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ListTagsForResource (%args) {
     my $call = AWS::RDS::ListTagsForResource->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::ListTagsForResourceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ModifyDBInstance (%args) {
     my $call = AWS::RDS::ModifyDBInstance->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::ModifyDBInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ModifyDBParameterGroup (%args) {
     my $call = AWS::RDS::ModifyDBParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::ModifyDBParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ModifyDBSubnetGroup (%args) {
     my $call = AWS::RDS::ModifyDBSubnetGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::ModifyDBSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ModifyEventSubscription (%args) {
     my $call = AWS::RDS::ModifyEventSubscription->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::ModifyEventSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ModifyOptionGroup (%args) {
     my $call = AWS::RDS::ModifyOptionGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::ModifyOptionGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method PromoteReadReplica (%args) {
     my $call = AWS::RDS::PromoteReadReplica->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::PromoteReadReplicaResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method PurchaseReservedDBInstancesOffering (%args) {
     my $call = AWS::RDS::PurchaseReservedDBInstancesOffering->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::PurchaseReservedDBInstancesOfferingResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method RebootDBInstance (%args) {
     my $call = AWS::RDS::RebootDBInstance->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::RebootDBInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method RemoveSourceIdentifierFromSubscription (%args) {
     my $call = AWS::RDS::RemoveSourceIdentifierFromSubscription->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::RemoveSourceIdentifierFromSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method RemoveTagsFromResource (%args) {
     my $call = AWS::RDS::RemoveTagsFromResource->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method ResetDBParameterGroup (%args) {
     my $call = AWS::RDS::ResetDBParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::ResetDBParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method RestoreDBInstanceFromDBSnapshot (%args) {
     my $call = AWS::RDS::RestoreDBInstanceFromDBSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::RestoreDBInstanceFromDBSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method RestoreDBInstanceToPointInTime (%args) {
     my $call = AWS::RDS::RestoreDBInstanceToPointInTime->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::RestoreDBInstanceToPointInTimeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method RevokeDBSecurityGroupIngress (%args) {
     my $call = AWS::RDS::RevokeDBSecurityGroupIngress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RDS::RevokeDBSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
 }
-

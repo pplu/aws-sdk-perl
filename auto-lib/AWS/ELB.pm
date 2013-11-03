@@ -1,5 +1,8 @@
+
 use MooseX::Declare;
 use AWS::API;
+
+
 class AWS::ELB::BackendServerDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has InstancePort => (is => 'ro', isa => 'Int');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -96,6 +99,7 @@ class AWS::ELB::SourceSecurityGroup with (AWS::API::ResultParser, AWS::API::ToPa
   has GroupName => (is => 'ro', isa => 'Str');
   has OwnerAlias => (is => 'ro', isa => 'Str');
 }
+
 
 class AWS::ELB::ApplySecurityGroupsToLoadBalancer {
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
@@ -290,6 +294,7 @@ class AWS::ELB::SetLoadBalancerPoliciesOfListener {
   has _returns => (isa => 'AWS::ELB::SetLoadBalancerPoliciesOfListenerResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerPoliciesOfListenerResult');
 }
+
 class AWS::ELB::ApplySecurityGroupsToLoadBalancerResult with AWS::API::ResultParser {
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
 }
@@ -350,170 +355,171 @@ class AWS::ELB::SetLoadBalancerPoliciesForBackendServerResult with AWS::API::Res
 }
 class AWS::ELB::SetLoadBalancerPoliciesOfListenerResult with AWS::API::ResultParser {
 }
+
+
 class AWS::ELB with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'elasticloadbalancing');
   has version => (is => 'ro', isa => 'Str', default => '2012-06-01');
-
+  
   method ApplySecurityGroupsToLoadBalancer (%args) {
     my $call = AWS::ELB::ApplySecurityGroupsToLoadBalancer->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::ApplySecurityGroupsToLoadBalancerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method AttachLoadBalancerToSubnets (%args) {
     my $call = AWS::ELB::AttachLoadBalancerToSubnets->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::AttachLoadBalancerToSubnetsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ConfigureHealthCheck (%args) {
     my $call = AWS::ELB::ConfigureHealthCheck->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::ConfigureHealthCheckResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateAppCookieStickinessPolicy (%args) {
     my $call = AWS::ELB::CreateAppCookieStickinessPolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::CreateAppCookieStickinessPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateLBCookieStickinessPolicy (%args) {
     my $call = AWS::ELB::CreateLBCookieStickinessPolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::CreateLBCookieStickinessPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateLoadBalancer (%args) {
     my $call = AWS::ELB::CreateLoadBalancer->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::CreateLoadBalancerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateLoadBalancerListeners (%args) {
     my $call = AWS::ELB::CreateLoadBalancerListeners->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::CreateLoadBalancerListenersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateLoadBalancerPolicy (%args) {
     my $call = AWS::ELB::CreateLoadBalancerPolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::CreateLoadBalancerPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteLoadBalancer (%args) {
     my $call = AWS::ELB::DeleteLoadBalancer->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::DeleteLoadBalancerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteLoadBalancerListeners (%args) {
     my $call = AWS::ELB::DeleteLoadBalancerListeners->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::DeleteLoadBalancerListenersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteLoadBalancerPolicy (%args) {
     my $call = AWS::ELB::DeleteLoadBalancerPolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::DeleteLoadBalancerPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeregisterInstancesFromLoadBalancer (%args) {
     my $call = AWS::ELB::DeregisterInstancesFromLoadBalancer->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::DeregisterInstancesFromLoadBalancerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeInstanceHealth (%args) {
     my $call = AWS::ELB::DescribeInstanceHealth->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::DescribeInstanceHealthResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeLoadBalancerPolicies (%args) {
     my $call = AWS::ELB::DescribeLoadBalancerPolicies->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::DescribeLoadBalancerPoliciesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeLoadBalancerPolicyTypes (%args) {
     my $call = AWS::ELB::DescribeLoadBalancerPolicyTypes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::DescribeLoadBalancerPolicyTypesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeLoadBalancers (%args) {
     my $call = AWS::ELB::DescribeLoadBalancers->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::DescribeLoadBalancersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DetachLoadBalancerFromSubnets (%args) {
     my $call = AWS::ELB::DetachLoadBalancerFromSubnets->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::DetachLoadBalancerFromSubnetsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DisableAvailabilityZonesForLoadBalancer (%args) {
     my $call = AWS::ELB::DisableAvailabilityZonesForLoadBalancer->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::DisableAvailabilityZonesForLoadBalancerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method EnableAvailabilityZonesForLoadBalancer (%args) {
     my $call = AWS::ELB::EnableAvailabilityZonesForLoadBalancer->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::EnableAvailabilityZonesForLoadBalancerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method RegisterInstancesWithLoadBalancer (%args) {
     my $call = AWS::ELB::RegisterInstancesWithLoadBalancer->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::RegisterInstancesWithLoadBalancerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method SetLoadBalancerListenerSSLCertificate (%args) {
     my $call = AWS::ELB::SetLoadBalancerListenerSSLCertificate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::SetLoadBalancerListenerSSLCertificateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method SetLoadBalancerPoliciesForBackendServer (%args) {
     my $call = AWS::ELB::SetLoadBalancerPoliciesForBackendServer->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::SetLoadBalancerPoliciesForBackendServerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method SetLoadBalancerPoliciesOfListener (%args) {
     my $call = AWS::ELB::SetLoadBalancerPoliciesOfListener->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::SetLoadBalancerPoliciesOfListenerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
 }
-

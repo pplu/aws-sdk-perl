@@ -1,5 +1,8 @@
+
 use MooseX::Declare;
 use AWS::API;
+
+
 class AWS::STS::AssumedRoleUser with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has AssumedRoleId => (is => 'ro', isa => 'Str', required => 1);
@@ -16,6 +19,7 @@ class AWS::STS::FederatedUser with (AWS::API::ResultParser, AWS::API::ToParams) 
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has FederatedUserId => (is => 'ro', isa => 'Str', required => 1);
 }
+
 
 class AWS::STS::AssumeRole {
   has DurationSeconds => (is => 'ro', isa => 'Int');
@@ -65,6 +69,7 @@ class AWS::STS::GetSessionToken {
   has _returns => (isa => 'AWS::STS::GetSessionTokenResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetSessionTokenResult');
 }
+
 class AWS::STS::AssumeRoleResult with AWS::API::ResultParser {
   has AssumedRoleUser => (is => 'ro', isa => 'AWS::STS::AssumedRoleUser');
   has Credentials => (is => 'ro', isa => 'AWS::STS::Credentials');
@@ -87,44 +92,45 @@ class AWS::STS::GetFederationTokenResult with AWS::API::ResultParser {
 class AWS::STS::GetSessionTokenResult with AWS::API::ResultParser {
   has Credentials => (is => 'ro', isa => 'AWS::STS::Credentials');
 }
+
+
 class AWS::STS with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'sts');
   has version => (is => 'ro', isa => 'Str', default => '2011-06-15');
-
+  
   method AssumeRole (%args) {
     my $call = AWS::STS::AssumeRole->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::STS::AssumeRoleResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method AssumeRoleWithWebIdentity (%args) {
     my $call = AWS::STS::AssumeRoleWithWebIdentity->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::STS::AssumeRoleWithWebIdentityResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DecodeAuthorizationMessage (%args) {
     my $call = AWS::STS::DecodeAuthorizationMessage->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::STS::DecodeAuthorizationMessageResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method GetFederationToken (%args) {
     my $call = AWS::STS::GetFederationToken->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::STS::GetFederationTokenResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method GetSessionToken (%args) {
     my $call = AWS::STS::GetSessionToken->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::STS::GetSessionTokenResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
 }
-

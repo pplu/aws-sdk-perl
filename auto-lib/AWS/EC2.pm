@@ -1,25 +1,63 @@
+
 use MooseX::Declare;
 use AWS::API;
-use Moose::Util::TypeConstraints;
 
-enum 'AWS::EC2::SpotInstanceType', [qw(one-time persistent)];
-enum 'AWS::EC2::VolumeState', [qw(creating available in-use deleting error)];
-enum 'AWS::EC2::SnapshotState', [qw(pending completed error)];
-enum 'AWS::EC2::ContainerFormat', [qw(ova)];
-enum 'AWS::EC2::ImageState', [qw(available deregistered)];
-enum 'AWS::EC2::PlacementStrategy', [qw(cluster)];
-enum 'AWS::EC2::VolumeType', [qw(standard io1)];
-enum 'AWS::EC2::PlacementGroupState', [qw(pending available deleting deleted)];
-enum 'AWS::EC2::HypervisorType', [qw(ovm xen)];
-enum 'AWS::EC2::VirtualizationType', [qw(hvm paravirtual)];
-enum 'AWS::EC2::VolumeAttachmentState', [qw(attaching attached detaching detached)];
-enum 'AWS::EC2::ExportEnvironment', [qw(citrix vmware)];
-enum 'AWS::EC2::RuleAction', [qw(allow deny)];
-enum 'AWS::EC2::InstanceType', [qw(t1.micro m1.small m1.medium m1.large m1.xlarge m2.xlarge m2.2xlarge m2.4xlarge m3.xlarge m3.2xlarge c1.medium c1.xlarge hi1.4xlarge hs1.8xlarge cc1.4xlarge cc2.8xlarge cg1.4xlarge cr1.8xlarge)];
-enum 'AWS::EC2::DiskImageFormat', [qw(vmdk vhd)];
-enum 'AWS::EC2::DomainType', [qw(vpc standard)];
-enum 'AWS::EC2::ResourceType', [qw(customer-gateway dhcp-options image instance snapshot spot-instances-request subnet volume vpc vpn-connection vpn-gateway)];
-enum 'AWS::EC2::InstanceStateName', [qw(pending running shutting-down terminated stopping stopped)];
+use Moose::Util::TypeConstraints;
+enum 'AWS::EC2::ArchitectureValues', [qw(i386 x86_64 )];
+enum 'AWS::EC2::AttachmentStatus', [qw(attaching attached detaching detached )];
+enum 'AWS::EC2::AvailabilityZoneState', [qw(available )];
+enum 'AWS::EC2::BundleTaskState', [qw(pending waiting-for-shutdown bundling storing cancelling complete failed )];
+enum 'AWS::EC2::CancelSpotInstanceRequestState', [qw(active open closed cancelled completed )];
+enum 'AWS::EC2::ContainerFormat', [qw(ova )];
+enum 'AWS::EC2::ConversionTaskState', [qw(active cancelling cancelled completed )];
+enum 'AWS::EC2::CurrencyCodeValues', [qw(USD )];
+enum 'AWS::EC2::DatafeedSubscriptionState', [qw(Active Inactive )];
+enum 'AWS::EC2::DeviceType', [qw(ebs instance-store )];
+enum 'AWS::EC2::DiskImageFormat', [qw(VMDK RAW VHD )];
+enum 'AWS::EC2::DomainType', [qw(vpc standard )];
+enum 'AWS::EC2::EventCode', [qw(instance-reboot system-reboot system-maintenance instance-retirement instance-stop )];
+enum 'AWS::EC2::ExportEnvironment', [qw(citrix vmware microsoft )];
+enum 'AWS::EC2::ExportTaskState', [qw(active cancelling cancelled completed )];
+enum 'AWS::EC2::GatewayType', [qw(ipsec.1 )];
+enum 'AWS::EC2::HypervisorType', [qw(ovm xen )];
+enum 'AWS::EC2::ImageState', [qw(available deregistered )];
+enum 'AWS::EC2::ImageTypeValues', [qw(machine kernel ramdisk )];
+enum 'AWS::EC2::InstanceLifecycleType', [qw(spot )];
+enum 'AWS::EC2::InstanceStateName', [qw(pending running shutting-down terminated stopping stopped )];
+enum 'AWS::EC2::InstanceType', [qw(t1.micro m1.small m1.medium m1.large m1.xlarge m2.xlarge m2.2xlarge m2.4xlarge m3.xlarge m3.2xlarge c1.medium c1.xlarge hi1.4xlarge hs1.8xlarge cc1.4xlarge cc2.8xlarge cg1.4xlarge cr1.8xlarge )];
+enum 'AWS::EC2::ListingState', [qw(available sold cancelled pending )];
+enum 'AWS::EC2::ListingStatus', [qw(active pending cancelled closed )];
+enum 'AWS::EC2::MonitoringState', [qw(disabled enabled pending )];
+enum 'AWS::EC2::NetworkInterfaceStatus', [qw(available attaching in-use detaching )];
+enum 'AWS::EC2::OfferingTypeValues', [qw(Heavy Utilization Medium Utilization Light Utilization )];
+enum 'AWS::EC2::PermissionGroup', [qw(all )];
+enum 'AWS::EC2::PlacementGroupState', [qw(pending available deleting deleted )];
+enum 'AWS::EC2::PlacementStrategy', [qw(cluster )];
+enum 'AWS::EC2::PlatformValues', [qw(Windows )];
+enum 'AWS::EC2::ProductCodeValues', [qw(devpay marketplace )];
+enum 'AWS::EC2::RecurringChargeFrequency', [qw(Hourly )];
+enum 'AWS::EC2::ReservedInstanceState', [qw(payment-pending active payment-failed retired )];
+enum 'AWS::EC2::ResourceType', [qw(customer-gateway dhcp-options image instance internet-gateway network-acl network-interface reserved-instances route-table snapshot spot-instances-request subnet security-group volume vpc vpn-connection vpn-gateway )];
+enum 'AWS::EC2::RIProductDescription', [qw(Linux/UNIX Linux/UNIX (Amazon VPC) Windows Windows (Amazon VPC) )];
+enum 'AWS::EC2::RouteState', [qw(active blackhole )];
+enum 'AWS::EC2::RuleAction', [qw(allow deny )];
+enum 'AWS::EC2::ShutdownBehavior', [qw(stop terminate )];
+enum 'AWS::EC2::SnapshotState', [qw(pending completed error )];
+enum 'AWS::EC2::SpotInstanceState', [qw(open active closed cancelled failed )];
+enum 'AWS::EC2::SpotInstanceType', [qw(one-time persistent )];
+enum 'AWS::EC2::SubnetState', [qw(pending available )];
+enum 'AWS::EC2::SummaryStatus', [qw(ok impaired insufficient-data not-applicable )];
+enum 'AWS::EC2::TelemetryStatus', [qw(UP DOWN )];
+enum 'AWS::EC2::Tenancy', [qw(default dedicated )];
+enum 'AWS::EC2::VirtualizationType', [qw(hvm paravirtual )];
+enum 'AWS::EC2::VolumeAttachmentState', [qw(attaching attached detaching detached )];
+enum 'AWS::EC2::VolumeState', [qw(creating available in-use deleting deleted error )];
+enum 'AWS::EC2::VolumeStatusInfoStatus', [qw(ok impaired insufficient-data )];
+enum 'AWS::EC2::VolumeType', [qw(standard io1 )];
+enum 'AWS::EC2::VpcState', [qw(pending available )];
+enum 'AWS::EC2::VpnState', [qw(pending available deleting deleted )];
+enum 'AWS::EC2::VpnStaticRouteSource', [qw(Static )];
+
 
 class AWS::EC2::AccountAttribute with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttributeName => (is => 'ro', isa => 'Str');
@@ -52,7 +90,7 @@ class AWS::EC2::AttributeValue with (AWS::API::ResultParser, AWS::API::ToParams)
 class AWS::EC2::AvailabilityZone with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Messages => (is => 'ro', isa => 'ArrayRef[AWS::EC2::AvailabilityZoneMessage]');
   has RegionName => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::AvailabilityZoneState');
   has ZoneName => (is => 'ro', isa => 'Str');
 }
 
@@ -73,7 +111,7 @@ class AWS::EC2::BundleTask with (AWS::API::ResultParser, AWS::API::ToParams) {
   has InstanceId => (is => 'ro', isa => 'Str');
   has Progress => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::BundleTaskState');
   has Storage => (is => 'ro', isa => 'AWS::EC2::Storage');
   has UpdateTime => (is => 'ro', isa => 'Str');
 }
@@ -85,7 +123,7 @@ class AWS::EC2::BundleTaskError with (AWS::API::ResultParser, AWS::API::ToParams
 
 class AWS::EC2::CancelledSpotInstanceRequest with (AWS::API::ResultParser, AWS::API::ToParams) {
   has SpotInstanceRequestId => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::CancelSpotInstanceRequestState');
 }
 
 class AWS::EC2::ConversionTask with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -93,13 +131,13 @@ class AWS::EC2::ConversionTask with (AWS::API::ResultParser, AWS::API::ToParams)
   has ExpirationTime => (is => 'ro', isa => 'Str');
   has ImportInstance => (is => 'ro', isa => 'AWS::EC2::ImportInstanceTaskDetails');
   has ImportVolume => (is => 'ro', isa => 'AWS::EC2::ImportVolumeTaskDetails');
-  has State => (is => 'ro', isa => 'Str', required => 1);
+  has State => (is => 'ro', isa => 'AWS::EC2::ConversionTaskState', required => 1);
   has StatusMessage => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
 }
 
 class AWS::EC2::CreateVolumePermission with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has Group => (is => 'ro', isa => 'Str');
+  has Group => (is => 'ro', isa => 'AWS::EC2::PermissionGroup');
   has UserId => (is => 'ro', isa => 'Str');
 }
 
@@ -136,7 +174,7 @@ class AWS::EC2::DiskImage with (AWS::API::ResultParser, AWS::API::ToParams) {
 
 class AWS::EC2::DiskImageDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Bytes => (is => 'ro', isa => 'Num', required => 1);
-  has Format => (is => 'ro', isa => 'Str', required => 1);
+  has Format => (is => 'ro', isa => 'AWS::EC2::DiskImageFormat', required => 1);
   has ImportManifestUrl => (is => 'ro', isa => 'Str', required => 1);
 }
 
@@ -151,7 +189,7 @@ class AWS::EC2::EbsBlockDevice with (AWS::API::ResultParser, AWS::API::ToParams)
 class AWS::EC2::EbsInstanceBlockDevice with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttachTime => (is => 'ro', isa => 'Str');
   has DeleteOnTermination => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'AWS::EC2::AttachmentStatus');
   has VolumeId => (is => 'ro', isa => 'Str');
 }
 
@@ -165,7 +203,7 @@ class AWS::EC2::ExportTask with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ExportTaskId => (is => 'ro', isa => 'Str');
   has ExportToS3Task => (is => 'ro', isa => 'AWS::EC2::ExportToS3Task');
   has InstanceExportDetails => (is => 'ro', isa => 'AWS::EC2::InstanceExportDetails');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::ExportTaskState');
   has StatusMessage => (is => 'ro', isa => 'Str');
 }
 
@@ -209,23 +247,23 @@ class AWS::EC2::IcmpTypeCode with (AWS::API::ResultParser, AWS::API::ToParams) {
 }
 
 class AWS::EC2::Image with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has Architecture => (is => 'ro', isa => 'Str');
+  has Architecture => (is => 'ro', isa => 'AWS::EC2::ArchitectureValues');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[AWS::EC2::BlockDeviceMapping]');
   has Description => (is => 'ro', isa => 'Str');
   has Hypervisor => (is => 'ro', isa => 'AWS::EC2::HypervisorType');
   has ImageId => (is => 'ro', isa => 'Str');
   has ImageLocation => (is => 'ro', isa => 'Str');
   has ImageOwnerAlias => (is => 'ro', isa => 'Str');
-  has ImageType => (is => 'ro', isa => 'Str');
+  has ImageType => (is => 'ro', isa => 'AWS::EC2::ImageTypeValues');
   has KernelId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has OwnerId => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str');
+  has Platform => (is => 'ro', isa => 'AWS::EC2::PlatformValues');
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[AWS::EC2::ProductCode]');
   has Public => (is => 'ro', isa => 'Str');
   has RamdiskId => (is => 'ro', isa => 'Str');
   has RootDeviceName => (is => 'ro', isa => 'Str');
-  has RootDeviceType => (is => 'ro', isa => 'Str');
+  has RootDeviceType => (is => 'ro', isa => 'AWS::EC2::DeviceType');
   has State => (is => 'ro', isa => 'AWS::EC2::ImageState');
   has StateReason => (is => 'ro', isa => 'AWS::EC2::StateReason');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
@@ -234,9 +272,9 @@ class AWS::EC2::Image with (AWS::API::ResultParser, AWS::API::ToParams) {
 
 class AWS::EC2::ImportInstanceLaunchSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AdditionalInfo => (is => 'ro', isa => 'Str');
-  has Architecture => (is => 'ro', isa => 'Str');
+  has Architecture => (is => 'ro', isa => 'AWS::EC2::ArchitectureValues');
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
-  has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Str');
+  has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'AWS::EC2::ShutdownBehavior');
   has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
   has Monitoring => (is => 'ro', isa => 'Str');
   has Placement => (is => 'ro', isa => 'AWS::EC2::Placement');
@@ -248,7 +286,7 @@ class AWS::EC2::ImportInstanceLaunchSpecification with (AWS::API::ResultParser, 
 class AWS::EC2::ImportInstanceTaskDetails with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str');
+  has Platform => (is => 'ro', isa => 'AWS::EC2::PlatformValues');
   has Volumes => (is => 'ro', isa => 'ArrayRef[AWS::EC2::ImportInstanceVolumeDetailItem]', required => 1);
 }
 
@@ -262,7 +300,7 @@ class AWS::EC2::ImportVolumeTaskDetails with (AWS::API::ResultParser, AWS::API::
 
 class AWS::EC2::Instance with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AmiLaunchIndex => (is => 'ro', isa => 'Int');
-  has Architecture => (is => 'ro', isa => 'Str');
+  has Architecture => (is => 'ro', isa => 'AWS::EC2::ArchitectureValues');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstanceBlockDeviceMapping]');
   has ClientToken => (is => 'ro', isa => 'Str');
   has EbsOptimized => (is => 'ro', isa => 'Str');
@@ -270,7 +308,7 @@ class AWS::EC2::Instance with (AWS::API::ResultParser, AWS::API::ToParams) {
   has IamInstanceProfile => (is => 'ro', isa => 'AWS::EC2::IamInstanceProfile');
   has ImageId => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
-  has InstanceLifecycle => (is => 'ro', isa => 'Str');
+  has InstanceLifecycle => (is => 'ro', isa => 'AWS::EC2::InstanceLifecycleType');
   has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
@@ -279,7 +317,7 @@ class AWS::EC2::Instance with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Monitoring => (is => 'ro', isa => 'AWS::EC2::Monitoring');
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstanceNetworkInterface]');
   has Placement => (is => 'ro', isa => 'AWS::EC2::Placement');
-  has Platform => (is => 'ro', isa => 'Str');
+  has Platform => (is => 'ro', isa => 'AWS::EC2::PlatformValues');
   has PrivateDnsName => (is => 'ro', isa => 'Str');
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[AWS::EC2::ProductCode]');
@@ -287,7 +325,7 @@ class AWS::EC2::Instance with (AWS::API::ResultParser, AWS::API::ToParams) {
   has PublicIpAddress => (is => 'ro', isa => 'Str');
   has RamdiskId => (is => 'ro', isa => 'Str');
   has RootDeviceName => (is => 'ro', isa => 'Str');
-  has RootDeviceType => (is => 'ro', isa => 'Str');
+  has RootDeviceType => (is => 'ro', isa => 'AWS::EC2::DeviceType');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[AWS::EC2::GroupIdentifier]');
   has SourceDestCheck => (is => 'ro', isa => 'Str');
   has SpotInstanceRequestId => (is => 'ro', isa => 'Str');
@@ -314,7 +352,7 @@ class AWS::EC2::InstanceBlockDeviceMappingSpecification with (AWS::API::ResultPa
 
 class AWS::EC2::InstanceCount with (AWS::API::ResultParser, AWS::API::ToParams) {
   has InstanceCount => (is => 'ro', isa => 'Int');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::ListingState');
 }
 
 class AWS::EC2::InstanceExportDetails with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -346,7 +384,7 @@ class AWS::EC2::InstanceNetworkInterface with (AWS::API::ResultParser, AWS::API:
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstancePrivateIpAddress]');
   has SourceDestCheck => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'AWS::EC2::NetworkInterfaceStatus');
   has SubnetId => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 }
@@ -385,7 +423,7 @@ class AWS::EC2::InstanceStatus with (AWS::API::ResultParser, AWS::API::ToParams)
 }
 
 class AWS::EC2::InstanceStatusEvent with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has Code => (is => 'ro', isa => 'Str');
+  has Code => (is => 'ro', isa => 'AWS::EC2::EventCode');
   has Description => (is => 'ro', isa => 'Str');
   has NotAfter => (is => 'ro', isa => 'Str');
   has NotBefore => (is => 'ro', isa => 'Str');
@@ -393,7 +431,7 @@ class AWS::EC2::InstanceStatusEvent with (AWS::API::ResultParser, AWS::API::ToPa
 
 class AWS::EC2::InstanceStatusSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Details => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstanceStatusDetails]');
-  has Status => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'AWS::EC2::SummaryStatus');
 }
 
 class AWS::EC2::InternetGateway with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -403,7 +441,7 @@ class AWS::EC2::InternetGateway with (AWS::API::ResultParser, AWS::API::ToParams
 }
 
 class AWS::EC2::InternetGatewayAttachment with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::AttachmentStatus');
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
@@ -425,7 +463,7 @@ class AWS::EC2::KeyPairInfo with (AWS::API::ResultParser, AWS::API::ToParams) {
 }
 
 class AWS::EC2::LaunchPermission with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has Group => (is => 'ro', isa => 'Str');
+  has Group => (is => 'ro', isa => 'AWS::EC2::PermissionGroup');
   has UserId => (is => 'ro', isa => 'Str');
 }
 
@@ -452,25 +490,6 @@ class AWS::EC2::LaunchSpecification with (AWS::API::ResultParser, AWS::API::ToPa
   has UserData => (is => 'ro', isa => 'Str');
 }
 
-class AWS::EC2::LaunchSpecification2 with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has AddressingType => (is => 'ro', isa => 'Str');
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[AWS::EC2::BlockDeviceMapping]');
-  has EbsOptimized => (is => 'ro', isa => 'Str');
-  has IamInstanceProfile => (is => 'ro', isa => 'AWS::EC2::IamInstanceProfileSpecification');
-  has ImageId => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
-  has KernelId => (is => 'ro', isa => 'Str');
-  has KeyName => (is => 'ro', isa => 'Str');
-  has MonitoringEnabled => (is => 'ro', isa => 'Str');
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstanceNetworkInterfaceSpecification]');
-  has Placement => (is => 'ro', isa => 'AWS::EC2::SpotPlacement');
-  has RamdiskId => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has UserData => (is => 'ro', isa => 'Str');
-}
-
 class AWS::EC2::License with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Capacities => (is => 'ro', isa => 'ArrayRef[AWS::EC2::LicenseCapacity]');
   has LicenseId => (is => 'ro', isa => 'Str');
@@ -487,7 +506,7 @@ class AWS::EC2::LicenseCapacity with (AWS::API::ResultParser, AWS::API::ToParams
 }
 
 class AWS::EC2::Monitoring with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::MonitoringState');
 }
 
 class AWS::EC2::NetworkAcl with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -530,7 +549,7 @@ class AWS::EC2::NetworkInterface with (AWS::API::ResultParser, AWS::API::ToParam
   has RequesterId => (is => 'ro', isa => 'Str');
   has RequesterManaged => (is => 'ro', isa => 'Str');
   has SourceDestCheck => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'AWS::EC2::NetworkInterfaceStatus');
   has SubnetId => (is => 'ro', isa => 'Str');
   has TagSet => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
   has VpcId => (is => 'ro', isa => 'Str');
@@ -550,7 +569,7 @@ class AWS::EC2::NetworkInterfaceAttachment with (AWS::API::ResultParser, AWS::AP
   has DeviceIndex => (is => 'ro', isa => 'Int');
   has InstanceId => (is => 'ro', isa => 'Str');
   has InstanceOwnerId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'AWS::EC2::AttachmentStatus');
 }
 
 class AWS::EC2::NetworkInterfaceAttachmentChanges with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -568,7 +587,7 @@ class AWS::EC2::NetworkInterfacePrivateIpAddress with (AWS::API::ResultParser, A
 class AWS::EC2::Placement with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
-  has Tenancy => (is => 'ro', isa => 'Str');
+  has Tenancy => (is => 'ro', isa => 'AWS::EC2::Tenancy');
 }
 
 class AWS::EC2::PlacementGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -584,13 +603,13 @@ class AWS::EC2::PortRange with (AWS::API::ResultParser, AWS::API::ToParams) {
 
 class AWS::EC2::PriceSchedule with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Active => (is => 'ro', isa => 'Str');
-  has CurrencyCode => (is => 'ro', isa => 'Str');
+  has CurrencyCode => (is => 'ro', isa => 'AWS::EC2::CurrencyCodeValues');
   has Price => (is => 'ro', isa => 'Num');
   has Term => (is => 'ro', isa => 'Num');
 }
 
 class AWS::EC2::PriceScheduleSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has CurrencyCode => (is => 'ro', isa => 'Str');
+  has CurrencyCode => (is => 'ro', isa => 'AWS::EC2::CurrencyCodeValues');
   has Price => (is => 'ro', isa => 'Num');
   has Term => (is => 'ro', isa => 'Num');
 }
@@ -607,7 +626,7 @@ class AWS::EC2::PrivateIpAddressSpecification with (AWS::API::ResultParser, AWS:
 
 class AWS::EC2::ProductCode with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ProductCodeId => (is => 'ro', isa => 'Str');
-  has ProductCodeType => (is => 'ro', isa => 'Str');
+  has ProductCodeType => (is => 'ro', isa => 'AWS::EC2::ProductCodeValues');
 }
 
 class AWS::EC2::PropagatingVgw with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -616,7 +635,7 @@ class AWS::EC2::PropagatingVgw with (AWS::API::ResultParser, AWS::API::ToParams)
 
 class AWS::EC2::RecurringCharge with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Amount => (is => 'ro', isa => 'Num');
-  has Frequency => (is => 'ro', isa => 'Str');
+  has Frequency => (is => 'ro', isa => 'AWS::EC2::RecurringChargeFrequency');
 }
 
 class AWS::EC2::Region with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -634,24 +653,24 @@ class AWS::EC2::Reservation with (AWS::API::ResultParser, AWS::API::ToParams) {
 
 class AWS::EC2::ReservedInstanceLimitPrice with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Amount => (is => 'ro', isa => 'Num');
-  has CurrencyCode => (is => 'ro', isa => 'Str');
+  has CurrencyCode => (is => 'ro', isa => 'AWS::EC2::CurrencyCodeValues');
 }
 
 class AWS::EC2::ReservedInstances with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has CurrencyCode => (is => 'ro', isa => 'Str');
+  has CurrencyCode => (is => 'ro', isa => 'AWS::EC2::CurrencyCodeValues');
   has Duration => (is => 'ro', isa => 'Num');
   has End => (is => 'ro', isa => 'Str');
   has FixedPrice => (is => 'ro', isa => 'Num');
   has InstanceCount => (is => 'ro', isa => 'Int');
-  has InstanceTenancy => (is => 'ro', isa => 'Str');
+  has InstanceTenancy => (is => 'ro', isa => 'AWS::EC2::Tenancy');
   has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
-  has OfferingType => (is => 'ro', isa => 'Str');
-  has ProductDescription => (is => 'ro', isa => 'Str');
+  has OfferingType => (is => 'ro', isa => 'AWS::EC2::OfferingTypeValues');
+  has ProductDescription => (is => 'ro', isa => 'AWS::EC2::RIProductDescription');
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[AWS::EC2::RecurringCharge]');
   has ReservedInstancesId => (is => 'ro', isa => 'Str');
   has Start => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::ReservedInstanceState');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
   has UsagePrice => (is => 'ro', isa => 'Num');
 }
@@ -659,6 +678,7 @@ class AWS::EC2::ReservedInstances with (AWS::API::ResultParser, AWS::API::ToPara
 class AWS::EC2::ReservedInstancesConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int');
+  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
   has Platform => (is => 'ro', isa => 'Str');
 }
 
@@ -673,7 +693,7 @@ class AWS::EC2::ReservedInstancesListing with (AWS::API::ResultParser, AWS::API:
   has PriceSchedules => (is => 'ro', isa => 'ArrayRef[AWS::EC2::PriceSchedule]');
   has ReservedInstancesId => (is => 'ro', isa => 'Str');
   has ReservedInstancesListingId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'AWS::EC2::ListingStatus');
   has StatusMessage => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
   has UpdateDate => (is => 'ro', isa => 'Str');
@@ -698,15 +718,15 @@ class AWS::EC2::ReservedInstancesModificationResult with (AWS::API::ResultParser
 
 class AWS::EC2::ReservedInstancesOffering with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has CurrencyCode => (is => 'ro', isa => 'Str');
+  has CurrencyCode => (is => 'ro', isa => 'AWS::EC2::CurrencyCodeValues');
   has Duration => (is => 'ro', isa => 'Num');
   has FixedPrice => (is => 'ro', isa => 'Num');
-  has InstanceTenancy => (is => 'ro', isa => 'Str');
+  has InstanceTenancy => (is => 'ro', isa => 'AWS::EC2::Tenancy');
   has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
   has Marketplace => (is => 'ro', isa => 'Str');
-  has OfferingType => (is => 'ro', isa => 'Str');
+  has OfferingType => (is => 'ro', isa => 'AWS::EC2::OfferingTypeValues');
   has PricingDetails => (is => 'ro', isa => 'ArrayRef[AWS::EC2::PricingDetail]');
-  has ProductDescription => (is => 'ro', isa => 'Str');
+  has ProductDescription => (is => 'ro', isa => 'AWS::EC2::RIProductDescription');
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[AWS::EC2::RecurringCharge]');
   has ReservedInstancesOfferingId => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
@@ -718,7 +738,7 @@ class AWS::EC2::Route with (AWS::API::ResultParser, AWS::API::ToParams) {
   has InstanceId => (is => 'ro', isa => 'Str');
   has InstanceOwnerId => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::RouteState');
 }
 
 class AWS::EC2::RouteTable with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -778,7 +798,7 @@ class AWS::EC2::SpotDatafeedSubscription with (AWS::API::ResultParser, AWS::API:
   has Fault => (is => 'ro', isa => 'AWS::EC2::SpotInstanceStateFault');
   has OwnerId => (is => 'ro', isa => 'Str');
   has Prefix => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::DatafeedSubscriptionState');
 }
 
 class AWS::EC2::SpotInstanceRequest with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -789,10 +809,10 @@ class AWS::EC2::SpotInstanceRequest with (AWS::API::ResultParser, AWS::API::ToPa
   has LaunchGroup => (is => 'ro', isa => 'Str');
   has LaunchSpecification => (is => 'ro', isa => 'AWS::EC2::LaunchSpecification');
   has LaunchedAvailabilityZone => (is => 'ro', isa => 'Str');
-  has ProductDescription => (is => 'ro', isa => 'Str');
+  has ProductDescription => (is => 'ro', isa => 'AWS::EC2::RIProductDescription');
   has SpotInstanceRequestId => (is => 'ro', isa => 'Str');
   has SpotPrice => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::SpotInstanceState');
   has Status => (is => 'ro', isa => 'AWS::EC2::SpotInstanceStatus');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
   has Type => (is => 'ro', isa => 'AWS::EC2::SpotInstanceType');
@@ -811,6 +831,25 @@ class AWS::EC2::SpotInstanceStatus with (AWS::API::ResultParser, AWS::API::ToPar
   has UpdateTime => (is => 'ro', isa => 'Str');
 }
 
+class AWS::EC2::SpotLaunchSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has AddressingType => (is => 'ro', isa => 'Str');
+  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[AWS::EC2::BlockDeviceMapping]');
+  has EbsOptimized => (is => 'ro', isa => 'Str');
+  has IamInstanceProfile => (is => 'ro', isa => 'AWS::EC2::IamInstanceProfileSpecification');
+  has ImageId => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
+  has KernelId => (is => 'ro', isa => 'Str');
+  has KeyName => (is => 'ro', isa => 'Str');
+  has MonitoringEnabled => (is => 'ro', isa => 'Str');
+  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstanceNetworkInterfaceSpecification]');
+  has Placement => (is => 'ro', isa => 'AWS::EC2::SpotPlacement');
+  has RamdiskId => (is => 'ro', isa => 'Str');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SubnetId => (is => 'ro', isa => 'Str');
+  has UserData => (is => 'ro', isa => 'Str');
+}
+
 class AWS::EC2::SpotPlacement with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
@@ -819,7 +858,7 @@ class AWS::EC2::SpotPlacement with (AWS::API::ResultParser, AWS::API::ToParams) 
 class AWS::EC2::SpotPrice with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
-  has ProductDescription => (is => 'ro', isa => 'Str');
+  has ProductDescription => (is => 'ro', isa => 'AWS::EC2::RIProductDescription');
   has SpotPrice => (is => 'ro', isa => 'Str');
   has Timestamp => (is => 'ro', isa => 'Str');
 }
@@ -839,7 +878,7 @@ class AWS::EC2::Subnet with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CidrBlock => (is => 'ro', isa => 'Str');
   has DefaultForAz => (is => 'ro', isa => 'Str');
   has MapPublicIpOnLaunch => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::SubnetState');
   has SubnetId => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
   has VpcId => (is => 'ro', isa => 'Str');
@@ -867,7 +906,7 @@ class AWS::EC2::VgwTelemetry with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AcceptedRouteCount => (is => 'ro', isa => 'Int');
   has LastStatusChange => (is => 'ro', isa => 'Str');
   has OutsideIpAddress => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'AWS::EC2::TelemetryStatus');
   has StatusMessage => (is => 'ro', isa => 'Str');
 }
 
@@ -914,7 +953,7 @@ class AWS::EC2::VolumeStatusEvent with (AWS::API::ResultParser, AWS::API::ToPara
 
 class AWS::EC2::VolumeStatusInfo with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Details => (is => 'ro', isa => 'ArrayRef[AWS::EC2::VolumeStatusDetails]');
-  has Status => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'AWS::EC2::VolumeStatusInfoStatus');
 }
 
 class AWS::EC2::VolumeStatusItem with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -928,15 +967,15 @@ class AWS::EC2::VolumeStatusItem with (AWS::API::ResultParser, AWS::API::ToParam
 class AWS::EC2::Vpc with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CidrBlock => (is => 'ro', isa => 'Str');
   has DhcpOptionsId => (is => 'ro', isa => 'Str');
-  has InstanceTenancy => (is => 'ro', isa => 'Str');
+  has InstanceTenancy => (is => 'ro', isa => 'AWS::EC2::Tenancy');
   has IsDefault => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::VpcState');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::VpcAttachment with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::AttachmentStatus');
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
@@ -945,9 +984,9 @@ class AWS::EC2::VpnConnection with (AWS::API::ResultParser, AWS::API::ToParams) 
   has CustomerGatewayId => (is => 'ro', isa => 'Str');
   has Options => (is => 'ro', isa => 'AWS::EC2::VpnConnectionOptions');
   has Routes => (is => 'ro', isa => 'ArrayRef[AWS::EC2::VpnStaticRoute]');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::VpnState');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
-  has Type => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'AWS::EC2::GatewayType');
   has VgwTelemetry => (is => 'ro', isa => 'ArrayRef[AWS::EC2::VgwTelemetry]');
   has VpnConnectionId => (is => 'ro', isa => 'Str');
   has VpnGatewayId => (is => 'ro', isa => 'Str');
@@ -963,18 +1002,19 @@ class AWS::EC2::VpnConnectionOptionsSpecification with (AWS::API::ResultParser, 
 
 class AWS::EC2::VpnGateway with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'AWS::EC2::VpnState');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]');
-  has Type => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'AWS::EC2::GatewayType');
   has VpcAttachments => (is => 'ro', isa => 'ArrayRef[AWS::EC2::VpcAttachment]');
   has VpnGatewayId => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::VpnStaticRoute with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DestinationCidrBlock => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has Source => (is => 'ro', isa => 'AWS::EC2::VpnStaticRouteSource');
+  has State => (is => 'ro', isa => 'AWS::EC2::VpnState');
 }
+
 
 class AWS::EC2::ActivateLicense {
   has Capacity => (is => 'ro', isa => 'Int', required => 1);
@@ -2300,7 +2340,7 @@ class AWS::EC2::RequestSpotInstances {
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has LaunchGroup => (is => 'ro', isa => 'Str');
-  has LaunchSpecification => (is => 'ro', isa => 'AWS::EC2::LaunchSpecification2');
+  has LaunchSpecification => (is => 'ro', isa => 'AWS::EC2::SpotLaunchSpecification');
   has SpotPrice => (is => 'ro', isa => 'Str', required => 1);
   has Type => (is => 'ro', isa => 'Str');
   has ValidFrom => (is => 'ro', isa => 'Str');
@@ -2437,6 +2477,7 @@ class AWS::EC2::UnmonitorInstances {
   has _returns => (isa => 'AWS::EC2::UnmonitorInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UnmonitorInstancesResult');
 }
+
 class AWS::EC2::AllocateAddressResult with AWS::API::ResultParser {
   has AllocationId => (is => 'ro', isa => 'Str');
   has Domain => (is => 'ro', isa => 'Str');
@@ -2779,1005 +2820,1006 @@ class AWS::EC2::TerminateInstancesResult with AWS::API::ResultParser {
 class AWS::EC2::UnmonitorInstancesResult with AWS::API::ResultParser {
   has InstanceMonitorings => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstanceMonitoring]');
 }
+
+
 class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'ec2');
-  has version => (is => 'ro', isa => 'Str', default => '2013-08-15');
-
+  has version => (is => 'ro', isa => 'Str', default => '2013-10-01');
+  
   method ActivateLicense (%args) {
     my $call = AWS::EC2::ActivateLicense->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method AllocateAddress (%args) {
     my $call = AWS::EC2::AllocateAddress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::AllocateAddressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method AssignPrivateIpAddresses (%args) {
     my $call = AWS::EC2::AssignPrivateIpAddresses->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method AssociateAddress (%args) {
     my $call = AWS::EC2::AssociateAddress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::AssociateAddressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method AssociateDhcpOptions (%args) {
     my $call = AWS::EC2::AssociateDhcpOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method AssociateRouteTable (%args) {
     my $call = AWS::EC2::AssociateRouteTable->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::AssociateRouteTableResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method AttachInternetGateway (%args) {
     my $call = AWS::EC2::AttachInternetGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method AttachNetworkInterface (%args) {
     my $call = AWS::EC2::AttachNetworkInterface->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::AttachNetworkInterfaceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method AttachVolume (%args) {
     my $call = AWS::EC2::AttachVolume->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::AttachVolumeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method AttachVpnGateway (%args) {
     my $call = AWS::EC2::AttachVpnGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::AttachVpnGatewayResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method AuthorizeSecurityGroupEgress (%args) {
     my $call = AWS::EC2::AuthorizeSecurityGroupEgress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method AuthorizeSecurityGroupIngress (%args) {
     my $call = AWS::EC2::AuthorizeSecurityGroupIngress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method BundleInstance (%args) {
     my $call = AWS::EC2::BundleInstance->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::BundleInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CancelBundleTask (%args) {
     my $call = AWS::EC2::CancelBundleTask->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CancelBundleTaskResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CancelConversionTask (%args) {
     my $call = AWS::EC2::CancelConversionTask->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method CancelExportTask (%args) {
     my $call = AWS::EC2::CancelExportTask->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method CancelReservedInstancesListing (%args) {
     my $call = AWS::EC2::CancelReservedInstancesListing->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CancelReservedInstancesListingResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CancelSpotInstanceRequests (%args) {
     my $call = AWS::EC2::CancelSpotInstanceRequests->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CancelSpotInstanceRequestsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ConfirmProductInstance (%args) {
     my $call = AWS::EC2::ConfirmProductInstance->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::ConfirmProductInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CopyImage (%args) {
     my $call = AWS::EC2::CopyImage->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CopyImageResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CopySnapshot (%args) {
     my $call = AWS::EC2::CopySnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CopySnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateCustomerGateway (%args) {
     my $call = AWS::EC2::CreateCustomerGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateCustomerGatewayResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateDhcpOptions (%args) {
     my $call = AWS::EC2::CreateDhcpOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateDhcpOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateImage (%args) {
     my $call = AWS::EC2::CreateImage->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateImageResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateInstanceExportTask (%args) {
     my $call = AWS::EC2::CreateInstanceExportTask->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateInstanceExportTaskResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateInternetGateway (%args) {
     my $call = AWS::EC2::CreateInternetGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateInternetGatewayResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateKeyPair (%args) {
     my $call = AWS::EC2::CreateKeyPair->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateKeyPairResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateNetworkAcl (%args) {
     my $call = AWS::EC2::CreateNetworkAcl->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateNetworkAclResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateNetworkAclEntry (%args) {
     my $call = AWS::EC2::CreateNetworkAclEntry->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method CreateNetworkInterface (%args) {
     my $call = AWS::EC2::CreateNetworkInterface->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateNetworkInterfaceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreatePlacementGroup (%args) {
     my $call = AWS::EC2::CreatePlacementGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method CreateReservedInstancesListing (%args) {
     my $call = AWS::EC2::CreateReservedInstancesListing->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateReservedInstancesListingResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateRoute (%args) {
     my $call = AWS::EC2::CreateRoute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method CreateRouteTable (%args) {
     my $call = AWS::EC2::CreateRouteTable->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateRouteTableResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateSecurityGroup (%args) {
     my $call = AWS::EC2::CreateSecurityGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateSecurityGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateSnapshot (%args) {
     my $call = AWS::EC2::CreateSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateSpotDatafeedSubscription (%args) {
     my $call = AWS::EC2::CreateSpotDatafeedSubscription->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateSpotDatafeedSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateSubnet (%args) {
     my $call = AWS::EC2::CreateSubnet->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateSubnetResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateTags (%args) {
     my $call = AWS::EC2::CreateTags->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method CreateVolume (%args) {
     my $call = AWS::EC2::CreateVolume->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateVolumeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateVpc (%args) {
     my $call = AWS::EC2::CreateVpc->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateVpcResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateVpnConnection (%args) {
     my $call = AWS::EC2::CreateVpnConnection->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateVpnConnectionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateVpnConnectionRoute (%args) {
     my $call = AWS::EC2::CreateVpnConnectionRoute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method CreateVpnGateway (%args) {
     my $call = AWS::EC2::CreateVpnGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::CreateVpnGatewayResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeactivateLicense (%args) {
     my $call = AWS::EC2::DeactivateLicense->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteCustomerGateway (%args) {
     my $call = AWS::EC2::DeleteCustomerGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteDhcpOptions (%args) {
     my $call = AWS::EC2::DeleteDhcpOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteInternetGateway (%args) {
     my $call = AWS::EC2::DeleteInternetGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteKeyPair (%args) {
     my $call = AWS::EC2::DeleteKeyPair->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteNetworkAcl (%args) {
     my $call = AWS::EC2::DeleteNetworkAcl->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteNetworkAclEntry (%args) {
     my $call = AWS::EC2::DeleteNetworkAclEntry->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteNetworkInterface (%args) {
     my $call = AWS::EC2::DeleteNetworkInterface->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeletePlacementGroup (%args) {
     my $call = AWS::EC2::DeletePlacementGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteRoute (%args) {
     my $call = AWS::EC2::DeleteRoute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteRouteTable (%args) {
     my $call = AWS::EC2::DeleteRouteTable->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteSecurityGroup (%args) {
     my $call = AWS::EC2::DeleteSecurityGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteSnapshot (%args) {
     my $call = AWS::EC2::DeleteSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteSpotDatafeedSubscription (%args) {
     my $call = AWS::EC2::DeleteSpotDatafeedSubscription->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteSubnet (%args) {
     my $call = AWS::EC2::DeleteSubnet->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteTags (%args) {
     my $call = AWS::EC2::DeleteTags->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteVolume (%args) {
     my $call = AWS::EC2::DeleteVolume->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteVpc (%args) {
     my $call = AWS::EC2::DeleteVpc->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteVpnConnection (%args) {
     my $call = AWS::EC2::DeleteVpnConnection->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteVpnConnectionRoute (%args) {
     my $call = AWS::EC2::DeleteVpnConnectionRoute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteVpnGateway (%args) {
     my $call = AWS::EC2::DeleteVpnGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeregisterImage (%args) {
     my $call = AWS::EC2::DeregisterImage->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DescribeAccountAttributes (%args) {
     my $call = AWS::EC2::DescribeAccountAttributes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeAccountAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeAddresses (%args) {
     my $call = AWS::EC2::DescribeAddresses->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeAddressesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeAvailabilityZones (%args) {
     my $call = AWS::EC2::DescribeAvailabilityZones->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeAvailabilityZonesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeBundleTasks (%args) {
     my $call = AWS::EC2::DescribeBundleTasks->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeBundleTasksResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeConversionTasks (%args) {
     my $call = AWS::EC2::DescribeConversionTasks->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeConversionTasksResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeCustomerGateways (%args) {
     my $call = AWS::EC2::DescribeCustomerGateways->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeCustomerGatewaysResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeDhcpOptions (%args) {
     my $call = AWS::EC2::DescribeDhcpOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeDhcpOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeExportTasks (%args) {
     my $call = AWS::EC2::DescribeExportTasks->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeExportTasksResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeImageAttribute (%args) {
     my $call = AWS::EC2::DescribeImageAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeImageAttributeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeImages (%args) {
     my $call = AWS::EC2::DescribeImages->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeImagesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeInstanceAttribute (%args) {
     my $call = AWS::EC2::DescribeInstanceAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeInstanceAttributeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
-  method DescribeInstanceStatus (%args) {
-    my $call = AWS::EC2::DescribeInstanceStatus->new(%args);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DescribeInstanceStatusResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
-
+  
   method DescribeInstances (%args) {
     my $call = AWS::EC2::DescribeInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
+  method DescribeInstanceStatus (%args) {
+    my $call = AWS::EC2::DescribeInstanceStatus->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::EC2::DescribeInstanceStatusResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  
   method DescribeInternetGateways (%args) {
     my $call = AWS::EC2::DescribeInternetGateways->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeInternetGatewaysResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeKeyPairs (%args) {
     my $call = AWS::EC2::DescribeKeyPairs->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeKeyPairsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeLicenses (%args) {
     my $call = AWS::EC2::DescribeLicenses->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeLicensesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeNetworkAcls (%args) {
     my $call = AWS::EC2::DescribeNetworkAcls->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeNetworkAclsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeNetworkInterfaceAttribute (%args) {
     my $call = AWS::EC2::DescribeNetworkInterfaceAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeNetworkInterfaceAttributeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeNetworkInterfaces (%args) {
     my $call = AWS::EC2::DescribeNetworkInterfaces->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeNetworkInterfacesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribePlacementGroups (%args) {
     my $call = AWS::EC2::DescribePlacementGroups->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribePlacementGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeRegions (%args) {
     my $call = AWS::EC2::DescribeRegions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeRegionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeReservedInstances (%args) {
     my $call = AWS::EC2::DescribeReservedInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeReservedInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeReservedInstancesListings (%args) {
     my $call = AWS::EC2::DescribeReservedInstancesListings->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeReservedInstancesListingsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeReservedInstancesModifications (%args) {
     my $call = AWS::EC2::DescribeReservedInstancesModifications->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeReservedInstancesModificationsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeReservedInstancesOfferings (%args) {
     my $call = AWS::EC2::DescribeReservedInstancesOfferings->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeReservedInstancesOfferingsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeRouteTables (%args) {
     my $call = AWS::EC2::DescribeRouteTables->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeRouteTablesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeSecurityGroups (%args) {
     my $call = AWS::EC2::DescribeSecurityGroups->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeSecurityGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeSnapshotAttribute (%args) {
     my $call = AWS::EC2::DescribeSnapshotAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeSnapshotAttributeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeSnapshots (%args) {
     my $call = AWS::EC2::DescribeSnapshots->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeSnapshotsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeSpotDatafeedSubscription (%args) {
     my $call = AWS::EC2::DescribeSpotDatafeedSubscription->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeSpotDatafeedSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeSpotInstanceRequests (%args) {
     my $call = AWS::EC2::DescribeSpotInstanceRequests->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeSpotInstanceRequestsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeSpotPriceHistory (%args) {
     my $call = AWS::EC2::DescribeSpotPriceHistory->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeSpotPriceHistoryResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeSubnets (%args) {
     my $call = AWS::EC2::DescribeSubnets->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeSubnetsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeTags (%args) {
     my $call = AWS::EC2::DescribeTags->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeTagsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeVolumeAttribute (%args) {
     my $call = AWS::EC2::DescribeVolumeAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeVolumeAttributeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
-  method DescribeVolumeStatus (%args) {
-    my $call = AWS::EC2::DescribeVolumeStatus->new(%args);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::EC2::DescribeVolumeStatusResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
-
+  
   method DescribeVolumes (%args) {
     my $call = AWS::EC2::DescribeVolumes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeVolumesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
+  method DescribeVolumeStatus (%args) {
+    my $call = AWS::EC2::DescribeVolumeStatus->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::EC2::DescribeVolumeStatusResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  
   method DescribeVpcAttribute (%args) {
     my $call = AWS::EC2::DescribeVpcAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeVpcAttributeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeVpcs (%args) {
     my $call = AWS::EC2::DescribeVpcs->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeVpcsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeVpnConnections (%args) {
     my $call = AWS::EC2::DescribeVpnConnections->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeVpnConnectionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeVpnGateways (%args) {
     my $call = AWS::EC2::DescribeVpnGateways->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DescribeVpnGatewaysResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DetachInternetGateway (%args) {
     my $call = AWS::EC2::DetachInternetGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DetachNetworkInterface (%args) {
     my $call = AWS::EC2::DetachNetworkInterface->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DetachVolume (%args) {
     my $call = AWS::EC2::DetachVolume->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::DetachVolumeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DetachVpnGateway (%args) {
     my $call = AWS::EC2::DetachVpnGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DisableVgwRoutePropagation (%args) {
     my $call = AWS::EC2::DisableVgwRoutePropagation->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DisassociateAddress (%args) {
     my $call = AWS::EC2::DisassociateAddress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DisassociateRouteTable (%args) {
     my $call = AWS::EC2::DisassociateRouteTable->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method EnableVgwRoutePropagation (%args) {
     my $call = AWS::EC2::EnableVgwRoutePropagation->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method EnableVolumeIO (%args) {
     my $call = AWS::EC2::EnableVolumeIO->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method GetConsoleOutput (%args) {
     my $call = AWS::EC2::GetConsoleOutput->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::GetConsoleOutputResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method GetPasswordData (%args) {
     my $call = AWS::EC2::GetPasswordData->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::GetPasswordDataResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ImportInstance (%args) {
     my $call = AWS::EC2::ImportInstance->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::ImportInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ImportKeyPair (%args) {
     my $call = AWS::EC2::ImportKeyPair->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::ImportKeyPairResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ImportVolume (%args) {
     my $call = AWS::EC2::ImportVolume->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::ImportVolumeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ModifyImageAttribute (%args) {
     my $call = AWS::EC2::ModifyImageAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method ModifyInstanceAttribute (%args) {
     my $call = AWS::EC2::ModifyInstanceAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method ModifyNetworkInterfaceAttribute (%args) {
     my $call = AWS::EC2::ModifyNetworkInterfaceAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method ModifyReservedInstances (%args) {
     my $call = AWS::EC2::ModifyReservedInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::ModifyReservedInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ModifySnapshotAttribute (%args) {
     my $call = AWS::EC2::ModifySnapshotAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method ModifyVolumeAttribute (%args) {
     my $call = AWS::EC2::ModifyVolumeAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method ModifyVpcAttribute (%args) {
     my $call = AWS::EC2::ModifyVpcAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method MonitorInstances (%args) {
     my $call = AWS::EC2::MonitorInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::MonitorInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method PurchaseReservedInstancesOffering (%args) {
     my $call = AWS::EC2::PurchaseReservedInstancesOffering->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::PurchaseReservedInstancesOfferingResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method RebootInstances (%args) {
     my $call = AWS::EC2::RebootInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method RegisterImage (%args) {
     my $call = AWS::EC2::RegisterImage->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::RegisterImageResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ReleaseAddress (%args) {
     my $call = AWS::EC2::ReleaseAddress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method ReplaceNetworkAclAssociation (%args) {
     my $call = AWS::EC2::ReplaceNetworkAclAssociation->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::ReplaceNetworkAclAssociationResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ReplaceNetworkAclEntry (%args) {
     my $call = AWS::EC2::ReplaceNetworkAclEntry->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method ReplaceRoute (%args) {
     my $call = AWS::EC2::ReplaceRoute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method ReplaceRouteTableAssociation (%args) {
     my $call = AWS::EC2::ReplaceRouteTableAssociation->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::ReplaceRouteTableAssociationResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ReportInstanceStatus (%args) {
     my $call = AWS::EC2::ReportInstanceStatus->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method RequestSpotInstances (%args) {
     my $call = AWS::EC2::RequestSpotInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::RequestSpotInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ResetImageAttribute (%args) {
     my $call = AWS::EC2::ResetImageAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method ResetInstanceAttribute (%args) {
     my $call = AWS::EC2::ResetInstanceAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method ResetNetworkInterfaceAttribute (%args) {
     my $call = AWS::EC2::ResetNetworkInterfaceAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method ResetSnapshotAttribute (%args) {
     my $call = AWS::EC2::ResetSnapshotAttribute->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method RevokeSecurityGroupEgress (%args) {
     my $call = AWS::EC2::RevokeSecurityGroupEgress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method RevokeSecurityGroupIngress (%args) {
     my $call = AWS::EC2::RevokeSecurityGroupIngress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method RunInstances (%args) {
     my $call = AWS::EC2::RunInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::RunInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method StartInstances (%args) {
     my $call = AWS::EC2::StartInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::StartInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method StopInstances (%args) {
     my $call = AWS::EC2::StopInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::StopInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method TerminateInstances (%args) {
     my $call = AWS::EC2::TerminateInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::TerminateInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method UnassignPrivateIpAddresses (%args) {
     my $call = AWS::EC2::UnassignPrivateIpAddresses->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method UnmonitorInstances (%args) {
     my $call = AWS::EC2::UnmonitorInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EC2::UnmonitorInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
 }
-

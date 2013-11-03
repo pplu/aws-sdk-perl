@@ -1,12 +1,14 @@
+
 use MooseX::Declare;
 use AWS::API;
-use Moose::Util::TypeConstraints;
 
-enum 'AWS::CloudWatch::Statistic', [qw(SampleCount Average Sum Minimum Maximum)];
-enum 'AWS::CloudWatch::StandardUnit', [qw(Seconds Microseconds Milliseconds Bytes Kilobytes Megabytes Gigabytes Terabytes Bits Kilobits Megabits Gigabits Terabits Percent Count Bytes/Second Kilobytes/Second Megabytes/Second Gigabytes/Second Terabytes/Second Bits/Second Kilobits/Second Megabits/Second Gigabits/Second Terabits/Second Count/Second None)];
-enum 'AWS::CloudWatch::StateValue', [qw(OK ALARM INSUFFICIENT_DATA)];
-enum 'AWS::CloudWatch::HistoryItemType', [qw(ConfigurationUpdate StateUpdate Action)];
-enum 'AWS::CloudWatch::ComparisonOperator', [qw(GreaterThanOrEqualToThreshold GreaterThanThreshold LessThanThreshold LessThanOrEqualToThreshold)];
+use Moose::Util::TypeConstraints;
+enum 'AWS::CloudWatch::ComparisonOperator', [qw(GreaterThanOrEqualToThreshold GreaterThanThreshold LessThanThreshold LessThanOrEqualToThreshold )];
+enum 'AWS::CloudWatch::HistoryItemType', [qw(ConfigurationUpdate StateUpdate Action )];
+enum 'AWS::CloudWatch::StandardUnit', [qw(Seconds Microseconds Milliseconds Bytes Kilobytes Megabytes Gigabytes Terabytes Bits Kilobits Megabits Gigabits Terabits Percent Count Bytes/Second Kilobytes/Second Megabytes/Second Gigabytes/Second Terabytes/Second Bits/Second Kilobits/Second Megabits/Second Gigabits/Second Terabits/Second Count/Second None )];
+enum 'AWS::CloudWatch::StateValue', [qw(OK ALARM INSUFFICIENT_DATA )];
+enum 'AWS::CloudWatch::Statistic', [qw(SampleCount Average Sum Minimum Maximum )];
+
 
 class AWS::CloudWatch::AlarmHistoryItem with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AlarmName => (is => 'ro', isa => 'Str');
@@ -81,6 +83,7 @@ class AWS::CloudWatch::StatisticSet with (AWS::API::ResultParser, AWS::API::ToPa
   has SampleCount => (is => 'ro', isa => 'Num', required => 1);
   has Sum => (is => 'ro', isa => 'Num', required => 1);
 }
+
 
 class AWS::CloudWatch::DeleteAlarms {
   has AlarmNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -202,6 +205,7 @@ class AWS::CloudWatch::SetAlarmState {
   has _returns => (isa => 'AWS::CloudWatch::SetAlarmStateResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetAlarmStateResult');
 }
+
 class AWS::CloudWatch::DescribeAlarmHistoryResult with AWS::API::ResultParser {
   has AlarmHistoryItems => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::AlarmHistoryItem]');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -221,80 +225,81 @@ class AWS::CloudWatch::ListMetricsResult with AWS::API::ResultParser {
   has Metrics => (is => 'ro', isa => 'ArrayRef[AWS::CloudWatch::Metric]');
   has NextToken => (is => 'ro', isa => 'Str');
 }
+
+
 class AWS::CloudWatch with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'monitoring');
   has version => (is => 'ro', isa => 'Str', default => '2010-08-01');
-
+  
   method DeleteAlarms (%args) {
     my $call = AWS::CloudWatch::DeleteAlarms->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DescribeAlarmHistory (%args) {
     my $call = AWS::CloudWatch::DescribeAlarmHistory->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudWatch::DescribeAlarmHistoryResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeAlarms (%args) {
     my $call = AWS::CloudWatch::DescribeAlarms->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudWatch::DescribeAlarmsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeAlarmsForMetric (%args) {
     my $call = AWS::CloudWatch::DescribeAlarmsForMetric->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudWatch::DescribeAlarmsForMetricResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DisableAlarmActions (%args) {
     my $call = AWS::CloudWatch::DisableAlarmActions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method EnableAlarmActions (%args) {
     my $call = AWS::CloudWatch::EnableAlarmActions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method GetMetricStatistics (%args) {
     my $call = AWS::CloudWatch::GetMetricStatistics->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudWatch::GetMetricStatisticsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ListMetrics (%args) {
     my $call = AWS::CloudWatch::ListMetrics->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudWatch::ListMetricsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method PutMetricAlarm (%args) {
     my $call = AWS::CloudWatch::PutMetricAlarm->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method PutMetricData (%args) {
     my $call = AWS::CloudWatch::PutMetricData->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method SetAlarmState (%args) {
     my $call = AWS::CloudWatch::SetAlarmState->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
 }
-

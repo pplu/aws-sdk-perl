@@ -1,8 +1,10 @@
+
 use MooseX::Declare;
 use AWS::API;
-use Moose::Util::TypeConstraints;
 
-enum 'AWS::ImportExport::JobType', [qw(Import Export)];
+use Moose::Util::TypeConstraints;
+enum 'AWS::ImportExport::JobType', [qw(Import Export )];
+
 
 class AWS::ImportExport::Job with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CreationDate => (is => 'ro', isa => 'Str');
@@ -10,6 +12,7 @@ class AWS::ImportExport::Job with (AWS::API::ResultParser, AWS::API::ToParams) {
   has JobId => (is => 'ro', isa => 'Str');
   has JobType => (is => 'ro', isa => 'AWS::ImportExport::JobType');
 }
+
 
 class AWS::ImportExport::CancelJob {
   has JobId => (is => 'ro', isa => 'Str', required => 1);
@@ -53,6 +56,7 @@ class AWS::ImportExport::UpdateJob {
   has _returns => (isa => 'AWS::ImportExport::UpdateJobResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateJobResult');
 }
+
 class AWS::ImportExport::CancelJobResult with AWS::API::ResultParser {
   has Success => (is => 'ro', isa => 'Str');
 }
@@ -90,44 +94,45 @@ class AWS::ImportExport::UpdateJobResult with AWS::API::ResultParser {
   has Success => (is => 'ro', isa => 'Str');
   has WarningMessage => (is => 'ro', isa => 'Str');
 }
+
+
 class AWS::ImportExport with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'importexport');
   has version => (is => 'ro', isa => 'Str', default => '2010-06-01');
-
+  
   method CancelJob (%args) {
     my $call = AWS::ImportExport::CancelJob->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ImportExport::CancelJobResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateJob (%args) {
     my $call = AWS::ImportExport::CreateJob->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ImportExport::CreateJobResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method GetStatus (%args) {
     my $call = AWS::ImportExport::GetStatus->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ImportExport::GetStatusResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ListJobs (%args) {
     my $call = AWS::ImportExport::ListJobs->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ImportExport::ListJobsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method UpdateJob (%args) {
     my $call = AWS::ImportExport::UpdateJob->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ImportExport::UpdateJobResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
 }
-

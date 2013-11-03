@@ -1,8 +1,10 @@
+
 use MooseX::Declare;
 use AWS::API;
-use Moose::Util::TypeConstraints;
 
-enum 'AWS::RedShift::SourceType', [qw(cluster cluster-parameter-group cluster-security-group cluster-snapshot)];
+use Moose::Util::TypeConstraints;
+enum 'AWS::RedShift::SourceType', [qw(cluster cluster-parameter-group cluster-security-group cluster-snapshot )];
+
 
 class AWS::RedShift::AccountWithRestoreAccess with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AccountId => (is => 'ro', isa => 'Str');
@@ -207,6 +209,7 @@ class AWS::RedShift::VpcSecurityGroupMembership with (AWS::API::ResultParser, AW
   has Status => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupId => (is => 'ro', isa => 'Str');
 }
+
 
 class AWS::RedShift::AuthorizeClusterSecurityGroupIngress {
   has CIDRIP => (is => 'ro', isa => 'Str');
@@ -553,6 +556,7 @@ class AWS::RedShift::RevokeSnapshotAccess {
   has _returns => (isa => 'AWS::RedShift::RevokeSnapshotAccessResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeSnapshotAccessResult');
 }
+
 class AWS::RedShift::AuthorizeClusterSecurityGroupIngressResult with AWS::API::ResultParser {
   has ClusterSecurityGroup => (is => 'ro', isa => 'AWS::RedShift::ClusterSecurityGroup');
 }
@@ -668,251 +672,252 @@ class AWS::RedShift::RevokeClusterSecurityGroupIngressResult with AWS::API::Resu
 class AWS::RedShift::RevokeSnapshotAccessResult with AWS::API::ResultParser {
   has Snapshot => (is => 'ro', isa => 'AWS::RedShift::Snapshot');
 }
+
+
 class AWS::RedShift with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'redshift');
   has version => (is => 'ro', isa => 'Str', default => '2012-12-01');
-
+  
   method AuthorizeClusterSecurityGroupIngress (%args) {
     my $call = AWS::RedShift::AuthorizeClusterSecurityGroupIngress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::AuthorizeClusterSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method AuthorizeSnapshotAccess (%args) {
     my $call = AWS::RedShift::AuthorizeSnapshotAccess->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::AuthorizeSnapshotAccessResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CopyClusterSnapshot (%args) {
     my $call = AWS::RedShift::CopyClusterSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::CopyClusterSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateCluster (%args) {
     my $call = AWS::RedShift::CreateCluster->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::CreateClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateClusterParameterGroup (%args) {
     my $call = AWS::RedShift::CreateClusterParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::CreateClusterParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateClusterSecurityGroup (%args) {
     my $call = AWS::RedShift::CreateClusterSecurityGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::CreateClusterSecurityGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateClusterSnapshot (%args) {
     my $call = AWS::RedShift::CreateClusterSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::CreateClusterSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method CreateClusterSubnetGroup (%args) {
     my $call = AWS::RedShift::CreateClusterSubnetGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::CreateClusterSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteCluster (%args) {
     my $call = AWS::RedShift::DeleteCluster->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DeleteClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteClusterParameterGroup (%args) {
     my $call = AWS::RedShift::DeleteClusterParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteClusterSecurityGroup (%args) {
     my $call = AWS::RedShift::DeleteClusterSecurityGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DeleteClusterSnapshot (%args) {
     my $call = AWS::RedShift::DeleteClusterSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DeleteClusterSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteClusterSubnetGroup (%args) {
     my $call = AWS::RedShift::DeleteClusterSubnetGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DescribeClusterParameterGroups (%args) {
     my $call = AWS::RedShift::DescribeClusterParameterGroups->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeClusterParameterGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeClusterParameters (%args) {
     my $call = AWS::RedShift::DescribeClusterParameters->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeClusterParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
-  method DescribeClusterSecurityGroups (%args) {
-    my $call = AWS::RedShift::DescribeClusterSecurityGroups->new(%args);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::RedShift::DescribeClusterSecurityGroupsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
-
-  method DescribeClusterSnapshots (%args) {
-    my $call = AWS::RedShift::DescribeClusterSnapshots->new(%args);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::RedShift::DescribeClusterSnapshotsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
-
-  method DescribeClusterSubnetGroups (%args) {
-    my $call = AWS::RedShift::DescribeClusterSubnetGroups->new(%args);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::RedShift::DescribeClusterSubnetGroupsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
-
-  method DescribeClusterVersions (%args) {
-    my $call = AWS::RedShift::DescribeClusterVersions->new(%args);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::RedShift::DescribeClusterVersionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
-
+  
   method DescribeClusters (%args) {
     my $call = AWS::RedShift::DescribeClusters->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeClustersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
+  method DescribeClusterSecurityGroups (%args) {
+    my $call = AWS::RedShift::DescribeClusterSecurityGroups->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::DescribeClusterSecurityGroupsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  
+  method DescribeClusterSnapshots (%args) {
+    my $call = AWS::RedShift::DescribeClusterSnapshots->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::DescribeClusterSnapshotsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  
+  method DescribeClusterSubnetGroups (%args) {
+    my $call = AWS::RedShift::DescribeClusterSubnetGroups->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::DescribeClusterSubnetGroupsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  
+  method DescribeClusterVersions (%args) {
+    my $call = AWS::RedShift::DescribeClusterVersions->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::DescribeClusterVersionsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  
   method DescribeDefaultClusterParameters (%args) {
     my $call = AWS::RedShift::DescribeDefaultClusterParameters->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeDefaultClusterParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeEvents (%args) {
     my $call = AWS::RedShift::DescribeEvents->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeEventsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeOrderableClusterOptions (%args) {
     my $call = AWS::RedShift::DescribeOrderableClusterOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeOrderableClusterOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeReservedNodeOfferings (%args) {
     my $call = AWS::RedShift::DescribeReservedNodeOfferings->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeReservedNodeOfferingsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeReservedNodes (%args) {
     my $call = AWS::RedShift::DescribeReservedNodes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeReservedNodesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeResize (%args) {
     my $call = AWS::RedShift::DescribeResize->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeResizeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ModifyCluster (%args) {
     my $call = AWS::RedShift::ModifyCluster->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::ModifyClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ModifyClusterParameterGroup (%args) {
     my $call = AWS::RedShift::ModifyClusterParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::ModifyClusterParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ModifyClusterSubnetGroup (%args) {
     my $call = AWS::RedShift::ModifyClusterSubnetGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::ModifyClusterSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method PurchaseReservedNodeOffering (%args) {
     my $call = AWS::RedShift::PurchaseReservedNodeOffering->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::PurchaseReservedNodeOfferingResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method RebootCluster (%args) {
     my $call = AWS::RedShift::RebootCluster->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::RebootClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ResetClusterParameterGroup (%args) {
     my $call = AWS::RedShift::ResetClusterParameterGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::ResetClusterParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method RestoreFromClusterSnapshot (%args) {
     my $call = AWS::RedShift::RestoreFromClusterSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::RestoreFromClusterSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method RevokeClusterSecurityGroupIngress (%args) {
     my $call = AWS::RedShift::RevokeClusterSecurityGroupIngress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::RevokeClusterSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method RevokeSnapshotAccess (%args) {
     my $call = AWS::RedShift::RevokeSnapshotAccess->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::RevokeSnapshotAccessResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
 }
-

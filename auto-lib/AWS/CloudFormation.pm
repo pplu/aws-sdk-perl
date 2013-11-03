@@ -1,9 +1,11 @@
+
 use MooseX::Declare;
 use AWS::API;
-use Moose::Util::TypeConstraints;
 
-enum 'AWS::CloudFormation::StackStatus', [qw(CREATE_IN_PROGRESS CREATE_FAILED CREATE_COMPLETE ROLLBACK_IN_PROGRESS ROLLBACK_FAILED ROLLBACK_COMPLETE DELETE_IN_PROGRESS DELETE_FAILED DELETE_COMPLETE UPDATE_IN_PROGRESS UPDATE_COMPLETE_CLEANUP_IN_PROGRESS UPDATE_COMPLETE UPDATE_ROLLBACK_IN_PROGRESS UPDATE_ROLLBACK_FAILED UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS UPDATE_ROLLBACK_COMPLETE)];
-enum 'AWS::CloudFormation::ResourceStatus', [qw(CREATE_IN_PROGRESS CREATE_FAILED CREATE_COMPLETE DELETE_IN_PROGRESS DELETE_FAILED DELETE_COMPLETE UPDATE_IN_PROGRESS UPDATE_FAILED UPDATE_COMPLETE)];
+use Moose::Util::TypeConstraints;
+enum 'AWS::CloudFormation::ResourceStatus', [qw(CREATE_IN_PROGRESS CREATE_FAILED CREATE_COMPLETE DELETE_IN_PROGRESS DELETE_FAILED DELETE_COMPLETE UPDATE_IN_PROGRESS UPDATE_FAILED UPDATE_COMPLETE )];
+enum 'AWS::CloudFormation::StackStatus', [qw(CREATE_IN_PROGRESS CREATE_FAILED CREATE_COMPLETE ROLLBACK_IN_PROGRESS ROLLBACK_FAILED ROLLBACK_COMPLETE DELETE_IN_PROGRESS DELETE_FAILED DELETE_COMPLETE UPDATE_IN_PROGRESS UPDATE_COMPLETE_CLEANUP_IN_PROGRESS UPDATE_COMPLETE UPDATE_ROLLBACK_IN_PROGRESS UPDATE_ROLLBACK_FAILED UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS UPDATE_ROLLBACK_COMPLETE )];
+
 
 class AWS::CloudFormation::Output with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
@@ -102,6 +104,7 @@ class AWS::CloudFormation::TemplateParameter with (AWS::API::ResultParser, AWS::
   has NoEcho => (is => 'ro', isa => 'Str');
   has ParameterKey => (is => 'ro', isa => 'Str');
 }
+
 
 class AWS::CloudFormation::CancelUpdateStack {
   has StackName => (is => 'ro', isa => 'Str', required => 1);
@@ -217,6 +220,7 @@ class AWS::CloudFormation::ValidateTemplate {
   has _returns => (isa => 'AWS::CloudFormation::ValidateTemplateResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ValidateTemplateResult');
 }
+
 class AWS::CloudFormation::CreateStackResult with AWS::API::ResultParser {
   has StackId => (is => 'ro', isa => 'Str');
 }
@@ -257,98 +261,99 @@ class AWS::CloudFormation::ValidateTemplateResult with AWS::API::ResultParser {
   has Description => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::TemplateParameter]');
 }
+
+
 class AWS::CloudFormation with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'cloudformation');
   has version => (is => 'ro', isa => 'Str', default => '2010-05-15');
-
+  
   method CancelUpdateStack (%args) {
     my $call = AWS::CloudFormation::CancelUpdateStack->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method CreateStack (%args) {
     my $call = AWS::CloudFormation::CreateStack->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudFormation::CreateStackResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteStack (%args) {
     my $call = AWS::CloudFormation::DeleteStack->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-
+  
   method DescribeStackEvents (%args) {
     my $call = AWS::CloudFormation::DescribeStackEvents->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudFormation::DescribeStackEventsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeStackResource (%args) {
     my $call = AWS::CloudFormation::DescribeStackResource->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudFormation::DescribeStackResourceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeStackResources (%args) {
     my $call = AWS::CloudFormation::DescribeStackResources->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudFormation::DescribeStackResourcesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeStacks (%args) {
     my $call = AWS::CloudFormation::DescribeStacks->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudFormation::DescribeStacksResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method EstimateTemplateCost (%args) {
     my $call = AWS::CloudFormation::EstimateTemplateCost->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudFormation::EstimateTemplateCostResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method GetTemplate (%args) {
     my $call = AWS::CloudFormation::GetTemplate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudFormation::GetTemplateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ListStackResources (%args) {
     my $call = AWS::CloudFormation::ListStackResources->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudFormation::ListStackResourcesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ListStacks (%args) {
     my $call = AWS::CloudFormation::ListStacks->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudFormation::ListStacksResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method UpdateStack (%args) {
     my $call = AWS::CloudFormation::UpdateStack->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudFormation::UpdateStackResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method ValidateTemplate (%args) {
     my $call = AWS::CloudFormation::ValidateTemplate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudFormation::ValidateTemplateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
 }
-

@@ -1,10 +1,12 @@
+
 use MooseX::Declare;
 use AWS::API;
-use Moose::Util::TypeConstraints;
 
-enum 'AWS::CloudSearch::SourceDataFunction', [qw(Copy TrimTitle Map)];
-enum 'AWS::CloudSearch::IndexFieldType', [qw(uint literal text)];
-enum 'AWS::CloudSearch::OptionState', [qw(RequiresIndexDocuments Processing Active)];
+use Moose::Util::TypeConstraints;
+enum 'AWS::CloudSearch::IndexFieldType', [qw(uint literal text )];
+enum 'AWS::CloudSearch::OptionState', [qw(RequiresIndexDocuments Processing Active )];
+enum 'AWS::CloudSearch::SourceDataFunction', [qw(Copy TrimTitle Map )];
+
 
 class AWS::CloudSearch::AccessPoliciesStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Options => (is => 'ro', isa => 'Str', required => 1);
@@ -107,6 +109,7 @@ class AWS::CloudSearch::TextOptions with (AWS::API::ResultParser, AWS::API::ToPa
 class AWS::CloudSearch::UIntOptions with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DefaultValue => (is => 'ro', isa => 'Int');
 }
+
 
 class AWS::CloudSearch::CreateDomain {
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
@@ -259,6 +262,7 @@ class AWS::CloudSearch::UpdateSynonymOptions {
   has _returns => (isa => 'AWS::CloudSearch::UpdateSynonymOptionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateSynonymOptionsResult');
 }
+
 class AWS::CloudSearch::CreateDomainResult with AWS::API::ResultParser {
   has DomainStatus => (is => 'ro', isa => 'AWS::CloudSearch::DomainStatus');
 }
@@ -319,149 +323,150 @@ class AWS::CloudSearch::UpdateStopwordOptionsResult with AWS::API::ResultParser 
 class AWS::CloudSearch::UpdateSynonymOptionsResult with AWS::API::ResultParser {
   has Synonyms => (is => 'ro', isa => 'AWS::CloudSearch::SynonymOptionsStatus', required => 1);
 }
+
+
 class AWS::CloudSearch with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller) {
   has service => (is => 'ro', isa => 'Str', default => 'cloudsearch');
   has version => (is => 'ro', isa => 'Str', default => '2011-02-01');
-
+  
   method CreateDomain (%args) {
     my $call = AWS::CloudSearch::CreateDomain->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::CreateDomainResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DefineIndexField (%args) {
     my $call = AWS::CloudSearch::DefineIndexField->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::DefineIndexFieldResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DefineRankExpression (%args) {
     my $call = AWS::CloudSearch::DefineRankExpression->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::DefineRankExpressionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteDomain (%args) {
     my $call = AWS::CloudSearch::DeleteDomain->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::DeleteDomainResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteIndexField (%args) {
     my $call = AWS::CloudSearch::DeleteIndexField->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::DeleteIndexFieldResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DeleteRankExpression (%args) {
     my $call = AWS::CloudSearch::DeleteRankExpression->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::DeleteRankExpressionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeDefaultSearchField (%args) {
     my $call = AWS::CloudSearch::DescribeDefaultSearchField->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::DescribeDefaultSearchFieldResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeDomains (%args) {
     my $call = AWS::CloudSearch::DescribeDomains->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::DescribeDomainsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeIndexFields (%args) {
     my $call = AWS::CloudSearch::DescribeIndexFields->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::DescribeIndexFieldsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeRankExpressions (%args) {
     my $call = AWS::CloudSearch::DescribeRankExpressions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::DescribeRankExpressionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeServiceAccessPolicies (%args) {
     my $call = AWS::CloudSearch::DescribeServiceAccessPolicies->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::DescribeServiceAccessPoliciesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeStemmingOptions (%args) {
     my $call = AWS::CloudSearch::DescribeStemmingOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::DescribeStemmingOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeStopwordOptions (%args) {
     my $call = AWS::CloudSearch::DescribeStopwordOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::DescribeStopwordOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method DescribeSynonymOptions (%args) {
     my $call = AWS::CloudSearch::DescribeSynonymOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::DescribeSynonymOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method IndexDocuments (%args) {
     my $call = AWS::CloudSearch::IndexDocuments->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::IndexDocumentsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method UpdateDefaultSearchField (%args) {
     my $call = AWS::CloudSearch::UpdateDefaultSearchField->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::UpdateDefaultSearchFieldResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method UpdateServiceAccessPolicies (%args) {
     my $call = AWS::CloudSearch::UpdateServiceAccessPolicies->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::UpdateServiceAccessPoliciesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method UpdateStemmingOptions (%args) {
     my $call = AWS::CloudSearch::UpdateStemmingOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::UpdateStemmingOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method UpdateStopwordOptions (%args) {
     my $call = AWS::CloudSearch::UpdateStopwordOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::UpdateStopwordOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
   method UpdateSynonymOptions (%args) {
     my $call = AWS::CloudSearch::UpdateSynonymOptions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudSearch::UpdateSynonymOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-
+  
 }
-
