@@ -143,6 +143,7 @@ class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_
         $output .= "class $inner_class with AWS::API::MapParser {\n";
         my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members});
         my $members = $self->inner_classes->{ $inner_class }->{keys}->{enum};
+        next if (not defined $members);
         foreach my $param_name (sort @$members){
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
           $output .= ");\n";
