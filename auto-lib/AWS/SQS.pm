@@ -233,7 +233,7 @@ class AWS::SQS::SendMessageBatchResult with AWS::API::ResultParser {
 
 }
 
-class AWS::SQS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
+class AWS::SQS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'sqs');
   has version => (is => 'ro', isa => 'Str', default => '2012-11-05');
   

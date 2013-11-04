@@ -274,7 +274,7 @@ class AWS::CloudFormation::ValidateTemplateResult with AWS::API::ResultParser {
 
 }
 
-class AWS::CloudFormation with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
+class AWS::CloudFormation with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'cloudformation');
   has version => (is => 'ro', isa => 'Str', default => '2010-05-15');
   

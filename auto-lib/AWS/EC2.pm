@@ -2912,7 +2912,7 @@ class AWS::EC2::UnmonitorInstancesResult with AWS::API::ResultParser {
 
 }
 
-class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller) {
+class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'ec2');
   has version => (is => 'ro', isa => 'Str', default => '2013-10-01');
   

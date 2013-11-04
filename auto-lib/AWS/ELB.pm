@@ -380,7 +380,7 @@ class AWS::ELB::SetLoadBalancerPoliciesOfListenerResult with AWS::API::ResultPar
 
 }
 
-class AWS::ELB with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
+class AWS::ELB with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'elasticloadbalancing');
   has version => (is => 'ro', isa => 'Str', default => '2012-06-01');
   

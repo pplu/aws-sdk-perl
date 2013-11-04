@@ -590,7 +590,7 @@ class AWS::ElasticBeanstalk::ValidateConfigurationSettingsResult with AWS::API::
 
 }
 
-class AWS::ElasticBeanstalk with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
+class AWS::ElasticBeanstalk with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'elasticbeanstalk');
   has version => (is => 'ro', isa => 'Str', default => '2010-12-01');
   

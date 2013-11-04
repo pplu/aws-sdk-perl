@@ -131,7 +131,13 @@ role Net::AWS::V4Signature {
   sub sign {
     my ($self, $params) = @_;
 
-    my $request = POST $self->endpoint, Content => $params;
+    my $post_params = {
+        Version               => $self->version,
+        %$params
+    };
+
+    my $request = POST $self->endpoint, Content => $post_params;
+
     $request->header( Date => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
     $request->header( Host => $self->endpoint_host );
 
@@ -179,10 +185,29 @@ role Net::AWS::QueryCaller {
   }
 }
 
+role Net::AWS::XMLResponse {
+  use XML::Simple qw//;
+  use Carp qw(croak);
+  
+  method _process_response ($data) {
+    my $xml = XML::Simple::XMLin( $data,
+            ForceArray    => qr/(?:item|Errors)/i,
+            KeyAttr       => '',
+            SuppressEmpty => undef,
+    );
+    if ( defined $xml->{Errors} ) {
+      croak "Error: $data";
+    }
+
+    return $xml;
+  }
+
+}
+
 role Net::AWS::Caller {
   use Carp qw(croak);
-  use XML::Simple qw(XMLin);
 
+  requires '_process_response';
   has 'access_key'         => ( is => 'rw', isa => 'Str', required => 1, lazy => 1, default => sub { $ENV{AWS_ACCESS_KEY} } );
   has 'secret_key'         => ( is => 'rw', isa => 'Str', required => 1, lazy => 1, default => sub { $ENV{AWS_SECRET_KEY} } );
   has 'debug'              => ( is => 'rw', required => 0, default => sub { 0 } );
@@ -196,19 +221,6 @@ role Net::AWS::Caller {
         );
     }
   );
-
-  sub _process {
-    my $self = shift;
-    my $data = shift;
-
-    my $xml = XMLin( $data,
-            ForceArray    => qr/(?:item|Errors)/i,
-            KeyAttr       => '',
-            SuppressEmpty => undef,
-    );
-    return $xml;
-  }
-
 
   method send (%params){
     my $request = $self->sign(\%params);
@@ -224,14 +236,12 @@ role Net::AWS::Caller {
       }
     );
     if ( $response->{success} ) {
-        my $xml = $self->_process( $response->{content} );
-        if ( defined $xml->{Errors} ) {
-            croak "Error: $response->{content}\n";
-        }
-        return $xml;
+        return $self->_process_response( $response->{content} );
+    } else {
+        #TODO: retry or croak based on error codes
+        croak "POST Request failed: $response->{status} $response->{reason} $response->{content}\n";
     }
 
-    croak "POST Request failed: $response->{status} $response->{reason} $response->{content}\n";
   }
 }
 

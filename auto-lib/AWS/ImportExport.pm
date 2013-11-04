@@ -101,7 +101,7 @@ class AWS::ImportExport::UpdateJobResult with AWS::API::ResultParser {
 
 }
 
-class AWS::ImportExport with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller) {
+class AWS::ImportExport with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'importexport');
   has version => (is => 'ro', isa => 'Str', default => '2010-06-01');
   

@@ -99,7 +99,7 @@ class AWS::STS::GetSessionTokenResult with AWS::API::ResultParser {
 
 }
 
-class AWS::STS with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
+class AWS::STS with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'sts');
   has version => (is => 'ro', isa => 'Str', default => '2011-06-15');
   

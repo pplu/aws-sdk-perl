@@ -15,6 +15,7 @@ class AWS::API::Builder::query {
                                                                    'AWS::API::SingleEndpointCaller':
                                                                    'AWS::API::RegionalEndpointCaller' 
                                                               } );
+  has response_role  => (is => 'ro', lazy => 1, default => sub { 'Net::AWS::XMLResponse' });
   has signature_role => (is => 'ro', lazy => 1, default => sub { sprintf "Net::AWS::%sSignature", uc $_[0]->struct->{signature_version} } );
   has parameter_role => (is => 'ro', lazy => 1, default => sub { my $type = $_[0]->struct->{type}; substr($type,0,1) = uc substr($type,0,1); return "Net::AWS::${type}Caller" });
 
@@ -91,7 +92,7 @@ class [% c.api %]::[% operation.name %]Result with AWS::API::ResultParser {
 [%- END %]
 [%- END %]
 
-class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_role %], [% c.parameter_role %]) {
+class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_role %], [% c.parameter_role %], [% c.response_role %]) {
   has service => (is => 'ro', isa => 'Str', default => '[% c.service %]');
   has version => (is => 'ro', isa => 'Str', default => '[% c.version %]');
   [% FOR op IN c.struct.operations.keys.sort %]

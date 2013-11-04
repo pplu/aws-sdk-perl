@@ -871,7 +871,7 @@ class AWS::IAM::UploadSigningCertificateResult with AWS::API::ResultParser {
 
 }
 
-class AWS::IAM with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller) {
+class AWS::IAM with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'iam');
   has version => (is => 'ro', isa => 'Str', default => '2010-05-08');
   
