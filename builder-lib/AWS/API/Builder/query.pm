@@ -118,24 +118,6 @@ class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_
     return $output;
   }
 
-  method make_result_class ($members, $api_call) {
-      my $api = $self->api;
-      my $class = "${api}::${api_call}Result";
-      my $output;
-      $output .= "class $class with AWS::API::ResultParser {\n";
-      foreach my $param_name (sort keys %$members){
-        my $param_props = $members->{ $param_name };
-        my $type = eval { $self->get_caller_class_type($param_props) };
-        if ($@) { die "In output class $class: $@"; }
-        $output .= "  has $param_name => (is => 'ro', isa => '$type'";
-        $output .= ", required => 1" if (defined $param_props->{required} and $param_props->{required} == 1);
-        $output .= ");\n";
-      }
-      $output .= "}\n";
-  
-      return $output;
-  }
-
   method make_inner_classes {
     my $output = '';
   
