@@ -1,6 +1,12 @@
 use MooseX::Declare;
 use Moose::Util::TypeConstraints;
 
+role AWS::API::Attribute::Trait::Unwrapped {
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('Unwrapped');
+  has xmlname => (is => 'ro', isa => 'Str');
+}
+
 class AWS::Common::Tag with AWS::API::ResultParser {
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Str', required => 1);
@@ -97,6 +103,60 @@ role AWS::API::ToParams {
       $params->{$att} = $self->$att();
     }
     return $params;
+  }
+}
+
+role AWS::API::UnwrappedParser {
+  sub result_to_args {
+    my ($class, $result) = @_;
+    my %args;
+
+    foreach my $att ($class->meta->get_attribute_list) {
+      next if (not my $meta = $class->meta->get_attribute($att));
+      my $key = $meta->xmlname;
+
+      if (not ref($result->{ $key })) {
+        if (defined $result->{ $key }){
+          $args{ $att } = $result->{ $key };
+        }
+      } elsif (exists $result->{ $key }{ item } and ref($result->{ $key }{ item }) eq 'ARRAY'){
+        if ($class->meta->get_attribute($att)->type_constraint =~ m/^ArrayRef\[(.*)\]/) {
+          my $att_class = $1;
+          if ($att_class eq 'HashRef') {
+            warn "Hey!!! I found a HashRef Attribute!!!";
+            $args{ $att } = $result->{ $key };
+          } else {
+            $args{ $att } = [ map { $att_class->from_result( $_ ) } @{ $result->{ $key }{ item } } ];
+          }
+        } else {
+          die "Found a member in the result, but the attribute $key isn't an ArrayRef";
+        }
+      } elsif (exists $result->{ $key }{ item } and ref($result->{ $key }{ item }) eq 'HASH'){
+        if ($class->meta->get_attribute($key)->type_constraint =~ m/^ArrayRef\[(.*)\]/) {
+          my $att_class = $1;
+          $args{ $att } = [ $att_class->from_result( $result->{ $key }{ item } ) ];
+        } else {
+          die "Found a member in the result, but the attribute $key isn't an ArrayRef";
+        }
+      } elsif (exists $result->{ $key }{ item } and not ref($result->{ $key }{ item }) ) {
+        $args{ $att } = [ $result->{ $key }{ item } ];
+      } elsif (exists $result->{ $key }{ entry }) {
+        my $att_class = $class->meta->get_attribute($att)->type_constraint->class;
+        $args{ $att } = $att_class->result_to_args( $result->{ $key }{ entry } ); 
+      } elsif (ref($result->{ $key }) eq 'HASH') {
+        my $att_class = $class->meta->get_attribute($att)->type_constraint;
+        $att_class->new(%{ $result->{ $key } });
+      } else {
+        die "not implemented yet: $key $result->{ $key } ...";
+      }
+    }
+    return %args;
+  }
+
+  sub from_result {
+    my ($class, $result) = @_;
+    my %args = $class->result_to_args($result, $class);
+    return $class->new(%args);
   }
 }
 

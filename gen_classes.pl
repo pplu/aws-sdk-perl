@@ -11,7 +11,7 @@ use File::Slurp;
 
 use lib 'builder-lib';
 
-use AWS::API::Builder::query;
+use Module::Load;
 
 my $namespaces = {
   autoscaling => 'AutoScaling',
@@ -72,18 +72,15 @@ sub process_api {
 
   my $type = $struct->{type} or die "Type of API call not found";
 
-  if ($type ne 'query'){
-    die "Skipping $api because $type generation is not implemented yet\n";
-  }
+  my $overrides = { 'AWS::EC2' => 'EC2' };
+  $type = $overrides->{ $api } if (defined $overrides->{ $api });
+
   my $class_maker = "AWS::API::Builder::${type}";
+  load $class_maker;
+
   my $c = $class_maker->new(struct => $struct, api => $api);
 
   #p $c;
-
-  if ($type ne 'query') {
-    warn "Skipping $api because it's calling format is $type";
-    return;
-  }
 
   my $out = $c->process_api;
 
