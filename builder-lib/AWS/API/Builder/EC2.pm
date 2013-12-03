@@ -148,7 +148,9 @@ class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_
             if ($@) { die "In Inner Class: $inner_class: $@"; }
           }
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
-          $output .= ", traits => ['Unwrapped'], xmlname => '$param_props->{xmlname}'";
+          if (defined $param_props->{xmlname}) {
+            $output .= ", traits => ['Unwrapped'], xmlname => '$param_props->{xmlname}'";
+          }
           $output .= ", required => 1" if (defined $param_props->{required} and $param_props->{required} == 1);
           $output .= ");\n";
         }

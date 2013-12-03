@@ -80,11 +80,11 @@ class AWS::EC2::Address with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
 }
 
 class AWS::EC2::AttributeBooleanValue with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Value => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has Value => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::AttributeValue with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Value => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has Value => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::AvailabilityZone with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -99,10 +99,10 @@ class AWS::EC2::AvailabilityZoneMessage with (AWS::API::UnwrappedParser, AWS::AP
 }
 
 class AWS::EC2::BlockDeviceMapping with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has DeviceName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has Ebs => (is => 'ro', isa => 'AWS::EC2::EbsBlockDevice', traits => ['Unwrapped'], xmlname => '');
-  has NoDevice => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has VirtualName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has DeviceName => (is => 'ro', isa => 'Str');
+  has Ebs => (is => 'ro', isa => 'AWS::EC2::EbsBlockDevice');
+  has NoDevice => (is => 'ro', isa => 'Str');
+  has VirtualName => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::BundleTask with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -137,13 +137,13 @@ class AWS::EC2::ConversionTask with (AWS::API::UnwrappedParser, AWS::API::ToPara
 }
 
 class AWS::EC2::CreateVolumePermission with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Group => (is => 'ro', isa => 'AWS::EC2::PermissionGroup', traits => ['Unwrapped'], xmlname => '');
-  has UserId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has Group => (is => 'ro', isa => 'AWS::EC2::PermissionGroup');
+  has UserId => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::CreateVolumePermissionModifications with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Add => (is => 'ro', isa => 'ArrayRef[AWS::EC2::CreateVolumePermission]', traits => ['Unwrapped'], xmlname => '');
-  has Remove => (is => 'ro', isa => 'ArrayRef[AWS::EC2::CreateVolumePermission]', traits => ['Unwrapped'], xmlname => '');
+  has Add => (is => 'ro', isa => 'ArrayRef[AWS::EC2::CreateVolumePermission]');
+  has Remove => (is => 'ro', isa => 'ArrayRef[AWS::EC2::CreateVolumePermission]');
 }
 
 class AWS::EC2::CustomerGateway with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -167,23 +167,23 @@ class AWS::EC2::DhcpOptions with (AWS::API::UnwrappedParser, AWS::API::ToParams)
 }
 
 class AWS::EC2::DiskImage with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has Image => (is => 'ro', isa => 'AWS::EC2::DiskImageDetail', traits => ['Unwrapped'], xmlname => '');
-  has Volume => (is => 'ro', isa => 'AWS::EC2::VolumeDetail', traits => ['Unwrapped'], xmlname => '');
+  has Description => (is => 'ro', isa => 'Str');
+  has Image => (is => 'ro', isa => 'AWS::EC2::DiskImageDetail');
+  has Volume => (is => 'ro', isa => 'AWS::EC2::VolumeDetail');
 }
 
 class AWS::EC2::DiskImageDetail with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Bytes => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => '', required => 1);
-  has Format => (is => 'ro', isa => 'AWS::EC2::DiskImageFormat', traits => ['Unwrapped'], xmlname => '', required => 1);
-  has ImportManifestUrl => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '', required => 1);
+  has Bytes => (is => 'ro', isa => 'Num', required => 1);
+  has Format => (is => 'ro', isa => 'AWS::EC2::DiskImageFormat', required => 1);
+  has ImportManifestUrl => (is => 'ro', isa => 'Str', required => 1);
 }
 
 class AWS::EC2::EbsBlockDevice with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has Iops => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => '');
-  has SnapshotId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has VolumeSize => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => '');
-  has VolumeType => (is => 'ro', isa => 'AWS::EC2::VolumeType', traits => ['Unwrapped'], xmlname => '');
+  has DeleteOnTermination => (is => 'ro', isa => 'Str');
+  has Iops => (is => 'ro', isa => 'Int');
+  has SnapshotId => (is => 'ro', isa => 'Str');
+  has VolumeSize => (is => 'ro', isa => 'Int');
+  has VolumeType => (is => 'ro', isa => 'AWS::EC2::VolumeType');
 }
 
 class AWS::EC2::EbsInstanceBlockDevice with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -194,8 +194,8 @@ class AWS::EC2::EbsInstanceBlockDevice with (AWS::API::UnwrappedParser, AWS::API
 }
 
 class AWS::EC2::EbsInstanceBlockDeviceSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has VolumeId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has DeleteOnTermination => (is => 'ro', isa => 'Str');
+  has VolumeId => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::ExportTask with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -215,15 +215,15 @@ class AWS::EC2::ExportToS3Task with (AWS::API::UnwrappedParser, AWS::API::ToPara
 }
 
 class AWS::EC2::ExportToS3TaskSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has ContainerFormat => (is => 'ro', isa => 'AWS::EC2::ContainerFormat', traits => ['Unwrapped'], xmlname => '');
-  has DiskImageFormat => (is => 'ro', isa => 'AWS::EC2::DiskImageFormat', traits => ['Unwrapped'], xmlname => '');
-  has S3Bucket => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has S3Prefix => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has ContainerFormat => (is => 'ro', isa => 'AWS::EC2::ContainerFormat');
+  has DiskImageFormat => (is => 'ro', isa => 'AWS::EC2::DiskImageFormat');
+  has S3Bucket => (is => 'ro', isa => 'Str');
+  has S3Prefix => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::Filter with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => '');
+  has Name => (is => 'ro', isa => 'Str');
+  has Values => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
 class AWS::EC2::GroupIdentifier with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -237,13 +237,13 @@ class AWS::EC2::IamInstanceProfile with (AWS::API::UnwrappedParser, AWS::API::To
 }
 
 class AWS::EC2::IamInstanceProfileSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Arn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has Arn => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::IcmpTypeCode with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Code => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => '');
-  has Type => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => '');
+  has Code => (is => 'ro', isa => 'Int');
+  has Type => (is => 'ro', isa => 'Int');
 }
 
 class AWS::EC2::Image with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -271,16 +271,16 @@ class AWS::EC2::Image with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
 }
 
 class AWS::EC2::ImportInstanceLaunchSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has AdditionalInfo => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has Architecture => (is => 'ro', isa => 'AWS::EC2::ArchitectureValues', traits => ['Unwrapped'], xmlname => '');
-  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => '');
-  has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'AWS::EC2::ShutdownBehavior', traits => ['Unwrapped'], xmlname => '');
-  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType', traits => ['Unwrapped'], xmlname => '');
-  has Monitoring => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has Placement => (is => 'ro', isa => 'AWS::EC2::Placement', traits => ['Unwrapped'], xmlname => '');
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has UserData => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has AdditionalInfo => (is => 'ro', isa => 'Str');
+  has Architecture => (is => 'ro', isa => 'AWS::EC2::ArchitectureValues');
+  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'AWS::EC2::ShutdownBehavior');
+  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
+  has Monitoring => (is => 'ro', isa => 'Str');
+  has Placement => (is => 'ro', isa => 'AWS::EC2::Placement');
+  has PrivateIpAddress => (is => 'ro', isa => 'Str');
+  has SubnetId => (is => 'ro', isa => 'Str');
+  has UserData => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::ImportInstanceTaskDetails with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -344,10 +344,10 @@ class AWS::EC2::InstanceBlockDeviceMapping with (AWS::API::UnwrappedParser, AWS:
 }
 
 class AWS::EC2::InstanceBlockDeviceMappingSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has DeviceName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has Ebs => (is => 'ro', isa => 'AWS::EC2::EbsInstanceBlockDeviceSpecification', traits => ['Unwrapped'], xmlname => '');
-  has NoDevice => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has VirtualName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has DeviceName => (is => 'ro', isa => 'Str');
+  has Ebs => (is => 'ro', isa => 'AWS::EC2::EbsInstanceBlockDeviceSpecification');
+  has NoDevice => (is => 'ro', isa => 'Str');
+  has VirtualName => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::InstanceCount with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -365,7 +365,7 @@ class AWS::EC2::InstanceLicense with (AWS::API::UnwrappedParser, AWS::API::ToPar
 }
 
 class AWS::EC2::InstanceLicenseSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Pool => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has Pool => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::InstanceMonitoring with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -390,16 +390,16 @@ class AWS::EC2::InstanceNetworkInterface with (AWS::API::UnwrappedParser, AWS::A
 }
 
 class AWS::EC2::InstanceNetworkInterfaceSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has DeviceIndex => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => '');
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => '');
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[AWS::EC2::PrivateIpAddressSpecification]', traits => ['Unwrapped'], xmlname => '');
-  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => '');
-  has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has AssociatePublicIpAddress => (is => 'ro', isa => 'Str');
+  has DeleteOnTermination => (is => 'ro', isa => 'Str');
+  has Description => (is => 'ro', isa => 'Str');
+  has DeviceIndex => (is => 'ro', isa => 'Int');
+  has Groups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has NetworkInterfaceId => (is => 'ro', isa => 'Str');
+  has PrivateIpAddress => (is => 'ro', isa => 'Str');
+  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[AWS::EC2::PrivateIpAddressSpecification]');
+  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int');
+  has SubnetId => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::InstanceState with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -463,13 +463,13 @@ class AWS::EC2::KeyPairInfo with (AWS::API::UnwrappedParser, AWS::API::ToParams)
 }
 
 class AWS::EC2::LaunchPermission with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Group => (is => 'ro', isa => 'AWS::EC2::PermissionGroup', traits => ['Unwrapped'], xmlname => '');
-  has UserId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has Group => (is => 'ro', isa => 'AWS::EC2::PermissionGroup');
+  has UserId => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::LaunchPermissionModifications with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Add => (is => 'ro', isa => 'ArrayRef[AWS::EC2::LaunchPermission]', traits => ['Unwrapped'], xmlname => '');
-  has Remove => (is => 'ro', isa => 'ArrayRef[AWS::EC2::LaunchPermission]', traits => ['Unwrapped'], xmlname => '');
+  has Add => (is => 'ro', isa => 'ArrayRef[AWS::EC2::LaunchPermission]');
+  has Remove => (is => 'ro', isa => 'ArrayRef[AWS::EC2::LaunchPermission]');
 }
 
 class AWS::EC2::LaunchSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -573,8 +573,8 @@ class AWS::EC2::NetworkInterfaceAttachment with (AWS::API::UnwrappedParser, AWS:
 }
 
 class AWS::EC2::NetworkInterfaceAttachmentChanges with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has AttachmentId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has AttachmentId => (is => 'ro', isa => 'Str');
+  has DeleteOnTermination => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::NetworkInterfacePrivateIpAddress with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -609,9 +609,9 @@ class AWS::EC2::PriceSchedule with (AWS::API::UnwrappedParser, AWS::API::ToParam
 }
 
 class AWS::EC2::PriceScheduleSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has CurrencyCode => (is => 'ro', isa => 'AWS::EC2::CurrencyCodeValues', traits => ['Unwrapped'], xmlname => '');
-  has Price => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => '');
-  has Term => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => '');
+  has CurrencyCode => (is => 'ro', isa => 'AWS::EC2::CurrencyCodeValues');
+  has Price => (is => 'ro', isa => 'Num');
+  has Term => (is => 'ro', isa => 'Num');
 }
 
 class AWS::EC2::PricingDetail with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -620,8 +620,8 @@ class AWS::EC2::PricingDetail with (AWS::API::UnwrappedParser, AWS::API::ToParam
 }
 
 class AWS::EC2::PrivateIpAddressSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Primary => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '', required => 1);
+  has Primary => (is => 'ro', isa => 'Str');
+  has PrivateIpAddress => (is => 'ro', isa => 'Str', required => 1);
 }
 
 class AWS::EC2::ProductCode with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -652,8 +652,8 @@ class AWS::EC2::Reservation with (AWS::API::UnwrappedParser, AWS::API::ToParams)
 }
 
 class AWS::EC2::ReservedInstanceLimitPrice with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Amount => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => '');
-  has CurrencyCode => (is => 'ro', isa => 'AWS::EC2::CurrencyCodeValues', traits => ['Unwrapped'], xmlname => '');
+  has Amount => (is => 'ro', isa => 'Num');
+  has CurrencyCode => (is => 'ro', isa => 'AWS::EC2::CurrencyCodeValues');
 }
 
 class AWS::EC2::ReservedInstances with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -676,10 +676,10 @@ class AWS::EC2::ReservedInstances with (AWS::API::UnwrappedParser, AWS::API::ToP
 }
 
 class AWS::EC2::ReservedInstancesConfiguration with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has InstanceCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => '');
-  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType', traits => ['Unwrapped'], xmlname => '');
-  has Platform => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has InstanceCount => (is => 'ro', isa => 'Int');
+  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
+  has Platform => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::ReservedInstancesId with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -758,11 +758,11 @@ class AWS::EC2::RouteTableAssociation with (AWS::API::UnwrappedParser, AWS::API:
 }
 
 class AWS::EC2::RunInstancesMonitoringEnabled with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Enabled => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '', required => 1);
+  has Enabled => (is => 'ro', isa => 'Str', required => 1);
 }
 
 class AWS::EC2::S3Storage with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has AWSAccessKeyId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has AWSAccessKeyId => (is => 'ro', isa => 'Str');
   has Bucket => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bucket');
   has Prefix => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'prefix');
   has UploadPolicy => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'uploadPolicy');
@@ -832,27 +832,27 @@ class AWS::EC2::SpotInstanceStatus with (AWS::API::UnwrappedParser, AWS::API::To
 }
 
 class AWS::EC2::SpotLaunchSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has AddressingType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[AWS::EC2::BlockDeviceMapping]', traits => ['Unwrapped'], xmlname => '');
-  has EbsOptimized => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has IamInstanceProfile => (is => 'ro', isa => 'AWS::EC2::IamInstanceProfileSpecification', traits => ['Unwrapped'], xmlname => '');
-  has ImageId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType', traits => ['Unwrapped'], xmlname => '');
-  has KernelId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has KeyName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has MonitoringEnabled => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstanceNetworkInterfaceSpecification]', traits => ['Unwrapped'], xmlname => '');
-  has Placement => (is => 'ro', isa => 'AWS::EC2::SpotPlacement', traits => ['Unwrapped'], xmlname => '');
-  has RamdiskId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => '');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => '');
-  has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has UserData => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has AddressingType => (is => 'ro', isa => 'Str');
+  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[AWS::EC2::BlockDeviceMapping]');
+  has EbsOptimized => (is => 'ro', isa => 'Str');
+  has IamInstanceProfile => (is => 'ro', isa => 'AWS::EC2::IamInstanceProfileSpecification');
+  has ImageId => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
+  has KernelId => (is => 'ro', isa => 'Str');
+  has KeyName => (is => 'ro', isa => 'Str');
+  has MonitoringEnabled => (is => 'ro', isa => 'Str');
+  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstanceNetworkInterfaceSpecification]');
+  has Placement => (is => 'ro', isa => 'AWS::EC2::SpotPlacement');
+  has RamdiskId => (is => 'ro', isa => 'Str');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SubnetId => (is => 'ro', isa => 'Str');
+  has UserData => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::SpotPlacement with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
-  has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has GroupName => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::SpotPrice with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -869,7 +869,7 @@ class AWS::EC2::StateReason with (AWS::API::UnwrappedParser, AWS::API::ToParams)
 }
 
 class AWS::EC2::Storage with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has S3 => (is => 'ro', isa => 'AWS::EC2::S3Storage', traits => ['Unwrapped'], xmlname => '');
+  has S3 => (is => 'ro', isa => 'AWS::EC2::S3Storage');
 }
 
 class AWS::EC2::Subnet with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -933,7 +933,7 @@ class AWS::EC2::VolumeAttachment with (AWS::API::UnwrappedParser, AWS::API::ToPa
 }
 
 class AWS::EC2::VolumeDetail with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Size => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => '', required => 1);
+  has Size => (is => 'ro', isa => 'Num', required => 1);
 }
 
 class AWS::EC2::VolumeStatusAction with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -997,7 +997,7 @@ class AWS::EC2::VpnConnectionOptions with (AWS::API::UnwrappedParser, AWS::API::
 }
 
 class AWS::EC2::VpnConnectionOptionsSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has StaticRoutesOnly => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => '');
+  has StaticRoutesOnly => (is => 'ro', isa => 'Str');
 }
 
 class AWS::EC2::VpnGateway with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
