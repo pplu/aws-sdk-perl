@@ -24,7 +24,7 @@ enum 'AWS::EC2::ImageState', [qw(available deregistered )];
 enum 'AWS::EC2::ImageTypeValues', [qw(machine kernel ramdisk )];
 enum 'AWS::EC2::InstanceLifecycleType', [qw(spot )];
 enum 'AWS::EC2::InstanceStateName', [qw(pending running shutting-down terminated stopping stopped )];
-enum 'AWS::EC2::InstanceType', [qw(t1.micro m1.small m1.medium m1.large m1.xlarge m2.xlarge m2.2xlarge m2.4xlarge m3.xlarge m3.2xlarge c1.medium c1.xlarge hi1.4xlarge hs1.8xlarge cc1.4xlarge cc2.8xlarge cg1.4xlarge cr1.8xlarge )];
+enum 'AWS::EC2::InstanceType', [qw(t1.micro m1.small m1.medium m1.large m1.xlarge m3.xlarge m3.2xlarge m2.xlarge m2.2xlarge m2.4xlarge cr1.8xlarge hi1.4xlarge hs1.8xlarge c1.medium c1.xlarge c3.large c3.xlarge c3.2xlarge c3.4xlarge c3.8xlarge cc1.4xlarge cc2.8xlarge g2.2xlarge cg1.4xlarge )];
 enum 'AWS::EC2::ListingState', [qw(available sold cancelled pending )];
 enum 'AWS::EC2::ListingStatus', [qw(active pending cancelled closed )];
 enum 'AWS::EC2::MonitoringState', [qw(disabled enabled pending )];
@@ -264,6 +264,7 @@ class AWS::EC2::Image with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has RamdiskId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ramdiskId');
   has RootDeviceName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'rootDeviceName');
   has RootDeviceType => (is => 'ro', isa => 'AWS::EC2::DeviceType', traits => ['Unwrapped'], xmlname => 'rootDeviceType');
+  has SriovNetSupport => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'sriovNetSupport');
   has State => (is => 'ro', isa => 'AWS::EC2::ImageState', traits => ['Unwrapped'], xmlname => 'imageState');
   has StateReason => (is => 'ro', isa => 'AWS::EC2::StateReason', traits => ['Unwrapped'], xmlname => 'stateReason');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
@@ -329,6 +330,7 @@ class AWS::EC2::Instance with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[AWS::EC2::GroupIdentifier]', traits => ['Unwrapped'], xmlname => 'groupSet');
   has SourceDestCheck => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'sourceDestCheck');
   has SpotInstanceRequestId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'spotInstanceRequestId');
+  has SriovNetSupport => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'sriovNetSupport');
   has State => (is => 'ro', isa => 'AWS::EC2::InstanceState', traits => ['Unwrapped'], xmlname => 'instanceState');
   has StateReason => (is => 'ro', isa => 'AWS::EC2::StateReason', traits => ['Unwrapped'], xmlname => 'stateReason');
   has StateTransitionReason => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'reason');
@@ -1733,6 +1735,8 @@ class AWS::EC2::DescribeInstances {
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Filter]');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has MaxResults => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInstances');
   has _returns => (isa => 'AWS::EC2::DescribeInstancesResult', is => 'ro');
@@ -1943,6 +1947,8 @@ class AWS::EC2::DescribeSubnets {
 class AWS::EC2::DescribeTags {
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Filter]');
+  has MaxResults => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTags');
   has _returns => (isa => 'AWS::EC2::DescribeTagsResult', is => 'ro');
@@ -2168,6 +2174,7 @@ class AWS::EC2::ModifyInstanceAttribute {
   has Kernel => (is => 'ro', isa => 'AWS::EC2::AttributeValue');
   has Ramdisk => (is => 'ro', isa => 'AWS::EC2::AttributeValue');
   has SourceDestCheck => (is => 'ro', isa => 'AWS::EC2::AttributeBooleanValue');
+  has SriovNetSupport => (is => 'ro', isa => 'AWS::EC2::AttributeValue');
   has UserData => (is => 'ro', isa => 'AWS::EC2::AttributeValue');
   has Value => (is => 'ro', isa => 'Str');
 
@@ -2263,6 +2270,7 @@ class AWS::EC2::RegisterImage {
   has Name => (is => 'ro', isa => 'Str');
   has RamdiskId => (is => 'ro', isa => 'Str');
   has RootDeviceName => (is => 'ro', isa => 'Str');
+  has SriovNetSupport => (is => 'ro', isa => 'Str');
   has VirtualizationType => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterImage');
@@ -2670,6 +2678,7 @@ class AWS::EC2::DescribeImageAttributeResult with AWS::API::UnwrappedParser {
   has LaunchPermissions => (is => 'ro', isa => 'ArrayRef[AWS::EC2::LaunchPermission]', traits => ['Unwrapped'], xmlname => 'launchPermission');
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[AWS::EC2::ProductCode]', traits => ['Unwrapped'], xmlname => 'productCodes');
   has RamdiskId => (is => 'ro', isa => 'AWS::EC2::AttributeValue', traits => ['Unwrapped'], xmlname => 'ramdisk');
+  has SriovNetSupport => (is => 'ro', isa => 'AWS::EC2::AttributeValue', traits => ['Unwrapped'], xmlname => 'sriovNetSupport');
 
 }
 class AWS::EC2::DescribeImagesResult with AWS::API::UnwrappedParser {
@@ -2687,6 +2696,7 @@ class AWS::EC2::DescribeInstanceAttributeResult with AWS::API::UnwrappedParser {
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[AWS::EC2::ProductCode]', traits => ['Unwrapped'], xmlname => 'productCodes');
   has RamdiskId => (is => 'ro', isa => 'AWS::EC2::AttributeValue', traits => ['Unwrapped'], xmlname => 'ramdisk');
   has RootDeviceName => (is => 'ro', isa => 'AWS::EC2::AttributeValue', traits => ['Unwrapped'], xmlname => 'rootDeviceName');
+  has SriovNetSupport => (is => 'ro', isa => 'AWS::EC2::AttributeValue', traits => ['Unwrapped'], xmlname => 'sriovNetSupport');
   has UserData => (is => 'ro', isa => 'AWS::EC2::AttributeValue', traits => ['Unwrapped'], xmlname => 'userData');
 
 }
@@ -2696,6 +2706,7 @@ class AWS::EC2::DescribeInstanceStatusResult with AWS::API::UnwrappedParser {
 
 }
 class AWS::EC2::DescribeInstancesResult with AWS::API::UnwrappedParser {
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
   has Reservations => (is => 'ro', isa => 'ArrayRef[AWS::EC2::Reservation]', traits => ['Unwrapped'], xmlname => 'reservationSet');
 
 }
@@ -2789,6 +2800,7 @@ class AWS::EC2::DescribeSubnetsResult with AWS::API::UnwrappedParser {
 
 }
 class AWS::EC2::DescribeTagsResult with AWS::API::UnwrappedParser {
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EC2::TagDescription]', traits => ['Unwrapped'], xmlname => 'tagSet');
 
 }
@@ -2914,7 +2926,7 @@ class AWS::EC2::UnmonitorInstancesResult with AWS::API::UnwrappedParser {
 
 class AWS::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'ec2');
-  has version => (is => 'ro', isa => 'Str', default => '2013-10-01');
+  has version => (is => 'ro', isa => 'Str', default => '2013-10-15');
   
   method ActivateLicense (%args) {
     my $call = AWS::EC2::ActivateLicense->new(%args);

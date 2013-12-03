@@ -345,7 +345,7 @@ class AWS::CloudSearch::UpdateSynonymOptionsResult with AWS::API::ResultParser {
 
 }
 
-class AWS::CloudSearch with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
+class AWS::CloudSearch with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'cloudsearch');
   has version => (is => 'ro', isa => 'Str', default => '2011-02-01');
   

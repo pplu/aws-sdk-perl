@@ -51,6 +51,8 @@ class AWS::IAM::MFADevice with (AWS::API::ResultParser, AWS::API::ToParams) {
 
 class AWS::IAM::PasswordPolicy with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AllowUsersToChangePassword => (is => 'ro', isa => 'Str');
+  has ExpirePasswords => (is => 'ro', isa => 'Str');
+  has MaxPasswordAge => (is => 'ro', isa => 'Int');
   has MinimumPasswordLength => (is => 'ro', isa => 'Int');
   has RequireLowercaseCharacters => (is => 'ro', isa => 'Str');
   has RequireNumbers => (is => 'ro', isa => 'Str');
@@ -65,6 +67,12 @@ class AWS::IAM::Role with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Path => (is => 'ro', isa => 'Str', required => 1);
   has RoleId => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
+}
+
+class AWS::IAM::SAMLProviderListEntry with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Arn => (is => 'ro', isa => 'Str');
+  has CreateDate => (is => 'ro', isa => 'Str');
+  has ValidUntil => (is => 'ro', isa => 'Str');
 }
 
 class AWS::IAM::ServerCertificate with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -195,6 +203,14 @@ class AWS::IAM::CreateRole {
   has _returns => (isa => 'AWS::IAM::CreateRoleResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateRoleResult');  
 }
+class AWS::IAM::CreateSAMLProvider {
+  has Name => (is => 'ro', isa => 'Str', required => 1);
+  has SAMLMetadataDocument => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSAMLProvider');
+  has _returns => (isa => 'AWS::IAM::CreateSAMLProviderResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSAMLProviderResult');  
+}
 class AWS::IAM::CreateUser {
   has Path => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
@@ -283,6 +299,13 @@ class AWS::IAM::DeleteRolePolicy {
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRolePolicy');
   has _returns => (isa => 'AWS::IAM::DeleteRolePolicyResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteRolePolicyResult');  
+}
+class AWS::IAM::DeleteSAMLProvider {
+  has SAMLProviderArn => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSAMLProvider');
+  has _returns => (isa => 'AWS::IAM::DeleteSAMLProviderResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSAMLProviderResult');  
 }
 class AWS::IAM::DeleteServerCertificate {
   has ServerCertificateName => (is => 'ro', isa => 'Str', required => 1);
@@ -388,6 +411,13 @@ class AWS::IAM::GetRolePolicy {
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetRolePolicy');
   has _returns => (isa => 'AWS::IAM::GetRolePolicyResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetRolePolicyResult');  
+}
+class AWS::IAM::GetSAMLProvider {
+  has SAMLProviderArn => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'GetSAMLProvider');
+  has _returns => (isa => 'AWS::IAM::GetSAMLProviderResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'GetSAMLProviderResult');  
 }
 class AWS::IAM::GetServerCertificate {
   has ServerCertificateName => (is => 'ro', isa => 'Str', required => 1);
@@ -499,6 +529,12 @@ class AWS::IAM::ListRoles {
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListRoles');
   has _returns => (isa => 'AWS::IAM::ListRolesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListRolesResult');  
+}
+class AWS::IAM::ListSAMLProviders {
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'ListSAMLProviders');
+  has _returns => (isa => 'AWS::IAM::ListSAMLProvidersResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ListSAMLProvidersResult');  
 }
 class AWS::IAM::ListServerCertificates {
   has Marker => (is => 'ro', isa => 'Str');
@@ -644,6 +680,14 @@ class AWS::IAM::UpdateLoginProfile {
   has _returns => (isa => 'AWS::IAM::UpdateLoginProfileResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateLoginProfileResult');  
 }
+class AWS::IAM::UpdateSAMLProvider {
+  has SAMLMetadataDocument => (is => 'ro', isa => 'Str', required => 1);
+  has SAMLProviderArn => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSAMLProvider');
+  has _returns => (isa => 'AWS::IAM::UpdateSAMLProviderResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateSAMLProviderResult');  
+}
 class AWS::IAM::UpdateServerCertificate {
   has NewPath => (is => 'ro', isa => 'Str');
   has NewServerCertificateName => (is => 'ro', isa => 'Str');
@@ -711,6 +755,10 @@ class AWS::IAM::CreateRoleResult with AWS::API::ResultParser {
   has Role => (is => 'ro', isa => 'AWS::IAM::Role', required => 1);
 
 }
+class AWS::IAM::CreateSAMLProviderResult with AWS::API::ResultParser {
+  has SAMLProviderArn => (is => 'ro', isa => 'Str');
+
+}
 class AWS::IAM::CreateUserResult with AWS::API::ResultParser {
   has User => (is => 'ro', isa => 'AWS::IAM::User');
 
@@ -756,6 +804,12 @@ class AWS::IAM::GetRolePolicyResult with AWS::API::ResultParser {
   has PolicyDocument => (is => 'ro', isa => 'Str', required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
+
+}
+class AWS::IAM::GetSAMLProviderResult with AWS::API::ResultParser {
+  has CreateDate => (is => 'ro', isa => 'Str');
+  has SAMLMetadataDocument => (is => 'ro', isa => 'Str');
+  has ValidUntil => (is => 'ro', isa => 'Str');
 
 }
 class AWS::IAM::GetServerCertificateResult with AWS::API::ResultParser {
@@ -832,6 +886,10 @@ class AWS::IAM::ListRolesResult with AWS::API::ResultParser {
   has Roles => (is => 'ro', isa => 'ArrayRef[AWS::IAM::Role]', required => 1);
 
 }
+class AWS::IAM::ListSAMLProvidersResult with AWS::API::ResultParser {
+  has SAMLProviderList => (is => 'ro', isa => 'ArrayRef[AWS::IAM::SAMLProviderListEntry]');
+
+}
 class AWS::IAM::ListServerCertificatesResult with AWS::API::ResultParser {
   has IsTruncated => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -860,6 +918,10 @@ class AWS::IAM::ListVirtualMFADevicesResult with AWS::API::ResultParser {
   has IsTruncated => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has VirtualMFADevices => (is => 'ro', isa => 'ArrayRef[AWS::IAM::VirtualMFADevice]', required => 1);
+
+}
+class AWS::IAM::UpdateSAMLProviderResult with AWS::API::ResultParser {
+  has SAMLProviderArn => (is => 'ro', isa => 'Str');
 
 }
 class AWS::IAM::UploadServerCertificateResult with AWS::API::ResultParser {
@@ -925,6 +987,12 @@ class AWS::IAM with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS:
     my $o_result = AWS::IAM::CreateRoleResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
+  method CreateSAMLProvider (%args) {
+    my $call = AWS::IAM::CreateSAMLProvider->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::IAM::CreateSAMLProviderResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
   method CreateUser (%args) {
     my $call = AWS::IAM::CreateUser->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
@@ -984,6 +1052,11 @@ class AWS::IAM with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS:
   }
   method DeleteRolePolicy (%args) {
     my $call = AWS::IAM::DeleteRolePolicy->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    return 1
+  }
+  method DeleteSAMLProvider (%args) {
+    my $call = AWS::IAM::DeleteSAMLProvider->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
@@ -1065,6 +1138,12 @@ class AWS::IAM with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS:
     my $o_result = AWS::IAM::GetRolePolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
+  method GetSAMLProvider (%args) {
+    my $call = AWS::IAM::GetSAMLProvider->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::IAM::GetSAMLProviderResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
   method GetServerCertificate (%args) {
     my $call = AWS::IAM::GetServerCertificate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
@@ -1141,6 +1220,12 @@ class AWS::IAM with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS:
     my $call = AWS::IAM::ListRoles->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::IAM::ListRolesResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method ListSAMLProviders (%args) {
+    my $call = AWS::IAM::ListSAMLProviders->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::IAM::ListSAMLProvidersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method ListServerCertificates (%args) {
@@ -1227,6 +1312,12 @@ class AWS::IAM with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS:
     my $call = AWS::IAM::UpdateLoginProfile->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
+  }
+  method UpdateSAMLProvider (%args) {
+    my $call = AWS::IAM::UpdateSAMLProvider->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::IAM::UpdateSAMLProviderResult->from_result($result->{ $call->_result_key });
+    return $o_result;
   }
   method UpdateServerCertificate (%args) {
     my $call = AWS::IAM::UpdateServerCertificate->new(%args);

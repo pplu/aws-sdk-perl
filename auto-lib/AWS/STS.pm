@@ -33,6 +33,17 @@ class AWS::STS::AssumeRole {
   has _returns => (isa => 'AWS::STS::AssumeRoleResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AssumeRoleResult');  
 }
+class AWS::STS::AssumeRoleWithSAML {
+  has DurationSeconds => (is => 'ro', isa => 'Int');
+  has Policy => (is => 'ro', isa => 'Str');
+  has PrincipalArn => (is => 'ro', isa => 'Str', required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has SAMLAssertion => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'AssumeRoleWithSAML');
+  has _returns => (isa => 'AWS::STS::AssumeRoleWithSAMLResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'AssumeRoleWithSAMLResult');  
+}
 class AWS::STS::AssumeRoleWithWebIdentity {
   has DurationSeconds => (is => 'ro', isa => 'Int');
   has Policy => (is => 'ro', isa => 'Str');
@@ -77,6 +88,12 @@ class AWS::STS::AssumeRoleResult with AWS::API::ResultParser {
   has PackedPolicySize => (is => 'ro', isa => 'Int');
 
 }
+class AWS::STS::AssumeRoleWithSAMLResult with AWS::API::ResultParser {
+  has AssumedRoleUser => (is => 'ro', isa => 'AWS::STS::AssumedRoleUser');
+  has Credentials => (is => 'ro', isa => 'AWS::STS::Credentials');
+  has PackedPolicySize => (is => 'ro', isa => 'Int');
+
+}
 class AWS::STS::AssumeRoleWithWebIdentityResult with AWS::API::ResultParser {
   has AssumedRoleUser => (is => 'ro', isa => 'AWS::STS::AssumedRoleUser');
   has Credentials => (is => 'ro', isa => 'AWS::STS::Credentials');
@@ -107,6 +124,12 @@ class AWS::STS with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS:
     my $call = AWS::STS::AssumeRole->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::STS::AssumeRoleResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method AssumeRoleWithSAML (%args) {
+    my $call = AWS::STS::AssumeRoleWithSAML->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::STS::AssumeRoleWithSAMLResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method AssumeRoleWithWebIdentity (%args) {
