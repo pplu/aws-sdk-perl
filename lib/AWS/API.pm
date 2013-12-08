@@ -85,7 +85,14 @@ role AWS::API::SingleEndpointCaller {
 role AWS::API::MapParser {
   sub result_to_args {
     my ($class, $result) = @_;
-    $class->new(map { ($_->{ key } => $_->{ value}) } @$result);
+    $class->new(map { ($_->{ key } => $_->{ value }) } @$result);
+  }
+}
+
+role AWS::API::StrToStrMapParser {
+  sub result_to_args {
+    my ($class, $result) = @_;
+    $class->new(Map => { %$result });
   }
 }
 
