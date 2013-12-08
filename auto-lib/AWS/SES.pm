@@ -2,9 +2,6 @@
 use MooseX::Declare;
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'AWS::SES::VerificationStatus', [qw(Pending Success Failed TemporaryFailure NotStarted )];
-
 
 class AWS::SES::Body with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Html => (is => 'ro', isa => 'AWS::SES::Content');
@@ -22,22 +19,8 @@ class AWS::SES::Destination with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ToAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
-class AWS::SES::DkimAttributes with AWS::API::MapParser {
-class AWS::SES::IdentityDkimAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has DkimEnabled => (is => 'ro', isa => 'Str', required => 1);
-  has DkimTokens => (is => 'ro', isa => 'ArrayRef[Str]');
-  has DkimVerificationStatus => (is => 'ro', isa => 'AWS::SES::VerificationStatus', required => 1);
-}
-
-class AWS::SES::IdentityNotificationAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has BounceTopic => (is => 'ro', isa => 'Str', required => 1);
-  has ComplaintTopic => (is => 'ro', isa => 'Str', required => 1);
-  has ForwardingEnabled => (is => 'ro', isa => 'Str', required => 1);
-}
-
-class AWS::SES::IdentityVerificationAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has VerificationStatus => (is => 'ro', isa => 'AWS::SES::VerificationStatus', required => 1);
-  has VerificationToken => (is => 'ro', isa => 'Str');
+class AWS::SES::DkimAttributes with AWS::API::StrToStrMapParser {
+  has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
 class AWS::SES::Message with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -45,7 +28,10 @@ class AWS::SES::Message with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Subject => (is => 'ro', isa => 'AWS::SES::Content', required => 1);
 }
 
-class AWS::SES::NotificationAttributes with AWS::API::MapParser {
+class AWS::SES::NotificationAttributes with AWS::API::StrToStrMapParser {
+  has Map => (is => 'ro', isa => 'HashRef[Str]');
+}
+
 class AWS::SES::RawMessage with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Data => (is => 'ro', isa => 'Str', required => 1);
 }
@@ -58,7 +44,10 @@ class AWS::SES::SendDataPoint with (AWS::API::ResultParser, AWS::API::ToParams) 
   has Timestamp => (is => 'ro', isa => 'Str');
 }
 
-class AWS::SES::VerificationAttributes with AWS::API::MapParser {
+class AWS::SES::VerificationAttributes with AWS::API::StrToStrMapParser {
+  has Map => (is => 'ro', isa => 'HashRef[Str]');
+}
+
 
 
 class AWS::SES::DeleteIdentity {

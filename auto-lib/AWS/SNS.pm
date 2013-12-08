@@ -8,7 +8,10 @@ class AWS::SNS::Endpoint with (AWS::API::ResultParser, AWS::API::ToParams) {
   has EndpointArn => (is => 'ro', isa => 'Str');
 }
 
-class AWS::SNS::MapStringToString with AWS::API::MapParser {
+class AWS::SNS::MapStringToString with AWS::API::StrToStrMapParser {
+  has Map => (is => 'ro', isa => 'HashRef[Str]');
+}
+
 class AWS::SNS::PlatformApplication with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Attributes => (is => 'ro', isa => 'AWS::SNS::MapStringToString');
   has PlatformApplicationArn => (is => 'ro', isa => 'Str');
@@ -22,12 +25,18 @@ class AWS::SNS::Subscription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has TopicArn => (is => 'ro', isa => 'Str');
 }
 
-class AWS::SNS::SubscriptionAttributesMap with AWS::API::MapParser {
+class AWS::SNS::SubscriptionAttributesMap with AWS::API::StrToStrMapParser {
+  has Map => (is => 'ro', isa => 'HashRef[Str]');
+}
+
 class AWS::SNS::Topic with (AWS::API::ResultParser, AWS::API::ToParams) {
   has TopicArn => (is => 'ro', isa => 'Str');
 }
 
-class AWS::SNS::TopicAttributesMap with AWS::API::MapParser {
+class AWS::SNS::TopicAttributesMap with AWS::API::StrToStrMapParser {
+  has Map => (is => 'ro', isa => 'HashRef[Str]');
+}
+
 
 
 class AWS::SNS::AddPermission {
