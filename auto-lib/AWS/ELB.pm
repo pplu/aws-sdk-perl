@@ -8,6 +8,10 @@ class AWS::ELB::BackendServerDescription with (AWS::API::ResultParser, AWS::API:
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
+class AWS::ELB::CrossZoneLoadBalancing with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Enabled => (is => 'ro', isa => 'Str', required => 1);
+}
+
 class AWS::ELB::HealthCheck with (AWS::API::ResultParser, AWS::API::ToParams) {
   has HealthyThreshold => (is => 'ro', isa => 'Int', required => 1);
   has Interval => (is => 'ro', isa => 'Int', required => 1);
@@ -38,6 +42,10 @@ class AWS::ELB::Listener with (AWS::API::ResultParser, AWS::API::ToParams) {
 class AWS::ELB::ListenerDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Listener => (is => 'ro', isa => 'AWS::ELB::Listener');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
+}
+
+class AWS::ELB::LoadBalancerAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has CrossZoneLoadBalancing => (is => 'ro', isa => 'AWS::ELB::CrossZoneLoadBalancing');
 }
 
 class AWS::ELB::LoadBalancerDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -213,6 +221,13 @@ class AWS::ELB::DescribeInstanceHealth {
   has _returns => (isa => 'AWS::ELB::DescribeInstanceHealthResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeInstanceHealthResult');  
 }
+class AWS::ELB::DescribeLoadBalancerAttributes {
+  has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerAttributes');
+  has _returns => (isa => 'AWS::ELB::DescribeLoadBalancerAttributesResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerAttributesResult');  
+}
 class AWS::ELB::DescribeLoadBalancerPolicies {
   has LoadBalancerName => (is => 'ro', isa => 'Str');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -259,6 +274,14 @@ class AWS::ELB::EnableAvailabilityZonesForLoadBalancer {
   has _api_call => (isa => 'Str', is => 'ro', default => 'EnableAvailabilityZonesForLoadBalancer');
   has _returns => (isa => 'AWS::ELB::EnableAvailabilityZonesForLoadBalancerResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'EnableAvailabilityZonesForLoadBalancerResult');  
+}
+class AWS::ELB::ModifyLoadBalancerAttributes {
+  has LoadBalancerAttributes => (is => 'ro', isa => 'AWS::ELB::LoadBalancerAttributes', required => 1);
+  has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyLoadBalancerAttributes');
+  has _returns => (isa => 'AWS::ELB::ModifyLoadBalancerAttributesResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyLoadBalancerAttributesResult');  
 }
 class AWS::ELB::RegisterInstancesWithLoadBalancer {
   has Instances => (is => 'ro', isa => 'ArrayRef[AWS::ELB::Instance]', required => 1);
@@ -341,6 +364,10 @@ class AWS::ELB::DescribeInstanceHealthResult with AWS::API::ResultParser {
   has InstanceStates => (is => 'ro', isa => 'ArrayRef[AWS::ELB::InstanceState]');
 
 }
+class AWS::ELB::DescribeLoadBalancerAttributesResult with AWS::API::ResultParser {
+  has LoadBalancerAttributes => (is => 'ro', isa => 'AWS::ELB::LoadBalancerAttributes');
+
+}
 class AWS::ELB::DescribeLoadBalancerPoliciesResult with AWS::API::ResultParser {
   has PolicyDescriptions => (is => 'ro', isa => 'ArrayRef[AWS::ELB::PolicyDescription]');
 
@@ -364,6 +391,9 @@ class AWS::ELB::DisableAvailabilityZonesForLoadBalancerResult with AWS::API::Res
 }
 class AWS::ELB::EnableAvailabilityZonesForLoadBalancerResult with AWS::API::ResultParser {
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+
+}
+class AWS::ELB::ModifyLoadBalancerAttributesResult with AWS::API::ResultParser {
 
 }
 class AWS::ELB::RegisterInstancesWithLoadBalancerResult with AWS::API::ResultParser {
@@ -462,6 +492,12 @@ class AWS::ELB with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
     my $o_result = AWS::ELB::DescribeInstanceHealthResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
+  method DescribeLoadBalancerAttributes (%args) {
+    my $call = AWS::ELB::DescribeLoadBalancerAttributes->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::ELB::DescribeLoadBalancerAttributesResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
   method DescribeLoadBalancerPolicies (%args) {
     my $call = AWS::ELB::DescribeLoadBalancerPolicies->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
@@ -496,6 +532,12 @@ class AWS::ELB with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
     my $call = AWS::ELB::EnableAvailabilityZonesForLoadBalancer->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::ELB::EnableAvailabilityZonesForLoadBalancerResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method ModifyLoadBalancerAttributes (%args) {
+    my $call = AWS::ELB::ModifyLoadBalancerAttributes->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::ELB::ModifyLoadBalancerAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method RegisterInstancesWithLoadBalancer (%args) {

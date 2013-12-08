@@ -1,5 +1,5 @@
 use MooseX::Declare;
-class AWS::API::Builder::query {
+class AWS::API::Builder::EC2 {
 
   use Template;
   use Data::Printer;
@@ -83,9 +83,10 @@ class [% c.api %]::[% operation.name %] {
 [%- FOREACH op_name IN c.operations %]
 [%- operation = c.operation(op_name) %]
 [%- IF (operation.output.keys.size) %]
-class [% c.api %]::[% operation.name %]Result with AWS::API::ResultParser {
+class [% c.api %]::[% operation.name %]Result with AWS::API::UnwrappedParser {
 [% FOREACH param_name IN operation.output.members.keys.sort -%]
   has [% param_name %] => (is => 'ro', isa => '[% operation.output.members.$param_name.perl_type %]'
+  [%- IF (operation.output.members.$param_name.xmlname) %], traits => ['Unwrapped'], xmlname => '[% operation.output.members.$param_name.xmlname %]'[% END %]
   [%- IF (operation.output.members.$param_name.required) %], required => 1[% END %]);
 [% END %]
 }
@@ -101,7 +102,7 @@ class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_
     my $call = [% c.api %]::[% op_name %]->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     [%- IF (c.struct.operations.$op.output.size > 0) %]
-    my $o_result = [% c.api %]::[% op_name %]Result->from_result($result->{ $call->_result_key });
+    my $o_result = [% c.api %]::[% op_name %]Result->from_result($result);
     return $o_result;
     [%- ELSE %]
     return 1
@@ -123,24 +124,17 @@ class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_
   
     foreach my $inner_class (sort keys %{ $self->inner_classes }) {
       if ($self->inner_classes->{ $inner_class }->{type} eq 'map'){
-        if ($self->inner_classes->{ $inner_class }->{keys}->{enum}){
-          $output .= "class $inner_class with AWS::API::MapParser {\n";
-          my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members});
-          my $members = $self->inner_classes->{ $inner_class }->{keys}->{enum};
-          foreach my $param_name (sort @$members){
-            $output .= "  has $param_name => (is => 'ro', isa => '$type'";
-            $output .= ");\n";
-          }
-          $output .= "}\n\n";
-        } elsif ($self->inner_classes->{ $inner_class }->{keys}->{type} eq 'string') {
-          $output .= "class $inner_class with AWS::API::StrToStrMapParser {\n"; 
-          $output .= "  has Map => (is => 'ro', isa => 'HashRef[Str]');\n";
-          $output .= "}\n\n";
-        } else {
-          die "Unrecognized Map type" . Dumper($self->inner_classes->{ $inner_class });
+        $output .= "class $inner_class with AWS::API::MapParser {\n";
+        my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members});
+        my $members = $self->inner_classes->{ $inner_class }->{keys}->{enum};
+        next if (not defined $members);
+        foreach my $param_name (sort @$members){
+          $output .= "  has $param_name => (is => 'ro', isa => '$type'";
+          $output .= ");\n";
         }
+        $output .= "}\n\n";
       } else {
-        $output .= "class $inner_class with (AWS::API::ResultParser, AWS::API::ToParams) {\n";
+        $output .= "class $inner_class with (AWS::API::UnwrappedParser, AWS::API::ToParams) {\n";
         my $members = $self->inner_classes->{ $inner_class }->{members};
         foreach my $param_name (sort keys %$members){
           my $param_props = $members->{ $param_name };
@@ -154,6 +148,9 @@ class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_
             if ($@) { die "In Inner Class: $inner_class: $@"; }
           }
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
+          if (defined $param_props->{xmlname}) {
+            $output .= ", traits => ['Unwrapped'], xmlname => '$param_props->{xmlname}'";
+          }
           $output .= ", required => 1" if (defined $param_props->{required} and $param_props->{required} == 1);
           $output .= ");\n";
         }

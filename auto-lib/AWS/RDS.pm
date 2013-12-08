@@ -105,9 +105,11 @@ class AWS::RDS::DBSnapshot with (AWS::API::ResultParser, AWS::API::ToParams) {
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
+  has PercentProgress => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
+  has SourceRegion => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 }
@@ -409,6 +411,7 @@ class AWS::RDS::CreateDBInstanceReadReplica {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -1116,7 +1119,7 @@ class AWS::RDS::RevokeDBSecurityGroupIngressResult with AWS::API::ResultParser {
 
 class AWS::RDS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'rds');
-  has version => (is => 'ro', isa => 'Str', default => '2013-05-15');
+  has version => (is => 'ro', isa => 'Str', default => '2013-09-09');
   
   method AddSourceIdentifierToSubscription (%args) {
     my $call = AWS::RDS::AddSourceIdentifierToSubscription->new(%args);

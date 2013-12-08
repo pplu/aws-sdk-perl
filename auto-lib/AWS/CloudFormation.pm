@@ -121,6 +121,8 @@ class AWS::CloudFormation::CreateStack {
   has OnFailure => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::Parameter]');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
+  has StackPolicyBody => (is => 'ro', isa => 'Str');
+  has StackPolicyURL => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::Tag]');
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateURL => (is => 'ro', isa => 'Str');
@@ -179,6 +181,13 @@ class AWS::CloudFormation::EstimateTemplateCost {
   has _returns => (isa => 'AWS::CloudFormation::EstimateTemplateCostResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'EstimateTemplateCostResult');  
 }
+class AWS::CloudFormation::GetStackPolicy {
+  has StackName => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'GetStackPolicy');
+  has _returns => (isa => 'AWS::CloudFormation::GetStackPolicyResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'GetStackPolicyResult');  
+}
 class AWS::CloudFormation::GetTemplate {
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -202,10 +211,23 @@ class AWS::CloudFormation::ListStacks {
   has _returns => (isa => 'AWS::CloudFormation::ListStacksResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListStacksResult');  
 }
+class AWS::CloudFormation::SetStackPolicy {
+  has StackName => (is => 'ro', isa => 'Str', required => 1);
+  has StackPolicyBody => (is => 'ro', isa => 'Str');
+  has StackPolicyURL => (is => 'ro', isa => 'Str');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'SetStackPolicy');
+  has _returns => (isa => 'AWS::CloudFormation::SetStackPolicyResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'SetStackPolicyResult');  
+}
 class AWS::CloudFormation::UpdateStack {
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::Parameter]');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
+  has StackPolicyBody => (is => 'ro', isa => 'Str');
+  has StackPolicyDuringUpdateBody => (is => 'ro', isa => 'Str');
+  has StackPolicyDuringUpdateURL => (is => 'ro', isa => 'Str');
+  has StackPolicyURL => (is => 'ro', isa => 'Str');
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateURL => (is => 'ro', isa => 'Str');
 
@@ -246,6 +268,10 @@ class AWS::CloudFormation::DescribeStacksResult with AWS::API::ResultParser {
 }
 class AWS::CloudFormation::EstimateTemplateCostResult with AWS::API::ResultParser {
   has Url => (is => 'ro', isa => 'Str');
+
+}
+class AWS::CloudFormation::GetStackPolicyResult with AWS::API::ResultParser {
+  has StackPolicyBody => (is => 'ro', isa => 'Str');
 
 }
 class AWS::CloudFormation::GetTemplateResult with AWS::API::ResultParser {
@@ -324,6 +350,12 @@ class AWS::CloudFormation with (Net::AWS::Caller, AWS::API::RegionalEndpointCall
     my $o_result = AWS::CloudFormation::EstimateTemplateCostResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
+  method GetStackPolicy (%args) {
+    my $call = AWS::CloudFormation::GetStackPolicy->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::CloudFormation::GetStackPolicyResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
   method GetTemplate (%args) {
     my $call = AWS::CloudFormation::GetTemplate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
@@ -341,6 +373,11 @@ class AWS::CloudFormation with (Net::AWS::Caller, AWS::API::RegionalEndpointCall
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::CloudFormation::ListStacksResult->from_result($result->{ $call->_result_key });
     return $o_result;
+  }
+  method SetStackPolicy (%args) {
+    my $call = AWS::CloudFormation::SetStackPolicy->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    return 1
   }
   method UpdateStack (%args) {
     my $call = AWS::CloudFormation::UpdateStack->new(%args);

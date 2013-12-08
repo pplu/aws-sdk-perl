@@ -20,14 +20,19 @@ class AWS::RedShift::Cluster with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
+  has ClusterNodes => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::ClusterNode]');
   has ClusterParameterGroups => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::ClusterParameterGroupStatus]');
+  has ClusterPublicKey => (is => 'ro', isa => 'Str');
   has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::ClusterSecurityGroupMembership]');
+  has ClusterSnapshotCopyStatus => (is => 'ro', isa => 'AWS::RedShift::ClusterSnapshotCopyStatus');
   has ClusterStatus => (is => 'ro', isa => 'Str');
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has DBName => (is => 'ro', isa => 'Str');
+  has ElasticIpStatus => (is => 'ro', isa => 'AWS::RedShift::ElasticIpStatus');
   has Encrypted => (is => 'ro', isa => 'Str');
   has Endpoint => (is => 'ro', isa => 'AWS::RedShift::Endpoint');
+  has HsmStatus => (is => 'ro', isa => 'AWS::RedShift::HsmStatus');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has ModifyStatus => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
@@ -38,6 +43,12 @@ class AWS::RedShift::Cluster with (AWS::API::ResultParser, AWS::API::ToParams) {
   has RestoreStatus => (is => 'ro', isa => 'AWS::RedShift::RestoreStatus');
   has VpcId => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::VpcSecurityGroupMembership]');
+}
+
+class AWS::RedShift::ClusterNode with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has NodeRole => (is => 'ro', isa => 'Str');
+  has PrivateIPAddress => (is => 'ro', isa => 'Str');
+  has PublicIPAddress => (is => 'ro', isa => 'Str');
 }
 
 class AWS::RedShift::ClusterParameterGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -61,6 +72,11 @@ class AWS::RedShift::ClusterSecurityGroup with (AWS::API::ResultParser, AWS::API
 class AWS::RedShift::ClusterSecurityGroupMembership with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+}
+
+class AWS::RedShift::ClusterSnapshotCopyStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has DestinationRegion => (is => 'ro', isa => 'Str');
+  has RetentionPeriod => (is => 'ro', isa => 'Num');
 }
 
 class AWS::RedShift::ClusterSubnetGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -89,6 +105,11 @@ class AWS::RedShift::EC2SecurityGroup with (AWS::API::ResultParser, AWS::API::To
   has Status => (is => 'ro', isa => 'Str');
 }
 
+class AWS::RedShift::ElasticIpStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has ElasticIp => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'Str');
+}
+
 class AWS::RedShift::Endpoint with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Address => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -96,9 +117,55 @@ class AWS::RedShift::Endpoint with (AWS::API::ResultParser, AWS::API::ToParams) 
 
 class AWS::RedShift::Event with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Date => (is => 'ro', isa => 'Str');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventId => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
+  has Severity => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'AWS::RedShift::SourceType');
+}
+
+class AWS::RedShift::EventCategoriesMap with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Events => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::EventInfoMap]');
+  has SourceType => (is => 'ro', isa => 'Str');
+}
+
+class AWS::RedShift::EventInfoMap with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventDescription => (is => 'ro', isa => 'Str');
+  has EventId => (is => 'ro', isa => 'Str');
+  has Severity => (is => 'ro', isa => 'Str');
+}
+
+class AWS::RedShift::EventSubscription with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has CustSubscriptionId => (is => 'ro', isa => 'Str');
+  has CustomerAwsId => (is => 'ro', isa => 'Str');
+  has Enabled => (is => 'ro', isa => 'Str');
+  has EventCategoriesList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Severity => (is => 'ro', isa => 'Str');
+  has SnsTopicArn => (is => 'ro', isa => 'Str');
+  has SourceIdsList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SourceType => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'Str');
+  has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
+}
+
+class AWS::RedShift::HsmClientCertificate with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
+  has HsmClientCertificatePublicKey => (is => 'ro', isa => 'Str');
+}
+
+class AWS::RedShift::HsmConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Description => (is => 'ro', isa => 'Str');
+  has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
+  has HsmIpAddress => (is => 'ro', isa => 'Str');
+  has HsmPartitionName => (is => 'ro', isa => 'Str');
+}
+
+class AWS::RedShift::HsmStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
+  has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'Str');
 }
 
 class AWS::RedShift::IPRange with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -185,6 +252,7 @@ class AWS::RedShift::Snapshot with (AWS::API::ResultParser, AWS::API::ToParams) 
   has DBName => (is => 'ro', isa => 'Str');
   has ElapsedTimeInSeconds => (is => 'ro', isa => 'Num');
   has Encrypted => (is => 'ro', isa => 'Str');
+  has EncryptedWithHSM => (is => 'ro', isa => 'Str');
   has EstimatedSecondsToCompletion => (is => 'ro', isa => 'Num');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
@@ -194,6 +262,7 @@ class AWS::RedShift::Snapshot with (AWS::API::ResultParser, AWS::API::ToParams) 
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
+  has SourceRegion => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TotalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
   has VpcId => (is => 'ro', isa => 'Str');
@@ -251,7 +320,10 @@ class AWS::RedShift::CreateCluster {
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has DBName => (is => 'ro', isa => 'Str');
+  has ElasticIp => (is => 'ro', isa => 'Str');
   has Encrypted => (is => 'ro', isa => 'Str');
+  has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
+  has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
   has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
   has NodeType => (is => 'ro', isa => 'Str', required => 1);
@@ -299,6 +371,38 @@ class AWS::RedShift::CreateClusterSubnetGroup {
   has _returns => (isa => 'AWS::RedShift::CreateClusterSubnetGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSubnetGroupResult');  
 }
+class AWS::RedShift::CreateEventSubscription {
+  has Enabled => (is => 'ro', isa => 'Str');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Severity => (is => 'ro', isa => 'Str');
+  has SnsTopicArn => (is => 'ro', isa => 'Str', required => 1);
+  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SourceType => (is => 'ro', isa => 'Str');
+  has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEventSubscription');
+  has _returns => (isa => 'AWS::RedShift::CreateEventSubscriptionResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateEventSubscriptionResult');  
+}
+class AWS::RedShift::CreateHsmClientCertificate {
+  has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHsmClientCertificate');
+  has _returns => (isa => 'AWS::RedShift::CreateHsmClientCertificateResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateHsmClientCertificateResult');  
+}
+class AWS::RedShift::CreateHsmConfiguration {
+  has Description => (is => 'ro', isa => 'Str', required => 1);
+  has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has HsmIpAddress => (is => 'ro', isa => 'Str', required => 1);
+  has HsmPartitionName => (is => 'ro', isa => 'Str', required => 1);
+  has HsmPartitionPassword => (is => 'ro', isa => 'Str', required => 1);
+  has HsmServerPublicCertificate => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHsmConfiguration');
+  has _returns => (isa => 'AWS::RedShift::CreateHsmConfigurationResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateHsmConfigurationResult');  
+}
 class AWS::RedShift::DeleteCluster {
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has FinalClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
@@ -336,6 +440,27 @@ class AWS::RedShift::DeleteClusterSubnetGroup {
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterSubnetGroup');
   has _returns => (isa => 'AWS::RedShift::DeleteClusterSubnetGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterSubnetGroupResult');  
+}
+class AWS::RedShift::DeleteEventSubscription {
+  has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteEventSubscription');
+  has _returns => (isa => 'AWS::RedShift::DeleteEventSubscriptionResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteEventSubscriptionResult');  
+}
+class AWS::RedShift::DeleteHsmClientCertificate {
+  has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteHsmClientCertificate');
+  has _returns => (isa => 'AWS::RedShift::DeleteHsmClientCertificateResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteHsmClientCertificateResult');  
+}
+class AWS::RedShift::DeleteHsmConfiguration {
+  has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteHsmConfiguration');
+  has _returns => (isa => 'AWS::RedShift::DeleteHsmConfigurationResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteHsmConfigurationResult');  
 }
 class AWS::RedShift::DescribeClusterParameterGroups {
   has Marker => (is => 'ro', isa => 'Str');
@@ -416,6 +541,22 @@ class AWS::RedShift::DescribeDefaultClusterParameters {
   has _returns => (isa => 'AWS::RedShift::DescribeDefaultClusterParametersResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDefaultClusterParametersResult');  
 }
+class AWS::RedShift::DescribeEventCategories {
+  has SourceType => (is => 'ro', isa => 'Str');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventCategories');
+  has _returns => (isa => 'AWS::RedShift::DescribeEventCategoriesResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventCategoriesResult');  
+}
+class AWS::RedShift::DescribeEventSubscriptions {
+  has Marker => (is => 'ro', isa => 'Str');
+  has MaxRecords => (is => 'ro', isa => 'Int');
+  has SubscriptionName => (is => 'ro', isa => 'Str');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptions');
+  has _returns => (isa => 'AWS::RedShift::DescribeEventSubscriptionsResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptionsResult');  
+}
 class AWS::RedShift::DescribeEvents {
   has Duration => (is => 'ro', isa => 'Int');
   has EndTime => (is => 'ro', isa => 'Str');
@@ -428,6 +569,31 @@ class AWS::RedShift::DescribeEvents {
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEvents');
   has _returns => (isa => 'AWS::RedShift::DescribeEventsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');  
+}
+class AWS::RedShift::DescribeHsmClientCertificates {
+  has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
+  has Marker => (is => 'ro', isa => 'Str');
+  has MaxRecords => (is => 'ro', isa => 'Int');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeHsmClientCertificates');
+  has _returns => (isa => 'AWS::RedShift::DescribeHsmClientCertificatesResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeHsmClientCertificatesResult');  
+}
+class AWS::RedShift::DescribeHsmConfigurations {
+  has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
+  has Marker => (is => 'ro', isa => 'Str');
+  has MaxRecords => (is => 'ro', isa => 'Int');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeHsmConfigurations');
+  has _returns => (isa => 'AWS::RedShift::DescribeHsmConfigurationsResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeHsmConfigurationsResult');  
+}
+class AWS::RedShift::DescribeLoggingStatus {
+  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoggingStatus');
+  has _returns => (isa => 'AWS::RedShift::DescribeLoggingStatusResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoggingStatusResult');  
 }
 class AWS::RedShift::DescribeOrderableClusterOptions {
   has ClusterVersion => (is => 'ro', isa => 'Str');
@@ -464,6 +630,38 @@ class AWS::RedShift::DescribeResize {
   has _returns => (isa => 'AWS::RedShift::DescribeResizeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeResizeResult');  
 }
+class AWS::RedShift::DisableLogging {
+  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DisableLogging');
+  has _returns => (isa => 'AWS::RedShift::DisableLoggingResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DisableLoggingResult');  
+}
+class AWS::RedShift::DisableSnapshotCopy {
+  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DisableSnapshotCopy');
+  has _returns => (isa => 'AWS::RedShift::DisableSnapshotCopyResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DisableSnapshotCopyResult');  
+}
+class AWS::RedShift::EnableLogging {
+  has BucketName => (is => 'ro', isa => 'Str', required => 1);
+  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has S3KeyPrefix => (is => 'ro', isa => 'Str');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'EnableLogging');
+  has _returns => (isa => 'AWS::RedShift::EnableLoggingResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'EnableLoggingResult');  
+}
+class AWS::RedShift::EnableSnapshotCopy {
+  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has DestinationRegion => (is => 'ro', isa => 'Str', required => 1);
+  has RetentionPeriod => (is => 'ro', isa => 'Int');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'EnableSnapshotCopy');
+  has _returns => (isa => 'AWS::RedShift::EnableSnapshotCopyResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'EnableSnapshotCopyResult');  
+}
 class AWS::RedShift::ModifyCluster {
   has AllowVersionUpgrade => (is => 'ro', isa => 'Str');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
@@ -472,6 +670,8 @@ class AWS::RedShift::ModifyCluster {
   has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
+  has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
+  has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
@@ -498,6 +698,27 @@ class AWS::RedShift::ModifyClusterSubnetGroup {
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyClusterSubnetGroup');
   has _returns => (isa => 'AWS::RedShift::ModifyClusterSubnetGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterSubnetGroupResult');  
+}
+class AWS::RedShift::ModifyEventSubscription {
+  has Enabled => (is => 'ro', isa => 'Str');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Severity => (is => 'ro', isa => 'Str');
+  has SnsTopicArn => (is => 'ro', isa => 'Str');
+  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SourceType => (is => 'ro', isa => 'Str');
+  has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyEventSubscription');
+  has _returns => (isa => 'AWS::RedShift::ModifyEventSubscriptionResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyEventSubscriptionResult');  
+}
+class AWS::RedShift::ModifySnapshotCopyRetentionPeriod {
+  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has RetentionPeriod => (is => 'ro', isa => 'Int', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifySnapshotCopyRetentionPeriod');
+  has _returns => (isa => 'AWS::RedShift::ModifySnapshotCopyRetentionPeriodResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifySnapshotCopyRetentionPeriodResult');  
 }
 class AWS::RedShift::PurchaseReservedNodeOffering {
   has NodeCount => (is => 'ro', isa => 'Int');
@@ -528,6 +749,9 @@ class AWS::RedShift::RestoreFromClusterSnapshot {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
+  has ElasticIp => (is => 'ro', isa => 'Str');
+  has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
+  has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Str');
@@ -556,6 +780,13 @@ class AWS::RedShift::RevokeSnapshotAccess {
   has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeSnapshotAccess');
   has _returns => (isa => 'AWS::RedShift::RevokeSnapshotAccessResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeSnapshotAccessResult');  
+}
+class AWS::RedShift::RotateEncryptionKey {
+  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'RotateEncryptionKey');
+  has _returns => (isa => 'AWS::RedShift::RotateEncryptionKeyResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'RotateEncryptionKeyResult');  
 }
 
 class AWS::RedShift::AuthorizeClusterSecurityGroupIngressResult with AWS::API::ResultParser {
@@ -588,6 +819,18 @@ class AWS::RedShift::CreateClusterSnapshotResult with AWS::API::ResultParser {
 }
 class AWS::RedShift::CreateClusterSubnetGroupResult with AWS::API::ResultParser {
   has ClusterSubnetGroup => (is => 'ro', isa => 'AWS::RedShift::ClusterSubnetGroup');
+
+}
+class AWS::RedShift::CreateEventSubscriptionResult with AWS::API::ResultParser {
+  has EventSubscription => (is => 'ro', isa => 'AWS::RedShift::EventSubscription');
+
+}
+class AWS::RedShift::CreateHsmClientCertificateResult with AWS::API::ResultParser {
+  has HsmClientCertificate => (is => 'ro', isa => 'AWS::RedShift::HsmClientCertificate');
+
+}
+class AWS::RedShift::CreateHsmConfigurationResult with AWS::API::ResultParser {
+  has HsmConfiguration => (is => 'ro', isa => 'AWS::RedShift::HsmConfiguration');
 
 }
 class AWS::RedShift::DeleteClusterResult with AWS::API::ResultParser {
@@ -637,9 +880,37 @@ class AWS::RedShift::DescribeDefaultClusterParametersResult with AWS::API::Resul
   has DefaultClusterParameters => (is => 'ro', isa => 'AWS::RedShift::DefaultClusterParameters');
 
 }
+class AWS::RedShift::DescribeEventCategoriesResult with AWS::API::ResultParser {
+  has EventCategoriesMapList => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::EventCategoriesMap]');
+
+}
+class AWS::RedShift::DescribeEventSubscriptionsResult with AWS::API::ResultParser {
+  has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::EventSubscription]');
+  has Marker => (is => 'ro', isa => 'Str');
+
+}
 class AWS::RedShift::DescribeEventsResult with AWS::API::ResultParser {
   has Events => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::Event]');
   has Marker => (is => 'ro', isa => 'Str');
+
+}
+class AWS::RedShift::DescribeHsmClientCertificatesResult with AWS::API::ResultParser {
+  has HsmClientCertificates => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::HsmClientCertificate]');
+  has Marker => (is => 'ro', isa => 'Str');
+
+}
+class AWS::RedShift::DescribeHsmConfigurationsResult with AWS::API::ResultParser {
+  has HsmConfigurations => (is => 'ro', isa => 'ArrayRef[AWS::RedShift::HsmConfiguration]');
+  has Marker => (is => 'ro', isa => 'Str');
+
+}
+class AWS::RedShift::DescribeLoggingStatusResult with AWS::API::ResultParser {
+  has BucketName => (is => 'ro', isa => 'Str');
+  has LastFailureMessage => (is => 'ro', isa => 'Str');
+  has LastFailureTime => (is => 'ro', isa => 'Str');
+  has LastSuccessfulDeliveryTime => (is => 'ro', isa => 'Str');
+  has LoggingEnabled => (is => 'ro', isa => 'Str');
+  has S3KeyPrefix => (is => 'ro', isa => 'Str');
 
 }
 class AWS::RedShift::DescribeOrderableClusterOptionsResult with AWS::API::ResultParser {
@@ -667,6 +938,32 @@ class AWS::RedShift::DescribeResizeResult with AWS::API::ResultParser {
   has TargetNumberOfNodes => (is => 'ro', isa => 'Int');
 
 }
+class AWS::RedShift::DisableLoggingResult with AWS::API::ResultParser {
+  has BucketName => (is => 'ro', isa => 'Str');
+  has LastFailureMessage => (is => 'ro', isa => 'Str');
+  has LastFailureTime => (is => 'ro', isa => 'Str');
+  has LastSuccessfulDeliveryTime => (is => 'ro', isa => 'Str');
+  has LoggingEnabled => (is => 'ro', isa => 'Str');
+  has S3KeyPrefix => (is => 'ro', isa => 'Str');
+
+}
+class AWS::RedShift::DisableSnapshotCopyResult with AWS::API::ResultParser {
+  has Cluster => (is => 'ro', isa => 'AWS::RedShift::Cluster');
+
+}
+class AWS::RedShift::EnableLoggingResult with AWS::API::ResultParser {
+  has BucketName => (is => 'ro', isa => 'Str');
+  has LastFailureMessage => (is => 'ro', isa => 'Str');
+  has LastFailureTime => (is => 'ro', isa => 'Str');
+  has LastSuccessfulDeliveryTime => (is => 'ro', isa => 'Str');
+  has LoggingEnabled => (is => 'ro', isa => 'Str');
+  has S3KeyPrefix => (is => 'ro', isa => 'Str');
+
+}
+class AWS::RedShift::EnableSnapshotCopyResult with AWS::API::ResultParser {
+  has Cluster => (is => 'ro', isa => 'AWS::RedShift::Cluster');
+
+}
 class AWS::RedShift::ModifyClusterResult with AWS::API::ResultParser {
   has Cluster => (is => 'ro', isa => 'AWS::RedShift::Cluster');
 
@@ -678,6 +975,14 @@ class AWS::RedShift::ModifyClusterParameterGroupResult with AWS::API::ResultPars
 }
 class AWS::RedShift::ModifyClusterSubnetGroupResult with AWS::API::ResultParser {
   has ClusterSubnetGroup => (is => 'ro', isa => 'AWS::RedShift::ClusterSubnetGroup');
+
+}
+class AWS::RedShift::ModifyEventSubscriptionResult with AWS::API::ResultParser {
+  has EventSubscription => (is => 'ro', isa => 'AWS::RedShift::EventSubscription');
+
+}
+class AWS::RedShift::ModifySnapshotCopyRetentionPeriodResult with AWS::API::ResultParser {
+  has Cluster => (is => 'ro', isa => 'AWS::RedShift::Cluster');
 
 }
 class AWS::RedShift::PurchaseReservedNodeOfferingResult with AWS::API::ResultParser {
@@ -703,6 +1008,10 @@ class AWS::RedShift::RevokeClusterSecurityGroupIngressResult with AWS::API::Resu
 }
 class AWS::RedShift::RevokeSnapshotAccessResult with AWS::API::ResultParser {
   has Snapshot => (is => 'ro', isa => 'AWS::RedShift::Snapshot');
+
+}
+class AWS::RedShift::RotateEncryptionKeyResult with AWS::API::ResultParser {
+  has Cluster => (is => 'ro', isa => 'AWS::RedShift::Cluster');
 
 }
 
@@ -758,6 +1067,24 @@ class AWS::RedShift with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
     my $o_result = AWS::RedShift::CreateClusterSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
+  method CreateEventSubscription (%args) {
+    my $call = AWS::RedShift::CreateEventSubscription->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::CreateEventSubscriptionResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method CreateHsmClientCertificate (%args) {
+    my $call = AWS::RedShift::CreateHsmClientCertificate->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::CreateHsmClientCertificateResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method CreateHsmConfiguration (%args) {
+    my $call = AWS::RedShift::CreateHsmConfiguration->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::CreateHsmConfigurationResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
   method DeleteCluster (%args) {
     my $call = AWS::RedShift::DeleteCluster->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
@@ -782,6 +1109,21 @@ class AWS::RedShift with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
   }
   method DeleteClusterSubnetGroup (%args) {
     my $call = AWS::RedShift::DeleteClusterSubnetGroup->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    return 1
+  }
+  method DeleteEventSubscription (%args) {
+    my $call = AWS::RedShift::DeleteEventSubscription->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    return 1
+  }
+  method DeleteHsmClientCertificate (%args) {
+    my $call = AWS::RedShift::DeleteHsmClientCertificate->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    return 1
+  }
+  method DeleteHsmConfiguration (%args) {
+    my $call = AWS::RedShift::DeleteHsmConfiguration->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
@@ -833,10 +1175,40 @@ class AWS::RedShift with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
     my $o_result = AWS::RedShift::DescribeDefaultClusterParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
+  method DescribeEventCategories (%args) {
+    my $call = AWS::RedShift::DescribeEventCategories->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::DescribeEventCategoriesResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
   method DescribeEvents (%args) {
     my $call = AWS::RedShift::DescribeEvents->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::DescribeEventsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method DescribeEventSubscriptions (%args) {
+    my $call = AWS::RedShift::DescribeEventSubscriptions->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::DescribeEventSubscriptionsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method DescribeHsmClientCertificates (%args) {
+    my $call = AWS::RedShift::DescribeHsmClientCertificates->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::DescribeHsmClientCertificatesResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method DescribeHsmConfigurations (%args) {
+    my $call = AWS::RedShift::DescribeHsmConfigurations->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::DescribeHsmConfigurationsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method DescribeLoggingStatus (%args) {
+    my $call = AWS::RedShift::DescribeLoggingStatus->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::DescribeLoggingStatusResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method DescribeOrderableClusterOptions (%args) {
@@ -863,6 +1235,30 @@ class AWS::RedShift with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
     my $o_result = AWS::RedShift::DescribeResizeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
+  method DisableLogging (%args) {
+    my $call = AWS::RedShift::DisableLogging->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::DisableLoggingResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method DisableSnapshotCopy (%args) {
+    my $call = AWS::RedShift::DisableSnapshotCopy->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::DisableSnapshotCopyResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method EnableLogging (%args) {
+    my $call = AWS::RedShift::EnableLogging->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::EnableLoggingResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method EnableSnapshotCopy (%args) {
+    my $call = AWS::RedShift::EnableSnapshotCopy->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::EnableSnapshotCopyResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
   method ModifyCluster (%args) {
     my $call = AWS::RedShift::ModifyCluster->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
@@ -879,6 +1275,18 @@ class AWS::RedShift with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
     my $call = AWS::RedShift::ModifyClusterSubnetGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::ModifyClusterSubnetGroupResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method ModifyEventSubscription (%args) {
+    my $call = AWS::RedShift::ModifyEventSubscription->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::ModifyEventSubscriptionResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method ModifySnapshotCopyRetentionPeriod (%args) {
+    my $call = AWS::RedShift::ModifySnapshotCopyRetentionPeriod->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::ModifySnapshotCopyRetentionPeriodResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method PurchaseReservedNodeOffering (%args) {
@@ -915,6 +1323,12 @@ class AWS::RedShift with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
     my $call = AWS::RedShift::RevokeSnapshotAccess->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::RedShift::RevokeSnapshotAccessResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method RotateEncryptionKey (%args) {
+    my $call = AWS::RedShift::RotateEncryptionKey->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::RedShift::RotateEncryptionKeyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
 }
