@@ -7,7 +7,7 @@ use Test::More;
 use Test::Exception;
 
 use Net::AWS::Caller;
-use MooseX::Declare;
+use Moops;
 
 use AWS::EC2;
 use AWS::SES;
@@ -51,8 +51,8 @@ class XMLResponseTester with (Net::AWS::XMLResponse) {
 
 my $dir = 't/xml/responses';
 opendir(my $dh, $dir);
-while (my $file = readdir $dh){
-  next if ($file !~ m/\.xml$/);
+my @files = grep { $_ =~ m/\.xml$/ } sort readdir($dh);
+foreach my $file (@files) {
 
   test_file($dir, $file);
 }
