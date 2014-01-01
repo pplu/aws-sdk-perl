@@ -172,7 +172,9 @@ role AWS::API::ResultParser {
     my ($class, $result) = @_;
     my %args;
 
-    foreach my $key (keys %$result) {
+    foreach my $key ($class->meta->get_attribute_list) {
+      next if (not my $meta = $class->meta->get_attribute($key));
+
       if (not ref($result->{ $key })) {
         if (defined $result->{ $key }){
           $args{ $key } = $result->{ $key };
