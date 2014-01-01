@@ -7,7 +7,7 @@ use Test::More;
 use Test::Exception;
 
 use Net::AWS::Caller;
-use Moops;
+use MooseX::Declare;
 
 use AWS::EC2;
 use AWS::SES;
