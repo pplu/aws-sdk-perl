@@ -80,6 +80,7 @@ class AWS::ElasticBeanstalk::EnvironmentDescription with (AWS::API::ResultParser
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'AWS::ElasticBeanstalk::EnvironmentStatus');
   has TemplateName => (is => 'ro', isa => 'Str');
+  has Tier => (is => 'ro', isa => 'AWS::ElasticBeanstalk::EnvironmentTier');
   has VersionLabel => (is => 'ro', isa => 'Str');
 }
 
@@ -96,11 +97,18 @@ class AWS::ElasticBeanstalk::EnvironmentResourceDescription with (AWS::API::Resu
   has Instances => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::Instance]');
   has LaunchConfigurations => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::LaunchConfiguration]');
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::LoadBalancer]');
+  has Queues => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::Queue]');
   has Triggers => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::Trigger]');
 }
 
 class AWS::ElasticBeanstalk::EnvironmentResourcesDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has LoadBalancer => (is => 'ro', isa => 'AWS::ElasticBeanstalk::LoadBalancerDescription');
+}
+
+class AWS::ElasticBeanstalk::EnvironmentTier with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Name => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'Str');
+  has Version => (is => 'ro', isa => 'Str');
 }
 
 class AWS::ElasticBeanstalk::EventDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -140,6 +148,11 @@ class AWS::ElasticBeanstalk::OptionRestrictionRegex with (AWS::API::ResultParser
 class AWS::ElasticBeanstalk::OptionSpecification with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Namespace => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
+}
+
+class AWS::ElasticBeanstalk::Queue with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Name => (is => 'ro', isa => 'Str');
+  has URL => (is => 'ro', isa => 'Str');
 }
 
 class AWS::ElasticBeanstalk::S3Location with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -218,6 +231,7 @@ class AWS::ElasticBeanstalk::CreateEnvironment {
   has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::OptionSpecification]');
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
+  has Tier => (is => 'ro', isa => 'AWS::ElasticBeanstalk::EnvironmentTier');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEnvironment');
@@ -429,6 +443,7 @@ class AWS::ElasticBeanstalk::UpdateEnvironment {
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::ConfigurationOptionSetting]');
   has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[AWS::ElasticBeanstalk::OptionSpecification]');
   has TemplateName => (is => 'ro', isa => 'Str');
+  has Tier => (is => 'ro', isa => 'AWS::ElasticBeanstalk::EnvironmentTier');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEnvironment');
@@ -485,6 +500,7 @@ class AWS::ElasticBeanstalk::CreateEnvironmentResult with AWS::API::ResultParser
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
+  has Tier => (is => 'ro', isa => 'AWS::ElasticBeanstalk::EnvironmentTier');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
 }
@@ -545,6 +561,7 @@ class AWS::ElasticBeanstalk::TerminateEnvironmentResult with AWS::API::ResultPar
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
+  has Tier => (is => 'ro', isa => 'AWS::ElasticBeanstalk::EnvironmentTier');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
 }
@@ -582,6 +599,7 @@ class AWS::ElasticBeanstalk::UpdateEnvironmentResult with AWS::API::ResultParser
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
+  has Tier => (is => 'ro', isa => 'AWS::ElasticBeanstalk::EnvironmentTier');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
 }
