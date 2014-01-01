@@ -1,5 +1,8 @@
 - length restrictions for atts
 - enum restrictions for atts
 - Paginated results and iterators
+- Waiters (methods that wait for an object to be in a determined state)
+- Retrying
+- Exception handling
 - JSON callers
 - rest-xml callers
