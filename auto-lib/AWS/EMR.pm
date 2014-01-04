@@ -40,6 +40,7 @@ class AWS::EMR::Cluster with (AWS::API::ResultParser, AWS::API::ToParams) {
   has RequestedAmiVersion => (is => 'ro', isa => 'Str');
   has RunningAmiVersion => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'AWS::EMR::ClusterStatus');
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EMR::Tag]');
   has TerminationProtected => (is => 'ro', isa => 'Str');
   has VisibleToAllUsers => (is => 'ro', isa => 'Str');
 }
@@ -229,6 +230,11 @@ class AWS::EMR::SupportedProductConfig with (AWS::API::ResultParser, AWS::API::T
   has Name => (is => 'ro', isa => 'Str');
 }
 
+class AWS::EMR::Tag with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Key => (is => 'ro', isa => 'Str');
+  has Value => (is => 'ro', isa => 'Str');
+}
+
 
 
 class AWS::EMR::AddInstanceGroups {
@@ -246,6 +252,14 @@ class AWS::EMR::AddJobFlowSteps {
   has _api_call => (isa => 'Str', is => 'ro', default => 'AddJobFlowSteps');
   has _returns => (isa => 'AWS::EMR::AddJobFlowStepsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AddJobFlowStepsResult');  
+}
+class AWS::EMR::AddTags {
+  has ResourceId => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EMR::Tag]');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'AddTags');
+  has _returns => (isa => 'AWS::EMR::AddTagsResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'AddTagsResult');  
 }
 class AWS::EMR::DescribeCluster {
   has ClusterId => (is => 'ro', isa => 'Str');
@@ -324,6 +338,14 @@ class AWS::EMR::ModifyInstanceGroups {
   has _returns => (isa => 'AWS::EMR::ModifyInstanceGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyInstanceGroupsResult');  
 }
+class AWS::EMR::RemoveTags {
+  has ResourceId => (is => 'ro', isa => 'Str');
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveTags');
+  has _returns => (isa => 'AWS::EMR::RemoveTagsResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'RemoveTagsResult');  
+}
 class AWS::EMR::RunJobFlow {
   has AdditionalInfo => (is => 'ro', isa => 'Str');
   has AmiVersion => (is => 'ro', isa => 'Str');
@@ -335,6 +357,7 @@ class AWS::EMR::RunJobFlow {
   has NewSupportedProducts => (is => 'ro', isa => 'ArrayRef[AWS::EMR::SupportedProductConfig]');
   has Steps => (is => 'ro', isa => 'ArrayRef[AWS::EMR::StepConfig]');
   has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::EMR::Tag]');
   has VisibleToAllUsers => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RunJobFlow');
@@ -374,6 +397,9 @@ class AWS::EMR::AddJobFlowStepsResult with AWS::API::ResultParser {
   has StepIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
 }
+class AWS::EMR::AddTagsResult with AWS::API::ResultParser {
+
+}
 class AWS::EMR::DescribeClusterResult with AWS::API::ResultParser {
   has Cluster => (is => 'ro', isa => 'AWS::EMR::Cluster');
 
@@ -411,6 +437,9 @@ class AWS::EMR::ListStepsResult with AWS::API::ResultParser {
   has Steps => (is => 'ro', isa => 'ArrayRef[AWS::EMR::StepSummary]');
 
 }
+class AWS::EMR::RemoveTagsResult with AWS::API::ResultParser {
+
+}
 class AWS::EMR::RunJobFlowResult with AWS::API::ResultParser {
   has JobFlowId => (is => 'ro', isa => 'Str');
 
@@ -430,6 +459,12 @@ class AWS::EMR with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
     my $call = AWS::EMR::AddJobFlowSteps->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::EMR::AddJobFlowStepsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method AddTags (%args) {
+    my $call = AWS::EMR::AddTags->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::EMR::AddTagsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method DescribeCluster (%args) {
@@ -484,6 +519,12 @@ class AWS::EMR with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
     my $call = AWS::EMR::ModifyInstanceGroups->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
+  }
+  method RemoveTags (%args) {
+    my $call = AWS::EMR::RemoveTags->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::EMR::RemoveTagsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
   }
   method RunJobFlow (%args) {
     my $call = AWS::EMR::RunJobFlow->new(%args);

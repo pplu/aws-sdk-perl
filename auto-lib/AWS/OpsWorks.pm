@@ -128,6 +128,21 @@ class AWS::OpsWorks::Instance with (AWS::API::ResultParser, AWS::API::ToParams) 
   has SubnetId => (is => 'ro', isa => 'Str');
 }
 
+class AWS::OpsWorks::InstancesCount with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Booting => (is => 'ro', isa => 'Int');
+  has ConnectionLost => (is => 'ro', isa => 'Int');
+  has Pending => (is => 'ro', isa => 'Int');
+  has Rebooting => (is => 'ro', isa => 'Int');
+  has Requested => (is => 'ro', isa => 'Int');
+  has RunningSetup => (is => 'ro', isa => 'Int');
+  has SetupFailed => (is => 'ro', isa => 'Int');
+  has ShuttingDown => (is => 'ro', isa => 'Int');
+  has StartFailed => (is => 'ro', isa => 'Int');
+  has Stopped => (is => 'ro', isa => 'Int');
+  has Terminated => (is => 'ro', isa => 'Int');
+  has Terminating => (is => 'ro', isa => 'Int');
+}
+
 class AWS::OpsWorks::Layer with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Attributes => (is => 'ro', isa => 'AWS::OpsWorks::LayerAttributes');
   has AutoAssignElasticIps => (is => 'ro', isa => 'Str');
@@ -160,6 +175,11 @@ class AWS::OpsWorks::LayerAttributes with AWS::API::MapParser {
   has HaproxyStatsPassword => (is => 'ro', isa => 'Str');
   has HaproxyStatsUrl => (is => 'ro', isa => 'Str');
   has HaproxyStatsUser => (is => 'ro', isa => 'Str');
+  has JavaAppServer => (is => 'ro', isa => 'Str');
+  has JavaAppServerVersion => (is => 'ro', isa => 'Str');
+  has Jvm => (is => 'ro', isa => 'Str');
+  has JvmOptions => (is => 'ro', isa => 'Str');
+  has JvmVersion => (is => 'ro', isa => 'Str');
   has ManageBundler => (is => 'ro', isa => 'Str');
   has MemcachedMemory => (is => 'ro', isa => 'Str');
   has MysqlRootPassword => (is => 'ro', isa => 'Str');
@@ -182,6 +202,7 @@ class AWS::OpsWorks::Permission with (AWS::API::ResultParser, AWS::API::ToParams
   has AllowSsh => (is => 'ro', isa => 'Str');
   has AllowSudo => (is => 'ro', isa => 'Str');
   has IamUserArn => (is => 'ro', isa => 'Str');
+  has Level => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
 }
 
@@ -204,6 +225,13 @@ class AWS::OpsWorks::Recipes with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Setup => (is => 'ro', isa => 'ArrayRef[Str]');
   has Shutdown => (is => 'ro', isa => 'ArrayRef[Str]');
   has Undeploy => (is => 'ro', isa => 'ArrayRef[Str]');
+}
+
+class AWS::OpsWorks::SelfUserProfile with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has IamUserArn => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
+  has SshPublicKey => (is => 'ro', isa => 'Str');
+  has SshUsername => (is => 'ro', isa => 'Str');
 }
 
 class AWS::OpsWorks::ServiceError with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -260,12 +288,21 @@ class AWS::OpsWorks::StackConfigurationManager with (AWS::API::ResultParser, AWS
   has Version => (is => 'ro', isa => 'Str');
 }
 
+class AWS::OpsWorks::StackSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has AppsCount => (is => 'ro', isa => 'Int');
+  has InstancesCount => (is => 'ro', isa => 'AWS::OpsWorks::InstancesCount');
+  has LayersCount => (is => 'ro', isa => 'Int');
+  has Name => (is => 'ro', isa => 'Str');
+  has StackId => (is => 'ro', isa => 'Str');
+}
+
 class AWS::OpsWorks::TimeBasedAutoScalingConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AutoScalingSchedule => (is => 'ro', isa => 'AWS::OpsWorks::WeeklyAutoScalingSchedule');
   has InstanceId => (is => 'ro', isa => 'Str');
 }
 
 class AWS::OpsWorks::UserProfile with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has AllowSelfManagement => (is => 'ro', isa => 'Str');
   has IamUserArn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has SshPublicKey => (is => 'ro', isa => 'Str');
@@ -444,6 +481,7 @@ class AWS::OpsWorks::CreateStack {
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStackResult');  
 }
 class AWS::OpsWorks::CreateUserProfile {
+  has AllowSelfManagement => (is => 'ro', isa => 'Str');
   has IamUserArn => (is => 'ro', isa => 'Str', required => 1);
   has SshPublicKey => (is => 'ro', isa => 'Str');
   has SshUsername => (is => 'ro', isa => 'Str');
@@ -570,9 +608,15 @@ class AWS::OpsWorks::DescribeLoadBasedAutoScaling {
   has _returns => (isa => 'AWS::OpsWorks::DescribeLoadBasedAutoScalingResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBasedAutoScalingResult');  
 }
+class AWS::OpsWorks::DescribeMyUserProfile {
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMyUserProfile');
+  has _returns => (isa => 'AWS::OpsWorks::DescribeMyUserProfileResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeMyUserProfileResult');  
+}
 class AWS::OpsWorks::DescribePermissions {
-  has IamUserArn => (is => 'ro', isa => 'Str', required => 1);
-  has StackId => (is => 'ro', isa => 'Str', required => 1);
+  has IamUserArn => (is => 'ro', isa => 'Str');
+  has StackId => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePermissions');
   has _returns => (isa => 'AWS::OpsWorks::DescribePermissionsResult', is => 'ro');
@@ -595,6 +639,13 @@ class AWS::OpsWorks::DescribeServiceErrors {
   has _returns => (isa => 'AWS::OpsWorks::DescribeServiceErrorsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeServiceErrorsResult');  
 }
+class AWS::OpsWorks::DescribeStackSummary {
+  has StackId => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackSummary');
+  has _returns => (isa => 'AWS::OpsWorks::DescribeStackSummaryResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackSummaryResult');  
+}
 class AWS::OpsWorks::DescribeStacks {
   has StackIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -610,7 +661,7 @@ class AWS::OpsWorks::DescribeTimeBasedAutoScaling {
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTimeBasedAutoScalingResult');  
 }
 class AWS::OpsWorks::DescribeUserProfiles {
-  has IamUserArns => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has IamUserArns => (is => 'ro', isa => 'ArrayRef[Str]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeUserProfiles');
   has _returns => (isa => 'AWS::OpsWorks::DescribeUserProfilesResult', is => 'ro');
@@ -685,6 +736,7 @@ class AWS::OpsWorks::SetPermission {
   has AllowSsh => (is => 'ro', isa => 'Str');
   has AllowSudo => (is => 'ro', isa => 'Str');
   has IamUserArn => (is => 'ro', isa => 'Str', required => 1);
+  has Level => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SetPermission');
@@ -792,6 +844,13 @@ class AWS::OpsWorks::UpdateLayer {
   has _returns => (isa => 'AWS::OpsWorks::UpdateLayerResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateLayerResult');  
 }
+class AWS::OpsWorks::UpdateMyUserProfile {
+  has SshPublicKey => (is => 'ro', isa => 'Str');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMyUserProfile');
+  has _returns => (isa => 'AWS::OpsWorks::UpdateMyUserProfileResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateMyUserProfileResult');  
+}
 class AWS::OpsWorks::UpdateStack {
   has Attributes => (is => 'ro', isa => 'AWS::OpsWorks::StackAttributes');
   has ConfigurationManager => (is => 'ro', isa => 'AWS::OpsWorks::StackConfigurationManager');
@@ -814,6 +873,7 @@ class AWS::OpsWorks::UpdateStack {
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateStackResult');  
 }
 class AWS::OpsWorks::UpdateUserProfile {
+  has AllowSelfManagement => (is => 'ro', isa => 'Str');
   has IamUserArn => (is => 'ro', isa => 'Str', required => 1);
   has SshPublicKey => (is => 'ro', isa => 'Str');
   has SshUsername => (is => 'ro', isa => 'Str');
@@ -892,6 +952,10 @@ class AWS::OpsWorks::DescribeLoadBasedAutoScalingResult with AWS::API::ResultPar
   has LoadBasedAutoScalingConfigurations => (is => 'ro', isa => 'ArrayRef[AWS::OpsWorks::LoadBasedAutoScalingConfiguration]');
 
 }
+class AWS::OpsWorks::DescribeMyUserProfileResult with AWS::API::ResultParser {
+  has UserProfile => (is => 'ro', isa => 'AWS::OpsWorks::SelfUserProfile');
+
+}
 class AWS::OpsWorks::DescribePermissionsResult with AWS::API::ResultParser {
   has Permissions => (is => 'ro', isa => 'ArrayRef[AWS::OpsWorks::Permission]');
 
@@ -902,6 +966,10 @@ class AWS::OpsWorks::DescribeRaidArraysResult with AWS::API::ResultParser {
 }
 class AWS::OpsWorks::DescribeServiceErrorsResult with AWS::API::ResultParser {
   has ServiceErrors => (is => 'ro', isa => 'ArrayRef[AWS::OpsWorks::ServiceError]');
+
+}
+class AWS::OpsWorks::DescribeStackSummaryResult with AWS::API::ResultParser {
+  has StackSummary => (is => 'ro', isa => 'AWS::OpsWorks::StackSummary');
 
 }
 class AWS::OpsWorks::DescribeStacksResult with AWS::API::ResultParser {
@@ -1078,6 +1146,12 @@ class AWS::OpsWorks with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
     my $o_result = AWS::OpsWorks::DescribeLoadBasedAutoScalingResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
+  method DescribeMyUserProfile (%args) {
+    my $call = AWS::OpsWorks::DescribeMyUserProfile->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::OpsWorks::DescribeMyUserProfileResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
   method DescribePermissions (%args) {
     my $call = AWS::OpsWorks::DescribePermissions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
@@ -1100,6 +1174,12 @@ class AWS::OpsWorks with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
     my $call = AWS::OpsWorks::DescribeStacks->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = AWS::OpsWorks::DescribeStacksResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method DescribeStackSummary (%args) {
+    my $call = AWS::OpsWorks::DescribeStackSummary->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::OpsWorks::DescribeStackSummaryResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method DescribeTimeBasedAutoScaling (%args) {
@@ -1210,6 +1290,11 @@ class AWS::OpsWorks with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
   }
   method UpdateLayer (%args) {
     my $call = AWS::OpsWorks::UpdateLayer->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    return 1
+  }
+  method UpdateMyUserProfile (%args) {
+    my $call = AWS::OpsWorks::UpdateMyUserProfile->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }

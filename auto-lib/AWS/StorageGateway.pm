@@ -3,7 +3,7 @@ use MooseX::Declare;
 use AWS::API;
 
 
-class AWS::StorageGateway::CachediSCSIVolume with (AWS::API::ResultParser, AWS::API::ToParams) {
+class AWS::StorageGateway::CachediSCSIVolumeInformation with (AWS::API::ResultParser, AWS::API::ToParams) {
   has SourceSnapshotId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');
@@ -28,7 +28,7 @@ class AWS::StorageGateway::DeviceiSCSIAttributes with (AWS::API::ResultParser, A
   has TargetARN => (is => 'ro', isa => 'Str');
 }
 
-class AWS::StorageGateway::Disk with (AWS::API::ResultParser, AWS::API::ToParams) {
+class AWS::StorageGateway::DiskInformation with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DiskAllocationResource => (is => 'ro', isa => 'Str');
   has DiskAllocationType => (is => 'ro', isa => 'Str');
   has DiskId => (is => 'ro', isa => 'Str');
@@ -37,9 +37,8 @@ class AWS::StorageGateway::Disk with (AWS::API::ResultParser, AWS::API::ToParams
   has DiskSizeInBytes => (is => 'ro', isa => 'Num');
 }
 
-class AWS::StorageGateway::GatewayInfo with (AWS::API::ResultParser, AWS::API::ToParams) {
+class AWS::StorageGateway::GatewayInformation with (AWS::API::ResultParser, AWS::API::ToParams) {
   has GatewayARN => (is => 'ro', isa => 'Str');
-  has GatewayOperationalState => (is => 'ro', isa => 'Str');
   has GatewayType => (is => 'ro', isa => 'Str');
 }
 
@@ -49,7 +48,7 @@ class AWS::StorageGateway::NetworkInterface with (AWS::API::ResultParser, AWS::A
   has MacAddress => (is => 'ro', isa => 'Str');
 }
 
-class AWS::StorageGateway::StorediSCSIVolume with (AWS::API::ResultParser, AWS::API::ToParams) {
+class AWS::StorageGateway::StorediSCSIVolumeInformation with (AWS::API::ResultParser, AWS::API::ToParams) {
   has PreservedExistingData => (is => 'ro', isa => 'Str');
   has SourceSnapshotId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
@@ -84,18 +83,14 @@ class AWS::StorageGateway::TapeRecoveryPointInfo with (AWS::API::ResultParser, A
   has TapeARN => (is => 'ro', isa => 'Str');
   has TapeRecoveryPointTime => (is => 'ro', isa => 'Str');
   has TapeSizeInBytes => (is => 'ro', isa => 'Num');
-  has TapeStatus => (is => 'ro', isa => 'Str');
 }
 
 class AWS::StorageGateway::VTLDevice with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DeviceiSCSIAttributes => (is => 'ro', isa => 'AWS::StorageGateway::DeviceiSCSIAttributes');
   has VTLDeviceARN => (is => 'ro', isa => 'Str');
-  has VTLDeviceProductIdentifier => (is => 'ro', isa => 'Str');
-  has VTLDeviceType => (is => 'ro', isa => 'Str');
-  has VTLDeviceVendor => (is => 'ro', isa => 'Str');
 }
 
-class AWS::StorageGateway::VolumeInfo with (AWS::API::ResultParser, AWS::API::ToParams) {
+class AWS::StorageGateway::VolumeInformation with (AWS::API::ResultParser, AWS::API::ToParams) {
   has VolumeARN => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');
 }
@@ -123,8 +118,6 @@ class AWS::StorageGateway::ActivateGateway {
   has GatewayRegion => (is => 'ro', isa => 'Str', required => 1);
   has GatewayTimezone => (is => 'ro', isa => 'Str', required => 1);
   has GatewayType => (is => 'ro', isa => 'Str');
-  has MediumChangerType => (is => 'ro', isa => 'Str');
-  has TapeDriveType => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ActivateGateway');
   has _returns => (isa => 'AWS::StorageGateway::ActivateGatewayResult', is => 'ro');
@@ -601,7 +594,7 @@ class AWS::StorageGateway::DescribeCacheResult with AWS::API::ResultParser {
 
 }
 class AWS::StorageGateway::DescribeCachediSCSIVolumesResult with AWS::API::ResultParser {
-  has CachediSCSIVolumes => (is => 'ro', isa => 'ArrayRef[AWS::StorageGateway::CachediSCSIVolume]');
+  has CachediSCSIVolumes => (is => 'ro', isa => 'ArrayRef[AWS::StorageGateway::CachediSCSIVolumeInformation]');
 
 }
 class AWS::StorageGateway::DescribeChapCredentialsResult with AWS::API::ResultParser {
@@ -635,7 +628,7 @@ class AWS::StorageGateway::DescribeSnapshotScheduleResult with AWS::API::ResultP
 
 }
 class AWS::StorageGateway::DescribeStorediSCSIVolumesResult with AWS::API::ResultParser {
-  has StorediSCSIVolumes => (is => 'ro', isa => 'ArrayRef[AWS::StorageGateway::StorediSCSIVolume]');
+  has StorediSCSIVolumes => (is => 'ro', isa => 'ArrayRef[AWS::StorageGateway::StorediSCSIVolumeInformation]');
 
 }
 class AWS::StorageGateway::DescribeTapeArchivesResult with AWS::API::ResultParser {
@@ -679,12 +672,12 @@ class AWS::StorageGateway::DisableGatewayResult with AWS::API::ResultParser {
 
 }
 class AWS::StorageGateway::ListGatewaysResult with AWS::API::ResultParser {
-  has Gateways => (is => 'ro', isa => 'ArrayRef[AWS::StorageGateway::GatewayInfo]');
+  has Gateways => (is => 'ro', isa => 'ArrayRef[AWS::StorageGateway::GatewayInformation]');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class AWS::StorageGateway::ListLocalDisksResult with AWS::API::ResultParser {
-  has Disks => (is => 'ro', isa => 'ArrayRef[AWS::StorageGateway::Disk]');
+  has Disks => (is => 'ro', isa => 'ArrayRef[AWS::StorageGateway::DiskInformation]');
   has GatewayARN => (is => 'ro', isa => 'Str');
 
 }
@@ -696,7 +689,7 @@ class AWS::StorageGateway::ListVolumeRecoveryPointsResult with AWS::API::ResultP
 class AWS::StorageGateway::ListVolumesResult with AWS::API::ResultParser {
   has GatewayARN => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
-  has VolumeInfos => (is => 'ro', isa => 'ArrayRef[AWS::StorageGateway::VolumeInfo]');
+  has VolumeInfos => (is => 'ro', isa => 'ArrayRef[AWS::StorageGateway::VolumeInformation]');
 
 }
 class AWS::StorageGateway::RetrieveTapeArchiveResult with AWS::API::ResultParser {
@@ -733,7 +726,7 @@ class AWS::StorageGateway::UpdateGatewaySoftwareNowResult with AWS::API::ResultP
 
 }
 class AWS::StorageGateway::UpdateMaintenanceStartTimeResult with AWS::API::ResultParser {
-  has GatewayARN => (is => 'ro', isa => 'Str');
+  has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
 }
 class AWS::StorageGateway::UpdateSnapshotScheduleResult with AWS::API::ResultParser {

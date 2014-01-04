@@ -5,6 +5,7 @@ use AWS::API;
 use Moose::Util::TypeConstraints;
 enum 'AWS::DynamoDB::AttributeAction', [qw(ADD PUT DELETE )];
 enum 'AWS::DynamoDB::ComparisonOperator', [qw(EQ NE IN LE LT GE GT BETWEEN NOT_NULL NULL CONTAINS NOT_CONTAINS BEGINS_WITH )];
+enum 'AWS::DynamoDB::IndexStatus', [qw(CREATING UPDATING DELETING ACTIVE )];
 enum 'AWS::DynamoDB::KeyType', [qw(HASH RANGE )];
 enum 'AWS::DynamoDB::ProjectionType', [qw(ALL KEYS_ONLY INCLUDE )];
 enum 'AWS::DynamoDB::ScalarAttributeType', [qw(S N B )];
@@ -35,6 +36,10 @@ class AWS::DynamoDB::AttributeValueUpdate with (AWS::API::ResultParser, AWS::API
 class AWS::DynamoDB::BatchGetRequestMap with AWS::API::MapParser {
 class AWS::DynamoDB::BatchGetResponseMap with AWS::API::MapParser {
 class AWS::DynamoDB::BatchWriteItemRequestMap with AWS::API::MapParser {
+class AWS::DynamoDB::Capacity with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has CapacityUnits => (is => 'ro', isa => 'Num');
+}
+
 class AWS::DynamoDB::Condition with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttributeValueList => (is => 'ro', isa => 'ArrayRef[AWS::DynamoDB::AttributeValue]');
   has ComparisonOperator => (is => 'ro', isa => 'AWS::DynamoDB::ComparisonOperator', required => 1);
@@ -42,6 +47,9 @@ class AWS::DynamoDB::Condition with (AWS::API::ResultParser, AWS::API::ToParams)
 
 class AWS::DynamoDB::ConsumedCapacity with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CapacityUnits => (is => 'ro', isa => 'Num');
+  has GlobalSecondaryIndexes => (is => 'ro', isa => 'AWS::DynamoDB::SecondaryIndexesCapacityMap');
+  has LocalSecondaryIndexes => (is => 'ro', isa => 'AWS::DynamoDB::SecondaryIndexesCapacityMap');
+  has Table => (is => 'ro', isa => 'AWS::DynamoDB::Capacity');
   has TableName => (is => 'ro', isa => 'Str');
 }
 
@@ -52,6 +60,27 @@ class AWS::DynamoDB::ExpectedAttributeValue with (AWS::API::ResultParser, AWS::A
 }
 
 class AWS::DynamoDB::FilterConditionMap with AWS::API::MapParser {
+class AWS::DynamoDB::GlobalSecondaryIndex with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has IndexName => (is => 'ro', isa => 'Str', required => 1);
+  has KeySchema => (is => 'ro', isa => 'ArrayRef[AWS::DynamoDB::KeySchemaElement]', required => 1);
+  has Projection => (is => 'ro', isa => 'AWS::DynamoDB::Projection', required => 1);
+  has ProvisionedThroughput => (is => 'ro', isa => 'AWS::DynamoDB::ProvisionedThroughput', required => 1);
+}
+
+class AWS::DynamoDB::GlobalSecondaryIndexDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has IndexName => (is => 'ro', isa => 'Str');
+  has IndexSizeBytes => (is => 'ro', isa => 'Num');
+  has IndexStatus => (is => 'ro', isa => 'AWS::DynamoDB::IndexStatus');
+  has ItemCount => (is => 'ro', isa => 'Num');
+  has KeySchema => (is => 'ro', isa => 'ArrayRef[AWS::DynamoDB::KeySchemaElement]');
+  has Projection => (is => 'ro', isa => 'AWS::DynamoDB::Projection');
+  has ProvisionedThroughput => (is => 'ro', isa => 'AWS::DynamoDB::ProvisionedThroughputDescription');
+}
+
+class AWS::DynamoDB::GlobalSecondaryIndexUpdate with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Update => (is => 'ro', isa => 'AWS::DynamoDB::UpdateGlobalSecondaryIndexAction');
+}
+
 class AWS::DynamoDB::ItemCollectionKeyAttributeMap with AWS::API::MapParser {
 class AWS::DynamoDB::ItemCollectionMetrics with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ItemCollectionKey => (is => 'ro', isa => 'AWS::DynamoDB::ItemCollectionKeyAttributeMap');
@@ -105,9 +134,11 @@ class AWS::DynamoDB::ProvisionedThroughputDescription with (AWS::API::ResultPars
 }
 
 class AWS::DynamoDB::PutItemInputAttributeMap with AWS::API::MapParser {
+class AWS::DynamoDB::SecondaryIndexesCapacityMap with AWS::API::MapParser {
 class AWS::DynamoDB::TableDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[AWS::DynamoDB::AttributeDefinition]');
   has CreationDateTime => (is => 'ro', isa => 'Str');
+  has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[AWS::DynamoDB::GlobalSecondaryIndexDescription]');
   has ItemCount => (is => 'ro', isa => 'Num');
   has KeySchema => (is => 'ro', isa => 'ArrayRef[AWS::DynamoDB::KeySchemaElement]');
   has LocalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[AWS::DynamoDB::LocalSecondaryIndexDescription]');
@@ -115,6 +146,11 @@ class AWS::DynamoDB::TableDescription with (AWS::API::ResultParser, AWS::API::To
   has TableName => (is => 'ro', isa => 'Str');
   has TableSizeBytes => (is => 'ro', isa => 'Num');
   has TableStatus => (is => 'ro', isa => 'AWS::DynamoDB::TableStatus');
+}
+
+class AWS::DynamoDB::UpdateGlobalSecondaryIndexAction with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has IndexName => (is => 'ro', isa => 'Str', required => 1);
+  has ProvisionedThroughput => (is => 'ro', isa => 'AWS::DynamoDB::ProvisionedThroughput', required => 1);
 }
 
 class AWS::DynamoDB::WriteRequest with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -143,6 +179,7 @@ class AWS::DynamoDB::BatchWriteItem {
 }
 class AWS::DynamoDB::CreateTable {
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[AWS::DynamoDB::AttributeDefinition]', required => 1);
+  has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[AWS::DynamoDB::GlobalSecondaryIndex]');
   has KeySchema => (is => 'ro', isa => 'ArrayRef[AWS::DynamoDB::KeySchemaElement]', required => 1);
   has LocalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[AWS::DynamoDB::LocalSecondaryIndex]');
   has ProvisionedThroughput => (is => 'ro', isa => 'AWS::DynamoDB::ProvisionedThroughput', required => 1);
@@ -254,7 +291,8 @@ class AWS::DynamoDB::UpdateItem {
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateItemResult');  
 }
 class AWS::DynamoDB::UpdateTable {
-  has ProvisionedThroughput => (is => 'ro', isa => 'AWS::DynamoDB::ProvisionedThroughput', required => 1);
+  has GlobalSecondaryIndexUpdates => (is => 'ro', isa => 'ArrayRef[AWS::DynamoDB::GlobalSecondaryIndexUpdate]');
+  has ProvisionedThroughput => (is => 'ro', isa => 'AWS::DynamoDB::ProvisionedThroughput');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTable');
