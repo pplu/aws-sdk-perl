@@ -51,25 +51,29 @@ class XMLResponseTester with (Net::AWS::XMLResponse) {
 
 my $dir = 't/xml/responses';
 opendir(my $dh, $dir);
-my @files = grep { $_ =~ m/\.xml$/ } sort readdir($dh);
-foreach my $file (@files) {
+my @files = @ARGV;
+if (not @files) {
+  @files = map { "$dir/$_" } grep { $_ =~ m/\.xml$/ } sort readdir($dh);
+}
 
-  test_file($dir, $file);
+foreach my $file (@files) {
+  test_file($file);
 }
 
 done_testing;
 
 sub test_file {
-  my ($dir, $file) = @_;
+  my ($file) = @_;
   my $xml;
   {
+    use autodie;
     $/ = undef;
-    open my $fh, '<', "$dir/$file";
+    open my $fh, '<', $file;
     $xml = <$fh>;
     close $fh;
   }
   my $test = XMLResponseTester->new;
-  my ($api) = $file =~ m/^(\w+?)\-/;
+  my ($api) = $file =~ m/\/(\w+?)\-/;
   $api = { 
     redshift => 'RedShift',
     importexport => 'ImportExport',
