@@ -57,9 +57,9 @@ foreach my $file (@files) {
   my $ns = $namespaces->{ $f };
   die "$f doesn't have a namespace defined" if (not defined $ns);
   my $struct = process_file($file, $f);
-  my $content = process_api("AWS::$ns", $struct);
+  my $content = process_api("Aws::$ns", $struct);
   #print $content;
-  write_file("auto-lib/AWS/${ns}.pm", $content);
+  write_file("auto-lib/Aws/${ns}.pm", $content);
 }
 
 sub process_file {

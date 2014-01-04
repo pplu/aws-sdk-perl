@@ -57,9 +57,9 @@ use lib 'auto-lib', 'lib';
 use Data::Dumper;
 use Data::Printer;
 
-use AWS::CloudFormation;
+use Aws::CloudFormation;
 
-my $cf = AWS::CloudFormation->new(
+my $cf = Aws::CloudFormation->new(
   region => 'eu-west-1',
 );
 

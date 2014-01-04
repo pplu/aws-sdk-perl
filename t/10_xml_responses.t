@@ -9,20 +9,20 @@ use Test::Exception;
 use Net::AWS::Caller;
 use MooseX::Declare;
 
-use AWS::EC2;
-use AWS::SES;
-use AWS::RedShift;
-use AWS::ElasticBeanstalk;
-use AWS::IAM;
-use AWS::ELB;
-use AWS::CloudWatch;
-use AWS::AutoScaling;
-use AWS::SNS;
-use AWS::SQS;
-use AWS::RDS;
-use AWS::CloudFormation;
-use AWS::ImportExport;
-#use AWS::EMR;
+use Aws::EC2;
+use Aws::SES;
+use Aws::RedShift;
+use Aws::ElasticBeanstalk;
+use Aws::IAM;
+use Aws::ELB;
+use Aws::CloudWatch;
+use Aws::AutoScaling;
+use Aws::SNS;
+use Aws::SQS;
+use Aws::RDS;
+use Aws::CloudFormation;
+use Aws::ImportExport;
+#use Aws::EMR;
 
 use Data::Dumper;
 
@@ -33,7 +33,7 @@ class XMLResponseTester with (Net::AWS::XMLResponse) {
     my $result = $self->_process_response($xml);
     my ($class) = grep { m/Result$/ } keys %$result;
     if ($class) {
-      my $cl = "AWS::${api}::${class}";
+      my $cl = "Aws::${api}::${class}";
       my $o_result = $cl->from_result($result->{ $class });
 
       #print Dumper($o_result);

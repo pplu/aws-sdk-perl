@@ -7,11 +7,11 @@ use lib 'auto-lib', 'lib';
 use Data::Dumper;
 use Data::Printer;
 
-use AWS::SimpleWorkflow;
+use Aws::SimpleWorkflow;
 
 my $result;
 
-my $swf = AWS::SimpleWorkflow->new(
+my $swf = Aws::SimpleWorkflow->new(
   region => 'eu-west-1',
 );
 

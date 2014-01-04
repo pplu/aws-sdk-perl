@@ -3,44 +3,44 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-enum 'AWS::CloudFormation::ResourceStatus', [qw(CREATE_IN_PROGRESS CREATE_FAILED CREATE_COMPLETE DELETE_IN_PROGRESS DELETE_FAILED DELETE_COMPLETE UPDATE_IN_PROGRESS UPDATE_FAILED UPDATE_COMPLETE )];
-enum 'AWS::CloudFormation::StackStatus', [qw(CREATE_IN_PROGRESS CREATE_FAILED CREATE_COMPLETE ROLLBACK_IN_PROGRESS ROLLBACK_FAILED ROLLBACK_COMPLETE DELETE_IN_PROGRESS DELETE_FAILED DELETE_COMPLETE UPDATE_IN_PROGRESS UPDATE_COMPLETE_CLEANUP_IN_PROGRESS UPDATE_COMPLETE UPDATE_ROLLBACK_IN_PROGRESS UPDATE_ROLLBACK_FAILED UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS UPDATE_ROLLBACK_COMPLETE )];
+enum 'Aws::CloudFormation::ResourceStatus', [qw(CREATE_IN_PROGRESS CREATE_FAILED CREATE_COMPLETE DELETE_IN_PROGRESS DELETE_FAILED DELETE_COMPLETE UPDATE_IN_PROGRESS UPDATE_FAILED UPDATE_COMPLETE )];
+enum 'Aws::CloudFormation::StackStatus', [qw(CREATE_IN_PROGRESS CREATE_FAILED CREATE_COMPLETE ROLLBACK_IN_PROGRESS ROLLBACK_FAILED ROLLBACK_COMPLETE DELETE_IN_PROGRESS DELETE_FAILED DELETE_COMPLETE UPDATE_IN_PROGRESS UPDATE_COMPLETE_CLEANUP_IN_PROGRESS UPDATE_COMPLETE UPDATE_ROLLBACK_IN_PROGRESS UPDATE_ROLLBACK_FAILED UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS UPDATE_ROLLBACK_COMPLETE )];
 
 
-class AWS::CloudFormation::Output with (AWS::API::ResultParser, AWS::API::ToParams) {
+class Aws::CloudFormation::Output with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has OutputKey => (is => 'ro', isa => 'Str');
   has OutputValue => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudFormation::Parameter with (AWS::API::ResultParser, AWS::API::ToParams) {
+class Aws::CloudFormation::Parameter with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ParameterKey => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudFormation::Stack with (AWS::API::ResultParser, AWS::API::ToParams) {
+class Aws::CloudFormation::Stack with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has DisableRollback => (is => 'ro', isa => 'Str');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Outputs => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::Output]');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::Parameter]');
+  has Outputs => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::Output]');
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::Parameter]');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
-  has StackStatus => (is => 'ro', isa => 'AWS::CloudFormation::StackStatus', required => 1);
+  has StackStatus => (is => 'ro', isa => 'Aws::CloudFormation::StackStatus', required => 1);
   has StackStatusReason => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::Tag]');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::Tag]');
   has TimeoutInMinutes => (is => 'ro', isa => 'Int');
 }
 
-class AWS::CloudFormation::StackEvent with (AWS::API::ResultParser, AWS::API::ToParams) {
+class Aws::CloudFormation::StackEvent with (AWS::API::ResultParser, AWS::API::ToParams) {
   has EventId => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str');
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
   has ResourceProperties => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'AWS::CloudFormation::ResourceStatus');
+  has ResourceStatus => (is => 'ro', isa => 'Aws::CloudFormation::ResourceStatus');
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
@@ -48,11 +48,11 @@ class AWS::CloudFormation::StackEvent with (AWS::API::ResultParser, AWS::API::To
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::CloudFormation::StackResource with (AWS::API::ResultParser, AWS::API::ToParams) {
+class Aws::CloudFormation::StackResource with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'AWS::CloudFormation::ResourceStatus', required => 1);
+  has ResourceStatus => (is => 'ro', isa => 'Aws::CloudFormation::ResourceStatus', required => 1);
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
   has StackId => (is => 'ro', isa => 'Str');
@@ -60,45 +60,45 @@ class AWS::CloudFormation::StackResource with (AWS::API::ResultParser, AWS::API:
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::CloudFormation::StackResourceDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
+class Aws::CloudFormation::StackResourceDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str');
   has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has Metadata => (is => 'ro', isa => 'Str');
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'AWS::CloudFormation::ResourceStatus', required => 1);
+  has ResourceStatus => (is => 'ro', isa => 'Aws::CloudFormation::ResourceStatus', required => 1);
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudFormation::StackResourceSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
+class Aws::CloudFormation::StackResourceSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
   has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'AWS::CloudFormation::ResourceStatus', required => 1);
+  has ResourceStatus => (is => 'ro', isa => 'Aws::CloudFormation::ResourceStatus', required => 1);
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class AWS::CloudFormation::StackSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
+class Aws::CloudFormation::StackSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has DeletionTime => (is => 'ro', isa => 'Str');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
-  has StackStatus => (is => 'ro', isa => 'AWS::CloudFormation::StackStatus', required => 1);
+  has StackStatus => (is => 'ro', isa => 'Aws::CloudFormation::StackStatus', required => 1);
   has StackStatusReason => (is => 'ro', isa => 'Str');
   has TemplateDescription => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudFormation::Tag with (AWS::API::ResultParser, AWS::API::ToParams) {
+class Aws::CloudFormation::Tag with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Key => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class AWS::CloudFormation::TemplateParameter with (AWS::API::ResultParser, AWS::API::ToParams) {
+class Aws::CloudFormation::TemplateParameter with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DefaultValue => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has NoEcho => (is => 'ro', isa => 'Str');
@@ -107,122 +107,122 @@ class AWS::CloudFormation::TemplateParameter with (AWS::API::ResultParser, AWS::
 
 
 
-class AWS::CloudFormation::CancelUpdateStack {
+class Aws::CloudFormation::CancelUpdateStack {
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CancelUpdateStack');
-  has _returns => (isa => 'AWS::CloudFormation::CancelUpdateStackResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::CancelUpdateStackResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CancelUpdateStackResult');  
 }
-class AWS::CloudFormation::CreateStack {
+class Aws::CloudFormation::CreateStack {
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
   has DisableRollback => (is => 'ro', isa => 'Str');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
   has OnFailure => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::Parameter]');
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::Parameter]');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackPolicyBody => (is => 'ro', isa => 'Str');
   has StackPolicyURL => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::Tag]');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::Tag]');
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateURL => (is => 'ro', isa => 'Str');
   has TimeoutInMinutes => (is => 'ro', isa => 'Int');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStack');
-  has _returns => (isa => 'AWS::CloudFormation::CreateStackResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::CreateStackResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStackResult');  
 }
-class AWS::CloudFormation::DeleteStack {
+class Aws::CloudFormation::DeleteStack {
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteStack');
-  has _returns => (isa => 'AWS::CloudFormation::DeleteStackResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::DeleteStackResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteStackResult');  
 }
-class AWS::CloudFormation::DescribeStackEvents {
+class Aws::CloudFormation::DescribeStackEvents {
   has NextToken => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackEvents');
-  has _returns => (isa => 'AWS::CloudFormation::DescribeStackEventsResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::DescribeStackEventsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackEventsResult');  
 }
-class AWS::CloudFormation::DescribeStackResource {
+class Aws::CloudFormation::DescribeStackResource {
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackResource');
-  has _returns => (isa => 'AWS::CloudFormation::DescribeStackResourceResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::DescribeStackResourceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackResourceResult');  
 }
-class AWS::CloudFormation::DescribeStackResources {
+class Aws::CloudFormation::DescribeStackResources {
   has LogicalResourceId => (is => 'ro', isa => 'Str');
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackResources');
-  has _returns => (isa => 'AWS::CloudFormation::DescribeStackResourcesResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::DescribeStackResourcesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackResourcesResult');  
 }
-class AWS::CloudFormation::DescribeStacks {
+class Aws::CloudFormation::DescribeStacks {
   has NextToken => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStacks');
-  has _returns => (isa => 'AWS::CloudFormation::DescribeStacksResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::DescribeStacksResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStacksResult');  
 }
-class AWS::CloudFormation::EstimateTemplateCost {
-  has Parameters => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::Parameter]');
+class Aws::CloudFormation::EstimateTemplateCost {
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::Parameter]');
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateURL => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'EstimateTemplateCost');
-  has _returns => (isa => 'AWS::CloudFormation::EstimateTemplateCostResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::EstimateTemplateCostResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'EstimateTemplateCostResult');  
 }
-class AWS::CloudFormation::GetStackPolicy {
+class Aws::CloudFormation::GetStackPolicy {
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetStackPolicy');
-  has _returns => (isa => 'AWS::CloudFormation::GetStackPolicyResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::GetStackPolicyResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetStackPolicyResult');  
 }
-class AWS::CloudFormation::GetTemplate {
+class Aws::CloudFormation::GetTemplate {
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetTemplate');
-  has _returns => (isa => 'AWS::CloudFormation::GetTemplateResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::GetTemplateResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetTemplateResult');  
 }
-class AWS::CloudFormation::ListStackResources {
+class Aws::CloudFormation::ListStackResources {
   has NextToken => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListStackResources');
-  has _returns => (isa => 'AWS::CloudFormation::ListStackResourcesResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::ListStackResourcesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListStackResourcesResult');  
 }
-class AWS::CloudFormation::ListStacks {
+class Aws::CloudFormation::ListStacks {
   has NextToken => (is => 'ro', isa => 'Str');
   has StackStatusFilter => (is => 'ro', isa => 'ArrayRef[Str]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListStacks');
-  has _returns => (isa => 'AWS::CloudFormation::ListStacksResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::ListStacksResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListStacksResult');  
 }
-class AWS::CloudFormation::SetStackPolicy {
+class Aws::CloudFormation::SetStackPolicy {
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackPolicyBody => (is => 'ro', isa => 'Str');
   has StackPolicyURL => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SetStackPolicy');
-  has _returns => (isa => 'AWS::CloudFormation::SetStackPolicyResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::SetStackPolicyResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetStackPolicyResult');  
 }
-class AWS::CloudFormation::UpdateStack {
+class Aws::CloudFormation::UpdateStack {
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::Parameter]');
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::Parameter]');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackPolicyBody => (is => 'ro', isa => 'Str');
   has StackPolicyDuringUpdateBody => (is => 'ro', isa => 'Str');
@@ -232,163 +232,163 @@ class AWS::CloudFormation::UpdateStack {
   has TemplateURL => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStack');
-  has _returns => (isa => 'AWS::CloudFormation::UpdateStackResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::UpdateStackResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateStackResult');  
 }
-class AWS::CloudFormation::ValidateTemplate {
+class Aws::CloudFormation::ValidateTemplate {
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateURL => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ValidateTemplate');
-  has _returns => (isa => 'AWS::CloudFormation::ValidateTemplateResult', is => 'ro');
+  has _returns => (isa => 'Aws::CloudFormation::ValidateTemplateResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ValidateTemplateResult');  
 }
 
-class AWS::CloudFormation::CreateStackResult with AWS::API::ResultParser {
+class Aws::CloudFormation::CreateStackResult with AWS::API::ResultParser {
   has StackId => (is => 'ro', isa => 'Str');
 
 }
-class AWS::CloudFormation::DescribeStackEventsResult with AWS::API::ResultParser {
+class Aws::CloudFormation::DescribeStackEventsResult with AWS::API::ResultParser {
   has NextToken => (is => 'ro', isa => 'Str');
-  has StackEvents => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::StackEvent]');
+  has StackEvents => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::StackEvent]');
 
 }
-class AWS::CloudFormation::DescribeStackResourceResult with AWS::API::ResultParser {
-  has StackResourceDetail => (is => 'ro', isa => 'AWS::CloudFormation::StackResourceDetail');
+class Aws::CloudFormation::DescribeStackResourceResult with AWS::API::ResultParser {
+  has StackResourceDetail => (is => 'ro', isa => 'Aws::CloudFormation::StackResourceDetail');
 
 }
-class AWS::CloudFormation::DescribeStackResourcesResult with AWS::API::ResultParser {
-  has StackResources => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::StackResource]');
+class Aws::CloudFormation::DescribeStackResourcesResult with AWS::API::ResultParser {
+  has StackResources => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::StackResource]');
 
 }
-class AWS::CloudFormation::DescribeStacksResult with AWS::API::ResultParser {
+class Aws::CloudFormation::DescribeStacksResult with AWS::API::ResultParser {
   has NextToken => (is => 'ro', isa => 'Str');
-  has Stacks => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::Stack]');
+  has Stacks => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::Stack]');
 
 }
-class AWS::CloudFormation::EstimateTemplateCostResult with AWS::API::ResultParser {
+class Aws::CloudFormation::EstimateTemplateCostResult with AWS::API::ResultParser {
   has Url => (is => 'ro', isa => 'Str');
 
 }
-class AWS::CloudFormation::GetStackPolicyResult with AWS::API::ResultParser {
+class Aws::CloudFormation::GetStackPolicyResult with AWS::API::ResultParser {
   has StackPolicyBody => (is => 'ro', isa => 'Str');
 
 }
-class AWS::CloudFormation::GetTemplateResult with AWS::API::ResultParser {
+class Aws::CloudFormation::GetTemplateResult with AWS::API::ResultParser {
   has TemplateBody => (is => 'ro', isa => 'Str');
 
 }
-class AWS::CloudFormation::ListStackResourcesResult with AWS::API::ResultParser {
+class Aws::CloudFormation::ListStackResourcesResult with AWS::API::ResultParser {
   has NextToken => (is => 'ro', isa => 'Str');
-  has StackResourceSummaries => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::StackResourceSummary]');
+  has StackResourceSummaries => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::StackResourceSummary]');
 
 }
-class AWS::CloudFormation::ListStacksResult with AWS::API::ResultParser {
+class Aws::CloudFormation::ListStacksResult with AWS::API::ResultParser {
   has NextToken => (is => 'ro', isa => 'Str');
-  has StackSummaries => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::StackSummary]');
+  has StackSummaries => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::StackSummary]');
 
 }
-class AWS::CloudFormation::UpdateStackResult with AWS::API::ResultParser {
+class Aws::CloudFormation::UpdateStackResult with AWS::API::ResultParser {
   has StackId => (is => 'ro', isa => 'Str');
 
 }
-class AWS::CloudFormation::ValidateTemplateResult with AWS::API::ResultParser {
+class Aws::CloudFormation::ValidateTemplateResult with AWS::API::ResultParser {
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
   has CapabilitiesReason => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[AWS::CloudFormation::TemplateParameter]');
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::TemplateParameter]');
 
 }
 
-class AWS::CloudFormation with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
+class Aws::CloudFormation with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'cloudformation');
   has version => (is => 'ro', isa => 'Str', default => '2010-05-15');
   
   method CancelUpdateStack (%args) {
-    my $call = AWS::CloudFormation::CancelUpdateStack->new(%args);
+    my $call = Aws::CloudFormation::CancelUpdateStack->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   method CreateStack (%args) {
-    my $call = AWS::CloudFormation::CreateStack->new(%args);
+    my $call = Aws::CloudFormation::CreateStack->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudFormation::CreateStackResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudFormation::CreateStackResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method DeleteStack (%args) {
-    my $call = AWS::CloudFormation::DeleteStack->new(%args);
+    my $call = Aws::CloudFormation::DeleteStack->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   method DescribeStackEvents (%args) {
-    my $call = AWS::CloudFormation::DescribeStackEvents->new(%args);
+    my $call = Aws::CloudFormation::DescribeStackEvents->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudFormation::DescribeStackEventsResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudFormation::DescribeStackEventsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method DescribeStackResource (%args) {
-    my $call = AWS::CloudFormation::DescribeStackResource->new(%args);
+    my $call = Aws::CloudFormation::DescribeStackResource->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudFormation::DescribeStackResourceResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudFormation::DescribeStackResourceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method DescribeStackResources (%args) {
-    my $call = AWS::CloudFormation::DescribeStackResources->new(%args);
+    my $call = Aws::CloudFormation::DescribeStackResources->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudFormation::DescribeStackResourcesResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudFormation::DescribeStackResourcesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method DescribeStacks (%args) {
-    my $call = AWS::CloudFormation::DescribeStacks->new(%args);
+    my $call = Aws::CloudFormation::DescribeStacks->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudFormation::DescribeStacksResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudFormation::DescribeStacksResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method EstimateTemplateCost (%args) {
-    my $call = AWS::CloudFormation::EstimateTemplateCost->new(%args);
+    my $call = Aws::CloudFormation::EstimateTemplateCost->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudFormation::EstimateTemplateCostResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudFormation::EstimateTemplateCostResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method GetStackPolicy (%args) {
-    my $call = AWS::CloudFormation::GetStackPolicy->new(%args);
+    my $call = Aws::CloudFormation::GetStackPolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudFormation::GetStackPolicyResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudFormation::GetStackPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method GetTemplate (%args) {
-    my $call = AWS::CloudFormation::GetTemplate->new(%args);
+    my $call = Aws::CloudFormation::GetTemplate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudFormation::GetTemplateResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudFormation::GetTemplateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method ListStackResources (%args) {
-    my $call = AWS::CloudFormation::ListStackResources->new(%args);
+    my $call = Aws::CloudFormation::ListStackResources->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudFormation::ListStackResourcesResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudFormation::ListStackResourcesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method ListStacks (%args) {
-    my $call = AWS::CloudFormation::ListStacks->new(%args);
+    my $call = Aws::CloudFormation::ListStacks->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudFormation::ListStacksResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudFormation::ListStacksResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method SetStackPolicy (%args) {
-    my $call = AWS::CloudFormation::SetStackPolicy->new(%args);
+    my $call = Aws::CloudFormation::SetStackPolicy->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   method UpdateStack (%args) {
-    my $call = AWS::CloudFormation::UpdateStack->new(%args);
+    my $call = Aws::CloudFormation::UpdateStack->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudFormation::UpdateStackResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudFormation::UpdateStackResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method ValidateTemplate (%args) {
-    my $call = AWS::CloudFormation::ValidateTemplate->new(%args);
+    my $call = Aws::CloudFormation::ValidateTemplate->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = AWS::CloudFormation::ValidateTemplateResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudFormation::ValidateTemplateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
 }

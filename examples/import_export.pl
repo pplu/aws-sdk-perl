@@ -1,8 +1,8 @@
 
 use Data::Printer;
-use AWS::ImportExport;
+use Aws::ImportExport;
 
-my $ie = AWS::ImportExport->new;
+my $ie = Aws::ImportExport->new;
 my $list = $ie->ListJobs;
 
 p $list;

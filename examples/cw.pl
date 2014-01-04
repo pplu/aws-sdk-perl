@@ -4,9 +4,9 @@ use strict;
 use warnings;
 
 use Data::Printer;
-use AWS::CloudWatch;
+use Aws::CloudWatch;
 
-my $cw = AWS::CloudWatch->new(
+my $cw = Aws::CloudWatch->new(
   region => 'eu-west-1'
 );
 
@@ -43,8 +43,8 @@ $result = $cw->GetMetricStatistics(
   Period => 300,
   Unit => 'Percent',
   Dimensions => [
-    AWS::CloudWatch::Dimension->new(Name => 'InstanceId', Value => 'i-b25b5af8'),
-#    AWS::CloudWatch::Dimension->new(Name => 'InstanceId', Value => 'i-ea4aafa4'),
+    Aws::CloudWatch::Dimension->new(Name => 'InstanceId', Value => 'i-b25b5af8'),
+#    Aws::CloudWatch::Dimension->new(Name => 'InstanceId', Value => 'i-ea4aafa4'),
   ]
 );
 
