@@ -147,6 +147,12 @@ role Net::AWS::V4Signature {
   }
 }
 
+role Net::AWS::JsonCaller {
+  method _api_caller {
+        
+  } 
+}
+
 role Net::AWS::QueryCaller {
   method _is_internal_type ($att_type) {
     return ($att_type eq 'Str' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
