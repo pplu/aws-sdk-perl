@@ -24,7 +24,7 @@ enum 'AWS::EC2::ImageState', [qw(available deregistered )];
 enum 'AWS::EC2::ImageTypeValues', [qw(machine kernel ramdisk )];
 enum 'AWS::EC2::InstanceLifecycleType', [qw(spot )];
 enum 'AWS::EC2::InstanceStateName', [qw(pending running shutting-down terminated stopping stopped )];
-enum 'AWS::EC2::InstanceType', [qw(t1.micro m1.small m1.medium m1.large m1.xlarge m3.xlarge m3.2xlarge m2.xlarge m2.2xlarge m2.4xlarge cr1.8xlarge hi1.4xlarge hs1.8xlarge c1.medium c1.xlarge c3.large c3.xlarge c3.2xlarge c3.4xlarge c3.8xlarge cc1.4xlarge cc2.8xlarge g2.2xlarge cg1.4xlarge )];
+enum 'AWS::EC2::InstanceType', [qw(t1.micro m1.small m1.medium m1.large m1.xlarge m3.xlarge m3.2xlarge m2.xlarge m2.2xlarge m2.4xlarge cr1.8xlarge i2.xlarge i2.2xlarge i2.4xlarge i2.8xlarge hi1.4xlarge hs1.8xlarge c1.medium c1.xlarge c3.large c3.xlarge c3.2xlarge c3.4xlarge c3.8xlarge cc1.4xlarge cc2.8xlarge g2.2xlarge cg1.4xlarge )];
 enum 'AWS::EC2::ListingState', [qw(available sold cancelled pending )];
 enum 'AWS::EC2::ListingStatus', [qw(active pending cancelled closed )];
 enum 'AWS::EC2::MonitoringState', [qw(disabled enabled pending )];
@@ -803,6 +803,10 @@ class AWS::EC2::SpotDatafeedSubscription with (AWS::API::UnwrappedParser, AWS::A
   has State => (is => 'ro', isa => 'AWS::EC2::DatafeedSubscriptionState', traits => ['Unwrapped'], xmlname => 'state');
 }
 
+class AWS::EC2::SpotInstanceMonitoring with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+  has Enabled => (is => 'ro', isa => 'Str', required => 1);
+}
+
 class AWS::EC2::SpotInstanceRequest with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has AvailabilityZoneGroup => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZoneGroup');
   has CreateTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createTime');
@@ -842,7 +846,7 @@ class AWS::EC2::SpotLaunchSpecification with (AWS::API::UnwrappedParser, AWS::AP
   has InstanceType => (is => 'ro', isa => 'AWS::EC2::InstanceType');
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
-  has MonitoringEnabled => (is => 'ro', isa => 'Str');
+  has Monitoring => (is => 'ro', isa => 'AWS::EC2::SpotInstanceMonitoring');
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[AWS::EC2::InstanceNetworkInterfaceSpecification]');
   has Placement => (is => 'ro', isa => 'AWS::EC2::SpotPlacement');
   has RamdiskId => (is => 'ro', isa => 'Str');
@@ -2515,7 +2519,7 @@ class AWS::EC2::AttachVolumeResult with AWS::API::UnwrappedParser {
 
 }
 class AWS::EC2::AttachVpnGatewayResult with AWS::API::UnwrappedParser {
-  has VpcAttachement => (is => 'ro', isa => 'AWS::EC2::VpcAttachment', traits => ['Unwrapped'], xmlname => 'attachment');
+  has VpcAttachment => (is => 'ro', isa => 'AWS::EC2::VpcAttachment', traits => ['Unwrapped'], xmlname => 'attachment');
 
 }
 class AWS::EC2::BundleInstanceResult with AWS::API::UnwrappedParser {
