@@ -171,11 +171,6 @@ class AWS::RDS::EventSubscription with (AWS::API::ResultParser, AWS::API::ToPara
   has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
 }
 
-class AWS::RDS::Filter with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has FilterName => (is => 'ro', isa => 'Str', required => 1);
-  has FilterValue => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-}
-
 class AWS::RDS::IPRange with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CIDRIP => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -551,7 +546,6 @@ class AWS::RDS::DescribeDBEngineVersions {
 }
 class AWS::RDS::DescribeDBInstances {
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -573,7 +567,6 @@ class AWS::RDS::DescribeDBLogFiles {
 }
 class AWS::RDS::DescribeDBParameterGroups {
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -593,7 +586,6 @@ class AWS::RDS::DescribeDBParameters {
 }
 class AWS::RDS::DescribeDBSecurityGroups {
   has DBSecurityGroupName => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -604,7 +596,6 @@ class AWS::RDS::DescribeDBSecurityGroups {
 class AWS::RDS::DescribeDBSnapshots {
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SnapshotType => (is => 'ro', isa => 'Str');
@@ -615,7 +606,6 @@ class AWS::RDS::DescribeDBSnapshots {
 }
 class AWS::RDS::DescribeDBSubnetGroups {
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -640,7 +630,6 @@ class AWS::RDS::DescribeEventCategories {
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventCategoriesResult');  
 }
 class AWS::RDS::DescribeEventSubscriptions {
-  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SubscriptionName => (is => 'ro', isa => 'Str');
@@ -675,7 +664,6 @@ class AWS::RDS::DescribeOptionGroupOptions {
 }
 class AWS::RDS::DescribeOptionGroups {
   has EngineName => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has MajorEngineVersion => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -701,7 +689,6 @@ class AWS::RDS::DescribeOrderableDBInstanceOptions {
 class AWS::RDS::DescribeReservedDBInstances {
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[AWS::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has MultiAZ => (is => 'ro', isa => 'Str');

@@ -220,14 +220,14 @@ class AWS::ElastiCache::AuthorizeCacheSecurityGroupIngress {
 class AWS::ElastiCache::CreateCacheCluster {
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has CacheNodeType => (is => 'ro', isa => 'Str', required => 1);
+  has CacheNodeType => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str', required => 1);
+  has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
-  has NumCacheNodes => (is => 'ro', isa => 'Int', required => 1);
+  has NumCacheNodes => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -304,6 +304,7 @@ class AWS::ElastiCache::DeleteCacheSubnetGroup {
 }
 class AWS::ElastiCache::DeleteReplicationGroup {
   has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
+  has RetainPrimaryCluster => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteReplicationGroup');
   has _returns => (isa => 'AWS::ElastiCache::DeleteReplicationGroupResult', is => 'ro');

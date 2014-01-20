@@ -64,12 +64,16 @@ class AWS::AutoScaling::AutoScalingInstanceDetails with (AWS::API::ResultParser,
 class AWS::AutoScaling::BlockDeviceMapping with (AWS::API::ResultParser, AWS::API::ToParams) {
   has DeviceName => (is => 'ro', isa => 'Str', required => 1);
   has Ebs => (is => 'ro', isa => 'AWS::AutoScaling::Ebs');
+  has NoDevice => (is => 'ro', isa => 'Str');
   has VirtualName => (is => 'ro', isa => 'Str');
 }
 
 class AWS::AutoScaling::Ebs with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has DeleteOnTermination => (is => 'ro', isa => 'Str');
+  has Iops => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
   has VolumeSize => (is => 'ro', isa => 'Int');
+  has VolumeType => (is => 'ro', isa => 'Str');
 }
 
 class AWS::AutoScaling::EnabledMetric with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -178,6 +182,14 @@ class AWS::AutoScaling::TagDescription with (AWS::API::ResultParser, AWS::API::T
 
 
 
+class AWS::AutoScaling::AttachInstances {
+  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'AttachInstances');
+  has _returns => (isa => 'AWS::AutoScaling::AttachInstancesResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'AttachInstancesResult');  
+}
 class AWS::AutoScaling::CreateAutoScalingGroup {
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -185,7 +197,8 @@ class AWS::AutoScaling::CreateAutoScalingGroup {
   has DesiredCapacity => (is => 'ro', isa => 'Int');
   has HealthCheckGracePeriod => (is => 'ro', isa => 'Int');
   has HealthCheckType => (is => 'ro', isa => 'Str');
-  has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
+  has InstanceId => (is => 'ro', isa => 'Str');
+  has LaunchConfigurationName => (is => 'ro', isa => 'Str');
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
@@ -203,9 +216,10 @@ class AWS::AutoScaling::CreateLaunchConfiguration {
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[AWS::AutoScaling::BlockDeviceMapping]');
   has EbsOptimized => (is => 'ro', isa => 'Str');
   has IamInstanceProfile => (is => 'ro', isa => 'Str');
-  has ImageId => (is => 'ro', isa => 'Str', required => 1);
+  has ImageId => (is => 'ro', isa => 'Str');
+  has InstanceId => (is => 'ro', isa => 'Str');
   has InstanceMonitoring => (is => 'ro', isa => 'AWS::AutoScaling::InstanceMonitoring');
-  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
+  has InstanceType => (is => 'ro', isa => 'Str');
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
@@ -270,6 +284,12 @@ class AWS::AutoScaling::DeleteTags {
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTags');
   has _returns => (isa => 'AWS::AutoScaling::DeleteTagsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteTagsResult');  
+}
+class AWS::AutoScaling::DescribeAccountLimits {
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAccountLimits');
+  has _returns => (isa => 'AWS::AutoScaling::DescribeAccountLimitsResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAccountLimitsResult');  
 }
 class AWS::AutoScaling::DescribeAdjustmentTypes {
 
@@ -501,6 +521,11 @@ class AWS::AutoScaling::UpdateAutoScalingGroup {
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateAutoScalingGroupResult');  
 }
 
+class AWS::AutoScaling::DescribeAccountLimitsResult with AWS::API::ResultParser {
+  has MaxNumberOfAutoScalingGroups => (is => 'ro', isa => 'Int');
+  has MaxNumberOfLaunchConfigurations => (is => 'ro', isa => 'Int');
+
+}
 class AWS::AutoScaling::DescribeAdjustmentTypesResult with AWS::API::ResultParser {
   has AdjustmentTypes => (is => 'ro', isa => 'ArrayRef[AWS::AutoScaling::AdjustmentType]');
 
@@ -575,6 +600,11 @@ class AWS::AutoScaling with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller,
   has service => (is => 'ro', isa => 'Str', default => 'autoscaling');
   has version => (is => 'ro', isa => 'Str', default => '2011-01-01');
   
+  method AttachInstances (%args) {
+    my $call = AWS::AutoScaling::AttachInstances->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    return 1
+  }
   method CreateAutoScalingGroup (%args) {
     my $call = AWS::AutoScaling::CreateAutoScalingGroup->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
@@ -619,6 +649,12 @@ class AWS::AutoScaling with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller,
     my $call = AWS::AutoScaling::DeleteTags->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
+  }
+  method DescribeAccountLimits (%args) {
+    my $call = AWS::AutoScaling::DescribeAccountLimits->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = AWS::AutoScaling::DescribeAccountLimitsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
   }
   method DescribeAdjustmentTypes (%args) {
     my $call = AWS::AutoScaling::DescribeAdjustmentTypes->new(%args);
