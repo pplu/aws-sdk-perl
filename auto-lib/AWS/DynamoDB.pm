@@ -3,13 +3,13 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-enum 'AWS::DynamoDB::AttributeAction', [qw(ADD PUT DELETE )];
-enum 'AWS::DynamoDB::ComparisonOperator', [qw(EQ NE IN LE LT GE GT BETWEEN NOT_NULL NULL CONTAINS NOT_CONTAINS BEGINS_WITH )];
-enum 'AWS::DynamoDB::IndexStatus', [qw(CREATING UPDATING DELETING ACTIVE )];
-enum 'AWS::DynamoDB::KeyType', [qw(HASH RANGE )];
-enum 'AWS::DynamoDB::ProjectionType', [qw(ALL KEYS_ONLY INCLUDE )];
-enum 'AWS::DynamoDB::ScalarAttributeType', [qw(S N B )];
-enum 'AWS::DynamoDB::TableStatus', [qw(CREATING UPDATING DELETING ACTIVE )];
+enum 'AWS::DynamoDB::AttributeAction', ['ADD','PUT','DELETE',];
+enum 'AWS::DynamoDB::ComparisonOperator', ['EQ','NE','IN','LE','LT','GE','GT','BETWEEN','NOT_NULL','NULL','CONTAINS','NOT_CONTAINS','BEGINS_WITH',];
+enum 'AWS::DynamoDB::IndexStatus', ['CREATING','UPDATING','DELETING','ACTIVE',];
+enum 'AWS::DynamoDB::KeyType', ['HASH','RANGE',];
+enum 'AWS::DynamoDB::ProjectionType', ['ALL','KEYS_ONLY','INCLUDE',];
+enum 'AWS::DynamoDB::ScalarAttributeType', ['S','N','B',];
+enum 'AWS::DynamoDB::TableStatus', ['CREATING','UPDATING','DELETING','ACTIVE',];
 
 
 class AWS::DynamoDB::AttributeDefinition with (AWS::API::ResultParser, AWS::API::ToParams) {

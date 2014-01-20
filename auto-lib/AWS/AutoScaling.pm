@@ -3,8 +3,8 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-enum 'AWS::AutoScaling::LifecycleState', [qw(Pending Quarantined InService Terminating Terminated )];
-enum 'AWS::AutoScaling::ScalingActivityStatusCode', [qw(WaitingForSpotInstanceRequestId WaitingForSpotInstanceId WaitingForInstanceId PreInService InProgress Successful Failed Cancelled )];
+enum 'AWS::AutoScaling::LifecycleState', ['Pending','Quarantined','InService','Terminating','Terminated',];
+enum 'AWS::AutoScaling::ScalingActivityStatusCode', ['WaitingForSpotInstanceRequestId','WaitingForSpotInstanceId','WaitingForInstanceId','PreInService','InProgress','Successful','Failed','Cancelled',];
 
 
 class AWS::AutoScaling::Activity with (AWS::API::ResultParser, AWS::API::ToParams) {

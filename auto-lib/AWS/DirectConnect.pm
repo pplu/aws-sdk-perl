@@ -3,9 +3,9 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-enum 'AWS::DirectConnect::ConnectionState', [qw(ordering requested pending available down deleting deleted rejected )];
-enum 'AWS::DirectConnect::InterconnectState', [qw(requested pending available down deleting deleted )];
-enum 'AWS::DirectConnect::VirtualInterfaceState', [qw(confirming verifying pending available deleting deleted rejected )];
+enum 'AWS::DirectConnect::ConnectionState', ['ordering','requested','pending','available','down','deleting','deleted','rejected',];
+enum 'AWS::DirectConnect::InterconnectState', ['requested','pending','available','down','deleting','deleted',];
+enum 'AWS::DirectConnect::VirtualInterfaceState', ['confirming','verifying','pending','available','deleting','deleted','rejected',];
 
 
 class AWS::DirectConnect::Connection with (AWS::API::ResultParser, AWS::API::ToParams) {

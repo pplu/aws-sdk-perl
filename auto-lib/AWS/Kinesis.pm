@@ -3,7 +3,7 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-enum 'AWS::Kinesis::StreamStatus', [qw(CREATING DELETING ACTIVE UPDATING )];
+enum 'AWS::Kinesis::StreamStatus', ['CREATING','DELETING','ACTIVE','UPDATING',];
 
 
 class AWS::Kinesis::Record with (AWS::API::ResultParser, AWS::API::ToParams) {

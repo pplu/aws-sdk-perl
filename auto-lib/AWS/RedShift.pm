@@ -3,7 +3,7 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-enum 'AWS::RedShift::SourceType', [qw(cluster cluster-parameter-group cluster-security-group cluster-snapshot )];
+enum 'AWS::RedShift::SourceType', ['cluster','cluster-parameter-group','cluster-security-group','cluster-snapshot',];
 
 
 class AWS::RedShift::AccountWithRestoreAccess with (AWS::API::ResultParser, AWS::API::ToParams) {

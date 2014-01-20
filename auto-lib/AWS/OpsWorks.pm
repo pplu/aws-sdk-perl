@@ -3,13 +3,13 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-enum 'AWS::OpsWorks::AppType', [qw(rails php nodejs static other )];
-enum 'AWS::OpsWorks::Architecture', [qw(x86_64 i386 )];
-enum 'AWS::OpsWorks::AutoScalingType', [qw(load timer )];
-enum 'AWS::OpsWorks::DeploymentCommandName', [qw(install_dependencies update_dependencies update_custom_cookbooks execute_recipes deploy rollback start stop restart undeploy )];
-enum 'AWS::OpsWorks::LayerType', [qw(lb web php-app rails-app nodejs-app memcached db-master monitoring-master custom )];
-enum 'AWS::OpsWorks::RootDeviceType', [qw(ebs instance-store )];
-enum 'AWS::OpsWorks::SourceType', [qw(git svn archive s3 )];
+enum 'AWS::OpsWorks::AppType', ['rails','php','nodejs','static','other',];
+enum 'AWS::OpsWorks::Architecture', ['x86_64','i386',];
+enum 'AWS::OpsWorks::AutoScalingType', ['load','timer',];
+enum 'AWS::OpsWorks::DeploymentCommandName', ['install_dependencies','update_dependencies','update_custom_cookbooks','execute_recipes','deploy','rollback','start','stop','restart','undeploy',];
+enum 'AWS::OpsWorks::LayerType', ['lb','web','php-app','rails-app','nodejs-app','memcached','db-master','monitoring-master','custom',];
+enum 'AWS::OpsWorks::RootDeviceType', ['ebs','instance-store',];
+enum 'AWS::OpsWorks::SourceType', ['git','svn','archive','s3',];
 
 
 class AWS::OpsWorks::App with (AWS::API::ResultParser, AWS::API::ToParams) {

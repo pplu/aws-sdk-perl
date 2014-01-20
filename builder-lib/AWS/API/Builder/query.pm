@@ -61,7 +61,7 @@ use AWS::API;
 [% IF (c.enums.size) %]
 use Moose::Util::TypeConstraints;
 [%- FOR enum_name IN c.enums.keys.sort %]
-enum '[% enum_name %]', [qw([% FOR val IN c.enums.$enum_name %][% val %] [% END %])];
+enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %]];
 [%- END %]
 [% END %]
 

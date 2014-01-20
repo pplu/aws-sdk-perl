@@ -3,8 +3,8 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-enum 'AWS::RDS::ApplyMethod', [qw(immediate pending-reboot )];
-enum 'AWS::RDS::SourceType', [qw(db-instance db-parameter-group db-security-group db-snapshot )];
+enum 'AWS::RDS::ApplyMethod', ['immediate','pending-reboot',];
+enum 'AWS::RDS::SourceType', ['db-instance','db-parameter-group','db-security-group','db-snapshot',];
 
 
 class AWS::RDS::AvailabilityZone with (AWS::API::ResultParser, AWS::API::ToParams) {

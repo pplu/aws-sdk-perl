@@ -3,7 +3,7 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-enum 'AWS::ElastiCache::SourceType', [qw(cache-cluster cache-parameter-group cache-security-group cache-subnet-group )];
+enum 'AWS::ElastiCache::SourceType', ['cache-cluster','cache-parameter-group','cache-security-group','cache-subnet-group',];
 
 
 class AWS::ElastiCache::CacheCluster with (AWS::API::ResultParser, AWS::API::ToParams) {

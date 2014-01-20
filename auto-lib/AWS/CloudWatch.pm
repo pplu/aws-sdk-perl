@@ -3,11 +3,11 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-enum 'AWS::CloudWatch::ComparisonOperator', [qw(GreaterThanOrEqualToThreshold GreaterThanThreshold LessThanThreshold LessThanOrEqualToThreshold )];
-enum 'AWS::CloudWatch::HistoryItemType', [qw(ConfigurationUpdate StateUpdate Action )];
-enum 'AWS::CloudWatch::StandardUnit', [qw(Seconds Microseconds Milliseconds Bytes Kilobytes Megabytes Gigabytes Terabytes Bits Kilobits Megabits Gigabits Terabits Percent Count Bytes/Second Kilobytes/Second Megabytes/Second Gigabytes/Second Terabytes/Second Bits/Second Kilobits/Second Megabits/Second Gigabits/Second Terabits/Second Count/Second None )];
-enum 'AWS::CloudWatch::StateValue', [qw(OK ALARM INSUFFICIENT_DATA )];
-enum 'AWS::CloudWatch::Statistic', [qw(SampleCount Average Sum Minimum Maximum )];
+enum 'AWS::CloudWatch::ComparisonOperator', ['GreaterThanOrEqualToThreshold','GreaterThanThreshold','LessThanThreshold','LessThanOrEqualToThreshold',];
+enum 'AWS::CloudWatch::HistoryItemType', ['ConfigurationUpdate','StateUpdate','Action',];
+enum 'AWS::CloudWatch::StandardUnit', ['Seconds','Microseconds','Milliseconds','Bytes','Kilobytes','Megabytes','Gigabytes','Terabytes','Bits','Kilobits','Megabits','Gigabits','Terabits','Percent','Count','Bytes/Second','Kilobytes/Second','Megabytes/Second','Gigabytes/Second','Terabytes/Second','Bits/Second','Kilobits/Second','Megabits/Second','Gigabits/Second','Terabits/Second','Count/Second','None',];
+enum 'AWS::CloudWatch::StateValue', ['OK','ALARM','INSUFFICIENT_DATA',];
+enum 'AWS::CloudWatch::Statistic', ['SampleCount','Average','Sum','Minimum','Maximum',];
 
 
 class AWS::CloudWatch::AlarmHistoryItem with (AWS::API::ResultParser, AWS::API::ToParams) {
