@@ -151,7 +151,7 @@ role AWS::API::UnwrappedParser {
         my $att_class = $class->meta->get_attribute($att)->type_constraint->class;
         $args{ $att } = $att_class->result_to_args( $result->{ $key }{ entry } ); 
       } elsif (ref($result->{ $key }) eq 'HASH') {
-        my $att_class = $class->meta->get_attribute($att)->type_constraint;
+        my $att_class = $class->meta->get_attribute($att)->type_constraint->class;
         $att_class->new(%{ $result->{ $key } });
       } else {
         die "not implemented yet: $key $result->{ $key } ...";
@@ -202,7 +202,7 @@ role AWS::API::ResultParser {
         my $att_class = $class->meta->get_attribute($key)->type_constraint->class;
         $args{ $key } = $att_class->result_to_args( $result->{ $key }{ entry } ); 
       } elsif (ref($result->{ $key }) eq 'HASH') {
-        my $att_class = $class->meta->get_attribute($key)->type_constraint;
+        my $att_class = $class->meta->get_attribute($key)->type_constraint->class;
         $att_class->new(%{ $result->{ $key } });
       } else {
         die "not implemented yet: $key $result->{ $key } ...";
