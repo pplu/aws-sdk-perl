@@ -74,7 +74,7 @@ sub process_api {
 
   my $type = $struct->{type} or die "Type of API call not found";
 
-  my $overrides = { 'AWS::EC2' => 'EC2' };
+  my $overrides = { 'Aws::EC2' => 'EC2' };
   $type = $overrides->{ $api } if (defined $overrides->{ $api });
 
   my $class_maker = "AWS::API::Builder::${type}";
