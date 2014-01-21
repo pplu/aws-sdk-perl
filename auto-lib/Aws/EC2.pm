@@ -816,7 +816,7 @@ class Aws::EC2::SpotInstanceRequest with (AWS::API::UnwrappedParser, AWS::API::T
   has LaunchGroup => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'launchGroup');
   has LaunchSpecification => (is => 'ro', isa => 'Aws::EC2::LaunchSpecification', traits => ['Unwrapped'], xmlname => 'launchSpecification');
   has LaunchedAvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'launchedAvailabilityZone');
-  has ProductDescription => (is => 'ro', isa => 'Aws::EC2::RIProductDescription', traits => ['Unwrapped'], xmlname => 'productDescription');
+  has ProductDescription => (is => 'ro', isa => 'Aws::EC2::SpotProductDescription', traits => ['Unwrapped'], xmlname => 'productDescription');
   has SpotInstanceRequestId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'spotInstanceRequestId');
   has SpotPrice => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'spotPrice');
   has State => (is => 'ro', isa => 'Aws::EC2::SpotInstanceState', traits => ['Unwrapped'], xmlname => 'state');
