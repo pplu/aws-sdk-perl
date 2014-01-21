@@ -3,23 +3,13 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-<<<<<<< HEAD:auto-lib/AWS/ElasticBeanstalk.pm
-enum 'AWS::ElasticBeanstalk::ConfigurationDeploymentStatus', ['deployed','pending','failed',];
-enum 'AWS::ElasticBeanstalk::ConfigurationOptionValueType', ['Scalar','List',];
-enum 'AWS::ElasticBeanstalk::EnvironmentHealth', ['Green','Yellow','Red','Grey',];
-enum 'AWS::ElasticBeanstalk::EnvironmentInfoType', ['tail',];
-enum 'AWS::ElasticBeanstalk::EnvironmentStatus', ['Launching','Updating','Ready','Terminating','Terminated',];
-enum 'AWS::ElasticBeanstalk::EventSeverity', ['TRACE','DEBUG','INFO','WARN','ERROR','FATAL',];
-enum 'AWS::ElasticBeanstalk::ValidationSeverity', ['error','warning',];
-=======
-enum 'Aws::ElasticBeanstalk::ConfigurationDeploymentStatus', [qw(deployed pending failed )];
-enum 'Aws::ElasticBeanstalk::ConfigurationOptionValueType', [qw(Scalar List )];
-enum 'Aws::ElasticBeanstalk::EnvironmentHealth', [qw(Green Yellow Red Grey )];
-enum 'Aws::ElasticBeanstalk::EnvironmentInfoType', [qw(tail )];
-enum 'Aws::ElasticBeanstalk::EnvironmentStatus', [qw(Launching Updating Ready Terminating Terminated )];
-enum 'Aws::ElasticBeanstalk::EventSeverity', [qw(TRACE DEBUG INFO WARN ERROR FATAL )];
-enum 'Aws::ElasticBeanstalk::ValidationSeverity', [qw(error warning )];
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/ElasticBeanstalk.pm
+enum 'Aws::ElasticBeanstalk::ConfigurationDeploymentStatus', ['deployed','pending','failed',];
+enum 'Aws::ElasticBeanstalk::ConfigurationOptionValueType', ['Scalar','List',];
+enum 'Aws::ElasticBeanstalk::EnvironmentHealth', ['Green','Yellow','Red','Grey',];
+enum 'Aws::ElasticBeanstalk::EnvironmentInfoType', ['tail',];
+enum 'Aws::ElasticBeanstalk::EnvironmentStatus', ['Launching','Updating','Ready','Terminating','Terminated',];
+enum 'Aws::ElasticBeanstalk::EventSeverity', ['TRACE','DEBUG','INFO','WARN','ERROR','FATAL',];
+enum 'Aws::ElasticBeanstalk::ValidationSeverity', ['error','warning',];
 
 
 class Aws::ElasticBeanstalk::ApplicationDescription with (AWS::API::ResultParser, AWS::API::ToParams) {

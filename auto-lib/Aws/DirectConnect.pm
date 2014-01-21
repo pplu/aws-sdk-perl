@@ -3,15 +3,9 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-<<<<<<< HEAD:auto-lib/AWS/DirectConnect.pm
-enum 'AWS::DirectConnect::ConnectionState', ['ordering','requested','pending','available','down','deleting','deleted','rejected',];
-enum 'AWS::DirectConnect::InterconnectState', ['requested','pending','available','down','deleting','deleted',];
-enum 'AWS::DirectConnect::VirtualInterfaceState', ['confirming','verifying','pending','available','deleting','deleted','rejected',];
-=======
-enum 'Aws::DirectConnect::ConnectionState', [qw(ordering requested pending available down deleting deleted rejected )];
-enum 'Aws::DirectConnect::InterconnectState', [qw(requested pending available down deleting deleted )];
-enum 'Aws::DirectConnect::VirtualInterfaceState', [qw(confirming verifying pending available deleting deleted rejected )];
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/DirectConnect.pm
+enum 'Aws::DirectConnect::ConnectionState', ['ordering','requested','pending','available','down','deleting','deleted','rejected',];
+enum 'Aws::DirectConnect::InterconnectState', ['requested','pending','available','down','deleting','deleted',];
+enum 'Aws::DirectConnect::VirtualInterfaceState', ['confirming','verifying','pending','available','deleting','deleted','rejected',];
 
 
 class Aws::DirectConnect::Connection with (AWS::API::ResultParser, AWS::API::ToParams) {

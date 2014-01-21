@@ -3,61 +3,32 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-<<<<<<< HEAD:auto-lib/AWS/SimpleWorkflow.pm
-enum 'AWS::SimpleWorkflow::ActivityTaskTimeoutType', ['START_TO_CLOSE','SCHEDULE_TO_START','SCHEDULE_TO_CLOSE','HEARTBEAT',];
-enum 'AWS::SimpleWorkflow::CancelTimerFailedCause', ['TIMER_ID_UNKNOWN','OPERATION_NOT_PERMITTED',];
-enum 'AWS::SimpleWorkflow::CancelWorkflowExecutionFailedCause', ['UNHANDLED_DECISION','OPERATION_NOT_PERMITTED',];
-enum 'AWS::SimpleWorkflow::ChildPolicy', ['TERMINATE','REQUEST_CANCEL','ABANDON',];
-enum 'AWS::SimpleWorkflow::CloseStatus', ['COMPLETED','FAILED','CANCELED','TERMINATED','CONTINUED_AS_NEW','TIMED_OUT',];
-enum 'AWS::SimpleWorkflow::CompleteWorkflowExecutionFailedCause', ['UNHANDLED_DECISION','OPERATION_NOT_PERMITTED',];
-enum 'AWS::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedCause', ['UNHANDLED_DECISION','WORKFLOW_TYPE_DEPRECATED','WORKFLOW_TYPE_DOES_NOT_EXIST','DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_TASK_LIST_UNDEFINED','DEFAULT_CHILD_POLICY_UNDEFINED','OPERATION_NOT_PERMITTED',];
-enum 'AWS::SimpleWorkflow::DecisionTaskTimeoutType', ['START_TO_CLOSE',];
-enum 'AWS::SimpleWorkflow::DecisionType', ['ScheduleActivityTask','RequestCancelActivityTask','CompleteWorkflowExecution','FailWorkflowExecution','CancelWorkflowExecution','ContinueAsNewWorkflowExecution','RecordMarker','StartTimer','CancelTimer','SignalExternalWorkflowExecution','RequestCancelExternalWorkflowExecution','StartChildWorkflowExecution',];
-enum 'AWS::SimpleWorkflow::EventType', ['WorkflowExecutionStarted','WorkflowExecutionCancelRequested','WorkflowExecutionCompleted','CompleteWorkflowExecutionFailed','WorkflowExecutionFailed','FailWorkflowExecutionFailed','WorkflowExecutionTimedOut','WorkflowExecutionCanceled','CancelWorkflowExecutionFailed','WorkflowExecutionContinuedAsNew','ContinueAsNewWorkflowExecutionFailed','WorkflowExecutionTerminated','DecisionTaskScheduled','DecisionTaskStarted','DecisionTaskCompleted','DecisionTaskTimedOut','ActivityTaskScheduled','ScheduleActivityTaskFailed','ActivityTaskStarted','ActivityTaskCompleted','ActivityTaskFailed','ActivityTaskTimedOut','ActivityTaskCanceled','ActivityTaskCancelRequested','RequestCancelActivityTaskFailed','WorkflowExecutionSignaled','MarkerRecorded','RecordMarkerFailed','TimerStarted','StartTimerFailed','TimerFired','TimerCanceled','CancelTimerFailed','StartChildWorkflowExecutionInitiated','StartChildWorkflowExecutionFailed','ChildWorkflowExecutionStarted','ChildWorkflowExecutionCompleted','ChildWorkflowExecutionFailed','ChildWorkflowExecutionTimedOut','ChildWorkflowExecutionCanceled','ChildWorkflowExecutionTerminated','SignalExternalWorkflowExecutionInitiated','SignalExternalWorkflowExecutionFailed','ExternalWorkflowExecutionSignaled','RequestCancelExternalWorkflowExecutionInitiated','RequestCancelExternalWorkflowExecutionFailed','ExternalWorkflowExecutionCancelRequested',];
-enum 'AWS::SimpleWorkflow::ExecutionStatus', ['OPEN','CLOSED',];
-enum 'AWS::SimpleWorkflow::FailWorkflowExecutionFailedCause', ['UNHANDLED_DECISION','OPERATION_NOT_PERMITTED',];
-enum 'AWS::SimpleWorkflow::RecordMarkerFailedCause', ['OPERATION_NOT_PERMITTED',];
-enum 'AWS::SimpleWorkflow::RegistrationStatus', ['REGISTERED','DEPRECATED',];
-enum 'AWS::SimpleWorkflow::RequestCancelActivityTaskFailedCause', ['ACTIVITY_ID_UNKNOWN','OPERATION_NOT_PERMITTED',];
-enum 'AWS::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedCause', ['UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION','REQUEST_CANCEL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED','OPERATION_NOT_PERMITTED',];
-enum 'AWS::SimpleWorkflow::ScheduleActivityTaskFailedCause', ['ACTIVITY_TYPE_DEPRECATED','ACTIVITY_TYPE_DOES_NOT_EXIST','ACTIVITY_ID_ALREADY_IN_USE','OPEN_ACTIVITIES_LIMIT_EXCEEDED','ACTIVITY_CREATION_RATE_EXCEEDED','DEFAULT_SCHEDULE_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_TASK_LIST_UNDEFINED','DEFAULT_SCHEDULE_TO_START_TIMEOUT_UNDEFINED','DEFAULT_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_HEARTBEAT_TIMEOUT_UNDEFINED','OPERATION_NOT_PERMITTED',];
-enum 'AWS::SimpleWorkflow::SignalExternalWorkflowExecutionFailedCause', ['UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION','SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED','OPERATION_NOT_PERMITTED',];
-enum 'AWS::SimpleWorkflow::StartChildWorkflowExecutionFailedCause', ['WORKFLOW_TYPE_DOES_NOT_EXIST','WORKFLOW_TYPE_DEPRECATED','OPEN_CHILDREN_LIMIT_EXCEEDED','OPEN_WORKFLOWS_LIMIT_EXCEEDED','CHILD_CREATION_RATE_EXCEEDED','WORKFLOW_ALREADY_RUNNING','DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_TASK_LIST_UNDEFINED','DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_CHILD_POLICY_UNDEFINED','OPERATION_NOT_PERMITTED',];
-enum 'AWS::SimpleWorkflow::StartTimerFailedCause', ['TIMER_ID_ALREADY_IN_USE','OPEN_TIMERS_LIMIT_EXCEEDED','TIMER_CREATION_RATE_EXCEEDED','OPERATION_NOT_PERMITTED',];
-enum 'AWS::SimpleWorkflow::WorkflowExecutionCancelRequestedCause', ['CHILD_POLICY_APPLIED',];
-enum 'AWS::SimpleWorkflow::WorkflowExecutionTerminatedCause', ['CHILD_POLICY_APPLIED','EVENT_LIMIT_EXCEEDED','OPERATOR_INITIATED',];
-enum 'AWS::SimpleWorkflow::WorkflowExecutionTimeoutType', ['START_TO_CLOSE',];
-
-
-class AWS::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
-=======
-enum 'Aws::SimpleWorkflow::ActivityTaskTimeoutType', [qw(START_TO_CLOSE SCHEDULE_TO_START SCHEDULE_TO_CLOSE HEARTBEAT )];
-enum 'Aws::SimpleWorkflow::CancelTimerFailedCause', [qw(TIMER_ID_UNKNOWN OPERATION_NOT_PERMITTED )];
-enum 'Aws::SimpleWorkflow::CancelWorkflowExecutionFailedCause', [qw(UNHANDLED_DECISION OPERATION_NOT_PERMITTED )];
-enum 'Aws::SimpleWorkflow::ChildPolicy', [qw(TERMINATE REQUEST_CANCEL ABANDON )];
-enum 'Aws::SimpleWorkflow::CloseStatus', [qw(COMPLETED FAILED CANCELED TERMINATED CONTINUED_AS_NEW TIMED_OUT )];
-enum 'Aws::SimpleWorkflow::CompleteWorkflowExecutionFailedCause', [qw(UNHANDLED_DECISION OPERATION_NOT_PERMITTED )];
-enum 'Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedCause', [qw(UNHANDLED_DECISION WORKFLOW_TYPE_DEPRECATED WORKFLOW_TYPE_DOES_NOT_EXIST DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED DEFAULT_TASK_LIST_UNDEFINED DEFAULT_CHILD_POLICY_UNDEFINED OPERATION_NOT_PERMITTED )];
-enum 'Aws::SimpleWorkflow::DecisionTaskTimeoutType', [qw(START_TO_CLOSE )];
-enum 'Aws::SimpleWorkflow::DecisionType', [qw(ScheduleActivityTask RequestCancelActivityTask CompleteWorkflowExecution FailWorkflowExecution CancelWorkflowExecution ContinueAsNewWorkflowExecution RecordMarker StartTimer CancelTimer SignalExternalWorkflowExecution RequestCancelExternalWorkflowExecution StartChildWorkflowExecution )];
-enum 'Aws::SimpleWorkflow::EventType', [qw(WorkflowExecutionStarted WorkflowExecutionCancelRequested WorkflowExecutionCompleted CompleteWorkflowExecutionFailed WorkflowExecutionFailed FailWorkflowExecutionFailed WorkflowExecutionTimedOut WorkflowExecutionCanceled CancelWorkflowExecutionFailed WorkflowExecutionContinuedAsNew ContinueAsNewWorkflowExecutionFailed WorkflowExecutionTerminated DecisionTaskScheduled DecisionTaskStarted DecisionTaskCompleted DecisionTaskTimedOut ActivityTaskScheduled ScheduleActivityTaskFailed ActivityTaskStarted ActivityTaskCompleted ActivityTaskFailed ActivityTaskTimedOut ActivityTaskCanceled ActivityTaskCancelRequested RequestCancelActivityTaskFailed WorkflowExecutionSignaled MarkerRecorded RecordMarkerFailed TimerStarted StartTimerFailed TimerFired TimerCanceled CancelTimerFailed StartChildWorkflowExecutionInitiated StartChildWorkflowExecutionFailed ChildWorkflowExecutionStarted ChildWorkflowExecutionCompleted ChildWorkflowExecutionFailed ChildWorkflowExecutionTimedOut ChildWorkflowExecutionCanceled ChildWorkflowExecutionTerminated SignalExternalWorkflowExecutionInitiated SignalExternalWorkflowExecutionFailed ExternalWorkflowExecutionSignaled RequestCancelExternalWorkflowExecutionInitiated RequestCancelExternalWorkflowExecutionFailed ExternalWorkflowExecutionCancelRequested )];
-enum 'Aws::SimpleWorkflow::ExecutionStatus', [qw(OPEN CLOSED )];
-enum 'Aws::SimpleWorkflow::FailWorkflowExecutionFailedCause', [qw(UNHANDLED_DECISION OPERATION_NOT_PERMITTED )];
-enum 'Aws::SimpleWorkflow::RecordMarkerFailedCause', [qw(OPERATION_NOT_PERMITTED )];
-enum 'Aws::SimpleWorkflow::RegistrationStatus', [qw(REGISTERED DEPRECATED )];
-enum 'Aws::SimpleWorkflow::RequestCancelActivityTaskFailedCause', [qw(ACTIVITY_ID_UNKNOWN OPERATION_NOT_PERMITTED )];
-enum 'Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedCause', [qw(UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION REQUEST_CANCEL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED OPERATION_NOT_PERMITTED )];
-enum 'Aws::SimpleWorkflow::ScheduleActivityTaskFailedCause', [qw(ACTIVITY_TYPE_DEPRECATED ACTIVITY_TYPE_DOES_NOT_EXIST ACTIVITY_ID_ALREADY_IN_USE OPEN_ACTIVITIES_LIMIT_EXCEEDED ACTIVITY_CREATION_RATE_EXCEEDED DEFAULT_SCHEDULE_TO_CLOSE_TIMEOUT_UNDEFINED DEFAULT_TASK_LIST_UNDEFINED DEFAULT_SCHEDULE_TO_START_TIMEOUT_UNDEFINED DEFAULT_START_TO_CLOSE_TIMEOUT_UNDEFINED DEFAULT_HEARTBEAT_TIMEOUT_UNDEFINED OPERATION_NOT_PERMITTED )];
-enum 'Aws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedCause', [qw(UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED OPERATION_NOT_PERMITTED )];
-enum 'Aws::SimpleWorkflow::StartChildWorkflowExecutionFailedCause', [qw(WORKFLOW_TYPE_DOES_NOT_EXIST WORKFLOW_TYPE_DEPRECATED OPEN_CHILDREN_LIMIT_EXCEEDED OPEN_WORKFLOWS_LIMIT_EXCEEDED CHILD_CREATION_RATE_EXCEEDED WORKFLOW_ALREADY_RUNNING DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED DEFAULT_TASK_LIST_UNDEFINED DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED DEFAULT_CHILD_POLICY_UNDEFINED OPERATION_NOT_PERMITTED )];
-enum 'Aws::SimpleWorkflow::StartTimerFailedCause', [qw(TIMER_ID_ALREADY_IN_USE OPEN_TIMERS_LIMIT_EXCEEDED TIMER_CREATION_RATE_EXCEEDED OPERATION_NOT_PERMITTED )];
-enum 'Aws::SimpleWorkflow::WorkflowExecutionCancelRequestedCause', [qw(CHILD_POLICY_APPLIED )];
-enum 'Aws::SimpleWorkflow::WorkflowExecutionTerminatedCause', [qw(CHILD_POLICY_APPLIED EVENT_LIMIT_EXCEEDED OPERATOR_INITIATED )];
-enum 'Aws::SimpleWorkflow::WorkflowExecutionTimeoutType', [qw(START_TO_CLOSE )];
+enum 'Aws::SimpleWorkflow::ActivityTaskTimeoutType', ['START_TO_CLOSE','SCHEDULE_TO_START','SCHEDULE_TO_CLOSE','HEARTBEAT',];
+enum 'Aws::SimpleWorkflow::CancelTimerFailedCause', ['TIMER_ID_UNKNOWN','OPERATION_NOT_PERMITTED',];
+enum 'Aws::SimpleWorkflow::CancelWorkflowExecutionFailedCause', ['UNHANDLED_DECISION','OPERATION_NOT_PERMITTED',];
+enum 'Aws::SimpleWorkflow::ChildPolicy', ['TERMINATE','REQUEST_CANCEL','ABANDON',];
+enum 'Aws::SimpleWorkflow::CloseStatus', ['COMPLETED','FAILED','CANCELED','TERMINATED','CONTINUED_AS_NEW','TIMED_OUT',];
+enum 'Aws::SimpleWorkflow::CompleteWorkflowExecutionFailedCause', ['UNHANDLED_DECISION','OPERATION_NOT_PERMITTED',];
+enum 'Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedCause', ['UNHANDLED_DECISION','WORKFLOW_TYPE_DEPRECATED','WORKFLOW_TYPE_DOES_NOT_EXIST','DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_TASK_LIST_UNDEFINED','DEFAULT_CHILD_POLICY_UNDEFINED','OPERATION_NOT_PERMITTED',];
+enum 'Aws::SimpleWorkflow::DecisionTaskTimeoutType', ['START_TO_CLOSE',];
+enum 'Aws::SimpleWorkflow::DecisionType', ['ScheduleActivityTask','RequestCancelActivityTask','CompleteWorkflowExecution','FailWorkflowExecution','CancelWorkflowExecution','ContinueAsNewWorkflowExecution','RecordMarker','StartTimer','CancelTimer','SignalExternalWorkflowExecution','RequestCancelExternalWorkflowExecution','StartChildWorkflowExecution',];
+enum 'Aws::SimpleWorkflow::EventType', ['WorkflowExecutionStarted','WorkflowExecutionCancelRequested','WorkflowExecutionCompleted','CompleteWorkflowExecutionFailed','WorkflowExecutionFailed','FailWorkflowExecutionFailed','WorkflowExecutionTimedOut','WorkflowExecutionCanceled','CancelWorkflowExecutionFailed','WorkflowExecutionContinuedAsNew','ContinueAsNewWorkflowExecutionFailed','WorkflowExecutionTerminated','DecisionTaskScheduled','DecisionTaskStarted','DecisionTaskCompleted','DecisionTaskTimedOut','ActivityTaskScheduled','ScheduleActivityTaskFailed','ActivityTaskStarted','ActivityTaskCompleted','ActivityTaskFailed','ActivityTaskTimedOut','ActivityTaskCanceled','ActivityTaskCancelRequested','RequestCancelActivityTaskFailed','WorkflowExecutionSignaled','MarkerRecorded','RecordMarkerFailed','TimerStarted','StartTimerFailed','TimerFired','TimerCanceled','CancelTimerFailed','StartChildWorkflowExecutionInitiated','StartChildWorkflowExecutionFailed','ChildWorkflowExecutionStarted','ChildWorkflowExecutionCompleted','ChildWorkflowExecutionFailed','ChildWorkflowExecutionTimedOut','ChildWorkflowExecutionCanceled','ChildWorkflowExecutionTerminated','SignalExternalWorkflowExecutionInitiated','SignalExternalWorkflowExecutionFailed','ExternalWorkflowExecutionSignaled','RequestCancelExternalWorkflowExecutionInitiated','RequestCancelExternalWorkflowExecutionFailed','ExternalWorkflowExecutionCancelRequested',];
+enum 'Aws::SimpleWorkflow::ExecutionStatus', ['OPEN','CLOSED',];
+enum 'Aws::SimpleWorkflow::FailWorkflowExecutionFailedCause', ['UNHANDLED_DECISION','OPERATION_NOT_PERMITTED',];
+enum 'Aws::SimpleWorkflow::RecordMarkerFailedCause', ['OPERATION_NOT_PERMITTED',];
+enum 'Aws::SimpleWorkflow::RegistrationStatus', ['REGISTERED','DEPRECATED',];
+enum 'Aws::SimpleWorkflow::RequestCancelActivityTaskFailedCause', ['ACTIVITY_ID_UNKNOWN','OPERATION_NOT_PERMITTED',];
+enum 'Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedCause', ['UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION','REQUEST_CANCEL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED','OPERATION_NOT_PERMITTED',];
+enum 'Aws::SimpleWorkflow::ScheduleActivityTaskFailedCause', ['ACTIVITY_TYPE_DEPRECATED','ACTIVITY_TYPE_DOES_NOT_EXIST','ACTIVITY_ID_ALREADY_IN_USE','OPEN_ACTIVITIES_LIMIT_EXCEEDED','ACTIVITY_CREATION_RATE_EXCEEDED','DEFAULT_SCHEDULE_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_TASK_LIST_UNDEFINED','DEFAULT_SCHEDULE_TO_START_TIMEOUT_UNDEFINED','DEFAULT_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_HEARTBEAT_TIMEOUT_UNDEFINED','OPERATION_NOT_PERMITTED',];
+enum 'Aws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedCause', ['UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION','SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED','OPERATION_NOT_PERMITTED',];
+enum 'Aws::SimpleWorkflow::StartChildWorkflowExecutionFailedCause', ['WORKFLOW_TYPE_DOES_NOT_EXIST','WORKFLOW_TYPE_DEPRECATED','OPEN_CHILDREN_LIMIT_EXCEEDED','OPEN_WORKFLOWS_LIMIT_EXCEEDED','CHILD_CREATION_RATE_EXCEEDED','WORKFLOW_ALREADY_RUNNING','DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_TASK_LIST_UNDEFINED','DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_CHILD_POLICY_UNDEFINED','OPERATION_NOT_PERMITTED',];
+enum 'Aws::SimpleWorkflow::StartTimerFailedCause', ['TIMER_ID_ALREADY_IN_USE','OPEN_TIMERS_LIMIT_EXCEEDED','TIMER_CREATION_RATE_EXCEEDED','OPERATION_NOT_PERMITTED',];
+enum 'Aws::SimpleWorkflow::WorkflowExecutionCancelRequestedCause', ['CHILD_POLICY_APPLIED',];
+enum 'Aws::SimpleWorkflow::WorkflowExecutionTerminatedCause', ['CHILD_POLICY_APPLIED','EVENT_LIMIT_EXCEEDED','OPERATOR_INITIATED',];
+enum 'Aws::SimpleWorkflow::WorkflowExecutionTimeoutType', ['START_TO_CLOSE',];
 
 
 class Aws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/SimpleWorkflow.pm
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }

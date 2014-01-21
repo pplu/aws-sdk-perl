@@ -3,60 +3,61 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-enum 'Aws::EC2::ArchitectureValues', [qw(i386 x86_64 )];
-enum 'Aws::EC2::AttachmentStatus', [qw(attaching attached detaching detached )];
-enum 'Aws::EC2::AvailabilityZoneState', [qw(available )];
-enum 'Aws::EC2::BundleTaskState', [qw(pending waiting-for-shutdown bundling storing cancelling complete failed )];
-enum 'Aws::EC2::CancelSpotInstanceRequestState', [qw(active open closed cancelled completed )];
-enum 'Aws::EC2::ContainerFormat', [qw(ova )];
-enum 'Aws::EC2::ConversionTaskState', [qw(active cancelling cancelled completed )];
-enum 'Aws::EC2::CurrencyCodeValues', [qw(USD )];
-enum 'Aws::EC2::DatafeedSubscriptionState', [qw(Active Inactive )];
-enum 'Aws::EC2::DeviceType', [qw(ebs instance-store )];
-enum 'Aws::EC2::DiskImageFormat', [qw(VMDK RAW VHD )];
-enum 'Aws::EC2::DomainType', [qw(vpc standard )];
-enum 'Aws::EC2::EventCode', [qw(instance-reboot system-reboot system-maintenance instance-retirement instance-stop )];
-enum 'Aws::EC2::ExportEnvironment', [qw(citrix vmware microsoft )];
-enum 'Aws::EC2::ExportTaskState', [qw(active cancelling cancelled completed )];
-enum 'Aws::EC2::GatewayType', [qw(ipsec.1 )];
-enum 'Aws::EC2::HypervisorType', [qw(ovm xen )];
-enum 'Aws::EC2::ImageState', [qw(available deregistered )];
-enum 'Aws::EC2::ImageTypeValues', [qw(machine kernel ramdisk )];
-enum 'Aws::EC2::InstanceLifecycleType', [qw(spot )];
-enum 'Aws::EC2::InstanceStateName', [qw(pending running shutting-down terminated stopping stopped )];
-enum 'Aws::EC2::InstanceType', [qw(t1.micro m1.small m1.medium m1.large m1.xlarge m3.xlarge m3.2xlarge m2.xlarge m2.2xlarge m2.4xlarge cr1.8xlarge i2.xlarge i2.2xlarge i2.4xlarge i2.8xlarge hi1.4xlarge hs1.8xlarge c1.medium c1.xlarge c3.large c3.xlarge c3.2xlarge c3.4xlarge c3.8xlarge cc1.4xlarge cc2.8xlarge g2.2xlarge cg1.4xlarge )];
-enum 'Aws::EC2::ListingState', [qw(available sold cancelled pending )];
-enum 'Aws::EC2::ListingStatus', [qw(active pending cancelled closed )];
-enum 'Aws::EC2::MonitoringState', [qw(disabled enabled pending )];
-enum 'Aws::EC2::NetworkInterfaceStatus', [qw(available attaching in-use detaching )];
-enum 'Aws::EC2::OfferingTypeValues', [qw(Heavy Utilization Medium Utilization Light Utilization )];
-enum 'Aws::EC2::PermissionGroup', [qw(all )];
-enum 'Aws::EC2::PlacementGroupState', [qw(pending available deleting deleted )];
-enum 'Aws::EC2::PlacementStrategy', [qw(cluster )];
-enum 'Aws::EC2::PlatformValues', [qw(Windows )];
-enum 'Aws::EC2::ProductCodeValues', [qw(devpay marketplace )];
-enum 'Aws::EC2::RecurringChargeFrequency', [qw(Hourly )];
-enum 'Aws::EC2::ReservedInstanceState', [qw(payment-pending active payment-failed retired )];
-enum 'Aws::EC2::ResourceType', [qw(customer-gateway dhcp-options image instance internet-gateway network-acl network-interface reserved-instances route-table snapshot spot-instances-request subnet security-group volume vpc vpn-connection vpn-gateway )];
-enum 'Aws::EC2::RIProductDescription', [qw(Linux/UNIX Linux/UNIX (Amazon VPC) Windows Windows (Amazon VPC) )];
-enum 'Aws::EC2::RouteState', [qw(active blackhole )];
-enum 'Aws::EC2::RuleAction', [qw(allow deny )];
-enum 'Aws::EC2::ShutdownBehavior', [qw(stop terminate )];
-enum 'Aws::EC2::SnapshotState', [qw(pending completed error )];
-enum 'Aws::EC2::SpotInstanceState', [qw(open active closed cancelled failed )];
-enum 'Aws::EC2::SpotInstanceType', [qw(one-time persistent )];
-enum 'Aws::EC2::SubnetState', [qw(pending available )];
-enum 'Aws::EC2::SummaryStatus', [qw(ok impaired insufficient-data not-applicable )];
-enum 'Aws::EC2::TelemetryStatus', [qw(UP DOWN )];
-enum 'Aws::EC2::Tenancy', [qw(default dedicated )];
-enum 'Aws::EC2::VirtualizationType', [qw(hvm paravirtual )];
-enum 'Aws::EC2::VolumeAttachmentState', [qw(attaching attached detaching detached )];
-enum 'Aws::EC2::VolumeState', [qw(creating available in-use deleting deleted error )];
-enum 'Aws::EC2::VolumeStatusInfoStatus', [qw(ok impaired insufficient-data )];
-enum 'Aws::EC2::VolumeType', [qw(standard io1 )];
-enum 'Aws::EC2::VpcState', [qw(pending available )];
-enum 'Aws::EC2::VpnState', [qw(pending available deleting deleted )];
-enum 'Aws::EC2::VpnStaticRouteSource', [qw(Static )];
+enum 'Aws::EC2::ArchitectureValues', ['i386','x86_64',];
+enum 'Aws::EC2::AttachmentStatus', ['attaching','attached','detaching','detached',];
+enum 'Aws::EC2::AvailabilityZoneState', ['available',];
+enum 'Aws::EC2::BundleTaskState', ['pending','waiting-for-shutdown','bundling','storing','cancelling','complete','failed',];
+enum 'Aws::EC2::CancelSpotInstanceRequestState', ['active','open','closed','cancelled','completed',];
+enum 'Aws::EC2::ContainerFormat', ['ova',];
+enum 'Aws::EC2::ConversionTaskState', ['active','cancelling','cancelled','completed',];
+enum 'Aws::EC2::CurrencyCodeValues', ['USD',];
+enum 'Aws::EC2::DatafeedSubscriptionState', ['Active','Inactive',];
+enum 'Aws::EC2::DeviceType', ['ebs','instance-store',];
+enum 'Aws::EC2::DiskImageFormat', ['VMDK','RAW','VHD',];
+enum 'Aws::EC2::DomainType', ['vpc','standard',];
+enum 'Aws::EC2::EventCode', ['instance-reboot','system-reboot','system-maintenance','instance-retirement','instance-stop',];
+enum 'Aws::EC2::ExportEnvironment', ['citrix','vmware','microsoft',];
+enum 'Aws::EC2::ExportTaskState', ['active','cancelling','cancelled','completed',];
+enum 'Aws::EC2::GatewayType', ['ipsec.1',];
+enum 'Aws::EC2::HypervisorType', ['ovm','xen',];
+enum 'Aws::EC2::ImageState', ['available','deregistered',];
+enum 'Aws::EC2::ImageTypeValues', ['machine','kernel','ramdisk',];
+enum 'Aws::EC2::InstanceLifecycleType', ['spot',];
+enum 'Aws::EC2::InstanceStateName', ['pending','running','shutting-down','terminated','stopping','stopped',];
+enum 'Aws::EC2::InstanceType', ['t1.micro','m1.small','m1.medium','m1.large','m1.xlarge','m3.xlarge','m3.2xlarge','m2.xlarge','m2.2xlarge','m2.4xlarge','cr1.8xlarge','i2.xlarge','i2.2xlarge','i2.4xlarge','i2.8xlarge','hi1.4xlarge','hs1.8xlarge','c1.medium','c1.xlarge','c3.large','c3.xlarge','c3.2xlarge','c3.4xlarge','c3.8xlarge','cc1.4xlarge','cc2.8xlarge','g2.2xlarge','cg1.4xlarge',];
+enum 'Aws::EC2::ListingState', ['available','sold','cancelled','pending',];
+enum 'Aws::EC2::ListingStatus', ['active','pending','cancelled','closed',];
+enum 'Aws::EC2::MonitoringState', ['disabled','enabled','pending',];
+enum 'Aws::EC2::NetworkInterfaceStatus', ['available','attaching','in-use','detaching',];
+enum 'Aws::EC2::OfferingTypeValues', ['Heavy Utilization','Medium Utilization','Light Utilization',];
+enum 'Aws::EC2::PermissionGroup', ['all',];
+enum 'Aws::EC2::PlacementGroupState', ['pending','available','deleting','deleted',];
+enum 'Aws::EC2::PlacementStrategy', ['cluster',];
+enum 'Aws::EC2::PlatformValues', ['Windows',];
+enum 'Aws::EC2::ProductCodeValues', ['devpay','marketplace',];
+enum 'Aws::EC2::RecurringChargeFrequency', ['Hourly',];
+enum 'Aws::EC2::ReservedInstanceState', ['payment-pending','active','payment-failed','retired',];
+enum 'Aws::EC2::ResourceType', ['customer-gateway','dhcp-options','image','instance','internet-gateway','network-acl','network-interface','reserved-instances','route-table','snapshot','spot-instances-request','subnet','security-group','volume','vpc','vpn-connection','vpn-gateway',];
+enum 'Aws::EC2::RIProductDescription', ['Linux/UNIX','Linux/UNIX (Amazon VPC)','Windows','Windows (Amazon VPC)',];
+enum 'Aws::EC2::RouteState', ['active','blackhole',];
+enum 'Aws::EC2::RuleAction', ['allow','deny',];
+enum 'Aws::EC2::ShutdownBehavior', ['stop','terminate',];
+enum 'Aws::EC2::SnapshotState', ['pending','completed','error',];
+enum 'Aws::EC2::SpotInstanceState', ['open','active','closed','cancelled','failed',];
+enum 'Aws::EC2::SpotInstanceType', ['one-time','persistent',];
+enum 'Aws::EC2::SpotProductDescription', ['Linux/UNIX','Linux/UNIX (Amazon VPC)','Windows','Windows (Amazon VPC)','SUSE Linux','SUSE Linux (Amazon VPC)',];
+enum 'Aws::EC2::SubnetState', ['pending','available',];
+enum 'Aws::EC2::SummaryStatus', ['ok','impaired','insufficient-data','not-applicable',];
+enum 'Aws::EC2::TelemetryStatus', ['UP','DOWN',];
+enum 'Aws::EC2::Tenancy', ['default','dedicated',];
+enum 'Aws::EC2::VirtualizationType', ['hvm','paravirtual',];
+enum 'Aws::EC2::VolumeAttachmentState', ['attaching','attached','detaching','detached',];
+enum 'Aws::EC2::VolumeState', ['creating','available','in-use','deleting','deleted','error',];
+enum 'Aws::EC2::VolumeStatusInfoStatus', ['ok','impaired','insufficient-data',];
+enum 'Aws::EC2::VolumeType', ['standard','io1',];
+enum 'Aws::EC2::VpcState', ['pending','available',];
+enum 'Aws::EC2::VpnState', ['pending','available','deleting','deleted',];
+enum 'Aws::EC2::VpnStaticRouteSource', ['Static',];
 
 
 class Aws::EC2::AccountAttribute with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -492,10 +493,6 @@ class Aws::EC2::LaunchSpecification with (AWS::API::ResultParser, AWS::API::ToPa
   has UserData => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::LaunchSpecificationMonitoring with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has Enabled => (is => 'ro', isa => 'Str', required => 1);
-}
-
 class Aws::EC2::License with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Capacities => (is => 'ro', isa => 'ArrayRef[Aws::EC2::LicenseCapacity]');
   has LicenseId => (is => 'ro', isa => 'Str');
@@ -807,6 +804,10 @@ class Aws::EC2::SpotDatafeedSubscription with (AWS::API::ResultParser, AWS::API:
   has State => (is => 'ro', isa => 'Aws::EC2::DatafeedSubscriptionState');
 }
 
+class Aws::EC2::SpotInstanceMonitoring with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Enabled => (is => 'ro', isa => 'Str', required => 1);
+}
+
 class Aws::EC2::SpotInstanceRequest with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZoneGroup => (is => 'ro', isa => 'Str');
   has CreateTime => (is => 'ro', isa => 'Str');
@@ -846,7 +847,7 @@ class Aws::EC2::SpotLaunchSpecification with (AWS::API::ResultParser, AWS::API::
   has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType');
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
-  has Monitoring => (is => 'ro', isa => 'Aws::EC2::LaunchSpecificationMonitoring');
+  has Monitoring => (is => 'ro', isa => 'Aws::EC2::SpotInstanceMonitoring');
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceNetworkInterfaceSpecification]');
   has Placement => (is => 'ro', isa => 'Aws::EC2::SpotPlacement');
   has RamdiskId => (is => 'ro', isa => 'Str');
@@ -864,7 +865,7 @@ class Aws::EC2::SpotPlacement with (AWS::API::ResultParser, AWS::API::ToParams) 
 class Aws::EC2::SpotPrice with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType');
-  has ProductDescription => (is => 'ro', isa => 'Aws::EC2::RIProductDescription');
+  has ProductDescription => (is => 'ro', isa => 'Aws::EC2::SpotProductDescription');
   has SpotPrice => (is => 'ro', isa => 'Str');
   has Timestamp => (is => 'ro', isa => 'Str');
 }

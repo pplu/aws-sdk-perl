@@ -3,15 +3,9 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-<<<<<<< HEAD:auto-lib/AWS/CloudSearch.pm
-enum 'AWS::CloudSearch::IndexFieldType', ['uint','literal','text',];
-enum 'AWS::CloudSearch::OptionState', ['RequiresIndexDocuments','Processing','Active',];
-enum 'AWS::CloudSearch::SourceDataFunction', ['Copy','TrimTitle','Map',];
-=======
-enum 'Aws::CloudSearch::IndexFieldType', [qw(uint literal text )];
-enum 'Aws::CloudSearch::OptionState', [qw(RequiresIndexDocuments Processing Active )];
-enum 'Aws::CloudSearch::SourceDataFunction', [qw(Copy TrimTitle Map )];
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/CloudSearch.pm
+enum 'Aws::CloudSearch::IndexFieldType', ['uint','literal','text',];
+enum 'Aws::CloudSearch::OptionState', ['RequiresIndexDocuments','Processing','Active',];
+enum 'Aws::CloudSearch::SourceDataFunction', ['Copy','TrimTitle','Map',];
 
 
 class Aws::CloudSearch::AccessPoliciesStatus with (AWS::API::ResultParser, AWS::API::ToParams) {

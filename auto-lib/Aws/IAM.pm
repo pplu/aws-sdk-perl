@@ -3,11 +3,7 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-<<<<<<< HEAD:auto-lib/AWS/IAM.pm
-enum 'AWS::IAM::statusType', ['Active','Inactive',];
-=======
-enum 'Aws::IAM::statusType', [qw(Active Inactive )];
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/IAM.pm
+enum 'Aws::IAM::statusType', ['Active','Inactive',];
 
 
 class Aws::IAM::AccessKey with (AWS::API::ResultParser, AWS::API::ToParams) {

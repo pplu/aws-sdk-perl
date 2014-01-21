@@ -3,35 +3,19 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-<<<<<<< HEAD:auto-lib/AWS/EMR.pm
-enum 'AWS::EMR::ActionOnFailure', ['TERMINATE_JOB_FLOW','TERMINATE_CLUSTER','CANCEL_AND_WAIT','CONTINUE',];
-enum 'AWS::EMR::ClusterState', ['STARTING','BOOTSTRAPPING','RUNNING','WAITING','TERMINATING','TERMINATED','TERMINATED_WITH_ERRORS',];
-enum 'AWS::EMR::InstanceGroupState', ['PROVISIONING','BOOTSTRAPPING','RUNNING','RESIZING','SUSPENDED','TERMINATING','TERMINATED','ARRESTED','SHUTTING_DOWN','ENDED',];
-enum 'AWS::EMR::InstanceGroupType', ['MASTER','CORE','TASK',];
-enum 'AWS::EMR::InstanceRoleType', ['MASTER','CORE','TASK',];
-enum 'AWS::EMR::InstanceState', ['AWAITING_FULFILLMENT','PROVISIONING','BOOTSTRAPPING','RUNNING','TERMINATED',];
-enum 'AWS::EMR::JobFlowExecutionState', ['STARTING','BOOTSTRAPPING','RUNNING','WAITING','SHUTTING_DOWN','TERMINATED','COMPLETED','FAILED',];
-enum 'AWS::EMR::MarketType', ['ON_DEMAND','SPOT',];
-enum 'AWS::EMR::StepState', ['PENDING','RUNNING','COMPLETED','CANCELLED','FAILED','INTERRUPTED',];
-
-
-class AWS::EMR::Application with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has AdditionalInfo => (is => 'ro', isa => 'AWS::EMR::StringMap');
-=======
-enum 'Aws::EMR::ActionOnFailure', [qw(TERMINATE_JOB_FLOW TERMINATE_CLUSTER CANCEL_AND_WAIT CONTINUE )];
-enum 'Aws::EMR::ClusterState', [qw(STARTING BOOTSTRAPPING RUNNING WAITING TERMINATING TERMINATED TERMINATED_WITH_ERRORS )];
-enum 'Aws::EMR::InstanceGroupState', [qw(PROVISIONING BOOTSTRAPPING RUNNING RESIZING SUSPENDED TERMINATING TERMINATED ARRESTED SHUTTING_DOWN ENDED )];
-enum 'Aws::EMR::InstanceGroupType', [qw(MASTER CORE TASK )];
-enum 'Aws::EMR::InstanceRoleType', [qw(MASTER CORE TASK )];
-enum 'Aws::EMR::InstanceState', [qw(AWAITING_FULFILLMENT PROVISIONING BOOTSTRAPPING RUNNING TERMINATED )];
-enum 'Aws::EMR::JobFlowExecutionState', [qw(STARTING BOOTSTRAPPING RUNNING WAITING SHUTTING_DOWN TERMINATED COMPLETED FAILED )];
-enum 'Aws::EMR::MarketType', [qw(ON_DEMAND SPOT )];
-enum 'Aws::EMR::StepState', [qw(PENDING RUNNING COMPLETED CANCELLED FAILED INTERRUPTED )];
+enum 'Aws::EMR::ActionOnFailure', ['TERMINATE_JOB_FLOW','TERMINATE_CLUSTER','CANCEL_AND_WAIT','CONTINUE',];
+enum 'Aws::EMR::ClusterState', ['STARTING','BOOTSTRAPPING','RUNNING','WAITING','TERMINATING','TERMINATED','TERMINATED_WITH_ERRORS',];
+enum 'Aws::EMR::InstanceGroupState', ['PROVISIONING','BOOTSTRAPPING','RUNNING','RESIZING','SUSPENDED','TERMINATING','TERMINATED','ARRESTED','SHUTTING_DOWN','ENDED',];
+enum 'Aws::EMR::InstanceGroupType', ['MASTER','CORE','TASK',];
+enum 'Aws::EMR::InstanceRoleType', ['MASTER','CORE','TASK',];
+enum 'Aws::EMR::InstanceState', ['AWAITING_FULFILLMENT','PROVISIONING','BOOTSTRAPPING','RUNNING','TERMINATED',];
+enum 'Aws::EMR::JobFlowExecutionState', ['STARTING','BOOTSTRAPPING','RUNNING','WAITING','SHUTTING_DOWN','TERMINATED','COMPLETED','FAILED',];
+enum 'Aws::EMR::MarketType', ['ON_DEMAND','SPOT',];
+enum 'Aws::EMR::StepState', ['PENDING','RUNNING','COMPLETED','CANCELLED','FAILED','INTERRUPTED',];
 
 
 class Aws::EMR::Application with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AdditionalInfo => (is => 'ro', isa => 'Aws::EMR::StringMap');
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/EMR.pm
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Name => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');

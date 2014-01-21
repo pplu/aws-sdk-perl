@@ -3,19 +3,11 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-<<<<<<< HEAD:auto-lib/AWS/CloudWatch.pm
-enum 'AWS::CloudWatch::ComparisonOperator', ['GreaterThanOrEqualToThreshold','GreaterThanThreshold','LessThanThreshold','LessThanOrEqualToThreshold',];
-enum 'AWS::CloudWatch::HistoryItemType', ['ConfigurationUpdate','StateUpdate','Action',];
-enum 'AWS::CloudWatch::StandardUnit', ['Seconds','Microseconds','Milliseconds','Bytes','Kilobytes','Megabytes','Gigabytes','Terabytes','Bits','Kilobits','Megabits','Gigabits','Terabits','Percent','Count','Bytes/Second','Kilobytes/Second','Megabytes/Second','Gigabytes/Second','Terabytes/Second','Bits/Second','Kilobits/Second','Megabits/Second','Gigabits/Second','Terabits/Second','Count/Second','None',];
-enum 'AWS::CloudWatch::StateValue', ['OK','ALARM','INSUFFICIENT_DATA',];
-enum 'AWS::CloudWatch::Statistic', ['SampleCount','Average','Sum','Minimum','Maximum',];
-=======
-enum 'Aws::CloudWatch::ComparisonOperator', [qw(GreaterThanOrEqualToThreshold GreaterThanThreshold LessThanThreshold LessThanOrEqualToThreshold )];
-enum 'Aws::CloudWatch::HistoryItemType', [qw(ConfigurationUpdate StateUpdate Action )];
-enum 'Aws::CloudWatch::StandardUnit', [qw(Seconds Microseconds Milliseconds Bytes Kilobytes Megabytes Gigabytes Terabytes Bits Kilobits Megabits Gigabits Terabits Percent Count Bytes/Second Kilobytes/Second Megabytes/Second Gigabytes/Second Terabytes/Second Bits/Second Kilobits/Second Megabits/Second Gigabits/Second Terabits/Second Count/Second None )];
-enum 'Aws::CloudWatch::StateValue', [qw(OK ALARM INSUFFICIENT_DATA )];
-enum 'Aws::CloudWatch::Statistic', [qw(SampleCount Average Sum Minimum Maximum )];
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/CloudWatch.pm
+enum 'Aws::CloudWatch::ComparisonOperator', ['GreaterThanOrEqualToThreshold','GreaterThanThreshold','LessThanThreshold','LessThanOrEqualToThreshold',];
+enum 'Aws::CloudWatch::HistoryItemType', ['ConfigurationUpdate','StateUpdate','Action',];
+enum 'Aws::CloudWatch::StandardUnit', ['Seconds','Microseconds','Milliseconds','Bytes','Kilobytes','Megabytes','Gigabytes','Terabytes','Bits','Kilobits','Megabits','Gigabits','Terabits','Percent','Count','Bytes/Second','Kilobytes/Second','Megabytes/Second','Gigabytes/Second','Terabytes/Second','Bits/Second','Kilobits/Second','Megabits/Second','Gigabits/Second','Terabits/Second','Count/Second','None',];
+enum 'Aws::CloudWatch::StateValue', ['OK','ALARM','INSUFFICIENT_DATA',];
+enum 'Aws::CloudWatch::Statistic', ['SampleCount','Average','Sum','Minimum','Maximum',];
 
 
 class Aws::CloudWatch::AlarmHistoryItem with (AWS::API::ResultParser, AWS::API::ToParams) {

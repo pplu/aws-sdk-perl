@@ -3,13 +3,8 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-<<<<<<< HEAD:auto-lib/AWS/RDS.pm
-enum 'AWS::RDS::ApplyMethod', ['immediate','pending-reboot',];
-enum 'AWS::RDS::SourceType', ['db-instance','db-parameter-group','db-security-group','db-snapshot',];
-=======
-enum 'Aws::RDS::ApplyMethod', [qw(immediate pending-reboot )];
-enum 'Aws::RDS::SourceType', [qw(db-instance db-parameter-group db-security-group db-snapshot )];
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/RDS.pm
+enum 'Aws::RDS::ApplyMethod', ['immediate','pending-reboot',];
+enum 'Aws::RDS::SourceType', ['db-instance','db-parameter-group','db-security-group','db-snapshot',];
 
 
 class Aws::RDS::AvailabilityZone with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -176,16 +171,7 @@ class Aws::RDS::EventSubscription with (AWS::API::ResultParser, AWS::API::ToPara
   has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
 }
 
-<<<<<<< HEAD:auto-lib/AWS/RDS.pm
-class AWS::RDS::IPRange with (AWS::API::ResultParser, AWS::API::ToParams) {
-=======
-class Aws::RDS::Filter with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has FilterName => (is => 'ro', isa => 'Str', required => 1);
-  has FilterValue => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-}
-
 class Aws::RDS::IPRange with (AWS::API::ResultParser, AWS::API::ToParams) {
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/RDS.pm
   has CIDRIP => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
@@ -560,10 +546,6 @@ class Aws::RDS::DescribeDBEngineVersions {
 }
 class Aws::RDS::DescribeDBInstances {
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
-<<<<<<< HEAD:auto-lib/AWS/RDS.pm
-=======
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/RDS.pm
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -585,10 +567,6 @@ class Aws::RDS::DescribeDBLogFiles {
 }
 class Aws::RDS::DescribeDBParameterGroups {
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
-<<<<<<< HEAD:auto-lib/AWS/RDS.pm
-=======
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/RDS.pm
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -608,10 +586,6 @@ class Aws::RDS::DescribeDBParameters {
 }
 class Aws::RDS::DescribeDBSecurityGroups {
   has DBSecurityGroupName => (is => 'ro', isa => 'Str');
-<<<<<<< HEAD:auto-lib/AWS/RDS.pm
-=======
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/RDS.pm
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -622,10 +596,6 @@ class Aws::RDS::DescribeDBSecurityGroups {
 class Aws::RDS::DescribeDBSnapshots {
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
-<<<<<<< HEAD:auto-lib/AWS/RDS.pm
-=======
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/RDS.pm
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SnapshotType => (is => 'ro', isa => 'Str');
@@ -636,10 +606,6 @@ class Aws::RDS::DescribeDBSnapshots {
 }
 class Aws::RDS::DescribeDBSubnetGroups {
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-<<<<<<< HEAD:auto-lib/AWS/RDS.pm
-=======
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/RDS.pm
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -663,12 +629,7 @@ class Aws::RDS::DescribeEventCategories {
   has _returns => (isa => 'Aws::RDS::DescribeEventCategoriesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventCategoriesResult');  
 }
-<<<<<<< HEAD:auto-lib/AWS/RDS.pm
-class AWS::RDS::DescribeEventSubscriptions {
-=======
 class Aws::RDS::DescribeEventSubscriptions {
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/RDS.pm
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SubscriptionName => (is => 'ro', isa => 'Str');
@@ -703,10 +664,6 @@ class Aws::RDS::DescribeOptionGroupOptions {
 }
 class Aws::RDS::DescribeOptionGroups {
   has EngineName => (is => 'ro', isa => 'Str');
-<<<<<<< HEAD:auto-lib/AWS/RDS.pm
-=======
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/RDS.pm
   has MajorEngineVersion => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -732,10 +689,6 @@ class Aws::RDS::DescribeOrderableDBInstanceOptions {
 class Aws::RDS::DescribeReservedDBInstances {
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Str');
-<<<<<<< HEAD:auto-lib/AWS/RDS.pm
-=======
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/RDS.pm
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has MultiAZ => (is => 'ro', isa => 'Str');

@@ -3,23 +3,13 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-<<<<<<< HEAD:auto-lib/AWS/OpsWorks.pm
-enum 'AWS::OpsWorks::AppType', ['rails','php','nodejs','static','other',];
-enum 'AWS::OpsWorks::Architecture', ['x86_64','i386',];
-enum 'AWS::OpsWorks::AutoScalingType', ['load','timer',];
-enum 'AWS::OpsWorks::DeploymentCommandName', ['install_dependencies','update_dependencies','update_custom_cookbooks','execute_recipes','deploy','rollback','start','stop','restart','undeploy',];
-enum 'AWS::OpsWorks::LayerType', ['lb','web','php-app','rails-app','nodejs-app','memcached','db-master','monitoring-master','custom',];
-enum 'AWS::OpsWorks::RootDeviceType', ['ebs','instance-store',];
-enum 'AWS::OpsWorks::SourceType', ['git','svn','archive','s3',];
-=======
-enum 'Aws::OpsWorks::AppType', [qw(rails php nodejs static other )];
-enum 'Aws::OpsWorks::Architecture', [qw(x86_64 i386 )];
-enum 'Aws::OpsWorks::AutoScalingType', [qw(load timer )];
-enum 'Aws::OpsWorks::DeploymentCommandName', [qw(install_dependencies update_dependencies update_custom_cookbooks execute_recipes deploy rollback start stop restart undeploy )];
-enum 'Aws::OpsWorks::LayerType', [qw(lb web php-app rails-app nodejs-app memcached db-master monitoring-master custom )];
-enum 'Aws::OpsWorks::RootDeviceType', [qw(ebs instance-store )];
-enum 'Aws::OpsWorks::SourceType', [qw(git svn archive s3 )];
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/OpsWorks.pm
+enum 'Aws::OpsWorks::AppType', ['rails','php','nodejs','static','other',];
+enum 'Aws::OpsWorks::Architecture', ['x86_64','i386',];
+enum 'Aws::OpsWorks::AutoScalingType', ['load','timer',];
+enum 'Aws::OpsWorks::DeploymentCommandName', ['install_dependencies','update_dependencies','update_custom_cookbooks','execute_recipes','deploy','rollback','start','stop','restart','undeploy',];
+enum 'Aws::OpsWorks::LayerType', ['lb','web','php-app','rails-app','nodejs-app','memcached','db-master','monitoring-master','custom',];
+enum 'Aws::OpsWorks::RootDeviceType', ['ebs','instance-store',];
+enum 'Aws::OpsWorks::SourceType', ['git','svn','archive','s3',];
 
 
 class Aws::OpsWorks::App with (AWS::API::ResultParser, AWS::API::ToParams) {

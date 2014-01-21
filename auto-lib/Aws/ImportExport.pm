@@ -3,11 +3,7 @@ use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-<<<<<<< HEAD:auto-lib/AWS/ImportExport.pm
-enum 'AWS::ImportExport::JobType', ['Import','Export',];
-=======
-enum 'Aws::ImportExport::JobType', [qw(Import Export )];
->>>>>>> 323bbcedd10d641f975a57cc3645d986efd7a617:auto-lib/Aws/ImportExport.pm
+enum 'Aws::ImportExport::JobType', ['Import','Export',];
 
 
 class Aws::ImportExport::Job with (AWS::API::ResultParser, AWS::API::ToParams) {
