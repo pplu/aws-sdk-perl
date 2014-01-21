@@ -31,7 +31,7 @@ This will generate file(s) in auto-lib.
 
 To generate all files:
 
-find botocore/botocore/data/aws/ -type f -exec ./gen_classes.pl {} \;
+make gen-classes
 
 
 Trying it out
@@ -44,10 +44,10 @@ Create a Perl script (myscript.pl)
 ```
 #!/usr/bin/env perl
 
-use AWS::IAM;
+use Aws::IAM;
 use Data::Printer;
 
-my $iam = AWS::IAM->new(
+my $iam = Aws::IAM->new(
   region => 'eu-west-1',
 );
 

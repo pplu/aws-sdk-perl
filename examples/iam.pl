@@ -1,7 +1,7 @@
-use AWS::IAM;
+use Aws::IAM;
 use Data::Printer;
 
-my $iam = AWS::IAM->new( );
+my $iam = Aws::IAM->new( );
 
 #my $policy = $iam->GetAccountPasswordPolicy;
 #p $policy;

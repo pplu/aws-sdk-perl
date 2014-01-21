@@ -8,3 +8,6 @@ requires 'XML::Simple';
 #Data::Printer
 #Data::Compare
 #Template
+#Test::More
+#Test::Exception
+#Test::Class::Moose

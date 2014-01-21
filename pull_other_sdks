@@ -5,6 +5,11 @@ if [ -d botocore ];
   else git clone https://github.com/boto/botocore;
 fi
 
+if [ -d aws-sdk-core-ruby ];
+  then cd aws-sdk-core-ruby && git pull && cd ..;
+  else git clone https://github.com/aws/aws-sdk-core-ruby;
+fi
+
 if [ -d aws-sdk-php ];
   then cd aws-sdk-php && git pull && cd ..;
   else git clone https://github.com/aws/aws-sdk-php;

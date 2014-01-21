@@ -7,11 +7,11 @@ use lib 'auto-lib', 'lib';
 use Data::Dumper;
 use Data::Printer;
 
-use AWS::EC2;
+use Aws::EC2;
 
 my $result;
 
-my $ec2 = AWS::EC2->new(
+my $ec2 = Aws::EC2->new(
   region => 'eu-west-1',
 );
 
