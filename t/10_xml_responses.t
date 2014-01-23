@@ -9,24 +9,12 @@ use Test::Exception;
 use Net::AWS::Caller;
 use MooseX::Declare;
 
-use Aws::EC2;
-use Aws::SES;
-use Aws::RedShift;
-use Aws::ElasticBeanstalk;
-use Aws::IAM;
-use Aws::ELB;
-use Aws::CloudWatch;
-use Aws::AutoScaling;
-use Aws::SNS;
-use Aws::SQS;
-use Aws::RDS;
-use Aws::CloudFormation;
-use Aws::ImportExport;
-#use Aws::EMR;
 
 use Data::Dumper;
 
 class XMLResponseTester with (Net::AWS::XMLResponse) {
+  use Module::Load;
+
   has api => (is => 'ro', isa => 'Str');
 
   method process_result($api, $xml) {
@@ -34,9 +22,13 @@ class XMLResponseTester with (Net::AWS::XMLResponse) {
     my ($class) = grep { m/Result$/ } keys %$result;
     if ($class) {
       my $cl = "Aws::${api}::${class}";
+      load "Aws::${api}";
       my $o_result = $cl->from_result($result->{ $class });
 
-      #print Dumper($o_result);
+      use Data::Dumper;
+      print STDERR Dumper($o_result);
+    } else {
+      die "Can't process $api call with keys " . join ',', keys %$result;
     }
   }
 }
@@ -54,6 +46,8 @@ opendir(my $dh, $dir);
 my @files = @ARGV;
 if (not @files) {
   @files = map { "$dir/$_" } grep { $_ =~ m/\.xml$/ } sort readdir($dh);
+} else {
+  @files = grep { $_ =~ m/\.xml$/ } @files;
 }
 
 foreach my $file (@files) {
@@ -81,9 +75,10 @@ sub test_file {
     cloudwatch => 'CloudWatch',
     autoscaling => 'AutoScaling',
     cloudformation => 'CloudFormation',
+    cloudfront => 'CloudFront',
   }->{ $api } || uc $api;
 
   lives_ok {
     $test->process_result($api, $xml);
-  } "Construct class for AWS::${api} from $file";
+  } "Construct class for Aws::${api} from $file";
 }
