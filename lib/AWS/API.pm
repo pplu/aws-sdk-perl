@@ -211,8 +211,7 @@ role AWS::API::ResultParser {
         if ($att_type =~ m/\:\:/) {
           if (defined $value) {
             if (not $value_ref) {
-              #$args{ $key } = $value;
-              die "A non reference should not get to this point, as the att_type should not let it";
+              $args{ $key } = $value;
             } else {
               #my $class = ("$att_type" eq 'Moose::Meta::TypeConstraint::Class') ? $att_type->class : $att_type;
               my $class = $att_type->class;
