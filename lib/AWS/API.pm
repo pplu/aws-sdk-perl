@@ -89,14 +89,26 @@ role AWS::API::SingleEndpointCaller {
 }
 
 role AWS::API::MapParser {
+  sub from_result {
+    my ($class, $result) = @_;
+    $class->new(map { ($_->{ key } => $_->{ value }) } @$result);
+  }
+
   sub result_to_args {
+    die "Should this be deprecated??\n";
     my ($class, $result) = @_;
     $class->new(map { ($_->{ key } => $_->{ value }) } @$result);
   }
 }
 
 role AWS::API::StrToStrMapParser {
+  sub from_result {
+    my ($class, $result) = @_;
+    $class->new(Map => { %$result });  
+  }
+
   sub result_to_args {
+    die "Should this be deprecated??\n";
     my ($class, $result) = @_;
     $class->new(Map => { %$result });
   }
@@ -175,39 +187,59 @@ role AWS::API::ResultParser {
     foreach my $key ($class->meta->get_attribute_list) {
       next if (not my $meta = $class->meta->get_attribute($key));
 
-      if (not ref($result->{ $key })) {
-        if (defined $result->{ $key }){
-          $args{ $key } = $result->{ $key };
+      #use Data::Dumper;
+      #print STDERR "ATTRIBUTE: $key: ", $meta->type_constraint, " result: ", Dumper($result->{$key});
+      my $att_type = $meta->type_constraint;
+
+      my $value = $result->{ $key };
+      my $value_ref = ref($value);
+      if ($value_ref eq 'HASH') {
+        if (exists $value->{ member }) {
+          $value = $value->{ member };
+        } elsif (exists $value->{ entry }) {
+          $value = $value->{ entry  };
         }
-      } elsif (exists $result->{ $key }{ member } and ref($result->{ $key }{ member }) eq 'ARRAY'){
-        if ($class->meta->get_attribute($key)->type_constraint =~ m/^ArrayRef\[(.*)\]/) {
-          my $att_class = $1;
-          if ($att_class eq 'HashRef') {
-            warn "Hey!!! I found a HashRef Attribute!!!";
-            $args{ $key } = $result->{ $key };
-          } else {
-            $args{ $key } = [ map { $att_class->from_result( $_ ) } @{ $result->{ $key }{ member } } ];
+      }
+      $value_ref = ref($value);
+
+      #print STDERR "GOING TO DO AN $att_type\n";
+      #print STDERR "VALUE: " . Dumper($value);
+      #print STDERR "REF de \$value" . ref($value) . "\n";
+
+      # We'll consider that an attribute without brackets [] isn't an array type
+      if ($att_type !~ m/\[.*\]$/) {
+        if ($att_type =~ m/\:\:/) {
+          if (defined $value) {
+            if (not $value_ref) {
+              #$args{ $key } = $value;
+              die "A non reference should not get to this point, as the att_type should not let it";
+            } else {
+              #my $class = ("$att_type" eq 'Moose::Meta::TypeConstraint::Class') ? $att_type->class : $att_type;
+              my $class = $att_type->class;
+              $args{ $key } = $class->from_result( $value );
+            }
           }
         } else {
-          die "Found a member in the result, but the attribute $key isn't an ArrayRef";
+          $args{ $key } = $result->{ $key } if (defined $result->{ $key });
         }
-      } elsif (exists $result->{ $key }{ member } and ref($result->{ $key }{ member }) eq 'HASH'){
-        if ($class->meta->get_attribute($key)->type_constraint =~ m/^ArrayRef\[(.*)\]/) {
-          my $att_class = $1;
-          $args{ $key } = [ $att_class->from_result( $result->{ $key }{ member } ) ];
+      } elsif (my ($type) = ($att_type =~ m/^ArrayRef\[(.*)\]$/)) {
+        if ($type =~ m/\:\:/) {
+          if (not defined $value) {
+            $args{ $key } = [ ];
+          } elsif ($value_ref eq 'ARRAY') {
+            $args{ $key } = [ map { $type->from_result( $_ ) } @$value ] ;
+          } elsif ($value_ref eq 'HASH') {
+            $args{ $key } = [ $type->from_result( $value ) ];
+          }
         } else {
-          die "Found a member in the result, but the attribute $key isn't an ArrayRef";
+          if (defined $value){
+            if ($value_ref eq 'ARRAY') {
+              $args{ $key } = $result->{ $key }->{ member }; 
+            } else {
+              $args{ $key } = [ $result->{ $key }->{ member } ];
+            }
+          }
         }
-      } elsif (exists $result->{ $key }{ member } and not ref($result->{ $key }{ member }) ) {
-        $args{ $key } = [ $result->{ $key }{ member } ];
-      } elsif (exists $result->{ $key }{ entry }) {
-        my $att_class = $class->meta->get_attribute($key)->type_constraint->class;
-        $args{ $key } = $att_class->result_to_args( $result->{ $key }{ entry } ); 
-      } elsif (ref($result->{ $key }) eq 'HASH') {
-        my $att_class = $class->meta->get_attribute($key)->type_constraint->class;
-        $att_class->new(%{ $result->{ $key } });
-      } else {
-        die "not implemented yet: $key $result->{ $key } ...";
       }
     }
     return %args;
