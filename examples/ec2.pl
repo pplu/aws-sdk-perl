@@ -18,15 +18,18 @@ my $ec2 = Aws::EC2->new(
 $result = $ec2->DescribeAddresses->Addresses;
 p $result;
 
-$result = $ec2->DescribeInstances;
+#$result = $ec2->DescribeInstances;
+#p $result;
+
+$result = $ec2->DescribeAvailabilityZones;
 p $result;
 
-#$result = $ec2->DescribeAvailabilityZones;
-#p $result;
+$result = $ec2->DescribeRegions;
+p $result;
 
-#$result = $ec2->DescribeRegions;
-#p $result;
-
-#$result = $ec2->DescribeSnapshots;
-#p $result;
+$result = $ec2->DescribeSnapshots;
+p $result;
 #map { p $_ } @{ $result->Snapshots };
+
+$result = $ec2->DescribeImages(Owners => [ 'self' ]);
+p $result;

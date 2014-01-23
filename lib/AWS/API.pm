@@ -134,41 +134,61 @@ role AWS::API::UnwrappedParser {
       next if (not my $meta = $class->meta->get_attribute($att));
       my $key = $meta->xmlname;
 
-      if (not ref($result->{ $key })) {
-        if (defined $result->{ $key }){
-          $args{ $att } = $result->{ $key };
+      #use Data::Dumper;
+      #print STDERR "ATTRIBUTE: $att RESULTKEY: $key: ", $meta->type_constraint, " result: ", Dumper($result->{$key});
+      my $att_type = $meta->type_constraint;
+
+      my $value = $result->{ $key };
+      my $value_ref = ref($value);
+      if ($value_ref eq 'HASH') {
+        if (exists $value->{ item }) {
+          $value = $value->{ item };
+        } elsif (exists $value->{ entry }) {
+          $value = $value->{ entry  };
         }
-      } elsif (exists $result->{ $key }{ item } and ref($result->{ $key }{ item }) eq 'ARRAY'){
-        if ($class->meta->get_attribute($att)->type_constraint =~ m/^ArrayRef\[(.*)\]/) {
-          my $att_class = $1;
-          if ($att_class eq 'HashRef') {
-            warn "Hey!!! I found a HashRef Attribute!!!";
-            $args{ $att } = $result->{ $key };
-          } else {
-            $args{ $att } = [ map { $att_class->from_result( $_ ) } @{ $result->{ $key }{ item } } ];
+      }
+      $value_ref = ref($value);
+
+      #print STDERR "GOING TO DO AN $att_type\n";
+      #print STDERR "VALUE: " . Dumper($value);
+      #print STDERR "REF de \$value" . ref($value) . "\n";
+
+      # We'll consider that an attribute without brackets [] isn't an array type
+      if ($att_type !~ m/\[.*\]$/) {
+        if ($att_type =~ m/\:\:/) {
+          if (defined $value) {
+            if (not $value_ref) {
+              $args{ $att } = $value;
+            } else {
+              #my $class = ("$att_type" eq 'Moose::Meta::TypeConstraint::Class') ? $att_type->class : $att_type;
+              my $class = $att_type->class;
+              $args{ $att } = $class->from_result( $value );
+            }
           }
         } else {
-          die "Found a member in the result, but the attribute $key isn't an ArrayRef";
+          $args{ $att } = $value if (defined $value);
         }
-      } elsif (exists $result->{ $key }{ item } and ref($result->{ $key }{ item }) eq 'HASH'){
-        if ($class->meta->get_attribute($key)->type_constraint =~ m/^ArrayRef\[(.*)\]/) {
-          my $att_class = $1;
-          $args{ $att } = [ $att_class->from_result( $result->{ $key }{ item } ) ];
+      } elsif (my ($type) = ($att_type =~ m/^ArrayRef\[(.*)\]$/)) {
+        if ($type =~ m/\:\:/) {
+          if (not defined $value) {
+            $args{ $att } = [ ];
+          } elsif ($value_ref eq 'ARRAY') {
+            $args{ $att } = [ map { $type->from_result( $_ ) } @$value ] ;
+          } elsif ($value_ref eq 'HASH') {
+            $args{ $att } = [ $type->from_result( $value ) ];
+          }
         } else {
-          die "Found a member in the result, but the attribute $key isn't an ArrayRef";
+          if (defined $value){
+            if ($value_ref eq 'ARRAY') {
+              $args{ $att } = $value; 
+            } else {
+              $args{ $att } = [ $value ];
+            }
+          }
         }
-      } elsif (exists $result->{ $key }{ item } and not ref($result->{ $key }{ item }) ) {
-        $args{ $att } = [ $result->{ $key }{ item } ];
-      } elsif (exists $result->{ $key }{ entry }) {
-        my $att_class = $class->meta->get_attribute($att)->type_constraint->class;
-        $args{ $att } = $att_class->result_to_args( $result->{ $key }{ entry } ); 
-      } elsif (ref($result->{ $key }) eq 'HASH') {
-        my $att_class = $class->meta->get_attribute($att)->type_constraint->class;
-        $att_class->new(%{ $result->{ $key } });
-      } else {
-        die "not implemented yet: $key $result->{ $key } ...";
       }
     }
+
     return %args;
   }
 
@@ -233,9 +253,9 @@ role AWS::API::ResultParser {
         } else {
           if (defined $value){
             if ($value_ref eq 'ARRAY') {
-              $args{ $key } = $result->{ $key }->{ member }; 
+              $args{ $key } = $value; 
             } else {
-              $args{ $key } = [ $result->{ $key }->{ member } ];
+              $args{ $key } = [ $value ];
             }
           }
         }
