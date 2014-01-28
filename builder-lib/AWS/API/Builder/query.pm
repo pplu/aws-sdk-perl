@@ -86,6 +86,8 @@ class [% c.api %]::[% operation.name %] {
 class [% c.api %]::[% operation.name %]Result with AWS::API::ResultParser {
 [% FOREACH param_name IN operation.output.members.keys.sort -%]
   has [% param_name %] => (is => 'ro', isa => '[% operation.output.members.$param_name.perl_type %]'
+  [%- IF (operation.output.members.$param_name.members.xmlname) %], traits => ['Unwrapped'], xmlname => '[% operation.output.members.$param_name.members.xmlname %]'[% END %]
+  [%- IF (operation.output.members.$param_name.xmlname) %], traits => ['Unwrapped'], xmlname => '[% operation.output.members.$param_name.xmlname %]'[% END %]
   [%- IF (operation.output.members.$param_name.required) %], required => 1[% END %]);
 [% END %]
 }
@@ -154,6 +156,11 @@ class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_
             if ($@) { die "In Inner Class: $inner_class: $@"; }
           }
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
+use Data::Dumper;
+print Dumper($param_props) if ($param_name eq 'Message');
+          if (defined $param_props->{xmlname}) {
+            $output .= ", traits => ['Unwrapped'], xmlname => '$param_props->{xmlname}'";
+          }
           $output .= ", required => 1" if (defined $param_props->{required} and $param_props->{required} == 1);
           $output .= ");\n";
         }

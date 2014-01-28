@@ -843,36 +843,36 @@ class Aws::RedShift::DeleteClusterSnapshotResult with AWS::API::ResultParser {
 }
 class Aws::RedShift::DescribeClusterParameterGroupsResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has ParameterGroups => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ClusterParameterGroup]');
+  has ParameterGroups => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ClusterParameterGroup]', traits => ['Unwrapped'], xmlname => 'ClusterParameterGroup');
 
 }
 class Aws::RedShift::DescribeClusterParametersResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Parameter]');
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Parameter]', traits => ['Unwrapped'], xmlname => 'Parameter');
 
 }
 class Aws::RedShift::DescribeClusterSecurityGroupsResult with AWS::API::ResultParser {
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ClusterSecurityGroup]');
+  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ClusterSecurityGroup]', traits => ['Unwrapped'], xmlname => 'ClusterSecurityGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::RedShift::DescribeClusterSnapshotsResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has Snapshots => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Snapshot]');
+  has Snapshots => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Snapshot]', traits => ['Unwrapped'], xmlname => 'Snapshot');
 
 }
 class Aws::RedShift::DescribeClusterSubnetGroupsResult with AWS::API::ResultParser {
-  has ClusterSubnetGroups => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ClusterSubnetGroup]');
+  has ClusterSubnetGroups => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ClusterSubnetGroup]', traits => ['Unwrapped'], xmlname => 'ClusterSubnetGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::RedShift::DescribeClusterVersionsResult with AWS::API::ResultParser {
-  has ClusterVersions => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ClusterVersion]');
+  has ClusterVersions => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ClusterVersion]', traits => ['Unwrapped'], xmlname => 'ClusterVersion');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::RedShift::DescribeClustersResult with AWS::API::ResultParser {
-  has Clusters => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Cluster]');
+  has Clusters => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Cluster]', traits => ['Unwrapped'], xmlname => 'Cluster');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
@@ -881,26 +881,26 @@ class Aws::RedShift::DescribeDefaultClusterParametersResult with AWS::API::Resul
 
 }
 class Aws::RedShift::DescribeEventCategoriesResult with AWS::API::ResultParser {
-  has EventCategoriesMapList => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::EventCategoriesMap]');
+  has EventCategoriesMapList => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::EventCategoriesMap]', traits => ['Unwrapped'], xmlname => 'EventCategoriesMap');
 
 }
 class Aws::RedShift::DescribeEventSubscriptionsResult with AWS::API::ResultParser {
-  has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::EventSubscription]');
+  has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::EventSubscription]', traits => ['Unwrapped'], xmlname => 'EventSubscription');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::RedShift::DescribeEventsResult with AWS::API::ResultParser {
-  has Events => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Event]');
+  has Events => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Event]', traits => ['Unwrapped'], xmlname => 'Event');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::RedShift::DescribeHsmClientCertificatesResult with AWS::API::ResultParser {
-  has HsmClientCertificates => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::HsmClientCertificate]');
+  has HsmClientCertificates => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::HsmClientCertificate]', traits => ['Unwrapped'], xmlname => 'HsmClientCertificate');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::RedShift::DescribeHsmConfigurationsResult with AWS::API::ResultParser {
-  has HsmConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::HsmConfiguration]');
+  has HsmConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::HsmConfiguration]', traits => ['Unwrapped'], xmlname => 'HsmConfiguration');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
@@ -915,17 +915,17 @@ class Aws::RedShift::DescribeLoggingStatusResult with AWS::API::ResultParser {
 }
 class Aws::RedShift::DescribeOrderableClusterOptionsResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has OrderableClusterOptions => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::OrderableClusterOption]');
+  has OrderableClusterOptions => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::OrderableClusterOption]', traits => ['Unwrapped'], xmlname => 'OrderableClusterOption');
 
 }
 class Aws::RedShift::DescribeReservedNodeOfferingsResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has ReservedNodeOfferings => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ReservedNodeOffering]');
+  has ReservedNodeOfferings => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ReservedNodeOffering]', traits => ['Unwrapped'], xmlname => 'ReservedNodeOffering');
 
 }
 class Aws::RedShift::DescribeReservedNodesResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has ReservedNodes => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ReservedNode]');
+  has ReservedNodes => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ReservedNode]', traits => ['Unwrapped'], xmlname => 'ReservedNode');
 
 }
 class Aws::RedShift::DescribeResizeResult with AWS::API::ResultParser {

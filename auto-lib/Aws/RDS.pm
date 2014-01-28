@@ -959,42 +959,42 @@ class Aws::RDS::DeleteEventSubscriptionResult with AWS::API::ResultParser {
 
 }
 class Aws::RDS::DescribeDBEngineVersionsResult with AWS::API::ResultParser {
-  has DBEngineVersions => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBEngineVersion]');
+  has DBEngineVersions => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBEngineVersion]', traits => ['Unwrapped'], xmlname => 'DBEngineVersion');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::RDS::DescribeDBInstancesResult with AWS::API::ResultParser {
-  has DBInstances => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBInstance]');
+  has DBInstances => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBInstance]', traits => ['Unwrapped'], xmlname => 'DBInstance');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::RDS::DescribeDBLogFilesResult with AWS::API::ResultParser {
-  has DescribeDBLogFiles => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DescribeDBLogFilesDetails]');
+  has DescribeDBLogFiles => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DescribeDBLogFilesDetails]', traits => ['Unwrapped'], xmlname => 'DescribeDBLogFilesDetails');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::RDS::DescribeDBParameterGroupsResult with AWS::API::ResultParser {
-  has DBParameterGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBParameterGroup]');
+  has DBParameterGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBParameterGroup]', traits => ['Unwrapped'], xmlname => 'DBParameterGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::RDS::DescribeDBParametersResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Parameter]');
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Parameter]', traits => ['Unwrapped'], xmlname => 'Parameter');
 
 }
 class Aws::RDS::DescribeDBSecurityGroupsResult with AWS::API::ResultParser {
-  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBSecurityGroup]');
+  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBSecurityGroup]', traits => ['Unwrapped'], xmlname => 'DBSecurityGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::RDS::DescribeDBSnapshotsResult with AWS::API::ResultParser {
-  has DBSnapshots => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBSnapshot]');
+  has DBSnapshots => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBSnapshot]', traits => ['Unwrapped'], xmlname => 'DBSnapshot');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::RDS::DescribeDBSubnetGroupsResult with AWS::API::ResultParser {
-  has DBSubnetGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBSubnetGroup]');
+  has DBSubnetGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBSubnetGroup]', traits => ['Unwrapped'], xmlname => 'DBSubnetGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
@@ -1003,42 +1003,42 @@ class Aws::RDS::DescribeEngineDefaultParametersResult with AWS::API::ResultParse
 
 }
 class Aws::RDS::DescribeEventCategoriesResult with AWS::API::ResultParser {
-  has EventCategoriesMapList => (is => 'ro', isa => 'ArrayRef[Aws::RDS::EventCategoriesMap]');
+  has EventCategoriesMapList => (is => 'ro', isa => 'ArrayRef[Aws::RDS::EventCategoriesMap]', traits => ['Unwrapped'], xmlname => 'EventCategoriesMap');
 
 }
 class Aws::RDS::DescribeEventSubscriptionsResult with AWS::API::ResultParser {
-  has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[Aws::RDS::EventSubscription]');
+  has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[Aws::RDS::EventSubscription]', traits => ['Unwrapped'], xmlname => 'EventSubscription');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::RDS::DescribeEventsResult with AWS::API::ResultParser {
-  has Events => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Event]');
+  has Events => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Event]', traits => ['Unwrapped'], xmlname => 'Event');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::RDS::DescribeOptionGroupOptionsResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has OptionGroupOptions => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionGroupOption]');
+  has OptionGroupOptions => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionGroupOption]', traits => ['Unwrapped'], xmlname => 'OptionGroupOption');
 
 }
 class Aws::RDS::DescribeOptionGroupsResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has OptionGroupsList => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionGroup]');
+  has OptionGroupsList => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionGroup]', traits => ['Unwrapped'], xmlname => 'OptionGroup');
 
 }
 class Aws::RDS::DescribeOrderableDBInstanceOptionsResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has OrderableDBInstanceOptions => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OrderableDBInstanceOption]');
+  has OrderableDBInstanceOptions => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OrderableDBInstanceOption]', traits => ['Unwrapped'], xmlname => 'OrderableDBInstanceOption');
 
 }
 class Aws::RDS::DescribeReservedDBInstancesResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has ReservedDBInstances => (is => 'ro', isa => 'ArrayRef[Aws::RDS::ReservedDBInstance]');
+  has ReservedDBInstances => (is => 'ro', isa => 'ArrayRef[Aws::RDS::ReservedDBInstance]', traits => ['Unwrapped'], xmlname => 'ReservedDBInstance');
 
 }
 class Aws::RDS::DescribeReservedDBInstancesOfferingsResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has ReservedDBInstancesOfferings => (is => 'ro', isa => 'ArrayRef[Aws::RDS::ReservedDBInstancesOffering]');
+  has ReservedDBInstancesOfferings => (is => 'ro', isa => 'ArrayRef[Aws::RDS::ReservedDBInstancesOffering]', traits => ['Unwrapped'], xmlname => 'ReservedDBInstancesOffering');
 
 }
 class Aws::RDS::DownloadDBLogFilePortionResult with AWS::API::ResultParser {
@@ -1048,7 +1048,7 @@ class Aws::RDS::DownloadDBLogFilePortionResult with AWS::API::ResultParser {
 
 }
 class Aws::RDS::ListTagsForResourceResult with AWS::API::ResultParser {
-  has TagList => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]');
+  has TagList => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['Unwrapped'], xmlname => 'Tag');
 
 }
 class Aws::RDS::ModifyDBInstanceResult with AWS::API::ResultParser {

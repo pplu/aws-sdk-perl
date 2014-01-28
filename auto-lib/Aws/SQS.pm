@@ -45,7 +45,7 @@ class Aws::SQS::DeleteMessageBatchResultEntry with (AWS::API::ResultParser, AWS:
 }
 
 class Aws::SQS::Message with (AWS::API::ResultParser, AWS::API::ToParams) {
-  has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap');
+  has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap', traits => ['Unwrapped'], xmlname => 'Attribute');
   has Body => (is => 'ro', isa => 'Str');
   has MD5OfBody => (is => 'ro', isa => 'Str');
   has MessageId => (is => 'ro', isa => 'Str');
@@ -193,8 +193,8 @@ class Aws::SQS::SetQueueAttributes {
 }
 
 class Aws::SQS::ChangeMessageVisibilityBatchResult with AWS::API::ResultParser {
-  has Failed => (is => 'ro', isa => 'ArrayRef[Aws::SQS::BatchResultErrorEntry]', required => 1);
-  has Successful => (is => 'ro', isa => 'ArrayRef[Aws::SQS::ChangeMessageVisibilityBatchResultEntry]', required => 1);
+  has Failed => (is => 'ro', isa => 'ArrayRef[Aws::SQS::BatchResultErrorEntry]', traits => ['Unwrapped'], xmlname => 'BatchResultErrorEntry', required => 1);
+  has Successful => (is => 'ro', isa => 'ArrayRef[Aws::SQS::ChangeMessageVisibilityBatchResultEntry]', traits => ['Unwrapped'], xmlname => 'ChangeMessageVisibilityBatchResultEntry', required => 1);
 
 }
 class Aws::SQS::CreateQueueResult with AWS::API::ResultParser {
@@ -202,12 +202,12 @@ class Aws::SQS::CreateQueueResult with AWS::API::ResultParser {
 
 }
 class Aws::SQS::DeleteMessageBatchResult with AWS::API::ResultParser {
-  has Failed => (is => 'ro', isa => 'ArrayRef[Aws::SQS::BatchResultErrorEntry]', required => 1);
-  has Successful => (is => 'ro', isa => 'ArrayRef[Aws::SQS::DeleteMessageBatchResultEntry]', required => 1);
+  has Failed => (is => 'ro', isa => 'ArrayRef[Aws::SQS::BatchResultErrorEntry]', traits => ['Unwrapped'], xmlname => 'BatchResultErrorEntry', required => 1);
+  has Successful => (is => 'ro', isa => 'ArrayRef[Aws::SQS::DeleteMessageBatchResultEntry]', traits => ['Unwrapped'], xmlname => 'DeleteMessageBatchResultEntry', required => 1);
 
 }
 class Aws::SQS::GetQueueAttributesResult with AWS::API::ResultParser {
-  has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap');
+  has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap', traits => ['Unwrapped'], xmlname => 'Value', traits => ['Unwrapped'], xmlname => 'Attribute');
 
 }
 class Aws::SQS::GetQueueUrlResult with AWS::API::ResultParser {
@@ -215,11 +215,11 @@ class Aws::SQS::GetQueueUrlResult with AWS::API::ResultParser {
 
 }
 class Aws::SQS::ListQueuesResult with AWS::API::ResultParser {
-  has QueueUrls => (is => 'ro', isa => 'ArrayRef[Str]');
+  has QueueUrls => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'QueueUrl');
 
 }
 class Aws::SQS::ReceiveMessageResult with AWS::API::ResultParser {
-  has Messages => (is => 'ro', isa => 'ArrayRef[Aws::SQS::Message]');
+  has Messages => (is => 'ro', isa => 'ArrayRef[Aws::SQS::Message]', traits => ['Unwrapped'], xmlname => 'Message');
 
 }
 class Aws::SQS::SendMessageResult with AWS::API::ResultParser {
@@ -228,8 +228,8 @@ class Aws::SQS::SendMessageResult with AWS::API::ResultParser {
 
 }
 class Aws::SQS::SendMessageBatchResult with AWS::API::ResultParser {
-  has Failed => (is => 'ro', isa => 'ArrayRef[Aws::SQS::BatchResultErrorEntry]', required => 1);
-  has Successful => (is => 'ro', isa => 'ArrayRef[Aws::SQS::SendMessageBatchResultEntry]', required => 1);
+  has Failed => (is => 'ro', isa => 'ArrayRef[Aws::SQS::BatchResultErrorEntry]', traits => ['Unwrapped'], xmlname => 'BatchResultErrorEntry', required => 1);
+  has Successful => (is => 'ro', isa => 'ArrayRef[Aws::SQS::SendMessageBatchResultEntry]', traits => ['Unwrapped'], xmlname => 'SendMessageBatchResultEntry', required => 1);
 
 }
 

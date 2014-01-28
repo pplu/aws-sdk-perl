@@ -159,11 +159,13 @@ role AWS::API::ResultParser {
     my ($class, $result) = @_;
     my %args;
 
-    foreach my $key ($class->meta->get_attribute_list) {
-      next if (not my $meta = $class->meta->get_attribute($key));
+    foreach my $att ($class->meta->get_attribute_list) {
+      next if (not my $meta = $class->meta->get_attribute($att));
+
+      my $key = $meta->does('AWS::API::Attribute::Trait::Unwrapped') ? $meta->xmlname : $att;
 
       #use Data::Dumper;
-      #print STDERR "ATTRIBUTE: $key: ", $meta->type_constraint, " result: ", Dumper($result->{$key});
+      #print STDERR "ATTRIBUTE: $att RESULTKEY: $key: ", $meta->type_constraint, " result: ", Dumper($result->{$key});
       my $att_type = $meta->type_constraint;
 
       my $value = $result->{ $key };
@@ -186,31 +188,31 @@ role AWS::API::ResultParser {
         if ($att_type =~ m/\:\:/) {
           if (defined $value) {
             if (not $value_ref) {
-              $args{ $key } = $value;
+              $args{ $att } = $value;
             } else {
               #my $class = ("$att_type" eq 'Moose::Meta::TypeConstraint::Class') ? $att_type->class : $att_type;
               my $class = $att_type->class;
-              $args{ $key } = $class->from_result( $value );
+              $args{ $att } = $class->from_result( $value );
             }
           }
         } else {
-          $args{ $key } = $result->{ $key } if (defined $result->{ $key });
+          $args{ $att } = $result->{ $att } if (defined $result->{ $att });
         }
       } elsif (my ($type) = ($att_type =~ m/^ArrayRef\[(.*)\]$/)) {
         if ($type =~ m/\:\:/) {
           if (not defined $value) {
-            $args{ $key } = [ ];
+            $args{ $att } = [ ];
           } elsif ($value_ref eq 'ARRAY') {
-            $args{ $key } = [ map { $type->from_result( $_ ) } @$value ] ;
+            $args{ $att } = [ map { $type->from_result( $_ ) } @$value ] ;
           } elsif ($value_ref eq 'HASH') {
-            $args{ $key } = [ $type->from_result( $value ) ];
+            $args{ $att } = [ $type->from_result( $value ) ];
           }
         } else {
           if (defined $value){
             if ($value_ref eq 'ARRAY') {
-              $args{ $key } = $value; 
+              $args{ $att } = $value; 
             } else {
-              $args{ $key } = [ $value ];
+              $args{ $att } = [ $value ];
             }
           }
         }

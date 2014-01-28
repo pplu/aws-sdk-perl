@@ -549,33 +549,33 @@ class Aws::ElastiCache::DeleteReplicationGroupResult with AWS::API::ResultParser
 
 }
 class Aws::ElastiCache::DescribeCacheClustersResult with AWS::API::ResultParser {
-  has CacheClusters => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheCluster]');
+  has CacheClusters => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheCluster]', traits => ['Unwrapped'], xmlname => 'CacheCluster');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::ElastiCache::DescribeCacheEngineVersionsResult with AWS::API::ResultParser {
-  has CacheEngineVersions => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheEngineVersion]');
+  has CacheEngineVersions => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheEngineVersion]', traits => ['Unwrapped'], xmlname => 'CacheEngineVersion');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::ElastiCache::DescribeCacheParameterGroupsResult with AWS::API::ResultParser {
-  has CacheParameterGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheParameterGroup]');
+  has CacheParameterGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheParameterGroup]', traits => ['Unwrapped'], xmlname => 'CacheParameterGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::ElastiCache::DescribeCacheParametersResult with AWS::API::ResultParser {
-  has CacheNodeTypeSpecificParameters => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheNodeTypeSpecificParameter]');
+  has CacheNodeTypeSpecificParameters => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheNodeTypeSpecificParameter]', traits => ['Unwrapped'], xmlname => 'CacheNodeTypeSpecificParameter');
   has Marker => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::Parameter]');
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::Parameter]', traits => ['Unwrapped'], xmlname => 'Parameter');
 
 }
 class Aws::ElastiCache::DescribeCacheSecurityGroupsResult with AWS::API::ResultParser {
-  has CacheSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheSecurityGroup]');
+  has CacheSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheSecurityGroup]', traits => ['Unwrapped'], xmlname => 'CacheSecurityGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::ElastiCache::DescribeCacheSubnetGroupsResult with AWS::API::ResultParser {
-  has CacheSubnetGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheSubnetGroup]');
+  has CacheSubnetGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheSubnetGroup]', traits => ['Unwrapped'], xmlname => 'CacheSubnetGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
@@ -584,23 +584,23 @@ class Aws::ElastiCache::DescribeEngineDefaultParametersResult with AWS::API::Res
 
 }
 class Aws::ElastiCache::DescribeEventsResult with AWS::API::ResultParser {
-  has Events => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::Event]');
+  has Events => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::Event]', traits => ['Unwrapped'], xmlname => 'Event');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 class Aws::ElastiCache::DescribeReplicationGroupsResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has ReplicationGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ReplicationGroup]');
+  has ReplicationGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ReplicationGroup]', traits => ['Unwrapped'], xmlname => 'ReplicationGroup');
 
 }
 class Aws::ElastiCache::DescribeReservedCacheNodesResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has ReservedCacheNodes => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ReservedCacheNode]');
+  has ReservedCacheNodes => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ReservedCacheNode]', traits => ['Unwrapped'], xmlname => 'ReservedCacheNode');
 
 }
 class Aws::ElastiCache::DescribeReservedCacheNodesOfferingsResult with AWS::API::ResultParser {
   has Marker => (is => 'ro', isa => 'Str');
-  has ReservedCacheNodesOfferings => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ReservedCacheNodesOffering]');
+  has ReservedCacheNodesOfferings => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ReservedCacheNodesOffering]', traits => ['Unwrapped'], xmlname => 'ReservedCacheNodesOffering');
 
 }
 class Aws::ElastiCache::ModifyCacheClusterResult with AWS::API::ResultParser {
