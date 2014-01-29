@@ -30,6 +30,7 @@ sub _timestamp {
 }
     
 sub sign {
+    die "Need to convert to receiving \$request";
     my ($self, $params) = @_;
     my %args = %$params;
     my $action                      = delete $args{Action};
@@ -125,22 +126,9 @@ role Net::AWS::V4Signature {
   use Net::Amazon::Signature::V4;
   #requires 'region';
   requires 'service';
-  use HTTP::Request::Common;
-  use POSIX qw(strftime);
 
   sub sign {
-    my ($self, $params) = @_;
-
-    my $post_params = {
-        Version               => $self->version,
-        %$params
-    };
-
-    my $request = POST $self->endpoint, Content => $post_params;
-
-    $request->header( Date => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
-    $request->header( Host => $self->endpoint_host );
-
+    my ($self, $request) = @_;
     my $sig = Net::Amazon::Signature::V4->new( $self->access_key, $self->secret_key, $self->region, $self->service );
     my $signed_req = $sig->sign( $request );
     return $signed_req;
@@ -148,15 +136,70 @@ role Net::AWS::V4Signature {
 }
 
 role Net::AWS::JsonCaller {
-  method _api_caller {
-        
-  } 
-}
+  use HTTP::Request::Common;
+  use POSIX qw(strftime);
+  use JSON;
 
-role Net::AWS::QueryCaller {
   method _is_internal_type ($att_type) {
     return ($att_type eq 'Str' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
   }
+
+  method _to_json ($params) {
+    my $p = {};
+    foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+      if (defined $params->$att) {
+        my $att_type = $params->meta->get_attribute($att)->type_constraint;
+        if ($self->_is_internal_type($att_type)) {
+          $p->{ $att } = $params->{$att};
+        } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
+          if ($self->_is_internal_type("$1")){
+            $p->{ $att } = [ @{ $params->$att } ];
+          } else {
+            $p->{ $att } = [ map { $_->to_params($_) } @{ $params->$att } ];
+          }
+        } else {
+          $p->{ $att } = $params->$att->to_params($params->{$att});
+        }
+      }
+    }
+    
+    return to_json($p);
+  }
+  method _api_caller ($action, $params) {
+    my $request = POST $self->endpoint, Content => $self->_to_json($params);
+
+    $request->header( 'X-Amz-Target' => sprintf('%s.%s',$self->target_prefix,$action) );
+    $request->header( 'Content-Type' => 'application/x-amz-json-1.0' );
+    $request->header( Date => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
+    $request->header( Host => $self->endpoint_host );
+
+    $request = $self->sign($request);
+    return $self->send($request);      
+  } 
+}
+
+role Net::AWS::JsonResponse {
+  use JSON;
+  use Carp qw(croak);
+  
+  method _process_response ($data) {
+    my $json = from_json( $data );
+    if ( defined $json->{Errors} ) {
+      croak "Error: $data";
+    }
+
+    return $json;
+  }
+}
+
+role Net::AWS::QueryCaller {
+  use HTTP::Request::Common;
+  use POSIX qw(strftime);
+
+  method _is_internal_type ($att_type) {
+    return ($att_type eq 'Str' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
+  }
+
   method _to_params ($params) {
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
@@ -186,8 +229,22 @@ role Net::AWS::QueryCaller {
     }
     return %p;
   }
+
   method _api_caller ($action, $params) {
-    return $self->send(Action => $action, $self->_to_params($params));
+    my $post_params = {
+        Version => $self->version,
+        Action  => $action,
+        $self->_to_params($params),
+    };
+
+    my $request = POST $self->endpoint, Content => $post_params;
+
+    $request->header( Date => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
+    $request->header( Host => $self->endpoint_host );
+
+    $request = $self->sign($request);
+
+    return $self->send($request);
   }
 }
 
@@ -207,7 +264,6 @@ role Net::AWS::XMLResponse {
 
     return $xml;
   }
-
 }
 
 role Net::AWS::Caller {
@@ -228,11 +284,11 @@ role Net::AWS::Caller {
     }
   );
 
-  method send (%params){
-    my $request = $self->sign(\%params);
-
+  method send ($request){
     my $headers = {};
     $request->scan(sub { $headers->{ $_[0] } = $_[1] });
+use Data::Dumper;
+print Dumper($request);
     my $response = $self->ua->request(
       $request->method,
       $request->url,
@@ -241,6 +297,7 @@ role Net::AWS::Caller {
         content => $request->content
       }
     );
+print Dumper($response);
     if ( $response->{success} ) {
         return $self->_process_response( $response->{content} );
     } else {

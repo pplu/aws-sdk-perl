@@ -17,8 +17,6 @@ class Aws::DynamoDB::AttributeDefinition with (AWS::API::ResultParser, AWS::API:
   has AttributeType => (is => 'ro', isa => 'Aws::DynamoDB::ScalarAttributeType', required => 1);
 }
 
-class Aws::DynamoDB::AttributeMap with AWS::API::MapParser {
-class Aws::DynamoDB::AttributeUpdates with AWS::API::MapParser {
 class Aws::DynamoDB::AttributeValue with (AWS::API::ResultParser, AWS::API::ToParams) {
   has B => (is => 'ro', isa => 'Str');
   has BS => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -33,9 +31,6 @@ class Aws::DynamoDB::AttributeValueUpdate with (AWS::API::ResultParser, AWS::API
   has Value => (is => 'ro', isa => 'Aws::DynamoDB::AttributeValue');
 }
 
-class Aws::DynamoDB::BatchGetRequestMap with AWS::API::MapParser {
-class Aws::DynamoDB::BatchGetResponseMap with AWS::API::MapParser {
-class Aws::DynamoDB::BatchWriteItemRequestMap with AWS::API::MapParser {
 class Aws::DynamoDB::Capacity with (AWS::API::ResultParser, AWS::API::ToParams) {
   has CapacityUnits => (is => 'ro', isa => 'Num');
 }
@@ -53,13 +48,11 @@ class Aws::DynamoDB::ConsumedCapacity with (AWS::API::ResultParser, AWS::API::To
   has TableName => (is => 'ro', isa => 'Str');
 }
 
-class Aws::DynamoDB::ExpectedAttributeMap with AWS::API::MapParser {
 class Aws::DynamoDB::ExpectedAttributeValue with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Exists => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Aws::DynamoDB::AttributeValue');
 }
 
-class Aws::DynamoDB::FilterConditionMap with AWS::API::MapParser {
 class Aws::DynamoDB::GlobalSecondaryIndex with (AWS::API::ResultParser, AWS::API::ToParams) {
   has IndexName => (is => 'ro', isa => 'Str', required => 1);
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Aws::DynamoDB::KeySchemaElement]', required => 1);
@@ -81,15 +74,11 @@ class Aws::DynamoDB::GlobalSecondaryIndexUpdate with (AWS::API::ResultParser, AW
   has Update => (is => 'ro', isa => 'Aws::DynamoDB::UpdateGlobalSecondaryIndexAction');
 }
 
-class Aws::DynamoDB::ItemCollectionKeyAttributeMap with AWS::API::MapParser {
 class Aws::DynamoDB::ItemCollectionMetrics with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ItemCollectionKey => (is => 'ro', isa => 'Aws::DynamoDB::ItemCollectionKeyAttributeMap');
   has SizeEstimateRangeGB => (is => 'ro', isa => 'ArrayRef[Num]');
 }
 
-class Aws::DynamoDB::ItemCollectionMetricsPerTable with AWS::API::MapParser {
-class Aws::DynamoDB::Key with AWS::API::MapParser {
-class Aws::DynamoDB::KeyConditions with AWS::API::MapParser {
 class Aws::DynamoDB::KeySchemaElement with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttributeName => (is => 'ro', isa => 'Str', required => 1);
   has KeyType => (is => 'ro', isa => 'Aws::DynamoDB::KeyType', required => 1);
@@ -133,8 +122,6 @@ class Aws::DynamoDB::ProvisionedThroughputDescription with (AWS::API::ResultPars
   has WriteCapacityUnits => (is => 'ro', isa => 'Num');
 }
 
-class Aws::DynamoDB::PutItemInputAttributeMap with AWS::API::MapParser {
-class Aws::DynamoDB::SecondaryIndexesCapacityMap with AWS::API::MapParser {
 class Aws::DynamoDB::TableDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Aws::DynamoDB::AttributeDefinition]');
   has CreationDateTime => (is => 'ro', isa => 'Str');
@@ -372,9 +359,11 @@ class Aws::DynamoDB::UpdateTableResult with AWS::API::ResultParser {
 
 }
 
-class Aws::DynamoDB with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::XMLResponse) {
+class Aws::DynamoDB with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'dynamodb');
   has version => (is => 'ro', isa => 'Str', default => '2012-08-10');
+  has target_prefix => (is => 'ro', isa => 'Str', default => 'DynamoDB_20120810');
+
   
   method BatchGetItem (%args) {
     my $call = Aws::DynamoDB::BatchGetItem->new(%args);

@@ -445,9 +445,11 @@ class Aws::EMR::RunJobFlowResult with AWS::API::ResultParser {
 
 }
 
-class Aws::EMR with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::XMLResponse) {
+class Aws::EMR with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'elasticmapreduce');
   has version => (is => 'ro', isa => 'Str', default => '2009-03-31');
+  has target_prefix => (is => 'ro', isa => 'Str', default => 'ElasticMapReduce');
+
   
   method AddInstanceGroups (%args) {
     my $call = Aws::EMR::AddInstanceGroups->new(%args);

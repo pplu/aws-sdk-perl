@@ -55,7 +55,6 @@ class Aws::OpsWorks::Command with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Type => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::DailyAutoScalingSchedule with AWS::API::MapParser {
 class Aws::OpsWorks::Deployment with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AppId => (is => 'ro', isa => 'Str');
   has Command => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommand');
@@ -76,7 +75,6 @@ class Aws::OpsWorks::DeploymentCommand with (AWS::API::ResultParser, AWS::API::T
   has Name => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommandName', required => 1);
 }
 
-class Aws::OpsWorks::DeploymentCommandArgs with AWS::API::MapParser {
 class Aws::OpsWorks::ElasticIp with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Domain => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
@@ -1002,9 +1000,11 @@ class Aws::OpsWorks::RegisterVolumeResult with AWS::API::ResultParser {
 
 }
 
-class Aws::OpsWorks with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::XMLResponse) {
+class Aws::OpsWorks with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'opsworks');
   has version => (is => 'ro', isa => 'Str', default => '2013-02-18');
+  has target_prefix => (is => 'ro', isa => 'Str', default => 'OpsWorks_20130218');
+
   
   method AssignVolume (%args) {
     my $call = Aws::OpsWorks::AssignVolume->new(%args);

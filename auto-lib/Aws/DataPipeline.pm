@@ -32,7 +32,6 @@ class Aws::DataPipeline::PipelineObject with (AWS::API::ResultParser, AWS::API::
   has name => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::DataPipeline::PipelineObjectMap with AWS::API::MapParser {
 class Aws::DataPipeline::Query with (AWS::API::ResultParser, AWS::API::ToParams) {
   has selectors => (is => 'ro', isa => 'ArrayRef[Aws::DataPipeline::Selector]');
 }
@@ -263,9 +262,11 @@ class Aws::DataPipeline::ValidatePipelineDefinitionResult with AWS::API::ResultP
 
 }
 
-class Aws::DataPipeline with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::XMLResponse) {
+class Aws::DataPipeline with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'datapipeline');
   has version => (is => 'ro', isa => 'Str', default => '2012-10-29');
+  has target_prefix => (is => 'ro', isa => 'Str', default => 'DataPipeline');
+
   
   method ActivatePipeline (%args) {
     my $call = Aws::DataPipeline::ActivatePipeline->new(%args);

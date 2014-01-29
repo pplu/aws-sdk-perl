@@ -134,9 +134,11 @@ class Aws::Kinesis::PutRecordResult with AWS::API::ResultParser {
 
 }
 
-class Aws::Kinesis with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::XMLResponse) {
+class Aws::Kinesis with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'kinesis');
   has version => (is => 'ro', isa => 'Str', default => '2013-12-02');
+  has target_prefix => (is => 'ro', isa => 'Str', default => 'Kinesis_20131202');
+
   
   method CreateStream (%args) {
     my $call = Aws::Kinesis::CreateStream->new(%args);

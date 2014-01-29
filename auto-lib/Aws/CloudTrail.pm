@@ -121,9 +121,11 @@ class Aws::CloudTrail::UpdateTrailResult with AWS::API::ResultParser {
 
 }
 
-class Aws::CloudTrail with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::XMLResponse) {
+class Aws::CloudTrail with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'cloudtrail');
   has version => (is => 'ro', isa => 'Str', default => '2013-11-01');
+  has target_prefix => (is => 'ro', isa => 'Str', default => 'com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101');
+
   
   method CreateTrail (%args) {
     my $call = Aws::CloudTrail::CreateTrail->new(%args);

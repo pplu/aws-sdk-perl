@@ -734,9 +734,11 @@ class Aws::StorageGateway::UpdateSnapshotScheduleResult with AWS::API::ResultPar
 
 }
 
-class Aws::StorageGateway with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::XMLResponse) {
+class Aws::StorageGateway with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'storagegateway');
   has version => (is => 'ro', isa => 'Str', default => '2013-06-30');
+  has target_prefix => (is => 'ro', isa => 'Str', default => 'StorageGateway_20130630');
+
   
   method ActivateGateway (%args) {
     my $call = Aws::StorageGateway::ActivateGateway->new(%args);

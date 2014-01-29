@@ -258,9 +258,11 @@ class Aws::Support::ResolveCaseResult with AWS::API::ResultParser {
 
 }
 
-class Aws::Support with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::XMLResponse) {
+class Aws::Support with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'support');
   has version => (is => 'ro', isa => 'Str', default => '2013-04-15');
+  has target_prefix => (is => 'ro', isa => 'Str', default => 'AWSSupport_20130415');
+
   
   method AddCommunicationToCase (%args) {
     my $call = Aws::Support::AddCommunicationToCase->new(%args);

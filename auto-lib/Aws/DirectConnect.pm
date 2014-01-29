@@ -412,9 +412,11 @@ class Aws::DirectConnect::DescribeVirtualInterfacesResult with AWS::API::ResultP
 
 }
 
-class Aws::DirectConnect with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::XMLResponse) {
+class Aws::DirectConnect with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'directconnect');
   has version => (is => 'ro', isa => 'Str', default => '2012-10-25');
+  has target_prefix => (is => 'ro', isa => 'Str', default => 'OvertureService');
+
   
   method AllocateConnectionOnInterconnect (%args) {
     my $call = Aws::DirectConnect::AllocateConnectionOnInterconnect->new(%args);

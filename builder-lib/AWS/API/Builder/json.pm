@@ -15,7 +15,8 @@ class AWS::API::Builder::json {
                                                                    'AWS::API::SingleEndpointCaller':
                                                                    'AWS::API::RegionalEndpointCaller' 
                                                               } );
-  has response_role  => (is => 'ro', lazy => 1, default => sub { 'Net::AWS::XMLResponse' });
+  has target_prefix => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ target_prefix } });
+  has response_role  => (is => 'ro', lazy => 1, default => sub { 'Net::AWS::JsonResponse' });
   has signature_role => (is => 'ro', lazy => 1, default => sub { sprintf "Net::AWS::%sSignature", uc $_[0]->struct->{signature_version} } );
   has parameter_role => (is => 'ro', lazy => 1, default => sub { my $type = $_[0]->struct->{type}; substr($type,0,1) = uc substr($type,0,1); return "Net::AWS::${type}Caller" });
 
@@ -95,6 +96,8 @@ class [% c.api %]::[% operation.name %]Result with AWS::API::ResultParser {
 class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_role %], [% c.parameter_role %], [% c.response_role %]) {
   has service => (is => 'ro', isa => 'Str', default => '[% c.service %]');
   has version => (is => 'ro', isa => 'Str', default => '[% c.version %]');
+  has target_prefix => (is => 'ro', isa => 'Str', default => '[% c.target_prefix %]');
+
   [% FOR op IN c.struct.operations.keys.sort %]
   [%- op_name = c.struct.operations.$op.name %]
   method [% op_name %] (%args) {
@@ -123,10 +126,14 @@ class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_
   
     foreach my $inner_class (sort keys %{ $self->inner_classes }) {
       if ($self->inner_classes->{ $inner_class }->{type} eq 'map'){
-        $output .= "class $inner_class with AWS::API::MapParser {\n";
         my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members});
         my $members = $self->inner_classes->{ $inner_class }->{keys}->{enum};
-        next if (not defined $members);
+        if (not defined $members) {
+          warn "$inner_class has no enum members";
+          next;
+        }
+
+        $output .= "class $inner_class with AWS::API::MapParser {\n";
         foreach my $param_name (sort @$members){
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
           $output .= ");\n";

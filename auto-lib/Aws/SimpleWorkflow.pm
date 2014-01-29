@@ -1031,9 +1031,11 @@ class Aws::SimpleWorkflow::StartWorkflowExecutionResult with AWS::API::ResultPar
 
 }
 
-class Aws::SimpleWorkflow with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::XMLResponse) {
+class Aws::SimpleWorkflow with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'swf');
   has version => (is => 'ro', isa => 'Str', default => '2012-01-25');
+  has target_prefix => (is => 'ro', isa => 'Str', default => 'SimpleWorkflowService');
+
   
   method CountClosedWorkflowExecutions (%args) {
     my $call = Aws::SimpleWorkflow::CountClosedWorkflowExecutions->new(%args);
