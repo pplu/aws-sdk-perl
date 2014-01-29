@@ -39,6 +39,7 @@ enum 'Aws::EC2::RecurringChargeFrequency', ['Hourly',];
 enum 'Aws::EC2::ReservedInstanceState', ['payment-pending','active','payment-failed','retired',];
 enum 'Aws::EC2::ResourceType', ['customer-gateway','dhcp-options','image','instance','internet-gateway','network-acl','network-interface','reserved-instances','route-table','snapshot','spot-instances-request','subnet','security-group','volume','vpc','vpn-connection','vpn-gateway',];
 enum 'Aws::EC2::RIProductDescription', ['Linux/UNIX','Linux/UNIX (Amazon VPC)','Windows','Windows (Amazon VPC)',];
+enum 'Aws::EC2::RouteOrigin', ['CreateRouteTable','CreateRoute','EnableVgwRoutePropagation',];
 enum 'Aws::EC2::RouteState', ['active','blackhole',];
 enum 'Aws::EC2::RuleAction', ['allow','deny',];
 enum 'Aws::EC2::ShutdownBehavior', ['stop','terminate',];
@@ -315,7 +316,6 @@ class Aws::EC2::Instance with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has KernelId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'kernelId');
   has KeyName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyName');
   has LaunchTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'launchTime');
-  has License => (is => 'ro', isa => 'Aws::EC2::InstanceLicense', traits => ['Unwrapped'], xmlname => 'license');
   has Monitoring => (is => 'ro', isa => 'Aws::EC2::Monitoring', traits => ['Unwrapped'], xmlname => 'monitoring');
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceNetworkInterface]', traits => ['Unwrapped'], xmlname => 'networkInterfaceSet');
   has Placement => (is => 'ro', isa => 'Aws::EC2::Placement', traits => ['Unwrapped'], xmlname => 'placement');
@@ -361,14 +361,6 @@ class Aws::EC2::InstanceCount with (AWS::API::UnwrappedParser, AWS::API::ToParam
 class Aws::EC2::InstanceExportDetails with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has TargetEnvironment => (is => 'ro', isa => 'Aws::EC2::ExportEnvironment', traits => ['Unwrapped'], xmlname => 'targetEnvironment');
-}
-
-class Aws::EC2::InstanceLicense with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Pool => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'pool');
-}
-
-class Aws::EC2::InstanceLicenseSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Pool => (is => 'ro', isa => 'Str');
 }
 
 class Aws::EC2::InstanceMonitoring with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -491,21 +483,6 @@ class Aws::EC2::LaunchSpecification with (AWS::API::UnwrappedParser, AWS::API::T
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::EC2::GroupIdentifier]', traits => ['Unwrapped'], xmlname => 'groupSet');
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
   has UserData => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'userData');
-}
-
-class Aws::EC2::License with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Capacities => (is => 'ro', isa => 'ArrayRef[Aws::EC2::LicenseCapacity]', traits => ['Unwrapped'], xmlname => 'capacitySet');
-  has LicenseId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'licenseId');
-  has Pool => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'pool');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
-  has Type => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'type');
-}
-
-class Aws::EC2::LicenseCapacity with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Capacity => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'capacity');
-  has EarliestAllowedDeactivationTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'earliestAllowedDeactivationTime');
-  has InstanceCapacity => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'instanceCapacity');
-  has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'state');
 }
 
 class Aws::EC2::Monitoring with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -741,6 +718,7 @@ class Aws::EC2::Route with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has InstanceOwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceOwnerId');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'networkInterfaceId');
+  has Origin => (is => 'ro', isa => 'Aws::EC2::RouteOrigin', traits => ['Unwrapped'], xmlname => 'origin');
   has State => (is => 'ro', isa => 'Aws::EC2::RouteState', traits => ['Unwrapped'], xmlname => 'state');
 }
 
@@ -1024,15 +1002,6 @@ class Aws::EC2::VpnStaticRoute with (AWS::API::UnwrappedParser, AWS::API::ToPara
 
 
 
-class Aws::EC2::ActivateLicense {
-  has Capacity => (is => 'ro', isa => 'Int', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
-  has LicenseId => (is => 'ro', isa => 'Str', required => 1);
-
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ActivateLicense');
-  has _returns => (isa => 'Aws::EC2::ActivateLicenseResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ActivateLicenseResult');  
-}
 class Aws::EC2::AllocateAddress {
   has Domain => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
@@ -1121,19 +1090,31 @@ class Aws::EC2::AttachVpnGateway {
   has _result_key => (isa => 'Str', is => 'ro', default => 'AttachVpnGatewayResult');  
 }
 class Aws::EC2::AuthorizeSecurityGroupEgress {
+  has CidrIp => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
+  has FromPort => (is => 'ro', isa => 'Int');
   has GroupId => (is => 'ro', isa => 'Str', required => 1);
   has IpPermissions => (is => 'ro', isa => 'ArrayRef[Aws::EC2::IpPermission]');
+  has IpProtocol => (is => 'ro', isa => 'Str');
+  has SourceSecurityGroupName => (is => 'ro', isa => 'Str');
+  has SourceSecurityGroupOwnerId => (is => 'ro', isa => 'Str');
+  has ToPort => (is => 'ro', isa => 'Int');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeSecurityGroupEgress');
   has _returns => (isa => 'Aws::EC2::AuthorizeSecurityGroupEgressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeSecurityGroupEgressResult');  
 }
 class Aws::EC2::AuthorizeSecurityGroupIngress {
+  has CidrIp => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
+  has FromPort => (is => 'ro', isa => 'Int');
   has GroupId => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
   has IpPermissions => (is => 'ro', isa => 'ArrayRef[Aws::EC2::IpPermission]');
+  has IpProtocol => (is => 'ro', isa => 'Str');
+  has SourceSecurityGroupName => (is => 'ro', isa => 'Str');
+  has SourceSecurityGroupOwnerId => (is => 'ro', isa => 'Str');
+  has ToPort => (is => 'ro', isa => 'Int');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeSecurityGroupIngress');
   has _returns => (isa => 'Aws::EC2::AuthorizeSecurityGroupIngressResult', is => 'ro');
@@ -1443,15 +1424,6 @@ class Aws::EC2::CreateVpnGateway {
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpnGateway');
   has _returns => (isa => 'Aws::EC2::CreateVpnGatewayResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVpnGatewayResult');  
-}
-class Aws::EC2::DeactivateLicense {
-  has Capacity => (is => 'ro', isa => 'Int', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
-  has LicenseId => (is => 'ro', isa => 'Str', required => 1);
-
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeactivateLicense');
-  has _returns => (isa => 'Aws::EC2::DeactivateLicenseResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeactivateLicenseResult');  
 }
 class Aws::EC2::DeleteCustomerGateway {
   has CustomerGatewayId => (is => 'ro', isa => 'Str', required => 1);
@@ -1764,15 +1736,6 @@ class Aws::EC2::DescribeKeyPairs {
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeKeyPairs');
   has _returns => (isa => 'Aws::EC2::DescribeKeyPairsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeKeyPairsResult');  
-}
-class Aws::EC2::DescribeLicenses {
-  has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has LicenseIds => (is => 'ro', isa => 'ArrayRef[Str]');
-
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLicenses');
-  has _returns => (isa => 'Aws::EC2::DescribeLicensesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLicensesResult');  
 }
 class Aws::EC2::DescribeNetworkAcls {
   has DryRun => (is => 'ro', isa => 'Str');
@@ -2401,19 +2364,31 @@ class Aws::EC2::ResetSnapshotAttribute {
   has _result_key => (isa => 'Str', is => 'ro', default => 'ResetSnapshotAttributeResult');  
 }
 class Aws::EC2::RevokeSecurityGroupEgress {
+  has CidrIp => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
+  has FromPort => (is => 'ro', isa => 'Int');
   has GroupId => (is => 'ro', isa => 'Str', required => 1);
   has IpPermissions => (is => 'ro', isa => 'ArrayRef[Aws::EC2::IpPermission]');
+  has IpProtocol => (is => 'ro', isa => 'Str');
+  has SourceSecurityGroupName => (is => 'ro', isa => 'Str');
+  has SourceSecurityGroupOwnerId => (is => 'ro', isa => 'Str');
+  has ToPort => (is => 'ro', isa => 'Int');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupEgress');
   has _returns => (isa => 'Aws::EC2::RevokeSecurityGroupEgressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupEgressResult');  
 }
 class Aws::EC2::RevokeSecurityGroupIngress {
+  has CidrIp => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
+  has FromPort => (is => 'ro', isa => 'Int');
   has GroupId => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
   has IpPermissions => (is => 'ro', isa => 'ArrayRef[Aws::EC2::IpPermission]');
+  has IpProtocol => (is => 'ro', isa => 'Str');
+  has SourceSecurityGroupName => (is => 'ro', isa => 'Str');
+  has SourceSecurityGroupOwnerId => (is => 'ro', isa => 'Str');
+  has ToPort => (is => 'ro', isa => 'Int');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupIngress');
   has _returns => (isa => 'Aws::EC2::RevokeSecurityGroupIngressResult', is => 'ro');
@@ -2432,7 +2407,6 @@ class Aws::EC2::RunInstances {
   has InstanceType => (is => 'ro', isa => 'Str');
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
-  has License => (is => 'ro', isa => 'Aws::EC2::InstanceLicenseSpecification');
   has MaxCount => (is => 'ro', isa => 'Int', required => 1);
   has MinCount => (is => 'ro', isa => 'Int', required => 1);
   has Monitoring => (is => 'ro', isa => 'Aws::EC2::RunInstancesMonitoringEnabled');
@@ -2723,10 +2697,6 @@ class Aws::EC2::DescribeKeyPairsResult with AWS::API::UnwrappedParser {
   has KeyPairs => (is => 'ro', isa => 'ArrayRef[Aws::EC2::KeyPairInfo]', traits => ['Unwrapped'], xmlname => 'keySet');
 
 }
-class Aws::EC2::DescribeLicensesResult with AWS::API::UnwrappedParser {
-  has Licenses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::License]', traits => ['Unwrapped'], xmlname => 'licenseSet');
-
-}
 class Aws::EC2::DescribeNetworkAclsResult with AWS::API::UnwrappedParser {
   has NetworkAcls => (is => 'ro', isa => 'ArrayRef[Aws::EC2::NetworkAcl]', traits => ['Unwrapped'], xmlname => 'networkAclSet');
 
@@ -2933,11 +2903,6 @@ class Aws::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   has service => (is => 'ro', isa => 'Str', default => 'ec2');
   has version => (is => 'ro', isa => 'Str', default => '2013-10-15');
   
-  method ActivateLicense (%args) {
-    my $call = Aws::EC2::ActivateLicense->new(%args);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
-  }
   method AllocateAddress (%args) {
     my $call = Aws::EC2::AllocateAddress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
@@ -3184,11 +3149,6 @@ class Aws::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
     my $o_result = Aws::EC2::CreateVpnGatewayResult->from_result($result);
     return $o_result;
   }
-  method DeactivateLicense (%args) {
-    my $call = Aws::EC2::DeactivateLicense->new(%args);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
-  }
   method DeleteCustomerGateway (%args) {
     my $call = Aws::EC2::DeleteCustomerGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
@@ -3382,12 +3342,6 @@ class Aws::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
     my $call = Aws::EC2::DescribeKeyPairs->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeKeyPairsResult->from_result($result);
-    return $o_result;
-  }
-  method DescribeLicenses (%args) {
-    my $call = Aws::EC2::DescribeLicenses->new(%args);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeLicensesResult->from_result($result);
     return $o_result;
   }
   method DescribeNetworkAcls (%args) {

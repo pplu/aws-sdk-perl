@@ -156,8 +156,6 @@ class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_
             if ($@) { die "In Inner Class: $inner_class: $@"; }
           }
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
-use Data::Dumper;
-print Dumper($param_props) if ($param_name eq 'Message');
           if (defined $param_props->{xmlname}) {
             $output .= ", traits => ['Unwrapped'], xmlname => '$param_props->{xmlname}'";
           }
