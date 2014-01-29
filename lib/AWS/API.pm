@@ -74,7 +74,8 @@ role AWS::API::ToParams {
     my ($self) = @_;
     my $params = {};
     foreach my $att ($self->meta->get_attribute_list) {
-      $params->{$att} = $self->$att();
+      my $value = $self->$att();
+      $params->{$att} = $value if (defined $value);
     }
     return $params;
   }
