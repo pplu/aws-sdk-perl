@@ -15,6 +15,7 @@ class Aws::SQS::AttributeMap with AWS::API::MapParser {
   has Policy => (is => 'ro', isa => 'Str');
   has QueueArn => (is => 'ro', isa => 'Str');
   has ReceiveMessageWaitTimeSeconds => (is => 'ro', isa => 'Str');
+  has RedrivePolicy => (is => 'ro', isa => 'Str');
   has VisibilityTimeout => (is => 'ro', isa => 'Str');
 }
 
@@ -140,6 +141,13 @@ class Aws::SQS::GetQueueUrl {
   has _returns => (isa => 'Aws::SQS::GetQueueUrlResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetQueueUrlResult');  
 }
+class Aws::SQS::ListDeadLetterSourceQueues {
+  has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'ListDeadLetterSourceQueues');
+  has _returns => (isa => 'Aws::SQS::ListDeadLetterSourceQueuesResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ListDeadLetterSourceQueuesResult');  
+}
 class Aws::SQS::ListQueues {
   has QueueNamePrefix => (is => 'ro', isa => 'Str');
 
@@ -214,6 +222,10 @@ class Aws::SQS::GetQueueUrlResult with AWS::API::ResultParser {
   has QueueUrl => (is => 'ro', isa => 'Str');
 
 }
+class Aws::SQS::ListDeadLetterSourceQueuesResult with AWS::API::ResultParser {
+  has queueUrls => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'QueueUrl', required => 1);
+
+}
 class Aws::SQS::ListQueuesResult with AWS::API::ResultParser {
   has QueueUrls => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'QueueUrl');
 
@@ -285,6 +297,12 @@ class Aws::SQS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
     my $call = Aws::SQS::GetQueueUrl->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SQS::GetQueueUrlResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  method ListDeadLetterSourceQueues (%args) {
+    my $call = Aws::SQS::ListDeadLetterSourceQueues->new(%args);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::SQS::ListDeadLetterSourceQueuesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   method ListQueues (%args) {
