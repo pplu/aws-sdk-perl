@@ -15,6 +15,7 @@ class AWS::API::Builder::query {
                                                                    'AWS::API::SingleEndpointCaller':
                                                                    'AWS::API::RegionalEndpointCaller' 
                                                               } );
+  has wrapped_responses => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ result_wrapped } });
   has response_role  => (is => 'ro', lazy => 1, default => sub { 'Net::AWS::XMLResponse' });
   has signature_role => (is => 'ro', lazy => 1, default => sub { sprintf "Net::AWS::%sSignature", uc $_[0]->struct->{signature_version} } );
   has parameter_role => (is => 'ro', lazy => 1, default => sub { my $type = $_[0]->struct->{type}; substr($type,0,1) = uc substr($type,0,1); return "Net::AWS::${type}Caller" });
@@ -51,8 +52,12 @@ class AWS::API::Builder::query {
       } 
     }
 
-    # First call may register more inner classes
+    my $last_seen_inner_classes = scalar(keys %{ $self->inner_classes });
     $self->make_inner_classes();
+    while ($last_seen_inner_classes != scalar(keys %{ $self->inner_classes })){
+      $last_seen_inner_classes = scalar(keys %{ $self->inner_classes });
+      $self->make_inner_classes();
+    }
     my $inner_output .= $self->make_inner_classes();
 
     my $class = q#
@@ -103,8 +108,8 @@ class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_
     my $call = [% c.api %]::[% op_name %]->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
     [%- IF (c.struct.operations.$op.output.size > 0) %]
-    my $o_result = [% c.api %]::[% op_name %]Result->from_result($result->{ $call->_result_key });
-    return $o_result;
+    [% IF (c.wrapped_responses) %]my $o_result = [% c.api %]::[% op_name %]Result->from_result($result->{ $call->_result_key });
+    [% ELSE %]my $o_result = [% c.api %]::[% op_name %]Result->from_result($result);[% END %]return $o_result;
     [%- ELSE %]
     return 1
     [%- END %]
@@ -156,8 +161,6 @@ class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_
             if ($@) { die "In Inner Class: $inner_class: $@"; }
           }
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
-use Data::Dumper;
-print Dumper($param_props) if ($param_name eq 'Message');
           if (defined $param_props->{xmlname}) {
             $output .= ", traits => ['Unwrapped'], xmlname => '$param_props->{xmlname}'";
           }

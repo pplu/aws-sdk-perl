@@ -3,6 +3,11 @@ use MooseX::Declare;
 use AWS::API;
 
 
+class Aws::ELB::AppCookieStickinessPolicy with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has CookieName => (is => 'ro', isa => 'Str');
+  has PolicyName => (is => 'ro', isa => 'Str');
+}
+
 class Aws::ELB::BackendServerDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has InstancePort => (is => 'ro', isa => 'Int');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -29,6 +34,11 @@ class Aws::ELB::InstanceState with (AWS::API::ResultParser, AWS::API::ToParams) 
   has InstanceId => (is => 'ro', isa => 'Str');
   has ReasonCode => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+}
+
+class Aws::ELB::LBCookieStickinessPolicy with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has CookieExpirationPeriod => (is => 'ro', isa => 'Num');
+  has PolicyName => (is => 'ro', isa => 'Str');
 }
 
 class Aws::ELB::Listener with (AWS::API::ResultParser, AWS::API::ToParams) {

@@ -6,6 +6,10 @@ use Moose::Util::TypeConstraints;
 enum 'Aws::ElastiCache::SourceType', ['cache-cluster','cache-parameter-group','cache-security-group','cache-subnet-group',];
 
 
+class Aws::ElastiCache::AvailabilityZone with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Name => (is => 'ro', isa => 'Str');
+}
+
 class Aws::ElastiCache::CacheCluster with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
@@ -123,6 +127,14 @@ class Aws::ElastiCache::NodeGroup with (AWS::API::ResultParser, AWS::API::ToPara
   has NodeGroupMembers => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::NodeGroupMember]');
   has PrimaryEndpoint => (is => 'ro', isa => 'Aws::ElastiCache::Endpoint');
   has Status => (is => 'ro', isa => 'Str');
+}
+
+class Aws::ElastiCache::NodeGroupMember with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has CacheClusterId => (is => 'ro', isa => 'Str');
+  has CacheNodeId => (is => 'ro', isa => 'Str');
+  has CurrentRole => (is => 'ro', isa => 'Str');
+  has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
+  has ReadEndpoint => (is => 'ro', isa => 'Aws::ElastiCache::Endpoint');
 }
 
 class Aws::ElastiCache::NotificationConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {

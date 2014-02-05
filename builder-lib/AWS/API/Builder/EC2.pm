@@ -51,8 +51,13 @@ class AWS::API::Builder::EC2 {
       } 
     }
 
-    # First call may register more inner classes
+    my $last_seen_inner_classes = scalar(keys %{ $self->inner_classes });
     $self->make_inner_classes();
+    while ($last_seen_inner_classes != scalar(keys %{ $self->inner_classes })){
+      $last_seen_inner_classes = scalar(keys %{ $self->inner_classes });
+      $self->make_inner_classes();
+    }
+      
     my $inner_output .= $self->make_inner_classes();
 
     my $class = q#
@@ -243,8 +248,8 @@ class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_
       # This is an inner class. We have to generate an inner class
       $type = $param_props->{ shape_name };
       die "doesn't have a shape_name entry for $param_name with def " . Dumper($param_props) if (not defined $type);
-  
-      if ($type !~ /^AWS\:\:/) {
+ 
+      if ($type !~ /^Aws\:\:/) {
         # If the type isn't in the AWS namespace, we prefix it with our class name,
         # and queue it for building. Else the class is assumed to already be built
         my $api = $self->api;
