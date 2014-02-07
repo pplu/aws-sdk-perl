@@ -412,122 +412,105 @@ class Aws::DirectConnect::DescribeVirtualInterfacesResult with AWS::API::ResultP
 
 }
 
-class Aws::DirectConnect with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::XMLResponse) {
+class Aws::DirectConnect with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'directconnect');
   has version => (is => 'ro', isa => 'Str', default => '2012-10-25');
+  has target_prefix => (is => 'ro', isa => 'Str', default => 'OvertureService');
+  has json_version => (is => 'ro', isa => 'Str', default => "1.1");
   
   method AllocateConnectionOnInterconnect (%args) {
     my $call = Aws::DirectConnect::AllocateConnectionOnInterconnect->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::AllocateConnectionOnInterconnectResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::AllocateConnectionOnInterconnectResult->from_result($result);return $o_result;
   }
   method AllocatePrivateVirtualInterface (%args) {
     my $call = Aws::DirectConnect::AllocatePrivateVirtualInterface->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::AllocatePrivateVirtualInterfaceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::AllocatePrivateVirtualInterfaceResult->from_result($result);return $o_result;
   }
   method AllocatePublicVirtualInterface (%args) {
     my $call = Aws::DirectConnect::AllocatePublicVirtualInterface->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::AllocatePublicVirtualInterfaceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::AllocatePublicVirtualInterfaceResult->from_result($result);return $o_result;
   }
   method ConfirmConnection (%args) {
     my $call = Aws::DirectConnect::ConfirmConnection->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::ConfirmConnectionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::ConfirmConnectionResult->from_result($result);return $o_result;
   }
   method ConfirmPrivateVirtualInterface (%args) {
     my $call = Aws::DirectConnect::ConfirmPrivateVirtualInterface->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::ConfirmPrivateVirtualInterfaceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::ConfirmPrivateVirtualInterfaceResult->from_result($result);return $o_result;
   }
   method ConfirmPublicVirtualInterface (%args) {
     my $call = Aws::DirectConnect::ConfirmPublicVirtualInterface->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::ConfirmPublicVirtualInterfaceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::ConfirmPublicVirtualInterfaceResult->from_result($result);return $o_result;
   }
   method CreateConnection (%args) {
     my $call = Aws::DirectConnect::CreateConnection->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::CreateConnectionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::CreateConnectionResult->from_result($result);return $o_result;
   }
   method CreateInterconnect (%args) {
     my $call = Aws::DirectConnect::CreateInterconnect->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::CreateInterconnectResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::CreateInterconnectResult->from_result($result);return $o_result;
   }
   method CreatePrivateVirtualInterface (%args) {
     my $call = Aws::DirectConnect::CreatePrivateVirtualInterface->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::CreatePrivateVirtualInterfaceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::CreatePrivateVirtualInterfaceResult->from_result($result);return $o_result;
   }
   method CreatePublicVirtualInterface (%args) {
     my $call = Aws::DirectConnect::CreatePublicVirtualInterface->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::CreatePublicVirtualInterfaceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::CreatePublicVirtualInterfaceResult->from_result($result);return $o_result;
   }
   method DeleteConnection (%args) {
     my $call = Aws::DirectConnect::DeleteConnection->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::DeleteConnectionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::DeleteConnectionResult->from_result($result);return $o_result;
   }
   method DeleteInterconnect (%args) {
     my $call = Aws::DirectConnect::DeleteInterconnect->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::DeleteInterconnectResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::DeleteInterconnectResult->from_result($result);return $o_result;
   }
   method DeleteVirtualInterface (%args) {
     my $call = Aws::DirectConnect::DeleteVirtualInterface->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::DeleteVirtualInterfaceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::DeleteVirtualInterfaceResult->from_result($result);return $o_result;
   }
   method DescribeConnections (%args) {
     my $call = Aws::DirectConnect::DescribeConnections->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::DescribeConnectionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::DescribeConnectionsResult->from_result($result);return $o_result;
   }
   method DescribeConnectionsOnInterconnect (%args) {
     my $call = Aws::DirectConnect::DescribeConnectionsOnInterconnect->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::DescribeConnectionsOnInterconnectResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::DescribeConnectionsOnInterconnectResult->from_result($result);return $o_result;
   }
   method DescribeInterconnects (%args) {
     my $call = Aws::DirectConnect::DescribeInterconnects->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::DescribeInterconnectsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::DescribeInterconnectsResult->from_result($result);return $o_result;
   }
   method DescribeLocations (%args) {
     my $call = Aws::DirectConnect::DescribeLocations->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::DescribeLocationsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::DescribeLocationsResult->from_result($result);return $o_result;
   }
   method DescribeVirtualGateways (%args) {
     my $call = Aws::DirectConnect::DescribeVirtualGateways->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::DescribeVirtualGatewaysResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::DescribeVirtualGatewaysResult->from_result($result);return $o_result;
   }
   method DescribeVirtualInterfaces (%args) {
     my $call = Aws::DirectConnect::DescribeVirtualInterfaces->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DirectConnect::DescribeVirtualInterfacesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DirectConnect::DescribeVirtualInterfacesResult->from_result($result);return $o_result;
   }
 }

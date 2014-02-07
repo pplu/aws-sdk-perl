@@ -734,290 +734,245 @@ class Aws::StorageGateway::UpdateSnapshotScheduleResult with AWS::API::ResultPar
 
 }
 
-class Aws::StorageGateway with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::XMLResponse) {
+class Aws::StorageGateway with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'storagegateway');
   has version => (is => 'ro', isa => 'Str', default => '2013-06-30');
+  has target_prefix => (is => 'ro', isa => 'Str', default => 'StorageGateway_20130630');
+  has json_version => (is => 'ro', isa => 'Str', default => "1.1");
   
   method ActivateGateway (%args) {
     my $call = Aws::StorageGateway::ActivateGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::ActivateGatewayResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::ActivateGatewayResult->from_result($result);return $o_result;
   }
   method AddCache (%args) {
     my $call = Aws::StorageGateway::AddCache->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::AddCacheResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::AddCacheResult->from_result($result);return $o_result;
   }
   method AddUploadBuffer (%args) {
     my $call = Aws::StorageGateway::AddUploadBuffer->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::AddUploadBufferResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::AddUploadBufferResult->from_result($result);return $o_result;
   }
   method AddWorkingStorage (%args) {
     my $call = Aws::StorageGateway::AddWorkingStorage->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::AddWorkingStorageResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::AddWorkingStorageResult->from_result($result);return $o_result;
   }
   method CancelArchival (%args) {
     my $call = Aws::StorageGateway::CancelArchival->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::CancelArchivalResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::CancelArchivalResult->from_result($result);return $o_result;
   }
   method CancelRetrieval (%args) {
     my $call = Aws::StorageGateway::CancelRetrieval->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::CancelRetrievalResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::CancelRetrievalResult->from_result($result);return $o_result;
   }
   method CreateCachediSCSIVolume (%args) {
     my $call = Aws::StorageGateway::CreateCachediSCSIVolume->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::CreateCachediSCSIVolumeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::CreateCachediSCSIVolumeResult->from_result($result);return $o_result;
   }
   method CreateSnapshot (%args) {
     my $call = Aws::StorageGateway::CreateSnapshot->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::CreateSnapshotResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::CreateSnapshotResult->from_result($result);return $o_result;
   }
   method CreateSnapshotFromVolumeRecoveryPoint (%args) {
     my $call = Aws::StorageGateway::CreateSnapshotFromVolumeRecoveryPoint->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointResult->from_result($result);return $o_result;
   }
   method CreateStorediSCSIVolume (%args) {
     my $call = Aws::StorageGateway::CreateStorediSCSIVolume->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::CreateStorediSCSIVolumeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::CreateStorediSCSIVolumeResult->from_result($result);return $o_result;
   }
   method CreateTapes (%args) {
     my $call = Aws::StorageGateway::CreateTapes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::CreateTapesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::CreateTapesResult->from_result($result);return $o_result;
   }
   method DeleteBandwidthRateLimit (%args) {
     my $call = Aws::StorageGateway::DeleteBandwidthRateLimit->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DeleteBandwidthRateLimitResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DeleteBandwidthRateLimitResult->from_result($result);return $o_result;
   }
   method DeleteChapCredentials (%args) {
     my $call = Aws::StorageGateway::DeleteChapCredentials->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DeleteChapCredentialsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DeleteChapCredentialsResult->from_result($result);return $o_result;
   }
   method DeleteGateway (%args) {
     my $call = Aws::StorageGateway::DeleteGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DeleteGatewayResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DeleteGatewayResult->from_result($result);return $o_result;
   }
   method DeleteSnapshotSchedule (%args) {
     my $call = Aws::StorageGateway::DeleteSnapshotSchedule->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DeleteSnapshotScheduleResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DeleteSnapshotScheduleResult->from_result($result);return $o_result;
   }
   method DeleteTape (%args) {
     my $call = Aws::StorageGateway::DeleteTape->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DeleteTapeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DeleteTapeResult->from_result($result);return $o_result;
   }
   method DeleteTapeArchive (%args) {
     my $call = Aws::StorageGateway::DeleteTapeArchive->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DeleteTapeArchiveResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DeleteTapeArchiveResult->from_result($result);return $o_result;
   }
   method DeleteVolume (%args) {
     my $call = Aws::StorageGateway::DeleteVolume->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DeleteVolumeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DeleteVolumeResult->from_result($result);return $o_result;
   }
   method DescribeBandwidthRateLimit (%args) {
     my $call = Aws::StorageGateway::DescribeBandwidthRateLimit->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeBandwidthRateLimitResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DescribeBandwidthRateLimitResult->from_result($result);return $o_result;
   }
   method DescribeCache (%args) {
     my $call = Aws::StorageGateway::DescribeCache->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeCacheResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DescribeCacheResult->from_result($result);return $o_result;
   }
   method DescribeCachediSCSIVolumes (%args) {
     my $call = Aws::StorageGateway::DescribeCachediSCSIVolumes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeCachediSCSIVolumesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DescribeCachediSCSIVolumesResult->from_result($result);return $o_result;
   }
   method DescribeChapCredentials (%args) {
     my $call = Aws::StorageGateway::DescribeChapCredentials->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeChapCredentialsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DescribeChapCredentialsResult->from_result($result);return $o_result;
   }
   method DescribeGatewayInformation (%args) {
     my $call = Aws::StorageGateway::DescribeGatewayInformation->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeGatewayInformationResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DescribeGatewayInformationResult->from_result($result);return $o_result;
   }
   method DescribeMaintenanceStartTime (%args) {
     my $call = Aws::StorageGateway::DescribeMaintenanceStartTime->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeMaintenanceStartTimeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DescribeMaintenanceStartTimeResult->from_result($result);return $o_result;
   }
   method DescribeSnapshotSchedule (%args) {
     my $call = Aws::StorageGateway::DescribeSnapshotSchedule->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeSnapshotScheduleResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DescribeSnapshotScheduleResult->from_result($result);return $o_result;
   }
   method DescribeStorediSCSIVolumes (%args) {
     my $call = Aws::StorageGateway::DescribeStorediSCSIVolumes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeStorediSCSIVolumesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DescribeStorediSCSIVolumesResult->from_result($result);return $o_result;
   }
   method DescribeTapeArchives (%args) {
     my $call = Aws::StorageGateway::DescribeTapeArchives->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeTapeArchivesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DescribeTapeArchivesResult->from_result($result);return $o_result;
   }
   method DescribeTapeRecoveryPoints (%args) {
     my $call = Aws::StorageGateway::DescribeTapeRecoveryPoints->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeTapeRecoveryPointsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DescribeTapeRecoveryPointsResult->from_result($result);return $o_result;
   }
   method DescribeTapes (%args) {
     my $call = Aws::StorageGateway::DescribeTapes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeTapesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DescribeTapesResult->from_result($result);return $o_result;
   }
   method DescribeUploadBuffer (%args) {
     my $call = Aws::StorageGateway::DescribeUploadBuffer->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeUploadBufferResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DescribeUploadBufferResult->from_result($result);return $o_result;
   }
   method DescribeVTLDevices (%args) {
     my $call = Aws::StorageGateway::DescribeVTLDevices->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeVTLDevicesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DescribeVTLDevicesResult->from_result($result);return $o_result;
   }
   method DescribeWorkingStorage (%args) {
     my $call = Aws::StorageGateway::DescribeWorkingStorage->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeWorkingStorageResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DescribeWorkingStorageResult->from_result($result);return $o_result;
   }
   method DisableGateway (%args) {
     my $call = Aws::StorageGateway::DisableGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DisableGatewayResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::DisableGatewayResult->from_result($result);return $o_result;
   }
   method ListGateways (%args) {
     my $call = Aws::StorageGateway::ListGateways->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::ListGatewaysResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::ListGatewaysResult->from_result($result);return $o_result;
   }
   method ListLocalDisks (%args) {
     my $call = Aws::StorageGateway::ListLocalDisks->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::ListLocalDisksResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::ListLocalDisksResult->from_result($result);return $o_result;
   }
   method ListVolumeRecoveryPoints (%args) {
     my $call = Aws::StorageGateway::ListVolumeRecoveryPoints->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::ListVolumeRecoveryPointsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::ListVolumeRecoveryPointsResult->from_result($result);return $o_result;
   }
   method ListVolumes (%args) {
     my $call = Aws::StorageGateway::ListVolumes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::ListVolumesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::ListVolumesResult->from_result($result);return $o_result;
   }
   method RetrieveTapeArchive (%args) {
     my $call = Aws::StorageGateway::RetrieveTapeArchive->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::RetrieveTapeArchiveResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::RetrieveTapeArchiveResult->from_result($result);return $o_result;
   }
   method RetrieveTapeRecoveryPoint (%args) {
     my $call = Aws::StorageGateway::RetrieveTapeRecoveryPoint->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::RetrieveTapeRecoveryPointResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::RetrieveTapeRecoveryPointResult->from_result($result);return $o_result;
   }
   method ShutdownGateway (%args) {
     my $call = Aws::StorageGateway::ShutdownGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::ShutdownGatewayResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::ShutdownGatewayResult->from_result($result);return $o_result;
   }
   method StartGateway (%args) {
     my $call = Aws::StorageGateway::StartGateway->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::StartGatewayResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::StartGatewayResult->from_result($result);return $o_result;
   }
   method UpdateBandwidthRateLimit (%args) {
     my $call = Aws::StorageGateway::UpdateBandwidthRateLimit->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::UpdateBandwidthRateLimitResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::UpdateBandwidthRateLimitResult->from_result($result);return $o_result;
   }
   method UpdateChapCredentials (%args) {
     my $call = Aws::StorageGateway::UpdateChapCredentials->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::UpdateChapCredentialsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::UpdateChapCredentialsResult->from_result($result);return $o_result;
   }
   method UpdateGatewayInformation (%args) {
     my $call = Aws::StorageGateway::UpdateGatewayInformation->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::UpdateGatewayInformationResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::UpdateGatewayInformationResult->from_result($result);return $o_result;
   }
   method UpdateGatewaySoftwareNow (%args) {
     my $call = Aws::StorageGateway::UpdateGatewaySoftwareNow->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::UpdateGatewaySoftwareNowResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::UpdateGatewaySoftwareNowResult->from_result($result);return $o_result;
   }
   method UpdateMaintenanceStartTime (%args) {
     my $call = Aws::StorageGateway::UpdateMaintenanceStartTime->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::UpdateMaintenanceStartTimeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::UpdateMaintenanceStartTimeResult->from_result($result);return $o_result;
   }
   method UpdateSnapshotSchedule (%args) {
     my $call = Aws::StorageGateway::UpdateSnapshotSchedule->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::UpdateSnapshotScheduleResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::StorageGateway::UpdateSnapshotScheduleResult->from_result($result);return $o_result;
   }
 }

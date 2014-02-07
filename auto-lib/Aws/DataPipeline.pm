@@ -2,6 +2,9 @@
 use MooseX::Declare;
 use AWS::API;
 
+use Moose::Util::TypeConstraints;
+enum 'Aws::DataPipeline::OperatorType', ['EQ','REF_EQ','LE','GE','BETWEEN',];
+
 
 class Aws::DataPipeline::Field with (AWS::API::ResultParser, AWS::API::ToParams) {
   has key => (is => 'ro', isa => 'Str', required => 1);
@@ -12,6 +15,11 @@ class Aws::DataPipeline::Field with (AWS::API::ResultParser, AWS::API::ToParams)
 class Aws::DataPipeline::InstanceIdentity with (AWS::API::ResultParser, AWS::API::ToParams) {
   has document => (is => 'ro', isa => 'Str');
   has signature => (is => 'ro', isa => 'Str');
+}
+
+class Aws::DataPipeline::Operator with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has type => (is => 'ro', isa => 'Aws::DataPipeline::OperatorType');
+  has values => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
 class Aws::DataPipeline::PipelineDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -32,7 +40,10 @@ class Aws::DataPipeline::PipelineObject with (AWS::API::ResultParser, AWS::API::
   has name => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::DataPipeline::PipelineObjectMap with AWS::API::MapParser {
+class Aws::DataPipeline::PipelineObjectMap with AWS::API::StrToStrMapParser {
+  has Map => (is => 'ro', isa => 'HashRef[Str]');
+}
+
 class Aws::DataPipeline::Query with (AWS::API::ResultParser, AWS::API::ToParams) {
   has selectors => (is => 'ro', isa => 'ArrayRef[Aws::DataPipeline::Selector]');
 }
@@ -263,21 +274,21 @@ class Aws::DataPipeline::ValidatePipelineDefinitionResult with AWS::API::ResultP
 
 }
 
-class Aws::DataPipeline with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::XMLResponse) {
+class Aws::DataPipeline with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'datapipeline');
   has version => (is => 'ro', isa => 'Str', default => '2012-10-29');
+  has target_prefix => (is => 'ro', isa => 'Str', default => 'DataPipeline');
+  has json_version => (is => 'ro', isa => 'Str', default => "1.1");
   
   method ActivatePipeline (%args) {
     my $call = Aws::DataPipeline::ActivatePipeline->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::ActivatePipelineResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DataPipeline::ActivatePipelineResult->from_result($result);return $o_result;
   }
   method CreatePipeline (%args) {
     my $call = Aws::DataPipeline::CreatePipeline->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::CreatePipelineResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DataPipeline::CreatePipelineResult->from_result($result);return $o_result;
   }
   method DeletePipeline (%args) {
     my $call = Aws::DataPipeline::DeletePipeline->new(%args);
@@ -287,62 +298,52 @@ class Aws::DataPipeline with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller
   method DescribeObjects (%args) {
     my $call = Aws::DataPipeline::DescribeObjects->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::DescribeObjectsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DataPipeline::DescribeObjectsResult->from_result($result);return $o_result;
   }
   method DescribePipelines (%args) {
     my $call = Aws::DataPipeline::DescribePipelines->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::DescribePipelinesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DataPipeline::DescribePipelinesResult->from_result($result);return $o_result;
   }
   method EvaluateExpression (%args) {
     my $call = Aws::DataPipeline::EvaluateExpression->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::EvaluateExpressionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DataPipeline::EvaluateExpressionResult->from_result($result);return $o_result;
   }
   method GetPipelineDefinition (%args) {
     my $call = Aws::DataPipeline::GetPipelineDefinition->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::GetPipelineDefinitionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DataPipeline::GetPipelineDefinitionResult->from_result($result);return $o_result;
   }
   method ListPipelines (%args) {
     my $call = Aws::DataPipeline::ListPipelines->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::ListPipelinesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DataPipeline::ListPipelinesResult->from_result($result);return $o_result;
   }
   method PollForTask (%args) {
     my $call = Aws::DataPipeline::PollForTask->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::PollForTaskResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DataPipeline::PollForTaskResult->from_result($result);return $o_result;
   }
   method PutPipelineDefinition (%args) {
     my $call = Aws::DataPipeline::PutPipelineDefinition->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::PutPipelineDefinitionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DataPipeline::PutPipelineDefinitionResult->from_result($result);return $o_result;
   }
   method QueryObjects (%args) {
     my $call = Aws::DataPipeline::QueryObjects->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::QueryObjectsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DataPipeline::QueryObjectsResult->from_result($result);return $o_result;
   }
   method ReportTaskProgress (%args) {
     my $call = Aws::DataPipeline::ReportTaskProgress->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::ReportTaskProgressResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DataPipeline::ReportTaskProgressResult->from_result($result);return $o_result;
   }
   method ReportTaskRunnerHeartbeat (%args) {
     my $call = Aws::DataPipeline::ReportTaskRunnerHeartbeat->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::ReportTaskRunnerHeartbeatResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DataPipeline::ReportTaskRunnerHeartbeatResult->from_result($result);return $o_result;
   }
   method SetStatus (%args) {
     my $call = Aws::DataPipeline::SetStatus->new(%args);
@@ -352,13 +353,11 @@ class Aws::DataPipeline with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller
   method SetTaskStatus (%args) {
     my $call = Aws::DataPipeline::SetTaskStatus->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::SetTaskStatusResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DataPipeline::SetTaskStatusResult->from_result($result);return $o_result;
   }
   method ValidatePipelineDefinition (%args) {
     my $call = Aws::DataPipeline::ValidatePipelineDefinition->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::ValidatePipelineDefinitionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::DataPipeline::ValidatePipelineDefinitionResult->from_result($result);return $o_result;
   }
 }

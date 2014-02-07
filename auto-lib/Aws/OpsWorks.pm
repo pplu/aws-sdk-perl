@@ -55,7 +55,10 @@ class Aws::OpsWorks::Command with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Type => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::DailyAutoScalingSchedule with AWS::API::MapParser {
+class Aws::OpsWorks::DailyAutoScalingSchedule with AWS::API::StrToStrMapParser {
+  has Map => (is => 'ro', isa => 'HashRef[Str]');
+}
+
 class Aws::OpsWorks::Deployment with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AppId => (is => 'ro', isa => 'Str');
   has Command => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommand');
@@ -76,7 +79,10 @@ class Aws::OpsWorks::DeploymentCommand with (AWS::API::ResultParser, AWS::API::T
   has Name => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommandName', required => 1);
 }
 
-class Aws::OpsWorks::DeploymentCommandArgs with AWS::API::MapParser {
+class Aws::OpsWorks::DeploymentCommandArgs with AWS::API::StrToStrMapParser {
+  has Map => (is => 'ro', isa => 'HashRef[Str]');
+}
+
 class Aws::OpsWorks::ElasticIp with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Domain => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
@@ -1002,9 +1008,11 @@ class Aws::OpsWorks::RegisterVolumeResult with AWS::API::ResultParser {
 
 }
 
-class Aws::OpsWorks with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::XMLResponse) {
+class Aws::OpsWorks with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
   has service => (is => 'ro', isa => 'Str', default => 'opsworks');
   has version => (is => 'ro', isa => 'Str', default => '2013-02-18');
+  has target_prefix => (is => 'ro', isa => 'Str', default => 'OpsWorks_20130218');
+  has json_version => (is => 'ro', isa => 'Str', default => "1.1");
   
   method AssignVolume (%args) {
     my $call = Aws::OpsWorks::AssignVolume->new(%args);
@@ -1024,44 +1032,37 @@ class Aws::OpsWorks with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
   method CloneStack (%args) {
     my $call = Aws::OpsWorks::CloneStack->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::CloneStackResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::CloneStackResult->from_result($result);return $o_result;
   }
   method CreateApp (%args) {
     my $call = Aws::OpsWorks::CreateApp->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::CreateAppResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::CreateAppResult->from_result($result);return $o_result;
   }
   method CreateDeployment (%args) {
     my $call = Aws::OpsWorks::CreateDeployment->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::CreateDeploymentResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::CreateDeploymentResult->from_result($result);return $o_result;
   }
   method CreateInstance (%args) {
     my $call = Aws::OpsWorks::CreateInstance->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::CreateInstanceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::CreateInstanceResult->from_result($result);return $o_result;
   }
   method CreateLayer (%args) {
     my $call = Aws::OpsWorks::CreateLayer->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::CreateLayerResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::CreateLayerResult->from_result($result);return $o_result;
   }
   method CreateStack (%args) {
     my $call = Aws::OpsWorks::CreateStack->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::CreateStackResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::CreateStackResult->from_result($result);return $o_result;
   }
   method CreateUserProfile (%args) {
     my $call = Aws::OpsWorks::CreateUserProfile->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::CreateUserProfileResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::CreateUserProfileResult->from_result($result);return $o_result;
   }
   method DeleteApp (%args) {
     my $call = Aws::OpsWorks::DeleteApp->new(%args);
@@ -1101,104 +1102,87 @@ class Aws::OpsWorks with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
   method DescribeApps (%args) {
     my $call = Aws::OpsWorks::DescribeApps->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeAppsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeAppsResult->from_result($result);return $o_result;
   }
   method DescribeCommands (%args) {
     my $call = Aws::OpsWorks::DescribeCommands->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeCommandsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeCommandsResult->from_result($result);return $o_result;
   }
   method DescribeDeployments (%args) {
     my $call = Aws::OpsWorks::DescribeDeployments->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeDeploymentsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeDeploymentsResult->from_result($result);return $o_result;
   }
   method DescribeElasticIps (%args) {
     my $call = Aws::OpsWorks::DescribeElasticIps->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeElasticIpsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeElasticIpsResult->from_result($result);return $o_result;
   }
   method DescribeElasticLoadBalancers (%args) {
     my $call = Aws::OpsWorks::DescribeElasticLoadBalancers->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeElasticLoadBalancersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeElasticLoadBalancersResult->from_result($result);return $o_result;
   }
   method DescribeInstances (%args) {
     my $call = Aws::OpsWorks::DescribeInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeInstancesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeInstancesResult->from_result($result);return $o_result;
   }
   method DescribeLayers (%args) {
     my $call = Aws::OpsWorks::DescribeLayers->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeLayersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeLayersResult->from_result($result);return $o_result;
   }
   method DescribeLoadBasedAutoScaling (%args) {
     my $call = Aws::OpsWorks::DescribeLoadBasedAutoScaling->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeLoadBasedAutoScalingResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeLoadBasedAutoScalingResult->from_result($result);return $o_result;
   }
   method DescribeMyUserProfile (%args) {
     my $call = Aws::OpsWorks::DescribeMyUserProfile->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeMyUserProfileResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeMyUserProfileResult->from_result($result);return $o_result;
   }
   method DescribePermissions (%args) {
     my $call = Aws::OpsWorks::DescribePermissions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribePermissionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribePermissionsResult->from_result($result);return $o_result;
   }
   method DescribeRaidArrays (%args) {
     my $call = Aws::OpsWorks::DescribeRaidArrays->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeRaidArraysResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeRaidArraysResult->from_result($result);return $o_result;
   }
   method DescribeServiceErrors (%args) {
     my $call = Aws::OpsWorks::DescribeServiceErrors->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeServiceErrorsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeServiceErrorsResult->from_result($result);return $o_result;
   }
   method DescribeStacks (%args) {
     my $call = Aws::OpsWorks::DescribeStacks->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeStacksResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeStacksResult->from_result($result);return $o_result;
   }
   method DescribeStackSummary (%args) {
     my $call = Aws::OpsWorks::DescribeStackSummary->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeStackSummaryResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeStackSummaryResult->from_result($result);return $o_result;
   }
   method DescribeTimeBasedAutoScaling (%args) {
     my $call = Aws::OpsWorks::DescribeTimeBasedAutoScaling->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeTimeBasedAutoScalingResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeTimeBasedAutoScalingResult->from_result($result);return $o_result;
   }
   method DescribeUserProfiles (%args) {
     my $call = Aws::OpsWorks::DescribeUserProfiles->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeUserProfilesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeUserProfilesResult->from_result($result);return $o_result;
   }
   method DescribeVolumes (%args) {
     my $call = Aws::OpsWorks::DescribeVolumes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeVolumesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::DescribeVolumesResult->from_result($result);return $o_result;
   }
   method DetachElasticLoadBalancer (%args) {
     my $call = Aws::OpsWorks::DetachElasticLoadBalancer->new(%args);
@@ -1213,8 +1197,7 @@ class Aws::OpsWorks with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
   method GetHostnameSuggestion (%args) {
     my $call = Aws::OpsWorks::GetHostnameSuggestion->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::GetHostnameSuggestionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::GetHostnameSuggestionResult->from_result($result);return $o_result;
   }
   method RebootInstance (%args) {
     my $call = Aws::OpsWorks::RebootInstance->new(%args);
@@ -1224,14 +1207,12 @@ class Aws::OpsWorks with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Ne
   method RegisterElasticIp (%args) {
     my $call = Aws::OpsWorks::RegisterElasticIp->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::RegisterElasticIpResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::RegisterElasticIpResult->from_result($result);return $o_result;
   }
   method RegisterVolume (%args) {
     my $call = Aws::OpsWorks::RegisterVolume->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::RegisterVolumeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::OpsWorks::RegisterVolumeResult->from_result($result);return $o_result;
   }
   method SetLoadBasedAutoScaling (%args) {
     my $call = Aws::OpsWorks::SetLoadBasedAutoScaling->new(%args);

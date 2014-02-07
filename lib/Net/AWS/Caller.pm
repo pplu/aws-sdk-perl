@@ -1,11 +1,11 @@
 use MooseX::Declare;
 
 role Net::AWS::V2Signature {
-  use POSIX qw(strftime);
   use Digest::SHA qw(hmac_sha256);
   use MIME::Base64 qw(encode_base64);
-  use HTTP::Request::Common;
   use Carp;
+  use URI;
+  use POSIX qw/strftime/;
 
 has 'base_url'           => ( 
     is          => 'ro', 
@@ -25,27 +25,15 @@ has '_base_url_host'     => (
     }
 );
 
-sub _timestamp {
-    return strftime("%Y-%m-%dT%H:%M:%SZ",gmtime);
-}
-    
 sub sign {
-    my ($self, $params) = @_;
-    my %args = %$params;
-    my $action                      = delete $args{Action};
-    
-    croak "Action must be defined!\n" if not defined $action;
+    my ($self, $request) = @_;
 
-    my %sign_hash                   = %args;
-    my $timestamp                   = $self->_timestamp;
+    $request->parameters->{ SignatureVersion } = "2";
+    $request->parameters->{ SignatureMethod } = "HmacSHA256";
+    $request->parameters->{ Timestamp } = strftime("%Y-%m-%dT%H:%M:%SZ",gmtime);
+    $request->parameters->{ AWSAccessKeyId } = $self->access_key;
 
-    $sign_hash{AWSAccessKeyId}      = $self->access_key;
-    $sign_hash{Action}              = $action;
-    $sign_hash{Timestamp}           = $timestamp;
-    $sign_hash{Version}             = $self->version;
-    $sign_hash{SignatureVersion}    = "2";
-    $sign_hash{SignatureMethod}     = "HmacSHA256";
-
+    my %sign_hash = %{ $request->parameters };
     my $sign_this = "POST\n";
     $sign_this .= $self->_base_url_host . "\n";
     $sign_this .= "/\n";
@@ -53,22 +41,14 @@ sub sign {
 
     $sign_this .= $self->www_form_urlencode(\%sign_hash);
 
-    warn "QUERY TO SIGN: $sign_this" if $self->debug;
+    warn "QUERY TO SIGN: $sign_this" if ($self->debug);
+
     my $encoded = encode_base64(hmac_sha256($sign_this, $self->secret_key), '');
 
-    my $post_params = {
-        Action                => $action,
-        SignatureVersion      => "2",
-        SignatureMethod       => "HmacSHA256",
-        AWSAccessKeyId        => $self->access_key,
-        Timestamp             => $timestamp,
-        Version               => $self->version,
-        Signature             => $encoded,
-        %args
-    };
+    $request->parameters->{ Signature } = $encoded;
 
-    my $request = POST $self->endpoint, Content => $post_params;
-    return $request;
+    #Since the parameters and the signing goes into the content, we have
+    $request->generate_content_from_parameters;
 }
 
 
@@ -125,32 +105,90 @@ role Net::AWS::V4Signature {
   use Net::Amazon::Signature::V4;
   #requires 'region';
   requires 'service';
-  use HTTP::Request::Common;
   use POSIX qw(strftime);
 
   sub sign {
-    my ($self, $params) = @_;
-
-    my $post_params = {
-        Version               => $self->version,
-        %$params
-    };
-
-    my $request = POST $self->endpoint, Content => $post_params;
+    my ($self, $request) = @_;
 
     $request->header( Date => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
     $request->header( Host => $self->endpoint_host );
 
     my $sig = Net::Amazon::Signature::V4->new( $self->access_key, $self->secret_key, $self->region, $self->service );
-    my $signed_req = $sig->sign( $request );
-    return $signed_req;
+    $sig->sign( $request );
   }
 }
 
 role Net::AWS::JsonCaller {
-  method _api_caller {
-        
-  } 
+  use JSON;
+  use POSIX qw(strftime);
+  has json_version => (is => 'ro', isa => 'Str', required => 1);
+
+  method _is_internal_type ($att_type) {
+    return ($att_type eq 'Str' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
+  }
+
+  method _to_params ($params) {
+    my %p;
+    foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+      if (defined $params->$att) {
+        my $att_type = $params->meta->get_attribute($att)->type_constraint;
+        if ($self->_is_internal_type($att_type)) {
+          $p{ $att } = $params->{$att};
+        } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
+          if ($self->_is_internal_type("$1")){
+            $p{ $att } = $params->$att;
+          } else {
+            $p{ $att } = $self->$att->_to_params($params->$att);
+          }
+        } else {
+          $p{ $att } = $params->$att->to_params($params->$att);
+        }
+      }
+    }
+    return \%p;
+  }
+
+
+  method _api_caller ($action, $params) {
+    my $request = Net::AWS::APIRequest->new(url => $self->endpoint, method => 'POST');
+
+    $request->parameters({ Action => $action,
+                           Version => $self->version,
+                           AWSAccessKeyId => $self->access_key,
+                           Timestamp => strftime("%Y-%m-%dT%H:%M:%SZ",gmtime),
+                        });
+    $request->header('X-Amz-Target', sprintf('%s.%s', $self->target_prefix, $action));
+
+    my $j_version = $self->json_version;
+    $request->headers->content_type("application/x-amz-json-$j_version");
+
+    #$request->header('Content-Encoding', 'amz-1.0');
+    $request->header( 'X-Amz-Date' => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
+    $request->header( Host => $self->endpoint_host );
+
+    my $data = $self->_to_params($params);
+    $request->content(to_json($data));
+
+    $self->sign($request);
+
+    return $self->send($request);
+  }
+}
+
+role Net::AWS::JsonResponse {
+  use JSON;
+  use Carp;
+
+  method _process_response ($data) {
+    my $json = from_json( $data );
+    
+    #TODO: Verify if errors come back in json
+    if ( defined $json->{Errors} ) {
+      croak "Error: $data";
+    }
+
+    return $json;
+  }
 }
 
 role Net::AWS::QueryCaller {
@@ -186,8 +224,50 @@ role Net::AWS::QueryCaller {
     }
     return %p;
   }
+
   method _api_caller ($action, $params) {
-    return $self->send(Action => $action, $self->_to_params($params));
+    my $request = Net::AWS::APIRequest->new(url => $self->endpoint, method => 'POST');
+
+    $request->parameters({ Action => $action, 
+                           Version   => $self->version,
+                           $self->_to_params($params) 
+    });
+
+    $request->generate_content_from_parameters;
+
+    $self->sign($request);
+
+    return $self->send($request);
+  }
+}
+
+class Net::AWS::APIRequest {
+  use HTTP::Headers;
+  use URI;
+
+  has parameters => (is => 'rw', isa => 'HashRef', default => sub { {} });
+  has headers    => (is => 'rw', isa => 'HTTP::Headers', default => sub { HTTP::Headers->new });
+  has content    => (is => 'rw', isa => 'Str');
+  has method     => (is => 'rw', isa => 'Str', required => 1);
+  has url        => (is => 'rw', isa => 'Str', required => 1);
+
+  sub uri { '/' };
+
+  sub header {
+    my ($self, $header, $value) = @_;
+    $self->headers->header($header, $value) if (defined $value);
+    return $self->headers->header($header);
+  }
+
+  method generate_content_from_parameters {
+    $self->headers->content_type('application/x-www-form-urlencoded');
+    my $url = URI->new('http:');
+    $url->query_form($self->parameters);
+    my $content = $url->query;
+    # HTML/4.01 says that line breaks are represented as "CR LF" pairs (i.e., `%0D%0A')
+    $content =~ s/(?<!%0D)%0A/%0D%0A/g if (defined $content);
+
+    $self->content($content);
   }
 }
 
@@ -228,17 +308,16 @@ role Net::AWS::Caller {
     }
   );
 
-  method send (%params){
-    my $request = $self->sign(\%params);
-
+  method send ($request){
     my $headers = {};
-    $request->scan(sub { $headers->{ $_[0] } = $_[1] });
+    $request->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
+
     my $response = $self->ua->request(
       $request->method,
       $request->url,
       {
         headers => $headers,
-        content => $request->content
+        (defined $request->content)?(content => $request->content):(),
       }
     );
     if ( $response->{success} ) {
