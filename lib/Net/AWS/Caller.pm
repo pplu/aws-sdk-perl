@@ -130,18 +130,19 @@ role Net::AWS::JsonCaller {
   method _to_params ($params) {
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+      my $key = $params->meta->get_attribute($att)->does('Net::AWS::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
         if ($self->_is_internal_type($att_type)) {
-          $p{ $att } = $params->{$att};
+          $p{ $key } = $params->{$att};
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
           if ($self->_is_internal_type("$1")){
-            $p{ $att } = $params->$att;
+            $p{ $key } = $params->$att;
           } else {
-            $p{ $att } = $self->$att->_to_params($params->$att);
+            $p{ $key } = $self->$att->_to_params($params->$att);
           }
         } else {
-          $p{ $att } = $params->$att->to_params($params->$att);
+          $p{ $key } = $params->$att->to_params($params->$att);
         }
       }
     }
@@ -198,27 +199,28 @@ role Net::AWS::QueryCaller {
   method _to_params ($params) {
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+      my $key = $params->meta->get_attribute($att)->does('Net::AWS::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
         if ($self->_is_internal_type($att_type)) {
-          $p{ $att } = $params->{$att};
+          $p{ $key } = $params->{$att};
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
           if ($self->_is_internal_type("$1")){
             my $i = 1;
             foreach my $value (@{ $params->$att }){
-              $p{ sprintf("%s.member.%d", $att, $i) } = $value;
+              $p{ sprintf("%s.member.%d", $key, $i) } = $value;
               $i++
             }
           } else {
             my $i = 1;
             foreach my $value (@{ $params->$att }){
               my $complex_value = $value->_to_params($att);
-              map { $p{ sprintf("%s.member.%d.%s", $att, $i, $_) } = $complex_value->{$_} } keys %$complex_value;
+              map { $p{ sprintf("%s.member.%d.%s", $key, $i, $_) } = $complex_value->{$_} } keys %$complex_value;
               $i++
             }
           }
         } else {
-          $p{ $att } = $params->$att->to_params($params->{$att});
+          $p{ $key } = $params->$att->to_params($params->$att);
         }
       }
     }
@@ -309,6 +311,8 @@ role Net::AWS::Caller {
   );
 
   method send ($request){
+use Data::Dumper;
+print Dumper($request);
     my $headers = {};
     $request->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
 

@@ -68,8 +68,8 @@ class Aws::SQS::SendMessageBatchResultEntry with (AWS::API::ResultParser, AWS::A
 
 
 class Aws::SQS::AddPermission {
-  has Actions => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has AWSAccountIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Actions => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ActionName' , required => 1);
+  has AWSAccountIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AWSAccountId' , required => 1);
   has Label => (is => 'ro', isa => 'Str', required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
@@ -87,7 +87,7 @@ class Aws::SQS::ChangeMessageVisibility {
   has _result_key => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityResult');  
 }
 class Aws::SQS::ChangeMessageVisibilityBatch {
-  has Entries => (is => 'ro', isa => 'ArrayRef[Aws::SQS::ChangeMessageVisibilityBatchRequestEntry]', required => 1);
+  has Entries => (is => 'ro', isa => 'ArrayRef[Aws::SQS::ChangeMessageVisibilityBatchRequestEntry]', traits => ['NameInRequest'], request_name => 'ChangeMessageVisibilityBatchRequestEntry' , required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityBatch');
@@ -95,7 +95,7 @@ class Aws::SQS::ChangeMessageVisibilityBatch {
   has _result_key => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityBatchResult');  
 }
 class Aws::SQS::CreateQueue {
-  has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap');
+  has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap', traits => ['NameInRequest'], request_name => 'Attribute' , traits => ['NameInRequest'], request_name => 'Value' );
   has QueueName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateQueue');
@@ -111,7 +111,7 @@ class Aws::SQS::DeleteMessage {
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteMessageResult');  
 }
 class Aws::SQS::DeleteMessageBatch {
-  has Entries => (is => 'ro', isa => 'ArrayRef[Aws::SQS::DeleteMessageBatchRequestEntry]', required => 1);
+  has Entries => (is => 'ro', isa => 'ArrayRef[Aws::SQS::DeleteMessageBatchRequestEntry]', traits => ['NameInRequest'], request_name => 'DeleteMessageBatchRequestEntry' , required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMessageBatch');
@@ -126,7 +126,7 @@ class Aws::SQS::DeleteQueue {
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteQueueResult');  
 }
 class Aws::SQS::GetQueueAttributes {
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AttributeName' );
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetQueueAttributes');
@@ -156,7 +156,7 @@ class Aws::SQS::ListQueues {
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListQueuesResult');  
 }
 class Aws::SQS::ReceiveMessage {
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AttributeName' );
   has MaxNumberOfMessages => (is => 'ro', isa => 'Int');
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
   has VisibilityTimeout => (is => 'ro', isa => 'Int');
@@ -184,7 +184,7 @@ class Aws::SQS::SendMessage {
   has _result_key => (isa => 'Str', is => 'ro', default => 'SendMessageResult');  
 }
 class Aws::SQS::SendMessageBatch {
-  has Entries => (is => 'ro', isa => 'ArrayRef[Aws::SQS::SendMessageBatchRequestEntry]', required => 1);
+  has Entries => (is => 'ro', isa => 'ArrayRef[Aws::SQS::SendMessageBatchRequestEntry]', traits => ['NameInRequest'], request_name => 'SendMessageBatchRequestEntry' , required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SendMessageBatch');
@@ -192,7 +192,7 @@ class Aws::SQS::SendMessageBatch {
   has _result_key => (isa => 'Str', is => 'ro', default => 'SendMessageBatchResult');  
 }
 class Aws::SQS::SetQueueAttributes {
-  has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap', required => 1);
+  has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap', traits => ['NameInRequest'], request_name => 'Attribute' , traits => ['NameInRequest'], request_name => 'Value' , required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SetQueueAttributes');

@@ -1,6 +1,12 @@
 use MooseX::Declare;
 use Moose::Util::TypeConstraints;
 
+role Net::AWS::Caller::Attribute::Trait::NameInRequest {
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('NameInRequest');
+  has request_name => (is => 'ro', isa => 'Str');
+}
+
 role AWS::API::Attribute::Trait::Unwrapped {
   use Moose::Util;
   Moose::Util::meta_attribute_alias('Unwrapped');

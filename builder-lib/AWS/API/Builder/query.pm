@@ -77,6 +77,8 @@ enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %
 class [% c.api %]::[% operation.name %] {
 [% FOREACH param_name IN operation.input.members.keys.sort -%]
   has [% param_name %] => (is => 'ro', isa => '[% operation.input.members.$param_name.perl_type %]'
+  [%- IF (operation.input.members.$param_name.xmlname) %], traits => ['NameInRequest'], request_name => '[% operation.input.members.$param_name.xmlname %]' [% END %]
+  [%- IF (operation.input.members.$param_name.members.xmlname) %], traits => ['NameInRequest'], request_name => '[% operation.input.members.$param_name.members.xmlname %]' [% END %]
   [%- IF (operation.input.members.$param_name.required) %], required => 1[% END %]);
 [% END %]
   has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');

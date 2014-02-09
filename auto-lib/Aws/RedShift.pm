@@ -315,7 +315,7 @@ class Aws::RedShift::CreateCluster {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ClusterSecurityGroupName' );
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
@@ -331,7 +331,7 @@ class Aws::RedShift::CreateCluster {
   has Port => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
   has _returns => (isa => 'Aws::RedShift::CreateClusterResult', is => 'ro');
@@ -365,7 +365,7 @@ class Aws::RedShift::CreateClusterSnapshot {
 class Aws::RedShift::CreateClusterSubnetGroup {
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterSubnetGroup');
   has _returns => (isa => 'Aws::RedShift::CreateClusterSubnetGroupResult', is => 'ro');
@@ -373,10 +373,10 @@ class Aws::RedShift::CreateClusterSubnetGroup {
 }
 class Aws::RedShift::CreateEventSubscription {
   has Enabled => (is => 'ro', isa => 'Str');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'EventCategory' );
   has Severity => (is => 'ro', isa => 'Str');
   has SnsTopicArn => (is => 'ro', isa => 'Str', required => 1);
-  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SourceId' );
   has SourceType => (is => 'ro', isa => 'Str');
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -667,7 +667,7 @@ class Aws::RedShift::ModifyCluster {
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ClusterSecurityGroupName' );
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
@@ -676,7 +676,7 @@ class Aws::RedShift::ModifyCluster {
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCluster');
   has _returns => (isa => 'Aws::RedShift::ModifyClusterResult', is => 'ro');
@@ -684,7 +684,7 @@ class Aws::RedShift::ModifyCluster {
 }
 class Aws::RedShift::ModifyClusterParameterGroup {
   has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Parameter]', required => 1);
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Parameter]', traits => ['NameInRequest'], request_name => 'Parameter' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyClusterParameterGroup');
   has _returns => (isa => 'Aws::RedShift::ModifyClusterParameterGroupResult', is => 'ro');
@@ -693,7 +693,7 @@ class Aws::RedShift::ModifyClusterParameterGroup {
 class Aws::RedShift::ModifyClusterSubnetGroup {
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyClusterSubnetGroup');
   has _returns => (isa => 'Aws::RedShift::ModifyClusterSubnetGroupResult', is => 'ro');
@@ -701,10 +701,10 @@ class Aws::RedShift::ModifyClusterSubnetGroup {
 }
 class Aws::RedShift::ModifyEventSubscription {
   has Enabled => (is => 'ro', isa => 'Str');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'EventCategory' );
   has Severity => (is => 'ro', isa => 'Str');
   has SnsTopicArn => (is => 'ro', isa => 'Str');
-  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SourceId' );
   has SourceType => (is => 'ro', isa => 'Str');
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -737,7 +737,7 @@ class Aws::RedShift::RebootCluster {
 }
 class Aws::RedShift::ResetClusterParameterGroup {
   has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Parameter]');
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Parameter]', traits => ['NameInRequest'], request_name => 'Parameter' );
   has ResetAllParameters => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ResetClusterParameterGroup');
