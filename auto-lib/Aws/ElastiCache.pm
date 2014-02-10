@@ -1,16 +1,19 @@
 
-use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
 enum 'Aws::ElastiCache::SourceType', ['cache-cluster','cache-parameter-group','cache-security-group','cache-subnet-group',];
 
 
-class Aws::ElastiCache::AvailabilityZone with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::AvailabilityZone {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Name => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::CacheCluster with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::CacheCluster {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str');
@@ -33,7 +36,9 @@ class Aws::ElastiCache::CacheCluster with (AWS::API::ResultParser, AWS::API::ToP
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::SecurityGroupMembership]');
 }
 
-class Aws::ElastiCache::CacheEngineVersion with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::CacheEngineVersion {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CacheEngineDescription => (is => 'ro', isa => 'Str');
   has CacheEngineVersionDescription => (is => 'ro', isa => 'Str');
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
@@ -41,7 +46,9 @@ class Aws::ElastiCache::CacheEngineVersion with (AWS::API::ResultParser, AWS::AP
   has EngineVersion => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::CacheNode with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::CacheNode {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CacheNodeCreateTime => (is => 'ro', isa => 'Str');
   has CacheNodeId => (is => 'ro', isa => 'Str');
   has CacheNodeStatus => (is => 'ro', isa => 'Str');
@@ -50,7 +57,9 @@ class Aws::ElastiCache::CacheNode with (AWS::API::ResultParser, AWS::API::ToPara
   has SourceCacheNodeId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::CacheNodeTypeSpecificParameter with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::CacheNodeTypeSpecificParameter {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AllowedValues => (is => 'ro', isa => 'Str');
   has CacheNodeTypeSpecificValues => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheNodeTypeSpecificValue]');
   has DataType => (is => 'ro', isa => 'Str');
@@ -61,75 +70,99 @@ class Aws::ElastiCache::CacheNodeTypeSpecificParameter with (AWS::API::ResultPar
   has Source => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::CacheNodeTypeSpecificValue with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::CacheNodeTypeSpecificValue {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::CacheParameterGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::CacheParameterGroup {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::CacheParameterGroupStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::CacheParameterGroupStatus {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CacheNodeIdsToReboot => (is => 'ro', isa => 'ArrayRef[Str]');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has ParameterApplyStatus => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::CacheSecurityGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::CacheSecurityGroup {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CacheSecurityGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::EC2SecurityGroup]');
   has OwnerId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::CacheSecurityGroupMembership with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::CacheSecurityGroupMembership {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CacheSecurityGroupName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::CacheSubnetGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::CacheSubnetGroup {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CacheSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::Subnet]');
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::EC2SecurityGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::EC2SecurityGroup {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::Endpoint with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::Endpoint {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Address => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
 }
 
-class Aws::ElastiCache::EngineDefaults with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::EngineDefaults {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CacheNodeTypeSpecificParameters => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheNodeTypeSpecificParameter]');
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::Parameter]');
 }
 
-class Aws::ElastiCache::Event with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::Event {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Date => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'Aws::ElastiCache::SourceType');
 }
 
-class Aws::ElastiCache::NodeGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::NodeGroup {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has NodeGroupId => (is => 'ro', isa => 'Str');
   has NodeGroupMembers => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::NodeGroupMember]');
   has PrimaryEndpoint => (is => 'ro', isa => 'Aws::ElastiCache::Endpoint');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::NodeGroupMember with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::NodeGroupMember {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CacheClusterId => (is => 'ro', isa => 'Str');
   has CacheNodeId => (is => 'ro', isa => 'Str');
   has CurrentRole => (is => 'ro', isa => 'Str');
@@ -137,12 +170,16 @@ class Aws::ElastiCache::NodeGroupMember with (AWS::API::ResultParser, AWS::API::
   has ReadEndpoint => (is => 'ro', isa => 'Aws::ElastiCache::Endpoint');
 }
 
-class Aws::ElastiCache::NotificationConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::NotificationConfiguration {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has TopicArn => (is => 'ro', isa => 'Str');
   has TopicStatus => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::Parameter with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::Parameter {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AllowedValues => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -153,23 +190,31 @@ class Aws::ElastiCache::Parameter with (AWS::API::ResultParser, AWS::API::ToPara
   has Source => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::ParameterNameValue with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::ParameterNameValue {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has ParameterName => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::PendingModifiedValues with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::PendingModifiedValues {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has NumCacheNodes => (is => 'ro', isa => 'Int');
 }
 
-class Aws::ElastiCache::RecurringCharge with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::RecurringCharge {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has RecurringChargeAmount => (is => 'ro', isa => 'Num');
   has RecurringChargeFrequency => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::ReplicationGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::ReplicationGroup {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Description => (is => 'ro', isa => 'Str');
   has MemberClusters => (is => 'ro', isa => 'ArrayRef[Str]');
   has NodeGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::NodeGroup]');
@@ -178,11 +223,15 @@ class Aws::ElastiCache::ReplicationGroup with (AWS::API::ResultParser, AWS::API:
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::ReplicationGroupPendingModifiedValues with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::ReplicationGroupPendingModifiedValues {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has PrimaryClusterId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::ReservedCacheNode with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::ReservedCacheNode {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CacheNodeCount => (is => 'ro', isa => 'Int');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
@@ -197,7 +246,9 @@ class Aws::ElastiCache::ReservedCacheNode with (AWS::API::ResultParser, AWS::API
   has UsagePrice => (is => 'ro', isa => 'Num');
 }
 
-class Aws::ElastiCache::ReservedCacheNodesOffering with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::ReservedCacheNodesOffering {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
   has FixedPrice => (is => 'ro', isa => 'Num');
@@ -208,19 +259,24 @@ class Aws::ElastiCache::ReservedCacheNodesOffering with (AWS::API::ResultParser,
   has UsagePrice => (is => 'ro', isa => 'Num');
 }
 
-class Aws::ElastiCache::SecurityGroupMembership with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::SecurityGroupMembership {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has SecurityGroupId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class Aws::ElastiCache::Subnet with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::ElastiCache::Subnet {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has SubnetAvailabilityZone => (is => 'ro', isa => 'Aws::ElastiCache::AvailabilityZone');
   has SubnetIdentifier => (is => 'ro', isa => 'Str');
 }
 
 
 
-class Aws::ElastiCache::AuthorizeCacheSecurityGroupIngress {
+package Aws::ElastiCache::AuthorizeCacheSecurityGroupIngress {
+  use Moose;
   has CacheSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str', required => 1);
@@ -229,7 +285,8 @@ class Aws::ElastiCache::AuthorizeCacheSecurityGroupIngress {
   has _returns => (isa => 'Aws::ElastiCache::AuthorizeCacheSecurityGroupIngressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeCacheSecurityGroupIngressResult');  
 }
-class Aws::ElastiCache::CreateCacheCluster {
+package Aws::ElastiCache::CreateCacheCluster {
+  use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
   has CacheNodeType => (is => 'ro', isa => 'Str');
@@ -251,7 +308,8 @@ class Aws::ElastiCache::CreateCacheCluster {
   has _returns => (isa => 'Aws::ElastiCache::CreateCacheClusterResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCacheClusterResult');  
 }
-class Aws::ElastiCache::CreateCacheParameterGroup {
+package Aws::ElastiCache::CreateCacheParameterGroup {
+  use Moose;
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
   has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str', required => 1);
@@ -260,7 +318,8 @@ class Aws::ElastiCache::CreateCacheParameterGroup {
   has _returns => (isa => 'Aws::ElastiCache::CreateCacheParameterGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCacheParameterGroupResult');  
 }
-class Aws::ElastiCache::CreateCacheSecurityGroup {
+package Aws::ElastiCache::CreateCacheSecurityGroup {
+  use Moose;
   has CacheSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str', required => 1);
 
@@ -268,7 +327,8 @@ class Aws::ElastiCache::CreateCacheSecurityGroup {
   has _returns => (isa => 'Aws::ElastiCache::CreateCacheSecurityGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCacheSecurityGroupResult');  
 }
-class Aws::ElastiCache::CreateCacheSubnetGroup {
+package Aws::ElastiCache::CreateCacheSubnetGroup {
+  use Moose;
   has CacheSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' , required => 1);
@@ -277,7 +337,8 @@ class Aws::ElastiCache::CreateCacheSubnetGroup {
   has _returns => (isa => 'Aws::ElastiCache::CreateCacheSubnetGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCacheSubnetGroupResult');  
 }
-class Aws::ElastiCache::CreateReplicationGroup {
+package Aws::ElastiCache::CreateReplicationGroup {
+  use Moose;
   has PrimaryClusterId => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
@@ -286,35 +347,40 @@ class Aws::ElastiCache::CreateReplicationGroup {
   has _returns => (isa => 'Aws::ElastiCache::CreateReplicationGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateReplicationGroupResult');  
 }
-class Aws::ElastiCache::DeleteCacheCluster {
+package Aws::ElastiCache::DeleteCacheCluster {
+  use Moose;
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCacheCluster');
   has _returns => (isa => 'Aws::ElastiCache::DeleteCacheClusterResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteCacheClusterResult');  
 }
-class Aws::ElastiCache::DeleteCacheParameterGroup {
+package Aws::ElastiCache::DeleteCacheParameterGroup {
+  use Moose;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCacheParameterGroup');
   has _returns => (isa => 'Aws::ElastiCache::DeleteCacheParameterGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteCacheParameterGroupResult');  
 }
-class Aws::ElastiCache::DeleteCacheSecurityGroup {
+package Aws::ElastiCache::DeleteCacheSecurityGroup {
+  use Moose;
   has CacheSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCacheSecurityGroup');
   has _returns => (isa => 'Aws::ElastiCache::DeleteCacheSecurityGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteCacheSecurityGroupResult');  
 }
-class Aws::ElastiCache::DeleteCacheSubnetGroup {
+package Aws::ElastiCache::DeleteCacheSubnetGroup {
+  use Moose;
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCacheSubnetGroup');
   has _returns => (isa => 'Aws::ElastiCache::DeleteCacheSubnetGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteCacheSubnetGroupResult');  
 }
-class Aws::ElastiCache::DeleteReplicationGroup {
+package Aws::ElastiCache::DeleteReplicationGroup {
+  use Moose;
   has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
   has RetainPrimaryCluster => (is => 'ro', isa => 'Str');
 
@@ -322,7 +388,8 @@ class Aws::ElastiCache::DeleteReplicationGroup {
   has _returns => (isa => 'Aws::ElastiCache::DeleteReplicationGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteReplicationGroupResult');  
 }
-class Aws::ElastiCache::DescribeCacheClusters {
+package Aws::ElastiCache::DescribeCacheClusters {
+  use Moose;
   has CacheClusterId => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -332,7 +399,8 @@ class Aws::ElastiCache::DescribeCacheClusters {
   has _returns => (isa => 'Aws::ElastiCache::DescribeCacheClustersResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheClustersResult');  
 }
-class Aws::ElastiCache::DescribeCacheEngineVersions {
+package Aws::ElastiCache::DescribeCacheEngineVersions {
+  use Moose;
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
   has DefaultOnly => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
@@ -344,7 +412,8 @@ class Aws::ElastiCache::DescribeCacheEngineVersions {
   has _returns => (isa => 'Aws::ElastiCache::DescribeCacheEngineVersionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheEngineVersionsResult');  
 }
-class Aws::ElastiCache::DescribeCacheParameterGroups {
+package Aws::ElastiCache::DescribeCacheParameterGroups {
+  use Moose;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -353,7 +422,8 @@ class Aws::ElastiCache::DescribeCacheParameterGroups {
   has _returns => (isa => 'Aws::ElastiCache::DescribeCacheParameterGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheParameterGroupsResult');  
 }
-class Aws::ElastiCache::DescribeCacheParameters {
+package Aws::ElastiCache::DescribeCacheParameters {
+  use Moose;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -363,7 +433,8 @@ class Aws::ElastiCache::DescribeCacheParameters {
   has _returns => (isa => 'Aws::ElastiCache::DescribeCacheParametersResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheParametersResult');  
 }
-class Aws::ElastiCache::DescribeCacheSecurityGroups {
+package Aws::ElastiCache::DescribeCacheSecurityGroups {
+  use Moose;
   has CacheSecurityGroupName => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -372,7 +443,8 @@ class Aws::ElastiCache::DescribeCacheSecurityGroups {
   has _returns => (isa => 'Aws::ElastiCache::DescribeCacheSecurityGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheSecurityGroupsResult');  
 }
-class Aws::ElastiCache::DescribeCacheSubnetGroups {
+package Aws::ElastiCache::DescribeCacheSubnetGroups {
+  use Moose;
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -381,7 +453,8 @@ class Aws::ElastiCache::DescribeCacheSubnetGroups {
   has _returns => (isa => 'Aws::ElastiCache::DescribeCacheSubnetGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheSubnetGroupsResult');  
 }
-class Aws::ElastiCache::DescribeEngineDefaultParameters {
+package Aws::ElastiCache::DescribeEngineDefaultParameters {
+  use Moose;
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -390,7 +463,8 @@ class Aws::ElastiCache::DescribeEngineDefaultParameters {
   has _returns => (isa => 'Aws::ElastiCache::DescribeEngineDefaultParametersResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEngineDefaultParametersResult');  
 }
-class Aws::ElastiCache::DescribeEvents {
+package Aws::ElastiCache::DescribeEvents {
+  use Moose;
   has Duration => (is => 'ro', isa => 'Int');
   has EndTime => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -403,7 +477,8 @@ class Aws::ElastiCache::DescribeEvents {
   has _returns => (isa => 'Aws::ElastiCache::DescribeEventsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');  
 }
-class Aws::ElastiCache::DescribeReplicationGroups {
+package Aws::ElastiCache::DescribeReplicationGroups {
+  use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
@@ -412,7 +487,8 @@ class Aws::ElastiCache::DescribeReplicationGroups {
   has _returns => (isa => 'Aws::ElastiCache::DescribeReplicationGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReplicationGroupsResult');  
 }
-class Aws::ElastiCache::DescribeReservedCacheNodes {
+package Aws::ElastiCache::DescribeReservedCacheNodes {
+  use Moose;
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -426,7 +502,8 @@ class Aws::ElastiCache::DescribeReservedCacheNodes {
   has _returns => (isa => 'Aws::ElastiCache::DescribeReservedCacheNodesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedCacheNodesResult');  
 }
-class Aws::ElastiCache::DescribeReservedCacheNodesOfferings {
+package Aws::ElastiCache::DescribeReservedCacheNodesOfferings {
+  use Moose;
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -439,7 +516,8 @@ class Aws::ElastiCache::DescribeReservedCacheNodesOfferings {
   has _returns => (isa => 'Aws::ElastiCache::DescribeReservedCacheNodesOfferingsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedCacheNodesOfferingsResult');  
 }
-class Aws::ElastiCache::ModifyCacheCluster {
+package Aws::ElastiCache::ModifyCacheCluster {
+  use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Str');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
@@ -457,7 +535,8 @@ class Aws::ElastiCache::ModifyCacheCluster {
   has _returns => (isa => 'Aws::ElastiCache::ModifyCacheClusterResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyCacheClusterResult');  
 }
-class Aws::ElastiCache::ModifyCacheParameterGroup {
+package Aws::ElastiCache::ModifyCacheParameterGroup {
+  use Moose;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has ParameterNameValues => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ParameterNameValue]', traits => ['NameInRequest'], request_name => 'ParameterNameValue' , required => 1);
 
@@ -465,7 +544,8 @@ class Aws::ElastiCache::ModifyCacheParameterGroup {
   has _returns => (isa => 'Aws::ElastiCache::ModifyCacheParameterGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyCacheParameterGroupResult');  
 }
-class Aws::ElastiCache::ModifyCacheSubnetGroup {
+package Aws::ElastiCache::ModifyCacheSubnetGroup {
+  use Moose;
   has CacheSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' );
@@ -474,7 +554,8 @@ class Aws::ElastiCache::ModifyCacheSubnetGroup {
   has _returns => (isa => 'Aws::ElastiCache::ModifyCacheSubnetGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyCacheSubnetGroupResult');  
 }
-class Aws::ElastiCache::ModifyReplicationGroup {
+package Aws::ElastiCache::ModifyReplicationGroup {
+  use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Str');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
@@ -492,7 +573,8 @@ class Aws::ElastiCache::ModifyReplicationGroup {
   has _returns => (isa => 'Aws::ElastiCache::ModifyReplicationGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyReplicationGroupResult');  
 }
-class Aws::ElastiCache::PurchaseReservedCacheNodesOffering {
+package Aws::ElastiCache::PurchaseReservedCacheNodesOffering {
+  use Moose;
   has CacheNodeCount => (is => 'ro', isa => 'Int');
   has ReservedCacheNodeId => (is => 'ro', isa => 'Str');
   has ReservedCacheNodesOfferingId => (is => 'ro', isa => 'Str', required => 1);
@@ -501,7 +583,8 @@ class Aws::ElastiCache::PurchaseReservedCacheNodesOffering {
   has _returns => (isa => 'Aws::ElastiCache::PurchaseReservedCacheNodesOfferingResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedCacheNodesOfferingResult');  
 }
-class Aws::ElastiCache::RebootCacheCluster {
+package Aws::ElastiCache::RebootCacheCluster {
+  use Moose;
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
   has CacheNodeIdsToReboot => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CacheNodeId' , required => 1);
 
@@ -509,7 +592,8 @@ class Aws::ElastiCache::RebootCacheCluster {
   has _returns => (isa => 'Aws::ElastiCache::RebootCacheClusterResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RebootCacheClusterResult');  
 }
-class Aws::ElastiCache::ResetCacheParameterGroup {
+package Aws::ElastiCache::ResetCacheParameterGroup {
+  use Moose;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has ParameterNameValues => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ParameterNameValue]', traits => ['NameInRequest'], request_name => 'ParameterNameValue' , required => 1);
   has ResetAllParameters => (is => 'ro', isa => 'Str');
@@ -518,7 +602,8 @@ class Aws::ElastiCache::ResetCacheParameterGroup {
   has _returns => (isa => 'Aws::ElastiCache::ResetCacheParameterGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ResetCacheParameterGroupResult');  
 }
-class Aws::ElastiCache::RevokeCacheSecurityGroupIngress {
+package Aws::ElastiCache::RevokeCacheSecurityGroupIngress {
+  use Moose;
   has CacheSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str', required => 1);
@@ -528,303 +613,389 @@ class Aws::ElastiCache::RevokeCacheSecurityGroupIngress {
   has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeCacheSecurityGroupIngressResult');  
 }
 
-class Aws::ElastiCache::AuthorizeCacheSecurityGroupIngressResult with AWS::API::ResultParser {
+package Aws::ElastiCache::AuthorizeCacheSecurityGroupIngressResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheSecurityGroup => (is => 'ro', isa => 'Aws::ElastiCache::CacheSecurityGroup');
 
 }
-class Aws::ElastiCache::CreateCacheClusterResult with AWS::API::ResultParser {
+package Aws::ElastiCache::CreateCacheClusterResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheCluster => (is => 'ro', isa => 'Aws::ElastiCache::CacheCluster');
 
 }
-class Aws::ElastiCache::CreateCacheParameterGroupResult with AWS::API::ResultParser {
+package Aws::ElastiCache::CreateCacheParameterGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheParameterGroup => (is => 'ro', isa => 'Aws::ElastiCache::CacheParameterGroup');
 
 }
-class Aws::ElastiCache::CreateCacheSecurityGroupResult with AWS::API::ResultParser {
+package Aws::ElastiCache::CreateCacheSecurityGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheSecurityGroup => (is => 'ro', isa => 'Aws::ElastiCache::CacheSecurityGroup');
 
 }
-class Aws::ElastiCache::CreateCacheSubnetGroupResult with AWS::API::ResultParser {
+package Aws::ElastiCache::CreateCacheSubnetGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheSubnetGroup => (is => 'ro', isa => 'Aws::ElastiCache::CacheSubnetGroup');
 
 }
-class Aws::ElastiCache::CreateReplicationGroupResult with AWS::API::ResultParser {
+package Aws::ElastiCache::CreateReplicationGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has ReplicationGroup => (is => 'ro', isa => 'Aws::ElastiCache::ReplicationGroup');
 
 }
-class Aws::ElastiCache::DeleteCacheClusterResult with AWS::API::ResultParser {
+package Aws::ElastiCache::DeleteCacheClusterResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheCluster => (is => 'ro', isa => 'Aws::ElastiCache::CacheCluster');
 
 }
-class Aws::ElastiCache::DeleteReplicationGroupResult with AWS::API::ResultParser {
+package Aws::ElastiCache::DeleteReplicationGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has ReplicationGroup => (is => 'ro', isa => 'Aws::ElastiCache::ReplicationGroup');
 
 }
-class Aws::ElastiCache::DescribeCacheClustersResult with AWS::API::ResultParser {
+package Aws::ElastiCache::DescribeCacheClustersResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheClusters => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheCluster]', traits => ['Unwrapped'], xmlname => 'CacheCluster');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::ElastiCache::DescribeCacheEngineVersionsResult with AWS::API::ResultParser {
+package Aws::ElastiCache::DescribeCacheEngineVersionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheEngineVersions => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheEngineVersion]', traits => ['Unwrapped'], xmlname => 'CacheEngineVersion');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::ElastiCache::DescribeCacheParameterGroupsResult with AWS::API::ResultParser {
+package Aws::ElastiCache::DescribeCacheParameterGroupsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheParameterGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheParameterGroup]', traits => ['Unwrapped'], xmlname => 'CacheParameterGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::ElastiCache::DescribeCacheParametersResult with AWS::API::ResultParser {
+package Aws::ElastiCache::DescribeCacheParametersResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheNodeTypeSpecificParameters => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheNodeTypeSpecificParameter]', traits => ['Unwrapped'], xmlname => 'CacheNodeTypeSpecificParameter');
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::Parameter]', traits => ['Unwrapped'], xmlname => 'Parameter');
 
 }
-class Aws::ElastiCache::DescribeCacheSecurityGroupsResult with AWS::API::ResultParser {
+package Aws::ElastiCache::DescribeCacheSecurityGroupsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheSecurityGroup]', traits => ['Unwrapped'], xmlname => 'CacheSecurityGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::ElastiCache::DescribeCacheSubnetGroupsResult with AWS::API::ResultParser {
+package Aws::ElastiCache::DescribeCacheSubnetGroupsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheSubnetGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheSubnetGroup]', traits => ['Unwrapped'], xmlname => 'CacheSubnetGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::ElastiCache::DescribeEngineDefaultParametersResult with AWS::API::ResultParser {
+package Aws::ElastiCache::DescribeEngineDefaultParametersResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has EngineDefaults => (is => 'ro', isa => 'Aws::ElastiCache::EngineDefaults');
 
 }
-class Aws::ElastiCache::DescribeEventsResult with AWS::API::ResultParser {
+package Aws::ElastiCache::DescribeEventsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Events => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::Event]', traits => ['Unwrapped'], xmlname => 'Event');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::ElastiCache::DescribeReplicationGroupsResult with AWS::API::ResultParser {
+package Aws::ElastiCache::DescribeReplicationGroupsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
   has ReplicationGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ReplicationGroup]', traits => ['Unwrapped'], xmlname => 'ReplicationGroup');
 
 }
-class Aws::ElastiCache::DescribeReservedCacheNodesResult with AWS::API::ResultParser {
+package Aws::ElastiCache::DescribeReservedCacheNodesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedCacheNodes => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ReservedCacheNode]', traits => ['Unwrapped'], xmlname => 'ReservedCacheNode');
 
 }
-class Aws::ElastiCache::DescribeReservedCacheNodesOfferingsResult with AWS::API::ResultParser {
+package Aws::ElastiCache::DescribeReservedCacheNodesOfferingsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedCacheNodesOfferings => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ReservedCacheNodesOffering]', traits => ['Unwrapped'], xmlname => 'ReservedCacheNodesOffering');
 
 }
-class Aws::ElastiCache::ModifyCacheClusterResult with AWS::API::ResultParser {
+package Aws::ElastiCache::ModifyCacheClusterResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheCluster => (is => 'ro', isa => 'Aws::ElastiCache::CacheCluster');
 
 }
-class Aws::ElastiCache::ModifyCacheParameterGroupResult with AWS::API::ResultParser {
+package Aws::ElastiCache::ModifyCacheParameterGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
 
 }
-class Aws::ElastiCache::ModifyCacheSubnetGroupResult with AWS::API::ResultParser {
+package Aws::ElastiCache::ModifyCacheSubnetGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheSubnetGroup => (is => 'ro', isa => 'Aws::ElastiCache::CacheSubnetGroup');
 
 }
-class Aws::ElastiCache::ModifyReplicationGroupResult with AWS::API::ResultParser {
+package Aws::ElastiCache::ModifyReplicationGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has ReplicationGroup => (is => 'ro', isa => 'Aws::ElastiCache::ReplicationGroup');
 
 }
-class Aws::ElastiCache::PurchaseReservedCacheNodesOfferingResult with AWS::API::ResultParser {
+package Aws::ElastiCache::PurchaseReservedCacheNodesOfferingResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has ReservedCacheNode => (is => 'ro', isa => 'Aws::ElastiCache::ReservedCacheNode');
 
 }
-class Aws::ElastiCache::RebootCacheClusterResult with AWS::API::ResultParser {
+package Aws::ElastiCache::RebootCacheClusterResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheCluster => (is => 'ro', isa => 'Aws::ElastiCache::CacheCluster');
 
 }
-class Aws::ElastiCache::ResetCacheParameterGroupResult with AWS::API::ResultParser {
+package Aws::ElastiCache::ResetCacheParameterGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
 
 }
-class Aws::ElastiCache::RevokeCacheSecurityGroupIngressResult with AWS::API::ResultParser {
+package Aws::ElastiCache::RevokeCacheSecurityGroupIngressResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has CacheSecurityGroup => (is => 'ro', isa => 'Aws::ElastiCache::CacheSecurityGroup');
 
 }
 
-class Aws::ElastiCache with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
+package Aws::ElastiCache {
+  use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'elasticache');
   has version => (is => 'ro', isa => 'Str', default => '2013-06-15');
+  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
   
-  method AuthorizeCacheSecurityGroupIngress (%args) {
-    my $call = Aws::ElastiCache::AuthorizeCacheSecurityGroupIngress->new(%args);
+  sub AuthorizeCacheSecurityGroupIngress {
+    my $self = shift;
+    my $call = Aws::ElastiCache::AuthorizeCacheSecurityGroupIngress->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::AuthorizeCacheSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreateCacheCluster (%args) {
-    my $call = Aws::ElastiCache::CreateCacheCluster->new(%args);
+  sub CreateCacheCluster {
+    my $self = shift;
+    my $call = Aws::ElastiCache::CreateCacheCluster->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::CreateCacheClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreateCacheParameterGroup (%args) {
-    my $call = Aws::ElastiCache::CreateCacheParameterGroup->new(%args);
+  sub CreateCacheParameterGroup {
+    my $self = shift;
+    my $call = Aws::ElastiCache::CreateCacheParameterGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::CreateCacheParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreateCacheSecurityGroup (%args) {
-    my $call = Aws::ElastiCache::CreateCacheSecurityGroup->new(%args);
+  sub CreateCacheSecurityGroup {
+    my $self = shift;
+    my $call = Aws::ElastiCache::CreateCacheSecurityGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::CreateCacheSecurityGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreateCacheSubnetGroup (%args) {
-    my $call = Aws::ElastiCache::CreateCacheSubnetGroup->new(%args);
+  sub CreateCacheSubnetGroup {
+    my $self = shift;
+    my $call = Aws::ElastiCache::CreateCacheSubnetGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::CreateCacheSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreateReplicationGroup (%args) {
-    my $call = Aws::ElastiCache::CreateReplicationGroup->new(%args);
+  sub CreateReplicationGroup {
+    my $self = shift;
+    my $call = Aws::ElastiCache::CreateReplicationGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::CreateReplicationGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DeleteCacheCluster (%args) {
-    my $call = Aws::ElastiCache::DeleteCacheCluster->new(%args);
+  sub DeleteCacheCluster {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DeleteCacheCluster->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DeleteCacheClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DeleteCacheParameterGroup (%args) {
-    my $call = Aws::ElastiCache::DeleteCacheParameterGroup->new(%args);
+  sub DeleteCacheParameterGroup {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DeleteCacheParameterGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteCacheSecurityGroup (%args) {
-    my $call = Aws::ElastiCache::DeleteCacheSecurityGroup->new(%args);
+  sub DeleteCacheSecurityGroup {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DeleteCacheSecurityGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteCacheSubnetGroup (%args) {
-    my $call = Aws::ElastiCache::DeleteCacheSubnetGroup->new(%args);
+  sub DeleteCacheSubnetGroup {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DeleteCacheSubnetGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteReplicationGroup (%args) {
-    my $call = Aws::ElastiCache::DeleteReplicationGroup->new(%args);
+  sub DeleteReplicationGroup {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DeleteReplicationGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DeleteReplicationGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeCacheClusters (%args) {
-    my $call = Aws::ElastiCache::DescribeCacheClusters->new(%args);
+  sub DescribeCacheClusters {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DescribeCacheClusters->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeCacheClustersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeCacheEngineVersions (%args) {
-    my $call = Aws::ElastiCache::DescribeCacheEngineVersions->new(%args);
+  sub DescribeCacheEngineVersions {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DescribeCacheEngineVersions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeCacheEngineVersionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeCacheParameterGroups (%args) {
-    my $call = Aws::ElastiCache::DescribeCacheParameterGroups->new(%args);
+  sub DescribeCacheParameterGroups {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DescribeCacheParameterGroups->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeCacheParameterGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeCacheParameters (%args) {
-    my $call = Aws::ElastiCache::DescribeCacheParameters->new(%args);
+  sub DescribeCacheParameters {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DescribeCacheParameters->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeCacheParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeCacheSecurityGroups (%args) {
-    my $call = Aws::ElastiCache::DescribeCacheSecurityGroups->new(%args);
+  sub DescribeCacheSecurityGroups {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DescribeCacheSecurityGroups->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeCacheSecurityGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeCacheSubnetGroups (%args) {
-    my $call = Aws::ElastiCache::DescribeCacheSubnetGroups->new(%args);
+  sub DescribeCacheSubnetGroups {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DescribeCacheSubnetGroups->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeCacheSubnetGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeEngineDefaultParameters (%args) {
-    my $call = Aws::ElastiCache::DescribeEngineDefaultParameters->new(%args);
+  sub DescribeEngineDefaultParameters {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DescribeEngineDefaultParameters->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeEngineDefaultParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeEvents (%args) {
-    my $call = Aws::ElastiCache::DescribeEvents->new(%args);
+  sub DescribeEvents {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DescribeEvents->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeEventsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeReplicationGroups (%args) {
-    my $call = Aws::ElastiCache::DescribeReplicationGroups->new(%args);
+  sub DescribeReplicationGroups {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DescribeReplicationGroups->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeReplicationGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeReservedCacheNodes (%args) {
-    my $call = Aws::ElastiCache::DescribeReservedCacheNodes->new(%args);
+  sub DescribeReservedCacheNodes {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DescribeReservedCacheNodes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeReservedCacheNodesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeReservedCacheNodesOfferings (%args) {
-    my $call = Aws::ElastiCache::DescribeReservedCacheNodesOfferings->new(%args);
+  sub DescribeReservedCacheNodesOfferings {
+    my $self = shift;
+    my $call = Aws::ElastiCache::DescribeReservedCacheNodesOfferings->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeReservedCacheNodesOfferingsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ModifyCacheCluster (%args) {
-    my $call = Aws::ElastiCache::ModifyCacheCluster->new(%args);
+  sub ModifyCacheCluster {
+    my $self = shift;
+    my $call = Aws::ElastiCache::ModifyCacheCluster->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::ModifyCacheClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ModifyCacheParameterGroup (%args) {
-    my $call = Aws::ElastiCache::ModifyCacheParameterGroup->new(%args);
+  sub ModifyCacheParameterGroup {
+    my $self = shift;
+    my $call = Aws::ElastiCache::ModifyCacheParameterGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::ModifyCacheParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ModifyCacheSubnetGroup (%args) {
-    my $call = Aws::ElastiCache::ModifyCacheSubnetGroup->new(%args);
+  sub ModifyCacheSubnetGroup {
+    my $self = shift;
+    my $call = Aws::ElastiCache::ModifyCacheSubnetGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::ModifyCacheSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ModifyReplicationGroup (%args) {
-    my $call = Aws::ElastiCache::ModifyReplicationGroup->new(%args);
+  sub ModifyReplicationGroup {
+    my $self = shift;
+    my $call = Aws::ElastiCache::ModifyReplicationGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::ModifyReplicationGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method PurchaseReservedCacheNodesOffering (%args) {
-    my $call = Aws::ElastiCache::PurchaseReservedCacheNodesOffering->new(%args);
+  sub PurchaseReservedCacheNodesOffering {
+    my $self = shift;
+    my $call = Aws::ElastiCache::PurchaseReservedCacheNodesOffering->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::PurchaseReservedCacheNodesOfferingResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method RebootCacheCluster (%args) {
-    my $call = Aws::ElastiCache::RebootCacheCluster->new(%args);
+  sub RebootCacheCluster {
+    my $self = shift;
+    my $call = Aws::ElastiCache::RebootCacheCluster->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::RebootCacheClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ResetCacheParameterGroup (%args) {
-    my $call = Aws::ElastiCache::ResetCacheParameterGroup->new(%args);
+  sub ResetCacheParameterGroup {
+    my $self = shift;
+    my $call = Aws::ElastiCache::ResetCacheParameterGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::ResetCacheParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method RevokeCacheSecurityGroupIngress (%args) {
-    my $call = Aws::ElastiCache::RevokeCacheSecurityGroupIngress->new(%args);
+  sub RevokeCacheSecurityGroupIngress {
+    my $self = shift;
+    my $call = Aws::ElastiCache::RevokeCacheSecurityGroupIngress->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::RevokeCacheSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;

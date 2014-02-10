@@ -1,6 +1,5 @@
-use MooseX::Declare;
-
-role Net::AWS::V2Signature {
+package Net::AWS::V2Signature {
+  use Moose::Role;
   use Digest::SHA qw(hmac_sha256);
   use MIME::Base64 qw(encode_base64);
   use Carp;
@@ -101,7 +100,8 @@ sub _request {
 
 }
 
-role Net::AWS::V4Signature {
+package Net::AWS::V4Signature {
+  use Moose::Role;
   use Net::Amazon::Signature::V4;
   #requires 'region';
   requires 'service';
@@ -118,16 +118,19 @@ role Net::AWS::V4Signature {
   }
 }
 
-role Net::AWS::JsonCaller {
+package Net::AWS::JsonCaller {
+  use Moose::Role;
   use JSON;
   use POSIX qw(strftime);
   has json_version => (is => 'ro', isa => 'Str', required => 1);
 
-  method _is_internal_type ($att_type) {
+  sub _is_internal_type {
+    my ($self, $att_type) = @_;
     return ($att_type eq 'Str' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
   }
 
-  method _to_params ($params) {
+  sub _to_params {
+    my ($self, $params) = @_;
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
       my $key = $params->meta->get_attribute($att)->does('Net::AWS::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
@@ -150,7 +153,8 @@ role Net::AWS::JsonCaller {
   }
 
 
-  method _api_caller ($action, $params) {
+  sub _api_caller {
+    my ($self, $action, $params) = @_;
     my $request = Net::AWS::APIRequest->new(url => $self->endpoint, method => 'POST');
 
     $request->parameters({ Action => $action,
@@ -176,27 +180,13 @@ role Net::AWS::JsonCaller {
   }
 }
 
-role Net::AWS::JsonResponse {
-  use JSON;
-  use Carp;
-
-  method _process_response ($data) {
-    my $json = from_json( $data );
-    
-    #TODO: Verify if errors come back in json
-    if ( defined $json->{Errors} ) {
-      croak "Error: $data";
-    }
-
-    return $json;
-  }
-}
-
-role Net::AWS::JsonResponse {
+package Net::AWS::JsonResponse {
+  use Moose::Role;
   use JSON;
   use Carp qw(croak);
   
-  method _process_response ($data) {
+  sub _process_response {
+    my ($self, $data) = @_;
     my $json = from_json( $data );
     if ( defined $json->{Errors} ) {
       croak "Error: $data";
@@ -206,15 +196,18 @@ role Net::AWS::JsonResponse {
   }
 }
 
-role Net::AWS::QueryCaller {
+package Net::AWS::QueryCaller {
+  use Moose::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime);
 
-  method _is_internal_type ($att_type) {
+  sub _is_internal_type {
+    my ($self, $att_type) = @_;
     return ($att_type eq 'Str' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
   }
 
-  method _to_params ($params) {
+  sub _to_params {
+    my ($self, $params) = @_;
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
       my $key = $params->meta->get_attribute($att)->does('Net::AWS::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
@@ -245,7 +238,8 @@ role Net::AWS::QueryCaller {
     return %p;
   }
 
-  method _api_caller ($action, $params) {
+  sub _api_caller {
+    my ($self, $action, $params) = @_;
     my $request = Net::AWS::APIRequest->new(url => $self->endpoint, method => 'POST');
 
     $request->parameters({ Action => $action, 
@@ -261,7 +255,8 @@ role Net::AWS::QueryCaller {
   }
 }
 
-class Net::AWS::APIRequest {
+package Net::AWS::APIRequest {
+  use Moose;
   use HTTP::Headers;
   use URI;
 
@@ -279,7 +274,8 @@ class Net::AWS::APIRequest {
     return $self->headers->header($header);
   }
 
-  method generate_content_from_parameters {
+  sub generate_content_from_parameters {
+    my $self = shift;
     $self->headers->content_type('application/x-www-form-urlencoded');
     my $url = URI->new('http:');
     $url->query_form($self->parameters);
@@ -291,11 +287,13 @@ class Net::AWS::APIRequest {
   }
 }
 
-role Net::AWS::XMLResponse {
+package Net::AWS::XMLResponse {
+  use Moose::Role;
   use XML::Simple qw//;
   use Carp qw(croak);
   
-  method _process_response ($data) {
+  sub _process_response {
+    my ($self, $data) = @_;
     my $xml = XML::Simple::XMLin( $data,
             ForceArray    => qr/(?:item|Errors)/i,
             KeyAttr       => '',
@@ -309,7 +307,8 @@ role Net::AWS::XMLResponse {
   }
 }
 
-role Net::AWS::Caller {
+package Net::AWS::Caller {
+  use Moose::Role;
   use Carp qw(croak);
 
   requires '_process_response';
@@ -327,7 +326,8 @@ role Net::AWS::Caller {
     }
   );
 
-  method send ($request){
+  sub send {
+    my ($self, $request) = @_;
     my $headers = {};
     $request->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
 
@@ -349,4 +349,4 @@ role Net::AWS::Caller {
   }
 }
 
-
+1;

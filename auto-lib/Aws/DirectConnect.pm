@@ -1,5 +1,4 @@
 
-use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
@@ -8,7 +7,9 @@ enum 'Aws::DirectConnect::InterconnectState', ['requested','pending','available'
 enum 'Aws::DirectConnect::VirtualInterfaceState', ['confirming','verifying','pending','available','deleting','deleted','rejected',];
 
 
-class Aws::DirectConnect::Connection with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::DirectConnect::Connection {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has bandwidth => (is => 'ro', isa => 'Str');
   has connectionId => (is => 'ro', isa => 'Str');
   has connectionName => (is => 'ro', isa => 'Str');
@@ -20,7 +21,9 @@ class Aws::DirectConnect::Connection with (AWS::API::ResultParser, AWS::API::ToP
   has vlan => (is => 'ro', isa => 'Int');
 }
 
-class Aws::DirectConnect::Interconnect with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::DirectConnect::Interconnect {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has bandwidth => (is => 'ro', isa => 'Str');
   has interconnectId => (is => 'ro', isa => 'Str');
   has interconnectName => (is => 'ro', isa => 'Str');
@@ -29,12 +32,16 @@ class Aws::DirectConnect::Interconnect with (AWS::API::ResultParser, AWS::API::T
   has region => (is => 'ro', isa => 'Str');
 }
 
-class Aws::DirectConnect::Location with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::DirectConnect::Location {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has locationCode => (is => 'ro', isa => 'Str');
   has locationName => (is => 'ro', isa => 'Str');
 }
 
-class Aws::DirectConnect::NewPrivateVirtualInterface with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::DirectConnect::NewPrivateVirtualInterface {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has amazonAddress => (is => 'ro', isa => 'Str');
   has asn => (is => 'ro', isa => 'Int', required => 1);
   has authKey => (is => 'ro', isa => 'Str');
@@ -44,7 +51,9 @@ class Aws::DirectConnect::NewPrivateVirtualInterface with (AWS::API::ResultParse
   has vlan => (is => 'ro', isa => 'Int', required => 1);
 }
 
-class Aws::DirectConnect::NewPrivateVirtualInterfaceAllocation with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::DirectConnect::NewPrivateVirtualInterfaceAllocation {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has amazonAddress => (is => 'ro', isa => 'Str');
   has asn => (is => 'ro', isa => 'Int', required => 1);
   has authKey => (is => 'ro', isa => 'Str');
@@ -53,7 +62,9 @@ class Aws::DirectConnect::NewPrivateVirtualInterfaceAllocation with (AWS::API::R
   has vlan => (is => 'ro', isa => 'Int', required => 1);
 }
 
-class Aws::DirectConnect::NewPublicVirtualInterface with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::DirectConnect::NewPublicVirtualInterface {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has amazonAddress => (is => 'ro', isa => 'Str', required => 1);
   has asn => (is => 'ro', isa => 'Int', required => 1);
   has authKey => (is => 'ro', isa => 'Str');
@@ -63,7 +74,9 @@ class Aws::DirectConnect::NewPublicVirtualInterface with (AWS::API::ResultParser
   has vlan => (is => 'ro', isa => 'Int', required => 1);
 }
 
-class Aws::DirectConnect::NewPublicVirtualInterfaceAllocation with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::DirectConnect::NewPublicVirtualInterfaceAllocation {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has amazonAddress => (is => 'ro', isa => 'Str', required => 1);
   has asn => (is => 'ro', isa => 'Int', required => 1);
   has authKey => (is => 'ro', isa => 'Str');
@@ -73,16 +86,22 @@ class Aws::DirectConnect::NewPublicVirtualInterfaceAllocation with (AWS::API::Re
   has vlan => (is => 'ro', isa => 'Int', required => 1);
 }
 
-class Aws::DirectConnect::RouteFilterPrefix with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::DirectConnect::RouteFilterPrefix {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cidr => (is => 'ro', isa => 'Str');
 }
 
-class Aws::DirectConnect::VirtualGateway with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::DirectConnect::VirtualGateway {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has virtualGatewayId => (is => 'ro', isa => 'Str');
   has virtualGatewayState => (is => 'ro', isa => 'Str');
 }
 
-class Aws::DirectConnect::VirtualInterface with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::DirectConnect::VirtualInterface {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has amazonAddress => (is => 'ro', isa => 'Str');
   has asn => (is => 'ro', isa => 'Int');
   has authKey => (is => 'ro', isa => 'Str');
@@ -102,7 +121,8 @@ class Aws::DirectConnect::VirtualInterface with (AWS::API::ResultParser, AWS::AP
 
 
 
-class Aws::DirectConnect::AllocateConnectionOnInterconnect {
+package Aws::DirectConnect::AllocateConnectionOnInterconnect {
+  use Moose;
   has bandwidth => (is => 'ro', isa => 'Str', required => 1);
   has connectionName => (is => 'ro', isa => 'Str', required => 1);
   has interconnectId => (is => 'ro', isa => 'Str', required => 1);
@@ -113,7 +133,8 @@ class Aws::DirectConnect::AllocateConnectionOnInterconnect {
   has _returns => (isa => 'Aws::DirectConnect::AllocateConnectionOnInterconnectResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AllocateConnectionOnInterconnectResult');  
 }
-class Aws::DirectConnect::AllocatePrivateVirtualInterface {
+package Aws::DirectConnect::AllocatePrivateVirtualInterface {
+  use Moose;
   has connectionId => (is => 'ro', isa => 'Str', required => 1);
   has newPrivateVirtualInterfaceAllocation => (is => 'ro', isa => 'Aws::DirectConnect::NewPrivateVirtualInterfaceAllocation', required => 1);
   has ownerAccount => (is => 'ro', isa => 'Str', required => 1);
@@ -122,7 +143,8 @@ class Aws::DirectConnect::AllocatePrivateVirtualInterface {
   has _returns => (isa => 'Aws::DirectConnect::AllocatePrivateVirtualInterfaceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AllocatePrivateVirtualInterfaceResult');  
 }
-class Aws::DirectConnect::AllocatePublicVirtualInterface {
+package Aws::DirectConnect::AllocatePublicVirtualInterface {
+  use Moose;
   has connectionId => (is => 'ro', isa => 'Str', required => 1);
   has newPublicVirtualInterfaceAllocation => (is => 'ro', isa => 'Aws::DirectConnect::NewPublicVirtualInterfaceAllocation', required => 1);
   has ownerAccount => (is => 'ro', isa => 'Str', required => 1);
@@ -131,14 +153,16 @@ class Aws::DirectConnect::AllocatePublicVirtualInterface {
   has _returns => (isa => 'Aws::DirectConnect::AllocatePublicVirtualInterfaceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AllocatePublicVirtualInterfaceResult');  
 }
-class Aws::DirectConnect::ConfirmConnection {
+package Aws::DirectConnect::ConfirmConnection {
+  use Moose;
   has connectionId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ConfirmConnection');
   has _returns => (isa => 'Aws::DirectConnect::ConfirmConnectionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ConfirmConnectionResult');  
 }
-class Aws::DirectConnect::ConfirmPrivateVirtualInterface {
+package Aws::DirectConnect::ConfirmPrivateVirtualInterface {
+  use Moose;
   has virtualGatewayId => (is => 'ro', isa => 'Str', required => 1);
   has virtualInterfaceId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -146,14 +170,16 @@ class Aws::DirectConnect::ConfirmPrivateVirtualInterface {
   has _returns => (isa => 'Aws::DirectConnect::ConfirmPrivateVirtualInterfaceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ConfirmPrivateVirtualInterfaceResult');  
 }
-class Aws::DirectConnect::ConfirmPublicVirtualInterface {
+package Aws::DirectConnect::ConfirmPublicVirtualInterface {
+  use Moose;
   has virtualInterfaceId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ConfirmPublicVirtualInterface');
   has _returns => (isa => 'Aws::DirectConnect::ConfirmPublicVirtualInterfaceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ConfirmPublicVirtualInterfaceResult');  
 }
-class Aws::DirectConnect::CreateConnection {
+package Aws::DirectConnect::CreateConnection {
+  use Moose;
   has bandwidth => (is => 'ro', isa => 'Str', required => 1);
   has connectionName => (is => 'ro', isa => 'Str', required => 1);
   has location => (is => 'ro', isa => 'Str', required => 1);
@@ -162,7 +188,8 @@ class Aws::DirectConnect::CreateConnection {
   has _returns => (isa => 'Aws::DirectConnect::CreateConnectionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateConnectionResult');  
 }
-class Aws::DirectConnect::CreateInterconnect {
+package Aws::DirectConnect::CreateInterconnect {
+  use Moose;
   has bandwidth => (is => 'ro', isa => 'Str', required => 1);
   has interconnectName => (is => 'ro', isa => 'Str', required => 1);
   has location => (is => 'ro', isa => 'Str', required => 1);
@@ -171,7 +198,8 @@ class Aws::DirectConnect::CreateInterconnect {
   has _returns => (isa => 'Aws::DirectConnect::CreateInterconnectResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateInterconnectResult');  
 }
-class Aws::DirectConnect::CreatePrivateVirtualInterface {
+package Aws::DirectConnect::CreatePrivateVirtualInterface {
+  use Moose;
   has connectionId => (is => 'ro', isa => 'Str', required => 1);
   has newPrivateVirtualInterface => (is => 'ro', isa => 'Aws::DirectConnect::NewPrivateVirtualInterface', required => 1);
 
@@ -179,7 +207,8 @@ class Aws::DirectConnect::CreatePrivateVirtualInterface {
   has _returns => (isa => 'Aws::DirectConnect::CreatePrivateVirtualInterfaceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePrivateVirtualInterfaceResult');  
 }
-class Aws::DirectConnect::CreatePublicVirtualInterface {
+package Aws::DirectConnect::CreatePublicVirtualInterface {
+  use Moose;
   has connectionId => (is => 'ro', isa => 'Str', required => 1);
   has newPublicVirtualInterface => (is => 'ro', isa => 'Aws::DirectConnect::NewPublicVirtualInterface', required => 1);
 
@@ -187,61 +216,70 @@ class Aws::DirectConnect::CreatePublicVirtualInterface {
   has _returns => (isa => 'Aws::DirectConnect::CreatePublicVirtualInterfaceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePublicVirtualInterfaceResult');  
 }
-class Aws::DirectConnect::DeleteConnection {
+package Aws::DirectConnect::DeleteConnection {
+  use Moose;
   has connectionId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteConnection');
   has _returns => (isa => 'Aws::DirectConnect::DeleteConnectionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteConnectionResult');  
 }
-class Aws::DirectConnect::DeleteInterconnect {
+package Aws::DirectConnect::DeleteInterconnect {
+  use Moose;
   has interconnectId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteInterconnect');
   has _returns => (isa => 'Aws::DirectConnect::DeleteInterconnectResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteInterconnectResult');  
 }
-class Aws::DirectConnect::DeleteVirtualInterface {
+package Aws::DirectConnect::DeleteVirtualInterface {
+  use Moose;
   has virtualInterfaceId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVirtualInterface');
   has _returns => (isa => 'Aws::DirectConnect::DeleteVirtualInterfaceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVirtualInterfaceResult');  
 }
-class Aws::DirectConnect::DescribeConnections {
+package Aws::DirectConnect::DescribeConnections {
+  use Moose;
   has connectionId => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConnections');
   has _returns => (isa => 'Aws::DirectConnect::DescribeConnectionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConnectionsResult');  
 }
-class Aws::DirectConnect::DescribeConnectionsOnInterconnect {
+package Aws::DirectConnect::DescribeConnectionsOnInterconnect {
+  use Moose;
   has interconnectId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConnectionsOnInterconnect');
   has _returns => (isa => 'Aws::DirectConnect::DescribeConnectionsOnInterconnectResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConnectionsOnInterconnectResult');  
 }
-class Aws::DirectConnect::DescribeInterconnects {
+package Aws::DirectConnect::DescribeInterconnects {
+  use Moose;
   has interconnectId => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInterconnects');
   has _returns => (isa => 'Aws::DirectConnect::DescribeInterconnectsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeInterconnectsResult');  
 }
-class Aws::DirectConnect::DescribeLocations {
+package Aws::DirectConnect::DescribeLocations {
+  use Moose;
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLocations');
   has _returns => (isa => 'Aws::DirectConnect::DescribeLocationsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLocationsResult');  
 }
-class Aws::DirectConnect::DescribeVirtualGateways {
+package Aws::DirectConnect::DescribeVirtualGateways {
+  use Moose;
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVirtualGateways');
   has _returns => (isa => 'Aws::DirectConnect::DescribeVirtualGatewaysResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVirtualGatewaysResult');  
 }
-class Aws::DirectConnect::DescribeVirtualInterfaces {
+package Aws::DirectConnect::DescribeVirtualInterfaces {
+  use Moose;
   has connectionId => (is => 'ro', isa => 'Str');
   has virtualInterfaceId => (is => 'ro', isa => 'Str');
 
@@ -250,7 +288,9 @@ class Aws::DirectConnect::DescribeVirtualInterfaces {
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVirtualInterfacesResult');  
 }
 
-class Aws::DirectConnect::AllocateConnectionOnInterconnectResult with AWS::API::ResultParser {
+package Aws::DirectConnect::AllocateConnectionOnInterconnectResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has bandwidth => (is => 'ro', isa => 'Str');
   has connectionId => (is => 'ro', isa => 'Str');
   has connectionName => (is => 'ro', isa => 'Str');
@@ -262,7 +302,9 @@ class Aws::DirectConnect::AllocateConnectionOnInterconnectResult with AWS::API::
   has vlan => (is => 'ro', isa => 'Int');
 
 }
-class Aws::DirectConnect::AllocatePrivateVirtualInterfaceResult with AWS::API::ResultParser {
+package Aws::DirectConnect::AllocatePrivateVirtualInterfaceResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has amazonAddress => (is => 'ro', isa => 'Str');
   has asn => (is => 'ro', isa => 'Int');
   has authKey => (is => 'ro', isa => 'Str');
@@ -280,7 +322,9 @@ class Aws::DirectConnect::AllocatePrivateVirtualInterfaceResult with AWS::API::R
   has vlan => (is => 'ro', isa => 'Int');
 
 }
-class Aws::DirectConnect::AllocatePublicVirtualInterfaceResult with AWS::API::ResultParser {
+package Aws::DirectConnect::AllocatePublicVirtualInterfaceResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has amazonAddress => (is => 'ro', isa => 'Str');
   has asn => (is => 'ro', isa => 'Int');
   has authKey => (is => 'ro', isa => 'Str');
@@ -298,19 +342,27 @@ class Aws::DirectConnect::AllocatePublicVirtualInterfaceResult with AWS::API::Re
   has vlan => (is => 'ro', isa => 'Int');
 
 }
-class Aws::DirectConnect::ConfirmConnectionResult with AWS::API::ResultParser {
+package Aws::DirectConnect::ConfirmConnectionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has connectionState => (is => 'ro', isa => 'Str');
 
 }
-class Aws::DirectConnect::ConfirmPrivateVirtualInterfaceResult with AWS::API::ResultParser {
+package Aws::DirectConnect::ConfirmPrivateVirtualInterfaceResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has virtualInterfaceState => (is => 'ro', isa => 'Str');
 
 }
-class Aws::DirectConnect::ConfirmPublicVirtualInterfaceResult with AWS::API::ResultParser {
+package Aws::DirectConnect::ConfirmPublicVirtualInterfaceResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has virtualInterfaceState => (is => 'ro', isa => 'Str');
 
 }
-class Aws::DirectConnect::CreateConnectionResult with AWS::API::ResultParser {
+package Aws::DirectConnect::CreateConnectionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has bandwidth => (is => 'ro', isa => 'Str');
   has connectionId => (is => 'ro', isa => 'Str');
   has connectionName => (is => 'ro', isa => 'Str');
@@ -322,7 +374,9 @@ class Aws::DirectConnect::CreateConnectionResult with AWS::API::ResultParser {
   has vlan => (is => 'ro', isa => 'Int');
 
 }
-class Aws::DirectConnect::CreateInterconnectResult with AWS::API::ResultParser {
+package Aws::DirectConnect::CreateInterconnectResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has bandwidth => (is => 'ro', isa => 'Str');
   has interconnectId => (is => 'ro', isa => 'Str');
   has interconnectName => (is => 'ro', isa => 'Str');
@@ -331,7 +385,9 @@ class Aws::DirectConnect::CreateInterconnectResult with AWS::API::ResultParser {
   has region => (is => 'ro', isa => 'Str');
 
 }
-class Aws::DirectConnect::CreatePrivateVirtualInterfaceResult with AWS::API::ResultParser {
+package Aws::DirectConnect::CreatePrivateVirtualInterfaceResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has amazonAddress => (is => 'ro', isa => 'Str');
   has asn => (is => 'ro', isa => 'Int');
   has authKey => (is => 'ro', isa => 'Str');
@@ -349,7 +405,9 @@ class Aws::DirectConnect::CreatePrivateVirtualInterfaceResult with AWS::API::Res
   has vlan => (is => 'ro', isa => 'Int');
 
 }
-class Aws::DirectConnect::CreatePublicVirtualInterfaceResult with AWS::API::ResultParser {
+package Aws::DirectConnect::CreatePublicVirtualInterfaceResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has amazonAddress => (is => 'ro', isa => 'Str');
   has asn => (is => 'ro', isa => 'Int');
   has authKey => (is => 'ro', isa => 'Str');
@@ -367,7 +425,9 @@ class Aws::DirectConnect::CreatePublicVirtualInterfaceResult with AWS::API::Resu
   has vlan => (is => 'ro', isa => 'Int');
 
 }
-class Aws::DirectConnect::DeleteConnectionResult with AWS::API::ResultParser {
+package Aws::DirectConnect::DeleteConnectionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has bandwidth => (is => 'ro', isa => 'Str');
   has connectionId => (is => 'ro', isa => 'Str');
   has connectionName => (is => 'ro', isa => 'Str');
@@ -379,137 +439,174 @@ class Aws::DirectConnect::DeleteConnectionResult with AWS::API::ResultParser {
   has vlan => (is => 'ro', isa => 'Int');
 
 }
-class Aws::DirectConnect::DeleteInterconnectResult with AWS::API::ResultParser {
+package Aws::DirectConnect::DeleteInterconnectResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has interconnectState => (is => 'ro', isa => 'Str');
 
 }
-class Aws::DirectConnect::DeleteVirtualInterfaceResult with AWS::API::ResultParser {
+package Aws::DirectConnect::DeleteVirtualInterfaceResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has virtualInterfaceState => (is => 'ro', isa => 'Str');
 
 }
-class Aws::DirectConnect::DescribeConnectionsResult with AWS::API::ResultParser {
+package Aws::DirectConnect::DescribeConnectionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has connections => (is => 'ro', isa => 'ArrayRef[Aws::DirectConnect::Connection]');
 
 }
-class Aws::DirectConnect::DescribeConnectionsOnInterconnectResult with AWS::API::ResultParser {
+package Aws::DirectConnect::DescribeConnectionsOnInterconnectResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has connections => (is => 'ro', isa => 'ArrayRef[Aws::DirectConnect::Connection]');
 
 }
-class Aws::DirectConnect::DescribeInterconnectsResult with AWS::API::ResultParser {
+package Aws::DirectConnect::DescribeInterconnectsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has interconnects => (is => 'ro', isa => 'ArrayRef[Aws::DirectConnect::Interconnect]');
 
 }
-class Aws::DirectConnect::DescribeLocationsResult with AWS::API::ResultParser {
+package Aws::DirectConnect::DescribeLocationsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has locations => (is => 'ro', isa => 'ArrayRef[Aws::DirectConnect::Location]');
 
 }
-class Aws::DirectConnect::DescribeVirtualGatewaysResult with AWS::API::ResultParser {
+package Aws::DirectConnect::DescribeVirtualGatewaysResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has virtualGateways => (is => 'ro', isa => 'ArrayRef[Aws::DirectConnect::VirtualGateway]');
 
 }
-class Aws::DirectConnect::DescribeVirtualInterfacesResult with AWS::API::ResultParser {
+package Aws::DirectConnect::DescribeVirtualInterfacesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has virtualInterfaces => (is => 'ro', isa => 'ArrayRef[Aws::DirectConnect::VirtualInterface]');
 
 }
 
-class Aws::DirectConnect with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
+package Aws::DirectConnect {
+  use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'directconnect');
   has version => (is => 'ro', isa => 'Str', default => '2012-10-25');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'OvertureService');
   has json_version => (is => 'ro', isa => 'Str', default => "1.1");
+  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
   
-  method AllocateConnectionOnInterconnect (%args) {
-    my $call = Aws::DirectConnect::AllocateConnectionOnInterconnect->new(%args);
+  sub AllocateConnectionOnInterconnect {
+    my $self = shift;
+    my $call = Aws::DirectConnect::AllocateConnectionOnInterconnect->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::AllocateConnectionOnInterconnectResult->from_result($result);return $o_result;
   }
-  method AllocatePrivateVirtualInterface (%args) {
-    my $call = Aws::DirectConnect::AllocatePrivateVirtualInterface->new(%args);
+  sub AllocatePrivateVirtualInterface {
+    my $self = shift;
+    my $call = Aws::DirectConnect::AllocatePrivateVirtualInterface->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::AllocatePrivateVirtualInterfaceResult->from_result($result);return $o_result;
   }
-  method AllocatePublicVirtualInterface (%args) {
-    my $call = Aws::DirectConnect::AllocatePublicVirtualInterface->new(%args);
+  sub AllocatePublicVirtualInterface {
+    my $self = shift;
+    my $call = Aws::DirectConnect::AllocatePublicVirtualInterface->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::AllocatePublicVirtualInterfaceResult->from_result($result);return $o_result;
   }
-  method ConfirmConnection (%args) {
-    my $call = Aws::DirectConnect::ConfirmConnection->new(%args);
+  sub ConfirmConnection {
+    my $self = shift;
+    my $call = Aws::DirectConnect::ConfirmConnection->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::ConfirmConnectionResult->from_result($result);return $o_result;
   }
-  method ConfirmPrivateVirtualInterface (%args) {
-    my $call = Aws::DirectConnect::ConfirmPrivateVirtualInterface->new(%args);
+  sub ConfirmPrivateVirtualInterface {
+    my $self = shift;
+    my $call = Aws::DirectConnect::ConfirmPrivateVirtualInterface->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::ConfirmPrivateVirtualInterfaceResult->from_result($result);return $o_result;
   }
-  method ConfirmPublicVirtualInterface (%args) {
-    my $call = Aws::DirectConnect::ConfirmPublicVirtualInterface->new(%args);
+  sub ConfirmPublicVirtualInterface {
+    my $self = shift;
+    my $call = Aws::DirectConnect::ConfirmPublicVirtualInterface->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::ConfirmPublicVirtualInterfaceResult->from_result($result);return $o_result;
   }
-  method CreateConnection (%args) {
-    my $call = Aws::DirectConnect::CreateConnection->new(%args);
+  sub CreateConnection {
+    my $self = shift;
+    my $call = Aws::DirectConnect::CreateConnection->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::CreateConnectionResult->from_result($result);return $o_result;
   }
-  method CreateInterconnect (%args) {
-    my $call = Aws::DirectConnect::CreateInterconnect->new(%args);
+  sub CreateInterconnect {
+    my $self = shift;
+    my $call = Aws::DirectConnect::CreateInterconnect->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::CreateInterconnectResult->from_result($result);return $o_result;
   }
-  method CreatePrivateVirtualInterface (%args) {
-    my $call = Aws::DirectConnect::CreatePrivateVirtualInterface->new(%args);
+  sub CreatePrivateVirtualInterface {
+    my $self = shift;
+    my $call = Aws::DirectConnect::CreatePrivateVirtualInterface->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::CreatePrivateVirtualInterfaceResult->from_result($result);return $o_result;
   }
-  method CreatePublicVirtualInterface (%args) {
-    my $call = Aws::DirectConnect::CreatePublicVirtualInterface->new(%args);
+  sub CreatePublicVirtualInterface {
+    my $self = shift;
+    my $call = Aws::DirectConnect::CreatePublicVirtualInterface->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::CreatePublicVirtualInterfaceResult->from_result($result);return $o_result;
   }
-  method DeleteConnection (%args) {
-    my $call = Aws::DirectConnect::DeleteConnection->new(%args);
+  sub DeleteConnection {
+    my $self = shift;
+    my $call = Aws::DirectConnect::DeleteConnection->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DeleteConnectionResult->from_result($result);return $o_result;
   }
-  method DeleteInterconnect (%args) {
-    my $call = Aws::DirectConnect::DeleteInterconnect->new(%args);
+  sub DeleteInterconnect {
+    my $self = shift;
+    my $call = Aws::DirectConnect::DeleteInterconnect->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DeleteInterconnectResult->from_result($result);return $o_result;
   }
-  method DeleteVirtualInterface (%args) {
-    my $call = Aws::DirectConnect::DeleteVirtualInterface->new(%args);
+  sub DeleteVirtualInterface {
+    my $self = shift;
+    my $call = Aws::DirectConnect::DeleteVirtualInterface->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DeleteVirtualInterfaceResult->from_result($result);return $o_result;
   }
-  method DescribeConnections (%args) {
-    my $call = Aws::DirectConnect::DescribeConnections->new(%args);
+  sub DescribeConnections {
+    my $self = shift;
+    my $call = Aws::DirectConnect::DescribeConnections->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DescribeConnectionsResult->from_result($result);return $o_result;
   }
-  method DescribeConnectionsOnInterconnect (%args) {
-    my $call = Aws::DirectConnect::DescribeConnectionsOnInterconnect->new(%args);
+  sub DescribeConnectionsOnInterconnect {
+    my $self = shift;
+    my $call = Aws::DirectConnect::DescribeConnectionsOnInterconnect->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DescribeConnectionsOnInterconnectResult->from_result($result);return $o_result;
   }
-  method DescribeInterconnects (%args) {
-    my $call = Aws::DirectConnect::DescribeInterconnects->new(%args);
+  sub DescribeInterconnects {
+    my $self = shift;
+    my $call = Aws::DirectConnect::DescribeInterconnects->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DescribeInterconnectsResult->from_result($result);return $o_result;
   }
-  method DescribeLocations (%args) {
-    my $call = Aws::DirectConnect::DescribeLocations->new(%args);
+  sub DescribeLocations {
+    my $self = shift;
+    my $call = Aws::DirectConnect::DescribeLocations->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DescribeLocationsResult->from_result($result);return $o_result;
   }
-  method DescribeVirtualGateways (%args) {
-    my $call = Aws::DirectConnect::DescribeVirtualGateways->new(%args);
+  sub DescribeVirtualGateways {
+    my $self = shift;
+    my $call = Aws::DirectConnect::DescribeVirtualGateways->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DescribeVirtualGatewaysResult->from_result($result);return $o_result;
   }
-  method DescribeVirtualInterfaces (%args) {
-    my $call = Aws::DirectConnect::DescribeVirtualInterfaces->new(%args);
+  sub DescribeVirtualInterfaces {
+    my $self = shift;
+    my $call = Aws::DirectConnect::DescribeVirtualInterfaces->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DescribeVirtualInterfacesResult->from_result($result);return $o_result;
   }

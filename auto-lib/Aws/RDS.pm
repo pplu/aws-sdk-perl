@@ -1,5 +1,4 @@
 
-use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
@@ -7,17 +6,23 @@ enum 'Aws::RDS::ApplyMethod', ['immediate','pending-reboot',];
 enum 'Aws::RDS::SourceType', ['db-instance','db-parameter-group','db-security-group','db-snapshot',];
 
 
-class Aws::RDS::AvailabilityZone with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::AvailabilityZone {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Name => (is => 'ro', isa => 'Str');
   has ProvisionedIopsCapable => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::CharacterSet with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::CharacterSet {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CharacterSetDescription => (is => 'ro', isa => 'Str');
   has CharacterSetName => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::DBEngineVersion with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::DBEngineVersion {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DBEngineDescription => (is => 'ro', isa => 'Str');
   has DBEngineVersionDescription => (is => 'ro', isa => 'Str');
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
@@ -27,7 +32,9 @@ class Aws::RDS::DBEngineVersion with (AWS::API::ResultParser, AWS::API::ToParams
   has SupportedCharacterSets => (is => 'ro', isa => 'ArrayRef[Aws::RDS::CharacterSet]');
 }
 
-class Aws::RDS::DBInstance with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::DBInstance {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
@@ -61,25 +68,33 @@ class Aws::RDS::DBInstance with (AWS::API::ResultParser, AWS::API::ToParams) {
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::VpcSecurityGroupMembership]');
 }
 
-class Aws::RDS::DBInstanceStatusInfo with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::DBInstanceStatusInfo {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Message => (is => 'ro', isa => 'Str');
   has Normal => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusType => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::DBParameterGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::DBParameterGroup {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::DBParameterGroupStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::DBParameterGroupStatus {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has ParameterApplyStatus => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::DBSecurityGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::DBSecurityGroup {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DBSecurityGroupDescription => (is => 'ro', isa => 'Str');
   has DBSecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::EC2SecurityGroup]');
@@ -88,12 +103,16 @@ class Aws::RDS::DBSecurityGroup with (AWS::API::ResultParser, AWS::API::ToParams
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::DBSecurityGroupMembership with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::DBSecurityGroupMembership {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DBSecurityGroupName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::DBSnapshot with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::DBSnapshot {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
@@ -114,7 +133,9 @@ class Aws::RDS::DBSnapshot with (AWS::API::ResultParser, AWS::API::ToParams) {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::DBSubnetGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::DBSubnetGroup {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DBSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has SubnetGroupStatus => (is => 'ro', isa => 'Str');
@@ -122,31 +143,41 @@ class Aws::RDS::DBSubnetGroup with (AWS::API::ResultParser, AWS::API::ToParams) 
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::DescribeDBLogFilesDetails with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::DescribeDBLogFilesDetails {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has LastWritten => (is => 'ro', isa => 'Num');
   has LogFileName => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Num');
 }
 
-class Aws::RDS::EC2SecurityGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::EC2SecurityGroup {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has EC2SecurityGroupId => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::Endpoint with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::Endpoint {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Address => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
 }
 
-class Aws::RDS::EngineDefaults with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::EngineDefaults {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Parameter]');
 }
 
-class Aws::RDS::Event with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::Event {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Date => (is => 'ro', isa => 'Str');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has Message => (is => 'ro', isa => 'Str');
@@ -154,12 +185,16 @@ class Aws::RDS::Event with (AWS::API::ResultParser, AWS::API::ToParams) {
   has SourceType => (is => 'ro', isa => 'Aws::RDS::SourceType');
 }
 
-class Aws::RDS::EventCategoriesMap with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::EventCategoriesMap {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has SourceType => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::EventSubscription with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::EventSubscription {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has CustomerAwsId => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Str');
@@ -171,12 +206,16 @@ class Aws::RDS::EventSubscription with (AWS::API::ResultParser, AWS::API::ToPara
   has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::IPRange with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::IPRange {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CIDRIP => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::Option with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::Option {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBSecurityGroupMembership]');
   has OptionDescription => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
@@ -187,7 +226,9 @@ class Aws::RDS::Option with (AWS::API::ResultParser, AWS::API::ToParams) {
   has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Aws::RDS::VpcSecurityGroupMembership]');
 }
 
-class Aws::RDS::OptionConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::OptionConfiguration {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str]');
   has OptionName => (is => 'ro', isa => 'Str', required => 1);
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionSetting]');
@@ -195,7 +236,9 @@ class Aws::RDS::OptionConfiguration with (AWS::API::ResultParser, AWS::API::ToPa
   has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
-class Aws::RDS::OptionGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::OptionGroup {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AllowsVpcAndNonVpcInstanceMemberships => (is => 'ro', isa => 'Str');
   has EngineName => (is => 'ro', isa => 'Str');
   has MajorEngineVersion => (is => 'ro', isa => 'Str');
@@ -205,12 +248,16 @@ class Aws::RDS::OptionGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::OptionGroupMembership with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::OptionGroupMembership {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::OptionGroupOption with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::OptionGroupOption {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DefaultPort => (is => 'ro', isa => 'Int');
   has Description => (is => 'ro', isa => 'Str');
   has EngineName => (is => 'ro', isa => 'Str');
@@ -224,7 +271,9 @@ class Aws::RDS::OptionGroupOption with (AWS::API::ResultParser, AWS::API::ToPara
   has PortRequired => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::OptionGroupOptionSetting with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::OptionGroupOptionSetting {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AllowedValues => (is => 'ro', isa => 'Str');
   has ApplyType => (is => 'ro', isa => 'Str');
   has DefaultValue => (is => 'ro', isa => 'Str');
@@ -233,7 +282,9 @@ class Aws::RDS::OptionGroupOptionSetting with (AWS::API::ResultParser, AWS::API:
   has SettingName => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::OptionSetting with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::OptionSetting {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AllowedValues => (is => 'ro', isa => 'Str');
   has ApplyType => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
@@ -245,7 +296,9 @@ class Aws::RDS::OptionSetting with (AWS::API::ResultParser, AWS::API::ToParams) 
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::OrderableDBInstanceOption with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::OrderableDBInstanceOption {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Aws::RDS::AvailabilityZone]');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
@@ -256,7 +309,9 @@ class Aws::RDS::OrderableDBInstanceOption with (AWS::API::ResultParser, AWS::API
   has Vpc => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::Parameter with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::Parameter {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AllowedValues => (is => 'ro', isa => 'Str');
   has ApplyMethod => (is => 'ro', isa => 'Aws::RDS::ApplyMethod');
   has ApplyType => (is => 'ro', isa => 'Str');
@@ -269,7 +324,9 @@ class Aws::RDS::Parameter with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Source => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::PendingModifiedValues with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::PendingModifiedValues {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
@@ -281,12 +338,16 @@ class Aws::RDS::PendingModifiedValues with (AWS::API::ResultParser, AWS::API::To
   has Port => (is => 'ro', isa => 'Int');
 }
 
-class Aws::RDS::RecurringCharge with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::RecurringCharge {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has RecurringChargeAmount => (is => 'ro', isa => 'Num');
   has RecurringChargeFrequency => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::ReservedDBInstance with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::ReservedDBInstance {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceCount => (is => 'ro', isa => 'Int');
@@ -303,7 +364,9 @@ class Aws::RDS::ReservedDBInstance with (AWS::API::ResultParser, AWS::API::ToPar
   has UsagePrice => (is => 'ro', isa => 'Num');
 }
 
-class Aws::RDS::ReservedDBInstancesOffering with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::ReservedDBInstancesOffering {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
@@ -316,25 +379,32 @@ class Aws::RDS::ReservedDBInstancesOffering with (AWS::API::ResultParser, AWS::A
   has UsagePrice => (is => 'ro', isa => 'Num');
 }
 
-class Aws::RDS::Subnet with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::Subnet {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has SubnetAvailabilityZone => (is => 'ro', isa => 'Aws::RDS::AvailabilityZone');
   has SubnetIdentifier => (is => 'ro', isa => 'Str');
   has SubnetStatus => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::Tag with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::Tag {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Key => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class Aws::RDS::VpcSecurityGroupMembership with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::RDS::VpcSecurityGroupMembership {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Status => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupId => (is => 'ro', isa => 'Str');
 }
 
 
 
-class Aws::RDS::AddSourceIdentifierToSubscription {
+package Aws::RDS::AddSourceIdentifierToSubscription {
+  use Moose;
   has SourceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -342,7 +412,8 @@ class Aws::RDS::AddSourceIdentifierToSubscription {
   has _returns => (isa => 'Aws::RDS::AddSourceIdentifierToSubscriptionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AddSourceIdentifierToSubscriptionResult');  
 }
-class Aws::RDS::AddTagsToResource {
+package Aws::RDS::AddTagsToResource {
+  use Moose;
   has ResourceName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' , required => 1);
 
@@ -350,7 +421,8 @@ class Aws::RDS::AddTagsToResource {
   has _returns => (isa => 'Aws::RDS::AddTagsToResourceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AddTagsToResourceResult');  
 }
-class Aws::RDS::AuthorizeDBSecurityGroupIngress {
+package Aws::RDS::AuthorizeDBSecurityGroupIngress {
+  use Moose;
   has CIDRIP => (is => 'ro', isa => 'Str');
   has DBSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
   has EC2SecurityGroupId => (is => 'ro', isa => 'Str');
@@ -361,7 +433,8 @@ class Aws::RDS::AuthorizeDBSecurityGroupIngress {
   has _returns => (isa => 'Aws::RDS::AuthorizeDBSecurityGroupIngressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeDBSecurityGroupIngressResult');  
 }
-class Aws::RDS::CopyDBSnapshot {
+package Aws::RDS::CopyDBSnapshot {
+  use Moose;
   has SourceDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
   has TargetDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -370,7 +443,8 @@ class Aws::RDS::CopyDBSnapshot {
   has _returns => (isa => 'Aws::RDS::CopyDBSnapshotResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CopyDBSnapshotResult');  
 }
-class Aws::RDS::CreateDBInstance {
+package Aws::RDS::CreateDBInstance {
+  use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int', required => 1);
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
@@ -401,7 +475,8 @@ class Aws::RDS::CreateDBInstance {
   has _returns => (isa => 'Aws::RDS::CreateDBInstanceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceResult');  
 }
-class Aws::RDS::CreateDBInstanceReadReplica {
+package Aws::RDS::CreateDBInstanceReadReplica {
+  use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
@@ -418,7 +493,8 @@ class Aws::RDS::CreateDBInstanceReadReplica {
   has _returns => (isa => 'Aws::RDS::CreateDBInstanceReadReplicaResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceReadReplicaResult');  
 }
-class Aws::RDS::CreateDBParameterGroup {
+package Aws::RDS::CreateDBParameterGroup {
+  use Moose;
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
   has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str', required => 1);
@@ -428,7 +504,8 @@ class Aws::RDS::CreateDBParameterGroup {
   has _returns => (isa => 'Aws::RDS::CreateDBParameterGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBParameterGroupResult');  
 }
-class Aws::RDS::CreateDBSecurityGroup {
+package Aws::RDS::CreateDBSecurityGroup {
+  use Moose;
   has DBSecurityGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has DBSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
@@ -437,7 +514,8 @@ class Aws::RDS::CreateDBSecurityGroup {
   has _returns => (isa => 'Aws::RDS::CreateDBSecurityGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBSecurityGroupResult');  
 }
-class Aws::RDS::CreateDBSnapshot {
+package Aws::RDS::CreateDBSnapshot {
+  use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
@@ -446,7 +524,8 @@ class Aws::RDS::CreateDBSnapshot {
   has _returns => (isa => 'Aws::RDS::CreateDBSnapshotResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBSnapshotResult');  
 }
-class Aws::RDS::CreateDBSubnetGroup {
+package Aws::RDS::CreateDBSubnetGroup {
+  use Moose;
   has DBSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' , required => 1);
@@ -456,7 +535,8 @@ class Aws::RDS::CreateDBSubnetGroup {
   has _returns => (isa => 'Aws::RDS::CreateDBSubnetGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBSubnetGroupResult');  
 }
-class Aws::RDS::CreateEventSubscription {
+package Aws::RDS::CreateEventSubscription {
+  use Moose;
   has Enabled => (is => 'ro', isa => 'Str');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'EventCategory' );
   has SnsTopicArn => (is => 'ro', isa => 'Str', required => 1);
@@ -469,7 +549,8 @@ class Aws::RDS::CreateEventSubscription {
   has _returns => (isa => 'Aws::RDS::CreateEventSubscriptionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateEventSubscriptionResult');  
 }
-class Aws::RDS::CreateOptionGroup {
+package Aws::RDS::CreateOptionGroup {
+  use Moose;
   has EngineName => (is => 'ro', isa => 'Str', required => 1);
   has MajorEngineVersion => (is => 'ro', isa => 'Str', required => 1);
   has OptionGroupDescription => (is => 'ro', isa => 'Str', required => 1);
@@ -480,7 +561,8 @@ class Aws::RDS::CreateOptionGroup {
   has _returns => (isa => 'Aws::RDS::CreateOptionGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateOptionGroupResult');  
 }
-class Aws::RDS::DeleteDBInstance {
+package Aws::RDS::DeleteDBInstance {
+  use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has FinalDBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SkipFinalSnapshot => (is => 'ro', isa => 'Str');
@@ -489,49 +571,56 @@ class Aws::RDS::DeleteDBInstance {
   has _returns => (isa => 'Aws::RDS::DeleteDBInstanceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBInstanceResult');  
 }
-class Aws::RDS::DeleteDBParameterGroup {
+package Aws::RDS::DeleteDBParameterGroup {
+  use Moose;
   has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBParameterGroup');
   has _returns => (isa => 'Aws::RDS::DeleteDBParameterGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBParameterGroupResult');  
 }
-class Aws::RDS::DeleteDBSecurityGroup {
+package Aws::RDS::DeleteDBSecurityGroup {
+  use Moose;
   has DBSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBSecurityGroup');
   has _returns => (isa => 'Aws::RDS::DeleteDBSecurityGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBSecurityGroupResult');  
 }
-class Aws::RDS::DeleteDBSnapshot {
+package Aws::RDS::DeleteDBSnapshot {
+  use Moose;
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBSnapshot');
   has _returns => (isa => 'Aws::RDS::DeleteDBSnapshotResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBSnapshotResult');  
 }
-class Aws::RDS::DeleteDBSubnetGroup {
+package Aws::RDS::DeleteDBSubnetGroup {
+  use Moose;
   has DBSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBSubnetGroup');
   has _returns => (isa => 'Aws::RDS::DeleteDBSubnetGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBSubnetGroupResult');  
 }
-class Aws::RDS::DeleteEventSubscription {
+package Aws::RDS::DeleteEventSubscription {
+  use Moose;
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteEventSubscription');
   has _returns => (isa => 'Aws::RDS::DeleteEventSubscriptionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteEventSubscriptionResult');  
 }
-class Aws::RDS::DeleteOptionGroup {
+package Aws::RDS::DeleteOptionGroup {
+  use Moose;
   has OptionGroupName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteOptionGroup');
   has _returns => (isa => 'Aws::RDS::DeleteOptionGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteOptionGroupResult');  
 }
-class Aws::RDS::DescribeDBEngineVersions {
+package Aws::RDS::DescribeDBEngineVersions {
+  use Moose;
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
   has DefaultOnly => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
@@ -544,7 +633,8 @@ class Aws::RDS::DescribeDBEngineVersions {
   has _returns => (isa => 'Aws::RDS::DescribeDBEngineVersionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBEngineVersionsResult');  
 }
-class Aws::RDS::DescribeDBInstances {
+package Aws::RDS::DescribeDBInstances {
+  use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -553,7 +643,8 @@ class Aws::RDS::DescribeDBInstances {
   has _returns => (isa => 'Aws::RDS::DescribeDBInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBInstancesResult');  
 }
-class Aws::RDS::DescribeDBLogFiles {
+package Aws::RDS::DescribeDBLogFiles {
+  use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has FileLastWritten => (is => 'ro', isa => 'Num');
   has FilenameContains => (is => 'ro', isa => 'Str');
@@ -565,7 +656,8 @@ class Aws::RDS::DescribeDBLogFiles {
   has _returns => (isa => 'Aws::RDS::DescribeDBLogFilesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBLogFilesResult');  
 }
-class Aws::RDS::DescribeDBParameterGroups {
+package Aws::RDS::DescribeDBParameterGroups {
+  use Moose;
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -574,7 +666,8 @@ class Aws::RDS::DescribeDBParameterGroups {
   has _returns => (isa => 'Aws::RDS::DescribeDBParameterGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBParameterGroupsResult');  
 }
-class Aws::RDS::DescribeDBParameters {
+package Aws::RDS::DescribeDBParameters {
+  use Moose;
   has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -584,7 +677,8 @@ class Aws::RDS::DescribeDBParameters {
   has _returns => (isa => 'Aws::RDS::DescribeDBParametersResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBParametersResult');  
 }
-class Aws::RDS::DescribeDBSecurityGroups {
+package Aws::RDS::DescribeDBSecurityGroups {
+  use Moose;
   has DBSecurityGroupName => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -593,7 +687,8 @@ class Aws::RDS::DescribeDBSecurityGroups {
   has _returns => (isa => 'Aws::RDS::DescribeDBSecurityGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBSecurityGroupsResult');  
 }
-class Aws::RDS::DescribeDBSnapshots {
+package Aws::RDS::DescribeDBSnapshots {
+  use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -604,7 +699,8 @@ class Aws::RDS::DescribeDBSnapshots {
   has _returns => (isa => 'Aws::RDS::DescribeDBSnapshotsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBSnapshotsResult');  
 }
-class Aws::RDS::DescribeDBSubnetGroups {
+package Aws::RDS::DescribeDBSubnetGroups {
+  use Moose;
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -613,7 +709,8 @@ class Aws::RDS::DescribeDBSubnetGroups {
   has _returns => (isa => 'Aws::RDS::DescribeDBSubnetGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBSubnetGroupsResult');  
 }
-class Aws::RDS::DescribeEngineDefaultParameters {
+package Aws::RDS::DescribeEngineDefaultParameters {
+  use Moose;
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -622,14 +719,16 @@ class Aws::RDS::DescribeEngineDefaultParameters {
   has _returns => (isa => 'Aws::RDS::DescribeEngineDefaultParametersResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEngineDefaultParametersResult');  
 }
-class Aws::RDS::DescribeEventCategories {
+package Aws::RDS::DescribeEventCategories {
+  use Moose;
   has SourceType => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventCategories');
   has _returns => (isa => 'Aws::RDS::DescribeEventCategoriesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventCategoriesResult');  
 }
-class Aws::RDS::DescribeEventSubscriptions {
+package Aws::RDS::DescribeEventSubscriptions {
+  use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SubscriptionName => (is => 'ro', isa => 'Str');
@@ -638,7 +737,8 @@ class Aws::RDS::DescribeEventSubscriptions {
   has _returns => (isa => 'Aws::RDS::DescribeEventSubscriptionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptionsResult');  
 }
-class Aws::RDS::DescribeEvents {
+package Aws::RDS::DescribeEvents {
+  use Moose;
   has Duration => (is => 'ro', isa => 'Int');
   has EndTime => (is => 'ro', isa => 'Str');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'EventCategory' );
@@ -652,7 +752,8 @@ class Aws::RDS::DescribeEvents {
   has _returns => (isa => 'Aws::RDS::DescribeEventsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');  
 }
-class Aws::RDS::DescribeOptionGroupOptions {
+package Aws::RDS::DescribeOptionGroupOptions {
+  use Moose;
   has EngineName => (is => 'ro', isa => 'Str', required => 1);
   has MajorEngineVersion => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -662,7 +763,8 @@ class Aws::RDS::DescribeOptionGroupOptions {
   has _returns => (isa => 'Aws::RDS::DescribeOptionGroupOptionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroupOptionsResult');  
 }
-class Aws::RDS::DescribeOptionGroups {
+package Aws::RDS::DescribeOptionGroups {
+  use Moose;
   has EngineName => (is => 'ro', isa => 'Str');
   has MajorEngineVersion => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -673,7 +775,8 @@ class Aws::RDS::DescribeOptionGroups {
   has _returns => (isa => 'Aws::RDS::DescribeOptionGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroupsResult');  
 }
-class Aws::RDS::DescribeOrderableDBInstanceOptions {
+package Aws::RDS::DescribeOrderableDBInstanceOptions {
+  use Moose;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -686,7 +789,8 @@ class Aws::RDS::DescribeOrderableDBInstanceOptions {
   has _returns => (isa => 'Aws::RDS::DescribeOrderableDBInstanceOptionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOrderableDBInstanceOptionsResult');  
 }
-class Aws::RDS::DescribeReservedDBInstances {
+package Aws::RDS::DescribeReservedDBInstances {
+  use Moose;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -701,7 +805,8 @@ class Aws::RDS::DescribeReservedDBInstances {
   has _returns => (isa => 'Aws::RDS::DescribeReservedDBInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstancesResult');  
 }
-class Aws::RDS::DescribeReservedDBInstancesOfferings {
+package Aws::RDS::DescribeReservedDBInstancesOfferings {
+  use Moose;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -715,7 +820,8 @@ class Aws::RDS::DescribeReservedDBInstancesOfferings {
   has _returns => (isa => 'Aws::RDS::DescribeReservedDBInstancesOfferingsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstancesOfferingsResult');  
 }
-class Aws::RDS::DownloadDBLogFilePortion {
+package Aws::RDS::DownloadDBLogFilePortion {
+  use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has LogFileName => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
@@ -725,14 +831,16 @@ class Aws::RDS::DownloadDBLogFilePortion {
   has _returns => (isa => 'Aws::RDS::DownloadDBLogFilePortionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DownloadDBLogFilePortionResult');  
 }
-class Aws::RDS::ListTagsForResource {
+package Aws::RDS::ListTagsForResource {
+  use Moose;
   has ResourceName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListTagsForResource');
   has _returns => (isa => 'Aws::RDS::ListTagsForResourceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListTagsForResourceResult');  
 }
-class Aws::RDS::ModifyDBInstance {
+package Aws::RDS::ModifyDBInstance {
+  use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AllowMajorVersionUpgrade => (is => 'ro', isa => 'Str');
   has ApplyImmediately => (is => 'ro', isa => 'Str');
@@ -756,7 +864,8 @@ class Aws::RDS::ModifyDBInstance {
   has _returns => (isa => 'Aws::RDS::ModifyDBInstanceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBInstanceResult');  
 }
-class Aws::RDS::ModifyDBParameterGroup {
+package Aws::RDS::ModifyDBParameterGroup {
+  use Moose;
   has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Parameter]', traits => ['NameInRequest'], request_name => 'Parameter' , required => 1);
 
@@ -764,7 +873,8 @@ class Aws::RDS::ModifyDBParameterGroup {
   has _returns => (isa => 'Aws::RDS::ModifyDBParameterGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBParameterGroupResult');  
 }
-class Aws::RDS::ModifyDBSubnetGroup {
+package Aws::RDS::ModifyDBSubnetGroup {
+  use Moose;
   has DBSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' , required => 1);
@@ -773,7 +883,8 @@ class Aws::RDS::ModifyDBSubnetGroup {
   has _returns => (isa => 'Aws::RDS::ModifyDBSubnetGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBSubnetGroupResult');  
 }
-class Aws::RDS::ModifyEventSubscription {
+package Aws::RDS::ModifyEventSubscription {
+  use Moose;
   has Enabled => (is => 'ro', isa => 'Str');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'EventCategory' );
   has SnsTopicArn => (is => 'ro', isa => 'Str');
@@ -784,7 +895,8 @@ class Aws::RDS::ModifyEventSubscription {
   has _returns => (isa => 'Aws::RDS::ModifyEventSubscriptionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyEventSubscriptionResult');  
 }
-class Aws::RDS::ModifyOptionGroup {
+package Aws::RDS::ModifyOptionGroup {
+  use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str', required => 1);
   has OptionsToInclude => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionConfiguration]', traits => ['NameInRequest'], request_name => 'OptionConfiguration' );
@@ -794,7 +906,8 @@ class Aws::RDS::ModifyOptionGroup {
   has _returns => (isa => 'Aws::RDS::ModifyOptionGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyOptionGroupResult');  
 }
-class Aws::RDS::PromoteReadReplica {
+package Aws::RDS::PromoteReadReplica {
+  use Moose;
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
@@ -803,7 +916,8 @@ class Aws::RDS::PromoteReadReplica {
   has _returns => (isa => 'Aws::RDS::PromoteReadReplicaResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'PromoteReadReplicaResult');  
 }
-class Aws::RDS::PurchaseReservedDBInstancesOffering {
+package Aws::RDS::PurchaseReservedDBInstancesOffering {
+  use Moose;
   has DBInstanceCount => (is => 'ro', isa => 'Int');
   has ReservedDBInstanceId => (is => 'ro', isa => 'Str');
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str', required => 1);
@@ -813,7 +927,8 @@ class Aws::RDS::PurchaseReservedDBInstancesOffering {
   has _returns => (isa => 'Aws::RDS::PurchaseReservedDBInstancesOfferingResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedDBInstancesOfferingResult');  
 }
-class Aws::RDS::RebootDBInstance {
+package Aws::RDS::RebootDBInstance {
+  use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ForceFailover => (is => 'ro', isa => 'Str');
 
@@ -821,7 +936,8 @@ class Aws::RDS::RebootDBInstance {
   has _returns => (isa => 'Aws::RDS::RebootDBInstanceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RebootDBInstanceResult');  
 }
-class Aws::RDS::RemoveSourceIdentifierFromSubscription {
+package Aws::RDS::RemoveSourceIdentifierFromSubscription {
+  use Moose;
   has SourceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -829,7 +945,8 @@ class Aws::RDS::RemoveSourceIdentifierFromSubscription {
   has _returns => (isa => 'Aws::RDS::RemoveSourceIdentifierFromSubscriptionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RemoveSourceIdentifierFromSubscriptionResult');  
 }
-class Aws::RDS::RemoveTagsFromResource {
+package Aws::RDS::RemoveTagsFromResource {
+  use Moose;
   has ResourceName => (is => 'ro', isa => 'Str', required => 1);
   has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
@@ -837,7 +954,8 @@ class Aws::RDS::RemoveTagsFromResource {
   has _returns => (isa => 'Aws::RDS::RemoveTagsFromResourceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RemoveTagsFromResourceResult');  
 }
-class Aws::RDS::ResetDBParameterGroup {
+package Aws::RDS::ResetDBParameterGroup {
+  use Moose;
   has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Parameter]', traits => ['NameInRequest'], request_name => 'Parameter' );
   has ResetAllParameters => (is => 'ro', isa => 'Str');
@@ -846,7 +964,8 @@ class Aws::RDS::ResetDBParameterGroup {
   has _returns => (isa => 'Aws::RDS::ResetDBParameterGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ResetDBParameterGroupResult');  
 }
-class Aws::RDS::RestoreDBInstanceFromDBSnapshot {
+package Aws::RDS::RestoreDBInstanceFromDBSnapshot {
+  use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
@@ -867,7 +986,8 @@ class Aws::RDS::RestoreDBInstanceFromDBSnapshot {
   has _returns => (isa => 'Aws::RDS::RestoreDBInstanceFromDBSnapshotResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromDBSnapshotResult');  
 }
-class Aws::RDS::RestoreDBInstanceToPointInTime {
+package Aws::RDS::RestoreDBInstanceToPointInTime {
+  use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
@@ -890,7 +1010,8 @@ class Aws::RDS::RestoreDBInstanceToPointInTime {
   has _returns => (isa => 'Aws::RDS::RestoreDBInstanceToPointInTimeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceToPointInTimeResult');  
 }
-class Aws::RDS::RevokeDBSecurityGroupIngress {
+package Aws::RDS::RevokeDBSecurityGroupIngress {
+  use Moose;
   has CIDRIP => (is => 'ro', isa => 'Str');
   has DBSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
   has EC2SecurityGroupId => (is => 'ro', isa => 'Str');
@@ -902,514 +1023,660 @@ class Aws::RDS::RevokeDBSecurityGroupIngress {
   has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeDBSecurityGroupIngressResult');  
 }
 
-class Aws::RDS::AddSourceIdentifierToSubscriptionResult with AWS::API::ResultParser {
+package Aws::RDS::AddSourceIdentifierToSubscriptionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has EventSubscription => (is => 'ro', isa => 'Aws::RDS::EventSubscription');
 
 }
-class Aws::RDS::AuthorizeDBSecurityGroupIngressResult with AWS::API::ResultParser {
+package Aws::RDS::AuthorizeDBSecurityGroupIngressResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBSecurityGroup => (is => 'ro', isa => 'Aws::RDS::DBSecurityGroup');
 
 }
-class Aws::RDS::CopyDBSnapshotResult with AWS::API::ResultParser {
+package Aws::RDS::CopyDBSnapshotResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBSnapshot => (is => 'ro', isa => 'Aws::RDS::DBSnapshot');
 
 }
-class Aws::RDS::CreateDBInstanceResult with AWS::API::ResultParser {
+package Aws::RDS::CreateDBInstanceResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBInstance => (is => 'ro', isa => 'Aws::RDS::DBInstance');
 
 }
-class Aws::RDS::CreateDBInstanceReadReplicaResult with AWS::API::ResultParser {
+package Aws::RDS::CreateDBInstanceReadReplicaResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBInstance => (is => 'ro', isa => 'Aws::RDS::DBInstance');
 
 }
-class Aws::RDS::CreateDBParameterGroupResult with AWS::API::ResultParser {
+package Aws::RDS::CreateDBParameterGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBParameterGroup => (is => 'ro', isa => 'Aws::RDS::DBParameterGroup');
 
 }
-class Aws::RDS::CreateDBSecurityGroupResult with AWS::API::ResultParser {
+package Aws::RDS::CreateDBSecurityGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBSecurityGroup => (is => 'ro', isa => 'Aws::RDS::DBSecurityGroup');
 
 }
-class Aws::RDS::CreateDBSnapshotResult with AWS::API::ResultParser {
+package Aws::RDS::CreateDBSnapshotResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBSnapshot => (is => 'ro', isa => 'Aws::RDS::DBSnapshot');
 
 }
-class Aws::RDS::CreateDBSubnetGroupResult with AWS::API::ResultParser {
+package Aws::RDS::CreateDBSubnetGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBSubnetGroup => (is => 'ro', isa => 'Aws::RDS::DBSubnetGroup');
 
 }
-class Aws::RDS::CreateEventSubscriptionResult with AWS::API::ResultParser {
+package Aws::RDS::CreateEventSubscriptionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has EventSubscription => (is => 'ro', isa => 'Aws::RDS::EventSubscription');
 
 }
-class Aws::RDS::CreateOptionGroupResult with AWS::API::ResultParser {
+package Aws::RDS::CreateOptionGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has OptionGroup => (is => 'ro', isa => 'Aws::RDS::OptionGroup');
 
 }
-class Aws::RDS::DeleteDBInstanceResult with AWS::API::ResultParser {
+package Aws::RDS::DeleteDBInstanceResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBInstance => (is => 'ro', isa => 'Aws::RDS::DBInstance');
 
 }
-class Aws::RDS::DeleteDBSnapshotResult with AWS::API::ResultParser {
+package Aws::RDS::DeleteDBSnapshotResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBSnapshot => (is => 'ro', isa => 'Aws::RDS::DBSnapshot');
 
 }
-class Aws::RDS::DeleteEventSubscriptionResult with AWS::API::ResultParser {
+package Aws::RDS::DeleteEventSubscriptionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has EventSubscription => (is => 'ro', isa => 'Aws::RDS::EventSubscription');
 
 }
-class Aws::RDS::DescribeDBEngineVersionsResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeDBEngineVersionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBEngineVersions => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBEngineVersion]', traits => ['Unwrapped'], xmlname => 'DBEngineVersion');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::RDS::DescribeDBInstancesResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeDBInstancesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBInstances => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBInstance]', traits => ['Unwrapped'], xmlname => 'DBInstance');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::RDS::DescribeDBLogFilesResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeDBLogFilesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DescribeDBLogFiles => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DescribeDBLogFilesDetails]', traits => ['Unwrapped'], xmlname => 'DescribeDBLogFilesDetails');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::RDS::DescribeDBParameterGroupsResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeDBParameterGroupsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBParameterGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBParameterGroup]', traits => ['Unwrapped'], xmlname => 'DBParameterGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::RDS::DescribeDBParametersResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeDBParametersResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Parameter]', traits => ['Unwrapped'], xmlname => 'Parameter');
 
 }
-class Aws::RDS::DescribeDBSecurityGroupsResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeDBSecurityGroupsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBSecurityGroup]', traits => ['Unwrapped'], xmlname => 'DBSecurityGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::RDS::DescribeDBSnapshotsResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeDBSnapshotsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBSnapshots => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBSnapshot]', traits => ['Unwrapped'], xmlname => 'DBSnapshot');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::RDS::DescribeDBSubnetGroupsResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeDBSubnetGroupsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBSubnetGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBSubnetGroup]', traits => ['Unwrapped'], xmlname => 'DBSubnetGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::RDS::DescribeEngineDefaultParametersResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeEngineDefaultParametersResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has EngineDefaults => (is => 'ro', isa => 'Aws::RDS::EngineDefaults');
 
 }
-class Aws::RDS::DescribeEventCategoriesResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeEventCategoriesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has EventCategoriesMapList => (is => 'ro', isa => 'ArrayRef[Aws::RDS::EventCategoriesMap]', traits => ['Unwrapped'], xmlname => 'EventCategoriesMap');
 
 }
-class Aws::RDS::DescribeEventSubscriptionsResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeEventSubscriptionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[Aws::RDS::EventSubscription]', traits => ['Unwrapped'], xmlname => 'EventSubscription');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::RDS::DescribeEventsResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeEventsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Events => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Event]', traits => ['Unwrapped'], xmlname => 'Event');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::RDS::DescribeOptionGroupOptionsResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeOptionGroupOptionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
   has OptionGroupOptions => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionGroupOption]', traits => ['Unwrapped'], xmlname => 'OptionGroupOption');
 
 }
-class Aws::RDS::DescribeOptionGroupsResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeOptionGroupsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
   has OptionGroupsList => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionGroup]', traits => ['Unwrapped'], xmlname => 'OptionGroup');
 
 }
-class Aws::RDS::DescribeOrderableDBInstanceOptionsResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeOrderableDBInstanceOptionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
   has OrderableDBInstanceOptions => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OrderableDBInstanceOption]', traits => ['Unwrapped'], xmlname => 'OrderableDBInstanceOption');
 
 }
-class Aws::RDS::DescribeReservedDBInstancesResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeReservedDBInstancesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedDBInstances => (is => 'ro', isa => 'ArrayRef[Aws::RDS::ReservedDBInstance]', traits => ['Unwrapped'], xmlname => 'ReservedDBInstance');
 
 }
-class Aws::RDS::DescribeReservedDBInstancesOfferingsResult with AWS::API::ResultParser {
+package Aws::RDS::DescribeReservedDBInstancesOfferingsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedDBInstancesOfferings => (is => 'ro', isa => 'ArrayRef[Aws::RDS::ReservedDBInstancesOffering]', traits => ['Unwrapped'], xmlname => 'ReservedDBInstancesOffering');
 
 }
-class Aws::RDS::DownloadDBLogFilePortionResult with AWS::API::ResultParser {
+package Aws::RDS::DownloadDBLogFilePortionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has AdditionalDataPending => (is => 'ro', isa => 'Str');
   has LogFileData => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::RDS::ListTagsForResourceResult with AWS::API::ResultParser {
+package Aws::RDS::ListTagsForResourceResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has TagList => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['Unwrapped'], xmlname => 'Tag');
 
 }
-class Aws::RDS::ModifyDBInstanceResult with AWS::API::ResultParser {
+package Aws::RDS::ModifyDBInstanceResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBInstance => (is => 'ro', isa => 'Aws::RDS::DBInstance');
 
 }
-class Aws::RDS::ModifyDBParameterGroupResult with AWS::API::ResultParser {
+package Aws::RDS::ModifyDBParameterGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
 
 }
-class Aws::RDS::ModifyDBSubnetGroupResult with AWS::API::ResultParser {
+package Aws::RDS::ModifyDBSubnetGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBSubnetGroup => (is => 'ro', isa => 'Aws::RDS::DBSubnetGroup');
 
 }
-class Aws::RDS::ModifyEventSubscriptionResult with AWS::API::ResultParser {
+package Aws::RDS::ModifyEventSubscriptionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has EventSubscription => (is => 'ro', isa => 'Aws::RDS::EventSubscription');
 
 }
-class Aws::RDS::ModifyOptionGroupResult with AWS::API::ResultParser {
+package Aws::RDS::ModifyOptionGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has OptionGroup => (is => 'ro', isa => 'Aws::RDS::OptionGroup');
 
 }
-class Aws::RDS::PromoteReadReplicaResult with AWS::API::ResultParser {
+package Aws::RDS::PromoteReadReplicaResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBInstance => (is => 'ro', isa => 'Aws::RDS::DBInstance');
 
 }
-class Aws::RDS::PurchaseReservedDBInstancesOfferingResult with AWS::API::ResultParser {
+package Aws::RDS::PurchaseReservedDBInstancesOfferingResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has ReservedDBInstance => (is => 'ro', isa => 'Aws::RDS::ReservedDBInstance');
 
 }
-class Aws::RDS::RebootDBInstanceResult with AWS::API::ResultParser {
+package Aws::RDS::RebootDBInstanceResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBInstance => (is => 'ro', isa => 'Aws::RDS::DBInstance');
 
 }
-class Aws::RDS::RemoveSourceIdentifierFromSubscriptionResult with AWS::API::ResultParser {
+package Aws::RDS::RemoveSourceIdentifierFromSubscriptionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has EventSubscription => (is => 'ro', isa => 'Aws::RDS::EventSubscription');
 
 }
-class Aws::RDS::ResetDBParameterGroupResult with AWS::API::ResultParser {
+package Aws::RDS::ResetDBParameterGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
 
 }
-class Aws::RDS::RestoreDBInstanceFromDBSnapshotResult with AWS::API::ResultParser {
+package Aws::RDS::RestoreDBInstanceFromDBSnapshotResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBInstance => (is => 'ro', isa => 'Aws::RDS::DBInstance');
 
 }
-class Aws::RDS::RestoreDBInstanceToPointInTimeResult with AWS::API::ResultParser {
+package Aws::RDS::RestoreDBInstanceToPointInTimeResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBInstance => (is => 'ro', isa => 'Aws::RDS::DBInstance');
 
 }
-class Aws::RDS::RevokeDBSecurityGroupIngressResult with AWS::API::ResultParser {
+package Aws::RDS::RevokeDBSecurityGroupIngressResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DBSecurityGroup => (is => 'ro', isa => 'Aws::RDS::DBSecurityGroup');
 
 }
 
-class Aws::RDS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
+package Aws::RDS {
+  use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'rds');
   has version => (is => 'ro', isa => 'Str', default => '2013-09-09');
+  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
   
-  method AddSourceIdentifierToSubscription (%args) {
-    my $call = Aws::RDS::AddSourceIdentifierToSubscription->new(%args);
+  sub AddSourceIdentifierToSubscription {
+    my $self = shift;
+    my $call = Aws::RDS::AddSourceIdentifierToSubscription->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::AddSourceIdentifierToSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method AddTagsToResource (%args) {
-    my $call = Aws::RDS::AddTagsToResource->new(%args);
+  sub AddTagsToResource {
+    my $self = shift;
+    my $call = Aws::RDS::AddTagsToResource->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method AuthorizeDBSecurityGroupIngress (%args) {
-    my $call = Aws::RDS::AuthorizeDBSecurityGroupIngress->new(%args);
+  sub AuthorizeDBSecurityGroupIngress {
+    my $self = shift;
+    my $call = Aws::RDS::AuthorizeDBSecurityGroupIngress->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::AuthorizeDBSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CopyDBSnapshot (%args) {
-    my $call = Aws::RDS::CopyDBSnapshot->new(%args);
+  sub CopyDBSnapshot {
+    my $self = shift;
+    my $call = Aws::RDS::CopyDBSnapshot->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CopyDBSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreateDBInstance (%args) {
-    my $call = Aws::RDS::CreateDBInstance->new(%args);
+  sub CreateDBInstance {
+    my $self = shift;
+    my $call = Aws::RDS::CreateDBInstance->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateDBInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreateDBInstanceReadReplica (%args) {
-    my $call = Aws::RDS::CreateDBInstanceReadReplica->new(%args);
+  sub CreateDBInstanceReadReplica {
+    my $self = shift;
+    my $call = Aws::RDS::CreateDBInstanceReadReplica->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateDBInstanceReadReplicaResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreateDBParameterGroup (%args) {
-    my $call = Aws::RDS::CreateDBParameterGroup->new(%args);
+  sub CreateDBParameterGroup {
+    my $self = shift;
+    my $call = Aws::RDS::CreateDBParameterGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateDBParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreateDBSecurityGroup (%args) {
-    my $call = Aws::RDS::CreateDBSecurityGroup->new(%args);
+  sub CreateDBSecurityGroup {
+    my $self = shift;
+    my $call = Aws::RDS::CreateDBSecurityGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateDBSecurityGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreateDBSnapshot (%args) {
-    my $call = Aws::RDS::CreateDBSnapshot->new(%args);
+  sub CreateDBSnapshot {
+    my $self = shift;
+    my $call = Aws::RDS::CreateDBSnapshot->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateDBSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreateDBSubnetGroup (%args) {
-    my $call = Aws::RDS::CreateDBSubnetGroup->new(%args);
+  sub CreateDBSubnetGroup {
+    my $self = shift;
+    my $call = Aws::RDS::CreateDBSubnetGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateDBSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreateEventSubscription (%args) {
-    my $call = Aws::RDS::CreateEventSubscription->new(%args);
+  sub CreateEventSubscription {
+    my $self = shift;
+    my $call = Aws::RDS::CreateEventSubscription->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateEventSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreateOptionGroup (%args) {
-    my $call = Aws::RDS::CreateOptionGroup->new(%args);
+  sub CreateOptionGroup {
+    my $self = shift;
+    my $call = Aws::RDS::CreateOptionGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateOptionGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DeleteDBInstance (%args) {
-    my $call = Aws::RDS::DeleteDBInstance->new(%args);
+  sub DeleteDBInstance {
+    my $self = shift;
+    my $call = Aws::RDS::DeleteDBInstance->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DeleteDBInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DeleteDBParameterGroup (%args) {
-    my $call = Aws::RDS::DeleteDBParameterGroup->new(%args);
+  sub DeleteDBParameterGroup {
+    my $self = shift;
+    my $call = Aws::RDS::DeleteDBParameterGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteDBSecurityGroup (%args) {
-    my $call = Aws::RDS::DeleteDBSecurityGroup->new(%args);
+  sub DeleteDBSecurityGroup {
+    my $self = shift;
+    my $call = Aws::RDS::DeleteDBSecurityGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteDBSnapshot (%args) {
-    my $call = Aws::RDS::DeleteDBSnapshot->new(%args);
+  sub DeleteDBSnapshot {
+    my $self = shift;
+    my $call = Aws::RDS::DeleteDBSnapshot->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DeleteDBSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DeleteDBSubnetGroup (%args) {
-    my $call = Aws::RDS::DeleteDBSubnetGroup->new(%args);
+  sub DeleteDBSubnetGroup {
+    my $self = shift;
+    my $call = Aws::RDS::DeleteDBSubnetGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteEventSubscription (%args) {
-    my $call = Aws::RDS::DeleteEventSubscription->new(%args);
+  sub DeleteEventSubscription {
+    my $self = shift;
+    my $call = Aws::RDS::DeleteEventSubscription->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DeleteEventSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DeleteOptionGroup (%args) {
-    my $call = Aws::RDS::DeleteOptionGroup->new(%args);
+  sub DeleteOptionGroup {
+    my $self = shift;
+    my $call = Aws::RDS::DeleteOptionGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DescribeDBEngineVersions (%args) {
-    my $call = Aws::RDS::DescribeDBEngineVersions->new(%args);
+  sub DescribeDBEngineVersions {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeDBEngineVersions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBEngineVersionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeDBInstances (%args) {
-    my $call = Aws::RDS::DescribeDBInstances->new(%args);
+  sub DescribeDBInstances {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeDBInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeDBLogFiles (%args) {
-    my $call = Aws::RDS::DescribeDBLogFiles->new(%args);
+  sub DescribeDBLogFiles {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeDBLogFiles->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBLogFilesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeDBParameterGroups (%args) {
-    my $call = Aws::RDS::DescribeDBParameterGroups->new(%args);
+  sub DescribeDBParameterGroups {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeDBParameterGroups->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBParameterGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeDBParameters (%args) {
-    my $call = Aws::RDS::DescribeDBParameters->new(%args);
+  sub DescribeDBParameters {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeDBParameters->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeDBSecurityGroups (%args) {
-    my $call = Aws::RDS::DescribeDBSecurityGroups->new(%args);
+  sub DescribeDBSecurityGroups {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeDBSecurityGroups->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBSecurityGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeDBSnapshots (%args) {
-    my $call = Aws::RDS::DescribeDBSnapshots->new(%args);
+  sub DescribeDBSnapshots {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeDBSnapshots->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBSnapshotsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeDBSubnetGroups (%args) {
-    my $call = Aws::RDS::DescribeDBSubnetGroups->new(%args);
+  sub DescribeDBSubnetGroups {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeDBSubnetGroups->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBSubnetGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeEngineDefaultParameters (%args) {
-    my $call = Aws::RDS::DescribeEngineDefaultParameters->new(%args);
+  sub DescribeEngineDefaultParameters {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeEngineDefaultParameters->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeEngineDefaultParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeEventCategories (%args) {
-    my $call = Aws::RDS::DescribeEventCategories->new(%args);
+  sub DescribeEventCategories {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeEventCategories->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeEventCategoriesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeEvents (%args) {
-    my $call = Aws::RDS::DescribeEvents->new(%args);
+  sub DescribeEvents {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeEvents->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeEventsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeEventSubscriptions (%args) {
-    my $call = Aws::RDS::DescribeEventSubscriptions->new(%args);
+  sub DescribeEventSubscriptions {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeEventSubscriptions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeEventSubscriptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeOptionGroupOptions (%args) {
-    my $call = Aws::RDS::DescribeOptionGroupOptions->new(%args);
+  sub DescribeOptionGroupOptions {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeOptionGroupOptions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeOptionGroupOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeOptionGroups (%args) {
-    my $call = Aws::RDS::DescribeOptionGroups->new(%args);
+  sub DescribeOptionGroups {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeOptionGroups->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeOptionGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeOrderableDBInstanceOptions (%args) {
-    my $call = Aws::RDS::DescribeOrderableDBInstanceOptions->new(%args);
+  sub DescribeOrderableDBInstanceOptions {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeOrderableDBInstanceOptions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeOrderableDBInstanceOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeReservedDBInstances (%args) {
-    my $call = Aws::RDS::DescribeReservedDBInstances->new(%args);
+  sub DescribeReservedDBInstances {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeReservedDBInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeReservedDBInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeReservedDBInstancesOfferings (%args) {
-    my $call = Aws::RDS::DescribeReservedDBInstancesOfferings->new(%args);
+  sub DescribeReservedDBInstancesOfferings {
+    my $self = shift;
+    my $call = Aws::RDS::DescribeReservedDBInstancesOfferings->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeReservedDBInstancesOfferingsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DownloadDBLogFilePortion (%args) {
-    my $call = Aws::RDS::DownloadDBLogFilePortion->new(%args);
+  sub DownloadDBLogFilePortion {
+    my $self = shift;
+    my $call = Aws::RDS::DownloadDBLogFilePortion->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DownloadDBLogFilePortionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ListTagsForResource (%args) {
-    my $call = Aws::RDS::ListTagsForResource->new(%args);
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call = Aws::RDS::ListTagsForResource->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::ListTagsForResourceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ModifyDBInstance (%args) {
-    my $call = Aws::RDS::ModifyDBInstance->new(%args);
+  sub ModifyDBInstance {
+    my $self = shift;
+    my $call = Aws::RDS::ModifyDBInstance->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::ModifyDBInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ModifyDBParameterGroup (%args) {
-    my $call = Aws::RDS::ModifyDBParameterGroup->new(%args);
+  sub ModifyDBParameterGroup {
+    my $self = shift;
+    my $call = Aws::RDS::ModifyDBParameterGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::ModifyDBParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ModifyDBSubnetGroup (%args) {
-    my $call = Aws::RDS::ModifyDBSubnetGroup->new(%args);
+  sub ModifyDBSubnetGroup {
+    my $self = shift;
+    my $call = Aws::RDS::ModifyDBSubnetGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::ModifyDBSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ModifyEventSubscription (%args) {
-    my $call = Aws::RDS::ModifyEventSubscription->new(%args);
+  sub ModifyEventSubscription {
+    my $self = shift;
+    my $call = Aws::RDS::ModifyEventSubscription->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::ModifyEventSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ModifyOptionGroup (%args) {
-    my $call = Aws::RDS::ModifyOptionGroup->new(%args);
+  sub ModifyOptionGroup {
+    my $self = shift;
+    my $call = Aws::RDS::ModifyOptionGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::ModifyOptionGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method PromoteReadReplica (%args) {
-    my $call = Aws::RDS::PromoteReadReplica->new(%args);
+  sub PromoteReadReplica {
+    my $self = shift;
+    my $call = Aws::RDS::PromoteReadReplica->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::PromoteReadReplicaResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method PurchaseReservedDBInstancesOffering (%args) {
-    my $call = Aws::RDS::PurchaseReservedDBInstancesOffering->new(%args);
+  sub PurchaseReservedDBInstancesOffering {
+    my $self = shift;
+    my $call = Aws::RDS::PurchaseReservedDBInstancesOffering->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::PurchaseReservedDBInstancesOfferingResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method RebootDBInstance (%args) {
-    my $call = Aws::RDS::RebootDBInstance->new(%args);
+  sub RebootDBInstance {
+    my $self = shift;
+    my $call = Aws::RDS::RebootDBInstance->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::RebootDBInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method RemoveSourceIdentifierFromSubscription (%args) {
-    my $call = Aws::RDS::RemoveSourceIdentifierFromSubscription->new(%args);
+  sub RemoveSourceIdentifierFromSubscription {
+    my $self = shift;
+    my $call = Aws::RDS::RemoveSourceIdentifierFromSubscription->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::RemoveSourceIdentifierFromSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method RemoveTagsFromResource (%args) {
-    my $call = Aws::RDS::RemoveTagsFromResource->new(%args);
+  sub RemoveTagsFromResource {
+    my $self = shift;
+    my $call = Aws::RDS::RemoveTagsFromResource->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ResetDBParameterGroup (%args) {
-    my $call = Aws::RDS::ResetDBParameterGroup->new(%args);
+  sub ResetDBParameterGroup {
+    my $self = shift;
+    my $call = Aws::RDS::ResetDBParameterGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::ResetDBParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method RestoreDBInstanceFromDBSnapshot (%args) {
-    my $call = Aws::RDS::RestoreDBInstanceFromDBSnapshot->new(%args);
+  sub RestoreDBInstanceFromDBSnapshot {
+    my $self = shift;
+    my $call = Aws::RDS::RestoreDBInstanceFromDBSnapshot->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::RestoreDBInstanceFromDBSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method RestoreDBInstanceToPointInTime (%args) {
-    my $call = Aws::RDS::RestoreDBInstanceToPointInTime->new(%args);
+  sub RestoreDBInstanceToPointInTime {
+    my $self = shift;
+    my $call = Aws::RDS::RestoreDBInstanceToPointInTime->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::RestoreDBInstanceToPointInTimeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method RevokeDBSecurityGroupIngress (%args) {
-    my $call = Aws::RDS::RevokeDBSecurityGroupIngress->new(%args);
+  sub RevokeDBSecurityGroupIngress {
+    my $self = shift;
+    my $call = Aws::RDS::RevokeDBSecurityGroupIngress->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::RevokeDBSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;

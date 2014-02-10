@@ -1,28 +1,35 @@
 
-use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
 enum 'Aws::Kinesis::StreamStatus', ['CREATING','DELETING','ACTIVE','UPDATING',];
 
 
-class Aws::Kinesis::HashKeyRange with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Kinesis::HashKeyRange {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has EndingHashKey => (is => 'ro', isa => 'Str', required => 1);
   has StartingHashKey => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::Kinesis::Record with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Kinesis::Record {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Data => (is => 'ro', isa => 'Str', required => 1);
   has PartitionKey => (is => 'ro', isa => 'Str', required => 1);
   has SequenceNumber => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::Kinesis::SequenceNumberRange with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Kinesis::SequenceNumberRange {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has EndingSequenceNumber => (is => 'ro', isa => 'Str');
   has StartingSequenceNumber => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::Kinesis::Shard with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Kinesis::Shard {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AdjacentParentShardId => (is => 'ro', isa => 'Str');
   has HashKeyRange => (is => 'ro', isa => 'Aws::Kinesis::HashKeyRange', required => 1);
   has ParentShardId => (is => 'ro', isa => 'Str');
@@ -30,7 +37,9 @@ class Aws::Kinesis::Shard with (AWS::API::ResultParser, AWS::API::ToParams) {
   has ShardId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::Kinesis::StreamDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Kinesis::StreamDescription {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has HasMoreShards => (is => 'ro', isa => 'Str', required => 1);
   has Shards => (is => 'ro', isa => 'ArrayRef[Aws::Kinesis::Shard]', required => 1);
   has StreamARN => (is => 'ro', isa => 'Str', required => 1);
@@ -40,7 +49,8 @@ class Aws::Kinesis::StreamDescription with (AWS::API::ResultParser, AWS::API::To
 
 
 
-class Aws::Kinesis::CreateStream {
+package Aws::Kinesis::CreateStream {
+  use Moose;
   has ShardCount => (is => 'ro', isa => 'Int', required => 1);
   has StreamName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -48,14 +58,16 @@ class Aws::Kinesis::CreateStream {
   has _returns => (isa => 'Aws::Kinesis::CreateStreamResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStreamResult');  
 }
-class Aws::Kinesis::DeleteStream {
+package Aws::Kinesis::DeleteStream {
+  use Moose;
   has StreamName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteStream');
   has _returns => (isa => 'Aws::Kinesis::DeleteStreamResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteStreamResult');  
 }
-class Aws::Kinesis::DescribeStream {
+package Aws::Kinesis::DescribeStream {
+  use Moose;
   has ExclusiveStartShardId => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
   has StreamName => (is => 'ro', isa => 'Str', required => 1);
@@ -64,7 +76,8 @@ class Aws::Kinesis::DescribeStream {
   has _returns => (isa => 'Aws::Kinesis::DescribeStreamResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStreamResult');  
 }
-class Aws::Kinesis::GetRecords {
+package Aws::Kinesis::GetRecords {
+  use Moose;
   has Limit => (is => 'ro', isa => 'Int');
   has ShardIterator => (is => 'ro', isa => 'Str', required => 1);
 
@@ -72,7 +85,8 @@ class Aws::Kinesis::GetRecords {
   has _returns => (isa => 'Aws::Kinesis::GetRecordsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetRecordsResult');  
 }
-class Aws::Kinesis::GetShardIterator {
+package Aws::Kinesis::GetShardIterator {
+  use Moose;
   has ShardId => (is => 'ro', isa => 'Str', required => 1);
   has ShardIteratorType => (is => 'ro', isa => 'Str', required => 1);
   has StartingSequenceNumber => (is => 'ro', isa => 'Str');
@@ -82,7 +96,8 @@ class Aws::Kinesis::GetShardIterator {
   has _returns => (isa => 'Aws::Kinesis::GetShardIteratorResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetShardIteratorResult');  
 }
-class Aws::Kinesis::ListStreams {
+package Aws::Kinesis::ListStreams {
+  use Moose;
   has ExclusiveStartStreamName => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
 
@@ -90,7 +105,8 @@ class Aws::Kinesis::ListStreams {
   has _returns => (isa => 'Aws::Kinesis::ListStreamsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListStreamsResult');  
 }
-class Aws::Kinesis::MergeShards {
+package Aws::Kinesis::MergeShards {
+  use Moose;
   has AdjacentShardToMerge => (is => 'ro', isa => 'Str', required => 1);
   has ShardToMerge => (is => 'ro', isa => 'Str', required => 1);
   has StreamName => (is => 'ro', isa => 'Str', required => 1);
@@ -99,7 +115,8 @@ class Aws::Kinesis::MergeShards {
   has _returns => (isa => 'Aws::Kinesis::MergeShardsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'MergeShardsResult');  
 }
-class Aws::Kinesis::PutRecord {
+package Aws::Kinesis::PutRecord {
+  use Moose;
   has Data => (is => 'ro', isa => 'Str', required => 1);
   has ExplicitHashKey => (is => 'ro', isa => 'Str');
   has PartitionKey => (is => 'ro', isa => 'Str', required => 1);
@@ -110,7 +127,8 @@ class Aws::Kinesis::PutRecord {
   has _returns => (isa => 'Aws::Kinesis::PutRecordResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'PutRecordResult');  
 }
-class Aws::Kinesis::SplitShard {
+package Aws::Kinesis::SplitShard {
+  use Moose;
   has NewStartingHashKey => (is => 'ro', isa => 'Str', required => 1);
   has ShardToSplit => (is => 'ro', isa => 'Str', required => 1);
   has StreamName => (is => 'ro', isa => 'Str', required => 1);
@@ -120,78 +138,99 @@ class Aws::Kinesis::SplitShard {
   has _result_key => (isa => 'Str', is => 'ro', default => 'SplitShardResult');  
 }
 
-class Aws::Kinesis::DescribeStreamResult with AWS::API::ResultParser {
+package Aws::Kinesis::DescribeStreamResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has StreamDescription => (is => 'ro', isa => 'Aws::Kinesis::StreamDescription', required => 1);
 
 }
-class Aws::Kinesis::GetRecordsResult with AWS::API::ResultParser {
+package Aws::Kinesis::GetRecordsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has NextShardIterator => (is => 'ro', isa => 'Str');
   has Records => (is => 'ro', isa => 'ArrayRef[Aws::Kinesis::Record]', required => 1);
 
 }
-class Aws::Kinesis::GetShardIteratorResult with AWS::API::ResultParser {
+package Aws::Kinesis::GetShardIteratorResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has ShardIterator => (is => 'ro', isa => 'Str');
 
 }
-class Aws::Kinesis::ListStreamsResult with AWS::API::ResultParser {
+package Aws::Kinesis::ListStreamsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has HasMoreStreams => (is => 'ro', isa => 'Str', required => 1);
   has StreamNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
 }
-class Aws::Kinesis::PutRecordResult with AWS::API::ResultParser {
+package Aws::Kinesis::PutRecordResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has SequenceNumber => (is => 'ro', isa => 'Str', required => 1);
   has ShardId => (is => 'ro', isa => 'Str', required => 1);
 
 }
 
-class Aws::Kinesis with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
+package Aws::Kinesis {
+  use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'kinesis');
   has version => (is => 'ro', isa => 'Str', default => '2013-12-02');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'Kinesis_20131202');
   has json_version => (is => 'ro', isa => 'Str', default => "1.1");
+  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
   
-  method CreateStream (%args) {
-    my $call = Aws::Kinesis::CreateStream->new(%args);
+  sub CreateStream {
+    my $self = shift;
+    my $call = Aws::Kinesis::CreateStream->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteStream (%args) {
-    my $call = Aws::Kinesis::DeleteStream->new(%args);
+  sub DeleteStream {
+    my $self = shift;
+    my $call = Aws::Kinesis::DeleteStream->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DescribeStream (%args) {
-    my $call = Aws::Kinesis::DescribeStream->new(%args);
+  sub DescribeStream {
+    my $self = shift;
+    my $call = Aws::Kinesis::DescribeStream->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::DescribeStreamResult->from_result($result);return $o_result;
   }
-  method GetRecords (%args) {
-    my $call = Aws::Kinesis::GetRecords->new(%args);
+  sub GetRecords {
+    my $self = shift;
+    my $call = Aws::Kinesis::GetRecords->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::GetRecordsResult->from_result($result);return $o_result;
   }
-  method GetShardIterator (%args) {
-    my $call = Aws::Kinesis::GetShardIterator->new(%args);
+  sub GetShardIterator {
+    my $self = shift;
+    my $call = Aws::Kinesis::GetShardIterator->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::GetShardIteratorResult->from_result($result);return $o_result;
   }
-  method ListStreams (%args) {
-    my $call = Aws::Kinesis::ListStreams->new(%args);
+  sub ListStreams {
+    my $self = shift;
+    my $call = Aws::Kinesis::ListStreams->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::ListStreamsResult->from_result($result);return $o_result;
   }
-  method MergeShards (%args) {
-    my $call = Aws::Kinesis::MergeShards->new(%args);
+  sub MergeShards {
+    my $self = shift;
+    my $call = Aws::Kinesis::MergeShards->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method PutRecord (%args) {
-    my $call = Aws::Kinesis::PutRecord->new(%args);
+  sub PutRecord {
+    my $self = shift;
+    my $call = Aws::Kinesis::PutRecord->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::PutRecordResult->from_result($result);return $o_result;
   }
-  method SplitShard (%args) {
-    my $call = Aws::Kinesis::SplitShard->new(%args);
+  sub SplitShard {
+    my $self = shift;
+    my $call = Aws::Kinesis::SplitShard->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }

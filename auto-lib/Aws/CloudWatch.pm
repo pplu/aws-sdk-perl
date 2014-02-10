@@ -1,5 +1,4 @@
 
-use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
@@ -10,7 +9,9 @@ enum 'Aws::CloudWatch::StateValue', ['OK','ALARM','INSUFFICIENT_DATA',];
 enum 'Aws::CloudWatch::Statistic', ['SampleCount','Average','Sum','Minimum','Maximum',];
 
 
-class Aws::CloudWatch::AlarmHistoryItem with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::CloudWatch::AlarmHistoryItem {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AlarmName => (is => 'ro', isa => 'Str');
   has HistoryData => (is => 'ro', isa => 'Str');
   has HistoryItemType => (is => 'ro', isa => 'Aws::CloudWatch::HistoryItemType');
@@ -18,7 +19,9 @@ class Aws::CloudWatch::AlarmHistoryItem with (AWS::API::ResultParser, AWS::API::
   has Timestamp => (is => 'ro', isa => 'Str');
 }
 
-class Aws::CloudWatch::Datapoint with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::CloudWatch::Datapoint {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Average => (is => 'ro', isa => 'Num');
   has Maximum => (is => 'ro', isa => 'Num');
   has Minimum => (is => 'ro', isa => 'Num');
@@ -28,23 +31,31 @@ class Aws::CloudWatch::Datapoint with (AWS::API::ResultParser, AWS::API::ToParam
   has Unit => (is => 'ro', isa => 'Aws::CloudWatch::StandardUnit');
 }
 
-class Aws::CloudWatch::Dimension with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::CloudWatch::Dimension {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::CloudWatch::DimensionFilter with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::CloudWatch::DimensionFilter {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class Aws::CloudWatch::Metric with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::CloudWatch::Metric {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::Dimension]');
   has MetricName => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str');
 }
 
-class Aws::CloudWatch::MetricAlarm with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::CloudWatch::MetricAlarm {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has ActionsEnabled => (is => 'ro', isa => 'Str');
   has AlarmActions => (is => 'ro', isa => 'ArrayRef[Str]');
   has AlarmArn => (is => 'ro', isa => 'Str');
@@ -68,7 +79,9 @@ class Aws::CloudWatch::MetricAlarm with (AWS::API::ResultParser, AWS::API::ToPar
   has Unit => (is => 'ro', isa => 'Aws::CloudWatch::StandardUnit');
 }
 
-class Aws::CloudWatch::MetricDatum with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::CloudWatch::MetricDatum {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::Dimension]');
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has StatisticValues => (is => 'ro', isa => 'Aws::CloudWatch::StatisticSet');
@@ -77,7 +90,9 @@ class Aws::CloudWatch::MetricDatum with (AWS::API::ResultParser, AWS::API::ToPar
   has Value => (is => 'ro', isa => 'Num');
 }
 
-class Aws::CloudWatch::StatisticSet with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::CloudWatch::StatisticSet {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Maximum => (is => 'ro', isa => 'Num', required => 1);
   has Minimum => (is => 'ro', isa => 'Num', required => 1);
   has SampleCount => (is => 'ro', isa => 'Num', required => 1);
@@ -86,14 +101,16 @@ class Aws::CloudWatch::StatisticSet with (AWS::API::ResultParser, AWS::API::ToPa
 
 
 
-class Aws::CloudWatch::DeleteAlarms {
+package Aws::CloudWatch::DeleteAlarms {
+  use Moose;
   has AlarmNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAlarms');
   has _returns => (isa => 'Aws::CloudWatch::DeleteAlarmsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAlarmsResult');  
 }
-class Aws::CloudWatch::DescribeAlarmHistory {
+package Aws::CloudWatch::DescribeAlarmHistory {
+  use Moose;
   has AlarmName => (is => 'ro', isa => 'Str');
   has EndDate => (is => 'ro', isa => 'Str');
   has HistoryItemType => (is => 'ro', isa => 'Str');
@@ -105,7 +122,8 @@ class Aws::CloudWatch::DescribeAlarmHistory {
   has _returns => (isa => 'Aws::CloudWatch::DescribeAlarmHistoryResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmHistoryResult');  
 }
-class Aws::CloudWatch::DescribeAlarms {
+package Aws::CloudWatch::DescribeAlarms {
+  use Moose;
   has ActionPrefix => (is => 'ro', isa => 'Str');
   has AlarmNamePrefix => (is => 'ro', isa => 'Str');
   has AlarmNames => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -117,7 +135,8 @@ class Aws::CloudWatch::DescribeAlarms {
   has _returns => (isa => 'Aws::CloudWatch::DescribeAlarmsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmsResult');  
 }
-class Aws::CloudWatch::DescribeAlarmsForMetric {
+package Aws::CloudWatch::DescribeAlarmsForMetric {
+  use Moose;
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::Dimension]');
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has Namespace => (is => 'ro', isa => 'Str', required => 1);
@@ -129,21 +148,24 @@ class Aws::CloudWatch::DescribeAlarmsForMetric {
   has _returns => (isa => 'Aws::CloudWatch::DescribeAlarmsForMetricResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmsForMetricResult');  
 }
-class Aws::CloudWatch::DisableAlarmActions {
+package Aws::CloudWatch::DisableAlarmActions {
+  use Moose;
   has AlarmNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DisableAlarmActions');
   has _returns => (isa => 'Aws::CloudWatch::DisableAlarmActionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DisableAlarmActionsResult');  
 }
-class Aws::CloudWatch::EnableAlarmActions {
+package Aws::CloudWatch::EnableAlarmActions {
+  use Moose;
   has AlarmNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'EnableAlarmActions');
   has _returns => (isa => 'Aws::CloudWatch::EnableAlarmActionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'EnableAlarmActionsResult');  
 }
-class Aws::CloudWatch::GetMetricStatistics {
+package Aws::CloudWatch::GetMetricStatistics {
+  use Moose;
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::Dimension]');
   has EndTime => (is => 'ro', isa => 'Str', required => 1);
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
@@ -157,7 +179,8 @@ class Aws::CloudWatch::GetMetricStatistics {
   has _returns => (isa => 'Aws::CloudWatch::GetMetricStatisticsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetMetricStatisticsResult');  
 }
-class Aws::CloudWatch::ListMetrics {
+package Aws::CloudWatch::ListMetrics {
+  use Moose;
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::DimensionFilter]');
   has MetricName => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str');
@@ -167,7 +190,8 @@ class Aws::CloudWatch::ListMetrics {
   has _returns => (isa => 'Aws::CloudWatch::ListMetricsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListMetricsResult');  
 }
-class Aws::CloudWatch::PutMetricAlarm {
+package Aws::CloudWatch::PutMetricAlarm {
+  use Moose;
   has ActionsEnabled => (is => 'ro', isa => 'Str');
   has AlarmActions => (is => 'ro', isa => 'ArrayRef[Str]');
   has AlarmDescription => (is => 'ro', isa => 'Str');
@@ -188,7 +212,8 @@ class Aws::CloudWatch::PutMetricAlarm {
   has _returns => (isa => 'Aws::CloudWatch::PutMetricAlarmResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'PutMetricAlarmResult');  
 }
-class Aws::CloudWatch::PutMetricData {
+package Aws::CloudWatch::PutMetricData {
+  use Moose;
   has MetricData => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::MetricDatum]', required => 1);
   has Namespace => (is => 'ro', isa => 'Str', required => 1);
 
@@ -196,7 +221,8 @@ class Aws::CloudWatch::PutMetricData {
   has _returns => (isa => 'Aws::CloudWatch::PutMetricDataResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'PutMetricDataResult');  
 }
-class Aws::CloudWatch::SetAlarmState {
+package Aws::CloudWatch::SetAlarmState {
+  use Moose;
   has AlarmName => (is => 'ro', isa => 'Str', required => 1);
   has StateReason => (is => 'ro', isa => 'Str', required => 1);
   has StateReasonData => (is => 'ro', isa => 'Str');
@@ -207,92 +233,115 @@ class Aws::CloudWatch::SetAlarmState {
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetAlarmStateResult');  
 }
 
-class Aws::CloudWatch::DescribeAlarmHistoryResult with AWS::API::ResultParser {
+package Aws::CloudWatch::DescribeAlarmHistoryResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has AlarmHistoryItems => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::AlarmHistoryItem]');
   has NextToken => (is => 'ro', isa => 'Str');
 
 }
-class Aws::CloudWatch::DescribeAlarmsResult with AWS::API::ResultParser {
+package Aws::CloudWatch::DescribeAlarmsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has MetricAlarms => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::MetricAlarm]');
   has NextToken => (is => 'ro', isa => 'Str');
 
 }
-class Aws::CloudWatch::DescribeAlarmsForMetricResult with AWS::API::ResultParser {
+package Aws::CloudWatch::DescribeAlarmsForMetricResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has MetricAlarms => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::MetricAlarm]');
 
 }
-class Aws::CloudWatch::GetMetricStatisticsResult with AWS::API::ResultParser {
+package Aws::CloudWatch::GetMetricStatisticsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Datapoints => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::Datapoint]');
   has Label => (is => 'ro', isa => 'Str');
 
 }
-class Aws::CloudWatch::ListMetricsResult with AWS::API::ResultParser {
+package Aws::CloudWatch::ListMetricsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Metrics => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::Metric]');
   has NextToken => (is => 'ro', isa => 'Str');
 
 }
 
-class Aws::CloudWatch with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
+package Aws::CloudWatch {
+  use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'monitoring');
   has version => (is => 'ro', isa => 'Str', default => '2010-08-01');
+  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
   
-  method DeleteAlarms (%args) {
-    my $call = Aws::CloudWatch::DeleteAlarms->new(%args);
+  sub DeleteAlarms {
+    my $self = shift;
+    my $call = Aws::CloudWatch::DeleteAlarms->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DescribeAlarmHistory (%args) {
-    my $call = Aws::CloudWatch::DescribeAlarmHistory->new(%args);
+  sub DescribeAlarmHistory {
+    my $self = shift;
+    my $call = Aws::CloudWatch::DescribeAlarmHistory->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudWatch::DescribeAlarmHistoryResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeAlarms (%args) {
-    my $call = Aws::CloudWatch::DescribeAlarms->new(%args);
+  sub DescribeAlarms {
+    my $self = shift;
+    my $call = Aws::CloudWatch::DescribeAlarms->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudWatch::DescribeAlarmsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeAlarmsForMetric (%args) {
-    my $call = Aws::CloudWatch::DescribeAlarmsForMetric->new(%args);
+  sub DescribeAlarmsForMetric {
+    my $self = shift;
+    my $call = Aws::CloudWatch::DescribeAlarmsForMetric->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudWatch::DescribeAlarmsForMetricResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DisableAlarmActions (%args) {
-    my $call = Aws::CloudWatch::DisableAlarmActions->new(%args);
+  sub DisableAlarmActions {
+    my $self = shift;
+    my $call = Aws::CloudWatch::DisableAlarmActions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method EnableAlarmActions (%args) {
-    my $call = Aws::CloudWatch::EnableAlarmActions->new(%args);
+  sub EnableAlarmActions {
+    my $self = shift;
+    my $call = Aws::CloudWatch::EnableAlarmActions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method GetMetricStatistics (%args) {
-    my $call = Aws::CloudWatch::GetMetricStatistics->new(%args);
+  sub GetMetricStatistics {
+    my $self = shift;
+    my $call = Aws::CloudWatch::GetMetricStatistics->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudWatch::GetMetricStatisticsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ListMetrics (%args) {
-    my $call = Aws::CloudWatch::ListMetrics->new(%args);
+  sub ListMetrics {
+    my $self = shift;
+    my $call = Aws::CloudWatch::ListMetrics->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudWatch::ListMetricsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method PutMetricAlarm (%args) {
-    my $call = Aws::CloudWatch::PutMetricAlarm->new(%args);
+  sub PutMetricAlarm {
+    my $self = shift;
+    my $call = Aws::CloudWatch::PutMetricAlarm->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method PutMetricData (%args) {
-    my $call = Aws::CloudWatch::PutMetricData->new(%args);
+  sub PutMetricData {
+    my $self = shift;
+    my $call = Aws::CloudWatch::PutMetricData->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method SetAlarmState (%args) {
-    my $call = Aws::CloudWatch::SetAlarmState->new(%args);
+  sub SetAlarmState {
+    my $self = shift;
+    my $call = Aws::CloudWatch::SetAlarmState->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }

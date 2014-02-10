@@ -1,42 +1,57 @@
 
-use MooseX::Declare;
 use AWS::API;
 
 
-class Aws::SES::Body with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SES::Body {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Html => (is => 'ro', isa => 'Aws::SES::Content');
   has Text => (is => 'ro', isa => 'Aws::SES::Content');
 }
 
-class Aws::SES::Content with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SES::Content {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Charset => (is => 'ro', isa => 'Str');
   has Data => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SES::Destination with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SES::Destination {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has BccAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
   has CcAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
   has ToAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
-class Aws::SES::DkimAttributes with AWS::API::StrToStrMapParser {
+package Aws::SES::DkimAttributes {
+  use Moose;
+  with 'AWS::API::StrToStrMapParser';
   has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
-class Aws::SES::Message with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SES::Message {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Body => (is => 'ro', isa => 'Aws::SES::Body', required => 1);
   has Subject => (is => 'ro', isa => 'Aws::SES::Content', required => 1);
 }
 
-class Aws::SES::NotificationAttributes with AWS::API::StrToStrMapParser {
+package Aws::SES::NotificationAttributes {
+  use Moose;
+  with 'AWS::API::StrToStrMapParser';
   has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
-class Aws::SES::RawMessage with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SES::RawMessage {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Data => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SES::SendDataPoint with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SES::SendDataPoint {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Bounces => (is => 'ro', isa => 'Num');
   has Complaints => (is => 'ro', isa => 'Num');
   has DeliveryAttempts => (is => 'ro', isa => 'Num');
@@ -44,60 +59,70 @@ class Aws::SES::SendDataPoint with (AWS::API::ResultParser, AWS::API::ToParams) 
   has Timestamp => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SES::VerificationAttributes with AWS::API::StrToStrMapParser {
+package Aws::SES::VerificationAttributes {
+  use Moose;
+  with 'AWS::API::StrToStrMapParser';
   has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
 
 
-class Aws::SES::DeleteIdentity {
+package Aws::SES::DeleteIdentity {
+  use Moose;
   has Identity => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteIdentity');
   has _returns => (isa => 'Aws::SES::DeleteIdentityResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteIdentityResult');  
 }
-class Aws::SES::DeleteVerifiedEmailAddress {
+package Aws::SES::DeleteVerifiedEmailAddress {
+  use Moose;
   has EmailAddress => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVerifiedEmailAddress');
   has _returns => (isa => 'Aws::SES::DeleteVerifiedEmailAddressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVerifiedEmailAddressResult');  
 }
-class Aws::SES::GetIdentityDkimAttributes {
+package Aws::SES::GetIdentityDkimAttributes {
+  use Moose;
   has Identities => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetIdentityDkimAttributes');
   has _returns => (isa => 'Aws::SES::GetIdentityDkimAttributesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetIdentityDkimAttributesResult');  
 }
-class Aws::SES::GetIdentityNotificationAttributes {
+package Aws::SES::GetIdentityNotificationAttributes {
+  use Moose;
   has Identities => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetIdentityNotificationAttributes');
   has _returns => (isa => 'Aws::SES::GetIdentityNotificationAttributesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetIdentityNotificationAttributesResult');  
 }
-class Aws::SES::GetIdentityVerificationAttributes {
+package Aws::SES::GetIdentityVerificationAttributes {
+  use Moose;
   has Identities => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetIdentityVerificationAttributes');
   has _returns => (isa => 'Aws::SES::GetIdentityVerificationAttributesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetIdentityVerificationAttributesResult');  
 }
-class Aws::SES::GetSendQuota {
+package Aws::SES::GetSendQuota {
+  use Moose;
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetSendQuota');
   has _returns => (isa => 'Aws::SES::GetSendQuotaResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetSendQuotaResult');  
 }
-class Aws::SES::GetSendStatistics {
+package Aws::SES::GetSendStatistics {
+  use Moose;
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetSendStatistics');
   has _returns => (isa => 'Aws::SES::GetSendStatisticsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetSendStatisticsResult');  
 }
-class Aws::SES::ListIdentities {
+package Aws::SES::ListIdentities {
+  use Moose;
   has IdentityType => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -106,13 +131,15 @@ class Aws::SES::ListIdentities {
   has _returns => (isa => 'Aws::SES::ListIdentitiesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListIdentitiesResult');  
 }
-class Aws::SES::ListVerifiedEmailAddresses {
+package Aws::SES::ListVerifiedEmailAddresses {
+  use Moose;
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListVerifiedEmailAddresses');
   has _returns => (isa => 'Aws::SES::ListVerifiedEmailAddressesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListVerifiedEmailAddressesResult');  
 }
-class Aws::SES::SendEmail {
+package Aws::SES::SendEmail {
+  use Moose;
   has Destination => (is => 'ro', isa => 'Aws::SES::Destination', required => 1);
   has Message => (is => 'ro', isa => 'Aws::SES::Message', required => 1);
   has ReplyToAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -123,7 +150,8 @@ class Aws::SES::SendEmail {
   has _returns => (isa => 'Aws::SES::SendEmailResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SendEmailResult');  
 }
-class Aws::SES::SendRawEmail {
+package Aws::SES::SendRawEmail {
+  use Moose;
   has Destinations => (is => 'ro', isa => 'ArrayRef[Str]');
   has RawMessage => (is => 'ro', isa => 'Aws::SES::RawMessage', required => 1);
   has Source => (is => 'ro', isa => 'Str');
@@ -132,7 +160,8 @@ class Aws::SES::SendRawEmail {
   has _returns => (isa => 'Aws::SES::SendRawEmailResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SendRawEmailResult');  
 }
-class Aws::SES::SetIdentityDkimEnabled {
+package Aws::SES::SetIdentityDkimEnabled {
+  use Moose;
   has DkimEnabled => (is => 'ro', isa => 'Str', required => 1);
   has Identity => (is => 'ro', isa => 'Str', required => 1);
 
@@ -140,7 +169,8 @@ class Aws::SES::SetIdentityDkimEnabled {
   has _returns => (isa => 'Aws::SES::SetIdentityDkimEnabledResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetIdentityDkimEnabledResult');  
 }
-class Aws::SES::SetIdentityFeedbackForwardingEnabled {
+package Aws::SES::SetIdentityFeedbackForwardingEnabled {
+  use Moose;
   has ForwardingEnabled => (is => 'ro', isa => 'Str', required => 1);
   has Identity => (is => 'ro', isa => 'Str', required => 1);
 
@@ -148,7 +178,8 @@ class Aws::SES::SetIdentityFeedbackForwardingEnabled {
   has _returns => (isa => 'Aws::SES::SetIdentityFeedbackForwardingEnabledResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetIdentityFeedbackForwardingEnabledResult');  
 }
-class Aws::SES::SetIdentityNotificationTopic {
+package Aws::SES::SetIdentityNotificationTopic {
+  use Moose;
   has Identity => (is => 'ro', isa => 'Str', required => 1);
   has NotificationType => (is => 'ro', isa => 'Str', required => 1);
   has SnsTopic => (is => 'ro', isa => 'Str');
@@ -157,28 +188,32 @@ class Aws::SES::SetIdentityNotificationTopic {
   has _returns => (isa => 'Aws::SES::SetIdentityNotificationTopicResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetIdentityNotificationTopicResult');  
 }
-class Aws::SES::VerifyDomainDkim {
+package Aws::SES::VerifyDomainDkim {
+  use Moose;
   has Domain => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'VerifyDomainDkim');
   has _returns => (isa => 'Aws::SES::VerifyDomainDkimResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'VerifyDomainDkimResult');  
 }
-class Aws::SES::VerifyDomainIdentity {
+package Aws::SES::VerifyDomainIdentity {
+  use Moose;
   has Domain => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'VerifyDomainIdentity');
   has _returns => (isa => 'Aws::SES::VerifyDomainIdentityResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'VerifyDomainIdentityResult');  
 }
-class Aws::SES::VerifyEmailAddress {
+package Aws::SES::VerifyEmailAddress {
+  use Moose;
   has EmailAddress => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'VerifyEmailAddress');
   has _returns => (isa => 'Aws::SES::VerifyEmailAddressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'VerifyEmailAddressResult');  
 }
-class Aws::SES::VerifyEmailIdentity {
+package Aws::SES::VerifyEmailIdentity {
+  use Moose;
   has EmailAddress => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'VerifyEmailIdentity');
@@ -186,175 +221,227 @@ class Aws::SES::VerifyEmailIdentity {
   has _result_key => (isa => 'Str', is => 'ro', default => 'VerifyEmailIdentityResult');  
 }
 
-class Aws::SES::DeleteIdentityResult with AWS::API::ResultParser {
+package Aws::SES::DeleteIdentityResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
 
 }
-class Aws::SES::GetIdentityDkimAttributesResult with AWS::API::ResultParser {
+package Aws::SES::GetIdentityDkimAttributesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DkimAttributes => (is => 'ro', isa => 'Aws::SES::DkimAttributes', required => 1);
 
 }
-class Aws::SES::GetIdentityNotificationAttributesResult with AWS::API::ResultParser {
+package Aws::SES::GetIdentityNotificationAttributesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has NotificationAttributes => (is => 'ro', isa => 'Aws::SES::NotificationAttributes', required => 1);
 
 }
-class Aws::SES::GetIdentityVerificationAttributesResult with AWS::API::ResultParser {
+package Aws::SES::GetIdentityVerificationAttributesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has VerificationAttributes => (is => 'ro', isa => 'Aws::SES::VerificationAttributes', required => 1);
 
 }
-class Aws::SES::GetSendQuotaResult with AWS::API::ResultParser {
+package Aws::SES::GetSendQuotaResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Max24HourSend => (is => 'ro', isa => 'Num');
   has MaxSendRate => (is => 'ro', isa => 'Num');
   has SentLast24Hours => (is => 'ro', isa => 'Num');
 
 }
-class Aws::SES::GetSendStatisticsResult with AWS::API::ResultParser {
+package Aws::SES::GetSendStatisticsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has SendDataPoints => (is => 'ro', isa => 'ArrayRef[Aws::SES::SendDataPoint]');
 
 }
-class Aws::SES::ListIdentitiesResult with AWS::API::ResultParser {
+package Aws::SES::ListIdentitiesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Identities => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SES::ListVerifiedEmailAddressesResult with AWS::API::ResultParser {
+package Aws::SES::ListVerifiedEmailAddressesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has VerifiedEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
 
 }
-class Aws::SES::SendEmailResult with AWS::API::ResultParser {
+package Aws::SES::SendEmailResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has MessageId => (is => 'ro', isa => 'Str', required => 1);
 
 }
-class Aws::SES::SendRawEmailResult with AWS::API::ResultParser {
+package Aws::SES::SendRawEmailResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has MessageId => (is => 'ro', isa => 'Str', required => 1);
 
 }
-class Aws::SES::SetIdentityDkimEnabledResult with AWS::API::ResultParser {
+package Aws::SES::SetIdentityDkimEnabledResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
 
 }
-class Aws::SES::SetIdentityFeedbackForwardingEnabledResult with AWS::API::ResultParser {
+package Aws::SES::SetIdentityFeedbackForwardingEnabledResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
 
 }
-class Aws::SES::SetIdentityNotificationTopicResult with AWS::API::ResultParser {
+package Aws::SES::SetIdentityNotificationTopicResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
 
 }
-class Aws::SES::VerifyDomainDkimResult with AWS::API::ResultParser {
+package Aws::SES::VerifyDomainDkimResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DkimTokens => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
 }
-class Aws::SES::VerifyDomainIdentityResult with AWS::API::ResultParser {
+package Aws::SES::VerifyDomainIdentityResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has VerificationToken => (is => 'ro', isa => 'Str', required => 1);
 
 }
-class Aws::SES::VerifyEmailIdentityResult with AWS::API::ResultParser {
+package Aws::SES::VerifyEmailIdentityResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
 
 }
 
-class Aws::SES with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
+package Aws::SES {
+  use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'email');
   has version => (is => 'ro', isa => 'Str', default => '2010-12-01');
+  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
   
-  method DeleteIdentity (%args) {
-    my $call = Aws::SES::DeleteIdentity->new(%args);
+  sub DeleteIdentity {
+    my $self = shift;
+    my $call = Aws::SES::DeleteIdentity->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::DeleteIdentityResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DeleteVerifiedEmailAddress (%args) {
-    my $call = Aws::SES::DeleteVerifiedEmailAddress->new(%args);
+  sub DeleteVerifiedEmailAddress {
+    my $self = shift;
+    my $call = Aws::SES::DeleteVerifiedEmailAddress->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method GetIdentityDkimAttributes (%args) {
-    my $call = Aws::SES::GetIdentityDkimAttributes->new(%args);
+  sub GetIdentityDkimAttributes {
+    my $self = shift;
+    my $call = Aws::SES::GetIdentityDkimAttributes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::GetIdentityDkimAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method GetIdentityNotificationAttributes (%args) {
-    my $call = Aws::SES::GetIdentityNotificationAttributes->new(%args);
+  sub GetIdentityNotificationAttributes {
+    my $self = shift;
+    my $call = Aws::SES::GetIdentityNotificationAttributes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::GetIdentityNotificationAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method GetIdentityVerificationAttributes (%args) {
-    my $call = Aws::SES::GetIdentityVerificationAttributes->new(%args);
+  sub GetIdentityVerificationAttributes {
+    my $self = shift;
+    my $call = Aws::SES::GetIdentityVerificationAttributes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::GetIdentityVerificationAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method GetSendQuota (%args) {
-    my $call = Aws::SES::GetSendQuota->new(%args);
+  sub GetSendQuota {
+    my $self = shift;
+    my $call = Aws::SES::GetSendQuota->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::GetSendQuotaResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method GetSendStatistics (%args) {
-    my $call = Aws::SES::GetSendStatistics->new(%args);
+  sub GetSendStatistics {
+    my $self = shift;
+    my $call = Aws::SES::GetSendStatistics->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::GetSendStatisticsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ListIdentities (%args) {
-    my $call = Aws::SES::ListIdentities->new(%args);
+  sub ListIdentities {
+    my $self = shift;
+    my $call = Aws::SES::ListIdentities->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::ListIdentitiesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ListVerifiedEmailAddresses (%args) {
-    my $call = Aws::SES::ListVerifiedEmailAddresses->new(%args);
+  sub ListVerifiedEmailAddresses {
+    my $self = shift;
+    my $call = Aws::SES::ListVerifiedEmailAddresses->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::ListVerifiedEmailAddressesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method SendEmail (%args) {
-    my $call = Aws::SES::SendEmail->new(%args);
+  sub SendEmail {
+    my $self = shift;
+    my $call = Aws::SES::SendEmail->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::SendEmailResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method SendRawEmail (%args) {
-    my $call = Aws::SES::SendRawEmail->new(%args);
+  sub SendRawEmail {
+    my $self = shift;
+    my $call = Aws::SES::SendRawEmail->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::SendRawEmailResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method SetIdentityDkimEnabled (%args) {
-    my $call = Aws::SES::SetIdentityDkimEnabled->new(%args);
+  sub SetIdentityDkimEnabled {
+    my $self = shift;
+    my $call = Aws::SES::SetIdentityDkimEnabled->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::SetIdentityDkimEnabledResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method SetIdentityFeedbackForwardingEnabled (%args) {
-    my $call = Aws::SES::SetIdentityFeedbackForwardingEnabled->new(%args);
+  sub SetIdentityFeedbackForwardingEnabled {
+    my $self = shift;
+    my $call = Aws::SES::SetIdentityFeedbackForwardingEnabled->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::SetIdentityFeedbackForwardingEnabledResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method SetIdentityNotificationTopic (%args) {
-    my $call = Aws::SES::SetIdentityNotificationTopic->new(%args);
+  sub SetIdentityNotificationTopic {
+    my $self = shift;
+    my $call = Aws::SES::SetIdentityNotificationTopic->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::SetIdentityNotificationTopicResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method VerifyDomainDkim (%args) {
-    my $call = Aws::SES::VerifyDomainDkim->new(%args);
+  sub VerifyDomainDkim {
+    my $self = shift;
+    my $call = Aws::SES::VerifyDomainDkim->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::VerifyDomainDkimResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method VerifyDomainIdentity (%args) {
-    my $call = Aws::SES::VerifyDomainIdentity->new(%args);
+  sub VerifyDomainIdentity {
+    my $self = shift;
+    my $call = Aws::SES::VerifyDomainIdentity->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::VerifyDomainIdentityResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method VerifyEmailAddress (%args) {
-    my $call = Aws::SES::VerifyEmailAddress->new(%args);
+  sub VerifyEmailAddress {
+    my $self = shift;
+    my $call = Aws::SES::VerifyEmailAddress->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method VerifyEmailIdentity (%args) {
-    my $call = Aws::SES::VerifyEmailIdentity->new(%args);
+  sub VerifyEmailIdentity {
+    my $self = shift;
+    my $call = Aws::SES::VerifyEmailIdentity->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::VerifyEmailIdentityResult->from_result($result->{ $call->_result_key });
     return $o_result;

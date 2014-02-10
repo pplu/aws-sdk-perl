@@ -1,55 +1,63 @@
-use MooseX::Declare;
-use Moose::Util::TypeConstraints;
-
-role Net::AWS::Caller::Attribute::Trait::NameInRequest {
+package Net::AWS::Caller::Attribute::Trait::NameInRequest {
+  use Moose::Role;
   use Moose::Util;
   Moose::Util::meta_attribute_alias('NameInRequest');
   has request_name => (is => 'ro', isa => 'Str');
 }
 
-role AWS::API::Attribute::Trait::Unwrapped {
+package AWS::API::Attribute::Trait::Unwrapped {
+  use Moose::Role;
   use Moose::Util;
   Moose::Util::meta_attribute_alias('Unwrapped');
   has xmlname => (is => 'ro', isa => 'Str');
 }
 
-class AWS::Common::Tag with AWS::API::ResultParser {
+package AWS::Common::Tag {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Str', required => 1);
 }
 
-role AWS::API::RegionalEndpointCaller {
+package AWS::API::RegionalEndpointCaller {
+  use Moose::Role;
   has region => (is => 'rw', isa => 'Str');
   requires 'service';
 
-  method endpoint_host {
+  sub endpoint_host {
+    my $self = shift;
     return sprintf '%s.%s.amazonaws.com', $self->service, $self->region;
   }
 
-  method _api_endpoint {
+  sub _api_endpoint {
+    my $self = shift;
     return sprintf '%s://%s/', 'https', $self->endpoint_host;
   }
 }
 
-role AWS::API::SingleEndpointCaller {
+package AWS::API::SingleEndpointCaller {
+  use Moose::Role;
   requires 'service';
 
-  method region {
+  sub region {
     # http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
     # For services that use a globally unique endpoint, such as IAM, use us-east-1
     return 'us-east-1';
   }
 
-  method endpoint_host {
+  sub endpoint_host {
+    my $self = shift;
     return sprintf '%s.amazonaws.com', $self->service;
   }
 
-  method _api_endpoint {
+  sub _api_endpoint {
+    my $self = shift;
     return sprintf '%s://%s/', 'https', $self->endpoint_host;
   }
 }
 
-role AWS::API::MapParser {
+package AWS::API::MapParser {
+  use Moose::Role;
   sub from_result {
     my ($class, $result) = @_;
     $class->new(map { ($_->{ key } => $_->{ value }) } @$result);
@@ -62,7 +70,8 @@ role AWS::API::MapParser {
   }
 }
 
-role AWS::API::StrToStrMapParser {
+package AWS::API::StrToStrMapParser {
+  use Moose::Role;
   sub from_result {
     my ($class, $result) = @_;
     $class->new(Map => { %$result });  
@@ -75,7 +84,8 @@ role AWS::API::StrToStrMapParser {
   }
 }
 
-role AWS::API::ToParams {
+package AWS::API::ToParams {
+  use Moose::Role;
   sub _to_params {
     my ($self) = @_;
     my $params = {};
@@ -87,7 +97,8 @@ role AWS::API::ToParams {
   }
 }
 
-role AWS::API::UnwrappedParser {
+package AWS::API::UnwrappedParser {
+  use Moose::Role;
   sub result_to_args {
     my ($class, $result) = @_;
     my %args;
@@ -161,7 +172,8 @@ role AWS::API::UnwrappedParser {
   }
 }
 
-role AWS::API::ResultParser {
+package AWS::API::ResultParser {
+  use Moose::Role;
   sub result_to_args {
     my ($class, $result) = @_;
     my %args;
@@ -235,4 +247,4 @@ role AWS::API::ResultParser {
   }
 }
 
-
+1;

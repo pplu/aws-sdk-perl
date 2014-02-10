@@ -1,5 +1,4 @@
 
-use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
@@ -12,7 +11,9 @@ enum 'Aws::OpsWorks::RootDeviceType', ['ebs','instance-store',];
 enum 'Aws::OpsWorks::SourceType', ['git','svn','archive','s3',];
 
 
-class Aws::OpsWorks::App with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::App {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AppId => (is => 'ro', isa => 'Str');
   has AppSource => (is => 'ro', isa => 'Aws::OpsWorks::Source');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::AppAttributes');
@@ -27,13 +28,17 @@ class Aws::OpsWorks::App with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Type => (is => 'ro', isa => 'Aws::OpsWorks::AppType');
 }
 
-class Aws::OpsWorks::AppAttributes with AWS::API::MapParser {
+package Aws::OpsWorks::AppAttributes {
+  use Moose;
+  with 'AWS::API::MapParser';
   has AutoBundleOnDeploy => (is => 'ro', isa => 'Str');
   has DocumentRoot => (is => 'ro', isa => 'Str');
   has RailsEnv => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::AutoScalingThresholds with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::AutoScalingThresholds {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CpuThreshold => (is => 'ro', isa => 'Num');
   has IgnoreMetricsTime => (is => 'ro', isa => 'Int');
   has InstanceCount => (is => 'ro', isa => 'Int');
@@ -42,7 +47,9 @@ class Aws::OpsWorks::AutoScalingThresholds with (AWS::API::ResultParser, AWS::AP
   has ThresholdsWaitTime => (is => 'ro', isa => 'Int');
 }
 
-class Aws::OpsWorks::Command with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::Command {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AcknowledgedAt => (is => 'ro', isa => 'Str');
   has CommandId => (is => 'ro', isa => 'Str');
   has CompletedAt => (is => 'ro', isa => 'Str');
@@ -55,11 +62,15 @@ class Aws::OpsWorks::Command with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Type => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::DailyAutoScalingSchedule with AWS::API::StrToStrMapParser {
+package Aws::OpsWorks::DailyAutoScalingSchedule {
+  use Moose;
+  with 'AWS::API::StrToStrMapParser';
   has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
-class Aws::OpsWorks::Deployment with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::Deployment {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AppId => (is => 'ro', isa => 'Str');
   has Command => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommand');
   has Comment => (is => 'ro', isa => 'Str');
@@ -74,16 +85,22 @@ class Aws::OpsWorks::Deployment with (AWS::API::ResultParser, AWS::API::ToParams
   has Status => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::DeploymentCommand with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::DeploymentCommand {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Args => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommandArgs');
   has Name => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommandName', required => 1);
 }
 
-class Aws::OpsWorks::DeploymentCommandArgs with AWS::API::StrToStrMapParser {
+package Aws::OpsWorks::DeploymentCommandArgs {
+  use Moose;
+  with 'AWS::API::StrToStrMapParser';
   has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
-class Aws::OpsWorks::ElasticIp with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::ElasticIp {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Domain => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has Ip => (is => 'ro', isa => 'Str');
@@ -91,7 +108,9 @@ class Aws::OpsWorks::ElasticIp with (AWS::API::ResultParser, AWS::API::ToParams)
   has Region => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::ElasticLoadBalancer with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::ElasticLoadBalancer {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has DnsName => (is => 'ro', isa => 'Str');
   has Ec2InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -103,7 +122,9 @@ class Aws::OpsWorks::ElasticLoadBalancer with (AWS::API::ResultParser, AWS::API:
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::Instance with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::Instance {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AmiId => (is => 'ro', isa => 'Str');
   has Architecture => (is => 'ro', isa => 'Aws::OpsWorks::Architecture');
   has AutoScalingType => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingType');
@@ -134,7 +155,9 @@ class Aws::OpsWorks::Instance with (AWS::API::ResultParser, AWS::API::ToParams) 
   has SubnetId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::InstancesCount with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::InstancesCount {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Booting => (is => 'ro', isa => 'Int');
   has ConnectionLost => (is => 'ro', isa => 'Int');
   has Pending => (is => 'ro', isa => 'Int');
@@ -149,7 +172,9 @@ class Aws::OpsWorks::InstancesCount with (AWS::API::ResultParser, AWS::API::ToPa
   has Terminating => (is => 'ro', isa => 'Int');
 }
 
-class Aws::OpsWorks::Layer with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::Layer {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::LayerAttributes');
   has AutoAssignElasticIps => (is => 'ro', isa => 'Str');
   has AutoAssignPublicIps => (is => 'ro', isa => 'Str');
@@ -170,7 +195,9 @@ class Aws::OpsWorks::Layer with (AWS::API::ResultParser, AWS::API::ToParams) {
   has VolumeConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::VolumeConfiguration]');
 }
 
-class Aws::OpsWorks::LayerAttributes with AWS::API::MapParser {
+package Aws::OpsWorks::LayerAttributes {
+  use Moose;
+  with 'AWS::API::MapParser';
   has BundlerVersion => (is => 'ro', isa => 'Str');
   has EnableHaproxyStats => (is => 'ro', isa => 'Str');
   has GangliaPassword => (is => 'ro', isa => 'Str');
@@ -197,14 +224,18 @@ class Aws::OpsWorks::LayerAttributes with AWS::API::MapParser {
   has RubygemsVersion => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::LoadBasedAutoScalingConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::LoadBasedAutoScalingConfiguration {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DownScaling => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingThresholds');
   has Enable => (is => 'ro', isa => 'Str');
   has LayerId => (is => 'ro', isa => 'Str');
   has UpScaling => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingThresholds');
 }
 
-class Aws::OpsWorks::Permission with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::Permission {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AllowSsh => (is => 'ro', isa => 'Str');
   has AllowSudo => (is => 'ro', isa => 'Str');
   has IamUserArn => (is => 'ro', isa => 'Str');
@@ -212,7 +243,9 @@ class Aws::OpsWorks::Permission with (AWS::API::ResultParser, AWS::API::ToParams
   has StackId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::RaidArray with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::RaidArray {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has Device => (is => 'ro', isa => 'Str');
@@ -225,7 +258,9 @@ class Aws::OpsWorks::RaidArray with (AWS::API::ResultParser, AWS::API::ToParams)
   has Size => (is => 'ro', isa => 'Int');
 }
 
-class Aws::OpsWorks::Recipes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::Recipes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Configure => (is => 'ro', isa => 'ArrayRef[Str]');
   has Deploy => (is => 'ro', isa => 'ArrayRef[Str]');
   has Setup => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -233,14 +268,18 @@ class Aws::OpsWorks::Recipes with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Undeploy => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
-class Aws::OpsWorks::SelfUserProfile with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::SelfUserProfile {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has IamUserArn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has SshPublicKey => (is => 'ro', isa => 'Str');
   has SshUsername => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::ServiceError with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::ServiceError {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
@@ -249,7 +288,9 @@ class Aws::OpsWorks::ServiceError with (AWS::API::ResultParser, AWS::API::ToPara
   has Type => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::Source with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::Source {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Password => (is => 'ro', isa => 'Str');
   has Revision => (is => 'ro', isa => 'Str');
   has SshKey => (is => 'ro', isa => 'Str');
@@ -258,13 +299,17 @@ class Aws::OpsWorks::Source with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Username => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::SslConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::SslConfiguration {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Certificate => (is => 'ro', isa => 'Str', required => 1);
   has Chain => (is => 'ro', isa => 'Str');
   has PrivateKey => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::OpsWorks::Stack with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::Stack {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::StackAttributes');
   has ConfigurationManager => (is => 'ro', isa => 'Aws::OpsWorks::StackConfigurationManager');
   has CreatedAt => (is => 'ro', isa => 'Str');
@@ -285,16 +330,22 @@ class Aws::OpsWorks::Stack with (AWS::API::ResultParser, AWS::API::ToParams) {
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::StackAttributes with AWS::API::MapParser {
+package Aws::OpsWorks::StackAttributes {
+  use Moose;
+  with 'AWS::API::MapParser';
   has Color => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::StackConfigurationManager with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::StackConfigurationManager {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Name => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::StackSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::StackSummary {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AppsCount => (is => 'ro', isa => 'Int');
   has InstancesCount => (is => 'ro', isa => 'Aws::OpsWorks::InstancesCount');
   has LayersCount => (is => 'ro', isa => 'Int');
@@ -302,12 +353,16 @@ class Aws::OpsWorks::StackSummary with (AWS::API::ResultParser, AWS::API::ToPara
   has StackId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::TimeBasedAutoScalingConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::TimeBasedAutoScalingConfiguration {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AutoScalingSchedule => (is => 'ro', isa => 'Aws::OpsWorks::WeeklyAutoScalingSchedule');
   has InstanceId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::UserProfile with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::UserProfile {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AllowSelfManagement => (is => 'ro', isa => 'Str');
   has IamUserArn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -315,7 +370,9 @@ class Aws::OpsWorks::UserProfile with (AWS::API::ResultParser, AWS::API::ToParam
   has SshUsername => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::Volume with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::Volume {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has Device => (is => 'ro', isa => 'Str');
   has Ec2VolumeId => (is => 'ro', isa => 'Str');
@@ -329,14 +386,18 @@ class Aws::OpsWorks::Volume with (AWS::API::ResultParser, AWS::API::ToParams) {
   has VolumeId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::OpsWorks::VolumeConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::VolumeConfiguration {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has MountPoint => (is => 'ro', isa => 'Str', required => 1);
   has NumberOfDisks => (is => 'ro', isa => 'Int', required => 1);
   has RaidLevel => (is => 'ro', isa => 'Int');
   has Size => (is => 'ro', isa => 'Int', required => 1);
 }
 
-class Aws::OpsWorks::WeeklyAutoScalingSchedule with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::OpsWorks::WeeklyAutoScalingSchedule {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Friday => (is => 'ro', isa => 'Aws::OpsWorks::DailyAutoScalingSchedule');
   has Monday => (is => 'ro', isa => 'Aws::OpsWorks::DailyAutoScalingSchedule');
   has Saturday => (is => 'ro', isa => 'Aws::OpsWorks::DailyAutoScalingSchedule');
@@ -348,7 +409,8 @@ class Aws::OpsWorks::WeeklyAutoScalingSchedule with (AWS::API::ResultParser, AWS
 
 
 
-class Aws::OpsWorks::AssignVolume {
+package Aws::OpsWorks::AssignVolume {
+  use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -356,7 +418,8 @@ class Aws::OpsWorks::AssignVolume {
   has _returns => (isa => 'Aws::OpsWorks::AssignVolumeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AssignVolumeResult');  
 }
-class Aws::OpsWorks::AssociateElasticIp {
+package Aws::OpsWorks::AssociateElasticIp {
+  use Moose;
   has ElasticIp => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str');
 
@@ -364,7 +427,8 @@ class Aws::OpsWorks::AssociateElasticIp {
   has _returns => (isa => 'Aws::OpsWorks::AssociateElasticIpResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AssociateElasticIpResult');  
 }
-class Aws::OpsWorks::AttachElasticLoadBalancer {
+package Aws::OpsWorks::AttachElasticLoadBalancer {
+  use Moose;
   has ElasticLoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has LayerId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -372,7 +436,8 @@ class Aws::OpsWorks::AttachElasticLoadBalancer {
   has _returns => (isa => 'Aws::OpsWorks::AttachElasticLoadBalancerResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AttachElasticLoadBalancerResult');  
 }
-class Aws::OpsWorks::CloneStack {
+package Aws::OpsWorks::CloneStack {
+  use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::StackAttributes');
   has CloneAppIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has ClonePermissions => (is => 'ro', isa => 'Str');
@@ -397,7 +462,8 @@ class Aws::OpsWorks::CloneStack {
   has _returns => (isa => 'Aws::OpsWorks::CloneStackResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CloneStackResult');  
 }
-class Aws::OpsWorks::CreateApp {
+package Aws::OpsWorks::CreateApp {
+  use Moose;
   has AppSource => (is => 'ro', isa => 'Aws::OpsWorks::Source');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::AppAttributes');
   has Description => (is => 'ro', isa => 'Str');
@@ -413,7 +479,8 @@ class Aws::OpsWorks::CreateApp {
   has _returns => (isa => 'Aws::OpsWorks::CreateAppResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateAppResult');  
 }
-class Aws::OpsWorks::CreateDeployment {
+package Aws::OpsWorks::CreateDeployment {
+  use Moose;
   has AppId => (is => 'ro', isa => 'Str');
   has Command => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommand', required => 1);
   has Comment => (is => 'ro', isa => 'Str');
@@ -425,7 +492,8 @@ class Aws::OpsWorks::CreateDeployment {
   has _returns => (isa => 'Aws::OpsWorks::CreateDeploymentResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDeploymentResult');  
 }
-class Aws::OpsWorks::CreateInstance {
+package Aws::OpsWorks::CreateInstance {
+  use Moose;
   has AmiId => (is => 'ro', isa => 'Str');
   has Architecture => (is => 'ro', isa => 'Str');
   has AutoScalingType => (is => 'ro', isa => 'Str');
@@ -444,7 +512,8 @@ class Aws::OpsWorks::CreateInstance {
   has _returns => (isa => 'Aws::OpsWorks::CreateInstanceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateInstanceResult');  
 }
-class Aws::OpsWorks::CreateLayer {
+package Aws::OpsWorks::CreateLayer {
+  use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::LayerAttributes');
   has AutoAssignElasticIps => (is => 'ro', isa => 'Str');
   has AutoAssignPublicIps => (is => 'ro', isa => 'Str');
@@ -464,7 +533,8 @@ class Aws::OpsWorks::CreateLayer {
   has _returns => (isa => 'Aws::OpsWorks::CreateLayerResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLayerResult');  
 }
-class Aws::OpsWorks::CreateStack {
+package Aws::OpsWorks::CreateStack {
+  use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::StackAttributes');
   has ConfigurationManager => (is => 'ro', isa => 'Aws::OpsWorks::StackConfigurationManager');
   has CustomCookbooksSource => (is => 'ro', isa => 'Aws::OpsWorks::Source');
@@ -486,7 +556,8 @@ class Aws::OpsWorks::CreateStack {
   has _returns => (isa => 'Aws::OpsWorks::CreateStackResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStackResult');  
 }
-class Aws::OpsWorks::CreateUserProfile {
+package Aws::OpsWorks::CreateUserProfile {
+  use Moose;
   has AllowSelfManagement => (is => 'ro', isa => 'Str');
   has IamUserArn => (is => 'ro', isa => 'Str', required => 1);
   has SshPublicKey => (is => 'ro', isa => 'Str');
@@ -496,14 +567,16 @@ class Aws::OpsWorks::CreateUserProfile {
   has _returns => (isa => 'Aws::OpsWorks::CreateUserProfileResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateUserProfileResult');  
 }
-class Aws::OpsWorks::DeleteApp {
+package Aws::OpsWorks::DeleteApp {
+  use Moose;
   has AppId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteApp');
   has _returns => (isa => 'Aws::OpsWorks::DeleteAppResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAppResult');  
 }
-class Aws::OpsWorks::DeleteInstance {
+package Aws::OpsWorks::DeleteInstance {
+  use Moose;
   has DeleteElasticIp => (is => 'ro', isa => 'Str');
   has DeleteVolumes => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
@@ -512,42 +585,48 @@ class Aws::OpsWorks::DeleteInstance {
   has _returns => (isa => 'Aws::OpsWorks::DeleteInstanceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteInstanceResult');  
 }
-class Aws::OpsWorks::DeleteLayer {
+package Aws::OpsWorks::DeleteLayer {
+  use Moose;
   has LayerId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLayer');
   has _returns => (isa => 'Aws::OpsWorks::DeleteLayerResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLayerResult');  
 }
-class Aws::OpsWorks::DeleteStack {
+package Aws::OpsWorks::DeleteStack {
+  use Moose;
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteStack');
   has _returns => (isa => 'Aws::OpsWorks::DeleteStackResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteStackResult');  
 }
-class Aws::OpsWorks::DeleteUserProfile {
+package Aws::OpsWorks::DeleteUserProfile {
+  use Moose;
   has IamUserArn => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteUserProfile');
   has _returns => (isa => 'Aws::OpsWorks::DeleteUserProfileResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteUserProfileResult');  
 }
-class Aws::OpsWorks::DeregisterElasticIp {
+package Aws::OpsWorks::DeregisterElasticIp {
+  use Moose;
   has ElasticIp => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterElasticIp');
   has _returns => (isa => 'Aws::OpsWorks::DeregisterElasticIpResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeregisterElasticIpResult');  
 }
-class Aws::OpsWorks::DeregisterVolume {
+package Aws::OpsWorks::DeregisterVolume {
+  use Moose;
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterVolume');
   has _returns => (isa => 'Aws::OpsWorks::DeregisterVolumeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeregisterVolumeResult');  
 }
-class Aws::OpsWorks::DescribeApps {
+package Aws::OpsWorks::DescribeApps {
+  use Moose;
   has AppIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str');
 
@@ -555,7 +634,8 @@ class Aws::OpsWorks::DescribeApps {
   has _returns => (isa => 'Aws::OpsWorks::DescribeAppsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAppsResult');  
 }
-class Aws::OpsWorks::DescribeCommands {
+package Aws::OpsWorks::DescribeCommands {
+  use Moose;
   has CommandIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has DeploymentId => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
@@ -564,7 +644,8 @@ class Aws::OpsWorks::DescribeCommands {
   has _returns => (isa => 'Aws::OpsWorks::DescribeCommandsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCommandsResult');  
 }
-class Aws::OpsWorks::DescribeDeployments {
+package Aws::OpsWorks::DescribeDeployments {
+  use Moose;
   has AppId => (is => 'ro', isa => 'Str');
   has DeploymentIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str');
@@ -573,7 +654,8 @@ class Aws::OpsWorks::DescribeDeployments {
   has _returns => (isa => 'Aws::OpsWorks::DescribeDeploymentsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDeploymentsResult');  
 }
-class Aws::OpsWorks::DescribeElasticIps {
+package Aws::OpsWorks::DescribeElasticIps {
+  use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
   has Ips => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str');
@@ -582,7 +664,8 @@ class Aws::OpsWorks::DescribeElasticIps {
   has _returns => (isa => 'Aws::OpsWorks::DescribeElasticIpsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeElasticIpsResult');  
 }
-class Aws::OpsWorks::DescribeElasticLoadBalancers {
+package Aws::OpsWorks::DescribeElasticLoadBalancers {
+  use Moose;
   has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str');
 
@@ -590,7 +673,8 @@ class Aws::OpsWorks::DescribeElasticLoadBalancers {
   has _returns => (isa => 'Aws::OpsWorks::DescribeElasticLoadBalancersResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeElasticLoadBalancersResult');  
 }
-class Aws::OpsWorks::DescribeInstances {
+package Aws::OpsWorks::DescribeInstances {
+  use Moose;
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has LayerId => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
@@ -599,7 +683,8 @@ class Aws::OpsWorks::DescribeInstances {
   has _returns => (isa => 'Aws::OpsWorks::DescribeInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeInstancesResult');  
 }
-class Aws::OpsWorks::DescribeLayers {
+package Aws::OpsWorks::DescribeLayers {
+  use Moose;
   has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str');
 
@@ -607,20 +692,23 @@ class Aws::OpsWorks::DescribeLayers {
   has _returns => (isa => 'Aws::OpsWorks::DescribeLayersResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLayersResult');  
 }
-class Aws::OpsWorks::DescribeLoadBasedAutoScaling {
+package Aws::OpsWorks::DescribeLoadBasedAutoScaling {
+  use Moose;
   has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBasedAutoScaling');
   has _returns => (isa => 'Aws::OpsWorks::DescribeLoadBasedAutoScalingResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBasedAutoScalingResult');  
 }
-class Aws::OpsWorks::DescribeMyUserProfile {
+package Aws::OpsWorks::DescribeMyUserProfile {
+  use Moose;
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMyUserProfile');
   has _returns => (isa => 'Aws::OpsWorks::DescribeMyUserProfileResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeMyUserProfileResult');  
 }
-class Aws::OpsWorks::DescribePermissions {
+package Aws::OpsWorks::DescribePermissions {
+  use Moose;
   has IamUserArn => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
 
@@ -628,7 +716,8 @@ class Aws::OpsWorks::DescribePermissions {
   has _returns => (isa => 'Aws::OpsWorks::DescribePermissionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribePermissionsResult');  
 }
-class Aws::OpsWorks::DescribeRaidArrays {
+package Aws::OpsWorks::DescribeRaidArrays {
+  use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
   has RaidArrayIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -636,7 +725,8 @@ class Aws::OpsWorks::DescribeRaidArrays {
   has _returns => (isa => 'Aws::OpsWorks::DescribeRaidArraysResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeRaidArraysResult');  
 }
-class Aws::OpsWorks::DescribeServiceErrors {
+package Aws::OpsWorks::DescribeServiceErrors {
+  use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
   has ServiceErrorIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str');
@@ -645,35 +735,40 @@ class Aws::OpsWorks::DescribeServiceErrors {
   has _returns => (isa => 'Aws::OpsWorks::DescribeServiceErrorsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeServiceErrorsResult');  
 }
-class Aws::OpsWorks::DescribeStackSummary {
+package Aws::OpsWorks::DescribeStackSummary {
+  use Moose;
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackSummary');
   has _returns => (isa => 'Aws::OpsWorks::DescribeStackSummaryResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackSummaryResult');  
 }
-class Aws::OpsWorks::DescribeStacks {
+package Aws::OpsWorks::DescribeStacks {
+  use Moose;
   has StackIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStacks');
   has _returns => (isa => 'Aws::OpsWorks::DescribeStacksResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStacksResult');  
 }
-class Aws::OpsWorks::DescribeTimeBasedAutoScaling {
+package Aws::OpsWorks::DescribeTimeBasedAutoScaling {
+  use Moose;
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTimeBasedAutoScaling');
   has _returns => (isa => 'Aws::OpsWorks::DescribeTimeBasedAutoScalingResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTimeBasedAutoScalingResult');  
 }
-class Aws::OpsWorks::DescribeUserProfiles {
+package Aws::OpsWorks::DescribeUserProfiles {
+  use Moose;
   has IamUserArns => (is => 'ro', isa => 'ArrayRef[Str]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeUserProfiles');
   has _returns => (isa => 'Aws::OpsWorks::DescribeUserProfilesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeUserProfilesResult');  
 }
-class Aws::OpsWorks::DescribeVolumes {
+package Aws::OpsWorks::DescribeVolumes {
+  use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
   has RaidArrayId => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
@@ -683,7 +778,8 @@ class Aws::OpsWorks::DescribeVolumes {
   has _returns => (isa => 'Aws::OpsWorks::DescribeVolumesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVolumesResult');  
 }
-class Aws::OpsWorks::DetachElasticLoadBalancer {
+package Aws::OpsWorks::DetachElasticLoadBalancer {
+  use Moose;
   has ElasticLoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has LayerId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -691,28 +787,32 @@ class Aws::OpsWorks::DetachElasticLoadBalancer {
   has _returns => (isa => 'Aws::OpsWorks::DetachElasticLoadBalancerResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DetachElasticLoadBalancerResult');  
 }
-class Aws::OpsWorks::DisassociateElasticIp {
+package Aws::OpsWorks::DisassociateElasticIp {
+  use Moose;
   has ElasticIp => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateElasticIp');
   has _returns => (isa => 'Aws::OpsWorks::DisassociateElasticIpResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DisassociateElasticIpResult');  
 }
-class Aws::OpsWorks::GetHostnameSuggestion {
+package Aws::OpsWorks::GetHostnameSuggestion {
+  use Moose;
   has LayerId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetHostnameSuggestion');
   has _returns => (isa => 'Aws::OpsWorks::GetHostnameSuggestionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetHostnameSuggestionResult');  
 }
-class Aws::OpsWorks::RebootInstance {
+package Aws::OpsWorks::RebootInstance {
+  use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RebootInstance');
   has _returns => (isa => 'Aws::OpsWorks::RebootInstanceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RebootInstanceResult');  
 }
-class Aws::OpsWorks::RegisterElasticIp {
+package Aws::OpsWorks::RegisterElasticIp {
+  use Moose;
   has ElasticIp => (is => 'ro', isa => 'Str', required => 1);
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -720,7 +820,8 @@ class Aws::OpsWorks::RegisterElasticIp {
   has _returns => (isa => 'Aws::OpsWorks::RegisterElasticIpResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterElasticIpResult');  
 }
-class Aws::OpsWorks::RegisterVolume {
+package Aws::OpsWorks::RegisterVolume {
+  use Moose;
   has Ec2VolumeId => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -728,7 +829,8 @@ class Aws::OpsWorks::RegisterVolume {
   has _returns => (isa => 'Aws::OpsWorks::RegisterVolumeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterVolumeResult');  
 }
-class Aws::OpsWorks::SetLoadBasedAutoScaling {
+package Aws::OpsWorks::SetLoadBasedAutoScaling {
+  use Moose;
   has DownScaling => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingThresholds');
   has Enable => (is => 'ro', isa => 'Str');
   has LayerId => (is => 'ro', isa => 'Str', required => 1);
@@ -738,7 +840,8 @@ class Aws::OpsWorks::SetLoadBasedAutoScaling {
   has _returns => (isa => 'Aws::OpsWorks::SetLoadBasedAutoScalingResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetLoadBasedAutoScalingResult');  
 }
-class Aws::OpsWorks::SetPermission {
+package Aws::OpsWorks::SetPermission {
+  use Moose;
   has AllowSsh => (is => 'ro', isa => 'Str');
   has AllowSudo => (is => 'ro', isa => 'Str');
   has IamUserArn => (is => 'ro', isa => 'Str', required => 1);
@@ -749,7 +852,8 @@ class Aws::OpsWorks::SetPermission {
   has _returns => (isa => 'Aws::OpsWorks::SetPermissionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetPermissionResult');  
 }
-class Aws::OpsWorks::SetTimeBasedAutoScaling {
+package Aws::OpsWorks::SetTimeBasedAutoScaling {
+  use Moose;
   has AutoScalingSchedule => (is => 'ro', isa => 'Aws::OpsWorks::WeeklyAutoScalingSchedule');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -757,42 +861,48 @@ class Aws::OpsWorks::SetTimeBasedAutoScaling {
   has _returns => (isa => 'Aws::OpsWorks::SetTimeBasedAutoScalingResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetTimeBasedAutoScalingResult');  
 }
-class Aws::OpsWorks::StartInstance {
+package Aws::OpsWorks::StartInstance {
+  use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'StartInstance');
   has _returns => (isa => 'Aws::OpsWorks::StartInstanceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'StartInstanceResult');  
 }
-class Aws::OpsWorks::StartStack {
+package Aws::OpsWorks::StartStack {
+  use Moose;
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'StartStack');
   has _returns => (isa => 'Aws::OpsWorks::StartStackResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'StartStackResult');  
 }
-class Aws::OpsWorks::StopInstance {
+package Aws::OpsWorks::StopInstance {
+  use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'StopInstance');
   has _returns => (isa => 'Aws::OpsWorks::StopInstanceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'StopInstanceResult');  
 }
-class Aws::OpsWorks::StopStack {
+package Aws::OpsWorks::StopStack {
+  use Moose;
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'StopStack');
   has _returns => (isa => 'Aws::OpsWorks::StopStackResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'StopStackResult');  
 }
-class Aws::OpsWorks::UnassignVolume {
+package Aws::OpsWorks::UnassignVolume {
+  use Moose;
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UnassignVolume');
   has _returns => (isa => 'Aws::OpsWorks::UnassignVolumeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UnassignVolumeResult');  
 }
-class Aws::OpsWorks::UpdateApp {
+package Aws::OpsWorks::UpdateApp {
+  use Moose;
   has AppId => (is => 'ro', isa => 'Str', required => 1);
   has AppSource => (is => 'ro', isa => 'Aws::OpsWorks::Source');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::AppAttributes');
@@ -807,7 +917,8 @@ class Aws::OpsWorks::UpdateApp {
   has _returns => (isa => 'Aws::OpsWorks::UpdateAppResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateAppResult');  
 }
-class Aws::OpsWorks::UpdateElasticIp {
+package Aws::OpsWorks::UpdateElasticIp {
+  use Moose;
   has ElasticIp => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str');
 
@@ -815,7 +926,8 @@ class Aws::OpsWorks::UpdateElasticIp {
   has _returns => (isa => 'Aws::OpsWorks::UpdateElasticIpResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateElasticIpResult');  
 }
-class Aws::OpsWorks::UpdateInstance {
+package Aws::OpsWorks::UpdateInstance {
+  use Moose;
   has AmiId => (is => 'ro', isa => 'Str');
   has Architecture => (is => 'ro', isa => 'Str');
   has AutoScalingType => (is => 'ro', isa => 'Str');
@@ -831,7 +943,8 @@ class Aws::OpsWorks::UpdateInstance {
   has _returns => (isa => 'Aws::OpsWorks::UpdateInstanceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateInstanceResult');  
 }
-class Aws::OpsWorks::UpdateLayer {
+package Aws::OpsWorks::UpdateLayer {
+  use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::LayerAttributes');
   has AutoAssignElasticIps => (is => 'ro', isa => 'Str');
   has AutoAssignPublicIps => (is => 'ro', isa => 'Str');
@@ -850,14 +963,16 @@ class Aws::OpsWorks::UpdateLayer {
   has _returns => (isa => 'Aws::OpsWorks::UpdateLayerResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateLayerResult');  
 }
-class Aws::OpsWorks::UpdateMyUserProfile {
+package Aws::OpsWorks::UpdateMyUserProfile {
+  use Moose;
   has SshPublicKey => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMyUserProfile');
   has _returns => (isa => 'Aws::OpsWorks::UpdateMyUserProfileResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateMyUserProfileResult');  
 }
-class Aws::OpsWorks::UpdateStack {
+package Aws::OpsWorks::UpdateStack {
+  use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::StackAttributes');
   has ConfigurationManager => (is => 'ro', isa => 'Aws::OpsWorks::StackConfigurationManager');
   has CustomCookbooksSource => (is => 'ro', isa => 'Aws::OpsWorks::Source');
@@ -878,7 +993,8 @@ class Aws::OpsWorks::UpdateStack {
   has _returns => (isa => 'Aws::OpsWorks::UpdateStackResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateStackResult');  
 }
-class Aws::OpsWorks::UpdateUserProfile {
+package Aws::OpsWorks::UpdateUserProfile {
+  use Moose;
   has AllowSelfManagement => (is => 'ro', isa => 'Str');
   has IamUserArn => (is => 'ro', isa => 'Str', required => 1);
   has SshPublicKey => (is => 'ro', isa => 'Str');
@@ -888,7 +1004,8 @@ class Aws::OpsWorks::UpdateUserProfile {
   has _returns => (isa => 'Aws::OpsWorks::UpdateUserProfileResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateUserProfileResult');  
 }
-class Aws::OpsWorks::UpdateVolume {
+package Aws::OpsWorks::UpdateVolume {
+  use Moose;
   has MountPoint => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
@@ -898,399 +1015,511 @@ class Aws::OpsWorks::UpdateVolume {
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateVolumeResult');  
 }
 
-class Aws::OpsWorks::CloneStackResult with AWS::API::ResultParser {
+package Aws::OpsWorks::CloneStackResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has StackId => (is => 'ro', isa => 'Str');
 
 }
-class Aws::OpsWorks::CreateAppResult with AWS::API::ResultParser {
+package Aws::OpsWorks::CreateAppResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has AppId => (is => 'ro', isa => 'Str');
 
 }
-class Aws::OpsWorks::CreateDeploymentResult with AWS::API::ResultParser {
+package Aws::OpsWorks::CreateDeploymentResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has DeploymentId => (is => 'ro', isa => 'Str');
 
 }
-class Aws::OpsWorks::CreateInstanceResult with AWS::API::ResultParser {
+package Aws::OpsWorks::CreateInstanceResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has InstanceId => (is => 'ro', isa => 'Str');
 
 }
-class Aws::OpsWorks::CreateLayerResult with AWS::API::ResultParser {
+package Aws::OpsWorks::CreateLayerResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has LayerId => (is => 'ro', isa => 'Str');
 
 }
-class Aws::OpsWorks::CreateStackResult with AWS::API::ResultParser {
+package Aws::OpsWorks::CreateStackResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has StackId => (is => 'ro', isa => 'Str');
 
 }
-class Aws::OpsWorks::CreateUserProfileResult with AWS::API::ResultParser {
+package Aws::OpsWorks::CreateUserProfileResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has IamUserArn => (is => 'ro', isa => 'Str');
 
 }
-class Aws::OpsWorks::DescribeAppsResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeAppsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Apps => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::App]');
 
 }
-class Aws::OpsWorks::DescribeCommandsResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeCommandsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Commands => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::Command]');
 
 }
-class Aws::OpsWorks::DescribeDeploymentsResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeDeploymentsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Deployments => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::Deployment]');
 
 }
-class Aws::OpsWorks::DescribeElasticIpsResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeElasticIpsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has ElasticIps => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::ElasticIp]');
 
 }
-class Aws::OpsWorks::DescribeElasticLoadBalancersResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeElasticLoadBalancersResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has ElasticLoadBalancers => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::ElasticLoadBalancer]');
 
 }
-class Aws::OpsWorks::DescribeInstancesResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeInstancesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Instances => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::Instance]');
 
 }
-class Aws::OpsWorks::DescribeLayersResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeLayersResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Layers => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::Layer]');
 
 }
-class Aws::OpsWorks::DescribeLoadBasedAutoScalingResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeLoadBasedAutoScalingResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has LoadBasedAutoScalingConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::LoadBasedAutoScalingConfiguration]');
 
 }
-class Aws::OpsWorks::DescribeMyUserProfileResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeMyUserProfileResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has UserProfile => (is => 'ro', isa => 'Aws::OpsWorks::SelfUserProfile');
 
 }
-class Aws::OpsWorks::DescribePermissionsResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribePermissionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Permissions => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::Permission]');
 
 }
-class Aws::OpsWorks::DescribeRaidArraysResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeRaidArraysResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has RaidArrays => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::RaidArray]');
 
 }
-class Aws::OpsWorks::DescribeServiceErrorsResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeServiceErrorsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has ServiceErrors => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::ServiceError]');
 
 }
-class Aws::OpsWorks::DescribeStackSummaryResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeStackSummaryResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has StackSummary => (is => 'ro', isa => 'Aws::OpsWorks::StackSummary');
 
 }
-class Aws::OpsWorks::DescribeStacksResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeStacksResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Stacks => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::Stack]');
 
 }
-class Aws::OpsWorks::DescribeTimeBasedAutoScalingResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeTimeBasedAutoScalingResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has TimeBasedAutoScalingConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::TimeBasedAutoScalingConfiguration]');
 
 }
-class Aws::OpsWorks::DescribeUserProfilesResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeUserProfilesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has UserProfiles => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::UserProfile]');
 
 }
-class Aws::OpsWorks::DescribeVolumesResult with AWS::API::ResultParser {
+package Aws::OpsWorks::DescribeVolumesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Volumes => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::Volume]');
 
 }
-class Aws::OpsWorks::GetHostnameSuggestionResult with AWS::API::ResultParser {
+package Aws::OpsWorks::GetHostnameSuggestionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Hostname => (is => 'ro', isa => 'Str');
   has LayerId => (is => 'ro', isa => 'Str');
 
 }
-class Aws::OpsWorks::RegisterElasticIpResult with AWS::API::ResultParser {
+package Aws::OpsWorks::RegisterElasticIpResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has ElasticIp => (is => 'ro', isa => 'Str');
 
 }
-class Aws::OpsWorks::RegisterVolumeResult with AWS::API::ResultParser {
+package Aws::OpsWorks::RegisterVolumeResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has VolumeId => (is => 'ro', isa => 'Str');
 
 }
 
-class Aws::OpsWorks with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
+package Aws::OpsWorks {
+  use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'opsworks');
   has version => (is => 'ro', isa => 'Str', default => '2013-02-18');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'OpsWorks_20130218');
   has json_version => (is => 'ro', isa => 'Str', default => "1.1");
+  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
   
-  method AssignVolume (%args) {
-    my $call = Aws::OpsWorks::AssignVolume->new(%args);
+  sub AssignVolume {
+    my $self = shift;
+    my $call = Aws::OpsWorks::AssignVolume->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method AssociateElasticIp (%args) {
-    my $call = Aws::OpsWorks::AssociateElasticIp->new(%args);
+  sub AssociateElasticIp {
+    my $self = shift;
+    my $call = Aws::OpsWorks::AssociateElasticIp->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method AttachElasticLoadBalancer (%args) {
-    my $call = Aws::OpsWorks::AttachElasticLoadBalancer->new(%args);
+  sub AttachElasticLoadBalancer {
+    my $self = shift;
+    my $call = Aws::OpsWorks::AttachElasticLoadBalancer->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method CloneStack (%args) {
-    my $call = Aws::OpsWorks::CloneStack->new(%args);
+  sub CloneStack {
+    my $self = shift;
+    my $call = Aws::OpsWorks::CloneStack->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::CloneStackResult->from_result($result);return $o_result;
   }
-  method CreateApp (%args) {
-    my $call = Aws::OpsWorks::CreateApp->new(%args);
+  sub CreateApp {
+    my $self = shift;
+    my $call = Aws::OpsWorks::CreateApp->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::CreateAppResult->from_result($result);return $o_result;
   }
-  method CreateDeployment (%args) {
-    my $call = Aws::OpsWorks::CreateDeployment->new(%args);
+  sub CreateDeployment {
+    my $self = shift;
+    my $call = Aws::OpsWorks::CreateDeployment->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::CreateDeploymentResult->from_result($result);return $o_result;
   }
-  method CreateInstance (%args) {
-    my $call = Aws::OpsWorks::CreateInstance->new(%args);
+  sub CreateInstance {
+    my $self = shift;
+    my $call = Aws::OpsWorks::CreateInstance->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::CreateInstanceResult->from_result($result);return $o_result;
   }
-  method CreateLayer (%args) {
-    my $call = Aws::OpsWorks::CreateLayer->new(%args);
+  sub CreateLayer {
+    my $self = shift;
+    my $call = Aws::OpsWorks::CreateLayer->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::CreateLayerResult->from_result($result);return $o_result;
   }
-  method CreateStack (%args) {
-    my $call = Aws::OpsWorks::CreateStack->new(%args);
+  sub CreateStack {
+    my $self = shift;
+    my $call = Aws::OpsWorks::CreateStack->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::CreateStackResult->from_result($result);return $o_result;
   }
-  method CreateUserProfile (%args) {
-    my $call = Aws::OpsWorks::CreateUserProfile->new(%args);
+  sub CreateUserProfile {
+    my $self = shift;
+    my $call = Aws::OpsWorks::CreateUserProfile->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::CreateUserProfileResult->from_result($result);return $o_result;
   }
-  method DeleteApp (%args) {
-    my $call = Aws::OpsWorks::DeleteApp->new(%args);
+  sub DeleteApp {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DeleteApp->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteInstance (%args) {
-    my $call = Aws::OpsWorks::DeleteInstance->new(%args);
+  sub DeleteInstance {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DeleteInstance->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteLayer (%args) {
-    my $call = Aws::OpsWorks::DeleteLayer->new(%args);
+  sub DeleteLayer {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DeleteLayer->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteStack (%args) {
-    my $call = Aws::OpsWorks::DeleteStack->new(%args);
+  sub DeleteStack {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DeleteStack->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteUserProfile (%args) {
-    my $call = Aws::OpsWorks::DeleteUserProfile->new(%args);
+  sub DeleteUserProfile {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DeleteUserProfile->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeregisterElasticIp (%args) {
-    my $call = Aws::OpsWorks::DeregisterElasticIp->new(%args);
+  sub DeregisterElasticIp {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DeregisterElasticIp->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeregisterVolume (%args) {
-    my $call = Aws::OpsWorks::DeregisterVolume->new(%args);
+  sub DeregisterVolume {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DeregisterVolume->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DescribeApps (%args) {
-    my $call = Aws::OpsWorks::DescribeApps->new(%args);
+  sub DescribeApps {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeApps->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeAppsResult->from_result($result);return $o_result;
   }
-  method DescribeCommands (%args) {
-    my $call = Aws::OpsWorks::DescribeCommands->new(%args);
+  sub DescribeCommands {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeCommands->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeCommandsResult->from_result($result);return $o_result;
   }
-  method DescribeDeployments (%args) {
-    my $call = Aws::OpsWorks::DescribeDeployments->new(%args);
+  sub DescribeDeployments {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeDeployments->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeDeploymentsResult->from_result($result);return $o_result;
   }
-  method DescribeElasticIps (%args) {
-    my $call = Aws::OpsWorks::DescribeElasticIps->new(%args);
+  sub DescribeElasticIps {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeElasticIps->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeElasticIpsResult->from_result($result);return $o_result;
   }
-  method DescribeElasticLoadBalancers (%args) {
-    my $call = Aws::OpsWorks::DescribeElasticLoadBalancers->new(%args);
+  sub DescribeElasticLoadBalancers {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeElasticLoadBalancers->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeElasticLoadBalancersResult->from_result($result);return $o_result;
   }
-  method DescribeInstances (%args) {
-    my $call = Aws::OpsWorks::DescribeInstances->new(%args);
+  sub DescribeInstances {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeInstancesResult->from_result($result);return $o_result;
   }
-  method DescribeLayers (%args) {
-    my $call = Aws::OpsWorks::DescribeLayers->new(%args);
+  sub DescribeLayers {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeLayers->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeLayersResult->from_result($result);return $o_result;
   }
-  method DescribeLoadBasedAutoScaling (%args) {
-    my $call = Aws::OpsWorks::DescribeLoadBasedAutoScaling->new(%args);
+  sub DescribeLoadBasedAutoScaling {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeLoadBasedAutoScaling->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeLoadBasedAutoScalingResult->from_result($result);return $o_result;
   }
-  method DescribeMyUserProfile (%args) {
-    my $call = Aws::OpsWorks::DescribeMyUserProfile->new(%args);
+  sub DescribeMyUserProfile {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeMyUserProfile->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeMyUserProfileResult->from_result($result);return $o_result;
   }
-  method DescribePermissions (%args) {
-    my $call = Aws::OpsWorks::DescribePermissions->new(%args);
+  sub DescribePermissions {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribePermissions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribePermissionsResult->from_result($result);return $o_result;
   }
-  method DescribeRaidArrays (%args) {
-    my $call = Aws::OpsWorks::DescribeRaidArrays->new(%args);
+  sub DescribeRaidArrays {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeRaidArrays->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeRaidArraysResult->from_result($result);return $o_result;
   }
-  method DescribeServiceErrors (%args) {
-    my $call = Aws::OpsWorks::DescribeServiceErrors->new(%args);
+  sub DescribeServiceErrors {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeServiceErrors->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeServiceErrorsResult->from_result($result);return $o_result;
   }
-  method DescribeStacks (%args) {
-    my $call = Aws::OpsWorks::DescribeStacks->new(%args);
+  sub DescribeStacks {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeStacks->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeStacksResult->from_result($result);return $o_result;
   }
-  method DescribeStackSummary (%args) {
-    my $call = Aws::OpsWorks::DescribeStackSummary->new(%args);
+  sub DescribeStackSummary {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeStackSummary->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeStackSummaryResult->from_result($result);return $o_result;
   }
-  method DescribeTimeBasedAutoScaling (%args) {
-    my $call = Aws::OpsWorks::DescribeTimeBasedAutoScaling->new(%args);
+  sub DescribeTimeBasedAutoScaling {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeTimeBasedAutoScaling->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeTimeBasedAutoScalingResult->from_result($result);return $o_result;
   }
-  method DescribeUserProfiles (%args) {
-    my $call = Aws::OpsWorks::DescribeUserProfiles->new(%args);
+  sub DescribeUserProfiles {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeUserProfiles->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeUserProfilesResult->from_result($result);return $o_result;
   }
-  method DescribeVolumes (%args) {
-    my $call = Aws::OpsWorks::DescribeVolumes->new(%args);
+  sub DescribeVolumes {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DescribeVolumes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeVolumesResult->from_result($result);return $o_result;
   }
-  method DetachElasticLoadBalancer (%args) {
-    my $call = Aws::OpsWorks::DetachElasticLoadBalancer->new(%args);
+  sub DetachElasticLoadBalancer {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DetachElasticLoadBalancer->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DisassociateElasticIp (%args) {
-    my $call = Aws::OpsWorks::DisassociateElasticIp->new(%args);
+  sub DisassociateElasticIp {
+    my $self = shift;
+    my $call = Aws::OpsWorks::DisassociateElasticIp->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method GetHostnameSuggestion (%args) {
-    my $call = Aws::OpsWorks::GetHostnameSuggestion->new(%args);
+  sub GetHostnameSuggestion {
+    my $self = shift;
+    my $call = Aws::OpsWorks::GetHostnameSuggestion->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::GetHostnameSuggestionResult->from_result($result);return $o_result;
   }
-  method RebootInstance (%args) {
-    my $call = Aws::OpsWorks::RebootInstance->new(%args);
+  sub RebootInstance {
+    my $self = shift;
+    my $call = Aws::OpsWorks::RebootInstance->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method RegisterElasticIp (%args) {
-    my $call = Aws::OpsWorks::RegisterElasticIp->new(%args);
+  sub RegisterElasticIp {
+    my $self = shift;
+    my $call = Aws::OpsWorks::RegisterElasticIp->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::RegisterElasticIpResult->from_result($result);return $o_result;
   }
-  method RegisterVolume (%args) {
-    my $call = Aws::OpsWorks::RegisterVolume->new(%args);
+  sub RegisterVolume {
+    my $self = shift;
+    my $call = Aws::OpsWorks::RegisterVolume->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::RegisterVolumeResult->from_result($result);return $o_result;
   }
-  method SetLoadBasedAutoScaling (%args) {
-    my $call = Aws::OpsWorks::SetLoadBasedAutoScaling->new(%args);
+  sub SetLoadBasedAutoScaling {
+    my $self = shift;
+    my $call = Aws::OpsWorks::SetLoadBasedAutoScaling->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method SetPermission (%args) {
-    my $call = Aws::OpsWorks::SetPermission->new(%args);
+  sub SetPermission {
+    my $self = shift;
+    my $call = Aws::OpsWorks::SetPermission->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method SetTimeBasedAutoScaling (%args) {
-    my $call = Aws::OpsWorks::SetTimeBasedAutoScaling->new(%args);
+  sub SetTimeBasedAutoScaling {
+    my $self = shift;
+    my $call = Aws::OpsWorks::SetTimeBasedAutoScaling->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method StartInstance (%args) {
-    my $call = Aws::OpsWorks::StartInstance->new(%args);
+  sub StartInstance {
+    my $self = shift;
+    my $call = Aws::OpsWorks::StartInstance->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method StartStack (%args) {
-    my $call = Aws::OpsWorks::StartStack->new(%args);
+  sub StartStack {
+    my $self = shift;
+    my $call = Aws::OpsWorks::StartStack->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method StopInstance (%args) {
-    my $call = Aws::OpsWorks::StopInstance->new(%args);
+  sub StopInstance {
+    my $self = shift;
+    my $call = Aws::OpsWorks::StopInstance->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method StopStack (%args) {
-    my $call = Aws::OpsWorks::StopStack->new(%args);
+  sub StopStack {
+    my $self = shift;
+    my $call = Aws::OpsWorks::StopStack->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method UnassignVolume (%args) {
-    my $call = Aws::OpsWorks::UnassignVolume->new(%args);
+  sub UnassignVolume {
+    my $self = shift;
+    my $call = Aws::OpsWorks::UnassignVolume->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method UpdateApp (%args) {
-    my $call = Aws::OpsWorks::UpdateApp->new(%args);
+  sub UpdateApp {
+    my $self = shift;
+    my $call = Aws::OpsWorks::UpdateApp->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method UpdateElasticIp (%args) {
-    my $call = Aws::OpsWorks::UpdateElasticIp->new(%args);
+  sub UpdateElasticIp {
+    my $self = shift;
+    my $call = Aws::OpsWorks::UpdateElasticIp->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method UpdateInstance (%args) {
-    my $call = Aws::OpsWorks::UpdateInstance->new(%args);
+  sub UpdateInstance {
+    my $self = shift;
+    my $call = Aws::OpsWorks::UpdateInstance->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method UpdateLayer (%args) {
-    my $call = Aws::OpsWorks::UpdateLayer->new(%args);
+  sub UpdateLayer {
+    my $self = shift;
+    my $call = Aws::OpsWorks::UpdateLayer->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method UpdateMyUserProfile (%args) {
-    my $call = Aws::OpsWorks::UpdateMyUserProfile->new(%args);
+  sub UpdateMyUserProfile {
+    my $self = shift;
+    my $call = Aws::OpsWorks::UpdateMyUserProfile->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method UpdateStack (%args) {
-    my $call = Aws::OpsWorks::UpdateStack->new(%args);
+  sub UpdateStack {
+    my $self = shift;
+    my $call = Aws::OpsWorks::UpdateStack->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method UpdateUserProfile (%args) {
-    my $call = Aws::OpsWorks::UpdateUserProfile->new(%args);
+  sub UpdateUserProfile {
+    my $self = shift;
+    my $call = Aws::OpsWorks::UpdateUserProfile->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method UpdateVolume (%args) {
-    my $call = Aws::OpsWorks::UpdateVolume->new(%args);
+  sub UpdateVolume {
+    my $self = shift;
+    my $call = Aws::OpsWorks::UpdateVolume->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }

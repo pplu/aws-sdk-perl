@@ -1,5 +1,4 @@
 
-use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
@@ -28,32 +27,42 @@ enum 'Aws::SimpleWorkflow::WorkflowExecutionTerminatedCause', ['CHILD_POLICY_APP
 enum 'Aws::SimpleWorkflow::WorkflowExecutionTimeoutType', ['START_TO_CLOSE',];
 
 
-class Aws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::SimpleWorkflow::ActivityTaskCanceledEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ActivityTaskCanceledEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has details => (is => 'ro', isa => 'Str');
   has latestCancelRequestedEventId => (is => 'ro', isa => 'Num');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::SimpleWorkflow::ActivityTaskCompletedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ActivityTaskCompletedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has result => (is => 'ro', isa => 'Str');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::SimpleWorkflow::ActivityTaskFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ActivityTaskFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has details => (is => 'ro', isa => 'Str');
   has reason => (is => 'ro', isa => 'Str');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::SimpleWorkflow::ActivityTaskScheduledEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ActivityTaskScheduledEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
   has control => (is => 'ro', isa => 'Str');
@@ -66,24 +75,32 @@ class Aws::SimpleWorkflow::ActivityTaskScheduledEventAttributes with (AWS::API::
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
 }
 
-class Aws::SimpleWorkflow::ActivityTaskStartedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ActivityTaskStartedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has identity => (is => 'ro', isa => 'Str');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::SimpleWorkflow::ActivityTaskTimedOutEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ActivityTaskTimedOutEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has details => (is => 'ro', isa => 'Str');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timeoutType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityTaskTimeoutType', required => 1);
 }
 
-class Aws::SimpleWorkflow::ActivityType with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ActivityType {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has name => (is => 'ro', isa => 'Str', required => 1);
   has version => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::ActivityTypeConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ActivityTypeConfiguration {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has defaultTaskHeartbeatTimeout => (is => 'ro', isa => 'Str');
   has defaultTaskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList');
   has defaultTaskScheduleToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -91,7 +108,9 @@ class Aws::SimpleWorkflow::ActivityTypeConfiguration with (AWS::API::ResultParse
   has defaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SimpleWorkflow::ActivityTypeInfo with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ActivityTypeInfo {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
   has creationDate => (is => 'ro', isa => 'Str', required => 1);
   has deprecationDate => (is => 'ro', isa => 'Str');
@@ -99,26 +118,36 @@ class Aws::SimpleWorkflow::ActivityTypeInfo with (AWS::API::ResultParser, AWS::A
   has status => (is => 'ro', isa => 'Aws::SimpleWorkflow::RegistrationStatus', required => 1);
 }
 
-class Aws::SimpleWorkflow::CancelTimerDecisionAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::CancelTimerDecisionAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has timerId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::CancelTimerFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::CancelTimerFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::CancelTimerFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timerId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has details => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SimpleWorkflow::CancelWorkflowExecutionFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::CancelWorkflowExecutionFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::CancelWorkflowExecutionFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::SimpleWorkflow::ChildWorkflowExecutionCanceledEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ChildWorkflowExecutionCanceledEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has details => (is => 'ro', isa => 'Str');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -126,7 +155,9 @@ class Aws::SimpleWorkflow::ChildWorkflowExecutionCanceledEventAttributes with (A
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
 
-class Aws::SimpleWorkflow::ChildWorkflowExecutionCompletedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ChildWorkflowExecutionCompletedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has result => (is => 'ro', isa => 'Str');
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -134,7 +165,9 @@ class Aws::SimpleWorkflow::ChildWorkflowExecutionCompletedEventAttributes with (
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
 
-class Aws::SimpleWorkflow::ChildWorkflowExecutionFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ChildWorkflowExecutionFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has details => (is => 'ro', isa => 'Str');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has reason => (is => 'ro', isa => 'Str');
@@ -143,20 +176,26 @@ class Aws::SimpleWorkflow::ChildWorkflowExecutionFailedEventAttributes with (AWS
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
 
-class Aws::SimpleWorkflow::ChildWorkflowExecutionStartedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ChildWorkflowExecutionStartedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has workflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
 
-class Aws::SimpleWorkflow::ChildWorkflowExecutionTerminatedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ChildWorkflowExecutionTerminatedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
   has workflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
 
-class Aws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timeoutType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionTimeoutType', required => 1);
@@ -164,20 +203,28 @@ class Aws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes with (A
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
 
-class Aws::SimpleWorkflow::CloseStatusFilter with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::CloseStatusFilter {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has status => (is => 'ro', isa => 'Aws::SimpleWorkflow::CloseStatus', required => 1);
 }
 
-class Aws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has result => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SimpleWorkflow::CompleteWorkflowExecutionFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::CompleteWorkflowExecutionFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::CompleteWorkflowExecutionFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy');
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has input => (is => 'ro', isa => 'Str');
@@ -187,12 +234,16 @@ class Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes with
   has workflowTypeVersion => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::SimpleWorkflow::Decision with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::Decision {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cancelTimerDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::CancelTimerDecisionAttributes');
   has cancelWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes');
   has completeWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes');
@@ -208,64 +259,88 @@ class Aws::SimpleWorkflow::Decision with (AWS::API::ResultParser, AWS::API::ToPa
   has startTimerDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::StartTimerDecisionAttributes');
 }
 
-class Aws::SimpleWorkflow::DecisionTaskCompletedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::DecisionTaskCompletedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has executionContext => (is => 'ro', isa => 'Str');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::SimpleWorkflow::DecisionTaskScheduledEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::DecisionTaskScheduledEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has startToCloseTimeout => (is => 'ro', isa => 'Str');
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
 }
 
-class Aws::SimpleWorkflow::DecisionTaskStartedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::DecisionTaskStartedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has identity => (is => 'ro', isa => 'Str');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::SimpleWorkflow::DecisionTaskTimedOutEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::DecisionTaskTimedOutEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timeoutType => (is => 'ro', isa => 'Aws::SimpleWorkflow::DecisionTaskTimeoutType', required => 1);
 }
 
-class Aws::SimpleWorkflow::DomainConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::DomainConfiguration {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has workflowExecutionRetentionPeriodInDays => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::DomainInfo with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::DomainInfo {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has description => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str', required => 1);
   has status => (is => 'ro', isa => 'Aws::SimpleWorkflow::RegistrationStatus', required => 1);
 }
 
-class Aws::SimpleWorkflow::ExecutionTimeFilter with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ExecutionTimeFilter {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has latestDate => (is => 'ro', isa => 'Str');
   has oldestDate => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::ExternalWorkflowExecutionCancelRequestedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ExternalWorkflowExecutionCancelRequestedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has workflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
 }
 
-class Aws::SimpleWorkflow::ExternalWorkflowExecutionSignaledEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ExternalWorkflowExecutionSignaledEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has workflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
 }
 
-class Aws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has details => (is => 'ro', isa => 'Str');
   has reason => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SimpleWorkflow::FailWorkflowExecutionFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::FailWorkflowExecutionFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::FailWorkflowExecutionFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::SimpleWorkflow::HistoryEvent with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::HistoryEvent {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has activityTaskCancelRequestedEventAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes');
   has activityTaskCanceledEventAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityTaskCanceledEventAttributes');
   has activityTaskCompletedEventAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityTaskCompletedEventAttributes');
@@ -318,40 +393,54 @@ class Aws::SimpleWorkflow::HistoryEvent with (AWS::API::ResultParser, AWS::API::
   has workflowExecutionTimedOutEventAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes');
 }
 
-class Aws::SimpleWorkflow::MarkerRecordedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::MarkerRecordedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has details => (is => 'ro', isa => 'Str');
   has markerName => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::RecordMarkerDecisionAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::RecordMarkerDecisionAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has details => (is => 'ro', isa => 'Str');
   has markerName => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::RecordMarkerFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::RecordMarkerFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::RecordMarkerFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has markerName => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::RequestCancelActivityTaskFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::RequestCancelActivityTaskFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::RequestCancelActivityTaskFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has control => (is => 'ro', isa => 'Str');
   has runId => (is => 'ro', isa => 'Str');
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedCause', required => 1);
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -360,14 +449,18 @@ class Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventAttr
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has runId => (is => 'ro', isa => 'Str');
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
   has control => (is => 'ro', isa => 'Str');
@@ -379,14 +472,18 @@ class Aws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes with (AWS::API
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList');
 }
 
-class Aws::SimpleWorkflow::ScheduleActivityTaskFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::ScheduleActivityTaskFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::ScheduleActivityTaskFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has control => (is => 'ro', isa => 'Str');
   has input => (is => 'ro', isa => 'Str');
   has runId => (is => 'ro', isa => 'Str');
@@ -394,7 +491,9 @@ class Aws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes wit
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedCause', required => 1);
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -403,7 +502,9 @@ class Aws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedEventAttributes 
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has input => (is => 'ro', isa => 'Str');
@@ -412,7 +513,9 @@ class Aws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttribut
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy');
   has control => (is => 'ro', isa => 'Str');
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -424,7 +527,9 @@ class Aws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes with (A
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
 
-class Aws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::StartChildWorkflowExecutionFailedCause', required => 1);
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -433,7 +538,9 @@ class Aws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes with
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
 
-class Aws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -446,73 +553,99 @@ class Aws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttributes w
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
 
-class Aws::SimpleWorkflow::StartTimerDecisionAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::StartTimerDecisionAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has control => (is => 'ro', isa => 'Str');
   has startToFireTimeout => (is => 'ro', isa => 'Str', required => 1);
   has timerId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::StartTimerFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::StartTimerFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::StartTimerFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timerId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::TagFilter with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::TagFilter {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has tag => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::TaskList with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::TaskList {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has name => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::TimerCanceledEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::TimerCanceledEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timerId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::TimerFiredEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::TimerFiredEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timerId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::TimerStartedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::TimerStartedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has startToFireTimeout => (is => 'ro', isa => 'Str', required => 1);
   has timerId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::WorkflowExecution with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowExecution {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has runId => (is => 'ro', isa => 'Str', required => 1);
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionCancelRequestedCause');
   has externalInitiatedEventId => (is => 'ro', isa => 'Num');
   has externalWorkflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution');
 }
 
-class Aws::SimpleWorkflow::WorkflowExecutionCanceledEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowExecutionCanceledEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has details => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SimpleWorkflow::WorkflowExecutionCompletedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowExecutionCompletedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has result => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SimpleWorkflow::WorkflowExecutionConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowExecutionConfiguration {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str', required => 1);
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
   has taskStartToCloseTimeout => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -524,17 +657,23 @@ class Aws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes with (
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
 
-class Aws::SimpleWorkflow::WorkflowExecutionFailedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowExecutionFailedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has details => (is => 'ro', isa => 'Str');
   has reason => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SimpleWorkflow::WorkflowExecutionFilter with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowExecutionFilter {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::WorkflowExecutionInfo with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowExecutionInfo {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cancelRequested => (is => 'ro', isa => 'Str');
   has closeStatus => (is => 'ro', isa => 'Aws::SimpleWorkflow::CloseStatus');
   has closeTimestamp => (is => 'ro', isa => 'Str');
@@ -546,21 +685,27 @@ class Aws::SimpleWorkflow::WorkflowExecutionInfo with (AWS::API::ResultParser, A
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
 
-class Aws::SimpleWorkflow::WorkflowExecutionOpenCounts with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowExecutionOpenCounts {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has openActivityTasks => (is => 'ro', isa => 'Int', required => 1);
   has openChildWorkflowExecutions => (is => 'ro', isa => 'Int', required => 1);
   has openDecisionTasks => (is => 'ro', isa => 'Int', required => 1);
   has openTimers => (is => 'ro', isa => 'Int', required => 1);
 }
 
-class Aws::SimpleWorkflow::WorkflowExecutionSignaledEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowExecutionSignaledEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has externalInitiatedEventId => (is => 'ro', isa => 'Num');
   has externalWorkflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution');
   has input => (is => 'ro', isa => 'Str');
   has signalName => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
   has continuedExecutionRunId => (is => 'ro', isa => 'Str');
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -573,36 +718,48 @@ class Aws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes with (AWS::AP
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
 
-class Aws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionTerminatedCause');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
   has details => (is => 'ro', isa => 'Str');
   has reason => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
   has timeoutType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionTimeoutType', required => 1);
 }
 
-class Aws::SimpleWorkflow::WorkflowType with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowType {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has name => (is => 'ro', isa => 'Str', required => 1);
   has version => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::SimpleWorkflow::WorkflowTypeConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowTypeConfiguration {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has defaultChildPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy');
   has defaultExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has defaultTaskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList');
   has defaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SimpleWorkflow::WorkflowTypeFilter with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowTypeFilter {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has name => (is => 'ro', isa => 'Str', required => 1);
   has version => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SimpleWorkflow::WorkflowTypeInfo with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SimpleWorkflow::WorkflowTypeInfo {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has creationDate => (is => 'ro', isa => 'Str', required => 1);
   has deprecationDate => (is => 'ro', isa => 'Str');
   has description => (is => 'ro', isa => 'Str');
@@ -612,7 +769,8 @@ class Aws::SimpleWorkflow::WorkflowTypeInfo with (AWS::API::ResultParser, AWS::A
 
 
 
-class Aws::SimpleWorkflow::CountClosedWorkflowExecutions {
+package Aws::SimpleWorkflow::CountClosedWorkflowExecutions {
+  use Moose;
   has closeStatusFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::CloseStatusFilter');
   has closeTimeFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::ExecutionTimeFilter');
   has domain => (is => 'ro', isa => 'Str', required => 1);
@@ -625,7 +783,8 @@ class Aws::SimpleWorkflow::CountClosedWorkflowExecutions {
   has _returns => (isa => 'Aws::SimpleWorkflow::CountClosedWorkflowExecutionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CountClosedWorkflowExecutionsResult');  
 }
-class Aws::SimpleWorkflow::CountOpenWorkflowExecutions {
+package Aws::SimpleWorkflow::CountOpenWorkflowExecutions {
+  use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has executionFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionFilter');
   has startTimeFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::ExecutionTimeFilter', required => 1);
@@ -636,7 +795,8 @@ class Aws::SimpleWorkflow::CountOpenWorkflowExecutions {
   has _returns => (isa => 'Aws::SimpleWorkflow::CountOpenWorkflowExecutionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CountOpenWorkflowExecutionsResult');  
 }
-class Aws::SimpleWorkflow::CountPendingActivityTasks {
+package Aws::SimpleWorkflow::CountPendingActivityTasks {
+  use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
 
@@ -644,7 +804,8 @@ class Aws::SimpleWorkflow::CountPendingActivityTasks {
   has _returns => (isa => 'Aws::SimpleWorkflow::CountPendingActivityTasksResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CountPendingActivityTasksResult');  
 }
-class Aws::SimpleWorkflow::CountPendingDecisionTasks {
+package Aws::SimpleWorkflow::CountPendingDecisionTasks {
+  use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
 
@@ -652,7 +813,8 @@ class Aws::SimpleWorkflow::CountPendingDecisionTasks {
   has _returns => (isa => 'Aws::SimpleWorkflow::CountPendingDecisionTasksResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CountPendingDecisionTasksResult');  
 }
-class Aws::SimpleWorkflow::DeprecateActivityType {
+package Aws::SimpleWorkflow::DeprecateActivityType {
+  use Moose;
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
   has domain => (is => 'ro', isa => 'Str', required => 1);
 
@@ -660,14 +822,16 @@ class Aws::SimpleWorkflow::DeprecateActivityType {
   has _returns => (isa => 'Aws::SimpleWorkflow::DeprecateActivityTypeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeprecateActivityTypeResult');  
 }
-class Aws::SimpleWorkflow::DeprecateDomain {
+package Aws::SimpleWorkflow::DeprecateDomain {
+  use Moose;
   has name => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeprecateDomain');
   has _returns => (isa => 'Aws::SimpleWorkflow::DeprecateDomainResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeprecateDomainResult');  
 }
-class Aws::SimpleWorkflow::DeprecateWorkflowType {
+package Aws::SimpleWorkflow::DeprecateWorkflowType {
+  use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 
@@ -675,7 +839,8 @@ class Aws::SimpleWorkflow::DeprecateWorkflowType {
   has _returns => (isa => 'Aws::SimpleWorkflow::DeprecateWorkflowTypeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeprecateWorkflowTypeResult');  
 }
-class Aws::SimpleWorkflow::DescribeActivityType {
+package Aws::SimpleWorkflow::DescribeActivityType {
+  use Moose;
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
   has domain => (is => 'ro', isa => 'Str', required => 1);
 
@@ -683,14 +848,16 @@ class Aws::SimpleWorkflow::DescribeActivityType {
   has _returns => (isa => 'Aws::SimpleWorkflow::DescribeActivityTypeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeActivityTypeResult');  
 }
-class Aws::SimpleWorkflow::DescribeDomain {
+package Aws::SimpleWorkflow::DescribeDomain {
+  use Moose;
   has name => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDomain');
   has _returns => (isa => 'Aws::SimpleWorkflow::DescribeDomainResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDomainResult');  
 }
-class Aws::SimpleWorkflow::DescribeWorkflowExecution {
+package Aws::SimpleWorkflow::DescribeWorkflowExecution {
+  use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has execution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
 
@@ -698,7 +865,8 @@ class Aws::SimpleWorkflow::DescribeWorkflowExecution {
   has _returns => (isa => 'Aws::SimpleWorkflow::DescribeWorkflowExecutionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeWorkflowExecutionResult');  
 }
-class Aws::SimpleWorkflow::DescribeWorkflowType {
+package Aws::SimpleWorkflow::DescribeWorkflowType {
+  use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 
@@ -706,7 +874,8 @@ class Aws::SimpleWorkflow::DescribeWorkflowType {
   has _returns => (isa => 'Aws::SimpleWorkflow::DescribeWorkflowTypeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeWorkflowTypeResult');  
 }
-class Aws::SimpleWorkflow::GetWorkflowExecutionHistory {
+package Aws::SimpleWorkflow::GetWorkflowExecutionHistory {
+  use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has execution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
   has maximumPageSize => (is => 'ro', isa => 'Int');
@@ -717,7 +886,8 @@ class Aws::SimpleWorkflow::GetWorkflowExecutionHistory {
   has _returns => (isa => 'Aws::SimpleWorkflow::GetWorkflowExecutionHistoryResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetWorkflowExecutionHistoryResult');  
 }
-class Aws::SimpleWorkflow::ListActivityTypes {
+package Aws::SimpleWorkflow::ListActivityTypes {
+  use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has maximumPageSize => (is => 'ro', isa => 'Int');
   has name => (is => 'ro', isa => 'Str');
@@ -729,7 +899,8 @@ class Aws::SimpleWorkflow::ListActivityTypes {
   has _returns => (isa => 'Aws::SimpleWorkflow::ListActivityTypesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListActivityTypesResult');  
 }
-class Aws::SimpleWorkflow::ListClosedWorkflowExecutions {
+package Aws::SimpleWorkflow::ListClosedWorkflowExecutions {
+  use Moose;
   has closeStatusFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::CloseStatusFilter');
   has closeTimeFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::ExecutionTimeFilter');
   has domain => (is => 'ro', isa => 'Str', required => 1);
@@ -745,7 +916,8 @@ class Aws::SimpleWorkflow::ListClosedWorkflowExecutions {
   has _returns => (isa => 'Aws::SimpleWorkflow::ListClosedWorkflowExecutionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListClosedWorkflowExecutionsResult');  
 }
-class Aws::SimpleWorkflow::ListDomains {
+package Aws::SimpleWorkflow::ListDomains {
+  use Moose;
   has maximumPageSize => (is => 'ro', isa => 'Int');
   has nextPageToken => (is => 'ro', isa => 'Str');
   has registrationStatus => (is => 'ro', isa => 'Str', required => 1);
@@ -755,7 +927,8 @@ class Aws::SimpleWorkflow::ListDomains {
   has _returns => (isa => 'Aws::SimpleWorkflow::ListDomainsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListDomainsResult');  
 }
-class Aws::SimpleWorkflow::ListOpenWorkflowExecutions {
+package Aws::SimpleWorkflow::ListOpenWorkflowExecutions {
+  use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has executionFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionFilter');
   has maximumPageSize => (is => 'ro', isa => 'Int');
@@ -769,7 +942,8 @@ class Aws::SimpleWorkflow::ListOpenWorkflowExecutions {
   has _returns => (isa => 'Aws::SimpleWorkflow::ListOpenWorkflowExecutionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListOpenWorkflowExecutionsResult');  
 }
-class Aws::SimpleWorkflow::ListWorkflowTypes {
+package Aws::SimpleWorkflow::ListWorkflowTypes {
+  use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has maximumPageSize => (is => 'ro', isa => 'Int');
   has name => (is => 'ro', isa => 'Str');
@@ -781,7 +955,8 @@ class Aws::SimpleWorkflow::ListWorkflowTypes {
   has _returns => (isa => 'Aws::SimpleWorkflow::ListWorkflowTypesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListWorkflowTypesResult');  
 }
-class Aws::SimpleWorkflow::PollForActivityTask {
+package Aws::SimpleWorkflow::PollForActivityTask {
+  use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has identity => (is => 'ro', isa => 'Str');
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
@@ -790,7 +965,8 @@ class Aws::SimpleWorkflow::PollForActivityTask {
   has _returns => (isa => 'Aws::SimpleWorkflow::PollForActivityTaskResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'PollForActivityTaskResult');  
 }
-class Aws::SimpleWorkflow::PollForDecisionTask {
+package Aws::SimpleWorkflow::PollForDecisionTask {
+  use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has identity => (is => 'ro', isa => 'Str');
   has maximumPageSize => (is => 'ro', isa => 'Int');
@@ -802,7 +978,8 @@ class Aws::SimpleWorkflow::PollForDecisionTask {
   has _returns => (isa => 'Aws::SimpleWorkflow::PollForDecisionTaskResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'PollForDecisionTaskResult');  
 }
-class Aws::SimpleWorkflow::RecordActivityTaskHeartbeat {
+package Aws::SimpleWorkflow::RecordActivityTaskHeartbeat {
+  use Moose;
   has details => (is => 'ro', isa => 'Str');
   has taskToken => (is => 'ro', isa => 'Str', required => 1);
 
@@ -810,7 +987,8 @@ class Aws::SimpleWorkflow::RecordActivityTaskHeartbeat {
   has _returns => (isa => 'Aws::SimpleWorkflow::RecordActivityTaskHeartbeatResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RecordActivityTaskHeartbeatResult');  
 }
-class Aws::SimpleWorkflow::RegisterActivityType {
+package Aws::SimpleWorkflow::RegisterActivityType {
+  use Moose;
   has defaultTaskHeartbeatTimeout => (is => 'ro', isa => 'Str');
   has defaultTaskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList');
   has defaultTaskScheduleToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -825,7 +1003,8 @@ class Aws::SimpleWorkflow::RegisterActivityType {
   has _returns => (isa => 'Aws::SimpleWorkflow::RegisterActivityTypeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterActivityTypeResult');  
 }
-class Aws::SimpleWorkflow::RegisterDomain {
+package Aws::SimpleWorkflow::RegisterDomain {
+  use Moose;
   has description => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str', required => 1);
   has workflowExecutionRetentionPeriodInDays => (is => 'ro', isa => 'Str', required => 1);
@@ -834,7 +1013,8 @@ class Aws::SimpleWorkflow::RegisterDomain {
   has _returns => (isa => 'Aws::SimpleWorkflow::RegisterDomainResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterDomainResult');  
 }
-class Aws::SimpleWorkflow::RegisterWorkflowType {
+package Aws::SimpleWorkflow::RegisterWorkflowType {
+  use Moose;
   has defaultChildPolicy => (is => 'ro', isa => 'Str');
   has defaultExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has defaultTaskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList');
@@ -848,7 +1028,8 @@ class Aws::SimpleWorkflow::RegisterWorkflowType {
   has _returns => (isa => 'Aws::SimpleWorkflow::RegisterWorkflowTypeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterWorkflowTypeResult');  
 }
-class Aws::SimpleWorkflow::RequestCancelWorkflowExecution {
+package Aws::SimpleWorkflow::RequestCancelWorkflowExecution {
+  use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has runId => (is => 'ro', isa => 'Str');
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
@@ -857,7 +1038,8 @@ class Aws::SimpleWorkflow::RequestCancelWorkflowExecution {
   has _returns => (isa => 'Aws::SimpleWorkflow::RequestCancelWorkflowExecutionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RequestCancelWorkflowExecutionResult');  
 }
-class Aws::SimpleWorkflow::RespondActivityTaskCanceled {
+package Aws::SimpleWorkflow::RespondActivityTaskCanceled {
+  use Moose;
   has details => (is => 'ro', isa => 'Str');
   has taskToken => (is => 'ro', isa => 'Str', required => 1);
 
@@ -865,7 +1047,8 @@ class Aws::SimpleWorkflow::RespondActivityTaskCanceled {
   has _returns => (isa => 'Aws::SimpleWorkflow::RespondActivityTaskCanceledResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RespondActivityTaskCanceledResult');  
 }
-class Aws::SimpleWorkflow::RespondActivityTaskCompleted {
+package Aws::SimpleWorkflow::RespondActivityTaskCompleted {
+  use Moose;
   has result => (is => 'ro', isa => 'Str');
   has taskToken => (is => 'ro', isa => 'Str', required => 1);
 
@@ -873,7 +1056,8 @@ class Aws::SimpleWorkflow::RespondActivityTaskCompleted {
   has _returns => (isa => 'Aws::SimpleWorkflow::RespondActivityTaskCompletedResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RespondActivityTaskCompletedResult');  
 }
-class Aws::SimpleWorkflow::RespondActivityTaskFailed {
+package Aws::SimpleWorkflow::RespondActivityTaskFailed {
+  use Moose;
   has details => (is => 'ro', isa => 'Str');
   has reason => (is => 'ro', isa => 'Str');
   has taskToken => (is => 'ro', isa => 'Str', required => 1);
@@ -882,7 +1066,8 @@ class Aws::SimpleWorkflow::RespondActivityTaskFailed {
   has _returns => (isa => 'Aws::SimpleWorkflow::RespondActivityTaskFailedResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RespondActivityTaskFailedResult');  
 }
-class Aws::SimpleWorkflow::RespondDecisionTaskCompleted {
+package Aws::SimpleWorkflow::RespondDecisionTaskCompleted {
+  use Moose;
   has decisions => (is => 'ro', isa => 'ArrayRef[Aws::SimpleWorkflow::Decision]');
   has executionContext => (is => 'ro', isa => 'Str');
   has taskToken => (is => 'ro', isa => 'Str', required => 1);
@@ -891,7 +1076,8 @@ class Aws::SimpleWorkflow::RespondDecisionTaskCompleted {
   has _returns => (isa => 'Aws::SimpleWorkflow::RespondDecisionTaskCompletedResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RespondDecisionTaskCompletedResult');  
 }
-class Aws::SimpleWorkflow::SignalWorkflowExecution {
+package Aws::SimpleWorkflow::SignalWorkflowExecution {
+  use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has input => (is => 'ro', isa => 'Str');
   has runId => (is => 'ro', isa => 'Str');
@@ -902,7 +1088,8 @@ class Aws::SimpleWorkflow::SignalWorkflowExecution {
   has _returns => (isa => 'Aws::SimpleWorkflow::SignalWorkflowExecutionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SignalWorkflowExecutionResult');  
 }
-class Aws::SimpleWorkflow::StartWorkflowExecution {
+package Aws::SimpleWorkflow::StartWorkflowExecution {
+  use Moose;
   has childPolicy => (is => 'ro', isa => 'Str');
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -917,7 +1104,8 @@ class Aws::SimpleWorkflow::StartWorkflowExecution {
   has _returns => (isa => 'Aws::SimpleWorkflow::StartWorkflowExecutionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'StartWorkflowExecutionResult');  
 }
-class Aws::SimpleWorkflow::TerminateWorkflowExecution {
+package Aws::SimpleWorkflow::TerminateWorkflowExecution {
+  use Moose;
   has childPolicy => (is => 'ro', isa => 'Str');
   has details => (is => 'ro', isa => 'Str');
   has domain => (is => 'ro', isa => 'Str', required => 1);
@@ -930,37 +1118,51 @@ class Aws::SimpleWorkflow::TerminateWorkflowExecution {
   has _result_key => (isa => 'Str', is => 'ro', default => 'TerminateWorkflowExecutionResult');  
 }
 
-class Aws::SimpleWorkflow::CountClosedWorkflowExecutionsResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::CountClosedWorkflowExecutionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has count => (is => 'ro', isa => 'Int', required => 1);
   has truncated => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SimpleWorkflow::CountOpenWorkflowExecutionsResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::CountOpenWorkflowExecutionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has count => (is => 'ro', isa => 'Int', required => 1);
   has truncated => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SimpleWorkflow::CountPendingActivityTasksResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::CountPendingActivityTasksResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has count => (is => 'ro', isa => 'Int', required => 1);
   has truncated => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SimpleWorkflow::CountPendingDecisionTasksResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::CountPendingDecisionTasksResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has count => (is => 'ro', isa => 'Int', required => 1);
   has truncated => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SimpleWorkflow::DescribeActivityTypeResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::DescribeActivityTypeResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has configuration => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityTypeConfiguration', required => 1);
   has typeInfo => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityTypeInfo', required => 1);
 
 }
-class Aws::SimpleWorkflow::DescribeDomainResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::DescribeDomainResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has configuration => (is => 'ro', isa => 'Aws::SimpleWorkflow::DomainConfiguration', required => 1);
   has domainInfo => (is => 'ro', isa => 'Aws::SimpleWorkflow::DomainInfo', required => 1);
 
 }
-class Aws::SimpleWorkflow::DescribeWorkflowExecutionResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::DescribeWorkflowExecutionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has executionConfiguration => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionConfiguration', required => 1);
   has executionInfo => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionInfo', required => 1);
   has latestActivityTaskTimestamp => (is => 'ro', isa => 'Str');
@@ -968,42 +1170,58 @@ class Aws::SimpleWorkflow::DescribeWorkflowExecutionResult with AWS::API::Result
   has openCounts => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionOpenCounts', required => 1);
 
 }
-class Aws::SimpleWorkflow::DescribeWorkflowTypeResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::DescribeWorkflowTypeResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has configuration => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowTypeConfiguration', required => 1);
   has typeInfo => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowTypeInfo', required => 1);
 
 }
-class Aws::SimpleWorkflow::GetWorkflowExecutionHistoryResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::GetWorkflowExecutionHistoryResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has events => (is => 'ro', isa => 'ArrayRef[Aws::SimpleWorkflow::HistoryEvent]', required => 1);
   has nextPageToken => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SimpleWorkflow::ListActivityTypesResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::ListActivityTypesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has nextPageToken => (is => 'ro', isa => 'Str');
   has typeInfos => (is => 'ro', isa => 'ArrayRef[Aws::SimpleWorkflow::ActivityTypeInfo]', required => 1);
 
 }
-class Aws::SimpleWorkflow::ListClosedWorkflowExecutionsResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::ListClosedWorkflowExecutionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has executionInfos => (is => 'ro', isa => 'ArrayRef[Aws::SimpleWorkflow::WorkflowExecutionInfo]', required => 1);
   has nextPageToken => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SimpleWorkflow::ListDomainsResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::ListDomainsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has domainInfos => (is => 'ro', isa => 'ArrayRef[Aws::SimpleWorkflow::DomainInfo]', required => 1);
   has nextPageToken => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SimpleWorkflow::ListOpenWorkflowExecutionsResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::ListOpenWorkflowExecutionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has executionInfos => (is => 'ro', isa => 'ArrayRef[Aws::SimpleWorkflow::WorkflowExecutionInfo]', required => 1);
   has nextPageToken => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SimpleWorkflow::ListWorkflowTypesResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::ListWorkflowTypesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has nextPageToken => (is => 'ro', isa => 'Str');
   has typeInfos => (is => 'ro', isa => 'ArrayRef[Aws::SimpleWorkflow::WorkflowTypeInfo]', required => 1);
 
 }
-class Aws::SimpleWorkflow::PollForActivityTaskResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::PollForActivityTaskResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
   has input => (is => 'ro', isa => 'Str');
@@ -1012,7 +1230,9 @@ class Aws::SimpleWorkflow::PollForActivityTaskResult with AWS::API::ResultParser
   has workflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
 
 }
-class Aws::SimpleWorkflow::PollForDecisionTaskResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::PollForDecisionTaskResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has events => (is => 'ro', isa => 'ArrayRef[Aws::SimpleWorkflow::HistoryEvent]', required => 1);
   has nextPageToken => (is => 'ro', isa => 'Str');
   has previousStartedEventId => (is => 'ro', isa => 'Num');
@@ -1022,173 +1242,210 @@ class Aws::SimpleWorkflow::PollForDecisionTaskResult with AWS::API::ResultParser
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 
 }
-class Aws::SimpleWorkflow::RecordActivityTaskHeartbeatResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::RecordActivityTaskHeartbeatResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has cancelRequested => (is => 'ro', isa => 'Str', required => 1);
 
 }
-class Aws::SimpleWorkflow::StartWorkflowExecutionResult with AWS::API::ResultParser {
+package Aws::SimpleWorkflow::StartWorkflowExecutionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has runId => (is => 'ro', isa => 'Str');
 
 }
 
-class Aws::SimpleWorkflow with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
+package Aws::SimpleWorkflow {
+  use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'swf');
   has version => (is => 'ro', isa => 'Str', default => '2012-01-25');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'SimpleWorkflowService');
   has json_version => (is => 'ro', isa => 'Str', default => "1.0");
+  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
   
-  method CountClosedWorkflowExecutions (%args) {
-    my $call = Aws::SimpleWorkflow::CountClosedWorkflowExecutions->new(%args);
+  sub CountClosedWorkflowExecutions {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::CountClosedWorkflowExecutions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::CountClosedWorkflowExecutionsResult->from_result($result);return $o_result;
   }
-  method CountOpenWorkflowExecutions (%args) {
-    my $call = Aws::SimpleWorkflow::CountOpenWorkflowExecutions->new(%args);
+  sub CountOpenWorkflowExecutions {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::CountOpenWorkflowExecutions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::CountOpenWorkflowExecutionsResult->from_result($result);return $o_result;
   }
-  method CountPendingActivityTasks (%args) {
-    my $call = Aws::SimpleWorkflow::CountPendingActivityTasks->new(%args);
+  sub CountPendingActivityTasks {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::CountPendingActivityTasks->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::CountPendingActivityTasksResult->from_result($result);return $o_result;
   }
-  method CountPendingDecisionTasks (%args) {
-    my $call = Aws::SimpleWorkflow::CountPendingDecisionTasks->new(%args);
+  sub CountPendingDecisionTasks {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::CountPendingDecisionTasks->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::CountPendingDecisionTasksResult->from_result($result);return $o_result;
   }
-  method DeprecateActivityType (%args) {
-    my $call = Aws::SimpleWorkflow::DeprecateActivityType->new(%args);
+  sub DeprecateActivityType {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::DeprecateActivityType->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeprecateDomain (%args) {
-    my $call = Aws::SimpleWorkflow::DeprecateDomain->new(%args);
+  sub DeprecateDomain {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::DeprecateDomain->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeprecateWorkflowType (%args) {
-    my $call = Aws::SimpleWorkflow::DeprecateWorkflowType->new(%args);
+  sub DeprecateWorkflowType {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::DeprecateWorkflowType->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DescribeActivityType (%args) {
-    my $call = Aws::SimpleWorkflow::DescribeActivityType->new(%args);
+  sub DescribeActivityType {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::DescribeActivityType->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::DescribeActivityTypeResult->from_result($result);return $o_result;
   }
-  method DescribeDomain (%args) {
-    my $call = Aws::SimpleWorkflow::DescribeDomain->new(%args);
+  sub DescribeDomain {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::DescribeDomain->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::DescribeDomainResult->from_result($result);return $o_result;
   }
-  method DescribeWorkflowExecution (%args) {
-    my $call = Aws::SimpleWorkflow::DescribeWorkflowExecution->new(%args);
+  sub DescribeWorkflowExecution {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::DescribeWorkflowExecution->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::DescribeWorkflowExecutionResult->from_result($result);return $o_result;
   }
-  method DescribeWorkflowType (%args) {
-    my $call = Aws::SimpleWorkflow::DescribeWorkflowType->new(%args);
+  sub DescribeWorkflowType {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::DescribeWorkflowType->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::DescribeWorkflowTypeResult->from_result($result);return $o_result;
   }
-  method GetWorkflowExecutionHistory (%args) {
-    my $call = Aws::SimpleWorkflow::GetWorkflowExecutionHistory->new(%args);
+  sub GetWorkflowExecutionHistory {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::GetWorkflowExecutionHistory->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::GetWorkflowExecutionHistoryResult->from_result($result);return $o_result;
   }
-  method ListActivityTypes (%args) {
-    my $call = Aws::SimpleWorkflow::ListActivityTypes->new(%args);
+  sub ListActivityTypes {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::ListActivityTypes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::ListActivityTypesResult->from_result($result);return $o_result;
   }
-  method ListClosedWorkflowExecutions (%args) {
-    my $call = Aws::SimpleWorkflow::ListClosedWorkflowExecutions->new(%args);
+  sub ListClosedWorkflowExecutions {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::ListClosedWorkflowExecutions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::ListClosedWorkflowExecutionsResult->from_result($result);return $o_result;
   }
-  method ListDomains (%args) {
-    my $call = Aws::SimpleWorkflow::ListDomains->new(%args);
+  sub ListDomains {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::ListDomains->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::ListDomainsResult->from_result($result);return $o_result;
   }
-  method ListOpenWorkflowExecutions (%args) {
-    my $call = Aws::SimpleWorkflow::ListOpenWorkflowExecutions->new(%args);
+  sub ListOpenWorkflowExecutions {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::ListOpenWorkflowExecutions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::ListOpenWorkflowExecutionsResult->from_result($result);return $o_result;
   }
-  method ListWorkflowTypes (%args) {
-    my $call = Aws::SimpleWorkflow::ListWorkflowTypes->new(%args);
+  sub ListWorkflowTypes {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::ListWorkflowTypes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::ListWorkflowTypesResult->from_result($result);return $o_result;
   }
-  method PollForActivityTask (%args) {
-    my $call = Aws::SimpleWorkflow::PollForActivityTask->new(%args);
+  sub PollForActivityTask {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::PollForActivityTask->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::PollForActivityTaskResult->from_result($result);return $o_result;
   }
-  method PollForDecisionTask (%args) {
-    my $call = Aws::SimpleWorkflow::PollForDecisionTask->new(%args);
+  sub PollForDecisionTask {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::PollForDecisionTask->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::PollForDecisionTaskResult->from_result($result);return $o_result;
   }
-  method RecordActivityTaskHeartbeat (%args) {
-    my $call = Aws::SimpleWorkflow::RecordActivityTaskHeartbeat->new(%args);
+  sub RecordActivityTaskHeartbeat {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::RecordActivityTaskHeartbeat->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::RecordActivityTaskHeartbeatResult->from_result($result);return $o_result;
   }
-  method RegisterActivityType (%args) {
-    my $call = Aws::SimpleWorkflow::RegisterActivityType->new(%args);
+  sub RegisterActivityType {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::RegisterActivityType->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method RegisterDomain (%args) {
-    my $call = Aws::SimpleWorkflow::RegisterDomain->new(%args);
+  sub RegisterDomain {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::RegisterDomain->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method RegisterWorkflowType (%args) {
-    my $call = Aws::SimpleWorkflow::RegisterWorkflowType->new(%args);
+  sub RegisterWorkflowType {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::RegisterWorkflowType->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method RequestCancelWorkflowExecution (%args) {
-    my $call = Aws::SimpleWorkflow::RequestCancelWorkflowExecution->new(%args);
+  sub RequestCancelWorkflowExecution {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::RequestCancelWorkflowExecution->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method RespondActivityTaskCanceled (%args) {
-    my $call = Aws::SimpleWorkflow::RespondActivityTaskCanceled->new(%args);
+  sub RespondActivityTaskCanceled {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::RespondActivityTaskCanceled->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method RespondActivityTaskCompleted (%args) {
-    my $call = Aws::SimpleWorkflow::RespondActivityTaskCompleted->new(%args);
+  sub RespondActivityTaskCompleted {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::RespondActivityTaskCompleted->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method RespondActivityTaskFailed (%args) {
-    my $call = Aws::SimpleWorkflow::RespondActivityTaskFailed->new(%args);
+  sub RespondActivityTaskFailed {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::RespondActivityTaskFailed->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method RespondDecisionTaskCompleted (%args) {
-    my $call = Aws::SimpleWorkflow::RespondDecisionTaskCompleted->new(%args);
+  sub RespondDecisionTaskCompleted {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::RespondDecisionTaskCompleted->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method SignalWorkflowExecution (%args) {
-    my $call = Aws::SimpleWorkflow::SignalWorkflowExecution->new(%args);
+  sub SignalWorkflowExecution {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::SignalWorkflowExecution->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method StartWorkflowExecution (%args) {
-    my $call = Aws::SimpleWorkflow::StartWorkflowExecution->new(%args);
+  sub StartWorkflowExecution {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::StartWorkflowExecution->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::StartWorkflowExecutionResult->from_result($result);return $o_result;
   }
-  method TerminateWorkflowExecution (%args) {
-    my $call = Aws::SimpleWorkflow::TerminateWorkflowExecution->new(%args);
+  sub TerminateWorkflowExecution {
+    my $self = shift;
+    my $call = Aws::SimpleWorkflow::TerminateWorkflowExecution->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }

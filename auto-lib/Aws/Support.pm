@@ -1,9 +1,10 @@
 
-use MooseX::Declare;
 use AWS::API;
 
 
-class Aws::Support::CaseDetails with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Support::CaseDetails {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has caseId => (is => 'ro', isa => 'Str');
   has categoryCode => (is => 'ro', isa => 'Str');
   has ccEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -18,39 +19,53 @@ class Aws::Support::CaseDetails with (AWS::API::ResultParser, AWS::API::ToParams
   has timeCreated => (is => 'ro', isa => 'Str');
 }
 
-class Aws::Support::Category with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Support::Category {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has code => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str');
 }
 
-class Aws::Support::Communication with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Support::Communication {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has body => (is => 'ro', isa => 'Str');
   has caseId => (is => 'ro', isa => 'Str');
   has submittedBy => (is => 'ro', isa => 'Str');
   has timeCreated => (is => 'ro', isa => 'Str');
 }
 
-class Aws::Support::RecentCaseCommunications with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Support::RecentCaseCommunications {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has communications => (is => 'ro', isa => 'ArrayRef[Aws::Support::Communication]');
   has nextToken => (is => 'ro', isa => 'Str');
 }
 
-class Aws::Support::Service with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Support::Service {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has categories => (is => 'ro', isa => 'ArrayRef[Aws::Support::Category]');
   has code => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str');
 }
 
-class Aws::Support::SeverityLevel with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Support::SeverityLevel {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has code => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str');
 }
 
-class Aws::Support::TrustedAdvisorCategorySpecificSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Support::TrustedAdvisorCategorySpecificSummary {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has costOptimizing => (is => 'ro', isa => 'Aws::Support::TrustedAdvisorCostOptimizingSummary');
 }
 
-class Aws::Support::TrustedAdvisorCheckDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Support::TrustedAdvisorCheckDescription {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has category => (is => 'ro', isa => 'Str', required => 1);
   has description => (is => 'ro', isa => 'Str', required => 1);
   has id => (is => 'ro', isa => 'Str', required => 1);
@@ -58,13 +73,17 @@ class Aws::Support::TrustedAdvisorCheckDescription with (AWS::API::ResultParser,
   has name => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::Support::TrustedAdvisorCheckRefreshStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Support::TrustedAdvisorCheckRefreshStatus {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has checkId => (is => 'ro', isa => 'Str', required => 1);
   has millisUntilNextRefreshable => (is => 'ro', isa => 'Num', required => 1);
   has status => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::Support::TrustedAdvisorCheckResult with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Support::TrustedAdvisorCheckResult {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has categorySpecificSummary => (is => 'ro', isa => 'Aws::Support::TrustedAdvisorCategorySpecificSummary', required => 1);
   has checkId => (is => 'ro', isa => 'Str', required => 1);
   has flaggedResources => (is => 'ro', isa => 'ArrayRef[Aws::Support::TrustedAdvisorResourceDetail]', required => 1);
@@ -73,7 +92,9 @@ class Aws::Support::TrustedAdvisorCheckResult with (AWS::API::ResultParser, AWS:
   has timestamp => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::Support::TrustedAdvisorCheckSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Support::TrustedAdvisorCheckSummary {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has categorySpecificSummary => (is => 'ro', isa => 'Aws::Support::TrustedAdvisorCategorySpecificSummary', required => 1);
   has checkId => (is => 'ro', isa => 'Str', required => 1);
   has hasFlaggedResources => (is => 'ro', isa => 'Str');
@@ -82,12 +103,16 @@ class Aws::Support::TrustedAdvisorCheckSummary with (AWS::API::ResultParser, AWS
   has timestamp => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::Support::TrustedAdvisorCostOptimizingSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Support::TrustedAdvisorCostOptimizingSummary {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has estimatedMonthlySavings => (is => 'ro', isa => 'Num', required => 1);
   has estimatedPercentMonthlySavings => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::Support::TrustedAdvisorResourceDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Support::TrustedAdvisorResourceDetail {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has isSuppressed => (is => 'ro', isa => 'Str');
   has metadata => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has region => (is => 'ro', isa => 'Str', required => 1);
@@ -95,7 +120,9 @@ class Aws::Support::TrustedAdvisorResourceDetail with (AWS::API::ResultParser, A
   has status => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::Support::TrustedAdvisorResourcesSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::Support::TrustedAdvisorResourcesSummary {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has resourcesFlagged => (is => 'ro', isa => 'Num', required => 1);
   has resourcesIgnored => (is => 'ro', isa => 'Num', required => 1);
   has resourcesProcessed => (is => 'ro', isa => 'Num', required => 1);
@@ -104,7 +131,8 @@ class Aws::Support::TrustedAdvisorResourcesSummary with (AWS::API::ResultParser,
 
 
 
-class Aws::Support::AddCommunicationToCase {
+package Aws::Support::AddCommunicationToCase {
+  use Moose;
   has caseId => (is => 'ro', isa => 'Str');
   has ccEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
   has communicationBody => (is => 'ro', isa => 'Str', required => 1);
@@ -113,7 +141,8 @@ class Aws::Support::AddCommunicationToCase {
   has _returns => (isa => 'Aws::Support::AddCommunicationToCaseResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AddCommunicationToCaseResult');  
 }
-class Aws::Support::CreateCase {
+package Aws::Support::CreateCase {
+  use Moose;
   has categoryCode => (is => 'ro', isa => 'Str');
   has ccEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
   has communicationBody => (is => 'ro', isa => 'Str', required => 1);
@@ -127,7 +156,8 @@ class Aws::Support::CreateCase {
   has _returns => (isa => 'Aws::Support::CreateCaseResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCaseResult');  
 }
-class Aws::Support::DescribeCases {
+package Aws::Support::DescribeCases {
+  use Moose;
   has afterTime => (is => 'ro', isa => 'Str');
   has beforeTime => (is => 'ro', isa => 'Str');
   has caseIdList => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -141,7 +171,8 @@ class Aws::Support::DescribeCases {
   has _returns => (isa => 'Aws::Support::DescribeCasesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCasesResult');  
 }
-class Aws::Support::DescribeCommunications {
+package Aws::Support::DescribeCommunications {
+  use Moose;
   has afterTime => (is => 'ro', isa => 'Str');
   has beforeTime => (is => 'ro', isa => 'Str');
   has caseId => (is => 'ro', isa => 'Str', required => 1);
@@ -152,7 +183,8 @@ class Aws::Support::DescribeCommunications {
   has _returns => (isa => 'Aws::Support::DescribeCommunicationsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCommunicationsResult');  
 }
-class Aws::Support::DescribeServices {
+package Aws::Support::DescribeServices {
+  use Moose;
   has language => (is => 'ro', isa => 'Str');
   has serviceCodeList => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -160,21 +192,24 @@ class Aws::Support::DescribeServices {
   has _returns => (isa => 'Aws::Support::DescribeServicesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeServicesResult');  
 }
-class Aws::Support::DescribeSeverityLevels {
+package Aws::Support::DescribeSeverityLevels {
+  use Moose;
   has language => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSeverityLevels');
   has _returns => (isa => 'Aws::Support::DescribeSeverityLevelsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSeverityLevelsResult');  
 }
-class Aws::Support::DescribeTrustedAdvisorCheckRefreshStatuses {
+package Aws::Support::DescribeTrustedAdvisorCheckRefreshStatuses {
+  use Moose;
   has checkIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTrustedAdvisorCheckRefreshStatuses');
   has _returns => (isa => 'Aws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTrustedAdvisorCheckRefreshStatusesResult');  
 }
-class Aws::Support::DescribeTrustedAdvisorCheckResult {
+package Aws::Support::DescribeTrustedAdvisorCheckResult {
+  use Moose;
   has checkId => (is => 'ro', isa => 'Str', required => 1);
   has language => (is => 'ro', isa => 'Str');
 
@@ -182,28 +217,32 @@ class Aws::Support::DescribeTrustedAdvisorCheckResult {
   has _returns => (isa => 'Aws::Support::DescribeTrustedAdvisorCheckResultResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTrustedAdvisorCheckResultResult');  
 }
-class Aws::Support::DescribeTrustedAdvisorCheckSummaries {
+package Aws::Support::DescribeTrustedAdvisorCheckSummaries {
+  use Moose;
   has checkIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTrustedAdvisorCheckSummaries');
   has _returns => (isa => 'Aws::Support::DescribeTrustedAdvisorCheckSummariesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTrustedAdvisorCheckSummariesResult');  
 }
-class Aws::Support::DescribeTrustedAdvisorChecks {
+package Aws::Support::DescribeTrustedAdvisorChecks {
+  use Moose;
   has language => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTrustedAdvisorChecks');
   has _returns => (isa => 'Aws::Support::DescribeTrustedAdvisorChecksResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTrustedAdvisorChecksResult');  
 }
-class Aws::Support::RefreshTrustedAdvisorCheck {
+package Aws::Support::RefreshTrustedAdvisorCheck {
+  use Moose;
   has checkId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RefreshTrustedAdvisorCheck');
   has _returns => (isa => 'Aws::Support::RefreshTrustedAdvisorCheckResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RefreshTrustedAdvisorCheckResult');  
 }
-class Aws::Support::ResolveCase {
+package Aws::Support::ResolveCase {
+  use Moose;
   has caseId => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ResolveCase');
@@ -211,121 +250,159 @@ class Aws::Support::ResolveCase {
   has _result_key => (isa => 'Str', is => 'ro', default => 'ResolveCaseResult');  
 }
 
-class Aws::Support::AddCommunicationToCaseResult with AWS::API::ResultParser {
+package Aws::Support::AddCommunicationToCaseResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has result => (is => 'ro', isa => 'Str');
 
 }
-class Aws::Support::CreateCaseResult with AWS::API::ResultParser {
+package Aws::Support::CreateCaseResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has caseId => (is => 'ro', isa => 'Str');
 
 }
-class Aws::Support::DescribeCasesResult with AWS::API::ResultParser {
+package Aws::Support::DescribeCasesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has cases => (is => 'ro', isa => 'ArrayRef[Aws::Support::CaseDetails]');
   has nextToken => (is => 'ro', isa => 'Str');
 
 }
-class Aws::Support::DescribeCommunicationsResult with AWS::API::ResultParser {
+package Aws::Support::DescribeCommunicationsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has communications => (is => 'ro', isa => 'ArrayRef[Aws::Support::Communication]');
   has nextToken => (is => 'ro', isa => 'Str');
 
 }
-class Aws::Support::DescribeServicesResult with AWS::API::ResultParser {
+package Aws::Support::DescribeServicesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has services => (is => 'ro', isa => 'ArrayRef[Aws::Support::Service]');
 
 }
-class Aws::Support::DescribeSeverityLevelsResult with AWS::API::ResultParser {
+package Aws::Support::DescribeSeverityLevelsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has severityLevels => (is => 'ro', isa => 'ArrayRef[Aws::Support::SeverityLevel]');
 
 }
-class Aws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResult with AWS::API::ResultParser {
+package Aws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has statuses => (is => 'ro', isa => 'ArrayRef[Aws::Support::TrustedAdvisorCheckRefreshStatus]', required => 1);
 
 }
-class Aws::Support::DescribeTrustedAdvisorCheckResultResult with AWS::API::ResultParser {
+package Aws::Support::DescribeTrustedAdvisorCheckResultResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has result => (is => 'ro', isa => 'Aws::Support::TrustedAdvisorCheckResult');
 
 }
-class Aws::Support::DescribeTrustedAdvisorCheckSummariesResult with AWS::API::ResultParser {
+package Aws::Support::DescribeTrustedAdvisorCheckSummariesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has summaries => (is => 'ro', isa => 'ArrayRef[Aws::Support::TrustedAdvisorCheckSummary]', required => 1);
 
 }
-class Aws::Support::DescribeTrustedAdvisorChecksResult with AWS::API::ResultParser {
+package Aws::Support::DescribeTrustedAdvisorChecksResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has checks => (is => 'ro', isa => 'ArrayRef[Aws::Support::TrustedAdvisorCheckDescription]', required => 1);
 
 }
-class Aws::Support::RefreshTrustedAdvisorCheckResult with AWS::API::ResultParser {
+package Aws::Support::RefreshTrustedAdvisorCheckResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has status => (is => 'ro', isa => 'Aws::Support::TrustedAdvisorCheckRefreshStatus', required => 1);
 
 }
-class Aws::Support::ResolveCaseResult with AWS::API::ResultParser {
+package Aws::Support::ResolveCaseResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has finalCaseStatus => (is => 'ro', isa => 'Str');
   has initialCaseStatus => (is => 'ro', isa => 'Str');
 
 }
 
-class Aws::Support with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
+package Aws::Support {
+  use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'support');
   has version => (is => 'ro', isa => 'Str', default => '2013-04-15');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'AWSSupport_20130415');
   has json_version => (is => 'ro', isa => 'Str', default => "1.1");
+  with ('Net::AWS::Caller', 'AWS::API::SingleEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
   
-  method AddCommunicationToCase (%args) {
-    my $call = Aws::Support::AddCommunicationToCase->new(%args);
+  sub AddCommunicationToCase {
+    my $self = shift;
+    my $call = Aws::Support::AddCommunicationToCase->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::AddCommunicationToCaseResult->from_result($result);return $o_result;
   }
-  method CreateCase (%args) {
-    my $call = Aws::Support::CreateCase->new(%args);
+  sub CreateCase {
+    my $self = shift;
+    my $call = Aws::Support::CreateCase->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::CreateCaseResult->from_result($result);return $o_result;
   }
-  method DescribeCases (%args) {
-    my $call = Aws::Support::DescribeCases->new(%args);
+  sub DescribeCases {
+    my $self = shift;
+    my $call = Aws::Support::DescribeCases->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeCasesResult->from_result($result);return $o_result;
   }
-  method DescribeCommunications (%args) {
-    my $call = Aws::Support::DescribeCommunications->new(%args);
+  sub DescribeCommunications {
+    my $self = shift;
+    my $call = Aws::Support::DescribeCommunications->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeCommunicationsResult->from_result($result);return $o_result;
   }
-  method DescribeServices (%args) {
-    my $call = Aws::Support::DescribeServices->new(%args);
+  sub DescribeServices {
+    my $self = shift;
+    my $call = Aws::Support::DescribeServices->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeServicesResult->from_result($result);return $o_result;
   }
-  method DescribeSeverityLevels (%args) {
-    my $call = Aws::Support::DescribeSeverityLevels->new(%args);
+  sub DescribeSeverityLevels {
+    my $self = shift;
+    my $call = Aws::Support::DescribeSeverityLevels->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeSeverityLevelsResult->from_result($result);return $o_result;
   }
-  method DescribeTrustedAdvisorCheckRefreshStatuses (%args) {
-    my $call = Aws::Support::DescribeTrustedAdvisorCheckRefreshStatuses->new(%args);
+  sub DescribeTrustedAdvisorCheckRefreshStatuses {
+    my $self = shift;
+    my $call = Aws::Support::DescribeTrustedAdvisorCheckRefreshStatuses->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResult->from_result($result);return $o_result;
   }
-  method DescribeTrustedAdvisorCheckResult (%args) {
-    my $call = Aws::Support::DescribeTrustedAdvisorCheckResult->new(%args);
+  sub DescribeTrustedAdvisorCheckResult {
+    my $self = shift;
+    my $call = Aws::Support::DescribeTrustedAdvisorCheckResult->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeTrustedAdvisorCheckResultResult->from_result($result);return $o_result;
   }
-  method DescribeTrustedAdvisorChecks (%args) {
-    my $call = Aws::Support::DescribeTrustedAdvisorChecks->new(%args);
+  sub DescribeTrustedAdvisorChecks {
+    my $self = shift;
+    my $call = Aws::Support::DescribeTrustedAdvisorChecks->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeTrustedAdvisorChecksResult->from_result($result);return $o_result;
   }
-  method DescribeTrustedAdvisorCheckSummaries (%args) {
-    my $call = Aws::Support::DescribeTrustedAdvisorCheckSummaries->new(%args);
+  sub DescribeTrustedAdvisorCheckSummaries {
+    my $self = shift;
+    my $call = Aws::Support::DescribeTrustedAdvisorCheckSummaries->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeTrustedAdvisorCheckSummariesResult->from_result($result);return $o_result;
   }
-  method RefreshTrustedAdvisorCheck (%args) {
-    my $call = Aws::Support::RefreshTrustedAdvisorCheck->new(%args);
+  sub RefreshTrustedAdvisorCheck {
+    my $self = shift;
+    my $call = Aws::Support::RefreshTrustedAdvisorCheck->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::RefreshTrustedAdvisorCheckResult->from_result($result);return $o_result;
   }
-  method ResolveCase (%args) {
-    my $call = Aws::Support::ResolveCase->new(%args);
+  sub ResolveCase {
+    my $self = shift;
+    my $call = Aws::Support::ResolveCase->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::ResolveCaseResult->from_result($result);return $o_result;
   }

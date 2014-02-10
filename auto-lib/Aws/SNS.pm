@@ -1,23 +1,30 @@
 
-use MooseX::Declare;
 use AWS::API;
 
 
-class Aws::SNS::Endpoint with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SNS::Endpoint {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Attributes => (is => 'ro', isa => 'Aws::SNS::MapStringToString');
   has EndpointArn => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SNS::MapStringToString with AWS::API::StrToStrMapParser {
+package Aws::SNS::MapStringToString {
+  use Moose;
+  with 'AWS::API::StrToStrMapParser';
   has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
-class Aws::SNS::PlatformApplication with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SNS::PlatformApplication {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Attributes => (is => 'ro', isa => 'Aws::SNS::MapStringToString');
   has PlatformApplicationArn => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SNS::Subscription with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SNS::Subscription {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Endpoint => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
   has Protocol => (is => 'ro', isa => 'Str');
@@ -25,21 +32,28 @@ class Aws::SNS::Subscription with (AWS::API::ResultParser, AWS::API::ToParams) {
   has TopicArn => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SNS::SubscriptionAttributesMap with AWS::API::StrToStrMapParser {
+package Aws::SNS::SubscriptionAttributesMap {
+  use Moose;
+  with 'AWS::API::StrToStrMapParser';
   has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
-class Aws::SNS::Topic with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::SNS::Topic {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has TopicArn => (is => 'ro', isa => 'Str');
 }
 
-class Aws::SNS::TopicAttributesMap with AWS::API::StrToStrMapParser {
+package Aws::SNS::TopicAttributesMap {
+  use Moose;
+  with 'AWS::API::StrToStrMapParser';
   has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
 
 
-class Aws::SNS::AddPermission {
+package Aws::SNS::AddPermission {
+  use Moose;
   has ActionName => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has AWSAccountId => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has Label => (is => 'ro', isa => 'Str', required => 1);
@@ -49,7 +63,8 @@ class Aws::SNS::AddPermission {
   has _returns => (isa => 'Aws::SNS::AddPermissionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AddPermissionResult');  
 }
-class Aws::SNS::ConfirmSubscription {
+package Aws::SNS::ConfirmSubscription {
+  use Moose;
   has AuthenticateOnUnsubscribe => (is => 'ro', isa => 'Str');
   has Token => (is => 'ro', isa => 'Str', required => 1);
   has TopicArn => (is => 'ro', isa => 'Str', required => 1);
@@ -58,7 +73,8 @@ class Aws::SNS::ConfirmSubscription {
   has _returns => (isa => 'Aws::SNS::ConfirmSubscriptionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ConfirmSubscriptionResult');  
 }
-class Aws::SNS::CreatePlatformApplication {
+package Aws::SNS::CreatePlatformApplication {
+  use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::SNS::MapStringToString', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Platform => (is => 'ro', isa => 'Str', required => 1);
@@ -67,7 +83,8 @@ class Aws::SNS::CreatePlatformApplication {
   has _returns => (isa => 'Aws::SNS::CreatePlatformApplicationResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePlatformApplicationResult');  
 }
-class Aws::SNS::CreatePlatformEndpoint {
+package Aws::SNS::CreatePlatformEndpoint {
+  use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::SNS::MapStringToString');
   has CustomUserData => (is => 'ro', isa => 'Str');
   has PlatformApplicationArn => (is => 'ro', isa => 'Str', required => 1);
@@ -77,63 +94,72 @@ class Aws::SNS::CreatePlatformEndpoint {
   has _returns => (isa => 'Aws::SNS::CreatePlatformEndpointResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePlatformEndpointResult');  
 }
-class Aws::SNS::CreateTopic {
+package Aws::SNS::CreateTopic {
+  use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTopic');
   has _returns => (isa => 'Aws::SNS::CreateTopicResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateTopicResult');  
 }
-class Aws::SNS::DeleteEndpoint {
+package Aws::SNS::DeleteEndpoint {
+  use Moose;
   has EndpointArn => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteEndpoint');
   has _returns => (isa => 'Aws::SNS::DeleteEndpointResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteEndpointResult');  
 }
-class Aws::SNS::DeletePlatformApplication {
+package Aws::SNS::DeletePlatformApplication {
+  use Moose;
   has PlatformApplicationArn => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeletePlatformApplication');
   has _returns => (isa => 'Aws::SNS::DeletePlatformApplicationResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeletePlatformApplicationResult');  
 }
-class Aws::SNS::DeleteTopic {
+package Aws::SNS::DeleteTopic {
+  use Moose;
   has TopicArn => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTopic');
   has _returns => (isa => 'Aws::SNS::DeleteTopicResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteTopicResult');  
 }
-class Aws::SNS::GetEndpointAttributes {
+package Aws::SNS::GetEndpointAttributes {
+  use Moose;
   has EndpointArn => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetEndpointAttributes');
   has _returns => (isa => 'Aws::SNS::GetEndpointAttributesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetEndpointAttributesResult');  
 }
-class Aws::SNS::GetPlatformApplicationAttributes {
+package Aws::SNS::GetPlatformApplicationAttributes {
+  use Moose;
   has PlatformApplicationArn => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetPlatformApplicationAttributes');
   has _returns => (isa => 'Aws::SNS::GetPlatformApplicationAttributesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetPlatformApplicationAttributesResult');  
 }
-class Aws::SNS::GetSubscriptionAttributes {
+package Aws::SNS::GetSubscriptionAttributes {
+  use Moose;
   has SubscriptionArn => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetSubscriptionAttributes');
   has _returns => (isa => 'Aws::SNS::GetSubscriptionAttributesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetSubscriptionAttributesResult');  
 }
-class Aws::SNS::GetTopicAttributes {
+package Aws::SNS::GetTopicAttributes {
+  use Moose;
   has TopicArn => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetTopicAttributes');
   has _returns => (isa => 'Aws::SNS::GetTopicAttributesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetTopicAttributesResult');  
 }
-class Aws::SNS::ListEndpointsByPlatformApplication {
+package Aws::SNS::ListEndpointsByPlatformApplication {
+  use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has PlatformApplicationArn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -141,21 +167,24 @@ class Aws::SNS::ListEndpointsByPlatformApplication {
   has _returns => (isa => 'Aws::SNS::ListEndpointsByPlatformApplicationResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListEndpointsByPlatformApplicationResult');  
 }
-class Aws::SNS::ListPlatformApplications {
+package Aws::SNS::ListPlatformApplications {
+  use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListPlatformApplications');
   has _returns => (isa => 'Aws::SNS::ListPlatformApplicationsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListPlatformApplicationsResult');  
 }
-class Aws::SNS::ListSubscriptions {
+package Aws::SNS::ListSubscriptions {
+  use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListSubscriptions');
   has _returns => (isa => 'Aws::SNS::ListSubscriptionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListSubscriptionsResult');  
 }
-class Aws::SNS::ListSubscriptionsByTopic {
+package Aws::SNS::ListSubscriptionsByTopic {
+  use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -163,14 +192,16 @@ class Aws::SNS::ListSubscriptionsByTopic {
   has _returns => (isa => 'Aws::SNS::ListSubscriptionsByTopicResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListSubscriptionsByTopicResult');  
 }
-class Aws::SNS::ListTopics {
+package Aws::SNS::ListTopics {
+  use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListTopics');
   has _returns => (isa => 'Aws::SNS::ListTopicsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListTopicsResult');  
 }
-class Aws::SNS::Publish {
+package Aws::SNS::Publish {
+  use Moose;
   has Message => (is => 'ro', isa => 'Str', required => 1);
   has MessageStructure => (is => 'ro', isa => 'Str');
   has Subject => (is => 'ro', isa => 'Str');
@@ -181,7 +212,8 @@ class Aws::SNS::Publish {
   has _returns => (isa => 'Aws::SNS::PublishResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'PublishResult');  
 }
-class Aws::SNS::RemovePermission {
+package Aws::SNS::RemovePermission {
+  use Moose;
   has Label => (is => 'ro', isa => 'Str', required => 1);
   has TopicArn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -189,7 +221,8 @@ class Aws::SNS::RemovePermission {
   has _returns => (isa => 'Aws::SNS::RemovePermissionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RemovePermissionResult');  
 }
-class Aws::SNS::SetEndpointAttributes {
+package Aws::SNS::SetEndpointAttributes {
+  use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::SNS::MapStringToString', required => 1);
   has EndpointArn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -197,7 +230,8 @@ class Aws::SNS::SetEndpointAttributes {
   has _returns => (isa => 'Aws::SNS::SetEndpointAttributesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetEndpointAttributesResult');  
 }
-class Aws::SNS::SetPlatformApplicationAttributes {
+package Aws::SNS::SetPlatformApplicationAttributes {
+  use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::SNS::MapStringToString', required => 1);
   has PlatformApplicationArn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -205,7 +239,8 @@ class Aws::SNS::SetPlatformApplicationAttributes {
   has _returns => (isa => 'Aws::SNS::SetPlatformApplicationAttributesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetPlatformApplicationAttributesResult');  
 }
-class Aws::SNS::SetSubscriptionAttributes {
+package Aws::SNS::SetSubscriptionAttributes {
+  use Moose;
   has AttributeName => (is => 'ro', isa => 'Str', required => 1);
   has AttributeValue => (is => 'ro', isa => 'Str');
   has SubscriptionArn => (is => 'ro', isa => 'Str', required => 1);
@@ -214,7 +249,8 @@ class Aws::SNS::SetSubscriptionAttributes {
   has _returns => (isa => 'Aws::SNS::SetSubscriptionAttributesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetSubscriptionAttributesResult');  
 }
-class Aws::SNS::SetTopicAttributes {
+package Aws::SNS::SetTopicAttributes {
+  use Moose;
   has AttributeName => (is => 'ro', isa => 'Str', required => 1);
   has AttributeValue => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str', required => 1);
@@ -223,7 +259,8 @@ class Aws::SNS::SetTopicAttributes {
   has _returns => (isa => 'Aws::SNS::SetTopicAttributesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetTopicAttributesResult');  
 }
-class Aws::SNS::Subscribe {
+package Aws::SNS::Subscribe {
+  use Moose;
   has Endpoint => (is => 'ro', isa => 'Str');
   has Protocol => (is => 'ro', isa => 'Str', required => 1);
   has TopicArn => (is => 'ro', isa => 'Str', required => 1);
@@ -232,7 +269,8 @@ class Aws::SNS::Subscribe {
   has _returns => (isa => 'Aws::SNS::SubscribeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SubscribeResult');  
 }
-class Aws::SNS::Unsubscribe {
+package Aws::SNS::Unsubscribe {
+  use Moose;
   has SubscriptionArn => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'Unsubscribe');
@@ -240,213 +278,270 @@ class Aws::SNS::Unsubscribe {
   has _result_key => (isa => 'Str', is => 'ro', default => 'UnsubscribeResult');  
 }
 
-class Aws::SNS::ConfirmSubscriptionResult with AWS::API::ResultParser {
+package Aws::SNS::ConfirmSubscriptionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has SubscriptionArn => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SNS::CreatePlatformApplicationResult with AWS::API::ResultParser {
+package Aws::SNS::CreatePlatformApplicationResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has PlatformApplicationArn => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SNS::CreatePlatformEndpointResult with AWS::API::ResultParser {
+package Aws::SNS::CreatePlatformEndpointResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has EndpointArn => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SNS::CreateTopicResult with AWS::API::ResultParser {
+package Aws::SNS::CreateTopicResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has TopicArn => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SNS::GetEndpointAttributesResult with AWS::API::ResultParser {
+package Aws::SNS::GetEndpointAttributesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Attributes => (is => 'ro', isa => 'Aws::SNS::MapStringToString');
 
 }
-class Aws::SNS::GetPlatformApplicationAttributesResult with AWS::API::ResultParser {
+package Aws::SNS::GetPlatformApplicationAttributesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Attributes => (is => 'ro', isa => 'Aws::SNS::MapStringToString');
 
 }
-class Aws::SNS::GetSubscriptionAttributesResult with AWS::API::ResultParser {
+package Aws::SNS::GetSubscriptionAttributesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Attributes => (is => 'ro', isa => 'Aws::SNS::SubscriptionAttributesMap');
 
 }
-class Aws::SNS::GetTopicAttributesResult with AWS::API::ResultParser {
+package Aws::SNS::GetTopicAttributesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Attributes => (is => 'ro', isa => 'Aws::SNS::TopicAttributesMap');
 
 }
-class Aws::SNS::ListEndpointsByPlatformApplicationResult with AWS::API::ResultParser {
+package Aws::SNS::ListEndpointsByPlatformApplicationResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Endpoints => (is => 'ro', isa => 'ArrayRef[Aws::SNS::Endpoint]');
   has NextToken => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SNS::ListPlatformApplicationsResult with AWS::API::ResultParser {
+package Aws::SNS::ListPlatformApplicationsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has NextToken => (is => 'ro', isa => 'Str');
   has PlatformApplications => (is => 'ro', isa => 'ArrayRef[Aws::SNS::PlatformApplication]');
 
 }
-class Aws::SNS::ListSubscriptionsResult with AWS::API::ResultParser {
+package Aws::SNS::ListSubscriptionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has NextToken => (is => 'ro', isa => 'Str');
   has Subscriptions => (is => 'ro', isa => 'ArrayRef[Aws::SNS::Subscription]');
 
 }
-class Aws::SNS::ListSubscriptionsByTopicResult with AWS::API::ResultParser {
+package Aws::SNS::ListSubscriptionsByTopicResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has NextToken => (is => 'ro', isa => 'Str');
   has Subscriptions => (is => 'ro', isa => 'ArrayRef[Aws::SNS::Subscription]');
 
 }
-class Aws::SNS::ListTopicsResult with AWS::API::ResultParser {
+package Aws::SNS::ListTopicsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has NextToken => (is => 'ro', isa => 'Str');
   has Topics => (is => 'ro', isa => 'ArrayRef[Aws::SNS::Topic]');
 
 }
-class Aws::SNS::PublishResult with AWS::API::ResultParser {
+package Aws::SNS::PublishResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has MessageId => (is => 'ro', isa => 'Str');
 
 }
-class Aws::SNS::SubscribeResult with AWS::API::ResultParser {
+package Aws::SNS::SubscribeResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has SubscriptionArn => (is => 'ro', isa => 'Str');
 
 }
 
-class Aws::SNS with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
+package Aws::SNS {
+  use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'sns');
   has version => (is => 'ro', isa => 'Str', default => '2010-03-31');
+  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
   
-  method AddPermission (%args) {
-    my $call = Aws::SNS::AddPermission->new(%args);
+  sub AddPermission {
+    my $self = shift;
+    my $call = Aws::SNS::AddPermission->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ConfirmSubscription (%args) {
-    my $call = Aws::SNS::ConfirmSubscription->new(%args);
+  sub ConfirmSubscription {
+    my $self = shift;
+    my $call = Aws::SNS::ConfirmSubscription->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::ConfirmSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreatePlatformApplication (%args) {
-    my $call = Aws::SNS::CreatePlatformApplication->new(%args);
+  sub CreatePlatformApplication {
+    my $self = shift;
+    my $call = Aws::SNS::CreatePlatformApplication->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::CreatePlatformApplicationResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreatePlatformEndpoint (%args) {
-    my $call = Aws::SNS::CreatePlatformEndpoint->new(%args);
+  sub CreatePlatformEndpoint {
+    my $self = shift;
+    my $call = Aws::SNS::CreatePlatformEndpoint->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::CreatePlatformEndpointResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method CreateTopic (%args) {
-    my $call = Aws::SNS::CreateTopic->new(%args);
+  sub CreateTopic {
+    my $self = shift;
+    my $call = Aws::SNS::CreateTopic->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::CreateTopicResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DeleteEndpoint (%args) {
-    my $call = Aws::SNS::DeleteEndpoint->new(%args);
+  sub DeleteEndpoint {
+    my $self = shift;
+    my $call = Aws::SNS::DeleteEndpoint->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeletePlatformApplication (%args) {
-    my $call = Aws::SNS::DeletePlatformApplication->new(%args);
+  sub DeletePlatformApplication {
+    my $self = shift;
+    my $call = Aws::SNS::DeletePlatformApplication->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteTopic (%args) {
-    my $call = Aws::SNS::DeleteTopic->new(%args);
+  sub DeleteTopic {
+    my $self = shift;
+    my $call = Aws::SNS::DeleteTopic->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method GetEndpointAttributes (%args) {
-    my $call = Aws::SNS::GetEndpointAttributes->new(%args);
+  sub GetEndpointAttributes {
+    my $self = shift;
+    my $call = Aws::SNS::GetEndpointAttributes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::GetEndpointAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method GetPlatformApplicationAttributes (%args) {
-    my $call = Aws::SNS::GetPlatformApplicationAttributes->new(%args);
+  sub GetPlatformApplicationAttributes {
+    my $self = shift;
+    my $call = Aws::SNS::GetPlatformApplicationAttributes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::GetPlatformApplicationAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method GetSubscriptionAttributes (%args) {
-    my $call = Aws::SNS::GetSubscriptionAttributes->new(%args);
+  sub GetSubscriptionAttributes {
+    my $self = shift;
+    my $call = Aws::SNS::GetSubscriptionAttributes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::GetSubscriptionAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method GetTopicAttributes (%args) {
-    my $call = Aws::SNS::GetTopicAttributes->new(%args);
+  sub GetTopicAttributes {
+    my $self = shift;
+    my $call = Aws::SNS::GetTopicAttributes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::GetTopicAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ListEndpointsByPlatformApplication (%args) {
-    my $call = Aws::SNS::ListEndpointsByPlatformApplication->new(%args);
+  sub ListEndpointsByPlatformApplication {
+    my $self = shift;
+    my $call = Aws::SNS::ListEndpointsByPlatformApplication->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::ListEndpointsByPlatformApplicationResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ListPlatformApplications (%args) {
-    my $call = Aws::SNS::ListPlatformApplications->new(%args);
+  sub ListPlatformApplications {
+    my $self = shift;
+    my $call = Aws::SNS::ListPlatformApplications->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::ListPlatformApplicationsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ListSubscriptions (%args) {
-    my $call = Aws::SNS::ListSubscriptions->new(%args);
+  sub ListSubscriptions {
+    my $self = shift;
+    my $call = Aws::SNS::ListSubscriptions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::ListSubscriptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ListSubscriptionsByTopic (%args) {
-    my $call = Aws::SNS::ListSubscriptionsByTopic->new(%args);
+  sub ListSubscriptionsByTopic {
+    my $self = shift;
+    my $call = Aws::SNS::ListSubscriptionsByTopic->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::ListSubscriptionsByTopicResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method ListTopics (%args) {
-    my $call = Aws::SNS::ListTopics->new(%args);
+  sub ListTopics {
+    my $self = shift;
+    my $call = Aws::SNS::ListTopics->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::ListTopicsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method Publish (%args) {
-    my $call = Aws::SNS::Publish->new(%args);
+  sub Publish {
+    my $self = shift;
+    my $call = Aws::SNS::Publish->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::PublishResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method RemovePermission (%args) {
-    my $call = Aws::SNS::RemovePermission->new(%args);
+  sub RemovePermission {
+    my $self = shift;
+    my $call = Aws::SNS::RemovePermission->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method SetEndpointAttributes (%args) {
-    my $call = Aws::SNS::SetEndpointAttributes->new(%args);
+  sub SetEndpointAttributes {
+    my $self = shift;
+    my $call = Aws::SNS::SetEndpointAttributes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method SetPlatformApplicationAttributes (%args) {
-    my $call = Aws::SNS::SetPlatformApplicationAttributes->new(%args);
+  sub SetPlatformApplicationAttributes {
+    my $self = shift;
+    my $call = Aws::SNS::SetPlatformApplicationAttributes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method SetSubscriptionAttributes (%args) {
-    my $call = Aws::SNS::SetSubscriptionAttributes->new(%args);
+  sub SetSubscriptionAttributes {
+    my $self = shift;
+    my $call = Aws::SNS::SetSubscriptionAttributes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method SetTopicAttributes (%args) {
-    my $call = Aws::SNS::SetTopicAttributes->new(%args);
+  sub SetTopicAttributes {
+    my $self = shift;
+    my $call = Aws::SNS::SetTopicAttributes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method Subscribe (%args) {
-    my $call = Aws::SNS::Subscribe->new(%args);
+  sub Subscribe {
+    my $self = shift;
+    my $call = Aws::SNS::Subscribe->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::SubscribeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method Unsubscribe (%args) {
-    my $call = Aws::SNS::Unsubscribe->new(%args);
+  sub Unsubscribe {
+    my $self = shift;
+    my $call = Aws::SNS::Unsubscribe->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }

@@ -1,5 +1,4 @@
 
-use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
@@ -19,23 +18,31 @@ enum 'Aws::EMR::StepState', ['PENDING','RUNNING','COMPLETED','CANCELLED','FAILED
 enum 'Aws::EMR::StepStateChangeReasonCode', ['NONE',];
 
 
-class Aws::EMR::Application with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::Application {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AdditionalInfo => (is => 'ro', isa => 'Aws::EMR::StringMap');
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Name => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::BootstrapActionConfig with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::BootstrapActionConfig {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has ScriptBootstrapAction => (is => 'ro', isa => 'Aws::EMR::ScriptBootstrapActionConfig', required => 1);
 }
 
-class Aws::EMR::BootstrapActionDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::BootstrapActionDetail {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has BootstrapActionConfig => (is => 'ro', isa => 'Aws::EMR::BootstrapActionConfig');
 }
 
-class Aws::EMR::Cluster with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::Cluster {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Applications => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Application]');
   has AutoTerminate => (is => 'ro', isa => 'Str');
   has Ec2InstanceAttributes => (is => 'ro', isa => 'Aws::EMR::Ec2InstanceAttributes');
@@ -50,57 +57,75 @@ class Aws::EMR::Cluster with (AWS::API::ResultParser, AWS::API::ToParams) {
   has VisibleToAllUsers => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::ClusterStateChangeReason with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::ClusterStateChangeReason {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Code => (is => 'ro', isa => 'Aws::EMR::ClusterStateChangeReasonCode');
   has Message => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::ClusterStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::ClusterStatus {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has State => (is => 'ro', isa => 'Aws::EMR::ClusterState');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::ClusterStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::ClusterTimeline');
 }
 
-class Aws::EMR::ClusterSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::ClusterSummary {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Aws::EMR::ClusterStatus');
 }
 
-class Aws::EMR::ClusterTimeline with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::ClusterTimeline {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CreationDateTime => (is => 'ro', isa => 'Str');
   has EndDateTime => (is => 'ro', isa => 'Str');
   has ReadyDateTime => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::Command with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::Command {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Name => (is => 'ro', isa => 'Str');
   has ScriptPath => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::Ec2InstanceAttributes with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::Ec2InstanceAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Ec2AvailabilityZone => (is => 'ro', isa => 'Str');
   has Ec2KeyName => (is => 'ro', isa => 'Str');
   has Ec2SubnetId => (is => 'ro', isa => 'Str');
   has IamInstanceProfile => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::HadoopJarStepConfig with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::HadoopJarStepConfig {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Jar => (is => 'ro', isa => 'Str', required => 1);
   has MainClass => (is => 'ro', isa => 'Str');
   has Properties => (is => 'ro', isa => 'ArrayRef[Aws::EMR::KeyValue]');
 }
 
-class Aws::EMR::HadoopStepConfig with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::HadoopStepConfig {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Jar => (is => 'ro', isa => 'Str');
   has MainClass => (is => 'ro', isa => 'Str');
   has Properties => (is => 'ro', isa => 'Aws::EMR::StringMap');
 }
 
-class Aws::EMR::Instance with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::Instance {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has PrivateDnsName => (is => 'ro', isa => 'Str');
@@ -110,7 +135,9 @@ class Aws::EMR::Instance with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Status => (is => 'ro', isa => 'Aws::EMR::InstanceStatus');
 }
 
-class Aws::EMR::InstanceGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::InstanceGroup {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has BidPrice => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has InstanceGroupType => (is => 'ro', isa => 'Aws::EMR::InstanceGroupType');
@@ -122,7 +149,9 @@ class Aws::EMR::InstanceGroup with (AWS::API::ResultParser, AWS::API::ToParams) 
   has Status => (is => 'ro', isa => 'Aws::EMR::InstanceGroupStatus');
 }
 
-class Aws::EMR::InstanceGroupConfig with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::InstanceGroupConfig {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has BidPrice => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
   has InstanceRole => (is => 'ro', isa => 'Aws::EMR::InstanceRoleType', required => 1);
@@ -131,7 +160,9 @@ class Aws::EMR::InstanceGroupConfig with (AWS::API::ResultParser, AWS::API::ToPa
   has Name => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::InstanceGroupDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::InstanceGroupDetail {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has BidPrice => (is => 'ro', isa => 'Str');
   has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
   has EndDateTime => (is => 'ro', isa => 'Str');
@@ -148,47 +179,63 @@ class Aws::EMR::InstanceGroupDetail with (AWS::API::ResultParser, AWS::API::ToPa
   has State => (is => 'ro', isa => 'Aws::EMR::InstanceGroupState', required => 1);
 }
 
-class Aws::EMR::InstanceGroupModifyConfig with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::InstanceGroupModifyConfig {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has EC2InstanceIdsToTerminate => (is => 'ro', isa => 'ArrayRef[Str]');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has InstanceGroupId => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::EMR::InstanceGroupStateChangeReason with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::InstanceGroupStateChangeReason {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Code => (is => 'ro', isa => 'Aws::EMR::InstanceGroupStateChangeReasonCode');
   has Message => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::InstanceGroupStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::InstanceGroupStatus {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has State => (is => 'ro', isa => 'Aws::EMR::InstanceGroupState');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::InstanceGroupStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::InstanceGroupTimeline');
 }
 
-class Aws::EMR::InstanceGroupTimeline with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::InstanceGroupTimeline {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CreationDateTime => (is => 'ro', isa => 'Str');
   has EndDateTime => (is => 'ro', isa => 'Str');
   has ReadyDateTime => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::InstanceStateChangeReason with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::InstanceStateChangeReason {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Code => (is => 'ro', isa => 'Aws::EMR::InstanceStateChangeReasonCode');
   has Message => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::InstanceStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::InstanceStatus {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has State => (is => 'ro', isa => 'Aws::EMR::InstanceState');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::InstanceStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::InstanceTimeline');
 }
 
-class Aws::EMR::InstanceTimeline with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::InstanceTimeline {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CreationDateTime => (is => 'ro', isa => 'Str');
   has EndDateTime => (is => 'ro', isa => 'Str');
   has ReadyDateTime => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::JobFlowDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::JobFlowDetail {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AmiVersion => (is => 'ro', isa => 'Str');
   has BootstrapActions => (is => 'ro', isa => 'ArrayRef[Aws::EMR::BootstrapActionDetail]');
   has ExecutionStatusDetail => (is => 'ro', isa => 'Aws::EMR::JobFlowExecutionStatusDetail', required => 1);
@@ -202,7 +249,9 @@ class Aws::EMR::JobFlowDetail with (AWS::API::ResultParser, AWS::API::ToParams) 
   has VisibleToAllUsers => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::JobFlowExecutionStatusDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::JobFlowExecutionStatusDetail {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
   has EndDateTime => (is => 'ro', isa => 'Str');
   has LastStateChangeReason => (is => 'ro', isa => 'Str');
@@ -211,7 +260,9 @@ class Aws::EMR::JobFlowExecutionStatusDetail with (AWS::API::ResultParser, AWS::
   has State => (is => 'ro', isa => 'Aws::EMR::JobFlowExecutionState', required => 1);
 }
 
-class Aws::EMR::JobFlowInstancesConfig with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::JobFlowInstancesConfig {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Ec2KeyName => (is => 'ro', isa => 'Str');
   has Ec2SubnetId => (is => 'ro', isa => 'Str');
   has HadoopVersion => (is => 'ro', isa => 'Str');
@@ -224,7 +275,9 @@ class Aws::EMR::JobFlowInstancesConfig with (AWS::API::ResultParser, AWS::API::T
   has TerminationProtected => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::JobFlowInstancesDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::JobFlowInstancesDetail {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Ec2KeyName => (is => 'ro', isa => 'Str');
   has Ec2SubnetId => (is => 'ro', isa => 'Str');
   has HadoopVersion => (is => 'ro', isa => 'Str');
@@ -240,21 +293,29 @@ class Aws::EMR::JobFlowInstancesDetail with (AWS::API::ResultParser, AWS::API::T
   has TerminationProtected => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::KeyValue with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::KeyValue {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Key => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::PlacementType with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::PlacementType {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::EMR::ScriptBootstrapActionConfig with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::ScriptBootstrapActionConfig {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Path => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::EMR::Step with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::Step {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has ActionOnFailure => (is => 'ro', isa => 'Aws::EMR::ActionOnFailure');
   has Config => (is => 'ro', isa => 'Aws::EMR::HadoopStepConfig');
   has Id => (is => 'ro', isa => 'Str');
@@ -262,18 +323,24 @@ class Aws::EMR::Step with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Status => (is => 'ro', isa => 'Aws::EMR::StepStatus');
 }
 
-class Aws::EMR::StepConfig with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::StepConfig {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has ActionOnFailure => (is => 'ro', isa => 'Aws::EMR::ActionOnFailure');
   has HadoopJarStep => (is => 'ro', isa => 'Aws::EMR::HadoopJarStepConfig', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::EMR::StepDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::StepDetail {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has ExecutionStatusDetail => (is => 'ro', isa => 'Aws::EMR::StepExecutionStatusDetail', required => 1);
   has StepConfig => (is => 'ro', isa => 'Aws::EMR::StepConfig', required => 1);
 }
 
-class Aws::EMR::StepExecutionStatusDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::StepExecutionStatusDetail {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
   has EndDateTime => (is => 'ro', isa => 'Str');
   has LastStateChangeReason => (is => 'ro', isa => 'Str');
@@ -281,46 +348,61 @@ class Aws::EMR::StepExecutionStatusDetail with (AWS::API::ResultParser, AWS::API
   has State => (is => 'ro', isa => 'Aws::EMR::StepExecutionState', required => 1);
 }
 
-class Aws::EMR::StepStateChangeReason with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::StepStateChangeReason {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Code => (is => 'ro', isa => 'Aws::EMR::StepStateChangeReasonCode');
   has Message => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::StepStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::StepStatus {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has State => (is => 'ro', isa => 'Aws::EMR::StepState');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::StepStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::StepTimeline');
 }
 
-class Aws::EMR::StepSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::StepSummary {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Aws::EMR::StepStatus');
 }
 
-class Aws::EMR::StepTimeline with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::StepTimeline {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CreationDateTime => (is => 'ro', isa => 'Str');
   has EndDateTime => (is => 'ro', isa => 'Str');
   has StartDateTime => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::StringMap with AWS::API::StrToStrMapParser {
+package Aws::EMR::StringMap {
+  use Moose;
+  with 'AWS::API::StrToStrMapParser';
   has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
-class Aws::EMR::SupportedProductConfig with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::SupportedProductConfig {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Name => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EMR::Tag with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::EMR::Tag {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Key => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
 
 
 
-class Aws::EMR::AddInstanceGroups {
+package Aws::EMR::AddInstanceGroups {
+  use Moose;
   has InstanceGroups => (is => 'ro', isa => 'ArrayRef[Aws::EMR::InstanceGroupConfig]', required => 1);
   has JobFlowId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -328,7 +410,8 @@ class Aws::EMR::AddInstanceGroups {
   has _returns => (isa => 'Aws::EMR::AddInstanceGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AddInstanceGroupsResult');  
 }
-class Aws::EMR::AddJobFlowSteps {
+package Aws::EMR::AddJobFlowSteps {
+  use Moose;
   has JobFlowId => (is => 'ro', isa => 'Str', required => 1);
   has Steps => (is => 'ro', isa => 'ArrayRef[Aws::EMR::StepConfig]', required => 1);
 
@@ -336,7 +419,8 @@ class Aws::EMR::AddJobFlowSteps {
   has _returns => (isa => 'Aws::EMR::AddJobFlowStepsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AddJobFlowStepsResult');  
 }
-class Aws::EMR::AddTags {
+package Aws::EMR::AddTags {
+  use Moose;
   has ResourceId => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Tag]');
 
@@ -344,14 +428,16 @@ class Aws::EMR::AddTags {
   has _returns => (isa => 'Aws::EMR::AddTagsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AddTagsResult');  
 }
-class Aws::EMR::DescribeCluster {
+package Aws::EMR::DescribeCluster {
+  use Moose;
   has ClusterId => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCluster');
   has _returns => (isa => 'Aws::EMR::DescribeClusterResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterResult');  
 }
-class Aws::EMR::DescribeJobFlows {
+package Aws::EMR::DescribeJobFlows {
+  use Moose;
   has CreatedAfter => (is => 'ro', isa => 'Str');
   has CreatedBefore => (is => 'ro', isa => 'Str');
   has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -361,7 +447,8 @@ class Aws::EMR::DescribeJobFlows {
   has _returns => (isa => 'Aws::EMR::DescribeJobFlowsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeJobFlowsResult');  
 }
-class Aws::EMR::DescribeStep {
+package Aws::EMR::DescribeStep {
+  use Moose;
   has ClusterId => (is => 'ro', isa => 'Str');
   has StepId => (is => 'ro', isa => 'Str');
 
@@ -369,7 +456,8 @@ class Aws::EMR::DescribeStep {
   has _returns => (isa => 'Aws::EMR::DescribeStepResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStepResult');  
 }
-class Aws::EMR::ListBootstrapActions {
+package Aws::EMR::ListBootstrapActions {
+  use Moose;
   has ClusterId => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
 
@@ -377,7 +465,8 @@ class Aws::EMR::ListBootstrapActions {
   has _returns => (isa => 'Aws::EMR::ListBootstrapActionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListBootstrapActionsResult');  
 }
-class Aws::EMR::ListClusters {
+package Aws::EMR::ListClusters {
+  use Moose;
   has ClusterStates => (is => 'ro', isa => 'ArrayRef[Str]');
   has CreatedAfter => (is => 'ro', isa => 'Str');
   has CreatedBefore => (is => 'ro', isa => 'Str');
@@ -387,7 +476,8 @@ class Aws::EMR::ListClusters {
   has _returns => (isa => 'Aws::EMR::ListClustersResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListClustersResult');  
 }
-class Aws::EMR::ListInstanceGroups {
+package Aws::EMR::ListInstanceGroups {
+  use Moose;
   has ClusterId => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
 
@@ -395,7 +485,8 @@ class Aws::EMR::ListInstanceGroups {
   has _returns => (isa => 'Aws::EMR::ListInstanceGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListInstanceGroupsResult');  
 }
-class Aws::EMR::ListInstances {
+package Aws::EMR::ListInstances {
+  use Moose;
   has ClusterId => (is => 'ro', isa => 'Str');
   has InstanceGroupId => (is => 'ro', isa => 'Str');
   has InstanceGroupTypes => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -405,7 +496,8 @@ class Aws::EMR::ListInstances {
   has _returns => (isa => 'Aws::EMR::ListInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListInstancesResult');  
 }
-class Aws::EMR::ListSteps {
+package Aws::EMR::ListSteps {
+  use Moose;
   has ClusterId => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has StepStates => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -414,14 +506,16 @@ class Aws::EMR::ListSteps {
   has _returns => (isa => 'Aws::EMR::ListStepsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ListStepsResult');  
 }
-class Aws::EMR::ModifyInstanceGroups {
+package Aws::EMR::ModifyInstanceGroups {
+  use Moose;
   has InstanceGroups => (is => 'ro', isa => 'ArrayRef[Aws::EMR::InstanceGroupModifyConfig]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyInstanceGroups');
   has _returns => (isa => 'Aws::EMR::ModifyInstanceGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyInstanceGroupsResult');  
 }
-class Aws::EMR::RemoveTags {
+package Aws::EMR::RemoveTags {
+  use Moose;
   has ResourceId => (is => 'ro', isa => 'Str');
   has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -429,7 +523,8 @@ class Aws::EMR::RemoveTags {
   has _returns => (isa => 'Aws::EMR::RemoveTagsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RemoveTagsResult');  
 }
-class Aws::EMR::RunJobFlow {
+package Aws::EMR::RunJobFlow {
+  use Moose;
   has AdditionalInfo => (is => 'ro', isa => 'Str');
   has AmiVersion => (is => 'ro', isa => 'Str');
   has BootstrapActions => (is => 'ro', isa => 'ArrayRef[Aws::EMR::BootstrapActionConfig]');
@@ -447,7 +542,8 @@ class Aws::EMR::RunJobFlow {
   has _returns => (isa => 'Aws::EMR::RunJobFlowResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RunJobFlowResult');  
 }
-class Aws::EMR::SetTerminationProtection {
+package Aws::EMR::SetTerminationProtection {
+  use Moose;
   has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has TerminationProtected => (is => 'ro', isa => 'Str', required => 1);
 
@@ -455,7 +551,8 @@ class Aws::EMR::SetTerminationProtection {
   has _returns => (isa => 'Aws::EMR::SetTerminationProtectionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetTerminationProtectionResult');  
 }
-class Aws::EMR::SetVisibleToAllUsers {
+package Aws::EMR::SetVisibleToAllUsers {
+  use Moose;
   has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has VisibleToAllUsers => (is => 'ro', isa => 'Str', required => 1);
 
@@ -463,7 +560,8 @@ class Aws::EMR::SetVisibleToAllUsers {
   has _returns => (isa => 'Aws::EMR::SetVisibleToAllUsersResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetVisibleToAllUsersResult');  
 }
-class Aws::EMR::TerminateJobFlows {
+package Aws::EMR::TerminateJobFlows {
+  use Moose;
   has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateJobFlows');
@@ -471,151 +569,196 @@ class Aws::EMR::TerminateJobFlows {
   has _result_key => (isa => 'Str', is => 'ro', default => 'TerminateJobFlowsResult');  
 }
 
-class Aws::EMR::AddInstanceGroupsResult with AWS::API::ResultParser {
+package Aws::EMR::AddInstanceGroupsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has InstanceGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has JobFlowId => (is => 'ro', isa => 'Str');
 
 }
-class Aws::EMR::AddJobFlowStepsResult with AWS::API::ResultParser {
+package Aws::EMR::AddJobFlowStepsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has StepIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
 }
-class Aws::EMR::AddTagsResult with AWS::API::ResultParser {
+package Aws::EMR::AddTagsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
 
 }
-class Aws::EMR::DescribeClusterResult with AWS::API::ResultParser {
+package Aws::EMR::DescribeClusterResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Cluster => (is => 'ro', isa => 'Aws::EMR::Cluster');
 
 }
-class Aws::EMR::DescribeJobFlowsResult with AWS::API::ResultParser {
+package Aws::EMR::DescribeJobFlowsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has JobFlows => (is => 'ro', isa => 'ArrayRef[Aws::EMR::JobFlowDetail]');
 
 }
-class Aws::EMR::DescribeStepResult with AWS::API::ResultParser {
+package Aws::EMR::DescribeStepResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Step => (is => 'ro', isa => 'Aws::EMR::Step');
 
 }
-class Aws::EMR::ListBootstrapActionsResult with AWS::API::ResultParser {
+package Aws::EMR::ListBootstrapActionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has BootstrapActions => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Command]');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::EMR::ListClustersResult with AWS::API::ResultParser {
+package Aws::EMR::ListClustersResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Clusters => (is => 'ro', isa => 'ArrayRef[Aws::EMR::ClusterSummary]');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::EMR::ListInstanceGroupsResult with AWS::API::ResultParser {
+package Aws::EMR::ListInstanceGroupsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has InstanceGroups => (is => 'ro', isa => 'ArrayRef[Aws::EMR::InstanceGroup]');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::EMR::ListInstancesResult with AWS::API::ResultParser {
+package Aws::EMR::ListInstancesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Instances => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Instance]');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-class Aws::EMR::ListStepsResult with AWS::API::ResultParser {
+package Aws::EMR::ListStepsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
   has Steps => (is => 'ro', isa => 'ArrayRef[Aws::EMR::StepSummary]');
 
 }
-class Aws::EMR::RemoveTagsResult with AWS::API::ResultParser {
+package Aws::EMR::RemoveTagsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
 
 }
-class Aws::EMR::RunJobFlowResult with AWS::API::ResultParser {
+package Aws::EMR::RunJobFlowResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has JobFlowId => (is => 'ro', isa => 'Str');
 
 }
 
-class Aws::EMR with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::JsonCaller, Net::AWS::JsonResponse) {
+package Aws::EMR {
+  use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'elasticmapreduce');
   has version => (is => 'ro', isa => 'Str', default => '2009-03-31');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'ElasticMapReduce');
   has json_version => (is => 'ro', isa => 'Str', default => "1.1");
+  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
   
-  method AddInstanceGroups (%args) {
-    my $call = Aws::EMR::AddInstanceGroups->new(%args);
+  sub AddInstanceGroups {
+    my $self = shift;
+    my $call = Aws::EMR::AddInstanceGroups->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::AddInstanceGroupsResult->from_result($result);return $o_result;
   }
-  method AddJobFlowSteps (%args) {
-    my $call = Aws::EMR::AddJobFlowSteps->new(%args);
+  sub AddJobFlowSteps {
+    my $self = shift;
+    my $call = Aws::EMR::AddJobFlowSteps->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::AddJobFlowStepsResult->from_result($result);return $o_result;
   }
-  method AddTags (%args) {
-    my $call = Aws::EMR::AddTags->new(%args);
+  sub AddTags {
+    my $self = shift;
+    my $call = Aws::EMR::AddTags->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::AddTagsResult->from_result($result);return $o_result;
   }
-  method DescribeCluster (%args) {
-    my $call = Aws::EMR::DescribeCluster->new(%args);
+  sub DescribeCluster {
+    my $self = shift;
+    my $call = Aws::EMR::DescribeCluster->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::DescribeClusterResult->from_result($result);return $o_result;
   }
-  method DescribeJobFlows (%args) {
-    my $call = Aws::EMR::DescribeJobFlows->new(%args);
+  sub DescribeJobFlows {
+    my $self = shift;
+    my $call = Aws::EMR::DescribeJobFlows->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::DescribeJobFlowsResult->from_result($result);return $o_result;
   }
-  method DescribeStep (%args) {
-    my $call = Aws::EMR::DescribeStep->new(%args);
+  sub DescribeStep {
+    my $self = shift;
+    my $call = Aws::EMR::DescribeStep->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::DescribeStepResult->from_result($result);return $o_result;
   }
-  method ListBootstrapActions (%args) {
-    my $call = Aws::EMR::ListBootstrapActions->new(%args);
+  sub ListBootstrapActions {
+    my $self = shift;
+    my $call = Aws::EMR::ListBootstrapActions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::ListBootstrapActionsResult->from_result($result);return $o_result;
   }
-  method ListClusters (%args) {
-    my $call = Aws::EMR::ListClusters->new(%args);
+  sub ListClusters {
+    my $self = shift;
+    my $call = Aws::EMR::ListClusters->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::ListClustersResult->from_result($result);return $o_result;
   }
-  method ListInstanceGroups (%args) {
-    my $call = Aws::EMR::ListInstanceGroups->new(%args);
+  sub ListInstanceGroups {
+    my $self = shift;
+    my $call = Aws::EMR::ListInstanceGroups->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::ListInstanceGroupsResult->from_result($result);return $o_result;
   }
-  method ListInstances (%args) {
-    my $call = Aws::EMR::ListInstances->new(%args);
+  sub ListInstances {
+    my $self = shift;
+    my $call = Aws::EMR::ListInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::ListInstancesResult->from_result($result);return $o_result;
   }
-  method ListSteps (%args) {
-    my $call = Aws::EMR::ListSteps->new(%args);
+  sub ListSteps {
+    my $self = shift;
+    my $call = Aws::EMR::ListSteps->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::ListStepsResult->from_result($result);return $o_result;
   }
-  method ModifyInstanceGroups (%args) {
-    my $call = Aws::EMR::ModifyInstanceGroups->new(%args);
+  sub ModifyInstanceGroups {
+    my $self = shift;
+    my $call = Aws::EMR::ModifyInstanceGroups->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method RemoveTags (%args) {
-    my $call = Aws::EMR::RemoveTags->new(%args);
+  sub RemoveTags {
+    my $self = shift;
+    my $call = Aws::EMR::RemoveTags->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::RemoveTagsResult->from_result($result);return $o_result;
   }
-  method RunJobFlow (%args) {
-    my $call = Aws::EMR::RunJobFlow->new(%args);
+  sub RunJobFlow {
+    my $self = shift;
+    my $call = Aws::EMR::RunJobFlow->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::RunJobFlowResult->from_result($result);return $o_result;
   }
-  method SetTerminationProtection (%args) {
-    my $call = Aws::EMR::SetTerminationProtection->new(%args);
+  sub SetTerminationProtection {
+    my $self = shift;
+    my $call = Aws::EMR::SetTerminationProtection->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method SetVisibleToAllUsers (%args) {
-    my $call = Aws::EMR::SetVisibleToAllUsers->new(%args);
+  sub SetVisibleToAllUsers {
+    my $self = shift;
+    my $call = Aws::EMR::SetVisibleToAllUsers->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method TerminateJobFlows (%args) {
-    my $call = Aws::EMR::TerminateJobFlows->new(%args);
+  sub TerminateJobFlows {
+    my $self = shift;
+    my $call = Aws::EMR::TerminateJobFlows->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }

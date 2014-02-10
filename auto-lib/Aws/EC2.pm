@@ -1,5 +1,4 @@
 
-use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
@@ -64,16 +63,22 @@ enum 'Aws::EC2::VpnState', ['pending','available','deleting','deleted',];
 enum 'Aws::EC2::VpnStaticRouteSource', ['Static',];
 
 
-class Aws::EC2::AccountAttribute with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::AccountAttribute {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AttributeName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attributeName');
   has AttributeValues => (is => 'ro', isa => 'ArrayRef[Aws::EC2::AccountAttributeValue]', traits => ['Unwrapped'], xmlname => 'attributeValueSet');
 }
 
-class Aws::EC2::AccountAttributeValue with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::AccountAttributeValue {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AttributeValue => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attributeValue');
 }
 
-class Aws::EC2::Address with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Address {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AllocationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'allocationId');
   has AssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'associationId');
   has Domain => (is => 'ro', isa => 'Aws::EC2::DomainType', traits => ['Unwrapped'], xmlname => 'domain');
@@ -84,33 +89,45 @@ class Aws::EC2::Address with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has PublicIp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicIp');
 }
 
-class Aws::EC2::AttributeBooleanValue with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::AttributeBooleanValue {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::AttributeValue with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::AttributeValue {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::AvailabilityZone with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::AvailabilityZone {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Messages => (is => 'ro', isa => 'ArrayRef[Aws::EC2::AvailabilityZoneMessage]', traits => ['Unwrapped'], xmlname => 'messageSet');
   has RegionName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'regionName');
   has State => (is => 'ro', isa => 'Aws::EC2::AvailabilityZoneState', traits => ['Unwrapped'], xmlname => 'zoneState');
   has ZoneName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'zoneName');
 }
 
-class Aws::EC2::AvailabilityZoneMessage with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::AvailabilityZoneMessage {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Message => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'message');
 }
 
-class Aws::EC2::BlockDeviceMapping with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::BlockDeviceMapping {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has DeviceName => (is => 'ro', isa => 'Str');
   has Ebs => (is => 'ro', isa => 'Aws::EC2::EbsBlockDevice');
   has NoDevice => (is => 'ro', isa => 'Str');
   has VirtualName => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::BundleTask with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::BundleTask {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has BundleId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bundleId');
   has BundleTaskError => (is => 'ro', isa => 'Aws::EC2::BundleTaskError', traits => ['Unwrapped'], xmlname => 'error');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
@@ -121,17 +138,23 @@ class Aws::EC2::BundleTask with (AWS::API::UnwrappedParser, AWS::API::ToParams) 
   has UpdateTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'updateTime');
 }
 
-class Aws::EC2::BundleTaskError with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::BundleTaskError {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Code => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'code');
   has Message => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'message');
 }
 
-class Aws::EC2::CancelledSpotInstanceRequest with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::CancelledSpotInstanceRequest {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has SpotInstanceRequestId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'spotInstanceRequestId');
   has State => (is => 'ro', isa => 'Aws::EC2::CancelSpotInstanceRequestState', traits => ['Unwrapped'], xmlname => 'state');
 }
 
-class Aws::EC2::ConversionTask with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ConversionTask {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has ConversionTaskId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'conversionTaskId', required => 1);
   has ExpirationTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'expirationTime');
   has ImportInstance => (is => 'ro', isa => 'Aws::EC2::ImportInstanceTaskDetails', traits => ['Unwrapped'], xmlname => 'importInstance');
@@ -141,17 +164,23 @@ class Aws::EC2::ConversionTask with (AWS::API::UnwrappedParser, AWS::API::ToPara
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
 }
 
-class Aws::EC2::CreateVolumePermission with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::CreateVolumePermission {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Group => (is => 'ro', isa => 'Aws::EC2::PermissionGroup');
   has UserId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::CreateVolumePermissionModifications with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::CreateVolumePermissionModifications {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Add => (is => 'ro', isa => 'ArrayRef[Aws::EC2::CreateVolumePermission]');
   has Remove => (is => 'ro', isa => 'ArrayRef[Aws::EC2::CreateVolumePermission]');
 }
 
-class Aws::EC2::CustomerGateway with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::CustomerGateway {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has BgpAsn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bgpAsn');
   has CustomerGatewayId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerGatewayId');
   has IpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ipAddress');
@@ -160,42 +189,56 @@ class Aws::EC2::CustomerGateway with (AWS::API::UnwrappedParser, AWS::API::ToPar
   has Type => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'type');
 }
 
-class Aws::EC2::DhcpConfiguration with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::DhcpConfiguration {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Key => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'key');
   has Values => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'valueSet');
 }
 
-class Aws::EC2::DhcpOptions with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::DhcpOptions {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::DhcpConfiguration]', traits => ['Unwrapped'], xmlname => 'dhcpConfigurationSet');
   has DhcpOptionsId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'dhcpOptionsId');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
 }
 
-class Aws::EC2::DiskImage with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::DiskImage {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Description => (is => 'ro', isa => 'Str');
   has Image => (is => 'ro', isa => 'Aws::EC2::DiskImageDetail');
   has Volume => (is => 'ro', isa => 'Aws::EC2::VolumeDetail');
 }
 
-class Aws::EC2::DiskImageDescription with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::DiskImageDescription {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Checksum => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'checksum');
   has Format => (is => 'ro', isa => 'Aws::EC2::DiskImageFormat', traits => ['Unwrapped'], xmlname => 'format', required => 1);
   has ImportManifestUrl => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'importManifestUrl', required => 1);
   has Size => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'size', required => 1);
 }
 
-class Aws::EC2::DiskImageDetail with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::DiskImageDetail {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Bytes => (is => 'ro', isa => 'Num', required => 1);
   has Format => (is => 'ro', isa => 'Aws::EC2::DiskImageFormat', required => 1);
   has ImportManifestUrl => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::EC2::DiskImageVolumeDescription with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::DiskImageVolumeDescription {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id', required => 1);
   has Size => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'size');
 }
 
-class Aws::EC2::EbsBlockDevice with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::EbsBlockDevice {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has DeleteOnTermination => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
@@ -203,19 +246,25 @@ class Aws::EC2::EbsBlockDevice with (AWS::API::UnwrappedParser, AWS::API::ToPara
   has VolumeType => (is => 'ro', isa => 'Aws::EC2::VolumeType');
 }
 
-class Aws::EC2::EbsInstanceBlockDevice with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::EbsInstanceBlockDevice {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
   has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
   has Status => (is => 'ro', isa => 'Aws::EC2::AttachmentStatus', traits => ['Unwrapped'], xmlname => 'status');
   has VolumeId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'volumeId');
 }
 
-class Aws::EC2::EbsInstanceBlockDeviceSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::EbsInstanceBlockDeviceSpecification {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has DeleteOnTermination => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::ExportTask with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ExportTask {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has ExportTaskId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'exportTaskId');
   has ExportToS3Task => (is => 'ro', isa => 'Aws::EC2::ExportToS3Task', traits => ['Unwrapped'], xmlname => 'exportToS3');
@@ -224,46 +273,62 @@ class Aws::EC2::ExportTask with (AWS::API::UnwrappedParser, AWS::API::ToParams) 
   has StatusMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'statusMessage');
 }
 
-class Aws::EC2::ExportToS3Task with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ExportToS3Task {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has ContainerFormat => (is => 'ro', isa => 'Aws::EC2::ContainerFormat', traits => ['Unwrapped'], xmlname => 'containerFormat');
   has DiskImageFormat => (is => 'ro', isa => 'Aws::EC2::DiskImageFormat', traits => ['Unwrapped'], xmlname => 'diskImageFormat');
   has S3Bucket => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 's3Bucket');
   has S3Key => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 's3Key');
 }
 
-class Aws::EC2::ExportToS3TaskSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ExportToS3TaskSpecification {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has ContainerFormat => (is => 'ro', isa => 'Aws::EC2::ContainerFormat');
   has DiskImageFormat => (is => 'ro', isa => 'Aws::EC2::DiskImageFormat');
   has S3Bucket => (is => 'ro', isa => 'Str');
   has S3Prefix => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::Filter with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Filter {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Name => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
-class Aws::EC2::GroupIdentifier with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::GroupIdentifier {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has GroupId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupId');
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
 }
 
-class Aws::EC2::IamInstanceProfile with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::IamInstanceProfile {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Arn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'arn');
   has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id');
 }
 
-class Aws::EC2::IamInstanceProfileSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::IamInstanceProfileSpecification {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Arn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::IcmpTypeCode with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::IcmpTypeCode {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Code => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'code');
   has Type => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'type');
 }
 
-class Aws::EC2::Image with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Image {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Architecture => (is => 'ro', isa => 'Aws::EC2::ArchitectureValues', traits => ['Unwrapped'], xmlname => 'architecture');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['Unwrapped'], xmlname => 'blockDeviceMapping');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
@@ -288,7 +353,9 @@ class Aws::EC2::Image with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has VirtualizationType => (is => 'ro', isa => 'Aws::EC2::VirtualizationType', traits => ['Unwrapped'], xmlname => 'virtualizationType');
 }
 
-class Aws::EC2::ImportInstanceLaunchSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ImportInstanceLaunchSpecification {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AdditionalInfo => (is => 'ro', isa => 'Str');
   has Architecture => (is => 'ro', isa => 'Aws::EC2::ArchitectureValues');
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -301,14 +368,18 @@ class Aws::EC2::ImportInstanceLaunchSpecification with (AWS::API::UnwrappedParse
   has UserData => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::ImportInstanceTaskDetails with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ImportInstanceTaskDetails {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has Platform => (is => 'ro', isa => 'Aws::EC2::PlatformValues', traits => ['Unwrapped'], xmlname => 'platform');
   has Volumes => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ImportInstanceVolumeDetailItem]', traits => ['Unwrapped'], xmlname => 'volumes', required => 1);
 }
 
-class Aws::EC2::ImportInstanceVolumeDetailItem with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ImportInstanceVolumeDetailItem {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone', required => 1);
   has BytesConverted => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'bytesConverted', required => 1);
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
@@ -318,7 +389,9 @@ class Aws::EC2::ImportInstanceVolumeDetailItem with (AWS::API::UnwrappedParser, 
   has Volume => (is => 'ro', isa => 'Aws::EC2::DiskImageVolumeDescription', traits => ['Unwrapped'], xmlname => 'volume', required => 1);
 }
 
-class Aws::EC2::ImportVolumeTaskDetails with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ImportVolumeTaskDetails {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone', required => 1);
   has BytesConverted => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'bytesConverted', required => 1);
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
@@ -326,7 +399,9 @@ class Aws::EC2::ImportVolumeTaskDetails with (AWS::API::UnwrappedParser, AWS::AP
   has Volume => (is => 'ro', isa => 'Aws::EC2::DiskImageVolumeDescription', traits => ['Unwrapped'], xmlname => 'volume', required => 1);
 }
 
-class Aws::EC2::Instance with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Instance {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AmiLaunchIndex => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'amiLaunchIndex');
   has Architecture => (is => 'ro', isa => 'Aws::EC2::ArchitectureValues', traits => ['Unwrapped'], xmlname => 'architecture');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceBlockDeviceMapping]', traits => ['Unwrapped'], xmlname => 'blockDeviceMapping');
@@ -366,34 +441,46 @@ class Aws::EC2::Instance with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
 
-class Aws::EC2::InstanceBlockDeviceMapping with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceBlockDeviceMapping {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has DeviceName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deviceName');
   has Ebs => (is => 'ro', isa => 'Aws::EC2::EbsInstanceBlockDevice', traits => ['Unwrapped'], xmlname => 'ebs');
 }
 
-class Aws::EC2::InstanceBlockDeviceMappingSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceBlockDeviceMappingSpecification {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has DeviceName => (is => 'ro', isa => 'Str');
   has Ebs => (is => 'ro', isa => 'Aws::EC2::EbsInstanceBlockDeviceSpecification');
   has NoDevice => (is => 'ro', isa => 'Str');
   has VirtualName => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::InstanceCount with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceCount {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has InstanceCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'instanceCount');
   has State => (is => 'ro', isa => 'Aws::EC2::ListingState', traits => ['Unwrapped'], xmlname => 'state');
 }
 
-class Aws::EC2::InstanceExportDetails with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceExportDetails {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has TargetEnvironment => (is => 'ro', isa => 'Aws::EC2::ExportEnvironment', traits => ['Unwrapped'], xmlname => 'targetEnvironment');
 }
 
-class Aws::EC2::InstanceMonitoring with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceMonitoring {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has Monitoring => (is => 'ro', isa => 'Aws::EC2::Monitoring', traits => ['Unwrapped'], xmlname => 'monitoring');
 }
 
-class Aws::EC2::InstanceNetworkInterface with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceNetworkInterface {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Association => (is => 'ro', isa => 'Aws::EC2::InstanceNetworkInterfaceAssociation', traits => ['Unwrapped'], xmlname => 'association');
   has Attachment => (is => 'ro', isa => 'Aws::EC2::InstanceNetworkInterfaceAttachment', traits => ['Unwrapped'], xmlname => 'attachment');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
@@ -409,13 +496,17 @@ class Aws::EC2::InstanceNetworkInterface with (AWS::API::UnwrappedParser, AWS::A
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
 
-class Aws::EC2::InstanceNetworkInterfaceAssociation with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceNetworkInterfaceAssociation {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has IpOwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ipOwnerId');
   has PublicDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicDnsName');
   has PublicIp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicIp');
 }
 
-class Aws::EC2::InstanceNetworkInterfaceAttachment with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceNetworkInterfaceAttachment {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
   has AttachmentId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachmentId');
   has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
@@ -423,7 +514,9 @@ class Aws::EC2::InstanceNetworkInterfaceAttachment with (AWS::API::UnwrappedPars
   has Status => (is => 'ro', isa => 'Aws::EC2::AttachmentStatus', traits => ['Unwrapped'], xmlname => 'status');
 }
 
-class Aws::EC2::InstanceNetworkInterfaceSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceNetworkInterfaceSpecification {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Str');
   has DeleteOnTermination => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -436,25 +529,33 @@ class Aws::EC2::InstanceNetworkInterfaceSpecification with (AWS::API::UnwrappedP
   has SubnetId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::InstancePrivateIpAddress with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstancePrivateIpAddress {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Association => (is => 'ro', isa => 'Aws::EC2::InstanceNetworkInterfaceAssociation', traits => ['Unwrapped'], xmlname => 'association');
   has Primary => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'primary');
   has PrivateDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateDnsName');
   has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateIpAddress');
 }
 
-class Aws::EC2::InstanceState with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceState {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Code => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'code');
   has Name => (is => 'ro', isa => 'Aws::EC2::InstanceStateName', traits => ['Unwrapped'], xmlname => 'name');
 }
 
-class Aws::EC2::InstanceStateChange with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceStateChange {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has CurrentState => (is => 'ro', isa => 'Aws::EC2::InstanceState', traits => ['Unwrapped'], xmlname => 'currentState');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has PreviousState => (is => 'ro', isa => 'Aws::EC2::InstanceState', traits => ['Unwrapped'], xmlname => 'previousState');
 }
 
-class Aws::EC2::InstanceStatus with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceStatus {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has Events => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceStatusEvent]', traits => ['Unwrapped'], xmlname => 'eventsSet');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
@@ -463,36 +564,48 @@ class Aws::EC2::InstanceStatus with (AWS::API::UnwrappedParser, AWS::API::ToPara
   has SystemStatus => (is => 'ro', isa => 'Aws::EC2::InstanceStatusSummary', traits => ['Unwrapped'], xmlname => 'systemStatus');
 }
 
-class Aws::EC2::InstanceStatusDetails with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceStatusDetails {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has ImpairedSince => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'impairedSince');
   has Name => (is => 'ro', isa => 'Aws::EC2::StatusName', traits => ['Unwrapped'], xmlname => 'name');
   has Status => (is => 'ro', isa => 'Aws::EC2::StatusType', traits => ['Unwrapped'], xmlname => 'status');
 }
 
-class Aws::EC2::InstanceStatusEvent with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceStatusEvent {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Code => (is => 'ro', isa => 'Aws::EC2::EventCode', traits => ['Unwrapped'], xmlname => 'code');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has NotAfter => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'notAfter');
   has NotBefore => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'notBefore');
 }
 
-class Aws::EC2::InstanceStatusSummary with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InstanceStatusSummary {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Details => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceStatusDetails]', traits => ['Unwrapped'], xmlname => 'details');
   has Status => (is => 'ro', isa => 'Aws::EC2::SummaryStatus', traits => ['Unwrapped'], xmlname => 'status');
 }
 
-class Aws::EC2::InternetGateway with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InternetGateway {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Attachments => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InternetGatewayAttachment]', traits => ['Unwrapped'], xmlname => 'attachmentSet');
   has InternetGatewayId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'internetGatewayId');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
 }
 
-class Aws::EC2::InternetGatewayAttachment with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::InternetGatewayAttachment {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has State => (is => 'ro', isa => 'Aws::EC2::AttachmentStatus', traits => ['Unwrapped'], xmlname => 'state');
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
 
-class Aws::EC2::IpPermission with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::IpPermission {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has FromPort => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'fromPort');
   has IpProtocol => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ipProtocol');
   has IpRanges => (is => 'ro', isa => 'ArrayRef[Aws::EC2::IpRange]', traits => ['Unwrapped'], xmlname => 'ipRanges');
@@ -500,26 +613,36 @@ class Aws::EC2::IpPermission with (AWS::API::UnwrappedParser, AWS::API::ToParams
   has UserIdGroupPairs => (is => 'ro', isa => 'ArrayRef[Aws::EC2::UserIdGroupPair]', traits => ['Unwrapped'], xmlname => 'groups');
 }
 
-class Aws::EC2::IpRange with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::IpRange {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has CidrIp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cidrIp');
 }
 
-class Aws::EC2::KeyPairInfo with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::KeyPairInfo {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has KeyFingerprint => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyFingerprint');
   has KeyName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyName');
 }
 
-class Aws::EC2::LaunchPermission with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::LaunchPermission {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Group => (is => 'ro', isa => 'Aws::EC2::PermissionGroup');
   has UserId => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::LaunchPermissionModifications with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::LaunchPermissionModifications {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Add => (is => 'ro', isa => 'ArrayRef[Aws::EC2::LaunchPermission]');
   has Remove => (is => 'ro', isa => 'ArrayRef[Aws::EC2::LaunchPermission]');
 }
 
-class Aws::EC2::LaunchSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::LaunchSpecification {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AddressingType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'addressingType');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['Unwrapped'], xmlname => 'blockDeviceMapping');
   has EbsOptimized => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ebsOptimized');
@@ -537,11 +660,15 @@ class Aws::EC2::LaunchSpecification with (AWS::API::UnwrappedParser, AWS::API::T
   has UserData => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'userData');
 }
 
-class Aws::EC2::Monitoring with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Monitoring {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has State => (is => 'ro', isa => 'Aws::EC2::MonitoringState', traits => ['Unwrapped'], xmlname => 'state');
 }
 
-class Aws::EC2::NetworkAcl with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::NetworkAcl {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Associations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::NetworkAclAssociation]', traits => ['Unwrapped'], xmlname => 'associationSet');
   has Entries => (is => 'ro', isa => 'ArrayRef[Aws::EC2::NetworkAclEntry]', traits => ['Unwrapped'], xmlname => 'entrySet');
   has IsDefault => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'default');
@@ -550,13 +677,17 @@ class Aws::EC2::NetworkAcl with (AWS::API::UnwrappedParser, AWS::API::ToParams) 
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
 
-class Aws::EC2::NetworkAclAssociation with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::NetworkAclAssociation {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has NetworkAclAssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'networkAclAssociationId');
   has NetworkAclId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'networkAclId');
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
 }
 
-class Aws::EC2::NetworkAclEntry with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::NetworkAclEntry {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has CidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cidrBlock');
   has Egress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'egress');
   has IcmpTypeCode => (is => 'ro', isa => 'Aws::EC2::IcmpTypeCode', traits => ['Unwrapped'], xmlname => 'icmpTypeCode');
@@ -566,7 +697,9 @@ class Aws::EC2::NetworkAclEntry with (AWS::API::UnwrappedParser, AWS::API::ToPar
   has RuleNumber => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'ruleNumber');
 }
 
-class Aws::EC2::NetworkInterface with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::NetworkInterface {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Association => (is => 'ro', isa => 'Aws::EC2::NetworkInterfaceAssociation', traits => ['Unwrapped'], xmlname => 'association');
   has Attachment => (is => 'ro', isa => 'Aws::EC2::NetworkInterfaceAttachment', traits => ['Unwrapped'], xmlname => 'attachment');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
@@ -587,14 +720,18 @@ class Aws::EC2::NetworkInterface with (AWS::API::UnwrappedParser, AWS::API::ToPa
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
 
-class Aws::EC2::NetworkInterfaceAssociation with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::NetworkInterfaceAssociation {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AllocationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'allocationId');
   has AssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'associationId');
   has IpOwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ipOwnerId');
   has PublicIp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicIp');
 }
 
-class Aws::EC2::NetworkInterfaceAttachment with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::NetworkInterfaceAttachment {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
   has AttachmentId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachmentId');
   has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
@@ -604,78 +741,106 @@ class Aws::EC2::NetworkInterfaceAttachment with (AWS::API::UnwrappedParser, AWS:
   has Status => (is => 'ro', isa => 'Aws::EC2::AttachmentStatus', traits => ['Unwrapped'], xmlname => 'status');
 }
 
-class Aws::EC2::NetworkInterfaceAttachmentChanges with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::NetworkInterfaceAttachmentChanges {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AttachmentId => (is => 'ro', isa => 'Str');
   has DeleteOnTermination => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::NetworkInterfacePrivateIpAddress with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::NetworkInterfacePrivateIpAddress {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Association => (is => 'ro', isa => 'Aws::EC2::NetworkInterfaceAssociation', traits => ['Unwrapped'], xmlname => 'association');
   has Primary => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'primary');
   has PrivateDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateDnsName');
   has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateIpAddress');
 }
 
-class Aws::EC2::Placement with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Placement {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
   has Tenancy => (is => 'ro', isa => 'Aws::EC2::Tenancy', traits => ['Unwrapped'], xmlname => 'tenancy');
 }
 
-class Aws::EC2::PlacementGroup with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::PlacementGroup {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
   has State => (is => 'ro', isa => 'Aws::EC2::PlacementGroupState', traits => ['Unwrapped'], xmlname => 'state');
   has Strategy => (is => 'ro', isa => 'Aws::EC2::PlacementStrategy', traits => ['Unwrapped'], xmlname => 'strategy');
 }
 
-class Aws::EC2::PortRange with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::PortRange {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has From => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'from');
   has To => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'to');
 }
 
-class Aws::EC2::PriceSchedule with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::PriceSchedule {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Active => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'active');
   has CurrencyCode => (is => 'ro', isa => 'Aws::EC2::CurrencyCodeValues', traits => ['Unwrapped'], xmlname => 'currencyCode');
   has Price => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'price');
   has Term => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'term');
 }
 
-class Aws::EC2::PriceScheduleSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::PriceScheduleSpecification {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has CurrencyCode => (is => 'ro', isa => 'Aws::EC2::CurrencyCodeValues');
   has Price => (is => 'ro', isa => 'Num');
   has Term => (is => 'ro', isa => 'Num');
 }
 
-class Aws::EC2::PricingDetail with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::PricingDetail {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Count => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'count');
   has Price => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'price');
 }
 
-class Aws::EC2::PrivateIpAddressSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::PrivateIpAddressSpecification {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Primary => (is => 'ro', isa => 'Str');
   has PrivateIpAddress => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::EC2::ProductCode with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ProductCode {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has ProductCodeId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'productCode');
   has ProductCodeType => (is => 'ro', isa => 'Aws::EC2::ProductCodeValues', traits => ['Unwrapped'], xmlname => 'type');
 }
 
-class Aws::EC2::PropagatingVgw with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::PropagatingVgw {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has GatewayId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'gatewayId');
 }
 
-class Aws::EC2::RecurringCharge with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::RecurringCharge {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Amount => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'amount');
   has Frequency => (is => 'ro', isa => 'Aws::EC2::RecurringChargeFrequency', traits => ['Unwrapped'], xmlname => 'frequency');
 }
 
-class Aws::EC2::Region with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Region {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Endpoint => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'regionEndpoint');
   has RegionName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'regionName');
 }
 
-class Aws::EC2::Reservation with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Reservation {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Groups => (is => 'ro', isa => 'ArrayRef[Aws::EC2::GroupIdentifier]', traits => ['Unwrapped'], xmlname => 'groupSet');
   has Instances => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Instance]', traits => ['Unwrapped'], xmlname => 'instancesSet');
   has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
@@ -683,12 +848,16 @@ class Aws::EC2::Reservation with (AWS::API::UnwrappedParser, AWS::API::ToParams)
   has ReservationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'reservationId');
 }
 
-class Aws::EC2::ReservedInstanceLimitPrice with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ReservedInstanceLimitPrice {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Amount => (is => 'ro', isa => 'Num');
   has CurrencyCode => (is => 'ro', isa => 'Aws::EC2::CurrencyCodeValues');
 }
 
-class Aws::EC2::ReservedInstances with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ReservedInstances {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has CurrencyCode => (is => 'ro', isa => 'Aws::EC2::CurrencyCodeValues', traits => ['Unwrapped'], xmlname => 'currencyCode');
   has Duration => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'duration');
@@ -707,18 +876,24 @@ class Aws::EC2::ReservedInstances with (AWS::API::UnwrappedParser, AWS::API::ToP
   has UsagePrice => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'usagePrice');
 }
 
-class Aws::EC2::ReservedInstancesConfiguration with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ReservedInstancesConfiguration {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has InstanceCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'instanceCount');
   has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType', traits => ['Unwrapped'], xmlname => 'instanceType');
   has Platform => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'platform');
 }
 
-class Aws::EC2::ReservedInstancesId with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ReservedInstancesId {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has ReservedInstancesId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'reservedInstancesId');
 }
 
-class Aws::EC2::ReservedInstancesListing with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ReservedInstancesListing {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'clientToken');
   has CreateDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createDate');
   has InstanceCounts => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceCount]', traits => ['Unwrapped'], xmlname => 'instanceCounts');
@@ -731,7 +906,9 @@ class Aws::EC2::ReservedInstancesListing with (AWS::API::UnwrappedParser, AWS::A
   has UpdateDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'updateDate');
 }
 
-class Aws::EC2::ReservedInstancesModification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ReservedInstancesModification {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'clientToken');
   has CreateDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createDate');
   has EffectiveDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'effectiveDate');
@@ -743,12 +920,16 @@ class Aws::EC2::ReservedInstancesModification with (AWS::API::UnwrappedParser, A
   has UpdateDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'updateDate');
 }
 
-class Aws::EC2::ReservedInstancesModificationResult with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ReservedInstancesModificationResult {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has ReservedInstancesId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'reservedInstancesId');
   has TargetConfiguration => (is => 'ro', isa => 'Aws::EC2::ReservedInstancesConfiguration', traits => ['Unwrapped'], xmlname => 'targetConfiguration');
 }
 
-class Aws::EC2::ReservedInstancesOffering with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::ReservedInstancesOffering {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has CurrencyCode => (is => 'ro', isa => 'Aws::EC2::CurrencyCodeValues', traits => ['Unwrapped'], xmlname => 'currencyCode');
   has Duration => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'duration');
@@ -764,7 +945,9 @@ class Aws::EC2::ReservedInstancesOffering with (AWS::API::UnwrappedParser, AWS::
   has UsagePrice => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'usagePrice');
 }
 
-class Aws::EC2::Route with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Route {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'destinationCidrBlock');
   has GatewayId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'gatewayId');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
@@ -774,7 +957,9 @@ class Aws::EC2::Route with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has State => (is => 'ro', isa => 'Aws::EC2::RouteState', traits => ['Unwrapped'], xmlname => 'state');
 }
 
-class Aws::EC2::RouteTable with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::RouteTable {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Associations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::RouteTableAssociation]', traits => ['Unwrapped'], xmlname => 'associationSet');
   has PropagatingVgws => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PropagatingVgw]', traits => ['Unwrapped'], xmlname => 'propagatingVgwSet');
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'routeTableId');
@@ -783,18 +968,24 @@ class Aws::EC2::RouteTable with (AWS::API::UnwrappedParser, AWS::API::ToParams) 
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
 
-class Aws::EC2::RouteTableAssociation with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::RouteTableAssociation {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Main => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'main');
   has RouteTableAssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'routeTableAssociationId');
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'routeTableId');
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
 }
 
-class Aws::EC2::RunInstancesMonitoringEnabled with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::RunInstancesMonitoringEnabled {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Enabled => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::EC2::S3Storage with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::S3Storage {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AWSAccessKeyId => (is => 'ro', isa => 'Str');
   has Bucket => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bucket');
   has Prefix => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'prefix');
@@ -802,7 +993,9 @@ class Aws::EC2::S3Storage with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has UploadPolicySignature => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'uploadPolicySignature');
 }
 
-class Aws::EC2::SecurityGroup with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::SecurityGroup {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupDescription');
   has GroupId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupId');
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
@@ -813,7 +1006,9 @@ class Aws::EC2::SecurityGroup with (AWS::API::UnwrappedParser, AWS::API::ToParam
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
 
-class Aws::EC2::Snapshot with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Snapshot {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has OwnerAlias => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAlias');
   has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
@@ -826,7 +1021,9 @@ class Aws::EC2::Snapshot with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has VolumeSize => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'volumeSize');
 }
 
-class Aws::EC2::SpotDatafeedSubscription with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::SpotDatafeedSubscription {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Bucket => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bucket');
   has Fault => (is => 'ro', isa => 'Aws::EC2::SpotInstanceStateFault', traits => ['Unwrapped'], xmlname => 'fault');
   has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
@@ -834,11 +1031,15 @@ class Aws::EC2::SpotDatafeedSubscription with (AWS::API::UnwrappedParser, AWS::A
   has State => (is => 'ro', isa => 'Aws::EC2::DatafeedSubscriptionState', traits => ['Unwrapped'], xmlname => 'state');
 }
 
-class Aws::EC2::SpotInstanceMonitoring with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::SpotInstanceMonitoring {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Enabled => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::EC2::SpotInstanceRequest with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::SpotInstanceRequest {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AvailabilityZoneGroup => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZoneGroup');
   has CreateTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createTime');
   has Fault => (is => 'ro', isa => 'Aws::EC2::SpotInstanceStateFault', traits => ['Unwrapped'], xmlname => 'fault');
@@ -857,18 +1058,24 @@ class Aws::EC2::SpotInstanceRequest with (AWS::API::UnwrappedParser, AWS::API::T
   has ValidUntil => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'validUntil');
 }
 
-class Aws::EC2::SpotInstanceStateFault with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::SpotInstanceStateFault {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Code => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'code');
   has Message => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'message');
 }
 
-class Aws::EC2::SpotInstanceStatus with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::SpotInstanceStatus {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Code => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'code');
   has Message => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'message');
   has UpdateTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'updateTime');
 }
 
-class Aws::EC2::SpotLaunchSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::SpotLaunchSpecification {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AddressingType => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]');
   has EbsOptimized => (is => 'ro', isa => 'Str');
@@ -887,12 +1094,16 @@ class Aws::EC2::SpotLaunchSpecification with (AWS::API::UnwrappedParser, AWS::AP
   has UserData => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::SpotPlacement with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::SpotPlacement {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::SpotPrice with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::SpotPrice {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType', traits => ['Unwrapped'], xmlname => 'instanceType');
   has ProductDescription => (is => 'ro', isa => 'Aws::EC2::SpotProductDescription', traits => ['Unwrapped'], xmlname => 'productDescription');
@@ -900,16 +1111,22 @@ class Aws::EC2::SpotPrice with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has Timestamp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'timestamp');
 }
 
-class Aws::EC2::StateReason with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::StateReason {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Code => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'code');
   has Message => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'message');
 }
 
-class Aws::EC2::Storage with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Storage {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has S3 => (is => 'ro', isa => 'Aws::EC2::S3Storage');
 }
 
-class Aws::EC2::Subnet with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Subnet {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has AvailableIpAddressCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'availableIpAddressCount');
   has CidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cidrBlock');
@@ -921,25 +1138,33 @@ class Aws::EC2::Subnet with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
 
-class Aws::EC2::Tag with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Tag {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Key => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'key');
   has Value => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'value');
 }
 
-class Aws::EC2::TagDescription with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::TagDescription {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Key => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'key');
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'resourceId');
   has ResourceType => (is => 'ro', isa => 'Aws::EC2::ResourceType', traits => ['Unwrapped'], xmlname => 'resourceType');
   has Value => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'value');
 }
 
-class Aws::EC2::UserIdGroupPair with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::UserIdGroupPair {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has GroupId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupId');
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
   has UserId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'userId');
 }
 
-class Aws::EC2::VgwTelemetry with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::VgwTelemetry {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AcceptedRouteCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'acceptedRouteCount');
   has LastStatusChange => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'lastStatusChange');
   has OutsideIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'outsideIpAddress');
@@ -947,7 +1172,9 @@ class Aws::EC2::VgwTelemetry with (AWS::API::UnwrappedParser, AWS::API::ToParams
   has StatusMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'statusMessage');
 }
 
-class Aws::EC2::Volume with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Volume {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Attachments => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VolumeAttachment]', traits => ['Unwrapped'], xmlname => 'attachmentSet');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has CreateTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createTime');
@@ -960,7 +1187,9 @@ class Aws::EC2::Volume with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has VolumeType => (is => 'ro', isa => 'Aws::EC2::VolumeType', traits => ['Unwrapped'], xmlname => 'volumeType');
 }
 
-class Aws::EC2::VolumeAttachment with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::VolumeAttachment {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
   has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
   has Device => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'device');
@@ -969,23 +1198,31 @@ class Aws::EC2::VolumeAttachment with (AWS::API::UnwrappedParser, AWS::API::ToPa
   has VolumeId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'volumeId');
 }
 
-class Aws::EC2::VolumeDetail with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::VolumeDetail {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Size => (is => 'ro', isa => 'Num', required => 1);
 }
 
-class Aws::EC2::VolumeStatusAction with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::VolumeStatusAction {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Code => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'code');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has EventId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'eventId');
   has EventType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'eventType');
 }
 
-class Aws::EC2::VolumeStatusDetails with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::VolumeStatusDetails {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Name => (is => 'ro', isa => 'Aws::EC2::VolumeStatusName', traits => ['Unwrapped'], xmlname => 'name');
   has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status');
 }
 
-class Aws::EC2::VolumeStatusEvent with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::VolumeStatusEvent {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has EventId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'eventId');
   has EventType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'eventType');
@@ -993,12 +1230,16 @@ class Aws::EC2::VolumeStatusEvent with (AWS::API::UnwrappedParser, AWS::API::ToP
   has NotBefore => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'notBefore');
 }
 
-class Aws::EC2::VolumeStatusInfo with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::VolumeStatusInfo {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Details => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VolumeStatusDetails]', traits => ['Unwrapped'], xmlname => 'details');
   has Status => (is => 'ro', isa => 'Aws::EC2::VolumeStatusInfoStatus', traits => ['Unwrapped'], xmlname => 'status');
 }
 
-class Aws::EC2::VolumeStatusItem with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::VolumeStatusItem {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Actions => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VolumeStatusAction]', traits => ['Unwrapped'], xmlname => 'actionsSet');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has Events => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VolumeStatusEvent]', traits => ['Unwrapped'], xmlname => 'eventsSet');
@@ -1006,7 +1247,9 @@ class Aws::EC2::VolumeStatusItem with (AWS::API::UnwrappedParser, AWS::API::ToPa
   has VolumeStatus => (is => 'ro', isa => 'Aws::EC2::VolumeStatusInfo', traits => ['Unwrapped'], xmlname => 'volumeStatus');
 }
 
-class Aws::EC2::Vpc with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::Vpc {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has CidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cidrBlock');
   has DhcpOptionsId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'dhcpOptionsId');
   has InstanceTenancy => (is => 'ro', isa => 'Aws::EC2::Tenancy', traits => ['Unwrapped'], xmlname => 'instanceTenancy');
@@ -1016,12 +1259,16 @@ class Aws::EC2::Vpc with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
 
-class Aws::EC2::VpcAttachment with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::VpcAttachment {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has State => (is => 'ro', isa => 'Aws::EC2::AttachmentStatus', traits => ['Unwrapped'], xmlname => 'state');
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
 
-class Aws::EC2::VpnConnection with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::VpnConnection {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has CustomerGatewayConfiguration => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerGatewayConfiguration');
   has CustomerGatewayId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerGatewayId');
   has Options => (is => 'ro', isa => 'Aws::EC2::VpnConnectionOptions', traits => ['Unwrapped'], xmlname => 'options');
@@ -1034,15 +1281,21 @@ class Aws::EC2::VpnConnection with (AWS::API::UnwrappedParser, AWS::API::ToParam
   has VpnGatewayId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpnGatewayId');
 }
 
-class Aws::EC2::VpnConnectionOptions with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::VpnConnectionOptions {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has StaticRoutesOnly => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'staticRoutesOnly');
 }
 
-class Aws::EC2::VpnConnectionOptionsSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::VpnConnectionOptionsSpecification {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has StaticRoutesOnly => (is => 'ro', isa => 'Str');
 }
 
-class Aws::EC2::VpnGateway with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::VpnGateway {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has State => (is => 'ro', isa => 'Aws::EC2::VpnState', traits => ['Unwrapped'], xmlname => 'state');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
@@ -1051,7 +1304,9 @@ class Aws::EC2::VpnGateway with (AWS::API::UnwrappedParser, AWS::API::ToParams) 
   has VpnGatewayId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpnGatewayId');
 }
 
-class Aws::EC2::VpnStaticRoute with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+package Aws::EC2::VpnStaticRoute {
+  use Moose;
+  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'destinationCidrBlock');
   has Source => (is => 'ro', isa => 'Aws::EC2::VpnStaticRouteSource', traits => ['Unwrapped'], xmlname => 'source');
   has State => (is => 'ro', isa => 'Aws::EC2::VpnState', traits => ['Unwrapped'], xmlname => 'state');
@@ -1059,7 +1314,8 @@ class Aws::EC2::VpnStaticRoute with (AWS::API::UnwrappedParser, AWS::API::ToPara
 
 
 
-class Aws::EC2::AllocateAddress {
+package Aws::EC2::AllocateAddress {
+  use Moose;
   has Domain => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
 
@@ -1067,7 +1323,8 @@ class Aws::EC2::AllocateAddress {
   has _returns => (isa => 'Aws::EC2::AllocateAddressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AllocateAddressResult');  
 }
-class Aws::EC2::AssignPrivateIpAddresses {
+package Aws::EC2::AssignPrivateIpAddresses {
+  use Moose;
   has AllowReassignment => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PrivateIpAddress' );
@@ -1077,7 +1334,8 @@ class Aws::EC2::AssignPrivateIpAddresses {
   has _returns => (isa => 'Aws::EC2::AssignPrivateIpAddressesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AssignPrivateIpAddressesResult');  
 }
-class Aws::EC2::AssociateAddress {
+package Aws::EC2::AssociateAddress {
+  use Moose;
   has AllocationId => (is => 'ro', isa => 'Str');
   has AllowReassociation => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
@@ -1090,7 +1348,8 @@ class Aws::EC2::AssociateAddress {
   has _returns => (isa => 'Aws::EC2::AssociateAddressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AssociateAddressResult');  
 }
-class Aws::EC2::AssociateDhcpOptions {
+package Aws::EC2::AssociateDhcpOptions {
+  use Moose;
   has DhcpOptionsId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
@@ -1099,7 +1358,8 @@ class Aws::EC2::AssociateDhcpOptions {
   has _returns => (isa => 'Aws::EC2::AssociateDhcpOptionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AssociateDhcpOptionsResult');  
 }
-class Aws::EC2::AssociateRouteTable {
+package Aws::EC2::AssociateRouteTable {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
@@ -1108,7 +1368,8 @@ class Aws::EC2::AssociateRouteTable {
   has _returns => (isa => 'Aws::EC2::AssociateRouteTableResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AssociateRouteTableResult');  
 }
-class Aws::EC2::AttachInternetGateway {
+package Aws::EC2::AttachInternetGateway {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has InternetGatewayId => (is => 'ro', isa => 'Str', required => 1);
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
@@ -1117,7 +1378,8 @@ class Aws::EC2::AttachInternetGateway {
   has _returns => (isa => 'Aws::EC2::AttachInternetGatewayResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AttachInternetGatewayResult');  
 }
-class Aws::EC2::AttachNetworkInterface {
+package Aws::EC2::AttachNetworkInterface {
+  use Moose;
   has DeviceIndex => (is => 'ro', isa => 'Int', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
@@ -1127,7 +1389,8 @@ class Aws::EC2::AttachNetworkInterface {
   has _returns => (isa => 'Aws::EC2::AttachNetworkInterfaceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AttachNetworkInterfaceResult');  
 }
-class Aws::EC2::AttachVolume {
+package Aws::EC2::AttachVolume {
+  use Moose;
   has Device => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
@@ -1137,7 +1400,8 @@ class Aws::EC2::AttachVolume {
   has _returns => (isa => 'Aws::EC2::AttachVolumeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AttachVolumeResult');  
 }
-class Aws::EC2::AttachVpnGateway {
+package Aws::EC2::AttachVpnGateway {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
   has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
@@ -1146,7 +1410,8 @@ class Aws::EC2::AttachVpnGateway {
   has _returns => (isa => 'Aws::EC2::AttachVpnGatewayResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AttachVpnGatewayResult');  
 }
-class Aws::EC2::AuthorizeSecurityGroupEgress {
+package Aws::EC2::AuthorizeSecurityGroupEgress {
+  use Moose;
   has CidrIp => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has FromPort => (is => 'ro', isa => 'Int');
@@ -1161,7 +1426,8 @@ class Aws::EC2::AuthorizeSecurityGroupEgress {
   has _returns => (isa => 'Aws::EC2::AuthorizeSecurityGroupEgressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeSecurityGroupEgressResult');  
 }
-class Aws::EC2::AuthorizeSecurityGroupIngress {
+package Aws::EC2::AuthorizeSecurityGroupIngress {
+  use Moose;
   has CidrIp => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has FromPort => (is => 'ro', isa => 'Int');
@@ -1177,7 +1443,8 @@ class Aws::EC2::AuthorizeSecurityGroupIngress {
   has _returns => (isa => 'Aws::EC2::AuthorizeSecurityGroupIngressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeSecurityGroupIngressResult');  
 }
-class Aws::EC2::BundleInstance {
+package Aws::EC2::BundleInstance {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has Storage => (is => 'ro', isa => 'Aws::EC2::Storage', required => 1);
@@ -1186,7 +1453,8 @@ class Aws::EC2::BundleInstance {
   has _returns => (isa => 'Aws::EC2::BundleInstanceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'BundleInstanceResult');  
 }
-class Aws::EC2::CancelBundleTask {
+package Aws::EC2::CancelBundleTask {
+  use Moose;
   has BundleId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
 
@@ -1194,7 +1462,8 @@ class Aws::EC2::CancelBundleTask {
   has _returns => (isa => 'Aws::EC2::CancelBundleTaskResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CancelBundleTaskResult');  
 }
-class Aws::EC2::CancelConversionTask {
+package Aws::EC2::CancelConversionTask {
+  use Moose;
   has ConversionTaskId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has ReasonMessage => (is => 'ro', isa => 'Str');
@@ -1203,21 +1472,24 @@ class Aws::EC2::CancelConversionTask {
   has _returns => (isa => 'Aws::EC2::CancelConversionTaskResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CancelConversionTaskResult');  
 }
-class Aws::EC2::CancelExportTask {
+package Aws::EC2::CancelExportTask {
+  use Moose;
   has ExportTaskId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CancelExportTask');
   has _returns => (isa => 'Aws::EC2::CancelExportTaskResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CancelExportTaskResult');  
 }
-class Aws::EC2::CancelReservedInstancesListing {
+package Aws::EC2::CancelReservedInstancesListing {
+  use Moose;
   has ReservedInstancesListingId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CancelReservedInstancesListing');
   has _returns => (isa => 'Aws::EC2::CancelReservedInstancesListingResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CancelReservedInstancesListingResult');  
 }
-class Aws::EC2::CancelSpotInstanceRequests {
+package Aws::EC2::CancelSpotInstanceRequests {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has SpotInstanceRequestIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SpotInstanceRequestId' , required => 1);
 
@@ -1225,7 +1497,8 @@ class Aws::EC2::CancelSpotInstanceRequests {
   has _returns => (isa => 'Aws::EC2::CancelSpotInstanceRequestsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CancelSpotInstanceRequestsResult');  
 }
-class Aws::EC2::ConfirmProductInstance {
+package Aws::EC2::ConfirmProductInstance {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has ProductCode => (is => 'ro', isa => 'Str', required => 1);
@@ -1234,7 +1507,8 @@ class Aws::EC2::ConfirmProductInstance {
   has _returns => (isa => 'Aws::EC2::ConfirmProductInstanceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ConfirmProductInstanceResult');  
 }
-class Aws::EC2::CopyImage {
+package Aws::EC2::CopyImage {
+  use Moose;
   has ClientToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
@@ -1246,7 +1520,8 @@ class Aws::EC2::CopyImage {
   has _returns => (isa => 'Aws::EC2::CopyImageResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CopyImageResult');  
 }
-class Aws::EC2::CopySnapshot {
+package Aws::EC2::CopySnapshot {
+  use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
@@ -1256,7 +1531,8 @@ class Aws::EC2::CopySnapshot {
   has _returns => (isa => 'Aws::EC2::CopySnapshotResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CopySnapshotResult');  
 }
-class Aws::EC2::CreateCustomerGateway {
+package Aws::EC2::CreateCustomerGateway {
+  use Moose;
   has BgpAsn => (is => 'ro', isa => 'Int', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has PublicIp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'IpAddress' , required => 1);
@@ -1266,7 +1542,8 @@ class Aws::EC2::CreateCustomerGateway {
   has _returns => (isa => 'Aws::EC2::CreateCustomerGatewayResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCustomerGatewayResult');  
 }
-class Aws::EC2::CreateDhcpOptions {
+package Aws::EC2::CreateDhcpOptions {
+  use Moose;
   has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::DhcpConfiguration]', traits => ['NameInRequest'], request_name => 'DhcpConfiguration' , required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
 
@@ -1274,7 +1551,8 @@ class Aws::EC2::CreateDhcpOptions {
   has _returns => (isa => 'Aws::EC2::CreateDhcpOptionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDhcpOptionsResult');  
 }
-class Aws::EC2::CreateImage {
+package Aws::EC2::CreateImage {
+  use Moose;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
@@ -1286,7 +1564,8 @@ class Aws::EC2::CreateImage {
   has _returns => (isa => 'Aws::EC2::CreateImageResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateImageResult');  
 }
-class Aws::EC2::CreateInstanceExportTask {
+package Aws::EC2::CreateInstanceExportTask {
+  use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has ExportToS3Task => (is => 'ro', isa => 'Aws::EC2::ExportToS3TaskSpecification', traits => ['NameInRequest'], request_name => 'ExportToS3' );
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
@@ -1296,14 +1575,16 @@ class Aws::EC2::CreateInstanceExportTask {
   has _returns => (isa => 'Aws::EC2::CreateInstanceExportTaskResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateInstanceExportTaskResult');  
 }
-class Aws::EC2::CreateInternetGateway {
+package Aws::EC2::CreateInternetGateway {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInternetGateway');
   has _returns => (isa => 'Aws::EC2::CreateInternetGatewayResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateInternetGatewayResult');  
 }
-class Aws::EC2::CreateKeyPair {
+package Aws::EC2::CreateKeyPair {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1311,7 +1592,8 @@ class Aws::EC2::CreateKeyPair {
   has _returns => (isa => 'Aws::EC2::CreateKeyPairResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateKeyPairResult');  
 }
-class Aws::EC2::CreateNetworkAcl {
+package Aws::EC2::CreateNetworkAcl {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1319,7 +1601,8 @@ class Aws::EC2::CreateNetworkAcl {
   has _returns => (isa => 'Aws::EC2::CreateNetworkAclResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateNetworkAclResult');  
 }
-class Aws::EC2::CreateNetworkAclEntry {
+package Aws::EC2::CreateNetworkAclEntry {
+  use Moose;
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has Egress => (is => 'ro', isa => 'Str', required => 1);
@@ -1334,7 +1617,8 @@ class Aws::EC2::CreateNetworkAclEntry {
   has _returns => (isa => 'Aws::EC2::CreateNetworkAclEntryResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateNetworkAclEntryResult');  
 }
-class Aws::EC2::CreateNetworkInterface {
+package Aws::EC2::CreateNetworkInterface {
+  use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
@@ -1347,7 +1631,8 @@ class Aws::EC2::CreateNetworkInterface {
   has _returns => (isa => 'Aws::EC2::CreateNetworkInterfaceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateNetworkInterfaceResult');  
 }
-class Aws::EC2::CreatePlacementGroup {
+package Aws::EC2::CreatePlacementGroup {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has Strategy => (is => 'ro', isa => 'Str', required => 1);
@@ -1356,7 +1641,8 @@ class Aws::EC2::CreatePlacementGroup {
   has _returns => (isa => 'Aws::EC2::CreatePlacementGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePlacementGroupResult');  
 }
-class Aws::EC2::CreateReservedInstancesListing {
+package Aws::EC2::CreateReservedInstancesListing {
+  use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', required => 1);
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
   has PriceSchedules => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PriceScheduleSpecification]', required => 1);
@@ -1366,7 +1652,8 @@ class Aws::EC2::CreateReservedInstancesListing {
   has _returns => (isa => 'Aws::EC2::CreateReservedInstancesListingResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateReservedInstancesListingResult');  
 }
-class Aws::EC2::CreateRoute {
+package Aws::EC2::CreateRoute {
+  use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has GatewayId => (is => 'ro', isa => 'Str');
@@ -1378,7 +1665,8 @@ class Aws::EC2::CreateRoute {
   has _returns => (isa => 'Aws::EC2::CreateRouteResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateRouteResult');  
 }
-class Aws::EC2::CreateRouteTable {
+package Aws::EC2::CreateRouteTable {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1386,7 +1674,8 @@ class Aws::EC2::CreateRouteTable {
   has _returns => (isa => 'Aws::EC2::CreateRouteTableResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateRouteTableResult');  
 }
-class Aws::EC2::CreateSecurityGroup {
+package Aws::EC2::CreateSecurityGroup {
+  use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'GroupDescription' , required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -1396,7 +1685,8 @@ class Aws::EC2::CreateSecurityGroup {
   has _returns => (isa => 'Aws::EC2::CreateSecurityGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSecurityGroupResult');  
 }
-class Aws::EC2::CreateSnapshot {
+package Aws::EC2::CreateSnapshot {
+  use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
@@ -1405,7 +1695,8 @@ class Aws::EC2::CreateSnapshot {
   has _returns => (isa => 'Aws::EC2::CreateSnapshotResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSnapshotResult');  
 }
-class Aws::EC2::CreateSpotDatafeedSubscription {
+package Aws::EC2::CreateSpotDatafeedSubscription {
+  use Moose;
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has Prefix => (is => 'ro', isa => 'Str');
@@ -1414,7 +1705,8 @@ class Aws::EC2::CreateSpotDatafeedSubscription {
   has _returns => (isa => 'Aws::EC2::CreateSpotDatafeedSubscriptionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSpotDatafeedSubscriptionResult');  
 }
-class Aws::EC2::CreateSubnet {
+package Aws::EC2::CreateSubnet {
+  use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
@@ -1424,7 +1716,8 @@ class Aws::EC2::CreateSubnet {
   has _returns => (isa => 'Aws::EC2::CreateSubnetResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSubnetResult');  
 }
-class Aws::EC2::CreateTags {
+package Aws::EC2::CreateTags {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['NameInRequest'], request_name => 'Tag' , required => 1);
@@ -1433,7 +1726,8 @@ class Aws::EC2::CreateTags {
   has _returns => (isa => 'Aws::EC2::CreateTagsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateTagsResult');  
 }
-class Aws::EC2::CreateVolume {
+package Aws::EC2::CreateVolume {
+  use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
@@ -1445,7 +1739,8 @@ class Aws::EC2::CreateVolume {
   has _returns => (isa => 'Aws::EC2::CreateVolumeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVolumeResult');  
 }
-class Aws::EC2::CreateVpc {
+package Aws::EC2::CreateVpc {
+  use Moose;
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceTenancy => (is => 'ro', isa => 'Str');
@@ -1454,7 +1749,8 @@ class Aws::EC2::CreateVpc {
   has _returns => (isa => 'Aws::EC2::CreateVpcResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVpcResult');  
 }
-class Aws::EC2::CreateVpnConnection {
+package Aws::EC2::CreateVpnConnection {
+  use Moose;
   has CustomerGatewayId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has Options => (is => 'ro', isa => 'Aws::EC2::VpnConnectionOptionsSpecification');
@@ -1465,7 +1761,8 @@ class Aws::EC2::CreateVpnConnection {
   has _returns => (isa => 'Aws::EC2::CreateVpnConnectionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVpnConnectionResult');  
 }
-class Aws::EC2::CreateVpnConnectionRoute {
+package Aws::EC2::CreateVpnConnectionRoute {
+  use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has VpnConnectionId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1473,7 +1770,8 @@ class Aws::EC2::CreateVpnConnectionRoute {
   has _returns => (isa => 'Aws::EC2::CreateVpnConnectionRouteResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVpnConnectionRouteResult');  
 }
-class Aws::EC2::CreateVpnGateway {
+package Aws::EC2::CreateVpnGateway {
+  use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str', required => 1);
@@ -1482,7 +1780,8 @@ class Aws::EC2::CreateVpnGateway {
   has _returns => (isa => 'Aws::EC2::CreateVpnGatewayResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVpnGatewayResult');  
 }
-class Aws::EC2::DeleteCustomerGateway {
+package Aws::EC2::DeleteCustomerGateway {
+  use Moose;
   has CustomerGatewayId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
 
@@ -1490,7 +1789,8 @@ class Aws::EC2::DeleteCustomerGateway {
   has _returns => (isa => 'Aws::EC2::DeleteCustomerGatewayResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteCustomerGatewayResult');  
 }
-class Aws::EC2::DeleteDhcpOptions {
+package Aws::EC2::DeleteDhcpOptions {
+  use Moose;
   has DhcpOptionsId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
 
@@ -1498,7 +1798,8 @@ class Aws::EC2::DeleteDhcpOptions {
   has _returns => (isa => 'Aws::EC2::DeleteDhcpOptionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDhcpOptionsResult');  
 }
-class Aws::EC2::DeleteInternetGateway {
+package Aws::EC2::DeleteInternetGateway {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has InternetGatewayId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1506,7 +1807,8 @@ class Aws::EC2::DeleteInternetGateway {
   has _returns => (isa => 'Aws::EC2::DeleteInternetGatewayResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteInternetGatewayResult');  
 }
-class Aws::EC2::DeleteKeyPair {
+package Aws::EC2::DeleteKeyPair {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1514,7 +1816,8 @@ class Aws::EC2::DeleteKeyPair {
   has _returns => (isa => 'Aws::EC2::DeleteKeyPairResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteKeyPairResult');  
 }
-class Aws::EC2::DeleteNetworkAcl {
+package Aws::EC2::DeleteNetworkAcl {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has NetworkAclId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1522,7 +1825,8 @@ class Aws::EC2::DeleteNetworkAcl {
   has _returns => (isa => 'Aws::EC2::DeleteNetworkAclResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteNetworkAclResult');  
 }
-class Aws::EC2::DeleteNetworkAclEntry {
+package Aws::EC2::DeleteNetworkAclEntry {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Egress => (is => 'ro', isa => 'Str', required => 1);
   has NetworkAclId => (is => 'ro', isa => 'Str', required => 1);
@@ -1532,7 +1836,8 @@ class Aws::EC2::DeleteNetworkAclEntry {
   has _returns => (isa => 'Aws::EC2::DeleteNetworkAclEntryResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteNetworkAclEntryResult');  
 }
-class Aws::EC2::DeleteNetworkInterface {
+package Aws::EC2::DeleteNetworkInterface {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1540,7 +1845,8 @@ class Aws::EC2::DeleteNetworkInterface {
   has _returns => (isa => 'Aws::EC2::DeleteNetworkInterfaceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteNetworkInterfaceResult');  
 }
-class Aws::EC2::DeletePlacementGroup {
+package Aws::EC2::DeletePlacementGroup {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1548,7 +1854,8 @@ class Aws::EC2::DeletePlacementGroup {
   has _returns => (isa => 'Aws::EC2::DeletePlacementGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeletePlacementGroupResult');  
 }
-class Aws::EC2::DeleteRoute {
+package Aws::EC2::DeleteRoute {
+  use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
@@ -1557,7 +1864,8 @@ class Aws::EC2::DeleteRoute {
   has _returns => (isa => 'Aws::EC2::DeleteRouteResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteRouteResult');  
 }
-class Aws::EC2::DeleteRouteTable {
+package Aws::EC2::DeleteRouteTable {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1565,7 +1873,8 @@ class Aws::EC2::DeleteRouteTable {
   has _returns => (isa => 'Aws::EC2::DeleteRouteTableResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteRouteTableResult');  
 }
-class Aws::EC2::DeleteSecurityGroup {
+package Aws::EC2::DeleteSecurityGroup {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has GroupId => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
@@ -1574,7 +1883,8 @@ class Aws::EC2::DeleteSecurityGroup {
   has _returns => (isa => 'Aws::EC2::DeleteSecurityGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSecurityGroupResult');  
 }
-class Aws::EC2::DeleteSnapshot {
+package Aws::EC2::DeleteSnapshot {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has SnapshotId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1582,14 +1892,16 @@ class Aws::EC2::DeleteSnapshot {
   has _returns => (isa => 'Aws::EC2::DeleteSnapshotResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSnapshotResult');  
 }
-class Aws::EC2::DeleteSpotDatafeedSubscription {
+package Aws::EC2::DeleteSpotDatafeedSubscription {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSpotDatafeedSubscription');
   has _returns => (isa => 'Aws::EC2::DeleteSpotDatafeedSubscriptionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSpotDatafeedSubscriptionResult');  
 }
-class Aws::EC2::DeleteSubnet {
+package Aws::EC2::DeleteSubnet {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1597,7 +1909,8 @@ class Aws::EC2::DeleteSubnet {
   has _returns => (isa => 'Aws::EC2::DeleteSubnetResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSubnetResult');  
 }
-class Aws::EC2::DeleteTags {
+package Aws::EC2::DeleteTags {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
@@ -1606,7 +1919,8 @@ class Aws::EC2::DeleteTags {
   has _returns => (isa => 'Aws::EC2::DeleteTagsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteTagsResult');  
 }
-class Aws::EC2::DeleteVolume {
+package Aws::EC2::DeleteVolume {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1614,7 +1928,8 @@ class Aws::EC2::DeleteVolume {
   has _returns => (isa => 'Aws::EC2::DeleteVolumeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVolumeResult');  
 }
-class Aws::EC2::DeleteVpc {
+package Aws::EC2::DeleteVpc {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1622,7 +1937,8 @@ class Aws::EC2::DeleteVpc {
   has _returns => (isa => 'Aws::EC2::DeleteVpcResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVpcResult');  
 }
-class Aws::EC2::DeleteVpnConnection {
+package Aws::EC2::DeleteVpnConnection {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has VpnConnectionId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1630,7 +1946,8 @@ class Aws::EC2::DeleteVpnConnection {
   has _returns => (isa => 'Aws::EC2::DeleteVpnConnectionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVpnConnectionResult');  
 }
-class Aws::EC2::DeleteVpnConnectionRoute {
+package Aws::EC2::DeleteVpnConnectionRoute {
+  use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has VpnConnectionId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1638,7 +1955,8 @@ class Aws::EC2::DeleteVpnConnectionRoute {
   has _returns => (isa => 'Aws::EC2::DeleteVpnConnectionRouteResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVpnConnectionRouteResult');  
 }
-class Aws::EC2::DeleteVpnGateway {
+package Aws::EC2::DeleteVpnGateway {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1646,7 +1964,8 @@ class Aws::EC2::DeleteVpnGateway {
   has _returns => (isa => 'Aws::EC2::DeleteVpnGatewayResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVpnGatewayResult');  
 }
-class Aws::EC2::DeregisterImage {
+package Aws::EC2::DeregisterImage {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1654,7 +1973,8 @@ class Aws::EC2::DeregisterImage {
   has _returns => (isa => 'Aws::EC2::DeregisterImageResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeregisterImageResult');  
 }
-class Aws::EC2::DescribeAccountAttributes {
+package Aws::EC2::DescribeAccountAttributes {
+  use Moose;
   has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AttributeName' );
   has DryRun => (is => 'ro', isa => 'Str');
 
@@ -1662,7 +1982,8 @@ class Aws::EC2::DescribeAccountAttributes {
   has _returns => (isa => 'Aws::EC2::DescribeAccountAttributesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAccountAttributesResult');  
 }
-class Aws::EC2::DescribeAddresses {
+package Aws::EC2::DescribeAddresses {
+  use Moose;
   has AllocationIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AllocationId' );
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
@@ -1672,7 +1993,8 @@ class Aws::EC2::DescribeAddresses {
   has _returns => (isa => 'Aws::EC2::DescribeAddressesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAddressesResult');  
 }
-class Aws::EC2::DescribeAvailabilityZones {
+package Aws::EC2::DescribeAvailabilityZones {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has ZoneNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ZoneName' );
@@ -1681,7 +2003,8 @@ class Aws::EC2::DescribeAvailabilityZones {
   has _returns => (isa => 'Aws::EC2::DescribeAvailabilityZonesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityZonesResult');  
 }
-class Aws::EC2::DescribeBundleTasks {
+package Aws::EC2::DescribeBundleTasks {
+  use Moose;
   has BundleIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'BundleId' );
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
@@ -1690,7 +2013,8 @@ class Aws::EC2::DescribeBundleTasks {
   has _returns => (isa => 'Aws::EC2::DescribeBundleTasksResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeBundleTasksResult');  
 }
-class Aws::EC2::DescribeConversionTasks {
+package Aws::EC2::DescribeConversionTasks {
+  use Moose;
   has ConversionTaskIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ConversionTaskId' );
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
@@ -1699,7 +2023,8 @@ class Aws::EC2::DescribeConversionTasks {
   has _returns => (isa => 'Aws::EC2::DescribeConversionTasksResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConversionTasksResult');  
 }
-class Aws::EC2::DescribeCustomerGateways {
+package Aws::EC2::DescribeCustomerGateways {
+  use Moose;
   has CustomerGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CustomerGatewayId' );
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
@@ -1708,7 +2033,8 @@ class Aws::EC2::DescribeCustomerGateways {
   has _returns => (isa => 'Aws::EC2::DescribeCustomerGatewaysResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCustomerGatewaysResult');  
 }
-class Aws::EC2::DescribeDhcpOptions {
+package Aws::EC2::DescribeDhcpOptions {
+  use Moose;
   has DhcpOptionsIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'DhcpOptionsId' );
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
@@ -1717,14 +2043,16 @@ class Aws::EC2::DescribeDhcpOptions {
   has _returns => (isa => 'Aws::EC2::DescribeDhcpOptionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDhcpOptionsResult');  
 }
-class Aws::EC2::DescribeExportTasks {
+package Aws::EC2::DescribeExportTasks {
+  use Moose;
   has ExportTaskIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ExportTaskId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeExportTasks');
   has _returns => (isa => 'Aws::EC2::DescribeExportTasksResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeExportTasksResult');  
 }
-class Aws::EC2::DescribeImageAttribute {
+package Aws::EC2::DescribeImageAttribute {
+  use Moose;
   has Attribute => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
@@ -1733,7 +2061,8 @@ class Aws::EC2::DescribeImageAttribute {
   has _returns => (isa => 'Aws::EC2::DescribeImageAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeImageAttributeResult');  
 }
-class Aws::EC2::DescribeImages {
+package Aws::EC2::DescribeImages {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has ExecutableUsers => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ExecutableBy' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
@@ -1744,7 +2073,8 @@ class Aws::EC2::DescribeImages {
   has _returns => (isa => 'Aws::EC2::DescribeImagesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeImagesResult');  
 }
-class Aws::EC2::DescribeInstanceAttribute {
+package Aws::EC2::DescribeInstanceAttribute {
+  use Moose;
   has Attribute => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
@@ -1753,7 +2083,8 @@ class Aws::EC2::DescribeInstanceAttribute {
   has _returns => (isa => 'Aws::EC2::DescribeInstanceAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeInstanceAttributeResult');  
 }
-class Aws::EC2::DescribeInstanceStatus {
+package Aws::EC2::DescribeInstanceStatus {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has IncludeAllInstances => (is => 'ro', isa => 'Str');
@@ -1765,7 +2096,8 @@ class Aws::EC2::DescribeInstanceStatus {
   has _returns => (isa => 'Aws::EC2::DescribeInstanceStatusResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeInstanceStatusResult');  
 }
-class Aws::EC2::DescribeInstances {
+package Aws::EC2::DescribeInstances {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' );
@@ -1776,7 +2108,8 @@ class Aws::EC2::DescribeInstances {
   has _returns => (isa => 'Aws::EC2::DescribeInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeInstancesResult');  
 }
-class Aws::EC2::DescribeInternetGateways {
+package Aws::EC2::DescribeInternetGateways {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has InternetGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InternetGatewayId' );
@@ -1785,7 +2118,8 @@ class Aws::EC2::DescribeInternetGateways {
   has _returns => (isa => 'Aws::EC2::DescribeInternetGatewaysResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeInternetGatewaysResult');  
 }
-class Aws::EC2::DescribeKeyPairs {
+package Aws::EC2::DescribeKeyPairs {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has KeyNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'KeyName' );
@@ -1794,7 +2128,8 @@ class Aws::EC2::DescribeKeyPairs {
   has _returns => (isa => 'Aws::EC2::DescribeKeyPairsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeKeyPairsResult');  
 }
-class Aws::EC2::DescribeNetworkAcls {
+package Aws::EC2::DescribeNetworkAcls {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has NetworkAclIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'NetworkAclId' );
@@ -1803,7 +2138,8 @@ class Aws::EC2::DescribeNetworkAcls {
   has _returns => (isa => 'Aws::EC2::DescribeNetworkAclsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeNetworkAclsResult');  
 }
-class Aws::EC2::DescribeNetworkInterfaceAttribute {
+package Aws::EC2::DescribeNetworkInterfaceAttribute {
+  use Moose;
   has Attachment => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
@@ -1815,7 +2151,8 @@ class Aws::EC2::DescribeNetworkInterfaceAttribute {
   has _returns => (isa => 'Aws::EC2::DescribeNetworkInterfaceAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeNetworkInterfaceAttributeResult');  
 }
-class Aws::EC2::DescribeNetworkInterfaces {
+package Aws::EC2::DescribeNetworkInterfaces {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has NetworkInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'NetworkInterfaceId' );
@@ -1824,7 +2161,8 @@ class Aws::EC2::DescribeNetworkInterfaces {
   has _returns => (isa => 'Aws::EC2::DescribeNetworkInterfacesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeNetworkInterfacesResult');  
 }
-class Aws::EC2::DescribePlacementGroups {
+package Aws::EC2::DescribePlacementGroups {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupName' );
@@ -1833,7 +2171,8 @@ class Aws::EC2::DescribePlacementGroups {
   has _returns => (isa => 'Aws::EC2::DescribePlacementGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribePlacementGroupsResult');  
 }
-class Aws::EC2::DescribeRegions {
+package Aws::EC2::DescribeRegions {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has RegionNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RegionName' );
@@ -1842,7 +2181,8 @@ class Aws::EC2::DescribeRegions {
   has _returns => (isa => 'Aws::EC2::DescribeRegionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeRegionsResult');  
 }
-class Aws::EC2::DescribeReservedInstances {
+package Aws::EC2::DescribeReservedInstances {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has OfferingType => (is => 'ro', isa => 'Str');
@@ -1852,7 +2192,8 @@ class Aws::EC2::DescribeReservedInstances {
   has _returns => (isa => 'Aws::EC2::DescribeReservedInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesResult');  
 }
-class Aws::EC2::DescribeReservedInstancesListings {
+package Aws::EC2::DescribeReservedInstancesListings {
+  use Moose;
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
   has ReservedInstancesId => (is => 'ro', isa => 'Str');
   has ReservedInstancesListingId => (is => 'ro', isa => 'Str');
@@ -1861,7 +2202,8 @@ class Aws::EC2::DescribeReservedInstancesListings {
   has _returns => (isa => 'Aws::EC2::DescribeReservedInstancesListingsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesListingsResult');  
 }
-class Aws::EC2::DescribeReservedInstancesModifications {
+package Aws::EC2::DescribeReservedInstancesModifications {
+  use Moose;
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has NextToken => (is => 'ro', isa => 'Str');
   has ReservedInstancesModificationIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesModificationId' );
@@ -1870,7 +2212,8 @@ class Aws::EC2::DescribeReservedInstancesModifications {
   has _returns => (isa => 'Aws::EC2::DescribeReservedInstancesModificationsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesModificationsResult');  
 }
-class Aws::EC2::DescribeReservedInstancesOfferings {
+package Aws::EC2::DescribeReservedInstancesOfferings {
+  use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
@@ -1890,7 +2233,8 @@ class Aws::EC2::DescribeReservedInstancesOfferings {
   has _returns => (isa => 'Aws::EC2::DescribeReservedInstancesOfferingsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesOfferingsResult');  
 }
-class Aws::EC2::DescribeRouteTables {
+package Aws::EC2::DescribeRouteTables {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RouteTableId' );
@@ -1899,7 +2243,8 @@ class Aws::EC2::DescribeRouteTables {
   has _returns => (isa => 'Aws::EC2::DescribeRouteTablesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeRouteTablesResult');  
 }
-class Aws::EC2::DescribeSecurityGroups {
+package Aws::EC2::DescribeSecurityGroups {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has GroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupId' );
@@ -1909,7 +2254,8 @@ class Aws::EC2::DescribeSecurityGroups {
   has _returns => (isa => 'Aws::EC2::DescribeSecurityGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSecurityGroupsResult');  
 }
-class Aws::EC2::DescribeSnapshotAttribute {
+package Aws::EC2::DescribeSnapshotAttribute {
+  use Moose;
   has Attribute => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has SnapshotId => (is => 'ro', isa => 'Str', required => 1);
@@ -1918,7 +2264,8 @@ class Aws::EC2::DescribeSnapshotAttribute {
   has _returns => (isa => 'Aws::EC2::DescribeSnapshotAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotAttributeResult');  
 }
-class Aws::EC2::DescribeSnapshots {
+package Aws::EC2::DescribeSnapshots {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has OwnerIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'Owner' );
@@ -1929,14 +2276,16 @@ class Aws::EC2::DescribeSnapshots {
   has _returns => (isa => 'Aws::EC2::DescribeSnapshotsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotsResult');  
 }
-class Aws::EC2::DescribeSpotDatafeedSubscription {
+package Aws::EC2::DescribeSpotDatafeedSubscription {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSpotDatafeedSubscription');
   has _returns => (isa => 'Aws::EC2::DescribeSpotDatafeedSubscriptionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSpotDatafeedSubscriptionResult');  
 }
-class Aws::EC2::DescribeSpotInstanceRequests {
+package Aws::EC2::DescribeSpotInstanceRequests {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has SpotInstanceRequestIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SpotInstanceRequestId' );
@@ -1945,7 +2294,8 @@ class Aws::EC2::DescribeSpotInstanceRequests {
   has _returns => (isa => 'Aws::EC2::DescribeSpotInstanceRequestsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSpotInstanceRequestsResult');  
 }
-class Aws::EC2::DescribeSpotPriceHistory {
+package Aws::EC2::DescribeSpotPriceHistory {
+  use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
@@ -1960,7 +2310,8 @@ class Aws::EC2::DescribeSpotPriceHistory {
   has _returns => (isa => 'Aws::EC2::DescribeSpotPriceHistoryResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSpotPriceHistoryResult');  
 }
-class Aws::EC2::DescribeSubnets {
+package Aws::EC2::DescribeSubnets {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetId' );
@@ -1969,7 +2320,8 @@ class Aws::EC2::DescribeSubnets {
   has _returns => (isa => 'Aws::EC2::DescribeSubnetsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSubnetsResult');  
 }
-class Aws::EC2::DescribeTags {
+package Aws::EC2::DescribeTags {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has MaxResults => (is => 'ro', isa => 'Int');
@@ -1979,7 +2331,8 @@ class Aws::EC2::DescribeTags {
   has _returns => (isa => 'Aws::EC2::DescribeTagsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTagsResult');  
 }
-class Aws::EC2::DescribeVolumeAttribute {
+package Aws::EC2::DescribeVolumeAttribute {
+  use Moose;
   has Attribute => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
@@ -1988,7 +2341,8 @@ class Aws::EC2::DescribeVolumeAttribute {
   has _returns => (isa => 'Aws::EC2::DescribeVolumeAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVolumeAttributeResult');  
 }
-class Aws::EC2::DescribeVolumeStatus {
+package Aws::EC2::DescribeVolumeStatus {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has MaxResults => (is => 'ro', isa => 'Int');
@@ -1999,7 +2353,8 @@ class Aws::EC2::DescribeVolumeStatus {
   has _returns => (isa => 'Aws::EC2::DescribeVolumeStatusResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVolumeStatusResult');  
 }
-class Aws::EC2::DescribeVolumes {
+package Aws::EC2::DescribeVolumes {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has VolumeIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VolumeId' );
@@ -2008,7 +2363,8 @@ class Aws::EC2::DescribeVolumes {
   has _returns => (isa => 'Aws::EC2::DescribeVolumesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVolumesResult');  
 }
-class Aws::EC2::DescribeVpcAttribute {
+package Aws::EC2::DescribeVpcAttribute {
+  use Moose;
   has Attribute => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
@@ -2017,7 +2373,8 @@ class Aws::EC2::DescribeVpcAttribute {
   has _returns => (isa => 'Aws::EC2::DescribeVpcAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVpcAttributeResult');  
 }
-class Aws::EC2::DescribeVpcs {
+package Aws::EC2::DescribeVpcs {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has VpcIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcId' );
@@ -2026,7 +2383,8 @@ class Aws::EC2::DescribeVpcs {
   has _returns => (isa => 'Aws::EC2::DescribeVpcsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVpcsResult');  
 }
-class Aws::EC2::DescribeVpnConnections {
+package Aws::EC2::DescribeVpnConnections {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has VpnConnectionIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpnConnectionId' );
@@ -2035,7 +2393,8 @@ class Aws::EC2::DescribeVpnConnections {
   has _returns => (isa => 'Aws::EC2::DescribeVpnConnectionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVpnConnectionsResult');  
 }
-class Aws::EC2::DescribeVpnGateways {
+package Aws::EC2::DescribeVpnGateways {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has VpnGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpnGatewayId' );
@@ -2044,7 +2403,8 @@ class Aws::EC2::DescribeVpnGateways {
   has _returns => (isa => 'Aws::EC2::DescribeVpnGatewaysResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVpnGatewaysResult');  
 }
-class Aws::EC2::DetachInternetGateway {
+package Aws::EC2::DetachInternetGateway {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has InternetGatewayId => (is => 'ro', isa => 'Str', required => 1);
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
@@ -2053,7 +2413,8 @@ class Aws::EC2::DetachInternetGateway {
   has _returns => (isa => 'Aws::EC2::DetachInternetGatewayResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DetachInternetGatewayResult');  
 }
-class Aws::EC2::DetachNetworkInterface {
+package Aws::EC2::DetachNetworkInterface {
+  use Moose;
   has AttachmentId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has Force => (is => 'ro', isa => 'Str');
@@ -2062,7 +2423,8 @@ class Aws::EC2::DetachNetworkInterface {
   has _returns => (isa => 'Aws::EC2::DetachNetworkInterfaceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DetachNetworkInterfaceResult');  
 }
-class Aws::EC2::DetachVolume {
+package Aws::EC2::DetachVolume {
+  use Moose;
   has Device => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has Force => (is => 'ro', isa => 'Str');
@@ -2073,7 +2435,8 @@ class Aws::EC2::DetachVolume {
   has _returns => (isa => 'Aws::EC2::DetachVolumeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DetachVolumeResult');  
 }
-class Aws::EC2::DetachVpnGateway {
+package Aws::EC2::DetachVpnGateway {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
   has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
@@ -2082,7 +2445,8 @@ class Aws::EC2::DetachVpnGateway {
   has _returns => (isa => 'Aws::EC2::DetachVpnGatewayResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DetachVpnGatewayResult');  
 }
-class Aws::EC2::DisableVgwRoutePropagation {
+package Aws::EC2::DisableVgwRoutePropagation {
+  use Moose;
   has GatewayId => (is => 'ro', isa => 'Str', required => 1);
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -2090,7 +2454,8 @@ class Aws::EC2::DisableVgwRoutePropagation {
   has _returns => (isa => 'Aws::EC2::DisableVgwRoutePropagationResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DisableVgwRoutePropagationResult');  
 }
-class Aws::EC2::DisassociateAddress {
+package Aws::EC2::DisassociateAddress {
+  use Moose;
   has AssociationId => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has PublicIp => (is => 'ro', isa => 'Str');
@@ -2099,7 +2464,8 @@ class Aws::EC2::DisassociateAddress {
   has _returns => (isa => 'Aws::EC2::DisassociateAddressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DisassociateAddressResult');  
 }
-class Aws::EC2::DisassociateRouteTable {
+package Aws::EC2::DisassociateRouteTable {
+  use Moose;
   has AssociationId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
 
@@ -2107,7 +2473,8 @@ class Aws::EC2::DisassociateRouteTable {
   has _returns => (isa => 'Aws::EC2::DisassociateRouteTableResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DisassociateRouteTableResult');  
 }
-class Aws::EC2::EnableVgwRoutePropagation {
+package Aws::EC2::EnableVgwRoutePropagation {
+  use Moose;
   has GatewayId => (is => 'ro', isa => 'Str', required => 1);
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -2115,7 +2482,8 @@ class Aws::EC2::EnableVgwRoutePropagation {
   has _returns => (isa => 'Aws::EC2::EnableVgwRoutePropagationResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'EnableVgwRoutePropagationResult');  
 }
-class Aws::EC2::EnableVolumeIO {
+package Aws::EC2::EnableVolumeIO {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -2123,7 +2491,8 @@ class Aws::EC2::EnableVolumeIO {
   has _returns => (isa => 'Aws::EC2::EnableVolumeIOResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'EnableVolumeIOResult');  
 }
-class Aws::EC2::GetConsoleOutput {
+package Aws::EC2::GetConsoleOutput {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -2131,7 +2500,8 @@ class Aws::EC2::GetConsoleOutput {
   has _returns => (isa => 'Aws::EC2::GetConsoleOutputResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetConsoleOutputResult');  
 }
-class Aws::EC2::GetPasswordData {
+package Aws::EC2::GetPasswordData {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -2139,7 +2509,8 @@ class Aws::EC2::GetPasswordData {
   has _returns => (isa => 'Aws::EC2::GetPasswordDataResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'GetPasswordDataResult');  
 }
-class Aws::EC2::ImportInstance {
+package Aws::EC2::ImportInstance {
+  use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has DiskImages => (is => 'ro', isa => 'ArrayRef[Aws::EC2::DiskImage]', traits => ['NameInRequest'], request_name => 'DiskImage' );
   has DryRun => (is => 'ro', isa => 'Str');
@@ -2150,7 +2521,8 @@ class Aws::EC2::ImportInstance {
   has _returns => (isa => 'Aws::EC2::ImportInstanceResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ImportInstanceResult');  
 }
-class Aws::EC2::ImportKeyPair {
+package Aws::EC2::ImportKeyPair {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str', required => 1);
   has PublicKeyMaterial => (is => 'ro', isa => 'Str', required => 1);
@@ -2159,7 +2531,8 @@ class Aws::EC2::ImportKeyPair {
   has _returns => (isa => 'Aws::EC2::ImportKeyPairResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ImportKeyPairResult');  
 }
-class Aws::EC2::ImportVolume {
+package Aws::EC2::ImportVolume {
+  use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
@@ -2170,7 +2543,8 @@ class Aws::EC2::ImportVolume {
   has _returns => (isa => 'Aws::EC2::ImportVolumeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ImportVolumeResult');  
 }
-class Aws::EC2::ModifyImageAttribute {
+package Aws::EC2::ModifyImageAttribute {
+  use Moose;
   has Attribute => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Aws::EC2::AttributeValue');
   has DryRun => (is => 'ro', isa => 'Str');
@@ -2186,7 +2560,8 @@ class Aws::EC2::ModifyImageAttribute {
   has _returns => (isa => 'Aws::EC2::ModifyImageAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyImageAttributeResult');  
 }
-class Aws::EC2::ModifyInstanceAttribute {
+package Aws::EC2::ModifyInstanceAttribute {
+  use Moose;
   has Attribute => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceBlockDeviceMappingSpecification]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has DisableApiTermination => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue');
@@ -2207,7 +2582,8 @@ class Aws::EC2::ModifyInstanceAttribute {
   has _returns => (isa => 'Aws::EC2::ModifyInstanceAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyInstanceAttributeResult');  
 }
-class Aws::EC2::ModifyNetworkInterfaceAttribute {
+package Aws::EC2::ModifyNetworkInterfaceAttribute {
+  use Moose;
   has Attachment => (is => 'ro', isa => 'Aws::EC2::NetworkInterfaceAttachmentChanges');
   has Description => (is => 'ro', isa => 'Aws::EC2::AttributeValue');
   has DryRun => (is => 'ro', isa => 'Str');
@@ -2219,7 +2595,8 @@ class Aws::EC2::ModifyNetworkInterfaceAttribute {
   has _returns => (isa => 'Aws::EC2::ModifyNetworkInterfaceAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyNetworkInterfaceAttributeResult');  
 }
-class Aws::EC2::ModifyReservedInstances {
+package Aws::EC2::ModifyReservedInstances {
+  use Moose;
   has ClientToken => (is => 'ro', isa => 'Str');
   has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesId' , required => 1);
   has TargetConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ReservedInstancesConfiguration]', traits => ['NameInRequest'], request_name => 'ReservedInstancesConfigurationSetItemType' , required => 1);
@@ -2228,7 +2605,8 @@ class Aws::EC2::ModifyReservedInstances {
   has _returns => (isa => 'Aws::EC2::ModifyReservedInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyReservedInstancesResult');  
 }
-class Aws::EC2::ModifySnapshotAttribute {
+package Aws::EC2::ModifySnapshotAttribute {
+  use Moose;
   has Attribute => (is => 'ro', isa => 'Str');
   has CreateVolumePermission => (is => 'ro', isa => 'Aws::EC2::CreateVolumePermissionModifications');
   has DryRun => (is => 'ro', isa => 'Str');
@@ -2241,7 +2619,8 @@ class Aws::EC2::ModifySnapshotAttribute {
   has _returns => (isa => 'Aws::EC2::ModifySnapshotAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifySnapshotAttributeResult');  
 }
-class Aws::EC2::ModifyVolumeAttribute {
+package Aws::EC2::ModifyVolumeAttribute {
+  use Moose;
   has AutoEnableIO => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
@@ -2250,7 +2629,8 @@ class Aws::EC2::ModifyVolumeAttribute {
   has _returns => (isa => 'Aws::EC2::ModifyVolumeAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyVolumeAttributeResult');  
 }
-class Aws::EC2::ModifyVpcAttribute {
+package Aws::EC2::ModifyVpcAttribute {
+  use Moose;
   has EnableDnsHostnames => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue');
   has EnableDnsSupport => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
@@ -2259,7 +2639,8 @@ class Aws::EC2::ModifyVpcAttribute {
   has _returns => (isa => 'Aws::EC2::ModifyVpcAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyVpcAttributeResult');  
 }
-class Aws::EC2::MonitorInstances {
+package Aws::EC2::MonitorInstances {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
@@ -2267,7 +2648,8 @@ class Aws::EC2::MonitorInstances {
   has _returns => (isa => 'Aws::EC2::MonitorInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'MonitorInstancesResult');  
 }
-class Aws::EC2::PurchaseReservedInstancesOffering {
+package Aws::EC2::PurchaseReservedInstancesOffering {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
   has LimitPrice => (is => 'ro', isa => 'Aws::EC2::ReservedInstanceLimitPrice');
@@ -2277,7 +2659,8 @@ class Aws::EC2::PurchaseReservedInstancesOffering {
   has _returns => (isa => 'Aws::EC2::PurchaseReservedInstancesOfferingResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedInstancesOfferingResult');  
 }
-class Aws::EC2::RebootInstances {
+package Aws::EC2::RebootInstances {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
@@ -2285,7 +2668,8 @@ class Aws::EC2::RebootInstances {
   has _returns => (isa => 'Aws::EC2::RebootInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RebootInstancesResult');  
 }
-class Aws::EC2::RegisterImage {
+package Aws::EC2::RegisterImage {
+  use Moose;
   has Architecture => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has Description => (is => 'ro', isa => 'Str');
@@ -2302,7 +2686,8 @@ class Aws::EC2::RegisterImage {
   has _returns => (isa => 'Aws::EC2::RegisterImageResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterImageResult');  
 }
-class Aws::EC2::ReleaseAddress {
+package Aws::EC2::ReleaseAddress {
+  use Moose;
   has AllocationId => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has PublicIp => (is => 'ro', isa => 'Str');
@@ -2311,7 +2696,8 @@ class Aws::EC2::ReleaseAddress {
   has _returns => (isa => 'Aws::EC2::ReleaseAddressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ReleaseAddressResult');  
 }
-class Aws::EC2::ReplaceNetworkAclAssociation {
+package Aws::EC2::ReplaceNetworkAclAssociation {
+  use Moose;
   has AssociationId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has NetworkAclId => (is => 'ro', isa => 'Str', required => 1);
@@ -2320,7 +2706,8 @@ class Aws::EC2::ReplaceNetworkAclAssociation {
   has _returns => (isa => 'Aws::EC2::ReplaceNetworkAclAssociationResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ReplaceNetworkAclAssociationResult');  
 }
-class Aws::EC2::ReplaceNetworkAclEntry {
+package Aws::EC2::ReplaceNetworkAclEntry {
+  use Moose;
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has Egress => (is => 'ro', isa => 'Str', required => 1);
@@ -2335,7 +2722,8 @@ class Aws::EC2::ReplaceNetworkAclEntry {
   has _returns => (isa => 'Aws::EC2::ReplaceNetworkAclEntryResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ReplaceNetworkAclEntryResult');  
 }
-class Aws::EC2::ReplaceRoute {
+package Aws::EC2::ReplaceRoute {
+  use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has GatewayId => (is => 'ro', isa => 'Str');
@@ -2347,7 +2735,8 @@ class Aws::EC2::ReplaceRoute {
   has _returns => (isa => 'Aws::EC2::ReplaceRouteResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ReplaceRouteResult');  
 }
-class Aws::EC2::ReplaceRouteTableAssociation {
+package Aws::EC2::ReplaceRouteTableAssociation {
+  use Moose;
   has AssociationId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
@@ -2356,7 +2745,8 @@ class Aws::EC2::ReplaceRouteTableAssociation {
   has _returns => (isa => 'Aws::EC2::ReplaceRouteTableAssociationResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ReplaceRouteTableAssociationResult');  
 }
-class Aws::EC2::ReportInstanceStatus {
+package Aws::EC2::ReportInstanceStatus {
+  use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
@@ -2369,7 +2759,8 @@ class Aws::EC2::ReportInstanceStatus {
   has _returns => (isa => 'Aws::EC2::ReportInstanceStatusResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ReportInstanceStatusResult');  
 }
-class Aws::EC2::RequestSpotInstances {
+package Aws::EC2::RequestSpotInstances {
+  use Moose;
   has AvailabilityZoneGroup => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int');
@@ -2384,7 +2775,8 @@ class Aws::EC2::RequestSpotInstances {
   has _returns => (isa => 'Aws::EC2::RequestSpotInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RequestSpotInstancesResult');  
 }
-class Aws::EC2::ResetImageAttribute {
+package Aws::EC2::ResetImageAttribute {
+  use Moose;
   has Attribute => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
@@ -2393,7 +2785,8 @@ class Aws::EC2::ResetImageAttribute {
   has _returns => (isa => 'Aws::EC2::ResetImageAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ResetImageAttributeResult');  
 }
-class Aws::EC2::ResetInstanceAttribute {
+package Aws::EC2::ResetInstanceAttribute {
+  use Moose;
   has Attribute => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
@@ -2402,7 +2795,8 @@ class Aws::EC2::ResetInstanceAttribute {
   has _returns => (isa => 'Aws::EC2::ResetInstanceAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ResetInstanceAttributeResult');  
 }
-class Aws::EC2::ResetNetworkInterfaceAttribute {
+package Aws::EC2::ResetNetworkInterfaceAttribute {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has SourceDestCheck => (is => 'ro', isa => 'Str');
@@ -2411,7 +2805,8 @@ class Aws::EC2::ResetNetworkInterfaceAttribute {
   has _returns => (isa => 'Aws::EC2::ResetNetworkInterfaceAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ResetNetworkInterfaceAttributeResult');  
 }
-class Aws::EC2::ResetSnapshotAttribute {
+package Aws::EC2::ResetSnapshotAttribute {
+  use Moose;
   has Attribute => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has SnapshotId => (is => 'ro', isa => 'Str', required => 1);
@@ -2420,7 +2815,8 @@ class Aws::EC2::ResetSnapshotAttribute {
   has _returns => (isa => 'Aws::EC2::ResetSnapshotAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ResetSnapshotAttributeResult');  
 }
-class Aws::EC2::RevokeSecurityGroupEgress {
+package Aws::EC2::RevokeSecurityGroupEgress {
+  use Moose;
   has CidrIp => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has FromPort => (is => 'ro', isa => 'Int');
@@ -2435,7 +2831,8 @@ class Aws::EC2::RevokeSecurityGroupEgress {
   has _returns => (isa => 'Aws::EC2::RevokeSecurityGroupEgressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupEgressResult');  
 }
-class Aws::EC2::RevokeSecurityGroupIngress {
+package Aws::EC2::RevokeSecurityGroupIngress {
+  use Moose;
   has CidrIp => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has FromPort => (is => 'ro', isa => 'Int');
@@ -2451,7 +2848,8 @@ class Aws::EC2::RevokeSecurityGroupIngress {
   has _returns => (isa => 'Aws::EC2::RevokeSecurityGroupIngressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupIngressResult');  
 }
-class Aws::EC2::RunInstances {
+package Aws::EC2::RunInstances {
+  use Moose;
   has AdditionalInfo => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has ClientToken => (is => 'ro', isa => 'Str');
@@ -2480,7 +2878,8 @@ class Aws::EC2::RunInstances {
   has _returns => (isa => 'Aws::EC2::RunInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RunInstancesResult');  
 }
-class Aws::EC2::StartInstances {
+package Aws::EC2::StartInstances {
+  use Moose;
   has AdditionalInfo => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
@@ -2489,7 +2888,8 @@ class Aws::EC2::StartInstances {
   has _returns => (isa => 'Aws::EC2::StartInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'StartInstancesResult');  
 }
-class Aws::EC2::StopInstances {
+package Aws::EC2::StopInstances {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has Force => (is => 'ro', isa => 'Str');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
@@ -2498,7 +2898,8 @@ class Aws::EC2::StopInstances {
   has _returns => (isa => 'Aws::EC2::StopInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'StopInstancesResult');  
 }
-class Aws::EC2::TerminateInstances {
+package Aws::EC2::TerminateInstances {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
@@ -2506,7 +2907,8 @@ class Aws::EC2::TerminateInstances {
   has _returns => (isa => 'Aws::EC2::TerminateInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'TerminateInstancesResult');  
 }
-class Aws::EC2::UnassignPrivateIpAddresses {
+package Aws::EC2::UnassignPrivateIpAddresses {
+  use Moose;
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PrivateIpAddress' , required => 1);
 
@@ -2514,7 +2916,8 @@ class Aws::EC2::UnassignPrivateIpAddresses {
   has _returns => (isa => 'Aws::EC2::UnassignPrivateIpAddressesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UnassignPrivateIpAddressesResult');  
 }
-class Aws::EC2::UnmonitorInstances {
+package Aws::EC2::UnmonitorInstances {
+  use Moose;
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
@@ -2523,25 +2926,35 @@ class Aws::EC2::UnmonitorInstances {
   has _result_key => (isa => 'Str', is => 'ro', default => 'UnmonitorInstancesResult');  
 }
 
-class Aws::EC2::AllocateAddressResult with AWS::API::UnwrappedParser {
+package Aws::EC2::AllocateAddressResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has AllocationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'allocationId');
   has Domain => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'domain');
   has PublicIp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicIp');
 
 }
-class Aws::EC2::AssociateAddressResult with AWS::API::UnwrappedParser {
+package Aws::EC2::AssociateAddressResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has AssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'associationId');
 
 }
-class Aws::EC2::AssociateRouteTableResult with AWS::API::UnwrappedParser {
+package Aws::EC2::AssociateRouteTableResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has AssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'associationId');
 
 }
-class Aws::EC2::AttachNetworkInterfaceResult with AWS::API::UnwrappedParser {
+package Aws::EC2::AttachNetworkInterfaceResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has AttachmentId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachmentId');
 
 }
-class Aws::EC2::AttachVolumeResult with AWS::API::UnwrappedParser {
+package Aws::EC2::AttachVolumeResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
   has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
   has Device => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'device');
@@ -2550,85 +2963,125 @@ class Aws::EC2::AttachVolumeResult with AWS::API::UnwrappedParser {
   has VolumeId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'volumeId');
 
 }
-class Aws::EC2::AttachVpnGatewayResult with AWS::API::UnwrappedParser {
+package Aws::EC2::AttachVpnGatewayResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has VpcAttachment => (is => 'ro', isa => 'Aws::EC2::VpcAttachment', traits => ['Unwrapped'], xmlname => 'attachment');
 
 }
-class Aws::EC2::BundleInstanceResult with AWS::API::UnwrappedParser {
+package Aws::EC2::BundleInstanceResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has BundleTask => (is => 'ro', isa => 'Aws::EC2::BundleTask', traits => ['Unwrapped'], xmlname => 'bundleInstanceTask');
 
 }
-class Aws::EC2::CancelBundleTaskResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CancelBundleTaskResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has BundleTask => (is => 'ro', isa => 'Aws::EC2::BundleTask', traits => ['Unwrapped'], xmlname => 'bundleInstanceTask');
 
 }
-class Aws::EC2::CancelReservedInstancesListingResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CancelReservedInstancesListingResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has ReservedInstancesListings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ReservedInstancesListing]', traits => ['Unwrapped'], xmlname => 'reservedInstancesListingsSet');
 
 }
-class Aws::EC2::CancelSpotInstanceRequestsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CancelSpotInstanceRequestsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has CancelledSpotInstanceRequests => (is => 'ro', isa => 'ArrayRef[Aws::EC2::CancelledSpotInstanceRequest]', traits => ['Unwrapped'], xmlname => 'spotInstanceRequestSet');
 
 }
-class Aws::EC2::ConfirmProductInstanceResult with AWS::API::UnwrappedParser {
+package Aws::EC2::ConfirmProductInstanceResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
 
 }
-class Aws::EC2::CopyImageResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CopyImageResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has ImageId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'imageId');
 
 }
-class Aws::EC2::CopySnapshotResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CopySnapshotResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has SnapshotId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'snapshotId');
 
 }
-class Aws::EC2::CreateCustomerGatewayResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateCustomerGatewayResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has CustomerGateway => (is => 'ro', isa => 'Aws::EC2::CustomerGateway', traits => ['Unwrapped'], xmlname => 'customerGateway');
 
 }
-class Aws::EC2::CreateDhcpOptionsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateDhcpOptionsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has DhcpOptions => (is => 'ro', isa => 'Aws::EC2::DhcpOptions', traits => ['Unwrapped'], xmlname => 'dhcpOptions');
 
 }
-class Aws::EC2::CreateImageResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateImageResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has ImageId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'imageId');
 
 }
-class Aws::EC2::CreateInstanceExportTaskResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateInstanceExportTaskResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has ExportTask => (is => 'ro', isa => 'Aws::EC2::ExportTask', traits => ['Unwrapped'], xmlname => 'exportTask');
 
 }
-class Aws::EC2::CreateInternetGatewayResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateInternetGatewayResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has InternetGateway => (is => 'ro', isa => 'Aws::EC2::InternetGateway', traits => ['Unwrapped'], xmlname => 'internetGateway');
 
 }
-class Aws::EC2::CreateKeyPairResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateKeyPairResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has KeyFingerprint => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyFingerprint');
   has KeyMaterial => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyMaterial');
   has KeyName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyName');
 
 }
-class Aws::EC2::CreateNetworkAclResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateNetworkAclResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has NetworkAcl => (is => 'ro', isa => 'Aws::EC2::NetworkAcl', traits => ['Unwrapped'], xmlname => 'networkAcl');
 
 }
-class Aws::EC2::CreateNetworkInterfaceResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateNetworkInterfaceResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has NetworkInterface => (is => 'ro', isa => 'Aws::EC2::NetworkInterface', traits => ['Unwrapped'], xmlname => 'networkInterface');
 
 }
-class Aws::EC2::CreateReservedInstancesListingResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateReservedInstancesListingResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has ReservedInstancesListings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ReservedInstancesListing]', traits => ['Unwrapped'], xmlname => 'reservedInstancesListingsSet');
 
 }
-class Aws::EC2::CreateRouteTableResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateRouteTableResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has RouteTable => (is => 'ro', isa => 'Aws::EC2::RouteTable', traits => ['Unwrapped'], xmlname => 'routeTable');
 
 }
-class Aws::EC2::CreateSecurityGroupResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateSecurityGroupResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has GroupId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupId');
 
 }
-class Aws::EC2::CreateSnapshotResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateSnapshotResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has OwnerAlias => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAlias');
   has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
@@ -2641,15 +3094,21 @@ class Aws::EC2::CreateSnapshotResult with AWS::API::UnwrappedParser {
   has VolumeSize => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'volumeSize');
 
 }
-class Aws::EC2::CreateSpotDatafeedSubscriptionResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateSpotDatafeedSubscriptionResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has SpotDatafeedSubscription => (is => 'ro', isa => 'Aws::EC2::SpotDatafeedSubscription', traits => ['Unwrapped'], xmlname => 'spotDatafeedSubscription');
 
 }
-class Aws::EC2::CreateSubnetResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateSubnetResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has Subnet => (is => 'ro', isa => 'Aws::EC2::Subnet', traits => ['Unwrapped'], xmlname => 'subnet');
 
 }
-class Aws::EC2::CreateVolumeResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateVolumeResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has Attachments => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VolumeAttachment]', traits => ['Unwrapped'], xmlname => 'attachmentSet');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has CreateTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createTime');
@@ -2662,51 +3121,75 @@ class Aws::EC2::CreateVolumeResult with AWS::API::UnwrappedParser {
   has VolumeType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'volumeType');
 
 }
-class Aws::EC2::CreateVpcResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateVpcResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has Vpc => (is => 'ro', isa => 'Aws::EC2::Vpc', traits => ['Unwrapped'], xmlname => 'vpc');
 
 }
-class Aws::EC2::CreateVpnConnectionResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateVpnConnectionResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has VpnConnection => (is => 'ro', isa => 'Aws::EC2::VpnConnection', traits => ['Unwrapped'], xmlname => 'vpnConnection');
 
 }
-class Aws::EC2::CreateVpnGatewayResult with AWS::API::UnwrappedParser {
+package Aws::EC2::CreateVpnGatewayResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has VpnGateway => (is => 'ro', isa => 'Aws::EC2::VpnGateway', traits => ['Unwrapped'], xmlname => 'vpnGateway');
 
 }
-class Aws::EC2::DescribeAccountAttributesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeAccountAttributesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has AccountAttributes => (is => 'ro', isa => 'ArrayRef[Aws::EC2::AccountAttribute]', traits => ['Unwrapped'], xmlname => 'accountAttributeSet');
 
 }
-class Aws::EC2::DescribeAddressesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeAddressesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has Addresses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Address]', traits => ['Unwrapped'], xmlname => 'addressesSet');
 
 }
-class Aws::EC2::DescribeAvailabilityZonesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeAvailabilityZonesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Aws::EC2::AvailabilityZone]', traits => ['Unwrapped'], xmlname => 'availabilityZoneInfo');
 
 }
-class Aws::EC2::DescribeBundleTasksResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeBundleTasksResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has BundleTasks => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BundleTask]', traits => ['Unwrapped'], xmlname => 'bundleInstanceTasksSet');
 
 }
-class Aws::EC2::DescribeConversionTasksResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeConversionTasksResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has ConversionTasks => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ConversionTask]', traits => ['Unwrapped'], xmlname => 'conversionTasks');
 
 }
-class Aws::EC2::DescribeCustomerGatewaysResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeCustomerGatewaysResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has CustomerGateways => (is => 'ro', isa => 'ArrayRef[Aws::EC2::CustomerGateway]', traits => ['Unwrapped'], xmlname => 'customerGatewaySet');
 
 }
-class Aws::EC2::DescribeDhcpOptionsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeDhcpOptionsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has DhcpOptions => (is => 'ro', isa => 'ArrayRef[Aws::EC2::DhcpOptions]', traits => ['Unwrapped'], xmlname => 'dhcpOptionsSet');
 
 }
-class Aws::EC2::DescribeExportTasksResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeExportTasksResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has ExportTasks => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ExportTask]', traits => ['Unwrapped'], xmlname => 'exportTaskSet');
 
 }
-class Aws::EC2::DescribeImageAttributeResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeImageAttributeResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['Unwrapped'], xmlname => 'blockDeviceMapping');
   has Description => (is => 'ro', isa => 'Aws::EC2::AttributeValue', traits => ['Unwrapped'], xmlname => 'description');
   has ImageId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'imageId');
@@ -2717,11 +3200,15 @@ class Aws::EC2::DescribeImageAttributeResult with AWS::API::UnwrappedParser {
   has SriovNetSupport => (is => 'ro', isa => 'Aws::EC2::AttributeValue', traits => ['Unwrapped'], xmlname => 'sriovNetSupport');
 
 }
-class Aws::EC2::DescribeImagesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeImagesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has Images => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Image]', traits => ['Unwrapped'], xmlname => 'imagesSet');
 
 }
-class Aws::EC2::DescribeInstanceAttributeResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeInstanceAttributeResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceBlockDeviceMapping]', traits => ['Unwrapped'], xmlname => 'blockDeviceMapping');
   has DisableApiTermination => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue', traits => ['Unwrapped'], xmlname => 'disableApiTermination');
   has EbsOptimized => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue', traits => ['Unwrapped'], xmlname => 'ebsOptimized');
@@ -2736,29 +3223,41 @@ class Aws::EC2::DescribeInstanceAttributeResult with AWS::API::UnwrappedParser {
   has UserData => (is => 'ro', isa => 'Aws::EC2::AttributeValue', traits => ['Unwrapped'], xmlname => 'userData');
 
 }
-class Aws::EC2::DescribeInstanceStatusResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeInstanceStatusResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has InstanceStatuses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceStatus]', traits => ['Unwrapped'], xmlname => 'instanceStatusSet');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
 
 }
-class Aws::EC2::DescribeInstancesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeInstancesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
   has Reservations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Reservation]', traits => ['Unwrapped'], xmlname => 'reservationSet');
 
 }
-class Aws::EC2::DescribeInternetGatewaysResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeInternetGatewaysResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has InternetGateways => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InternetGateway]', traits => ['Unwrapped'], xmlname => 'internetGatewaySet');
 
 }
-class Aws::EC2::DescribeKeyPairsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeKeyPairsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has KeyPairs => (is => 'ro', isa => 'ArrayRef[Aws::EC2::KeyPairInfo]', traits => ['Unwrapped'], xmlname => 'keySet');
 
 }
-class Aws::EC2::DescribeNetworkAclsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeNetworkAclsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has NetworkAcls => (is => 'ro', isa => 'ArrayRef[Aws::EC2::NetworkAcl]', traits => ['Unwrapped'], xmlname => 'networkAclSet');
 
 }
-class Aws::EC2::DescribeNetworkInterfaceAttributeResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeNetworkInterfaceAttributeResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has Attachment => (is => 'ro', isa => 'Aws::EC2::NetworkInterfaceAttachment', traits => ['Unwrapped'], xmlname => 'attachment');
   has Description => (is => 'ro', isa => 'Aws::EC2::AttributeValue', traits => ['Unwrapped'], xmlname => 'description');
   has Groups => (is => 'ro', isa => 'ArrayRef[Aws::EC2::GroupIdentifier]', traits => ['Unwrapped'], xmlname => 'groupSet');
@@ -2766,110 +3265,158 @@ class Aws::EC2::DescribeNetworkInterfaceAttributeResult with AWS::API::Unwrapped
   has SourceDestCheck => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue', traits => ['Unwrapped'], xmlname => 'sourceDestCheck');
 
 }
-class Aws::EC2::DescribeNetworkInterfacesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeNetworkInterfacesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Aws::EC2::NetworkInterface]', traits => ['Unwrapped'], xmlname => 'networkInterfaceSet');
 
 }
-class Aws::EC2::DescribePlacementGroupsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribePlacementGroupsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has PlacementGroups => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PlacementGroup]', traits => ['Unwrapped'], xmlname => 'placementGroupSet');
 
 }
-class Aws::EC2::DescribeRegionsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeRegionsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has Regions => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Region]', traits => ['Unwrapped'], xmlname => 'regionInfo');
 
 }
-class Aws::EC2::DescribeReservedInstancesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeReservedInstancesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has ReservedInstances => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ReservedInstances]', traits => ['Unwrapped'], xmlname => 'reservedInstancesSet');
 
 }
-class Aws::EC2::DescribeReservedInstancesListingsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeReservedInstancesListingsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has ReservedInstancesListings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ReservedInstancesListing]', traits => ['Unwrapped'], xmlname => 'reservedInstancesListingsSet');
 
 }
-class Aws::EC2::DescribeReservedInstancesModificationsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeReservedInstancesModificationsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
   has ReservedInstancesModifications => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ReservedInstancesModification]', traits => ['Unwrapped'], xmlname => 'reservedInstancesModificationsSet');
 
 }
-class Aws::EC2::DescribeReservedInstancesOfferingsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeReservedInstancesOfferingsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
   has ReservedInstancesOfferings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ReservedInstancesOffering]', traits => ['Unwrapped'], xmlname => 'reservedInstancesOfferingsSet');
 
 }
-class Aws::EC2::DescribeRouteTablesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeRouteTablesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has RouteTables => (is => 'ro', isa => 'ArrayRef[Aws::EC2::RouteTable]', traits => ['Unwrapped'], xmlname => 'routeTableSet');
 
 }
-class Aws::EC2::DescribeSecurityGroupsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeSecurityGroupsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::EC2::SecurityGroup]', traits => ['Unwrapped'], xmlname => 'securityGroupInfo');
 
 }
-class Aws::EC2::DescribeSnapshotAttributeResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeSnapshotAttributeResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has CreateVolumePermissions => (is => 'ro', isa => 'ArrayRef[Aws::EC2::CreateVolumePermission]', traits => ['Unwrapped'], xmlname => 'createVolumePermission');
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ProductCode]', traits => ['Unwrapped'], xmlname => 'productCodes');
   has SnapshotId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'snapshotId');
 
 }
-class Aws::EC2::DescribeSnapshotsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeSnapshotsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has Snapshots => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Snapshot]', traits => ['Unwrapped'], xmlname => 'snapshotSet');
 
 }
-class Aws::EC2::DescribeSpotDatafeedSubscriptionResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeSpotDatafeedSubscriptionResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has SpotDatafeedSubscription => (is => 'ro', isa => 'Aws::EC2::SpotDatafeedSubscription', traits => ['Unwrapped'], xmlname => 'spotDatafeedSubscription');
 
 }
-class Aws::EC2::DescribeSpotInstanceRequestsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeSpotInstanceRequestsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has SpotInstanceRequests => (is => 'ro', isa => 'ArrayRef[Aws::EC2::SpotInstanceRequest]', traits => ['Unwrapped'], xmlname => 'spotInstanceRequestSet');
 
 }
-class Aws::EC2::DescribeSpotPriceHistoryResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeSpotPriceHistoryResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
   has SpotPriceHistory => (is => 'ro', isa => 'ArrayRef[Aws::EC2::SpotPrice]', traits => ['Unwrapped'], xmlname => 'spotPriceHistorySet');
 
 }
-class Aws::EC2::DescribeSubnetsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeSubnetsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has Subnets => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Subnet]', traits => ['Unwrapped'], xmlname => 'subnetSet');
 
 }
-class Aws::EC2::DescribeTagsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeTagsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::TagDescription]', traits => ['Unwrapped'], xmlname => 'tagSet');
 
 }
-class Aws::EC2::DescribeVolumeAttributeResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeVolumeAttributeResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has AutoEnableIO => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue', traits => ['Unwrapped'], xmlname => 'autoEnableIO');
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ProductCode]', traits => ['Unwrapped'], xmlname => 'productCodes');
   has VolumeId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'volumeId');
 
 }
-class Aws::EC2::DescribeVolumeStatusResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeVolumeStatusResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
   has VolumeStatuses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VolumeStatusItem]', traits => ['Unwrapped'], xmlname => 'volumeStatusSet');
 
 }
-class Aws::EC2::DescribeVolumesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeVolumesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has Volumes => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Volume]', traits => ['Unwrapped'], xmlname => 'volumeSet');
 
 }
-class Aws::EC2::DescribeVpcAttributeResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeVpcAttributeResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has EnableDnsHostnames => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue', traits => ['Unwrapped'], xmlname => 'enableDnsHostnames');
   has EnableDnsSupport => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue', traits => ['Unwrapped'], xmlname => 'enableDnsSupport');
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 
 }
-class Aws::EC2::DescribeVpcsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeVpcsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has Vpcs => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Vpc]', traits => ['Unwrapped'], xmlname => 'vpcSet');
 
 }
-class Aws::EC2::DescribeVpnConnectionsResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeVpnConnectionsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has VpnConnections => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VpnConnection]', traits => ['Unwrapped'], xmlname => 'vpnConnectionSet');
 
 }
-class Aws::EC2::DescribeVpnGatewaysResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DescribeVpnGatewaysResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has VpnGateways => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VpnGateway]', traits => ['Unwrapped'], xmlname => 'vpnGatewaySet');
 
 }
-class Aws::EC2::DetachVolumeResult with AWS::API::UnwrappedParser {
+package Aws::EC2::DetachVolumeResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
   has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
   has Device => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'device');
@@ -2878,60 +3425,86 @@ class Aws::EC2::DetachVolumeResult with AWS::API::UnwrappedParser {
   has VolumeId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'volumeId');
 
 }
-class Aws::EC2::GetConsoleOutputResult with AWS::API::UnwrappedParser {
+package Aws::EC2::GetConsoleOutputResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has Output => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'output');
   has Timestamp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'timestamp');
 
 }
-class Aws::EC2::GetPasswordDataResult with AWS::API::UnwrappedParser {
+package Aws::EC2::GetPasswordDataResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has PasswordData => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'passwordData');
   has Timestamp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'timestamp');
 
 }
-class Aws::EC2::ImportInstanceResult with AWS::API::UnwrappedParser {
+package Aws::EC2::ImportInstanceResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has ConversionTask => (is => 'ro', isa => 'Aws::EC2::ConversionTask', traits => ['Unwrapped'], xmlname => 'conversionTask');
 
 }
-class Aws::EC2::ImportKeyPairResult with AWS::API::UnwrappedParser {
+package Aws::EC2::ImportKeyPairResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has KeyFingerprint => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyFingerprint');
   has KeyName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyName');
 
 }
-class Aws::EC2::ImportVolumeResult with AWS::API::UnwrappedParser {
+package Aws::EC2::ImportVolumeResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has ConversionTask => (is => 'ro', isa => 'Aws::EC2::ConversionTask', traits => ['Unwrapped'], xmlname => 'conversionTask');
 
 }
-class Aws::EC2::ModifyReservedInstancesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::ModifyReservedInstancesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has ReservedInstancesModificationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'reservedInstancesModificationId');
 
 }
-class Aws::EC2::MonitorInstancesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::MonitorInstancesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has InstanceMonitorings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceMonitoring]', traits => ['Unwrapped'], xmlname => 'instancesSet');
 
 }
-class Aws::EC2::PurchaseReservedInstancesOfferingResult with AWS::API::UnwrappedParser {
+package Aws::EC2::PurchaseReservedInstancesOfferingResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has ReservedInstancesId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'reservedInstancesId');
 
 }
-class Aws::EC2::RegisterImageResult with AWS::API::UnwrappedParser {
+package Aws::EC2::RegisterImageResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has ImageId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'imageId');
 
 }
-class Aws::EC2::ReplaceNetworkAclAssociationResult with AWS::API::UnwrappedParser {
+package Aws::EC2::ReplaceNetworkAclAssociationResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has NewAssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'newAssociationId');
 
 }
-class Aws::EC2::ReplaceRouteTableAssociationResult with AWS::API::UnwrappedParser {
+package Aws::EC2::ReplaceRouteTableAssociationResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has NewAssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'newAssociationId');
 
 }
-class Aws::EC2::RequestSpotInstancesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::RequestSpotInstancesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has SpotInstanceRequests => (is => 'ro', isa => 'ArrayRef[Aws::EC2::SpotInstanceRequest]', traits => ['Unwrapped'], xmlname => 'spotInstanceRequestSet');
 
 }
-class Aws::EC2::RunInstancesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::RunInstancesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has Groups => (is => 'ro', isa => 'ArrayRef[Aws::EC2::GroupIdentifier]', traits => ['Unwrapped'], xmlname => 'groupSet');
   has Instances => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Instance]', traits => ['Unwrapped'], xmlname => 'instancesSet');
   has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
@@ -2939,852 +3512,1011 @@ class Aws::EC2::RunInstancesResult with AWS::API::UnwrappedParser {
   has ReservationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'reservationId');
 
 }
-class Aws::EC2::StartInstancesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::StartInstancesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has StartingInstances => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceStateChange]', traits => ['Unwrapped'], xmlname => 'instancesSet');
 
 }
-class Aws::EC2::StopInstancesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::StopInstancesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has StoppingInstances => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceStateChange]', traits => ['Unwrapped'], xmlname => 'instancesSet');
 
 }
-class Aws::EC2::TerminateInstancesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::TerminateInstancesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has TerminatingInstances => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceStateChange]', traits => ['Unwrapped'], xmlname => 'instancesSet');
 
 }
-class Aws::EC2::UnmonitorInstancesResult with AWS::API::UnwrappedParser {
+package Aws::EC2::UnmonitorInstancesResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
   has InstanceMonitorings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceMonitoring]', traits => ['Unwrapped'], xmlname => 'instancesSet');
 
 }
 
-class Aws::EC2 with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V2Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
+package Aws::EC2 {
+  use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'ec2');
   has version => (is => 'ro', isa => 'Str', default => '2013-10-15');
+  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V2Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
+
   
-  method AllocateAddress (%args) {
-    my $call = Aws::EC2::AllocateAddress->new(%args);
+  sub AllocateAddress {
+    my $self = shift;
+    my $call = Aws::EC2::AllocateAddress->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::AllocateAddressResult->from_result($result);
     return $o_result;
   }
-  method AssignPrivateIpAddresses (%args) {
-    my $call = Aws::EC2::AssignPrivateIpAddresses->new(%args);
+  sub AssignPrivateIpAddresses {
+    my $self = shift;
+    my $call = Aws::EC2::AssignPrivateIpAddresses->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method AssociateAddress (%args) {
-    my $call = Aws::EC2::AssociateAddress->new(%args);
+  sub AssociateAddress {
+    my $self = shift;
+    my $call = Aws::EC2::AssociateAddress->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::AssociateAddressResult->from_result($result);
     return $o_result;
   }
-  method AssociateDhcpOptions (%args) {
-    my $call = Aws::EC2::AssociateDhcpOptions->new(%args);
+  sub AssociateDhcpOptions {
+    my $self = shift;
+    my $call = Aws::EC2::AssociateDhcpOptions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method AssociateRouteTable (%args) {
-    my $call = Aws::EC2::AssociateRouteTable->new(%args);
+  sub AssociateRouteTable {
+    my $self = shift;
+    my $call = Aws::EC2::AssociateRouteTable->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::AssociateRouteTableResult->from_result($result);
     return $o_result;
   }
-  method AttachInternetGateway (%args) {
-    my $call = Aws::EC2::AttachInternetGateway->new(%args);
+  sub AttachInternetGateway {
+    my $self = shift;
+    my $call = Aws::EC2::AttachInternetGateway->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method AttachNetworkInterface (%args) {
-    my $call = Aws::EC2::AttachNetworkInterface->new(%args);
+  sub AttachNetworkInterface {
+    my $self = shift;
+    my $call = Aws::EC2::AttachNetworkInterface->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::AttachNetworkInterfaceResult->from_result($result);
     return $o_result;
   }
-  method AttachVolume (%args) {
-    my $call = Aws::EC2::AttachVolume->new(%args);
+  sub AttachVolume {
+    my $self = shift;
+    my $call = Aws::EC2::AttachVolume->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::AttachVolumeResult->from_result($result);
     return $o_result;
   }
-  method AttachVpnGateway (%args) {
-    my $call = Aws::EC2::AttachVpnGateway->new(%args);
+  sub AttachVpnGateway {
+    my $self = shift;
+    my $call = Aws::EC2::AttachVpnGateway->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::AttachVpnGatewayResult->from_result($result);
     return $o_result;
   }
-  method AuthorizeSecurityGroupEgress (%args) {
-    my $call = Aws::EC2::AuthorizeSecurityGroupEgress->new(%args);
+  sub AuthorizeSecurityGroupEgress {
+    my $self = shift;
+    my $call = Aws::EC2::AuthorizeSecurityGroupEgress->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method AuthorizeSecurityGroupIngress (%args) {
-    my $call = Aws::EC2::AuthorizeSecurityGroupIngress->new(%args);
+  sub AuthorizeSecurityGroupIngress {
+    my $self = shift;
+    my $call = Aws::EC2::AuthorizeSecurityGroupIngress->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method BundleInstance (%args) {
-    my $call = Aws::EC2::BundleInstance->new(%args);
+  sub BundleInstance {
+    my $self = shift;
+    my $call = Aws::EC2::BundleInstance->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::BundleInstanceResult->from_result($result);
     return $o_result;
   }
-  method CancelBundleTask (%args) {
-    my $call = Aws::EC2::CancelBundleTask->new(%args);
+  sub CancelBundleTask {
+    my $self = shift;
+    my $call = Aws::EC2::CancelBundleTask->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CancelBundleTaskResult->from_result($result);
     return $o_result;
   }
-  method CancelConversionTask (%args) {
-    my $call = Aws::EC2::CancelConversionTask->new(%args);
+  sub CancelConversionTask {
+    my $self = shift;
+    my $call = Aws::EC2::CancelConversionTask->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method CancelExportTask (%args) {
-    my $call = Aws::EC2::CancelExportTask->new(%args);
+  sub CancelExportTask {
+    my $self = shift;
+    my $call = Aws::EC2::CancelExportTask->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method CancelReservedInstancesListing (%args) {
-    my $call = Aws::EC2::CancelReservedInstancesListing->new(%args);
+  sub CancelReservedInstancesListing {
+    my $self = shift;
+    my $call = Aws::EC2::CancelReservedInstancesListing->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CancelReservedInstancesListingResult->from_result($result);
     return $o_result;
   }
-  method CancelSpotInstanceRequests (%args) {
-    my $call = Aws::EC2::CancelSpotInstanceRequests->new(%args);
+  sub CancelSpotInstanceRequests {
+    my $self = shift;
+    my $call = Aws::EC2::CancelSpotInstanceRequests->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CancelSpotInstanceRequestsResult->from_result($result);
     return $o_result;
   }
-  method ConfirmProductInstance (%args) {
-    my $call = Aws::EC2::ConfirmProductInstance->new(%args);
+  sub ConfirmProductInstance {
+    my $self = shift;
+    my $call = Aws::EC2::ConfirmProductInstance->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::ConfirmProductInstanceResult->from_result($result);
     return $o_result;
   }
-  method CopyImage (%args) {
-    my $call = Aws::EC2::CopyImage->new(%args);
+  sub CopyImage {
+    my $self = shift;
+    my $call = Aws::EC2::CopyImage->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CopyImageResult->from_result($result);
     return $o_result;
   }
-  method CopySnapshot (%args) {
-    my $call = Aws::EC2::CopySnapshot->new(%args);
+  sub CopySnapshot {
+    my $self = shift;
+    my $call = Aws::EC2::CopySnapshot->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CopySnapshotResult->from_result($result);
     return $o_result;
   }
-  method CreateCustomerGateway (%args) {
-    my $call = Aws::EC2::CreateCustomerGateway->new(%args);
+  sub CreateCustomerGateway {
+    my $self = shift;
+    my $call = Aws::EC2::CreateCustomerGateway->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateCustomerGatewayResult->from_result($result);
     return $o_result;
   }
-  method CreateDhcpOptions (%args) {
-    my $call = Aws::EC2::CreateDhcpOptions->new(%args);
+  sub CreateDhcpOptions {
+    my $self = shift;
+    my $call = Aws::EC2::CreateDhcpOptions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateDhcpOptionsResult->from_result($result);
     return $o_result;
   }
-  method CreateImage (%args) {
-    my $call = Aws::EC2::CreateImage->new(%args);
+  sub CreateImage {
+    my $self = shift;
+    my $call = Aws::EC2::CreateImage->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateImageResult->from_result($result);
     return $o_result;
   }
-  method CreateInstanceExportTask (%args) {
-    my $call = Aws::EC2::CreateInstanceExportTask->new(%args);
+  sub CreateInstanceExportTask {
+    my $self = shift;
+    my $call = Aws::EC2::CreateInstanceExportTask->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateInstanceExportTaskResult->from_result($result);
     return $o_result;
   }
-  method CreateInternetGateway (%args) {
-    my $call = Aws::EC2::CreateInternetGateway->new(%args);
+  sub CreateInternetGateway {
+    my $self = shift;
+    my $call = Aws::EC2::CreateInternetGateway->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateInternetGatewayResult->from_result($result);
     return $o_result;
   }
-  method CreateKeyPair (%args) {
-    my $call = Aws::EC2::CreateKeyPair->new(%args);
+  sub CreateKeyPair {
+    my $self = shift;
+    my $call = Aws::EC2::CreateKeyPair->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateKeyPairResult->from_result($result);
     return $o_result;
   }
-  method CreateNetworkAcl (%args) {
-    my $call = Aws::EC2::CreateNetworkAcl->new(%args);
+  sub CreateNetworkAcl {
+    my $self = shift;
+    my $call = Aws::EC2::CreateNetworkAcl->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateNetworkAclResult->from_result($result);
     return $o_result;
   }
-  method CreateNetworkAclEntry (%args) {
-    my $call = Aws::EC2::CreateNetworkAclEntry->new(%args);
+  sub CreateNetworkAclEntry {
+    my $self = shift;
+    my $call = Aws::EC2::CreateNetworkAclEntry->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method CreateNetworkInterface (%args) {
-    my $call = Aws::EC2::CreateNetworkInterface->new(%args);
+  sub CreateNetworkInterface {
+    my $self = shift;
+    my $call = Aws::EC2::CreateNetworkInterface->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateNetworkInterfaceResult->from_result($result);
     return $o_result;
   }
-  method CreatePlacementGroup (%args) {
-    my $call = Aws::EC2::CreatePlacementGroup->new(%args);
+  sub CreatePlacementGroup {
+    my $self = shift;
+    my $call = Aws::EC2::CreatePlacementGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method CreateReservedInstancesListing (%args) {
-    my $call = Aws::EC2::CreateReservedInstancesListing->new(%args);
+  sub CreateReservedInstancesListing {
+    my $self = shift;
+    my $call = Aws::EC2::CreateReservedInstancesListing->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateReservedInstancesListingResult->from_result($result);
     return $o_result;
   }
-  method CreateRoute (%args) {
-    my $call = Aws::EC2::CreateRoute->new(%args);
+  sub CreateRoute {
+    my $self = shift;
+    my $call = Aws::EC2::CreateRoute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method CreateRouteTable (%args) {
-    my $call = Aws::EC2::CreateRouteTable->new(%args);
+  sub CreateRouteTable {
+    my $self = shift;
+    my $call = Aws::EC2::CreateRouteTable->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateRouteTableResult->from_result($result);
     return $o_result;
   }
-  method CreateSecurityGroup (%args) {
-    my $call = Aws::EC2::CreateSecurityGroup->new(%args);
+  sub CreateSecurityGroup {
+    my $self = shift;
+    my $call = Aws::EC2::CreateSecurityGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateSecurityGroupResult->from_result($result);
     return $o_result;
   }
-  method CreateSnapshot (%args) {
-    my $call = Aws::EC2::CreateSnapshot->new(%args);
+  sub CreateSnapshot {
+    my $self = shift;
+    my $call = Aws::EC2::CreateSnapshot->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateSnapshotResult->from_result($result);
     return $o_result;
   }
-  method CreateSpotDatafeedSubscription (%args) {
-    my $call = Aws::EC2::CreateSpotDatafeedSubscription->new(%args);
+  sub CreateSpotDatafeedSubscription {
+    my $self = shift;
+    my $call = Aws::EC2::CreateSpotDatafeedSubscription->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateSpotDatafeedSubscriptionResult->from_result($result);
     return $o_result;
   }
-  method CreateSubnet (%args) {
-    my $call = Aws::EC2::CreateSubnet->new(%args);
+  sub CreateSubnet {
+    my $self = shift;
+    my $call = Aws::EC2::CreateSubnet->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateSubnetResult->from_result($result);
     return $o_result;
   }
-  method CreateTags (%args) {
-    my $call = Aws::EC2::CreateTags->new(%args);
+  sub CreateTags {
+    my $self = shift;
+    my $call = Aws::EC2::CreateTags->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method CreateVolume (%args) {
-    my $call = Aws::EC2::CreateVolume->new(%args);
+  sub CreateVolume {
+    my $self = shift;
+    my $call = Aws::EC2::CreateVolume->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateVolumeResult->from_result($result);
     return $o_result;
   }
-  method CreateVpc (%args) {
-    my $call = Aws::EC2::CreateVpc->new(%args);
+  sub CreateVpc {
+    my $self = shift;
+    my $call = Aws::EC2::CreateVpc->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateVpcResult->from_result($result);
     return $o_result;
   }
-  method CreateVpnConnection (%args) {
-    my $call = Aws::EC2::CreateVpnConnection->new(%args);
+  sub CreateVpnConnection {
+    my $self = shift;
+    my $call = Aws::EC2::CreateVpnConnection->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateVpnConnectionResult->from_result($result);
     return $o_result;
   }
-  method CreateVpnConnectionRoute (%args) {
-    my $call = Aws::EC2::CreateVpnConnectionRoute->new(%args);
+  sub CreateVpnConnectionRoute {
+    my $self = shift;
+    my $call = Aws::EC2::CreateVpnConnectionRoute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method CreateVpnGateway (%args) {
-    my $call = Aws::EC2::CreateVpnGateway->new(%args);
+  sub CreateVpnGateway {
+    my $self = shift;
+    my $call = Aws::EC2::CreateVpnGateway->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateVpnGatewayResult->from_result($result);
     return $o_result;
   }
-  method DeleteCustomerGateway (%args) {
-    my $call = Aws::EC2::DeleteCustomerGateway->new(%args);
+  sub DeleteCustomerGateway {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteCustomerGateway->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteDhcpOptions (%args) {
-    my $call = Aws::EC2::DeleteDhcpOptions->new(%args);
+  sub DeleteDhcpOptions {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteDhcpOptions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteInternetGateway (%args) {
-    my $call = Aws::EC2::DeleteInternetGateway->new(%args);
+  sub DeleteInternetGateway {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteInternetGateway->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteKeyPair (%args) {
-    my $call = Aws::EC2::DeleteKeyPair->new(%args);
+  sub DeleteKeyPair {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteKeyPair->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteNetworkAcl (%args) {
-    my $call = Aws::EC2::DeleteNetworkAcl->new(%args);
+  sub DeleteNetworkAcl {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteNetworkAcl->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteNetworkAclEntry (%args) {
-    my $call = Aws::EC2::DeleteNetworkAclEntry->new(%args);
+  sub DeleteNetworkAclEntry {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteNetworkAclEntry->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteNetworkInterface (%args) {
-    my $call = Aws::EC2::DeleteNetworkInterface->new(%args);
+  sub DeleteNetworkInterface {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteNetworkInterface->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeletePlacementGroup (%args) {
-    my $call = Aws::EC2::DeletePlacementGroup->new(%args);
+  sub DeletePlacementGroup {
+    my $self = shift;
+    my $call = Aws::EC2::DeletePlacementGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteRoute (%args) {
-    my $call = Aws::EC2::DeleteRoute->new(%args);
+  sub DeleteRoute {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteRoute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteRouteTable (%args) {
-    my $call = Aws::EC2::DeleteRouteTable->new(%args);
+  sub DeleteRouteTable {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteRouteTable->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteSecurityGroup (%args) {
-    my $call = Aws::EC2::DeleteSecurityGroup->new(%args);
+  sub DeleteSecurityGroup {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteSecurityGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteSnapshot (%args) {
-    my $call = Aws::EC2::DeleteSnapshot->new(%args);
+  sub DeleteSnapshot {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteSnapshot->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteSpotDatafeedSubscription (%args) {
-    my $call = Aws::EC2::DeleteSpotDatafeedSubscription->new(%args);
+  sub DeleteSpotDatafeedSubscription {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteSpotDatafeedSubscription->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteSubnet (%args) {
-    my $call = Aws::EC2::DeleteSubnet->new(%args);
+  sub DeleteSubnet {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteSubnet->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteTags (%args) {
-    my $call = Aws::EC2::DeleteTags->new(%args);
+  sub DeleteTags {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteTags->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteVolume (%args) {
-    my $call = Aws::EC2::DeleteVolume->new(%args);
+  sub DeleteVolume {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteVolume->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteVpc (%args) {
-    my $call = Aws::EC2::DeleteVpc->new(%args);
+  sub DeleteVpc {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteVpc->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteVpnConnection (%args) {
-    my $call = Aws::EC2::DeleteVpnConnection->new(%args);
+  sub DeleteVpnConnection {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteVpnConnection->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteVpnConnectionRoute (%args) {
-    my $call = Aws::EC2::DeleteVpnConnectionRoute->new(%args);
+  sub DeleteVpnConnectionRoute {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteVpnConnectionRoute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteVpnGateway (%args) {
-    my $call = Aws::EC2::DeleteVpnGateway->new(%args);
+  sub DeleteVpnGateway {
+    my $self = shift;
+    my $call = Aws::EC2::DeleteVpnGateway->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeregisterImage (%args) {
-    my $call = Aws::EC2::DeregisterImage->new(%args);
+  sub DeregisterImage {
+    my $self = shift;
+    my $call = Aws::EC2::DeregisterImage->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DescribeAccountAttributes (%args) {
-    my $call = Aws::EC2::DescribeAccountAttributes->new(%args);
+  sub DescribeAccountAttributes {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeAccountAttributes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeAccountAttributesResult->from_result($result);
     return $o_result;
   }
-  method DescribeAddresses (%args) {
-    my $call = Aws::EC2::DescribeAddresses->new(%args);
+  sub DescribeAddresses {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeAddresses->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeAddressesResult->from_result($result);
     return $o_result;
   }
-  method DescribeAvailabilityZones (%args) {
-    my $call = Aws::EC2::DescribeAvailabilityZones->new(%args);
+  sub DescribeAvailabilityZones {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeAvailabilityZones->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeAvailabilityZonesResult->from_result($result);
     return $o_result;
   }
-  method DescribeBundleTasks (%args) {
-    my $call = Aws::EC2::DescribeBundleTasks->new(%args);
+  sub DescribeBundleTasks {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeBundleTasks->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeBundleTasksResult->from_result($result);
     return $o_result;
   }
-  method DescribeConversionTasks (%args) {
-    my $call = Aws::EC2::DescribeConversionTasks->new(%args);
+  sub DescribeConversionTasks {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeConversionTasks->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeConversionTasksResult->from_result($result);
     return $o_result;
   }
-  method DescribeCustomerGateways (%args) {
-    my $call = Aws::EC2::DescribeCustomerGateways->new(%args);
+  sub DescribeCustomerGateways {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeCustomerGateways->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeCustomerGatewaysResult->from_result($result);
     return $o_result;
   }
-  method DescribeDhcpOptions (%args) {
-    my $call = Aws::EC2::DescribeDhcpOptions->new(%args);
+  sub DescribeDhcpOptions {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeDhcpOptions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeDhcpOptionsResult->from_result($result);
     return $o_result;
   }
-  method DescribeExportTasks (%args) {
-    my $call = Aws::EC2::DescribeExportTasks->new(%args);
+  sub DescribeExportTasks {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeExportTasks->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeExportTasksResult->from_result($result);
     return $o_result;
   }
-  method DescribeImageAttribute (%args) {
-    my $call = Aws::EC2::DescribeImageAttribute->new(%args);
+  sub DescribeImageAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeImageAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeImageAttributeResult->from_result($result);
     return $o_result;
   }
-  method DescribeImages (%args) {
-    my $call = Aws::EC2::DescribeImages->new(%args);
+  sub DescribeImages {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeImages->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeImagesResult->from_result($result);
     return $o_result;
   }
-  method DescribeInstanceAttribute (%args) {
-    my $call = Aws::EC2::DescribeInstanceAttribute->new(%args);
+  sub DescribeInstanceAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeInstanceAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeInstanceAttributeResult->from_result($result);
     return $o_result;
   }
-  method DescribeInstances (%args) {
-    my $call = Aws::EC2::DescribeInstances->new(%args);
+  sub DescribeInstances {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeInstancesResult->from_result($result);
     return $o_result;
   }
-  method DescribeInstanceStatus (%args) {
-    my $call = Aws::EC2::DescribeInstanceStatus->new(%args);
+  sub DescribeInstanceStatus {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeInstanceStatus->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeInstanceStatusResult->from_result($result);
     return $o_result;
   }
-  method DescribeInternetGateways (%args) {
-    my $call = Aws::EC2::DescribeInternetGateways->new(%args);
+  sub DescribeInternetGateways {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeInternetGateways->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeInternetGatewaysResult->from_result($result);
     return $o_result;
   }
-  method DescribeKeyPairs (%args) {
-    my $call = Aws::EC2::DescribeKeyPairs->new(%args);
+  sub DescribeKeyPairs {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeKeyPairs->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeKeyPairsResult->from_result($result);
     return $o_result;
   }
-  method DescribeNetworkAcls (%args) {
-    my $call = Aws::EC2::DescribeNetworkAcls->new(%args);
+  sub DescribeNetworkAcls {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeNetworkAcls->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeNetworkAclsResult->from_result($result);
     return $o_result;
   }
-  method DescribeNetworkInterfaceAttribute (%args) {
-    my $call = Aws::EC2::DescribeNetworkInterfaceAttribute->new(%args);
+  sub DescribeNetworkInterfaceAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeNetworkInterfaceAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeNetworkInterfaceAttributeResult->from_result($result);
     return $o_result;
   }
-  method DescribeNetworkInterfaces (%args) {
-    my $call = Aws::EC2::DescribeNetworkInterfaces->new(%args);
+  sub DescribeNetworkInterfaces {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeNetworkInterfaces->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeNetworkInterfacesResult->from_result($result);
     return $o_result;
   }
-  method DescribePlacementGroups (%args) {
-    my $call = Aws::EC2::DescribePlacementGroups->new(%args);
+  sub DescribePlacementGroups {
+    my $self = shift;
+    my $call = Aws::EC2::DescribePlacementGroups->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribePlacementGroupsResult->from_result($result);
     return $o_result;
   }
-  method DescribeRegions (%args) {
-    my $call = Aws::EC2::DescribeRegions->new(%args);
+  sub DescribeRegions {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeRegions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeRegionsResult->from_result($result);
     return $o_result;
   }
-  method DescribeReservedInstances (%args) {
-    my $call = Aws::EC2::DescribeReservedInstances->new(%args);
+  sub DescribeReservedInstances {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeReservedInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeReservedInstancesResult->from_result($result);
     return $o_result;
   }
-  method DescribeReservedInstancesListings (%args) {
-    my $call = Aws::EC2::DescribeReservedInstancesListings->new(%args);
+  sub DescribeReservedInstancesListings {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeReservedInstancesListings->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeReservedInstancesListingsResult->from_result($result);
     return $o_result;
   }
-  method DescribeReservedInstancesModifications (%args) {
-    my $call = Aws::EC2::DescribeReservedInstancesModifications->new(%args);
+  sub DescribeReservedInstancesModifications {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeReservedInstancesModifications->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeReservedInstancesModificationsResult->from_result($result);
     return $o_result;
   }
-  method DescribeReservedInstancesOfferings (%args) {
-    my $call = Aws::EC2::DescribeReservedInstancesOfferings->new(%args);
+  sub DescribeReservedInstancesOfferings {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeReservedInstancesOfferings->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeReservedInstancesOfferingsResult->from_result($result);
     return $o_result;
   }
-  method DescribeRouteTables (%args) {
-    my $call = Aws::EC2::DescribeRouteTables->new(%args);
+  sub DescribeRouteTables {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeRouteTables->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeRouteTablesResult->from_result($result);
     return $o_result;
   }
-  method DescribeSecurityGroups (%args) {
-    my $call = Aws::EC2::DescribeSecurityGroups->new(%args);
+  sub DescribeSecurityGroups {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeSecurityGroups->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeSecurityGroupsResult->from_result($result);
     return $o_result;
   }
-  method DescribeSnapshotAttribute (%args) {
-    my $call = Aws::EC2::DescribeSnapshotAttribute->new(%args);
+  sub DescribeSnapshotAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeSnapshotAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeSnapshotAttributeResult->from_result($result);
     return $o_result;
   }
-  method DescribeSnapshots (%args) {
-    my $call = Aws::EC2::DescribeSnapshots->new(%args);
+  sub DescribeSnapshots {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeSnapshots->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeSnapshotsResult->from_result($result);
     return $o_result;
   }
-  method DescribeSpotDatafeedSubscription (%args) {
-    my $call = Aws::EC2::DescribeSpotDatafeedSubscription->new(%args);
+  sub DescribeSpotDatafeedSubscription {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeSpotDatafeedSubscription->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeSpotDatafeedSubscriptionResult->from_result($result);
     return $o_result;
   }
-  method DescribeSpotInstanceRequests (%args) {
-    my $call = Aws::EC2::DescribeSpotInstanceRequests->new(%args);
+  sub DescribeSpotInstanceRequests {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeSpotInstanceRequests->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeSpotInstanceRequestsResult->from_result($result);
     return $o_result;
   }
-  method DescribeSpotPriceHistory (%args) {
-    my $call = Aws::EC2::DescribeSpotPriceHistory->new(%args);
+  sub DescribeSpotPriceHistory {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeSpotPriceHistory->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeSpotPriceHistoryResult->from_result($result);
     return $o_result;
   }
-  method DescribeSubnets (%args) {
-    my $call = Aws::EC2::DescribeSubnets->new(%args);
+  sub DescribeSubnets {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeSubnets->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeSubnetsResult->from_result($result);
     return $o_result;
   }
-  method DescribeTags (%args) {
-    my $call = Aws::EC2::DescribeTags->new(%args);
+  sub DescribeTags {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeTags->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeTagsResult->from_result($result);
     return $o_result;
   }
-  method DescribeVolumeAttribute (%args) {
-    my $call = Aws::EC2::DescribeVolumeAttribute->new(%args);
+  sub DescribeVolumeAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeVolumeAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeVolumeAttributeResult->from_result($result);
     return $o_result;
   }
-  method DescribeVolumes (%args) {
-    my $call = Aws::EC2::DescribeVolumes->new(%args);
+  sub DescribeVolumes {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeVolumes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeVolumesResult->from_result($result);
     return $o_result;
   }
-  method DescribeVolumeStatus (%args) {
-    my $call = Aws::EC2::DescribeVolumeStatus->new(%args);
+  sub DescribeVolumeStatus {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeVolumeStatus->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeVolumeStatusResult->from_result($result);
     return $o_result;
   }
-  method DescribeVpcAttribute (%args) {
-    my $call = Aws::EC2::DescribeVpcAttribute->new(%args);
+  sub DescribeVpcAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeVpcAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeVpcAttributeResult->from_result($result);
     return $o_result;
   }
-  method DescribeVpcs (%args) {
-    my $call = Aws::EC2::DescribeVpcs->new(%args);
+  sub DescribeVpcs {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeVpcs->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeVpcsResult->from_result($result);
     return $o_result;
   }
-  method DescribeVpnConnections (%args) {
-    my $call = Aws::EC2::DescribeVpnConnections->new(%args);
+  sub DescribeVpnConnections {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeVpnConnections->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeVpnConnectionsResult->from_result($result);
     return $o_result;
   }
-  method DescribeVpnGateways (%args) {
-    my $call = Aws::EC2::DescribeVpnGateways->new(%args);
+  sub DescribeVpnGateways {
+    my $self = shift;
+    my $call = Aws::EC2::DescribeVpnGateways->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeVpnGatewaysResult->from_result($result);
     return $o_result;
   }
-  method DetachInternetGateway (%args) {
-    my $call = Aws::EC2::DetachInternetGateway->new(%args);
+  sub DetachInternetGateway {
+    my $self = shift;
+    my $call = Aws::EC2::DetachInternetGateway->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DetachNetworkInterface (%args) {
-    my $call = Aws::EC2::DetachNetworkInterface->new(%args);
+  sub DetachNetworkInterface {
+    my $self = shift;
+    my $call = Aws::EC2::DetachNetworkInterface->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DetachVolume (%args) {
-    my $call = Aws::EC2::DetachVolume->new(%args);
+  sub DetachVolume {
+    my $self = shift;
+    my $call = Aws::EC2::DetachVolume->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DetachVolumeResult->from_result($result);
     return $o_result;
   }
-  method DetachVpnGateway (%args) {
-    my $call = Aws::EC2::DetachVpnGateway->new(%args);
+  sub DetachVpnGateway {
+    my $self = shift;
+    my $call = Aws::EC2::DetachVpnGateway->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DisableVgwRoutePropagation (%args) {
-    my $call = Aws::EC2::DisableVgwRoutePropagation->new(%args);
+  sub DisableVgwRoutePropagation {
+    my $self = shift;
+    my $call = Aws::EC2::DisableVgwRoutePropagation->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DisassociateAddress (%args) {
-    my $call = Aws::EC2::DisassociateAddress->new(%args);
+  sub DisassociateAddress {
+    my $self = shift;
+    my $call = Aws::EC2::DisassociateAddress->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DisassociateRouteTable (%args) {
-    my $call = Aws::EC2::DisassociateRouteTable->new(%args);
+  sub DisassociateRouteTable {
+    my $self = shift;
+    my $call = Aws::EC2::DisassociateRouteTable->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method EnableVgwRoutePropagation (%args) {
-    my $call = Aws::EC2::EnableVgwRoutePropagation->new(%args);
+  sub EnableVgwRoutePropagation {
+    my $self = shift;
+    my $call = Aws::EC2::EnableVgwRoutePropagation->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method EnableVolumeIO (%args) {
-    my $call = Aws::EC2::EnableVolumeIO->new(%args);
+  sub EnableVolumeIO {
+    my $self = shift;
+    my $call = Aws::EC2::EnableVolumeIO->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method GetConsoleOutput (%args) {
-    my $call = Aws::EC2::GetConsoleOutput->new(%args);
+  sub GetConsoleOutput {
+    my $self = shift;
+    my $call = Aws::EC2::GetConsoleOutput->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::GetConsoleOutputResult->from_result($result);
     return $o_result;
   }
-  method GetPasswordData (%args) {
-    my $call = Aws::EC2::GetPasswordData->new(%args);
+  sub GetPasswordData {
+    my $self = shift;
+    my $call = Aws::EC2::GetPasswordData->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::GetPasswordDataResult->from_result($result);
     return $o_result;
   }
-  method ImportInstance (%args) {
-    my $call = Aws::EC2::ImportInstance->new(%args);
+  sub ImportInstance {
+    my $self = shift;
+    my $call = Aws::EC2::ImportInstance->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::ImportInstanceResult->from_result($result);
     return $o_result;
   }
-  method ImportKeyPair (%args) {
-    my $call = Aws::EC2::ImportKeyPair->new(%args);
+  sub ImportKeyPair {
+    my $self = shift;
+    my $call = Aws::EC2::ImportKeyPair->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::ImportKeyPairResult->from_result($result);
     return $o_result;
   }
-  method ImportVolume (%args) {
-    my $call = Aws::EC2::ImportVolume->new(%args);
+  sub ImportVolume {
+    my $self = shift;
+    my $call = Aws::EC2::ImportVolume->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::ImportVolumeResult->from_result($result);
     return $o_result;
   }
-  method ModifyImageAttribute (%args) {
-    my $call = Aws::EC2::ModifyImageAttribute->new(%args);
+  sub ModifyImageAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::ModifyImageAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ModifyInstanceAttribute (%args) {
-    my $call = Aws::EC2::ModifyInstanceAttribute->new(%args);
+  sub ModifyInstanceAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::ModifyInstanceAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ModifyNetworkInterfaceAttribute (%args) {
-    my $call = Aws::EC2::ModifyNetworkInterfaceAttribute->new(%args);
+  sub ModifyNetworkInterfaceAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::ModifyNetworkInterfaceAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ModifyReservedInstances (%args) {
-    my $call = Aws::EC2::ModifyReservedInstances->new(%args);
+  sub ModifyReservedInstances {
+    my $self = shift;
+    my $call = Aws::EC2::ModifyReservedInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::ModifyReservedInstancesResult->from_result($result);
     return $o_result;
   }
-  method ModifySnapshotAttribute (%args) {
-    my $call = Aws::EC2::ModifySnapshotAttribute->new(%args);
+  sub ModifySnapshotAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::ModifySnapshotAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ModifyVolumeAttribute (%args) {
-    my $call = Aws::EC2::ModifyVolumeAttribute->new(%args);
+  sub ModifyVolumeAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::ModifyVolumeAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ModifyVpcAttribute (%args) {
-    my $call = Aws::EC2::ModifyVpcAttribute->new(%args);
+  sub ModifyVpcAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::ModifyVpcAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method MonitorInstances (%args) {
-    my $call = Aws::EC2::MonitorInstances->new(%args);
+  sub MonitorInstances {
+    my $self = shift;
+    my $call = Aws::EC2::MonitorInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::MonitorInstancesResult->from_result($result);
     return $o_result;
   }
-  method PurchaseReservedInstancesOffering (%args) {
-    my $call = Aws::EC2::PurchaseReservedInstancesOffering->new(%args);
+  sub PurchaseReservedInstancesOffering {
+    my $self = shift;
+    my $call = Aws::EC2::PurchaseReservedInstancesOffering->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::PurchaseReservedInstancesOfferingResult->from_result($result);
     return $o_result;
   }
-  method RebootInstances (%args) {
-    my $call = Aws::EC2::RebootInstances->new(%args);
+  sub RebootInstances {
+    my $self = shift;
+    my $call = Aws::EC2::RebootInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method RegisterImage (%args) {
-    my $call = Aws::EC2::RegisterImage->new(%args);
+  sub RegisterImage {
+    my $self = shift;
+    my $call = Aws::EC2::RegisterImage->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::RegisterImageResult->from_result($result);
     return $o_result;
   }
-  method ReleaseAddress (%args) {
-    my $call = Aws::EC2::ReleaseAddress->new(%args);
+  sub ReleaseAddress {
+    my $self = shift;
+    my $call = Aws::EC2::ReleaseAddress->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ReplaceNetworkAclAssociation (%args) {
-    my $call = Aws::EC2::ReplaceNetworkAclAssociation->new(%args);
+  sub ReplaceNetworkAclAssociation {
+    my $self = shift;
+    my $call = Aws::EC2::ReplaceNetworkAclAssociation->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::ReplaceNetworkAclAssociationResult->from_result($result);
     return $o_result;
   }
-  method ReplaceNetworkAclEntry (%args) {
-    my $call = Aws::EC2::ReplaceNetworkAclEntry->new(%args);
+  sub ReplaceNetworkAclEntry {
+    my $self = shift;
+    my $call = Aws::EC2::ReplaceNetworkAclEntry->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ReplaceRoute (%args) {
-    my $call = Aws::EC2::ReplaceRoute->new(%args);
+  sub ReplaceRoute {
+    my $self = shift;
+    my $call = Aws::EC2::ReplaceRoute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ReplaceRouteTableAssociation (%args) {
-    my $call = Aws::EC2::ReplaceRouteTableAssociation->new(%args);
+  sub ReplaceRouteTableAssociation {
+    my $self = shift;
+    my $call = Aws::EC2::ReplaceRouteTableAssociation->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::ReplaceRouteTableAssociationResult->from_result($result);
     return $o_result;
   }
-  method ReportInstanceStatus (%args) {
-    my $call = Aws::EC2::ReportInstanceStatus->new(%args);
+  sub ReportInstanceStatus {
+    my $self = shift;
+    my $call = Aws::EC2::ReportInstanceStatus->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method RequestSpotInstances (%args) {
-    my $call = Aws::EC2::RequestSpotInstances->new(%args);
+  sub RequestSpotInstances {
+    my $self = shift;
+    my $call = Aws::EC2::RequestSpotInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::RequestSpotInstancesResult->from_result($result);
     return $o_result;
   }
-  method ResetImageAttribute (%args) {
-    my $call = Aws::EC2::ResetImageAttribute->new(%args);
+  sub ResetImageAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::ResetImageAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ResetInstanceAttribute (%args) {
-    my $call = Aws::EC2::ResetInstanceAttribute->new(%args);
+  sub ResetInstanceAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::ResetInstanceAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ResetNetworkInterfaceAttribute (%args) {
-    my $call = Aws::EC2::ResetNetworkInterfaceAttribute->new(%args);
+  sub ResetNetworkInterfaceAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::ResetNetworkInterfaceAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ResetSnapshotAttribute (%args) {
-    my $call = Aws::EC2::ResetSnapshotAttribute->new(%args);
+  sub ResetSnapshotAttribute {
+    my $self = shift;
+    my $call = Aws::EC2::ResetSnapshotAttribute->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method RevokeSecurityGroupEgress (%args) {
-    my $call = Aws::EC2::RevokeSecurityGroupEgress->new(%args);
+  sub RevokeSecurityGroupEgress {
+    my $self = shift;
+    my $call = Aws::EC2::RevokeSecurityGroupEgress->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method RevokeSecurityGroupIngress (%args) {
-    my $call = Aws::EC2::RevokeSecurityGroupIngress->new(%args);
+  sub RevokeSecurityGroupIngress {
+    my $self = shift;
+    my $call = Aws::EC2::RevokeSecurityGroupIngress->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method RunInstances (%args) {
-    my $call = Aws::EC2::RunInstances->new(%args);
+  sub RunInstances {
+    my $self = shift;
+    my $call = Aws::EC2::RunInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::RunInstancesResult->from_result($result);
     return $o_result;
   }
-  method StartInstances (%args) {
-    my $call = Aws::EC2::StartInstances->new(%args);
+  sub StartInstances {
+    my $self = shift;
+    my $call = Aws::EC2::StartInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::StartInstancesResult->from_result($result);
     return $o_result;
   }
-  method StopInstances (%args) {
-    my $call = Aws::EC2::StopInstances->new(%args);
+  sub StopInstances {
+    my $self = shift;
+    my $call = Aws::EC2::StopInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::StopInstancesResult->from_result($result);
     return $o_result;
   }
-  method TerminateInstances (%args) {
-    my $call = Aws::EC2::TerminateInstances->new(%args);
+  sub TerminateInstances {
+    my $self = shift;
+    my $call = Aws::EC2::TerminateInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::TerminateInstancesResult->from_result($result);
     return $o_result;
   }
-  method UnassignPrivateIpAddresses (%args) {
-    my $call = Aws::EC2::UnassignPrivateIpAddresses->new(%args);
+  sub UnassignPrivateIpAddresses {
+    my $self = shift;
+    my $call = Aws::EC2::UnassignPrivateIpAddresses->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method UnmonitorInstances (%args) {
-    my $call = Aws::EC2::UnmonitorInstances->new(%args);
+  sub UnmonitorInstances {
+    my $self = shift;
+    my $call = Aws::EC2::UnmonitorInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::UnmonitorInstancesResult->from_result($result);
     return $o_result;

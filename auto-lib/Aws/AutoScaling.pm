@@ -1,5 +1,4 @@
 
-use MooseX::Declare;
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
@@ -7,7 +6,9 @@ enum 'Aws::AutoScaling::LifecycleState', ['Pending','Quarantined','InService','T
 enum 'Aws::AutoScaling::ScalingActivityStatusCode', ['WaitingForSpotInstanceRequestId','WaitingForSpotInstanceId','WaitingForInstanceId','PreInService','InProgress','Successful','Failed','Cancelled',];
 
 
-class Aws::AutoScaling::Activity with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::Activity {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has ActivityId => (is => 'ro', isa => 'Str', required => 1);
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Cause => (is => 'ro', isa => 'Str', required => 1);
@@ -20,16 +21,22 @@ class Aws::AutoScaling::Activity with (AWS::API::ResultParser, AWS::API::ToParam
   has StatusMessage => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::AdjustmentType with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::AdjustmentType {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AdjustmentType => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::Alarm with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::Alarm {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AlarmARN => (is => 'ro', isa => 'Str');
   has AlarmName => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::AutoScalingGroup with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::AutoScalingGroup {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AutoScalingGroupARN => (is => 'ro', isa => 'Str');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -52,7 +59,9 @@ class Aws::AutoScaling::AutoScalingGroup with (AWS::API::ResultParser, AWS::API:
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::AutoScalingInstanceDetails with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::AutoScalingInstanceDetails {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
@@ -61,14 +70,18 @@ class Aws::AutoScaling::AutoScalingInstanceDetails with (AWS::API::ResultParser,
   has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::AutoScaling::BlockDeviceMapping with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::BlockDeviceMapping {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DeviceName => (is => 'ro', isa => 'Str', required => 1);
   has Ebs => (is => 'ro', isa => 'Aws::AutoScaling::Ebs');
   has NoDevice => (is => 'ro', isa => 'Str');
   has VirtualName => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::Ebs with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::Ebs {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DeleteOnTermination => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
@@ -76,17 +89,23 @@ class Aws::AutoScaling::Ebs with (AWS::API::ResultParser, AWS::API::ToParams) {
   has VolumeType => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::EnabledMetric with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::EnabledMetric {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Granularity => (is => 'ro', isa => 'Str');
   has Metric => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::Filter with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::Filter {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Name => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
-class Aws::AutoScaling::Instance with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::Instance {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
@@ -94,11 +113,15 @@ class Aws::AutoScaling::Instance with (AWS::API::ResultParser, AWS::API::ToParam
   has LifecycleState => (is => 'ro', isa => 'Aws::AutoScaling::LifecycleState', required => 1);
 }
 
-class Aws::AutoScaling::InstanceMonitoring with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::InstanceMonitoring {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Enabled => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::LaunchConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::LaunchConfiguration {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::BlockDeviceMapping]');
   has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
@@ -117,25 +140,35 @@ class Aws::AutoScaling::LaunchConfiguration with (AWS::API::ResultParser, AWS::A
   has UserData => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::MetricCollectionType with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::MetricCollectionType {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Metric => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::MetricGranularityType with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::MetricGranularityType {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Granularity => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::NotificationConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::NotificationConfiguration {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has NotificationType => (is => 'ro', isa => 'Str');
   has TopicARN => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::ProcessType with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::ProcessType {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has ProcessName => (is => 'ro', isa => 'Str', required => 1);
 }
 
-class Aws::AutoScaling::ScalingPolicy with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::ScalingPolicy {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AdjustmentType => (is => 'ro', isa => 'Str');
   has Alarms => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::Alarm]');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
@@ -146,7 +179,9 @@ class Aws::AutoScaling::ScalingPolicy with (AWS::API::ResultParser, AWS::API::To
   has ScalingAdjustment => (is => 'ro', isa => 'Int');
 }
 
-class Aws::AutoScaling::ScheduledUpdateGroupAction with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::ScheduledUpdateGroupAction {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has DesiredCapacity => (is => 'ro', isa => 'Int');
   has EndTime => (is => 'ro', isa => 'Str');
@@ -159,12 +194,16 @@ class Aws::AutoScaling::ScheduledUpdateGroupAction with (AWS::API::ResultParser,
   has Time => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::SuspendedProcess with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::SuspendedProcess {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has ProcessName => (is => 'ro', isa => 'Str');
   has SuspensionReason => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::Tag with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::Tag {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has PropagateAtLaunch => (is => 'ro', isa => 'Str');
   has ResourceId => (is => 'ro', isa => 'Str');
@@ -172,7 +211,9 @@ class Aws::AutoScaling::Tag with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Value => (is => 'ro', isa => 'Str');
 }
 
-class Aws::AutoScaling::TagDescription with (AWS::API::ResultParser, AWS::API::ToParams) {
+package Aws::AutoScaling::TagDescription {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Key => (is => 'ro', isa => 'Str');
   has PropagateAtLaunch => (is => 'ro', isa => 'Str');
   has ResourceId => (is => 'ro', isa => 'Str');
@@ -182,7 +223,8 @@ class Aws::AutoScaling::TagDescription with (AWS::API::ResultParser, AWS::API::T
 
 
 
-class Aws::AutoScaling::AttachInstances {
+package Aws::AutoScaling::AttachInstances {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -190,7 +232,8 @@ class Aws::AutoScaling::AttachInstances {
   has _returns => (isa => 'Aws::AutoScaling::AttachInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AttachInstancesResult');  
 }
-class Aws::AutoScaling::CreateAutoScalingGroup {
+package Aws::AutoScaling::CreateAutoScalingGroup {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has DefaultCooldown => (is => 'ro', isa => 'Int');
@@ -211,7 +254,8 @@ class Aws::AutoScaling::CreateAutoScalingGroup {
   has _returns => (isa => 'Aws::AutoScaling::CreateAutoScalingGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateAutoScalingGroupResult');  
 }
-class Aws::AutoScaling::CreateLaunchConfiguration {
+package Aws::AutoScaling::CreateLaunchConfiguration {
+  use Moose;
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::BlockDeviceMapping]');
   has EbsOptimized => (is => 'ro', isa => 'Str');
@@ -232,14 +276,16 @@ class Aws::AutoScaling::CreateLaunchConfiguration {
   has _returns => (isa => 'Aws::AutoScaling::CreateLaunchConfigurationResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLaunchConfigurationResult');  
 }
-class Aws::AutoScaling::CreateOrUpdateTags {
+package Aws::AutoScaling::CreateOrUpdateTags {
+  use Moose;
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::Tag]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateOrUpdateTags');
   has _returns => (isa => 'Aws::AutoScaling::CreateOrUpdateTagsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateOrUpdateTagsResult');  
 }
-class Aws::AutoScaling::DeleteAutoScalingGroup {
+package Aws::AutoScaling::DeleteAutoScalingGroup {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has ForceDelete => (is => 'ro', isa => 'Str');
 
@@ -247,14 +293,16 @@ class Aws::AutoScaling::DeleteAutoScalingGroup {
   has _returns => (isa => 'Aws::AutoScaling::DeleteAutoScalingGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAutoScalingGroupResult');  
 }
-class Aws::AutoScaling::DeleteLaunchConfiguration {
+package Aws::AutoScaling::DeleteLaunchConfiguration {
+  use Moose;
   has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLaunchConfiguration');
   has _returns => (isa => 'Aws::AutoScaling::DeleteLaunchConfigurationResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLaunchConfigurationResult');  
 }
-class Aws::AutoScaling::DeleteNotificationConfiguration {
+package Aws::AutoScaling::DeleteNotificationConfiguration {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has TopicARN => (is => 'ro', isa => 'Str', required => 1);
 
@@ -262,7 +310,8 @@ class Aws::AutoScaling::DeleteNotificationConfiguration {
   has _returns => (isa => 'Aws::AutoScaling::DeleteNotificationConfigurationResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteNotificationConfigurationResult');  
 }
-class Aws::AutoScaling::DeletePolicy {
+package Aws::AutoScaling::DeletePolicy {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -270,7 +319,8 @@ class Aws::AutoScaling::DeletePolicy {
   has _returns => (isa => 'Aws::AutoScaling::DeletePolicyResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeletePolicyResult');  
 }
-class Aws::AutoScaling::DeleteScheduledAction {
+package Aws::AutoScaling::DeleteScheduledAction {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -278,26 +328,30 @@ class Aws::AutoScaling::DeleteScheduledAction {
   has _returns => (isa => 'Aws::AutoScaling::DeleteScheduledActionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteScheduledActionResult');  
 }
-class Aws::AutoScaling::DeleteTags {
+package Aws::AutoScaling::DeleteTags {
+  use Moose;
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::Tag]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTags');
   has _returns => (isa => 'Aws::AutoScaling::DeleteTagsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteTagsResult');  
 }
-class Aws::AutoScaling::DescribeAccountLimits {
+package Aws::AutoScaling::DescribeAccountLimits {
+  use Moose;
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAccountLimits');
   has _returns => (isa => 'Aws::AutoScaling::DescribeAccountLimitsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAccountLimitsResult');  
 }
-class Aws::AutoScaling::DescribeAdjustmentTypes {
+package Aws::AutoScaling::DescribeAdjustmentTypes {
+  use Moose;
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAdjustmentTypes');
   has _returns => (isa => 'Aws::AutoScaling::DescribeAdjustmentTypesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAdjustmentTypesResult');  
 }
-class Aws::AutoScaling::DescribeAutoScalingGroups {
+package Aws::AutoScaling::DescribeAutoScalingGroups {
+  use Moose;
   has AutoScalingGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -306,7 +360,8 @@ class Aws::AutoScaling::DescribeAutoScalingGroups {
   has _returns => (isa => 'Aws::AutoScaling::DescribeAutoScalingGroupsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingGroupsResult');  
 }
-class Aws::AutoScaling::DescribeAutoScalingInstances {
+package Aws::AutoScaling::DescribeAutoScalingInstances {
+  use Moose;
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -315,13 +370,15 @@ class Aws::AutoScaling::DescribeAutoScalingInstances {
   has _returns => (isa => 'Aws::AutoScaling::DescribeAutoScalingInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingInstancesResult');  
 }
-class Aws::AutoScaling::DescribeAutoScalingNotificationTypes {
+package Aws::AutoScaling::DescribeAutoScalingNotificationTypes {
+  use Moose;
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingNotificationTypes');
   has _returns => (isa => 'Aws::AutoScaling::DescribeAutoScalingNotificationTypesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingNotificationTypesResult');  
 }
-class Aws::AutoScaling::DescribeLaunchConfigurations {
+package Aws::AutoScaling::DescribeLaunchConfigurations {
+  use Moose;
   has LaunchConfigurationNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -330,13 +387,15 @@ class Aws::AutoScaling::DescribeLaunchConfigurations {
   has _returns => (isa => 'Aws::AutoScaling::DescribeLaunchConfigurationsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLaunchConfigurationsResult');  
 }
-class Aws::AutoScaling::DescribeMetricCollectionTypes {
+package Aws::AutoScaling::DescribeMetricCollectionTypes {
+  use Moose;
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMetricCollectionTypes');
   has _returns => (isa => 'Aws::AutoScaling::DescribeMetricCollectionTypesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeMetricCollectionTypesResult');  
 }
-class Aws::AutoScaling::DescribeNotificationConfigurations {
+package Aws::AutoScaling::DescribeNotificationConfigurations {
+  use Moose;
   has AutoScalingGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -345,7 +404,8 @@ class Aws::AutoScaling::DescribeNotificationConfigurations {
   has _returns => (isa => 'Aws::AutoScaling::DescribeNotificationConfigurationsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeNotificationConfigurationsResult');  
 }
-class Aws::AutoScaling::DescribePolicies {
+package Aws::AutoScaling::DescribePolicies {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -355,7 +415,8 @@ class Aws::AutoScaling::DescribePolicies {
   has _returns => (isa => 'Aws::AutoScaling::DescribePoliciesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribePoliciesResult');  
 }
-class Aws::AutoScaling::DescribeScalingActivities {
+package Aws::AutoScaling::DescribeScalingActivities {
+  use Moose;
   has ActivityIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -365,13 +426,15 @@ class Aws::AutoScaling::DescribeScalingActivities {
   has _returns => (isa => 'Aws::AutoScaling::DescribeScalingActivitiesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeScalingActivitiesResult');  
 }
-class Aws::AutoScaling::DescribeScalingProcessTypes {
+package Aws::AutoScaling::DescribeScalingProcessTypes {
+  use Moose;
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeScalingProcessTypes');
   has _returns => (isa => 'Aws::AutoScaling::DescribeScalingProcessTypesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeScalingProcessTypesResult');  
 }
-class Aws::AutoScaling::DescribeScheduledActions {
+package Aws::AutoScaling::DescribeScheduledActions {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -383,7 +446,8 @@ class Aws::AutoScaling::DescribeScheduledActions {
   has _returns => (isa => 'Aws::AutoScaling::DescribeScheduledActionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeScheduledActionsResult');  
 }
-class Aws::AutoScaling::DescribeTags {
+package Aws::AutoScaling::DescribeTags {
+  use Moose;
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::Filter]');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -392,13 +456,15 @@ class Aws::AutoScaling::DescribeTags {
   has _returns => (isa => 'Aws::AutoScaling::DescribeTagsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTagsResult');  
 }
-class Aws::AutoScaling::DescribeTerminationPolicyTypes {
+package Aws::AutoScaling::DescribeTerminationPolicyTypes {
+  use Moose;
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTerminationPolicyTypes');
   has _returns => (isa => 'Aws::AutoScaling::DescribeTerminationPolicyTypesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTerminationPolicyTypesResult');  
 }
-class Aws::AutoScaling::DisableMetricsCollection {
+package Aws::AutoScaling::DisableMetricsCollection {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Metrics => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -406,7 +472,8 @@ class Aws::AutoScaling::DisableMetricsCollection {
   has _returns => (isa => 'Aws::AutoScaling::DisableMetricsCollectionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DisableMetricsCollectionResult');  
 }
-class Aws::AutoScaling::EnableMetricsCollection {
+package Aws::AutoScaling::EnableMetricsCollection {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Granularity => (is => 'ro', isa => 'Str', required => 1);
   has Metrics => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -415,7 +482,8 @@ class Aws::AutoScaling::EnableMetricsCollection {
   has _returns => (isa => 'Aws::AutoScaling::EnableMetricsCollectionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'EnableMetricsCollectionResult');  
 }
-class Aws::AutoScaling::ExecutePolicy {
+package Aws::AutoScaling::ExecutePolicy {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has HonorCooldown => (is => 'ro', isa => 'Str');
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
@@ -424,7 +492,8 @@ class Aws::AutoScaling::ExecutePolicy {
   has _returns => (isa => 'Aws::AutoScaling::ExecutePolicyResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ExecutePolicyResult');  
 }
-class Aws::AutoScaling::PutNotificationConfiguration {
+package Aws::AutoScaling::PutNotificationConfiguration {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has NotificationTypes => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has TopicARN => (is => 'ro', isa => 'Str', required => 1);
@@ -433,7 +502,8 @@ class Aws::AutoScaling::PutNotificationConfiguration {
   has _returns => (isa => 'Aws::AutoScaling::PutNotificationConfigurationResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'PutNotificationConfigurationResult');  
 }
-class Aws::AutoScaling::PutScalingPolicy {
+package Aws::AutoScaling::PutScalingPolicy {
+  use Moose;
   has AdjustmentType => (is => 'ro', isa => 'Str', required => 1);
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Cooldown => (is => 'ro', isa => 'Int');
@@ -445,7 +515,8 @@ class Aws::AutoScaling::PutScalingPolicy {
   has _returns => (isa => 'Aws::AutoScaling::PutScalingPolicyResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'PutScalingPolicyResult');  
 }
-class Aws::AutoScaling::PutScheduledUpdateGroupAction {
+package Aws::AutoScaling::PutScheduledUpdateGroupAction {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has DesiredCapacity => (is => 'ro', isa => 'Int');
   has EndTime => (is => 'ro', isa => 'Str');
@@ -460,7 +531,8 @@ class Aws::AutoScaling::PutScheduledUpdateGroupAction {
   has _returns => (isa => 'Aws::AutoScaling::PutScheduledUpdateGroupActionResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'PutScheduledUpdateGroupActionResult');  
 }
-class Aws::AutoScaling::ResumeProcesses {
+package Aws::AutoScaling::ResumeProcesses {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has ScalingProcesses => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -468,7 +540,8 @@ class Aws::AutoScaling::ResumeProcesses {
   has _returns => (isa => 'Aws::AutoScaling::ResumeProcessesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'ResumeProcessesResult');  
 }
-class Aws::AutoScaling::SetDesiredCapacity {
+package Aws::AutoScaling::SetDesiredCapacity {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has DesiredCapacity => (is => 'ro', isa => 'Int', required => 1);
   has HonorCooldown => (is => 'ro', isa => 'Str');
@@ -477,7 +550,8 @@ class Aws::AutoScaling::SetDesiredCapacity {
   has _returns => (isa => 'Aws::AutoScaling::SetDesiredCapacityResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetDesiredCapacityResult');  
 }
-class Aws::AutoScaling::SetInstanceHealth {
+package Aws::AutoScaling::SetInstanceHealth {
+  use Moose;
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has ShouldRespectGracePeriod => (is => 'ro', isa => 'Str');
@@ -486,7 +560,8 @@ class Aws::AutoScaling::SetInstanceHealth {
   has _returns => (isa => 'Aws::AutoScaling::SetInstanceHealthResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SetInstanceHealthResult');  
 }
-class Aws::AutoScaling::SuspendProcesses {
+package Aws::AutoScaling::SuspendProcesses {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has ScalingProcesses => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -494,7 +569,8 @@ class Aws::AutoScaling::SuspendProcesses {
   has _returns => (isa => 'Aws::AutoScaling::SuspendProcessesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'SuspendProcessesResult');  
 }
-class Aws::AutoScaling::TerminateInstanceInAutoScalingGroup {
+package Aws::AutoScaling::TerminateInstanceInAutoScalingGroup {
+  use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has ShouldDecrementDesiredCapacity => (is => 'ro', isa => 'Str', required => 1);
 
@@ -502,7 +578,8 @@ class Aws::AutoScaling::TerminateInstanceInAutoScalingGroup {
   has _returns => (isa => 'Aws::AutoScaling::TerminateInstanceInAutoScalingGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'TerminateInstanceInAutoScalingGroupResult');  
 }
-class Aws::AutoScaling::UpdateAutoScalingGroup {
+package Aws::AutoScaling::UpdateAutoScalingGroup {
+  use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has DefaultCooldown => (is => 'ro', isa => 'Int');
@@ -521,278 +598,348 @@ class Aws::AutoScaling::UpdateAutoScalingGroup {
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateAutoScalingGroupResult');  
 }
 
-class Aws::AutoScaling::DescribeAccountLimitsResult with AWS::API::ResultParser {
+package Aws::AutoScaling::DescribeAccountLimitsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has MaxNumberOfAutoScalingGroups => (is => 'ro', isa => 'Int');
   has MaxNumberOfLaunchConfigurations => (is => 'ro', isa => 'Int');
 
 }
-class Aws::AutoScaling::DescribeAdjustmentTypesResult with AWS::API::ResultParser {
+package Aws::AutoScaling::DescribeAdjustmentTypesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has AdjustmentTypes => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::AdjustmentType]');
 
 }
-class Aws::AutoScaling::DescribeAutoScalingGroupsResult with AWS::API::ResultParser {
+package Aws::AutoScaling::DescribeAutoScalingGroupsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::AutoScalingGroup]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
 }
-class Aws::AutoScaling::DescribeAutoScalingInstancesResult with AWS::API::ResultParser {
+package Aws::AutoScaling::DescribeAutoScalingInstancesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has AutoScalingInstances => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::AutoScalingInstanceDetails]');
   has NextToken => (is => 'ro', isa => 'Str');
 
 }
-class Aws::AutoScaling::DescribeAutoScalingNotificationTypesResult with AWS::API::ResultParser {
+package Aws::AutoScaling::DescribeAutoScalingNotificationTypesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has AutoScalingNotificationTypes => (is => 'ro', isa => 'ArrayRef[Str]');
 
 }
-class Aws::AutoScaling::DescribeLaunchConfigurationsResult with AWS::API::ResultParser {
+package Aws::AutoScaling::DescribeLaunchConfigurationsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has LaunchConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::LaunchConfiguration]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
 }
-class Aws::AutoScaling::DescribeMetricCollectionTypesResult with AWS::API::ResultParser {
+package Aws::AutoScaling::DescribeMetricCollectionTypesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Granularities => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::MetricGranularityType]');
   has Metrics => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::MetricCollectionType]');
 
 }
-class Aws::AutoScaling::DescribeNotificationConfigurationsResult with AWS::API::ResultParser {
+package Aws::AutoScaling::DescribeNotificationConfigurationsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has NextToken => (is => 'ro', isa => 'Str');
   has NotificationConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::NotificationConfiguration]', required => 1);
 
 }
-class Aws::AutoScaling::DescribePoliciesResult with AWS::API::ResultParser {
+package Aws::AutoScaling::DescribePoliciesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has NextToken => (is => 'ro', isa => 'Str');
   has ScalingPolicies => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::ScalingPolicy]');
 
 }
-class Aws::AutoScaling::DescribeScalingActivitiesResult with AWS::API::ResultParser {
+package Aws::AutoScaling::DescribeScalingActivitiesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Activities => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::Activity]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
 }
-class Aws::AutoScaling::DescribeScalingProcessTypesResult with AWS::API::ResultParser {
+package Aws::AutoScaling::DescribeScalingProcessTypesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Processes => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::ProcessType]');
 
 }
-class Aws::AutoScaling::DescribeScheduledActionsResult with AWS::API::ResultParser {
+package Aws::AutoScaling::DescribeScheduledActionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has NextToken => (is => 'ro', isa => 'Str');
   has ScheduledUpdateGroupActions => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::ScheduledUpdateGroupAction]');
 
 }
-class Aws::AutoScaling::DescribeTagsResult with AWS::API::ResultParser {
+package Aws::AutoScaling::DescribeTagsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has NextToken => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::TagDescription]');
 
 }
-class Aws::AutoScaling::DescribeTerminationPolicyTypesResult with AWS::API::ResultParser {
+package Aws::AutoScaling::DescribeTerminationPolicyTypesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has TerminationPolicyTypes => (is => 'ro', isa => 'ArrayRef[Str]');
 
 }
-class Aws::AutoScaling::PutScalingPolicyResult with AWS::API::ResultParser {
+package Aws::AutoScaling::PutScalingPolicyResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has PolicyARN => (is => 'ro', isa => 'Str');
 
 }
-class Aws::AutoScaling::TerminateInstanceInAutoScalingGroupResult with AWS::API::ResultParser {
+package Aws::AutoScaling::TerminateInstanceInAutoScalingGroupResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
   has Activity => (is => 'ro', isa => 'Aws::AutoScaling::Activity');
 
 }
 
-class Aws::AutoScaling with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AWS::V4Signature, Net::AWS::QueryCaller, Net::AWS::XMLResponse) {
+package Aws::AutoScaling {
+  use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'autoscaling');
   has version => (is => 'ro', isa => 'Str', default => '2011-01-01');
+  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
   
-  method AttachInstances (%args) {
-    my $call = Aws::AutoScaling::AttachInstances->new(%args);
+  sub AttachInstances {
+    my $self = shift;
+    my $call = Aws::AutoScaling::AttachInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method CreateAutoScalingGroup (%args) {
-    my $call = Aws::AutoScaling::CreateAutoScalingGroup->new(%args);
+  sub CreateAutoScalingGroup {
+    my $self = shift;
+    my $call = Aws::AutoScaling::CreateAutoScalingGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method CreateLaunchConfiguration (%args) {
-    my $call = Aws::AutoScaling::CreateLaunchConfiguration->new(%args);
+  sub CreateLaunchConfiguration {
+    my $self = shift;
+    my $call = Aws::AutoScaling::CreateLaunchConfiguration->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method CreateOrUpdateTags (%args) {
-    my $call = Aws::AutoScaling::CreateOrUpdateTags->new(%args);
+  sub CreateOrUpdateTags {
+    my $self = shift;
+    my $call = Aws::AutoScaling::CreateOrUpdateTags->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteAutoScalingGroup (%args) {
-    my $call = Aws::AutoScaling::DeleteAutoScalingGroup->new(%args);
+  sub DeleteAutoScalingGroup {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DeleteAutoScalingGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteLaunchConfiguration (%args) {
-    my $call = Aws::AutoScaling::DeleteLaunchConfiguration->new(%args);
+  sub DeleteLaunchConfiguration {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DeleteLaunchConfiguration->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteNotificationConfiguration (%args) {
-    my $call = Aws::AutoScaling::DeleteNotificationConfiguration->new(%args);
+  sub DeleteNotificationConfiguration {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DeleteNotificationConfiguration->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeletePolicy (%args) {
-    my $call = Aws::AutoScaling::DeletePolicy->new(%args);
+  sub DeletePolicy {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DeletePolicy->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteScheduledAction (%args) {
-    my $call = Aws::AutoScaling::DeleteScheduledAction->new(%args);
+  sub DeleteScheduledAction {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DeleteScheduledAction->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DeleteTags (%args) {
-    my $call = Aws::AutoScaling::DeleteTags->new(%args);
+  sub DeleteTags {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DeleteTags->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method DescribeAccountLimits (%args) {
-    my $call = Aws::AutoScaling::DescribeAccountLimits->new(%args);
+  sub DescribeAccountLimits {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DescribeAccountLimits->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeAccountLimitsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeAdjustmentTypes (%args) {
-    my $call = Aws::AutoScaling::DescribeAdjustmentTypes->new(%args);
+  sub DescribeAdjustmentTypes {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DescribeAdjustmentTypes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeAdjustmentTypesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeAutoScalingGroups (%args) {
-    my $call = Aws::AutoScaling::DescribeAutoScalingGroups->new(%args);
+  sub DescribeAutoScalingGroups {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DescribeAutoScalingGroups->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeAutoScalingGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeAutoScalingInstances (%args) {
-    my $call = Aws::AutoScaling::DescribeAutoScalingInstances->new(%args);
+  sub DescribeAutoScalingInstances {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DescribeAutoScalingInstances->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeAutoScalingInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeAutoScalingNotificationTypes (%args) {
-    my $call = Aws::AutoScaling::DescribeAutoScalingNotificationTypes->new(%args);
+  sub DescribeAutoScalingNotificationTypes {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DescribeAutoScalingNotificationTypes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeAutoScalingNotificationTypesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeLaunchConfigurations (%args) {
-    my $call = Aws::AutoScaling::DescribeLaunchConfigurations->new(%args);
+  sub DescribeLaunchConfigurations {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DescribeLaunchConfigurations->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeLaunchConfigurationsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeMetricCollectionTypes (%args) {
-    my $call = Aws::AutoScaling::DescribeMetricCollectionTypes->new(%args);
+  sub DescribeMetricCollectionTypes {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DescribeMetricCollectionTypes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeMetricCollectionTypesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeNotificationConfigurations (%args) {
-    my $call = Aws::AutoScaling::DescribeNotificationConfigurations->new(%args);
+  sub DescribeNotificationConfigurations {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DescribeNotificationConfigurations->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeNotificationConfigurationsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribePolicies (%args) {
-    my $call = Aws::AutoScaling::DescribePolicies->new(%args);
+  sub DescribePolicies {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DescribePolicies->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribePoliciesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeScalingActivities (%args) {
-    my $call = Aws::AutoScaling::DescribeScalingActivities->new(%args);
+  sub DescribeScalingActivities {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DescribeScalingActivities->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeScalingActivitiesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeScalingProcessTypes (%args) {
-    my $call = Aws::AutoScaling::DescribeScalingProcessTypes->new(%args);
+  sub DescribeScalingProcessTypes {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DescribeScalingProcessTypes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeScalingProcessTypesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeScheduledActions (%args) {
-    my $call = Aws::AutoScaling::DescribeScheduledActions->new(%args);
+  sub DescribeScheduledActions {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DescribeScheduledActions->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeScheduledActionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeTags (%args) {
-    my $call = Aws::AutoScaling::DescribeTags->new(%args);
+  sub DescribeTags {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DescribeTags->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeTagsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DescribeTerminationPolicyTypes (%args) {
-    my $call = Aws::AutoScaling::DescribeTerminationPolicyTypes->new(%args);
+  sub DescribeTerminationPolicyTypes {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DescribeTerminationPolicyTypes->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeTerminationPolicyTypesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method DisableMetricsCollection (%args) {
-    my $call = Aws::AutoScaling::DisableMetricsCollection->new(%args);
+  sub DisableMetricsCollection {
+    my $self = shift;
+    my $call = Aws::AutoScaling::DisableMetricsCollection->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method EnableMetricsCollection (%args) {
-    my $call = Aws::AutoScaling::EnableMetricsCollection->new(%args);
+  sub EnableMetricsCollection {
+    my $self = shift;
+    my $call = Aws::AutoScaling::EnableMetricsCollection->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ExecutePolicy (%args) {
-    my $call = Aws::AutoScaling::ExecutePolicy->new(%args);
+  sub ExecutePolicy {
+    my $self = shift;
+    my $call = Aws::AutoScaling::ExecutePolicy->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method PutNotificationConfiguration (%args) {
-    my $call = Aws::AutoScaling::PutNotificationConfiguration->new(%args);
+  sub PutNotificationConfiguration {
+    my $self = shift;
+    my $call = Aws::AutoScaling::PutNotificationConfiguration->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method PutScalingPolicy (%args) {
-    my $call = Aws::AutoScaling::PutScalingPolicy->new(%args);
+  sub PutScalingPolicy {
+    my $self = shift;
+    my $call = Aws::AutoScaling::PutScalingPolicy->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::PutScalingPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method PutScheduledUpdateGroupAction (%args) {
-    my $call = Aws::AutoScaling::PutScheduledUpdateGroupAction->new(%args);
+  sub PutScheduledUpdateGroupAction {
+    my $self = shift;
+    my $call = Aws::AutoScaling::PutScheduledUpdateGroupAction->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method ResumeProcesses (%args) {
-    my $call = Aws::AutoScaling::ResumeProcesses->new(%args);
+  sub ResumeProcesses {
+    my $self = shift;
+    my $call = Aws::AutoScaling::ResumeProcesses->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method SetDesiredCapacity (%args) {
-    my $call = Aws::AutoScaling::SetDesiredCapacity->new(%args);
+  sub SetDesiredCapacity {
+    my $self = shift;
+    my $call = Aws::AutoScaling::SetDesiredCapacity->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method SetInstanceHealth (%args) {
-    my $call = Aws::AutoScaling::SetInstanceHealth->new(%args);
+  sub SetInstanceHealth {
+    my $self = shift;
+    my $call = Aws::AutoScaling::SetInstanceHealth->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method SuspendProcesses (%args) {
-    my $call = Aws::AutoScaling::SuspendProcesses->new(%args);
+  sub SuspendProcesses {
+    my $self = shift;
+    my $call = Aws::AutoScaling::SuspendProcesses->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
-  method TerminateInstanceInAutoScalingGroup (%args) {
-    my $call = Aws::AutoScaling::TerminateInstanceInAutoScalingGroup->new(%args);
+  sub TerminateInstanceInAutoScalingGroup {
+    my $self = shift;
+    my $call = Aws::AutoScaling::TerminateInstanceInAutoScalingGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::TerminateInstanceInAutoScalingGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  method UpdateAutoScalingGroup (%args) {
-    my $call = Aws::AutoScaling::UpdateAutoScalingGroup->new(%args);
+  sub UpdateAutoScalingGroup {
+    my $self = shift;
+    my $call = Aws::AutoScaling::UpdateAutoScalingGroup->new(@_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
