@@ -82,6 +82,11 @@ class Aws::Support::TrustedAdvisorCheckSummary with (AWS::API::ResultParser, AWS
   has timestamp => (is => 'ro', isa => 'Str', required => 1);
 }
 
+class Aws::Support::TrustedAdvisorCostOptimizingSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has estimatedMonthlySavings => (is => 'ro', isa => 'Num', required => 1);
+  has estimatedPercentMonthlySavings => (is => 'ro', isa => 'Num', required => 1);
+}
+
 class Aws::Support::TrustedAdvisorResourceDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
   has isSuppressed => (is => 'ro', isa => 'Str');
   has metadata => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -262,78 +267,66 @@ class Aws::Support with (Net::AWS::Caller, AWS::API::SingleEndpointCaller, Net::
   has service => (is => 'ro', isa => 'Str', default => 'support');
   has version => (is => 'ro', isa => 'Str', default => '2013-04-15');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'AWSSupport_20130415');
-
+  has json_version => (is => 'ro', isa => 'Str', default => "1.1");
   
   method AddCommunicationToCase (%args) {
     my $call = Aws::Support::AddCommunicationToCase->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Support::AddCommunicationToCaseResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Support::AddCommunicationToCaseResult->from_result($result);return $o_result;
   }
   method CreateCase (%args) {
     my $call = Aws::Support::CreateCase->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Support::CreateCaseResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Support::CreateCaseResult->from_result($result);return $o_result;
   }
   method DescribeCases (%args) {
     my $call = Aws::Support::DescribeCases->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Support::DescribeCasesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Support::DescribeCasesResult->from_result($result);return $o_result;
   }
   method DescribeCommunications (%args) {
     my $call = Aws::Support::DescribeCommunications->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Support::DescribeCommunicationsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Support::DescribeCommunicationsResult->from_result($result);return $o_result;
   }
   method DescribeServices (%args) {
     my $call = Aws::Support::DescribeServices->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Support::DescribeServicesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Support::DescribeServicesResult->from_result($result);return $o_result;
   }
   method DescribeSeverityLevels (%args) {
     my $call = Aws::Support::DescribeSeverityLevels->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Support::DescribeSeverityLevelsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Support::DescribeSeverityLevelsResult->from_result($result);return $o_result;
   }
   method DescribeTrustedAdvisorCheckRefreshStatuses (%args) {
     my $call = Aws::Support::DescribeTrustedAdvisorCheckRefreshStatuses->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResult->from_result($result);return $o_result;
   }
   method DescribeTrustedAdvisorCheckResult (%args) {
     my $call = Aws::Support::DescribeTrustedAdvisorCheckResult->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Support::DescribeTrustedAdvisorCheckResultResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Support::DescribeTrustedAdvisorCheckResultResult->from_result($result);return $o_result;
   }
   method DescribeTrustedAdvisorChecks (%args) {
     my $call = Aws::Support::DescribeTrustedAdvisorChecks->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Support::DescribeTrustedAdvisorChecksResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Support::DescribeTrustedAdvisorChecksResult->from_result($result);return $o_result;
   }
   method DescribeTrustedAdvisorCheckSummaries (%args) {
     my $call = Aws::Support::DescribeTrustedAdvisorCheckSummaries->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Support::DescribeTrustedAdvisorCheckSummariesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Support::DescribeTrustedAdvisorCheckSummariesResult->from_result($result);return $o_result;
   }
   method RefreshTrustedAdvisorCheck (%args) {
     my $call = Aws::Support::RefreshTrustedAdvisorCheck->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Support::RefreshTrustedAdvisorCheckResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Support::RefreshTrustedAdvisorCheckResult->from_result($result);return $o_result;
   }
   method ResolveCase (%args) {
     my $call = Aws::Support::ResolveCase->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Support::ResolveCaseResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Support::ResolveCaseResult->from_result($result);return $o_result;
   }
 }

@@ -51,8 +51,13 @@ class AWS::API::Builder::EC2 {
       } 
     }
 
-    # First call may register more inner classes
+    my $last_seen_inner_classes = scalar(keys %{ $self->inner_classes });
     $self->make_inner_classes();
+    while ($last_seen_inner_classes != scalar(keys %{ $self->inner_classes })){
+      $last_seen_inner_classes = scalar(keys %{ $self->inner_classes });
+      $self->make_inner_classes();
+    }
+      
     my $inner_output .= $self->make_inner_classes();
 
     my $class = q#
@@ -72,6 +77,8 @@ enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %
 class [% c.api %]::[% operation.name %] {
 [% FOREACH param_name IN operation.input.members.keys.sort -%]
   has [% param_name %] => (is => 'ro', isa => '[% operation.input.members.$param_name.perl_type %]'
+  [%- IF (operation.input.members.$param_name.xmlname) %], traits => ['NameInRequest'], request_name => '[% operation.input.members.$param_name.xmlname %]' [% END %]
+  [%- IF (operation.input.members.$param_name.members.xmlname) %], traits => ['NameInRequest'], request_name => '[% operation.input.members.$param_name.members.xmlname %]' [% END %]
   [%- IF (operation.input.members.$param_name.required) %], required => 1[% END %]);
 [% END %]
   has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
@@ -87,6 +94,7 @@ class [% c.api %]::[% operation.name %]Result with AWS::API::UnwrappedParser {
 [% FOREACH param_name IN operation.output.members.keys.sort -%]
   has [% param_name %] => (is => 'ro', isa => '[% operation.output.members.$param_name.perl_type %]'
   [%- IF (operation.output.members.$param_name.xmlname) %], traits => ['Unwrapped'], xmlname => '[% operation.output.members.$param_name.xmlname %]'[% END %]
+  [%- IF (operation.output.members.$param_name.members.xmlname and (operation.output.members.$param_name.members.xmlname != 'item')) %], traits => ['Unwrapped'], xmlname => '[% operation.output.members.$param_name.members.xmlname %]'[% END %]
   [%- IF (operation.output.members.$param_name.required) %], required => 1[% END %]);
 [% END %]
 }
@@ -243,8 +251,8 @@ class [% c.api %] with (Net::AWS::Caller, [% c.endpoint_role %], [% c.signature_
       # This is an inner class. We have to generate an inner class
       $type = $param_props->{ shape_name };
       die "doesn't have a shape_name entry for $param_name with def " . Dumper($param_props) if (not defined $type);
-  
-      if ($type !~ /^AWS\:\:/) {
+ 
+      if ($type !~ /^Aws\:\:/) {
         # If the type isn't in the AWS namespace, we prefix it with our class name,
         # and queue it for building. Else the class is assumed to already be built
         my $api = $self->api;

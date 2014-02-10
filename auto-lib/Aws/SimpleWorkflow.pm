@@ -1035,31 +1035,27 @@ class Aws::SimpleWorkflow with (Net::AWS::Caller, AWS::API::RegionalEndpointCall
   has service => (is => 'ro', isa => 'Str', default => 'swf');
   has version => (is => 'ro', isa => 'Str', default => '2012-01-25');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'SimpleWorkflowService');
-
+  has json_version => (is => 'ro', isa => 'Str', default => "1.0");
   
   method CountClosedWorkflowExecutions (%args) {
     my $call = Aws::SimpleWorkflow::CountClosedWorkflowExecutions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::CountClosedWorkflowExecutionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::CountClosedWorkflowExecutionsResult->from_result($result);return $o_result;
   }
   method CountOpenWorkflowExecutions (%args) {
     my $call = Aws::SimpleWorkflow::CountOpenWorkflowExecutions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::CountOpenWorkflowExecutionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::CountOpenWorkflowExecutionsResult->from_result($result);return $o_result;
   }
   method CountPendingActivityTasks (%args) {
     my $call = Aws::SimpleWorkflow::CountPendingActivityTasks->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::CountPendingActivityTasksResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::CountPendingActivityTasksResult->from_result($result);return $o_result;
   }
   method CountPendingDecisionTasks (%args) {
     my $call = Aws::SimpleWorkflow::CountPendingDecisionTasks->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::CountPendingDecisionTasksResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::CountPendingDecisionTasksResult->from_result($result);return $o_result;
   }
   method DeprecateActivityType (%args) {
     my $call = Aws::SimpleWorkflow::DeprecateActivityType->new(%args);
@@ -1079,80 +1075,67 @@ class Aws::SimpleWorkflow with (Net::AWS::Caller, AWS::API::RegionalEndpointCall
   method DescribeActivityType (%args) {
     my $call = Aws::SimpleWorkflow::DescribeActivityType->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::DescribeActivityTypeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::DescribeActivityTypeResult->from_result($result);return $o_result;
   }
   method DescribeDomain (%args) {
     my $call = Aws::SimpleWorkflow::DescribeDomain->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::DescribeDomainResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::DescribeDomainResult->from_result($result);return $o_result;
   }
   method DescribeWorkflowExecution (%args) {
     my $call = Aws::SimpleWorkflow::DescribeWorkflowExecution->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::DescribeWorkflowExecutionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::DescribeWorkflowExecutionResult->from_result($result);return $o_result;
   }
   method DescribeWorkflowType (%args) {
     my $call = Aws::SimpleWorkflow::DescribeWorkflowType->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::DescribeWorkflowTypeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::DescribeWorkflowTypeResult->from_result($result);return $o_result;
   }
   method GetWorkflowExecutionHistory (%args) {
     my $call = Aws::SimpleWorkflow::GetWorkflowExecutionHistory->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::GetWorkflowExecutionHistoryResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::GetWorkflowExecutionHistoryResult->from_result($result);return $o_result;
   }
   method ListActivityTypes (%args) {
     my $call = Aws::SimpleWorkflow::ListActivityTypes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::ListActivityTypesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::ListActivityTypesResult->from_result($result);return $o_result;
   }
   method ListClosedWorkflowExecutions (%args) {
     my $call = Aws::SimpleWorkflow::ListClosedWorkflowExecutions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::ListClosedWorkflowExecutionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::ListClosedWorkflowExecutionsResult->from_result($result);return $o_result;
   }
   method ListDomains (%args) {
     my $call = Aws::SimpleWorkflow::ListDomains->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::ListDomainsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::ListDomainsResult->from_result($result);return $o_result;
   }
   method ListOpenWorkflowExecutions (%args) {
     my $call = Aws::SimpleWorkflow::ListOpenWorkflowExecutions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::ListOpenWorkflowExecutionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::ListOpenWorkflowExecutionsResult->from_result($result);return $o_result;
   }
   method ListWorkflowTypes (%args) {
     my $call = Aws::SimpleWorkflow::ListWorkflowTypes->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::ListWorkflowTypesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::ListWorkflowTypesResult->from_result($result);return $o_result;
   }
   method PollForActivityTask (%args) {
     my $call = Aws::SimpleWorkflow::PollForActivityTask->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::PollForActivityTaskResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::PollForActivityTaskResult->from_result($result);return $o_result;
   }
   method PollForDecisionTask (%args) {
     my $call = Aws::SimpleWorkflow::PollForDecisionTask->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::PollForDecisionTaskResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::PollForDecisionTaskResult->from_result($result);return $o_result;
   }
   method RecordActivityTaskHeartbeat (%args) {
     my $call = Aws::SimpleWorkflow::RecordActivityTaskHeartbeat->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::RecordActivityTaskHeartbeatResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::RecordActivityTaskHeartbeatResult->from_result($result);return $o_result;
   }
   method RegisterActivityType (%args) {
     my $call = Aws::SimpleWorkflow::RegisterActivityType->new(%args);
@@ -1202,8 +1185,7 @@ class Aws::SimpleWorkflow with (Net::AWS::Caller, AWS::API::RegionalEndpointCall
   method StartWorkflowExecution (%args) {
     my $call = Aws::SimpleWorkflow::StartWorkflowExecution->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::StartWorkflowExecutionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::SimpleWorkflow::StartWorkflowExecutionResult->from_result($result);return $o_result;
   }
   method TerminateWorkflowExecution (%args) {
     my $call = Aws::SimpleWorkflow::TerminateWorkflowExecution->new(%args);

@@ -6,6 +6,10 @@ use Moose::Util::TypeConstraints;
 enum 'Aws::ElastiCache::SourceType', ['cache-cluster','cache-parameter-group','cache-security-group','cache-subnet-group',];
 
 
+class Aws::ElastiCache::AvailabilityZone with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Name => (is => 'ro', isa => 'Str');
+}
+
 class Aws::ElastiCache::CacheCluster with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
@@ -125,6 +129,14 @@ class Aws::ElastiCache::NodeGroup with (AWS::API::ResultParser, AWS::API::ToPara
   has Status => (is => 'ro', isa => 'Str');
 }
 
+class Aws::ElastiCache::NodeGroupMember with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has CacheClusterId => (is => 'ro', isa => 'Str');
+  has CacheNodeId => (is => 'ro', isa => 'Str');
+  has CurrentRole => (is => 'ro', isa => 'Str');
+  has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
+  has ReadEndpoint => (is => 'ro', isa => 'Aws::ElastiCache::Endpoint');
+}
+
 class Aws::ElastiCache::NotificationConfiguration with (AWS::API::ResultParser, AWS::API::ToParams) {
   has TopicArn => (is => 'ro', isa => 'Str');
   has TopicStatus => (is => 'ro', isa => 'Str');
@@ -222,7 +234,7 @@ class Aws::ElastiCache::CreateCacheCluster {
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CacheSecurityGroupName' );
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -232,8 +244,8 @@ class Aws::ElastiCache::CreateCacheCluster {
   has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SnapshotArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
+  has SnapshotArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SnapshotArn' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCacheCluster');
   has _returns => (isa => 'Aws::ElastiCache::CreateCacheClusterResult', is => 'ro');
@@ -259,7 +271,7 @@ class Aws::ElastiCache::CreateCacheSecurityGroup {
 class Aws::ElastiCache::CreateCacheSubnetGroup {
   has CacheSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCacheSubnetGroup');
   has _returns => (isa => 'Aws::ElastiCache::CreateCacheSubnetGroupResult', is => 'ro');
@@ -431,15 +443,15 @@ class Aws::ElastiCache::ModifyCacheCluster {
   has ApplyImmediately => (is => 'ro', isa => 'Str');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CacheNodeId' );
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CacheSecurityGroupName' );
   has EngineVersion => (is => 'ro', isa => 'Str');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NotificationTopicStatus => (is => 'ro', isa => 'Str');
   has NumCacheNodes => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCacheCluster');
   has _returns => (isa => 'Aws::ElastiCache::ModifyCacheClusterResult', is => 'ro');
@@ -447,7 +459,7 @@ class Aws::ElastiCache::ModifyCacheCluster {
 }
 class Aws::ElastiCache::ModifyCacheParameterGroup {
   has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has ParameterNameValues => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ParameterNameValue]', required => 1);
+  has ParameterNameValues => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ParameterNameValue]', traits => ['NameInRequest'], request_name => 'ParameterNameValue' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCacheParameterGroup');
   has _returns => (isa => 'Aws::ElastiCache::ModifyCacheParameterGroupResult', is => 'ro');
@@ -456,7 +468,7 @@ class Aws::ElastiCache::ModifyCacheParameterGroup {
 class Aws::ElastiCache::ModifyCacheSubnetGroup {
   has CacheSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCacheSubnetGroup');
   has _returns => (isa => 'Aws::ElastiCache::ModifyCacheSubnetGroupResult', is => 'ro');
@@ -466,7 +478,7 @@ class Aws::ElastiCache::ModifyReplicationGroup {
   has ApplyImmediately => (is => 'ro', isa => 'Str');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CacheSecurityGroupName' );
   has EngineVersion => (is => 'ro', isa => 'Str');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NotificationTopicStatus => (is => 'ro', isa => 'Str');
@@ -474,7 +486,7 @@ class Aws::ElastiCache::ModifyReplicationGroup {
   has PrimaryClusterId => (is => 'ro', isa => 'Str');
   has ReplicationGroupDescription => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyReplicationGroup');
   has _returns => (isa => 'Aws::ElastiCache::ModifyReplicationGroupResult', is => 'ro');
@@ -491,7 +503,7 @@ class Aws::ElastiCache::PurchaseReservedCacheNodesOffering {
 }
 class Aws::ElastiCache::RebootCacheCluster {
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has CacheNodeIdsToReboot => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has CacheNodeIdsToReboot => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CacheNodeId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RebootCacheCluster');
   has _returns => (isa => 'Aws::ElastiCache::RebootCacheClusterResult', is => 'ro');
@@ -499,7 +511,7 @@ class Aws::ElastiCache::RebootCacheCluster {
 }
 class Aws::ElastiCache::ResetCacheParameterGroup {
   has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has ParameterNameValues => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ParameterNameValue]', required => 1);
+  has ParameterNameValues => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ParameterNameValue]', traits => ['NameInRequest'], request_name => 'ParameterNameValue' , required => 1);
   has ResetAllParameters => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ResetCacheParameterGroup');

@@ -33,7 +33,7 @@ enum 'Aws::EC2::OfferingTypeValues', ['Heavy Utilization','Medium Utilization','
 enum 'Aws::EC2::PermissionGroup', ['all',];
 enum 'Aws::EC2::PlacementGroupState', ['pending','available','deleting','deleted',];
 enum 'Aws::EC2::PlacementStrategy', ['cluster',];
-enum 'Aws::EC2::PlatformValues', ['Windows',];
+enum 'Aws::EC2::PlatformValues', ['windows',];
 enum 'Aws::EC2::ProductCodeValues', ['devpay','marketplace',];
 enum 'Aws::EC2::RecurringChargeFrequency', ['Hourly',];
 enum 'Aws::EC2::ReservedInstanceState', ['payment-pending','active','payment-failed','retired',];
@@ -47,6 +47,8 @@ enum 'Aws::EC2::SnapshotState', ['pending','completed','error',];
 enum 'Aws::EC2::SpotInstanceState', ['open','active','closed','cancelled','failed',];
 enum 'Aws::EC2::SpotInstanceType', ['one-time','persistent',];
 enum 'Aws::EC2::SpotProductDescription', ['Linux/UNIX','Linux/UNIX (Amazon VPC)','Windows','Windows (Amazon VPC)','SUSE Linux','SUSE Linux (Amazon VPC)',];
+enum 'Aws::EC2::StatusName', ['reachability',];
+enum 'Aws::EC2::StatusType', ['passed','failed','insufficient-data',];
 enum 'Aws::EC2::SubnetState', ['pending','available',];
 enum 'Aws::EC2::SummaryStatus', ['ok','impaired','insufficient-data','not-applicable',];
 enum 'Aws::EC2::TelemetryStatus', ['UP','DOWN',];
@@ -55,6 +57,7 @@ enum 'Aws::EC2::VirtualizationType', ['hvm','paravirtual',];
 enum 'Aws::EC2::VolumeAttachmentState', ['attaching','attached','detaching','detached',];
 enum 'Aws::EC2::VolumeState', ['creating','available','in-use','deleting','deleted','error',];
 enum 'Aws::EC2::VolumeStatusInfoStatus', ['ok','impaired','insufficient-data',];
+enum 'Aws::EC2::VolumeStatusName', ['io-enabled','io-performance',];
 enum 'Aws::EC2::VolumeType', ['standard','io1',];
 enum 'Aws::EC2::VpcState', ['pending','available',];
 enum 'Aws::EC2::VpnState', ['pending','available','deleting','deleted',];
@@ -174,10 +177,22 @@ class Aws::EC2::DiskImage with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has Volume => (is => 'ro', isa => 'Aws::EC2::VolumeDetail');
 }
 
+class Aws::EC2::DiskImageDescription with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'checksum');
+  has Format => (is => 'ro', isa => 'Aws::EC2::DiskImageFormat', traits => ['Unwrapped'], xmlname => 'format', required => 1);
+  has ImportManifestUrl => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'importManifestUrl', required => 1);
+  has Size => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'size', required => 1);
+}
+
 class Aws::EC2::DiskImageDetail with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has Bytes => (is => 'ro', isa => 'Num', required => 1);
   has Format => (is => 'ro', isa => 'Aws::EC2::DiskImageFormat', required => 1);
   has ImportManifestUrl => (is => 'ro', isa => 'Str', required => 1);
+}
+
+class Aws::EC2::DiskImageVolumeDescription with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+  has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id', required => 1);
+  has Size => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'size');
 }
 
 class Aws::EC2::EbsBlockDevice with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -244,8 +259,8 @@ class Aws::EC2::IamInstanceProfileSpecification with (AWS::API::UnwrappedParser,
 }
 
 class Aws::EC2::IcmpTypeCode with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has Code => (is => 'ro', isa => 'Int');
-  has Type => (is => 'ro', isa => 'Int');
+  has Code => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'code');
+  has Type => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'type');
 }
 
 class Aws::EC2::Image with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -291,6 +306,16 @@ class Aws::EC2::ImportInstanceTaskDetails with (AWS::API::UnwrappedParser, AWS::
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has Platform => (is => 'ro', isa => 'Aws::EC2::PlatformValues', traits => ['Unwrapped'], xmlname => 'platform');
   has Volumes => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ImportInstanceVolumeDetailItem]', traits => ['Unwrapped'], xmlname => 'volumes', required => 1);
+}
+
+class Aws::EC2::ImportInstanceVolumeDetailItem with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone', required => 1);
+  has BytesConverted => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'bytesConverted', required => 1);
+  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
+  has Image => (is => 'ro', isa => 'Aws::EC2::DiskImageDescription', traits => ['Unwrapped'], xmlname => 'image', required => 1);
+  has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status', required => 1);
+  has StatusMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'statusMessage');
+  has Volume => (is => 'ro', isa => 'Aws::EC2::DiskImageVolumeDescription', traits => ['Unwrapped'], xmlname => 'volume', required => 1);
 }
 
 class Aws::EC2::ImportVolumeTaskDetails with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -384,6 +409,20 @@ class Aws::EC2::InstanceNetworkInterface with (AWS::API::UnwrappedParser, AWS::A
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
 
+class Aws::EC2::InstanceNetworkInterfaceAssociation with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+  has IpOwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ipOwnerId');
+  has PublicDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicDnsName');
+  has PublicIp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicIp');
+}
+
+class Aws::EC2::InstanceNetworkInterfaceAttachment with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+  has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
+  has AttachmentId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachmentId');
+  has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
+  has DeviceIndex => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'deviceIndex');
+  has Status => (is => 'ro', isa => 'Aws::EC2::AttachmentStatus', traits => ['Unwrapped'], xmlname => 'status');
+}
+
 class Aws::EC2::InstanceNetworkInterfaceSpecification with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Str');
   has DeleteOnTermination => (is => 'ro', isa => 'Str');
@@ -395,6 +434,13 @@ class Aws::EC2::InstanceNetworkInterfaceSpecification with (AWS::API::UnwrappedP
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PrivateIpAddressSpecification]');
   has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int');
   has SubnetId => (is => 'ro', isa => 'Str');
+}
+
+class Aws::EC2::InstancePrivateIpAddress with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+  has Association => (is => 'ro', isa => 'Aws::EC2::InstanceNetworkInterfaceAssociation', traits => ['Unwrapped'], xmlname => 'association');
+  has Primary => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'primary');
+  has PrivateDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateDnsName');
+  has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateIpAddress');
 }
 
 class Aws::EC2::InstanceState with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -415,6 +461,12 @@ class Aws::EC2::InstanceStatus with (AWS::API::UnwrappedParser, AWS::API::ToPara
   has InstanceState => (is => 'ro', isa => 'Aws::EC2::InstanceState', traits => ['Unwrapped'], xmlname => 'instanceState');
   has InstanceStatus => (is => 'ro', isa => 'Aws::EC2::InstanceStatusSummary', traits => ['Unwrapped'], xmlname => 'instanceStatus');
   has SystemStatus => (is => 'ro', isa => 'Aws::EC2::InstanceStatusSummary', traits => ['Unwrapped'], xmlname => 'systemStatus');
+}
+
+class Aws::EC2::InstanceStatusDetails with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+  has ImpairedSince => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'impairedSince');
+  has Name => (is => 'ro', isa => 'Aws::EC2::StatusName', traits => ['Unwrapped'], xmlname => 'name');
+  has Status => (is => 'ro', isa => 'Aws::EC2::StatusType', traits => ['Unwrapped'], xmlname => 'status');
 }
 
 class Aws::EC2::InstanceStatusEvent with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -656,10 +708,10 @@ class Aws::EC2::ReservedInstances with (AWS::API::UnwrappedParser, AWS::API::ToP
 }
 
 class Aws::EC2::ReservedInstancesConfiguration with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has InstanceCount => (is => 'ro', isa => 'Int');
-  has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType');
-  has Platform => (is => 'ro', isa => 'Str');
+  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
+  has InstanceCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'instanceCount');
+  has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType', traits => ['Unwrapped'], xmlname => 'instanceType');
+  has Platform => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'platform');
 }
 
 class Aws::EC2::ReservedInstancesId with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
@@ -928,6 +980,11 @@ class Aws::EC2::VolumeStatusAction with (AWS::API::UnwrappedParser, AWS::API::To
   has EventType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'eventType');
 }
 
+class Aws::EC2::VolumeStatusDetails with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
+  has Name => (is => 'ro', isa => 'Aws::EC2::VolumeStatusName', traits => ['Unwrapped'], xmlname => 'name');
+  has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status');
+}
+
 class Aws::EC2::VolumeStatusEvent with (AWS::API::UnwrappedParser, AWS::API::ToParams) {
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has EventId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'eventId');
@@ -1013,7 +1070,7 @@ class Aws::EC2::AllocateAddress {
 class Aws::EC2::AssignPrivateIpAddresses {
   has AllowReassignment => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PrivateIpAddress' );
   has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'AssignPrivateIpAddresses');
@@ -1162,7 +1219,7 @@ class Aws::EC2::CancelReservedInstancesListing {
 }
 class Aws::EC2::CancelSpotInstanceRequests {
   has DryRun => (is => 'ro', isa => 'Str');
-  has SpotInstanceRequestIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SpotInstanceRequestIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SpotInstanceRequestId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CancelSpotInstanceRequests');
   has _returns => (isa => 'Aws::EC2::CancelSpotInstanceRequestsResult', is => 'ro');
@@ -1202,7 +1259,7 @@ class Aws::EC2::CopySnapshot {
 class Aws::EC2::CreateCustomerGateway {
   has BgpAsn => (is => 'ro', isa => 'Int', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
-  has PublicIp => (is => 'ro', isa => 'Str', required => 1);
+  has PublicIp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'IpAddress' , required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCustomerGateway');
@@ -1210,7 +1267,7 @@ class Aws::EC2::CreateCustomerGateway {
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCustomerGatewayResult');  
 }
 class Aws::EC2::CreateDhcpOptions {
-  has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::DhcpConfiguration]', required => 1);
+  has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::DhcpConfiguration]', traits => ['NameInRequest'], request_name => 'DhcpConfiguration' , required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDhcpOptions');
@@ -1218,7 +1275,7 @@ class Aws::EC2::CreateDhcpOptions {
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDhcpOptionsResult');  
 }
 class Aws::EC2::CreateImage {
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]');
+  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
@@ -1231,7 +1288,7 @@ class Aws::EC2::CreateImage {
 }
 class Aws::EC2::CreateInstanceExportTask {
   has Description => (is => 'ro', isa => 'Str');
-  has ExportToS3Task => (is => 'ro', isa => 'Aws::EC2::ExportToS3TaskSpecification');
+  has ExportToS3Task => (is => 'ro', isa => 'Aws::EC2::ExportToS3TaskSpecification', traits => ['NameInRequest'], request_name => 'ExportToS3' );
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has TargetEnvironment => (is => 'ro', isa => 'Str');
 
@@ -1266,7 +1323,7 @@ class Aws::EC2::CreateNetworkAclEntry {
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has Egress => (is => 'ro', isa => 'Str', required => 1);
-  has IcmpTypeCode => (is => 'ro', isa => 'Aws::EC2::IcmpTypeCode');
+  has IcmpTypeCode => (is => 'ro', isa => 'Aws::EC2::IcmpTypeCode', traits => ['NameInRequest'], request_name => 'Icmp' );
   has NetworkAclId => (is => 'ro', isa => 'Str', required => 1);
   has PortRange => (is => 'ro', isa => 'Aws::EC2::PortRange');
   has Protocol => (is => 'ro', isa => 'Str', required => 1);
@@ -1280,7 +1337,7 @@ class Aws::EC2::CreateNetworkAclEntry {
 class Aws::EC2::CreateNetworkInterface {
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PrivateIpAddressSpecification]');
   has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int');
@@ -1330,7 +1387,7 @@ class Aws::EC2::CreateRouteTable {
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateRouteTableResult');  
 }
 class Aws::EC2::CreateSecurityGroup {
-  has Description => (is => 'ro', isa => 'Str', required => 1);
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'GroupDescription' , required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has VpcId => (is => 'ro', isa => 'Str');
@@ -1369,8 +1426,8 @@ class Aws::EC2::CreateSubnet {
 }
 class Aws::EC2::CreateTags {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Resources => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', required => 1);
+  has Resources => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['NameInRequest'], request_name => 'Tag' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTags');
   has _returns => (isa => 'Aws::EC2::CreateTagsResult', is => 'ro');
@@ -1542,8 +1599,8 @@ class Aws::EC2::DeleteSubnet {
 }
 class Aws::EC2::DeleteTags {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Resources => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]');
+  has Resources => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTags');
   has _returns => (isa => 'Aws::EC2::DeleteTagsResult', is => 'ro');
@@ -1598,7 +1655,7 @@ class Aws::EC2::DeregisterImage {
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeregisterImageResult');  
 }
 class Aws::EC2::DescribeAccountAttributes {
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AttributeName' );
   has DryRun => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAccountAttributes');
@@ -1606,10 +1663,10 @@ class Aws::EC2::DescribeAccountAttributes {
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAccountAttributesResult');  
 }
 class Aws::EC2::DescribeAddresses {
-  has AllocationIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AllocationIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AllocationId' );
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has PublicIps => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has PublicIps => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PublicIp' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAddresses');
   has _returns => (isa => 'Aws::EC2::DescribeAddressesResult', is => 'ro');
@@ -1617,51 +1674,51 @@ class Aws::EC2::DescribeAddresses {
 }
 class Aws::EC2::DescribeAvailabilityZones {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has ZoneNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has ZoneNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ZoneName' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityZones');
   has _returns => (isa => 'Aws::EC2::DescribeAvailabilityZonesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityZonesResult');  
 }
 class Aws::EC2::DescribeBundleTasks {
-  has BundleIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has BundleIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'BundleId' );
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeBundleTasks');
   has _returns => (isa => 'Aws::EC2::DescribeBundleTasksResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeBundleTasksResult');  
 }
 class Aws::EC2::DescribeConversionTasks {
-  has ConversionTaskIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ConversionTaskIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ConversionTaskId' );
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConversionTasks');
   has _returns => (isa => 'Aws::EC2::DescribeConversionTasksResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConversionTasksResult');  
 }
 class Aws::EC2::DescribeCustomerGateways {
-  has CustomerGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CustomerGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CustomerGatewayId' );
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCustomerGateways');
   has _returns => (isa => 'Aws::EC2::DescribeCustomerGatewaysResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCustomerGatewaysResult');  
 }
 class Aws::EC2::DescribeDhcpOptions {
-  has DhcpOptionsIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DhcpOptionsIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'DhcpOptionsId' );
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDhcpOptions');
   has _returns => (isa => 'Aws::EC2::DescribeDhcpOptionsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDhcpOptionsResult');  
 }
 class Aws::EC2::DescribeExportTasks {
-  has ExportTaskIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ExportTaskIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ExportTaskId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeExportTasks');
   has _returns => (isa => 'Aws::EC2::DescribeExportTasksResult', is => 'ro');
@@ -1678,10 +1735,10 @@ class Aws::EC2::DescribeImageAttribute {
 }
 class Aws::EC2::DescribeImages {
   has DryRun => (is => 'ro', isa => 'Str');
-  has ExecutableUsers => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has ImageIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Owners => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ExecutableUsers => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ExecutableBy' );
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has ImageIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ImageId' );
+  has Owners => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'Owner' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeImages');
   has _returns => (isa => 'Aws::EC2::DescribeImagesResult', is => 'ro');
@@ -1698,9 +1755,9 @@ class Aws::EC2::DescribeInstanceAttribute {
 }
 class Aws::EC2::DescribeInstanceStatus {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has IncludeAllInstances => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -1710,8 +1767,8 @@ class Aws::EC2::DescribeInstanceStatus {
 }
 class Aws::EC2::DescribeInstances {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -1721,8 +1778,8 @@ class Aws::EC2::DescribeInstances {
 }
 class Aws::EC2::DescribeInternetGateways {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has InternetGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has InternetGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InternetGatewayId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInternetGateways');
   has _returns => (isa => 'Aws::EC2::DescribeInternetGatewaysResult', is => 'ro');
@@ -1730,8 +1787,8 @@ class Aws::EC2::DescribeInternetGateways {
 }
 class Aws::EC2::DescribeKeyPairs {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has KeyNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has KeyNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'KeyName' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeKeyPairs');
   has _returns => (isa => 'Aws::EC2::DescribeKeyPairsResult', is => 'ro');
@@ -1739,8 +1796,8 @@ class Aws::EC2::DescribeKeyPairs {
 }
 class Aws::EC2::DescribeNetworkAcls {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has NetworkAclIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has NetworkAclIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'NetworkAclId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeNetworkAcls');
   has _returns => (isa => 'Aws::EC2::DescribeNetworkAclsResult', is => 'ro');
@@ -1750,7 +1807,7 @@ class Aws::EC2::DescribeNetworkInterfaceAttribute {
   has Attachment => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
-  has Groups => (is => 'ro', isa => 'Str');
+  has Groups => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'GroupSet' );
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has SourceDestCheck => (is => 'ro', isa => 'Str');
 
@@ -1760,8 +1817,8 @@ class Aws::EC2::DescribeNetworkInterfaceAttribute {
 }
 class Aws::EC2::DescribeNetworkInterfaces {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has NetworkInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has NetworkInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'NetworkInterfaceId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeNetworkInterfaces');
   has _returns => (isa => 'Aws::EC2::DescribeNetworkInterfacesResult', is => 'ro');
@@ -1769,8 +1826,8 @@ class Aws::EC2::DescribeNetworkInterfaces {
 }
 class Aws::EC2::DescribePlacementGroups {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupName' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePlacementGroups');
   has _returns => (isa => 'Aws::EC2::DescribePlacementGroupsResult', is => 'ro');
@@ -1778,8 +1835,8 @@ class Aws::EC2::DescribePlacementGroups {
 }
 class Aws::EC2::DescribeRegions {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has RegionNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has RegionNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RegionName' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRegions');
   has _returns => (isa => 'Aws::EC2::DescribeRegionsResult', is => 'ro');
@@ -1787,9 +1844,9 @@ class Aws::EC2::DescribeRegions {
 }
 class Aws::EC2::DescribeReservedInstances {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has OfferingType => (is => 'ro', isa => 'Str');
-  has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstances');
   has _returns => (isa => 'Aws::EC2::DescribeReservedInstancesResult', is => 'ro');
@@ -1805,9 +1862,9 @@ class Aws::EC2::DescribeReservedInstancesListings {
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesListingsResult');  
 }
 class Aws::EC2::DescribeReservedInstancesModifications {
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has NextToken => (is => 'ro', isa => 'Str');
-  has ReservedInstancesModificationIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ReservedInstancesModificationIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesModificationId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesModifications');
   has _returns => (isa => 'Aws::EC2::DescribeReservedInstancesModificationsResult', is => 'ro');
@@ -1816,7 +1873,7 @@ class Aws::EC2::DescribeReservedInstancesModifications {
 class Aws::EC2::DescribeReservedInstancesOfferings {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has IncludeMarketplace => (is => 'ro', isa => 'Str');
   has InstanceTenancy => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
@@ -1827,7 +1884,7 @@ class Aws::EC2::DescribeReservedInstancesOfferings {
   has NextToken => (is => 'ro', isa => 'Str');
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
-  has ReservedInstancesOfferingIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ReservedInstancesOfferingIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesOfferingId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesOfferings');
   has _returns => (isa => 'Aws::EC2::DescribeReservedInstancesOfferingsResult', is => 'ro');
@@ -1835,8 +1892,8 @@ class Aws::EC2::DescribeReservedInstancesOfferings {
 }
 class Aws::EC2::DescribeRouteTables {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RouteTableId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRouteTables');
   has _returns => (isa => 'Aws::EC2::DescribeRouteTablesResult', is => 'ro');
@@ -1844,9 +1901,9 @@ class Aws::EC2::DescribeRouteTables {
 }
 class Aws::EC2::DescribeSecurityGroups {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has GroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has GroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupId' );
+  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupName' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSecurityGroups');
   has _returns => (isa => 'Aws::EC2::DescribeSecurityGroupsResult', is => 'ro');
@@ -1863,10 +1920,10 @@ class Aws::EC2::DescribeSnapshotAttribute {
 }
 class Aws::EC2::DescribeSnapshots {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has OwnerIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has RestorableByUserIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SnapshotIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has OwnerIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'Owner' );
+  has RestorableByUserIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RestorableBy' );
+  has SnapshotIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SnapshotId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSnapshots');
   has _returns => (isa => 'Aws::EC2::DescribeSnapshotsResult', is => 'ro');
@@ -1881,8 +1938,8 @@ class Aws::EC2::DescribeSpotDatafeedSubscription {
 }
 class Aws::EC2::DescribeSpotInstanceRequests {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has SpotInstanceRequestIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has SpotInstanceRequestIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SpotInstanceRequestId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSpotInstanceRequests');
   has _returns => (isa => 'Aws::EC2::DescribeSpotInstanceRequestsResult', is => 'ro');
@@ -1892,11 +1949,11 @@ class Aws::EC2::DescribeSpotPriceHistory {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceType' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has ProductDescriptions => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ProductDescriptions => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ProductDescription' );
   has StartTime => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSpotPriceHistory');
@@ -1905,8 +1962,8 @@ class Aws::EC2::DescribeSpotPriceHistory {
 }
 class Aws::EC2::DescribeSubnets {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSubnets');
   has _returns => (isa => 'Aws::EC2::DescribeSubnetsResult', is => 'ro');
@@ -1914,7 +1971,7 @@ class Aws::EC2::DescribeSubnets {
 }
 class Aws::EC2::DescribeTags {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -1933,10 +1990,10 @@ class Aws::EC2::DescribeVolumeAttribute {
 }
 class Aws::EC2::DescribeVolumeStatus {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has VolumeIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VolumeIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VolumeId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVolumeStatus');
   has _returns => (isa => 'Aws::EC2::DescribeVolumeStatusResult', is => 'ro');
@@ -1944,8 +2001,8 @@ class Aws::EC2::DescribeVolumeStatus {
 }
 class Aws::EC2::DescribeVolumes {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has VolumeIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has VolumeIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VolumeId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVolumes');
   has _returns => (isa => 'Aws::EC2::DescribeVolumesResult', is => 'ro');
@@ -1962,8 +2019,8 @@ class Aws::EC2::DescribeVpcAttribute {
 }
 class Aws::EC2::DescribeVpcs {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has VpcIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has VpcIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpcs');
   has _returns => (isa => 'Aws::EC2::DescribeVpcsResult', is => 'ro');
@@ -1971,8 +2028,8 @@ class Aws::EC2::DescribeVpcs {
 }
 class Aws::EC2::DescribeVpnConnections {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has VpnConnectionIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has VpnConnectionIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpnConnectionId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpnConnections');
   has _returns => (isa => 'Aws::EC2::DescribeVpnConnectionsResult', is => 'ro');
@@ -1980,8 +2037,8 @@ class Aws::EC2::DescribeVpnConnections {
 }
 class Aws::EC2::DescribeVpnGateways {
   has DryRun => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has VpnGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has VpnGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpnGatewayId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpnGateways');
   has _returns => (isa => 'Aws::EC2::DescribeVpnGatewaysResult', is => 'ro');
@@ -2084,7 +2141,7 @@ class Aws::EC2::GetPasswordData {
 }
 class Aws::EC2::ImportInstance {
   has Description => (is => 'ro', isa => 'Str');
-  has DiskImages => (is => 'ro', isa => 'ArrayRef[Aws::EC2::DiskImage]');
+  has DiskImages => (is => 'ro', isa => 'ArrayRef[Aws::EC2::DiskImage]', traits => ['NameInRequest'], request_name => 'DiskImage' );
   has DryRun => (is => 'ro', isa => 'Str');
   has LaunchSpecification => (is => 'ro', isa => 'Aws::EC2::ImportInstanceLaunchSpecification');
   has Platform => (is => 'ro', isa => 'Str', required => 1);
@@ -2120,9 +2177,9 @@ class Aws::EC2::ModifyImageAttribute {
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
   has LaunchPermission => (is => 'ro', isa => 'Aws::EC2::LaunchPermissionModifications');
   has OperationType => (is => 'ro', isa => 'Str');
-  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Str]');
-  has UserGroups => (is => 'ro', isa => 'ArrayRef[Str]');
-  has UserIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ProductCode' );
+  has UserGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'UserGroup' );
+  has UserIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'UserId' );
   has Value => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyImageAttribute');
@@ -2131,11 +2188,11 @@ class Aws::EC2::ModifyImageAttribute {
 }
 class Aws::EC2::ModifyInstanceAttribute {
   has Attribute => (is => 'ro', isa => 'Str');
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceBlockDeviceMappingSpecification]');
+  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceBlockDeviceMappingSpecification]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has DisableApiTermination => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue');
   has DryRun => (is => 'ro', isa => 'Str');
   has EbsOptimized => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue');
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupId' );
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Aws::EC2::AttributeValue');
   has InstanceType => (is => 'ro', isa => 'Aws::EC2::AttributeValue');
@@ -2154,7 +2211,7 @@ class Aws::EC2::ModifyNetworkInterfaceAttribute {
   has Attachment => (is => 'ro', isa => 'Aws::EC2::NetworkInterfaceAttachmentChanges');
   has Description => (is => 'ro', isa => 'Aws::EC2::AttributeValue');
   has DryRun => (is => 'ro', isa => 'Str');
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has SourceDestCheck => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue');
 
@@ -2164,8 +2221,8 @@ class Aws::EC2::ModifyNetworkInterfaceAttribute {
 }
 class Aws::EC2::ModifyReservedInstances {
   has ClientToken => (is => 'ro', isa => 'Str');
-  has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has TargetConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ReservedInstancesConfiguration]', required => 1);
+  has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesId' , required => 1);
+  has TargetConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ReservedInstancesConfiguration]', traits => ['NameInRequest'], request_name => 'ReservedInstancesConfigurationSetItemType' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyReservedInstances');
   has _returns => (isa => 'Aws::EC2::ModifyReservedInstancesResult', is => 'ro');
@@ -2175,10 +2232,10 @@ class Aws::EC2::ModifySnapshotAttribute {
   has Attribute => (is => 'ro', isa => 'Str');
   has CreateVolumePermission => (is => 'ro', isa => 'Aws::EC2::CreateVolumePermissionModifications');
   has DryRun => (is => 'ro', isa => 'Str');
-  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'UserGroup' );
   has OperationType => (is => 'ro', isa => 'Str');
   has SnapshotId => (is => 'ro', isa => 'Str', required => 1);
-  has UserIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has UserIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'UserId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifySnapshotAttribute');
   has _returns => (isa => 'Aws::EC2::ModifySnapshotAttributeResult', is => 'ro');
@@ -2204,7 +2261,7 @@ class Aws::EC2::ModifyVpcAttribute {
 }
 class Aws::EC2::MonitorInstances {
   has DryRun => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'MonitorInstances');
   has _returns => (isa => 'Aws::EC2::MonitorInstancesResult', is => 'ro');
@@ -2222,7 +2279,7 @@ class Aws::EC2::PurchaseReservedInstancesOffering {
 }
 class Aws::EC2::RebootInstances {
   has DryRun => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RebootInstances');
   has _returns => (isa => 'Aws::EC2::RebootInstancesResult', is => 'ro');
@@ -2230,7 +2287,7 @@ class Aws::EC2::RebootInstances {
 }
 class Aws::EC2::RegisterImage {
   has Architecture => (is => 'ro', isa => 'Str');
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]');
+  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has ImageLocation => (is => 'ro', isa => 'Str');
@@ -2267,7 +2324,7 @@ class Aws::EC2::ReplaceNetworkAclEntry {
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Str');
   has Egress => (is => 'ro', isa => 'Str', required => 1);
-  has IcmpTypeCode => (is => 'ro', isa => 'Aws::EC2::IcmpTypeCode');
+  has IcmpTypeCode => (is => 'ro', isa => 'Aws::EC2::IcmpTypeCode', traits => ['NameInRequest'], request_name => 'Icmp' );
   has NetworkAclId => (is => 'ro', isa => 'Str', required => 1);
   has PortRange => (is => 'ro', isa => 'Aws::EC2::PortRange');
   has Protocol => (is => 'ro', isa => 'Str', required => 1);
@@ -2303,8 +2360,8 @@ class Aws::EC2::ReportInstanceStatus {
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
-  has Instances => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ReasonCodes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Instances => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' );
+  has ReasonCodes => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReasonCode' );
   has StartTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
@@ -2396,7 +2453,7 @@ class Aws::EC2::RevokeSecurityGroupIngress {
 }
 class Aws::EC2::RunInstances {
   has AdditionalInfo => (is => 'ro', isa => 'Str');
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]');
+  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has ClientToken => (is => 'ro', isa => 'Str');
   has DisableApiTermination => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
@@ -2410,12 +2467,12 @@ class Aws::EC2::RunInstances {
   has MaxCount => (is => 'ro', isa => 'Int', required => 1);
   has MinCount => (is => 'ro', isa => 'Int', required => 1);
   has Monitoring => (is => 'ro', isa => 'Aws::EC2::RunInstancesMonitoringEnabled');
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceNetworkInterfaceSpecification]');
+  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceNetworkInterfaceSpecification]', traits => ['NameInRequest'], request_name => 'NetworkInterface' );
   has Placement => (is => 'ro', isa => 'Aws::EC2::Placement');
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
   has RamdiskId => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroup' );
   has SubnetId => (is => 'ro', isa => 'Str');
   has UserData => (is => 'ro', isa => 'Str');
 
@@ -2426,7 +2483,7 @@ class Aws::EC2::RunInstances {
 class Aws::EC2::StartInstances {
   has AdditionalInfo => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'StartInstances');
   has _returns => (isa => 'Aws::EC2::StartInstancesResult', is => 'ro');
@@ -2435,7 +2492,7 @@ class Aws::EC2::StartInstances {
 class Aws::EC2::StopInstances {
   has DryRun => (is => 'ro', isa => 'Str');
   has Force => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'StopInstances');
   has _returns => (isa => 'Aws::EC2::StopInstancesResult', is => 'ro');
@@ -2443,7 +2500,7 @@ class Aws::EC2::StopInstances {
 }
 class Aws::EC2::TerminateInstances {
   has DryRun => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateInstances');
   has _returns => (isa => 'Aws::EC2::TerminateInstancesResult', is => 'ro');
@@ -2451,7 +2508,7 @@ class Aws::EC2::TerminateInstances {
 }
 class Aws::EC2::UnassignPrivateIpAddresses {
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PrivateIpAddress' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UnassignPrivateIpAddresses');
   has _returns => (isa => 'Aws::EC2::UnassignPrivateIpAddressesResult', is => 'ro');
@@ -2459,7 +2516,7 @@ class Aws::EC2::UnassignPrivateIpAddresses {
 }
 class Aws::EC2::UnmonitorInstances {
   has DryRun => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UnmonitorInstances');
   has _returns => (isa => 'Aws::EC2::UnmonitorInstancesResult', is => 'ro');

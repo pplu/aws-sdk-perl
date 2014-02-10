@@ -84,6 +84,24 @@ class Aws::CloudSearch::SourceAttribute with (AWS::API::ResultParser, AWS::API::
   has SourceDataTrimTitle => (is => 'ro', isa => 'Aws::CloudSearch::SourceDataTrimTitle');
 }
 
+class Aws::CloudSearch::SourceData with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has DefaultValue => (is => 'ro', isa => 'Str');
+  has SourceName => (is => 'ro', isa => 'Str', required => 1);
+}
+
+class Aws::CloudSearch::SourceDataMap with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Cases => (is => 'ro', isa => 'Aws::CloudSearch::StringCaseMap');
+  has DefaultValue => (is => 'ro', isa => 'Str');
+  has SourceName => (is => 'ro', isa => 'Str', required => 1);
+}
+
+class Aws::CloudSearch::SourceDataTrimTitle with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has DefaultValue => (is => 'ro', isa => 'Str');
+  has Language => (is => 'ro', isa => 'Str');
+  has Separator => (is => 'ro', isa => 'Str');
+  has SourceName => (is => 'ro', isa => 'Str', required => 1);
+}
+
 class Aws::CloudSearch::StemmingOptionsStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Options => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
@@ -92,6 +110,10 @@ class Aws::CloudSearch::StemmingOptionsStatus with (AWS::API::ResultParser, AWS:
 class Aws::CloudSearch::StopwordOptionsStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Options => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
+}
+
+class Aws::CloudSearch::StringCaseMap with AWS::API::StrToStrMapParser {
+  has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
 class Aws::CloudSearch::SynonymOptionsStatus with (AWS::API::ResultParser, AWS::API::ToParams) {

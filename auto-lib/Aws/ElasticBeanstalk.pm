@@ -130,6 +130,11 @@ class Aws::ElasticBeanstalk::LaunchConfiguration with (AWS::API::ResultParser, A
   has Name => (is => 'ro', isa => 'Str');
 }
 
+class Aws::ElasticBeanstalk::Listener with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Port => (is => 'ro', isa => 'Int');
+  has Protocol => (is => 'ro', isa => 'Str');
+}
+
 class Aws::ElasticBeanstalk::LoadBalancer with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Name => (is => 'ro', isa => 'Str');
 }

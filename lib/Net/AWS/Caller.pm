@@ -1,11 +1,11 @@
 use MooseX::Declare;
 
 role Net::AWS::V2Signature {
-  use POSIX qw(strftime);
   use Digest::SHA qw(hmac_sha256);
   use MIME::Base64 qw(encode_base64);
-  use HTTP::Request::Common;
   use Carp;
+  use URI;
+  use POSIX qw/strftime/;
 
 has 'base_url'           => ( 
     is          => 'ro', 
@@ -25,28 +25,15 @@ has '_base_url_host'     => (
     }
 );
 
-sub _timestamp {
-    return strftime("%Y-%m-%dT%H:%M:%SZ",gmtime);
-}
-    
 sub sign {
-    die "Need to convert to receiving \$request";
-    my ($self, $params) = @_;
-    my %args = %$params;
-    my $action                      = delete $args{Action};
-    
-    croak "Action must be defined!\n" if not defined $action;
+    my ($self, $request) = @_;
 
-    my %sign_hash                   = %args;
-    my $timestamp                   = $self->_timestamp;
+    $request->parameters->{ SignatureVersion } = "2";
+    $request->parameters->{ SignatureMethod } = "HmacSHA256";
+    $request->parameters->{ Timestamp } = strftime("%Y-%m-%dT%H:%M:%SZ",gmtime);
+    $request->parameters->{ AWSAccessKeyId } = $self->access_key;
 
-    $sign_hash{AWSAccessKeyId}      = $self->access_key;
-    $sign_hash{Action}              = $action;
-    $sign_hash{Timestamp}           = $timestamp;
-    $sign_hash{Version}             = $self->version;
-    $sign_hash{SignatureVersion}    = "2";
-    $sign_hash{SignatureMethod}     = "HmacSHA256";
-
+    my %sign_hash = %{ $request->parameters };
     my $sign_this = "POST\n";
     $sign_this .= $self->_base_url_host . "\n";
     $sign_this .= "/\n";
@@ -54,22 +41,14 @@ sub sign {
 
     $sign_this .= $self->www_form_urlencode(\%sign_hash);
 
-    warn "QUERY TO SIGN: $sign_this" if $self->debug;
+    warn "QUERY TO SIGN: $sign_this" if ($self->debug);
+
     my $encoded = encode_base64(hmac_sha256($sign_this, $self->secret_key), '');
 
-    my $post_params = {
-        Action                => $action,
-        SignatureVersion      => "2",
-        SignatureMethod       => "HmacSHA256",
-        AWSAccessKeyId        => $self->access_key,
-        Timestamp             => $timestamp,
-        Version               => $self->version,
-        Signature             => $encoded,
-        %args
-    };
+    $request->parameters->{ Signature } = $encoded;
 
-    my $request = POST $self->endpoint, Content => $post_params;
-    return $request;
+    #Since the parameters and the signing goes into the content, we have
+    $request->generate_content_from_parameters;
 }
 
 
@@ -126,56 +105,91 @@ role Net::AWS::V4Signature {
   use Net::Amazon::Signature::V4;
   #requires 'region';
   requires 'service';
+  use POSIX qw(strftime);
 
   sub sign {
     my ($self, $request) = @_;
+
+    $request->header( Date => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
+    $request->header( Host => $self->endpoint_host );
+
     my $sig = Net::Amazon::Signature::V4->new( $self->access_key, $self->secret_key, $self->region, $self->service );
-    my $signed_req = $sig->sign( $request );
-    return $signed_req;
+    $sig->sign( $request );
   }
 }
 
 role Net::AWS::JsonCaller {
-  use HTTP::Request::Common;
-  use POSIX qw(strftime);
   use JSON;
+  use POSIX qw(strftime);
+  has json_version => (is => 'ro', isa => 'Str', required => 1);
 
   method _is_internal_type ($att_type) {
     return ($att_type eq 'Str' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
   }
 
-  method _to_json ($params) {
-    my $p = {};
+  method _to_params ($params) {
+    my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+      my $key = $params->meta->get_attribute($att)->does('Net::AWS::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
         if ($self->_is_internal_type($att_type)) {
-          $p->{ $att } = $params->{$att};
+          $p{ $key } = $params->{$att};
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
           if ($self->_is_internal_type("$1")){
-            $p->{ $att } = [ @{ $params->$att } ];
+            $p{ $key } = $params->$att;
           } else {
-            $p->{ $att } = [ map { $_->to_params($_) } @{ $params->$att } ];
+            $p{ $key } = $self->$att->_to_params($params->$att);
           }
         } else {
-          $p->{ $att } = $params->$att->to_params($params->{$att});
+          $p{ $key } = $params->$att->to_params($params->$att);
         }
       }
     }
-    
-    return to_json($p);
+    return \%p;
   }
-  method _api_caller ($action, $params) {
-    my $request = POST $self->endpoint, Content => $self->_to_json($params);
 
-    $request->header( 'X-Amz-Target' => sprintf('%s.%s',$self->target_prefix,$action) );
-    $request->header( 'Content-Type' => 'application/x-amz-json-1.0' );
-    $request->header( Date => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
+
+  method _api_caller ($action, $params) {
+    my $request = Net::AWS::APIRequest->new(url => $self->endpoint, method => 'POST');
+
+    $request->parameters({ Action => $action,
+                           Version => $self->version,
+                           AWSAccessKeyId => $self->access_key,
+                           Timestamp => strftime("%Y-%m-%dT%H:%M:%SZ",gmtime),
+                        });
+    $request->header('X-Amz-Target', sprintf('%s.%s', $self->target_prefix, $action));
+
+    my $j_version = $self->json_version;
+    $request->headers->content_type("application/x-amz-json-$j_version");
+
+    #$request->header('Content-Encoding', 'amz-1.0');
+    $request->header( 'X-Amz-Date' => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
     $request->header( Host => $self->endpoint_host );
 
-    $request = $self->sign($request);
-    return $self->send($request);      
-  } 
+    my $data = $self->_to_params($params);
+    $request->content(to_json($data));
+
+    $self->sign($request);
+
+    return $self->send($request);
+  }
+}
+
+role Net::AWS::JsonResponse {
+  use JSON;
+  use Carp;
+
+  method _process_response ($data) {
+    my $json = from_json( $data );
+    
+    #TODO: Verify if errors come back in json
+    if ( defined $json->{Errors} ) {
+      croak "Error: $data";
+    }
+
+    return $json;
+  }
 }
 
 role Net::AWS::JsonResponse {
@@ -203,27 +217,28 @@ role Net::AWS::QueryCaller {
   method _to_params ($params) {
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+      my $key = $params->meta->get_attribute($att)->does('Net::AWS::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
         if ($self->_is_internal_type($att_type)) {
-          $p{ $att } = $params->{$att};
+          $p{ $key } = $params->{$att};
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
           if ($self->_is_internal_type("$1")){
             my $i = 1;
             foreach my $value (@{ $params->$att }){
-              $p{ sprintf("%s.member.%d", $att, $i) } = $value;
+              $p{ sprintf("%s.member.%d", $key, $i) } = $value;
               $i++
             }
           } else {
             my $i = 1;
             foreach my $value (@{ $params->$att }){
               my $complex_value = $value->_to_params($att);
-              map { $p{ sprintf("%s.member.%d.%s", $att, $i, $_) } = $complex_value->{$_} } keys %$complex_value;
+              map { $p{ sprintf("%s.member.%d.%s", $key, $i, $_) } = $complex_value->{$_} } keys %$complex_value;
               $i++
             }
           }
         } else {
-          $p{ $att } = $params->$att->to_params($params->{$att});
+          $p{ $key } = $params->$att->to_params($params->$att);
         }
       }
     }
@@ -231,20 +246,48 @@ role Net::AWS::QueryCaller {
   }
 
   method _api_caller ($action, $params) {
-    my $post_params = {
-        Version => $self->version,
-        Action  => $action,
-        $self->_to_params($params),
-    };
+    my $request = Net::AWS::APIRequest->new(url => $self->endpoint, method => 'POST');
 
-    my $request = POST $self->endpoint, Content => $post_params;
+    $request->parameters({ Action => $action, 
+                           Version   => $self->version,
+                           $self->_to_params($params) 
+    });
 
-    $request->header( Date => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
-    $request->header( Host => $self->endpoint_host );
+    $request->generate_content_from_parameters;
 
-    $request = $self->sign($request);
+    $self->sign($request);
 
     return $self->send($request);
+  }
+}
+
+class Net::AWS::APIRequest {
+  use HTTP::Headers;
+  use URI;
+
+  has parameters => (is => 'rw', isa => 'HashRef', default => sub { {} });
+  has headers    => (is => 'rw', isa => 'HTTP::Headers', default => sub { HTTP::Headers->new });
+  has content    => (is => 'rw', isa => 'Str');
+  has method     => (is => 'rw', isa => 'Str', required => 1);
+  has url        => (is => 'rw', isa => 'Str', required => 1);
+
+  sub uri { '/' };
+
+  sub header {
+    my ($self, $header, $value) = @_;
+    $self->headers->header($header, $value) if (defined $value);
+    return $self->headers->header($header);
+  }
+
+  method generate_content_from_parameters {
+    $self->headers->content_type('application/x-www-form-urlencoded');
+    my $url = URI->new('http:');
+    $url->query_form($self->parameters);
+    my $content = $url->query;
+    # HTML/4.01 says that line breaks are represented as "CR LF" pairs (i.e., `%0D%0A')
+    $content =~ s/(?<!%0D)%0A/%0D%0A/g if (defined $content);
+
+    $self->content($content);
   }
 }
 
@@ -286,18 +329,16 @@ role Net::AWS::Caller {
 
   method send ($request){
     my $headers = {};
-    $request->scan(sub { $headers->{ $_[0] } = $_[1] });
-use Data::Dumper;
-print Dumper($request);
+    $request->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
+
     my $response = $self->ua->request(
       $request->method,
       $request->url,
       {
         headers => $headers,
-        content => $request->content
+        (defined $request->content)?(content => $request->content):(),
       }
     );
-print Dumper($response);
     if ( $response->{success} ) {
         return $self->_process_response( $response->{content} );
     } else {

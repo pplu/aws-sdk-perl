@@ -125,48 +125,41 @@ class Aws::CloudTrail with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, 
   has service => (is => 'ro', isa => 'Str', default => 'cloudtrail');
   has version => (is => 'ro', isa => 'Str', default => '2013-11-01');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101');
-
+  has json_version => (is => 'ro', isa => 'Str', default => "1.1");
   
   method CreateTrail (%args) {
     my $call = Aws::CloudTrail::CreateTrail->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudTrail::CreateTrailResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::CloudTrail::CreateTrailResult->from_result($result);return $o_result;
   }
   method DeleteTrail (%args) {
     my $call = Aws::CloudTrail::DeleteTrail->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudTrail::DeleteTrailResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::CloudTrail::DeleteTrailResult->from_result($result);return $o_result;
   }
   method DescribeTrails (%args) {
     my $call = Aws::CloudTrail::DescribeTrails->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudTrail::DescribeTrailsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::CloudTrail::DescribeTrailsResult->from_result($result);return $o_result;
   }
   method GetTrailStatus (%args) {
     my $call = Aws::CloudTrail::GetTrailStatus->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudTrail::GetTrailStatusResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::CloudTrail::GetTrailStatusResult->from_result($result);return $o_result;
   }
   method StartLogging (%args) {
     my $call = Aws::CloudTrail::StartLogging->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudTrail::StartLoggingResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::CloudTrail::StartLoggingResult->from_result($result);return $o_result;
   }
   method StopLogging (%args) {
     my $call = Aws::CloudTrail::StopLogging->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudTrail::StopLoggingResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::CloudTrail::StopLoggingResult->from_result($result);return $o_result;
   }
   method UpdateTrail (%args) {
     my $call = Aws::CloudTrail::UpdateTrail->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudTrail::UpdateTrailResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::CloudTrail::UpdateTrailResult->from_result($result);return $o_result;
   }
 }

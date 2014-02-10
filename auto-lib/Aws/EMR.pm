@@ -5,13 +5,18 @@ use AWS::API;
 use Moose::Util::TypeConstraints;
 enum 'Aws::EMR::ActionOnFailure', ['TERMINATE_JOB_FLOW','TERMINATE_CLUSTER','CANCEL_AND_WAIT','CONTINUE',];
 enum 'Aws::EMR::ClusterState', ['STARTING','BOOTSTRAPPING','RUNNING','WAITING','TERMINATING','TERMINATED','TERMINATED_WITH_ERRORS',];
+enum 'Aws::EMR::ClusterStateChangeReasonCode', ['INTERNAL_ERROR','VALIDATION_ERROR','INSTANCE_FAILURE','BOOTSTRAP_FAILURE','USER_REQUEST','STEP_FAILURE','ALL_STEPS_COMPLETED',];
 enum 'Aws::EMR::InstanceGroupState', ['PROVISIONING','BOOTSTRAPPING','RUNNING','RESIZING','SUSPENDED','TERMINATING','TERMINATED','ARRESTED','SHUTTING_DOWN','ENDED',];
+enum 'Aws::EMR::InstanceGroupStateChangeReasonCode', ['INTERNAL_ERROR','VALIDATION_ERROR','INSTANCE_FAILURE','CLUSTER_TERMINATED',];
 enum 'Aws::EMR::InstanceGroupType', ['MASTER','CORE','TASK',];
 enum 'Aws::EMR::InstanceRoleType', ['MASTER','CORE','TASK',];
 enum 'Aws::EMR::InstanceState', ['AWAITING_FULFILLMENT','PROVISIONING','BOOTSTRAPPING','RUNNING','TERMINATED',];
+enum 'Aws::EMR::InstanceStateChangeReasonCode', ['INTERNAL_ERROR','VALIDATION_ERROR','INSTANCE_FAILURE','BOOTSTRAP_FAILURE','CLUSTER_TERMINATED',];
 enum 'Aws::EMR::JobFlowExecutionState', ['STARTING','BOOTSTRAPPING','RUNNING','WAITING','SHUTTING_DOWN','TERMINATED','COMPLETED','FAILED',];
 enum 'Aws::EMR::MarketType', ['ON_DEMAND','SPOT',];
+enum 'Aws::EMR::StepExecutionState', ['PENDING','RUNNING','CONTINUE','COMPLETED','CANCELLED','FAILED','INTERRUPTED',];
 enum 'Aws::EMR::StepState', ['PENDING','RUNNING','COMPLETED','CANCELLED','FAILED','INTERRUPTED',];
+enum 'Aws::EMR::StepStateChangeReasonCode', ['NONE',];
 
 
 class Aws::EMR::Application with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -45,6 +50,11 @@ class Aws::EMR::Cluster with (AWS::API::ResultParser, AWS::API::ToParams) {
   has VisibleToAllUsers => (is => 'ro', isa => 'Str');
 }
 
+class Aws::EMR::ClusterStateChangeReason with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Code => (is => 'ro', isa => 'Aws::EMR::ClusterStateChangeReasonCode');
+  has Message => (is => 'ro', isa => 'Str');
+}
+
 class Aws::EMR::ClusterStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has State => (is => 'ro', isa => 'Aws::EMR::ClusterState');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::ClusterStateChangeReason');
@@ -55,6 +65,12 @@ class Aws::EMR::ClusterSummary with (AWS::API::ResultParser, AWS::API::ToParams)
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Aws::EMR::ClusterStatus');
+}
+
+class Aws::EMR::ClusterTimeline with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has CreationDateTime => (is => 'ro', isa => 'Str');
+  has EndDateTime => (is => 'ro', isa => 'Str');
+  has ReadyDateTime => (is => 'ro', isa => 'Str');
 }
 
 class Aws::EMR::Command with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -115,10 +131,32 @@ class Aws::EMR::InstanceGroupConfig with (AWS::API::ResultParser, AWS::API::ToPa
   has Name => (is => 'ro', isa => 'Str');
 }
 
+class Aws::EMR::InstanceGroupDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has BidPrice => (is => 'ro', isa => 'Str');
+  has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
+  has EndDateTime => (is => 'ro', isa => 'Str');
+  has InstanceGroupId => (is => 'ro', isa => 'Str');
+  has InstanceRequestCount => (is => 'ro', isa => 'Int', required => 1);
+  has InstanceRole => (is => 'ro', isa => 'Aws::EMR::InstanceRoleType', required => 1);
+  has InstanceRunningCount => (is => 'ro', isa => 'Int', required => 1);
+  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
+  has LastStateChangeReason => (is => 'ro', isa => 'Str');
+  has Market => (is => 'ro', isa => 'Aws::EMR::MarketType', required => 1);
+  has Name => (is => 'ro', isa => 'Str');
+  has ReadyDateTime => (is => 'ro', isa => 'Str');
+  has StartDateTime => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'Aws::EMR::InstanceGroupState', required => 1);
+}
+
 class Aws::EMR::InstanceGroupModifyConfig with (AWS::API::ResultParser, AWS::API::ToParams) {
   has EC2InstanceIdsToTerminate => (is => 'ro', isa => 'ArrayRef[Str]');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has InstanceGroupId => (is => 'ro', isa => 'Str', required => 1);
+}
+
+class Aws::EMR::InstanceGroupStateChangeReason with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Code => (is => 'ro', isa => 'Aws::EMR::InstanceGroupStateChangeReasonCode');
+  has Message => (is => 'ro', isa => 'Str');
 }
 
 class Aws::EMR::InstanceGroupStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -127,10 +165,27 @@ class Aws::EMR::InstanceGroupStatus with (AWS::API::ResultParser, AWS::API::ToPa
   has Timeline => (is => 'ro', isa => 'Aws::EMR::InstanceGroupTimeline');
 }
 
+class Aws::EMR::InstanceGroupTimeline with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has CreationDateTime => (is => 'ro', isa => 'Str');
+  has EndDateTime => (is => 'ro', isa => 'Str');
+  has ReadyDateTime => (is => 'ro', isa => 'Str');
+}
+
+class Aws::EMR::InstanceStateChangeReason with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Code => (is => 'ro', isa => 'Aws::EMR::InstanceStateChangeReasonCode');
+  has Message => (is => 'ro', isa => 'Str');
+}
+
 class Aws::EMR::InstanceStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has State => (is => 'ro', isa => 'Aws::EMR::InstanceState');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::InstanceStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::InstanceTimeline');
+}
+
+class Aws::EMR::InstanceTimeline with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has CreationDateTime => (is => 'ro', isa => 'Str');
+  has EndDateTime => (is => 'ro', isa => 'Str');
+  has ReadyDateTime => (is => 'ro', isa => 'Str');
 }
 
 class Aws::EMR::JobFlowDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -185,6 +240,11 @@ class Aws::EMR::JobFlowInstancesDetail with (AWS::API::ResultParser, AWS::API::T
   has TerminationProtected => (is => 'ro', isa => 'Str');
 }
 
+class Aws::EMR::KeyValue with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Key => (is => 'ro', isa => 'Str');
+  has Value => (is => 'ro', isa => 'Str');
+}
+
 class Aws::EMR::PlacementType with (AWS::API::ResultParser, AWS::API::ToParams) {
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
 }
@@ -213,6 +273,19 @@ class Aws::EMR::StepDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
   has StepConfig => (is => 'ro', isa => 'Aws::EMR::StepConfig', required => 1);
 }
 
+class Aws::EMR::StepExecutionStatusDetail with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
+  has EndDateTime => (is => 'ro', isa => 'Str');
+  has LastStateChangeReason => (is => 'ro', isa => 'Str');
+  has StartDateTime => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'Aws::EMR::StepExecutionState', required => 1);
+}
+
+class Aws::EMR::StepStateChangeReason with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has Code => (is => 'ro', isa => 'Aws::EMR::StepStateChangeReasonCode');
+  has Message => (is => 'ro', isa => 'Str');
+}
+
 class Aws::EMR::StepStatus with (AWS::API::ResultParser, AWS::API::ToParams) {
   has State => (is => 'ro', isa => 'Aws::EMR::StepState');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::StepStateChangeReason');
@@ -223,6 +296,16 @@ class Aws::EMR::StepSummary with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Aws::EMR::StepStatus');
+}
+
+class Aws::EMR::StepTimeline with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has CreationDateTime => (is => 'ro', isa => 'Str');
+  has EndDateTime => (is => 'ro', isa => 'Str');
+  has StartDateTime => (is => 'ro', isa => 'Str');
+}
+
+class Aws::EMR::StringMap with AWS::API::StrToStrMapParser {
+  has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
 class Aws::EMR::SupportedProductConfig with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -449,73 +532,62 @@ class Aws::EMR with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   has service => (is => 'ro', isa => 'Str', default => 'elasticmapreduce');
   has version => (is => 'ro', isa => 'Str', default => '2009-03-31');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'ElasticMapReduce');
-
+  has json_version => (is => 'ro', isa => 'Str', default => "1.1");
   
   method AddInstanceGroups (%args) {
     my $call = Aws::EMR::AddInstanceGroups->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::AddInstanceGroupsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::EMR::AddInstanceGroupsResult->from_result($result);return $o_result;
   }
   method AddJobFlowSteps (%args) {
     my $call = Aws::EMR::AddJobFlowSteps->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::AddJobFlowStepsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::EMR::AddJobFlowStepsResult->from_result($result);return $o_result;
   }
   method AddTags (%args) {
     my $call = Aws::EMR::AddTags->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::AddTagsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::EMR::AddTagsResult->from_result($result);return $o_result;
   }
   method DescribeCluster (%args) {
     my $call = Aws::EMR::DescribeCluster->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::DescribeClusterResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::EMR::DescribeClusterResult->from_result($result);return $o_result;
   }
   method DescribeJobFlows (%args) {
     my $call = Aws::EMR::DescribeJobFlows->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::DescribeJobFlowsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::EMR::DescribeJobFlowsResult->from_result($result);return $o_result;
   }
   method DescribeStep (%args) {
     my $call = Aws::EMR::DescribeStep->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::DescribeStepResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::EMR::DescribeStepResult->from_result($result);return $o_result;
   }
   method ListBootstrapActions (%args) {
     my $call = Aws::EMR::ListBootstrapActions->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::ListBootstrapActionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::EMR::ListBootstrapActionsResult->from_result($result);return $o_result;
   }
   method ListClusters (%args) {
     my $call = Aws::EMR::ListClusters->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::ListClustersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::EMR::ListClustersResult->from_result($result);return $o_result;
   }
   method ListInstanceGroups (%args) {
     my $call = Aws::EMR::ListInstanceGroups->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::ListInstanceGroupsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::EMR::ListInstanceGroupsResult->from_result($result);return $o_result;
   }
   method ListInstances (%args) {
     my $call = Aws::EMR::ListInstances->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::ListInstancesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::EMR::ListInstancesResult->from_result($result);return $o_result;
   }
   method ListSteps (%args) {
     my $call = Aws::EMR::ListSteps->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::ListStepsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::EMR::ListStepsResult->from_result($result);return $o_result;
   }
   method ModifyInstanceGroups (%args) {
     my $call = Aws::EMR::ModifyInstanceGroups->new(%args);
@@ -525,14 +597,12 @@ class Aws::EMR with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net::AW
   method RemoveTags (%args) {
     my $call = Aws::EMR::RemoveTags->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::RemoveTagsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::EMR::RemoveTagsResult->from_result($result);return $o_result;
   }
   method RunJobFlow (%args) {
     my $call = Aws::EMR::RunJobFlow->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::RunJobFlowResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::EMR::RunJobFlowResult->from_result($result);return $o_result;
   }
   method SetTerminationProtection (%args) {
     my $call = Aws::EMR::SetTerminationProtection->new(%args);

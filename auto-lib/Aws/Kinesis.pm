@@ -6,10 +6,20 @@ use Moose::Util::TypeConstraints;
 enum 'Aws::Kinesis::StreamStatus', ['CREATING','DELETING','ACTIVE','UPDATING',];
 
 
+class Aws::Kinesis::HashKeyRange with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has EndingHashKey => (is => 'ro', isa => 'Str', required => 1);
+  has StartingHashKey => (is => 'ro', isa => 'Str', required => 1);
+}
+
 class Aws::Kinesis::Record with (AWS::API::ResultParser, AWS::API::ToParams) {
   has Data => (is => 'ro', isa => 'Str', required => 1);
   has PartitionKey => (is => 'ro', isa => 'Str', required => 1);
   has SequenceNumber => (is => 'ro', isa => 'Str', required => 1);
+}
+
+class Aws::Kinesis::SequenceNumberRange with (AWS::API::ResultParser, AWS::API::ToParams) {
+  has EndingSequenceNumber => (is => 'ro', isa => 'Str');
+  has StartingSequenceNumber => (is => 'ro', isa => 'Str', required => 1);
 }
 
 class Aws::Kinesis::Shard with (AWS::API::ResultParser, AWS::API::ToParams) {
@@ -138,7 +148,7 @@ class Aws::Kinesis with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net
   has service => (is => 'ro', isa => 'Str', default => 'kinesis');
   has version => (is => 'ro', isa => 'Str', default => '2013-12-02');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'Kinesis_20131202');
-
+  has json_version => (is => 'ro', isa => 'Str', default => "1.1");
   
   method CreateStream (%args) {
     my $call = Aws::Kinesis::CreateStream->new(%args);
@@ -153,26 +163,22 @@ class Aws::Kinesis with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net
   method DescribeStream (%args) {
     my $call = Aws::Kinesis::DescribeStream->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Kinesis::DescribeStreamResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Kinesis::DescribeStreamResult->from_result($result);return $o_result;
   }
   method GetRecords (%args) {
     my $call = Aws::Kinesis::GetRecords->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Kinesis::GetRecordsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Kinesis::GetRecordsResult->from_result($result);return $o_result;
   }
   method GetShardIterator (%args) {
     my $call = Aws::Kinesis::GetShardIterator->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Kinesis::GetShardIteratorResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Kinesis::GetShardIteratorResult->from_result($result);return $o_result;
   }
   method ListStreams (%args) {
     my $call = Aws::Kinesis::ListStreams->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Kinesis::ListStreamsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Kinesis::ListStreamsResult->from_result($result);return $o_result;
   }
   method MergeShards (%args) {
     my $call = Aws::Kinesis::MergeShards->new(%args);
@@ -182,8 +188,7 @@ class Aws::Kinesis with (Net::AWS::Caller, AWS::API::RegionalEndpointCaller, Net
   method PutRecord (%args) {
     my $call = Aws::Kinesis::PutRecord->new(%args);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::Kinesis::PutRecordResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    my $o_result = Aws::Kinesis::PutRecordResult->from_result($result);return $o_result;
   }
   method SplitShard (%args) {
     my $call = Aws::Kinesis::SplitShard->new(%args);
