@@ -1,8 +1,10 @@
 #!/bin/bash
 
 if [ -d botocore ]; 
+  #then cd botocore && git pull && cd ..;
+  #else git clone https://github.com/boto/botocore;
   then cd botocore && git pull && cd ..;
-  else git clone https://github.com/boto/botocore;
+  else git clone https://github.com/pplu/botocore.git
 fi
 
 if [ -d aws-sdk-core-ruby ];
