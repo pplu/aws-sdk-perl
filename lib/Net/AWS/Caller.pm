@@ -219,14 +219,14 @@ package Net::AWS::QueryCaller {
           if ($self->_is_internal_type("$1")){
             my $i = 1;
             foreach my $value (@{ $params->$att }){
-              $p{ sprintf("%s.member.%d", $key, $i) } = $value;
+              $p{ sprintf("%s.%d", $key, $i) } = $value;
               $i++
             }
           } else {
             my $i = 1;
             foreach my $value (@{ $params->$att }){
               my $complex_value = $value->_to_params($att);
-              map { $p{ sprintf("%s.member.%d.%s", $key, $i, $_) } = $complex_value->{$_} } keys %$complex_value;
+              map { $p{ sprintf("%s.%d.%s", $key, $i, $_) } = $complex_value->{$_} } keys %$complex_value;
               $i++
             }
           }
