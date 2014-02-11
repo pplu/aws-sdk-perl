@@ -105,7 +105,7 @@ package AWS::API::UnwrappedParser {
 
     foreach my $att ($class->meta->get_attribute_list) {
       next if (not my $meta = $class->meta->get_attribute($att));
-      my $key = $meta->xmlname;
+      my $key = $meta->does('AWS::API::Attribute::Trait::Unwrapped') ? $meta->xmlname : $att;
 
       #use Data::Dumper;
       #print STDERR "ATTRIBUTE: $att RESULTKEY: $key: ", $meta->type_constraint, " result: ", Dumper($result->{$key});
