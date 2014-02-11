@@ -1189,337 +1189,337 @@ package Aws::OpsWorks {
   
   sub AssignVolume {
     my $self = shift;
-    my $call = Aws::OpsWorks::AssignVolume->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::AssignVolume', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub AssociateElasticIp {
     my $self = shift;
-    my $call = Aws::OpsWorks::AssociateElasticIp->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::AssociateElasticIp', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub AttachElasticLoadBalancer {
     my $self = shift;
-    my $call = Aws::OpsWorks::AttachElasticLoadBalancer->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::AttachElasticLoadBalancer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CloneStack {
     my $self = shift;
-    my $call = Aws::OpsWorks::CloneStack->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::CloneStack', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::CloneStackResult->from_result($result);return $o_result;
   }
   sub CreateApp {
     my $self = shift;
-    my $call = Aws::OpsWorks::CreateApp->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::CreateApp', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::CreateAppResult->from_result($result);return $o_result;
   }
   sub CreateDeployment {
     my $self = shift;
-    my $call = Aws::OpsWorks::CreateDeployment->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::CreateDeployment', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::CreateDeploymentResult->from_result($result);return $o_result;
   }
   sub CreateInstance {
     my $self = shift;
-    my $call = Aws::OpsWorks::CreateInstance->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::CreateInstance', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::CreateInstanceResult->from_result($result);return $o_result;
   }
   sub CreateLayer {
     my $self = shift;
-    my $call = Aws::OpsWorks::CreateLayer->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::CreateLayer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::CreateLayerResult->from_result($result);return $o_result;
   }
   sub CreateStack {
     my $self = shift;
-    my $call = Aws::OpsWorks::CreateStack->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::CreateStack', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::CreateStackResult->from_result($result);return $o_result;
   }
   sub CreateUserProfile {
     my $self = shift;
-    my $call = Aws::OpsWorks::CreateUserProfile->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::CreateUserProfile', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::CreateUserProfileResult->from_result($result);return $o_result;
   }
   sub DeleteApp {
     my $self = shift;
-    my $call = Aws::OpsWorks::DeleteApp->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DeleteApp', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteInstance {
     my $self = shift;
-    my $call = Aws::OpsWorks::DeleteInstance->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DeleteInstance', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteLayer {
     my $self = shift;
-    my $call = Aws::OpsWorks::DeleteLayer->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DeleteLayer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteStack {
     my $self = shift;
-    my $call = Aws::OpsWorks::DeleteStack->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DeleteStack', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteUserProfile {
     my $self = shift;
-    my $call = Aws::OpsWorks::DeleteUserProfile->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DeleteUserProfile', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeregisterElasticIp {
     my $self = shift;
-    my $call = Aws::OpsWorks::DeregisterElasticIp->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DeregisterElasticIp', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeregisterVolume {
     my $self = shift;
-    my $call = Aws::OpsWorks::DeregisterVolume->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DeregisterVolume', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DescribeApps {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeApps->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeApps', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeAppsResult->from_result($result);return $o_result;
   }
   sub DescribeCommands {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeCommands->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeCommands', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeCommandsResult->from_result($result);return $o_result;
   }
   sub DescribeDeployments {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeDeployments->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeDeployments', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeDeploymentsResult->from_result($result);return $o_result;
   }
   sub DescribeElasticIps {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeElasticIps->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeElasticIps', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeElasticIpsResult->from_result($result);return $o_result;
   }
   sub DescribeElasticLoadBalancers {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeElasticLoadBalancers->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeElasticLoadBalancers', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeElasticLoadBalancersResult->from_result($result);return $o_result;
   }
   sub DescribeInstances {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeInstances->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeInstancesResult->from_result($result);return $o_result;
   }
   sub DescribeLayers {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeLayers->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeLayers', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeLayersResult->from_result($result);return $o_result;
   }
   sub DescribeLoadBasedAutoScaling {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeLoadBasedAutoScaling->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeLoadBasedAutoScaling', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeLoadBasedAutoScalingResult->from_result($result);return $o_result;
   }
   sub DescribeMyUserProfile {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeMyUserProfile->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeMyUserProfile', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeMyUserProfileResult->from_result($result);return $o_result;
   }
   sub DescribePermissions {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribePermissions->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribePermissions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribePermissionsResult->from_result($result);return $o_result;
   }
   sub DescribeRaidArrays {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeRaidArrays->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeRaidArrays', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeRaidArraysResult->from_result($result);return $o_result;
   }
   sub DescribeServiceErrors {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeServiceErrors->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeServiceErrors', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeServiceErrorsResult->from_result($result);return $o_result;
   }
   sub DescribeStacks {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeStacks->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeStacks', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeStacksResult->from_result($result);return $o_result;
   }
   sub DescribeStackSummary {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeStackSummary->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeStackSummary', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeStackSummaryResult->from_result($result);return $o_result;
   }
   sub DescribeTimeBasedAutoScaling {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeTimeBasedAutoScaling->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeTimeBasedAutoScaling', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeTimeBasedAutoScalingResult->from_result($result);return $o_result;
   }
   sub DescribeUserProfiles {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeUserProfiles->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeUserProfiles', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeUserProfilesResult->from_result($result);return $o_result;
   }
   sub DescribeVolumes {
     my $self = shift;
-    my $call = Aws::OpsWorks::DescribeVolumes->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DescribeVolumes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::DescribeVolumesResult->from_result($result);return $o_result;
   }
   sub DetachElasticLoadBalancer {
     my $self = shift;
-    my $call = Aws::OpsWorks::DetachElasticLoadBalancer->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DetachElasticLoadBalancer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DisassociateElasticIp {
     my $self = shift;
-    my $call = Aws::OpsWorks::DisassociateElasticIp->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::DisassociateElasticIp', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub GetHostnameSuggestion {
     my $self = shift;
-    my $call = Aws::OpsWorks::GetHostnameSuggestion->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::GetHostnameSuggestion', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::GetHostnameSuggestionResult->from_result($result);return $o_result;
   }
   sub RebootInstance {
     my $self = shift;
-    my $call = Aws::OpsWorks::RebootInstance->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::RebootInstance', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RegisterElasticIp {
     my $self = shift;
-    my $call = Aws::OpsWorks::RegisterElasticIp->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::RegisterElasticIp', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::RegisterElasticIpResult->from_result($result);return $o_result;
   }
   sub RegisterVolume {
     my $self = shift;
-    my $call = Aws::OpsWorks::RegisterVolume->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::RegisterVolume', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::OpsWorks::RegisterVolumeResult->from_result($result);return $o_result;
   }
   sub SetLoadBasedAutoScaling {
     my $self = shift;
-    my $call = Aws::OpsWorks::SetLoadBasedAutoScaling->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::SetLoadBasedAutoScaling', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub SetPermission {
     my $self = shift;
-    my $call = Aws::OpsWorks::SetPermission->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::SetPermission', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub SetTimeBasedAutoScaling {
     my $self = shift;
-    my $call = Aws::OpsWorks::SetTimeBasedAutoScaling->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::SetTimeBasedAutoScaling', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub StartInstance {
     my $self = shift;
-    my $call = Aws::OpsWorks::StartInstance->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::StartInstance', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub StartStack {
     my $self = shift;
-    my $call = Aws::OpsWorks::StartStack->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::StartStack', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub StopInstance {
     my $self = shift;
-    my $call = Aws::OpsWorks::StopInstance->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::StopInstance', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub StopStack {
     my $self = shift;
-    my $call = Aws::OpsWorks::StopStack->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::StopStack', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UnassignVolume {
     my $self = shift;
-    my $call = Aws::OpsWorks::UnassignVolume->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::UnassignVolume', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateApp {
     my $self = shift;
-    my $call = Aws::OpsWorks::UpdateApp->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::UpdateApp', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateElasticIp {
     my $self = shift;
-    my $call = Aws::OpsWorks::UpdateElasticIp->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::UpdateElasticIp', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateInstance {
     my $self = shift;
-    my $call = Aws::OpsWorks::UpdateInstance->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::UpdateInstance', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateLayer {
     my $self = shift;
-    my $call = Aws::OpsWorks::UpdateLayer->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::UpdateLayer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateMyUserProfile {
     my $self = shift;
-    my $call = Aws::OpsWorks::UpdateMyUserProfile->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::UpdateMyUserProfile', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateStack {
     my $self = shift;
-    my $call = Aws::OpsWorks::UpdateStack->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::UpdateStack', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateUserProfile {
     my $self = shift;
-    my $call = Aws::OpsWorks::UpdateUserProfile->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::UpdateUserProfile', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateVolume {
     my $self = shift;
-    my $call = Aws::OpsWorks::UpdateVolume->new(@_);
+    my $call = new_with_coercions('Aws::OpsWorks::UpdateVolume', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }

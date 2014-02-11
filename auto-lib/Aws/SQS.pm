@@ -306,107 +306,107 @@ package Aws::SQS {
   
   sub AddPermission {
     my $self = shift;
-    my $call = Aws::SQS::AddPermission->new(@_);
+    my $call = new_with_coercions('Aws::SQS::AddPermission', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ChangeMessageVisibility {
     my $self = shift;
-    my $call = Aws::SQS::ChangeMessageVisibility->new(@_);
+    my $call = new_with_coercions('Aws::SQS::ChangeMessageVisibility', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ChangeMessageVisibilityBatch {
     my $self = shift;
-    my $call = Aws::SQS::ChangeMessageVisibilityBatch->new(@_);
+    my $call = new_with_coercions('Aws::SQS::ChangeMessageVisibilityBatch', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SQS::ChangeMessageVisibilityBatchResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateQueue {
     my $self = shift;
-    my $call = Aws::SQS::CreateQueue->new(@_);
+    my $call = new_with_coercions('Aws::SQS::CreateQueue', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SQS::CreateQueueResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteMessage {
     my $self = shift;
-    my $call = Aws::SQS::DeleteMessage->new(@_);
+    my $call = new_with_coercions('Aws::SQS::DeleteMessage', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteMessageBatch {
     my $self = shift;
-    my $call = Aws::SQS::DeleteMessageBatch->new(@_);
+    my $call = new_with_coercions('Aws::SQS::DeleteMessageBatch', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SQS::DeleteMessageBatchResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteQueue {
     my $self = shift;
-    my $call = Aws::SQS::DeleteQueue->new(@_);
+    my $call = new_with_coercions('Aws::SQS::DeleteQueue', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub GetQueueAttributes {
     my $self = shift;
-    my $call = Aws::SQS::GetQueueAttributes->new(@_);
+    my $call = new_with_coercions('Aws::SQS::GetQueueAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SQS::GetQueueAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetQueueUrl {
     my $self = shift;
-    my $call = Aws::SQS::GetQueueUrl->new(@_);
+    my $call = new_with_coercions('Aws::SQS::GetQueueUrl', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SQS::GetQueueUrlResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListDeadLetterSourceQueues {
     my $self = shift;
-    my $call = Aws::SQS::ListDeadLetterSourceQueues->new(@_);
+    my $call = new_with_coercions('Aws::SQS::ListDeadLetterSourceQueues', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SQS::ListDeadLetterSourceQueuesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListQueues {
     my $self = shift;
-    my $call = Aws::SQS::ListQueues->new(@_);
+    my $call = new_with_coercions('Aws::SQS::ListQueues', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SQS::ListQueuesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ReceiveMessage {
     my $self = shift;
-    my $call = Aws::SQS::ReceiveMessage->new(@_);
+    my $call = new_with_coercions('Aws::SQS::ReceiveMessage', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SQS::ReceiveMessageResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RemovePermission {
     my $self = shift;
-    my $call = Aws::SQS::RemovePermission->new(@_);
+    my $call = new_with_coercions('Aws::SQS::RemovePermission', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub SendMessage {
     my $self = shift;
-    my $call = Aws::SQS::SendMessage->new(@_);
+    my $call = new_with_coercions('Aws::SQS::SendMessage', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SQS::SendMessageResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub SendMessageBatch {
     my $self = shift;
-    my $call = Aws::SQS::SendMessageBatch->new(@_);
+    my $call = new_with_coercions('Aws::SQS::SendMessageBatch', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SQS::SendMessageBatchResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub SetQueueAttributes {
     my $self = shift;
-    my $call = Aws::SQS::SetQueueAttributes->new(@_);
+    my $call = new_with_coercions('Aws::SQS::SetQueueAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }

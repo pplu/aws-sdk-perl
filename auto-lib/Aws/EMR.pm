@@ -662,103 +662,103 @@ package Aws::EMR {
   
   sub AddInstanceGroups {
     my $self = shift;
-    my $call = Aws::EMR::AddInstanceGroups->new(@_);
+    my $call = new_with_coercions('Aws::EMR::AddInstanceGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::AddInstanceGroupsResult->from_result($result);return $o_result;
   }
   sub AddJobFlowSteps {
     my $self = shift;
-    my $call = Aws::EMR::AddJobFlowSteps->new(@_);
+    my $call = new_with_coercions('Aws::EMR::AddJobFlowSteps', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::AddJobFlowStepsResult->from_result($result);return $o_result;
   }
   sub AddTags {
     my $self = shift;
-    my $call = Aws::EMR::AddTags->new(@_);
+    my $call = new_with_coercions('Aws::EMR::AddTags', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::AddTagsResult->from_result($result);return $o_result;
   }
   sub DescribeCluster {
     my $self = shift;
-    my $call = Aws::EMR::DescribeCluster->new(@_);
+    my $call = new_with_coercions('Aws::EMR::DescribeCluster', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::DescribeClusterResult->from_result($result);return $o_result;
   }
   sub DescribeJobFlows {
     my $self = shift;
-    my $call = Aws::EMR::DescribeJobFlows->new(@_);
+    my $call = new_with_coercions('Aws::EMR::DescribeJobFlows', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::DescribeJobFlowsResult->from_result($result);return $o_result;
   }
   sub DescribeStep {
     my $self = shift;
-    my $call = Aws::EMR::DescribeStep->new(@_);
+    my $call = new_with_coercions('Aws::EMR::DescribeStep', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::DescribeStepResult->from_result($result);return $o_result;
   }
   sub ListBootstrapActions {
     my $self = shift;
-    my $call = Aws::EMR::ListBootstrapActions->new(@_);
+    my $call = new_with_coercions('Aws::EMR::ListBootstrapActions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::ListBootstrapActionsResult->from_result($result);return $o_result;
   }
   sub ListClusters {
     my $self = shift;
-    my $call = Aws::EMR::ListClusters->new(@_);
+    my $call = new_with_coercions('Aws::EMR::ListClusters', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::ListClustersResult->from_result($result);return $o_result;
   }
   sub ListInstanceGroups {
     my $self = shift;
-    my $call = Aws::EMR::ListInstanceGroups->new(@_);
+    my $call = new_with_coercions('Aws::EMR::ListInstanceGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::ListInstanceGroupsResult->from_result($result);return $o_result;
   }
   sub ListInstances {
     my $self = shift;
-    my $call = Aws::EMR::ListInstances->new(@_);
+    my $call = new_with_coercions('Aws::EMR::ListInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::ListInstancesResult->from_result($result);return $o_result;
   }
   sub ListSteps {
     my $self = shift;
-    my $call = Aws::EMR::ListSteps->new(@_);
+    my $call = new_with_coercions('Aws::EMR::ListSteps', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::ListStepsResult->from_result($result);return $o_result;
   }
   sub ModifyInstanceGroups {
     my $self = shift;
-    my $call = Aws::EMR::ModifyInstanceGroups->new(@_);
+    my $call = new_with_coercions('Aws::EMR::ModifyInstanceGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RemoveTags {
     my $self = shift;
-    my $call = Aws::EMR::RemoveTags->new(@_);
+    my $call = new_with_coercions('Aws::EMR::RemoveTags', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::RemoveTagsResult->from_result($result);return $o_result;
   }
   sub RunJobFlow {
     my $self = shift;
-    my $call = Aws::EMR::RunJobFlow->new(@_);
+    my $call = new_with_coercions('Aws::EMR::RunJobFlow', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EMR::RunJobFlowResult->from_result($result);return $o_result;
   }
   sub SetTerminationProtection {
     my $self = shift;
-    my $call = Aws::EMR::SetTerminationProtection->new(@_);
+    my $call = new_with_coercions('Aws::EMR::SetTerminationProtection', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub SetVisibleToAllUsers {
     my $self = shift;
-    my $call = Aws::EMR::SetVisibleToAllUsers->new(@_);
+    my $call = new_with_coercions('Aws::EMR::SetVisibleToAllUsers', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub TerminateJobFlows {
     my $self = shift;
-    my $call = Aws::EMR::TerminateJobFlows->new(@_);
+    my $call = new_with_coercions('Aws::EMR::TerminateJobFlows', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }

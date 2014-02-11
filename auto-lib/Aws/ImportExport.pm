@@ -125,35 +125,35 @@ package Aws::ImportExport {
   
   sub CancelJob {
     my $self = shift;
-    my $call = Aws::ImportExport::CancelJob->new(@_);
+    my $call = new_with_coercions('Aws::ImportExport::CancelJob', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ImportExport::CancelJobResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateJob {
     my $self = shift;
-    my $call = Aws::ImportExport::CreateJob->new(@_);
+    my $call = new_with_coercions('Aws::ImportExport::CreateJob', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ImportExport::CreateJobResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetStatus {
     my $self = shift;
-    my $call = Aws::ImportExport::GetStatus->new(@_);
+    my $call = new_with_coercions('Aws::ImportExport::GetStatus', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ImportExport::GetStatusResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListJobs {
     my $self = shift;
-    my $call = Aws::ImportExport::ListJobs->new(@_);
+    my $call = new_with_coercions('Aws::ImportExport::ListJobs', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ImportExport::ListJobsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UpdateJob {
     my $self = shift;
-    my $call = Aws::ImportExport::UpdateJob->new(@_);
+    my $call = new_with_coercions('Aws::ImportExport::UpdateJob', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ImportExport::UpdateJobResult->from_result($result->{ $call->_result_key });
     return $o_result;

@@ -1,8 +1,12 @@
 - length restrictions for atts
-- enum restrictions for atts
 - Paginated results and iterators
 - Waiters (methods that wait for an object to be in a determined state)
 - Retrying
 - Exception handling
 - JSON callers
+  - when a boolean is returned from API, it doesn't get properly handed to 
+    result objects (error thrown)
 - rest-xml callers
+- enums for results may be too strict. If AWS returns something new, an exception
+  is raised
+- Pass flattened lists and unflattened lists correctly

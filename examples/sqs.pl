@@ -25,8 +25,10 @@ p $q;
 
 $response = $sqs->SendMessageBatch(QueueUrl => $q->QueueUrl,
                                    Entries => [
-                                     Aws::SQS::SendMessageBatchRequestEntry->new(Id => 1, MessageBody => 'Hello world'),
-                                     Aws::SQS::SendMessageBatchRequestEntry->new(Id => 2, MessageBody => 'Farewell cruel world'),
+                                     { Id => 1, MessageBody => 'Hello world' },
+                                     { Id => 2, MessageBody => 'Farewell cruel world' },
+                                     Aws::SQS::SendMessageBatchRequestEntry->new(Id => 3, MessageBody => 'Hello world from object'),
+                                     Aws::SQS::SendMessageBatchRequestEntry->new(Id => 4, MessageBody => 'Farewell cruel world from object'),
                                    ]);
 p $response;
 

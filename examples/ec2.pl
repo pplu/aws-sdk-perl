@@ -27,9 +27,9 @@ p $result;
 $result = $ec2->DescribeRegions;
 p $result;
 
-$result = $ec2->DescribeSnapshots;
-p $result;
-#map { p $_ } @{ $result->Snapshots };
+#$result = $ec2->DescribeSnapshots;
+#p $result;
+#p $_ for @{ $result->Snapshots };
 
 $result = $ec2->DescribeImages(Owners => [ 'self' ]);
 p $result;

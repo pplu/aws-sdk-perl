@@ -43,8 +43,8 @@ $result = $cw->GetMetricStatistics(
   Period => 300,
   Unit => 'Percent',
   Dimensions => [
-    Aws::CloudWatch::Dimension->new(Name => 'InstanceId', Value => 'i-b25b5af8'),
-#    Aws::CloudWatch::Dimension->new(Name => 'InstanceId', Value => 'i-ea4aafa4'),
+    { Name => 'InstanceId', Value => 'i-b25b5af8' },
+#    Aws::CloudWatch::Dimension->new(Name => 'InstanceId', Value => 'i-b25b5af8'),
   ]
 );
 

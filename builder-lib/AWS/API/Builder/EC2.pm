@@ -113,7 +113,7 @@ package [% c.api %] {
   [%- op_name = c.struct.operations.$op.name %]
   sub [% op_name %] {
     my $self = shift;
-    my $call = [% c.api %]::[% op_name %]->new(@_);
+    my $call = new_with_coercions('[% c.api %]::[% op_name %]', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     [%- IF (c.struct.operations.$op.output.size > 0) %]
     my $o_result = [% c.api %]::[% op_name %]Result->from_result($result);

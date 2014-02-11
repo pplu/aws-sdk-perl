@@ -182,55 +182,55 @@ package Aws::Kinesis {
   
   sub CreateStream {
     my $self = shift;
-    my $call = Aws::Kinesis::CreateStream->new(@_);
+    my $call = new_with_coercions('Aws::Kinesis::CreateStream', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteStream {
     my $self = shift;
-    my $call = Aws::Kinesis::DeleteStream->new(@_);
+    my $call = new_with_coercions('Aws::Kinesis::DeleteStream', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DescribeStream {
     my $self = shift;
-    my $call = Aws::Kinesis::DescribeStream->new(@_);
+    my $call = new_with_coercions('Aws::Kinesis::DescribeStream', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::DescribeStreamResult->from_result($result);return $o_result;
   }
   sub GetRecords {
     my $self = shift;
-    my $call = Aws::Kinesis::GetRecords->new(@_);
+    my $call = new_with_coercions('Aws::Kinesis::GetRecords', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::GetRecordsResult->from_result($result);return $o_result;
   }
   sub GetShardIterator {
     my $self = shift;
-    my $call = Aws::Kinesis::GetShardIterator->new(@_);
+    my $call = new_with_coercions('Aws::Kinesis::GetShardIterator', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::GetShardIteratorResult->from_result($result);return $o_result;
   }
   sub ListStreams {
     my $self = shift;
-    my $call = Aws::Kinesis::ListStreams->new(@_);
+    my $call = new_with_coercions('Aws::Kinesis::ListStreams', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::ListStreamsResult->from_result($result);return $o_result;
   }
   sub MergeShards {
     my $self = shift;
-    my $call = Aws::Kinesis::MergeShards->new(@_);
+    my $call = new_with_coercions('Aws::Kinesis::MergeShards', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub PutRecord {
     my $self = shift;
-    my $call = Aws::Kinesis::PutRecord->new(@_);
+    my $call = new_with_coercions('Aws::Kinesis::PutRecord', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::PutRecordResult->from_result($result);return $o_result;
   }
   sub SplitShard {
     my $self = shift;
-    my $call = Aws::Kinesis::SplitShard->new(@_);
+    my $call = new_with_coercions('Aws::Kinesis::SplitShard', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }

@@ -336,73 +336,73 @@ package Aws::Support {
   
   sub AddCommunicationToCase {
     my $self = shift;
-    my $call = Aws::Support::AddCommunicationToCase->new(@_);
+    my $call = new_with_coercions('Aws::Support::AddCommunicationToCase', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::AddCommunicationToCaseResult->from_result($result);return $o_result;
   }
   sub CreateCase {
     my $self = shift;
-    my $call = Aws::Support::CreateCase->new(@_);
+    my $call = new_with_coercions('Aws::Support::CreateCase', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::CreateCaseResult->from_result($result);return $o_result;
   }
   sub DescribeCases {
     my $self = shift;
-    my $call = Aws::Support::DescribeCases->new(@_);
+    my $call = new_with_coercions('Aws::Support::DescribeCases', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeCasesResult->from_result($result);return $o_result;
   }
   sub DescribeCommunications {
     my $self = shift;
-    my $call = Aws::Support::DescribeCommunications->new(@_);
+    my $call = new_with_coercions('Aws::Support::DescribeCommunications', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeCommunicationsResult->from_result($result);return $o_result;
   }
   sub DescribeServices {
     my $self = shift;
-    my $call = Aws::Support::DescribeServices->new(@_);
+    my $call = new_with_coercions('Aws::Support::DescribeServices', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeServicesResult->from_result($result);return $o_result;
   }
   sub DescribeSeverityLevels {
     my $self = shift;
-    my $call = Aws::Support::DescribeSeverityLevels->new(@_);
+    my $call = new_with_coercions('Aws::Support::DescribeSeverityLevels', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeSeverityLevelsResult->from_result($result);return $o_result;
   }
   sub DescribeTrustedAdvisorCheckRefreshStatuses {
     my $self = shift;
-    my $call = Aws::Support::DescribeTrustedAdvisorCheckRefreshStatuses->new(@_);
+    my $call = new_with_coercions('Aws::Support::DescribeTrustedAdvisorCheckRefreshStatuses', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResult->from_result($result);return $o_result;
   }
   sub DescribeTrustedAdvisorCheckResult {
     my $self = shift;
-    my $call = Aws::Support::DescribeTrustedAdvisorCheckResult->new(@_);
+    my $call = new_with_coercions('Aws::Support::DescribeTrustedAdvisorCheckResult', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeTrustedAdvisorCheckResultResult->from_result($result);return $o_result;
   }
   sub DescribeTrustedAdvisorChecks {
     my $self = shift;
-    my $call = Aws::Support::DescribeTrustedAdvisorChecks->new(@_);
+    my $call = new_with_coercions('Aws::Support::DescribeTrustedAdvisorChecks', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeTrustedAdvisorChecksResult->from_result($result);return $o_result;
   }
   sub DescribeTrustedAdvisorCheckSummaries {
     my $self = shift;
-    my $call = Aws::Support::DescribeTrustedAdvisorCheckSummaries->new(@_);
+    my $call = new_with_coercions('Aws::Support::DescribeTrustedAdvisorCheckSummaries', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::DescribeTrustedAdvisorCheckSummariesResult->from_result($result);return $o_result;
   }
   sub RefreshTrustedAdvisorCheck {
     my $self = shift;
-    my $call = Aws::Support::RefreshTrustedAdvisorCheck->new(@_);
+    my $call = new_with_coercions('Aws::Support::RefreshTrustedAdvisorCheck', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::RefreshTrustedAdvisorCheckResult->from_result($result);return $o_result;
   }
   sub ResolveCase {
     my $self = shift;
-    my $call = Aws::Support::ResolveCase->new(@_);
+    my $call = new_with_coercions('Aws::Support::ResolveCase', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Support::ResolveCaseResult->from_result($result);return $o_result;
   }

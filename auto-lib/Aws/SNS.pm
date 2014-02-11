@@ -382,166 +382,166 @@ package Aws::SNS {
   
   sub AddPermission {
     my $self = shift;
-    my $call = Aws::SNS::AddPermission->new(@_);
+    my $call = new_with_coercions('Aws::SNS::AddPermission', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ConfirmSubscription {
     my $self = shift;
-    my $call = Aws::SNS::ConfirmSubscription->new(@_);
+    my $call = new_with_coercions('Aws::SNS::ConfirmSubscription', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::ConfirmSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreatePlatformApplication {
     my $self = shift;
-    my $call = Aws::SNS::CreatePlatformApplication->new(@_);
+    my $call = new_with_coercions('Aws::SNS::CreatePlatformApplication', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::CreatePlatformApplicationResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreatePlatformEndpoint {
     my $self = shift;
-    my $call = Aws::SNS::CreatePlatformEndpoint->new(@_);
+    my $call = new_with_coercions('Aws::SNS::CreatePlatformEndpoint', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::CreatePlatformEndpointResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateTopic {
     my $self = shift;
-    my $call = Aws::SNS::CreateTopic->new(@_);
+    my $call = new_with_coercions('Aws::SNS::CreateTopic', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::CreateTopicResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteEndpoint {
     my $self = shift;
-    my $call = Aws::SNS::DeleteEndpoint->new(@_);
+    my $call = new_with_coercions('Aws::SNS::DeleteEndpoint', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeletePlatformApplication {
     my $self = shift;
-    my $call = Aws::SNS::DeletePlatformApplication->new(@_);
+    my $call = new_with_coercions('Aws::SNS::DeletePlatformApplication', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteTopic {
     my $self = shift;
-    my $call = Aws::SNS::DeleteTopic->new(@_);
+    my $call = new_with_coercions('Aws::SNS::DeleteTopic', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub GetEndpointAttributes {
     my $self = shift;
-    my $call = Aws::SNS::GetEndpointAttributes->new(@_);
+    my $call = new_with_coercions('Aws::SNS::GetEndpointAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::GetEndpointAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetPlatformApplicationAttributes {
     my $self = shift;
-    my $call = Aws::SNS::GetPlatformApplicationAttributes->new(@_);
+    my $call = new_with_coercions('Aws::SNS::GetPlatformApplicationAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::GetPlatformApplicationAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetSubscriptionAttributes {
     my $self = shift;
-    my $call = Aws::SNS::GetSubscriptionAttributes->new(@_);
+    my $call = new_with_coercions('Aws::SNS::GetSubscriptionAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::GetSubscriptionAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetTopicAttributes {
     my $self = shift;
-    my $call = Aws::SNS::GetTopicAttributes->new(@_);
+    my $call = new_with_coercions('Aws::SNS::GetTopicAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::GetTopicAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListEndpointsByPlatformApplication {
     my $self = shift;
-    my $call = Aws::SNS::ListEndpointsByPlatformApplication->new(@_);
+    my $call = new_with_coercions('Aws::SNS::ListEndpointsByPlatformApplication', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::ListEndpointsByPlatformApplicationResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListPlatformApplications {
     my $self = shift;
-    my $call = Aws::SNS::ListPlatformApplications->new(@_);
+    my $call = new_with_coercions('Aws::SNS::ListPlatformApplications', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::ListPlatformApplicationsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListSubscriptions {
     my $self = shift;
-    my $call = Aws::SNS::ListSubscriptions->new(@_);
+    my $call = new_with_coercions('Aws::SNS::ListSubscriptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::ListSubscriptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListSubscriptionsByTopic {
     my $self = shift;
-    my $call = Aws::SNS::ListSubscriptionsByTopic->new(@_);
+    my $call = new_with_coercions('Aws::SNS::ListSubscriptionsByTopic', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::ListSubscriptionsByTopicResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListTopics {
     my $self = shift;
-    my $call = Aws::SNS::ListTopics->new(@_);
+    my $call = new_with_coercions('Aws::SNS::ListTopics', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::ListTopicsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub Publish {
     my $self = shift;
-    my $call = Aws::SNS::Publish->new(@_);
+    my $call = new_with_coercions('Aws::SNS::Publish', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::PublishResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RemovePermission {
     my $self = shift;
-    my $call = Aws::SNS::RemovePermission->new(@_);
+    my $call = new_with_coercions('Aws::SNS::RemovePermission', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub SetEndpointAttributes {
     my $self = shift;
-    my $call = Aws::SNS::SetEndpointAttributes->new(@_);
+    my $call = new_with_coercions('Aws::SNS::SetEndpointAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub SetPlatformApplicationAttributes {
     my $self = shift;
-    my $call = Aws::SNS::SetPlatformApplicationAttributes->new(@_);
+    my $call = new_with_coercions('Aws::SNS::SetPlatformApplicationAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub SetSubscriptionAttributes {
     my $self = shift;
-    my $call = Aws::SNS::SetSubscriptionAttributes->new(@_);
+    my $call = new_with_coercions('Aws::SNS::SetSubscriptionAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub SetTopicAttributes {
     my $self = shift;
-    my $call = Aws::SNS::SetTopicAttributes->new(@_);
+    my $call = new_with_coercions('Aws::SNS::SetTopicAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub Subscribe {
     my $self = shift;
-    my $call = Aws::SNS::Subscribe->new(@_);
+    my $call = new_with_coercions('Aws::SNS::Subscribe', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SNS::SubscribeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub Unsubscribe {
     my $self = shift;
-    my $call = Aws::SNS::Unsubscribe->new(@_);
+    my $call = new_with_coercions('Aws::SNS::Unsubscribe', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }

@@ -1235,365 +1235,365 @@ package Aws::RedShift {
   
   sub AuthorizeClusterSecurityGroupIngress {
     my $self = shift;
-    my $call = Aws::RedShift::AuthorizeClusterSecurityGroupIngress->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::AuthorizeClusterSecurityGroupIngress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::AuthorizeClusterSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub AuthorizeSnapshotAccess {
     my $self = shift;
-    my $call = Aws::RedShift::AuthorizeSnapshotAccess->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::AuthorizeSnapshotAccess', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::AuthorizeSnapshotAccessResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CopyClusterSnapshot {
     my $self = shift;
-    my $call = Aws::RedShift::CopyClusterSnapshot->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::CopyClusterSnapshot', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::CopyClusterSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateCluster {
     my $self = shift;
-    my $call = Aws::RedShift::CreateCluster->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::CreateCluster', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::CreateClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateClusterParameterGroup {
     my $self = shift;
-    my $call = Aws::RedShift::CreateClusterParameterGroup->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::CreateClusterParameterGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::CreateClusterParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateClusterSecurityGroup {
     my $self = shift;
-    my $call = Aws::RedShift::CreateClusterSecurityGroup->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::CreateClusterSecurityGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::CreateClusterSecurityGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateClusterSnapshot {
     my $self = shift;
-    my $call = Aws::RedShift::CreateClusterSnapshot->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::CreateClusterSnapshot', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::CreateClusterSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateClusterSubnetGroup {
     my $self = shift;
-    my $call = Aws::RedShift::CreateClusterSubnetGroup->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::CreateClusterSubnetGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::CreateClusterSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateEventSubscription {
     my $self = shift;
-    my $call = Aws::RedShift::CreateEventSubscription->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::CreateEventSubscription', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::CreateEventSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateHsmClientCertificate {
     my $self = shift;
-    my $call = Aws::RedShift::CreateHsmClientCertificate->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::CreateHsmClientCertificate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::CreateHsmClientCertificateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateHsmConfiguration {
     my $self = shift;
-    my $call = Aws::RedShift::CreateHsmConfiguration->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::CreateHsmConfiguration', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::CreateHsmConfigurationResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteCluster {
     my $self = shift;
-    my $call = Aws::RedShift::DeleteCluster->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DeleteCluster', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DeleteClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteClusterParameterGroup {
     my $self = shift;
-    my $call = Aws::RedShift::DeleteClusterParameterGroup->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DeleteClusterParameterGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteClusterSecurityGroup {
     my $self = shift;
-    my $call = Aws::RedShift::DeleteClusterSecurityGroup->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DeleteClusterSecurityGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteClusterSnapshot {
     my $self = shift;
-    my $call = Aws::RedShift::DeleteClusterSnapshot->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DeleteClusterSnapshot', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DeleteClusterSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteClusterSubnetGroup {
     my $self = shift;
-    my $call = Aws::RedShift::DeleteClusterSubnetGroup->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DeleteClusterSubnetGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteEventSubscription {
     my $self = shift;
-    my $call = Aws::RedShift::DeleteEventSubscription->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DeleteEventSubscription', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteHsmClientCertificate {
     my $self = shift;
-    my $call = Aws::RedShift::DeleteHsmClientCertificate->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DeleteHsmClientCertificate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteHsmConfiguration {
     my $self = shift;
-    my $call = Aws::RedShift::DeleteHsmConfiguration->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DeleteHsmConfiguration', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DescribeClusterParameterGroups {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeClusterParameterGroups->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeClusterParameterGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeClusterParameterGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeClusterParameters {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeClusterParameters->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeClusterParameters', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeClusterParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeClusters {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeClusters->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeClusters', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeClustersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeClusterSecurityGroups {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeClusterSecurityGroups->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeClusterSecurityGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeClusterSecurityGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeClusterSnapshots {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeClusterSnapshots->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeClusterSnapshots', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeClusterSnapshotsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeClusterSubnetGroups {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeClusterSubnetGroups->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeClusterSubnetGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeClusterSubnetGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeClusterVersions {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeClusterVersions->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeClusterVersions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeClusterVersionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeDefaultClusterParameters {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeDefaultClusterParameters->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeDefaultClusterParameters', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeDefaultClusterParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeEventCategories {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeEventCategories->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeEventCategories', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeEventCategoriesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeEvents {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeEvents->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeEvents', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeEventsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeEventSubscriptions {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeEventSubscriptions->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeEventSubscriptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeEventSubscriptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeHsmClientCertificates {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeHsmClientCertificates->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeHsmClientCertificates', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeHsmClientCertificatesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeHsmConfigurations {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeHsmConfigurations->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeHsmConfigurations', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeHsmConfigurationsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeLoggingStatus {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeLoggingStatus->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeLoggingStatus', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeLoggingStatusResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeOrderableClusterOptions {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeOrderableClusterOptions->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeOrderableClusterOptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeOrderableClusterOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeReservedNodeOfferings {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeReservedNodeOfferings->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeReservedNodeOfferings', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeReservedNodeOfferingsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeReservedNodes {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeReservedNodes->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeReservedNodes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeReservedNodesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeResize {
     my $self = shift;
-    my $call = Aws::RedShift::DescribeResize->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DescribeResize', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DescribeResizeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DisableLogging {
     my $self = shift;
-    my $call = Aws::RedShift::DisableLogging->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DisableLogging', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DisableLoggingResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DisableSnapshotCopy {
     my $self = shift;
-    my $call = Aws::RedShift::DisableSnapshotCopy->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::DisableSnapshotCopy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::DisableSnapshotCopyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub EnableLogging {
     my $self = shift;
-    my $call = Aws::RedShift::EnableLogging->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::EnableLogging', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::EnableLoggingResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub EnableSnapshotCopy {
     my $self = shift;
-    my $call = Aws::RedShift::EnableSnapshotCopy->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::EnableSnapshotCopy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::EnableSnapshotCopyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyCluster {
     my $self = shift;
-    my $call = Aws::RedShift::ModifyCluster->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::ModifyCluster', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::ModifyClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyClusterParameterGroup {
     my $self = shift;
-    my $call = Aws::RedShift::ModifyClusterParameterGroup->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::ModifyClusterParameterGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::ModifyClusterParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyClusterSubnetGroup {
     my $self = shift;
-    my $call = Aws::RedShift::ModifyClusterSubnetGroup->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::ModifyClusterSubnetGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::ModifyClusterSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyEventSubscription {
     my $self = shift;
-    my $call = Aws::RedShift::ModifyEventSubscription->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::ModifyEventSubscription', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::ModifyEventSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifySnapshotCopyRetentionPeriod {
     my $self = shift;
-    my $call = Aws::RedShift::ModifySnapshotCopyRetentionPeriod->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::ModifySnapshotCopyRetentionPeriod', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::ModifySnapshotCopyRetentionPeriodResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub PurchaseReservedNodeOffering {
     my $self = shift;
-    my $call = Aws::RedShift::PurchaseReservedNodeOffering->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::PurchaseReservedNodeOffering', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::PurchaseReservedNodeOfferingResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RebootCluster {
     my $self = shift;
-    my $call = Aws::RedShift::RebootCluster->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::RebootCluster', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::RebootClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ResetClusterParameterGroup {
     my $self = shift;
-    my $call = Aws::RedShift::ResetClusterParameterGroup->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::ResetClusterParameterGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::ResetClusterParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RestoreFromClusterSnapshot {
     my $self = shift;
-    my $call = Aws::RedShift::RestoreFromClusterSnapshot->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::RestoreFromClusterSnapshot', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::RestoreFromClusterSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RevokeClusterSecurityGroupIngress {
     my $self = shift;
-    my $call = Aws::RedShift::RevokeClusterSecurityGroupIngress->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::RevokeClusterSecurityGroupIngress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::RevokeClusterSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RevokeSnapshotAccess {
     my $self = shift;
-    my $call = Aws::RedShift::RevokeSnapshotAccess->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::RevokeSnapshotAccess', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::RevokeSnapshotAccessResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RotateEncryptionKey {
     my $self = shift;
-    my $call = Aws::RedShift::RotateEncryptionKey->new(@_);
+    my $call = new_with_coercions('Aws::RedShift::RotateEncryptionKey', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RedShift::RotateEncryptionKeyResult->from_result($result->{ $call->_result_key });
     return $o_result;

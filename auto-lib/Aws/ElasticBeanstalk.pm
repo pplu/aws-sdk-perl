@@ -741,195 +741,195 @@ package Aws::ElasticBeanstalk {
   
   sub CheckDNSAvailability {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::CheckDNSAvailability->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::CheckDNSAvailability', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::CheckDNSAvailabilityResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateApplication {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::CreateApplication->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::CreateApplication', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::CreateApplicationResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateApplicationVersion {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::CreateApplicationVersion->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::CreateApplicationVersion', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::CreateApplicationVersionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateConfigurationTemplate {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::CreateConfigurationTemplate->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::CreateConfigurationTemplate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::CreateConfigurationTemplateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateEnvironment {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::CreateEnvironment->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::CreateEnvironment', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::CreateEnvironmentResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateStorageLocation {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::CreateStorageLocation->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::CreateStorageLocation', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::CreateStorageLocationResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteApplication {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::DeleteApplication->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::DeleteApplication', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteApplicationVersion {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::DeleteApplicationVersion->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::DeleteApplicationVersion', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteConfigurationTemplate {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::DeleteConfigurationTemplate->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::DeleteConfigurationTemplate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteEnvironmentConfiguration {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::DeleteEnvironmentConfiguration->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::DeleteEnvironmentConfiguration', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DescribeApplications {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::DescribeApplications->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::DescribeApplications', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::DescribeApplicationsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeApplicationVersions {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::DescribeApplicationVersions->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::DescribeApplicationVersions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::DescribeApplicationVersionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeConfigurationOptions {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::DescribeConfigurationOptions->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::DescribeConfigurationOptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::DescribeConfigurationOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeConfigurationSettings {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::DescribeConfigurationSettings->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::DescribeConfigurationSettings', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::DescribeConfigurationSettingsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeEnvironmentResources {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::DescribeEnvironmentResources->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::DescribeEnvironmentResources', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::DescribeEnvironmentResourcesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeEnvironments {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::DescribeEnvironments->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::DescribeEnvironments', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::DescribeEnvironmentsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeEvents {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::DescribeEvents->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::DescribeEvents', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::DescribeEventsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListAvailableSolutionStacks {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::ListAvailableSolutionStacks->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::ListAvailableSolutionStacks', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::ListAvailableSolutionStacksResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RebuildEnvironment {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::RebuildEnvironment->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::RebuildEnvironment', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RequestEnvironmentInfo {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::RequestEnvironmentInfo->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::RequestEnvironmentInfo', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RestartAppServer {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::RestartAppServer->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::RestartAppServer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RetrieveEnvironmentInfo {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::RetrieveEnvironmentInfo->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::RetrieveEnvironmentInfo', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::RetrieveEnvironmentInfoResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub SwapEnvironmentCNAMEs {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::SwapEnvironmentCNAMEs->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::SwapEnvironmentCNAMEs', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub TerminateEnvironment {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::TerminateEnvironment->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::TerminateEnvironment', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::TerminateEnvironmentResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UpdateApplication {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::UpdateApplication->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::UpdateApplication', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::UpdateApplicationResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UpdateApplicationVersion {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::UpdateApplicationVersion->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::UpdateApplicationVersion', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::UpdateApplicationVersionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UpdateConfigurationTemplate {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::UpdateConfigurationTemplate->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::UpdateConfigurationTemplate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::UpdateConfigurationTemplateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UpdateEnvironment {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::UpdateEnvironment->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::UpdateEnvironment', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::UpdateEnvironmentResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ValidateConfigurationSettings {
     my $self = shift;
-    my $call = Aws::ElasticBeanstalk::ValidateConfigurationSettings->new(@_);
+    my $call = new_with_coercions('Aws::ElasticBeanstalk::ValidateConfigurationSettings', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElasticBeanstalk::ValidateConfigurationSettingsResult->from_result($result->{ $call->_result_key });
     return $o_result;

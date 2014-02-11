@@ -474,140 +474,140 @@ package Aws::CloudSearch {
   
   sub CreateDomain {
     my $self = shift;
-    my $call = Aws::CloudSearch::CreateDomain->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::CreateDomain', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::CreateDomainResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DefineIndexField {
     my $self = shift;
-    my $call = Aws::CloudSearch::DefineIndexField->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::DefineIndexField', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::DefineIndexFieldResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DefineRankExpression {
     my $self = shift;
-    my $call = Aws::CloudSearch::DefineRankExpression->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::DefineRankExpression', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::DefineRankExpressionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteDomain {
     my $self = shift;
-    my $call = Aws::CloudSearch::DeleteDomain->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::DeleteDomain', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::DeleteDomainResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteIndexField {
     my $self = shift;
-    my $call = Aws::CloudSearch::DeleteIndexField->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::DeleteIndexField', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::DeleteIndexFieldResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteRankExpression {
     my $self = shift;
-    my $call = Aws::CloudSearch::DeleteRankExpression->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::DeleteRankExpression', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::DeleteRankExpressionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeDefaultSearchField {
     my $self = shift;
-    my $call = Aws::CloudSearch::DescribeDefaultSearchField->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::DescribeDefaultSearchField', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::DescribeDefaultSearchFieldResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeDomains {
     my $self = shift;
-    my $call = Aws::CloudSearch::DescribeDomains->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::DescribeDomains', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::DescribeDomainsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeIndexFields {
     my $self = shift;
-    my $call = Aws::CloudSearch::DescribeIndexFields->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::DescribeIndexFields', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::DescribeIndexFieldsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeRankExpressions {
     my $self = shift;
-    my $call = Aws::CloudSearch::DescribeRankExpressions->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::DescribeRankExpressions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::DescribeRankExpressionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeServiceAccessPolicies {
     my $self = shift;
-    my $call = Aws::CloudSearch::DescribeServiceAccessPolicies->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::DescribeServiceAccessPolicies', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::DescribeServiceAccessPoliciesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeStemmingOptions {
     my $self = shift;
-    my $call = Aws::CloudSearch::DescribeStemmingOptions->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::DescribeStemmingOptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::DescribeStemmingOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeStopwordOptions {
     my $self = shift;
-    my $call = Aws::CloudSearch::DescribeStopwordOptions->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::DescribeStopwordOptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::DescribeStopwordOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeSynonymOptions {
     my $self = shift;
-    my $call = Aws::CloudSearch::DescribeSynonymOptions->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::DescribeSynonymOptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::DescribeSynonymOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub IndexDocuments {
     my $self = shift;
-    my $call = Aws::CloudSearch::IndexDocuments->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::IndexDocuments', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::IndexDocumentsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UpdateDefaultSearchField {
     my $self = shift;
-    my $call = Aws::CloudSearch::UpdateDefaultSearchField->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::UpdateDefaultSearchField', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::UpdateDefaultSearchFieldResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UpdateServiceAccessPolicies {
     my $self = shift;
-    my $call = Aws::CloudSearch::UpdateServiceAccessPolicies->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::UpdateServiceAccessPolicies', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::UpdateServiceAccessPoliciesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UpdateStemmingOptions {
     my $self = shift;
-    my $call = Aws::CloudSearch::UpdateStemmingOptions->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::UpdateStemmingOptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::UpdateStemmingOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UpdateStopwordOptions {
     my $self = shift;
-    my $call = Aws::CloudSearch::UpdateStopwordOptions->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::UpdateStopwordOptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::UpdateStopwordOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UpdateSynonymOptions {
     my $self = shift;
-    my $call = Aws::CloudSearch::UpdateSynonymOptions->new(@_);
+    my $call = new_with_coercions('Aws::CloudSearch::UpdateSynonymOptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::UpdateSynonymOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;

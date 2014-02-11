@@ -328,6 +328,8 @@ package Net::AWS::Caller {
 
   sub send {
     my ($self, $request) = @_;
+use Data::Dumper;
+print Dumper($request);
     my $headers = {};
     $request->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
 
@@ -345,7 +347,29 @@ package Net::AWS::Caller {
         #TODO: retry or croak based on error codes
         croak "POST Request failed: $response->{status} $response->{reason} $response->{content}\n";
     }
+  }
 
+  sub new_with_coercions {
+    my ($class, %params) = @_;
+
+    my %p;
+    foreach my $att ($class->meta->get_attribute_list){
+      next if (not exists $params{ $att });
+      my $type = $class->meta->get_attribute($att)->type_constraint;
+      if ($type eq 'Str' or $type eq 'Num' or $type eq 'Int' or $type eq 'Bool') {
+        $p{ $att } = $params{ $att };
+      } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
+        my $subtype = "$1";
+        if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
+          $p{ $att } = $params{ $att };
+        } else {
+          $p{ $att } = [ map { new_with_coercions($subtype, %{ $_ }) } @{ $params{ $att } } ]; 
+        }
+      } else {
+        $p{ $att } = new_with_coercions($type, %{ $params{ $att } });
+      }
+    }
+    return $class->new(%p);
   }
 }
 

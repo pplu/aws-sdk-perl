@@ -713,233 +713,233 @@ package Aws::AutoScaling {
   
   sub AttachInstances {
     my $self = shift;
-    my $call = Aws::AutoScaling::AttachInstances->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::AttachInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CreateAutoScalingGroup {
     my $self = shift;
-    my $call = Aws::AutoScaling::CreateAutoScalingGroup->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::CreateAutoScalingGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CreateLaunchConfiguration {
     my $self = shift;
-    my $call = Aws::AutoScaling::CreateLaunchConfiguration->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::CreateLaunchConfiguration', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CreateOrUpdateTags {
     my $self = shift;
-    my $call = Aws::AutoScaling::CreateOrUpdateTags->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::CreateOrUpdateTags', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteAutoScalingGroup {
     my $self = shift;
-    my $call = Aws::AutoScaling::DeleteAutoScalingGroup->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DeleteAutoScalingGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteLaunchConfiguration {
     my $self = shift;
-    my $call = Aws::AutoScaling::DeleteLaunchConfiguration->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DeleteLaunchConfiguration', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteNotificationConfiguration {
     my $self = shift;
-    my $call = Aws::AutoScaling::DeleteNotificationConfiguration->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DeleteNotificationConfiguration', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeletePolicy {
     my $self = shift;
-    my $call = Aws::AutoScaling::DeletePolicy->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DeletePolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteScheduledAction {
     my $self = shift;
-    my $call = Aws::AutoScaling::DeleteScheduledAction->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DeleteScheduledAction', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteTags {
     my $self = shift;
-    my $call = Aws::AutoScaling::DeleteTags->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DeleteTags', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DescribeAccountLimits {
     my $self = shift;
-    my $call = Aws::AutoScaling::DescribeAccountLimits->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DescribeAccountLimits', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeAccountLimitsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeAdjustmentTypes {
     my $self = shift;
-    my $call = Aws::AutoScaling::DescribeAdjustmentTypes->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DescribeAdjustmentTypes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeAdjustmentTypesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeAutoScalingGroups {
     my $self = shift;
-    my $call = Aws::AutoScaling::DescribeAutoScalingGroups->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DescribeAutoScalingGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeAutoScalingGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeAutoScalingInstances {
     my $self = shift;
-    my $call = Aws::AutoScaling::DescribeAutoScalingInstances->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DescribeAutoScalingInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeAutoScalingInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeAutoScalingNotificationTypes {
     my $self = shift;
-    my $call = Aws::AutoScaling::DescribeAutoScalingNotificationTypes->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DescribeAutoScalingNotificationTypes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeAutoScalingNotificationTypesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeLaunchConfigurations {
     my $self = shift;
-    my $call = Aws::AutoScaling::DescribeLaunchConfigurations->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DescribeLaunchConfigurations', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeLaunchConfigurationsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeMetricCollectionTypes {
     my $self = shift;
-    my $call = Aws::AutoScaling::DescribeMetricCollectionTypes->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DescribeMetricCollectionTypes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeMetricCollectionTypesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeNotificationConfigurations {
     my $self = shift;
-    my $call = Aws::AutoScaling::DescribeNotificationConfigurations->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DescribeNotificationConfigurations', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeNotificationConfigurationsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribePolicies {
     my $self = shift;
-    my $call = Aws::AutoScaling::DescribePolicies->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DescribePolicies', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribePoliciesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeScalingActivities {
     my $self = shift;
-    my $call = Aws::AutoScaling::DescribeScalingActivities->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DescribeScalingActivities', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeScalingActivitiesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeScalingProcessTypes {
     my $self = shift;
-    my $call = Aws::AutoScaling::DescribeScalingProcessTypes->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DescribeScalingProcessTypes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeScalingProcessTypesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeScheduledActions {
     my $self = shift;
-    my $call = Aws::AutoScaling::DescribeScheduledActions->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DescribeScheduledActions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeScheduledActionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeTags {
     my $self = shift;
-    my $call = Aws::AutoScaling::DescribeTags->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DescribeTags', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeTagsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeTerminationPolicyTypes {
     my $self = shift;
-    my $call = Aws::AutoScaling::DescribeTerminationPolicyTypes->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DescribeTerminationPolicyTypes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::DescribeTerminationPolicyTypesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DisableMetricsCollection {
     my $self = shift;
-    my $call = Aws::AutoScaling::DisableMetricsCollection->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::DisableMetricsCollection', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub EnableMetricsCollection {
     my $self = shift;
-    my $call = Aws::AutoScaling::EnableMetricsCollection->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::EnableMetricsCollection', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ExecutePolicy {
     my $self = shift;
-    my $call = Aws::AutoScaling::ExecutePolicy->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::ExecutePolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub PutNotificationConfiguration {
     my $self = shift;
-    my $call = Aws::AutoScaling::PutNotificationConfiguration->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::PutNotificationConfiguration', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub PutScalingPolicy {
     my $self = shift;
-    my $call = Aws::AutoScaling::PutScalingPolicy->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::PutScalingPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::PutScalingPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub PutScheduledUpdateGroupAction {
     my $self = shift;
-    my $call = Aws::AutoScaling::PutScheduledUpdateGroupAction->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::PutScheduledUpdateGroupAction', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ResumeProcesses {
     my $self = shift;
-    my $call = Aws::AutoScaling::ResumeProcesses->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::ResumeProcesses', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub SetDesiredCapacity {
     my $self = shift;
-    my $call = Aws::AutoScaling::SetDesiredCapacity->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::SetDesiredCapacity', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub SetInstanceHealth {
     my $self = shift;
-    my $call = Aws::AutoScaling::SetInstanceHealth->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::SetInstanceHealth', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub SuspendProcesses {
     my $self = shift;
-    my $call = Aws::AutoScaling::SuspendProcesses->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::SuspendProcesses', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub TerminateInstanceInAutoScalingGroup {
     my $self = shift;
-    my $call = Aws::AutoScaling::TerminateInstanceInAutoScalingGroup->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::TerminateInstanceInAutoScalingGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::AutoScaling::TerminateInstanceInAutoScalingGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UpdateAutoScalingGroup {
     my $self = shift;
-    my $call = Aws::AutoScaling::UpdateAutoScalingGroup->new(@_);
+    my $call = new_with_coercions('Aws::AutoScaling::UpdateAutoScalingGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }

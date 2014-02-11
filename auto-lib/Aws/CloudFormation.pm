@@ -366,102 +366,102 @@ package Aws::CloudFormation {
   
   sub CancelUpdateStack {
     my $self = shift;
-    my $call = Aws::CloudFormation::CancelUpdateStack->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::CancelUpdateStack', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CreateStack {
     my $self = shift;
-    my $call = Aws::CloudFormation::CreateStack->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::CreateStack', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudFormation::CreateStackResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteStack {
     my $self = shift;
-    my $call = Aws::CloudFormation::DeleteStack->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::DeleteStack', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DescribeStackEvents {
     my $self = shift;
-    my $call = Aws::CloudFormation::DescribeStackEvents->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::DescribeStackEvents', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudFormation::DescribeStackEventsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeStackResource {
     my $self = shift;
-    my $call = Aws::CloudFormation::DescribeStackResource->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::DescribeStackResource', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudFormation::DescribeStackResourceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeStackResources {
     my $self = shift;
-    my $call = Aws::CloudFormation::DescribeStackResources->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::DescribeStackResources', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudFormation::DescribeStackResourcesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeStacks {
     my $self = shift;
-    my $call = Aws::CloudFormation::DescribeStacks->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::DescribeStacks', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudFormation::DescribeStacksResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub EstimateTemplateCost {
     my $self = shift;
-    my $call = Aws::CloudFormation::EstimateTemplateCost->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::EstimateTemplateCost', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudFormation::EstimateTemplateCostResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetStackPolicy {
     my $self = shift;
-    my $call = Aws::CloudFormation::GetStackPolicy->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::GetStackPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudFormation::GetStackPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetTemplate {
     my $self = shift;
-    my $call = Aws::CloudFormation::GetTemplate->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::GetTemplate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudFormation::GetTemplateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListStackResources {
     my $self = shift;
-    my $call = Aws::CloudFormation::ListStackResources->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::ListStackResources', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudFormation::ListStackResourcesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListStacks {
     my $self = shift;
-    my $call = Aws::CloudFormation::ListStacks->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::ListStacks', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudFormation::ListStacksResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub SetStackPolicy {
     my $self = shift;
-    my $call = Aws::CloudFormation::SetStackPolicy->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::SetStackPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateStack {
     my $self = shift;
-    my $call = Aws::CloudFormation::UpdateStack->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::UpdateStack', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudFormation::UpdateStackResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ValidateTemplate {
     my $self = shift;
-    my $call = Aws::CloudFormation::ValidateTemplate->new(@_);
+    my $call = new_with_coercions('Aws::CloudFormation::ValidateTemplate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudFormation::ValidateTemplateResult->from_result($result->{ $call->_result_key });
     return $o_result;
