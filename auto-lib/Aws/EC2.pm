@@ -3541,6 +3541,7 @@ package Aws::EC2 {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'ec2');
   has version => (is => 'ro', isa => 'Str', default => '2013-10-15');
+  has flattened_arrays => (is => 'ro', isa => 'Str', default => '1');
   with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V2Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
 
   

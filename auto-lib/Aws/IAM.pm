@@ -1118,6 +1118,7 @@ package Aws::IAM {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'iam');
   has version => (is => 'ro', isa => 'Str', default => '2010-05-08');
+  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
   with ('Net::AWS::Caller', 'AWS::API::SingleEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
   
   sub AddRoleToInstanceProfile {

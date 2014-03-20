@@ -18,6 +18,7 @@ class AWS::API::Builder::EC2 {
   has response_role  => (is => 'ro', lazy => 1, default => sub { 'Net::AWS::XMLResponse' });
   has signature_role => (is => 'ro', lazy => 1, default => sub { sprintf "Net::AWS::%sSignature", uc $_[0]->struct->{signature_version} } );
   has parameter_role => (is => 'ro', lazy => 1, default => sub { my $type = $_[0]->struct->{type}; substr($type,0,1) = uc substr($type,0,1); return "Net::AWS::${type}Caller" });
+  has flattened_arrays => (is => 'rw', isa => 'Bool', default => sub { 0 });
 
   method operation (Str $op) { return $self->struct->{operations}->{ $op } or die "method doesn't exist $op" }
 
@@ -107,6 +108,7 @@ package [% c.api %] {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => '[% c.service %]');
   has version => (is => 'ro', isa => 'Str', default => '[% c.version %]');
+  has flattened_arrays => (is => 'ro', isa => 'Str', default => '[% c.flattened_arrays %]');
   with ('Net::AWS::Caller', '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]', '[% c.response_role %]');
 
   [% FOR op IN c.struct.operations.keys.sort %]
@@ -230,6 +232,7 @@ package [% c.api %] {
     if (not exists $param_props->{ type }) {
       die "doesn't have a type entry for $param_name with def " . Dumper($param_props);
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'list') {
+      $self->flattened_arrays(1) if ($param_props->{ flattened });
       my $inner_type = $self->get_caller_class_type($param_props->{members});
       $type = "ArrayRef[$inner_type]";
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'timestamp') {

@@ -302,6 +302,7 @@ package Aws::SQS {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'sqs');
   has version => (is => 'ro', isa => 'Str', default => '2012-11-05');
+  has flattened_arrays => (is => 'ro', isa => 'Str', default => '1');
   with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
   
   sub AddPermission {

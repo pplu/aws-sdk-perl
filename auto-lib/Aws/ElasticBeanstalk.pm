@@ -737,6 +737,7 @@ package Aws::ElasticBeanstalk {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'elasticbeanstalk');
   has version => (is => 'ro', isa => 'Str', default => '2010-12-01');
+  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
   with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
   
   sub CheckDNSAvailability {

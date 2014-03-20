@@ -121,6 +121,7 @@ package Aws::ImportExport {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'importexport');
   has version => (is => 'ro', isa => 'Str', default => '2010-06-01');
+  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
   with ('Net::AWS::Caller', 'AWS::API::SingleEndpointCaller', 'Net::AWS::V2Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
   
   sub CancelJob {

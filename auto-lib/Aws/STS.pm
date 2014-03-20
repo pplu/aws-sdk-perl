@@ -143,6 +143,7 @@ package Aws::STS {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'sts');
   has version => (is => 'ro', isa => 'Str', default => '2011-06-15');
+  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
   with ('Net::AWS::Caller', 'AWS::API::SingleEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
   
   sub AssumeRole {

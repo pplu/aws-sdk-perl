@@ -791,6 +791,7 @@ package Aws::ElastiCache {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'elasticache');
   has version => (is => 'ro', isa => 'Str', default => '2013-06-15');
+  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
   with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
   
   sub AuthorizeCacheSecurityGroupIngress {

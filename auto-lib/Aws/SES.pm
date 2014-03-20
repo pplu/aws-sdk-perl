@@ -320,6 +320,7 @@ package Aws::SES {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'email');
   has version => (is => 'ro', isa => 'Str', default => '2010-12-01');
+  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
   with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
   
   sub DeleteIdentity {

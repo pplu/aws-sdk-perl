@@ -199,7 +199,12 @@ package Net::AWS::JsonResponse {
 package Net::AWS::QueryCaller {
   use Moose::Role;
   use HTTP::Request::Common;
-  use POSIX qw(strftime);
+  use POSIX qw(strftime); 
+
+  has array_flatten_string => (is => 'ro', isa => 'Str', lazy => 1, default => sub {
+    my $self = shift;
+    return ($self->flattened_arrays)?'%s.%d':'%s.member.%d';
+  });
 
   sub _is_internal_type {
     my ($self, $att_type) = @_;
@@ -219,14 +224,14 @@ package Net::AWS::QueryCaller {
           if ($self->_is_internal_type("$1")){
             my $i = 1;
             foreach my $value (@{ $params->$att }){
-              $p{ sprintf("%s.%d", $key, $i) } = $value;
+              $p{ sprintf($self->array_flatten_string, $key, $i) } = $value;
               $i++
             }
           } else {
             my $i = 1;
             foreach my $value (@{ $params->$att }){
               my $complex_value = $value->_to_params($att);
-              map { $p{ sprintf("%s.%d.%s", $key, $i, $_) } = $complex_value->{$_} } keys %$complex_value;
+              map { $p{ sprintf($self->array_flatten_string . ".%s", $key, $i, $_) } = $complex_value->{$_} } keys %$complex_value;
               $i++
             }
           }
@@ -328,8 +333,6 @@ package Net::AWS::Caller {
 
   sub send {
     my ($self, $request) = @_;
-use Data::Dumper;
-print Dumper($request);
     my $headers = {};
     $request->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
 
