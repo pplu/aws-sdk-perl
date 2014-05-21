@@ -134,6 +134,7 @@ package Aws::AutoScaling::LaunchConfiguration {
   has KeyName => (is => 'ro', isa => 'Str');
   has LaunchConfigurationARN => (is => 'ro', isa => 'Str');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
+  has PlacementTenancy => (is => 'ro', isa => 'Str');
   has RamdiskId => (is => 'ro', isa => 'Str');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has SpotPrice => (is => 'ro', isa => 'Str');
@@ -267,6 +268,7 @@ package Aws::AutoScaling::CreateLaunchConfiguration {
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
+  has PlacementTenancy => (is => 'ro', isa => 'Str');
   has RamdiskId => (is => 'ro', isa => 'Str');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has SpotPrice => (is => 'ro', isa => 'Str');

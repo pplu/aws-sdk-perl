@@ -56,7 +56,7 @@ package Aws::RDS::DBInstance {
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Str');
-  has OptionGroupMemberships => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionGroupMembership]');
+  has OptionGroupMembership => (is => 'ro', isa => 'Aws::RDS::OptionGroupMembership');
   has PendingModifiedValues => (is => 'ro', isa => 'Aws::RDS::PendingModifiedValues');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -64,17 +64,7 @@ package Aws::RDS::DBInstance {
   has ReadReplicaDBInstanceIdentifiers => (is => 'ro', isa => 'ArrayRef[Str]');
   has ReadReplicaSourceDBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has SecondaryAvailabilityZone => (is => 'ro', isa => 'Str');
-  has StatusInfos => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBInstanceStatusInfo]');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::VpcSecurityGroupMembership]');
-}
-
-package Aws::RDS::DBInstanceStatusInfo {
-  use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has Message => (is => 'ro', isa => 'Str');
-  has Normal => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RDS::DBParameterGroup {
@@ -123,12 +113,9 @@ package Aws::RDS::DBSnapshot {
   has Iops => (is => 'ro', isa => 'Int');
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has PercentProgress => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
-  has SourceRegion => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 }
@@ -141,14 +128,6 @@ package Aws::RDS::DBSubnetGroup {
   has SubnetGroupStatus => (is => 'ro', isa => 'Str');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Subnet]');
   has VpcId => (is => 'ro', isa => 'Str');
-}
-
-package Aws::RDS::DescribeDBLogFilesDetails {
-  use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has LastWritten => (is => 'ro', isa => 'Num');
-  has LogFileName => (is => 'ro', isa => 'Str');
-  has Size => (is => 'ro', isa => 'Num');
 }
 
 package Aws::RDS::EC2SecurityGroup {
@@ -199,6 +178,7 @@ package Aws::RDS::EventSubscription {
   has CustomerAwsId => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Str');
   has EventCategoriesList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Id => (is => 'ro', isa => 'Str');
   has SnsTopicArn => (is => 'ro', isa => 'Str');
   has SourceIdsList => (is => 'ro', isa => 'ArrayRef[Str]');
   has SourceType => (is => 'ro', isa => 'Str');
@@ -219,9 +199,6 @@ package Aws::RDS::Option {
   has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBSecurityGroupMembership]');
   has OptionDescription => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
-  has OptionSettings => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionSetting]');
-  has Permanent => (is => 'ro', isa => 'Str');
-  has Persistent => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Aws::RDS::VpcSecurityGroupMembership]');
 }
@@ -231,7 +208,6 @@ package Aws::RDS::OptionConfiguration {
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str]');
   has OptionName => (is => 'ro', isa => 'Str', required => 1);
-  has OptionSettings => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionSetting]');
   has Port => (is => 'ro', isa => 'Int');
   has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str]');
 }
@@ -264,36 +240,8 @@ package Aws::RDS::OptionGroupOption {
   has MajorEngineVersion => (is => 'ro', isa => 'Str');
   has MinimumRequiredMinorEngineVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
-  has OptionGroupOptionSettings => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionGroupOptionSetting]');
   has OptionsDependedOn => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Permanent => (is => 'ro', isa => 'Str');
-  has Persistent => (is => 'ro', isa => 'Str');
   has PortRequired => (is => 'ro', isa => 'Str');
-}
-
-package Aws::RDS::OptionGroupOptionSetting {
-  use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has AllowedValues => (is => 'ro', isa => 'Str');
-  has ApplyType => (is => 'ro', isa => 'Str');
-  has DefaultValue => (is => 'ro', isa => 'Str');
-  has IsModifiable => (is => 'ro', isa => 'Str');
-  has SettingDescription => (is => 'ro', isa => 'Str');
-  has SettingName => (is => 'ro', isa => 'Str');
-}
-
-package Aws::RDS::OptionSetting {
-  use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has AllowedValues => (is => 'ro', isa => 'Str');
-  has ApplyType => (is => 'ro', isa => 'Str');
-  has DataType => (is => 'ro', isa => 'Str');
-  has DefaultValue => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has IsCollection => (is => 'ro', isa => 'Str');
-  has IsModifiable => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RDS::OrderableDBInstanceOption {
@@ -436,7 +384,6 @@ package Aws::RDS::AuthorizeDBSecurityGroupIngress {
 package Aws::RDS::CopyDBSnapshot {
   use Moose;
   has SourceDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
   has TargetDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CopyDBSnapshot');
@@ -468,7 +415,6 @@ package Aws::RDS::CreateDBInstance {
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstance');
@@ -481,13 +427,11 @@ package Aws::RDS::CreateDBInstanceReadReplica {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Str');
   has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceReadReplica');
   has _returns => (isa => 'Aws::RDS::CreateDBInstanceReadReplicaResult', is => 'ro');
@@ -498,7 +442,6 @@ package Aws::RDS::CreateDBParameterGroup {
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
   has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBParameterGroup');
   has _returns => (isa => 'Aws::RDS::CreateDBParameterGroupResult', is => 'ro');
@@ -508,7 +451,6 @@ package Aws::RDS::CreateDBSecurityGroup {
   use Moose;
   has DBSecurityGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has DBSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSecurityGroup');
   has _returns => (isa => 'Aws::RDS::CreateDBSecurityGroupResult', is => 'ro');
@@ -518,7 +460,6 @@ package Aws::RDS::CreateDBSnapshot {
   use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSnapshot');
   has _returns => (isa => 'Aws::RDS::CreateDBSnapshotResult', is => 'ro');
@@ -529,7 +470,6 @@ package Aws::RDS::CreateDBSubnetGroup {
   has DBSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSubnetGroup');
   has _returns => (isa => 'Aws::RDS::CreateDBSubnetGroupResult', is => 'ro');
@@ -543,7 +483,6 @@ package Aws::RDS::CreateEventSubscription {
   has SourceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SourceId' );
   has SourceType => (is => 'ro', isa => 'Str');
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEventSubscription');
   has _returns => (isa => 'Aws::RDS::CreateEventSubscriptionResult', is => 'ro');
@@ -555,7 +494,6 @@ package Aws::RDS::CreateOptionGroup {
   has MajorEngineVersion => (is => 'ro', isa => 'Str', required => 1);
   has OptionGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has OptionGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateOptionGroup');
   has _returns => (isa => 'Aws::RDS::CreateOptionGroupResult', is => 'ro');
@@ -642,19 +580,6 @@ package Aws::RDS::DescribeDBInstances {
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBInstances');
   has _returns => (isa => 'Aws::RDS::DescribeDBInstancesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBInstancesResult');  
-}
-package Aws::RDS::DescribeDBLogFiles {
-  use Moose;
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has FileLastWritten => (is => 'ro', isa => 'Num');
-  has FilenameContains => (is => 'ro', isa => 'Str');
-  has FileSize => (is => 'ro', isa => 'Num');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBLogFiles');
-  has _returns => (isa => 'Aws::RDS::DescribeDBLogFilesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBLogFilesResult');  
 }
 package Aws::RDS::DescribeDBParameterGroups {
   use Moose;
@@ -820,17 +745,6 @@ package Aws::RDS::DescribeReservedDBInstancesOfferings {
   has _returns => (isa => 'Aws::RDS::DescribeReservedDBInstancesOfferingsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstancesOfferingsResult');  
 }
-package Aws::RDS::DownloadDBLogFilePortion {
-  use Moose;
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has LogFileName => (is => 'ro', isa => 'Str', required => 1);
-  has Marker => (is => 'ro', isa => 'Str');
-  has NumberOfLines => (is => 'ro', isa => 'Int');
-
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DownloadDBLogFilePortion');
-  has _returns => (isa => 'Aws::RDS::DownloadDBLogFilePortionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DownloadDBLogFilePortionResult');  
-}
 package Aws::RDS::ListTagsForResource {
   use Moose;
   has ResourceName => (is => 'ro', isa => 'Str', required => 1);
@@ -921,7 +835,6 @@ package Aws::RDS::PurchaseReservedDBInstancesOffering {
   has DBInstanceCount => (is => 'ro', isa => 'Int');
   has ReservedDBInstanceId => (is => 'ro', isa => 'Str');
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedDBInstancesOffering');
   has _returns => (isa => 'Aws::RDS::PurchaseReservedDBInstancesOfferingResult', is => 'ro');
@@ -980,7 +893,6 @@ package Aws::RDS::RestoreDBInstanceFromDBSnapshot {
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromDBSnapshot');
   has _returns => (isa => 'Aws::RDS::RestoreDBInstanceFromDBSnapshotResult', is => 'ro');
@@ -1002,7 +914,6 @@ package Aws::RDS::RestoreDBInstanceToPointInTime {
   has PubliclyAccessible => (is => 'ro', isa => 'Str');
   has RestoreTime => (is => 'ro', isa => 'Str');
   has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
   has TargetDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has UseLatestRestorableTime => (is => 'ro', isa => 'Str');
 
@@ -1121,13 +1032,6 @@ package Aws::RDS::DescribeDBInstancesResult {
   has Marker => (is => 'ro', isa => 'Str');
 
 }
-package Aws::RDS::DescribeDBLogFilesResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has DescribeDBLogFiles => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DescribeDBLogFilesDetails]', traits => ['Unwrapped'], xmlname => 'DescribeDBLogFilesDetails');
-  has Marker => (is => 'ro', isa => 'Str');
-
-}
 package Aws::RDS::DescribeDBParameterGroupsResult {
   use Moose;
   with 'AWS::API::ResultParser';
@@ -1224,14 +1128,6 @@ package Aws::RDS::DescribeReservedDBInstancesOfferingsResult {
   has ReservedDBInstancesOfferings => (is => 'ro', isa => 'ArrayRef[Aws::RDS::ReservedDBInstancesOffering]', traits => ['Unwrapped'], xmlname => 'ReservedDBInstancesOffering');
 
 }
-package Aws::RDS::DownloadDBLogFilePortionResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has AdditionalDataPending => (is => 'ro', isa => 'Str');
-  has LogFileData => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-
-}
 package Aws::RDS::ListTagsForResourceResult {
   use Moose;
   with 'AWS::API::ResultParser';
@@ -1320,9 +1216,9 @@ package Aws::RDS::RevokeDBSecurityGroupIngressResult {
 package Aws::RDS {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'rds');
-  has version => (is => 'ro', isa => 'Str', default => '2013-09-09');
+  has version => (is => 'ro', isa => 'Str', default => '2013-01-10');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
+  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V2Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
   
   sub AddSourceIdentifierToSubscription {
     my $self = shift;
@@ -1466,13 +1362,6 @@ package Aws::RDS {
     my $o_result = Aws::RDS::DescribeDBInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  sub DescribeDBLogFiles {
-    my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeDBLogFiles', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeDBLogFilesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
   sub DescribeDBParameterGroups {
     my $self = shift;
     my $call = new_with_coercions('Aws::RDS::DescribeDBParameterGroups', @_);
@@ -1569,13 +1458,6 @@ package Aws::RDS {
     my $call = new_with_coercions('Aws::RDS::DescribeReservedDBInstancesOfferings', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeReservedDBInstancesOfferingsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
-  sub DownloadDBLogFilePortion {
-    my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DownloadDBLogFilePortion', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DownloadDBLogFilePortionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListTagsForResource {

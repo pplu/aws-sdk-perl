@@ -53,7 +53,7 @@ my (@files) = @ARGV;
 @files = glob('botocore/botocore/data/aws/*.json') if (not @files);
 
 foreach my $file (@files) {
-  my ($f) = ($file =~ m/aws\/(.*?)\.json/);
+  my ($f, $version) = ($file =~ m/aws\/(.*?)\/(.*?)\.json/);
   my $ns = $namespaces->{ $f };
   die "$f doesn't have a namespace defined" if (not defined $ns);
   my $struct = process_file($file, $f);

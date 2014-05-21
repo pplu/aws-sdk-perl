@@ -47,6 +47,13 @@ package Aws::OpsWorks::AutoScalingThresholds {
   has ThresholdsWaitTime => (is => 'ro', isa => 'Int');
 }
 
+package Aws::OpsWorks::ChefConfiguration {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  has BerkshelfVersion => (is => 'ro', isa => 'Str');
+  has ManageBerkshelf => (is => 'ro', isa => 'Str');
+}
+
 package Aws::OpsWorks::Command {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
@@ -130,6 +137,7 @@ package Aws::OpsWorks::Instance {
   has AutoScalingType => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingType');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CreatedAt => (is => 'ro', isa => 'Str');
+  has EbsOptimized => (is => 'ro', isa => 'Str');
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
   has Hostname => (is => 'ro', isa => 'Str');
@@ -160,6 +168,7 @@ package Aws::OpsWorks::InstancesCount {
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Booting => (is => 'ro', isa => 'Int');
   has ConnectionLost => (is => 'ro', isa => 'Int');
+  has Online => (is => 'ro', isa => 'Int');
   has Pending => (is => 'ro', isa => 'Int');
   has Rebooting => (is => 'ro', isa => 'Int');
   has Requested => (is => 'ro', isa => 'Int');
@@ -168,6 +177,7 @@ package Aws::OpsWorks::InstancesCount {
   has ShuttingDown => (is => 'ro', isa => 'Int');
   has StartFailed => (is => 'ro', isa => 'Int');
   has Stopped => (is => 'ro', isa => 'Int');
+  has Stopping => (is => 'ro', isa => 'Int');
   has Terminated => (is => 'ro', isa => 'Int');
   has Terminating => (is => 'ro', isa => 'Int');
 }
@@ -192,6 +202,7 @@ package Aws::OpsWorks::Layer {
   has Shortname => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Aws::OpsWorks::LayerType');
+  has UseEbsOptimizedInstances => (is => 'ro', isa => 'Str');
   has VolumeConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::VolumeConfiguration]');
 }
 
@@ -250,12 +261,14 @@ package Aws::OpsWorks::RaidArray {
   has CreatedAt => (is => 'ro', isa => 'Str');
   has Device => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
+  has Iops => (is => 'ro', isa => 'Int');
   has MountPoint => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has NumberOfDisks => (is => 'ro', isa => 'Int');
   has RaidArrayId => (is => 'ro', isa => 'Str');
   has RaidLevel => (is => 'ro', isa => 'Int');
   has Size => (is => 'ro', isa => 'Int');
+  has VolumeType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::OpsWorks::Recipes {
@@ -310,7 +323,9 @@ package Aws::OpsWorks::SslConfiguration {
 package Aws::OpsWorks::Stack {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  has Arn => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::StackAttributes');
+  has ChefConfiguration => (is => 'ro', isa => 'Aws::OpsWorks::ChefConfiguration');
   has ConfigurationManager => (is => 'ro', isa => 'Aws::OpsWorks::StackConfigurationManager');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CustomCookbooksSource => (is => 'ro', isa => 'Aws::OpsWorks::Source');
@@ -327,6 +342,7 @@ package Aws::OpsWorks::Stack {
   has ServiceRoleArn => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has UseCustomCookbooks => (is => 'ro', isa => 'Str');
+  has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
@@ -347,6 +363,7 @@ package Aws::OpsWorks::StackSummary {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AppsCount => (is => 'ro', isa => 'Int');
+  has Arn => (is => 'ro', isa => 'Str');
   has InstancesCount => (is => 'ro', isa => 'Aws::OpsWorks::InstancesCount');
   has LayersCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
@@ -377,6 +394,7 @@ package Aws::OpsWorks::Volume {
   has Device => (is => 'ro', isa => 'Str');
   has Ec2VolumeId => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
+  has Iops => (is => 'ro', isa => 'Int');
   has MountPoint => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has RaidArrayId => (is => 'ro', isa => 'Str');
@@ -384,15 +402,18 @@ package Aws::OpsWorks::Volume {
   has Size => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');
+  has VolumeType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::OpsWorks::VolumeConfiguration {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  has Iops => (is => 'ro', isa => 'Int');
   has MountPoint => (is => 'ro', isa => 'Str', required => 1);
   has NumberOfDisks => (is => 'ro', isa => 'Int', required => 1);
   has RaidLevel => (is => 'ro', isa => 'Int');
   has Size => (is => 'ro', isa => 'Int', required => 1);
+  has VolumeType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::OpsWorks::WeeklyAutoScalingSchedule {
@@ -439,6 +460,7 @@ package Aws::OpsWorks::AttachElasticLoadBalancer {
 package Aws::OpsWorks::CloneStack {
   use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::StackAttributes');
+  has ChefConfiguration => (is => 'ro', isa => 'Aws::OpsWorks::ChefConfiguration');
   has CloneAppIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has ClonePermissions => (is => 'ro', isa => 'Str');
   has ConfigurationManager => (is => 'ro', isa => 'Aws::OpsWorks::StackConfigurationManager');
@@ -456,6 +478,7 @@ package Aws::OpsWorks::CloneStack {
   has ServiceRoleArn => (is => 'ro', isa => 'Str', required => 1);
   has SourceStackId => (is => 'ro', isa => 'Str', required => 1);
   has UseCustomCookbooks => (is => 'ro', isa => 'Str');
+  has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CloneStack');
@@ -498,6 +521,7 @@ package Aws::OpsWorks::CreateInstance {
   has Architecture => (is => 'ro', isa => 'Str');
   has AutoScalingType => (is => 'ro', isa => 'Str');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has EbsOptimized => (is => 'ro', isa => 'Str');
   has Hostname => (is => 'ro', isa => 'Str');
   has InstallUpdatesOnBoot => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
@@ -527,6 +551,7 @@ package Aws::OpsWorks::CreateLayer {
   has Shortname => (is => 'ro', isa => 'Str', required => 1);
   has StackId => (is => 'ro', isa => 'Str', required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
+  has UseEbsOptimizedInstances => (is => 'ro', isa => 'Str');
   has VolumeConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::VolumeConfiguration]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLayer');
@@ -536,6 +561,7 @@ package Aws::OpsWorks::CreateLayer {
 package Aws::OpsWorks::CreateStack {
   use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::StackAttributes');
+  has ChefConfiguration => (is => 'ro', isa => 'Aws::OpsWorks::ChefConfiguration');
   has ConfigurationManager => (is => 'ro', isa => 'Aws::OpsWorks::StackConfigurationManager');
   has CustomCookbooksSource => (is => 'ro', isa => 'Aws::OpsWorks::Source');
   has CustomJson => (is => 'ro', isa => 'Str');
@@ -550,6 +576,7 @@ package Aws::OpsWorks::CreateStack {
   has Region => (is => 'ro', isa => 'Str', required => 1);
   has ServiceRoleArn => (is => 'ro', isa => 'Str', required => 1);
   has UseCustomCookbooks => (is => 'ro', isa => 'Str');
+  has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStack');
@@ -957,6 +984,7 @@ package Aws::OpsWorks::UpdateLayer {
   has Name => (is => 'ro', isa => 'Str');
   has Packages => (is => 'ro', isa => 'ArrayRef[Str]');
   has Shortname => (is => 'ro', isa => 'Str');
+  has UseEbsOptimizedInstances => (is => 'ro', isa => 'Str');
   has VolumeConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::VolumeConfiguration]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateLayer');
@@ -974,6 +1002,7 @@ package Aws::OpsWorks::UpdateMyUserProfile {
 package Aws::OpsWorks::UpdateStack {
   use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::StackAttributes');
+  has ChefConfiguration => (is => 'ro', isa => 'Aws::OpsWorks::ChefConfiguration');
   has ConfigurationManager => (is => 'ro', isa => 'Aws::OpsWorks::StackConfigurationManager');
   has CustomCookbooksSource => (is => 'ro', isa => 'Aws::OpsWorks::Source');
   has CustomJson => (is => 'ro', isa => 'Str');
@@ -988,6 +1017,7 @@ package Aws::OpsWorks::UpdateStack {
   has ServiceRoleArn => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
   has UseCustomCookbooks => (is => 'ro', isa => 'Str');
+  has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStack');
   has _returns => (isa => 'Aws::OpsWorks::UpdateStackResult', is => 'ro');

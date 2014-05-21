@@ -62,8 +62,16 @@ package Aws::SQS::Message {
   has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap', traits => ['Unwrapped'], xmlname => 'Attribute');
   has Body => (is => 'ro', isa => 'Str');
   has MD5OfBody => (is => 'ro', isa => 'Str');
+  has MD5OfMessageAttributes => (is => 'ro', isa => 'Str');
+  has MessageAttributes => (is => 'ro', isa => 'Aws::SQS::MessageAttributeMap', traits => ['Unwrapped'], xmlname => 'MessageAttribute');
   has MessageId => (is => 'ro', isa => 'Str');
   has ReceiptHandle => (is => 'ro', isa => 'Str');
+}
+
+package Aws::SQS::MessageAttributeMap {
+  use Moose;
+  with 'AWS::API::StrToStrMapParser';
+  has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
 package Aws::SQS::SendMessageBatchRequestEntry {
@@ -71,6 +79,7 @@ package Aws::SQS::SendMessageBatchRequestEntry {
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DelaySeconds => (is => 'ro', isa => 'Int');
   has Id => (is => 'ro', isa => 'Str', required => 1);
+  has MessageAttributes => (is => 'ro', isa => 'Aws::SQS::MessageAttributeMap', traits => ['Unwrapped'], xmlname => 'MessageAttribute');
   has MessageBody => (is => 'ro', isa => 'Str', required => 1);
 }
 
@@ -78,6 +87,7 @@ package Aws::SQS::SendMessageBatchResultEntry {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Id => (is => 'ro', isa => 'Str', required => 1);
+  has MD5OfMessageAttributes => (is => 'ro', isa => 'Str');
   has MD5OfMessageBody => (is => 'ro', isa => 'Str', required => 1);
   has MessageId => (is => 'ro', isa => 'Str', required => 1);
 }
@@ -187,6 +197,7 @@ package Aws::SQS::ReceiveMessage {
   use Moose;
   has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AttributeName' );
   has MaxNumberOfMessages => (is => 'ro', isa => 'Int');
+  has MessageAttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'MessageAttributeName' );
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
   has VisibilityTimeout => (is => 'ro', isa => 'Int');
   has WaitTimeSeconds => (is => 'ro', isa => 'Int');
@@ -207,6 +218,7 @@ package Aws::SQS::RemovePermission {
 package Aws::SQS::SendMessage {
   use Moose;
   has DelaySeconds => (is => 'ro', isa => 'Int');
+  has MessageAttributes => (is => 'ro', isa => 'Aws::SQS::MessageAttributeMap', traits => ['NameInRequest'], request_name => 'MessageAttribute' , traits => ['NameInRequest'], request_name => 'Value' );
   has MessageBody => (is => 'ro', isa => 'Str', required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
@@ -286,6 +298,7 @@ package Aws::SQS::ReceiveMessageResult {
 package Aws::SQS::SendMessageResult {
   use Moose;
   with 'AWS::API::ResultParser';
+  has MD5OfMessageAttributes => (is => 'ro', isa => 'Str');
   has MD5OfMessageBody => (is => 'ro', isa => 'Str');
   has MessageId => (is => 'ro', isa => 'Str');
 

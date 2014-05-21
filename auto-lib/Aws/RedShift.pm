@@ -28,6 +28,7 @@ package Aws::RedShift::Cluster {
   has ClusterNodes => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ClusterNode]');
   has ClusterParameterGroups => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ClusterParameterGroupStatus]');
   has ClusterPublicKey => (is => 'ro', isa => 'Str');
+  has ClusterRevisionNumber => (is => 'ro', isa => 'Str');
   has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::ClusterSecurityGroupMembership]');
   has ClusterSnapshotCopyStatus => (is => 'ro', isa => 'Aws::RedShift::ClusterSnapshotCopyStatus');
   has ClusterStatus => (is => 'ro', isa => 'Str');
@@ -1109,13 +1110,18 @@ package Aws::RedShift::DescribeReservedNodesResult {
 package Aws::RedShift::DescribeResizeResult {
   use Moose;
   with 'AWS::API::ResultParser';
+  has AvgResizeRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
+  has ElapsedTimeInSeconds => (is => 'ro', isa => 'Num');
+  has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => 'Num');
   has ImportTablesCompleted => (is => 'ro', isa => 'ArrayRef[Str]');
   has ImportTablesInProgress => (is => 'ro', isa => 'ArrayRef[Str]');
   has ImportTablesNotStarted => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ProgressInMegaBytes => (is => 'ro', isa => 'Num');
   has Status => (is => 'ro', isa => 'Str');
   has TargetClusterType => (is => 'ro', isa => 'Str');
   has TargetNodeType => (is => 'ro', isa => 'Str');
   has TargetNumberOfNodes => (is => 'ro', isa => 'Int');
+  has TotalResizeDataInMegaBytes => (is => 'ro', isa => 'Num');
 
 }
 package Aws::RedShift::DisableLoggingResult {

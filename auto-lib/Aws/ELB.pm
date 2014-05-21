@@ -2,6 +2,15 @@
 use AWS::API;
 
 
+package Aws::ELB::AccessLog {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  has EmitInterval => (is => 'ro', isa => 'Int');
+  has Enabled => (is => 'ro', isa => 'Str', required => 1);
+  has S3BucketName => (is => 'ro', isa => 'Str');
+  has S3BucketPrefix => (is => 'ro', isa => 'Str');
+}
+
 package Aws::ELB::AppCookieStickinessPolicy {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
@@ -14,6 +23,13 @@ package Aws::ELB::BackendServerDescription {
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has InstancePort => (is => 'ro', isa => 'Int');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
+}
+
+package Aws::ELB::ConnectionDraining {
+  use Moose;
+  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  has Enabled => (is => 'ro', isa => 'Str', required => 1);
+  has Timeout => (is => 'ro', isa => 'Int');
 }
 
 package Aws::ELB::CrossZoneLoadBalancing {
@@ -74,6 +90,8 @@ package Aws::ELB::ListenerDescription {
 package Aws::ELB::LoadBalancerAttributes {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  has AccessLog => (is => 'ro', isa => 'Aws::ELB::AccessLog');
+  has ConnectionDraining => (is => 'ro', isa => 'Aws::ELB::ConnectionDraining');
   has CrossZoneLoadBalancing => (is => 'ro', isa => 'Aws::ELB::CrossZoneLoadBalancing');
 }
 
@@ -506,6 +524,8 @@ package Aws::ELB::EnableAvailabilityZonesForLoadBalancerResult {
 package Aws::ELB::ModifyLoadBalancerAttributesResult {
   use Moose;
   with 'AWS::API::ResultParser';
+  has LoadBalancerAttributes => (is => 'ro', isa => 'Aws::ELB::LoadBalancerAttributes');
+  has LoadBalancerName => (is => 'ro', isa => 'Str');
 
 }
 package Aws::ELB::RegisterInstancesWithLoadBalancerResult {

@@ -19,6 +19,7 @@ package Aws::CloudFormation::Parameter {
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has ParameterKey => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
+  has UsePreviousValue => (is => 'ro', isa => 'Str');
 }
 
 package Aws::CloudFormation::Stack {
@@ -164,7 +165,7 @@ package Aws::CloudFormation::DeleteStack {
 package Aws::CloudFormation::DescribeStackEvents {
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
-  has StackName => (is => 'ro', isa => 'Str');
+  has StackName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackEvents');
   has _returns => (isa => 'Aws::CloudFormation::DescribeStackEventsResult', is => 'ro');
@@ -255,6 +256,7 @@ package Aws::CloudFormation::SetStackPolicy {
 package Aws::CloudFormation::UpdateStack {
   use Moose;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
+  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::Parameter]');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackPolicyBody => (is => 'ro', isa => 'Str');
@@ -263,6 +265,7 @@ package Aws::CloudFormation::UpdateStack {
   has StackPolicyURL => (is => 'ro', isa => 'Str');
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateURL => (is => 'ro', isa => 'Str');
+  has UsePreviousTemplate => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStack');
   has _returns => (isa => 'Aws::CloudFormation::UpdateStackResult', is => 'ro');

@@ -251,6 +251,7 @@ package Aws::DynamoDB::CreateTable {
 }
 package Aws::DynamoDB::DeleteItem {
   use Moose;
+  has ConditionalOperator => (is => 'ro', isa => 'Str');
   has Expected => (is => 'ro', isa => 'Aws::DynamoDB::ExpectedAttributeMap');
   has Key => (is => 'ro', isa => 'Aws::DynamoDB::Key', required => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
@@ -301,6 +302,7 @@ package Aws::DynamoDB::ListTables {
 }
 package Aws::DynamoDB::PutItem {
   use Moose;
+  has ConditionalOperator => (is => 'ro', isa => 'Str');
   has Expected => (is => 'ro', isa => 'Aws::DynamoDB::ExpectedAttributeMap');
   has Item => (is => 'ro', isa => 'Aws::DynamoDB::PutItemInputAttributeMap', required => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
@@ -315,11 +317,13 @@ package Aws::DynamoDB::PutItem {
 package Aws::DynamoDB::Query {
   use Moose;
   has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ConditionalOperator => (is => 'ro', isa => 'Str');
   has ConsistentRead => (is => 'ro', isa => 'Str');
   has ExclusiveStartKey => (is => 'ro', isa => 'Aws::DynamoDB::Key');
   has IndexName => (is => 'ro', isa => 'Str');
   has KeyConditions => (is => 'ro', isa => 'Aws::DynamoDB::KeyConditions');
   has Limit => (is => 'ro', isa => 'Int');
+  has QueryFilter => (is => 'ro', isa => 'Aws::DynamoDB::FilterConditionMap');
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
   has ScanIndexForward => (is => 'ro', isa => 'Str');
   has Select => (is => 'ro', isa => 'Str');
@@ -332,6 +336,7 @@ package Aws::DynamoDB::Query {
 package Aws::DynamoDB::Scan {
   use Moose;
   has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ConditionalOperator => (is => 'ro', isa => 'Str');
   has ExclusiveStartKey => (is => 'ro', isa => 'Aws::DynamoDB::Key');
   has Limit => (is => 'ro', isa => 'Int');
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
@@ -348,6 +353,7 @@ package Aws::DynamoDB::Scan {
 package Aws::DynamoDB::UpdateItem {
   use Moose;
   has AttributeUpdates => (is => 'ro', isa => 'Aws::DynamoDB::AttributeUpdates');
+  has ConditionalOperator => (is => 'ro', isa => 'Str');
   has Expected => (is => 'ro', isa => 'Aws::DynamoDB::ExpectedAttributeMap');
   has Key => (is => 'ro', isa => 'Aws::DynamoDB::Key', required => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
@@ -441,6 +447,7 @@ package Aws::DynamoDB::QueryResult {
   has Count => (is => 'ro', isa => 'Int');
   has Items => (is => 'ro', isa => 'ArrayRef[Aws::DynamoDB::AttributeMap]');
   has LastEvaluatedKey => (is => 'ro', isa => 'Aws::DynamoDB::Key');
+  has ScannedCount => (is => 'ro', isa => 'Int');
 
 }
 package Aws::DynamoDB::ScanResult {

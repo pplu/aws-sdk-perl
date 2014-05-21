@@ -34,6 +34,8 @@ package Aws::STS::AssumeRole {
   has Policy => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has RoleSessionName => (is => 'ro', isa => 'Str', required => 1);
+  has SerialNumber => (is => 'ro', isa => 'Str');
+  has TokenCode => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'AssumeRole');
   has _returns => (isa => 'Aws::STS::AssumeRoleResult', is => 'ro');
