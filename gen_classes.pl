@@ -45,7 +45,10 @@ my $namespaces = {
   sqs => 'SQS',
   storagegateway => 'StorageGateway',
   sts => 'STS',
-  support => 'Support'  
+  support => 'Support',
+  sdb => 'SDB',
+  _retry => 'SKIP_THIS_CLASS', 
+  _regions => 'SKIP_THIS_CLASS',
 };
 
 
@@ -53,13 +56,14 @@ my (@files) = @ARGV;
 @files = glob('botocore/botocore/data/aws/*.json') if (not @files);
 
 foreach my $file (@files) {
-  my ($f, $version) = ($file =~ m/aws\/(.*?)\/(.*?)\.json/);
-  my $ns = $namespaces->{ $f };
-  die "$f doesn't have a namespace defined" if (not defined $ns);
-  my $struct = process_file($file, $f);
-  my $content = process_api("Aws::$ns", $struct);
-  #print $content;
-  write_file("auto-lib/Aws/${ns}.pm", $content);
+  if (my ($f, $version) = ($file =~ m/aws\/(.*?)\/(.*?)\.json/)){
+    my $ns = $namespaces->{ $f };
+    die "$f doesn't have a namespace defined" if (not defined $ns or $ns eq 'SKIP_THIS_CLASS');
+    my $struct = process_file($file, $f);
+    my $content = process_api("Aws::$ns", $struct);
+    #print $content;
+    write_file("auto-lib/Aws/${ns}.pm", $content);
+  }
 }
 
 sub process_file {
