@@ -123,7 +123,7 @@ package Aws::DataPipeline::DeletePipeline {
 }
 package Aws::DataPipeline::DescribeObjects {
   use Moose;
-  has evaluateExpressions => (is => 'ro', isa => 'Str');
+  has evaluateExpressions => (is => 'ro', isa => 'Bool');
   has marker => (is => 'ro', isa => 'Str');
   has objectIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
@@ -262,7 +262,7 @@ package Aws::DataPipeline::CreatePipelineResult {
 package Aws::DataPipeline::DescribeObjectsResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has hasMoreResults => (is => 'ro', isa => 'Str');
+  has hasMoreResults => (is => 'ro', isa => 'Bool');
   has marker => (is => 'ro', isa => 'Str');
   has pipelineObjects => (is => 'ro', isa => 'ArrayRef[Aws::DataPipeline::PipelineObject]', required => 1);
 
@@ -288,7 +288,7 @@ package Aws::DataPipeline::GetPipelineDefinitionResult {
 package Aws::DataPipeline::ListPipelinesResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has hasMoreResults => (is => 'ro', isa => 'Str');
+  has hasMoreResults => (is => 'ro', isa => 'Bool');
   has marker => (is => 'ro', isa => 'Str');
   has pipelineIdList => (is => 'ro', isa => 'ArrayRef[Aws::DataPipeline::PipelineIdName]', required => 1);
 
@@ -302,7 +302,7 @@ package Aws::DataPipeline::PollForTaskResult {
 package Aws::DataPipeline::PutPipelineDefinitionResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has errored => (is => 'ro', isa => 'Str', required => 1);
+  has errored => (is => 'ro', isa => 'Bool', required => 1);
   has validationErrors => (is => 'ro', isa => 'ArrayRef[Aws::DataPipeline::ValidationError]');
   has validationWarnings => (is => 'ro', isa => 'ArrayRef[Aws::DataPipeline::ValidationWarning]');
 
@@ -310,7 +310,7 @@ package Aws::DataPipeline::PutPipelineDefinitionResult {
 package Aws::DataPipeline::QueryObjectsResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has hasMoreResults => (is => 'ro', isa => 'Str');
+  has hasMoreResults => (is => 'ro', isa => 'Bool');
   has ids => (is => 'ro', isa => 'ArrayRef[Str]');
   has marker => (is => 'ro', isa => 'Str');
 
@@ -318,13 +318,13 @@ package Aws::DataPipeline::QueryObjectsResult {
 package Aws::DataPipeline::ReportTaskProgressResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has canceled => (is => 'ro', isa => 'Str', required => 1);
+  has canceled => (is => 'ro', isa => 'Bool', required => 1);
 
 }
 package Aws::DataPipeline::ReportTaskRunnerHeartbeatResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has terminate => (is => 'ro', isa => 'Str', required => 1);
+  has terminate => (is => 'ro', isa => 'Bool', required => 1);
 
 }
 package Aws::DataPipeline::SetTaskStatusResult {
@@ -335,7 +335,7 @@ package Aws::DataPipeline::SetTaskStatusResult {
 package Aws::DataPipeline::ValidatePipelineDefinitionResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has errored => (is => 'ro', isa => 'Str', required => 1);
+  has errored => (is => 'ro', isa => 'Bool', required => 1);
   has validationErrors => (is => 'ro', isa => 'ArrayRef[Aws::DataPipeline::ValidationError]');
   has validationWarnings => (is => 'ro', isa => 'ArrayRef[Aws::DataPipeline::ValidationWarning]');
 

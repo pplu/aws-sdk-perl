@@ -27,7 +27,7 @@ package Aws::StorageGateway::ChapInfo {
 package Aws::StorageGateway::DeviceiSCSIAttributes {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has ChapEnabled => (is => 'ro', isa => 'Str');
+  has ChapEnabled => (is => 'ro', isa => 'Bool');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
   has NetworkInterfacePort => (is => 'ro', isa => 'Int');
   has TargetARN => (is => 'ro', isa => 'Str');
@@ -62,7 +62,7 @@ package Aws::StorageGateway::NetworkInterface {
 package Aws::StorageGateway::StorediSCSIVolumeInformation {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has PreservedExistingData => (is => 'ro', isa => 'Str');
+  has PreservedExistingData => (is => 'ro', isa => 'Bool');
   has SourceSnapshotId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
   has VolumeDiskId => (is => 'ro', isa => 'Str');
@@ -130,7 +130,7 @@ package Aws::StorageGateway::VolumeRecoveryPointInfo {
 package Aws::StorageGateway::VolumeiSCSIAttributes {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has ChapEnabled => (is => 'ro', isa => 'Str');
+  has ChapEnabled => (is => 'ro', isa => 'Bool');
   has LunNumber => (is => 'ro', isa => 'Int');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
   has NetworkInterfacePort => (is => 'ro', isa => 'Int');
@@ -232,7 +232,7 @@ package Aws::StorageGateway::CreateStorediSCSIVolume {
   has DiskId => (is => 'ro', isa => 'Str', required => 1);
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
-  has PreserveExistingData => (is => 'ro', isa => 'Str', required => 1);
+  has PreserveExistingData => (is => 'ro', isa => 'Bool', required => 1);
   has SnapshotId => (is => 'ro', isa => 'Str');
   has TargetName => (is => 'ro', isa => 'Str', required => 1);
 

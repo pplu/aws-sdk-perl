@@ -20,7 +20,7 @@ package Aws::OpsWorks::App {
   has CreatedAt => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Domains => (is => 'ro', isa => 'ArrayRef[Str]');
-  has EnableSsl => (is => 'ro', isa => 'Str');
+  has EnableSsl => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
   has Shortname => (is => 'ro', isa => 'Str');
   has SslConfiguration => (is => 'ro', isa => 'Aws::OpsWorks::SslConfiguration');
@@ -51,7 +51,7 @@ package Aws::OpsWorks::ChefConfiguration {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has BerkshelfVersion => (is => 'ro', isa => 'Str');
-  has ManageBerkshelf => (is => 'ro', isa => 'Str');
+  has ManageBerkshelf => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::OpsWorks::Command {
@@ -137,11 +137,11 @@ package Aws::OpsWorks::Instance {
   has AutoScalingType => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingType');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CreatedAt => (is => 'ro', isa => 'Str');
-  has EbsOptimized => (is => 'ro', isa => 'Str');
+  has EbsOptimized => (is => 'ro', isa => 'Bool');
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
   has Hostname => (is => 'ro', isa => 'Str');
-  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Str');
+  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str');
   has InstanceProfileArn => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
@@ -186,23 +186,23 @@ package Aws::OpsWorks::Layer {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::LayerAttributes');
-  has AutoAssignElasticIps => (is => 'ro', isa => 'Str');
-  has AutoAssignPublicIps => (is => 'ro', isa => 'Str');
+  has AutoAssignElasticIps => (is => 'ro', isa => 'Bool');
+  has AutoAssignPublicIps => (is => 'ro', isa => 'Bool');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CustomInstanceProfileArn => (is => 'ro', isa => 'Str');
   has CustomRecipes => (is => 'ro', isa => 'Aws::OpsWorks::Recipes');
   has CustomSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has DefaultRecipes => (is => 'ro', isa => 'Aws::OpsWorks::Recipes');
   has DefaultSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
-  has EnableAutoHealing => (is => 'ro', isa => 'Str');
-  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Str');
+  has EnableAutoHealing => (is => 'ro', isa => 'Bool');
+  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
   has LayerId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Packages => (is => 'ro', isa => 'ArrayRef[Str]');
   has Shortname => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Aws::OpsWorks::LayerType');
-  has UseEbsOptimizedInstances => (is => 'ro', isa => 'Str');
+  has UseEbsOptimizedInstances => (is => 'ro', isa => 'Bool');
   has VolumeConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::VolumeConfiguration]');
 }
 
@@ -239,7 +239,7 @@ package Aws::OpsWorks::LoadBasedAutoScalingConfiguration {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DownScaling => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingThresholds');
-  has Enable => (is => 'ro', isa => 'Str');
+  has Enable => (is => 'ro', isa => 'Bool');
   has LayerId => (is => 'ro', isa => 'Str');
   has UpScaling => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingThresholds');
 }
@@ -247,8 +247,8 @@ package Aws::OpsWorks::LoadBasedAutoScalingConfiguration {
 package Aws::OpsWorks::Permission {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has AllowSsh => (is => 'ro', isa => 'Str');
-  has AllowSudo => (is => 'ro', isa => 'Str');
+  has AllowSsh => (is => 'ro', isa => 'Bool');
+  has AllowSudo => (is => 'ro', isa => 'Bool');
   has IamUserArn => (is => 'ro', isa => 'Str');
   has Level => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
@@ -341,8 +341,8 @@ package Aws::OpsWorks::Stack {
   has Region => (is => 'ro', isa => 'Str');
   has ServiceRoleArn => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
-  has UseCustomCookbooks => (is => 'ro', isa => 'Str');
-  has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Str');
+  has UseCustomCookbooks => (is => 'ro', isa => 'Bool');
+  has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str');
 }
 
@@ -380,7 +380,7 @@ package Aws::OpsWorks::TimeBasedAutoScalingConfiguration {
 package Aws::OpsWorks::UserProfile {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has AllowSelfManagement => (is => 'ro', isa => 'Str');
+  has AllowSelfManagement => (is => 'ro', isa => 'Bool');
   has IamUserArn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has SshPublicKey => (is => 'ro', isa => 'Str');
@@ -462,7 +462,7 @@ package Aws::OpsWorks::CloneStack {
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::StackAttributes');
   has ChefConfiguration => (is => 'ro', isa => 'Aws::OpsWorks::ChefConfiguration');
   has CloneAppIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ClonePermissions => (is => 'ro', isa => 'Str');
+  has ClonePermissions => (is => 'ro', isa => 'Bool');
   has ConfigurationManager => (is => 'ro', isa => 'Aws::OpsWorks::StackConfigurationManager');
   has CustomCookbooksSource => (is => 'ro', isa => 'Aws::OpsWorks::Source');
   has CustomJson => (is => 'ro', isa => 'Str');
@@ -477,8 +477,8 @@ package Aws::OpsWorks::CloneStack {
   has Region => (is => 'ro', isa => 'Str');
   has ServiceRoleArn => (is => 'ro', isa => 'Str', required => 1);
   has SourceStackId => (is => 'ro', isa => 'Str', required => 1);
-  has UseCustomCookbooks => (is => 'ro', isa => 'Str');
-  has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Str');
+  has UseCustomCookbooks => (is => 'ro', isa => 'Bool');
+  has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CloneStack');
@@ -491,7 +491,7 @@ package Aws::OpsWorks::CreateApp {
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::AppAttributes');
   has Description => (is => 'ro', isa => 'Str');
   has Domains => (is => 'ro', isa => 'ArrayRef[Str]');
-  has EnableSsl => (is => 'ro', isa => 'Str');
+  has EnableSsl => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Shortname => (is => 'ro', isa => 'Str');
   has SslConfiguration => (is => 'ro', isa => 'Aws::OpsWorks::SslConfiguration');
@@ -521,9 +521,9 @@ package Aws::OpsWorks::CreateInstance {
   has Architecture => (is => 'ro', isa => 'Str');
   has AutoScalingType => (is => 'ro', isa => 'Str');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has EbsOptimized => (is => 'ro', isa => 'Str');
+  has EbsOptimized => (is => 'ro', isa => 'Bool');
   has Hostname => (is => 'ro', isa => 'Str');
-  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Str');
+  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has Os => (is => 'ro', isa => 'Str');
@@ -539,19 +539,19 @@ package Aws::OpsWorks::CreateInstance {
 package Aws::OpsWorks::CreateLayer {
   use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::LayerAttributes');
-  has AutoAssignElasticIps => (is => 'ro', isa => 'Str');
-  has AutoAssignPublicIps => (is => 'ro', isa => 'Str');
+  has AutoAssignElasticIps => (is => 'ro', isa => 'Bool');
+  has AutoAssignPublicIps => (is => 'ro', isa => 'Bool');
   has CustomInstanceProfileArn => (is => 'ro', isa => 'Str');
   has CustomRecipes => (is => 'ro', isa => 'Aws::OpsWorks::Recipes');
   has CustomSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has EnableAutoHealing => (is => 'ro', isa => 'Str');
-  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Str');
+  has EnableAutoHealing => (is => 'ro', isa => 'Bool');
+  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Packages => (is => 'ro', isa => 'ArrayRef[Str]');
   has Shortname => (is => 'ro', isa => 'Str', required => 1);
   has StackId => (is => 'ro', isa => 'Str', required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
-  has UseEbsOptimizedInstances => (is => 'ro', isa => 'Str');
+  has UseEbsOptimizedInstances => (is => 'ro', isa => 'Bool');
   has VolumeConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::VolumeConfiguration]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLayer');
@@ -575,8 +575,8 @@ package Aws::OpsWorks::CreateStack {
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Region => (is => 'ro', isa => 'Str', required => 1);
   has ServiceRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has UseCustomCookbooks => (is => 'ro', isa => 'Str');
-  has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Str');
+  has UseCustomCookbooks => (is => 'ro', isa => 'Bool');
+  has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStack');
@@ -585,7 +585,7 @@ package Aws::OpsWorks::CreateStack {
 }
 package Aws::OpsWorks::CreateUserProfile {
   use Moose;
-  has AllowSelfManagement => (is => 'ro', isa => 'Str');
+  has AllowSelfManagement => (is => 'ro', isa => 'Bool');
   has IamUserArn => (is => 'ro', isa => 'Str', required => 1);
   has SshPublicKey => (is => 'ro', isa => 'Str');
   has SshUsername => (is => 'ro', isa => 'Str');
@@ -604,8 +604,8 @@ package Aws::OpsWorks::DeleteApp {
 }
 package Aws::OpsWorks::DeleteInstance {
   use Moose;
-  has DeleteElasticIp => (is => 'ro', isa => 'Str');
-  has DeleteVolumes => (is => 'ro', isa => 'Str');
+  has DeleteElasticIp => (is => 'ro', isa => 'Bool');
+  has DeleteVolumes => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteInstance');
@@ -859,7 +859,7 @@ package Aws::OpsWorks::RegisterVolume {
 package Aws::OpsWorks::SetLoadBasedAutoScaling {
   use Moose;
   has DownScaling => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingThresholds');
-  has Enable => (is => 'ro', isa => 'Str');
+  has Enable => (is => 'ro', isa => 'Bool');
   has LayerId => (is => 'ro', isa => 'Str', required => 1);
   has UpScaling => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingThresholds');
 
@@ -869,8 +869,8 @@ package Aws::OpsWorks::SetLoadBasedAutoScaling {
 }
 package Aws::OpsWorks::SetPermission {
   use Moose;
-  has AllowSsh => (is => 'ro', isa => 'Str');
-  has AllowSudo => (is => 'ro', isa => 'Str');
+  has AllowSsh => (is => 'ro', isa => 'Bool');
+  has AllowSudo => (is => 'ro', isa => 'Bool');
   has IamUserArn => (is => 'ro', isa => 'Str', required => 1);
   has Level => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
@@ -935,7 +935,7 @@ package Aws::OpsWorks::UpdateApp {
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::AppAttributes');
   has Description => (is => 'ro', isa => 'Str');
   has Domains => (is => 'ro', isa => 'ArrayRef[Str]');
-  has EnableSsl => (is => 'ro', isa => 'Str');
+  has EnableSsl => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
   has SslConfiguration => (is => 'ro', isa => 'Aws::OpsWorks::SslConfiguration');
   has Type => (is => 'ro', isa => 'Str');
@@ -959,7 +959,7 @@ package Aws::OpsWorks::UpdateInstance {
   has Architecture => (is => 'ro', isa => 'Str');
   has AutoScalingType => (is => 'ro', isa => 'Str');
   has Hostname => (is => 'ro', isa => 'Str');
-  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Str');
+  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str');
   has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -973,18 +973,18 @@ package Aws::OpsWorks::UpdateInstance {
 package Aws::OpsWorks::UpdateLayer {
   use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::LayerAttributes');
-  has AutoAssignElasticIps => (is => 'ro', isa => 'Str');
-  has AutoAssignPublicIps => (is => 'ro', isa => 'Str');
+  has AutoAssignElasticIps => (is => 'ro', isa => 'Bool');
+  has AutoAssignPublicIps => (is => 'ro', isa => 'Bool');
   has CustomInstanceProfileArn => (is => 'ro', isa => 'Str');
   has CustomRecipes => (is => 'ro', isa => 'Aws::OpsWorks::Recipes');
   has CustomSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has EnableAutoHealing => (is => 'ro', isa => 'Str');
-  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Str');
+  has EnableAutoHealing => (is => 'ro', isa => 'Bool');
+  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
   has LayerId => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str');
   has Packages => (is => 'ro', isa => 'ArrayRef[Str]');
   has Shortname => (is => 'ro', isa => 'Str');
-  has UseEbsOptimizedInstances => (is => 'ro', isa => 'Str');
+  has UseEbsOptimizedInstances => (is => 'ro', isa => 'Bool');
   has VolumeConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::VolumeConfiguration]');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateLayer');
@@ -1016,8 +1016,8 @@ package Aws::OpsWorks::UpdateStack {
   has Name => (is => 'ro', isa => 'Str');
   has ServiceRoleArn => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
-  has UseCustomCookbooks => (is => 'ro', isa => 'Str');
-  has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Str');
+  has UseCustomCookbooks => (is => 'ro', isa => 'Bool');
+  has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStack');
   has _returns => (isa => 'Aws::OpsWorks::UpdateStackResult', is => 'ro');
@@ -1025,7 +1025,7 @@ package Aws::OpsWorks::UpdateStack {
 }
 package Aws::OpsWorks::UpdateUserProfile {
   use Moose;
-  has AllowSelfManagement => (is => 'ro', isa => 'Str');
+  has AllowSelfManagement => (is => 'ro', isa => 'Bool');
   has IamUserArn => (is => 'ro', isa => 'Str', required => 1);
   has SshPublicKey => (is => 'ro', isa => 'Str');
   has SshUsername => (is => 'ro', isa => 'Str');

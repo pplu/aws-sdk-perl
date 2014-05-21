@@ -50,7 +50,7 @@ package Aws::ElasticBeanstalk::ConfigurationOptionDescription {
   has Name => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str');
   has Regex => (is => 'ro', isa => 'Aws::ElasticBeanstalk::OptionRestrictionRegex');
-  has UserDefined => (is => 'ro', isa => 'Str');
+  has UserDefined => (is => 'ro', isa => 'Bool');
   has ValueOptions => (is => 'ro', isa => 'ArrayRef[Str]');
   has ValueType => (is => 'ro', isa => 'Aws::ElasticBeanstalk::ConfigurationOptionValueType');
 }
@@ -257,7 +257,7 @@ package Aws::ElasticBeanstalk::CreateApplication {
 package Aws::ElasticBeanstalk::CreateApplicationVersion {
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has AutoCreateApplication => (is => 'ro', isa => 'Str');
+  has AutoCreateApplication => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
   has SourceBundle => (is => 'ro', isa => 'Aws::ElasticBeanstalk::S3Location');
   has VersionLabel => (is => 'ro', isa => 'Str', required => 1);
@@ -307,7 +307,7 @@ package Aws::ElasticBeanstalk::CreateStorageLocation {
 package Aws::ElasticBeanstalk::DeleteApplication {
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has TerminateEnvByForce => (is => 'ro', isa => 'Str');
+  has TerminateEnvByForce => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteApplication');
   has _returns => (isa => 'Aws::ElasticBeanstalk::DeleteApplicationResult', is => 'ro');
@@ -316,7 +316,7 @@ package Aws::ElasticBeanstalk::DeleteApplication {
 package Aws::ElasticBeanstalk::DeleteApplicationVersion {
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has DeleteSourceBundle => (is => 'ro', isa => 'Str');
+  has DeleteSourceBundle => (is => 'ro', isa => 'Bool');
   has VersionLabel => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteApplicationVersion');
@@ -395,7 +395,7 @@ package Aws::ElasticBeanstalk::DescribeEnvironments {
   has EnvironmentIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has EnvironmentNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has IncludedDeletedBackTo => (is => 'ro', isa => 'Str');
-  has IncludeDeleted => (is => 'ro', isa => 'Str');
+  has IncludeDeleted => (is => 'ro', isa => 'Bool');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEnvironments');
@@ -480,7 +480,7 @@ package Aws::ElasticBeanstalk::TerminateEnvironment {
   use Moose;
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
-  has TerminateResources => (is => 'ro', isa => 'Str');
+  has TerminateResources => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateEnvironment');
   has _returns => (isa => 'Aws::ElasticBeanstalk::TerminateEnvironmentResult', is => 'ro');
@@ -547,7 +547,7 @@ package Aws::ElasticBeanstalk::ValidateConfigurationSettings {
 package Aws::ElasticBeanstalk::CheckDNSAvailabilityResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has Available => (is => 'ro', isa => 'Str');
+  has Available => (is => 'ro', isa => 'Bool');
   has FullyQualifiedCNAME => (is => 'ro', isa => 'Str');
 
 }

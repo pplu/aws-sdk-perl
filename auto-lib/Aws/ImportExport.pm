@@ -9,7 +9,7 @@ package Aws::ImportExport::Job {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CreationDate => (is => 'ro', isa => 'Str');
-  has IsCanceled => (is => 'ro', isa => 'Str');
+  has IsCanceled => (is => 'ro', isa => 'Bool');
   has JobId => (is => 'ro', isa => 'Str');
   has JobType => (is => 'ro', isa => 'Aws::ImportExport::JobType');
 }
@@ -29,7 +29,7 @@ package Aws::ImportExport::CreateJob {
   has JobType => (is => 'ro', isa => 'Str', required => 1);
   has Manifest => (is => 'ro', isa => 'Str', required => 1);
   has ManifestAddendum => (is => 'ro', isa => 'Str');
-  has ValidateOnly => (is => 'ro', isa => 'Str', required => 1);
+  has ValidateOnly => (is => 'ro', isa => 'Bool', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateJob');
   has _returns => (isa => 'Aws::ImportExport::CreateJobResult', is => 'ro');
@@ -57,7 +57,7 @@ package Aws::ImportExport::UpdateJob {
   has JobId => (is => 'ro', isa => 'Str', required => 1);
   has JobType => (is => 'ro', isa => 'Str', required => 1);
   has Manifest => (is => 'ro', isa => 'Str', required => 1);
-  has ValidateOnly => (is => 'ro', isa => 'Str', required => 1);
+  has ValidateOnly => (is => 'ro', isa => 'Bool', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJob');
   has _returns => (isa => 'Aws::ImportExport::UpdateJobResult', is => 'ro');
@@ -67,7 +67,7 @@ package Aws::ImportExport::UpdateJob {
 package Aws::ImportExport::CancelJobResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has Success => (is => 'ro', isa => 'Str');
+  has Success => (is => 'ro', isa => 'Bool');
 
 }
 package Aws::ImportExport::CreateJobResult {
@@ -105,14 +105,14 @@ package Aws::ImportExport::GetStatusResult {
 package Aws::ImportExport::ListJobsResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Jobs => (is => 'ro', isa => 'ArrayRef[Aws::ImportExport::Job]');
 
 }
 package Aws::ImportExport::UpdateJobResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has Success => (is => 'ro', isa => 'Str');
+  has Success => (is => 'ro', isa => 'Bool');
   has WarningMessage => (is => 'ro', isa => 'Str');
 
 }

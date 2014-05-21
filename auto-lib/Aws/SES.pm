@@ -162,7 +162,7 @@ package Aws::SES::SendRawEmail {
 }
 package Aws::SES::SetIdentityDkimEnabled {
   use Moose;
-  has DkimEnabled => (is => 'ro', isa => 'Str', required => 1);
+  has DkimEnabled => (is => 'ro', isa => 'Bool', required => 1);
   has Identity => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SetIdentityDkimEnabled');
@@ -171,7 +171,7 @@ package Aws::SES::SetIdentityDkimEnabled {
 }
 package Aws::SES::SetIdentityFeedbackForwardingEnabled {
   use Moose;
-  has ForwardingEnabled => (is => 'ro', isa => 'Str', required => 1);
+  has ForwardingEnabled => (is => 'ro', isa => 'Bool', required => 1);
   has Identity => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SetIdentityFeedbackForwardingEnabled');

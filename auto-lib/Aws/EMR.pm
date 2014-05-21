@@ -44,7 +44,7 @@ package Aws::EMR::Cluster {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Applications => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Application]');
-  has AutoTerminate => (is => 'ro', isa => 'Str');
+  has AutoTerminate => (is => 'ro', isa => 'Bool');
   has Ec2InstanceAttributes => (is => 'ro', isa => 'Aws::EMR::Ec2InstanceAttributes');
   has Id => (is => 'ro', isa => 'Str');
   has LogUri => (is => 'ro', isa => 'Str');
@@ -53,8 +53,8 @@ package Aws::EMR::Cluster {
   has RunningAmiVersion => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Aws::EMR::ClusterStatus');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Tag]');
-  has TerminationProtected => (is => 'ro', isa => 'Str');
-  has VisibleToAllUsers => (is => 'ro', isa => 'Str');
+  has TerminationProtected => (is => 'ro', isa => 'Bool');
+  has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::EMR::ClusterStateChangeReason {
@@ -246,7 +246,7 @@ package Aws::EMR::JobFlowDetail {
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Steps => (is => 'ro', isa => 'ArrayRef[Aws::EMR::StepDetail]');
   has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str]');
-  has VisibleToAllUsers => (is => 'ro', isa => 'Str');
+  has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::EMR::JobFlowExecutionStatusDetail {
@@ -268,11 +268,11 @@ package Aws::EMR::JobFlowInstancesConfig {
   has HadoopVersion => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has InstanceGroups => (is => 'ro', isa => 'ArrayRef[Aws::EMR::InstanceGroupConfig]');
-  has KeepJobFlowAliveWhenNoSteps => (is => 'ro', isa => 'Str');
+  has KeepJobFlowAliveWhenNoSteps => (is => 'ro', isa => 'Bool');
   has MasterInstanceType => (is => 'ro', isa => 'Str');
   has Placement => (is => 'ro', isa => 'Aws::EMR::PlacementType');
   has SlaveInstanceType => (is => 'ro', isa => 'Str');
-  has TerminationProtected => (is => 'ro', isa => 'Str');
+  has TerminationProtected => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::EMR::JobFlowInstancesDetail {
@@ -283,14 +283,14 @@ package Aws::EMR::JobFlowInstancesDetail {
   has HadoopVersion => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
   has InstanceGroups => (is => 'ro', isa => 'ArrayRef[Aws::EMR::InstanceGroupDetail]');
-  has KeepJobFlowAliveWhenNoSteps => (is => 'ro', isa => 'Str');
+  has KeepJobFlowAliveWhenNoSteps => (is => 'ro', isa => 'Bool');
   has MasterInstanceId => (is => 'ro', isa => 'Str');
   has MasterInstanceType => (is => 'ro', isa => 'Str', required => 1);
   has MasterPublicDnsName => (is => 'ro', isa => 'Str');
   has NormalizedInstanceHours => (is => 'ro', isa => 'Int');
   has Placement => (is => 'ro', isa => 'Aws::EMR::PlacementType');
   has SlaveInstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has TerminationProtected => (is => 'ro', isa => 'Str');
+  has TerminationProtected => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::EMR::KeyValue {
@@ -536,7 +536,7 @@ package Aws::EMR::RunJobFlow {
   has Steps => (is => 'ro', isa => 'ArrayRef[Aws::EMR::StepConfig]');
   has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Tag]');
-  has VisibleToAllUsers => (is => 'ro', isa => 'Str');
+  has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RunJobFlow');
   has _returns => (isa => 'Aws::EMR::RunJobFlowResult', is => 'ro');
@@ -545,7 +545,7 @@ package Aws::EMR::RunJobFlow {
 package Aws::EMR::SetTerminationProtection {
   use Moose;
   has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has TerminationProtected => (is => 'ro', isa => 'Str', required => 1);
+  has TerminationProtected => (is => 'ro', isa => 'Bool', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SetTerminationProtection');
   has _returns => (isa => 'Aws::EMR::SetTerminationProtectionResult', is => 'ro');
@@ -554,7 +554,7 @@ package Aws::EMR::SetTerminationProtection {
 package Aws::EMR::SetVisibleToAllUsers {
   use Moose;
   has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has VisibleToAllUsers => (is => 'ro', isa => 'Str', required => 1);
+  has VisibleToAllUsers => (is => 'ro', isa => 'Bool', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SetVisibleToAllUsers');
   has _returns => (isa => 'Aws::EMR::SetVisibleToAllUsersResult', is => 'ro');

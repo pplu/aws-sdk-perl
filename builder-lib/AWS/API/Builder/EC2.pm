@@ -249,7 +249,7 @@ package [% c.api %] {
       $type = 'Num';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'boolean') {
       # TODO: Bool
-      $type = 'Str';
+      $type = 'Bool';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'integer') {
       $type = 'Int';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'string') {

@@ -5,7 +5,7 @@ use AWS::API;
 package Aws::CloudTrail::Trail {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Str');
+  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
   has S3BucketName => (is => 'ro', isa => 'Str');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
@@ -16,7 +16,7 @@ package Aws::CloudTrail::Trail {
 
 package Aws::CloudTrail::CreateTrail {
   use Moose;
-  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Str');
+  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
   has S3BucketName => (is => 'ro', isa => 'Str');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
@@ -69,7 +69,7 @@ package Aws::CloudTrail::StopLogging {
 }
 package Aws::CloudTrail::UpdateTrail {
   use Moose;
-  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Str');
+  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
   has S3BucketName => (is => 'ro', isa => 'Str');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
@@ -84,7 +84,7 @@ package Aws::CloudTrail::UpdateTrail {
 package Aws::CloudTrail::CreateTrailResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Str');
+  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
   has S3BucketName => (is => 'ro', isa => 'Str');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
@@ -106,7 +106,7 @@ package Aws::CloudTrail::DescribeTrailsResult {
 package Aws::CloudTrail::GetTrailStatusResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has IsLogging => (is => 'ro', isa => 'Str');
+  has IsLogging => (is => 'ro', isa => 'Bool');
   has LatestDeliveryAttemptSucceeded => (is => 'ro', isa => 'Str');
   has LatestDeliveryAttemptTime => (is => 'ro', isa => 'Str');
   has LatestDeliveryError => (is => 'ro', isa => 'Str');
@@ -134,7 +134,7 @@ package Aws::CloudTrail::StopLoggingResult {
 package Aws::CloudTrail::UpdateTrailResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Str');
+  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
   has S3BucketName => (is => 'ro', isa => 'Str');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');

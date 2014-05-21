@@ -10,7 +10,7 @@ package Aws::RDS::AvailabilityZone {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Name => (is => 'ro', isa => 'Str');
-  has ProvisionedIopsCapable => (is => 'ro', isa => 'Str');
+  has ProvisionedIopsCapable => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::RDS::CharacterSet {
@@ -36,7 +36,7 @@ package Aws::RDS::DBInstance {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
@@ -55,12 +55,12 @@ package Aws::RDS::DBInstance {
   has LatestRestorableTime => (is => 'ro', isa => 'Str');
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupMembership => (is => 'ro', isa => 'Aws::RDS::OptionGroupMembership');
   has PendingModifiedValues => (is => 'ro', isa => 'Aws::RDS::PendingModifiedValues');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PubliclyAccessible => (is => 'ro', isa => 'Str');
+  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has ReadReplicaDBInstanceIdentifiers => (is => 'ro', isa => 'ArrayRef[Str]');
   has ReadReplicaSourceDBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has SecondaryAvailabilityZone => (is => 'ro', isa => 'Str');
@@ -176,7 +176,7 @@ package Aws::RDS::EventSubscription {
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has CustomerAwsId => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Str');
+  has Enabled => (is => 'ro', isa => 'Bool');
   has EventCategoriesList => (is => 'ro', isa => 'ArrayRef[Str]');
   has Id => (is => 'ro', isa => 'Str');
   has SnsTopicArn => (is => 'ro', isa => 'Str');
@@ -215,7 +215,7 @@ package Aws::RDS::OptionConfiguration {
 package Aws::RDS::OptionGroup {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has AllowsVpcAndNonVpcInstanceMemberships => (is => 'ro', isa => 'Str');
+  has AllowsVpcAndNonVpcInstanceMemberships => (is => 'ro', isa => 'Bool');
   has EngineName => (is => 'ro', isa => 'Str');
   has MajorEngineVersion => (is => 'ro', isa => 'Str');
   has OptionGroupDescription => (is => 'ro', isa => 'Str');
@@ -241,7 +241,7 @@ package Aws::RDS::OptionGroupOption {
   has MinimumRequiredMinorEngineVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has OptionsDependedOn => (is => 'ro', isa => 'ArrayRef[Str]');
-  has PortRequired => (is => 'ro', isa => 'Str');
+  has PortRequired => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::RDS::OrderableDBInstanceOption {
@@ -252,9 +252,9 @@ package Aws::RDS::OrderableDBInstanceOption {
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has LicenseModel => (is => 'ro', isa => 'Str');
-  has MultiAZCapable => (is => 'ro', isa => 'Str');
-  has ReadReplicaCapable => (is => 'ro', isa => 'Str');
-  has Vpc => (is => 'ro', isa => 'Str');
+  has MultiAZCapable => (is => 'ro', isa => 'Bool');
+  has ReadReplicaCapable => (is => 'ro', isa => 'Bool');
+  has Vpc => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::RDS::Parameter {
@@ -265,7 +265,7 @@ package Aws::RDS::Parameter {
   has ApplyType => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has IsModifiable => (is => 'ro', isa => 'Str');
+  has IsModifiable => (is => 'ro', isa => 'Bool');
   has MinimumEngineVersion => (is => 'ro', isa => 'Str');
   has ParameterName => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
@@ -282,7 +282,7 @@ package Aws::RDS::PendingModifiedValues {
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has Port => (is => 'ro', isa => 'Int');
 }
 
@@ -301,7 +301,7 @@ package Aws::RDS::ReservedDBInstance {
   has DBInstanceCount => (is => 'ro', isa => 'Int');
   has Duration => (is => 'ro', isa => 'Int');
   has FixedPrice => (is => 'ro', isa => 'Num');
-  has MultiAZ => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Aws::RDS::RecurringCharge]');
@@ -319,7 +319,7 @@ package Aws::RDS::ReservedDBInstancesOffering {
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
   has FixedPrice => (is => 'ro', isa => 'Num');
-  has MultiAZ => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Aws::RDS::RecurringCharge]');
@@ -393,7 +393,7 @@ package Aws::RDS::CopyDBSnapshot {
 package Aws::RDS::CreateDBInstance {
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int', required => 1);
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
@@ -409,12 +409,12 @@ package Aws::RDS::CreateDBInstance {
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
   has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
-  has MultiAZ => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PubliclyAccessible => (is => 'ro', isa => 'Str');
+  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstance');
@@ -423,14 +423,14 @@ package Aws::RDS::CreateDBInstance {
 }
 package Aws::RDS::CreateDBInstanceReadReplica {
   use Moose;
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Iops => (is => 'ro', isa => 'Int');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
-  has PubliclyAccessible => (is => 'ro', isa => 'Str');
+  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceReadReplica');
@@ -477,7 +477,7 @@ package Aws::RDS::CreateDBSubnetGroup {
 }
 package Aws::RDS::CreateEventSubscription {
   use Moose;
-  has Enabled => (is => 'ro', isa => 'Str');
+  has Enabled => (is => 'ro', isa => 'Bool');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'EventCategory' );
   has SnsTopicArn => (is => 'ro', isa => 'Str', required => 1);
   has SourceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SourceId' );
@@ -503,7 +503,7 @@ package Aws::RDS::DeleteDBInstance {
   use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has FinalDBSnapshotIdentifier => (is => 'ro', isa => 'Str');
-  has SkipFinalSnapshot => (is => 'ro', isa => 'Str');
+  has SkipFinalSnapshot => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBInstance');
   has _returns => (isa => 'Aws::RDS::DeleteDBInstanceResult', is => 'ro');
@@ -560,10 +560,10 @@ package Aws::RDS::DeleteOptionGroup {
 package Aws::RDS::DescribeDBEngineVersions {
   use Moose;
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has DefaultOnly => (is => 'ro', isa => 'Str');
+  has DefaultOnly => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
-  has ListSupportedCharacterSets => (is => 'ro', isa => 'Str');
+  has ListSupportedCharacterSets => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -708,7 +708,7 @@ package Aws::RDS::DescribeOrderableDBInstanceOptions {
   has LicenseModel => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
-  has Vpc => (is => 'ro', isa => 'Str');
+  has Vpc => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOrderableDBInstanceOptions');
   has _returns => (isa => 'Aws::RDS::DescribeOrderableDBInstanceOptionsResult', is => 'ro');
@@ -720,7 +720,7 @@ package Aws::RDS::DescribeReservedDBInstances {
   has Duration => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
-  has MultiAZ => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
   has ReservedDBInstanceId => (is => 'ro', isa => 'Str');
@@ -736,7 +736,7 @@ package Aws::RDS::DescribeReservedDBInstancesOfferings {
   has Duration => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
-  has MultiAZ => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str');
@@ -756,9 +756,9 @@ package Aws::RDS::ListTagsForResource {
 package Aws::RDS::ModifyDBInstance {
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AllowMajorVersionUpgrade => (is => 'ro', isa => 'Str');
-  has ApplyImmediately => (is => 'ro', isa => 'Str');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
+  has AllowMajorVersionUpgrade => (is => 'ro', isa => 'Bool');
+  has ApplyImmediately => (is => 'ro', isa => 'Bool');
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -767,7 +767,7 @@ package Aws::RDS::ModifyDBInstance {
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has NewDBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
@@ -799,7 +799,7 @@ package Aws::RDS::ModifyDBSubnetGroup {
 }
 package Aws::RDS::ModifyEventSubscription {
   use Moose;
-  has Enabled => (is => 'ro', isa => 'Str');
+  has Enabled => (is => 'ro', isa => 'Bool');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'EventCategory' );
   has SnsTopicArn => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'Str');
@@ -811,7 +811,7 @@ package Aws::RDS::ModifyEventSubscription {
 }
 package Aws::RDS::ModifyOptionGroup {
   use Moose;
-  has ApplyImmediately => (is => 'ro', isa => 'Str');
+  has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str', required => 1);
   has OptionsToInclude => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionConfiguration]', traits => ['NameInRequest'], request_name => 'OptionConfiguration' );
   has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -843,7 +843,7 @@ package Aws::RDS::PurchaseReservedDBInstancesOffering {
 package Aws::RDS::RebootDBInstance {
   use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has ForceFailover => (is => 'ro', isa => 'Str');
+  has ForceFailover => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RebootDBInstance');
   has _returns => (isa => 'Aws::RDS::RebootDBInstanceResult', is => 'ro');
@@ -871,7 +871,7 @@ package Aws::RDS::ResetDBParameterGroup {
   use Moose;
   has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Parameter]', traits => ['NameInRequest'], request_name => 'Parameter' );
-  has ResetAllParameters => (is => 'ro', isa => 'Str');
+  has ResetAllParameters => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ResetDBParameterGroup');
   has _returns => (isa => 'Aws::RDS::ResetDBParameterGroupResult', is => 'ro');
@@ -879,7 +879,7 @@ package Aws::RDS::ResetDBParameterGroup {
 }
 package Aws::RDS::RestoreDBInstanceFromDBSnapshot {
   use Moose;
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -889,10 +889,10 @@ package Aws::RDS::RestoreDBInstanceFromDBSnapshot {
   has Engine => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has LicenseModel => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
-  has PubliclyAccessible => (is => 'ro', isa => 'Str');
+  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromDBSnapshot');
   has _returns => (isa => 'Aws::RDS::RestoreDBInstanceFromDBSnapshotResult', is => 'ro');
@@ -900,7 +900,7 @@ package Aws::RDS::RestoreDBInstanceFromDBSnapshot {
 }
 package Aws::RDS::RestoreDBInstanceToPointInTime {
   use Moose;
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBName => (is => 'ro', isa => 'Str');
@@ -908,14 +908,14 @@ package Aws::RDS::RestoreDBInstanceToPointInTime {
   has Engine => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has LicenseModel => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
-  has PubliclyAccessible => (is => 'ro', isa => 'Str');
+  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has RestoreTime => (is => 'ro', isa => 'Str');
   has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has TargetDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has UseLatestRestorableTime => (is => 'ro', isa => 'Str');
+  has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceToPointInTime');
   has _returns => (isa => 'Aws::RDS::RestoreDBInstanceToPointInTimeResult', is => 'ro');

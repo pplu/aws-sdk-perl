@@ -97,7 +97,7 @@ package Aws::Support::TrustedAdvisorCheckSummary {
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has categorySpecificSummary => (is => 'ro', isa => 'Aws::Support::TrustedAdvisorCategorySpecificSummary', required => 1);
   has checkId => (is => 'ro', isa => 'Str', required => 1);
-  has hasFlaggedResources => (is => 'ro', isa => 'Str');
+  has hasFlaggedResources => (is => 'ro', isa => 'Bool');
   has resourcesSummary => (is => 'ro', isa => 'Aws::Support::TrustedAdvisorResourcesSummary', required => 1);
   has status => (is => 'ro', isa => 'Str', required => 1);
   has timestamp => (is => 'ro', isa => 'Str', required => 1);
@@ -113,7 +113,7 @@ package Aws::Support::TrustedAdvisorCostOptimizingSummary {
 package Aws::Support::TrustedAdvisorResourceDetail {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has isSuppressed => (is => 'ro', isa => 'Str');
+  has isSuppressed => (is => 'ro', isa => 'Bool');
   has metadata => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has region => (is => 'ro', isa => 'Str', required => 1);
   has resourceId => (is => 'ro', isa => 'Str', required => 1);
@@ -162,7 +162,7 @@ package Aws::Support::DescribeCases {
   has beforeTime => (is => 'ro', isa => 'Str');
   has caseIdList => (is => 'ro', isa => 'ArrayRef[Str]');
   has displayId => (is => 'ro', isa => 'Str');
-  has includeResolvedCases => (is => 'ro', isa => 'Str');
+  has includeResolvedCases => (is => 'ro', isa => 'Bool');
   has language => (is => 'ro', isa => 'Str');
   has maxResults => (is => 'ro', isa => 'Int');
   has nextToken => (is => 'ro', isa => 'Str');
@@ -253,7 +253,7 @@ package Aws::Support::ResolveCase {
 package Aws::Support::AddCommunicationToCaseResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has result => (is => 'ro', isa => 'Str');
+  has result => (is => 'ro', isa => 'Bool');
 
 }
 package Aws::Support::CreateCaseResult {

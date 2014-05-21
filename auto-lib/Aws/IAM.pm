@@ -63,14 +63,14 @@ package Aws::IAM::MFADevice {
 package Aws::IAM::PasswordPolicy {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has AllowUsersToChangePassword => (is => 'ro', isa => 'Str');
-  has ExpirePasswords => (is => 'ro', isa => 'Str');
+  has AllowUsersToChangePassword => (is => 'ro', isa => 'Bool');
+  has ExpirePasswords => (is => 'ro', isa => 'Bool');
   has MaxPasswordAge => (is => 'ro', isa => 'Int');
   has MinimumPasswordLength => (is => 'ro', isa => 'Int');
-  has RequireLowercaseCharacters => (is => 'ro', isa => 'Str');
-  has RequireNumbers => (is => 'ro', isa => 'Str');
-  has RequireSymbols => (is => 'ro', isa => 'Str');
-  has RequireUppercaseCharacters => (is => 'ro', isa => 'Str');
+  has RequireLowercaseCharacters => (is => 'ro', isa => 'Bool');
+  has RequireNumbers => (is => 'ro', isa => 'Bool');
+  has RequireSymbols => (is => 'ro', isa => 'Bool');
+  has RequireUppercaseCharacters => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::IAM::Role {
@@ -738,12 +738,12 @@ package Aws::IAM::UpdateAccessKey {
 }
 package Aws::IAM::UpdateAccountPasswordPolicy {
   use Moose;
-  has AllowUsersToChangePassword => (is => 'ro', isa => 'Str');
+  has AllowUsersToChangePassword => (is => 'ro', isa => 'Bool');
   has MinimumPasswordLength => (is => 'ro', isa => 'Int');
-  has RequireLowercaseCharacters => (is => 'ro', isa => 'Str');
-  has RequireNumbers => (is => 'ro', isa => 'Str');
-  has RequireSymbols => (is => 'ro', isa => 'Str');
-  has RequireUppercaseCharacters => (is => 'ro', isa => 'Str');
+  has RequireLowercaseCharacters => (is => 'ro', isa => 'Bool');
+  has RequireNumbers => (is => 'ro', isa => 'Bool');
+  has RequireSymbols => (is => 'ro', isa => 'Bool');
+  has RequireUppercaseCharacters => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAccountPasswordPolicy');
   has _returns => (isa => 'Aws::IAM::UpdateAccountPasswordPolicyResult', is => 'ro');
@@ -902,7 +902,7 @@ package Aws::IAM::GetGroupResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has Group => (is => 'ro', isa => 'Aws::IAM::Group', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has Users => (is => 'ro', isa => 'ArrayRef[Aws::IAM::User]', required => 1);
 
@@ -973,7 +973,7 @@ package Aws::IAM::ListAccessKeysResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has AccessKeyMetadata => (is => 'ro', isa => 'ArrayRef[Aws::IAM::AccessKeyMetadata]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
@@ -981,14 +981,14 @@ package Aws::IAM::ListAccountAliasesResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has AccountAliases => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 package Aws::IAM::ListGroupPoliciesResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
@@ -997,7 +997,7 @@ package Aws::IAM::ListGroupsResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has Groups => (is => 'ro', isa => 'ArrayRef[Aws::IAM::Group]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
@@ -1005,7 +1005,7 @@ package Aws::IAM::ListGroupsForUserResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has Groups => (is => 'ro', isa => 'ArrayRef[Aws::IAM::Group]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
@@ -1013,7 +1013,7 @@ package Aws::IAM::ListInstanceProfilesResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has InstanceProfiles => (is => 'ro', isa => 'ArrayRef[Aws::IAM::InstanceProfile]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
@@ -1021,14 +1021,14 @@ package Aws::IAM::ListInstanceProfilesForRoleResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has InstanceProfiles => (is => 'ro', isa => 'ArrayRef[Aws::IAM::InstanceProfile]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 package Aws::IAM::ListMFADevicesResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has MFADevices => (is => 'ro', isa => 'ArrayRef[Aws::IAM::MFADevice]', required => 1);
 
@@ -1036,7 +1036,7 @@ package Aws::IAM::ListMFADevicesResult {
 package Aws::IAM::ListRolePoliciesResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
@@ -1044,7 +1044,7 @@ package Aws::IAM::ListRolePoliciesResult {
 package Aws::IAM::ListRolesResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has Roles => (is => 'ro', isa => 'ArrayRef[Aws::IAM::Role]', required => 1);
 
@@ -1058,7 +1058,7 @@ package Aws::IAM::ListSAMLProvidersResult {
 package Aws::IAM::ListServerCertificatesResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has ServerCertificateMetadataList => (is => 'ro', isa => 'ArrayRef[Aws::IAM::ServerCertificateMetadata]', required => 1);
 
@@ -1067,14 +1067,14 @@ package Aws::IAM::ListSigningCertificatesResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has Certificates => (is => 'ro', isa => 'ArrayRef[Aws::IAM::SigningCertificate]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
 package Aws::IAM::ListUserPoliciesResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
@@ -1082,7 +1082,7 @@ package Aws::IAM::ListUserPoliciesResult {
 package Aws::IAM::ListUsersResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has Users => (is => 'ro', isa => 'ArrayRef[Aws::IAM::User]', required => 1);
 
@@ -1090,7 +1090,7 @@ package Aws::IAM::ListUsersResult {
 package Aws::IAM::ListVirtualMFADevicesResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has IsTruncated => (is => 'ro', isa => 'Str');
+  has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has VirtualMFADevices => (is => 'ro', isa => 'ArrayRef[Aws::IAM::VirtualMFADevice]', required => 1);
 

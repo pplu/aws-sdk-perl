@@ -19,7 +19,7 @@ package Aws::CloudFormation::Parameter {
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has ParameterKey => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
-  has UsePreviousValue => (is => 'ro', isa => 'Str');
+  has UsePreviousValue => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::CloudFormation::Stack {
@@ -28,7 +28,7 @@ package Aws::CloudFormation::Stack {
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
-  has DisableRollback => (is => 'ro', isa => 'Str');
+  has DisableRollback => (is => 'ro', isa => 'Bool');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
   has Outputs => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::Output]');
@@ -121,7 +121,7 @@ package Aws::CloudFormation::TemplateParameter {
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has NoEcho => (is => 'ro', isa => 'Str');
+  has NoEcho => (is => 'ro', isa => 'Bool');
   has ParameterKey => (is => 'ro', isa => 'Str');
 }
 
@@ -138,7 +138,7 @@ package Aws::CloudFormation::CancelUpdateStack {
 package Aws::CloudFormation::CreateStack {
   use Moose;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
-  has DisableRollback => (is => 'ro', isa => 'Str');
+  has DisableRollback => (is => 'ro', isa => 'Bool');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
   has OnFailure => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::Parameter]');
@@ -265,7 +265,7 @@ package Aws::CloudFormation::UpdateStack {
   has StackPolicyURL => (is => 'ro', isa => 'Str');
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateURL => (is => 'ro', isa => 'Str');
-  has UsePreviousTemplate => (is => 'ro', isa => 'Str');
+  has UsePreviousTemplate => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStack');
   has _returns => (isa => 'Aws::CloudFormation::UpdateStackResult', is => 'ro');

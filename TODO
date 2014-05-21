@@ -12,5 +12,3 @@
 - Pass flattened lists and unflattened lists correctly
 - Some APIs (EC2 at least), will have different definitions for same shapename when its
   input vs output. Outputs will specify xmlname, and inputs won't.
-- Bools in JSON are not working. JSON decode returns JSON::true object that Moose isn't
-  accepting

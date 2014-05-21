@@ -674,7 +674,7 @@ package Aws::SimpleWorkflow::WorkflowExecutionFilter {
 package Aws::SimpleWorkflow::WorkflowExecutionInfo {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has cancelRequested => (is => 'ro', isa => 'Str');
+  has cancelRequested => (is => 'ro', isa => 'Bool');
   has closeStatus => (is => 'ro', isa => 'Aws::SimpleWorkflow::CloseStatus');
   has closeTimestamp => (is => 'ro', isa => 'Str');
   has execution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
@@ -880,7 +880,7 @@ package Aws::SimpleWorkflow::GetWorkflowExecutionHistory {
   has execution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
   has maximumPageSize => (is => 'ro', isa => 'Int');
   has nextPageToken => (is => 'ro', isa => 'Str');
-  has reverseOrder => (is => 'ro', isa => 'Str');
+  has reverseOrder => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetWorkflowExecutionHistory');
   has _returns => (isa => 'Aws::SimpleWorkflow::GetWorkflowExecutionHistoryResult', is => 'ro');
@@ -893,7 +893,7 @@ package Aws::SimpleWorkflow::ListActivityTypes {
   has name => (is => 'ro', isa => 'Str');
   has nextPageToken => (is => 'ro', isa => 'Str');
   has registrationStatus => (is => 'ro', isa => 'Str', required => 1);
-  has reverseOrder => (is => 'ro', isa => 'Str');
+  has reverseOrder => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListActivityTypes');
   has _returns => (isa => 'Aws::SimpleWorkflow::ListActivityTypesResult', is => 'ro');
@@ -907,7 +907,7 @@ package Aws::SimpleWorkflow::ListClosedWorkflowExecutions {
   has executionFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionFilter');
   has maximumPageSize => (is => 'ro', isa => 'Int');
   has nextPageToken => (is => 'ro', isa => 'Str');
-  has reverseOrder => (is => 'ro', isa => 'Str');
+  has reverseOrder => (is => 'ro', isa => 'Bool');
   has startTimeFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::ExecutionTimeFilter');
   has tagFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::TagFilter');
   has typeFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowTypeFilter');
@@ -921,7 +921,7 @@ package Aws::SimpleWorkflow::ListDomains {
   has maximumPageSize => (is => 'ro', isa => 'Int');
   has nextPageToken => (is => 'ro', isa => 'Str');
   has registrationStatus => (is => 'ro', isa => 'Str', required => 1);
-  has reverseOrder => (is => 'ro', isa => 'Str');
+  has reverseOrder => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListDomains');
   has _returns => (isa => 'Aws::SimpleWorkflow::ListDomainsResult', is => 'ro');
@@ -933,7 +933,7 @@ package Aws::SimpleWorkflow::ListOpenWorkflowExecutions {
   has executionFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionFilter');
   has maximumPageSize => (is => 'ro', isa => 'Int');
   has nextPageToken => (is => 'ro', isa => 'Str');
-  has reverseOrder => (is => 'ro', isa => 'Str');
+  has reverseOrder => (is => 'ro', isa => 'Bool');
   has startTimeFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::ExecutionTimeFilter', required => 1);
   has tagFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::TagFilter');
   has typeFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowTypeFilter');
@@ -949,7 +949,7 @@ package Aws::SimpleWorkflow::ListWorkflowTypes {
   has name => (is => 'ro', isa => 'Str');
   has nextPageToken => (is => 'ro', isa => 'Str');
   has registrationStatus => (is => 'ro', isa => 'Str', required => 1);
-  has reverseOrder => (is => 'ro', isa => 'Str');
+  has reverseOrder => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListWorkflowTypes');
   has _returns => (isa => 'Aws::SimpleWorkflow::ListWorkflowTypesResult', is => 'ro');
@@ -971,7 +971,7 @@ package Aws::SimpleWorkflow::PollForDecisionTask {
   has identity => (is => 'ro', isa => 'Str');
   has maximumPageSize => (is => 'ro', isa => 'Int');
   has nextPageToken => (is => 'ro', isa => 'Str');
-  has reverseOrder => (is => 'ro', isa => 'Str');
+  has reverseOrder => (is => 'ro', isa => 'Bool');
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'PollForDecisionTask');
@@ -1122,28 +1122,28 @@ package Aws::SimpleWorkflow::CountClosedWorkflowExecutionsResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has count => (is => 'ro', isa => 'Int', required => 1);
-  has truncated => (is => 'ro', isa => 'Str');
+  has truncated => (is => 'ro', isa => 'Bool');
 
 }
 package Aws::SimpleWorkflow::CountOpenWorkflowExecutionsResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has count => (is => 'ro', isa => 'Int', required => 1);
-  has truncated => (is => 'ro', isa => 'Str');
+  has truncated => (is => 'ro', isa => 'Bool');
 
 }
 package Aws::SimpleWorkflow::CountPendingActivityTasksResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has count => (is => 'ro', isa => 'Int', required => 1);
-  has truncated => (is => 'ro', isa => 'Str');
+  has truncated => (is => 'ro', isa => 'Bool');
 
 }
 package Aws::SimpleWorkflow::CountPendingDecisionTasksResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has count => (is => 'ro', isa => 'Int', required => 1);
-  has truncated => (is => 'ro', isa => 'Str');
+  has truncated => (is => 'ro', isa => 'Bool');
 
 }
 package Aws::SimpleWorkflow::DescribeActivityTypeResult {
@@ -1245,7 +1245,7 @@ package Aws::SimpleWorkflow::PollForDecisionTaskResult {
 package Aws::SimpleWorkflow::RecordActivityTaskHeartbeatResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has cancelRequested => (is => 'ro', isa => 'Str', required => 1);
+  has cancelRequested => (is => 'ro', isa => 'Bool', required => 1);
 
 }
 package Aws::SimpleWorkflow::StartWorkflowExecutionResult {

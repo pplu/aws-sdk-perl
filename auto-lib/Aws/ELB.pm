@@ -6,7 +6,7 @@ package Aws::ELB::AccessLog {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has EmitInterval => (is => 'ro', isa => 'Int');
-  has Enabled => (is => 'ro', isa => 'Str', required => 1);
+  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has S3BucketName => (is => 'ro', isa => 'Str');
   has S3BucketPrefix => (is => 'ro', isa => 'Str');
 }
@@ -28,14 +28,14 @@ package Aws::ELB::BackendServerDescription {
 package Aws::ELB::ConnectionDraining {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has Enabled => (is => 'ro', isa => 'Str', required => 1);
+  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has Timeout => (is => 'ro', isa => 'Int');
 }
 
 package Aws::ELB::CrossZoneLoadBalancing {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has Enabled => (is => 'ro', isa => 'Str', required => 1);
+  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
 }
 
 package Aws::ELB::HealthCheck {

@@ -282,7 +282,7 @@ package Aws::DynamoDB::DescribeTable {
 package Aws::DynamoDB::GetItem {
   use Moose;
   has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ConsistentRead => (is => 'ro', isa => 'Str');
+  has ConsistentRead => (is => 'ro', isa => 'Bool');
   has Key => (is => 'ro', isa => 'Aws::DynamoDB::Key', required => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
@@ -318,14 +318,14 @@ package Aws::DynamoDB::Query {
   use Moose;
   has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
   has ConditionalOperator => (is => 'ro', isa => 'Str');
-  has ConsistentRead => (is => 'ro', isa => 'Str');
+  has ConsistentRead => (is => 'ro', isa => 'Bool');
   has ExclusiveStartKey => (is => 'ro', isa => 'Aws::DynamoDB::Key');
   has IndexName => (is => 'ro', isa => 'Str');
   has KeyConditions => (is => 'ro', isa => 'Aws::DynamoDB::KeyConditions');
   has Limit => (is => 'ro', isa => 'Int');
   has QueryFilter => (is => 'ro', isa => 'Aws::DynamoDB::FilterConditionMap');
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
-  has ScanIndexForward => (is => 'ro', isa => 'Str');
+  has ScanIndexForward => (is => 'ro', isa => 'Bool');
   has Select => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 

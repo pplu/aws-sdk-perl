@@ -92,7 +92,7 @@ package Aws::EC2::Address {
 package Aws::EC2::AttributeBooleanValue {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
-  has Value => (is => 'ro', isa => 'Str');
+  has Value => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::EC2::AttributeValue {
@@ -239,7 +239,7 @@ package Aws::EC2::DiskImageVolumeDescription {
 package Aws::EC2::EbsBlockDevice {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
-  has DeleteOnTermination => (is => 'ro', isa => 'Str');
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool');
   has Iops => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
   has VolumeSize => (is => 'ro', isa => 'Int');
@@ -250,7 +250,7 @@ package Aws::EC2::EbsInstanceBlockDevice {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
-  has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
   has Status => (is => 'ro', isa => 'Aws::EC2::AttachmentStatus', traits => ['Unwrapped'], xmlname => 'status');
   has VolumeId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'volumeId');
 }
@@ -258,7 +258,7 @@ package Aws::EC2::EbsInstanceBlockDevice {
 package Aws::EC2::EbsInstanceBlockDeviceSpecification {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
-  has DeleteOnTermination => (is => 'ro', isa => 'Str');
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool');
   has VolumeId => (is => 'ro', isa => 'Str');
 }
 
@@ -342,7 +342,7 @@ package Aws::EC2::Image {
   has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'imageOwnerId');
   has Platform => (is => 'ro', isa => 'Aws::EC2::PlatformValues', traits => ['Unwrapped'], xmlname => 'platform');
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ProductCode]', traits => ['Unwrapped'], xmlname => 'productCodes');
-  has Public => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'isPublic');
+  has Public => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'isPublic');
   has RamdiskId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ramdiskId');
   has RootDeviceName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'rootDeviceName');
   has RootDeviceType => (is => 'ro', isa => 'Aws::EC2::DeviceType', traits => ['Unwrapped'], xmlname => 'rootDeviceType');
@@ -361,7 +361,7 @@ package Aws::EC2::ImportInstanceLaunchSpecification {
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Aws::EC2::ShutdownBehavior');
   has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType');
-  has Monitoring => (is => 'ro', isa => 'Str');
+  has Monitoring => (is => 'ro', isa => 'Bool');
   has Placement => (is => 'ro', isa => 'Aws::EC2::Placement');
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
@@ -406,7 +406,7 @@ package Aws::EC2::Instance {
   has Architecture => (is => 'ro', isa => 'Aws::EC2::ArchitectureValues', traits => ['Unwrapped'], xmlname => 'architecture');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceBlockDeviceMapping]', traits => ['Unwrapped'], xmlname => 'blockDeviceMapping');
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'clientToken');
-  has EbsOptimized => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ebsOptimized');
+  has EbsOptimized => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'ebsOptimized');
   has Hypervisor => (is => 'ro', isa => 'Aws::EC2::HypervisorType', traits => ['Unwrapped'], xmlname => 'hypervisor');
   has IamInstanceProfile => (is => 'ro', isa => 'Aws::EC2::IamInstanceProfile', traits => ['Unwrapped'], xmlname => 'iamInstanceProfile');
   has ImageId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'imageId');
@@ -429,7 +429,7 @@ package Aws::EC2::Instance {
   has RootDeviceName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'rootDeviceName');
   has RootDeviceType => (is => 'ro', isa => 'Aws::EC2::DeviceType', traits => ['Unwrapped'], xmlname => 'rootDeviceType');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::EC2::GroupIdentifier]', traits => ['Unwrapped'], xmlname => 'groupSet');
-  has SourceDestCheck => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'sourceDestCheck');
+  has SourceDestCheck => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'sourceDestCheck');
   has SpotInstanceRequestId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'spotInstanceRequestId');
   has SriovNetSupport => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'sriovNetSupport');
   has State => (is => 'ro', isa => 'Aws::EC2::InstanceState', traits => ['Unwrapped'], xmlname => 'instanceState');
@@ -490,7 +490,7 @@ package Aws::EC2::InstanceNetworkInterface {
   has PrivateDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateDnsName');
   has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateIpAddress');
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstancePrivateIpAddress]', traits => ['Unwrapped'], xmlname => 'privateIpAddressesSet');
-  has SourceDestCheck => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'sourceDestCheck');
+  has SourceDestCheck => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'sourceDestCheck');
   has Status => (is => 'ro', isa => 'Aws::EC2::NetworkInterfaceStatus', traits => ['Unwrapped'], xmlname => 'status');
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
@@ -509,7 +509,7 @@ package Aws::EC2::InstanceNetworkInterfaceAttachment {
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
   has AttachmentId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachmentId');
-  has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
   has DeviceIndex => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'deviceIndex');
   has Status => (is => 'ro', isa => 'Aws::EC2::AttachmentStatus', traits => ['Unwrapped'], xmlname => 'status');
 }
@@ -517,8 +517,8 @@ package Aws::EC2::InstanceNetworkInterfaceAttachment {
 package Aws::EC2::InstanceNetworkInterfaceSpecification {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Str');
-  has DeleteOnTermination => (is => 'ro', isa => 'Str');
+  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
   has DeviceIndex => (is => 'ro', isa => 'Int');
   has Groups => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -533,7 +533,7 @@ package Aws::EC2::InstancePrivateIpAddress {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Association => (is => 'ro', isa => 'Aws::EC2::InstanceNetworkInterfaceAssociation', traits => ['Unwrapped'], xmlname => 'association');
-  has Primary => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'primary');
+  has Primary => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'primary');
   has PrivateDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateDnsName');
   has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateIpAddress');
 }
@@ -645,13 +645,13 @@ package Aws::EC2::LaunchSpecification {
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AddressingType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'addressingType');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['Unwrapped'], xmlname => 'blockDeviceMapping');
-  has EbsOptimized => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ebsOptimized');
+  has EbsOptimized => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'ebsOptimized');
   has IamInstanceProfile => (is => 'ro', isa => 'Aws::EC2::IamInstanceProfileSpecification', traits => ['Unwrapped'], xmlname => 'iamInstanceProfile');
   has ImageId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'imageId');
   has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType', traits => ['Unwrapped'], xmlname => 'instanceType');
   has KernelId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'kernelId');
   has KeyName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyName');
-  has MonitoringEnabled => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'monitoringEnabled');
+  has MonitoringEnabled => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'monitoringEnabled');
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceNetworkInterfaceSpecification]', traits => ['Unwrapped'], xmlname => 'networkInterfaceSet');
   has Placement => (is => 'ro', isa => 'Aws::EC2::SpotPlacement', traits => ['Unwrapped'], xmlname => 'placement');
   has RamdiskId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ramdiskId');
@@ -671,7 +671,7 @@ package Aws::EC2::NetworkAcl {
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Associations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::NetworkAclAssociation]', traits => ['Unwrapped'], xmlname => 'associationSet');
   has Entries => (is => 'ro', isa => 'ArrayRef[Aws::EC2::NetworkAclEntry]', traits => ['Unwrapped'], xmlname => 'entrySet');
-  has IsDefault => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'default');
+  has IsDefault => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'default');
   has NetworkAclId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'networkAclId');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
@@ -689,7 +689,7 @@ package Aws::EC2::NetworkAclEntry {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has CidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cidrBlock');
-  has Egress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'egress');
+  has Egress => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'egress');
   has IcmpTypeCode => (is => 'ro', isa => 'Aws::EC2::IcmpTypeCode', traits => ['Unwrapped'], xmlname => 'icmpTypeCode');
   has PortRange => (is => 'ro', isa => 'Aws::EC2::PortRange', traits => ['Unwrapped'], xmlname => 'portRange');
   has Protocol => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'protocol');
@@ -712,8 +712,8 @@ package Aws::EC2::NetworkInterface {
   has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateIpAddress');
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::NetworkInterfacePrivateIpAddress]', traits => ['Unwrapped'], xmlname => 'privateIpAddressesSet');
   has RequesterId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'requesterId');
-  has RequesterManaged => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'requesterManaged');
-  has SourceDestCheck => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'sourceDestCheck');
+  has RequesterManaged => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'requesterManaged');
+  has SourceDestCheck => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'sourceDestCheck');
   has Status => (is => 'ro', isa => 'Aws::EC2::NetworkInterfaceStatus', traits => ['Unwrapped'], xmlname => 'status');
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
   has TagSet => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
@@ -734,7 +734,7 @@ package Aws::EC2::NetworkInterfaceAttachment {
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
   has AttachmentId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachmentId');
-  has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
   has DeviceIndex => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'deviceIndex');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has InstanceOwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceOwnerId');
@@ -745,14 +745,14 @@ package Aws::EC2::NetworkInterfaceAttachmentChanges {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AttachmentId => (is => 'ro', isa => 'Str');
-  has DeleteOnTermination => (is => 'ro', isa => 'Str');
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::EC2::NetworkInterfacePrivateIpAddress {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has Association => (is => 'ro', isa => 'Aws::EC2::NetworkInterfaceAssociation', traits => ['Unwrapped'], xmlname => 'association');
-  has Primary => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'primary');
+  has Primary => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'primary');
   has PrivateDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateDnsName');
   has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateIpAddress');
 }
@@ -783,7 +783,7 @@ package Aws::EC2::PortRange {
 package Aws::EC2::PriceSchedule {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
-  has Active => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'active');
+  has Active => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'active');
   has CurrencyCode => (is => 'ro', isa => 'Aws::EC2::CurrencyCodeValues', traits => ['Unwrapped'], xmlname => 'currencyCode');
   has Price => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'price');
   has Term => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'term');
@@ -807,7 +807,7 @@ package Aws::EC2::PricingDetail {
 package Aws::EC2::PrivateIpAddressSpecification {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
-  has Primary => (is => 'ro', isa => 'Str');
+  has Primary => (is => 'ro', isa => 'Bool');
   has PrivateIpAddress => (is => 'ro', isa => 'Str', required => 1);
 }
 
@@ -936,7 +936,7 @@ package Aws::EC2::ReservedInstancesOffering {
   has FixedPrice => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'fixedPrice');
   has InstanceTenancy => (is => 'ro', isa => 'Aws::EC2::Tenancy', traits => ['Unwrapped'], xmlname => 'instanceTenancy');
   has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType', traits => ['Unwrapped'], xmlname => 'instanceType');
-  has Marketplace => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'marketplace');
+  has Marketplace => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'marketplace');
   has OfferingType => (is => 'ro', isa => 'Aws::EC2::OfferingTypeValues', traits => ['Unwrapped'], xmlname => 'offeringType');
   has PricingDetails => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PricingDetail]', traits => ['Unwrapped'], xmlname => 'pricingDetailsSet');
   has ProductDescription => (is => 'ro', isa => 'Aws::EC2::RIProductDescription', traits => ['Unwrapped'], xmlname => 'productDescription');
@@ -971,7 +971,7 @@ package Aws::EC2::RouteTable {
 package Aws::EC2::RouteTableAssociation {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
-  has Main => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'main');
+  has Main => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'main');
   has RouteTableAssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'routeTableAssociationId');
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'routeTableId');
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
@@ -980,7 +980,7 @@ package Aws::EC2::RouteTableAssociation {
 package Aws::EC2::RunInstancesMonitoringEnabled {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
-  has Enabled => (is => 'ro', isa => 'Str', required => 1);
+  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
 }
 
 package Aws::EC2::S3Storage {
@@ -1034,7 +1034,7 @@ package Aws::EC2::SpotDatafeedSubscription {
 package Aws::EC2::SpotInstanceMonitoring {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
-  has Enabled => (is => 'ro', isa => 'Str', required => 1);
+  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
 }
 
 package Aws::EC2::SpotInstanceRequest {
@@ -1078,7 +1078,7 @@ package Aws::EC2::SpotLaunchSpecification {
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AddressingType => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]');
-  has EbsOptimized => (is => 'ro', isa => 'Str');
+  has EbsOptimized => (is => 'ro', isa => 'Bool');
   has IamInstanceProfile => (is => 'ro', isa => 'Aws::EC2::IamInstanceProfileSpecification');
   has ImageId => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType');
@@ -1130,8 +1130,8 @@ package Aws::EC2::Subnet {
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has AvailableIpAddressCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'availableIpAddressCount');
   has CidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cidrBlock');
-  has DefaultForAz => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'defaultForAz');
-  has MapPublicIpOnLaunch => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'mapPublicIpOnLaunch');
+  has DefaultForAz => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'defaultForAz');
+  has MapPublicIpOnLaunch => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'mapPublicIpOnLaunch');
   has State => (is => 'ro', isa => 'Aws::EC2::SubnetState', traits => ['Unwrapped'], xmlname => 'state');
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
@@ -1191,7 +1191,7 @@ package Aws::EC2::VolumeAttachment {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
-  has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
   has Device => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'device');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has State => (is => 'ro', isa => 'Aws::EC2::VolumeAttachmentState', traits => ['Unwrapped'], xmlname => 'status');
@@ -1253,7 +1253,7 @@ package Aws::EC2::Vpc {
   has CidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cidrBlock');
   has DhcpOptionsId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'dhcpOptionsId');
   has InstanceTenancy => (is => 'ro', isa => 'Aws::EC2::Tenancy', traits => ['Unwrapped'], xmlname => 'instanceTenancy');
-  has IsDefault => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'isDefault');
+  has IsDefault => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'isDefault');
   has State => (is => 'ro', isa => 'Aws::EC2::VpcState', traits => ['Unwrapped'], xmlname => 'state');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
@@ -1284,13 +1284,13 @@ package Aws::EC2::VpnConnection {
 package Aws::EC2::VpnConnectionOptions {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
-  has StaticRoutesOnly => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'staticRoutesOnly');
+  has StaticRoutesOnly => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'staticRoutesOnly');
 }
 
 package Aws::EC2::VpnConnectionOptionsSpecification {
   use Moose;
   with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
-  has StaticRoutesOnly => (is => 'ro', isa => 'Str');
+  has StaticRoutesOnly => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::EC2::VpnGateway {
@@ -1317,7 +1317,7 @@ package Aws::EC2::VpnStaticRoute {
 package Aws::EC2::AllocateAddress {
   use Moose;
   has Domain => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'AllocateAddress');
   has _returns => (isa => 'Aws::EC2::AllocateAddressResult', is => 'ro');
@@ -1325,7 +1325,7 @@ package Aws::EC2::AllocateAddress {
 }
 package Aws::EC2::AssignPrivateIpAddresses {
   use Moose;
-  has AllowReassignment => (is => 'ro', isa => 'Str');
+  has AllowReassignment => (is => 'ro', isa => 'Bool');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PrivateIpAddress' );
   has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int');
@@ -1337,8 +1337,8 @@ package Aws::EC2::AssignPrivateIpAddresses {
 package Aws::EC2::AssociateAddress {
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str');
-  has AllowReassociation => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has AllowReassociation => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
@@ -1351,7 +1351,7 @@ package Aws::EC2::AssociateAddress {
 package Aws::EC2::AssociateDhcpOptions {
   use Moose;
   has DhcpOptionsId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateDhcpOptions');
@@ -1360,7 +1360,7 @@ package Aws::EC2::AssociateDhcpOptions {
 }
 package Aws::EC2::AssociateRouteTable {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1370,7 +1370,7 @@ package Aws::EC2::AssociateRouteTable {
 }
 package Aws::EC2::AttachInternetGateway {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InternetGatewayId => (is => 'ro', isa => 'Str', required => 1);
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1381,7 +1381,7 @@ package Aws::EC2::AttachInternetGateway {
 package Aws::EC2::AttachNetworkInterface {
   use Moose;
   has DeviceIndex => (is => 'ro', isa => 'Int', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1392,7 +1392,7 @@ package Aws::EC2::AttachNetworkInterface {
 package Aws::EC2::AttachVolume {
   use Moose;
   has Device => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1402,7 +1402,7 @@ package Aws::EC2::AttachVolume {
 }
 package Aws::EC2::AttachVpnGateway {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
   has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1413,7 +1413,7 @@ package Aws::EC2::AttachVpnGateway {
 package Aws::EC2::AuthorizeSecurityGroupEgress {
   use Moose;
   has CidrIp => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has FromPort => (is => 'ro', isa => 'Int');
   has GroupId => (is => 'ro', isa => 'Str', required => 1);
   has IpPermissions => (is => 'ro', isa => 'ArrayRef[Aws::EC2::IpPermission]');
@@ -1429,7 +1429,7 @@ package Aws::EC2::AuthorizeSecurityGroupEgress {
 package Aws::EC2::AuthorizeSecurityGroupIngress {
   use Moose;
   has CidrIp => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has FromPort => (is => 'ro', isa => 'Int');
   has GroupId => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
@@ -1445,7 +1445,7 @@ package Aws::EC2::AuthorizeSecurityGroupIngress {
 }
 package Aws::EC2::BundleInstance {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has Storage => (is => 'ro', isa => 'Aws::EC2::Storage', required => 1);
 
@@ -1456,7 +1456,7 @@ package Aws::EC2::BundleInstance {
 package Aws::EC2::CancelBundleTask {
   use Moose;
   has BundleId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CancelBundleTask');
   has _returns => (isa => 'Aws::EC2::CancelBundleTaskResult', is => 'ro');
@@ -1465,7 +1465,7 @@ package Aws::EC2::CancelBundleTask {
 package Aws::EC2::CancelConversionTask {
   use Moose;
   has ConversionTaskId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has ReasonMessage => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CancelConversionTask');
@@ -1490,7 +1490,7 @@ package Aws::EC2::CancelReservedInstancesListing {
 }
 package Aws::EC2::CancelSpotInstanceRequests {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has SpotInstanceRequestIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SpotInstanceRequestId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CancelSpotInstanceRequests');
@@ -1499,7 +1499,7 @@ package Aws::EC2::CancelSpotInstanceRequests {
 }
 package Aws::EC2::ConfirmProductInstance {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has ProductCode => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1511,7 +1511,7 @@ package Aws::EC2::CopyImage {
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
   has SourceImageId => (is => 'ro', isa => 'Str', required => 1);
   has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
@@ -1523,7 +1523,7 @@ package Aws::EC2::CopyImage {
 package Aws::EC2::CopySnapshot {
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
   has SourceSnapshotId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1534,7 +1534,7 @@ package Aws::EC2::CopySnapshot {
 package Aws::EC2::CreateCustomerGateway {
   use Moose;
   has BgpAsn => (is => 'ro', isa => 'Int', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has PublicIp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'IpAddress' , required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1545,7 +1545,7 @@ package Aws::EC2::CreateCustomerGateway {
 package Aws::EC2::CreateDhcpOptions {
   use Moose;
   has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::DhcpConfiguration]', traits => ['NameInRequest'], request_name => 'DhcpConfiguration' , required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDhcpOptions');
   has _returns => (isa => 'Aws::EC2::CreateDhcpOptionsResult', is => 'ro');
@@ -1555,10 +1555,10 @@ package Aws::EC2::CreateImage {
   use Moose;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has NoReboot => (is => 'ro', isa => 'Str');
+  has NoReboot => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateImage');
   has _returns => (isa => 'Aws::EC2::CreateImageResult', is => 'ro');
@@ -1577,7 +1577,7 @@ package Aws::EC2::CreateInstanceExportTask {
 }
 package Aws::EC2::CreateInternetGateway {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInternetGateway');
   has _returns => (isa => 'Aws::EC2::CreateInternetGatewayResult', is => 'ro');
@@ -1585,7 +1585,7 @@ package Aws::EC2::CreateInternetGateway {
 }
 package Aws::EC2::CreateKeyPair {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has KeyName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateKeyPair');
@@ -1594,7 +1594,7 @@ package Aws::EC2::CreateKeyPair {
 }
 package Aws::EC2::CreateNetworkAcl {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNetworkAcl');
@@ -1604,8 +1604,8 @@ package Aws::EC2::CreateNetworkAcl {
 package Aws::EC2::CreateNetworkAclEntry {
   use Moose;
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
-  has Egress => (is => 'ro', isa => 'Str', required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool');
+  has Egress => (is => 'ro', isa => 'Bool', required => 1);
   has IcmpTypeCode => (is => 'ro', isa => 'Aws::EC2::IcmpTypeCode', traits => ['NameInRequest'], request_name => 'Icmp' );
   has NetworkAclId => (is => 'ro', isa => 'Str', required => 1);
   has PortRange => (is => 'ro', isa => 'Aws::EC2::PortRange');
@@ -1620,7 +1620,7 @@ package Aws::EC2::CreateNetworkAclEntry {
 package Aws::EC2::CreateNetworkInterface {
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PrivateIpAddressSpecification]');
@@ -1633,7 +1633,7 @@ package Aws::EC2::CreateNetworkInterface {
 }
 package Aws::EC2::CreatePlacementGroup {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has Strategy => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1655,7 +1655,7 @@ package Aws::EC2::CreateReservedInstancesListing {
 package Aws::EC2::CreateRoute {
   use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has GatewayId => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
@@ -1667,7 +1667,7 @@ package Aws::EC2::CreateRoute {
 }
 package Aws::EC2::CreateRouteTable {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRouteTable');
@@ -1677,7 +1677,7 @@ package Aws::EC2::CreateRouteTable {
 package Aws::EC2::CreateSecurityGroup {
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'GroupDescription' , required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has VpcId => (is => 'ro', isa => 'Str');
 
@@ -1688,7 +1688,7 @@ package Aws::EC2::CreateSecurityGroup {
 package Aws::EC2::CreateSnapshot {
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSnapshot');
@@ -1698,7 +1698,7 @@ package Aws::EC2::CreateSnapshot {
 package Aws::EC2::CreateSpotDatafeedSubscription {
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Prefix => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSpotDatafeedSubscription');
@@ -1709,7 +1709,7 @@ package Aws::EC2::CreateSubnet {
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSubnet');
@@ -1718,7 +1718,7 @@ package Aws::EC2::CreateSubnet {
 }
 package Aws::EC2::CreateTags {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Resources => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['NameInRequest'], request_name => 'Tag' , required => 1);
 
@@ -1729,7 +1729,7 @@ package Aws::EC2::CreateTags {
 package Aws::EC2::CreateVolume {
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Iops => (is => 'ro', isa => 'Int');
   has Size => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
@@ -1742,7 +1742,7 @@ package Aws::EC2::CreateVolume {
 package Aws::EC2::CreateVpc {
   use Moose;
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceTenancy => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpc');
@@ -1752,7 +1752,7 @@ package Aws::EC2::CreateVpc {
 package Aws::EC2::CreateVpnConnection {
   use Moose;
   has CustomerGatewayId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Options => (is => 'ro', isa => 'Aws::EC2::VpnConnectionOptionsSpecification');
   has Type => (is => 'ro', isa => 'Str', required => 1);
   has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
@@ -1773,7 +1773,7 @@ package Aws::EC2::CreateVpnConnectionRoute {
 package Aws::EC2::CreateVpnGateway {
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Type => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpnGateway');
@@ -1783,7 +1783,7 @@ package Aws::EC2::CreateVpnGateway {
 package Aws::EC2::DeleteCustomerGateway {
   use Moose;
   has CustomerGatewayId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCustomerGateway');
   has _returns => (isa => 'Aws::EC2::DeleteCustomerGatewayResult', is => 'ro');
@@ -1792,7 +1792,7 @@ package Aws::EC2::DeleteCustomerGateway {
 package Aws::EC2::DeleteDhcpOptions {
   use Moose;
   has DhcpOptionsId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDhcpOptions');
   has _returns => (isa => 'Aws::EC2::DeleteDhcpOptionsResult', is => 'ro');
@@ -1800,7 +1800,7 @@ package Aws::EC2::DeleteDhcpOptions {
 }
 package Aws::EC2::DeleteInternetGateway {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InternetGatewayId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteInternetGateway');
@@ -1809,7 +1809,7 @@ package Aws::EC2::DeleteInternetGateway {
 }
 package Aws::EC2::DeleteKeyPair {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has KeyName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteKeyPair');
@@ -1818,7 +1818,7 @@ package Aws::EC2::DeleteKeyPair {
 }
 package Aws::EC2::DeleteNetworkAcl {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has NetworkAclId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteNetworkAcl');
@@ -1827,8 +1827,8 @@ package Aws::EC2::DeleteNetworkAcl {
 }
 package Aws::EC2::DeleteNetworkAclEntry {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
-  has Egress => (is => 'ro', isa => 'Str', required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool');
+  has Egress => (is => 'ro', isa => 'Bool', required => 1);
   has NetworkAclId => (is => 'ro', isa => 'Str', required => 1);
   has RuleNumber => (is => 'ro', isa => 'Int', required => 1);
 
@@ -1838,7 +1838,7 @@ package Aws::EC2::DeleteNetworkAclEntry {
 }
 package Aws::EC2::DeleteNetworkInterface {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteNetworkInterface');
@@ -1847,7 +1847,7 @@ package Aws::EC2::DeleteNetworkInterface {
 }
 package Aws::EC2::DeletePlacementGroup {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeletePlacementGroup');
@@ -1857,7 +1857,7 @@ package Aws::EC2::DeletePlacementGroup {
 package Aws::EC2::DeleteRoute {
   use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRoute');
@@ -1866,7 +1866,7 @@ package Aws::EC2::DeleteRoute {
 }
 package Aws::EC2::DeleteRouteTable {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRouteTable');
@@ -1875,7 +1875,7 @@ package Aws::EC2::DeleteRouteTable {
 }
 package Aws::EC2::DeleteSecurityGroup {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has GroupId => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
 
@@ -1885,7 +1885,7 @@ package Aws::EC2::DeleteSecurityGroup {
 }
 package Aws::EC2::DeleteSnapshot {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has SnapshotId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSnapshot');
@@ -1894,7 +1894,7 @@ package Aws::EC2::DeleteSnapshot {
 }
 package Aws::EC2::DeleteSpotDatafeedSubscription {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSpotDatafeedSubscription');
   has _returns => (isa => 'Aws::EC2::DeleteSpotDatafeedSubscriptionResult', is => 'ro');
@@ -1902,7 +1902,7 @@ package Aws::EC2::DeleteSpotDatafeedSubscription {
 }
 package Aws::EC2::DeleteSubnet {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSubnet');
@@ -1911,7 +1911,7 @@ package Aws::EC2::DeleteSubnet {
 }
 package Aws::EC2::DeleteTags {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Resources => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
@@ -1921,7 +1921,7 @@ package Aws::EC2::DeleteTags {
 }
 package Aws::EC2::DeleteVolume {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVolume');
@@ -1930,7 +1930,7 @@ package Aws::EC2::DeleteVolume {
 }
 package Aws::EC2::DeleteVpc {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpc');
@@ -1939,7 +1939,7 @@ package Aws::EC2::DeleteVpc {
 }
 package Aws::EC2::DeleteVpnConnection {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VpnConnectionId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpnConnection');
@@ -1957,7 +1957,7 @@ package Aws::EC2::DeleteVpnConnectionRoute {
 }
 package Aws::EC2::DeleteVpnGateway {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpnGateway');
@@ -1966,7 +1966,7 @@ package Aws::EC2::DeleteVpnGateway {
 }
 package Aws::EC2::DeregisterImage {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterImage');
@@ -1976,7 +1976,7 @@ package Aws::EC2::DeregisterImage {
 package Aws::EC2::DescribeAccountAttributes {
   use Moose;
   has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AttributeName' );
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAccountAttributes');
   has _returns => (isa => 'Aws::EC2::DescribeAccountAttributesResult', is => 'ro');
@@ -1985,7 +1985,7 @@ package Aws::EC2::DescribeAccountAttributes {
 package Aws::EC2::DescribeAddresses {
   use Moose;
   has AllocationIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AllocationId' );
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has PublicIps => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PublicIp' );
 
@@ -1995,7 +1995,7 @@ package Aws::EC2::DescribeAddresses {
 }
 package Aws::EC2::DescribeAvailabilityZones {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has ZoneNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ZoneName' );
 
@@ -2006,7 +2006,7 @@ package Aws::EC2::DescribeAvailabilityZones {
 package Aws::EC2::DescribeBundleTasks {
   use Moose;
   has BundleIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'BundleId' );
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeBundleTasks');
@@ -2016,7 +2016,7 @@ package Aws::EC2::DescribeBundleTasks {
 package Aws::EC2::DescribeConversionTasks {
   use Moose;
   has ConversionTaskIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ConversionTaskId' );
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConversionTasks');
@@ -2026,7 +2026,7 @@ package Aws::EC2::DescribeConversionTasks {
 package Aws::EC2::DescribeCustomerGateways {
   use Moose;
   has CustomerGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CustomerGatewayId' );
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCustomerGateways');
@@ -2036,7 +2036,7 @@ package Aws::EC2::DescribeCustomerGateways {
 package Aws::EC2::DescribeDhcpOptions {
   use Moose;
   has DhcpOptionsIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'DhcpOptionsId' );
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDhcpOptions');
@@ -2054,7 +2054,7 @@ package Aws::EC2::DescribeExportTasks {
 package Aws::EC2::DescribeImageAttribute {
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeImageAttribute');
@@ -2063,7 +2063,7 @@ package Aws::EC2::DescribeImageAttribute {
 }
 package Aws::EC2::DescribeImages {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has ExecutableUsers => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ExecutableBy' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has ImageIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ImageId' );
@@ -2076,7 +2076,7 @@ package Aws::EC2::DescribeImages {
 package Aws::EC2::DescribeInstanceAttribute {
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInstanceAttribute');
@@ -2085,9 +2085,9 @@ package Aws::EC2::DescribeInstanceAttribute {
 }
 package Aws::EC2::DescribeInstanceStatus {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has IncludeAllInstances => (is => 'ro', isa => 'Str');
+  has IncludeAllInstances => (is => 'ro', isa => 'Bool');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -2098,7 +2098,7 @@ package Aws::EC2::DescribeInstanceStatus {
 }
 package Aws::EC2::DescribeInstances {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' );
   has MaxResults => (is => 'ro', isa => 'Int');
@@ -2110,7 +2110,7 @@ package Aws::EC2::DescribeInstances {
 }
 package Aws::EC2::DescribeInternetGateways {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has InternetGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InternetGatewayId' );
 
@@ -2120,7 +2120,7 @@ package Aws::EC2::DescribeInternetGateways {
 }
 package Aws::EC2::DescribeKeyPairs {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has KeyNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'KeyName' );
 
@@ -2130,7 +2130,7 @@ package Aws::EC2::DescribeKeyPairs {
 }
 package Aws::EC2::DescribeNetworkAcls {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has NetworkAclIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'NetworkAclId' );
 
@@ -2142,7 +2142,7 @@ package Aws::EC2::DescribeNetworkInterfaceAttribute {
   use Moose;
   has Attachment => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Groups => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'GroupSet' );
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has SourceDestCheck => (is => 'ro', isa => 'Str');
@@ -2153,7 +2153,7 @@ package Aws::EC2::DescribeNetworkInterfaceAttribute {
 }
 package Aws::EC2::DescribeNetworkInterfaces {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has NetworkInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'NetworkInterfaceId' );
 
@@ -2163,7 +2163,7 @@ package Aws::EC2::DescribeNetworkInterfaces {
 }
 package Aws::EC2::DescribePlacementGroups {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupName' );
 
@@ -2173,7 +2173,7 @@ package Aws::EC2::DescribePlacementGroups {
 }
 package Aws::EC2::DescribeRegions {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has RegionNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RegionName' );
 
@@ -2183,7 +2183,7 @@ package Aws::EC2::DescribeRegions {
 }
 package Aws::EC2::DescribeReservedInstances {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has OfferingType => (is => 'ro', isa => 'Str');
   has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesId' );
@@ -2215,9 +2215,9 @@ package Aws::EC2::DescribeReservedInstancesModifications {
 package Aws::EC2::DescribeReservedInstancesOfferings {
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has IncludeMarketplace => (is => 'ro', isa => 'Str');
+  has IncludeMarketplace => (is => 'ro', isa => 'Bool');
   has InstanceTenancy => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
   has MaxDuration => (is => 'ro', isa => 'Num');
@@ -2235,7 +2235,7 @@ package Aws::EC2::DescribeReservedInstancesOfferings {
 }
 package Aws::EC2::DescribeRouteTables {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RouteTableId' );
 
@@ -2245,7 +2245,7 @@ package Aws::EC2::DescribeRouteTables {
 }
 package Aws::EC2::DescribeSecurityGroups {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has GroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupId' );
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupName' );
@@ -2257,7 +2257,7 @@ package Aws::EC2::DescribeSecurityGroups {
 package Aws::EC2::DescribeSnapshotAttribute {
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has SnapshotId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotAttribute');
@@ -2266,7 +2266,7 @@ package Aws::EC2::DescribeSnapshotAttribute {
 }
 package Aws::EC2::DescribeSnapshots {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has OwnerIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'Owner' );
   has RestorableByUserIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RestorableBy' );
@@ -2278,7 +2278,7 @@ package Aws::EC2::DescribeSnapshots {
 }
 package Aws::EC2::DescribeSpotDatafeedSubscription {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSpotDatafeedSubscription');
   has _returns => (isa => 'Aws::EC2::DescribeSpotDatafeedSubscriptionResult', is => 'ro');
@@ -2286,7 +2286,7 @@ package Aws::EC2::DescribeSpotDatafeedSubscription {
 }
 package Aws::EC2::DescribeSpotInstanceRequests {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has SpotInstanceRequestIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SpotInstanceRequestId' );
 
@@ -2297,7 +2297,7 @@ package Aws::EC2::DescribeSpotInstanceRequests {
 package Aws::EC2::DescribeSpotPriceHistory {
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has EndTime => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceType' );
@@ -2312,7 +2312,7 @@ package Aws::EC2::DescribeSpotPriceHistory {
 }
 package Aws::EC2::DescribeSubnets {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetId' );
 
@@ -2322,7 +2322,7 @@ package Aws::EC2::DescribeSubnets {
 }
 package Aws::EC2::DescribeTags {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -2334,7 +2334,7 @@ package Aws::EC2::DescribeTags {
 package Aws::EC2::DescribeVolumeAttribute {
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVolumeAttribute');
@@ -2343,7 +2343,7 @@ package Aws::EC2::DescribeVolumeAttribute {
 }
 package Aws::EC2::DescribeVolumeStatus {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -2355,7 +2355,7 @@ package Aws::EC2::DescribeVolumeStatus {
 }
 package Aws::EC2::DescribeVolumes {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has VolumeIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VolumeId' );
 
@@ -2366,7 +2366,7 @@ package Aws::EC2::DescribeVolumes {
 package Aws::EC2::DescribeVpcAttribute {
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpcAttribute');
@@ -2375,7 +2375,7 @@ package Aws::EC2::DescribeVpcAttribute {
 }
 package Aws::EC2::DescribeVpcs {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has VpcIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcId' );
 
@@ -2385,7 +2385,7 @@ package Aws::EC2::DescribeVpcs {
 }
 package Aws::EC2::DescribeVpnConnections {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has VpnConnectionIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpnConnectionId' );
 
@@ -2395,7 +2395,7 @@ package Aws::EC2::DescribeVpnConnections {
 }
 package Aws::EC2::DescribeVpnGateways {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has VpnGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpnGatewayId' );
 
@@ -2405,7 +2405,7 @@ package Aws::EC2::DescribeVpnGateways {
 }
 package Aws::EC2::DetachInternetGateway {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InternetGatewayId => (is => 'ro', isa => 'Str', required => 1);
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -2416,8 +2416,8 @@ package Aws::EC2::DetachInternetGateway {
 package Aws::EC2::DetachNetworkInterface {
   use Moose;
   has AttachmentId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
-  has Force => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
+  has Force => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DetachNetworkInterface');
   has _returns => (isa => 'Aws::EC2::DetachNetworkInterfaceResult', is => 'ro');
@@ -2426,8 +2426,8 @@ package Aws::EC2::DetachNetworkInterface {
 package Aws::EC2::DetachVolume {
   use Moose;
   has Device => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
-  has Force => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
+  has Force => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -2437,7 +2437,7 @@ package Aws::EC2::DetachVolume {
 }
 package Aws::EC2::DetachVpnGateway {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
   has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -2457,7 +2457,7 @@ package Aws::EC2::DisableVgwRoutePropagation {
 package Aws::EC2::DisassociateAddress {
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has PublicIp => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateAddress');
@@ -2467,7 +2467,7 @@ package Aws::EC2::DisassociateAddress {
 package Aws::EC2::DisassociateRouteTable {
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateRouteTable');
   has _returns => (isa => 'Aws::EC2::DisassociateRouteTableResult', is => 'ro');
@@ -2484,7 +2484,7 @@ package Aws::EC2::EnableVgwRoutePropagation {
 }
 package Aws::EC2::EnableVolumeIO {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'EnableVolumeIO');
@@ -2493,7 +2493,7 @@ package Aws::EC2::EnableVolumeIO {
 }
 package Aws::EC2::GetConsoleOutput {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetConsoleOutput');
@@ -2502,7 +2502,7 @@ package Aws::EC2::GetConsoleOutput {
 }
 package Aws::EC2::GetPasswordData {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'GetPasswordData');
@@ -2513,7 +2513,7 @@ package Aws::EC2::ImportInstance {
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has DiskImages => (is => 'ro', isa => 'ArrayRef[Aws::EC2::DiskImage]', traits => ['NameInRequest'], request_name => 'DiskImage' );
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has LaunchSpecification => (is => 'ro', isa => 'Aws::EC2::ImportInstanceLaunchSpecification');
   has Platform => (is => 'ro', isa => 'Str', required => 1);
 
@@ -2523,7 +2523,7 @@ package Aws::EC2::ImportInstance {
 }
 package Aws::EC2::ImportKeyPair {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has KeyName => (is => 'ro', isa => 'Str', required => 1);
   has PublicKeyMaterial => (is => 'ro', isa => 'Str', required => 1);
 
@@ -2535,7 +2535,7 @@ package Aws::EC2::ImportVolume {
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Image => (is => 'ro', isa => 'Aws::EC2::DiskImageDetail');
   has Volume => (is => 'ro', isa => 'Aws::EC2::VolumeDetail');
 
@@ -2547,7 +2547,7 @@ package Aws::EC2::ModifyImageAttribute {
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Aws::EC2::AttributeValue');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
   has LaunchPermission => (is => 'ro', isa => 'Aws::EC2::LaunchPermissionModifications');
   has OperationType => (is => 'ro', isa => 'Str');
@@ -2565,7 +2565,7 @@ package Aws::EC2::ModifyInstanceAttribute {
   has Attribute => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceBlockDeviceMappingSpecification]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has DisableApiTermination => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has EbsOptimized => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue');
   has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupId' );
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
@@ -2586,7 +2586,7 @@ package Aws::EC2::ModifyNetworkInterfaceAttribute {
   use Moose;
   has Attachment => (is => 'ro', isa => 'Aws::EC2::NetworkInterfaceAttachmentChanges');
   has Description => (is => 'ro', isa => 'Aws::EC2::AttributeValue');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has SourceDestCheck => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue');
@@ -2609,7 +2609,7 @@ package Aws::EC2::ModifySnapshotAttribute {
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str');
   has CreateVolumePermission => (is => 'ro', isa => 'Aws::EC2::CreateVolumePermissionModifications');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'UserGroup' );
   has OperationType => (is => 'ro', isa => 'Str');
   has SnapshotId => (is => 'ro', isa => 'Str', required => 1);
@@ -2621,8 +2621,8 @@ package Aws::EC2::ModifySnapshotAttribute {
 }
 package Aws::EC2::ModifyVolumeAttribute {
   use Moose;
-  has AutoEnableIO => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has AutoEnableIO => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyVolumeAttribute');
@@ -2641,7 +2641,7 @@ package Aws::EC2::ModifyVpcAttribute {
 }
 package Aws::EC2::MonitorInstances {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'MonitorInstances');
@@ -2650,7 +2650,7 @@ package Aws::EC2::MonitorInstances {
 }
 package Aws::EC2::PurchaseReservedInstancesOffering {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
   has LimitPrice => (is => 'ro', isa => 'Aws::EC2::ReservedInstanceLimitPrice');
   has ReservedInstancesOfferingId => (is => 'ro', isa => 'Str', required => 1);
@@ -2661,7 +2661,7 @@ package Aws::EC2::PurchaseReservedInstancesOffering {
 }
 package Aws::EC2::RebootInstances {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RebootInstances');
@@ -2673,7 +2673,7 @@ package Aws::EC2::RegisterImage {
   has Architecture => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has ImageLocation => (is => 'ro', isa => 'Str');
   has KernelId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -2689,7 +2689,7 @@ package Aws::EC2::RegisterImage {
 package Aws::EC2::ReleaseAddress {
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has PublicIp => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ReleaseAddress');
@@ -2699,7 +2699,7 @@ package Aws::EC2::ReleaseAddress {
 package Aws::EC2::ReplaceNetworkAclAssociation {
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has NetworkAclId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceNetworkAclAssociation');
@@ -2709,8 +2709,8 @@ package Aws::EC2::ReplaceNetworkAclAssociation {
 package Aws::EC2::ReplaceNetworkAclEntry {
   use Moose;
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
-  has Egress => (is => 'ro', isa => 'Str', required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool');
+  has Egress => (is => 'ro', isa => 'Bool', required => 1);
   has IcmpTypeCode => (is => 'ro', isa => 'Aws::EC2::IcmpTypeCode', traits => ['NameInRequest'], request_name => 'Icmp' );
   has NetworkAclId => (is => 'ro', isa => 'Str', required => 1);
   has PortRange => (is => 'ro', isa => 'Aws::EC2::PortRange');
@@ -2725,7 +2725,7 @@ package Aws::EC2::ReplaceNetworkAclEntry {
 package Aws::EC2::ReplaceRoute {
   use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has GatewayId => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
@@ -2738,7 +2738,7 @@ package Aws::EC2::ReplaceRoute {
 package Aws::EC2::ReplaceRouteTableAssociation {
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceRouteTableAssociation');
@@ -2748,7 +2748,7 @@ package Aws::EC2::ReplaceRouteTableAssociation {
 package Aws::EC2::ReportInstanceStatus {
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has EndTime => (is => 'ro', isa => 'Str');
   has Instances => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' );
   has ReasonCodes => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReasonCode' );
@@ -2762,7 +2762,7 @@ package Aws::EC2::ReportInstanceStatus {
 package Aws::EC2::RequestSpotInstances {
   use Moose;
   has AvailabilityZoneGroup => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has LaunchGroup => (is => 'ro', isa => 'Str');
   has LaunchSpecification => (is => 'ro', isa => 'Aws::EC2::SpotLaunchSpecification');
@@ -2778,7 +2778,7 @@ package Aws::EC2::RequestSpotInstances {
 package Aws::EC2::ResetImageAttribute {
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ResetImageAttribute');
@@ -2788,7 +2788,7 @@ package Aws::EC2::ResetImageAttribute {
 package Aws::EC2::ResetInstanceAttribute {
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ResetInstanceAttribute');
@@ -2797,7 +2797,7 @@ package Aws::EC2::ResetInstanceAttribute {
 }
 package Aws::EC2::ResetNetworkInterfaceAttribute {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has SourceDestCheck => (is => 'ro', isa => 'Str');
 
@@ -2808,7 +2808,7 @@ package Aws::EC2::ResetNetworkInterfaceAttribute {
 package Aws::EC2::ResetSnapshotAttribute {
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has SnapshotId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ResetSnapshotAttribute');
@@ -2818,7 +2818,7 @@ package Aws::EC2::ResetSnapshotAttribute {
 package Aws::EC2::RevokeSecurityGroupEgress {
   use Moose;
   has CidrIp => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has FromPort => (is => 'ro', isa => 'Int');
   has GroupId => (is => 'ro', isa => 'Str', required => 1);
   has IpPermissions => (is => 'ro', isa => 'ArrayRef[Aws::EC2::IpPermission]');
@@ -2834,7 +2834,7 @@ package Aws::EC2::RevokeSecurityGroupEgress {
 package Aws::EC2::RevokeSecurityGroupIngress {
   use Moose;
   has CidrIp => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has FromPort => (is => 'ro', isa => 'Int');
   has GroupId => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
@@ -2853,9 +2853,9 @@ package Aws::EC2::RunInstances {
   has AdditionalInfo => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has ClientToken => (is => 'ro', isa => 'Str');
-  has DisableApiTermination => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
-  has EbsOptimized => (is => 'ro', isa => 'Str');
+  has DisableApiTermination => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool');
+  has EbsOptimized => (is => 'ro', isa => 'Bool');
   has IamInstanceProfile => (is => 'ro', isa => 'Aws::EC2::IamInstanceProfileSpecification');
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
   has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Str');
@@ -2881,7 +2881,7 @@ package Aws::EC2::RunInstances {
 package Aws::EC2::StartInstances {
   use Moose;
   has AdditionalInfo => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'StartInstances');
@@ -2890,8 +2890,8 @@ package Aws::EC2::StartInstances {
 }
 package Aws::EC2::StopInstances {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
-  has Force => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
+  has Force => (is => 'ro', isa => 'Bool');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'StopInstances');
@@ -2900,7 +2900,7 @@ package Aws::EC2::StopInstances {
 }
 package Aws::EC2::TerminateInstances {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateInstances');
@@ -2918,7 +2918,7 @@ package Aws::EC2::UnassignPrivateIpAddresses {
 }
 package Aws::EC2::UnmonitorInstances {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'UnmonitorInstances');
@@ -2956,7 +2956,7 @@ package Aws::EC2::AttachVolumeResult {
   use Moose;
   with 'AWS::API::UnwrappedParser';
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
-  has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
   has Device => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'device');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status');
@@ -3417,7 +3417,7 @@ package Aws::EC2::DetachVolumeResult {
   use Moose;
   with 'AWS::API::UnwrappedParser';
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
-  has DeleteOnTermination => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
   has Device => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'device');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status');

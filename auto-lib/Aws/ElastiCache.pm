@@ -14,7 +14,7 @@ package Aws::ElastiCache::AvailabilityZone {
 package Aws::ElastiCache::CacheCluster {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str');
   has CacheClusterStatus => (is => 'ro', isa => 'Str');
@@ -64,7 +64,7 @@ package Aws::ElastiCache::CacheNodeTypeSpecificParameter {
   has CacheNodeTypeSpecificValues => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheNodeTypeSpecificValue]');
   has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has IsModifiable => (is => 'ro', isa => 'Str');
+  has IsModifiable => (is => 'ro', isa => 'Bool');
   has MinimumEngineVersion => (is => 'ro', isa => 'Str');
   has ParameterName => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str');
@@ -183,7 +183,7 @@ package Aws::ElastiCache::Parameter {
   has AllowedValues => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has IsModifiable => (is => 'ro', isa => 'Str');
+  has IsModifiable => (is => 'ro', isa => 'Bool');
   has MinimumEngineVersion => (is => 'ro', isa => 'Str');
   has ParameterName => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
@@ -287,7 +287,7 @@ package Aws::ElastiCache::AuthorizeCacheSecurityGroupIngress {
 }
 package Aws::ElastiCache::CreateCacheCluster {
   use Moose;
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
@@ -382,7 +382,7 @@ package Aws::ElastiCache::DeleteCacheSubnetGroup {
 package Aws::ElastiCache::DeleteReplicationGroup {
   use Moose;
   has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
-  has RetainPrimaryCluster => (is => 'ro', isa => 'Str');
+  has RetainPrimaryCluster => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteReplicationGroup');
   has _returns => (isa => 'Aws::ElastiCache::DeleteReplicationGroupResult', is => 'ro');
@@ -393,7 +393,7 @@ package Aws::ElastiCache::DescribeCacheClusters {
   has CacheClusterId => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
-  has ShowCacheNodeInfo => (is => 'ro', isa => 'Str');
+  has ShowCacheNodeInfo => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCacheClusters');
   has _returns => (isa => 'Aws::ElastiCache::DescribeCacheClustersResult', is => 'ro');
@@ -402,7 +402,7 @@ package Aws::ElastiCache::DescribeCacheClusters {
 package Aws::ElastiCache::DescribeCacheEngineVersions {
   use Moose;
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has DefaultOnly => (is => 'ro', isa => 'Str');
+  has DefaultOnly => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -518,8 +518,8 @@ package Aws::ElastiCache::DescribeReservedCacheNodesOfferings {
 }
 package Aws::ElastiCache::ModifyCacheCluster {
   use Moose;
-  has ApplyImmediately => (is => 'ro', isa => 'Str');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
+  has ApplyImmediately => (is => 'ro', isa => 'Bool');
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
   has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CacheNodeId' );
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
@@ -556,8 +556,8 @@ package Aws::ElastiCache::ModifyCacheSubnetGroup {
 }
 package Aws::ElastiCache::ModifyReplicationGroup {
   use Moose;
-  has ApplyImmediately => (is => 'ro', isa => 'Str');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Str');
+  has ApplyImmediately => (is => 'ro', isa => 'Bool');
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CacheSecurityGroupName' );
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -596,7 +596,7 @@ package Aws::ElastiCache::ResetCacheParameterGroup {
   use Moose;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has ParameterNameValues => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ParameterNameValue]', traits => ['NameInRequest'], request_name => 'ParameterNameValue' , required => 1);
-  has ResetAllParameters => (is => 'ro', isa => 'Str');
+  has ResetAllParameters => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ResetCacheParameterGroup');
   has _returns => (isa => 'Aws::ElastiCache::ResetCacheParameterGroupResult', is => 'ro');

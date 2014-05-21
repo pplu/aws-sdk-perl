@@ -24,14 +24,14 @@ package Aws::CloudSearch::DefaultSearchFieldStatus {
 package Aws::CloudSearch::DomainStatus {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has Created => (is => 'ro', isa => 'Str');
-  has Deleted => (is => 'ro', isa => 'Str');
+  has Created => (is => 'ro', isa => 'Bool');
+  has Deleted => (is => 'ro', isa => 'Bool');
   has DocService => (is => 'ro', isa => 'Aws::CloudSearch::ServiceEndpoint');
   has DomainId => (is => 'ro', isa => 'Str', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has NumSearchableDocs => (is => 'ro', isa => 'Int');
-  has Processing => (is => 'ro', isa => 'Str');
-  has RequiresIndexDocuments => (is => 'ro', isa => 'Str', required => 1);
+  has Processing => (is => 'ro', isa => 'Bool');
+  has RequiresIndexDocuments => (is => 'ro', isa => 'Bool', required => 1);
   has SearchInstanceCount => (is => 'ro', isa => 'Int');
   has SearchInstanceType => (is => 'ro', isa => 'Str');
   has SearchPartitionCount => (is => 'ro', isa => 'Int');
@@ -60,9 +60,9 @@ package Aws::CloudSearch::LiteralOptions {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DefaultValue => (is => 'ro', isa => 'Str');
-  has FacetEnabled => (is => 'ro', isa => 'Str');
-  has ResultEnabled => (is => 'ro', isa => 'Str');
-  has SearchEnabled => (is => 'ro', isa => 'Str');
+  has FacetEnabled => (is => 'ro', isa => 'Bool');
+  has ResultEnabled => (is => 'ro', isa => 'Bool');
+  has SearchEnabled => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::CloudSearch::NamedRankExpression {
@@ -76,7 +76,7 @@ package Aws::CloudSearch::OptionStatus {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CreationDate => (is => 'ro', isa => 'Str', required => 1);
-  has PendingDeletion => (is => 'ro', isa => 'Str');
+  has PendingDeletion => (is => 'ro', isa => 'Bool');
   has State => (is => 'ro', isa => 'Aws::CloudSearch::OptionState', required => 1);
   has UpdateDate => (is => 'ro', isa => 'Str', required => 1);
   has UpdateVersion => (is => 'ro', isa => 'Int');
@@ -160,8 +160,8 @@ package Aws::CloudSearch::TextOptions {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DefaultValue => (is => 'ro', isa => 'Str');
-  has FacetEnabled => (is => 'ro', isa => 'Str');
-  has ResultEnabled => (is => 'ro', isa => 'Str');
+  has FacetEnabled => (is => 'ro', isa => 'Bool');
+  has ResultEnabled => (is => 'ro', isa => 'Bool');
   has TextProcessor => (is => 'ro', isa => 'Str');
 }
 

@@ -75,14 +75,14 @@ package Aws::AutoScaling::BlockDeviceMapping {
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has DeviceName => (is => 'ro', isa => 'Str', required => 1);
   has Ebs => (is => 'ro', isa => 'Aws::AutoScaling::Ebs');
-  has NoDevice => (is => 'ro', isa => 'Str');
+  has NoDevice => (is => 'ro', isa => 'Bool');
   has VirtualName => (is => 'ro', isa => 'Str');
 }
 
 package Aws::AutoScaling::Ebs {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has DeleteOnTermination => (is => 'ro', isa => 'Str');
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool');
   has Iops => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
   has VolumeSize => (is => 'ro', isa => 'Int');
@@ -116,16 +116,16 @@ package Aws::AutoScaling::Instance {
 package Aws::AutoScaling::InstanceMonitoring {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has Enabled => (is => 'ro', isa => 'Str');
+  has Enabled => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::AutoScaling::LaunchConfiguration {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Str');
+  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::BlockDeviceMapping]');
   has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
-  has EbsOptimized => (is => 'ro', isa => 'Str');
+  has EbsOptimized => (is => 'ro', isa => 'Bool');
   has IamInstanceProfile => (is => 'ro', isa => 'Str');
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
   has InstanceMonitoring => (is => 'ro', isa => 'Aws::AutoScaling::InstanceMonitoring');
@@ -206,7 +206,7 @@ package Aws::AutoScaling::Tag {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Key => (is => 'ro', isa => 'Str', required => 1);
-  has PropagateAtLaunch => (is => 'ro', isa => 'Str');
+  has PropagateAtLaunch => (is => 'ro', isa => 'Bool');
   has ResourceId => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
@@ -216,7 +216,7 @@ package Aws::AutoScaling::TagDescription {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has Key => (is => 'ro', isa => 'Str');
-  has PropagateAtLaunch => (is => 'ro', isa => 'Str');
+  has PropagateAtLaunch => (is => 'ro', isa => 'Bool');
   has ResourceId => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
@@ -257,9 +257,9 @@ package Aws::AutoScaling::CreateAutoScalingGroup {
 }
 package Aws::AutoScaling::CreateLaunchConfiguration {
   use Moose;
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Str');
+  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::BlockDeviceMapping]');
-  has EbsOptimized => (is => 'ro', isa => 'Str');
+  has EbsOptimized => (is => 'ro', isa => 'Bool');
   has IamInstanceProfile => (is => 'ro', isa => 'Str');
   has ImageId => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
@@ -289,7 +289,7 @@ package Aws::AutoScaling::CreateOrUpdateTags {
 package Aws::AutoScaling::DeleteAutoScalingGroup {
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has ForceDelete => (is => 'ro', isa => 'Str');
+  has ForceDelete => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAutoScalingGroup');
   has _returns => (isa => 'Aws::AutoScaling::DeleteAutoScalingGroupResult', is => 'ro');
@@ -487,7 +487,7 @@ package Aws::AutoScaling::EnableMetricsCollection {
 package Aws::AutoScaling::ExecutePolicy {
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
-  has HonorCooldown => (is => 'ro', isa => 'Str');
+  has HonorCooldown => (is => 'ro', isa => 'Bool');
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ExecutePolicy');
@@ -546,7 +546,7 @@ package Aws::AutoScaling::SetDesiredCapacity {
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has DesiredCapacity => (is => 'ro', isa => 'Int', required => 1);
-  has HonorCooldown => (is => 'ro', isa => 'Str');
+  has HonorCooldown => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SetDesiredCapacity');
   has _returns => (isa => 'Aws::AutoScaling::SetDesiredCapacityResult', is => 'ro');
@@ -556,7 +556,7 @@ package Aws::AutoScaling::SetInstanceHealth {
   use Moose;
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has ShouldRespectGracePeriod => (is => 'ro', isa => 'Str');
+  has ShouldRespectGracePeriod => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'SetInstanceHealth');
   has _returns => (isa => 'Aws::AutoScaling::SetInstanceHealthResult', is => 'ro');
@@ -574,7 +574,7 @@ package Aws::AutoScaling::SuspendProcesses {
 package Aws::AutoScaling::TerminateInstanceInAutoScalingGroup {
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has ShouldDecrementDesiredCapacity => (is => 'ro', isa => 'Str', required => 1);
+  has ShouldDecrementDesiredCapacity => (is => 'ro', isa => 'Bool', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateInstanceInAutoScalingGroup');
   has _returns => (isa => 'Aws::AutoScaling::TerminateInstanceInAutoScalingGroupResult', is => 'ro');

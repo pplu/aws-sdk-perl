@@ -56,7 +56,7 @@ package Aws::CloudWatch::Metric {
 package Aws::CloudWatch::MetricAlarm {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has ActionsEnabled => (is => 'ro', isa => 'Str');
+  has ActionsEnabled => (is => 'ro', isa => 'Bool');
   has AlarmActions => (is => 'ro', isa => 'ArrayRef[Str]');
   has AlarmArn => (is => 'ro', isa => 'Str');
   has AlarmConfigurationUpdatedTimestamp => (is => 'ro', isa => 'Str');
@@ -192,7 +192,7 @@ package Aws::CloudWatch::ListMetrics {
 }
 package Aws::CloudWatch::PutMetricAlarm {
   use Moose;
-  has ActionsEnabled => (is => 'ro', isa => 'Str');
+  has ActionsEnabled => (is => 'ro', isa => 'Bool');
   has AlarmActions => (is => 'ro', isa => 'ArrayRef[Str]');
   has AlarmDescription => (is => 'ro', isa => 'Str');
   has AlarmName => (is => 'ro', isa => 'Str', required => 1);

@@ -20,7 +20,7 @@ package Aws::RedShift::AvailabilityZone {
 package Aws::RedShift::Cluster {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
-  has AllowVersionUpgrade => (is => 'ro', isa => 'Str');
+  has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
@@ -36,7 +36,7 @@ package Aws::RedShift::Cluster {
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has DBName => (is => 'ro', isa => 'Str');
   has ElasticIpStatus => (is => 'ro', isa => 'Aws::RedShift::ElasticIpStatus');
-  has Encrypted => (is => 'ro', isa => 'Str');
+  has Encrypted => (is => 'ro', isa => 'Bool');
   has Endpoint => (is => 'ro', isa => 'Aws::RedShift::Endpoint');
   has HsmStatus => (is => 'ro', isa => 'Aws::RedShift::HsmStatus');
   has MasterUsername => (is => 'ro', isa => 'Str');
@@ -45,7 +45,7 @@ package Aws::RedShift::Cluster {
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has PendingModifiedValues => (is => 'ro', isa => 'Aws::RedShift::PendingModifiedValues');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PubliclyAccessible => (is => 'ro', isa => 'Str');
+  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has RestoreStatus => (is => 'ro', isa => 'Aws::RedShift::RestoreStatus');
   has VpcId => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::VpcSecurityGroupMembership]');
@@ -178,7 +178,7 @@ package Aws::RedShift::EventSubscription {
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has CustomerAwsId => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Str');
+  has Enabled => (is => 'ro', isa => 'Bool');
   has EventCategoriesList => (is => 'ro', isa => 'ArrayRef[Str]');
   has Severity => (is => 'ro', isa => 'Str');
   has SnsTopicArn => (is => 'ro', isa => 'Str');
@@ -234,7 +234,7 @@ package Aws::RedShift::Parameter {
   has AllowedValues => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has IsModifiable => (is => 'ro', isa => 'Str');
+  has IsModifiable => (is => 'ro', isa => 'Bool');
   has MinimumEngineVersion => (is => 'ro', isa => 'Str');
   has ParameterName => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
@@ -313,8 +313,8 @@ package Aws::RedShift::Snapshot {
   has CurrentBackupRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
   has DBName => (is => 'ro', isa => 'Str');
   has ElapsedTimeInSeconds => (is => 'ro', isa => 'Num');
-  has Encrypted => (is => 'ro', isa => 'Str');
-  has EncryptedWithHSM => (is => 'ro', isa => 'Str');
+  has Encrypted => (is => 'ro', isa => 'Bool');
+  has EncryptedWithHSM => (is => 'ro', isa => 'Bool');
   has EstimatedSecondsToCompletion => (is => 'ro', isa => 'Num');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
@@ -380,7 +380,7 @@ package Aws::RedShift::CopyClusterSnapshot {
 }
 package Aws::RedShift::CreateCluster {
   use Moose;
-  has AllowVersionUpgrade => (is => 'ro', isa => 'Str');
+  has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -391,7 +391,7 @@ package Aws::RedShift::CreateCluster {
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has DBName => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
-  has Encrypted => (is => 'ro', isa => 'Str');
+  has Encrypted => (is => 'ro', isa => 'Bool');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
@@ -400,7 +400,7 @@ package Aws::RedShift::CreateCluster {
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PubliclyAccessible => (is => 'ro', isa => 'Str');
+  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
@@ -447,7 +447,7 @@ package Aws::RedShift::CreateClusterSubnetGroup {
 }
 package Aws::RedShift::CreateEventSubscription {
   use Moose;
-  has Enabled => (is => 'ro', isa => 'Str');
+  has Enabled => (is => 'ro', isa => 'Bool');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'EventCategory' );
   has Severity => (is => 'ro', isa => 'Str');
   has SnsTopicArn => (is => 'ro', isa => 'Str', required => 1);
@@ -484,7 +484,7 @@ package Aws::RedShift::DeleteCluster {
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has FinalClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
-  has SkipFinalClusterSnapshot => (is => 'ro', isa => 'Str');
+  has SkipFinalClusterSnapshot => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCluster');
   has _returns => (isa => 'Aws::RedShift::DeleteClusterResult', is => 'ro');
@@ -771,7 +771,7 @@ package Aws::RedShift::EnableSnapshotCopy {
 }
 package Aws::RedShift::ModifyCluster {
   use Moose;
-  has AllowVersionUpgrade => (is => 'ro', isa => 'Str');
+  has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
@@ -811,7 +811,7 @@ package Aws::RedShift::ModifyClusterSubnetGroup {
 }
 package Aws::RedShift::ModifyEventSubscription {
   use Moose;
-  has Enabled => (is => 'ro', isa => 'Str');
+  has Enabled => (is => 'ro', isa => 'Bool');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'EventCategory' );
   has Severity => (is => 'ro', isa => 'Str');
   has SnsTopicArn => (is => 'ro', isa => 'Str');
@@ -853,7 +853,7 @@ package Aws::RedShift::ResetClusterParameterGroup {
   use Moose;
   has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Parameter]', traits => ['NameInRequest'], request_name => 'Parameter' );
-  has ResetAllParameters => (is => 'ro', isa => 'Str');
+  has ResetAllParameters => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ResetClusterParameterGroup');
   has _returns => (isa => 'Aws::RedShift::ResetClusterParameterGroupResult', is => 'ro');
@@ -861,7 +861,7 @@ package Aws::RedShift::ResetClusterParameterGroup {
 }
 package Aws::RedShift::RestoreFromClusterSnapshot {
   use Moose;
-  has AllowVersionUpgrade => (is => 'ro', isa => 'Str');
+  has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
@@ -870,7 +870,7 @@ package Aws::RedShift::RestoreFromClusterSnapshot {
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
-  has PubliclyAccessible => (is => 'ro', isa => 'Str');
+  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1082,7 +1082,7 @@ package Aws::RedShift::DescribeLoggingStatusResult {
   has LastFailureMessage => (is => 'ro', isa => 'Str');
   has LastFailureTime => (is => 'ro', isa => 'Str');
   has LastSuccessfulDeliveryTime => (is => 'ro', isa => 'Str');
-  has LoggingEnabled => (is => 'ro', isa => 'Str');
+  has LoggingEnabled => (is => 'ro', isa => 'Bool');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
 
 }
@@ -1131,7 +1131,7 @@ package Aws::RedShift::DisableLoggingResult {
   has LastFailureMessage => (is => 'ro', isa => 'Str');
   has LastFailureTime => (is => 'ro', isa => 'Str');
   has LastSuccessfulDeliveryTime => (is => 'ro', isa => 'Str');
-  has LoggingEnabled => (is => 'ro', isa => 'Str');
+  has LoggingEnabled => (is => 'ro', isa => 'Bool');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
 
 }
@@ -1148,7 +1148,7 @@ package Aws::RedShift::EnableLoggingResult {
   has LastFailureMessage => (is => 'ro', isa => 'Str');
   has LastFailureTime => (is => 'ro', isa => 'Str');
   has LastSuccessfulDeliveryTime => (is => 'ro', isa => 'Str');
-  has LoggingEnabled => (is => 'ro', isa => 'Str');
+  has LoggingEnabled => (is => 'ro', isa => 'Bool');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
 
 }
