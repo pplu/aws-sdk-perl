@@ -1,4 +1,8 @@
 
+pull-other-sdks:
+	git submodule init
+	git submodule update
+
 gen-classes:
 	find botocore/botocore/data/aws/ -type f -name "*.json" -exec ./gen_classes.pl {} \;
 
