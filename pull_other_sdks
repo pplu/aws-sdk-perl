@@ -1,23 +1,4 @@
 #!/bin/bash
 
-if [ -d botocore ]; 
-  #then cd botocore && git pull && cd ..;
-  #else git clone https://github.com/boto/botocore;
-  then cd botocore && git pull && cd ..;
-  else git clone https://github.com/pplu/botocore.git
-fi
-
-if [ -d aws-sdk-core-ruby ];
-  then cd aws-sdk-core-ruby && git pull && cd ..;
-  else git clone https://github.com/aws/aws-sdk-core-ruby;
-fi
-
-if [ -d aws-sdk-php ];
-  then cd aws-sdk-php && git pull && cd ..;
-  else git clone https://github.com/aws/aws-sdk-php;
-fi
-
-if [ -d aws-sdk-js ];
-  then cd aws-sdk-js && git pull && cd ..;
-  else git clone https://github.com/aws/aws-sdk-js;
-fi
+git submodule init
+git submodule update
