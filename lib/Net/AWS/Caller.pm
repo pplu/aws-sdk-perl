@@ -136,7 +136,9 @@ package Net::AWS::JsonCaller {
       my $key = $params->meta->get_attribute($att)->does('Net::AWS::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
-        if ($self->_is_internal_type($att_type)) {
+        if ($att_type eq 'Bool') {
+          $p{ $key } = ($params->{$att})?\1:\0;
+        } elsif ($self->_is_internal_type($att_type)) {
           $p{ $key } = $params->{$att};
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
           if ($self->_is_internal_type("$1")){
@@ -193,6 +195,31 @@ package Net::AWS::JsonResponse {
     }
 
     return $json;
+  }
+
+  sub new_with_coercions {
+    my ($class, %params) = @_;
+
+    my %p;
+    foreach my $att ($class->meta->get_attribute_list){
+      next if (not exists $params{ $att });
+      my $type = $class->meta->get_attribute($att)->type_constraint;
+      if ($type eq 'Bool') {
+        $p{ $att } = ($params{ $att } == 1)?1:0;
+      } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
+        $p{ $att } = $params{ $att };
+      } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
+        my $subtype = "$1";
+        if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
+          $p{ $att } = $params{ $att };
+        } else {
+          $p{ $att } = [ map { new_with_coercions($subtype, %{ $_ }) } @{ $params{ $att } } ]; 
+        }
+      } else {
+        $p{ $att } = new_with_coercions($type, %{ $params{ $att } });
+      }
+    }
+    return $class->new(%p);
   }
 }
 
@@ -310,6 +337,31 @@ package Net::AWS::XMLResponse {
 
     return $xml;
   }
+
+  sub new_with_coercions {
+    my ($class, %params) = @_;
+
+    my %p;
+    foreach my $att ($class->meta->get_attribute_list){
+      next if (not exists $params{ $att });
+      my $type = $class->meta->get_attribute($att)->type_constraint;
+      if ($type eq 'Bool') {
+        $p{ $att } = ($params{ $att } eq 'true')?1:0;
+      } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
+        $p{ $att } = $params{ $att };
+      } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
+        my $subtype = "$1";
+        if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
+          $p{ $att } = $params{ $att };
+        } else {
+          $p{ $att } = [ map { new_with_coercions($subtype, %{ $_ }) } @{ $params{ $att } } ]; 
+        }
+      } else {
+        $p{ $att } = new_with_coercions($type, %{ $params{ $att } });
+      }
+    }
+    return $class->new(%p);
+  }
 }
 
 package Net::AWS::Caller {
@@ -350,29 +402,6 @@ package Net::AWS::Caller {
         #TODO: retry or croak based on error codes
         croak "POST Request failed: $response->{status} $response->{reason} $response->{content}\n";
     }
-  }
-
-  sub new_with_coercions {
-    my ($class, %params) = @_;
-
-    my %p;
-    foreach my $att ($class->meta->get_attribute_list){
-      next if (not exists $params{ $att });
-      my $type = $class->meta->get_attribute($att)->type_constraint;
-      if ($type eq 'Str' or $type eq 'Num' or $type eq 'Int' or $type eq 'Bool') {
-        $p{ $att } = $params{ $att };
-      } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
-        my $subtype = "$1";
-        if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
-          $p{ $att } = $params{ $att };
-        } else {
-          $p{ $att } = [ map { new_with_coercions($subtype, %{ $_ }) } @{ $params{ $att } } ]; 
-        }
-      } else {
-        $p{ $att } = new_with_coercions($type, %{ $params{ $att } });
-      }
-    }
-    return $class->new(%p);
   }
 }
 

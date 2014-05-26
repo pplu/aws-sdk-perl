@@ -139,7 +139,13 @@ package AWS::API::UnwrappedParser {
             }
           }
         } else {
-          $args{ $att } = $value if (defined $value);
+          if (defined $value) {
+            if ($att_type eq 'Bool') {
+              $args{ $att } = ($value eq 'true')?1:0;
+            } else {
+              $args{ $att } = $value;
+            }
+          }
         }
       } elsif (my ($type) = ($att_type =~ m/^ArrayRef\[(.*)\]$/)) {
         if ($type =~ m/\:\:/) {
@@ -215,7 +221,15 @@ package AWS::API::ResultParser {
             }
           }
         } else {
-          $args{ $att } = $result->{ $att } if (defined $result->{ $att });
+          if (defined $value) {
+            if ($att_type eq 'Bool') {
+              $args{ $att } = ($value eq 'true')?1:0;
+            } else {
+              $args{ $att } = $value;
+            }
+          }
+
+          #$args{ $att } = $result->{ $att } if (defined $result->{ $att });
         }
       } elsif (my ($type) = ($att_type =~ m/^ArrayRef\[(.*)\]$/)) {
         if ($type =~ m/\:\:/) {
