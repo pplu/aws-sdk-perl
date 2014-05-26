@@ -3,7 +3,7 @@ use AWS::API;
 
 use Moose::Util::TypeConstraints;
 enum 'Aws::ElasticBeanstalk::ConfigurationDeploymentStatus', ['deployed','pending','failed',];
-enum 'Aws::ElasticBeanstalk::ConfigurationOptionValueType', ['Scalar','List',];
+enum 'Aws::ElasticBeanstalk::ConfigurationOptionValueType', ['Boolean','Scalar','List',];
 enum 'Aws::ElasticBeanstalk::EnvironmentHealth', ['Green','Yellow','Red','Grey',];
 enum 'Aws::ElasticBeanstalk::EnvironmentInfoType', ['tail',];
 enum 'Aws::ElasticBeanstalk::EnvironmentStatus', ['Launching','Updating','Ready','Terminating','Terminated',];
