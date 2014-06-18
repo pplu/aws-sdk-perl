@@ -7,19 +7,19 @@ enum 'Aws::RedShift::SourceType', ['cluster','cluster-parameter-group','cluster-
 
 package Aws::RedShift::AccountWithRestoreAccess {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AccountId => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RedShift::AvailabilityZone {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RedShift::Cluster {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
@@ -53,7 +53,7 @@ package Aws::RedShift::Cluster {
 
 package Aws::RedShift::ClusterNode {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has NodeRole => (is => 'ro', isa => 'Str');
   has PrivateIPAddress => (is => 'ro', isa => 'Str');
   has PublicIPAddress => (is => 'ro', isa => 'Str');
@@ -61,7 +61,7 @@ package Aws::RedShift::ClusterNode {
 
 package Aws::RedShift::ClusterParameterGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Description => (is => 'ro', isa => 'Str');
   has ParameterGroupFamily => (is => 'ro', isa => 'Str');
   has ParameterGroupName => (is => 'ro', isa => 'Str');
@@ -69,14 +69,14 @@ package Aws::RedShift::ClusterParameterGroup {
 
 package Aws::RedShift::ClusterParameterGroupStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ParameterApplyStatus => (is => 'ro', isa => 'Str');
   has ParameterGroupName => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RedShift::ClusterSecurityGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::EC2SecurityGroup]');
@@ -85,21 +85,21 @@ package Aws::RedShift::ClusterSecurityGroup {
 
 package Aws::RedShift::ClusterSecurityGroupMembership {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RedShift::ClusterSnapshotCopyStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DestinationRegion => (is => 'ro', isa => 'Str');
   has RetentionPeriod => (is => 'ro', isa => 'Num');
 }
 
 package Aws::RedShift::ClusterSubnetGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has SubnetGroupStatus => (is => 'ro', isa => 'Str');
@@ -109,7 +109,7 @@ package Aws::RedShift::ClusterSubnetGroup {
 
 package Aws::RedShift::ClusterVersion {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ClusterParameterGroupFamily => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -117,7 +117,7 @@ package Aws::RedShift::ClusterVersion {
 
 package Aws::RedShift::DefaultClusterParameters {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Marker => (is => 'ro', isa => 'Str');
   has ParameterGroupFamily => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Parameter]');
@@ -125,7 +125,7 @@ package Aws::RedShift::DefaultClusterParameters {
 
 package Aws::RedShift::EC2SecurityGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -133,21 +133,21 @@ package Aws::RedShift::EC2SecurityGroup {
 
 package Aws::RedShift::ElasticIpStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ElasticIp => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RedShift::Endpoint {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Address => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
 }
 
 package Aws::RedShift::Event {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Date => (is => 'ro', isa => 'Str');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has EventId => (is => 'ro', isa => 'Str');
@@ -159,14 +159,14 @@ package Aws::RedShift::Event {
 
 package Aws::RedShift::EventCategoriesMap {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Events => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::EventInfoMap]');
   has SourceType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RedShift::EventInfoMap {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has EventDescription => (is => 'ro', isa => 'Str');
   has EventId => (is => 'ro', isa => 'Str');
@@ -175,7 +175,7 @@ package Aws::RedShift::EventInfoMap {
 
 package Aws::RedShift::EventSubscription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has CustomerAwsId => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
@@ -190,14 +190,14 @@ package Aws::RedShift::EventSubscription {
 
 package Aws::RedShift::HsmClientCertificate {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmClientCertificatePublicKey => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RedShift::HsmConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Description => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has HsmIpAddress => (is => 'ro', isa => 'Str');
@@ -206,7 +206,7 @@ package Aws::RedShift::HsmConfiguration {
 
 package Aws::RedShift::HsmStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -214,14 +214,14 @@ package Aws::RedShift::HsmStatus {
 
 package Aws::RedShift::IPRange {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CIDRIP => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RedShift::OrderableClusterOption {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::AvailabilityZone]');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
@@ -230,7 +230,7 @@ package Aws::RedShift::OrderableClusterOption {
 
 package Aws::RedShift::Parameter {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AllowedValues => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -243,7 +243,7 @@ package Aws::RedShift::Parameter {
 
 package Aws::RedShift::PendingModifiedValues {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has ClusterType => (is => 'ro', isa => 'Str');
@@ -255,14 +255,14 @@ package Aws::RedShift::PendingModifiedValues {
 
 package Aws::RedShift::RecurringCharge {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has RecurringChargeAmount => (is => 'ro', isa => 'Num');
   has RecurringChargeFrequency => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RedShift::ReservedNode {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
   has FixedPrice => (is => 'ro', isa => 'Num');
@@ -279,7 +279,7 @@ package Aws::RedShift::ReservedNode {
 
 package Aws::RedShift::ReservedNodeOffering {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
   has FixedPrice => (is => 'ro', isa => 'Num');
@@ -292,7 +292,7 @@ package Aws::RedShift::ReservedNodeOffering {
 
 package Aws::RedShift::RestoreStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CurrentRestoreRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
   has ElapsedTimeInSeconds => (is => 'ro', isa => 'Num');
   has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => 'Num');
@@ -303,7 +303,7 @@ package Aws::RedShift::RestoreStatus {
 
 package Aws::RedShift::Snapshot {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AccountsWithRestoreAccess => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::AccountWithRestoreAccess]');
   has ActualIncrementalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
@@ -333,7 +333,7 @@ package Aws::RedShift::Snapshot {
 
 package Aws::RedShift::Subnet {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has SubnetAvailabilityZone => (is => 'ro', isa => 'Aws::RedShift::AvailabilityZone');
   has SubnetIdentifier => (is => 'ro', isa => 'Str');
   has SubnetStatus => (is => 'ro', isa => 'Str');
@@ -341,7 +341,7 @@ package Aws::RedShift::Subnet {
 
 package Aws::RedShift::VpcSecurityGroupMembership {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Status => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupId => (is => 'ro', isa => 'Str');
 }

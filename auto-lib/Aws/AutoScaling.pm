@@ -8,7 +8,7 @@ enum 'Aws::AutoScaling::ScalingActivityStatusCode', ['WaitingForSpotInstanceRequ
 
 package Aws::AutoScaling::Activity {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ActivityId => (is => 'ro', isa => 'Str', required => 1);
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Cause => (is => 'ro', isa => 'Str', required => 1);
@@ -23,20 +23,20 @@ package Aws::AutoScaling::Activity {
 
 package Aws::AutoScaling::AdjustmentType {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AdjustmentType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::AutoScaling::Alarm {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AlarmARN => (is => 'ro', isa => 'Str');
   has AlarmName => (is => 'ro', isa => 'Str');
 }
 
 package Aws::AutoScaling::AutoScalingGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AutoScalingGroupARN => (is => 'ro', isa => 'Str');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -61,7 +61,7 @@ package Aws::AutoScaling::AutoScalingGroup {
 
 package Aws::AutoScaling::AutoScalingInstanceDetails {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
@@ -72,7 +72,7 @@ package Aws::AutoScaling::AutoScalingInstanceDetails {
 
 package Aws::AutoScaling::BlockDeviceMapping {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DeviceName => (is => 'ro', isa => 'Str', required => 1);
   has Ebs => (is => 'ro', isa => 'Aws::AutoScaling::Ebs');
   has NoDevice => (is => 'ro', isa => 'Bool');
@@ -81,7 +81,7 @@ package Aws::AutoScaling::BlockDeviceMapping {
 
 package Aws::AutoScaling::Ebs {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DeleteOnTermination => (is => 'ro', isa => 'Bool');
   has Iops => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
@@ -91,21 +91,21 @@ package Aws::AutoScaling::Ebs {
 
 package Aws::AutoScaling::EnabledMetric {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Granularity => (is => 'ro', isa => 'Str');
   has Metric => (is => 'ro', isa => 'Str');
 }
 
 package Aws::AutoScaling::Filter {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
 package Aws::AutoScaling::Instance {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
@@ -115,13 +115,13 @@ package Aws::AutoScaling::Instance {
 
 package Aws::AutoScaling::InstanceMonitoring {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Enabled => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::AutoScaling::LaunchConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::BlockDeviceMapping]');
   has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
@@ -143,19 +143,19 @@ package Aws::AutoScaling::LaunchConfiguration {
 
 package Aws::AutoScaling::MetricCollectionType {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Metric => (is => 'ro', isa => 'Str');
 }
 
 package Aws::AutoScaling::MetricGranularityType {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Granularity => (is => 'ro', isa => 'Str');
 }
 
 package Aws::AutoScaling::NotificationConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has NotificationType => (is => 'ro', isa => 'Str');
   has TopicARN => (is => 'ro', isa => 'Str');
@@ -163,13 +163,13 @@ package Aws::AutoScaling::NotificationConfiguration {
 
 package Aws::AutoScaling::ProcessType {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ProcessName => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::AutoScaling::ScalingPolicy {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AdjustmentType => (is => 'ro', isa => 'Str');
   has Alarms => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::Alarm]');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
@@ -182,7 +182,7 @@ package Aws::AutoScaling::ScalingPolicy {
 
 package Aws::AutoScaling::ScheduledUpdateGroupAction {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has DesiredCapacity => (is => 'ro', isa => 'Int');
   has EndTime => (is => 'ro', isa => 'Str');
@@ -197,14 +197,14 @@ package Aws::AutoScaling::ScheduledUpdateGroupAction {
 
 package Aws::AutoScaling::SuspendedProcess {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ProcessName => (is => 'ro', isa => 'Str');
   has SuspensionReason => (is => 'ro', isa => 'Str');
 }
 
 package Aws::AutoScaling::Tag {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has PropagateAtLaunch => (is => 'ro', isa => 'Bool');
   has ResourceId => (is => 'ro', isa => 'Str');
@@ -214,7 +214,7 @@ package Aws::AutoScaling::Tag {
 
 package Aws::AutoScaling::TagDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Key => (is => 'ro', isa => 'Str');
   has PropagateAtLaunch => (is => 'ro', isa => 'Bool');
   has ResourceId => (is => 'ro', isa => 'Str');

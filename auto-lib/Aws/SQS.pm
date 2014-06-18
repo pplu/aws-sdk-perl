@@ -22,7 +22,7 @@ package Aws::SQS::AttributeMap {
 
 package Aws::SQS::BatchResultErrorEntry {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Code => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Message => (is => 'ro', isa => 'Str');
@@ -31,7 +31,7 @@ package Aws::SQS::BatchResultErrorEntry {
 
 package Aws::SQS::ChangeMessageVisibilityBatchRequestEntry {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has ReceiptHandle => (is => 'ro', isa => 'Str', required => 1);
   has VisibilityTimeout => (is => 'ro', isa => 'Int');
@@ -39,26 +39,26 @@ package Aws::SQS::ChangeMessageVisibilityBatchRequestEntry {
 
 package Aws::SQS::ChangeMessageVisibilityBatchResultEntry {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Id => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SQS::DeleteMessageBatchRequestEntry {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has ReceiptHandle => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SQS::DeleteMessageBatchResultEntry {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Id => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SQS::Message {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap', traits => ['Unwrapped'], xmlname => 'Attribute');
   has Body => (is => 'ro', isa => 'Str');
   has MD5OfBody => (is => 'ro', isa => 'Str');
@@ -76,7 +76,7 @@ package Aws::SQS::MessageAttributeMap {
 
 package Aws::SQS::SendMessageBatchRequestEntry {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DelaySeconds => (is => 'ro', isa => 'Int');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has MessageAttributes => (is => 'ro', isa => 'Aws::SQS::MessageAttributeMap', traits => ['Unwrapped'], xmlname => 'MessageAttribute');
@@ -85,7 +85,7 @@ package Aws::SQS::SendMessageBatchRequestEntry {
 
 package Aws::SQS::SendMessageBatchResultEntry {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has MD5OfMessageAttributes => (is => 'ro', isa => 'Str');
   has MD5OfMessageBody => (is => 'ro', isa => 'Str', required => 1);

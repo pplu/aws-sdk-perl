@@ -4,7 +4,7 @@ use AWS::API;
 
 package Aws::Support::CaseDetails {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has caseId => (is => 'ro', isa => 'Str');
   has categoryCode => (is => 'ro', isa => 'Str');
   has ccEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -21,14 +21,14 @@ package Aws::Support::CaseDetails {
 
 package Aws::Support::Category {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has code => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str');
 }
 
 package Aws::Support::Communication {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has body => (is => 'ro', isa => 'Str');
   has caseId => (is => 'ro', isa => 'Str');
   has submittedBy => (is => 'ro', isa => 'Str');
@@ -37,14 +37,14 @@ package Aws::Support::Communication {
 
 package Aws::Support::RecentCaseCommunications {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has communications => (is => 'ro', isa => 'ArrayRef[Aws::Support::Communication]');
   has nextToken => (is => 'ro', isa => 'Str');
 }
 
 package Aws::Support::Service {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has categories => (is => 'ro', isa => 'ArrayRef[Aws::Support::Category]');
   has code => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str');
@@ -52,20 +52,20 @@ package Aws::Support::Service {
 
 package Aws::Support::SeverityLevel {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has code => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str');
 }
 
 package Aws::Support::TrustedAdvisorCategorySpecificSummary {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has costOptimizing => (is => 'ro', isa => 'Aws::Support::TrustedAdvisorCostOptimizingSummary');
 }
 
 package Aws::Support::TrustedAdvisorCheckDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has category => (is => 'ro', isa => 'Str', required => 1);
   has description => (is => 'ro', isa => 'Str', required => 1);
   has id => (is => 'ro', isa => 'Str', required => 1);
@@ -75,7 +75,7 @@ package Aws::Support::TrustedAdvisorCheckDescription {
 
 package Aws::Support::TrustedAdvisorCheckRefreshStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has checkId => (is => 'ro', isa => 'Str', required => 1);
   has millisUntilNextRefreshable => (is => 'ro', isa => 'Num', required => 1);
   has status => (is => 'ro', isa => 'Str', required => 1);
@@ -83,7 +83,7 @@ package Aws::Support::TrustedAdvisorCheckRefreshStatus {
 
 package Aws::Support::TrustedAdvisorCheckResult {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has categorySpecificSummary => (is => 'ro', isa => 'Aws::Support::TrustedAdvisorCategorySpecificSummary', required => 1);
   has checkId => (is => 'ro', isa => 'Str', required => 1);
   has flaggedResources => (is => 'ro', isa => 'ArrayRef[Aws::Support::TrustedAdvisorResourceDetail]', required => 1);
@@ -94,7 +94,7 @@ package Aws::Support::TrustedAdvisorCheckResult {
 
 package Aws::Support::TrustedAdvisorCheckSummary {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has categorySpecificSummary => (is => 'ro', isa => 'Aws::Support::TrustedAdvisorCategorySpecificSummary', required => 1);
   has checkId => (is => 'ro', isa => 'Str', required => 1);
   has hasFlaggedResources => (is => 'ro', isa => 'Bool');
@@ -105,14 +105,14 @@ package Aws::Support::TrustedAdvisorCheckSummary {
 
 package Aws::Support::TrustedAdvisorCostOptimizingSummary {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has estimatedMonthlySavings => (is => 'ro', isa => 'Num', required => 1);
   has estimatedPercentMonthlySavings => (is => 'ro', isa => 'Num', required => 1);
 }
 
 package Aws::Support::TrustedAdvisorResourceDetail {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has isSuppressed => (is => 'ro', isa => 'Bool');
   has metadata => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has region => (is => 'ro', isa => 'Str', required => 1);
@@ -122,7 +122,7 @@ package Aws::Support::TrustedAdvisorResourceDetail {
 
 package Aws::Support::TrustedAdvisorResourcesSummary {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has resourcesFlagged => (is => 'ro', isa => 'Num', required => 1);
   has resourcesIgnored => (is => 'ro', isa => 'Num', required => 1);
   has resourcesProcessed => (is => 'ro', isa => 'Num', required => 1);

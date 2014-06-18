@@ -13,7 +13,7 @@ enum 'Aws::OpsWorks::SourceType', ['git','svn','archive','s3',];
 
 package Aws::OpsWorks::App {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AppId => (is => 'ro', isa => 'Str');
   has AppSource => (is => 'ro', isa => 'Aws::OpsWorks::Source');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::AppAttributes');
@@ -38,7 +38,7 @@ package Aws::OpsWorks::AppAttributes {
 
 package Aws::OpsWorks::AutoScalingThresholds {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CpuThreshold => (is => 'ro', isa => 'Num');
   has IgnoreMetricsTime => (is => 'ro', isa => 'Int');
   has InstanceCount => (is => 'ro', isa => 'Int');
@@ -49,14 +49,14 @@ package Aws::OpsWorks::AutoScalingThresholds {
 
 package Aws::OpsWorks::ChefConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has BerkshelfVersion => (is => 'ro', isa => 'Str');
   has ManageBerkshelf => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::OpsWorks::Command {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AcknowledgedAt => (is => 'ro', isa => 'Str');
   has CommandId => (is => 'ro', isa => 'Str');
   has CompletedAt => (is => 'ro', isa => 'Str');
@@ -77,7 +77,7 @@ package Aws::OpsWorks::DailyAutoScalingSchedule {
 
 package Aws::OpsWorks::Deployment {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AppId => (is => 'ro', isa => 'Str');
   has Command => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommand');
   has Comment => (is => 'ro', isa => 'Str');
@@ -94,7 +94,7 @@ package Aws::OpsWorks::Deployment {
 
 package Aws::OpsWorks::DeploymentCommand {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Args => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommandArgs');
   has Name => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommandName', required => 1);
 }
@@ -107,7 +107,7 @@ package Aws::OpsWorks::DeploymentCommandArgs {
 
 package Aws::OpsWorks::ElasticIp {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Domain => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has Ip => (is => 'ro', isa => 'Str');
@@ -117,7 +117,7 @@ package Aws::OpsWorks::ElasticIp {
 
 package Aws::OpsWorks::ElasticLoadBalancer {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has DnsName => (is => 'ro', isa => 'Str');
   has Ec2InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -131,7 +131,7 @@ package Aws::OpsWorks::ElasticLoadBalancer {
 
 package Aws::OpsWorks::Instance {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AmiId => (is => 'ro', isa => 'Str');
   has Architecture => (is => 'ro', isa => 'Aws::OpsWorks::Architecture');
   has AutoScalingType => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingType');
@@ -165,7 +165,7 @@ package Aws::OpsWorks::Instance {
 
 package Aws::OpsWorks::InstancesCount {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Booting => (is => 'ro', isa => 'Int');
   has ConnectionLost => (is => 'ro', isa => 'Int');
   has Online => (is => 'ro', isa => 'Int');
@@ -184,7 +184,7 @@ package Aws::OpsWorks::InstancesCount {
 
 package Aws::OpsWorks::Layer {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::LayerAttributes');
   has AutoAssignElasticIps => (is => 'ro', isa => 'Bool');
   has AutoAssignPublicIps => (is => 'ro', isa => 'Bool');
@@ -237,7 +237,7 @@ package Aws::OpsWorks::LayerAttributes {
 
 package Aws::OpsWorks::LoadBasedAutoScalingConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DownScaling => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingThresholds');
   has Enable => (is => 'ro', isa => 'Bool');
   has LayerId => (is => 'ro', isa => 'Str');
@@ -246,7 +246,7 @@ package Aws::OpsWorks::LoadBasedAutoScalingConfiguration {
 
 package Aws::OpsWorks::Permission {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AllowSsh => (is => 'ro', isa => 'Bool');
   has AllowSudo => (is => 'ro', isa => 'Bool');
   has IamUserArn => (is => 'ro', isa => 'Str');
@@ -256,7 +256,7 @@ package Aws::OpsWorks::Permission {
 
 package Aws::OpsWorks::RaidArray {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has Device => (is => 'ro', isa => 'Str');
@@ -273,7 +273,7 @@ package Aws::OpsWorks::RaidArray {
 
 package Aws::OpsWorks::Recipes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Configure => (is => 'ro', isa => 'ArrayRef[Str]');
   has Deploy => (is => 'ro', isa => 'ArrayRef[Str]');
   has Setup => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -283,7 +283,7 @@ package Aws::OpsWorks::Recipes {
 
 package Aws::OpsWorks::SelfUserProfile {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has IamUserArn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has SshPublicKey => (is => 'ro', isa => 'Str');
@@ -292,7 +292,7 @@ package Aws::OpsWorks::SelfUserProfile {
 
 package Aws::OpsWorks::ServiceError {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
@@ -303,7 +303,7 @@ package Aws::OpsWorks::ServiceError {
 
 package Aws::OpsWorks::Source {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Password => (is => 'ro', isa => 'Str');
   has Revision => (is => 'ro', isa => 'Str');
   has SshKey => (is => 'ro', isa => 'Str');
@@ -314,7 +314,7 @@ package Aws::OpsWorks::Source {
 
 package Aws::OpsWorks::SslConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Certificate => (is => 'ro', isa => 'Str', required => 1);
   has Chain => (is => 'ro', isa => 'Str');
   has PrivateKey => (is => 'ro', isa => 'Str', required => 1);
@@ -322,7 +322,7 @@ package Aws::OpsWorks::SslConfiguration {
 
 package Aws::OpsWorks::Stack {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Arn => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::StackAttributes');
   has ChefConfiguration => (is => 'ro', isa => 'Aws::OpsWorks::ChefConfiguration');
@@ -354,14 +354,14 @@ package Aws::OpsWorks::StackAttributes {
 
 package Aws::OpsWorks::StackConfigurationManager {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
 }
 
 package Aws::OpsWorks::StackSummary {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AppsCount => (is => 'ro', isa => 'Int');
   has Arn => (is => 'ro', isa => 'Str');
   has InstancesCount => (is => 'ro', isa => 'Aws::OpsWorks::InstancesCount');
@@ -372,14 +372,14 @@ package Aws::OpsWorks::StackSummary {
 
 package Aws::OpsWorks::TimeBasedAutoScalingConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AutoScalingSchedule => (is => 'ro', isa => 'Aws::OpsWorks::WeeklyAutoScalingSchedule');
   has InstanceId => (is => 'ro', isa => 'Str');
 }
 
 package Aws::OpsWorks::UserProfile {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AllowSelfManagement => (is => 'ro', isa => 'Bool');
   has IamUserArn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -389,7 +389,7 @@ package Aws::OpsWorks::UserProfile {
 
 package Aws::OpsWorks::Volume {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has Device => (is => 'ro', isa => 'Str');
   has Ec2VolumeId => (is => 'ro', isa => 'Str');
@@ -407,7 +407,7 @@ package Aws::OpsWorks::Volume {
 
 package Aws::OpsWorks::VolumeConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Iops => (is => 'ro', isa => 'Int');
   has MountPoint => (is => 'ro', isa => 'Str', required => 1);
   has NumberOfDisks => (is => 'ro', isa => 'Int', required => 1);
@@ -418,7 +418,7 @@ package Aws::OpsWorks::VolumeConfiguration {
 
 package Aws::OpsWorks::WeeklyAutoScalingSchedule {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Friday => (is => 'ro', isa => 'Aws::OpsWorks::DailyAutoScalingSchedule');
   has Monday => (is => 'ro', isa => 'Aws::OpsWorks::DailyAutoScalingSchedule');
   has Saturday => (is => 'ro', isa => 'Aws::OpsWorks::DailyAutoScalingSchedule');

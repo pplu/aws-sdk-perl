@@ -20,7 +20,7 @@ enum 'Aws::EMR::StepStateChangeReasonCode', ['NONE',];
 
 package Aws::EMR::Application {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AdditionalInfo => (is => 'ro', isa => 'Aws::EMR::StringMap');
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Name => (is => 'ro', isa => 'Str');
@@ -29,20 +29,20 @@ package Aws::EMR::Application {
 
 package Aws::EMR::BootstrapActionConfig {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has ScriptBootstrapAction => (is => 'ro', isa => 'Aws::EMR::ScriptBootstrapActionConfig', required => 1);
 }
 
 package Aws::EMR::BootstrapActionDetail {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has BootstrapActionConfig => (is => 'ro', isa => 'Aws::EMR::BootstrapActionConfig');
 }
 
 package Aws::EMR::Cluster {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Applications => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Application]');
   has AutoTerminate => (is => 'ro', isa => 'Bool');
   has Ec2InstanceAttributes => (is => 'ro', isa => 'Aws::EMR::Ec2InstanceAttributes');
@@ -59,14 +59,14 @@ package Aws::EMR::Cluster {
 
 package Aws::EMR::ClusterStateChangeReason {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Code => (is => 'ro', isa => 'Aws::EMR::ClusterStateChangeReasonCode');
   has Message => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EMR::ClusterStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has State => (is => 'ro', isa => 'Aws::EMR::ClusterState');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::ClusterStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::ClusterTimeline');
@@ -74,7 +74,7 @@ package Aws::EMR::ClusterStatus {
 
 package Aws::EMR::ClusterSummary {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Aws::EMR::ClusterStatus');
@@ -82,7 +82,7 @@ package Aws::EMR::ClusterSummary {
 
 package Aws::EMR::ClusterTimeline {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CreationDateTime => (is => 'ro', isa => 'Str');
   has EndDateTime => (is => 'ro', isa => 'Str');
   has ReadyDateTime => (is => 'ro', isa => 'Str');
@@ -90,7 +90,7 @@ package Aws::EMR::ClusterTimeline {
 
 package Aws::EMR::Command {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Name => (is => 'ro', isa => 'Str');
   has ScriptPath => (is => 'ro', isa => 'Str');
@@ -98,7 +98,7 @@ package Aws::EMR::Command {
 
 package Aws::EMR::Ec2InstanceAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Ec2AvailabilityZone => (is => 'ro', isa => 'Str');
   has Ec2KeyName => (is => 'ro', isa => 'Str');
   has Ec2SubnetId => (is => 'ro', isa => 'Str');
@@ -107,7 +107,7 @@ package Aws::EMR::Ec2InstanceAttributes {
 
 package Aws::EMR::HadoopJarStepConfig {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Jar => (is => 'ro', isa => 'Str', required => 1);
   has MainClass => (is => 'ro', isa => 'Str');
@@ -116,7 +116,7 @@ package Aws::EMR::HadoopJarStepConfig {
 
 package Aws::EMR::HadoopStepConfig {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Jar => (is => 'ro', isa => 'Str');
   has MainClass => (is => 'ro', isa => 'Str');
@@ -125,7 +125,7 @@ package Aws::EMR::HadoopStepConfig {
 
 package Aws::EMR::Instance {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has PrivateDnsName => (is => 'ro', isa => 'Str');
@@ -137,7 +137,7 @@ package Aws::EMR::Instance {
 
 package Aws::EMR::InstanceGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has BidPrice => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has InstanceGroupType => (is => 'ro', isa => 'Aws::EMR::InstanceGroupType');
@@ -151,7 +151,7 @@ package Aws::EMR::InstanceGroup {
 
 package Aws::EMR::InstanceGroupConfig {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has BidPrice => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
   has InstanceRole => (is => 'ro', isa => 'Aws::EMR::InstanceRoleType', required => 1);
@@ -162,7 +162,7 @@ package Aws::EMR::InstanceGroupConfig {
 
 package Aws::EMR::InstanceGroupDetail {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has BidPrice => (is => 'ro', isa => 'Str');
   has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
   has EndDateTime => (is => 'ro', isa => 'Str');
@@ -181,7 +181,7 @@ package Aws::EMR::InstanceGroupDetail {
 
 package Aws::EMR::InstanceGroupModifyConfig {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has EC2InstanceIdsToTerminate => (is => 'ro', isa => 'ArrayRef[Str]');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has InstanceGroupId => (is => 'ro', isa => 'Str', required => 1);
@@ -189,14 +189,14 @@ package Aws::EMR::InstanceGroupModifyConfig {
 
 package Aws::EMR::InstanceGroupStateChangeReason {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Code => (is => 'ro', isa => 'Aws::EMR::InstanceGroupStateChangeReasonCode');
   has Message => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EMR::InstanceGroupStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has State => (is => 'ro', isa => 'Aws::EMR::InstanceGroupState');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::InstanceGroupStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::InstanceGroupTimeline');
@@ -204,7 +204,7 @@ package Aws::EMR::InstanceGroupStatus {
 
 package Aws::EMR::InstanceGroupTimeline {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CreationDateTime => (is => 'ro', isa => 'Str');
   has EndDateTime => (is => 'ro', isa => 'Str');
   has ReadyDateTime => (is => 'ro', isa => 'Str');
@@ -212,14 +212,14 @@ package Aws::EMR::InstanceGroupTimeline {
 
 package Aws::EMR::InstanceStateChangeReason {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Code => (is => 'ro', isa => 'Aws::EMR::InstanceStateChangeReasonCode');
   has Message => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EMR::InstanceStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has State => (is => 'ro', isa => 'Aws::EMR::InstanceState');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::InstanceStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::InstanceTimeline');
@@ -227,7 +227,7 @@ package Aws::EMR::InstanceStatus {
 
 package Aws::EMR::InstanceTimeline {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CreationDateTime => (is => 'ro', isa => 'Str');
   has EndDateTime => (is => 'ro', isa => 'Str');
   has ReadyDateTime => (is => 'ro', isa => 'Str');
@@ -235,7 +235,7 @@ package Aws::EMR::InstanceTimeline {
 
 package Aws::EMR::JobFlowDetail {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AmiVersion => (is => 'ro', isa => 'Str');
   has BootstrapActions => (is => 'ro', isa => 'ArrayRef[Aws::EMR::BootstrapActionDetail]');
   has ExecutionStatusDetail => (is => 'ro', isa => 'Aws::EMR::JobFlowExecutionStatusDetail', required => 1);
@@ -251,7 +251,7 @@ package Aws::EMR::JobFlowDetail {
 
 package Aws::EMR::JobFlowExecutionStatusDetail {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
   has EndDateTime => (is => 'ro', isa => 'Str');
   has LastStateChangeReason => (is => 'ro', isa => 'Str');
@@ -262,7 +262,7 @@ package Aws::EMR::JobFlowExecutionStatusDetail {
 
 package Aws::EMR::JobFlowInstancesConfig {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Ec2KeyName => (is => 'ro', isa => 'Str');
   has Ec2SubnetId => (is => 'ro', isa => 'Str');
   has HadoopVersion => (is => 'ro', isa => 'Str');
@@ -277,7 +277,7 @@ package Aws::EMR::JobFlowInstancesConfig {
 
 package Aws::EMR::JobFlowInstancesDetail {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Ec2KeyName => (is => 'ro', isa => 'Str');
   has Ec2SubnetId => (is => 'ro', isa => 'Str');
   has HadoopVersion => (is => 'ro', isa => 'Str');
@@ -295,27 +295,27 @@ package Aws::EMR::JobFlowInstancesDetail {
 
 package Aws::EMR::KeyValue {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Key => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EMR::PlacementType {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::EMR::ScriptBootstrapActionConfig {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Path => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::EMR::Step {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ActionOnFailure => (is => 'ro', isa => 'Aws::EMR::ActionOnFailure');
   has Config => (is => 'ro', isa => 'Aws::EMR::HadoopStepConfig');
   has Id => (is => 'ro', isa => 'Str');
@@ -325,7 +325,7 @@ package Aws::EMR::Step {
 
 package Aws::EMR::StepConfig {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ActionOnFailure => (is => 'ro', isa => 'Aws::EMR::ActionOnFailure');
   has HadoopJarStep => (is => 'ro', isa => 'Aws::EMR::HadoopJarStepConfig', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -333,14 +333,14 @@ package Aws::EMR::StepConfig {
 
 package Aws::EMR::StepDetail {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ExecutionStatusDetail => (is => 'ro', isa => 'Aws::EMR::StepExecutionStatusDetail', required => 1);
   has StepConfig => (is => 'ro', isa => 'Aws::EMR::StepConfig', required => 1);
 }
 
 package Aws::EMR::StepExecutionStatusDetail {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
   has EndDateTime => (is => 'ro', isa => 'Str');
   has LastStateChangeReason => (is => 'ro', isa => 'Str');
@@ -350,14 +350,14 @@ package Aws::EMR::StepExecutionStatusDetail {
 
 package Aws::EMR::StepStateChangeReason {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Code => (is => 'ro', isa => 'Aws::EMR::StepStateChangeReasonCode');
   has Message => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EMR::StepStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has State => (is => 'ro', isa => 'Aws::EMR::StepState');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::StepStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::StepTimeline');
@@ -365,7 +365,7 @@ package Aws::EMR::StepStatus {
 
 package Aws::EMR::StepSummary {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Aws::EMR::StepStatus');
@@ -373,7 +373,7 @@ package Aws::EMR::StepSummary {
 
 package Aws::EMR::StepTimeline {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CreationDateTime => (is => 'ro', isa => 'Str');
   has EndDateTime => (is => 'ro', isa => 'Str');
   has StartDateTime => (is => 'ro', isa => 'Str');
@@ -387,14 +387,14 @@ package Aws::EMR::StringMap {
 
 package Aws::EMR::SupportedProductConfig {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Name => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EMR::Tag {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Key => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }

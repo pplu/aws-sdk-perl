@@ -4,7 +4,7 @@ use AWS::API;
 
 package Aws::ELB::AccessLog {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has EmitInterval => (is => 'ro', isa => 'Int');
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has S3BucketName => (is => 'ro', isa => 'Str');
@@ -13,34 +13,34 @@ package Aws::ELB::AccessLog {
 
 package Aws::ELB::AppCookieStickinessPolicy {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CookieName => (is => 'ro', isa => 'Str');
   has PolicyName => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ELB::BackendServerDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has InstancePort => (is => 'ro', isa => 'Int');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
 package Aws::ELB::ConnectionDraining {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has Timeout => (is => 'ro', isa => 'Int');
 }
 
 package Aws::ELB::CrossZoneLoadBalancing {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
 }
 
 package Aws::ELB::HealthCheck {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has HealthyThreshold => (is => 'ro', isa => 'Int', required => 1);
   has Interval => (is => 'ro', isa => 'Int', required => 1);
   has Target => (is => 'ro', isa => 'Str', required => 1);
@@ -50,13 +50,13 @@ package Aws::ELB::HealthCheck {
 
 package Aws::ELB::Instance {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has InstanceId => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ELB::InstanceState {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Description => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has ReasonCode => (is => 'ro', isa => 'Str');
@@ -65,14 +65,14 @@ package Aws::ELB::InstanceState {
 
 package Aws::ELB::LBCookieStickinessPolicy {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CookieExpirationPeriod => (is => 'ro', isa => 'Num');
   has PolicyName => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ELB::Listener {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has InstancePort => (is => 'ro', isa => 'Int', required => 1);
   has InstanceProtocol => (is => 'ro', isa => 'Str');
   has LoadBalancerPort => (is => 'ro', isa => 'Int', required => 1);
@@ -82,14 +82,14 @@ package Aws::ELB::Listener {
 
 package Aws::ELB::ListenerDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Listener => (is => 'ro', isa => 'Aws::ELB::Listener');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
 package Aws::ELB::LoadBalancerAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AccessLog => (is => 'ro', isa => 'Aws::ELB::AccessLog');
   has ConnectionDraining => (is => 'ro', isa => 'Aws::ELB::ConnectionDraining');
   has CrossZoneLoadBalancing => (is => 'ro', isa => 'Aws::ELB::CrossZoneLoadBalancing');
@@ -97,7 +97,7 @@ package Aws::ELB::LoadBalancerAttributes {
 
 package Aws::ELB::LoadBalancerDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has BackendServerDescriptions => (is => 'ro', isa => 'ArrayRef[Aws::ELB::BackendServerDescription]');
   has CanonicalHostedZoneName => (is => 'ro', isa => 'Str');
@@ -118,7 +118,7 @@ package Aws::ELB::LoadBalancerDescription {
 
 package Aws::ELB::Policies {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AppCookieStickinessPolicies => (is => 'ro', isa => 'ArrayRef[Aws::ELB::AppCookieStickinessPolicy]');
   has LBCookieStickinessPolicies => (is => 'ro', isa => 'ArrayRef[Aws::ELB::LBCookieStickinessPolicy]');
   has OtherPolicies => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -126,21 +126,21 @@ package Aws::ELB::Policies {
 
 package Aws::ELB::PolicyAttribute {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AttributeName => (is => 'ro', isa => 'Str');
   has AttributeValue => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ELB::PolicyAttributeDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AttributeName => (is => 'ro', isa => 'Str');
   has AttributeValue => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ELB::PolicyAttributeTypeDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AttributeName => (is => 'ro', isa => 'Str');
   has AttributeType => (is => 'ro', isa => 'Str');
   has Cardinality => (is => 'ro', isa => 'Str');
@@ -150,7 +150,7 @@ package Aws::ELB::PolicyAttributeTypeDescription {
 
 package Aws::ELB::PolicyDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has PolicyAttributeDescriptions => (is => 'ro', isa => 'ArrayRef[Aws::ELB::PolicyAttributeDescription]');
   has PolicyName => (is => 'ro', isa => 'Str');
   has PolicyTypeName => (is => 'ro', isa => 'Str');
@@ -158,7 +158,7 @@ package Aws::ELB::PolicyDescription {
 
 package Aws::ELB::PolicyTypeDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Description => (is => 'ro', isa => 'Str');
   has PolicyAttributeTypeDescriptions => (is => 'ro', isa => 'ArrayRef[Aws::ELB::PolicyAttributeTypeDescription]');
   has PolicyTypeName => (is => 'ro', isa => 'Str');
@@ -166,7 +166,7 @@ package Aws::ELB::PolicyTypeDescription {
 
 package Aws::ELB::SourceSecurityGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has GroupName => (is => 'ro', isa => 'Str');
   has OwnerAlias => (is => 'ro', isa => 'Str');
 }

@@ -4,21 +4,21 @@ use AWS::API;
 
 package Aws::SES::Body {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Html => (is => 'ro', isa => 'Aws::SES::Content');
   has Text => (is => 'ro', isa => 'Aws::SES::Content');
 }
 
 package Aws::SES::Content {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Charset => (is => 'ro', isa => 'Str');
   has Data => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SES::Destination {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has BccAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
   has CcAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
   has ToAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -32,7 +32,7 @@ package Aws::SES::DkimAttributes {
 
 package Aws::SES::Message {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Body => (is => 'ro', isa => 'Aws::SES::Body', required => 1);
   has Subject => (is => 'ro', isa => 'Aws::SES::Content', required => 1);
 }
@@ -45,13 +45,13 @@ package Aws::SES::NotificationAttributes {
 
 package Aws::SES::RawMessage {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Data => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SES::SendDataPoint {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Bounces => (is => 'ro', isa => 'Num');
   has Complaints => (is => 'ro', isa => 'Num');
   has DeliveryAttempts => (is => 'ro', isa => 'Num');

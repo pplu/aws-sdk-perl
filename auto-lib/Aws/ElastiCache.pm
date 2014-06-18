@@ -7,13 +7,13 @@ enum 'Aws::ElastiCache::SourceType', ['cache-cluster','cache-parameter-group','c
 
 package Aws::ElastiCache::AvailabilityZone {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElastiCache::CacheCluster {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str');
@@ -38,7 +38,7 @@ package Aws::ElastiCache::CacheCluster {
 
 package Aws::ElastiCache::CacheEngineVersion {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CacheEngineDescription => (is => 'ro', isa => 'Str');
   has CacheEngineVersionDescription => (is => 'ro', isa => 'Str');
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
@@ -48,7 +48,7 @@ package Aws::ElastiCache::CacheEngineVersion {
 
 package Aws::ElastiCache::CacheNode {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CacheNodeCreateTime => (is => 'ro', isa => 'Str');
   has CacheNodeId => (is => 'ro', isa => 'Str');
   has CacheNodeStatus => (is => 'ro', isa => 'Str');
@@ -59,7 +59,7 @@ package Aws::ElastiCache::CacheNode {
 
 package Aws::ElastiCache::CacheNodeTypeSpecificParameter {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AllowedValues => (is => 'ro', isa => 'Str');
   has CacheNodeTypeSpecificValues => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheNodeTypeSpecificValue]');
   has DataType => (is => 'ro', isa => 'Str');
@@ -72,14 +72,14 @@ package Aws::ElastiCache::CacheNodeTypeSpecificParameter {
 
 package Aws::ElastiCache::CacheNodeTypeSpecificValue {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElastiCache::CacheParameterGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -87,7 +87,7 @@ package Aws::ElastiCache::CacheParameterGroup {
 
 package Aws::ElastiCache::CacheParameterGroupStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CacheNodeIdsToReboot => (is => 'ro', isa => 'ArrayRef[Str]');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has ParameterApplyStatus => (is => 'ro', isa => 'Str');
@@ -95,7 +95,7 @@ package Aws::ElastiCache::CacheParameterGroupStatus {
 
 package Aws::ElastiCache::CacheSecurityGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CacheSecurityGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::EC2SecurityGroup]');
@@ -104,14 +104,14 @@ package Aws::ElastiCache::CacheSecurityGroup {
 
 package Aws::ElastiCache::CacheSecurityGroupMembership {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CacheSecurityGroupName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElastiCache::CacheSubnetGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CacheSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::Subnet]');
@@ -120,7 +120,7 @@ package Aws::ElastiCache::CacheSubnetGroup {
 
 package Aws::ElastiCache::EC2SecurityGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -128,14 +128,14 @@ package Aws::ElastiCache::EC2SecurityGroup {
 
 package Aws::ElastiCache::Endpoint {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Address => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
 }
 
 package Aws::ElastiCache::EngineDefaults {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CacheNodeTypeSpecificParameters => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheNodeTypeSpecificParameter]');
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -144,7 +144,7 @@ package Aws::ElastiCache::EngineDefaults {
 
 package Aws::ElastiCache::Event {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Date => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
@@ -153,7 +153,7 @@ package Aws::ElastiCache::Event {
 
 package Aws::ElastiCache::NodeGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has NodeGroupId => (is => 'ro', isa => 'Str');
   has NodeGroupMembers => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::NodeGroupMember]');
   has PrimaryEndpoint => (is => 'ro', isa => 'Aws::ElastiCache::Endpoint');
@@ -162,7 +162,7 @@ package Aws::ElastiCache::NodeGroup {
 
 package Aws::ElastiCache::NodeGroupMember {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CacheClusterId => (is => 'ro', isa => 'Str');
   has CacheNodeId => (is => 'ro', isa => 'Str');
   has CurrentRole => (is => 'ro', isa => 'Str');
@@ -172,14 +172,14 @@ package Aws::ElastiCache::NodeGroupMember {
 
 package Aws::ElastiCache::NotificationConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has TopicArn => (is => 'ro', isa => 'Str');
   has TopicStatus => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElastiCache::Parameter {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AllowedValues => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -192,14 +192,14 @@ package Aws::ElastiCache::Parameter {
 
 package Aws::ElastiCache::ParameterNameValue {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ParameterName => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElastiCache::PendingModifiedValues {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has NumCacheNodes => (is => 'ro', isa => 'Int');
@@ -207,14 +207,14 @@ package Aws::ElastiCache::PendingModifiedValues {
 
 package Aws::ElastiCache::RecurringCharge {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has RecurringChargeAmount => (is => 'ro', isa => 'Num');
   has RecurringChargeFrequency => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElastiCache::ReplicationGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Description => (is => 'ro', isa => 'Str');
   has MemberClusters => (is => 'ro', isa => 'ArrayRef[Str]');
   has NodeGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::NodeGroup]');
@@ -225,13 +225,13 @@ package Aws::ElastiCache::ReplicationGroup {
 
 package Aws::ElastiCache::ReplicationGroupPendingModifiedValues {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has PrimaryClusterId => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElastiCache::ReservedCacheNode {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CacheNodeCount => (is => 'ro', isa => 'Int');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
@@ -248,7 +248,7 @@ package Aws::ElastiCache::ReservedCacheNode {
 
 package Aws::ElastiCache::ReservedCacheNodesOffering {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
   has FixedPrice => (is => 'ro', isa => 'Num');
@@ -261,14 +261,14 @@ package Aws::ElastiCache::ReservedCacheNodesOffering {
 
 package Aws::ElastiCache::SecurityGroupMembership {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has SecurityGroupId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElastiCache::Subnet {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has SubnetAvailabilityZone => (is => 'ro', isa => 'Aws::ElastiCache::AvailabilityZone');
   has SubnetIdentifier => (is => 'ro', isa => 'Str');
 }

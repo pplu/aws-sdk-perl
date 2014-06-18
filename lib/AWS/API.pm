@@ -84,19 +84,6 @@ package AWS::API::StrToStrMapParser {
   }
 }
 
-package AWS::API::ToParams {
-  use Moose::Role;
-  sub _to_params {
-    my ($self) = @_;
-    my $params = {};
-    foreach my $att ($self->meta->get_attribute_list) {
-      my $value = $self->$att();
-      $params->{$att} = $value if (defined $value);
-    }
-    return $params;
-  }
-}
-
 package AWS::API::UnwrappedParser {
   use Moose::Role;
   sub result_to_args {

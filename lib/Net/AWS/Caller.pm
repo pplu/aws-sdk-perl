@@ -137,17 +137,19 @@ package Net::AWS::JsonCaller {
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
         if ($att_type eq 'Bool') {
-          $p{ $key } = ($params->{$att})?\1:\0;
+          $p{ $key } = ($params->$att)?\1:\0;
         } elsif ($self->_is_internal_type($att_type)) {
-          $p{ $key } = $params->{$att};
+          $p{ $key } = $params->$att;
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
           if ($self->_is_internal_type("$1")){
             $p{ $key } = $params->$att;
           } else {
-            $p{ $key } = $self->$att->_to_params($params->$att);
+            $p{ $key } = [ map { $self->_to_params($_) } @{ $params->$att } ];
           }
+        } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
+          $p{ $key } = $params->$att;
         } else {
-          $p{ $key } = $params->$att->to_params($params->$att);
+          $p{ $key } = $self->_to_params($params->$att);
         }
       }
     }
@@ -215,7 +217,11 @@ package Net::AWS::JsonResponse {
         } else {
           $p{ $att } = [ map { new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ]; 
         }
+      } elsif ($type->isa('Moose::Meta::TypeConstraint::Enum')){
+        $p{ $att } = $params{ $att };
       } else {
+use Data::Dumper;
+print Dumper($type, $params{ $att });
         $p{ $att } = new_with_coercions("$type", %{ $params{ $att } });
       }
     }
@@ -245,6 +251,7 @@ package Net::AWS::QueryCaller {
       my $key = $params->meta->get_attribute($att)->does('Net::AWS::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
+
         if ($self->_is_internal_type($att_type)) {
           $p{ $key } = $params->{$att};
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
@@ -257,13 +264,14 @@ package Net::AWS::QueryCaller {
           } else {
             my $i = 1;
             foreach my $value (@{ $params->$att }){
-              my $complex_value = $value->_to_params($att);
-              map { $p{ sprintf($self->array_flatten_string . ".%s", $key, $i, $_) } = $complex_value->{$_} } keys %$complex_value;
+              my %complex_value = $self->_to_params($value);
+              map { $p{ sprintf($self->array_flatten_string . ".%s", $key, $i, $_) } = $complex_value{$_} } keys %complex_value;
               $i++
             }
           }
         } else {
-          $p{ $key } = $params->$att->to_params($params->$att);
+          my %complex_value = $self->_to_params($params->$att);
+          map { $p{ "$key.$_" } = $complex_value{$_} } keys %complex_value;
         }
       }
     }

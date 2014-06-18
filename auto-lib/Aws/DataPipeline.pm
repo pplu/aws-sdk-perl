@@ -7,7 +7,7 @@ enum 'Aws::DataPipeline::OperatorType', ['EQ','REF_EQ','LE','GE','BETWEEN',];
 
 package Aws::DataPipeline::Field {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has key => (is => 'ro', isa => 'Str', required => 1);
   has refValue => (is => 'ro', isa => 'Str');
   has stringValue => (is => 'ro', isa => 'Str');
@@ -15,21 +15,21 @@ package Aws::DataPipeline::Field {
 
 package Aws::DataPipeline::InstanceIdentity {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has document => (is => 'ro', isa => 'Str');
   has signature => (is => 'ro', isa => 'Str');
 }
 
 package Aws::DataPipeline::Operator {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has type => (is => 'ro', isa => 'Aws::DataPipeline::OperatorType');
   has values => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
 package Aws::DataPipeline::PipelineDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has description => (is => 'ro', isa => 'Str');
   has fields => (is => 'ro', isa => 'ArrayRef[Aws::DataPipeline::Field]', required => 1);
   has name => (is => 'ro', isa => 'Str', required => 1);
@@ -38,14 +38,14 @@ package Aws::DataPipeline::PipelineDescription {
 
 package Aws::DataPipeline::PipelineIdName {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has id => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str');
 }
 
 package Aws::DataPipeline::PipelineObject {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has fields => (is => 'ro', isa => 'ArrayRef[Aws::DataPipeline::Field]', required => 1);
   has id => (is => 'ro', isa => 'Str', required => 1);
   has name => (is => 'ro', isa => 'Str', required => 1);
@@ -59,20 +59,20 @@ package Aws::DataPipeline::PipelineObjectMap {
 
 package Aws::DataPipeline::Query {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has selectors => (is => 'ro', isa => 'ArrayRef[Aws::DataPipeline::Selector]');
 }
 
 package Aws::DataPipeline::Selector {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has fieldName => (is => 'ro', isa => 'Str');
   has operator => (is => 'ro', isa => 'Aws::DataPipeline::Operator');
 }
 
 package Aws::DataPipeline::TaskObject {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has attemptId => (is => 'ro', isa => 'Str');
   has objects => (is => 'ro', isa => 'Aws::DataPipeline::PipelineObjectMap');
   has pipelineId => (is => 'ro', isa => 'Str');
@@ -81,14 +81,14 @@ package Aws::DataPipeline::TaskObject {
 
 package Aws::DataPipeline::ValidationError {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has errors => (is => 'ro', isa => 'ArrayRef[Str]');
   has id => (is => 'ro', isa => 'Str');
 }
 
 package Aws::DataPipeline::ValidationWarning {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has id => (is => 'ro', isa => 'Str');
   has warnings => (is => 'ro', isa => 'ArrayRef[Str]');
 }

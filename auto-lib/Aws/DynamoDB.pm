@@ -11,7 +11,7 @@ enum 'Aws::DynamoDB::TableStatus', ['CREATING','UPDATING','DELETING','ACTIVE',];
 
 package Aws::DynamoDB::AttributeDefinition {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AttributeName => (is => 'ro', isa => 'Str', required => 1);
   has AttributeType => (is => 'ro', isa => 'Aws::DynamoDB::ScalarAttributeType', required => 1);
 }
@@ -48,13 +48,13 @@ package Aws::DynamoDB::BatchWriteItemRequestMap {
 
 package Aws::DynamoDB::Capacity {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CapacityUnits => (is => 'ro', isa => 'Num');
 }
 
 package Aws::DynamoDB::ConsumedCapacity {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CapacityUnits => (is => 'ro', isa => 'Num');
   has GlobalSecondaryIndexes => (is => 'ro', isa => 'Aws::DynamoDB::SecondaryIndexesCapacityMap');
   has LocalSecondaryIndexes => (is => 'ro', isa => 'Aws::DynamoDB::SecondaryIndexesCapacityMap');
@@ -76,7 +76,7 @@ package Aws::DynamoDB::FilterConditionMap {
 
 package Aws::DynamoDB::GlobalSecondaryIndex {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has IndexName => (is => 'ro', isa => 'Str', required => 1);
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Aws::DynamoDB::KeySchemaElement]', required => 1);
   has Projection => (is => 'ro', isa => 'Aws::DynamoDB::Projection', required => 1);
@@ -85,7 +85,7 @@ package Aws::DynamoDB::GlobalSecondaryIndex {
 
 package Aws::DynamoDB::GlobalSecondaryIndexDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has IndexName => (is => 'ro', isa => 'Str');
   has IndexSizeBytes => (is => 'ro', isa => 'Num');
   has IndexStatus => (is => 'ro', isa => 'Aws::DynamoDB::IndexStatus');
@@ -97,7 +97,7 @@ package Aws::DynamoDB::GlobalSecondaryIndexDescription {
 
 package Aws::DynamoDB::GlobalSecondaryIndexUpdate {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Update => (is => 'ro', isa => 'Aws::DynamoDB::UpdateGlobalSecondaryIndexAction');
 }
 
@@ -109,7 +109,7 @@ package Aws::DynamoDB::ItemCollectionKeyAttributeMap {
 
 package Aws::DynamoDB::ItemCollectionMetrics {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ItemCollectionKey => (is => 'ro', isa => 'Aws::DynamoDB::ItemCollectionKeyAttributeMap');
   has SizeEstimateRangeGB => (is => 'ro', isa => 'ArrayRef[Num]');
 }
@@ -134,14 +134,14 @@ package Aws::DynamoDB::KeyConditions {
 
 package Aws::DynamoDB::KeySchemaElement {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AttributeName => (is => 'ro', isa => 'Str', required => 1);
   has KeyType => (is => 'ro', isa => 'Aws::DynamoDB::KeyType', required => 1);
 }
 
 package Aws::DynamoDB::LocalSecondaryIndex {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has IndexName => (is => 'ro', isa => 'Str', required => 1);
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Aws::DynamoDB::KeySchemaElement]', required => 1);
   has Projection => (is => 'ro', isa => 'Aws::DynamoDB::Projection', required => 1);
@@ -149,7 +149,7 @@ package Aws::DynamoDB::LocalSecondaryIndex {
 
 package Aws::DynamoDB::LocalSecondaryIndexDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has IndexName => (is => 'ro', isa => 'Str');
   has IndexSizeBytes => (is => 'ro', isa => 'Num');
   has ItemCount => (is => 'ro', isa => 'Num');
@@ -159,21 +159,21 @@ package Aws::DynamoDB::LocalSecondaryIndexDescription {
 
 package Aws::DynamoDB::Projection {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has NonKeyAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
   has ProjectionType => (is => 'ro', isa => 'Aws::DynamoDB::ProjectionType');
 }
 
 package Aws::DynamoDB::ProvisionedThroughput {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ReadCapacityUnits => (is => 'ro', isa => 'Num', required => 1);
   has WriteCapacityUnits => (is => 'ro', isa => 'Num', required => 1);
 }
 
 package Aws::DynamoDB::ProvisionedThroughputDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has LastDecreaseDateTime => (is => 'ro', isa => 'Str');
   has LastIncreaseDateTime => (is => 'ro', isa => 'Str');
   has NumberOfDecreasesToday => (is => 'ro', isa => 'Num');
@@ -195,7 +195,7 @@ package Aws::DynamoDB::SecondaryIndexesCapacityMap {
 
 package Aws::DynamoDB::TableDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Aws::DynamoDB::AttributeDefinition]');
   has CreationDateTime => (is => 'ro', isa => 'Str');
   has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Aws::DynamoDB::GlobalSecondaryIndexDescription]');
@@ -210,7 +210,7 @@ package Aws::DynamoDB::TableDescription {
 
 package Aws::DynamoDB::UpdateGlobalSecondaryIndexAction {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has IndexName => (is => 'ro', isa => 'Str', required => 1);
   has ProvisionedThroughput => (is => 'ro', isa => 'Aws::DynamoDB::ProvisionedThroughput', required => 1);
 }

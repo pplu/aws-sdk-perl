@@ -4,7 +4,7 @@ use AWS::API;
 
 package Aws::StorageGateway::CachediSCSIVolumeInformation {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has SourceSnapshotId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');
@@ -17,7 +17,7 @@ package Aws::StorageGateway::CachediSCSIVolumeInformation {
 
 package Aws::StorageGateway::ChapInfo {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has InitiatorName => (is => 'ro', isa => 'Str');
   has SecretToAuthenticateInitiator => (is => 'ro', isa => 'Str');
   has SecretToAuthenticateTarget => (is => 'ro', isa => 'Str');
@@ -26,7 +26,7 @@ package Aws::StorageGateway::ChapInfo {
 
 package Aws::StorageGateway::DeviceiSCSIAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ChapEnabled => (is => 'ro', isa => 'Bool');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
   has NetworkInterfacePort => (is => 'ro', isa => 'Int');
@@ -35,7 +35,7 @@ package Aws::StorageGateway::DeviceiSCSIAttributes {
 
 package Aws::StorageGateway::DiskInformation {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DiskAllocationResource => (is => 'ro', isa => 'Str');
   has DiskAllocationType => (is => 'ro', isa => 'Str');
   has DiskId => (is => 'ro', isa => 'Str');
@@ -46,14 +46,14 @@ package Aws::StorageGateway::DiskInformation {
 
 package Aws::StorageGateway::GatewayInformation {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has GatewayARN => (is => 'ro', isa => 'Str');
   has GatewayType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::StorageGateway::NetworkInterface {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Ipv4Address => (is => 'ro', isa => 'Str');
   has Ipv6Address => (is => 'ro', isa => 'Str');
   has MacAddress => (is => 'ro', isa => 'Str');
@@ -61,7 +61,7 @@ package Aws::StorageGateway::NetworkInterface {
 
 package Aws::StorageGateway::StorediSCSIVolumeInformation {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has PreservedExistingData => (is => 'ro', isa => 'Bool');
   has SourceSnapshotId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
@@ -76,7 +76,7 @@ package Aws::StorageGateway::StorediSCSIVolumeInformation {
 
 package Aws::StorageGateway::Tape {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Progress => (is => 'ro', isa => 'Num');
   has TapeARN => (is => 'ro', isa => 'Str');
   has TapeBarcode => (is => 'ro', isa => 'Str');
@@ -87,7 +87,7 @@ package Aws::StorageGateway::Tape {
 
 package Aws::StorageGateway::TapeArchive {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CompletionTime => (is => 'ro', isa => 'Str');
   has RetrievedTo => (is => 'ro', isa => 'Str');
   has TapeARN => (is => 'ro', isa => 'Str');
@@ -98,7 +98,7 @@ package Aws::StorageGateway::TapeArchive {
 
 package Aws::StorageGateway::TapeRecoveryPointInfo {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has TapeARN => (is => 'ro', isa => 'Str');
   has TapeRecoveryPointTime => (is => 'ro', isa => 'Str');
   has TapeSizeInBytes => (is => 'ro', isa => 'Num');
@@ -106,21 +106,21 @@ package Aws::StorageGateway::TapeRecoveryPointInfo {
 
 package Aws::StorageGateway::VTLDevice {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DeviceiSCSIAttributes => (is => 'ro', isa => 'Aws::StorageGateway::DeviceiSCSIAttributes');
   has VTLDeviceARN => (is => 'ro', isa => 'Str');
 }
 
 package Aws::StorageGateway::VolumeInformation {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has VolumeARN => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::StorageGateway::VolumeRecoveryPointInfo {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has VolumeARN => (is => 'ro', isa => 'Str');
   has VolumeRecoveryPointTime => (is => 'ro', isa => 'Str');
   has VolumeSizeInBytes => (is => 'ro', isa => 'Num');
@@ -129,7 +129,7 @@ package Aws::StorageGateway::VolumeRecoveryPointInfo {
 
 package Aws::StorageGateway::VolumeiSCSIAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ChapEnabled => (is => 'ro', isa => 'Bool');
   has LunNumber => (is => 'ro', isa => 'Int');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');

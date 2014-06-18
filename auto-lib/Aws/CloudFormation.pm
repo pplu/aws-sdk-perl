@@ -8,7 +8,7 @@ enum 'Aws::CloudFormation::StackStatus', ['CREATE_IN_PROGRESS','CREATE_FAILED','
 
 package Aws::CloudFormation::Output {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Description => (is => 'ro', isa => 'Str');
   has OutputKey => (is => 'ro', isa => 'Str');
   has OutputValue => (is => 'ro', isa => 'Str');
@@ -16,7 +16,7 @@ package Aws::CloudFormation::Output {
 
 package Aws::CloudFormation::Parameter {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ParameterKey => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
   has UsePreviousValue => (is => 'ro', isa => 'Bool');
@@ -24,7 +24,7 @@ package Aws::CloudFormation::Parameter {
 
 package Aws::CloudFormation::Stack {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
@@ -43,7 +43,7 @@ package Aws::CloudFormation::Stack {
 
 package Aws::CloudFormation::StackEvent {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has EventId => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str');
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
@@ -58,7 +58,7 @@ package Aws::CloudFormation::StackEvent {
 
 package Aws::CloudFormation::StackResource {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Description => (is => 'ro', isa => 'Str');
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
@@ -72,7 +72,7 @@ package Aws::CloudFormation::StackResource {
 
 package Aws::CloudFormation::StackResourceDetail {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Description => (is => 'ro', isa => 'Str');
   has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
@@ -87,7 +87,7 @@ package Aws::CloudFormation::StackResourceDetail {
 
 package Aws::CloudFormation::StackResourceSummary {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
@@ -98,7 +98,7 @@ package Aws::CloudFormation::StackResourceSummary {
 
 package Aws::CloudFormation::StackSummary {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has DeletionTime => (is => 'ro', isa => 'Str');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
@@ -111,14 +111,14 @@ package Aws::CloudFormation::StackSummary {
 
 package Aws::CloudFormation::Tag {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Key => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
 
 package Aws::CloudFormation::TemplateParameter {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has NoEcho => (is => 'ro', isa => 'Bool');

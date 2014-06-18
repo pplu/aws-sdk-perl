@@ -9,7 +9,7 @@ enum 'Aws::DirectConnect::VirtualInterfaceState', ['confirming','verifying','pen
 
 package Aws::DirectConnect::Connection {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has bandwidth => (is => 'ro', isa => 'Str');
   has connectionId => (is => 'ro', isa => 'Str');
   has connectionName => (is => 'ro', isa => 'Str');
@@ -23,7 +23,7 @@ package Aws::DirectConnect::Connection {
 
 package Aws::DirectConnect::Interconnect {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has bandwidth => (is => 'ro', isa => 'Str');
   has interconnectId => (is => 'ro', isa => 'Str');
   has interconnectName => (is => 'ro', isa => 'Str');
@@ -34,14 +34,14 @@ package Aws::DirectConnect::Interconnect {
 
 package Aws::DirectConnect::Location {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has locationCode => (is => 'ro', isa => 'Str');
   has locationName => (is => 'ro', isa => 'Str');
 }
 
 package Aws::DirectConnect::NewPrivateVirtualInterface {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has amazonAddress => (is => 'ro', isa => 'Str');
   has asn => (is => 'ro', isa => 'Int', required => 1);
   has authKey => (is => 'ro', isa => 'Str');
@@ -53,7 +53,7 @@ package Aws::DirectConnect::NewPrivateVirtualInterface {
 
 package Aws::DirectConnect::NewPrivateVirtualInterfaceAllocation {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has amazonAddress => (is => 'ro', isa => 'Str');
   has asn => (is => 'ro', isa => 'Int', required => 1);
   has authKey => (is => 'ro', isa => 'Str');
@@ -64,7 +64,7 @@ package Aws::DirectConnect::NewPrivateVirtualInterfaceAllocation {
 
 package Aws::DirectConnect::NewPublicVirtualInterface {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has amazonAddress => (is => 'ro', isa => 'Str', required => 1);
   has asn => (is => 'ro', isa => 'Int', required => 1);
   has authKey => (is => 'ro', isa => 'Str');
@@ -76,7 +76,7 @@ package Aws::DirectConnect::NewPublicVirtualInterface {
 
 package Aws::DirectConnect::NewPublicVirtualInterfaceAllocation {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has amazonAddress => (is => 'ro', isa => 'Str', required => 1);
   has asn => (is => 'ro', isa => 'Int', required => 1);
   has authKey => (is => 'ro', isa => 'Str');
@@ -88,20 +88,20 @@ package Aws::DirectConnect::NewPublicVirtualInterfaceAllocation {
 
 package Aws::DirectConnect::RouteFilterPrefix {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cidr => (is => 'ro', isa => 'Str');
 }
 
 package Aws::DirectConnect::VirtualGateway {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has virtualGatewayId => (is => 'ro', isa => 'Str');
   has virtualGatewayState => (is => 'ro', isa => 'Str');
 }
 
 package Aws::DirectConnect::VirtualInterface {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has amazonAddress => (is => 'ro', isa => 'Str');
   has asn => (is => 'ro', isa => 'Int');
   has authKey => (is => 'ro', isa => 'Str');

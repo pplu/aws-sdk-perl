@@ -7,14 +7,14 @@ enum 'Aws::Kinesis::StreamStatus', ['CREATING','DELETING','ACTIVE','UPDATING',];
 
 package Aws::Kinesis::HashKeyRange {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has EndingHashKey => (is => 'ro', isa => 'Str', required => 1);
   has StartingHashKey => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::Kinesis::Record {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Data => (is => 'ro', isa => 'Str', required => 1);
   has PartitionKey => (is => 'ro', isa => 'Str', required => 1);
   has SequenceNumber => (is => 'ro', isa => 'Str', required => 1);
@@ -22,14 +22,14 @@ package Aws::Kinesis::Record {
 
 package Aws::Kinesis::SequenceNumberRange {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has EndingSequenceNumber => (is => 'ro', isa => 'Str');
   has StartingSequenceNumber => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::Kinesis::Shard {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AdjacentParentShardId => (is => 'ro', isa => 'Str');
   has HashKeyRange => (is => 'ro', isa => 'Aws::Kinesis::HashKeyRange', required => 1);
   has ParentShardId => (is => 'ro', isa => 'Str');
@@ -39,7 +39,7 @@ package Aws::Kinesis::Shard {
 
 package Aws::Kinesis::StreamDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has HasMoreShards => (is => 'ro', isa => 'Bool', required => 1);
   has Shards => (is => 'ro', isa => 'ArrayRef[Aws::Kinesis::Shard]', required => 1);
   has StreamARN => (is => 'ro', isa => 'Str', required => 1);

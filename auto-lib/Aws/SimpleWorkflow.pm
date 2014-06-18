@@ -29,14 +29,14 @@ enum 'Aws::SimpleWorkflow::WorkflowExecutionTimeoutType', ['START_TO_CLOSE',];
 
 package Aws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
 package Aws::SimpleWorkflow::ActivityTaskCanceledEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has details => (is => 'ro', isa => 'Str');
   has latestCancelRequestedEventId => (is => 'ro', isa => 'Num');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -45,7 +45,7 @@ package Aws::SimpleWorkflow::ActivityTaskCanceledEventAttributes {
 
 package Aws::SimpleWorkflow::ActivityTaskCompletedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has result => (is => 'ro', isa => 'Str');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -53,7 +53,7 @@ package Aws::SimpleWorkflow::ActivityTaskCompletedEventAttributes {
 
 package Aws::SimpleWorkflow::ActivityTaskFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has details => (is => 'ro', isa => 'Str');
   has reason => (is => 'ro', isa => 'Str');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -62,7 +62,7 @@ package Aws::SimpleWorkflow::ActivityTaskFailedEventAttributes {
 
 package Aws::SimpleWorkflow::ActivityTaskScheduledEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
   has control => (is => 'ro', isa => 'Str');
@@ -77,14 +77,14 @@ package Aws::SimpleWorkflow::ActivityTaskScheduledEventAttributes {
 
 package Aws::SimpleWorkflow::ActivityTaskStartedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has identity => (is => 'ro', isa => 'Str');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
 package Aws::SimpleWorkflow::ActivityTaskTimedOutEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has details => (is => 'ro', isa => 'Str');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -93,14 +93,14 @@ package Aws::SimpleWorkflow::ActivityTaskTimedOutEventAttributes {
 
 package Aws::SimpleWorkflow::ActivityType {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has name => (is => 'ro', isa => 'Str', required => 1);
   has version => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::ActivityTypeConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has defaultTaskHeartbeatTimeout => (is => 'ro', isa => 'Str');
   has defaultTaskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList');
   has defaultTaskScheduleToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -110,7 +110,7 @@ package Aws::SimpleWorkflow::ActivityTypeConfiguration {
 
 package Aws::SimpleWorkflow::ActivityTypeInfo {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
   has creationDate => (is => 'ro', isa => 'Str', required => 1);
   has deprecationDate => (is => 'ro', isa => 'Str');
@@ -120,13 +120,13 @@ package Aws::SimpleWorkflow::ActivityTypeInfo {
 
 package Aws::SimpleWorkflow::CancelTimerDecisionAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has timerId => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::CancelTimerFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::CancelTimerFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timerId => (is => 'ro', isa => 'Str', required => 1);
@@ -134,20 +134,20 @@ package Aws::SimpleWorkflow::CancelTimerFailedEventAttributes {
 
 package Aws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has details => (is => 'ro', isa => 'Str');
 }
 
 package Aws::SimpleWorkflow::CancelWorkflowExecutionFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::CancelWorkflowExecutionFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
 package Aws::SimpleWorkflow::ChildWorkflowExecutionCanceledEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has details => (is => 'ro', isa => 'Str');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -157,7 +157,7 @@ package Aws::SimpleWorkflow::ChildWorkflowExecutionCanceledEventAttributes {
 
 package Aws::SimpleWorkflow::ChildWorkflowExecutionCompletedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has result => (is => 'ro', isa => 'Str');
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -167,7 +167,7 @@ package Aws::SimpleWorkflow::ChildWorkflowExecutionCompletedEventAttributes {
 
 package Aws::SimpleWorkflow::ChildWorkflowExecutionFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has details => (is => 'ro', isa => 'Str');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has reason => (is => 'ro', isa => 'Str');
@@ -178,7 +178,7 @@ package Aws::SimpleWorkflow::ChildWorkflowExecutionFailedEventAttributes {
 
 package Aws::SimpleWorkflow::ChildWorkflowExecutionStartedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has workflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
@@ -186,7 +186,7 @@ package Aws::SimpleWorkflow::ChildWorkflowExecutionStartedEventAttributes {
 
 package Aws::SimpleWorkflow::ChildWorkflowExecutionTerminatedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
   has workflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
@@ -195,7 +195,7 @@ package Aws::SimpleWorkflow::ChildWorkflowExecutionTerminatedEventAttributes {
 
 package Aws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timeoutType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionTimeoutType', required => 1);
@@ -205,26 +205,26 @@ package Aws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes {
 
 package Aws::SimpleWorkflow::CloseStatusFilter {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has status => (is => 'ro', isa => 'Aws::SimpleWorkflow::CloseStatus', required => 1);
 }
 
 package Aws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has result => (is => 'ro', isa => 'Str');
 }
 
 package Aws::SimpleWorkflow::CompleteWorkflowExecutionFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::CompleteWorkflowExecutionFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
 package Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy');
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has input => (is => 'ro', isa => 'Str');
@@ -236,14 +236,14 @@ package Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes {
 
 package Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
 package Aws::SimpleWorkflow::Decision {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cancelTimerDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::CancelTimerDecisionAttributes');
   has cancelWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes');
   has completeWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes');
@@ -261,7 +261,7 @@ package Aws::SimpleWorkflow::Decision {
 
 package Aws::SimpleWorkflow::DecisionTaskCompletedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has executionContext => (is => 'ro', isa => 'Str');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -269,21 +269,21 @@ package Aws::SimpleWorkflow::DecisionTaskCompletedEventAttributes {
 
 package Aws::SimpleWorkflow::DecisionTaskScheduledEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has startToCloseTimeout => (is => 'ro', isa => 'Str');
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
 }
 
 package Aws::SimpleWorkflow::DecisionTaskStartedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has identity => (is => 'ro', isa => 'Str');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
 package Aws::SimpleWorkflow::DecisionTaskTimedOutEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timeoutType => (is => 'ro', isa => 'Aws::SimpleWorkflow::DecisionTaskTimeoutType', required => 1);
@@ -291,13 +291,13 @@ package Aws::SimpleWorkflow::DecisionTaskTimedOutEventAttributes {
 
 package Aws::SimpleWorkflow::DomainConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has workflowExecutionRetentionPeriodInDays => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::DomainInfo {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has description => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str', required => 1);
   has status => (is => 'ro', isa => 'Aws::SimpleWorkflow::RegistrationStatus', required => 1);
@@ -305,42 +305,42 @@ package Aws::SimpleWorkflow::DomainInfo {
 
 package Aws::SimpleWorkflow::ExecutionTimeFilter {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has latestDate => (is => 'ro', isa => 'Str');
   has oldestDate => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::ExternalWorkflowExecutionCancelRequestedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has workflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
 }
 
 package Aws::SimpleWorkflow::ExternalWorkflowExecutionSignaledEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has workflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
 }
 
 package Aws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has details => (is => 'ro', isa => 'Str');
   has reason => (is => 'ro', isa => 'Str');
 }
 
 package Aws::SimpleWorkflow::FailWorkflowExecutionFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::FailWorkflowExecutionFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
 package Aws::SimpleWorkflow::HistoryEvent {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has activityTaskCancelRequestedEventAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes');
   has activityTaskCanceledEventAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityTaskCanceledEventAttributes');
   has activityTaskCompletedEventAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityTaskCompletedEventAttributes');
@@ -395,7 +395,7 @@ package Aws::SimpleWorkflow::HistoryEvent {
 
 package Aws::SimpleWorkflow::MarkerRecordedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has details => (is => 'ro', isa => 'Str');
   has markerName => (is => 'ro', isa => 'Str', required => 1);
@@ -403,14 +403,14 @@ package Aws::SimpleWorkflow::MarkerRecordedEventAttributes {
 
 package Aws::SimpleWorkflow::RecordMarkerDecisionAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has details => (is => 'ro', isa => 'Str');
   has markerName => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::RecordMarkerFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::RecordMarkerFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has markerName => (is => 'ro', isa => 'Str', required => 1);
@@ -418,13 +418,13 @@ package Aws::SimpleWorkflow::RecordMarkerFailedEventAttributes {
 
 package Aws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::RequestCancelActivityTaskFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::RequestCancelActivityTaskFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -432,7 +432,7 @@ package Aws::SimpleWorkflow::RequestCancelActivityTaskFailedEventAttributes {
 
 package Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has control => (is => 'ro', isa => 'Str');
   has runId => (is => 'ro', isa => 'Str');
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
@@ -440,7 +440,7 @@ package Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttri
 
 package Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedCause', required => 1);
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -451,7 +451,7 @@ package Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventAt
 
 package Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has runId => (is => 'ro', isa => 'Str');
@@ -460,7 +460,7 @@ package Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEven
 
 package Aws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
   has control => (is => 'ro', isa => 'Str');
@@ -474,7 +474,7 @@ package Aws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes {
 
 package Aws::SimpleWorkflow::ScheduleActivityTaskFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::ScheduleActivityTaskFailedCause', required => 1);
@@ -483,7 +483,7 @@ package Aws::SimpleWorkflow::ScheduleActivityTaskFailedEventAttributes {
 
 package Aws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has control => (is => 'ro', isa => 'Str');
   has input => (is => 'ro', isa => 'Str');
   has runId => (is => 'ro', isa => 'Str');
@@ -493,7 +493,7 @@ package Aws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes {
 
 package Aws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedCause', required => 1);
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -504,7 +504,7 @@ package Aws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedEventAttribute
 
 package Aws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has input => (is => 'ro', isa => 'Str');
@@ -515,7 +515,7 @@ package Aws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttrib
 
 package Aws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy');
   has control => (is => 'ro', isa => 'Str');
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -529,7 +529,7 @@ package Aws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes {
 
 package Aws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::StartChildWorkflowExecutionFailedCause', required => 1);
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -540,7 +540,7 @@ package Aws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes {
 
 package Aws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -555,7 +555,7 @@ package Aws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttributes
 
 package Aws::SimpleWorkflow::StartTimerDecisionAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has control => (is => 'ro', isa => 'Str');
   has startToFireTimeout => (is => 'ro', isa => 'Str', required => 1);
   has timerId => (is => 'ro', isa => 'Str', required => 1);
@@ -563,7 +563,7 @@ package Aws::SimpleWorkflow::StartTimerDecisionAttributes {
 
 package Aws::SimpleWorkflow::StartTimerFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::StartTimerFailedCause', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timerId => (is => 'ro', isa => 'Str', required => 1);
@@ -571,19 +571,19 @@ package Aws::SimpleWorkflow::StartTimerFailedEventAttributes {
 
 package Aws::SimpleWorkflow::TagFilter {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has tag => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::TaskList {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has name => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::TimerCanceledEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timerId => (is => 'ro', isa => 'Str', required => 1);
@@ -591,14 +591,14 @@ package Aws::SimpleWorkflow::TimerCanceledEventAttributes {
 
 package Aws::SimpleWorkflow::TimerFiredEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timerId => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::TimerStartedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has startToFireTimeout => (is => 'ro', isa => 'Str', required => 1);
@@ -607,14 +607,14 @@ package Aws::SimpleWorkflow::TimerStartedEventAttributes {
 
 package Aws::SimpleWorkflow::WorkflowExecution {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has runId => (is => 'ro', isa => 'Str', required => 1);
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionCancelRequestedCause');
   has externalInitiatedEventId => (is => 'ro', isa => 'Num');
   has externalWorkflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution');
@@ -622,21 +622,21 @@ package Aws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes {
 
 package Aws::SimpleWorkflow::WorkflowExecutionCanceledEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has details => (is => 'ro', isa => 'Str');
 }
 
 package Aws::SimpleWorkflow::WorkflowExecutionCompletedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has result => (is => 'ro', isa => 'Str');
 }
 
 package Aws::SimpleWorkflow::WorkflowExecutionConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str', required => 1);
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
@@ -645,7 +645,7 @@ package Aws::SimpleWorkflow::WorkflowExecutionConfiguration {
 
 package Aws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -659,7 +659,7 @@ package Aws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes {
 
 package Aws::SimpleWorkflow::WorkflowExecutionFailedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has details => (is => 'ro', isa => 'Str');
   has reason => (is => 'ro', isa => 'Str');
@@ -667,13 +667,13 @@ package Aws::SimpleWorkflow::WorkflowExecutionFailedEventAttributes {
 
 package Aws::SimpleWorkflow::WorkflowExecutionFilter {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::WorkflowExecutionInfo {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cancelRequested => (is => 'ro', isa => 'Bool');
   has closeStatus => (is => 'ro', isa => 'Aws::SimpleWorkflow::CloseStatus');
   has closeTimestamp => (is => 'ro', isa => 'Str');
@@ -687,7 +687,7 @@ package Aws::SimpleWorkflow::WorkflowExecutionInfo {
 
 package Aws::SimpleWorkflow::WorkflowExecutionOpenCounts {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has openActivityTasks => (is => 'ro', isa => 'Int', required => 1);
   has openChildWorkflowExecutions => (is => 'ro', isa => 'Int', required => 1);
   has openDecisionTasks => (is => 'ro', isa => 'Int', required => 1);
@@ -696,7 +696,7 @@ package Aws::SimpleWorkflow::WorkflowExecutionOpenCounts {
 
 package Aws::SimpleWorkflow::WorkflowExecutionSignaledEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has externalInitiatedEventId => (is => 'ro', isa => 'Num');
   has externalWorkflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution');
   has input => (is => 'ro', isa => 'Str');
@@ -705,7 +705,7 @@ package Aws::SimpleWorkflow::WorkflowExecutionSignaledEventAttributes {
 
 package Aws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
   has continuedExecutionRunId => (is => 'ro', isa => 'Str');
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -720,7 +720,7 @@ package Aws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes {
 
 package Aws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionTerminatedCause');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
   has details => (is => 'ro', isa => 'Str');
@@ -729,21 +729,21 @@ package Aws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes {
 
 package Aws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
   has timeoutType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionTimeoutType', required => 1);
 }
 
 package Aws::SimpleWorkflow::WorkflowType {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has name => (is => 'ro', isa => 'Str', required => 1);
   has version => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::WorkflowTypeConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has defaultChildPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy');
   has defaultExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has defaultTaskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList');
@@ -752,14 +752,14 @@ package Aws::SimpleWorkflow::WorkflowTypeConfiguration {
 
 package Aws::SimpleWorkflow::WorkflowTypeFilter {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has name => (is => 'ro', isa => 'Str', required => 1);
   has version => (is => 'ro', isa => 'Str');
 }
 
 package Aws::SimpleWorkflow::WorkflowTypeInfo {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has creationDate => (is => 'ro', isa => 'Str', required => 1);
   has deprecationDate => (is => 'ro', isa => 'Str');
   has description => (is => 'ro', isa => 'Str');

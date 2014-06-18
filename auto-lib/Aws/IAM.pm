@@ -7,7 +7,7 @@ enum 'Aws::IAM::statusType', ['Active','Inactive',];
 
 package Aws::IAM::AccessKey {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AccessKeyId => (is => 'ro', isa => 'Str', required => 1);
   has CreateDate => (is => 'ro', isa => 'Str');
   has SecretAccessKey => (is => 'ro', isa => 'Str', required => 1);
@@ -17,7 +17,7 @@ package Aws::IAM::AccessKey {
 
 package Aws::IAM::AccessKeyMetadata {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AccessKeyId => (is => 'ro', isa => 'Str');
   has CreateDate => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Aws::IAM::statusType');
@@ -26,7 +26,7 @@ package Aws::IAM::AccessKeyMetadata {
 
 package Aws::IAM::Group {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has CreateDate => (is => 'ro', isa => 'Str', required => 1);
   has GroupId => (is => 'ro', isa => 'Str', required => 1);
@@ -36,7 +36,7 @@ package Aws::IAM::Group {
 
 package Aws::IAM::InstanceProfile {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has CreateDate => (is => 'ro', isa => 'Str', required => 1);
   has InstanceProfileId => (is => 'ro', isa => 'Str', required => 1);
@@ -47,14 +47,14 @@ package Aws::IAM::InstanceProfile {
 
 package Aws::IAM::LoginProfile {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CreateDate => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::IAM::MFADevice {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has EnableDate => (is => 'ro', isa => 'Str', required => 1);
   has SerialNumber => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
@@ -62,7 +62,7 @@ package Aws::IAM::MFADevice {
 
 package Aws::IAM::PasswordPolicy {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AllowUsersToChangePassword => (is => 'ro', isa => 'Bool');
   has ExpirePasswords => (is => 'ro', isa => 'Bool');
   has MaxPasswordAge => (is => 'ro', isa => 'Int');
@@ -75,7 +75,7 @@ package Aws::IAM::PasswordPolicy {
 
 package Aws::IAM::Role {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has AssumeRolePolicyDocument => (is => 'ro', isa => 'Str');
   has CreateDate => (is => 'ro', isa => 'Str', required => 1);
@@ -86,7 +86,7 @@ package Aws::IAM::Role {
 
 package Aws::IAM::SAMLProviderListEntry {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Arn => (is => 'ro', isa => 'Str');
   has CreateDate => (is => 'ro', isa => 'Str');
   has ValidUntil => (is => 'ro', isa => 'Str');
@@ -94,7 +94,7 @@ package Aws::IAM::SAMLProviderListEntry {
 
 package Aws::IAM::ServerCertificate {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CertificateBody => (is => 'ro', isa => 'Str', required => 1);
   has CertificateChain => (is => 'ro', isa => 'Str');
   has ServerCertificateMetadata => (is => 'ro', isa => 'Aws::IAM::ServerCertificateMetadata', required => 1);
@@ -102,7 +102,7 @@ package Aws::IAM::ServerCertificate {
 
 package Aws::IAM::ServerCertificateMetadata {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has Path => (is => 'ro', isa => 'Str', required => 1);
   has ServerCertificateId => (is => 'ro', isa => 'Str', required => 1);
@@ -112,7 +112,7 @@ package Aws::IAM::ServerCertificateMetadata {
 
 package Aws::IAM::SigningCertificate {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CertificateBody => (is => 'ro', isa => 'Str', required => 1);
   has CertificateId => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Aws::IAM::statusType', required => 1);
@@ -122,7 +122,7 @@ package Aws::IAM::SigningCertificate {
 
 package Aws::IAM::User {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has CreateDate => (is => 'ro', isa => 'Str', required => 1);
   has Path => (is => 'ro', isa => 'Str', required => 1);
@@ -132,7 +132,7 @@ package Aws::IAM::User {
 
 package Aws::IAM::VirtualMFADevice {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Base32StringSeed => (is => 'ro', isa => 'Str');
   has EnableDate => (is => 'ro', isa => 'Str');
   has QRCodePNG => (is => 'ro', isa => 'Str');

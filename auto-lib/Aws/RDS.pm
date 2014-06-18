@@ -8,21 +8,21 @@ enum 'Aws::RDS::SourceType', ['db-instance','db-parameter-group','db-security-gr
 
 package Aws::RDS::AvailabilityZone {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str');
   has ProvisionedIopsCapable => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::RDS::CharacterSet {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CharacterSetDescription => (is => 'ro', isa => 'Str');
   has CharacterSetName => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RDS::DBEngineVersion {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DBEngineDescription => (is => 'ro', isa => 'Str');
   has DBEngineVersionDescription => (is => 'ro', isa => 'Str');
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
@@ -34,7 +34,7 @@ package Aws::RDS::DBEngineVersion {
 
 package Aws::RDS::DBInstance {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
@@ -69,7 +69,7 @@ package Aws::RDS::DBInstance {
 
 package Aws::RDS::DBParameterGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -77,14 +77,14 @@ package Aws::RDS::DBParameterGroup {
 
 package Aws::RDS::DBParameterGroupStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has ParameterApplyStatus => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RDS::DBSecurityGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DBSecurityGroupDescription => (is => 'ro', isa => 'Str');
   has DBSecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::EC2SecurityGroup]');
@@ -95,14 +95,14 @@ package Aws::RDS::DBSecurityGroup {
 
 package Aws::RDS::DBSecurityGroupMembership {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DBSecurityGroupName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RDS::DBSnapshot {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
@@ -122,7 +122,7 @@ package Aws::RDS::DBSnapshot {
 
 package Aws::RDS::DBSubnetGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DBSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has SubnetGroupStatus => (is => 'ro', isa => 'Str');
@@ -132,7 +132,7 @@ package Aws::RDS::DBSubnetGroup {
 
 package Aws::RDS::EC2SecurityGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has EC2SecurityGroupId => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
@@ -141,14 +141,14 @@ package Aws::RDS::EC2SecurityGroup {
 
 package Aws::RDS::Endpoint {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Address => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
 }
 
 package Aws::RDS::EngineDefaults {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Parameter]');
@@ -156,7 +156,7 @@ package Aws::RDS::EngineDefaults {
 
 package Aws::RDS::Event {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Date => (is => 'ro', isa => 'Str');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has Message => (is => 'ro', isa => 'Str');
@@ -166,14 +166,14 @@ package Aws::RDS::Event {
 
 package Aws::RDS::EventCategoriesMap {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has SourceType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RDS::EventSubscription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has CustomerAwsId => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
@@ -188,14 +188,14 @@ package Aws::RDS::EventSubscription {
 
 package Aws::RDS::IPRange {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CIDRIP => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RDS::Option {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBSecurityGroupMembership]');
   has OptionDescription => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
@@ -205,7 +205,7 @@ package Aws::RDS::Option {
 
 package Aws::RDS::OptionConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str]');
   has OptionName => (is => 'ro', isa => 'Str', required => 1);
   has Port => (is => 'ro', isa => 'Int');
@@ -214,7 +214,7 @@ package Aws::RDS::OptionConfiguration {
 
 package Aws::RDS::OptionGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AllowsVpcAndNonVpcInstanceMemberships => (is => 'ro', isa => 'Bool');
   has EngineName => (is => 'ro', isa => 'Str');
   has MajorEngineVersion => (is => 'ro', isa => 'Str');
@@ -226,14 +226,14 @@ package Aws::RDS::OptionGroup {
 
 package Aws::RDS::OptionGroupMembership {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RDS::OptionGroupOption {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DefaultPort => (is => 'ro', isa => 'Int');
   has Description => (is => 'ro', isa => 'Str');
   has EngineName => (is => 'ro', isa => 'Str');
@@ -246,7 +246,7 @@ package Aws::RDS::OptionGroupOption {
 
 package Aws::RDS::OrderableDBInstanceOption {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Aws::RDS::AvailabilityZone]');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
@@ -259,7 +259,7 @@ package Aws::RDS::OrderableDBInstanceOption {
 
 package Aws::RDS::Parameter {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AllowedValues => (is => 'ro', isa => 'Str');
   has ApplyMethod => (is => 'ro', isa => 'Aws::RDS::ApplyMethod');
   has ApplyType => (is => 'ro', isa => 'Str');
@@ -274,7 +274,7 @@ package Aws::RDS::Parameter {
 
 package Aws::RDS::PendingModifiedValues {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
@@ -288,14 +288,14 @@ package Aws::RDS::PendingModifiedValues {
 
 package Aws::RDS::RecurringCharge {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has RecurringChargeAmount => (is => 'ro', isa => 'Num');
   has RecurringChargeFrequency => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RDS::ReservedDBInstance {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceCount => (is => 'ro', isa => 'Int');
@@ -314,7 +314,7 @@ package Aws::RDS::ReservedDBInstance {
 
 package Aws::RDS::ReservedDBInstancesOffering {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
@@ -329,7 +329,7 @@ package Aws::RDS::ReservedDBInstancesOffering {
 
 package Aws::RDS::Subnet {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has SubnetAvailabilityZone => (is => 'ro', isa => 'Aws::RDS::AvailabilityZone');
   has SubnetIdentifier => (is => 'ro', isa => 'Str');
   has SubnetStatus => (is => 'ro', isa => 'Str');
@@ -337,14 +337,14 @@ package Aws::RDS::Subnet {
 
 package Aws::RDS::Tag {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Key => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RDS::VpcSecurityGroupMembership {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Status => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupId => (is => 'ro', isa => 'Str');
 }

@@ -4,7 +4,7 @@ use AWS::API;
 
 package Aws::SNS::Endpoint {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Attributes => (is => 'ro', isa => 'Aws::SNS::MapStringToString');
   has EndpointArn => (is => 'ro', isa => 'Str');
 }
@@ -23,14 +23,14 @@ package Aws::SNS::MessageAttributeMap {
 
 package Aws::SNS::PlatformApplication {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Attributes => (is => 'ro', isa => 'Aws::SNS::MapStringToString');
   has PlatformApplicationArn => (is => 'ro', isa => 'Str');
 }
 
 package Aws::SNS::Subscription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Endpoint => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
   has Protocol => (is => 'ro', isa => 'Str');
@@ -46,7 +46,7 @@ package Aws::SNS::SubscriptionAttributesMap {
 
 package Aws::SNS::Topic {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has TopicArn => (is => 'ro', isa => 'Str');
 }
 

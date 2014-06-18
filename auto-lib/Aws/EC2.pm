@@ -65,20 +65,20 @@ enum 'Aws::EC2::VpnStaticRouteSource', ['Static',];
 
 package Aws::EC2::AccountAttribute {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AttributeName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attributeName');
   has AttributeValues => (is => 'ro', isa => 'ArrayRef[Aws::EC2::AccountAttributeValue]', traits => ['Unwrapped'], xmlname => 'attributeValueSet');
 }
 
 package Aws::EC2::AccountAttributeValue {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AttributeValue => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attributeValue');
 }
 
 package Aws::EC2::Address {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AllocationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'allocationId');
   has AssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'associationId');
   has Domain => (is => 'ro', isa => 'Aws::EC2::DomainType', traits => ['Unwrapped'], xmlname => 'domain');
@@ -91,19 +91,19 @@ package Aws::EC2::Address {
 
 package Aws::EC2::AttributeBooleanValue {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Value => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::EC2::AttributeValue {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Value => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EC2::AvailabilityZone {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Messages => (is => 'ro', isa => 'ArrayRef[Aws::EC2::AvailabilityZoneMessage]', traits => ['Unwrapped'], xmlname => 'messageSet');
   has RegionName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'regionName');
   has State => (is => 'ro', isa => 'Aws::EC2::AvailabilityZoneState', traits => ['Unwrapped'], xmlname => 'zoneState');
@@ -112,13 +112,13 @@ package Aws::EC2::AvailabilityZone {
 
 package Aws::EC2::AvailabilityZoneMessage {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Message => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'message');
 }
 
 package Aws::EC2::BlockDeviceMapping {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has DeviceName => (is => 'ro', isa => 'Str');
   has Ebs => (is => 'ro', isa => 'Aws::EC2::EbsBlockDevice');
   has NoDevice => (is => 'ro', isa => 'Str');
@@ -127,7 +127,7 @@ package Aws::EC2::BlockDeviceMapping {
 
 package Aws::EC2::BundleTask {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has BundleId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bundleId');
   has BundleTaskError => (is => 'ro', isa => 'Aws::EC2::BundleTaskError', traits => ['Unwrapped'], xmlname => 'error');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
@@ -140,21 +140,21 @@ package Aws::EC2::BundleTask {
 
 package Aws::EC2::BundleTaskError {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Code => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'code');
   has Message => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'message');
 }
 
 package Aws::EC2::CancelledSpotInstanceRequest {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has SpotInstanceRequestId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'spotInstanceRequestId');
   has State => (is => 'ro', isa => 'Aws::EC2::CancelSpotInstanceRequestState', traits => ['Unwrapped'], xmlname => 'state');
 }
 
 package Aws::EC2::ConversionTask {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has ConversionTaskId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'conversionTaskId', required => 1);
   has ExpirationTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'expirationTime');
   has ImportInstance => (is => 'ro', isa => 'Aws::EC2::ImportInstanceTaskDetails', traits => ['Unwrapped'], xmlname => 'importInstance');
@@ -166,21 +166,21 @@ package Aws::EC2::ConversionTask {
 
 package Aws::EC2::CreateVolumePermission {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Group => (is => 'ro', isa => 'Aws::EC2::PermissionGroup');
   has UserId => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EC2::CreateVolumePermissionModifications {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Add => (is => 'ro', isa => 'ArrayRef[Aws::EC2::CreateVolumePermission]');
   has Remove => (is => 'ro', isa => 'ArrayRef[Aws::EC2::CreateVolumePermission]');
 }
 
 package Aws::EC2::CustomerGateway {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has BgpAsn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bgpAsn');
   has CustomerGatewayId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerGatewayId');
   has IpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ipAddress');
@@ -191,14 +191,14 @@ package Aws::EC2::CustomerGateway {
 
 package Aws::EC2::DhcpConfiguration {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Key => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'key');
   has Values => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'valueSet');
 }
 
 package Aws::EC2::DhcpOptions {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::DhcpConfiguration]', traits => ['Unwrapped'], xmlname => 'dhcpConfigurationSet');
   has DhcpOptionsId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'dhcpOptionsId');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
@@ -206,7 +206,7 @@ package Aws::EC2::DhcpOptions {
 
 package Aws::EC2::DiskImage {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Description => (is => 'ro', isa => 'Str');
   has Image => (is => 'ro', isa => 'Aws::EC2::DiskImageDetail');
   has Volume => (is => 'ro', isa => 'Aws::EC2::VolumeDetail');
@@ -214,7 +214,7 @@ package Aws::EC2::DiskImage {
 
 package Aws::EC2::DiskImageDescription {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Checksum => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'checksum');
   has Format => (is => 'ro', isa => 'Aws::EC2::DiskImageFormat', traits => ['Unwrapped'], xmlname => 'format', required => 1);
   has ImportManifestUrl => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'importManifestUrl', required => 1);
@@ -223,7 +223,7 @@ package Aws::EC2::DiskImageDescription {
 
 package Aws::EC2::DiskImageDetail {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Bytes => (is => 'ro', isa => 'Num', required => 1);
   has Format => (is => 'ro', isa => 'Aws::EC2::DiskImageFormat', required => 1);
   has ImportManifestUrl => (is => 'ro', isa => 'Str', required => 1);
@@ -231,14 +231,14 @@ package Aws::EC2::DiskImageDetail {
 
 package Aws::EC2::DiskImageVolumeDescription {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id', required => 1);
   has Size => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'size');
 }
 
 package Aws::EC2::EbsBlockDevice {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has DeleteOnTermination => (is => 'ro', isa => 'Bool');
   has Iops => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
@@ -248,7 +248,7 @@ package Aws::EC2::EbsBlockDevice {
 
 package Aws::EC2::EbsInstanceBlockDevice {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
   has Status => (is => 'ro', isa => 'Aws::EC2::AttachmentStatus', traits => ['Unwrapped'], xmlname => 'status');
@@ -257,14 +257,14 @@ package Aws::EC2::EbsInstanceBlockDevice {
 
 package Aws::EC2::EbsInstanceBlockDeviceSpecification {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has DeleteOnTermination => (is => 'ro', isa => 'Bool');
   has VolumeId => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EC2::ExportTask {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has ExportTaskId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'exportTaskId');
   has ExportToS3Task => (is => 'ro', isa => 'Aws::EC2::ExportToS3Task', traits => ['Unwrapped'], xmlname => 'exportToS3');
@@ -275,7 +275,7 @@ package Aws::EC2::ExportTask {
 
 package Aws::EC2::ExportToS3Task {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has ContainerFormat => (is => 'ro', isa => 'Aws::EC2::ContainerFormat', traits => ['Unwrapped'], xmlname => 'containerFormat');
   has DiskImageFormat => (is => 'ro', isa => 'Aws::EC2::DiskImageFormat', traits => ['Unwrapped'], xmlname => 'diskImageFormat');
   has S3Bucket => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 's3Bucket');
@@ -284,7 +284,7 @@ package Aws::EC2::ExportToS3Task {
 
 package Aws::EC2::ExportToS3TaskSpecification {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has ContainerFormat => (is => 'ro', isa => 'Aws::EC2::ContainerFormat');
   has DiskImageFormat => (is => 'ro', isa => 'Aws::EC2::DiskImageFormat');
   has S3Bucket => (is => 'ro', isa => 'Str');
@@ -293,42 +293,42 @@ package Aws::EC2::ExportToS3TaskSpecification {
 
 package Aws::EC2::Filter {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Name => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 
 package Aws::EC2::GroupIdentifier {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has GroupId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupId');
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
 }
 
 package Aws::EC2::IamInstanceProfile {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Arn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'arn');
   has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id');
 }
 
 package Aws::EC2::IamInstanceProfileSpecification {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Arn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EC2::IcmpTypeCode {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Code => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'code');
   has Type => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'type');
 }
 
 package Aws::EC2::Image {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Architecture => (is => 'ro', isa => 'Aws::EC2::ArchitectureValues', traits => ['Unwrapped'], xmlname => 'architecture');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['Unwrapped'], xmlname => 'blockDeviceMapping');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
@@ -355,7 +355,7 @@ package Aws::EC2::Image {
 
 package Aws::EC2::ImportInstanceLaunchSpecification {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AdditionalInfo => (is => 'ro', isa => 'Str');
   has Architecture => (is => 'ro', isa => 'Aws::EC2::ArchitectureValues');
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -370,7 +370,7 @@ package Aws::EC2::ImportInstanceLaunchSpecification {
 
 package Aws::EC2::ImportInstanceTaskDetails {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has Platform => (is => 'ro', isa => 'Aws::EC2::PlatformValues', traits => ['Unwrapped'], xmlname => 'platform');
@@ -379,7 +379,7 @@ package Aws::EC2::ImportInstanceTaskDetails {
 
 package Aws::EC2::ImportInstanceVolumeDetailItem {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone', required => 1);
   has BytesConverted => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'bytesConverted', required => 1);
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
@@ -391,7 +391,7 @@ package Aws::EC2::ImportInstanceVolumeDetailItem {
 
 package Aws::EC2::ImportVolumeTaskDetails {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone', required => 1);
   has BytesConverted => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'bytesConverted', required => 1);
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
@@ -401,7 +401,7 @@ package Aws::EC2::ImportVolumeTaskDetails {
 
 package Aws::EC2::Instance {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AmiLaunchIndex => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'amiLaunchIndex');
   has Architecture => (is => 'ro', isa => 'Aws::EC2::ArchitectureValues', traits => ['Unwrapped'], xmlname => 'architecture');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceBlockDeviceMapping]', traits => ['Unwrapped'], xmlname => 'blockDeviceMapping');
@@ -443,14 +443,14 @@ package Aws::EC2::Instance {
 
 package Aws::EC2::InstanceBlockDeviceMapping {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has DeviceName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deviceName');
   has Ebs => (is => 'ro', isa => 'Aws::EC2::EbsInstanceBlockDevice', traits => ['Unwrapped'], xmlname => 'ebs');
 }
 
 package Aws::EC2::InstanceBlockDeviceMappingSpecification {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has DeviceName => (is => 'ro', isa => 'Str');
   has Ebs => (is => 'ro', isa => 'Aws::EC2::EbsInstanceBlockDeviceSpecification');
   has NoDevice => (is => 'ro', isa => 'Str');
@@ -459,28 +459,28 @@ package Aws::EC2::InstanceBlockDeviceMappingSpecification {
 
 package Aws::EC2::InstanceCount {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has InstanceCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'instanceCount');
   has State => (is => 'ro', isa => 'Aws::EC2::ListingState', traits => ['Unwrapped'], xmlname => 'state');
 }
 
 package Aws::EC2::InstanceExportDetails {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has TargetEnvironment => (is => 'ro', isa => 'Aws::EC2::ExportEnvironment', traits => ['Unwrapped'], xmlname => 'targetEnvironment');
 }
 
 package Aws::EC2::InstanceMonitoring {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has Monitoring => (is => 'ro', isa => 'Aws::EC2::Monitoring', traits => ['Unwrapped'], xmlname => 'monitoring');
 }
 
 package Aws::EC2::InstanceNetworkInterface {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Association => (is => 'ro', isa => 'Aws::EC2::InstanceNetworkInterfaceAssociation', traits => ['Unwrapped'], xmlname => 'association');
   has Attachment => (is => 'ro', isa => 'Aws::EC2::InstanceNetworkInterfaceAttachment', traits => ['Unwrapped'], xmlname => 'attachment');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
@@ -498,7 +498,7 @@ package Aws::EC2::InstanceNetworkInterface {
 
 package Aws::EC2::InstanceNetworkInterfaceAssociation {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has IpOwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ipOwnerId');
   has PublicDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicDnsName');
   has PublicIp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicIp');
@@ -506,7 +506,7 @@ package Aws::EC2::InstanceNetworkInterfaceAssociation {
 
 package Aws::EC2::InstanceNetworkInterfaceAttachment {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
   has AttachmentId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachmentId');
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
@@ -516,7 +516,7 @@ package Aws::EC2::InstanceNetworkInterfaceAttachment {
 
 package Aws::EC2::InstanceNetworkInterfaceSpecification {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has DeleteOnTermination => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
@@ -531,7 +531,7 @@ package Aws::EC2::InstanceNetworkInterfaceSpecification {
 
 package Aws::EC2::InstancePrivateIpAddress {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Association => (is => 'ro', isa => 'Aws::EC2::InstanceNetworkInterfaceAssociation', traits => ['Unwrapped'], xmlname => 'association');
   has Primary => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'primary');
   has PrivateDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateDnsName');
@@ -540,14 +540,14 @@ package Aws::EC2::InstancePrivateIpAddress {
 
 package Aws::EC2::InstanceState {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Code => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'code');
   has Name => (is => 'ro', isa => 'Aws::EC2::InstanceStateName', traits => ['Unwrapped'], xmlname => 'name');
 }
 
 package Aws::EC2::InstanceStateChange {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has CurrentState => (is => 'ro', isa => 'Aws::EC2::InstanceState', traits => ['Unwrapped'], xmlname => 'currentState');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has PreviousState => (is => 'ro', isa => 'Aws::EC2::InstanceState', traits => ['Unwrapped'], xmlname => 'previousState');
@@ -555,7 +555,7 @@ package Aws::EC2::InstanceStateChange {
 
 package Aws::EC2::InstanceStatus {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has Events => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceStatusEvent]', traits => ['Unwrapped'], xmlname => 'eventsSet');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
@@ -566,7 +566,7 @@ package Aws::EC2::InstanceStatus {
 
 package Aws::EC2::InstanceStatusDetails {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has ImpairedSince => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'impairedSince');
   has Name => (is => 'ro', isa => 'Aws::EC2::StatusName', traits => ['Unwrapped'], xmlname => 'name');
   has Status => (is => 'ro', isa => 'Aws::EC2::StatusType', traits => ['Unwrapped'], xmlname => 'status');
@@ -574,7 +574,7 @@ package Aws::EC2::InstanceStatusDetails {
 
 package Aws::EC2::InstanceStatusEvent {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Code => (is => 'ro', isa => 'Aws::EC2::EventCode', traits => ['Unwrapped'], xmlname => 'code');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has NotAfter => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'notAfter');
@@ -583,14 +583,14 @@ package Aws::EC2::InstanceStatusEvent {
 
 package Aws::EC2::InstanceStatusSummary {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Details => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceStatusDetails]', traits => ['Unwrapped'], xmlname => 'details');
   has Status => (is => 'ro', isa => 'Aws::EC2::SummaryStatus', traits => ['Unwrapped'], xmlname => 'status');
 }
 
 package Aws::EC2::InternetGateway {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Attachments => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InternetGatewayAttachment]', traits => ['Unwrapped'], xmlname => 'attachmentSet');
   has InternetGatewayId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'internetGatewayId');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
@@ -598,14 +598,14 @@ package Aws::EC2::InternetGateway {
 
 package Aws::EC2::InternetGatewayAttachment {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has State => (is => 'ro', isa => 'Aws::EC2::AttachmentStatus', traits => ['Unwrapped'], xmlname => 'state');
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
 
 package Aws::EC2::IpPermission {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has FromPort => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'fromPort');
   has IpProtocol => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ipProtocol');
   has IpRanges => (is => 'ro', isa => 'ArrayRef[Aws::EC2::IpRange]', traits => ['Unwrapped'], xmlname => 'ipRanges');
@@ -615,34 +615,34 @@ package Aws::EC2::IpPermission {
 
 package Aws::EC2::IpRange {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has CidrIp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cidrIp');
 }
 
 package Aws::EC2::KeyPairInfo {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has KeyFingerprint => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyFingerprint');
   has KeyName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyName');
 }
 
 package Aws::EC2::LaunchPermission {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Group => (is => 'ro', isa => 'Aws::EC2::PermissionGroup');
   has UserId => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EC2::LaunchPermissionModifications {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Add => (is => 'ro', isa => 'ArrayRef[Aws::EC2::LaunchPermission]');
   has Remove => (is => 'ro', isa => 'ArrayRef[Aws::EC2::LaunchPermission]');
 }
 
 package Aws::EC2::LaunchSpecification {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AddressingType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'addressingType');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['Unwrapped'], xmlname => 'blockDeviceMapping');
   has EbsOptimized => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'ebsOptimized');
@@ -662,13 +662,13 @@ package Aws::EC2::LaunchSpecification {
 
 package Aws::EC2::Monitoring {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has State => (is => 'ro', isa => 'Aws::EC2::MonitoringState', traits => ['Unwrapped'], xmlname => 'state');
 }
 
 package Aws::EC2::NetworkAcl {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Associations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::NetworkAclAssociation]', traits => ['Unwrapped'], xmlname => 'associationSet');
   has Entries => (is => 'ro', isa => 'ArrayRef[Aws::EC2::NetworkAclEntry]', traits => ['Unwrapped'], xmlname => 'entrySet');
   has IsDefault => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'default');
@@ -679,7 +679,7 @@ package Aws::EC2::NetworkAcl {
 
 package Aws::EC2::NetworkAclAssociation {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has NetworkAclAssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'networkAclAssociationId');
   has NetworkAclId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'networkAclId');
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
@@ -687,7 +687,7 @@ package Aws::EC2::NetworkAclAssociation {
 
 package Aws::EC2::NetworkAclEntry {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has CidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cidrBlock');
   has Egress => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'egress');
   has IcmpTypeCode => (is => 'ro', isa => 'Aws::EC2::IcmpTypeCode', traits => ['Unwrapped'], xmlname => 'icmpTypeCode');
@@ -699,7 +699,7 @@ package Aws::EC2::NetworkAclEntry {
 
 package Aws::EC2::NetworkInterface {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Association => (is => 'ro', isa => 'Aws::EC2::NetworkInterfaceAssociation', traits => ['Unwrapped'], xmlname => 'association');
   has Attachment => (is => 'ro', isa => 'Aws::EC2::NetworkInterfaceAttachment', traits => ['Unwrapped'], xmlname => 'attachment');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
@@ -722,7 +722,7 @@ package Aws::EC2::NetworkInterface {
 
 package Aws::EC2::NetworkInterfaceAssociation {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AllocationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'allocationId');
   has AssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'associationId');
   has IpOwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ipOwnerId');
@@ -731,7 +731,7 @@ package Aws::EC2::NetworkInterfaceAssociation {
 
 package Aws::EC2::NetworkInterfaceAttachment {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
   has AttachmentId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachmentId');
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
@@ -743,14 +743,14 @@ package Aws::EC2::NetworkInterfaceAttachment {
 
 package Aws::EC2::NetworkInterfaceAttachmentChanges {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AttachmentId => (is => 'ro', isa => 'Str');
   has DeleteOnTermination => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::EC2::NetworkInterfacePrivateIpAddress {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Association => (is => 'ro', isa => 'Aws::EC2::NetworkInterfaceAssociation', traits => ['Unwrapped'], xmlname => 'association');
   has Primary => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'primary');
   has PrivateDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateDnsName');
@@ -759,7 +759,7 @@ package Aws::EC2::NetworkInterfacePrivateIpAddress {
 
 package Aws::EC2::Placement {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
   has Tenancy => (is => 'ro', isa => 'Aws::EC2::Tenancy', traits => ['Unwrapped'], xmlname => 'tenancy');
@@ -767,7 +767,7 @@ package Aws::EC2::Placement {
 
 package Aws::EC2::PlacementGroup {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
   has State => (is => 'ro', isa => 'Aws::EC2::PlacementGroupState', traits => ['Unwrapped'], xmlname => 'state');
   has Strategy => (is => 'ro', isa => 'Aws::EC2::PlacementStrategy', traits => ['Unwrapped'], xmlname => 'strategy');
@@ -775,14 +775,14 @@ package Aws::EC2::PlacementGroup {
 
 package Aws::EC2::PortRange {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has From => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'from');
   has To => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'to');
 }
 
 package Aws::EC2::PriceSchedule {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Active => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'active');
   has CurrencyCode => (is => 'ro', isa => 'Aws::EC2::CurrencyCodeValues', traits => ['Unwrapped'], xmlname => 'currencyCode');
   has Price => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'price');
@@ -791,7 +791,7 @@ package Aws::EC2::PriceSchedule {
 
 package Aws::EC2::PriceScheduleSpecification {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has CurrencyCode => (is => 'ro', isa => 'Aws::EC2::CurrencyCodeValues');
   has Price => (is => 'ro', isa => 'Num');
   has Term => (is => 'ro', isa => 'Num');
@@ -799,48 +799,48 @@ package Aws::EC2::PriceScheduleSpecification {
 
 package Aws::EC2::PricingDetail {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Count => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'count');
   has Price => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'price');
 }
 
 package Aws::EC2::PrivateIpAddressSpecification {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Primary => (is => 'ro', isa => 'Bool');
   has PrivateIpAddress => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::EC2::ProductCode {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has ProductCodeId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'productCode');
   has ProductCodeType => (is => 'ro', isa => 'Aws::EC2::ProductCodeValues', traits => ['Unwrapped'], xmlname => 'type');
 }
 
 package Aws::EC2::PropagatingVgw {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has GatewayId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'gatewayId');
 }
 
 package Aws::EC2::RecurringCharge {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Amount => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'amount');
   has Frequency => (is => 'ro', isa => 'Aws::EC2::RecurringChargeFrequency', traits => ['Unwrapped'], xmlname => 'frequency');
 }
 
 package Aws::EC2::Region {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Endpoint => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'regionEndpoint');
   has RegionName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'regionName');
 }
 
 package Aws::EC2::Reservation {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Groups => (is => 'ro', isa => 'ArrayRef[Aws::EC2::GroupIdentifier]', traits => ['Unwrapped'], xmlname => 'groupSet');
   has Instances => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Instance]', traits => ['Unwrapped'], xmlname => 'instancesSet');
   has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
@@ -850,14 +850,14 @@ package Aws::EC2::Reservation {
 
 package Aws::EC2::ReservedInstanceLimitPrice {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Amount => (is => 'ro', isa => 'Num');
   has CurrencyCode => (is => 'ro', isa => 'Aws::EC2::CurrencyCodeValues');
 }
 
 package Aws::EC2::ReservedInstances {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has CurrencyCode => (is => 'ro', isa => 'Aws::EC2::CurrencyCodeValues', traits => ['Unwrapped'], xmlname => 'currencyCode');
   has Duration => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'duration');
@@ -878,7 +878,7 @@ package Aws::EC2::ReservedInstances {
 
 package Aws::EC2::ReservedInstancesConfiguration {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has InstanceCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'instanceCount');
   has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType', traits => ['Unwrapped'], xmlname => 'instanceType');
@@ -887,13 +887,13 @@ package Aws::EC2::ReservedInstancesConfiguration {
 
 package Aws::EC2::ReservedInstancesId {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has ReservedInstancesId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'reservedInstancesId');
 }
 
 package Aws::EC2::ReservedInstancesListing {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'clientToken');
   has CreateDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createDate');
   has InstanceCounts => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceCount]', traits => ['Unwrapped'], xmlname => 'instanceCounts');
@@ -908,7 +908,7 @@ package Aws::EC2::ReservedInstancesListing {
 
 package Aws::EC2::ReservedInstancesModification {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'clientToken');
   has CreateDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createDate');
   has EffectiveDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'effectiveDate');
@@ -922,14 +922,14 @@ package Aws::EC2::ReservedInstancesModification {
 
 package Aws::EC2::ReservedInstancesModificationResult {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has ReservedInstancesId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'reservedInstancesId');
   has TargetConfiguration => (is => 'ro', isa => 'Aws::EC2::ReservedInstancesConfiguration', traits => ['Unwrapped'], xmlname => 'targetConfiguration');
 }
 
 package Aws::EC2::ReservedInstancesOffering {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has CurrencyCode => (is => 'ro', isa => 'Aws::EC2::CurrencyCodeValues', traits => ['Unwrapped'], xmlname => 'currencyCode');
   has Duration => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'duration');
@@ -947,7 +947,7 @@ package Aws::EC2::ReservedInstancesOffering {
 
 package Aws::EC2::Route {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'destinationCidrBlock');
   has GatewayId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'gatewayId');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
@@ -959,7 +959,7 @@ package Aws::EC2::Route {
 
 package Aws::EC2::RouteTable {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Associations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::RouteTableAssociation]', traits => ['Unwrapped'], xmlname => 'associationSet');
   has PropagatingVgws => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PropagatingVgw]', traits => ['Unwrapped'], xmlname => 'propagatingVgwSet');
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'routeTableId');
@@ -970,7 +970,7 @@ package Aws::EC2::RouteTable {
 
 package Aws::EC2::RouteTableAssociation {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Main => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'main');
   has RouteTableAssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'routeTableAssociationId');
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'routeTableId');
@@ -979,13 +979,13 @@ package Aws::EC2::RouteTableAssociation {
 
 package Aws::EC2::RunInstancesMonitoringEnabled {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
 }
 
 package Aws::EC2::S3Storage {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AWSAccessKeyId => (is => 'ro', isa => 'Str');
   has Bucket => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bucket');
   has Prefix => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'prefix');
@@ -995,7 +995,7 @@ package Aws::EC2::S3Storage {
 
 package Aws::EC2::SecurityGroup {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupDescription');
   has GroupId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupId');
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
@@ -1008,7 +1008,7 @@ package Aws::EC2::SecurityGroup {
 
 package Aws::EC2::Snapshot {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has OwnerAlias => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAlias');
   has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
@@ -1023,7 +1023,7 @@ package Aws::EC2::Snapshot {
 
 package Aws::EC2::SpotDatafeedSubscription {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Bucket => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bucket');
   has Fault => (is => 'ro', isa => 'Aws::EC2::SpotInstanceStateFault', traits => ['Unwrapped'], xmlname => 'fault');
   has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
@@ -1033,13 +1033,13 @@ package Aws::EC2::SpotDatafeedSubscription {
 
 package Aws::EC2::SpotInstanceMonitoring {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
 }
 
 package Aws::EC2::SpotInstanceRequest {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AvailabilityZoneGroup => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZoneGroup');
   has CreateTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createTime');
   has Fault => (is => 'ro', isa => 'Aws::EC2::SpotInstanceStateFault', traits => ['Unwrapped'], xmlname => 'fault');
@@ -1060,14 +1060,14 @@ package Aws::EC2::SpotInstanceRequest {
 
 package Aws::EC2::SpotInstanceStateFault {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Code => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'code');
   has Message => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'message');
 }
 
 package Aws::EC2::SpotInstanceStatus {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Code => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'code');
   has Message => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'message');
   has UpdateTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'updateTime');
@@ -1075,7 +1075,7 @@ package Aws::EC2::SpotInstanceStatus {
 
 package Aws::EC2::SpotLaunchSpecification {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AddressingType => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
@@ -1096,14 +1096,14 @@ package Aws::EC2::SpotLaunchSpecification {
 
 package Aws::EC2::SpotPlacement {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EC2::SpotPrice {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType', traits => ['Unwrapped'], xmlname => 'instanceType');
   has ProductDescription => (is => 'ro', isa => 'Aws::EC2::SpotProductDescription', traits => ['Unwrapped'], xmlname => 'productDescription');
@@ -1113,20 +1113,20 @@ package Aws::EC2::SpotPrice {
 
 package Aws::EC2::StateReason {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Code => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'code');
   has Message => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'message');
 }
 
 package Aws::EC2::Storage {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has S3 => (is => 'ro', isa => 'Aws::EC2::S3Storage');
 }
 
 package Aws::EC2::Subnet {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has AvailableIpAddressCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'availableIpAddressCount');
   has CidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cidrBlock');
@@ -1140,14 +1140,14 @@ package Aws::EC2::Subnet {
 
 package Aws::EC2::Tag {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Key => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'key');
   has Value => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'value');
 }
 
 package Aws::EC2::TagDescription {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Key => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'key');
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'resourceId');
   has ResourceType => (is => 'ro', isa => 'Aws::EC2::ResourceType', traits => ['Unwrapped'], xmlname => 'resourceType');
@@ -1156,7 +1156,7 @@ package Aws::EC2::TagDescription {
 
 package Aws::EC2::UserIdGroupPair {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has GroupId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupId');
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
   has UserId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'userId');
@@ -1164,7 +1164,7 @@ package Aws::EC2::UserIdGroupPair {
 
 package Aws::EC2::VgwTelemetry {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AcceptedRouteCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'acceptedRouteCount');
   has LastStatusChange => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'lastStatusChange');
   has OutsideIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'outsideIpAddress');
@@ -1174,7 +1174,7 @@ package Aws::EC2::VgwTelemetry {
 
 package Aws::EC2::Volume {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Attachments => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VolumeAttachment]', traits => ['Unwrapped'], xmlname => 'attachmentSet');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has CreateTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createTime');
@@ -1189,7 +1189,7 @@ package Aws::EC2::Volume {
 
 package Aws::EC2::VolumeAttachment {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
   has Device => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'device');
@@ -1200,13 +1200,13 @@ package Aws::EC2::VolumeAttachment {
 
 package Aws::EC2::VolumeDetail {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Size => (is => 'ro', isa => 'Num', required => 1);
 }
 
 package Aws::EC2::VolumeStatusAction {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Code => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'code');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has EventId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'eventId');
@@ -1215,14 +1215,14 @@ package Aws::EC2::VolumeStatusAction {
 
 package Aws::EC2::VolumeStatusDetails {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Name => (is => 'ro', isa => 'Aws::EC2::VolumeStatusName', traits => ['Unwrapped'], xmlname => 'name');
   has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status');
 }
 
 package Aws::EC2::VolumeStatusEvent {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has EventId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'eventId');
   has EventType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'eventType');
@@ -1232,14 +1232,14 @@ package Aws::EC2::VolumeStatusEvent {
 
 package Aws::EC2::VolumeStatusInfo {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Details => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VolumeStatusDetails]', traits => ['Unwrapped'], xmlname => 'details');
   has Status => (is => 'ro', isa => 'Aws::EC2::VolumeStatusInfoStatus', traits => ['Unwrapped'], xmlname => 'status');
 }
 
 package Aws::EC2::VolumeStatusItem {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has Actions => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VolumeStatusAction]', traits => ['Unwrapped'], xmlname => 'actionsSet');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has Events => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VolumeStatusEvent]', traits => ['Unwrapped'], xmlname => 'eventsSet');
@@ -1249,7 +1249,7 @@ package Aws::EC2::VolumeStatusItem {
 
 package Aws::EC2::Vpc {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has CidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cidrBlock');
   has DhcpOptionsId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'dhcpOptionsId');
   has InstanceTenancy => (is => 'ro', isa => 'Aws::EC2::Tenancy', traits => ['Unwrapped'], xmlname => 'instanceTenancy');
@@ -1261,14 +1261,14 @@ package Aws::EC2::Vpc {
 
 package Aws::EC2::VpcAttachment {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has State => (is => 'ro', isa => 'Aws::EC2::AttachmentStatus', traits => ['Unwrapped'], xmlname => 'state');
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
 
 package Aws::EC2::VpnConnection {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has CustomerGatewayConfiguration => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerGatewayConfiguration');
   has CustomerGatewayId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerGatewayId');
   has Options => (is => 'ro', isa => 'Aws::EC2::VpnConnectionOptions', traits => ['Unwrapped'], xmlname => 'options');
@@ -1283,19 +1283,19 @@ package Aws::EC2::VpnConnection {
 
 package Aws::EC2::VpnConnectionOptions {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has StaticRoutesOnly => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'staticRoutesOnly');
 }
 
 package Aws::EC2::VpnConnectionOptionsSpecification {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has StaticRoutesOnly => (is => 'ro', isa => 'Bool');
 }
 
 package Aws::EC2::VpnGateway {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has State => (is => 'ro', isa => 'Aws::EC2::VpnState', traits => ['Unwrapped'], xmlname => 'state');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
@@ -1306,7 +1306,7 @@ package Aws::EC2::VpnGateway {
 
 package Aws::EC2::VpnStaticRoute {
   use Moose;
-  with ('AWS::API::UnwrappedParser', 'AWS::API::ToParams');
+  with ('AWS::API::UnwrappedParser');
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'destinationCidrBlock');
   has Source => (is => 'ro', isa => 'Aws::EC2::VpnStaticRouteSource', traits => ['Unwrapped'], xmlname => 'source');
   has State => (is => 'ro', isa => 'Aws::EC2::VpnState', traits => ['Unwrapped'], xmlname => 'state');

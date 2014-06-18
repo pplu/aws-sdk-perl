@@ -13,7 +13,7 @@ enum 'Aws::ElasticBeanstalk::ValidationSeverity', ['error','warning',];
 
 package Aws::ElasticBeanstalk::ApplicationDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ApplicationName => (is => 'ro', isa => 'Str');
   has ConfigurationTemplates => (is => 'ro', isa => 'ArrayRef[Str]');
   has DateCreated => (is => 'ro', isa => 'Str');
@@ -24,7 +24,7 @@ package Aws::ElasticBeanstalk::ApplicationDescription {
 
 package Aws::ElasticBeanstalk::ApplicationVersionDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ApplicationName => (is => 'ro', isa => 'Str');
   has DateCreated => (is => 'ro', isa => 'Str');
   has DateUpdated => (is => 'ro', isa => 'Str');
@@ -35,13 +35,13 @@ package Aws::ElasticBeanstalk::ApplicationVersionDescription {
 
 package Aws::ElasticBeanstalk::AutoScalingGroup {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElasticBeanstalk::ConfigurationOptionDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ChangeSeverity => (is => 'ro', isa => 'Str');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has MaxLength => (is => 'ro', isa => 'Int');
@@ -57,7 +57,7 @@ package Aws::ElasticBeanstalk::ConfigurationOptionDescription {
 
 package Aws::ElasticBeanstalk::ConfigurationOptionSetting {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Namespace => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
@@ -65,7 +65,7 @@ package Aws::ElasticBeanstalk::ConfigurationOptionSetting {
 
 package Aws::ElasticBeanstalk::ConfigurationSettingsDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ApplicationName => (is => 'ro', isa => 'Str');
   has DateCreated => (is => 'ro', isa => 'Str');
   has DateUpdated => (is => 'ro', isa => 'Str');
@@ -79,7 +79,7 @@ package Aws::ElasticBeanstalk::ConfigurationSettingsDescription {
 
 package Aws::ElasticBeanstalk::EnvironmentDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ApplicationName => (is => 'ro', isa => 'Str');
   has CNAME => (is => 'ro', isa => 'Str');
   has DateCreated => (is => 'ro', isa => 'Str');
@@ -99,7 +99,7 @@ package Aws::ElasticBeanstalk::EnvironmentDescription {
 
 package Aws::ElasticBeanstalk::EnvironmentInfoDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
   has InfoType => (is => 'ro', isa => 'Aws::ElasticBeanstalk::EnvironmentInfoType');
   has Message => (is => 'ro', isa => 'Str');
@@ -108,7 +108,7 @@ package Aws::ElasticBeanstalk::EnvironmentInfoDescription {
 
 package Aws::ElasticBeanstalk::EnvironmentResourceDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElasticBeanstalk::AutoScalingGroup]');
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has Instances => (is => 'ro', isa => 'ArrayRef[Aws::ElasticBeanstalk::Instance]');
@@ -120,13 +120,13 @@ package Aws::ElasticBeanstalk::EnvironmentResourceDescription {
 
 package Aws::ElasticBeanstalk::EnvironmentResourcesDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has LoadBalancer => (is => 'ro', isa => 'Aws::ElasticBeanstalk::LoadBalancerDescription');
 }
 
 package Aws::ElasticBeanstalk::EnvironmentTier {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
@@ -134,7 +134,7 @@ package Aws::ElasticBeanstalk::EnvironmentTier {
 
 package Aws::ElasticBeanstalk::EventDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ApplicationName => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has EventDate => (is => 'ro', isa => 'Str');
@@ -147,32 +147,32 @@ package Aws::ElasticBeanstalk::EventDescription {
 
 package Aws::ElasticBeanstalk::Instance {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Id => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElasticBeanstalk::LaunchConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElasticBeanstalk::Listener {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Port => (is => 'ro', isa => 'Int');
   has Protocol => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElasticBeanstalk::LoadBalancer {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElasticBeanstalk::LoadBalancerDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Domain => (is => 'ro', isa => 'Str');
   has Listeners => (is => 'ro', isa => 'ArrayRef[Aws::ElasticBeanstalk::Listener]');
   has LoadBalancerName => (is => 'ro', isa => 'Str');
@@ -180,55 +180,55 @@ package Aws::ElasticBeanstalk::LoadBalancerDescription {
 
 package Aws::ElasticBeanstalk::OptionRestrictionRegex {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Label => (is => 'ro', isa => 'Str');
   has Pattern => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElasticBeanstalk::OptionSpecification {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Namespace => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElasticBeanstalk::Queue {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str');
   has URL => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElasticBeanstalk::S3Location {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has S3Bucket => (is => 'ro', isa => 'Str');
   has S3Key => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElasticBeanstalk::SolutionStackDescription {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has PermittedFileTypes => (is => 'ro', isa => 'ArrayRef[Str]');
   has SolutionStackName => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElasticBeanstalk::SourceConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ApplicationName => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElasticBeanstalk::Trigger {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElasticBeanstalk::ValidationMessage {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Message => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');

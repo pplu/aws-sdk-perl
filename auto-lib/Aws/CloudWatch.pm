@@ -11,7 +11,7 @@ enum 'Aws::CloudWatch::Statistic', ['SampleCount','Average','Sum','Minimum','Max
 
 package Aws::CloudWatch::AlarmHistoryItem {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has AlarmName => (is => 'ro', isa => 'Str');
   has HistoryData => (is => 'ro', isa => 'Str');
   has HistoryItemType => (is => 'ro', isa => 'Aws::CloudWatch::HistoryItemType');
@@ -21,7 +21,7 @@ package Aws::CloudWatch::AlarmHistoryItem {
 
 package Aws::CloudWatch::Datapoint {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Average => (is => 'ro', isa => 'Num');
   has Maximum => (is => 'ro', isa => 'Num');
   has Minimum => (is => 'ro', isa => 'Num');
@@ -33,21 +33,21 @@ package Aws::CloudWatch::Datapoint {
 
 package Aws::CloudWatch::Dimension {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::CloudWatch::DimensionFilter {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Str');
 }
 
 package Aws::CloudWatch::Metric {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::Dimension]');
   has MetricName => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str');
@@ -55,7 +55,7 @@ package Aws::CloudWatch::Metric {
 
 package Aws::CloudWatch::MetricAlarm {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has ActionsEnabled => (is => 'ro', isa => 'Bool');
   has AlarmActions => (is => 'ro', isa => 'ArrayRef[Str]');
   has AlarmArn => (is => 'ro', isa => 'Str');
@@ -81,7 +81,7 @@ package Aws::CloudWatch::MetricAlarm {
 
 package Aws::CloudWatch::MetricDatum {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::Dimension]');
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has StatisticValues => (is => 'ro', isa => 'Aws::CloudWatch::StatisticSet');
@@ -92,7 +92,7 @@ package Aws::CloudWatch::MetricDatum {
 
 package Aws::CloudWatch::StatisticSet {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Maximum => (is => 'ro', isa => 'Num', required => 1);
   has Minimum => (is => 'ro', isa => 'Num', required => 1);
   has SampleCount => (is => 'ro', isa => 'Num', required => 1);

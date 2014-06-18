@@ -9,21 +9,21 @@ enum 'Aws::CloudSearch::SourceDataFunction', ['Copy','TrimTitle','Map',];
 
 package Aws::CloudSearch::AccessPoliciesStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Options => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
 }
 
 package Aws::CloudSearch::DefaultSearchFieldStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Options => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
 }
 
 package Aws::CloudSearch::DomainStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Created => (is => 'ro', isa => 'Bool');
   has Deleted => (is => 'ro', isa => 'Bool');
   has DocService => (is => 'ro', isa => 'Aws::CloudSearch::ServiceEndpoint');
@@ -40,7 +40,7 @@ package Aws::CloudSearch::DomainStatus {
 
 package Aws::CloudSearch::IndexField {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has IndexFieldName => (is => 'ro', isa => 'Str', required => 1);
   has IndexFieldType => (is => 'ro', isa => 'Aws::CloudSearch::IndexFieldType', required => 1);
   has LiteralOptions => (is => 'ro', isa => 'Aws::CloudSearch::LiteralOptions');
@@ -51,14 +51,14 @@ package Aws::CloudSearch::IndexField {
 
 package Aws::CloudSearch::IndexFieldStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Options => (is => 'ro', isa => 'Aws::CloudSearch::IndexField', required => 1);
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
 }
 
 package Aws::CloudSearch::LiteralOptions {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has FacetEnabled => (is => 'ro', isa => 'Bool');
   has ResultEnabled => (is => 'ro', isa => 'Bool');
@@ -67,14 +67,14 @@ package Aws::CloudSearch::LiteralOptions {
 
 package Aws::CloudSearch::NamedRankExpression {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has RankExpression => (is => 'ro', isa => 'Str', required => 1);
   has RankName => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::CloudSearch::OptionStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has CreationDate => (is => 'ro', isa => 'Str', required => 1);
   has PendingDeletion => (is => 'ro', isa => 'Bool');
   has State => (is => 'ro', isa => 'Aws::CloudSearch::OptionState', required => 1);
@@ -84,21 +84,21 @@ package Aws::CloudSearch::OptionStatus {
 
 package Aws::CloudSearch::RankExpressionStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Options => (is => 'ro', isa => 'Aws::CloudSearch::NamedRankExpression', required => 1);
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
 }
 
 package Aws::CloudSearch::ServiceEndpoint {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Arn => (is => 'ro', isa => 'Str');
   has Endpoint => (is => 'ro', isa => 'Str');
 }
 
 package Aws::CloudSearch::SourceAttribute {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has SourceDataCopy => (is => 'ro', isa => 'Aws::CloudSearch::SourceData');
   has SourceDataFunction => (is => 'ro', isa => 'Aws::CloudSearch::SourceDataFunction', required => 1);
   has SourceDataMap => (is => 'ro', isa => 'Aws::CloudSearch::SourceDataMap');
@@ -107,14 +107,14 @@ package Aws::CloudSearch::SourceAttribute {
 
 package Aws::CloudSearch::SourceData {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has SourceName => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::CloudSearch::SourceDataMap {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Cases => (is => 'ro', isa => 'Aws::CloudSearch::StringCaseMap');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has SourceName => (is => 'ro', isa => 'Str', required => 1);
@@ -122,7 +122,7 @@ package Aws::CloudSearch::SourceDataMap {
 
 package Aws::CloudSearch::SourceDataTrimTitle {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has Language => (is => 'ro', isa => 'Str');
   has Separator => (is => 'ro', isa => 'Str');
@@ -131,14 +131,14 @@ package Aws::CloudSearch::SourceDataTrimTitle {
 
 package Aws::CloudSearch::StemmingOptionsStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Options => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
 }
 
 package Aws::CloudSearch::StopwordOptionsStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Options => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
 }
@@ -151,14 +151,14 @@ package Aws::CloudSearch::StringCaseMap {
 
 package Aws::CloudSearch::SynonymOptionsStatus {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has Options => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
 }
 
 package Aws::CloudSearch::TextOptions {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has FacetEnabled => (is => 'ro', isa => 'Bool');
   has ResultEnabled => (is => 'ro', isa => 'Bool');
@@ -167,7 +167,7 @@ package Aws::CloudSearch::TextOptions {
 
 package Aws::CloudSearch::UIntOptions {
   use Moose;
-  with ('AWS::API::ResultParser', 'AWS::API::ToParams');
+  with ('AWS::API::ResultParser');
   has DefaultValue => (is => 'ro', isa => 'Int');
 }
 
