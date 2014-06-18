@@ -213,10 +213,10 @@ package Net::AWS::JsonResponse {
         if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
           $p{ $att } = $params{ $att };
         } else {
-          $p{ $att } = [ map { new_with_coercions($subtype, %{ $_ }) } @{ $params{ $att } } ]; 
+          $p{ $att } = [ map { new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ]; 
         }
       } else {
-        $p{ $att } = new_with_coercions($type, %{ $params{ $att } });
+        $p{ $att } = new_with_coercions("$type", %{ $params{ $att } });
       }
     }
     return $class->new(%p);
@@ -354,10 +354,10 @@ package Net::AWS::XMLResponse {
         if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
           $p{ $att } = $params{ $att };
         } else {
-          $p{ $att } = [ map { new_with_coercions($subtype, %{ $_ }) } @{ $params{ $att } } ]; 
+          $p{ $att } = [ map { new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ]; 
         }
       } else {
-        $p{ $att } = new_with_coercions($type, %{ $params{ $att } });
+        $p{ $att } = new_with_coercions("$type", %{ $params{ $att } });
       }
     }
     return $class->new(%p);

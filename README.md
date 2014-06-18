@@ -73,3 +73,5 @@ perl -I lib -I auto-lib myscript.pl
 Thanks
 ================
 Luis Alberto Gimenez (@agimenez) for the git-fu cleaning up the "pull other sdks" code
+Srinvas (@kidambisrinivas) for testing, bug reporting and fixing
+
