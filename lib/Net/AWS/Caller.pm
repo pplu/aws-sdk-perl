@@ -354,7 +354,7 @@ package Net::AWS::XMLResponse {
       next if (not exists $params{ $att });
       my $type = $class->meta->get_attribute($att)->type_constraint;
       if ($type eq 'Bool') {
-        $p{ $att } = ($params{ $att } eq 'true')?1:0;
+        $p{ $att } = ($params{ $att } == 1)?1:0;
       } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
         $p{ $att } = $params{ $att };
       } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
