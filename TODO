@@ -12,3 +12,5 @@
 - Pass flattened lists and unflattened lists correctly
 - Some APIs (EC2 at least), will have different definitions for same shapename when its
   input vs output. Outputs will specify xmlname, and inputs won't.
+- Use Metadata service to get access_key, secret_key and token from it if no creds are
+  specified
