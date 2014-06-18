@@ -1,0 +1,3 @@
+---
+class: Aws::SES::GetSendQuotaResult
+use: Aws::SES

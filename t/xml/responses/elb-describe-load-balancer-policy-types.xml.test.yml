@@ -1,0 +1,3 @@
+---
+class: Aws::ELB::DescribeLoadBalancerPolicyTypesResult
+use: Aws::ELB

@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::CancelReservedInstancesListingResult
+use: Aws::EC2

@@ -1,0 +1,3 @@
+---
+class: Aws::ElasticBeanstalk::CreateEnvironmentResult
+use: Aws::ElasticBeanstalk

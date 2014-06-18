@@ -1,0 +1,3 @@
+---
+class: Aws::SES::GetSendStatisticsResult
+use: Aws::SES

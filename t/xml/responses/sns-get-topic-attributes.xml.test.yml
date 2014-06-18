@@ -1,0 +1,3 @@
+---
+class: Aws::SNS::GetTopicAttributesResult
+use: Aws::SNS

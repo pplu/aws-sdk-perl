@@ -1,0 +1,3 @@
+---
+class: Aws::AutoScaling::DescribeTerminationPolicyTypesResult
+use: Aws::AutoScaling

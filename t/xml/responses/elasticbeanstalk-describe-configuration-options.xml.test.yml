@@ -1,0 +1,3 @@
+---
+class: Aws::ElasticBeanstalk::DescribeConfigurationOptionsResult
+use: Aws::ElasticBeanstalk

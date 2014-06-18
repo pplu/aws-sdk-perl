@@ -1,0 +1,3 @@
+---
+class: Aws::STS::GetSessionTokenResult
+use: Aws::STS

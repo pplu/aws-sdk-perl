@@ -1,0 +1,3 @@
+---
+class: Aws::ElasticBeanstalk::CreateApplicationResult
+use: Aws::ElasticBeanstalk

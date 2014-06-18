@@ -1,0 +1,3 @@
+---
+class: Aws::SES::SetIdentityDkimEnabledResult
+use: Aws::SES

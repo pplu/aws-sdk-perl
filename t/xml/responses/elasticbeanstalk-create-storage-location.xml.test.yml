@@ -1,0 +1,3 @@
+---
+class: Aws::ElasticBeanstalk::CreateStorageLocationResult
+use: Aws::ElasticBeanstalk

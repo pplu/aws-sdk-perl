@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeInternetGatewaysResult
+use: Aws::EC2

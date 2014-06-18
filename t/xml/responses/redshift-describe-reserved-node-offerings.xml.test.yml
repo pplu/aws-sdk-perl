@@ -1,0 +1,3 @@
+---
+class: Aws::RedShift::DescribeReservedNodeOfferingsResult
+use: Aws::RedShift

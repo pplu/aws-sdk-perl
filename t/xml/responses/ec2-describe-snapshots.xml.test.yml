@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeSnapshotsResult
+use: Aws::EC2

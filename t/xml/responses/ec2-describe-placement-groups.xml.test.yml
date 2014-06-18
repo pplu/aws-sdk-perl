@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribePlacementGroupsResult
+use: Aws::EC2

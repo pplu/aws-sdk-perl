@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::StopInstancesResult
+use: Aws::EC2

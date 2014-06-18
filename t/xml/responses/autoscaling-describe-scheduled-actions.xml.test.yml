@@ -1,0 +1,3 @@
+---
+class: Aws::AutoScaling::DescribeScheduledActionsResult
+use: Aws::AutoScaling

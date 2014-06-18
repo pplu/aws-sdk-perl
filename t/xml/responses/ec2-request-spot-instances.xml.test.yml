@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::RequestSpotInstancesResult
+use: Aws::EC2

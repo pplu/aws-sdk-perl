@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::ImportInstanceResult
+use: Aws::EC2

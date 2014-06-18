@@ -1,0 +1,3 @@
+---
+class: Aws::ElasticBeanstalk::CheckDNSAvailabilityResult
+use: Aws::ElasticBeanstalk

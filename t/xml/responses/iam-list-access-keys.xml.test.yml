@@ -1,0 +1,3 @@
+---
+class: Aws::IAM::ListAccessKeysResult
+use: Aws::IAM

@@ -1,0 +1,3 @@
+---
+class: Aws::RedShift::PurchaseReservedNodeOfferingResult
+use: Aws::RedShift

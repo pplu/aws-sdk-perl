@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::CreateRouteTableResult
+use: Aws::EC2

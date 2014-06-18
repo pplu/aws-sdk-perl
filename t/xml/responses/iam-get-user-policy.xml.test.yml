@@ -1,0 +1,3 @@
+---
+class: Aws::IAM::GetUserPolicyResult
+use: Aws::IAM

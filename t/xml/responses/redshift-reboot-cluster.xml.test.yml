@@ -1,0 +1,3 @@
+---
+class: Aws::RedShift::RebootClusterResult
+use: Aws::RedShift

@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::CreateVpnGatewayResult
+use: Aws::EC2

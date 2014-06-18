@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::CreateVpcResult
+use: Aws::EC2

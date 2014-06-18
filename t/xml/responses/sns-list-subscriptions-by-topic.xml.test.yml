@@ -1,0 +1,3 @@
+---
+class: Aws::SNS::ListSubscriptionsByTopicResult
+use: Aws::SNS

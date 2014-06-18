@@ -1,0 +1,3 @@
+---
+class: Aws::SNS::SubscribeResult
+use: Aws::SNS

@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeRegionsResult
+use: Aws::EC2

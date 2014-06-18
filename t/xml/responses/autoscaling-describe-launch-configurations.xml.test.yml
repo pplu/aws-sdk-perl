@@ -1,0 +1,3 @@
+---
+class: Aws::AutoScaling::DescribeLaunchConfigurationsResult
+use: Aws::AutoScaling

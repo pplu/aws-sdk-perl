@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::CopySnapshotResult
+use: Aws::EC2

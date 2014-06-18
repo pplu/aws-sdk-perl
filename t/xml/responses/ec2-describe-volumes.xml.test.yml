@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeVolumesResult
+use: Aws::EC2

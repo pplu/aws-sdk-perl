@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::ImportVolumeResult
+use: Aws::EC2

@@ -1,0 +1,3 @@
+---
+class: Aws::AutoScaling::DescribeScalingActivitiesResult
+use: Aws::AutoScaling

@@ -1,0 +1,3 @@
+---
+class: Aws::SQS::ListQueuesResult
+use: Aws::SQS

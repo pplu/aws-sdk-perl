@@ -1,0 +1,3 @@
+---
+class: Aws::RedShift::CreateClusterParameterGroupResult
+use: Aws::RedShift

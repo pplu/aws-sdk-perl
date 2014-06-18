@@ -1,0 +1,3 @@
+---
+class: Aws::RDS::DescribeDBParameterGroupsResult
+use: Aws::RDS

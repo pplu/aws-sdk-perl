@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeDhcpOptionsResult
+use: Aws::EC2

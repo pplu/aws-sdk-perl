@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::CreateSpotDatafeedSubscriptionResult
+use: Aws::EC2

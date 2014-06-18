@@ -1,0 +1,3 @@
+---
+class: Aws::IAM::ListSigningCertificatesResult
+use: Aws::IAM

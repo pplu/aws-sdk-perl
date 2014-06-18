@@ -1,0 +1,3 @@
+---
+class: Aws::SES::GetIdentityVerificationAttributesResult
+use: Aws::SES

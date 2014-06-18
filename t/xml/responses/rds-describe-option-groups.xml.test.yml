@@ -1,0 +1,3 @@
+---
+class: Aws::RDS::DescribeOptionGroupsResult
+use: Aws::RDS

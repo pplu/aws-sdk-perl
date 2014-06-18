@@ -1,0 +1,3 @@
+---
+class: Aws::SQS::GetQueueUrlResult
+use: Aws::SQS

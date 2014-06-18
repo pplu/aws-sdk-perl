@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::CancelBundleTaskResult
+use: Aws::EC2

@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::AttachVolumeResult
+use: Aws::EC2
