@@ -332,7 +332,7 @@ package Aws::Support {
   has version => (is => 'ro', isa => 'Str', default => '2013-04-15');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'AWSSupport_20130415');
   has json_version => (is => 'ro', isa => 'Str', default => "1.1");
-  with ('Net::AWS::Caller', 'AWS::API::SingleEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
+  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
   
   sub AddCommunicationToCase {
     my $self = shift;

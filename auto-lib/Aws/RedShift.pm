@@ -245,6 +245,7 @@ package Aws::RedShift::PendingModifiedValues {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
+  has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -781,6 +782,7 @@ package Aws::RedShift::ModifyCluster {
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
+  has NewClusterIdentifier => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -862,17 +864,22 @@ package Aws::RedShift::ResetClusterParameterGroup {
 package Aws::RedShift::RestoreFromClusterSnapshot {
   use Moose;
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
+  has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
+  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ClusterSecurityGroupName' );
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreFromClusterSnapshot');
   has _returns => (isa => 'Aws::RedShift::RestoreFromClusterSnapshotResult', is => 'ro');

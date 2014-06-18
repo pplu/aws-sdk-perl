@@ -15,6 +15,12 @@ package Aws::SNS::MapStringToString {
   has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
+package Aws::SNS::MessageAttributeMap {
+  use Moose;
+  with 'AWS::API::StrToStrMapParser';
+  has Map => (is => 'ro', isa => 'HashRef[Str]');
+}
+
 package Aws::SNS::PlatformApplication {
   use Moose;
   with ('AWS::API::ResultParser', 'AWS::API::ToParams');
@@ -203,6 +209,7 @@ package Aws::SNS::ListTopics {
 package Aws::SNS::Publish {
   use Moose;
   has Message => (is => 'ro', isa => 'Str', required => 1);
+  has MessageAttributes => (is => 'ro', isa => 'Aws::SNS::MessageAttributeMap', traits => ['NameInRequest'], request_name => 'Value' );
   has MessageStructure => (is => 'ro', isa => 'Str');
   has Subject => (is => 'ro', isa => 'Str');
   has TargetArn => (is => 'ro', isa => 'Str');
