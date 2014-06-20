@@ -391,25 +391,35 @@ package Net::AWS::Caller {
     }
   );
 
+  #-- Custom request method from user overrides default method below
+  has 'request_method'     => ( is => 'rw', required => 0, lazy => 1, default => sub {
+    my ( $self ) = @_;
+    return sub {
+      my ( $requestObj, $headers ) = @_;
+      print STDERR "Using default caller\n";
+      my $response = $self->ua->request(
+        $requestObj->method,
+        $requestObj->url,
+        {
+          headers => $headers,
+          (defined $requestObj->content)?(content => $requestObj->content):(),
+        }
+      );
+      if ( $response->{success} ) {
+          return $self->_process_response( $response->{content} );
+      } else {
+          #TODO: retry or croak based on error codes
+          croak "POST Request failed: $response->{status} $response->{reason} $response->{content}\n";
+      }
+    };
+  } );
+
   sub send {
     my ($self, $request) = @_;
     my $headers = {};
     $request->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
 
-    my $response = $self->ua->request(
-      $request->method,
-      $request->url,
-      {
-        headers => $headers,
-        (defined $request->content)?(content => $request->content):(),
-      }
-    );
-    if ( $response->{success} ) {
-        return $self->_process_response( $response->{content} );
-    } else {
-        #TODO: retry or croak based on error codes
-        croak "POST Request failed: $response->{status} $response->{reason} $response->{content}\n";
-    }
+    return $self->request_method->( $request, $headers, $self );
   }
 }
 
