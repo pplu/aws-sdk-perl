@@ -1,0 +1,3 @@
+---
+class: Aws::EMR::DescribeJobFlowsResult
+use: Aws::EMR

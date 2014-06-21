@@ -1,0 +1,3 @@
+---
+class: Aws::IAM::ListServerCertificatesResult
+use: Aws::IAM

@@ -1,0 +1,3 @@
+---
+class: Aws::CloudFormation::GetTemplateResult
+use: Aws::CloudFormation

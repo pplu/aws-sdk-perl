@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeKeyPairsResult
+use: Aws::EC2

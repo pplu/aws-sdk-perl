@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeSpotPriceHistoryResult
+use: Aws::EC2

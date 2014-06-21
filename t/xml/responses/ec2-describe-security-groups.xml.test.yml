@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeSecurityGroupsResult
+use: Aws::EC2

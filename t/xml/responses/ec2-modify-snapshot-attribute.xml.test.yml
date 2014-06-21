@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::ModifySnapshotAttributeResult
+use: Aws::EC2

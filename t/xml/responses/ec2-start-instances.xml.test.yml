@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::StartInstancesResult
+use: Aws::EC2

@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::RegisterImageResult
+use: Aws::EC2

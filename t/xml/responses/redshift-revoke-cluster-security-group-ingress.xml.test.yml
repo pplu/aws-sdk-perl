@@ -1,0 +1,3 @@
+---
+class: Aws::RedShift::RevokeClusterSecurityGroupIngressResult
+use: Aws::RedShift

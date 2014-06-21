@@ -1,0 +1,3 @@
+---
+class: Aws::CloudWatch::ListMetricsResult
+use: Aws::CloudWatch

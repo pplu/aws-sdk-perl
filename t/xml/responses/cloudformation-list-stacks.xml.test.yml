@@ -1,0 +1,3 @@
+---
+class: Aws::CloudFormation::ListStacksResult
+use: Aws::CloudFormation

@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeReservedInstancesOfferingsResult
+use: Aws::EC2

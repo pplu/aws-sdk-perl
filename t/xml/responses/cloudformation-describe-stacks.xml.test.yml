@@ -1,0 +1,3 @@
+---
+class: Aws::CloudFormation::DescribeStacksResult
+use: Aws::CloudFormation

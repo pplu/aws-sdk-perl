@@ -1,0 +1,3 @@
+---
+class: Aws::RedShift::DescribeEventsResult
+use: Aws::RedShift

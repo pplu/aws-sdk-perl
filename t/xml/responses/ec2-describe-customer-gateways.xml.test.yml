@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeCustomerGatewaysResult
+use: Aws::EC2

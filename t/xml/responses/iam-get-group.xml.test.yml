@@ -1,0 +1,3 @@
+---
+class: Aws::IAM::GetGroupResult
+use: Aws::IAM

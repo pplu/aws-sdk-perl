@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeBundleTasksResult
+use: Aws::EC2

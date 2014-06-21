@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeAddressesResult
+use: Aws::EC2

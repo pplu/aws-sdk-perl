@@ -1,0 +1,3 @@
+---
+class: Aws::AutoScaling::DescribeTagsResult
+use: Aws::AutoScaling

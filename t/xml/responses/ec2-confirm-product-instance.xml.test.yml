@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::ConfirmProductInstanceResult
+use: Aws::EC2

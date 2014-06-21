@@ -1,0 +1,3 @@
+---
+class: Aws::ElasticBeanstalk::UpdateApplicationVersionResult
+use: Aws::ElasticBeanstalk

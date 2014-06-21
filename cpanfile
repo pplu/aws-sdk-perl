@@ -1,13 +1,10 @@
 requires 'MooseX::Declare';
+requires 'Moose';
+requires 'Data::Compare';
+requires 'URI';
 requires 'Net::Amazon::Signature::V4';
-requires 'HTTP::Header';
-requires 'HTTP::Request::Common';
+requires 'JSON';
 requires 'XML::Simple';
-
-# These modules are for tests and building only
-#Data::Printer
-#Data::Compare
-#Template
-#Test::More
-#Test::Exception
-#Test::Class::Moose
+on 'test' {
+  requires 'YAML';
+}

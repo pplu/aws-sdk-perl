@@ -1,0 +1,3 @@
+---
+class: Aws::IAM::CreateVirtualMFADeviceResult
+use: Aws::IAM

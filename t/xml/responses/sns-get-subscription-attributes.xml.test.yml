@@ -1,0 +1,3 @@
+---
+class: Aws::SNS::GetSubscriptionAttributesResult
+use: Aws::SNS

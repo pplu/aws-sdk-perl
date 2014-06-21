@@ -1,0 +1,3 @@
+---
+class: Aws::RedShift::DescribeClusterSubnetGroupsResult
+use: Aws::RedShift

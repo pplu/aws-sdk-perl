@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeNetworkInterfacesResult
+use: Aws::EC2

@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::CancelSpotInstanceRequestsResult
+use: Aws::EC2

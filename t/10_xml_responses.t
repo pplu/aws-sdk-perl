@@ -5,41 +5,11 @@ use warnings;
 
 use Test::More;
 use Test::Exception;
-
-use Net::AWS::Caller;
-use MooseX::Declare;
-
+use YAML qw/DumpFile LoadFile/;
+use XML::Simple;
+use Module::Load;
 
 use Data::Dumper;
-
-class XMLResponseTester with (Net::AWS::XMLResponse) {
-  use Module::Load;
-
-  has api => (is => 'ro', isa => 'Str');
-
-  method process_result($api, $xml) {
-    my $result = $self->_process_response($xml);
-    my ($class) = grep { m/Result$/ } keys %$result;
-    if ($class) {
-      my $cl = "Aws::${api}::${class}";
-      load "Aws::${api}";
-      my $o_result = $cl->from_result($result->{ $class });
-
-      use Data::Dumper;
-      print STDERR Dumper($o_result);
-    } else {
-      die "Can't process $api call with keys " . join ',', keys %$result;
-    }
-  }
-}
-
-#  method ReplaceRouteTableAssociation (%args) {
-#    my $call = AWS::EC2::ReplaceRouteTableAssociation->new(%args);
-#    my $result = $self->_api_caller($call->_api_call, $call);
-#    my $o_result = AWS::EC2::ReplaceRouteTableAssociationResult->from_result($result->{ $call->_result_key });
-#    return $o_result;
-#  }
-
 
 my $dir = 't/xml/responses';
 opendir(my $dh, $dir);
@@ -66,19 +36,54 @@ sub test_file {
     $xml = <$fh>;
     close $fh;
   }
-  my $test = XMLResponseTester->new;
-  my ($api) = $file =~ m/\/(\w+?)\-/;
-  $api = { 
-    redshift => 'RedShift',
-    importexport => 'ImportExport',
-    elasticbeanstalk => 'ElasticBeanstalk',
-    cloudwatch => 'CloudWatch',
-    autoscaling => 'AutoScaling',
-    cloudformation => 'CloudFormation',
-    cloudfront => 'CloudFront',
-  }->{ $api } || uc $api;
+  my $struct = XML::Simple::XMLin($xml);
 
-  lives_ok {
-    $test->process_result($api, $xml);
-  } "Construct class for Aws::${api} from $file";
+  my $mode = 0;
+
+  if ($mode == 1){
+    # Generate a YAML file with the API class
+    # to call
+    my ($api) = $file =~ m/\/(\w+?)\-/;
+    $api = { 
+      redshift => 'RedShift',
+      importexport => 'ImportExport',
+      elasticbeanstalk => 'ElasticBeanstalk',
+      cloudwatch => 'CloudWatch',
+      autoscaling => 'AutoScaling',
+      cloudformation => 'CloudFormation',
+      cloudfront => 'CloudFront',
+    }->{ $api } || uc $api;
+  
+    my $class;
+    if ($api eq 'EC2'){
+      $class=$file;
+      $class =~ s/\-(\w)/ uc($1) /ge;
+      $class =~ s/^.*\/ec2//; 
+      $class =~ s/.xml$//;
+      $class = "${class}Result";
+    } else {
+      ($class) = grep { m/Result$/ } keys %$struct;
+    }
+    $class = "Aws::${api}::${class}" if ($class);
+    DumpFile("$file.test.yml", {
+      use => "Aws::${api}",
+      class => $class
+    });
+  } else {
+    my $test = LoadFile("$file.test.yml");
+
+    lives_ok {
+      load "$test->{use}";
+    } "Load $test->{use}";
+
+    SKIP: {
+      skip "$file.test.yml is lacking class entry",1 unless $test->{class};
+
+      my $res;
+      lives_ok {
+        $res = $test->{class}->from_result($struct);
+        diag(Dumper($res));
+      } "Construct class for $test->{class} from $file";
+    }
+  }
 }

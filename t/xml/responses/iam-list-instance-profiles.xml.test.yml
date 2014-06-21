@@ -1,0 +1,3 @@
+---
+class: Aws::IAM::ListInstanceProfilesResult
+use: Aws::IAM

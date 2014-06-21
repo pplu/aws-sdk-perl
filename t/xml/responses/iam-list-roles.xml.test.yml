@@ -1,0 +1,3 @@
+---
+class: Aws::IAM::ListRolesResult
+use: Aws::IAM

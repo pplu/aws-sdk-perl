@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::BundleInstanceResult
+use: Aws::EC2

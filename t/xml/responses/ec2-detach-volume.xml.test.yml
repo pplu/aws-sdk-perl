@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DetachVolumeResult
+use: Aws::EC2

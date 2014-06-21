@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeInstanceAttributeResult
+use: Aws::EC2

@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::CreateSubnetResult
+use: Aws::EC2

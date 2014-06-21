@@ -1,0 +1,3 @@
+---
+class: Aws::RedShift::CopyClusterSnapshotResult
+use: Aws::RedShift

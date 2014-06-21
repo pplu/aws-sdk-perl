@@ -1,0 +1,3 @@
+---
+class: Aws::AutoScaling::DescribeAutoScalingNotificationTypesResult
+use: Aws::AutoScaling

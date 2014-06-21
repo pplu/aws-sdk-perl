@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::DescribeVpcsResult
+use: Aws::EC2

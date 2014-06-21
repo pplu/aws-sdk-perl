@@ -1,0 +1,3 @@
+---
+class: Aws::IAM::ListUsersResult
+use: Aws::IAM

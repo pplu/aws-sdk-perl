@@ -1,0 +1,3 @@
+---
+class: Aws::SES::VerifyDomainIdentityResult
+use: Aws::SES

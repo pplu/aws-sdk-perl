@@ -1,0 +1,3 @@
+---
+class: Aws::ElasticBeanstalk::RetrieveEnvironmentInfoResult
+use: Aws::ElasticBeanstalk

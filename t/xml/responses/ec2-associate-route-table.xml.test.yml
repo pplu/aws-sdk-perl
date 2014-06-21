@@ -1,0 +1,3 @@
+---
+class: Aws::EC2::AssociateRouteTableResult
+use: Aws::EC2

@@ -1,0 +1,3 @@
+---
+class: Aws::RDS::DescribeReservedDBInstancesResult
+use: Aws::RDS

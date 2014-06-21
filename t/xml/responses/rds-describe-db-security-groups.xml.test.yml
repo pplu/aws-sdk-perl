@@ -1,0 +1,3 @@
+---
+class: Aws::RDS::DescribeDBSecurityGroupsResult
+use: Aws::RDS

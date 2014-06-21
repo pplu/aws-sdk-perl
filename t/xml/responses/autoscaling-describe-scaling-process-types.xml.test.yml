@@ -1,0 +1,3 @@
+---
+class: Aws::AutoScaling::DescribeScalingProcessTypesResult
+use: Aws::AutoScaling

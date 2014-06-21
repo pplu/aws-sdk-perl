@@ -1,0 +1,3 @@
+---
+class: Aws::RDS::DescribeDBSubnetGroupsResult
+use: Aws::RDS
