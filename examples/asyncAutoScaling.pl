@@ -12,7 +12,10 @@ use Aws::AutoScaling;
 my $aws = Aws::AutoScaling->new( 
     region => 'us-west-1',
     request_method => sub {
-        my ( $requestObj, $headers, $netAwsCaller ) = @_; 
+        my ( $requestObj, $netAwsCaller ) = @_; 
+        my $headers = {};
+        $requestObj->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
+
         print "Requesting AWS API Asynchronously ". $requestObj->url ."...\n";
 
         $netAwsCaller->ua ( Mojo::UserAgent->new );

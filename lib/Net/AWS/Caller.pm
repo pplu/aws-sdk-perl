@@ -395,8 +395,10 @@ package Net::AWS::Caller {
   has 'request_method'     => ( is => 'rw', required => 0, lazy => 1, default => sub {
     my ( $self ) = @_;
     return sub {
-      my ( $requestObj, $headers ) = @_;
-      print STDERR "Using default caller\n";
+      my ( $requestObj ) = @_;
+      my $headers = {};
+      $requestObj->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
+
       my $response = $self->ua->request(
         $requestObj->method,
         $requestObj->url,
@@ -416,10 +418,7 @@ package Net::AWS::Caller {
 
   sub send {
     my ($self, $request) = @_;
-    my $headers = {};
-    $request->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
-
-    return $self->request_method->( $request, $headers, $self );
+    return $self->request_method->( $request, $self );
   }
 }
 
