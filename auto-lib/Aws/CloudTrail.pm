@@ -149,48 +149,55 @@ package Aws::CloudTrail {
   has version => (is => 'ro', isa => 'Str', default => '2013-11-01');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101');
   has json_version => (is => 'ro', isa => 'Str', default => "1.1");
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonResponse');
+
   
   sub CreateTrail {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudTrail::CreateTrail', @_);
+    my $call = $self->new_with_coercions('Aws::CloudTrail::CreateTrail', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudTrail::CreateTrailResult->from_result($result);return $o_result;
   }
   sub DeleteTrail {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudTrail::DeleteTrail', @_);
+    my $call = $self->new_with_coercions('Aws::CloudTrail::DeleteTrail', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudTrail::DeleteTrailResult->from_result($result);return $o_result;
   }
   sub DescribeTrails {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudTrail::DescribeTrails', @_);
+    my $call = $self->new_with_coercions('Aws::CloudTrail::DescribeTrails', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudTrail::DescribeTrailsResult->from_result($result);return $o_result;
   }
   sub GetTrailStatus {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudTrail::GetTrailStatus', @_);
+    my $call = $self->new_with_coercions('Aws::CloudTrail::GetTrailStatus', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudTrail::GetTrailStatusResult->from_result($result);return $o_result;
   }
   sub StartLogging {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudTrail::StartLogging', @_);
+    my $call = $self->new_with_coercions('Aws::CloudTrail::StartLogging', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudTrail::StartLoggingResult->from_result($result);return $o_result;
   }
   sub StopLogging {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudTrail::StopLogging', @_);
+    my $call = $self->new_with_coercions('Aws::CloudTrail::StopLogging', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudTrail::StopLoggingResult->from_result($result);return $o_result;
   }
   sub UpdateTrail {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudTrail::UpdateTrail', @_);
+    my $call = $self->new_with_coercions('Aws::CloudTrail::UpdateTrail', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudTrail::UpdateTrailResult->from_result($result);return $o_result;
   }
 }
+1;

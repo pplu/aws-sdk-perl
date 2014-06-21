@@ -48,10 +48,10 @@ Create a Perl script (myscript.pl)
 ```
 #!/usr/bin/env perl
 
-use Aws::IAM;
+use Aws;
 use Data::Printer;
 
-my $iam = Aws::IAM->new(
+my $iam = Aws->service('IAM')->new(
   region => 'eu-west-1',
 );
 

@@ -347,102 +347,109 @@ package Aws::DataPipeline {
   has version => (is => 'ro', isa => 'Str', default => '2012-10-29');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'DataPipeline');
   has json_version => (is => 'ro', isa => 'Str', default => "1.1");
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonResponse');
+
   
   sub ActivatePipeline {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::ActivatePipeline', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::ActivatePipeline', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DataPipeline::ActivatePipelineResult->from_result($result);return $o_result;
   }
   sub CreatePipeline {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::CreatePipeline', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::CreatePipeline', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DataPipeline::CreatePipelineResult->from_result($result);return $o_result;
   }
   sub DeletePipeline {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::DeletePipeline', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::DeletePipeline', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DescribeObjects {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::DescribeObjects', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::DescribeObjects', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DataPipeline::DescribeObjectsResult->from_result($result);return $o_result;
   }
   sub DescribePipelines {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::DescribePipelines', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::DescribePipelines', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DataPipeline::DescribePipelinesResult->from_result($result);return $o_result;
   }
   sub EvaluateExpression {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::EvaluateExpression', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::EvaluateExpression', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DataPipeline::EvaluateExpressionResult->from_result($result);return $o_result;
   }
   sub GetPipelineDefinition {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::GetPipelineDefinition', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::GetPipelineDefinition', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DataPipeline::GetPipelineDefinitionResult->from_result($result);return $o_result;
   }
   sub ListPipelines {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::ListPipelines', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::ListPipelines', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DataPipeline::ListPipelinesResult->from_result($result);return $o_result;
   }
   sub PollForTask {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::PollForTask', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::PollForTask', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DataPipeline::PollForTaskResult->from_result($result);return $o_result;
   }
   sub PutPipelineDefinition {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::PutPipelineDefinition', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::PutPipelineDefinition', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DataPipeline::PutPipelineDefinitionResult->from_result($result);return $o_result;
   }
   sub QueryObjects {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::QueryObjects', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::QueryObjects', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DataPipeline::QueryObjectsResult->from_result($result);return $o_result;
   }
   sub ReportTaskProgress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::ReportTaskProgress', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::ReportTaskProgress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DataPipeline::ReportTaskProgressResult->from_result($result);return $o_result;
   }
   sub ReportTaskRunnerHeartbeat {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::ReportTaskRunnerHeartbeat', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::ReportTaskRunnerHeartbeat', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DataPipeline::ReportTaskRunnerHeartbeatResult->from_result($result);return $o_result;
   }
   sub SetStatus {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::SetStatus', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::SetStatus', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub SetTaskStatus {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::SetTaskStatus', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::SetTaskStatus', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DataPipeline::SetTaskStatusResult->from_result($result);return $o_result;
   }
   sub ValidatePipelineDefinition {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DataPipeline::ValidatePipelineDefinition', @_);
+    my $call = $self->new_with_coercions('Aws::DataPipeline::ValidatePipelineDefinition', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DataPipeline::ValidatePipelineDefinitionResult->from_result($result);return $o_result;
   }
 }
+1;

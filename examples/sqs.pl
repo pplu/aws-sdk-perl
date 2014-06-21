@@ -4,9 +4,9 @@ use strict;
 use warnings;
 
 use Data::Printer;
-use Aws::SQS;
+use Aws;
  
-my $sqs = Aws::SQS->new(region => 'eu-west-1');
+my $sqs = Aws->service('SQS')->new(region => 'eu-west-1');
 
 # CreateQueue doesn't die if the queue alredy exists with the same attributes
 my $q = $sqs->CreateQueue(QueueName => 'queue_name');

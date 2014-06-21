@@ -15,6 +15,10 @@ my $ec2 = Aws->service('EC2')->new(
   region => 'eu-west-1',
 );
 
-$result = $ec2->DescribeSpotPriceHistory;
-p $result;
-p $_ foreach @{ $result->SpotPriceHistory };
+#$result = $ec2->DescribeImages(Owners => [ 'self' ]);
+$result = $ec2->DescribeImages(Owners => [ 'amazon' ]);
+p $_ for (@{ $result->Images });
+
+exit 1;
+
+

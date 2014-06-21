@@ -1,7 +1,8 @@
-use Aws::IAM;
+
+use Aws;
 use Data::Printer;
 
-my $iam = Aws::IAM->new( );
+my $iam = Aws->service('IAM')->new( );
 
 #my $policy = $iam->GetAccountPasswordPolicy;
 #p $policy;

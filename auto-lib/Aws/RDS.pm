@@ -1218,350 +1218,357 @@ package Aws::RDS {
   has service => (is => 'ro', isa => 'Str', default => 'rds');
   has version => (is => 'ro', isa => 'Str', default => '2013-01-10');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V2Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V2Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::QueryCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
+
   
   sub AddSourceIdentifierToSubscription {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::AddSourceIdentifierToSubscription', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::AddSourceIdentifierToSubscription', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::AddSourceIdentifierToSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub AddTagsToResource {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::AddTagsToResource', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::AddTagsToResource', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub AuthorizeDBSecurityGroupIngress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::AuthorizeDBSecurityGroupIngress', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::AuthorizeDBSecurityGroupIngress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::AuthorizeDBSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CopyDBSnapshot {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::CopyDBSnapshot', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::CopyDBSnapshot', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CopyDBSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateDBInstance {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::CreateDBInstance', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::CreateDBInstance', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateDBInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateDBInstanceReadReplica {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::CreateDBInstanceReadReplica', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::CreateDBInstanceReadReplica', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateDBInstanceReadReplicaResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateDBParameterGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::CreateDBParameterGroup', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::CreateDBParameterGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateDBParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateDBSecurityGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::CreateDBSecurityGroup', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::CreateDBSecurityGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateDBSecurityGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateDBSnapshot {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::CreateDBSnapshot', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::CreateDBSnapshot', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateDBSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateDBSubnetGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::CreateDBSubnetGroup', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::CreateDBSubnetGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateDBSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateEventSubscription {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::CreateEventSubscription', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::CreateEventSubscription', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateEventSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateOptionGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::CreateOptionGroup', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::CreateOptionGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::CreateOptionGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteDBInstance {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DeleteDBInstance', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DeleteDBInstance', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DeleteDBInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteDBParameterGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DeleteDBParameterGroup', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DeleteDBParameterGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteDBSecurityGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DeleteDBSecurityGroup', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DeleteDBSecurityGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteDBSnapshot {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DeleteDBSnapshot', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DeleteDBSnapshot', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DeleteDBSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteDBSubnetGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DeleteDBSubnetGroup', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DeleteDBSubnetGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteEventSubscription {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DeleteEventSubscription', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DeleteEventSubscription', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DeleteEventSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteOptionGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DeleteOptionGroup', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DeleteOptionGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DescribeDBEngineVersions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeDBEngineVersions', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBEngineVersions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBEngineVersionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeDBInstances {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeDBInstances', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeDBParameterGroups {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeDBParameterGroups', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBParameterGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBParameterGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeDBParameters {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeDBParameters', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBParameters', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeDBSecurityGroups {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeDBSecurityGroups', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBSecurityGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBSecurityGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeDBSnapshots {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeDBSnapshots', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBSnapshots', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBSnapshotsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeDBSubnetGroups {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeDBSubnetGroups', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBSubnetGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeDBSubnetGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeEngineDefaultParameters {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeEngineDefaultParameters', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeEngineDefaultParameters', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeEngineDefaultParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeEventCategories {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeEventCategories', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeEventCategories', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeEventCategoriesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeEvents {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeEvents', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeEvents', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeEventsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeEventSubscriptions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeEventSubscriptions', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeEventSubscriptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeEventSubscriptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeOptionGroupOptions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeOptionGroupOptions', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeOptionGroupOptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeOptionGroupOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeOptionGroups {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeOptionGroups', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeOptionGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeOptionGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeOrderableDBInstanceOptions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeOrderableDBInstanceOptions', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeOrderableDBInstanceOptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeOrderableDBInstanceOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeReservedDBInstances {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeReservedDBInstances', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeReservedDBInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeReservedDBInstancesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeReservedDBInstancesOfferings {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::DescribeReservedDBInstancesOfferings', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::DescribeReservedDBInstancesOfferings', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::DescribeReservedDBInstancesOfferingsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListTagsForResource {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::ListTagsForResource', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::ListTagsForResource', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::ListTagsForResourceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyDBInstance {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::ModifyDBInstance', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::ModifyDBInstance', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::ModifyDBInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyDBParameterGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::ModifyDBParameterGroup', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::ModifyDBParameterGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::ModifyDBParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyDBSubnetGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::ModifyDBSubnetGroup', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::ModifyDBSubnetGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::ModifyDBSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyEventSubscription {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::ModifyEventSubscription', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::ModifyEventSubscription', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::ModifyEventSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyOptionGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::ModifyOptionGroup', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::ModifyOptionGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::ModifyOptionGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub PromoteReadReplica {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::PromoteReadReplica', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::PromoteReadReplica', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::PromoteReadReplicaResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub PurchaseReservedDBInstancesOffering {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::PurchaseReservedDBInstancesOffering', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::PurchaseReservedDBInstancesOffering', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::PurchaseReservedDBInstancesOfferingResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RebootDBInstance {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::RebootDBInstance', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::RebootDBInstance', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::RebootDBInstanceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RemoveSourceIdentifierFromSubscription {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::RemoveSourceIdentifierFromSubscription', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::RemoveSourceIdentifierFromSubscription', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::RemoveSourceIdentifierFromSubscriptionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RemoveTagsFromResource {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::RemoveTagsFromResource', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::RemoveTagsFromResource', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ResetDBParameterGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::ResetDBParameterGroup', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::ResetDBParameterGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::ResetDBParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RestoreDBInstanceFromDBSnapshot {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::RestoreDBInstanceFromDBSnapshot', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::RestoreDBInstanceFromDBSnapshot', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::RestoreDBInstanceFromDBSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RestoreDBInstanceToPointInTime {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::RestoreDBInstanceToPointInTime', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::RestoreDBInstanceToPointInTime', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::RestoreDBInstanceToPointInTimeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RevokeDBSecurityGroupIngress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::RDS::RevokeDBSecurityGroupIngress', @_);
+    my $call = $self->new_with_coercions('Aws::RDS::RevokeDBSecurityGroupIngress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::RDS::RevokeDBSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
 }
+1;

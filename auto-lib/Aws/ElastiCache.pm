@@ -792,213 +792,220 @@ package Aws::ElastiCache {
   has service => (is => 'ro', isa => 'Str', default => 'elasticache');
   has version => (is => 'ro', isa => 'Str', default => '2013-06-15');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::QueryCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
+
   
   sub AuthorizeCacheSecurityGroupIngress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::AuthorizeCacheSecurityGroupIngress', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::AuthorizeCacheSecurityGroupIngress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::AuthorizeCacheSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateCacheCluster {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::CreateCacheCluster', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::CreateCacheCluster', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::CreateCacheClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateCacheParameterGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::CreateCacheParameterGroup', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::CreateCacheParameterGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::CreateCacheParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateCacheSecurityGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::CreateCacheSecurityGroup', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::CreateCacheSecurityGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::CreateCacheSecurityGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateCacheSubnetGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::CreateCacheSubnetGroup', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::CreateCacheSubnetGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::CreateCacheSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateReplicationGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::CreateReplicationGroup', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::CreateReplicationGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::CreateReplicationGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteCacheCluster {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DeleteCacheCluster', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DeleteCacheCluster', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DeleteCacheClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteCacheParameterGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DeleteCacheParameterGroup', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DeleteCacheParameterGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteCacheSecurityGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DeleteCacheSecurityGroup', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DeleteCacheSecurityGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteCacheSubnetGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DeleteCacheSubnetGroup', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DeleteCacheSubnetGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteReplicationGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DeleteReplicationGroup', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DeleteReplicationGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DeleteReplicationGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeCacheClusters {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DescribeCacheClusters', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DescribeCacheClusters', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeCacheClustersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeCacheEngineVersions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DescribeCacheEngineVersions', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DescribeCacheEngineVersions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeCacheEngineVersionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeCacheParameterGroups {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DescribeCacheParameterGroups', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DescribeCacheParameterGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeCacheParameterGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeCacheParameters {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DescribeCacheParameters', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DescribeCacheParameters', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeCacheParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeCacheSecurityGroups {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DescribeCacheSecurityGroups', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DescribeCacheSecurityGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeCacheSecurityGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeCacheSubnetGroups {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DescribeCacheSubnetGroups', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DescribeCacheSubnetGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeCacheSubnetGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeEngineDefaultParameters {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DescribeEngineDefaultParameters', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DescribeEngineDefaultParameters', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeEngineDefaultParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeEvents {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DescribeEvents', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DescribeEvents', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeEventsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeReplicationGroups {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DescribeReplicationGroups', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DescribeReplicationGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeReplicationGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeReservedCacheNodes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DescribeReservedCacheNodes', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DescribeReservedCacheNodes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeReservedCacheNodesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeReservedCacheNodesOfferings {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::DescribeReservedCacheNodesOfferings', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DescribeReservedCacheNodesOfferings', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeReservedCacheNodesOfferingsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyCacheCluster {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::ModifyCacheCluster', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::ModifyCacheCluster', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::ModifyCacheClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyCacheParameterGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::ModifyCacheParameterGroup', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::ModifyCacheParameterGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::ModifyCacheParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyCacheSubnetGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::ModifyCacheSubnetGroup', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::ModifyCacheSubnetGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::ModifyCacheSubnetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyReplicationGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::ModifyReplicationGroup', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::ModifyReplicationGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::ModifyReplicationGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub PurchaseReservedCacheNodesOffering {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::PurchaseReservedCacheNodesOffering', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::PurchaseReservedCacheNodesOffering', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::PurchaseReservedCacheNodesOfferingResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RebootCacheCluster {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::RebootCacheCluster', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::RebootCacheCluster', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::RebootCacheClusterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ResetCacheParameterGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::ResetCacheParameterGroup', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::ResetCacheParameterGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::ResetCacheParameterGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RevokeCacheSecurityGroupIngress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ElastiCache::RevokeCacheSecurityGroupIngress', @_);
+    my $call = $self->new_with_coercions('Aws::ElastiCache::RevokeCacheSecurityGroupIngress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::RevokeCacheSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
 }
+1;

@@ -908,288 +908,295 @@ package Aws::StorageGateway {
   has version => (is => 'ro', isa => 'Str', default => '2013-06-30');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'StorageGateway_20130630');
   has json_version => (is => 'ro', isa => 'Str', default => "1.1");
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonResponse');
+
   
   sub ActivateGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::ActivateGateway', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::ActivateGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::ActivateGatewayResult->from_result($result);return $o_result;
   }
   sub AddCache {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::AddCache', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::AddCache', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::AddCacheResult->from_result($result);return $o_result;
   }
   sub AddUploadBuffer {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::AddUploadBuffer', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::AddUploadBuffer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::AddUploadBufferResult->from_result($result);return $o_result;
   }
   sub AddWorkingStorage {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::AddWorkingStorage', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::AddWorkingStorage', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::AddWorkingStorageResult->from_result($result);return $o_result;
   }
   sub CancelArchival {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::CancelArchival', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::CancelArchival', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::CancelArchivalResult->from_result($result);return $o_result;
   }
   sub CancelRetrieval {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::CancelRetrieval', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::CancelRetrieval', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::CancelRetrievalResult->from_result($result);return $o_result;
   }
   sub CreateCachediSCSIVolume {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::CreateCachediSCSIVolume', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::CreateCachediSCSIVolume', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::CreateCachediSCSIVolumeResult->from_result($result);return $o_result;
   }
   sub CreateSnapshot {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::CreateSnapshot', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::CreateSnapshot', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::CreateSnapshotResult->from_result($result);return $o_result;
   }
   sub CreateSnapshotFromVolumeRecoveryPoint {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::CreateSnapshotFromVolumeRecoveryPoint', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::CreateSnapshotFromVolumeRecoveryPoint', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointResult->from_result($result);return $o_result;
   }
   sub CreateStorediSCSIVolume {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::CreateStorediSCSIVolume', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::CreateStorediSCSIVolume', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::CreateStorediSCSIVolumeResult->from_result($result);return $o_result;
   }
   sub CreateTapes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::CreateTapes', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::CreateTapes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::CreateTapesResult->from_result($result);return $o_result;
   }
   sub DeleteBandwidthRateLimit {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DeleteBandwidthRateLimit', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DeleteBandwidthRateLimit', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DeleteBandwidthRateLimitResult->from_result($result);return $o_result;
   }
   sub DeleteChapCredentials {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DeleteChapCredentials', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DeleteChapCredentials', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DeleteChapCredentialsResult->from_result($result);return $o_result;
   }
   sub DeleteGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DeleteGateway', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DeleteGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DeleteGatewayResult->from_result($result);return $o_result;
   }
   sub DeleteSnapshotSchedule {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DeleteSnapshotSchedule', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DeleteSnapshotSchedule', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DeleteSnapshotScheduleResult->from_result($result);return $o_result;
   }
   sub DeleteTape {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DeleteTape', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DeleteTape', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DeleteTapeResult->from_result($result);return $o_result;
   }
   sub DeleteTapeArchive {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DeleteTapeArchive', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DeleteTapeArchive', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DeleteTapeArchiveResult->from_result($result);return $o_result;
   }
   sub DeleteVolume {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DeleteVolume', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DeleteVolume', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DeleteVolumeResult->from_result($result);return $o_result;
   }
   sub DescribeBandwidthRateLimit {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DescribeBandwidthRateLimit', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeBandwidthRateLimit', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DescribeBandwidthRateLimitResult->from_result($result);return $o_result;
   }
   sub DescribeCache {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DescribeCache', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeCache', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DescribeCacheResult->from_result($result);return $o_result;
   }
   sub DescribeCachediSCSIVolumes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DescribeCachediSCSIVolumes', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeCachediSCSIVolumes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DescribeCachediSCSIVolumesResult->from_result($result);return $o_result;
   }
   sub DescribeChapCredentials {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DescribeChapCredentials', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeChapCredentials', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DescribeChapCredentialsResult->from_result($result);return $o_result;
   }
   sub DescribeGatewayInformation {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DescribeGatewayInformation', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeGatewayInformation', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DescribeGatewayInformationResult->from_result($result);return $o_result;
   }
   sub DescribeMaintenanceStartTime {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DescribeMaintenanceStartTime', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeMaintenanceStartTime', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DescribeMaintenanceStartTimeResult->from_result($result);return $o_result;
   }
   sub DescribeSnapshotSchedule {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DescribeSnapshotSchedule', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeSnapshotSchedule', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DescribeSnapshotScheduleResult->from_result($result);return $o_result;
   }
   sub DescribeStorediSCSIVolumes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DescribeStorediSCSIVolumes', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeStorediSCSIVolumes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DescribeStorediSCSIVolumesResult->from_result($result);return $o_result;
   }
   sub DescribeTapeArchives {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DescribeTapeArchives', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeTapeArchives', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DescribeTapeArchivesResult->from_result($result);return $o_result;
   }
   sub DescribeTapeRecoveryPoints {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DescribeTapeRecoveryPoints', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeTapeRecoveryPoints', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DescribeTapeRecoveryPointsResult->from_result($result);return $o_result;
   }
   sub DescribeTapes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DescribeTapes', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeTapes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DescribeTapesResult->from_result($result);return $o_result;
   }
   sub DescribeUploadBuffer {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DescribeUploadBuffer', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeUploadBuffer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DescribeUploadBufferResult->from_result($result);return $o_result;
   }
   sub DescribeVTLDevices {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DescribeVTLDevices', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeVTLDevices', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DescribeVTLDevicesResult->from_result($result);return $o_result;
   }
   sub DescribeWorkingStorage {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DescribeWorkingStorage', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeWorkingStorage', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DescribeWorkingStorageResult->from_result($result);return $o_result;
   }
   sub DisableGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::DisableGateway', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::DisableGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::DisableGatewayResult->from_result($result);return $o_result;
   }
   sub ListGateways {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::ListGateways', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::ListGateways', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::ListGatewaysResult->from_result($result);return $o_result;
   }
   sub ListLocalDisks {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::ListLocalDisks', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::ListLocalDisks', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::ListLocalDisksResult->from_result($result);return $o_result;
   }
   sub ListVolumeRecoveryPoints {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::ListVolumeRecoveryPoints', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::ListVolumeRecoveryPoints', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::ListVolumeRecoveryPointsResult->from_result($result);return $o_result;
   }
   sub ListVolumes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::ListVolumes', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::ListVolumes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::ListVolumesResult->from_result($result);return $o_result;
   }
   sub RetrieveTapeArchive {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::RetrieveTapeArchive', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::RetrieveTapeArchive', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::RetrieveTapeArchiveResult->from_result($result);return $o_result;
   }
   sub RetrieveTapeRecoveryPoint {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::RetrieveTapeRecoveryPoint', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::RetrieveTapeRecoveryPoint', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::RetrieveTapeRecoveryPointResult->from_result($result);return $o_result;
   }
   sub ShutdownGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::ShutdownGateway', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::ShutdownGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::ShutdownGatewayResult->from_result($result);return $o_result;
   }
   sub StartGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::StartGateway', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::StartGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::StartGatewayResult->from_result($result);return $o_result;
   }
   sub UpdateBandwidthRateLimit {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::UpdateBandwidthRateLimit', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::UpdateBandwidthRateLimit', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::UpdateBandwidthRateLimitResult->from_result($result);return $o_result;
   }
   sub UpdateChapCredentials {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::UpdateChapCredentials', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::UpdateChapCredentials', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::UpdateChapCredentialsResult->from_result($result);return $o_result;
   }
   sub UpdateGatewayInformation {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::UpdateGatewayInformation', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::UpdateGatewayInformation', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::UpdateGatewayInformationResult->from_result($result);return $o_result;
   }
   sub UpdateGatewaySoftwareNow {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::UpdateGatewaySoftwareNow', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::UpdateGatewaySoftwareNow', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::UpdateGatewaySoftwareNowResult->from_result($result);return $o_result;
   }
   sub UpdateMaintenanceStartTime {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::UpdateMaintenanceStartTime', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::UpdateMaintenanceStartTime', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::UpdateMaintenanceStartTimeResult->from_result($result);return $o_result;
   }
   sub UpdateSnapshotSchedule {
     my $self = shift;
-    my $call = new_with_coercions('Aws::StorageGateway::UpdateSnapshotSchedule', @_);
+    my $call = $self->new_with_coercions('Aws::StorageGateway::UpdateSnapshotSchedule', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::StorageGateway::UpdateSnapshotScheduleResult->from_result($result);return $o_result;
   }
 }
+1;

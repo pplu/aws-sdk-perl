@@ -494,120 +494,127 @@ package Aws::DirectConnect {
   has version => (is => 'ro', isa => 'Str', default => '2012-10-25');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'OvertureService');
   has json_version => (is => 'ro', isa => 'Str', default => "1.1");
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonResponse');
+
   
   sub AllocateConnectionOnInterconnect {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::AllocateConnectionOnInterconnect', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::AllocateConnectionOnInterconnect', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::AllocateConnectionOnInterconnectResult->from_result($result);return $o_result;
   }
   sub AllocatePrivateVirtualInterface {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::AllocatePrivateVirtualInterface', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::AllocatePrivateVirtualInterface', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::AllocatePrivateVirtualInterfaceResult->from_result($result);return $o_result;
   }
   sub AllocatePublicVirtualInterface {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::AllocatePublicVirtualInterface', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::AllocatePublicVirtualInterface', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::AllocatePublicVirtualInterfaceResult->from_result($result);return $o_result;
   }
   sub ConfirmConnection {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::ConfirmConnection', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::ConfirmConnection', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::ConfirmConnectionResult->from_result($result);return $o_result;
   }
   sub ConfirmPrivateVirtualInterface {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::ConfirmPrivateVirtualInterface', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::ConfirmPrivateVirtualInterface', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::ConfirmPrivateVirtualInterfaceResult->from_result($result);return $o_result;
   }
   sub ConfirmPublicVirtualInterface {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::ConfirmPublicVirtualInterface', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::ConfirmPublicVirtualInterface', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::ConfirmPublicVirtualInterfaceResult->from_result($result);return $o_result;
   }
   sub CreateConnection {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::CreateConnection', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::CreateConnection', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::CreateConnectionResult->from_result($result);return $o_result;
   }
   sub CreateInterconnect {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::CreateInterconnect', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::CreateInterconnect', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::CreateInterconnectResult->from_result($result);return $o_result;
   }
   sub CreatePrivateVirtualInterface {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::CreatePrivateVirtualInterface', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::CreatePrivateVirtualInterface', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::CreatePrivateVirtualInterfaceResult->from_result($result);return $o_result;
   }
   sub CreatePublicVirtualInterface {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::CreatePublicVirtualInterface', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::CreatePublicVirtualInterface', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::CreatePublicVirtualInterfaceResult->from_result($result);return $o_result;
   }
   sub DeleteConnection {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::DeleteConnection', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::DeleteConnection', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DeleteConnectionResult->from_result($result);return $o_result;
   }
   sub DeleteInterconnect {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::DeleteInterconnect', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::DeleteInterconnect', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DeleteInterconnectResult->from_result($result);return $o_result;
   }
   sub DeleteVirtualInterface {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::DeleteVirtualInterface', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::DeleteVirtualInterface', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DeleteVirtualInterfaceResult->from_result($result);return $o_result;
   }
   sub DescribeConnections {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::DescribeConnections', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::DescribeConnections', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DescribeConnectionsResult->from_result($result);return $o_result;
   }
   sub DescribeConnectionsOnInterconnect {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::DescribeConnectionsOnInterconnect', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::DescribeConnectionsOnInterconnect', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DescribeConnectionsOnInterconnectResult->from_result($result);return $o_result;
   }
   sub DescribeInterconnects {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::DescribeInterconnects', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::DescribeInterconnects', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DescribeInterconnectsResult->from_result($result);return $o_result;
   }
   sub DescribeLocations {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::DescribeLocations', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::DescribeLocations', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DescribeLocationsResult->from_result($result);return $o_result;
   }
   sub DescribeVirtualGateways {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::DescribeVirtualGateways', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::DescribeVirtualGateways', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DescribeVirtualGatewaysResult->from_result($result);return $o_result;
   }
   sub DescribeVirtualInterfaces {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DirectConnect::DescribeVirtualInterfaces', @_);
+    my $call = $self->new_with_coercions('Aws::DirectConnect::DescribeVirtualInterfaces', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DirectConnect::DescribeVirtualInterfacesResult->from_result($result);return $o_result;
   }
 }
+1;

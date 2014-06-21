@@ -153,48 +153,55 @@ package Aws::STS {
   has service => (is => 'ro', isa => 'Str', default => 'sts');
   has version => (is => 'ro', isa => 'Str', default => '2011-06-15');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
-  with ('Net::AWS::Caller', 'AWS::API::SingleEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::SingleEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::QueryCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
+
   
   sub AssumeRole {
     my $self = shift;
-    my $call = new_with_coercions('Aws::STS::AssumeRole', @_);
+    my $call = $self->new_with_coercions('Aws::STS::AssumeRole', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::STS::AssumeRoleResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub AssumeRoleWithSAML {
     my $self = shift;
-    my $call = new_with_coercions('Aws::STS::AssumeRoleWithSAML', @_);
+    my $call = $self->new_with_coercions('Aws::STS::AssumeRoleWithSAML', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::STS::AssumeRoleWithSAMLResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub AssumeRoleWithWebIdentity {
     my $self = shift;
-    my $call = new_with_coercions('Aws::STS::AssumeRoleWithWebIdentity', @_);
+    my $call = $self->new_with_coercions('Aws::STS::AssumeRoleWithWebIdentity', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::STS::AssumeRoleWithWebIdentityResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DecodeAuthorizationMessage {
     my $self = shift;
-    my $call = new_with_coercions('Aws::STS::DecodeAuthorizationMessage', @_);
+    my $call = $self->new_with_coercions('Aws::STS::DecodeAuthorizationMessage', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::STS::DecodeAuthorizationMessageResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetFederationToken {
     my $self = shift;
-    my $call = new_with_coercions('Aws::STS::GetFederationToken', @_);
+    my $call = $self->new_with_coercions('Aws::STS::GetFederationToken', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::STS::GetFederationTokenResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetSessionToken {
     my $self = shift;
-    my $call = new_with_coercions('Aws::STS::GetSessionToken', @_);
+    my $call = $self->new_with_coercions('Aws::STS::GetSessionToken', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::STS::GetSessionTokenResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
 }
+1;

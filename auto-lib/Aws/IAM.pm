@@ -1119,489 +1119,496 @@ package Aws::IAM {
   has service => (is => 'ro', isa => 'Str', default => 'iam');
   has version => (is => 'ro', isa => 'Str', default => '2010-05-08');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
-  with ('Net::AWS::Caller', 'AWS::API::SingleEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::SingleEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::QueryCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
+
   
   sub AddRoleToInstanceProfile {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::AddRoleToInstanceProfile', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::AddRoleToInstanceProfile', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub AddUserToGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::AddUserToGroup', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::AddUserToGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ChangePassword {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ChangePassword', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ChangePassword', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CreateAccessKey {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::CreateAccessKey', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::CreateAccessKey', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::CreateAccessKeyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateAccountAlias {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::CreateAccountAlias', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::CreateAccountAlias', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CreateGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::CreateGroup', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::CreateGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::CreateGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateInstanceProfile {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::CreateInstanceProfile', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::CreateInstanceProfile', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::CreateInstanceProfileResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateLoginProfile {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::CreateLoginProfile', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::CreateLoginProfile', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::CreateLoginProfileResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateRole {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::CreateRole', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::CreateRole', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::CreateRoleResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateSAMLProvider {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::CreateSAMLProvider', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::CreateSAMLProvider', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::CreateSAMLProviderResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateUser {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::CreateUser', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::CreateUser', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::CreateUserResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateVirtualMFADevice {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::CreateVirtualMFADevice', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::CreateVirtualMFADevice', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::CreateVirtualMFADeviceResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeactivateMFADevice {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeactivateMFADevice', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeactivateMFADevice', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteAccessKey {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteAccessKey', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteAccessKey', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteAccountAlias {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteAccountAlias', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteAccountAlias', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteAccountPasswordPolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteAccountPasswordPolicy', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteAccountPasswordPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteGroup', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteGroupPolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteGroupPolicy', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteGroupPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteInstanceProfile {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteInstanceProfile', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteInstanceProfile', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteLoginProfile {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteLoginProfile', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteLoginProfile', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteRole {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteRole', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteRole', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteRolePolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteRolePolicy', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteRolePolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteSAMLProvider {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteSAMLProvider', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteSAMLProvider', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteServerCertificate {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteServerCertificate', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteServerCertificate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteSigningCertificate {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteSigningCertificate', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteSigningCertificate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteUser {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteUser', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteUser', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteUserPolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteUserPolicy', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteUserPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteVirtualMFADevice {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::DeleteVirtualMFADevice', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::DeleteVirtualMFADevice', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub EnableMFADevice {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::EnableMFADevice', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::EnableMFADevice', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub GetAccountPasswordPolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::GetAccountPasswordPolicy', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::GetAccountPasswordPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::GetAccountPasswordPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetAccountSummary {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::GetAccountSummary', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::GetAccountSummary', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::GetAccountSummaryResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::GetGroup', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::GetGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::GetGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetGroupPolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::GetGroupPolicy', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::GetGroupPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::GetGroupPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetInstanceProfile {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::GetInstanceProfile', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::GetInstanceProfile', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::GetInstanceProfileResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetLoginProfile {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::GetLoginProfile', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::GetLoginProfile', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::GetLoginProfileResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetRole {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::GetRole', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::GetRole', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::GetRoleResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetRolePolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::GetRolePolicy', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::GetRolePolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::GetRolePolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetSAMLProvider {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::GetSAMLProvider', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::GetSAMLProvider', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::GetSAMLProviderResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetServerCertificate {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::GetServerCertificate', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::GetServerCertificate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::GetServerCertificateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetUser {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::GetUser', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::GetUser', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::GetUserResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetUserPolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::GetUserPolicy', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::GetUserPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::GetUserPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListAccessKeys {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListAccessKeys', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListAccessKeys', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListAccessKeysResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListAccountAliases {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListAccountAliases', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListAccountAliases', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListAccountAliasesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListGroupPolicies {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListGroupPolicies', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListGroupPolicies', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListGroupPoliciesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListGroups {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListGroups', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListGroupsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListGroupsForUser {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListGroupsForUser', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListGroupsForUser', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListGroupsForUserResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListInstanceProfiles {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListInstanceProfiles', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListInstanceProfiles', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListInstanceProfilesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListInstanceProfilesForRole {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListInstanceProfilesForRole', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListInstanceProfilesForRole', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListInstanceProfilesForRoleResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListMFADevices {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListMFADevices', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListMFADevices', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListMFADevicesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListRolePolicies {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListRolePolicies', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListRolePolicies', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListRolePoliciesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListRoles {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListRoles', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListRoles', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListRolesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListSAMLProviders {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListSAMLProviders', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListSAMLProviders', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListSAMLProvidersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListServerCertificates {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListServerCertificates', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListServerCertificates', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListServerCertificatesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListSigningCertificates {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListSigningCertificates', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListSigningCertificates', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListSigningCertificatesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListUserPolicies {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListUserPolicies', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListUserPolicies', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListUserPoliciesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListUsers {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListUsers', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListUsers', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListUsersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListVirtualMFADevices {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ListVirtualMFADevices', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ListVirtualMFADevices', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::ListVirtualMFADevicesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub PutGroupPolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::PutGroupPolicy', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::PutGroupPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub PutRolePolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::PutRolePolicy', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::PutRolePolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub PutUserPolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::PutUserPolicy', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::PutUserPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RemoveRoleFromInstanceProfile {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::RemoveRoleFromInstanceProfile', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::RemoveRoleFromInstanceProfile', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RemoveUserFromGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::RemoveUserFromGroup', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::RemoveUserFromGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ResyncMFADevice {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::ResyncMFADevice', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::ResyncMFADevice', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateAccessKey {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::UpdateAccessKey', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::UpdateAccessKey', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateAccountPasswordPolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::UpdateAccountPasswordPolicy', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::UpdateAccountPasswordPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateAssumeRolePolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::UpdateAssumeRolePolicy', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::UpdateAssumeRolePolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::UpdateGroup', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::UpdateGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateLoginProfile {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::UpdateLoginProfile', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::UpdateLoginProfile', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateSAMLProvider {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::UpdateSAMLProvider', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::UpdateSAMLProvider', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::UpdateSAMLProviderResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UpdateServerCertificate {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::UpdateServerCertificate', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::UpdateServerCertificate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateSigningCertificate {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::UpdateSigningCertificate', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::UpdateSigningCertificate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UpdateUser {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::UpdateUser', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::UpdateUser', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UploadServerCertificate {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::UploadServerCertificate', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::UploadServerCertificate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::UploadServerCertificateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UploadSigningCertificate {
     my $self = shift;
-    my $call = new_with_coercions('Aws::IAM::UploadSigningCertificate', @_);
+    my $call = $self->new_with_coercions('Aws::IAM::UploadSigningCertificate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::IAM::UploadSigningCertificateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
 }
+1;

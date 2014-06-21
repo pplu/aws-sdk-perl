@@ -273,77 +273,84 @@ package Aws::CloudWatch {
   has service => (is => 'ro', isa => 'Str', default => 'monitoring');
   has version => (is => 'ro', isa => 'Str', default => '2010-08-01');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::QueryCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
+
   
   sub DeleteAlarms {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudWatch::DeleteAlarms', @_);
+    my $call = $self->new_with_coercions('Aws::CloudWatch::DeleteAlarms', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DescribeAlarmHistory {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudWatch::DescribeAlarmHistory', @_);
+    my $call = $self->new_with_coercions('Aws::CloudWatch::DescribeAlarmHistory', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudWatch::DescribeAlarmHistoryResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeAlarms {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudWatch::DescribeAlarms', @_);
+    my $call = $self->new_with_coercions('Aws::CloudWatch::DescribeAlarms', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudWatch::DescribeAlarmsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeAlarmsForMetric {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudWatch::DescribeAlarmsForMetric', @_);
+    my $call = $self->new_with_coercions('Aws::CloudWatch::DescribeAlarmsForMetric', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudWatch::DescribeAlarmsForMetricResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DisableAlarmActions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudWatch::DisableAlarmActions', @_);
+    my $call = $self->new_with_coercions('Aws::CloudWatch::DisableAlarmActions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub EnableAlarmActions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudWatch::EnableAlarmActions', @_);
+    my $call = $self->new_with_coercions('Aws::CloudWatch::EnableAlarmActions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub GetMetricStatistics {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudWatch::GetMetricStatistics', @_);
+    my $call = $self->new_with_coercions('Aws::CloudWatch::GetMetricStatistics', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudWatch::GetMetricStatisticsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListMetrics {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudWatch::ListMetrics', @_);
+    my $call = $self->new_with_coercions('Aws::CloudWatch::ListMetrics', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudWatch::ListMetricsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub PutMetricAlarm {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudWatch::PutMetricAlarm', @_);
+    my $call = $self->new_with_coercions('Aws::CloudWatch::PutMetricAlarm', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub PutMetricData {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudWatch::PutMetricData', @_);
+    my $call = $self->new_with_coercions('Aws::CloudWatch::PutMetricData', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub SetAlarmState {
     my $self = shift;
-    my $call = new_with_coercions('Aws::CloudWatch::SetAlarmState', @_);
+    my $call = $self->new_with_coercions('Aws::CloudWatch::SetAlarmState', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
 }
+1;

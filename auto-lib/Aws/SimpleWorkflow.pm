@@ -1261,192 +1261,199 @@ package Aws::SimpleWorkflow {
   has version => (is => 'ro', isa => 'Str', default => '2012-01-25');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'SimpleWorkflowService');
   has json_version => (is => 'ro', isa => 'Str', default => "1.0");
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonResponse');
+
   
   sub CountClosedWorkflowExecutions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::CountClosedWorkflowExecutions', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::CountClosedWorkflowExecutions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::CountClosedWorkflowExecutionsResult->from_result($result);return $o_result;
   }
   sub CountOpenWorkflowExecutions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::CountOpenWorkflowExecutions', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::CountOpenWorkflowExecutions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::CountOpenWorkflowExecutionsResult->from_result($result);return $o_result;
   }
   sub CountPendingActivityTasks {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::CountPendingActivityTasks', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::CountPendingActivityTasks', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::CountPendingActivityTasksResult->from_result($result);return $o_result;
   }
   sub CountPendingDecisionTasks {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::CountPendingDecisionTasks', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::CountPendingDecisionTasks', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::CountPendingDecisionTasksResult->from_result($result);return $o_result;
   }
   sub DeprecateActivityType {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::DeprecateActivityType', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::DeprecateActivityType', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeprecateDomain {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::DeprecateDomain', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::DeprecateDomain', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeprecateWorkflowType {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::DeprecateWorkflowType', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::DeprecateWorkflowType', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DescribeActivityType {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::DescribeActivityType', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::DescribeActivityType', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::DescribeActivityTypeResult->from_result($result);return $o_result;
   }
   sub DescribeDomain {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::DescribeDomain', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::DescribeDomain', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::DescribeDomainResult->from_result($result);return $o_result;
   }
   sub DescribeWorkflowExecution {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::DescribeWorkflowExecution', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::DescribeWorkflowExecution', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::DescribeWorkflowExecutionResult->from_result($result);return $o_result;
   }
   sub DescribeWorkflowType {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::DescribeWorkflowType', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::DescribeWorkflowType', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::DescribeWorkflowTypeResult->from_result($result);return $o_result;
   }
   sub GetWorkflowExecutionHistory {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::GetWorkflowExecutionHistory', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::GetWorkflowExecutionHistory', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::GetWorkflowExecutionHistoryResult->from_result($result);return $o_result;
   }
   sub ListActivityTypes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::ListActivityTypes', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::ListActivityTypes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::ListActivityTypesResult->from_result($result);return $o_result;
   }
   sub ListClosedWorkflowExecutions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::ListClosedWorkflowExecutions', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::ListClosedWorkflowExecutions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::ListClosedWorkflowExecutionsResult->from_result($result);return $o_result;
   }
   sub ListDomains {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::ListDomains', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::ListDomains', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::ListDomainsResult->from_result($result);return $o_result;
   }
   sub ListOpenWorkflowExecutions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::ListOpenWorkflowExecutions', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::ListOpenWorkflowExecutions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::ListOpenWorkflowExecutionsResult->from_result($result);return $o_result;
   }
   sub ListWorkflowTypes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::ListWorkflowTypes', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::ListWorkflowTypes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::ListWorkflowTypesResult->from_result($result);return $o_result;
   }
   sub PollForActivityTask {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::PollForActivityTask', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::PollForActivityTask', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::PollForActivityTaskResult->from_result($result);return $o_result;
   }
   sub PollForDecisionTask {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::PollForDecisionTask', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::PollForDecisionTask', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::PollForDecisionTaskResult->from_result($result);return $o_result;
   }
   sub RecordActivityTaskHeartbeat {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::RecordActivityTaskHeartbeat', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RecordActivityTaskHeartbeat', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::RecordActivityTaskHeartbeatResult->from_result($result);return $o_result;
   }
   sub RegisterActivityType {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::RegisterActivityType', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RegisterActivityType', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RegisterDomain {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::RegisterDomain', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RegisterDomain', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RegisterWorkflowType {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::RegisterWorkflowType', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RegisterWorkflowType', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RequestCancelWorkflowExecution {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::RequestCancelWorkflowExecution', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RequestCancelWorkflowExecution', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RespondActivityTaskCanceled {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::RespondActivityTaskCanceled', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RespondActivityTaskCanceled', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RespondActivityTaskCompleted {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::RespondActivityTaskCompleted', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RespondActivityTaskCompleted', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RespondActivityTaskFailed {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::RespondActivityTaskFailed', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RespondActivityTaskFailed', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RespondDecisionTaskCompleted {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::RespondDecisionTaskCompleted', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RespondDecisionTaskCompleted', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub SignalWorkflowExecution {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::SignalWorkflowExecution', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::SignalWorkflowExecution', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub StartWorkflowExecution {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::StartWorkflowExecution', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::StartWorkflowExecution', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SimpleWorkflow::StartWorkflowExecutionResult->from_result($result);return $o_result;
   }
   sub TerminateWorkflowExecution {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SimpleWorkflow::TerminateWorkflowExecution', @_);
+    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::TerminateWorkflowExecution', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
 }
+1;

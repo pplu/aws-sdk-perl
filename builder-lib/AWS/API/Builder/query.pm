@@ -109,12 +109,18 @@ package [% c.api %] {
   has service => (is => 'ro', isa => 'Str', default => '[% c.service %]');
   has version => (is => 'ro', isa => 'Str', default => '[% c.version %]');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '[% c.flattened_arrays %]');
-  with ('Net::AWS::Caller', '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]', '[% c.response_role %]');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => '[% c.endpoint_role %]');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => '[% c.signature_role %]');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => '[% c.parameter_role %]');
+  class_has response_role => (is => 'ro', isa => 'Str', default => '[% c.response_role %]');
+
   [% FOR op IN c.struct.operations.keys.sort %]
   [%- op_name = c.struct.operations.$op.name %]
   sub [% op_name %] {
     my $self = shift;
-    my $call = new_with_coercions('[% c.api %]::[% op_name %]', @_);
+    my $call = $self->new_with_coercions('[% c.api %]::[% op_name %]', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     [%- IF (c.struct.operations.$op.output.size > 0) %]
     [% IF (c.wrapped_responses) %]my $o_result = [% c.api %]::[% op_name %]Result->from_result($result->{ $call->_result_key });
@@ -125,6 +131,7 @@ package [% c.api %] {
   }
   [%- END %]
 }
+1;
 #;
     return $self->process_template($class, { c => $self, 
                                              inner_output => $inner_output,

@@ -3541,984 +3541,990 @@ package Aws::EC2 {
   has service => (is => 'ro', isa => 'Str', default => 'ec2');
   has version => (is => 'ro', isa => 'Str', default => '2013-10-15');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '1');
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V2Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V2Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::QueryCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
 
   
   sub AllocateAddress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::AllocateAddress', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::AllocateAddress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::AllocateAddressResult->from_result($result);
     return $o_result;
   }
   sub AssignPrivateIpAddresses {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::AssignPrivateIpAddresses', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::AssignPrivateIpAddresses', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub AssociateAddress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::AssociateAddress', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::AssociateAddress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::AssociateAddressResult->from_result($result);
     return $o_result;
   }
   sub AssociateDhcpOptions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::AssociateDhcpOptions', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::AssociateDhcpOptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub AssociateRouteTable {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::AssociateRouteTable', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::AssociateRouteTable', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::AssociateRouteTableResult->from_result($result);
     return $o_result;
   }
   sub AttachInternetGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::AttachInternetGateway', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::AttachInternetGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub AttachNetworkInterface {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::AttachNetworkInterface', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::AttachNetworkInterface', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::AttachNetworkInterfaceResult->from_result($result);
     return $o_result;
   }
   sub AttachVolume {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::AttachVolume', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::AttachVolume', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::AttachVolumeResult->from_result($result);
     return $o_result;
   }
   sub AttachVpnGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::AttachVpnGateway', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::AttachVpnGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::AttachVpnGatewayResult->from_result($result);
     return $o_result;
   }
   sub AuthorizeSecurityGroupEgress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::AuthorizeSecurityGroupEgress', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::AuthorizeSecurityGroupEgress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub AuthorizeSecurityGroupIngress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::AuthorizeSecurityGroupIngress', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::AuthorizeSecurityGroupIngress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub BundleInstance {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::BundleInstance', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::BundleInstance', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::BundleInstanceResult->from_result($result);
     return $o_result;
   }
   sub CancelBundleTask {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CancelBundleTask', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CancelBundleTask', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CancelBundleTaskResult->from_result($result);
     return $o_result;
   }
   sub CancelConversionTask {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CancelConversionTask', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CancelConversionTask', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CancelExportTask {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CancelExportTask', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CancelExportTask', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CancelReservedInstancesListing {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CancelReservedInstancesListing', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CancelReservedInstancesListing', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CancelReservedInstancesListingResult->from_result($result);
     return $o_result;
   }
   sub CancelSpotInstanceRequests {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CancelSpotInstanceRequests', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CancelSpotInstanceRequests', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CancelSpotInstanceRequestsResult->from_result($result);
     return $o_result;
   }
   sub ConfirmProductInstance {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ConfirmProductInstance', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ConfirmProductInstance', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::ConfirmProductInstanceResult->from_result($result);
     return $o_result;
   }
   sub CopyImage {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CopyImage', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CopyImage', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CopyImageResult->from_result($result);
     return $o_result;
   }
   sub CopySnapshot {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CopySnapshot', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CopySnapshot', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CopySnapshotResult->from_result($result);
     return $o_result;
   }
   sub CreateCustomerGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateCustomerGateway', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateCustomerGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateCustomerGatewayResult->from_result($result);
     return $o_result;
   }
   sub CreateDhcpOptions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateDhcpOptions', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateDhcpOptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateDhcpOptionsResult->from_result($result);
     return $o_result;
   }
   sub CreateImage {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateImage', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateImage', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateImageResult->from_result($result);
     return $o_result;
   }
   sub CreateInstanceExportTask {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateInstanceExportTask', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateInstanceExportTask', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateInstanceExportTaskResult->from_result($result);
     return $o_result;
   }
   sub CreateInternetGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateInternetGateway', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateInternetGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateInternetGatewayResult->from_result($result);
     return $o_result;
   }
   sub CreateKeyPair {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateKeyPair', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateKeyPair', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateKeyPairResult->from_result($result);
     return $o_result;
   }
   sub CreateNetworkAcl {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateNetworkAcl', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateNetworkAcl', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateNetworkAclResult->from_result($result);
     return $o_result;
   }
   sub CreateNetworkAclEntry {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateNetworkAclEntry', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateNetworkAclEntry', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CreateNetworkInterface {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateNetworkInterface', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateNetworkInterface', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateNetworkInterfaceResult->from_result($result);
     return $o_result;
   }
   sub CreatePlacementGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreatePlacementGroup', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreatePlacementGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CreateReservedInstancesListing {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateReservedInstancesListing', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateReservedInstancesListing', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateReservedInstancesListingResult->from_result($result);
     return $o_result;
   }
   sub CreateRoute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateRoute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateRoute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CreateRouteTable {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateRouteTable', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateRouteTable', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateRouteTableResult->from_result($result);
     return $o_result;
   }
   sub CreateSecurityGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateSecurityGroup', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateSecurityGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateSecurityGroupResult->from_result($result);
     return $o_result;
   }
   sub CreateSnapshot {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateSnapshot', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateSnapshot', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateSnapshotResult->from_result($result);
     return $o_result;
   }
   sub CreateSpotDatafeedSubscription {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateSpotDatafeedSubscription', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateSpotDatafeedSubscription', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateSpotDatafeedSubscriptionResult->from_result($result);
     return $o_result;
   }
   sub CreateSubnet {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateSubnet', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateSubnet', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateSubnetResult->from_result($result);
     return $o_result;
   }
   sub CreateTags {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateTags', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateTags', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CreateVolume {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateVolume', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateVolume', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateVolumeResult->from_result($result);
     return $o_result;
   }
   sub CreateVpc {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateVpc', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateVpc', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateVpcResult->from_result($result);
     return $o_result;
   }
   sub CreateVpnConnection {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateVpnConnection', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateVpnConnection', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateVpnConnectionResult->from_result($result);
     return $o_result;
   }
   sub CreateVpnConnectionRoute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateVpnConnectionRoute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateVpnConnectionRoute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CreateVpnGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::CreateVpnGateway', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::CreateVpnGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::CreateVpnGatewayResult->from_result($result);
     return $o_result;
   }
   sub DeleteCustomerGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteCustomerGateway', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteCustomerGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteDhcpOptions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteDhcpOptions', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteDhcpOptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteInternetGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteInternetGateway', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteInternetGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteKeyPair {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteKeyPair', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteKeyPair', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteNetworkAcl {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteNetworkAcl', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteNetworkAcl', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteNetworkAclEntry {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteNetworkAclEntry', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteNetworkAclEntry', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteNetworkInterface {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteNetworkInterface', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteNetworkInterface', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeletePlacementGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeletePlacementGroup', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeletePlacementGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteRoute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteRoute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteRoute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteRouteTable {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteRouteTable', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteRouteTable', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteSecurityGroup {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteSecurityGroup', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteSecurityGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteSnapshot {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteSnapshot', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteSnapshot', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteSpotDatafeedSubscription {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteSpotDatafeedSubscription', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteSpotDatafeedSubscription', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteSubnet {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteSubnet', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteSubnet', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteTags {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteTags', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteTags', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteVolume {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteVolume', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteVolume', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteVpc {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteVpc', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteVpc', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteVpnConnection {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteVpnConnection', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteVpnConnection', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteVpnConnectionRoute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteVpnConnectionRoute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteVpnConnectionRoute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteVpnGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeleteVpnGateway', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteVpnGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeregisterImage {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DeregisterImage', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DeregisterImage', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DescribeAccountAttributes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeAccountAttributes', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeAccountAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeAccountAttributesResult->from_result($result);
     return $o_result;
   }
   sub DescribeAddresses {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeAddresses', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeAddresses', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeAddressesResult->from_result($result);
     return $o_result;
   }
   sub DescribeAvailabilityZones {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeAvailabilityZones', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeAvailabilityZones', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeAvailabilityZonesResult->from_result($result);
     return $o_result;
   }
   sub DescribeBundleTasks {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeBundleTasks', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeBundleTasks', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeBundleTasksResult->from_result($result);
     return $o_result;
   }
   sub DescribeConversionTasks {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeConversionTasks', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeConversionTasks', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeConversionTasksResult->from_result($result);
     return $o_result;
   }
   sub DescribeCustomerGateways {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeCustomerGateways', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeCustomerGateways', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeCustomerGatewaysResult->from_result($result);
     return $o_result;
   }
   sub DescribeDhcpOptions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeDhcpOptions', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeDhcpOptions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeDhcpOptionsResult->from_result($result);
     return $o_result;
   }
   sub DescribeExportTasks {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeExportTasks', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeExportTasks', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeExportTasksResult->from_result($result);
     return $o_result;
   }
   sub DescribeImageAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeImageAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeImageAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeImageAttributeResult->from_result($result);
     return $o_result;
   }
   sub DescribeImages {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeImages', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeImages', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeImagesResult->from_result($result);
     return $o_result;
   }
   sub DescribeInstanceAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeInstanceAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeInstanceAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeInstanceAttributeResult->from_result($result);
     return $o_result;
   }
   sub DescribeInstances {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeInstances', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeInstancesResult->from_result($result);
     return $o_result;
   }
   sub DescribeInstanceStatus {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeInstanceStatus', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeInstanceStatus', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeInstanceStatusResult->from_result($result);
     return $o_result;
   }
   sub DescribeInternetGateways {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeInternetGateways', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeInternetGateways', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeInternetGatewaysResult->from_result($result);
     return $o_result;
   }
   sub DescribeKeyPairs {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeKeyPairs', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeKeyPairs', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeKeyPairsResult->from_result($result);
     return $o_result;
   }
   sub DescribeNetworkAcls {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeNetworkAcls', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeNetworkAcls', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeNetworkAclsResult->from_result($result);
     return $o_result;
   }
   sub DescribeNetworkInterfaceAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeNetworkInterfaceAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeNetworkInterfaceAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeNetworkInterfaceAttributeResult->from_result($result);
     return $o_result;
   }
   sub DescribeNetworkInterfaces {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeNetworkInterfaces', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeNetworkInterfaces', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeNetworkInterfacesResult->from_result($result);
     return $o_result;
   }
   sub DescribePlacementGroups {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribePlacementGroups', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribePlacementGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribePlacementGroupsResult->from_result($result);
     return $o_result;
   }
   sub DescribeRegions {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeRegions', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeRegions', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeRegionsResult->from_result($result);
     return $o_result;
   }
   sub DescribeReservedInstances {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeReservedInstances', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeReservedInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeReservedInstancesResult->from_result($result);
     return $o_result;
   }
   sub DescribeReservedInstancesListings {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeReservedInstancesListings', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeReservedInstancesListings', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeReservedInstancesListingsResult->from_result($result);
     return $o_result;
   }
   sub DescribeReservedInstancesModifications {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeReservedInstancesModifications', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeReservedInstancesModifications', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeReservedInstancesModificationsResult->from_result($result);
     return $o_result;
   }
   sub DescribeReservedInstancesOfferings {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeReservedInstancesOfferings', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeReservedInstancesOfferings', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeReservedInstancesOfferingsResult->from_result($result);
     return $o_result;
   }
   sub DescribeRouteTables {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeRouteTables', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeRouteTables', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeRouteTablesResult->from_result($result);
     return $o_result;
   }
   sub DescribeSecurityGroups {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeSecurityGroups', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeSecurityGroups', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeSecurityGroupsResult->from_result($result);
     return $o_result;
   }
   sub DescribeSnapshotAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeSnapshotAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeSnapshotAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeSnapshotAttributeResult->from_result($result);
     return $o_result;
   }
   sub DescribeSnapshots {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeSnapshots', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeSnapshots', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeSnapshotsResult->from_result($result);
     return $o_result;
   }
   sub DescribeSpotDatafeedSubscription {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeSpotDatafeedSubscription', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeSpotDatafeedSubscription', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeSpotDatafeedSubscriptionResult->from_result($result);
     return $o_result;
   }
   sub DescribeSpotInstanceRequests {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeSpotInstanceRequests', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeSpotInstanceRequests', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeSpotInstanceRequestsResult->from_result($result);
     return $o_result;
   }
   sub DescribeSpotPriceHistory {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeSpotPriceHistory', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeSpotPriceHistory', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeSpotPriceHistoryResult->from_result($result);
     return $o_result;
   }
   sub DescribeSubnets {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeSubnets', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeSubnets', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeSubnetsResult->from_result($result);
     return $o_result;
   }
   sub DescribeTags {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeTags', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeTags', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeTagsResult->from_result($result);
     return $o_result;
   }
   sub DescribeVolumeAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeVolumeAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeVolumeAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeVolumeAttributeResult->from_result($result);
     return $o_result;
   }
   sub DescribeVolumes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeVolumes', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeVolumes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeVolumesResult->from_result($result);
     return $o_result;
   }
   sub DescribeVolumeStatus {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeVolumeStatus', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeVolumeStatus', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeVolumeStatusResult->from_result($result);
     return $o_result;
   }
   sub DescribeVpcAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeVpcAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeVpcAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeVpcAttributeResult->from_result($result);
     return $o_result;
   }
   sub DescribeVpcs {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeVpcs', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeVpcs', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeVpcsResult->from_result($result);
     return $o_result;
   }
   sub DescribeVpnConnections {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeVpnConnections', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeVpnConnections', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeVpnConnectionsResult->from_result($result);
     return $o_result;
   }
   sub DescribeVpnGateways {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DescribeVpnGateways', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeVpnGateways', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DescribeVpnGatewaysResult->from_result($result);
     return $o_result;
   }
   sub DetachInternetGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DetachInternetGateway', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DetachInternetGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DetachNetworkInterface {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DetachNetworkInterface', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DetachNetworkInterface', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DetachVolume {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DetachVolume', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DetachVolume', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::DetachVolumeResult->from_result($result);
     return $o_result;
   }
   sub DetachVpnGateway {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DetachVpnGateway', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DetachVpnGateway', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DisableVgwRoutePropagation {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DisableVgwRoutePropagation', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DisableVgwRoutePropagation', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DisassociateAddress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DisassociateAddress', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DisassociateAddress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DisassociateRouteTable {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::DisassociateRouteTable', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::DisassociateRouteTable', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub EnableVgwRoutePropagation {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::EnableVgwRoutePropagation', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::EnableVgwRoutePropagation', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub EnableVolumeIO {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::EnableVolumeIO', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::EnableVolumeIO', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub GetConsoleOutput {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::GetConsoleOutput', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::GetConsoleOutput', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::GetConsoleOutputResult->from_result($result);
     return $o_result;
   }
   sub GetPasswordData {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::GetPasswordData', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::GetPasswordData', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::GetPasswordDataResult->from_result($result);
     return $o_result;
   }
   sub ImportInstance {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ImportInstance', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ImportInstance', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::ImportInstanceResult->from_result($result);
     return $o_result;
   }
   sub ImportKeyPair {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ImportKeyPair', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ImportKeyPair', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::ImportKeyPairResult->from_result($result);
     return $o_result;
   }
   sub ImportVolume {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ImportVolume', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ImportVolume', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::ImportVolumeResult->from_result($result);
     return $o_result;
   }
   sub ModifyImageAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ModifyImageAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ModifyImageAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ModifyInstanceAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ModifyInstanceAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ModifyInstanceAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ModifyNetworkInterfaceAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ModifyNetworkInterfaceAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ModifyNetworkInterfaceAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ModifyReservedInstances {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ModifyReservedInstances', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ModifyReservedInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::ModifyReservedInstancesResult->from_result($result);
     return $o_result;
   }
   sub ModifySnapshotAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ModifySnapshotAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ModifySnapshotAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ModifyVolumeAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ModifyVolumeAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ModifyVolumeAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ModifyVpcAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ModifyVpcAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ModifyVpcAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub MonitorInstances {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::MonitorInstances', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::MonitorInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::MonitorInstancesResult->from_result($result);
     return $o_result;
   }
   sub PurchaseReservedInstancesOffering {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::PurchaseReservedInstancesOffering', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::PurchaseReservedInstancesOffering', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::PurchaseReservedInstancesOfferingResult->from_result($result);
     return $o_result;
   }
   sub RebootInstances {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::RebootInstances', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::RebootInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RegisterImage {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::RegisterImage', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::RegisterImage', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::RegisterImageResult->from_result($result);
     return $o_result;
   }
   sub ReleaseAddress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ReleaseAddress', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ReleaseAddress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ReplaceNetworkAclAssociation {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ReplaceNetworkAclAssociation', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ReplaceNetworkAclAssociation', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::ReplaceNetworkAclAssociationResult->from_result($result);
     return $o_result;
   }
   sub ReplaceNetworkAclEntry {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ReplaceNetworkAclEntry', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ReplaceNetworkAclEntry', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ReplaceRoute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ReplaceRoute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ReplaceRoute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ReplaceRouteTableAssociation {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ReplaceRouteTableAssociation', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ReplaceRouteTableAssociation', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::ReplaceRouteTableAssociationResult->from_result($result);
     return $o_result;
   }
   sub ReportInstanceStatus {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ReportInstanceStatus', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ReportInstanceStatus', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RequestSpotInstances {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::RequestSpotInstances', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::RequestSpotInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::RequestSpotInstancesResult->from_result($result);
     return $o_result;
   }
   sub ResetImageAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ResetImageAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ResetImageAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ResetInstanceAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ResetInstanceAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ResetInstanceAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ResetNetworkInterfaceAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ResetNetworkInterfaceAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ResetNetworkInterfaceAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub ResetSnapshotAttribute {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::ResetSnapshotAttribute', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::ResetSnapshotAttribute', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RevokeSecurityGroupEgress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::RevokeSecurityGroupEgress', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::RevokeSecurityGroupEgress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RevokeSecurityGroupIngress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::RevokeSecurityGroupIngress', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::RevokeSecurityGroupIngress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub RunInstances {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::RunInstances', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::RunInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::RunInstancesResult->from_result($result);
     return $o_result;
   }
   sub StartInstances {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::StartInstances', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::StartInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::StartInstancesResult->from_result($result);
     return $o_result;
   }
   sub StopInstances {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::StopInstances', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::StopInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::StopInstancesResult->from_result($result);
     return $o_result;
   }
   sub TerminateInstances {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::TerminateInstances', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::TerminateInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::TerminateInstancesResult->from_result($result);
     return $o_result;
   }
   sub UnassignPrivateIpAddresses {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::UnassignPrivateIpAddresses', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::UnassignPrivateIpAddresses', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub UnmonitorInstances {
     my $self = shift;
-    my $call = new_with_coercions('Aws::EC2::UnmonitorInstances', @_);
+    my $call = $self->new_with_coercions('Aws::EC2::UnmonitorInstances', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::UnmonitorInstancesResult->from_result($result);
     return $o_result;
   }
 }
+1;

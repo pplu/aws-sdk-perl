@@ -178,60 +178,67 @@ package Aws::Kinesis {
   has version => (is => 'ro', isa => 'Str', default => '2013-12-02');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'Kinesis_20131202');
   has json_version => (is => 'ro', isa => 'Str', default => "1.1");
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonResponse');
+
   
   sub CreateStream {
     my $self = shift;
-    my $call = new_with_coercions('Aws::Kinesis::CreateStream', @_);
+    my $call = $self->new_with_coercions('Aws::Kinesis::CreateStream', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteStream {
     my $self = shift;
-    my $call = new_with_coercions('Aws::Kinesis::DeleteStream', @_);
+    my $call = $self->new_with_coercions('Aws::Kinesis::DeleteStream', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DescribeStream {
     my $self = shift;
-    my $call = new_with_coercions('Aws::Kinesis::DescribeStream', @_);
+    my $call = $self->new_with_coercions('Aws::Kinesis::DescribeStream', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::DescribeStreamResult->from_result($result);return $o_result;
   }
   sub GetRecords {
     my $self = shift;
-    my $call = new_with_coercions('Aws::Kinesis::GetRecords', @_);
+    my $call = $self->new_with_coercions('Aws::Kinesis::GetRecords', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::GetRecordsResult->from_result($result);return $o_result;
   }
   sub GetShardIterator {
     my $self = shift;
-    my $call = new_with_coercions('Aws::Kinesis::GetShardIterator', @_);
+    my $call = $self->new_with_coercions('Aws::Kinesis::GetShardIterator', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::GetShardIteratorResult->from_result($result);return $o_result;
   }
   sub ListStreams {
     my $self = shift;
-    my $call = new_with_coercions('Aws::Kinesis::ListStreams', @_);
+    my $call = $self->new_with_coercions('Aws::Kinesis::ListStreams', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::ListStreamsResult->from_result($result);return $o_result;
   }
   sub MergeShards {
     my $self = shift;
-    my $call = new_with_coercions('Aws::Kinesis::MergeShards', @_);
+    my $call = $self->new_with_coercions('Aws::Kinesis::MergeShards', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub PutRecord {
     my $self = shift;
-    my $call = new_with_coercions('Aws::Kinesis::PutRecord', @_);
+    my $call = $self->new_with_coercions('Aws::Kinesis::PutRecord', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::Kinesis::PutRecordResult->from_result($result);return $o_result;
   }
   sub SplitShard {
     my $self = shift;
-    my $call = new_with_coercions('Aws::Kinesis::SplitShard', @_);
+    my $call = $self->new_with_coercions('Aws::Kinesis::SplitShard', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
 }
+1;

@@ -3,16 +3,22 @@
 use strict;
 use warnings;
 
+use Aws;
+
 use lib 'auto-lib', 'lib';
+
+package Net::AWS::MojoCaller;
+
+use Moose::Role;
+
+with 'Net::AWS::Caller';
+
 use Data::Dumper;
 use Mojo::IOLoop;
 use Mojo::UserAgent;
-use Aws::AutoScaling;
 
-my $aws = Aws::AutoScaling->new( 
-    region => 'us-west-1',
-    request_method => sub {
-        my ( $requestObj, $netAwsCaller ) = @_; 
+sub send {
+  my ($netAwsCaller, $requestObj) = @_;
         my $headers = {};
         $requestObj->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
 
@@ -49,7 +55,19 @@ my $aws = Aws::AutoScaling->new(
 
         print STDERR "Reaching end of request\n";
         return $awsRespObj;
-    }
+
+};
+
+
+1;
+
+package main;
+
+use Data::Dumper;
+my $aws = Aws->new(config => AWS::SDK::Config->new(caller => 'Net::AWS::MojoCaller') );
+
+my $as = $aws->service('AutoScaling')->new( 
+    region => 'us-west-1',
 );
 
-print STDERR Dumper $aws->DescribeAutoScalingGroups;
+print STDERR Dumper $as->DescribeAutoScalingGroups;

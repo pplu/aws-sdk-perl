@@ -481,84 +481,91 @@ package Aws::DynamoDB {
   has version => (is => 'ro', isa => 'Str', default => '2012-08-10');
   has target_prefix => (is => 'ro', isa => 'Str', default => 'DynamoDB_20120810');
   has json_version => (is => 'ro', isa => 'Str', default => "1.0");
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::JsonCaller', 'Net::AWS::JsonResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonResponse');
+
   
   sub BatchGetItem {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DynamoDB::BatchGetItem', @_);
+    my $call = $self->new_with_coercions('Aws::DynamoDB::BatchGetItem', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DynamoDB::BatchGetItemResult->from_result($result);return $o_result;
   }
   sub BatchWriteItem {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DynamoDB::BatchWriteItem', @_);
+    my $call = $self->new_with_coercions('Aws::DynamoDB::BatchWriteItem', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DynamoDB::BatchWriteItemResult->from_result($result);return $o_result;
   }
   sub CreateTable {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DynamoDB::CreateTable', @_);
+    my $call = $self->new_with_coercions('Aws::DynamoDB::CreateTable', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DynamoDB::CreateTableResult->from_result($result);return $o_result;
   }
   sub DeleteItem {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DynamoDB::DeleteItem', @_);
+    my $call = $self->new_with_coercions('Aws::DynamoDB::DeleteItem', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DynamoDB::DeleteItemResult->from_result($result);return $o_result;
   }
   sub DeleteTable {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DynamoDB::DeleteTable', @_);
+    my $call = $self->new_with_coercions('Aws::DynamoDB::DeleteTable', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DynamoDB::DeleteTableResult->from_result($result);return $o_result;
   }
   sub DescribeTable {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DynamoDB::DescribeTable', @_);
+    my $call = $self->new_with_coercions('Aws::DynamoDB::DescribeTable', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DynamoDB::DescribeTableResult->from_result($result);return $o_result;
   }
   sub GetItem {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DynamoDB::GetItem', @_);
+    my $call = $self->new_with_coercions('Aws::DynamoDB::GetItem', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DynamoDB::GetItemResult->from_result($result);return $o_result;
   }
   sub ListTables {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DynamoDB::ListTables', @_);
+    my $call = $self->new_with_coercions('Aws::DynamoDB::ListTables', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DynamoDB::ListTablesResult->from_result($result);return $o_result;
   }
   sub PutItem {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DynamoDB::PutItem', @_);
+    my $call = $self->new_with_coercions('Aws::DynamoDB::PutItem', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DynamoDB::PutItemResult->from_result($result);return $o_result;
   }
   sub Query {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DynamoDB::Query', @_);
+    my $call = $self->new_with_coercions('Aws::DynamoDB::Query', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DynamoDB::QueryResult->from_result($result);return $o_result;
   }
   sub Scan {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DynamoDB::Scan', @_);
+    my $call = $self->new_with_coercions('Aws::DynamoDB::Scan', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DynamoDB::ScanResult->from_result($result);return $o_result;
   }
   sub UpdateItem {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DynamoDB::UpdateItem', @_);
+    my $call = $self->new_with_coercions('Aws::DynamoDB::UpdateItem', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DynamoDB::UpdateItemResult->from_result($result);return $o_result;
   }
   sub UpdateTable {
     my $self = shift;
-    my $call = new_with_coercions('Aws::DynamoDB::UpdateTable', @_);
+    my $call = $self->new_with_coercions('Aws::DynamoDB::UpdateTable', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::DynamoDB::UpdateTableResult->from_result($result);return $o_result;
   }
 }
+1;

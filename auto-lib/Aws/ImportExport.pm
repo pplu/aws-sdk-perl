@@ -122,41 +122,48 @@ package Aws::ImportExport {
   has service => (is => 'ro', isa => 'Str', default => 'importexport');
   has version => (is => 'ro', isa => 'Str', default => '2010-06-01');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
-  with ('Net::AWS::Caller', 'AWS::API::SingleEndpointCaller', 'Net::AWS::V2Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::SingleEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V2Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::QueryCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
+
   
   sub CancelJob {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ImportExport::CancelJob', @_);
+    my $call = $self->new_with_coercions('Aws::ImportExport::CancelJob', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ImportExport::CancelJobResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateJob {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ImportExport::CreateJob', @_);
+    my $call = $self->new_with_coercions('Aws::ImportExport::CreateJob', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ImportExport::CreateJobResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetStatus {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ImportExport::GetStatus', @_);
+    my $call = $self->new_with_coercions('Aws::ImportExport::GetStatus', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ImportExport::GetStatusResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListJobs {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ImportExport::ListJobs', @_);
+    my $call = $self->new_with_coercions('Aws::ImportExport::ListJobs', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ImportExport::ListJobsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UpdateJob {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ImportExport::UpdateJob', @_);
+    my $call = $self->new_with_coercions('Aws::ImportExport::UpdateJob', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ImportExport::UpdateJobResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
 }
+1;

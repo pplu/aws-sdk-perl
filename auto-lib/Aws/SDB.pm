@@ -184,70 +184,77 @@ package Aws::SDB {
   has service => (is => 'ro', isa => 'Str', default => 'sdb');
   has version => (is => 'ro', isa => 'Str', default => '2009-04-15');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '1');
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V2Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V2Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::QueryCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
+
   
   sub BatchDeleteAttributes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SDB::BatchDeleteAttributes', @_);
+    my $call = $self->new_with_coercions('Aws::SDB::BatchDeleteAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub BatchPutAttributes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SDB::BatchPutAttributes', @_);
+    my $call = $self->new_with_coercions('Aws::SDB::BatchPutAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub CreateDomain {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SDB::CreateDomain', @_);
+    my $call = $self->new_with_coercions('Aws::SDB::CreateDomain', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteAttributes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SDB::DeleteAttributes', @_);
+    my $call = $self->new_with_coercions('Aws::SDB::DeleteAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DeleteDomain {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SDB::DeleteDomain', @_);
+    my $call = $self->new_with_coercions('Aws::SDB::DeleteDomain', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub DomainMetadata {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SDB::DomainMetadata', @_);
+    my $call = $self->new_with_coercions('Aws::SDB::DomainMetadata', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SDB::DomainMetadataResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetAttributes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SDB::GetAttributes', @_);
+    my $call = $self->new_with_coercions('Aws::SDB::GetAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SDB::GetAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListDomains {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SDB::ListDomains', @_);
+    my $call = $self->new_with_coercions('Aws::SDB::ListDomains', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SDB::ListDomainsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub PutAttributes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SDB::PutAttributes', @_);
+    my $call = $self->new_with_coercions('Aws::SDB::PutAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub Select {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SDB::Select', @_);
+    my $call = $self->new_with_coercions('Aws::SDB::Select', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SDB::SelectResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
 }
+1;

@@ -200,7 +200,7 @@ package Net::AWS::JsonResponse {
   }
 
   sub new_with_coercions {
-    my ($class, %params) = @_;
+    my ($self, $class, %params) = @_;
 
     my %p;
     foreach my $att ($class->meta->get_attribute_list){
@@ -215,14 +215,14 @@ package Net::AWS::JsonResponse {
         if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
           $p{ $att } = $params{ $att };
         } else {
-          $p{ $att } = [ map { new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ]; 
+          $p{ $att } = [ map { $self->new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ]; 
         }
       } elsif ($type->isa('Moose::Meta::TypeConstraint::Enum')){
         $p{ $att } = $params{ $att };
       } else {
 use Data::Dumper;
 print Dumper($type, $params{ $att });
-        $p{ $att } = new_with_coercions("$type", %{ $params{ $att } });
+        $p{ $att } = $self->new_with_coercions("$type", %{ $params{ $att } });
       }
     }
     return $class->new(%p);
@@ -347,7 +347,7 @@ package Net::AWS::XMLResponse {
   }
 
   sub new_with_coercions {
-    my ($class, %params) = @_;
+    my ($self, $class, %params) = @_;
 
     my %p;
     foreach my $att ($class->meta->get_attribute_list){
@@ -362,10 +362,10 @@ package Net::AWS::XMLResponse {
         if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
           $p{ $att } = $params{ $att };
         } else {
-          $p{ $att } = [ map { new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ]; 
+          $p{ $att } = [ map { $self->new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ]; 
         }
       } else {
-        $p{ $att } = new_with_coercions("$type", %{ $params{ $att } });
+        $p{ $att } = $self->new_with_coercions("$type", %{ $params{ $att } });
       }
     }
     return $class->new(%p);
@@ -380,7 +380,7 @@ package Net::AWS::Caller {
   has 'access_key'         => ( is => 'rw', isa => 'Str', required => 1, lazy => 1, default => sub { $ENV{AWS_ACCESS_KEY} || $ENV{AWS_ACCESS_KEY_ID} } );
   has 'secret_key'         => ( is => 'rw', isa => 'Str', required => 1, lazy => 1, default => sub { $ENV{AWS_SECRET_KEY} || $ENV{AWS_SECRET_ACCESS_KEY} } );
   has 'debug'              => ( is => 'rw', required => 0, default => sub { 0 } );
-  has 'version'            => ( is => 'rw', required => 1);
+  requires 'version';
   has 'endpoint'           => ( is => 'rw', required => 1, lazy => 1, default => sub { $_[0]->_api_endpoint });
   has 'ua' => (is => 'rw', required => 1, lazy => 1,
     default     => sub {

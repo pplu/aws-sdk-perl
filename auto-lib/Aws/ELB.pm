@@ -555,181 +555,188 @@ package Aws::ELB {
   has service => (is => 'ro', isa => 'Str', default => 'elasticloadbalancing');
   has version => (is => 'ro', isa => 'Str', default => '2012-06-01');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::QueryCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
+
   
   sub ApplySecurityGroupsToLoadBalancer {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::ApplySecurityGroupsToLoadBalancer', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::ApplySecurityGroupsToLoadBalancer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::ApplySecurityGroupsToLoadBalancerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub AttachLoadBalancerToSubnets {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::AttachLoadBalancerToSubnets', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::AttachLoadBalancerToSubnets', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::AttachLoadBalancerToSubnetsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ConfigureHealthCheck {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::ConfigureHealthCheck', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::ConfigureHealthCheck', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::ConfigureHealthCheckResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateAppCookieStickinessPolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::CreateAppCookieStickinessPolicy', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::CreateAppCookieStickinessPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::CreateAppCookieStickinessPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateLBCookieStickinessPolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::CreateLBCookieStickinessPolicy', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::CreateLBCookieStickinessPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::CreateLBCookieStickinessPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateLoadBalancer {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::CreateLoadBalancer', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::CreateLoadBalancer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::CreateLoadBalancerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateLoadBalancerListeners {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::CreateLoadBalancerListeners', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::CreateLoadBalancerListeners', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::CreateLoadBalancerListenersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateLoadBalancerPolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::CreateLoadBalancerPolicy', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::CreateLoadBalancerPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::CreateLoadBalancerPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteLoadBalancer {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::DeleteLoadBalancer', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::DeleteLoadBalancer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::DeleteLoadBalancerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteLoadBalancerListeners {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::DeleteLoadBalancerListeners', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::DeleteLoadBalancerListeners', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::DeleteLoadBalancerListenersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteLoadBalancerPolicy {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::DeleteLoadBalancerPolicy', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::DeleteLoadBalancerPolicy', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::DeleteLoadBalancerPolicyResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeregisterInstancesFromLoadBalancer {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::DeregisterInstancesFromLoadBalancer', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::DeregisterInstancesFromLoadBalancer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::DeregisterInstancesFromLoadBalancerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeInstanceHealth {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::DescribeInstanceHealth', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::DescribeInstanceHealth', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::DescribeInstanceHealthResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeLoadBalancerAttributes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::DescribeLoadBalancerAttributes', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::DescribeLoadBalancerAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::DescribeLoadBalancerAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeLoadBalancerPolicies {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::DescribeLoadBalancerPolicies', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::DescribeLoadBalancerPolicies', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::DescribeLoadBalancerPoliciesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeLoadBalancerPolicyTypes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::DescribeLoadBalancerPolicyTypes', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::DescribeLoadBalancerPolicyTypes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::DescribeLoadBalancerPolicyTypesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeLoadBalancers {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::DescribeLoadBalancers', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::DescribeLoadBalancers', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::DescribeLoadBalancersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DetachLoadBalancerFromSubnets {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::DetachLoadBalancerFromSubnets', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::DetachLoadBalancerFromSubnets', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::DetachLoadBalancerFromSubnetsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DisableAvailabilityZonesForLoadBalancer {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::DisableAvailabilityZonesForLoadBalancer', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::DisableAvailabilityZonesForLoadBalancer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::DisableAvailabilityZonesForLoadBalancerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub EnableAvailabilityZonesForLoadBalancer {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::EnableAvailabilityZonesForLoadBalancer', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::EnableAvailabilityZonesForLoadBalancer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::EnableAvailabilityZonesForLoadBalancerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyLoadBalancerAttributes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::ModifyLoadBalancerAttributes', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::ModifyLoadBalancerAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::ModifyLoadBalancerAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub RegisterInstancesWithLoadBalancer {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::RegisterInstancesWithLoadBalancer', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::RegisterInstancesWithLoadBalancer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::RegisterInstancesWithLoadBalancerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub SetLoadBalancerListenerSSLCertificate {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::SetLoadBalancerListenerSSLCertificate', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::SetLoadBalancerListenerSSLCertificate', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::SetLoadBalancerListenerSSLCertificateResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub SetLoadBalancerPoliciesForBackendServer {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::SetLoadBalancerPoliciesForBackendServer', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::SetLoadBalancerPoliciesForBackendServer', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::SetLoadBalancerPoliciesForBackendServerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub SetLoadBalancerPoliciesOfListener {
     my $self = shift;
-    my $call = new_with_coercions('Aws::ELB::SetLoadBalancerPoliciesOfListener', @_);
+    my $call = $self->new_with_coercions('Aws::ELB::SetLoadBalancerPoliciesOfListener', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ELB::SetLoadBalancerPoliciesOfListenerResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
 }
+1;

@@ -321,130 +321,137 @@ package Aws::SES {
   has service => (is => 'ro', isa => 'Str', default => 'email');
   has version => (is => 'ro', isa => 'Str', default => '2010-12-01');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
-  with ('Net::AWS::Caller', 'AWS::API::RegionalEndpointCaller', 'Net::AWS::V4Signature', 'Net::AWS::QueryCaller', 'Net::AWS::XMLResponse');
+
+  use MooseX::ClassAttribute;
+  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::QueryCaller');
+  class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
+
   
   sub DeleteIdentity {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::DeleteIdentity', @_);
+    my $call = $self->new_with_coercions('Aws::SES::DeleteIdentity', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::DeleteIdentityResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteVerifiedEmailAddress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::DeleteVerifiedEmailAddress', @_);
+    my $call = $self->new_with_coercions('Aws::SES::DeleteVerifiedEmailAddress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub GetIdentityDkimAttributes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::GetIdentityDkimAttributes', @_);
+    my $call = $self->new_with_coercions('Aws::SES::GetIdentityDkimAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::GetIdentityDkimAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetIdentityNotificationAttributes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::GetIdentityNotificationAttributes', @_);
+    my $call = $self->new_with_coercions('Aws::SES::GetIdentityNotificationAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::GetIdentityNotificationAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetIdentityVerificationAttributes {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::GetIdentityVerificationAttributes', @_);
+    my $call = $self->new_with_coercions('Aws::SES::GetIdentityVerificationAttributes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::GetIdentityVerificationAttributesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetSendQuota {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::GetSendQuota', @_);
+    my $call = $self->new_with_coercions('Aws::SES::GetSendQuota', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::GetSendQuotaResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub GetSendStatistics {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::GetSendStatistics', @_);
+    my $call = $self->new_with_coercions('Aws::SES::GetSendStatistics', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::GetSendStatisticsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListIdentities {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::ListIdentities', @_);
+    my $call = $self->new_with_coercions('Aws::SES::ListIdentities', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::ListIdentitiesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ListVerifiedEmailAddresses {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::ListVerifiedEmailAddresses', @_);
+    my $call = $self->new_with_coercions('Aws::SES::ListVerifiedEmailAddresses', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::ListVerifiedEmailAddressesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub SendEmail {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::SendEmail', @_);
+    my $call = $self->new_with_coercions('Aws::SES::SendEmail', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::SendEmailResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub SendRawEmail {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::SendRawEmail', @_);
+    my $call = $self->new_with_coercions('Aws::SES::SendRawEmail', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::SendRawEmailResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub SetIdentityDkimEnabled {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::SetIdentityDkimEnabled', @_);
+    my $call = $self->new_with_coercions('Aws::SES::SetIdentityDkimEnabled', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::SetIdentityDkimEnabledResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub SetIdentityFeedbackForwardingEnabled {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::SetIdentityFeedbackForwardingEnabled', @_);
+    my $call = $self->new_with_coercions('Aws::SES::SetIdentityFeedbackForwardingEnabled', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::SetIdentityFeedbackForwardingEnabledResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub SetIdentityNotificationTopic {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::SetIdentityNotificationTopic', @_);
+    my $call = $self->new_with_coercions('Aws::SES::SetIdentityNotificationTopic', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::SetIdentityNotificationTopicResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub VerifyDomainDkim {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::VerifyDomainDkim', @_);
+    my $call = $self->new_with_coercions('Aws::SES::VerifyDomainDkim', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::VerifyDomainDkimResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub VerifyDomainIdentity {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::VerifyDomainIdentity', @_);
+    my $call = $self->new_with_coercions('Aws::SES::VerifyDomainIdentity', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::VerifyDomainIdentityResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub VerifyEmailAddress {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::VerifyEmailAddress', @_);
+    my $call = $self->new_with_coercions('Aws::SES::VerifyEmailAddress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
   }
   sub VerifyEmailIdentity {
     my $self = shift;
-    my $call = new_with_coercions('Aws::SES::VerifyEmailIdentity', @_);
+    my $call = $self->new_with_coercions('Aws::SES::VerifyEmailIdentity', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::SES::VerifyEmailIdentityResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
 }
+1;
