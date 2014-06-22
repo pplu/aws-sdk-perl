@@ -23,7 +23,7 @@ enum 'Aws::EC2::ImageState', ['available','deregistered',];
 enum 'Aws::EC2::ImageTypeValues', ['machine','kernel','ramdisk',];
 enum 'Aws::EC2::InstanceLifecycleType', ['spot',];
 enum 'Aws::EC2::InstanceStateName', ['pending','running','shutting-down','terminated','stopping','stopped',];
-enum 'Aws::EC2::InstanceType', ['t1.micro','m1.small','m1.medium','m1.large','m1.xlarge','m3.medium','m3.large','m3.xlarge','m3.2xlarge','m2.xlarge','m2.2xlarge','m2.4xlarge','cr1.8xlarge','i2.xlarge','i2.2xlarge','i2.4xlarge','i2.8xlarge','hi1.4xlarge','hs1.8xlarge','c1.medium','c1.xlarge','c3.large','c3.xlarge','c3.2xlarge','c3.4xlarge','c3.8xlarge','cc1.4xlarge','cc2.8xlarge','g2.2xlarge','cg1.4xlarge',];
+enum 'Aws::EC2::InstanceType', ['t1.micro','m1.small','m1.medium','m1.large','m1.xlarge','m3.medium','m3.large','m3.xlarge','m3.2xlarge','m2.xlarge','m2.2xlarge','m2.4xlarge','cr1.8xlarge','i2.xlarge','i2.2xlarge','i2.4xlarge','i2.8xlarge','hi1.4xlarge','hs1.8xlarge','c1.medium','c1.xlarge','c3.large','c3.xlarge','c3.2xlarge','c3.4xlarge','c3.8xlarge','cc1.4xlarge','cc2.8xlarge','g2.2xlarge','cg1.4xlarge','r3.large','r3.xlarge','r3.2xlarge','r3.4xlarge','r3.8xlarge',];
 enum 'Aws::EC2::ListingState', ['available','sold','cancelled','pending',];
 enum 'Aws::EC2::ListingStatus', ['active','pending','cancelled','closed',];
 enum 'Aws::EC2::MonitoringState', ['disabled','enabled','pending',];
@@ -119,10 +119,10 @@ package Aws::EC2::AvailabilityZoneMessage {
 package Aws::EC2::BlockDeviceMapping {
   use Moose;
   with ('AWS::API::UnwrappedParser');
-  has DeviceName => (is => 'ro', isa => 'Str');
-  has Ebs => (is => 'ro', isa => 'Aws::EC2::EbsBlockDevice');
-  has NoDevice => (is => 'ro', isa => 'Str');
-  has VirtualName => (is => 'ro', isa => 'Str');
+  has DeviceName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deviceName');
+  has Ebs => (is => 'ro', isa => 'Aws::EC2::EbsBlockDevice', traits => ['Unwrapped'], xmlname => 'ebs');
+  has NoDevice => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'noDevice');
+  has VirtualName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualName');
 }
 
 package Aws::EC2::BundleTask {
@@ -239,11 +239,12 @@ package Aws::EC2::DiskImageVolumeDescription {
 package Aws::EC2::EbsBlockDevice {
   use Moose;
   with ('AWS::API::UnwrappedParser');
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool');
-  has Iops => (is => 'ro', isa => 'Int');
-  has SnapshotId => (is => 'ro', isa => 'Str');
-  has VolumeSize => (is => 'ro', isa => 'Int');
-  has VolumeType => (is => 'ro', isa => 'Aws::EC2::VolumeType');
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
+  has Encrypted => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'encrypted');
+  has Iops => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'iops');
+  has SnapshotId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'snapshotId');
+  has VolumeSize => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'volumeSize');
+  has VolumeType => (is => 'ro', isa => 'Aws::EC2::VolumeType', traits => ['Unwrapped'], xmlname => 'volumeType');
 }
 
 package Aws::EC2::EbsInstanceBlockDevice {
@@ -315,8 +316,8 @@ package Aws::EC2::IamInstanceProfile {
 package Aws::EC2::IamInstanceProfileSpecification {
   use Moose;
   with ('AWS::API::UnwrappedParser');
-  has Arn => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'arn');
+  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'name');
 }
 
 package Aws::EC2::IcmpTypeCode {
@@ -517,16 +518,16 @@ package Aws::EC2::InstanceNetworkInterfaceAttachment {
 package Aws::EC2::InstanceNetworkInterfaceSpecification {
   use Moose;
   with ('AWS::API::UnwrappedParser');
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool');
-  has Description => (is => 'ro', isa => 'Str');
-  has DeviceIndex => (is => 'ro', isa => 'Int');
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str]');
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str');
-  has PrivateIpAddress => (is => 'ro', isa => 'Str');
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PrivateIpAddressSpecification]');
-  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int');
-  has SubnetId => (is => 'ro', isa => 'Str');
+  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'associatePublicIpAddress');
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
+  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
+  has DeviceIndex => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'deviceIndex');
+  has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'SecurityGroupId');
+  has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'networkInterfaceId');
+  has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateIpAddress');
+  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PrivateIpAddressSpecification]', traits => ['Unwrapped'], xmlname => 'privateIpAddressesSet');
+  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'secondaryPrivateIpAddressCount');
+  has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
 }
 
 package Aws::EC2::InstancePrivateIpAddress {
@@ -643,21 +644,22 @@ package Aws::EC2::LaunchPermissionModifications {
 package Aws::EC2::LaunchSpecification {
   use Moose;
   with ('AWS::API::UnwrappedParser');
-  has AddressingType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'addressingType');
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['Unwrapped'], xmlname => 'blockDeviceMapping');
-  has EbsOptimized => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'ebsOptimized');
-  has IamInstanceProfile => (is => 'ro', isa => 'Aws::EC2::IamInstanceProfileSpecification', traits => ['Unwrapped'], xmlname => 'iamInstanceProfile');
-  has ImageId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'imageId');
-  has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType', traits => ['Unwrapped'], xmlname => 'instanceType');
-  has KernelId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'kernelId');
-  has KeyName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyName');
-  has MonitoringEnabled => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'monitoringEnabled');
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceNetworkInterfaceSpecification]', traits => ['Unwrapped'], xmlname => 'networkInterfaceSet');
-  has Placement => (is => 'ro', isa => 'Aws::EC2::SpotPlacement', traits => ['Unwrapped'], xmlname => 'placement');
-  has RamdiskId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ramdiskId');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::EC2::GroupIdentifier]', traits => ['Unwrapped'], xmlname => 'groupSet');
-  has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
-  has UserData => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'userData');
+  has AddressingType => (is => 'ro', isa => 'Str');
+  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]');
+  has EbsOptimized => (is => 'ro', isa => 'Bool');
+  has IamInstanceProfile => (is => 'ro', isa => 'Aws::EC2::IamInstanceProfileSpecification');
+  has ImageId => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType');
+  has KernelId => (is => 'ro', isa => 'Str');
+  has KeyName => (is => 'ro', isa => 'Str');
+  has Monitoring => (is => 'ro', isa => 'Aws::EC2::SpotInstanceMonitoring');
+  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceNetworkInterfaceSpecification]');
+  has Placement => (is => 'ro', isa => 'Aws::EC2::SpotPlacement');
+  has RamdiskId => (is => 'ro', isa => 'Str');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SubnetId => (is => 'ro', isa => 'Str');
+  has UserData => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EC2::Monitoring {
@@ -726,6 +728,7 @@ package Aws::EC2::NetworkInterfaceAssociation {
   has AllocationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'allocationId');
   has AssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'associationId');
   has IpOwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ipOwnerId');
+  has PublicDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicDnsName');
   has PublicIp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicIp');
 }
 
@@ -807,8 +810,8 @@ package Aws::EC2::PricingDetail {
 package Aws::EC2::PrivateIpAddressSpecification {
   use Moose;
   with ('AWS::API::UnwrappedParser');
-  has Primary => (is => 'ro', isa => 'Bool');
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', required => 1);
+  has Primary => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'primary');
+  has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateIpAddress', required => 1);
 }
 
 package Aws::EC2::ProductCode {
@@ -955,6 +958,7 @@ package Aws::EC2::Route {
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'networkInterfaceId');
   has Origin => (is => 'ro', isa => 'Aws::EC2::RouteOrigin', traits => ['Unwrapped'], xmlname => 'origin');
   has State => (is => 'ro', isa => 'Aws::EC2::RouteState', traits => ['Unwrapped'], xmlname => 'state');
+  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcPeeringConnectionId');
 }
 
 package Aws::EC2::RouteTable {
@@ -1010,6 +1014,7 @@ package Aws::EC2::Snapshot {
   use Moose;
   with ('AWS::API::UnwrappedParser');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
+  has Encrypted => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'encrypted');
   has OwnerAlias => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAlias');
   has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
   has Progress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'progress');
@@ -1045,7 +1050,7 @@ package Aws::EC2::SpotInstanceRequest {
   has Fault => (is => 'ro', isa => 'Aws::EC2::SpotInstanceStateFault', traits => ['Unwrapped'], xmlname => 'fault');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has LaunchGroup => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'launchGroup');
-  has LaunchSpecification => (is => 'ro', isa => 'Aws::EC2::LaunchSpecification', traits => ['Unwrapped'], xmlname => 'launchSpecification');
+  has LaunchSpecification => (is => 'ro', isa => 'Aws::EC2::SpotLaunchSpecification', traits => ['Unwrapped'], xmlname => 'launchSpecification');
   has LaunchedAvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'launchedAvailabilityZone');
   has ProductDescription => (is => 'ro', isa => 'Aws::EC2::SpotProductDescription', traits => ['Unwrapped'], xmlname => 'productDescription');
   has SpotInstanceRequestId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'spotInstanceRequestId');
@@ -1076,29 +1081,28 @@ package Aws::EC2::SpotInstanceStatus {
 package Aws::EC2::SpotLaunchSpecification {
   use Moose;
   with ('AWS::API::UnwrappedParser');
-  has AddressingType => (is => 'ro', isa => 'Str');
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]');
-  has EbsOptimized => (is => 'ro', isa => 'Bool');
-  has IamInstanceProfile => (is => 'ro', isa => 'Aws::EC2::IamInstanceProfileSpecification');
-  has ImageId => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType');
-  has KernelId => (is => 'ro', isa => 'Str');
-  has KeyName => (is => 'ro', isa => 'Str');
-  has Monitoring => (is => 'ro', isa => 'Aws::EC2::SpotInstanceMonitoring');
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceNetworkInterfaceSpecification]');
-  has Placement => (is => 'ro', isa => 'Aws::EC2::SpotPlacement');
-  has RamdiskId => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has UserData => (is => 'ro', isa => 'Str');
+  has AddressingType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'addressingType');
+  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['Unwrapped'], xmlname => 'blockDeviceMapping');
+  has EbsOptimized => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'ebsOptimized');
+  has IamInstanceProfile => (is => 'ro', isa => 'Aws::EC2::IamInstanceProfileSpecification', traits => ['Unwrapped'], xmlname => 'iamInstanceProfile');
+  has ImageId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'imageId');
+  has InstanceType => (is => 'ro', isa => 'Aws::EC2::InstanceType', traits => ['Unwrapped'], xmlname => 'instanceType');
+  has KernelId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'kernelId');
+  has KeyName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyName');
+  has MonitoringEnabled => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'monitoringEnabled');
+  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceNetworkInterfaceSpecification]', traits => ['Unwrapped'], xmlname => 'networkInterfaceSet');
+  has Placement => (is => 'ro', isa => 'Aws::EC2::SpotPlacement', traits => ['Unwrapped'], xmlname => 'placement');
+  has RamdiskId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ramdiskId');
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::EC2::GroupIdentifier]', traits => ['Unwrapped'], xmlname => 'groupSet');
+  has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
+  has UserData => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'userData');
 }
 
 package Aws::EC2::SpotPlacement {
   use Moose;
   with ('AWS::API::UnwrappedParser');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str');
+  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
+  has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
 }
 
 package Aws::EC2::SpotPrice {
@@ -1178,6 +1182,7 @@ package Aws::EC2::Volume {
   has Attachments => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VolumeAttachment]', traits => ['Unwrapped'], xmlname => 'attachmentSet');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has CreateTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createTime');
+  has Encrypted => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'encrypted');
   has Iops => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'iops');
   has Size => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'size');
   has SnapshotId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'snapshotId');
@@ -1266,6 +1271,32 @@ package Aws::EC2::VpcAttachment {
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
 
+package Aws::EC2::VpcPeeringConnection {
+  use Moose;
+  with ('AWS::API::UnwrappedParser');
+  has AccepterVpcInfo => (is => 'ro', isa => 'Aws::EC2::VpcPeeringConnectionVpcInfo', traits => ['Unwrapped'], xmlname => 'accepterVpcInfo');
+  has ExpirationTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'expirationTime');
+  has RequesterVpcInfo => (is => 'ro', isa => 'Aws::EC2::VpcPeeringConnectionVpcInfo', traits => ['Unwrapped'], xmlname => 'requesterVpcInfo');
+  has Status => (is => 'ro', isa => 'Aws::EC2::VpcPeeringConnectionStateReason', traits => ['Unwrapped'], xmlname => 'status');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
+  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcPeeringConnectionId');
+}
+
+package Aws::EC2::VpcPeeringConnectionStateReason {
+  use Moose;
+  with ('AWS::API::UnwrappedParser');
+  has Code => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'code');
+  has Message => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'message');
+}
+
+package Aws::EC2::VpcPeeringConnectionVpcInfo {
+  use Moose;
+  with ('AWS::API::UnwrappedParser');
+  has CidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cidrBlock');
+  has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
+  has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
+}
+
 package Aws::EC2::VpnConnection {
   use Moose;
   with ('AWS::API::UnwrappedParser');
@@ -1314,6 +1345,15 @@ package Aws::EC2::VpnStaticRoute {
 
 
 
+package Aws::EC2::AcceptVpcPeeringConnection {
+  use Moose;
+  has DryRun => (is => 'ro', isa => 'Bool');
+  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'AcceptVpcPeeringConnection');
+  has _returns => (isa => 'Aws::EC2::AcceptVpcPeeringConnectionResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'AcceptVpcPeeringConnectionResult');  
+}
 package Aws::EC2::AllocateAddress {
   use Moose;
   has Domain => (is => 'ro', isa => 'Str');
@@ -1523,7 +1563,9 @@ package Aws::EC2::CopyImage {
 package Aws::EC2::CopySnapshot {
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has DestinationRegion => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool');
+  has PresignedUrl => (is => 'ro', isa => 'Str');
   has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
   has SourceSnapshotId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -1660,6 +1702,7 @@ package Aws::EC2::CreateRoute {
   has InstanceId => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
+  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRoute');
   has _returns => (isa => 'Aws::EC2::CreateRouteResult', is => 'ro');
@@ -1730,6 +1773,7 @@ package Aws::EC2::CreateVolume {
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool');
+  has Encrypted => (is => 'ro', isa => 'Bool');
   has Iops => (is => 'ro', isa => 'Int');
   has Size => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
@@ -1748,6 +1792,17 @@ package Aws::EC2::CreateVpc {
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpc');
   has _returns => (isa => 'Aws::EC2::CreateVpcResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVpcResult');  
+}
+package Aws::EC2::CreateVpcPeeringConnection {
+  use Moose;
+  has DryRun => (is => 'ro', isa => 'Bool');
+  has PeerOwnerId => (is => 'ro', isa => 'Str');
+  has PeerVpcId => (is => 'ro', isa => 'Str');
+  has VpcId => (is => 'ro', isa => 'Str');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpcPeeringConnection');
+  has _returns => (isa => 'Aws::EC2::CreateVpcPeeringConnectionResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVpcPeeringConnectionResult');  
 }
 package Aws::EC2::CreateVpnConnection {
   use Moose;
@@ -1936,6 +1991,15 @@ package Aws::EC2::DeleteVpc {
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpc');
   has _returns => (isa => 'Aws::EC2::DeleteVpcResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVpcResult');  
+}
+package Aws::EC2::DeleteVpcPeeringConnection {
+  use Moose;
+  has DryRun => (is => 'ro', isa => 'Bool');
+  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpcPeeringConnection');
+  has _returns => (isa => 'Aws::EC2::DeleteVpcPeeringConnectionResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVpcPeeringConnectionResult');  
 }
 package Aws::EC2::DeleteVpnConnection {
   use Moose;
@@ -2373,6 +2437,16 @@ package Aws::EC2::DescribeVpcAttribute {
   has _returns => (isa => 'Aws::EC2::DescribeVpcAttributeResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVpcAttributeResult');  
 }
+package Aws::EC2::DescribeVpcPeeringConnections {
+  use Moose;
+  has DryRun => (is => 'ro', isa => 'Bool');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has VpcPeeringConnectionIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcPeeringConnectionId' );
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpcPeeringConnections');
+  has _returns => (isa => 'Aws::EC2::DescribeVpcPeeringConnectionsResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVpcPeeringConnectionsResult');  
+}
 package Aws::EC2::DescribeVpcs {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
@@ -2621,7 +2695,7 @@ package Aws::EC2::ModifySnapshotAttribute {
 }
 package Aws::EC2::ModifyVolumeAttribute {
   use Moose;
-  has AutoEnableIO => (is => 'ro', isa => 'Bool');
+  has AutoEnableIO => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue');
   has DryRun => (is => 'ro', isa => 'Bool');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -2686,6 +2760,15 @@ package Aws::EC2::RegisterImage {
   has _returns => (isa => 'Aws::EC2::RegisterImageResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterImageResult');  
 }
+package Aws::EC2::RejectVpcPeeringConnection {
+  use Moose;
+  has DryRun => (is => 'ro', isa => 'Bool');
+  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'RejectVpcPeeringConnection');
+  has _returns => (isa => 'Aws::EC2::RejectVpcPeeringConnectionResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'RejectVpcPeeringConnectionResult');  
+}
 package Aws::EC2::ReleaseAddress {
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str');
@@ -2730,6 +2813,7 @@ package Aws::EC2::ReplaceRoute {
   has InstanceId => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
+  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceRoute');
   has _returns => (isa => 'Aws::EC2::ReplaceRouteResult', is => 'ro');
@@ -2765,7 +2849,7 @@ package Aws::EC2::RequestSpotInstances {
   has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has LaunchGroup => (is => 'ro', isa => 'Str');
-  has LaunchSpecification => (is => 'ro', isa => 'Aws::EC2::SpotLaunchSpecification');
+  has LaunchSpecification => (is => 'ro', isa => 'Aws::EC2::LaunchSpecification');
   has SpotPrice => (is => 'ro', isa => 'Str', required => 1);
   has Type => (is => 'ro', isa => 'Str');
   has ValidFrom => (is => 'ro', isa => 'Str');
@@ -2926,6 +3010,12 @@ package Aws::EC2::UnmonitorInstances {
   has _result_key => (isa => 'Str', is => 'ro', default => 'UnmonitorInstancesResult');  
 }
 
+package Aws::EC2::AcceptVpcPeeringConnectionResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
+  has VpcPeeringConnection => (is => 'ro', isa => 'Aws::EC2::VpcPeeringConnection', traits => ['Unwrapped'], xmlname => 'vpcPeeringConnection');
+
+}
 package Aws::EC2::AllocateAddressResult {
   use Moose;
   with 'AWS::API::UnwrappedParser';
@@ -3083,6 +3173,7 @@ package Aws::EC2::CreateSnapshotResult {
   use Moose;
   with 'AWS::API::UnwrappedParser';
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
+  has Encrypted => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'encrypted');
   has OwnerAlias => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAlias');
   has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
   has Progress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'progress');
@@ -3111,6 +3202,7 @@ package Aws::EC2::CreateVolumeResult {
   has Attachments => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VolumeAttachment]', traits => ['Unwrapped'], xmlname => 'attachmentSet');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has CreateTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createTime');
+  has Encrypted => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'encrypted');
   has Iops => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'iops');
   has Size => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'size');
   has SnapshotId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'snapshotId');
@@ -3126,6 +3218,12 @@ package Aws::EC2::CreateVpcResult {
   has Vpc => (is => 'ro', isa => 'Aws::EC2::Vpc', traits => ['Unwrapped'], xmlname => 'vpc');
 
 }
+package Aws::EC2::CreateVpcPeeringConnectionResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
+  has VpcPeeringConnection => (is => 'ro', isa => 'Aws::EC2::VpcPeeringConnection', traits => ['Unwrapped'], xmlname => 'vpcPeeringConnection');
+
+}
 package Aws::EC2::CreateVpnConnectionResult {
   use Moose;
   with 'AWS::API::UnwrappedParser';
@@ -3136,6 +3234,12 @@ package Aws::EC2::CreateVpnGatewayResult {
   use Moose;
   with 'AWS::API::UnwrappedParser';
   has VpnGateway => (is => 'ro', isa => 'Aws::EC2::VpnGateway', traits => ['Unwrapped'], xmlname => 'vpnGateway');
+
+}
+package Aws::EC2::DeleteVpcPeeringConnectionResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
+  has Return => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'return');
 
 }
 package Aws::EC2::DescribeAccountAttributesResult {
@@ -3218,6 +3322,7 @@ package Aws::EC2::DescribeInstanceAttributeResult {
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ProductCode]', traits => ['Unwrapped'], xmlname => 'productCodes');
   has RamdiskId => (is => 'ro', isa => 'Aws::EC2::AttributeValue', traits => ['Unwrapped'], xmlname => 'ramdisk');
   has RootDeviceName => (is => 'ro', isa => 'Aws::EC2::AttributeValue', traits => ['Unwrapped'], xmlname => 'rootDeviceName');
+  has SourceDestCheck => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue', traits => ['Unwrapped'], xmlname => 'sourceDestCheck');
   has SriovNetSupport => (is => 'ro', isa => 'Aws::EC2::AttributeValue', traits => ['Unwrapped'], xmlname => 'sriovNetSupport');
   has UserData => (is => 'ro', isa => 'Aws::EC2::AttributeValue', traits => ['Unwrapped'], xmlname => 'userData');
 
@@ -3395,6 +3500,12 @@ package Aws::EC2::DescribeVpcAttributeResult {
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 
 }
+package Aws::EC2::DescribeVpcPeeringConnectionsResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
+  has VpcPeeringConnections => (is => 'ro', isa => 'ArrayRef[Aws::EC2::VpcPeeringConnection]', traits => ['Unwrapped'], xmlname => 'vpcPeeringConnectionSet');
+
+}
 package Aws::EC2::DescribeVpcsResult {
   use Moose;
   with 'AWS::API::UnwrappedParser';
@@ -3483,6 +3594,12 @@ package Aws::EC2::RegisterImageResult {
   has ImageId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'imageId');
 
 }
+package Aws::EC2::RejectVpcPeeringConnectionResult {
+  use Moose;
+  with 'AWS::API::UnwrappedParser';
+  has Return => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'return');
+
+}
 package Aws::EC2::ReplaceNetworkAclAssociationResult {
   use Moose;
   with 'AWS::API::UnwrappedParser';
@@ -3539,7 +3656,7 @@ package Aws::EC2::UnmonitorInstancesResult {
 package Aws::EC2 {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'ec2');
-  has version => (is => 'ro', isa => 'Str', default => '2013-10-15');
+  has version => (is => 'ro', isa => 'Str', default => '2014-05-01');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '1');
 
   use MooseX::ClassAttribute;
@@ -3549,6 +3666,13 @@ package Aws::EC2 {
   class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
 
   
+  sub AcceptVpcPeeringConnection {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::EC2::AcceptVpcPeeringConnection', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::EC2::AcceptVpcPeeringConnectionResult->from_result($result);
+    return $o_result;
+  }
   sub AllocateAddress {
     my $self = shift;
     my $call = $self->new_with_coercions('Aws::EC2::AllocateAddress', @_);
@@ -3818,6 +3942,13 @@ package Aws::EC2 {
     my $o_result = Aws::EC2::CreateVpcResult->from_result($result);
     return $o_result;
   }
+  sub CreateVpcPeeringConnection {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::EC2::CreateVpcPeeringConnection', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::EC2::CreateVpcPeeringConnectionResult->from_result($result);
+    return $o_result;
+  }
   sub CreateVpnConnection {
     my $self = shift;
     my $call = $self->new_with_coercions('Aws::EC2::CreateVpnConnection', @_);
@@ -3939,6 +4070,13 @@ package Aws::EC2 {
     my $call = $self->new_with_coercions('Aws::EC2::DeleteVpc', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     return 1
+  }
+  sub DeleteVpcPeeringConnection {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::EC2::DeleteVpcPeeringConnection', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::EC2::DeleteVpcPeeringConnectionResult->from_result($result);
+    return $o_result;
   }
   sub DeleteVpnConnection {
     my $self = shift;
@@ -4223,6 +4361,13 @@ package Aws::EC2 {
     my $o_result = Aws::EC2::DescribeVpcAttributeResult->from_result($result);
     return $o_result;
   }
+  sub DescribeVpcPeeringConnections {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::EC2::DescribeVpcPeeringConnections', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::EC2::DescribeVpcPeeringConnectionsResult->from_result($result);
+    return $o_result;
+  }
   sub DescribeVpcs {
     my $self = shift;
     my $call = $self->new_with_coercions('Aws::EC2::DescribeVpcs', @_);
@@ -4402,6 +4547,13 @@ package Aws::EC2 {
     my $call = $self->new_with_coercions('Aws::EC2::RegisterImage', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::EC2::RegisterImageResult->from_result($result);
+    return $o_result;
+  }
+  sub RejectVpcPeeringConnection {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::EC2::RejectVpcPeeringConnection', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::EC2::RejectVpcPeeringConnectionResult->from_result($result);
     return $o_result;
   }
   sub ReleaseAddress {
