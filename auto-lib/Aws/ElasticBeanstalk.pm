@@ -220,6 +220,13 @@ package Aws::ElasticBeanstalk::SourceConfiguration {
   has TemplateName => (is => 'ro', isa => 'Str');
 }
 
+package Aws::ElasticBeanstalk::Tag {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has Key => (is => 'ro', isa => 'Str');
+  has Value => (is => 'ro', isa => 'Str');
+}
+
 package Aws::ElasticBeanstalk::Trigger {
   use Moose;
   with ('AWS::API::ResultParser');
@@ -289,6 +296,7 @@ package Aws::ElasticBeanstalk::CreateEnvironment {
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Aws::ElasticBeanstalk::ConfigurationOptionSetting]');
   has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Aws::ElasticBeanstalk::OptionSpecification]');
   has SolutionStackName => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::ElasticBeanstalk::Tag]');
   has TemplateName => (is => 'ro', isa => 'Str');
   has Tier => (is => 'ro', isa => 'Aws::ElasticBeanstalk::EnvironmentTier');
   has VersionLabel => (is => 'ro', isa => 'Str');

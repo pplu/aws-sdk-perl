@@ -51,6 +51,7 @@ package Aws::EMR::Cluster {
   has Name => (is => 'ro', isa => 'Str');
   has RequestedAmiVersion => (is => 'ro', isa => 'Str');
   has RunningAmiVersion => (is => 'ro', isa => 'Str');
+  has ServiceRole => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Aws::EMR::ClusterStatus');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Tag]');
   has TerminationProtected => (is => 'ro', isa => 'Bool');
@@ -244,6 +245,7 @@ package Aws::EMR::JobFlowDetail {
   has JobFlowRole => (is => 'ro', isa => 'Str');
   has LogUri => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has ServiceRole => (is => 'ro', isa => 'Str');
   has Steps => (is => 'ro', isa => 'ArrayRef[Aws::EMR::StepDetail]');
   has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str]');
   has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
@@ -421,8 +423,8 @@ package Aws::EMR::AddJobFlowSteps {
 }
 package Aws::EMR::AddTags {
   use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Tag]');
+  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Tag]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'AddTags');
   has _returns => (isa => 'Aws::EMR::AddTagsResult', is => 'ro');
@@ -430,7 +432,7 @@ package Aws::EMR::AddTags {
 }
 package Aws::EMR::DescribeCluster {
   use Moose;
-  has ClusterId => (is => 'ro', isa => 'Str');
+  has ClusterId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCluster');
   has _returns => (isa => 'Aws::EMR::DescribeClusterResult', is => 'ro');
@@ -449,8 +451,8 @@ package Aws::EMR::DescribeJobFlows {
 }
 package Aws::EMR::DescribeStep {
   use Moose;
-  has ClusterId => (is => 'ro', isa => 'Str');
-  has StepId => (is => 'ro', isa => 'Str');
+  has ClusterId => (is => 'ro', isa => 'Str', required => 1);
+  has StepId => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStep');
   has _returns => (isa => 'Aws::EMR::DescribeStepResult', is => 'ro');
@@ -458,7 +460,7 @@ package Aws::EMR::DescribeStep {
 }
 package Aws::EMR::ListBootstrapActions {
   use Moose;
-  has ClusterId => (is => 'ro', isa => 'Str');
+  has ClusterId => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListBootstrapActions');
@@ -478,7 +480,7 @@ package Aws::EMR::ListClusters {
 }
 package Aws::EMR::ListInstanceGroups {
   use Moose;
-  has ClusterId => (is => 'ro', isa => 'Str');
+  has ClusterId => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ListInstanceGroups');
@@ -487,7 +489,7 @@ package Aws::EMR::ListInstanceGroups {
 }
 package Aws::EMR::ListInstances {
   use Moose;
-  has ClusterId => (is => 'ro', isa => 'Str');
+  has ClusterId => (is => 'ro', isa => 'Str', required => 1);
   has InstanceGroupId => (is => 'ro', isa => 'Str');
   has InstanceGroupTypes => (is => 'ro', isa => 'ArrayRef[Str]');
   has Marker => (is => 'ro', isa => 'Str');
@@ -498,7 +500,7 @@ package Aws::EMR::ListInstances {
 }
 package Aws::EMR::ListSteps {
   use Moose;
-  has ClusterId => (is => 'ro', isa => 'Str');
+  has ClusterId => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
   has StepStates => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -516,8 +518,8 @@ package Aws::EMR::ModifyInstanceGroups {
 }
 package Aws::EMR::RemoveTags {
   use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveTags');
   has _returns => (isa => 'Aws::EMR::RemoveTagsResult', is => 'ro');
@@ -533,6 +535,7 @@ package Aws::EMR::RunJobFlow {
   has LogUri => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NewSupportedProducts => (is => 'ro', isa => 'ArrayRef[Aws::EMR::SupportedProductConfig]');
+  has ServiceRole => (is => 'ro', isa => 'Str');
   has Steps => (is => 'ro', isa => 'ArrayRef[Aws::EMR::StepConfig]');
   has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Tag]');
