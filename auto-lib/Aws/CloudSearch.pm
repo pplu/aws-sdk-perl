@@ -2,9 +2,12 @@
 use AWS::API;
 
 use Moose::Util::TypeConstraints;
-enum 'Aws::CloudSearch::IndexFieldType', ['uint','literal','text',];
-enum 'Aws::CloudSearch::OptionState', ['RequiresIndexDocuments','Processing','Active',];
-enum 'Aws::CloudSearch::SourceDataFunction', ['Copy','TrimTitle','Map',];
+enum 'Aws::CloudSearch::AlgorithmicStemming', ['none','minimal','light','full',];
+enum 'Aws::CloudSearch::AnalysisSchemeLanguage', ['ar','bg','ca','cs','da','de','el','en','es','eu','fa','fi','fr','ga','gl','he','hi','hu','hy','id','it','ja','ko','lv','mul','nl','no','pt','ro','ru','sv','th','tr','zh-Hans','zh-Hant',];
+enum 'Aws::CloudSearch::IndexFieldType', ['int','double','literal','text','date','latlon','int-array','double-array','literal-array','text-array','date-array',];
+enum 'Aws::CloudSearch::OptionState', ['RequiresIndexDocuments','Processing','Active','FailedToValidate',];
+enum 'Aws::CloudSearch::PartitionInstanceType', ['search.m1.small','search.m1.large','search.m2.xlarge','search.m2.2xlarge',];
+enum 'Aws::CloudSearch::SuggesterFuzzyMatching', ['none','low','high',];
 
 
 package Aws::CloudSearch::AccessPoliciesStatus {
@@ -14,22 +17,81 @@ package Aws::CloudSearch::AccessPoliciesStatus {
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
 }
 
-package Aws::CloudSearch::DefaultSearchFieldStatus {
+package Aws::CloudSearch::AnalysisOptions {
   use Moose;
   with ('AWS::API::ResultParser');
-  has Options => (is => 'ro', isa => 'Str', required => 1);
+  has AlgorithmicStemming => (is => 'ro', isa => 'Aws::CloudSearch::AlgorithmicStemming');
+  has StemmingDictionary => (is => 'ro', isa => 'Str');
+  has Stopwords => (is => 'ro', isa => 'Str');
+  has Synonyms => (is => 'ro', isa => 'Str');
+}
+
+package Aws::CloudSearch::AnalysisScheme {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has AnalysisOptions => (is => 'ro', isa => 'Aws::CloudSearch::AnalysisOptions');
+  has AnalysisSchemeLanguage => (is => 'ro', isa => 'Aws::CloudSearch::AnalysisSchemeLanguage', required => 1);
+  has AnalysisSchemeName => (is => 'ro', isa => 'Str', required => 1);
+}
+
+package Aws::CloudSearch::AnalysisSchemeStatus {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has Options => (is => 'ro', isa => 'Aws::CloudSearch::AnalysisScheme', required => 1);
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
+}
+
+package Aws::CloudSearch::AvailabilityOptionsStatus {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has Options => (is => 'ro', isa => 'Bool', required => 1);
+  has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
+}
+
+package Aws::CloudSearch::DateArrayOptions {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has DefaultValue => (is => 'ro', isa => 'Str');
+  has FacetEnabled => (is => 'ro', isa => 'Bool');
+  has ReturnEnabled => (is => 'ro', isa => 'Bool');
+  has SearchEnabled => (is => 'ro', isa => 'Bool');
+  has SourceFields => (is => 'ro', isa => 'Str');
+}
+
+package Aws::CloudSearch::DateOptions {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has DefaultValue => (is => 'ro', isa => 'Str');
+  has FacetEnabled => (is => 'ro', isa => 'Bool');
+  has ReturnEnabled => (is => 'ro', isa => 'Bool');
+  has SearchEnabled => (is => 'ro', isa => 'Bool');
+  has SortEnabled => (is => 'ro', isa => 'Bool');
+  has SourceField => (is => 'ro', isa => 'Str');
+}
+
+package Aws::CloudSearch::DocumentSuggesterOptions {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has FuzzyMatching => (is => 'ro', isa => 'Aws::CloudSearch::SuggesterFuzzyMatching');
+  has SortExpression => (is => 'ro', isa => 'Str');
+  has SourceField => (is => 'ro', isa => 'Str', required => 1);
+}
+
+package Aws::CloudSearch::DomainNameMap {
+  use Moose;
+  with 'AWS::API::StrToStrMapParser';
+  has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
 
 package Aws::CloudSearch::DomainStatus {
   use Moose;
   with ('AWS::API::ResultParser');
+  has ARN => (is => 'ro', isa => 'Str');
   has Created => (is => 'ro', isa => 'Bool');
   has Deleted => (is => 'ro', isa => 'Bool');
   has DocService => (is => 'ro', isa => 'Aws::CloudSearch::ServiceEndpoint');
   has DomainId => (is => 'ro', isa => 'Str', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has NumSearchableDocs => (is => 'ro', isa => 'Int');
   has Processing => (is => 'ro', isa => 'Bool');
   has RequiresIndexDocuments => (is => 'ro', isa => 'Bool', required => 1);
   has SearchInstanceCount => (is => 'ro', isa => 'Int');
@@ -38,15 +100,57 @@ package Aws::CloudSearch::DomainStatus {
   has SearchService => (is => 'ro', isa => 'Aws::CloudSearch::ServiceEndpoint');
 }
 
+package Aws::CloudSearch::DoubleArrayOptions {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has DefaultValue => (is => 'ro', isa => 'Num');
+  has FacetEnabled => (is => 'ro', isa => 'Bool');
+  has ReturnEnabled => (is => 'ro', isa => 'Bool');
+  has SearchEnabled => (is => 'ro', isa => 'Bool');
+  has SourceFields => (is => 'ro', isa => 'Str');
+}
+
+package Aws::CloudSearch::DoubleOptions {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has DefaultValue => (is => 'ro', isa => 'Num');
+  has FacetEnabled => (is => 'ro', isa => 'Bool');
+  has ReturnEnabled => (is => 'ro', isa => 'Bool');
+  has SearchEnabled => (is => 'ro', isa => 'Bool');
+  has SortEnabled => (is => 'ro', isa => 'Bool');
+  has SourceField => (is => 'ro', isa => 'Str');
+}
+
+package Aws::CloudSearch::Expression {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has ExpressionName => (is => 'ro', isa => 'Str', required => 1);
+  has ExpressionValue => (is => 'ro', isa => 'Str', required => 1);
+}
+
+package Aws::CloudSearch::ExpressionStatus {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has Options => (is => 'ro', isa => 'Aws::CloudSearch::Expression', required => 1);
+  has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
+}
+
 package Aws::CloudSearch::IndexField {
   use Moose;
   with ('AWS::API::ResultParser');
+  has DateArrayOptions => (is => 'ro', isa => 'Aws::CloudSearch::DateArrayOptions');
+  has DateOptions => (is => 'ro', isa => 'Aws::CloudSearch::DateOptions');
+  has DoubleArrayOptions => (is => 'ro', isa => 'Aws::CloudSearch::DoubleArrayOptions');
+  has DoubleOptions => (is => 'ro', isa => 'Aws::CloudSearch::DoubleOptions');
   has IndexFieldName => (is => 'ro', isa => 'Str', required => 1);
   has IndexFieldType => (is => 'ro', isa => 'Aws::CloudSearch::IndexFieldType', required => 1);
+  has IntArrayOptions => (is => 'ro', isa => 'Aws::CloudSearch::IntArrayOptions');
+  has IntOptions => (is => 'ro', isa => 'Aws::CloudSearch::IntOptions');
+  has LatLonOptions => (is => 'ro', isa => 'Aws::CloudSearch::LatLonOptions');
+  has LiteralArrayOptions => (is => 'ro', isa => 'Aws::CloudSearch::LiteralArrayOptions');
   has LiteralOptions => (is => 'ro', isa => 'Aws::CloudSearch::LiteralOptions');
-  has SourceAttributes => (is => 'ro', isa => 'ArrayRef[Aws::CloudSearch::SourceAttribute]');
+  has TextArrayOptions => (is => 'ro', isa => 'Aws::CloudSearch::TextArrayOptions');
   has TextOptions => (is => 'ro', isa => 'Aws::CloudSearch::TextOptions');
-  has UIntOptions => (is => 'ro', isa => 'Aws::CloudSearch::UIntOptions');
 }
 
 package Aws::CloudSearch::IndexFieldStatus {
@@ -56,20 +160,57 @@ package Aws::CloudSearch::IndexFieldStatus {
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
 }
 
+package Aws::CloudSearch::IntArrayOptions {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has DefaultValue => (is => 'ro', isa => 'Num');
+  has FacetEnabled => (is => 'ro', isa => 'Bool');
+  has ReturnEnabled => (is => 'ro', isa => 'Bool');
+  has SearchEnabled => (is => 'ro', isa => 'Bool');
+  has SourceFields => (is => 'ro', isa => 'Str');
+}
+
+package Aws::CloudSearch::IntOptions {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has DefaultValue => (is => 'ro', isa => 'Num');
+  has FacetEnabled => (is => 'ro', isa => 'Bool');
+  has ReturnEnabled => (is => 'ro', isa => 'Bool');
+  has SearchEnabled => (is => 'ro', isa => 'Bool');
+  has SortEnabled => (is => 'ro', isa => 'Bool');
+  has SourceField => (is => 'ro', isa => 'Str');
+}
+
+package Aws::CloudSearch::LatLonOptions {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has DefaultValue => (is => 'ro', isa => 'Str');
+  has FacetEnabled => (is => 'ro', isa => 'Bool');
+  has ReturnEnabled => (is => 'ro', isa => 'Bool');
+  has SearchEnabled => (is => 'ro', isa => 'Bool');
+  has SortEnabled => (is => 'ro', isa => 'Bool');
+  has SourceField => (is => 'ro', isa => 'Str');
+}
+
+package Aws::CloudSearch::LiteralArrayOptions {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has DefaultValue => (is => 'ro', isa => 'Str');
+  has FacetEnabled => (is => 'ro', isa => 'Bool');
+  has ReturnEnabled => (is => 'ro', isa => 'Bool');
+  has SearchEnabled => (is => 'ro', isa => 'Bool');
+  has SourceFields => (is => 'ro', isa => 'Str');
+}
+
 package Aws::CloudSearch::LiteralOptions {
   use Moose;
   with ('AWS::API::ResultParser');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has FacetEnabled => (is => 'ro', isa => 'Bool');
-  has ResultEnabled => (is => 'ro', isa => 'Bool');
+  has ReturnEnabled => (is => 'ro', isa => 'Bool');
   has SearchEnabled => (is => 'ro', isa => 'Bool');
-}
-
-package Aws::CloudSearch::NamedRankExpression {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has RankExpression => (is => 'ro', isa => 'Str', required => 1);
-  has RankName => (is => 'ro', isa => 'Str', required => 1);
+  has SortEnabled => (is => 'ro', isa => 'Bool');
+  has SourceField => (is => 'ro', isa => 'Str');
 }
 
 package Aws::CloudSearch::OptionStatus {
@@ -82,97 +223,72 @@ package Aws::CloudSearch::OptionStatus {
   has UpdateVersion => (is => 'ro', isa => 'Int');
 }
 
-package Aws::CloudSearch::RankExpressionStatus {
+package Aws::CloudSearch::ScalingParameters {
   use Moose;
   with ('AWS::API::ResultParser');
-  has Options => (is => 'ro', isa => 'Aws::CloudSearch::NamedRankExpression', required => 1);
+  has DesiredInstanceType => (is => 'ro', isa => 'Aws::CloudSearch::PartitionInstanceType');
+  has DesiredPartitionCount => (is => 'ro', isa => 'Int');
+  has DesiredReplicationCount => (is => 'ro', isa => 'Int');
+}
+
+package Aws::CloudSearch::ScalingParametersStatus {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has Options => (is => 'ro', isa => 'Aws::CloudSearch::ScalingParameters', required => 1);
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
 }
 
 package Aws::CloudSearch::ServiceEndpoint {
   use Moose;
   with ('AWS::API::ResultParser');
-  has Arn => (is => 'ro', isa => 'Str');
   has Endpoint => (is => 'ro', isa => 'Str');
 }
 
-package Aws::CloudSearch::SourceAttribute {
+package Aws::CloudSearch::Suggester {
   use Moose;
   with ('AWS::API::ResultParser');
-  has SourceDataCopy => (is => 'ro', isa => 'Aws::CloudSearch::SourceData');
-  has SourceDataFunction => (is => 'ro', isa => 'Aws::CloudSearch::SourceDataFunction', required => 1);
-  has SourceDataMap => (is => 'ro', isa => 'Aws::CloudSearch::SourceDataMap');
-  has SourceDataTrimTitle => (is => 'ro', isa => 'Aws::CloudSearch::SourceDataTrimTitle');
+  has DocumentSuggesterOptions => (is => 'ro', isa => 'Aws::CloudSearch::DocumentSuggesterOptions', required => 1);
+  has SuggesterName => (is => 'ro', isa => 'Str', required => 1);
 }
 
-package Aws::CloudSearch::SourceData {
+package Aws::CloudSearch::SuggesterStatus {
   use Moose;
   with ('AWS::API::ResultParser');
-  has DefaultValue => (is => 'ro', isa => 'Str');
-  has SourceName => (is => 'ro', isa => 'Str', required => 1);
-}
-
-package Aws::CloudSearch::SourceDataMap {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has Cases => (is => 'ro', isa => 'Aws::CloudSearch::StringCaseMap');
-  has DefaultValue => (is => 'ro', isa => 'Str');
-  has SourceName => (is => 'ro', isa => 'Str', required => 1);
-}
-
-package Aws::CloudSearch::SourceDataTrimTitle {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has DefaultValue => (is => 'ro', isa => 'Str');
-  has Language => (is => 'ro', isa => 'Str');
-  has Separator => (is => 'ro', isa => 'Str');
-  has SourceName => (is => 'ro', isa => 'Str', required => 1);
-}
-
-package Aws::CloudSearch::StemmingOptionsStatus {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has Options => (is => 'ro', isa => 'Str', required => 1);
+  has Options => (is => 'ro', isa => 'Aws::CloudSearch::Suggester', required => 1);
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
 }
 
-package Aws::CloudSearch::StopwordOptionsStatus {
+package Aws::CloudSearch::TextArrayOptions {
   use Moose;
   with ('AWS::API::ResultParser');
-  has Options => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
-}
-
-package Aws::CloudSearch::StringCaseMap {
-  use Moose;
-  with 'AWS::API::StrToStrMapParser';
-  has Map => (is => 'ro', isa => 'HashRef[Str]');
-}
-
-package Aws::CloudSearch::SynonymOptionsStatus {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has Options => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
+  has AnalysisScheme => (is => 'ro', isa => 'Str');
+  has DefaultValue => (is => 'ro', isa => 'Str');
+  has HighlightEnabled => (is => 'ro', isa => 'Bool');
+  has ReturnEnabled => (is => 'ro', isa => 'Bool');
+  has SourceFields => (is => 'ro', isa => 'Str');
 }
 
 package Aws::CloudSearch::TextOptions {
   use Moose;
   with ('AWS::API::ResultParser');
+  has AnalysisScheme => (is => 'ro', isa => 'Str');
   has DefaultValue => (is => 'ro', isa => 'Str');
-  has FacetEnabled => (is => 'ro', isa => 'Bool');
-  has ResultEnabled => (is => 'ro', isa => 'Bool');
-  has TextProcessor => (is => 'ro', isa => 'Str');
+  has HighlightEnabled => (is => 'ro', isa => 'Bool');
+  has ReturnEnabled => (is => 'ro', isa => 'Bool');
+  has SortEnabled => (is => 'ro', isa => 'Bool');
+  has SourceField => (is => 'ro', isa => 'Str');
 }
 
-package Aws::CloudSearch::UIntOptions {
+
+
+package Aws::CloudSearch::BuildSuggesters {
   use Moose;
-  with ('AWS::API::ResultParser');
-  has DefaultValue => (is => 'ro', isa => 'Int');
+  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'BuildSuggesters');
+  has _returns => (isa => 'Aws::CloudSearch::BuildSuggestersResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'BuildSuggestersResult');  
 }
-
-
-
 package Aws::CloudSearch::CreateDomain {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
@@ -180,6 +296,24 @@ package Aws::CloudSearch::CreateDomain {
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDomain');
   has _returns => (isa => 'Aws::CloudSearch::CreateDomainResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDomainResult');  
+}
+package Aws::CloudSearch::DefineAnalysisScheme {
+  use Moose;
+  has AnalysisScheme => (is => 'ro', isa => 'Aws::CloudSearch::AnalysisScheme', required => 1);
+  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DefineAnalysisScheme');
+  has _returns => (isa => 'Aws::CloudSearch::DefineAnalysisSchemeResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DefineAnalysisSchemeResult');  
+}
+package Aws::CloudSearch::DefineExpression {
+  use Moose;
+  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  has Expression => (is => 'ro', isa => 'Aws::CloudSearch::Expression', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DefineExpression');
+  has _returns => (isa => 'Aws::CloudSearch::DefineExpressionResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DefineExpressionResult');  
 }
 package Aws::CloudSearch::DefineIndexField {
   use Moose;
@@ -190,14 +324,23 @@ package Aws::CloudSearch::DefineIndexField {
   has _returns => (isa => 'Aws::CloudSearch::DefineIndexFieldResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DefineIndexFieldResult');  
 }
-package Aws::CloudSearch::DefineRankExpression {
+package Aws::CloudSearch::DefineSuggester {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has RankExpression => (is => 'ro', isa => 'Aws::CloudSearch::NamedRankExpression', required => 1);
+  has Suggester => (is => 'ro', isa => 'Aws::CloudSearch::Suggester', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DefineRankExpression');
-  has _returns => (isa => 'Aws::CloudSearch::DefineRankExpressionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DefineRankExpressionResult');  
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DefineSuggester');
+  has _returns => (isa => 'Aws::CloudSearch::DefineSuggesterResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DefineSuggesterResult');  
+}
+package Aws::CloudSearch::DeleteAnalysisScheme {
+  use Moose;
+  has AnalysisSchemeName => (is => 'ro', isa => 'Str', required => 1);
+  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAnalysisScheme');
+  has _returns => (isa => 'Aws::CloudSearch::DeleteAnalysisSchemeResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAnalysisSchemeResult');  
 }
 package Aws::CloudSearch::DeleteDomain {
   use Moose;
@@ -206,6 +349,15 @@ package Aws::CloudSearch::DeleteDomain {
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDomain');
   has _returns => (isa => 'Aws::CloudSearch::DeleteDomainResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDomainResult');  
+}
+package Aws::CloudSearch::DeleteExpression {
+  use Moose;
+  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  has ExpressionName => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteExpression');
+  has _returns => (isa => 'Aws::CloudSearch::DeleteExpressionResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteExpressionResult');  
 }
 package Aws::CloudSearch::DeleteIndexField {
   use Moose;
@@ -216,22 +368,33 @@ package Aws::CloudSearch::DeleteIndexField {
   has _returns => (isa => 'Aws::CloudSearch::DeleteIndexFieldResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteIndexFieldResult');  
 }
-package Aws::CloudSearch::DeleteRankExpression {
+package Aws::CloudSearch::DeleteSuggester {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has RankName => (is => 'ro', isa => 'Str', required => 1);
+  has SuggesterName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRankExpression');
-  has _returns => (isa => 'Aws::CloudSearch::DeleteRankExpressionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteRankExpressionResult');  
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSuggester');
+  has _returns => (isa => 'Aws::CloudSearch::DeleteSuggesterResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSuggesterResult');  
 }
-package Aws::CloudSearch::DescribeDefaultSearchField {
+package Aws::CloudSearch::DescribeAnalysisSchemes {
   use Moose;
+  has AnalysisSchemeNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Deployed => (is => 'ro', isa => 'Bool');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDefaultSearchField');
-  has _returns => (isa => 'Aws::CloudSearch::DescribeDefaultSearchFieldResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDefaultSearchFieldResult');  
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAnalysisSchemes');
+  has _returns => (isa => 'Aws::CloudSearch::DescribeAnalysisSchemesResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAnalysisSchemesResult');  
+}
+package Aws::CloudSearch::DescribeAvailabilityOptions {
+  use Moose;
+  has Deployed => (is => 'ro', isa => 'Bool');
+  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityOptions');
+  has _returns => (isa => 'Aws::CloudSearch::DescribeAvailabilityOptionsResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityOptionsResult');  
 }
 package Aws::CloudSearch::DescribeDomains {
   use Moose;
@@ -241,8 +404,19 @@ package Aws::CloudSearch::DescribeDomains {
   has _returns => (isa => 'Aws::CloudSearch::DescribeDomainsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDomainsResult');  
 }
+package Aws::CloudSearch::DescribeExpressions {
+  use Moose;
+  has Deployed => (is => 'ro', isa => 'Bool');
+  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  has ExpressionNames => (is => 'ro', isa => 'ArrayRef[Str]');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeExpressions');
+  has _returns => (isa => 'Aws::CloudSearch::DescribeExpressionsResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeExpressionsResult');  
+}
 package Aws::CloudSearch::DescribeIndexFields {
   use Moose;
+  has Deployed => (is => 'ro', isa => 'Bool');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has FieldNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -250,46 +424,32 @@ package Aws::CloudSearch::DescribeIndexFields {
   has _returns => (isa => 'Aws::CloudSearch::DescribeIndexFieldsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeIndexFieldsResult');  
 }
-package Aws::CloudSearch::DescribeRankExpressions {
+package Aws::CloudSearch::DescribeScalingParameters {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has RankNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRankExpressions');
-  has _returns => (isa => 'Aws::CloudSearch::DescribeRankExpressionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeRankExpressionsResult');  
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeScalingParameters');
+  has _returns => (isa => 'Aws::CloudSearch::DescribeScalingParametersResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeScalingParametersResult');  
 }
 package Aws::CloudSearch::DescribeServiceAccessPolicies {
   use Moose;
+  has Deployed => (is => 'ro', isa => 'Bool');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeServiceAccessPolicies');
   has _returns => (isa => 'Aws::CloudSearch::DescribeServiceAccessPoliciesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeServiceAccessPoliciesResult');  
 }
-package Aws::CloudSearch::DescribeStemmingOptions {
+package Aws::CloudSearch::DescribeSuggesters {
   use Moose;
+  has Deployed => (is => 'ro', isa => 'Bool');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  has SuggesterNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStemmingOptions');
-  has _returns => (isa => 'Aws::CloudSearch::DescribeStemmingOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStemmingOptionsResult');  
-}
-package Aws::CloudSearch::DescribeStopwordOptions {
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStopwordOptions');
-  has _returns => (isa => 'Aws::CloudSearch::DescribeStopwordOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStopwordOptionsResult');  
-}
-package Aws::CloudSearch::DescribeSynonymOptions {
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSynonymOptions');
-  has _returns => (isa => 'Aws::CloudSearch::DescribeSynonymOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSynonymOptionsResult');  
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSuggesters');
+  has _returns => (isa => 'Aws::CloudSearch::DescribeSuggestersResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSuggestersResult');  
 }
 package Aws::CloudSearch::IndexDocuments {
   use Moose;
@@ -299,14 +459,30 @@ package Aws::CloudSearch::IndexDocuments {
   has _returns => (isa => 'Aws::CloudSearch::IndexDocumentsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'IndexDocumentsResult');  
 }
-package Aws::CloudSearch::UpdateDefaultSearchField {
+package Aws::CloudSearch::ListDomainNames {
   use Moose;
-  has DefaultSearchField => (is => 'ro', isa => 'Str', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDefaultSearchField');
-  has _returns => (isa => 'Aws::CloudSearch::UpdateDefaultSearchFieldResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateDefaultSearchFieldResult');  
+  has _api_call => (isa => 'Str', is => 'ro', default => 'ListDomainNames');
+  has _returns => (isa => 'Aws::CloudSearch::ListDomainNamesResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'ListDomainNamesResult');  
+}
+package Aws::CloudSearch::UpdateAvailabilityOptions {
+  use Moose;
+  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  has MultiAZ => (is => 'ro', isa => 'Bool', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAvailabilityOptions');
+  has _returns => (isa => 'Aws::CloudSearch::UpdateAvailabilityOptionsResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateAvailabilityOptionsResult');  
+}
+package Aws::CloudSearch::UpdateScalingParameters {
+  use Moose;
+  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  has ScalingParameters => (is => 'ro', isa => 'Aws::CloudSearch::ScalingParameters', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateScalingParameters');
+  has _returns => (isa => 'Aws::CloudSearch::UpdateScalingParametersResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateScalingParametersResult');  
 }
 package Aws::CloudSearch::UpdateServiceAccessPolicies {
   use Moose;
@@ -317,38 +493,29 @@ package Aws::CloudSearch::UpdateServiceAccessPolicies {
   has _returns => (isa => 'Aws::CloudSearch::UpdateServiceAccessPoliciesResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateServiceAccessPoliciesResult');  
 }
-package Aws::CloudSearch::UpdateStemmingOptions {
+
+package Aws::CloudSearch::BuildSuggestersResult {
   use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Stems => (is => 'ro', isa => 'Str', required => 1);
+  with 'AWS::API::ResultParser';
+  has FieldNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStemmingOptions');
-  has _returns => (isa => 'Aws::CloudSearch::UpdateStemmingOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateStemmingOptionsResult');  
 }
-package Aws::CloudSearch::UpdateStopwordOptions {
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Stopwords => (is => 'ro', isa => 'Str', required => 1);
-
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStopwordOptions');
-  has _returns => (isa => 'Aws::CloudSearch::UpdateStopwordOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateStopwordOptionsResult');  
-}
-package Aws::CloudSearch::UpdateSynonymOptions {
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Synonyms => (is => 'ro', isa => 'Str', required => 1);
-
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSynonymOptions');
-  has _returns => (isa => 'Aws::CloudSearch::UpdateSynonymOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateSynonymOptionsResult');  
-}
-
 package Aws::CloudSearch::CreateDomainResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has DomainStatus => (is => 'ro', isa => 'Aws::CloudSearch::DomainStatus');
+
+}
+package Aws::CloudSearch::DefineAnalysisSchemeResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has AnalysisScheme => (is => 'ro', isa => 'Aws::CloudSearch::AnalysisSchemeStatus', required => 1);
+
+}
+package Aws::CloudSearch::DefineExpressionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has Expression => (is => 'ro', isa => 'Aws::CloudSearch::ExpressionStatus', required => 1);
 
 }
 package Aws::CloudSearch::DefineIndexFieldResult {
@@ -357,10 +524,16 @@ package Aws::CloudSearch::DefineIndexFieldResult {
   has IndexField => (is => 'ro', isa => 'Aws::CloudSearch::IndexFieldStatus', required => 1);
 
 }
-package Aws::CloudSearch::DefineRankExpressionResult {
+package Aws::CloudSearch::DefineSuggesterResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has RankExpression => (is => 'ro', isa => 'Aws::CloudSearch::RankExpressionStatus', required => 1);
+  has Suggester => (is => 'ro', isa => 'Aws::CloudSearch::SuggesterStatus', required => 1);
+
+}
+package Aws::CloudSearch::DeleteAnalysisSchemeResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has AnalysisScheme => (is => 'ro', isa => 'Aws::CloudSearch::AnalysisSchemeStatus', required => 1);
 
 }
 package Aws::CloudSearch::DeleteDomainResult {
@@ -369,22 +542,34 @@ package Aws::CloudSearch::DeleteDomainResult {
   has DomainStatus => (is => 'ro', isa => 'Aws::CloudSearch::DomainStatus');
 
 }
+package Aws::CloudSearch::DeleteExpressionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has Expression => (is => 'ro', isa => 'Aws::CloudSearch::ExpressionStatus', required => 1);
+
+}
 package Aws::CloudSearch::DeleteIndexFieldResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has IndexField => (is => 'ro', isa => 'Aws::CloudSearch::IndexFieldStatus', required => 1);
 
 }
-package Aws::CloudSearch::DeleteRankExpressionResult {
+package Aws::CloudSearch::DeleteSuggesterResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has RankExpression => (is => 'ro', isa => 'Aws::CloudSearch::RankExpressionStatus', required => 1);
+  has Suggester => (is => 'ro', isa => 'Aws::CloudSearch::SuggesterStatus', required => 1);
 
 }
-package Aws::CloudSearch::DescribeDefaultSearchFieldResult {
+package Aws::CloudSearch::DescribeAnalysisSchemesResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has DefaultSearchField => (is => 'ro', isa => 'Aws::CloudSearch::DefaultSearchFieldStatus', required => 1);
+  has AnalysisSchemes => (is => 'ro', isa => 'ArrayRef[Aws::CloudSearch::AnalysisSchemeStatus]', required => 1);
+
+}
+package Aws::CloudSearch::DescribeAvailabilityOptionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has AvailabilityOptions => (is => 'ro', isa => 'Aws::CloudSearch::AvailabilityOptionsStatus');
 
 }
 package Aws::CloudSearch::DescribeDomainsResult {
@@ -393,16 +578,22 @@ package Aws::CloudSearch::DescribeDomainsResult {
   has DomainStatusList => (is => 'ro', isa => 'ArrayRef[Aws::CloudSearch::DomainStatus]', required => 1);
 
 }
+package Aws::CloudSearch::DescribeExpressionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has Expressions => (is => 'ro', isa => 'ArrayRef[Aws::CloudSearch::ExpressionStatus]', required => 1);
+
+}
 package Aws::CloudSearch::DescribeIndexFieldsResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has IndexFields => (is => 'ro', isa => 'ArrayRef[Aws::CloudSearch::IndexFieldStatus]', required => 1);
 
 }
-package Aws::CloudSearch::DescribeRankExpressionsResult {
+package Aws::CloudSearch::DescribeScalingParametersResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has RankExpressions => (is => 'ro', isa => 'ArrayRef[Aws::CloudSearch::RankExpressionStatus]', required => 1);
+  has ScalingParameters => (is => 'ro', isa => 'Aws::CloudSearch::ScalingParametersStatus', required => 1);
 
 }
 package Aws::CloudSearch::DescribeServiceAccessPoliciesResult {
@@ -411,22 +602,10 @@ package Aws::CloudSearch::DescribeServiceAccessPoliciesResult {
   has AccessPolicies => (is => 'ro', isa => 'Aws::CloudSearch::AccessPoliciesStatus', required => 1);
 
 }
-package Aws::CloudSearch::DescribeStemmingOptionsResult {
+package Aws::CloudSearch::DescribeSuggestersResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has Stems => (is => 'ro', isa => 'Aws::CloudSearch::StemmingOptionsStatus', required => 1);
-
-}
-package Aws::CloudSearch::DescribeStopwordOptionsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Stopwords => (is => 'ro', isa => 'Aws::CloudSearch::StopwordOptionsStatus', required => 1);
-
-}
-package Aws::CloudSearch::DescribeSynonymOptionsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Synonyms => (is => 'ro', isa => 'Aws::CloudSearch::SynonymOptionsStatus', required => 1);
+  has Suggesters => (is => 'ro', isa => 'ArrayRef[Aws::CloudSearch::SuggesterStatus]', required => 1);
 
 }
 package Aws::CloudSearch::IndexDocumentsResult {
@@ -435,10 +614,22 @@ package Aws::CloudSearch::IndexDocumentsResult {
   has FieldNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
 }
-package Aws::CloudSearch::UpdateDefaultSearchFieldResult {
+package Aws::CloudSearch::ListDomainNamesResult {
   use Moose;
   with 'AWS::API::ResultParser';
-  has DefaultSearchField => (is => 'ro', isa => 'Aws::CloudSearch::DefaultSearchFieldStatus', required => 1);
+  has DomainNames => (is => 'ro', isa => 'Aws::CloudSearch::DomainNameMap');
+
+}
+package Aws::CloudSearch::UpdateAvailabilityOptionsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has AvailabilityOptions => (is => 'ro', isa => 'Aws::CloudSearch::AvailabilityOptionsStatus');
+
+}
+package Aws::CloudSearch::UpdateScalingParametersResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has ScalingParameters => (is => 'ro', isa => 'Aws::CloudSearch::ScalingParametersStatus', required => 1);
 
 }
 package Aws::CloudSearch::UpdateServiceAccessPoliciesResult {
@@ -447,29 +638,11 @@ package Aws::CloudSearch::UpdateServiceAccessPoliciesResult {
   has AccessPolicies => (is => 'ro', isa => 'Aws::CloudSearch::AccessPoliciesStatus', required => 1);
 
 }
-package Aws::CloudSearch::UpdateStemmingOptionsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Stems => (is => 'ro', isa => 'Aws::CloudSearch::StemmingOptionsStatus', required => 1);
-
-}
-package Aws::CloudSearch::UpdateStopwordOptionsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Stopwords => (is => 'ro', isa => 'Aws::CloudSearch::StopwordOptionsStatus', required => 1);
-
-}
-package Aws::CloudSearch::UpdateSynonymOptionsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Synonyms => (is => 'ro', isa => 'Aws::CloudSearch::SynonymOptionsStatus', required => 1);
-
-}
 
 package Aws::CloudSearch {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'cloudsearch');
-  has version => (is => 'ro', isa => 'Str', default => '2011-02-01');
+  has version => (is => 'ro', isa => 'Str', default => '2013-01-01');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
 
   use MooseX::ClassAttribute;
@@ -479,11 +652,32 @@ package Aws::CloudSearch {
   class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
 
   
+  sub BuildSuggesters {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::CloudSearch::BuildSuggesters', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::CloudSearch::BuildSuggestersResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
   sub CreateDomain {
     my $self = shift;
     my $call = $self->new_with_coercions('Aws::CloudSearch::CreateDomain', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::CreateDomainResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  sub DefineAnalysisScheme {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::CloudSearch::DefineAnalysisScheme', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::CloudSearch::DefineAnalysisSchemeResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  sub DefineExpression {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::CloudSearch::DefineExpression', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::CloudSearch::DefineExpressionResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DefineIndexField {
@@ -493,11 +687,18 @@ package Aws::CloudSearch {
     my $o_result = Aws::CloudSearch::DefineIndexFieldResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  sub DefineRankExpression {
+  sub DefineSuggester {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DefineRankExpression', @_);
+    my $call = $self->new_with_coercions('Aws::CloudSearch::DefineSuggester', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DefineRankExpressionResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudSearch::DefineSuggesterResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  sub DeleteAnalysisScheme {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::CloudSearch::DeleteAnalysisScheme', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::CloudSearch::DeleteAnalysisSchemeResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DeleteDomain {
@@ -507,6 +708,13 @@ package Aws::CloudSearch {
     my $o_result = Aws::CloudSearch::DeleteDomainResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
+  sub DeleteExpression {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::CloudSearch::DeleteExpression', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::CloudSearch::DeleteExpressionResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
   sub DeleteIndexField {
     my $self = shift;
     my $call = $self->new_with_coercions('Aws::CloudSearch::DeleteIndexField', @_);
@@ -514,18 +722,25 @@ package Aws::CloudSearch {
     my $o_result = Aws::CloudSearch::DeleteIndexFieldResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  sub DeleteRankExpression {
+  sub DeleteSuggester {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DeleteRankExpression', @_);
+    my $call = $self->new_with_coercions('Aws::CloudSearch::DeleteSuggester', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DeleteRankExpressionResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudSearch::DeleteSuggesterResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  sub DescribeDefaultSearchField {
+  sub DescribeAnalysisSchemes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeDefaultSearchField', @_);
+    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeAnalysisSchemes', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DescribeDefaultSearchFieldResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudSearch::DescribeAnalysisSchemesResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  sub DescribeAvailabilityOptions {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeAvailabilityOptions', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::CloudSearch::DescribeAvailabilityOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeDomains {
@@ -535,6 +750,13 @@ package Aws::CloudSearch {
     my $o_result = Aws::CloudSearch::DescribeDomainsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
+  sub DescribeExpressions {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeExpressions', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::CloudSearch::DescribeExpressionsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
   sub DescribeIndexFields {
     my $self = shift;
     my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeIndexFields', @_);
@@ -542,11 +764,11 @@ package Aws::CloudSearch {
     my $o_result = Aws::CloudSearch::DescribeIndexFieldsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  sub DescribeRankExpressions {
+  sub DescribeScalingParameters {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeRankExpressions', @_);
+    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeScalingParameters', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DescribeRankExpressionsResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudSearch::DescribeScalingParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeServiceAccessPolicies {
@@ -556,25 +778,11 @@ package Aws::CloudSearch {
     my $o_result = Aws::CloudSearch::DescribeServiceAccessPoliciesResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  sub DescribeStemmingOptions {
+  sub DescribeSuggesters {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeStemmingOptions', @_);
+    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeSuggesters', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DescribeStemmingOptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
-  sub DescribeStopwordOptions {
-    my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeStopwordOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DescribeStopwordOptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
-  sub DescribeSynonymOptions {
-    my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeSynonymOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DescribeSynonymOptionsResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudSearch::DescribeSuggestersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub IndexDocuments {
@@ -584,11 +792,25 @@ package Aws::CloudSearch {
     my $o_result = Aws::CloudSearch::IndexDocumentsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
-  sub UpdateDefaultSearchField {
+  sub ListDomainNames {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::UpdateDefaultSearchField', @_);
+    my $call = $self->new_with_coercions('Aws::CloudSearch::ListDomainNames', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::UpdateDefaultSearchFieldResult->from_result($result->{ $call->_result_key });
+    my $o_result = Aws::CloudSearch::ListDomainNamesResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  sub UpdateAvailabilityOptions {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::CloudSearch::UpdateAvailabilityOptions', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::CloudSearch::UpdateAvailabilityOptionsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  sub UpdateScalingParameters {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::CloudSearch::UpdateScalingParameters', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::CloudSearch::UpdateScalingParametersResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub UpdateServiceAccessPolicies {
@@ -596,27 +818,6 @@ package Aws::CloudSearch {
     my $call = $self->new_with_coercions('Aws::CloudSearch::UpdateServiceAccessPolicies', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::CloudSearch::UpdateServiceAccessPoliciesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
-  sub UpdateStemmingOptions {
-    my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::UpdateStemmingOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::UpdateStemmingOptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
-  sub UpdateStopwordOptions {
-    my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::UpdateStopwordOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::UpdateStopwordOptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
-  }
-  sub UpdateSynonymOptions {
-    my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::UpdateSynonymOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::UpdateSynonymOptionsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
 }

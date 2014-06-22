@@ -34,6 +34,8 @@ package Aws::ElastiCache::CacheCluster {
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::SecurityGroupMembership]');
+  has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
+  has SnapshotWindow => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElastiCache::CacheEngineVersion {
@@ -170,6 +172,15 @@ package Aws::ElastiCache::NodeGroupMember {
   has ReadEndpoint => (is => 'ro', isa => 'Aws::ElastiCache::Endpoint');
 }
 
+package Aws::ElastiCache::NodeSnapshot {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has CacheNodeCreateTime => (is => 'ro', isa => 'Str');
+  has CacheNodeId => (is => 'ro', isa => 'Str');
+  has CacheSize => (is => 'ro', isa => 'Str');
+  has SnapshotCreateTime => (is => 'ro', isa => 'Str');
+}
+
 package Aws::ElastiCache::NotificationConfiguration {
   use Moose;
   with ('AWS::API::ResultParser');
@@ -220,6 +231,7 @@ package Aws::ElastiCache::ReplicationGroup {
   has NodeGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::NodeGroup]');
   has PendingModifiedValues => (is => 'ro', isa => 'Aws::ElastiCache::ReplicationGroupPendingModifiedValues');
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
+  has SnapshottingClusterId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
 
@@ -266,6 +278,31 @@ package Aws::ElastiCache::SecurityGroupMembership {
   has Status => (is => 'ro', isa => 'Str');
 }
 
+package Aws::ElastiCache::Snapshot {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
+  has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
+  has CacheClusterId => (is => 'ro', isa => 'Str');
+  has CacheNodeType => (is => 'ro', isa => 'Str');
+  has CacheParameterGroupName => (is => 'ro', isa => 'Str');
+  has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
+  has Engine => (is => 'ro', isa => 'Str');
+  has EngineVersion => (is => 'ro', isa => 'Str');
+  has NodeSnapshots => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::NodeSnapshot]');
+  has NumCacheNodes => (is => 'ro', isa => 'Int');
+  has Port => (is => 'ro', isa => 'Int');
+  has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
+  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has SnapshotName => (is => 'ro', isa => 'Str');
+  has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
+  has SnapshotSource => (is => 'ro', isa => 'Str');
+  has SnapshotStatus => (is => 'ro', isa => 'Str');
+  has SnapshotWindow => (is => 'ro', isa => 'Str');
+  has TopicArn => (is => 'ro', isa => 'Str');
+  has VpcId => (is => 'ro', isa => 'Str');
+}
+
 package Aws::ElastiCache::Subnet {
   use Moose;
   with ('AWS::API::ResultParser');
@@ -285,6 +322,15 @@ package Aws::ElastiCache::AuthorizeCacheSecurityGroupIngress {
   has _returns => (isa => 'Aws::ElastiCache::AuthorizeCacheSecurityGroupIngressResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeCacheSecurityGroupIngressResult');  
 }
+package Aws::ElastiCache::CopySnapshot {
+  use Moose;
+  has SourceSnapshotName => (is => 'ro', isa => 'Str', required => 1);
+  has TargetSnapshotName => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'CopySnapshot');
+  has _returns => (isa => 'Aws::ElastiCache::CopySnapshotResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CopySnapshotResult');  
+}
 package Aws::ElastiCache::CreateCacheCluster {
   use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
@@ -303,6 +349,9 @@ package Aws::ElastiCache::CreateCacheCluster {
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
   has SnapshotArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SnapshotArn' );
+  has SnapshotName => (is => 'ro', isa => 'Str');
+  has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
+  has SnapshotWindow => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCacheCluster');
   has _returns => (isa => 'Aws::ElastiCache::CreateCacheClusterResult', is => 'ro');
@@ -347,9 +396,19 @@ package Aws::ElastiCache::CreateReplicationGroup {
   has _returns => (isa => 'Aws::ElastiCache::CreateReplicationGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'CreateReplicationGroupResult');  
 }
+package Aws::ElastiCache::CreateSnapshot {
+  use Moose;
+  has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
+  has SnapshotName => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSnapshot');
+  has _returns => (isa => 'Aws::ElastiCache::CreateSnapshotResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSnapshotResult');  
+}
 package Aws::ElastiCache::DeleteCacheCluster {
   use Moose;
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
+  has FinalSnapshotIdentifier => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCacheCluster');
   has _returns => (isa => 'Aws::ElastiCache::DeleteCacheClusterResult', is => 'ro');
@@ -381,12 +440,21 @@ package Aws::ElastiCache::DeleteCacheSubnetGroup {
 }
 package Aws::ElastiCache::DeleteReplicationGroup {
   use Moose;
+  has FinalSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
   has RetainPrimaryCluster => (is => 'ro', isa => 'Bool');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteReplicationGroup');
   has _returns => (isa => 'Aws::ElastiCache::DeleteReplicationGroupResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteReplicationGroupResult');  
+}
+package Aws::ElastiCache::DeleteSnapshot {
+  use Moose;
+  has SnapshotName => (is => 'ro', isa => 'Str', required => 1);
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSnapshot');
+  has _returns => (isa => 'Aws::ElastiCache::DeleteSnapshotResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSnapshotResult');  
 }
 package Aws::ElastiCache::DescribeCacheClusters {
   use Moose;
@@ -516,6 +584,18 @@ package Aws::ElastiCache::DescribeReservedCacheNodesOfferings {
   has _returns => (isa => 'Aws::ElastiCache::DescribeReservedCacheNodesOfferingsResult', is => 'ro');
   has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedCacheNodesOfferingsResult');  
 }
+package Aws::ElastiCache::DescribeSnapshots {
+  use Moose;
+  has CacheClusterId => (is => 'ro', isa => 'Str');
+  has Marker => (is => 'ro', isa => 'Str');
+  has MaxRecords => (is => 'ro', isa => 'Int');
+  has SnapshotName => (is => 'ro', isa => 'Str');
+  has SnapshotSource => (is => 'ro', isa => 'Str');
+
+  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSnapshots');
+  has _returns => (isa => 'Aws::ElastiCache::DescribeSnapshotsResult', is => 'ro');
+  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotsResult');  
+}
 package Aws::ElastiCache::ModifyCacheCluster {
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
@@ -530,6 +610,8 @@ package Aws::ElastiCache::ModifyCacheCluster {
   has NumCacheNodes => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
+  has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
+  has SnapshotWindow => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCacheCluster');
   has _returns => (isa => 'Aws::ElastiCache::ModifyCacheClusterResult', is => 'ro');
@@ -568,6 +650,9 @@ package Aws::ElastiCache::ModifyReplicationGroup {
   has ReplicationGroupDescription => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
+  has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
+  has SnapshottingClusterId => (is => 'ro', isa => 'Str');
+  has SnapshotWindow => (is => 'ro', isa => 'Str');
 
   has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyReplicationGroup');
   has _returns => (isa => 'Aws::ElastiCache::ModifyReplicationGroupResult', is => 'ro');
@@ -619,6 +704,12 @@ package Aws::ElastiCache::AuthorizeCacheSecurityGroupIngressResult {
   has CacheSecurityGroup => (is => 'ro', isa => 'Aws::ElastiCache::CacheSecurityGroup');
 
 }
+package Aws::ElastiCache::CopySnapshotResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has Snapshot => (is => 'ro', isa => 'Aws::ElastiCache::Snapshot');
+
+}
 package Aws::ElastiCache::CreateCacheClusterResult {
   use Moose;
   with 'AWS::API::ResultParser';
@@ -649,6 +740,12 @@ package Aws::ElastiCache::CreateReplicationGroupResult {
   has ReplicationGroup => (is => 'ro', isa => 'Aws::ElastiCache::ReplicationGroup');
 
 }
+package Aws::ElastiCache::CreateSnapshotResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has Snapshot => (is => 'ro', isa => 'Aws::ElastiCache::Snapshot');
+
+}
 package Aws::ElastiCache::DeleteCacheClusterResult {
   use Moose;
   with 'AWS::API::ResultParser';
@@ -659,6 +756,12 @@ package Aws::ElastiCache::DeleteReplicationGroupResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has ReplicationGroup => (is => 'ro', isa => 'Aws::ElastiCache::ReplicationGroup');
+
+}
+package Aws::ElastiCache::DeleteSnapshotResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has Snapshot => (is => 'ro', isa => 'Aws::ElastiCache::Snapshot');
 
 }
 package Aws::ElastiCache::DescribeCacheClustersResult {
@@ -738,6 +841,13 @@ package Aws::ElastiCache::DescribeReservedCacheNodesOfferingsResult {
   has ReservedCacheNodesOfferings => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::ReservedCacheNodesOffering]', traits => ['Unwrapped'], xmlname => 'ReservedCacheNodesOffering');
 
 }
+package Aws::ElastiCache::DescribeSnapshotsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has Marker => (is => 'ro', isa => 'Str');
+  has Snapshots => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::Snapshot]', traits => ['Unwrapped'], xmlname => 'Snapshot');
+
+}
 package Aws::ElastiCache::ModifyCacheClusterResult {
   use Moose;
   with 'AWS::API::ResultParser';
@@ -790,7 +900,7 @@ package Aws::ElastiCache::RevokeCacheSecurityGroupIngressResult {
 package Aws::ElastiCache {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'elasticache');
-  has version => (is => 'ro', isa => 'Str', default => '2013-06-15');
+  has version => (is => 'ro', isa => 'Str', default => '2014-03-24');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
 
   use MooseX::ClassAttribute;
@@ -805,6 +915,13 @@ package Aws::ElastiCache {
     my $call = $self->new_with_coercions('Aws::ElastiCache::AuthorizeCacheSecurityGroupIngress', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::AuthorizeCacheSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  sub CopySnapshot {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::ElastiCache::CopySnapshot', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::ElastiCache::CopySnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub CreateCacheCluster {
@@ -842,6 +959,13 @@ package Aws::ElastiCache {
     my $o_result = Aws::ElastiCache::CreateReplicationGroupResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
+  sub CreateSnapshot {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::ElastiCache::CreateSnapshot', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::ElastiCache::CreateSnapshotResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
   sub DeleteCacheCluster {
     my $self = shift;
     my $call = $self->new_with_coercions('Aws::ElastiCache::DeleteCacheCluster', @_);
@@ -872,6 +996,13 @@ package Aws::ElastiCache {
     my $call = $self->new_with_coercions('Aws::ElastiCache::DeleteReplicationGroup', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DeleteReplicationGroupResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  sub DeleteSnapshot {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DeleteSnapshot', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::ElastiCache::DeleteSnapshotResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub DescribeCacheClusters {
@@ -949,6 +1080,13 @@ package Aws::ElastiCache {
     my $call = $self->new_with_coercions('Aws::ElastiCache::DescribeReservedCacheNodesOfferings', @_);
     my $result = $self->_api_caller($call->_api_call, $call);
     my $o_result = Aws::ElastiCache::DescribeReservedCacheNodesOfferingsResult->from_result($result->{ $call->_result_key });
+    return $o_result;
+  }
+  sub DescribeSnapshots {
+    my $self = shift;
+    my $call = $self->new_with_coercions('Aws::ElastiCache::DescribeSnapshots', @_);
+    my $result = $self->_api_caller($call->_api_call, $call);
+    my $o_result = Aws::ElastiCache::DescribeSnapshotsResult->from_result($result->{ $call->_result_key });
     return $o_result;
   }
   sub ModifyCacheCluster {
