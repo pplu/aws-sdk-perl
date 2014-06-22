@@ -124,11 +124,42 @@ package Net::AWS::JsonCaller {
   use POSIX qw(strftime);
   required 'json_version';
 
+  # converts the params the user passed to the call into objects that represent the call
+  sub new_with_coercions {
+    my ($self, $class, %params) = @_;
+
+    my %p;
+    foreach my $att ($class->meta->get_attribute_list){
+      next if (not exists $params{ $att });
+      my $type = $class->meta->get_attribute($att)->type_constraint;
+      if ($type eq 'Bool') {
+        $p{ $att } = ($params{ $att } == 1)?1:0;
+      } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
+        $p{ $att } = $params{ $att };
+      } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
+        my $subtype = "$1";
+        if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
+          $p{ $att } = $params{ $att };
+        } else {
+          $p{ $att } = [ map { $self->new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ]; 
+        }
+      } elsif ($type->isa('Moose::Meta::TypeConstraint::Enum')){
+        $p{ $att } = $params{ $att };
+      } else {
+use Data::Dumper;
+print Dumper($type, $params{ $att });
+        $p{ $att } = $self->new_with_coercions("$type", %{ $params{ $att } });
+      }
+    }
+    return $class->new(%p);
+  }
+
   sub _is_internal_type {
     my ($self, $att_type) = @_;
     return ($att_type eq 'Str' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
   }
 
+  # converts the objects that represent the call into parameters that the API can understand
   sub _to_params {
     my ($self, $params) = @_;
     my %p;
@@ -155,7 +186,6 @@ package Net::AWS::JsonCaller {
     }
     return \%p;
   }
-
 
   sub _api_caller {
     my ($self, $action, $params) = @_;
@@ -199,6 +229,19 @@ package Net::AWS::JsonResponse {
     return $json;
   }
 
+}
+
+package Net::AWS::QueryCaller {
+  use Moose::Role;
+  use HTTP::Request::Common;
+  use POSIX qw(strftime); 
+
+  has array_flatten_string => (is => 'ro', isa => 'Str', lazy => 1, default => sub {
+    my $self = shift;
+    return ($self->flattened_arrays)?'%s.%d':'%s.member.%d';
+  });
+
+  # converts the params the user passed to the call into objects that represent the call
   sub new_with_coercions {
     my ($self, $class, %params) = @_;
 
@@ -217,33 +260,19 @@ package Net::AWS::JsonResponse {
         } else {
           $p{ $att } = [ map { $self->new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ]; 
         }
-      } elsif ($type->isa('Moose::Meta::TypeConstraint::Enum')){
-        $p{ $att } = $params{ $att };
       } else {
-use Data::Dumper;
-print Dumper($type, $params{ $att });
         $p{ $att } = $self->new_with_coercions("$type", %{ $params{ $att } });
       }
     }
     return $class->new(%p);
   }
-}
-
-package Net::AWS::QueryCaller {
-  use Moose::Role;
-  use HTTP::Request::Common;
-  use POSIX qw(strftime); 
-
-  has array_flatten_string => (is => 'ro', isa => 'Str', lazy => 1, default => sub {
-    my $self = shift;
-    return ($self->flattened_arrays)?'%s.%d':'%s.member.%d';
-  });
 
   sub _is_internal_type {
     my ($self, $att_type) = @_;
     return ($att_type eq 'Str' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
   }
 
+  # converts the objects that represent the call into parameters that the API can understand
   sub _to_params {
     my ($self, $params) = @_;
     my %p;
@@ -344,31 +373,6 @@ package Net::AWS::XMLResponse {
     }
 
     return $xml;
-  }
-
-  sub new_with_coercions {
-    my ($self, $class, %params) = @_;
-
-    my %p;
-    foreach my $att ($class->meta->get_attribute_list){
-      next if (not exists $params{ $att });
-      my $type = $class->meta->get_attribute($att)->type_constraint;
-      if ($type eq 'Bool') {
-        $p{ $att } = ($params{ $att } == 1)?1:0;
-      } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
-        $p{ $att } = $params{ $att };
-      } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
-        my $subtype = "$1";
-        if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
-          $p{ $att } = $params{ $att };
-        } else {
-          $p{ $att } = [ map { $self->new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ]; 
-        }
-      } else {
-        $p{ $att } = $self->new_with_coercions("$type", %{ $params{ $att } });
-      }
-    }
-    return $class->new(%p);
   }
 }
 
