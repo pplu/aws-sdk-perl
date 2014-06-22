@@ -53,16 +53,33 @@ my $namespaces = {
 
 
 my (@files) = @ARGV;
-@files = glob('botocore/botocore/data/aws/*.json') if (not @files);
+
+
+# If no files specified, get the last version of each json for each service
+if (not @files) {
+  my @dirs = glob('botocore/botocore/data/aws/*');
+
+  foreach my $class_dir (@dirs) {
+    my @class_defs = grep { -f $_ } glob("$class_dir/*.json");
+    next if (not @class_defs);
+    @class_defs = sort @class_defs;
+    my $class_version = pop @class_defs;
+    push @files, $class_version;
+  }
+}
 
 foreach my $file (@files) {
+  print "Processing $file\n";
   if (my ($f, $version) = ($file =~ m/aws\/(.*?)\/(.*?)\.json/)){
     my $ns = $namespaces->{ $f };
     die "$f doesn't have a namespace defined" if (not defined $ns or $ns eq 'SKIP_THIS_CLASS');
-    my $struct = process_file($file, $f);
-    my $content = process_api("Aws::$ns", $struct);
-    #print $content;
-    write_file("auto-lib/Aws/${ns}.pm", $content);
+    eval {
+      my $struct = process_file($file, $f);
+      my $content = process_api("Aws::$ns", $struct);
+      #print $content;
+      write_file("auto-lib/Aws/${ns}.pm", $content);
+    };
+    if ($@) { warn $@ }
   }
 }
 
