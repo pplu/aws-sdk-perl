@@ -146,8 +146,6 @@ package Net::AWS::JsonCaller {
       } elsif ($type->isa('Moose::Meta::TypeConstraint::Enum')){
         $p{ $att } = $params{ $att };
       } else {
-use Data::Dumper;
-print Dumper($type, $params{ $att });
         $p{ $att } = $self->new_with_coercions("$type", %{ $params{ $att } });
       }
     }
