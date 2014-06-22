@@ -210,7 +210,13 @@ package AWS::API::ResultParser {
         } else {
           if (defined $value) {
             if ($att_type eq 'Bool') {
-              $args{ $att } = ($value eq 'true')?1:0;
+              if ($value eq 'true') {
+                $args{ $att } = 1;
+              } elsif ($value == 1) {
+                $args{ $att } = 1;
+              } else {
+                $args{ $att } = 0;
+              }
             } else {
               $args{ $att } = $value;
             }
