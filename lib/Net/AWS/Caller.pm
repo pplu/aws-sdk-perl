@@ -122,7 +122,7 @@ package Net::AWS::JsonCaller {
   use Moose::Role;
   use JSON;
   use POSIX qw(strftime);
-  has json_version => (is => 'ro', isa => 'Str', required => 1);
+  required 'json_version';
 
   sub _is_internal_type {
     my ($self, $att_type) = @_;
