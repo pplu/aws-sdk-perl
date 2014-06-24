@@ -83,9 +83,11 @@ package [% c.api %]::[% operation.name %] {
   [%- IF (operation.input.members.$param_name.members.xmlname) %], traits => ['NameInRequest'], request_name => '[% operation.input.members.$param_name.members.xmlname %]' [% END %]
   [%- IF (operation.input.members.$param_name.required) %], required => 1[% END %]);
 [% END %]
-  has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
-  has _returns => (isa => '[% c.api %]::[% op_name %]Result', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => '[% op_name %]Result');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
+  class_has _returns => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% c.api %]::[% op_name %]Result'[% END %]);
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 [%- END %]
 
@@ -122,14 +124,7 @@ package [% c.api %] {
   [%- op_name = c.struct.operations.$op.name %]
   sub [% op_name %] {
     my $self = shift;
-    my $call = $self->new_with_coercions('[% c.api %]::[% op_name %]', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    [%- IF (c.struct.operations.$op.output.size > 0) %]
-    [% IF (c.wrapped_responses) %]my $o_result = [% c.api %]::[% op_name %]Result->from_result($result->{ $call->_result_key });
-    [% ELSE %]my $o_result = [% c.api %]::[% op_name %]Result->from_result($result);[% END %]return $o_result;
-    [%- ELSE %]
-    return 1
-    [%- END %]
+    return $self->do_call('[% c.api %]::[% op_name %]', @_);
   }
   [%- END %]
 }

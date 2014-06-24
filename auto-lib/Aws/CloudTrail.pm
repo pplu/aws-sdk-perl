@@ -23,49 +23,61 @@ package Aws::CloudTrail::CreateTrail {
   has SnsTopicName => (is => 'ro', isa => 'Str');
   has trail => (is => 'ro', isa => 'Aws::CloudTrail::Trail');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTrail');
-  has _returns => (isa => 'Aws::CloudTrail::CreateTrailResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateTrailResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTrail');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudTrail::CreateTrailResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::CloudTrail::DeleteTrail {
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTrail');
-  has _returns => (isa => 'Aws::CloudTrail::DeleteTrailResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteTrailResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTrail');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudTrail::DeleteTrailResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::CloudTrail::DescribeTrails {
   use Moose;
   has trailNameList => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTrails');
-  has _returns => (isa => 'Aws::CloudTrail::DescribeTrailsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTrailsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTrails');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudTrail::DescribeTrailsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::CloudTrail::GetTrailStatus {
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetTrailStatus');
-  has _returns => (isa => 'Aws::CloudTrail::GetTrailStatusResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetTrailStatusResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetTrailStatus');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudTrail::GetTrailStatusResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::CloudTrail::StartLogging {
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'StartLogging');
-  has _returns => (isa => 'Aws::CloudTrail::StartLoggingResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'StartLoggingResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartLogging');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudTrail::StartLoggingResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::CloudTrail::StopLogging {
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'StopLogging');
-  has _returns => (isa => 'Aws::CloudTrail::StopLoggingResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'StopLoggingResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopLogging');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudTrail::StopLoggingResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::CloudTrail::UpdateTrail {
   use Moose;
@@ -76,9 +88,11 @@ package Aws::CloudTrail::UpdateTrail {
   has SnsTopicName => (is => 'ro', isa => 'Str');
   has trail => (is => 'ro', isa => 'Aws::CloudTrail::Trail');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTrail');
-  has _returns => (isa => 'Aws::CloudTrail::UpdateTrailResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateTrailResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTrail');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudTrail::UpdateTrailResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 
 package Aws::CloudTrail::CreateTrailResult {
@@ -159,45 +173,31 @@ package Aws::CloudTrail {
   
   sub CreateTrail {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudTrail::CreateTrail', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudTrail::CreateTrailResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::CloudTrail::CreateTrail', @_);
   }
   sub DeleteTrail {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudTrail::DeleteTrail', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudTrail::DeleteTrailResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::CloudTrail::DeleteTrail', @_);
   }
   sub DescribeTrails {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudTrail::DescribeTrails', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudTrail::DescribeTrailsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::CloudTrail::DescribeTrails', @_);
   }
   sub GetTrailStatus {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudTrail::GetTrailStatus', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudTrail::GetTrailStatusResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::CloudTrail::GetTrailStatus', @_);
   }
   sub StartLogging {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudTrail::StartLogging', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudTrail::StartLoggingResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::CloudTrail::StartLogging', @_);
   }
   sub StopLogging {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudTrail::StopLogging', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudTrail::StopLoggingResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::CloudTrail::StopLogging', @_);
   }
   sub UpdateTrail {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudTrail::UpdateTrail', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudTrail::UpdateTrailResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::CloudTrail::UpdateTrail', @_);
   }
 }
 1;

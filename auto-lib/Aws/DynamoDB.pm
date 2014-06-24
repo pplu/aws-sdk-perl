@@ -222,9 +222,11 @@ package Aws::DynamoDB::BatchGetItem {
   has RequestItems => (is => 'ro', isa => 'Aws::DynamoDB::BatchGetRequestMap', required => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'BatchGetItem');
-  has _returns => (isa => 'Aws::DynamoDB::BatchGetItemResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'BatchGetItemResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchGetItem');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DynamoDB::BatchGetItemResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DynamoDB::BatchWriteItem {
   use Moose;
@@ -232,9 +234,11 @@ package Aws::DynamoDB::BatchWriteItem {
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
   has ReturnItemCollectionMetrics => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'BatchWriteItem');
-  has _returns => (isa => 'Aws::DynamoDB::BatchWriteItemResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'BatchWriteItemResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchWriteItem');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DynamoDB::BatchWriteItemResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DynamoDB::CreateTable {
   use Moose;
@@ -245,9 +249,11 @@ package Aws::DynamoDB::CreateTable {
   has ProvisionedThroughput => (is => 'ro', isa => 'Aws::DynamoDB::ProvisionedThroughput', required => 1);
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTable');
-  has _returns => (isa => 'Aws::DynamoDB::CreateTableResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateTableResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTable');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DynamoDB::CreateTableResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DynamoDB::DeleteItem {
   use Moose;
@@ -259,25 +265,31 @@ package Aws::DynamoDB::DeleteItem {
   has ReturnValues => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteItem');
-  has _returns => (isa => 'Aws::DynamoDB::DeleteItemResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteItemResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteItem');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DynamoDB::DeleteItemResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DynamoDB::DeleteTable {
   use Moose;
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTable');
-  has _returns => (isa => 'Aws::DynamoDB::DeleteTableResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteTableResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTable');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DynamoDB::DeleteTableResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DynamoDB::DescribeTable {
   use Moose;
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTable');
-  has _returns => (isa => 'Aws::DynamoDB::DescribeTableResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTableResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTable');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DynamoDB::DescribeTableResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DynamoDB::GetItem {
   use Moose;
@@ -287,18 +299,22 @@ package Aws::DynamoDB::GetItem {
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetItem');
-  has _returns => (isa => 'Aws::DynamoDB::GetItemResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetItemResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetItem');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DynamoDB::GetItemResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DynamoDB::ListTables {
   use Moose;
   has ExclusiveStartTableName => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListTables');
-  has _returns => (isa => 'Aws::DynamoDB::ListTablesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListTablesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTables');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DynamoDB::ListTablesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DynamoDB::PutItem {
   use Moose;
@@ -310,9 +326,11 @@ package Aws::DynamoDB::PutItem {
   has ReturnValues => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'PutItem');
-  has _returns => (isa => 'Aws::DynamoDB::PutItemResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PutItemResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutItem');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DynamoDB::PutItemResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DynamoDB::Query {
   use Moose;
@@ -329,9 +347,11 @@ package Aws::DynamoDB::Query {
   has Select => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'Query');
-  has _returns => (isa => 'Aws::DynamoDB::QueryResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'QueryResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Query');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DynamoDB::QueryResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DynamoDB::Scan {
   use Moose;
@@ -346,9 +366,11 @@ package Aws::DynamoDB::Scan {
   has TableName => (is => 'ro', isa => 'Str', required => 1);
   has TotalSegments => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'Scan');
-  has _returns => (isa => 'Aws::DynamoDB::ScanResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ScanResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Scan');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DynamoDB::ScanResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DynamoDB::UpdateItem {
   use Moose;
@@ -361,9 +383,11 @@ package Aws::DynamoDB::UpdateItem {
   has ReturnValues => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateItem');
-  has _returns => (isa => 'Aws::DynamoDB::UpdateItemResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateItemResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateItem');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DynamoDB::UpdateItemResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DynamoDB::UpdateTable {
   use Moose;
@@ -371,9 +395,11 @@ package Aws::DynamoDB::UpdateTable {
   has ProvisionedThroughput => (is => 'ro', isa => 'Aws::DynamoDB::ProvisionedThroughput');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTable');
-  has _returns => (isa => 'Aws::DynamoDB::UpdateTableResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateTableResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTable');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DynamoDB::UpdateTableResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 
 package Aws::DynamoDB::BatchGetItemResult {
@@ -491,81 +517,55 @@ package Aws::DynamoDB {
   
   sub BatchGetItem {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DynamoDB::BatchGetItem', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DynamoDB::BatchGetItemResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DynamoDB::BatchGetItem', @_);
   }
   sub BatchWriteItem {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DynamoDB::BatchWriteItem', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DynamoDB::BatchWriteItemResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DynamoDB::BatchWriteItem', @_);
   }
   sub CreateTable {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DynamoDB::CreateTable', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DynamoDB::CreateTableResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DynamoDB::CreateTable', @_);
   }
   sub DeleteItem {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DynamoDB::DeleteItem', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DynamoDB::DeleteItemResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DynamoDB::DeleteItem', @_);
   }
   sub DeleteTable {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DynamoDB::DeleteTable', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DynamoDB::DeleteTableResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DynamoDB::DeleteTable', @_);
   }
   sub DescribeTable {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DynamoDB::DescribeTable', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DynamoDB::DescribeTableResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DynamoDB::DescribeTable', @_);
   }
   sub GetItem {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DynamoDB::GetItem', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DynamoDB::GetItemResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DynamoDB::GetItem', @_);
   }
   sub ListTables {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DynamoDB::ListTables', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DynamoDB::ListTablesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DynamoDB::ListTables', @_);
   }
   sub PutItem {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DynamoDB::PutItem', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DynamoDB::PutItemResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DynamoDB::PutItem', @_);
   }
   sub Query {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DynamoDB::Query', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DynamoDB::QueryResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DynamoDB::Query', @_);
   }
   sub Scan {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DynamoDB::Scan', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DynamoDB::ScanResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DynamoDB::Scan', @_);
   }
   sub UpdateItem {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DynamoDB::UpdateItem', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DynamoDB::UpdateItemResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DynamoDB::UpdateItem', @_);
   }
   sub UpdateTable {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DynamoDB::UpdateTable', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DynamoDB::UpdateTableResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DynamoDB::UpdateTable', @_);
   }
 }
 1;

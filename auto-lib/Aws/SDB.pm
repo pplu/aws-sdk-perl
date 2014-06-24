@@ -56,26 +56,32 @@ package Aws::SDB::BatchDeleteAttributes {
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Items => (is => 'ro', isa => 'ArrayRef[Aws::SDB::DeletableItem]', traits => ['NameInRequest'], request_name => 'Item' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'BatchDeleteAttributes');
-  has _returns => (isa => 'Aws::SDB::BatchDeleteAttributesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'BatchDeleteAttributesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchDeleteAttributes');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SDB::BatchPutAttributes {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Items => (is => 'ro', isa => 'ArrayRef[Aws::SDB::ReplaceableItem]', traits => ['NameInRequest'], request_name => 'Item' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'BatchPutAttributes');
-  has _returns => (isa => 'Aws::SDB::BatchPutAttributesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'BatchPutAttributesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchPutAttributes');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SDB::CreateDomain {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDomain');
-  has _returns => (isa => 'Aws::SDB::CreateDomainResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDomainResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDomain');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SDB::DeleteAttributes {
   use Moose;
@@ -84,25 +90,31 @@ package Aws::SDB::DeleteAttributes {
   has Expected => (is => 'ro', isa => 'Aws::SDB::UpdateCondition');
   has ItemName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAttributes');
-  has _returns => (isa => 'Aws::SDB::DeleteAttributesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAttributesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAttributes');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SDB::DeleteDomain {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDomain');
-  has _returns => (isa => 'Aws::SDB::DeleteDomainResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDomainResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDomain');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SDB::DomainMetadata {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DomainMetadata');
-  has _returns => (isa => 'Aws::SDB::DomainMetadataResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DomainMetadataResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DomainMetadata');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SDB::DomainMetadataResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DomainMetadataResult');
 }
 package Aws::SDB::GetAttributes {
   use Moose;
@@ -111,18 +123,22 @@ package Aws::SDB::GetAttributes {
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has ItemName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetAttributes');
-  has _returns => (isa => 'Aws::SDB::GetAttributesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetAttributesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetAttributes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SDB::GetAttributesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetAttributesResult');
 }
 package Aws::SDB::ListDomains {
   use Moose;
   has MaxNumberOfDomains => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListDomains');
-  has _returns => (isa => 'Aws::SDB::ListDomainsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListDomainsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDomains');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SDB::ListDomainsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListDomainsResult');
 }
 package Aws::SDB::PutAttributes {
   use Moose;
@@ -131,9 +147,11 @@ package Aws::SDB::PutAttributes {
   has Expected => (is => 'ro', isa => 'Aws::SDB::UpdateCondition');
   has ItemName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'PutAttributes');
-  has _returns => (isa => 'Aws::SDB::PutAttributesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PutAttributesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutAttributes');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SDB::Select {
   use Moose;
@@ -141,9 +159,11 @@ package Aws::SDB::Select {
   has NextToken => (is => 'ro', isa => 'Str');
   has SelectExpression => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'Select');
-  has _returns => (isa => 'Aws::SDB::SelectResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SelectResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Select');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SDB::SelectResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SelectResult');
 }
 
 package Aws::SDB::DomainMetadataResult {
@@ -194,67 +214,43 @@ package Aws::SDB {
   
   sub BatchDeleteAttributes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SDB::BatchDeleteAttributes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SDB::BatchDeleteAttributes', @_);
   }
   sub BatchPutAttributes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SDB::BatchPutAttributes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SDB::BatchPutAttributes', @_);
   }
   sub CreateDomain {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SDB::CreateDomain', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SDB::CreateDomain', @_);
   }
   sub DeleteAttributes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SDB::DeleteAttributes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SDB::DeleteAttributes', @_);
   }
   sub DeleteDomain {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SDB::DeleteDomain', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SDB::DeleteDomain', @_);
   }
   sub DomainMetadata {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SDB::DomainMetadata', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SDB::DomainMetadataResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::SDB::DomainMetadata', @_);
   }
   sub GetAttributes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SDB::GetAttributes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SDB::GetAttributesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::SDB::GetAttributes', @_);
   }
   sub ListDomains {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SDB::ListDomains', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SDB::ListDomainsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::SDB::ListDomains', @_);
   }
   sub PutAttributes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SDB::PutAttributes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SDB::PutAttributes', @_);
   }
   sub Select {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SDB::Select', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SDB::SelectResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::SDB::Select', @_);
   }
 }
 1;

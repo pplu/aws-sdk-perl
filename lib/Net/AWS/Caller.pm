@@ -158,7 +158,7 @@ package Net::AWS::JsonCaller {
   }
 
   # converts the objects that represent the call into parameters that the API can understand
-  sub _to_params {
+  sub _to_jsoncaller_params {
     my ($self, $params) = @_;
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
@@ -173,12 +173,12 @@ package Net::AWS::JsonCaller {
           if ($self->_is_internal_type("$1")){
             $p{ $key } = $params->$att;
           } else {
-            $p{ $key } = [ map { $self->_to_params($_) } @{ $params->$att } ];
+            $p{ $key } = [ map { $self->_to_jsoncaller_params($_) } @{ $params->$att } ];
           }
         } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
           $p{ $key } = $params->$att;
         } else {
-          $p{ $key } = $self->_to_params($params->$att);
+          $p{ $key } = $self->_to_jsoncaller_params($params->$att);
         }
       }
     }
@@ -186,15 +186,16 @@ package Net::AWS::JsonCaller {
   }
 
   sub _api_caller {
-    my ($self, $action, $params) = @_;
-    my $request = Net::AWS::APIRequest->new(url => $self->endpoint, method => 'POST');
+    my ($self, $call_class, $call_params_object, $request) = @_;
+    $request->url($self->endpoint);
+    $request->method('POST');
 
-    $request->parameters({ Action => $action,
+    $request->parameters({ Action => $call_class->_api_call,
                            Version => $self->version,
                            AWSAccessKeyId => $self->access_key,
                            Timestamp => strftime("%Y-%m-%dT%H:%M:%SZ",gmtime),
                         });
-    $request->header('X-Amz-Target', sprintf('%s.%s', $self->target_prefix, $action));
+    $request->header('X-Amz-Target', sprintf('%s.%s', $self->target_prefix, $call_class->_api_call));
 
     my $j_version = $self->json_version;
     $request->headers->content_type("application/x-amz-json-$j_version");
@@ -203,12 +204,10 @@ package Net::AWS::JsonCaller {
     $request->header( 'X-Amz-Date' => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
     $request->header( Host => $self->endpoint_host );
 
-    my $data = $self->_to_params($params);
+    my $data = $self->_to_jsoncaller_params($call_params_object);
     $request->content(to_json($data));
 
-    $self->sign($request);
-
-    return $self->send($request);
+    return $request;
   }
 }
 
@@ -247,7 +246,6 @@ package Net::AWS::QueryCaller {
     foreach my $att ($class->meta->get_attribute_list){
       next if (not exists $params{ $att });
       my $type = $class->meta->get_attribute($att)->type_constraint;
-print "TYPE: $class $att $type $params{ $att }\n";
       if ($type eq 'Bool') {
         $p{ $att } = ($params{ $att } == 1)?1:0;
       } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
@@ -272,7 +270,7 @@ print "TYPE: $class $att $type $params{ $att }\n";
   }
 
   # converts the objects that represent the call into parameters that the API can understand
-  sub _to_params {
+  sub _to_querycaller_params {
     my ($self, $params) = @_;
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
@@ -292,13 +290,13 @@ print "TYPE: $class $att $type $params{ $att }\n";
           } else {
             my $i = 1;
             foreach my $value (@{ $params->$att }){
-              my %complex_value = $self->_to_params($value);
+              my %complex_value = $self->_to_querycaller_params($value);
               map { $p{ sprintf($self->array_flatten_string . ".%s", $key, $i, $_) } = $complex_value{$_} } keys %complex_value;
               $i++
             }
           }
         } else {
-          my %complex_value = $self->_to_params($params->$att);
+          my %complex_value = $self->_to_querycaller_params($params->$att);
           map { $p{ "$key.$_" } = $complex_value{$_} } keys %complex_value;
         }
       }
@@ -307,19 +305,18 @@ print "TYPE: $class $att $type $params{ $att }\n";
   }
 
   sub _api_caller {
-    my ($self, $action, $params) = @_;
-    my $request = Net::AWS::APIRequest->new(url => $self->endpoint, method => 'POST');
+    my ($self, $call_class, $call_params_object, $request) = @_;
+    $request->url($self->endpoint);
+    $request->method('POST');
 
-    $request->parameters({ Action => $action, 
+    $request->parameters({ Action => $call_class->_api_call, 
                            Version   => $self->version,
-                           $self->_to_params($params) 
+                           $self->_to_querycaller_params($call_params_object) 
     });
 
     $request->generate_content_from_parameters;
 
-    $self->sign($request);
-
-    return $self->send($request);
+    return $request;
   }
 }
 
@@ -331,8 +328,8 @@ package Net::AWS::APIRequest {
   has parameters => (is => 'rw', isa => 'HashRef', default => sub { {} });
   has headers    => (is => 'rw', isa => 'HTTP::Headers', default => sub { HTTP::Headers->new });
   has content    => (is => 'rw', isa => 'Str');
-  has method     => (is => 'rw', isa => 'Str', required => 1);
-  has url        => (is => 'rw', isa => 'Str', required => 1);
+  has method     => (is => 'rw', isa => 'Str');
+  has url        => (is => 'rw', isa => 'Str');
 
   sub uri { '/' };
 
@@ -418,6 +415,27 @@ package Net::AWS::Caller {
       }
     };
   } );
+
+  sub do_call {
+    my ($self, $call_class, @params) = @_;
+    my $call = $self->new_with_coercions($call_class, @params);
+
+    my $request = Net::AWS::APIRequest->new();
+    $self->_api_caller($call_class, $call, $request);
+    $self->sign($request);
+    my $result = $self->send($request);
+
+    if ($call_class->_returns){
+      if ($call_class->_result_key){
+        $result = $result->{ $call_class->_result_key };
+      }
+
+      my $o_result = $call_class->_returns->from_result($result);
+      return $o_result;
+    } else {
+      return 1;
+    }
+  }
 
   sub send {
     my ($self, $request) = @_;

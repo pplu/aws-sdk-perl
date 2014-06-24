@@ -408,18 +408,22 @@ package Aws::RDS::AddSourceIdentifierToSubscription {
   has SourceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AddSourceIdentifierToSubscription');
-  has _returns => (isa => 'Aws::RDS::AddSourceIdentifierToSubscriptionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AddSourceIdentifierToSubscriptionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddSourceIdentifierToSubscription');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::AddSourceIdentifierToSubscriptionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AddSourceIdentifierToSubscriptionResult');
 }
 package Aws::RDS::AddTagsToResource {
   use Moose;
   has ResourceName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AddTagsToResource');
-  has _returns => (isa => 'Aws::RDS::AddTagsToResourceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AddTagsToResourceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTagsToResource');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::RDS::AuthorizeDBSecurityGroupIngress {
   use Moose;
@@ -429,9 +433,11 @@ package Aws::RDS::AuthorizeDBSecurityGroupIngress {
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeDBSecurityGroupIngress');
-  has _returns => (isa => 'Aws::RDS::AuthorizeDBSecurityGroupIngressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeDBSecurityGroupIngressResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeDBSecurityGroupIngress');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::AuthorizeDBSecurityGroupIngressResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeDBSecurityGroupIngressResult');
 }
 package Aws::RDS::CopyDBSnapshot {
   use Moose;
@@ -439,9 +445,11 @@ package Aws::RDS::CopyDBSnapshot {
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
   has TargetDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CopyDBSnapshot');
-  has _returns => (isa => 'Aws::RDS::CopyDBSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CopyDBSnapshotResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyDBSnapshot');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::CopyDBSnapshotResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopyDBSnapshotResult');
 }
 package Aws::RDS::CreateDBInstance {
   use Moose;
@@ -471,9 +479,11 @@ package Aws::RDS::CreateDBInstance {
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstance');
-  has _returns => (isa => 'Aws::RDS::CreateDBInstanceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstance');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::CreateDBInstanceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceResult');
 }
 package Aws::RDS::CreateDBInstanceReadReplica {
   use Moose;
@@ -489,9 +499,11 @@ package Aws::RDS::CreateDBInstanceReadReplica {
   has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceReadReplica');
-  has _returns => (isa => 'Aws::RDS::CreateDBInstanceReadReplicaResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceReadReplicaResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceReadReplica');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::CreateDBInstanceReadReplicaResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceReadReplicaResult');
 }
 package Aws::RDS::CreateDBParameterGroup {
   use Moose;
@@ -500,9 +512,11 @@ package Aws::RDS::CreateDBParameterGroup {
   has Description => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBParameterGroup');
-  has _returns => (isa => 'Aws::RDS::CreateDBParameterGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBParameterGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBParameterGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::CreateDBParameterGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBParameterGroupResult');
 }
 package Aws::RDS::CreateDBSecurityGroup {
   use Moose;
@@ -510,9 +524,11 @@ package Aws::RDS::CreateDBSecurityGroup {
   has DBSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSecurityGroup');
-  has _returns => (isa => 'Aws::RDS::CreateDBSecurityGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBSecurityGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSecurityGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::CreateDBSecurityGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBSecurityGroupResult');
 }
 package Aws::RDS::CreateDBSnapshot {
   use Moose;
@@ -520,9 +536,11 @@ package Aws::RDS::CreateDBSnapshot {
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSnapshot');
-  has _returns => (isa => 'Aws::RDS::CreateDBSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBSnapshotResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSnapshot');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::CreateDBSnapshotResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBSnapshotResult');
 }
 package Aws::RDS::CreateDBSubnetGroup {
   use Moose;
@@ -531,9 +549,11 @@ package Aws::RDS::CreateDBSubnetGroup {
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSubnetGroup');
-  has _returns => (isa => 'Aws::RDS::CreateDBSubnetGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBSubnetGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSubnetGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::CreateDBSubnetGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBSubnetGroupResult');
 }
 package Aws::RDS::CreateEventSubscription {
   use Moose;
@@ -545,9 +565,11 @@ package Aws::RDS::CreateEventSubscription {
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEventSubscription');
-  has _returns => (isa => 'Aws::RDS::CreateEventSubscriptionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateEventSubscriptionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEventSubscription');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::CreateEventSubscriptionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateEventSubscriptionResult');
 }
 package Aws::RDS::CreateOptionGroup {
   use Moose;
@@ -557,9 +579,11 @@ package Aws::RDS::CreateOptionGroup {
   has OptionGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateOptionGroup');
-  has _returns => (isa => 'Aws::RDS::CreateOptionGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateOptionGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateOptionGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::CreateOptionGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateOptionGroupResult');
 }
 package Aws::RDS::DeleteDBInstance {
   use Moose;
@@ -567,57 +591,71 @@ package Aws::RDS::DeleteDBInstance {
   has FinalDBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SkipFinalSnapshot => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBInstance');
-  has _returns => (isa => 'Aws::RDS::DeleteDBInstanceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBInstanceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBInstance');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DeleteDBInstanceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBInstanceResult');
 }
 package Aws::RDS::DeleteDBParameterGroup {
   use Moose;
   has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBParameterGroup');
-  has _returns => (isa => 'Aws::RDS::DeleteDBParameterGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBParameterGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBParameterGroup');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::RDS::DeleteDBSecurityGroup {
   use Moose;
   has DBSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBSecurityGroup');
-  has _returns => (isa => 'Aws::RDS::DeleteDBSecurityGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBSecurityGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBSecurityGroup');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::RDS::DeleteDBSnapshot {
   use Moose;
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBSnapshot');
-  has _returns => (isa => 'Aws::RDS::DeleteDBSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBSnapshotResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBSnapshot');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DeleteDBSnapshotResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBSnapshotResult');
 }
 package Aws::RDS::DeleteDBSubnetGroup {
   use Moose;
   has DBSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBSubnetGroup');
-  has _returns => (isa => 'Aws::RDS::DeleteDBSubnetGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBSubnetGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBSubnetGroup');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::RDS::DeleteEventSubscription {
   use Moose;
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteEventSubscription');
-  has _returns => (isa => 'Aws::RDS::DeleteEventSubscriptionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteEventSubscriptionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteEventSubscription');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DeleteEventSubscriptionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteEventSubscriptionResult');
 }
 package Aws::RDS::DeleteOptionGroup {
   use Moose;
   has OptionGroupName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteOptionGroup');
-  has _returns => (isa => 'Aws::RDS::DeleteOptionGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteOptionGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteOptionGroup');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::RDS::DescribeDBEngineVersions {
   use Moose;
@@ -629,9 +667,11 @@ package Aws::RDS::DescribeDBEngineVersions {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBEngineVersions');
-  has _returns => (isa => 'Aws::RDS::DescribeDBEngineVersionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBEngineVersionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBEngineVersions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeDBEngineVersionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBEngineVersionsResult');
 }
 package Aws::RDS::DescribeDBInstances {
   use Moose;
@@ -639,9 +679,11 @@ package Aws::RDS::DescribeDBInstances {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBInstances');
-  has _returns => (isa => 'Aws::RDS::DescribeDBInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeDBInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBInstancesResult');
 }
 package Aws::RDS::DescribeDBLogFiles {
   use Moose;
@@ -652,9 +694,11 @@ package Aws::RDS::DescribeDBLogFiles {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBLogFiles');
-  has _returns => (isa => 'Aws::RDS::DescribeDBLogFilesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBLogFilesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBLogFiles');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeDBLogFilesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBLogFilesResult');
 }
 package Aws::RDS::DescribeDBParameterGroups {
   use Moose;
@@ -662,9 +706,11 @@ package Aws::RDS::DescribeDBParameterGroups {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBParameterGroups');
-  has _returns => (isa => 'Aws::RDS::DescribeDBParameterGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBParameterGroupsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBParameterGroups');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeDBParameterGroupsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBParameterGroupsResult');
 }
 package Aws::RDS::DescribeDBParameters {
   use Moose;
@@ -673,9 +719,11 @@ package Aws::RDS::DescribeDBParameters {
   has MaxRecords => (is => 'ro', isa => 'Int');
   has Source => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBParameters');
-  has _returns => (isa => 'Aws::RDS::DescribeDBParametersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBParametersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBParameters');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeDBParametersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBParametersResult');
 }
 package Aws::RDS::DescribeDBSecurityGroups {
   use Moose;
@@ -683,9 +731,11 @@ package Aws::RDS::DescribeDBSecurityGroups {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBSecurityGroups');
-  has _returns => (isa => 'Aws::RDS::DescribeDBSecurityGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBSecurityGroupsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBSecurityGroups');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeDBSecurityGroupsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBSecurityGroupsResult');
 }
 package Aws::RDS::DescribeDBSnapshots {
   use Moose;
@@ -695,9 +745,11 @@ package Aws::RDS::DescribeDBSnapshots {
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SnapshotType => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBSnapshots');
-  has _returns => (isa => 'Aws::RDS::DescribeDBSnapshotsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBSnapshotsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBSnapshots');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeDBSnapshotsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBSnapshotsResult');
 }
 package Aws::RDS::DescribeDBSubnetGroups {
   use Moose;
@@ -705,9 +757,11 @@ package Aws::RDS::DescribeDBSubnetGroups {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBSubnetGroups');
-  has _returns => (isa => 'Aws::RDS::DescribeDBSubnetGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBSubnetGroupsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBSubnetGroups');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeDBSubnetGroupsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBSubnetGroupsResult');
 }
 package Aws::RDS::DescribeEngineDefaultParameters {
   use Moose;
@@ -715,17 +769,21 @@ package Aws::RDS::DescribeEngineDefaultParameters {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEngineDefaultParameters');
-  has _returns => (isa => 'Aws::RDS::DescribeEngineDefaultParametersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEngineDefaultParametersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEngineDefaultParameters');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeEngineDefaultParametersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEngineDefaultParametersResult');
 }
 package Aws::RDS::DescribeEventCategories {
   use Moose;
   has SourceType => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventCategories');
-  has _returns => (isa => 'Aws::RDS::DescribeEventCategoriesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventCategoriesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventCategories');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeEventCategoriesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventCategoriesResult');
 }
 package Aws::RDS::DescribeEventSubscriptions {
   use Moose;
@@ -733,9 +791,11 @@ package Aws::RDS::DescribeEventSubscriptions {
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SubscriptionName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptions');
-  has _returns => (isa => 'Aws::RDS::DescribeEventSubscriptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeEventSubscriptionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptionsResult');
 }
 package Aws::RDS::DescribeEvents {
   use Moose;
@@ -748,9 +808,11 @@ package Aws::RDS::DescribeEvents {
   has SourceType => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEvents');
-  has _returns => (isa => 'Aws::RDS::DescribeEventsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEvents');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeEventsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');
 }
 package Aws::RDS::DescribeOptionGroupOptions {
   use Moose;
@@ -759,9 +821,11 @@ package Aws::RDS::DescribeOptionGroupOptions {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroupOptions');
-  has _returns => (isa => 'Aws::RDS::DescribeOptionGroupOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroupOptionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroupOptions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeOptionGroupOptionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroupOptionsResult');
 }
 package Aws::RDS::DescribeOptionGroups {
   use Moose;
@@ -771,9 +835,11 @@ package Aws::RDS::DescribeOptionGroups {
   has MaxRecords => (is => 'ro', isa => 'Int');
   has OptionGroupName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroups');
-  has _returns => (isa => 'Aws::RDS::DescribeOptionGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroupsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroups');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeOptionGroupsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroupsResult');
 }
 package Aws::RDS::DescribeOrderableDBInstanceOptions {
   use Moose;
@@ -785,9 +851,11 @@ package Aws::RDS::DescribeOrderableDBInstanceOptions {
   has MaxRecords => (is => 'ro', isa => 'Int');
   has Vpc => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOrderableDBInstanceOptions');
-  has _returns => (isa => 'Aws::RDS::DescribeOrderableDBInstanceOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOrderableDBInstanceOptionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOrderableDBInstanceOptions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeOrderableDBInstanceOptionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOrderableDBInstanceOptionsResult');
 }
 package Aws::RDS::DescribeReservedDBInstances {
   use Moose;
@@ -801,9 +869,11 @@ package Aws::RDS::DescribeReservedDBInstances {
   has ReservedDBInstanceId => (is => 'ro', isa => 'Str');
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstances');
-  has _returns => (isa => 'Aws::RDS::DescribeReservedDBInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeReservedDBInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstancesResult');
 }
 package Aws::RDS::DescribeReservedDBInstancesOfferings {
   use Moose;
@@ -816,9 +886,11 @@ package Aws::RDS::DescribeReservedDBInstancesOfferings {
   has ProductDescription => (is => 'ro', isa => 'Str');
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstancesOfferings');
-  has _returns => (isa => 'Aws::RDS::DescribeReservedDBInstancesOfferingsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstancesOfferingsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstancesOfferings');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeReservedDBInstancesOfferingsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstancesOfferingsResult');
 }
 package Aws::RDS::DownloadDBLogFilePortion {
   use Moose;
@@ -827,17 +899,21 @@ package Aws::RDS::DownloadDBLogFilePortion {
   has Marker => (is => 'ro', isa => 'Str');
   has NumberOfLines => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DownloadDBLogFilePortion');
-  has _returns => (isa => 'Aws::RDS::DownloadDBLogFilePortionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DownloadDBLogFilePortionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DownloadDBLogFilePortion');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DownloadDBLogFilePortionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DownloadDBLogFilePortionResult');
 }
 package Aws::RDS::ListTagsForResource {
   use Moose;
   has ResourceName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListTagsForResource');
-  has _returns => (isa => 'Aws::RDS::ListTagsForResourceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListTagsForResourceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTagsForResource');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::ListTagsForResourceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListTagsForResourceResult');
 }
 package Aws::RDS::ModifyDBInstance {
   use Moose;
@@ -860,18 +936,22 @@ package Aws::RDS::ModifyDBInstance {
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBInstance');
-  has _returns => (isa => 'Aws::RDS::ModifyDBInstanceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBInstanceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBInstance');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::ModifyDBInstanceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBInstanceResult');
 }
 package Aws::RDS::ModifyDBParameterGroup {
   use Moose;
   has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Parameter]', traits => ['NameInRequest'], request_name => 'Parameter' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBParameterGroup');
-  has _returns => (isa => 'Aws::RDS::ModifyDBParameterGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBParameterGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBParameterGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::ModifyDBParameterGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBParameterGroupResult');
 }
 package Aws::RDS::ModifyDBSubnetGroup {
   use Moose;
@@ -879,9 +959,11 @@ package Aws::RDS::ModifyDBSubnetGroup {
   has DBSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBSubnetGroup');
-  has _returns => (isa => 'Aws::RDS::ModifyDBSubnetGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBSubnetGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBSubnetGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::ModifyDBSubnetGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBSubnetGroupResult');
 }
 package Aws::RDS::ModifyEventSubscription {
   use Moose;
@@ -891,9 +973,11 @@ package Aws::RDS::ModifyEventSubscription {
   has SourceType => (is => 'ro', isa => 'Str');
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyEventSubscription');
-  has _returns => (isa => 'Aws::RDS::ModifyEventSubscriptionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyEventSubscriptionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyEventSubscription');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::ModifyEventSubscriptionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyEventSubscriptionResult');
 }
 package Aws::RDS::ModifyOptionGroup {
   use Moose;
@@ -902,9 +986,11 @@ package Aws::RDS::ModifyOptionGroup {
   has OptionsToInclude => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionConfiguration]', traits => ['NameInRequest'], request_name => 'OptionConfiguration' );
   has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyOptionGroup');
-  has _returns => (isa => 'Aws::RDS::ModifyOptionGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyOptionGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyOptionGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::ModifyOptionGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyOptionGroupResult');
 }
 package Aws::RDS::PromoteReadReplica {
   use Moose;
@@ -912,9 +998,11 @@ package Aws::RDS::PromoteReadReplica {
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'PromoteReadReplica');
-  has _returns => (isa => 'Aws::RDS::PromoteReadReplicaResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PromoteReadReplicaResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PromoteReadReplica');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::PromoteReadReplicaResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'PromoteReadReplicaResult');
 }
 package Aws::RDS::PurchaseReservedDBInstancesOffering {
   use Moose;
@@ -923,36 +1011,44 @@ package Aws::RDS::PurchaseReservedDBInstancesOffering {
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedDBInstancesOffering');
-  has _returns => (isa => 'Aws::RDS::PurchaseReservedDBInstancesOfferingResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedDBInstancesOfferingResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedDBInstancesOffering');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::PurchaseReservedDBInstancesOfferingResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedDBInstancesOfferingResult');
 }
 package Aws::RDS::RebootDBInstance {
   use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ForceFailover => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RebootDBInstance');
-  has _returns => (isa => 'Aws::RDS::RebootDBInstanceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RebootDBInstanceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RebootDBInstance');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::RebootDBInstanceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RebootDBInstanceResult');
 }
 package Aws::RDS::RemoveSourceIdentifierFromSubscription {
   use Moose;
   has SourceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveSourceIdentifierFromSubscription');
-  has _returns => (isa => 'Aws::RDS::RemoveSourceIdentifierFromSubscriptionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RemoveSourceIdentifierFromSubscriptionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveSourceIdentifierFromSubscription');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::RemoveSourceIdentifierFromSubscriptionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RemoveSourceIdentifierFromSubscriptionResult');
 }
 package Aws::RDS::RemoveTagsFromResource {
   use Moose;
   has ResourceName => (is => 'ro', isa => 'Str', required => 1);
   has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveTagsFromResource');
-  has _returns => (isa => 'Aws::RDS::RemoveTagsFromResourceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RemoveTagsFromResourceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveTagsFromResource');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::RDS::ResetDBParameterGroup {
   use Moose;
@@ -960,9 +1056,11 @@ package Aws::RDS::ResetDBParameterGroup {
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Parameter]', traits => ['NameInRequest'], request_name => 'Parameter' );
   has ResetAllParameters => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ResetDBParameterGroup');
-  has _returns => (isa => 'Aws::RDS::ResetDBParameterGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ResetDBParameterGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetDBParameterGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::ResetDBParameterGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ResetDBParameterGroupResult');
 }
 package Aws::RDS::RestoreDBInstanceFromDBSnapshot {
   use Moose;
@@ -982,9 +1080,11 @@ package Aws::RDS::RestoreDBInstanceFromDBSnapshot {
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromDBSnapshot');
-  has _returns => (isa => 'Aws::RDS::RestoreDBInstanceFromDBSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromDBSnapshotResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromDBSnapshot');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::RestoreDBInstanceFromDBSnapshotResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromDBSnapshotResult');
 }
 package Aws::RDS::RestoreDBInstanceToPointInTime {
   use Moose;
@@ -1006,9 +1106,11 @@ package Aws::RDS::RestoreDBInstanceToPointInTime {
   has TargetDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceToPointInTime');
-  has _returns => (isa => 'Aws::RDS::RestoreDBInstanceToPointInTimeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceToPointInTimeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceToPointInTime');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::RestoreDBInstanceToPointInTimeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceToPointInTimeResult');
 }
 package Aws::RDS::RevokeDBSecurityGroupIngress {
   use Moose;
@@ -1018,9 +1120,11 @@ package Aws::RDS::RevokeDBSecurityGroupIngress {
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeDBSecurityGroupIngress');
-  has _returns => (isa => 'Aws::RDS::RevokeDBSecurityGroupIngressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeDBSecurityGroupIngressResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeDBSecurityGroupIngress');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::RevokeDBSecurityGroupIngressResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeDBSecurityGroupIngressResult');
 }
 
 package Aws::RDS::AddSourceIdentifierToSubscriptionResult {
@@ -1332,361 +1436,211 @@ package Aws::RDS {
   
   sub AddSourceIdentifierToSubscription {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::AddSourceIdentifierToSubscription', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::AddSourceIdentifierToSubscriptionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::AddSourceIdentifierToSubscription', @_);
   }
   sub AddTagsToResource {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::AddTagsToResource', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::RDS::AddTagsToResource', @_);
   }
   sub AuthorizeDBSecurityGroupIngress {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::AuthorizeDBSecurityGroupIngress', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::AuthorizeDBSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::AuthorizeDBSecurityGroupIngress', @_);
   }
   sub CopyDBSnapshot {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::CopyDBSnapshot', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::CopyDBSnapshotResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::CopyDBSnapshot', @_);
   }
   sub CreateDBInstance {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::CreateDBInstance', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::CreateDBInstanceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::CreateDBInstance', @_);
   }
   sub CreateDBInstanceReadReplica {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::CreateDBInstanceReadReplica', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::CreateDBInstanceReadReplicaResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::CreateDBInstanceReadReplica', @_);
   }
   sub CreateDBParameterGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::CreateDBParameterGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::CreateDBParameterGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::CreateDBParameterGroup', @_);
   }
   sub CreateDBSecurityGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::CreateDBSecurityGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::CreateDBSecurityGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::CreateDBSecurityGroup', @_);
   }
   sub CreateDBSnapshot {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::CreateDBSnapshot', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::CreateDBSnapshotResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::CreateDBSnapshot', @_);
   }
   sub CreateDBSubnetGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::CreateDBSubnetGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::CreateDBSubnetGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::CreateDBSubnetGroup', @_);
   }
   sub CreateEventSubscription {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::CreateEventSubscription', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::CreateEventSubscriptionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::CreateEventSubscription', @_);
   }
   sub CreateOptionGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::CreateOptionGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::CreateOptionGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::CreateOptionGroup', @_);
   }
   sub DeleteDBInstance {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DeleteDBInstance', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DeleteDBInstanceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DeleteDBInstance', @_);
   }
   sub DeleteDBParameterGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DeleteDBParameterGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::RDS::DeleteDBParameterGroup', @_);
   }
   sub DeleteDBSecurityGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DeleteDBSecurityGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::RDS::DeleteDBSecurityGroup', @_);
   }
   sub DeleteDBSnapshot {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DeleteDBSnapshot', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DeleteDBSnapshotResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DeleteDBSnapshot', @_);
   }
   sub DeleteDBSubnetGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DeleteDBSubnetGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::RDS::DeleteDBSubnetGroup', @_);
   }
   sub DeleteEventSubscription {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DeleteEventSubscription', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DeleteEventSubscriptionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DeleteEventSubscription', @_);
   }
   sub DeleteOptionGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DeleteOptionGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::RDS::DeleteOptionGroup', @_);
   }
   sub DescribeDBEngineVersions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBEngineVersions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeDBEngineVersionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeDBEngineVersions', @_);
   }
   sub DescribeDBInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeDBInstancesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeDBInstances', @_);
   }
   sub DescribeDBLogFiles {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBLogFiles', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeDBLogFilesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeDBLogFiles', @_);
   }
   sub DescribeDBParameterGroups {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBParameterGroups', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeDBParameterGroupsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeDBParameterGroups', @_);
   }
   sub DescribeDBParameters {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBParameters', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeDBParametersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeDBParameters', @_);
   }
   sub DescribeDBSecurityGroups {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBSecurityGroups', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeDBSecurityGroupsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeDBSecurityGroups', @_);
   }
   sub DescribeDBSnapshots {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBSnapshots', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeDBSnapshotsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeDBSnapshots', @_);
   }
   sub DescribeDBSubnetGroups {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeDBSubnetGroups', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeDBSubnetGroupsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeDBSubnetGroups', @_);
   }
   sub DescribeEngineDefaultParameters {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeEngineDefaultParameters', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeEngineDefaultParametersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeEngineDefaultParameters', @_);
   }
   sub DescribeEventCategories {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeEventCategories', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeEventCategoriesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeEventCategories', @_);
   }
   sub DescribeEvents {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeEvents', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeEventsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeEvents', @_);
   }
   sub DescribeEventSubscriptions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeEventSubscriptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeEventSubscriptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeEventSubscriptions', @_);
   }
   sub DescribeOptionGroupOptions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeOptionGroupOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeOptionGroupOptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeOptionGroupOptions', @_);
   }
   sub DescribeOptionGroups {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeOptionGroups', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeOptionGroupsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeOptionGroups', @_);
   }
   sub DescribeOrderableDBInstanceOptions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeOrderableDBInstanceOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeOrderableDBInstanceOptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeOrderableDBInstanceOptions', @_);
   }
   sub DescribeReservedDBInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeReservedDBInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeReservedDBInstancesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeReservedDBInstances', @_);
   }
   sub DescribeReservedDBInstancesOfferings {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DescribeReservedDBInstancesOfferings', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DescribeReservedDBInstancesOfferingsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DescribeReservedDBInstancesOfferings', @_);
   }
   sub DownloadDBLogFilePortion {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::DownloadDBLogFilePortion', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::DownloadDBLogFilePortionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::DownloadDBLogFilePortion', @_);
   }
   sub ListTagsForResource {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::ListTagsForResource', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::ListTagsForResourceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::ListTagsForResource', @_);
   }
   sub ModifyDBInstance {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::ModifyDBInstance', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::ModifyDBInstanceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::ModifyDBInstance', @_);
   }
   sub ModifyDBParameterGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::ModifyDBParameterGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::ModifyDBParameterGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::ModifyDBParameterGroup', @_);
   }
   sub ModifyDBSubnetGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::ModifyDBSubnetGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::ModifyDBSubnetGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::ModifyDBSubnetGroup', @_);
   }
   sub ModifyEventSubscription {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::ModifyEventSubscription', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::ModifyEventSubscriptionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::ModifyEventSubscription', @_);
   }
   sub ModifyOptionGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::ModifyOptionGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::ModifyOptionGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::ModifyOptionGroup', @_);
   }
   sub PromoteReadReplica {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::PromoteReadReplica', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::PromoteReadReplicaResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::PromoteReadReplica', @_);
   }
   sub PurchaseReservedDBInstancesOffering {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::PurchaseReservedDBInstancesOffering', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::PurchaseReservedDBInstancesOfferingResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::PurchaseReservedDBInstancesOffering', @_);
   }
   sub RebootDBInstance {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::RebootDBInstance', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::RebootDBInstanceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::RebootDBInstance', @_);
   }
   sub RemoveSourceIdentifierFromSubscription {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::RemoveSourceIdentifierFromSubscription', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::RemoveSourceIdentifierFromSubscriptionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::RemoveSourceIdentifierFromSubscription', @_);
   }
   sub RemoveTagsFromResource {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::RemoveTagsFromResource', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::RDS::RemoveTagsFromResource', @_);
   }
   sub ResetDBParameterGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::ResetDBParameterGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::ResetDBParameterGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::ResetDBParameterGroup', @_);
   }
   sub RestoreDBInstanceFromDBSnapshot {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::RestoreDBInstanceFromDBSnapshot', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::RestoreDBInstanceFromDBSnapshotResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::RestoreDBInstanceFromDBSnapshot', @_);
   }
   sub RestoreDBInstanceToPointInTime {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::RestoreDBInstanceToPointInTime', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::RestoreDBInstanceToPointInTimeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::RestoreDBInstanceToPointInTime', @_);
   }
   sub RevokeDBSecurityGroupIngress {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RDS::RevokeDBSecurityGroupIngress', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RDS::RevokeDBSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RDS::RevokeDBSecurityGroupIngress', @_);
   }
 }
 1;

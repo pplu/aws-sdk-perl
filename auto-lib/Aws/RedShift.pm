@@ -355,9 +355,11 @@ package Aws::RedShift::AuthorizeClusterSecurityGroupIngress {
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeClusterSecurityGroupIngress');
-  has _returns => (isa => 'Aws::RedShift::AuthorizeClusterSecurityGroupIngressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeClusterSecurityGroupIngressResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeClusterSecurityGroupIngress');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::AuthorizeClusterSecurityGroupIngressResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeClusterSecurityGroupIngressResult');
 }
 package Aws::RedShift::AuthorizeSnapshotAccess {
   use Moose;
@@ -365,9 +367,11 @@ package Aws::RedShift::AuthorizeSnapshotAccess {
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeSnapshotAccess');
-  has _returns => (isa => 'Aws::RedShift::AuthorizeSnapshotAccessResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeSnapshotAccessResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeSnapshotAccess');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::AuthorizeSnapshotAccessResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeSnapshotAccessResult');
 }
 package Aws::RedShift::CopyClusterSnapshot {
   use Moose;
@@ -375,9 +379,11 @@ package Aws::RedShift::CopyClusterSnapshot {
   has SourceSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has TargetSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CopyClusterSnapshot');
-  has _returns => (isa => 'Aws::RedShift::CopyClusterSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CopyClusterSnapshotResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyClusterSnapshot');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::CopyClusterSnapshotResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopyClusterSnapshotResult');
 }
 package Aws::RedShift::CreateCluster {
   use Moose;
@@ -404,9 +410,11 @@ package Aws::RedShift::CreateCluster {
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
-  has _returns => (isa => 'Aws::RedShift::CreateClusterResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::CreateClusterResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterResult');
 }
 package Aws::RedShift::CreateClusterParameterGroup {
   use Moose;
@@ -414,27 +422,33 @@ package Aws::RedShift::CreateClusterParameterGroup {
   has ParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
   has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterParameterGroup');
-  has _returns => (isa => 'Aws::RedShift::CreateClusterParameterGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterParameterGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterParameterGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::CreateClusterParameterGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterParameterGroupResult');
 }
 package Aws::RedShift::CreateClusterSecurityGroup {
   use Moose;
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterSecurityGroup');
-  has _returns => (isa => 'Aws::RedShift::CreateClusterSecurityGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSecurityGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterSecurityGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::CreateClusterSecurityGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSecurityGroupResult');
 }
 package Aws::RedShift::CreateClusterSnapshot {
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterSnapshot');
-  has _returns => (isa => 'Aws::RedShift::CreateClusterSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSnapshotResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterSnapshot');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::CreateClusterSnapshotResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSnapshotResult');
 }
 package Aws::RedShift::CreateClusterSubnetGroup {
   use Moose;
@@ -442,9 +456,11 @@ package Aws::RedShift::CreateClusterSubnetGroup {
   has Description => (is => 'ro', isa => 'Str', required => 1);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterSubnetGroup');
-  has _returns => (isa => 'Aws::RedShift::CreateClusterSubnetGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSubnetGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterSubnetGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::CreateClusterSubnetGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSubnetGroupResult');
 }
 package Aws::RedShift::CreateEventSubscription {
   use Moose;
@@ -456,17 +472,21 @@ package Aws::RedShift::CreateEventSubscription {
   has SourceType => (is => 'ro', isa => 'Str');
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEventSubscription');
-  has _returns => (isa => 'Aws::RedShift::CreateEventSubscriptionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateEventSubscriptionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEventSubscription');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::CreateEventSubscriptionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateEventSubscriptionResult');
 }
 package Aws::RedShift::CreateHsmClientCertificate {
   use Moose;
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHsmClientCertificate');
-  has _returns => (isa => 'Aws::RedShift::CreateHsmClientCertificateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateHsmClientCertificateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHsmClientCertificate');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::CreateHsmClientCertificateResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateHsmClientCertificateResult');
 }
 package Aws::RedShift::CreateHsmConfiguration {
   use Moose;
@@ -477,9 +497,11 @@ package Aws::RedShift::CreateHsmConfiguration {
   has HsmPartitionPassword => (is => 'ro', isa => 'Str', required => 1);
   has HsmServerPublicCertificate => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHsmConfiguration');
-  has _returns => (isa => 'Aws::RedShift::CreateHsmConfigurationResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateHsmConfigurationResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHsmConfiguration');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::CreateHsmConfigurationResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateHsmConfigurationResult');
 }
 package Aws::RedShift::DeleteCluster {
   use Moose;
@@ -487,66 +509,82 @@ package Aws::RedShift::DeleteCluster {
   has FinalClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SkipFinalClusterSnapshot => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCluster');
-  has _returns => (isa => 'Aws::RedShift::DeleteClusterResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCluster');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DeleteClusterResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterResult');
 }
 package Aws::RedShift::DeleteClusterParameterGroup {
   use Moose;
   has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterParameterGroup');
-  has _returns => (isa => 'Aws::RedShift::DeleteClusterParameterGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterParameterGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterParameterGroup');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::RedShift::DeleteClusterSecurityGroup {
   use Moose;
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterSecurityGroup');
-  has _returns => (isa => 'Aws::RedShift::DeleteClusterSecurityGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterSecurityGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterSecurityGroup');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::RedShift::DeleteClusterSnapshot {
   use Moose;
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterSnapshot');
-  has _returns => (isa => 'Aws::RedShift::DeleteClusterSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterSnapshotResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterSnapshot');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DeleteClusterSnapshotResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterSnapshotResult');
 }
 package Aws::RedShift::DeleteClusterSubnetGroup {
   use Moose;
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterSubnetGroup');
-  has _returns => (isa => 'Aws::RedShift::DeleteClusterSubnetGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterSubnetGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterSubnetGroup');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::RedShift::DeleteEventSubscription {
   use Moose;
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteEventSubscription');
-  has _returns => (isa => 'Aws::RedShift::DeleteEventSubscriptionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteEventSubscriptionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteEventSubscription');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::RedShift::DeleteHsmClientCertificate {
   use Moose;
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteHsmClientCertificate');
-  has _returns => (isa => 'Aws::RedShift::DeleteHsmClientCertificateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteHsmClientCertificateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteHsmClientCertificate');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::RedShift::DeleteHsmConfiguration {
   use Moose;
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteHsmConfiguration');
-  has _returns => (isa => 'Aws::RedShift::DeleteHsmConfigurationResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteHsmConfigurationResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteHsmConfiguration');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::RedShift::DescribeClusterParameterGroups {
   use Moose;
@@ -554,9 +592,11 @@ package Aws::RedShift::DescribeClusterParameterGroups {
   has MaxRecords => (is => 'ro', isa => 'Int');
   has ParameterGroupName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterParameterGroups');
-  has _returns => (isa => 'Aws::RedShift::DescribeClusterParameterGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterParameterGroupsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterParameterGroups');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeClusterParameterGroupsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterParameterGroupsResult');
 }
 package Aws::RedShift::DescribeClusterParameters {
   use Moose;
@@ -565,9 +605,11 @@ package Aws::RedShift::DescribeClusterParameters {
   has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Source => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterParameters');
-  has _returns => (isa => 'Aws::RedShift::DescribeClusterParametersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterParametersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterParameters');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeClusterParametersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterParametersResult');
 }
 package Aws::RedShift::DescribeClusterSecurityGroups {
   use Moose;
@@ -575,9 +617,11 @@ package Aws::RedShift::DescribeClusterSecurityGroups {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterSecurityGroups');
-  has _returns => (isa => 'Aws::RedShift::DescribeClusterSecurityGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterSecurityGroupsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterSecurityGroups');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeClusterSecurityGroupsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterSecurityGroupsResult');
 }
 package Aws::RedShift::DescribeClusterSnapshots {
   use Moose;
@@ -590,9 +634,11 @@ package Aws::RedShift::DescribeClusterSnapshots {
   has SnapshotType => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterSnapshots');
-  has _returns => (isa => 'Aws::RedShift::DescribeClusterSnapshotsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterSnapshotsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterSnapshots');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeClusterSnapshotsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterSnapshotsResult');
 }
 package Aws::RedShift::DescribeClusterSubnetGroups {
   use Moose;
@@ -600,9 +646,11 @@ package Aws::RedShift::DescribeClusterSubnetGroups {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterSubnetGroups');
-  has _returns => (isa => 'Aws::RedShift::DescribeClusterSubnetGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterSubnetGroupsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterSubnetGroups');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeClusterSubnetGroupsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterSubnetGroupsResult');
 }
 package Aws::RedShift::DescribeClusterVersions {
   use Moose;
@@ -611,9 +659,11 @@ package Aws::RedShift::DescribeClusterVersions {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterVersions');
-  has _returns => (isa => 'Aws::RedShift::DescribeClusterVersionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterVersionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterVersions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeClusterVersionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterVersionsResult');
 }
 package Aws::RedShift::DescribeClusters {
   use Moose;
@@ -621,9 +671,11 @@ package Aws::RedShift::DescribeClusters {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusters');
-  has _returns => (isa => 'Aws::RedShift::DescribeClustersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClustersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusters');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeClustersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClustersResult');
 }
 package Aws::RedShift::DescribeDefaultClusterParameters {
   use Moose;
@@ -631,17 +683,21 @@ package Aws::RedShift::DescribeDefaultClusterParameters {
   has MaxRecords => (is => 'ro', isa => 'Int');
   has ParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDefaultClusterParameters');
-  has _returns => (isa => 'Aws::RedShift::DescribeDefaultClusterParametersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDefaultClusterParametersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDefaultClusterParameters');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeDefaultClusterParametersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDefaultClusterParametersResult');
 }
 package Aws::RedShift::DescribeEventCategories {
   use Moose;
   has SourceType => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventCategories');
-  has _returns => (isa => 'Aws::RedShift::DescribeEventCategoriesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventCategoriesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventCategories');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeEventCategoriesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventCategoriesResult');
 }
 package Aws::RedShift::DescribeEventSubscriptions {
   use Moose;
@@ -649,9 +705,11 @@ package Aws::RedShift::DescribeEventSubscriptions {
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SubscriptionName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptions');
-  has _returns => (isa => 'Aws::RedShift::DescribeEventSubscriptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeEventSubscriptionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptionsResult');
 }
 package Aws::RedShift::DescribeEvents {
   use Moose;
@@ -663,9 +721,11 @@ package Aws::RedShift::DescribeEvents {
   has SourceType => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEvents');
-  has _returns => (isa => 'Aws::RedShift::DescribeEventsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEvents');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeEventsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');
 }
 package Aws::RedShift::DescribeHsmClientCertificates {
   use Moose;
@@ -673,9 +733,11 @@ package Aws::RedShift::DescribeHsmClientCertificates {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeHsmClientCertificates');
-  has _returns => (isa => 'Aws::RedShift::DescribeHsmClientCertificatesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeHsmClientCertificatesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeHsmClientCertificates');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeHsmClientCertificatesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeHsmClientCertificatesResult');
 }
 package Aws::RedShift::DescribeHsmConfigurations {
   use Moose;
@@ -683,17 +745,21 @@ package Aws::RedShift::DescribeHsmConfigurations {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeHsmConfigurations');
-  has _returns => (isa => 'Aws::RedShift::DescribeHsmConfigurationsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeHsmConfigurationsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeHsmConfigurations');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeHsmConfigurationsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeHsmConfigurationsResult');
 }
 package Aws::RedShift::DescribeLoggingStatus {
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoggingStatus');
-  has _returns => (isa => 'Aws::RedShift::DescribeLoggingStatusResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoggingStatusResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoggingStatus');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeLoggingStatusResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoggingStatusResult');
 }
 package Aws::RedShift::DescribeOrderableClusterOptions {
   use Moose;
@@ -702,9 +768,11 @@ package Aws::RedShift::DescribeOrderableClusterOptions {
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NodeType => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOrderableClusterOptions');
-  has _returns => (isa => 'Aws::RedShift::DescribeOrderableClusterOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOrderableClusterOptionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOrderableClusterOptions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeOrderableClusterOptionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOrderableClusterOptionsResult');
 }
 package Aws::RedShift::DescribeReservedNodeOfferings {
   use Moose;
@@ -712,9 +780,11 @@ package Aws::RedShift::DescribeReservedNodeOfferings {
   has MaxRecords => (is => 'ro', isa => 'Int');
   has ReservedNodeOfferingId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodeOfferings');
-  has _returns => (isa => 'Aws::RedShift::DescribeReservedNodeOfferingsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodeOfferingsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodeOfferings');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeReservedNodeOfferingsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodeOfferingsResult');
 }
 package Aws::RedShift::DescribeReservedNodes {
   use Moose;
@@ -722,33 +792,41 @@ package Aws::RedShift::DescribeReservedNodes {
   has MaxRecords => (is => 'ro', isa => 'Int');
   has ReservedNodeId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodes');
-  has _returns => (isa => 'Aws::RedShift::DescribeReservedNodesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeReservedNodesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodesResult');
 }
 package Aws::RedShift::DescribeResize {
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeResize');
-  has _returns => (isa => 'Aws::RedShift::DescribeResizeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeResizeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeResize');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeResizeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeResizeResult');
 }
 package Aws::RedShift::DisableLogging {
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DisableLogging');
-  has _returns => (isa => 'Aws::RedShift::DisableLoggingResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DisableLoggingResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableLogging');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DisableLoggingResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DisableLoggingResult');
 }
 package Aws::RedShift::DisableSnapshotCopy {
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DisableSnapshotCopy');
-  has _returns => (isa => 'Aws::RedShift::DisableSnapshotCopyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DisableSnapshotCopyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableSnapshotCopy');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DisableSnapshotCopyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DisableSnapshotCopyResult');
 }
 package Aws::RedShift::EnableLogging {
   use Moose;
@@ -756,9 +834,11 @@ package Aws::RedShift::EnableLogging {
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'EnableLogging');
-  has _returns => (isa => 'Aws::RedShift::EnableLoggingResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'EnableLoggingResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableLogging');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::EnableLoggingResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'EnableLoggingResult');
 }
 package Aws::RedShift::EnableSnapshotCopy {
   use Moose;
@@ -766,9 +846,11 @@ package Aws::RedShift::EnableSnapshotCopy {
   has DestinationRegion => (is => 'ro', isa => 'Str', required => 1);
   has RetentionPeriod => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'EnableSnapshotCopy');
-  has _returns => (isa => 'Aws::RedShift::EnableSnapshotCopyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'EnableSnapshotCopyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableSnapshotCopy');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::EnableSnapshotCopyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'EnableSnapshotCopyResult');
 }
 package Aws::RedShift::ModifyCluster {
   use Moose;
@@ -788,18 +870,22 @@ package Aws::RedShift::ModifyCluster {
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCluster');
-  has _returns => (isa => 'Aws::RedShift::ModifyClusterResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCluster');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::ModifyClusterResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterResult');
 }
 package Aws::RedShift::ModifyClusterParameterGroup {
   use Moose;
   has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Parameter]', traits => ['NameInRequest'], request_name => 'Parameter' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyClusterParameterGroup');
-  has _returns => (isa => 'Aws::RedShift::ModifyClusterParameterGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterParameterGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyClusterParameterGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::ModifyClusterParameterGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterParameterGroupResult');
 }
 package Aws::RedShift::ModifyClusterSubnetGroup {
   use Moose;
@@ -807,9 +893,11 @@ package Aws::RedShift::ModifyClusterSubnetGroup {
   has Description => (is => 'ro', isa => 'Str');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyClusterSubnetGroup');
-  has _returns => (isa => 'Aws::RedShift::ModifyClusterSubnetGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterSubnetGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyClusterSubnetGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::ModifyClusterSubnetGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterSubnetGroupResult');
 }
 package Aws::RedShift::ModifyEventSubscription {
   use Moose;
@@ -821,35 +909,43 @@ package Aws::RedShift::ModifyEventSubscription {
   has SourceType => (is => 'ro', isa => 'Str');
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyEventSubscription');
-  has _returns => (isa => 'Aws::RedShift::ModifyEventSubscriptionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyEventSubscriptionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyEventSubscription');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::ModifyEventSubscriptionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyEventSubscriptionResult');
 }
 package Aws::RedShift::ModifySnapshotCopyRetentionPeriod {
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has RetentionPeriod => (is => 'ro', isa => 'Int', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifySnapshotCopyRetentionPeriod');
-  has _returns => (isa => 'Aws::RedShift::ModifySnapshotCopyRetentionPeriodResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifySnapshotCopyRetentionPeriodResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifySnapshotCopyRetentionPeriod');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::ModifySnapshotCopyRetentionPeriodResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifySnapshotCopyRetentionPeriodResult');
 }
 package Aws::RedShift::PurchaseReservedNodeOffering {
   use Moose;
   has NodeCount => (is => 'ro', isa => 'Int');
   has ReservedNodeOfferingId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedNodeOffering');
-  has _returns => (isa => 'Aws::RedShift::PurchaseReservedNodeOfferingResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedNodeOfferingResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedNodeOffering');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::PurchaseReservedNodeOfferingResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedNodeOfferingResult');
 }
 package Aws::RedShift::RebootCluster {
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RebootCluster');
-  has _returns => (isa => 'Aws::RedShift::RebootClusterResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RebootClusterResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RebootCluster');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::RebootClusterResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RebootClusterResult');
 }
 package Aws::RedShift::ResetClusterParameterGroup {
   use Moose;
@@ -857,9 +953,11 @@ package Aws::RedShift::ResetClusterParameterGroup {
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Parameter]', traits => ['NameInRequest'], request_name => 'Parameter' );
   has ResetAllParameters => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ResetClusterParameterGroup');
-  has _returns => (isa => 'Aws::RedShift::ResetClusterParameterGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ResetClusterParameterGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetClusterParameterGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::ResetClusterParameterGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ResetClusterParameterGroupResult');
 }
 package Aws::RedShift::RestoreFromClusterSnapshot {
   use Moose;
@@ -881,9 +979,11 @@ package Aws::RedShift::RestoreFromClusterSnapshot {
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreFromClusterSnapshot');
-  has _returns => (isa => 'Aws::RedShift::RestoreFromClusterSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreFromClusterSnapshotResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreFromClusterSnapshot');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::RestoreFromClusterSnapshotResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreFromClusterSnapshotResult');
 }
 package Aws::RedShift::RevokeClusterSecurityGroupIngress {
   use Moose;
@@ -892,9 +992,11 @@ package Aws::RedShift::RevokeClusterSecurityGroupIngress {
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeClusterSecurityGroupIngress');
-  has _returns => (isa => 'Aws::RedShift::RevokeClusterSecurityGroupIngressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeClusterSecurityGroupIngressResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeClusterSecurityGroupIngress');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::RevokeClusterSecurityGroupIngressResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeClusterSecurityGroupIngressResult');
 }
 package Aws::RedShift::RevokeSnapshotAccess {
   use Moose;
@@ -902,17 +1004,21 @@ package Aws::RedShift::RevokeSnapshotAccess {
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeSnapshotAccess');
-  has _returns => (isa => 'Aws::RedShift::RevokeSnapshotAccessResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeSnapshotAccessResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeSnapshotAccess');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::RevokeSnapshotAccessResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeSnapshotAccessResult');
 }
 package Aws::RedShift::RotateEncryptionKey {
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RotateEncryptionKey');
-  has _returns => (isa => 'Aws::RedShift::RotateEncryptionKeyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RotateEncryptionKeyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RotateEncryptionKey');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::RotateEncryptionKeyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RotateEncryptionKeyResult');
 }
 
 package Aws::RedShift::AuthorizeClusterSecurityGroupIngressResult {
@@ -1255,368 +1361,215 @@ package Aws::RedShift {
   
   sub AuthorizeClusterSecurityGroupIngress {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::AuthorizeClusterSecurityGroupIngress', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::AuthorizeClusterSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::AuthorizeClusterSecurityGroupIngress', @_);
   }
   sub AuthorizeSnapshotAccess {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::AuthorizeSnapshotAccess', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::AuthorizeSnapshotAccessResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::AuthorizeSnapshotAccess', @_);
   }
   sub CopyClusterSnapshot {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::CopyClusterSnapshot', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::CopyClusterSnapshotResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::CopyClusterSnapshot', @_);
   }
   sub CreateCluster {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::CreateCluster', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::CreateClusterResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::CreateCluster', @_);
   }
   sub CreateClusterParameterGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::CreateClusterParameterGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::CreateClusterParameterGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::CreateClusterParameterGroup', @_);
   }
   sub CreateClusterSecurityGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::CreateClusterSecurityGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::CreateClusterSecurityGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::CreateClusterSecurityGroup', @_);
   }
   sub CreateClusterSnapshot {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::CreateClusterSnapshot', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::CreateClusterSnapshotResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::CreateClusterSnapshot', @_);
   }
   sub CreateClusterSubnetGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::CreateClusterSubnetGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::CreateClusterSubnetGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::CreateClusterSubnetGroup', @_);
   }
   sub CreateEventSubscription {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::CreateEventSubscription', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::CreateEventSubscriptionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::CreateEventSubscription', @_);
   }
   sub CreateHsmClientCertificate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::CreateHsmClientCertificate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::CreateHsmClientCertificateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::CreateHsmClientCertificate', @_);
   }
   sub CreateHsmConfiguration {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::CreateHsmConfiguration', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::CreateHsmConfigurationResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::CreateHsmConfiguration', @_);
   }
   sub DeleteCluster {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DeleteCluster', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DeleteClusterResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DeleteCluster', @_);
   }
   sub DeleteClusterParameterGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DeleteClusterParameterGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::RedShift::DeleteClusterParameterGroup', @_);
   }
   sub DeleteClusterSecurityGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DeleteClusterSecurityGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::RedShift::DeleteClusterSecurityGroup', @_);
   }
   sub DeleteClusterSnapshot {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DeleteClusterSnapshot', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DeleteClusterSnapshotResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DeleteClusterSnapshot', @_);
   }
   sub DeleteClusterSubnetGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DeleteClusterSubnetGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::RedShift::DeleteClusterSubnetGroup', @_);
   }
   sub DeleteEventSubscription {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DeleteEventSubscription', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::RedShift::DeleteEventSubscription', @_);
   }
   sub DeleteHsmClientCertificate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DeleteHsmClientCertificate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::RedShift::DeleteHsmClientCertificate', @_);
   }
   sub DeleteHsmConfiguration {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DeleteHsmConfiguration', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::RedShift::DeleteHsmConfiguration', @_);
   }
   sub DescribeClusterParameterGroups {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeClusterParameterGroups', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeClusterParameterGroupsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeClusterParameterGroups', @_);
   }
   sub DescribeClusterParameters {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeClusterParameters', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeClusterParametersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeClusterParameters', @_);
   }
   sub DescribeClusters {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeClusters', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeClustersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeClusters', @_);
   }
   sub DescribeClusterSecurityGroups {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeClusterSecurityGroups', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeClusterSecurityGroupsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeClusterSecurityGroups', @_);
   }
   sub DescribeClusterSnapshots {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeClusterSnapshots', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeClusterSnapshotsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeClusterSnapshots', @_);
   }
   sub DescribeClusterSubnetGroups {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeClusterSubnetGroups', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeClusterSubnetGroupsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeClusterSubnetGroups', @_);
   }
   sub DescribeClusterVersions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeClusterVersions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeClusterVersionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeClusterVersions', @_);
   }
   sub DescribeDefaultClusterParameters {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeDefaultClusterParameters', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeDefaultClusterParametersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeDefaultClusterParameters', @_);
   }
   sub DescribeEventCategories {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeEventCategories', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeEventCategoriesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeEventCategories', @_);
   }
   sub DescribeEvents {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeEvents', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeEventsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeEvents', @_);
   }
   sub DescribeEventSubscriptions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeEventSubscriptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeEventSubscriptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeEventSubscriptions', @_);
   }
   sub DescribeHsmClientCertificates {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeHsmClientCertificates', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeHsmClientCertificatesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeHsmClientCertificates', @_);
   }
   sub DescribeHsmConfigurations {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeHsmConfigurations', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeHsmConfigurationsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeHsmConfigurations', @_);
   }
   sub DescribeLoggingStatus {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeLoggingStatus', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeLoggingStatusResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeLoggingStatus', @_);
   }
   sub DescribeOrderableClusterOptions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeOrderableClusterOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeOrderableClusterOptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeOrderableClusterOptions', @_);
   }
   sub DescribeReservedNodeOfferings {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeReservedNodeOfferings', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeReservedNodeOfferingsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeReservedNodeOfferings', @_);
   }
   sub DescribeReservedNodes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeReservedNodes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeReservedNodesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeReservedNodes', @_);
   }
   sub DescribeResize {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DescribeResize', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DescribeResizeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DescribeResize', @_);
   }
   sub DisableLogging {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DisableLogging', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DisableLoggingResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DisableLogging', @_);
   }
   sub DisableSnapshotCopy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::DisableSnapshotCopy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::DisableSnapshotCopyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::DisableSnapshotCopy', @_);
   }
   sub EnableLogging {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::EnableLogging', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::EnableLoggingResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::EnableLogging', @_);
   }
   sub EnableSnapshotCopy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::EnableSnapshotCopy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::EnableSnapshotCopyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::EnableSnapshotCopy', @_);
   }
   sub ModifyCluster {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::ModifyCluster', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::ModifyClusterResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::ModifyCluster', @_);
   }
   sub ModifyClusterParameterGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::ModifyClusterParameterGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::ModifyClusterParameterGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::ModifyClusterParameterGroup', @_);
   }
   sub ModifyClusterSubnetGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::ModifyClusterSubnetGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::ModifyClusterSubnetGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::ModifyClusterSubnetGroup', @_);
   }
   sub ModifyEventSubscription {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::ModifyEventSubscription', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::ModifyEventSubscriptionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::ModifyEventSubscription', @_);
   }
   sub ModifySnapshotCopyRetentionPeriod {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::ModifySnapshotCopyRetentionPeriod', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::ModifySnapshotCopyRetentionPeriodResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::ModifySnapshotCopyRetentionPeriod', @_);
   }
   sub PurchaseReservedNodeOffering {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::PurchaseReservedNodeOffering', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::PurchaseReservedNodeOfferingResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::PurchaseReservedNodeOffering', @_);
   }
   sub RebootCluster {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::RebootCluster', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::RebootClusterResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::RebootCluster', @_);
   }
   sub ResetClusterParameterGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::ResetClusterParameterGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::ResetClusterParameterGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::ResetClusterParameterGroup', @_);
   }
   sub RestoreFromClusterSnapshot {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::RestoreFromClusterSnapshot', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::RestoreFromClusterSnapshotResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::RestoreFromClusterSnapshot', @_);
   }
   sub RevokeClusterSecurityGroupIngress {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::RevokeClusterSecurityGroupIngress', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::RevokeClusterSecurityGroupIngressResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::RevokeClusterSecurityGroupIngress', @_);
   }
   sub RevokeSnapshotAccess {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::RevokeSnapshotAccess', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::RevokeSnapshotAccessResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::RevokeSnapshotAccess', @_);
   }
   sub RotateEncryptionKey {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::RedShift::RotateEncryptionKey', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::RedShift::RotateEncryptionKeyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::RedShift::RotateEncryptionKey', @_);
   }
 }
 1;

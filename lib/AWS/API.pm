@@ -128,7 +128,15 @@ package AWS::API::UnwrappedParser {
         } else {
           if (defined $value) {
             if ($att_type eq 'Bool') {
-              $args{ $att } = ($value eq 'true')?1:0;
+              if ($value eq 'true') {
+                $args{ $att } = 1;
+              } elsif ($value eq 'false') {
+                $args{ $att } = 0;
+              } elsif ($value == 1) {
+                $args{ $att } = 1;
+              } else {
+                $args{ $att } = 0;
+              }
             } else {
               $args{ $att } = $value;
             }
@@ -212,6 +220,8 @@ package AWS::API::ResultParser {
             if ($att_type eq 'Bool') {
               if ($value eq 'true') {
                 $args{ $att } = 1;
+              } elsif ($value eq 'false') {
+                $args{ $att } = 0;
               } elsif ($value == 1) {
                 $args{ $att } = 1;
               } else {

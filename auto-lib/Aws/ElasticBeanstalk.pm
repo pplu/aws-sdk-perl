@@ -248,18 +248,22 @@ package Aws::ElasticBeanstalk::CheckDNSAvailability {
   use Moose;
   has CNAMEPrefix => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CheckDNSAvailability');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::CheckDNSAvailabilityResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CheckDNSAvailabilityResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CheckDNSAvailability');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::CheckDNSAvailabilityResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CheckDNSAvailabilityResult');
 }
 package Aws::ElasticBeanstalk::CreateApplication {
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApplication');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::CreateApplicationResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateApplicationResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApplication');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::CreateApplicationResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateApplicationResult');
 }
 package Aws::ElasticBeanstalk::CreateApplicationVersion {
   use Moose;
@@ -269,9 +273,11 @@ package Aws::ElasticBeanstalk::CreateApplicationVersion {
   has SourceBundle => (is => 'ro', isa => 'Aws::ElasticBeanstalk::S3Location');
   has VersionLabel => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApplicationVersion');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::CreateApplicationVersionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateApplicationVersionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApplicationVersion');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::CreateApplicationVersionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateApplicationVersionResult');
 }
 package Aws::ElasticBeanstalk::CreateConfigurationTemplate {
   use Moose;
@@ -283,9 +289,11 @@ package Aws::ElasticBeanstalk::CreateConfigurationTemplate {
   has SourceConfiguration => (is => 'ro', isa => 'Aws::ElasticBeanstalk::SourceConfiguration');
   has TemplateName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateConfigurationTemplate');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::CreateConfigurationTemplateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateConfigurationTemplateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateConfigurationTemplate');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::CreateConfigurationTemplateResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateConfigurationTemplateResult');
 }
 package Aws::ElasticBeanstalk::CreateEnvironment {
   use Moose;
@@ -301,25 +309,31 @@ package Aws::ElasticBeanstalk::CreateEnvironment {
   has Tier => (is => 'ro', isa => 'Aws::ElasticBeanstalk::EnvironmentTier');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEnvironment');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::CreateEnvironmentResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateEnvironmentResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEnvironment');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::CreateEnvironmentResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateEnvironmentResult');
 }
 package Aws::ElasticBeanstalk::CreateStorageLocation {
   use Moose;
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStorageLocation');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::CreateStorageLocationResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStorageLocationResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStorageLocation');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::CreateStorageLocationResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStorageLocationResult');
 }
 package Aws::ElasticBeanstalk::DeleteApplication {
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has TerminateEnvByForce => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteApplication');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::DeleteApplicationResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteApplicationResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteApplication');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::ElasticBeanstalk::DeleteApplicationVersion {
   use Moose;
@@ -327,44 +341,54 @@ package Aws::ElasticBeanstalk::DeleteApplicationVersion {
   has DeleteSourceBundle => (is => 'ro', isa => 'Bool');
   has VersionLabel => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteApplicationVersion');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::DeleteApplicationVersionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteApplicationVersionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteApplicationVersion');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::ElasticBeanstalk::DeleteConfigurationTemplate {
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has TemplateName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteConfigurationTemplate');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::DeleteConfigurationTemplateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteConfigurationTemplateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteConfigurationTemplate');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::ElasticBeanstalk::DeleteEnvironmentConfiguration {
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has EnvironmentName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteEnvironmentConfiguration');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::DeleteEnvironmentConfigurationResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteEnvironmentConfigurationResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteEnvironmentConfiguration');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::ElasticBeanstalk::DescribeApplicationVersions {
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
   has VersionLabels => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeApplicationVersions');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::DescribeApplicationVersionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeApplicationVersionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeApplicationVersions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::DescribeApplicationVersionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeApplicationVersionsResult');
 }
 package Aws::ElasticBeanstalk::DescribeApplications {
   use Moose;
   has ApplicationNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeApplications');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::DescribeApplicationsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeApplicationsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeApplications');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::DescribeApplicationsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeApplicationsResult');
 }
 package Aws::ElasticBeanstalk::DescribeConfigurationOptions {
   use Moose;
@@ -374,9 +398,11 @@ package Aws::ElasticBeanstalk::DescribeConfigurationOptions {
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationOptions');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::DescribeConfigurationOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationOptionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationOptions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::DescribeConfigurationOptionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationOptionsResult');
 }
 package Aws::ElasticBeanstalk::DescribeConfigurationSettings {
   use Moose;
@@ -384,18 +410,22 @@ package Aws::ElasticBeanstalk::DescribeConfigurationSettings {
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationSettings');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::DescribeConfigurationSettingsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationSettingsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationSettings');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::DescribeConfigurationSettingsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationSettingsResult');
 }
 package Aws::ElasticBeanstalk::DescribeEnvironmentResources {
   use Moose;
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEnvironmentResources');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::DescribeEnvironmentResourcesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEnvironmentResourcesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEnvironmentResources');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::DescribeEnvironmentResourcesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEnvironmentResourcesResult');
 }
 package Aws::ElasticBeanstalk::DescribeEnvironments {
   use Moose;
@@ -406,9 +436,11 @@ package Aws::ElasticBeanstalk::DescribeEnvironments {
   has IncludeDeleted => (is => 'ro', isa => 'Bool');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEnvironments');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::DescribeEnvironmentsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEnvironmentsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEnvironments');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::DescribeEnvironmentsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEnvironmentsResult');
 }
 package Aws::ElasticBeanstalk::DescribeEvents {
   use Moose;
@@ -424,25 +456,31 @@ package Aws::ElasticBeanstalk::DescribeEvents {
   has TemplateName => (is => 'ro', isa => 'Str');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEvents');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::DescribeEventsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEvents');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::DescribeEventsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');
 }
 package Aws::ElasticBeanstalk::ListAvailableSolutionStacks {
   use Moose;
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListAvailableSolutionStacks');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::ListAvailableSolutionStacksResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListAvailableSolutionStacksResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAvailableSolutionStacks');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::ListAvailableSolutionStacksResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListAvailableSolutionStacksResult');
 }
 package Aws::ElasticBeanstalk::RebuildEnvironment {
   use Moose;
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RebuildEnvironment');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::RebuildEnvironmentResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RebuildEnvironmentResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RebuildEnvironment');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::ElasticBeanstalk::RequestEnvironmentInfo {
   use Moose;
@@ -450,18 +488,22 @@ package Aws::ElasticBeanstalk::RequestEnvironmentInfo {
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has InfoType => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RequestEnvironmentInfo');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::RequestEnvironmentInfoResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RequestEnvironmentInfoResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RequestEnvironmentInfo');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::ElasticBeanstalk::RestartAppServer {
   use Moose;
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RestartAppServer');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::RestartAppServerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RestartAppServerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestartAppServer');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::ElasticBeanstalk::RetrieveEnvironmentInfo {
   use Moose;
@@ -469,9 +511,11 @@ package Aws::ElasticBeanstalk::RetrieveEnvironmentInfo {
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has InfoType => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RetrieveEnvironmentInfo');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::RetrieveEnvironmentInfoResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RetrieveEnvironmentInfoResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RetrieveEnvironmentInfo');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::RetrieveEnvironmentInfoResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RetrieveEnvironmentInfoResult');
 }
 package Aws::ElasticBeanstalk::SwapEnvironmentCNAMEs {
   use Moose;
@@ -480,9 +524,11 @@ package Aws::ElasticBeanstalk::SwapEnvironmentCNAMEs {
   has SourceEnvironmentId => (is => 'ro', isa => 'Str');
   has SourceEnvironmentName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SwapEnvironmentCNAMEs');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::SwapEnvironmentCNAMEsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SwapEnvironmentCNAMEsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SwapEnvironmentCNAMEs');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::ElasticBeanstalk::TerminateEnvironment {
   use Moose;
@@ -490,18 +536,22 @@ package Aws::ElasticBeanstalk::TerminateEnvironment {
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has TerminateResources => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateEnvironment');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::TerminateEnvironmentResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'TerminateEnvironmentResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateEnvironment');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::TerminateEnvironmentResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'TerminateEnvironmentResult');
 }
 package Aws::ElasticBeanstalk::UpdateApplication {
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplication');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::UpdateApplicationResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateApplicationResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplication');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::UpdateApplicationResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateApplicationResult');
 }
 package Aws::ElasticBeanstalk::UpdateApplicationVersion {
   use Moose;
@@ -509,9 +559,11 @@ package Aws::ElasticBeanstalk::UpdateApplicationVersion {
   has Description => (is => 'ro', isa => 'Str');
   has VersionLabel => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplicationVersion');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::UpdateApplicationVersionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateApplicationVersionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplicationVersion');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::UpdateApplicationVersionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateApplicationVersionResult');
 }
 package Aws::ElasticBeanstalk::UpdateConfigurationTemplate {
   use Moose;
@@ -521,9 +573,11 @@ package Aws::ElasticBeanstalk::UpdateConfigurationTemplate {
   has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Aws::ElasticBeanstalk::OptionSpecification]');
   has TemplateName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationTemplate');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::UpdateConfigurationTemplateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationTemplateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationTemplate');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::UpdateConfigurationTemplateResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationTemplateResult');
 }
 package Aws::ElasticBeanstalk::UpdateEnvironment {
   use Moose;
@@ -536,9 +590,11 @@ package Aws::ElasticBeanstalk::UpdateEnvironment {
   has Tier => (is => 'ro', isa => 'Aws::ElasticBeanstalk::EnvironmentTier');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEnvironment');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::UpdateEnvironmentResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateEnvironmentResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEnvironment');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::UpdateEnvironmentResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateEnvironmentResult');
 }
 package Aws::ElasticBeanstalk::ValidateConfigurationSettings {
   use Moose;
@@ -547,9 +603,11 @@ package Aws::ElasticBeanstalk::ValidateConfigurationSettings {
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Aws::ElasticBeanstalk::ConfigurationOptionSetting]', required => 1);
   has TemplateName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ValidateConfigurationSettings');
-  has _returns => (isa => 'Aws::ElasticBeanstalk::ValidateConfigurationSettingsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ValidateConfigurationSettingsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ValidateConfigurationSettings');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::ValidateConfigurationSettingsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ValidateConfigurationSettingsResult');
 }
 
 package Aws::ElasticBeanstalk::CheckDNSAvailabilityResult {
@@ -756,198 +814,119 @@ package Aws::ElasticBeanstalk {
   
   sub CheckDNSAvailability {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::CheckDNSAvailability', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::CheckDNSAvailabilityResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::CheckDNSAvailability', @_);
   }
   sub CreateApplication {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::CreateApplication', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::CreateApplicationResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::CreateApplication', @_);
   }
   sub CreateApplicationVersion {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::CreateApplicationVersion', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::CreateApplicationVersionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::CreateApplicationVersion', @_);
   }
   sub CreateConfigurationTemplate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::CreateConfigurationTemplate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::CreateConfigurationTemplateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::CreateConfigurationTemplate', @_);
   }
   sub CreateEnvironment {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::CreateEnvironment', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::CreateEnvironmentResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::CreateEnvironment', @_);
   }
   sub CreateStorageLocation {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::CreateStorageLocation', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::CreateStorageLocationResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::CreateStorageLocation', @_);
   }
   sub DeleteApplication {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::DeleteApplication', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::ElasticBeanstalk::DeleteApplication', @_);
   }
   sub DeleteApplicationVersion {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::DeleteApplicationVersion', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::ElasticBeanstalk::DeleteApplicationVersion', @_);
   }
   sub DeleteConfigurationTemplate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::DeleteConfigurationTemplate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::ElasticBeanstalk::DeleteConfigurationTemplate', @_);
   }
   sub DeleteEnvironmentConfiguration {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::DeleteEnvironmentConfiguration', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::ElasticBeanstalk::DeleteEnvironmentConfiguration', @_);
   }
   sub DescribeApplications {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::DescribeApplications', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::DescribeApplicationsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::DescribeApplications', @_);
   }
   sub DescribeApplicationVersions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::DescribeApplicationVersions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::DescribeApplicationVersionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::DescribeApplicationVersions', @_);
   }
   sub DescribeConfigurationOptions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::DescribeConfigurationOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::DescribeConfigurationOptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::DescribeConfigurationOptions', @_);
   }
   sub DescribeConfigurationSettings {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::DescribeConfigurationSettings', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::DescribeConfigurationSettingsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::DescribeConfigurationSettings', @_);
   }
   sub DescribeEnvironmentResources {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::DescribeEnvironmentResources', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::DescribeEnvironmentResourcesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::DescribeEnvironmentResources', @_);
   }
   sub DescribeEnvironments {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::DescribeEnvironments', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::DescribeEnvironmentsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::DescribeEnvironments', @_);
   }
   sub DescribeEvents {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::DescribeEvents', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::DescribeEventsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::DescribeEvents', @_);
   }
   sub ListAvailableSolutionStacks {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::ListAvailableSolutionStacks', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::ListAvailableSolutionStacksResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::ListAvailableSolutionStacks', @_);
   }
   sub RebuildEnvironment {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::RebuildEnvironment', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::ElasticBeanstalk::RebuildEnvironment', @_);
   }
   sub RequestEnvironmentInfo {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::RequestEnvironmentInfo', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::ElasticBeanstalk::RequestEnvironmentInfo', @_);
   }
   sub RestartAppServer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::RestartAppServer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::ElasticBeanstalk::RestartAppServer', @_);
   }
   sub RetrieveEnvironmentInfo {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::RetrieveEnvironmentInfo', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::RetrieveEnvironmentInfoResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::RetrieveEnvironmentInfo', @_);
   }
   sub SwapEnvironmentCNAMEs {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::SwapEnvironmentCNAMEs', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::ElasticBeanstalk::SwapEnvironmentCNAMEs', @_);
   }
   sub TerminateEnvironment {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::TerminateEnvironment', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::TerminateEnvironmentResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::TerminateEnvironment', @_);
   }
   sub UpdateApplication {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::UpdateApplication', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::UpdateApplicationResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::UpdateApplication', @_);
   }
   sub UpdateApplicationVersion {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::UpdateApplicationVersion', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::UpdateApplicationVersionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::UpdateApplicationVersion', @_);
   }
   sub UpdateConfigurationTemplate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::UpdateConfigurationTemplate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::UpdateConfigurationTemplateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::UpdateConfigurationTemplate', @_);
   }
   sub UpdateEnvironment {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::UpdateEnvironment', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::UpdateEnvironmentResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::UpdateEnvironment', @_);
   }
   sub ValidateConfigurationSettings {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ElasticBeanstalk::ValidateConfigurationSettings', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ElasticBeanstalk::ValidateConfigurationSettingsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ElasticBeanstalk::ValidateConfigurationSettings', @_);
   }
 }
 1;

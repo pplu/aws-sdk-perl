@@ -1350,18 +1350,22 @@ package Aws::EC2::AcceptVpcPeeringConnection {
   has DryRun => (is => 'ro', isa => 'Bool');
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AcceptVpcPeeringConnection');
-  has _returns => (isa => 'Aws::EC2::AcceptVpcPeeringConnectionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AcceptVpcPeeringConnectionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AcceptVpcPeeringConnection');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::AcceptVpcPeeringConnectionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::AllocateAddress {
   use Moose;
   has Domain => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AllocateAddress');
-  has _returns => (isa => 'Aws::EC2::AllocateAddressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AllocateAddressResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AllocateAddress');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::AllocateAddressResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::AssignPrivateIpAddresses {
   use Moose;
@@ -1370,9 +1374,11 @@ package Aws::EC2::AssignPrivateIpAddresses {
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PrivateIpAddress' );
   has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AssignPrivateIpAddresses');
-  has _returns => (isa => 'Aws::EC2::AssignPrivateIpAddressesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AssignPrivateIpAddressesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssignPrivateIpAddresses');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::AssociateAddress {
   use Moose;
@@ -1384,9 +1390,11 @@ package Aws::EC2::AssociateAddress {
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
   has PublicIp => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateAddress');
-  has _returns => (isa => 'Aws::EC2::AssociateAddressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AssociateAddressResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateAddress');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::AssociateAddressResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::AssociateDhcpOptions {
   use Moose;
@@ -1394,9 +1402,11 @@ package Aws::EC2::AssociateDhcpOptions {
   has DryRun => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateDhcpOptions');
-  has _returns => (isa => 'Aws::EC2::AssociateDhcpOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AssociateDhcpOptionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateDhcpOptions');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::AssociateRouteTable {
   use Moose;
@@ -1404,9 +1414,11 @@ package Aws::EC2::AssociateRouteTable {
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateRouteTable');
-  has _returns => (isa => 'Aws::EC2::AssociateRouteTableResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AssociateRouteTableResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateRouteTable');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::AssociateRouteTableResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::AttachInternetGateway {
   use Moose;
@@ -1414,9 +1426,11 @@ package Aws::EC2::AttachInternetGateway {
   has InternetGatewayId => (is => 'ro', isa => 'Str', required => 1);
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AttachInternetGateway');
-  has _returns => (isa => 'Aws::EC2::AttachInternetGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AttachInternetGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachInternetGateway');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::AttachNetworkInterface {
   use Moose;
@@ -1425,9 +1439,11 @@ package Aws::EC2::AttachNetworkInterface {
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AttachNetworkInterface');
-  has _returns => (isa => 'Aws::EC2::AttachNetworkInterfaceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AttachNetworkInterfaceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachNetworkInterface');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::AttachNetworkInterfaceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::AttachVolume {
   use Moose;
@@ -1436,9 +1452,11 @@ package Aws::EC2::AttachVolume {
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AttachVolume');
-  has _returns => (isa => 'Aws::EC2::AttachVolumeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AttachVolumeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachVolume');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::AttachVolumeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::AttachVpnGateway {
   use Moose;
@@ -1446,9 +1464,11 @@ package Aws::EC2::AttachVpnGateway {
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
   has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AttachVpnGateway');
-  has _returns => (isa => 'Aws::EC2::AttachVpnGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AttachVpnGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachVpnGateway');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::AttachVpnGatewayResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::AuthorizeSecurityGroupEgress {
   use Moose;
@@ -1462,9 +1482,11 @@ package Aws::EC2::AuthorizeSecurityGroupEgress {
   has SourceSecurityGroupOwnerId => (is => 'ro', isa => 'Str');
   has ToPort => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeSecurityGroupEgress');
-  has _returns => (isa => 'Aws::EC2::AuthorizeSecurityGroupEgressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeSecurityGroupEgressResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeSecurityGroupEgress');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::AuthorizeSecurityGroupIngress {
   use Moose;
@@ -1479,9 +1501,11 @@ package Aws::EC2::AuthorizeSecurityGroupIngress {
   has SourceSecurityGroupOwnerId => (is => 'ro', isa => 'Str');
   has ToPort => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeSecurityGroupIngress');
-  has _returns => (isa => 'Aws::EC2::AuthorizeSecurityGroupIngressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeSecurityGroupIngressResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeSecurityGroupIngress');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::BundleInstance {
   use Moose;
@@ -1489,18 +1513,22 @@ package Aws::EC2::BundleInstance {
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has Storage => (is => 'ro', isa => 'Aws::EC2::Storage', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'BundleInstance');
-  has _returns => (isa => 'Aws::EC2::BundleInstanceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'BundleInstanceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BundleInstance');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::BundleInstanceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CancelBundleTask {
   use Moose;
   has BundleId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CancelBundleTask');
-  has _returns => (isa => 'Aws::EC2::CancelBundleTaskResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CancelBundleTaskResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelBundleTask');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CancelBundleTaskResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CancelConversionTask {
   use Moose;
@@ -1508,34 +1536,42 @@ package Aws::EC2::CancelConversionTask {
   has DryRun => (is => 'ro', isa => 'Bool');
   has ReasonMessage => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CancelConversionTask');
-  has _returns => (isa => 'Aws::EC2::CancelConversionTaskResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CancelConversionTaskResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelConversionTask');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CancelExportTask {
   use Moose;
   has ExportTaskId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CancelExportTask');
-  has _returns => (isa => 'Aws::EC2::CancelExportTaskResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CancelExportTaskResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelExportTask');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CancelReservedInstancesListing {
   use Moose;
   has ReservedInstancesListingId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CancelReservedInstancesListing');
-  has _returns => (isa => 'Aws::EC2::CancelReservedInstancesListingResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CancelReservedInstancesListingResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelReservedInstancesListing');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CancelReservedInstancesListingResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CancelSpotInstanceRequests {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has SpotInstanceRequestIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SpotInstanceRequestId' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CancelSpotInstanceRequests');
-  has _returns => (isa => 'Aws::EC2::CancelSpotInstanceRequestsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CancelSpotInstanceRequestsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelSpotInstanceRequests');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CancelSpotInstanceRequestsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ConfirmProductInstance {
   use Moose;
@@ -1543,9 +1579,11 @@ package Aws::EC2::ConfirmProductInstance {
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has ProductCode => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ConfirmProductInstance');
-  has _returns => (isa => 'Aws::EC2::ConfirmProductInstanceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ConfirmProductInstanceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ConfirmProductInstance');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::ConfirmProductInstanceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CopyImage {
   use Moose;
@@ -1556,9 +1594,11 @@ package Aws::EC2::CopyImage {
   has SourceImageId => (is => 'ro', isa => 'Str', required => 1);
   has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CopyImage');
-  has _returns => (isa => 'Aws::EC2::CopyImageResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CopyImageResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyImage');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CopyImageResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CopySnapshot {
   use Moose;
@@ -1569,9 +1609,11 @@ package Aws::EC2::CopySnapshot {
   has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
   has SourceSnapshotId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CopySnapshot');
-  has _returns => (isa => 'Aws::EC2::CopySnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CopySnapshotResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopySnapshot');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CopySnapshotResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateCustomerGateway {
   use Moose;
@@ -1580,18 +1622,22 @@ package Aws::EC2::CreateCustomerGateway {
   has PublicIp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'IpAddress' , required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCustomerGateway');
-  has _returns => (isa => 'Aws::EC2::CreateCustomerGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCustomerGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCustomerGateway');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateCustomerGatewayResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateDhcpOptions {
   use Moose;
   has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::DhcpConfiguration]', traits => ['NameInRequest'], request_name => 'DhcpConfiguration' , required => 1);
   has DryRun => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDhcpOptions');
-  has _returns => (isa => 'Aws::EC2::CreateDhcpOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDhcpOptionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDhcpOptions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateDhcpOptionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateImage {
   use Moose;
@@ -1602,9 +1648,11 @@ package Aws::EC2::CreateImage {
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NoReboot => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateImage');
-  has _returns => (isa => 'Aws::EC2::CreateImageResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateImageResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateImage');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateImageResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateInstanceExportTask {
   use Moose;
@@ -1613,35 +1661,43 @@ package Aws::EC2::CreateInstanceExportTask {
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has TargetEnvironment => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInstanceExportTask');
-  has _returns => (isa => 'Aws::EC2::CreateInstanceExportTaskResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateInstanceExportTaskResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInstanceExportTask');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateInstanceExportTaskResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateInternetGateway {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInternetGateway');
-  has _returns => (isa => 'Aws::EC2::CreateInternetGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateInternetGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInternetGateway');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateInternetGatewayResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateKeyPair {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has KeyName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateKeyPair');
-  has _returns => (isa => 'Aws::EC2::CreateKeyPairResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateKeyPairResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateKeyPair');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateKeyPairResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateNetworkAcl {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNetworkAcl');
-  has _returns => (isa => 'Aws::EC2::CreateNetworkAclResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateNetworkAclResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNetworkAcl');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateNetworkAclResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateNetworkAclEntry {
   use Moose;
@@ -1655,9 +1711,11 @@ package Aws::EC2::CreateNetworkAclEntry {
   has RuleAction => (is => 'ro', isa => 'Str', required => 1);
   has RuleNumber => (is => 'ro', isa => 'Int', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNetworkAclEntry');
-  has _returns => (isa => 'Aws::EC2::CreateNetworkAclEntryResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateNetworkAclEntryResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNetworkAclEntry');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateNetworkInterface {
   use Moose;
@@ -1669,9 +1727,11 @@ package Aws::EC2::CreateNetworkInterface {
   has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int');
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNetworkInterface');
-  has _returns => (isa => 'Aws::EC2::CreateNetworkInterfaceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateNetworkInterfaceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNetworkInterface');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateNetworkInterfaceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreatePlacementGroup {
   use Moose;
@@ -1679,9 +1739,11 @@ package Aws::EC2::CreatePlacementGroup {
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has Strategy => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePlacementGroup');
-  has _returns => (isa => 'Aws::EC2::CreatePlacementGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePlacementGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePlacementGroup');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateReservedInstancesListing {
   use Moose;
@@ -1690,9 +1752,11 @@ package Aws::EC2::CreateReservedInstancesListing {
   has PriceSchedules => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PriceScheduleSpecification]', required => 1);
   has ReservedInstancesId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateReservedInstancesListing');
-  has _returns => (isa => 'Aws::EC2::CreateReservedInstancesListingResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateReservedInstancesListingResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateReservedInstancesListing');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateReservedInstancesListingResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateRoute {
   use Moose;
@@ -1704,18 +1768,22 @@ package Aws::EC2::CreateRoute {
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRoute');
-  has _returns => (isa => 'Aws::EC2::CreateRouteResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateRouteResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRoute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateRouteTable {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRouteTable');
-  has _returns => (isa => 'Aws::EC2::CreateRouteTableResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateRouteTableResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRouteTable');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateRouteTableResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateSecurityGroup {
   use Moose;
@@ -1724,9 +1792,11 @@ package Aws::EC2::CreateSecurityGroup {
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has VpcId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSecurityGroup');
-  has _returns => (isa => 'Aws::EC2::CreateSecurityGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSecurityGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSecurityGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateSecurityGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateSnapshot {
   use Moose;
@@ -1734,9 +1804,11 @@ package Aws::EC2::CreateSnapshot {
   has DryRun => (is => 'ro', isa => 'Bool');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSnapshot');
-  has _returns => (isa => 'Aws::EC2::CreateSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSnapshotResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSnapshot');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateSnapshotResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateSpotDatafeedSubscription {
   use Moose;
@@ -1744,9 +1816,11 @@ package Aws::EC2::CreateSpotDatafeedSubscription {
   has DryRun => (is => 'ro', isa => 'Bool');
   has Prefix => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSpotDatafeedSubscription');
-  has _returns => (isa => 'Aws::EC2::CreateSpotDatafeedSubscriptionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSpotDatafeedSubscriptionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSpotDatafeedSubscription');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateSpotDatafeedSubscriptionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateSubnet {
   use Moose;
@@ -1755,9 +1829,11 @@ package Aws::EC2::CreateSubnet {
   has DryRun => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSubnet');
-  has _returns => (isa => 'Aws::EC2::CreateSubnetResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSubnetResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSubnet');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateSubnetResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateTags {
   use Moose;
@@ -1765,9 +1841,11 @@ package Aws::EC2::CreateTags {
   has Resources => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['NameInRequest'], request_name => 'Tag' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTags');
-  has _returns => (isa => 'Aws::EC2::CreateTagsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateTagsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTags');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateVolume {
   use Moose;
@@ -1779,9 +1857,11 @@ package Aws::EC2::CreateVolume {
   has SnapshotId => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVolume');
-  has _returns => (isa => 'Aws::EC2::CreateVolumeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVolumeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVolume');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateVolumeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateVpc {
   use Moose;
@@ -1789,9 +1869,11 @@ package Aws::EC2::CreateVpc {
   has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceTenancy => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpc');
-  has _returns => (isa => 'Aws::EC2::CreateVpcResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVpcResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpc');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateVpcResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateVpcPeeringConnection {
   use Moose;
@@ -1800,9 +1882,11 @@ package Aws::EC2::CreateVpcPeeringConnection {
   has PeerVpcId => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpcPeeringConnection');
-  has _returns => (isa => 'Aws::EC2::CreateVpcPeeringConnectionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVpcPeeringConnectionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpcPeeringConnection');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateVpcPeeringConnectionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateVpnConnection {
   use Moose;
@@ -1812,18 +1896,22 @@ package Aws::EC2::CreateVpnConnection {
   has Type => (is => 'ro', isa => 'Str', required => 1);
   has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpnConnection');
-  has _returns => (isa => 'Aws::EC2::CreateVpnConnectionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVpnConnectionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpnConnection');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateVpnConnectionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateVpnConnectionRoute {
   use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has VpnConnectionId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpnConnectionRoute');
-  has _returns => (isa => 'Aws::EC2::CreateVpnConnectionRouteResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVpnConnectionRouteResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpnConnectionRoute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::CreateVpnGateway {
   use Moose;
@@ -1831,54 +1919,66 @@ package Aws::EC2::CreateVpnGateway {
   has DryRun => (is => 'ro', isa => 'Bool');
   has Type => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpnGateway');
-  has _returns => (isa => 'Aws::EC2::CreateVpnGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVpnGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpnGateway');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::CreateVpnGatewayResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteCustomerGateway {
   use Moose;
   has CustomerGatewayId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCustomerGateway');
-  has _returns => (isa => 'Aws::EC2::DeleteCustomerGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteCustomerGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCustomerGateway');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteDhcpOptions {
   use Moose;
   has DhcpOptionsId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDhcpOptions');
-  has _returns => (isa => 'Aws::EC2::DeleteDhcpOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDhcpOptionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDhcpOptions');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteInternetGateway {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has InternetGatewayId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteInternetGateway');
-  has _returns => (isa => 'Aws::EC2::DeleteInternetGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteInternetGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteInternetGateway');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteKeyPair {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has KeyName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteKeyPair');
-  has _returns => (isa => 'Aws::EC2::DeleteKeyPairResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteKeyPairResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteKeyPair');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteNetworkAcl {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has NetworkAclId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteNetworkAcl');
-  has _returns => (isa => 'Aws::EC2::DeleteNetworkAclResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteNetworkAclResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteNetworkAcl');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteNetworkAclEntry {
   use Moose;
@@ -1887,27 +1987,33 @@ package Aws::EC2::DeleteNetworkAclEntry {
   has NetworkAclId => (is => 'ro', isa => 'Str', required => 1);
   has RuleNumber => (is => 'ro', isa => 'Int', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteNetworkAclEntry');
-  has _returns => (isa => 'Aws::EC2::DeleteNetworkAclEntryResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteNetworkAclEntryResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteNetworkAclEntry');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteNetworkInterface {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteNetworkInterface');
-  has _returns => (isa => 'Aws::EC2::DeleteNetworkInterfaceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteNetworkInterfaceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteNetworkInterface');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeletePlacementGroup {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeletePlacementGroup');
-  has _returns => (isa => 'Aws::EC2::DeletePlacementGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeletePlacementGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeletePlacementGroup');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteRoute {
   use Moose;
@@ -1915,18 +2021,22 @@ package Aws::EC2::DeleteRoute {
   has DryRun => (is => 'ro', isa => 'Bool');
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRoute');
-  has _returns => (isa => 'Aws::EC2::DeleteRouteResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteRouteResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRoute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteRouteTable {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRouteTable');
-  has _returns => (isa => 'Aws::EC2::DeleteRouteTableResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteRouteTableResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRouteTable');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteSecurityGroup {
   use Moose;
@@ -1934,35 +2044,43 @@ package Aws::EC2::DeleteSecurityGroup {
   has GroupId => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSecurityGroup');
-  has _returns => (isa => 'Aws::EC2::DeleteSecurityGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSecurityGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSecurityGroup');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteSnapshot {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has SnapshotId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSnapshot');
-  has _returns => (isa => 'Aws::EC2::DeleteSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSnapshotResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSnapshot');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteSpotDatafeedSubscription {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSpotDatafeedSubscription');
-  has _returns => (isa => 'Aws::EC2::DeleteSpotDatafeedSubscriptionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSpotDatafeedSubscriptionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSpotDatafeedSubscription');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteSubnet {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSubnet');
-  has _returns => (isa => 'Aws::EC2::DeleteSubnetResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSubnetResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSubnet');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteTags {
   use Moose;
@@ -1970,81 +2088,99 @@ package Aws::EC2::DeleteTags {
   has Resources => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTags');
-  has _returns => (isa => 'Aws::EC2::DeleteTagsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteTagsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTags');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteVolume {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVolume');
-  has _returns => (isa => 'Aws::EC2::DeleteVolumeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVolumeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVolume');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteVpc {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpc');
-  has _returns => (isa => 'Aws::EC2::DeleteVpcResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVpcResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpc');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteVpcPeeringConnection {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpcPeeringConnection');
-  has _returns => (isa => 'Aws::EC2::DeleteVpcPeeringConnectionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVpcPeeringConnectionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpcPeeringConnection');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DeleteVpcPeeringConnectionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteVpnConnection {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has VpnConnectionId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpnConnection');
-  has _returns => (isa => 'Aws::EC2::DeleteVpnConnectionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVpnConnectionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpnConnection');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteVpnConnectionRoute {
   use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has VpnConnectionId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpnConnectionRoute');
-  has _returns => (isa => 'Aws::EC2::DeleteVpnConnectionRouteResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVpnConnectionRouteResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpnConnectionRoute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeleteVpnGateway {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpnGateway');
-  has _returns => (isa => 'Aws::EC2::DeleteVpnGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVpnGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpnGateway');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DeregisterImage {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterImage');
-  has _returns => (isa => 'Aws::EC2::DeregisterImageResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeregisterImageResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterImage');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeAccountAttributes {
   use Moose;
   has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AttributeName' );
   has DryRun => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAccountAttributes');
-  has _returns => (isa => 'Aws::EC2::DescribeAccountAttributesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAccountAttributesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAccountAttributes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeAccountAttributesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeAddresses {
   use Moose;
@@ -2053,9 +2189,11 @@ package Aws::EC2::DescribeAddresses {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has PublicIps => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PublicIp' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAddresses');
-  has _returns => (isa => 'Aws::EC2::DescribeAddressesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAddressesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAddresses');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeAddressesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeAvailabilityZones {
   use Moose;
@@ -2063,9 +2201,11 @@ package Aws::EC2::DescribeAvailabilityZones {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has ZoneNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ZoneName' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityZones');
-  has _returns => (isa => 'Aws::EC2::DescribeAvailabilityZonesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityZonesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityZones');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeAvailabilityZonesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeBundleTasks {
   use Moose;
@@ -2073,9 +2213,11 @@ package Aws::EC2::DescribeBundleTasks {
   has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeBundleTasks');
-  has _returns => (isa => 'Aws::EC2::DescribeBundleTasksResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeBundleTasksResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeBundleTasks');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeBundleTasksResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeConversionTasks {
   use Moose;
@@ -2083,9 +2225,11 @@ package Aws::EC2::DescribeConversionTasks {
   has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConversionTasks');
-  has _returns => (isa => 'Aws::EC2::DescribeConversionTasksResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConversionTasksResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConversionTasks');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeConversionTasksResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeCustomerGateways {
   use Moose;
@@ -2093,9 +2237,11 @@ package Aws::EC2::DescribeCustomerGateways {
   has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCustomerGateways');
-  has _returns => (isa => 'Aws::EC2::DescribeCustomerGatewaysResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCustomerGatewaysResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCustomerGateways');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeCustomerGatewaysResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeDhcpOptions {
   use Moose;
@@ -2103,17 +2249,21 @@ package Aws::EC2::DescribeDhcpOptions {
   has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDhcpOptions');
-  has _returns => (isa => 'Aws::EC2::DescribeDhcpOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDhcpOptionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDhcpOptions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeDhcpOptionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeExportTasks {
   use Moose;
   has ExportTaskIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ExportTaskId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeExportTasks');
-  has _returns => (isa => 'Aws::EC2::DescribeExportTasksResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeExportTasksResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeExportTasks');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeExportTasksResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeImageAttribute {
   use Moose;
@@ -2121,9 +2271,11 @@ package Aws::EC2::DescribeImageAttribute {
   has DryRun => (is => 'ro', isa => 'Bool');
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeImageAttribute');
-  has _returns => (isa => 'Aws::EC2::DescribeImageAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeImageAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeImageAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeImageAttributeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeImages {
   use Moose;
@@ -2133,9 +2285,11 @@ package Aws::EC2::DescribeImages {
   has ImageIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ImageId' );
   has Owners => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'Owner' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeImages');
-  has _returns => (isa => 'Aws::EC2::DescribeImagesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeImagesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeImages');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeImagesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeInstanceAttribute {
   use Moose;
@@ -2143,9 +2297,11 @@ package Aws::EC2::DescribeInstanceAttribute {
   has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInstanceAttribute');
-  has _returns => (isa => 'Aws::EC2::DescribeInstanceAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeInstanceAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInstanceAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeInstanceAttributeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeInstanceStatus {
   use Moose;
@@ -2156,9 +2312,11 @@ package Aws::EC2::DescribeInstanceStatus {
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInstanceStatus');
-  has _returns => (isa => 'Aws::EC2::DescribeInstanceStatusResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeInstanceStatusResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInstanceStatus');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeInstanceStatusResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeInstances {
   use Moose;
@@ -2168,9 +2326,11 @@ package Aws::EC2::DescribeInstances {
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInstances');
-  has _returns => (isa => 'Aws::EC2::DescribeInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeInternetGateways {
   use Moose;
@@ -2178,9 +2338,11 @@ package Aws::EC2::DescribeInternetGateways {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has InternetGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InternetGatewayId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInternetGateways');
-  has _returns => (isa => 'Aws::EC2::DescribeInternetGatewaysResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeInternetGatewaysResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInternetGateways');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeInternetGatewaysResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeKeyPairs {
   use Moose;
@@ -2188,9 +2350,11 @@ package Aws::EC2::DescribeKeyPairs {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has KeyNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'KeyName' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeKeyPairs');
-  has _returns => (isa => 'Aws::EC2::DescribeKeyPairsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeKeyPairsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeKeyPairs');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeKeyPairsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeNetworkAcls {
   use Moose;
@@ -2198,9 +2362,11 @@ package Aws::EC2::DescribeNetworkAcls {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has NetworkAclIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'NetworkAclId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeNetworkAcls');
-  has _returns => (isa => 'Aws::EC2::DescribeNetworkAclsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeNetworkAclsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeNetworkAcls');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeNetworkAclsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeNetworkInterfaceAttribute {
   use Moose;
@@ -2211,9 +2377,11 @@ package Aws::EC2::DescribeNetworkInterfaceAttribute {
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has SourceDestCheck => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeNetworkInterfaceAttribute');
-  has _returns => (isa => 'Aws::EC2::DescribeNetworkInterfaceAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeNetworkInterfaceAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeNetworkInterfaceAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeNetworkInterfaceAttributeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeNetworkInterfaces {
   use Moose;
@@ -2221,9 +2389,11 @@ package Aws::EC2::DescribeNetworkInterfaces {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has NetworkInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'NetworkInterfaceId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeNetworkInterfaces');
-  has _returns => (isa => 'Aws::EC2::DescribeNetworkInterfacesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeNetworkInterfacesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeNetworkInterfaces');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeNetworkInterfacesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribePlacementGroups {
   use Moose;
@@ -2231,9 +2401,11 @@ package Aws::EC2::DescribePlacementGroups {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupName' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePlacementGroups');
-  has _returns => (isa => 'Aws::EC2::DescribePlacementGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribePlacementGroupsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePlacementGroups');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribePlacementGroupsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeRegions {
   use Moose;
@@ -2241,9 +2413,11 @@ package Aws::EC2::DescribeRegions {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has RegionNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RegionName' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRegions');
-  has _returns => (isa => 'Aws::EC2::DescribeRegionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeRegionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRegions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeRegionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeReservedInstances {
   use Moose;
@@ -2252,9 +2426,11 @@ package Aws::EC2::DescribeReservedInstances {
   has OfferingType => (is => 'ro', isa => 'Str');
   has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstances');
-  has _returns => (isa => 'Aws::EC2::DescribeReservedInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeReservedInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeReservedInstancesListings {
   use Moose;
@@ -2262,9 +2438,11 @@ package Aws::EC2::DescribeReservedInstancesListings {
   has ReservedInstancesId => (is => 'ro', isa => 'Str');
   has ReservedInstancesListingId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesListings');
-  has _returns => (isa => 'Aws::EC2::DescribeReservedInstancesListingsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesListingsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesListings');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeReservedInstancesListingsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeReservedInstancesModifications {
   use Moose;
@@ -2272,9 +2450,11 @@ package Aws::EC2::DescribeReservedInstancesModifications {
   has NextToken => (is => 'ro', isa => 'Str');
   has ReservedInstancesModificationIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesModificationId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesModifications');
-  has _returns => (isa => 'Aws::EC2::DescribeReservedInstancesModificationsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesModificationsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesModifications');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeReservedInstancesModificationsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeReservedInstancesOfferings {
   use Moose;
@@ -2293,9 +2473,11 @@ package Aws::EC2::DescribeReservedInstancesOfferings {
   has ProductDescription => (is => 'ro', isa => 'Str');
   has ReservedInstancesOfferingIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesOfferingId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesOfferings');
-  has _returns => (isa => 'Aws::EC2::DescribeReservedInstancesOfferingsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesOfferingsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesOfferings');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeReservedInstancesOfferingsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeRouteTables {
   use Moose;
@@ -2303,9 +2485,11 @@ package Aws::EC2::DescribeRouteTables {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RouteTableId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRouteTables');
-  has _returns => (isa => 'Aws::EC2::DescribeRouteTablesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeRouteTablesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRouteTables');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeRouteTablesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeSecurityGroups {
   use Moose;
@@ -2314,9 +2498,11 @@ package Aws::EC2::DescribeSecurityGroups {
   has GroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupId' );
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupName' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSecurityGroups');
-  has _returns => (isa => 'Aws::EC2::DescribeSecurityGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSecurityGroupsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSecurityGroups');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeSecurityGroupsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeSnapshotAttribute {
   use Moose;
@@ -2324,9 +2510,11 @@ package Aws::EC2::DescribeSnapshotAttribute {
   has DryRun => (is => 'ro', isa => 'Bool');
   has SnapshotId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotAttribute');
-  has _returns => (isa => 'Aws::EC2::DescribeSnapshotAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeSnapshotAttributeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeSnapshots {
   use Moose;
@@ -2336,17 +2524,21 @@ package Aws::EC2::DescribeSnapshots {
   has RestorableByUserIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RestorableBy' );
   has SnapshotIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SnapshotId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSnapshots');
-  has _returns => (isa => 'Aws::EC2::DescribeSnapshotsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSnapshots');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeSnapshotsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeSpotDatafeedSubscription {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSpotDatafeedSubscription');
-  has _returns => (isa => 'Aws::EC2::DescribeSpotDatafeedSubscriptionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSpotDatafeedSubscriptionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSpotDatafeedSubscription');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeSpotDatafeedSubscriptionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeSpotInstanceRequests {
   use Moose;
@@ -2354,9 +2546,11 @@ package Aws::EC2::DescribeSpotInstanceRequests {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has SpotInstanceRequestIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SpotInstanceRequestId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSpotInstanceRequests');
-  has _returns => (isa => 'Aws::EC2::DescribeSpotInstanceRequestsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSpotInstanceRequestsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSpotInstanceRequests');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeSpotInstanceRequestsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeSpotPriceHistory {
   use Moose;
@@ -2370,9 +2564,11 @@ package Aws::EC2::DescribeSpotPriceHistory {
   has ProductDescriptions => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ProductDescription' );
   has StartTime => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSpotPriceHistory');
-  has _returns => (isa => 'Aws::EC2::DescribeSpotPriceHistoryResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSpotPriceHistoryResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSpotPriceHistory');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeSpotPriceHistoryResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeSubnets {
   use Moose;
@@ -2380,9 +2576,11 @@ package Aws::EC2::DescribeSubnets {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSubnets');
-  has _returns => (isa => 'Aws::EC2::DescribeSubnetsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSubnetsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSubnets');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeSubnetsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeTags {
   use Moose;
@@ -2391,9 +2589,11 @@ package Aws::EC2::DescribeTags {
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTags');
-  has _returns => (isa => 'Aws::EC2::DescribeTagsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTagsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTags');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeTagsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeVolumeAttribute {
   use Moose;
@@ -2401,9 +2601,11 @@ package Aws::EC2::DescribeVolumeAttribute {
   has DryRun => (is => 'ro', isa => 'Bool');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVolumeAttribute');
-  has _returns => (isa => 'Aws::EC2::DescribeVolumeAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVolumeAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVolumeAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeVolumeAttributeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeVolumeStatus {
   use Moose;
@@ -2413,9 +2615,11 @@ package Aws::EC2::DescribeVolumeStatus {
   has NextToken => (is => 'ro', isa => 'Str');
   has VolumeIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VolumeId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVolumeStatus');
-  has _returns => (isa => 'Aws::EC2::DescribeVolumeStatusResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVolumeStatusResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVolumeStatus');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeVolumeStatusResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeVolumes {
   use Moose;
@@ -2423,9 +2627,11 @@ package Aws::EC2::DescribeVolumes {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has VolumeIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VolumeId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVolumes');
-  has _returns => (isa => 'Aws::EC2::DescribeVolumesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVolumesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVolumes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeVolumesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeVpcAttribute {
   use Moose;
@@ -2433,9 +2639,11 @@ package Aws::EC2::DescribeVpcAttribute {
   has DryRun => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpcAttribute');
-  has _returns => (isa => 'Aws::EC2::DescribeVpcAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVpcAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpcAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeVpcAttributeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeVpcPeeringConnections {
   use Moose;
@@ -2443,9 +2651,11 @@ package Aws::EC2::DescribeVpcPeeringConnections {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has VpcPeeringConnectionIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcPeeringConnectionId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpcPeeringConnections');
-  has _returns => (isa => 'Aws::EC2::DescribeVpcPeeringConnectionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVpcPeeringConnectionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpcPeeringConnections');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeVpcPeeringConnectionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeVpcs {
   use Moose;
@@ -2453,9 +2663,11 @@ package Aws::EC2::DescribeVpcs {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has VpcIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpcs');
-  has _returns => (isa => 'Aws::EC2::DescribeVpcsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVpcsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpcs');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeVpcsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeVpnConnections {
   use Moose;
@@ -2463,9 +2675,11 @@ package Aws::EC2::DescribeVpnConnections {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has VpnConnectionIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpnConnectionId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpnConnections');
-  has _returns => (isa => 'Aws::EC2::DescribeVpnConnectionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVpnConnectionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpnConnections');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeVpnConnectionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DescribeVpnGateways {
   use Moose;
@@ -2473,9 +2687,11 @@ package Aws::EC2::DescribeVpnGateways {
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has VpnGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpnGatewayId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpnGateways');
-  has _returns => (isa => 'Aws::EC2::DescribeVpnGatewaysResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVpnGatewaysResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpnGateways');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DescribeVpnGatewaysResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DetachInternetGateway {
   use Moose;
@@ -2483,9 +2699,11 @@ package Aws::EC2::DetachInternetGateway {
   has InternetGatewayId => (is => 'ro', isa => 'Str', required => 1);
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DetachInternetGateway');
-  has _returns => (isa => 'Aws::EC2::DetachInternetGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DetachInternetGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachInternetGateway');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DetachNetworkInterface {
   use Moose;
@@ -2493,9 +2711,11 @@ package Aws::EC2::DetachNetworkInterface {
   has DryRun => (is => 'ro', isa => 'Bool');
   has Force => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DetachNetworkInterface');
-  has _returns => (isa => 'Aws::EC2::DetachNetworkInterfaceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DetachNetworkInterfaceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachNetworkInterface');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DetachVolume {
   use Moose;
@@ -2505,9 +2725,11 @@ package Aws::EC2::DetachVolume {
   has InstanceId => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DetachVolume');
-  has _returns => (isa => 'Aws::EC2::DetachVolumeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DetachVolumeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachVolume');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::DetachVolumeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DetachVpnGateway {
   use Moose;
@@ -2515,18 +2737,22 @@ package Aws::EC2::DetachVpnGateway {
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
   has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DetachVpnGateway');
-  has _returns => (isa => 'Aws::EC2::DetachVpnGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DetachVpnGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachVpnGateway');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DisableVgwRoutePropagation {
   use Moose;
   has GatewayId => (is => 'ro', isa => 'Str', required => 1);
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DisableVgwRoutePropagation');
-  has _returns => (isa => 'Aws::EC2::DisableVgwRoutePropagationResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DisableVgwRoutePropagationResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableVgwRoutePropagation');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DisassociateAddress {
   use Moose;
@@ -2534,54 +2760,66 @@ package Aws::EC2::DisassociateAddress {
   has DryRun => (is => 'ro', isa => 'Bool');
   has PublicIp => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateAddress');
-  has _returns => (isa => 'Aws::EC2::DisassociateAddressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DisassociateAddressResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateAddress');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::DisassociateRouteTable {
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateRouteTable');
-  has _returns => (isa => 'Aws::EC2::DisassociateRouteTableResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DisassociateRouteTableResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateRouteTable');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::EnableVgwRoutePropagation {
   use Moose;
   has GatewayId => (is => 'ro', isa => 'Str', required => 1);
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'EnableVgwRoutePropagation');
-  has _returns => (isa => 'Aws::EC2::EnableVgwRoutePropagationResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'EnableVgwRoutePropagationResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableVgwRoutePropagation');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::EnableVolumeIO {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'EnableVolumeIO');
-  has _returns => (isa => 'Aws::EC2::EnableVolumeIOResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'EnableVolumeIOResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableVolumeIO');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::GetConsoleOutput {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetConsoleOutput');
-  has _returns => (isa => 'Aws::EC2::GetConsoleOutputResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetConsoleOutputResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetConsoleOutput');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::GetConsoleOutputResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::GetPasswordData {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetPasswordData');
-  has _returns => (isa => 'Aws::EC2::GetPasswordDataResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetPasswordDataResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetPasswordData');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::GetPasswordDataResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ImportInstance {
   use Moose;
@@ -2591,9 +2829,11 @@ package Aws::EC2::ImportInstance {
   has LaunchSpecification => (is => 'ro', isa => 'Aws::EC2::ImportInstanceLaunchSpecification');
   has Platform => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ImportInstance');
-  has _returns => (isa => 'Aws::EC2::ImportInstanceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ImportInstanceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportInstance');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::ImportInstanceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ImportKeyPair {
   use Moose;
@@ -2601,9 +2841,11 @@ package Aws::EC2::ImportKeyPair {
   has KeyName => (is => 'ro', isa => 'Str', required => 1);
   has PublicKeyMaterial => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ImportKeyPair');
-  has _returns => (isa => 'Aws::EC2::ImportKeyPairResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ImportKeyPairResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportKeyPair');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::ImportKeyPairResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ImportVolume {
   use Moose;
@@ -2613,9 +2855,11 @@ package Aws::EC2::ImportVolume {
   has Image => (is => 'ro', isa => 'Aws::EC2::DiskImageDetail');
   has Volume => (is => 'ro', isa => 'Aws::EC2::VolumeDetail');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ImportVolume');
-  has _returns => (isa => 'Aws::EC2::ImportVolumeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ImportVolumeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportVolume');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::ImportVolumeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ModifyImageAttribute {
   use Moose;
@@ -2630,9 +2874,11 @@ package Aws::EC2::ModifyImageAttribute {
   has UserIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'UserId' );
   has Value => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyImageAttribute');
-  has _returns => (isa => 'Aws::EC2::ModifyImageAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyImageAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyImageAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ModifyInstanceAttribute {
   use Moose;
@@ -2652,9 +2898,11 @@ package Aws::EC2::ModifyInstanceAttribute {
   has UserData => (is => 'ro', isa => 'Aws::EC2::AttributeValue');
   has Value => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyInstanceAttribute');
-  has _returns => (isa => 'Aws::EC2::ModifyInstanceAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyInstanceAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyInstanceAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ModifyNetworkInterfaceAttribute {
   use Moose;
@@ -2665,9 +2913,11 @@ package Aws::EC2::ModifyNetworkInterfaceAttribute {
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has SourceDestCheck => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyNetworkInterfaceAttribute');
-  has _returns => (isa => 'Aws::EC2::ModifyNetworkInterfaceAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyNetworkInterfaceAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyNetworkInterfaceAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ModifyReservedInstances {
   use Moose;
@@ -2675,9 +2925,11 @@ package Aws::EC2::ModifyReservedInstances {
   has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesId' , required => 1);
   has TargetConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::ReservedInstancesConfiguration]', traits => ['NameInRequest'], request_name => 'ReservedInstancesConfigurationSetItemType' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyReservedInstances');
-  has _returns => (isa => 'Aws::EC2::ModifyReservedInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyReservedInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyReservedInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::ModifyReservedInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ModifySnapshotAttribute {
   use Moose;
@@ -2689,9 +2941,11 @@ package Aws::EC2::ModifySnapshotAttribute {
   has SnapshotId => (is => 'ro', isa => 'Str', required => 1);
   has UserIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'UserId' );
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifySnapshotAttribute');
-  has _returns => (isa => 'Aws::EC2::ModifySnapshotAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifySnapshotAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifySnapshotAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ModifyVolumeAttribute {
   use Moose;
@@ -2699,9 +2953,11 @@ package Aws::EC2::ModifyVolumeAttribute {
   has DryRun => (is => 'ro', isa => 'Bool');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyVolumeAttribute');
-  has _returns => (isa => 'Aws::EC2::ModifyVolumeAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyVolumeAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyVolumeAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ModifyVpcAttribute {
   use Moose;
@@ -2709,18 +2965,22 @@ package Aws::EC2::ModifyVpcAttribute {
   has EnableDnsSupport => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyVpcAttribute');
-  has _returns => (isa => 'Aws::EC2::ModifyVpcAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyVpcAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyVpcAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::MonitorInstances {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'MonitorInstances');
-  has _returns => (isa => 'Aws::EC2::MonitorInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'MonitorInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'MonitorInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::MonitorInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::PurchaseReservedInstancesOffering {
   use Moose;
@@ -2729,18 +2989,22 @@ package Aws::EC2::PurchaseReservedInstancesOffering {
   has LimitPrice => (is => 'ro', isa => 'Aws::EC2::ReservedInstanceLimitPrice');
   has ReservedInstancesOfferingId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedInstancesOffering');
-  has _returns => (isa => 'Aws::EC2::PurchaseReservedInstancesOfferingResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedInstancesOfferingResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedInstancesOffering');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::PurchaseReservedInstancesOfferingResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::RebootInstances {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RebootInstances');
-  has _returns => (isa => 'Aws::EC2::RebootInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RebootInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RebootInstances');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::RegisterImage {
   use Moose;
@@ -2756,18 +3020,22 @@ package Aws::EC2::RegisterImage {
   has SriovNetSupport => (is => 'ro', isa => 'Str');
   has VirtualizationType => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterImage');
-  has _returns => (isa => 'Aws::EC2::RegisterImageResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterImageResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterImage');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::RegisterImageResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::RejectVpcPeeringConnection {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RejectVpcPeeringConnection');
-  has _returns => (isa => 'Aws::EC2::RejectVpcPeeringConnectionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RejectVpcPeeringConnectionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RejectVpcPeeringConnection');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::RejectVpcPeeringConnectionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ReleaseAddress {
   use Moose;
@@ -2775,9 +3043,11 @@ package Aws::EC2::ReleaseAddress {
   has DryRun => (is => 'ro', isa => 'Bool');
   has PublicIp => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ReleaseAddress');
-  has _returns => (isa => 'Aws::EC2::ReleaseAddressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ReleaseAddressResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReleaseAddress');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ReplaceNetworkAclAssociation {
   use Moose;
@@ -2785,9 +3055,11 @@ package Aws::EC2::ReplaceNetworkAclAssociation {
   has DryRun => (is => 'ro', isa => 'Bool');
   has NetworkAclId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceNetworkAclAssociation');
-  has _returns => (isa => 'Aws::EC2::ReplaceNetworkAclAssociationResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ReplaceNetworkAclAssociationResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceNetworkAclAssociation');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::ReplaceNetworkAclAssociationResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ReplaceNetworkAclEntry {
   use Moose;
@@ -2801,9 +3073,11 @@ package Aws::EC2::ReplaceNetworkAclEntry {
   has RuleAction => (is => 'ro', isa => 'Str', required => 1);
   has RuleNumber => (is => 'ro', isa => 'Int', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceNetworkAclEntry');
-  has _returns => (isa => 'Aws::EC2::ReplaceNetworkAclEntryResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ReplaceNetworkAclEntryResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceNetworkAclEntry');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ReplaceRoute {
   use Moose;
@@ -2815,9 +3089,11 @@ package Aws::EC2::ReplaceRoute {
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceRoute');
-  has _returns => (isa => 'Aws::EC2::ReplaceRouteResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ReplaceRouteResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceRoute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ReplaceRouteTableAssociation {
   use Moose;
@@ -2825,9 +3101,11 @@ package Aws::EC2::ReplaceRouteTableAssociation {
   has DryRun => (is => 'ro', isa => 'Bool');
   has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceRouteTableAssociation');
-  has _returns => (isa => 'Aws::EC2::ReplaceRouteTableAssociationResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ReplaceRouteTableAssociationResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceRouteTableAssociation');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::ReplaceRouteTableAssociationResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ReportInstanceStatus {
   use Moose;
@@ -2839,9 +3117,11 @@ package Aws::EC2::ReportInstanceStatus {
   has StartTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ReportInstanceStatus');
-  has _returns => (isa => 'Aws::EC2::ReportInstanceStatusResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ReportInstanceStatusResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReportInstanceStatus');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::RequestSpotInstances {
   use Moose;
@@ -2855,9 +3135,11 @@ package Aws::EC2::RequestSpotInstances {
   has ValidFrom => (is => 'ro', isa => 'Str');
   has ValidUntil => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RequestSpotInstances');
-  has _returns => (isa => 'Aws::EC2::RequestSpotInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RequestSpotInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RequestSpotInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::RequestSpotInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ResetImageAttribute {
   use Moose;
@@ -2865,9 +3147,11 @@ package Aws::EC2::ResetImageAttribute {
   has DryRun => (is => 'ro', isa => 'Bool');
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ResetImageAttribute');
-  has _returns => (isa => 'Aws::EC2::ResetImageAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ResetImageAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetImageAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ResetInstanceAttribute {
   use Moose;
@@ -2875,9 +3159,11 @@ package Aws::EC2::ResetInstanceAttribute {
   has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ResetInstanceAttribute');
-  has _returns => (isa => 'Aws::EC2::ResetInstanceAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ResetInstanceAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetInstanceAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ResetNetworkInterfaceAttribute {
   use Moose;
@@ -2885,9 +3171,11 @@ package Aws::EC2::ResetNetworkInterfaceAttribute {
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has SourceDestCheck => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ResetNetworkInterfaceAttribute');
-  has _returns => (isa => 'Aws::EC2::ResetNetworkInterfaceAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ResetNetworkInterfaceAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetNetworkInterfaceAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::ResetSnapshotAttribute {
   use Moose;
@@ -2895,9 +3183,11 @@ package Aws::EC2::ResetSnapshotAttribute {
   has DryRun => (is => 'ro', isa => 'Bool');
   has SnapshotId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ResetSnapshotAttribute');
-  has _returns => (isa => 'Aws::EC2::ResetSnapshotAttributeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ResetSnapshotAttributeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetSnapshotAttribute');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::RevokeSecurityGroupEgress {
   use Moose;
@@ -2911,9 +3201,11 @@ package Aws::EC2::RevokeSecurityGroupEgress {
   has SourceSecurityGroupOwnerId => (is => 'ro', isa => 'Str');
   has ToPort => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupEgress');
-  has _returns => (isa => 'Aws::EC2::RevokeSecurityGroupEgressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupEgressResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupEgress');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::RevokeSecurityGroupIngress {
   use Moose;
@@ -2928,9 +3220,11 @@ package Aws::EC2::RevokeSecurityGroupIngress {
   has SourceSecurityGroupOwnerId => (is => 'ro', isa => 'Str');
   has ToPort => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupIngress');
-  has _returns => (isa => 'Aws::EC2::RevokeSecurityGroupIngressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupIngressResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupIngress');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::RunInstances {
   use Moose;
@@ -2958,9 +3252,11 @@ package Aws::EC2::RunInstances {
   has SubnetId => (is => 'ro', isa => 'Str');
   has UserData => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RunInstances');
-  has _returns => (isa => 'Aws::EC2::RunInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RunInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RunInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::RunInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::StartInstances {
   use Moose;
@@ -2968,9 +3264,11 @@ package Aws::EC2::StartInstances {
   has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'StartInstances');
-  has _returns => (isa => 'Aws::EC2::StartInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'StartInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::StartInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::StopInstances {
   use Moose;
@@ -2978,36 +3276,44 @@ package Aws::EC2::StopInstances {
   has Force => (is => 'ro', isa => 'Bool');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'StopInstances');
-  has _returns => (isa => 'Aws::EC2::StopInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'StopInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::StopInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::TerminateInstances {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateInstances');
-  has _returns => (isa => 'Aws::EC2::TerminateInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'TerminateInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::TerminateInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::UnassignPrivateIpAddresses {
   use Moose;
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PrivateIpAddress' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UnassignPrivateIpAddresses');
-  has _returns => (isa => 'Aws::EC2::UnassignPrivateIpAddressesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UnassignPrivateIpAddressesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UnassignPrivateIpAddresses');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EC2::UnmonitorInstances {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UnmonitorInstances');
-  has _returns => (isa => 'Aws::EC2::UnmonitorInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UnmonitorInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UnmonitorInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EC2::UnmonitorInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 
 package Aws::EC2::AcceptVpcPeeringConnectionResult {
@@ -3668,1015 +3974,615 @@ package Aws::EC2 {
   
   sub AcceptVpcPeeringConnection {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::AcceptVpcPeeringConnection', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::AcceptVpcPeeringConnectionResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::AcceptVpcPeeringConnection', @_);
   }
   sub AllocateAddress {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::AllocateAddress', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::AllocateAddressResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::AllocateAddress', @_);
   }
   sub AssignPrivateIpAddresses {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::AssignPrivateIpAddresses', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::AssignPrivateIpAddresses', @_);
   }
   sub AssociateAddress {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::AssociateAddress', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::AssociateAddressResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::AssociateAddress', @_);
   }
   sub AssociateDhcpOptions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::AssociateDhcpOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::AssociateDhcpOptions', @_);
   }
   sub AssociateRouteTable {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::AssociateRouteTable', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::AssociateRouteTableResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::AssociateRouteTable', @_);
   }
   sub AttachInternetGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::AttachInternetGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::AttachInternetGateway', @_);
   }
   sub AttachNetworkInterface {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::AttachNetworkInterface', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::AttachNetworkInterfaceResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::AttachNetworkInterface', @_);
   }
   sub AttachVolume {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::AttachVolume', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::AttachVolumeResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::AttachVolume', @_);
   }
   sub AttachVpnGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::AttachVpnGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::AttachVpnGatewayResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::AttachVpnGateway', @_);
   }
   sub AuthorizeSecurityGroupEgress {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::AuthorizeSecurityGroupEgress', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::AuthorizeSecurityGroupEgress', @_);
   }
   sub AuthorizeSecurityGroupIngress {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::AuthorizeSecurityGroupIngress', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::AuthorizeSecurityGroupIngress', @_);
   }
   sub BundleInstance {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::BundleInstance', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::BundleInstanceResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::BundleInstance', @_);
   }
   sub CancelBundleTask {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CancelBundleTask', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CancelBundleTaskResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CancelBundleTask', @_);
   }
   sub CancelConversionTask {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CancelConversionTask', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::CancelConversionTask', @_);
   }
   sub CancelExportTask {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CancelExportTask', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::CancelExportTask', @_);
   }
   sub CancelReservedInstancesListing {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CancelReservedInstancesListing', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CancelReservedInstancesListingResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CancelReservedInstancesListing', @_);
   }
   sub CancelSpotInstanceRequests {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CancelSpotInstanceRequests', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CancelSpotInstanceRequestsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CancelSpotInstanceRequests', @_);
   }
   sub ConfirmProductInstance {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ConfirmProductInstance', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::ConfirmProductInstanceResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::ConfirmProductInstance', @_);
   }
   sub CopyImage {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CopyImage', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CopyImageResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CopyImage', @_);
   }
   sub CopySnapshot {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CopySnapshot', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CopySnapshotResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CopySnapshot', @_);
   }
   sub CreateCustomerGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateCustomerGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateCustomerGatewayResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateCustomerGateway', @_);
   }
   sub CreateDhcpOptions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateDhcpOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateDhcpOptionsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateDhcpOptions', @_);
   }
   sub CreateImage {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateImage', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateImageResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateImage', @_);
   }
   sub CreateInstanceExportTask {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateInstanceExportTask', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateInstanceExportTaskResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateInstanceExportTask', @_);
   }
   sub CreateInternetGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateInternetGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateInternetGatewayResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateInternetGateway', @_);
   }
   sub CreateKeyPair {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateKeyPair', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateKeyPairResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateKeyPair', @_);
   }
   sub CreateNetworkAcl {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateNetworkAcl', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateNetworkAclResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateNetworkAcl', @_);
   }
   sub CreateNetworkAclEntry {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateNetworkAclEntry', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::CreateNetworkAclEntry', @_);
   }
   sub CreateNetworkInterface {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateNetworkInterface', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateNetworkInterfaceResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateNetworkInterface', @_);
   }
   sub CreatePlacementGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreatePlacementGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::CreatePlacementGroup', @_);
   }
   sub CreateReservedInstancesListing {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateReservedInstancesListing', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateReservedInstancesListingResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateReservedInstancesListing', @_);
   }
   sub CreateRoute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateRoute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::CreateRoute', @_);
   }
   sub CreateRouteTable {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateRouteTable', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateRouteTableResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateRouteTable', @_);
   }
   sub CreateSecurityGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateSecurityGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateSecurityGroupResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateSecurityGroup', @_);
   }
   sub CreateSnapshot {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateSnapshot', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateSnapshotResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateSnapshot', @_);
   }
   sub CreateSpotDatafeedSubscription {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateSpotDatafeedSubscription', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateSpotDatafeedSubscriptionResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateSpotDatafeedSubscription', @_);
   }
   sub CreateSubnet {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateSubnet', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateSubnetResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateSubnet', @_);
   }
   sub CreateTags {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateTags', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::CreateTags', @_);
   }
   sub CreateVolume {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateVolume', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateVolumeResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateVolume', @_);
   }
   sub CreateVpc {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateVpc', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateVpcResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateVpc', @_);
   }
   sub CreateVpcPeeringConnection {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateVpcPeeringConnection', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateVpcPeeringConnectionResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateVpcPeeringConnection', @_);
   }
   sub CreateVpnConnection {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateVpnConnection', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateVpnConnectionResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateVpnConnection', @_);
   }
   sub CreateVpnConnectionRoute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateVpnConnectionRoute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::CreateVpnConnectionRoute', @_);
   }
   sub CreateVpnGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::CreateVpnGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::CreateVpnGatewayResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::CreateVpnGateway', @_);
   }
   sub DeleteCustomerGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteCustomerGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteCustomerGateway', @_);
   }
   sub DeleteDhcpOptions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteDhcpOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteDhcpOptions', @_);
   }
   sub DeleteInternetGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteInternetGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteInternetGateway', @_);
   }
   sub DeleteKeyPair {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteKeyPair', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteKeyPair', @_);
   }
   sub DeleteNetworkAcl {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteNetworkAcl', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteNetworkAcl', @_);
   }
   sub DeleteNetworkAclEntry {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteNetworkAclEntry', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteNetworkAclEntry', @_);
   }
   sub DeleteNetworkInterface {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteNetworkInterface', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteNetworkInterface', @_);
   }
   sub DeletePlacementGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeletePlacementGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeletePlacementGroup', @_);
   }
   sub DeleteRoute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteRoute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteRoute', @_);
   }
   sub DeleteRouteTable {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteRouteTable', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteRouteTable', @_);
   }
   sub DeleteSecurityGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteSecurityGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteSecurityGroup', @_);
   }
   sub DeleteSnapshot {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteSnapshot', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteSnapshot', @_);
   }
   sub DeleteSpotDatafeedSubscription {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteSpotDatafeedSubscription', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteSpotDatafeedSubscription', @_);
   }
   sub DeleteSubnet {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteSubnet', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteSubnet', @_);
   }
   sub DeleteTags {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteTags', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteTags', @_);
   }
   sub DeleteVolume {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteVolume', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteVolume', @_);
   }
   sub DeleteVpc {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteVpc', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteVpc', @_);
   }
   sub DeleteVpcPeeringConnection {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteVpcPeeringConnection', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DeleteVpcPeeringConnectionResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DeleteVpcPeeringConnection', @_);
   }
   sub DeleteVpnConnection {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteVpnConnection', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteVpnConnection', @_);
   }
   sub DeleteVpnConnectionRoute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteVpnConnectionRoute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteVpnConnectionRoute', @_);
   }
   sub DeleteVpnGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeleteVpnGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeleteVpnGateway', @_);
   }
   sub DeregisterImage {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DeregisterImage', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DeregisterImage', @_);
   }
   sub DescribeAccountAttributes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeAccountAttributes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeAccountAttributesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeAccountAttributes', @_);
   }
   sub DescribeAddresses {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeAddresses', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeAddressesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeAddresses', @_);
   }
   sub DescribeAvailabilityZones {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeAvailabilityZones', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeAvailabilityZonesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeAvailabilityZones', @_);
   }
   sub DescribeBundleTasks {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeBundleTasks', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeBundleTasksResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeBundleTasks', @_);
   }
   sub DescribeConversionTasks {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeConversionTasks', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeConversionTasksResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeConversionTasks', @_);
   }
   sub DescribeCustomerGateways {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeCustomerGateways', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeCustomerGatewaysResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeCustomerGateways', @_);
   }
   sub DescribeDhcpOptions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeDhcpOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeDhcpOptionsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeDhcpOptions', @_);
   }
   sub DescribeExportTasks {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeExportTasks', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeExportTasksResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeExportTasks', @_);
   }
   sub DescribeImageAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeImageAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeImageAttributeResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeImageAttribute', @_);
   }
   sub DescribeImages {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeImages', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeImagesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeImages', @_);
   }
   sub DescribeInstanceAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeInstanceAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeInstanceAttributeResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeInstanceAttribute', @_);
   }
   sub DescribeInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeInstancesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeInstances', @_);
   }
   sub DescribeInstanceStatus {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeInstanceStatus', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeInstanceStatusResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeInstanceStatus', @_);
   }
   sub DescribeInternetGateways {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeInternetGateways', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeInternetGatewaysResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeInternetGateways', @_);
   }
   sub DescribeKeyPairs {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeKeyPairs', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeKeyPairsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeKeyPairs', @_);
   }
   sub DescribeNetworkAcls {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeNetworkAcls', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeNetworkAclsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeNetworkAcls', @_);
   }
   sub DescribeNetworkInterfaceAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeNetworkInterfaceAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeNetworkInterfaceAttributeResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeNetworkInterfaceAttribute', @_);
   }
   sub DescribeNetworkInterfaces {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeNetworkInterfaces', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeNetworkInterfacesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeNetworkInterfaces', @_);
   }
   sub DescribePlacementGroups {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribePlacementGroups', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribePlacementGroupsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribePlacementGroups', @_);
   }
   sub DescribeRegions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeRegions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeRegionsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeRegions', @_);
   }
   sub DescribeReservedInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeReservedInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeReservedInstancesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeReservedInstances', @_);
   }
   sub DescribeReservedInstancesListings {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeReservedInstancesListings', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeReservedInstancesListingsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeReservedInstancesListings', @_);
   }
   sub DescribeReservedInstancesModifications {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeReservedInstancesModifications', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeReservedInstancesModificationsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeReservedInstancesModifications', @_);
   }
   sub DescribeReservedInstancesOfferings {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeReservedInstancesOfferings', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeReservedInstancesOfferingsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeReservedInstancesOfferings', @_);
   }
   sub DescribeRouteTables {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeRouteTables', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeRouteTablesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeRouteTables', @_);
   }
   sub DescribeSecurityGroups {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeSecurityGroups', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeSecurityGroupsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeSecurityGroups', @_);
   }
   sub DescribeSnapshotAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeSnapshotAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeSnapshotAttributeResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeSnapshotAttribute', @_);
   }
   sub DescribeSnapshots {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeSnapshots', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeSnapshotsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeSnapshots', @_);
   }
   sub DescribeSpotDatafeedSubscription {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeSpotDatafeedSubscription', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeSpotDatafeedSubscriptionResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeSpotDatafeedSubscription', @_);
   }
   sub DescribeSpotInstanceRequests {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeSpotInstanceRequests', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeSpotInstanceRequestsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeSpotInstanceRequests', @_);
   }
   sub DescribeSpotPriceHistory {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeSpotPriceHistory', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeSpotPriceHistoryResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeSpotPriceHistory', @_);
   }
   sub DescribeSubnets {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeSubnets', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeSubnetsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeSubnets', @_);
   }
   sub DescribeTags {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeTags', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeTagsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeTags', @_);
   }
   sub DescribeVolumeAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeVolumeAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeVolumeAttributeResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeVolumeAttribute', @_);
   }
   sub DescribeVolumes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeVolumes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeVolumesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeVolumes', @_);
   }
   sub DescribeVolumeStatus {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeVolumeStatus', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeVolumeStatusResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeVolumeStatus', @_);
   }
   sub DescribeVpcAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeVpcAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeVpcAttributeResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeVpcAttribute', @_);
   }
   sub DescribeVpcPeeringConnections {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeVpcPeeringConnections', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeVpcPeeringConnectionsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeVpcPeeringConnections', @_);
   }
   sub DescribeVpcs {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeVpcs', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeVpcsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeVpcs', @_);
   }
   sub DescribeVpnConnections {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeVpnConnections', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeVpnConnectionsResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeVpnConnections', @_);
   }
   sub DescribeVpnGateways {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DescribeVpnGateways', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DescribeVpnGatewaysResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DescribeVpnGateways', @_);
   }
   sub DetachInternetGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DetachInternetGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DetachInternetGateway', @_);
   }
   sub DetachNetworkInterface {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DetachNetworkInterface', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DetachNetworkInterface', @_);
   }
   sub DetachVolume {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DetachVolume', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::DetachVolumeResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::DetachVolume', @_);
   }
   sub DetachVpnGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DetachVpnGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DetachVpnGateway', @_);
   }
   sub DisableVgwRoutePropagation {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DisableVgwRoutePropagation', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DisableVgwRoutePropagation', @_);
   }
   sub DisassociateAddress {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DisassociateAddress', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DisassociateAddress', @_);
   }
   sub DisassociateRouteTable {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::DisassociateRouteTable', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::DisassociateRouteTable', @_);
   }
   sub EnableVgwRoutePropagation {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::EnableVgwRoutePropagation', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::EnableVgwRoutePropagation', @_);
   }
   sub EnableVolumeIO {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::EnableVolumeIO', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::EnableVolumeIO', @_);
   }
   sub GetConsoleOutput {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::GetConsoleOutput', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::GetConsoleOutputResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::GetConsoleOutput', @_);
   }
   sub GetPasswordData {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::GetPasswordData', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::GetPasswordDataResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::GetPasswordData', @_);
   }
   sub ImportInstance {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ImportInstance', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::ImportInstanceResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::ImportInstance', @_);
   }
   sub ImportKeyPair {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ImportKeyPair', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::ImportKeyPairResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::ImportKeyPair', @_);
   }
   sub ImportVolume {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ImportVolume', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::ImportVolumeResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::ImportVolume', @_);
   }
   sub ModifyImageAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ModifyImageAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::ModifyImageAttribute', @_);
   }
   sub ModifyInstanceAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ModifyInstanceAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::ModifyInstanceAttribute', @_);
   }
   sub ModifyNetworkInterfaceAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ModifyNetworkInterfaceAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::ModifyNetworkInterfaceAttribute', @_);
   }
   sub ModifyReservedInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ModifyReservedInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::ModifyReservedInstancesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::ModifyReservedInstances', @_);
   }
   sub ModifySnapshotAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ModifySnapshotAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::ModifySnapshotAttribute', @_);
   }
   sub ModifyVolumeAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ModifyVolumeAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::ModifyVolumeAttribute', @_);
   }
   sub ModifyVpcAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ModifyVpcAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::ModifyVpcAttribute', @_);
   }
   sub MonitorInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::MonitorInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::MonitorInstancesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::MonitorInstances', @_);
   }
   sub PurchaseReservedInstancesOffering {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::PurchaseReservedInstancesOffering', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::PurchaseReservedInstancesOfferingResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::PurchaseReservedInstancesOffering', @_);
   }
   sub RebootInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::RebootInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::RebootInstances', @_);
   }
   sub RegisterImage {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::RegisterImage', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::RegisterImageResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::RegisterImage', @_);
   }
   sub RejectVpcPeeringConnection {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::RejectVpcPeeringConnection', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::RejectVpcPeeringConnectionResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::RejectVpcPeeringConnection', @_);
   }
   sub ReleaseAddress {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ReleaseAddress', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::ReleaseAddress', @_);
   }
   sub ReplaceNetworkAclAssociation {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ReplaceNetworkAclAssociation', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::ReplaceNetworkAclAssociationResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::ReplaceNetworkAclAssociation', @_);
   }
   sub ReplaceNetworkAclEntry {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ReplaceNetworkAclEntry', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::ReplaceNetworkAclEntry', @_);
   }
   sub ReplaceRoute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ReplaceRoute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::ReplaceRoute', @_);
   }
   sub ReplaceRouteTableAssociation {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ReplaceRouteTableAssociation', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::ReplaceRouteTableAssociationResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::ReplaceRouteTableAssociation', @_);
   }
   sub ReportInstanceStatus {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ReportInstanceStatus', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::ReportInstanceStatus', @_);
   }
   sub RequestSpotInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::RequestSpotInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::RequestSpotInstancesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::RequestSpotInstances', @_);
   }
   sub ResetImageAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ResetImageAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::ResetImageAttribute', @_);
   }
   sub ResetInstanceAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ResetInstanceAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::ResetInstanceAttribute', @_);
   }
   sub ResetNetworkInterfaceAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ResetNetworkInterfaceAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::ResetNetworkInterfaceAttribute', @_);
   }
   sub ResetSnapshotAttribute {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::ResetSnapshotAttribute', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::ResetSnapshotAttribute', @_);
   }
   sub RevokeSecurityGroupEgress {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::RevokeSecurityGroupEgress', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::RevokeSecurityGroupEgress', @_);
   }
   sub RevokeSecurityGroupIngress {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::RevokeSecurityGroupIngress', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::RevokeSecurityGroupIngress', @_);
   }
   sub RunInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::RunInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::RunInstancesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::RunInstances', @_);
   }
   sub StartInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::StartInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::StartInstancesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::StartInstances', @_);
   }
   sub StopInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::StopInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::StopInstancesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::StopInstances', @_);
   }
   sub TerminateInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::TerminateInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::TerminateInstancesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::TerminateInstances', @_);
   }
   sub UnassignPrivateIpAddresses {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::UnassignPrivateIpAddresses', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EC2::UnassignPrivateIpAddresses', @_);
   }
   sub UnmonitorInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EC2::UnmonitorInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EC2::UnmonitorInstancesResult->from_result($result);
-    return $o_result;
+    return $self->do_call('Aws::EC2::UnmonitorInstances', @_);
   }
 }
 1;

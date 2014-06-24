@@ -20,9 +20,11 @@ package Aws::ImportExport::CancelJob {
   use Moose;
   has JobId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CancelJob');
-  has _returns => (isa => 'Aws::ImportExport::CancelJobResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CancelJobResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelJob');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::CancelJobResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CancelJobResult');
 }
 package Aws::ImportExport::CreateJob {
   use Moose;
@@ -31,26 +33,32 @@ package Aws::ImportExport::CreateJob {
   has ManifestAddendum => (is => 'ro', isa => 'Str');
   has ValidateOnly => (is => 'ro', isa => 'Bool', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateJob');
-  has _returns => (isa => 'Aws::ImportExport::CreateJobResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateJobResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateJob');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::CreateJobResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateJobResult');
 }
 package Aws::ImportExport::GetStatus {
   use Moose;
   has JobId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetStatus');
-  has _returns => (isa => 'Aws::ImportExport::GetStatusResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetStatusResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetStatus');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::GetStatusResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetStatusResult');
 }
 package Aws::ImportExport::ListJobs {
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has MaxJobs => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListJobs');
-  has _returns => (isa => 'Aws::ImportExport::ListJobsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListJobsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListJobs');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::ListJobsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListJobsResult');
 }
 package Aws::ImportExport::UpdateJob {
   use Moose;
@@ -59,9 +67,11 @@ package Aws::ImportExport::UpdateJob {
   has Manifest => (is => 'ro', isa => 'Str', required => 1);
   has ValidateOnly => (is => 'ro', isa => 'Bool', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJob');
-  has _returns => (isa => 'Aws::ImportExport::UpdateJobResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateJobResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJob');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::UpdateJobResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateJobResult');
 }
 
 package Aws::ImportExport::CancelJobResult {
@@ -132,38 +142,23 @@ package Aws::ImportExport {
   
   sub CancelJob {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ImportExport::CancelJob', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ImportExport::CancelJobResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ImportExport::CancelJob', @_);
   }
   sub CreateJob {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ImportExport::CreateJob', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ImportExport::CreateJobResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ImportExport::CreateJob', @_);
   }
   sub GetStatus {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ImportExport::GetStatus', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ImportExport::GetStatusResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ImportExport::GetStatus', @_);
   }
   sub ListJobs {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ImportExport::ListJobs', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ImportExport::ListJobsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ImportExport::ListJobs', @_);
   }
   sub UpdateJob {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ImportExport::UpdateJob', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ImportExport::UpdateJobResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ImportExport::UpdateJob', @_);
   }
 }
 1;

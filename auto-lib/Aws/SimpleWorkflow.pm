@@ -779,9 +779,11 @@ package Aws::SimpleWorkflow::CountClosedWorkflowExecutions {
   has tagFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::TagFilter');
   has typeFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowTypeFilter');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CountClosedWorkflowExecutions');
-  has _returns => (isa => 'Aws::SimpleWorkflow::CountClosedWorkflowExecutionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CountClosedWorkflowExecutionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CountClosedWorkflowExecutions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::CountClosedWorkflowExecutionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::CountOpenWorkflowExecutions {
   use Moose;
@@ -791,88 +793,108 @@ package Aws::SimpleWorkflow::CountOpenWorkflowExecutions {
   has tagFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::TagFilter');
   has typeFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowTypeFilter');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CountOpenWorkflowExecutions');
-  has _returns => (isa => 'Aws::SimpleWorkflow::CountOpenWorkflowExecutionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CountOpenWorkflowExecutionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CountOpenWorkflowExecutions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::CountOpenWorkflowExecutionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::CountPendingActivityTasks {
   use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CountPendingActivityTasks');
-  has _returns => (isa => 'Aws::SimpleWorkflow::CountPendingActivityTasksResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CountPendingActivityTasksResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CountPendingActivityTasks');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::CountPendingActivityTasksResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::CountPendingDecisionTasks {
   use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CountPendingDecisionTasks');
-  has _returns => (isa => 'Aws::SimpleWorkflow::CountPendingDecisionTasksResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CountPendingDecisionTasksResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CountPendingDecisionTasks');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::CountPendingDecisionTasksResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::DeprecateActivityType {
   use Moose;
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
   has domain => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeprecateActivityType');
-  has _returns => (isa => 'Aws::SimpleWorkflow::DeprecateActivityTypeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeprecateActivityTypeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeprecateActivityType');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::DeprecateDomain {
   use Moose;
   has name => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeprecateDomain');
-  has _returns => (isa => 'Aws::SimpleWorkflow::DeprecateDomainResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeprecateDomainResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeprecateDomain');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::DeprecateWorkflowType {
   use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeprecateWorkflowType');
-  has _returns => (isa => 'Aws::SimpleWorkflow::DeprecateWorkflowTypeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeprecateWorkflowTypeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeprecateWorkflowType');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::DescribeActivityType {
   use Moose;
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
   has domain => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeActivityType');
-  has _returns => (isa => 'Aws::SimpleWorkflow::DescribeActivityTypeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeActivityTypeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeActivityType');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::DescribeActivityTypeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::DescribeDomain {
   use Moose;
   has name => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDomain');
-  has _returns => (isa => 'Aws::SimpleWorkflow::DescribeDomainResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDomainResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDomain');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::DescribeDomainResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::DescribeWorkflowExecution {
   use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has execution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeWorkflowExecution');
-  has _returns => (isa => 'Aws::SimpleWorkflow::DescribeWorkflowExecutionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeWorkflowExecutionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeWorkflowExecution');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::DescribeWorkflowExecutionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::DescribeWorkflowType {
   use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeWorkflowType');
-  has _returns => (isa => 'Aws::SimpleWorkflow::DescribeWorkflowTypeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeWorkflowTypeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeWorkflowType');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::DescribeWorkflowTypeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::GetWorkflowExecutionHistory {
   use Moose;
@@ -882,9 +904,11 @@ package Aws::SimpleWorkflow::GetWorkflowExecutionHistory {
   has nextPageToken => (is => 'ro', isa => 'Str');
   has reverseOrder => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetWorkflowExecutionHistory');
-  has _returns => (isa => 'Aws::SimpleWorkflow::GetWorkflowExecutionHistoryResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetWorkflowExecutionHistoryResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetWorkflowExecutionHistory');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::GetWorkflowExecutionHistoryResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::ListActivityTypes {
   use Moose;
@@ -895,9 +919,11 @@ package Aws::SimpleWorkflow::ListActivityTypes {
   has registrationStatus => (is => 'ro', isa => 'Str', required => 1);
   has reverseOrder => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListActivityTypes');
-  has _returns => (isa => 'Aws::SimpleWorkflow::ListActivityTypesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListActivityTypesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListActivityTypes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::ListActivityTypesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::ListClosedWorkflowExecutions {
   use Moose;
@@ -912,9 +938,11 @@ package Aws::SimpleWorkflow::ListClosedWorkflowExecutions {
   has tagFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::TagFilter');
   has typeFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowTypeFilter');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListClosedWorkflowExecutions');
-  has _returns => (isa => 'Aws::SimpleWorkflow::ListClosedWorkflowExecutionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListClosedWorkflowExecutionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListClosedWorkflowExecutions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::ListClosedWorkflowExecutionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::ListDomains {
   use Moose;
@@ -923,9 +951,11 @@ package Aws::SimpleWorkflow::ListDomains {
   has registrationStatus => (is => 'ro', isa => 'Str', required => 1);
   has reverseOrder => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListDomains');
-  has _returns => (isa => 'Aws::SimpleWorkflow::ListDomainsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListDomainsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDomains');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::ListDomainsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::ListOpenWorkflowExecutions {
   use Moose;
@@ -938,9 +968,11 @@ package Aws::SimpleWorkflow::ListOpenWorkflowExecutions {
   has tagFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::TagFilter');
   has typeFilter => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowTypeFilter');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListOpenWorkflowExecutions');
-  has _returns => (isa => 'Aws::SimpleWorkflow::ListOpenWorkflowExecutionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListOpenWorkflowExecutionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListOpenWorkflowExecutions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::ListOpenWorkflowExecutionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::ListWorkflowTypes {
   use Moose;
@@ -951,9 +983,11 @@ package Aws::SimpleWorkflow::ListWorkflowTypes {
   has registrationStatus => (is => 'ro', isa => 'Str', required => 1);
   has reverseOrder => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListWorkflowTypes');
-  has _returns => (isa => 'Aws::SimpleWorkflow::ListWorkflowTypesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListWorkflowTypesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListWorkflowTypes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::ListWorkflowTypesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::PollForActivityTask {
   use Moose;
@@ -961,9 +995,11 @@ package Aws::SimpleWorkflow::PollForActivityTask {
   has identity => (is => 'ro', isa => 'Str');
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'PollForActivityTask');
-  has _returns => (isa => 'Aws::SimpleWorkflow::PollForActivityTaskResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PollForActivityTaskResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PollForActivityTask');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::PollForActivityTaskResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::PollForDecisionTask {
   use Moose;
@@ -974,18 +1010,22 @@ package Aws::SimpleWorkflow::PollForDecisionTask {
   has reverseOrder => (is => 'ro', isa => 'Bool');
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'PollForDecisionTask');
-  has _returns => (isa => 'Aws::SimpleWorkflow::PollForDecisionTaskResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PollForDecisionTaskResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PollForDecisionTask');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::PollForDecisionTaskResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::RecordActivityTaskHeartbeat {
   use Moose;
   has details => (is => 'ro', isa => 'Str');
   has taskToken => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RecordActivityTaskHeartbeat');
-  has _returns => (isa => 'Aws::SimpleWorkflow::RecordActivityTaskHeartbeatResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RecordActivityTaskHeartbeatResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RecordActivityTaskHeartbeat');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::RecordActivityTaskHeartbeatResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::RegisterActivityType {
   use Moose;
@@ -999,9 +1039,11 @@ package Aws::SimpleWorkflow::RegisterActivityType {
   has name => (is => 'ro', isa => 'Str', required => 1);
   has version => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterActivityType');
-  has _returns => (isa => 'Aws::SimpleWorkflow::RegisterActivityTypeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterActivityTypeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterActivityType');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::RegisterDomain {
   use Moose;
@@ -1009,9 +1051,11 @@ package Aws::SimpleWorkflow::RegisterDomain {
   has name => (is => 'ro', isa => 'Str', required => 1);
   has workflowExecutionRetentionPeriodInDays => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterDomain');
-  has _returns => (isa => 'Aws::SimpleWorkflow::RegisterDomainResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterDomainResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterDomain');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::RegisterWorkflowType {
   use Moose;
@@ -1024,9 +1068,11 @@ package Aws::SimpleWorkflow::RegisterWorkflowType {
   has name => (is => 'ro', isa => 'Str', required => 1);
   has version => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterWorkflowType');
-  has _returns => (isa => 'Aws::SimpleWorkflow::RegisterWorkflowTypeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterWorkflowTypeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterWorkflowType');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::RequestCancelWorkflowExecution {
   use Moose;
@@ -1034,27 +1080,33 @@ package Aws::SimpleWorkflow::RequestCancelWorkflowExecution {
   has runId => (is => 'ro', isa => 'Str');
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RequestCancelWorkflowExecution');
-  has _returns => (isa => 'Aws::SimpleWorkflow::RequestCancelWorkflowExecutionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RequestCancelWorkflowExecutionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RequestCancelWorkflowExecution');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::RespondActivityTaskCanceled {
   use Moose;
   has details => (is => 'ro', isa => 'Str');
   has taskToken => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RespondActivityTaskCanceled');
-  has _returns => (isa => 'Aws::SimpleWorkflow::RespondActivityTaskCanceledResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RespondActivityTaskCanceledResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RespondActivityTaskCanceled');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::RespondActivityTaskCompleted {
   use Moose;
   has result => (is => 'ro', isa => 'Str');
   has taskToken => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RespondActivityTaskCompleted');
-  has _returns => (isa => 'Aws::SimpleWorkflow::RespondActivityTaskCompletedResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RespondActivityTaskCompletedResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RespondActivityTaskCompleted');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::RespondActivityTaskFailed {
   use Moose;
@@ -1062,9 +1114,11 @@ package Aws::SimpleWorkflow::RespondActivityTaskFailed {
   has reason => (is => 'ro', isa => 'Str');
   has taskToken => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RespondActivityTaskFailed');
-  has _returns => (isa => 'Aws::SimpleWorkflow::RespondActivityTaskFailedResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RespondActivityTaskFailedResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RespondActivityTaskFailed');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::RespondDecisionTaskCompleted {
   use Moose;
@@ -1072,9 +1126,11 @@ package Aws::SimpleWorkflow::RespondDecisionTaskCompleted {
   has executionContext => (is => 'ro', isa => 'Str');
   has taskToken => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RespondDecisionTaskCompleted');
-  has _returns => (isa => 'Aws::SimpleWorkflow::RespondDecisionTaskCompletedResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RespondDecisionTaskCompletedResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RespondDecisionTaskCompleted');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::SignalWorkflowExecution {
   use Moose;
@@ -1084,9 +1140,11 @@ package Aws::SimpleWorkflow::SignalWorkflowExecution {
   has signalName => (is => 'ro', isa => 'Str', required => 1);
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SignalWorkflowExecution');
-  has _returns => (isa => 'Aws::SimpleWorkflow::SignalWorkflowExecutionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SignalWorkflowExecutionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SignalWorkflowExecution');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::StartWorkflowExecution {
   use Moose;
@@ -1100,9 +1158,11 @@ package Aws::SimpleWorkflow::StartWorkflowExecution {
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'StartWorkflowExecution');
-  has _returns => (isa => 'Aws::SimpleWorkflow::StartWorkflowExecutionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'StartWorkflowExecutionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartWorkflowExecution');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::StartWorkflowExecutionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SimpleWorkflow::TerminateWorkflowExecution {
   use Moose;
@@ -1113,9 +1173,11 @@ package Aws::SimpleWorkflow::TerminateWorkflowExecution {
   has runId => (is => 'ro', isa => 'Str');
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateWorkflowExecution');
-  has _returns => (isa => 'Aws::SimpleWorkflow::TerminateWorkflowExecutionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'TerminateWorkflowExecutionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateWorkflowExecution');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 
 package Aws::SimpleWorkflow::CountClosedWorkflowExecutionsResult {
@@ -1271,189 +1333,127 @@ package Aws::SimpleWorkflow {
   
   sub CountClosedWorkflowExecutions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::CountClosedWorkflowExecutions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::CountClosedWorkflowExecutionsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::CountClosedWorkflowExecutions', @_);
   }
   sub CountOpenWorkflowExecutions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::CountOpenWorkflowExecutions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::CountOpenWorkflowExecutionsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::CountOpenWorkflowExecutions', @_);
   }
   sub CountPendingActivityTasks {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::CountPendingActivityTasks', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::CountPendingActivityTasksResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::CountPendingActivityTasks', @_);
   }
   sub CountPendingDecisionTasks {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::CountPendingDecisionTasks', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::CountPendingDecisionTasksResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::CountPendingDecisionTasks', @_);
   }
   sub DeprecateActivityType {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::DeprecateActivityType', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SimpleWorkflow::DeprecateActivityType', @_);
   }
   sub DeprecateDomain {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::DeprecateDomain', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SimpleWorkflow::DeprecateDomain', @_);
   }
   sub DeprecateWorkflowType {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::DeprecateWorkflowType', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SimpleWorkflow::DeprecateWorkflowType', @_);
   }
   sub DescribeActivityType {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::DescribeActivityType', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::DescribeActivityTypeResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::DescribeActivityType', @_);
   }
   sub DescribeDomain {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::DescribeDomain', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::DescribeDomainResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::DescribeDomain', @_);
   }
   sub DescribeWorkflowExecution {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::DescribeWorkflowExecution', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::DescribeWorkflowExecutionResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::DescribeWorkflowExecution', @_);
   }
   sub DescribeWorkflowType {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::DescribeWorkflowType', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::DescribeWorkflowTypeResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::DescribeWorkflowType', @_);
   }
   sub GetWorkflowExecutionHistory {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::GetWorkflowExecutionHistory', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::GetWorkflowExecutionHistoryResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::GetWorkflowExecutionHistory', @_);
   }
   sub ListActivityTypes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::ListActivityTypes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::ListActivityTypesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::ListActivityTypes', @_);
   }
   sub ListClosedWorkflowExecutions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::ListClosedWorkflowExecutions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::ListClosedWorkflowExecutionsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::ListClosedWorkflowExecutions', @_);
   }
   sub ListDomains {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::ListDomains', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::ListDomainsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::ListDomains', @_);
   }
   sub ListOpenWorkflowExecutions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::ListOpenWorkflowExecutions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::ListOpenWorkflowExecutionsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::ListOpenWorkflowExecutions', @_);
   }
   sub ListWorkflowTypes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::ListWorkflowTypes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::ListWorkflowTypesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::ListWorkflowTypes', @_);
   }
   sub PollForActivityTask {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::PollForActivityTask', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::PollForActivityTaskResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::PollForActivityTask', @_);
   }
   sub PollForDecisionTask {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::PollForDecisionTask', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::PollForDecisionTaskResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::PollForDecisionTask', @_);
   }
   sub RecordActivityTaskHeartbeat {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RecordActivityTaskHeartbeat', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::RecordActivityTaskHeartbeatResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::RecordActivityTaskHeartbeat', @_);
   }
   sub RegisterActivityType {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RegisterActivityType', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SimpleWorkflow::RegisterActivityType', @_);
   }
   sub RegisterDomain {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RegisterDomain', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SimpleWorkflow::RegisterDomain', @_);
   }
   sub RegisterWorkflowType {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RegisterWorkflowType', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SimpleWorkflow::RegisterWorkflowType', @_);
   }
   sub RequestCancelWorkflowExecution {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RequestCancelWorkflowExecution', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SimpleWorkflow::RequestCancelWorkflowExecution', @_);
   }
   sub RespondActivityTaskCanceled {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RespondActivityTaskCanceled', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SimpleWorkflow::RespondActivityTaskCanceled', @_);
   }
   sub RespondActivityTaskCompleted {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RespondActivityTaskCompleted', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SimpleWorkflow::RespondActivityTaskCompleted', @_);
   }
   sub RespondActivityTaskFailed {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RespondActivityTaskFailed', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SimpleWorkflow::RespondActivityTaskFailed', @_);
   }
   sub RespondDecisionTaskCompleted {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::RespondDecisionTaskCompleted', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SimpleWorkflow::RespondDecisionTaskCompleted', @_);
   }
   sub SignalWorkflowExecution {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::SignalWorkflowExecution', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SimpleWorkflow::SignalWorkflowExecution', @_);
   }
   sub StartWorkflowExecution {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::StartWorkflowExecution', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SimpleWorkflow::StartWorkflowExecutionResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::SimpleWorkflow::StartWorkflowExecution', @_);
   }
   sub TerminateWorkflowExecution {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SimpleWorkflow::TerminateWorkflowExecution', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SimpleWorkflow::TerminateWorkflowExecution', @_);
   }
 }
 1;

@@ -147,54 +147,66 @@ package Aws::StorageGateway::ActivateGateway {
   has GatewayTimezone => (is => 'ro', isa => 'Str', required => 1);
   has GatewayType => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ActivateGateway');
-  has _returns => (isa => 'Aws::StorageGateway::ActivateGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ActivateGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ActivateGateway');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::ActivateGatewayResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::AddCache {
   use Moose;
   has DiskIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AddCache');
-  has _returns => (isa => 'Aws::StorageGateway::AddCacheResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AddCacheResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddCache');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::AddCacheResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::AddUploadBuffer {
   use Moose;
   has DiskIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AddUploadBuffer');
-  has _returns => (isa => 'Aws::StorageGateway::AddUploadBufferResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AddUploadBufferResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddUploadBuffer');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::AddUploadBufferResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::AddWorkingStorage {
   use Moose;
   has DiskIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AddWorkingStorage');
-  has _returns => (isa => 'Aws::StorageGateway::AddWorkingStorageResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AddWorkingStorageResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddWorkingStorage');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::AddWorkingStorageResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::CancelArchival {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has TapeARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CancelArchival');
-  has _returns => (isa => 'Aws::StorageGateway::CancelArchivalResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CancelArchivalResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelArchival');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::CancelArchivalResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::CancelRetrieval {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has TapeARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CancelRetrieval');
-  has _returns => (isa => 'Aws::StorageGateway::CancelRetrievalResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CancelRetrievalResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelRetrieval');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::CancelRetrievalResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::CreateCachediSCSIVolume {
   use Moose;
@@ -205,27 +217,33 @@ package Aws::StorageGateway::CreateCachediSCSIVolume {
   has TargetName => (is => 'ro', isa => 'Str', required => 1);
   has VolumeSizeInBytes => (is => 'ro', isa => 'Num', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCachediSCSIVolume');
-  has _returns => (isa => 'Aws::StorageGateway::CreateCachediSCSIVolumeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCachediSCSIVolumeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCachediSCSIVolume');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::CreateCachediSCSIVolumeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::CreateSnapshot {
   use Moose;
   has SnapshotDescription => (is => 'ro', isa => 'Str', required => 1);
   has VolumeARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSnapshot');
-  has _returns => (isa => 'Aws::StorageGateway::CreateSnapshotResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSnapshotResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSnapshot');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::CreateSnapshotResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::CreateSnapshotFromVolumeRecoveryPoint {
   use Moose;
   has SnapshotDescription => (is => 'ro', isa => 'Str', required => 1);
   has VolumeARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSnapshotFromVolumeRecoveryPoint');
-  has _returns => (isa => 'Aws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSnapshotFromVolumeRecoveryPointResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSnapshotFromVolumeRecoveryPoint');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::CreateStorediSCSIVolume {
   use Moose;
@@ -236,9 +254,11 @@ package Aws::StorageGateway::CreateStorediSCSIVolume {
   has SnapshotId => (is => 'ro', isa => 'Str');
   has TargetName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStorediSCSIVolume');
-  has _returns => (isa => 'Aws::StorageGateway::CreateStorediSCSIVolumeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStorediSCSIVolumeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStorediSCSIVolume');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::CreateStorediSCSIVolumeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::CreateTapes {
   use Moose;
@@ -248,132 +268,164 @@ package Aws::StorageGateway::CreateTapes {
   has TapeBarcodePrefix => (is => 'ro', isa => 'Str', required => 1);
   has TapeSizeInBytes => (is => 'ro', isa => 'Num', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTapes');
-  has _returns => (isa => 'Aws::StorageGateway::CreateTapesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateTapesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTapes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::CreateTapesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DeleteBandwidthRateLimit {
   use Moose;
   has BandwidthType => (is => 'ro', isa => 'Str', required => 1);
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteBandwidthRateLimit');
-  has _returns => (isa => 'Aws::StorageGateway::DeleteBandwidthRateLimitResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteBandwidthRateLimitResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteBandwidthRateLimit');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DeleteBandwidthRateLimitResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DeleteChapCredentials {
   use Moose;
   has InitiatorName => (is => 'ro', isa => 'Str', required => 1);
   has TargetARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteChapCredentials');
-  has _returns => (isa => 'Aws::StorageGateway::DeleteChapCredentialsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteChapCredentialsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteChapCredentials');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DeleteChapCredentialsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DeleteGateway {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteGateway');
-  has _returns => (isa => 'Aws::StorageGateway::DeleteGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteGateway');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DeleteGatewayResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DeleteSnapshotSchedule {
   use Moose;
   has VolumeARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSnapshotSchedule');
-  has _returns => (isa => 'Aws::StorageGateway::DeleteSnapshotScheduleResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSnapshotScheduleResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSnapshotSchedule');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DeleteSnapshotScheduleResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DeleteTape {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has TapeARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTape');
-  has _returns => (isa => 'Aws::StorageGateway::DeleteTapeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteTapeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTape');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DeleteTapeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DeleteTapeArchive {
   use Moose;
   has TapeARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTapeArchive');
-  has _returns => (isa => 'Aws::StorageGateway::DeleteTapeArchiveResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteTapeArchiveResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTapeArchive');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DeleteTapeArchiveResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DeleteVolume {
   use Moose;
   has VolumeARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVolume');
-  has _returns => (isa => 'Aws::StorageGateway::DeleteVolumeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVolumeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVolume');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DeleteVolumeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DescribeBandwidthRateLimit {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeBandwidthRateLimit');
-  has _returns => (isa => 'Aws::StorageGateway::DescribeBandwidthRateLimitResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeBandwidthRateLimitResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeBandwidthRateLimit');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeBandwidthRateLimitResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DescribeCache {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCache');
-  has _returns => (isa => 'Aws::StorageGateway::DescribeCacheResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCache');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeCacheResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DescribeCachediSCSIVolumes {
   use Moose;
   has VolumeARNs => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCachediSCSIVolumes');
-  has _returns => (isa => 'Aws::StorageGateway::DescribeCachediSCSIVolumesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCachediSCSIVolumesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCachediSCSIVolumes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeCachediSCSIVolumesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DescribeChapCredentials {
   use Moose;
   has TargetARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeChapCredentials');
-  has _returns => (isa => 'Aws::StorageGateway::DescribeChapCredentialsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeChapCredentialsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeChapCredentials');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeChapCredentialsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DescribeGatewayInformation {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeGatewayInformation');
-  has _returns => (isa => 'Aws::StorageGateway::DescribeGatewayInformationResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeGatewayInformationResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeGatewayInformation');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeGatewayInformationResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DescribeMaintenanceStartTime {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMaintenanceStartTime');
-  has _returns => (isa => 'Aws::StorageGateway::DescribeMaintenanceStartTimeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeMaintenanceStartTimeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMaintenanceStartTime');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeMaintenanceStartTimeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DescribeSnapshotSchedule {
   use Moose;
   has VolumeARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotSchedule');
-  has _returns => (isa => 'Aws::StorageGateway::DescribeSnapshotScheduleResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotScheduleResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotSchedule');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeSnapshotScheduleResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DescribeStorediSCSIVolumes {
   use Moose;
   has VolumeARNs => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStorediSCSIVolumes');
-  has _returns => (isa => 'Aws::StorageGateway::DescribeStorediSCSIVolumesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStorediSCSIVolumesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStorediSCSIVolumes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeStorediSCSIVolumesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DescribeTapeArchives {
   use Moose;
@@ -381,9 +433,11 @@ package Aws::StorageGateway::DescribeTapeArchives {
   has Marker => (is => 'ro', isa => 'Str');
   has TapeARNs => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTapeArchives');
-  has _returns => (isa => 'Aws::StorageGateway::DescribeTapeArchivesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTapeArchivesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTapeArchives');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeTapeArchivesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DescribeTapeRecoveryPoints {
   use Moose;
@@ -391,9 +445,11 @@ package Aws::StorageGateway::DescribeTapeRecoveryPoints {
   has Limit => (is => 'ro', isa => 'Int');
   has Marker => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTapeRecoveryPoints');
-  has _returns => (isa => 'Aws::StorageGateway::DescribeTapeRecoveryPointsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTapeRecoveryPointsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTapeRecoveryPoints');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeTapeRecoveryPointsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DescribeTapes {
   use Moose;
@@ -402,17 +458,21 @@ package Aws::StorageGateway::DescribeTapes {
   has Marker => (is => 'ro', isa => 'Str');
   has TapeARNs => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTapes');
-  has _returns => (isa => 'Aws::StorageGateway::DescribeTapesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTapesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTapes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeTapesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DescribeUploadBuffer {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeUploadBuffer');
-  has _returns => (isa => 'Aws::StorageGateway::DescribeUploadBufferResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeUploadBufferResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeUploadBuffer');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeUploadBufferResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DescribeVTLDevices {
   use Moose;
@@ -421,50 +481,62 @@ package Aws::StorageGateway::DescribeVTLDevices {
   has Marker => (is => 'ro', isa => 'Str');
   has VTLDeviceARNs => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVTLDevices');
-  has _returns => (isa => 'Aws::StorageGateway::DescribeVTLDevicesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVTLDevicesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVTLDevices');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeVTLDevicesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DescribeWorkingStorage {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeWorkingStorage');
-  has _returns => (isa => 'Aws::StorageGateway::DescribeWorkingStorageResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeWorkingStorageResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeWorkingStorage');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeWorkingStorageResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::DisableGateway {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DisableGateway');
-  has _returns => (isa => 'Aws::StorageGateway::DisableGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DisableGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableGateway');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DisableGatewayResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::ListGateways {
   use Moose;
   has Limit => (is => 'ro', isa => 'Int');
   has Marker => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListGateways');
-  has _returns => (isa => 'Aws::StorageGateway::ListGatewaysResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListGatewaysResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListGateways');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::ListGatewaysResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::ListLocalDisks {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListLocalDisks');
-  has _returns => (isa => 'Aws::StorageGateway::ListLocalDisksResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListLocalDisksResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListLocalDisks');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::ListLocalDisksResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::ListVolumeRecoveryPoints {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListVolumeRecoveryPoints');
-  has _returns => (isa => 'Aws::StorageGateway::ListVolumeRecoveryPointsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListVolumeRecoveryPointsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListVolumeRecoveryPoints');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::ListVolumeRecoveryPointsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::ListVolumes {
   use Moose;
@@ -472,43 +544,53 @@ package Aws::StorageGateway::ListVolumes {
   has Limit => (is => 'ro', isa => 'Int');
   has Marker => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListVolumes');
-  has _returns => (isa => 'Aws::StorageGateway::ListVolumesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListVolumesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListVolumes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::ListVolumesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::RetrieveTapeArchive {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has TapeARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RetrieveTapeArchive');
-  has _returns => (isa => 'Aws::StorageGateway::RetrieveTapeArchiveResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RetrieveTapeArchiveResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RetrieveTapeArchive');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::RetrieveTapeArchiveResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::RetrieveTapeRecoveryPoint {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has TapeARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RetrieveTapeRecoveryPoint');
-  has _returns => (isa => 'Aws::StorageGateway::RetrieveTapeRecoveryPointResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RetrieveTapeRecoveryPointResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RetrieveTapeRecoveryPoint');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::RetrieveTapeRecoveryPointResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::ShutdownGateway {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ShutdownGateway');
-  has _returns => (isa => 'Aws::StorageGateway::ShutdownGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ShutdownGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ShutdownGateway');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::ShutdownGatewayResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::StartGateway {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'StartGateway');
-  has _returns => (isa => 'Aws::StorageGateway::StartGatewayResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'StartGatewayResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartGateway');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::StartGatewayResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::UpdateBandwidthRateLimit {
   use Moose;
@@ -516,9 +598,11 @@ package Aws::StorageGateway::UpdateBandwidthRateLimit {
   has AverageUploadRateLimitInBitsPerSec => (is => 'ro', isa => 'Num');
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBandwidthRateLimit');
-  has _returns => (isa => 'Aws::StorageGateway::UpdateBandwidthRateLimitResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateBandwidthRateLimitResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBandwidthRateLimit');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::UpdateBandwidthRateLimitResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::UpdateChapCredentials {
   use Moose;
@@ -527,9 +611,11 @@ package Aws::StorageGateway::UpdateChapCredentials {
   has SecretToAuthenticateTarget => (is => 'ro', isa => 'Str');
   has TargetARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateChapCredentials');
-  has _returns => (isa => 'Aws::StorageGateway::UpdateChapCredentialsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateChapCredentialsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateChapCredentials');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::UpdateChapCredentialsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::UpdateGatewayInformation {
   use Moose;
@@ -537,17 +623,21 @@ package Aws::StorageGateway::UpdateGatewayInformation {
   has GatewayName => (is => 'ro', isa => 'Str');
   has GatewayTimezone => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGatewayInformation');
-  has _returns => (isa => 'Aws::StorageGateway::UpdateGatewayInformationResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateGatewayInformationResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGatewayInformation');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::UpdateGatewayInformationResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::UpdateGatewaySoftwareNow {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGatewaySoftwareNow');
-  has _returns => (isa => 'Aws::StorageGateway::UpdateGatewaySoftwareNowResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateGatewaySoftwareNowResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGatewaySoftwareNow');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::UpdateGatewaySoftwareNowResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::UpdateMaintenanceStartTime {
   use Moose;
@@ -556,9 +646,11 @@ package Aws::StorageGateway::UpdateMaintenanceStartTime {
   has HourOfDay => (is => 'ro', isa => 'Int', required => 1);
   has MinuteOfHour => (is => 'ro', isa => 'Int', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMaintenanceStartTime');
-  has _returns => (isa => 'Aws::StorageGateway::UpdateMaintenanceStartTimeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateMaintenanceStartTimeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMaintenanceStartTime');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::UpdateMaintenanceStartTimeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::StorageGateway::UpdateSnapshotSchedule {
   use Moose;
@@ -567,9 +659,11 @@ package Aws::StorageGateway::UpdateSnapshotSchedule {
   has StartAt => (is => 'ro', isa => 'Int', required => 1);
   has VolumeARN => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSnapshotSchedule');
-  has _returns => (isa => 'Aws::StorageGateway::UpdateSnapshotScheduleResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateSnapshotScheduleResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSnapshotSchedule');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::UpdateSnapshotScheduleResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 
 package Aws::StorageGateway::ActivateGatewayResult {
@@ -918,285 +1012,191 @@ package Aws::StorageGateway {
   
   sub ActivateGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::ActivateGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::ActivateGatewayResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::ActivateGateway', @_);
   }
   sub AddCache {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::AddCache', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::AddCacheResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::AddCache', @_);
   }
   sub AddUploadBuffer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::AddUploadBuffer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::AddUploadBufferResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::AddUploadBuffer', @_);
   }
   sub AddWorkingStorage {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::AddWorkingStorage', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::AddWorkingStorageResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::AddWorkingStorage', @_);
   }
   sub CancelArchival {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::CancelArchival', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::CancelArchivalResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::CancelArchival', @_);
   }
   sub CancelRetrieval {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::CancelRetrieval', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::CancelRetrievalResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::CancelRetrieval', @_);
   }
   sub CreateCachediSCSIVolume {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::CreateCachediSCSIVolume', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::CreateCachediSCSIVolumeResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::CreateCachediSCSIVolume', @_);
   }
   sub CreateSnapshot {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::CreateSnapshot', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::CreateSnapshotResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::CreateSnapshot', @_);
   }
   sub CreateSnapshotFromVolumeRecoveryPoint {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::CreateSnapshotFromVolumeRecoveryPoint', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::CreateSnapshotFromVolumeRecoveryPoint', @_);
   }
   sub CreateStorediSCSIVolume {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::CreateStorediSCSIVolume', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::CreateStorediSCSIVolumeResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::CreateStorediSCSIVolume', @_);
   }
   sub CreateTapes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::CreateTapes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::CreateTapesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::CreateTapes', @_);
   }
   sub DeleteBandwidthRateLimit {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DeleteBandwidthRateLimit', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DeleteBandwidthRateLimitResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DeleteBandwidthRateLimit', @_);
   }
   sub DeleteChapCredentials {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DeleteChapCredentials', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DeleteChapCredentialsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DeleteChapCredentials', @_);
   }
   sub DeleteGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DeleteGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DeleteGatewayResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DeleteGateway', @_);
   }
   sub DeleteSnapshotSchedule {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DeleteSnapshotSchedule', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DeleteSnapshotScheduleResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DeleteSnapshotSchedule', @_);
   }
   sub DeleteTape {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DeleteTape', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DeleteTapeResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DeleteTape', @_);
   }
   sub DeleteTapeArchive {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DeleteTapeArchive', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DeleteTapeArchiveResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DeleteTapeArchive', @_);
   }
   sub DeleteVolume {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DeleteVolume', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DeleteVolumeResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DeleteVolume', @_);
   }
   sub DescribeBandwidthRateLimit {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeBandwidthRateLimit', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeBandwidthRateLimitResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DescribeBandwidthRateLimit', @_);
   }
   sub DescribeCache {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeCache', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeCacheResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DescribeCache', @_);
   }
   sub DescribeCachediSCSIVolumes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeCachediSCSIVolumes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeCachediSCSIVolumesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DescribeCachediSCSIVolumes', @_);
   }
   sub DescribeChapCredentials {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeChapCredentials', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeChapCredentialsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DescribeChapCredentials', @_);
   }
   sub DescribeGatewayInformation {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeGatewayInformation', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeGatewayInformationResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DescribeGatewayInformation', @_);
   }
   sub DescribeMaintenanceStartTime {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeMaintenanceStartTime', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeMaintenanceStartTimeResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DescribeMaintenanceStartTime', @_);
   }
   sub DescribeSnapshotSchedule {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeSnapshotSchedule', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeSnapshotScheduleResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DescribeSnapshotSchedule', @_);
   }
   sub DescribeStorediSCSIVolumes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeStorediSCSIVolumes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeStorediSCSIVolumesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DescribeStorediSCSIVolumes', @_);
   }
   sub DescribeTapeArchives {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeTapeArchives', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeTapeArchivesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DescribeTapeArchives', @_);
   }
   sub DescribeTapeRecoveryPoints {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeTapeRecoveryPoints', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeTapeRecoveryPointsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DescribeTapeRecoveryPoints', @_);
   }
   sub DescribeTapes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeTapes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeTapesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DescribeTapes', @_);
   }
   sub DescribeUploadBuffer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeUploadBuffer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeUploadBufferResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DescribeUploadBuffer', @_);
   }
   sub DescribeVTLDevices {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeVTLDevices', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeVTLDevicesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DescribeVTLDevices', @_);
   }
   sub DescribeWorkingStorage {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DescribeWorkingStorage', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DescribeWorkingStorageResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DescribeWorkingStorage', @_);
   }
   sub DisableGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::DisableGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::DisableGatewayResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::DisableGateway', @_);
   }
   sub ListGateways {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::ListGateways', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::ListGatewaysResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::ListGateways', @_);
   }
   sub ListLocalDisks {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::ListLocalDisks', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::ListLocalDisksResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::ListLocalDisks', @_);
   }
   sub ListVolumeRecoveryPoints {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::ListVolumeRecoveryPoints', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::ListVolumeRecoveryPointsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::ListVolumeRecoveryPoints', @_);
   }
   sub ListVolumes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::ListVolumes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::ListVolumesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::ListVolumes', @_);
   }
   sub RetrieveTapeArchive {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::RetrieveTapeArchive', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::RetrieveTapeArchiveResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::RetrieveTapeArchive', @_);
   }
   sub RetrieveTapeRecoveryPoint {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::RetrieveTapeRecoveryPoint', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::RetrieveTapeRecoveryPointResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::RetrieveTapeRecoveryPoint', @_);
   }
   sub ShutdownGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::ShutdownGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::ShutdownGatewayResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::ShutdownGateway', @_);
   }
   sub StartGateway {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::StartGateway', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::StartGatewayResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::StartGateway', @_);
   }
   sub UpdateBandwidthRateLimit {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::UpdateBandwidthRateLimit', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::UpdateBandwidthRateLimitResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::UpdateBandwidthRateLimit', @_);
   }
   sub UpdateChapCredentials {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::UpdateChapCredentials', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::UpdateChapCredentialsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::UpdateChapCredentials', @_);
   }
   sub UpdateGatewayInformation {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::UpdateGatewayInformation', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::UpdateGatewayInformationResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::UpdateGatewayInformation', @_);
   }
   sub UpdateGatewaySoftwareNow {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::UpdateGatewaySoftwareNow', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::UpdateGatewaySoftwareNowResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::UpdateGatewaySoftwareNow', @_);
   }
   sub UpdateMaintenanceStartTime {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::UpdateMaintenanceStartTime', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::UpdateMaintenanceStartTimeResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::UpdateMaintenanceStartTime', @_);
   }
   sub UpdateSnapshotSchedule {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::StorageGateway::UpdateSnapshotSchedule', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::StorageGateway::UpdateSnapshotScheduleResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::StorageGateway::UpdateSnapshotSchedule', @_);
   }
 }
 1;

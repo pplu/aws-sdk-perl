@@ -131,9 +131,11 @@ package Aws::CloudFormation::CancelUpdateStack {
   use Moose;
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CancelUpdateStack');
-  has _returns => (isa => 'Aws::CloudFormation::CancelUpdateStackResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CancelUpdateStackResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelUpdateStack');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::CloudFormation::CreateStack {
   use Moose;
@@ -150,35 +152,43 @@ package Aws::CloudFormation::CreateStack {
   has TemplateURL => (is => 'ro', isa => 'Str');
   has TimeoutInMinutes => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStack');
-  has _returns => (isa => 'Aws::CloudFormation::CreateStackResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStackResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStack');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::CreateStackResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStackResult');
 }
 package Aws::CloudFormation::DeleteStack {
   use Moose;
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteStack');
-  has _returns => (isa => 'Aws::CloudFormation::DeleteStackResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteStackResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteStack');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::CloudFormation::DescribeStackEvents {
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackEvents');
-  has _returns => (isa => 'Aws::CloudFormation::DescribeStackEventsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackEventsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackEvents');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::DescribeStackEventsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackEventsResult');
 }
 package Aws::CloudFormation::DescribeStackResource {
   use Moose;
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackResource');
-  has _returns => (isa => 'Aws::CloudFormation::DescribeStackResourceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackResourceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackResource');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::DescribeStackResourceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackResourceResult');
 }
 package Aws::CloudFormation::DescribeStackResources {
   use Moose;
@@ -186,18 +196,22 @@ package Aws::CloudFormation::DescribeStackResources {
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackResources');
-  has _returns => (isa => 'Aws::CloudFormation::DescribeStackResourcesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackResourcesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackResources');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::DescribeStackResourcesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackResourcesResult');
 }
 package Aws::CloudFormation::DescribeStacks {
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStacks');
-  has _returns => (isa => 'Aws::CloudFormation::DescribeStacksResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStacksResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStacks');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::DescribeStacksResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStacksResult');
 }
 package Aws::CloudFormation::EstimateTemplateCost {
   use Moose;
@@ -205,43 +219,53 @@ package Aws::CloudFormation::EstimateTemplateCost {
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateURL => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'EstimateTemplateCost');
-  has _returns => (isa => 'Aws::CloudFormation::EstimateTemplateCostResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'EstimateTemplateCostResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'EstimateTemplateCost');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::EstimateTemplateCostResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'EstimateTemplateCostResult');
 }
 package Aws::CloudFormation::GetStackPolicy {
   use Moose;
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetStackPolicy');
-  has _returns => (isa => 'Aws::CloudFormation::GetStackPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetStackPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetStackPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::GetStackPolicyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetStackPolicyResult');
 }
 package Aws::CloudFormation::GetTemplate {
   use Moose;
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetTemplate');
-  has _returns => (isa => 'Aws::CloudFormation::GetTemplateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetTemplateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetTemplate');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::GetTemplateResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetTemplateResult');
 }
 package Aws::CloudFormation::ListStackResources {
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListStackResources');
-  has _returns => (isa => 'Aws::CloudFormation::ListStackResourcesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListStackResourcesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListStackResources');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::ListStackResourcesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListStackResourcesResult');
 }
 package Aws::CloudFormation::ListStacks {
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has StackStatusFilter => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListStacks');
-  has _returns => (isa => 'Aws::CloudFormation::ListStacksResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListStacksResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListStacks');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::ListStacksResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListStacksResult');
 }
 package Aws::CloudFormation::SetStackPolicy {
   use Moose;
@@ -249,9 +273,11 @@ package Aws::CloudFormation::SetStackPolicy {
   has StackPolicyBody => (is => 'ro', isa => 'Str');
   has StackPolicyURL => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SetStackPolicy');
-  has _returns => (isa => 'Aws::CloudFormation::SetStackPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SetStackPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetStackPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::CloudFormation::UpdateStack {
   use Moose;
@@ -267,18 +293,22 @@ package Aws::CloudFormation::UpdateStack {
   has TemplateURL => (is => 'ro', isa => 'Str');
   has UsePreviousTemplate => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStack');
-  has _returns => (isa => 'Aws::CloudFormation::UpdateStackResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateStackResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStack');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::UpdateStackResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateStackResult');
 }
 package Aws::CloudFormation::ValidateTemplate {
   use Moose;
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateURL => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ValidateTemplate');
-  has _returns => (isa => 'Aws::CloudFormation::ValidateTemplateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ValidateTemplateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ValidateTemplate');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::ValidateTemplateResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ValidateTemplateResult');
 }
 
 package Aws::CloudFormation::CreateStackResult {
@@ -376,105 +406,63 @@ package Aws::CloudFormation {
   
   sub CancelUpdateStack {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::CancelUpdateStack', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::CloudFormation::CancelUpdateStack', @_);
   }
   sub CreateStack {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::CreateStack', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudFormation::CreateStackResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudFormation::CreateStack', @_);
   }
   sub DeleteStack {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::DeleteStack', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::CloudFormation::DeleteStack', @_);
   }
   sub DescribeStackEvents {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::DescribeStackEvents', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudFormation::DescribeStackEventsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudFormation::DescribeStackEvents', @_);
   }
   sub DescribeStackResource {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::DescribeStackResource', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudFormation::DescribeStackResourceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudFormation::DescribeStackResource', @_);
   }
   sub DescribeStackResources {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::DescribeStackResources', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudFormation::DescribeStackResourcesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudFormation::DescribeStackResources', @_);
   }
   sub DescribeStacks {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::DescribeStacks', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudFormation::DescribeStacksResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudFormation::DescribeStacks', @_);
   }
   sub EstimateTemplateCost {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::EstimateTemplateCost', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudFormation::EstimateTemplateCostResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudFormation::EstimateTemplateCost', @_);
   }
   sub GetStackPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::GetStackPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudFormation::GetStackPolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudFormation::GetStackPolicy', @_);
   }
   sub GetTemplate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::GetTemplate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudFormation::GetTemplateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudFormation::GetTemplate', @_);
   }
   sub ListStackResources {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::ListStackResources', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudFormation::ListStackResourcesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudFormation::ListStackResources', @_);
   }
   sub ListStacks {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::ListStacks', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudFormation::ListStacksResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudFormation::ListStacks', @_);
   }
   sub SetStackPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::SetStackPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::CloudFormation::SetStackPolicy', @_);
   }
   sub UpdateStack {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::UpdateStack', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudFormation::UpdateStackResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudFormation::UpdateStack', @_);
   }
   sub ValidateTemplate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudFormation::ValidateTemplate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudFormation::ValidateTemplateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudFormation::ValidateTemplate', @_);
   }
 }
 1;

@@ -285,97 +285,119 @@ package Aws::CloudSearch::BuildSuggesters {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'BuildSuggesters');
-  has _returns => (isa => 'Aws::CloudSearch::BuildSuggestersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'BuildSuggestersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BuildSuggesters');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::BuildSuggestersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'BuildSuggestersResult');
 }
 package Aws::CloudSearch::CreateDomain {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDomain');
-  has _returns => (isa => 'Aws::CloudSearch::CreateDomainResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDomainResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDomain');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::CreateDomainResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDomainResult');
 }
 package Aws::CloudSearch::DefineAnalysisScheme {
   use Moose;
   has AnalysisScheme => (is => 'ro', isa => 'Aws::CloudSearch::AnalysisScheme', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DefineAnalysisScheme');
-  has _returns => (isa => 'Aws::CloudSearch::DefineAnalysisSchemeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DefineAnalysisSchemeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DefineAnalysisScheme');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DefineAnalysisSchemeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DefineAnalysisSchemeResult');
 }
 package Aws::CloudSearch::DefineExpression {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Expression => (is => 'ro', isa => 'Aws::CloudSearch::Expression', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DefineExpression');
-  has _returns => (isa => 'Aws::CloudSearch::DefineExpressionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DefineExpressionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DefineExpression');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DefineExpressionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DefineExpressionResult');
 }
 package Aws::CloudSearch::DefineIndexField {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has IndexField => (is => 'ro', isa => 'Aws::CloudSearch::IndexField', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DefineIndexField');
-  has _returns => (isa => 'Aws::CloudSearch::DefineIndexFieldResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DefineIndexFieldResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DefineIndexField');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DefineIndexFieldResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DefineIndexFieldResult');
 }
 package Aws::CloudSearch::DefineSuggester {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Suggester => (is => 'ro', isa => 'Aws::CloudSearch::Suggester', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DefineSuggester');
-  has _returns => (isa => 'Aws::CloudSearch::DefineSuggesterResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DefineSuggesterResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DefineSuggester');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DefineSuggesterResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DefineSuggesterResult');
 }
 package Aws::CloudSearch::DeleteAnalysisScheme {
   use Moose;
   has AnalysisSchemeName => (is => 'ro', isa => 'Str', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAnalysisScheme');
-  has _returns => (isa => 'Aws::CloudSearch::DeleteAnalysisSchemeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAnalysisSchemeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAnalysisScheme');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DeleteAnalysisSchemeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAnalysisSchemeResult');
 }
 package Aws::CloudSearch::DeleteDomain {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDomain');
-  has _returns => (isa => 'Aws::CloudSearch::DeleteDomainResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDomainResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDomain');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DeleteDomainResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDomainResult');
 }
 package Aws::CloudSearch::DeleteExpression {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has ExpressionName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteExpression');
-  has _returns => (isa => 'Aws::CloudSearch::DeleteExpressionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteExpressionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteExpression');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DeleteExpressionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteExpressionResult');
 }
 package Aws::CloudSearch::DeleteIndexField {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has IndexFieldName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteIndexField');
-  has _returns => (isa => 'Aws::CloudSearch::DeleteIndexFieldResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteIndexFieldResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteIndexField');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DeleteIndexFieldResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteIndexFieldResult');
 }
 package Aws::CloudSearch::DeleteSuggester {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has SuggesterName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSuggester');
-  has _returns => (isa => 'Aws::CloudSearch::DeleteSuggesterResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSuggesterResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSuggester');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DeleteSuggesterResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSuggesterResult');
 }
 package Aws::CloudSearch::DescribeAnalysisSchemes {
   use Moose;
@@ -383,26 +405,32 @@ package Aws::CloudSearch::DescribeAnalysisSchemes {
   has Deployed => (is => 'ro', isa => 'Bool');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAnalysisSchemes');
-  has _returns => (isa => 'Aws::CloudSearch::DescribeAnalysisSchemesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAnalysisSchemesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAnalysisSchemes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DescribeAnalysisSchemesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAnalysisSchemesResult');
 }
 package Aws::CloudSearch::DescribeAvailabilityOptions {
   use Moose;
   has Deployed => (is => 'ro', isa => 'Bool');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityOptions');
-  has _returns => (isa => 'Aws::CloudSearch::DescribeAvailabilityOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityOptionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityOptions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DescribeAvailabilityOptionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityOptionsResult');
 }
 package Aws::CloudSearch::DescribeDomains {
   use Moose;
   has DomainNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDomains');
-  has _returns => (isa => 'Aws::CloudSearch::DescribeDomainsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDomainsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDomains');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DescribeDomainsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDomainsResult');
 }
 package Aws::CloudSearch::DescribeExpressions {
   use Moose;
@@ -410,9 +438,11 @@ package Aws::CloudSearch::DescribeExpressions {
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has ExpressionNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeExpressions');
-  has _returns => (isa => 'Aws::CloudSearch::DescribeExpressionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeExpressionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeExpressions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DescribeExpressionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeExpressionsResult');
 }
 package Aws::CloudSearch::DescribeIndexFields {
   use Moose;
@@ -420,26 +450,32 @@ package Aws::CloudSearch::DescribeIndexFields {
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has FieldNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeIndexFields');
-  has _returns => (isa => 'Aws::CloudSearch::DescribeIndexFieldsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeIndexFieldsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeIndexFields');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DescribeIndexFieldsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeIndexFieldsResult');
 }
 package Aws::CloudSearch::DescribeScalingParameters {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeScalingParameters');
-  has _returns => (isa => 'Aws::CloudSearch::DescribeScalingParametersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeScalingParametersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeScalingParameters');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DescribeScalingParametersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeScalingParametersResult');
 }
 package Aws::CloudSearch::DescribeServiceAccessPolicies {
   use Moose;
   has Deployed => (is => 'ro', isa => 'Bool');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeServiceAccessPolicies');
-  has _returns => (isa => 'Aws::CloudSearch::DescribeServiceAccessPoliciesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeServiceAccessPoliciesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeServiceAccessPolicies');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DescribeServiceAccessPoliciesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeServiceAccessPoliciesResult');
 }
 package Aws::CloudSearch::DescribeSuggesters {
   use Moose;
@@ -447,51 +483,63 @@ package Aws::CloudSearch::DescribeSuggesters {
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has SuggesterNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSuggesters');
-  has _returns => (isa => 'Aws::CloudSearch::DescribeSuggestersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSuggestersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSuggesters');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DescribeSuggestersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSuggestersResult');
 }
 package Aws::CloudSearch::IndexDocuments {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'IndexDocuments');
-  has _returns => (isa => 'Aws::CloudSearch::IndexDocumentsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'IndexDocumentsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'IndexDocuments');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::IndexDocumentsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'IndexDocumentsResult');
 }
 package Aws::CloudSearch::ListDomainNames {
   use Moose;
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListDomainNames');
-  has _returns => (isa => 'Aws::CloudSearch::ListDomainNamesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListDomainNamesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDomainNames');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::ListDomainNamesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListDomainNamesResult');
 }
 package Aws::CloudSearch::UpdateAvailabilityOptions {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has MultiAZ => (is => 'ro', isa => 'Bool', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAvailabilityOptions');
-  has _returns => (isa => 'Aws::CloudSearch::UpdateAvailabilityOptionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateAvailabilityOptionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAvailabilityOptions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::UpdateAvailabilityOptionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateAvailabilityOptionsResult');
 }
 package Aws::CloudSearch::UpdateScalingParameters {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has ScalingParameters => (is => 'ro', isa => 'Aws::CloudSearch::ScalingParameters', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateScalingParameters');
-  has _returns => (isa => 'Aws::CloudSearch::UpdateScalingParametersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateScalingParametersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateScalingParameters');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::UpdateScalingParametersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateScalingParametersResult');
 }
 package Aws::CloudSearch::UpdateServiceAccessPolicies {
   use Moose;
   has AccessPolicies => (is => 'ro', isa => 'Str', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateServiceAccessPolicies');
-  has _returns => (isa => 'Aws::CloudSearch::UpdateServiceAccessPoliciesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateServiceAccessPoliciesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateServiceAccessPolicies');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::UpdateServiceAccessPoliciesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateServiceAccessPoliciesResult');
 }
 
 package Aws::CloudSearch::BuildSuggestersResult {
@@ -654,171 +702,99 @@ package Aws::CloudSearch {
   
   sub BuildSuggesters {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::BuildSuggesters', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::BuildSuggestersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::BuildSuggesters', @_);
   }
   sub CreateDomain {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::CreateDomain', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::CreateDomainResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::CreateDomain', @_);
   }
   sub DefineAnalysisScheme {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DefineAnalysisScheme', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DefineAnalysisSchemeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DefineAnalysisScheme', @_);
   }
   sub DefineExpression {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DefineExpression', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DefineExpressionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DefineExpression', @_);
   }
   sub DefineIndexField {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DefineIndexField', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DefineIndexFieldResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DefineIndexField', @_);
   }
   sub DefineSuggester {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DefineSuggester', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DefineSuggesterResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DefineSuggester', @_);
   }
   sub DeleteAnalysisScheme {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DeleteAnalysisScheme', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DeleteAnalysisSchemeResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DeleteAnalysisScheme', @_);
   }
   sub DeleteDomain {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DeleteDomain', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DeleteDomainResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DeleteDomain', @_);
   }
   sub DeleteExpression {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DeleteExpression', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DeleteExpressionResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DeleteExpression', @_);
   }
   sub DeleteIndexField {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DeleteIndexField', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DeleteIndexFieldResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DeleteIndexField', @_);
   }
   sub DeleteSuggester {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DeleteSuggester', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DeleteSuggesterResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DeleteSuggester', @_);
   }
   sub DescribeAnalysisSchemes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeAnalysisSchemes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DescribeAnalysisSchemesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DescribeAnalysisSchemes', @_);
   }
   sub DescribeAvailabilityOptions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeAvailabilityOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DescribeAvailabilityOptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DescribeAvailabilityOptions', @_);
   }
   sub DescribeDomains {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeDomains', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DescribeDomainsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DescribeDomains', @_);
   }
   sub DescribeExpressions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeExpressions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DescribeExpressionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DescribeExpressions', @_);
   }
   sub DescribeIndexFields {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeIndexFields', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DescribeIndexFieldsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DescribeIndexFields', @_);
   }
   sub DescribeScalingParameters {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeScalingParameters', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DescribeScalingParametersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DescribeScalingParameters', @_);
   }
   sub DescribeServiceAccessPolicies {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeServiceAccessPolicies', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DescribeServiceAccessPoliciesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DescribeServiceAccessPolicies', @_);
   }
   sub DescribeSuggesters {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::DescribeSuggesters', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::DescribeSuggestersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::DescribeSuggesters', @_);
   }
   sub IndexDocuments {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::IndexDocuments', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::IndexDocumentsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::IndexDocuments', @_);
   }
   sub ListDomainNames {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::ListDomainNames', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::ListDomainNamesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::ListDomainNames', @_);
   }
   sub UpdateAvailabilityOptions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::UpdateAvailabilityOptions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::UpdateAvailabilityOptionsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::UpdateAvailabilityOptions', @_);
   }
   sub UpdateScalingParameters {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::UpdateScalingParameters', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::UpdateScalingParametersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::UpdateScalingParameters', @_);
   }
   sub UpdateServiceAccessPolicies {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::CloudSearch::UpdateServiceAccessPolicies', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::CloudSearch::UpdateServiceAccessPoliciesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::CloudSearch::UpdateServiceAccessPolicies', @_);
   }
 }
 1;

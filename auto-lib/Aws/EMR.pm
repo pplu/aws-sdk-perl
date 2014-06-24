@@ -408,35 +408,43 @@ package Aws::EMR::AddInstanceGroups {
   has InstanceGroups => (is => 'ro', isa => 'ArrayRef[Aws::EMR::InstanceGroupConfig]', required => 1);
   has JobFlowId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AddInstanceGroups');
-  has _returns => (isa => 'Aws::EMR::AddInstanceGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AddInstanceGroupsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddInstanceGroups');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::AddInstanceGroupsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::AddJobFlowSteps {
   use Moose;
   has JobFlowId => (is => 'ro', isa => 'Str', required => 1);
   has Steps => (is => 'ro', isa => 'ArrayRef[Aws::EMR::StepConfig]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AddJobFlowSteps');
-  has _returns => (isa => 'Aws::EMR::AddJobFlowStepsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AddJobFlowStepsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddJobFlowSteps');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::AddJobFlowStepsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::AddTags {
   use Moose;
   has ResourceId => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Tag]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AddTags');
-  has _returns => (isa => 'Aws::EMR::AddTagsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AddTagsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTags');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::AddTagsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::DescribeCluster {
   use Moose;
   has ClusterId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCluster');
-  has _returns => (isa => 'Aws::EMR::DescribeClusterResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCluster');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::DescribeClusterResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::DescribeJobFlows {
   use Moose;
@@ -445,27 +453,33 @@ package Aws::EMR::DescribeJobFlows {
   has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has JobFlowStates => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeJobFlows');
-  has _returns => (isa => 'Aws::EMR::DescribeJobFlowsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeJobFlowsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeJobFlows');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::DescribeJobFlowsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::DescribeStep {
   use Moose;
   has ClusterId => (is => 'ro', isa => 'Str', required => 1);
   has StepId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStep');
-  has _returns => (isa => 'Aws::EMR::DescribeStepResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStepResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStep');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::DescribeStepResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::ListBootstrapActions {
   use Moose;
   has ClusterId => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListBootstrapActions');
-  has _returns => (isa => 'Aws::EMR::ListBootstrapActionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListBootstrapActionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListBootstrapActions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::ListBootstrapActionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::ListClusters {
   use Moose;
@@ -474,18 +488,22 @@ package Aws::EMR::ListClusters {
   has CreatedBefore => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListClusters');
-  has _returns => (isa => 'Aws::EMR::ListClustersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListClustersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListClusters');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::ListClustersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::ListInstanceGroups {
   use Moose;
   has ClusterId => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListInstanceGroups');
-  has _returns => (isa => 'Aws::EMR::ListInstanceGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListInstanceGroupsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListInstanceGroups');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::ListInstanceGroupsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::ListInstances {
   use Moose;
@@ -494,9 +512,11 @@ package Aws::EMR::ListInstances {
   has InstanceGroupTypes => (is => 'ro', isa => 'ArrayRef[Str]');
   has Marker => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListInstances');
-  has _returns => (isa => 'Aws::EMR::ListInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::ListInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::ListSteps {
   use Moose;
@@ -504,26 +524,32 @@ package Aws::EMR::ListSteps {
   has Marker => (is => 'ro', isa => 'Str');
   has StepStates => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListSteps');
-  has _returns => (isa => 'Aws::EMR::ListStepsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListStepsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListSteps');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::ListStepsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::ModifyInstanceGroups {
   use Moose;
   has InstanceGroups => (is => 'ro', isa => 'ArrayRef[Aws::EMR::InstanceGroupModifyConfig]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyInstanceGroups');
-  has _returns => (isa => 'Aws::EMR::ModifyInstanceGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyInstanceGroupsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyInstanceGroups');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::RemoveTags {
   use Moose;
   has ResourceId => (is => 'ro', isa => 'Str', required => 1);
   has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveTags');
-  has _returns => (isa => 'Aws::EMR::RemoveTagsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RemoveTagsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveTags');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::RemoveTagsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::RunJobFlow {
   use Moose;
@@ -541,35 +567,43 @@ package Aws::EMR::RunJobFlow {
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Tag]');
   has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RunJobFlow');
-  has _returns => (isa => 'Aws::EMR::RunJobFlowResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RunJobFlowResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RunJobFlow');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::RunJobFlowResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::SetTerminationProtection {
   use Moose;
   has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has TerminationProtected => (is => 'ro', isa => 'Bool', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SetTerminationProtection');
-  has _returns => (isa => 'Aws::EMR::SetTerminationProtectionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SetTerminationProtectionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetTerminationProtection');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::SetVisibleToAllUsers {
   use Moose;
   has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has VisibleToAllUsers => (is => 'ro', isa => 'Bool', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SetVisibleToAllUsers');
-  has _returns => (isa => 'Aws::EMR::SetVisibleToAllUsersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SetVisibleToAllUsersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetVisibleToAllUsers');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::EMR::TerminateJobFlows {
   use Moose;
   has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateJobFlows');
-  has _returns => (isa => 'Aws::EMR::TerminateJobFlowsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'TerminateJobFlowsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateJobFlows');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 
 package Aws::EMR::AddInstanceGroupsResult {
@@ -671,105 +705,71 @@ package Aws::EMR {
   
   sub AddInstanceGroups {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::AddInstanceGroups', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::AddInstanceGroupsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::EMR::AddInstanceGroups', @_);
   }
   sub AddJobFlowSteps {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::AddJobFlowSteps', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::AddJobFlowStepsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::EMR::AddJobFlowSteps', @_);
   }
   sub AddTags {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::AddTags', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::AddTagsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::EMR::AddTags', @_);
   }
   sub DescribeCluster {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::DescribeCluster', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::DescribeClusterResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::EMR::DescribeCluster', @_);
   }
   sub DescribeJobFlows {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::DescribeJobFlows', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::DescribeJobFlowsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::EMR::DescribeJobFlows', @_);
   }
   sub DescribeStep {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::DescribeStep', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::DescribeStepResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::EMR::DescribeStep', @_);
   }
   sub ListBootstrapActions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::ListBootstrapActions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::ListBootstrapActionsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::EMR::ListBootstrapActions', @_);
   }
   sub ListClusters {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::ListClusters', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::ListClustersResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::EMR::ListClusters', @_);
   }
   sub ListInstanceGroups {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::ListInstanceGroups', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::ListInstanceGroupsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::EMR::ListInstanceGroups', @_);
   }
   sub ListInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::ListInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::ListInstancesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::EMR::ListInstances', @_);
   }
   sub ListSteps {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::ListSteps', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::ListStepsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::EMR::ListSteps', @_);
   }
   sub ModifyInstanceGroups {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::ModifyInstanceGroups', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EMR::ModifyInstanceGroups', @_);
   }
   sub RemoveTags {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::RemoveTags', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::RemoveTagsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::EMR::RemoveTags', @_);
   }
   sub RunJobFlow {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::RunJobFlow', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::EMR::RunJobFlowResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::EMR::RunJobFlow', @_);
   }
   sub SetTerminationProtection {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::SetTerminationProtection', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EMR::SetTerminationProtection', @_);
   }
   sub SetVisibleToAllUsers {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::SetVisibleToAllUsers', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EMR::SetVisibleToAllUsers', @_);
   }
   sub TerminateJobFlows {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::EMR::TerminateJobFlows', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::EMR::TerminateJobFlows', @_);
   }
 }
 1;

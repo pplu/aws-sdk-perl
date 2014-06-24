@@ -435,27 +435,33 @@ package Aws::OpsWorks::AssignVolume {
   has InstanceId => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AssignVolume');
-  has _returns => (isa => 'Aws::OpsWorks::AssignVolumeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AssignVolumeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssignVolume');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::AssociateElasticIp {
   use Moose;
   has ElasticIp => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateElasticIp');
-  has _returns => (isa => 'Aws::OpsWorks::AssociateElasticIpResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AssociateElasticIpResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateElasticIp');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::AttachElasticLoadBalancer {
   use Moose;
   has ElasticLoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has LayerId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AttachElasticLoadBalancer');
-  has _returns => (isa => 'Aws::OpsWorks::AttachElasticLoadBalancerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AttachElasticLoadBalancerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachElasticLoadBalancer');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::CloneStack {
   use Moose;
@@ -481,9 +487,11 @@ package Aws::OpsWorks::CloneStack {
   has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CloneStack');
-  has _returns => (isa => 'Aws::OpsWorks::CloneStackResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CloneStackResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CloneStack');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::CloneStackResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::CreateApp {
   use Moose;
@@ -498,9 +506,11 @@ package Aws::OpsWorks::CreateApp {
   has StackId => (is => 'ro', isa => 'Str', required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApp');
-  has _returns => (isa => 'Aws::OpsWorks::CreateAppResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateAppResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApp');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::CreateAppResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::CreateDeployment {
   use Moose;
@@ -511,9 +521,11 @@ package Aws::OpsWorks::CreateDeployment {
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDeployment');
-  has _returns => (isa => 'Aws::OpsWorks::CreateDeploymentResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDeploymentResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDeployment');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::CreateDeploymentResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::CreateInstance {
   use Moose;
@@ -532,9 +544,11 @@ package Aws::OpsWorks::CreateInstance {
   has StackId => (is => 'ro', isa => 'Str', required => 1);
   has SubnetId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInstance');
-  has _returns => (isa => 'Aws::OpsWorks::CreateInstanceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateInstanceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInstance');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::CreateInstanceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::CreateLayer {
   use Moose;
@@ -554,9 +568,11 @@ package Aws::OpsWorks::CreateLayer {
   has UseEbsOptimizedInstances => (is => 'ro', isa => 'Bool');
   has VolumeConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::VolumeConfiguration]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLayer');
-  has _returns => (isa => 'Aws::OpsWorks::CreateLayerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLayerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLayer');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::CreateLayerResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::CreateStack {
   use Moose;
@@ -579,9 +595,11 @@ package Aws::OpsWorks::CreateStack {
   has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStack');
-  has _returns => (isa => 'Aws::OpsWorks::CreateStackResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStackResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStack');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::CreateStackResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::CreateUserProfile {
   use Moose;
@@ -590,17 +608,21 @@ package Aws::OpsWorks::CreateUserProfile {
   has SshPublicKey => (is => 'ro', isa => 'Str');
   has SshUsername => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUserProfile');
-  has _returns => (isa => 'Aws::OpsWorks::CreateUserProfileResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateUserProfileResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUserProfile');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::CreateUserProfileResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DeleteApp {
   use Moose;
   has AppId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteApp');
-  has _returns => (isa => 'Aws::OpsWorks::DeleteAppResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAppResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteApp');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DeleteInstance {
   use Moose;
@@ -608,58 +630,72 @@ package Aws::OpsWorks::DeleteInstance {
   has DeleteVolumes => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteInstance');
-  has _returns => (isa => 'Aws::OpsWorks::DeleteInstanceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteInstanceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteInstance');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DeleteLayer {
   use Moose;
   has LayerId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLayer');
-  has _returns => (isa => 'Aws::OpsWorks::DeleteLayerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLayerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLayer');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DeleteStack {
   use Moose;
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteStack');
-  has _returns => (isa => 'Aws::OpsWorks::DeleteStackResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteStackResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteStack');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DeleteUserProfile {
   use Moose;
   has IamUserArn => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteUserProfile');
-  has _returns => (isa => 'Aws::OpsWorks::DeleteUserProfileResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteUserProfileResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteUserProfile');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DeregisterElasticIp {
   use Moose;
   has ElasticIp => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterElasticIp');
-  has _returns => (isa => 'Aws::OpsWorks::DeregisterElasticIpResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeregisterElasticIpResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterElasticIp');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DeregisterVolume {
   use Moose;
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterVolume');
-  has _returns => (isa => 'Aws::OpsWorks::DeregisterVolumeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeregisterVolumeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterVolume');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeApps {
   use Moose;
   has AppIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeApps');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeAppsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAppsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeApps');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeAppsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeCommands {
   use Moose;
@@ -667,9 +703,11 @@ package Aws::OpsWorks::DescribeCommands {
   has DeploymentId => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCommands');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeCommandsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCommandsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCommands');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeCommandsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeDeployments {
   use Moose;
@@ -677,9 +715,11 @@ package Aws::OpsWorks::DescribeDeployments {
   has DeploymentIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDeployments');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeDeploymentsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDeploymentsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDeployments');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeDeploymentsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeElasticIps {
   use Moose;
@@ -687,18 +727,22 @@ package Aws::OpsWorks::DescribeElasticIps {
   has Ips => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeElasticIps');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeElasticIpsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeElasticIpsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeElasticIps');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeElasticIpsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeElasticLoadBalancers {
   use Moose;
   has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeElasticLoadBalancers');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeElasticLoadBalancersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeElasticLoadBalancersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeElasticLoadBalancers');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeElasticLoadBalancersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeInstances {
   use Moose;
@@ -706,51 +750,63 @@ package Aws::OpsWorks::DescribeInstances {
   has LayerId => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInstances');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeInstancesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeInstancesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeLayers {
   use Moose;
   has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLayers');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeLayersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLayersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLayers');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeLayersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeLoadBasedAutoScaling {
   use Moose;
   has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBasedAutoScaling');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeLoadBasedAutoScalingResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBasedAutoScalingResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBasedAutoScaling');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeLoadBasedAutoScalingResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeMyUserProfile {
   use Moose;
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMyUserProfile');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeMyUserProfileResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeMyUserProfileResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMyUserProfile');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeMyUserProfileResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribePermissions {
   use Moose;
   has IamUserArn => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePermissions');
-  has _returns => (isa => 'Aws::OpsWorks::DescribePermissionsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribePermissionsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePermissions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribePermissionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeRaidArrays {
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
   has RaidArrayIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRaidArrays');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeRaidArraysResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeRaidArraysResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRaidArrays');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeRaidArraysResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeServiceErrors {
   use Moose;
@@ -758,41 +814,51 @@ package Aws::OpsWorks::DescribeServiceErrors {
   has ServiceErrorIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeServiceErrors');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeServiceErrorsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeServiceErrorsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeServiceErrors');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeServiceErrorsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeStackSummary {
   use Moose;
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackSummary');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeStackSummaryResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackSummaryResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackSummary');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeStackSummaryResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeStacks {
   use Moose;
   has StackIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStacks');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeStacksResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStacksResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStacks');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeStacksResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeTimeBasedAutoScaling {
   use Moose;
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTimeBasedAutoScaling');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeTimeBasedAutoScalingResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTimeBasedAutoScalingResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTimeBasedAutoScaling');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeTimeBasedAutoScalingResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeUserProfiles {
   use Moose;
   has IamUserArns => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeUserProfiles');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeUserProfilesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeUserProfilesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeUserProfiles');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeUserProfilesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DescribeVolumes {
   use Moose;
@@ -801,60 +867,74 @@ package Aws::OpsWorks::DescribeVolumes {
   has StackId => (is => 'ro', isa => 'Str');
   has VolumeIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVolumes');
-  has _returns => (isa => 'Aws::OpsWorks::DescribeVolumesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeVolumesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVolumes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeVolumesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DetachElasticLoadBalancer {
   use Moose;
   has ElasticLoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has LayerId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DetachElasticLoadBalancer');
-  has _returns => (isa => 'Aws::OpsWorks::DetachElasticLoadBalancerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DetachElasticLoadBalancerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachElasticLoadBalancer');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::DisassociateElasticIp {
   use Moose;
   has ElasticIp => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateElasticIp');
-  has _returns => (isa => 'Aws::OpsWorks::DisassociateElasticIpResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DisassociateElasticIpResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateElasticIp');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::GetHostnameSuggestion {
   use Moose;
   has LayerId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetHostnameSuggestion');
-  has _returns => (isa => 'Aws::OpsWorks::GetHostnameSuggestionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetHostnameSuggestionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetHostnameSuggestion');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::GetHostnameSuggestionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::RebootInstance {
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RebootInstance');
-  has _returns => (isa => 'Aws::OpsWorks::RebootInstanceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RebootInstanceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RebootInstance');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::RegisterElasticIp {
   use Moose;
   has ElasticIp => (is => 'ro', isa => 'Str', required => 1);
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterElasticIp');
-  has _returns => (isa => 'Aws::OpsWorks::RegisterElasticIpResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterElasticIpResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterElasticIp');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::RegisterElasticIpResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::RegisterVolume {
   use Moose;
   has Ec2VolumeId => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterVolume');
-  has _returns => (isa => 'Aws::OpsWorks::RegisterVolumeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterVolumeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterVolume');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::RegisterVolumeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::SetLoadBasedAutoScaling {
   use Moose;
@@ -863,9 +943,11 @@ package Aws::OpsWorks::SetLoadBasedAutoScaling {
   has LayerId => (is => 'ro', isa => 'Str', required => 1);
   has UpScaling => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingThresholds');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoadBasedAutoScaling');
-  has _returns => (isa => 'Aws::OpsWorks::SetLoadBasedAutoScalingResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SetLoadBasedAutoScalingResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoadBasedAutoScaling');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::SetPermission {
   use Moose;
@@ -875,58 +957,72 @@ package Aws::OpsWorks::SetPermission {
   has Level => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SetPermission');
-  has _returns => (isa => 'Aws::OpsWorks::SetPermissionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SetPermissionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetPermission');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::SetTimeBasedAutoScaling {
   use Moose;
   has AutoScalingSchedule => (is => 'ro', isa => 'Aws::OpsWorks::WeeklyAutoScalingSchedule');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SetTimeBasedAutoScaling');
-  has _returns => (isa => 'Aws::OpsWorks::SetTimeBasedAutoScalingResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SetTimeBasedAutoScalingResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetTimeBasedAutoScaling');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::StartInstance {
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'StartInstance');
-  has _returns => (isa => 'Aws::OpsWorks::StartInstanceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'StartInstanceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartInstance');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::StartStack {
   use Moose;
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'StartStack');
-  has _returns => (isa => 'Aws::OpsWorks::StartStackResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'StartStackResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartStack');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::StopInstance {
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'StopInstance');
-  has _returns => (isa => 'Aws::OpsWorks::StopInstanceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'StopInstanceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopInstance');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::StopStack {
   use Moose;
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'StopStack');
-  has _returns => (isa => 'Aws::OpsWorks::StopStackResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'StopStackResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopStack');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::UnassignVolume {
   use Moose;
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UnassignVolume');
-  has _returns => (isa => 'Aws::OpsWorks::UnassignVolumeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UnassignVolumeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UnassignVolume');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::UpdateApp {
   use Moose;
@@ -940,18 +1036,22 @@ package Aws::OpsWorks::UpdateApp {
   has SslConfiguration => (is => 'ro', isa => 'Aws::OpsWorks::SslConfiguration');
   has Type => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApp');
-  has _returns => (isa => 'Aws::OpsWorks::UpdateAppResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateAppResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApp');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::UpdateElasticIp {
   use Moose;
   has ElasticIp => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateElasticIp');
-  has _returns => (isa => 'Aws::OpsWorks::UpdateElasticIpResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateElasticIpResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateElasticIp');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::UpdateInstance {
   use Moose;
@@ -966,9 +1066,11 @@ package Aws::OpsWorks::UpdateInstance {
   has Os => (is => 'ro', isa => 'Str');
   has SshKeyName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateInstance');
-  has _returns => (isa => 'Aws::OpsWorks::UpdateInstanceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateInstanceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateInstance');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::UpdateLayer {
   use Moose;
@@ -987,17 +1089,21 @@ package Aws::OpsWorks::UpdateLayer {
   has UseEbsOptimizedInstances => (is => 'ro', isa => 'Bool');
   has VolumeConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::VolumeConfiguration]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateLayer');
-  has _returns => (isa => 'Aws::OpsWorks::UpdateLayerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateLayerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateLayer');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::UpdateMyUserProfile {
   use Moose;
   has SshPublicKey => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMyUserProfile');
-  has _returns => (isa => 'Aws::OpsWorks::UpdateMyUserProfileResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateMyUserProfileResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMyUserProfile');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::UpdateStack {
   use Moose;
@@ -1019,9 +1125,11 @@ package Aws::OpsWorks::UpdateStack {
   has UseCustomCookbooks => (is => 'ro', isa => 'Bool');
   has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStack');
-  has _returns => (isa => 'Aws::OpsWorks::UpdateStackResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateStackResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStack');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::UpdateUserProfile {
   use Moose;
@@ -1030,9 +1138,11 @@ package Aws::OpsWorks::UpdateUserProfile {
   has SshPublicKey => (is => 'ro', isa => 'Str');
   has SshUsername => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUserProfile');
-  has _returns => (isa => 'Aws::OpsWorks::UpdateUserProfileResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateUserProfileResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUserProfile');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::OpsWorks::UpdateVolume {
   use Moose;
@@ -1040,9 +1150,11 @@ package Aws::OpsWorks::UpdateVolume {
   has Name => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateVolume');
-  has _returns => (isa => 'Aws::OpsWorks::UpdateVolumeResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateVolumeResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateVolume');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 
 package Aws::OpsWorks::CloneStackResult {
@@ -1225,339 +1337,227 @@ package Aws::OpsWorks {
   
   sub AssignVolume {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::AssignVolume', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::AssignVolume', @_);
   }
   sub AssociateElasticIp {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::AssociateElasticIp', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::AssociateElasticIp', @_);
   }
   sub AttachElasticLoadBalancer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::AttachElasticLoadBalancer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::AttachElasticLoadBalancer', @_);
   }
   sub CloneStack {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::CloneStack', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::CloneStackResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::CloneStack', @_);
   }
   sub CreateApp {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::CreateApp', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::CreateAppResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::CreateApp', @_);
   }
   sub CreateDeployment {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::CreateDeployment', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::CreateDeploymentResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::CreateDeployment', @_);
   }
   sub CreateInstance {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::CreateInstance', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::CreateInstanceResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::CreateInstance', @_);
   }
   sub CreateLayer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::CreateLayer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::CreateLayerResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::CreateLayer', @_);
   }
   sub CreateStack {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::CreateStack', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::CreateStackResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::CreateStack', @_);
   }
   sub CreateUserProfile {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::CreateUserProfile', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::CreateUserProfileResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::CreateUserProfile', @_);
   }
   sub DeleteApp {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DeleteApp', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::DeleteApp', @_);
   }
   sub DeleteInstance {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DeleteInstance', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::DeleteInstance', @_);
   }
   sub DeleteLayer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DeleteLayer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::DeleteLayer', @_);
   }
   sub DeleteStack {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DeleteStack', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::DeleteStack', @_);
   }
   sub DeleteUserProfile {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DeleteUserProfile', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::DeleteUserProfile', @_);
   }
   sub DeregisterElasticIp {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DeregisterElasticIp', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::DeregisterElasticIp', @_);
   }
   sub DeregisterVolume {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DeregisterVolume', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::DeregisterVolume', @_);
   }
   sub DescribeApps {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeApps', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeAppsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeApps', @_);
   }
   sub DescribeCommands {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeCommands', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeCommandsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeCommands', @_);
   }
   sub DescribeDeployments {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeDeployments', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeDeploymentsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeDeployments', @_);
   }
   sub DescribeElasticIps {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeElasticIps', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeElasticIpsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeElasticIps', @_);
   }
   sub DescribeElasticLoadBalancers {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeElasticLoadBalancers', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeElasticLoadBalancersResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeElasticLoadBalancers', @_);
   }
   sub DescribeInstances {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeInstances', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeInstancesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeInstances', @_);
   }
   sub DescribeLayers {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeLayers', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeLayersResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeLayers', @_);
   }
   sub DescribeLoadBasedAutoScaling {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeLoadBasedAutoScaling', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeLoadBasedAutoScalingResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeLoadBasedAutoScaling', @_);
   }
   sub DescribeMyUserProfile {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeMyUserProfile', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeMyUserProfileResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeMyUserProfile', @_);
   }
   sub DescribePermissions {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribePermissions', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribePermissionsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribePermissions', @_);
   }
   sub DescribeRaidArrays {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeRaidArrays', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeRaidArraysResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeRaidArrays', @_);
   }
   sub DescribeServiceErrors {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeServiceErrors', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeServiceErrorsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeServiceErrors', @_);
   }
   sub DescribeStacks {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeStacks', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeStacksResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeStacks', @_);
   }
   sub DescribeStackSummary {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeStackSummary', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeStackSummaryResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeStackSummary', @_);
   }
   sub DescribeTimeBasedAutoScaling {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeTimeBasedAutoScaling', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeTimeBasedAutoScalingResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeTimeBasedAutoScaling', @_);
   }
   sub DescribeUserProfiles {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeUserProfiles', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeUserProfilesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeUserProfiles', @_);
   }
   sub DescribeVolumes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DescribeVolumes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::DescribeVolumesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::DescribeVolumes', @_);
   }
   sub DetachElasticLoadBalancer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DetachElasticLoadBalancer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::DetachElasticLoadBalancer', @_);
   }
   sub DisassociateElasticIp {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::DisassociateElasticIp', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::DisassociateElasticIp', @_);
   }
   sub GetHostnameSuggestion {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::GetHostnameSuggestion', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::GetHostnameSuggestionResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::GetHostnameSuggestion', @_);
   }
   sub RebootInstance {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::RebootInstance', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::RebootInstance', @_);
   }
   sub RegisterElasticIp {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::RegisterElasticIp', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::RegisterElasticIpResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::RegisterElasticIp', @_);
   }
   sub RegisterVolume {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::RegisterVolume', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::OpsWorks::RegisterVolumeResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::OpsWorks::RegisterVolume', @_);
   }
   sub SetLoadBasedAutoScaling {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::SetLoadBasedAutoScaling', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::SetLoadBasedAutoScaling', @_);
   }
   sub SetPermission {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::SetPermission', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::SetPermission', @_);
   }
   sub SetTimeBasedAutoScaling {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::SetTimeBasedAutoScaling', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::SetTimeBasedAutoScaling', @_);
   }
   sub StartInstance {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::StartInstance', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::StartInstance', @_);
   }
   sub StartStack {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::StartStack', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::StartStack', @_);
   }
   sub StopInstance {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::StopInstance', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::StopInstance', @_);
   }
   sub StopStack {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::StopStack', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::StopStack', @_);
   }
   sub UnassignVolume {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::UnassignVolume', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::UnassignVolume', @_);
   }
   sub UpdateApp {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::UpdateApp', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::UpdateApp', @_);
   }
   sub UpdateElasticIp {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::UpdateElasticIp', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::UpdateElasticIp', @_);
   }
   sub UpdateInstance {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::UpdateInstance', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::UpdateInstance', @_);
   }
   sub UpdateLayer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::UpdateLayer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::UpdateLayer', @_);
   }
   sub UpdateMyUserProfile {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::UpdateMyUserProfile', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::UpdateMyUserProfile', @_);
   }
   sub UpdateStack {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::UpdateStack', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::UpdateStack', @_);
   }
   sub UpdateUserProfile {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::UpdateUserProfile', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::UpdateUserProfile', @_);
   }
   sub UpdateVolume {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::OpsWorks::UpdateVolume', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::OpsWorks::UpdateVolume', @_);
   }
 }
 1;

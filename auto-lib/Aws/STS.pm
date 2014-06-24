@@ -37,9 +37,11 @@ package Aws::STS::AssumeRole {
   has SerialNumber => (is => 'ro', isa => 'Str');
   has TokenCode => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AssumeRole');
-  has _returns => (isa => 'Aws::STS::AssumeRoleResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AssumeRoleResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssumeRole');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::STS::AssumeRoleResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AssumeRoleResult');
 }
 package Aws::STS::AssumeRoleWithSAML {
   use Moose;
@@ -49,9 +51,11 @@ package Aws::STS::AssumeRoleWithSAML {
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has SAMLAssertion => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AssumeRoleWithSAML');
-  has _returns => (isa => 'Aws::STS::AssumeRoleWithSAMLResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AssumeRoleWithSAMLResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssumeRoleWithSAML');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::STS::AssumeRoleWithSAMLResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AssumeRoleWithSAMLResult');
 }
 package Aws::STS::AssumeRoleWithWebIdentity {
   use Moose;
@@ -62,17 +66,21 @@ package Aws::STS::AssumeRoleWithWebIdentity {
   has RoleSessionName => (is => 'ro', isa => 'Str', required => 1);
   has WebIdentityToken => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AssumeRoleWithWebIdentity');
-  has _returns => (isa => 'Aws::STS::AssumeRoleWithWebIdentityResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AssumeRoleWithWebIdentityResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssumeRoleWithWebIdentity');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::STS::AssumeRoleWithWebIdentityResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AssumeRoleWithWebIdentityResult');
 }
 package Aws::STS::DecodeAuthorizationMessage {
   use Moose;
   has EncodedMessage => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DecodeAuthorizationMessage');
-  has _returns => (isa => 'Aws::STS::DecodeAuthorizationMessageResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DecodeAuthorizationMessageResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DecodeAuthorizationMessage');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::STS::DecodeAuthorizationMessageResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DecodeAuthorizationMessageResult');
 }
 package Aws::STS::GetFederationToken {
   use Moose;
@@ -80,9 +88,11 @@ package Aws::STS::GetFederationToken {
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Policy => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetFederationToken');
-  has _returns => (isa => 'Aws::STS::GetFederationTokenResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetFederationTokenResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetFederationToken');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::STS::GetFederationTokenResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetFederationTokenResult');
 }
 package Aws::STS::GetSessionToken {
   use Moose;
@@ -90,9 +100,11 @@ package Aws::STS::GetSessionToken {
   has SerialNumber => (is => 'ro', isa => 'Str');
   has TokenCode => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetSessionToken');
-  has _returns => (isa => 'Aws::STS::GetSessionTokenResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetSessionTokenResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSessionToken');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::STS::GetSessionTokenResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetSessionTokenResult');
 }
 
 package Aws::STS::AssumeRoleResult {
@@ -163,45 +175,27 @@ package Aws::STS {
   
   sub AssumeRole {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::STS::AssumeRole', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::STS::AssumeRoleResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::STS::AssumeRole', @_);
   }
   sub AssumeRoleWithSAML {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::STS::AssumeRoleWithSAML', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::STS::AssumeRoleWithSAMLResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::STS::AssumeRoleWithSAML', @_);
   }
   sub AssumeRoleWithWebIdentity {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::STS::AssumeRoleWithWebIdentity', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::STS::AssumeRoleWithWebIdentityResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::STS::AssumeRoleWithWebIdentity', @_);
   }
   sub DecodeAuthorizationMessage {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::STS::DecodeAuthorizationMessage', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::STS::DecodeAuthorizationMessageResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::STS::DecodeAuthorizationMessage', @_);
   }
   sub GetFederationToken {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::STS::GetFederationToken', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::STS::GetFederationTokenResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::STS::GetFederationToken', @_);
   }
   sub GetSessionToken {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::STS::GetSessionToken', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::STS::GetSessionTokenResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::STS::GetSessionToken', @_);
   }
 }
 1;

@@ -166,70 +166,86 @@ package Aws::IAM::AddRoleToInstanceProfile {
   has InstanceProfileName => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AddRoleToInstanceProfile');
-  has _returns => (isa => 'Aws::IAM::AddRoleToInstanceProfileResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AddRoleToInstanceProfileResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddRoleToInstanceProfile');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::AddUserToGroup {
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AddUserToGroup');
-  has _returns => (isa => 'Aws::IAM::AddUserToGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AddUserToGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddUserToGroup');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::ChangePassword {
   use Moose;
   has NewPassword => (is => 'ro', isa => 'Str', required => 1);
   has OldPassword => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ChangePassword');
-  has _returns => (isa => 'Aws::IAM::ChangePasswordResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ChangePasswordResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ChangePassword');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::CreateAccessKey {
   use Moose;
   has UserName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAccessKey');
-  has _returns => (isa => 'Aws::IAM::CreateAccessKeyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateAccessKeyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAccessKey');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::CreateAccessKeyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateAccessKeyResult');
 }
 package Aws::IAM::CreateAccountAlias {
   use Moose;
   has AccountAlias => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAccountAlias');
-  has _returns => (isa => 'Aws::IAM::CreateAccountAliasResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateAccountAliasResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAccountAlias');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::CreateGroup {
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has Path => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGroup');
-  has _returns => (isa => 'Aws::IAM::CreateGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::CreateGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateGroupResult');
 }
 package Aws::IAM::CreateInstanceProfile {
   use Moose;
   has InstanceProfileName => (is => 'ro', isa => 'Str', required => 1);
   has Path => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInstanceProfile');
-  has _returns => (isa => 'Aws::IAM::CreateInstanceProfileResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateInstanceProfileResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInstanceProfile');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::CreateInstanceProfileResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateInstanceProfileResult');
 }
 package Aws::IAM::CreateLoginProfile {
   use Moose;
   has Password => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoginProfile');
-  has _returns => (isa => 'Aws::IAM::CreateLoginProfileResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoginProfileResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoginProfile');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::CreateLoginProfileResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoginProfileResult');
 }
 package Aws::IAM::CreateRole {
   use Moose;
@@ -237,169 +253,209 @@ package Aws::IAM::CreateRole {
   has Path => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRole');
-  has _returns => (isa => 'Aws::IAM::CreateRoleResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateRoleResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRole');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::CreateRoleResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateRoleResult');
 }
 package Aws::IAM::CreateSAMLProvider {
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has SAMLMetadataDocument => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSAMLProvider');
-  has _returns => (isa => 'Aws::IAM::CreateSAMLProviderResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSAMLProviderResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSAMLProvider');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::CreateSAMLProviderResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSAMLProviderResult');
 }
 package Aws::IAM::CreateUser {
   use Moose;
   has Path => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUser');
-  has _returns => (isa => 'Aws::IAM::CreateUserResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateUserResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUser');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::CreateUserResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateUserResult');
 }
 package Aws::IAM::CreateVirtualMFADevice {
   use Moose;
   has Path => (is => 'ro', isa => 'Str');
   has VirtualMFADeviceName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVirtualMFADevice');
-  has _returns => (isa => 'Aws::IAM::CreateVirtualMFADeviceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVirtualMFADeviceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVirtualMFADevice');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::CreateVirtualMFADeviceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVirtualMFADeviceResult');
 }
 package Aws::IAM::DeactivateMFADevice {
   use Moose;
   has SerialNumber => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeactivateMFADevice');
-  has _returns => (isa => 'Aws::IAM::DeactivateMFADeviceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeactivateMFADeviceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeactivateMFADevice');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteAccessKey {
   use Moose;
   has AccessKeyId => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAccessKey');
-  has _returns => (isa => 'Aws::IAM::DeleteAccessKeyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAccessKeyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAccessKey');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteAccountAlias {
   use Moose;
   has AccountAlias => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAccountAlias');
-  has _returns => (isa => 'Aws::IAM::DeleteAccountAliasResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAccountAliasResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAccountAlias');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteAccountPasswordPolicy {
   use Moose;
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAccountPasswordPolicy');
-  has _returns => (isa => 'Aws::IAM::DeleteAccountPasswordPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAccountPasswordPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAccountPasswordPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteGroup {
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteGroup');
-  has _returns => (isa => 'Aws::IAM::DeleteGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteGroup');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteGroupPolicy {
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteGroupPolicy');
-  has _returns => (isa => 'Aws::IAM::DeleteGroupPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteGroupPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteGroupPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteInstanceProfile {
   use Moose;
   has InstanceProfileName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteInstanceProfile');
-  has _returns => (isa => 'Aws::IAM::DeleteInstanceProfileResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteInstanceProfileResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteInstanceProfile');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteLoginProfile {
   use Moose;
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLoginProfile');
-  has _returns => (isa => 'Aws::IAM::DeleteLoginProfileResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLoginProfileResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLoginProfile');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteRole {
   use Moose;
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRole');
-  has _returns => (isa => 'Aws::IAM::DeleteRoleResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteRoleResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRole');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteRolePolicy {
   use Moose;
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRolePolicy');
-  has _returns => (isa => 'Aws::IAM::DeleteRolePolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteRolePolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRolePolicy');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteSAMLProvider {
   use Moose;
   has SAMLProviderArn => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSAMLProvider');
-  has _returns => (isa => 'Aws::IAM::DeleteSAMLProviderResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSAMLProviderResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSAMLProvider');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteServerCertificate {
   use Moose;
   has ServerCertificateName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteServerCertificate');
-  has _returns => (isa => 'Aws::IAM::DeleteServerCertificateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteServerCertificateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteServerCertificate');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteSigningCertificate {
   use Moose;
   has CertificateId => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSigningCertificate');
-  has _returns => (isa => 'Aws::IAM::DeleteSigningCertificateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSigningCertificateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSigningCertificate');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteUser {
   use Moose;
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteUser');
-  has _returns => (isa => 'Aws::IAM::DeleteUserResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteUserResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteUser');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteUserPolicy {
   use Moose;
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteUserPolicy');
-  has _returns => (isa => 'Aws::IAM::DeleteUserPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteUserPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteUserPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::DeleteVirtualMFADevice {
   use Moose;
   has SerialNumber => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVirtualMFADevice');
-  has _returns => (isa => 'Aws::IAM::DeleteVirtualMFADeviceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteVirtualMFADeviceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVirtualMFADevice');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::EnableMFADevice {
   use Moose;
@@ -408,23 +464,29 @@ package Aws::IAM::EnableMFADevice {
   has SerialNumber => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'EnableMFADevice');
-  has _returns => (isa => 'Aws::IAM::EnableMFADeviceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'EnableMFADeviceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableMFADevice');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::GetAccountPasswordPolicy {
   use Moose;
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetAccountPasswordPolicy');
-  has _returns => (isa => 'Aws::IAM::GetAccountPasswordPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetAccountPasswordPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetAccountPasswordPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetAccountPasswordPolicyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetAccountPasswordPolicyResult');
 }
 package Aws::IAM::GetAccountSummary {
   use Moose;
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetAccountSummary');
-  has _returns => (isa => 'Aws::IAM::GetAccountSummaryResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetAccountSummaryResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetAccountSummary');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetAccountSummaryResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetAccountSummaryResult');
 }
 package Aws::IAM::GetGroup {
   use Moose;
@@ -432,84 +494,104 @@ package Aws::IAM::GetGroup {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetGroup');
-  has _returns => (isa => 'Aws::IAM::GetGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetGroup');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetGroupResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetGroupResult');
 }
 package Aws::IAM::GetGroupPolicy {
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetGroupPolicy');
-  has _returns => (isa => 'Aws::IAM::GetGroupPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetGroupPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetGroupPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetGroupPolicyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetGroupPolicyResult');
 }
 package Aws::IAM::GetInstanceProfile {
   use Moose;
   has InstanceProfileName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetInstanceProfile');
-  has _returns => (isa => 'Aws::IAM::GetInstanceProfileResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetInstanceProfileResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetInstanceProfile');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetInstanceProfileResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetInstanceProfileResult');
 }
 package Aws::IAM::GetLoginProfile {
   use Moose;
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetLoginProfile');
-  has _returns => (isa => 'Aws::IAM::GetLoginProfileResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetLoginProfileResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetLoginProfile');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetLoginProfileResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetLoginProfileResult');
 }
 package Aws::IAM::GetRole {
   use Moose;
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetRole');
-  has _returns => (isa => 'Aws::IAM::GetRoleResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetRoleResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRole');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetRoleResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetRoleResult');
 }
 package Aws::IAM::GetRolePolicy {
   use Moose;
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetRolePolicy');
-  has _returns => (isa => 'Aws::IAM::GetRolePolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetRolePolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRolePolicy');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetRolePolicyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetRolePolicyResult');
 }
 package Aws::IAM::GetSAMLProvider {
   use Moose;
   has SAMLProviderArn => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetSAMLProvider');
-  has _returns => (isa => 'Aws::IAM::GetSAMLProviderResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetSAMLProviderResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSAMLProvider');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetSAMLProviderResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetSAMLProviderResult');
 }
 package Aws::IAM::GetServerCertificate {
   use Moose;
   has ServerCertificateName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetServerCertificate');
-  has _returns => (isa => 'Aws::IAM::GetServerCertificateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetServerCertificateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetServerCertificate');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetServerCertificateResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetServerCertificateResult');
 }
 package Aws::IAM::GetUser {
   use Moose;
   has UserName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetUser');
-  has _returns => (isa => 'Aws::IAM::GetUserResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetUserResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetUser');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetUserResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetUserResult');
 }
 package Aws::IAM::GetUserPolicy {
   use Moose;
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetUserPolicy');
-  has _returns => (isa => 'Aws::IAM::GetUserPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetUserPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetUserPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetUserPolicyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetUserPolicyResult');
 }
 package Aws::IAM::ListAccessKeys {
   use Moose;
@@ -517,18 +599,22 @@ package Aws::IAM::ListAccessKeys {
   has MaxItems => (is => 'ro', isa => 'Int');
   has UserName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListAccessKeys');
-  has _returns => (isa => 'Aws::IAM::ListAccessKeysResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListAccessKeysResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAccessKeys');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListAccessKeysResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListAccessKeysResult');
 }
 package Aws::IAM::ListAccountAliases {
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListAccountAliases');
-  has _returns => (isa => 'Aws::IAM::ListAccountAliasesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListAccountAliasesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAccountAliases');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListAccountAliasesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListAccountAliasesResult');
 }
 package Aws::IAM::ListGroupPolicies {
   use Moose;
@@ -536,9 +622,11 @@ package Aws::IAM::ListGroupPolicies {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListGroupPolicies');
-  has _returns => (isa => 'Aws::IAM::ListGroupPoliciesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListGroupPoliciesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListGroupPolicies');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListGroupPoliciesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListGroupPoliciesResult');
 }
 package Aws::IAM::ListGroups {
   use Moose;
@@ -546,9 +634,11 @@ package Aws::IAM::ListGroups {
   has MaxItems => (is => 'ro', isa => 'Int');
   has PathPrefix => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListGroups');
-  has _returns => (isa => 'Aws::IAM::ListGroupsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListGroupsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListGroups');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListGroupsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListGroupsResult');
 }
 package Aws::IAM::ListGroupsForUser {
   use Moose;
@@ -556,9 +646,11 @@ package Aws::IAM::ListGroupsForUser {
   has MaxItems => (is => 'ro', isa => 'Int');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListGroupsForUser');
-  has _returns => (isa => 'Aws::IAM::ListGroupsForUserResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListGroupsForUserResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListGroupsForUser');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListGroupsForUserResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListGroupsForUserResult');
 }
 package Aws::IAM::ListInstanceProfiles {
   use Moose;
@@ -566,9 +658,11 @@ package Aws::IAM::ListInstanceProfiles {
   has MaxItems => (is => 'ro', isa => 'Int');
   has PathPrefix => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListInstanceProfiles');
-  has _returns => (isa => 'Aws::IAM::ListInstanceProfilesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListInstanceProfilesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListInstanceProfiles');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListInstanceProfilesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListInstanceProfilesResult');
 }
 package Aws::IAM::ListInstanceProfilesForRole {
   use Moose;
@@ -576,9 +670,11 @@ package Aws::IAM::ListInstanceProfilesForRole {
   has MaxItems => (is => 'ro', isa => 'Int');
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListInstanceProfilesForRole');
-  has _returns => (isa => 'Aws::IAM::ListInstanceProfilesForRoleResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListInstanceProfilesForRoleResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListInstanceProfilesForRole');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListInstanceProfilesForRoleResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListInstanceProfilesForRoleResult');
 }
 package Aws::IAM::ListMFADevices {
   use Moose;
@@ -586,9 +682,11 @@ package Aws::IAM::ListMFADevices {
   has MaxItems => (is => 'ro', isa => 'Int');
   has UserName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListMFADevices');
-  has _returns => (isa => 'Aws::IAM::ListMFADevicesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListMFADevicesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListMFADevices');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListMFADevicesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListMFADevicesResult');
 }
 package Aws::IAM::ListRolePolicies {
   use Moose;
@@ -596,9 +694,11 @@ package Aws::IAM::ListRolePolicies {
   has MaxItems => (is => 'ro', isa => 'Int');
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListRolePolicies');
-  has _returns => (isa => 'Aws::IAM::ListRolePoliciesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListRolePoliciesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListRolePolicies');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListRolePoliciesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListRolePoliciesResult');
 }
 package Aws::IAM::ListRoles {
   use Moose;
@@ -606,16 +706,20 @@ package Aws::IAM::ListRoles {
   has MaxItems => (is => 'ro', isa => 'Int');
   has PathPrefix => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListRoles');
-  has _returns => (isa => 'Aws::IAM::ListRolesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListRolesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListRoles');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListRolesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListRolesResult');
 }
 package Aws::IAM::ListSAMLProviders {
   use Moose;
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListSAMLProviders');
-  has _returns => (isa => 'Aws::IAM::ListSAMLProvidersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListSAMLProvidersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListSAMLProviders');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListSAMLProvidersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListSAMLProvidersResult');
 }
 package Aws::IAM::ListServerCertificates {
   use Moose;
@@ -623,9 +727,11 @@ package Aws::IAM::ListServerCertificates {
   has MaxItems => (is => 'ro', isa => 'Int');
   has PathPrefix => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListServerCertificates');
-  has _returns => (isa => 'Aws::IAM::ListServerCertificatesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListServerCertificatesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListServerCertificates');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListServerCertificatesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListServerCertificatesResult');
 }
 package Aws::IAM::ListSigningCertificates {
   use Moose;
@@ -633,9 +739,11 @@ package Aws::IAM::ListSigningCertificates {
   has MaxItems => (is => 'ro', isa => 'Int');
   has UserName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListSigningCertificates');
-  has _returns => (isa => 'Aws::IAM::ListSigningCertificatesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListSigningCertificatesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListSigningCertificates');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListSigningCertificatesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListSigningCertificatesResult');
 }
 package Aws::IAM::ListUserPolicies {
   use Moose;
@@ -643,9 +751,11 @@ package Aws::IAM::ListUserPolicies {
   has MaxItems => (is => 'ro', isa => 'Int');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListUserPolicies');
-  has _returns => (isa => 'Aws::IAM::ListUserPoliciesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListUserPoliciesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListUserPolicies');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListUserPoliciesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListUserPoliciesResult');
 }
 package Aws::IAM::ListUsers {
   use Moose;
@@ -653,9 +763,11 @@ package Aws::IAM::ListUsers {
   has MaxItems => (is => 'ro', isa => 'Int');
   has PathPrefix => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListUsers');
-  has _returns => (isa => 'Aws::IAM::ListUsersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListUsersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListUsers');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListUsersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListUsersResult');
 }
 package Aws::IAM::ListVirtualMFADevices {
   use Moose;
@@ -663,9 +775,11 @@ package Aws::IAM::ListVirtualMFADevices {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListVirtualMFADevices');
-  has _returns => (isa => 'Aws::IAM::ListVirtualMFADevicesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListVirtualMFADevicesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListVirtualMFADevices');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListVirtualMFADevicesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListVirtualMFADevicesResult');
 }
 package Aws::IAM::PutGroupPolicy {
   use Moose;
@@ -673,9 +787,11 @@ package Aws::IAM::PutGroupPolicy {
   has PolicyDocument => (is => 'ro', isa => 'Str', required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'PutGroupPolicy');
-  has _returns => (isa => 'Aws::IAM::PutGroupPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PutGroupPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutGroupPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::PutRolePolicy {
   use Moose;
@@ -683,9 +799,11 @@ package Aws::IAM::PutRolePolicy {
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'PutRolePolicy');
-  has _returns => (isa => 'Aws::IAM::PutRolePolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PutRolePolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutRolePolicy');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::PutUserPolicy {
   use Moose;
@@ -693,27 +811,33 @@ package Aws::IAM::PutUserPolicy {
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'PutUserPolicy');
-  has _returns => (isa => 'Aws::IAM::PutUserPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PutUserPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutUserPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::RemoveRoleFromInstanceProfile {
   use Moose;
   has InstanceProfileName => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveRoleFromInstanceProfile');
-  has _returns => (isa => 'Aws::IAM::RemoveRoleFromInstanceProfileResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RemoveRoleFromInstanceProfileResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveRoleFromInstanceProfile');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::RemoveUserFromGroup {
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveUserFromGroup');
-  has _returns => (isa => 'Aws::IAM::RemoveUserFromGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RemoveUserFromGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveUserFromGroup');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::ResyncMFADevice {
   use Moose;
@@ -722,9 +846,11 @@ package Aws::IAM::ResyncMFADevice {
   has SerialNumber => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ResyncMFADevice');
-  has _returns => (isa => 'Aws::IAM::ResyncMFADeviceResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ResyncMFADeviceResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResyncMFADevice');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::UpdateAccessKey {
   use Moose;
@@ -732,9 +858,11 @@ package Aws::IAM::UpdateAccessKey {
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAccessKey');
-  has _returns => (isa => 'Aws::IAM::UpdateAccessKeyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateAccessKeyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAccessKey');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::UpdateAccountPasswordPolicy {
   use Moose;
@@ -745,18 +873,22 @@ package Aws::IAM::UpdateAccountPasswordPolicy {
   has RequireSymbols => (is => 'ro', isa => 'Bool');
   has RequireUppercaseCharacters => (is => 'ro', isa => 'Bool');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAccountPasswordPolicy');
-  has _returns => (isa => 'Aws::IAM::UpdateAccountPasswordPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateAccountPasswordPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAccountPasswordPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::UpdateAssumeRolePolicy {
   use Moose;
   has PolicyDocument => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAssumeRolePolicy');
-  has _returns => (isa => 'Aws::IAM::UpdateAssumeRolePolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateAssumeRolePolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAssumeRolePolicy');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::UpdateGroup {
   use Moose;
@@ -764,27 +896,33 @@ package Aws::IAM::UpdateGroup {
   has NewGroupName => (is => 'ro', isa => 'Str');
   has NewPath => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGroup');
-  has _returns => (isa => 'Aws::IAM::UpdateGroupResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateGroupResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGroup');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::UpdateLoginProfile {
   use Moose;
   has Password => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateLoginProfile');
-  has _returns => (isa => 'Aws::IAM::UpdateLoginProfileResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateLoginProfileResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateLoginProfile');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::UpdateSAMLProvider {
   use Moose;
   has SAMLMetadataDocument => (is => 'ro', isa => 'Str', required => 1);
   has SAMLProviderArn => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSAMLProvider');
-  has _returns => (isa => 'Aws::IAM::UpdateSAMLProviderResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateSAMLProviderResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSAMLProvider');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::UpdateSAMLProviderResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateSAMLProviderResult');
 }
 package Aws::IAM::UpdateServerCertificate {
   use Moose;
@@ -792,9 +930,11 @@ package Aws::IAM::UpdateServerCertificate {
   has NewServerCertificateName => (is => 'ro', isa => 'Str');
   has ServerCertificateName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateServerCertificate');
-  has _returns => (isa => 'Aws::IAM::UpdateServerCertificateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateServerCertificateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateServerCertificate');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::UpdateSigningCertificate {
   use Moose;
@@ -802,9 +942,11 @@ package Aws::IAM::UpdateSigningCertificate {
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSigningCertificate');
-  has _returns => (isa => 'Aws::IAM::UpdateSigningCertificateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateSigningCertificateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSigningCertificate');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::UpdateUser {
   use Moose;
@@ -812,9 +954,11 @@ package Aws::IAM::UpdateUser {
   has NewUserName => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUser');
-  has _returns => (isa => 'Aws::IAM::UpdateUserResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateUserResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUser');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::IAM::UploadServerCertificate {
   use Moose;
@@ -824,18 +968,22 @@ package Aws::IAM::UploadServerCertificate {
   has PrivateKey => (is => 'ro', isa => 'Str', required => 1);
   has ServerCertificateName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UploadServerCertificate');
-  has _returns => (isa => 'Aws::IAM::UploadServerCertificateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UploadServerCertificateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadServerCertificate');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::UploadServerCertificateResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UploadServerCertificateResult');
 }
 package Aws::IAM::UploadSigningCertificate {
   use Moose;
   has CertificateBody => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'UploadSigningCertificate');
-  has _returns => (isa => 'Aws::IAM::UploadSigningCertificateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'UploadSigningCertificateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadSigningCertificate');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::UploadSigningCertificateResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UploadSigningCertificateResult');
 }
 
 package Aws::IAM::CreateAccessKeyResult {
@@ -1129,486 +1277,299 @@ package Aws::IAM {
   
   sub AddRoleToInstanceProfile {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::AddRoleToInstanceProfile', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::AddRoleToInstanceProfile', @_);
   }
   sub AddUserToGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::AddUserToGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::AddUserToGroup', @_);
   }
   sub ChangePassword {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ChangePassword', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::ChangePassword', @_);
   }
   sub CreateAccessKey {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::CreateAccessKey', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::CreateAccessKeyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::CreateAccessKey', @_);
   }
   sub CreateAccountAlias {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::CreateAccountAlias', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::CreateAccountAlias', @_);
   }
   sub CreateGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::CreateGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::CreateGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::CreateGroup', @_);
   }
   sub CreateInstanceProfile {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::CreateInstanceProfile', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::CreateInstanceProfileResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::CreateInstanceProfile', @_);
   }
   sub CreateLoginProfile {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::CreateLoginProfile', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::CreateLoginProfileResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::CreateLoginProfile', @_);
   }
   sub CreateRole {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::CreateRole', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::CreateRoleResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::CreateRole', @_);
   }
   sub CreateSAMLProvider {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::CreateSAMLProvider', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::CreateSAMLProviderResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::CreateSAMLProvider', @_);
   }
   sub CreateUser {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::CreateUser', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::CreateUserResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::CreateUser', @_);
   }
   sub CreateVirtualMFADevice {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::CreateVirtualMFADevice', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::CreateVirtualMFADeviceResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::CreateVirtualMFADevice', @_);
   }
   sub DeactivateMFADevice {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeactivateMFADevice', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeactivateMFADevice', @_);
   }
   sub DeleteAccessKey {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteAccessKey', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteAccessKey', @_);
   }
   sub DeleteAccountAlias {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteAccountAlias', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteAccountAlias', @_);
   }
   sub DeleteAccountPasswordPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteAccountPasswordPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteAccountPasswordPolicy', @_);
   }
   sub DeleteGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteGroup', @_);
   }
   sub DeleteGroupPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteGroupPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteGroupPolicy', @_);
   }
   sub DeleteInstanceProfile {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteInstanceProfile', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteInstanceProfile', @_);
   }
   sub DeleteLoginProfile {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteLoginProfile', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteLoginProfile', @_);
   }
   sub DeleteRole {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteRole', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteRole', @_);
   }
   sub DeleteRolePolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteRolePolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteRolePolicy', @_);
   }
   sub DeleteSAMLProvider {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteSAMLProvider', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteSAMLProvider', @_);
   }
   sub DeleteServerCertificate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteServerCertificate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteServerCertificate', @_);
   }
   sub DeleteSigningCertificate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteSigningCertificate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteSigningCertificate', @_);
   }
   sub DeleteUser {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteUser', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteUser', @_);
   }
   sub DeleteUserPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteUserPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteUserPolicy', @_);
   }
   sub DeleteVirtualMFADevice {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::DeleteVirtualMFADevice', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::DeleteVirtualMFADevice', @_);
   }
   sub EnableMFADevice {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::EnableMFADevice', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::EnableMFADevice', @_);
   }
   sub GetAccountPasswordPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::GetAccountPasswordPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::GetAccountPasswordPolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::GetAccountPasswordPolicy', @_);
   }
   sub GetAccountSummary {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::GetAccountSummary', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::GetAccountSummaryResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::GetAccountSummary', @_);
   }
   sub GetGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::GetGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::GetGroupResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::GetGroup', @_);
   }
   sub GetGroupPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::GetGroupPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::GetGroupPolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::GetGroupPolicy', @_);
   }
   sub GetInstanceProfile {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::GetInstanceProfile', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::GetInstanceProfileResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::GetInstanceProfile', @_);
   }
   sub GetLoginProfile {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::GetLoginProfile', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::GetLoginProfileResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::GetLoginProfile', @_);
   }
   sub GetRole {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::GetRole', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::GetRoleResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::GetRole', @_);
   }
   sub GetRolePolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::GetRolePolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::GetRolePolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::GetRolePolicy', @_);
   }
   sub GetSAMLProvider {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::GetSAMLProvider', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::GetSAMLProviderResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::GetSAMLProvider', @_);
   }
   sub GetServerCertificate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::GetServerCertificate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::GetServerCertificateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::GetServerCertificate', @_);
   }
   sub GetUser {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::GetUser', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::GetUserResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::GetUser', @_);
   }
   sub GetUserPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::GetUserPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::GetUserPolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::GetUserPolicy', @_);
   }
   sub ListAccessKeys {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListAccessKeys', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListAccessKeysResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListAccessKeys', @_);
   }
   sub ListAccountAliases {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListAccountAliases', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListAccountAliasesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListAccountAliases', @_);
   }
   sub ListGroupPolicies {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListGroupPolicies', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListGroupPoliciesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListGroupPolicies', @_);
   }
   sub ListGroups {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListGroups', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListGroupsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListGroups', @_);
   }
   sub ListGroupsForUser {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListGroupsForUser', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListGroupsForUserResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListGroupsForUser', @_);
   }
   sub ListInstanceProfiles {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListInstanceProfiles', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListInstanceProfilesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListInstanceProfiles', @_);
   }
   sub ListInstanceProfilesForRole {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListInstanceProfilesForRole', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListInstanceProfilesForRoleResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListInstanceProfilesForRole', @_);
   }
   sub ListMFADevices {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListMFADevices', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListMFADevicesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListMFADevices', @_);
   }
   sub ListRolePolicies {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListRolePolicies', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListRolePoliciesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListRolePolicies', @_);
   }
   sub ListRoles {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListRoles', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListRolesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListRoles', @_);
   }
   sub ListSAMLProviders {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListSAMLProviders', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListSAMLProvidersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListSAMLProviders', @_);
   }
   sub ListServerCertificates {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListServerCertificates', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListServerCertificatesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListServerCertificates', @_);
   }
   sub ListSigningCertificates {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListSigningCertificates', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListSigningCertificatesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListSigningCertificates', @_);
   }
   sub ListUserPolicies {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListUserPolicies', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListUserPoliciesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListUserPolicies', @_);
   }
   sub ListUsers {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListUsers', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListUsersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListUsers', @_);
   }
   sub ListVirtualMFADevices {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ListVirtualMFADevices', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::ListVirtualMFADevicesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::ListVirtualMFADevices', @_);
   }
   sub PutGroupPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::PutGroupPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::PutGroupPolicy', @_);
   }
   sub PutRolePolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::PutRolePolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::PutRolePolicy', @_);
   }
   sub PutUserPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::PutUserPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::PutUserPolicy', @_);
   }
   sub RemoveRoleFromInstanceProfile {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::RemoveRoleFromInstanceProfile', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::RemoveRoleFromInstanceProfile', @_);
   }
   sub RemoveUserFromGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::RemoveUserFromGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::RemoveUserFromGroup', @_);
   }
   sub ResyncMFADevice {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::ResyncMFADevice', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::ResyncMFADevice', @_);
   }
   sub UpdateAccessKey {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::UpdateAccessKey', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::UpdateAccessKey', @_);
   }
   sub UpdateAccountPasswordPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::UpdateAccountPasswordPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::UpdateAccountPasswordPolicy', @_);
   }
   sub UpdateAssumeRolePolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::UpdateAssumeRolePolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::UpdateAssumeRolePolicy', @_);
   }
   sub UpdateGroup {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::UpdateGroup', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::UpdateGroup', @_);
   }
   sub UpdateLoginProfile {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::UpdateLoginProfile', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::UpdateLoginProfile', @_);
   }
   sub UpdateSAMLProvider {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::UpdateSAMLProvider', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::UpdateSAMLProviderResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::UpdateSAMLProvider', @_);
   }
   sub UpdateServerCertificate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::UpdateServerCertificate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::UpdateServerCertificate', @_);
   }
   sub UpdateSigningCertificate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::UpdateSigningCertificate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::UpdateSigningCertificate', @_);
   }
   sub UpdateUser {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::UpdateUser', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::IAM::UpdateUser', @_);
   }
   sub UploadServerCertificate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::UploadServerCertificate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::UploadServerCertificateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::UploadServerCertificate', @_);
   }
   sub UploadSigningCertificate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::IAM::UploadSigningCertificate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::IAM::UploadSigningCertificateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::IAM::UploadSigningCertificate', @_);
   }
 }
 1;

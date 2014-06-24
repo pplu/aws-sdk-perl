@@ -101,9 +101,11 @@ package Aws::SQS::AddPermission {
   has Label => (is => 'ro', isa => 'Str', required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AddPermission');
-  has _returns => (isa => 'Aws::SQS::AddPermissionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AddPermissionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddPermission');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SQS::ChangeMessageVisibility {
   use Moose;
@@ -111,87 +113,107 @@ package Aws::SQS::ChangeMessageVisibility {
   has ReceiptHandle => (is => 'ro', isa => 'Str', required => 1);
   has VisibilityTimeout => (is => 'ro', isa => 'Int', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibility');
-  has _returns => (isa => 'Aws::SQS::ChangeMessageVisibilityResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibility');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SQS::ChangeMessageVisibilityBatch {
   use Moose;
   has Entries => (is => 'ro', isa => 'ArrayRef[Aws::SQS::ChangeMessageVisibilityBatchRequestEntry]', traits => ['NameInRequest'], request_name => 'ChangeMessageVisibilityBatchRequestEntry' , required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityBatch');
-  has _returns => (isa => 'Aws::SQS::ChangeMessageVisibilityBatchResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityBatchResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityBatch');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SQS::ChangeMessageVisibilityBatchResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityBatchResult');
 }
 package Aws::SQS::CreateQueue {
   use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap', traits => ['NameInRequest'], request_name => 'Attribute' , traits => ['NameInRequest'], request_name => 'Value' );
   has QueueName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateQueue');
-  has _returns => (isa => 'Aws::SQS::CreateQueueResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateQueueResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateQueue');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SQS::CreateQueueResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateQueueResult');
 }
 package Aws::SQS::DeleteMessage {
   use Moose;
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
   has ReceiptHandle => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMessage');
-  has _returns => (isa => 'Aws::SQS::DeleteMessageResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteMessageResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMessage');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SQS::DeleteMessageBatch {
   use Moose;
   has Entries => (is => 'ro', isa => 'ArrayRef[Aws::SQS::DeleteMessageBatchRequestEntry]', traits => ['NameInRequest'], request_name => 'DeleteMessageBatchRequestEntry' , required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMessageBatch');
-  has _returns => (isa => 'Aws::SQS::DeleteMessageBatchResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteMessageBatchResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMessageBatch');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SQS::DeleteMessageBatchResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteMessageBatchResult');
 }
 package Aws::SQS::DeleteQueue {
   use Moose;
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteQueue');
-  has _returns => (isa => 'Aws::SQS::DeleteQueueResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteQueueResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteQueue');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SQS::GetQueueAttributes {
   use Moose;
   has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AttributeName' );
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetQueueAttributes');
-  has _returns => (isa => 'Aws::SQS::GetQueueAttributesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetQueueAttributesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetQueueAttributes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SQS::GetQueueAttributesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetQueueAttributesResult');
 }
 package Aws::SQS::GetQueueUrl {
   use Moose;
   has QueueName => (is => 'ro', isa => 'Str', required => 1);
   has QueueOwnerAWSAccountId => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetQueueUrl');
-  has _returns => (isa => 'Aws::SQS::GetQueueUrlResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetQueueUrlResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetQueueUrl');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SQS::GetQueueUrlResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetQueueUrlResult');
 }
 package Aws::SQS::ListDeadLetterSourceQueues {
   use Moose;
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListDeadLetterSourceQueues');
-  has _returns => (isa => 'Aws::SQS::ListDeadLetterSourceQueuesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListDeadLetterSourceQueuesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDeadLetterSourceQueues');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SQS::ListDeadLetterSourceQueuesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListDeadLetterSourceQueuesResult');
 }
 package Aws::SQS::ListQueues {
   use Moose;
   has QueueNamePrefix => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListQueues');
-  has _returns => (isa => 'Aws::SQS::ListQueuesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListQueuesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListQueues');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SQS::ListQueuesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListQueuesResult');
 }
 package Aws::SQS::ReceiveMessage {
   use Moose;
@@ -202,18 +224,22 @@ package Aws::SQS::ReceiveMessage {
   has VisibilityTimeout => (is => 'ro', isa => 'Int');
   has WaitTimeSeconds => (is => 'ro', isa => 'Int');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ReceiveMessage');
-  has _returns => (isa => 'Aws::SQS::ReceiveMessageResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ReceiveMessageResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReceiveMessage');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SQS::ReceiveMessageResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ReceiveMessageResult');
 }
 package Aws::SQS::RemovePermission {
   use Moose;
   has Label => (is => 'ro', isa => 'Str', required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RemovePermission');
-  has _returns => (isa => 'Aws::SQS::RemovePermissionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RemovePermissionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemovePermission');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::SQS::SendMessage {
   use Moose;
@@ -222,27 +248,33 @@ package Aws::SQS::SendMessage {
   has MessageBody => (is => 'ro', isa => 'Str', required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SendMessage');
-  has _returns => (isa => 'Aws::SQS::SendMessageResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SendMessageResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendMessage');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SQS::SendMessageResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SendMessageResult');
 }
 package Aws::SQS::SendMessageBatch {
   use Moose;
   has Entries => (is => 'ro', isa => 'ArrayRef[Aws::SQS::SendMessageBatchRequestEntry]', traits => ['NameInRequest'], request_name => 'SendMessageBatchRequestEntry' , required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SendMessageBatch');
-  has _returns => (isa => 'Aws::SQS::SendMessageBatchResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SendMessageBatchResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendMessageBatch');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SQS::SendMessageBatchResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SendMessageBatchResult');
 }
 package Aws::SQS::SetQueueAttributes {
   use Moose;
   has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap', traits => ['NameInRequest'], request_name => 'Attribute' , traits => ['NameInRequest'], request_name => 'Value' , required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SetQueueAttributes');
-  has _returns => (isa => 'Aws::SQS::SetQueueAttributesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SetQueueAttributesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetQueueAttributes');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 
 package Aws::SQS::ChangeMessageVisibilityBatchResult {
@@ -326,109 +358,67 @@ package Aws::SQS {
   
   sub AddPermission {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::AddPermission', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SQS::AddPermission', @_);
   }
   sub ChangeMessageVisibility {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::ChangeMessageVisibility', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SQS::ChangeMessageVisibility', @_);
   }
   sub ChangeMessageVisibilityBatch {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::ChangeMessageVisibilityBatch', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SQS::ChangeMessageVisibilityBatchResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::SQS::ChangeMessageVisibilityBatch', @_);
   }
   sub CreateQueue {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::CreateQueue', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SQS::CreateQueueResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::SQS::CreateQueue', @_);
   }
   sub DeleteMessage {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::DeleteMessage', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SQS::DeleteMessage', @_);
   }
   sub DeleteMessageBatch {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::DeleteMessageBatch', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SQS::DeleteMessageBatchResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::SQS::DeleteMessageBatch', @_);
   }
   sub DeleteQueue {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::DeleteQueue', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SQS::DeleteQueue', @_);
   }
   sub GetQueueAttributes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::GetQueueAttributes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SQS::GetQueueAttributesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::SQS::GetQueueAttributes', @_);
   }
   sub GetQueueUrl {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::GetQueueUrl', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SQS::GetQueueUrlResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::SQS::GetQueueUrl', @_);
   }
   sub ListDeadLetterSourceQueues {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::ListDeadLetterSourceQueues', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SQS::ListDeadLetterSourceQueuesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::SQS::ListDeadLetterSourceQueues', @_);
   }
   sub ListQueues {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::ListQueues', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SQS::ListQueuesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::SQS::ListQueues', @_);
   }
   sub ReceiveMessage {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::ReceiveMessage', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SQS::ReceiveMessageResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::SQS::ReceiveMessage', @_);
   }
   sub RemovePermission {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::RemovePermission', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SQS::RemovePermission', @_);
   }
   sub SendMessage {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::SendMessage', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SQS::SendMessageResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::SQS::SendMessage', @_);
   }
   sub SendMessageBatch {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::SendMessageBatch', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::SQS::SendMessageBatchResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::SQS::SendMessageBatch', @_);
   }
   sub SetQueueAttributes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::SQS::SetQueueAttributes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::SQS::SetQueueAttributes', @_);
   }
 }
 1;

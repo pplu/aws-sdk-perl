@@ -99,9 +99,11 @@ package Aws::DataPipeline::ActivatePipeline {
   use Moose;
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ActivatePipeline');
-  has _returns => (isa => 'Aws::DataPipeline::ActivatePipelineResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ActivatePipelineResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ActivatePipeline');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::ActivatePipelineResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::CreatePipeline {
   use Moose;
@@ -109,17 +111,21 @@ package Aws::DataPipeline::CreatePipeline {
   has name => (is => 'ro', isa => 'Str', required => 1);
   has uniqueId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePipeline');
-  has _returns => (isa => 'Aws::DataPipeline::CreatePipelineResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePipelineResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePipeline');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::CreatePipelineResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::DeletePipeline {
   use Moose;
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeletePipeline');
-  has _returns => (isa => 'Aws::DataPipeline::DeletePipelineResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeletePipelineResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeletePipeline');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::DescribeObjects {
   use Moose;
@@ -128,17 +134,21 @@ package Aws::DataPipeline::DescribeObjects {
   has objectIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeObjects');
-  has _returns => (isa => 'Aws::DataPipeline::DescribeObjectsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeObjectsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeObjects');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::DescribeObjectsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::DescribePipelines {
   use Moose;
   has pipelineIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePipelines');
-  has _returns => (isa => 'Aws::DataPipeline::DescribePipelinesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribePipelinesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePipelines');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::DescribePipelinesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::EvaluateExpression {
   use Moose;
@@ -146,26 +156,32 @@ package Aws::DataPipeline::EvaluateExpression {
   has objectId => (is => 'ro', isa => 'Str', required => 1);
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'EvaluateExpression');
-  has _returns => (isa => 'Aws::DataPipeline::EvaluateExpressionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'EvaluateExpressionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'EvaluateExpression');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::EvaluateExpressionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::GetPipelineDefinition {
   use Moose;
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
   has version => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'GetPipelineDefinition');
-  has _returns => (isa => 'Aws::DataPipeline::GetPipelineDefinitionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'GetPipelineDefinitionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetPipelineDefinition');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::GetPipelineDefinitionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::ListPipelines {
   use Moose;
   has marker => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ListPipelines');
-  has _returns => (isa => 'Aws::DataPipeline::ListPipelinesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ListPipelinesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListPipelines');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::ListPipelinesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::PollForTask {
   use Moose;
@@ -173,18 +189,22 @@ package Aws::DataPipeline::PollForTask {
   has instanceIdentity => (is => 'ro', isa => 'Aws::DataPipeline::InstanceIdentity');
   has workerGroup => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'PollForTask');
-  has _returns => (isa => 'Aws::DataPipeline::PollForTaskResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PollForTaskResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PollForTask');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::PollForTaskResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::PutPipelineDefinition {
   use Moose;
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
   has pipelineObjects => (is => 'ro', isa => 'ArrayRef[Aws::DataPipeline::PipelineObject]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'PutPipelineDefinition');
-  has _returns => (isa => 'Aws::DataPipeline::PutPipelineDefinitionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'PutPipelineDefinitionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutPipelineDefinition');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::PutPipelineDefinitionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::QueryObjects {
   use Moose;
@@ -194,17 +214,21 @@ package Aws::DataPipeline::QueryObjects {
   has query => (is => 'ro', isa => 'Aws::DataPipeline::Query');
   has sphere => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'QueryObjects');
-  has _returns => (isa => 'Aws::DataPipeline::QueryObjectsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'QueryObjectsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'QueryObjects');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::QueryObjectsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::ReportTaskProgress {
   use Moose;
   has taskId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ReportTaskProgress');
-  has _returns => (isa => 'Aws::DataPipeline::ReportTaskProgressResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ReportTaskProgressResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReportTaskProgress');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::ReportTaskProgressResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::ReportTaskRunnerHeartbeat {
   use Moose;
@@ -212,9 +236,11 @@ package Aws::DataPipeline::ReportTaskRunnerHeartbeat {
   has taskrunnerId => (is => 'ro', isa => 'Str', required => 1);
   has workerGroup => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ReportTaskRunnerHeartbeat');
-  has _returns => (isa => 'Aws::DataPipeline::ReportTaskRunnerHeartbeatResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ReportTaskRunnerHeartbeatResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReportTaskRunnerHeartbeat');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::ReportTaskRunnerHeartbeatResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::SetStatus {
   use Moose;
@@ -222,9 +248,11 @@ package Aws::DataPipeline::SetStatus {
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
   has status => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SetStatus');
-  has _returns => (isa => 'Aws::DataPipeline::SetStatusResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SetStatusResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetStatus');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::SetTaskStatus {
   use Moose;
@@ -234,18 +262,22 @@ package Aws::DataPipeline::SetTaskStatus {
   has taskId => (is => 'ro', isa => 'Str', required => 1);
   has taskStatus => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SetTaskStatus');
-  has _returns => (isa => 'Aws::DataPipeline::SetTaskStatusResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SetTaskStatusResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetTaskStatus');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::SetTaskStatusResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 package Aws::DataPipeline::ValidatePipelineDefinition {
   use Moose;
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
   has pipelineObjects => (is => 'ro', isa => 'ArrayRef[Aws::DataPipeline::PipelineObject]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ValidatePipelineDefinition');
-  has _returns => (isa => 'Aws::DataPipeline::ValidatePipelineDefinitionResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ValidatePipelineDefinitionResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ValidatePipelineDefinition');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::ValidatePipelineDefinitionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 
 package Aws::DataPipeline::ActivatePipelineResult {
@@ -357,99 +389,67 @@ package Aws::DataPipeline {
   
   sub ActivatePipeline {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::ActivatePipeline', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::ActivatePipelineResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DataPipeline::ActivatePipeline', @_);
   }
   sub CreatePipeline {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::CreatePipeline', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::CreatePipelineResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DataPipeline::CreatePipeline', @_);
   }
   sub DeletePipeline {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::DeletePipeline', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::DataPipeline::DeletePipeline', @_);
   }
   sub DescribeObjects {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::DescribeObjects', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::DescribeObjectsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DataPipeline::DescribeObjects', @_);
   }
   sub DescribePipelines {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::DescribePipelines', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::DescribePipelinesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DataPipeline::DescribePipelines', @_);
   }
   sub EvaluateExpression {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::EvaluateExpression', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::EvaluateExpressionResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DataPipeline::EvaluateExpression', @_);
   }
   sub GetPipelineDefinition {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::GetPipelineDefinition', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::GetPipelineDefinitionResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DataPipeline::GetPipelineDefinition', @_);
   }
   sub ListPipelines {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::ListPipelines', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::ListPipelinesResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DataPipeline::ListPipelines', @_);
   }
   sub PollForTask {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::PollForTask', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::PollForTaskResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DataPipeline::PollForTask', @_);
   }
   sub PutPipelineDefinition {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::PutPipelineDefinition', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::PutPipelineDefinitionResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DataPipeline::PutPipelineDefinition', @_);
   }
   sub QueryObjects {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::QueryObjects', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::QueryObjectsResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DataPipeline::QueryObjects', @_);
   }
   sub ReportTaskProgress {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::ReportTaskProgress', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::ReportTaskProgressResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DataPipeline::ReportTaskProgress', @_);
   }
   sub ReportTaskRunnerHeartbeat {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::ReportTaskRunnerHeartbeat', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::ReportTaskRunnerHeartbeatResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DataPipeline::ReportTaskRunnerHeartbeat', @_);
   }
   sub SetStatus {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::SetStatus', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    return 1
+    return $self->do_call('Aws::DataPipeline::SetStatus', @_);
   }
   sub SetTaskStatus {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::SetTaskStatus', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::SetTaskStatusResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DataPipeline::SetTaskStatus', @_);
   }
   sub ValidatePipelineDefinition {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::DataPipeline::ValidatePipelineDefinition', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::DataPipeline::ValidatePipelineDefinitionResult->from_result($result);return $o_result;
+    return $self->do_call('Aws::DataPipeline::ValidatePipelineDefinition', @_);
   }
 }
 1;

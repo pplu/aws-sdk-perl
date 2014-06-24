@@ -178,27 +178,33 @@ package Aws::ELB::ApplySecurityGroupsToLoadBalancer {
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ApplySecurityGroupsToLoadBalancer');
-  has _returns => (isa => 'Aws::ELB::ApplySecurityGroupsToLoadBalancerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ApplySecurityGroupsToLoadBalancerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ApplySecurityGroupsToLoadBalancer');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::ApplySecurityGroupsToLoadBalancerResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ApplySecurityGroupsToLoadBalancerResult');
 }
 package Aws::ELB::AttachLoadBalancerToSubnets {
   use Moose;
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'AttachLoadBalancerToSubnets');
-  has _returns => (isa => 'Aws::ELB::AttachLoadBalancerToSubnetsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'AttachLoadBalancerToSubnetsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachLoadBalancerToSubnets');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::AttachLoadBalancerToSubnetsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AttachLoadBalancerToSubnetsResult');
 }
 package Aws::ELB::ConfigureHealthCheck {
   use Moose;
   has HealthCheck => (is => 'ro', isa => 'Aws::ELB::HealthCheck', required => 1);
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ConfigureHealthCheck');
-  has _returns => (isa => 'Aws::ELB::ConfigureHealthCheckResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ConfigureHealthCheckResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ConfigureHealthCheck');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::ConfigureHealthCheckResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ConfigureHealthCheckResult');
 }
 package Aws::ELB::CreateAppCookieStickinessPolicy {
   use Moose;
@@ -206,9 +212,11 @@ package Aws::ELB::CreateAppCookieStickinessPolicy {
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAppCookieStickinessPolicy');
-  has _returns => (isa => 'Aws::ELB::CreateAppCookieStickinessPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateAppCookieStickinessPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAppCookieStickinessPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::CreateAppCookieStickinessPolicyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateAppCookieStickinessPolicyResult');
 }
 package Aws::ELB::CreateLBCookieStickinessPolicy {
   use Moose;
@@ -216,9 +224,11 @@ package Aws::ELB::CreateLBCookieStickinessPolicy {
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLBCookieStickinessPolicy');
-  has _returns => (isa => 'Aws::ELB::CreateLBCookieStickinessPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLBCookieStickinessPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLBCookieStickinessPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::CreateLBCookieStickinessPolicyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLBCookieStickinessPolicyResult');
 }
 package Aws::ELB::CreateLoadBalancer {
   use Moose;
@@ -229,18 +239,22 @@ package Aws::ELB::CreateLoadBalancer {
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancer');
-  has _returns => (isa => 'Aws::ELB::CreateLoadBalancerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancer');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::CreateLoadBalancerResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerResult');
 }
 package Aws::ELB::CreateLoadBalancerListeners {
   use Moose;
   has Listeners => (is => 'ro', isa => 'ArrayRef[Aws::ELB::Listener]', required => 1);
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerListeners');
-  has _returns => (isa => 'Aws::ELB::CreateLoadBalancerListenersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerListenersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerListeners');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::CreateLoadBalancerListenersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerListenersResult');
 }
 package Aws::ELB::CreateLoadBalancerPolicy {
   use Moose;
@@ -249,132 +263,162 @@ package Aws::ELB::CreateLoadBalancerPolicy {
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has PolicyTypeName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerPolicy');
-  has _returns => (isa => 'Aws::ELB::CreateLoadBalancerPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::CreateLoadBalancerPolicyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerPolicyResult');
 }
 package Aws::ELB::DeleteLoadBalancer {
   use Moose;
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancer');
-  has _returns => (isa => 'Aws::ELB::DeleteLoadBalancerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancer');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DeleteLoadBalancerResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancerResult');
 }
 package Aws::ELB::DeleteLoadBalancerListeners {
   use Moose;
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has LoadBalancerPorts => (is => 'ro', isa => 'ArrayRef[Int]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancerListeners');
-  has _returns => (isa => 'Aws::ELB::DeleteLoadBalancerListenersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancerListenersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancerListeners');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DeleteLoadBalancerListenersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancerListenersResult');
 }
 package Aws::ELB::DeleteLoadBalancerPolicy {
   use Moose;
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancerPolicy');
-  has _returns => (isa => 'Aws::ELB::DeleteLoadBalancerPolicyResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancerPolicyResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancerPolicy');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DeleteLoadBalancerPolicyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancerPolicyResult');
 }
 package Aws::ELB::DeregisterInstancesFromLoadBalancer {
   use Moose;
   has Instances => (is => 'ro', isa => 'ArrayRef[Aws::ELB::Instance]', required => 1);
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterInstancesFromLoadBalancer');
-  has _returns => (isa => 'Aws::ELB::DeregisterInstancesFromLoadBalancerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DeregisterInstancesFromLoadBalancerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterInstancesFromLoadBalancer');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DeregisterInstancesFromLoadBalancerResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeregisterInstancesFromLoadBalancerResult');
 }
 package Aws::ELB::DescribeInstanceHealth {
   use Moose;
   has Instances => (is => 'ro', isa => 'ArrayRef[Aws::ELB::Instance]');
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInstanceHealth');
-  has _returns => (isa => 'Aws::ELB::DescribeInstanceHealthResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeInstanceHealthResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInstanceHealth');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DescribeInstanceHealthResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeInstanceHealthResult');
 }
 package Aws::ELB::DescribeLoadBalancerAttributes {
   use Moose;
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerAttributes');
-  has _returns => (isa => 'Aws::ELB::DescribeLoadBalancerAttributesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerAttributesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerAttributes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DescribeLoadBalancerAttributesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerAttributesResult');
 }
 package Aws::ELB::DescribeLoadBalancerPolicies {
   use Moose;
   has LoadBalancerName => (is => 'ro', isa => 'Str');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerPolicies');
-  has _returns => (isa => 'Aws::ELB::DescribeLoadBalancerPoliciesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerPoliciesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerPolicies');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DescribeLoadBalancerPoliciesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerPoliciesResult');
 }
 package Aws::ELB::DescribeLoadBalancerPolicyTypes {
   use Moose;
   has PolicyTypeNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerPolicyTypes');
-  has _returns => (isa => 'Aws::ELB::DescribeLoadBalancerPolicyTypesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerPolicyTypesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerPolicyTypes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DescribeLoadBalancerPolicyTypesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerPolicyTypesResult');
 }
 package Aws::ELB::DescribeLoadBalancers {
   use Moose;
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has Marker => (is => 'ro', isa => 'Str');
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancers');
-  has _returns => (isa => 'Aws::ELB::DescribeLoadBalancersResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancersResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancers');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DescribeLoadBalancersResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancersResult');
 }
 package Aws::ELB::DetachLoadBalancerFromSubnets {
   use Moose;
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DetachLoadBalancerFromSubnets');
-  has _returns => (isa => 'Aws::ELB::DetachLoadBalancerFromSubnetsResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DetachLoadBalancerFromSubnetsResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachLoadBalancerFromSubnets');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DetachLoadBalancerFromSubnetsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DetachLoadBalancerFromSubnetsResult');
 }
 package Aws::ELB::DisableAvailabilityZonesForLoadBalancer {
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'DisableAvailabilityZonesForLoadBalancer');
-  has _returns => (isa => 'Aws::ELB::DisableAvailabilityZonesForLoadBalancerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'DisableAvailabilityZonesForLoadBalancerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableAvailabilityZonesForLoadBalancer');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DisableAvailabilityZonesForLoadBalancerResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DisableAvailabilityZonesForLoadBalancerResult');
 }
 package Aws::ELB::EnableAvailabilityZonesForLoadBalancer {
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'EnableAvailabilityZonesForLoadBalancer');
-  has _returns => (isa => 'Aws::ELB::EnableAvailabilityZonesForLoadBalancerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'EnableAvailabilityZonesForLoadBalancerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableAvailabilityZonesForLoadBalancer');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::EnableAvailabilityZonesForLoadBalancerResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'EnableAvailabilityZonesForLoadBalancerResult');
 }
 package Aws::ELB::ModifyLoadBalancerAttributes {
   use Moose;
   has LoadBalancerAttributes => (is => 'ro', isa => 'Aws::ELB::LoadBalancerAttributes', required => 1);
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyLoadBalancerAttributes');
-  has _returns => (isa => 'Aws::ELB::ModifyLoadBalancerAttributesResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyLoadBalancerAttributesResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyLoadBalancerAttributes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::ModifyLoadBalancerAttributesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyLoadBalancerAttributesResult');
 }
 package Aws::ELB::RegisterInstancesWithLoadBalancer {
   use Moose;
   has Instances => (is => 'ro', isa => 'ArrayRef[Aws::ELB::Instance]', required => 1);
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterInstancesWithLoadBalancer');
-  has _returns => (isa => 'Aws::ELB::RegisterInstancesWithLoadBalancerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterInstancesWithLoadBalancerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterInstancesWithLoadBalancer');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::RegisterInstancesWithLoadBalancerResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterInstancesWithLoadBalancerResult');
 }
 package Aws::ELB::SetLoadBalancerListenerSSLCertificate {
   use Moose;
@@ -382,9 +426,11 @@ package Aws::ELB::SetLoadBalancerListenerSSLCertificate {
   has LoadBalancerPort => (is => 'ro', isa => 'Int', required => 1);
   has SSLCertificateId => (is => 'ro', isa => 'Str', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerListenerSSLCertificate');
-  has _returns => (isa => 'Aws::ELB::SetLoadBalancerListenerSSLCertificateResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerListenerSSLCertificateResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerListenerSSLCertificate');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::SetLoadBalancerListenerSSLCertificateResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerListenerSSLCertificateResult');
 }
 package Aws::ELB::SetLoadBalancerPoliciesForBackendServer {
   use Moose;
@@ -392,9 +438,11 @@ package Aws::ELB::SetLoadBalancerPoliciesForBackendServer {
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerPoliciesForBackendServer');
-  has _returns => (isa => 'Aws::ELB::SetLoadBalancerPoliciesForBackendServerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerPoliciesForBackendServerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerPoliciesForBackendServer');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::SetLoadBalancerPoliciesForBackendServerResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerPoliciesForBackendServerResult');
 }
 package Aws::ELB::SetLoadBalancerPoliciesOfListener {
   use Moose;
@@ -402,9 +450,11 @@ package Aws::ELB::SetLoadBalancerPoliciesOfListener {
   has LoadBalancerPort => (is => 'ro', isa => 'Int', required => 1);
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-  has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerPoliciesOfListener');
-  has _returns => (isa => 'Aws::ELB::SetLoadBalancerPoliciesOfListenerResult', is => 'ro');
-  has _result_key => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerPoliciesOfListenerResult');  
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerPoliciesOfListener');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::SetLoadBalancerPoliciesOfListenerResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerPoliciesOfListenerResult');
 }
 
 package Aws::ELB::ApplySecurityGroupsToLoadBalancerResult {
@@ -565,178 +615,103 @@ package Aws::ELB {
   
   sub ApplySecurityGroupsToLoadBalancer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::ApplySecurityGroupsToLoadBalancer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::ApplySecurityGroupsToLoadBalancerResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::ApplySecurityGroupsToLoadBalancer', @_);
   }
   sub AttachLoadBalancerToSubnets {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::AttachLoadBalancerToSubnets', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::AttachLoadBalancerToSubnetsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::AttachLoadBalancerToSubnets', @_);
   }
   sub ConfigureHealthCheck {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::ConfigureHealthCheck', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::ConfigureHealthCheckResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::ConfigureHealthCheck', @_);
   }
   sub CreateAppCookieStickinessPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::CreateAppCookieStickinessPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::CreateAppCookieStickinessPolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::CreateAppCookieStickinessPolicy', @_);
   }
   sub CreateLBCookieStickinessPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::CreateLBCookieStickinessPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::CreateLBCookieStickinessPolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::CreateLBCookieStickinessPolicy', @_);
   }
   sub CreateLoadBalancer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::CreateLoadBalancer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::CreateLoadBalancerResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::CreateLoadBalancer', @_);
   }
   sub CreateLoadBalancerListeners {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::CreateLoadBalancerListeners', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::CreateLoadBalancerListenersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::CreateLoadBalancerListeners', @_);
   }
   sub CreateLoadBalancerPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::CreateLoadBalancerPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::CreateLoadBalancerPolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::CreateLoadBalancerPolicy', @_);
   }
   sub DeleteLoadBalancer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::DeleteLoadBalancer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::DeleteLoadBalancerResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::DeleteLoadBalancer', @_);
   }
   sub DeleteLoadBalancerListeners {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::DeleteLoadBalancerListeners', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::DeleteLoadBalancerListenersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::DeleteLoadBalancerListeners', @_);
   }
   sub DeleteLoadBalancerPolicy {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::DeleteLoadBalancerPolicy', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::DeleteLoadBalancerPolicyResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::DeleteLoadBalancerPolicy', @_);
   }
   sub DeregisterInstancesFromLoadBalancer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::DeregisterInstancesFromLoadBalancer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::DeregisterInstancesFromLoadBalancerResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::DeregisterInstancesFromLoadBalancer', @_);
   }
   sub DescribeInstanceHealth {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::DescribeInstanceHealth', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::DescribeInstanceHealthResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::DescribeInstanceHealth', @_);
   }
   sub DescribeLoadBalancerAttributes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::DescribeLoadBalancerAttributes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::DescribeLoadBalancerAttributesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::DescribeLoadBalancerAttributes', @_);
   }
   sub DescribeLoadBalancerPolicies {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::DescribeLoadBalancerPolicies', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::DescribeLoadBalancerPoliciesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::DescribeLoadBalancerPolicies', @_);
   }
   sub DescribeLoadBalancerPolicyTypes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::DescribeLoadBalancerPolicyTypes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::DescribeLoadBalancerPolicyTypesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::DescribeLoadBalancerPolicyTypes', @_);
   }
   sub DescribeLoadBalancers {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::DescribeLoadBalancers', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::DescribeLoadBalancersResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::DescribeLoadBalancers', @_);
   }
   sub DetachLoadBalancerFromSubnets {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::DetachLoadBalancerFromSubnets', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::DetachLoadBalancerFromSubnetsResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::DetachLoadBalancerFromSubnets', @_);
   }
   sub DisableAvailabilityZonesForLoadBalancer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::DisableAvailabilityZonesForLoadBalancer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::DisableAvailabilityZonesForLoadBalancerResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::DisableAvailabilityZonesForLoadBalancer', @_);
   }
   sub EnableAvailabilityZonesForLoadBalancer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::EnableAvailabilityZonesForLoadBalancer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::EnableAvailabilityZonesForLoadBalancerResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::EnableAvailabilityZonesForLoadBalancer', @_);
   }
   sub ModifyLoadBalancerAttributes {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::ModifyLoadBalancerAttributes', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::ModifyLoadBalancerAttributesResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::ModifyLoadBalancerAttributes', @_);
   }
   sub RegisterInstancesWithLoadBalancer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::RegisterInstancesWithLoadBalancer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::RegisterInstancesWithLoadBalancerResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::RegisterInstancesWithLoadBalancer', @_);
   }
   sub SetLoadBalancerListenerSSLCertificate {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::SetLoadBalancerListenerSSLCertificate', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::SetLoadBalancerListenerSSLCertificateResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::SetLoadBalancerListenerSSLCertificate', @_);
   }
   sub SetLoadBalancerPoliciesForBackendServer {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::SetLoadBalancerPoliciesForBackendServer', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::SetLoadBalancerPoliciesForBackendServerResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::SetLoadBalancerPoliciesForBackendServer', @_);
   }
   sub SetLoadBalancerPoliciesOfListener {
     my $self = shift;
-    my $call = $self->new_with_coercions('Aws::ELB::SetLoadBalancerPoliciesOfListener', @_);
-    my $result = $self->_api_caller($call->_api_call, $call);
-    my $o_result = Aws::ELB::SetLoadBalancerPoliciesOfListenerResult->from_result($result->{ $call->_result_key });
-    return $o_result;
+    return $self->do_call('Aws::ELB::SetLoadBalancerPoliciesOfListener', @_);
   }
 }
 1;
