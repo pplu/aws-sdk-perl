@@ -57,7 +57,7 @@ enum 'Aws::EC2::VolumeAttachmentState', ['attaching','attached','detaching','det
 enum 'Aws::EC2::VolumeState', ['creating','available','in-use','deleting','deleted','error',];
 enum 'Aws::EC2::VolumeStatusInfoStatus', ['ok','impaired','insufficient-data',];
 enum 'Aws::EC2::VolumeStatusName', ['io-enabled','io-performance',];
-enum 'Aws::EC2::VolumeType', ['standard','io1',];
+enum 'Aws::EC2::VolumeType', ['standard','io1','gp2',];
 enum 'Aws::EC2::VpcState', ['pending','available',];
 enum 'Aws::EC2::VpnState', ['pending','available','deleting','deleted',];
 enum 'Aws::EC2::VpnStaticRouteSource', ['Static',];
