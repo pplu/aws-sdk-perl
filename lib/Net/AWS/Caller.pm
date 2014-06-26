@@ -122,7 +122,7 @@ package Net::AWS::JsonCaller {
   use Moose::Role;
   use JSON;
   use POSIX qw(strftime);
-  required 'json_version';
+  requires 'json_version';
 
   # converts the params the user passed to the call into objects that represent the call
   sub new_with_coercions {
@@ -244,11 +244,11 @@ package Net::AWS::QueryCaller {
     my ($self, $params) = @_;
     my $refHash;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
-      my $key = $params->meta->get_attribute($att)->does('Net::AWS::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
+      my $key = $att;
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
         if ($att_type eq 'Bool') {
-          $refHash->{ $key } = ($params->$att)?\1:\0;
+          $refHash->{ $key } = ($params->$att)?1:0;
         } elsif ($self->_is_internal_type($att_type)) {
           $refHash->{ $key } = $params->$att;
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
