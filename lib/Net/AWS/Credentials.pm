@@ -3,23 +3,21 @@ package Net::AWS::Credentials {
 
 	has 'access_key' => (
 		is		=> 'ro',
-		default => '',
 	);
 
 	has 'secret_key' => (
 		is		=> 'ro',
-		default => '',
 	);
 
 	has 'session_token' => (
 		is		=> 'ro',
-		default => '',
 	);
 
-	has 'set' => (
-		is		=> 'ro',
-		default => false,
-	);
+	sub set {
+		my $self = shift;
+
+		return (defined $self->access_key && defined $self->secret_key);
+	}
 
 	no Moose;
 }
