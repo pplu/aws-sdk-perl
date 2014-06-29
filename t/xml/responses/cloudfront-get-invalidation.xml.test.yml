@@ -1,3 +1,0 @@
----
-class: ~
-use: Aws::CloudFront

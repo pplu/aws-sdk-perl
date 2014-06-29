@@ -1,3 +1,0 @@
----
-class: ~
-use: Aws::S3
