@@ -1,3 +1,52 @@
 ---
-class: Aws::EC2::DescribeRegionsResult
-use: Aws::EC2
+call: DescribeRegions
+service: EC2
+tests:
+  - expected: ec2.eu-west-1.amazonaws.com
+    op: eq
+    path: Regions.0.Endpoint
+  - expected: eu-west-1
+    op: eq
+    path: Regions.0.RegionName
+  - expected: ec2.sa-east-1.amazonaws.com
+    op: eq
+    path: Regions.1.Endpoint
+  - expected: sa-east-1
+    op: eq
+    path: Regions.1.RegionName
+  - expected: ec2.us-east-1.amazonaws.com
+    op: eq
+    path: Regions.2.Endpoint
+  - expected: us-east-1
+    op: eq
+    path: Regions.2.RegionName
+  - expected: ec2.ap-northeast-1.amazonaws.com
+    op: eq
+    path: Regions.3.Endpoint
+  - expected: ap-northeast-1
+    op: eq
+    path: Regions.3.RegionName
+  - expected: ec2.us-west-2.amazonaws.com
+    op: eq
+    path: Regions.4.Endpoint
+  - expected: us-west-2
+    op: eq
+    path: Regions.4.RegionName
+  - expected: ec2.us-west-1.amazonaws.com
+    op: eq
+    path: Regions.5.Endpoint
+  - expected: us-west-1
+    op: eq
+    path: Regions.5.RegionName
+  - expected: ec2.ap-southeast-1.amazonaws.com
+    op: eq
+    path: Regions.6.Endpoint
+  - expected: ap-southeast-1
+    op: eq
+    path: Regions.6.RegionName
+  - expected: ec2.ap-southeast-2.amazonaws.com
+    op: eq
+    path: Regions.7.Endpoint
+  - expected: ap-southeast-2
+    op: eq
+    path: Regions.7.RegionName

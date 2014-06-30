@@ -1,3 +1,19 @@
 ---
-class: Aws::EC2::StartInstancesResult
-use: Aws::EC2
+call: StartInstances
+service: EC2
+tests:
+  - expected: 0
+    op: eq
+    path: StartingInstances.0.CurrentState.Code
+  - expected: pending
+    op: eq
+    path: StartingInstances.0.CurrentState.Name
+  - expected: i-10a64379
+    op: eq
+    path: StartingInstances.0.InstanceId
+  - expected: 80
+    op: eq
+    path: StartingInstances.0.PreviousState.Code
+  - expected: stopped
+    op: eq
+    path: StartingInstances.0.PreviousState.Name

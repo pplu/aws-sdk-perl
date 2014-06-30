@@ -1,3 +1,25 @@
 ---
-class: Aws::RedShift::CreateClusterSubnetGroupResult
-use: Aws::RedShift
+call: CreateClusterSubnetGroup
+service: RedShift
+tests:
+  - expected: mysubnetgroup1
+    op: eq
+    path: ClusterSubnetGroup.ClusterSubnetGroupName
+  - expected: My subnet group 1
+    op: eq
+    path: ClusterSubnetGroup.Description
+  - expected: Complete
+    op: eq
+    path: ClusterSubnetGroup.SubnetGroupStatus
+  - expected: us-east-1c
+    op: eq
+    path: ClusterSubnetGroup.Subnets.0.SubnetAvailabilityZone.Name
+  - expected: subnet-756a591f
+    op: eq
+    path: ClusterSubnetGroup.Subnets.0.SubnetIdentifier
+  - expected: Active
+    op: eq
+    path: ClusterSubnetGroup.Subnets.0.SubnetStatus
+  - expected: vpc-796a5913
+    op: eq
+    path: ClusterSubnetGroup.VpcId

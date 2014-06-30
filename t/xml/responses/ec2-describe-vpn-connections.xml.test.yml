@@ -1,3 +1,22 @@
 ---
-class: Aws::EC2::DescribeVpnConnectionsResult
-use: Aws::EC2
+call: DescribeVpnConnections
+service: EC2
+tests:
+  - expected: Gateway Info
+    op: eq
+    path: VpnConnections.0.CustomerGatewayConfiguration
+  - expected: cgw-b4dc3961
+    op: eq
+    path: VpnConnections.0.CustomerGatewayId
+  - expected: available
+    op: eq
+    path: VpnConnections.0.State
+  - expected: ipsec.1
+    op: eq
+    path: VpnConnections.0.Type
+  - expected: vpn-44a8938f
+    op: eq
+    path: VpnConnections.0.VpnConnectionId
+  - expected: vgw-8db04f81
+    op: eq
+    path: VpnConnections.0.VpnGatewayId

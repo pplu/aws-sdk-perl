@@ -1,3 +1,55 @@
 ---
-class: Aws::EC2::DescribeSpotInstanceRequestsResult
-use: Aws::EC2
+call: DescribeSpotInstanceRequests
+service: EC2
+tests:
+  - expected: YYYY-MM-DDTHH:MM:SS.000Z
+    op: eq
+    path: SpotInstanceRequests.0.CreateTime
+  - expected: i-1a2b3c4d
+    op: eq
+    path: SpotInstanceRequests.0.InstanceId
+  - expected: 0
+    op: eq
+    path: SpotInstanceRequests.0.LaunchSpecification.EbsOptimized
+  - expected: ami-1a2b3c4d
+    op: eq
+    path: SpotInstanceRequests.0.LaunchSpecification.ImageId
+  - expected: m1.small
+    op: eq
+    path: SpotInstanceRequests.0.LaunchSpecification.InstanceType
+  - expected: gsg-keypair
+    op: eq
+    path: SpotInstanceRequests.0.LaunchSpecification.KeyName
+  - expected: sg-1a2b3c4d
+    op: eq
+    path: SpotInstanceRequests.0.LaunchSpecification.SecurityGroups.0.GroupId
+  - expected: default
+    op: eq
+    path: SpotInstanceRequests.0.LaunchSpecification.SecurityGroups.0.GroupName
+  - expected: us-east-1c
+    op: eq
+    path: SpotInstanceRequests.0.LaunchedAvailabilityZone
+  - expected: Linux/UNIX
+    op: eq
+    path: SpotInstanceRequests.0.ProductDescription
+  - expected: sir-1a2b3c4d
+    op: eq
+    path: SpotInstanceRequests.0.SpotInstanceRequestId
+  - expected: 0.09
+    op: eq
+    path: SpotInstanceRequests.0.SpotPrice
+  - expected: active
+    op: eq
+    path: SpotInstanceRequests.0.State
+  - expected: fulfilled
+    op: eq
+    path: SpotInstanceRequests.0.Status.Code
+  - expected: Your Spot request is fulfilled.
+    op: eq
+    path: SpotInstanceRequests.0.Status.Message
+  - expected: YYYY-MM-DDTHH:MM:SS.000Z
+    op: eq
+    path: SpotInstanceRequests.0.Status.UpdateTime
+  - expected: one-time
+    op: eq
+    path: SpotInstanceRequests.0.Type

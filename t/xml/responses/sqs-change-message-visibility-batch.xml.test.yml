@@ -1,3 +1,10 @@
 ---
-class: Aws::SQS::ChangeMessageVisibilityBatchResult
-use: Aws::SQS
+call: ChangeMessageVisibilityBatch
+service: SQS
+tests:
+  - expected: change_visibility_msg_2
+    op: eq
+    path: Successful.0.Id
+  - expected: change_visibility_msg_3
+    op: eq
+    path: Successful.1.Id

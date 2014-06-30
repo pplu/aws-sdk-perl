@@ -1,3 +1,13 @@
 ---
-class: Aws::SES::GetSendQuotaResult
-use: Aws::SES
+call: GetSendQuota
+service: SES
+tests:
+  - expected: 200
+    op: eq
+    path: Max24HourSend
+  - expected: 1
+    op: eq
+    path: MaxSendRate
+  - expected: 0
+    op: eq
+    path: SentLast24Hours

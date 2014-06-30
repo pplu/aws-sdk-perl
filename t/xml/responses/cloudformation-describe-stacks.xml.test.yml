@@ -1,3 +1,4 @@
 ---
-class: Aws::CloudFormation::DescribeStacksResult
-use: Aws::CloudFormation
+call: DescribeStacks
+service: CloudFormation
+tests: []

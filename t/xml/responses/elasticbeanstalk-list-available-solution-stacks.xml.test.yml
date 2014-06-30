@@ -1,3 +1,196 @@
 ---
-class: Aws::ElasticBeanstalk::ListAvailableSolutionStacksResult
-use: Aws::ElasticBeanstalk
+call: ListAvailableSolutionStacks
+service: ElasticBeanstalk
+tests:
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.0.PermittedFileTypes.0
+  - expected: 32bit Amazon Linux running PHP 5.4
+    op: eq
+    path: SolutionStackDetails.0.SolutionStackName
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.1.PermittedFileTypes.0
+  - expected: 64bit Amazon Linux running PHP 5.4
+    op: eq
+    path: SolutionStackDetails.1.SolutionStackName
+  - expected: war
+    op: eq
+    path: SolutionStackDetails.10.PermittedFileTypes.0
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.10.PermittedFileTypes.1
+  - expected: 32bit Amazon Linux running Tomcat 6
+    op: eq
+    path: SolutionStackDetails.10.SolutionStackName
+  - expected: war
+    op: eq
+    path: SolutionStackDetails.11.PermittedFileTypes.0
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.11.PermittedFileTypes.1
+  - expected: 64bit Amazon Linux running Tomcat 6
+    op: eq
+    path: SolutionStackDetails.11.SolutionStackName
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.12.PermittedFileTypes.0
+  - expected: 32bit Amazon Linux running Python
+    op: eq
+    path: SolutionStackDetails.12.SolutionStackName
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.13.PermittedFileTypes.0
+  - expected: 64bit Amazon Linux running Python
+    op: eq
+    path: SolutionStackDetails.13.SolutionStackName
+  - expected: war
+    op: eq
+    path: SolutionStackDetails.14.PermittedFileTypes.0
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.14.PermittedFileTypes.1
+  - expected: 32bit Amazon Linux running Ruby 1.8.7
+    op: eq
+    path: SolutionStackDetails.14.SolutionStackName
+  - expected: war
+    op: eq
+    path: SolutionStackDetails.15.PermittedFileTypes.0
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.15.PermittedFileTypes.1
+  - expected: 64bit Amazon Linux running Ruby 1.8.7
+    op: eq
+    path: SolutionStackDetails.15.SolutionStackName
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.16.PermittedFileTypes.0
+  - expected: war
+    op: eq
+    path: SolutionStackDetails.16.PermittedFileTypes.1
+  - expected: 32bit Amazon Linux running Ruby 1.9.3
+    op: eq
+    path: SolutionStackDetails.16.SolutionStackName
+  - expected: war
+    op: eq
+    path: SolutionStackDetails.17.PermittedFileTypes.0
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.17.PermittedFileTypes.1
+  - expected: 64bit Amazon Linux running Ruby 1.9.3
+    op: eq
+    path: SolutionStackDetails.17.SolutionStackName
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.2.PermittedFileTypes.0
+  - expected: 32bit Amazon Linux running PHP 5.3
+    op: eq
+    path: SolutionStackDetails.2.SolutionStackName
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.3.PermittedFileTypes.0
+  - expected: 64bit Amazon Linux running PHP 5.3
+    op: eq
+    path: SolutionStackDetails.3.SolutionStackName
+  - expected: .zip
+    op: eq
+    path: SolutionStackDetails.4.PermittedFileTypes.0
+  - expected: .war
+    op: eq
+    path: SolutionStackDetails.4.PermittedFileTypes.1
+  - expected: 32bit Amazon Linux running Node.js
+    op: eq
+    path: SolutionStackDetails.4.SolutionStackName
+  - expected: .zip
+    op: eq
+    path: SolutionStackDetails.5.PermittedFileTypes.0
+  - expected: .war
+    op: eq
+    path: SolutionStackDetails.5.PermittedFileTypes.1
+  - expected: 64bit Amazon Linux running Node.js
+    op: eq
+    path: SolutionStackDetails.5.SolutionStackName
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.6.PermittedFileTypes.0
+  - expected: 64bit Windows Server 2008 R2 running IIS 7.5
+    op: eq
+    path: SolutionStackDetails.6.SolutionStackName
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.7.PermittedFileTypes.0
+  - expected: 64bit Windows Server 2012 running IIS 8
+    op: eq
+    path: SolutionStackDetails.7.SolutionStackName
+  - expected: war
+    op: eq
+    path: SolutionStackDetails.8.PermittedFileTypes.0
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.8.PermittedFileTypes.1
+  - expected: 32bit Amazon Linux running Tomcat 7
+    op: eq
+    path: SolutionStackDetails.8.SolutionStackName
+  - expected: war
+    op: eq
+    path: SolutionStackDetails.9.PermittedFileTypes.0
+  - expected: zip
+    op: eq
+    path: SolutionStackDetails.9.PermittedFileTypes.1
+  - expected: 64bit Amazon Linux running Tomcat 7
+    op: eq
+    path: SolutionStackDetails.9.SolutionStackName
+  - expected: 32bit Amazon Linux running PHP 5.4
+    op: eq
+    path: SolutionStacks.0
+  - expected: 64bit Amazon Linux running PHP 5.4
+    op: eq
+    path: SolutionStacks.1
+  - expected: 32bit Amazon Linux running Tomcat 6
+    op: eq
+    path: SolutionStacks.10
+  - expected: 64bit Amazon Linux running Tomcat 6
+    op: eq
+    path: SolutionStacks.11
+  - expected: 32bit Amazon Linux running Python
+    op: eq
+    path: SolutionStacks.12
+  - expected: 64bit Amazon Linux running Python
+    op: eq
+    path: SolutionStacks.13
+  - expected: 32bit Amazon Linux running Ruby 1.8.7
+    op: eq
+    path: SolutionStacks.14
+  - expected: 64bit Amazon Linux running Ruby 1.8.7
+    op: eq
+    path: SolutionStacks.15
+  - expected: 32bit Amazon Linux running Ruby 1.9.3
+    op: eq
+    path: SolutionStacks.16
+  - expected: 64bit Amazon Linux running Ruby 1.9.3
+    op: eq
+    path: SolutionStacks.17
+  - expected: 32bit Amazon Linux running PHP 5.3
+    op: eq
+    path: SolutionStacks.2
+  - expected: 64bit Amazon Linux running PHP 5.3
+    op: eq
+    path: SolutionStacks.3
+  - expected: 32bit Amazon Linux running Node.js
+    op: eq
+    path: SolutionStacks.4
+  - expected: 64bit Amazon Linux running Node.js
+    op: eq
+    path: SolutionStacks.5
+  - expected: 64bit Windows Server 2008 R2 running IIS 7.5
+    op: eq
+    path: SolutionStacks.6
+  - expected: 64bit Windows Server 2012 running IIS 8
+    op: eq
+    path: SolutionStacks.7
+  - expected: 32bit Amazon Linux running Tomcat 7
+    op: eq
+    path: SolutionStacks.8
+  - expected: 64bit Amazon Linux running Tomcat 7
+    op: eq
+    path: SolutionStacks.9

@@ -1,3 +1,64 @@
 ---
-class: Aws::RDS::DescribeEventsResult
-use: Aws::RDS
+call: DescribeEvents
+service: RDS
+tests:
+  - expected: 2010-08-11T17:12:52.860Z
+    op: eq
+    path: Events.0.Date
+  - expected: Applied change to security group
+    op: eq
+    path: Events.0.Message
+  - expected: mydbsecuritygroup
+    op: eq
+    path: Events.0.SourceIdentifier
+  - expected: db-security-group
+    op: eq
+    path: Events.0.SourceType
+  - expected: 2010-08-11T18:10:15.269Z
+    op: eq
+    path: Events.1.Date
+  - expected: Database instance created
+    op: eq
+    path: Events.1.Message
+  - expected: mydbinstance3
+    op: eq
+    path: Events.1.SourceIdentifier
+  - expected: db-instance
+    op: eq
+    path: Events.1.SourceType
+  - expected: 2010-08-11T18:10:34.690Z
+    op: eq
+    path: Events.2.Date
+  - expected: Backing up database instance
+    op: eq
+    path: Events.2.Message
+  - expected: mydbinstance3
+    op: eq
+    path: Events.2.SourceIdentifier
+  - expected: db-instance
+    op: eq
+    path: Events.2.SourceType
+  - expected: 2010-08-11T18:25:52.263Z
+    op: eq
+    path: Events.3.Date
+  - expected: Backing up DB Instance
+    op: eq
+    path: Events.3.Message
+  - expected: mynewdbinstance
+    op: eq
+    path: Events.3.SourceIdentifier
+  - expected: db-instance
+    op: eq
+    path: Events.3.SourceType
+  - expected: 2010-08-11T18:25:52.263Z
+    op: eq
+    path: Events.4.Date
+  - expected: Creating user snapshot
+    op: eq
+    path: Events.4.Message
+  - expected: mynewdbsnapshot3
+    op: eq
+    path: Events.4.SourceIdentifier
+  - expected: db-snapshot
+    op: eq
+    path: Events.4.SourceType

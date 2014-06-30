@@ -1,3 +1,22 @@
 ---
-class: Aws::EC2::CreateDhcpOptionsResult
-use: Aws::EC2
+call: CreateDhcpOptions
+service: EC2
+tests:
+  - expected: domain-name
+    op: eq
+    path: DhcpOptions.DhcpConfigurations.0.Key
+  - expected: example.com
+    op: eq
+    path: DhcpOptions.DhcpConfigurations.0.Values.0
+  - expected: domain-name-servers
+    op: eq
+    path: DhcpOptions.DhcpConfigurations.1.Key
+  - expected: 10.2.5.1
+    op: eq
+    path: DhcpOptions.DhcpConfigurations.1.Values.0
+  - expected: 10.2.5.2
+    op: eq
+    path: DhcpOptions.DhcpConfigurations.1.Values.1
+  - expected: dopt-7a8b9c2d
+    op: eq
+    path: DhcpOptions.DhcpOptionsId

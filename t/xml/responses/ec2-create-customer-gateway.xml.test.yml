@@ -1,3 +1,19 @@
 ---
-class: Aws::EC2::CreateCustomerGatewayResult
-use: Aws::EC2
+call: CreateCustomerGateway
+service: EC2
+tests:
+  - expected: 65534
+    op: eq
+    path: CustomerGateway.BgpAsn
+  - expected: cgw-b4dc3961
+    op: eq
+    path: CustomerGateway.CustomerGatewayId
+  - expected: 12.1.2.3
+    op: eq
+    path: CustomerGateway.IpAddress
+  - expected: pending
+    op: eq
+    path: CustomerGateway.State
+  - expected: ipsec.1
+    op: eq
+    path: CustomerGateway.Type

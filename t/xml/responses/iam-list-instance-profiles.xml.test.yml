@@ -1,3 +1,31 @@
 ---
-class: Aws::IAM::ListInstanceProfilesResult
-use: Aws::IAM
+call: ListInstanceProfiles
+service: IAM
+tests:
+  - expected: arn:aws:iam::123456789012:instance-profile/application_abc/component_xyz/Database
+    op: eq
+    path: InstanceProfiles.0.Arn
+  - expected: 2012-05-09T16:27:03Z
+    op: eq
+    path: InstanceProfiles.0.CreateDate
+  - expected: Database
+    op: eq
+    path: InstanceProfiles.0.InstanceProfileName
+  - expected: /application_abc/component_xyz/
+    op: eq
+    path: InstanceProfiles.0.Path
+  - expected: arn:aws:iam::123456789012:instance-profile/application_abc/component_xyz/Webserver
+    op: eq
+    path: InstanceProfiles.1.Arn
+  - expected: 2012-05-09T16:27:11Z
+    op: eq
+    path: InstanceProfiles.1.CreateDate
+  - expected: Webserver
+    op: eq
+    path: InstanceProfiles.1.InstanceProfileName
+  - expected: /application_abc/component_xyz/
+    op: eq
+    path: InstanceProfiles.1.Path
+  - expected: 0
+    op: eq
+    path: IsTruncated

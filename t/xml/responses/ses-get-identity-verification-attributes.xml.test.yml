@@ -1,3 +1,13 @@
 ---
-class: Aws::SES::GetIdentityVerificationAttributesResult
-use: Aws::SES
+call: GetIdentityVerificationAttributes
+service: SES
+tests:
+  - expected: Pending
+    op: eq
+    path: VerificationAttributes.domain\\.com.VerificationStatus
+  - expected: QTKknzFg2J4ygwa+XvHAxUl1hyHoY0gVfZdfjIedHZ0=
+    op: eq
+    path: VerificationAttributes.domain\\.com.VerificationToken
+  - expected: Pending
+    op: eq
+    path: VerificationAttributes.user@domain\\.com.VerificationStatus

@@ -1,3 +1,10 @@
 ---
-class: Aws::RedShift::RevokeClusterSecurityGroupIngressResult
-use: Aws::RedShift
+call: RevokeClusterSecurityGroupIngress
+service: RedShift
+tests:
+  - expected: securitygroup1
+    op: eq
+    path: ClusterSecurityGroup.ClusterSecurityGroupName
+  - expected: my security group
+    op: eq
+    path: ClusterSecurityGroup.Description

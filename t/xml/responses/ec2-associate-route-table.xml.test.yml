@@ -1,3 +1,7 @@
 ---
-class: Aws::EC2::AssociateRouteTableResult
-use: Aws::EC2
+call: AssociateRouteTable
+service: EC2
+tests:
+  - expected: rtbassoc-f8ad4891
+    op: eq
+    path: AssociationId

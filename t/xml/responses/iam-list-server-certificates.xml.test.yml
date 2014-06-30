@@ -1,3 +1,52 @@
 ---
-class: Aws::IAM::ListServerCertificatesResult
-use: Aws::IAM
+call: ListServerCertificates
+service: IAM
+tests:
+  - expected: 0
+    op: eq
+    path: IsTruncated
+  - expected: arn:aws:iam::123456789012:server-certificate/company/servercerts/ProdServerCert
+    op: eq
+    path: ServerCertificateMetadataList.0.Arn
+  - expected: /company/servercerts/
+    op: eq
+    path: ServerCertificateMetadataList.0.Path
+  - expected: ASCACKCEVSQ6CEXAMPLE1
+    op: eq
+    path: ServerCertificateMetadataList.0.ServerCertificateId
+  - expected: ProdServerCert
+    op: eq
+    path: ServerCertificateMetadataList.0.ServerCertificateName
+  - expected: 2010-05-08T01:02:03.004Z
+    op: eq
+    path: ServerCertificateMetadataList.0.UploadDate
+  - expected: arn:aws:iam::123456789012:server-certificate/company/servercerts/BetaServerCert
+    op: eq
+    path: ServerCertificateMetadataList.1.Arn
+  - expected: /company/servercerts/
+    op: eq
+    path: ServerCertificateMetadataList.1.Path
+  - expected: ASCACKCEVSQ6CEXAMPLE2
+    op: eq
+    path: ServerCertificateMetadataList.1.ServerCertificateId
+  - expected: BetaServerCert
+    op: eq
+    path: ServerCertificateMetadataList.1.ServerCertificateName
+  - expected: 2010-05-08T02:03:01.004Z
+    op: eq
+    path: ServerCertificateMetadataList.1.UploadDate
+  - expected: arn:aws:iam::123456789012:server-certificate/company/servercerts/TestServerCert
+    op: eq
+    path: ServerCertificateMetadataList.2.Arn
+  - expected: /company/servercerts/
+    op: eq
+    path: ServerCertificateMetadataList.2.Path
+  - expected: ASCACKCEVSQ6CEXAMPLE3
+    op: eq
+    path: ServerCertificateMetadataList.2.ServerCertificateId
+  - expected: TestServerCert
+    op: eq
+    path: ServerCertificateMetadataList.2.ServerCertificateName
+  - expected: 2010-05-08T03:01:02.004Z
+    op: eq
+    path: ServerCertificateMetadataList.2.UploadDate

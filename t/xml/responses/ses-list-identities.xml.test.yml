@@ -1,3 +1,10 @@
 ---
-class: Aws::SES::ListIdentitiesResult
-use: Aws::SES
+call: ListIdentities
+service: SES
+tests:
+  - expected: foobar.com
+    op: eq
+    path: Identities.0
+  - expected: foo@bar.com
+    op: eq
+    path: Identities.1

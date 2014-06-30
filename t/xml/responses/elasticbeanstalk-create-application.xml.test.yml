@@ -1,3 +1,19 @@
 ---
-class: Aws::ElasticBeanstalk::CreateApplicationResult
-use: Aws::ElasticBeanstalk
+call: CreateApplication
+service: ElasticBeanstalk
+tests:
+  - expected: SampleApp
+    op: eq
+    path: Application.ApplicationName
+  - expected: Default
+    op: eq
+    path: Application.ConfigurationTemplates.0
+  - expected: 2010-11-16T23:09:20.256Z
+    op: eq
+    path: Application.DateCreated
+  - expected: 2010-11-16T23:09:20.256Z
+    op: eq
+    path: Application.DateUpdated
+  - expected: Sample Description
+    op: eq
+    path: Application.Description

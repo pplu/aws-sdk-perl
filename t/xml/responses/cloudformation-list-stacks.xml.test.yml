@@ -1,3 +1,4 @@
 ---
-class: Aws::CloudFormation::ListStacksResult
-use: Aws::CloudFormation
+call: ListStacks
+service: CloudFormation
+tests: []

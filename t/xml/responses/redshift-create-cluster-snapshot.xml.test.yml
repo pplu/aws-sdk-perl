@@ -1,3 +1,43 @@
 ---
-class: Aws::RedShift::CreateClusterSnapshotResult
-use: Aws::RedShift
+call: CreateClusterSnapshot
+service: RedShift
+tests:
+  - expected: us-east-1c
+    op: eq
+    path: Snapshot.AvailabilityZone
+  - expected: 2013-01-22T19:23:59.368Z
+    op: eq
+    path: Snapshot.ClusterCreateTime
+  - expected: examplecluster
+    op: eq
+    path: Snapshot.ClusterIdentifier
+  - expected: 1.0
+    op: eq
+    path: Snapshot.ClusterVersion
+  - expected: dev
+    op: eq
+    path: Snapshot.DBName
+  - expected: adminuser
+    op: eq
+    path: Snapshot.MasterUsername
+  - expected: dw.hs1.xlarge
+    op: eq
+    path: Snapshot.NodeType
+  - expected: 2
+    op: eq
+    path: Snapshot.NumberOfNodes
+  - expected: 5439
+    op: eq
+    path: Snapshot.Port
+  - expected: 2013-01-23T01:08:29.142Z
+    op: eq
+    path: Snapshot.SnapshotCreateTime
+  - expected: my-snapshot-123
+    op: eq
+    path: Snapshot.SnapshotIdentifier
+  - expected: manual
+    op: eq
+    path: Snapshot.SnapshotType
+  - expected: creating
+    op: eq
+    path: Snapshot.Status

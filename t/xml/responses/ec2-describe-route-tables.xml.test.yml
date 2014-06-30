@@ -1,3 +1,70 @@
 ---
-class: Aws::EC2::DescribeRouteTablesResult
-use: Aws::EC2
+call: DescribeRouteTables
+service: EC2
+tests:
+  - expected: rtbassoc-822019eb
+    op: eq
+    path: RouteTables.0.Associations.0.RouteTableAssociationId
+  - expected: rtb-2728114e
+    op: eq
+    path: RouteTables.0.Associations.0.RouteTableId
+  - expected: subnet-812910e8
+    op: eq
+    path: RouteTables.0.Associations.0.SubnetId
+  - expected: rtb-2728114e
+    op: eq
+    path: RouteTables.0.RouteTableId
+  - expected: 10.0.0.0/16
+    op: eq
+    path: RouteTables.0.Routes.0.DestinationCidrBlock
+  - expected: local
+    op: eq
+    path: RouteTables.0.Routes.0.GatewayId
+  - expected: CreateRouteTable
+    op: eq
+    path: RouteTables.0.Routes.0.Origin
+  - expected: active
+    op: eq
+    path: RouteTables.0.Routes.0.State
+  - expected: 0.0.0.0/0
+    op: eq
+    path: RouteTables.0.Routes.1.DestinationCidrBlock
+  - expected: igw-6228110b
+    op: eq
+    path: RouteTables.0.Routes.1.GatewayId
+  - expected: CreateRoute
+    op: eq
+    path: RouteTables.0.Routes.1.Origin
+  - expected: active
+    op: eq
+    path: RouteTables.0.Routes.1.State
+  - expected: vpc-8d2910e4
+    op: eq
+    path: RouteTables.0.VpcId
+  - expected: 1
+    op: eq
+    path: RouteTables.1.Associations.0.Main
+  - expected: rtbassoc-8e2910e7
+    op: eq
+    path: RouteTables.1.Associations.0.RouteTableAssociationId
+  - expected: rtb-8f2910e6
+    op: eq
+    path: RouteTables.1.Associations.0.RouteTableId
+  - expected: rtb-8f2910e6
+    op: eq
+    path: RouteTables.1.RouteTableId
+  - expected: 10.0.0.0/16
+    op: eq
+    path: RouteTables.1.Routes.0.DestinationCidrBlock
+  - expected: local
+    op: eq
+    path: RouteTables.1.Routes.0.GatewayId
+  - expected: CreateRouteTable
+    op: eq
+    path: RouteTables.1.Routes.0.Origin
+  - expected: active
+    op: eq
+    path: RouteTables.1.Routes.0.State
+  - expected: vpc-8d2910e4
+    op: eq
+    path: RouteTables.1.VpcId

@@ -1,3 +1,4 @@
 ---
-class: ~
-use: Aws::ElasticBeanstalk
+call: DeleteApplication
+service: ElasticBeanstalk
+tests: []

@@ -1,3 +1,4 @@
 ---
-class: ~
-use: Aws::SQS
+call: AddPermission
+service: SQS
+tests: []

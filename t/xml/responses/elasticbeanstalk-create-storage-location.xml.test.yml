@@ -1,3 +1,7 @@
 ---
-class: Aws::ElasticBeanstalk::CreateStorageLocationResult
-use: Aws::ElasticBeanstalk
+call: CreateStorageLocation
+service: ElasticBeanstalk
+tests:
+  - expected: elasticbeanstalk-us-east-1-780612358023
+    op: eq
+    path: S3Bucket

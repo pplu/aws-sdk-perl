@@ -1,3 +1,16 @@
 ---
-class: Aws::EC2::DescribeInternetGatewaysResult
-use: Aws::EC2
+call: DescribeInternetGateways
+service: EC2
+tests:
+  - expected: available
+    op: eq
+    path: InternetGateways.0.Attachments.0.State
+  - expected: vpc-8d2910e4
+    op: eq
+    path: InternetGateways.0.Attachments.0.VpcId
+  - expected: igw-6228110b
+    op: eq
+    path: InternetGateways.0.InternetGatewayId
+  - expected: igw-f36c6a9a
+    op: eq
+    path: InternetGateways.1.InternetGatewayId

@@ -1,3 +1,7 @@
 ---
-class: Aws::EC2::CopySnapshotResult
-use: Aws::EC2
+call: CopySnapshot
+service: EC2
+tests:
+  - expected: snap-2a2b3c4d
+    op: eq
+    path: SnapshotId

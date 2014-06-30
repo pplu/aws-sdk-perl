@@ -1,3 +1,4 @@
 ---
-class: Aws::AutoScaling::DescribeTagsResult
-use: Aws::AutoScaling
+call: DescribeTags
+service: AutoScaling
+tests: []

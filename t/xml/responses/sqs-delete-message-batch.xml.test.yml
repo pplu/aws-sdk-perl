@@ -1,3 +1,10 @@
 ---
-class: Aws::SQS::DeleteMessageBatchResult
-use: Aws::SQS
+call: DeleteMessageBatch
+service: SQS
+tests:
+  - expected: msg1
+    op: eq
+    path: Successful.0.Id
+  - expected: msg2
+    op: eq
+    path: Successful.1.Id

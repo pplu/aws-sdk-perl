@@ -1,3 +1,82 @@
 ---
-class: Aws::EC2::DescribeVolumesResult
-use: Aws::EC2
+call: DescribeVolumes
+service: EC2
+tests:
+  - expected: 2012-10-16T20:00:21.000Z
+    op: eq
+    path: Volumes.0.Attachments.0.AttachTime
+  - expected: 1
+    op: eq
+    path: Volumes.0.Attachments.0.DeleteOnTermination
+  - expected: /dev/sda1
+    op: eq
+    path: Volumes.0.Attachments.0.Device
+  - expected: i-fde9cece
+    op: eq
+    path: Volumes.0.Attachments.0.InstanceId
+  - expected: attached
+    op: eq
+    path: Volumes.0.Attachments.0.State
+  - expected: vol-bc71579a
+    op: eq
+    path: Volumes.0.Attachments.0.VolumeId
+  - expected: us-west-2a
+    op: eq
+    path: Volumes.0.AvailabilityZone
+  - expected: 2012-10-16T20:00:16.000Z
+    op: eq
+    path: Volumes.0.CreateTime
+  - expected: 8
+    op: eq
+    path: Volumes.0.Size
+  - expected: snap-2723f74f
+    op: eq
+    path: Volumes.0.SnapshotId
+  - expected: in-use
+    op: eq
+    path: Volumes.0.State
+  - expected: vol-bc71579a
+    op: eq
+    path: Volumes.0.VolumeId
+  - expected: standard
+    op: eq
+    path: Volumes.0.VolumeType
+  - expected: 2013-03-09T16:44:07.000Z
+    op: eq
+    path: Volumes.1.Attachments.0.AttachTime
+  - expected: 1
+    op: eq
+    path: Volumes.1.Attachments.0.DeleteOnTermination
+  - expected: /dev/sda1
+    op: eq
+    path: Volumes.1.Attachments.0.Device
+  - expected: i-78f1b94a
+    op: eq
+    path: Volumes.1.Attachments.0.InstanceId
+  - expected: attached
+    op: eq
+    path: Volumes.1.Attachments.0.State
+  - expected: vol-a8d2e991
+    op: eq
+    path: Volumes.1.Attachments.0.VolumeId
+  - expected: us-west-2b
+    op: eq
+    path: Volumes.1.AvailabilityZone
+  - expected: 2013-03-09T16:43:57.000Z
+    op: eq
+    path: Volumes.1.CreateTime
+  - expected: 30
+    op: eq
+    path: Volumes.1.Size
+  - expected: snap-3d367c04
+    op: eq
+    path: Volumes.1.SnapshotId
+  - expected: in-use
+    op: eq
+    path: Volumes.1.State
+  - expected: vol-a8d2e991
+    op: eq
+    path: Volumes.1.VolumeId
+  - expected: standard
+    op: eq
+    path: Volumes.1.VolumeType

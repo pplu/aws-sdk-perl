@@ -1,3 +1,10 @@
 ---
-class: Aws::EC2::CancelSpotInstanceRequestsResult
-use: Aws::EC2
+call: CancelSpotInstanceRequests
+service: EC2
+tests:
+  - expected: sir-1a2b3c4d
+    op: eq
+    path: CancelledSpotInstanceRequests.0.SpotInstanceRequestId
+  - expected: cancelled
+    op: eq
+    path: CancelledSpotInstanceRequests.0.State

@@ -1,3 +1,7 @@
 ---
-class: Aws::SNS::SubscribeResult
-use: Aws::SNS
+call: Subscribe
+service: SNS
+tests:
+  - expected: pending confirmation
+    op: eq
+    path: SubscriptionArn

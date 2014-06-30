@@ -1,3 +1,4 @@
 ---
-class: Aws::RDS::DescribeDBInstancesResult
-use: Aws::RDS
+call: DescribeDBInstances
+service: RDS
+tests: []

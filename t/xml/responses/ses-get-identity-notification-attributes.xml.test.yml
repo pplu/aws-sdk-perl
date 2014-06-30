@@ -1,3 +1,13 @@
 ---
-class: Aws::SES::GetIdentityNotificationAttributesResult
-use: Aws::SES
+call: GetIdentityNotificationAttributes
+service: SES
+tests:
+  - expected: arn:aws:sns:us-east-1:123456789012:example
+    op: eq
+    path: NotificationAttributes.user@example\\.com.BounceTopic
+  - expected: arn:aws:sns:us-east-1:123456789012:example
+    op: eq
+    path: NotificationAttributes.user@example\\.com.ComplaintTopic
+  - expected: 1
+    op: eq
+    path: NotificationAttributes.user@example\\.com.ForwardingEnabled

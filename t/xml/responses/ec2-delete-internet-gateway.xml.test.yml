@@ -1,3 +1,7 @@
 ---
-class: Aws::EC2::DeleteInternetGatewayResult
-use: Aws::EC2
+call: DeleteInternetGateway
+service: EC2
+tests:
+  - expected: true
+    op: eq
+    path: return

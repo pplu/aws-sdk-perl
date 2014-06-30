@@ -1,3 +1,43 @@
 ---
-class: Aws::EC2::CreateNetworkAclResult
-use: Aws::EC2
+call: CreateNetworkAcl
+service: EC2
+tests:
+  - expected: 0.0.0.0/0
+    op: eq
+    path: NetworkAcl.Entries.0.CidrBlock
+  - expected: 1
+    op: eq
+    path: NetworkAcl.Entries.0.Egress
+  - expected: all
+    op: eq
+    path: NetworkAcl.Entries.0.Protocol
+  - expected: deny
+    op: eq
+    path: NetworkAcl.Entries.0.RuleAction
+  - expected: 32767
+    op: eq
+    path: NetworkAcl.Entries.0.RuleNumber
+  - expected: 0.0.0.0/0
+    op: eq
+    path: NetworkAcl.Entries.1.CidrBlock
+  - expected: 0
+    op: eq
+    path: NetworkAcl.Entries.1.Egress
+  - expected: all
+    op: eq
+    path: NetworkAcl.Entries.1.Protocol
+  - expected: deny
+    op: eq
+    path: NetworkAcl.Entries.1.RuleAction
+  - expected: 32767
+    op: eq
+    path: NetworkAcl.Entries.1.RuleNumber
+  - expected: 0
+    op: eq
+    path: NetworkAcl.IsDefault
+  - expected: acl-5fb85d36
+    op: eq
+    path: NetworkAcl.NetworkAclId
+  - expected: vpc-11ad4878
+    op: eq
+    path: NetworkAcl.VpcId

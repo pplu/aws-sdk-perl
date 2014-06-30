@@ -1,3 +1,4 @@
 ---
-class: Aws::RDS::DescribeEventSubscriptionsResult
-use: Aws::RDS
+call: DescribeEventSubscriptions
+service: RDS
+tests: []

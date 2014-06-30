@@ -1,3 +1,10 @@
 ---
-class: Aws::EC2::DescribeKeyPairsResult
-use: Aws::EC2
+call: DescribeKeyPairs
+service: EC2
+tests:
+  - expected: d1:15:f0:ce:7f:ee:94:b5:f2:76:d0:9a:bd:b2:30:18
+    op: eq
+    path: KeyPairs.0.KeyFingerprint
+  - expected: aws
+    op: eq
+    path: KeyPairs.0.KeyName

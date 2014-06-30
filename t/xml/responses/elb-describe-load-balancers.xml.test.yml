@@ -1,3 +1,4 @@
 ---
-class: Aws::ELB::DescribeLoadBalancersResult
-use: Aws::ELB
+call: DescribeLoadBalancers
+service: ELB
+tests: []

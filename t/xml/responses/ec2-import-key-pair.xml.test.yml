@@ -1,3 +1,10 @@
 ---
-class: Aws::EC2::ImportKeyPairResult
-use: Aws::EC2
+call: ImportKeyPair
+service: EC2
+tests:
+  - expected: '00:00:00: 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00'
+    op: eq
+    path: KeyFingerprint
+  - expected: gsg-keypair
+    op: eq
+    path: KeyName

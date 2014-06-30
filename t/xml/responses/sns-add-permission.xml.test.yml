@@ -1,3 +1,4 @@
 ---
-class: ~
-use: Aws::SNS
+call: AddPermission
+service: SNS
+tests: []

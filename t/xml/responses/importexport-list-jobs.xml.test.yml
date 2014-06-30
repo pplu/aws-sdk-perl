@@ -1,3 +1,31 @@
 ---
-class: Aws::ImportExport::ListJobsResult
-use: Aws::ImportExport
+call: ListJobs
+service: ImportExport
+tests:
+  - expected: 1
+    op: eq
+    path: IsTruncated
+  - expected: 2010-04-21T22:21:51Z
+    op: eq
+    path: Jobs.0.CreationDate
+  - expected: 0
+    op: eq
+    path: Jobs.0.IsCanceled
+  - expected: ADP7B
+    op: eq
+    path: Jobs.0.JobId
+  - expected: Import
+    op: eq
+    path: Jobs.0.JobType
+  - expected: 2010-04-21T22:19:05Z
+    op: eq
+    path: Jobs.1.CreationDate
+  - expected: 0
+    op: eq
+    path: Jobs.1.IsCanceled
+  - expected: AVEYF
+    op: eq
+    path: Jobs.1.JobId
+  - expected: Import
+    op: eq
+    path: Jobs.1.JobType

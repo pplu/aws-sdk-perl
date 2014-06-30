@@ -1,3 +1,43 @@
 ---
-class: Aws::RDS::DescribeReservedDBInstancesResult
-use: Aws::RDS
+call: DescribeReservedDBInstances
+service: RDS
+tests:
+  - expected: USD
+    op: eq
+    path: ReservedDBInstances.0.CurrencyCode
+  - expected: db.m1.small
+    op: eq
+    path: ReservedDBInstances.0.DBInstanceClass
+  - expected: 1
+    op: eq
+    path: ReservedDBInstances.0.DBInstanceCount
+  - expected: 31536000
+    op: eq
+    path: ReservedDBInstances.0.Duration
+  - expected: 227.5
+    op: eq
+    path: ReservedDBInstances.0.FixedPrice
+  - expected: 0
+    op: eq
+    path: ReservedDBInstances.0.MultiAZ
+  - expected: Medium Utilization
+    op: eq
+    path: ReservedDBInstances.0.OfferingType
+  - expected: mysql
+    op: eq
+    path: ReservedDBInstances.0.ProductDescription
+  - expected: myreservationid
+    op: eq
+    path: ReservedDBInstances.0.ReservedDBInstanceId
+  - expected: 649fd0c8-cf6d-47a0-bfa6-060f8e75e95f
+    op: eq
+    path: ReservedDBInstances.0.ReservedDBInstancesOfferingId
+  - expected: 2010-12-15T00:25:14.131Z
+    op: eq
+    path: ReservedDBInstances.0.StartTime
+  - expected: active
+    op: eq
+    path: ReservedDBInstances.0.State
+  - expected: 0.046
+    op: eq
+    path: ReservedDBInstances.0.UsagePrice

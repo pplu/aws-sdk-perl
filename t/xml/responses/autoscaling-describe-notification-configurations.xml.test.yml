@@ -1,3 +1,4 @@
 ---
-class: Aws::AutoScaling::DescribeNotificationConfigurationsResult
-use: Aws::AutoScaling
+call: DescribeNotificationConfigurations
+service: AutoScaling
+tests: []

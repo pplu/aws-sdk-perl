@@ -1,3 +1,28 @@
 ---
-class: Aws::EC2::DescribeSubnetsResult
-use: Aws::EC2
+call: DescribeSubnets
+service: EC2
+tests:
+  - expected: us-west-2a
+    op: eq
+    path: Subnets.0.AvailabilityZone
+  - expected: 251
+    op: eq
+    path: Subnets.0.AvailableIpAddressCount
+  - expected: 10.0.0.0/24
+    op: eq
+    path: Subnets.0.CidrBlock
+  - expected: 0
+    op: eq
+    path: Subnets.0.DefaultForAz
+  - expected: 0
+    op: eq
+    path: Subnets.0.MapPublicIpOnLaunch
+  - expected: available
+    op: eq
+    path: Subnets.0.State
+  - expected: subnet-812910e8
+    op: eq
+    path: Subnets.0.SubnetId
+  - expected: vpc-8d2910e4
+    op: eq
+    path: Subnets.0.VpcId

@@ -1,3 +1,31 @@
 ---
-class: Aws::EC2::DescribeAvailabilityZonesResult
-use: Aws::EC2
+call: DescribeAvailabilityZones
+service: EC2
+tests:
+  - expected: us-west-2
+    op: eq
+    path: AvailabilityZones.0.RegionName
+  - expected: available
+    op: eq
+    path: AvailabilityZones.0.State
+  - expected: us-west-2a
+    op: eq
+    path: AvailabilityZones.0.ZoneName
+  - expected: us-west-2
+    op: eq
+    path: AvailabilityZones.1.RegionName
+  - expected: available
+    op: eq
+    path: AvailabilityZones.1.State
+  - expected: us-west-2b
+    op: eq
+    path: AvailabilityZones.1.ZoneName
+  - expected: us-west-2
+    op: eq
+    path: AvailabilityZones.2.RegionName
+  - expected: available
+    op: eq
+    path: AvailabilityZones.2.State
+  - expected: us-west-2c
+    op: eq
+    path: AvailabilityZones.2.ZoneName

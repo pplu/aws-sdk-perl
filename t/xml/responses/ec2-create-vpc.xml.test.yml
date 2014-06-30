@@ -1,3 +1,19 @@
 ---
-class: Aws::EC2::CreateVpcResult
-use: Aws::EC2
+call: CreateVpc
+service: EC2
+tests:
+  - expected: 10.0.0.0/16
+    op: eq
+    path: Vpc.CidrBlock
+  - expected: dopt-1a2b3c4d2
+    op: eq
+    path: Vpc.DhcpOptionsId
+  - expected: default
+    op: eq
+    path: Vpc.InstanceTenancy
+  - expected: pending
+    op: eq
+    path: Vpc.State
+  - expected: vpc-1a2b3c4d
+    op: eq
+    path: Vpc.VpcId

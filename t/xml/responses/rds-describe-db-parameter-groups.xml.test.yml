@@ -1,3 +1,13 @@
 ---
-class: Aws::RDS::DescribeDBParameterGroupsResult
-use: Aws::RDS
+call: DescribeDBParameterGroups
+service: RDS
+tests:
+  - expected: mysql5.5
+    op: eq
+    path: DBParameterGroups.0.DBParameterGroupFamily
+  - expected: default.mysql5.5
+    op: eq
+    path: DBParameterGroups.0.DBParameterGroupName
+  - expected: Default parameter group for mysql5.5
+    op: eq
+    path: DBParameterGroups.0.Description

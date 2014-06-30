@@ -1,3 +1,13 @@
 ---
-class: Aws::AutoScaling::DescribeAdjustmentTypesResult
-use: Aws::AutoScaling
+call: DescribeAdjustmentTypes
+service: AutoScaling
+tests:
+  - expected: ChangeInCapacity
+    op: eq
+    path: AdjustmentTypes.0.AdjustmentType
+  - expected: ExactCapacity
+    op: eq
+    path: AdjustmentTypes.1.AdjustmentType
+  - expected: PercentChangeInCapacity
+    op: eq
+    path: AdjustmentTypes.2.AdjustmentType

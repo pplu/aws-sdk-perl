@@ -1,3 +1,40 @@
 ---
-class: Aws::EC2::DescribeReservedInstancesResult
-use: Aws::EC2
+call: DescribeReservedInstances
+service: EC2
+tests:
+  - expected: us-east-1a
+    op: eq
+    path: ReservedInstances.0.AvailabilityZone
+  - expected: USD
+    op: eq
+    path: ReservedInstances.0.CurrencyCode
+  - expected: 31536000
+    op: eq
+    path: ReservedInstances.0.Duration
+  - expected: 1820
+    op: eq
+    path: ReservedInstances.0.FixedPrice
+  - expected: 3
+    op: eq
+    path: ReservedInstances.0.InstanceCount
+  - expected: default
+    op: eq
+    path: ReservedInstances.0.InstanceTenancy
+  - expected: m1.xlarge
+    op: eq
+    path: ReservedInstances.0.InstanceType
+  - expected: Light Utilization
+    op: eq
+    path: ReservedInstances.0.OfferingType
+  - expected: Linux/UNIX
+    op: eq
+    path: ReservedInstances.0.ProductDescription
+  - expected: 4b2293b4-5813-4cc8-9ce3-1957fc1dcfc8EXAMPLE
+    op: eq
+    path: ReservedInstances.0.ReservedInstancesId
+  - expected: active
+    op: eq
+    path: ReservedInstances.0.State
+  - expected: 0.24
+    op: eq
+    path: ReservedInstances.0.UsagePrice

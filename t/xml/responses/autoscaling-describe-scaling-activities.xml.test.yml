@@ -1,3 +1,4 @@
 ---
-class: Aws::AutoScaling::DescribeScalingActivitiesResult
-use: Aws::AutoScaling
+call: DescribeScalingActivities
+service: AutoScaling
+tests: []

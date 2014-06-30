@@ -1,3 +1,4 @@
 ---
-class: Aws::SES::DeleteIdentityResult
-use: Aws::SES
+call: DeleteIdentity
+service: SES
+tests: []

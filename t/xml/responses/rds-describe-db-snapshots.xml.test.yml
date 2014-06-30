@@ -1,3 +1,130 @@
 ---
-class: Aws::RDS::DescribeDBSnapshotsResult
-use: Aws::RDS
+call: DescribeDBSnapshots
+service: RDS
+tests:
+  - expected: 10
+    op: eq
+    path: DBSnapshots.0.AllocatedStorage
+  - expected: us-east-1a
+    op: eq
+    path: DBSnapshots.0.AvailabilityZone
+  - expected: simcoprod01
+    op: eq
+    path: DBSnapshots.0.DBInstanceIdentifier
+  - expected: mydbsnapshot
+    op: eq
+    path: DBSnapshots.0.DBSnapshotIdentifier
+  - expected: mysql
+    op: eq
+    path: DBSnapshots.0.Engine
+  - expected: 5.1.50
+    op: eq
+    path: DBSnapshots.0.EngineVersion
+  - expected: 2011-05-23T06:06:43.110Z
+    op: eq
+    path: DBSnapshots.0.InstanceCreateTime
+  - expected: general-public-license
+    op: eq
+    path: DBSnapshots.0.LicenseModel
+  - expected: master
+    op: eq
+    path: DBSnapshots.0.MasterUsername
+  - expected: myoptiongroupname
+    op: eq
+    path: DBSnapshots.0.OptionGroupName
+  - expected: 3306
+    op: eq
+    path: DBSnapshots.0.Port
+  - expected: 2011-05-23T06:29:03.483Z
+    op: eq
+    path: DBSnapshots.0.SnapshotCreateTime
+  - expected: manual
+    op: eq
+    path: DBSnapshots.0.SnapshotType
+  - expected: available
+    op: eq
+    path: DBSnapshots.0.Status
+  - expected: 50
+    op: eq
+    path: DBSnapshots.1.AllocatedStorage
+  - expected: us-east-1a
+    op: eq
+    path: DBSnapshots.1.AvailabilityZone
+  - expected: mydbinstance
+    op: eq
+    path: DBSnapshots.1.DBInstanceIdentifier
+  - expected: mysnapshot1
+    op: eq
+    path: DBSnapshots.1.DBSnapshotIdentifier
+  - expected: mysql
+    op: eq
+    path: DBSnapshots.1.Engine
+  - expected: 5.1.49
+    op: eq
+    path: DBSnapshots.1.EngineVersion
+  - expected: 2010-08-04T23:27:36.420Z
+    op: eq
+    path: DBSnapshots.1.InstanceCreateTime
+  - expected: general-public-license
+    op: eq
+    path: DBSnapshots.1.LicenseModel
+  - expected: sa
+    op: eq
+    path: DBSnapshots.1.MasterUsername
+  - expected: myoptiongroupname
+    op: eq
+    path: DBSnapshots.1.OptionGroupName
+  - expected: 3306
+    op: eq
+    path: DBSnapshots.1.Port
+  - expected: 2011-03-11T07:20:24.082Z
+    op: eq
+    path: DBSnapshots.1.SnapshotCreateTime
+  - expected: manual
+    op: eq
+    path: DBSnapshots.1.SnapshotType
+  - expected: available
+    op: eq
+    path: DBSnapshots.1.Status
+  - expected: 60
+    op: eq
+    path: DBSnapshots.2.AllocatedStorage
+  - expected: us-east-1d
+    op: eq
+    path: DBSnapshots.2.AvailabilityZone
+  - expected: simcoprod01
+    op: eq
+    path: DBSnapshots.2.DBInstanceIdentifier
+  - expected: rds:simcoprod01-2012-04-02-00-01
+    op: eq
+    path: DBSnapshots.2.DBSnapshotIdentifier
+  - expected: mysql
+    op: eq
+    path: DBSnapshots.2.Engine
+  - expected: 5.1.47
+    op: eq
+    path: DBSnapshots.2.EngineVersion
+  - expected: 2010-07-16T00:06:59.107Z
+    op: eq
+    path: DBSnapshots.2.InstanceCreateTime
+  - expected: general-public-license
+    op: eq
+    path: DBSnapshots.2.LicenseModel
+  - expected: master
+    op: eq
+    path: DBSnapshots.2.MasterUsername
+  - expected: myoptiongroupname
+    op: eq
+    path: DBSnapshots.2.OptionGroupName
+  - expected: 3306
+    op: eq
+    path: DBSnapshots.2.Port
+  - expected: 2012-04-02T00:01:24.082Z
+    op: eq
+    path: DBSnapshots.2.SnapshotCreateTime
+  - expected: automated
+    op: eq
+    path: DBSnapshots.2.SnapshotType
+  - expected: available
+    op: eq
+    path: DBSnapshots.2.Status

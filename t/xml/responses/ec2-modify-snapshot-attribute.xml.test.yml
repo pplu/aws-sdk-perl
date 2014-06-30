@@ -1,3 +1,7 @@
 ---
-class: Aws::EC2::ModifySnapshotAttributeResult
-use: Aws::EC2
+call: ModifySnapshotAttribute
+service: EC2
+tests:
+  - expected: true
+    op: eq
+    path: return

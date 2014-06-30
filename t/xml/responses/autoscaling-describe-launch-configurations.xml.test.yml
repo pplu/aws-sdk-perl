@@ -1,3 +1,4 @@
 ---
-class: Aws::AutoScaling::DescribeLaunchConfigurationsResult
-use: Aws::AutoScaling
+call: DescribeLaunchConfigurations
+service: AutoScaling
+tests: []

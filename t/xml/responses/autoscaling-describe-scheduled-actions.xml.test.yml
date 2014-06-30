@@ -1,3 +1,4 @@
 ---
-class: Aws::AutoScaling::DescribeScheduledActionsResult
-use: Aws::AutoScaling
+call: DescribeScheduledActions
+service: AutoScaling
+tests: []

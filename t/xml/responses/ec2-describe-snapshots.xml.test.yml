@@ -1,3 +1,100 @@
 ---
-class: Aws::EC2::DescribeSnapshotsResult
-use: Aws::EC2
+call: DescribeSnapshots
+service: EC2
+tests:
+  - expected: Proxy Sniffer Data Disk NTFS 10 GB
+    op: eq
+    path: Snapshots.0.Description
+  - expected: 123456789012
+    op: eq
+    path: Snapshots.0.OwnerId
+  - expected: 100%
+    op: eq
+    path: Snapshots.0.Progress
+  - expected: snap-b253e6da
+    op: eq
+    path: Snapshots.0.SnapshotId
+  - expected: 2011-12-27T17:20:21.000Z
+    op: eq
+    path: Snapshots.0.StartTime
+  - expected: completed
+    op: eq
+    path: Snapshots.0.State
+  - expected: vol-ee102886
+    op: eq
+    path: Snapshots.0.VolumeId
+  - expected: 10
+    op: eq
+    path: Snapshots.0.VolumeSize
+  - expected: ~
+    op: eq
+    path: Snapshots.1.Description
+  - expected: 123456789012
+    op: eq
+    path: Snapshots.1.OwnerId
+  - expected: 100%
+    op: eq
+    path: Snapshots.1.Progress
+  - expected: snap-b6bf0cde
+    op: eq
+    path: Snapshots.1.SnapshotId
+  - expected: 2012-01-08T00:41:31.000Z
+    op: eq
+    path: Snapshots.1.StartTime
+  - expected: completed
+    op: eq
+    path: Snapshots.1.State
+  - expected: vol-213dd14a
+    op: eq
+    path: Snapshots.1.VolumeId
+  - expected: 90
+    op: eq
+    path: Snapshots.1.VolumeSize
+  - expected: ~
+    op: eq
+    path: Snapshots.2.Description
+  - expected: 123456789012
+    op: eq
+    path: Snapshots.2.OwnerId
+  - expected: 100%
+    op: eq
+    path: Snapshots.2.Progress
+  - expected: snap-1e099276
+    op: eq
+    path: Snapshots.2.SnapshotId
+  - expected: 2012-02-22T17:25:10.000Z
+    op: eq
+    path: Snapshots.2.StartTime
+  - expected: completed
+    op: eq
+    path: Snapshots.2.State
+  - expected: vol-4ab8dc22
+    op: eq
+    path: Snapshots.2.VolumeId
+  - expected: 8
+    op: eq
+    path: Snapshots.2.VolumeSize
+  - expected: pvlinux-debian-6.0-x86_0.7.0.62_120223_172028
+    op: eq
+    path: Snapshots.3.Description
+  - expected: 123456789012
+    op: eq
+    path: Snapshots.3.OwnerId
+  - expected: 100%
+    op: eq
+    path: Snapshots.3.Progress
+  - expected: snap-d63550be
+    op: eq
+    path: Snapshots.3.SnapshotId
+  - expected: 2012-02-23T22:26:43.000Z
+    op: eq
+    path: Snapshots.3.StartTime
+  - expected: completed
+    op: eq
+    path: Snapshots.3.State
+  - expected: vol-4d1b5c26
+    op: eq
+    path: Snapshots.3.VolumeId
+  - expected: 1
+    op: eq
+    path: Snapshots.3.VolumeSize

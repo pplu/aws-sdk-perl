@@ -1,3 +1,13 @@
 ---
-class: Aws::IAM::ListMFADevicesResult
-use: Aws::IAM
+call: ListMFADevices
+service: IAM
+tests:
+  - expected: 0
+    op: eq
+    path: IsTruncated
+  - expected: R1234
+    op: eq
+    path: MFADevices.0.SerialNumber
+  - expected: Bob
+    op: eq
+    path: MFADevices.0.UserName

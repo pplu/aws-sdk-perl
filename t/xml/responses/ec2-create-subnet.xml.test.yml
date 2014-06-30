@@ -1,3 +1,22 @@
 ---
-class: Aws::EC2::CreateSubnetResult
-use: Aws::EC2
+call: CreateSubnet
+service: EC2
+tests:
+  - expected: us-east-1a
+    op: eq
+    path: Subnet.AvailabilityZone
+  - expected: 251
+    op: eq
+    path: Subnet.AvailableIpAddressCount
+  - expected: 10.0.1.0/24
+    op: eq
+    path: Subnet.CidrBlock
+  - expected: pending
+    op: eq
+    path: Subnet.State
+  - expected: subnet-9d4a7b6c
+    op: eq
+    path: Subnet.SubnetId
+  - expected: vpc-1a2b3c4d
+    op: eq
+    path: Subnet.VpcId

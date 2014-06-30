@@ -1,3 +1,4 @@
 ---
-class: ~
-use: Aws::RedShift
+call: DeleteClusterParameterGroup
+service: RedShift
+tests: []

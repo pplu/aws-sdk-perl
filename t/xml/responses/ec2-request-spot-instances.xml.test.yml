@@ -1,3 +1,40 @@
 ---
-class: Aws::EC2::RequestSpotInstancesResult
-use: Aws::EC2
+call: RequestSpotInstances
+service: EC2
+tests:
+  - expected: MyAzGroup
+    op: eq
+    path: SpotInstanceRequests.0.AvailabilityZoneGroup
+  - expected: YYYY-MM-DDTHH:MM:SS.000Z
+    op: eq
+    path: SpotInstanceRequests.0.CreateTime
+  - expected: 0
+    op: eq
+    path: SpotInstanceRequests.0.LaunchSpecification.EbsOptimized
+  - expected: ami-1a2b3c4d
+    op: eq
+    path: SpotInstanceRequests.0.LaunchSpecification.ImageId
+  - expected: m1.small
+    op: eq
+    path: SpotInstanceRequests.0.LaunchSpecification.InstanceType
+  - expected: ~
+    op: eq
+    path: SpotInstanceRequests.0.LaunchSpecification.SecurityGroups.0.GroupId
+  - expected: ~
+    op: eq
+    path: SpotInstanceRequests.0.LaunchSpecification.SecurityGroups.0.GroupName
+  - expected: Linux/UNIX
+    op: eq
+    path: SpotInstanceRequests.0.ProductDescription
+  - expected: sir-1a2b3c4d
+    op: eq
+    path: SpotInstanceRequests.0.SpotInstanceRequestId
+  - expected: 0.5
+    op: eq
+    path: SpotInstanceRequests.0.SpotPrice
+  - expected: open
+    op: eq
+    path: SpotInstanceRequests.0.State
+  - expected: one-time
+    op: eq
+    path: SpotInstanceRequests.0.Type

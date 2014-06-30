@@ -1,3 +1,4 @@
 ---
-class: Aws::CloudWatch::DescribeAlarmHistoryResult
-use: Aws::CloudWatch
+call: DescribeAlarmHistory
+service: CloudWatch
+tests: []

@@ -1,3 +1,22 @@
 ---
-class: Aws::RedShift::DescribeClusterParameterGroupsResult
-use: Aws::RedShift
+call: DescribeClusterParameterGroups
+service: RedShift
+tests:
+  - expected: Default parameter group for redshift-1.0
+    op: eq
+    path: ParameterGroups.0.Description
+  - expected: redshift-1.0
+    op: eq
+    path: ParameterGroups.0.ParameterGroupFamily
+  - expected: default.redshift-1.0
+    op: eq
+    path: ParameterGroups.0.ParameterGroupName
+  - expected: description my parameter group
+    op: eq
+    path: ParameterGroups.1.Description
+  - expected: redshift-1.0
+    op: eq
+    path: ParameterGroups.1.ParameterGroupFamily
+  - expected: parametergroup1
+    op: eq
+    path: ParameterGroups.1.ParameterGroupName

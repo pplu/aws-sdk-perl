@@ -1,3 +1,25 @@
 ---
-class: Aws::ElasticBeanstalk::DescribeApplicationVersionsResult
-use: Aws::ElasticBeanstalk
+call: DescribeApplicationVersions
+service: ElasticBeanstalk
+tests:
+  - expected: SampleApp
+    op: eq
+    path: ApplicationVersions.0.ApplicationName
+  - expected: 2010-11-17T03:21:59.161Z
+    op: eq
+    path: ApplicationVersions.0.DateCreated
+  - expected: 2010-11-17T03:21:59.161Z
+    op: eq
+    path: ApplicationVersions.0.DateUpdated
+  - expected: description
+    op: eq
+    path: ApplicationVersions.0.Description
+  - expected: amazonaws.com
+    op: eq
+    path: ApplicationVersions.0.SourceBundle.S3Bucket
+  - expected: sample.war
+    op: eq
+    path: ApplicationVersions.0.SourceBundle.S3Key
+  - expected: Version1
+    op: eq
+    path: ApplicationVersions.0.VersionLabel

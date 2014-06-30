@@ -1,3 +1,25 @@
 ---
-class: Aws::IAM::ListAccessKeysResult
-use: Aws::IAM
+call: ListAccessKeys
+service: IAM
+tests:
+  - expected: AKIAIOSFODNN7EXAMPLE
+    op: eq
+    path: AccessKeyMetadata.0.AccessKeyId
+  - expected: Active
+    op: eq
+    path: AccessKeyMetadata.0.Status
+  - expected: Bob
+    op: eq
+    path: AccessKeyMetadata.0.UserName
+  - expected: AKIAI44QH8DHBEXAMPLE
+    op: eq
+    path: AccessKeyMetadata.1.AccessKeyId
+  - expected: Inactive
+    op: eq
+    path: AccessKeyMetadata.1.Status
+  - expected: Bob
+    op: eq
+    path: AccessKeyMetadata.1.UserName
+  - expected: 0
+    op: eq
+    path: IsTruncated

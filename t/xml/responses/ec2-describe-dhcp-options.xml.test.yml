@@ -1,3 +1,19 @@
 ---
-class: Aws::EC2::DescribeDhcpOptionsResult
-use: Aws::EC2
+call: DescribeDhcpOptions
+service: EC2
+tests:
+  - expected: domain-name
+    op: eq
+    path: DhcpOptions.0.DhcpConfigurations.0.Key
+  - expected: us-west-2.compute.internal
+    op: eq
+    path: DhcpOptions.0.DhcpConfigurations.0.Values.0
+  - expected: domain-name-servers
+    op: eq
+    path: DhcpOptions.0.DhcpConfigurations.1.Key
+  - expected: AmazonProvidedDNS
+    op: eq
+    path: DhcpOptions.0.DhcpConfigurations.1.Values.0
+  - expected: dopt-eb291082
+    op: eq
+    path: DhcpOptions.0.DhcpOptionsId

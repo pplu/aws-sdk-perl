@@ -1,3 +1,34 @@
 ---
-class: Aws::EC2::DescribeInstanceStatusResult
-use: Aws::EC2
+call: DescribeInstanceStatus
+service: EC2
+tests:
+  - expected: us-west-2b
+    op: eq
+    path: InstanceStatuses.0.AvailabilityZone
+  - expected: i-78f1b94a
+    op: eq
+    path: InstanceStatuses.0.InstanceId
+  - expected: 16
+    op: eq
+    path: InstanceStatuses.0.InstanceState.Code
+  - expected: running
+    op: eq
+    path: InstanceStatuses.0.InstanceState.Name
+  - expected: reachability
+    op: eq
+    path: InstanceStatuses.0.InstanceStatus.Details.0.Name
+  - expected: passed
+    op: eq
+    path: InstanceStatuses.0.InstanceStatus.Details.0.Status
+  - expected: ok
+    op: eq
+    path: InstanceStatuses.0.InstanceStatus.Status
+  - expected: reachability
+    op: eq
+    path: InstanceStatuses.0.SystemStatus.Details.0.Name
+  - expected: passed
+    op: eq
+    path: InstanceStatuses.0.SystemStatus.Details.0.Status
+  - expected: ok
+    op: eq
+    path: InstanceStatuses.0.SystemStatus.Status

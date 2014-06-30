@@ -1,3 +1,19 @@
 ---
-class: Aws::RDS::DescribeOptionGroupsResult
-use: Aws::RDS
+call: DescribeOptionGroups
+service: RDS
+tests:
+  - expected: 1
+    op: eq
+    path: OptionGroupsList.0.AllowsVpcAndNonVpcInstanceMemberships
+  - expected: mysql
+    op: eq
+    path: OptionGroupsList.0.EngineName
+  - expected: 5.5
+    op: eq
+    path: OptionGroupsList.0.MajorEngineVersion
+  - expected: Default option group for mysql 5.5
+    op: eq
+    path: OptionGroupsList.0.OptionGroupDescription
+  - expected: default:mysql-5-5
+    op: eq
+    path: OptionGroupsList.0.OptionGroupName

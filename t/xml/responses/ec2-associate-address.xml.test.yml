@@ -1,3 +1,10 @@
 ---
-class: Aws::EC2::AssociateAddressResult
-use: Aws::EC2
+call: AssociateAddress
+service: EC2
+tests:
+  - expected: eipassoc-fc5ca095
+    op: eq
+    path: AssociationId
+  - expected: true
+    op: eq
+    path: return

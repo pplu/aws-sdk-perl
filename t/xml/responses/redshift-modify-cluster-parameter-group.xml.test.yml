@@ -1,3 +1,10 @@
 ---
-class: Aws::RedShift::ModifyClusterParameterGroupResult
-use: Aws::RedShift
+call: ModifyClusterParameterGroup
+service: RedShift
+tests:
+  - expected: parametergroup1
+    op: eq
+    path: ParameterGroupName
+  - expected: Your parameter group has been updated but changes won't get applied until you reboot the associated Clusters.
+    op: eq
+    path: ParameterGroupStatus

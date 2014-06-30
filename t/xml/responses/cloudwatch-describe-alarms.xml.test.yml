@@ -1,3 +1,4 @@
 ---
-class: Aws::CloudWatch::DescribeAlarmsResult
-use: Aws::CloudWatch
+call: DescribeAlarms
+service: CloudWatch
+tests: []

@@ -1,3 +1,16 @@
 ---
-class: Aws::EC2::UnmonitorInstancesResult
-use: Aws::EC2
+call: UnmonitorInstances
+service: EC2
+tests:
+  - expected: i-43a4412a
+    op: eq
+    path: InstanceMonitorings.0.InstanceId
+  - expected: disabled
+    op: eq
+    path: InstanceMonitorings.0.Monitoring.State
+  - expected: i-23a3397d
+    op: eq
+    path: InstanceMonitorings.1.InstanceId
+  - expected: disabled
+    op: eq
+    path: InstanceMonitorings.1.Monitoring.State
