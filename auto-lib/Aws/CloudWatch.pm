@@ -1,20 +1,13 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::CloudWatch::ComparisonOperator', ['GreaterThanOrEqualToThreshold','GreaterThanThreshold','LessThanThreshold','LessThanOrEqualToThreshold',];
-enum 'Aws::CloudWatch::HistoryItemType', ['ConfigurationUpdate','StateUpdate','Action',];
-enum 'Aws::CloudWatch::StandardUnit', ['Seconds','Microseconds','Milliseconds','Bytes','Kilobytes','Megabytes','Gigabytes','Terabytes','Bits','Kilobits','Megabits','Gigabits','Terabits','Percent','Count','Bytes/Second','Kilobytes/Second','Megabytes/Second','Gigabytes/Second','Terabytes/Second','Bits/Second','Kilobits/Second','Megabits/Second','Gigabits/Second','Terabits/Second','Count/Second','None',];
-enum 'Aws::CloudWatch::StateValue', ['OK','ALARM','INSUFFICIENT_DATA',];
-enum 'Aws::CloudWatch::Statistic', ['SampleCount','Average','Sum','Minimum','Maximum',];
-
 
 package Aws::CloudWatch::AlarmHistoryItem {
   use Moose;
   with ('AWS::API::ResultParser');
   has AlarmName => (is => 'ro', isa => 'Str');
   has HistoryData => (is => 'ro', isa => 'Str');
-  has HistoryItemType => (is => 'ro', isa => 'Aws::CloudWatch::HistoryItemType');
+  has HistoryItemType => (is => 'ro', isa => 'Str');
   has HistorySummary => (is => 'ro', isa => 'Str');
   has Timestamp => (is => 'ro', isa => 'Str');
 }
@@ -28,7 +21,7 @@ package Aws::CloudWatch::Datapoint {
   has SampleCount => (is => 'ro', isa => 'Num');
   has Sum => (is => 'ro', isa => 'Num');
   has Timestamp => (is => 'ro', isa => 'Str');
-  has Unit => (is => 'ro', isa => 'Aws::CloudWatch::StandardUnit');
+  has Unit => (is => 'ro', isa => 'Str');
 }
 
 package Aws::CloudWatch::Dimension {
@@ -62,7 +55,7 @@ package Aws::CloudWatch::MetricAlarm {
   has AlarmConfigurationUpdatedTimestamp => (is => 'ro', isa => 'Str');
   has AlarmDescription => (is => 'ro', isa => 'Str');
   has AlarmName => (is => 'ro', isa => 'Str');
-  has ComparisonOperator => (is => 'ro', isa => 'Aws::CloudWatch::ComparisonOperator');
+  has ComparisonOperator => (is => 'ro', isa => 'Str');
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::Dimension]');
   has EvaluationPeriods => (is => 'ro', isa => 'Int');
   has InsufficientDataActions => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -73,10 +66,10 @@ package Aws::CloudWatch::MetricAlarm {
   has StateReason => (is => 'ro', isa => 'Str');
   has StateReasonData => (is => 'ro', isa => 'Str');
   has StateUpdatedTimestamp => (is => 'ro', isa => 'Str');
-  has StateValue => (is => 'ro', isa => 'Aws::CloudWatch::StateValue');
-  has Statistic => (is => 'ro', isa => 'Aws::CloudWatch::Statistic');
+  has StateValue => (is => 'ro', isa => 'Str');
+  has Statistic => (is => 'ro', isa => 'Str');
   has Threshold => (is => 'ro', isa => 'Num');
-  has Unit => (is => 'ro', isa => 'Aws::CloudWatch::StandardUnit');
+  has Unit => (is => 'ro', isa => 'Str');
 }
 
 package Aws::CloudWatch::MetricDatum {
@@ -86,7 +79,7 @@ package Aws::CloudWatch::MetricDatum {
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has StatisticValues => (is => 'ro', isa => 'Aws::CloudWatch::StatisticSet');
   has Timestamp => (is => 'ro', isa => 'Str');
-  has Unit => (is => 'ro', isa => 'Aws::CloudWatch::StandardUnit');
+  has Unit => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Num');
 }
 

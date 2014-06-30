@@ -1,22 +1,6 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::EMR::ActionOnFailure', ['TERMINATE_JOB_FLOW','TERMINATE_CLUSTER','CANCEL_AND_WAIT','CONTINUE',];
-enum 'Aws::EMR::ClusterState', ['STARTING','BOOTSTRAPPING','RUNNING','WAITING','TERMINATING','TERMINATED','TERMINATED_WITH_ERRORS',];
-enum 'Aws::EMR::ClusterStateChangeReasonCode', ['INTERNAL_ERROR','VALIDATION_ERROR','INSTANCE_FAILURE','BOOTSTRAP_FAILURE','USER_REQUEST','STEP_FAILURE','ALL_STEPS_COMPLETED',];
-enum 'Aws::EMR::InstanceGroupState', ['PROVISIONING','BOOTSTRAPPING','RUNNING','RESIZING','SUSPENDED','TERMINATING','TERMINATED','ARRESTED','SHUTTING_DOWN','ENDED',];
-enum 'Aws::EMR::InstanceGroupStateChangeReasonCode', ['INTERNAL_ERROR','VALIDATION_ERROR','INSTANCE_FAILURE','CLUSTER_TERMINATED',];
-enum 'Aws::EMR::InstanceGroupType', ['MASTER','CORE','TASK',];
-enum 'Aws::EMR::InstanceRoleType', ['MASTER','CORE','TASK',];
-enum 'Aws::EMR::InstanceState', ['AWAITING_FULFILLMENT','PROVISIONING','BOOTSTRAPPING','RUNNING','TERMINATED',];
-enum 'Aws::EMR::InstanceStateChangeReasonCode', ['INTERNAL_ERROR','VALIDATION_ERROR','INSTANCE_FAILURE','BOOTSTRAP_FAILURE','CLUSTER_TERMINATED',];
-enum 'Aws::EMR::JobFlowExecutionState', ['STARTING','BOOTSTRAPPING','RUNNING','WAITING','SHUTTING_DOWN','TERMINATED','COMPLETED','FAILED',];
-enum 'Aws::EMR::MarketType', ['ON_DEMAND','SPOT',];
-enum 'Aws::EMR::StepExecutionState', ['PENDING','RUNNING','CONTINUE','COMPLETED','CANCELLED','FAILED','INTERRUPTED',];
-enum 'Aws::EMR::StepState', ['PENDING','RUNNING','COMPLETED','CANCELLED','FAILED','INTERRUPTED',];
-enum 'Aws::EMR::StepStateChangeReasonCode', ['NONE',];
-
 
 package Aws::EMR::Application {
   use Moose;
@@ -61,14 +45,14 @@ package Aws::EMR::Cluster {
 package Aws::EMR::ClusterStateChangeReason {
   use Moose;
   with ('AWS::API::ResultParser');
-  has Code => (is => 'ro', isa => 'Aws::EMR::ClusterStateChangeReasonCode');
+  has Code => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EMR::ClusterStatus {
   use Moose;
   with ('AWS::API::ResultParser');
-  has State => (is => 'ro', isa => 'Aws::EMR::ClusterState');
+  has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::ClusterStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::ClusterTimeline');
 }
@@ -141,9 +125,9 @@ package Aws::EMR::InstanceGroup {
   with ('AWS::API::ResultParser');
   has BidPrice => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
-  has InstanceGroupType => (is => 'ro', isa => 'Aws::EMR::InstanceGroupType');
+  has InstanceGroupType => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
-  has Market => (is => 'ro', isa => 'Aws::EMR::MarketType');
+  has Market => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has RequestedInstanceCount => (is => 'ro', isa => 'Int');
   has RunningInstanceCount => (is => 'ro', isa => 'Int');
@@ -155,9 +139,9 @@ package Aws::EMR::InstanceGroupConfig {
   with ('AWS::API::ResultParser');
   has BidPrice => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
-  has InstanceRole => (is => 'ro', isa => 'Aws::EMR::InstanceRoleType', required => 1);
+  has InstanceRole => (is => 'ro', isa => 'Str', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has Market => (is => 'ro', isa => 'Aws::EMR::MarketType');
+  has Market => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 }
 
@@ -169,15 +153,15 @@ package Aws::EMR::InstanceGroupDetail {
   has EndDateTime => (is => 'ro', isa => 'Str');
   has InstanceGroupId => (is => 'ro', isa => 'Str');
   has InstanceRequestCount => (is => 'ro', isa => 'Int', required => 1);
-  has InstanceRole => (is => 'ro', isa => 'Aws::EMR::InstanceRoleType', required => 1);
+  has InstanceRole => (is => 'ro', isa => 'Str', required => 1);
   has InstanceRunningCount => (is => 'ro', isa => 'Int', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has LastStateChangeReason => (is => 'ro', isa => 'Str');
-  has Market => (is => 'ro', isa => 'Aws::EMR::MarketType', required => 1);
+  has Market => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str');
   has ReadyDateTime => (is => 'ro', isa => 'Str');
   has StartDateTime => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Aws::EMR::InstanceGroupState', required => 1);
+  has State => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::EMR::InstanceGroupModifyConfig {
@@ -191,14 +175,14 @@ package Aws::EMR::InstanceGroupModifyConfig {
 package Aws::EMR::InstanceGroupStateChangeReason {
   use Moose;
   with ('AWS::API::ResultParser');
-  has Code => (is => 'ro', isa => 'Aws::EMR::InstanceGroupStateChangeReasonCode');
+  has Code => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EMR::InstanceGroupStatus {
   use Moose;
   with ('AWS::API::ResultParser');
-  has State => (is => 'ro', isa => 'Aws::EMR::InstanceGroupState');
+  has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::InstanceGroupStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::InstanceGroupTimeline');
 }
@@ -214,14 +198,14 @@ package Aws::EMR::InstanceGroupTimeline {
 package Aws::EMR::InstanceStateChangeReason {
   use Moose;
   with ('AWS::API::ResultParser');
-  has Code => (is => 'ro', isa => 'Aws::EMR::InstanceStateChangeReasonCode');
+  has Code => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EMR::InstanceStatus {
   use Moose;
   with ('AWS::API::ResultParser');
-  has State => (is => 'ro', isa => 'Aws::EMR::InstanceState');
+  has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::InstanceStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::InstanceTimeline');
 }
@@ -259,7 +243,7 @@ package Aws::EMR::JobFlowExecutionStatusDetail {
   has LastStateChangeReason => (is => 'ro', isa => 'Str');
   has ReadyDateTime => (is => 'ro', isa => 'Str');
   has StartDateTime => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Aws::EMR::JobFlowExecutionState', required => 1);
+  has State => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::EMR::JobFlowInstancesConfig {
@@ -318,7 +302,7 @@ package Aws::EMR::ScriptBootstrapActionConfig {
 package Aws::EMR::Step {
   use Moose;
   with ('AWS::API::ResultParser');
-  has ActionOnFailure => (is => 'ro', isa => 'Aws::EMR::ActionOnFailure');
+  has ActionOnFailure => (is => 'ro', isa => 'Str');
   has Config => (is => 'ro', isa => 'Aws::EMR::HadoopStepConfig');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -328,7 +312,7 @@ package Aws::EMR::Step {
 package Aws::EMR::StepConfig {
   use Moose;
   with ('AWS::API::ResultParser');
-  has ActionOnFailure => (is => 'ro', isa => 'Aws::EMR::ActionOnFailure');
+  has ActionOnFailure => (is => 'ro', isa => 'Str');
   has HadoopJarStep => (is => 'ro', isa => 'Aws::EMR::HadoopJarStepConfig', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
 }
@@ -347,20 +331,20 @@ package Aws::EMR::StepExecutionStatusDetail {
   has EndDateTime => (is => 'ro', isa => 'Str');
   has LastStateChangeReason => (is => 'ro', isa => 'Str');
   has StartDateTime => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Aws::EMR::StepExecutionState', required => 1);
+  has State => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::EMR::StepStateChangeReason {
   use Moose;
   with ('AWS::API::ResultParser');
-  has Code => (is => 'ro', isa => 'Aws::EMR::StepStateChangeReasonCode');
+  has Code => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
 }
 
 package Aws::EMR::StepStatus {
   use Moose;
   with ('AWS::API::ResultParser');
-  has State => (is => 'ro', isa => 'Aws::EMR::StepState');
+  has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::StepStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::StepTimeline');
 }

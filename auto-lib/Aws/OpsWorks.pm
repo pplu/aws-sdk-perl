@@ -1,15 +1,6 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::OpsWorks::AppType', ['rails','php','nodejs','static','other',];
-enum 'Aws::OpsWorks::Architecture', ['x86_64','i386',];
-enum 'Aws::OpsWorks::AutoScalingType', ['load','timer',];
-enum 'Aws::OpsWorks::DeploymentCommandName', ['install_dependencies','update_dependencies','update_custom_cookbooks','execute_recipes','deploy','rollback','start','stop','restart','undeploy',];
-enum 'Aws::OpsWorks::LayerType', ['lb','web','php-app','rails-app','nodejs-app','memcached','db-master','monitoring-master','custom',];
-enum 'Aws::OpsWorks::RootDeviceType', ['ebs','instance-store',];
-enum 'Aws::OpsWorks::SourceType', ['git','svn','archive','s3',];
-
 
 package Aws::OpsWorks::App {
   use Moose;
@@ -25,7 +16,7 @@ package Aws::OpsWorks::App {
   has Shortname => (is => 'ro', isa => 'Str');
   has SslConfiguration => (is => 'ro', isa => 'Aws::OpsWorks::SslConfiguration');
   has StackId => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Aws::OpsWorks::AppType');
+  has Type => (is => 'ro', isa => 'Str');
 }
 
 package Aws::OpsWorks::AppAttributes {
@@ -96,7 +87,7 @@ package Aws::OpsWorks::DeploymentCommand {
   use Moose;
   with ('AWS::API::ResultParser');
   has Args => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommandArgs');
-  has Name => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommandName', required => 1);
+  has Name => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::OpsWorks::DeploymentCommandArgs {
@@ -133,8 +124,8 @@ package Aws::OpsWorks::Instance {
   use Moose;
   with ('AWS::API::ResultParser');
   has AmiId => (is => 'ro', isa => 'Str');
-  has Architecture => (is => 'ro', isa => 'Aws::OpsWorks::Architecture');
-  has AutoScalingType => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingType');
+  has Architecture => (is => 'ro', isa => 'Str');
+  has AutoScalingType => (is => 'ro', isa => 'Str');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
@@ -152,7 +143,7 @@ package Aws::OpsWorks::Instance {
   has PrivateIp => (is => 'ro', isa => 'Str');
   has PublicDns => (is => 'ro', isa => 'Str');
   has PublicIp => (is => 'ro', isa => 'Str');
-  has RootDeviceType => (is => 'ro', isa => 'Aws::OpsWorks::RootDeviceType');
+  has RootDeviceType => (is => 'ro', isa => 'Str');
   has RootDeviceVolumeId => (is => 'ro', isa => 'Str');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has SshHostDsaKeyFingerprint => (is => 'ro', isa => 'Str');
@@ -201,7 +192,7 @@ package Aws::OpsWorks::Layer {
   has Packages => (is => 'ro', isa => 'ArrayRef[Str]');
   has Shortname => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Aws::OpsWorks::LayerType');
+  has Type => (is => 'ro', isa => 'Str');
   has UseEbsOptimizedInstances => (is => 'ro', isa => 'Bool');
   has VolumeConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::VolumeConfiguration]');
 }
@@ -307,7 +298,7 @@ package Aws::OpsWorks::Source {
   has Password => (is => 'ro', isa => 'Str');
   has Revision => (is => 'ro', isa => 'Str');
   has SshKey => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Aws::OpsWorks::SourceType');
+  has Type => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
   has Username => (is => 'ro', isa => 'Str');
 }
@@ -333,7 +324,7 @@ package Aws::OpsWorks::Stack {
   has DefaultAvailabilityZone => (is => 'ro', isa => 'Str');
   has DefaultInstanceProfileArn => (is => 'ro', isa => 'Str');
   has DefaultOs => (is => 'ro', isa => 'Str');
-  has DefaultRootDeviceType => (is => 'ro', isa => 'Aws::OpsWorks::RootDeviceType');
+  has DefaultRootDeviceType => (is => 'ro', isa => 'Str');
   has DefaultSshKeyName => (is => 'ro', isa => 'Str');
   has DefaultSubnetId => (is => 'ro', isa => 'Str');
   has HostnameTheme => (is => 'ro', isa => 'Str');

@@ -1,9 +1,6 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::DataPipeline::OperatorType', ['EQ','REF_EQ','LE','GE','BETWEEN',];
-
 
 package Aws::DataPipeline::Field {
   use Moose;
@@ -23,7 +20,7 @@ package Aws::DataPipeline::InstanceIdentity {
 package Aws::DataPipeline::Operator {
   use Moose;
   with ('AWS::API::ResultParser');
-  has type => (is => 'ro', isa => 'Aws::DataPipeline::OperatorType');
+  has type => (is => 'ro', isa => 'Str');
   has values => (is => 'ro', isa => 'ArrayRef[Str]');
 }
 

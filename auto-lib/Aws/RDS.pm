@@ -1,10 +1,6 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::RDS::ApplyMethod', ['immediate','pending-reboot',];
-enum 'Aws::RDS::SourceType', ['db-instance','db-parameter-group','db-security-group','db-snapshot',];
-
 
 package Aws::RDS::AvailabilityZone {
   use Moose;
@@ -182,7 +178,7 @@ package Aws::RDS::Event {
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has Message => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Aws::RDS::SourceType');
+  has SourceType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RDS::EventCategoriesMap {
@@ -313,7 +309,7 @@ package Aws::RDS::Parameter {
   use Moose;
   with ('AWS::API::ResultParser');
   has AllowedValues => (is => 'ro', isa => 'Str');
-  has ApplyMethod => (is => 'ro', isa => 'Aws::RDS::ApplyMethod');
+  has ApplyMethod => (is => 'ro', isa => 'Str');
   has ApplyType => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');

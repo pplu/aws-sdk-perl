@@ -1,15 +1,6 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::ElasticBeanstalk::ConfigurationDeploymentStatus', ['deployed','pending','failed',];
-enum 'Aws::ElasticBeanstalk::ConfigurationOptionValueType', ['Boolean','Scalar','List',];
-enum 'Aws::ElasticBeanstalk::EnvironmentHealth', ['Green','Yellow','Red','Grey',];
-enum 'Aws::ElasticBeanstalk::EnvironmentInfoType', ['tail',];
-enum 'Aws::ElasticBeanstalk::EnvironmentStatus', ['Launching','Updating','Ready','Terminating','Terminated',];
-enum 'Aws::ElasticBeanstalk::EventSeverity', ['TRACE','DEBUG','INFO','WARN','ERROR','FATAL',];
-enum 'Aws::ElasticBeanstalk::ValidationSeverity', ['error','warning',];
-
 
 package Aws::ElasticBeanstalk::ApplicationDescription {
   use Moose;
@@ -52,7 +43,7 @@ package Aws::ElasticBeanstalk::ConfigurationOptionDescription {
   has Regex => (is => 'ro', isa => 'Aws::ElasticBeanstalk::OptionRestrictionRegex');
   has UserDefined => (is => 'ro', isa => 'Bool');
   has ValueOptions => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ValueType => (is => 'ro', isa => 'Aws::ElasticBeanstalk::ConfigurationOptionValueType');
+  has ValueType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElasticBeanstalk::ConfigurationOptionSetting {
@@ -69,7 +60,7 @@ package Aws::ElasticBeanstalk::ConfigurationSettingsDescription {
   has ApplicationName => (is => 'ro', isa => 'Str');
   has DateCreated => (is => 'ro', isa => 'Str');
   has DateUpdated => (is => 'ro', isa => 'Str');
-  has DeploymentStatus => (is => 'ro', isa => 'Aws::ElasticBeanstalk::ConfigurationDeploymentStatus');
+  has DeploymentStatus => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Aws::ElasticBeanstalk::ConfigurationOptionSetting]');
@@ -88,10 +79,10 @@ package Aws::ElasticBeanstalk::EnvironmentDescription {
   has EndpointURL => (is => 'ro', isa => 'Str');
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
-  has Health => (is => 'ro', isa => 'Aws::ElasticBeanstalk::EnvironmentHealth');
+  has Health => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'Aws::ElasticBeanstalk::EnvironmentResourcesDescription');
   has SolutionStackName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Aws::ElasticBeanstalk::EnvironmentStatus');
+  has Status => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
   has Tier => (is => 'ro', isa => 'Aws::ElasticBeanstalk::EnvironmentTier');
   has VersionLabel => (is => 'ro', isa => 'Str');
@@ -101,7 +92,7 @@ package Aws::ElasticBeanstalk::EnvironmentInfoDescription {
   use Moose;
   with ('AWS::API::ResultParser');
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
-  has InfoType => (is => 'ro', isa => 'Aws::ElasticBeanstalk::EnvironmentInfoType');
+  has InfoType => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has SampleTimestamp => (is => 'ro', isa => 'Str');
 }
@@ -140,7 +131,7 @@ package Aws::ElasticBeanstalk::EventDescription {
   has EventDate => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has RequestId => (is => 'ro', isa => 'Str');
-  has Severity => (is => 'ro', isa => 'Aws::ElasticBeanstalk::EventSeverity');
+  has Severity => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
   has VersionLabel => (is => 'ro', isa => 'Str');
 }
@@ -239,7 +230,7 @@ package Aws::ElasticBeanstalk::ValidationMessage {
   has Message => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
-  has Severity => (is => 'ro', isa => 'Aws::ElasticBeanstalk::ValidationSeverity');
+  has Severity => (is => 'ro', isa => 'Str');
 }
 
 

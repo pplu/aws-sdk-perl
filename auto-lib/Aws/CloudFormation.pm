@@ -1,10 +1,6 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::CloudFormation::ResourceStatus', ['CREATE_IN_PROGRESS','CREATE_FAILED','CREATE_COMPLETE','DELETE_IN_PROGRESS','DELETE_FAILED','DELETE_COMPLETE','UPDATE_IN_PROGRESS','UPDATE_FAILED','UPDATE_COMPLETE',];
-enum 'Aws::CloudFormation::StackStatus', ['CREATE_IN_PROGRESS','CREATE_FAILED','CREATE_COMPLETE','ROLLBACK_IN_PROGRESS','ROLLBACK_FAILED','ROLLBACK_COMPLETE','DELETE_IN_PROGRESS','DELETE_FAILED','DELETE_COMPLETE','UPDATE_IN_PROGRESS','UPDATE_COMPLETE_CLEANUP_IN_PROGRESS','UPDATE_COMPLETE','UPDATE_ROLLBACK_IN_PROGRESS','UPDATE_ROLLBACK_FAILED','UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS','UPDATE_ROLLBACK_COMPLETE',];
-
 
 package Aws::CloudFormation::Output {
   use Moose;
@@ -35,7 +31,7 @@ package Aws::CloudFormation::Stack {
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::Parameter]');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
-  has StackStatus => (is => 'ro', isa => 'Aws::CloudFormation::StackStatus', required => 1);
+  has StackStatus => (is => 'ro', isa => 'Str', required => 1);
   has StackStatusReason => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::Tag]');
   has TimeoutInMinutes => (is => 'ro', isa => 'Int');
@@ -48,7 +44,7 @@ package Aws::CloudFormation::StackEvent {
   has LogicalResourceId => (is => 'ro', isa => 'Str');
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
   has ResourceProperties => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'Aws::CloudFormation::ResourceStatus');
+  has ResourceStatus => (is => 'ro', isa => 'Str');
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
@@ -62,7 +58,7 @@ package Aws::CloudFormation::StackResource {
   has Description => (is => 'ro', isa => 'Str');
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'Aws::CloudFormation::ResourceStatus', required => 1);
+  has ResourceStatus => (is => 'ro', isa => 'Str', required => 1);
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
   has StackId => (is => 'ro', isa => 'Str');
@@ -78,7 +74,7 @@ package Aws::CloudFormation::StackResourceDetail {
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has Metadata => (is => 'ro', isa => 'Str');
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'Aws::CloudFormation::ResourceStatus', required => 1);
+  has ResourceStatus => (is => 'ro', isa => 'Str', required => 1);
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
   has StackId => (is => 'ro', isa => 'Str');
@@ -91,7 +87,7 @@ package Aws::CloudFormation::StackResourceSummary {
   has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'Aws::CloudFormation::ResourceStatus', required => 1);
+  has ResourceStatus => (is => 'ro', isa => 'Str', required => 1);
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
 }
@@ -104,7 +100,7 @@ package Aws::CloudFormation::StackSummary {
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
-  has StackStatus => (is => 'ro', isa => 'Aws::CloudFormation::StackStatus', required => 1);
+  has StackStatus => (is => 'ro', isa => 'Str', required => 1);
   has StackStatusReason => (is => 'ro', isa => 'Str');
   has TemplateDescription => (is => 'ro', isa => 'Str');
 }

@@ -1,14 +1,6 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::CloudSearch::AlgorithmicStemming', ['none','minimal','light','full',];
-enum 'Aws::CloudSearch::AnalysisSchemeLanguage', ['ar','bg','ca','cs','da','de','el','en','es','eu','fa','fi','fr','ga','gl','he','hi','hu','hy','id','it','ja','ko','lv','mul','nl','no','pt','ro','ru','sv','th','tr','zh-Hans','zh-Hant',];
-enum 'Aws::CloudSearch::IndexFieldType', ['int','double','literal','text','date','latlon','int-array','double-array','literal-array','text-array','date-array',];
-enum 'Aws::CloudSearch::OptionState', ['RequiresIndexDocuments','Processing','Active','FailedToValidate',];
-enum 'Aws::CloudSearch::PartitionInstanceType', ['search.m1.small','search.m1.large','search.m2.xlarge','search.m2.2xlarge',];
-enum 'Aws::CloudSearch::SuggesterFuzzyMatching', ['none','low','high',];
-
 
 package Aws::CloudSearch::AccessPoliciesStatus {
   use Moose;
@@ -20,7 +12,7 @@ package Aws::CloudSearch::AccessPoliciesStatus {
 package Aws::CloudSearch::AnalysisOptions {
   use Moose;
   with ('AWS::API::ResultParser');
-  has AlgorithmicStemming => (is => 'ro', isa => 'Aws::CloudSearch::AlgorithmicStemming');
+  has AlgorithmicStemming => (is => 'ro', isa => 'Str');
   has StemmingDictionary => (is => 'ro', isa => 'Str');
   has Stopwords => (is => 'ro', isa => 'Str');
   has Synonyms => (is => 'ro', isa => 'Str');
@@ -30,7 +22,7 @@ package Aws::CloudSearch::AnalysisScheme {
   use Moose;
   with ('AWS::API::ResultParser');
   has AnalysisOptions => (is => 'ro', isa => 'Aws::CloudSearch::AnalysisOptions');
-  has AnalysisSchemeLanguage => (is => 'ro', isa => 'Aws::CloudSearch::AnalysisSchemeLanguage', required => 1);
+  has AnalysisSchemeLanguage => (is => 'ro', isa => 'Str', required => 1);
   has AnalysisSchemeName => (is => 'ro', isa => 'Str', required => 1);
 }
 
@@ -72,7 +64,7 @@ package Aws::CloudSearch::DateOptions {
 package Aws::CloudSearch::DocumentSuggesterOptions {
   use Moose;
   with ('AWS::API::ResultParser');
-  has FuzzyMatching => (is => 'ro', isa => 'Aws::CloudSearch::SuggesterFuzzyMatching');
+  has FuzzyMatching => (is => 'ro', isa => 'Str');
   has SortExpression => (is => 'ro', isa => 'Str');
   has SourceField => (is => 'ro', isa => 'Str', required => 1);
 }
@@ -143,7 +135,7 @@ package Aws::CloudSearch::IndexField {
   has DoubleArrayOptions => (is => 'ro', isa => 'Aws::CloudSearch::DoubleArrayOptions');
   has DoubleOptions => (is => 'ro', isa => 'Aws::CloudSearch::DoubleOptions');
   has IndexFieldName => (is => 'ro', isa => 'Str', required => 1);
-  has IndexFieldType => (is => 'ro', isa => 'Aws::CloudSearch::IndexFieldType', required => 1);
+  has IndexFieldType => (is => 'ro', isa => 'Str', required => 1);
   has IntArrayOptions => (is => 'ro', isa => 'Aws::CloudSearch::IntArrayOptions');
   has IntOptions => (is => 'ro', isa => 'Aws::CloudSearch::IntOptions');
   has LatLonOptions => (is => 'ro', isa => 'Aws::CloudSearch::LatLonOptions');
@@ -218,7 +210,7 @@ package Aws::CloudSearch::OptionStatus {
   with ('AWS::API::ResultParser');
   has CreationDate => (is => 'ro', isa => 'Str', required => 1);
   has PendingDeletion => (is => 'ro', isa => 'Bool');
-  has State => (is => 'ro', isa => 'Aws::CloudSearch::OptionState', required => 1);
+  has State => (is => 'ro', isa => 'Str', required => 1);
   has UpdateDate => (is => 'ro', isa => 'Str', required => 1);
   has UpdateVersion => (is => 'ro', isa => 'Int');
 }
@@ -226,7 +218,7 @@ package Aws::CloudSearch::OptionStatus {
 package Aws::CloudSearch::ScalingParameters {
   use Moose;
   with ('AWS::API::ResultParser');
-  has DesiredInstanceType => (is => 'ro', isa => 'Aws::CloudSearch::PartitionInstanceType');
+  has DesiredInstanceType => (is => 'ro', isa => 'Str');
   has DesiredPartitionCount => (is => 'ro', isa => 'Int');
   has DesiredReplicationCount => (is => 'ro', isa => 'Int');
 }

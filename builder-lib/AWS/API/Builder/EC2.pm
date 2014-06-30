@@ -163,8 +163,10 @@ package [% c.api %] {
 
           my $type;
           if ($param_props->{enum}) {
-            $type = $self->api . "::" . $param_props->{shape_name};
-            $self->register_enum($type, $param_props->{enum});
+            # Enums passed to Str because documentation tends to have inconsistencies 
+            #$type = $self->api . "::" . $param_props->{shape_name};
+            #$self->register_enum($type, $param_props->{enum});
+            $type = 'Str';
           } else {
             $type = eval { $self->get_caller_class_type($param_props) };
             if ($@) { die "In Inner Class: $inner_class: $@"; }

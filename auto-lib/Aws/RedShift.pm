@@ -1,9 +1,6 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::RedShift::SourceType', ['cluster','cluster-parameter-group','cluster-security-group','cluster-snapshot',];
-
 
 package Aws::RedShift::AccountWithRestoreAccess {
   use Moose;
@@ -154,7 +151,7 @@ package Aws::RedShift::Event {
   has Message => (is => 'ro', isa => 'Str');
   has Severity => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Aws::RedShift::SourceType');
+  has SourceType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::RedShift::EventCategoriesMap {

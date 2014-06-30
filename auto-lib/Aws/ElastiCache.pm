@@ -1,9 +1,6 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::ElastiCache::SourceType', ['cache-cluster','cache-parameter-group','cache-security-group','cache-subnet-group',];
-
 
 package Aws::ElastiCache::AvailabilityZone {
   use Moose;
@@ -150,7 +147,7 @@ package Aws::ElastiCache::Event {
   has Date => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Aws::ElastiCache::SourceType');
+  has SourceType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::ElastiCache::NodeGroup {

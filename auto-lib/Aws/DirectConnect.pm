@@ -1,11 +1,6 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::DirectConnect::ConnectionState', ['ordering','requested','pending','available','down','deleting','deleted','rejected',];
-enum 'Aws::DirectConnect::InterconnectState', ['requested','pending','available','down','deleting','deleted',];
-enum 'Aws::DirectConnect::VirtualInterfaceState', ['confirming','verifying','pending','available','deleting','deleted','rejected',];
-
 
 package Aws::DirectConnect::Connection {
   use Moose;
@@ -13,7 +8,7 @@ package Aws::DirectConnect::Connection {
   has bandwidth => (is => 'ro', isa => 'Str');
   has connectionId => (is => 'ro', isa => 'Str');
   has connectionName => (is => 'ro', isa => 'Str');
-  has connectionState => (is => 'ro', isa => 'Aws::DirectConnect::ConnectionState');
+  has connectionState => (is => 'ro', isa => 'Str');
   has location => (is => 'ro', isa => 'Str');
   has ownerAccount => (is => 'ro', isa => 'Str');
   has partnerName => (is => 'ro', isa => 'Str');
@@ -27,7 +22,7 @@ package Aws::DirectConnect::Interconnect {
   has bandwidth => (is => 'ro', isa => 'Str');
   has interconnectId => (is => 'ro', isa => 'Str');
   has interconnectName => (is => 'ro', isa => 'Str');
-  has interconnectState => (is => 'ro', isa => 'Aws::DirectConnect::InterconnectState');
+  has interconnectState => (is => 'ro', isa => 'Str');
   has location => (is => 'ro', isa => 'Str');
   has region => (is => 'ro', isa => 'Str');
 }
@@ -114,7 +109,7 @@ package Aws::DirectConnect::VirtualInterface {
   has virtualGatewayId => (is => 'ro', isa => 'Str');
   has virtualInterfaceId => (is => 'ro', isa => 'Str');
   has virtualInterfaceName => (is => 'ro', isa => 'Str');
-  has virtualInterfaceState => (is => 'ro', isa => 'Aws::DirectConnect::VirtualInterfaceState');
+  has virtualInterfaceState => (is => 'ro', isa => 'Str');
   has virtualInterfaceType => (is => 'ro', isa => 'Str');
   has vlan => (is => 'ro', isa => 'Int');
 }

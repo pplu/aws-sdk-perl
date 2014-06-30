@@ -1,9 +1,6 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::Kinesis::StreamStatus', ['CREATING','DELETING','ACTIVE','UPDATING',];
-
 
 package Aws::Kinesis::HashKeyRange {
   use Moose;
@@ -44,7 +41,7 @@ package Aws::Kinesis::StreamDescription {
   has Shards => (is => 'ro', isa => 'ArrayRef[Aws::Kinesis::Shard]', required => 1);
   has StreamARN => (is => 'ro', isa => 'Str', required => 1);
   has StreamName => (is => 'ro', isa => 'Str', required => 1);
-  has StreamStatus => (is => 'ro', isa => 'Aws::Kinesis::StreamStatus', required => 1);
+  has StreamStatus => (is => 'ro', isa => 'Str', required => 1);
 }
 
 

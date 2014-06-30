@@ -1,10 +1,6 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::AutoScaling::LifecycleState', ['Pending','Quarantined','InService','Terminating','Terminated',];
-enum 'Aws::AutoScaling::ScalingActivityStatusCode', ['WaitingForSpotInstanceRequestId','WaitingForSpotInstanceId','WaitingForInstanceId','PreInService','InProgress','Successful','Failed','Cancelled',];
-
 
 package Aws::AutoScaling::Activity {
   use Moose;
@@ -17,7 +13,7 @@ package Aws::AutoScaling::Activity {
   has EndTime => (is => 'ro', isa => 'Str');
   has Progress => (is => 'ro', isa => 'Int');
   has StartTime => (is => 'ro', isa => 'Str', required => 1);
-  has StatusCode => (is => 'ro', isa => 'Aws::AutoScaling::ScalingActivityStatusCode', required => 1);
+  has StatusCode => (is => 'ro', isa => 'Str', required => 1);
   has StatusMessage => (is => 'ro', isa => 'Str');
 }
 
@@ -110,7 +106,7 @@ package Aws::AutoScaling::Instance {
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
-  has LifecycleState => (is => 'ro', isa => 'Aws::AutoScaling::LifecycleState', required => 1);
+  has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::AutoScaling::InstanceMonitoring {

@@ -1,31 +1,6 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::SimpleWorkflow::ActivityTaskTimeoutType', ['START_TO_CLOSE','SCHEDULE_TO_START','SCHEDULE_TO_CLOSE','HEARTBEAT',];
-enum 'Aws::SimpleWorkflow::CancelTimerFailedCause', ['TIMER_ID_UNKNOWN','OPERATION_NOT_PERMITTED',];
-enum 'Aws::SimpleWorkflow::CancelWorkflowExecutionFailedCause', ['UNHANDLED_DECISION','OPERATION_NOT_PERMITTED',];
-enum 'Aws::SimpleWorkflow::ChildPolicy', ['TERMINATE','REQUEST_CANCEL','ABANDON',];
-enum 'Aws::SimpleWorkflow::CloseStatus', ['COMPLETED','FAILED','CANCELED','TERMINATED','CONTINUED_AS_NEW','TIMED_OUT',];
-enum 'Aws::SimpleWorkflow::CompleteWorkflowExecutionFailedCause', ['UNHANDLED_DECISION','OPERATION_NOT_PERMITTED',];
-enum 'Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedCause', ['UNHANDLED_DECISION','WORKFLOW_TYPE_DEPRECATED','WORKFLOW_TYPE_DOES_NOT_EXIST','DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_TASK_LIST_UNDEFINED','DEFAULT_CHILD_POLICY_UNDEFINED','OPERATION_NOT_PERMITTED',];
-enum 'Aws::SimpleWorkflow::DecisionTaskTimeoutType', ['START_TO_CLOSE',];
-enum 'Aws::SimpleWorkflow::DecisionType', ['ScheduleActivityTask','RequestCancelActivityTask','CompleteWorkflowExecution','FailWorkflowExecution','CancelWorkflowExecution','ContinueAsNewWorkflowExecution','RecordMarker','StartTimer','CancelTimer','SignalExternalWorkflowExecution','RequestCancelExternalWorkflowExecution','StartChildWorkflowExecution',];
-enum 'Aws::SimpleWorkflow::EventType', ['WorkflowExecutionStarted','WorkflowExecutionCancelRequested','WorkflowExecutionCompleted','CompleteWorkflowExecutionFailed','WorkflowExecutionFailed','FailWorkflowExecutionFailed','WorkflowExecutionTimedOut','WorkflowExecutionCanceled','CancelWorkflowExecutionFailed','WorkflowExecutionContinuedAsNew','ContinueAsNewWorkflowExecutionFailed','WorkflowExecutionTerminated','DecisionTaskScheduled','DecisionTaskStarted','DecisionTaskCompleted','DecisionTaskTimedOut','ActivityTaskScheduled','ScheduleActivityTaskFailed','ActivityTaskStarted','ActivityTaskCompleted','ActivityTaskFailed','ActivityTaskTimedOut','ActivityTaskCanceled','ActivityTaskCancelRequested','RequestCancelActivityTaskFailed','WorkflowExecutionSignaled','MarkerRecorded','RecordMarkerFailed','TimerStarted','StartTimerFailed','TimerFired','TimerCanceled','CancelTimerFailed','StartChildWorkflowExecutionInitiated','StartChildWorkflowExecutionFailed','ChildWorkflowExecutionStarted','ChildWorkflowExecutionCompleted','ChildWorkflowExecutionFailed','ChildWorkflowExecutionTimedOut','ChildWorkflowExecutionCanceled','ChildWorkflowExecutionTerminated','SignalExternalWorkflowExecutionInitiated','SignalExternalWorkflowExecutionFailed','ExternalWorkflowExecutionSignaled','RequestCancelExternalWorkflowExecutionInitiated','RequestCancelExternalWorkflowExecutionFailed','ExternalWorkflowExecutionCancelRequested',];
-enum 'Aws::SimpleWorkflow::ExecutionStatus', ['OPEN','CLOSED',];
-enum 'Aws::SimpleWorkflow::FailWorkflowExecutionFailedCause', ['UNHANDLED_DECISION','OPERATION_NOT_PERMITTED',];
-enum 'Aws::SimpleWorkflow::RecordMarkerFailedCause', ['OPERATION_NOT_PERMITTED',];
-enum 'Aws::SimpleWorkflow::RegistrationStatus', ['REGISTERED','DEPRECATED',];
-enum 'Aws::SimpleWorkflow::RequestCancelActivityTaskFailedCause', ['ACTIVITY_ID_UNKNOWN','OPERATION_NOT_PERMITTED',];
-enum 'Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedCause', ['UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION','REQUEST_CANCEL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED','OPERATION_NOT_PERMITTED',];
-enum 'Aws::SimpleWorkflow::ScheduleActivityTaskFailedCause', ['ACTIVITY_TYPE_DEPRECATED','ACTIVITY_TYPE_DOES_NOT_EXIST','ACTIVITY_ID_ALREADY_IN_USE','OPEN_ACTIVITIES_LIMIT_EXCEEDED','ACTIVITY_CREATION_RATE_EXCEEDED','DEFAULT_SCHEDULE_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_TASK_LIST_UNDEFINED','DEFAULT_SCHEDULE_TO_START_TIMEOUT_UNDEFINED','DEFAULT_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_HEARTBEAT_TIMEOUT_UNDEFINED','OPERATION_NOT_PERMITTED',];
-enum 'Aws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedCause', ['UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION','SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED','OPERATION_NOT_PERMITTED',];
-enum 'Aws::SimpleWorkflow::StartChildWorkflowExecutionFailedCause', ['WORKFLOW_TYPE_DOES_NOT_EXIST','WORKFLOW_TYPE_DEPRECATED','OPEN_CHILDREN_LIMIT_EXCEEDED','OPEN_WORKFLOWS_LIMIT_EXCEEDED','CHILD_CREATION_RATE_EXCEEDED','WORKFLOW_ALREADY_RUNNING','DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_TASK_LIST_UNDEFINED','DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED','DEFAULT_CHILD_POLICY_UNDEFINED','OPERATION_NOT_PERMITTED',];
-enum 'Aws::SimpleWorkflow::StartTimerFailedCause', ['TIMER_ID_ALREADY_IN_USE','OPEN_TIMERS_LIMIT_EXCEEDED','TIMER_CREATION_RATE_EXCEEDED','OPERATION_NOT_PERMITTED',];
-enum 'Aws::SimpleWorkflow::WorkflowExecutionCancelRequestedCause', ['CHILD_POLICY_APPLIED',];
-enum 'Aws::SimpleWorkflow::WorkflowExecutionTerminatedCause', ['CHILD_POLICY_APPLIED','EVENT_LIMIT_EXCEEDED','OPERATOR_INITIATED',];
-enum 'Aws::SimpleWorkflow::WorkflowExecutionTimeoutType', ['START_TO_CLOSE',];
-
 
 package Aws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes {
   use Moose;
@@ -88,7 +63,7 @@ package Aws::SimpleWorkflow::ActivityTaskTimedOutEventAttributes {
   has details => (is => 'ro', isa => 'Str');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
-  has timeoutType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityTaskTimeoutType', required => 1);
+  has timeoutType => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::ActivityType {
@@ -115,7 +90,7 @@ package Aws::SimpleWorkflow::ActivityTypeInfo {
   has creationDate => (is => 'ro', isa => 'Str', required => 1);
   has deprecationDate => (is => 'ro', isa => 'Str');
   has description => (is => 'ro', isa => 'Str');
-  has status => (is => 'ro', isa => 'Aws::SimpleWorkflow::RegistrationStatus', required => 1);
+  has status => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::CancelTimerDecisionAttributes {
@@ -127,7 +102,7 @@ package Aws::SimpleWorkflow::CancelTimerDecisionAttributes {
 package Aws::SimpleWorkflow::CancelTimerFailedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::CancelTimerFailedCause', required => 1);
+  has cause => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timerId => (is => 'ro', isa => 'Str', required => 1);
 }
@@ -141,7 +116,7 @@ package Aws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes {
 package Aws::SimpleWorkflow::CancelWorkflowExecutionFailedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::CancelWorkflowExecutionFailedCause', required => 1);
+  has cause => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
@@ -198,7 +173,7 @@ package Aws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes {
   with ('AWS::API::ResultParser');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
-  has timeoutType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionTimeoutType', required => 1);
+  has timeoutType => (is => 'ro', isa => 'Str', required => 1);
   has workflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
@@ -206,7 +181,7 @@ package Aws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes {
 package Aws::SimpleWorkflow::CloseStatusFilter {
   use Moose;
   with ('AWS::API::ResultParser');
-  has status => (is => 'ro', isa => 'Aws::SimpleWorkflow::CloseStatus', required => 1);
+  has status => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes {
@@ -218,14 +193,14 @@ package Aws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes {
 package Aws::SimpleWorkflow::CompleteWorkflowExecutionFailedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::CompleteWorkflowExecutionFailedCause', required => 1);
+  has cause => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
 package Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy');
+  has childPolicy => (is => 'ro', isa => 'Str');
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has input => (is => 'ro', isa => 'Str');
   has tagList => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -237,7 +212,7 @@ package Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes {
 package Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedCause', required => 1);
+  has cause => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
@@ -248,7 +223,7 @@ package Aws::SimpleWorkflow::Decision {
   has cancelWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes');
   has completeWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes');
   has continueAsNewWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes');
-  has decisionType => (is => 'ro', isa => 'Aws::SimpleWorkflow::DecisionType', required => 1);
+  has decisionType => (is => 'ro', isa => 'Str', required => 1);
   has failWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes');
   has recordMarkerDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::RecordMarkerDecisionAttributes');
   has requestCancelActivityTaskDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes');
@@ -286,7 +261,7 @@ package Aws::SimpleWorkflow::DecisionTaskTimedOutEventAttributes {
   with ('AWS::API::ResultParser');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
-  has timeoutType => (is => 'ro', isa => 'Aws::SimpleWorkflow::DecisionTaskTimeoutType', required => 1);
+  has timeoutType => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::DomainConfiguration {
@@ -300,7 +275,7 @@ package Aws::SimpleWorkflow::DomainInfo {
   with ('AWS::API::ResultParser');
   has description => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str', required => 1);
-  has status => (is => 'ro', isa => 'Aws::SimpleWorkflow::RegistrationStatus', required => 1);
+  has status => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::ExecutionTimeFilter {
@@ -334,7 +309,7 @@ package Aws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes {
 package Aws::SimpleWorkflow::FailWorkflowExecutionFailedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::FailWorkflowExecutionFailedCause', required => 1);
+  has cause => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
@@ -364,7 +339,7 @@ package Aws::SimpleWorkflow::HistoryEvent {
   has decisionTaskTimedOutEventAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::DecisionTaskTimedOutEventAttributes');
   has eventId => (is => 'ro', isa => 'Num', required => 1);
   has eventTimestamp => (is => 'ro', isa => 'Str', required => 1);
-  has eventType => (is => 'ro', isa => 'Aws::SimpleWorkflow::EventType', required => 1);
+  has eventType => (is => 'ro', isa => 'Str', required => 1);
   has externalWorkflowExecutionCancelRequestedEventAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::ExternalWorkflowExecutionCancelRequestedEventAttributes');
   has externalWorkflowExecutionSignaledEventAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::ExternalWorkflowExecutionSignaledEventAttributes');
   has failWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::FailWorkflowExecutionFailedEventAttributes');
@@ -411,7 +386,7 @@ package Aws::SimpleWorkflow::RecordMarkerDecisionAttributes {
 package Aws::SimpleWorkflow::RecordMarkerFailedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::RecordMarkerFailedCause', required => 1);
+  has cause => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has markerName => (is => 'ro', isa => 'Str', required => 1);
 }
@@ -426,7 +401,7 @@ package Aws::SimpleWorkflow::RequestCancelActivityTaskFailedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
-  has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::RequestCancelActivityTaskFailedCause', required => 1);
+  has cause => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
@@ -441,7 +416,7 @@ package Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttri
 package Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedCause', required => 1);
+  has cause => (is => 'ro', isa => 'Str', required => 1);
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -477,7 +452,7 @@ package Aws::SimpleWorkflow::ScheduleActivityTaskFailedEventAttributes {
   with ('AWS::API::ResultParser');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
-  has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::ScheduleActivityTaskFailedCause', required => 1);
+  has cause => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
 
@@ -494,7 +469,7 @@ package Aws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes {
 package Aws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedCause', required => 1);
+  has cause => (is => 'ro', isa => 'Str', required => 1);
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -516,7 +491,7 @@ package Aws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttrib
 package Aws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy');
+  has childPolicy => (is => 'ro', isa => 'Str');
   has control => (is => 'ro', isa => 'Str');
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has input => (is => 'ro', isa => 'Str');
@@ -530,7 +505,7 @@ package Aws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes {
 package Aws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::StartChildWorkflowExecutionFailedCause', required => 1);
+  has cause => (is => 'ro', isa => 'Str', required => 1);
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
@@ -541,7 +516,7 @@ package Aws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes {
 package Aws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
+  has childPolicy => (is => 'ro', isa => 'Str', required => 1);
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -564,7 +539,7 @@ package Aws::SimpleWorkflow::StartTimerDecisionAttributes {
 package Aws::SimpleWorkflow::StartTimerFailedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::StartTimerFailedCause', required => 1);
+  has cause => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has timerId => (is => 'ro', isa => 'Str', required => 1);
 }
@@ -615,7 +590,7 @@ package Aws::SimpleWorkflow::WorkflowExecution {
 package Aws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionCancelRequestedCause');
+  has cause => (is => 'ro', isa => 'Str');
   has externalInitiatedEventId => (is => 'ro', isa => 'Num');
   has externalWorkflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution');
 }
@@ -637,7 +612,7 @@ package Aws::SimpleWorkflow::WorkflowExecutionCompletedEventAttributes {
 package Aws::SimpleWorkflow::WorkflowExecutionConfiguration {
   use Moose;
   with ('AWS::API::ResultParser');
-  has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
+  has childPolicy => (is => 'ro', isa => 'Str', required => 1);
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str', required => 1);
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
   has taskStartToCloseTimeout => (is => 'ro', isa => 'Str', required => 1);
@@ -646,7 +621,7 @@ package Aws::SimpleWorkflow::WorkflowExecutionConfiguration {
 package Aws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
+  has childPolicy => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has input => (is => 'ro', isa => 'Str');
@@ -675,10 +650,10 @@ package Aws::SimpleWorkflow::WorkflowExecutionInfo {
   use Moose;
   with ('AWS::API::ResultParser');
   has cancelRequested => (is => 'ro', isa => 'Bool');
-  has closeStatus => (is => 'ro', isa => 'Aws::SimpleWorkflow::CloseStatus');
+  has closeStatus => (is => 'ro', isa => 'Str');
   has closeTimestamp => (is => 'ro', isa => 'Str');
   has execution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
-  has executionStatus => (is => 'ro', isa => 'Aws::SimpleWorkflow::ExecutionStatus', required => 1);
+  has executionStatus => (is => 'ro', isa => 'Str', required => 1);
   has parent => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution');
   has startTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has tagList => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -706,7 +681,7 @@ package Aws::SimpleWorkflow::WorkflowExecutionSignaledEventAttributes {
 package Aws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
+  has childPolicy => (is => 'ro', isa => 'Str', required => 1);
   has continuedExecutionRunId => (is => 'ro', isa => 'Str');
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has input => (is => 'ro', isa => 'Str');
@@ -721,8 +696,8 @@ package Aws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes {
 package Aws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has cause => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionTerminatedCause');
-  has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
+  has cause => (is => 'ro', isa => 'Str');
+  has childPolicy => (is => 'ro', isa => 'Str', required => 1);
   has details => (is => 'ro', isa => 'Str');
   has reason => (is => 'ro', isa => 'Str');
 }
@@ -730,8 +705,8 @@ package Aws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes {
 package Aws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes {
   use Moose;
   with ('AWS::API::ResultParser');
-  has childPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy', required => 1);
-  has timeoutType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionTimeoutType', required => 1);
+  has childPolicy => (is => 'ro', isa => 'Str', required => 1);
+  has timeoutType => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::SimpleWorkflow::WorkflowType {
@@ -744,7 +719,7 @@ package Aws::SimpleWorkflow::WorkflowType {
 package Aws::SimpleWorkflow::WorkflowTypeConfiguration {
   use Moose;
   with ('AWS::API::ResultParser');
-  has defaultChildPolicy => (is => 'ro', isa => 'Aws::SimpleWorkflow::ChildPolicy');
+  has defaultChildPolicy => (is => 'ro', isa => 'Str');
   has defaultExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has defaultTaskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList');
   has defaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -763,7 +738,7 @@ package Aws::SimpleWorkflow::WorkflowTypeInfo {
   has creationDate => (is => 'ro', isa => 'Str', required => 1);
   has deprecationDate => (is => 'ro', isa => 'Str');
   has description => (is => 'ro', isa => 'Str');
-  has status => (is => 'ro', isa => 'Aws::SimpleWorkflow::RegistrationStatus', required => 1);
+  has status => (is => 'ro', isa => 'Str', required => 1);
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
 

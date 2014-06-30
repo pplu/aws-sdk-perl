@@ -1,9 +1,6 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::ImportExport::JobType', ['Import','Export',];
-
 
 package Aws::ImportExport::Job {
   use Moose;
@@ -11,7 +8,7 @@ package Aws::ImportExport::Job {
   has CreationDate => (is => 'ro', isa => 'Str');
   has IsCanceled => (is => 'ro', isa => 'Bool');
   has JobId => (is => 'ro', isa => 'Str');
-  has JobType => (is => 'ro', isa => 'Aws::ImportExport::JobType');
+  has JobType => (is => 'ro', isa => 'Str');
 }
 
 

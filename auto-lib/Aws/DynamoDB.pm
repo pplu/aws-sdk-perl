@@ -1,19 +1,12 @@
 
 use AWS::API;
 
-use Moose::Util::TypeConstraints;
-enum 'Aws::DynamoDB::IndexStatus', ['CREATING','UPDATING','DELETING','ACTIVE',];
-enum 'Aws::DynamoDB::KeyType', ['HASH','RANGE',];
-enum 'Aws::DynamoDB::ProjectionType', ['ALL','KEYS_ONLY','INCLUDE',];
-enum 'Aws::DynamoDB::ScalarAttributeType', ['S','N','B',];
-enum 'Aws::DynamoDB::TableStatus', ['CREATING','UPDATING','DELETING','ACTIVE',];
-
 
 package Aws::DynamoDB::AttributeDefinition {
   use Moose;
   with ('AWS::API::ResultParser');
   has AttributeName => (is => 'ro', isa => 'Str', required => 1);
-  has AttributeType => (is => 'ro', isa => 'Aws::DynamoDB::ScalarAttributeType', required => 1);
+  has AttributeType => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::DynamoDB::AttributeMap {
@@ -88,7 +81,7 @@ package Aws::DynamoDB::GlobalSecondaryIndexDescription {
   with ('AWS::API::ResultParser');
   has IndexName => (is => 'ro', isa => 'Str');
   has IndexSizeBytes => (is => 'ro', isa => 'Num');
-  has IndexStatus => (is => 'ro', isa => 'Aws::DynamoDB::IndexStatus');
+  has IndexStatus => (is => 'ro', isa => 'Str');
   has ItemCount => (is => 'ro', isa => 'Num');
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Aws::DynamoDB::KeySchemaElement]');
   has Projection => (is => 'ro', isa => 'Aws::DynamoDB::Projection');
@@ -136,7 +129,7 @@ package Aws::DynamoDB::KeySchemaElement {
   use Moose;
   with ('AWS::API::ResultParser');
   has AttributeName => (is => 'ro', isa => 'Str', required => 1);
-  has KeyType => (is => 'ro', isa => 'Aws::DynamoDB::KeyType', required => 1);
+  has KeyType => (is => 'ro', isa => 'Str', required => 1);
 }
 
 package Aws::DynamoDB::LocalSecondaryIndex {
@@ -161,7 +154,7 @@ package Aws::DynamoDB::Projection {
   use Moose;
   with ('AWS::API::ResultParser');
   has NonKeyAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ProjectionType => (is => 'ro', isa => 'Aws::DynamoDB::ProjectionType');
+  has ProjectionType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::DynamoDB::ProvisionedThroughput {
@@ -205,7 +198,7 @@ package Aws::DynamoDB::TableDescription {
   has ProvisionedThroughput => (is => 'ro', isa => 'Aws::DynamoDB::ProvisionedThroughputDescription');
   has TableName => (is => 'ro', isa => 'Str');
   has TableSizeBytes => (is => 'ro', isa => 'Num');
-  has TableStatus => (is => 'ro', isa => 'Aws::DynamoDB::TableStatus');
+  has TableStatus => (is => 'ro', isa => 'Str');
 }
 
 package Aws::DynamoDB::UpdateGlobalSecondaryIndexAction {
