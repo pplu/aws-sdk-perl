@@ -6,6 +6,7 @@ requires 'URI';
 requires 'Net::Amazon::Signature::V4';
 requires 'JSON';
 requires 'XML::Simple';
+requires 'String::Util';
 on 'test' {
   requires 'YAML';
 }

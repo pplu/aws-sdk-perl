@@ -86,6 +86,7 @@ package AWS::API::StrToStrMapParser {
 
 package AWS::API::UnwrappedParser {
   use Moose::Role;
+  use String::Util qw/trim/;
   sub result_to_args {
     my ($class, $result) = @_;
     my %args;
@@ -138,7 +139,7 @@ package AWS::API::UnwrappedParser {
                 $args{ $att } = 0;
               }
             } else {
-              $args{ $att } = $value;
+              $args{ $att } = trim($value);
             }
           }
         }
@@ -175,6 +176,7 @@ package AWS::API::UnwrappedParser {
 
 package AWS::API::ResultParser {
   use Moose::Role;
+  use String::Util qw/trim/;
   sub result_to_args {
     my ($class, $result) = @_;
     my %args;
@@ -228,7 +230,7 @@ package AWS::API::ResultParser {
                 $args{ $att } = 0;
               }
             } else {
-              $args{ $att } = $value;
+              $args{ $att } = trim($value);
             }
           }
 
