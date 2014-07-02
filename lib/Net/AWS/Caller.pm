@@ -238,6 +238,34 @@ package Net::AWS::QueryCaller {
     return ($self->flattened_arrays)?'%s.%d':'%s.member.%d';
   });
 
+  # converts objects into perl hash
+  sub _to_hash {
+    my ($self, $params) = @_;
+    my $refHash;
+    foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+      my $key = $att;
+      if (defined $params->$att) {
+        my $att_type = $params->meta->get_attribute($att)->type_constraint;
+        if ($att_type eq 'Bool') {
+          $refHash->{ $key } = ($params->$att)?1:0;
+        } elsif ($self->_is_internal_type($att_type)) {
+          $refHash->{ $key } = $params->$att;
+        } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
+          if ($self->_is_internal_type("$1")){
+            $refHash->{ $key } = $params->$att;
+          } else {
+            $refHash->{ $key } = [ map { $self->_to_hash($_) } @{ $params->$att } ];
+          }
+        } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
+          $refHash->{ $key } = $params->$att;
+        } else {
+          $refHash->{ $key } = $self->_to_hash($params->$att);
+        }
+      }
+    }
+    return $refHash;
+  }
+
   # converts the params the user passed to the call into objects that represent the call
   sub new_with_coercions {
     my ($self, $class, %params) = @_;
