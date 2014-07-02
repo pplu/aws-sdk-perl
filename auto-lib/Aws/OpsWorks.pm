@@ -9,6 +9,7 @@ package Aws::OpsWorks::App {
   has AppSource => (is => 'ro', isa => 'Aws::OpsWorks::Source');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::AppAttributes');
   has CreatedAt => (is => 'ro', isa => 'Str');
+  has DataSources => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::DataSource]');
   has Description => (is => 'ro', isa => 'Str');
   has Domains => (is => 'ro', isa => 'ArrayRef[Str]');
   has EnableSsl => (is => 'ro', isa => 'Bool');
@@ -64,6 +65,14 @@ package Aws::OpsWorks::DailyAutoScalingSchedule {
   use Moose;
   with 'AWS::API::StrToStrMapParser';
   has Map => (is => 'ro', isa => 'HashRef[Str]');
+}
+
+package Aws::OpsWorks::DataSource {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has Arn => (is => 'ro', isa => 'Str');
+  has DatabaseName => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'Str');
 }
 
 package Aws::OpsWorks::Deployment {
@@ -152,6 +161,7 @@ package Aws::OpsWorks::Instance {
   has StackId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
+  has VirtualizationType => (is => 'ro', isa => 'Str');
 }
 
 package Aws::OpsWorks::InstancesCount {
@@ -260,6 +270,20 @@ package Aws::OpsWorks::RaidArray {
   has RaidLevel => (is => 'ro', isa => 'Int');
   has Size => (is => 'ro', isa => 'Int');
   has VolumeType => (is => 'ro', isa => 'Str');
+}
+
+package Aws::OpsWorks::RdsDbInstance {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has Address => (is => 'ro', isa => 'Str');
+  has DbInstanceIdentifier => (is => 'ro', isa => 'Str');
+  has DbPassword => (is => 'ro', isa => 'Str');
+  has DbUser => (is => 'ro', isa => 'Str');
+  has Engine => (is => 'ro', isa => 'Str');
+  has MissingOnRds => (is => 'ro', isa => 'Bool');
+  has RdsDbInstanceArn => (is => 'ro', isa => 'Str');
+  has Region => (is => 'ro', isa => 'Str');
+  has StackId => (is => 'ro', isa => 'Str');
 }
 
 package Aws::OpsWorks::Recipes {
@@ -488,6 +512,7 @@ package Aws::OpsWorks::CreateApp {
   use Moose;
   has AppSource => (is => 'ro', isa => 'Aws::OpsWorks::Source');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::AppAttributes');
+  has DataSources => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::DataSource]');
   has Description => (is => 'ro', isa => 'Str');
   has Domains => (is => 'ro', isa => 'ArrayRef[Str]');
   has EnableSsl => (is => 'ro', isa => 'Bool');
@@ -534,6 +559,7 @@ package Aws::OpsWorks::CreateInstance {
   has SshKeyName => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
   has SubnetId => (is => 'ro', isa => 'Str');
+  has VirtualizationType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -664,6 +690,16 @@ package Aws::OpsWorks::DeregisterElasticIp {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterElasticIp');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
+}
+package Aws::OpsWorks::DeregisterRdsDbInstance {
+  use Moose;
+  has RdsDbInstanceArn => (is => 'ro', isa => 'Str', required => 1);
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterRdsDbInstance');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
@@ -799,6 +835,17 @@ package Aws::OpsWorks::DescribeRaidArrays {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeRaidArraysResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
+package Aws::OpsWorks::DescribeRdsDbInstances {
+  use Moose;
+  has RdsDbInstanceArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has StackId => (is => 'ro', isa => 'Str', required => 1);
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRdsDbInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::DescribeRdsDbInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
+}
 package Aws::OpsWorks::DescribeServiceErrors {
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
@@ -916,6 +963,19 @@ package Aws::OpsWorks::RegisterElasticIp {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::OpsWorks::RegisterElasticIpResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
+package Aws::OpsWorks::RegisterRdsDbInstance {
+  use Moose;
+  has DbPassword => (is => 'ro', isa => 'Str', required => 1);
+  has DbUser => (is => 'ro', isa => 'Str', required => 1);
+  has RdsDbInstanceArn => (is => 'ro', isa => 'Str', required => 1);
+  has StackId => (is => 'ro', isa => 'Str', required => 1);
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterRdsDbInstance');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
+}
 package Aws::OpsWorks::RegisterVolume {
   use Moose;
   has Ec2VolumeId => (is => 'ro', isa => 'Str');
@@ -1020,6 +1080,7 @@ package Aws::OpsWorks::UpdateApp {
   has AppId => (is => 'ro', isa => 'Str', required => 1);
   has AppSource => (is => 'ro', isa => 'Aws::OpsWorks::Source');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::AppAttributes');
+  has DataSources => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::DataSource]');
   has Description => (is => 'ro', isa => 'Str');
   has Domains => (is => 'ro', isa => 'ArrayRef[Str]');
   has EnableSsl => (is => 'ro', isa => 'Bool');
@@ -1049,6 +1110,7 @@ package Aws::OpsWorks::UpdateInstance {
   has AmiId => (is => 'ro', isa => 'Str');
   has Architecture => (is => 'ro', isa => 'Str');
   has AutoScalingType => (is => 'ro', isa => 'Str');
+  has EbsOptimized => (is => 'ro', isa => 'Bool');
   has Hostname => (is => 'ro', isa => 'Str');
   has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
@@ -1093,6 +1155,18 @@ package Aws::OpsWorks::UpdateMyUserProfile {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMyUserProfile');
+  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _result_key => (isa => 'Str', is => 'ro');
+}
+package Aws::OpsWorks::UpdateRdsDbInstance {
+  use Moose;
+  has DbPassword => (is => 'ro', isa => 'Str');
+  has DbUser => (is => 'ro', isa => 'Str');
+  has RdsDbInstanceArn => (is => 'ro', isa => 'Str', required => 1);
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRdsDbInstance');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
@@ -1256,6 +1330,12 @@ package Aws::OpsWorks::DescribeRaidArraysResult {
   has RaidArrays => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::RaidArray]');
 
 }
+package Aws::OpsWorks::DescribeRdsDbInstancesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has RdsDbInstances => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::RdsDbInstance]');
+
+}
 package Aws::OpsWorks::DescribeServiceErrorsResult {
   use Moose;
   with 'AWS::API::ResultParser';
@@ -1390,6 +1470,10 @@ package Aws::OpsWorks {
     my $self = shift;
     return $self->do_call('Aws::OpsWorks::DeregisterElasticIp', @_);
   }
+  sub DeregisterRdsDbInstance {
+    my $self = shift;
+    return $self->do_call('Aws::OpsWorks::DeregisterRdsDbInstance', @_);
+  }
   sub DeregisterVolume {
     my $self = shift;
     return $self->do_call('Aws::OpsWorks::DeregisterVolume', @_);
@@ -1438,6 +1522,10 @@ package Aws::OpsWorks {
     my $self = shift;
     return $self->do_call('Aws::OpsWorks::DescribeRaidArrays', @_);
   }
+  sub DescribeRdsDbInstances {
+    my $self = shift;
+    return $self->do_call('Aws::OpsWorks::DescribeRdsDbInstances', @_);
+  }
   sub DescribeServiceErrors {
     my $self = shift;
     return $self->do_call('Aws::OpsWorks::DescribeServiceErrors', @_);
@@ -1481,6 +1569,10 @@ package Aws::OpsWorks {
   sub RegisterElasticIp {
     my $self = shift;
     return $self->do_call('Aws::OpsWorks::RegisterElasticIp', @_);
+  }
+  sub RegisterRdsDbInstance {
+    my $self = shift;
+    return $self->do_call('Aws::OpsWorks::RegisterRdsDbInstance', @_);
   }
   sub RegisterVolume {
     my $self = shift;
@@ -1537,6 +1629,10 @@ package Aws::OpsWorks {
   sub UpdateMyUserProfile {
     my $self = shift;
     return $self->do_call('Aws::OpsWorks::UpdateMyUserProfile', @_);
+  }
+  sub UpdateRdsDbInstance {
+    my $self = shift;
+    return $self->do_call('Aws::OpsWorks::UpdateRdsDbInstance', @_);
   }
   sub UpdateStack {
     my $self = shift;
