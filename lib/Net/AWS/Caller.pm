@@ -239,7 +239,7 @@ package Net::AWS::QueryCaller {
   });
 
   # converts objects into perl hash
-  sub _to_hash {
+  sub to_hash {
     my ($self, $params) = @_;
     my $refHash;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
@@ -254,12 +254,12 @@ package Net::AWS::QueryCaller {
           if ($self->_is_internal_type("$1")){
             $refHash->{ $key } = $params->$att;
           } else {
-            $refHash->{ $key } = [ map { $self->_to_hash($_) } @{ $params->$att } ];
+            $refHash->{ $key } = [ map { $self->to_hash($_) } @{ $params->$att } ];
           }
         } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
           $refHash->{ $key } = $params->$att;
         } else {
-          $refHash->{ $key } = $self->_to_hash($params->$att);
+          $refHash->{ $key } = $self->to_hash($params->$att);
         }
       }
     }
