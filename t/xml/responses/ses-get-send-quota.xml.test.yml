@@ -3,11 +3,11 @@ call: GetSendQuota
 service: SES
 tests:
   - expected: 200
-    op: eq
+    op: ==
     path: Max24HourSend
   - expected: 1
-    op: eq
+    op: ==
     path: MaxSendRate
   - expected: 0
-    op: eq
+    op: ==
     path: SentLast24Hours

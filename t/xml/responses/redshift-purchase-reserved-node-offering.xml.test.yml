@@ -3,13 +3,13 @@ call: PurchaseReservedNodeOffering
 service: RedShift
 tests:
   - expected: 94608000
-    op: eq
+    op: ==
     path: ReservedNode.Duration
   - expected: 12452
-    op: eq
+    op: ==
     path: ReservedNode.FixedPrice
   - expected: 2
-    op: eq
+    op: ==
     path: ReservedNode.NodeCount
   - expected: dw.hs1.8xlarge
     op: eq
@@ -18,7 +18,7 @@ tests:
     op: eq
     path: ReservedNode.OfferingType
   - expected: 0.21
-    op: eq
+    op: ==
     path: ReservedNode.RecurringCharges.0.RecurringChargeAmount
   - expected: Hourly
     op: eq
@@ -33,5 +33,5 @@ tests:
     op: eq
     path: ReservedNode.State
   - expected: 0
-    op: eq
+    op: ==
     path: ReservedNode.UsagePrice

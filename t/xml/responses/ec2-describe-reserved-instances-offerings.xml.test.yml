@@ -15,7 +15,7 @@ tests:
     op: eq
     path: ReservedInstancesOfferings.0.Duration
   - expected: 701
-    op: eq
+    op: ==
     path: ReservedInstancesOfferings.0.FixedPrice
   - expected: default
     op: eq
@@ -33,7 +33,7 @@ tests:
     op: eq
     path: ReservedInstancesOfferings.0.ProductDescription
   - expected: 0.031
-    op: eq
+    op: ==
     path: ReservedInstancesOfferings.0.RecurringCharges.0.Amount
   - expected: Hourly
     op: eq
@@ -42,7 +42,7 @@ tests:
     op: eq
     path: ReservedInstancesOfferings.0.ReservedInstancesOfferingId
   - expected: 0
-    op: eq
+    op: ==
     path: ReservedInstancesOfferings.0.UsagePrice
   - expected: us-west-2c
     op: eq
@@ -54,7 +54,7 @@ tests:
     op: eq
     path: ReservedInstancesOfferings.1.Duration
   - expected: 701
-    op: eq
+    op: ==
     path: ReservedInstancesOfferings.1.FixedPrice
   - expected: default
     op: eq
@@ -72,7 +72,7 @@ tests:
     op: eq
     path: ReservedInstancesOfferings.1.ProductDescription
   - expected: 0.091
-    op: eq
+    op: ==
     path: ReservedInstancesOfferings.1.RecurringCharges.0.Amount
   - expected: Hourly
     op: eq
@@ -81,5 +81,5 @@ tests:
     op: eq
     path: ReservedInstancesOfferings.1.ReservedInstancesOfferingId
   - expected: 0
-    op: eq
+    op: ==
     path: ReservedInstancesOfferings.1.UsagePrice
