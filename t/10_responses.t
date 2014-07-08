@@ -38,7 +38,7 @@ my $aws = Aws->new(config => AWS::SDK::Config->new( caller => 'Test10ResponseRea
 
 use Data::Dumper;
 
-my $dir = 't/xml/responses';
+my $dir = 't/10_responses';
 opendir(my $dh, $dir);
 my @files = @ARGV;
 if (not @files) {
