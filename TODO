@@ -3,6 +3,10 @@
 - Waiters (methods that wait for an object to be in a determined state)
 - Retrying
 - Exception handling
+  - Manage 'return' value from
+    - ec2-assign-private-ip-addresses.xml
+    - ec2-associate-address.xml
+    - ... lot's more in EC2 API ...
 - JSON callers
   - when a boolean is returned from API, it doesn't get properly handed to 
     result objects (error thrown)

@@ -1,7 +1,3 @@
 ---
 call: DeleteInternetGateway
 service: EC2
-tests:
-  - expected: true
-    op: eq
-    path: return

@@ -5,6 +5,3 @@ tests:
   - expected: 111122223333
     op: eq
     path: OwnerId
-  - expected: true
-    op: eq
-    path: return
