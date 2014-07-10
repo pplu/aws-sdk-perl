@@ -42,9 +42,9 @@ my $dir = 't/10_responses';
 opendir(my $dh, $dir);
 my @files = @ARGV;
 if (not @files) {
-  @files = map { "$dir/$_" } grep { $_ =~ m/\.xml$/ } sort readdir($dh);
+  @files = map { "$dir/$_" } grep { $_ =~ m/\.xml$/ or $_ =~ m/\.json$/ } sort readdir($dh);
 } else {
-  @files = grep { $_ =~ m/\.xml$/ } @files;
+  @files = grep { $_ =~ m/\.xml$/ or $_ =~ m/\.json$/ } @files;
 }
 
 BAIL_OUT("No test cases to execute") if (not @files);
@@ -80,15 +80,26 @@ sub test_file {
       next;
     }
 
+    next if (ref($test->{ tests }) ne 'ARRAY');
     foreach my $t (@{ $test->{ tests } }){
-      my $got = eval { resolve_path($t->{path}, $res) };
-      if ($@) {
-        my $message = $@;
-        chomp $message;
-        ok(0, "Exception accessing $t->{path}: $message");
-      } else {
-        cmp_ok($got, $t->{op}, $t->{expected}, "Got $t->{path} $t->{op} $t->{expected} from result");
+      my $got;
+      my $path;
+      if (defined $t->{path}){
+        $path = $t->{path};
+        $got = eval { resolve_path($t->{path}, $res) };
+        if ($@) {
+          my $message = $@;
+          chomp $message;
+          ok(0, "Exception accessing $t->{path}: $message");
+        }
+      } elsif (defined $t->{dpath}){
+        $path = $t->{dpath};
+        use Data::Path;
+        my $hpath = Data::Path->new($res);
+        $got = $hpath->get($t->{dpath});
       }
+
+      cmp_ok($got, $t->{op}, $t->{expected}, "Got $path $t->{op} $t->{expected} from result");
     }
   }
 }
