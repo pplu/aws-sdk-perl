@@ -1,6 +1,8 @@
 package Net::AWS::CredentialsProviderChain {
 	use Moose::Role;
 
+	use Module::Load;
+
     # Those will be checked in the order they are defined
 	my @providers = (
 		'Net::AWS::EnvCredentials',
@@ -9,7 +11,7 @@ package Net::AWS::CredentialsProviderChain {
 
 	sub resolve {
 		foreach my $prov (@providers) {
-			use $prov;
+			load "$prov";
 			my $creds = $prov->new;
 			return $creds if ($creds->are_set);
 		}
