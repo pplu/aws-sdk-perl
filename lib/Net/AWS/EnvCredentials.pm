@@ -1,7 +1,7 @@
 package Net::AWS::EnvCredentials {
 	use Moose;
 
-	extend 'Net::AWS::Credentials';
+	extends 'Net::AWS::Credentials';
 
     #has '+access_key' => (default => sub { $ENV{AWS_ACCESS_KEY} });
 
