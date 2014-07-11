@@ -13,7 +13,7 @@ package Net::AWS::Credentials {
 		is		=> 'ro',
 	);
 
-	sub set {
+	sub are_set {
 		my $self = shift;
 
 		return (defined $self->access_key && defined $self->secret_key);
