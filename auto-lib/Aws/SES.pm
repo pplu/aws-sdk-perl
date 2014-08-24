@@ -26,8 +26,32 @@ package Aws::SES::Destination {
 
 package Aws::SES::DkimAttributes {
   use Moose;
-  with 'AWS::API::StrToStrMapParser';
-  has Map => (is => 'ro', isa => 'HashRef[Str]');
+  with 'AWS::API::StrToObjMapParser';
+  has Map => (is => 'ro', isa => 'HashRef[Aws::SES::IdentityDkimAttributes]');
+}
+
+package Aws::SES::IdentityDkimAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has DkimEnabled => (is => 'ro', isa => 'Bool', required => 1);
+  has DkimTokens => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DkimVerificationStatus => (is => 'ro', isa => 'Str', required => 1);
+}
+
+package Aws::SES::IdentityNotificationAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has BounceTopic => (is => 'ro', isa => 'Str', required => 1);
+  has ComplaintTopic => (is => 'ro', isa => 'Str', required => 1);
+  has DeliveryTopic => (is => 'ro', isa => 'Str', required => 1);
+  has ForwardingEnabled => (is => 'ro', isa => 'Bool', required => 1);
+}
+
+package Aws::SES::IdentityVerificationAttributes {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has VerificationStatus => (is => 'ro', isa => 'Str', required => 1);
+  has VerificationToken => (is => 'ro', isa => 'Str');
 }
 
 package Aws::SES::Message {
@@ -39,8 +63,8 @@ package Aws::SES::Message {
 
 package Aws::SES::NotificationAttributes {
   use Moose;
-  with 'AWS::API::StrToStrMapParser';
-  has Map => (is => 'ro', isa => 'HashRef[Str]');
+  with 'AWS::API::StrToObjMapParser';
+  has Map => (is => 'ro', isa => 'HashRef[Aws::SES::IdentityNotificationAttributes]');
 }
 
 package Aws::SES::RawMessage {
@@ -61,8 +85,8 @@ package Aws::SES::SendDataPoint {
 
 package Aws::SES::VerificationAttributes {
   use Moose;
-  with 'AWS::API::StrToStrMapParser';
-  has Map => (is => 'ro', isa => 'HashRef[Str]');
+  with 'AWS::API::StrToObjMapParser';
+  has Map => (is => 'ro', isa => 'HashRef[Aws::SES::IdentityVerificationAttributes]');
 }
 
 

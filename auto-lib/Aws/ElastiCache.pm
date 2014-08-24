@@ -51,6 +51,7 @@ package Aws::ElastiCache::CacheNode {
   has CacheNodeCreateTime => (is => 'ro', isa => 'Str');
   has CacheNodeId => (is => 'ro', isa => 'Str');
   has CacheNodeStatus => (is => 'ro', isa => 'Str');
+  has CustomerAvailabilityZone => (is => 'ro', isa => 'Str');
   has Endpoint => (is => 'ro', isa => 'Aws::ElastiCache::Endpoint');
   has ParameterGroupStatus => (is => 'ro', isa => 'Str');
   has SourceCacheNodeId => (is => 'ro', isa => 'Str');
@@ -335,6 +336,7 @@ package Aws::ElastiCache::CopySnapshot {
 package Aws::ElastiCache::CreateCacheCluster {
   use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
+  has AZMode => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
@@ -346,6 +348,7 @@ package Aws::ElastiCache::CreateCacheCluster {
   has NumCacheNodes => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
+  has PreferredAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PreferredAvailabilityZone' );
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
@@ -649,11 +652,13 @@ package Aws::ElastiCache::ModifyCacheCluster {
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
+  has AZMode => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
   has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CacheNodeId' );
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CacheSecurityGroupName' );
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has NewAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PreferredAvailabilityZone' );
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NotificationTopicStatus => (is => 'ro', isa => 'Str');
   has NumCacheNodes => (is => 'ro', isa => 'Int');
@@ -965,7 +970,7 @@ package Aws::ElastiCache::RevokeCacheSecurityGroupIngressResult {
 package Aws::ElastiCache {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'elasticache');
-  has version => (is => 'ro', isa => 'Str', default => '2014-03-24');
+  has version => (is => 'ro', isa => 'Str', default => '2014-07-15');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
 
   use MooseX::ClassAttribute;

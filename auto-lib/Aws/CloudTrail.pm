@@ -17,11 +17,10 @@ package Aws::CloudTrail::Trail {
 package Aws::CloudTrail::CreateTrail {
   use Moose;
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str');
-  has S3BucketName => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str', required => 1);
+  has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
   has SnsTopicName => (is => 'ro', isa => 'Str');
-  has trail => (is => 'ro', isa => 'Aws::CloudTrail::Trail');
 
   use MooseX::ClassAttribute;
 
@@ -82,11 +81,10 @@ package Aws::CloudTrail::StopLogging {
 package Aws::CloudTrail::UpdateTrail {
   use Moose;
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str', required => 1);
   has S3BucketName => (is => 'ro', isa => 'Str');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
   has SnsTopicName => (is => 'ro', isa => 'Str');
-  has trail => (is => 'ro', isa => 'Aws::CloudTrail::Trail');
 
   use MooseX::ClassAttribute;
 
@@ -103,7 +101,6 @@ package Aws::CloudTrail::CreateTrailResult {
   has S3BucketName => (is => 'ro', isa => 'Str');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
   has SnsTopicName => (is => 'ro', isa => 'Str');
-  has trail => (is => 'ro', isa => 'Aws::CloudTrail::Trail');
 
 }
 package Aws::CloudTrail::DeleteTrailResult {
@@ -121,18 +118,12 @@ package Aws::CloudTrail::GetTrailStatusResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has IsLogging => (is => 'ro', isa => 'Bool');
-  has LatestDeliveryAttemptSucceeded => (is => 'ro', isa => 'Str');
-  has LatestDeliveryAttemptTime => (is => 'ro', isa => 'Str');
   has LatestDeliveryError => (is => 'ro', isa => 'Str');
   has LatestDeliveryTime => (is => 'ro', isa => 'Str');
-  has LatestNotificationAttemptSucceeded => (is => 'ro', isa => 'Str');
-  has LatestNotificationAttemptTime => (is => 'ro', isa => 'Str');
   has LatestNotificationError => (is => 'ro', isa => 'Str');
   has LatestNotificationTime => (is => 'ro', isa => 'Str');
   has StartLoggingTime => (is => 'ro', isa => 'Str');
   has StopLoggingTime => (is => 'ro', isa => 'Str');
-  has TimeLoggingStarted => (is => 'ro', isa => 'Str');
-  has TimeLoggingStopped => (is => 'ro', isa => 'Str');
 
 }
 package Aws::CloudTrail::StartLoggingResult {
@@ -153,7 +144,6 @@ package Aws::CloudTrail::UpdateTrailResult {
   has S3BucketName => (is => 'ro', isa => 'Str');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
   has SnsTopicName => (is => 'ro', isa => 'Str');
-  has trail => (is => 'ro', isa => 'Aws::CloudTrail::Trail');
 
 }
 

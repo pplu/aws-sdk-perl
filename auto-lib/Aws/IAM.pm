@@ -46,6 +46,7 @@ package Aws::IAM::LoginProfile {
   use Moose;
   with ('AWS::API::ResultParser');
   has CreateDate => (is => 'ro', isa => 'Str', required => 1);
+  has PasswordResetRequired => (is => 'ro', isa => 'Bool');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 }
 
@@ -62,8 +63,10 @@ package Aws::IAM::PasswordPolicy {
   with ('AWS::API::ResultParser');
   has AllowUsersToChangePassword => (is => 'ro', isa => 'Bool');
   has ExpirePasswords => (is => 'ro', isa => 'Bool');
+  has HardExpiry => (is => 'ro', isa => 'Bool');
   has MaxPasswordAge => (is => 'ro', isa => 'Int');
   has MinimumPasswordLength => (is => 'ro', isa => 'Int');
+  has PasswordReusePrevention => (is => 'ro', isa => 'Int');
   has RequireLowercaseCharacters => (is => 'ro', isa => 'Bool');
   has RequireNumbers => (is => 'ro', isa => 'Bool');
   has RequireSymbols => (is => 'ro', isa => 'Bool');
@@ -101,6 +104,7 @@ package Aws::IAM::ServerCertificateMetadata {
   use Moose;
   with ('AWS::API::ResultParser');
   has Arn => (is => 'ro', isa => 'Str', required => 1);
+  has Expiration => (is => 'ro', isa => 'Str');
   has Path => (is => 'ro', isa => 'Str', required => 1);
   has ServerCertificateId => (is => 'ro', isa => 'Str', required => 1);
   has ServerCertificateName => (is => 'ro', isa => 'Str', required => 1);
@@ -236,6 +240,7 @@ package Aws::IAM::CreateInstanceProfile {
 package Aws::IAM::CreateLoginProfile {
   use Moose;
   has Password => (is => 'ro', isa => 'Str', required => 1);
+  has PasswordResetRequired => (is => 'ro', isa => 'Bool');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -467,6 +472,15 @@ package Aws::IAM::EnableMFADevice {
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
+package Aws::IAM::GenerateCredentialReport {
+  use Moose;
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GenerateCredentialReport');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GenerateCredentialReportResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GenerateCredentialReportResult');
+}
 package Aws::IAM::GetAccountPasswordPolicy {
   use Moose;
 
@@ -484,6 +498,15 @@ package Aws::IAM::GetAccountSummary {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetAccountSummary');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetAccountSummaryResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetAccountSummaryResult');
+}
+package Aws::IAM::GetCredentialReport {
+  use Moose;
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCredentialReport');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetCredentialReportResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetCredentialReportResult');
 }
 package Aws::IAM::GetGroup {
   use Moose;
@@ -864,7 +887,10 @@ package Aws::IAM::UpdateAccessKey {
 package Aws::IAM::UpdateAccountPasswordPolicy {
   use Moose;
   has AllowUsersToChangePassword => (is => 'ro', isa => 'Bool');
+  has HardExpiry => (is => 'ro', isa => 'Bool');
+  has MaxPasswordAge => (is => 'ro', isa => 'Int');
   has MinimumPasswordLength => (is => 'ro', isa => 'Int');
+  has PasswordReusePrevention => (is => 'ro', isa => 'Int');
   has RequireLowercaseCharacters => (is => 'ro', isa => 'Bool');
   has RequireNumbers => (is => 'ro', isa => 'Bool');
   has RequireSymbols => (is => 'ro', isa => 'Bool');
@@ -901,7 +927,8 @@ package Aws::IAM::UpdateGroup {
 }
 package Aws::IAM::UpdateLoginProfile {
   use Moose;
-  has Password => (is => 'ro', isa => 'Str', required => 1);
+  has Password => (is => 'ro', isa => 'Str');
+  has PasswordResetRequired => (is => 'ro', isa => 'Bool');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -1031,6 +1058,13 @@ package Aws::IAM::CreateVirtualMFADeviceResult {
   has VirtualMFADevice => (is => 'ro', isa => 'Aws::IAM::VirtualMFADevice', required => 1);
 
 }
+package Aws::IAM::GenerateCredentialReportResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has Description => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'Str');
+
+}
 package Aws::IAM::GetAccountPasswordPolicyResult {
   use Moose;
   with 'AWS::API::ResultParser';
@@ -1041,6 +1075,14 @@ package Aws::IAM::GetAccountSummaryResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has SummaryMap => (is => 'ro', isa => 'Aws::IAM::summaryMapType');
+
+}
+package Aws::IAM::GetCredentialReportResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has Content => (is => 'ro', isa => 'Str');
+  has GeneratedTime => (is => 'ro', isa => 'Str');
+  has ReportFormat => (is => 'ro', isa => 'Str');
 
 }
 package Aws::IAM::GetGroupResult {
@@ -1388,6 +1430,10 @@ package Aws::IAM {
     my $self = shift;
     return $self->do_call('Aws::IAM::EnableMFADevice', @_);
   }
+  sub GenerateCredentialReport {
+    my $self = shift;
+    return $self->do_call('Aws::IAM::GenerateCredentialReport', @_);
+  }
   sub GetAccountPasswordPolicy {
     my $self = shift;
     return $self->do_call('Aws::IAM::GetAccountPasswordPolicy', @_);
@@ -1395,6 +1441,10 @@ package Aws::IAM {
   sub GetAccountSummary {
     my $self = shift;
     return $self->do_call('Aws::IAM::GetAccountSummary', @_);
+  }
+  sub GetCredentialReport {
+    my $self = shift;
+    return $self->do_call('Aws::IAM::GetCredentialReport', @_);
   }
   sub GetGroup {
     my $self = shift;

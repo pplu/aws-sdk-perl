@@ -17,8 +17,16 @@ package Aws::SNS::MapStringToString {
 
 package Aws::SNS::MessageAttributeMap {
   use Moose;
-  with 'AWS::API::StrToStrMapParser';
-  has Map => (is => 'ro', isa => 'HashRef[Str]');
+  with 'AWS::API::StrToObjMapParser';
+  has Map => (is => 'ro', isa => 'HashRef[Aws::SNS::MessageAttributeValue]');
+}
+
+package Aws::SNS::MessageAttributeValue {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has BinaryValue => (is => 'ro', isa => 'Str');
+  has DataType => (is => 'ro', isa => 'Str', required => 1);
+  has StringValue => (is => 'ro', isa => 'Str');
 }
 
 package Aws::SNS::PlatformApplication {

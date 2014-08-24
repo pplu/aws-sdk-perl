@@ -137,6 +137,20 @@ package Aws::AutoScaling::LaunchConfiguration {
   has UserData => (is => 'ro', isa => 'Str');
 }
 
+package Aws::AutoScaling::LifecycleHook {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has AutoScalingGroupName => (is => 'ro', isa => 'Str');
+  has DefaultResult => (is => 'ro', isa => 'Str');
+  has GlobalTimeout => (is => 'ro', isa => 'Int');
+  has HeartbeatTimeout => (is => 'ro', isa => 'Int');
+  has LifecycleHookName => (is => 'ro', isa => 'Str');
+  has LifecycleTransition => (is => 'ro', isa => 'Str');
+  has NotificationMetadata => (is => 'ro', isa => 'Str');
+  has NotificationTargetARN => (is => 'ro', isa => 'Str');
+  has RoleARN => (is => 'ro', isa => 'Str');
+}
+
 package Aws::AutoScaling::MetricCollectionType {
   use Moose;
   with ('AWS::API::ResultParser');
@@ -231,6 +245,19 @@ package Aws::AutoScaling::AttachInstances {
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
+package Aws::AutoScaling::CompleteLifecycleAction {
+  use Moose;
+  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has LifecycleActionResult => (is => 'ro', isa => 'Str', required => 1);
+  has LifecycleActionToken => (is => 'ro', isa => 'Str', required => 1);
+  has LifecycleHookName => (is => 'ro', isa => 'Str', required => 1);
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CompleteLifecycleAction');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::CompleteLifecycleActionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CompleteLifecycleActionResult');
+}
 package Aws::AutoScaling::CreateAutoScalingGroup {
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -310,6 +337,17 @@ package Aws::AutoScaling::DeleteLaunchConfiguration {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLaunchConfiguration');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
+}
+package Aws::AutoScaling::DeleteLifecycleHook {
+  use Moose;
+  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has LifecycleHookName => (is => 'ro', isa => 'Str', required => 1);
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLifecycleHook');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::DeleteLifecycleHookResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLifecycleHookResult');
 }
 package Aws::AutoScaling::DeleteNotificationConfiguration {
   use Moose;
@@ -417,6 +455,26 @@ package Aws::AutoScaling::DescribeLaunchConfigurations {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::DescribeLaunchConfigurationsResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLaunchConfigurationsResult');
 }
+package Aws::AutoScaling::DescribeLifecycleHookTypes {
+  use Moose;
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLifecycleHookTypes');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::DescribeLifecycleHookTypesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLifecycleHookTypesResult');
+}
+package Aws::AutoScaling::DescribeLifecycleHooks {
+  use Moose;
+  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has LifecycleHookNames => (is => 'ro', isa => 'ArrayRef[Str]');
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLifecycleHooks');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::DescribeLifecycleHooksResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLifecycleHooksResult');
+}
 package Aws::AutoScaling::DescribeMetricCollectionTypes {
   use Moose;
 
@@ -509,6 +567,18 @@ package Aws::AutoScaling::DescribeTerminationPolicyTypes {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::DescribeTerminationPolicyTypesResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTerminationPolicyTypesResult');
 }
+package Aws::AutoScaling::DetachInstances {
+  use Moose;
+  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ShouldDecrementDesiredCapacity => (is => 'ro', isa => 'Bool', required => 1);
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachInstances');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::DetachInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DetachInstancesResult');
+}
 package Aws::AutoScaling::DisableMetricsCollection {
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -532,6 +602,18 @@ package Aws::AutoScaling::EnableMetricsCollection {
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
+package Aws::AutoScaling::EnterStandby {
+  use Moose;
+  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ShouldDecrementDesiredCapacity => (is => 'ro', isa => 'Bool', required => 1);
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnterStandby');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::EnterStandbyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'EnterStandbyResult');
+}
 package Aws::AutoScaling::ExecutePolicy {
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
@@ -543,6 +625,34 @@ package Aws::AutoScaling::ExecutePolicy {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ExecutePolicy');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
+}
+package Aws::AutoScaling::ExitStandby {
+  use Moose;
+  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ExitStandby');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::ExitStandbyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ExitStandbyResult');
+}
+package Aws::AutoScaling::PutLifecycleHook {
+  use Moose;
+  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has DefaultResult => (is => 'ro', isa => 'Str');
+  has HeartbeatTimeout => (is => 'ro', isa => 'Int');
+  has LifecycleHookName => (is => 'ro', isa => 'Str', required => 1);
+  has LifecycleTransition => (is => 'ro', isa => 'Str');
+  has NotificationMetadata => (is => 'ro', isa => 'Str');
+  has NotificationTargetARN => (is => 'ro', isa => 'Str');
+  has RoleARN => (is => 'ro', isa => 'Str');
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutLifecycleHook');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::PutLifecycleHookResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'PutLifecycleHookResult');
 }
 package Aws::AutoScaling::PutNotificationConfiguration {
   use Moose;
@@ -588,6 +698,18 @@ package Aws::AutoScaling::PutScheduledUpdateGroupAction {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutScheduledUpdateGroupAction');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
+}
+package Aws::AutoScaling::RecordLifecycleActionHeartbeat {
+  use Moose;
+  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has LifecycleActionToken => (is => 'ro', isa => 'Str', required => 1);
+  has LifecycleHookName => (is => 'ro', isa => 'Str', required => 1);
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RecordLifecycleActionHeartbeat');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::RecordLifecycleActionHeartbeatResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RecordLifecycleActionHeartbeatResult');
 }
 package Aws::AutoScaling::ResumeProcesses {
   use Moose;
@@ -668,6 +790,16 @@ package Aws::AutoScaling::UpdateAutoScalingGroup {
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 
+package Aws::AutoScaling::CompleteLifecycleActionResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+
+}
+package Aws::AutoScaling::DeleteLifecycleHookResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+
+}
 package Aws::AutoScaling::DescribeAccountLimitsResult {
   use Moose;
   with 'AWS::API::ResultParser';
@@ -706,6 +838,18 @@ package Aws::AutoScaling::DescribeLaunchConfigurationsResult {
   with 'AWS::API::ResultParser';
   has LaunchConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::LaunchConfiguration]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
+
+}
+package Aws::AutoScaling::DescribeLifecycleHookTypesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has LifecycleHookTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+
+}
+package Aws::AutoScaling::DescribeLifecycleHooksResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has LifecycleHooks => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::LifecycleHook]');
 
 }
 package Aws::AutoScaling::DescribeMetricCollectionTypesResult {
@@ -762,10 +906,38 @@ package Aws::AutoScaling::DescribeTerminationPolicyTypesResult {
   has TerminationPolicyTypes => (is => 'ro', isa => 'ArrayRef[Str]');
 
 }
+package Aws::AutoScaling::DetachInstancesResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has Activities => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::Activity]');
+
+}
+package Aws::AutoScaling::EnterStandbyResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has Activities => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::Activity]');
+
+}
+package Aws::AutoScaling::ExitStandbyResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has Activities => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::Activity]');
+
+}
+package Aws::AutoScaling::PutLifecycleHookResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+
+}
 package Aws::AutoScaling::PutScalingPolicyResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has PolicyARN => (is => 'ro', isa => 'Str');
+
+}
+package Aws::AutoScaling::RecordLifecycleActionHeartbeatResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
 
 }
 package Aws::AutoScaling::TerminateInstanceInAutoScalingGroupResult {
@@ -792,6 +964,10 @@ package Aws::AutoScaling {
     my $self = shift;
     return $self->do_call('Aws::AutoScaling::AttachInstances', @_);
   }
+  sub CompleteLifecycleAction {
+    my $self = shift;
+    return $self->do_call('Aws::AutoScaling::CompleteLifecycleAction', @_);
+  }
   sub CreateAutoScalingGroup {
     my $self = shift;
     return $self->do_call('Aws::AutoScaling::CreateAutoScalingGroup', @_);
@@ -811,6 +987,10 @@ package Aws::AutoScaling {
   sub DeleteLaunchConfiguration {
     my $self = shift;
     return $self->do_call('Aws::AutoScaling::DeleteLaunchConfiguration', @_);
+  }
+  sub DeleteLifecycleHook {
+    my $self = shift;
+    return $self->do_call('Aws::AutoScaling::DeleteLifecycleHook', @_);
   }
   sub DeleteNotificationConfiguration {
     my $self = shift;
@@ -852,6 +1032,14 @@ package Aws::AutoScaling {
     my $self = shift;
     return $self->do_call('Aws::AutoScaling::DescribeLaunchConfigurations', @_);
   }
+  sub DescribeLifecycleHooks {
+    my $self = shift;
+    return $self->do_call('Aws::AutoScaling::DescribeLifecycleHooks', @_);
+  }
+  sub DescribeLifecycleHookTypes {
+    my $self = shift;
+    return $self->do_call('Aws::AutoScaling::DescribeLifecycleHookTypes', @_);
+  }
   sub DescribeMetricCollectionTypes {
     my $self = shift;
     return $self->do_call('Aws::AutoScaling::DescribeMetricCollectionTypes', @_);
@@ -884,6 +1072,10 @@ package Aws::AutoScaling {
     my $self = shift;
     return $self->do_call('Aws::AutoScaling::DescribeTerminationPolicyTypes', @_);
   }
+  sub DetachInstances {
+    my $self = shift;
+    return $self->do_call('Aws::AutoScaling::DetachInstances', @_);
+  }
   sub DisableMetricsCollection {
     my $self = shift;
     return $self->do_call('Aws::AutoScaling::DisableMetricsCollection', @_);
@@ -892,9 +1084,21 @@ package Aws::AutoScaling {
     my $self = shift;
     return $self->do_call('Aws::AutoScaling::EnableMetricsCollection', @_);
   }
+  sub EnterStandby {
+    my $self = shift;
+    return $self->do_call('Aws::AutoScaling::EnterStandby', @_);
+  }
   sub ExecutePolicy {
     my $self = shift;
     return $self->do_call('Aws::AutoScaling::ExecutePolicy', @_);
+  }
+  sub ExitStandby {
+    my $self = shift;
+    return $self->do_call('Aws::AutoScaling::ExitStandby', @_);
+  }
+  sub PutLifecycleHook {
+    my $self = shift;
+    return $self->do_call('Aws::AutoScaling::PutLifecycleHook', @_);
   }
   sub PutNotificationConfiguration {
     my $self = shift;
@@ -907,6 +1111,10 @@ package Aws::AutoScaling {
   sub PutScheduledUpdateGroupAction {
     my $self = shift;
     return $self->do_call('Aws::AutoScaling::PutScheduledUpdateGroupAction', @_);
+  }
+  sub RecordLifecycleActionHeartbeat {
+    my $self = shift;
+    return $self->do_call('Aws::AutoScaling::RecordLifecycleActionHeartbeat', @_);
   }
   sub ResumeProcesses {
     my $self = shift;

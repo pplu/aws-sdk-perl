@@ -70,8 +70,18 @@ package Aws::SQS::Message {
 
 package Aws::SQS::MessageAttributeMap {
   use Moose;
-  with 'AWS::API::StrToStrMapParser';
-  has Map => (is => 'ro', isa => 'HashRef[Str]');
+  with 'AWS::API::StrToObjMapParser';
+  has Map => (is => 'ro', isa => 'HashRef[Aws::SQS::MessageAttributeValue]');
+}
+
+package Aws::SQS::MessageAttributeValue {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has BinaryListValues => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'BinaryListValue');
+  has BinaryValue => (is => 'ro', isa => 'Str');
+  has DataType => (is => 'ro', isa => 'Str', required => 1);
+  has StringListValues => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'StringListValue');
+  has StringValue => (is => 'ro', isa => 'Str');
 }
 
 package Aws::SQS::SendMessageBatchRequestEntry {

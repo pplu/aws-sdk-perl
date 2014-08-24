@@ -2,6 +2,20 @@
 use AWS::API;
 
 
+package Aws::Support::Attachment {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has data => (is => 'ro', isa => 'Str');
+  has fileName => (is => 'ro', isa => 'Str');
+}
+
+package Aws::Support::AttachmentDetails {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has attachmentId => (is => 'ro', isa => 'Str');
+  has fileName => (is => 'ro', isa => 'Str');
+}
+
 package Aws::Support::CaseDetails {
   use Moose;
   with ('AWS::API::ResultParser');
@@ -29,6 +43,7 @@ package Aws::Support::Category {
 package Aws::Support::Communication {
   use Moose;
   with ('AWS::API::ResultParser');
+  has attachmentSet => (is => 'ro', isa => 'ArrayRef[Aws::Support::AttachmentDetails]');
   has body => (is => 'ro', isa => 'Str');
   has caseId => (is => 'ro', isa => 'Str');
   has submittedBy => (is => 'ro', isa => 'Str');
@@ -131,8 +146,20 @@ package Aws::Support::TrustedAdvisorResourcesSummary {
 
 
 
+package Aws::Support::AddAttachmentsToSet {
+  use Moose;
+  has attachments => (is => 'ro', isa => 'ArrayRef[Aws::Support::Attachment]', required => 1);
+  has attachmentSetId => (is => 'ro', isa => 'Str');
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddAttachmentsToSet');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::Support::AddAttachmentsToSetResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
+}
 package Aws::Support::AddCommunicationToCase {
   use Moose;
+  has attachmentSetId => (is => 'ro', isa => 'Str');
   has caseId => (is => 'ro', isa => 'Str');
   has ccEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
   has communicationBody => (is => 'ro', isa => 'Str', required => 1);
@@ -145,6 +172,7 @@ package Aws::Support::AddCommunicationToCase {
 }
 package Aws::Support::CreateCase {
   use Moose;
+  has attachmentSetId => (is => 'ro', isa => 'Str');
   has categoryCode => (is => 'ro', isa => 'Str');
   has ccEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
   has communicationBody => (is => 'ro', isa => 'Str', required => 1);
@@ -160,12 +188,23 @@ package Aws::Support::CreateCase {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::Support::CreateCaseResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
+package Aws::Support::DescribeAttachment {
+  use Moose;
+  has attachmentId => (is => 'ro', isa => 'Str', required => 1);
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAttachment');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::Support::DescribeAttachmentResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
+}
 package Aws::Support::DescribeCases {
   use Moose;
   has afterTime => (is => 'ro', isa => 'Str');
   has beforeTime => (is => 'ro', isa => 'Str');
   has caseIdList => (is => 'ro', isa => 'ArrayRef[Str]');
   has displayId => (is => 'ro', isa => 'Str');
+  has includeCommunications => (is => 'ro', isa => 'Bool');
   has includeResolvedCases => (is => 'ro', isa => 'Bool');
   has language => (is => 'ro', isa => 'Str');
   has maxResults => (is => 'ro', isa => 'Int');
@@ -274,6 +313,13 @@ package Aws::Support::ResolveCase {
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 
+package Aws::Support::AddAttachmentsToSetResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has attachmentSetId => (is => 'ro', isa => 'Str');
+  has expiryTime => (is => 'ro', isa => 'Str');
+
+}
 package Aws::Support::AddCommunicationToCaseResult {
   use Moose;
   with 'AWS::API::ResultParser';
@@ -284,6 +330,12 @@ package Aws::Support::CreateCaseResult {
   use Moose;
   with 'AWS::API::ResultParser';
   has caseId => (is => 'ro', isa => 'Str');
+
+}
+package Aws::Support::DescribeAttachmentResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has attachment => (is => 'ro', isa => 'Aws::Support::Attachment');
 
 }
 package Aws::Support::DescribeCasesResult {
@@ -364,6 +416,10 @@ package Aws::Support {
   class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonResponse');
 
   
+  sub AddAttachmentsToSet {
+    my $self = shift;
+    return $self->do_call('Aws::Support::AddAttachmentsToSet', @_);
+  }
   sub AddCommunicationToCase {
     my $self = shift;
     return $self->do_call('Aws::Support::AddCommunicationToCase', @_);
@@ -371,6 +427,10 @@ package Aws::Support {
   sub CreateCase {
     my $self = shift;
     return $self->do_call('Aws::Support::CreateCase', @_);
+  }
+  sub DescribeAttachment {
+    my $self = shift;
+    return $self->do_call('Aws::Support::DescribeAttachment', @_);
   }
   sub DescribeCases {
     my $self = shift;

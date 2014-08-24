@@ -88,7 +88,7 @@ package Aws::CognitoIdentity::GetOpenIdToken {
 package Aws::CognitoIdentity::ListIdentities {
   use Moose;
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
+  has MaxResults => (is => 'ro', isa => 'Int', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -99,7 +99,7 @@ package Aws::CognitoIdentity::ListIdentities {
 }
 package Aws::CognitoIdentity::ListIdentityPools {
   use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int');
+  has MaxResults => (is => 'ro', isa => 'Int', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;

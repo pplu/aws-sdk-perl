@@ -32,6 +32,12 @@ package Aws::ELB::ConnectionDraining {
   has Timeout => (is => 'ro', isa => 'Int');
 }
 
+package Aws::ELB::ConnectionSettings {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has IdleTimeout => (is => 'ro', isa => 'Int', required => 1);
+}
+
 package Aws::ELB::CrossZoneLoadBalancing {
   use Moose;
   with ('AWS::API::ResultParser');
@@ -92,6 +98,7 @@ package Aws::ELB::LoadBalancerAttributes {
   with ('AWS::API::ResultParser');
   has AccessLog => (is => 'ro', isa => 'Aws::ELB::AccessLog');
   has ConnectionDraining => (is => 'ro', isa => 'Aws::ELB::ConnectionDraining');
+  has ConnectionSettings => (is => 'ro', isa => 'Aws::ELB::ConnectionSettings');
   has CrossZoneLoadBalancing => (is => 'ro', isa => 'Aws::ELB::CrossZoneLoadBalancing');
 }
 
@@ -171,8 +178,39 @@ package Aws::ELB::SourceSecurityGroup {
   has OwnerAlias => (is => 'ro', isa => 'Str');
 }
 
+package Aws::ELB::Tag {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has Key => (is => 'ro', isa => 'Str', required => 1);
+  has Value => (is => 'ro', isa => 'Str');
+}
+
+package Aws::ELB::TagDescription {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has LoadBalancerName => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::ELB::Tag]');
+}
+
+package Aws::ELB::TagKeyOnly {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has Key => (is => 'ro', isa => 'Str');
+}
 
 
+
+package Aws::ELB::AddTags {
+  use Moose;
+  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::ELB::Tag]', required => 1);
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTags');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::AddTagsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AddTagsResult');
+}
 package Aws::ELB::ApplySecurityGroupsToLoadBalancer {
   use Moose;
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
@@ -238,6 +276,7 @@ package Aws::ELB::CreateLoadBalancer {
   has Scheme => (is => 'ro', isa => 'Str');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::ELB::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -358,12 +397,23 @@ package Aws::ELB::DescribeLoadBalancers {
   use Moose;
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has Marker => (is => 'ro', isa => 'Str');
+  has PageSize => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancers');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DescribeLoadBalancersResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancersResult');
+}
+package Aws::ELB::DescribeTags {
+  use Moose;
+  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTags');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DescribeTagsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTagsResult');
 }
 package Aws::ELB::DetachLoadBalancerFromSubnets {
   use Moose;
@@ -420,6 +470,17 @@ package Aws::ELB::RegisterInstancesWithLoadBalancer {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::RegisterInstancesWithLoadBalancerResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterInstancesWithLoadBalancerResult');
 }
+package Aws::ELB::RemoveTags {
+  use Moose;
+  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::ELB::TagKeyOnly]', required => 1);
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveTags');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::RemoveTagsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RemoveTagsResult');
+}
 package Aws::ELB::SetLoadBalancerListenerSSLCertificate {
   use Moose;
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
@@ -457,6 +518,11 @@ package Aws::ELB::SetLoadBalancerPoliciesOfListener {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerPoliciesOfListenerResult');
 }
 
+package Aws::ELB::AddTagsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+
+}
 package Aws::ELB::ApplySecurityGroupsToLoadBalancerResult {
   use Moose;
   with 'AWS::API::ResultParser';
@@ -553,6 +619,12 @@ package Aws::ELB::DescribeLoadBalancersResult {
   has NextMarker => (is => 'ro', isa => 'Str');
 
 }
+package Aws::ELB::DescribeTagsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+  has TagDescriptions => (is => 'ro', isa => 'ArrayRef[Aws::ELB::TagDescription]');
+
+}
 package Aws::ELB::DetachLoadBalancerFromSubnetsResult {
   use Moose;
   with 'AWS::API::ResultParser';
@@ -584,6 +656,11 @@ package Aws::ELB::RegisterInstancesWithLoadBalancerResult {
   has Instances => (is => 'ro', isa => 'ArrayRef[Aws::ELB::Instance]');
 
 }
+package Aws::ELB::RemoveTagsResult {
+  use Moose;
+  with 'AWS::API::ResultParser';
+
+}
 package Aws::ELB::SetLoadBalancerListenerSSLCertificateResult {
   use Moose;
   with 'AWS::API::ResultParser';
@@ -613,6 +690,10 @@ package Aws::ELB {
   class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
 
   
+  sub AddTags {
+    my $self = shift;
+    return $self->do_call('Aws::ELB::AddTags', @_);
+  }
   sub ApplySecurityGroupsToLoadBalancer {
     my $self = shift;
     return $self->do_call('Aws::ELB::ApplySecurityGroupsToLoadBalancer', @_);
@@ -681,6 +762,10 @@ package Aws::ELB {
     my $self = shift;
     return $self->do_call('Aws::ELB::DescribeLoadBalancers', @_);
   }
+  sub DescribeTags {
+    my $self = shift;
+    return $self->do_call('Aws::ELB::DescribeTags', @_);
+  }
   sub DetachLoadBalancerFromSubnets {
     my $self = shift;
     return $self->do_call('Aws::ELB::DetachLoadBalancerFromSubnets', @_);
@@ -700,6 +785,10 @@ package Aws::ELB {
   sub RegisterInstancesWithLoadBalancer {
     my $self = shift;
     return $self->do_call('Aws::ELB::RegisterInstancesWithLoadBalancer', @_);
+  }
+  sub RemoveTags {
+    my $self = shift;
+    return $self->do_call('Aws::ELB::RemoveTags', @_);
   }
   sub SetLoadBalancerListenerSSLCertificate {
     my $self = shift;
