@@ -1,0 +1,9 @@
+package Aws::ELB::InstanceState {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has Description => (is => 'ro', isa => 'Str');
+  has InstanceId => (is => 'ro', isa => 'Str');
+  has ReasonCode => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'Str');
+}
+1

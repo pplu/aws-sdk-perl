@@ -2,59 +2,6 @@
 use AWS::API;
 
 
-package Aws::Route53Domains::ContactDetail {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has AddressLine1 => (is => 'ro', isa => 'Str');
-  has AddressLine2 => (is => 'ro', isa => 'Str');
-  has City => (is => 'ro', isa => 'Str');
-  has ContactType => (is => 'ro', isa => 'Str');
-  has CountryCode => (is => 'ro', isa => 'Str');
-  has Email => (is => 'ro', isa => 'Str');
-  has ExtraParams => (is => 'ro', isa => 'ArrayRef[Aws::Route53Domains::ExtraParam]');
-  has Fax => (is => 'ro', isa => 'Str');
-  has FirstName => (is => 'ro', isa => 'Str');
-  has LastName => (is => 'ro', isa => 'Str');
-  has OrganizationName => (is => 'ro', isa => 'Str');
-  has PhoneNumber => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has ZipCode => (is => 'ro', isa => 'Str');
-}
-
-package Aws::Route53Domains::DomainSummary {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has AutoRenew => (is => 'ro', isa => 'Bool');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Expiry => (is => 'ro', isa => 'Str');
-  has TransferLock => (is => 'ro', isa => 'Bool');
-}
-
-package Aws::Route53Domains::ExtraParam {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Str', required => 1);
-}
-
-package Aws::Route53Domains::Nameserver {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has GlueIps => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-}
-
-package Aws::Route53Domains::OperationSummary {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has OperationId => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
-  has SubmittedDate => (is => 'ro', isa => 'Str', required => 1);
-  has Type => (is => 'ro', isa => 'Str', required => 1);
-}
-
-
-
 package Aws::Route53Domains::CheckDomainAvailability {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);

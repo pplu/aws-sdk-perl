@@ -1,0 +1,6 @@
+package Aws::SimpleWorkflow::CloseStatusFilter {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has status => (is => 'ro', isa => 'Str', required => 1);
+}
+1

@@ -62,31 +62,31 @@ package AWS::API::MapParser {
     my ($class, $result) = @_;
     $class->new(map { ($_->{ key } => $_->{ value }) } @$result);
   }
+}
 
-  sub result_to_args {
-    die "Should this be deprecated??\n";
-    my ($class, $result) = @_;
-    $class->new(map { ($_->{ key } => $_->{ value }) } @$result);
+package AWS::API::StrToObjMapParser {
+  use Moose::Role;
+  sub from_result {
+    my ($class, %result) = @_;
+    my $res = $class->new( Map => \%result );
+    return $res;
   }
 }
 
 package AWS::API::StrToStrMapParser {
   use Moose::Role;
   sub from_result {
-    my ($class, $result) = @_;
-    $class->new(Map => { %$result });  
-  }
-
-  sub result_to_args {
-    die "Should this be deprecated??\n";
-    my ($class, $result) = @_;
-    $class->new(Map => { %$result });
+    my ($class, %result) = @_;
+use Data::Dumper;
+print Dumper(\%result);
+    $class->new(Map => \%result );  
   }
 }
 
 package AWS::API::UnwrappedParser {
   use Moose::Role;
   use String::Util qw/trim/;
+  use Module::Runtime qw//;
   sub result_to_args {
     my ($class, $result) = @_;
     my %args;
@@ -117,6 +117,8 @@ package AWS::API::UnwrappedParser {
       # We'll consider that an attribute without brackets [] isn't an array type
       if ($att_type !~ m/\[.*\]$/) {
         if ($att_type =~ m/\:\:/) {
+          # Make the att_type stringify for module loading
+          Module::Runtime::require_module("$att_type");
           if (defined $value) {
             if (not $value_ref) {
               $args{ $att } = $value;
@@ -145,6 +147,7 @@ package AWS::API::UnwrappedParser {
         }
       } elsif (my ($type) = ($att_type =~ m/^ArrayRef\[(.*)\]$/)) {
         if ($type =~ m/\:\:/) {
+          Module::Runtime::require_module($type);
           if (not defined $value) {
             $args{ $att } = [ ];
           } elsif ($value_ref eq 'ARRAY') {
@@ -177,6 +180,8 @@ package AWS::API::UnwrappedParser {
 package AWS::API::ResultParser {
   use Moose::Role;
   use String::Util qw/trim/;
+  use Module::Runtime qw//;
+
   sub result_to_args {
     my ($class, $result) = @_;
     my %args;
@@ -208,13 +213,34 @@ package AWS::API::ResultParser {
       # We'll consider that an attribute without brackets [] isn't an array type
       if ($att_type !~ m/\[.*\]$/) {
         if ($att_type =~ m/\:\:/) {
+          # Make the att_type stringify for module loading
+          Module::Runtime::require_module("$att_type");
           if (defined $value) {
             if (not $value_ref) {
               $args{ $att } = $value;
             } else {
-              #my $class = ("$att_type" eq 'Moose::Meta::TypeConstraint::Class') ? $att_type->class : $att_type;
               my $class = $att_type->class;
-              $args{ $att } = $class->from_result( $value );
+
+              if ($class->does('AWS::API::StrToObjMapParser')) {
+                my $inner_class = $class->meta->get_attribute('Map')->type_constraint->name;
+                ($inner_class) = ($inner_class =~ m/\[(.*)\]$/);
+
+                if ($value_ref eq 'ARRAY') {
+                  $args{ $att } = $class->from_result( map { ( $_->{ key } => $inner_class->from_result($_->{ value }) ) } @$value );
+                } elsif ($value_ref eq 'HASH') {
+                  $args{ $att } = $class->from_result( $value->{ key } => $inner_class->from_result($value->{ value }) );
+                }
+              } elsif ($class->does('AWS::API::StrToStrMapParser')) {
+                if ($value_ref eq 'ARRAY') {
+                  $args{ $att } = $class->from_result( map { ( $_->{ key } => $_->{ value } ) } @$value );
+                } elsif ($value_ref eq 'HASH') {
+                  $args{ $att } = $class->from_result( $value->{ key } => $value->{ value } );
+                }
+              } else {
+                $args{ $att } = $class->from_result( $value );
+              }
+
+
             }
           }
         } else {
@@ -238,6 +264,7 @@ package AWS::API::ResultParser {
         }
       } elsif (my ($type) = ($att_type =~ m/^ArrayRef\[(.*)\]$/)) {
         if ($type =~ m/\:\:/) {
+          Module::Runtime::require_module($type);
           if (not defined $value) {
             $args{ $att } = [ ];
           } elsif ($value_ref eq 'ARRAY') {

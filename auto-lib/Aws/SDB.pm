@@ -2,55 +2,6 @@
 use AWS::API;
 
 
-package Aws::SDB::Attribute {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has AlternateNameEncoding => (is => 'ro', isa => 'Str');
-  has AlternateValueEncoding => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Str', required => 1);
-}
-
-package Aws::SDB::DeletableItem {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Aws::SDB::Attribute]');
-  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ItemName', required => 1);
-}
-
-package Aws::SDB::Item {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has AlternateNameEncoding => (is => 'ro', isa => 'Str');
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Aws::SDB::Attribute]', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-}
-
-package Aws::SDB::ReplaceableAttribute {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Replace => (is => 'ro', isa => 'Bool');
-  has Value => (is => 'ro', isa => 'Str', required => 1);
-}
-
-package Aws::SDB::ReplaceableItem {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Aws::SDB::ReplaceableAttribute]', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ItemName', required => 1);
-}
-
-package Aws::SDB::UpdateCondition {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has Exists => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
-}
-
-
-
 package Aws::SDB::BatchDeleteAttributes {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);

@@ -6,6 +6,8 @@ class AWS::API::Builder::EC2 {
   use Data::Dumper;
   use Data::Compare;
 
+  use autodie;
+
   has struct => (is => 'ro', required => 1);
   has api => (is => 'ro', required => 1);
   has service => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ endpoint_prefix } });
@@ -59,8 +61,6 @@ class AWS::API::Builder::EC2 {
       $self->make_inner_classes();
     }
       
-    my $inner_output .= $self->make_inner_classes();
-
     my $class = q#
 use AWS::API;
 [% IF (c.enums.size) %]
@@ -69,8 +69,6 @@ use Moose::Util::TypeConstraints;
 enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %]];
 [%- END %]
 [% END %]
-
-[% inner_output %]
 
 [%- FOREACH op_name IN c.operations %]
 [%- operation = c.operation(op_name) %]
@@ -128,18 +126,16 @@ package [% c.api %] {
 }
 1;
 #;
-    return $self->process_template($class, { c => $self, 
-                                             inner_output => $inner_output,
-    });
+    return $self->process_template($class, { c => $self });
 
 
     return $output;
   }
 
   method make_inner_classes {
-    my $output = '';
   
     foreach my $inner_class (sort keys %{ $self->inner_classes }) {
+      my $output = '';
       if ($self->inner_classes->{ $inner_class }->{type} eq 'map'){
         $output .= "package $inner_class {\n";
         $output .= "  use Moose;\n";
@@ -151,7 +147,7 @@ package [% c.api %] {
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
           $output .= ");\n";
         }
-        $output .= "}\n\n";
+        $output .= "}\n1\n";
       } else {
         $output .= "package $inner_class {\n";
         $output .= "  use Moose;\n";
@@ -178,11 +174,16 @@ package [% c.api %] {
           $output .= ", required => 1" if (defined $param_props->{required} and $param_props->{required} == 1);
           $output .= ");\n";
         }
-        $output .= "}\n\n";
+        $output .= "}\n1\n";
       }
+      my @class_parts = split /\:\:/, $inner_class;
+      my $class_file_name = "auto-lib/" . ( join '/', @class_parts ) . ".pm";
+      pop @class_parts;
+      eval { mkdir "auto-lib/" . ( join '/', @class_parts ) };
+      open my $file, ">", $class_file_name;
+      print $file $output;
+      close $file;
     }
-  
-    return $output;
   }
 
   has enums => (is => 'rw', isa => 'HashRef', default => sub { {} });

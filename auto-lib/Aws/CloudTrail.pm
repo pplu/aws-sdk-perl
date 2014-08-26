@@ -2,18 +2,6 @@
 use AWS::API;
 
 
-package Aws::CloudTrail::Trail {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str');
-  has S3BucketName => (is => 'ro', isa => 'Str');
-  has S3KeyPrefix => (is => 'ro', isa => 'Str');
-  has SnsTopicName => (is => 'ro', isa => 'Str');
-}
-
-
-
 package Aws::CloudTrail::CreateTrail {
   use Moose;
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');

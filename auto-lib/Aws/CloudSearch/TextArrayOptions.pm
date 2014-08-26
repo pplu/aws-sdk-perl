@@ -1,0 +1,10 @@
+package Aws::CloudSearch::TextArrayOptions {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has AnalysisScheme => (is => 'ro', isa => 'Str');
+  has DefaultValue => (is => 'ro', isa => 'Str');
+  has HighlightEnabled => (is => 'ro', isa => 'Bool');
+  has ReturnEnabled => (is => 'ro', isa => 'Bool');
+  has SourceFields => (is => 'ro', isa => 'Str');
+}
+1

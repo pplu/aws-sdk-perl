@@ -2,34 +2,6 @@
 use AWS::API;
 
 
-package Aws::CognitoIdentity::IdentityDescription {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has IdentityId => (is => 'ro', isa => 'Str');
-  has Logins => (is => 'ro', isa => 'ArrayRef[Str]');
-}
-
-package Aws::CognitoIdentity::IdentityPoolShortDescription {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has IdentityPoolId => (is => 'ro', isa => 'Str');
-  has IdentityPoolName => (is => 'ro', isa => 'Str');
-}
-
-package Aws::CognitoIdentity::IdentityProviders {
-  use Moose;
-  with 'AWS::API::StrToStrMapParser';
-  has Map => (is => 'ro', isa => 'HashRef[Str]');
-}
-
-package Aws::CognitoIdentity::LoginsMap {
-  use Moose;
-  with 'AWS::API::StrToStrMapParser';
-  has Map => (is => 'ro', isa => 'HashRef[Str]');
-}
-
-
-
 package Aws::CognitoIdentity::CreateIdentityPool {
   use Moose;
   has AllowUnauthenticatedIdentities => (is => 'ro', isa => 'Bool', required => 1);

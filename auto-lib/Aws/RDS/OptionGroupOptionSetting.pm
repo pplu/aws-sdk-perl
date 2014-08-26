@@ -1,0 +1,11 @@
+package Aws::RDS::OptionGroupOptionSetting {
+  use Moose;
+  with ('AWS::API::ResultParser');
+  has AllowedValues => (is => 'ro', isa => 'Str');
+  has ApplyType => (is => 'ro', isa => 'Str');
+  has DefaultValue => (is => 'ro', isa => 'Str');
+  has IsModifiable => (is => 'ro', isa => 'Bool');
+  has SettingDescription => (is => 'ro', isa => 'Str');
+  has SettingName => (is => 'ro', isa => 'Str');
+}
+1

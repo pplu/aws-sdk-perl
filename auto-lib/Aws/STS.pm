@@ -2,31 +2,6 @@
 use AWS::API;
 
 
-package Aws::STS::AssumedRoleUser {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has AssumedRoleId => (is => 'ro', isa => 'Str', required => 1);
-}
-
-package Aws::STS::Credentials {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has AccessKeyId => (is => 'ro', isa => 'Str', required => 1);
-  has Expiration => (is => 'ro', isa => 'Str', required => 1);
-  has SecretAccessKey => (is => 'ro', isa => 'Str', required => 1);
-  has SessionToken => (is => 'ro', isa => 'Str', required => 1);
-}
-
-package Aws::STS::FederatedUser {
-  use Moose;
-  with ('AWS::API::ResultParser');
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has FederatedUserId => (is => 'ro', isa => 'Str', required => 1);
-}
-
-
-
 package Aws::STS::AssumeRole {
   use Moose;
   has DurationSeconds => (is => 'ro', isa => 'Int');
