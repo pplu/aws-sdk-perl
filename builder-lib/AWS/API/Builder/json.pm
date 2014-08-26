@@ -158,7 +158,7 @@ package [% c.api %] {
           $output .= "  use Moose;\n";
           $output .= "  with 'AWS::API::StrToStrMapParser';\n";
           $output .= "  has Map => (is => 'ro', isa => 'HashRef[Str]');\n";
-          $output .= "}\n1\n";
+          $output .= "}\n";
         } else {
           die "Unrecognized Map type" . Dumper($self->inner_classes->{ $inner_class });
         }

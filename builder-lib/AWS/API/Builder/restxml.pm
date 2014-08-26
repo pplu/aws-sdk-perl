@@ -1,12 +1,10 @@
 use MooseX::Declare;
-class AWS::API::Builder::query {
+class AWS::API::Builder::restxml {
 
   use Template;
   use Data::Printer;
   use Data::Dumper;
   use Data::Compare;
-
-  use autodie;
 
   has struct => (is => 'ro', required => 1);
   has api => (is => 'ro', required => 1);
@@ -20,7 +18,7 @@ class AWS::API::Builder::query {
   has wrapped_responses => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ result_wrapped } });
   has response_role  => (is => 'ro', lazy => 1, default => sub { 'Net::AWS::XMLResponse' });
   has signature_role => (is => 'ro', lazy => 1, default => sub { sprintf "Net::AWS::%sSignature", uc $_[0]->struct->{signature_version} } );
-  has parameter_role => (is => 'ro', lazy => 1, default => sub { my $type = $_[0]->struct->{type}; substr($type,0,1) = uc substr($type,0,1); return "Net::AWS::${type}Caller" });
+  has parameter_role => (is => 'ro', lazy => 1, default => sub { return "Net::AWS::RestXmlCaller" });
   has flattened_arrays => (is => 'rw', isa => 'Bool', default => sub { 0 });
 
   method operation (Str $op) { return $self->struct->{operations}->{ $op } or die "method doesn't exist $op" }
@@ -61,6 +59,7 @@ class AWS::API::Builder::query {
       $last_seen_inner_classes = scalar(keys %{ $self->inner_classes });
       $self->make_inner_classes();
     }
+    my $inner_output .= $self->make_inner_classes();
 
     my $class = q#
 use AWS::API;
@@ -70,6 +69,8 @@ use Moose::Util::TypeConstraints;
 enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %]];
 [%- END %]
 [% END %]
+
+[% inner_output %]
 
 [%- FOREACH op_name IN c.operations %]
 [%- operation = c.operation(op_name) %]
@@ -85,7 +86,7 @@ package [% c.api %]::[% operation.name %] {
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
   class_has _returns => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% c.api %]::[% op_name %]Result'[% END %]);
-  class_has _result_key => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% op_name %]Result'[% END %]);
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 [%- END %]
 
@@ -127,16 +128,18 @@ package [% c.api %] {
 }
 1;
 #;
-    return $self->process_template($class, { c => $self });
+    return $self->process_template($class, { c => $self, 
+                                             inner_output => $inner_output,
+    });
 
 
     return $output;
   }
 
   method make_inner_classes {
+    my $output = '';
   
     foreach my $inner_class (sort keys %{ $self->inner_classes }) {
-      my $output = '';
       if ($self->inner_classes->{ $inner_class }->{type} eq 'map'){
         if ($self->inner_classes->{ $inner_class }->{keys}->{enum}){
           $output .= "package $inner_class {\n";
@@ -148,20 +151,13 @@ package [% c.api %] {
             $output .= "  has $param_name => (is => 'ro', isa => '$type'";
             $output .= ");\n";
           }
-          $output .= "}\n1\n";
-        } elsif ($self->inner_classes->{ $inner_class }->{members}->{type} eq 'string') {
+          $output .= "}\n\n";
+        } elsif ($self->inner_classes->{ $inner_class }->{keys}->{type} eq 'string') {
           $output .= "package $inner_class {\n"; 
           $output .= "  use Moose;\n";
           $output .= "  with 'AWS::API::StrToStrMapParser';\n";
           $output .= "  has Map => (is => 'ro', isa => 'HashRef[Str]');\n";
-          $output .= "}\n1\n";
-        } elsif ($self->inner_classes->{ $inner_class }->{members}->{type} eq 'structure') {
-          my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members});
-          $output .= "package $inner_class {\n";
-          $output .= "  use Moose;\n";
-          $output .= "  with 'AWS::API::StrToObjMapParser';\n";
-          $output .= "  has Map => (is => 'ro', isa => 'HashRef[$type]');\n";
-          $output .= "}\n1\n";
+          $output .= "}\n\n";
         } else {
           die "Unrecognized Map type" . Dumper($self->inner_classes->{ $inner_class });
         }
@@ -190,16 +186,11 @@ package [% c.api %] {
           $output .= ", required => 1" if (defined $param_props->{required} and $param_props->{required} == 1);
           $output .= ");\n";
         }
-        $output .= "}\n1\n";
+        $output .= "}\n\n";
       }
-      my @class_parts = split /\:\:/, $inner_class;
-      my $class_file_name = "auto-lib/" . ( join '/', @class_parts ) . ".pm";
-      pop @class_parts;
-      eval { mkdir "auto-lib/" . ( join '/', @class_parts ) };
-      open my $file, ">", $class_file_name;
-      print $file $output;
-      close $file;
     }
+  
+    return $output;
   }
 
   has enums => (is => 'rw', isa => 'HashRef', default => sub { {} });
