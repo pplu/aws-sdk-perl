@@ -2,39 +2,6 @@
 use AWS::API;
 
 
-package Aws::SDB::DomainMetadataResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has AttributeNameCount => (is => 'ro', isa => 'Int');
-  has AttributeNamesSizeBytes => (is => 'ro', isa => 'Num');
-  has AttributeValueCount => (is => 'ro', isa => 'Int');
-  has AttributeValuesSizeBytes => (is => 'ro', isa => 'Num');
-  has ItemCount => (is => 'ro', isa => 'Int');
-  has ItemNamesSizeBytes => (is => 'ro', isa => 'Num');
-  has Timestamp => (is => 'ro', isa => 'Int');
-
-}
-package Aws::SDB::GetAttributesResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Aws::SDB::Attribute]', traits => ['Unwrapped'], xmlname => 'Attribute');
-
-}
-package Aws::SDB::ListDomainsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has DomainNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'DomainName');
-  has NextToken => (is => 'ro', isa => 'Str');
-
-}
-package Aws::SDB::SelectResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Items => (is => 'ro', isa => 'ArrayRef[Aws::SDB::Item]', traits => ['Unwrapped'], xmlname => 'Item');
-  has NextToken => (is => 'ro', isa => 'Str');
-
-}
-
 package Aws::SDB {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'sdb');

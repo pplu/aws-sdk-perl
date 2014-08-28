@@ -11,4 +11,3 @@ package Aws::IAM::CreateSAMLProvider {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSAMLProviderResult');
 }
 1;
-  

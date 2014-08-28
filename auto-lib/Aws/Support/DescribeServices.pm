@@ -10,5 +10,4 @@ package Aws::Support::DescribeServices {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::Support::DescribeServicesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
-
 1;

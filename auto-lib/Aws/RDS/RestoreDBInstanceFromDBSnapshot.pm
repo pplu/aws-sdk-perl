@@ -24,4 +24,3 @@ package Aws::RDS::RestoreDBInstanceFromDBSnapshot {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromDBSnapshotResult');
 }
 1;
-  

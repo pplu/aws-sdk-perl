@@ -9,4 +9,3 @@ package Aws::IAM::GetAccountSummary {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetAccountSummaryResult');
 }
 1;
-  

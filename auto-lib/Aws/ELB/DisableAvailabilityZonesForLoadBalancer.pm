@@ -11,4 +11,3 @@ package Aws::ELB::DisableAvailabilityZonesForLoadBalancer {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DisableAvailabilityZonesForLoadBalancerResult');
 }
 1;
-  

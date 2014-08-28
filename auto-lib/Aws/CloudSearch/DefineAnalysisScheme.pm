@@ -11,4 +11,3 @@ package Aws::CloudSearch::DefineAnalysisScheme {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DefineAnalysisSchemeResult');
 }
 1;
-  

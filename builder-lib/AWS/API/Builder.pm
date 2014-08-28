@@ -132,6 +132,65 @@ package AWS::API::Builder {
     $tt->process(\$template, $vars, \$output) || die $tt->error();
     return $output;
   }
+
+  sub process_api {
+    my $self = shift;
+    my $output = '';
+    my ($calls, $results);
+
+    foreach my $op (sort @{ $self->operations }){
+      my $operation = $self->operation($op);
+      my $api_call = $operation->{name};
+
+      if      (not keys %{$operation->{ input }}) {
+        # There is no input inner classes in a class with no memebers
+      } elsif ($operation->{ input }{type} eq 'structure'){
+        if (keys %{ $operation->{ input }{members} }){
+          foreach my $member (keys %{ $operation->{ input }{members} } ) {
+            $operation->{ input }{members}{ $member }->{perl_type} = $self->get_caller_class_type($operation->{ input }{members}{ $member });
+          }
+        }
+      } else {
+        die "Found an input that's not a structure " . Dumper($operation->{ input });
+      }
+      if      (not keys %{$operation->{ output }}){
+        # There is no output class
+      } elsif ($operation->{ output }{type} eq 'structure'){
+        foreach my $member (keys %{ $operation->{ output }{members} } ) {
+          $operation->{ output }{members}{ $member }->{perl_type} = $self->get_caller_class_type($operation->{ output }{members}{ $member });
+        }
+      } else {
+        die "Found an output that's not a structure " . Dumper($operation->{ output });
+      }
+    }
+
+    my $last_seen_inner_classes = scalar(keys %{ $self->inner_classes });
+    $self->make_inner_classes();
+    while ($last_seen_inner_classes != scalar(keys %{ $self->inner_classes })){
+      $last_seen_inner_classes = scalar(keys %{ $self->inner_classes });
+      $self->make_inner_classes();
+    }
+    foreach my $op_name (@{ $self->operations }) {
+      my $class_name = $self->api . '::' . $op_name;
+      my $output = $self->process_template(
+        $self->callargs_class_template,
+        { c => $self, op_name => $op_name }
+      );
+      $self->save_class($class_name, $output);
+    }
+
+    foreach my $op_name (@{ $self->operations }) {
+      my $class_name = $self->api . '::' . $op_name . 'Result';
+      my $output = $self->process_template(
+        $self->callresult_class_template,
+        { c => $self, op_name => $op_name }
+      );
+      $self->save_class($class_name, $output);
+    }
+
+    return $self->process_template($self->service_class_template, { c => $self });
+  }
+
 }
 
 1;

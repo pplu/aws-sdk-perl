@@ -9,4 +9,3 @@ package Aws::IAM::GenerateCredentialReport {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GenerateCredentialReportResult');
 }
 1;
-  

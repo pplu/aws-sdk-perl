@@ -2,59 +2,6 @@
 use AWS::API;
 
 
-package Aws::ImportExport::CancelJobResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Success => (is => 'ro', isa => 'Bool');
-
-}
-package Aws::ImportExport::CreateJobResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has AwsShippingAddress => (is => 'ro', isa => 'Str');
-  has JobId => (is => 'ro', isa => 'Str');
-  has JobType => (is => 'ro', isa => 'Str');
-  has Signature => (is => 'ro', isa => 'Str');
-  has SignatureFileContents => (is => 'ro', isa => 'Str');
-  has WarningMessage => (is => 'ro', isa => 'Str');
-
-}
-package Aws::ImportExport::GetStatusResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has AwsShippingAddress => (is => 'ro', isa => 'Str');
-  has Carrier => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has CurrentManifest => (is => 'ro', isa => 'Str');
-  has ErrorCount => (is => 'ro', isa => 'Int');
-  has JobId => (is => 'ro', isa => 'Str');
-  has JobType => (is => 'ro', isa => 'Str');
-  has LocationCode => (is => 'ro', isa => 'Str');
-  has LocationMessage => (is => 'ro', isa => 'Str');
-  has LogBucket => (is => 'ro', isa => 'Str');
-  has LogKey => (is => 'ro', isa => 'Str');
-  has ProgressCode => (is => 'ro', isa => 'Str');
-  has ProgressMessage => (is => 'ro', isa => 'Str');
-  has Signature => (is => 'ro', isa => 'Str');
-  has SignatureFileContents => (is => 'ro', isa => 'Str');
-  has TrackingNumber => (is => 'ro', isa => 'Str');
-
-}
-package Aws::ImportExport::ListJobsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Aws::ImportExport::Job]');
-
-}
-package Aws::ImportExport::UpdateJobResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Success => (is => 'ro', isa => 'Bool');
-  has WarningMessage => (is => 'ro', isa => 'Str');
-
-}
-
 package Aws::ImportExport {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'importexport');

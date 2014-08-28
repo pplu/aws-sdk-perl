@@ -9,4 +9,3 @@ package Aws::AutoScaling::DescribeLifecycleHookTypes {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLifecycleHookTypesResult');
 }
 1;
-  

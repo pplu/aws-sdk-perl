@@ -11,4 +11,3 @@ package Aws::CloudSearch::DeleteSuggester {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSuggesterResult');
 }
 1;
-  

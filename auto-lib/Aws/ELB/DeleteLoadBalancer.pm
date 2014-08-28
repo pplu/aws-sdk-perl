@@ -10,4 +10,3 @@ package Aws::ELB::DeleteLoadBalancer {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancerResult');
 }
 1;
-  

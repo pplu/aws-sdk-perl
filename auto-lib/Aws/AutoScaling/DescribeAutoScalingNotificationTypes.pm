@@ -9,4 +9,3 @@ package Aws::AutoScaling::DescribeAutoScalingNotificationTypes {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingNotificationTypesResult');
 }
 1;
-  

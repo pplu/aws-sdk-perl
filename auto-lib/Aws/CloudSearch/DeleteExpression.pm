@@ -11,4 +11,3 @@ package Aws::CloudSearch::DeleteExpression {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteExpressionResult');
 }
 1;
-  

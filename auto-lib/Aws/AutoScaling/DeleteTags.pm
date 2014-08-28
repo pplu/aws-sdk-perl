@@ -10,4 +10,3 @@ package Aws::AutoScaling::DeleteTags {
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
-  

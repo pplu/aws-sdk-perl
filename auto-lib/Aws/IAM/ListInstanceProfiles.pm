@@ -12,4 +12,3 @@ package Aws::IAM::ListInstanceProfiles {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListInstanceProfilesResult');
 }
 1;
-  

@@ -10,4 +10,3 @@ package Aws::IAM::GetServerCertificate {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetServerCertificateResult');
 }
 1;
-  

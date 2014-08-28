@@ -10,5 +10,4 @@ package Aws::StorageGateway::ListGateways {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::ListGatewaysResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
-
 1;

@@ -13,4 +13,3 @@ package Aws::RDS::CreateDBParameterGroup {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBParameterGroupResult');
 }
 1;
-  

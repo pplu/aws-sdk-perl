@@ -10,4 +10,3 @@ package Aws::SQS::ListQueues {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListQueuesResult');
 }
 1;
-  

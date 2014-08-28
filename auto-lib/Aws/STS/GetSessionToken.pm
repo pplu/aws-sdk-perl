@@ -12,4 +12,3 @@ package Aws::STS::GetSessionToken {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetSessionTokenResult');
 }
 1;
-  

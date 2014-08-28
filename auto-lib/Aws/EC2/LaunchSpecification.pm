@@ -9,7 +9,7 @@ package Aws::EC2::LaunchSpecification {
   has InstanceType => (is => 'ro', isa => 'Str');
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
-  has Monitoring => (is => 'ro', isa => 'Aws::EC2::MonitoringEnabled');
+  has Monitoring => (is => 'ro', isa => 'Aws::EC2::SpotInstanceMonitoring');
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Aws::EC2::InstanceNetworkInterfaceSpecification]');
   has Placement => (is => 'ro', isa => 'Aws::EC2::SpotPlacement');
   has RamdiskId => (is => 'ro', isa => 'Str');

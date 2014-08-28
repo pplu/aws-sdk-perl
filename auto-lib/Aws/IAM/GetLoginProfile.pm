@@ -10,4 +10,3 @@ package Aws::IAM::GetLoginProfile {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetLoginProfileResult');
 }
 1;
-  

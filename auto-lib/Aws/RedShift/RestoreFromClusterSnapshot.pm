@@ -26,4 +26,3 @@ package Aws::RedShift::RestoreFromClusterSnapshot {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreFromClusterSnapshotResult');
 }
 1;
-  

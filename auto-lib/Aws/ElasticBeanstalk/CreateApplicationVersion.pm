@@ -14,4 +14,3 @@ package Aws::ElasticBeanstalk::CreateApplicationVersion {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateApplicationVersionResult');
 }
 1;
-  

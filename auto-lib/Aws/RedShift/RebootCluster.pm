@@ -10,4 +10,3 @@ package Aws::RedShift::RebootCluster {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RebootClusterResult');
 }
 1;
-  

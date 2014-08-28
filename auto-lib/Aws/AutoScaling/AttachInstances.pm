@@ -11,4 +11,3 @@ package Aws::AutoScaling::AttachInstances {
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
-  

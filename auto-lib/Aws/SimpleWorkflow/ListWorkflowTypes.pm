@@ -14,5 +14,4 @@ package Aws::SimpleWorkflow::ListWorkflowTypes {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::ListWorkflowTypesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
-
 1;

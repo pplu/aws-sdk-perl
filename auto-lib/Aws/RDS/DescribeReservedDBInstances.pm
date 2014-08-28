@@ -18,4 +18,3 @@ package Aws::RDS::DescribeReservedDBInstances {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstancesResult');
 }
 1;
-  

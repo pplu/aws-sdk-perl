@@ -11,4 +11,3 @@ package Aws::IAM::CreateInstanceProfile {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateInstanceProfileResult');
 }
 1;
-  

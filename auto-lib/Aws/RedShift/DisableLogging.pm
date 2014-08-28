@@ -10,4 +10,3 @@ package Aws::RedShift::DisableLogging {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DisableLoggingResult');
 }
 1;
-  

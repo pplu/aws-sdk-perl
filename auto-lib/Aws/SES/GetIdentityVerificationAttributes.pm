@@ -10,4 +10,3 @@ package Aws::SES::GetIdentityVerificationAttributes {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetIdentityVerificationAttributesResult');
 }
 1;
-  

@@ -12,4 +12,3 @@ package Aws::IAM::ListUsers {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListUsersResult');
 }
 1;
-  

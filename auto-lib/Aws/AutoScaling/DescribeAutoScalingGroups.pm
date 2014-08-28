@@ -12,4 +12,3 @@ package Aws::AutoScaling::DescribeAutoScalingGroups {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingGroupsResult');
 }
 1;
-  

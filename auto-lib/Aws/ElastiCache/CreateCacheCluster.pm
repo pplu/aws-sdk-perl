@@ -30,4 +30,3 @@ package Aws::ElastiCache::CreateCacheCluster {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCacheClusterResult');
 }
 1;
-  

@@ -12,4 +12,3 @@ package Aws::RedShift::EnableLogging {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'EnableLoggingResult');
 }
 1;
-  

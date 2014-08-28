@@ -10,5 +10,4 @@ package Aws::EMR::ListInstanceGroups {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::ListInstanceGroupsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
-
 1;

@@ -11,4 +11,3 @@ package Aws::CloudFormation::ListStackResources {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListStackResourcesResult');
 }
 1;
-  

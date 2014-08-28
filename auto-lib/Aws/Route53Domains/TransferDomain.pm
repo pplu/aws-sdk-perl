@@ -20,5 +20,4 @@ package Aws::Route53Domains::TransferDomain {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::Route53Domains::TransferDomainResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
-
 1;

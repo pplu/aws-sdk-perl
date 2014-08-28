@@ -9,4 +9,3 @@ package Aws::AutoScaling::DescribeAccountLimits {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAccountLimitsResult');
 }
 1;
-  

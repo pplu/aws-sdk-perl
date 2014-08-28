@@ -10,4 +10,3 @@ package Aws::SNS::ListTopics {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListTopicsResult');
 }
 1;
-  

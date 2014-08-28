@@ -9,4 +9,3 @@ package Aws::AutoScaling::DescribeAdjustmentTypes {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAdjustmentTypesResult');
 }
 1;
-  

@@ -11,4 +11,3 @@ package Aws::RDS::AddSourceIdentifierToSubscription {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'AddSourceIdentifierToSubscriptionResult');
 }
 1;
-  

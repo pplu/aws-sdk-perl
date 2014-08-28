@@ -12,4 +12,3 @@ package Aws::RedShift::DescribeClusterParameterGroups {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterParameterGroupsResult');
 }
 1;
-  

@@ -10,4 +10,3 @@ package Aws::ImportExport::GetStatus {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetStatusResult');
 }
 1;
-  

@@ -11,4 +11,3 @@ package Aws::SQS::GetQueueUrl {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetQueueUrlResult');
 }
 1;
-  

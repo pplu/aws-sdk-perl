@@ -13,4 +13,3 @@ package Aws::RDS::CreateDBSubnetGroup {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBSubnetGroupResult');
 }
 1;
-  

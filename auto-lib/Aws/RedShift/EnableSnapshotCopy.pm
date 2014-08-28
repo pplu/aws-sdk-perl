@@ -12,4 +12,3 @@ package Aws::RedShift::EnableSnapshotCopy {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'EnableSnapshotCopyResult');
 }
 1;
-  

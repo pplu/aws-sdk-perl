@@ -12,4 +12,3 @@ package Aws::ElastiCache::DescribeEngineDefaultParameters {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEngineDefaultParametersResult');
 }
 1;
-  

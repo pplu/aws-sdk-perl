@@ -9,5 +9,4 @@ package Aws::Support::DescribeSeverityLevels {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::Support::DescribeSeverityLevelsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
-
 1;

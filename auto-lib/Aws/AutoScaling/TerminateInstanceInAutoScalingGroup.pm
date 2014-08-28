@@ -11,4 +11,3 @@ package Aws::AutoScaling::TerminateInstanceInAutoScalingGroup {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'TerminateInstanceInAutoScalingGroupResult');
 }
 1;
-  

@@ -9,4 +9,3 @@ package Aws::SES::ListVerifiedEmailAddresses {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListVerifiedEmailAddressesResult');
 }
 1;
-  

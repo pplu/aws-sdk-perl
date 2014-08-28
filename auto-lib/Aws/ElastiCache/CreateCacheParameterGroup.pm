@@ -12,4 +12,3 @@ package Aws::ElastiCache::CreateCacheParameterGroup {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCacheParameterGroupResult');
 }
 1;
-  

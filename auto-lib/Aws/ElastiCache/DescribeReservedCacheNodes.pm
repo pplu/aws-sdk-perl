@@ -17,4 +17,3 @@ package Aws::ElastiCache::DescribeReservedCacheNodes {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedCacheNodesResult');
 }
 1;
-  

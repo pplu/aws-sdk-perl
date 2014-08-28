@@ -10,4 +10,3 @@ package Aws::CloudSearch::IndexDocuments {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'IndexDocumentsResult');
 }
 1;
-  

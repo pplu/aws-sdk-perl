@@ -12,4 +12,3 @@ package Aws::CloudSearch::DescribeSuggesters {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSuggestersResult');
 }
 1;
-  

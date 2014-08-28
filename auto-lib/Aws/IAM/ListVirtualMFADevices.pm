@@ -12,4 +12,3 @@ package Aws::IAM::ListVirtualMFADevices {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListVirtualMFADevicesResult');
 }
 1;
-  

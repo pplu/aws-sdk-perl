@@ -10,4 +10,3 @@ package Aws::IAM::GetSAMLProvider {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetSAMLProviderResult');
 }
 1;
-  

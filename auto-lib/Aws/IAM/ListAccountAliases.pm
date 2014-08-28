@@ -11,4 +11,3 @@ package Aws::IAM::ListAccountAliases {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListAccountAliasesResult');
 }
 1;
-  

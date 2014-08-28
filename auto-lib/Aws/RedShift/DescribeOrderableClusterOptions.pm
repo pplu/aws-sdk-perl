@@ -13,4 +13,3 @@ package Aws::RedShift::DescribeOrderableClusterOptions {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOrderableClusterOptionsResult');
 }
 1;
-  

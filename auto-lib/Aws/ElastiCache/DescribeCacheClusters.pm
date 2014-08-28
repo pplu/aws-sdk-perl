@@ -13,4 +13,3 @@ package Aws::ElastiCache::DescribeCacheClusters {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheClustersResult');
 }
 1;
-  

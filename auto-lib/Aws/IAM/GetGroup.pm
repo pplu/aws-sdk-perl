@@ -12,4 +12,3 @@ package Aws::IAM::GetGroup {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetGroupResult');
 }
 1;
-  

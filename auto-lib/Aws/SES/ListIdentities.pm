@@ -12,4 +12,3 @@ package Aws::SES::ListIdentities {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListIdentitiesResult');
 }
 1;
-  

@@ -13,5 +13,4 @@ package Aws::DirectConnect::AllocateConnectionOnInterconnect {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DirectConnect::AllocateConnectionOnInterconnectResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
-
 1;

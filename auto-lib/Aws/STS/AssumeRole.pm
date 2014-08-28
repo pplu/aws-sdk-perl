@@ -16,4 +16,3 @@ package Aws::STS::AssumeRole {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'AssumeRoleResult');
 }
 1;
-  

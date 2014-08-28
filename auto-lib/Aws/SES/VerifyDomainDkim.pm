@@ -10,4 +10,3 @@ package Aws::SES::VerifyDomainDkim {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'VerifyDomainDkimResult');
 }
 1;
-  

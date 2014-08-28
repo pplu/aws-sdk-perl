@@ -14,4 +14,3 @@ package Aws::ElasticBeanstalk::UpdateConfigurationTemplate {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationTemplateResult');
 }
 1;
-  

@@ -10,4 +10,3 @@ package Aws::RDS::DeleteDBSnapshot {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBSnapshotResult');
 }
 1;
-  

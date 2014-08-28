@@ -12,4 +12,3 @@ package Aws::RDS::DescribeDBSecurityGroups {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBSecurityGroupsResult');
 }
 1;
-  

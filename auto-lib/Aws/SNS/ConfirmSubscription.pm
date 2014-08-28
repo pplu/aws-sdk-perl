@@ -12,4 +12,3 @@ package Aws::SNS::ConfirmSubscription {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ConfirmSubscriptionResult');
 }
 1;
-  

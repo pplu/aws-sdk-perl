@@ -12,4 +12,3 @@ package Aws::ElastiCache::RevokeCacheSecurityGroupIngress {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeCacheSecurityGroupIngressResult');
 }
 1;
-  

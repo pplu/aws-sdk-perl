@@ -10,4 +10,3 @@ package Aws::CloudSearch::DescribeScalingParameters {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeScalingParametersResult');
 }
 1;
-  

@@ -16,4 +16,3 @@ package Aws::ELB::CreateLoadBalancer {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerResult');
 }
 1;
-  

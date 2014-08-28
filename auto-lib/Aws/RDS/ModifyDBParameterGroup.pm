@@ -11,4 +11,3 @@ package Aws::RDS::ModifyDBParameterGroup {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBParameterGroupResult');
 }
 1;
-  

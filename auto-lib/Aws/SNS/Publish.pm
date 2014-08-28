@@ -15,4 +15,3 @@ package Aws::SNS::Publish {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'PublishResult');
 }
 1;
-  

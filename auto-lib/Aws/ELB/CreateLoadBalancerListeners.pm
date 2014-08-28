@@ -11,4 +11,3 @@ package Aws::ELB::CreateLoadBalancerListeners {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerListenersResult');
 }
 1;
-  

@@ -12,4 +12,3 @@ package Aws::RedShift::AuthorizeSnapshotAccess {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeSnapshotAccessResult');
 }
 1;
-  

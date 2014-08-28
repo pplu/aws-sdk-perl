@@ -15,4 +15,3 @@ package Aws::STS::AssumeRoleWithWebIdentity {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'AssumeRoleWithWebIdentityResult');
 }
 1;
-  

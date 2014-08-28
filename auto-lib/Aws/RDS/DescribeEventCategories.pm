@@ -10,4 +10,3 @@ package Aws::RDS::DescribeEventCategories {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventCategoriesResult');
 }
 1;
-  

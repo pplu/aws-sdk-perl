@@ -2,59 +2,6 @@
 use AWS::API;
 
 
-package Aws::STS::AssumeRoleResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has AssumedRoleUser => (is => 'ro', isa => 'Aws::STS::AssumedRoleUser');
-  has Credentials => (is => 'ro', isa => 'Aws::STS::Credentials');
-  has PackedPolicySize => (is => 'ro', isa => 'Int');
-
-}
-package Aws::STS::AssumeRoleWithSAMLResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has AssumedRoleUser => (is => 'ro', isa => 'Aws::STS::AssumedRoleUser');
-  has Audience => (is => 'ro', isa => 'Str');
-  has Credentials => (is => 'ro', isa => 'Aws::STS::Credentials');
-  has Issuer => (is => 'ro', isa => 'Str');
-  has NameQualifier => (is => 'ro', isa => 'Str');
-  has PackedPolicySize => (is => 'ro', isa => 'Int');
-  has Subject => (is => 'ro', isa => 'Str');
-  has SubjectType => (is => 'ro', isa => 'Str');
-
-}
-package Aws::STS::AssumeRoleWithWebIdentityResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has AssumedRoleUser => (is => 'ro', isa => 'Aws::STS::AssumedRoleUser');
-  has Audience => (is => 'ro', isa => 'Str');
-  has Credentials => (is => 'ro', isa => 'Aws::STS::Credentials');
-  has PackedPolicySize => (is => 'ro', isa => 'Int');
-  has Provider => (is => 'ro', isa => 'Str');
-  has SubjectFromWebIdentityToken => (is => 'ro', isa => 'Str');
-
-}
-package Aws::STS::DecodeAuthorizationMessageResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has DecodedMessage => (is => 'ro', isa => 'Str');
-
-}
-package Aws::STS::GetFederationTokenResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Credentials => (is => 'ro', isa => 'Aws::STS::Credentials');
-  has FederatedUser => (is => 'ro', isa => 'Aws::STS::FederatedUser');
-  has PackedPolicySize => (is => 'ro', isa => 'Int');
-
-}
-package Aws::STS::GetSessionTokenResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Credentials => (is => 'ro', isa => 'Aws::STS::Credentials');
-
-}
-
 package Aws::STS {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'sts');

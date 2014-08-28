@@ -10,4 +10,3 @@ package Aws::IAM::GetRole {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetRoleResult');
 }
 1;
-  

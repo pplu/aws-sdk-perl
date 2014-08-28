@@ -12,4 +12,3 @@ package Aws::RDS::DescribeEventSubscriptions {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptionsResult');
 }
 1;
-  

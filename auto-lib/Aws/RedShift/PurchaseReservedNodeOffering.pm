@@ -11,4 +11,3 @@ package Aws::RedShift::PurchaseReservedNodeOffering {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedNodeOfferingResult');
 }
 1;
-  

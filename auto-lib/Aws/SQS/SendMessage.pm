@@ -13,4 +13,3 @@ package Aws::SQS::SendMessage {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SendMessageResult');
 }
 1;
-  

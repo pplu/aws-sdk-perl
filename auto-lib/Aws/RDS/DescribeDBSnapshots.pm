@@ -14,4 +14,3 @@ package Aws::RDS::DescribeDBSnapshots {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBSnapshotsResult');
 }
 1;
-  

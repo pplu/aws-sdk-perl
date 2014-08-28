@@ -11,4 +11,3 @@ package Aws::SQS::DeleteMessageBatch {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteMessageBatchResult');
 }
 1;
-  

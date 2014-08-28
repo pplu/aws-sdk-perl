@@ -12,4 +12,3 @@ package Aws::CloudFormation::SetStackPolicy {
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
-  

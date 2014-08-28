@@ -2,60 +2,6 @@
 use AWS::API;
 
 
-package Aws::CloudTrail::CreateTrailResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str');
-  has S3BucketName => (is => 'ro', isa => 'Str');
-  has S3KeyPrefix => (is => 'ro', isa => 'Str');
-  has SnsTopicName => (is => 'ro', isa => 'Str');
-
-}
-package Aws::CloudTrail::DeleteTrailResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-
-}
-package Aws::CloudTrail::DescribeTrailsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has trailList => (is => 'ro', isa => 'ArrayRef[Aws::CloudTrail::Trail]');
-
-}
-package Aws::CloudTrail::GetTrailStatusResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has IsLogging => (is => 'ro', isa => 'Bool');
-  has LatestDeliveryError => (is => 'ro', isa => 'Str');
-  has LatestDeliveryTime => (is => 'ro', isa => 'Str');
-  has LatestNotificationError => (is => 'ro', isa => 'Str');
-  has LatestNotificationTime => (is => 'ro', isa => 'Str');
-  has StartLoggingTime => (is => 'ro', isa => 'Str');
-  has StopLoggingTime => (is => 'ro', isa => 'Str');
-
-}
-package Aws::CloudTrail::StartLoggingResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-
-}
-package Aws::CloudTrail::StopLoggingResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-
-}
-package Aws::CloudTrail::UpdateTrailResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str');
-  has S3BucketName => (is => 'ro', isa => 'Str');
-  has S3KeyPrefix => (is => 'ro', isa => 'Str');
-  has SnsTopicName => (is => 'ro', isa => 'Str');
-
-}
-
 package Aws::CloudTrail {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'cloudtrail');

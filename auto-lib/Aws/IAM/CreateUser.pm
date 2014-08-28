@@ -11,4 +11,3 @@ package Aws::IAM::CreateUser {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateUserResult');
 }
 1;
-  

@@ -12,4 +12,3 @@ package Aws::AutoScaling::DescribeNotificationConfigurations {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeNotificationConfigurationsResult');
 }
 1;
-  

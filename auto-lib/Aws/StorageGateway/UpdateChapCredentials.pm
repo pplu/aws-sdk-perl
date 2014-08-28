@@ -12,5 +12,4 @@ package Aws::StorageGateway::UpdateChapCredentials {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::UpdateChapCredentialsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
-
 1;

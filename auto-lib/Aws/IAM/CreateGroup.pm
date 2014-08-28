@@ -11,4 +11,3 @@ package Aws::IAM::CreateGroup {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateGroupResult');
 }
 1;
-  

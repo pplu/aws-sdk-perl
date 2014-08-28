@@ -12,5 +12,4 @@ package Aws::EMR::ListClusters {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::ListClustersResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
-
 1;

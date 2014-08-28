@@ -15,4 +15,3 @@ package Aws::CloudWatch::DescribeAlarmsForMetric {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmsForMetricResult');
 }
 1;
-  

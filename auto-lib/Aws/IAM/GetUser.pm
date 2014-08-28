@@ -10,4 +10,3 @@ package Aws::IAM::GetUser {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetUserResult');
 }
 1;
-  

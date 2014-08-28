@@ -11,4 +11,3 @@ package Aws::IAM::GetGroupPolicy {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetGroupPolicyResult');
 }
 1;
-  

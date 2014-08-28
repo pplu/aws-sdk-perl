@@ -9,4 +9,3 @@ package Aws::ElasticBeanstalk::CreateStorageLocation {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStorageLocationResult');
 }
 1;
-  

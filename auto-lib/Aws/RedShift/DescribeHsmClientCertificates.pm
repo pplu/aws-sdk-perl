@@ -12,4 +12,3 @@ package Aws::RedShift::DescribeHsmClientCertificates {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeHsmClientCertificatesResult');
 }
 1;
-  

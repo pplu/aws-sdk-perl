@@ -24,4 +24,3 @@ package Aws::ElastiCache::ModifyReplicationGroup {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyReplicationGroupResult');
 }
 1;
-  

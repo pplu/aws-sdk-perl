@@ -12,4 +12,3 @@ package Aws::RDS::DescribeDBParameterGroups {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBParameterGroupsResult');
 }
 1;
-  

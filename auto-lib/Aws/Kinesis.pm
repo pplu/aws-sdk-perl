@@ -2,40 +2,6 @@
 use AWS::API;
 
 
-package Aws::Kinesis::DescribeStreamResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has StreamDescription => (is => 'ro', isa => 'Aws::Kinesis::StreamDescription', required => 1);
-
-}
-package Aws::Kinesis::GetRecordsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has NextShardIterator => (is => 'ro', isa => 'Str');
-  has Records => (is => 'ro', isa => 'ArrayRef[Aws::Kinesis::Record]', required => 1);
-
-}
-package Aws::Kinesis::GetShardIteratorResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has ShardIterator => (is => 'ro', isa => 'Str');
-
-}
-package Aws::Kinesis::ListStreamsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has HasMoreStreams => (is => 'ro', isa => 'Bool', required => 1);
-  has StreamNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-
-}
-package Aws::Kinesis::PutRecordResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has SequenceNumber => (is => 'ro', isa => 'Str', required => 1);
-  has ShardId => (is => 'ro', isa => 'Str', required => 1);
-
-}
-
 package Aws::Kinesis {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'kinesis');

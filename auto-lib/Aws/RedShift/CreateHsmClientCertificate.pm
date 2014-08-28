@@ -10,4 +10,3 @@ package Aws::RedShift::CreateHsmClientCertificate {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateHsmClientCertificateResult');
 }
 1;
-  

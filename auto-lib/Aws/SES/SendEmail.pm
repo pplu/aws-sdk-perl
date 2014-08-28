@@ -14,4 +14,3 @@ package Aws::SES::SendEmail {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SendEmailResult');
 }
 1;
-  

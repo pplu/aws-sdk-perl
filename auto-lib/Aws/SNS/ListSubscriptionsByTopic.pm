@@ -11,4 +11,3 @@ package Aws::SNS::ListSubscriptionsByTopic {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListSubscriptionsByTopicResult');
 }
 1;
-  

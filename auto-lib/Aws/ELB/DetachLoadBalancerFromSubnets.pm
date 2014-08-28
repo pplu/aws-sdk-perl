@@ -11,4 +11,3 @@ package Aws::ELB::DetachLoadBalancerFromSubnets {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DetachLoadBalancerFromSubnetsResult');
 }
 1;
-  

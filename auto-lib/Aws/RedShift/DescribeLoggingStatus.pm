@@ -10,4 +10,3 @@ package Aws::RedShift::DescribeLoggingStatus {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoggingStatusResult');
 }
 1;
-  

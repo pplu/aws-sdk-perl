@@ -13,4 +13,3 @@ package Aws::ElasticBeanstalk::ValidateConfigurationSettings {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ValidateConfigurationSettingsResult');
 }
 1;
-  

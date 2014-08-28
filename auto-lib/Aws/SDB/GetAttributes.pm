@@ -13,4 +13,3 @@ package Aws::SDB::GetAttributes {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetAttributesResult');
 }
 1;
-  

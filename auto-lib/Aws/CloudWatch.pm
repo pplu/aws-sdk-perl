@@ -2,41 +2,6 @@
 use AWS::API;
 
 
-package Aws::CloudWatch::DescribeAlarmHistoryResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has AlarmHistoryItems => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::AlarmHistoryItem]');
-  has NextToken => (is => 'ro', isa => 'Str');
-
-}
-package Aws::CloudWatch::DescribeAlarmsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has MetricAlarms => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::MetricAlarm]');
-  has NextToken => (is => 'ro', isa => 'Str');
-
-}
-package Aws::CloudWatch::DescribeAlarmsForMetricResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has MetricAlarms => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::MetricAlarm]');
-
-}
-package Aws::CloudWatch::GetMetricStatisticsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Datapoints => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::Datapoint]');
-  has Label => (is => 'ro', isa => 'Str');
-
-}
-package Aws::CloudWatch::ListMetricsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Metrics => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatch::Metric]');
-  has NextToken => (is => 'ro', isa => 'Str');
-
-}
-
 package Aws::CloudWatch {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'monitoring');

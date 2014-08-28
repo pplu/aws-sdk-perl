@@ -12,4 +12,3 @@ package Aws::ElastiCache::DescribeReplicationGroups {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReplicationGroupsResult');
 }
 1;
-  

@@ -13,4 +13,3 @@ package Aws::AutoScaling::DescribeScalingActivities {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeScalingActivitiesResult');
 }
 1;
-  

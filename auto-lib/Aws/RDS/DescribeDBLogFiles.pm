@@ -15,4 +15,3 @@ package Aws::RDS::DescribeDBLogFiles {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBLogFilesResult');
 }
 1;
-  

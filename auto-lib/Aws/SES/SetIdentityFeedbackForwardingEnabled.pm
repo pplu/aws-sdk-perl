@@ -11,4 +11,3 @@ package Aws::SES::SetIdentityFeedbackForwardingEnabled {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SetIdentityFeedbackForwardingEnabledResult');
 }
 1;
-  

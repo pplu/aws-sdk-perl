@@ -9,4 +9,3 @@ package Aws::IAM::ListSAMLProviders {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListSAMLProvidersResult');
 }
 1;
-  

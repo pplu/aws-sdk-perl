@@ -14,4 +14,3 @@ package Aws::ElasticBeanstalk::DescribeConfigurationOptions {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationOptionsResult');
 }
 1;
-  

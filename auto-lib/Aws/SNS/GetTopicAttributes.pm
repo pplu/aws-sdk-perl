@@ -10,4 +10,3 @@ package Aws::SNS::GetTopicAttributes {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetTopicAttributesResult');
 }
 1;
-  

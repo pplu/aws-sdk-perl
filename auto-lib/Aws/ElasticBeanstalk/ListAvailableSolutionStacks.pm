@@ -9,4 +9,3 @@ package Aws::ElasticBeanstalk::ListAvailableSolutionStacks {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListAvailableSolutionStacksResult');
 }
 1;
-  

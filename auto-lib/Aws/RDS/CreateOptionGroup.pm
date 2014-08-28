@@ -14,4 +14,3 @@ package Aws::RDS::CreateOptionGroup {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateOptionGroupResult');
 }
 1;
-  

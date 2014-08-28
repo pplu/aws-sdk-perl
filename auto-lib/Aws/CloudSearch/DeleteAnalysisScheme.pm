@@ -11,4 +11,3 @@ package Aws::CloudSearch::DeleteAnalysisScheme {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAnalysisSchemeResult');
 }
 1;
-  

@@ -13,4 +13,3 @@ package Aws::RDS::DescribeDBParameters {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBParametersResult');
 }
 1;
-  

@@ -12,4 +12,3 @@ package Aws::AutoScaling::DescribeAutoScalingInstances {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingInstancesResult');
 }
 1;
-  

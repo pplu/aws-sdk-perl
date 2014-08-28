@@ -2,62 +2,6 @@
 use AWS::API;
 
 
-package Aws::CognitoIdentity::CreateIdentityPoolResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has AllowUnauthenticatedIdentities => (is => 'ro', isa => 'Bool', required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
-  has IdentityPoolName => (is => 'ro', isa => 'Str', required => 1);
-  has SupportedLoginProviders => (is => 'ro', isa => 'Aws::CognitoIdentity::IdentityProviders');
-
-}
-package Aws::CognitoIdentity::DescribeIdentityPoolResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has AllowUnauthenticatedIdentities => (is => 'ro', isa => 'Bool', required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
-  has IdentityPoolName => (is => 'ro', isa => 'Str', required => 1);
-  has SupportedLoginProviders => (is => 'ro', isa => 'Aws::CognitoIdentity::IdentityProviders');
-
-}
-package Aws::CognitoIdentity::GetIdResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has IdentityId => (is => 'ro', isa => 'Str');
-
-}
-package Aws::CognitoIdentity::GetOpenIdTokenResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has IdentityId => (is => 'ro', isa => 'Str');
-  has Token => (is => 'ro', isa => 'Str');
-
-}
-package Aws::CognitoIdentity::ListIdentitiesResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Identities => (is => 'ro', isa => 'ArrayRef[Aws::CognitoIdentity::IdentityDescription]');
-  has IdentityPoolId => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-
-}
-package Aws::CognitoIdentity::ListIdentityPoolsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has IdentityPools => (is => 'ro', isa => 'ArrayRef[Aws::CognitoIdentity::IdentityPoolShortDescription]');
-  has NextToken => (is => 'ro', isa => 'Str');
-
-}
-package Aws::CognitoIdentity::UpdateIdentityPoolResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has AllowUnauthenticatedIdentities => (is => 'ro', isa => 'Bool', required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
-  has IdentityPoolName => (is => 'ro', isa => 'Str', required => 1);
-  has SupportedLoginProviders => (is => 'ro', isa => 'Aws::CognitoIdentity::IdentityProviders');
-
-}
-
 package Aws::CognitoIdentity {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'cognito-identity');

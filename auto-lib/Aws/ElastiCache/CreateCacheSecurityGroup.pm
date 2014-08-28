@@ -11,4 +11,3 @@ package Aws::ElastiCache::CreateCacheSecurityGroup {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCacheSecurityGroupResult');
 }
 1;
-  

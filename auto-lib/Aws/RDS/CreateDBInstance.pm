@@ -34,4 +34,3 @@ package Aws::RDS::CreateDBInstance {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceResult');
 }
 1;
-  

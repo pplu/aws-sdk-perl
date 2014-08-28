@@ -14,4 +14,3 @@ package Aws::RDS::RevokeDBSecurityGroupIngress {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeDBSecurityGroupIngressResult');
 }
 1;
-  

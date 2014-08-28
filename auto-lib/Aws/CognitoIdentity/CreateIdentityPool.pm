@@ -11,5 +11,4 @@ package Aws::CognitoIdentity::CreateIdentityPool {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CognitoIdentity::CreateIdentityPoolResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
-
 1;

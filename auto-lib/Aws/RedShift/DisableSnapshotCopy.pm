@@ -10,4 +10,3 @@ package Aws::RedShift::DisableSnapshotCopy {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DisableSnapshotCopyResult');
 }
 1;
-  

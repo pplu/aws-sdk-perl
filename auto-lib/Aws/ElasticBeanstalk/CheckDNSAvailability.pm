@@ -10,4 +10,3 @@ package Aws::ElasticBeanstalk::CheckDNSAvailability {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CheckDNSAvailabilityResult');
 }
 1;
-  

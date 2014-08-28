@@ -10,4 +10,3 @@ package Aws::SES::DeleteIdentity {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteIdentityResult');
 }
 1;
-  

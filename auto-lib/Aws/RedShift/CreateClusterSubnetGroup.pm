@@ -12,4 +12,3 @@ package Aws::RedShift::CreateClusterSubnetGroup {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSubnetGroupResult');
 }
 1;
-  

@@ -13,4 +13,3 @@ package Aws::SNS::CreatePlatformEndpoint {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePlatformEndpointResult');
 }
 1;
-  

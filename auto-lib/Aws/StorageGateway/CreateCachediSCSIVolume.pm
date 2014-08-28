@@ -14,5 +14,4 @@ package Aws::StorageGateway::CreateCachediSCSIVolume {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::CreateCachediSCSIVolumeResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
-
 1;

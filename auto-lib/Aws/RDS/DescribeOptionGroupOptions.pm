@@ -13,4 +13,3 @@ package Aws::RDS::DescribeOptionGroupOptions {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroupOptionsResult');
 }
 1;
-  

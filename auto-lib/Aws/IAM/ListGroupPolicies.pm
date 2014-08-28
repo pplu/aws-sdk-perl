@@ -12,4 +12,3 @@ package Aws::IAM::ListGroupPolicies {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListGroupPoliciesResult');
 }
 1;
-  

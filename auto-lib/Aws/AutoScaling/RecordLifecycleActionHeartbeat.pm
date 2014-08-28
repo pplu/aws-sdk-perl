@@ -12,4 +12,3 @@ package Aws::AutoScaling::RecordLifecycleActionHeartbeat {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RecordLifecycleActionHeartbeatResult');
 }
 1;
-  

@@ -12,4 +12,3 @@ package Aws::IAM::ListSigningCertificates {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListSigningCertificatesResult');
 }
 1;
-  

@@ -13,4 +13,3 @@ package Aws::RDS::PurchaseReservedDBInstancesOffering {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedDBInstancesOfferingResult');
 }
 1;
-  

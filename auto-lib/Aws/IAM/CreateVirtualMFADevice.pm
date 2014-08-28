@@ -11,4 +11,3 @@ package Aws::IAM::CreateVirtualMFADevice {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVirtualMFADeviceResult');
 }
 1;
-  

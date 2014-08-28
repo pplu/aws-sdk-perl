@@ -12,4 +12,3 @@ package Aws::RedShift::DescribeClusters {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClustersResult');
 }
 1;
-  

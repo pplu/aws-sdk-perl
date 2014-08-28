@@ -12,4 +12,3 @@ package Aws::RDS::DeleteDBInstance {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBInstanceResult');
 }
 1;
-  

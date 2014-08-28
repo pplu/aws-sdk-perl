@@ -10,4 +10,3 @@ package Aws::SES::GetIdentityNotificationAttributes {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetIdentityNotificationAttributesResult');
 }
 1;
-  

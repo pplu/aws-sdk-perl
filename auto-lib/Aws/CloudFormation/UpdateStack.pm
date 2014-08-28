@@ -20,4 +20,3 @@ package Aws::CloudFormation::UpdateStack {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateStackResult');
 }
 1;
-  

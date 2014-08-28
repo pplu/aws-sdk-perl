@@ -16,4 +16,3 @@ package Aws::RDS::DescribeOrderableDBInstanceOptions {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOrderableDBInstanceOptionsResult');
 }
 1;
-  

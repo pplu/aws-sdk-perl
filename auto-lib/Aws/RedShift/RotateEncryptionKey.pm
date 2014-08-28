@@ -10,4 +10,3 @@ package Aws::RedShift::RotateEncryptionKey {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RotateEncryptionKeyResult');
 }
 1;
-  

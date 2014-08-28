@@ -11,4 +11,3 @@ package Aws::CloudFormation::ValidateTemplate {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ValidateTemplateResult');
 }
 1;
-  

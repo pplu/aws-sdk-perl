@@ -11,4 +11,3 @@ package Aws::ElasticBeanstalk::DescribeEnvironmentResources {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEnvironmentResourcesResult');
 }
 1;
-  

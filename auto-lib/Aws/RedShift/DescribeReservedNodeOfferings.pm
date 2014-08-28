@@ -12,4 +12,3 @@ package Aws::RedShift::DescribeReservedNodeOfferings {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodeOfferingsResult');
 }
 1;
-  

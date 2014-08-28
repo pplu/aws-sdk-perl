@@ -11,4 +11,3 @@ package Aws::CloudFormation::DescribeStackResource {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackResourceResult');
 }
 1;
-  

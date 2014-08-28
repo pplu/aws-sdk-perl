@@ -15,4 +15,3 @@ package Aws::CloudWatch::DescribeAlarms {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmsResult');
 }
 1;
-  

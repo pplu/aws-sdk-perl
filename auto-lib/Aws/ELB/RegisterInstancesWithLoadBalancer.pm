@@ -11,4 +11,3 @@ package Aws::ELB::RegisterInstancesWithLoadBalancer {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterInstancesWithLoadBalancerResult');
 }
 1;
-  

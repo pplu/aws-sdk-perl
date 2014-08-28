@@ -2,48 +2,6 @@
 use AWS::API;
 
 
-package Aws::CloudWatchLogs::DescribeLogGroupsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has logGroups => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatchLogs::LogGroup]');
-  has nextToken => (is => 'ro', isa => 'Str');
-
-}
-package Aws::CloudWatchLogs::DescribeLogStreamsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has logStreams => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatchLogs::LogStream]');
-  has nextToken => (is => 'ro', isa => 'Str');
-
-}
-package Aws::CloudWatchLogs::DescribeMetricFiltersResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has metricFilters => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatchLogs::MetricFilter]');
-  has nextToken => (is => 'ro', isa => 'Str');
-
-}
-package Aws::CloudWatchLogs::GetLogEventsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has events => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatchLogs::OutputLogEvent]');
-  has nextBackwardToken => (is => 'ro', isa => 'Str');
-  has nextForwardToken => (is => 'ro', isa => 'Str');
-
-}
-package Aws::CloudWatchLogs::PutLogEventsResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has nextSequenceToken => (is => 'ro', isa => 'Str');
-
-}
-package Aws::CloudWatchLogs::TestMetricFilterResult {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has matches => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatchLogs::MetricFilterMatchRecord]');
-
-}
-
 package Aws::CloudWatchLogs {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'logs');

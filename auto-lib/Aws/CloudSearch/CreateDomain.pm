@@ -10,4 +10,3 @@ package Aws::CloudSearch::CreateDomain {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDomainResult');
 }
 1;
-  

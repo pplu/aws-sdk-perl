@@ -10,4 +10,3 @@ package Aws::ImportExport::CancelJob {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CancelJobResult');
 }
 1;
-  

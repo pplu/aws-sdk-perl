@@ -11,4 +11,3 @@ package Aws::ElasticBeanstalk::CreateApplication {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateApplicationResult');
 }
 1;
-  

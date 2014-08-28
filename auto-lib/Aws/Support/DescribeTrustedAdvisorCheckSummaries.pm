@@ -9,5 +9,4 @@ package Aws::Support::DescribeTrustedAdvisorCheckSummaries {
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::Support::DescribeTrustedAdvisorCheckSummariesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
-
 1;

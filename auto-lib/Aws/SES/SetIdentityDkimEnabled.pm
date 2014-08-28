@@ -11,4 +11,3 @@ package Aws::SES::SetIdentityDkimEnabled {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SetIdentityDkimEnabledResult');
 }
 1;
-  

@@ -12,4 +12,3 @@ package Aws::IAM::CreateRole {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateRoleResult');
 }
 1;
-  

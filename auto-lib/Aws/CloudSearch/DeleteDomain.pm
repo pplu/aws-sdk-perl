@@ -10,4 +10,3 @@ package Aws::CloudSearch::DeleteDomain {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDomainResult');
 }
 1;
-  

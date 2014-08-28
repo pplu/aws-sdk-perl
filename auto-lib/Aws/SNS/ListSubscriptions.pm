@@ -10,4 +10,3 @@ package Aws::SNS::ListSubscriptions {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListSubscriptionsResult');
 }
 1;
-  
