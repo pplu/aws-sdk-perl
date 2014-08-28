@@ -1,15 +1,15 @@
 package Aws::EC2::InstanceNetworkInterfaceSpecification {
   use Moose;
   with ('AWS::API::UnwrappedParser');
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'associatePublicIpAddress');
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
-  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
-  has DeviceIndex => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'deviceIndex');
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'SecurityGroupId');
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'networkInterfaceId');
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateIpAddress');
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PrivateIpAddressSpecification]', traits => ['Unwrapped'], xmlname => 'privateIpAddressesSet');
-  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'secondaryPrivateIpAddressCount');
-  has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
+  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool');
+  has Description => (is => 'ro', isa => 'Str');
+  has DeviceIndex => (is => 'ro', isa => 'Int');
+  has Groups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has NetworkInterfaceId => (is => 'ro', isa => 'Str');
+  has PrivateIpAddress => (is => 'ro', isa => 'Str');
+  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PrivateIpAddressSpecification]');
+  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int');
+  has SubnetId => (is => 'ro', isa => 'Str');
 }
 1

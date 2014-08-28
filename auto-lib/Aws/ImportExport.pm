@@ -2,64 +2,6 @@
 use AWS::API;
 
 
-package Aws::ImportExport::CancelJob {
-  use Moose;
-  has JobId => (is => 'ro', isa => 'Str', required => 1);
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::CancelJobResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CancelJobResult');
-}
-package Aws::ImportExport::CreateJob {
-  use Moose;
-  has JobType => (is => 'ro', isa => 'Str', required => 1);
-  has Manifest => (is => 'ro', isa => 'Str', required => 1);
-  has ManifestAddendum => (is => 'ro', isa => 'Str');
-  has ValidateOnly => (is => 'ro', isa => 'Bool', required => 1);
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::CreateJobResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateJobResult');
-}
-package Aws::ImportExport::GetStatus {
-  use Moose;
-  has JobId => (is => 'ro', isa => 'Str', required => 1);
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetStatus');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::GetStatusResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetStatusResult');
-}
-package Aws::ImportExport::ListJobs {
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxJobs => (is => 'ro', isa => 'Int');
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListJobs');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::ListJobsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListJobsResult');
-}
-package Aws::ImportExport::UpdateJob {
-  use Moose;
-  has JobId => (is => 'ro', isa => 'Str', required => 1);
-  has JobType => (is => 'ro', isa => 'Str', required => 1);
-  has Manifest => (is => 'ro', isa => 'Str', required => 1);
-  has ValidateOnly => (is => 'ro', isa => 'Bool', required => 1);
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::UpdateJobResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateJobResult');
-}
-
 package Aws::ImportExport::CancelJobResult {
   use Moose;
   with 'AWS::API::ResultParser';

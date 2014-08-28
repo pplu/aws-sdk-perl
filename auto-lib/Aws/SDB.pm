@@ -2,121 +2,6 @@
 use AWS::API;
 
 
-package Aws::SDB::BatchDeleteAttributes {
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Aws::SDB::DeletableItem]', traits => ['NameInRequest'], request_name => 'Item' , required => 1);
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchDeleteAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro');
-  class_has _result_key => (isa => 'Str', is => 'ro');
-}
-package Aws::SDB::BatchPutAttributes {
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Aws::SDB::ReplaceableItem]', traits => ['NameInRequest'], request_name => 'Item' , required => 1);
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchPutAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro');
-  class_has _result_key => (isa => 'Str', is => 'ro');
-}
-package Aws::SDB::CreateDomain {
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDomain');
-  class_has _returns => (isa => 'Str', is => 'ro');
-  class_has _result_key => (isa => 'Str', is => 'ro');
-}
-package Aws::SDB::DeleteAttributes {
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Aws::SDB::Attribute]', traits => ['NameInRequest'], request_name => 'Attribute' );
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Expected => (is => 'ro', isa => 'Aws::SDB::UpdateCondition');
-  has ItemName => (is => 'ro', isa => 'Str', required => 1);
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro');
-  class_has _result_key => (isa => 'Str', is => 'ro');
-}
-package Aws::SDB::DeleteDomain {
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDomain');
-  class_has _returns => (isa => 'Str', is => 'ro');
-  class_has _result_key => (isa => 'Str', is => 'ro');
-}
-package Aws::SDB::DomainMetadata {
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DomainMetadata');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SDB::DomainMetadataResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DomainMetadataResult');
-}
-package Aws::SDB::GetAttributes {
-  use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AttributeName' );
-  has ConsistentRead => (is => 'ro', isa => 'Bool');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has ItemName => (is => 'ro', isa => 'Str', required => 1);
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SDB::GetAttributesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetAttributesResult');
-}
-package Aws::SDB::ListDomains {
-  use Moose;
-  has MaxNumberOfDomains => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDomains');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SDB::ListDomainsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListDomainsResult');
-}
-package Aws::SDB::PutAttributes {
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Aws::SDB::ReplaceableAttribute]', traits => ['NameInRequest'], request_name => 'Attribute' , required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Expected => (is => 'ro', isa => 'Aws::SDB::UpdateCondition');
-  has ItemName => (is => 'ro', isa => 'Str', required => 1);
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro');
-  class_has _result_key => (isa => 'Str', is => 'ro');
-}
-package Aws::SDB::Select {
-  use Moose;
-  has ConsistentRead => (is => 'ro', isa => 'Bool');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SelectExpression => (is => 'ro', isa => 'Str', required => 1);
-
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Select');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SDB::SelectResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SelectResult');
-}
-
 package Aws::SDB::DomainMetadataResult {
   use Moose;
   with 'AWS::API::ResultParser';
@@ -154,7 +39,7 @@ package Aws::SDB {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'sdb');
   has version => (is => 'ro', isa => 'Str', default => '2009-04-15');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '1');
+  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
 
   use MooseX::ClassAttribute;
   class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
