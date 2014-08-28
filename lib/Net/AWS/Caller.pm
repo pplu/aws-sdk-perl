@@ -123,11 +123,13 @@ package Net::AWS::JsonCaller {
   use JSON;
   use POSIX qw(strftime);
   requires 'json_version';
+  use Module::Runtime qw//;
 
   # converts the params the user passed to the call into objects that represent the call
   sub new_with_coercions {
     my ($self, $class, %params) = @_;
-
+    
+    Module::Runtime::require_module($class);
     my %p;
     foreach my $att ($class->meta->get_attribute_list){
       next if (not exists $params{ $att });
@@ -209,6 +211,33 @@ package Net::AWS::JsonCaller {
 
     return $request;
   }
+
+  sub to_hash {
+    my ($self, $params) = @_;
+    my $refHash;
+    foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+      my $key = $att;
+      if (defined $params->$att) {
+        my $att_type = $params->meta->get_attribute($att)->type_constraint;
+        if ($att_type eq 'Bool') {
+          $refHash->{ $key } = ($params->$att)?1:0;
+        } elsif ($self->_is_internal_type($att_type)) {
+          $refHash->{ $key } = $params->$att;
+        } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
+          if ($self->_is_internal_type("$1")){
+            $refHash->{ $key } = $params->$att;
+          } else {
+            $refHash->{ $key } = [ map { $self->to_hash($_) } @{ $params->$att } ];
+          }
+        } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
+          $refHash->{ $key } = $params->$att;
+        } else {
+          $refHash->{ $key } = $self->to_hash($params->$att);
+        }
+      }
+    }
+    return $refHash;
+  }
 }
 
 package Net::AWS::JsonResponse {
@@ -232,6 +261,7 @@ package Net::AWS::QueryCaller {
   use Moose::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime); 
+  use Module::Runtime qw//;
 
   has array_flatten_string => (is => 'ro', isa => 'Str', lazy => 1, default => sub {
     my $self = shift;
@@ -270,6 +300,7 @@ package Net::AWS::QueryCaller {
   sub new_with_coercions {
     my ($self, $class, %params) = @_;
 
+    Module::Runtime::require_module($class);
     my %p;
     foreach my $att ($class->meta->get_attribute_list){
       next if (not exists $params{ $att });
@@ -403,6 +434,7 @@ package Net::AWS::XMLResponse {
 package Net::AWS::Caller {
   use Moose::Role;
   use Carp qw(croak);
+  use Module::Runtime qw//;
 
   requires '_process_response';
   has 'access_key'         => ( is => 'rw', isa => 'Str', required => 1, lazy => 1, default => sub { $ENV{AWS_ACCESS_KEY} || $ENV{AWS_ACCESS_KEY_ID} } );
@@ -458,6 +490,7 @@ package Net::AWS::Caller {
         $result = $result->{ $call_class->_result_key };
       }
 
+      Module::Runtime::require_module($call_class->_returns);
       my $o_result = $call_class->_returns->from_result($result);
       return $o_result;
     } else {
