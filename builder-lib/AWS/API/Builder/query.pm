@@ -147,13 +147,7 @@ package [% c.api %] {
         }
         $output .= "}\n1\n";
       }
-      my @class_parts = split /\:\:/, $inner_class;
-      my $class_file_name = "auto-lib/" . ( join '/', @class_parts ) . ".pm";
-      pop @class_parts;
-      eval { mkdir "auto-lib/" . ( join '/', @class_parts ) };
-      open my $file, ">", $class_file_name;
-      print $file $output;
-      close $file;
+      $self->save_class($inner_class, $output);
     }
   }
 }
