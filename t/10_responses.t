@@ -6,13 +6,22 @@ use warnings;
 package Test10ResponseReadFromFile {
   use Moose::Role;
   use File::Slurp;
+  use Module::Runtime;
+  use Data::Dumper;
+  use Test::More;
 
   has response_file => (isa => 'Str', is => 'rw');
 
   sub do_call {
     my ($self, $call_class, @params) = @_;
+    Module::Runtime::require_module($call_class);
+    Module::Runtime::require_module("${call_class}Result");
+
     my $content = read_file($self->response_file);
     my $result = $self->_process_response($content);
+
+    diag("DATASTRUCUTRE FROM RESPONSE");
+    diag(Dumper($result));
 
     if ($call_class->_returns){
       if ($call_class->_result_key){
