@@ -10,6 +10,9 @@ package AWS::API::Builder {
   has inner_classes => (is => 'rw', isa => 'HashRef', default => sub { {} });
   has enums => (is => 'rw', isa => 'HashRef', default => sub { {} });
 
+
+  has flattened_arrays => (is => 'rw', isa => 'Bool', default => sub { 0 });
+
   sub operation {
     my ($self, $op) = @_;
     return $self->struct->{operations}->{ $op } or die "method doesn't exist $op"
@@ -77,6 +80,7 @@ package AWS::API::Builder {
     if (not exists $param_props->{ type }) {
       die "doesn't have a type entry for $param_name with def " . Dumper($param_props);
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'list') {
+      $self->flattened_arrays(1) if ($param_props->{ flattened });
       my $inner_type = $self->get_caller_class_type($param_props->{members});
       $type = "ArrayRef[$inner_type]";
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'timestamp') {

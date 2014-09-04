@@ -19,7 +19,6 @@ package AWS::API::Builder::EC2 {
   has response_role  => (is => 'ro', lazy => 1, default => sub { 'Net::AWS::XMLResponse' });
   has signature_role => (is => 'ro', lazy => 1, default => sub { sprintf "Net::AWS::%sSignature", uc $_[0]->struct->{signature_version} } );
   has parameter_role => (is => 'ro', lazy => 1, default => sub { my $type = $_[0]->struct->{type}; substr($type,0,1) = uc substr($type,0,1); return "Net::AWS::${type}Caller" });
-  has flattened_arrays => (is => 'rw', isa => 'Bool', default => sub { 0 });
 
   has callargs_class_template => (is => 'ro', isa => 'Str', default => q#
 [%- operation = c.operation(op_name) %]

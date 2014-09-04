@@ -6,7 +6,7 @@ package Aws::SQS {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'sqs');
   has version => (is => 'ro', isa => 'Str', default => '2012-11-05');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
+  has flattened_arrays => (is => 'ro', isa => 'Str', default => '1');
 
   use MooseX::ClassAttribute;
   class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
