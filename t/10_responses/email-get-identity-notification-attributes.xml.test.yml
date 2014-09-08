@@ -4,4 +4,4 @@ service: SES
 tests:
   - expected: 1
     op: ==
-    path: 'NotificationAttributes.Map.{pplusdomain@gmail.com}.ForwardingEnabled'
+    path: 'NotificationAttributes.Map.{mail@example.com}.ForwardingEnabled'
