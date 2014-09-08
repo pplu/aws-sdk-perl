@@ -5,8 +5,8 @@
         <key>user@example.com</key>
         <value>
           <ForwardingEnabled>true</ForwardingEnabled>
-          <BounceTopic>arn:aws:sns:us-east-1:123456789012:example</BounceTopic>
-          <ComplaintTopic>arn:aws:sns:us-east-1:123456789012:example</ComplaintTopic>
+          <BounceTopic>arn:aws:sns:us-east-1:123456789012:examplebounce</BounceTopic>
+          <ComplaintTopic>arn:aws:sns:us-east-1:123456789012:examplecomplaint</ComplaintTopic>
         </value>
       </entry>
     </NotificationAttributes>

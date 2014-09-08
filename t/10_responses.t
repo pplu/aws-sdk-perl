@@ -106,6 +106,8 @@ sub test_file {
         use Data::Path;
         my $hpath = Data::Path->new($res);
         $got = $hpath->get($t->{dpath});
+      } else {
+        die "Didn't know how to get a result to compare to. Check that test has path or dpath entry";
       }
 
       cmp_ok($got, $t->{op}, $t->{expected}, "Got $path $t->{op} $t->{expected} from result");
@@ -117,7 +119,15 @@ use Scalar::Util 'blessed';
 
 sub resolve_path {
   my ($path, $res) = @_;
-  if (my ($call, $rest) = ($path =~ m/^(\w+?)\.(.*)$/)) {
+
+  my ($call, $rest);
+  if ($path =~ m/^\{(.*?)\}\.(.*)$/) {
+    ($call, $rest) = ($1, $2);
+  } elsif ($path =~ m/^(\w+?)\.(.*)$/) {
+    ($call, $rest) = ($1, $2);
+  }
+
+  if (defined $call and defined $rest) {
     if ($call =~ m/^\d+$/){
       die "Can't access index $call\n" if (not defined $res->[$call]);
       return resolve_path($rest, $res->[$call]);
