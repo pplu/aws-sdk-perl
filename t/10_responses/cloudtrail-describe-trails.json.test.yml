@@ -1,0 +1,13 @@
+---
+call: DescribeTrails
+service: CloudTrail
+tests:
+  - expected: 1
+    op: ==
+    path: 'trailList.0.IncludeGlobalServiceEvents'
+  - expected: 'Default'
+    op: eq
+    path: 'trailList.0.Name'
+  - expected: 'test-bucket'
+    op: eq
+    path: 'trailList.0.S3BucketName'
