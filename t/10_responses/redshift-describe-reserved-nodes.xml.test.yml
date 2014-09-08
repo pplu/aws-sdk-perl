@@ -6,7 +6,7 @@ tests:
     op: eq
     path: ReservedNodes.0.Duration
   - expected: 800
-    op: eq
+    op: ==
     path: ReservedNodes.0.FixedPrice
   - expected: 1
     op: eq
@@ -33,7 +33,7 @@ tests:
     op: eq
     path: ReservedNodes.1.Duration
   - expected: 12452
-    op: eq
+    op: ==
     path: ReservedNodes.1.FixedPrice
   - expected: 2
     op: eq
@@ -60,13 +60,13 @@ tests:
     op: eq
     path: ReservedNodes.1.State
   - expected: 0
-    op: eq
+    op: ==
     path: ReservedNodes.1.UsagePrice
   - expected: 31536000
     op: eq
     path: ReservedNodes.2.Duration
   - expected: 800
-    op: eq
+    op: ==
     path: ReservedNodes.2.FixedPrice
   - expected: 1
     op: eq
