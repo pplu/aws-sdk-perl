@@ -113,6 +113,8 @@ sub test_file {
   }
 }
 
+use Scalar::Util 'blessed';
+
 sub resolve_path {
   my ($path, $res) = @_;
   if (my ($call, $rest) = ($path =~ m/^(\w+?)\.(.*)$/)) {
@@ -120,17 +122,25 @@ sub resolve_path {
       die "Can't access index $call\n" if (not defined $res->[$call]);
       return resolve_path($rest, $res->[$call]);
     } else {
-      die "Can't call method $call on an undefined value\n" if (not defined $res); 
-      die "Doesn't have accessor $call\n" if (not $res->can($call));
-      return resolve_path($rest, $res->$call);
+      die "Can't call method $call on an undefined value\n" if (not defined $res);
+      if (blessed($res)){
+        die "Doesn't have accessor $call on path $path\n" if (not $res->can($call));
+        return resolve_path($rest, $res->$call);
+      } else {
+        return resolve_path($rest, $res->{$call});
+      }
     }
   } else {
     die "Can't access $path on an undefined value\n" if (not defined $res); 
     if ($path =~ m/^\d+$/){
       return $res->[$path];
     } else {
-      die "Doesn't have accessor $path\n" if (not $res->can($path));
-      return $res->$path;
+      if (blessed($res)){
+        die "Doesn't have accessor $path\n" if (not $res->can($path));
+        return $res->$path;
+      } else {
+        return $res->{$path};
+      }
     }
   }
 }
