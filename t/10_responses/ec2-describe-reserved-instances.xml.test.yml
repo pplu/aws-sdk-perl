@@ -12,7 +12,7 @@ tests:
     op: eq
     path: ReservedInstances.0.Duration
   - expected: 1820
-    op: eq
+    op: ==
     path: ReservedInstances.0.FixedPrice
   - expected: 3
     op: eq
