@@ -14,14 +14,10 @@ my ($msgs, $response);
 
 p $q;
 
-#$msgs = $sqs->ReceiveMessage(QueueUrl => $q->QueueUrl,
-#                             WaitTimeSeconds => 20,
-#                             MaxNumberOfMessages => 5,
-#);
-#p $msgs;
- 
-#$response = $sqs->SendMessage(QueueUrl => $q->QueueUrl, MessageBody => 'Hello world!');
-#p $response;
+# You shouldn't be instancing Aws::SQS::SendMessageBatchRequestEntry 
+# as we're doing in this example. Look at the "just passing hashes" 
+# if messages with Id 1 and 2 for the right thing
+use Aws::SQS::SendMessageBatchRequestEntry;
 
 $response = $sqs->SendMessageBatch(QueueUrl => $q->QueueUrl,
                                    Entries => [
