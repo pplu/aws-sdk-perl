@@ -15,10 +15,10 @@ tests:
     op: eq
     path: ReservedDBInstancesOfferings.0.Duration
   - expected: 2058
-    op: eq
+    op: ==
     path: ReservedDBInstancesOfferings.0.FixedPrice
   - expected: 0
-    op: eq
+    op: ==
     path: ReservedDBInstancesOfferings.0.MultiAZ
   - expected: Heavy Utilization
     op: eq
@@ -36,7 +36,7 @@ tests:
     op: eq
     path: ReservedDBInstancesOfferings.0.ReservedDBInstancesOfferingId
   - expected: 0
-    op: eq
+    op: ==
     path: ReservedDBInstancesOfferings.0.UsagePrice
   - expected: USD
     op: eq
@@ -48,7 +48,7 @@ tests:
     op: eq
     path: ReservedDBInstancesOfferings.1.Duration
   - expected: 548
-    op: eq
+    op: ==
     path: ReservedDBInstancesOfferings.1.FixedPrice
   - expected: 0
     op: eq
@@ -75,7 +75,7 @@ tests:
     op: eq
     path: ReservedDBInstancesOfferings.2.Duration
   - expected: 2512
-    op: eq
+    op: ==
     path: ReservedDBInstancesOfferings.2.FixedPrice
   - expected: 1
     op: eq
