@@ -1,6 +1,5 @@
 package Aws::Kinesis::Shard {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AdjacentParentShardId => (is => 'ro', isa => 'Str');
   has HashKeyRange => (is => 'ro', isa => 'Aws::Kinesis::HashKeyRange', required => 1);
   has ParentShardId => (is => 'ro', isa => 'Str');

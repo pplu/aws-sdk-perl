@@ -1,6 +1,5 @@
 package Aws::STS::Credentials {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AccessKeyId => (is => 'ro', isa => 'Str', required => 1);
   has Expiration => (is => 'ro', isa => 'Str', required => 1);
   has SecretAccessKey => (is => 'ro', isa => 'Str', required => 1);

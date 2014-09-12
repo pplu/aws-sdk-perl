@@ -1,6 +1,5 @@
 package Aws::EC2::ReservedInstancesModification {
   use Moose;
-  with ('AWS::API::UnwrappedParser');
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'clientToken');
   has CreateDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createDate');
   has EffectiveDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'effectiveDate');

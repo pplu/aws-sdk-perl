@@ -1,6 +1,5 @@
 package Aws::ElastiCache::Snapshot {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str');

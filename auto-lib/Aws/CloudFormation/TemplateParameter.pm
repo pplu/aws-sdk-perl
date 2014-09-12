@@ -1,6 +1,5 @@
 package Aws::CloudFormation::TemplateParameter {
   use Moose;
-  with ('AWS::API::ResultParser');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has NoEcho => (is => 'ro', isa => 'Bool');

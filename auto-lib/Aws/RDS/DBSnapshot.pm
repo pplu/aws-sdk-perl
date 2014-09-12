@@ -1,6 +1,5 @@
 package Aws::RDS::DBSnapshot {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');

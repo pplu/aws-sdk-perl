@@ -1,6 +1,5 @@
 package Aws::EC2::VpnGateway {
   use Moose;
-  with ('AWS::API::UnwrappedParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'state');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');

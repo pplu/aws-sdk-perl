@@ -1,6 +1,5 @@
 package Aws::ElasticBeanstalk::EnvironmentDescription {
   use Moose;
-  with ('AWS::API::ResultParser');
   has ApplicationName => (is => 'ro', isa => 'Str');
   has CNAME => (is => 'ro', isa => 'Str');
   has DateCreated => (is => 'ro', isa => 'Str');

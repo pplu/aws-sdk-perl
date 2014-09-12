@@ -1,6 +1,5 @@
 package Aws::AutoScaling::Activity {
   use Moose;
-  with ('AWS::API::ResultParser');
   has ActivityId => (is => 'ro', isa => 'Str', required => 1);
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Cause => (is => 'ro', isa => 'Str', required => 1);

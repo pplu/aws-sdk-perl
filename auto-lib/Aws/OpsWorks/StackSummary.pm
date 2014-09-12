@@ -1,6 +1,5 @@
 package Aws::OpsWorks::StackSummary {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AppsCount => (is => 'ro', isa => 'Int');
   has Arn => (is => 'ro', isa => 'Str');
   has InstancesCount => (is => 'ro', isa => 'Aws::OpsWorks::InstancesCount');

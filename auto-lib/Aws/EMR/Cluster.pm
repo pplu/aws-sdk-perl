@@ -1,6 +1,5 @@
 package Aws::EMR::Cluster {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Applications => (is => 'ro', isa => 'ArrayRef[Aws::EMR::Application]');
   has AutoTerminate => (is => 'ro', isa => 'Bool');
   has Ec2InstanceAttributes => (is => 'ro', isa => 'Aws::EMR::Ec2InstanceAttributes');

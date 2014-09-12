@@ -1,6 +1,5 @@
 package Aws::ELB::LoadBalancerDescription {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has BackendServerDescriptions => (is => 'ro', isa => 'ArrayRef[Aws::ELB::BackendServerDescription]');
   has CanonicalHostedZoneName => (is => 'ro', isa => 'Str');

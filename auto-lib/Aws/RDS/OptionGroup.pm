@@ -1,6 +1,5 @@
 package Aws::RDS::OptionGroup {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AllowsVpcAndNonVpcInstanceMemberships => (is => 'ro', isa => 'Bool');
   has EngineName => (is => 'ro', isa => 'Str');
   has MajorEngineVersion => (is => 'ro', isa => 'Str');

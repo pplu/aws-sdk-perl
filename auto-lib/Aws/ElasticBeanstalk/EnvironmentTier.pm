@@ -1,6 +1,5 @@
 package Aws::ElasticBeanstalk::EnvironmentTier {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');

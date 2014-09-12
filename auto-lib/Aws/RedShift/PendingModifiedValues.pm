@@ -1,6 +1,5 @@
 package Aws::RedShift::PendingModifiedValues {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has ClusterType => (is => 'ro', isa => 'Str');

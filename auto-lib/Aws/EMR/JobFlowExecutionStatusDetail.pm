@@ -1,6 +1,5 @@
 package Aws::EMR::JobFlowExecutionStatusDetail {
   use Moose;
-  with ('AWS::API::ResultParser');
   has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
   has EndDateTime => (is => 'ro', isa => 'Str');
   has LastStateChangeReason => (is => 'ro', isa => 'Str');

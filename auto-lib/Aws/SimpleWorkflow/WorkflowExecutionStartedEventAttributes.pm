@@ -1,6 +1,5 @@
 package Aws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser');
   has childPolicy => (is => 'ro', isa => 'Str', required => 1);
   has continuedExecutionRunId => (is => 'ro', isa => 'Str');
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');

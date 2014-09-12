@@ -1,6 +1,5 @@
 package Aws::EC2::ImportInstanceTaskDetails {
   use Moose;
-  with ('AWS::API::UnwrappedParser');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has Platform => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'platform');

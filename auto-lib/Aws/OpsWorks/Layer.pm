@@ -1,6 +1,5 @@
 package Aws::OpsWorks::Layer {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::LayerAttributes');
   has AutoAssignElasticIps => (is => 'ro', isa => 'Bool');
   has AutoAssignPublicIps => (is => 'ro', isa => 'Bool');

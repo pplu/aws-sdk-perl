@@ -1,6 +1,5 @@
 package Aws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes {
   use Moose;
-  with ('AWS::API::ResultParser');
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has activityType => (is => 'ro', isa => 'Aws::SimpleWorkflow::ActivityType', required => 1);
   has control => (is => 'ro', isa => 'Str');

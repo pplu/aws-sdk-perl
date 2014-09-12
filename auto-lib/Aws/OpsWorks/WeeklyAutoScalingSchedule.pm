@@ -1,6 +1,5 @@
 package Aws::OpsWorks::WeeklyAutoScalingSchedule {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Friday => (is => 'ro', isa => 'Aws::OpsWorks::DailyAutoScalingSchedule');
   has Monday => (is => 'ro', isa => 'Aws::OpsWorks::DailyAutoScalingSchedule');
   has Saturday => (is => 'ro', isa => 'Aws::OpsWorks::DailyAutoScalingSchedule');

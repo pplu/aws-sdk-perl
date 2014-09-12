@@ -1,6 +1,5 @@
 package Aws::ElastiCache::ReplicationGroup {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Description => (is => 'ro', isa => 'Str');
   has MemberClusters => (is => 'ro', isa => 'ArrayRef[Str]');
   has NodeGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::NodeGroup]');

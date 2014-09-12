@@ -1,6 +1,5 @@
 package Aws::OpsWorks::Volume {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has Device => (is => 'ro', isa => 'Str');
   has Ec2VolumeId => (is => 'ro', isa => 'Str');

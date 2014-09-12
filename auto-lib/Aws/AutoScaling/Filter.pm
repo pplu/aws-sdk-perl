@@ -1,6 +1,5 @@
 package Aws::AutoScaling::Filter {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Name => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str]');
 }

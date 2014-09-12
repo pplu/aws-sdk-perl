@@ -1,6 +1,5 @@
 package Aws::RDS::EventSubscription {
   use Moose;
-  with ('AWS::API::ResultParser');
   has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has CustomerAwsId => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');

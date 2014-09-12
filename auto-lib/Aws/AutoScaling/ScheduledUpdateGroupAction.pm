@@ -1,6 +1,5 @@
 package Aws::AutoScaling::ScheduledUpdateGroupAction {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has DesiredCapacity => (is => 'ro', isa => 'Int');
   has EndTime => (is => 'ro', isa => 'Str');

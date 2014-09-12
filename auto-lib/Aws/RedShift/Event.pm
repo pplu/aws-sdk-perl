@@ -1,6 +1,5 @@
 package Aws::RedShift::Event {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Date => (is => 'ro', isa => 'Str');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has EventId => (is => 'ro', isa => 'Str');

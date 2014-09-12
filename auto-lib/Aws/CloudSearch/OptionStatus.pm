@@ -1,6 +1,5 @@
 package Aws::CloudSearch::OptionStatus {
   use Moose;
-  with ('AWS::API::ResultParser');
   has CreationDate => (is => 'ro', isa => 'Str', required => 1);
   has PendingDeletion => (is => 'ro', isa => 'Bool');
   has State => (is => 'ro', isa => 'Str', required => 1);

@@ -1,6 +1,5 @@
 package Aws::RedShift::ReservedNode {
   use Moose;
-  with ('AWS::API::ResultParser');
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
   has FixedPrice => (is => 'ro', isa => 'Num');

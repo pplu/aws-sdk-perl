@@ -1,6 +1,5 @@
 package Aws::CloudSearch::LiteralOptions {
   use Moose;
-  with ('AWS::API::ResultParser');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has FacetEnabled => (is => 'ro', isa => 'Bool');
   has ReturnEnabled => (is => 'ro', isa => 'Bool');

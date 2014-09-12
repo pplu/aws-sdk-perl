@@ -1,6 +1,5 @@
 package Aws::EMR::InstanceGroupConfig {
   use Moose;
-  with ('AWS::API::ResultParser');
   has BidPrice => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
   has InstanceRole => (is => 'ro', isa => 'Str', required => 1);

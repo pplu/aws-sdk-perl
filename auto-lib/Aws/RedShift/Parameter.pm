@@ -1,6 +1,5 @@
 package Aws::RedShift::Parameter {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AllowedValues => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');

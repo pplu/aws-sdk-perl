@@ -1,6 +1,5 @@
 package Aws::IAM::PasswordPolicy {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AllowUsersToChangePassword => (is => 'ro', isa => 'Bool');
   has ExpirePasswords => (is => 'ro', isa => 'Bool');
   has HardExpiry => (is => 'ro', isa => 'Bool');

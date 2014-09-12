@@ -1,6 +1,5 @@
 package Aws::EMR::StepStatus {
   use Moose;
-  with ('AWS::API::ResultParser');
   has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::StepStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::StepTimeline');

@@ -1,6 +1,5 @@
 package Aws::CloudWatchLogs::MetricFilter {
   use Moose;
-  with ('AWS::API::ResultParser');
   has creationTime => (is => 'ro', isa => 'Num');
   has filterName => (is => 'ro', isa => 'Str');
   has filterPattern => (is => 'ro', isa => 'Str');

@@ -106,7 +106,6 @@ package [% c.api %] {
       } else {
         $output .= "package $inner_class {\n";
         $output .= "  use Moose;\n";
-        $output .= "  with ('AWS::API::UnwrappedParser');\n";
  
         my $members = $self->inner_classes->{ $inner_class }->{members};
         foreach my $param_name (sort keys %$members){

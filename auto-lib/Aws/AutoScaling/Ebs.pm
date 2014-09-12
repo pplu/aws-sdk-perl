@@ -1,6 +1,5 @@
 package Aws::AutoScaling::Ebs {
   use Moose;
-  with ('AWS::API::ResultParser');
   has DeleteOnTermination => (is => 'ro', isa => 'Bool');
   has Iops => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');

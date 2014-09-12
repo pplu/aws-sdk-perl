@@ -1,6 +1,5 @@
 package Aws::SimpleWorkflow::TimerStartedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser');
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has startToFireTimeout => (is => 'ro', isa => 'Str', required => 1);

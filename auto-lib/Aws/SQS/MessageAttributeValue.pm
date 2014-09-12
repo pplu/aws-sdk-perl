@@ -1,6 +1,5 @@
 package Aws::SQS::MessageAttributeValue {
   use Moose;
-  with ('AWS::API::ResultParser');
   has BinaryListValues => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'BinaryListValue');
   has BinaryValue => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str', required => 1);

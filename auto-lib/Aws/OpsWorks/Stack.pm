@@ -1,6 +1,5 @@
 package Aws::OpsWorks::Stack {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Arn => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::StackAttributes');
   has ChefConfiguration => (is => 'ro', isa => 'Aws::OpsWorks::ChefConfiguration');

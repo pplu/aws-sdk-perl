@@ -1,6 +1,5 @@
 package Aws::EMR::JobFlowDetail {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AmiVersion => (is => 'ro', isa => 'Str');
   has BootstrapActions => (is => 'ro', isa => 'ArrayRef[Aws::EMR::BootstrapActionDetail]');
   has ExecutionStatusDetail => (is => 'ro', isa => 'Aws::EMR::JobFlowExecutionStatusDetail', required => 1);

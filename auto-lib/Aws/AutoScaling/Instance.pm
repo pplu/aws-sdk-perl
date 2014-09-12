@@ -1,6 +1,5 @@
 package Aws::AutoScaling::Instance {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);

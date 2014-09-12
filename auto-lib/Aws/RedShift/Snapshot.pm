@@ -1,6 +1,5 @@
 package Aws::RedShift::Snapshot {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AccountsWithRestoreAccess => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::AccountWithRestoreAccess]');
   has ActualIncrementalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
   has AvailabilityZone => (is => 'ro', isa => 'Str');

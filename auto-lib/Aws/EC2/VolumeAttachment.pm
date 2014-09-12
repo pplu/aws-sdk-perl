@@ -1,6 +1,5 @@
 package Aws::EC2::VolumeAttachment {
   use Moose;
-  with ('AWS::API::UnwrappedParser');
   has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
   has Device => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'device');

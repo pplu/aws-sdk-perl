@@ -1,6 +1,5 @@
 package Aws::RDS::EC2SecurityGroup {
   use Moose;
-  with ('AWS::API::ResultParser');
   has EC2SecurityGroupId => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');

@@ -1,6 +1,5 @@
 package Aws::ElastiCache::CacheNodeTypeSpecificParameter {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AllowedValues => (is => 'ro', isa => 'Str');
   has CacheNodeTypeSpecificValues => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::CacheNodeTypeSpecificValue]');
   has DataType => (is => 'ro', isa => 'Str');

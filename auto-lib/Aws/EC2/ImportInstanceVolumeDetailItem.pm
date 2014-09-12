@@ -1,6 +1,5 @@
 package Aws::EC2::ImportInstanceVolumeDetailItem {
   use Moose;
-  with ('AWS::API::UnwrappedParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone', required => 1);
   has BytesConverted => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'bytesConverted', required => 1);
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');

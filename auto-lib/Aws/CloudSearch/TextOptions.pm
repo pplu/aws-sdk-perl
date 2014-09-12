@@ -1,6 +1,5 @@
 package Aws::CloudSearch::TextOptions {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AnalysisScheme => (is => 'ro', isa => 'Str');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has HighlightEnabled => (is => 'ro', isa => 'Bool');

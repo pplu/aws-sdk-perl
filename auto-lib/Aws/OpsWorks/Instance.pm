@@ -1,6 +1,5 @@
 package Aws::OpsWorks::Instance {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AmiId => (is => 'ro', isa => 'Str');
   has Architecture => (is => 'ro', isa => 'Str');
   has AutoScalingType => (is => 'ro', isa => 'Str');

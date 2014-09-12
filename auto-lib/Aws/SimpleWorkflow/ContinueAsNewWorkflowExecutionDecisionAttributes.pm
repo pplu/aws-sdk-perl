@@ -1,6 +1,5 @@
 package Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes {
   use Moose;
-  with ('AWS::API::ResultParser');
   has childPolicy => (is => 'ro', isa => 'Str');
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has input => (is => 'ro', isa => 'Str');

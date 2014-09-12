@@ -1,6 +1,5 @@
 package Aws::AutoScaling::LaunchConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::BlockDeviceMapping]');
   has CreatedTime => (is => 'ro', isa => 'Str', required => 1);

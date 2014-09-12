@@ -1,6 +1,5 @@
 package Aws::Support::TrustedAdvisorCheckDescription {
   use Moose;
-  with ('AWS::API::ResultParser');
   has category => (is => 'ro', isa => 'Str', required => 1);
   has description => (is => 'ro', isa => 'Str', required => 1);
   has id => (is => 'ro', isa => 'Str', required => 1);

@@ -1,6 +1,5 @@
 package Aws::StorageGateway::StorediSCSIVolumeInformation {
   use Moose;
-  with ('AWS::API::ResultParser');
   has PreservedExistingData => (is => 'ro', isa => 'Bool');
   has SourceSnapshotId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');

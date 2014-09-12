@@ -1,6 +1,5 @@
 package Aws::EC2::ImportInstanceLaunchSpecification {
   use Moose;
-  with ('AWS::API::UnwrappedParser');
   has AdditionalInfo => (is => 'ro', isa => 'Str');
   has Architecture => (is => 'ro', isa => 'Str');
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]');

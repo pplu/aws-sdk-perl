@@ -1,6 +1,5 @@
 package Aws::SimpleWorkflow::WorkflowExecutionInfo {
   use Moose;
-  with ('AWS::API::ResultParser');
   has cancelRequested => (is => 'ro', isa => 'Bool');
   has closeStatus => (is => 'ro', isa => 'Str');
   has closeTimestamp => (is => 'ro', isa => 'Str');

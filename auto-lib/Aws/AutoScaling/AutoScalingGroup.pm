@@ -1,6 +1,5 @@
 package Aws::AutoScaling::AutoScalingGroup {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AutoScalingGroupARN => (is => 'ro', isa => 'Str');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);

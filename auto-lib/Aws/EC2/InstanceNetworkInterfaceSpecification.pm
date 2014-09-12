@@ -1,6 +1,5 @@
 package Aws::EC2::InstanceNetworkInterfaceSpecification {
   use Moose;
-  with ('AWS::API::UnwrappedParser');
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'associatePublicIpAddress');
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');

@@ -1,6 +1,5 @@
 package Aws::OpsWorks::VolumeConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Iops => (is => 'ro', isa => 'Int');
   has MountPoint => (is => 'ro', isa => 'Str', required => 1);
   has NumberOfDisks => (is => 'ro', isa => 'Int', required => 1);

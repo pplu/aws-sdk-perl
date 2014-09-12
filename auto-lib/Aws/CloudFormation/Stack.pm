@@ -1,6 +1,5 @@
 package Aws::CloudFormation::Stack {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');

@@ -1,6 +1,5 @@
 package Aws::EC2::SecurityGroup {
   use Moose;
-  with ('AWS::API::UnwrappedParser');
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupDescription');
   has GroupId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupId');
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');

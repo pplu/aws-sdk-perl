@@ -1,6 +1,5 @@
 package Aws::OpsWorks::Deployment {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AppId => (is => 'ro', isa => 'Str');
   has Command => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommand');
   has Comment => (is => 'ro', isa => 'Str');

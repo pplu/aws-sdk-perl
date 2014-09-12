@@ -1,6 +1,5 @@
 package Aws::StorageGateway::VolumeiSCSIAttributes {
   use Moose;
-  with ('AWS::API::ResultParser');
   has ChapEnabled => (is => 'ro', isa => 'Bool');
   has LunNumber => (is => 'ro', isa => 'Int');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');

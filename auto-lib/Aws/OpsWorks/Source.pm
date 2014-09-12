@@ -1,6 +1,5 @@
 package Aws::OpsWorks::Source {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Password => (is => 'ro', isa => 'Str');
   has Revision => (is => 'ro', isa => 'Str');
   has SshKey => (is => 'ro', isa => 'Str');

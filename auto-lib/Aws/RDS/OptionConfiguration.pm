@@ -1,6 +1,5 @@
 package Aws::RDS::OptionConfiguration {
   use Moose;
-  with ('AWS::API::ResultParser');
   has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str]');
   has OptionName => (is => 'ro', isa => 'Str', required => 1);
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionSetting]');

@@ -1,6 +1,5 @@
 package Aws::IAM::LoginProfile {
   use Moose;
-  with ('AWS::API::ResultParser');
   has CreateDate => (is => 'ro', isa => 'Str', required => 1);
   has PasswordResetRequired => (is => 'ro', isa => 'Bool');
   has UserName => (is => 'ro', isa => 'Str', required => 1);

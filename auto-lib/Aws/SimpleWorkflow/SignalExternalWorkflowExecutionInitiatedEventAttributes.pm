@@ -1,6 +1,5 @@
 package Aws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser');
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has input => (is => 'ro', isa => 'Str');

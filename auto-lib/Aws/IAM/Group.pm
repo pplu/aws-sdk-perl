@@ -1,6 +1,5 @@
 package Aws::IAM::Group {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has CreateDate => (is => 'ro', isa => 'Str');
   has GroupId => (is => 'ro', isa => 'Str', required => 1);

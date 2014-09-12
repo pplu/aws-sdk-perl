@@ -1,6 +1,5 @@
 package Aws::OpsWorks::RdsDbInstance {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Address => (is => 'ro', isa => 'Str');
   has DbInstanceIdentifier => (is => 'ro', isa => 'Str');
   has DbPassword => (is => 'ro', isa => 'Str');

@@ -1,6 +1,5 @@
 package Aws::SimpleWorkflow::ChildWorkflowExecutionTerminatedEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser');
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
   has workflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);

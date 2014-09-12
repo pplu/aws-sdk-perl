@@ -1,6 +1,5 @@
 package Aws::RDS::OptionGroupOption {
   use Moose;
-  with ('AWS::API::ResultParser');
   has DefaultPort => (is => 'ro', isa => 'Int');
   has Description => (is => 'ro', isa => 'Str');
   has EngineName => (is => 'ro', isa => 'Str');

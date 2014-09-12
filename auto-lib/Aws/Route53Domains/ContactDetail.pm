@@ -1,6 +1,5 @@
 package Aws::Route53Domains::ContactDetail {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AddressLine1 => (is => 'ro', isa => 'Str');
   has AddressLine2 => (is => 'ro', isa => 'Str');
   has City => (is => 'ro', isa => 'Str');

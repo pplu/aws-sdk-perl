@@ -1,6 +1,5 @@
 package Aws::Support::CaseDetails {
   use Moose;
-  with ('AWS::API::ResultParser');
   has caseId => (is => 'ro', isa => 'Str');
   has categoryCode => (is => 'ro', isa => 'Str');
   has ccEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]');

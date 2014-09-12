@@ -1,6 +1,5 @@
 package Aws::SES::SendDataPoint {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Bounces => (is => 'ro', isa => 'Num');
   has Complaints => (is => 'ro', isa => 'Num');
   has DeliveryAttempts => (is => 'ro', isa => 'Num');

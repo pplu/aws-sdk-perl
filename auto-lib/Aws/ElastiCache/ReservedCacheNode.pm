@@ -1,6 +1,5 @@
 package Aws::ElastiCache::ReservedCacheNode {
   use Moose;
-  with ('AWS::API::ResultParser');
   has CacheNodeCount => (is => 'ro', isa => 'Int');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');

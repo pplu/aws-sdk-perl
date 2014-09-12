@@ -1,6 +1,5 @@
 package Aws::OpsWorks::ElasticLoadBalancer {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has DnsName => (is => 'ro', isa => 'Str');
   has Ec2InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');

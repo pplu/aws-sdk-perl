@@ -1,6 +1,5 @@
 package Aws::RDS::DBEngineVersion {
   use Moose;
-  with ('AWS::API::ResultParser');
   has DBEngineDescription => (is => 'ro', isa => 'Str');
   has DBEngineVersionDescription => (is => 'ro', isa => 'Str');
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');

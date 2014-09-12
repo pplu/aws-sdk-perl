@@ -1,6 +1,5 @@
 package Aws::CloudWatch::MetricAlarm {
   use Moose;
-  with ('AWS::API::ResultParser');
   has ActionsEnabled => (is => 'ro', isa => 'Bool');
   has AlarmActions => (is => 'ro', isa => 'ArrayRef[Str]');
   has AlarmArn => (is => 'ro', isa => 'Str');

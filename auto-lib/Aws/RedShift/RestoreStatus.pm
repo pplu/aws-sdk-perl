@@ -1,6 +1,5 @@
 package Aws::RedShift::RestoreStatus {
   use Moose;
-  with ('AWS::API::ResultParser');
   has CurrentRestoreRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
   has ElapsedTimeInSeconds => (is => 'ro', isa => 'Num');
   has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => 'Num');

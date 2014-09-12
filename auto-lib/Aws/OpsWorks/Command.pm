@@ -1,6 +1,5 @@
 package Aws::OpsWorks::Command {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AcknowledgedAt => (is => 'ro', isa => 'Str');
   has CommandId => (is => 'ro', isa => 'Str');
   has CompletedAt => (is => 'ro', isa => 'Str');

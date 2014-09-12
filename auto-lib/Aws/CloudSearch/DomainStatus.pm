@@ -1,6 +1,5 @@
 package Aws::CloudSearch::DomainStatus {
   use Moose;
-  with ('AWS::API::ResultParser');
   has ARN => (is => 'ro', isa => 'Str');
   has Created => (is => 'ro', isa => 'Bool');
   has Deleted => (is => 'ro', isa => 'Bool');

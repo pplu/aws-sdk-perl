@@ -97,6 +97,7 @@ package [% c.api %] {
           $output .= "  use Moose;\n";
           $output .= "  with 'AWS::API::MapParser';\n";
           my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members});
+
           my $members = $self->inner_classes->{ $inner_class }->{keys}->{enum};
           foreach my $param_name (sort @$members){
             $output .= "  has $param_name => (is => 'ro', isa => '$type'";
@@ -122,7 +123,6 @@ package [% c.api %] {
       } else {
         $output .= "package $inner_class {\n";
         $output .= "  use Moose;\n";
-        $output .= "  with ('AWS::API::ResultParser');\n";
         my $members = $self->inner_classes->{ $inner_class }->{members};
         foreach my $param_name (sort keys %$members){
           my $param_props = $members->{ $param_name };

@@ -1,6 +1,5 @@
 package Aws::OpsWorks::App {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AppId => (is => 'ro', isa => 'Str');
   has AppSource => (is => 'ro', isa => 'Aws::OpsWorks::Source');
   has Attributes => (is => 'ro', isa => 'Aws::OpsWorks::AppAttributes');

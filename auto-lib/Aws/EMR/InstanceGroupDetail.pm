@@ -1,6 +1,5 @@
 package Aws::EMR::InstanceGroupDetail {
   use Moose;
-  with ('AWS::API::ResultParser');
   has BidPrice => (is => 'ro', isa => 'Str');
   has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
   has EndDateTime => (is => 'ro', isa => 'Str');

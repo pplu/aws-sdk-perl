@@ -1,6 +1,5 @@
 package Aws::CloudFormation::StackResourceDetail {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Description => (is => 'ro', isa => 'Str');
   has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);

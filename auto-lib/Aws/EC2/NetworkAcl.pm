@@ -1,6 +1,5 @@
 package Aws::EC2::NetworkAcl {
   use Moose;
-  with ('AWS::API::UnwrappedParser');
   has Associations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::NetworkAclAssociation]', traits => ['Unwrapped'], xmlname => 'associationSet');
   has Entries => (is => 'ro', isa => 'ArrayRef[Aws::EC2::NetworkAclEntry]', traits => ['Unwrapped'], xmlname => 'entrySet');
   has IsDefault => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'default');

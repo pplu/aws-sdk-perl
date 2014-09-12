@@ -1,6 +1,5 @@
 package Aws::RDS::DBInstance {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');

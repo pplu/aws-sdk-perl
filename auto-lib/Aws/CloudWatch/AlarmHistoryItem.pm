@@ -1,6 +1,5 @@
 package Aws::CloudWatch::AlarmHistoryItem {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AlarmName => (is => 'ro', isa => 'Str');
   has HistoryData => (is => 'ro', isa => 'Str');
   has HistoryItemType => (is => 'ro', isa => 'Str');

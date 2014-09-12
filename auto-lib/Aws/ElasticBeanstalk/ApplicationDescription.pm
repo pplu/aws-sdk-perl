@@ -1,6 +1,5 @@
 package Aws::ElasticBeanstalk::ApplicationDescription {
   use Moose;
-  with ('AWS::API::ResultParser');
   has ApplicationName => (is => 'ro', isa => 'Str');
   has ConfigurationTemplates => (is => 'ro', isa => 'ArrayRef[Str]');
   has DateCreated => (is => 'ro', isa => 'Str');

@@ -1,6 +1,5 @@
 package Aws::DirectConnect::Interconnect {
   use Moose;
-  with ('AWS::API::ResultParser');
   has bandwidth => (is => 'ro', isa => 'Str');
   has interconnectId => (is => 'ro', isa => 'Str');
   has interconnectName => (is => 'ro', isa => 'Str');

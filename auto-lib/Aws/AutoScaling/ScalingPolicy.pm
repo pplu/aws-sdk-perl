@@ -1,6 +1,5 @@
 package Aws::AutoScaling::ScalingPolicy {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AdjustmentType => (is => 'ro', isa => 'Str');
   has Alarms => (is => 'ro', isa => 'ArrayRef[Aws::AutoScaling::Alarm]');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');

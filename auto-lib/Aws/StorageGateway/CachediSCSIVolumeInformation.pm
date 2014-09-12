@@ -1,6 +1,5 @@
 package Aws::StorageGateway::CachediSCSIVolumeInformation {
   use Moose;
-  with ('AWS::API::ResultParser');
   has SourceSnapshotId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');

@@ -1,6 +1,5 @@
 package Aws::RedShift::Cluster {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');

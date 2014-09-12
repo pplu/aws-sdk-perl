@@ -1,6 +1,5 @@
 package Aws::EMR::JobFlowInstancesConfig {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Ec2KeyName => (is => 'ro', isa => 'Str');
   has Ec2SubnetId => (is => 'ro', isa => 'Str');
   has HadoopVersion => (is => 'ro', isa => 'Str');

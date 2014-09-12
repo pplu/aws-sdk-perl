@@ -1,6 +1,5 @@
 package Aws::OpsWorks::RaidArray {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has Device => (is => 'ro', isa => 'Str');

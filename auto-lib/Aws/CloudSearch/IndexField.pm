@@ -1,6 +1,5 @@
 package Aws::CloudSearch::IndexField {
   use Moose;
-  with ('AWS::API::ResultParser');
   has DateArrayOptions => (is => 'ro', isa => 'Aws::CloudSearch::DateArrayOptions');
   has DateOptions => (is => 'ro', isa => 'Aws::CloudSearch::DateOptions');
   has DoubleArrayOptions => (is => 'ro', isa => 'Aws::CloudSearch::DoubleArrayOptions');

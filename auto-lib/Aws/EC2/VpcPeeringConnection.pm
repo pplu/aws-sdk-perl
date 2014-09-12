@@ -1,6 +1,5 @@
 package Aws::EC2::VpcPeeringConnection {
   use Moose;
-  with ('AWS::API::UnwrappedParser');
   has AccepterVpcInfo => (is => 'ro', isa => 'Aws::EC2::VpcPeeringConnectionVpcInfo', traits => ['Unwrapped'], xmlname => 'accepterVpcInfo');
   has ExpirationTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'expirationTime');
   has RequesterVpcInfo => (is => 'ro', isa => 'Aws::EC2::VpcPeeringConnectionVpcInfo', traits => ['Unwrapped'], xmlname => 'requesterVpcInfo');

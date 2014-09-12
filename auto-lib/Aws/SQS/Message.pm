@@ -1,6 +1,5 @@
 package Aws::SQS::Message {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap', traits => ['Unwrapped'], xmlname => 'Attribute');
   has Body => (is => 'ro', isa => 'Str');
   has MD5OfBody => (is => 'ro', isa => 'Str');

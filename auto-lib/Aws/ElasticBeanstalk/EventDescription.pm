@@ -1,6 +1,5 @@
 package Aws::ElasticBeanstalk::EventDescription {
   use Moose;
-  with ('AWS::API::ResultParser');
   has ApplicationName => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has EventDate => (is => 'ro', isa => 'Str');

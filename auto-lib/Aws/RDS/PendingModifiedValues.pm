@@ -1,6 +1,5 @@
 package Aws::RDS::PendingModifiedValues {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has DBInstanceClass => (is => 'ro', isa => 'Str');

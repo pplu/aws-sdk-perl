@@ -1,6 +1,5 @@
 package Aws::ELB::HealthCheck {
   use Moose;
-  with ('AWS::API::ResultParser');
   has HealthyThreshold => (is => 'ro', isa => 'Int', required => 1);
   has Interval => (is => 'ro', isa => 'Int', required => 1);
   has Target => (is => 'ro', isa => 'Str', required => 1);

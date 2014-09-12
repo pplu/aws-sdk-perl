@@ -1,6 +1,5 @@
 package Aws::CloudFormation::StackEvent {
   use Moose;
-  with ('AWS::API::ResultParser');
   has EventId => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str');
   has PhysicalResourceId => (is => 'ro', isa => 'Str');

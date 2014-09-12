@@ -1,6 +1,5 @@
 package Aws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes {
   use Moose;
-  with ('AWS::API::ResultParser');
   has childPolicy => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');

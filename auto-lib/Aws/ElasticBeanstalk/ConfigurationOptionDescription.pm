@@ -1,6 +1,5 @@
 package Aws::ElasticBeanstalk::ConfigurationOptionDescription {
   use Moose;
-  with ('AWS::API::ResultParser');
   has ChangeSeverity => (is => 'ro', isa => 'Str');
   has DefaultValue => (is => 'ro', isa => 'Str');
   has MaxLength => (is => 'ro', isa => 'Int');

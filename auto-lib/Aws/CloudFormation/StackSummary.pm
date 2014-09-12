@@ -1,6 +1,5 @@
 package Aws::CloudFormation::StackSummary {
   use Moose;
-  with ('AWS::API::ResultParser');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has DeletionTime => (is => 'ro', isa => 'Str');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');

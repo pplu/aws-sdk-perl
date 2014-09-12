@@ -1,6 +1,5 @@
 package Aws::EC2::Address {
   use Moose;
-  with ('AWS::API::UnwrappedParser');
   has AllocationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'allocationId');
   has AssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'associationId');
   has Domain => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'domain');

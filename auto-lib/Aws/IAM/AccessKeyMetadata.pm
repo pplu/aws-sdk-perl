@@ -1,6 +1,5 @@
 package Aws::IAM::AccessKeyMetadata {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AccessKeyId => (is => 'ro', isa => 'Str');
   has CreateDate => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');

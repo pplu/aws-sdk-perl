@@ -1,6 +1,5 @@
 package Aws::ElastiCache::NodeGroupMember {
   use Moose;
-  with ('AWS::API::ResultParser');
   has CacheClusterId => (is => 'ro', isa => 'Str');
   has CacheNodeId => (is => 'ro', isa => 'Str');
   has CurrentRole => (is => 'ro', isa => 'Str');

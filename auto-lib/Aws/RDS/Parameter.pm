@@ -1,6 +1,5 @@
 package Aws::RDS::Parameter {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AllowedValues => (is => 'ro', isa => 'Str');
   has ApplyMethod => (is => 'ro', isa => 'Str');
   has ApplyType => (is => 'ro', isa => 'Str');

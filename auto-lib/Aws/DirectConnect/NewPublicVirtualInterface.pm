@@ -1,6 +1,5 @@
 package Aws::DirectConnect::NewPublicVirtualInterface {
   use Moose;
-  with ('AWS::API::ResultParser');
   has amazonAddress => (is => 'ro', isa => 'Str', required => 1);
   has asn => (is => 'ro', isa => 'Int', required => 1);
   has authKey => (is => 'ro', isa => 'Str');

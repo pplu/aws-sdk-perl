@@ -1,6 +1,5 @@
 package Aws::IAM::Role {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has AssumeRolePolicyDocument => (is => 'ro', isa => 'Str');
   has CreateDate => (is => 'ro', isa => 'Str', required => 1);

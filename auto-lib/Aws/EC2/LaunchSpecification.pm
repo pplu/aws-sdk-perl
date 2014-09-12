@@ -1,6 +1,5 @@
 package Aws::EC2::LaunchSpecification {
   use Moose;
-  with ('AWS::API::UnwrappedParser');
   has AddressingType => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]');
   has EbsOptimized => (is => 'ro', isa => 'Bool');

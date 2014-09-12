@@ -1,6 +1,5 @@
 package Aws::StorageGateway::DiskInformation {
   use Moose;
-  with ('AWS::API::ResultParser');
   has DiskAllocationResource => (is => 'ro', isa => 'Str');
   has DiskAllocationType => (is => 'ro', isa => 'Str');
   has DiskId => (is => 'ro', isa => 'Str');

@@ -58,29 +58,14 @@ package AWS::API::SingleEndpointCaller {
 
 package AWS::API::MapParser {
   use Moose::Role;
-  sub from_result {
-    my ($class, $result) = @_;
-    $class->new(map { ($_->{ key } => $_->{ value }) } @$result);
-  }
 }
 
 package AWS::API::StrToObjMapParser {
   use Moose::Role;
-  sub from_result {
-    my ($class, %result) = @_;
-    my $res = $class->new( Map => \%result );
-    return $res;
-  }
 }
 
 package AWS::API::StrToStrMapParser {
   use Moose::Role;
-  sub from_result {
-    my ($class, %result) = @_;
-use Data::Dumper;
-print Dumper(\%result);
-    $class->new(Map => \%result );  
-  }
 }
 
 package AWS::API::UnwrappedParser {
@@ -124,8 +109,8 @@ package AWS::API::UnwrappedParser {
               $args{ $att } = $value;
             } else {
               #my $class = ("$att_type" eq 'Moose::Meta::TypeConstraint::Class') ? $att_type->class : $att_type;
-              my $class = $att_type->class;
-              $args{ $att } = $class->from_result( $value );
+              my $att_class = $att_type->class;
+              $args{ $att } = $att_class->new(result_to_args($att_class, $value));
             }
           }
         } else {
@@ -151,9 +136,9 @@ package AWS::API::UnwrappedParser {
           if (not defined $value) {
             $args{ $att } = [ ];
           } elsif ($value_ref eq 'ARRAY') {
-            $args{ $att } = [ map { $type->from_result( $_ ) } @$value ] ;
+            $args{ $att } = [ map { $type->new(result_to_args($type, $_ )) } @$value ] ;
           } elsif ($value_ref eq 'HASH') {
-            $args{ $att } = [ $type->from_result( $value ) ];
+            $args{ $att } = [ $type->new(result_to_args($type, $value )) ];
           }
         } else {
           if (defined $value){
@@ -172,8 +157,7 @@ package AWS::API::UnwrappedParser {
 
   sub from_result {
     my ($class, $result) = @_;
-    my %args = $class->result_to_args($result, $class);
-    return $class->new(%args);
+    return $class->new(result_to_args($class, $result));
   }
 }
 
@@ -219,28 +203,28 @@ package AWS::API::ResultParser {
             if (not $value_ref) {
               $args{ $att } = $value;
             } else {
-              my $class = $att_type->class;
+              my $att_class = $att_type->class;
 
-              if ($class->does('AWS::API::StrToObjMapParser')) {
-                my $inner_class = $class->meta->get_attribute('Map')->type_constraint->name;
+              if ($att_class->does('AWS::API::StrToObjMapParser')) {
+                my $inner_class = $att_class->meta->get_attribute('Map')->type_constraint->name;
                 ($inner_class) = ($inner_class =~ m/\[(.*)\]$/);
 
                 if ($value_ref eq 'ARRAY') {
-                  $args{ $att } = $class->from_result( map { ( $_->{ key } => $inner_class->from_result($_->{ value }) ) } @$value );
+                  $args{ $att } = $att_class->new(Map => { map { ( $_->{ key } => $inner_class->new(result_to_args($inner_class, $_->{ value })) ) } @$value } );
                 } elsif ($value_ref eq 'HASH') {
-                  $args{ $att } = $class->from_result( $value->{ key } => $inner_class->from_result($value->{ value }) );
+                  $args{ $att } = $att_class->new(Map => { $value->{ key } => $inner_class->new(result_to_args($inner_class, $value->{ value })) });
                 }
-              } elsif ($class->does('AWS::API::StrToStrMapParser')) {
+              } elsif ($att_class->does('AWS::API::StrToStrMapParser')) {
                 if ($value_ref eq 'ARRAY') {
-                  $args{ $att } = $class->from_result( map { ( $_->{ key } => $_->{ value } ) } @$value );
+                  $args{ $att } = $att_class->new(Map => { map { ( $_->{ key } => $_->{ value } ) } @$value } );
                 } elsif ($value_ref eq 'HASH') {
-                  $args{ $att } = $class->from_result( $value->{ key } => $value->{ value } );
+                  $args{ $att } = $att_class->new(Map => { $value->{ key } => $value->{ value } } );
                 }
+              } elsif ($att_class->does('AWS::API::MapParser')) {
+                $args{ $att } = $att_class->new(map { ($_->{ key } => $_->{ value }) } @$value);
               } else {
-                $args{ $att } = $class->from_result( $value );
+                $args{ $att } = $att_class->new(result_to_args($att_class, $value));
               }
-
-
             }
           }
         } else {
@@ -268,9 +252,9 @@ package AWS::API::ResultParser {
           if (not defined $value) {
             $args{ $att } = [ ];
           } elsif ($value_ref eq 'ARRAY') {
-            $args{ $att } = [ map { $type->from_result( $_ ) } @$value ] ;
+            $args{ $att } = [ map { $type->new(result_to_args($type, $_ )) } @$value ] ;
           } elsif ($value_ref eq 'HASH') {
-            $args{ $att } = [ $type->from_result( $value ) ];
+            $args{ $att } = [ $type->new(result_to_args($type, $value )) ];
           }
         } else {
           if (defined $value){
@@ -288,8 +272,7 @@ package AWS::API::ResultParser {
 
   sub from_result {
     my ($class, $result) = @_;
-    my %args = $class->result_to_args($result, $class);
-    return $class->new(%args);
+    return $class->new(result_to_args($class, $result));
   }
 }
 

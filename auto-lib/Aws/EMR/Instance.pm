@@ -1,6 +1,5 @@
 package Aws::EMR::Instance {
   use Moose;
-  with ('AWS::API::ResultParser');
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has PrivateDnsName => (is => 'ro', isa => 'Str');

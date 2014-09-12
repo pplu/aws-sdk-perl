@@ -1,6 +1,5 @@
 package Aws::ElastiCache::CacheNode {
   use Moose;
-  with ('AWS::API::ResultParser');
   has CacheNodeCreateTime => (is => 'ro', isa => 'Str');
   has CacheNodeId => (is => 'ro', isa => 'Str');
   has CacheNodeStatus => (is => 'ro', isa => 'Str');

@@ -1,6 +1,5 @@
 package Aws::AutoScaling::LifecycleHook {
   use Moose;
-  with ('AWS::API::ResultParser');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has DefaultResult => (is => 'ro', isa => 'Str');
   has GlobalTimeout => (is => 'ro', isa => 'Int');

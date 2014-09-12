@@ -1,6 +1,5 @@
 package Aws::RDS::ReservedDBInstance {
   use Moose;
-  with ('AWS::API::ResultParser');
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceCount => (is => 'ro', isa => 'Int');
