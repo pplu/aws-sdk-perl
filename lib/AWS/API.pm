@@ -108,7 +108,6 @@ package AWS::API::UnwrappedParser {
             if (not $value_ref) {
               $args{ $att } = $value;
             } else {
-              #my $class = ("$att_type" eq 'Moose::Meta::TypeConstraint::Class') ? $att_type->class : $att_type;
               my $att_class = $att_type->class;
               $args{ $att } = $att_class->new(result_to_args($att_class, $value));
             }
@@ -243,8 +242,6 @@ package AWS::API::ResultParser {
               $args{ $att } = trim($value);
             }
           }
-
-          #$args{ $att } = $result->{ $att } if (defined $result->{ $att });
         }
       } elsif (my ($type) = ($att_type =~ m/^ArrayRef\[(.*)\]$/)) {
         if ($type =~ m/\:\:/) {
