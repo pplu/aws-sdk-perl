@@ -1,0 +1,146 @@
+#!/usr/bin/env perl
+
+use lib 'auto-lib', 'lib';
+
+use strict;
+use warnings;
+
+use Data::Printer;
+use Aws;
+use Moose::Util;
+
+use Net::AWS::Caller;
+
+package TestCaller {
+  use Moose::Role;
+  with 'Net::AWS::Caller';
+  use File::Slurp;
+  use YAML qw/DumpFile/;
+
+  has _doing_call => (is => 'rw', clearer => '_doing_call_clear');
+
+  before do_call => sub {
+    my ($self, $call) = @_;
+    $self->_doing_call($call);
+  };
+
+  after do_call => sub {
+    my ($self) = @_;
+    $self->_doing_call_clear;
+  };
+
+  before _process_response => sub {
+    my ($self, $data) = @_;
+    my $service = $self->service;
+
+    # Derive the name of the class through introspection
+    my ($service_class) = $self->meta->superclasses;
+    ($service_class) = $service_class->meta->superclasses;
+    $service_class =~ s/^Aws:://;
+
+    my $call = $self->_doing_call->_api_call;
+
+    my $extension;
+    if ($self->does('Net::AWS::JsonCaller')){
+      $extension = 'json';
+    } elsif ($self->does('Net::AWS::QueryCaller')) {
+      $extension = 'xml';
+    } else {
+      die "Unknown caller type";
+    }
+
+    my $pretty_call = $call;
+    $pretty_call =~ s/([A-Z]+)([a-z])/ "-" . lc($1) . $2 /ge;
+
+    my $test_file = "t/10_responses/" . lc($service) . "$pretty_call.$extension";
+    my $test = {
+       call => $call,
+       service => $service_class,
+       tests => [
+         { expected => '', op => 'eq', path => '' }
+       ]
+    };
+
+    DumpFile("$test_file\.test\.yml", $test);
+
+    write_file($test_file, $data);
+  }; 
+}
+
+my @args = @ARGV;
+my @service_args;
+
+my $service_name = shift @args;
+
+my $method_name;
+my $end = 0;
+while ($end == 0 and my $next_arg = shift @args) {
+  if ($next_arg =~ m/^--/) {
+    push @service_args, $next_arg;
+    $next_arg = shift @args;
+    push @service_args, $next_arg; 
+  } else {
+    $method_name = $next_arg;
+    $end = 1;
+  }
+}
+
+die "no service specified" if (not defined $service_name);
+
+my $aws;
+if ($ENV{PAWS_CALLER}){
+  $aws = Aws->new(
+    config => AWS::SDK::Config->new(caller => $ENV{PAWS_CALLER})
+  );
+} else {
+  $aws = Aws->new;
+}
+
+my $service = Moose::Util::with_traits(
+  $aws->service($service_name), 'MooseX::Getopt'
+)->new_with_options(@service_args);
+
+my %op_to_call = 
+       map  { $_->fully_qualified_name =~ /\:\:(\w+)?$/; ("$1" => $_) } 
+       grep { $_->fully_qualified_name =~ m/^Aws\:\:\w+\:\:[A-Z]/ }
+       $service->meta->get_all_methods;
+
+my $call = $op_to_call{ $method_name };
+
+if (not defined $call) {
+  print "don't know method $method_name on $service_name\n\n";
+  print map { "$_\n" } sort keys %op_to_call;
+  exit 1;
+}
+
+my %args;
+
+foreach (my $i = 0; $i < scalar(@args); $i++) {
+  my $arg = $args[$i];
+  my ($param, $value) = split /=/, $arg, 2;
+  if ($value eq '[') {
+   #Array collection mode
+   $args{ $param } = [];
+   $i++;
+   while ($args[$i] ne ']' and $i < scalar(@args)) { push @{ $args{ $param } }, $args[$i]; $i++ }
+  } else {
+    $args{ $param } = $value;
+  }
+}
+
+use Data::Dumper;
+print Dumper(\%args);
+
+# $call is a Meta Method Object. It can be called via execute
+my $result = $call->execute($service, %args);
+
+my $h = $service->to_hash($result);
+
+if ($h) {
+  use Hash::Flatten qw//;
+  $h = Hash::Flatten::flatten($h, { HashDelimiter => '.', ArrayDelimiter => '.' });
+}
+
+use Data::Printer;
+p %{ $h };
+
