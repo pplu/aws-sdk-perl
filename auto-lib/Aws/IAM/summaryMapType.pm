@@ -1,6 +1,11 @@
 package Aws::IAM::summaryMapType {
   use Moose;
   with 'AWS::API::MapParser';
+
+  use MooseX::ClassAttribute;
+  class_has xml_keys =>(is => 'ro', default => 'key');
+  class_has xml_values =>(is => 'ro', default => 'value');
+
   has AccessKeysPerUserQuota => (is => 'ro', isa => 'Int');
   has AccountMFAEnabled => (is => 'ro', isa => 'Int');
   has AssumeRolePolicySizeQuota => (is => 'ro', isa => 'Int');

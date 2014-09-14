@@ -1,6 +1,11 @@
 package Aws::SQS::AttributeMap {
   use Moose;
   with 'AWS::API::MapParser';
+
+  use MooseX::ClassAttribute;
+  class_has xml_keys =>(is => 'ro', default => 'Name');
+  class_has xml_values =>(is => 'ro', default => 'Value');
+
   has ApproximateNumberOfMessages => (is => 'ro', isa => 'Str');
   has ApproximateNumberOfMessagesDelayed => (is => 'ro', isa => 'Str');
   has ApproximateNumberOfMessagesNotVisible => (is => 'ro', isa => 'Str');

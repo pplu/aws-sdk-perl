@@ -98,6 +98,14 @@ package [% c.api %] {
           $output .= "  with 'AWS::API::MapParser';\n";
           my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members});
 
+          my $xml_keys = $self->inner_classes->{ $inner_class }->{keys}->{xmlname} || 'key';
+          my $xml_values = $self->inner_classes->{ $inner_class }->{members}->{xmlname} || 'value';
+          $output .= "\n";
+          $output .= "  use MooseX::ClassAttribute;\n";
+          $output .= "  class_has xml_keys =>(is => 'ro', default => '$xml_keys');\n";
+          $output .= "  class_has xml_values =>(is => 'ro', default => '$xml_values');\n";
+          $output .= "\n";
+
           my $members = $self->inner_classes->{ $inner_class }->{keys}->{enum};
           foreach my $param_name (sort @$members){
             $output .= "  has $param_name => (is => 'ro', isa => '$type'";
@@ -108,6 +116,15 @@ package [% c.api %] {
           $output .= "package $inner_class {\n"; 
           $output .= "  use Moose;\n";
           $output .= "  with 'AWS::API::StrToStrMapParser';\n";
+
+          my $xml_keys = $self->inner_classes->{ $inner_class }->{keys}->{xmlname} || 'key';
+          my $xml_values = $self->inner_classes->{ $inner_class }->{members}->{xmlname} || 'value';
+          $output .= "\n";
+          $output .= "  use MooseX::ClassAttribute;\n";
+          $output .= "  class_has xml_keys =>(is => 'ro', default => '$xml_keys');\n";
+          $output .= "  class_has xml_values =>(is => 'ro', default => '$xml_values');\n";
+          $output .= "\n";
+
           $output .= "  has Map => (is => 'ro', isa => 'HashRef[Str]');\n";
           $output .= "}\n1\n";
         } elsif ($self->inner_classes->{ $inner_class }->{members}->{type} eq 'structure') {
@@ -115,6 +132,15 @@ package [% c.api %] {
           $output .= "package $inner_class {\n";
           $output .= "  use Moose;\n";
           $output .= "  with 'AWS::API::StrToObjMapParser';\n";
+
+          my $xml_keys = $self->inner_classes->{ $inner_class }->{keys}->{xmlname} || 'key';
+          my $xml_values = $self->inner_classes->{ $inner_class }->{members}->{xmlname} || 'value';
+          $output .= "\n";
+          $output .= "  use MooseX::ClassAttribute;\n";
+          $output .= "  class_has xml_keys =>(is => 'ro', default => '$xml_keys');\n";
+          $output .= "  class_has xml_values =>(is => 'ro', default => '$xml_values');\n";
+          $output .= "\n";
+
           $output .= "  has Map => (is => 'ro', isa => 'HashRef[$type]');\n";
           $output .= "}\n1\n";
         } else {

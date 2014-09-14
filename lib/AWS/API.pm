@@ -12,13 +12,6 @@ package AWS::API::Attribute::Trait::Unwrapped {
   has xmlname => (is => 'ro', isa => 'Str');
 }
 
-package AWS::Common::Tag {
-  use Moose;
-  with 'AWS::API::ResultParser';
-  has Key => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Str', required => 1);
-}
-
 package AWS::API::RegionalEndpointCaller {
   use Moose::Role;
   has region => (is => 'rw', isa => 'Str');
@@ -62,6 +55,13 @@ package AWS::API::MapParser {
 
 package AWS::API::StrToObjMapParser {
   use Moose::Role;
+
+  sub ValueFor {
+    my ($self, $key) = shift;
+    my $value = $self->Map->{ $key };
+    die "No value for $key" if not defined ($value);
+    return $value;
+  }
 }
 
 package AWS::API::StrToStrMapParser {
@@ -174,24 +174,15 @@ package AWS::API::ResultParser {
 
       my $key = $meta->does('AWS::API::Attribute::Trait::Unwrapped') ? $meta->xmlname : $att;
 
-      #use Data::Dumper;
-      #print STDERR "ATTRIBUTE: $att RESULTKEY: $key: ", $meta->type_constraint, " result: ", Dumper($result->{$key});
       my $att_type = $meta->type_constraint;
 
       my $value = $result->{ $key };
       my $value_ref = ref($value);
-      if ($value_ref eq 'HASH') {
-        if (exists $value->{ member }) {
-          $value = $value->{ member };
-        } elsif (exists $value->{ entry }) {
-          $value = $value->{ entry  };
-        }
-      }
-      $value_ref = ref($value);
 
+      #use Data::Dumper;
       #print STDERR "GOING TO DO AN $att_type\n";
       #print STDERR "VALUE: " . Dumper($value);
-      #print STDERR "REF de \$value" . ref($value) . "\n";
+      #print STDERR "REF de \$value: " . ref($value) . "\n";
 
       # We'll consider that an attribute without brackets [] isn't an array type
       if ($att_type !~ m/\[.*\]$/) {
@@ -205,22 +196,73 @@ package AWS::API::ResultParser {
               my $att_class = $att_type->class;
 
               if ($att_class->does('AWS::API::StrToObjMapParser')) {
+                my $xml_keys = $att_class->xml_keys;
+                my $xml_values = $att_class->xml_values;
+
+                if ($value_ref eq 'HASH') {
+                  if (exists $value->{ member }) {
+                    $value = $value->{ member };
+                  } elsif (exists $value->{ entry }) {
+                    $value = $value->{ entry  };
+                  } elsif (keys %$value == 1) {
+                    $value = $value->{ (keys %$value)[0] };
+                  } else {
+                    #die "Can't detect the item that has the array in the response hash";
+                  }
+                  $value_ref = ref($value);
+                }
+        
                 my $inner_class = $att_class->meta->get_attribute('Map')->type_constraint->name;
                 ($inner_class) = ($inner_class =~ m/\[(.*)\]$/);
-
+                Module::Runtime::require_module("$inner_class");
                 if ($value_ref eq 'ARRAY') {
-                  $args{ $att } = $att_class->new(Map => { map { ( $_->{ key } => $inner_class->new(result_to_args($inner_class, $_->{ value })) ) } @$value } );
+                  $args{ $att } = $att_class->new(Map => { map { ( $_->{ $xml_keys } => $inner_class->new(result_to_args($inner_class, $_->{ $xml_values })) ) } @$value } );
                 } elsif ($value_ref eq 'HASH') {
-                  $args{ $att } = $att_class->new(Map => { $value->{ key } => $inner_class->new(result_to_args($inner_class, $value->{ value })) });
+                  $args{ $att } = $att_class->new(Map => { $value->{ $xml_keys } => $inner_class->new(result_to_args($inner_class, $value->{ $xml_values })) });
+                } elsif (not defined $value){
+                  $args{ $att } = $att_class->new(Map => {});
                 }
               } elsif ($att_class->does('AWS::API::StrToStrMapParser')) {
+                my $xml_keys = $att_class->xml_keys;
+                my $xml_values = $att_class->xml_values;
+
+                if ($value_ref eq 'HASH') {
+                  if (exists $value->{ member }) {
+                    $value = $value->{ member };
+                  } elsif (exists $value->{ entry }) {
+                    $value = $value->{ entry  };
+                  } elsif (keys %$value == 1) {
+                    $value = $value->{ (keys %$value)[0] };
+                  } else {
+                    #die "Can't detect the item that has the array in the response hash";
+                  }
+                  $value_ref = ref($value);
+                }
+        
                 if ($value_ref eq 'ARRAY') {
-                  $args{ $att } = $att_class->new(Map => { map { ( $_->{ key } => $_->{ value } ) } @$value } );
+                  $args{ $att } = $att_class->new(Map => { map { ( $_->{ $xml_keys } => $_->{ $xml_values } ) } @$value } );
                 } elsif ($value_ref eq 'HASH') {
-                  $args{ $att } = $att_class->new(Map => { $value->{ key } => $value->{ value } } );
+                  $args{ $att } = $att_class->new(Map => { $value->{ $xml_keys } => $value->{ $xml_values } } );
                 }
               } elsif ($att_class->does('AWS::API::MapParser')) {
-                $args{ $att } = $att_class->new(map { ($_->{ key } => $_->{ value }) } @$value);
+                my $xml_keys = $att_class->xml_keys;
+                my $xml_values = $att_class->xml_values;
+
+                if ($value_ref eq 'HASH') {
+                  if (exists $value->{ member }) {
+                    $value = $value->{ member };
+                  } elsif (exists $value->{ entry }) {
+                    $value = $value->{ entry  };
+                  } elsif (keys %$value == 1) {
+                    $value = $value->{ (keys %$value)[0] };
+                  } else {
+                    #die "Can't detect the item that has the array in the response hash";
+                  }
+                  $value_ref = ref($value);
+                }
+        
+
+                $args{ $att } = $att_class->new(map { ($_->{ $xml_keys } => $_->{ $xml_values }) } @$value);
               } else {
                 $args{ $att } = $att_class->new(result_to_args($att_class, $value));
               }
@@ -244,6 +286,19 @@ package AWS::API::ResultParser {
           }
         }
       } elsif (my ($type) = ($att_type =~ m/^ArrayRef\[(.*)\]$/)) {
+        if ($value_ref eq 'HASH') {
+          if (exists $value->{ member }) {
+            $value = $value->{ member };
+          } elsif (exists $value->{ entry }) {
+            $value = $value->{ entry  };
+          } elsif (keys %$value == 1) {
+            $value = $value->{ (keys %$value)[0] };
+          } else {
+            #die "Can't detect the item that has the array in the response hash";
+          }
+          $value_ref = ref($value);
+        }
+ 
         if ($type =~ m/\:\:/) {
           Module::Runtime::require_module($type);
           if (not defined $value) {
