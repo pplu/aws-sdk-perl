@@ -5,6 +5,9 @@ tests:
   - expected: arn:aws:iam::123456789012:instance-profile/application_abc/component_xyz/Database
     op: eq
     path: InstanceProfiles.0.Arn
+  - expected: AR0000000000000000000
+    op: eq
+    path: InstanceProfiles.0.InstanceProfileId
   - expected: 2012-05-09T16:27:03Z
     op: eq
     path: InstanceProfiles.0.CreateDate
@@ -20,6 +23,9 @@ tests:
   - expected: 2012-05-09T16:27:11Z
     op: eq
     path: InstanceProfiles.1.CreateDate
+  - expected: AR0000000000000000001
+    op: eq
+    path: InstanceProfiles.1.InstanceProfileId
   - expected: Webserver
     op: eq
     path: InstanceProfiles.1.InstanceProfileName

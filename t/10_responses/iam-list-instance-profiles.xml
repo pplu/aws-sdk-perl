@@ -5,6 +5,7 @@
       <member>
         <Id>AIPACIFN4OZXG7EXAMPLE</Id>
         <Roles/>
+        <InstanceProfileId>AR0000000000000000000</InstanceProfileId>
         <InstanceProfileName>Database</InstanceProfileName>
         <Path>/application_abc/component_xyz/</Path>
         <Arn>arn:aws:iam::123456789012:instance-profile/application_abc/component_xyz/Database</Arn>
@@ -13,6 +14,7 @@
       <member>
         <Id>AIPACZLSXM2EYYEXAMPLE</Id>
         <Roles/>
+        <InstanceProfileId>AR0000000000000000001</InstanceProfileId>
         <InstanceProfileName>Webserver</InstanceProfileName>
         <Path>/application_abc/component_xyz/</Path>
         <Arn>arn:aws:iam::123456789012:instance-profile/application_abc/component_xyz/Webserver</Arn>
