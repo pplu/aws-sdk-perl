@@ -286,6 +286,12 @@ package Net::AWS::QueryCaller {
           } else {
             $refHash->{ $key } = [ map { $self->to_hash($_) } @{ $params->$att } ];
           }
+        } elsif ($att_type =~ m/^HashRef\[(.*)\]/) {
+          if ($self->_is_internal_type("$1")){
+            $refHash->{ $key } = $params->$att;
+          } else {
+            $refHash->{ $key } = { map { ($_ => $self->to_hash($params->$att->{$_}) ) } keys %{ $params->$att } };
+          }
         } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
           $refHash->{ $key } = $params->$att;
         } else {
