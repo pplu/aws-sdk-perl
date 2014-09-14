@@ -115,8 +115,25 @@ package [% c.api %] {
           $output .= "  with 'AWS::API::StrToStrMapParser';\n";
           $output .= "  has Map => (is => 'ro', isa => 'HashRef[Str]');\n";
           $output .= "}\n";
+        } elsif ($self->inner_classes->{ $inner_class }->{members}->{type} eq 'structure') {
+          my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members});
+          $output .= "package $inner_class {\n";
+          $output .= "  use Moose;\n";
+          $output .= "  with 'AWS::API::StrToObjMapParser';\n";
+
+          $output .= "  has Map => (is => 'ro', isa => 'HashRef[$type]');\n";
+          $output .= "}\n1\n";
+        } elsif ($self->inner_classes->{ $inner_class }->{members}->{type} eq 'list') {
+          my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members});
+          warn "Take a look at $inner_class (has $type)\n";
+          $output .= "package $inner_class {\n";
+          $output .= "  use Moose;\n";
+          $output .= "  with 'AWS::API::StrToObjMapParser';\n";
+
+          $output .= "  has Map => (is => 'ro', isa => 'HashRef[$type]');\n";
+          $output .= "}\n1\n";
         } else {
-          die "Unrecognized Map type" . Dumper($self->inner_classes->{ $inner_class });
+          die "Unrecognized Map type in json API " . Dumper($self->inner_classes->{ $inner_class });
         }
       } else {
         $output .= "package $inner_class {\n";

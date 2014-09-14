@@ -144,7 +144,7 @@ package [% c.api %] {
           $output .= "  has Map => (is => 'ro', isa => 'HashRef[$type]');\n";
           $output .= "}\n1\n";
         } else {
-          die "Unrecognized Map type" . Dumper($self->inner_classes->{ $inner_class });
+          die "Unrecognized Map type in query API " . Dumper($self->inner_classes->{ $inner_class });
         }
       } else {
         $output .= "package $inner_class {\n";
