@@ -73,6 +73,7 @@ my @service_args;
 my $service_name = shift @args;
 
 my $method_name;
+
 my $end = 0;
 while ($end == 0 and my $next_arg = shift @args) {
   if ($next_arg =~ m/^--/) {
@@ -100,18 +101,26 @@ my $service = Moose::Util::with_traits(
   $aws->service($service_name), 'MooseX::Getopt'
 )->new_with_options(@service_args);
 
-my %op_to_call = 
-       map  { $_->fully_qualified_name =~ /\:\:(\w+)?$/; ("$1" => $_) } 
-       grep { $_->fully_qualified_name =~ m/^Aws\:\:\w+\:\:[A-Z]/ }
-       $service->meta->get_all_methods;
+my $call;
 
-my $call = $op_to_call{ $method_name };
-
-if (not defined $call) {
-  print "don't know method $method_name on $service_name\n\n";
-  print map { "$_\n" } sort keys %op_to_call;
+if (not defined $method_name or not $call = $service->meta->find_method_by_name($method_name)){
+  if (defined $method_name) {
+    print "Don't know method $method_name on $service_name\n\n";
+  } else {
+    print "Please specify a method for $service_name\n\n"
+  }
+  
+  print "Maybe you ment:\n";
+  print join "\n", sort 
+                   map  { $_->name } 
+                   grep { $_->package_name =~ m/^Aws\:\:/ and 
+                          $_->name =~ m/^[A-Z]/ 
+                        } 
+                   $service->meta->get_all_methods;
   exit 1;
 }
+
+die "invalid method" if ($call->package_name !~ m/^Aws\:\:/);
 
 my %args;
 
@@ -132,7 +141,14 @@ use Data::Dumper;
 print Dumper(\%args);
 
 # $call is a Meta Method Object. It can be called via execute
-my $result = $call->execute($service, %args);
+my $result = eval {$call->execute($service, %args) };
+if ($@) {
+  if ($@->isa('Moose::Exception::AttributeIsRequired')) {
+    print "Call to $method_name requires argument " . $@->attribute_name . "\n";
+  }
+
+  exit 1;
+}
 
 my $h = $service->to_hash($result);
 
