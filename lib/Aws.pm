@@ -15,7 +15,7 @@ package Aws;
 use Moose;
 use MooseX::ClassAttribute;
 use Moose::Util qw//;
-use Class::Load qw//;
+use Module::Runtime qw//;
 
 use Net::AWS::Caller;
 use AWS::API;
@@ -27,6 +27,11 @@ has config => (isa => 'AWS::SDK::Config', is => 'rw', default => sub { Aws->defa
 
 class_has _default_object => (is => 'rw', isa => 'Aws');
 class_has default_config => (is => 'rw', isa => 'AWS::SDK::Config', default => sub { AWS::SDK::Config->new });
+
+sub load_class {
+  my (undef, @classes) = @_;
+  Module::Runtime::require_module($_) for (@classes);
+}
 
 sub service {
   my ($self, $service_name) = @_;
@@ -43,14 +48,17 @@ sub service {
 
   return $self->_class_cache->{ $class } if (defined $self->_class_cache->{ $class });
   
-  Class::Load::load_class($class);
+  $self->load_class($class);
 
-  my $endpoint_role  = (defined $self->config->override_endpoint_role) ? '' : $class->endpoint_role;
-  my $signature_role = (defined $self->config->override_signature_role) ? '' : $class->signature_role;
-  my $parameter_role = (defined $self->config->override_parameter_role) ? '' : $class->parameter_role;
-  my $response_role  = (defined $self->config->override_response_role) ? '' : $class->response_role;
+  my $caller_role    = $self->config->caller;
+  my $endpoint_role  = (defined $self->config->override_endpoint_role) ? $self->config->override_endpoint_role : $class->endpoint_role;
+  my $signature_role = (defined $self->config->override_signature_role) ? $self->config->override_signature_role : $class->signature_role;
+  my $parameter_role = (defined $self->config->override_parameter_role) ? $self->config->override_parameter_role : $class->parameter_role;
+  my $response_role  = (defined $self->config->override_response_role) ? $self->config->override_response_role : $class->response_role;
 
-  my $service = Moose::Util::with_traits($class, $self->config->caller, 
+  $self->load_class($caller_role, $endpoint_role, $signature_role, $parameter_role, $response_role);
+
+  my $service = Moose::Util::with_traits($class, $caller_role, 
                                                  $endpoint_role, 
                                                  $signature_role,
                                                  $parameter_role,
