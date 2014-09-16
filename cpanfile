@@ -1,4 +1,3 @@
-requires 'MooseX::Declare';
 requires 'Moose';
 requires 'MooseX::ClassAttribute';
 requires 'Data::Compare';
