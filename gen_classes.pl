@@ -3,7 +3,6 @@
 use strict;
 use warnings;
 
-use MooseX::Declare;
 use Data::Printer;
 use Data::Dumper;
 use JSON;
