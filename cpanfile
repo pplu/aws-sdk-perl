@@ -8,5 +8,6 @@ requires 'XML::Simple';
 requires 'String::Util';
 requires 'IO::Socket::SSL';
 on 'test' => sub {
+  requires 'Data::Path';
   requires 'YAML';
 };
