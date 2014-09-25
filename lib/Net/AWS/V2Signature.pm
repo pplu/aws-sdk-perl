@@ -20,9 +20,37 @@ has '_base_url_host'     => (
     required    => 1,
     lazy        => 1,
     default     => sub {
-        ($_[0]->ua->_split_url($_[0]->base_url))[1]
+        ($_[0]->_split_url($_[0]->base_url))[1]
     }
 );
+
+# Lifted off HTTP::Tiny
+sub _split_url {
+    my $url = pop;
+
+    # URI regex adapted from the URI module
+    my ($scheme, $host, $path_query) = $url =~ m<\A([^:/?#]+)://([^/?#]*)([^#]*)>
+      or die(qq/Cannot parse URL: '$url'\n/);
+
+    $scheme     = lc $scheme;
+    $path_query = "/$path_query" unless $path_query =~ m<\A/>;
+
+    my $auth = '';
+    if ( (my $i = index $host, '@') != -1 ) {
+        # user:pass@host
+        $auth = substr $host, 0, $i, ''; # take up to the @ for auth
+        substr $host, 0, 1, '';          # knock the @ off the host
+
+        # userinfo might be percent escaped, so recover real auth info
+        $auth =~ s/%([0-9A-Fa-f]{2})/chr(hex($1))/eg;
+    }
+    my $port = $host =~ s/:(\d*)\z// && length $1 ? $1
+             : $scheme eq 'http'                  ? 80
+             : $scheme eq 'https'                 ? 443
+             : undef;
+
+    return ($scheme, (length $host ? lc $host : "localhost") , $port, $path_query, $auth);
+}
 
 sub sign {
     my ($self, $request) = @_;
