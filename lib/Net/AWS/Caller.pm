@@ -14,10 +14,13 @@ package Net::AWS::Caller {
   use Net::AWS::APIRequest;
 
   requires '_process_response';
-  has 'credentials' => ( is => 'ro', isa => 'Net::AWS::Credentials', lazy => 1, default => sub { Net::AWS::CredentialsProviderChain->resolve } );
-  has 'access_key'         => ( is => 'rw', isa => 'Str', required => 1, lazy => 1, default => sub { my $self = shift; $self->credentials->access_key } );
-  has 'secret_key'         => ( is => 'rw', isa => 'Str', required => 1, lazy => 1, default => sub { my $self = shift; $self->credentials->secret_key } );
-  has 'session_token'      => ( is => 'rw', isa => 'Str', required => 0, lazy => 1, default => sub { my $self = shift; $self->credentials->session_token } );
+  has 'credentials' => (
+    is => 'ro', 
+    isa => 'Net::AWS::Credentials', 
+    lazy => 1, 
+    default => sub { Net::AWS::CredentialsProviderChain->new },
+    handles => [ 'access_key', 'secret_key', 'session_token' ],
+  );
   has 'debug'              => ( is => 'rw', required => 0, default => sub { 0 } );
   requires 'version';
   has 'endpoint'           => ( is => 'rw', required => 1, lazy => 1, default => sub { $_[0]->_api_endpoint });

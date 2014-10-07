@@ -1,19 +1,37 @@
 package Net::AWS::CredentialsProviderChain {
-  use Moose::Role;
-  use Module::Load;
+  use Moose;
 
-  # Those will be checked in the order they are defined
-  my @providers = (
-    'Net::AWS::EnvCredentials',
-    'Net::AWS::InstanceProfileCredentials',
+  use Module::Runtime qw//;
+
+  has providers => (
+    is => 'ro', 
+    isa => 'ArrayRef[Str]', 
+    default => sub {
+      [ 'Net::AWS::EnvCredentials', 'Net::AWS::InstanceProfileCredentials' ]
+    },
   );
 
-  sub resolve {
-    foreach my $prov (@providers) {
-      load "$prov";
+  has selected_provider => (
+    is => 'rw',
+    does => 'Net::AWS::Credentials',
+    handles => [ 'access_key', 'secret_key', 'session_token' ], 
+  );
+
+  sub BUILD {
+    my ($self) = @_;
+    foreach my $prov (@{ $self->providers }) {
+      Module::Runtime::require_module($prov);
       my $creds = $prov->new;
-      return $creds if ($creds->are_set);
+      if ($creds->are_set) {
+        $self->selected_provider($creds);
+        return;
+      }
     }
-    #TODO: What if any credential providers are set?
+    # Tried all the providers... none got creds
+    die "Can't find any credentials. I tried with " . (join ',', @{ $self->providers })
   }
+
+  with 'Net::AWS::Credentials';
 }
+
+1;

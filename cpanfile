@@ -7,6 +7,8 @@ requires 'JSON';
 requires 'XML::Simple';
 requires 'String::Util';
 requires 'IO::Socket::SSL';
+requires 'DateTime';
+requires 'DateTime::Format::ISO8601';
 # For the paws CLI
 requires 'Hash::Flatten';
 requires 'MooseX::Getopt';

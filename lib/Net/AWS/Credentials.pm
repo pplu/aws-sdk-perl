@@ -1,9 +1,12 @@
 package Net::AWS::Credentials {
-  use Moose;
+  use Moose::Role;
 
-  has access_key    => (is => 'ro');
-  has secret_key    => (is => 'ro');
-  has session_token => (is => 'ro');
+  requires 'access_key';
+  requires 'secret_key';
+  requires 'session_token';
+  #has access_key    => (is => 'rw');
+  #has secret_key    => (is => 'rw');
+  #has session_token => (is => 'rw');
 
   sub are_set {
     my $self = shift;
