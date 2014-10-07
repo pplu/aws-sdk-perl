@@ -60,6 +60,10 @@ sub sign {
     $request->parameters->{ Timestamp } = strftime("%Y-%m-%dT%H:%M:%SZ",gmtime);
     $request->parameters->{ AWSAccessKeyId } = $self->access_key;
 
+    if ($self->session_token) {
+      $request->parameters->{ SecurityToken } = $self->session_token;
+    }
+
     my %sign_hash = %{ $request->parameters };
     my $sign_this = "POST\n";
     $sign_this .= $self->_base_url_host . "\n";
