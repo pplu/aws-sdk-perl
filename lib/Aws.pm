@@ -17,6 +17,8 @@ use MooseX::ClassAttribute;
 use Moose::Util qw//;
 use Module::Runtime qw//;
 
+use AWS::API::JSONAttribute;
+
 use Net::AWS::Caller;
 use AWS::API;
 
