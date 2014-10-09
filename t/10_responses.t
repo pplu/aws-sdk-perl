@@ -43,6 +43,7 @@ sub test_file {
   SKIP: {
     skip "$test_def_file is lacking service or call entry",1 if (not $test->{service} or not $test->{call});
     my $service = $aws->service($test->{service})->new(
+      region => 'fake_region',
       response_file => $file
     );
     my $call = $test->{ call };
@@ -91,7 +92,7 @@ sub resolve_path {
   my ($call, $rest);
   if ($path =~ m/^\{(.*?)\}\.(.*)$/) {
     ($call, $rest) = ($1, $2);
-  } elsif ($path =~ m/^(\w+?)\.(.*)$/) {
+  } elsif ($path =~ m/^([^.]+?)\.(.*)$/) {
     ($call, $rest) = ($1, $2);
   }
 
