@@ -1,6 +1,6 @@
 package AWS::API::RegionalEndpointCaller {
   use Moose::Role;
-  has region => (is => 'rw', isa => 'Str');
+  has region => (is => 'rw', isa => 'Str', required => 1);
   requires 'service';
 
   sub endpoint_host {
