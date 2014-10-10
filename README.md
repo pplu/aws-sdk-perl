@@ -70,6 +70,43 @@ export AWS_SECRET_KEY=....
 perl -I lib -I auto-lib myscript.pl
 ```
 
+Supported AWS Services
+================
+|Service          |Support   |
+|-----------------|----------|
+|AutoScaling      |YES       |
+|CloudFormation   |YES       |
+|CloudFront       |DEVELOPING|
+|CloudSearch      |YES       |
+|CloudSearchDomain|NOT YET   |
+|CloudTrail       |YES       |
+|CloudWatch       |YES       |
+|DataPipeline     |YES       |
+|DirectConnect    |YES       |
+|DynamoDB         |YES       |
+|EC2              |YES       |
+|ElastiCache      |YES       |
+|ElasticBeanstalk |YES       |
+|ElasticTranscoder|NOT YET   |
+|ELB              |YES       |
+|EMR              |YES       |
+|IAM              |YES       |
+|ImportExport     |YES       |
+|Kinesis          |YES       |
+|OpsWorks         |YES       |
+|RDS              |YES       |
+|RedShift         |YES       |
+|Route53          |DEVELOPING|
+|S3               |DEVELOPING|
+|SDB              |YES       |
+|SES              |YES       |
+|SimpleWorkflow   |YES       |
+|SNS              |YES       |
+|SQS              |YES       |
+|StorageGateway   |YES       |
+|STS              |YES       |
+|Support          |YES       |
+
 Thanks
 ================
 Luis Alberto Gimenez (@agimenez) for the git-fu cleaning up the "pull other sdks" code
