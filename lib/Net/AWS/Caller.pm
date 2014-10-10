@@ -7,13 +7,20 @@ package Net::AWS::Caller::Attribute::Trait::NameInRequest {
 
 package Net::AWS::Caller {
   use Moose::Role;
+  use Net::AWS::Credentials;
+  use Net::AWS::CredentialsProviderChain;
   use Carp qw(croak);
   use Module::Runtime qw//;
   use Net::AWS::APIRequest;
 
   requires '_process_response';
-  has 'access_key'         => ( is => 'rw', isa => 'Str', required => 1, lazy => 1, default => sub { $ENV{AWS_ACCESS_KEY} || $ENV{AWS_ACCESS_KEY_ID} } );
-  has 'secret_key'         => ( is => 'rw', isa => 'Str', required => 1, lazy => 1, default => sub { $ENV{AWS_SECRET_KEY} || $ENV{AWS_SECRET_ACCESS_KEY} } );
+  has 'credentials' => (
+    is => 'ro', 
+    isa => 'Net::AWS::Credentials', 
+    lazy => 1, 
+    default => sub { Net::AWS::CredentialsProviderChain->new },
+    handles => [ 'access_key', 'secret_key', 'session_token' ],
+  );
   has 'debug'              => ( is => 'rw', required => 0, default => sub { 0 } );
   requires 'version';
   has 'endpoint'           => ( is => 'rw', required => 1, lazy => 1, default => sub { $_[0]->_api_endpoint });

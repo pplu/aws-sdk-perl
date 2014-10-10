@@ -109,7 +109,9 @@ Supported AWS Services
 
 Thanks
 ================
-Luis Alberto Gimenez (@agimenez) for the git-fu cleaning up the "pull other sdks" code
+Luis Alberto Gimenez (@agimenez) for 
+ - The git-fu cleaning up the "pull other sdks" code
+ - Credential Providers code
 
 Srinvas (@kidambisrinivas) for testing, bug reporting and fixing
 
