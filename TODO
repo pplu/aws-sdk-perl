@@ -31,5 +31,7 @@
   - CloudFormation::GetTemplateResult: add a lazy accessor that converts the TemplateBody to a 
     datastructure so it can be treated as a hashref. adjust 
     t/10_responses/cloudformation-get-template.xml.test.yml accordingly
+    - Accomplishable with AttributeTraits that install an extra method that decodes the json Str: http://www.perlmonks.org/?node_id=948231
   - Policies in IAM objects 
-- Policies are url encoded texts. They have to be un-url-encoded before exposing to the user
+    - Policies are url encoded texts. They have to be un-url-encoded before exposing to the user
+      - Would like that the accessor gets the JSON un url-encoded, and then have an extra accessor to access the decoded datastructure
