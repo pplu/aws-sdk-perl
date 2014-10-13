@@ -19,4 +19,5 @@ on 'build' => sub {
 on 'test' => sub {
   requires 'Data::Path';
   requires 'YAML';
+  requires 'Test::Class::Moose::Load';
 };
