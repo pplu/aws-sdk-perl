@@ -15,7 +15,8 @@ package AWS::API::Builder {
 
   sub operation {
     my ($self, $op) = @_;
-    return $self->struct->{operations}->{ $op } or die "method doesn't exist $op"
+    die "operation doesn't exist $op" if (not defined $self->struct->{operations}->{ $op });
+    return $self->struct->{operations}->{ $op };
   }
 
   sub save_class {
