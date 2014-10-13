@@ -12,6 +12,10 @@ requires 'DateTime::Format::ISO8601';
 # For the paws CLI
 requires 'Hash::Flatten';
 requires 'MooseX::Getopt';
+on 'build' => sub {
+  requires 'Data::Printer';
+  requires 'Template';
+};
 on 'test' => sub {
   requires 'Data::Path';
   requires 'YAML';
