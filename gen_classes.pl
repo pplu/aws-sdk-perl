@@ -10,7 +10,7 @@ use File::Slurp;
 
 use lib 'builder-lib';
 
-use Module::Load;
+use Module::Runtime qw/require_module/;
 
 my $namespaces = {
   autoscaling => 'AutoScaling',
@@ -103,15 +103,11 @@ sub process_api {
   $type = $overrides->{ $api } if (defined $overrides->{ $api });
 
   my $class_maker = "AWS::API::Builder::${type}";
-  load $class_maker;
+  require_module $class_maker;
 
   my $c = $class_maker->new(struct => $struct, api => $api);
 
-  #p $c;
-
   my $out = $c->process_api;
-
-  #p $c;
 
   return $out;
 }
