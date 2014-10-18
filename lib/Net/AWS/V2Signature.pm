@@ -106,7 +106,6 @@ sub www_form_urlencode {
 # c.f. http://www.w3.org/TR/html4/interact/forms.html#h-17.13.4.1
 # perl 5.6 ready UTF-8 encoding adapted from JSON::PP
 our %escapes = map { chr($_) => sprintf("%%%02X", $_) } 0..255;
-$escapes{' '}="+";
 our $unsafe_char = qr/[^A-Za-z0-9\-\._~]/;
 
 sub _uri_escape {
@@ -120,6 +119,7 @@ sub _uri_escape {
         $str = pack("C*", unpack("C*", $str)); # clear UTF-8 flag
     }
     $str =~ s/($unsafe_char)/$escapes{$1}/ge;
+    $str =~ s/ /+/go;
     return $str;
 }
 

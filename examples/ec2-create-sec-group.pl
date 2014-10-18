@@ -24,7 +24,7 @@ if (not $@) {
 }
 
 $group = $ec2->CreateSecurityGroup(
-  Description => 'A-test-SecurityGroup-for-the-Perl-SDK',
+  Description => 'A test SecurityGroup for the Perl SDK',
   GroupName => $group_name
 );
 $group_id = $group->GroupId;
