@@ -3,6 +3,7 @@ package AWS::API::JSONAttribute {
   Moose::Util::meta_attribute_alias('JSONAttribute');
 
   use JSON qw//;
+  use URL::Encode;
 
   has method    => (is => 'rw', isa => 'Str', required => 1);
   has decode_as => (is => 'rw', isa => 'Str', required => 1);
@@ -17,6 +18,11 @@ package AWS::API::JSONAttribute {
       $coderef = sub {
         my $self = shift;
         return JSON::decode_json($self->$closure());
+      };
+    } elsif ($self->decode_as eq 'URLJSON') {
+      $coderef = sub {
+        my $self = shift;
+        return JSON::decode_json(URL::Encode::url_decode($self->$closure()));
       };
     } else {
       die "Unrecognized JSONAttribute decode_as attribute";

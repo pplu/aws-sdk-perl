@@ -101,6 +101,7 @@ sub process_api {
 
   my $overrides = { 'Aws::EC2' => 'EC2' };
   $type = $overrides->{ $api } if (defined $overrides->{ $api });
+  $type =~ s/\-//;
 
   my $class_maker = "AWS::API::Builder::${type}";
   load $class_maker;

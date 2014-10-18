@@ -10,16 +10,16 @@ tests:
     path: Roles.0.Arn
   - expected: sts:AssumeRole
     op: eq
-    path: Roles.0.AssumeRolePolicyDocument.Statement.0.Action.0
+    path: Roles.0.AssumeRolePolicy.Statement.0.Action.0
   - expected: Allow
     op: eq
-    path: Roles.0.AssumeRolePolicyDocument.Statement.0.Effect
+    path: Roles.0.AssumeRolePolicy.Statement.0.Effect
   - expected: ec2.amazonaws.com
     op: eq
-    path: Roles.0.AssumeRolePolicyDocument.Statement.0.Principal.Service.0
+    path: Roles.0.AssumeRolePolicy.Statement.0.Principal.Service.0
   - expected: 2008-10-17
     op: eq
-    path: Roles.0.AssumeRolePolicyDocument.Version
+    path: Roles.0.AssumeRolePolicy.Version
   - expected: 2012-05-09T15:45:35Z
     op: eq
     path: Roles.0.CreateDate
@@ -37,16 +37,16 @@ tests:
     path: Roles.1.Arn
   - expected: sts:AssumeRole
     op: eq
-    path: Roles.1.AssumeRolePolicyDocument.Statement.0.Action.0
+    path: Roles.1.AssumeRolePolicy.Statement.0.Action.0
   - expected: Allow
     op: eq
-    path: Roles.1.AssumeRolePolicyDocument.Statement.0.Effect
+    path: Roles.1.AssumeRolePolicy.Statement.0.Effect
   - expected: ec2.amazonaws.com
     op: eq
-    path: Roles.1.AssumeRolePolicyDocument.Statement.0.Principal.Service.0
+    path: Roles.1.AssumeRolePolicy.Statement.0.Principal.Service.0
   - expected: 2008-10-17
     op: eq
-    path: Roles.1.AssumeRolePolicyDocument.Version
+    path: Roles.1.AssumeRolePolicy.Version
   - expected: 2012-05-09T15:45:45Z
     op: eq
     path: Roles.1.CreateDate
