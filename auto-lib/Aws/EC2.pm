@@ -10,7 +10,7 @@ package Aws::EC2 {
 
   use MooseX::ClassAttribute;
   class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
-  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V2Signature');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
   class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::QueryCaller');
   class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
 
