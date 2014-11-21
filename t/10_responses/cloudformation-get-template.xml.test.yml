@@ -4,172 +4,172 @@ service: CloudFormation
 tests:
   - expected: 2010-09-09
     op: eq
-    path: TemplateBody.AWSTemplateFormatVersion
+    path: Template.AWSTemplateFormatVersion
   - expected: 'AWS CloudFormation Sample Template EC2WithEBSSample: Create an Amazon EC2 instance running the Amazon Linux AMI with a new EBS volume attached. The instance and the volume are pinned to the same availability zone. We recommend that you do untargeted launches rather than pinning instances this way.The AMI is chosen based on the region in which the stack is run. **WARNING** This template creates an Amazon EC2 instance and an EBS Volume. You will be billed for the AWS resources used if you create a stack from this template.'
     op: eq
-    path: TemplateBody.Description
+    path: Template.Description
   - expected: ami-dcfa4edd
     op: eq
-    path: TemplateBody.Mappings.RegionMap.ap-northeast-1.AMI
+    path: Template.Mappings.RegionMap.ap-northeast-1.AMI
   - expected: ap-northeast-1a
     op: eq
-    path: TemplateBody.Mappings.RegionMap.ap-northeast-1.TestAz
+    path: Template.Mappings.RegionMap.ap-northeast-1.TestAz
   - expected: ami-74dda626
     op: eq
-    path: TemplateBody.Mappings.RegionMap.ap-southeast-1.AMI
+    path: Template.Mappings.RegionMap.ap-southeast-1.AMI
   - expected: ap-southeast-1a
     op: eq
-    path: TemplateBody.Mappings.RegionMap.ap-southeast-1.TestAz
+    path: Template.Mappings.RegionMap.ap-southeast-1.TestAz
   - expected: ami-b3990e89
     op: eq
-    path: TemplateBody.Mappings.RegionMap.ap-southeast-2.AMI
+    path: Template.Mappings.RegionMap.ap-southeast-2.AMI
   - expected: ap-southeast-2a
     op: eq
-    path: TemplateBody.Mappings.RegionMap.ap-southeast-2.TestAz
+    path: Template.Mappings.RegionMap.ap-southeast-2.TestAz
   - expected: ami-24506250
     op: eq
-    path: TemplateBody.Mappings.RegionMap.eu-west-1.AMI
+    path: Template.Mappings.RegionMap.eu-west-1.AMI
   - expected: eu-west-1a
     op: eq
-    path: TemplateBody.Mappings.RegionMap.eu-west-1.TestAz
+    path: Template.Mappings.RegionMap.eu-west-1.TestAz
   - expected: ami-3e3be423
     op: eq
-    path: TemplateBody.Mappings.RegionMap.sa-east-1.AMI
+    path: Template.Mappings.RegionMap.sa-east-1.AMI
   - expected: sa-east-1a
     op: eq
-    path: TemplateBody.Mappings.RegionMap.sa-east-1.TestAz
+    path: Template.Mappings.RegionMap.sa-east-1.TestAz
   - expected: ami-7f418316
     op: eq
-    path: TemplateBody.Mappings.RegionMap.us-east-1.AMI
+    path: Template.Mappings.RegionMap.us-east-1.AMI
   - expected: us-east-1a
     op: eq
-    path: TemplateBody.Mappings.RegionMap.us-east-1.TestAz
+    path: Template.Mappings.RegionMap.us-east-1.TestAz
   - expected: ami-951945d0
     op: eq
-    path: TemplateBody.Mappings.RegionMap.us-west-1.AMI
+    path: Template.Mappings.RegionMap.us-west-1.AMI
   - expected: us-west-1a
     op: eq
-    path: TemplateBody.Mappings.RegionMap.us-west-1.TestAz
+    path: Template.Mappings.RegionMap.us-west-1.TestAz
   - expected: ami-16fd7026
     op: eq
-    path: TemplateBody.Mappings.RegionMap.us-west-2.AMI
+    path: Template.Mappings.RegionMap.us-west-2.AMI
   - expected: us-west-2a
     op: eq
-    path: TemplateBody.Mappings.RegionMap.us-west-2.TestAz
+    path: Template.Mappings.RegionMap.us-west-2.TestAz
   - expected: InstanceId of the newly created EC2 instance
     op: eq
-    path: TemplateBody.Outputs.InstanceId.Description
+    path: Template.Outputs.InstanceId.Description
   - expected: Ec2Instance
     op: eq
-    path: TemplateBody.Outputs.InstanceId.Value.Ref
+    path: Template.Outputs.InstanceId.Value.Ref
   - expected: Public DNSName of the newly created EC2 instance
     op: eq
-    path: TemplateBody.Outputs.PublicDNS.Description
+    path: Template.Outputs.PublicDNS.Description
   - expected: Ec2Instance
     op: eq
-    path: TemplateBody.Outputs.PublicDNS.Value.Fn::GetAtt.0
+    path: Template.Outputs.PublicDNS.Value.Fn::GetAtt.0
   - expected: PublicDnsName
     op: eq
-    path: TemplateBody.Outputs.PublicDNS.Value.Fn::GetAtt.1
+    path: Template.Outputs.PublicDNS.Value.Fn::GetAtt.1
   - expected: Public IP address of the newly created EC2 instance
     op: eq
-    path: TemplateBody.Outputs.PublicIP.Description
+    path: Template.Outputs.PublicIP.Description
   - expected: Ec2Instance
     op: eq
-    path: TemplateBody.Outputs.PublicIP.Value.Fn::GetAtt.0
+    path: Template.Outputs.PublicIP.Value.Fn::GetAtt.0
   - expected: PublicIp
     op: eq
-    path: TemplateBody.Outputs.PublicIP.Value.Fn::GetAtt.1
+    path: Template.Outputs.PublicIP.Value.Fn::GetAtt.1
   - expected: Name of an existing EC2 KeyPair to enable SSH access to the instance
     op: eq
-    path: TemplateBody.Parameters.KeyName.Description
+    path: Template.Parameters.KeyName.Description
   - expected: String
     op: eq
-    path: TemplateBody.Parameters.KeyName.Type
+    path: Template.Parameters.KeyName.Type
   - expected: '(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/(\d{1,2})'
     op: eq
-    path: TemplateBody.Parameters.SSHLocation.AllowedPattern
+    path: Template.Parameters.SSHLocation.AllowedPattern
   - expected: must be a valid IP CIDR range of the form x.x.x.x/x.
     op: eq
-    path: TemplateBody.Parameters.SSHLocation.ConstraintDescription
+    path: Template.Parameters.SSHLocation.ConstraintDescription
   - expected: 0.0.0.0/0
     op: eq
-    path: TemplateBody.Parameters.SSHLocation.Default
+    path: Template.Parameters.SSHLocation.Default
   - expected: The IP address range that can be used to SSH to the EC2 instances
     op: eq
-    path: TemplateBody.Parameters.SSHLocation.Description
+    path: Template.Parameters.SSHLocation.Description
   - expected: 18
     op: eq
-    path: TemplateBody.Parameters.SSHLocation.MaxLength
+    path: Template.Parameters.SSHLocation.MaxLength
   - expected: 9
     op: eq
-    path: TemplateBody.Parameters.SSHLocation.MinLength
+    path: Template.Parameters.SSHLocation.MinLength
   - expected: String
     op: eq
-    path: TemplateBody.Parameters.SSHLocation.Type
+    path: Template.Parameters.SSHLocation.Type
   - expected: RegionMap
     op: eq
-    path: TemplateBody.Resources.Ec2Instance.Properties.AvailabilityZone.Fn::FindInMap.0
+    path: Template.Resources.Ec2Instance.Properties.AvailabilityZone.Fn::FindInMap.0
   - expected: AWS::Region
     op: eq
-    path: TemplateBody.Resources.Ec2Instance.Properties.AvailabilityZone.Fn::FindInMap.1.Ref
+    path: Template.Resources.Ec2Instance.Properties.AvailabilityZone.Fn::FindInMap.1.Ref
   - expected: TestAz
     op: eq
-    path: TemplateBody.Resources.Ec2Instance.Properties.AvailabilityZone.Fn::FindInMap.2
+    path: Template.Resources.Ec2Instance.Properties.AvailabilityZone.Fn::FindInMap.2
   - expected: RegionMap
     op: eq
-    path: TemplateBody.Resources.Ec2Instance.Properties.ImageId.Fn::FindInMap.0
+    path: Template.Resources.Ec2Instance.Properties.ImageId.Fn::FindInMap.0
   - expected: AWS::Region
     op: eq
-    path: TemplateBody.Resources.Ec2Instance.Properties.ImageId.Fn::FindInMap.1.Ref
+    path: Template.Resources.Ec2Instance.Properties.ImageId.Fn::FindInMap.1.Ref
   - expected: AMI
     op: eq
-    path: TemplateBody.Resources.Ec2Instance.Properties.ImageId.Fn::FindInMap.2
+    path: Template.Resources.Ec2Instance.Properties.ImageId.Fn::FindInMap.2
   - expected: KeyName
     op: eq
-    path: TemplateBody.Resources.Ec2Instance.Properties.KeyName.Ref
+    path: Template.Resources.Ec2Instance.Properties.KeyName.Ref
   - expected: InstanceSecurityGroup
     op: eq
-    path: TemplateBody.Resources.Ec2Instance.Properties.SecurityGroups.0.Ref
+    path: Template.Resources.Ec2Instance.Properties.SecurityGroups.0.Ref
   - expected: /dev/sdk
     op: eq
-    path: TemplateBody.Resources.Ec2Instance.Properties.Volumes.0.Device
+    path: Template.Resources.Ec2Instance.Properties.Volumes.0.Device
   - expected: NewVolume
     op: eq
-    path: TemplateBody.Resources.Ec2Instance.Properties.Volumes.0.VolumeId.Ref
+    path: Template.Resources.Ec2Instance.Properties.Volumes.0.VolumeId.Ref
   - expected: AWS::EC2::Instance
     op: eq
-    path: TemplateBody.Resources.Ec2Instance.Type
+    path: Template.Resources.Ec2Instance.Type
   - expected: Enable SSH access via port 22
     op: eq
-    path: TemplateBody.Resources.InstanceSecurityGroup.Properties.GroupDescription
+    path: Template.Resources.InstanceSecurityGroup.Properties.GroupDescription
   - expected: SSHLocation
     op: eq
-    path: TemplateBody.Resources.InstanceSecurityGroup.Properties.SecurityGroupIngress.0.CidrIp.Ref
+    path: Template.Resources.InstanceSecurityGroup.Properties.SecurityGroupIngress.0.CidrIp.Ref
   - expected: 22
     op: eq
-    path: TemplateBody.Resources.InstanceSecurityGroup.Properties.SecurityGroupIngress.0.FromPort
+    path: Template.Resources.InstanceSecurityGroup.Properties.SecurityGroupIngress.0.FromPort
   - expected: tcp
     op: eq
-    path: TemplateBody.Resources.InstanceSecurityGroup.Properties.SecurityGroupIngress.0.IpProtocol
+    path: Template.Resources.InstanceSecurityGroup.Properties.SecurityGroupIngress.0.IpProtocol
   - expected: 22
     op: eq
-    path: TemplateBody.Resources.InstanceSecurityGroup.Properties.SecurityGroupIngress.0.ToPort
+    path: Template.Resources.InstanceSecurityGroup.Properties.SecurityGroupIngress.0.ToPort
   - expected: AWS::EC2::SecurityGroup
     op: eq
-    path: TemplateBody.Resources.InstanceSecurityGroup.Type
+    path: Template.Resources.InstanceSecurityGroup.Type
   - expected: RegionMap
     op: eq
-    path: TemplateBody.Resources.NewVolume.Properties.AvailabilityZone.Fn::FindInMap.0
+    path: Template.Resources.NewVolume.Properties.AvailabilityZone.Fn::FindInMap.0
   - expected: AWS::Region
     op: eq
-    path: TemplateBody.Resources.NewVolume.Properties.AvailabilityZone.Fn::FindInMap.1.Ref
+    path: Template.Resources.NewVolume.Properties.AvailabilityZone.Fn::FindInMap.1.Ref
   - expected: TestAz
     op: eq
-    path: TemplateBody.Resources.NewVolume.Properties.AvailabilityZone.Fn::FindInMap.2
+    path: Template.Resources.NewVolume.Properties.AvailabilityZone.Fn::FindInMap.2
   - expected: 100
     op: eq
-    path: TemplateBody.Resources.NewVolume.Properties.Size
+    path: Template.Resources.NewVolume.Properties.Size
   - expected: AWS::EC2::Volume
     op: eq
-    path: TemplateBody.Resources.NewVolume.Type
+    path: Template.Resources.NewVolume.Type
