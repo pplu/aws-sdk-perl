@@ -20,9 +20,17 @@ package Aws::Route53Domains {
     my $self = shift;
     return $self->do_call('Aws::Route53Domains::CheckDomainAvailability', @_);
   }
+  sub DisableDomainAutoRenew {
+    my $self = shift;
+    return $self->do_call('Aws::Route53Domains::DisableDomainAutoRenew', @_);
+  }
   sub DisableDomainTransferLock {
     my $self = shift;
     return $self->do_call('Aws::Route53Domains::DisableDomainTransferLock', @_);
+  }
+  sub EnableDomainAutoRenew {
+    my $self = shift;
+    return $self->do_call('Aws::Route53Domains::EnableDomainAutoRenew', @_);
   }
   sub EnableDomainTransferLock {
     my $self = shift;

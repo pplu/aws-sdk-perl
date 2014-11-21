@@ -4,6 +4,7 @@ package Aws::RDS::DescribeEvents {
   has Duration => (is => 'ro', isa => 'Int');
   has EndTime => (is => 'ro', isa => 'Str');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SourceIdentifier => (is => 'ro', isa => 'Str');

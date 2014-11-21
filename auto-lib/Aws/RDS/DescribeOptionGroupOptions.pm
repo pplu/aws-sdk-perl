@@ -2,6 +2,7 @@
 package Aws::RDS::DescribeOptionGroupOptions {
   use Moose;
   has EngineName => (is => 'ro', isa => 'Str', required => 1);
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
   has MajorEngineVersion => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');

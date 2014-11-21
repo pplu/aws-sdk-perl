@@ -5,6 +5,7 @@ package Aws::RDS::DescribeDBLogFiles {
   has FileLastWritten => (is => 'ro', isa => 'Num');
   has FilenameContains => (is => 'ro', isa => 'Str');
   has FileSize => (is => 'ro', isa => 'Num');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 

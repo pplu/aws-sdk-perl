@@ -18,6 +18,9 @@ package Aws::RDS::ModifyDBInstance {
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has StorageType => (is => 'ro', isa => 'Str');
+  has TdeCredentialArn => (is => 'ro', isa => 'Str');
+  has TdeCredentialPassword => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;

@@ -5,6 +5,7 @@ package Aws::EC2::CreateVolume {
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Encrypted => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'encrypted' );
   has Iops => (is => 'ro', isa => 'Int');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');

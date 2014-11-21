@@ -15,6 +15,10 @@ package Aws::IAM {
   class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
 
   
+  sub AddClientIDToOpenIDConnectProvider {
+    my $self = shift;
+    return $self->do_call('Aws::IAM::AddClientIDToOpenIDConnectProvider', @_);
+  }
   sub AddRoleToInstanceProfile {
     my $self = shift;
     return $self->do_call('Aws::IAM::AddRoleToInstanceProfile', @_);
@@ -46,6 +50,10 @@ package Aws::IAM {
   sub CreateLoginProfile {
     my $self = shift;
     return $self->do_call('Aws::IAM::CreateLoginProfile', @_);
+  }
+  sub CreateOpenIDConnectProvider {
+    my $self = shift;
+    return $self->do_call('Aws::IAM::CreateOpenIDConnectProvider', @_);
   }
   sub CreateRole {
     my $self = shift;
@@ -94,6 +102,10 @@ package Aws::IAM {
   sub DeleteLoginProfile {
     my $self = shift;
     return $self->do_call('Aws::IAM::DeleteLoginProfile', @_);
+  }
+  sub DeleteOpenIDConnectProvider {
+    my $self = shift;
+    return $self->do_call('Aws::IAM::DeleteOpenIDConnectProvider', @_);
   }
   sub DeleteRole {
     my $self = shift;
@@ -163,6 +175,10 @@ package Aws::IAM {
     my $self = shift;
     return $self->do_call('Aws::IAM::GetLoginProfile', @_);
   }
+  sub GetOpenIDConnectProvider {
+    my $self = shift;
+    return $self->do_call('Aws::IAM::GetOpenIDConnectProvider', @_);
+  }
   sub GetRole {
     my $self = shift;
     return $self->do_call('Aws::IAM::GetRole', @_);
@@ -219,6 +235,10 @@ package Aws::IAM {
     my $self = shift;
     return $self->do_call('Aws::IAM::ListMFADevices', @_);
   }
+  sub ListOpenIDConnectProviders {
+    my $self = shift;
+    return $self->do_call('Aws::IAM::ListOpenIDConnectProviders', @_);
+  }
   sub ListRolePolicies {
     my $self = shift;
     return $self->do_call('Aws::IAM::ListRolePolicies', @_);
@@ -263,6 +283,10 @@ package Aws::IAM {
     my $self = shift;
     return $self->do_call('Aws::IAM::PutUserPolicy', @_);
   }
+  sub RemoveClientIDFromOpenIDConnectProvider {
+    my $self = shift;
+    return $self->do_call('Aws::IAM::RemoveClientIDFromOpenIDConnectProvider', @_);
+  }
   sub RemoveRoleFromInstanceProfile {
     my $self = shift;
     return $self->do_call('Aws::IAM::RemoveRoleFromInstanceProfile', @_);
@@ -294,6 +318,10 @@ package Aws::IAM {
   sub UpdateLoginProfile {
     my $self = shift;
     return $self->do_call('Aws::IAM::UpdateLoginProfile', @_);
+  }
+  sub UpdateOpenIDConnectProviderThumbprint {
+    my $self = shift;
+    return $self->do_call('Aws::IAM::UpdateOpenIDConnectProviderThumbprint', @_);
   }
   sub UpdateSAMLProvider {
     my $self = shift;

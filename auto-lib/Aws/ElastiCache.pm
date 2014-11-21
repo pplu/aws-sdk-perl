@@ -5,7 +5,7 @@ use AWS::API;
 package Aws::ElastiCache {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'elasticache');
-  has version => (is => 'ro', isa => 'Str', default => '2014-07-15');
+  has version => (is => 'ro', isa => 'Str', default => '2014-09-30');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
 
   use MooseX::ClassAttribute;

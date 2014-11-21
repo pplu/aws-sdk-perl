@@ -20,8 +20,10 @@ my $namespaces = {
   cloudsearchdomain => 'CloudSearchDomain',
   cloudtrail => 'CloudTrail',
   cloudwatch => 'CloudWatch',
+  codedeploy => 'CodeDeploy',
  'cognito-identity' => 'CognitoIdentity',
  'cognito-sync' => 'CognitoSync',
+  config => 'Config',
   datapipeline => 'DataPipeline',
   directconnect => 'DirectConnect',
   dynamodb => 'DynamoDB',
@@ -35,6 +37,8 @@ my $namespaces = {
   iam => 'IAM',
   importexport => 'ImportExport',
   kinesis => 'Kinesis',
+  kms => 'KMS',
+  lambda => 'Lambda',
   logs => 'CloudWatchLogs',
   opsworks => 'OpsWorks',
   rds => 'RDS',
@@ -64,7 +68,7 @@ if (not @files) {
   my @dirs = glob('botocore/botocore/data/aws/*');
 
   foreach my $class_dir (@dirs) {
-    my @class_defs = grep { -f $_ } glob("$class_dir/*.json");
+    my @class_defs = grep { -f $_ } glob("$class_dir/*.api.json");
     next if (not @class_defs);
     @class_defs = sort @class_defs;
     my $class_version = pop @class_defs;
@@ -72,6 +76,7 @@ if (not @files) {
   }
 }
 
+my @failures;
 foreach my $file (@files) {
   print "Processing $file\n";
   if (my ($f, $version) = ($file =~ m/aws\/(.*?)\/(.*?)\.json/)){
@@ -83,9 +88,12 @@ foreach my $file (@files) {
       #print $content;
       write_file("auto-lib/Aws/${ns}.pm", $content);
     };
-    if ($@) { warn $@ }
+    if ($@) { warn $@; push @failures, "$file $@\n" }
   }
 }
+
+print "Summary of fails\n";
+print @failures;
 
 sub process_file {
   my ($file, $api) = @_;
@@ -97,7 +105,7 @@ sub process_file {
 sub process_api {
   my ($api, $struct) = @_;
 
-  my $type = $struct->{type} or die "Type of API call not found";
+  my $type = $struct->{metadata}->{protocol} or die "Type of API call not found";
 
   my $overrides = { 'Aws::EC2' => 'EC2' };
   $type = $overrides->{ $api } if (defined $overrides->{ $api });

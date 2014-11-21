@@ -1,6 +1,7 @@
 
 package Aws::RDS::DescribeEventCategories {
   use Moose;
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
   has SourceType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;

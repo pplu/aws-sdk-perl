@@ -24,7 +24,10 @@ package Aws::RDS::CreateDBInstance {
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
+  has StorageType => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]');
+  has TdeCredentialArn => (is => 'ro', isa => 'Str');
+  has TdeCredentialPassword => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;

@@ -55,6 +55,10 @@ package Aws::CloudFormation {
     my $self = shift;
     return $self->do_call('Aws::CloudFormation::GetTemplate', @_);
   }
+  sub GetTemplateSummary {
+    my $self = shift;
+    return $self->do_call('Aws::CloudFormation::GetTemplateSummary', @_);
+  }
   sub ListStackResources {
     my $self = shift;
     return $self->do_call('Aws::CloudFormation::ListStackResources', @_);
@@ -66,6 +70,10 @@ package Aws::CloudFormation {
   sub SetStackPolicy {
     my $self = shift;
     return $self->do_call('Aws::CloudFormation::SetStackPolicy', @_);
+  }
+  sub SignalResource {
+    my $self = shift;
+    return $self->do_call('Aws::CloudFormation::SignalResource', @_);
   }
   sub UpdateStack {
     my $self = shift;

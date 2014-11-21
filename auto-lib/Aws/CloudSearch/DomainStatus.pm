@@ -6,6 +6,7 @@ package Aws::CloudSearch::DomainStatus {
   has DocService => (is => 'ro', isa => 'Aws::CloudSearch::ServiceEndpoint');
   has DomainId => (is => 'ro', isa => 'Str', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  has Limits => (is => 'ro', isa => 'Aws::CloudSearch::Limits');
   has Processing => (is => 'ro', isa => 'Bool');
   has RequiresIndexDocuments => (is => 'ro', isa => 'Bool', required => 1);
   has SearchInstanceCount => (is => 'ro', isa => 'Int');

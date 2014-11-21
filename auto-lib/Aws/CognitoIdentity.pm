@@ -36,6 +36,10 @@ package Aws::CognitoIdentity {
     my $self = shift;
     return $self->do_call('Aws::CognitoIdentity::GetOpenIdToken', @_);
   }
+  sub GetOpenIdTokenForDeveloperIdentity {
+    my $self = shift;
+    return $self->do_call('Aws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentity', @_);
+  }
   sub ListIdentities {
     my $self = shift;
     return $self->do_call('Aws::CognitoIdentity::ListIdentities', @_);
@@ -43,6 +47,18 @@ package Aws::CognitoIdentity {
   sub ListIdentityPools {
     my $self = shift;
     return $self->do_call('Aws::CognitoIdentity::ListIdentityPools', @_);
+  }
+  sub LookupDeveloperIdentity {
+    my $self = shift;
+    return $self->do_call('Aws::CognitoIdentity::LookupDeveloperIdentity', @_);
+  }
+  sub MergeDeveloperIdentities {
+    my $self = shift;
+    return $self->do_call('Aws::CognitoIdentity::MergeDeveloperIdentities', @_);
+  }
+  sub UnlinkDeveloperIdentity {
+    my $self = shift;
+    return $self->do_call('Aws::CognitoIdentity::UnlinkDeveloperIdentity', @_);
   }
   sub UnlinkIdentity {
     my $self = shift;

@@ -3,6 +3,7 @@ package Aws::RDS::DescribeReservedDBInstancesOfferings {
   use Moose;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Str');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has MultiAZ => (is => 'ro', isa => 'Bool');

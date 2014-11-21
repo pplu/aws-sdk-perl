@@ -17,6 +17,8 @@ package Aws::RDS::DBSnapshot {
   has SnapshotType => (is => 'ro', isa => 'Str');
   has SourceRegion => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has StorageType => (is => 'ro', isa => 'Str');
+  has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 }
 1;

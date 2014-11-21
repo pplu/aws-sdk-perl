@@ -2,6 +2,7 @@
 package Aws::RDS::DescribeEngineDefaultParameters {
   use Moose;
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 

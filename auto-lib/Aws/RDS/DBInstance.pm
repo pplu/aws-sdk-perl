@@ -30,6 +30,8 @@ package Aws::RDS::DBInstance {
   has ReadReplicaSourceDBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has SecondaryAvailabilityZone => (is => 'ro', isa => 'Str');
   has StatusInfos => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBInstanceStatusInfo]');
+  has StorageType => (is => 'ro', isa => 'Str');
+  has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::VpcSecurityGroupMembership]');
 }
 1;

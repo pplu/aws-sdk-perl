@@ -1,6 +1,7 @@
 
 package Aws::RDS::ListTagsForResource {
   use Moose;
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
   has ResourceName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

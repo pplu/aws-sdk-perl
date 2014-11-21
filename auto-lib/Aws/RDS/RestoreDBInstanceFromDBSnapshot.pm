@@ -15,7 +15,10 @@ package Aws::RDS::RestoreDBInstanceFromDBSnapshot {
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
+  has StorageType => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]');
+  has TdeCredentialArn => (is => 'ro', isa => 'Str');
+  has TdeCredentialPassword => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 

@@ -11,6 +11,7 @@ package Aws::RDS::CreateDBInstanceReadReplica {
   has Port => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has StorageType => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]');
 
   use MooseX::ClassAttribute;

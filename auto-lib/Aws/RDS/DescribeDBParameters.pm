@@ -2,6 +2,7 @@
 package Aws::RDS::DescribeDBParameters {
   use Moose;
   has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has Source => (is => 'ro', isa => 'Str');

@@ -7,6 +7,7 @@ package Aws::EC2::Volume {
   has CreateTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createTime');
   has Encrypted => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'encrypted');
   has Iops => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'iops');
+  has KmsKeyId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'kmsKeyId');
   has Size => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'size');
   has SnapshotId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'snapshotId');
   has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status');

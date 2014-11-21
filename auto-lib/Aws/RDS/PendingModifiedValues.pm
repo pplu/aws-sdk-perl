@@ -9,5 +9,6 @@ package Aws::RDS::PendingModifiedValues {
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has Port => (is => 'ro', isa => 'Int');
+  has StorageType => (is => 'ro', isa => 'Str');
 }
 1;

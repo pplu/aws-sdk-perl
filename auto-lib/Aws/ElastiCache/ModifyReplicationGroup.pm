@@ -2,6 +2,7 @@
 package Aws::ElastiCache::ModifyReplicationGroup {
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
+  has AutomaticFailoverEnabled => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');

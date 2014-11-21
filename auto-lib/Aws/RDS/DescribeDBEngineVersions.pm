@@ -5,6 +5,7 @@ package Aws::RDS::DescribeDBEngineVersions {
   has DefaultOnly => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Filter]');
   has ListSupportedCharacterSets => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');

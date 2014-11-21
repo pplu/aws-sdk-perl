@@ -4,6 +4,7 @@ package Aws::EC2::Snapshot {
   with 'AWS::API::UnwrappedParser';
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has Encrypted => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'encrypted');
+  has KmsKeyId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'kmsKeyId');
   has OwnerAlias => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAlias');
   has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
   has Progress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'progress');

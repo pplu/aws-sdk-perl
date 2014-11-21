@@ -5,7 +5,7 @@ use AWS::API;
 package Aws::RDS {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'rds');
-  has version => (is => 'ro', isa => 'Str', default => '2013-09-09');
+  has version => (is => 'ro', isa => 'Str', default => '2014-09-01');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
 
   use MooseX::ClassAttribute;
@@ -27,9 +27,17 @@ package Aws::RDS {
     my $self = shift;
     return $self->do_call('Aws::RDS::AuthorizeDBSecurityGroupIngress', @_);
   }
+  sub CopyDBParameterGroup {
+    my $self = shift;
+    return $self->do_call('Aws::RDS::CopyDBParameterGroup', @_);
+  }
   sub CopyDBSnapshot {
     my $self = shift;
     return $self->do_call('Aws::RDS::CopyDBSnapshot', @_);
+  }
+  sub CopyOptionGroup {
+    my $self = shift;
+    return $self->do_call('Aws::RDS::CopyOptionGroup', @_);
   }
   sub CreateDBInstance {
     my $self = shift;

@@ -2,6 +2,7 @@ package Aws::EC2::ImportInstanceLaunchSpecification {
   use Moose;
   has AdditionalInfo => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'additionalInfo');
   has Architecture => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'architecture');
+  has GroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'GroupId');
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'GroupName');
   has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceInitiatedShutdownBehavior');
   has InstanceType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceType');

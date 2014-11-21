@@ -15,8 +15,11 @@ package Aws::RDS::RestoreDBInstanceToPointInTime {
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has RestoreTime => (is => 'ro', isa => 'Str');
   has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has StorageType => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]');
   has TargetDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has TdeCredentialArn => (is => 'ro', isa => 'Str');
+  has TdeCredentialPassword => (is => 'ro', isa => 'Str');
   has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
