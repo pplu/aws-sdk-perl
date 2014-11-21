@@ -30,4 +30,4 @@ package Aws::RedShift::Cluster {
   has VpcId => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::VpcSecurityGroupMembership]');
 }
-1
+1;

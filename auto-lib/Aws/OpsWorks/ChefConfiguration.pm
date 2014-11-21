@@ -3,4 +3,4 @@ package Aws::OpsWorks::ChefConfiguration {
   has BerkshelfVersion => (is => 'ro', isa => 'Str');
   has ManageBerkshelf => (is => 'ro', isa => 'Bool');
 }
-1
+1;

@@ -4,4 +4,4 @@ package Aws::EC2::UserIdGroupPair {
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
   has UserId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'userId');
 }
-1
+1;

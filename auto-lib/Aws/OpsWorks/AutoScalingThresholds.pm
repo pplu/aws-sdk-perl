@@ -7,4 +7,4 @@ package Aws::OpsWorks::AutoScalingThresholds {
   has MemoryThreshold => (is => 'ro', isa => 'Num');
   has ThresholdsWaitTime => (is => 'ro', isa => 'Int');
 }
-1
+1;

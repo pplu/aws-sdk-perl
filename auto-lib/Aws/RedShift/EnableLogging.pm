@@ -8,7 +8,7 @@ package Aws::RedShift::EnableLogging {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableLogging');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::EnableLoggingResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::LoggingStatus');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'EnableLoggingResult');
 }
 1;

@@ -6,4 +6,4 @@ package Aws::CloudSearch::OptionStatus {
   has UpdateDate => (is => 'ro', isa => 'Str', required => 1);
   has UpdateVersion => (is => 'ro', isa => 'Int');
 }
-1
+1;

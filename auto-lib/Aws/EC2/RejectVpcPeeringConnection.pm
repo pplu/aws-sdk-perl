@@ -1,8 +1,8 @@
 
 package Aws::EC2::RejectVpcPeeringConnection {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcPeeringConnectionId' , required => 1);
 
   use MooseX::ClassAttribute;
 

@@ -4,4 +4,4 @@ package Aws::RedShift::ClusterNode {
   has PrivateIPAddress => (is => 'ro', isa => 'Str');
   has PublicIPAddress => (is => 'ro', isa => 'Str');
 }
-1
+1;

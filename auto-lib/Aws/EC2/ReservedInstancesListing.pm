@@ -11,4 +11,4 @@ package Aws::EC2::ReservedInstancesListing {
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
   has UpdateDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'updateDate');
 }
-1
+1;

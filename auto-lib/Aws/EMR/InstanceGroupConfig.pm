@@ -7,4 +7,4 @@ package Aws::EMR::InstanceGroupConfig {
   has Market => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 }
-1
+1;

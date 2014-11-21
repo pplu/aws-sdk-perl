@@ -3,4 +3,4 @@ package Aws::ELB::LBCookieStickinessPolicy {
   has CookieExpirationPeriod => (is => 'ro', isa => 'Num');
   has PolicyName => (is => 'ro', isa => 'Str');
 }
-1
+1;

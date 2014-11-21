@@ -1,9 +1,9 @@
 
 package Aws::EC2::DescribeInternetGateways {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has InternetGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InternetGatewayId' );
+  has InternetGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'internetGatewayId' );
 
   use MooseX::ClassAttribute;
 

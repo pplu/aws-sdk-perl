@@ -6,7 +6,7 @@ package Aws::SNS::GetSubscriptionAttributes {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSubscriptionAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SNS::GetSubscriptionAttributesResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SNS::GetSubscriptionAttributesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetSubscriptionAttributesResult');
 }
 1;

@@ -5,4 +5,4 @@ package Aws::ELB::LoadBalancerAttributes {
   has ConnectionSettings => (is => 'ro', isa => 'Aws::ELB::ConnectionSettings');
   has CrossZoneLoadBalancing => (is => 'ro', isa => 'Aws::ELB::CrossZoneLoadBalancing');
 }
-1
+1;

@@ -14,4 +14,4 @@ package Aws::EC2::ReservedInstancesOffering {
   has ReservedInstancesOfferingId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'reservedInstancesOfferingId');
   has UsagePrice => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'usagePrice');
 }
-1
+1;

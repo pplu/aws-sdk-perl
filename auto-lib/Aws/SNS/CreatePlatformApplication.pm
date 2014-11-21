@@ -8,7 +8,7 @@ package Aws::SNS::CreatePlatformApplication {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePlatformApplication');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SNS::CreatePlatformApplicationResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SNS::CreatePlatformApplicationResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePlatformApplicationResult');
 }
 1;

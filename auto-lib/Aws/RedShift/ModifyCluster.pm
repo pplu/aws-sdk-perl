@@ -5,7 +5,7 @@ package Aws::RedShift::ModifyCluster {
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ClusterSecurityGroupName' );
+  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
@@ -15,7 +15,7 @@ package Aws::RedShift::ModifyCluster {
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 

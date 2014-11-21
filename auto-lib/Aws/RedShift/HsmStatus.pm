@@ -4,4 +4,4 @@ package Aws::RedShift::HsmStatus {
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
-1
+1;

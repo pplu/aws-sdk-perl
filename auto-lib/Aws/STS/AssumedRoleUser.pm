@@ -3,4 +3,4 @@ package Aws::STS::AssumedRoleUser {
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has AssumedRoleId => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

@@ -4,4 +4,4 @@ package Aws::CloudWatchLogs::MetricFilterMatchRecord {
   has eventNumber => (is => 'ro', isa => 'Num');
   has extractedValues => (is => 'ro', isa => 'Aws::CloudWatchLogs::ExtractedValues');
 }
-1
+1;

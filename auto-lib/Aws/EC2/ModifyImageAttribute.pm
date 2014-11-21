@@ -3,7 +3,7 @@ package Aws::EC2::ModifyImageAttribute {
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Aws::EC2::AttributeValue');
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
   has LaunchPermission => (is => 'ro', isa => 'Aws::EC2::LaunchPermissionModifications');
   has OperationType => (is => 'ro', isa => 'Str');

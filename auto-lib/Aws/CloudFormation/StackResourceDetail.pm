@@ -11,4 +11,4 @@ package Aws::CloudFormation::StackResourceDetail {
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
 }
-1
+1;

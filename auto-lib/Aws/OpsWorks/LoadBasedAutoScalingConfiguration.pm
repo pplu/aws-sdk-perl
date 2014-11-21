@@ -5,4 +5,4 @@ package Aws::OpsWorks::LoadBasedAutoScalingConfiguration {
   has LayerId => (is => 'ro', isa => 'Str');
   has UpScaling => (is => 'ro', isa => 'Aws::OpsWorks::AutoScalingThresholds');
 }
-1
+1;

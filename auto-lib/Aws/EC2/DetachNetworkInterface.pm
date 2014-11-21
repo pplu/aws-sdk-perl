@@ -1,9 +1,9 @@
 
 package Aws::EC2::DetachNetworkInterface {
   use Moose;
-  has AttachmentId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Force => (is => 'ro', isa => 'Bool');
+  has AttachmentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'attachmentId' , required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has Force => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'force' );
 
   use MooseX::ClassAttribute;
 

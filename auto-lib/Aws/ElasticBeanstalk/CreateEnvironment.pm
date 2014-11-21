@@ -16,7 +16,7 @@ package Aws::ElasticBeanstalk::CreateEnvironment {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEnvironment');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::CreateEnvironmentResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::EnvironmentDescription');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateEnvironmentResult');
 }
 1;

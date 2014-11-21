@@ -4,4 +4,4 @@ package Aws::EMR::Command {
   has Name => (is => 'ro', isa => 'Str');
   has ScriptPath => (is => 'ro', isa => 'Str');
 }
-1
+1;

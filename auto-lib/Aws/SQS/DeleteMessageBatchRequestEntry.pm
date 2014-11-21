@@ -3,4 +3,4 @@ package Aws::SQS::DeleteMessageBatchRequestEntry {
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has ReceiptHandle => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

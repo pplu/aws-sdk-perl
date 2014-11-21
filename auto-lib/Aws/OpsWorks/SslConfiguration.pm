@@ -4,4 +4,4 @@ package Aws::OpsWorks::SslConfiguration {
   has Chain => (is => 'ro', isa => 'Str');
   has PrivateKey => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

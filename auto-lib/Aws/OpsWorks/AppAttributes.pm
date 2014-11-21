@@ -5,4 +5,4 @@ package Aws::OpsWorks::AppAttributes {
   has DocumentRoot => (is => 'ro', isa => 'Str');
   has RailsEnv => (is => 'ro', isa => 'Str');
 }
-1
+1;

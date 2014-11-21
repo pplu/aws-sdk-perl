@@ -5,4 +5,4 @@ package Aws::STS::Credentials {
   has SecretAccessKey => (is => 'ro', isa => 'Str', required => 1);
   has SessionToken => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

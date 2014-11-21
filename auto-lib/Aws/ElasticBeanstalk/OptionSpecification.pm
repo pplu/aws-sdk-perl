@@ -3,4 +3,4 @@ package Aws::ElasticBeanstalk::OptionSpecification {
   has Namespace => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
 }
-1
+1;

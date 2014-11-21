@@ -51,4 +51,4 @@ package Aws::SimpleWorkflow::HistoryEvent {
   has workflowExecutionTerminatedEventAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes');
   has workflowExecutionTimedOutEventAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes');
 }
-1
+1;

@@ -1,8 +1,8 @@
 
 package Aws::SQS::AddPermission {
   use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ActionName' , required => 1);
-  has AWSAccountIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AWSAccountId' , required => 1);
+  has Actions => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has AWSAccountIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has Label => (is => 'ro', isa => 'Str', required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 

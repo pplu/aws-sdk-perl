@@ -8,4 +8,4 @@ package Aws::ElastiCache::ReplicationGroup {
   has SnapshottingClusterId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
-1
+1;

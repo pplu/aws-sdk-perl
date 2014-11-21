@@ -3,7 +3,7 @@ package Aws::EC2::ModifySnapshotAttribute {
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str');
   has CreateVolumePermission => (is => 'ro', isa => 'Aws::EC2::CreateVolumePermissionModifications');
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'UserGroup' );
   has OperationType => (is => 'ro', isa => 'Str');
   has SnapshotId => (is => 'ro', isa => 'Str', required => 1);

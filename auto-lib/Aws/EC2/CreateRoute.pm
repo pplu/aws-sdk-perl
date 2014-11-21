@@ -1,13 +1,13 @@
 
 package Aws::EC2::CreateRoute {
   use Moose;
-  has DestinationCidrBlock => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has GatewayId => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str');
-  has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
-  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
+  has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCidrBlock' , required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has GatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'gatewayId' );
+  has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' );
+  has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' );
+  has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
+  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcPeeringConnectionId' );
 
   use MooseX::ClassAttribute;
 

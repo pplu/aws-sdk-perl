@@ -16,10 +16,6 @@ package Aws::Kinesis {
   class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::JsonResponse');
 
   
-  sub AddTagsToStream {
-    my $self = shift;
-    return $self->do_call('Aws::Kinesis::AddTagsToStream', @_);
-  }
   sub CreateStream {
     my $self = shift;
     return $self->do_call('Aws::Kinesis::CreateStream', @_);
@@ -44,10 +40,6 @@ package Aws::Kinesis {
     my $self = shift;
     return $self->do_call('Aws::Kinesis::ListStreams', @_);
   }
-  sub ListTagsForStream {
-    my $self = shift;
-    return $self->do_call('Aws::Kinesis::ListTagsForStream', @_);
-  }
   sub MergeShards {
     my $self = shift;
     return $self->do_call('Aws::Kinesis::MergeShards', @_);
@@ -55,10 +47,6 @@ package Aws::Kinesis {
   sub PutRecord {
     my $self = shift;
     return $self->do_call('Aws::Kinesis::PutRecord', @_);
-  }
-  sub RemoveTagsFromStream {
-    my $self = shift;
-    return $self->do_call('Aws::Kinesis::RemoveTagsFromStream', @_);
   }
   sub SplitShard {
     my $self = shift;

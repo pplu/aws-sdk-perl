@@ -7,4 +7,4 @@ package Aws::CloudFormation::StackResourceSummary {
   has ResourceStatusReason => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

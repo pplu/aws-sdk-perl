@@ -9,7 +9,7 @@ package Aws::CloudWatchLogs::PutLogEvents {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutLogEvents');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudWatchLogs::PutLogEventsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudWatchLogs::PutLogEventsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

@@ -1,7 +1,7 @@
 
 package Aws::EC2::DetachVpnGateway {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
   has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
 

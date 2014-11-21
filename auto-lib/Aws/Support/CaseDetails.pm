@@ -13,4 +13,4 @@ package Aws::Support::CaseDetails {
   has submittedBy => (is => 'ro', isa => 'Str');
   has timeCreated => (is => 'ro', isa => 'Str');
 }
-1
+1;

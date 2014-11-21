@@ -9,4 +9,4 @@ package Aws::RDS::OrderableDBInstanceOption {
   has ReadReplicaCapable => (is => 'ro', isa => 'Bool');
   has Vpc => (is => 'ro', isa => 'Bool');
 }
-1
+1;

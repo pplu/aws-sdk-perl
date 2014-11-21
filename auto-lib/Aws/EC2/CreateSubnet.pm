@@ -3,7 +3,7 @@ package Aws::EC2::CreateSubnet {
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

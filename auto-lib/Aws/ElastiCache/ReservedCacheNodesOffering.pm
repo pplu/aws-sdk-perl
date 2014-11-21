@@ -9,4 +9,4 @@ package Aws::ElastiCache::ReservedCacheNodesOffering {
   has ReservedCacheNodesOfferingId => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
 }
-1
+1;

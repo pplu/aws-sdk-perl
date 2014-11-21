@@ -3,4 +3,4 @@ package Aws::SimpleWorkflow::RecordMarkerDecisionAttributes {
   has details => (is => 'ro', isa => 'Str');
   has markerName => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

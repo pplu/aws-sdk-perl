@@ -11,7 +11,7 @@ package Aws::CloudWatch::DescribeAlarmHistory {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAlarmHistory');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudWatch::DescribeAlarmHistoryResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudWatch::DescribeAlarmHistoryOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmHistoryResult');
 }
 1;

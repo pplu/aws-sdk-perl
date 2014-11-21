@@ -11,4 +11,4 @@ package Aws::EC2::InstanceNetworkInterfaceSpecification {
   has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'secondaryPrivateIpAddressCount');
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
 }
-1
+1;

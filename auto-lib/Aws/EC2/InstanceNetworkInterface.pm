@@ -14,4 +14,4 @@ package Aws::EC2::InstanceNetworkInterface {
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
-1
+1;

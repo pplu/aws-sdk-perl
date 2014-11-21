@@ -2,7 +2,7 @@
 package Aws::EC2::ModifyVolumeAttribute {
   use Moose;
   has AutoEnableIO => (is => 'ro', isa => 'Aws::EC2::AttributeBooleanValue');
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

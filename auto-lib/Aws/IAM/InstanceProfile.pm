@@ -7,4 +7,4 @@ package Aws::IAM::InstanceProfile {
   has Path => (is => 'ro', isa => 'Str', required => 1);
   has Roles => (is => 'ro', isa => 'ArrayRef[Aws::IAM::Role]', required => 1);
 }
-1
+1;

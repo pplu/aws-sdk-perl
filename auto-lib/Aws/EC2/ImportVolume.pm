@@ -1,11 +1,11 @@
 
 package Aws::EC2::ImportVolume {
   use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Image => (is => 'ro', isa => 'Aws::EC2::DiskImageDetail');
-  has Volume => (is => 'ro', isa => 'Aws::EC2::VolumeDetail');
+  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has Image => (is => 'ro', isa => 'Aws::EC2::DiskImageDetail', traits => ['NameInRequest'], request_name => 'image' , required => 1);
+  has Volume => (is => 'ro', isa => 'Aws::EC2::VolumeDetail', traits => ['NameInRequest'], request_name => 'volume' , required => 1);
 
   use MooseX::ClassAttribute;
 

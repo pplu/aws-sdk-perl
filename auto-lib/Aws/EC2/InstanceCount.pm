@@ -3,4 +3,4 @@ package Aws::EC2::InstanceCount {
   has InstanceCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'instanceCount');
   has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'state');
 }
-1
+1;

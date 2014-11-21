@@ -3,4 +3,4 @@ package Aws::ElastiCache::NotificationConfiguration {
   has TopicArn => (is => 'ro', isa => 'Str');
   has TopicStatus => (is => 'ro', isa => 'Str');
 }
-1
+1;

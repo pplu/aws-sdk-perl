@@ -11,7 +11,7 @@ package Aws::RDS::DescribeDBLogFiles {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBLogFiles');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeDBLogFilesResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeDBLogFilesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBLogFilesResult');
 }
 1;

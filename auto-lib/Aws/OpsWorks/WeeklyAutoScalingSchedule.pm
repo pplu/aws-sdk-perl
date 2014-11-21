@@ -8,4 +8,4 @@ package Aws::OpsWorks::WeeklyAutoScalingSchedule {
   has Tuesday => (is => 'ro', isa => 'Aws::OpsWorks::DailyAutoScalingSchedule');
   has Wednesday => (is => 'ro', isa => 'Aws::OpsWorks::DailyAutoScalingSchedule');
 }
-1
+1;

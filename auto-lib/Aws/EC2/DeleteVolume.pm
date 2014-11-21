@@ -1,7 +1,7 @@
 
 package Aws::EC2::DeleteVolume {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

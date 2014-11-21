@@ -3,4 +3,4 @@ package Aws::RDS::Tag {
   has Key => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
-1
+1;

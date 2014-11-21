@@ -6,7 +6,7 @@ package Aws::CloudTrail::StopLogging {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopLogging');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudTrail::StopLoggingResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudTrail::StopLoggingResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

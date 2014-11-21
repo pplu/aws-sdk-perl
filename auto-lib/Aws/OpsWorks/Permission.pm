@@ -6,4 +6,4 @@ package Aws::OpsWorks::Permission {
   has Level => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
 }
-1
+1;

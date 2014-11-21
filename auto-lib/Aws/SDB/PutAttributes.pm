@@ -1,7 +1,7 @@
 
 package Aws::SDB::PutAttributes {
   use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Aws::SDB::ReplaceableAttribute]', traits => ['NameInRequest'], request_name => 'Attribute' , required => 1);
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Aws::SDB::ReplaceableAttribute]', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Expected => (is => 'ro', isa => 'Aws::SDB::UpdateCondition');
   has ItemName => (is => 'ro', isa => 'Str', required => 1);

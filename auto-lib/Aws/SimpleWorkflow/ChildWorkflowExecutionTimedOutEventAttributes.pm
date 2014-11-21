@@ -6,4 +6,4 @@ package Aws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes {
   has workflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
-1
+1;

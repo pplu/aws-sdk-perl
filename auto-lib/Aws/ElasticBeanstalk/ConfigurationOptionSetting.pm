@@ -4,4 +4,4 @@ package Aws::ElasticBeanstalk::ConfigurationOptionSetting {
   has OptionName => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
-1
+1;

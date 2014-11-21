@@ -6,4 +6,4 @@ package Aws::CloudSearch::LiteralArrayOptions {
   has SearchEnabled => (is => 'ro', isa => 'Bool');
   has SourceFields => (is => 'ro', isa => 'Str');
 }
-1
+1;

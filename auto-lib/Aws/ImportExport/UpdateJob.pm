@@ -9,7 +9,7 @@ package Aws::ImportExport::UpdateJob {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::UpdateJobResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::UpdateJobOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateJobResult');
 }
 1;

@@ -7,4 +7,4 @@ package Aws::EC2::ExportTask {
   has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'state');
   has StatusMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'statusMessage');
 }
-1
+1;

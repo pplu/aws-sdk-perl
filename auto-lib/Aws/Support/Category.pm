@@ -3,4 +3,4 @@ package Aws::Support::Category {
   has code => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str');
 }
-1
+1;

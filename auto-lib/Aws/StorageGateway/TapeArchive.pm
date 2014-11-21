@@ -7,4 +7,4 @@ package Aws::StorageGateway::TapeArchive {
   has TapeSizeInBytes => (is => 'ro', isa => 'Num');
   has TapeStatus => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -4,4 +4,4 @@ package Aws::ElastiCache::EC2SecurityGroup {
   has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
-1
+1;

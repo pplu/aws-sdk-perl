@@ -3,4 +3,4 @@ package Aws::ELB::Tag {
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Str');
 }
-1
+1;

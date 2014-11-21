@@ -17,4 +17,4 @@ package Aws::ELB::LoadBalancerDescription {
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str]');
   has VPCId => (is => 'ro', isa => 'Str');
 }
-1
+1;

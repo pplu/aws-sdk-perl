@@ -1,5 +1,5 @@
 package Aws::EC2::RunInstancesMonitoringEnabled {
   use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
+  has Enabled => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'enabled', required => 1);
 }
-1
+1;

@@ -5,12 +5,12 @@ use AWS::API;
 package Aws::EC2 {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'ec2');
-  has version => (is => 'ro', isa => 'Str', default => '2014-05-01');
+  has version => (is => 'ro', isa => 'Str', default => '2014-06-15');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '1');
 
   use MooseX::ClassAttribute;
   class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'AWS::API::RegionalEndpointCaller');
-  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V2Signature');
+  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::V4Signature');
   class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::QueryCaller');
   class_has response_role => (is => 'ro', isa => 'Str', default => 'Net::AWS::XMLResponse');
 
@@ -522,6 +522,10 @@ package Aws::EC2 {
   sub ModifySnapshotAttribute {
     my $self = shift;
     return $self->do_call('Aws::EC2::ModifySnapshotAttribute', @_);
+  }
+  sub ModifySubnetAttribute {
+    my $self = shift;
+    return $self->do_call('Aws::EC2::ModifySubnetAttribute', @_);
   }
   sub ModifyVolumeAttribute {
     my $self = shift;

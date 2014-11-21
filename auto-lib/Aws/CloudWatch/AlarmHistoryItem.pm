@@ -6,4 +6,4 @@ package Aws::CloudWatch::AlarmHistoryItem {
   has HistorySummary => (is => 'ro', isa => 'Str');
   has Timestamp => (is => 'ro', isa => 'Str');
 }
-1
+1;

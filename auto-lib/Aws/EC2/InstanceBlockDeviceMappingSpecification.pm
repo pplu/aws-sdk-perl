@@ -1,8 +1,8 @@
 package Aws::EC2::InstanceBlockDeviceMappingSpecification {
   use Moose;
-  has DeviceName => (is => 'ro', isa => 'Str');
-  has Ebs => (is => 'ro', isa => 'Aws::EC2::EbsInstanceBlockDeviceSpecification');
-  has NoDevice => (is => 'ro', isa => 'Str');
-  has VirtualName => (is => 'ro', isa => 'Str');
+  has DeviceName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deviceName');
+  has Ebs => (is => 'ro', isa => 'Aws::EC2::EbsInstanceBlockDeviceSpecification', traits => ['Unwrapped'], xmlname => 'ebs');
+  has NoDevice => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'noDevice');
+  has VirtualName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualName');
 }
-1
+1;

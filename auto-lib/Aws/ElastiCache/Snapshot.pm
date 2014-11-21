@@ -21,4 +21,4 @@ package Aws::ElastiCache::Snapshot {
   has TopicArn => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 }
-1
+1;

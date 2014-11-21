@@ -7,4 +7,4 @@ package Aws::RedShift::RestoreStatus {
   has SnapshotSizeInMegaBytes => (is => 'ro', isa => 'Num');
   has Status => (is => 'ro', isa => 'Str');
 }
-1
+1;

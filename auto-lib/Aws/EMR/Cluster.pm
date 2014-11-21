@@ -14,4 +14,4 @@ package Aws::EMR::Cluster {
   has TerminationProtected => (is => 'ro', isa => 'Bool');
   has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
 }
-1
+1;

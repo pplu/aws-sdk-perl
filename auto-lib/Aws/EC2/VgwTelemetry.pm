@@ -6,4 +6,4 @@ package Aws::EC2::VgwTelemetry {
   has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status');
   has StatusMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'statusMessage');
 }
-1
+1;

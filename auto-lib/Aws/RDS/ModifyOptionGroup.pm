@@ -3,7 +3,7 @@ package Aws::RDS::ModifyOptionGroup {
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has OptionsToInclude => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionConfiguration]', traits => ['NameInRequest'], request_name => 'OptionConfiguration' );
+  has OptionsToInclude => (is => 'ro', isa => 'ArrayRef[Aws::RDS::OptionConfiguration]');
   has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;

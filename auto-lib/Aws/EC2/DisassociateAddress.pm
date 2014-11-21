@@ -2,7 +2,7 @@
 package Aws::EC2::DisassociateAddress {
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has PublicIp => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;

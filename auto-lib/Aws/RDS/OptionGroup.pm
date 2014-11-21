@@ -8,4 +8,4 @@ package Aws::RDS::OptionGroup {
   has Options => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Option]');
   has VpcId => (is => 'ro', isa => 'Str');
 }
-1
+1;

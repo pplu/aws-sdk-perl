@@ -1,7 +1,7 @@
 
 package Aws::SQS::GetQueueAttributes {
   use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AttributeName' );
+  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

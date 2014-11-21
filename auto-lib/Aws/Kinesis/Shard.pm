@@ -6,4 +6,4 @@ package Aws::Kinesis::Shard {
   has SequenceNumberRange => (is => 'ro', isa => 'Aws::Kinesis::SequenceNumberRange', required => 1);
   has ShardId => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

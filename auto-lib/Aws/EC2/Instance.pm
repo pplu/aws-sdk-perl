@@ -38,4 +38,4 @@ package Aws::EC2::Instance {
   has VirtualizationType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualizationType');
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
-1
+1;

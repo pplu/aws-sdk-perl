@@ -8,7 +8,7 @@ package Aws::EMR::ListSteps {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListSteps');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::ListStepsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::ListStepsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

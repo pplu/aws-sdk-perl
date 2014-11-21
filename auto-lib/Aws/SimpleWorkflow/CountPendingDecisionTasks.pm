@@ -7,7 +7,7 @@ package Aws::SimpleWorkflow::CountPendingDecisionTasks {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CountPendingDecisionTasks');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::CountPendingDecisionTasksResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::PendingTaskCount');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

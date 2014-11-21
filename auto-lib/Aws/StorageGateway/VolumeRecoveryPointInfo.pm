@@ -5,4 +5,4 @@ package Aws::StorageGateway::VolumeRecoveryPointInfo {
   has VolumeSizeInBytes => (is => 'ro', isa => 'Num');
   has VolumeUsageInBytes => (is => 'ro', isa => 'Num');
 }
-1
+1;

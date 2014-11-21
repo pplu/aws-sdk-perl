@@ -6,7 +6,7 @@ package Aws::CloudFormation::GetTemplate {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetTemplate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::GetTemplateResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::GetTemplateOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetTemplateResult');
 }
 1;

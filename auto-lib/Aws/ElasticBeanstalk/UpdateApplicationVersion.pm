@@ -8,7 +8,7 @@ package Aws::ElasticBeanstalk::UpdateApplicationVersion {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplicationVersion');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::UpdateApplicationVersionResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::ApplicationVersionDescriptionMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateApplicationVersionResult');
 }
 1;

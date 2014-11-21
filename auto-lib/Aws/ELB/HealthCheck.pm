@@ -6,4 +6,4 @@ package Aws::ELB::HealthCheck {
   has Timeout => (is => 'ro', isa => 'Int', required => 1);
   has UnhealthyThreshold => (is => 'ro', isa => 'Int', required => 1);
 }
-1
+1;

@@ -7,4 +7,4 @@ package Aws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttrib
   has signalName => (is => 'ro', isa => 'Str', required => 1);
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

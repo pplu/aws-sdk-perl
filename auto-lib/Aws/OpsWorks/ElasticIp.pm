@@ -6,4 +6,4 @@ package Aws::OpsWorks::ElasticIp {
   has Name => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str');
 }
-1
+1;

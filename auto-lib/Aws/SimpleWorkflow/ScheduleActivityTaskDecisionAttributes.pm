@@ -10,4 +10,4 @@ package Aws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes {
   has startToCloseTimeout => (is => 'ro', isa => 'Str');
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList');
 }
-1
+1;

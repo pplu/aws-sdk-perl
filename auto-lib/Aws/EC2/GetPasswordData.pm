@@ -1,7 +1,7 @@
 
 package Aws::EC2::GetPasswordData {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

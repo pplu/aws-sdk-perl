@@ -6,7 +6,7 @@ package Aws::StorageGateway::DeleteGateway {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteGateway');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DeleteGatewayResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DeleteGatewayOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

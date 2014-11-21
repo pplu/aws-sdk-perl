@@ -8,7 +8,7 @@ package Aws::StorageGateway::UpdateGatewayInformation {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGatewayInformation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::UpdateGatewayInformationResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::UpdateGatewayInformationOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

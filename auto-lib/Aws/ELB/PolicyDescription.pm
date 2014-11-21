@@ -4,4 +4,4 @@ package Aws::ELB::PolicyDescription {
   has PolicyName => (is => 'ro', isa => 'Str');
   has PolicyTypeName => (is => 'ro', isa => 'Str');
 }
-1
+1;

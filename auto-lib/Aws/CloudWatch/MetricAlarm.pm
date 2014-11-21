@@ -22,4 +22,4 @@ package Aws::CloudWatch::MetricAlarm {
   has Threshold => (is => 'ro', isa => 'Num');
   has Unit => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -4,4 +4,4 @@ package Aws::EC2::DiskImage {
   has Image => (is => 'ro', isa => 'Aws::EC2::DiskImageDetail');
   has Volume => (is => 'ro', isa => 'Aws::EC2::VolumeDetail');
 }
-1
+1;

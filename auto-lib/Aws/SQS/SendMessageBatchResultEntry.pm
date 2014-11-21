@@ -5,4 +5,4 @@ package Aws::SQS::SendMessageBatchResultEntry {
   has MD5OfMessageBody => (is => 'ro', isa => 'Str', required => 1);
   has MessageId => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

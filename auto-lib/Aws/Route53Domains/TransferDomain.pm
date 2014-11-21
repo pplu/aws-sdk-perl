@@ -17,7 +17,7 @@ package Aws::Route53Domains::TransferDomain {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'TransferDomain');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::Route53Domains::TransferDomainResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::Route53Domains::TransferDomainResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

@@ -26,4 +26,4 @@ package Aws::RedShift::Snapshot {
   has TotalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
   has VpcId => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -1,13 +1,13 @@
 
 package Aws::EC2::CreateNetworkInterface {
   use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
-  has PrivateIpAddress => (is => 'ro', isa => 'Str');
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PrivateIpAddressSpecification]');
-  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int');
-  has SubnetId => (is => 'ro', isa => 'Str', required => 1);
+  has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'privateIpAddress' );
+  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PrivateIpAddressSpecification]', traits => ['NameInRequest'], request_name => 'privateIpAddresses' );
+  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'secondaryPrivateIpAddressCount' );
+  has SubnetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'subnetId' , required => 1);
 
   use MooseX::ClassAttribute;
 

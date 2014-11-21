@@ -3,4 +3,4 @@ package Aws::ElasticBeanstalk::S3Location {
   has S3Bucket => (is => 'ro', isa => 'Str');
   has S3Key => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -8,4 +8,4 @@ package Aws::ElasticBeanstalk::EnvironmentResourceDescription {
   has Queues => (is => 'ro', isa => 'ArrayRef[Aws::ElasticBeanstalk::Queue]');
   has Triggers => (is => 'ro', isa => 'ArrayRef[Aws::ElasticBeanstalk::Trigger]');
 }
-1
+1;

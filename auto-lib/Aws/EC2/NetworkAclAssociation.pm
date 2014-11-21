@@ -4,4 +4,4 @@ package Aws::EC2::NetworkAclAssociation {
   has NetworkAclId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'networkAclId');
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
 }
-1
+1;

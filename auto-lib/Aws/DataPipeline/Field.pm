@@ -4,4 +4,4 @@ package Aws::DataPipeline::Field {
   has refValue => (is => 'ro', isa => 'Str');
   has stringValue => (is => 'ro', isa => 'Str');
 }
-1
+1;

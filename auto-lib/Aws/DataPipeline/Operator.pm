@@ -3,4 +3,4 @@ package Aws::DataPipeline::Operator {
   has type => (is => 'ro', isa => 'Str');
   has values => (is => 'ro', isa => 'ArrayRef[Str]');
 }
-1
+1;

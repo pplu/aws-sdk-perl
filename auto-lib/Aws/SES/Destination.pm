@@ -4,4 +4,4 @@ package Aws::SES::Destination {
   has CcAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
   has ToAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
 }
-1
+1;

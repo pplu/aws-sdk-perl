@@ -13,4 +13,4 @@ package Aws::CloudSearch::DomainStatus {
   has SearchPartitionCount => (is => 'ro', isa => 'Int');
   has SearchService => (is => 'ro', isa => 'Aws::CloudSearch::ServiceEndpoint');
 }
-1
+1;

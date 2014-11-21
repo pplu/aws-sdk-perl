@@ -5,4 +5,4 @@ package Aws::EC2::DiskImageDescription {
   has ImportManifestUrl => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'importManifestUrl', required => 1);
   has Size => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'size', required => 1);
 }
-1
+1;

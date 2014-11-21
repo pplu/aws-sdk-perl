@@ -11,4 +11,4 @@ package Aws::OpsWorks::Command {
   has Status => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
 }
-1
+1;

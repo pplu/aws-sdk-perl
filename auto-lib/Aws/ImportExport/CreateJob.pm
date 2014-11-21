@@ -9,7 +9,7 @@ package Aws::ImportExport::CreateJob {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::CreateJobResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::CreateJobOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateJobResult');
 }
 1;

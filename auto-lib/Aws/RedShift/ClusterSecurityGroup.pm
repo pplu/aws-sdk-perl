@@ -5,4 +5,4 @@ package Aws::RedShift::ClusterSecurityGroup {
   has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::EC2SecurityGroup]');
   has IPRanges => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::IPRange]');
 }
-1
+1;

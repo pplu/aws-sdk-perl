@@ -5,4 +5,4 @@ package Aws::ElasticBeanstalk::ValidationMessage {
   has OptionName => (is => 'ro', isa => 'Str');
   has Severity => (is => 'ro', isa => 'Str');
 }
-1
+1;

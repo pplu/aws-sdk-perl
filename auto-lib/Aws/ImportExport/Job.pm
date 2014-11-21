@@ -5,4 +5,4 @@ package Aws::ImportExport::Job {
   has JobId => (is => 'ro', isa => 'Str');
   has JobType => (is => 'ro', isa => 'Str');
 }
-1
+1;

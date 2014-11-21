@@ -11,4 +11,4 @@ package Aws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes {
   has taskStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
-1
+1;

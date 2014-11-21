@@ -5,4 +5,4 @@ package Aws::EC2::RouteTableAssociation {
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'routeTableId');
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
 }
-1
+1;

@@ -7,4 +7,4 @@ package Aws::CloudWatch::MetricDatum {
   has Unit => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Num');
 }
-1
+1;

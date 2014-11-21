@@ -5,4 +5,4 @@ package Aws::EC2::InstanceStatusEvent {
   has NotAfter => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'notAfter');
   has NotBefore => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'notBefore');
 }
-1
+1;

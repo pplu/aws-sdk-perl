@@ -3,7 +3,7 @@ package Aws::ElastiCache::CreateCacheSubnetGroup {
   use Moose;
   has CacheSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' , required => 1);
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   use MooseX::ClassAttribute;
 

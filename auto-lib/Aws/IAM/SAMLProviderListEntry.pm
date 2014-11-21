@@ -4,4 +4,4 @@ package Aws::IAM::SAMLProviderListEntry {
   has CreateDate => (is => 'ro', isa => 'Str');
   has ValidUntil => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -4,4 +4,4 @@ package Aws::Kinesis::Record {
   has PartitionKey => (is => 'ro', isa => 'Str', required => 1);
   has SequenceNumber => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

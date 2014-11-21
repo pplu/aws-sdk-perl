@@ -12,7 +12,7 @@ package Aws::ElastiCache::DescribeReservedCacheNodesOfferings {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedCacheNodesOfferings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElastiCache::DescribeReservedCacheNodesOfferingsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElastiCache::ReservedCacheNodesOfferingMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedCacheNodesOfferingsResult');
 }
 1;

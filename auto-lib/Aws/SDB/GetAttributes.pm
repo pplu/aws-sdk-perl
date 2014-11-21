@@ -1,7 +1,7 @@
 
 package Aws::SDB::GetAttributes {
   use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AttributeName' );
+  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has ConsistentRead => (is => 'ro', isa => 'Bool');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has ItemName => (is => 'ro', isa => 'Str', required => 1);

@@ -1,10 +1,10 @@
 
 package Aws::EC2::CreateInstanceExportTask {
   use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has ExportToS3Task => (is => 'ro', isa => 'Aws::EC2::ExportToS3TaskSpecification', traits => ['NameInRequest'], request_name => 'ExportToS3' );
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has TargetEnvironment => (is => 'ro', isa => 'Str');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has ExportToS3Task => (is => 'ro', isa => 'Aws::EC2::ExportToS3TaskSpecification', traits => ['NameInRequest'], request_name => 'exportToS3' );
+  has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
+  has TargetEnvironment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetEnvironment' );
 
   use MooseX::ClassAttribute;
 

@@ -1,7 +1,7 @@
 
 package Aws::EC2::DescribeExportTasks {
   use Moose;
-  has ExportTaskIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ExportTaskId' );
+  has ExportTaskIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'exportTaskId' );
 
   use MooseX::ClassAttribute;
 

@@ -3,4 +3,4 @@ package Aws::EC2::PortRange {
   has From => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'from');
   has To => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'to');
 }
-1
+1;

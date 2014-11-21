@@ -7,7 +7,7 @@ package Aws::StorageGateway::RetrieveTapeArchive {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RetrieveTapeArchive');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::RetrieveTapeArchiveResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::RetrieveTapeArchiveOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

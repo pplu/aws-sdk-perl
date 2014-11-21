@@ -4,4 +4,4 @@ package Aws::EMR::InstanceGroupStatus {
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::InstanceGroupStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::InstanceGroupTimeline');
 }
-1
+1;

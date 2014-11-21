@@ -4,4 +4,4 @@ package Aws::IAM::MFADevice {
   has SerialNumber => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

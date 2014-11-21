@@ -4,4 +4,4 @@ package Aws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes {
   has externalInitiatedEventId => (is => 'ro', isa => 'Num');
   has externalWorkflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution');
 }
-1
+1;

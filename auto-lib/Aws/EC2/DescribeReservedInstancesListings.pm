@@ -1,9 +1,9 @@
 
 package Aws::EC2::DescribeReservedInstancesListings {
   use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]');
-  has ReservedInstancesId => (is => 'ro', isa => 'Str');
-  has ReservedInstancesListingId => (is => 'ro', isa => 'Str');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'filters' );
+  has ReservedInstancesId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reservedInstancesId' );
+  has ReservedInstancesListingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reservedInstancesListingId' );
 
   use MooseX::ClassAttribute;
 

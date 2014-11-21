@@ -8,7 +8,7 @@ package Aws::AutoScaling::RecordLifecycleActionHeartbeat {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RecordLifecycleActionHeartbeat');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::RecordLifecycleActionHeartbeatResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::RecordLifecycleActionHeartbeatAnswer');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RecordLifecycleActionHeartbeatResult');
 }
 1;

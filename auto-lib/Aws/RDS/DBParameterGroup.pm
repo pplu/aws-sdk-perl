@@ -4,4 +4,4 @@ package Aws::RDS::DBParameterGroup {
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
 }
-1
+1;

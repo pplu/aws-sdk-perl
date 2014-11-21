@@ -6,4 +6,4 @@ package Aws::Support::TrustedAdvisorResourceDetail {
   has resourceId => (is => 'ro', isa => 'Str', required => 1);
   has status => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

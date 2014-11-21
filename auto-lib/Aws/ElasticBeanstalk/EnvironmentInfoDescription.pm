@@ -5,4 +5,4 @@ package Aws::ElasticBeanstalk::EnvironmentInfoDescription {
   has Message => (is => 'ro', isa => 'Str');
   has SampleTimestamp => (is => 'ro', isa => 'Str');
 }
-1
+1;

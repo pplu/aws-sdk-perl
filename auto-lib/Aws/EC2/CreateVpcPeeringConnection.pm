@@ -1,10 +1,10 @@
 
 package Aws::EC2::CreateVpcPeeringConnection {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has PeerOwnerId => (is => 'ro', isa => 'Str');
-  has PeerVpcId => (is => 'ro', isa => 'Str');
-  has VpcId => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has PeerOwnerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'peerOwnerId' );
+  has PeerVpcId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'peerVpcId' );
+  has VpcId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcId' );
 
   use MooseX::ClassAttribute;
 

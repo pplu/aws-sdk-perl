@@ -6,7 +6,7 @@ package Aws::StorageGateway::DescribeCache {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCache');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeCacheResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::DescribeCacheOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

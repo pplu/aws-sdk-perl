@@ -11,4 +11,4 @@ package Aws::CloudFormation::StackEvent {
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

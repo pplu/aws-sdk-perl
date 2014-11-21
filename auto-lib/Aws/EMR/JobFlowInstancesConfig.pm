@@ -11,4 +11,4 @@ package Aws::EMR::JobFlowInstancesConfig {
   has SlaveInstanceType => (is => 'ro', isa => 'Str');
   has TerminationProtected => (is => 'ro', isa => 'Bool');
 }
-1
+1;

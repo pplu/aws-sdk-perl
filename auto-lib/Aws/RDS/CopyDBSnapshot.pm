@@ -2,7 +2,7 @@
 package Aws::RDS::CopyDBSnapshot {
   use Moose;
   has SourceDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]');
   has TargetDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

@@ -6,7 +6,7 @@ package Aws::RedShift::DisableLogging {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableLogging');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DisableLoggingResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::LoggingStatus');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DisableLoggingResult');
 }
 1;

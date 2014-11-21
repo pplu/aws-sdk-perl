@@ -6,4 +6,4 @@ package Aws::StorageGateway::VolumeiSCSIAttributes {
   has NetworkInterfacePort => (is => 'ro', isa => 'Int');
   has TargetARN => (is => 'ro', isa => 'Str');
 }
-1
+1;

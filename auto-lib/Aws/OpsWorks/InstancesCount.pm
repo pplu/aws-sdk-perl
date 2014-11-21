@@ -15,4 +15,4 @@ package Aws::OpsWorks::InstancesCount {
   has Terminated => (is => 'ro', isa => 'Int');
   has Terminating => (is => 'ro', isa => 'Int');
 }
-1
+1;

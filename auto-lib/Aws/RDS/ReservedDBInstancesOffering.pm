@@ -11,4 +11,4 @@ package Aws::RDS::ReservedDBInstancesOffering {
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
 }
-1
+1;

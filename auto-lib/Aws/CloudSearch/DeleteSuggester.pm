@@ -7,7 +7,7 @@ package Aws::CloudSearch::DeleteSuggester {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSuggester');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DeleteSuggesterResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DeleteSuggesterResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSuggesterResult');
 }
 1;

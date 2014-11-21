@@ -8,7 +8,7 @@ package Aws::ELB::SetLoadBalancerPoliciesOfListener {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerPoliciesOfListener');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::SetLoadBalancerPoliciesOfListenerResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::SetLoadBalancerPoliciesOfListenerOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerPoliciesOfListenerResult');
 }
 1;

@@ -11,4 +11,4 @@ package Aws::DynamoDB::TableDescription {
   has TableSizeBytes => (is => 'ro', isa => 'Num');
   has TableStatus => (is => 'ro', isa => 'Str');
 }
-1
+1;

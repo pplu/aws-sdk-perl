@@ -11,7 +11,7 @@ package Aws::SimpleWorkflow::ListWorkflowTypes {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListWorkflowTypes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::ListWorkflowTypesResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::WorkflowTypeInfos');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

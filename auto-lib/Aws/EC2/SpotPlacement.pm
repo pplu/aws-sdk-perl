@@ -3,4 +3,4 @@ package Aws::EC2::SpotPlacement {
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
 }
-1
+1;

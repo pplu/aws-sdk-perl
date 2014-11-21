@@ -6,4 +6,4 @@ package Aws::EC2::IpPermission {
   has ToPort => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'toPort');
   has UserIdGroupPairs => (is => 'ro', isa => 'ArrayRef[Aws::EC2::UserIdGroupPair]', traits => ['Unwrapped'], xmlname => 'groups');
 }
-1
+1;

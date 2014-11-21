@@ -3,4 +3,4 @@ package Aws::SimpleWorkflow::ActivityType {
   has name => (is => 'ro', isa => 'Str', required => 1);
   has version => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

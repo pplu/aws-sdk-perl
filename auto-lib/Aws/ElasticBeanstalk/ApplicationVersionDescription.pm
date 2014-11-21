@@ -7,4 +7,4 @@ package Aws::ElasticBeanstalk::ApplicationVersionDescription {
   has SourceBundle => (is => 'ro', isa => 'Aws::ElasticBeanstalk::S3Location');
   has VersionLabel => (is => 'ro', isa => 'Str');
 }
-1
+1;

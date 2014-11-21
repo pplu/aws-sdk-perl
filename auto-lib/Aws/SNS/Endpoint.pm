@@ -3,4 +3,4 @@ package Aws::SNS::Endpoint {
   has Attributes => (is => 'ro', isa => 'Aws::SNS::MapStringToString');
   has EndpointArn => (is => 'ro', isa => 'Str');
 }
-1
+1;

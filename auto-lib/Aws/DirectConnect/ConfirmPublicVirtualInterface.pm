@@ -6,7 +6,7 @@ package Aws::DirectConnect::ConfirmPublicVirtualInterface {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ConfirmPublicVirtualInterface');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DirectConnect::ConfirmPublicVirtualInterfaceResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DirectConnect::ConfirmPublicVirtualInterfaceResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

@@ -7,7 +7,7 @@ package Aws::DirectConnect::CreatePublicVirtualInterface {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePublicVirtualInterface');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DirectConnect::CreatePublicVirtualInterfaceResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DirectConnect::VirtualInterface');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

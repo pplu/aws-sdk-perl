@@ -4,7 +4,7 @@ package Aws::ElastiCache::ModifyReplicationGroup {
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CacheSecurityGroupName' );
+  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NotificationTopicStatus => (is => 'ro', isa => 'Str');
@@ -12,7 +12,7 @@ package Aws::ElastiCache::ModifyReplicationGroup {
   has PrimaryClusterId => (is => 'ro', isa => 'Str');
   has ReplicationGroupDescription => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshottingClusterId => (is => 'ro', isa => 'Str');
   has SnapshotWindow => (is => 'ro', isa => 'Str');

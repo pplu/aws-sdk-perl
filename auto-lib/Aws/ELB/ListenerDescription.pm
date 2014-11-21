@@ -3,4 +3,4 @@ package Aws::ELB::ListenerDescription {
   has Listener => (is => 'ro', isa => 'Aws::ELB::Listener');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
 }
-1
+1;

@@ -9,4 +9,4 @@ package Aws::AutoScaling::ScalingPolicy {
   has PolicyName => (is => 'ro', isa => 'Str');
   has ScalingAdjustment => (is => 'ro', isa => 'Int');
 }
-1
+1;

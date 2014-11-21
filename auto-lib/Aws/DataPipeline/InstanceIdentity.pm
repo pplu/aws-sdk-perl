@@ -3,4 +3,4 @@ package Aws::DataPipeline::InstanceIdentity {
   has document => (is => 'ro', isa => 'Str');
   has signature => (is => 'ro', isa => 'Str');
 }
-1
+1;

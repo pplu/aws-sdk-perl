@@ -3,4 +3,4 @@ package Aws::SimpleWorkflow::ActivityTaskStartedEventAttributes {
   has identity => (is => 'ro', isa => 'Str');
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
 }
-1
+1;

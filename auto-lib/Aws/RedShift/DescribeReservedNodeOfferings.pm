@@ -8,7 +8,7 @@ package Aws::RedShift::DescribeReservedNodeOfferings {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodeOfferings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeReservedNodeOfferingsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::ReservedNodeOfferingsMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedNodeOfferingsResult');
 }
 1;

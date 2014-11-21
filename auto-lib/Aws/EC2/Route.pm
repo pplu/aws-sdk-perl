@@ -9,4 +9,4 @@ package Aws::EC2::Route {
   has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'state');
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcPeeringConnectionId');
 }
-1
+1;

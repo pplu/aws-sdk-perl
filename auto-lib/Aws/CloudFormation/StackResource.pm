@@ -10,4 +10,4 @@ package Aws::CloudFormation::StackResource {
   has StackName => (is => 'ro', isa => 'Str');
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

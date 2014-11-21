@@ -5,4 +5,4 @@ package Aws::EC2::PriceSchedule {
   has Price => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'price');
   has Term => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'term');
 }
-1
+1;

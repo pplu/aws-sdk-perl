@@ -9,7 +9,7 @@ package Aws::AutoScaling::CompleteLifecycleAction {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CompleteLifecycleAction');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::CompleteLifecycleActionResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::CompleteLifecycleActionAnswer');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CompleteLifecycleActionResult');
 }
 1;

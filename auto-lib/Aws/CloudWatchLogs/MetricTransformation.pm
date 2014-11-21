@@ -4,4 +4,4 @@ package Aws::CloudWatchLogs::MetricTransformation {
   has metricNamespace => (is => 'ro', isa => 'Str', required => 1);
   has metricValue => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

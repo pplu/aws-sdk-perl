@@ -3,7 +3,7 @@ package Aws::RDS::CreateDBSecurityGroup {
   use Moose;
   has DBSecurityGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has DBSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]');
 
   use MooseX::ClassAttribute;
 

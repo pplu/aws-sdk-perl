@@ -6,4 +6,4 @@ package Aws::SES::SendDataPoint {
   has Rejects => (is => 'ro', isa => 'Num');
   has Timestamp => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -5,4 +5,4 @@ package Aws::CloudWatch::StatisticSet {
   has SampleCount => (is => 'ro', isa => 'Num', required => 1);
   has Sum => (is => 'ro', isa => 'Num', required => 1);
 }
-1
+1;

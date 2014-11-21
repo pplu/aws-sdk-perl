@@ -6,7 +6,7 @@ package Aws::RedShift::CreateCluster {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ClusterSecurityGroupName' );
+  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
@@ -22,7 +22,7 @@ package Aws::RedShift::CreateCluster {
   has Port => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 

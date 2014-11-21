@@ -1,9 +1,9 @@
 
 package Aws::EC2::ImportKeyPair {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has KeyName => (is => 'ro', isa => 'Str', required => 1);
-  has PublicKeyMaterial => (is => 'ro', isa => 'Str', required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has KeyName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyName' , required => 1);
+  has PublicKeyMaterial => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'publicKeyMaterial' , required => 1);
 
   use MooseX::ClassAttribute;
 

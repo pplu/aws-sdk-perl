@@ -15,7 +15,7 @@ package Aws::SimpleWorkflow::ListClosedWorkflowExecutions {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListClosedWorkflowExecutions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::ListClosedWorkflowExecutionsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::WorkflowExecutionInfos');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

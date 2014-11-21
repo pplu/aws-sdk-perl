@@ -10,7 +10,7 @@ package Aws::ElasticBeanstalk::DescribeConfigurationOptions {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationOptions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::DescribeConfigurationOptionsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::ConfigurationOptionsDescription');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationOptionsResult');
 }
 1;

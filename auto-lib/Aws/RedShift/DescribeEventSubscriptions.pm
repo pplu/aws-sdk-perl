@@ -8,7 +8,7 @@ package Aws::RedShift::DescribeEventSubscriptions {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeEventSubscriptionsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::EventSubscriptionsMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptionsResult');
 }
 1;

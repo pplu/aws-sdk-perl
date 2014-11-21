@@ -6,4 +6,4 @@ package Aws::CloudTrail::Trail {
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
   has SnsTopicName => (is => 'ro', isa => 'Str');
 }
-1
+1;

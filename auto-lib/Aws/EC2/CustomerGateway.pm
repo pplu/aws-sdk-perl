@@ -7,4 +7,4 @@ package Aws::EC2::CustomerGateway {
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
   has Type => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'type');
 }
-1
+1;

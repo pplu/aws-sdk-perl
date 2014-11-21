@@ -3,4 +3,4 @@ package Aws::DirectConnect::Location {
   has locationCode => (is => 'ro', isa => 'Str');
   has locationName => (is => 'ro', isa => 'Str');
 }
-1
+1;

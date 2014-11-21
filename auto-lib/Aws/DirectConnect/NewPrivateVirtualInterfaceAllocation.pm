@@ -7,4 +7,4 @@ package Aws::DirectConnect::NewPrivateVirtualInterfaceAllocation {
   has virtualInterfaceName => (is => 'ro', isa => 'Str', required => 1);
   has vlan => (is => 'ro', isa => 'Int', required => 1);
 }
-1
+1;

@@ -5,4 +5,4 @@ package Aws::DataPipeline::TaskObject {
   has pipelineId => (is => 'ro', isa => 'Str');
   has taskId => (is => 'ro', isa => 'Str');
 }
-1
+1;

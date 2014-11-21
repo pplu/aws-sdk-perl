@@ -4,4 +4,4 @@ package Aws::CloudFormation::Parameter {
   has ParameterValue => (is => 'ro', isa => 'Str');
   has UsePreviousValue => (is => 'ro', isa => 'Bool');
 }
-1
+1;

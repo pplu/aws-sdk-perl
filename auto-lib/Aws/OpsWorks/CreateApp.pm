@@ -7,7 +7,6 @@ package Aws::OpsWorks::CreateApp {
   has Description => (is => 'ro', isa => 'Str');
   has Domains => (is => 'ro', isa => 'ArrayRef[Str]');
   has EnableSsl => (is => 'ro', isa => 'Bool');
-  has Environment => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::EnvironmentVariable]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Shortname => (is => 'ro', isa => 'Str');
   has SslConfiguration => (is => 'ro', isa => 'Aws::OpsWorks::SslConfiguration');

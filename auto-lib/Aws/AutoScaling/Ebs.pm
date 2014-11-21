@@ -6,4 +6,4 @@ package Aws::AutoScaling::Ebs {
   has VolumeSize => (is => 'ro', isa => 'Int');
   has VolumeType => (is => 'ro', isa => 'Str');
 }
-1
+1;

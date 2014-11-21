@@ -7,7 +7,7 @@ package Aws::EMR::AddInstanceGroups {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddInstanceGroups');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::AddInstanceGroupsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::EMR::AddInstanceGroupsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

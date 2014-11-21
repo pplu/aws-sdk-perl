@@ -7,4 +7,4 @@ package Aws::CloudSearch::TextOptions {
   has SortEnabled => (is => 'ro', isa => 'Bool');
   has SourceField => (is => 'ro', isa => 'Str');
 }
-1
+1;

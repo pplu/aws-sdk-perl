@@ -3,4 +3,4 @@ package Aws::CognitoIdentity::IdentityPoolShortDescription {
   has IdentityPoolId => (is => 'ro', isa => 'Str');
   has IdentityPoolName => (is => 'ro', isa => 'Str');
 }
-1
+1;

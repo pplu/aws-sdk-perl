@@ -3,4 +3,4 @@ package Aws::ElasticBeanstalk::OptionRestrictionRegex {
   has Label => (is => 'ro', isa => 'Str');
   has Pattern => (is => 'ro', isa => 'Str');
 }
-1
+1;

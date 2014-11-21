@@ -4,4 +4,4 @@ package Aws::EC2::PlacementGroup {
   has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'state');
   has Strategy => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'strategy');
 }
-1
+1;

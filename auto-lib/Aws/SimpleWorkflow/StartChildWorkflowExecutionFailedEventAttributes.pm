@@ -7,4 +7,4 @@ package Aws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes {
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
-1
+1;

@@ -3,4 +3,4 @@ package Aws::OpsWorks::StackConfigurationManager {
   has Name => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
 }
-1
+1;

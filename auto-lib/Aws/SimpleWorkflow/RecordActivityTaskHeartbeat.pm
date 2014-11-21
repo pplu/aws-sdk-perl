@@ -7,7 +7,7 @@ package Aws::SimpleWorkflow::RecordActivityTaskHeartbeat {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RecordActivityTaskHeartbeat');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::RecordActivityTaskHeartbeatResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::ActivityTaskStatus');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

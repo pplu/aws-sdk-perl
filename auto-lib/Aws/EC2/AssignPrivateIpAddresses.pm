@@ -1,10 +1,10 @@
 
 package Aws::EC2::AssignPrivateIpAddresses {
   use Moose;
-  has AllowReassignment => (is => 'ro', isa => 'Bool');
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PrivateIpAddress' );
-  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int');
+  has AllowReassignment => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'allowReassignment' );
+  has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' , required => 1);
+  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'privateIpAddress' );
+  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'secondaryPrivateIpAddressCount' );
 
   use MooseX::ClassAttribute;
 

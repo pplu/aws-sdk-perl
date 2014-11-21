@@ -8,7 +8,7 @@ package Aws::CloudSearch::DescribeExpressions {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeExpressions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DescribeExpressionsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DescribeExpressionsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeExpressionsResult');
 }
 1;

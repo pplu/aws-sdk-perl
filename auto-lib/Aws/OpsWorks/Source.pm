@@ -7,4 +7,4 @@ package Aws::OpsWorks::Source {
   has Url => (is => 'ro', isa => 'Str');
   has Username => (is => 'ro', isa => 'Str');
 }
-1
+1;

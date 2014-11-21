@@ -7,7 +7,7 @@ package Aws::CloudSearch::DefineIndexField {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DefineIndexField');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DefineIndexFieldResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DefineIndexFieldResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DefineIndexFieldResult');
 }
 1;

@@ -3,4 +3,4 @@ package Aws::ElastiCache::ParameterNameValue {
   has ParameterName => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
 }
-1
+1;

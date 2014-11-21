@@ -5,4 +5,4 @@ package Aws::EC2::ReservedInstancesConfiguration {
   has InstanceType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceType');
   has Platform => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'platform');
 }
-1
+1;

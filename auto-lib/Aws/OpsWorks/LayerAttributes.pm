@@ -26,4 +26,4 @@ package Aws::OpsWorks::LayerAttributes {
   has RubyVersion => (is => 'ro', isa => 'Str');
   has RubygemsVersion => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -5,4 +5,4 @@ package Aws::CloudFormation::TemplateParameter {
   has NoEcho => (is => 'ro', isa => 'Bool');
   has ParameterKey => (is => 'ro', isa => 'Str');
 }
-1
+1;

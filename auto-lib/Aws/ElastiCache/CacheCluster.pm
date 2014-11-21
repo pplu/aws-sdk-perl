@@ -23,4 +23,4 @@ package Aws::ElastiCache::CacheCluster {
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
 }
-1
+1;

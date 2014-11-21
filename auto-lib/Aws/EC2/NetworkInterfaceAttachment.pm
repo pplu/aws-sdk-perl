@@ -8,4 +8,4 @@ package Aws::EC2::NetworkInterfaceAttachment {
   has InstanceOwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceOwnerId');
   has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status');
 }
-1
+1;

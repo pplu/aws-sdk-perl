@@ -10,4 +10,4 @@ package Aws::OpsWorks::ElasticLoadBalancer {
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has VpcId => (is => 'ro', isa => 'Str');
 }
-1
+1;

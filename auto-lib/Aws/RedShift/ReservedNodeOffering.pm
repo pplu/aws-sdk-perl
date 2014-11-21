@@ -9,4 +9,4 @@ package Aws::RedShift::ReservedNodeOffering {
   has ReservedNodeOfferingId => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
 }
-1
+1;

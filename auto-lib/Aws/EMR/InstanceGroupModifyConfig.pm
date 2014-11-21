@@ -4,4 +4,4 @@ package Aws::EMR::InstanceGroupModifyConfig {
   has InstanceCount => (is => 'ro', isa => 'Int');
   has InstanceGroupId => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

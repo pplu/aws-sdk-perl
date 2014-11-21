@@ -6,4 +6,4 @@ package Aws::EC2::InstanceNetworkInterfaceAttachment {
   has DeviceIndex => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'deviceIndex');
   has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status');
 }
-1
+1;

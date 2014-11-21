@@ -1,9 +1,9 @@
 
 package Aws::EC2::ReplaceRouteTableAssociation {
   use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has RouteTableId => (is => 'ro', isa => 'Str', required => 1);
+  has AssociationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'associationId' , required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
 
   use MooseX::ClassAttribute;
 

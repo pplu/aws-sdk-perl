@@ -3,4 +3,4 @@ package Aws::DynamoDB::AttributeDefinition {
   has AttributeName => (is => 'ro', isa => 'Str', required => 1);
   has AttributeType => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

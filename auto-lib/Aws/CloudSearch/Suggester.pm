@@ -3,4 +3,4 @@ package Aws::CloudSearch::Suggester {
   has DocumentSuggesterOptions => (is => 'ro', isa => 'Aws::CloudSearch::DocumentSuggesterOptions', required => 1);
   has SuggesterName => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

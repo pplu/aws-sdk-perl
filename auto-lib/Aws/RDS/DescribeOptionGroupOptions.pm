@@ -9,7 +9,7 @@ package Aws::RDS::DescribeOptionGroupOptions {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroupOptions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeOptionGroupOptionsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::OptionGroupOptionsMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroupOptionsResult');
 }
 1;

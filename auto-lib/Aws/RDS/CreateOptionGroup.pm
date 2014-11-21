@@ -5,7 +5,7 @@ package Aws::RDS::CreateOptionGroup {
   has MajorEngineVersion => (is => 'ro', isa => 'Str', required => 1);
   has OptionGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has OptionGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]');
 
   use MooseX::ClassAttribute;
 

@@ -1,8 +1,8 @@
 
 package Aws::EC2::DeleteNetworkInterface {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' , required => 1);
 
   use MooseX::ClassAttribute;
 

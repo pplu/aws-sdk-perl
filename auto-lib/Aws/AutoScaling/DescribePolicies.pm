@@ -9,7 +9,7 @@ package Aws::AutoScaling::DescribePolicies {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePolicies');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::DescribePoliciesResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::PoliciesType');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribePoliciesResult');
 }
 1;

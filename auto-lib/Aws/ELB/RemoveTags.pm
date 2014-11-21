@@ -7,7 +7,7 @@ package Aws::ELB::RemoveTags {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveTags');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::RemoveTagsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::RemoveTagsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RemoveTagsResult');
 }
 1;

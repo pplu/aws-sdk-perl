@@ -14,4 +14,4 @@ package Aws::SimpleWorkflow::Decision {
   has startChildWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes');
   has startTimerDecisionAttributes => (is => 'ro', isa => 'Aws::SimpleWorkflow::StartTimerDecisionAttributes');
 }
-1
+1;

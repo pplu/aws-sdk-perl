@@ -13,4 +13,4 @@ package Aws::EMR::JobFlowDetail {
   has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str]');
   has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
 }
-1
+1;

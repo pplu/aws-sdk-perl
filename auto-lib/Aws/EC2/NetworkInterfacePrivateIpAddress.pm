@@ -5,4 +5,4 @@ package Aws::EC2::NetworkInterfacePrivateIpAddress {
   has PrivateDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateDnsName');
   has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateIpAddress');
 }
-1
+1;

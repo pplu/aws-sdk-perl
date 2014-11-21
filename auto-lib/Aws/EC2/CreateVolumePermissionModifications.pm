@@ -3,4 +3,4 @@ package Aws::EC2::CreateVolumePermissionModifications {
   has Add => (is => 'ro', isa => 'ArrayRef[Aws::EC2::CreateVolumePermission]');
   has Remove => (is => 'ro', isa => 'ArrayRef[Aws::EC2::CreateVolumePermission]');
 }
-1
+1;

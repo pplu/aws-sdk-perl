@@ -4,4 +4,4 @@ package Aws::ElastiCache::PendingModifiedValues {
   has EngineVersion => (is => 'ro', isa => 'Str');
   has NumCacheNodes => (is => 'ro', isa => 'Int');
 }
-1
+1;

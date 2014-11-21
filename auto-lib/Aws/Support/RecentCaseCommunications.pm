@@ -3,4 +3,4 @@ package Aws::Support::RecentCaseCommunications {
   has communications => (is => 'ro', isa => 'ArrayRef[Aws::Support::Communication]');
   has nextToken => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -1,7 +1,7 @@
 
 package Aws::EC2::DeleteSubnet {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

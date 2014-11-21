@@ -3,4 +3,4 @@ package Aws::SimpleWorkflow::ExecutionTimeFilter {
   has latestDate => (is => 'ro', isa => 'Str');
   has oldestDate => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

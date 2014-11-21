@@ -12,7 +12,7 @@ package Aws::ElasticBeanstalk::CreateConfigurationTemplate {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateConfigurationTemplate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::CreateConfigurationTemplateResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::ConfigurationSettingsDescription');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateConfigurationTemplateResult');
 }
 1;

@@ -9,7 +9,7 @@ package Aws::RedShift::DescribeClusterParameters {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterParameters');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::DescribeClusterParametersResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RedShift::ClusterParameterGroupDetails');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterParametersResult');
 }
 1;

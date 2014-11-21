@@ -8,7 +8,7 @@ package Aws::ELB::CreateAppCookieStickinessPolicy {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAppCookieStickinessPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::CreateAppCookieStickinessPolicyResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::CreateAppCookieStickinessPolicyOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateAppCookieStickinessPolicyResult');
 }
 1;

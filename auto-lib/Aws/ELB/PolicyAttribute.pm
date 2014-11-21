@@ -3,4 +3,4 @@ package Aws::ELB::PolicyAttribute {
   has AttributeName => (is => 'ro', isa => 'Str');
   has AttributeValue => (is => 'ro', isa => 'Str');
 }
-1
+1;

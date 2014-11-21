@@ -4,4 +4,4 @@ package Aws::ElastiCache::CacheParameterGroup {
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
 }
-1
+1;

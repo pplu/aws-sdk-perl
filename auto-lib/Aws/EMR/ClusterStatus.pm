@@ -4,4 +4,4 @@ package Aws::EMR::ClusterStatus {
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::ClusterStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::ClusterTimeline');
 }
-1
+1;

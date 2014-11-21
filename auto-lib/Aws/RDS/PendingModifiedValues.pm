@@ -10,4 +10,4 @@ package Aws::RDS::PendingModifiedValues {
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has Port => (is => 'ro', isa => 'Int');
 }
-1
+1;

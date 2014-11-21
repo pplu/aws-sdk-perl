@@ -7,7 +7,7 @@ package Aws::IAM::ListAccountAliases {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAccountAliases');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListAccountAliasesResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListAccountAliasesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListAccountAliasesResult');
 }
 1;

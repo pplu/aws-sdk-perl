@@ -12,4 +12,4 @@ package Aws::ElasticBeanstalk::ConfigurationOptionDescription {
   has ValueOptions => (is => 'ro', isa => 'ArrayRef[Str]');
   has ValueType => (is => 'ro', isa => 'Str');
 }
-1
+1;

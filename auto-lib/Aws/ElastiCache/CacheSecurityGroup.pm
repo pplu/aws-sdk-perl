@@ -5,4 +5,4 @@ package Aws::ElastiCache::CacheSecurityGroup {
   has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::EC2SecurityGroup]');
   has OwnerId => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -5,4 +5,4 @@ package Aws::EC2::AvailabilityZone {
   has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'zoneState');
   has ZoneName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'zoneName');
 }
-1
+1;

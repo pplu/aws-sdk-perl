@@ -7,7 +7,7 @@ package Aws::CloudSearch::UpdateScalingParameters {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateScalingParameters');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::UpdateScalingParametersResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::UpdateScalingParametersResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateScalingParametersResult');
 }
 1;

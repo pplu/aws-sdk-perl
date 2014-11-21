@@ -9,7 +9,7 @@ package Aws::ElastiCache::DescribeCacheParameters {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCacheParameters');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElastiCache::DescribeCacheParametersResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElastiCache::CacheParameterGroupDetails');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheParametersResult');
 }
 1;

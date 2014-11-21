@@ -1,10 +1,10 @@
 
 package Aws::EC2::CreateReservedInstancesListing {
   use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
-  has PriceSchedules => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PriceScheduleSpecification]', required => 1);
-  has ReservedInstancesId => (is => 'ro', isa => 'Str', required => 1);
+  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' , required => 1);
+  has InstanceCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'instanceCount' , required => 1);
+  has PriceSchedules => (is => 'ro', isa => 'ArrayRef[Aws::EC2::PriceScheduleSpecification]', traits => ['NameInRequest'], request_name => 'priceSchedules' , required => 1);
+  has ReservedInstancesId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reservedInstancesId' , required => 1);
 
   use MooseX::ClassAttribute;
 

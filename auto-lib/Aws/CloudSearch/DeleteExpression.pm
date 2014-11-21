@@ -7,7 +7,7 @@ package Aws::CloudSearch::DeleteExpression {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteExpression');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DeleteExpressionResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DeleteExpressionResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteExpressionResult');
 }
 1;

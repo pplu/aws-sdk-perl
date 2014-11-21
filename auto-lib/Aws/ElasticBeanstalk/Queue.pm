@@ -3,4 +3,4 @@ package Aws::ElasticBeanstalk::Queue {
   has Name => (is => 'ro', isa => 'Str');
   has URL => (is => 'ro', isa => 'Str');
 }
-1
+1;

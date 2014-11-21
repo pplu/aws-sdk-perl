@@ -9,7 +9,7 @@ package Aws::Route53Domains::UpdateDomainContactPrivacy {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDomainContactPrivacy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::Route53Domains::UpdateDomainContactPrivacyResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::Route53Domains::UpdateDomainContactPrivacyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

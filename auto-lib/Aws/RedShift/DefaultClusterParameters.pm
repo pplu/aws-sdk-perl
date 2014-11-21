@@ -4,4 +4,4 @@ package Aws::RedShift::DefaultClusterParameters {
   has ParameterGroupFamily => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Parameter]');
 }
-1
+1;

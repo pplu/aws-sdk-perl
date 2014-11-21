@@ -5,4 +5,4 @@ package Aws::ElastiCache::NodeSnapshot {
   has CacheSize => (is => 'ro', isa => 'Str');
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -4,4 +4,4 @@ package Aws::CloudSearch::ScalingParameters {
   has DesiredPartitionCount => (is => 'ro', isa => 'Int');
   has DesiredReplicationCount => (is => 'ro', isa => 'Int');
 }
-1
+1;

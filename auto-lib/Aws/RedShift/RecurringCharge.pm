@@ -3,4 +3,4 @@ package Aws::RedShift::RecurringCharge {
   has RecurringChargeAmount => (is => 'ro', isa => 'Num');
   has RecurringChargeFrequency => (is => 'ro', isa => 'Str');
 }
-1
+1;

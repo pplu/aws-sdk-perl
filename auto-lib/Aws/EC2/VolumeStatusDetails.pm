@@ -3,4 +3,4 @@ package Aws::EC2::VolumeStatusDetails {
   has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'name');
   has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status');
 }
-1
+1;

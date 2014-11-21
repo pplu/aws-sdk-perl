@@ -3,4 +3,4 @@ package Aws::STS::FederatedUser {
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has FederatedUserId => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

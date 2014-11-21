@@ -11,7 +11,7 @@ package Aws::StorageGateway::CreateStorediSCSIVolume {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStorediSCSIVolume');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::CreateStorediSCSIVolumeResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::StorageGateway::CreateStorediSCSIVolumeOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

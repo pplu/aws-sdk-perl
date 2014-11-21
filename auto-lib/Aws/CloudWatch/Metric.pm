@@ -4,4 +4,4 @@ package Aws::CloudWatch::Metric {
   has MetricName => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str');
 }
-1
+1;

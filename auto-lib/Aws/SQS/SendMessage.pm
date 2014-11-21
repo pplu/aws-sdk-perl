@@ -2,7 +2,7 @@
 package Aws::SQS::SendMessage {
   use Moose;
   has DelaySeconds => (is => 'ro', isa => 'Int');
-  has MessageAttributes => (is => 'ro', isa => 'Aws::SQS::MessageAttributeMap', traits => ['NameInRequest'], request_name => 'MessageAttribute' , traits => ['NameInRequest'], request_name => 'Value' );
+  has MessageAttributes => (is => 'ro', isa => 'Aws::SQS::MessageAttributeMap');
   has MessageBody => (is => 'ro', isa => 'Str', required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 

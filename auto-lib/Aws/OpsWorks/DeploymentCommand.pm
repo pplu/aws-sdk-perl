@@ -3,4 +3,4 @@ package Aws::OpsWorks::DeploymentCommand {
   has Args => (is => 'ro', isa => 'Aws::OpsWorks::DeploymentCommandArgs');
   has Name => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

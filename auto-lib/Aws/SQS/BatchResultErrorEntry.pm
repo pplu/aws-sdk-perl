@@ -5,4 +5,4 @@ package Aws::SQS::BatchResultErrorEntry {
   has Message => (is => 'ro', isa => 'Str');
   has SenderFault => (is => 'ro', isa => 'Bool', required => 1);
 }
-1
+1;

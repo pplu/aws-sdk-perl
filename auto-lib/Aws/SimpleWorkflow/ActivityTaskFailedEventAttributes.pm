@@ -5,4 +5,4 @@ package Aws::SimpleWorkflow::ActivityTaskFailedEventAttributes {
   has scheduledEventId => (is => 'ro', isa => 'Num', required => 1);
   has startedEventId => (is => 'ro', isa => 'Num', required => 1);
 }
-1
+1;

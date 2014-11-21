@@ -3,4 +3,4 @@ package Aws::RDS::EventCategoriesMap {
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has SourceType => (is => 'ro', isa => 'Str');
 }
-1
+1;

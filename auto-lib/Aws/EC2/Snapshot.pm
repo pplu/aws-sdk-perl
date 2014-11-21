@@ -1,5 +1,7 @@
+
 package Aws::EC2::Snapshot {
   use Moose;
+  with 'AWS::API::UnwrappedParser';
   has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
   has Encrypted => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'encrypted');
   has OwnerAlias => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAlias');
@@ -11,5 +13,6 @@ package Aws::EC2::Snapshot {
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
   has VolumeId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'volumeId');
   has VolumeSize => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'volumeSize');
+
 }
-1
+1;

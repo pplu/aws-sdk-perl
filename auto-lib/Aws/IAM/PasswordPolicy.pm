@@ -11,4 +11,4 @@ package Aws::IAM::PasswordPolicy {
   has RequireSymbols => (is => 'ro', isa => 'Bool');
   has RequireUppercaseCharacters => (is => 'ro', isa => 'Bool');
 }
-1
+1;

@@ -6,4 +6,4 @@ package Aws::SimpleWorkflow::ActivityTypeConfiguration {
   has defaultTaskScheduleToStartTimeout => (is => 'ro', isa => 'Str');
   has defaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str');
 }
-1
+1;

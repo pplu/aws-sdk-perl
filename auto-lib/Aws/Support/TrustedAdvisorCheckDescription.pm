@@ -6,4 +6,4 @@ package Aws::Support::TrustedAdvisorCheckDescription {
   has metadata => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has name => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

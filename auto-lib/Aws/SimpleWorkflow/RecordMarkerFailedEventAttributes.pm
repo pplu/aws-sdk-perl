@@ -4,4 +4,4 @@ package Aws::SimpleWorkflow::RecordMarkerFailedEventAttributes {
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has markerName => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

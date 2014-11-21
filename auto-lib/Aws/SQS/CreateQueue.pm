@@ -1,7 +1,7 @@
 
 package Aws::SQS::CreateQueue {
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap', traits => ['NameInRequest'], request_name => 'Attribute' , traits => ['NameInRequest'], request_name => 'Value' );
+  has Attributes => (is => 'ro', isa => 'Aws::SQS::AttributeMap');
   has QueueName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

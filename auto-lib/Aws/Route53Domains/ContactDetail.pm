@@ -15,4 +15,4 @@ package Aws::Route53Domains::ContactDetail {
   has State => (is => 'ro', isa => 'Str');
   has ZipCode => (is => 'ro', isa => 'Str');
 }
-1
+1;

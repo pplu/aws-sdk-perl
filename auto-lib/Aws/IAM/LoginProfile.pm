@@ -4,4 +4,4 @@ package Aws::IAM::LoginProfile {
   has PasswordResetRequired => (is => 'ro', isa => 'Bool');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

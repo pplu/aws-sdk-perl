@@ -3,8 +3,8 @@ package Aws::RDS::CreateDBSubnetGroup {
   use Moose;
   has DBSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]');
 
   use MooseX::ClassAttribute;
 

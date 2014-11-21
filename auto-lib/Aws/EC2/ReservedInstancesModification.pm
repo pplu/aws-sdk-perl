@@ -10,4 +10,4 @@ package Aws::EC2::ReservedInstancesModification {
   has StatusMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'statusMessage');
   has UpdateDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'updateDate');
 }
-1
+1;

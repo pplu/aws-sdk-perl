@@ -11,7 +11,7 @@ package Aws::SimpleWorkflow::ListActivityTypes {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListActivityTypes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::ListActivityTypesResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::ActivityTypeInfos');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

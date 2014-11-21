@@ -4,4 +4,4 @@ package Aws::EC2::InstanceNetworkInterfaceAssociation {
   has PublicDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicDnsName');
   has PublicIp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicIp');
 }
-1
+1;

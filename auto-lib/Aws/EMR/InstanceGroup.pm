@@ -10,4 +10,4 @@ package Aws::EMR::InstanceGroup {
   has RunningInstanceCount => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Aws::EMR::InstanceGroupStatus');
 }
-1
+1;

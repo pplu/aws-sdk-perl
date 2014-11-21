@@ -8,4 +8,4 @@ package Aws::RedShift::PendingModifiedValues {
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
 }
-1
+1;

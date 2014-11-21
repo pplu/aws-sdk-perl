@@ -5,4 +5,4 @@ package Aws::EC2::TagDescription {
   has ResourceType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'resourceType');
   has Value => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'value');
 }
-1
+1;

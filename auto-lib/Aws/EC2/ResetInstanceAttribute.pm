@@ -1,9 +1,9 @@
 
 package Aws::EC2::ResetInstanceAttribute {
   use Moose;
-  has Attribute => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
+  has Attribute => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'attribute' , required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
 
   use MooseX::ClassAttribute;
 

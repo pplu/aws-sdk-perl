@@ -4,4 +4,4 @@ package Aws::SimpleWorkflow::WorkflowExecutionFailedEventAttributes {
   has details => (is => 'ro', isa => 'Str');
   has reason => (is => 'ro', isa => 'Str');
 }
-1
+1;

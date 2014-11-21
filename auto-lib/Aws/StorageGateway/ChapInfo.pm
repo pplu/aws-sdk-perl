@@ -5,4 +5,4 @@ package Aws::StorageGateway::ChapInfo {
   has SecretToAuthenticateTarget => (is => 'ro', isa => 'Str');
   has TargetARN => (is => 'ro', isa => 'Str');
 }
-1
+1;

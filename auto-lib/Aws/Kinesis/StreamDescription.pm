@@ -6,4 +6,4 @@ package Aws::Kinesis::StreamDescription {
   has StreamName => (is => 'ro', isa => 'Str', required => 1);
   has StreamStatus => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

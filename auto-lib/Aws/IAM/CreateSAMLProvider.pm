@@ -7,7 +7,7 @@ package Aws::IAM::CreateSAMLProvider {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSAMLProvider');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::CreateSAMLProviderResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::CreateSAMLProviderResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateSAMLProviderResult');
 }
 1;

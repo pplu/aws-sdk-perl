@@ -7,4 +7,4 @@ package Aws::AutoScaling::AutoScalingInstanceDetails {
   has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
   has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

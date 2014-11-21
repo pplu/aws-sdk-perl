@@ -9,46 +9,55 @@ package AWS::API::Builder::EC2 {
 
   extends 'AWS::API::Builder';
 
-  has service => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ endpoint_prefix } });
-  has version => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ api_version } });
-  has operations => (is => 'ro', lazy => 1, default => sub { [ sort keys %{ $_[0]->struct->{operations} } ] });
-  has endpoint_role => (is => 'ro', lazy => 1, default => sub { defined $_[0]->struct->{ global_endpoint } ? 
+  has service => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{metadata}->{ endpointPrefix } });
+  has version => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{metadata}->{ apiVersion } });
+  has endpoint_role => (is => 'ro', lazy => 1, default => sub { defined $_[0]->struct->{metadata}->{ globalEndpoint } ? 
                                                                    'AWS::API::SingleEndpointCaller':
                                                                    'AWS::API::RegionalEndpointCaller' 
                                                               } );
   has response_role  => (is => 'ro', lazy => 1, default => sub { 'Net::AWS::XMLResponse' });
-  has signature_role => (is => 'ro', lazy => 1, default => sub { sprintf "Net::AWS::%sSignature", uc $_[0]->struct->{signature_version} } );
-  has parameter_role => (is => 'ro', lazy => 1, default => sub { my $type = $_[0]->struct->{type}; substr($type,0,1) = uc substr($type,0,1); return "Net::AWS::${type}Caller" });
+
+  has '+parameter_role' => (
+    default => sub {
+      return "Net::AWS::QueryCaller"
+    },
+  );
+
+  has '+flattened_arrays' => (default => '1');
 
   has callargs_class_template => (is => 'ro', isa => 'Str', default => q#
 [%- operation = c.operation(op_name) %]
+[%- shape = c.input_for_operation(op_name) %]
 package [% c.api %]::[% operation.name %] {
   use Moose;
-[% FOREACH param_name IN operation.input.members.keys.sort -%]
-  has [% param_name %] => (is => 'ro', isa => '[% operation.input.members.$param_name.perl_type %]'
-  [%- IF (operation.input.members.$param_name.xmlname) %], traits => ['NameInRequest'], request_name => '[% operation.input.members.$param_name.xmlname %]' [% END %]
-  [%- IF (operation.input.members.$param_name.members.xmlname) %], traits => ['NameInRequest'], request_name => '[% operation.input.members.$param_name.members.xmlname %]' [% END %]
-  [%- IF (operation.input.members.$param_name.required) %], required => 1[% END %]);
+[% FOREACH param_name IN shape.members.keys.sort -%]
+  [%- member = c.shape(shape.members.$param_name.shape) -%]
+  has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
+  [%- IF (shape.members.${param_name}.locationName) %], traits => ['NameInRequest'], request_name => '[% shape.members.${param_name}.locationName %]' [% END %]
+  [%- IF (member.members.xmlname) %], traits => ['NameInRequest'], request_name => '[% member.members.xmlname %]' [% END %]
+  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
-  class_has _returns => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% c.api %]::[% op_name %]Result'[% END %]);
+  class_has _returns => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% c.api %]::[% c.shapename_for_operation_output(op_name) %]'[% END %]);
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;#);
 
   has callresult_class_template => (is => 'ro', isa => 'Str', default => q#
-[%- operation = c.operation(op_name) %]
-[%- IF (operation.output.keys.size) %]
-package [% c.api %]::[% operation.name %]Result {
+[%- operation = c.result_for_operation(op_name) %]
+[%- shape = c.result_for_operation(op_name) %]
+[%- IF (shape) %]
+package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
   use Moose;
   with 'AWS::API::UnwrappedParser';
-[% FOREACH param_name IN operation.output.members.keys.sort -%]
-  has [% param_name %] => (is => 'ro', isa => '[% operation.output.members.$param_name.perl_type %]'
-  [%- IF (operation.output.members.$param_name.xmlname) %], traits => ['Unwrapped'], xmlname => '[% operation.output.members.$param_name.xmlname %]'[% END %]
-  [%- IF (operation.output.members.$param_name.members.xmlname and (operation.output.members.$param_name.members.xmlname != 'item')) %], traits => ['Unwrapped'], xmlname => '[% operation.output.members.$param_name.members.xmlname %]'[% END %]
-  [%- IF (operation.output.members.$param_name.required) %], required => 1[% END %]);
+[% FOREACH param_name IN shape.members.keys.sort -%]
+  [%- member = c.shape(shape.members.$param_name.shape) -%]
+  has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
+  [%- IF (shape.members.${param_name}.locationName) %], traits => ['Unwrapped'], xmlname => '[% shape.members.${param_name}.locationName %]'[% END %]
+  [%- IF (member.members.xmlname and (member.members.xmlname != 'item')) %], traits => ['Unwrapped'], xmlname => '[% member.members.xmlname %]'[% END %]
+  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
 }
 [%- END %]
@@ -86,30 +95,36 @@ package [% c.api %] {
 1;#);
 
 
-  sub make_inner_classes {
+  sub make_inner_class {
     my $self = shift;
+    my $iclass = shift;
+    my $inner_class = shift;
   
-    foreach my $inner_class (sort keys %{ $self->inner_classes }) {
       my $output = '';
-      if ($self->inner_classes->{ $inner_class }->{type} eq 'map'){
+      if ($iclass->{type} eq 'map'){
+        my $keys_shape = $self->shape($iclass->{key}->{shape});
         $output .= "package $inner_class {\n";
         $output .= "  use Moose;\n";
         $output .= "  with 'AWS::API::MapParser';\n";
         my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members});
-        my $members = $self->inner_classes->{ $inner_class }->{keys}->{enum};
+        my $members = $keys_shape->{enum};
         next if (not defined $members);
         foreach my $param_name (sort @$members){
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
           $output .= ");\n";
         }
-        $output .= "}\n1\n";
-      } else {
+        $output .= "}\n1;\n";
+        $self->save_class($inner_class, $output);
+      } elsif($iclass->{type} eq 'structure') {
         $output .= "package $inner_class {\n";
         $output .= "  use Moose;\n";
  
-        my $members = $self->inner_classes->{ $inner_class }->{members};
+        my $members = $iclass->{members};
         foreach my $param_name (sort keys %$members){
-          my $param_props = $members->{ $param_name };
+          my $param_props = $self->shape($members->{ $param_name }->{ shape });
+
+          my $callit = $self->get_caller_class_type($members->{ $param_name }->{ shape });
+          $self->make_inner_class($param_props,$callit);
 
           my $type;
           if ($param_props->{enum}) {
@@ -118,21 +133,20 @@ package [% c.api %] {
             #$self->register_enum($type, $param_props->{enum});
             $type = 'Str';
           } else {
-            $type = eval { $self->get_caller_class_type($param_props) };
+            $type = eval { $self->get_caller_class_type($members->{ $param_name }->{ shape }) };
             if ($@) { die "In Inner Class: $inner_class: $@"; }
           }
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
-          if (defined $param_props->{xmlname}) {
-            $output .= ", traits => ['Unwrapped'], xmlname => '$param_props->{xmlname}'";
+          if (defined $members->{ $param_name }->{locationName}) {
+            $output .= ", traits => ['Unwrapped'], xmlname => '$members->{ $param_name }->{locationName}'";
           }
-          $output .= ", required => 1" if (defined $param_props->{required} and $param_props->{required} == 1);
+          $output .= ", required => 1" if ($self->required_in_shape($iclass,$param_name));
           $output .= ");\n";
         }
-        $output .= "}\n1\n";
+        $output .= "}\n1;\n";
+        $self->save_class($inner_class, $output);
       }
-      $self->save_class($inner_class, $output);
     }
-  }
 }
 
 1;

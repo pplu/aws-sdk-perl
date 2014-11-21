@@ -11,4 +11,4 @@ package Aws::AutoScaling::ScheduledUpdateGroupAction {
   has StartTime => (is => 'ro', isa => 'Str');
   has Time => (is => 'ro', isa => 'Str');
 }
-1
+1;

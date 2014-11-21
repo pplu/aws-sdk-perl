@@ -3,8 +3,8 @@ package Aws::EC2::CopyImage {
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has Name => (is => 'ro', isa => 'Str', required => 1);
   has SourceImageId => (is => 'ro', isa => 'Str', required => 1);
   has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
 

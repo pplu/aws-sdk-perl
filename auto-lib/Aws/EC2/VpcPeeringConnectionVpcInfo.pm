@@ -4,4 +4,4 @@ package Aws::EC2::VpcPeeringConnectionVpcInfo {
   has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
   has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
 }
-1
+1;

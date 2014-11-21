@@ -1,12 +1,12 @@
 
 package Aws::EC2::CreateImage {
   use Moose;
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
-  has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has NoReboot => (is => 'ro', isa => 'Bool');
+  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Aws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'blockDeviceMapping' );
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has NoReboot => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'noReboot' );
 
   use MooseX::ClassAttribute;
 

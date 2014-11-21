@@ -2,10 +2,10 @@
 package Aws::RedShift::ModifyEventSubscription {
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'EventCategory' );
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has Severity => (is => 'ro', isa => 'Str');
   has SnsTopicArn => (is => 'ro', isa => 'Str');
-  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SourceId' );
+  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has SourceType => (is => 'ro', isa => 'Str');
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
 

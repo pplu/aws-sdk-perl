@@ -5,7 +5,7 @@ package Aws::EC2::SpotInstanceRequest {
   has Fault => (is => 'ro', isa => 'Aws::EC2::SpotInstanceStateFault', traits => ['Unwrapped'], xmlname => 'fault');
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
   has LaunchGroup => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'launchGroup');
-  has LaunchSpecification => (is => 'ro', isa => 'Aws::EC2::SpotLaunchSpecification', traits => ['Unwrapped'], xmlname => 'launchSpecification');
+  has LaunchSpecification => (is => 'ro', isa => 'Aws::EC2::LaunchSpecification', traits => ['Unwrapped'], xmlname => 'launchSpecification');
   has LaunchedAvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'launchedAvailabilityZone');
   has ProductDescription => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'productDescription');
   has SpotInstanceRequestId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'spotInstanceRequestId');
@@ -17,4 +17,4 @@ package Aws::EC2::SpotInstanceRequest {
   has ValidFrom => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'validFrom');
   has ValidUntil => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'validUntil');
 }
-1
+1;

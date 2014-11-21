@@ -8,4 +8,4 @@ package Aws::CloudWatch::Datapoint {
   has Timestamp => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
 }
-1
+1;

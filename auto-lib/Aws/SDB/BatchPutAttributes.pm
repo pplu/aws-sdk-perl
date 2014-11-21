@@ -2,7 +2,7 @@
 package Aws::SDB::BatchPutAttributes {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Aws::SDB::ReplaceableItem]', traits => ['NameInRequest'], request_name => 'Item' , required => 1);
+  has Items => (is => 'ro', isa => 'ArrayRef[Aws::SDB::ReplaceableItem]', required => 1);
 
   use MooseX::ClassAttribute;
 

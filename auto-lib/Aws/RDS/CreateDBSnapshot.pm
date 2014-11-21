@@ -3,7 +3,7 @@ package Aws::RDS::CreateDBSnapshot {
   use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]');
 
   use MooseX::ClassAttribute;
 

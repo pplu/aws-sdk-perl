@@ -5,4 +5,4 @@ package Aws::CloudWatchLogs::MetricFilter {
   has filterPattern => (is => 'ro', isa => 'Str');
   has metricTransformations => (is => 'ro', isa => 'ArrayRef[Aws::CloudWatchLogs::MetricTransformation]');
 }
-1
+1;

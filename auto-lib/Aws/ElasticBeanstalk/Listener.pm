@@ -3,4 +3,4 @@ package Aws::ElasticBeanstalk::Listener {
   has Port => (is => 'ro', isa => 'Int');
   has Protocol => (is => 'ro', isa => 'Str');
 }
-1
+1;

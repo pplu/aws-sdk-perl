@@ -10,7 +10,7 @@ package Aws::ElasticBeanstalk::UpdateConfigurationTemplate {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationTemplate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::UpdateConfigurationTemplateResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::ConfigurationSettingsDescription');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationTemplateResult');
 }
 1;

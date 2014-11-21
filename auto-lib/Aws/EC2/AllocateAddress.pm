@@ -2,7 +2,7 @@
 package Aws::EC2::AllocateAddress {
   use Moose;
   has Domain => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
 
   use MooseX::ClassAttribute;
 

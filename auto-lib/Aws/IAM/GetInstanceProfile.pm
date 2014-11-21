@@ -6,7 +6,7 @@ package Aws::IAM::GetInstanceProfile {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetInstanceProfile');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetInstanceProfileResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetInstanceProfileResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetInstanceProfileResult');
 }
 1;

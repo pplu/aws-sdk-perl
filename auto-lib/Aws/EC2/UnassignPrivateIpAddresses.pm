@@ -1,8 +1,8 @@
 
 package Aws::EC2::UnassignPrivateIpAddresses {
   use Moose;
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PrivateIpAddress' , required => 1);
+  has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' , required => 1);
+  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'privateIpAddress' , required => 1);
 
   use MooseX::ClassAttribute;
 

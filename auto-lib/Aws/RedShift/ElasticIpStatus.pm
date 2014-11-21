@@ -3,4 +3,4 @@ package Aws::RedShift::ElasticIpStatus {
   has ElasticIp => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 }
-1
+1;

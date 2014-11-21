@@ -6,4 +6,4 @@ package Aws::Support::Communication {
   has submittedBy => (is => 'ro', isa => 'Str');
   has timeCreated => (is => 'ro', isa => 'Str');
 }
-1
+1;

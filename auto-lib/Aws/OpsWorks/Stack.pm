@@ -22,4 +22,4 @@ package Aws::OpsWorks::Stack {
   has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str');
 }
-1
+1;

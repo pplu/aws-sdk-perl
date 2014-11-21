@@ -3,4 +3,4 @@ package Aws::AutoScaling::SuspendedProcess {
   has ProcessName => (is => 'ro', isa => 'Str');
   has SuspensionReason => (is => 'ro', isa => 'Str');
 }
-1
+1;

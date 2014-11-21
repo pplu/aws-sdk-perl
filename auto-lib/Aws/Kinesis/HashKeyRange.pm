@@ -3,4 +3,4 @@ package Aws::Kinesis::HashKeyRange {
   has EndingHashKey => (is => 'ro', isa => 'Str', required => 1);
   has StartingHashKey => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

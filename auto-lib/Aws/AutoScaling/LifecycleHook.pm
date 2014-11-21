@@ -10,4 +10,4 @@ package Aws::AutoScaling::LifecycleHook {
   has NotificationTargetARN => (is => 'ro', isa => 'Str');
   has RoleARN => (is => 'ro', isa => 'Str');
 }
-1
+1;

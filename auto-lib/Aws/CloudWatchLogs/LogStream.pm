@@ -9,4 +9,4 @@ package Aws::CloudWatchLogs::LogStream {
   has storedBytes => (is => 'ro', isa => 'Num');
   has uploadSequenceToken => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -7,4 +7,4 @@ package Aws::IAM::Role {
   has RoleId => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

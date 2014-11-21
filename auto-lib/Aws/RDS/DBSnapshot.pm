@@ -19,4 +19,4 @@ package Aws::RDS::DBSnapshot {
   has Status => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -4,4 +4,4 @@ package Aws::EMR::StepConfig {
   has HadoopJarStep => (is => 'ro', isa => 'Aws::EMR::HadoopJarStepConfig', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

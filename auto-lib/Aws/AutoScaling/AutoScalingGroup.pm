@@ -21,4 +21,4 @@ package Aws::AutoScaling::AutoScalingGroup {
   has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str]');
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
 }
-1
+1;

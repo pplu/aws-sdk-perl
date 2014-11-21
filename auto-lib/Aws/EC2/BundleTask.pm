@@ -9,4 +9,4 @@ package Aws::EC2::BundleTask {
   has Storage => (is => 'ro', isa => 'Aws::EC2::Storage', traits => ['Unwrapped'], xmlname => 'storage');
   has UpdateTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'updateTime');
 }
-1
+1;

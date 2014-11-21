@@ -8,7 +8,7 @@ package Aws::ElastiCache::DescribeCacheSubnetGroups {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCacheSubnetGroups');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElastiCache::DescribeCacheSubnetGroupsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElastiCache::CacheSubnetGroupMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheSubnetGroupsResult');
 }
 1;

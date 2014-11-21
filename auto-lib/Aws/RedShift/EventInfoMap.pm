@@ -5,4 +5,4 @@ package Aws::RedShift::EventInfoMap {
   has EventId => (is => 'ro', isa => 'Str');
   has Severity => (is => 'ro', isa => 'Str');
 }
-1
+1;

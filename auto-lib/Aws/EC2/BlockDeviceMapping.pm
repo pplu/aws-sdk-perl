@@ -5,4 +5,4 @@ package Aws::EC2::BlockDeviceMapping {
   has NoDevice => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'noDevice');
   has VirtualName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualName');
 }
-1
+1;

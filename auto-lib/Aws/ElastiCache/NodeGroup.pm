@@ -5,4 +5,4 @@ package Aws::ElastiCache::NodeGroup {
   has PrimaryEndpoint => (is => 'ro', isa => 'Aws::ElastiCache::Endpoint');
   has Status => (is => 'ro', isa => 'Str');
 }
-1
+1;

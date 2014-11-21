@@ -4,4 +4,4 @@ package Aws::SimpleWorkflow::DomainInfo {
   has name => (is => 'ro', isa => 'Str', required => 1);
   has status => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

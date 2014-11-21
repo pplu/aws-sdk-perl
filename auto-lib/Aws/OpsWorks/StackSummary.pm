@@ -7,4 +7,4 @@ package Aws::OpsWorks::StackSummary {
   has Name => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
 }
-1
+1;

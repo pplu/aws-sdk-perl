@@ -1,7 +1,7 @@
 
 package Aws::EC2::DeleteSpotDatafeedSubscription {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
 
   use MooseX::ClassAttribute;
 

@@ -4,4 +4,4 @@ package Aws::IAM::ServerCertificate {
   has CertificateChain => (is => 'ro', isa => 'Str');
   has ServerCertificateMetadata => (is => 'ro', isa => 'Aws::IAM::ServerCertificateMetadata', required => 1);
 }
-1
+1;

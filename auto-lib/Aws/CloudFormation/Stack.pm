@@ -15,4 +15,4 @@ package Aws::CloudFormation::Stack {
   has Tags => (is => 'ro', isa => 'ArrayRef[Aws::CloudFormation::Tag]');
   has TimeoutInMinutes => (is => 'ro', isa => 'Int');
 }
-1
+1;

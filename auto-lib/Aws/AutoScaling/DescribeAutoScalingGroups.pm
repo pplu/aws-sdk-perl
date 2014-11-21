@@ -8,7 +8,7 @@ package Aws::AutoScaling::DescribeAutoScalingGroups {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingGroups');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::DescribeAutoScalingGroupsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::AutoScalingGroupsType');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingGroupsResult');
 }
 1;

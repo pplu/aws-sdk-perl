@@ -4,4 +4,4 @@ package Aws::CloudFormation::Output {
   has OutputKey => (is => 'ro', isa => 'Str');
   has OutputValue => (is => 'ro', isa => 'Str');
 }
-1
+1;

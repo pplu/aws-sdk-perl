@@ -6,4 +6,4 @@ package Aws::ELB::PolicyAttributeTypeDescription {
   has DefaultValue => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
 }
-1
+1;

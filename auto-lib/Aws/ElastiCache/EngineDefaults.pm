@@ -5,4 +5,4 @@ package Aws::ElastiCache::EngineDefaults {
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::Parameter]');
 }
-1
+1;

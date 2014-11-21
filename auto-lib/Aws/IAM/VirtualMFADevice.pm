@@ -6,4 +6,4 @@ package Aws::IAM::VirtualMFADevice {
   has SerialNumber => (is => 'ro', isa => 'Str', required => 1);
   has User => (is => 'ro', isa => 'Aws::IAM::User');
 }
-1
+1;

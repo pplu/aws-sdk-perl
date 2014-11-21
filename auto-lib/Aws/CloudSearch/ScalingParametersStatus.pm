@@ -3,4 +3,4 @@ package Aws::CloudSearch::ScalingParametersStatus {
   has Options => (is => 'ro', isa => 'Aws::CloudSearch::ScalingParameters', required => 1);
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
 }
-1
+1;

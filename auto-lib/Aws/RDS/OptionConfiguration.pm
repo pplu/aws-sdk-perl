@@ -6,4 +6,4 @@ package Aws::RDS::OptionConfiguration {
   has Port => (is => 'ro', isa => 'Int');
   has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str]');
 }
-1
+1;

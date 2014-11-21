@@ -7,4 +7,4 @@ package Aws::OpsWorks::ServiceError {
   has StackId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
 }
-1
+1;

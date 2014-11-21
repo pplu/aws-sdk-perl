@@ -4,4 +4,4 @@ package Aws::EMR::StepStatus {
   has StateChangeReason => (is => 'ro', isa => 'Aws::EMR::StepStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Aws::EMR::StepTimeline');
 }
-1
+1;

@@ -8,7 +8,7 @@ package Aws::STS::GetSessionToken {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSessionToken');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::STS::GetSessionTokenResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::STS::GetSessionTokenResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetSessionTokenResult');
 }
 1;

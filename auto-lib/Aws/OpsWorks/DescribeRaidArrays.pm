@@ -3,7 +3,6 @@ package Aws::OpsWorks::DescribeRaidArrays {
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
   has RaidArrayIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has StackId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 

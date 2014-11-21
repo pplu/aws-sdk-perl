@@ -6,7 +6,7 @@ package Aws::CloudTrail::DeleteTrail {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTrail');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudTrail::DeleteTrailResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudTrail::DeleteTrailResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

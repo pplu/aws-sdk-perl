@@ -7,4 +7,4 @@ package Aws::StorageGateway::Tape {
   has TapeStatus => (is => 'ro', isa => 'Str');
   has VTLDevice => (is => 'ro', isa => 'Str');
 }
-1
+1;

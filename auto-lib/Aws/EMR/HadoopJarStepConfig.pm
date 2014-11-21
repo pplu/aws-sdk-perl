@@ -5,4 +5,4 @@ package Aws::EMR::HadoopJarStepConfig {
   has MainClass => (is => 'ro', isa => 'Str');
   has Properties => (is => 'ro', isa => 'ArrayRef[Aws::EMR::KeyValue]');
 }
-1
+1;

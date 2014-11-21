@@ -8,4 +8,4 @@ package Aws::RedShift::Event {
   has SourceIdentifier => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'Str');
 }
-1
+1;

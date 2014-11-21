@@ -5,4 +5,4 @@ package Aws::EMR::HadoopStepConfig {
   has MainClass => (is => 'ro', isa => 'Str');
   has Properties => (is => 'ro', isa => 'Aws::EMR::StringMap');
 }
-1
+1;

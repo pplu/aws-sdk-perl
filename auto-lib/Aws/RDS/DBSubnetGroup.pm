@@ -6,4 +6,4 @@ package Aws::RDS::DBSubnetGroup {
   has Subnets => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Subnet]');
   has VpcId => (is => 'ro', isa => 'Str');
 }
-1
+1;

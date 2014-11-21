@@ -6,4 +6,4 @@ package Aws::RedShift::ClusterSubnetGroup {
   has Subnets => (is => 'ro', isa => 'ArrayRef[Aws::RedShift::Subnet]');
   has VpcId => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -4,4 +4,4 @@ package Aws::ElastiCache::CacheParameterGroupStatus {
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has ParameterApplyStatus => (is => 'ro', isa => 'Str');
 }
-1
+1;

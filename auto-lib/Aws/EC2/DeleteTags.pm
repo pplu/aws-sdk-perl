@@ -1,9 +1,9 @@
 
 package Aws::EC2::DeleteTags {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Resources => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has Resources => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'resourceId' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::EC2::Tag]', traits => ['NameInRequest'], request_name => 'tag' );
 
   use MooseX::ClassAttribute;
 

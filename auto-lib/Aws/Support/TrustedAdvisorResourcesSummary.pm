@@ -5,4 +5,4 @@ package Aws::Support::TrustedAdvisorResourcesSummary {
   has resourcesProcessed => (is => 'ro', isa => 'Num', required => 1);
   has resourcesSuppressed => (is => 'ro', isa => 'Num', required => 1);
 }
-1
+1;

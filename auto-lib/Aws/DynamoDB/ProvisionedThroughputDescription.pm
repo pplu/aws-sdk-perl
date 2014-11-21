@@ -6,4 +6,4 @@ package Aws::DynamoDB::ProvisionedThroughputDescription {
   has ReadCapacityUnits => (is => 'ro', isa => 'Num');
   has WriteCapacityUnits => (is => 'ro', isa => 'Num');
 }
-1
+1;

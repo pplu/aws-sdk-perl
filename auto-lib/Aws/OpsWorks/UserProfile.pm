@@ -6,4 +6,4 @@ package Aws::OpsWorks::UserProfile {
   has SshPublicKey => (is => 'ro', isa => 'Str');
   has SshUsername => (is => 'ro', isa => 'Str');
 }
-1
+1;

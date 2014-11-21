@@ -2,7 +2,7 @@
 package Aws::EC2::CreateCustomerGateway {
   use Moose;
   has BgpAsn => (is => 'ro', isa => 'Int', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has PublicIp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'IpAddress' , required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
 

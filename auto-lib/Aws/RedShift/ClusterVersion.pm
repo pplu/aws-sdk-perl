@@ -4,4 +4,4 @@ package Aws::RedShift::ClusterVersion {
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
 }
-1
+1;

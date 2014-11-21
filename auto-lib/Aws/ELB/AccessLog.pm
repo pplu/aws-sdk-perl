@@ -5,4 +5,4 @@ package Aws::ELB::AccessLog {
   has S3BucketName => (is => 'ro', isa => 'Str');
   has S3BucketPrefix => (is => 'ro', isa => 'Str');
 }
-1
+1;

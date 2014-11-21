@@ -10,7 +10,7 @@ package Aws::DataPipeline::QueryObjects {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'QueryObjects');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::QueryObjectsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::QueryObjectsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

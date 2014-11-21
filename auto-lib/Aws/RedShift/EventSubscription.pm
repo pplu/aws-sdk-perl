@@ -11,4 +11,4 @@ package Aws::RedShift::EventSubscription {
   has Status => (is => 'ro', isa => 'Str');
   has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
 }
-1
+1;

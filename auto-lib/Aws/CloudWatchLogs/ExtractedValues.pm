@@ -3,3 +3,4 @@ package Aws::CloudWatchLogs::ExtractedValues {
   with 'AWS::API::StrToStrMapParser';
   has Map => (is => 'ro', isa => 'HashRef[Str]');
 }
+1;

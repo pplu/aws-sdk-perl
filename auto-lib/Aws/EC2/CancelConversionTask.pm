@@ -1,9 +1,9 @@
 
 package Aws::EC2::CancelConversionTask {
   use Moose;
-  has ConversionTaskId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has ReasonMessage => (is => 'ro', isa => 'Str');
+  has ConversionTaskId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'conversionTaskId' , required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has ReasonMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reasonMessage' );
 
   use MooseX::ClassAttribute;
 

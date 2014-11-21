@@ -5,4 +5,4 @@ package Aws::SimpleWorkflow::TimerStartedEventAttributes {
   has startToFireTimeout => (is => 'ro', isa => 'Str', required => 1);
   has timerId => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

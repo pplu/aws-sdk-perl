@@ -9,7 +9,7 @@ package Aws::CloudWatchLogs::DescribeMetricFilters {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMetricFilters');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudWatchLogs::DescribeMetricFiltersResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudWatchLogs::DescribeMetricFiltersResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

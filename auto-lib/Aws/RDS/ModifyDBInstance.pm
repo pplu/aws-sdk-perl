@@ -9,7 +9,7 @@ package Aws::RDS::ModifyDBInstance {
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'DBSecurityGroupName' );
+  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -18,7 +18,7 @@ package Aws::RDS::ModifyDBInstance {
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 

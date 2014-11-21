@@ -3,4 +3,4 @@ package Aws::ElasticBeanstalk::SolutionStackDescription {
   has PermittedFileTypes => (is => 'ro', isa => 'ArrayRef[Str]');
   has SolutionStackName => (is => 'ro', isa => 'Str');
 }
-1
+1;

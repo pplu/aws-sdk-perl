@@ -3,4 +3,4 @@ package Aws::AutoScaling::Alarm {
   has AlarmARN => (is => 'ro', isa => 'Str');
   has AlarmName => (is => 'ro', isa => 'Str');
 }
-1
+1;

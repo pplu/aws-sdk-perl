@@ -7,4 +7,4 @@ package Aws::IAM::ServerCertificateMetadata {
   has ServerCertificateName => (is => 'ro', isa => 'Str', required => 1);
   has UploadDate => (is => 'ro', isa => 'Str');
 }
-1
+1;

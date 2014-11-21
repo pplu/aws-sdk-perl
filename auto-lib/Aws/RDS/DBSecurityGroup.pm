@@ -7,4 +7,4 @@ package Aws::RDS::DBSecurityGroup {
   has OwnerId => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 }
-1
+1;

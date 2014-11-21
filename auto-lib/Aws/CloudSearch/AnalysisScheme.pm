@@ -4,4 +4,4 @@ package Aws::CloudSearch::AnalysisScheme {
   has AnalysisSchemeLanguage => (is => 'ro', isa => 'Str', required => 1);
   has AnalysisSchemeName => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

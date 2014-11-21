@@ -8,4 +8,4 @@ package Aws::EC2::NetworkAclEntry {
   has RuleAction => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ruleAction');
   has RuleNumber => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'ruleNumber');
 }
-1
+1;

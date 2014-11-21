@@ -6,4 +6,4 @@ package Aws::EC2::VolumeStatusItem {
   has VolumeId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'volumeId');
   has VolumeStatus => (is => 'ro', isa => 'Aws::EC2::VolumeStatusInfo', traits => ['Unwrapped'], xmlname => 'volumeStatus');
 }
-1
+1;

@@ -3,4 +3,4 @@ package Aws::RDS::DBParameterGroupStatus {
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has ParameterApplyStatus => (is => 'ro', isa => 'Str');
 }
-1
+1;

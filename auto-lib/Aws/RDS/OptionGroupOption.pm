@@ -12,4 +12,4 @@ package Aws::RDS::OptionGroupOption {
   has Persistent => (is => 'ro', isa => 'Bool');
   has PortRequired => (is => 'ro', isa => 'Bool');
 }
-1
+1;

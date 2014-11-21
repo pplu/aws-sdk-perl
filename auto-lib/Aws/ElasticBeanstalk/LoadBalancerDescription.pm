@@ -4,4 +4,4 @@ package Aws::ElasticBeanstalk::LoadBalancerDescription {
   has Listeners => (is => 'ro', isa => 'ArrayRef[Aws::ElasticBeanstalk::Listener]');
   has LoadBalancerName => (is => 'ro', isa => 'Str');
 }
-1
+1;

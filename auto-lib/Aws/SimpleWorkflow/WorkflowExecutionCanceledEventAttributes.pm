@@ -3,4 +3,4 @@ package Aws::SimpleWorkflow::WorkflowExecutionCanceledEventAttributes {
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Num', required => 1);
   has details => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -17,7 +17,7 @@ package Aws::CloudFormation::CreateStack {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStack');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::CreateStackResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::CreateStackOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStackResult');
 }
 1;

@@ -8,7 +8,7 @@ package Aws::IAM::ListGroupsForUser {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListGroupsForUser');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListGroupsForUserResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListGroupsForUserResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListGroupsForUserResult');
 }
 1;

@@ -4,4 +4,4 @@ package Aws::RDS::DescribeDBLogFilesDetails {
   has LogFileName => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Num');
 }
-1
+1;

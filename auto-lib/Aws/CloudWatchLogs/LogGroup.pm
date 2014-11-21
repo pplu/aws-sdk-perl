@@ -7,4 +7,4 @@ package Aws::CloudWatchLogs::LogGroup {
   has retentionInDays => (is => 'ro', isa => 'Int');
   has storedBytes => (is => 'ro', isa => 'Num');
 }
-1
+1;

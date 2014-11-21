@@ -4,4 +4,4 @@ package Aws::EMR::InstanceGroupTimeline {
   has EndDateTime => (is => 'ro', isa => 'Str');
   has ReadyDateTime => (is => 'ro', isa => 'Str');
 }
-1
+1;

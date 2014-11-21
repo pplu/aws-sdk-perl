@@ -5,4 +5,4 @@ package Aws::SimpleWorkflow::WorkflowTypeConfiguration {
   has defaultTaskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList');
   has defaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str');
 }
-1
+1;

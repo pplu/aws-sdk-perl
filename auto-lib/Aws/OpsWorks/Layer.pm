@@ -20,4 +20,4 @@ package Aws::OpsWorks::Layer {
   has UseEbsOptimizedInstances => (is => 'ro', isa => 'Bool');
   has VolumeConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::OpsWorks::VolumeConfiguration]');
 }
-1
+1;

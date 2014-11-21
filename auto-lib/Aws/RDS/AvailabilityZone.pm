@@ -3,4 +3,4 @@ package Aws::RDS::AvailabilityZone {
   has Name => (is => 'ro', isa => 'Str');
   has ProvisionedIopsCapable => (is => 'ro', isa => 'Bool');
 }
-1
+1;

@@ -1,7 +1,7 @@
 
 package Aws::EC2::CancelReservedInstancesListing {
   use Moose;
-  has ReservedInstancesListingId => (is => 'ro', isa => 'Str', required => 1);
+  has ReservedInstancesListingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reservedInstancesListingId' , required => 1);
 
   use MooseX::ClassAttribute;
 

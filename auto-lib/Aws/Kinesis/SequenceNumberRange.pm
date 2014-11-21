@@ -3,4 +3,4 @@ package Aws::Kinesis::SequenceNumberRange {
   has EndingSequenceNumber => (is => 'ro', isa => 'Str');
   has StartingSequenceNumber => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

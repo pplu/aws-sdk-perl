@@ -7,7 +7,7 @@ package Aws::ELB::EnableAvailabilityZonesForLoadBalancer {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableAvailabilityZonesForLoadBalancer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::EnableAvailabilityZonesForLoadBalancerResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::AddAvailabilityZonesOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'EnableAvailabilityZonesForLoadBalancerResult');
 }
 1;

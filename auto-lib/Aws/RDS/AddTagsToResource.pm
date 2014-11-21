@@ -2,7 +2,7 @@
 package Aws::RDS::AddTagsToResource {
   use Moose;
   has ResourceName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', required => 1);
 
   use MooseX::ClassAttribute;
 

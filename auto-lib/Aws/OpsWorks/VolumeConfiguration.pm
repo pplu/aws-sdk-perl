@@ -7,4 +7,4 @@ package Aws::OpsWorks::VolumeConfiguration {
   has Size => (is => 'ro', isa => 'Int', required => 1);
   has VolumeType => (is => 'ro', isa => 'Str');
 }
-1
+1;

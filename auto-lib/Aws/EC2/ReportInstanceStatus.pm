@@ -1,13 +1,13 @@
 
 package Aws::EC2::ReportInstanceStatus {
   use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has Instances => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' );
-  has ReasonCodes => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReasonCode' );
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime' );
+  has Instances => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
+  has ReasonCodes => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'reasonCode' , required => 1);
+  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime' );
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' , required => 1);
 
   use MooseX::ClassAttribute;
 

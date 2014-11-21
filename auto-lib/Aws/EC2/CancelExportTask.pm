@@ -1,7 +1,7 @@
 
 package Aws::EC2::CancelExportTask {
   use Moose;
-  has ExportTaskId => (is => 'ro', isa => 'Str', required => 1);
+  has ExportTaskId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'exportTaskId' , required => 1);
 
   use MooseX::ClassAttribute;
 

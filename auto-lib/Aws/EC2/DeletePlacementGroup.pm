@@ -1,8 +1,8 @@
 
 package Aws::EC2::DeletePlacementGroup {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has GroupName => (is => 'ro', isa => 'Str', required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has GroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'groupName' , required => 1);
 
   use MooseX::ClassAttribute;
 

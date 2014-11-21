@@ -3,4 +3,4 @@ package Aws::OpsWorks::StackAttributes {
   with 'AWS::API::MapParser';
   has Color => (is => 'ro', isa => 'Str');
 }
-1
+1;

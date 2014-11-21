@@ -10,7 +10,7 @@ package Aws::RDS::CreateDBInstance {
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBName => (is => 'ro', isa => 'Str');
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'DBSecurityGroupName' );
+  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -24,8 +24,8 @@ package Aws::RDS::CreateDBInstance {
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 

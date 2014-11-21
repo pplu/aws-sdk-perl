@@ -8,7 +8,7 @@ package Aws::SNS::ConfirmSubscription {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ConfirmSubscription');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SNS::ConfirmSubscriptionResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SNS::ConfirmSubscriptionResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ConfirmSubscriptionResult');
 }
 1;

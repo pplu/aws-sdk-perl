@@ -3,4 +3,4 @@ package Aws::SES::Body {
   has Html => (is => 'ro', isa => 'Aws::SES::Content');
   has Text => (is => 'ro', isa => 'Aws::SES::Content');
 }
-1
+1;

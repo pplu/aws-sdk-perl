@@ -3,4 +3,4 @@ package Aws::AutoScaling::Filter {
   has Name => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str]');
 }
-1
+1;

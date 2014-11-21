@@ -2,8 +2,8 @@
 package Aws::EC2::CreateVpnConnection {
   use Moose;
   has CustomerGatewayId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Options => (is => 'ro', isa => 'Aws::EC2::VpnConnectionOptionsSpecification');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has Options => (is => 'ro', isa => 'Aws::EC2::VpnConnectionOptionsSpecification', traits => ['NameInRequest'], request_name => 'options' );
   has Type => (is => 'ro', isa => 'Str', required => 1);
   has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
 

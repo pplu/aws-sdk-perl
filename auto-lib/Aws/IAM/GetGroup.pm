@@ -8,7 +8,7 @@ package Aws::IAM::GetGroup {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetGroupResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetGroupResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetGroupResult');
 }
 1;

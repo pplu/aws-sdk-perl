@@ -2,7 +2,7 @@
 package Aws::EC2::RevokeSecurityGroupIngress {
   use Moose;
   has CidrIp => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has FromPort => (is => 'ro', isa => 'Int');
   has GroupId => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');

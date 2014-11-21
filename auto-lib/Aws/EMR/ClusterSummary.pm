@@ -4,4 +4,4 @@ package Aws::EMR::ClusterSummary {
   has Name => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Aws::EMR::ClusterStatus');
 }
-1
+1;

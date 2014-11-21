@@ -8,4 +8,4 @@ package Aws::RDS::DBEngineVersion {
   has EngineVersion => (is => 'ro', isa => 'Str');
   has SupportedCharacterSets => (is => 'ro', isa => 'ArrayRef[Aws::RDS::CharacterSet]');
 }
-1
+1;

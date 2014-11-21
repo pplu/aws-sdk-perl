@@ -3,4 +3,4 @@ package Aws::DirectConnect::VirtualGateway {
   has virtualGatewayId => (is => 'ro', isa => 'Str');
   has virtualGatewayState => (is => 'ro', isa => 'Str');
 }
-1
+1;

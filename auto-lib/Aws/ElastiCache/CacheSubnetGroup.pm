@@ -5,4 +5,4 @@ package Aws::ElastiCache::CacheSubnetGroup {
   has Subnets => (is => 'ro', isa => 'ArrayRef[Aws::ElastiCache::Subnet]');
   has VpcId => (is => 'ro', isa => 'Str');
 }
-1
+1;

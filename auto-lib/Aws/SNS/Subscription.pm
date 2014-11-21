@@ -6,4 +6,4 @@ package Aws::SNS::Subscription {
   has SubscriptionArn => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -8,7 +8,7 @@ package Aws::AutoScaling::DescribeLaunchConfigurations {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLaunchConfigurations');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::DescribeLaunchConfigurationsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::AutoScaling::LaunchConfigurationsType');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLaunchConfigurationsResult');
 }
 1;

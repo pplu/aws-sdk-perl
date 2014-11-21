@@ -7,7 +7,7 @@ package Aws::IAM::CreateUser {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUser');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::CreateUserResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::CreateUserResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateUserResult');
 }
 1;

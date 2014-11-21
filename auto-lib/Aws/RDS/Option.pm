@@ -9,4 +9,4 @@ package Aws::RDS::Option {
   has Port => (is => 'ro', isa => 'Int');
   has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Aws::RDS::VpcSecurityGroupMembership]');
 }
-1
+1;

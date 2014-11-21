@@ -3,4 +3,4 @@ package Aws::EC2::IamInstanceProfileSpecification {
   has Arn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'arn');
   has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'name');
 }
-1
+1;

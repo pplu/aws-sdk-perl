@@ -6,4 +6,4 @@ package Aws::ELB::Listener {
   has Protocol => (is => 'ro', isa => 'Str', required => 1);
   has SSLCertificateId => (is => 'ro', isa => 'Str');
 }
-1
+1;

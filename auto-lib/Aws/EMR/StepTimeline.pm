@@ -4,4 +4,4 @@ package Aws::EMR::StepTimeline {
   has EndDateTime => (is => 'ro', isa => 'Str');
   has StartDateTime => (is => 'ro', isa => 'Str');
 }
-1
+1;

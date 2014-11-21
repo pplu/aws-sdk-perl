@@ -4,4 +4,4 @@ package Aws::ElasticBeanstalk::EnvironmentTier {
   has Type => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
 }
-1
+1;

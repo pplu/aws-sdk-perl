@@ -9,7 +9,7 @@ package Aws::DataPipeline::DescribeObjects {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeObjects');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::DescribeObjectsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::DataPipeline::DescribeObjectsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

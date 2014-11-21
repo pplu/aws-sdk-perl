@@ -14,4 +14,4 @@ package Aws::OpsWorks::Volume {
   has VolumeId => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');
 }
-1
+1;

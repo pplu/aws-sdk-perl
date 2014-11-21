@@ -4,4 +4,4 @@ package Aws::EC2::VpnStaticRoute {
   has Source => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'source');
   has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'state');
 }
-1
+1;

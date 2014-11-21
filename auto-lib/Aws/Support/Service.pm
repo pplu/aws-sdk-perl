@@ -4,4 +4,4 @@ package Aws::Support::Service {
   has code => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str');
 }
-1
+1;

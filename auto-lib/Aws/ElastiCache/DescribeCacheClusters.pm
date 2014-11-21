@@ -9,7 +9,7 @@ package Aws::ElastiCache::DescribeCacheClusters {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCacheClusters');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElastiCache::DescribeCacheClustersResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElastiCache::CacheClusterMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheClustersResult');
 }
 1;

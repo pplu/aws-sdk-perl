@@ -2,7 +2,7 @@
 package Aws::EC2::ReleaseAddress {
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has PublicIp => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;

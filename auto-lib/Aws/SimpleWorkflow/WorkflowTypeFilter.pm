@@ -3,4 +3,4 @@ package Aws::SimpleWorkflow::WorkflowTypeFilter {
   has name => (is => 'ro', isa => 'Str', required => 1);
   has version => (is => 'ro', isa => 'Str');
 }
-1
+1;

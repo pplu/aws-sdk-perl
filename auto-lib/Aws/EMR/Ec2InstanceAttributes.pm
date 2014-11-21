@@ -5,4 +5,4 @@ package Aws::EMR::Ec2InstanceAttributes {
   has Ec2SubnetId => (is => 'ro', isa => 'Str');
   has IamInstanceProfile => (is => 'ro', isa => 'Str');
 }
-1
+1;

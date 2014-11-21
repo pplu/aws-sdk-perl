@@ -7,7 +7,7 @@ package Aws::ElasticBeanstalk::CreateApplication {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApplication');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::CreateApplicationResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElasticBeanstalk::ApplicationDescriptionMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateApplicationResult');
 }
 1;

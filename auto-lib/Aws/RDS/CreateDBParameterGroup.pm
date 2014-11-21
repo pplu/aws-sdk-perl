@@ -4,7 +4,7 @@ package Aws::RDS::CreateDBParameterGroup {
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
   has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]');
 
   use MooseX::ClassAttribute;
 

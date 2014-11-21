@@ -11,7 +11,7 @@ package Aws::ElastiCache::DescribeCacheEngineVersions {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCacheEngineVersions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElastiCache::DescribeCacheEngineVersionsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ElastiCache::CacheEngineVersionMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheEngineVersionsResult');
 }
 1;

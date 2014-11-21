@@ -1,8 +1,8 @@
 
 package Aws::EC2::EnableVolumeIO {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has VolumeId => (is => 'ro', isa => 'Str', required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has VolumeId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'volumeId' , required => 1);
 
   use MooseX::ClassAttribute;
 

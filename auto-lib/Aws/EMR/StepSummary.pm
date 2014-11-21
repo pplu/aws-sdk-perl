@@ -4,4 +4,4 @@ package Aws::EMR::StepSummary {
   has Name => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Aws::EMR::StepStatus');
 }
-1
+1;

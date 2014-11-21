@@ -6,4 +6,4 @@ package Aws::EC2::SpotPrice {
   has SpotPrice => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'spotPrice');
   has Timestamp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'timestamp');
 }
-1
+1;

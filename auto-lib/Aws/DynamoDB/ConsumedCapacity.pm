@@ -6,4 +6,4 @@ package Aws::DynamoDB::ConsumedCapacity {
   has Table => (is => 'ro', isa => 'Aws::DynamoDB::Capacity');
   has TableName => (is => 'ro', isa => 'Str');
 }
-1
+1;

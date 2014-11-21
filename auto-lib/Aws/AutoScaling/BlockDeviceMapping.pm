@@ -5,4 +5,4 @@ package Aws::AutoScaling::BlockDeviceMapping {
   has NoDevice => (is => 'ro', isa => 'Bool');
   has VirtualName => (is => 'ro', isa => 'Str');
 }
-1
+1;

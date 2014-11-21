@@ -7,7 +7,7 @@ package Aws::CloudSearch::DescribeAvailabilityOptions {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityOptions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DescribeAvailabilityOptionsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DescribeAvailabilityOptionsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAvailabilityOptionsResult');
 }
 1;

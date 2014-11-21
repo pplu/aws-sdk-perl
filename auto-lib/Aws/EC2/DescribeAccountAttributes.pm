@@ -1,8 +1,8 @@
 
 package Aws::EC2::DescribeAccountAttributes {
   use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AttributeName' );
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'attributeName' );
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
 
   use MooseX::ClassAttribute;
 

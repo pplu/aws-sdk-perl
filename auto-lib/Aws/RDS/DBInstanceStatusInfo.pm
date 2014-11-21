@@ -5,4 +5,4 @@ package Aws::RDS::DBInstanceStatusInfo {
   has Status => (is => 'ro', isa => 'Str');
   has StatusType => (is => 'ro', isa => 'Str');
 }
-1
+1;

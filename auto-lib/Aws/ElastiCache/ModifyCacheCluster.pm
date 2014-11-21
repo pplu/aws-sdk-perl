@@ -5,16 +5,16 @@ package Aws::ElastiCache::ModifyCacheCluster {
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AZMode => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CacheNodeId' );
+  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CacheSecurityGroupName' );
+  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has EngineVersion => (is => 'ro', isa => 'Str');
-  has NewAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PreferredAvailabilityZone' );
+  has NewAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NotificationTopicStatus => (is => 'ro', isa => 'Str');
   has NumCacheNodes => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
 

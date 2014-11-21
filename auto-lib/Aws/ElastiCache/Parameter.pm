@@ -9,4 +9,4 @@ package Aws::ElastiCache::Parameter {
   has ParameterValue => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -6,4 +6,4 @@ package Aws::OpsWorks::Recipes {
   has Shutdown => (is => 'ro', isa => 'ArrayRef[Str]');
   has Undeploy => (is => 'ro', isa => 'ArrayRef[Str]');
 }
-1
+1;

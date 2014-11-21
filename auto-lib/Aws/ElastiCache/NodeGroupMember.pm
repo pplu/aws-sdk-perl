@@ -6,4 +6,4 @@ package Aws::ElastiCache::NodeGroupMember {
   has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
   has ReadEndpoint => (is => 'ro', isa => 'Aws::ElastiCache::Endpoint');
 }
-1
+1;

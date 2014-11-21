@@ -3,4 +3,4 @@ package Aws::RDS::CharacterSet {
   has CharacterSetDescription => (is => 'ro', isa => 'Str');
   has CharacterSetName => (is => 'ro', isa => 'Str');
 }
-1
+1;

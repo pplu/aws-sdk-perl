@@ -6,7 +6,7 @@ package Aws::SNS::GetTopicAttributes {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetTopicAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SNS::GetTopicAttributesResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SNS::GetTopicAttributesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetTopicAttributesResult');
 }
 1;

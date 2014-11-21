@@ -3,4 +3,4 @@ package Aws::Route53Domains::Nameserver {
   has GlueIps => (is => 'ro', isa => 'ArrayRef[Str]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

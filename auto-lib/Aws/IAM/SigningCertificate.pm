@@ -6,4 +6,4 @@ package Aws::IAM::SigningCertificate {
   has UploadDate => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

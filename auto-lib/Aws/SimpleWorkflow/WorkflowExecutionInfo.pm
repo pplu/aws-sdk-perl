@@ -10,4 +10,4 @@ package Aws::SimpleWorkflow::WorkflowExecutionInfo {
   has tagList => (is => 'ro', isa => 'ArrayRef[Str]');
   has workflowType => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowType', required => 1);
 }
-1
+1;

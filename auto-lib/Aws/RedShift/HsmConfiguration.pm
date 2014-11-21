@@ -5,4 +5,4 @@ package Aws::RedShift::HsmConfiguration {
   has HsmIpAddress => (is => 'ro', isa => 'Str');
   has HsmPartitionName => (is => 'ro', isa => 'Str');
 }
-1
+1;

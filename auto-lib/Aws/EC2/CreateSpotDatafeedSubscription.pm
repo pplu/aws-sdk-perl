@@ -1,9 +1,9 @@
 
 package Aws::EC2::CreateSpotDatafeedSubscription {
   use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Prefix => (is => 'ro', isa => 'Str');
+  has Bucket => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bucket' , required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has Prefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'prefix' );
 
   use MooseX::ClassAttribute;
 

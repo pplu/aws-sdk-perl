@@ -4,4 +4,4 @@ package Aws::CloudWatchLogs::OutputLogEvent {
   has message => (is => 'ro', isa => 'Str');
   has timestamp => (is => 'ro', isa => 'Num');
 }
-1
+1;

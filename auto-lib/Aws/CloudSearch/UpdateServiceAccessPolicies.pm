@@ -7,7 +7,7 @@ package Aws::CloudSearch::UpdateServiceAccessPolicies {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateServiceAccessPolicies');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::UpdateServiceAccessPoliciesResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::UpdateServiceAccessPoliciesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateServiceAccessPoliciesResult');
 }
 1;

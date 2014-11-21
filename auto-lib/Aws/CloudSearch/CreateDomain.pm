@@ -6,7 +6,7 @@ package Aws::CloudSearch::CreateDomain {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDomain');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::CreateDomainResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::CreateDomainResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDomainResult');
 }
 1;

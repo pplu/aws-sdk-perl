@@ -8,4 +8,4 @@ package Aws::ElastiCache::CacheNode {
   has ParameterGroupStatus => (is => 'ro', isa => 'Str');
   has SourceCacheNodeId => (is => 'ro', isa => 'Str');
 }
-1
+1;

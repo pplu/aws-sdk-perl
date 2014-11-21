@@ -4,4 +4,4 @@ package Aws::DataPipeline::PipelineObject {
   has id => (is => 'ro', isa => 'Str', required => 1);
   has name => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

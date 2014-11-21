@@ -6,4 +6,4 @@ package Aws::AutoScaling::TagDescription {
   has ResourceType => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -7,4 +7,4 @@ package Aws::RDS::OptionGroupOptionSetting {
   has SettingDescription => (is => 'ro', isa => 'Str');
   has SettingName => (is => 'ro', isa => 'Str');
 }
-1
+1;

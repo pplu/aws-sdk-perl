@@ -1,10 +1,10 @@
 
 package Aws::EC2::DeleteNetworkAclEntry {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Egress => (is => 'ro', isa => 'Bool', required => 1);
-  has NetworkAclId => (is => 'ro', isa => 'Str', required => 1);
-  has RuleNumber => (is => 'ro', isa => 'Int', required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has Egress => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'egress' , required => 1);
+  has NetworkAclId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkAclId' , required => 1);
+  has RuleNumber => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'ruleNumber' , required => 1);
 
   use MooseX::ClassAttribute;
 

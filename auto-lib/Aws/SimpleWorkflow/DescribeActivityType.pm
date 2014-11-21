@@ -7,7 +7,7 @@ package Aws::SimpleWorkflow::DescribeActivityType {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeActivityType');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::DescribeActivityTypeResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SimpleWorkflow::ActivityTypeDetail');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;

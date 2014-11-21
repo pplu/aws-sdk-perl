@@ -31,4 +31,4 @@ package Aws::OpsWorks::Instance {
   has SubnetId => (is => 'ro', isa => 'Str');
   has VirtualizationType => (is => 'ro', isa => 'Str');
 }
-1
+1;

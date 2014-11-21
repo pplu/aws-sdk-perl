@@ -7,4 +7,4 @@ package Aws::EMR::JobFlowExecutionStatusDetail {
   has StartDateTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

@@ -9,4 +9,4 @@ package Aws::ElasticBeanstalk::EventDescription {
   has TemplateName => (is => 'ro', isa => 'Str');
   has VersionLabel => (is => 'ro', isa => 'Str');
 }
-1
+1;

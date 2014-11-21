@@ -4,4 +4,4 @@ package Aws::OpsWorks::DataSource {
   has DatabaseName => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
 }
-1
+1;

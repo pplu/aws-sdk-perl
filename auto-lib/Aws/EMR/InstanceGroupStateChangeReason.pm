@@ -3,4 +3,4 @@ package Aws::EMR::InstanceGroupStateChangeReason {
   has Code => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
 }
-1
+1;

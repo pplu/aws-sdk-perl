@@ -5,4 +5,4 @@ package Aws::EC2::VolumeStatusAction {
   has EventId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'eventId');
   has EventType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'eventType');
 }
-1
+1;

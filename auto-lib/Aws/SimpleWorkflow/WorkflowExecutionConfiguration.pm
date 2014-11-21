@@ -5,4 +5,4 @@ package Aws::SimpleWorkflow::WorkflowExecutionConfiguration {
   has taskList => (is => 'ro', isa => 'Aws::SimpleWorkflow::TaskList', required => 1);
   has taskStartToCloseTimeout => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

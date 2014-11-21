@@ -6,4 +6,4 @@ package Aws::EC2::SpotDatafeedSubscription {
   has Prefix => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'prefix');
   has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'state');
 }
-1
+1;

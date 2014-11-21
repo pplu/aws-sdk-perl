@@ -3,4 +3,4 @@ package Aws::EC2::IcmpTypeCode {
   has Code => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'code');
   has Type => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'type');
 }
-1
+1;

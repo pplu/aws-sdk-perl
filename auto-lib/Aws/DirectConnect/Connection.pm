@@ -1,5 +1,7 @@
+
 package Aws::DirectConnect::Connection {
   use Moose;
+  with 'AWS::API::ResultParser';
   has bandwidth => (is => 'ro', isa => 'Str');
   has connectionId => (is => 'ro', isa => 'Str');
   has connectionName => (is => 'ro', isa => 'Str');
@@ -9,5 +11,6 @@ package Aws::DirectConnect::Connection {
   has partnerName => (is => 'ro', isa => 'Str');
   has region => (is => 'ro', isa => 'Str');
   has vlan => (is => 'ro', isa => 'Int');
+
 }
-1
+1;

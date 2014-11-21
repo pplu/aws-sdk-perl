@@ -5,4 +5,4 @@ package Aws::EC2::EbsInstanceBlockDevice {
   has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status');
   has VolumeId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'volumeId');
 }
-1
+1;

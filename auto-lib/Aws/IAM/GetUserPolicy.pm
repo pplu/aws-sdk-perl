@@ -7,7 +7,7 @@ package Aws::IAM::GetUserPolicy {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetUserPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetUserPolicyResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::GetUserPolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetUserPolicyResult');
 }
 1;

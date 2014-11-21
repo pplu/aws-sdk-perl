@@ -9,4 +9,4 @@ package Aws::CloudFormation::StackSummary {
   has StackStatusReason => (is => 'ro', isa => 'Str');
   has TemplateDescription => (is => 'ro', isa => 'Str');
 }
-1
+1;

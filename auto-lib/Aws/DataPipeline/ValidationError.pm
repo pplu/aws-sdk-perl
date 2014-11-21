@@ -3,4 +3,4 @@ package Aws::DataPipeline::ValidationError {
   has errors => (is => 'ro', isa => 'ArrayRef[Str]');
   has id => (is => 'ro', isa => 'Str');
 }
-1
+1;

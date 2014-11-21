@@ -3,4 +3,4 @@ package Aws::EC2::GroupIdentifier {
   has GroupId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupId');
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
 }
-1
+1;

@@ -2,7 +2,7 @@
 package Aws::ElastiCache::RebootCacheCluster {
   use Moose;
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has CacheNodeIdsToReboot => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'CacheNodeId' , required => 1);
+  has CacheNodeIdsToReboot => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   use MooseX::ClassAttribute;
 

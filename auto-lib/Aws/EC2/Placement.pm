@@ -4,4 +4,4 @@ package Aws::EC2::Placement {
   has GroupName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'groupName');
   has Tenancy => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'tenancy');
 }
-1
+1;

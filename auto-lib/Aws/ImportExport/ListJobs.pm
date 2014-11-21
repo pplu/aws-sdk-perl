@@ -7,7 +7,7 @@ package Aws::ImportExport::ListJobs {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListJobs');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::ListJobsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ImportExport::ListJobsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListJobsResult');
 }
 1;

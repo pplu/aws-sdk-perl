@@ -4,4 +4,4 @@ package Aws::AutoScaling::NotificationConfiguration {
   has NotificationType => (is => 'ro', isa => 'Str');
   has TopicARN => (is => 'ro', isa => 'Str');
 }
-1
+1;

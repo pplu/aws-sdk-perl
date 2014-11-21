@@ -5,4 +5,4 @@ package Aws::RedShift::OrderableClusterOption {
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -18,4 +18,4 @@ package Aws::AutoScaling::LaunchConfiguration {
   has SpotPrice => (is => 'ro', isa => 'Str');
   has UserData => (is => 'ro', isa => 'Str');
 }
-1
+1;

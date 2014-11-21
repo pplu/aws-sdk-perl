@@ -3,4 +3,4 @@ package Aws::CognitoIdentity::IdentityDescription {
   has IdentityId => (is => 'ro', isa => 'Str');
   has Logins => (is => 'ro', isa => 'ArrayRef[Str]');
 }
-1
+1;

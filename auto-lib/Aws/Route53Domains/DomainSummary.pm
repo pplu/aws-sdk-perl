@@ -5,4 +5,4 @@ package Aws::Route53Domains::DomainSummary {
   has Expiry => (is => 'ro', isa => 'Str');
   has TransferLock => (is => 'ro', isa => 'Bool');
 }
-1
+1;

@@ -7,4 +7,4 @@ package Aws::Support::TrustedAdvisorCheckResult {
   has status => (is => 'ro', isa => 'Str', required => 1);
   has timestamp => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

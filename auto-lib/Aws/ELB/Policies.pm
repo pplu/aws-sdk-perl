@@ -4,4 +4,4 @@ package Aws::ELB::Policies {
   has LBCookieStickinessPolicies => (is => 'ro', isa => 'ArrayRef[Aws::ELB::LBCookieStickinessPolicy]');
   has OtherPolicies => (is => 'ro', isa => 'ArrayRef[Str]');
 }
-1
+1;

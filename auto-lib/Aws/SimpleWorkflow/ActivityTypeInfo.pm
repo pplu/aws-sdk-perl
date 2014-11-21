@@ -6,4 +6,4 @@ package Aws::SimpleWorkflow::ActivityTypeInfo {
   has description => (is => 'ro', isa => 'Str');
   has status => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

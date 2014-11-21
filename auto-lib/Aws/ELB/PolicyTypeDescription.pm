@@ -4,4 +4,4 @@ package Aws::ELB::PolicyTypeDescription {
   has PolicyAttributeTypeDescriptions => (is => 'ro', isa => 'ArrayRef[Aws::ELB::PolicyAttributeTypeDescription]');
   has PolicyTypeName => (is => 'ro', isa => 'Str');
 }
-1
+1;

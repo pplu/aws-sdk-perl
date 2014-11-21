@@ -3,4 +3,4 @@ package Aws::SimpleWorkflow::ExternalWorkflowExecutionCancelRequestedEventAttrib
   has initiatedEventId => (is => 'ro', isa => 'Num', required => 1);
   has workflowExecution => (is => 'ro', isa => 'Aws::SimpleWorkflow::WorkflowExecution', required => 1);
 }
-1
+1;

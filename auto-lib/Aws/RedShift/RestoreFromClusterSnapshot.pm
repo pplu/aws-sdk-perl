@@ -6,7 +6,7 @@ package Aws::RedShift::RestoreFromClusterSnapshot {
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ClusterSecurityGroupName' );
+  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
@@ -17,7 +17,7 @@ package Aws::RedShift::RestoreFromClusterSnapshot {
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcSecurityGroupId' );
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 

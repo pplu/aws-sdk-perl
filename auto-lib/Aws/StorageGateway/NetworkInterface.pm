@@ -4,4 +4,4 @@ package Aws::StorageGateway::NetworkInterface {
   has Ipv6Address => (is => 'ro', isa => 'Str');
   has MacAddress => (is => 'ro', isa => 'Str');
 }
-1
+1;

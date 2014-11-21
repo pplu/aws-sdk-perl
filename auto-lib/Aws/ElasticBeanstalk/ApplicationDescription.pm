@@ -7,4 +7,4 @@ package Aws::ElasticBeanstalk::ApplicationDescription {
   has Description => (is => 'ro', isa => 'Str');
   has Versions => (is => 'ro', isa => 'ArrayRef[Str]');
 }
-1
+1;

@@ -4,7 +4,7 @@ package Aws::RDS::PurchaseReservedDBInstancesOffering {
   has DBInstanceCount => (is => 'ro', isa => 'Int');
   has ReservedDBInstanceId => (is => 'ro', isa => 'Str');
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]', traits => ['NameInRequest'], request_name => 'Tag' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Aws::RDS::Tag]');
 
   use MooseX::ClassAttribute;
 

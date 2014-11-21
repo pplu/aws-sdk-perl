@@ -8,4 +8,4 @@ package Aws::DynamoDB::GlobalSecondaryIndexDescription {
   has Projection => (is => 'ro', isa => 'Aws::DynamoDB::Projection');
   has ProvisionedThroughput => (is => 'ro', isa => 'Aws::DynamoDB::ProvisionedThroughputDescription');
 }
-1
+1;

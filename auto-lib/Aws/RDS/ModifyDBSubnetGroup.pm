@@ -3,7 +3,7 @@ package Aws::RDS::ModifyDBSubnetGroup {
   use Moose;
   has DBSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetIdentifier' , required => 1);
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   use MooseX::ClassAttribute;
 

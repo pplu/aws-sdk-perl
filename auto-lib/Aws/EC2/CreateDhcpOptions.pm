@@ -1,8 +1,8 @@
 
 package Aws::EC2::CreateDhcpOptions {
   use Moose;
-  has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::DhcpConfiguration]', traits => ['NameInRequest'], request_name => 'DhcpConfiguration' , required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Aws::EC2::NewDhcpConfiguration]', traits => ['NameInRequest'], request_name => 'dhcpConfiguration' , required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
 
   use MooseX::ClassAttribute;
 

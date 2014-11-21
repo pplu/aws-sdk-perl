@@ -8,4 +8,4 @@ package Aws::EMR::Instance {
   has PublicIpAddress => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Aws::EMR::InstanceStatus');
 }
-1
+1;

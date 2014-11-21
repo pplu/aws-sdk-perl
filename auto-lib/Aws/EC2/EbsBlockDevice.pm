@@ -7,4 +7,4 @@ package Aws::EC2::EbsBlockDevice {
   has VolumeSize => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'volumeSize');
   has VolumeType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'volumeType');
 }
-1
+1;

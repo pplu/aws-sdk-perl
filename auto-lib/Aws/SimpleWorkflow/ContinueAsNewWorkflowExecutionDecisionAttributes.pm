@@ -8,4 +8,4 @@ package Aws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes {
   has taskStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has workflowTypeVersion => (is => 'ro', isa => 'Str');
 }
-1
+1;

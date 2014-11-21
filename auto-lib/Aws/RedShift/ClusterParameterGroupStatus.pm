@@ -3,4 +3,4 @@ package Aws::RedShift::ClusterParameterGroupStatus {
   has ParameterApplyStatus => (is => 'ro', isa => 'Str');
   has ParameterGroupName => (is => 'ro', isa => 'Str');
 }
-1
+1;

@@ -8,7 +8,7 @@ package Aws::IAM::ListMFADevices {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListMFADevices');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListMFADevicesResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::IAM::ListMFADevicesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListMFADevicesResult');
 }
 1;

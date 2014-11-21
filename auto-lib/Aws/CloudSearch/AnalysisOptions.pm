@@ -5,4 +5,4 @@ package Aws::CloudSearch::AnalysisOptions {
   has Stopwords => (is => 'ro', isa => 'Str');
   has Synonyms => (is => 'ro', isa => 'Str');
 }
-1
+1;

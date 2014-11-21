@@ -6,4 +6,4 @@ package Aws::DynamoDB::LocalSecondaryIndexDescription {
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Aws::DynamoDB::KeySchemaElement]');
   has Projection => (is => 'ro', isa => 'Aws::DynamoDB::Projection');
 }
-1
+1;

@@ -8,7 +8,7 @@ package Aws::CloudFormation::EstimateTemplateCost {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'EstimateTemplateCost');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::EstimateTemplateCostResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudFormation::EstimateTemplateCostOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'EstimateTemplateCostResult');
 }
 1;

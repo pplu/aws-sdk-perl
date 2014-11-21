@@ -12,7 +12,7 @@ package Aws::RDS::DescribeDBEngineVersions {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBEngineVersions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DescribeDBEngineVersionsResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::RDS::DBEngineVersionMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBEngineVersionsResult');
 }
 1;

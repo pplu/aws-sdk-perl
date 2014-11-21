@@ -1,9 +1,9 @@
 
 package Aws::EC2::PurchaseReservedInstancesOffering {
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
-  has LimitPrice => (is => 'ro', isa => 'Aws::EC2::ReservedInstanceLimitPrice');
+  has LimitPrice => (is => 'ro', isa => 'Aws::EC2::ReservedInstanceLimitPrice', traits => ['NameInRequest'], request_name => 'limitPrice' );
   has ReservedInstancesOfferingId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

@@ -14,4 +14,4 @@ package Aws::CloudSearch::IndexField {
   has TextArrayOptions => (is => 'ro', isa => 'Aws::CloudSearch::TextArrayOptions');
   has TextOptions => (is => 'ro', isa => 'Aws::CloudSearch::TextOptions');
 }
-1
+1;

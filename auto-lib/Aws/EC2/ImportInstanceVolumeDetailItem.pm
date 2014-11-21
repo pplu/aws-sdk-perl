@@ -8,4 +8,4 @@ package Aws::EC2::ImportInstanceVolumeDetailItem {
   has StatusMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'statusMessage');
   has Volume => (is => 'ro', isa => 'Aws::EC2::DiskImageVolumeDescription', traits => ['Unwrapped'], xmlname => 'volume', required => 1);
 }
-1
+1;

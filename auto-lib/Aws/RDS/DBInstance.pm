@@ -32,4 +32,4 @@ package Aws::RDS::DBInstance {
   has StatusInfos => (is => 'ro', isa => 'ArrayRef[Aws::RDS::DBInstanceStatusInfo]');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Aws::RDS::VpcSecurityGroupMembership]');
 }
-1
+1;

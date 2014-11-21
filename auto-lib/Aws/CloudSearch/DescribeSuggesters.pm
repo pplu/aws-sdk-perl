@@ -8,7 +8,7 @@ package Aws::CloudSearch::DescribeSuggesters {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSuggesters');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DescribeSuggestersResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::CloudSearch::DescribeSuggestersResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSuggestersResult');
 }
 1;

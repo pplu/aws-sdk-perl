@@ -7,7 +7,7 @@ package Aws::SES::SetIdentityFeedbackForwardingEnabled {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetIdentityFeedbackForwardingEnabled');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SES::SetIdentityFeedbackForwardingEnabledResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::SES::SetIdentityFeedbackForwardingEnabledResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SetIdentityFeedbackForwardingEnabledResult');
 }
 1;

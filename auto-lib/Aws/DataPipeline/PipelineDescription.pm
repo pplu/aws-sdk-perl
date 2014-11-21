@@ -5,4 +5,4 @@ package Aws::DataPipeline::PipelineDescription {
   has name => (is => 'ro', isa => 'Str', required => 1);
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

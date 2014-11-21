@@ -3,4 +3,4 @@ package Aws::ElastiCache::CacheNodeTypeSpecificValue {
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 }
-1
+1;

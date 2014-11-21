@@ -5,4 +5,4 @@ package Aws::SimpleWorkflow::WorkflowExecutionOpenCounts {
   has openDecisionTasks => (is => 'ro', isa => 'Int', required => 1);
   has openTimers => (is => 'ro', isa => 'Int', required => 1);
 }
-1
+1;

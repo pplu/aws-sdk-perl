@@ -1,7 +1,7 @@
 
 package Aws::SDB::DeleteAttributes {
   use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Aws::SDB::Attribute]', traits => ['NameInRequest'], request_name => 'Attribute' );
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Aws::SDB::Attribute]');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Expected => (is => 'ro', isa => 'Aws::SDB::UpdateCondition');
   has ItemName => (is => 'ro', isa => 'Str', required => 1);

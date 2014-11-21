@@ -3,4 +3,4 @@ package Aws::CloudSearch::AvailabilityOptionsStatus {
   has Options => (is => 'ro', isa => 'Bool', required => 1);
   has Status => (is => 'ro', isa => 'Aws::CloudSearch::OptionStatus', required => 1);
 }
-1
+1;

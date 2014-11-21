@@ -15,4 +15,4 @@ package Aws::RDS::ReservedDBInstance {
   has State => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
 }
-1
+1;

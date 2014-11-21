@@ -7,7 +7,7 @@ package Aws::ELB::DeleteLoadBalancerListeners {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancerListeners');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DeleteLoadBalancerListenersResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Aws::ELB::DeleteLoadBalancerListenerOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancerListenersResult');
 }
 1;

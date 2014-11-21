@@ -4,4 +4,4 @@ package Aws::SDB::Item {
   has Attributes => (is => 'ro', isa => 'ArrayRef[Aws::SDB::Attribute]', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;

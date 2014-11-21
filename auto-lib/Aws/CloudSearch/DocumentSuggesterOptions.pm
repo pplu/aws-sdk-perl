@@ -4,4 +4,4 @@ package Aws::CloudSearch::DocumentSuggesterOptions {
   has SortExpression => (is => 'ro', isa => 'Str');
   has SourceField => (is => 'ro', isa => 'Str', required => 1);
 }
-1
+1;
