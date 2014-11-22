@@ -15,14 +15,8 @@
   is raised
 - enums should be validated when calling, and not validating when being returned from
   APIs
-- Some APIs (EC2 at least), will have different definitions for same shapename when its
-  input vs output. Outputs will specify xmlname, and inputs won't.
-- Use Metadata service to get access_key, secret_key and token from it if no creds are
-  specified
 - Objects that can ->Delete, or ->Update, calling service->Update(Id => ...)
 - Build classes at runtime?
-- Namespace Change: Aws to something else to not collide with AWS::XXX classes on Windows.
-  I followed
 - ResultParser and UnwrappedParser can maybe be fusioned. They're almost the same 
 - Validate Enums when passing params
 - for RDS and RedShift lists: adapt code so that botocore jsons don't have to be changed
