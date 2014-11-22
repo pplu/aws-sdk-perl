@@ -4,6 +4,7 @@ pull-other-sdks:
 	git submodule update
 
 gen-classes:
+	rm -r auto-lib/Paws/*
 	./gen_classes.pl
 
 copy-tests:
