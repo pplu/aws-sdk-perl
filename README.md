@@ -60,10 +60,10 @@ Create a Perl script (myscript.pl)
 ```
 #!/usr/bin/env perl
 
-use Aws;
+use Paws;
 use Data::Printer;
 
-my $iam = Aws->service('IAM')->new(
+my $iam = Paws->service('IAM')->new(
   region => 'eu-west-1',
 );
 
