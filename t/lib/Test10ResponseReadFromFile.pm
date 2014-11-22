@@ -10,7 +10,7 @@ package Test10ResponseReadFromFile {
   sub do_call {
     my ($self, $call_class, @params) = @_;
     Module::Runtime::require_module($call_class);
-    Module::Runtime::require_module("${call_class}Result");
+    Module::Runtime::require_module($call_class->_returns);
 
     my $content = read_file($self->response_file);
     my $result = $self->_process_response($content);
