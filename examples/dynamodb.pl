@@ -1,10 +1,10 @@
 #!/usr/bin/env perl
 
-use Aws;
+use Paws;
 
 use Data::Printer;
 
-my $d = Aws->service('DynamoDB')->new( region => 'eu-west-1' );
+my $d = Paws->service('DynamoDB')->new( region => 'eu-west-1' );
 my $r;
 
 $r = $d->ListTables;

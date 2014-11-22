@@ -1,4 +1,8 @@
 #!/usr/bin/env perl
 
+use Test::More;
 use Test::Class::Moose::Load qw(lib auto-lib);
-Test::Class::Moose->runtests;
+
+pass('all classes loaded');
+
+done_testing;

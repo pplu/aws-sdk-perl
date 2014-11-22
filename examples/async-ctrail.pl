@@ -3,15 +3,15 @@
 use strict;
 use warnings;
 
-use Aws;
+use Paws;
 
 use lib 'auto-lib', 'lib';
 
-package Net::AWS::MojoAsyncCaller;
+package Paws::Net::MojoAsyncCaller;
 
 use Moose::Role;
 
-with 'Net::AWS::Caller';
+with 'Paws::Net::Caller';
 
 use Data::Dumper;
 use Mojo::IOLoop;
@@ -30,7 +30,7 @@ sub do_call {
   my ($self, $call_class, @params) = @_;
   my $call = $self->new_with_coercions($call_class, @params);
 
-  my $request = Net::AWS::APIRequest->new();
+  my $request = Paws::Net::APIRequest->new();
   $self->_api_caller($call_class, $call, $request);
   $self->sign($request);
   my $result = $self->send($request, $call_class);
@@ -93,8 +93,8 @@ use Data::Printer;
 my $result;
 
 
-my $aws = Aws->new(
-  config => AWS::SDK::Config->new(caller => 'Net::AWS::MojoAsyncCaller')
+my $aws = Paws->new(
+  config => Paws::SDK::Config->new(caller => 'Paws::Net::MojoAsyncCaller')
 );
 
 my $delay = Mojo::IOLoop->delay(sub {

@@ -57,9 +57,9 @@ use lib 'auto-lib', 'lib';
 use Data::Dumper;
 use Data::Printer;
 
-use Aws;
+use Paws;
 
-my $cf = Aws->service('CloudFormation')->new(
+my $cf = Paws->service('CloudFormation')->new(
   region => 'eu-west-1',
 );
 

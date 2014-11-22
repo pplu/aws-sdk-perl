@@ -1,6 +1,6 @@
 package TestCaller {
   use Moose::Role;
-  with 'Net::AWS::Caller';
+  with 'Paws::Net::Caller';
   use File::Slurp;
   use YAML qw/DumpFile/;
 
@@ -23,14 +23,14 @@ package TestCaller {
     # Derive the name of the class through introspection
     my ($service_class) = $self->meta->superclasses;
     ($service_class) = $service_class->meta->superclasses;
-    $service_class =~ s/^Aws:://;
+    $service_class =~ s/^Paws:://;
 
     my $call = $self->_doing_call->_api_call;
 
     my $extension;
-    if ($self->does('Net::AWS::JsonCaller')){
+    if ($self->does('Paws::Net::JsonCaller')){
       $extension = 'json';
-    } elsif ($self->does('Net::AWS::QueryCaller')) {
+    } elsif ($self->does('Paws::Net::QueryCaller')) {
       $extension = 'xml';
     } else {
       die "Unknown caller type";

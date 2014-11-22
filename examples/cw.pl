@@ -5,9 +5,9 @@ use warnings;
 
 use Data::Printer;
 
-use Aws;
+use Paws;
 
-my $sv = Aws->service('CloudWatch');
+my $sv = Paws->service('CloudWatch');
 
 my $cw = $sv->new(
   region => 'eu-west-1',

@@ -84,9 +84,9 @@ foreach my $file (@files) {
     die "$f doesn't have a namespace defined" if (not defined $ns or $ns eq 'SKIP_THIS_CLASS');
     eval {
       my $struct = process_file($file, $f);
-      my $content = process_api("Aws::$ns", $struct);
+      my $content = process_api("Paws::$ns", $struct);
       #print $content;
-      write_file("auto-lib/Aws/${ns}.pm", $content);
+      write_file("auto-lib/Paws/${ns}.pm", $content);
     };
     if ($@) { warn $@; push @failures, "$file $@\n" }
   }
@@ -107,10 +107,10 @@ sub process_api {
 
   my $type = $struct->{metadata}->{protocol} or die "Type of API call not found";
 
-  my $overrides = { 'Aws::EC2' => 'EC2' };
+  my $overrides = { 'Paws::EC2' => 'EC2' };
   $type = $overrides->{ $api } if (defined $overrides->{ $api });
 
-  my $class_maker = "AWS::API::Builder::${type}";
+  my $class_maker = "Paws::API::Builder::${type}";
   require_module $class_maker;
 
   my $c = $class_maker->new(struct => $struct, api => $api);

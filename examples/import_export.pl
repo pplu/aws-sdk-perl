@@ -1,8 +1,8 @@
 
 use Data::Printer;
-use Aws;
+use Paws;
 
-my $ie = Aws->service('ImportExport')->new;
+my $ie = Paws->service('ImportExport')->new;
 my $list = $ie->ListJobs;
 
 p $list;

@@ -1,8 +1,8 @@
 #!/usr/bin/env perl
 
-use Net::AWS::EnvCredentials;
-use Net::AWS::InstanceProfileCredentials;
-use Net::AWS::CredentialsProviderChain;
+use Paws::Net::EnvCredentials;
+use Paws::Net::InstanceProfileCredentials;
+use Paws::Net::CredentialsProviderChain;
 use Data::Printer;
 use Test::More;
 use Test::Exception;
@@ -19,7 +19,7 @@ sub reset_env_creds {
 reset_env_creds;
 
 {
-  my $creds = Net::AWS::EnvCredentials->new;
+  my $creds = Paws::Net::EnvCredentials->new;
   ok(not($creds->are_set), 'No creds when no ENV');
 }
 
@@ -27,7 +27,7 @@ reset_env_creds;
   $ENV{'AWS_ACCESS_KEY_ID'} = 'botoAK';
   $ENV{'AWS_SECRET_ACCESS_KEY'} = 'botoSK';
 
-  my $creds = Net::AWS::EnvCredentials->new;
+  my $creds = Paws::Net::EnvCredentials->new;
   ok($creds->are_set, 'Creds are set');
   cmp_ok($creds->access_key, 'eq', 'botoAK', 'Access Key boto style');
   cmp_ok($creds->secret_key, 'eq', 'botoSK', 'Secret Key boto style');
@@ -39,7 +39,7 @@ reset_env_creds;
   $ENV{'AWS_ACCESS_KEY'} = 'AK';
   $ENV{'AWS_SECRET_KEY'} = 'SK';
 
-  my $creds = Net::AWS::EnvCredentials->new;
+  my $creds = Paws::Net::EnvCredentials->new;
   ok($creds->are_set, 'Creds are set');
   cmp_ok($creds->access_key, 'eq', 'AK', 'Access Key short style');
   cmp_ok($creds->secret_key, 'eq', 'SK', 'Secret Key short style');
@@ -48,7 +48,7 @@ reset_env_creds;
 reset_env_creds;
 
 {
-  my $creds = Net::AWS::InstanceProfileCredentials->new(ua => Test04::StubUAForMetadata->new);
+  my $creds = Paws::Net::InstanceProfileCredentials->new(ua => Test04::StubUAForMetadata->new);
   cmp_ok($creds->access_key, 'eq', 'AK1', 'Access Key 1');
   cmp_ok($creds->secret_key, 'eq', 'SK1', 'Secret Key 1');
   cmp_ok($creds->session_token, 'eq', 'TK1', 'Token 1');
@@ -65,7 +65,7 @@ reset_env_creds;
 }
 
 {
-  my $creds = Net::AWS::InstanceProfileCredentials->new(ua => Test04::StubUANoMetadata->new);
+  my $creds = Paws::Net::InstanceProfileCredentials->new(ua => Test04::StubUANoMetadata->new);
 
   ok(not($creds->are_set), 'No Creds for no Role');
 }
@@ -74,7 +74,7 @@ reset_env_creds;
 reset_env_creds;
 
 {
-  my $creds = Net::AWS::CredentialsProviderChain->new(providers => [ 'Test::CustomCredentials', 'Net::AWS::EnvCredentials' ]);
+  my $creds = Paws::Net::CredentialsProviderChain->new(providers => [ 'Test::CustomCredentials', 'Paws::Net::EnvCredentials' ]);
   ok($creds->are_set, 'Creds are set');
   cmp_ok($creds->access_key, 'eq', 'CustomAK', 'Access Key short style');
   cmp_ok($creds->secret_key, 'eq', 'CustomSK', 'Secret Key short style');
@@ -82,7 +82,7 @@ reset_env_creds;
 }
 
 dies_ok { 
-  Net::AWS::CredentialsProviderChain->new()
+  Paws::Net::CredentialsProviderChain->new()
 } 'No credentials found';
 
 done_testing;

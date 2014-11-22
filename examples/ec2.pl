@@ -7,11 +7,11 @@ use lib 'auto-lib', 'lib';
 use Data::Dumper;
 use Data::Printer;
 
-use Aws;
+use Paws;
 
 my $result;
 
-my $ec2 = Aws->service('EC2')->new(
+my $ec2 = Paws->service('EC2')->new(
   region => 'eu-west-1',
 );
 

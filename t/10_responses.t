@@ -8,10 +8,10 @@ use Test::Exception;
 use YAML qw/DumpFile LoadFile/;
 use XML::Simple;
 
-use Aws;
+use Paws;
 use Test10ResponseReadFromFile;
 
-my $aws = Aws->new(config => AWS::SDK::Config->new( caller => 'Test10ResponseReadFromFile' ) );
+my $aws = Paws->new(config => Paws::SDK::Config->new( caller => 'Test10ResponseReadFromFile' ) );
 
 use Data::Dumper;
 

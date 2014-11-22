@@ -1,0 +1,9 @@
+
+package Paws::SimpleWorkflow::ActivityTypeInfos {
+  use Moose;
+  with 'Paws::API::ResultParser';
+  has nextPageToken => (is => 'ro', isa => 'Str');
+  has typeInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::ActivityTypeInfo]', required => 1);
+
+}
+1;

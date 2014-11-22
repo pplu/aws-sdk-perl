@@ -1,9 +1,9 @@
 #!/usr/bin/env perl
 
-use Aws;
+use Paws;
 use Data::Printer;
 
-my $k = Aws->service('Kinesis')->new(region => 'us-east-1');
+my $k = Paws->service('Kinesis')->new(region => 'us-east-1');
 my $r;
 
 eval {

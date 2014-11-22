@@ -1,8 +1,8 @@
 #!/usr/bin/env perl
 
-use Aws;
+use Paws;
 
-my $as = Aws->service('AutoScaling')->new(
+my $as = Paws->service('AutoScaling')->new(
   region => 'eu-west-1'
 );
 

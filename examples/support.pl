@@ -1,9 +1,9 @@
 #!/usr/bin/env perl
 
-use Aws;
+use Paws;
 use Data::Printer;
 
-my $support = Aws->service('Support')->new(
+my $support = Paws->service('Support')->new(
   region => 'us-east-1'
 );
 
