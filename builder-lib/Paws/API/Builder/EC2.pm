@@ -23,7 +23,7 @@ package Paws::API::Builder::EC2 {
     },
   );
 
-  has '+flattened_arrays' => (default => '1');
+  has '+flattened_arrays' => (default => '0');
 
   has callargs_class_template => (is => 'ro', isa => 'Str', default => q#
 [%- operation = c.operation(op_name) %]

@@ -6,7 +6,7 @@ package Paws::EC2 {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'ec2');
   has version => (is => 'ro', isa => 'Str', default => '2014-10-01');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '1');
+  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
 
   use MooseX::ClassAttribute;
   class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'Paws::API::RegionalEndpointCaller');
