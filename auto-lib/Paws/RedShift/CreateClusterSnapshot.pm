@@ -3,6 +3,7 @@ package Paws::RedShift::CreateClusterSnapshot {
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
 
   use MooseX::ClassAttribute;
 

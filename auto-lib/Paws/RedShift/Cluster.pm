@@ -19,6 +19,7 @@ package Paws::RedShift::Cluster {
   has Encrypted => (is => 'ro', isa => 'Bool');
   has Endpoint => (is => 'ro', isa => 'Paws::RedShift::Endpoint');
   has HsmStatus => (is => 'ro', isa => 'Paws::RedShift::HsmStatus');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has ModifyStatus => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
@@ -27,6 +28,7 @@ package Paws::RedShift::Cluster {
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has RestoreStatus => (is => 'ro', isa => 'Paws::RedShift::RestoreStatus');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
   has VpcId => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::VpcSecurityGroupMembership]');
 }

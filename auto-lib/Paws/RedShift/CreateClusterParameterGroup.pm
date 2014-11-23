@@ -4,6 +4,7 @@ package Paws::RedShift::CreateClusterParameterGroup {
   has Description => (is => 'ro', isa => 'Str', required => 1);
   has ParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
   has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
 
   use MooseX::ClassAttribute;
 

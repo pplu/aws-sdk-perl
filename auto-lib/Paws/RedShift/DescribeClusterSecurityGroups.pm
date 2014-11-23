@@ -4,6 +4,8 @@ package Paws::RedShift::DescribeClusterSecurityGroups {
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TagValues => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 

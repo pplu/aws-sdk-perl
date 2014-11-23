@@ -7,6 +7,7 @@ package Paws::RedShift::CreateHsmConfiguration {
   has HsmPartitionName => (is => 'ro', isa => 'Str', required => 1);
   has HsmPartitionPassword => (is => 'ro', isa => 'Str', required => 1);
   has HsmServerPublicCertificate => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
 
   use MooseX::ClassAttribute;
 

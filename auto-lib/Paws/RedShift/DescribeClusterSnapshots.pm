@@ -9,6 +9,8 @@ package Paws::RedShift::DescribeClusterSnapshots {
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TagValues => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 

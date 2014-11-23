@@ -4,6 +4,8 @@ package Paws::RedShift::DescribeClusterParameterGroups {
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has ParameterGroupName => (is => 'ro', isa => 'Str');
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TagValues => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 

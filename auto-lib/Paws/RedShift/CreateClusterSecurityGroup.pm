@@ -3,6 +3,7 @@ package Paws::RedShift::CreateClusterSecurityGroup {
   use Moose;
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
 
   use MooseX::ClassAttribute;
 

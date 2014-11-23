@@ -2,6 +2,7 @@
 package Paws::RedShift::CreateHsmClientCertificate {
   use Moose;
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
 
   use MooseX::ClassAttribute;
 

@@ -59,6 +59,10 @@ package Paws::RedShift {
     my $self = shift;
     return $self->do_call('Paws::RedShift::CreateHsmConfiguration', @_);
   }
+  sub CreateTags {
+    my $self = shift;
+    return $self->do_call('Paws::RedShift::CreateTags', @_);
+  }
   sub DeleteCluster {
     my $self = shift;
     return $self->do_call('Paws::RedShift::DeleteCluster', @_);
@@ -90,6 +94,10 @@ package Paws::RedShift {
   sub DeleteHsmConfiguration {
     my $self = shift;
     return $self->do_call('Paws::RedShift::DeleteHsmConfiguration', @_);
+  }
+  sub DeleteTags {
+    my $self = shift;
+    return $self->do_call('Paws::RedShift::DeleteTags', @_);
   }
   sub DescribeClusterParameterGroups {
     my $self = shift;
@@ -162,6 +170,10 @@ package Paws::RedShift {
   sub DescribeResize {
     my $self = shift;
     return $self->do_call('Paws::RedShift::DescribeResize', @_);
+  }
+  sub DescribeTags {
+    my $self = shift;
+    return $self->do_call('Paws::RedShift::DescribeTags', @_);
   }
   sub DisableLogging {
     my $self = shift;

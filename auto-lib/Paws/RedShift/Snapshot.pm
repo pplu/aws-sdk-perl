@@ -13,6 +13,7 @@ package Paws::RedShift::Snapshot {
   has Encrypted => (is => 'ro', isa => 'Bool');
   has EncryptedWithHSM => (is => 'ro', isa => 'Bool');
   has EstimatedSecondsToCompletion => (is => 'ro', isa => 'Num');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
@@ -23,6 +24,7 @@ package Paws::RedShift::Snapshot {
   has SnapshotType => (is => 'ro', isa => 'Str');
   has SourceRegion => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
   has TotalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
   has VpcId => (is => 'ro', isa => 'Str');
 }
