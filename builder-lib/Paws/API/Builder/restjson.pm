@@ -1,4 +1,4 @@
-package Paws::API::Builder::restxml {
+package Paws::API::Builder::restjson {
 
   use Data::Printer;
   use Data::Dumper;
@@ -15,8 +15,8 @@ package Paws::API::Builder::restxml {
                                                                    'Paws::API::RegionalEndpointCaller' 
                                                               } );
   has wrapped_responses => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ result_wrapped } });
-  has response_role  => (is => 'ro', lazy => 1, default => sub { 'Paws::Net::RestXMLResponse' });
-  has parameter_role => (is => 'ro', lazy => 1, default => sub { return "Paws::Net::RestXmlCaller" });
+  has response_role  => (is => 'ro', lazy => 1, default => sub { 'Paws::Net::RestJsonResponse' });
+  has parameter_role => (is => 'ro', lazy => 1, default => sub { return "Paws::Net::RestJsonCaller" });
 
   has callargs_class_template => (is => 'ro', isa => 'Str', default => q#
 [%- operation = c.operation(op_name) %]

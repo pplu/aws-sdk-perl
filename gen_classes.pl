@@ -109,6 +109,7 @@ sub process_api {
 
   my $overrides = { 'Paws::EC2' => 'EC2' };
   $type = $overrides->{ $api } if (defined $overrides->{ $api });
+  $type =~ s/\-//;
 
   my $class_maker = "Paws::API::Builder::${type}";
   require_module $class_maker;
