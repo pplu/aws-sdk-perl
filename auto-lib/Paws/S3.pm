@@ -3,6 +3,7 @@ use Paws::API;
 
 
 package Paws::S3 {
+  warn "Paws::S3 is not stable / supported / entirely developed";
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 's3');
   has version => (is => 'ro', isa => 'Str', default => '2006-03-01');

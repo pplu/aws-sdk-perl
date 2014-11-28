@@ -3,6 +3,7 @@ use Paws::API;
 
 
 package Paws::Lambda {
+  warn "Paws::Lambda is not stable / supported / entirely developed";
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'lambda');
   has version => (is => 'ro', isa => 'Str', default => '2014-11-11');

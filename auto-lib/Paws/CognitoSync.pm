@@ -3,6 +3,7 @@ use Paws::API;
 
 
 package Paws::CognitoSync {
+  warn "Paws::CognitoSync is not stable / supported / entirely developed";
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'cognito-sync');
   has version => (is => 'ro', isa => 'Str', default => '2014-06-30');

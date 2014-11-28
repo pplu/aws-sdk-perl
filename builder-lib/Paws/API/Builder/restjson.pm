@@ -66,6 +66,7 @@ enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %
 [% END %]
 
 package [% c.api %] {
+  warn "[% c.api %] is not stable / supported / entirely developed";
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => '[% c.service %]');
   has version => (is => 'ro', isa => 'Str', default => '[% c.version %]');

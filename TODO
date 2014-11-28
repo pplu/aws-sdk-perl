@@ -10,7 +10,8 @@
 - JSON callers
   - when a boolean is returned from API, it doesn't get properly handed to 
     result objects (error thrown)
-- rest-xml callers
+- rest-xml callers for rest-xml services
+- json-xml callers for json-xml services
 - enums for results may be too strict. If AWS returns something new, an exception
   is raised
 - enums should be validated when calling, and not validating when being returned from
@@ -29,3 +30,4 @@
   - Policies in IAM objects 
     - Policies are url encoded texts. They have to be un-url-encoded before exposing to the user
       - Would like that the accessor gets the JSON un url-encoded, and then have an extra accessor to access the decoded datastructure
+      - CreateRole, GetGroupPolicyResult, GetRolePolicyResult, GetUserPolicyResult, Role

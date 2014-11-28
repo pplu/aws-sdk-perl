@@ -3,6 +3,7 @@ use Paws::API;
 
 
 package Paws::CloudFront {
+  warn "Paws::CloudFront is not stable / supported / entirely developed";
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'cloudfront');
   has version => (is => 'ro', isa => 'Str', default => '2014-10-21');

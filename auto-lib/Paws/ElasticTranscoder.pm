@@ -3,6 +3,7 @@ use Paws::API;
 
 
 package Paws::ElasticTranscoder {
+  warn "Paws::ElasticTranscoder is not stable / supported / entirely developed";
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'elastictranscoder');
   has version => (is => 'ro', isa => 'Str', default => '2012-09-25');

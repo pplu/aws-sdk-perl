@@ -3,6 +3,7 @@ use Paws::API;
 
 
 package Paws::Route53 {
+  warn "Paws::Route53 is not stable / supported / entirely developed";
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'route53');
   has version => (is => 'ro', isa => 'Str', default => '2013-04-01');

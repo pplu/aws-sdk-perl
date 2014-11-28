@@ -3,6 +3,7 @@ use Paws::API;
 
 
 package Paws::CloudSearchDomain {
+  warn "Paws::CloudSearchDomain is not stable / supported / entirely developed";
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'cloudsearchdomain');
   has version => (is => 'ro', isa => 'Str', default => '2013-01-01');
