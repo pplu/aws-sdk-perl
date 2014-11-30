@@ -1,6 +1,7 @@
 package Paws::ElasticTranscoder::Pipeline {
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
+  has AwsKmsKeyArn => (is => 'ro', isa => 'Str');
   has ContentConfig => (is => 'ro', isa => 'Paws::ElasticTranscoder::PipelineOutputConfig');
   has Id => (is => 'ro', isa => 'Str');
   has InputBucket => (is => 'ro', isa => 'Str');

@@ -4,6 +4,7 @@ package Paws::ElasticTranscoder::JobOutput {
   has Captions => (is => 'ro', isa => 'Paws::ElasticTranscoder::Captions');
   has Composition => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Clip]');
   has Duration => (is => 'ro', isa => 'Num');
+  has Encryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
   has Height => (is => 'ro', isa => 'Int');
   has Id => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str');
@@ -12,6 +13,7 @@ package Paws::ElasticTranscoder::JobOutput {
   has SegmentDuration => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusDetail => (is => 'ro', isa => 'Str');
+  has ThumbnailEncryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
   has ThumbnailPattern => (is => 'ro', isa => 'Str');
   has Watermarks => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::JobWatermark]');
   has Width => (is => 'ro', isa => 'Int');

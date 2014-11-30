@@ -1,6 +1,7 @@
 
 package Paws::DataPipeline::ActivatePipeline {
   use Moose;
+  has parameterValues => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterValue]');
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

@@ -16,7 +16,6 @@ package Paws::S3::CopyObject {
   has CopySourceSSECustomerAlgorithm => (is => 'ro', isa => 'Str');
   has CopySourceSSECustomerKey => (is => 'ro', isa => 'Str');
   has CopySourceSSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
-  has CopySourceSSEKMSKeyId => (is => 'ro', isa => 'Str');
   has Expires => (is => 'ro', isa => 'Str');
   has GrantFullControl => (is => 'ro', isa => 'Str');
   has GrantRead => (is => 'ro', isa => 'Str');
@@ -29,6 +28,7 @@ package Paws::S3::CopyObject {
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
   has SSECustomerKey => (is => 'ro', isa => 'Str');
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
+  has SSEKMSKeyId => (is => 'ro', isa => 'Str');
   has StorageClass => (is => 'ro', isa => 'Str');
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str');
 

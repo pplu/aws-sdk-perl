@@ -10,7 +10,6 @@ package Paws::S3::UploadPart {
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
   has SSECustomerKey => (is => 'ro', isa => 'Str');
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str');
   has UploadId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

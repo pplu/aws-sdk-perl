@@ -1,6 +1,7 @@
 
 package Paws::DataPipeline::ReportTaskProgress {
   use Moose;
+  has fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]');
   has taskId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

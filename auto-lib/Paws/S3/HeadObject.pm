@@ -11,7 +11,6 @@ package Paws::S3::HeadObject {
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
   has SSECustomerKey => (is => 'ro', isa => 'Str');
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;

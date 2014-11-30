@@ -129,6 +129,10 @@ The AWS Elastic Transcoder Service.
 
 The CancelJob operation cancels an unfinished job.
 
+You can only cancel a job that has a status of C<Submitted>. To prevent
+a pipeline from starting to process a job while you're getting the job
+identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
+
 
 
 
@@ -259,6 +263,9 @@ currently in use, C<DeletePipeline> returns an error.
 
 The DeletePreset operation removes a preset that you've added in an AWS
 region.
+
+You can't delete the default presets that are included with Elastic
+Transcoder.
 
 
 

@@ -11,7 +11,6 @@ package Paws::S3::UploadPartCopy {
   has CopySourceSSECustomerAlgorithm => (is => 'ro', isa => 'Str');
   has CopySourceSSECustomerKey => (is => 'ro', isa => 'Str');
   has CopySourceSSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
-  has CopySourceSSEKMSKeyId => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has PartNumber => (is => 'ro', isa => 'Int', required => 1);
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
