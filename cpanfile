@@ -18,9 +18,11 @@ on 'build' => sub {
   requires 'Data::Printer';
   requires 'Template';
   requires 'File::Slurp';
+  requires 'Pod::HTML2Pod';
 };
 on 'test' => sub {
   requires 'Data::Path';
   requires 'YAML';
   requires 'Test::Class::Moose::Load';
+  requires 'Test::Pod';
 };

@@ -58,6 +58,50 @@ package Paws::API::Builder {
 
   has flattened_arrays => (is => 'rw', isa => 'Bool', default => sub { 0 });
 
+  has service_documentation_template => (is => 'ro', isa => 'Str', default => q#
+\#\#\# main pod documentation begin \#\#\#
+
+=head1 NAME
+
+[% c.api %] - Perl Interface to AWS [% c.struct.metadata.serviceFullName %]
+
+=head1 SYNOPSIS
+
+  use Paws;
+
+  my $obj = Paws->service('...')->new;
+  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+
+=head1 DESCRIPTION
+
+[% c.doc_for_service() %]
+
+=head1 METHODS
+[% FOR op IN c.struct.operations.keys.sort %]
+  [%- op_name = c.struct.operations.$op.name %]
+=head2 [% op_name %]()
+
+  Arguments described in: L<[% c.api %]::[% op_name %]>
+
+  Returns: [% out_shape = c.shapename_for_operation_output(op_name); IF (out_shape) %]L<[% c.api %]::[% out_shape %]>[% ELSE %]nothing[% END %]
+
+  [% c.doc_for_method(op_name) %]
+
+[% END %]
+=head1 SEE ALSO
+
+This service class forms part of L<Paws>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+#);
+
+
   sub required_in_shape {
     my ($self, $shape, $attribute) = @_;
     return (1 == (grep { $_ eq $attribute } @{ $shape->{ required } }));
@@ -295,6 +339,38 @@ package Paws::API::Builder {
     return $self->process_template($self->service_class_template, { c => $self });
   }
 
+  sub doc_for_service {
+    my ($self) = @_;
+    if (not $self->struct->{documentation}) {
+      warn "No documentation for service " . $self->api;
+      return '';
+    }
+    return $self->html_to_pod($self->struct->{documentation});
+  }
+  sub doc_for_method {
+    my ($self, $method) = @_;
+    my $op = $self->operation($method);
+    if (not $op->{ documentation }) {
+      warn "No documentation for " . $self->api . "::" . $method;
+      return '';
+    }
+    return $self->html_to_pod($op->{ documentation });
+  }
+
+  sub html_to_pod {
+    my ($self, $html) = @_;
+    use Pod::HTML2Pod;
+    my $pod = Pod::HTML2Pod::convert(
+      content => $html,
+      a_name => 0,
+      a_href => 0,
+      debug => 0,
+    );
+    $pod =~ s/=pod//;
+    $pod =~ s/=cut$//m;
+    $pod =~ s/#.*$//mg;
+    return $pod;
+  }
 }
 
 1;

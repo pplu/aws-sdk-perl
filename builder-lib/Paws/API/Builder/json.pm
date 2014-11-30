@@ -96,6 +96,7 @@ package [% c.api %] {
   [%- END %]
 }
 1;
+[% c.service_documentation_template | eval %]
 #);
 
   sub make_inner_class {
