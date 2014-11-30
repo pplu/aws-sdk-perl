@@ -6,12 +6,12 @@ package Paws::EC2 {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'ec2');
   has version => (is => 'ro', isa => 'Str', default => '2014-10-01');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
+  has flattened_arrays => (is => 'ro', isa => 'Str', default => '1');
 
   use MooseX::ClassAttribute;
   class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'Paws::API::RegionalEndpointCaller');
   class_has signature_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::V4Signature');
-  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::QueryCaller');
+  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::EC2Caller');
   class_has response_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::XMLResponse');
 
   

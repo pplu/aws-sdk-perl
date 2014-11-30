@@ -19,11 +19,11 @@ package Paws::API::Builder::EC2 {
 
   has '+parameter_role' => (
     default => sub {
-      return "Paws::Net::QueryCaller"
+      return "Paws::Net::EC2Caller"
     },
   );
 
-  has '+flattened_arrays' => (default => '0');
+  has '+flattened_arrays' => (default => '1');
 
   has callargs_class_template => (is => 'ro', isa => 'Str', default => q#
 [%- operation = c.operation(op_name) %]
