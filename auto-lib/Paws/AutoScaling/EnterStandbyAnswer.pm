@@ -6,3 +6,30 @@ package Paws::AutoScaling::EnterStandbyAnswer {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::AutoScaling::EnterStandbyAnswer
+
+=head1 ATTRIBUTES
+
+=head2 Activities => ArrayRef[Paws::AutoScaling::Activity]
+
+  
+
+The activities related to moving instances into C<Standby> mode.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

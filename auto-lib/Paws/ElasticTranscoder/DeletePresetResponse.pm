@@ -5,3 +5,16 @@ package Paws::ElasticTranscoder::DeletePresetResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ElasticTranscoder::DeletePresetResponse
+
+=head1 ATTRIBUTES
+
+
+
+=cut
+

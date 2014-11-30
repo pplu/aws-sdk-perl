@@ -9,3 +9,16 @@ package Paws::Route53::GetCheckerIpRanges {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetCheckerIpRangesResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Route53::GetCheckerIpRangesResponse
+
+=head1 ATTRIBUTES
+
+
+
+=cut
+

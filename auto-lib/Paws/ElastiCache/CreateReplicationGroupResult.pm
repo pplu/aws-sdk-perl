@@ -6,3 +6,19 @@ package Paws::ElastiCache::CreateReplicationGroupResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ElastiCache::CreateReplicationGroupResult
+
+=head1 ATTRIBUTES
+
+=head2 ReplicationGroup => Paws::ElastiCache::ReplicationGroup
+
+  
+
+
+=cut
+

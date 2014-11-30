@@ -13,3 +13,40 @@ package Paws::S3::PutBucketVersioning {
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::S3::
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Bucket => Str
+
+  
+=head2 ContentMD5 => Str
+
+  
+=head2 MFA => Str
+
+  
+
+The concatenation of the authentication device's serial number, a
+space, and the value that is displayed on your authentication device.
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> VersioningConfiguration => Paws::S3::VersioningConfiguration
+
+  
+
+
+=cut
+

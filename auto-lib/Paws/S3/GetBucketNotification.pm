@@ -10,3 +10,19 @@ package Paws::S3::GetBucketNotification {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetBucketNotificationResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::S3::GetBucketNotificationOutput
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Bucket => Str
+
+  
+
+
+=cut
+

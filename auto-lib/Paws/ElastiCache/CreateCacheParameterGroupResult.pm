@@ -6,3 +6,19 @@ package Paws::ElastiCache::CreateCacheParameterGroupResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ElastiCache::CreateCacheParameterGroupResult
+
+=head1 ATTRIBUTES
+
+=head2 CacheParameterGroup => Paws::ElastiCache::CacheParameterGroup
+
+  
+
+
+=cut
+

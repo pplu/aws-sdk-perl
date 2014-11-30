@@ -14,3 +14,66 @@ package Paws::S3::ListParts {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListPartsResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::S3::ListPartsOutput
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Bucket => Str
+
+  
+=head2 B<REQUIRED> Key => Str
+
+  
+=head2 MaxParts => Int
+
+  
+
+Sets the maximum number of parts to return.
+
+
+
+
+
+
+
+
+
+=head2 PartNumberMarker => Int
+
+  
+
+Specifies the part after which listing should begin. Only parts with
+higher part numbers will be listed.
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> UploadId => Str
+
+  
+
+Upload ID identifying the multipart upload whose parts are being
+listed.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

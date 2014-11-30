@@ -6,3 +6,30 @@ package Paws::CloudFormation::DescribeStackResourcesOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudFormation::DescribeStackResourcesOutput
+
+=head1 ATTRIBUTES
+
+=head2 StackResources => ArrayRef[Paws::CloudFormation::StackResource]
+
+  
+
+A list of C<StackResource> structures.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

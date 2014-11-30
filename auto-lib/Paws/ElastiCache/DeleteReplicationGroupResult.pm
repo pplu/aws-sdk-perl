@@ -6,3 +6,19 @@ package Paws::ElastiCache::DeleteReplicationGroupResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ElastiCache::DeleteReplicationGroupResult
+
+=head1 ATTRIBUTES
+
+=head2 ReplicationGroup => Paws::ElastiCache::ReplicationGroup
+
+  
+
+
+=cut
+

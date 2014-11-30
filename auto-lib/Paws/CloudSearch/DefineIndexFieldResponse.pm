@@ -6,3 +6,19 @@ package Paws::CloudSearch::DefineIndexFieldResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudSearch::DefineIndexFieldResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> IndexField => Paws::CloudSearch::IndexFieldStatus
+
+  
+
+
+=cut
+

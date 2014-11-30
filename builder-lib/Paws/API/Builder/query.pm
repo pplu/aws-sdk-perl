@@ -55,7 +55,9 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
 [% END %]
 }
 [%- END %]
-1;#);
+1;
+[% c.class_documentation_template | eval %]
+#);
 
   has service_class_template => (is => 'ro', isa => 'Str', default => q#
 use Paws::API;

@@ -6,3 +6,30 @@ package Paws::IAM::GetInstanceProfileResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::IAM::GetInstanceProfileResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> InstanceProfile => Paws::IAM::InstanceProfile
+
+  
+
+Information about the instance profile.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

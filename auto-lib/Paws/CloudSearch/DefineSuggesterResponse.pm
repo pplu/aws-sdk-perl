@@ -6,3 +6,19 @@ package Paws::CloudSearch::DefineSuggesterResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudSearch::DefineSuggesterResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Suggester => Paws::CloudSearch::SuggesterStatus
+
+  
+
+
+=cut
+

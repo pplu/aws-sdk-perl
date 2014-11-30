@@ -5,4 +5,32 @@ package Paws::DataPipeline::ReportTaskRunnerHeartbeatOutput {
   has terminate => (is => 'ro', isa => 'Bool', required => 1);
 
 }
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::DataPipeline::ReportTaskRunnerHeartbeatOutput
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> terminate => Bool
+
+  
+
+Indicates whether the calling task runner should terminate. If C<True>,
+the task runner that called ReportTaskRunnerHeartbeat should terminate.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+
 1;

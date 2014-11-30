@@ -10,3 +10,30 @@ package Paws::Route53::DeleteHostedZone {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteHostedZoneResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Route53::DeleteHostedZoneResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Id => Str
+
+  
+
+The ID of the hosted zone you want to delete.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

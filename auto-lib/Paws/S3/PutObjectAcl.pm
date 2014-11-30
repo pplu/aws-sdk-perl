@@ -19,3 +19,114 @@ package Paws::S3::PutObjectAcl {
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::S3::
+
+=head1 ATTRIBUTES
+
+=head2 AccessControlPolicy => Paws::S3::AccessControlPolicy
+
+  
+=head2 ACL => Str
+
+  
+
+The canned ACL to apply to the object.
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> Bucket => Str
+
+  
+=head2 ContentMD5 => Str
+
+  
+=head2 GrantFullControl => Str
+
+  
+
+Allows grantee the read, write, read ACP, and write ACP permissions on
+the bucket.
+
+
+
+
+
+
+
+
+
+=head2 GrantRead => Str
+
+  
+
+Allows grantee to list the objects in the bucket.
+
+
+
+
+
+
+
+
+
+=head2 GrantReadACP => Str
+
+  
+
+Allows grantee to read the bucket ACL.
+
+
+
+
+
+
+
+
+
+=head2 GrantWrite => Str
+
+  
+
+Allows grantee to create, overwrite, and delete any object in the
+bucket.
+
+
+
+
+
+
+
+
+
+=head2 GrantWriteACP => Str
+
+  
+
+Allows grantee to write the ACL for the applicable bucket.
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> Key => Str
+
+  
+
+
+=cut
+

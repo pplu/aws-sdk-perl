@@ -6,3 +6,19 @@ package Paws::CloudSearch::DefineExpressionResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudSearch::DefineExpressionResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Expression => Paws::CloudSearch::ExpressionStatus
+
+  
+
+
+=cut
+

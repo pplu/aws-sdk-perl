@@ -6,3 +6,31 @@ package Paws::EC2::RejectVpcPeeringConnectionResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::RejectVpcPeeringConnectionResult
+
+=head1 ATTRIBUTES
+
+=head2 Return => Bool
+
+  
+
+Returns C<true> if the request succeeds; otherwise, it returns an
+error.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

@@ -6,3 +6,30 @@ package Paws::SNS::ConfirmSubscriptionResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::SNS::ConfirmSubscriptionResponse
+
+=head1 ATTRIBUTES
+
+=head2 SubscriptionArn => Str
+
+  
+
+The ARN of the created subscription.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

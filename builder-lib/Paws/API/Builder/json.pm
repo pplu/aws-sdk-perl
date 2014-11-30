@@ -65,6 +65,7 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
 [% END %]
 }
 [%- END %]
+[% c.class_documentation_template | eval %]
 1;#);
 
   has service_class_template => (is => 'ro', isa => 'Str', default => q#

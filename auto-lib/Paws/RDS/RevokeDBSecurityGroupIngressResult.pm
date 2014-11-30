@@ -6,3 +6,19 @@ package Paws::RDS::RevokeDBSecurityGroupIngressResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RDS::RevokeDBSecurityGroupIngressResult
+
+=head1 ATTRIBUTES
+
+=head2 DBSecurityGroup => Paws::RDS::DBSecurityGroup
+
+  
+
+
+=cut
+

@@ -6,3 +6,19 @@ package Paws::CloudSearch::DescribeDomainsResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudSearch::DescribeDomainsResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> DomainStatusList => ArrayRef[Paws::CloudSearch::DomainStatus]
+
+  
+
+
+=cut
+

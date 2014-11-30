@@ -7,3 +7,44 @@ package Paws::EC2::DescribeReservedInstancesModificationsResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::DescribeReservedInstancesModificationsResult
+
+=head1 ATTRIBUTES
+
+=head2 NextToken => Str
+
+  
+
+The token for the next page of data.
+
+
+
+
+
+
+
+
+
+=head2 ReservedInstancesModifications => ArrayRef[Paws::EC2::ReservedInstancesModification]
+
+  
+
+The Reserved Instance modification information.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

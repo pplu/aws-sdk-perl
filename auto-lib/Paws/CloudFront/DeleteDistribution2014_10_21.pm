@@ -11,3 +11,45 @@ package Paws::CloudFront::DeleteDistribution2014_10_21 {
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudFront::
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Id => Str
+
+  
+
+The distribution id.
+
+
+
+
+
+
+
+
+
+=head2 IfMatch => Str
+
+  
+
+The value of the ETag header you received when you disabled the
+distribution. For example: E2QWRUHAPOMQZL.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

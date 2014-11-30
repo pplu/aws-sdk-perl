@@ -10,3 +10,19 @@ package Paws::S3::GetBucketAcl {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetBucketAclResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::S3::GetBucketAclOutput
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Bucket => Str
+
+  
+
+
+=cut
+

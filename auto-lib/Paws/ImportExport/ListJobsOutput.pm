@@ -7,3 +7,22 @@ package Paws::ImportExport::ListJobsOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ImportExport::ListJobsOutput
+
+=head1 ATTRIBUTES
+
+=head2 IsTruncated => Bool
+
+  
+=head2 Jobs => ArrayRef[Paws::ImportExport::Job]
+
+  
+
+
+=cut
+

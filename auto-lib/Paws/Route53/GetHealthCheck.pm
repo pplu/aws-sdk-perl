@@ -10,3 +10,30 @@ package Paws::Route53::GetHealthCheck {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetHealthCheckResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Route53::GetHealthCheckResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> HealthCheckId => Str
+
+  
+
+The ID of the health check to retrieve.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

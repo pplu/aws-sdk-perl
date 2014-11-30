@@ -6,3 +6,19 @@ package Paws::ElastiCache::CreateCacheClusterResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ElastiCache::CreateCacheClusterResult
+
+=head1 ATTRIBUTES
+
+=head2 CacheCluster => Paws::ElastiCache::CacheCluster
+
+  
+
+
+=cut
+

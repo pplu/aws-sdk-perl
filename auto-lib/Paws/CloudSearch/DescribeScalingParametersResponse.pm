@@ -6,3 +6,19 @@ package Paws::CloudSearch::DescribeScalingParametersResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudSearch::DescribeScalingParametersResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> ScalingParameters => Paws::CloudSearch::ScalingParametersStatus
+
+  
+
+
+=cut
+

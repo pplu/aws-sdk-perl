@@ -6,3 +6,30 @@ package Paws::ELB::AddAvailabilityZonesOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ELB::AddAvailabilityZonesOutput
+
+=head1 ATTRIBUTES
+
+=head2 AvailabilityZones => ArrayRef[Str]
+
+  
+
+An updated list of Availability Zones for the load balancer.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

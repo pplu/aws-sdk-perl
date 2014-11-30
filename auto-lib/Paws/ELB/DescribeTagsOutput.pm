@@ -6,3 +6,30 @@ package Paws::ELB::DescribeTagsOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ELB::DescribeTagsOutput
+
+=head1 ATTRIBUTES
+
+=head2 TagDescriptions => ArrayRef[Paws::ELB::TagDescription]
+
+  
+
+A list of tag description structures.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

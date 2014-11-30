@@ -6,3 +6,30 @@ package Paws::ELB::DescribeEndPointStateOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ELB::DescribeEndPointStateOutput
+
+=head1 ATTRIBUTES
+
+=head2 InstanceStates => ArrayRef[Paws::ELB::InstanceState]
+
+  
+
+A list containing health information for the specified instances.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

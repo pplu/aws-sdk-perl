@@ -6,3 +6,30 @@ package Paws::ElasticBeanstalk::ConfigurationSettingsValidationMessages {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ElasticBeanstalk::ConfigurationSettingsValidationMessages
+
+=head1 ATTRIBUTES
+
+=head2 Messages => ArrayRef[Paws::ElasticBeanstalk::ValidationMessage]
+
+  
+
+A list of ValidationMessage.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

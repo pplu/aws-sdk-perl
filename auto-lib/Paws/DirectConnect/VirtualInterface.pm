@@ -19,4 +19,73 @@ package Paws::DirectConnect::VirtualInterface {
   has vlan => (is => 'ro', isa => 'Int');
 
 }
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::DirectConnect::VirtualInterface
+
+=head1 ATTRIBUTES
+
+=head2 amazonAddress => Str
+
+  
+=head2 asn => Int
+
+  
+=head2 authKey => Str
+
+  
+=head2 connectionId => Str
+
+  
+=head2 customerAddress => Str
+
+  
+=head2 customerRouterConfig => Str
+
+  
+
+Information for generating the customer router configuration.
+
+
+
+
+
+
+
+
+
+=head2 location => Str
+
+  
+=head2 ownerAccount => Str
+
+  
+=head2 routeFilterPrefixes => ArrayRef[Paws::DirectConnect::RouteFilterPrefix]
+
+  
+=head2 virtualGatewayId => Str
+
+  
+=head2 virtualInterfaceId => Str
+
+  
+=head2 virtualInterfaceName => Str
+
+  
+=head2 virtualInterfaceState => Str
+
+  
+=head2 virtualInterfaceType => Str
+
+  
+=head2 vlan => Int
+
+  
+
+
+=cut
+
 1;

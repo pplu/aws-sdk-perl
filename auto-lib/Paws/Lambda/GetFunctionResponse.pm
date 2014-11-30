@@ -7,3 +7,22 @@ package Paws::Lambda::GetFunctionResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Lambda::GetFunctionResponse
+
+=head1 ATTRIBUTES
+
+=head2 Code => Paws::Lambda::FunctionCodeLocation
+
+  
+=head2 Configuration => Paws::Lambda::FunctionConfiguration
+
+  
+
+
+=cut
+

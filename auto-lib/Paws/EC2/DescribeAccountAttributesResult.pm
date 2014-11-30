@@ -6,3 +6,30 @@ package Paws::EC2::DescribeAccountAttributesResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::DescribeAccountAttributesResult
+
+=head1 ATTRIBUTES
+
+=head2 AccountAttributes => ArrayRef[Paws::EC2::AccountAttribute]
+
+  
+
+Information about one or more account attributes.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

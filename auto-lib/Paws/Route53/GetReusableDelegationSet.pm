@@ -10,3 +10,31 @@ package Paws::Route53::GetReusableDelegationSet {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetReusableDelegationSetResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Route53::GetReusableDelegationSetResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Id => Str
+
+  
+
+The ID of the reusable delegation set for which you want to get a list
+of the name server.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

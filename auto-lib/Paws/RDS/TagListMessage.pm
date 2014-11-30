@@ -6,3 +6,30 @@ package Paws::RDS::TagListMessage {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RDS::TagListMessage
+
+=head1 ATTRIBUTES
+
+=head2 TagList => ArrayRef[Paws::RDS::Tag]
+
+  
+
+List of tags returned by the ListTagsForResource operation.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

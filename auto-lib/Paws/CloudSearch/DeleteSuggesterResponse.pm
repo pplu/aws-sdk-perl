@@ -6,3 +6,30 @@ package Paws::CloudSearch::DeleteSuggesterResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudSearch::DeleteSuggesterResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Suggester => Paws::CloudSearch::SuggesterStatus
+
+  
+
+The status of the suggester being deleted.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

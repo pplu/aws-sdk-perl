@@ -6,3 +6,19 @@ package Paws::RedShift::AuthorizeSnapshotAccessResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RedShift::AuthorizeSnapshotAccessResult
+
+=head1 ATTRIBUTES
+
+=head2 Snapshot => Paws::RedShift::Snapshot
+
+  
+
+
+=cut
+

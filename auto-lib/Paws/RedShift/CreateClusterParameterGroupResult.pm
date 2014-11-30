@@ -6,3 +6,19 @@ package Paws::RedShift::CreateClusterParameterGroupResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RedShift::CreateClusterParameterGroupResult
+
+=head1 ATTRIBUTES
+
+=head2 ClusterParameterGroup => Paws::RedShift::ClusterParameterGroup
+
+  
+
+
+=cut
+

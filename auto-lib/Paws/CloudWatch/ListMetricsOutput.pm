@@ -7,3 +7,44 @@ package Paws::CloudWatch::ListMetricsOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudWatch::ListMetricsOutput
+
+=head1 ATTRIBUTES
+
+=head2 Metrics => ArrayRef[Paws::CloudWatch::Metric]
+
+  
+
+A list of metrics used to generate statistics for an AWS account.
+
+
+
+
+
+
+
+
+
+=head2 NextToken => Str
+
+  
+
+A string that marks the start of the next batch of returned results.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

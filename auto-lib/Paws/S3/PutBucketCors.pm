@@ -12,3 +12,25 @@ package Paws::S3::PutBucketCors {
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::S3::
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Bucket => Str
+
+  
+=head2 ContentMD5 => Str
+
+  
+=head2 CORSConfiguration => Paws::S3::CORSConfiguration
+
+  
+
+
+=cut
+

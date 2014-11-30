@@ -11,3 +11,34 @@ package Paws::ImportExport::CreateJobOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ImportExport::CreateJobOutput
+
+=head1 ATTRIBUTES
+
+=head2 AwsShippingAddress => Str
+
+  
+=head2 JobId => Str
+
+  
+=head2 JobType => Str
+
+  
+=head2 Signature => Str
+
+  
+=head2 SignatureFileContents => Str
+
+  
+=head2 WarningMessage => Str
+
+  
+
+
+=cut
+

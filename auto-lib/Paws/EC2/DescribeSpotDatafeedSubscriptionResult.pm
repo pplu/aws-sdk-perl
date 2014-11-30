@@ -6,3 +6,30 @@ package Paws::EC2::DescribeSpotDatafeedSubscriptionResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::DescribeSpotDatafeedSubscriptionResult
+
+=head1 ATTRIBUTES
+
+=head2 SpotDatafeedSubscription => Paws::EC2::SpotDatafeedSubscription
+
+  
+
+The Spot Instance datafeed subscription.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

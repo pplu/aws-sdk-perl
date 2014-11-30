@@ -6,3 +6,19 @@ package Paws::RedShift::ModifyEventSubscriptionResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RedShift::ModifyEventSubscriptionResult
+
+=head1 ATTRIBUTES
+
+=head2 EventSubscription => Paws::RedShift::EventSubscription
+
+  
+
+
+=cut
+

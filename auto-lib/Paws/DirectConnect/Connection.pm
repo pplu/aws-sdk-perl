@@ -13,4 +13,60 @@ package Paws::DirectConnect::Connection {
   has vlan => (is => 'ro', isa => 'Int');
 
 }
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::DirectConnect::Connection
+
+=head1 ATTRIBUTES
+
+=head2 bandwidth => Str
+
+  
+
+Bandwidth of the connection.
+
+Example: 1Gbps (for regular connections), or 500Mbps (for hosted
+connections)
+
+Default: None
+
+
+
+
+
+
+
+
+
+=head2 connectionId => Str
+
+  
+=head2 connectionName => Str
+
+  
+=head2 connectionState => Str
+
+  
+=head2 location => Str
+
+  
+=head2 ownerAccount => Str
+
+  
+=head2 partnerName => Str
+
+  
+=head2 region => Str
+
+  
+=head2 vlan => Int
+
+  
+
+
+=cut
+
 1;

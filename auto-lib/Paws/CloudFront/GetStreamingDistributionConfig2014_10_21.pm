@@ -10,3 +10,30 @@ package Paws::CloudFront::GetStreamingDistributionConfig2014_10_21 {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetStreamingDistributionConfigResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudFront::GetStreamingDistributionConfigResult
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Id => Str
+
+  
+
+The streaming distribution's id.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

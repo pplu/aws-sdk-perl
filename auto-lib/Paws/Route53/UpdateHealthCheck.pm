@@ -17,3 +17,157 @@ package Paws::Route53::UpdateHealthCheck {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateHealthCheckResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Route53::UpdateHealthCheckResponse
+
+=head1 ATTRIBUTES
+
+=head2 FailureThreshold => Int
+
+  
+
+The number of consecutive health checks that an endpoint must pass or
+fail for Route 53 to change the current status of the endpoint from
+unhealthy to healthy or vice versa.
+
+Valid values are integers between 1 and 10. For more information, see
+"How Amazon Route 53 Determines Whether an Endpoint Is Healthy" in the
+Amazon Route 53 Developer Guide.
+
+Specify this value only if you want to change it.
+
+
+
+
+
+
+
+
+
+=head2 FullyQualifiedDomainName => Str
+
+  
+
+Fully qualified domain name of the instance to be health checked.
+
+Specify this value only if you want to change it.
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> HealthCheckId => Str
+
+  
+
+The ID of the health check to update.
+
+
+
+
+
+
+
+
+
+=head2 HealthCheckVersion => Num
+
+  
+
+Optional. When you specify a health check version, Route 53 compares
+this value with the current value in the health check, which prevents
+you from updating the health check when the versions don't match. Using
+C<HealthCheckVersion> lets you prevent overwriting another change to
+the health check.
+
+
+
+
+
+
+
+
+
+=head2 IPAddress => Str
+
+  
+
+The IP address of the resource that you want to check.
+
+Specify this value only if you want to change it.
+
+
+
+
+
+
+
+
+
+=head2 Port => Int
+
+  
+
+The port on which you want Route 53 to open a connection to perform
+health checks.
+
+Specify this value only if you want to change it.
+
+
+
+
+
+
+
+
+
+=head2 ResourcePath => Str
+
+  
+
+The path that you want Amazon Route 53 to request when performing
+health checks. The path can be any value for which your endpoint will
+return an HTTP status code of 2xx or 3xx when the endpoint is healthy,
+for example the file /docs/route53-health-check.html.
+
+Specify this value only if you want to change it.
+
+
+
+
+
+
+
+
+
+=head2 SearchString => Str
+
+  
+
+If the value of C<Type> is C<HTTP_STR_MATCH> or C<HTTP_STR_MATCH>, the
+string that you want Route 53 to search for in the response body from
+the specified resource. If the string appears in the response body,
+Route 53 considers the resource healthy.
+
+Specify this value only if you want to change it.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

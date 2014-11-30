@@ -6,3 +6,19 @@ package Paws::RDS::CopyOptionGroupResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RDS::CopyOptionGroupResult
+
+=head1 ATTRIBUTES
+
+=head2 OptionGroup => Paws::RDS::OptionGroup
+
+  
+
+
+=cut
+

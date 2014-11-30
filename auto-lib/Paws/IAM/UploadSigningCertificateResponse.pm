@@ -6,3 +6,30 @@ package Paws::IAM::UploadSigningCertificateResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::IAM::UploadSigningCertificateResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Certificate => Paws::IAM::SigningCertificate
+
+  
+
+Information about the certificate.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

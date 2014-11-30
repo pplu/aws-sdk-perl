@@ -6,3 +6,19 @@ package Paws::RedShift::CreateHsmConfigurationResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RedShift::CreateHsmConfigurationResult
+
+=head1 ATTRIBUTES
+
+=head2 HsmConfiguration => Paws::RedShift::HsmConfiguration
+
+  
+
+
+=cut
+

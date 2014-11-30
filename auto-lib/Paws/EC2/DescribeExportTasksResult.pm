@@ -6,3 +6,19 @@ package Paws::EC2::DescribeExportTasksResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::DescribeExportTasksResult
+
+=head1 ATTRIBUTES
+
+=head2 ExportTasks => ArrayRef[Paws::EC2::ExportTask]
+
+  
+
+
+=cut
+

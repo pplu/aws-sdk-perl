@@ -7,3 +7,44 @@ package Paws::CloudWatch::GetMetricStatisticsOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudWatch::GetMetricStatisticsOutput
+
+=head1 ATTRIBUTES
+
+=head2 Datapoints => ArrayRef[Paws::CloudWatch::Datapoint]
+
+  
+
+The datapoints for the specified metric.
+
+
+
+
+
+
+
+
+
+=head2 Label => Str
+
+  
+
+A label describing the specified metric.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

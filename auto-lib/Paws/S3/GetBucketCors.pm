@@ -10,3 +10,19 @@ package Paws::S3::GetBucketCors {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetBucketCorsResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::S3::GetBucketCorsOutput
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Bucket => Str
+
+  
+
+
+=cut
+

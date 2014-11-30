@@ -8,3 +8,58 @@ package Paws::CognitoSync::ListDatasetsResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CognitoSync::ListDatasetsResponse
+
+=head1 ATTRIBUTES
+
+=head2 Count => Int
+
+  
+
+Number of datasets returned.
+
+
+
+
+
+
+
+
+
+=head2 Datasets => ArrayRef[Paws::CognitoSync::Dataset]
+
+  
+
+A set of datasets.
+
+
+
+
+
+
+
+
+
+=head2 NextToken => Str
+
+  
+
+A pagination token for obtaining the next page of results.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

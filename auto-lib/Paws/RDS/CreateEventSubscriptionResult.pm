@@ -6,3 +6,19 @@ package Paws::RDS::CreateEventSubscriptionResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RDS::CreateEventSubscriptionResult
+
+=head1 ATTRIBUTES
+
+=head2 EventSubscription => Paws::RDS::EventSubscription
+
+  
+
+
+=cut
+

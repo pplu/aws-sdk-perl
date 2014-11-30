@@ -6,3 +6,30 @@ package Paws::CloudSearch::DescribeAnalysisSchemesResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudSearch::DescribeAnalysisSchemesResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> AnalysisSchemes => ArrayRef[Paws::CloudSearch::AnalysisSchemeStatus]
+
+  
+
+The analysis scheme descriptions.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

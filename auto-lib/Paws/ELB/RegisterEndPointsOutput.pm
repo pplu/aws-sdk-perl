@@ -6,3 +6,30 @@ package Paws::ELB::RegisterEndPointsOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ELB::RegisterEndPointsOutput
+
+=head1 ATTRIBUTES
+
+=head2 Instances => ArrayRef[Paws::ELB::Instance]
+
+  
+
+An updated list of instances for the load balancer.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

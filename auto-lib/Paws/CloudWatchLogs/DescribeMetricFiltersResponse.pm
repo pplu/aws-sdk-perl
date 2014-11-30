@@ -6,4 +6,23 @@ package Paws::CloudWatchLogs::DescribeMetricFiltersResponse {
   has nextToken => (is => 'ro', isa => 'Str');
 
 }
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudWatchLogs::DescribeMetricFiltersResponse
+
+=head1 ATTRIBUTES
+
+=head2 metricFilters => ArrayRef[Paws::CloudWatchLogs::MetricFilter]
+
+  
+=head2 nextToken => Str
+
+  
+
+
+=cut
+
 1;

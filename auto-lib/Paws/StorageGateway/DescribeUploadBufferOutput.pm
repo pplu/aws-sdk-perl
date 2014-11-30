@@ -8,4 +8,29 @@ package Paws::StorageGateway::DescribeUploadBufferOutput {
   has UploadBufferUsedInBytes => (is => 'ro', isa => 'Num');
 
 }
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::StorageGateway::DescribeUploadBufferOutput
+
+=head1 ATTRIBUTES
+
+=head2 DiskIds => ArrayRef[Str]
+
+  
+=head2 GatewayARN => Str
+
+  
+=head2 UploadBufferAllocatedInBytes => Num
+
+  
+=head2 UploadBufferUsedInBytes => Num
+
+  
+
+
+=cut
+
 1;

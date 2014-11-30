@@ -6,3 +6,30 @@ package Paws::Lambda::InvokeAsyncResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Lambda::InvokeAsyncResponse
+
+=head1 ATTRIBUTES
+
+=head2 Status => Int
+
+  
+
+It will be 202 upon success.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

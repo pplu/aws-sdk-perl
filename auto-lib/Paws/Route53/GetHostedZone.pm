@@ -10,3 +10,31 @@ package Paws::Route53::GetHostedZone {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetHostedZoneResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Route53::GetHostedZoneResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Id => Str
+
+  
+
+The ID of the hosted zone for which you want to get a list of the name
+servers in the delegation set.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

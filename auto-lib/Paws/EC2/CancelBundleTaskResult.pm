@@ -6,3 +6,30 @@ package Paws::EC2::CancelBundleTaskResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::CancelBundleTaskResult
+
+=head1 ATTRIBUTES
+
+=head2 BundleTask => Paws::EC2::BundleTask
+
+  
+
+The bundle task.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

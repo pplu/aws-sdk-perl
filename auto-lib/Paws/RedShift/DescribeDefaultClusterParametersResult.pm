@@ -6,3 +6,19 @@ package Paws::RedShift::DescribeDefaultClusterParametersResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RedShift::DescribeDefaultClusterParametersResult
+
+=head1 ATTRIBUTES
+
+=head2 DefaultClusterParameters => Paws::RedShift::DefaultClusterParameters
+
+  
+
+
+=cut
+

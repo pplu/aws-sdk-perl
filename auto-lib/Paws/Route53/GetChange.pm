@@ -10,3 +10,32 @@ package Paws::Route53::GetChange {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetChangeResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Route53::GetChangeResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Id => Str
+
+  
+
+The ID of the change batch request. The value that you specify here is
+the value that C<ChangeResourceRecordSets> returned in the Id element
+when you submitted the request.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

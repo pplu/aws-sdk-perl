@@ -10,3 +10,30 @@ package Paws::CloudFront::CreateCloudFrontOriginAccessIdentity2014_10_21 {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCloudFrontOriginAccessIdentityResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudFront::CreateCloudFrontOriginAccessIdentityResult
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> CloudFrontOriginAccessIdentityConfig => Paws::CloudFront::CloudFrontOriginAccessIdentityConfig
+
+  
+
+The origin access identity's configuration information.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

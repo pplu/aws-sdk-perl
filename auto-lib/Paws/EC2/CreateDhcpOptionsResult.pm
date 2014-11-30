@@ -6,3 +6,30 @@ package Paws::EC2::CreateDhcpOptionsResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::CreateDhcpOptionsResult
+
+=head1 ATTRIBUTES
+
+=head2 DhcpOptions => Paws::EC2::DhcpOptions
+
+  
+
+A set of DHCP options.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

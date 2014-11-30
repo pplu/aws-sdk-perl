@@ -10,4 +10,90 @@ package Paws::CognitoIdentity::IdentityPool {
   has SupportedLoginProviders => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityProviders');
 
 }
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CognitoIdentity::IdentityPool
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> AllowUnauthenticatedIdentities => Bool
+
+  
+
+TRUE if the identity pool supports unauthenticated logins.
+
+
+
+
+
+
+
+
+
+=head2 DeveloperProviderName => Str
+
+  
+
+The "domain" by which Cognito will refer to your users.
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> IdentityPoolId => Str
+
+  
+
+An identity pool ID in the format REGION:GUID.
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> IdentityPoolName => Str
+
+  
+
+A string that you provide.
+
+
+
+
+
+
+
+
+
+=head2 OpenIdConnectProviderARNs => ArrayRef[Str]
+
+  
+=head2 SupportedLoginProviders => Paws::CognitoIdentity::IdentityProviders
+
+  
+
+Optional key:value pairs mapping provider names to provider app IDs.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+
 1;

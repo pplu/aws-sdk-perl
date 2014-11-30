@@ -11,3 +11,22 @@ package Paws::S3::GetObjectTorrent {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetObjectTorrentResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::S3::GetObjectTorrentOutput
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Bucket => Str
+
+  
+=head2 B<REQUIRED> Key => Str
+
+  
+
+
+=cut
+

@@ -6,3 +6,30 @@ package Paws::CloudSearch::DescribeExpressionsResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudSearch::DescribeExpressionsResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Expressions => ArrayRef[Paws::CloudSearch::ExpressionStatus]
+
+  
+
+The expressions configured for the domain.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

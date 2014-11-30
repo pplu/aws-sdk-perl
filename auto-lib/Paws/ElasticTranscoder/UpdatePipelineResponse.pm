@@ -6,3 +6,19 @@ package Paws::ElasticTranscoder::UpdatePipelineResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ElasticTranscoder::UpdatePipelineResponse
+
+=head1 ATTRIBUTES
+
+=head2 Pipeline => Paws::ElasticTranscoder::Pipeline
+
+  
+
+
+=cut
+

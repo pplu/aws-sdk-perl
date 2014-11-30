@@ -6,3 +6,30 @@ package Paws::EC2::DescribeRegionsResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::DescribeRegionsResult
+
+=head1 ATTRIBUTES
+
+=head2 Regions => ArrayRef[Paws::EC2::Region]
+
+  
+
+Information about one or more regions.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

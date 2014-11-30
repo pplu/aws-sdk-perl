@@ -6,3 +6,30 @@ package Paws::IAM::GetServerCertificateResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::IAM::GetServerCertificateResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> ServerCertificate => Paws::IAM::ServerCertificate
+
+  
+
+Information about the server certificate.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

@@ -6,3 +6,30 @@ package Paws::IAM::CreateUserResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::IAM::CreateUserResponse
+
+=head1 ATTRIBUTES
+
+=head2 User => Paws::IAM::User
+
+  
+
+Information about the user.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

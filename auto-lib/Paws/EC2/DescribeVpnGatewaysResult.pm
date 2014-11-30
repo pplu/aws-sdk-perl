@@ -6,3 +6,30 @@ package Paws::EC2::DescribeVpnGatewaysResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::DescribeVpnGatewaysResult
+
+=head1 ATTRIBUTES
+
+=head2 VpnGateways => ArrayRef[Paws::EC2::VpnGateway]
+
+  
+
+Information about one or more virtual private gateways.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

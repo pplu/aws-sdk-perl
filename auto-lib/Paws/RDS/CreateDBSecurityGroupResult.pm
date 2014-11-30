@@ -6,3 +6,19 @@ package Paws::RDS::CreateDBSecurityGroupResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RDS::CreateDBSecurityGroupResult
+
+=head1 ATTRIBUTES
+
+=head2 DBSecurityGroup => Paws::RDS::DBSecurityGroup
+
+  
+
+
+=cut
+

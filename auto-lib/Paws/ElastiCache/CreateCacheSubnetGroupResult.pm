@@ -6,3 +6,19 @@ package Paws::ElastiCache::CreateCacheSubnetGroupResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ElastiCache::CreateCacheSubnetGroupResult
+
+=head1 ATTRIBUTES
+
+=head2 CacheSubnetGroup => Paws::ElastiCache::CacheSubnetGroup
+
+  
+
+
+=cut
+

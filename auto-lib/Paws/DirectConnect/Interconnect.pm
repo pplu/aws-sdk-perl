@@ -10,4 +10,35 @@ package Paws::DirectConnect::Interconnect {
   has region => (is => 'ro', isa => 'Str');
 
 }
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::DirectConnect::Interconnect
+
+=head1 ATTRIBUTES
+
+=head2 bandwidth => Str
+
+  
+=head2 interconnectId => Str
+
+  
+=head2 interconnectName => Str
+
+  
+=head2 interconnectState => Str
+
+  
+=head2 location => Str
+
+  
+=head2 region => Str
+
+  
+
+
+=cut
+
 1;

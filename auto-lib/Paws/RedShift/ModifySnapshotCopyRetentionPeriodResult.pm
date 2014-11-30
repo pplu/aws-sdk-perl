@@ -6,3 +6,19 @@ package Paws::RedShift::ModifySnapshotCopyRetentionPeriodResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RedShift::ModifySnapshotCopyRetentionPeriodResult
+
+=head1 ATTRIBUTES
+
+=head2 Cluster => Paws::RedShift::Cluster
+
+  
+
+
+=cut
+

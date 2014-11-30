@@ -11,3 +11,46 @@ package Paws::Route53::ChangeResourceRecordSets {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ChangeResourceRecordSetsResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Route53::ChangeResourceRecordSetsResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> ChangeBatch => Paws::Route53::ChangeBatch
+
+  
+
+A complex type that contains an optional comment and the C<Changes>
+element.
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> HostedZoneId => Str
+
+  
+
+The ID of the hosted zone that contains the resource record sets that
+you want to change.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

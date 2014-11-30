@@ -6,3 +6,19 @@ package Paws::RedShift::PurchaseReservedNodeOfferingResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RedShift::PurchaseReservedNodeOfferingResult
+
+=head1 ATTRIBUTES
+
+=head2 ReservedNode => Paws::RedShift::ReservedNode
+
+  
+
+
+=cut
+

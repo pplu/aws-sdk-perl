@@ -6,3 +6,30 @@ package Paws::IAM::CreateVirtualMFADeviceResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::IAM::CreateVirtualMFADeviceResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> VirtualMFADevice => Paws::IAM::VirtualMFADevice
+
+  
+
+A newly created virtual MFA device.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

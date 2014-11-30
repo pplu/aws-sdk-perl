@@ -6,3 +6,19 @@ package Paws::RDS::AuthorizeDBSecurityGroupIngressResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RDS::AuthorizeDBSecurityGroupIngressResult
+
+=head1 ATTRIBUTES
+
+=head2 DBSecurityGroup => Paws::RDS::DBSecurityGroup
+
+  
+
+
+=cut
+

@@ -10,3 +10,19 @@ package Paws::S3::GetBucketPolicy {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetBucketPolicyResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::S3::GetBucketPolicyOutput
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Bucket => Str
+
+  
+
+
+=cut
+

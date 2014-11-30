@@ -6,3 +6,30 @@ package Paws::ELB::ConfigureHealthCheckOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ELB::ConfigureHealthCheckOutput
+
+=head1 ATTRIBUTES
+
+=head2 HealthCheck => Paws::ELB::HealthCheck
+
+  
+
+The updated healthcheck for the instances.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

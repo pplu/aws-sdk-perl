@@ -11,3 +11,45 @@ package Paws::Route53::ListTagsForResource {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListTagsForResourceResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Route53::ListTagsForResourceResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> ResourceId => Str
+
+  
+
+The ID of the resource for which you want to retrieve tags.
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> ResourceType => Str
+
+  
+
+The type of the resource. The resource type for health checks is
+C<healthcheck>.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

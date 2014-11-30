@@ -6,3 +6,19 @@ package Paws::RDS::ModifyOptionGroupResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RDS::ModifyOptionGroupResult
+
+=head1 ATTRIBUTES
+
+=head2 OptionGroup => Paws::RDS::OptionGroup
+
+  
+
+
+=cut
+

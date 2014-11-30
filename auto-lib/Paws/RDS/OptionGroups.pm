@@ -7,3 +7,46 @@ package Paws::RDS::OptionGroups {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RDS::OptionGroups
+
+=head1 ATTRIBUTES
+
+=head2 Marker => Str
+
+  
+
+An optional pagination token provided by a previous request. If this
+parameter is specified, the response includes only records beyond the
+marker, up to the value specified by C<MaxRecords>.
+
+
+
+
+
+
+
+
+
+=head2 OptionGroupsList => ArrayRef[Paws::RDS::OptionGroup]
+
+  
+
+List of option groups.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

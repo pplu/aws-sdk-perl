@@ -6,3 +6,30 @@ package Paws::EC2::DescribeNetworkAclsResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::DescribeNetworkAclsResult
+
+=head1 ATTRIBUTES
+
+=head2 NetworkAcls => ArrayRef[Paws::EC2::NetworkAcl]
+
+  
+
+Information about one or more network ACLs.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

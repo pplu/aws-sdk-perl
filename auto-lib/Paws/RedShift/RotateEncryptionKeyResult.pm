@@ -6,3 +6,19 @@ package Paws::RedShift::RotateEncryptionKeyResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RedShift::RotateEncryptionKeyResult
+
+=head1 ATTRIBUTES
+
+=head2 Cluster => Paws::RedShift::Cluster
+
+  
+
+
+=cut
+

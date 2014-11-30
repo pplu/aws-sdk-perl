@@ -9,3 +9,16 @@ package Paws::Route53::GetHealthCheckCount {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetHealthCheckCountResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Route53::GetHealthCheckCountResponse
+
+=head1 ATTRIBUTES
+
+
+
+=cut
+

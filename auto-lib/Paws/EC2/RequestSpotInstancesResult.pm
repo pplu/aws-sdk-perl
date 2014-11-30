@@ -6,3 +6,30 @@ package Paws::EC2::RequestSpotInstancesResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::RequestSpotInstancesResult
+
+=head1 ATTRIBUTES
+
+=head2 SpotInstanceRequests => ArrayRef[Paws::EC2::SpotInstanceRequest]
+
+  
+
+Information about the Spot Instance request.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

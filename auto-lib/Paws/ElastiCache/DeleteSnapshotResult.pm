@@ -6,3 +6,19 @@ package Paws::ElastiCache::DeleteSnapshotResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ElastiCache::DeleteSnapshotResult
+
+=head1 ATTRIBUTES
+
+=head2 Snapshot => Paws::ElastiCache::Snapshot
+
+  
+
+
+=cut
+

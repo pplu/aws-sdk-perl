@@ -6,3 +6,30 @@ package Paws::ELB::DetachLoadBalancerFromSubnetsOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ELB::DetachLoadBalancerFromSubnetsOutput
+
+=head1 ATTRIBUTES
+
+=head2 Subnets => ArrayRef[Str]
+
+  
+
+A list of subnet IDs the load balancer is now attached to.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

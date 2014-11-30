@@ -6,3 +6,30 @@ package Paws::CloudFormation::CreateStackOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudFormation::CreateStackOutput
+
+=head1 ATTRIBUTES
+
+=head2 StackId => Str
+
+  
+
+Unique identifier of the stack.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

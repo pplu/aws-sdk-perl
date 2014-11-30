@@ -6,3 +6,19 @@ package Paws::EC2::DescribeConversionTasksResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::DescribeConversionTasksResult
+
+=head1 ATTRIBUTES
+
+=head2 ConversionTasks => ArrayRef[Paws::EC2::ConversionTask]
+
+  
+
+
+=cut
+

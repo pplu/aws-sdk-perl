@@ -5,4 +5,20 @@ package Paws::CloudWatchLogs::PutLogEventsResponse {
   has nextSequenceToken => (is => 'ro', isa => 'Str');
 
 }
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudWatchLogs::PutLogEventsResponse
+
+=head1 ATTRIBUTES
+
+=head2 nextSequenceToken => Str
+
+  
+
+
+=cut
+
 1;

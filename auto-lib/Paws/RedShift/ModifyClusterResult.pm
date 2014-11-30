@@ -6,3 +6,19 @@ package Paws::RedShift::ModifyClusterResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RedShift::ModifyClusterResult
+
+=head1 ATTRIBUTES
+
+=head2 Cluster => Paws::RedShift::Cluster
+
+  
+
+
+=cut
+

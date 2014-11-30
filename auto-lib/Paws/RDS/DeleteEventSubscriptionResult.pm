@@ -6,3 +6,19 @@ package Paws::RDS::DeleteEventSubscriptionResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RDS::DeleteEventSubscriptionResult
+
+=head1 ATTRIBUTES
+
+=head2 EventSubscription => Paws::RDS::EventSubscription
+
+  
+
+
+=cut
+

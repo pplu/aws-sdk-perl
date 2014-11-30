@@ -6,3 +6,30 @@ package Paws::SQS::ReceiveMessageResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::SQS::ReceiveMessageResult
+
+=head1 ATTRIBUTES
+
+=head2 Messages => ArrayRef[Paws::SQS::Message]
+
+  
+
+A list of messages.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

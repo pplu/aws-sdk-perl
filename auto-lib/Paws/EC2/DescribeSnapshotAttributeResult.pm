@@ -8,3 +8,58 @@ package Paws::EC2::DescribeSnapshotAttributeResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::DescribeSnapshotAttributeResult
+
+=head1 ATTRIBUTES
+
+=head2 CreateVolumePermissions => ArrayRef[Paws::EC2::CreateVolumePermission]
+
+  
+
+A list of permissions for creating volumes from the snapshot.
+
+
+
+
+
+
+
+
+
+=head2 ProductCodes => ArrayRef[Paws::EC2::ProductCode]
+
+  
+
+A list of product codes.
+
+
+
+
+
+
+
+
+
+=head2 SnapshotId => Str
+
+  
+
+The ID of the Amazon EBS snapshot.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

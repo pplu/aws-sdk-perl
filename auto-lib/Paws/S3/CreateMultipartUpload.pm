@@ -30,3 +30,305 @@ package Paws::S3::CreateMultipartUpload {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateMultipartUploadResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::S3::CreateMultipartUploadOutput
+
+=head1 ATTRIBUTES
+
+=head2 ACL => Str
+
+  
+
+The canned ACL to apply to the object.
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> Bucket => Str
+
+  
+=head2 CacheControl => Str
+
+  
+
+Specifies caching behavior along the request/reply chain.
+
+
+
+
+
+
+
+
+
+=head2 ContentDisposition => Str
+
+  
+
+Specifies presentational information for the object.
+
+
+
+
+
+
+
+
+
+=head2 ContentEncoding => Str
+
+  
+
+Specifies what content encodings have been applied to the object and
+thus what decoding mechanisms must be applied to obtain the media-type
+referenced by the Content-Type header field.
+
+
+
+
+
+
+
+
+
+=head2 ContentLanguage => Str
+
+  
+
+The language the content is in.
+
+
+
+
+
+
+
+
+
+=head2 ContentType => Str
+
+  
+
+A standard MIME type describing the format of the object data.
+
+
+
+
+
+
+
+
+
+=head2 Expires => Str
+
+  
+
+The date and time at which the object is no longer cacheable.
+
+
+
+
+
+
+
+
+
+=head2 GrantFullControl => Str
+
+  
+
+Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
+object.
+
+
+
+
+
+
+
+
+
+=head2 GrantRead => Str
+
+  
+
+Allows grantee to read the object data and its metadata.
+
+
+
+
+
+
+
+
+
+=head2 GrantReadACP => Str
+
+  
+
+Allows grantee to read the object ACL.
+
+
+
+
+
+
+
+
+
+=head2 GrantWriteACP => Str
+
+  
+
+Allows grantee to write the ACL for the applicable object.
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> Key => Str
+
+  
+=head2 Metadata => Paws::S3::Metadata
+
+  
+
+A map of metadata to store with the object in S3.
+
+
+
+
+
+
+
+
+
+=head2 ServerSideEncryption => Str
+
+  
+
+The Server-side encryption algorithm used when storing this object in
+S3 (e.g., AES256, aws:kms).
+
+
+
+
+
+
+
+
+
+=head2 SSECustomerAlgorithm => Str
+
+  
+
+Specifies the algorithm to use to when encrypting the object (e.g.,
+AES256, aws:kms).
+
+
+
+
+
+
+
+
+
+=head2 SSECustomerKey => Str
+
+  
+
+Specifies the customer-provided encryption key for Amazon S3 to use in
+encrypting data. This value is used to store the object and then it is
+discarded; Amazon does not store the encryption key. The key must be
+appropriate for use with the algorithm specified in the
+x-amz-server-side-encryption-customer-algorithm header.
+
+
+
+
+
+
+
+
+
+=head2 SSECustomerKeyMD5 => Str
+
+  
+
+Specifies the 128-bit MD5 digest of the encryption key according to RFC
+1321. Amazon S3 uses this header for a message integrity check to
+ensure the encryption key was transmitted without error.
+
+
+
+
+
+
+
+
+
+=head2 SSEKMSKeyId => Str
+
+  
+
+Specifies the AWS KMS key ID to use for object encryption. All GET and
+PUT requests for an object protected by AWS KMS will fail if not made
+via SSL or using SigV4. Documentation on configuring any of the
+officially supported AWS SDKs and CLI can be found at
+http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html
+
+
+
+
+
+
+
+
+
+=head2 StorageClass => Str
+
+  
+
+The type of storage to use for the object. Defaults to 'STANDARD'.
+
+
+
+
+
+
+
+
+
+=head2 WebsiteRedirectLocation => Str
+
+  
+
+If the bucket is configured as a website, redirects requests for this
+object to another object in the same bucket or to an external URL.
+Amazon S3 stores the value of this header in the object metadata.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

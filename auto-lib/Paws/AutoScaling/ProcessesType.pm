@@ -6,3 +6,30 @@ package Paws::AutoScaling::ProcessesType {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::AutoScaling::ProcessesType
+
+=head1 ATTRIBUTES
+
+=head2 Processes => ArrayRef[Paws::AutoScaling::ProcessType]
+
+  
+
+The names of the process types.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

@@ -6,3 +6,30 @@ package Paws::SNS::CreatePlatformApplicationResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::SNS::CreatePlatformApplicationResponse
+
+=head1 ATTRIBUTES
+
+=head2 PlatformApplicationArn => Str
+
+  
+
+PlatformApplicationArn is returned.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

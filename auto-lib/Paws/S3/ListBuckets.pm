@@ -9,3 +9,16 @@ package Paws::S3::ListBuckets {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListBucketsResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::S3::ListBucketsOutput
+
+=head1 ATTRIBUTES
+
+
+
+=cut
+

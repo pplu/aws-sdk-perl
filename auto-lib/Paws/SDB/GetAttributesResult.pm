@@ -6,3 +6,30 @@ package Paws::SDB::GetAttributesResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::SDB::GetAttributesResult
+
+=head1 ATTRIBUTES
+
+=head2 Attributes => ArrayRef[Paws::SDB::Attribute]
+
+  
+
+The list of attributes returned by the operation.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

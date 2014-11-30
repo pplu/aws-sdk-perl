@@ -6,3 +6,30 @@ package Paws::ELB::DescribeLoadBalancerAttributesOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ELB::DescribeLoadBalancerAttributesOutput
+
+=head1 ATTRIBUTES
+
+=head2 LoadBalancerAttributes => Paws::ELB::LoadBalancerAttributes
+
+  
+
+The load balancer attributes structure.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

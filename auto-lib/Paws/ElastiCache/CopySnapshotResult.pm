@@ -6,3 +6,19 @@ package Paws::ElastiCache::CopySnapshotResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ElastiCache::CopySnapshotResult
+
+=head1 ATTRIBUTES
+
+=head2 Snapshot => Paws::ElastiCache::Snapshot
+
+  
+
+
+=cut
+

@@ -11,3 +11,44 @@ package Paws::CloudFront::CreateInvalidation2014_10_21 {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateInvalidationResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudFront::CreateInvalidationResult
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> DistributionId => Str
+
+  
+
+The distribution's id.
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> InvalidationBatch => Paws::CloudFront::InvalidationBatch
+
+  
+
+The batch information for the invalidation.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

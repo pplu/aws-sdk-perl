@@ -6,3 +6,30 @@ package Paws::IAM::CreateLoginProfileResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::IAM::CreateLoginProfileResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> LoginProfile => Paws::IAM::LoginProfile
+
+  
+
+The user name and password create date.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

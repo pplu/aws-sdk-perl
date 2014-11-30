@@ -6,3 +6,30 @@ package Paws::STS::GetSessionTokenResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::STS::GetSessionTokenResponse
+
+=head1 ATTRIBUTES
+
+=head2 Credentials => Paws::STS::Credentials
+
+  
+
+The session credentials for API authentication.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

@@ -11,4 +11,38 @@ package Paws::StorageGateway::DescribeCacheOutput {
   has GatewayARN => (is => 'ro', isa => 'Str');
 
 }
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::StorageGateway::DescribeCacheOutput
+
+=head1 ATTRIBUTES
+
+=head2 CacheAllocatedInBytes => Num
+
+  
+=head2 CacheDirtyPercentage => Num
+
+  
+=head2 CacheHitPercentage => Num
+
+  
+=head2 CacheMissPercentage => Num
+
+  
+=head2 CacheUsedPercentage => Num
+
+  
+=head2 DiskIds => ArrayRef[Str]
+
+  
+=head2 GatewayARN => Str
+
+  
+
+
+=cut
+
 1;

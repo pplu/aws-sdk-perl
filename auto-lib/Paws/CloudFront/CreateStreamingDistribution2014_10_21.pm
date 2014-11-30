@@ -10,3 +10,30 @@ package Paws::CloudFront::CreateStreamingDistribution2014_10_21 {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStreamingDistributionResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudFront::CreateStreamingDistributionResult
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> StreamingDistributionConfig => Paws::CloudFront::StreamingDistributionConfig
+
+  
+
+The streaming distribution's configuration information.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

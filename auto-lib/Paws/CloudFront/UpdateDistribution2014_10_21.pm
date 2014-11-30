@@ -12,3 +12,59 @@ package Paws::CloudFront::UpdateDistribution2014_10_21 {
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateDistributionResult');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudFront::UpdateDistributionResult
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> DistributionConfig => Paws::CloudFront::DistributionConfig
+
+  
+
+The distribution's configuration information.
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> Id => Str
+
+  
+
+The distribution's id.
+
+
+
+
+
+
+
+
+
+=head2 IfMatch => Str
+
+  
+
+The value of the ETag header you received when retrieving the
+distribution's configuration. For example: E2QWRUHAPOMQZL.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

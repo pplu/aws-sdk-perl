@@ -6,3 +6,19 @@ package Paws::ElastiCache::ModifyReplicationGroupResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ElastiCache::ModifyReplicationGroupResult
+
+=head1 ATTRIBUTES
+
+=head2 ReplicationGroup => Paws::ElastiCache::ReplicationGroup
+
+  
+
+
+=cut
+

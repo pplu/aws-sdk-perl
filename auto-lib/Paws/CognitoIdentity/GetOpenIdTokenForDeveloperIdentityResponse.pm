@@ -6,4 +6,45 @@ package Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentityResponse {
   has Token => (is => 'ro', isa => 'Str');
 
 }
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentityResponse
+
+=head1 ATTRIBUTES
+
+=head2 IdentityId => Str
+
+  
+
+A unique identifier in the format REGION:GUID.
+
+
+
+
+
+
+
+
+
+=head2 Token => Str
+
+  
+
+An OpenID token.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+
 1;

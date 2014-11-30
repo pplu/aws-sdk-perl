@@ -6,3 +6,19 @@ package Paws::RedShift::RevokeClusterSecurityGroupIngressResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RedShift::RevokeClusterSecurityGroupIngressResult
+
+=head1 ATTRIBUTES
+
+=head2 ClusterSecurityGroup => Paws::RedShift::ClusterSecurityGroup
+
+  
+
+
+=cut
+

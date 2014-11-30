@@ -6,3 +6,30 @@ package Paws::IAM::CreateAccessKeyResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::IAM::CreateAccessKeyResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> AccessKey => Paws::IAM::AccessKey
+
+  
+
+Information about the access key.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

@@ -6,3 +6,30 @@ package Paws::SQS::GetQueueAttributesResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::SQS::GetQueueAttributesResult
+
+=head1 ATTRIBUTES
+
+=head2 Attributes => Paws::SQS::AttributeMap
+
+  
+
+A map of attributes to the respective values.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

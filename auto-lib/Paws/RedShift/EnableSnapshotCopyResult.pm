@@ -6,3 +6,19 @@ package Paws::RedShift::EnableSnapshotCopyResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::RedShift::EnableSnapshotCopyResult
+
+=head1 ATTRIBUTES
+
+=head2 Cluster => Paws::RedShift::Cluster
+
+  
+
+
+=cut
+

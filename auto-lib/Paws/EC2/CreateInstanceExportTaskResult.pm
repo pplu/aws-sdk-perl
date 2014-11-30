@@ -6,3 +6,19 @@ package Paws::EC2::CreateInstanceExportTaskResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::CreateInstanceExportTaskResult
+
+=head1 ATTRIBUTES
+
+=head2 ExportTask => Paws::EC2::ExportTask
+
+  
+
+
+=cut
+

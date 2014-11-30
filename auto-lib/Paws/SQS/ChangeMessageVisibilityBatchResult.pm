@@ -7,3 +7,44 @@ package Paws::SQS::ChangeMessageVisibilityBatchResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::SQS::ChangeMessageVisibilityBatchResult
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Failed => ArrayRef[Paws::SQS::BatchResultErrorEntry]
+
+  
+
+A list of BatchResultErrorEntry items.
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> Successful => ArrayRef[Paws::SQS::ChangeMessageVisibilityBatchResultEntry]
+
+  
+
+A list of ChangeMessageVisibilityBatchResultEntry items.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

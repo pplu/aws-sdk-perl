@@ -6,3 +6,19 @@ package Paws::ElastiCache::RebootCacheClusterResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ElastiCache::RebootCacheClusterResult
+
+=head1 ATTRIBUTES
+
+=head2 CacheCluster => Paws::ElastiCache::CacheCluster
+
+  
+
+
+=cut
+

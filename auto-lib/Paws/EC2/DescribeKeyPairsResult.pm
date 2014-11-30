@@ -6,3 +6,30 @@ package Paws::EC2::DescribeKeyPairsResult {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::DescribeKeyPairsResult
+
+=head1 ATTRIBUTES
+
+=head2 KeyPairs => ArrayRef[Paws::EC2::KeyPairInfo]
+
+  
+
+Information about one or more key pairs.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

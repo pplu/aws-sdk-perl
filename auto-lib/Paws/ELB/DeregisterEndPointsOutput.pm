@@ -6,3 +6,31 @@ package Paws::ELB::DeregisterEndPointsOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ELB::DeregisterEndPointsOutput
+
+=head1 ATTRIBUTES
+
+=head2 Instances => ArrayRef[Paws::ELB::Instance]
+
+  
+
+An updated list of remaining instances registered with the load
+balancer.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

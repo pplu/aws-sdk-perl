@@ -6,3 +6,30 @@ package Paws::IAM::CreateRoleResponse {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::IAM::CreateRoleResponse
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Role => Paws::IAM::Role
+
+  
+
+Information about the role.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

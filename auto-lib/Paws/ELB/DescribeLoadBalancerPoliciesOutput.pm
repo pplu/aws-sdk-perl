@@ -6,3 +6,30 @@ package Paws::ELB::DescribeLoadBalancerPoliciesOutput {
 
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::ELB::DescribeLoadBalancerPoliciesOutput
+
+=head1 ATTRIBUTES
+
+=head2 PolicyDescriptions => ArrayRef[Paws::ELB::PolicyDescription]
+
+  
+
+A list of policy description structures.
+
+
+
+
+
+
+
+
+
+
+
+=cut
+

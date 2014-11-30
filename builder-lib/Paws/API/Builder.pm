@@ -58,6 +58,25 @@ package Paws::API::Builder {
 
   has flattened_arrays => (is => 'rw', isa => 'Bool', default => sub { 0 });
 
+  has class_documentation_template => (is => 'ro', isa => 'Str', default => q#
+\#\#\# main pod documentation begin \#\#\#
+
+=head1 NAME
+
+[% c.api %]::[% c.shapename_for_operation_output(op_name) %]
+
+=head1 ATTRIBUTES
+
+[% FOREACH param_name IN shape.members.keys.sort -%]
+  [%- member = c.shape(shape.members.$param_name.shape) -%]
+=head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% member.perl_type %]
+
+  [% c.doc_for_param_name_in_shape(shape, param_name) %]
+[% END %]
+
+=cut
+#);
+
   has callclass_documentation_template => (is => 'ro', isa => 'Str', default => q#
 \#\#\# main pod documentation begin \#\#\#
 
@@ -85,7 +104,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   [%- member = c.shape(shape.members.$param_name.shape) -%]
 =head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% member.perl_type %]
 
-  [% c.doc_for_shape(shape, param_name) %]
+  [% c.doc_for_param_name_in_shape(shape, param_name) %]
 
 [% END %]
 
@@ -384,6 +403,16 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
   }
 
   sub doc_for_shape {
+    my ($self, $shape) = @_;
+    my $doc = $shape->{documentation};
+    if (not $doc) {
+      warn "No documentation for shape $shape in " . $self->api;
+      return '';
+    }
+    return $self->html_to_pod($doc);
+  }
+
+  sub doc_for_param_name_in_shape {
     my ($self, $shape, $param_name) = @_;
     my $doc = $shape->{members}->{$param_name}->{documentation};
     if (not $doc) {
