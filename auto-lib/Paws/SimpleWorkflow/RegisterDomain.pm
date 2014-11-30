@@ -12,3 +12,95 @@ package Paws::SimpleWorkflow::RegisterDomain {
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::SimpleWorkflow::RegisterDomain - Arguments for method RegisterDomain on Paws::SimpleWorkflow
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method RegisterDomain on the 
+Amazon Simple Workflow Service service. Use the attributes of this class
+as arguments to method RegisterDomain.
+
+You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RegisterDomain.
+
+As an example:
+
+  $service_obj->RegisterDomain(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+
+=head1 ATTRIBUTES
+
+=head2 description => Str
+
+  
+
+Textual description of the domain.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> name => Str
+
+  
+
+Name of the domain to register. The name must be unique.
+
+The specified string must not start or end with whitespace. It must not
+contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
+control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
+contain the literal string "arn".
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> workflowExecutionRetentionPeriodInDays => Str
+
+  
+
+Specifies the duration--B<I<in days>>--for which the record (including
+the history) of workflow executions in this domain should be kept by
+the service. After the retention period, the workflow execution will
+not be available in the results of visibility calls. If a duration of
+C<NONE> is specified, the records for workflow executions in this
+domain are not retained at all.
+
+
+
+
+
+
+
+
+
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, and documents parameters for RegisterDomain in Paws::SimpleWorkflow
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+

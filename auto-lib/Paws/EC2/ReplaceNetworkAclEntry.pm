@@ -18,3 +18,168 @@ package Paws::EC2::ReplaceNetworkAclEntry {
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::ReplaceNetworkAclEntry - Arguments for method ReplaceNetworkAclEntry on Paws::EC2
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method ReplaceNetworkAclEntry on the 
+Amazon Elastic Compute Cloud service. Use the attributes of this class
+as arguments to method ReplaceNetworkAclEntry.
+
+You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ReplaceNetworkAclEntry.
+
+As an example:
+
+  $service_obj->ReplaceNetworkAclEntry(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> CidrBlock => Str
+
+  
+
+The network range to allow or deny, in CIDR notation.
+
+
+
+
+
+
+
+
+
+
+=head2 DryRun => Bool
+
+  
+
+=head2 B<REQUIRED> Egress => Bool
+
+  
+
+Indicates whether to replace the egress rule.
+
+Default: If no value is specified, we replace the ingress rule.
+
+
+
+
+
+
+
+
+
+
+=head2 IcmpTypeCode => Paws::EC2::IcmpTypeCode
+
+  
+
+ICMP protocol: The ICMP type and code. Required if specifying 1 (ICMP)
+for the protocol.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> NetworkAclId => Str
+
+  
+
+The ID of the ACL.
+
+
+
+
+
+
+
+
+
+
+=head2 PortRange => Paws::EC2::PortRange
+
+  
+
+TCP or UDP protocols: The range of ports the rule applies to. Required
+if specifying 6 (TCP) or 17 (UDP) for the protocol.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> Protocol => Str
+
+  
+
+The IP protocol. You can specify C<all> or C<-1> to mean all protocols.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> RuleAction => Str
+
+  
+
+Indicates whether to allow or deny the traffic that matches the rule.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> RuleNumber => Int
+
+  
+
+The rule number of the entry to replace.
+
+
+
+
+
+
+
+
+
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, and documents parameters for ReplaceNetworkAclEntry in Paws::EC2
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+

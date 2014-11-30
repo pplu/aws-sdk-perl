@@ -19,3 +19,192 @@ package Paws::OpsWorks::UpdateApp {
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::OpsWorks::UpdateApp - Arguments for method UpdateApp on Paws::OpsWorks
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method UpdateApp on the 
+AWS OpsWorks service. Use the attributes of this class
+as arguments to method UpdateApp.
+
+You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateApp.
+
+As an example:
+
+  $service_obj->UpdateApp(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> AppId => Str
+
+  
+
+The app ID.
+
+
+
+
+
+
+
+
+
+
+=head2 AppSource => Paws::OpsWorks::Source
+
+  
+
+A C<Source> object that specifies the app repository.
+
+
+
+
+
+
+
+
+
+
+=head2 Attributes => Paws::OpsWorks::AppAttributes
+
+  
+
+One or more user-defined key/value pairs to be added to the stack
+attributes.
+
+
+
+
+
+
+
+
+
+
+=head2 DataSources => ArrayRef[Paws::OpsWorks::DataSource]
+
+  
+
+The app's data sources.
+
+
+
+
+
+
+
+
+
+
+=head2 Description => Str
+
+  
+
+A description of the app.
+
+
+
+
+
+
+
+
+
+
+=head2 Domains => ArrayRef[Str]
+
+  
+
+The app's virtual host settings, with multiple domains separated by
+commas. For example: C<'www.example.com, example.com'>
+
+
+
+
+
+
+
+
+
+
+=head2 EnableSsl => Bool
+
+  
+
+Whether SSL is enabled for the app.
+
+
+
+
+
+
+
+
+
+
+=head2 Name => Str
+
+  
+
+The app name.
+
+
+
+
+
+
+
+
+
+
+=head2 SslConfiguration => Paws::OpsWorks::SslConfiguration
+
+  
+
+An C<SslConfiguration> object with the SSL configuration.
+
+
+
+
+
+
+
+
+
+
+=head2 Type => Str
+
+  
+
+The app type.
+
+
+
+
+
+
+
+
+
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, and documents parameters for UpdateApp in Paws::OpsWorks
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+

@@ -17,3 +17,169 @@ package Paws::EC2::CreateVolume {
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::EC2::CreateVolume - Arguments for method CreateVolume on Paws::EC2
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method CreateVolume on the 
+Amazon Elastic Compute Cloud service. Use the attributes of this class
+as arguments to method CreateVolume.
+
+You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateVolume.
+
+As an example:
+
+  $service_obj->CreateVolume(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> AvailabilityZone => Str
+
+  
+
+The Availability Zone in which to create the volume. Use
+DescribeAvailabilityZones to list the Availability Zones that are
+currently available to you.
+
+
+
+
+
+
+
+
+
+
+=head2 DryRun => Bool
+
+  
+
+=head2 Encrypted => Bool
+
+  
+
+Specifies whether the volume should be encrypted.
+
+
+
+
+
+
+
+
+
+
+=head2 Iops => Int
+
+  
+
+Only valid for Provisioned IOPS (SSD) volumes. The number of I/O
+operations per second (IOPS) to provision for the volume.
+
+
+
+
+
+
+
+
+
+
+=head2 KmsKeyId => Str
+
+  
+
+The full ARN of the AWS Key Management Service (KMS) Customer Master
+Key (CMK) to use when creating the encrypted volume. This parameter is
+only required if you want to use a non-default CMK; if this parameter
+is not specified, the default CMK is used. The ARN contains the
+C<arn:aws:kms> namespace, followed by the region of the CMK, the AWS
+account ID of the CMK owner, the C<key> namespace, and then the CMK ID.
+For example,
+arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd56ef>.
+
+
+
+
+
+
+
+
+
+
+=head2 Size => Int
+
+  
+
+The size of the volume, in GiBs.
+
+Constraints: If the volume type is C<io1>, the minimum size of the
+volume is 4 GiB.
+
+Default: If you're creating the volume from a snapshot and don't
+specify a volume size, the default is the snapshot size.
+
+
+
+
+
+
+
+
+
+
+=head2 SnapshotId => Str
+
+  
+
+The snapshot from which to create the volume.
+
+
+
+
+
+
+
+
+
+
+=head2 VolumeType => Str
+
+  
+
+The volume type. This can be C<gp2> for General Purpose (SSD) volumes,
+C<io1> for Provisioned IOPS (SSD) volumes, or C<standard> for Magnetic
+volumes.
+
+Default: C<standard>
+
+
+
+
+
+
+
+
+
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, and documents parameters for CreateVolume in Paws::EC2
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+

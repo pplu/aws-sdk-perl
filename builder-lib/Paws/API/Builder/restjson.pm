@@ -36,7 +36,9 @@ package [% c.api %]::[% operation.name %] {
   class_has _returns => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% c.api %]::[% c.shapename_for_operation_output(op_name) %]'[% END %]);
   class_has _result_key => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% op_name %]Result'[% END %]);
 }
-1;#);
+1;
+[% c.callclass_documentation_template | eval %]
+#);
 
   has callresult_class_template => (is => 'ro', isa => 'Str', default => q#
 [%- operation = c.result_for_operation(op_name) %]

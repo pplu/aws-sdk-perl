@@ -58,6 +58,50 @@ package Paws::API::Builder {
 
   has flattened_arrays => (is => 'rw', isa => 'Bool', default => sub { 0 });
 
+  has callclass_documentation_template => (is => 'ro', isa => 'Str', default => q#
+\#\#\# main pod documentation begin \#\#\#
+
+=head1 NAME
+
+[% c.api %]::[% operation.name %] - Arguments for method [% operation.name %] on [% c.api %]
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method [% operation.name %] on the 
+[% c.struct.metadata.serviceFullName %] service. Use the attributes of this class
+as arguments to method [% operation.name %].
+
+You shouln't make instances of this class. Each attribute should be used as a named argument in the call to [% operation.name %].
+
+As an example:
+
+  $service_obj->[% operation.name %](Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+
+=head1 ATTRIBUTES
+
+[% FOREACH param_name IN shape.members.keys.sort -%]
+  [%- member = c.shape(shape.members.$param_name.shape) -%]
+=head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% member.perl_type %]
+
+  [% c.doc_for_shape(shape, param_name) %]
+
+[% END %]
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, and documents parameters for [% operation.name %] in [% c.api %]
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+#);
+
   has service_documentation_template => (is => 'ro', isa => 'Str', default => q#
 \#\#\# main pod documentation begin \#\#\#
 
@@ -337,6 +381,16 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     }
 
     return $self->process_template($self->service_class_template, { c => $self });
+  }
+
+  sub doc_for_shape {
+    my ($self, $shape, $param_name) = @_;
+    my $doc = $shape->{members}->{$param_name}->{documentation};
+    if (not $doc) {
+      warn "No documentation for $param_name in " . $self->api;
+      return '';
+    }
+    return $self->html_to_pod($doc);
   }
 
   sub doc_for_service {

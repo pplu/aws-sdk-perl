@@ -12,3 +12,127 @@ package Paws::AutoScaling::EnableMetricsCollection {
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::AutoScaling::EnableMetricsCollection - Arguments for method EnableMetricsCollection on Paws::AutoScaling
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method EnableMetricsCollection on the 
+Auto Scaling service. Use the attributes of this class
+as arguments to method EnableMetricsCollection.
+
+You shouln't make instances of this class. Each attribute should be used as a named argument in the call to EnableMetricsCollection.
+
+As an example:
+
+  $service_obj->EnableMetricsCollection(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> AutoScalingGroupName => Str
+
+  
+
+The name or ARN of the Auto Scaling group.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> Granularity => Str
+
+  
+
+The granularity to associate with the metrics to collect. Currently,
+the only valid value is "1Minute".
+
+
+
+
+
+
+
+
+
+
+=head2 Metrics => ArrayRef[Str]
+
+  
+
+One or more of the following metrics:
+
+=over
+
+=item *
+
+GroupMinSize
+
+=item *
+
+GroupMaxSize
+
+=item *
+
+GroupDesiredCapacity
+
+=item *
+
+GroupInServiceInstances
+
+=item *
+
+GroupPendingInstances
+
+=item *
+
+GroupStandbyInstances
+
+=item *
+
+GroupTerminatingInstances
+
+=item *
+
+GroupTotalInstances
+
+=back
+
+If you omit this parameter, all metrics are enabled.
+
+The C<GroupStandbyInstances> metric is not returned by default. You
+must explicitly request it when calling EnableMetricsCollection.
+
+
+
+
+
+
+
+
+
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, and documents parameters for EnableMetricsCollection in Paws::AutoScaling
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+
