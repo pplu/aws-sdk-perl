@@ -39,8 +39,11 @@ for which you want to get a list of tags.
 
   
 
-The type of the resources. The resource type for health checks is
-C<healthcheck>.
+The type of the resources.
+
+- The resource type for health checks is C<healthcheck>.
+
+- The resource type for hosted zones is C<hostedzone>.
 
 
 

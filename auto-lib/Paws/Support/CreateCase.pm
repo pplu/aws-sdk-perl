@@ -160,6 +160,10 @@ The code for the AWS service returned by the call to DescribeServices.
 The code for the severity level returned by the call to
 DescribeSeverityLevels.
 
+The availability of severity levels depends on each customer's support
+subscription. In other words, your subscription may not necessarily
+require the urgent level of response time.
+
 
 
 

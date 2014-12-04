@@ -147,6 +147,10 @@ package Paws::IAM {
     my $self = shift;
     return $self->do_call('Paws::IAM::GenerateCredentialReport', @_);
   }
+  sub GetAccountAuthorizationDetails {
+    my $self = shift;
+    return $self->do_call('Paws::IAM::GetAccountAuthorizationDetails', @_);
+  }
   sub GetAccountPasswordPolicy {
     my $self = shift;
     return $self->do_call('Paws::IAM::GetAccountPasswordPolicy', @_);
@@ -374,6 +378,15 @@ use to manage users and user permissions under your AWS account. This
 guide provides descriptions of IAM actions that you can call
 programmatically. For general information about IAM, see AWS Identity
 and Access Management (IAM). For the user guide for IAM, see Using IAM.
+
+AWS provides SDKs that consist of libraries and sample code for various
+programming languages and platforms (Java, Ruby, .NET, iOS, Android,
+etc.). The SDKs provide a convenient way to create programmatic access
+to IAM and AWS. For example, the SDKs take care of tasks such as
+cryptographically signing requests (see below), managing errors, and
+retrying requests automatically. For information about the AWS SDKs,
+including how to download and install them, see the Tools for Amazon
+Web Services page.
 
 We recommend that you use the AWS SDKs to make programmatic API calls
 to IAM. However, you can also use the IAM Query API to make direct
@@ -682,6 +695,11 @@ thumbprints of the server certificate(s) that the IdP uses. You get all
 of this information from the OIDC IdP that you want to use for access
 to AWS.
 
+Because trust for the OIDC provider is ultimately derived from the IAM
+provider that this action creates, it is a best practice to limit
+access to the CreateOpenIDConnectProvider action to highly-privileged
+users.
+
 
 
 
@@ -743,6 +761,8 @@ name, expiration information, and keys that can be used to validate the
 SAML authentication response (assertions) that are received from the
 IdP. You must generate the metadata document using the identity
 management software that is used as your organization's IdP.
+
+This operation requires Signature Version 4.
 
 For more information, see Giving Console Access Using SAML and Creating
 Temporary Security Credentials for SAML Federation in the I<Using
@@ -1091,6 +1111,8 @@ Deleting the provider does not update any roles that reference the SAML
 provider as a principal in their trust policies. Any attempt to assume
 a role that references a SAML provider that has been deleted will fail.
 
+This operation requires Signature Version 4.
+
 
 
 
@@ -1209,6 +1231,10 @@ Deletes the specified policy associated with the specified user.
 
 Deletes a virtual MFA device.
 
+You must deactivate a user's virtual MFA device before you can delete
+it. For information about deactivating MFA devices, see
+DeactivateMFADevice.
+
 
 
 
@@ -1252,6 +1278,34 @@ subsequent login by the user name associated with the device.
 Generates a credential report for the AWS account. For more information
 about the credential report, see Getting Credential Reports in the
 I<Using IAM> guide.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetAccountAuthorizationDetails()
+
+  Arguments described in: L<Paws::IAM::GetAccountAuthorizationDetails>
+
+  Returns: L<Paws::IAM::GetAccountAuthorizationDetailsResponse>
+
+  
+
+Retrieves information about all IAM users, groups, and roles in your
+account, including their relationships to one another and their
+attached policies. Use this API to obtain a snapshot of the
+configuration of IAM permissions (users, groups, roles, and policies)
+in your account.
+
+You can optionally filter the results using the C<Filter> parameter.
+You can paginate the results using the C<MaxItems> and C<Marker>
+parameters.
 
 
 
@@ -1502,6 +1556,8 @@ http://www.faqs.org/rfcs/rfc3986.html.
 Returns the SAML provider metadocument that was uploaded when the
 provider was created or updated.
 
+This operation requires Signature Version 4.
+
 
 
 
@@ -1598,6 +1654,9 @@ implicitly based on the AWS access key ID used to sign the request.
 Because this action works for access keys under the AWS account, you
 can use this action to manage root credentials even if the AWS account
 has no associated users.
+
+To ensure the security of your AWS account, the secret access key is
+accessible only during key and user creation.
 
 
 
@@ -1864,6 +1923,8 @@ http://www.faqs.org/rfcs/rfc3986.html.
 
 Lists the SAML providers in the account.
 
+This operation requires Signature Version 4.
+
 
 
 
@@ -2020,6 +2081,13 @@ For information about limits on the number of policies you can
 associate with a group, see Limitations on IAM Entities in the I<Using
 IAM> guide.
 
+Because policy documents can be large, you should use POST rather than
+GET when calling C<PutGroupPolicy>. For information about setting up
+signatures and authorization through the API, go to Signing AWS API
+Requests in the I<AWS General Reference>. For general information about
+using the Query API with IAM, go to Making Query Requests in the
+I<Using IAM> guide.
+
 
 
 
@@ -2044,6 +2112,13 @@ I<Using IAM> guide.
 
 For information about limits on the policies you can associate with a
 role, see Limitations on IAM Entities in the I<Using IAM> guide.
+
+Because policy documents can be large, you should use POST rather than
+GET when calling C<PutRolePolicy>. For information about setting up
+signatures and authorization through the API, go to Signing AWS API
+Requests in the I<AWS General Reference>. For general information about
+using the Query API with IAM, go to Making Query Requests in the
+I<Using IAM> guide.
 
 
 
@@ -2070,6 +2145,13 @@ I<Using IAM> guide.
 For information about limits on the number of policies you can
 associate with a user, see Limitations on IAM Entities in the I<Using
 IAM> guide.
+
+Because policy documents can be large, you should use POST rather than
+GET when calling C<PutUserPolicy>. For information about setting up
+signatures and authorization through the API, go to Signing AWS API
+Requests in the I<AWS General Reference>. For general information about
+using the Query API with IAM, go to Making Query Requests in the
+I<Using IAM> guide.
 
 
 
@@ -2217,6 +2299,11 @@ in the I<Using IAM> guide.
 
 Updates the password policy settings for the AWS account.
 
+This action does not support partial updates. No parameters are
+required, but if you do not specify a parameter, that parameter's value
+reverts to its default value. See the B<Request Parameters> section for
+each parameter's default value.
+
 For more information about using a password policy, see Managing an IAM
 Password Policy in the I<Using IAM> guide.
 
@@ -2263,7 +2350,12 @@ Updates the name and/or the path of the specified group.
 
 You should understand the implications of changing a group's path or
 name. For more information, see Renaming Users and Groups in the
-I<Using IAM> guide.
+I<Using IAM> guide. To change a group name the requester must have
+appropriate permissions on both the source object and the target
+object. For example, to change Managers to MGRs, the entity making the
+request must have permission on Managers and MGRs, or must have
+permission on all (*). For more information about permissions, see
+Permissions and Policies.
 
 
 
@@ -2319,6 +2411,12 @@ provider's certificate I<does> change, any attempt to assume an IAM
 role that specifies the IAM provider as a principal will fail until the
 certificate thumbprint is updated.
 
+Because trust for the OpenID Connect provider is ultimately derived
+from the provider's certificate and is validated by the thumbprint, it
+is a best practice to limit access to the
+C<UpdateOpenIDConnectProviderThumbprint> action to highly-privileged
+users.
+
 
 
 
@@ -2338,6 +2436,8 @@ certificate thumbprint is updated.
   
 
 Updates the metadata document for an existing SAML provider.
+
+This operation requires Signature Version 4.
 
 
 
@@ -2361,7 +2461,13 @@ Updates the name and/or the path of the specified server certificate.
 
 You should understand the implications of changing a server
 certificate's path or name. For more information, see Managing Server
-Certificates in the I<Using IAM> guide.
+Certificates in the I<Using IAM> guide. To change a server certificate
+name the requester must have appropriate permissions on both the source
+object and the target object. For example, to change the name from
+ProductionCert to ProdCert, the entity making the request must have
+permission on ProductionCert and ProdCert, or must have permission on
+all (*). For more information about permissions, see Permissions and
+Policies.
 
 
 
@@ -2416,7 +2522,12 @@ Updates the name and/or the path of the specified user.
 
 You should understand the implications of changing a user's path or
 name. For more information, see Renaming Users and Groups in the
-I<Using IAM> guide.
+I<Using IAM> guide. To change a user name the requester must have
+appropriate permissions on both the source object and the target
+object. For example, to change Bob to Robert, the entity making the
+request must have permission on Bob and Robert, or must have permission
+on all (*). For more information about permissions, see Permissions and
+Policies.
 
 
 
@@ -2442,6 +2553,14 @@ and an optional certificate chain, which should all be PEM-encoded.
 
 For information about the number of server certificates you can upload,
 see Limitations on IAM Entities in the I<Using IAM> guide.
+
+Because the body of the public key certificate, private key, and the
+certificate chain can be large, you should use POST rather than GET
+when calling C<UploadServerCertificate>. For information about setting
+up signatures and authorization through the API, go to Signing AWS API
+Requests in the I<AWS General Reference>. For general information about
+using the Query API with IAM, go to Making Query Requests in the
+I<Using IAM> guide.
 
 
 
@@ -2471,6 +2590,13 @@ implicitly based on the AWS access key ID used to sign the request.
 Because this action works for access keys under the AWS account, you
 can use this action to manage root credentials even if the AWS account
 has no associated users.
+
+Because the body of a X.509 certificate can be large, you should use
+POST rather than GET when calling C<UploadSigningCertificate>. For
+information about setting up signatures and authorization through the
+API, go to Signing AWS API Requests in the I<AWS General Reference>.
+For general information about using the Query API with IAM, go to
+Making Query Requests in the I<Using IAM>guide.
 
 
 

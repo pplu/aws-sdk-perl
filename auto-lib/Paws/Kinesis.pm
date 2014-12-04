@@ -56,6 +56,10 @@ package Paws::Kinesis {
     my $self = shift;
     return $self->do_call('Paws::Kinesis::PutRecord', @_);
   }
+  sub PutRecords {
+    my $self = shift;
+    return $self->do_call('Paws::Kinesis::PutRecords', @_);
+  }
   sub RemoveTagsFromStream {
     my $self = shift;
     return $self->do_call('Paws::Kinesis::RemoveTagsFromStream', @_);
@@ -141,8 +145,8 @@ data records in an Amazon Kinesis stream.
 You specify and control the number of shards that a stream is composed
 of. Each open shard can support up to 5 read transactions per second,
 up to a maximum total of 2 MB of data read per second. Each shard can
-support up to 1000 write transactions per second, up to a maximum total
-of 1 MB data written per second. You can add shards to a stream if the
+support up to 1000 records written per second, up to a maximum total of
+1 MB data written per second. You can add shards to a stream if the
 amount of data input increases and you can remove shards if the amount
 of data input decreases.
 
@@ -207,8 +211,8 @@ C<DeleteStream> request, the specified stream is in the C<DELETING>
 state until Amazon Kinesis completes the deletion.
 
 B<Note:> Amazon Kinesis might continue to accept data read and write
-operations, such as PutRecord and GetRecords, on a stream in the
-C<DELETING> state until the stream deletion is complete.
+operations, such as PutRecord, PutRecords, and GetRecords, on a stream
+in the C<DELETING> state until the stream deletion is complete.
 
 When you delete a stream, any shards in that stream are also deleted,
 and any tags are dissociated from the stream.
@@ -303,8 +307,8 @@ marks it as the last record to process.
 
 Each data record can be up to 50 KB in size, and each shard can read up
 to 2 MB per second. You can ensure that your calls don't exceed the
-maximum supported size or throughput by specifying the maximum number
-of records that C<GetRecords> can return in the C<Limit> parameter.
+maximum supported size or throughput by using the C<Limit> parameter to
+specify the maximum number of records that C<GetRecords> can return.
 Consider your average record size when determining this limit. For
 example, if your average record size is 40 KB, you can limit the data
 returned to about 1 MB per call by specifying 25 as the limit.
@@ -324,9 +328,9 @@ exceptions for longer than 1 second.
 To detect whether the application is falling behind in processing, add
 a timestamp to your records and note how long it takes to process them.
 You can also monitor how much data is in a stream using the CloudWatch
-metrics for C<PutRecord>. For more information, see Monitoring Amazon
-Kinesis with Amazon CloudWatch in the I<Amazon Kinesis Developer
-Guide>.
+metrics for write operations (C<PutRecord> and C<PutRecords>). For more
+information, see Monitoring Amazon Kinesis with Amazon CloudWatch in
+the I<Amazon Kinesis Developer Guide>.
 
 
 
@@ -361,13 +365,13 @@ C<ShardIteratorType> parameter to read exactly from the position
 denoted by a specific sequence number by using the
 C<AT_SEQUENCE_NUMBER> shard iterator type, or right after the sequence
 number by using the C<AFTER_SEQUENCE_NUMBER> shard iterator type, using
-sequence numbers returned by earlier calls to PutRecord, GetRecords, or
-DescribeStream. You can specify the shard iterator type C<TRIM_HORIZON>
-in the request to cause C<ShardIterator> to point to the last untrimmed
-record in the shard in the system, which is the oldest data record in
-the shard. Or you can point to just after the most recent record in the
-shard, by using the shard iterator type C<LATEST>, so that you always
-read the most recent data in the shard.
+sequence numbers returned by earlier calls to PutRecord, PutRecords,
+GetRecords, or DescribeStream. You can specify the shard iterator type
+C<TRIM_HORIZON> in the request to cause C<ShardIterator> to point to
+the last untrimmed record in the shard in the system, which is the
+oldest data record in the shard. Or you can point to just after the
+most recent record in the shard, by using the shard iterator type
+C<LATEST>, so that you always read the most recent data in the shard.
 
 When you repeatedly read from an Amazon Kinesis stream use a
 GetShardIterator request to get the first shard iterator to to use in
@@ -522,18 +526,25 @@ C<MergeShards> has limit of 5 transactions per second per account.
 
   
 
-Puts a data record from a producer into an Amazon Kinesis stream. You
-must call C<PutRecord> to send data from the producer into the Amazon
-Kinesis stream for real-time ingestion and subsequent processing. You
-must specify the name of the stream that captures, stores, and
-transports the data; a partition key; and the data blob itself. The
-data blob could be a segment from a log file, geographic/location data,
-website clickstream data, or any other data type.
+Puts (writes) a single data record from a producer into an Amazon
+Kinesis stream. Call C<PutRecord> to send data from the producer into
+the Amazon Kinesis stream for real-time ingestion and subsequent
+processing, one record at a time. Each shard can support up to 1000
+records written per second, up to a maximum total of 1 MB data written
+per second.
 
-The partition key is used to distribute data across shards. Amazon
-Kinesis segregates the data records that belong to a data stream into
-multiple shards, using the partition key associated with each data
-record to determine which shard a given data record belongs to.
+You must specify the name of the stream that captures, stores, and
+transports the data; a partition key; and the data blob itself.
+
+The data blob can be any type of data; for example, a segment from a
+log file, geographic/location data, website clickstream data, and so
+on.
+
+The partition key is used by Amazon Kinesis to distribute data across
+shards. Amazon Kinesis segregates the data records that belong to a
+data stream into multiple shards, using the partition key associated
+with each data record to determine which shard a given data record
+belongs to.
 
 Partition keys are Unicode strings, with a maximum length limit of 256
 bytes. An MD5 hash function is used to map partition keys to 128-bit
@@ -554,6 +565,81 @@ Developer Guide>.
 If a C<PutRecord> request cannot be processed because of insufficient
 provisioned throughput on the shard involved in the request,
 C<PutRecord> throws C<ProvisionedThroughputExceededException>.
+
+Data records are accessible for only 24 hours from the time that they
+are added to an Amazon Kinesis stream.
+
+
+
+
+
+
+
+
+
+
+
+=head2 PutRecords()
+
+  Arguments described in: L<Paws::Kinesis::PutRecords>
+
+  Returns: L<Paws::Kinesis::PutRecordsOutput>
+
+  
+
+Puts (writes) multiple data records from a producer into an Amazon
+Kinesis stream in a single call (also referred to as a C<PutRecords>
+request). Use this operation to send data from a data producer into the
+Amazon Kinesis stream for real-time ingestion and processing. Each
+shard can support up to 1000 records written per second, up to a
+maximum total of 1 MB data written per second.
+
+You must specify the name of the stream that captures, stores, and
+transports the data; and an array of request C<Records>, with each
+record in the array requiring a partition key and data blob.
+
+The data blob can be any type of data; for example, a segment from a
+log file, geographic/location data, website clickstream data, and so
+on.
+
+The partition key is used by Amazon Kinesis as input to a hash function
+that maps the partition key and associated data to a specific shard. An
+MD5 hash function is used to map partition keys to 128-bit integer
+values and to map associated data records to shards. As a result of
+this hashing mechanism, all data records with the same partition key
+map to the same shard within the stream. For more information, see
+Partition Key in the I<Amazon Kinesis Developer Guide>.
+
+Each record in the C<Records> array may include an optional parameter,
+C<ExplicitHashKey>, which overrides the partition key to shard mapping.
+This parameter allows a data producer to determine explicitly the shard
+where the record is stored. For more information, see Adding Multiple
+Records with PutRecords in the I<Amazon Kinesis Developer Guide>.
+
+The C<PutRecords> response includes an array of response C<Records>.
+Each record in the response array directly correlates with a record in
+the request array using natural ordering, from the top to the bottom of
+the request and response. The response C<Records> array always includes
+the same number of records as the request array.
+
+The response C<Records> array includes both successfully and
+unsuccessfully processed records. Amazon Kinesis attempts to process
+all records in each C<PutRecords> request. A single record failure does
+not stop the processing of subsequent records.
+
+A successfully-processed record includes C<ShardId> and
+C<SequenceNumber> values. The C<ShardId> parameter identifies the shard
+in the stream where the record is stored. The C<SequenceNumber>
+parameter is an identifier assigned to the put record, unique to all
+records in the stream.
+
+An unsuccessfully-processed record includes C<ErrorCode> and
+C<ErrorMessage> values. C<ErrorCode> reflects the type of error and can
+be one of the following values:
+C<ProvisionedThroughputExceededException> or C<InternalFailure>.
+C<ErrorMessage> provides more detailed information about the
+C<ProvisionedThroughputExceededException> exception including the
+account ID, stream name, and shard ID of the record that was throttled.
 
 Data records are accessible for only 24 hours from the time that they
 are added to an Amazon Kinesis stream.

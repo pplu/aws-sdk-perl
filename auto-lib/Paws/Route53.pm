@@ -124,6 +124,10 @@ package Paws::Route53 {
     my $self = shift;
     return $self->do_call('Paws::Route53::UpdateHealthCheck', @_);
   }
+  sub UpdateHostedZoneComment {
+    my $self = shift;
+    return $self->do_call('Paws::Route53::UpdateHostedZoneComment', @_);
+  }
 }
 1;
 
@@ -909,6 +913,32 @@ C<2013-04-01/healthcheck/I<health check ID>> resource. The request body
 must include an XML document with an C<UpdateHealthCheckRequest>
 element. The response returns an C<UpdateHealthCheckResponse> element,
 which contains metadata about the health check.
+
+
+
+
+
+
+
+
+
+
+
+=head2 UpdateHostedZoneComment()
+
+  Arguments described in: L<Paws::Route53::UpdateHostedZoneComment>
+
+  Returns: L<Paws::Route53::UpdateHostedZoneCommentResponse>
+
+  
+
+To update the hosted zone comment, send a C<POST> request to the
+C<2013-04-01/hostedzone/I<hosted zone ID>> resource. The request body
+must include an XML document with a C<UpdateHostedZoneCommentRequest>
+element. The response to this request includes the modified
+C<HostedZone> element.
+
+The comment can have a maximum length of 256 characters.
 
 
 

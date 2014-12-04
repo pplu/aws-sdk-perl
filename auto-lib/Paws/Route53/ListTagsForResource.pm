@@ -38,8 +38,11 @@ The ID of the resource for which you want to retrieve tags.
 
   
 
-The type of the resource. The resource type for health checks is
-C<healthcheck>.
+The type of the resource.
+
+- The resource type for health checks is C<healthcheck>.
+
+- The resource type for hosted zones is C<hostedzone>.
 
 
 

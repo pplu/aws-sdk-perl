@@ -78,6 +78,11 @@ see IAM Identifiers in the I<Using IAM> guide.
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
+If you are uploading a server certificate specifically for use with
+Amazon CloudFront distributions, you must specify a path using the
+C<--path> option. The path must begin with C</cloudfront> and must
+include a trailing slash (for example, C</cloudfront/test/>).
+
 
 
 

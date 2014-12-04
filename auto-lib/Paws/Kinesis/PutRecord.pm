@@ -41,9 +41,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The data blob to put into the record, which is Base64-encoded when the
+The data blob to put into the record, which is base64-encoded when the
 blob is serialized. The maximum size of the data blob (the payload
-before Base64-encoding) is 50 kilobytes (KB)
+before base64-encoding) is 50 kilobytes (KB)
 
 
 

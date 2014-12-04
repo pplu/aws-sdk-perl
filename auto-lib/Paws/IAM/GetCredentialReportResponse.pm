@@ -35,7 +35,7 @@ Contains the credential report. The report is Base64-encoded.
 
   
 
-The time and date when the credential report was created, in ISO 8601
+The date and time when the credential report was created, in ISO 8601
 date-time format.
 
 

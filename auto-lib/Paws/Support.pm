@@ -216,8 +216,8 @@ the text of the communication.
 
 The response indicates the success or failure of the request.
 
-This operation implements a subset of the behavior on the AWS Support
-Your Support Cases web form.
+This operation implements a subset of the features of the AWS Support
+Center.
 
 
 
@@ -238,7 +238,7 @@ Your Support Cases web form.
   
 
 Creates a new case in the AWS Support Center. This operation is modeled
-on the behavior of the AWS Support Center Open a new case page. Its
+on the behavior of the AWS Support Center Create Case page. Its
 parameters require you to specify the following information:
 
 =over
@@ -261,10 +261,10 @@ service level agreement with AWS Support. You obtain the SeverityCode
 by calling DescribeSeverityLevels.
 
 =item 5. B<Subject.> The B<Subject> field on the AWS Support Center
-Open a new case page.
+Create Case page.
 
 =item 6. B<CommunicationBody.> The B<Description> field on the AWS
-Support Center Open a new case page.
+Support Center Create Case page.
 
 =item 7. B<AttachmentSetId.> The ID of a set of attachments that has
 been created by using AddAttachmentsToSet.
@@ -273,13 +273,16 @@ been created by using AddAttachmentsToSet.
 the case. English and Japanese are currently supported.
 
 =item 9. B<CcEmailAddresses.> The AWS Support Center B<CC> field on the
-Open a new case page. You can list email addresses to be copied on any
+Create Case page. You can list email addresses to be copied on any
 correspondence about the case. The account that opens the case is
 already identified by passing the AWS Credentials in the HTTP POST
 method or in a method or function call from one of the programming
 languages supported by an AWS SDK.
 
 =back
+
+To add additional communication or attachments to an existing case, use
+AddCommunicationToCase.
 
 A successful CreateCase request returns an AWS Support case number.
 Case numbers are used by the DescribeCases operation to retrieve
@@ -329,7 +332,9 @@ DescribeCommunications operation.
 
 Returns a list of cases that you specify by passing one or more case
 IDs. In addition, you can filter the cases by date by setting values
-for the C<AfterTime> and C<BeforeTime> request parameters.
+for the C<AfterTime> and C<BeforeTime> request parameters. You can set
+values for the C<IncludeResolvedCases> and C<IncludeCommunications>
+request parameters to control how much information is returned.
 
 Case data is available for 12 months after creation. If a case was
 created more than 12 months ago, a request for data might cause an
@@ -404,11 +409,11 @@ set of categories.
 
 The service codes and category codes correspond to the values that are
 displayed in the B<Service> and B<Category> drop-down lists on the AWS
-Support Center Open a new case page. The values in those fields,
-however, do not necessarily match the service codes and categories
-returned by the C<DescribeServices> request. Always use the service
-codes and categories obtained programmatically. This practice ensures
-that you always have the most recent set of service and category codes.
+Support Center Create Case page. The values in those fields, however,
+do not necessarily match the service codes and categories returned by
+the C<DescribeServices> request. Always use the service codes and
+categories obtained programmatically. This practice ensures that you
+always have the most recent set of service and category codes.
 
 
 
@@ -572,7 +577,7 @@ Requests a refresh of the Trusted Advisor check that has the specified
 check ID. Check IDs can be obtained by calling
 DescribeTrustedAdvisorChecks.
 
-The response contains a RefreshTrustedAdvisorCheckResult object, which
+The response contains a TrustedAdvisorCheckRefreshStatus object, which
 contains these fields:
 
 =over
