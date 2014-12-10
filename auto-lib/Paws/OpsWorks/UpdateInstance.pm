@@ -48,8 +48,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 A custom AMI ID to be used to create the instance. The AMI should be
-based on one of the standard AWS OpsWorks APIs: Amazon Linux or Ubuntu
-12.04 LTS. For more information, see Instances
+based on one of the standard AWS OpsWorks AMIs: Amazon Linux, Ubuntu
+12.04 LTS, or Ubuntu 14.04 LTS. For more information, see Instances
+
+If you specify a custom AMI, you must set C<Os> to C<Custom>.
 
 
 
@@ -81,20 +83,7 @@ by the different instance types, see Instance Families and Types.
 
   
 
-The instance's auto scaling type, which has three possible values:
-
-=over
-
-=item * B<AlwaysRunning>: A 24/7 instance, which is not affected by
-auto scaling.
-
-=item * B<TimeBasedAutoScaling>: A time-based auto scaling instance,
-which is started and stopped based on a specified schedule.
-
-=item * B<LoadBasedAutoScaling>: A load-based auto scaling instance,
-which is started and stopped based on load metrics.
-
-=back
+For load-based or time-based instances, the type.
 
 
 
@@ -145,6 +134,9 @@ are installed, set this value to C<false>. You must then update your
 instances manually by using CreateDeployment to run the
 C<update_dependencies> stack command or manually running C<yum> (Amazon
 Linux) or C<apt-get> (Ubuntu) on the instances.
+
+We strongly recommend using the default value of C<true>, to ensure
+that your instances have the latest security updates.
 
 
 
@@ -208,24 +200,24 @@ The instance's layer IDs.
 
   
 
-The instance operating system, which must be set to one of the
+The instance's operating system, which must be set to one of the
 following.
 
 =over
 
-=item * Standard operating systems: C<Amazon Linux> or C<Ubuntu 12.04
-LTS>
+=item * Standard operating systems: An Amazon Linux version such as
+C<Amazon Linux 2014.09>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04 LTS>.
 
 =item * Custom AMIs: C<Custom>
 
 =back
 
-The default option is C<Amazon Linux>. If you set this parameter to
-C<Custom>, you must use the CreateInstance action's AmiId parameter to
-specify the custom AMI that you want to use. For more information on
-the standard operating systems, see Operating SystemsFor more
-information on how to use custom AMIs with OpsWorks, see Using Custom
-AMIs.
+The default option is the current Amazon Linux version, such as
+C<Amazon Linux 2014.09>. If you set this parameter to C<Custom>, you
+must use the CreateInstance action's AmiId parameter to specify the
+custom AMI that you want to use. For more information on the standard
+operating systems, see Operating SystemsFor more information on how to
+use custom AMIs with OpsWorks, see Using Custom AMIs.
 
 
 

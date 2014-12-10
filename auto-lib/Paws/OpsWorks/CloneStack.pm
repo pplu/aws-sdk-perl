@@ -200,9 +200,20 @@ Identifiers.
 
   
 
-The cloned stack's default operating system, which must be set to
-C<Amazon Linux> or C<Ubuntu 12.04 LTS>. The default option is C<Amazon
-Linux>.
+The stacks's operating system, which must be set to one of the
+following.
+
+=over
+
+=item * Standard operating systems: an Amazon Linux version such as
+C<Amazon Linux 2014.09>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04 LTS>.
+
+=item * Custom AMIs: C<Custom>. You specify the custom AMI you want to
+use when you create instances.
+
+=back
+
+The default option is the current Amazon Linux version.
 
 
 
@@ -250,11 +261,13 @@ when you create or update an instance.
 
   
 
-The stack's default subnet ID. All instances will be launched into this
-subnet unless you specify otherwise when you create the instance. If
-you also specify a value for C<DefaultAvailabilityZone>, the subnet
-must be in the same zone. For information on default values and when
-this parameter is required, see the C<VpcId> parameter description.
+The stack's default VPC subnet ID. This parameter is required if you
+specify a value for the C<VpcId> parameter. All instances are launched
+into this subnet unless you specify otherwise when you create the
+instance. If you also specify a value for C<DefaultAvailabilityZone>,
+the subnet must be in that zone. For information on default values and
+when this parameter is required, see the C<VpcId> parameter
+description.
 
 
 
@@ -356,6 +369,10 @@ creates the role for you. You can obtain an existing stack's IAM ARN
 programmatically by calling DescribePermissions. For more information
 about IAM ARNs, see Using Identifiers.
 
+You must set this parameter to a valid service role ARN or the action
+will fail; there is no default value. You can specify the source
+stack's service role ARN, if you prefer, but you must do so explicitly.
+
 
 
 
@@ -440,8 +457,8 @@ For more information, see Create a New Stack.
   
 
 The ID of the VPC that the cloned stack is to be launched into. It must
-be in the specified region. All instances will be launched into this
-VPC, and you cannot change the ID later.
+be in the specified region. All instances are launched into this VPC,
+and you cannot change the ID later.
 
 =over
 

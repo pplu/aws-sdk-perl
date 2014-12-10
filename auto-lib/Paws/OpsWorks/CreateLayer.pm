@@ -9,6 +9,7 @@ package Paws::OpsWorks::CreateLayer {
   has CustomSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has EnableAutoHealing => (is => 'ro', isa => 'Bool');
   has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
+  has LifecycleEventConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::LifecycleEventConfiguration');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Packages => (is => 'ro', isa => 'ArrayRef[Str]');
   has Shortname => (is => 'ro', isa => 'Str', required => 1);
@@ -168,6 +169,26 @@ instances manually by using CreateDeployment to run the
 C<update_dependencies> stack command or manually running C<yum> (Amazon
 Linux) or C<apt-get> (Ubuntu) on the instances.
 
+We strongly recommend using the default value of C<true>, to ensure
+that your instances have the latest security updates.
+
+
+
+
+
+
+
+
+
+
+=head2 LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration
+
+  
+
+A LifeCycleEventConfiguration object that you can use to configure the
+Shutdown event to specify an execution timeout and enable or disable
+Elastic Load Balancer connection draining.
+
 
 
 
@@ -246,32 +267,7 @@ The layer stack ID.
   
 
 The layer type. A stack cannot have more than one built-in layer of the
-same type. It can have any number of custom layers. This parameter must
-be set to one of the following:
-
-=over
-
-=item * custom: A custom layer
-
-=item * db-master: A MySQL layer
-
-=item * java-app: A Java App Server layer
-
-=item * rails-app: A Rails App Server layer
-
-=item * lb: An HAProxy layer
-
-=item * memcached: A Memcached layer
-
-=item * monitoring-master: A Ganglia layer
-
-=item * nodejs-app: A Node.js App Server layer
-
-=item * php-app: A PHP App Server layer
-
-=item * web: A Static Web Server layer
-
-=back
+same type. It can have any number of custom layers.
 
 
 

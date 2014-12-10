@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeRaidArrays {
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
   has RaidArrayIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has StackId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -58,6 +59,21 @@ instance.
 An array of RAID array IDs. If you use this parameter,
 C<DescribeRaidArrays> returns descriptions of the specified arrays.
 Otherwise, it returns a description of every array.
+
+
+
+
+
+
+
+
+
+
+=head2 StackId => Str
+
+  
+
+The stack ID.
 
 
 

@@ -12,6 +12,7 @@ package Paws::OpsWorks::Layer {
   has EnableAutoHealing => (is => 'ro', isa => 'Bool');
   has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
   has LayerId => (is => 'ro', isa => 'Str');
+  has LifecycleEventConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::LifecycleEventConfiguration');
   has Name => (is => 'ro', isa => 'Str');
   has Packages => (is => 'ro', isa => 'ArrayRef[Str]');
   has Shortname => (is => 'ro', isa => 'Str');

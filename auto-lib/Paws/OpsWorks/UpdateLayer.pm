@@ -10,6 +10,7 @@ package Paws::OpsWorks::UpdateLayer {
   has EnableAutoHealing => (is => 'ro', isa => 'Bool');
   has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
   has LayerId => (is => 'ro', isa => 'Str', required => 1);
+  has LifecycleEventConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::LifecycleEventConfiguration');
   has Name => (is => 'ro', isa => 'Str');
   has Packages => (is => 'ro', isa => 'ArrayRef[Str]');
   has Shortname => (is => 'ro', isa => 'Str');
@@ -168,6 +169,9 @@ instances manually by using CreateDeployment to run the
 C<update_dependencies> stack command or manually running C<yum> (Amazon
 Linux) or C<apt-get> (Ubuntu) on the instances.
 
+We strongly recommend using the default value of C<true>, to ensure
+that your instances have the latest security updates.
+
 
 
 
@@ -182,6 +186,19 @@ Linux) or C<apt-get> (Ubuntu) on the instances.
   
 
 The layer ID.
+
+
+
+
+
+
+
+
+
+
+=head2 LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration
+
+  
 
 
 

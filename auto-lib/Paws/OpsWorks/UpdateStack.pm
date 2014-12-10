@@ -165,8 +165,20 @@ Identifiers.
 
   
 
-The stack's default operating system, which must be set to C<Amazon
-Linux> or C<Ubuntu 12.04 LTS>. The default option is C<Amazon Linux>.
+The stack's operating system, which must be set to one of the
+following.
+
+=over
+
+=item * Standard operating systems: an Amazon Linux version such as
+C<Amazon Linux 2014.09>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04 LTS>.
+
+=item * Custom AMIs: C<Custom>. You specify the custom AMI you want to
+use when you create instances.
+
+=back
+
+The default option is the current Amazon Linux version.
 
 
 
@@ -214,10 +226,13 @@ when you create or update an instance.
 
   
 
-The stack's default subnet ID. All instances will be launched into this
-subnet unless you specify otherwise when you create the instance. If
-you also specify a value for C<DefaultAvailabilityZone>, the subnet
-must be in that zone. For more information, see CreateStack.
+The stack's default VPC subnet ID. This parameter is required if you
+specify a value for the C<VpcId> parameter. All instances are launched
+into this subnet unless you specify otherwise when you create the
+instance. If you also specify a value for C<DefaultAvailabilityZone>,
+the subnet must be in that zone. For information on default values and
+when this parameter is required, see the C<VpcId> parameter
+description.
 
 
 
@@ -299,6 +314,10 @@ The stack AWS Identity and Access Management (IAM) role, which allows
 AWS OpsWorks to work with AWS resources on your behalf. You must set
 this parameter to the Amazon Resource Name (ARN) for an existing IAM
 role. For more information about IAM ARNs, see Using Identifiers.
+
+You must set this parameter to a valid service role ARN or the action
+will fail; there is no default value. You can specify the stack's
+current service role ARN, if you prefer, but you must do so explicitly.
 
 
 

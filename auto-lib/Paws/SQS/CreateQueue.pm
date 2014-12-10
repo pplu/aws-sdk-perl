@@ -58,11 +58,9 @@ KiB) up to 262144 bytes (256 KiB). The default for this attribute is
 retains a message. Integer representing seconds, from 60 (1 minute) to
 1209600 (14 days). The default for this attribute is 345600 (4 days).
 
-=item * C<Policy> - The queue's policy. A valid form-url-encoded
-policy. For more information about policy structure, see Basic Policy
-Structure in the I<Amazon SQS Developer Guide>. For more information
-about form-url-encoding, see
-http://www.w3.org/MarkUp/html-spec/html-spec_8.html
+=item * C<Policy> - The queue's policy. A valid AWS policy. For more
+information about policy structure, see Overview of AWS IAM Policies in
+the I<Amazon IAM User Guide>.
 
 =item * C<ReceiveMessageWaitTimeSeconds> - The time for which a
 ReceiveMessage call will wait for a message to arrive. An integer from

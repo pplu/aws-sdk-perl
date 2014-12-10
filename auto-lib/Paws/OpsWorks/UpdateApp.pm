@@ -8,6 +8,7 @@ package Paws::OpsWorks::UpdateApp {
   has Description => (is => 'ro', isa => 'Str');
   has Domains => (is => 'ro', isa => 'ArrayRef[Str]');
   has EnableSsl => (is => 'ro', isa => 'Bool');
+  has Environment => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::EnvironmentVariable]');
   has Name => (is => 'ro', isa => 'Str');
   has SslConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::SslConfiguration');
   has Type => (is => 'ro', isa => 'Str');
@@ -139,6 +140,28 @@ commas. For example: C<'www.example.com, example.com'>
   
 
 Whether SSL is enabled for the app.
+
+
+
+
+
+
+
+
+
+
+=head2 Environment => ArrayRef[Paws::OpsWorks::EnvironmentVariable]
+
+  
+
+An array of C<EnvironmentVariable> objects that specify environment
+variables to be associated with the app. You can specify up to ten
+environment variables. After you deploy the app, these variables are
+defined on the associated app server instances.
+
+This parameter is supported only by Chef 11.10 stacks. If you have
+specified one or more environment variables, you cannot modify the
+stack's Chef version.
 
 
 

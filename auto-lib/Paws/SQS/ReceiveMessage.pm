@@ -52,16 +52,16 @@ can be returned:
 =item * C<All> - returns all values.
 
 =item * C<ApproximateFirstReceiveTimestamp> - returns the time when the
-message was first received (epoch time in milliseconds).
+message was first received from the queue (epoch time in milliseconds).
 
 =item * C<ApproximateReceiveCount> - returns the number of times a
-message has been received but not deleted.
+message has been received from the queue but not deleted.
 
 =item * C<SenderId> - returns the AWS account number (or the IP
 address, if anonymous access is allowed) of the sender.
 
 =item * C<SentTimestamp> - returns the time when the message was sent
-(epoch time in milliseconds).
+to the queue (epoch time in milliseconds).
 
 =back
 
@@ -97,14 +97,19 @@ All of the messages are not necessarily returned.
 
   
 
-The message attribute Name can contain the following characters: A-Z,
-a-z, 0-9, underscore(_), hyphen(-), and period (.). The message
-attribute name must not start or end with a period, and it should not
-have successive periods. The message attribute name is case sensitive
-and must be unique among all attribute names for the message. The
-message attribute name can be up to 256 characters long. Attribute
-names cannot start with "AWS." or "Amazon." because these prefixes are
-reserved for use by Amazon Web Services.
+The name of the message attribute, where I<N> is the index. The message
+attribute name can contain the following characters: A-Z, a-z, 0-9,
+underscore (_), hyphen (-), and period (.). The name must not start or
+end with a period, and it should not have successive periods. The name
+is case sensitive and must be unique among all attribute names for the
+message. The name can be up to 256 characters long. The name cannot
+start with "AWS." or "Amazon." (or any variations in casing), because
+these prefixes are reserved for use by Amazon Web Services.
+
+When using C<ReceiveMessage>, you can send a list of attribute names to
+receive, or you can return all of the attributes by specifying "All" or
+".*" in your request. You can also use "foo.*" to return all message
+attributes starting with the "foo" prefix.
 
 
 

@@ -9,6 +9,7 @@ package Paws::OpsWorks::Instance {
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
   has Hostname => (is => 'ro', isa => 'Str');
+  has InfrastructureClass => (is => 'ro', isa => 'Str');
   has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str');
   has InstanceProfileArn => (is => 'ro', isa => 'Str');
@@ -20,6 +21,8 @@ package Paws::OpsWorks::Instance {
   has PrivateIp => (is => 'ro', isa => 'Str');
   has PublicDns => (is => 'ro', isa => 'Str');
   has PublicIp => (is => 'ro', isa => 'Str');
+  has RegisteredBy => (is => 'ro', isa => 'Str');
+  has ReportedOs => (is => 'ro', isa => 'Paws::OpsWorks::ReportedOs');
   has RootDeviceType => (is => 'ro', isa => 'Str');
   has RootDeviceVolumeId => (is => 'ro', isa => 'Str');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');

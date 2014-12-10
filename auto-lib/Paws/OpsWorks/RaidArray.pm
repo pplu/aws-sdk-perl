@@ -11,6 +11,7 @@ package Paws::OpsWorks::RaidArray {
   has RaidArrayId => (is => 'ro', isa => 'Str');
   has RaidLevel => (is => 'ro', isa => 'Int');
   has Size => (is => 'ro', isa => 'Int');
+  has StackId => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');
 }
 1;

@@ -8,6 +8,7 @@ package Paws::OpsWorks::App {
   has Description => (is => 'ro', isa => 'Str');
   has Domains => (is => 'ro', isa => 'ArrayRef[Str]');
   has EnableSsl => (is => 'ro', isa => 'Bool');
+  has Environment => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::EnvironmentVariable]');
   has Name => (is => 'ro', isa => 'Str');
   has Shortname => (is => 'ro', isa => 'Str');
   has SslConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::SslConfiguration');

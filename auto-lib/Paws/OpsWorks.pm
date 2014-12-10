@@ -16,6 +16,10 @@ package Paws::OpsWorks {
   class_has response_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::JsonResponse');
 
   
+  sub AssignInstance {
+    my $self = shift;
+    return $self->do_call('Paws::OpsWorks::AssignInstance', @_);
+  }
   sub AssignVolume {
     my $self = shift;
     return $self->do_call('Paws::OpsWorks::AssignVolume', @_);
@@ -80,6 +84,10 @@ package Paws::OpsWorks {
     my $self = shift;
     return $self->do_call('Paws::OpsWorks::DeregisterElasticIp', @_);
   }
+  sub DeregisterInstance {
+    my $self = shift;
+    return $self->do_call('Paws::OpsWorks::DeregisterInstance', @_);
+  }
   sub DeregisterRdsDbInstance {
     my $self = shift;
     return $self->do_call('Paws::OpsWorks::DeregisterRdsDbInstance', @_);
@@ -140,6 +148,10 @@ package Paws::OpsWorks {
     my $self = shift;
     return $self->do_call('Paws::OpsWorks::DescribeServiceErrors', @_);
   }
+  sub DescribeStackProvisioningParameters {
+    my $self = shift;
+    return $self->do_call('Paws::OpsWorks::DescribeStackProvisioningParameters', @_);
+  }
   sub DescribeStacks {
     my $self = shift;
     return $self->do_call('Paws::OpsWorks::DescribeStacks', @_);
@@ -180,6 +192,10 @@ package Paws::OpsWorks {
     my $self = shift;
     return $self->do_call('Paws::OpsWorks::RegisterElasticIp', @_);
   }
+  sub RegisterInstance {
+    my $self = shift;
+    return $self->do_call('Paws::OpsWorks::RegisterInstance', @_);
+  }
   sub RegisterRdsDbInstance {
     my $self = shift;
     return $self->do_call('Paws::OpsWorks::RegisterRdsDbInstance', @_);
@@ -215,6 +231,10 @@ package Paws::OpsWorks {
   sub StopStack {
     my $self = shift;
     return $self->do_call('Paws::OpsWorks::StopStack', @_);
+  }
+  sub UnassignInstance {
+    my $self = shift;
+    return $self->do_call('Paws::OpsWorks::UnassignInstance', @_);
   }
   sub UnassignVolume {
     my $self = shift;
@@ -319,12 +339,18 @@ opsworks.us-east-1.amazonaws.com (HTTPS), so you must connect to that
 endpoint. You can then use the API to direct AWS OpsWorks to create
 stacks in any AWS Region.
 
-B<Chef Version>
+B<Chef Versions>
 
 When you call CreateStack, CloneStack, or UpdateStack we recommend you
 use the C<ConfigurationManager> parameter to specify the Chef version,
-0.9, 11.4, or 11.10. The default value is currently 11.4. For more
+0.9, 11.4, or 11.10. The default value is currently 11.10. For more
 information, see Chef Versions.
+
+You can still specify Chef 0.9 for your stack, but new features are not
+available for Chef 0.9 stacks, and support is scheduled to end on July
+24, 2014. We do not recommend using Chef 0.9 for new stacks, and we
+recommend migrating your existing Chef 0.9 stacks to Chef 11.10 as soon
+as possible.
 
 
 
@@ -336,6 +362,32 @@ information, see Chef Versions.
 
 
 =head1 METHODS
+
+=head2 AssignInstance()
+
+  Arguments described in: L<Paws::OpsWorks::AssignInstance>
+
+  Returns: nothing
+
+  
+
+Assign a registered instance to a custom layer. You cannot use this
+action with instances that were created with AWS OpsWorks.
+
+B<Required Permissions>: To use this action, an IAM user must have a
+Manage permissions level for the stack or an attached policy that
+explicitly grants permissions. For more information on user
+permissions, see Managing User Permissions.
+
+
+
+
+
+
+
+
+
+
 
 =head2 AssignVolume()
 
@@ -402,6 +454,10 @@ permissions, see Managing User Permissions.
 
 Attaches an Elastic Load Balancing load balancer to a specified layer.
 For more information, see Elastic Load Balancing.
+
+You must create the Elastic Load Balancing instance separately, by
+using the Elastic Load Balancing console, API, or CLI. For more
+information, see Elastic Load Balancing Developer Guide.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -477,20 +533,8 @@ permissions, see Managing User Permissions.
 
   
 
-Deploys a stack or app.
-
-=over
-
-=item * App deployment generates a C<deploy> event, which runs the
-associated recipes and passes them a JSON stack configuration object
-that includes information about the app.
-
-=item * Stack deployment runs the C<deploy> recipes but does not raise
-an event.
-
-=back
-
-For more information, see Deploying Apps and Run Stack Commands.
+Runs deployment or stack commands. For more information, see Deploying
+Apps and Run Stack Commands.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Deploy or Manage permissions level for the stack, or an attached policy
@@ -542,6 +586,13 @@ permissions, see Managing User Permissions.
   
 
 Creates a layer. For more information, see How to Create a Layer.
+
+You should use B<CreateLayer> for noncustom layer types such as PHP App
+Server only if the stack does not have an existing layer of that type.
+A stack can have at most one instance of each noncustom layer; if you
+attempt to create a second instance, B<CreateLayer> fails. A stack can
+have an arbitrary number of custom layers, so you can call
+B<CreateLayer> as many times as you like for that layer type.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -639,8 +690,10 @@ permissions, see Managing User Permissions.
 
   
 
-Deletes a specified instance. You must stop an instance before you can
-delete it. For more information, see Deleting Instances.
+Deletes a specified instance, which terminates the associated Amazon
+EC2 instance. You must stop an instance before you can delete it.
+
+For more information, see Deleting Instances.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -666,7 +719,8 @@ permissions, see Managing User Permissions.
   
 
 Deletes a specified layer. You must first stop and then delete all
-associated instances. For more information, see How to Delete a Layer.
+associated instances or unassign registered instances. For more
+information, see How to Delete a Layer.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -692,7 +746,8 @@ permissions, see Managing User Permissions.
   
 
 Deletes a specified stack. You must first delete all instances, layers,
-and apps. For more information, see Shut Down a Stack.
+and apps or deregister registered instances. For more information, see
+Shut Down a Stack.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -760,6 +815,34 @@ permissions, see Managing User Permissions.
 
 
 
+=head2 DeregisterInstance()
+
+  Arguments described in: L<Paws::OpsWorks::DeregisterInstance>
+
+  Returns: nothing
+
+  
+
+Deregister a registered Amazon EC2 or on-premises instance. This action
+removes the instance from the stack and returns it to your control.
+This action can not be used with instances that were created with AWS
+OpsWorks.
+
+B<Required Permissions>: To use this action, an IAM user must have a
+Manage permissions level for the stack or an attached policy that
+explicitly grants permissions. For more information on user
+permissions, see Managing User Permissions.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DeregisterRdsDbInstance()
 
   Arguments described in: L<Paws::OpsWorks::DeregisterRdsDbInstance>
@@ -769,6 +852,11 @@ permissions, see Managing User Permissions.
   
 
 Deregisters an Amazon RDS instance.
+
+B<Required Permissions>: To use this action, an IAM user must have a
+Manage permissions level for the stack, or an attached policy that
+explicitly grants permissions. For more information on user
+permissions, see Managing User Permissions.
 
 
 
@@ -816,6 +904,8 @@ permissions, see Managing User Permissions.
 
 Requests a description of a specified set of apps.
 
+You must specify at least one of the parameters.
+
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
@@ -840,6 +930,8 @@ permissions, see Managing User Permissions.
   
 
 Describes the results of specified commands.
+
+You must specify at least one of the parameters.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -866,6 +958,8 @@ permissions, see Managing User Permissions.
 
 Requests a description of a specified set of deployments.
 
+You must specify at least one of the parameters.
+
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
@@ -890,6 +984,8 @@ permissions, see Managing User Permissions.
   
 
 Describes Elastic IP addresses.
+
+You must specify at least one of the parameters.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -916,6 +1012,8 @@ permissions, see Managing User Permissions.
 
 Describes a stack's Elastic Load Balancing instances.
 
+You must specify at least one of the parameters.
+
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
@@ -940,6 +1038,8 @@ permissions, see Managing User Permissions.
   
 
 Requests a description of a set of instances.
+
+You must specify at least one of the parameters.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -966,6 +1066,8 @@ permissions, see Managing User Permissions.
 
 Requests a description of one or more layers in a specified stack.
 
+You must specify at least one of the parameters.
+
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
@@ -990,6 +1092,8 @@ permissions, see Managing User Permissions.
   
 
 Describes load-based auto scaling configurations for specified layers.
+
+You must specify at least one of the parameters.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -1066,6 +1170,8 @@ permissions, see Managing User Permissions.
 
 Describe an instance's RAID arrays.
 
+You must specify at least one of the parameters.
+
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
@@ -1091,6 +1197,11 @@ permissions, see Managing User Permissions.
 
 Describes Amazon RDS instances.
 
+B<Required Permissions>: To use this action, an IAM user must have a
+Show, Deploy, or Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more information on user
+permissions, see Managing User Permissions.
+
 
 
 
@@ -1113,6 +1224,31 @@ Describes AWS OpsWorks service errors.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
+policy that explicitly grants permissions. For more information on user
+permissions, see Managing User Permissions.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeStackProvisioningParameters()
+
+  Arguments described in: L<Paws::OpsWorks::DescribeStackProvisioningParameters>
+
+  Returns: L<Paws::OpsWorks::DescribeStackProvisioningParametersResult>
+
+  
+
+Requests a description of a stack's provisioning parameters.
+
+B<Required Permissions>: To use this action, an IAM user must have a
+Show, Deploy, or Manage permissions level for the stack or an attached
 policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
@@ -1189,6 +1325,8 @@ permissions, see Managing User Permissions.
 Describes time-based auto scaling configurations for specified
 instances.
 
+You must specify at least one of the parameters.
+
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
@@ -1237,6 +1375,8 @@ information on user permissions, see Managing User Permissions.
   
 
 Describes an instance's Amazon EBS volumes.
+
+You must specify at least one of the parameters.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -1385,6 +1525,39 @@ permissions, see Managing User Permissions.
 
 
 
+=head2 RegisterInstance()
+
+  Arguments described in: L<Paws::OpsWorks::RegisterInstance>
+
+  Returns: L<Paws::OpsWorks::RegisterInstanceResult>
+
+  
+
+Registers instances with a specified stack that were created outside of
+AWS OpsWorks.
+
+We do not recommend using this action to register instances. The
+complete registration operation has two primary steps, installing the
+AWS OpsWorks agent on the instance and registering the instance with
+the stack. C<RegisterInstance> handles only the second step. You should
+instead use the AWS CLI C<register> command, which performs the entire
+registration operation.
+
+B<Required Permissions>: To use this action, an IAM user must have a
+Manage permissions level for the stack or an attached policy that
+explicitly grants permissions. For more information on user
+permissions, see Managing User Permissions.
+
+
+
+
+
+
+
+
+
+
+
 =head2 RegisterRdsDbInstance()
 
   Arguments described in: L<Paws::OpsWorks::RegisterRdsDbInstance>
@@ -1394,6 +1567,11 @@ permissions, see Managing User Permissions.
   
 
 Registers an Amazon RDS instance with a stack.
+
+B<Required Permissions>: To use this action, an IAM user must have a
+Manage permissions level for the stack, or an attached policy that
+explicitly grants permissions. For more information on user
+permissions, see Managing User Permissions.
 
 
 
@@ -1444,6 +1622,11 @@ permissions, see Managing User Permissions.
 Specify the load-based auto scaling configuration for a specified
 layer. For more information, see Managing Load with Time-based and
 Load-based Instances.
+
+To use load-based auto scaling, you must create a set of load-based
+auto scaling instances. Load-based auto scaling operates only on the
+instances from that set, so you must ensure that you have created
+enough instances to handle the maximum anticipated load.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
@@ -1604,6 +1787,34 @@ Stops a specified stack.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
+explicitly grants permissions. For more information on user
+permissions, see Managing User Permissions.
+
+
+
+
+
+
+
+
+
+
+
+=head2 UnassignInstance()
+
+  Arguments described in: L<Paws::OpsWorks::UnassignInstance>
+
+  Returns: nothing
+
+  
+
+Unassigns a registered instance from all of it's layers. The instance
+remains in the stack as an unassigned instance and can be assigned to
+another layer, as needed. You cannot use this action with instances
+that were created with AWS OpsWorks.
+
+B<Required Permissions>: To use this action, an IAM user must have a
+Manage permissions level for the stack or an attached policy that
 explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
@@ -1778,6 +1989,11 @@ User Permissions.
   
 
 Updates an Amazon RDS instance.
+
+B<Required Permissions>: To use this action, an IAM user must have a
+Manage permissions level for the stack, or an attached policy that
+explicitly grants permissions. For more information on user
+permissions, see Managing User Permissions.
 
 
 

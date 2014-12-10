@@ -6,7 +6,7 @@ package Paws::SQS {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'sqs');
   has version => (is => 'ro', isa => 'Str', default => '2012-11-05');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '1');
+  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
 
   use MooseX::ClassAttribute;
   class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'Paws::API::RegionalEndpointCaller');
@@ -58,6 +58,10 @@ package Paws::SQS {
   sub ListQueues {
     my $self = shift;
     return $self->do_call('Paws::SQS::ListQueues', @_);
+  }
+  sub PurgeQueue {
+    my $self = shift;
+    return $self->do_call('Paws::SQS::PurgeQueue', @_);
   }
   sub ReceiveMessage {
     my $self = shift;
@@ -120,6 +124,8 @@ Helpful Links:
 
 =item * Amazon SQS product page
 
+=item * Using Amazon SQS Message Attributes
+
 =item * Using Amazon SQS Dead Letter Queues
 
 =item * Regions and Endpoints
@@ -169,6 +175,16 @@ queue. Only you (as owner of the queue) can grant or deny permissions
 to the queue. For more information about these permissions, see Shared
 Queues in the I<Amazon SQS Developer Guide>.
 
+C<AddPermission> writes an Amazon SQS-generated policy. If you want to
+write your own policy, use SetQueueAttributes to upload your policy.
+For more information about writing your own policy, see Using The
+Access Policy Language in the I<Amazon SQS Developer Guide>.
+
+Some API actions take lists of parameters. These lists are specified
+using the C<param.n> notation. Values of C<n> are integers starting
+from 1. For example, a parameter list with two elements looks like
+this:
+
 C<&Attribute.1=this>
 
 C<&Attribute.2=that>
@@ -206,6 +222,14 @@ you could again extend the time out by calling ChangeMessageVisiblity,
 but this time the maximum allowed timeout would be 9 hours and 30
 minutes.
 
+There is a 120,000 limit for the number of inflight messages per queue.
+Messages are inflight after they have been received from the queue by a
+consuming component, but have not yet been deleted from the queue. If
+you reach the 120,000 limit, you will receive an OverLimit error
+message from Amazon SQS. To help avoid reaching the limit, you should
+delete the messages from the queue after they have been processed. You
+can also increase the number of queues you use to process the messages.
+
 If you attempt to set the C<VisibilityTimeout> to an amount more than
 the maximum time left, Amazon SQS returns an error. It will not
 automatically recalculate and increase the timeout to the maximum time
@@ -242,7 +266,10 @@ C<ChangeMessageVisibilityBatch> action.
 
 Because the batch request can result in a combination of successful and
 unsuccessful actions, you should check for batch errors even when the
-call returns an HTTP status code of 200.
+call returns an HTTP status code of 200. Some API actions take lists of
+parameters. These lists are specified using the C<param.n> notation.
+Values of C<n> are integers starting from 1. For example, a parameter
+list with two elements looks like this:
 
 C<&Attribute.1=this>
 
@@ -271,16 +298,27 @@ request C<CreateQueue>, you provide a name for the queue. To
 successfully create a new queue, you must provide a name that is unique
 within the scope of your own queues.
 
+If you delete a queue, you must wait at least 60 seconds before
+creating a queue with the same name.
+
 You may pass one or more attributes in the request. If you do not
 provide a value for any attribute, the queue will have the default
 value for that attribute. Permitted attributes are the same that can be
 set using SetQueueAttributes.
+
+Use GetQueueUrl to get a queue's URL. GetQueueUrl requires only the
+C<QueueName> parameter.
 
 If you provide the name of an existing queue, along with the exact
 names and values of all the queue's attributes, C<CreateQueue> returns
 the queue URL for the existing queue. If the queue name, attribute
 names, or attribute values do not match an existing queue,
 C<CreateQueue> returns an error.
+
+Some API actions take lists of parameters. These lists are specified
+using the C<param.n> notation. Values of C<n> are integers starting
+from 1. For example, a parameter list with two elements looks like
+this:
 
 C<&Attribute.1=this>
 
@@ -312,6 +350,13 @@ still deleted from the queue. If you leave a message in the queue for
 longer than the queue's configured retention period, Amazon SQS
 automatically deletes it.
 
+The receipt handle is associated with a specific instance of receiving
+the message. If you receive a message more than once, the receipt
+handle you get each time you receive the message is different. When you
+request C<DeleteMessage>, if you don't provide the most recently
+received receipt handle for the message, the request will still
+succeed, but the message might not be deleted.
+
 It is possible you will receive a message even after you have deleted
 it. This might happen on rare occasions if one of the servers storing a
 copy of the message is unavailable when you request to delete the
@@ -338,13 +383,18 @@ not a problem.
 
   
 
-Deletes multiple messages. This is a batch version of DeleteMessage.
-The result of the delete action on each message is reported
-individually in the response.
+Deletes up to ten messages from the specified queue. This is a batch
+version of DeleteMessage. The result of the delete action on each
+message is reported individually in the response.
 
 Because the batch request can result in a combination of successful and
 unsuccessful actions, you should check for batch errors even when the
 call returns an HTTP status code of 200.
+
+Some API actions take lists of parameters. These lists are specified
+using the C<param.n> notation. Values of C<n> are integers starting
+from 1. For example, a parameter list with two elements looks like
+this:
 
 C<&Attribute.1=this>
 
@@ -456,6 +506,13 @@ Queues in the I<Amazon SQS Developer Guide>.
 
 =back
 
+Going forward, new attributes might be added. If you are writing code
+that calls this action, we recommend that you structure your code so
+that it can handle new attributes gracefully. Some API actions take
+lists of parameters. These lists are specified using the C<param.n>
+notation. Values of C<n> are integers starting from 1. For example, a
+parameter list with two elements looks like this:
+
 C<&Attribute.1=this>
 
 C<&Attribute.2=that>
@@ -545,6 +602,36 @@ the specified value are returned.
 
 
 
+=head2 PurgeQueue()
+
+  Arguments described in: L<Paws::SQS::PurgeQueue>
+
+  Returns: nothing
+
+  
+
+Deletes the messages in a queue specified by the B<queue URL>.
+
+When you use the C<PurgeQueue> API, the deleted messages in the queue
+cannot be retrieved.
+
+When you purge a queue, the message deletion process takes up to 60
+seconds. All messages sent to the queue before calling C<PurgeQueue>
+will be deleted; messages sent to the queue while it is being purged
+may be deleted. While the queue is being purged, messages sent to the
+queue before C<PurgeQueue> was called may be received, but will be
+deleted within the next minute.
+
+
+
+
+
+
+
+
+
+
+
 =head2 ReceiveMessage()
 
   Arguments described in: L<Paws::SQS::ReceiveMessage>
@@ -608,6 +695,10 @@ response. If you do not include the parameter, the overall visibility
 timeout for the queue is used for the returned messages. For more
 information, see Visibility Timeout in the I<Amazon SQS Developer
 Guide>.
+
+Going forward, new attributes might be added. If you are writing code
+that calls this action, we recommend that you structure your code so
+that it can handle new attributes gracefully.
 
 
 
@@ -702,7 +793,10 @@ rejected.
 
 Because the batch request can result in a combination of successful and
 unsuccessful actions, you should check for batch errors even when the
-call returns an HTTP status code of 200.
+call returns an HTTP status code of 200. Some API actions take lists of
+parameters. These lists are specified using the C<param.n> notation.
+Values of C<n> are integers starting from 1. For example, a parameter
+list with two elements looks like this:
 
 C<&Attribute.1=this>
 
@@ -730,6 +824,10 @@ Sets the value of one or more queue attributes. When you change a
 queue's attributes, the change can take up to 60 seconds for most of
 the attributes to propagate throughout the SQS system. Changes made to
 the C<MessageRetentionPeriod> attribute can take up to 15 minutes.
+
+Going forward, new attributes might be added. If you are writing code
+that calls this action, we recommend that you structure your code so
+that it can handle new attributes gracefully.
 
 
 
