@@ -1,0 +1,13 @@
+---
+call: GetIdentityNotificationAttributes
+service: SES
+tests:
+  - expected: 1
+    op: ==
+    path: 'NotificationAttributes.Map.{test1@domain1.com}.ForwardingEnabled'
+  - expected: 1
+    op: ==
+    path: 'NotificationAttributes.Map.{test2@domain2.com}.ForwardingEnabled'
+  - expected: 'arn:aws:sns:eu-west-1:123456789012:TestEmail-BounceTopic-000000000000'
+    op: eq
+    path: 'NotificationAttributes.Map.{test1@domain1.com}.BounceTopic'

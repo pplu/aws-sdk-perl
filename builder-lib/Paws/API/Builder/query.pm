@@ -102,6 +102,8 @@ package [% c.api %] {
       my $output = '';
       if ($iclass->{type} eq 'map'){
         my $keys_shape = $self->shape($iclass->{key}->{shape});
+        my $values_shape = $self->shape($iclass->{value}->{shape});
+
         if ($keys_shape->{enum}){
           $output .= "package $inner_class {\n";
           $output .= "  use Moose;\n";
@@ -124,7 +126,7 @@ package [% c.api %] {
           }
           $output .= "}\n1\n";
           $self->save_class($inner_class, $output) if ($inner_class !~ m/ArrayRef/);
-        } elsif ($keys_shape->{type} eq 'string') {
+        } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'string') {
           $output .= "package $inner_class {\n"; 
           $output .= "  use Moose;\n";
           $output .= "  with 'Paws::API::StrToStrMapParser';\n";
@@ -140,8 +142,8 @@ package [% c.api %] {
           $output .= "  has Map => (is => 'ro', isa => 'HashRef[Str]');\n";
           $output .= "}\n1\n";
           $self->save_class($inner_class, $output) if ($inner_class !~ m/ArrayRef/);
-        } elsif ($keys_shape->{type} eq 'structure') {
-          my $type = $self->get_caller_class_type($iclass->{members});
+        } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'structure') {
+          my $type = $self->get_caller_class_type($iclass->{value}->{shape});
           $output .= "package $inner_class {\n";
           $output .= "  use Moose;\n";
           $output .= "  with 'Paws::API::StrToObjMapParser';\n";
