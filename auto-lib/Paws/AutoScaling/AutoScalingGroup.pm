@@ -10,7 +10,7 @@ package Paws::AutoScaling::AutoScalingGroup {
   has HealthCheckGracePeriod => (is => 'ro', isa => 'Int');
   has HealthCheckType => (is => 'ro', isa => 'Str', required => 1);
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Instance]');
-  has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
+  has LaunchConfigurationName => (is => 'ro', isa => 'Str');
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
