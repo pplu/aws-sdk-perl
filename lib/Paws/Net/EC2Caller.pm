@@ -80,7 +80,16 @@ package Paws::Net::EC2Caller {
     my ($self, $params) = @_;
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
-      my $key = $params->meta->get_attribute($att)->does('Paws::Net::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
+      my $key;
+      if ($params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::Unwrapped')){
+        $key = $params->meta->get_attribute($att)->xmlname;
+      } elsif ($params->meta->get_attribute($att)->does('Paws::Net::Caller::Attribute::Trait::NameInRequest')){
+        $key = $params->meta->get_attribute($att)->request_name;
+      } else {
+        $key = $att;
+      }
+      
+      # This is due to code found in serialize.py (EC2Serializer)
       substr($key,0,1) = uc(substr($key,0,1));
 
       if (defined $params->$att) {

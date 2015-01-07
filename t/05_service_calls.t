@@ -46,6 +46,26 @@ $test_params = {
 
 test_params($test_params, $request);
 
+$request = $ec2->RunInstances(
+  ImageId => 'ami-XXXXX',
+  MaxCount => 1,
+  MinCount => 1,
+  NetworkInterfaces => [
+   { DeviceIndex => 0, Groups => [ 'sg-1', 'sg-2' ] }
+  ]
+);
+
+$test_params = {
+  'ImageId' => 'ami-XXXXX',
+  'MaxCount' => 1,
+  'MinCount' => 1,
+  'NetworkInterface.1.DeviceIndex' => 0,
+  'NetworkInterface.1.SecurityGroupId.1' => 'sg-1',
+  'NetworkInterface.1.SecurityGroupId.2' => 'sg-2',
+};
+
+test_params($test_params, $request);
+
 
 my $sqs = $aws->service('SQS')->new(endpoint => 'dummy', region => 'dummy');
 
@@ -65,14 +85,14 @@ $request = $sqs->SendMessageBatch(
 );
 
 $test_params = {
-  'SendMessageBatchRequestEntry.1.Id' => 'test_msg_001',
-  'SendMessageBatchRequestEntry.1.MessageBody' => 'test message body 1',
-  'SendMessageBatchRequestEntry.2.Id' => 'test_msg_002',
-  'SendMessageBatchRequestEntry.2.MessageBody' => 'test message body 2',
-  'SendMessageBatchRequestEntry.2.DelaySeconds' => '60',
-  'SendMessageBatchRequestEntry.2.MessageAttribute.1.Name' => 'test_attribute_name_1',
-  'SendMessageBatchRequestEntry.2.MessageAttribute.1.Value.StringValue' => 'test_attribute_value_1',
-  'SendMessageBatchRequestEntry.2.MessageAttribute.1.Value.DataType' => 'String',
+  'Entries.1.Id' => 'test_msg_001',
+  'Entries.1.MessageBody' => 'test message body 1',
+  'Entries.2.Id' => 'test_msg_002',
+  'Entries.2.MessageBody' => 'test message body 2',
+  'Entries.2.DelaySeconds' => '60',
+  'Entries.2.MessageAttribute.1.Name' => 'test_attribute_name_1',
+  'Entries.2.MessageAttribute.1.Value.StringValue' => 'test_attribute_value_1',
+  'Entries.2.MessageAttribute.1.Value.DataType' => 'String',
 };
 
 test_params($test_params, $request);
