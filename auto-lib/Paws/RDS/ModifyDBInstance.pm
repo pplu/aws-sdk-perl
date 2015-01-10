@@ -115,7 +115,7 @@ will be available for use, but may experience performance degradation.
 While the migration takes place, nightly backups for the instance will
 be suspended. No other Amazon RDS operations can take place for the
 instance, including modifying the instance, rebooting the instance,
-deleting the instance, creating a read replica for the instance, and
+deleting the instance, creating a Read Replica for the instance, and
 creating a DB snapshot of the instance.
 
 
@@ -221,11 +221,14 @@ Constraints:
 
 =item * Must be a value from 0 to 35
 
-=item * Can be specified for a read replica only if the source is
+=item * Can be specified for a MySQL Read Replica only if the source is
 running MySQL 5.6
 
-=item * Cannot be set to 0 if the DB instance is a source to read
-replicas
+=item * Can be specified for a PostgreSQL Read Replica only if the
+source is running PostgreSQL 9.3.5
+
+=item * Cannot be set to 0 if the DB instance is a source to Read
+Replicas
 
 =back
 
@@ -364,7 +367,7 @@ currently in use, a new DB parameter group in the DB parameter group
 family for the new engine version must be specified. The new DB
 parameter group can be the default for that DB parameter group family.
 
-Example: C<5.1.42>
+For a list of valid engine versions, see CreateDBInstance.
 
 
 
@@ -412,7 +415,7 @@ will be available for use, but may experience performance degradation.
 While the migration takes place, nightly backups for the instance will
 be suspended. No other Amazon RDS operations can take place for the
 instance, including modifying the instance, rebooting the instance,
-deleting the instance, creating a read replica for the instance, and
+deleting the instance, creating a Read Replica for the instance, and
 creating a DB snapshot of the instance.
 
 
@@ -443,6 +446,11 @@ Constraints: Must be 8 to 41 alphanumeric characters (MySQL), 8 to 30
 alphanumeric characters (Oracle), or 8 to 128 alphanumeric characters
 (SQL Server).
 
+Amazon RDS API actions never return the password, so this action
+provides a way to regain access to a master instance user if the
+password is lost. This includes restoring privileges that may have been
+accidentally revoked.
+
 
 
 
@@ -461,7 +469,7 @@ parameter does not result in an outage and the change is applied during
 the next maintenance window unless the C<ApplyImmediately> parameter is
 set to C<true> for this request.
 
-Constraints: Cannot be specified if the DB instance is a read replica.
+Constraints: Cannot be specified if the DB instance is a Read Replica.
 
 
 
@@ -597,12 +605,15 @@ Constraints: Must be at least 30 minutes
 
   
 
-Specifies storage type to be associated with the DB Instance.
+Specifies the storage type to be associated with the DB instance.
 
 Valid values: C<standard | gp2 | io1>
 
 If you specify C<io1>, you must also include a value for the C<Iops>
 parameter.
+
+Default: C<io1> if the C<Iops> parameter is specified; otherwise
+C<standard>
 
 
 

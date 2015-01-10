@@ -70,6 +70,9 @@ Constraints:
 The DBSnapshotIdentifier of the new DBSnapshot created when
 SkipFinalSnapshot is set to C<false>.
 
+Specifying this parameter and also setting the SkipFinalShapshot
+parameter to true results in an error.
+
 Constraints:
 
 =over
@@ -80,7 +83,7 @@ Constraints:
 
 =item * Cannot end with a hyphen or contain two consecutive hyphens
 
-=item * Cannot be specified when deleting a read replica.
+=item * Cannot be specified when deleting a Read Replica.
 
 =back
 
@@ -102,7 +105,10 @@ instance is deleted. If C<true> is specified, no DBSnapshot is created.
 If C<false> is specified, a DB snapshot is created before the DB
 instance is deleted.
 
-Specify C<true> when deleting a read replica.
+Specify C<true> when deleting a Read Replica.
+
+The FinalDBSnapshotIdentifier parameter must be specified if
+SkipFinalSnapshot is C<false>.
 
 Default: C<false>
 

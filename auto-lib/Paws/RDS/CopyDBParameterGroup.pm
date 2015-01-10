@@ -40,25 +40,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The identifier or ARN for the source DB Parameter Group.
+The identifier or ARN for the source DB parameter group.
 
 Constraints:
 
 =over
 
-=item * Must specify a valid DB Parameter Group.
+=item * Must specify a valid DB parameter group.
 
-=item * If the source DB Parameter Group is in the same region as the
-copy, specify a valid DB Parameter Group identifier, or a valid ARN.
+=item * If the source DB parameter group is in the same region as the
+copy, specify a valid DB parameter group identifier, for example
+C<my-db-param-group>, or a valid ARN.
 
-=item * If the source DB Parameter Group is in a different region than
-the copy, specify a valid DB parameter group ARN.
+=item * If the source DB parameter group is in a different region than
+the copy, specify a valid DB parameter group ARN, for example
+C<arn:aws:rds:us-west-2:123456789012:pg:special-parameters>.
 
 =back
-
-Example: C<my-db-param-group>
-
-Example: C<arn:aws:rds:us-west-2:123456789012:pg:special-parameters>
 
 
 
@@ -77,7 +75,7 @@ Example: C<arn:aws:rds:us-west-2:123456789012:pg:special-parameters>
 
   
 
-The description for the copied DB Parameter Group.
+A description for the copied DB parameter group.
 
 
 
@@ -92,7 +90,7 @@ The description for the copied DB Parameter Group.
 
   
 
-The identifier for the copied DB Parameter Group.
+The identifier for the copied DB parameter group.
 
 Constraints:
 

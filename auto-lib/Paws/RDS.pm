@@ -5,7 +5,7 @@ use Paws::API;
 package Paws::RDS {
   use Moose;
   has service => (is => 'ro', isa => 'Str', default => 'rds');
-  has version => (is => 'ro', isa => 'Str', default => '2014-09-01');
+  has version => (is => 'ro', isa => 'Str', default => '2014-10-31');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
 
   use MooseX::ClassAttribute;
@@ -22,6 +22,10 @@ package Paws::RDS {
   sub AddTagsToResource {
     my $self = shift;
     return $self->do_call('Paws::RDS::AddTagsToResource', @_);
+  }
+  sub ApplyPendingMaintenanceAction {
+    my $self = shift;
+    return $self->do_call('Paws::RDS::ApplyPendingMaintenanceAction', @_);
   }
   sub AuthorizeDBSecurityGroupIngress {
     my $self = shift;
@@ -158,6 +162,10 @@ package Paws::RDS {
   sub DescribeOrderableDBInstanceOptions {
     my $self = shift;
     return $self->do_call('Paws::RDS::DescribeOrderableDBInstanceOptions', @_);
+  }
+  sub DescribePendingMaintenanceActions {
+    my $self = shift;
+    return $self->do_call('Paws::RDS::DescribePendingMaintenanceActions', @_);
   }
   sub DescribeReservedDBInstances {
     my $self = shift;
@@ -339,6 +347,26 @@ Resources.
 
 
 
+=head2 ApplyPendingMaintenanceAction()
+
+  Arguments described in: L<Paws::RDS::ApplyPendingMaintenanceAction>
+
+  Returns: L<Paws::RDS::ApplyPendingMaintenanceActionResult>
+
+  
+
+Applies a pending maintenance action to a resource.
+
+
+
+
+
+
+
+
+
+
+
 =head2 AuthorizeDBSecurityGroupIngress()
 
   Arguments described in: L<Paws::RDS::AuthorizeDBSecurityGroupIngress>
@@ -355,6 +383,11 @@ accessing your database is running on the Internet. Required parameters
 for this API are one of CIDR range, EC2SecurityGroupId for VPC, or
 (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
 EC2SecurityGroupId for non-VPC).
+
+You cannot authorize ingress from an EC2 security group in one Region
+to an Amazon RDS DB instance in another. You cannot authorize ingress
+from a VPC security group in one VPC to an Amazon RDS DB instance in
+another.
 
 For an overview of CIDR ranges, go to the Wikipedia Tutorial.
 
@@ -376,7 +409,7 @@ For an overview of CIDR ranges, go to the Wikipedia Tutorial.
 
   
 
-Copies the specified DBParameterGroup.
+Copies the specified DB parameter group.
 
 
 
@@ -417,7 +450,7 @@ Copies the specified DBSnapshot. The source DBSnapshot must be in the
 
   
 
-Copies the specified Option Group.
+Copies the specified option group.
 
 
 
@@ -457,10 +490,10 @@ Creates a new DB instance.
 
   
 
-Creates a DB instance that acts as a read replica of a source DB
+Creates a DB instance that acts as a Read Replica of a source DB
 instance.
 
-All read replica DB instances are created as Single-AZ deployments with
+All Read Replica DB instances are created as Single-AZ deployments with
 backups disabled. All other DB instance attributes (including DB
 security groups and DB parameter groups) are inherited from the source
 DB instance, except as specified below.
@@ -683,6 +716,9 @@ The action cannot be canceled or reverted once submitted.
 Deletes a specified DBParameterGroup. The DBParameterGroup to be
 deleted cannot be associated with any DB instances.
 
+The specified DB parameter group cannot be associated with any DB
+instances.
+
 
 
 
@@ -702,6 +738,9 @@ deleted cannot be associated with any DB instances.
   
 
 Deletes a DB security group.
+
+The specified DB security group must not be associated with any DB
+instances.
 
 
 
@@ -724,6 +763,8 @@ Deletes a DB security group.
 Deletes a DBSnapshot. If the snapshot is being copied, the copy
 operation is terminated.
 
+The DBSnapshot must be in the C<available> state to be deleted.
+
 
 
 
@@ -743,6 +784,9 @@ operation is terminated.
   
 
 Deletes a DB subnet group.
+
+The specified database subnet group must not be associated with any DB
+instances.
 
 
 
@@ -1118,6 +1162,27 @@ engine.
 
 
 
+=head2 DescribePendingMaintenanceActions()
+
+  Arguments described in: L<Paws::RDS::DescribePendingMaintenanceActions>
+
+  Returns: L<Paws::RDS::PendingMaintenanceActionsMessage>
+
+  
+
+Returns a list of resources (for example, DB Instances) that have at
+least one pending maintenance action.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DescribeReservedDBInstances()
 
   Arguments described in: L<Paws::RDS::DescribeReservedDBInstances>
@@ -1237,6 +1302,10 @@ one parameter, submit a list of the following: C<ParameterName>,
 C<ParameterValue>, and C<ApplyMethod>. A maximum of 20 parameters can
 be modified in a single request.
 
+Changes to dynamic parameters are applied immediately. Changes to
+static parameters require a reboot without failover to the DB instance
+associated with the parameter group before the change can take effect.
+
 After you modify a DB parameter group, you should wait at least 5
 minutes before creating your first DB instance that uses that DB
 parameter group as the default parameter group. This allows Amazon RDS
@@ -1336,7 +1405,12 @@ Modifies an existing option group.
 
   
 
-Promotes a read replica DB instance to a standalone DB instance.
+Promotes a Read Replica DB instance to a standalone DB instance.
+
+We recommend that you enable automated backups on your Read Replica
+before promoting the Read Replica. This ensures that no backup is taken
+during the promotion process. Once the instance is promoted to a
+primary instance, backups are taken based on your backup settings.
 
 
 
@@ -1490,6 +1564,16 @@ created from the source database restore point with the same
 configuration as the original source database, except that the new RDS
 instance is created with the default security group.
 
+If your intent is to replace your original DB instance with the new,
+restored DB instance, then rename your original DB instance before you
+call the RestoreDBInstanceFromDBSnapshot action. RDS does not allow two
+DB instances with the same name. Once you have renamed your original DB
+instance with a different identifier, then you can pass the original
+name of the DB instance as the DBInstanceIdentifier in the call to the
+RestoreDBInstanceFromDBSnapshot action. The result is that you will
+replace the original DB instance with the DB instance created from the
+snapshot.
+
 
 
 
@@ -1509,8 +1593,8 @@ instance is created with the default security group.
   
 
 Restores a DB instance to an arbitrary point-in-time. Users can restore
-to any point in time before the latestRestorableTime for up to
-backupRetentionPeriod days. The target database is created from the
+to any point in time before the LatestRestorableTime for up to
+BackupRetentionPeriod days. The target database is created from the
 source database with the same configuration as the original database
 except that the DB instance is created with the default DB security
 group.

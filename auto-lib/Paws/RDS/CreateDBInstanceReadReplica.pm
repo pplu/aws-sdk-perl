@@ -49,7 +49,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 Indicates that minor engine upgrades will be applied automatically to
-the read replica during the maintenance window.
+the Read Replica during the maintenance window.
 
 Default: Inherits from the source DB instance
 
@@ -66,7 +66,7 @@ Default: Inherits from the source DB instance
 
   
 
-The Amazon EC2 Availability Zone that the read replica will be created
+The Amazon EC2 Availability Zone that the Read Replica will be created
 in.
 
 Default: A random, system-chosen Availability Zone in the endpoint's
@@ -87,7 +87,7 @@ Example: C<us-east-1d>
 
   
 
-The compute and memory capacity of the read replica.
+The compute and memory capacity of the Read Replica.
 
 Valid Values: C<db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge
 | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
@@ -110,7 +110,7 @@ Default: Inherits from the source DB instance.
 
   
 
-The DB instance identifier of the read replica. This is the unique key
+The DB instance identifier of the Read Replica. This is the unique key
 that identifies a DB instance. This parameter is stored as a lowercase
 string.
 
@@ -142,15 +142,15 @@ specifies a DB instance in another region.
 =item * The specified DB subnet group must be in the same region in
 which the operation is running.
 
-=item * All read replicas in one region that are created from the same
+=item * All Read Replicas in one region that are created from the same
 source DB instance must either:
 
 =over
 
-=item * Specify DB subnet groups from the same VPC. All these read
-replicas will be created in the same VPC.
+=item * Specify DB subnet groups from the same VPC. All these Read
+Replicas will be created in the same VPC.
 
-=item * Not specify a DB subnet group. All these read replicas will be
+=item * Not specify a DB subnet group. All these Read Replicas will be
 created outside of any VPC.
 
 =back
@@ -259,7 +259,7 @@ set, the DB instance will be private.
   
 
 The identifier of the DB instance that will act as the source for the
-read replica. Each DB instance can have up to five read replicas.
+Read Replica. Each DB instance can have up to five Read Replicas.
 
 Constraints:
 
@@ -267,17 +267,20 @@ Constraints:
 
 =item * Must be the identifier of an existing DB instance.
 
-=item * Can specify a DB instance that is a read replica only if the
-source is running MySQL 5.6.
+=item * Can specify a DB instance that is a MySQL Read Replica only if
+the source is running MySQL 5.6.
+
+=item * Can specify a DB instance that is a PostgreSQL Read Replica
+only if the source is running PostgreSQL 9.3.5.
 
 =item * The specified DB instance must have automatic backups enabled,
 its backup retention period must be greater than 0.
 
-=item * If the source DB instance is in the same region as the read
-replica, specify a valid DB instance identifier.
+=item * If the source DB instance is in the same region as the Read
+Replica, specify a valid DB instance identifier.
 
 =item * If the source DB instance is in a different region than the
-read replica, specify a valid DB instance ARN. For more information, go
+Read Replica, specify a valid DB instance ARN. For more information, go
 to Constructing a Amazon RDS Amazon Resource Name (ARN).
 
 =back
@@ -295,13 +298,15 @@ to Constructing a Amazon RDS Amazon Resource Name (ARN).
 
   
 
-Specifies storage type to be associated with the DB Instance read
-replica.
+Specifies the storage type to be associated with the Read Replica.
 
 Valid values: C<standard | gp2 | io1>
 
 If you specify C<io1>, you must also include a value for the C<Iops>
 parameter.
+
+Default: C<io1> if the C<Iops> parameter is specified; otherwise
+C<standard>
 
 
 

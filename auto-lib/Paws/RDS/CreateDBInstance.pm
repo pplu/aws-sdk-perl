@@ -15,6 +15,7 @@ package Paws::RDS::CreateDBInstance {
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
   has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
@@ -24,6 +25,7 @@ package Paws::RDS::CreateDBInstance {
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
+  has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
@@ -84,7 +86,7 @@ Constraints: Must be an integer from 10 to 3072.
 B<SQL Server>
 
 Constraints: Must be an integer from 200 to 1024 (Standard Edition and
-Enterprise Edition) or from 30 to 1024 (Express Edition and Web
+Enterprise Edition) or from 20 to 1024 (Express Edition and Web
 Edition)
 
 
@@ -119,7 +121,8 @@ Default: C<true>
   
 
 The EC2 Availability Zone that the database instance will be created
-in.
+in. For information on regions and Availability Zones, see Regions and
+Availability Zones.
 
 Default: A random, system-chosen Availability Zone in the endpoint's
 region.
@@ -155,8 +158,8 @@ Constraints:
 
 =item * Must be a value from 0 to 35
 
-=item * Cannot be set to 0 if the DB instance is a source to read
-replicas
+=item * Cannot be set to 0 if the DB instance is a source to Read
+Replicas
 
 =back
 
@@ -381,6 +384,8 @@ Valid Values: C<MySQL> | C<oracle-se1> | C<oracle-se> | C<oracle-ee> |
 C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> | C<sqlserver-web>
 | C<postgres>
 
+Not every database engine is available for every AWS region.
+
 
 
 
@@ -396,27 +401,98 @@ C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> | C<sqlserver-web>
 
 The version number of the database engine to use.
 
+The following are the database engines and major and minor versions
+that are available with Amazon RDS. Not every database engine is
+available for every AWS region.
+
 B<MySQL>
 
-Example: C<5.1.42>
+=over
 
-Type: String
+=item * B<Version 5.1:> C< 5.1.45 | 5.1.49 | 5.1.50 | 5.1.57 | 5.1.61 |
+5.1.62 | 5.1.63 | 5.1.69 | 5.1.71 | 5.1.73>
+
+=item * B<Version 5.5:> C< 5.5.12 | 5.5.20 | 5.5.23 | 5.5.25a | 5.5.27
+| 5.5.31 | 5.5.33 | 5.5.37 | 5.5.38 | 5.5.8>
+
+=item * B<Version 5.6:> C< 5.6.12 | 5.6.13 | 5.6.17 | 5.6.19 | 5.6.21>
+
+=back
+
+B<Oracle Database Enterprise Edition (oracle-ee)>
+
+=over
+
+=item * B<Version 11.2:> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 |
+11.2.0.2.v6 | 11.2.0.2.v7 | 11.2.0.3.v1 | 11.2.0.4.v1>
+
+=back
+
+B<Oracle Database Standard Edition (oracle-se)>
+
+=over
+
+=item * B<Version 11.2:> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 |
+11.2.0.2.v6 | 11.2.0.2.v7 | 11.2.0.3.v1 | 11.2.0.4.v1>
+
+=back
+
+B<Oracle Database Standard Edition One (oracle-se1)>
+
+=over
+
+=item * B<Version 11.2:> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 |
+11.2.0.2.v6 | 11.2.0.2.v7 | 11.2.0.3.v1 | 11.2.0.4.v1>
+
+=back
 
 B<PostgreSQL>
 
-Example: C<9.3>
+=over
 
-Type: String
+=item * B<Version 9.3:> C< 9.3.1 | 9.3.2 | 9.3.3>
 
-B<Oracle>
+=back
 
-Example: C<11.2.0.2.v2>
+B<Microsoft SQL Server Enterprise Edition (sqlserver-ee)>
 
-Type: String
+=over
 
-B<SQL Server>
+=item * B<Version 10.5:> C< 10.50.2789.0.v1>
 
-Example: C<10.50.2789.0.v1>
+=item * B<Version 11.0:> C< 11.00.2100.60.v1>
+
+=back
+
+B<Microsoft SQL Server Express Edition (sqlserver-ex)>
+
+=over
+
+=item * B<Version 10.5:> C< 10.50.2789.0.v1>
+
+=item * B<Version 11.0:> C< 11.00.2100.60.v1>
+
+=back
+
+B<Microsoft SQL Server Standard Edition (sqlserver-se)>
+
+=over
+
+=item * B<Version 10.5:> C< 10.50.2789.0.v1>
+
+=item * B<Version 11.0:> C< 11.00.2100.60.v1>
+
+=back
+
+B<Microsoft SQL Server Web Edition (sqlserver-web)>
+
+=over
+
+=item * B<Version 10.5:> C< 10.50.2789.0.v1>
+
+=item * B<Version 11.0:> C< 11.00.2100.60.v1>
+
+=back
 
 
 
@@ -436,6 +512,33 @@ be initially allocated for the DB instance.
 
 Constraints: To use PIOPS, this value must be an integer greater than
 1000.
+
+
+
+
+
+
+
+
+
+
+=head2 KmsKeyId => Str
+
+  
+
+The KMS key identifier for an encrypted DB instance.
+
+The KMS key identifier is the Amazon Resoure Name (ARN) for the KMS
+encryption key. If you are creating a DB instance with the same AWS
+account that owns the KMS encryption key used to encrypt the new DB
+instance, then you can use the KMS key alias instead of the ARN for the
+KM encryption key.
+
+If the C<StorageEncrypted> parameter is true, and you do not specify a
+value for the C<KmsKeyId> parameter, then Amazon RDS will use your
+default encryption key. AWS KMS creates the default encryption key for
+your AWS account. Your AWS account has a different default encryption
+key for each AWS region.
 
 
 
@@ -640,7 +743,7 @@ C<49152>, and C<49152> through C<49156>.
 
 The daily time range during which automated backups are created if
 automated backups are enabled, using the C<BackupRetentionPeriod>
-parameter.
+parameter. For more information, see DB Instance Backups.
 
 Default: A 30-minute window selected at random from an 8-hour block of
 time per region. See the Amazon RDS User Guide for the time blocks for
@@ -664,7 +767,7 @@ maintenance window. Must be at least 30 minutes.
   
 
 The weekly time range (in UTC) during which system maintenance can
-occur.
+occur. For more information, see DB Instance Maintenance.
 
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
@@ -702,9 +805,9 @@ each case.
 
 =over
 
-=item * B<Default VPC:>true
+=item * B<Default VPC:> true
 
-=item * B<VPC:>false
+=item * B<VPC:> false
 
 =back
 
@@ -723,16 +826,36 @@ set, the DB instance will be private.
 
 
 
+=head2 StorageEncrypted => Bool
+
+  
+
+Specifies whether the DB instance is encrypted.
+
+Default: false
+
+
+
+
+
+
+
+
+
+
 =head2 StorageType => Str
 
   
 
-Specifies storage type to be associated with the DB Instance.
+Specifies the storage type to be associated with the DB instance.
 
 Valid values: C<standard | gp2 | io1>
 
 If you specify C<io1>, you must also include a value for the C<Iops>
 parameter.
+
+Default: C<io1> if the C<Iops> parameter is specified; otherwise
+C<standard>
 
 
 

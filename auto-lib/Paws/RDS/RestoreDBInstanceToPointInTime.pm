@@ -120,6 +120,8 @@ Default: The same DBInstanceClass as the original DB instance.
 
 The database name for the restored DB instance.
 
+This parameter is not used for the MySQL engine.
+
 
 
 
@@ -154,7 +156,9 @@ Default: The same as source
 
 Constraint: Must be compatible with the engine of the source
 
-Example: C<oracle-ee>
+Valid Values: C<MySQL> | C<oracle-se1> | C<oracle-se> | C<oracle-ee> |
+C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> | C<sqlserver-web>
+| C<postgres>
 
 
 
@@ -365,12 +369,15 @@ Constraints:
 
   
 
-Specifies storage type to be associated with the DB Instance.
+Specifies the storage type to be associated with the DB instance.
 
 Valid values: C<standard | gp2 | io1>
 
 If you specify C<io1>, you must also include a value for the C<Iops>
 parameter.
+
+Default: C<io1> if the C<Iops> parameter is specified; otherwise
+C<standard>
 
 
 

@@ -9,6 +9,7 @@ package Paws::RDS::OrderableDBInstanceOption {
   has ReadReplicaCapable => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
   has SupportsIops => (is => 'ro', isa => 'Bool');
+  has SupportsStorageEncryption => (is => 'ro', isa => 'Bool');
   has Vpc => (is => 'ro', isa => 'Bool');
 }
 1;

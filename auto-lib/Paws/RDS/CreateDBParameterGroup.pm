@@ -72,6 +72,8 @@ Constraints:
 
 =back
 
+This value is stored as a lower-case string.
+
 
 
 

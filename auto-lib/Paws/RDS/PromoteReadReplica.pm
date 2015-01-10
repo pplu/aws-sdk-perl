@@ -72,7 +72,7 @@ Constraints:
 
 =over
 
-=item * Must be the identifier for an existing read replica DB instance
+=item * Must be the identifier for an existing Read Replica DB instance
 
 =item * Must contain from 1 to 63 alphanumeric characters or hyphens
 

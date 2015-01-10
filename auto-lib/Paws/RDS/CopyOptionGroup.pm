@@ -40,25 +40,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The identifier or ARN for the source Option Group.
+The identifier or ARN for the source option group.
 
 Constraints:
 
 =over
 
-=item * Must specify a valid Option Group.
+=item * Must specify a valid option group.
 
-=item * If the source Option Group is in the same region as the copy,
-specify a valid Option Group identifier, or a valid ARN.
+=item * If the source option group is in the same region as the copy,
+specify a valid option group identifier, for example
+C<my-option-group>, or a valid ARN.
 
-=item * If the source Option Group is in a different region than the
-copy, specify a valid Option group ARN.
+=item * If the source option group is in a different region than the
+copy, specify a valid option group ARN, for example
+C<arn:aws:rds:us-west-2:123456789012:og:special-options>.
 
 =back
-
-Example: C<my-option-group>
-
-Example: C<arn:aws:rds:us-west-2:123456789012:og:special-options>
 
 
 
@@ -77,7 +75,7 @@ Example: C<arn:aws:rds:us-west-2:123456789012:og:special-options>
 
   
 
-The description for the copied Option Group.
+The description for the copied option group.
 
 
 
@@ -92,7 +90,7 @@ The description for the copied Option Group.
 
   
 
-The identifier for the copied Option Group.
+The identifier for the copied option group.
 
 Constraints:
 

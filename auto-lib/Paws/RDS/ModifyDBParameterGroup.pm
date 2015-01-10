@@ -75,6 +75,11 @@ parameters may be modified in a single request.
 Valid Values (for the application method): C<immediate |
 pending-reboot>
 
+You can use the immediate value with dynamic parameters only. You can
+use the pending-reboot value for both dynamic and static parameters,
+and changes are applied when you reboot the DB instance without
+failover.
+
 
 
 
