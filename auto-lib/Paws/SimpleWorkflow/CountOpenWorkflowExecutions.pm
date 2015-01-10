@@ -59,6 +59,9 @@ The name of the domain containing the workflow executions to count.
 If specified, only workflow executions matching the C<WorkflowId> in
 the filter are counted.
 
+C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
+exclusive. You can specify at most one of these in a request.
+
 
 
 
@@ -91,6 +94,9 @@ order to be counted.
 If specified, only executions that have a tag that matches the filter
 are counted.
 
+C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
+exclusive. You can specify at most one of these in a request.
+
 
 
 
@@ -105,6 +111,9 @@ are counted.
   
 
 Specifies the type of the workflow executions to be counted.
+
+C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
+exclusive. You can specify at most one of these in a request.
 
 
 

@@ -75,12 +75,13 @@ user defined.
 
   
 
-The maximum number of history events returned in each page. The default
-is 100, but the caller can override this value to a page size
-I<smaller> than the default. You cannot specify a page size greater
-than 100. Note that the number of events may be less than the maxiumum
-page size, in which case, the returned page will have fewer results
-than the maximumPageSize specified.
+The maximum number of results that will be returned per call.
+C<nextPageToken> can be used to obtain futher pages of results. The
+default is 100, which is the maximum allowed page size. You can,
+however, specify a page size I<smaller> than 100.
+
+This is an upper limit only; the actual number of results returned per
+call may be fewer than the specified maximum.
 
 
 
@@ -95,12 +96,19 @@ than the maximumPageSize specified.
 
   
 
-If on a previous call to this method a C<NextPageToken> was returned,
-the results are being paginated. To get the next page of results,
-repeat the call with the returned token and all other arguments
-unchanged.
+If a C<NextPageToken> was returned by a previous call, there are more
+results available. To retrieve the next page of results, make the call
+again using the returned token in C<nextPageToken>. Keep all other
+arguments unchanged.
 
-.
+The configured C<maximumPageSize> determines how many results can be
+returned in a single call.
+
+The C<nextPageToken> returned by this action cannot be used with
+GetWorkflowExecutionHistory to get the next page. You must call
+PollForDecisionTask again (with the C<nextPageToken>) to retrieve the
+next page of history records. Calling PollForDecisionTask with a
+C<nextPageToken> will not return a new decision task..
 
 
 
@@ -137,7 +145,7 @@ Specifies the task list to poll for decision tasks.
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string "arn".
+contain the literal string quotarnquot.
 
 
 

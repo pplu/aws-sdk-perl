@@ -10,5 +10,6 @@ package Paws::SimpleWorkflow::ActivityTaskScheduledEventAttributes {
   has scheduleToStartTimeout => (is => 'ro', isa => 'Str');
   has startToCloseTimeout => (is => 'ro', isa => 'Str');
   has taskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', required => 1);
+  has taskPriority => (is => 'ro', isa => 'Str');
 }
 1;

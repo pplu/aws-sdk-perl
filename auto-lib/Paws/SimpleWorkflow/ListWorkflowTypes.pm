@@ -58,12 +58,13 @@ registered.
 
   
 
-The maximum number of results returned in each page. The default is
-100, but the caller can override this value to a page size I<smaller>
-than the default. You cannot specify a page size greater than 100. Note
-that the number of types may be less than the maxiumum page size, in
-which case, the returned page will have fewer results than the
-maximumPageSize specified.
+The maximum number of results that will be returned per call.
+C<nextPageToken> can be used to obtain futher pages of results. The
+default is 100, which is the maximum allowed page size. You can,
+however, specify a page size I<smaller> than 100.
+
+This is an upper limit only; the actual number of results returned per
+call may be fewer than the specified maximum.
 
 
 
@@ -93,10 +94,13 @@ If specified, lists the workflow type with this name.
 
   
 
-If on a previous call to this method a C<NextPageToken> was returned,
-the results are being paginated. To get the next page of results,
-repeat the call with the returned token and all other arguments
-unchanged.
+If a C<NextPageToken> was returned by a previous call, there are more
+results available. To retrieve the next page of results, make the call
+again using the returned token in C<nextPageToken>. Keep all other
+arguments unchanged.
+
+The configured C<maximumPageSize> determines how many results can be
+returned in a single call.
 
 
 

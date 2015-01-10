@@ -19,10 +19,13 @@ Paws::SimpleWorkflow::WorkflowTypeInfos
 
   
 
-The token for the next page of type information. If set then the list
-consists of more than one page. You can retrieve the next page by
-repeating the request (that returned the structure) with the this token
-and all other arguments unchanged.
+If a C<NextPageToken> was returned by a previous call, there are more
+results available. To retrieve the next page of results, make the call
+again using the returned token in C<nextPageToken>. Keep all other
+arguments unchanged.
+
+The configured C<maximumPageSize> determines how many results can be
+returned in a single call.
 
 
 

@@ -38,7 +38,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The activity type to describe.
+The activity type to get information about. Activity types are
+identified by the C<name> and C<version> that were supplied when the
+activity was registered.
 
 
 

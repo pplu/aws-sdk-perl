@@ -7,6 +7,7 @@ package Paws::SimpleWorkflow::StartWorkflowExecution {
   has input => (is => 'ro', isa => 'Str');
   has tagList => (is => 'ro', isa => 'ArrayRef[Str]');
   has taskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList');
+  has taskPriority => (is => 'ro', isa => 'Str');
   has taskStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
   has workflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', required => 1);
@@ -49,8 +50,9 @@ If set, specifies the policy to use for the child workflow executions
 of this workflow execution if it is terminated, by calling the
 TerminateWorkflowExecution action explicitly or due to an expired
 timeout. This policy overrides the default child policy specified when
-registering the workflow type using RegisterWorkflowType. The supported
-child policies are:
+registering the workflow type using RegisterWorkflowType.
+
+The supported child policies are:
 
 =over
 
@@ -65,6 +67,11 @@ actions when it receives an execution history with this event.
 continue to run.
 
 =back
+
+A child policy for this workflow execution must be specified either as
+a default for the workflow type or through this parameter. If neither
+this parameter is set nor a default child policy was specified at
+registration time then a fault will be returned.
 
 
 
@@ -98,12 +105,16 @@ The total duration for this workflow execution. This overrides the
 defaultExecutionStartToCloseTimeout specified when registering the
 workflow type.
 
-The duration is specified in seconds. The valid values are integers
-greater than or equal to 0. Exceeding this limit will cause the
-workflow execution to time out. Unlike some of the other timeout
-parameters in Amazon SWF, you cannot specify a value of "NONE" for this
-timeout; there is a one-year max limit on the time that a workflow
-execution can run.
+The duration is specified in seconds; an integer greater than or equal
+to 0. Exceeding this limit will cause the workflow execution to time
+out. Unlike some of the other timeout parameters in Amazon SWF, you
+cannot specify a value of "NONE" for this timeout; there is a one-year
+max limit on the time that a workflow execution can run.
+
+An execution start-to-close timeout must be specified either through
+this parameter or as a default when the workflow type is registered. If
+neither this parameter nor a default execution start-to-close timeout
+is specified, a fault is returned.
 
 
 
@@ -158,10 +169,38 @@ The task list to use for the decision tasks generated for this workflow
 execution. This overrides the C<defaultTaskList> specified when
 registering the workflow type.
 
+A task list for this workflow execution must be specified either as a
+default for the workflow type or through this parameter. If neither
+this parameter is set nor a default task list was specified at
+registration time then a fault will be returned.
+
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string "arn".
+contain the literal string quotarnquot.
+
+
+
+
+
+
+
+
+
+
+=head2 taskPriority => Str
+
+  
+
+The task priority to use for this workflow execution. This will
+override any default priority that was assigned when the workflow type
+was registered. If not set, then the default task priority for the
+workflow type will be used. Valid values are integers that range from
+Java's C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
+(2147483647). Higher numbers indicate higher priority.
+
+For more information about setting task priority, see Setting Task
+Priority in the I<Amazon Simple Workflow Developer Guide>.
 
 
 
@@ -181,9 +220,14 @@ execution. This parameter overrides the
 C<defaultTaskStartToCloseTimout> specified when registering the
 workflow type using RegisterWorkflowType.
 
-The valid values are integers greater than or equal to C<0>. An integer
-value can be used to specify the duration in seconds while C<NONE> can
-be used to specify unlimited duration.
+The duration is specified in seconds; an integer greater than or equal
+to 0. The value "NONE" can be used to specify unlimited duration.
+
+A task start-to-close timeout for this workflow execution must be
+specified either as a default for the workflow type or through this
+parameter. If neither this parameter is set nor a default task
+start-to-close timeout was specified at registration time then a fault
+will be returned.
 
 
 
@@ -207,7 +251,7 @@ open workflow executions with the same C<workflowId> at the same time.
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string "arn".
+contain the literal string quotarnquot.
 
 
 

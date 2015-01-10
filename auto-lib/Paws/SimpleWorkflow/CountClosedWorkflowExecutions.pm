@@ -47,6 +47,10 @@ If specified, only workflow executions that match this close status are
 counted. This filter has an affect only if C<executionStatus> is
 specified as C<CLOSED>.
 
+C<closeStatusFilter>, C<executionFilter>, C<typeFilter> and
+C<tagFilter> are mutually exclusive. You can specify at most one of
+these in a request.
+
 
 
 
@@ -62,6 +66,9 @@ specified as C<CLOSED>.
 
 If specified, only workflow executions that meet the close time
 criteria of the filter are counted.
+
+C<startTimeFilter> and C<closeTimeFilter> are mutually exclusive. You
+must specify one of these in a request but not both.
 
 
 
@@ -94,6 +101,10 @@ The name of the domain containing the workflow executions to count.
 If specified, only workflow executions matching the C<WorkflowId> in
 the filter are counted.
 
+C<closeStatusFilter>, C<executionFilter>, C<typeFilter> and
+C<tagFilter> are mutually exclusive. You can specify at most one of
+these in a request.
+
 
 
 
@@ -109,6 +120,9 @@ the filter are counted.
 
 If specified, only workflow executions that meet the start time
 criteria of the filter are counted.
+
+C<startTimeFilter> and C<closeTimeFilter> are mutually exclusive. You
+must specify one of these in a request but not both.
 
 
 
@@ -126,6 +140,10 @@ criteria of the filter are counted.
 If specified, only executions that have a tag that matches the filter
 are counted.
 
+C<closeStatusFilter>, C<executionFilter>, C<typeFilter> and
+C<tagFilter> are mutually exclusive. You can specify at most one of
+these in a request.
+
 
 
 
@@ -141,6 +159,10 @@ are counted.
 
 If specified, indicates the type of the workflow executions to be
 counted.
+
+C<closeStatusFilter>, C<executionFilter>, C<typeFilter> and
+C<tagFilter> are mutually exclusive. You can specify at most one of
+these in a request.
 
 
 

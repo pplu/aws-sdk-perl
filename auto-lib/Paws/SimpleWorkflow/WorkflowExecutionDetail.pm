@@ -69,8 +69,8 @@ require a corrective action.
   
 
 The latest executionContext provided by the decider for this workflow
-execution. A decider can provide an executionContext, which is a free
-form string, when closing a decision task using
+execution. A decider can provide an executionContext (a free-form
+string) when closing a decision task using
 RespondDecisionTaskCompleted.
 
 

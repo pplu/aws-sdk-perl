@@ -162,280 +162,20 @@ Paws::SimpleWorkflow - Perl Interface to AWS Amazon Simple Workflow Service
 
 Amazon Simple Workflow Service
 
-The Amazon Simple Workflow Service API Reference is intended for
-programmers who need detailed information about the Amazon SWF actions
-and data types.
-
-For an broader overview of the Amazon SWF programming model, please go
-to the Amazon SWF Developer Guide.
-
-This section provides an overview of Amazon SWF actions.
-
-B<Action Categories>
-
-The Amazon SWF actions can be grouped into the following major
-categories.
-
-=over
-
-=item *
-
-Actions related to Activities
-
-=item *
-
-Actions related to Deciders
-
-=item *
-
-Actions related to Workflow Executions
-
-=item *
-
-Actions related to Administration
-
-=item *
-
-Actions related to Visibility
-
-=back
-
-B<Actions related to Activities>
-
-The following are actions that are performed by activity workers:
-
-=over
-
-=item *
-
-PollForActivityTask
-
-=item *
-
-RespondActivityTaskCompleted
-
-=item *
-
-RespondActivityTaskFailed
-
-=item *
-
-RespondActivityTaskCanceled
-
-=item *
-
-RecordActivityTaskHeartbeat
-
-=back
-
-Activity workers use the PollForActivityTask to get new activity tasks.
-After a worker receives an activity task from Amazon SWF, it performs
-the task and responds using RespondActivityTaskCompleted if successful
-or RespondActivityTaskFailed if unsuccessful.
-
-B<Actions related to Deciders>
-
-The following are actions that are performed by deciders:
-
-=over
-
-=item *
-
-PollForDecisionTask
-
-=item *
-
-RespondDecisionTaskCompleted
-
-=back
-
-Deciders use PollForDecisionTask to get decision tasks. After a decider
-receives a decision task from Amazon SWF, it examines its workflow
-execution history and decides what to do next. It calls
-RespondDecisionTaskCompletedto complete the decision task and provide
-zero or more next decisions.
-
-B<Actions related to Workflow Executions>
-
-The following actions operate on a workflow execution:
-
-=over
-
-=item *
-
-RequestCancelWorkflowExecution
-
-=item *
-
-StartWorkflowExecution
-
-=item *
-
-SignalWorkflowExecution
-
-=item *
-
-TerminateWorkflowExecution
-
-=back
-
-B<Actions related to Administration>
-
-Although you can perform administrative tasks from the Amazon SWF
-console, you can use the actions in this section to automate functions
-or build your own administrative tools.
-
-B<Activity Management>
-
-=over
-
-=item *
-
-RegisterActivityType
-
-=item *
-
-DeprecateActivityType
-
-=back
-
-B<Workflow Management>
-
-=over
-
-=item *
-
-RegisterWorkflowType
-
-=item *
-
-DeprecateWorkflowType
-
-=back
-
-B<Domain Management>
-
-=over
-
-=item *
-
-RegisterDomain
-
-=item *
-
-DeprecateDomain
-
-=back
-
-B<Workflow Execution Management>
-
-=over
-
-=item *
-
-RequestCancelWorkflowExecution
-
-=item *
-
-TerminateWorkflowExecution
-
-=back
-
-B<Visibility Actions>
-
-Although you can perform visibility actions from the Amazon SWF
-console, you can use the actions in this section to build your own
-console or administrative tools.
-
-=over
-
-=back
-
-B<Activity Visibility>
-
-=over
-
-=item *
-
-ListActivityTypes
-
-=item *
-
-DescribeActivity
-
-=back
-
-B<Workflow Visibility>
-
-=over
-
-=item *
-
-ListWorkflowTypes
-
-=item *
-
-DescribeWorkflowType
-
-=back
-
-B<Workflow Execution Visibility>
-
-=over
-
-=item *
-
-DescribeWorkflowExecution
-
-=item *
-
-ListOpenWorkflowExecutions
-
-=item *
-
-ListClosedWorkflowExecutions
-
-=item *
-
-CountOpenWorkflowExecutions
-
-=item *
-
-CountClosedWorkflowExecutions
-
-=item *
-
-GetWorkflowExecutionHistory
-
-=back
-
-B<Domain Visibility>
-
-=over
-
-=item *
-
-ListDomains
-
-=item *
-
-DescribeDomain
-
-=back
-
-B<Task List Visibility>
-
-=over
-
-=item *
-
-CountPendingActivityTasks
-
-=item *
-
-CountPendingDecisionTasks
-
-=back
+The Amazon Simple Workflow Service (Amazon SWF) makes it easy to build
+applications that use Amazon's cloud to coordinate work across
+distributed components. In Amazon SWF, a I<task> represents a logical
+unit of work that is performed by a component of your workflow.
+Coordinating tasks in a workflow involves managing intertask
+dependencies, scheduling, and concurrency in accordance with the
+logical flow of the application.
+
+Amazon SWF gives you full control over implementing tasks and
+coordinating them without worrying about underlying complexities such
+as tracking their progress and maintaining their state.
+
+This documentation serves as reference only. For a broader overview of
+the Amazon SWF programming model, see the Amazon SWF Developer Guide.
 
 
 
@@ -459,6 +199,9 @@ CountPendingDecisionTasks
 Returns the number of closed workflow executions within the given
 domain that meet the specified filtering criteria.
 
+This operation is eventually consistent. The results are best effort
+and may not exactly reflect recent updates and changes.
+
 B<Access Control>
 
 You can use IAM policies to control this action's access to Amazon SWF
@@ -492,9 +235,9 @@ C<swf:typeFilter.version>.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -517,6 +260,9 @@ Workflows.
 Returns the number of open workflow executions within the given domain
 that meet the specified filtering criteria.
 
+This operation is eventually consistent. The results are best effort
+and may not exactly reflect recent updates and changes.
+
 B<Access Control>
 
 You can use IAM policies to control this action's access to Amazon SWF
@@ -550,9 +296,9 @@ C<swf:typeFilter.version>.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -598,9 +344,9 @@ action to access only certain task lists.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -646,9 +392,9 @@ action to access only certain task lists.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -672,6 +418,9 @@ Deprecates the specified I<activity type>. After an activity type has
 been deprecated, you cannot create new tasks of that activity type.
 Tasks of this type that were scheduled before the type was deprecated
 will continue to run.
+
+This operation is eventually consistent. The results are best effort
+and may not exactly reflect recent updates and changes.
 
 B<Access Control>
 
@@ -703,9 +452,9 @@ C<swf:activityType.version>.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -732,6 +481,9 @@ Deprecating a domain also deprecates all activity and workflow types
 registered in the domain. Executions that were started before the
 domain was deprecated will continue to run.
 
+This operation is eventually consistent. The results are best effort
+and may not exactly reflect recent updates and changes.
+
 B<Access Control>
 
 You can use IAM policies to control this action's access to Amazon SWF
@@ -752,9 +504,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -779,6 +531,9 @@ been deprecated, you cannot create new executions of that type.
 Executions that were started before the type was deprecated will
 continue to run. A deprecated workflow type may still be used when
 calling visibility actions.
+
+This operation is eventually consistent. The results are best effort
+and may not exactly reflect recent updates and changes.
 
 B<Access Control>
 
@@ -810,9 +565,9 @@ C<swf:workflowType.version>.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -833,7 +588,7 @@ Workflows.
   
 
 Returns information about the specified activity type. This includes
-configuration settings provided at registration time as well as other
+configuration settings provided when the type was registered and other
 general information about the type.
 
 B<Access Control>
@@ -866,9 +621,9 @@ C<swf:activityType.version>.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -888,7 +643,7 @@ Workflows.
 
   
 
-Returns information about the specified domain including description
+Returns information about the specified domain, including description
 and status.
 
 B<Access Control>
@@ -911,9 +666,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -936,6 +691,9 @@ Workflows.
 Returns information about the specified workflow execution including
 its type and some statistics.
 
+This operation is eventually consistent. The results are best effort
+and may not exactly reflect recent updates and changes.
+
 B<Access Control>
 
 You can use IAM policies to control this action's access to Amazon SWF
@@ -956,9 +714,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1012,9 +770,9 @@ C<swf:workflowType.version>.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1038,6 +796,9 @@ Returns the history of the specified workflow execution. The results
 may be split into multiple pages. To retrieve subsequent pages, make
 the call again using the C<nextPageToken> returned by the initial call.
 
+This operation is eventually consistent. The results are best effort
+and may not exactly reflect recent updates and changes.
+
 B<Access Control>
 
 You can use IAM policies to control this action's access to Amazon SWF
@@ -1058,9 +819,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1107,9 +868,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1134,6 +895,9 @@ that meet the filtering criteria. The results may be split into
 multiple pages. To retrieve subsequent pages, make the call again using
 the nextPageToken returned by the initial call.
 
+This operation is eventually consistent. The results are best effort
+and may not exactly reflect recent updates and changes.
+
 B<Access Control>
 
 You can use IAM policies to control this action's access to Amazon SWF
@@ -1167,9 +931,9 @@ C<swf:typeFilter.version>.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1193,6 +957,9 @@ Returns the list of domains registered in the account. The results may
 be split into multiple pages. To retrieve subsequent pages, make the
 call again using the nextPageToken returned by the initial call.
 
+This operation is eventually consistent. The results are best effort
+and may not exactly reflect recent updates and changes.
+
 B<Access Control>
 
 You can use IAM policies to control this action's access to Amazon SWF
@@ -1202,7 +969,7 @@ resources as follows:
 
 =item * Use a C<Resource> element with the domain name to limit the
 action to only specified domains. The element must be set to
-C<arn:aws:swf::AccountID:domain/*">, where "AccountID" is the account
+C<arn:aws:swf::AccountID:domain/*>, where I<AccountID> is the account
 ID, with no dashes.
 
 =item * Use an C<Action> element to allow or deny permission to call
@@ -1215,9 +982,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1242,6 +1009,9 @@ meet the filtering criteria. The results may be split into multiple
 pages. To retrieve subsequent pages, make the call again using the
 nextPageToken returned by the initial call.
 
+This operation is eventually consistent. The results are best effort
+and may not exactly reflect recent updates and changes.
+
 B<Access Control>
 
 You can use IAM policies to control this action's access to Amazon SWF
@@ -1275,9 +1045,9 @@ C<swf:typeFilter.version>.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1321,9 +1091,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1378,9 +1148,9 @@ action to access only certain task lists.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1445,9 +1215,9 @@ action to access only certain task lists.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1485,10 +1255,16 @@ execution history will contain a C<ActivityTaskTimedOut> event that
 contains the information from the last heartbeat generated by the
 activity worker.
 
-If the C<cancelRequested> flag returns C<true>, a cancellation is being
-attempted. If the worker can cancel the activity, it should respond
-with RespondActivityTaskCanceled. Otherwise, it should ignore the
-cancellation request.
+The C<taskStartToCloseTimeout> of an activity type is the maximum
+duration of an activity task, regardless of the number of
+RecordActivityTaskHeartbeat requests received. The
+C<taskStartToCloseTimeout> is also specified in RegisterActivityType.
+This operation is only useful for long-lived activities to report
+liveliness of the task and to determine if a cancellation is being
+attempted. If the C<cancelRequested> flag returns C<true>, a
+cancellation is being attempted. If the worker can cancel the activity,
+it should respond with RespondActivityTaskCanceled. Otherwise, it
+should ignore the cancellation request.
 
 B<Access Control>
 
@@ -1510,9 +1286,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1570,9 +1346,9 @@ C<swf:defaultTaskList.name>.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1615,9 +1391,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1678,9 +1454,9 @@ C<swf:defaultTaskList.name>.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1706,6 +1482,12 @@ and runId. This logically requests the cancellation of the workflow
 execution as a whole. It is up to the decider to take appropriate
 actions when it receives an execution history with this event.
 
+If the runId is not specified, the C<WorkflowExecutionCancelRequested>
+event is recorded in the history of the current open workflow execution
+with the specified workflowId in the domain. Because this action allows
+the workflow to properly clean up and gracefully close, it should be
+used instead of TerminateWorkflowExecution when possible.
+
 B<Access Control>
 
 You can use IAM policies to control this action's access to Amazon SWF
@@ -1726,9 +1508,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1785,9 +1567,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1844,9 +1626,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1897,9 +1679,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -1963,6 +1745,11 @@ identified by the given domain, workflowId and runId. The event is
 recorded with the specified user defined signalName and input (if
 provided).
 
+If a runId is not specified, then the C<WorkflowExecutionSignaled>
+event is recorded in the history of the current open workflow with the
+matching workflowId in the domain. If the specified workflow execution
+is not open, this method fails with C<UnknownResource>.
+
 B<Access Control>
 
 You can use IAM policies to control this action's access to Amazon SWF
@@ -1983,9 +1770,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -2041,10 +1828,10 @@ element with the appropriate keys.
 =item * C<taskList>: String constraint. The key is
 C<swf:taskList.name>.
 
-=item * C<name>: String constraint. The key is
+=item * C<workflowType.name>: String constraint. The key is
 C<swf:workflowType.name>.
 
-=item * C<version>: String constraint. The key is
+=item * C<workflowType.version>: String constraint. The key is
 C<swf:workflowType.version>.
 
 =back
@@ -2053,9 +1840,9 @@ C<swf:workflowType.version>.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
@@ -2082,7 +1869,12 @@ specified when starting this execution, is applied to any open child
 workflow executions of this workflow execution.
 
 If the identified workflow execution was in progress, it is terminated
-immediately.
+immediately. If a runId is not specified, then the
+C<WorkflowExecutionTerminated> event is recorded in the history of the
+current open workflow with the matching workflowId in the domain. You
+should consider using RequestCancelWorkflowExecution action instead
+because it allows the workflow to gracefully close while
+TerminateWorkflowExecution does not.
 
 B<Access Control>
 
@@ -2104,9 +1896,9 @@ parameters.
 
 If the caller does not have sufficient permissions to invoke the
 action, or the parameter values fall outside the specified constraints,
-the action fails by throwing C<OperationNotPermitted>. For details and
-example IAM policies, see Using IAM to Manage Access to Amazon SWF
-Workflows.
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 

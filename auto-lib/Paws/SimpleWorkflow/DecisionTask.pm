@@ -39,9 +39,13 @@ decider uses this during the processing of the decision task.
 
   
 
-Returns a value if the results are paginated. To get the next page of
-results, repeat the request specifying this token and all other
+If a C<NextPageToken> was returned by a previous call, there are more
+results available. To retrieve the next page of results, make the call
+again using the returned token in C<nextPageToken>. Keep all other
 arguments unchanged.
+
+The configured C<maximumPageSize> determines how many results can be
+returned in a single call.
 
 
 

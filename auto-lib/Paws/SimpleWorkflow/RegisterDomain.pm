@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-Textual description of the domain.
+A text description of the domain.
 
 
 
@@ -54,12 +54,13 @@ Textual description of the domain.
 
   
 
-Name of the domain to register. The name must be unique.
+Name of the domain to register. The name must be unique in the region
+that the domain is registered in.
 
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string "arn".
+contain the literal string quotarnquot.
 
 
 
@@ -74,12 +75,18 @@ contain the literal string "arn".
 
   
 
-Specifies the duration--B<I<in days>>--for which the record (including
-the history) of workflow executions in this domain should be kept by
-the service. After the retention period, the workflow execution will
-not be available in the results of visibility calls. If a duration of
-C<NONE> is specified, the records for workflow executions in this
-domain are not retained at all.
+The duration (in days) that records and histories of workflow
+executions on the domain should be kept by the service. After the
+retention period, the workflow execution is not available in the
+results of visibility calls.
+
+If you pass the value C<NONE> or C<0> (zero), then the workflow
+execution history will not be retained. As soon as the workflow
+execution completes, the execution record and its history are deleted.
+
+The maximum workflow execution retention period is 90 days. For more
+information about Amazon SWF service limits, see: Amazon SWF Service
+Limits in the I<Amazon SWF Developer Guide>.
 
 
 

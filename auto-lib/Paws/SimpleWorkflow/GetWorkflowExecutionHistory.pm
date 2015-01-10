@@ -71,14 +71,13 @@ Specifies the workflow execution for which to return the history.
 
   
 
-Specifies the maximum number of history events returned in one page.
-The next page in the result is identified by the C<NextPageToken>
-returned. By default 100 history events are returned in a page but the
-caller can override this value to a page size I<smaller> than the
-default. You cannot specify a page size larger than 100. Note that the
-number of events may be less than the maxiumum page size, in which
-case, the returned page will have fewer results than the
-maximumPageSize specified.
+The maximum number of results that will be returned per call.
+C<nextPageToken> can be used to obtain futher pages of results. The
+default is 100, which is the maximum allowed page size. You can,
+however, specify a page size I<smaller> than 100.
+
+This is an upper limit only; the actual number of results returned per
+call may be fewer than the specified maximum.
 
 
 
@@ -93,9 +92,13 @@ maximumPageSize specified.
 
   
 
-If a C<NextPageToken> is returned, the result has more than one pages.
-To get the next page, repeat the call and specify the nextPageToken
-with all other arguments unchanged.
+If a C<NextPageToken> was returned by a previous call, there are more
+results available. To retrieve the next page of results, make the call
+again using the returned token in C<nextPageToken>. Keep all other
+arguments unchanged.
+
+The configured C<maximumPageSize> determines how many results can be
+returned in a single call.
 
 
 

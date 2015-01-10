@@ -3,6 +3,7 @@ package Paws::SimpleWorkflow::RegisterActivityType {
   use Moose;
   has defaultTaskHeartbeatTimeout => (is => 'ro', isa => 'Str');
   has defaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList');
+  has defaultTaskPriority => (is => 'ro', isa => 'Str');
   has defaultTaskScheduleToCloseTimeout => (is => 'ro', isa => 'Str');
   has defaultTaskScheduleToStartTimeout => (is => 'ro', isa => 'Str');
   has defaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -55,9 +56,8 @@ returns a result, the activity worker receives an C<UnknownResource>
 fault. In this case, Amazon SWF no longer considers the activity task
 to be valid; the activity worker should clean up the activity task.
 
-The valid values are integers greater than or equal to C<0>. An integer
-value can be used to specify the duration in seconds while C<NONE> can
-be used to specify unlimited duration.
+The duration is specified in seconds; an integer greater than or equal
+to 0. The value "NONE" can be used to specify unlimited duration.
 
 
 
@@ -86,6 +86,27 @@ C<ScheduleActivityTask> Decision.
 
 
 
+=head2 defaultTaskPriority => Str
+
+  
+
+The default task priority to assign to the activity type. If not
+assigned, then "0" will be used. Valid values are integers that range
+from Java's C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
+(2147483647). Higher numbers indicate higher priority.
+
+For more information about setting task priority, see Setting Task
+Priority in the I<Amazon Simple Workflow Developer Guide>.
+
+
+
+
+
+
+
+
+
+
 =head2 defaultTaskScheduleToCloseTimeout => Str
 
   
@@ -94,9 +115,8 @@ If set, specifies the default maximum duration for a task of this
 activity type. This default can be overridden when scheduling an
 activity task using the C<ScheduleActivityTask> Decision.
 
-The valid values are integers greater than or equal to C<0>. An integer
-value can be used to specify the duration in seconds while C<NONE> can
-be used to specify unlimited duration.
+The duration is specified in seconds; an integer greater than or equal
+to 0. The value "NONE" can be used to specify unlimited duration.
 
 
 
@@ -116,9 +136,8 @@ activity type can wait before being assigned to a worker. This default
 can be overridden when scheduling an activity task using the
 C<ScheduleActivityTask> Decision.
 
-The valid values are integers greater than or equal to C<0>. An integer
-value can be used to specify the duration in seconds while C<NONE> can
-be used to specify unlimited duration.
+The duration is specified in seconds; an integer greater than or equal
+to 0. The value "NONE" can be used to specify unlimited duration.
 
 
 
@@ -138,9 +157,8 @@ to process tasks of this activity type. This default can be overridden
 when scheduling an activity task using the C<ScheduleActivityTask>
 Decision.
 
-The valid values are integers greater than or equal to C<0>. An integer
-value can be used to specify the duration in seconds while C<NONE> can
-be used to specify unlimited duration.
+The duration is specified in seconds; an integer greater than or equal
+to 0. The value "NONE" can be used to specify unlimited duration.
 
 
 
@@ -190,7 +208,7 @@ The name of the activity type within the domain.
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string "arn".
+contain the literal string quotarnquot.
 
 
 
@@ -207,10 +225,13 @@ contain the literal string "arn".
 
 The version of the activity type.
 
+The activity type consists of the name and version, the combination of
+which must be unique within the domain.
+
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string "arn".
+contain the literal string quotarnquot.
 
 
 

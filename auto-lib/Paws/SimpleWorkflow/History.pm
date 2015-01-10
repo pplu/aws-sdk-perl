@@ -33,9 +33,13 @@ The list of history events.
 
   
 
-The token for the next page. If set, the history consists of more than
-one page and the next page can be retrieved by repeating the request
-with this token and all other arguments unchanged.
+If a C<NextPageToken> was returned by a previous call, there are more
+results available. To retrieve the next page of results, make the call
+again using the returned token in C<nextPageToken>. Keep all other
+arguments unchanged.
+
+The configured C<maximumPageSize> determines how many results can be
+returned in a single call.
 
 
 

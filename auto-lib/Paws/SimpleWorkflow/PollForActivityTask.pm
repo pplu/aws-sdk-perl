@@ -54,7 +54,7 @@ The name of the domain that contains the task lists being polled.
 
   
 
-Identity of the worker making the request, which is recorded in the
+Identity of the worker making the request, recorded in the
 C<ActivityTaskStarted> event in the workflow history. This enables
 diagnostic tracing when problems arise. The form of this identity is
 user defined.
@@ -77,7 +77,7 @@ Specifies the task list to poll for activity tasks.
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string "arn".
+contain the literal string quotarnquot.
 
 
 

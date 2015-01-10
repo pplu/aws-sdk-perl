@@ -45,7 +45,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 If set, specifies the policy to use for the child workflow executions
 of the workflow execution being terminated. This policy overrides the
 child policy specified for the workflow execution at registration time
-or when starting the execution. The supported child policies are:
+or when starting the execution.
+
+The supported child policies are:
 
 =over
 
@@ -61,6 +63,11 @@ continue to run.
 
 =back
 
+A child policy for this workflow execution must be specified either as
+a default for the workflow type or through this parameter. If neither
+this parameter is set nor a default child policy was specified at
+registration time then a fault will be returned.
+
 
 
 
@@ -74,7 +81,7 @@ continue to run.
 
   
 
-Optional details for terminating the workflow execution.
+I<Optional.> Details for terminating the workflow execution.
 
 
 
@@ -104,7 +111,8 @@ The domain of the workflow execution to terminate.
 
   
 
-An optional descriptive reason for terminating the workflow execution.
+I<Optional.> A descriptive reason for terminating the workflow
+execution.
 
 
 

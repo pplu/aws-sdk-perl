@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::RegisterWorkflowType {
   has defaultChildPolicy => (is => 'ro', isa => 'Str');
   has defaultExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has defaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList');
+  has defaultTaskPriority => (is => 'ro', isa => 'Str');
   has defaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has description => (is => 'ro', isa => 'Str');
   has domain => (is => 'ro', isa => 'Str', required => 1);
@@ -49,8 +50,9 @@ executions when a workflow execution of this type is terminated, by
 calling the TerminateWorkflowExecution action explicitly or due to an
 expired timeout. This default can be overridden when starting a
 workflow execution using the StartWorkflowExecution action or the
-C<StartChildWorkflowExecution> Decision. The supported child policies
-are:
+C<StartChildWorkflowExecution> Decision.
+
+The supported child policies are:
 
 =over
 
@@ -84,9 +86,9 @@ workflow type. You can override this default when starting an execution
 through the StartWorkflowExecution Action or
 C<StartChildWorkflowExecution> Decision.
 
-The duration is specified in seconds. The valid values are integers
-greater than or equal to 0. Unlike some of the other timeout parameters
-in Amazon SWF, you cannot specify a value of "NONE" for
+The duration is specified in seconds; an integer greater than or equal
+to 0. Unlike some of the other timeout parameters in Amazon SWF, you
+cannot specify a value of "NONE" for
 C<defaultExecutionStartToCloseTimeout>; there is a one-year max limit
 on the time that a workflow execution can run. Exceeding this limit
 will always cause the workflow execution to time out.
@@ -119,6 +121,27 @@ Decision.
 
 
 
+=head2 defaultTaskPriority => Str
+
+  
+
+The default task priority to assign to the workflow type. If not
+assigned, then "0" will be used. Valid values are integers that range
+from Java's C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
+(2147483647). Higher numbers indicate higher priority.
+
+For more information about setting task priority, see Setting Task
+Priority in the I<Amazon Simple Workflow Developer Guide>.
+
+
+
+
+
+
+
+
+
+
 =head2 defaultTaskStartToCloseTimeout => Str
 
   
@@ -128,9 +151,8 @@ this workflow type. This default can be overridden when starting a
 workflow execution using the StartWorkflowExecution action or the
 C<StartChildWorkflowExecution> Decision.
 
-The valid values are integers greater than or equal to C<0>. An integer
-value can be used to specify the duration in seconds while C<NONE> can
-be used to specify unlimited duration.
+The duration is specified in seconds; an integer greater than or equal
+to 0. The value "NONE" can be used to specify unlimited duration.
 
 
 
@@ -180,7 +202,7 @@ The name of the workflow type.
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string "arn".
+contain the literal string quotarnquot.
 
 
 
@@ -197,10 +219,14 @@ contain the literal string "arn".
 
 The version of the workflow type.
 
+The workflow type consists of the name and version, the combination of
+which must be unique within the domain. To get a list of all currently
+registered workflow types, use the ListWorkflowTypes action.
+
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string "arn".
+contain the literal string quotarnquot.
 
 
 
