@@ -164,6 +164,10 @@ package Paws::StorageGateway {
     my $self = shift;
     return $self->do_call('Paws::StorageGateway::ListVolumes', @_);
   }
+  sub ResetCache {
+    my $self = shift;
+    return $self->do_call('Paws::StorageGateway::ResetCache', @_);
+  }
   sub RetrieveTapeArchive {
     my $self = shift;
     return $self->do_call('Paws::StorageGateway::RetrieveTapeArchive', @_);
@@ -203,6 +207,10 @@ package Paws::StorageGateway {
   sub UpdateSnapshotSchedule {
     my $self = shift;
     return $self->do_call('Paws::StorageGateway::UpdateSnapshotSchedule', @_);
+  }
+  sub UpdateVTLDeviceType {
+    my $self = shift;
+    return $self->do_call('Paws::StorageGateway::UpdateVTLDeviceType', @_);
   }
 }
 1;
@@ -288,6 +296,8 @@ a name for your gateway. The activation process also associates your
 gateway with your account; for more information, see
 UpdateGatewayInformation.
 
+You must turn on the gateway VM before you can activate your gateway.
+
 
 
 
@@ -363,6 +373,10 @@ storage for a gateway. This operation is supported only for the
 gateway-stored volume architecture. This operation is deprecated method
 in cached-volumes API version (20120630). Use AddUploadBuffer instead.
 
+Working storage is also referred to as upload buffer. You can also use
+the AddUploadBuffer operation to add upload buffer to a stored-volume
+gateway.
+
 In the request, you specify the gateway Amazon Resource Name (ARN) to
 which you want to add working storage, and one or more disk IDs that
 you want to configure as working storage.
@@ -432,6 +446,10 @@ This operation creates a cached volume on a specified cached gateway.
 This operation is supported only for the gateway-cached volume
 architecture.
 
+Cache storage must be allocated to the gateway before you can create a
+cached volume. Use the AddCache operation to add cache storage to a
+gateway.
+
 In the request, you must specify the gateway, size of the volume in
 bytes, the iSCSI target name, an IP address on which to expose the
 target, and a unique client token. In response, AWS Storage Gateway
@@ -475,6 +493,9 @@ Console. In response, AWS Storage Gateway returns you a snapshot ID.
 You can use this snapshot ID to check the snapshot progress or later
 use it when you want to create a volume from a snapshot.
 
+To list or delete a snapshot, you must use the Amazon EC2 API. For more
+information, .
+
 
 
 
@@ -510,6 +531,9 @@ appear in the AWS Storage Gateway console. In response, AWS Storage
 Gateway returns you a snapshot ID. You can use this snapshot ID to
 check the snapshot progress or later use it when you want to create a
 volume from a snapshot.
+
+To list or delete a snapshot, you must use the Amazon EC2 API. For more
+information, in I<Amazon Elastic Compute Cloud API Reference>.
 
 
 
@@ -563,6 +587,10 @@ initiators can use to connect to the volume target.
 
 Creates one or more virtual tapes. You write data to the virtual tapes
 and then archive the tapes.
+
+Cache storage must be allocated to the gateway before you can create
+virtual tapes. Use the AddCache operation to add cache storage to a
+gateway.
 
 
 
@@ -670,6 +698,9 @@ basis. This API enables you to delete a snapshot schedule for a volume.
 For more information, see Working with Snapshots. In the
 C<DeleteSnapshotSchedule> request, you identify the volume by providing
 its Amazon Resource Name (ARN).
+
+To list or delete a snapshot, you must use the Amazon EC2 API. in
+I<Amazon Elastic Compute Cloud API Reference>.
 
 
 
@@ -1081,6 +1112,10 @@ gateway. This operation is supported only for the gateway-stored volume
 architecture. This operation is deprecated in cached-volumes API
 version (20120630). Use DescribeUploadBuffer instead.
 
+Working storage is also referred to as upload buffer. You can also use
+the DescribeUploadBuffer operation to add upload buffer to a
+stored-volume gateway.
+
 The response includes disk IDs that are configured as working storage,
 and it includes the amount of working storage allocated and used.
 
@@ -1160,12 +1195,17 @@ the next page of gateways.
 
   
 
-This operation returns a list of the local disks of a gateway. To
-specify which gateway to describe you use the Amazon Resource Name
-(ARN) of the gateway in the body of the request.
+This operation returns a list of the gateway's local disks. To specify
+which gateway to describe, you use the Amazon Resource Name (ARN) of
+the gateway in the body of the request.
 
-The request returns all disks, specifying which are configured as
-working storage, stored volume or not configured at all.
+The request returns a list of all disks, specifying which are
+configured as working storage, cache storage, or stored volume or not
+configured at all. The response includes a C<DiskStatus> field. This
+field can have a value of present (the disk is availble to use),
+missing (the disk is no longer connected to the gateway), or mismatch
+(the disk node is occupied by a disk that has incorrect metadata or the
+disk content is corrupted).
 
 
 
@@ -1234,6 +1274,29 @@ subsequent request to retrieve the next set of volumes.
 
 
 
+=head2 ResetCache()
+
+  Arguments described in: L<Paws::StorageGateway::ResetCache>
+
+  Returns: L<Paws::StorageGateway::ResetCacheOutput>
+
+  
+
+This operation resets all cache disks and makes the disks available for
+reconfiguration as cache storage. When a cache is reset, the gateway
+loses its cache storage. At this point you can reconfigure the disks as
+cache disks.
+
+
+
+
+
+
+
+
+
+
+
 =head2 RetrieveTapeArchive()
 
   Arguments described in: L<Paws::StorageGateway::RetrieveTapeArchive>
@@ -1275,6 +1338,10 @@ A recovery point is a point in time view of a virtual tape at which all
 the data on the tape is consistent. If your gateway crashes, virtual
 tapes that have recovery points can be recovered to a new gateway.
 
+The virtual tape can be retrieved to only one gateway. The retrieved
+tape is read-only. The virtual tape can be retrieved to only a
+gateway-VTL. There is no charge for retrieving recovery points.
+
 
 
 
@@ -1300,11 +1367,19 @@ your request.
 The operation shuts down the gateway service component running in the
 storage gateway's virtual machine (VM) and not the VM.
 
+If you want to shut down the VM, it is recommended that you first shut
+down the gateway component in the VM to avoid unpredictable conditions.
+
 After the gateway is shutdown, you cannot call any other API except
 StartGateway, DescribeGatewayInformation, and ListGateways. For more
 information, see ActivateGateway. Your applications cannot read from or
 write to the gateway's storage volumes, and there are no snapshots
 taken.
+
+When you make a shutdown request, you will get a C<200 OK> success
+response immediately. However, it might take some time for the gateway
+to shut down. You can call the DescribeGatewayInformation API to check
+the status. For more information, see ActivateGateway.
 
 If do not intend to use the gateway again, you must delete the gateway
 (using DeleteGateway) to no longer pay software charges associated with
@@ -1332,6 +1407,12 @@ This operation starts a gateway that you previously shut down (see
 ShutdownGateway). After the gateway starts, you can then make other API
 calls, your applications can read from or write to the gateway's
 storage volumes and you will be able to take snapshot backups.
+
+When you make a request, you will get a 200 OK success response
+immediately. However, it might take some time for the gateway to be
+ready. You should call DescribeGatewayInformation and check the status
+before making any additional API calls. For more information, see
+ActivateGateway.
 
 To specify which gateway to start, use the Amazon Resource Name (ARN)
 of the gateway in your request.
@@ -1437,12 +1518,15 @@ the Amazon Resource Name (ARN) of the gateway in your request.
 This operation updates the gateway virtual machine (VM) software. The
 request immediately triggers the software update.
 
-A software update forces a system restart of your gateway. You can
-minimize the chance of any disruption to your applications by
-increasing your iSCSI Initiators' timeouts. For more information about
-increasing iSCSI Initiator timeouts for Windows and Linux, see
-Customizing Your Windows iSCSI Settings and Customizing Your Linux
-iSCSI Settings, respectively.
+When you make this request, you get a C<200 OK> success response
+immediately. However, it might take some time for the update to
+complete. You can call DescribeGatewayInformation to verify the gateway
+is in the C<STATE_RUNNING> state. A software update forces a system
+restart of your gateway. You can minimize the chance of any disruption
+to your applications by increasing your iSCSI Initiators' timeouts. For
+more information about increasing iSCSI Initiator timeouts for Windows
+and Linux, see Customizing Your Windows iSCSI Settings and Customizing
+Your Linux iSCSI Settings, respectively.
 
 
 
@@ -1495,6 +1579,29 @@ In the request you must identify the gateway volume whose snapshot
 schedule you want to update, and the schedule information, including
 when you want the snapshot to begin on a day and the frequency (in
 hours) of snapshots.
+
+
+
+
+
+
+
+
+
+
+
+=head2 UpdateVTLDeviceType()
+
+  Arguments described in: L<Paws::StorageGateway::UpdateVTLDeviceType>
+
+  Returns: L<Paws::StorageGateway::UpdateVTLDeviceTypeOutput>
+
+  
+
+This operation updates the type of medium changer in a gateway-VTL.
+When you activate a gateway-VTL, you select a medium changer type for
+the gateway-VTL. This operation enables you to select a different type
+of medium changer after a gateway-VTL is activated.
 
 
 

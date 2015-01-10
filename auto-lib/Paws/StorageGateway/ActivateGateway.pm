@@ -130,7 +130,7 @@ cannot be changed after activation. The default value is C<STORED>.
 The value that indicates the type of medium changer to use for
 gateway-VTL. This field is optional.
 
-I<Valid Values>: "STK-L700"
+I<Valid Values>: "STK-L700", "AWS-Gateway-VTL"
 
 
 

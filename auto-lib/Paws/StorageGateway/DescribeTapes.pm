@@ -47,6 +47,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Specifies that the number of virtual tapes described be limited to the
 specified number.
 
+Amazon Web Services may impose its own limit, if this field is not set.
+
 
 
 

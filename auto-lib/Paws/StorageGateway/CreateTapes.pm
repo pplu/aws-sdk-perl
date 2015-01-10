@@ -45,6 +45,9 @@ A unique identifier that you use to retry a request. If you retry a
 request, use the same C<ClientToken> you specified in the initial
 request.
 
+Using the same C<ClientToken> prevents creating the tape multiple
+times.
+
 
 
 
@@ -93,6 +96,9 @@ The number of virtual tapes you want to create.
 A prefix you append to the barcode of the virtual tape you are
 creating. This makes a barcode unique.
 
+The prefix must be 1 to 4 characters in length and must be upper-case
+letters A-Z.
+
 
 
 
@@ -107,6 +113,8 @@ creating. This makes a barcode unique.
   
 
 The size, in bytes, of the virtual tapes you want to create.
+
+The size must be gigabyte (1024*1024*1024 byte) aligned.
 
 
 
