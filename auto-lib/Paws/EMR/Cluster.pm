@@ -5,7 +5,9 @@ package Paws::EMR::Cluster {
   has Ec2InstanceAttributes => (is => 'ro', isa => 'Paws::EMR::Ec2InstanceAttributes');
   has Id => (is => 'ro', isa => 'Str');
   has LogUri => (is => 'ro', isa => 'Str');
+  has MasterPublicDnsName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has NormalizedInstanceHours => (is => 'ro', isa => 'Int');
   has RequestedAmiVersion => (is => 'ro', isa => 'Str');
   has RunningAmiVersion => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');

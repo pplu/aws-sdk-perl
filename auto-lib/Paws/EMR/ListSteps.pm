@@ -3,6 +3,7 @@ package Paws::EMR::ListSteps {
   use Moose;
   has ClusterId => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
+  has StepIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has StepStates => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
@@ -56,6 +57,21 @@ The identifier of the cluster for which to list the steps.
 
 The pagination token that indicates the next set of results to
 retrieve.
+
+
+
+
+
+
+
+
+
+
+=head2 StepIds => ArrayRef[Str]
+
+  
+
+The filter to limit the step list based on the identifier of the steps.
 
 
 

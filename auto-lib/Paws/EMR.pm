@@ -104,9 +104,6 @@ Paws::EMR - Perl Interface to AWS Amazon Elastic MapReduce
 
 
 
-This is the I<Amazon Elastic MapReduce API Reference>. This guide
-provides descriptions and samples of the Amazon Elastic MapReduce APIs.
-
 Amazon Elastic MapReduce (Amazon EMR) is a web service that makes it
 easy to process large amounts of data efficiently. Amazon EMR uses
 Hadoop processing combined with several AWS products to do tasks such
@@ -577,10 +574,11 @@ on which the job flow is running are stopped. Any log files not already
 saved are uploaded to Amazon S3 if a LogUri was specified when the job
 flow was created.
 
-The call to TerminateJobFlows is asynchronous. Depending on the
-configuration of the job flow, it may take up to 5-20 minutes for the
-job flow to completely terminate and release allocated resources, such
-as Amazon EC2 instances.
+The maximum number of JobFlows allowed is 10. The call to
+TerminateJobFlows is asynchronous. Depending on the configuration of
+the job flow, it may take up to 5-20 minutes for the job flow to
+completely terminate and release allocated resources, such as Amazon
+EC2 instances.
 
 
 
