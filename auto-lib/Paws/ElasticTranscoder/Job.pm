@@ -9,5 +9,6 @@ package Paws::ElasticTranscoder::Job {
   has PipelineId => (is => 'ro', isa => 'Str');
   has Playlists => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Playlist]');
   has Status => (is => 'ro', isa => 'Str');
+  has UserMetadata => (is => 'ro', isa => 'Paws::ElasticTranscoder::UserMetadata');
 }
 1;

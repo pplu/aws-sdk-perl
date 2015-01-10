@@ -7,6 +7,7 @@ package Paws::ElasticTranscoder::CreateJob {
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::CreateJobOutput]');
   has PipelineId => (is => 'ro', isa => 'Str', required => 1);
   has Playlists => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::CreateJobPlaylist]');
+  has UserMetadata => (is => 'ro', isa => 'Paws::ElasticTranscoder::UserMetadata');
 
   use MooseX::ClassAttribute;
 
@@ -121,6 +122,25 @@ contains information about the master playlists that you want Elastic
 Transcoder to create.
 
 The maximum number of master playlists in a job is 30.
+
+
+
+
+
+
+
+
+
+
+=head2 UserMetadata => Paws::ElasticTranscoder::UserMetadata
+
+  
+
+User-defined metadata that you want to associate with an Elastic
+Transcoder job. You specify metadata in C<key/value> pairs, and you can
+add up to 10 C<key/value> pairs per job. Elastic Transcoder does not
+guarantee that C<key/value> pairs will be returned in the same order in
+which you specify them.
 
 
 
