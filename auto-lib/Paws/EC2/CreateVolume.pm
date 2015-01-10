@@ -65,7 +65,14 @@ currently available to you.
 
   
 
-Specifies whether the volume should be encrypted.
+Specifies whether the volume should be encrypted. Encrypted Amazon EBS
+volumes may only be attached to instances that support Amazon EBS
+encryption. Volumes that are created from encrypted snapshots are
+automatically encrypted. There is no way to create an encrypted volume
+from an unencrypted snapshot or vice versa. If your AMI uses encrypted
+volumes, you can only launch it on supported instance types. For more
+information, see Amazon EBS Encryption in the I<Amazon Elastic Compute
+Cloud User Guide>.
 
 
 
@@ -96,13 +103,13 @@ operations per second (IOPS) to provision for the volume.
 
   
 
-The full ARN of the AWS Key Management Service (KMS) Customer Master
-Key (CMK) to use when creating the encrypted volume. This parameter is
-only required if you want to use a non-default CMK; if this parameter
-is not specified, the default CMK is used. The ARN contains the
-C<arn:aws:kms> namespace, followed by the region of the CMK, the AWS
-account ID of the CMK owner, the C<key> namespace, and then the CMK ID.
-For example,
+The full ARN of the AWS Key Management Service (KMS) master key to use
+when creating the encrypted volume. This parameter is only required if
+you want to use a non-default master key; if this parameter is not
+specified, the default master key is used. The ARN contains the
+C<arn:aws:kms> namespace, followed by the region of the master key, the
+AWS account ID of the master key owner, the C<key> namespace, and then
+the master key ID. For example,
 arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd56ef>.
 
 

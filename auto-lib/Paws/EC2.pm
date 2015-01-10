@@ -39,6 +39,10 @@ package Paws::EC2 {
     my $self = shift;
     return $self->do_call('Paws::EC2::AssociateRouteTable', @_);
   }
+  sub AttachClassicLinkVpc {
+    my $self = shift;
+    return $self->do_call('Paws::EC2::AttachClassicLinkVpc', @_);
+  }
   sub AttachInternetGateway {
     my $self = shift;
     return $self->do_call('Paws::EC2::AttachInternetGateway', @_);
@@ -299,6 +303,10 @@ package Paws::EC2 {
     my $self = shift;
     return $self->do_call('Paws::EC2::DescribeBundleTasks', @_);
   }
+  sub DescribeClassicLinkInstances {
+    my $self = shift;
+    return $self->do_call('Paws::EC2::DescribeClassicLinkInstances', @_);
+  }
   sub DescribeConversionTasks {
     my $self = shift;
     return $self->do_call('Paws::EC2::DescribeConversionTasks', @_);
@@ -431,6 +439,10 @@ package Paws::EC2 {
     my $self = shift;
     return $self->do_call('Paws::EC2::DescribeVpcAttribute', @_);
   }
+  sub DescribeVpcClassicLink {
+    my $self = shift;
+    return $self->do_call('Paws::EC2::DescribeVpcClassicLink', @_);
+  }
   sub DescribeVpcPeeringConnections {
     my $self = shift;
     return $self->do_call('Paws::EC2::DescribeVpcPeeringConnections', @_);
@@ -446,6 +458,10 @@ package Paws::EC2 {
   sub DescribeVpnGateways {
     my $self = shift;
     return $self->do_call('Paws::EC2::DescribeVpnGateways', @_);
+  }
+  sub DetachClassicLinkVpc {
+    my $self = shift;
+    return $self->do_call('Paws::EC2::DetachClassicLinkVpc', @_);
   }
   sub DetachInternetGateway {
     my $self = shift;
@@ -467,6 +483,10 @@ package Paws::EC2 {
     my $self = shift;
     return $self->do_call('Paws::EC2::DisableVgwRoutePropagation', @_);
   }
+  sub DisableVpcClassicLink {
+    my $self = shift;
+    return $self->do_call('Paws::EC2::DisableVpcClassicLink', @_);
+  }
   sub DisassociateAddress {
     my $self = shift;
     return $self->do_call('Paws::EC2::DisassociateAddress', @_);
@@ -482,6 +502,10 @@ package Paws::EC2 {
   sub EnableVolumeIO {
     my $self = shift;
     return $self->do_call('Paws::EC2::EnableVolumeIO', @_);
+  }
+  sub EnableVpcClassicLink {
+    my $self = shift;
+    return $self->do_call('Paws::EC2::EnableVpcClassicLink', @_);
   }
   sub GetConsoleOutput {
     my $self = shift;
@@ -844,6 +868,38 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 
 
+=head2 AttachClassicLinkVpc()
+
+  Arguments described in: L<Paws::EC2::AttachClassicLinkVpc>
+
+  Returns: L<Paws::EC2::AttachClassicLinkVpcResult>
+
+  
+
+Links an EC2-Classic instance to a ClassicLink-enabled VPC through one
+or more of the VPC's security groups. You cannot link an EC2-Classic
+instance to more than one VPC at a time. You can only link an instance
+that's in the C<running> state. An instance is automatically unlinked
+from a VPC when it's stopped - you can link it to the VPC again when
+you restart it.
+
+After you've linked an instance, you cannot change the VPC security
+groups that are associated with it. To change the security groups, you
+must first unlink the instance, and then link it again.
+
+Linking your instance to a VPC is sometimes referred to as I<attaching>
+your instance.
+
+
+
+
+
+
+
+
+
+
+
 =head2 AttachInternetGateway()
 
   Arguments described in: L<Paws::EC2::AttachInternetGateway>
@@ -1059,7 +1115,7 @@ Bundles an Amazon instance store-backed Windows instance.
 During bundling, only the root device volume (C:\) is bundled. Data on
 other instance store volumes is not preserved.
 
-This procedure is not applicable for Linux/Unix instances or Windows
+This action is not applicable for Linux/Unix instances or Windows
 instances that are backed by Amazon EBS.
 
 For more information, see Creating an Instance Store-Backed Windows
@@ -1232,9 +1288,9 @@ instance is eligible for support.
   
 
 Initiates the copy of an AMI from the specified source region to the
-region in which the request was made. You specify the destination
-region by using its endpoint when making the request. AMIs that use
-encrypted Amazon EBS snapshots cannot be copied with this method.
+current region. You specify the destination region by using its
+endpoint when making the request. AMIs that use encrypted Amazon EBS
+snapshots cannot be copied with this method.
 
 For more information, see Copying AMIs in the I<Amazon Elastic Compute
 Cloud User Guide>.
@@ -1265,6 +1321,9 @@ regional endpoint that you send the HTTP request to.
 
 Copies of encrypted Amazon EBS snapshots remain encrypted. Copies of
 unencrypted snapshots remain unencrypted.
+
+Copying snapshots that were encrypted with non-default AWS Key
+Management Service (KMS) master keys is not supported at this time.
 
 For more information, see Copying an Amazon EBS Snapshot in the
 I<Amazon Elastic Compute Cloud User Guide>.
@@ -1344,8 +1403,12 @@ commas.
 C<us-east-1>, specify C<ec2.internal>. If you're using
 AmazonProvidedDNS in another region, specify C<region.compute.internal>
 (for example, C<ap-northeast-1.compute.internal>). Otherwise, specify a
-domain name (for example, C<MyCompany.com>). If specifying more than
-one domain name, separate them with spaces.
+domain name (for example, C<MyCompany.com>). B<Important>: Some Linux
+operating systems accept multiple domain names separated by spaces.
+However, Windows and other Linux operating systems treat the value as a
+single domain, which results in unexpected behavior. If your DHCP
+options set is associated with a VPC that has instances with multiple
+operating systems, specify only one domain name.
 
 =item * C<ntp-servers> - The IP addresses of up to four Network Time
 Protocol (NTP) servers.
@@ -1882,10 +1945,10 @@ I<Amazon Virtual Private Cloud User Guide>.
 
   
 
-Adds or overwrites one or more tags for the specified EC2 resource or
-resources. Each resource can have a maximum of 10 tags. Each tag
-consists of a key and optional value. Tag keys must be unique per
-resource.
+Adds or overwrites one or more tags for the specified Amazon EC2
+resource or resources. Each resource can have a maximum of 10 tags.
+Each tag consists of a key and optional value. Tag keys must be unique
+per resource.
 
 For more information about tags, see Tagging Your Resources in the
 I<Amazon Elastic Compute Cloud User Guide>.
@@ -1909,7 +1972,9 @@ I<Amazon Elastic Compute Cloud User Guide>.
   
 
 Creates an Amazon EBS volume that can be attached to an instance in the
-same Availability Zone. The volume is created in the specified region.
+same Availability Zone. The volume is created in the regional endpoint
+that you send the HTTP request to. For more information see Regions and
+Endpoints.
 
 You can create a new empty volume or restore a volume from an Amazon
 EBS snapshot. Any AWS Marketplace product codes from the snapshot are
@@ -2607,7 +2672,41 @@ This command does not delete the AMI.
 
   
 
-Describes the specified attribute of your AWS account.
+Describes attributes of your AWS account. The following are the
+supported account attributes:
+
+=over
+
+=item *
+
+C<supported-platforms>: Indicates whether your account can launch
+instances into EC2-Classic and EC2-VPC, or only into EC2-VPC.
+
+=item *
+
+C<default-vpc>: The ID of the default VPC for your account, or C<none>.
+
+=item *
+
+C<max-instances>: The maximum number of On-Demand instances that you
+can run.
+
+=item *
+
+C<vpc-max-security-groups-per-interface>: The maximum number of
+security groups that you can assign to a network interface.
+
+=item *
+
+C<max-elastic-ips>: The maximum number of Elastic IP addresses that you
+can allocate for use with EC2-Classic.
+
+=item *
+
+C<vpc-max-elastic-ips>: The maximum number of Elastic IP addresses that
+you can allocate for use with EC2-VPC.
+
+=back
 
 
 
@@ -2684,6 +2783,29 @@ Completed bundle tasks are listed for only a limited time. If your
 bundle task is no longer in the list, you can still register an AMI
 from it. Just use C<RegisterImage> with the Amazon S3 bucket name and
 image manifest name you provided to the bundle task.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeClassicLinkInstances()
+
+  Arguments described in: L<Paws::EC2::DescribeClassicLinkInstances>
+
+  Returns: L<Paws::EC2::DescribeClassicLinkInstancesResult>
+
+  
+
+Describes one or more of your linked EC2-Classic instances. This
+request only returns information about EC2-Classic instances linked to
+a VPC through ClassicLink; you cannot use this request to return
+information about other instances.
 
 
 
@@ -3671,6 +3793,26 @@ only one attribute at a time.
 
 
 
+=head2 DescribeVpcClassicLink()
+
+  Arguments described in: L<Paws::EC2::DescribeVpcClassicLink>
+
+  Returns: L<Paws::EC2::DescribeVpcClassicLinkResult>
+
+  
+
+Describes the ClassicLink status of one or more VPCs.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DescribeVpcPeeringConnections()
 
   Arguments described in: L<Paws::EC2::DescribeVpcPeeringConnections>
@@ -3748,6 +3890,29 @@ Describes one or more of your virtual private gateways.
 For more information about virtual private gateways, see Adding an
 IPsec Hardware VPN to Your VPC in the I<Amazon Virtual Private Cloud
 User Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DetachClassicLinkVpc()
+
+  Arguments described in: L<Paws::EC2::DetachClassicLinkVpc>
+
+  Returns: L<Paws::EC2::DetachClassicLinkVpcResult>
+
+  
+
+Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the
+instance has been unlinked, the VPC security groups are no longer
+associated with it. An instance is automatically unlinked from a VPC
+when it's stopped.
 
 
 
@@ -3884,6 +4049,27 @@ specified route table of a VPC.
 
 
 
+=head2 DisableVpcClassicLink()
+
+  Arguments described in: L<Paws::EC2::DisableVpcClassicLink>
+
+  Returns: L<Paws::EC2::DisableVpcClassicLinkResult>
+
+  
+
+Disables ClassicLink for a VPC. You cannot disable ClassicLink for a
+VPC that has EC2-Classic instances linked to it.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DisassociateAddress()
 
   Arguments described in: L<Paws::EC2::DisassociateAddress>
@@ -3968,6 +4154,33 @@ specified route table of a VPC.
 
 Enables I/O operations for a volume that had I/O operations disabled
 because the data on the volume was potentially inconsistent.
+
+
+
+
+
+
+
+
+
+
+
+=head2 EnableVpcClassicLink()
+
+  Arguments described in: L<Paws::EC2::EnableVpcClassicLink>
+
+  Returns: L<Paws::EC2::EnableVpcClassicLinkResult>
+
+  
+
+Enables a VPC for ClassicLink. You can then link EC2-Classic instances
+to your ClassicLink-enabled VPC to allow communication over private IP
+addresses. You cannot enable your VPC for ClassicLink if any of your
+VPC's route tables have existing routes for address ranges within the
+C<10.0.0.0/8> IP address range, excluding local routes for VPCs in the
+C<10.0.0.0/16> and C<10.1.0.0/16> IP address ranges. For more
+information, see ClassicLink in the Amazon Elastic Compute Cloud User
+Guide.
 
 
 
@@ -4672,6 +4885,8 @@ with AWS Marketplace product codes.
   
 
 Resets an attribute of an AMI to its default value.
+
+The productCodes attribute can't be reset.
 
 
 

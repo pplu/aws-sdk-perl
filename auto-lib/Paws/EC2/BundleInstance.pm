@@ -45,6 +45,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The ID of the instance to bundle.
 
+Type: String
+
+Default: None
+
+Required: Yes
+
 
 
 

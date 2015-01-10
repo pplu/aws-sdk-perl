@@ -10,6 +10,6 @@ package Paws::EC2::ImportInstanceLaunchSpecification {
   has Placement => (is => 'ro', isa => 'Paws::EC2::Placement', traits => ['Unwrapped'], xmlname => 'placement');
   has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateIpAddress');
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
-  has UserData => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'userData');
+  has UserData => (is => 'ro', isa => 'Paws::EC2::UserData', traits => ['Unwrapped'], xmlname => 'userData');
 }
 1;

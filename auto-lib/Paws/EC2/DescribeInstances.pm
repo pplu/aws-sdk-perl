@@ -95,14 +95,13 @@ C<dns-name> - The public DNS name of the instance.
 
 =item *
 
-C<group-id> - The ID of the security group for the instance. If the
-instance is in EC2-Classic or a default VPC, you can use C<group-name>
-instead.
+C<group-id> - The ID of the security group for the instance.
+EC2-Classic only.
 
 =item *
 
-C<group-name> - The name of the security group for the instance. If the
-instance is in a nondefault VPC, you must use C<group-id> instead.
+C<group-name> - The name of the security group for the instance.
+EC2-Classic only.
 
 =item *
 
@@ -147,14 +146,11 @@ C<instance-type> - The type of instance (for example, C<m1.small>).
 =item *
 
 C<instance.group-id> - The ID of the security group for the instance.
-If the instance is in EC2-Classic or a default VPC, you can use
-C<instance.group-name> instead.
 
 =item *
 
 C<instance.group-name> - The name of the security group for the
-instance. If the instance is in a nondefault VPC, you must use
-C<instance.group-id> instead.
+instance.
 
 =item *
 
