@@ -16,6 +16,7 @@ my $namespaces = {
   autoscaling => 'AutoScaling',
   cloudformation => 'CloudFormation',
   cloudfront => 'CloudFront',
+  cloudhsm => 'CloudHSM',
   cloudsearch => 'CloudSearch',
   cloudsearchdomain => 'CloudSearchDomain',
   cloudtrail => 'CloudTrail',
@@ -32,6 +33,7 @@ my $namespaces = {
   elasticbeanstalk => 'ElasticBeanstalk',
   elastictranscoder => 'ElasticTranscoder',
   elb => 'ELB',
+  ecs => 'ECS',
   emr => 'EMR',
   glacier => 'Glacier',
   iam => 'IAM',
@@ -68,7 +70,7 @@ if (not @files) {
   my @dirs = glob('botocore/botocore/data/aws/*');
 
   foreach my $class_dir (@dirs) {
-    my @class_defs = grep { -f $_ } glob("$class_dir/*.api.json");
+    my @class_defs = grep { -f $_ } glob("$class_dir/*.normal.json");
     next if (not @class_defs);
     @class_defs = sort @class_defs;
     my $class_version = pop @class_defs;
