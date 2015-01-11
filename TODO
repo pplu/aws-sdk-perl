@@ -2,6 +2,7 @@
 - Paginated results and iterators
 - Waiters (methods that wait for an object to be in a determined state)
 - Retrying
+- Handle StrToObj Maps in JSON, REST*, EC2 (if appliable) API Builders
 - Exception handling
   - Manage 'return' value from
     - ec2-assign-private-ip-addresses.xml
