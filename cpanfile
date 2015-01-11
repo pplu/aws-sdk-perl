@@ -19,6 +19,9 @@ on 'build' => sub {
   requires 'Template';
   requires 'File::Slurp';
   requires 'Pod::HTML2Pod';
+  requires 'Dist::Zilla';
+  requires 'Dist::Zilla::Plugin::Prereqs::FromCPANfile';
+  requires 'Dist::Zilla::PluginBundle::Git';
 };
 on 'test' => sub {
   requires 'Data::Path';
