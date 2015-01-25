@@ -237,7 +237,9 @@ Default: Describes all images available to you.
 
 Filters the images by the owner. Specify an AWS account ID, C<amazon>
 (owner is Amazon), C<aws-marketplace> (owner is AWS Marketplace),
-C<self> (owner is the sender of the request), or C<all> (all owners).
+C<self> (owner is the sender of the request). Omitting this option
+returns all images for which you have launch permissions, regardless of
+ownership.
 
 
 

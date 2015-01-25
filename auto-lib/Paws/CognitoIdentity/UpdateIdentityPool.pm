@@ -102,6 +102,17 @@ A string that you provide.
 
   
 
+A list of OpendID Connect provider ARNs.
+
+
+
+
+
+
+
+
+
+
 =head2 SupportedLoginProviders => Paws::CognitoIdentity::IdentityProviders
 
   

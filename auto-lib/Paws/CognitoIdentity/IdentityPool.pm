@@ -78,6 +78,17 @@ A string that you provide.
 =head2 OpenIdConnectProviderARNs => ArrayRef[Str]
 
   
+
+A list of OpendID Connect provider ARNs.
+
+
+
+
+
+
+
+
+
 =head2 SupportedLoginProviders => Paws::CognitoIdentity::IdentityProviders
 
   

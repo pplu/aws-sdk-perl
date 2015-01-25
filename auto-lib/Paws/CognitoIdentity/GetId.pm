@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdentity::GetId {
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', required => 1);
+  has AccountId => (is => 'ro', isa => 'Str');
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
   has Logins => (is => 'ro', isa => 'Paws::CognitoIdentity::LoginsMap');
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> AccountId => Str
+=head2 AccountId => Str
 
   
 

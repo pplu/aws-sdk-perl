@@ -19,7 +19,7 @@ Paws::EC2::RequestSpotInstancesResult
 
   
 
-Information about the Spot Instance request.
+One or more Spot Instance requests.
 
 
 

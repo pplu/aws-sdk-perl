@@ -729,7 +729,7 @@ Acquires an Elastic IP address.
 
 An Elastic IP address is for use either in the EC2-Classic platform or
 in a VPC. For more information, see Elastic IP Addresses in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -755,9 +755,9 @@ addresses, or you can specify the number of secondary IP addresses to
 be automatically assigned within the subnet's CIDR block range. The
 number of secondary IP addresses that you can assign to an instance
 varies by instance type. For information about instance types, see
-Instance Types in the I<Amazon Elastic Compute Cloud User Guide>. For
-more information about Elastic IP addresses, see Elastic IP Addresses
-in the I<Amazon Elastic Compute Cloud User Guide>.
+Instance Types in the I<Amazon Elastic Compute Cloud User Guide for
+Linux>. For more information about Elastic IP addresses, see Elastic IP
+Addresses in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 AssignPrivateIpAddresses is available only in EC2-VPC.
 
@@ -784,7 +784,7 @@ interface.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
 in a VPC. For more information, see Elastic IP Addresses in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 [EC2-Classic, VPC in an EC2-VPC-only account] If the Elastic IP address
 is already associated with a different instance, it is disassociated
@@ -955,40 +955,36 @@ exposes it to the instance with the specified device name.
 
 Encrypted Amazon EBS volumes may only be attached to instances that
 support Amazon EBS encryption. For more information, see Amazon EBS
-Encryption in the I<Amazon Elastic Compute Cloud User Guide>.
+Encryption in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 For a list of supported device names, see Attaching an Amazon EBS
 Volume to an Instance. Any device names that aren't reserved for
 instance store volumes can be used for Amazon EBS volumes. For more
 information, see Amazon EC2 Instance Store in the I<Amazon Elastic
-Compute Cloud User Guide>.
+Compute Cloud User Guide for Linux>.
 
 If a volume has an AWS Marketplace product code:
 
 =over
 
-=item * The volume can only be attached as the root device of a stopped
-instance.
-
-=item * You must be subscribed to the AWS Marketplace code that is on
-the volume.
-
-=item * The configuration (instance type, operating system) of the
-instance must support that specific AWS Marketplace code. For example,
-you cannot take a volume from a Windows instance and attach it to a
-Linux instance.
+=item * The volume can be attached only to a stopped instance.
 
 =item * AWS Marketplace product codes are copied from the volume to the
 instance.
 
+=item * You must be subscribed to the product.
+
+=item * The instance type and operating system of the instance must
+support the product. For example, you can't detach a volume from a
+Windows instance and attach it to a Linux instance.
+
 =back
 
-For an overview of the AWS Marketplace, see
-https://aws.amazon.com/marketplace/help/200900000. For more information
-about how to use the AWS Marketplace, see AWS Marketplace.
+For an overview of the AWS Marketplace, see Introducing AWS
+Marketplace.
 
 For more information about Amazon EBS volumes, see Attaching Amazon EBS
-Volumes in the I<Amazon Elastic Compute Cloud User Guide>.
+Volumes in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -1168,7 +1164,7 @@ command fails and returns an exception.
 
 For more information, see Using the Command Line Tools to Import Your
 Virtual Machine to Amazon EC2 in the I<Amazon Elastic Compute Cloud
-User Guide>.
+User Guide for Linux>.
 
 
 
@@ -1215,7 +1211,7 @@ Cancels the specified Reserved Instance listing in the Reserved
 Instance Marketplace.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
-Elastic Compute Cloud User Guide>.
+Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -1236,12 +1232,11 @@ Elastic Compute Cloud User Guide>.
   
 
 Cancels one or more Spot Instance requests. Spot Instances are
-instances that Amazon EC2 starts on your behalf when the maximum price
-that you specify exceeds the current Spot Price. Amazon EC2
-periodically sets the Spot Price based on available Spot Instance
-capacity and current Spot Instance requests. For more information about
-Spot Instances, see Spot Instances in the I<Amazon Elastic Compute
-Cloud User Guide>.
+instances that Amazon EC2 starts on your behalf when the bid price that
+you specify exceeds the current Spot Price. Amazon EC2 periodically
+sets the Spot Price based on available Spot Instance capacity and
+current Spot Instance requests. For more information, see Spot Instance
+Requests in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 Canceling a Spot Instance request does not terminate running Spot
 Instances associated with the request.
@@ -1293,7 +1288,7 @@ endpoint when making the request. AMIs that use encrypted Amazon EBS
 snapshots cannot be copied with this method.
 
 For more information, see Copying AMIs in the I<Amazon Elastic Compute
-Cloud User Guide>.
+Cloud User Guide for Linux>.
 
 
 
@@ -1326,7 +1321,7 @@ Copying snapshots that were encrypted with non-default AWS Key
 Management Service (KMS) master keys is not supported at this time.
 
 For more information, see Copying an Amazon EBS Snapshot in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -1459,7 +1454,7 @@ instance from this new AMI, the instance automatically launches with
 those additional volumes.
 
 For more information, see Creating Amazon EBS-Backed Linux AMIs in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -1484,7 +1479,7 @@ Exports a running or stopped instance to an Amazon S3 bucket.
 For information about the supported operating systems, image formats,
 and known limitations for the types of instances you can export, see
 Exporting EC2 Instances in the I<Amazon Elastic Compute Cloud User
-Guide>.
+Guide for Linux>.
 
 
 
@@ -1541,7 +1536,7 @@ you create it. To create a key pair that is available in all regions,
 use ImportKeyPair.
 
 For more information about key pairs, see Key Pairs in the I<Amazon
-Elastic Compute Cloud User Guide>.
+Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -1626,7 +1621,7 @@ I<Amazon Virtual Private Cloud User Guide>.
 Creates a network interface in the specified subnet.
 
 For more information about network interfaces, see Elastic Network
-Interfaces in the I<Amazon Elastic Compute Cloud User Guide>.
+Interfaces in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -1651,7 +1646,8 @@ must give the group a name that's unique within the scope of your
 account.
 
 For more information about placement groups and cluster instances, see
-Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide>.
+Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide for
+Linux>.
 
 
 
@@ -1691,7 +1687,7 @@ for purchase. To view the details of your Reserved Instance listing,
 you can use the DescribeReservedInstancesListings operation.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
-Elastic Compute Cloud User Guide>.
+Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -1787,9 +1783,9 @@ Creates a security group.
 
 A security group is for use with instances either in the EC2-Classic
 platform or in a specific VPC. For more information, see Amazon EC2
-Security Groups in the I<Amazon Elastic Compute Cloud User Guide> and
-Security Groups for Your VPC in the I<Amazon Virtual Private Cloud User
-Guide>.
+Security Groups in the I<Amazon Elastic Compute Cloud User Guide for
+Linux> and Security Groups for Your VPC in the I<Amazon Virtual Private
+Cloud User Guide>.
 
 EC2-Classic: You can have up to 500 security groups.
 
@@ -1857,7 +1853,7 @@ automatically encrypted. Your encrypted volumes and any associated
 snapshots always remain protected.
 
 For more information, see Amazon Elastic Block Store and Amazon EBS
-Encryption in the I<Amazon Elastic Compute Cloud User Guide>.
+Encryption in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -1877,10 +1873,10 @@ Encryption in the I<Amazon Elastic Compute Cloud User Guide>.
 
   
 
-Creates a datafeed for Spot Instances, enabling you to view Spot
+Creates a data feed for Spot Instances, enabling you to view Spot
 Instance usage logs. You can create one data feed per AWS account. For
-more information, see Spot Instances in the I<Amazon Elastic Compute
-Cloud User Guide>.
+more information, see Spot Instance Data Feed in the I<Amazon Elastic
+Compute Cloud User Guide for Linux>.
 
 
 
@@ -1951,7 +1947,7 @@ Each tag consists of a key and optional value. Tag keys must be unique
 per resource.
 
 For more information about tags, see Tagging Your Resources in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -1984,10 +1980,10 @@ You can create encrypted volumes with the C<Encrypted> parameter.
 Encrypted volumes may only be attached to instances that support Amazon
 EBS encryption. Volumes that are created from encrypted snapshots are
 also automatically encrypted. For more information, see Amazon EBS
-Encryption in the I<Amazon Elastic Compute Cloud User Guide>.
+Encryption in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 For more information, see Creating or Restoring an Amazon EBS Volume in
-the I<Amazon Elastic Compute Cloud User Guide>.
+the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -2310,7 +2306,8 @@ interface before you can delete it.
 Deletes the specified placement group. You must terminate all instances
 in the placement group before you can delete the placement group. For
 more information about placement groups and cluster instances, see
-Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide>.
+Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide for
+Linux>.
 
 
 
@@ -2412,7 +2409,7 @@ used by a registered AMI. You must first de-register the AMI before you
 can delete the snapshot.
 
 For more information, see Deleting an Amazon EBS Snapshot in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -2432,8 +2429,9 @@ I<Amazon Elastic Compute Cloud User Guide>.
 
   
 
-Deletes the datafeed for Spot Instances. For more information, see Spot
-Instances in the I<Amazon Elastic Compute Cloud User Guide>.
+Deletes the data feed for Spot Instances. For more information, see
+Spot Instance Data Feed in the I<Amazon Elastic Compute Cloud User
+Guide for Linux>.
 
 
 
@@ -2478,7 +2476,7 @@ Deletes the specified set of tags from the specified set of resources.
 This call is designed to follow a C<DescribeTags> request.
 
 For more information about tags, see Tagging Your Resources in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -2504,7 +2502,7 @@ C<available> state (not attached to an instance).
 The volume may remain in the C<deleting> state for several minutes.
 
 For more information, see Deleting an Amazon EBS Volume in the I<Amazon
-Elastic Compute Cloud User Guide>.
+Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -2730,7 +2728,7 @@ Describes one or more of your Elastic IP addresses.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
 in a VPC. For more information, see Elastic IP Addresses in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -2757,7 +2755,7 @@ this request to view the state and any provided message for that
 Availability Zone.
 
 For more information, see Regions and Availability Zones in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -2827,7 +2825,7 @@ information about other instances.
 
 Describes one or more of your conversion tasks. For more information,
 see Using the Command Line Tools to Import Your Virtual Machine to
-Amazon EC2 in the I<Amazon Elastic Compute Cloud User Guide>.
+Amazon EC2 in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -3097,9 +3095,9 @@ is started on a different underlying host.
 
 For more information about failed status checks, see Troubleshooting
 Instances with Failed Status Checks in the I<Amazon Elastic Compute
-Cloud User Guide>. For more information about working with scheduled
-events, see Working with an Instance That Has a Scheduled Event in the
-I<Amazon Elastic Compute Cloud User Guide>.
+Cloud User Guide for Linux>. For more information about working with
+scheduled events, see Working with an Instance That Has a Scheduled
+Event in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -3142,7 +3140,7 @@ Describes one or more of your Internet gateways.
 Describes one or more of your key pairs.
 
 For more information about key pairs, see Key Pairs in the I<Amazon
-Elastic Compute Cloud User Guide>.
+Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -3228,7 +3226,7 @@ Describes one or more of your network interfaces.
 
 Describes one or more of your placement groups. For more information
 about placement groups and cluster instances, see Cluster Instances in
-the I<Amazon Elastic Compute Cloud User Guide>.
+the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -3274,7 +3272,7 @@ Endpoints.
 Describes one or more of the Reserved Instances that you purchased.
 
 For more information about Reserved Instances, see Reserved Instances
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -3316,7 +3314,7 @@ Instance listings to you until your demand is met. You are charged
 based on the total price of all of the listings that you purchase.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
-Elastic Compute Cloud User Guide>.
+Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -3342,7 +3340,7 @@ modification requests is returned. If a modification ID is specified,
 only information about the specific modification is returned.
 
 For more information, see Modifying Reserved Instances in the Amazon
-Elastic Compute Cloud User Guide.
+Elastic Compute Cloud User Guide for Linux.
 
 
 
@@ -3369,7 +3367,7 @@ insufficient capacity errors, and you pay a lower usage rate than the
 rate charged for On-Demand instances for the actual time used.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
-Elastic Compute Cloud User Guide>.
+Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -3416,9 +3414,9 @@ Describes one or more of your security groups.
 
 A security group is for use with instances either in the EC2-Classic
 platform or in a specific VPC. For more information, see Amazon EC2
-Security Groups in the I<Amazon Elastic Compute Cloud User Guide> and
-Security Groups for Your VPC in the I<Amazon Virtual Private Cloud User
-Guide>.
+Security Groups in the I<Amazon Elastic Compute Cloud User Guide for
+Linux> and Security Groups for Your VPC in the I<Amazon Virtual Private
+Cloud User Guide>.
 
 
 
@@ -3442,7 +3440,7 @@ Describes the specified attribute of the specified snapshot. You can
 specify only one attribute at a time.
 
 For more information about Amazon EBS snapshots, see Amazon EBS
-Snapshots in the I<Amazon Elastic Compute Cloud User Guide>.
+Snapshots in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -3506,7 +3504,7 @@ account IDs (if you own the snapshots), C<self> for snapshots for which
 you own or have explicit permissions, or C<all> for public snapshots.
 
 For more information about Amazon EBS snapshots, see Amazon EBS
-Snapshots in the I<Amazon Elastic Compute Cloud User Guide>.
+Snapshots in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -3526,8 +3524,9 @@ Snapshots in the I<Amazon Elastic Compute Cloud User Guide>.
 
   
 
-Describes the datafeed for Spot Instances. For more information, see
-Spot Instances in the I<Amazon Elastic Compute Cloud User Guide>.
+Describes the data feed for Spot Instances. For more information, see
+Spot Instance Data Feed in the I<Amazon Elastic Compute Cloud User
+Guide for Linux>.
 
 
 
@@ -3548,12 +3547,12 @@ Spot Instances in the I<Amazon Elastic Compute Cloud User Guide>.
   
 
 Describes the Spot Instance requests that belong to your account. Spot
-Instances are instances that Amazon EC2 starts on your behalf when the
-maximum price that you specify exceeds the current Spot Price. Amazon
-EC2 periodically sets the Spot Price based on available Spot Instance
-capacity and current Spot Instance requests. For more information about
-Spot Instances, see Spot Instances in the I<Amazon Elastic Compute
-Cloud User Guide>.
+Instances are instances that Amazon EC2 launches when the bid price
+that you specify exceeds the current Spot Price. Amazon EC2
+periodically sets the Spot Price based on available Spot Instance
+capacity and current Spot Instance requests. For more information, see
+Spot Instance Requests in the I<Amazon Elastic Compute Cloud User Guide
+for Linux>.
 
 You can use C<DescribeSpotInstanceRequests> to find a running Spot
 Instance by examining the response. If the status of the Spot Instance
@@ -3584,8 +3583,8 @@ Describes the Spot Price history. Spot Instances are instances that
 Amazon EC2 starts on your behalf when the maximum price that you
 specify exceeds the current Spot Price. Amazon EC2 periodically sets
 the Spot Price based on available Spot Instance capacity and current
-Spot Instance requests. For more information about Spot Instances, see
-Spot Instances in the I<Amazon Elastic Compute Cloud User Guide>.
+Spot Instance requests. For more information, see Spot Instance Pricing
+History in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 When you specify an Availability Zone, this operation describes the
 price history for the specified Availability Zone with the most recent
@@ -3646,7 +3645,7 @@ I<Amazon Virtual Private Cloud User Guide>.
 Describes one or more of the tags for your EC2 resources.
 
 For more information about tags, see Tagging Your Resources in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -3670,7 +3669,7 @@ Describes the specified attribute of the specified volume. You can
 specify only one attribute at a time.
 
 For more information about Amazon EBS volumes, see Amazon EBS Volumes
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -3701,7 +3700,7 @@ to a subsequent C<DescribeVolumes> request to retrieve the remaining
 results.
 
 For more information about Amazon EBS volumes, see Amazon EBS Volumes
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -3983,12 +3982,11 @@ If an Amazon EBS volume is the root device of an instance, it can't be
 detached while the instance is running. To detach the root volume, stop
 the instance first.
 
-If the root volume is detached from an instance with an AWS Marketplace
-product code, then the AWS Marketplace product codes from that volume
-are no longer associated with the instance.
+When a volume with an AWS Marketplace product code is detached from an
+instance, the product code is no longer associated with the instance.
 
 For more information, see Detaching an Amazon EBS Volume in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -4083,7 +4081,7 @@ interface it's associated with.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
 in a VPC. For more information, see Elastic IP Addresses in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 This is an idempotent operation. If you perform the operation more than
 once, Amazon EC2 doesn't return an error.
@@ -4180,7 +4178,7 @@ VPC's route tables have existing routes for address ranges within the
 C<10.0.0.0/8> IP address range, excluding local routes for VPCs in the
 C<10.0.0.0/16> and C<10.1.0.0/16> IP address ranges. For more
 information, see ClassicLink in the Amazon Elastic Compute Cloud User
-Guide.
+Guide for Linux.
 
 
 
@@ -4278,7 +4276,8 @@ Creates an import instance task using metadata from the specified disk
 image. After importing the image, you then upload it using the
 ec2-import-volume command in the EC2 command line tools. For more
 information, see Using the Command Line Tools to Import Your Virtual
-Machine to Amazon EC2 in the Amazon Elastic Compute Cloud User Guide.
+Machine to Amazon EC2 in the Amazon Elastic Compute Cloud User Guide
+for Linux.
 
 
 
@@ -4305,7 +4304,7 @@ key). With ImportKeyPair, you create the key pair and give AWS just the
 public key. The private key is never transferred between you and AWS.
 
 For more information about key pairs, see Key Pairs in the I<Amazon
-Elastic Compute Cloud User Guide>.
+Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -4330,7 +4329,7 @@ image. After importing the image, you then upload it using the
 ec2-import-volume command in the Amazon EC2 command-line interface
 (CLI) tools. For more information, see Using the Command Line Tools to
 Import Your Virtual Machine to Amazon EC2 in the I<Amazon Elastic
-Compute Cloud User Guide>.
+Compute Cloud User Guide for Linux>.
 
 
 
@@ -4379,7 +4378,7 @@ specify only one attribute at a time.
 
 To modify some attributes, the instance must be stopped. For more
 information, see Modifying Attributes of a Stopped Instance in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -4426,7 +4425,7 @@ The Reserved Instances to be modified must be identical, except for
 Availability Zone, network platform, and instance type.
 
 For more information, see Modifying Reserved Instances in the Amazon
-Elastic Compute Cloud User Guide.
+Elastic Compute Cloud User Guide for Linux.
 
 
 
@@ -4453,7 +4452,7 @@ If you need to both add and remove account IDs for a snapshot, you must
 use multiple API calls.
 
 For more information on modifying snapshot permissions, see Sharing
-Snapshots in the I<Amazon Elastic Compute Cloud User Guide>.
+Snapshots in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 Snapshots with AWS Marketplace product codes cannot be made public.
 
@@ -4547,7 +4546,7 @@ Modifies the specified attribute of the specified VPC.
 
 Enables monitoring for a running instance. For more information about
 monitoring instances, see Monitoring Your Instances and Volumes in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -4579,7 +4578,8 @@ purchased a Reserved Instance, you can check for your new Reserved
 Instance with DescribeReservedInstances.
 
 For more information, see Reserved Instances and Reserved Instance
-Marketplace in the I<Amazon Elastic Compute Cloud User Guide>.
+Marketplace in the I<Amazon Elastic Compute Cloud User Guide for
+Linux>.
 
 
 
@@ -4609,7 +4609,7 @@ minutes, Amazon EC2 performs a hard reboot.
 
 For more information about troubleshooting, see Getting Console Output
 and Rebooting Instances in the I<Amazon Elastic Compute Cloud User
-Guide>.
+Guide for Linux>.
 
 
 
@@ -4632,7 +4632,7 @@ Guide>.
 Registers an AMI. When you're creating an AMI, this is the final step
 you must complete before you can launch an instance from the AMI. For
 more information about creating AMIs, see Creating Your Own AMIs in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 For Amazon EBS-backed instances, CreateImage creates and registers the
 AMI in a single request, so you don't have to register the AMI
@@ -4641,7 +4641,7 @@ yourself.
 You can also use C<RegisterImage> to create an Amazon EBS-backed AMI
 from a snapshot of a root device volume. For more information, see
 Launching an Instance from a Snapshot in the I<Amazon Elastic Compute
-Cloud User Guide>.
+Cloud User Guide for Linux>.
 
 If needed, you can deregister an AMI at any time. Any modifications you
 make to an AMI backed by an instance store volume invalidates its
@@ -4860,8 +4860,8 @@ Creates a Spot Instance request. Spot Instances are instances that
 Amazon EC2 starts on your behalf when the maximum price that you
 specify exceeds the current Spot Price. Amazon EC2 periodically sets
 the Spot Price based on available Spot Instance capacity and current
-Spot Instance requests. For more information about Spot Instances, see
-Spot Instances in the I<Amazon Elastic Compute Cloud User Guide>.
+Spot Instance requests. For more information, see Spot Instance
+Requests in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 Users must be subscribed to the required product to run an instance
 with AWS Marketplace product codes.
@@ -4959,7 +4959,7 @@ attribute at a time.
 Resets permission settings for the specified snapshot.
 
 For more information on modifying snapshot permissions, see Sharing
-Snapshots in the I<Amazon Elastic Compute Cloud User Guide>.
+Snapshots in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -5048,17 +5048,18 @@ state of your instance, call DescribeInstances.
 
 If you don't specify a security group when launching an instance,
 Amazon EC2 uses the default security group. For more information, see
-Security Groups in the I<Amazon Elastic Compute Cloud User Guide>.
+Security Groups in the I<Amazon Elastic Compute Cloud User Guide for
+Linux>.
 
 Linux instances have access to the public key of the key pair at boot.
 You can use this key to provide secure access to the instance. Amazon
 EC2 public images use this feature to provide secure access without
 passwords. For more information, see Key Pairs in the I<Amazon Elastic
-Compute Cloud User Guide>.
+Compute Cloud User Guide for Linux>.
 
 You can provide optional user data when launching an instance. For more
 information, see Instance Metadata in the I<Amazon Elastic Compute
-Cloud User Guide>.
+Cloud User Guide for Linux>.
 
 If any of the AMIs have a product code attached for which the user has
 not subscribed, C<RunInstances> fails.
@@ -5069,7 +5070,7 @@ C<RunInstances> fails.
 
 For more information about troubleshooting, see What To Do If An
 Instance Immediately Terminates, and Troubleshooting Connecting to Your
-Instance in the I<Amazon Elastic Compute Cloud User Guide>.
+Instance in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -5109,7 +5110,7 @@ Performing this operation on an instance that uses an instance store as
 its root device returns an error.
 
 For more information, see Stopping Instances in the I<Amazon Elastic
-Compute Cloud User Guide>.
+Compute Cloud User Guide for Linux>.
 
 
 
@@ -5157,11 +5158,11 @@ instance persist. When you terminate an instance, the root device and
 any other devices attached during the instance launch are automatically
 deleted. For more information about the differences between stopping
 and terminating instances, see Instance Lifecycle in the I<Amazon
-Elastic Compute Cloud User Guide>.
+Elastic Compute Cloud User Guide for Linux>.
 
 For more information about troubleshooting, see Troubleshooting
-Stopping Your Instance in the I<Amazon Elastic Compute Cloud User
-Guide>.
+Stopping Your Instance in the I<Amazon Elastic Compute Cloud User Guide
+for Linux>.
 
 
 
@@ -5199,11 +5200,11 @@ instance persist. When you terminate an instance, the root device and
 any other devices attached during the instance launch are automatically
 deleted. For more information about the differences between stopping
 and terminating instances, see Instance Lifecycle in the I<Amazon
-Elastic Compute Cloud User Guide>.
+Elastic Compute Cloud User Guide for Linux>.
 
 For more information about troubleshooting, see Troubleshooting
 Terminating Your Instance in the I<Amazon Elastic Compute Cloud User
-Guide>.
+Guide for Linux>.
 
 
 
@@ -5246,7 +5247,7 @@ interface.
 
 Disables monitoring for a running instance. For more information about
 monitoring instances, see Monitoring Your Instances and Volumes in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 

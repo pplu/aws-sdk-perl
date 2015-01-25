@@ -166,7 +166,7 @@ Default: C<default>
 
 The instance type on which the Reserved Instance can be used. For more
 information, see Instance Types in the I<Amazon Elastic Compute Cloud
-User Guide>.
+User Guide for Linux>.
 
 
 

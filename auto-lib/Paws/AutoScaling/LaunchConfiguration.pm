@@ -2,6 +2,8 @@ package Paws::AutoScaling::LaunchConfiguration {
   use Moose;
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::BlockDeviceMapping]');
+  has ClassicLinkVPCId => (is => 'ro', isa => 'Str');
+  has ClassicLinkVPCSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
   has EbsOptimized => (is => 'ro', isa => 'Bool');
   has IamInstanceProfile => (is => 'ro', isa => 'Str');

@@ -19,7 +19,7 @@ Paws::EC2::CreateSpotDatafeedSubscriptionResult
 
   
 
-The Spot Instance datafeed subscription.
+The Spot Instance data feed subscription.
 
 
 

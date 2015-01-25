@@ -74,7 +74,7 @@ volume is deleted when the instance is terminated.
 To add instance store volumes to an Amazon EBS-backed instance, you
 must add them when you launch the instance. For more information, see
 Updating the Block Device Mapping when Launching an Instance in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 

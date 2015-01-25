@@ -24,13 +24,25 @@ package Paws::CognitoIdentity {
     my $self = shift;
     return $self->do_call('Paws::CognitoIdentity::DeleteIdentityPool', @_);
   }
+  sub DescribeIdentity {
+    my $self = shift;
+    return $self->do_call('Paws::CognitoIdentity::DescribeIdentity', @_);
+  }
   sub DescribeIdentityPool {
     my $self = shift;
     return $self->do_call('Paws::CognitoIdentity::DescribeIdentityPool', @_);
   }
+  sub GetCredentialsForIdentity {
+    my $self = shift;
+    return $self->do_call('Paws::CognitoIdentity::GetCredentialsForIdentity', @_);
+  }
   sub GetId {
     my $self = shift;
     return $self->do_call('Paws::CognitoIdentity::GetId', @_);
+  }
+  sub GetIdentityPoolRoles {
+    my $self = shift;
+    return $self->do_call('Paws::CognitoIdentity::GetIdentityPoolRoles', @_);
   }
   sub GetOpenIdToken {
     my $self = shift;
@@ -55,6 +67,10 @@ package Paws::CognitoIdentity {
   sub MergeDeveloperIdentities {
     my $self = shift;
     return $self->do_call('Paws::CognitoIdentity::MergeDeveloperIdentities', @_);
+  }
+  sub SetIdentityPoolRoles {
+    my $self = shift;
+    return $self->do_call('Paws::CognitoIdentity::SetIdentityPoolRoles', @_);
   }
   sub UnlinkDeveloperIdentity {
     my $self = shift;
@@ -107,12 +123,23 @@ If the end user is authenticated with one of the supported identity
 providers, set the C<Logins> map with the identity provider token.
 C<GetId> returns a unique identifier for the user.
 
-Next, make an unsigned call to GetOpenIdToken, which returns the OpenID
-token necessary to call STS and retrieve AWS credentials. This call
+Next, make an unsigned call to GetCredentialsForIdentity. This call
 expects the same C<Logins> map as the C<GetId> call, as well as the
-C<IdentityID> originally returned by C<GetId>. The token returned by
-C<GetOpenIdToken> can be passed to the STS operation
-AssumeRoleWithWebIdentity to retrieve AWS credentials.
+C<IdentityID> originally returned by C<GetId>. Assuming your identity
+pool has been configured via the SetIdentityPoolRoles operation,
+C<GetCredentialsForIdentity> will return AWS credentials for your use.
+If your pool has not been configured with C<SetIdentityPoolRoles>, or
+if you want to follow legacy flow, make an unsigned call to
+GetOpenIdToken, which returns the OpenID token necessary to call STS
+and retrieve AWS credentials. This call expects the same C<Logins> map
+as the C<GetId> call, as well as the C<IdentityID> originally returned
+by C<GetId>. The token returned by C<GetOpenIdToken> can be passed to
+the STS operation AssumeRoleWithWebIdentity to retrieve AWS
+credentials.
+
+If you want to use Amazon Cognito in an Android, iOS, or Unity
+application, you will probably want to make API calls via the AWS
+Mobile SDK. To learn more, see the AWS Mobile SDK Developer Guide.
 
 
 
@@ -168,6 +195,27 @@ authenticate with the pool.
 
 
 
+=head2 DescribeIdentity()
+
+  Arguments described in: L<Paws::CognitoIdentity::DescribeIdentity>
+
+  Returns: L<Paws::CognitoIdentity::IdentityDescription>
+
+  
+
+Returns metadata related to the given identity, including when the
+identity was created and any associated linked logins.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DescribeIdentityPool()
 
   Arguments described in: L<Paws::CognitoIdentity::DescribeIdentityPool>
@@ -189,6 +237,29 @@ ID description, creation date, and current number of users.
 
 
 
+=head2 GetCredentialsForIdentity()
+
+  Arguments described in: L<Paws::CognitoIdentity::GetCredentialsForIdentity>
+
+  Returns: L<Paws::CognitoIdentity::GetCredentialsForIdentityResponse>
+
+  
+
+Returns credentials for the the provided identity ID. Any provided
+logins will be validated against supported login providers. If the
+token is for cognito-identity.amazonaws.com, it will be passed through
+to AWS Security Token Service with the appropriate role for the token.
+
+
+
+
+
+
+
+
+
+
+
 =head2 GetId()
 
   Arguments described in: L<Paws::CognitoIdentity::GetId>
@@ -199,6 +270,26 @@ ID description, creation date, and current number of users.
 
 Generates (or retrieves) a Cognito ID. Supplying multiple logins will
 create an implicit linked account.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetIdentityPoolRoles()
+
+  Arguments described in: L<Paws::CognitoIdentity::GetIdentityPoolRoles>
+
+  Returns: L<Paws::CognitoIdentity::GetIdentityPoolRolesResponse>
+
+  
+
+Gets the roles for an identity pool.
 
 
 
@@ -354,6 +445,27 @@ the C<DestinationUserIdentifier>. Only developer-authenticated users
 can be merged. If the users to be merged are associated with the same
 public provider, but as two different users, an exception will be
 thrown.
+
+
+
+
+
+
+
+
+
+
+
+=head2 SetIdentityPoolRoles()
+
+  Arguments described in: L<Paws::CognitoIdentity::SetIdentityPoolRoles>
+
+  Returns: nothing
+
+  
+
+Sets the roles for an identity pool. These roles are used when making
+calls to C<GetCredentialsForIdentity> action.
 
 
 

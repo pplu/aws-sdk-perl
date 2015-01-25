@@ -3,6 +3,8 @@ package Paws::AutoScaling::CreateLaunchConfiguration {
   use Moose;
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::BlockDeviceMapping]');
+  has ClassicLinkVPCId => (is => 'ro', isa => 'Str');
+  has ClassicLinkVPCSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
   has IamInstanceProfile => (is => 'ro', isa => 'Str');
   has ImageId => (is => 'ro', isa => 'Str');
@@ -82,6 +84,42 @@ the I<Amazon Elastic Compute Cloud User Guide>.
 One or more mappings that specify how block devices are exposed to the
 instance. For more information, see Block Device Mapping in the
 I<Amazon Elastic Compute Cloud User Guide>.
+
+
+
+
+
+
+
+
+
+
+=head2 ClassicLinkVPCId => Str
+
+  
+
+The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances
+to. This parameter can only be used if you are launching EC2-Classic
+instances. For more information, see ClassicLink in the I<Amazon
+Elastic Compute Cloud User Guide>.
+
+
+
+
+
+
+
+
+
+
+=head2 ClassicLinkVPCSecurityGroups => ArrayRef[Str]
+
+  
+
+The IDs of one or more security groups for the VPC specified in
+C<ClassicLinkVPCId>. This parameter is required if C<ClassicLinkVPCId>
+is specified, and cannot be used otherwise. For more information, see
+ClassicLink in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 

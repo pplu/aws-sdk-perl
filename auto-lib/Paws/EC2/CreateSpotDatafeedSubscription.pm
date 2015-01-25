@@ -39,9 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The Amazon S3 bucket in which to store the Spot Instance datafeed.
-
-Constraints: Must be a valid bucket associated with your AWS account.
+The Amazon S3 bucket in which to store the Spot Instance data feed.
 
 
 
@@ -60,7 +58,7 @@ Constraints: Must be a valid bucket associated with your AWS account.
 
   
 
-A prefix for the datafeed file names.
+A prefix for the data feed file names.
 
 
 
