@@ -8,11 +8,7 @@ package Paws::EC2 {
   has version => (is => 'ro', isa => 'Str', default => '2014-10-01');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '1');
 
-  use MooseX::ClassAttribute;
-  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'Paws::API::RegionalEndpointCaller');
-  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::V4Signature');
-  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::EC2Caller');
-  class_has response_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::XMLResponse');
+  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::EC2Caller', 'Paws::Net::XMLResponse';
 
   
   sub AcceptVpcPeeringConnection {

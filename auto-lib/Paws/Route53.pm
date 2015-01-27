@@ -9,11 +9,7 @@ package Paws::Route53 {
   has version => (is => 'ro', isa => 'Str', default => '2013-04-01');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
 
-  use MooseX::ClassAttribute;
-  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'Paws::API::SingleEndpointCaller');
-  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::V3HTTPSSignature');
-  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::RestXmlCaller');
-  class_has response_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::RestXMLResponse');
+  with 'Paws::API::SingleEndpointCaller', 'Paws::Net::V3HTTPSSignature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
 
   
   sub AssociateVPCWithHostedZone {

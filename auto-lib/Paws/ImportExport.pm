@@ -8,11 +8,7 @@ package Paws::ImportExport {
   has version => (is => 'ro', isa => 'Str', default => '2010-06-01');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
 
-  use MooseX::ClassAttribute;
-  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'Paws::API::SingleEndpointCaller');
-  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::V2Signature');
-  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::QueryCaller');
-  class_has response_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::XMLResponse');
+  with 'Paws::API::SingleEndpointCaller', 'Paws::Net::V2Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
   
   sub CancelJob {

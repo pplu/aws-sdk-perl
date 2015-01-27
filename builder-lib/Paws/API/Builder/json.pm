@@ -84,11 +84,7 @@ package [% c.api %] {
   has target_prefix => (is => 'ro', isa => 'Str', default => '[% c.target_prefix %]');
   has json_version => (is => 'ro', isa => 'Str', default => "[% c.json_version %]");
 
-  use MooseX::ClassAttribute;
-  class_has endpoint_role => (is => 'ro', isa => 'Str', default => '[% c.endpoint_role %]');
-  class_has signature_role => (is => 'ro', isa => 'Str', default => '[% c.signature_role %]');
-  class_has parameter_role => (is => 'ro', isa => 'Str', default => '[% c.parameter_role %]');
-  class_has response_role => (is => 'ro', isa => 'Str', default => '[% c.response_role %]');
+  with '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]', '[% c.response_role %]';
 
   [% FOR op IN c.struct.operations.keys.sort %]
   [%- op_name = c.struct.operations.$op.name %]

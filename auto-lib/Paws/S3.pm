@@ -9,11 +9,7 @@ package Paws::S3 {
   has version => (is => 'ro', isa => 'Str', default => '2006-03-01');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '1');
 
-  use MooseX::ClassAttribute;
-  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'Paws::API::SingleEndpointCaller');
-  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::S3Signature');
-  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::RestXmlCaller');
-  class_has response_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::RestXMLResponse');
+  with 'Paws::API::SingleEndpointCaller', 'Paws::Net::S3Signature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
 
   
   sub AbortMultipartUpload {

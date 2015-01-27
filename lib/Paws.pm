@@ -3,10 +3,6 @@ package Paws::SDK::Config;
 use Moose;
 
 has caller => (is => 'ro', isa => 'Str', default => 'Paws::Net::Caller'); 
-has override_endpoint_role  => (is => 'ro', isa => 'Str');
-has override_signature_role => (is => 'ro', isa => 'Str');
-has override_parameter_role => (is => 'ro', isa => 'Str');
-has override_response_role  => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -53,18 +49,10 @@ sub service {
   $self->load_class($class);
 
   my $caller_role    = $self->config->caller;
-  my $endpoint_role  = (defined $self->config->override_endpoint_role) ? $self->config->override_endpoint_role : $class->endpoint_role;
-  my $signature_role = (defined $self->config->override_signature_role) ? $self->config->override_signature_role : $class->signature_role;
-  my $parameter_role = (defined $self->config->override_parameter_role) ? $self->config->override_parameter_role : $class->parameter_role;
-  my $response_role  = (defined $self->config->override_response_role) ? $self->config->override_response_role : $class->response_role;
 
-  $self->load_class($caller_role, $endpoint_role, $signature_role, $parameter_role, $response_role);
+  $self->load_class($caller_role);
 
-  my $service = Moose::Util::with_traits($class, $caller_role, 
-                                                 $endpoint_role, 
-                                                 $signature_role,
-                                                 $parameter_role,
-                                                 $response_role);
+  my $service = Moose::Util::with_traits($class, $caller_role);
 
   $self->_class_cache->{ $class } = $service;
 

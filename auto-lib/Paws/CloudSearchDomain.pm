@@ -9,11 +9,7 @@ package Paws::CloudSearchDomain {
   has version => (is => 'ro', isa => 'Str', default => '2013-01-01');
   has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
 
-  use MooseX::ClassAttribute;
-  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'Paws::API::RegionalEndpointCaller');
-  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::V4Signature');
-  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::RestJsonCaller');
-  class_has response_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::RestJsonResponse');
+  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
   
   sub Search {
