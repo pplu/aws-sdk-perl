@@ -14,6 +14,8 @@ requires 'URL::Encode::XS';
 # For the paws CLI
 requires 'Hash::Flatten';
 requires 'MooseX::Getopt';
+requires 'ARGV::Struct';
+
 on 'build' => sub {
   requires 'Data::Printer';
   requires 'Template';

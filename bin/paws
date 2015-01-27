@@ -8,6 +8,7 @@ use warnings;
 use Data::Printer;
 use Paws;
 use Moose::Util;
+use ARGV::Struct;
 
 my @args = @ARGV;
 my @service_args;
@@ -64,23 +65,7 @@ if (not defined $method_name or not $call = $service->meta->find_method_by_name(
 
 die "invalid method" if ($call->package_name !~ m/^Paws\:\:/);
 
-my %args;
-
-foreach (my $i = 0; $i < scalar(@args); $i++) {
-  my $arg = $args[$i];
-  my ($param, $value) = split /=/, $arg, 2;
-  if ($value eq '[') {
-   #Array collection mode
-   $args{ $param } = [];
-   $i++;
-   while ($args[$i] ne ']' and $i < scalar(@args)) { push @{ $args{ $param } }, $args[$i]; $i++ }
-  } else {
-    $args{ $param } = $value;
-  }
-}
-
-use Data::Dumper;
-print Dumper(\%args);
+my %args = %{ ARGV::Struct->new(argv => [ '{', @args, '}' ])->parse };
 
 # $call is a Meta Method Object. It can be called via execute
 my $result = eval {$call->execute($service, %args) };
