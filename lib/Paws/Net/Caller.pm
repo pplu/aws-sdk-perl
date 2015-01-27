@@ -40,6 +40,8 @@ package Paws::Net::Caller {
       my ( $requestObj ) = @_;
       my $headers = {};
       $requestObj->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
+      # HTTP::Tiny has made setting Host header illegal. It derives Host from URL
+      delete $headers->{Host};
 
       my $response = $self->ua->request(
         $requestObj->method,
