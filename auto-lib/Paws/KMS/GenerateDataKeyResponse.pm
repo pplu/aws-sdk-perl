@@ -20,9 +20,14 @@ Paws::KMS::GenerateDataKeyResponse
 
   
 
-Ciphertext that contains the wrapped key. You must store the blob and
-encryption context so that the ciphertext can be decrypted. You must
-provide both the ciphertext blob and the encryption context.
+Ciphertext that contains the encrypted data key. You must store the
+blob and enough information to reconstruct the encryption context so
+that the data encrypted by using the key can later be decrypted. You
+must provide both the ciphertext blob and the encryption context to the
+Decrypt API to recover the plaintext data key and decrypt the object.
+
+If you are using the CLI, the value is Base64 encoded. Otherwise, it is
+not encoded.
 
 
 
@@ -36,7 +41,8 @@ provide both the ciphertext blob and the encryption context.
 
   
 
-System generated unique identifier for the key.
+System generated unique identifier of the key to be used to decrypt the
+encrypted copy of the data key.
 
 
 
@@ -50,7 +56,7 @@ System generated unique identifier for the key.
 
   
 
-Plaintext that contains the unwrapped key. Use this for encryption and
+Plaintext that contains the data key. Use this for encryption and
 decryption and then remove it from memory as soon as possible.
 
 

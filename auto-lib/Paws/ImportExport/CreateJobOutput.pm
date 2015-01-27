@@ -2,7 +2,7 @@
 package Paws::ImportExport::CreateJobOutput {
   use Moose;
   with 'Paws::API::ResultParser';
-  has AwsShippingAddress => (is => 'ro', isa => 'Str');
+  has ArtifactList => (is => 'ro', isa => 'ArrayRef[Paws::ImportExport::Artifact]');
   has JobId => (is => 'ro', isa => 'Str');
   has JobType => (is => 'ro', isa => 'Str');
   has Signature => (is => 'ro', isa => 'Str');
@@ -20,7 +20,7 @@ Paws::ImportExport::CreateJobOutput
 
 =head1 ATTRIBUTES
 
-=head2 AwsShippingAddress => Str
+=head2 ArtifactList => ArrayRef[Paws::ImportExport::Artifact]
 
   
 =head2 JobId => Str

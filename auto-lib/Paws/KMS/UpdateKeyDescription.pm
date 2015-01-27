@@ -38,9 +38,42 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+New description for the key.
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> KeyId => Str
 
   
+
+A unique identifier for the customer master key. This value can be a
+globally unique identifier or the fully specified ARN to a key.
+
+=over
+
+=item * Key ARN Example -
+arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+
+=item * Globally Unique Key ID Example -
+12345678-1234-1234-123456789012
+
+=back
+
+
+
+
+
+
+
+
+
 
 
 

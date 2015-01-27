@@ -144,8 +144,7 @@ I<Scan> returned the corresponding value of I<LastEvaluatedKey>.
   
 
 One or more substitution tokens for simplifying complex expressions.
-The following are some use cases for an I<ExpressionAttributeNames>
-value:
+The following are some use cases for using I<ExpressionAttributeNames>:
 
 =over
 
@@ -185,7 +184,7 @@ I<ExpressionAttributeNames>:
 
 =item *
 
-C<{"n":"order.customerInfo.LastName"}>
+C<{"
 
 =back
 
@@ -198,6 +197,9 @@ The expression can now be simplified as follows:
 C<
 
 =back
+
+For more information on expression attribute names, go to Accessing
+Item Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -214,38 +216,24 @@ C<
 
 One or more values that can be substituted in an expression.
 
-Use the B<:> character in an expression to dereference an attribute
-value. For example, consider the following expression:
+Use the B<:> (colon) character in an expression to dereference an
+attribute value. For example, suppose that you wanted to check whether
+the value of the I<ProductStatus> attribute was one of the following:
 
-=over
+C<Available | Backordered | Discontinued>
 
-=item *
+You would first need to specify I<ExpressionAttributeValues> as
+follows:
 
-C<ProductStatus IN ("Available","Backordered","Discontinued")>
+C<{ ":avail":{"S":"Available"}, ":back":{"S":"Backordered"},
+":disc":{"S":"Discontinued"} }>
 
-=back
+You could then use these values in an expression, such as this:
 
-Now suppose that you specified the following for
-I<ExpressionAttributeValues>:
+C<ProductStatus IN (:avail, :back, :disc)>
 
-=over
-
-=item *
-
-C<{ "a":{"S":"Available"}, "b":{"S":"Backordered"},
-"d":{"S":"Discontinued"} }>
-
-=back
-
-The expression can now be simplified as follows:
-
-=over
-
-=item *
-
-C<ProductStatus IN (:a,:b,:c)>
-
-=back
+For more information on expression attribute values, go to Specifying
+Conditions in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -304,13 +292,17 @@ Guide>.
 
   
 
-One or more attributes to retrieve from the table. These attributes can
-include scalars, sets, or elements of a JSON document. The attributes
-in the expression must be separated by commas.
+A string that identifies one or more attributes to retrieve from the
+table. These attributes can include scalars, sets, or elements of a
+JSON document. The attributes in the expression must be separated by
+commas.
 
 If no attribute names are specified, then all attributes will be
 returned. If any of the requested attributes are not found, they will
 not appear in the result.
+
+For more information on projection expressions, go to Accessing Item
+Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -360,7 +352,7 @@ For type Number, value comparisons are numeric.
 
 String value comparisons for greater than, equals, or less than are
 based on ASCII character code values. For example, C<a> is greater than
-C<A>, and C<aa> is greater than C<B>. For a list of code values, see
+C<A>, and C<a> is greater than C<B>. For a list of code values, see
 http://en.wikipedia.org/wiki/ASCII
 
 For Binary, DynamoDB treats each byte of the binary data as unsigned

@@ -2,7 +2,7 @@
 package Paws::ImportExport::GetStatusOutput {
   use Moose;
   with 'Paws::API::ResultParser';
-  has AwsShippingAddress => (is => 'ro', isa => 'Str');
+  has ArtifactList => (is => 'ro', isa => 'ArrayRef[Paws::ImportExport::Artifact]');
   has Carrier => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has CurrentManifest => (is => 'ro', isa => 'Str');
@@ -30,7 +30,7 @@ Paws::ImportExport::GetStatusOutput
 
 =head1 ATTRIBUTES
 
-=head2 AwsShippingAddress => Str
+=head2 ArtifactList => ArrayRef[Paws::ImportExport::Artifact]
 
   
 =head2 Carrier => Str

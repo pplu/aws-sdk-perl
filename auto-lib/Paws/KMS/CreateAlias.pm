@@ -55,7 +55,18 @@ reserved.
   
 
 An identifier of the key for which you are creating the alias. This
-value cannot be another alias.
+value cannot be another alias but can be a globally unique identifier
+or a fully specified ARN to a key.
+
+=over
+
+=item * Key ARN Example -
+arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+
+=item * Globally Unique Key ID Example -
+12345678-1234-1234-123456789012
+
+=back
 
 
 

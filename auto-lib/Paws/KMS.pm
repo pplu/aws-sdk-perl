@@ -140,8 +140,8 @@ AWS Key Management Service
 
 AWS Key Management Service (KMS) is an encryption and key management
 web service. This guide describes the KMS actions that you can call
-programmatically. For general information about KMS, see (need an
-address here). For the KMS developer guide, see (need address here).
+programmatically. For general information about KMS, see the AWS Key
+Management Service Developer Guide
 
 AWS provides SDKs that consist of libraries and sample code for various
 programming languages and platforms (Java, Ruby, .Net, iOS, Android,
@@ -152,8 +152,13 @@ automatically. For more information about the AWS SDKs, including how
 to download and install them, see Tools for Amazon Web Services.
 
 We recommend that you use the AWS SDKs to make programmatic API calls
-to KMS. However, you can also use the KMS Query API to make to make
-direct calls to the KMS web service.
+to KMS.
+
+Clients must support TLS (Transport Layer Security) 1.0. We recommend
+TLS 1.2. Clients must also support cipher suites with Perfect Forward
+Secrecy (PFS) such as Ephemeral Diffie-Hellman (DHE) or Elliptic Curve
+Ephemeral Diffie-Hellman (ECDHE). Most modern systems such as Java 7
+and later support these modes.
 
 B<Signing Requests>
 
@@ -192,6 +197,25 @@ and use temporary security credentials.
 =item * Signing AWS API Requests. This set of topics walks you through
 the process of signing a request using an access key ID and a secret
 access key.
+
+=back
+
+B<Commonly Used APIs>
+
+Of the APIs discussed in this guide, the following will prove the most
+useful for most applications. You will likely perform actions other
+than these, such as creating keys and assigning policies, by using the
+console.
+
+=over
+
+=item * Encrypt
+
+=item * Decrypt
+
+=item * GenerateDataKey
+
+=item * GenerateDataKeyWithoutPlaintext
 
 =back
 
@@ -242,12 +266,9 @@ forward slash (alias/aws...) is reserved by Amazon Web Services (AWS).
 
 Adds a grant to a key to specify who can access the key and under what
 conditions. Grants are alternate permission mechanisms to key policies.
-If absent, access to the key is evaluated based on IAM policies
-attached to the user. By default, grants do not expire. Grants can be
-listed, retired, or revoked as indicated by the following APIs.
-Typically, when you are finished using a grant, you retire it. When you
-want to end a grant immediately, revoke it. For more information about
-grants, see Grants.
+For more information about grants, see Grants in the developer guide.
+If a grant is absent, access to the key is evaluated based on IAM
+policies attached to the user.
 
 =over
 
@@ -302,7 +323,27 @@ GenerateDataKey and GenerateDataKeyWithoutPlaintext.
   
 
 Decrypts ciphertext. Ciphertext is plaintext that has been previously
-encrypted by using the Encrypt function.
+encrypted by using any of the following functions:
+
+=over
+
+=item * GenerateDataKey
+
+=item * GenerateDataKeyWithoutPlaintext
+
+=item * Encrypt
+
+=back
+
+Note that if a caller has been granted access permissions to all keys
+(through, for example, IAM user policies that grant C<Decrypt>
+permission on all resources), then ciphertext encrypted by using keys
+in other accounts where the key grants access to the caller can be
+decrypted. To remedy this, we recommend that you do not grant
+C<Decrypt> access in an IAM user policy. Instead grant C<Decrypt>
+access only in key policies. If you must grant C<Decrypt> access in an
+IAM user policy, you should scope the resource to specific keys or to
+specific trusted accounts.
 
 
 
@@ -443,7 +484,33 @@ Enables rotation of the specified customer master key.
 
   
 
-Encrypts plaintext into ciphertext by using a customer master key.
+Encrypts plaintext into ciphertext by using a customer master key. The
+C<Encrypt> function has two primary use cases:
+
+=over
+
+=item * You can encrypt up to 4 KB of arbitrary data such as an RSA
+key, a database password, or other sensitive customer information.
+
+=item * If you are moving encrypted data from one region to another,
+you can use this API to encrypt in the new region the plaintext data
+key that was used to encrypt the data in the original region. This
+provides you with an encrypted copy of the data key that can be
+decrypted in the new region and used there to decrypt the encrypted
+data.
+
+=back
+
+Unless you are moving encrypted data from one region to another, you
+don't use this function to encrypt a generated data key within a
+region. You retrieve data keys already encrypted by calling the
+GenerateDataKey or GenerateDataKeyWithoutPlaintext function. Data keys
+don't need to be encrypted again by calling C<Encrypt>.
+
+If you want to encrypt data locally in your application, you can use
+the C<GenerateDataKey> function to return a plaintext data encryption
+key and a copy of the key encrypted under the customer master key (CMK)
+of your choosing.
 
 
 
@@ -463,8 +530,40 @@ Encrypts plaintext into ciphertext by using a customer master key.
 
   
 
-Generates a secure data key. Data keys are used to encrypt and decrypt
-data. They are wrapped by customer master keys.
+Generates a data key that you can use in your application to locally
+encrypt data. This call returns a plaintext version of the key in the
+C<Plaintext> field of the response object and an encrypted copy of the
+key in the C<CiphertextBlob> field. The key is encrypted by using the
+master key specified by the C<KeyId> field. To decrypt the encrypted
+key, pass it to the C<Decrypt> API.
+
+We recommend that you use the following pattern to locally encrypt
+data: call the C<GenerateDataKey> API, use the key returned in the
+C<Plaintext> response field to locally encrypt data, and then erase the
+plaintext data key from memory. Store the encrypted data key (contained
+in the C<CiphertextBlob> field) alongside of the locally encrypted
+data.
+
+You should not call the C<Encrypt> function to re-encrypt your data
+keys within a region. C<GenerateDataKey> always returns the data key
+encrypted and tied to the customer master key that will be used to
+decrypt it. There is no need to decrypt it twice.
+
+If you decide to use the optional C<EncryptionContext> parameter, you
+must also store the context in full or at least store enough
+information along with the encrypted data to be able to reconstruct the
+context when submitting the ciphertext to the C<Decrypt> API. It is a
+good practice to choose a context that you can reconstruct on the fly
+to better secure the ciphertext. For more information about how this
+parameter is used, see Encryption Context.
+
+To decrypt data, pass the encrypted data key to the C<Decrypt> API.
+C<Decrypt> uses the associated master key to decrypt the encrypted data
+key and returns it as plaintext. Use the plaintext data key to locally
+decrypt your data and then erase the key from memory. You must specify
+the encryption context, if any, that you specified when you generated
+the key. The encryption context is logged by CloudTrail, and you can
+use this log to help track the use of particular data.
 
 
 
@@ -484,8 +583,11 @@ data. They are wrapped by customer master keys.
 
   
 
-Returns a key wrapped by a customer master key without the plaintext
-copy of that key. To retrieve the plaintext, see GenerateDataKey.
+Returns a data key encrypted by a customer master key without the
+plaintext copy of that key. Otherwise, this API functions exactly like
+GenerateDataKey. You can use this API to, for example, satisfy an audit
+requirement that an encrypted key be made available without exposing
+the plaintext copy of that key.
 
 
 
@@ -691,7 +793,19 @@ change the encryption context of a ciphertext.
 
 Retires a grant. You can retire a grant when you're done using it to
 clean up. You should revoke a grant when you intend to actively deny
-operations that depend on it.
+operations that depend on it. The following are permitted to call this
+API:
+
+=over
+
+=item * The account that created the grant
+
+=item * The C<RetiringPrincipal>, if present
+
+=item * The C<GranteePrincipal>, if C<RetireGrant> is a grantee
+operation
+
+=back
 
 
 
@@ -731,6 +845,17 @@ that depend on it.
   Returns: nothing
 
   
+
+Updates the description of a key.
+
+
+
+
+
+
+
+
+
 
 
 =head1 SEE ALSO

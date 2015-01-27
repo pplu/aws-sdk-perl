@@ -1,6 +1,7 @@
 
 package Paws::ImportExport::CancelJob {
   use Moose;
+  has APIVersion => (is => 'ro', isa => 'Str');
   has JobId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -32,6 +33,10 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+=head2 APIVersion => Str
+
+  
 
 =head2 B<REQUIRED> JobId => Str
 

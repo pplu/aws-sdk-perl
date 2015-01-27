@@ -19,9 +19,8 @@ Paws::KMS::DecryptResponse
 
   
 
-Unique identifier created by the system for the key. This value is
-always returned as long as no errors are encountered during the
-operation.
+ARN of the key used to perform the decryption. This value is returned
+if no errors are encountered during the operation.
 
 
 

@@ -1,6 +1,7 @@
 
 package Paws::ImportExport::ListJobs {
   use Moose;
+  has APIVersion => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxJobs => (is => 'ro', isa => 'Int');
 
@@ -33,6 +34,10 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+=head2 APIVersion => Str
+
+  
 
 =head2 Marker => Str
 

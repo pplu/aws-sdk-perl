@@ -67,7 +67,7 @@ package Paws::Lambda {
 
 =head1 NAME
 
-Paws::Lambda - Perl Interface to AWS Amazon Lambda
+Paws::Lambda - Perl Interface to AWS AWS Lambda
 
 =head1 SYNOPSIS
 
@@ -108,12 +108,13 @@ AWS LambdaL How it Works in the AWS Lambda Developer Guide.
 
   
 
-Identifies an Amazon Kinesis stream as the event source for an AWS
-Lambda function. AWS Lambda invokes the specified function when records
-are posted to the stream.
+Identifies a stream as an event source for an AWS Lambda function. It
+can be either an Amazon Kinesis stream or a Amazon DynamoDB stream. AWS
+Lambda invokes the specified function when records are posted to the
+stream.
 
 This is the pull model, where AWS Lambda invokes the function. For more
-information, go to AWS LambdaL How it Works in the AWS Lambda Developer
+information, go to AWS Lambda: How it Works in the AWS Lambda Developer
 Guide.
 
 This association between an Amazon Kinesis stream and an AWS Lambda
@@ -121,6 +122,12 @@ function is called the event source mapping. You provide the
 configuration information (for example, which stream to read from and
 which AWS Lambda function to invoke) for the event source mapping in
 the request body.
+
+Each event source, such as a Kinesis stream, can only be associated
+with one AWS Lambda function. If you call AddEventSource for an event
+source that is already mapped to another AWS Lambda function, the
+existing mapping is updated to call the new function instead of the old
+one.
 
 This operation requires permission for the C<iam:PassRole> action for
 the IAM role. It also requires permission for the
@@ -269,8 +276,11 @@ action.
 
   
 
-Returns a list of event source mappings. For each mapping, the API
-returns configuration information (see AddEventSource). You can
+Returns a list of event source mappings you created using the
+C<AddEventSource> (see AddEventSource), where you identify a stream as
+event source. This list does not include Amazon S3 event sources.
+
+For each mapping, the API returns configuration information. You can
 optionally specify filters to retrieve specific event source mappings.
 
 This operation requires permission for the C<lambda:ListEventSources>

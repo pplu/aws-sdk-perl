@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-Ciphertext including metadata.
+Ciphertext to be decrypted. The blob includes metadata.
 
 
 
@@ -71,8 +71,7 @@ more information, see Encryption Context.
 
   
 
-A list of grant tokens that represent grants which can be used to
-provide long term permissions to perform decryption.
+For more information, see Grant Tokens.
 
 
 

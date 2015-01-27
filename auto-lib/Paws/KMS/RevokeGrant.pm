@@ -53,7 +53,19 @@ Identifier of the grant to be revoked.
 
   
 
-Unique identifier of the key associated with the grant.
+A unique identifier for the customer master key associated with the
+grant. This value can be a globally unique identifier or the fully
+specified ARN to a key.
+
+=over
+
+=item * Key ARN Example -
+arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+
+=item * Globally Unique Key ID Example -
+12345678-1234-1234-123456789012
+
+=back
 
 
 

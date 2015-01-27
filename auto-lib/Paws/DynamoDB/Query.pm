@@ -97,11 +97,6 @@ cannot fetch attributes from the parent table.
 
   
 
-There is a newer parameter available. Use I<ConditionExpression>
-instead. Note that if you use I<ConditionalOperator> and I<
-ConditionExpression > at the same time, DynamoDB will return a
-I<ValidationException> exception.
-
 This parameter does not support lists or maps.
 
 A logical operator to apply to the conditions in the I<QueryFilter>
@@ -179,8 +174,7 @@ Binary. No set data types are allowed.
   
 
 One or more substitution tokens for simplifying complex expressions.
-The following are some use cases for an I<ExpressionAttributeNames>
-value:
+The following are some use cases for using I<ExpressionAttributeNames>:
 
 =over
 
@@ -220,7 +214,7 @@ I<ExpressionAttributeNames>:
 
 =item *
 
-C<{"n":"order.customerInfo.LastName"}>
+C<{"
 
 =back
 
@@ -233,6 +227,9 @@ The expression can now be simplified as follows:
 C<
 
 =back
+
+For more information on expression attribute names, go to Accessing
+Item Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -249,38 +246,24 @@ C<
 
 One or more values that can be substituted in an expression.
 
-Use the B<:> character in an expression to dereference an attribute
-value. For example, consider the following expression:
+Use the B<:> (colon) character in an expression to dereference an
+attribute value. For example, suppose that you wanted to check whether
+the value of the I<ProductStatus> attribute was one of the following:
 
-=over
+C<Available | Backordered | Discontinued>
 
-=item *
+You would first need to specify I<ExpressionAttributeValues> as
+follows:
 
-C<ProductStatus IN ("Available","Backordered","Discontinued")>
+C<{ ":avail":{"S":"Available"}, ":back":{"S":"Backordered"},
+":disc":{"S":"Discontinued"} }>
 
-=back
+You could then use these values in an expression, such as this:
 
-Now suppose that you specified the following for
-I<ExpressionAttributeValues>:
+C<ProductStatus IN (:avail, :back, :disc)>
 
-=over
-
-=item *
-
-C<{ "a":{"S":"Available"}, "b":{"S":"Backordered"},
-"d":{"S":"Discontinued"} }>
-
-=back
-
-The expression can now be simplified as follows:
-
-=over
-
-=item *
-
-C<ProductStatus IN (:a,:b,:c)>
-
-=back
+For more information on expression attribute values, go to Specifying
+Conditions in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -295,11 +278,18 @@ C<ProductStatus IN (:a,:b,:c)>
 
   
 
-A condition that evaluates the query results and returns only the
-desired values.
+A condition that evaluates the query results after the items are read
+and returns only the desired values.
 
 The condition you specify is applied to the items queried; any items
 that do not match the expression are not returned.
+
+Filter expressions are applied after the items are read, so they do not
+limit the capacity used.
+
+A I<FilterExpression> has the same syntax as a I<ConditionExpression>.
+For more information on expression syntax, go to Specifying Conditions
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -336,6 +326,9 @@ specify the hash key attribute name and value as an C<EQ> condition.
 You can optionally specify a second condition, referring to the range
 key attribute.
 
+If you do not specify a range key condition, all items under the hash
+key will be fetched and processed. Any filters will applied after this.
+
 For a query on an index, you can have conditions only on the index key
 attributes. You must specify the index hash attribute name and value as
 an EQ condition. You can optionally specify a second condition,
@@ -356,7 +349,7 @@ For type Number, value comparisons are numeric.
 
 String value comparisons for greater than, equals, or less than are
 based on ASCII character code values. For example, C<a> is greater than
-C<A>, and C<aa> is greater than C<B>. For a list of code values, see
+C<A>, and C<a> is greater than C<B>. For a list of code values, see
 http://en.wikipedia.org/wiki/ASCII
 
 For Binary, DynamoDB treats each byte of the binary data as unsigned
@@ -501,13 +494,17 @@ Guide>.
 
   
 
-One or more attributes to retrieve from the table. These attributes can
-include scalars, sets, or elements of a JSON document. The attributes
-in the expression must be separated by commas.
+A string that identifies one or more attributes to retrieve from the
+table. These attributes can include scalars, sets, or elements of a
+JSON document. The attributes in the expression must be separated by
+commas.
 
 If no attribute names are specified, then all attributes will be
 returned. If any of the requested attributes are not found, they will
 not appear in the result.
+
+For more information on projection expressions, go to Accessing Item
+Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -528,8 +525,11 @@ time, DynamoDB will return a I<ValidationException> exception.
 
 This parameter does not support lists or maps.
 
-A condition that evaluates the query results and returns only the
-desired values.
+A condition that evaluates the query results after the items are read
+and returns only the desired values.
+
+Query filters are applied after the items are read, so they do not
+limit the capacity used.
 
 If you specify more than one condition in the I<QueryFilter> map, then
 by default all of the conditions must evaluate to true. In other words,
@@ -537,6 +537,9 @@ the conditions are ANDed together. (You can use the
 I<ConditionalOperator> parameter to OR the conditions instead. If you
 do this, then at least one of the conditions must evaluate to true,
 rather than all of them.)
+
+I<QueryFilter> does not allow key attributes. You cannot define a
+filter condition on a hash key or range key.
 
 Each I<QueryFilter> element consists of an attribute name to compare,
 along with the following:
@@ -553,7 +556,7 @@ For type Number, value comparisons are numeric.
 
 String value comparisons for greater than, equals, or less than are
 based on ASCII character code values. For example, C<a> is greater than
-C<A>, and C<aa> is greater than C<B>. For a list of code values, see
+C<A>, and C<a> is greater than C<B>. For a list of code values, see
 http://en.wikipedia.org/wiki/ASCII
 
 For type Binary, DynamoDB treats each byte of the binary data as

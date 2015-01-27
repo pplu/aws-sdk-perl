@@ -2,6 +2,7 @@
 package Paws::ImportExport::UpdateJobOutput {
   use Moose;
   with 'Paws::API::ResultParser';
+  has ArtifactList => (is => 'ro', isa => 'ArrayRef[Paws::ImportExport::Artifact]');
   has Success => (is => 'ro', isa => 'Bool');
   has WarningMessage => (is => 'ro', isa => 'Str');
 
@@ -16,6 +17,9 @@ Paws::ImportExport::UpdateJobOutput
 
 =head1 ATTRIBUTES
 
+=head2 ArtifactList => ArrayRef[Paws::ImportExport::Artifact]
+
+  
 =head2 Success => Bool
 
   

@@ -57,8 +57,7 @@ during the encryption and decryption processes.
 
   
 
-A list of grant tokens that represent grants which can be used to
-provide long term permissions to generate a key.
+For more information, see Grant Tokens.
 
 
 
@@ -73,8 +72,24 @@ provide long term permissions to generate a key.
 
   
 
-Unique identifier of the key. This can be an ARN, an alias, or a
-globally unique identifier.
+A unique identifier for the customer master key. This value can be a
+globally unique identifier, a fully specified ARN to either an alias or
+a key, or an alias name prefixed by "alias/".
+
+=over
+
+=item * Key ARN Example -
+arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+
+=item * Alias ARN Example -
+arn:aws:kms:us-east-1:123456789012:/alias/MyAliasName
+
+=item * Globally Unique Key ID Example -
+12345678-1234-1234-123456789012
+
+=item * Alias Name Example - alias/MyAliasName
+
+=back
 
 
 
@@ -106,7 +121,8 @@ this can be AES_128 or AES_256.
   
 
 Integer that contains the number of bytes to generate. Common values
-are 128, 256, 512, 1024 and so on.
+are 128, 256, 512, 1024 and so on. We recommend that you use the
+C<KeySpec> parameter instead.
 
 
 

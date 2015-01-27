@@ -74,7 +74,7 @@ the C<keyId> parameter.
 
   
 
-List of grant tokens.
+For more information, see Grant Tokens.
 
 
 
@@ -89,8 +89,18 @@ List of grant tokens.
 
   
 
-A unique key identifier for a customer master key. This value can be a
-globally unique identifier, an ARN, or an alias.
+A unique identifier for the customer master key. This value can be a
+globally unique identifier or the fully specified ARN to a key.
+
+=over
+
+=item * Key ARN Example -
+arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+
+=item * Globally Unique Key ID Example -
+12345678-1234-1234-123456789012
+
+=back
 
 
 
@@ -123,6 +133,8 @@ of one or more of the following values:
 =item 6. ReEncryptTo
 
 =item 7. CreateGrant
+
+=item 8. RetireGrant
 
 =back
 

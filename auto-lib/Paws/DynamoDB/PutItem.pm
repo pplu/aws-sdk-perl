@@ -95,7 +95,10 @@ An expression can contain any of the following:
 
 =item *
 
-Boolean functions: C<ATTRIBUTE_EXIST | CONTAINS | BEGINS_WITH>
+Boolean functions: C<attribute_exists | attribute_not_exists | contains
+| begins_with>
+
+These function names are case-sensitive.
 
 =item *
 
@@ -104,9 +107,12 @@ E<gt>= | BETWEEN | IN>
 
 =item *
 
-Logical operators: C<NOT | AND | OR>
+Logical operators: C<AND | OR | NOT>
 
 =back
+
+For more information on condition expressions, go to Specifying
+Conditions in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -161,7 +167,7 @@ For type Number, value comparisons are numeric.
 
 String value comparisons for greater than, equals, or less than are
 based on ASCII character code values. For example, C<a> is greater than
-C<A>, and C<aa> is greater than C<B>. For a list of code values, see
+C<A>, and C<a> is greater than C<B>. For a list of code values, see
 http://en.wikipedia.org/wiki/ASCII
 
 For type Binary, DynamoDB treats each byte of the binary data as
@@ -256,10 +262,22 @@ C<{"NS":["6", "2", "1"]}>.
 C<NOT_NULL> : The attribute exists. C<NOT_NULL> is supported for all
 datatypes, including lists and maps.
 
+This operator tests for the existence of an attribute, not its data
+type. If the data type of attribute "C<a>" is null, and you evaluate it
+using C<NOT_NULL>, the result is a Boolean I<true>. This result is
+because the attribute "C<a>" exists; its data type is not relevant to
+the C<NOT_NULL> comparison operator.
+
 =item *
 
 C<NULL> : The attribute does not exist. C<NULL> is supported for all
 datatypes, including lists and maps.
+
+This operator tests for the nonexistence of an attribute, not its data
+type. If the data type of attribute "C<a>" is null, and you evaluate it
+using C<NULL>, the result is a Boolean I<false>. This is because the
+attribute "C<a>" exists; its data type is not relevant to the C<NULL>
+comparison operator.
 
 =item *
 
@@ -371,6 +389,8 @@ condition evaluates to false.
 
 =back
 
+Note that the default value for I<Exists> is C<true>.
+
 =back
 
 The I<Value> and I<Exists> parameters are incompatible with
@@ -392,8 +412,7 @@ I<ValidationException> exception.
   
 
 One or more substitution tokens for simplifying complex expressions.
-The following are some use cases for an I<ExpressionAttributeNames>
-value:
+The following are some use cases for using I<ExpressionAttributeNames>:
 
 =over
 
@@ -433,7 +452,7 @@ I<ExpressionAttributeNames>:
 
 =item *
 
-C<{"n":"order.customerInfo.LastName"}>
+C<{"
 
 =back
 
@@ -446,6 +465,9 @@ The expression can now be simplified as follows:
 C<
 
 =back
+
+For more information on expression attribute names, go to Accessing
+Item Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -462,38 +484,24 @@ C<
 
 One or more values that can be substituted in an expression.
 
-Use the B<:> character in an expression to dereference an attribute
-value. For example, consider the following expression:
+Use the B<:> (colon) character in an expression to dereference an
+attribute value. For example, suppose that you wanted to check whether
+the value of the I<ProductStatus> attribute was one of the following:
 
-=over
+C<Available | Backordered | Discontinued>
 
-=item *
+You would first need to specify I<ExpressionAttributeValues> as
+follows:
 
-C<ProductStatus IN ("Available","Backordered","Discontinued")>
+C<{ ":avail":{"S":"Available"}, ":back":{"S":"Backordered"},
+":disc":{"S":"Discontinued"} }>
 
-=back
+You could then use these values in an expression, such as this:
 
-Now suppose that you specified the following for
-I<ExpressionAttributeValues>:
+C<ProductStatus IN (:avail, :back, :disc)>
 
-=over
-
-=item *
-
-C<{ "a":{"S":"Available"}, "b":{"S":"Backordered"},
-"d":{"S":"Discontinued"} }>
-
-=back
-
-The expression can now be simplified as follows:
-
-=over
-
-=item *
-
-C<ProductStatus IN (:a,:b,:c)>
-
-=back
+For more information on expression attribute values, go to Specifying
+Conditions in the I<Amazon DynamoDB Developer Guide>.
 
 
 

@@ -1,6 +1,7 @@
 
 package Paws::DynamoDB::UpdateTable {
   use Moose;
+  has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]');
   has GlobalSecondaryIndexUpdates => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexUpdate]');
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
@@ -35,12 +36,47 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+=head2 AttributeDefinitions => ArrayRef[Paws::DynamoDB::AttributeDefinition]
+
+  
+
+An array of attributes that describe the key schema for the table and
+indexes. If you are adding a new global secondary index to the table,
+I<AttributeDefinitions> must include the key element(s) of the new
+index.
+
+
+
+
+
+
+
+
+
+
 =head2 GlobalSecondaryIndexUpdates => ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexUpdate]
 
   
 
-An array of one or more global secondary indexes on the table, together
-with provisioned throughput settings for each index.
+An array of one or more global secondary indexes for the table. For
+each index in the array, you can specify one action:
+
+=over
+
+=item *
+
+I<Create> - add a new global secondary index to the table.
+
+=item *
+
+I<Update> - modify the provisioned throughput settings of an existing
+global secondary index.
+
+=item *
+
+I<Delete> - remove a global secondary index from the table.
+
+=back
 
 
 

@@ -40,9 +40,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-Name:value pair that specifies the encryption context to be used for
-authenticated encryption. For more information, see Authenticated
-Encryption.
+Name/value pair that specifies the encryption context to be used for
+authenticated encryption. If used here, the same value must be supplied
+to the C<Decrypt> API or decryption will fail. For more information,
+see Encryption Context.
 
 
 
@@ -57,8 +58,7 @@ Encryption.
 
   
 
-A list of grant tokens that represent grants which can be used to
-provide long term permissions to perform encryption.
+For more information, see Grant Tokens.
 
 
 
@@ -73,8 +73,24 @@ provide long term permissions to perform encryption.
 
   
 
-Unique identifier of the customer master. This can be an ARN, an alias,
-or the Key ID.
+A unique identifier for the customer master key. This value can be a
+globally unique identifier, a fully specified ARN to either an alias or
+a key, or an alias name prefixed by "alias/".
+
+=over
+
+=item * Key ARN Example -
+arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+
+=item * Alias ARN Example -
+arn:aws:kms:us-east-1:123456789012:/alias/MyAliasName
+
+=item * Globally Unique Key ID Example -
+12345678-1234-1234-123456789012
+
+=item * Alias Name Example - alias/MyAliasName
+
+=back
 
 
 

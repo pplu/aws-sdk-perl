@@ -71,7 +71,24 @@ Encryption context to be used when the data is re-encrypted.
 
   
 
-Key identifier of the key used to re-encrypt the data.
+A unique identifier for the customer master key used to re-encrypt the
+data. This value can be a globally unique identifier, a fully specified
+ARN to either an alias or a key, or an alias name prefixed by "alias/".
+
+=over
+
+=item * Key ARN Example -
+arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+
+=item * Alias ARN Example -
+arn:aws:kms:us-east-1:123456789012:/alias/MyAliasName
+
+=item * Globally Unique Key ID Example -
+12345678-1234-1234-123456789012
+
+=item * Alias Name Example - alias/MyAliasName
+
+=back
 
 
 
@@ -86,8 +103,7 @@ Key identifier of the key used to re-encrypt the data.
 
   
 
-Grant tokens that identify the grants that have permissions for the
-encryption and decryption process.
+For more information, see Grant Tokens.
 
 
 

@@ -88,7 +88,9 @@ Paws::DynamoDB - Perl Interface to AWS Amazon DynamoDB
 
 
 
-Amazon DynamoDB B<Overview>
+Amazon DynamoDB
+
+B<Overview>
 
 This is the Amazon DynamoDB API Reference. This guide provides
 descriptions and samples of the low-level DynamoDB API. For information
@@ -331,6 +333,9 @@ or more tables. A single call to I<BatchWriteItem> can write up to 16
 MB of data, which can comprise as many as 25 put or delete requests.
 Individual items to be written can be as large as 400 KB.
 
+I<BatchWriteItem> cannot update items. To update items, use the
+I<UpdateItem> API.
+
 The individual I<PutItem> and I<DeleteItem> operations specified in
 I<BatchWriteItem> are atomic; however I<BatchWriteItem> as a whole is
 not. If any requested operations fail because the table's provisioned
@@ -446,9 +451,11 @@ I<TableStatus> of C<CREATING>. After the table is created, DynamoDB
 sets the I<TableStatus> to C<ACTIVE>. You can perform read and write
 operations only on an C<ACTIVE> table.
 
-If you want to create multiple tables with secondary indexes on them,
-you must create them sequentially. Only one table with secondary
-indexes can be in the C<CREATING> state at any given time.
+You can optionally define secondary indexes on the new table, as part
+of the I<CreateTable> operation. If you want to create multiple tables
+with secondary indexes on them, you must create the tables
+sequentially. Only one table with secondary indexes can be in the
+C<CREATING> state at any given time.
 
 You can use the I<DescribeTable> API to check the table status.
 
@@ -513,6 +520,10 @@ I<ResourceInUseException>. If the specified table does not exist,
 DynamoDB returns a I<ResourceNotFoundException>. If table is already in
 the C<DELETING> state, no error is returned.
 
+DynamoDB might continue to accept data read and write operations, such
+as I<GetItem> and I<PutItem>, on a table in the C<DELETING> state until
+the table deletion is complete.
+
 When you delete a table, any indexes on that table are also deleted.
 
 Use the I<DescribeTable> API to check the status of the table.
@@ -538,6 +549,12 @@ Use the I<DescribeTable> API to check the status of the table.
 Returns information about the table, including the current status of
 the table, when it was created, the primary key schema, and any indexes
 on the table.
+
+If you issue a DescribeTable request immediately after a CreateTable
+request, DynamoDB might return a ResourceNotFoundException. This is
+because DescribeTable uses an eventually consistent query, and the
+metadata for your table might not be available at that moment. Wait for
+a few seconds, and then try the DescribeTable request again.
 
 
 
@@ -628,6 +645,10 @@ You can request that I<PutItem> return either a copy of the original
 item (before the update) or a copy of the updated item (after the
 update). For more information, see the I<ReturnValues> description
 below.
+
+To prevent a new item from replacing an existing item, use a
+conditional put operation with I<ComparisonOperator> set to C<NULL> for
+the primary key attribute, or attributes.
 
 For more information about using this API, see Working with Items in
 the I<Amazon DynamoDB Developer Guide>.
@@ -756,24 +777,24 @@ I<UpdateItem> operation using the I<ReturnValues> parameter.
 
   
 
-Updates the provisioned throughput for the given table. Setting the
-throughput for a table helps you manage performance and is part of the
-provisioned throughput feature of DynamoDB.
+Updates the provisioned throughput for the given table, or manages the
+global secondary indexes on the table.
 
-The provisioned throughput values can be upgraded or downgraded based
-on the maximums and minimums listed in the Limits section in the
+You can increase or decrease the table's provisioned throughput values
+within the maximums and minimums listed in the Limits section in the
 I<Amazon DynamoDB Developer Guide>.
 
-The table must be in the C<ACTIVE> state for this operation to succeed.
+In addition, you can use I<UpdateTable> to add, modify or delete global
+secondary indexes on the table. For more information, see Managing
+Global Secondary Indexes in the I<Amazon DynamoDB Developer Guide>.
+
+The table must be in the C<ACTIVE> state for I<UpdateTable> to succeed.
 I<UpdateTable> is an asynchronous operation; while executing the
 operation, the table is in the C<UPDATING> state. While the table is in
 the C<UPDATING> state, the table still has the provisioned throughput
-from before the call. The new provisioned throughput setting is in
-effect only when the table returns to the C<ACTIVE> state after the
-I<UpdateTable> operation.
-
-You cannot add, modify or delete indexes using I<UpdateTable>. Indexes
-can only be defined at table creation time.
+from before the call. The table's new provisioned throughput settings
+go into effect when the table returns to the C<ACTIVE> state; at that
+point, the I<UpdateTable> operation is complete.
 
 
 

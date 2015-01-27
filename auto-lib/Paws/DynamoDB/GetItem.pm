@@ -89,8 +89,7 @@ consistent reads; otherwise, eventually consistent reads are used.
   
 
 One or more substitution tokens for simplifying complex expressions.
-The following are some use cases for an I<ExpressionAttributeNames>
-value:
+The following are some use cases for using I<ExpressionAttributeNames>:
 
 =over
 
@@ -130,7 +129,7 @@ I<ExpressionAttributeNames>:
 
 =item *
 
-C<{"n":"order.customerInfo.LastName"}>
+C<{"
 
 =back
 
@@ -143,6 +142,9 @@ The expression can now be simplified as follows:
 C<
 
 =back
+
+For more information on expression attribute names, go to Accessing
+Item Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -178,13 +180,17 @@ both the hash attribute and the range attribute.
 
   
 
-One or more attributes to retrieve from the table. These attributes can
-include scalars, sets, or elements of a JSON document. The attributes
-in the expression must be separated by commas.
+A string that identifies one or more attributes to retrieve from the
+table. These attributes can include scalars, sets, or elements of a
+JSON document. The attributes in the expression must be separated by
+commas.
 
 If no attribute names are specified, then all attributes will be
 returned. If any of the requested attributes are not found, they will
 not appear in the result.
+
+For more information on projection expressions, go to Accessing Item
+Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 
 

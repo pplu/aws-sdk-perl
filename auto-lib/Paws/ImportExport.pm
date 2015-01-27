@@ -23,6 +23,10 @@ package Paws::ImportExport {
     my $self = shift;
     return $self->do_call('Paws::ImportExport::CreateJob', @_);
   }
+  sub GetShippingLabel {
+    my $self = shift;
+    return $self->do_call('Paws::ImportExport::GetShippingLabel', @_);
+  }
   sub GetStatus {
     my $self = shift;
     return $self->do_call('Paws::ImportExport::GetStatus', @_);
@@ -109,6 +113,29 @@ describes the data transfer specifics. The response to the request
 includes a job ID, which you can use in other operations, a signature
 that you use to identify your storage device, and the address where you
 should ship your storage device.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetShippingLabel()
+
+  Arguments described in: L<Paws::ImportExport::GetShippingLabel>
+
+  Returns: L<Paws::ImportExport::GetShippingLabelOutput>
+
+  
+
+This operation returns information about a job, including where the job
+is in the processing pipeline, the status of the results, and the
+signature value associated with the job. You can only return
+information about jobs you own.
 
 
 
