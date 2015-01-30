@@ -2,6 +2,7 @@
 
 use lib 'auto-lib', 'lib';
 
+use 5.010;
 use strict;
 use warnings;
 
@@ -9,6 +10,9 @@ use Data::Printer;
 use Paws;
 use Moose::Util;
 use ARGV::Struct;
+use Term::ANSIColor 2.00 qw();
+use Hash::Flatten qw//;
+use List::Util qw(reduce);
 
 my @args = @ARGV;
 my @service_args;
@@ -29,7 +33,10 @@ while ($end == 0 and my $next_arg = shift @args) {
   }
 }
 
-die "no service specified" if (not defined $service_name);
+if (not defined $service_name) {
+  #TODO: List services
+  die "no service specified";
+}
 
 my $aws;
 if ($ENV{PAWS_CALLER}){
@@ -65,6 +72,10 @@ if (not defined $method_name or not $call = $service->meta->find_method_by_name(
 
 die "invalid method" if ($call->package_name !~ m/^Paws\:\:/);
 
+my $help_with_method_call = grep { $_ =~ m/^help$/i } @args;
+
+die "HELP!!!" if ($help_with_method_call);
+
 my %args = %{ ARGV::Struct->new(argv => [ '{', @args, '}' ])->parse };
 
 # $call is a Meta Method Object. It can be called via execute
@@ -79,13 +90,11 @@ if ($@) {
   exit 1;
 }
 
-my $h = $service->to_hash($result);
-
-if ($h) {
-  use Hash::Flatten qw//;
+if (ref($result)) {
+  my $h = $service->to_hash($result);
   $h = Hash::Flatten::flatten($h, { HashDelimiter => '.', ArrayDelimiter => '.' });
+
+  my $max_chars = reduce { length($a) > length($b) ? length($a) : length($b) } keys %$h;
+  #TODO: colorize
+  say "$_: " . (' ' x ($max_chars - length($_))) .  $h->{ $_ } for (sort keys %$h);
 }
-
-use Data::Printer;
-p %{ $h };
-
