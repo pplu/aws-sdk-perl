@@ -4,57 +4,57 @@ use Paws::API;
 
 package Paws::Config {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'config');
-  has version => (is => 'ro', isa => 'Str', default => '2014-11-12');
-  has target_prefix => (is => 'ro', isa => 'Str', default => 'StarlingDoveService');
-  has json_version => (is => 'ro', isa => 'Str', default => "1.1");
+  sub service { 'config' }
+  sub version { '2014-11-12' }
+  sub target_prefix { 'StarlingDoveService' }
+  sub json_version { "1.1" }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
   sub DeleteDeliveryChannel {
     my $self = shift;
-    return $self->do_call('Paws::Config::DeleteDeliveryChannel', @_);
+    return $self->caller->do_call('Paws::Config::DeleteDeliveryChannel', @_);
   }
   sub DeliverConfigSnapshot {
     my $self = shift;
-    return $self->do_call('Paws::Config::DeliverConfigSnapshot', @_);
+    return $self->caller->do_call('Paws::Config::DeliverConfigSnapshot', @_);
   }
   sub DescribeConfigurationRecorders {
     my $self = shift;
-    return $self->do_call('Paws::Config::DescribeConfigurationRecorders', @_);
+    return $self->caller->do_call('Paws::Config::DescribeConfigurationRecorders', @_);
   }
   sub DescribeConfigurationRecorderStatus {
     my $self = shift;
-    return $self->do_call('Paws::Config::DescribeConfigurationRecorderStatus', @_);
+    return $self->caller->do_call('Paws::Config::DescribeConfigurationRecorderStatus', @_);
   }
   sub DescribeDeliveryChannels {
     my $self = shift;
-    return $self->do_call('Paws::Config::DescribeDeliveryChannels', @_);
+    return $self->caller->do_call('Paws::Config::DescribeDeliveryChannels', @_);
   }
   sub DescribeDeliveryChannelStatus {
     my $self = shift;
-    return $self->do_call('Paws::Config::DescribeDeliveryChannelStatus', @_);
+    return $self->caller->do_call('Paws::Config::DescribeDeliveryChannelStatus', @_);
   }
   sub GetResourceConfigHistory {
     my $self = shift;
-    return $self->do_call('Paws::Config::GetResourceConfigHistory', @_);
+    return $self->caller->do_call('Paws::Config::GetResourceConfigHistory', @_);
   }
   sub PutConfigurationRecorder {
     my $self = shift;
-    return $self->do_call('Paws::Config::PutConfigurationRecorder', @_);
+    return $self->caller->do_call('Paws::Config::PutConfigurationRecorder', @_);
   }
   sub PutDeliveryChannel {
     my $self = shift;
-    return $self->do_call('Paws::Config::PutDeliveryChannel', @_);
+    return $self->caller->do_call('Paws::Config::PutDeliveryChannel', @_);
   }
   sub StartConfigurationRecorder {
     my $self = shift;
-    return $self->do_call('Paws::Config::StartConfigurationRecorder', @_);
+    return $self->caller->do_call('Paws::Config::StartConfigurationRecorder', @_);
   }
   sub StopConfigurationRecorder {
     my $self = shift;
-    return $self->do_call('Paws::Config::StopConfigurationRecorder', @_);
+    return $self->caller->do_call('Paws::Config::StopConfigurationRecorder', @_);
   }
 }
 1;

@@ -4,112 +4,112 @@ use Paws::API;
 
 package Paws::SNS {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'sns');
-  has version => (is => 'ro', isa => 'Str', default => '2010-03-31');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
+  sub service { 'sns' }
+  sub version { '2010-03-31' }
+  sub flattened_arrays { 0 }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
   
   sub AddPermission {
     my $self = shift;
-    return $self->do_call('Paws::SNS::AddPermission', @_);
+    return $self->caller->do_call('Paws::SNS::AddPermission', @_);
   }
   sub ConfirmSubscription {
     my $self = shift;
-    return $self->do_call('Paws::SNS::ConfirmSubscription', @_);
+    return $self->caller->do_call('Paws::SNS::ConfirmSubscription', @_);
   }
   sub CreatePlatformApplication {
     my $self = shift;
-    return $self->do_call('Paws::SNS::CreatePlatformApplication', @_);
+    return $self->caller->do_call('Paws::SNS::CreatePlatformApplication', @_);
   }
   sub CreatePlatformEndpoint {
     my $self = shift;
-    return $self->do_call('Paws::SNS::CreatePlatformEndpoint', @_);
+    return $self->caller->do_call('Paws::SNS::CreatePlatformEndpoint', @_);
   }
   sub CreateTopic {
     my $self = shift;
-    return $self->do_call('Paws::SNS::CreateTopic', @_);
+    return $self->caller->do_call('Paws::SNS::CreateTopic', @_);
   }
   sub DeleteEndpoint {
     my $self = shift;
-    return $self->do_call('Paws::SNS::DeleteEndpoint', @_);
+    return $self->caller->do_call('Paws::SNS::DeleteEndpoint', @_);
   }
   sub DeletePlatformApplication {
     my $self = shift;
-    return $self->do_call('Paws::SNS::DeletePlatformApplication', @_);
+    return $self->caller->do_call('Paws::SNS::DeletePlatformApplication', @_);
   }
   sub DeleteTopic {
     my $self = shift;
-    return $self->do_call('Paws::SNS::DeleteTopic', @_);
+    return $self->caller->do_call('Paws::SNS::DeleteTopic', @_);
   }
   sub GetEndpointAttributes {
     my $self = shift;
-    return $self->do_call('Paws::SNS::GetEndpointAttributes', @_);
+    return $self->caller->do_call('Paws::SNS::GetEndpointAttributes', @_);
   }
   sub GetPlatformApplicationAttributes {
     my $self = shift;
-    return $self->do_call('Paws::SNS::GetPlatformApplicationAttributes', @_);
+    return $self->caller->do_call('Paws::SNS::GetPlatformApplicationAttributes', @_);
   }
   sub GetSubscriptionAttributes {
     my $self = shift;
-    return $self->do_call('Paws::SNS::GetSubscriptionAttributes', @_);
+    return $self->caller->do_call('Paws::SNS::GetSubscriptionAttributes', @_);
   }
   sub GetTopicAttributes {
     my $self = shift;
-    return $self->do_call('Paws::SNS::GetTopicAttributes', @_);
+    return $self->caller->do_call('Paws::SNS::GetTopicAttributes', @_);
   }
   sub ListEndpointsByPlatformApplication {
     my $self = shift;
-    return $self->do_call('Paws::SNS::ListEndpointsByPlatformApplication', @_);
+    return $self->caller->do_call('Paws::SNS::ListEndpointsByPlatformApplication', @_);
   }
   sub ListPlatformApplications {
     my $self = shift;
-    return $self->do_call('Paws::SNS::ListPlatformApplications', @_);
+    return $self->caller->do_call('Paws::SNS::ListPlatformApplications', @_);
   }
   sub ListSubscriptions {
     my $self = shift;
-    return $self->do_call('Paws::SNS::ListSubscriptions', @_);
+    return $self->caller->do_call('Paws::SNS::ListSubscriptions', @_);
   }
   sub ListSubscriptionsByTopic {
     my $self = shift;
-    return $self->do_call('Paws::SNS::ListSubscriptionsByTopic', @_);
+    return $self->caller->do_call('Paws::SNS::ListSubscriptionsByTopic', @_);
   }
   sub ListTopics {
     my $self = shift;
-    return $self->do_call('Paws::SNS::ListTopics', @_);
+    return $self->caller->do_call('Paws::SNS::ListTopics', @_);
   }
   sub Publish {
     my $self = shift;
-    return $self->do_call('Paws::SNS::Publish', @_);
+    return $self->caller->do_call('Paws::SNS::Publish', @_);
   }
   sub RemovePermission {
     my $self = shift;
-    return $self->do_call('Paws::SNS::RemovePermission', @_);
+    return $self->caller->do_call('Paws::SNS::RemovePermission', @_);
   }
   sub SetEndpointAttributes {
     my $self = shift;
-    return $self->do_call('Paws::SNS::SetEndpointAttributes', @_);
+    return $self->caller->do_call('Paws::SNS::SetEndpointAttributes', @_);
   }
   sub SetPlatformApplicationAttributes {
     my $self = shift;
-    return $self->do_call('Paws::SNS::SetPlatformApplicationAttributes', @_);
+    return $self->caller->do_call('Paws::SNS::SetPlatformApplicationAttributes', @_);
   }
   sub SetSubscriptionAttributes {
     my $self = shift;
-    return $self->do_call('Paws::SNS::SetSubscriptionAttributes', @_);
+    return $self->caller->do_call('Paws::SNS::SetSubscriptionAttributes', @_);
   }
   sub SetTopicAttributes {
     my $self = shift;
-    return $self->do_call('Paws::SNS::SetTopicAttributes', @_);
+    return $self->caller->do_call('Paws::SNS::SetTopicAttributes', @_);
   }
   sub Subscribe {
     my $self = shift;
-    return $self->do_call('Paws::SNS::Subscribe', @_);
+    return $self->caller->do_call('Paws::SNS::Subscribe', @_);
   }
   sub Unsubscribe {
     my $self = shift;
-    return $self->do_call('Paws::SNS::Unsubscribe', @_);
+    return $self->caller->do_call('Paws::SNS::Unsubscribe', @_);
   }
 }
 1;

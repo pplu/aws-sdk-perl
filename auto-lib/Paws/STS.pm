@@ -4,36 +4,36 @@ use Paws::API;
 
 package Paws::STS {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'sts');
-  has version => (is => 'ro', isa => 'Str', default => '2011-06-15');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
+  sub service { 'sts' }
+  sub version { '2011-06-15' }
+  sub flattened_arrays { 0 }
 
-  with 'Paws::API::SingleEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::SingleEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
   
   sub AssumeRole {
     my $self = shift;
-    return $self->do_call('Paws::STS::AssumeRole', @_);
+    return $self->caller->do_call('Paws::STS::AssumeRole', @_);
   }
   sub AssumeRoleWithSAML {
     my $self = shift;
-    return $self->do_call('Paws::STS::AssumeRoleWithSAML', @_);
+    return $self->caller->do_call('Paws::STS::AssumeRoleWithSAML', @_);
   }
   sub AssumeRoleWithWebIdentity {
     my $self = shift;
-    return $self->do_call('Paws::STS::AssumeRoleWithWebIdentity', @_);
+    return $self->caller->do_call('Paws::STS::AssumeRoleWithWebIdentity', @_);
   }
   sub DecodeAuthorizationMessage {
     my $self = shift;
-    return $self->do_call('Paws::STS::DecodeAuthorizationMessage', @_);
+    return $self->caller->do_call('Paws::STS::DecodeAuthorizationMessage', @_);
   }
   sub GetFederationToken {
     my $self = shift;
-    return $self->do_call('Paws::STS::GetFederationToken', @_);
+    return $self->caller->do_call('Paws::STS::GetFederationToken', @_);
   }
   sub GetSessionToken {
     my $self = shift;
-    return $self->do_call('Paws::STS::GetSessionToken', @_);
+    return $self->caller->do_call('Paws::STS::GetSessionToken', @_);
   }
 }
 1;

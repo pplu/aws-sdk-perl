@@ -5,208 +5,208 @@ use Paws::API;
 package Paws::S3 {
   warn "Paws::S3 is not stable / supported / entirely developed";
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 's3');
-  has version => (is => 'ro', isa => 'Str', default => '2006-03-01');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '1');
+  sub service { 's3' }
+  sub version { '2006-03-01' }
+  sub flattened_arrays { 1 }
 
-  with 'Paws::API::SingleEndpointCaller', 'Paws::Net::S3Signature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::SingleEndpointCaller', 'Paws::Net::S3Signature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
 
   
   sub AbortMultipartUpload {
     my $self = shift;
-    return $self->do_call('Paws::S3::AbortMultipartUpload', @_);
+    return $self->caller->do_call('Paws::S3::AbortMultipartUpload', @_);
   }
   sub CompleteMultipartUpload {
     my $self = shift;
-    return $self->do_call('Paws::S3::CompleteMultipartUpload', @_);
+    return $self->caller->do_call('Paws::S3::CompleteMultipartUpload', @_);
   }
   sub CopyObject {
     my $self = shift;
-    return $self->do_call('Paws::S3::CopyObject', @_);
+    return $self->caller->do_call('Paws::S3::CopyObject', @_);
   }
   sub CreateBucket {
     my $self = shift;
-    return $self->do_call('Paws::S3::CreateBucket', @_);
+    return $self->caller->do_call('Paws::S3::CreateBucket', @_);
   }
   sub CreateMultipartUpload {
     my $self = shift;
-    return $self->do_call('Paws::S3::CreateMultipartUpload', @_);
+    return $self->caller->do_call('Paws::S3::CreateMultipartUpload', @_);
   }
   sub DeleteBucket {
     my $self = shift;
-    return $self->do_call('Paws::S3::DeleteBucket', @_);
+    return $self->caller->do_call('Paws::S3::DeleteBucket', @_);
   }
   sub DeleteBucketCors {
     my $self = shift;
-    return $self->do_call('Paws::S3::DeleteBucketCors', @_);
+    return $self->caller->do_call('Paws::S3::DeleteBucketCors', @_);
   }
   sub DeleteBucketLifecycle {
     my $self = shift;
-    return $self->do_call('Paws::S3::DeleteBucketLifecycle', @_);
+    return $self->caller->do_call('Paws::S3::DeleteBucketLifecycle', @_);
   }
   sub DeleteBucketPolicy {
     my $self = shift;
-    return $self->do_call('Paws::S3::DeleteBucketPolicy', @_);
+    return $self->caller->do_call('Paws::S3::DeleteBucketPolicy', @_);
   }
   sub DeleteBucketTagging {
     my $self = shift;
-    return $self->do_call('Paws::S3::DeleteBucketTagging', @_);
+    return $self->caller->do_call('Paws::S3::DeleteBucketTagging', @_);
   }
   sub DeleteBucketWebsite {
     my $self = shift;
-    return $self->do_call('Paws::S3::DeleteBucketWebsite', @_);
+    return $self->caller->do_call('Paws::S3::DeleteBucketWebsite', @_);
   }
   sub DeleteObject {
     my $self = shift;
-    return $self->do_call('Paws::S3::DeleteObject', @_);
+    return $self->caller->do_call('Paws::S3::DeleteObject', @_);
   }
   sub DeleteObjects {
     my $self = shift;
-    return $self->do_call('Paws::S3::DeleteObjects', @_);
+    return $self->caller->do_call('Paws::S3::DeleteObjects', @_);
   }
   sub GetBucketAcl {
     my $self = shift;
-    return $self->do_call('Paws::S3::GetBucketAcl', @_);
+    return $self->caller->do_call('Paws::S3::GetBucketAcl', @_);
   }
   sub GetBucketCors {
     my $self = shift;
-    return $self->do_call('Paws::S3::GetBucketCors', @_);
+    return $self->caller->do_call('Paws::S3::GetBucketCors', @_);
   }
   sub GetBucketLifecycle {
     my $self = shift;
-    return $self->do_call('Paws::S3::GetBucketLifecycle', @_);
+    return $self->caller->do_call('Paws::S3::GetBucketLifecycle', @_);
   }
   sub GetBucketLocation {
     my $self = shift;
-    return $self->do_call('Paws::S3::GetBucketLocation', @_);
+    return $self->caller->do_call('Paws::S3::GetBucketLocation', @_);
   }
   sub GetBucketLogging {
     my $self = shift;
-    return $self->do_call('Paws::S3::GetBucketLogging', @_);
+    return $self->caller->do_call('Paws::S3::GetBucketLogging', @_);
   }
   sub GetBucketNotification {
     my $self = shift;
-    return $self->do_call('Paws::S3::GetBucketNotification', @_);
+    return $self->caller->do_call('Paws::S3::GetBucketNotification', @_);
   }
   sub GetBucketPolicy {
     my $self = shift;
-    return $self->do_call('Paws::S3::GetBucketPolicy', @_);
+    return $self->caller->do_call('Paws::S3::GetBucketPolicy', @_);
   }
   sub GetBucketRequestPayment {
     my $self = shift;
-    return $self->do_call('Paws::S3::GetBucketRequestPayment', @_);
+    return $self->caller->do_call('Paws::S3::GetBucketRequestPayment', @_);
   }
   sub GetBucketTagging {
     my $self = shift;
-    return $self->do_call('Paws::S3::GetBucketTagging', @_);
+    return $self->caller->do_call('Paws::S3::GetBucketTagging', @_);
   }
   sub GetBucketVersioning {
     my $self = shift;
-    return $self->do_call('Paws::S3::GetBucketVersioning', @_);
+    return $self->caller->do_call('Paws::S3::GetBucketVersioning', @_);
   }
   sub GetBucketWebsite {
     my $self = shift;
-    return $self->do_call('Paws::S3::GetBucketWebsite', @_);
+    return $self->caller->do_call('Paws::S3::GetBucketWebsite', @_);
   }
   sub GetObject {
     my $self = shift;
-    return $self->do_call('Paws::S3::GetObject', @_);
+    return $self->caller->do_call('Paws::S3::GetObject', @_);
   }
   sub GetObjectAcl {
     my $self = shift;
-    return $self->do_call('Paws::S3::GetObjectAcl', @_);
+    return $self->caller->do_call('Paws::S3::GetObjectAcl', @_);
   }
   sub GetObjectTorrent {
     my $self = shift;
-    return $self->do_call('Paws::S3::GetObjectTorrent', @_);
+    return $self->caller->do_call('Paws::S3::GetObjectTorrent', @_);
   }
   sub HeadBucket {
     my $self = shift;
-    return $self->do_call('Paws::S3::HeadBucket', @_);
+    return $self->caller->do_call('Paws::S3::HeadBucket', @_);
   }
   sub HeadObject {
     my $self = shift;
-    return $self->do_call('Paws::S3::HeadObject', @_);
+    return $self->caller->do_call('Paws::S3::HeadObject', @_);
   }
   sub ListBuckets {
     my $self = shift;
-    return $self->do_call('Paws::S3::ListBuckets', @_);
+    return $self->caller->do_call('Paws::S3::ListBuckets', @_);
   }
   sub ListMultipartUploads {
     my $self = shift;
-    return $self->do_call('Paws::S3::ListMultipartUploads', @_);
+    return $self->caller->do_call('Paws::S3::ListMultipartUploads', @_);
   }
   sub ListObjects {
     my $self = shift;
-    return $self->do_call('Paws::S3::ListObjects', @_);
+    return $self->caller->do_call('Paws::S3::ListObjects', @_);
   }
   sub ListObjectVersions {
     my $self = shift;
-    return $self->do_call('Paws::S3::ListObjectVersions', @_);
+    return $self->caller->do_call('Paws::S3::ListObjectVersions', @_);
   }
   sub ListParts {
     my $self = shift;
-    return $self->do_call('Paws::S3::ListParts', @_);
+    return $self->caller->do_call('Paws::S3::ListParts', @_);
   }
   sub PutBucketAcl {
     my $self = shift;
-    return $self->do_call('Paws::S3::PutBucketAcl', @_);
+    return $self->caller->do_call('Paws::S3::PutBucketAcl', @_);
   }
   sub PutBucketCors {
     my $self = shift;
-    return $self->do_call('Paws::S3::PutBucketCors', @_);
+    return $self->caller->do_call('Paws::S3::PutBucketCors', @_);
   }
   sub PutBucketLifecycle {
     my $self = shift;
-    return $self->do_call('Paws::S3::PutBucketLifecycle', @_);
+    return $self->caller->do_call('Paws::S3::PutBucketLifecycle', @_);
   }
   sub PutBucketLogging {
     my $self = shift;
-    return $self->do_call('Paws::S3::PutBucketLogging', @_);
+    return $self->caller->do_call('Paws::S3::PutBucketLogging', @_);
   }
   sub PutBucketNotification {
     my $self = shift;
-    return $self->do_call('Paws::S3::PutBucketNotification', @_);
+    return $self->caller->do_call('Paws::S3::PutBucketNotification', @_);
   }
   sub PutBucketPolicy {
     my $self = shift;
-    return $self->do_call('Paws::S3::PutBucketPolicy', @_);
+    return $self->caller->do_call('Paws::S3::PutBucketPolicy', @_);
   }
   sub PutBucketRequestPayment {
     my $self = shift;
-    return $self->do_call('Paws::S3::PutBucketRequestPayment', @_);
+    return $self->caller->do_call('Paws::S3::PutBucketRequestPayment', @_);
   }
   sub PutBucketTagging {
     my $self = shift;
-    return $self->do_call('Paws::S3::PutBucketTagging', @_);
+    return $self->caller->do_call('Paws::S3::PutBucketTagging', @_);
   }
   sub PutBucketVersioning {
     my $self = shift;
-    return $self->do_call('Paws::S3::PutBucketVersioning', @_);
+    return $self->caller->do_call('Paws::S3::PutBucketVersioning', @_);
   }
   sub PutBucketWebsite {
     my $self = shift;
-    return $self->do_call('Paws::S3::PutBucketWebsite', @_);
+    return $self->caller->do_call('Paws::S3::PutBucketWebsite', @_);
   }
   sub PutObject {
     my $self = shift;
-    return $self->do_call('Paws::S3::PutObject', @_);
+    return $self->caller->do_call('Paws::S3::PutObject', @_);
   }
   sub PutObjectAcl {
     my $self = shift;
-    return $self->do_call('Paws::S3::PutObjectAcl', @_);
+    return $self->caller->do_call('Paws::S3::PutObjectAcl', @_);
   }
   sub RestoreObject {
     my $self = shift;
-    return $self->do_call('Paws::S3::RestoreObject', @_);
+    return $self->caller->do_call('Paws::S3::RestoreObject', @_);
   }
   sub UploadPart {
     my $self = shift;
-    return $self->do_call('Paws::S3::UploadPart', @_);
+    return $self->caller->do_call('Paws::S3::UploadPart', @_);
   }
   sub UploadPartCopy {
     my $self = shift;
-    return $self->do_call('Paws::S3::UploadPartCopy', @_);
+    return $self->caller->do_call('Paws::S3::UploadPartCopy', @_);
   }
 }
 1;

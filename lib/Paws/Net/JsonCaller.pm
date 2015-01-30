@@ -69,7 +69,7 @@ package Paws::Net::JsonCaller {
 
   sub _api_caller {
     my ($self, $call_class, $call_params_object, $request) = @_;
-    $request->url($self->endpoint);
+    $request->url($self->_api_endpoint);
     $request->method('POST');
 
     $request->parameters({ Action => $call_class->_api_call,

@@ -4,65 +4,65 @@ use Paws::API;
 
 package Paws::DynamoDB {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'dynamodb');
-  has version => (is => 'ro', isa => 'Str', default => '2012-08-10');
-  has target_prefix => (is => 'ro', isa => 'Str', default => 'DynamoDB_20120810');
-  has json_version => (is => 'ro', isa => 'Str', default => "1.0");
+  sub service { 'dynamodb' }
+  sub version { '2012-08-10' }
+  sub target_prefix { 'DynamoDB_20120810' }
+  sub json_version { "1.0" }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
   sub BatchGetItem {
     my $self = shift;
-    return $self->do_call('Paws::DynamoDB::BatchGetItem', @_);
+    return $self->caller->do_call('Paws::DynamoDB::BatchGetItem', @_);
   }
   sub BatchWriteItem {
     my $self = shift;
-    return $self->do_call('Paws::DynamoDB::BatchWriteItem', @_);
+    return $self->caller->do_call('Paws::DynamoDB::BatchWriteItem', @_);
   }
   sub CreateTable {
     my $self = shift;
-    return $self->do_call('Paws::DynamoDB::CreateTable', @_);
+    return $self->caller->do_call('Paws::DynamoDB::CreateTable', @_);
   }
   sub DeleteItem {
     my $self = shift;
-    return $self->do_call('Paws::DynamoDB::DeleteItem', @_);
+    return $self->caller->do_call('Paws::DynamoDB::DeleteItem', @_);
   }
   sub DeleteTable {
     my $self = shift;
-    return $self->do_call('Paws::DynamoDB::DeleteTable', @_);
+    return $self->caller->do_call('Paws::DynamoDB::DeleteTable', @_);
   }
   sub DescribeTable {
     my $self = shift;
-    return $self->do_call('Paws::DynamoDB::DescribeTable', @_);
+    return $self->caller->do_call('Paws::DynamoDB::DescribeTable', @_);
   }
   sub GetItem {
     my $self = shift;
-    return $self->do_call('Paws::DynamoDB::GetItem', @_);
+    return $self->caller->do_call('Paws::DynamoDB::GetItem', @_);
   }
   sub ListTables {
     my $self = shift;
-    return $self->do_call('Paws::DynamoDB::ListTables', @_);
+    return $self->caller->do_call('Paws::DynamoDB::ListTables', @_);
   }
   sub PutItem {
     my $self = shift;
-    return $self->do_call('Paws::DynamoDB::PutItem', @_);
+    return $self->caller->do_call('Paws::DynamoDB::PutItem', @_);
   }
   sub Query {
     my $self = shift;
-    return $self->do_call('Paws::DynamoDB::Query', @_);
+    return $self->caller->do_call('Paws::DynamoDB::Query', @_);
   }
   sub Scan {
     my $self = shift;
-    return $self->do_call('Paws::DynamoDB::Scan', @_);
+    return $self->caller->do_call('Paws::DynamoDB::Scan', @_);
   }
   sub UpdateItem {
     my $self = shift;
-    return $self->do_call('Paws::DynamoDB::UpdateItem', @_);
+    return $self->caller->do_call('Paws::DynamoDB::UpdateItem', @_);
   }
   sub UpdateTable {
     my $self = shift;
-    return $self->do_call('Paws::DynamoDB::UpdateTable', @_);
+    return $self->caller->do_call('Paws::DynamoDB::UpdateTable', @_);
   }
 }
 1;

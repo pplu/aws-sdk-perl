@@ -70,17 +70,17 @@ enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %
 
 package [% c.api %] {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => '[% c.service %]');
-  has version => (is => 'ro', isa => 'Str', default => '[% c.version %]');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '[% c.flattened_arrays %]');
+  sub service { '[% c.service %]' }
+  sub version { '[% c.version %]' }
+  sub flattened_arrays { [% c.flattened_arrays %] }
 
-  with '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]', '[% c.response_role %]';
+  with 'Paws::API::Caller', '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]', '[% c.response_role %]';
 
   [% FOR op IN c.struct.operations.keys.sort %]
   [%- op_name = c.struct.operations.$op.name %]
   sub [% op_name %] {
     my $self = shift;
-    return $self->do_call('[% c.api %]::[% op_name %]', @_);
+    return $self->caller->do_call('[% c.api %]::[% op_name %]', @_);
   }
   [%- END %]
 }

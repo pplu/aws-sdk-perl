@@ -5,64 +5,64 @@ use Paws::API;
 package Paws::CognitoSync {
   warn "Paws::CognitoSync is not stable / supported / entirely developed";
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'cognito-sync');
-  has version => (is => 'ro', isa => 'Str', default => '2014-06-30');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
+  sub service { 'cognito-sync' }
+  sub version { '2014-06-30' }
+  sub flattened_arrays { 0 }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
   
   sub DeleteDataset {
     my $self = shift;
-    return $self->do_call('Paws::CognitoSync::DeleteDataset', @_);
+    return $self->caller->do_call('Paws::CognitoSync::DeleteDataset', @_);
   }
   sub DescribeDataset {
     my $self = shift;
-    return $self->do_call('Paws::CognitoSync::DescribeDataset', @_);
+    return $self->caller->do_call('Paws::CognitoSync::DescribeDataset', @_);
   }
   sub DescribeIdentityPoolUsage {
     my $self = shift;
-    return $self->do_call('Paws::CognitoSync::DescribeIdentityPoolUsage', @_);
+    return $self->caller->do_call('Paws::CognitoSync::DescribeIdentityPoolUsage', @_);
   }
   sub DescribeIdentityUsage {
     my $self = shift;
-    return $self->do_call('Paws::CognitoSync::DescribeIdentityUsage', @_);
+    return $self->caller->do_call('Paws::CognitoSync::DescribeIdentityUsage', @_);
   }
   sub GetIdentityPoolConfiguration {
     my $self = shift;
-    return $self->do_call('Paws::CognitoSync::GetIdentityPoolConfiguration', @_);
+    return $self->caller->do_call('Paws::CognitoSync::GetIdentityPoolConfiguration', @_);
   }
   sub ListDatasets {
     my $self = shift;
-    return $self->do_call('Paws::CognitoSync::ListDatasets', @_);
+    return $self->caller->do_call('Paws::CognitoSync::ListDatasets', @_);
   }
   sub ListIdentityPoolUsage {
     my $self = shift;
-    return $self->do_call('Paws::CognitoSync::ListIdentityPoolUsage', @_);
+    return $self->caller->do_call('Paws::CognitoSync::ListIdentityPoolUsage', @_);
   }
   sub ListRecords {
     my $self = shift;
-    return $self->do_call('Paws::CognitoSync::ListRecords', @_);
+    return $self->caller->do_call('Paws::CognitoSync::ListRecords', @_);
   }
   sub RegisterDevice {
     my $self = shift;
-    return $self->do_call('Paws::CognitoSync::RegisterDevice', @_);
+    return $self->caller->do_call('Paws::CognitoSync::RegisterDevice', @_);
   }
   sub SetIdentityPoolConfiguration {
     my $self = shift;
-    return $self->do_call('Paws::CognitoSync::SetIdentityPoolConfiguration', @_);
+    return $self->caller->do_call('Paws::CognitoSync::SetIdentityPoolConfiguration', @_);
   }
   sub SubscribeToDataset {
     my $self = shift;
-    return $self->do_call('Paws::CognitoSync::SubscribeToDataset', @_);
+    return $self->caller->do_call('Paws::CognitoSync::SubscribeToDataset', @_);
   }
   sub UnsubscribeFromDataset {
     my $self = shift;
-    return $self->do_call('Paws::CognitoSync::UnsubscribeFromDataset', @_);
+    return $self->caller->do_call('Paws::CognitoSync::UnsubscribeFromDataset', @_);
   }
   sub UpdateRecords {
     my $self = shift;
-    return $self->do_call('Paws::CognitoSync::UpdateRecords', @_);
+    return $self->caller->do_call('Paws::CognitoSync::UpdateRecords', @_);
   }
 }
 1;

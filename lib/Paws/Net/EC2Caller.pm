@@ -4,10 +4,10 @@ package Paws::Net::EC2Caller {
   use POSIX qw(strftime); 
   use Module::Runtime qw//;
 
-  has array_flatten_string => (is => 'ro', isa => 'Str', lazy => 1, default => sub {
+  sub array_flatten_string {
     my $self = shift;
     return ($self->flattened_arrays)?'%s.%d':'%s.member.%d';
-  });
+  }
 
   # converts objects into perl hash
   sub to_hash {
@@ -123,7 +123,7 @@ package Paws::Net::EC2Caller {
 
   sub _api_caller {
     my ($self, $call_class, $call_params_object, $request) = @_;
-    $request->url($self->endpoint);
+    $request->url($self->_api_endpoint);
     $request->method('POST');
 
     $request->parameters({ Action => $call_class->_api_call, 

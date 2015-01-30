@@ -5,24 +5,24 @@ use Paws::API;
 package Paws::CloudSearchDomain {
   warn "Paws::CloudSearchDomain is not stable / supported / entirely developed";
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'cloudsearchdomain');
-  has version => (is => 'ro', isa => 'Str', default => '2013-01-01');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
+  sub service { 'cloudsearchdomain' }
+  sub version { '2013-01-01' }
+  sub flattened_arrays { 0 }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
   
   sub Search {
     my $self = shift;
-    return $self->do_call('Paws::CloudSearchDomain::Search', @_);
+    return $self->caller->do_call('Paws::CloudSearchDomain::Search', @_);
   }
   sub Suggest {
     my $self = shift;
-    return $self->do_call('Paws::CloudSearchDomain::Suggest', @_);
+    return $self->caller->do_call('Paws::CloudSearchDomain::Suggest', @_);
   }
   sub UploadDocuments {
     my $self = shift;
-    return $self->do_call('Paws::CloudSearchDomain::UploadDocuments', @_);
+    return $self->caller->do_call('Paws::CloudSearchDomain::UploadDocuments', @_);
   }
 }
 1;

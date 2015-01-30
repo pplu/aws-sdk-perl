@@ -4,69 +4,69 @@ use Paws::API;
 
 package Paws::CloudWatchLogs {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'logs');
-  has version => (is => 'ro', isa => 'Str', default => '2014-03-28');
-  has target_prefix => (is => 'ro', isa => 'Str', default => 'Logs_20140328');
-  has json_version => (is => 'ro', isa => 'Str', default => "1.1");
+  sub service { 'logs' }
+  sub version { '2014-03-28' }
+  sub target_prefix { 'Logs_20140328' }
+  sub json_version { "1.1" }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
   sub CreateLogGroup {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatchLogs::CreateLogGroup', @_);
+    return $self->caller->do_call('Paws::CloudWatchLogs::CreateLogGroup', @_);
   }
   sub CreateLogStream {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatchLogs::CreateLogStream', @_);
+    return $self->caller->do_call('Paws::CloudWatchLogs::CreateLogStream', @_);
   }
   sub DeleteLogGroup {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatchLogs::DeleteLogGroup', @_);
+    return $self->caller->do_call('Paws::CloudWatchLogs::DeleteLogGroup', @_);
   }
   sub DeleteLogStream {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatchLogs::DeleteLogStream', @_);
+    return $self->caller->do_call('Paws::CloudWatchLogs::DeleteLogStream', @_);
   }
   sub DeleteMetricFilter {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatchLogs::DeleteMetricFilter', @_);
+    return $self->caller->do_call('Paws::CloudWatchLogs::DeleteMetricFilter', @_);
   }
   sub DeleteRetentionPolicy {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatchLogs::DeleteRetentionPolicy', @_);
+    return $self->caller->do_call('Paws::CloudWatchLogs::DeleteRetentionPolicy', @_);
   }
   sub DescribeLogGroups {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatchLogs::DescribeLogGroups', @_);
+    return $self->caller->do_call('Paws::CloudWatchLogs::DescribeLogGroups', @_);
   }
   sub DescribeLogStreams {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatchLogs::DescribeLogStreams', @_);
+    return $self->caller->do_call('Paws::CloudWatchLogs::DescribeLogStreams', @_);
   }
   sub DescribeMetricFilters {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatchLogs::DescribeMetricFilters', @_);
+    return $self->caller->do_call('Paws::CloudWatchLogs::DescribeMetricFilters', @_);
   }
   sub GetLogEvents {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatchLogs::GetLogEvents', @_);
+    return $self->caller->do_call('Paws::CloudWatchLogs::GetLogEvents', @_);
   }
   sub PutLogEvents {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatchLogs::PutLogEvents', @_);
+    return $self->caller->do_call('Paws::CloudWatchLogs::PutLogEvents', @_);
   }
   sub PutMetricFilter {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatchLogs::PutMetricFilter', @_);
+    return $self->caller->do_call('Paws::CloudWatchLogs::PutMetricFilter', @_);
   }
   sub PutRetentionPolicy {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatchLogs::PutRetentionPolicy', @_);
+    return $self->caller->do_call('Paws::CloudWatchLogs::PutRetentionPolicy', @_);
   }
   sub TestMetricFilter {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatchLogs::TestMetricFilter', @_);
+    return $self->caller->do_call('Paws::CloudWatchLogs::TestMetricFilter', @_);
   }
 }
 1;

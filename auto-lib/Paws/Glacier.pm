@@ -5,96 +5,96 @@ use Paws::API;
 package Paws::Glacier {
   warn "Paws::Glacier is not stable / supported / entirely developed";
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'glacier');
-  has version => (is => 'ro', isa => 'Str', default => '2012-06-01');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
+  sub service { 'glacier' }
+  sub version { '2012-06-01' }
+  sub flattened_arrays { 0 }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
   
   sub AbortMultipartUpload {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::AbortMultipartUpload', @_);
+    return $self->caller->do_call('Paws::Glacier::AbortMultipartUpload', @_);
   }
   sub CompleteMultipartUpload {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::CompleteMultipartUpload', @_);
+    return $self->caller->do_call('Paws::Glacier::CompleteMultipartUpload', @_);
   }
   sub CreateVault {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::CreateVault', @_);
+    return $self->caller->do_call('Paws::Glacier::CreateVault', @_);
   }
   sub DeleteArchive {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::DeleteArchive', @_);
+    return $self->caller->do_call('Paws::Glacier::DeleteArchive', @_);
   }
   sub DeleteVault {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::DeleteVault', @_);
+    return $self->caller->do_call('Paws::Glacier::DeleteVault', @_);
   }
   sub DeleteVaultNotifications {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::DeleteVaultNotifications', @_);
+    return $self->caller->do_call('Paws::Glacier::DeleteVaultNotifications', @_);
   }
   sub DescribeJob {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::DescribeJob', @_);
+    return $self->caller->do_call('Paws::Glacier::DescribeJob', @_);
   }
   sub DescribeVault {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::DescribeVault', @_);
+    return $self->caller->do_call('Paws::Glacier::DescribeVault', @_);
   }
   sub GetDataRetrievalPolicy {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::GetDataRetrievalPolicy', @_);
+    return $self->caller->do_call('Paws::Glacier::GetDataRetrievalPolicy', @_);
   }
   sub GetJobOutput {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::GetJobOutput', @_);
+    return $self->caller->do_call('Paws::Glacier::GetJobOutput', @_);
   }
   sub GetVaultNotifications {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::GetVaultNotifications', @_);
+    return $self->caller->do_call('Paws::Glacier::GetVaultNotifications', @_);
   }
   sub InitiateJob {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::InitiateJob', @_);
+    return $self->caller->do_call('Paws::Glacier::InitiateJob', @_);
   }
   sub InitiateMultipartUpload {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::InitiateMultipartUpload', @_);
+    return $self->caller->do_call('Paws::Glacier::InitiateMultipartUpload', @_);
   }
   sub ListJobs {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::ListJobs', @_);
+    return $self->caller->do_call('Paws::Glacier::ListJobs', @_);
   }
   sub ListMultipartUploads {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::ListMultipartUploads', @_);
+    return $self->caller->do_call('Paws::Glacier::ListMultipartUploads', @_);
   }
   sub ListParts {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::ListParts', @_);
+    return $self->caller->do_call('Paws::Glacier::ListParts', @_);
   }
   sub ListVaults {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::ListVaults', @_);
+    return $self->caller->do_call('Paws::Glacier::ListVaults', @_);
   }
   sub SetDataRetrievalPolicy {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::SetDataRetrievalPolicy', @_);
+    return $self->caller->do_call('Paws::Glacier::SetDataRetrievalPolicy', @_);
   }
   sub SetVaultNotifications {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::SetVaultNotifications', @_);
+    return $self->caller->do_call('Paws::Glacier::SetVaultNotifications', @_);
   }
   sub UploadArchive {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::UploadArchive', @_);
+    return $self->caller->do_call('Paws::Glacier::UploadArchive', @_);
   }
   sub UploadMultipartPart {
     my $self = shift;
-    return $self->do_call('Paws::Glacier::UploadMultipartPart', @_);
+    return $self->caller->do_call('Paws::Glacier::UploadMultipartPart', @_);
   }
 }
 1;

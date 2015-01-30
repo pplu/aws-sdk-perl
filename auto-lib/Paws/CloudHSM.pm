@@ -4,81 +4,81 @@ use Paws::API;
 
 package Paws::CloudHSM {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'cloudhsm');
-  has version => (is => 'ro', isa => 'Str', default => '2014-05-30');
-  has target_prefix => (is => 'ro', isa => 'Str', default => 'CloudHsmFrontendService');
-  has json_version => (is => 'ro', isa => 'Str', default => "1.1");
+  sub service { 'cloudhsm' }
+  sub version { '2014-05-30' }
+  sub target_prefix { 'CloudHsmFrontendService' }
+  sub json_version { "1.1" }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
   sub CreateHapg {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::CreateHapg', @_);
+    return $self->caller->do_call('Paws::CloudHSM::CreateHapg', @_);
   }
   sub CreateHsm {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::CreateHsm', @_);
+    return $self->caller->do_call('Paws::CloudHSM::CreateHsm', @_);
   }
   sub CreateLunaClient {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::CreateLunaClient', @_);
+    return $self->caller->do_call('Paws::CloudHSM::CreateLunaClient', @_);
   }
   sub DeleteHapg {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::DeleteHapg', @_);
+    return $self->caller->do_call('Paws::CloudHSM::DeleteHapg', @_);
   }
   sub DeleteHsm {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::DeleteHsm', @_);
+    return $self->caller->do_call('Paws::CloudHSM::DeleteHsm', @_);
   }
   sub DeleteLunaClient {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::DeleteLunaClient', @_);
+    return $self->caller->do_call('Paws::CloudHSM::DeleteLunaClient', @_);
   }
   sub DescribeHapg {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::DescribeHapg', @_);
+    return $self->caller->do_call('Paws::CloudHSM::DescribeHapg', @_);
   }
   sub DescribeHsm {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::DescribeHsm', @_);
+    return $self->caller->do_call('Paws::CloudHSM::DescribeHsm', @_);
   }
   sub DescribeLunaClient {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::DescribeLunaClient', @_);
+    return $self->caller->do_call('Paws::CloudHSM::DescribeLunaClient', @_);
   }
   sub GetConfig {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::GetConfig', @_);
+    return $self->caller->do_call('Paws::CloudHSM::GetConfig', @_);
   }
   sub ListAvailableZones {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::ListAvailableZones', @_);
+    return $self->caller->do_call('Paws::CloudHSM::ListAvailableZones', @_);
   }
   sub ListHapgs {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::ListHapgs', @_);
+    return $self->caller->do_call('Paws::CloudHSM::ListHapgs', @_);
   }
   sub ListHsms {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::ListHsms', @_);
+    return $self->caller->do_call('Paws::CloudHSM::ListHsms', @_);
   }
   sub ListLunaClients {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::ListLunaClients', @_);
+    return $self->caller->do_call('Paws::CloudHSM::ListLunaClients', @_);
   }
   sub ModifyHapg {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::ModifyHapg', @_);
+    return $self->caller->do_call('Paws::CloudHSM::ModifyHapg', @_);
   }
   sub ModifyHsm {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::ModifyHsm', @_);
+    return $self->caller->do_call('Paws::CloudHSM::ModifyHsm', @_);
   }
   sub ModifyLunaClient {
     my $self = shift;
-    return $self->do_call('Paws::CloudHSM::ModifyLunaClient', @_);
+    return $self->caller->do_call('Paws::CloudHSM::ModifyLunaClient', @_);
   }
 }
 1;

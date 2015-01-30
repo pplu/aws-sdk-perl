@@ -4,137 +4,137 @@ use Paws::API;
 
 package Paws::SimpleWorkflow {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'swf');
-  has version => (is => 'ro', isa => 'Str', default => '2012-01-25');
-  has target_prefix => (is => 'ro', isa => 'Str', default => 'SimpleWorkflowService');
-  has json_version => (is => 'ro', isa => 'Str', default => "1.0");
+  sub service { 'swf' }
+  sub version { '2012-01-25' }
+  sub target_prefix { 'SimpleWorkflowService' }
+  sub json_version { "1.0" }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
   sub CountClosedWorkflowExecutions {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::CountClosedWorkflowExecutions', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::CountClosedWorkflowExecutions', @_);
   }
   sub CountOpenWorkflowExecutions {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::CountOpenWorkflowExecutions', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::CountOpenWorkflowExecutions', @_);
   }
   sub CountPendingActivityTasks {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::CountPendingActivityTasks', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::CountPendingActivityTasks', @_);
   }
   sub CountPendingDecisionTasks {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::CountPendingDecisionTasks', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::CountPendingDecisionTasks', @_);
   }
   sub DeprecateActivityType {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::DeprecateActivityType', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::DeprecateActivityType', @_);
   }
   sub DeprecateDomain {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::DeprecateDomain', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::DeprecateDomain', @_);
   }
   sub DeprecateWorkflowType {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::DeprecateWorkflowType', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::DeprecateWorkflowType', @_);
   }
   sub DescribeActivityType {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::DescribeActivityType', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::DescribeActivityType', @_);
   }
   sub DescribeDomain {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::DescribeDomain', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::DescribeDomain', @_);
   }
   sub DescribeWorkflowExecution {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::DescribeWorkflowExecution', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::DescribeWorkflowExecution', @_);
   }
   sub DescribeWorkflowType {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::DescribeWorkflowType', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::DescribeWorkflowType', @_);
   }
   sub GetWorkflowExecutionHistory {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::GetWorkflowExecutionHistory', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::GetWorkflowExecutionHistory', @_);
   }
   sub ListActivityTypes {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::ListActivityTypes', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::ListActivityTypes', @_);
   }
   sub ListClosedWorkflowExecutions {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::ListClosedWorkflowExecutions', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::ListClosedWorkflowExecutions', @_);
   }
   sub ListDomains {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::ListDomains', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::ListDomains', @_);
   }
   sub ListOpenWorkflowExecutions {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::ListOpenWorkflowExecutions', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::ListOpenWorkflowExecutions', @_);
   }
   sub ListWorkflowTypes {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::ListWorkflowTypes', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::ListWorkflowTypes', @_);
   }
   sub PollForActivityTask {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::PollForActivityTask', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::PollForActivityTask', @_);
   }
   sub PollForDecisionTask {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::PollForDecisionTask', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::PollForDecisionTask', @_);
   }
   sub RecordActivityTaskHeartbeat {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::RecordActivityTaskHeartbeat', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::RecordActivityTaskHeartbeat', @_);
   }
   sub RegisterActivityType {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::RegisterActivityType', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::RegisterActivityType', @_);
   }
   sub RegisterDomain {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::RegisterDomain', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::RegisterDomain', @_);
   }
   sub RegisterWorkflowType {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::RegisterWorkflowType', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::RegisterWorkflowType', @_);
   }
   sub RequestCancelWorkflowExecution {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::RequestCancelWorkflowExecution', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::RequestCancelWorkflowExecution', @_);
   }
   sub RespondActivityTaskCanceled {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::RespondActivityTaskCanceled', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::RespondActivityTaskCanceled', @_);
   }
   sub RespondActivityTaskCompleted {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::RespondActivityTaskCompleted', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::RespondActivityTaskCompleted', @_);
   }
   sub RespondActivityTaskFailed {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::RespondActivityTaskFailed', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::RespondActivityTaskFailed', @_);
   }
   sub RespondDecisionTaskCompleted {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::RespondDecisionTaskCompleted', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::RespondDecisionTaskCompleted', @_);
   }
   sub SignalWorkflowExecution {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::SignalWorkflowExecution', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::SignalWorkflowExecution', @_);
   }
   sub StartWorkflowExecution {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::StartWorkflowExecution', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::StartWorkflowExecution', @_);
   }
   sub TerminateWorkflowExecution {
     my $self = shift;
-    return $self->do_call('Paws::SimpleWorkflow::TerminateWorkflowExecution', @_);
+    return $self->caller->do_call('Paws::SimpleWorkflow::TerminateWorkflowExecution', @_);
   }
 }
 1;

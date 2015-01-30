@@ -4,80 +4,80 @@ use Paws::API;
 
 package Paws::SQS {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'sqs');
-  has version => (is => 'ro', isa => 'Str', default => '2012-11-05');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
+  sub service { 'sqs' }
+  sub version { '2012-11-05' }
+  sub flattened_arrays { 0 }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
   
   sub AddPermission {
     my $self = shift;
-    return $self->do_call('Paws::SQS::AddPermission', @_);
+    return $self->caller->do_call('Paws::SQS::AddPermission', @_);
   }
   sub ChangeMessageVisibility {
     my $self = shift;
-    return $self->do_call('Paws::SQS::ChangeMessageVisibility', @_);
+    return $self->caller->do_call('Paws::SQS::ChangeMessageVisibility', @_);
   }
   sub ChangeMessageVisibilityBatch {
     my $self = shift;
-    return $self->do_call('Paws::SQS::ChangeMessageVisibilityBatch', @_);
+    return $self->caller->do_call('Paws::SQS::ChangeMessageVisibilityBatch', @_);
   }
   sub CreateQueue {
     my $self = shift;
-    return $self->do_call('Paws::SQS::CreateQueue', @_);
+    return $self->caller->do_call('Paws::SQS::CreateQueue', @_);
   }
   sub DeleteMessage {
     my $self = shift;
-    return $self->do_call('Paws::SQS::DeleteMessage', @_);
+    return $self->caller->do_call('Paws::SQS::DeleteMessage', @_);
   }
   sub DeleteMessageBatch {
     my $self = shift;
-    return $self->do_call('Paws::SQS::DeleteMessageBatch', @_);
+    return $self->caller->do_call('Paws::SQS::DeleteMessageBatch', @_);
   }
   sub DeleteQueue {
     my $self = shift;
-    return $self->do_call('Paws::SQS::DeleteQueue', @_);
+    return $self->caller->do_call('Paws::SQS::DeleteQueue', @_);
   }
   sub GetQueueAttributes {
     my $self = shift;
-    return $self->do_call('Paws::SQS::GetQueueAttributes', @_);
+    return $self->caller->do_call('Paws::SQS::GetQueueAttributes', @_);
   }
   sub GetQueueUrl {
     my $self = shift;
-    return $self->do_call('Paws::SQS::GetQueueUrl', @_);
+    return $self->caller->do_call('Paws::SQS::GetQueueUrl', @_);
   }
   sub ListDeadLetterSourceQueues {
     my $self = shift;
-    return $self->do_call('Paws::SQS::ListDeadLetterSourceQueues', @_);
+    return $self->caller->do_call('Paws::SQS::ListDeadLetterSourceQueues', @_);
   }
   sub ListQueues {
     my $self = shift;
-    return $self->do_call('Paws::SQS::ListQueues', @_);
+    return $self->caller->do_call('Paws::SQS::ListQueues', @_);
   }
   sub PurgeQueue {
     my $self = shift;
-    return $self->do_call('Paws::SQS::PurgeQueue', @_);
+    return $self->caller->do_call('Paws::SQS::PurgeQueue', @_);
   }
   sub ReceiveMessage {
     my $self = shift;
-    return $self->do_call('Paws::SQS::ReceiveMessage', @_);
+    return $self->caller->do_call('Paws::SQS::ReceiveMessage', @_);
   }
   sub RemovePermission {
     my $self = shift;
-    return $self->do_call('Paws::SQS::RemovePermission', @_);
+    return $self->caller->do_call('Paws::SQS::RemovePermission', @_);
   }
   sub SendMessage {
     my $self = shift;
-    return $self->do_call('Paws::SQS::SendMessage', @_);
+    return $self->caller->do_call('Paws::SQS::SendMessage', @_);
   }
   sub SendMessageBatch {
     my $self = shift;
-    return $self->do_call('Paws::SQS::SendMessageBatch', @_);
+    return $self->caller->do_call('Paws::SQS::SendMessageBatch', @_);
   }
   sub SetQueueAttributes {
     my $self = shift;
-    return $self->do_call('Paws::SQS::SetQueueAttributes', @_);
+    return $self->caller->do_call('Paws::SQS::SetQueueAttributes', @_);
   }
 }
 1;

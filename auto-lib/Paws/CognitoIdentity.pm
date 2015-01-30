@@ -4,81 +4,81 @@ use Paws::API;
 
 package Paws::CognitoIdentity {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'cognito-identity');
-  has version => (is => 'ro', isa => 'Str', default => '2014-06-30');
-  has target_prefix => (is => 'ro', isa => 'Str', default => 'AWSCognitoIdentityService');
-  has json_version => (is => 'ro', isa => 'Str', default => "1.1");
+  sub service { 'cognito-identity' }
+  sub version { '2014-06-30' }
+  sub target_prefix { 'AWSCognitoIdentityService' }
+  sub json_version { "1.1" }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
   sub CreateIdentityPool {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::CreateIdentityPool', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::CreateIdentityPool', @_);
   }
   sub DeleteIdentityPool {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::DeleteIdentityPool', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::DeleteIdentityPool', @_);
   }
   sub DescribeIdentity {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::DescribeIdentity', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::DescribeIdentity', @_);
   }
   sub DescribeIdentityPool {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::DescribeIdentityPool', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::DescribeIdentityPool', @_);
   }
   sub GetCredentialsForIdentity {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::GetCredentialsForIdentity', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::GetCredentialsForIdentity', @_);
   }
   sub GetId {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::GetId', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::GetId', @_);
   }
   sub GetIdentityPoolRoles {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::GetIdentityPoolRoles', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::GetIdentityPoolRoles', @_);
   }
   sub GetOpenIdToken {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::GetOpenIdToken', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::GetOpenIdToken', @_);
   }
   sub GetOpenIdTokenForDeveloperIdentity {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentity', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentity', @_);
   }
   sub ListIdentities {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::ListIdentities', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::ListIdentities', @_);
   }
   sub ListIdentityPools {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::ListIdentityPools', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::ListIdentityPools', @_);
   }
   sub LookupDeveloperIdentity {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::LookupDeveloperIdentity', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::LookupDeveloperIdentity', @_);
   }
   sub MergeDeveloperIdentities {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::MergeDeveloperIdentities', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::MergeDeveloperIdentities', @_);
   }
   sub SetIdentityPoolRoles {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::SetIdentityPoolRoles', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::SetIdentityPoolRoles', @_);
   }
   sub UnlinkDeveloperIdentity {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::UnlinkDeveloperIdentity', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::UnlinkDeveloperIdentity', @_);
   }
   sub UnlinkIdentity {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::UnlinkIdentity', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::UnlinkIdentity', @_);
   }
   sub UpdateIdentityPool {
     my $self = shift;
-    return $self->do_call('Paws::CognitoIdentity::UpdateIdentityPool', @_);
+    return $self->caller->do_call('Paws::CognitoIdentity::UpdateIdentityPool', @_);
   }
 }
 1;

@@ -4,124 +4,124 @@ use Paws::API;
 
 package Paws::ELB {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'elasticloadbalancing');
-  has version => (is => 'ro', isa => 'Str', default => '2012-06-01');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
+  sub service { 'elasticloadbalancing' }
+  sub version { '2012-06-01' }
+  sub flattened_arrays { 0 }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
   
   sub AddTags {
     my $self = shift;
-    return $self->do_call('Paws::ELB::AddTags', @_);
+    return $self->caller->do_call('Paws::ELB::AddTags', @_);
   }
   sub ApplySecurityGroupsToLoadBalancer {
     my $self = shift;
-    return $self->do_call('Paws::ELB::ApplySecurityGroupsToLoadBalancer', @_);
+    return $self->caller->do_call('Paws::ELB::ApplySecurityGroupsToLoadBalancer', @_);
   }
   sub AttachLoadBalancerToSubnets {
     my $self = shift;
-    return $self->do_call('Paws::ELB::AttachLoadBalancerToSubnets', @_);
+    return $self->caller->do_call('Paws::ELB::AttachLoadBalancerToSubnets', @_);
   }
   sub ConfigureHealthCheck {
     my $self = shift;
-    return $self->do_call('Paws::ELB::ConfigureHealthCheck', @_);
+    return $self->caller->do_call('Paws::ELB::ConfigureHealthCheck', @_);
   }
   sub CreateAppCookieStickinessPolicy {
     my $self = shift;
-    return $self->do_call('Paws::ELB::CreateAppCookieStickinessPolicy', @_);
+    return $self->caller->do_call('Paws::ELB::CreateAppCookieStickinessPolicy', @_);
   }
   sub CreateLBCookieStickinessPolicy {
     my $self = shift;
-    return $self->do_call('Paws::ELB::CreateLBCookieStickinessPolicy', @_);
+    return $self->caller->do_call('Paws::ELB::CreateLBCookieStickinessPolicy', @_);
   }
   sub CreateLoadBalancer {
     my $self = shift;
-    return $self->do_call('Paws::ELB::CreateLoadBalancer', @_);
+    return $self->caller->do_call('Paws::ELB::CreateLoadBalancer', @_);
   }
   sub CreateLoadBalancerListeners {
     my $self = shift;
-    return $self->do_call('Paws::ELB::CreateLoadBalancerListeners', @_);
+    return $self->caller->do_call('Paws::ELB::CreateLoadBalancerListeners', @_);
   }
   sub CreateLoadBalancerPolicy {
     my $self = shift;
-    return $self->do_call('Paws::ELB::CreateLoadBalancerPolicy', @_);
+    return $self->caller->do_call('Paws::ELB::CreateLoadBalancerPolicy', @_);
   }
   sub DeleteLoadBalancer {
     my $self = shift;
-    return $self->do_call('Paws::ELB::DeleteLoadBalancer', @_);
+    return $self->caller->do_call('Paws::ELB::DeleteLoadBalancer', @_);
   }
   sub DeleteLoadBalancerListeners {
     my $self = shift;
-    return $self->do_call('Paws::ELB::DeleteLoadBalancerListeners', @_);
+    return $self->caller->do_call('Paws::ELB::DeleteLoadBalancerListeners', @_);
   }
   sub DeleteLoadBalancerPolicy {
     my $self = shift;
-    return $self->do_call('Paws::ELB::DeleteLoadBalancerPolicy', @_);
+    return $self->caller->do_call('Paws::ELB::DeleteLoadBalancerPolicy', @_);
   }
   sub DeregisterInstancesFromLoadBalancer {
     my $self = shift;
-    return $self->do_call('Paws::ELB::DeregisterInstancesFromLoadBalancer', @_);
+    return $self->caller->do_call('Paws::ELB::DeregisterInstancesFromLoadBalancer', @_);
   }
   sub DescribeInstanceHealth {
     my $self = shift;
-    return $self->do_call('Paws::ELB::DescribeInstanceHealth', @_);
+    return $self->caller->do_call('Paws::ELB::DescribeInstanceHealth', @_);
   }
   sub DescribeLoadBalancerAttributes {
     my $self = shift;
-    return $self->do_call('Paws::ELB::DescribeLoadBalancerAttributes', @_);
+    return $self->caller->do_call('Paws::ELB::DescribeLoadBalancerAttributes', @_);
   }
   sub DescribeLoadBalancerPolicies {
     my $self = shift;
-    return $self->do_call('Paws::ELB::DescribeLoadBalancerPolicies', @_);
+    return $self->caller->do_call('Paws::ELB::DescribeLoadBalancerPolicies', @_);
   }
   sub DescribeLoadBalancerPolicyTypes {
     my $self = shift;
-    return $self->do_call('Paws::ELB::DescribeLoadBalancerPolicyTypes', @_);
+    return $self->caller->do_call('Paws::ELB::DescribeLoadBalancerPolicyTypes', @_);
   }
   sub DescribeLoadBalancers {
     my $self = shift;
-    return $self->do_call('Paws::ELB::DescribeLoadBalancers', @_);
+    return $self->caller->do_call('Paws::ELB::DescribeLoadBalancers', @_);
   }
   sub DescribeTags {
     my $self = shift;
-    return $self->do_call('Paws::ELB::DescribeTags', @_);
+    return $self->caller->do_call('Paws::ELB::DescribeTags', @_);
   }
   sub DetachLoadBalancerFromSubnets {
     my $self = shift;
-    return $self->do_call('Paws::ELB::DetachLoadBalancerFromSubnets', @_);
+    return $self->caller->do_call('Paws::ELB::DetachLoadBalancerFromSubnets', @_);
   }
   sub DisableAvailabilityZonesForLoadBalancer {
     my $self = shift;
-    return $self->do_call('Paws::ELB::DisableAvailabilityZonesForLoadBalancer', @_);
+    return $self->caller->do_call('Paws::ELB::DisableAvailabilityZonesForLoadBalancer', @_);
   }
   sub EnableAvailabilityZonesForLoadBalancer {
     my $self = shift;
-    return $self->do_call('Paws::ELB::EnableAvailabilityZonesForLoadBalancer', @_);
+    return $self->caller->do_call('Paws::ELB::EnableAvailabilityZonesForLoadBalancer', @_);
   }
   sub ModifyLoadBalancerAttributes {
     my $self = shift;
-    return $self->do_call('Paws::ELB::ModifyLoadBalancerAttributes', @_);
+    return $self->caller->do_call('Paws::ELB::ModifyLoadBalancerAttributes', @_);
   }
   sub RegisterInstancesWithLoadBalancer {
     my $self = shift;
-    return $self->do_call('Paws::ELB::RegisterInstancesWithLoadBalancer', @_);
+    return $self->caller->do_call('Paws::ELB::RegisterInstancesWithLoadBalancer', @_);
   }
   sub RemoveTags {
     my $self = shift;
-    return $self->do_call('Paws::ELB::RemoveTags', @_);
+    return $self->caller->do_call('Paws::ELB::RemoveTags', @_);
   }
   sub SetLoadBalancerListenerSSLCertificate {
     my $self = shift;
-    return $self->do_call('Paws::ELB::SetLoadBalancerListenerSSLCertificate', @_);
+    return $self->caller->do_call('Paws::ELB::SetLoadBalancerListenerSSLCertificate', @_);
   }
   sub SetLoadBalancerPoliciesForBackendServer {
     my $self = shift;
-    return $self->do_call('Paws::ELB::SetLoadBalancerPoliciesForBackendServer', @_);
+    return $self->caller->do_call('Paws::ELB::SetLoadBalancerPoliciesForBackendServer', @_);
   }
   sub SetLoadBalancerPoliciesOfListener {
     my $self = shift;
-    return $self->do_call('Paws::ELB::SetLoadBalancerPoliciesOfListener', @_);
+    return $self->caller->do_call('Paws::ELB::SetLoadBalancerPoliciesOfListener', @_);
   }
 }
 1;

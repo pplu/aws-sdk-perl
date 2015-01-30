@@ -6,25 +6,20 @@ package Paws::Net::Caller::Attribute::Trait::NameInRequest {
 }
 
 package Paws::Net::Caller {
-  use Moose::Role;
+  use Moose;
   use Paws::Net::Credentials;
   use Paws::Net::CredentialsProviderChain;
   use Carp qw(croak);
   use Module::Runtime qw//;
   use Paws::Net::APIRequest;
 
-  requires '_process_response';
-  has 'credentials' => (
-    is => 'ro', 
-    isa => 'Paws::Net::Credentials', 
-    lazy => 1, 
-    default => sub { Paws::Net::CredentialsProviderChain->new },
-    handles => [ 'access_key', 'secret_key', 'session_token' ],
+  has caller_for => (
+    is => 'ro',
+    required => 1,
   );
-  has 'debug'              => ( is => 'rw', required => 0, default => sub { 0 } );
-  requires 'version';
-  has 'endpoint'           => ( is => 'rw', required => 1, lazy => 1, default => sub { $_[0]->_api_endpoint });
-  has 'ua' => (is => 'rw', required => 1, lazy => 1,
+
+  has debug              => ( is => 'rw', required => 0, default => sub { 0 } );
+  has ua => (is => 'rw', required => 1, lazy => 1,
     default     => sub {
         use HTTP::Tiny;
         HTTP::Tiny->new(
@@ -34,7 +29,7 @@ package Paws::Net::Caller {
   );
 
   #-- Custom request method from user overrides default method below
-  has 'request_method'     => ( is => 'rw', required => 0, lazy => 1, default => sub {
+  has request_method     => ( is => 'rw', required => 0, lazy => 1, default => sub {
     my ( $self ) = @_;
     return sub {
       my ( $requestObj ) = @_;
@@ -52,7 +47,7 @@ package Paws::Net::Caller {
         }
       );
       if ( $response->{success} ) {
-          return $self->_process_response( $response->{content} );
+          return $self->caller_for->_process_response( $response->{content} );
       } else {
           #TODO: retry or croak based on error codes
           croak "POST Request failed: $response->{status} $response->{reason} $response->{content}\n";
@@ -62,11 +57,11 @@ package Paws::Net::Caller {
 
   sub do_call {
     my ($self, $call_class, @params) = @_;
-    my $call = $self->new_with_coercions($call_class, @params);
+    my $call = $self->caller_for->new_with_coercions($call_class, @params);
 
     my $request = Paws::Net::APIRequest->new();
-    $self->_api_caller($call_class, $call, $request);
-    $self->sign($request);
+    $self->caller_for->_api_caller($call_class, $call, $request);
+    $self->caller_for->sign($request);
     my $result = $self->send($request);
 
     if ($call_class->_returns){

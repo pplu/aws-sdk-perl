@@ -4,65 +4,65 @@ use Paws::API;
 
 package Paws::Kinesis {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'kinesis');
-  has version => (is => 'ro', isa => 'Str', default => '2013-12-02');
-  has target_prefix => (is => 'ro', isa => 'Str', default => 'Kinesis_20131202');
-  has json_version => (is => 'ro', isa => 'Str', default => "1.1");
+  sub service { 'kinesis' }
+  sub version { '2013-12-02' }
+  sub target_prefix { 'Kinesis_20131202' }
+  sub json_version { "1.1" }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
   sub AddTagsToStream {
     my $self = shift;
-    return $self->do_call('Paws::Kinesis::AddTagsToStream', @_);
+    return $self->caller->do_call('Paws::Kinesis::AddTagsToStream', @_);
   }
   sub CreateStream {
     my $self = shift;
-    return $self->do_call('Paws::Kinesis::CreateStream', @_);
+    return $self->caller->do_call('Paws::Kinesis::CreateStream', @_);
   }
   sub DeleteStream {
     my $self = shift;
-    return $self->do_call('Paws::Kinesis::DeleteStream', @_);
+    return $self->caller->do_call('Paws::Kinesis::DeleteStream', @_);
   }
   sub DescribeStream {
     my $self = shift;
-    return $self->do_call('Paws::Kinesis::DescribeStream', @_);
+    return $self->caller->do_call('Paws::Kinesis::DescribeStream', @_);
   }
   sub GetRecords {
     my $self = shift;
-    return $self->do_call('Paws::Kinesis::GetRecords', @_);
+    return $self->caller->do_call('Paws::Kinesis::GetRecords', @_);
   }
   sub GetShardIterator {
     my $self = shift;
-    return $self->do_call('Paws::Kinesis::GetShardIterator', @_);
+    return $self->caller->do_call('Paws::Kinesis::GetShardIterator', @_);
   }
   sub ListStreams {
     my $self = shift;
-    return $self->do_call('Paws::Kinesis::ListStreams', @_);
+    return $self->caller->do_call('Paws::Kinesis::ListStreams', @_);
   }
   sub ListTagsForStream {
     my $self = shift;
-    return $self->do_call('Paws::Kinesis::ListTagsForStream', @_);
+    return $self->caller->do_call('Paws::Kinesis::ListTagsForStream', @_);
   }
   sub MergeShards {
     my $self = shift;
-    return $self->do_call('Paws::Kinesis::MergeShards', @_);
+    return $self->caller->do_call('Paws::Kinesis::MergeShards', @_);
   }
   sub PutRecord {
     my $self = shift;
-    return $self->do_call('Paws::Kinesis::PutRecord', @_);
+    return $self->caller->do_call('Paws::Kinesis::PutRecord', @_);
   }
   sub PutRecords {
     my $self = shift;
-    return $self->do_call('Paws::Kinesis::PutRecords', @_);
+    return $self->caller->do_call('Paws::Kinesis::PutRecords', @_);
   }
   sub RemoveTagsFromStream {
     my $self = shift;
-    return $self->do_call('Paws::Kinesis::RemoveTagsFromStream', @_);
+    return $self->caller->do_call('Paws::Kinesis::RemoveTagsFromStream', @_);
   }
   sub SplitShard {
     my $self = shift;
-    return $self->do_call('Paws::Kinesis::SplitShard', @_);
+    return $self->caller->do_call('Paws::Kinesis::SplitShard', @_);
   }
 }
 1;

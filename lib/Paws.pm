@@ -19,7 +19,6 @@ use Paws::Net::Caller;
 use Paws::API;
 
 has _class_prefix => (isa => 'Str', is => 'ro', default => 'Paws::');
-has _class_cache => (isa => 'HashRef', is => 'ro', default => sub { {} });
 
 has config => (isa => 'Paws::SDK::Config', is => 'rw', default => sub { Paws->default_config });
 
@@ -43,20 +42,8 @@ sub service {
   }
 
   my $class = $self->_class_prefix . $service_name;
-
-  return $self->_class_cache->{ $class } if (defined $self->_class_cache->{ $class });
-  
   $self->load_class($class);
-
-  my $caller_role    = $self->config->caller;
-
-  $self->load_class($caller_role);
-
-  my $service = Moose::Util::with_traits($class, $caller_role);
-
-  $self->_class_cache->{ $class } = $service;
-
-  return $service;
+  return $class;
 }
 
 1;

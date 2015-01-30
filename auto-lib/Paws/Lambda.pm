@@ -5,56 +5,56 @@ use Paws::API;
 package Paws::Lambda {
   warn "Paws::Lambda is not stable / supported / entirely developed";
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'lambda');
-  has version => (is => 'ro', isa => 'Str', default => '2014-11-11');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
+  sub service { 'lambda' }
+  sub version { '2014-11-11' }
+  sub flattened_arrays { 0 }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
   
   sub AddEventSource {
     my $self = shift;
-    return $self->do_call('Paws::Lambda::AddEventSource', @_);
+    return $self->caller->do_call('Paws::Lambda::AddEventSource', @_);
   }
   sub DeleteFunction {
     my $self = shift;
-    return $self->do_call('Paws::Lambda::DeleteFunction', @_);
+    return $self->caller->do_call('Paws::Lambda::DeleteFunction', @_);
   }
   sub GetEventSource {
     my $self = shift;
-    return $self->do_call('Paws::Lambda::GetEventSource', @_);
+    return $self->caller->do_call('Paws::Lambda::GetEventSource', @_);
   }
   sub GetFunction {
     my $self = shift;
-    return $self->do_call('Paws::Lambda::GetFunction', @_);
+    return $self->caller->do_call('Paws::Lambda::GetFunction', @_);
   }
   sub GetFunctionConfiguration {
     my $self = shift;
-    return $self->do_call('Paws::Lambda::GetFunctionConfiguration', @_);
+    return $self->caller->do_call('Paws::Lambda::GetFunctionConfiguration', @_);
   }
   sub InvokeAsync {
     my $self = shift;
-    return $self->do_call('Paws::Lambda::InvokeAsync', @_);
+    return $self->caller->do_call('Paws::Lambda::InvokeAsync', @_);
   }
   sub ListEventSources {
     my $self = shift;
-    return $self->do_call('Paws::Lambda::ListEventSources', @_);
+    return $self->caller->do_call('Paws::Lambda::ListEventSources', @_);
   }
   sub ListFunctions {
     my $self = shift;
-    return $self->do_call('Paws::Lambda::ListFunctions', @_);
+    return $self->caller->do_call('Paws::Lambda::ListFunctions', @_);
   }
   sub RemoveEventSource {
     my $self = shift;
-    return $self->do_call('Paws::Lambda::RemoveEventSource', @_);
+    return $self->caller->do_call('Paws::Lambda::RemoveEventSource', @_);
   }
   sub UpdateFunctionConfiguration {
     my $self = shift;
-    return $self->do_call('Paws::Lambda::UpdateFunctionConfiguration', @_);
+    return $self->caller->do_call('Paws::Lambda::UpdateFunctionConfiguration', @_);
   }
   sub UploadFunction {
     my $self = shift;
-    return $self->do_call('Paws::Lambda::UploadFunction', @_);
+    return $self->caller->do_call('Paws::Lambda::UploadFunction', @_);
   }
 }
 1;

@@ -4,56 +4,56 @@ use Paws::API;
 
 package Paws::CloudWatch {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'monitoring');
-  has version => (is => 'ro', isa => 'Str', default => '2010-08-01');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
+  sub service { 'monitoring' }
+  sub version { '2010-08-01' }
+  sub flattened_arrays { 0 }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
   
   sub DeleteAlarms {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatch::DeleteAlarms', @_);
+    return $self->caller->do_call('Paws::CloudWatch::DeleteAlarms', @_);
   }
   sub DescribeAlarmHistory {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatch::DescribeAlarmHistory', @_);
+    return $self->caller->do_call('Paws::CloudWatch::DescribeAlarmHistory', @_);
   }
   sub DescribeAlarms {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatch::DescribeAlarms', @_);
+    return $self->caller->do_call('Paws::CloudWatch::DescribeAlarms', @_);
   }
   sub DescribeAlarmsForMetric {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatch::DescribeAlarmsForMetric', @_);
+    return $self->caller->do_call('Paws::CloudWatch::DescribeAlarmsForMetric', @_);
   }
   sub DisableAlarmActions {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatch::DisableAlarmActions', @_);
+    return $self->caller->do_call('Paws::CloudWatch::DisableAlarmActions', @_);
   }
   sub EnableAlarmActions {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatch::EnableAlarmActions', @_);
+    return $self->caller->do_call('Paws::CloudWatch::EnableAlarmActions', @_);
   }
   sub GetMetricStatistics {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatch::GetMetricStatistics', @_);
+    return $self->caller->do_call('Paws::CloudWatch::GetMetricStatistics', @_);
   }
   sub ListMetrics {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatch::ListMetrics', @_);
+    return $self->caller->do_call('Paws::CloudWatch::ListMetrics', @_);
   }
   sub PutMetricAlarm {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatch::PutMetricAlarm', @_);
+    return $self->caller->do_call('Paws::CloudWatch::PutMetricAlarm', @_);
   }
   sub PutMetricData {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatch::PutMetricData', @_);
+    return $self->caller->do_call('Paws::CloudWatch::PutMetricData', @_);
   }
   sub SetAlarmState {
     my $self = shift;
-    return $self->do_call('Paws::CloudWatch::SetAlarmState', @_);
+    return $self->caller->do_call('Paws::CloudWatch::SetAlarmState', @_);
   }
 }
 1;

@@ -4,36 +4,36 @@ use Paws::API;
 
 package Paws::ImportExport {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'importexport');
-  has version => (is => 'ro', isa => 'Str', default => '2010-06-01');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
+  sub service { 'importexport' }
+  sub version { '2010-06-01' }
+  sub flattened_arrays { 0 }
 
-  with 'Paws::API::SingleEndpointCaller', 'Paws::Net::V2Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::SingleEndpointCaller', 'Paws::Net::V2Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
   
   sub CancelJob {
     my $self = shift;
-    return $self->do_call('Paws::ImportExport::CancelJob', @_);
+    return $self->caller->do_call('Paws::ImportExport::CancelJob', @_);
   }
   sub CreateJob {
     my $self = shift;
-    return $self->do_call('Paws::ImportExport::CreateJob', @_);
+    return $self->caller->do_call('Paws::ImportExport::CreateJob', @_);
   }
   sub GetShippingLabel {
     my $self = shift;
-    return $self->do_call('Paws::ImportExport::GetShippingLabel', @_);
+    return $self->caller->do_call('Paws::ImportExport::GetShippingLabel', @_);
   }
   sub GetStatus {
     my $self = shift;
-    return $self->do_call('Paws::ImportExport::GetStatus', @_);
+    return $self->caller->do_call('Paws::ImportExport::GetStatus', @_);
   }
   sub ListJobs {
     my $self = shift;
-    return $self->do_call('Paws::ImportExport::ListJobs', @_);
+    return $self->caller->do_call('Paws::ImportExport::ListJobs', @_);
   }
   sub UpdateJob {
     my $self = shift;
-    return $self->do_call('Paws::ImportExport::UpdateJob', @_);
+    return $self->caller->do_call('Paws::ImportExport::UpdateJob', @_);
   }
 }
 1;

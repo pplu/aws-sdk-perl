@@ -4,84 +4,84 @@ use Paws::API;
 
 package Paws::SES {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'email');
-  has version => (is => 'ro', isa => 'Str', default => '2010-12-01');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
+  sub service { 'email' }
+  sub version { '2010-12-01' }
+  sub flattened_arrays { 0 }
 
-  with 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
   
   sub DeleteIdentity {
     my $self = shift;
-    return $self->do_call('Paws::SES::DeleteIdentity', @_);
+    return $self->caller->do_call('Paws::SES::DeleteIdentity', @_);
   }
   sub DeleteVerifiedEmailAddress {
     my $self = shift;
-    return $self->do_call('Paws::SES::DeleteVerifiedEmailAddress', @_);
+    return $self->caller->do_call('Paws::SES::DeleteVerifiedEmailAddress', @_);
   }
   sub GetIdentityDkimAttributes {
     my $self = shift;
-    return $self->do_call('Paws::SES::GetIdentityDkimAttributes', @_);
+    return $self->caller->do_call('Paws::SES::GetIdentityDkimAttributes', @_);
   }
   sub GetIdentityNotificationAttributes {
     my $self = shift;
-    return $self->do_call('Paws::SES::GetIdentityNotificationAttributes', @_);
+    return $self->caller->do_call('Paws::SES::GetIdentityNotificationAttributes', @_);
   }
   sub GetIdentityVerificationAttributes {
     my $self = shift;
-    return $self->do_call('Paws::SES::GetIdentityVerificationAttributes', @_);
+    return $self->caller->do_call('Paws::SES::GetIdentityVerificationAttributes', @_);
   }
   sub GetSendQuota {
     my $self = shift;
-    return $self->do_call('Paws::SES::GetSendQuota', @_);
+    return $self->caller->do_call('Paws::SES::GetSendQuota', @_);
   }
   sub GetSendStatistics {
     my $self = shift;
-    return $self->do_call('Paws::SES::GetSendStatistics', @_);
+    return $self->caller->do_call('Paws::SES::GetSendStatistics', @_);
   }
   sub ListIdentities {
     my $self = shift;
-    return $self->do_call('Paws::SES::ListIdentities', @_);
+    return $self->caller->do_call('Paws::SES::ListIdentities', @_);
   }
   sub ListVerifiedEmailAddresses {
     my $self = shift;
-    return $self->do_call('Paws::SES::ListVerifiedEmailAddresses', @_);
+    return $self->caller->do_call('Paws::SES::ListVerifiedEmailAddresses', @_);
   }
   sub SendEmail {
     my $self = shift;
-    return $self->do_call('Paws::SES::SendEmail', @_);
+    return $self->caller->do_call('Paws::SES::SendEmail', @_);
   }
   sub SendRawEmail {
     my $self = shift;
-    return $self->do_call('Paws::SES::SendRawEmail', @_);
+    return $self->caller->do_call('Paws::SES::SendRawEmail', @_);
   }
   sub SetIdentityDkimEnabled {
     my $self = shift;
-    return $self->do_call('Paws::SES::SetIdentityDkimEnabled', @_);
+    return $self->caller->do_call('Paws::SES::SetIdentityDkimEnabled', @_);
   }
   sub SetIdentityFeedbackForwardingEnabled {
     my $self = shift;
-    return $self->do_call('Paws::SES::SetIdentityFeedbackForwardingEnabled', @_);
+    return $self->caller->do_call('Paws::SES::SetIdentityFeedbackForwardingEnabled', @_);
   }
   sub SetIdentityNotificationTopic {
     my $self = shift;
-    return $self->do_call('Paws::SES::SetIdentityNotificationTopic', @_);
+    return $self->caller->do_call('Paws::SES::SetIdentityNotificationTopic', @_);
   }
   sub VerifyDomainDkim {
     my $self = shift;
-    return $self->do_call('Paws::SES::VerifyDomainDkim', @_);
+    return $self->caller->do_call('Paws::SES::VerifyDomainDkim', @_);
   }
   sub VerifyDomainIdentity {
     my $self = shift;
-    return $self->do_call('Paws::SES::VerifyDomainIdentity', @_);
+    return $self->caller->do_call('Paws::SES::VerifyDomainIdentity', @_);
   }
   sub VerifyEmailAddress {
     my $self = shift;
-    return $self->do_call('Paws::SES::VerifyEmailAddress', @_);
+    return $self->caller->do_call('Paws::SES::VerifyEmailAddress', @_);
   }
   sub VerifyEmailIdentity {
     my $self = shift;
-    return $self->do_call('Paws::SES::VerifyEmailIdentity', @_);
+    return $self->caller->do_call('Paws::SES::VerifyEmailIdentity', @_);
   }
 }
 1;
