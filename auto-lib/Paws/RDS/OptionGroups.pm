@@ -3,7 +3,7 @@ package Paws::RDS::OptionGroups {
   use Moose;
   with 'Paws::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
-  has OptionGroupsList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionGroup]');
+  has OptionGroupsList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionGroup]', traits => ['Unwrapped'], xmlname => 'OptionGroup');
 
 }
 1;

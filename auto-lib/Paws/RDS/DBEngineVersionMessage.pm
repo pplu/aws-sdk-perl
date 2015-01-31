@@ -2,7 +2,7 @@
 package Paws::RDS::DBEngineVersionMessage {
   use Moose;
   with 'Paws::API::ResultParser';
-  has DBEngineVersions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBEngineVersion]');
+  has DBEngineVersions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBEngineVersion]', traits => ['Unwrapped'], xmlname => 'DBEngineVersion');
   has Marker => (is => 'ro', isa => 'Str');
 
 }

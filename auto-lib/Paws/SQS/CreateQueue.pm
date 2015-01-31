@@ -1,7 +1,7 @@
 
 package Paws::SQS::CreateQueue {
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SQS::AttributeMap');
+  has Attributes => (is => 'ro', isa => 'Paws::SQS::AttributeMap', traits => ['NameInRequest'], request_name => 'Attribute' );
   has QueueName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

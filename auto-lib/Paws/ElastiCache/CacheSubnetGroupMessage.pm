@@ -2,7 +2,7 @@
 package Paws::ElastiCache::CacheSubnetGroupMessage {
   use Moose;
   with 'Paws::API::ResultParser';
-  has CacheSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheSubnetGroup]');
+  has CacheSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheSubnetGroup]', traits => ['Unwrapped'], xmlname => 'CacheSubnetGroup');
   has Marker => (is => 'ro', isa => 'Str');
 
 }

@@ -2,7 +2,7 @@
 package Paws::SQS::SendMessage {
   use Moose;
   has DelaySeconds => (is => 'ro', isa => 'Int');
-  has MessageAttributes => (is => 'ro', isa => 'Paws::SQS::MessageAttributeMap');
+  has MessageAttributes => (is => 'ro', isa => 'Paws::SQS::MessageAttributeMap', traits => ['NameInRequest'], request_name => 'MessageAttribute' );
   has MessageBody => (is => 'ro', isa => 'Str', required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 

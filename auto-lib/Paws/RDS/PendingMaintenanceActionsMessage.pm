@@ -3,7 +3,7 @@ package Paws::RDS::PendingMaintenanceActionsMessage {
   use Moose;
   with 'Paws::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
-  has PendingMaintenanceActions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ResourcePendingMaintenanceActions]');
+  has PendingMaintenanceActions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ResourcePendingMaintenanceActions]', traits => ['Unwrapped'], xmlname => 'ResourcePendingMaintenanceActions');
 
 }
 1;

@@ -2,7 +2,7 @@
 package Paws::SDB::SelectResult {
   use Moose;
   with 'Paws::API::ResultParser';
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::SDB::Item]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::SDB::Item]', traits => ['Unwrapped'], xmlname => 'Item');
   has NextToken => (is => 'ro', isa => 'Str');
 
 }

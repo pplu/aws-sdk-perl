@@ -25,8 +25,7 @@ package [% c.api %]::[% operation.name %] {
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
-  [%- IF (member.xmlname) %], traits => ['NameInRequest'], request_name => '[% member.xmlname %]' [% END %]
-  [%- IF (member.members.xmlname) %], traits => ['NameInRequest'], request_name => '[% member.members.xmlname %]' [% END %]
+  [%- IF (shape.members.${param_name}.locationName) %], traits => ['NameInRequest'], request_name => '[% shape.members.${param_name}.locationName %]' [% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
   use MooseX::ClassAttribute;
@@ -49,8 +48,8 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
-  [%- IF (member.members.xmlname) %], traits => ['Unwrapped'], xmlname => '[% member.members.xmlname %]'[% END %]
-  [%- IF (member.xmlname) %], traits => ['Unwrapped'], xmlname => '[% member.xmlname %]'[% END %]
+  [%- IF (member.locationName) %], traits => ['Unwrapped'], xmlname => '[% member.locationName %]'[% END %]
+  [%- IF (member.type == 'list' and member.member.locationName) %], traits => ['Unwrapped'], xmlname => '[% member.member.locationName %]'[% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
 }
@@ -179,8 +178,8 @@ package [% c.api %] {
             if ($@) { die "In Inner Class: $inner_class: $@"; }
           }
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
-          if (defined $param_props->{xmlname}) {
-            $output .= ", traits => ['Unwrapped'], xmlname => '$param_props->{xmlname}'";
+          if (defined $members->{ $param_name }->{locationName}) {
+            $output .= ", traits => ['Unwrapped'], xmlname => '$members->{ $param_name }->{locationName}'";
           }
           $output .= ", required => 1" if ($self->required_in_shape($iclass,$param_name));
           $output .= ");\n";

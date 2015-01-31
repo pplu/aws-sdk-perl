@@ -2,7 +2,7 @@
 package Paws::RedShift::ClusterVersionsMessage {
   use Moose;
   with 'Paws::API::ResultParser';
-  has ClusterVersions => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterVersion]');
+  has ClusterVersions => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterVersion]', traits => ['Unwrapped'], xmlname => 'ClusterVersion');
   has Marker => (is => 'ro', isa => 'Str');
 
 }
