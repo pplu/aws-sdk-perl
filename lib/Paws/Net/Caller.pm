@@ -64,13 +64,11 @@ package Paws::Net::Caller {
     $self->caller_for->sign($request);
     my $result = $self->send($request);
 
-use Data::Dumper;
-print Dumper($result, $call_class->_returns, $call_class->_result_key);
     if ($call_class->_returns){
       if ($call_class->_result_key){
         $result = $result->{ $call_class->_result_key };
       }
-print Dumper($result);
+
       Module::Runtime::require_module($call_class->_returns);
       my $o_result = $call_class->_returns->from_result($result);
       return $o_result;
