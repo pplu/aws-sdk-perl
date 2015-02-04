@@ -1,6 +1,9 @@
 package Paws::API::Caller {
   use Moose::Role;
   use Module::Runtime qw//;
+  use Carp;
+
+  has argv => (is => 'ro');
 
   has caller => (is => 'ro', default => sub {
     require Paws::Net::Caller;
@@ -21,9 +24,11 @@ package Paws::API::Caller {
 
     Module::Runtime::require_module($class);
     my %p;
-    foreach my $att ($class->meta->get_attribute_list){
-      next if (not exists $params{ $att });
-      my $type = $class->meta->get_attribute($att)->type_constraint;
+    foreach my $att (keys %params){
+      my $att_meta = $class->meta->find_attribute_by_name($att);
+      croak "$class doesn't have an $att" if (not defined $att_meta);
+      my $type = $att_meta->type_constraint;
+
       if ($type eq 'Bool') {
         $p{ $att } = ($params{ $att } == 1)?1:0;
       } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
