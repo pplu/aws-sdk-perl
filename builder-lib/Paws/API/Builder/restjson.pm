@@ -8,13 +8,13 @@ package Paws::API::Builder::restjson {
   use Moose;
   extends 'Paws::API::Builder';
 
-  has service => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{metadata}->{ endpointPrefix } });
-  has version => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{metadata}->{ apiVersion } });
-  has endpoint_role => (is => 'ro', lazy => 1, default => sub { defined $_[0]->struct->{metadata}->{ globalEndpoint } ? 
+  has service => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ endpointPrefix } });
+  has version => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ apiVersion } });
+  has endpoint_role => (is => 'ro', lazy => 1, default => sub { defined $_[0]->api_struct->{metadata}->{ globalEndpoint } ? 
                                                                    'Paws::API::SingleEndpointCaller':
                                                                    'Paws::API::RegionalEndpointCaller' 
                                                               } );
-  has wrapped_responses => (is => 'ro', lazy => 1, default => sub { $_[0]->struct->{ result_wrapped } });
+  has wrapped_responses => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{ result_wrapped } });
   has response_role  => (is => 'ro', lazy => 1, default => sub { 'Paws::Net::RestJsonResponse' });
   has parameter_role => (is => 'ro', lazy => 1, default => sub { return "Paws::Net::RestJsonCaller" });
 
@@ -78,8 +78,8 @@ package [% c.api %] {
 
   with 'Paws::API::Caller', '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]', '[% c.response_role %]';
 
-  [% FOR op IN c.struct.operations.keys.sort %]
-  [%- op_name = c.struct.operations.$op.name %]
+  [% FOR op IN c.api_struct.operations.keys.sort %]
+  [%- op_name = c.api_struct.operations.$op.name %]
   sub [% op_name %] {
     my $self = shift;
     return $self->caller->do_call('[% c.api %]::[% op_name %]', @_);

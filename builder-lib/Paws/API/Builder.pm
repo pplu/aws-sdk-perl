@@ -12,7 +12,7 @@ package Paws::API::Builder {
 
   has api_file => (is => 'ro', required => 1);
 
-  has struct => (is => 'ro', lazy => 1, default => sub {
+  has api_struct => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
     return $self->_load_json_file($self->api_file);
   });
@@ -44,7 +44,7 @@ package Paws::API::Builder {
     is => 'ro', 
     lazy => 1, 
     default => sub { 
-      sprintf "Paws::Net::%sSignature", uc $_[0]->struct->{metadata}{signatureVersion} 
+      sprintf "Paws::Net::%sSignature", uc $_[0]->api_struct->{metadata}{signatureVersion} 
     } 
   );
 
@@ -52,7 +52,7 @@ package Paws::API::Builder {
     is => 'ro', 
     lazy => 1, 
     default => sub { 
-      my $type = $_[0]->struct->{metadata}->{protocol}; 
+      my $type = $_[0]->api_struct->{metadata}->{protocol}; 
       substr($type,0,1) = uc substr($type,0,1); 
       return "Paws::Net::${type}Caller" 
     },
@@ -61,7 +61,7 @@ package Paws::API::Builder {
   has operations_struct => (
     is => 'ro', 
     lazy => 1, 
-    default => sub { $_[0]->struct->{operations} },
+    default => sub { $_[0]->api_struct->{operations} },
     isa => 'HashRef',
     traits => [ 'Hash' ],
     handles => {
@@ -74,7 +74,7 @@ package Paws::API::Builder {
   has shape_struct => (
     is => 'ro',
     lazy => 1,
-    default => sub { $_[0]->struct->{shapes} },
+    default => sub { $_[0]->api_struct->{shapes} },
     isa => 'HashRef',
     traits => [ 'Hash' ],
     handles => {
@@ -120,7 +120,7 @@ package Paws::API::Builder {
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method [% operation.name %] on the 
-[% c.struct.metadata.serviceFullName %] service. Use the attributes of this class
+[% c.api_struct.metadata.serviceFullName %] service. Use the attributes of this class
 as arguments to method [% operation.name %].
 
 You shouln't make instances of this class. Each attribute should be used as a named argument in the call to [% operation.name %].
@@ -159,7 +159,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 =head1 NAME
 
-[% c.api %] - Perl Interface to AWS [% c.struct.metadata.serviceFullName %]
+[% c.api %] - Perl Interface to AWS [% c.api_struct.metadata.serviceFullName %]
 
 =head1 SYNOPSIS
 
@@ -173,8 +173,8 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 [% c.doc_for_service() %]
 
 =head1 METHODS
-[% FOR op IN c.struct.operations.keys.sort %]
-  [%- op_name = c.struct.operations.$op.name %]
+[% FOR op IN c.api_struct.operations.keys.sort %]
+  [%- op_name = c.api_struct.operations.$op.name %]
 =head2 [% op_name %]()
 
   Arguments described in: L<[% c.api %]::[% op_name %]>
@@ -458,11 +458,11 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
   sub doc_for_service {
     my ($self) = @_;
-    if (not $self->struct->{documentation}) {
+    if (not $self->api_struct->{documentation}) {
       warn "No documentation for service " . $self->api;
       return '';
     }
-    return $self->html_to_pod($self->struct->{documentation});
+    return $self->html_to_pod($self->api_struct->{documentation});
   }
   sub doc_for_method {
     my ($self, $method) = @_;
