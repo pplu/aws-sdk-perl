@@ -30,6 +30,13 @@ sub load_class {
   Module::Runtime::require_module($_) for (@classes);
 }
 
+sub available_services {
+  my ($self) = @_;
+  require Module::Find;
+  my $class_prefix = $self->_class_prefix;
+  return grep { $_ ne 'API' } map { $_ =~ s/^$class_prefix//; $_ } Module::Find::findsubmod Paws;
+}
+
 sub service {
   my ($self, $service_name) = @_;
 

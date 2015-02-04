@@ -15,6 +15,7 @@ requires 'URL::Encode::XS';
 requires 'Hash::Flatten';
 requires 'MooseX::Getopt';
 requires 'ARGV::Struct';
+requires 'Module::Find';
 
 on 'build' => sub {
   requires 'Data::Printer';

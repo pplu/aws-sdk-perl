@@ -13,6 +13,7 @@ use ARGV::Struct;
 use Term::ANSIColor 2.00 qw();
 use Hash::Flatten qw//;
 use List::Util qw(reduce);
+use Module::Find;
 
 my @args = @ARGV;
 my @service_args;
@@ -33,11 +34,6 @@ while ($end == 0 and my $next_arg = shift @args) {
   }
 }
 
-if (not defined $service_name) {
-  #TODO: List services
-  die "no service specified";
-}
-
 my $aws;
 if ($ENV{PAWS_CALLER}){
   $aws = Paws->new(
@@ -45,6 +41,12 @@ if ($ENV{PAWS_CALLER}){
   );
 } else {
   $aws = Paws->new;
+}
+
+if (not defined $service_name) {
+  say "A list of the services you have available";
+  say $_ for (sort $aws->available_services);
+  exit 1;  
 }
 
 my $service = Moose::Util::with_traits(
