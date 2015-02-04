@@ -5,9 +5,17 @@ package Paws::API::Builder {
   use Data::Dumper;
   use Data::Printer;
   use Template;
+  use File::Slurp;
+  use JSON;
 
-  has struct => (is => 'ro', required => 1);
   has api => (is => 'ro', required => 1);
+  has api_file => (is => 'ro', required => 1);
+
+  has struct => (is => 'ro', lazy => 1, default => sub {
+    my $file = shift->api_file;
+    my $text = read_file( $file );
+    return from_json($text);
+  });
 
   has inner_classes => (is => 'rw', isa => 'HashRef', default => sub { {} });
   has enums => (is => 'rw', isa => 'HashRef', default => sub { {} });
@@ -399,7 +407,8 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
       $self->save_class($class_name, $output);
     }
 
-    return $self->process_template($self->service_class_template, { c => $self });
+    my $class_out = $self->process_template($self->service_class_template, { c => $self });
+    $self->save_class($self->api, $class_out);
   }
 
   sub doc_for_shape {

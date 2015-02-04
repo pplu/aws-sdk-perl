@@ -85,10 +85,7 @@ foreach my $file (@files) {
     my $ns = $namespaces->{ $f };
     die "$f doesn't have a namespace defined" if (not defined $ns or $ns eq 'SKIP_THIS_CLASS');
     eval {
-      my $struct = process_file($file, $f);
-      my $content = process_api("Paws::$ns", $struct);
-      #print $content;
-      write_file("auto-lib/Paws/${ns}.pm", $content);
+      process_api("Paws::$ns", $file);
     };
     if ($@) { warn $@; push @failures, "$file $@\n" }
   }
@@ -97,16 +94,10 @@ foreach my $file (@files) {
 print "Summary of fails\n";
 print @failures;
 
-sub process_file {
-  my ($file, $api) = @_;
-  my $text = read_file( $file );
-  return from_json($text);
-}
-
-
 sub process_api {
-  my ($api, $struct) = @_;
+  my ($api, $file) = @_;
 
+  my $struct = from_json(read_file($file));
   my $type = $struct->{metadata}->{protocol} or die "Type of API call not found";
 
   my $overrides = { 'Paws::EC2' => 'EC2' };
@@ -116,10 +107,7 @@ sub process_api {
   my $class_maker = "Paws::API::Builder::${type}";
   require_module $class_maker;
 
-  my $c = $class_maker->new(struct => $struct, api => $api);
-
-  my $out = $c->process_api;
-
-  return $out;
+  my $c = $class_maker->new(api_file => $file, api => $api);
+  $c->process_api;
 }
 
