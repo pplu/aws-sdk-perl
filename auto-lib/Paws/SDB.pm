@@ -51,6 +51,34 @@ package Paws::SDB {
     my $self = shift;
     return $self->caller->do_call('Paws::SDB::Select', @_);
   }
+  sub ListAllDomains {
+    my $self = shift;
+
+    my $result = $self->ListDomains(@_);
+    my $array = [];
+    push @$array, @{ $result->DomainNames };
+
+    while ($result->NextToken) {
+      $result = $self->ListDomains(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->DomainNames };
+    }
+
+    return 'Paws::SDB::ListDomains'->_returns->new(DomainNames => $array);
+  }
+  sub SelectAll {
+    my $self = shift;
+
+    my $result = $self->Select(@_);
+    my $array = [];
+    push @$array, @{ $result->Items };
+
+    while ($result->NextToken) {
+      $result = $self->Select(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Items };
+    }
+
+    return 'Paws::SDB::Select'->_returns->new(Items => $array);
+  }
 }
 1;
 

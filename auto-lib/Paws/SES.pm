@@ -83,6 +83,20 @@ package Paws::SES {
     my $self = shift;
     return $self->caller->do_call('Paws::SES::VerifyEmailIdentity', @_);
   }
+  sub ListAllIdentities {
+    my $self = shift;
+
+    my $result = $self->ListIdentities(@_);
+    my $array = [];
+    push @$array, @{ $result->Identities };
+
+    while ($result->NextToken) {
+      $result = $self->ListIdentities(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Identities };
+    }
+
+    return 'Paws::SES::ListIdentities'->_returns->new(Identities => $array);
+  }
 }
 1;
 

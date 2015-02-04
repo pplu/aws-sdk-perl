@@ -347,6 +347,230 @@ package Paws::IAM {
     my $self = shift;
     return $self->caller->do_call('Paws::IAM::UploadSigningCertificate', @_);
   }
+  sub GetAllGroups {
+    my $self = shift;
+
+    my $result = $self->GetGroup(@_);
+    my $array = [];
+    push @$array, @{ $result->Users };
+
+    while ($result->Marker) {
+      $result = $self->GetGroup(@_, Marker => $result->Marker);
+      push @$array, @{ $result->Users };
+    }
+
+    return 'Paws::IAM::GetGroup'->_returns->new(Users => $array);
+  }
+  sub ListAllAccessKeys {
+    my $self = shift;
+
+    my $result = $self->ListAccessKeys(@_);
+    my $array = [];
+    push @$array, @{ $result->AccessKeyMetadata };
+
+    while ($result->Marker) {
+      $result = $self->ListAccessKeys(@_, Marker => $result->Marker);
+      push @$array, @{ $result->AccessKeyMetadata };
+    }
+
+    return 'Paws::IAM::ListAccessKeys'->_returns->new(AccessKeyMetadata => $array);
+  }
+  sub ListAllAccountAliases {
+    my $self = shift;
+
+    my $result = $self->ListAccountAliases(@_);
+    my $array = [];
+    push @$array, @{ $result->AccountAliases };
+
+    while ($result->Marker) {
+      $result = $self->ListAccountAliases(@_, Marker => $result->Marker);
+      push @$array, @{ $result->AccountAliases };
+    }
+
+    return 'Paws::IAM::ListAccountAliases'->_returns->new(AccountAliases => $array);
+  }
+  sub ListAllGroupPolicies {
+    my $self = shift;
+
+    my $result = $self->ListGroupPolicies(@_);
+    my $array = [];
+    push @$array, @{ $result->PolicyNames };
+
+    while ($result->Marker) {
+      $result = $self->ListGroupPolicies(@_, Marker => $result->Marker);
+      push @$array, @{ $result->PolicyNames };
+    }
+
+    return 'Paws::IAM::ListGroupPolicies'->_returns->new(PolicyNames => $array);
+  }
+  sub ListAllGroups {
+    my $self = shift;
+
+    my $result = $self->ListGroups(@_);
+    my $array = [];
+    push @$array, @{ $result->Groups };
+
+    while ($result->Marker) {
+      $result = $self->ListGroups(@_, Marker => $result->Marker);
+      push @$array, @{ $result->Groups };
+    }
+
+    return 'Paws::IAM::ListGroups'->_returns->new(Groups => $array);
+  }
+  sub ListAllGroupsForUser {
+    my $self = shift;
+
+    my $result = $self->ListGroupsForUser(@_);
+    my $array = [];
+    push @$array, @{ $result->Groups };
+
+    while ($result->Marker) {
+      $result = $self->ListGroupsForUser(@_, Marker => $result->Marker);
+      push @$array, @{ $result->Groups };
+    }
+
+    return 'Paws::IAM::ListGroupsForUser'->_returns->new(Groups => $array);
+  }
+  sub ListAllInstanceProfiles {
+    my $self = shift;
+
+    my $result = $self->ListInstanceProfiles(@_);
+    my $array = [];
+    push @$array, @{ $result->InstanceProfiles };
+
+    while ($result->Marker) {
+      $result = $self->ListInstanceProfiles(@_, Marker => $result->Marker);
+      push @$array, @{ $result->InstanceProfiles };
+    }
+
+    return 'Paws::IAM::ListInstanceProfiles'->_returns->new(InstanceProfiles => $array);
+  }
+  sub ListAllInstanceProfilesForRole {
+    my $self = shift;
+
+    my $result = $self->ListInstanceProfilesForRole(@_);
+    my $array = [];
+    push @$array, @{ $result->InstanceProfiles };
+
+    while ($result->Marker) {
+      $result = $self->ListInstanceProfilesForRole(@_, Marker => $result->Marker);
+      push @$array, @{ $result->InstanceProfiles };
+    }
+
+    return 'Paws::IAM::ListInstanceProfilesForRole'->_returns->new(InstanceProfiles => $array);
+  }
+  sub ListAllMFADevices {
+    my $self = shift;
+
+    my $result = $self->ListMFADevices(@_);
+    my $array = [];
+    push @$array, @{ $result->MFADevices };
+
+    while ($result->Marker) {
+      $result = $self->ListMFADevices(@_, Marker => $result->Marker);
+      push @$array, @{ $result->MFADevices };
+    }
+
+    return 'Paws::IAM::ListMFADevices'->_returns->new(MFADevices => $array);
+  }
+  sub ListAllRolePolicies {
+    my $self = shift;
+
+    my $result = $self->ListRolePolicies(@_);
+    my $array = [];
+    push @$array, @{ $result->PolicyNames };
+
+    while ($result->Marker) {
+      $result = $self->ListRolePolicies(@_, Marker => $result->Marker);
+      push @$array, @{ $result->PolicyNames };
+    }
+
+    return 'Paws::IAM::ListRolePolicies'->_returns->new(PolicyNames => $array);
+  }
+  sub ListAllRoles {
+    my $self = shift;
+
+    my $result = $self->ListRoles(@_);
+    my $array = [];
+    push @$array, @{ $result->Roles };
+
+    while ($result->Marker) {
+      $result = $self->ListRoles(@_, Marker => $result->Marker);
+      push @$array, @{ $result->Roles };
+    }
+
+    return 'Paws::IAM::ListRoles'->_returns->new(Roles => $array);
+  }
+  sub ListAllServerCertificates {
+    my $self = shift;
+
+    my $result = $self->ListServerCertificates(@_);
+    my $array = [];
+    push @$array, @{ $result->ServerCertificateMetadataList };
+
+    while ($result->Marker) {
+      $result = $self->ListServerCertificates(@_, Marker => $result->Marker);
+      push @$array, @{ $result->ServerCertificateMetadataList };
+    }
+
+    return 'Paws::IAM::ListServerCertificates'->_returns->new(ServerCertificateMetadataList => $array);
+  }
+  sub ListAllSigningCertificates {
+    my $self = shift;
+
+    my $result = $self->ListSigningCertificates(@_);
+    my $array = [];
+    push @$array, @{ $result->Certificates };
+
+    while ($result->Marker) {
+      $result = $self->ListSigningCertificates(@_, Marker => $result->Marker);
+      push @$array, @{ $result->Certificates };
+    }
+
+    return 'Paws::IAM::ListSigningCertificates'->_returns->new(Certificates => $array);
+  }
+  sub ListAllUserPolicies {
+    my $self = shift;
+
+    my $result = $self->ListUserPolicies(@_);
+    my $array = [];
+    push @$array, @{ $result->PolicyNames };
+
+    while ($result->Marker) {
+      $result = $self->ListUserPolicies(@_, Marker => $result->Marker);
+      push @$array, @{ $result->PolicyNames };
+    }
+
+    return 'Paws::IAM::ListUserPolicies'->_returns->new(PolicyNames => $array);
+  }
+  sub ListAllUsers {
+    my $self = shift;
+
+    my $result = $self->ListUsers(@_);
+    my $array = [];
+    push @$array, @{ $result->Users };
+
+    while ($result->Marker) {
+      $result = $self->ListUsers(@_, Marker => $result->Marker);
+      push @$array, @{ $result->Users };
+    }
+
+    return 'Paws::IAM::ListUsers'->_returns->new(Users => $array);
+  }
+  sub ListAllVirtualMFADevices {
+    my $self = shift;
+
+    my $result = $self->ListVirtualMFADevices(@_);
+    my $array = [];
+    push @$array, @{ $result->VirtualMFADevices };
+
+    while ($result->Marker) {
+      $result = $self->ListVirtualMFADevices(@_, Marker => $result->Marker);
+      push @$array, @{ $result->VirtualMFADevices };
+    }
+
+    return 'Paws::IAM::ListVirtualMFADevices'->_returns->new(VirtualMFADevices => $array);
+  }
 }
 1;
 

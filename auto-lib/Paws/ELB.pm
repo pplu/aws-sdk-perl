@@ -123,6 +123,20 @@ package Paws::ELB {
     my $self = shift;
     return $self->caller->do_call('Paws::ELB::SetLoadBalancerPoliciesOfListener', @_);
   }
+  sub DescribeAllLoadBalancers {
+    my $self = shift;
+
+    my $result = $self->DescribeLoadBalancers(@_);
+    my $array = [];
+    push @$array, @{ $result->LoadBalancerDescriptions };
+
+    while ($result->NextMarker) {
+      $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
+      push @$array, @{ $result->LoadBalancerDescriptions };
+    }
+
+    return 'Paws::ELB::DescribeLoadBalancers'->_returns->new(LoadBalancerDescriptions => $array);
+  }
 }
 1;
 

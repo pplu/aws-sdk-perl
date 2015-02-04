@@ -80,6 +80,76 @@ package Paws::EMR {
     my $self = shift;
     return $self->caller->do_call('Paws::EMR::TerminateJobFlows', @_);
   }
+  sub ListAllBootstrapActions {
+    my $self = shift;
+
+    my $result = $self->ListBootstrapActions(@_);
+    my $array = [];
+    push @$array, @{ $result->BootstrapActions };
+
+    while ($result->Marker) {
+      $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
+      push @$array, @{ $result->BootstrapActions };
+    }
+
+    return 'Paws::EMR::ListBootstrapActions'->_returns->new(BootstrapActions => $array);
+  }
+  sub ListAllClusters {
+    my $self = shift;
+
+    my $result = $self->ListClusters(@_);
+    my $array = [];
+    push @$array, @{ $result->Clusters };
+
+    while ($result->Marker) {
+      $result = $self->ListClusters(@_, Marker => $result->Marker);
+      push @$array, @{ $result->Clusters };
+    }
+
+    return 'Paws::EMR::ListClusters'->_returns->new(Clusters => $array);
+  }
+  sub ListAllInstanceGroups {
+    my $self = shift;
+
+    my $result = $self->ListInstanceGroups(@_);
+    my $array = [];
+    push @$array, @{ $result->InstanceGroups };
+
+    while ($result->Marker) {
+      $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
+      push @$array, @{ $result->InstanceGroups };
+    }
+
+    return 'Paws::EMR::ListInstanceGroups'->_returns->new(InstanceGroups => $array);
+  }
+  sub ListAllInstances {
+    my $self = shift;
+
+    my $result = $self->ListInstances(@_);
+    my $array = [];
+    push @$array, @{ $result->Instances };
+
+    while ($result->Marker) {
+      $result = $self->ListInstances(@_, Marker => $result->Marker);
+      push @$array, @{ $result->Instances };
+    }
+
+    return 'Paws::EMR::ListInstances'->_returns->new(Instances => $array);
+  }
+  sub ListAllSteps {
+    my $self = shift;
+
+    my $result = $self->ListSteps(@_);
+    my $array = [];
+    push @$array, @{ $result->Steps };
+
+    while ($result->Marker) {
+      $result = $self->ListSteps(@_, Marker => $result->Marker);
+      push @$array, @{ $result->Steps };
+    }
+
+    return 'Paws::EMR::ListSteps'->_returns->new(Steps => $array);
+  }
 }
 1;
 

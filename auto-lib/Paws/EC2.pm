@@ -651,6 +651,104 @@ package Paws::EC2 {
     my $self = shift;
     return $self->caller->do_call('Paws::EC2::UnmonitorInstances', @_);
   }
+  sub DescribeAllInstances {
+    my $self = shift;
+
+    my $result = $self->DescribeInstances(@_);
+    my $array = [];
+    push @$array, @{ $result->Reservations };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Reservations };
+    }
+
+    return 'Paws::EC2::DescribeInstances'->_returns->new(Reservations => $array);
+  }
+  sub DescribeAllInstanceStatus {
+    my $self = shift;
+
+    my $result = $self->DescribeInstanceStatus(@_);
+    my $array = [];
+    push @$array, @{ $result->InstanceStatuses };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeInstanceStatus(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->InstanceStatuses };
+    }
+
+    return 'Paws::EC2::DescribeInstanceStatus'->_returns->new(InstanceStatuses => $array);
+  }
+  sub DescribeAllReservedInstancesModifications {
+    my $self = shift;
+
+    my $result = $self->DescribeReservedInstancesModifications(@_);
+    my $array = [];
+    push @$array, @{ $result->ReservedInstancesModifications };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeReservedInstancesModifications(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->ReservedInstancesModifications };
+    }
+
+    return 'Paws::EC2::DescribeReservedInstancesModifications'->_returns->new(ReservedInstancesModifications => $array);
+  }
+  sub DescribeAllReservedInstancesOfferings {
+    my $self = shift;
+
+    my $result = $self->DescribeReservedInstancesOfferings(@_);
+    my $array = [];
+    push @$array, @{ $result->ReservedInstancesOfferings };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->ReservedInstancesOfferings };
+    }
+
+    return 'Paws::EC2::DescribeReservedInstancesOfferings'->_returns->new(ReservedInstancesOfferings => $array);
+  }
+  sub DescribeAllSpotPriceHistory {
+    my $self = shift;
+
+    my $result = $self->DescribeSpotPriceHistory(@_);
+    my $array = [];
+    push @$array, @{ $result->SpotPriceHistory };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeSpotPriceHistory(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->SpotPriceHistory };
+    }
+
+    return 'Paws::EC2::DescribeSpotPriceHistory'->_returns->new(SpotPriceHistory => $array);
+  }
+  sub DescribeAllTags {
+    my $self = shift;
+
+    my $result = $self->DescribeTags(@_);
+    my $array = [];
+    push @$array, @{ $result->Tags };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Tags };
+    }
+
+    return 'Paws::EC2::DescribeTags'->_returns->new(Tags => $array);
+  }
+  sub DescribeAllVolumeStatus {
+    my $self = shift;
+
+    my $result = $self->DescribeVolumeStatus(@_);
+    my $array = [];
+    push @$array, @{ $result->VolumeStatuses };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeVolumeStatus(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->VolumeStatuses };
+    }
+
+    return 'Paws::EC2::DescribeVolumeStatus'->_returns->new(VolumeStatuses => $array);
+  }
 }
 1;
 

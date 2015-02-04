@@ -127,6 +127,20 @@ package Paws::ElasticBeanstalk {
     my $self = shift;
     return $self->caller->do_call('Paws::ElasticBeanstalk::ValidateConfigurationSettings', @_);
   }
+  sub DescribeAllEvents {
+    my $self = shift;
+
+    my $result = $self->DescribeEvents(@_);
+    my $array = [];
+    push @$array, @{ $result->Events };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Events };
+    }
+
+    return 'Paws::ElasticBeanstalk::DescribeEvents'->_returns->new(Events => $array);
+  }
 }
 1;
 

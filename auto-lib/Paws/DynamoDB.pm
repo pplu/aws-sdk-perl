@@ -64,6 +64,48 @@ package Paws::DynamoDB {
     my $self = shift;
     return $self->caller->do_call('Paws::DynamoDB::UpdateTable', @_);
   }
+  sub ListAllTables {
+    my $self = shift;
+
+    my $result = $self->ListTables(@_);
+    my $array = [];
+    push @$array, @{ $result->TableNames };
+
+    while ($result->LastEvaluatedTableName) {
+      $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
+      push @$array, @{ $result->TableNames };
+    }
+
+    return 'Paws::DynamoDB::ListTables'->_returns->new(TableNames => $array);
+  }
+  sub QueryAll {
+    my $self = shift;
+
+    my $result = $self->Query(@_);
+    my $array = [];
+    push @$array, @{ $result->Items };
+
+    while ($result->LastEvaluatedKey) {
+      $result = $self->Query(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
+      push @$array, @{ $result->Items };
+    }
+
+    return 'Paws::DynamoDB::Query'->_returns->new(Items => $array);
+  }
+  sub ScanAll {
+    my $self = shift;
+
+    my $result = $self->Scan(@_);
+    my $array = [];
+    push @$array, @{ $result->Items };
+
+    while ($result->LastEvaluatedKey) {
+      $result = $self->Scan(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
+      push @$array, @{ $result->Items };
+    }
+
+    return 'Paws::DynamoDB::Scan'->_returns->new(Items => $array);
+  }
 }
 1;
 

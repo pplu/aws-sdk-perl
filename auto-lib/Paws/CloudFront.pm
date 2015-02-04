@@ -96,6 +96,62 @@ package Paws::CloudFront {
     my $self = shift;
     return $self->caller->do_call('Paws::CloudFront::UpdateStreamingDistribution2014_10_21', @_);
   }
+  sub ListAllCloudFrontOriginAccessIdentities {
+    my $self = shift;
+
+    my $result = $self->ListCloudFrontOriginAccessIdentities(@_);
+    my $array = [];
+    push @$array, @{ $result->CloudFrontOriginAccessIdentityList.Items };
+
+    while ($result->CloudFrontOriginAccessIdentityList.NextMarker) {
+      $result = $self->ListCloudFrontOriginAccessIdentities(@_, Marker => $result->CloudFrontOriginAccessIdentityList.NextMarker);
+      push @$array, @{ $result->CloudFrontOriginAccessIdentityList.Items };
+    }
+
+    return 'Paws::CloudFront::ListCloudFrontOriginAccessIdentities'->_returns->new(CloudFrontOriginAccessIdentityList.Items => $array);
+  }
+  sub ListAllDistributions {
+    my $self = shift;
+
+    my $result = $self->ListDistributions(@_);
+    my $array = [];
+    push @$array, @{ $result->DistributionList.Items };
+
+    while ($result->DistributionList.NextMarker) {
+      $result = $self->ListDistributions(@_, Marker => $result->DistributionList.NextMarker);
+      push @$array, @{ $result->DistributionList.Items };
+    }
+
+    return 'Paws::CloudFront::ListDistributions'->_returns->new(DistributionList.Items => $array);
+  }
+  sub ListAllInvalidations {
+    my $self = shift;
+
+    my $result = $self->ListInvalidations(@_);
+    my $array = [];
+    push @$array, @{ $result->InvalidationList.Items };
+
+    while ($result->InvalidationList.NextMarker) {
+      $result = $self->ListInvalidations(@_, Marker => $result->InvalidationList.NextMarker);
+      push @$array, @{ $result->InvalidationList.Items };
+    }
+
+    return 'Paws::CloudFront::ListInvalidations'->_returns->new(InvalidationList.Items => $array);
+  }
+  sub ListAllStreamingDistributions {
+    my $self = shift;
+
+    my $result = $self->ListStreamingDistributions(@_);
+    my $array = [];
+    push @$array, @{ $result->StreamingDistributionList.Items };
+
+    while ($result->StreamingDistributionList.NextMarker) {
+      $result = $self->ListStreamingDistributions(@_, Marker => $result->StreamingDistributionList.NextMarker);
+      push @$array, @{ $result->StreamingDistributionList.Items };
+    }
+
+    return 'Paws::CloudFront::ListStreamingDistributions'->_returns->new(StreamingDistributionList.Items => $array);
+  }
 }
 1;
 

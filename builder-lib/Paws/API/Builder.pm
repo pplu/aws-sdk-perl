@@ -20,6 +20,7 @@ package Paws::API::Builder {
   has waiters_file => (is => 'ro', lazy => 1, default => sub {
     my $file = shift->api_file;
     $file =~ s/\.normal\./.waiters./;
+    return $file;
   });
 
   has waiters_struct => (is => 'ro', lazy => 1, default => sub {
@@ -30,12 +31,27 @@ package Paws::API::Builder {
   has paginators_file => (is => 'ro', lazy => 1, default => sub {
     my $file = shift->api_file;
     $file =~ s/\.normal\./.paginators./;
+    return $file;
   });
 
   has paginators_struct => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
-    return $self->_load_json_file($self->paginators_file);
+    return $self->_load_json_file($self->paginators_file)->{ pagination };
   });
+
+  sub get_paginator_name {
+    my ($self,$name) = @_;
+    return $name if ($name =~ s/^Describe/DescribeAll/);
+    return $name if ($name =~ s/^List/ListAll/);
+    return $name if ($name =~ s/^Query/QueryAll/);
+    return 'GetAllGroups' if ($name eq 'GetGroup');
+    return 'DownloadAllDBLogFilePortions' if ($name eq 'DownloadDBLogFilePortion');
+    return 'SelectAll' if ($name eq 'Select');
+    return 'GetAllWorkflowExecutionHistories' if ($name eq 'GetWorkflowExecutionHistory');
+    return 'ScanAll' if ($name eq 'Scan');
+    return 'PollForAllDecisionTasks' if ($name eq 'PollForDecisionTask');
+    die "Please help me generate a good name for the paginator $name";
+  }
 
   has inner_classes => (is => 'rw', isa => 'HashRef', default => sub { {} });
   has enums => (is => 'rw', isa => 'HashRef', default => sub { {} });
@@ -87,8 +103,9 @@ package Paws::API::Builder {
   has flattened_arrays => (is => 'rw', isa => 'Bool', default => sub { 0 });
 
   sub _load_json_file {
-    my $self = shift;
-    return from_json(read_file($self->api_file));
+    my ($self,$file) = @_;
+    return {} if (not -e $file);
+    return from_json(read_file($file));
   }
 
   has class_documentation_template => (is => 'ro', isa => 'Str', default => q#

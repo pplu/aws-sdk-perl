@@ -82,6 +82,23 @@ package [% c.api %] {
     return $self->caller->do_call('[% c.api %]::[% op_name %]', @_);
   }
   [%- END %]
+  [%- FOR op IN c.paginators_struct.keys.sort %]
+  sub [% c.get_paginator_name(op) %] {
+    [%- paginator = c.paginators_struct.$op %]
+    my $self = shift;
+
+    my $result = $self->[% op %](@_);
+    my $array = [];
+    push @$array, @{ $result->[% paginator.result_key %] };
+
+    while ($result->[% paginator.output_token %]) {
+      $result = $self->[% op %](@_, [% paginator.input_token %] => $result->[% paginator.output_token %]);
+      push @$array, @{ $result->[% paginator.result_key %] };
+    }
+
+    return '[% c.api %]::[% op %]'->_returns->new([% paginator.result_key %] => $array);
+  }
+  [%- END %]
 }
 1;
 [% c.service_documentation_template | eval %]

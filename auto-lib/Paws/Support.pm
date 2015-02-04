@@ -68,6 +68,34 @@ package Paws::Support {
     my $self = shift;
     return $self->caller->do_call('Paws::Support::ResolveCase', @_);
   }
+  sub DescribeAllCases {
+    my $self = shift;
+
+    my $result = $self->DescribeCases(@_);
+    my $array = [];
+    push @$array, @{ $result->cases };
+
+    while ($result->nextToken) {
+      $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
+      push @$array, @{ $result->cases };
+    }
+
+    return 'Paws::Support::DescribeCases'->_returns->new(cases => $array);
+  }
+  sub DescribeAllCommunications {
+    my $self = shift;
+
+    my $result = $self->DescribeCommunications(@_);
+    my $array = [];
+    push @$array, @{ $result->communications };
+
+    while ($result->nextToken) {
+      $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
+      push @$array, @{ $result->communications };
+    }
+
+    return 'Paws::Support::DescribeCommunications'->_returns->new(communications => $array);
+  }
 }
 1;
 

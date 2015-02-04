@@ -76,6 +76,48 @@ package Paws::DataPipeline {
     my $self = shift;
     return $self->caller->do_call('Paws::DataPipeline::ValidatePipelineDefinition', @_);
   }
+  sub DescribeAllObjects {
+    my $self = shift;
+
+    my $result = $self->DescribeObjects(@_);
+    my $array = [];
+    push @$array, @{ $result->pipelineObjects };
+
+    while ($result->marker) {
+      $result = $self->DescribeObjects(@_, marker => $result->marker);
+      push @$array, @{ $result->pipelineObjects };
+    }
+
+    return 'Paws::DataPipeline::DescribeObjects'->_returns->new(pipelineObjects => $array);
+  }
+  sub ListAllPipelines {
+    my $self = shift;
+
+    my $result = $self->ListPipelines(@_);
+    my $array = [];
+    push @$array, @{ $result->pipelineIdList };
+
+    while ($result->marker) {
+      $result = $self->ListPipelines(@_, marker => $result->marker);
+      push @$array, @{ $result->pipelineIdList };
+    }
+
+    return 'Paws::DataPipeline::ListPipelines'->_returns->new(pipelineIdList => $array);
+  }
+  sub QueryAllObjects {
+    my $self = shift;
+
+    my $result = $self->QueryObjects(@_);
+    my $array = [];
+    push @$array, @{ $result->ids };
+
+    while ($result->marker) {
+      $result = $self->QueryObjects(@_, marker => $result->marker);
+      push @$array, @{ $result->ids };
+    }
+
+    return 'Paws::DataPipeline::QueryObjects'->_returns->new(ids => $array);
+  }
 }
 1;
 

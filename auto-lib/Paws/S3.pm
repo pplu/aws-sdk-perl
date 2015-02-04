@@ -208,6 +208,62 @@ package Paws::S3 {
     my $self = shift;
     return $self->caller->do_call('Paws::S3::UploadPartCopy', @_);
   }
+  sub ListAllMultipartUploads {
+    my $self = shift;
+
+    my $result = $self->ListMultipartUploads(@_);
+    my $array = [];
+    push @$array, @{ $result->ARRAY(0x44ea838) };
+
+    while ($result->ARRAY(0x3f65890)) {
+      $result = $self->ListMultipartUploads(@_, ARRAY(0x44cba48) => $result->ARRAY(0x3f65890));
+      push @$array, @{ $result->ARRAY(0x44ea838) };
+    }
+
+    return 'Paws::S3::ListMultipartUploads'->_returns->new(ARRAY(0x44ea838) => $array);
+  }
+  sub ListAllObjects {
+    my $self = shift;
+
+    my $result = $self->ListObjects(@_);
+    my $array = [];
+    push @$array, @{ $result->ARRAY(0x4224170) };
+
+    while ($result->NextMarker || Contents[-1].Key) {
+      $result = $self->ListObjects(@_, Marker => $result->NextMarker || Contents[-1].Key);
+      push @$array, @{ $result->ARRAY(0x4224170) };
+    }
+
+    return 'Paws::S3::ListObjects'->_returns->new(ARRAY(0x4224170) => $array);
+  }
+  sub ListAllObjectVersions {
+    my $self = shift;
+
+    my $result = $self->ListObjectVersions(@_);
+    my $array = [];
+    push @$array, @{ $result->ARRAY(0x418cd30) };
+
+    while ($result->ARRAY(0x44becc8)) {
+      $result = $self->ListObjectVersions(@_, ARRAY(0x442d468) => $result->ARRAY(0x44becc8));
+      push @$array, @{ $result->ARRAY(0x418cd30) };
+    }
+
+    return 'Paws::S3::ListObjectVersions'->_returns->new(ARRAY(0x418cd30) => $array);
+  }
+  sub ListAllParts {
+    my $self = shift;
+
+    my $result = $self->ListParts(@_);
+    my $array = [];
+    push @$array, @{ $result->Parts };
+
+    while ($result->NextPartNumberMarker) {
+      $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
+      push @$array, @{ $result->Parts };
+    }
+
+    return 'Paws::S3::ListParts'->_returns->new(Parts => $array);
+  }
 }
 1;
 

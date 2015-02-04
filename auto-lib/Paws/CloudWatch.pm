@@ -55,6 +55,48 @@ package Paws::CloudWatch {
     my $self = shift;
     return $self->caller->do_call('Paws::CloudWatch::SetAlarmState', @_);
   }
+  sub DescribeAllAlarmHistory {
+    my $self = shift;
+
+    my $result = $self->DescribeAlarmHistory(@_);
+    my $array = [];
+    push @$array, @{ $result->AlarmHistoryItems };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeAlarmHistory(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->AlarmHistoryItems };
+    }
+
+    return 'Paws::CloudWatch::DescribeAlarmHistory'->_returns->new(AlarmHistoryItems => $array);
+  }
+  sub DescribeAllAlarms {
+    my $self = shift;
+
+    my $result = $self->DescribeAlarms(@_);
+    my $array = [];
+    push @$array, @{ $result->MetricAlarms };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->MetricAlarms };
+    }
+
+    return 'Paws::CloudWatch::DescribeAlarms'->_returns->new(MetricAlarms => $array);
+  }
+  sub ListAllMetrics {
+    my $self = shift;
+
+    my $result = $self->ListMetrics(@_);
+    my $array = [];
+    push @$array, @{ $result->Metrics };
+
+    while ($result->NextToken) {
+      $result = $self->ListMetrics(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Metrics };
+    }
+
+    return 'Paws::CloudWatch::ListMetrics'->_returns->new(Metrics => $array);
+  }
 }
 1;
 

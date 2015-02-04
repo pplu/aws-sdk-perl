@@ -80,6 +80,62 @@ package Paws::ElasticTranscoder {
     my $self = shift;
     return $self->caller->do_call('Paws::ElasticTranscoder::UpdatePipelineStatus', @_);
   }
+  sub ListAllJobsByPipeline {
+    my $self = shift;
+
+    my $result = $self->ListJobsByPipeline(@_);
+    my $array = [];
+    push @$array, @{ $result->Jobs };
+
+    while ($result->NextPageToken) {
+      $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
+      push @$array, @{ $result->Jobs };
+    }
+
+    return 'Paws::ElasticTranscoder::ListJobsByPipeline'->_returns->new(Jobs => $array);
+  }
+  sub ListAllJobsByStatus {
+    my $self = shift;
+
+    my $result = $self->ListJobsByStatus(@_);
+    my $array = [];
+    push @$array, @{ $result->Jobs };
+
+    while ($result->NextPageToken) {
+      $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
+      push @$array, @{ $result->Jobs };
+    }
+
+    return 'Paws::ElasticTranscoder::ListJobsByStatus'->_returns->new(Jobs => $array);
+  }
+  sub ListAllPipelines {
+    my $self = shift;
+
+    my $result = $self->ListPipelines(@_);
+    my $array = [];
+    push @$array, @{ $result->Pipelines };
+
+    while ($result->NextPageToken) {
+      $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
+      push @$array, @{ $result->Pipelines };
+    }
+
+    return 'Paws::ElasticTranscoder::ListPipelines'->_returns->new(Pipelines => $array);
+  }
+  sub ListAllPresets {
+    my $self = shift;
+
+    my $result = $self->ListPresets(@_);
+    my $array = [];
+    push @$array, @{ $result->Presets };
+
+    while ($result->NextPageToken) {
+      $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);
+      push @$array, @{ $result->Presets };
+    }
+
+    return 'Paws::ElasticTranscoder::ListPresets'->_returns->new(Presets => $array);
+  }
 }
 1;
 

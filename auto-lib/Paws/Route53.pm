@@ -124,6 +124,48 @@ package Paws::Route53 {
     my $self = shift;
     return $self->caller->do_call('Paws::Route53::UpdateHostedZoneComment', @_);
   }
+  sub ListAllHealthChecks {
+    my $self = shift;
+
+    my $result = $self->ListHealthChecks(@_);
+    my $array = [];
+    push @$array, @{ $result->HealthChecks };
+
+    while ($result->NextMarker) {
+      $result = $self->ListHealthChecks(@_, Marker => $result->NextMarker);
+      push @$array, @{ $result->HealthChecks };
+    }
+
+    return 'Paws::Route53::ListHealthChecks'->_returns->new(HealthChecks => $array);
+  }
+  sub ListAllHostedZones {
+    my $self = shift;
+
+    my $result = $self->ListHostedZones(@_);
+    my $array = [];
+    push @$array, @{ $result->HostedZones };
+
+    while ($result->NextMarker) {
+      $result = $self->ListHostedZones(@_, Marker => $result->NextMarker);
+      push @$array, @{ $result->HostedZones };
+    }
+
+    return 'Paws::Route53::ListHostedZones'->_returns->new(HostedZones => $array);
+  }
+  sub ListAllResourceRecordSets {
+    my $self = shift;
+
+    my $result = $self->ListResourceRecordSets(@_);
+    my $array = [];
+    push @$array, @{ $result->ResourceRecordSets };
+
+    while ($result->ARRAY(0x40fbd80)) {
+      $result = $self->ListResourceRecordSets(@_, ARRAY(0x3f8e358) => $result->ARRAY(0x40fbd80));
+      push @$array, @{ $result->ResourceRecordSets };
+    }
+
+    return 'Paws::Route53::ListResourceRecordSets'->_returns->new(ResourceRecordSets => $array);
+  }
 }
 1;
 
