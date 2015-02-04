@@ -51,7 +51,7 @@ if (not defined $service_name) {
 
 my $service = Moose::Util::with_traits(
   $aws->service($service_name), 'MooseX::Getopt'
-)->new_with_options(@service_args);
+)->new_with_options(argv => \@service_args);
 
 my $call;
 
