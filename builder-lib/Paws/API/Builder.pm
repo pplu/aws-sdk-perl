@@ -9,12 +9,32 @@ package Paws::API::Builder {
   use JSON;
 
   has api => (is => 'ro', required => 1);
+
   has api_file => (is => 'ro', required => 1);
 
   has struct => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return $self->_load_json_file($self->api_file);
+  });
+
+  has waiters_file => (is => 'ro', lazy => 1, default => sub {
     my $file = shift->api_file;
-    my $text = read_file( $file );
-    return from_json($text);
+    $file =~ s/\.normal\./.waiters./;
+  });
+
+  has waiters_struct => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return $self->_load_json_file($self->waiters_file);
+  });
+
+  has paginators_file => (is => 'ro', lazy => 1, default => sub {
+    my $file = shift->api_file;
+    $file =~ s/\.normal\./.paginators./;
+  });
+
+  has paginators_struct => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return $self->_load_json_file($self->paginators_file);
   });
 
   has inner_classes => (is => 'rw', isa => 'HashRef', default => sub { {} });
@@ -65,6 +85,11 @@ package Paws::API::Builder {
   );
 
   has flattened_arrays => (is => 'rw', isa => 'Bool', default => sub { 0 });
+
+  sub _load_json_file {
+    my $self = shift;
+    return from_json(read_file($self->api_file));
+  }
 
   has class_documentation_template => (is => 'ro', isa => 'Str', default => q#
 \#\#\# main pod documentation begin \#\#\#
