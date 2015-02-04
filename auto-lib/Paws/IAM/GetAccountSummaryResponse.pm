@@ -27,8 +27,13 @@ C<SummaryMap> contains the following keys:
 
 =item *
 
-C<AccessKeysPerUserQuota> - Maximum number of access keys that can be
-created per user
+C<AccessKeysPerUserQuota> - Maximum number of active access keys
+allowed per IAM user
+
+=item *
+
+C<AccountAccessKeysPresent> - 1 if the root account has an access key,
+0 otherwise
 
 =item *
 
@@ -37,35 +42,41 @@ to it, 0 otherwise
 
 =item *
 
+C<AccountSigningCertificatesPresent> - 1 if the root account has a
+signing certificate, 0 otherwise
+
+=item *
+
 C<AssumeRolePolicySizeQuota> - Maximum allowed size for assume role
-policy documents (in kilobytes)
+policy documents (trust policies), in non-whitespace characters
 
 =item *
 
-C<GroupPolicySizeQuota> - Maximum allowed size for Group policy
-documents (in kilobytes)
+C<GroupPolicySizeQuota> - Maximum allowed size for IAM group policy
+documents, in non-whitespace characters
 
 =item *
 
-C<Groups> - Number of Groups for the AWS account
+C<Groups> - Number of IAM groups in the AWS account
 
 =item *
 
-C<GroupsPerUserQuota> - Maximum number of groups an IAM user can belong
-to
+C<GroupsPerUserQuota> - Maximum number of IAM groups each IAM user can
+belong to
 
 =item *
 
-C<GroupsQuota> - Maximum groups allowed for the AWS account
+C<GroupsQuota> - Maximum number of IAM groups allowed in the AWS
+account
 
 =item *
 
-C<InstanceProfiles> - Number of instance profiles for the AWS account
+C<InstanceProfiles> - Number of instance profiles in the AWS account
 
 =item *
 
-C<InstanceProfilesQuota> - Maximum instance profiles allowed for the
-AWS account
+C<InstanceProfilesQuota> - Maximum number of instance profiles allowed
+in the AWS account
 
 =item *
 
@@ -78,44 +89,44 @@ an IAM user or to the root account
 
 =item *
 
-C<RolePolicySizeQuota> - Maximum allowed size for role policy documents
-(in kilobytes)
+C<RolePolicySizeQuota> - Maximum allowed size for IAM role policy
+documents (permissions policies), in non-whitespace characters
 
 =item *
 
-C<Roles> - Number of roles for the AWS account
+C<Roles> - Number of roles IAM in the AWS account
 
 =item *
 
-C<RolesQuota> - Maximum roles allowed for the AWS account
+C<RolesQuota> - Maximum number of IAM roles allowed in the AWS account
 
 =item *
 
-C<ServerCertificates> - Number of server certificates for the AWS
+C<UserPolicySizeQuota> - Maximum allowed size for IAM user policy
+documents, in non-whitespace characters
+
+=item *
+
+C<Users> - Number of IAM users in the AWS account
+
+=item *
+
+C<UsersQuota> - Maximum number of IAM users allowed in the AWS account
+
+=item *
+
+C<ServerCertificates> - Number of server certificates in the AWS
 account
 
 =item *
 
-C<ServerCertificatesQuota> - Maximum server certificates allowed for
-the AWS account
+C<ServerCertificatesQuota> - Maximum number of server certificates
+allowed in the AWS account
 
 =item *
 
-C<SigningCertificatesPerUserQuota> - Maximum number of X509
-certificates allowed for a user
-
-=item *
-
-C<UserPolicySizeQuota> - Maximum allowed size for user policy documents
-(in kilobytes)
-
-=item *
-
-C<Users> - Number of users for the AWS account
-
-=item *
-
-C<UsersQuota> - Maximum users allowed for the AWS account
+C<SigningCertificatesPerUserQuota> - Maximum number of X509 signing
+certificates allowed per IAM user
 
 =back
 

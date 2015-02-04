@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name of the account alias to create.
+The account alias to create.
 
 
 

@@ -1295,9 +1295,8 @@ I<Using IAM> guide.
 
 Retrieves information about all IAM users, groups, and roles in your
 account, including their relationships to one another and their
-attached policies. Use this API to obtain a snapshot of the
-configuration of IAM permissions (users, groups, roles, and policies)
-in your account.
+policies. Use this API to obtain a snapshot of the configuration of IAM
+permissions (users, groups, roles, and their policies) in your account.
 
 You can optionally filter the results using the C<Filter> parameter.
 You can paginate the results using the C<MaxItems> and C<Marker>
@@ -2404,8 +2403,8 @@ existing list of thumbprints. (The lists are not merged.)
 Typically, you need to update a thumbprint only when the identity
 provider's certificate changes, which occurs rarely. However, if the
 provider's certificate I<does> change, any attempt to assume an IAM
-role that specifies the IAM provider as a principal will fail until the
-certificate thumbprint is updated.
+role that specifies the OIDC provider as a principal will fail until
+the certificate thumbprint is updated.
 
 Because trust for the OpenID Connect provider is ultimately derived
 from the provider's certificate and is validated by the thumbprint, it

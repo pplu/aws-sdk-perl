@@ -34,7 +34,7 @@ Information about the credential report.
 
   
 
-Information about the state of a credential report.
+Information about the state of the credential report.
 
 
 

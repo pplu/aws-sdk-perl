@@ -83,6 +83,10 @@ and the provider stores its keys at
 would be the hex-encoded SHA-1 hash value of the certificate used by
 https://keys.server.example.com.
 
+For more information about obtaining the OIDC provider's thumbprint,
+see Obtaining the Thumbprint for an OpenID Connect Provider in the
+I<Using IAM> guide.
+
 
 
 
