@@ -96,7 +96,8 @@ if (ref($result)) {
   my $h = $service->to_hash($result);
   $h = Hash::Flatten::flatten($h, { HashDelimiter => '.', ArrayDelimiter => '.' });
 
-  my $max_chars = reduce { length($a) > length($b) ? length($a) : length($b) } keys %$h;
+  my $max_chars = reduce { length($a) > length($b) ? $a : $b } keys %$h;
+  $max_chars = length($max_chars);
   #TODO: colorize
   say "$_: " . (' ' x ($max_chars - length($_))) .  $h->{ $_ } for (sort keys %$h);
 }
