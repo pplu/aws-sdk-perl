@@ -151,20 +151,6 @@ package Paws::ELB {
     my $call_object = $self->new_with_coercions('Paws::ELB::SetLoadBalancerPoliciesOfListener', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DescribeAllLoadBalancers {
-    my $self = shift;
-
-    my $result = $self->DescribeLoadBalancers(@_);
-    my $array = [];
-    push @$array, @{ $result->LoadBalancerDescriptions };
-
-    while ($result->NextMarker) {
-      $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
-      push @$array, @{ $result->LoadBalancerDescriptions };
-    }
-
-    return 'Paws::ELB::DescribeLoadBalancers'->_returns->new(LoadBalancerDescriptions => $array);
-  }
 }
 1;
 

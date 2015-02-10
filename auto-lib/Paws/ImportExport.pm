@@ -41,20 +41,6 @@ package Paws::ImportExport {
     my $call_object = $self->new_with_coercions('Paws::ImportExport::UpdateJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListAllJobs {
-    my $self = shift;
-
-    my $result = $self->ListJobs(@_);
-    my $array = [];
-    push @$array, @{ $result->Jobs };
-
-    while ($result->Jobs[-1].JobId) {
-      $result = $self->ListJobs(@_, Marker => $result->Jobs[-1].JobId);
-      push @$array, @{ $result->Jobs };
-    }
-
-    return 'Paws::ImportExport::ListJobs'->_returns->new(Jobs => $array);
-  }
 }
 1;
 

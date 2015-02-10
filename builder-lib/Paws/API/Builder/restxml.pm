@@ -86,7 +86,7 @@ package [% c.api %] {
     return $self->caller->do_call($self, $call_object);
   }
   [%- END %]
-  [%- FOR op IN c.paginators_struct.keys.sort %]
+  [%- FOR op IN [] \#c.paginators_struct.keys.sort %]
   sub [% c.get_paginator_name(op) %] {
     [%- paginator = c.paginators_struct.$op %]
     my $self = shift;
