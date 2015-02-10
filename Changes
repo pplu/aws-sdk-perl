@@ -11,4 +11,8 @@
    ->class_for_service('X')->new(region => 'Y')
 
    The recommended one is ->service('X', region => 'Y')
-  
+2015-02-10
+ - Adding paginators broke lots of classes (not loading)
+   deactivated paginators on json, query and restxml classes
+   The only guys who conserves paginators is EC2
+ 
