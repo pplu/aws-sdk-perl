@@ -6,6 +6,8 @@ package Paws::Route53::GetHealthCheck {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetHealthCheck');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/healthcheck/{HealthCheckId}');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::GetHealthCheckResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetHealthCheckResult');
 }

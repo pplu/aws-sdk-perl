@@ -12,6 +12,8 @@ package Paws::S3::ListMultipartUploads {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListMultipartUploads');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}?uploads');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::ListMultipartUploadsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListMultipartUploadsResult');
 }

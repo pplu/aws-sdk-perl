@@ -7,6 +7,8 @@ package Paws::CloudFront::DeleteDistribution2014_10_21 {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDistribution');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2014-10-21/distribution/{Id}');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
