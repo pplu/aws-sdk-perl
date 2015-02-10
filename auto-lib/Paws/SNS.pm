@@ -13,103 +13,128 @@ package Paws::SNS {
   
   sub AddPermission {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::AddPermission', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::AddPermission', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ConfirmSubscription {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::ConfirmSubscription', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::ConfirmSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreatePlatformApplication {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::CreatePlatformApplication', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::CreatePlatformApplication', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreatePlatformEndpoint {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::CreatePlatformEndpoint', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::CreatePlatformEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateTopic {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::CreateTopic', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::CreateTopic', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteEndpoint {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::DeleteEndpoint', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::DeleteEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeletePlatformApplication {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::DeletePlatformApplication', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::DeletePlatformApplication', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteTopic {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::DeleteTopic', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::DeleteTopic', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetEndpointAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::GetEndpointAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::GetEndpointAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetPlatformApplicationAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::GetPlatformApplicationAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::GetPlatformApplicationAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetSubscriptionAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::GetSubscriptionAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::GetSubscriptionAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetTopicAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::GetTopicAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::GetTopicAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListEndpointsByPlatformApplication {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::ListEndpointsByPlatformApplication', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::ListEndpointsByPlatformApplication', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListPlatformApplications {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::ListPlatformApplications', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::ListPlatformApplications', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListSubscriptions {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::ListSubscriptions', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::ListSubscriptions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListSubscriptionsByTopic {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::ListSubscriptionsByTopic', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::ListSubscriptionsByTopic', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListTopics {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::ListTopics', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::ListTopics', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub Publish {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::Publish', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::Publish', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RemovePermission {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::RemovePermission', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::RemovePermission', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetEndpointAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::SetEndpointAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::SetEndpointAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetPlatformApplicationAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::SetPlatformApplicationAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::SetPlatformApplicationAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetSubscriptionAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::SetSubscriptionAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::SetSubscriptionAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetTopicAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::SetTopicAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::SetTopicAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub Subscribe {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::Subscribe', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::Subscribe', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub Unsubscribe {
     my $self = shift;
-    return $self->caller->do_call('Paws::SNS::Unsubscribe', @_);
+    my $call_object = $self->new_with_coercions('Paws::SNS::Unsubscribe', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListAllEndpointsByPlatformApplication {
     my $self = shift;

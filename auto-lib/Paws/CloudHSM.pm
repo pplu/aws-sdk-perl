@@ -14,71 +14,88 @@ package Paws::CloudHSM {
   
   sub CreateHapg {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::CreateHapg', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::CreateHapg', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateHsm {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::CreateHsm', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::CreateHsm', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateLunaClient {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::CreateLunaClient', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::CreateLunaClient', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteHapg {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::DeleteHapg', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::DeleteHapg', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteHsm {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::DeleteHsm', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::DeleteHsm', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteLunaClient {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::DeleteLunaClient', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::DeleteLunaClient', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeHapg {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::DescribeHapg', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::DescribeHapg', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeHsm {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::DescribeHsm', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::DescribeHsm', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLunaClient {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::DescribeLunaClient', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::DescribeLunaClient', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetConfig {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::GetConfig', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::GetConfig', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListAvailableZones {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::ListAvailableZones', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::ListAvailableZones', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListHapgs {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::ListHapgs', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::ListHapgs', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListHsms {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::ListHsms', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::ListHsms', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListLunaClients {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::ListLunaClients', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::ListLunaClients', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyHapg {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::ModifyHapg', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::ModifyHapg', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyHsm {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::ModifyHsm', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::ModifyHsm', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyLunaClient {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudHSM::ModifyLunaClient', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudHSM::ModifyLunaClient', @_);
+    return $self->caller->do_call($self, $call_object);
   }
 }
 1;

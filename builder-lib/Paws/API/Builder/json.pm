@@ -90,7 +90,8 @@ package [% c.api %] {
   [%- op_name = c.api_struct.operations.$op.name %]
   sub [% op_name %] {
     my $self = shift;
-    return $self->caller->do_call('[% c.api %]::[% op_name %]', @_);
+    my $call_object = $self->new_with_coercions('[% c.api %]::[% op_name %]', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   [%- END %]
   [%- FOR op IN c.paginators_struct.keys.sort %]

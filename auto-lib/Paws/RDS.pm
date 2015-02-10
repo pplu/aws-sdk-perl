@@ -13,227 +13,283 @@ package Paws::RDS {
   
   sub AddSourceIdentifierToSubscription {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::AddSourceIdentifierToSubscription', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::AddSourceIdentifierToSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AddTagsToResource {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::AddTagsToResource', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::AddTagsToResource', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ApplyPendingMaintenanceAction {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::ApplyPendingMaintenanceAction', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::ApplyPendingMaintenanceAction', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AuthorizeDBSecurityGroupIngress {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::AuthorizeDBSecurityGroupIngress', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::AuthorizeDBSecurityGroupIngress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CopyDBParameterGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::CopyDBParameterGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::CopyDBParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CopyDBSnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::CopyDBSnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::CopyDBSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CopyOptionGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::CopyOptionGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::CopyOptionGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateDBInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::CreateDBInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateDBInstanceReadReplica {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::CreateDBInstanceReadReplica', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBInstanceReadReplica', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateDBParameterGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::CreateDBParameterGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateDBSecurityGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::CreateDBSecurityGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBSecurityGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateDBSnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::CreateDBSnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateDBSubnetGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::CreateDBSubnetGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBSubnetGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateEventSubscription {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::CreateEventSubscription', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateEventSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateOptionGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::CreateOptionGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateOptionGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDBInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DeleteDBInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDBParameterGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DeleteDBParameterGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDBSecurityGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DeleteDBSecurityGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBSecurityGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDBSnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DeleteDBSnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDBSubnetGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DeleteDBSubnetGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBSubnetGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteEventSubscription {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DeleteEventSubscription', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteEventSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteOptionGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DeleteOptionGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteOptionGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBEngineVersions {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeDBEngineVersions', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBEngineVersions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeDBInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBLogFiles {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeDBLogFiles', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBLogFiles', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBParameterGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeDBParameterGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBParameterGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBParameters {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeDBParameters', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBParameters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBSecurityGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeDBSecurityGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBSecurityGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBSnapshots {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeDBSnapshots', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBSubnetGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeDBSubnetGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBSubnetGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEngineDefaultParameters {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeEngineDefaultParameters', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeEngineDefaultParameters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEventCategories {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeEventCategories', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeEventCategories', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEvents {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeEvents', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeEvents', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEventSubscriptions {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeEventSubscriptions', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeEventSubscriptions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeOptionGroupOptions {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeOptionGroupOptions', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeOptionGroupOptions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeOptionGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeOptionGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeOptionGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeOrderableDBInstanceOptions {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeOrderableDBInstanceOptions', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeOrderableDBInstanceOptions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribePendingMaintenanceActions {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribePendingMaintenanceActions', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribePendingMaintenanceActions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeReservedDBInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeReservedDBInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeReservedDBInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeReservedDBInstancesOfferings {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DescribeReservedDBInstancesOfferings', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeReservedDBInstancesOfferings', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DownloadDBLogFilePortion {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::DownloadDBLogFilePortion', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::DownloadDBLogFilePortion', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListTagsForResource {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::ListTagsForResource', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyDBInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::ModifyDBInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyDBParameterGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::ModifyDBParameterGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyDBSubnetGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::ModifyDBSubnetGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBSubnetGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyEventSubscription {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::ModifyEventSubscription', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyEventSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyOptionGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::ModifyOptionGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyOptionGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PromoteReadReplica {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::PromoteReadReplica', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::PromoteReadReplica', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PurchaseReservedDBInstancesOffering {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::PurchaseReservedDBInstancesOffering', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::PurchaseReservedDBInstancesOffering', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RebootDBInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::RebootDBInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::RebootDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RemoveSourceIdentifierFromSubscription {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::RemoveSourceIdentifierFromSubscription', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::RemoveSourceIdentifierFromSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTagsFromResource {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::RemoveTagsFromResource', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::RemoveTagsFromResource', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ResetDBParameterGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::ResetDBParameterGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::ResetDBParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RestoreDBInstanceFromDBSnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::RestoreDBInstanceFromDBSnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::RestoreDBInstanceFromDBSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RestoreDBInstanceToPointInTime {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::RestoreDBInstanceToPointInTime', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::RestoreDBInstanceToPointInTime', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RevokeDBSecurityGroupIngress {
     my $self = shift;
-    return $self->caller->do_call('Paws::RDS::RevokeDBSecurityGroupIngress', @_);
+    my $call_object = $self->new_with_coercions('Paws::RDS::RevokeDBSecurityGroupIngress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAllDBEngineVersions {
     my $self = shift;

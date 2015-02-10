@@ -2,19 +2,18 @@ package Paws::API::Caller {
   use Moose::Role;
   use Module::Runtime qw//;
   use Carp;
+  use Paws::Net::APIRequest;
 
-  has argv => (is => 'ro');
-
-  has caller => (is => 'ro', default => sub {
-    require Paws::Net::Caller;
-    return Paws::Net::Caller->new(caller_for => $_[0])
-  });
+  has caller => (is => 'ro', required => 1);
 
   has credentials => (
     is => 'ro',
-    isa => 'Paws::Net::Credentials',
+    does => 'Paws::Net::Credentials',
     lazy => 1,
-    default => sub { Paws::Net::CredentialsProviderChain->new },
+    default => sub { 
+      require Paws::Net::CredentialsProviderChain;
+      return Paws::Net::CredentialsProviderChain->new 
+    },
     handles => [ 'access_key', 'secret_key', 'session_token' ],
   );
 
@@ -51,7 +50,7 @@ package Paws::API::Caller {
 
   sub to_hash {
     my ($self, $params) = @_;
-    my $refHash;
+    my $refHash = {};
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
       my $key = $att;
       if (defined $params->$att) {
@@ -74,6 +73,22 @@ package Paws::API::Caller {
       }
     }
     return $refHash;
+  }
+
+  sub response_to_object {
+    my ($self, $unserialized_struct, $call_object) = @_;
+
+    if ($call_object->_returns){
+      if ($call_object->_result_key){
+        $unserialized_struct = $unserialized_struct->{ $call_object->_result_key };
+      }
+
+      Module::Runtime::require_module($call_object->_returns);
+      my $o_result = $call_object->_returns->from_result($unserialized_struct);
+      return $o_result;
+    } else {
+      return 1;
+    }
   }
 }
 1;

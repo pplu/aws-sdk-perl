@@ -14,59 +14,73 @@ package Paws::CloudWatchLogs {
   
   sub CreateLogGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatchLogs::CreateLogGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::CreateLogGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateLogStream {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatchLogs::CreateLogStream', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::CreateLogStream', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteLogGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatchLogs::DeleteLogGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteLogGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteLogStream {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatchLogs::DeleteLogStream', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteLogStream', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteMetricFilter {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatchLogs::DeleteMetricFilter', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteMetricFilter', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteRetentionPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatchLogs::DeleteRetentionPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteRetentionPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLogGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatchLogs::DescribeLogGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeLogGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLogStreams {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatchLogs::DescribeLogStreams', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeLogStreams', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeMetricFilters {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatchLogs::DescribeMetricFilters', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeMetricFilters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetLogEvents {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatchLogs::GetLogEvents', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::GetLogEvents', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutLogEvents {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatchLogs::PutLogEvents', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutLogEvents', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutMetricFilter {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatchLogs::PutMetricFilter', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutMetricFilter', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutRetentionPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatchLogs::PutRetentionPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutRetentionPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub TestMetricFilter {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatchLogs::TestMetricFilter', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::TestMetricFilter', @_);
+    return $self->caller->do_call($self, $call_object);
   }
 }
 1;

@@ -14,63 +14,78 @@ package Paws::Route53Domains {
   
   sub CheckDomainAvailability {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::CheckDomainAvailability', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::CheckDomainAvailability', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisableDomainAutoRenew {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::DisableDomainAutoRenew', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::DisableDomainAutoRenew', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisableDomainTransferLock {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::DisableDomainTransferLock', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::DisableDomainTransferLock', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub EnableDomainAutoRenew {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::EnableDomainAutoRenew', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::EnableDomainAutoRenew', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub EnableDomainTransferLock {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::EnableDomainTransferLock', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::EnableDomainTransferLock', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetDomainDetail {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::GetDomainDetail', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::GetDomainDetail', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetOperationDetail {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::GetOperationDetail', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::GetOperationDetail', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListDomains {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::ListDomains', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::ListDomains', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListOperations {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::ListOperations', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::ListOperations', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RegisterDomain {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::RegisterDomain', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::RegisterDomain', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RetrieveDomainAuthCode {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::RetrieveDomainAuthCode', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::RetrieveDomainAuthCode', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub TransferDomain {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::TransferDomain', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::TransferDomain', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDomainContact {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::UpdateDomainContact', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::UpdateDomainContact', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDomainContactPrivacy {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::UpdateDomainContactPrivacy', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::UpdateDomainContactPrivacy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDomainNameservers {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53Domains::UpdateDomainNameservers', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::UpdateDomainNameservers', @_);
+    return $self->caller->do_call($self, $call_object);
   }
 }
 1;

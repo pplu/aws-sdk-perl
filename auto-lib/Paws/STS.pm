@@ -13,27 +13,33 @@ package Paws::STS {
   
   sub AssumeRole {
     my $self = shift;
-    return $self->caller->do_call('Paws::STS::AssumeRole', @_);
+    my $call_object = $self->new_with_coercions('Paws::STS::AssumeRole', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AssumeRoleWithSAML {
     my $self = shift;
-    return $self->caller->do_call('Paws::STS::AssumeRoleWithSAML', @_);
+    my $call_object = $self->new_with_coercions('Paws::STS::AssumeRoleWithSAML', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AssumeRoleWithWebIdentity {
     my $self = shift;
-    return $self->caller->do_call('Paws::STS::AssumeRoleWithWebIdentity', @_);
+    my $call_object = $self->new_with_coercions('Paws::STS::AssumeRoleWithWebIdentity', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DecodeAuthorizationMessage {
     my $self = shift;
-    return $self->caller->do_call('Paws::STS::DecodeAuthorizationMessage', @_);
+    my $call_object = $self->new_with_coercions('Paws::STS::DecodeAuthorizationMessage', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetFederationToken {
     my $self = shift;
-    return $self->caller->do_call('Paws::STS::GetFederationToken', @_);
+    my $call_object = $self->new_with_coercions('Paws::STS::GetFederationToken', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetSessionToken {
     my $self = shift;
-    return $self->caller->do_call('Paws::STS::GetSessionToken', @_);
+    my $call_object = $self->new_with_coercions('Paws::STS::GetSessionToken', @_);
+    return $self->caller->do_call($self, $call_object);
   }
 }
 1;

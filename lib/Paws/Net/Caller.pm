@@ -7,16 +7,7 @@ package Paws::Net::Caller::Attribute::Trait::NameInRequest {
 
 package Paws::Net::Caller {
   use Moose;
-  use Paws::Net::Credentials;
-  use Paws::Net::CredentialsProviderChain;
   use Carp qw(croak);
-  use Module::Runtime qw//;
-  use Paws::Net::APIRequest;
-
-  has caller_for => (
-    is => 'ro',
-    required => 1,
-  );
 
   has debug              => ( is => 'rw', required => 0, default => sub { 0 } );
   has ua => (is => 'rw', required => 1, lazy => 1,
@@ -28,58 +19,34 @@ package Paws::Net::Caller {
     }
   );
 
-  #-- Custom request method from user overrides default method below
-  has request_method     => ( is => 'rw', required => 0, lazy => 1, default => sub {
-    my ( $self ) = @_;
-    return sub {
-      my ( $requestObj ) = @_;
-      my $headers = {};
-      $requestObj->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
-      # HTTP::Tiny has made setting Host header illegal. It derives Host from URL
-      delete $headers->{Host};
-
-      my $response = $self->ua->request(
-        $requestObj->method,
-        $requestObj->url,
-        {
-          headers => $headers,
-          (defined $requestObj->content)?(content => $requestObj->content):(),
-        }
-      );
-      if ( $response->{success} ) {
-          return $self->caller_for->_process_response( $response->{content} );
-      } else {
-          #TODO: retry or croak based on error codes
-          croak "POST Request failed: $response->{status} $response->{reason} $response->{content}\n";
-      }
-    };
-  } );
-
   sub do_call {
-    my ($self, $call_class, @params) = @_;
-    my $call = $self->caller_for->new_with_coercions($call_class, @params);
+    my ($self, $service, $call_object) = @_;
 
-    my $request = Paws::Net::APIRequest->new();
-    $self->caller_for->_api_caller($call_class, $call, $request);
-    $self->caller_for->sign($request);
-    my $result = $self->send($request);
+    my $requestObj = $service->prepare_request_for_call($call_object); 
 
-    if ($call_class->_returns){
-      if ($call_class->_result_key){
-        $result = $result->{ $call_class->_result_key };
+    my $headers = {};
+    $requestObj->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
+    # HTTP::Tiny has made setting Host header illegal. It derives Host from URL
+    delete $headers->{Host};
+
+    my $response = $self->ua->request(
+      $requestObj->method,
+      $requestObj->url,
+      {
+        headers => $headers,
+        (defined $requestObj->content)?(content => $requestObj->content):(),
       }
+    );
 
-      Module::Runtime::require_module($call_class->_returns);
-      my $o_result = $call_class->_returns->from_result($result);
-      return $o_result;
+    my $unserialized_struct;
+    if ( $response->{success} ) {
+        $unserialized_struct = $service->unserialize_response( $response->{content} );
     } else {
-      return 1;
+        #TODO: retry or croak based on error codes
+        croak "POST Request failed: $response->{status} $response->{reason} $response->{content}\n";
     }
-  }
 
-  sub send {
-    my ($self, $request) = @_;
-    return $self->request_method->( $request, $self );
+    return $service->response_to_object($unserialized_struct, $call_object);
   }
 }
 

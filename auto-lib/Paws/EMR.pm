@@ -14,71 +14,88 @@ package Paws::EMR {
   
   sub AddInstanceGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::AddInstanceGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::AddInstanceGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AddJobFlowSteps {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::AddJobFlowSteps', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::AddJobFlowSteps', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AddTags {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::AddTags', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::AddTags', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCluster {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::DescribeCluster', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::DescribeCluster', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeJobFlows {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::DescribeJobFlows', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::DescribeJobFlows', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStep {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::DescribeStep', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::DescribeStep', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListBootstrapActions {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::ListBootstrapActions', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::ListBootstrapActions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListClusters {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::ListClusters', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::ListClusters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListInstanceGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::ListInstanceGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::ListInstanceGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::ListInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::ListInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListSteps {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::ListSteps', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::ListSteps', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyInstanceGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::ModifyInstanceGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::ModifyInstanceGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTags {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::RemoveTags', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::RemoveTags', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RunJobFlow {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::RunJobFlow', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::RunJobFlow', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetTerminationProtection {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::SetTerminationProtection', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::SetTerminationProtection', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetVisibleToAllUsers {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::SetVisibleToAllUsers', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::SetVisibleToAllUsers', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub TerminateJobFlows {
     my $self = shift;
-    return $self->caller->do_call('Paws::EMR::TerminateJobFlows', @_);
+    my $call_object = $self->new_with_coercions('Paws::EMR::TerminateJobFlows', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListAllBootstrapActions {
     my $self = shift;

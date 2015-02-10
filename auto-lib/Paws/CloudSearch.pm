@@ -13,99 +13,123 @@ package Paws::CloudSearch {
   
   sub BuildSuggesters {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::BuildSuggesters', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::BuildSuggesters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateDomain {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::CreateDomain', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::CreateDomain', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DefineAnalysisScheme {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DefineAnalysisScheme', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DefineAnalysisScheme', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DefineExpression {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DefineExpression', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DefineExpression', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DefineIndexField {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DefineIndexField', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DefineIndexField', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DefineSuggester {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DefineSuggester', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DefineSuggester', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteAnalysisScheme {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DeleteAnalysisScheme', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DeleteAnalysisScheme', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDomain {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DeleteDomain', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DeleteDomain', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteExpression {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DeleteExpression', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DeleteExpression', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteIndexField {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DeleteIndexField', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DeleteIndexField', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSuggester {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DeleteSuggester', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DeleteSuggester', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAnalysisSchemes {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DescribeAnalysisSchemes', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DescribeAnalysisSchemes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAvailabilityOptions {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DescribeAvailabilityOptions', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DescribeAvailabilityOptions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDomains {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DescribeDomains', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DescribeDomains', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeExpressions {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DescribeExpressions', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DescribeExpressions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeIndexFields {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DescribeIndexFields', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DescribeIndexFields', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeScalingParameters {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DescribeScalingParameters', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DescribeScalingParameters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeServiceAccessPolicies {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DescribeServiceAccessPolicies', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DescribeServiceAccessPolicies', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSuggesters {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::DescribeSuggesters', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DescribeSuggesters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub IndexDocuments {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::IndexDocuments', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::IndexDocuments', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListDomainNames {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::ListDomainNames', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::ListDomainNames', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAvailabilityOptions {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::UpdateAvailabilityOptions', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::UpdateAvailabilityOptions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateScalingParameters {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::UpdateScalingParameters', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::UpdateScalingParameters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateServiceAccessPolicies {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearch::UpdateServiceAccessPolicies', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::UpdateServiceAccessPolicies', @_);
+    return $self->caller->do_call($self, $call_object);
   }
 }
 1;

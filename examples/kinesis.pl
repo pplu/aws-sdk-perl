@@ -3,7 +3,7 @@
 use Paws;
 use Data::Printer;
 
-my $k = Paws->service('Kinesis')->new(region => 'us-east-1');
+my $k = Paws->service('Kinesis', region => 'us-east-1');
 my $r;
 
 eval {

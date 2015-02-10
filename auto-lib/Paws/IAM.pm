@@ -13,339 +13,423 @@ package Paws::IAM {
   
   sub AddClientIDToOpenIDConnectProvider {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::AddClientIDToOpenIDConnectProvider', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::AddClientIDToOpenIDConnectProvider', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AddRoleToInstanceProfile {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::AddRoleToInstanceProfile', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::AddRoleToInstanceProfile', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AddUserToGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::AddUserToGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::AddUserToGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ChangePassword {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ChangePassword', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ChangePassword', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateAccessKey {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::CreateAccessKey', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::CreateAccessKey', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateAccountAlias {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::CreateAccountAlias', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::CreateAccountAlias', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::CreateGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::CreateGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateInstanceProfile {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::CreateInstanceProfile', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::CreateInstanceProfile', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateLoginProfile {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::CreateLoginProfile', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::CreateLoginProfile', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateOpenIDConnectProvider {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::CreateOpenIDConnectProvider', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::CreateOpenIDConnectProvider', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateRole {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::CreateRole', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::CreateRole', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateSAMLProvider {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::CreateSAMLProvider', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::CreateSAMLProvider', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateUser {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::CreateUser', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::CreateUser', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateVirtualMFADevice {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::CreateVirtualMFADevice', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::CreateVirtualMFADevice', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeactivateMFADevice {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeactivateMFADevice', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeactivateMFADevice', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteAccessKey {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteAccessKey', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteAccessKey', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteAccountAlias {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteAccountAlias', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteAccountAlias', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteAccountPasswordPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteAccountPasswordPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteAccountPasswordPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteGroupPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteGroupPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteGroupPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteInstanceProfile {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteInstanceProfile', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteInstanceProfile', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteLoginProfile {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteLoginProfile', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteLoginProfile', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteOpenIDConnectProvider {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteOpenIDConnectProvider', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteOpenIDConnectProvider', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteRole {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteRole', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteRole', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteRolePolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteRolePolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteRolePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSAMLProvider {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteSAMLProvider', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteSAMLProvider', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteServerCertificate {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteServerCertificate', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteServerCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSigningCertificate {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteSigningCertificate', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteSigningCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteUser {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteUser', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteUser', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteUserPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteUserPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteUserPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVirtualMFADevice {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::DeleteVirtualMFADevice', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteVirtualMFADevice', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub EnableMFADevice {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::EnableMFADevice', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::EnableMFADevice', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GenerateCredentialReport {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GenerateCredentialReport', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GenerateCredentialReport', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetAccountAuthorizationDetails {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetAccountAuthorizationDetails', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetAccountAuthorizationDetails', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetAccountPasswordPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetAccountPasswordPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetAccountPasswordPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetAccountSummary {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetAccountSummary', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetAccountSummary', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetCredentialReport {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetCredentialReport', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetCredentialReport', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetGroupPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetGroupPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetGroupPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetInstanceProfile {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetInstanceProfile', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetInstanceProfile', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetLoginProfile {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetLoginProfile', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetLoginProfile', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetOpenIDConnectProvider {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetOpenIDConnectProvider', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetOpenIDConnectProvider', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetRole {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetRole', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetRole', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetRolePolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetRolePolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetRolePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetSAMLProvider {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetSAMLProvider', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetSAMLProvider', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetServerCertificate {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetServerCertificate', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetServerCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetUser {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetUser', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetUser', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetUserPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::GetUserPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetUserPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListAccessKeys {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListAccessKeys', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListAccessKeys', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListAccountAliases {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListAccountAliases', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListAccountAliases', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListGroupPolicies {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListGroupPolicies', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListGroupPolicies', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListGroupsForUser {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListGroupsForUser', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListGroupsForUser', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListInstanceProfiles {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListInstanceProfiles', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListInstanceProfiles', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListInstanceProfilesForRole {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListInstanceProfilesForRole', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListInstanceProfilesForRole', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListMFADevices {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListMFADevices', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListMFADevices', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListOpenIDConnectProviders {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListOpenIDConnectProviders', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListOpenIDConnectProviders', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListRolePolicies {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListRolePolicies', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListRolePolicies', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListRoles {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListRoles', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListRoles', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListSAMLProviders {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListSAMLProviders', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListSAMLProviders', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListServerCertificates {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListServerCertificates', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListServerCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListSigningCertificates {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListSigningCertificates', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListSigningCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListUserPolicies {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListUserPolicies', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListUserPolicies', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListUsers {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListUsers', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListUsers', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListVirtualMFADevices {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ListVirtualMFADevices', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListVirtualMFADevices', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutGroupPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::PutGroupPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::PutGroupPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutRolePolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::PutRolePolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::PutRolePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutUserPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::PutUserPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::PutUserPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RemoveClientIDFromOpenIDConnectProvider {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::RemoveClientIDFromOpenIDConnectProvider', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::RemoveClientIDFromOpenIDConnectProvider', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RemoveRoleFromInstanceProfile {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::RemoveRoleFromInstanceProfile', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::RemoveRoleFromInstanceProfile', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RemoveUserFromGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::RemoveUserFromGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::RemoveUserFromGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ResyncMFADevice {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::ResyncMFADevice', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::ResyncMFADevice', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAccessKey {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::UpdateAccessKey', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::UpdateAccessKey', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAccountPasswordPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::UpdateAccountPasswordPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::UpdateAccountPasswordPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAssumeRolePolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::UpdateAssumeRolePolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::UpdateAssumeRolePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::UpdateGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::UpdateGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateLoginProfile {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::UpdateLoginProfile', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::UpdateLoginProfile', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateOpenIDConnectProviderThumbprint {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::UpdateOpenIDConnectProviderThumbprint', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::UpdateOpenIDConnectProviderThumbprint', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateSAMLProvider {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::UpdateSAMLProvider', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::UpdateSAMLProvider', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateServerCertificate {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::UpdateServerCertificate', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::UpdateServerCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateSigningCertificate {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::UpdateSigningCertificate', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::UpdateSigningCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateUser {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::UpdateUser', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::UpdateUser', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UploadServerCertificate {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::UploadServerCertificate', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::UploadServerCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UploadSigningCertificate {
     my $self = shift;
-    return $self->caller->do_call('Paws::IAM::UploadSigningCertificate', @_);
+    my $call_object = $self->new_with_coercions('Paws::IAM::UploadSigningCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetAllGroups {
     my $self = shift;

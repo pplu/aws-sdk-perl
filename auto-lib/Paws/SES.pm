@@ -13,75 +13,93 @@ package Paws::SES {
   
   sub DeleteIdentity {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::DeleteIdentity', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::DeleteIdentity', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVerifiedEmailAddress {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::DeleteVerifiedEmailAddress', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::DeleteVerifiedEmailAddress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetIdentityDkimAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::GetIdentityDkimAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::GetIdentityDkimAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetIdentityNotificationAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::GetIdentityNotificationAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::GetIdentityNotificationAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetIdentityVerificationAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::GetIdentityVerificationAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::GetIdentityVerificationAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetSendQuota {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::GetSendQuota', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::GetSendQuota', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetSendStatistics {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::GetSendStatistics', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::GetSendStatistics', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListIdentities {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::ListIdentities', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::ListIdentities', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListVerifiedEmailAddresses {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::ListVerifiedEmailAddresses', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::ListVerifiedEmailAddresses', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SendEmail {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::SendEmail', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::SendEmail', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SendRawEmail {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::SendRawEmail', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::SendRawEmail', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetIdentityDkimEnabled {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::SetIdentityDkimEnabled', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::SetIdentityDkimEnabled', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetIdentityFeedbackForwardingEnabled {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::SetIdentityFeedbackForwardingEnabled', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::SetIdentityFeedbackForwardingEnabled', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetIdentityNotificationTopic {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::SetIdentityNotificationTopic', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::SetIdentityNotificationTopic', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub VerifyDomainDkim {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::VerifyDomainDkim', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::VerifyDomainDkim', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub VerifyDomainIdentity {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::VerifyDomainIdentity', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::VerifyDomainIdentity', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub VerifyEmailAddress {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::VerifyEmailAddress', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::VerifyEmailAddress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub VerifyEmailIdentity {
     my $self = shift;
-    return $self->caller->do_call('Paws::SES::VerifyEmailIdentity', @_);
+    my $call_object = $self->new_with_coercions('Paws::SES::VerifyEmailIdentity', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListAllIdentities {
     my $self = shift;

@@ -6,7 +6,7 @@ use warnings;
 use Data::Printer;
 use Paws;
  
-my $sqs = Paws->service('SQS')->new(region => 'eu-west-1');
+my $sqs = Paws->service('SQS', region => 'eu-west-1');
 
 # CreateQueue doesn't die if the queue alredy exists with the same attributes
 my $q = $sqs->CreateQueue(QueueName => 'queue_name');
@@ -44,4 +44,6 @@ foreach my $msg (@{ $msgs->Messages }) {
 
 #$q->DeleteMessage($msg);
 
-#$q->DeleteQueue(QueueUrl => $q->QueueUrl);
+$response = $sqs->DeleteQueue(QueueUrl => $q->QueueUrl);
+
+p $response

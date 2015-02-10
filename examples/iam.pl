@@ -2,7 +2,7 @@
 use Paws;
 use Data::Printer;
 
-my $iam = Paws->service('IAM')->new( );
+my $iam = Paws->service('IAM');
 
 #my $policy = $iam->GetAccountPasswordPolicy;
 #p $policy;

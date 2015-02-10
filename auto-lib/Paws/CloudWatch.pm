@@ -13,47 +13,58 @@ package Paws::CloudWatch {
   
   sub DeleteAlarms {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatch::DeleteAlarms', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::DeleteAlarms', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAlarmHistory {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatch::DescribeAlarmHistory', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::DescribeAlarmHistory', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAlarms {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatch::DescribeAlarms', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::DescribeAlarms', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAlarmsForMetric {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatch::DescribeAlarmsForMetric', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::DescribeAlarmsForMetric', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisableAlarmActions {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatch::DisableAlarmActions', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::DisableAlarmActions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub EnableAlarmActions {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatch::EnableAlarmActions', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::EnableAlarmActions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetMetricStatistics {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatch::GetMetricStatistics', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::GetMetricStatistics', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListMetrics {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatch::ListMetrics', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::ListMetrics', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutMetricAlarm {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatch::PutMetricAlarm', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::PutMetricAlarm', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutMetricData {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatch::PutMetricData', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::PutMetricData', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetAlarmState {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudWatch::SetAlarmState', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::SetAlarmState', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAllAlarmHistory {
     my $self = shift;

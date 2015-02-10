@@ -14,103 +14,128 @@ package Paws::KMS {
   
   sub CreateAlias {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::CreateAlias', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::CreateAlias', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateGrant {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::CreateGrant', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::CreateGrant', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateKey {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::CreateKey', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::CreateKey', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub Decrypt {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::Decrypt', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::Decrypt', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteAlias {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::DeleteAlias', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::DeleteAlias', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeKey {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::DescribeKey', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::DescribeKey', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisableKey {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::DisableKey', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::DisableKey', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisableKeyRotation {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::DisableKeyRotation', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::DisableKeyRotation', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub EnableKey {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::EnableKey', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::EnableKey', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub EnableKeyRotation {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::EnableKeyRotation', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::EnableKeyRotation', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub Encrypt {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::Encrypt', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::Encrypt', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GenerateDataKey {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::GenerateDataKey', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::GenerateDataKey', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GenerateDataKeyWithoutPlaintext {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::GenerateDataKeyWithoutPlaintext', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::GenerateDataKeyWithoutPlaintext', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GenerateRandom {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::GenerateRandom', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::GenerateRandom', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetKeyPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::GetKeyPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::GetKeyPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetKeyRotationStatus {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::GetKeyRotationStatus', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::GetKeyRotationStatus', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListAliases {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::ListAliases', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::ListAliases', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListGrants {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::ListGrants', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::ListGrants', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListKeyPolicies {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::ListKeyPolicies', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::ListKeyPolicies', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListKeys {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::ListKeys', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::ListKeys', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutKeyPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::PutKeyPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::PutKeyPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ReEncrypt {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::ReEncrypt', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::ReEncrypt', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RetireGrant {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::RetireGrant', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::RetireGrant', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RevokeGrant {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::RevokeGrant', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::RevokeGrant', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateKeyDescription {
     my $self = shift;
-    return $self->caller->do_call('Paws::KMS::UpdateKeyDescription', @_);
+    my $call_object = $self->new_with_coercions('Paws::KMS::UpdateKeyDescription', @_);
+    return $self->caller->do_call($self, $call_object);
   }
 }
 1;

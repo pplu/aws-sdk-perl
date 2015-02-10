@@ -14,71 +14,88 @@ package Paws::ElasticTranscoder {
   
   sub CancelJob {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::CancelJob', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::CancelJob', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateJob {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::CreateJob', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::CreateJob', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreatePipeline {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::CreatePipeline', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::CreatePipeline', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreatePreset {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::CreatePreset', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::CreatePreset', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeletePipeline {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::DeletePipeline', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::DeletePipeline', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeletePreset {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::DeletePreset', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::DeletePreset', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListJobsByPipeline {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::ListJobsByPipeline', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::ListJobsByPipeline', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListJobsByStatus {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::ListJobsByStatus', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::ListJobsByStatus', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListPipelines {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::ListPipelines', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::ListPipelines', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListPresets {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::ListPresets', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::ListPresets', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ReadJob {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::ReadJob', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::ReadJob', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ReadPipeline {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::ReadPipeline', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::ReadPipeline', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ReadPreset {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::ReadPreset', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::ReadPreset', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub TestRole {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::TestRole', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::TestRole', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdatePipeline {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::UpdatePipeline', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::UpdatePipeline', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdatePipelineNotifications {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::UpdatePipelineNotifications', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::UpdatePipelineNotifications', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdatePipelineStatus {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticTranscoder::UpdatePipelineStatus', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::UpdatePipelineStatus', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListAllJobsByPipeline {
     my $self = shift;

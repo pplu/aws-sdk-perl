@@ -5,7 +5,6 @@ use warnings;
 
 use Test::More;
 use Paws;
-use Test10ResponseReadFromFile;
 
 sub test_params {
   my ($test_params, $request) = @_;
@@ -19,7 +18,7 @@ sub test_params {
 
 my $test_params;
 my $aws = Paws->new(config => Paws::SDK::Config->new( caller => 'Test05Caller' ) );
-my $ec2 = $aws->service('EC2')->new(endpoint => 'dummy', region => 'dummy');
+my $ec2 = $aws->service('EC2', region => 'dummy');
 
 my $request = $ec2->CreateImage(
   Description => 'Standard Web Server v1.0',
@@ -67,7 +66,7 @@ $test_params = {
 test_params($test_params, $request);
 
 
-my $sqs = $aws->service('SQS')->new(endpoint => 'dummy', region => 'dummy');
+my $sqs = $aws->service('SQS', endpoint => 'dummy', region => 'dummy');
 
 $request = $sqs->SendMessageBatch(
   QueueUrl => 'http://sqs.us-east-1.amazonaws.com/123456789012/testQueue/',
@@ -97,7 +96,7 @@ $test_params = {
 
 test_params($test_params, $request);
 
-my $sns = $aws->service('SNS')->new(endpoint => 'dummy', region => 'dummy');
+my $sns = $aws->service('SNS', endpoint => 'dummy', region => 'dummy');
 
 $request = $sns->SetPlatformApplicationAttributes(
   Attributes => {
@@ -116,7 +115,7 @@ $test_params = {
 test_params($test_params, $request);
 
 
-my $ses = $aws->service('SES')->new(endpoint => 'dummy', region => 'dummy');
+my $ses = $aws->service('SES', endpoint => 'dummy', region => 'dummy');
 
 $request = $ses->SendEmail(
   Destination => { ToAddresses => [ 'allan@example.com' ] },
@@ -145,7 +144,7 @@ $test_params = {
 
 test_params($test_params, $request);
 
-my $cfn = $aws->service('CloudFormation')->new(endpoint => 'dummy', region => 'dummy');
+my $cfn = $aws->service('CloudFormation', endpoint => 'dummy', region => 'dummy');
 
 $request = $cfn->CreateStack(
   StackName => 'MyStack',
@@ -168,7 +167,7 @@ $test_params = {
 test_params($test_params, $request);
 
 
-my $asg = $aws->service('AutoScaling')->new(endpoint => 'dummy', region => 'dummy');
+my $asg = $aws->service('AutoScaling', endpoint => 'dummy', region => 'dummy');
 
 $request = $asg->AttachInstances(
   AutoScalingGroupName => 'ASGNAME',

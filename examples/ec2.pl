@@ -11,7 +11,7 @@ use Paws;
 
 my $result;
 
-my $ec2 = Paws->service('EC2')->new(
+my $ec2 = Paws->service('EC2',
   region => 'eu-west-1',
 );
 

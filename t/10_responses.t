@@ -42,10 +42,10 @@ sub test_file {
 
   SKIP: {
     skip "$test_def_file is lacking service or call entry",1 if (not $test->{service} or not $test->{call});
-    my $service = $aws->service($test->{service})->new(
+    my $service = $aws->service($test->{service},
       region => 'fake_region',
-      response_file => $file
     );
+    $service->caller->response_file($file);
     my $call = $test->{ call };
     my $res;
     my $passed = lives_ok {

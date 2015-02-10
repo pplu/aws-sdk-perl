@@ -13,139 +13,173 @@ package Paws::ElastiCache {
   
   sub AuthorizeCacheSecurityGroupIngress {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::AuthorizeCacheSecurityGroupIngress', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::AuthorizeCacheSecurityGroupIngress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CopySnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::CopySnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::CopySnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateCacheCluster {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::CreateCacheCluster', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::CreateCacheCluster', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateCacheParameterGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::CreateCacheParameterGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::CreateCacheParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateCacheSecurityGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::CreateCacheSecurityGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::CreateCacheSecurityGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateCacheSubnetGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::CreateCacheSubnetGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::CreateCacheSubnetGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateReplicationGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::CreateReplicationGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::CreateReplicationGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateSnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::CreateSnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::CreateSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCacheCluster {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DeleteCacheCluster', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DeleteCacheCluster', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCacheParameterGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DeleteCacheParameterGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DeleteCacheParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCacheSecurityGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DeleteCacheSecurityGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DeleteCacheSecurityGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCacheSubnetGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DeleteCacheSubnetGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DeleteCacheSubnetGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteReplicationGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DeleteReplicationGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DeleteReplicationGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DeleteSnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DeleteSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCacheClusters {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DescribeCacheClusters', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeCacheClusters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCacheEngineVersions {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DescribeCacheEngineVersions', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeCacheEngineVersions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCacheParameterGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DescribeCacheParameterGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeCacheParameterGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCacheParameters {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DescribeCacheParameters', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeCacheParameters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCacheSecurityGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DescribeCacheSecurityGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeCacheSecurityGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCacheSubnetGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DescribeCacheSubnetGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeCacheSubnetGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEngineDefaultParameters {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DescribeEngineDefaultParameters', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeEngineDefaultParameters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEvents {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DescribeEvents', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeEvents', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeReplicationGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DescribeReplicationGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeReplicationGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeReservedCacheNodes {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DescribeReservedCacheNodes', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeReservedCacheNodes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeReservedCacheNodesOfferings {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DescribeReservedCacheNodesOfferings', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeReservedCacheNodesOfferings', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSnapshots {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::DescribeSnapshots', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyCacheCluster {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::ModifyCacheCluster', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::ModifyCacheCluster', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyCacheParameterGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::ModifyCacheParameterGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::ModifyCacheParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyCacheSubnetGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::ModifyCacheSubnetGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::ModifyCacheSubnetGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyReplicationGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::ModifyReplicationGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::ModifyReplicationGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PurchaseReservedCacheNodesOffering {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::PurchaseReservedCacheNodesOffering', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::PurchaseReservedCacheNodesOffering', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RebootCacheCluster {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::RebootCacheCluster', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::RebootCacheCluster', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ResetCacheParameterGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::ResetCacheParameterGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::ResetCacheParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RevokeCacheSecurityGroupIngress {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElastiCache::RevokeCacheSecurityGroupIngress', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::RevokeCacheSecurityGroupIngress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAllCacheClusters {
     my $self = shift;

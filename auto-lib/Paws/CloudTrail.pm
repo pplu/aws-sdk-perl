@@ -14,31 +14,38 @@ package Paws::CloudTrail {
   
   sub CreateTrail {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudTrail::CreateTrail', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudTrail::CreateTrail', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteTrail {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudTrail::DeleteTrail', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudTrail::DeleteTrail', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTrails {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudTrail::DescribeTrails', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudTrail::DescribeTrails', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetTrailStatus {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudTrail::GetTrailStatus', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudTrail::GetTrailStatus', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub StartLogging {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudTrail::StartLogging', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudTrail::StartLogging', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub StopLogging {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudTrail::StopLogging', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudTrail::StopLogging', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateTrail {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudTrail::UpdateTrail', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudTrail::UpdateTrail', @_);
+    return $self->caller->do_call($self, $call_object);
   }
 }
 1;

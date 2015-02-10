@@ -13,119 +13,148 @@ package Paws::ElasticBeanstalk {
   
   sub CheckDNSAvailability {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::CheckDNSAvailability', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::CheckDNSAvailability', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateApplication {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::CreateApplication', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::CreateApplication', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateApplicationVersion {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::CreateApplicationVersion', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::CreateApplicationVersion', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateConfigurationTemplate {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::CreateConfigurationTemplate', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::CreateConfigurationTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateEnvironment {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::CreateEnvironment', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::CreateEnvironment', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateStorageLocation {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::CreateStorageLocation', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::CreateStorageLocation', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteApplication {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::DeleteApplication', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DeleteApplication', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteApplicationVersion {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::DeleteApplicationVersion', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DeleteApplicationVersion', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteConfigurationTemplate {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::DeleteConfigurationTemplate', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DeleteConfigurationTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteEnvironmentConfiguration {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::DeleteEnvironmentConfiguration', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DeleteEnvironmentConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeApplications {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::DescribeApplications', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeApplications', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeApplicationVersions {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::DescribeApplicationVersions', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeApplicationVersions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeConfigurationOptions {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::DescribeConfigurationOptions', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeConfigurationOptions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeConfigurationSettings {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::DescribeConfigurationSettings', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeConfigurationSettings', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEnvironmentResources {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::DescribeEnvironmentResources', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeEnvironmentResources', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEnvironments {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::DescribeEnvironments', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeEnvironments', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEvents {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::DescribeEvents', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeEvents', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListAvailableSolutionStacks {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::ListAvailableSolutionStacks', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ListAvailableSolutionStacks', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RebuildEnvironment {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::RebuildEnvironment', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::RebuildEnvironment', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RequestEnvironmentInfo {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::RequestEnvironmentInfo', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::RequestEnvironmentInfo', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RestartAppServer {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::RestartAppServer', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::RestartAppServer', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RetrieveEnvironmentInfo {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::RetrieveEnvironmentInfo', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::RetrieveEnvironmentInfo', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SwapEnvironmentCNAMEs {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::SwapEnvironmentCNAMEs', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::SwapEnvironmentCNAMEs', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub TerminateEnvironment {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::TerminateEnvironment', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::TerminateEnvironment', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateApplication {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::UpdateApplication', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::UpdateApplication', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateApplicationVersion {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::UpdateApplicationVersion', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::UpdateApplicationVersion', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateConfigurationTemplate {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::UpdateConfigurationTemplate', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::UpdateConfigurationTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateEnvironment {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::UpdateEnvironment', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::UpdateEnvironment', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ValidateConfigurationSettings {
     my $self = shift;
-    return $self->caller->do_call('Paws::ElasticBeanstalk::ValidateConfigurationSettings', @_);
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ValidateConfigurationSettings', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAllEvents {
     my $self = shift;

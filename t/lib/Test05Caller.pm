@@ -1,19 +1,15 @@
 package Test05Caller {
-  use Moose::Role;
-  with 'Paws::Net::Caller';
+  use Moose;
 
   sub do_call {
-    my ($self, $call_class, @params) = @_;
-    my $call = $self->new_with_coercions($call_class, @params);
+    my ($self, $service, $call_object) = @_;
 
-    my $request = Paws::Net::APIRequest->new();
-    $self->_api_caller($call_class, $call, $request);
-    $self->sign($request);
+    my $requestObj = $service->prepare_request_for_call($call_object); 
 
 use Data::Dumper;
-print Dumper($request);
+print Dumper($requestObj);
 
-    return $request;
+    return $requestObj;
   }
 
 }

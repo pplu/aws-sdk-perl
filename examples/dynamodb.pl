@@ -4,7 +4,7 @@ use Paws;
 
 use Data::Printer;
 
-my $d = Paws->service('DynamoDB')->new( region => 'eu-west-1' );
+my $d = Paws->service('DynamoDB', region => 'eu-west-1' );
 my $r;
 
 $r = $d->ListTables;

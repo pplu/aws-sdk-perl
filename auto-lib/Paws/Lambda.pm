@@ -14,47 +14,58 @@ package Paws::Lambda {
   
   sub AddEventSource {
     my $self = shift;
-    return $self->caller->do_call('Paws::Lambda::AddEventSource', @_);
+    my $call_object = $self->new_with_coercions('Paws::Lambda::AddEventSource', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteFunction {
     my $self = shift;
-    return $self->caller->do_call('Paws::Lambda::DeleteFunction', @_);
+    my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteFunction', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetEventSource {
     my $self = shift;
-    return $self->caller->do_call('Paws::Lambda::GetEventSource', @_);
+    my $call_object = $self->new_with_coercions('Paws::Lambda::GetEventSource', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetFunction {
     my $self = shift;
-    return $self->caller->do_call('Paws::Lambda::GetFunction', @_);
+    my $call_object = $self->new_with_coercions('Paws::Lambda::GetFunction', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetFunctionConfiguration {
     my $self = shift;
-    return $self->caller->do_call('Paws::Lambda::GetFunctionConfiguration', @_);
+    my $call_object = $self->new_with_coercions('Paws::Lambda::GetFunctionConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub InvokeAsync {
     my $self = shift;
-    return $self->caller->do_call('Paws::Lambda::InvokeAsync', @_);
+    my $call_object = $self->new_with_coercions('Paws::Lambda::InvokeAsync', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListEventSources {
     my $self = shift;
-    return $self->caller->do_call('Paws::Lambda::ListEventSources', @_);
+    my $call_object = $self->new_with_coercions('Paws::Lambda::ListEventSources', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListFunctions {
     my $self = shift;
-    return $self->caller->do_call('Paws::Lambda::ListFunctions', @_);
+    my $call_object = $self->new_with_coercions('Paws::Lambda::ListFunctions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RemoveEventSource {
     my $self = shift;
-    return $self->caller->do_call('Paws::Lambda::RemoveEventSource', @_);
+    my $call_object = $self->new_with_coercions('Paws::Lambda::RemoveEventSource', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateFunctionConfiguration {
     my $self = shift;
-    return $self->caller->do_call('Paws::Lambda::UpdateFunctionConfiguration', @_);
+    my $call_object = $self->new_with_coercions('Paws::Lambda::UpdateFunctionConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UploadFunction {
     my $self = shift;
-    return $self->caller->do_call('Paws::Lambda::UploadFunction', @_);
+    my $call_object = $self->new_with_coercions('Paws::Lambda::UploadFunction', @_);
+    return $self->caller->do_call($self, $call_object);
   }
 }
 1;

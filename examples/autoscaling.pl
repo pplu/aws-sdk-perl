@@ -2,7 +2,7 @@
 
 use Paws;
 
-my $as = Paws->service('AutoScaling')->new(
+my $as = Paws->service('AutoScaling',
   region => 'eu-west-1'
 );
 

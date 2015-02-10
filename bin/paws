@@ -15,43 +15,34 @@ use Hash::Flatten qw//;
 use List::Util qw(reduce);
 use Module::Find;
 
+use Getopt::Long qw/GetOptionsFromArray/;
+
 my @args = @ARGV;
-my @service_args;
+
+my $aws = Paws->new;
 
 my $service_name = shift @args;
-
-my $method_name;
-
-my $end = 0;
-while ($end == 0 and my $next_arg = shift @args) {
-  if ($next_arg =~ m/^--/) {
-    push @service_args, $next_arg;
-    $next_arg = shift @args;
-    push @service_args, $next_arg; 
-  } else {
-    $method_name = $next_arg;
-    $end = 1;
-  }
-}
-
-my $aws;
-if ($ENV{PAWS_CALLER}){
-  $aws = Paws->new(
-    config => Paws::SDK::Config->new(caller => $ENV{PAWS_CALLER})
-  );
-} else {
-  $aws = Paws->new;
-}
-
 if (not defined $service_name) {
   say "A list of the services you have available";
   say $_ for (sort $aws->available_services);
   exit 1;  
 }
 
-my $service = Moose::Util::with_traits(
-  $aws->service($service_name), 'MooseX::Getopt'
-)->new_with_options(argv => \@service_args);
+my $service = $aws->class_for_service($service_name);
+
+my $opts = {};
+my @opts = (
+  'caller=s',
+  'region=s',
+  'help'
+);
+#if ($service->meta->find_attribute_by_name('region')) {
+
+GetOptionsFromArray(\@args, $opts, @opts);
+
+my $method_name = shift @args;
+
+$service = $aws->service($service_name, %$opts);
 
 my $call;
 

@@ -14,59 +14,73 @@ package Paws::Support {
   
   sub AddAttachmentsToSet {
     my $self = shift;
-    return $self->caller->do_call('Paws::Support::AddAttachmentsToSet', @_);
+    my $call_object = $self->new_with_coercions('Paws::Support::AddAttachmentsToSet', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AddCommunicationToCase {
     my $self = shift;
-    return $self->caller->do_call('Paws::Support::AddCommunicationToCase', @_);
+    my $call_object = $self->new_with_coercions('Paws::Support::AddCommunicationToCase', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateCase {
     my $self = shift;
-    return $self->caller->do_call('Paws::Support::CreateCase', @_);
+    my $call_object = $self->new_with_coercions('Paws::Support::CreateCase', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAttachment {
     my $self = shift;
-    return $self->caller->do_call('Paws::Support::DescribeAttachment', @_);
+    my $call_object = $self->new_with_coercions('Paws::Support::DescribeAttachment', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCases {
     my $self = shift;
-    return $self->caller->do_call('Paws::Support::DescribeCases', @_);
+    my $call_object = $self->new_with_coercions('Paws::Support::DescribeCases', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCommunications {
     my $self = shift;
-    return $self->caller->do_call('Paws::Support::DescribeCommunications', @_);
+    my $call_object = $self->new_with_coercions('Paws::Support::DescribeCommunications', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeServices {
     my $self = shift;
-    return $self->caller->do_call('Paws::Support::DescribeServices', @_);
+    my $call_object = $self->new_with_coercions('Paws::Support::DescribeServices', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSeverityLevels {
     my $self = shift;
-    return $self->caller->do_call('Paws::Support::DescribeSeverityLevels', @_);
+    my $call_object = $self->new_with_coercions('Paws::Support::DescribeSeverityLevels', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTrustedAdvisorCheckRefreshStatuses {
     my $self = shift;
-    return $self->caller->do_call('Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses', @_);
+    my $call_object = $self->new_with_coercions('Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTrustedAdvisorCheckResult {
     my $self = shift;
-    return $self->caller->do_call('Paws::Support::DescribeTrustedAdvisorCheckResult', @_);
+    my $call_object = $self->new_with_coercions('Paws::Support::DescribeTrustedAdvisorCheckResult', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTrustedAdvisorChecks {
     my $self = shift;
-    return $self->caller->do_call('Paws::Support::DescribeTrustedAdvisorChecks', @_);
+    my $call_object = $self->new_with_coercions('Paws::Support::DescribeTrustedAdvisorChecks', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTrustedAdvisorCheckSummaries {
     my $self = shift;
-    return $self->caller->do_call('Paws::Support::DescribeTrustedAdvisorCheckSummaries', @_);
+    my $call_object = $self->new_with_coercions('Paws::Support::DescribeTrustedAdvisorCheckSummaries', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RefreshTrustedAdvisorCheck {
     my $self = shift;
-    return $self->caller->do_call('Paws::Support::RefreshTrustedAdvisorCheck', @_);
+    my $call_object = $self->new_with_coercions('Paws::Support::RefreshTrustedAdvisorCheck', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ResolveCase {
     my $self = shift;
-    return $self->caller->do_call('Paws::Support::ResolveCase', @_);
+    my $call_object = $self->new_with_coercions('Paws::Support::ResolveCase', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAllCases {
     my $self = shift;

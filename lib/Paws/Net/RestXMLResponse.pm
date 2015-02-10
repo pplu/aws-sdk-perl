@@ -3,7 +3,7 @@ package Paws::Net::RestXMLResponse {
   use XML::Simple qw//;
   use Carp qw(croak);
   
-  sub _process_response {
+  sub unserialize_response {
     my ($self, $data) = @_;
     my $xml = XML::Simple::XMLin( $data,
             ForceArray    => qr/(?:item|Errors)/i,

@@ -14,47 +14,58 @@ package Paws::Config {
   
   sub DeleteDeliveryChannel {
     my $self = shift;
-    return $self->caller->do_call('Paws::Config::DeleteDeliveryChannel', @_);
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteDeliveryChannel', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeliverConfigSnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::Config::DeliverConfigSnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::Config::DeliverConfigSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeConfigurationRecorders {
     my $self = shift;
-    return $self->caller->do_call('Paws::Config::DescribeConfigurationRecorders', @_);
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeConfigurationRecorders', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeConfigurationRecorderStatus {
     my $self = shift;
-    return $self->caller->do_call('Paws::Config::DescribeConfigurationRecorderStatus', @_);
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeConfigurationRecorderStatus', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDeliveryChannels {
     my $self = shift;
-    return $self->caller->do_call('Paws::Config::DescribeDeliveryChannels', @_);
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeDeliveryChannels', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDeliveryChannelStatus {
     my $self = shift;
-    return $self->caller->do_call('Paws::Config::DescribeDeliveryChannelStatus', @_);
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeDeliveryChannelStatus', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetResourceConfigHistory {
     my $self = shift;
-    return $self->caller->do_call('Paws::Config::GetResourceConfigHistory', @_);
+    my $call_object = $self->new_with_coercions('Paws::Config::GetResourceConfigHistory', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutConfigurationRecorder {
     my $self = shift;
-    return $self->caller->do_call('Paws::Config::PutConfigurationRecorder', @_);
+    my $call_object = $self->new_with_coercions('Paws::Config::PutConfigurationRecorder', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutDeliveryChannel {
     my $self = shift;
-    return $self->caller->do_call('Paws::Config::PutDeliveryChannel', @_);
+    my $call_object = $self->new_with_coercions('Paws::Config::PutDeliveryChannel', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub StartConfigurationRecorder {
     my $self = shift;
-    return $self->caller->do_call('Paws::Config::StartConfigurationRecorder', @_);
+    my $call_object = $self->new_with_coercions('Paws::Config::StartConfigurationRecorder', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub StopConfigurationRecorder {
     my $self = shift;
-    return $self->caller->do_call('Paws::Config::StopConfigurationRecorder', @_);
+    my $call_object = $self->new_with_coercions('Paws::Config::StopConfigurationRecorder', @_);
+    return $self->caller->do_call($self, $call_object);
   }
 }
 1;

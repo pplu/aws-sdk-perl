@@ -14,55 +14,68 @@ package Paws::Kinesis {
   
   sub AddTagsToStream {
     my $self = shift;
-    return $self->caller->do_call('Paws::Kinesis::AddTagsToStream', @_);
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::AddTagsToStream', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateStream {
     my $self = shift;
-    return $self->caller->do_call('Paws::Kinesis::CreateStream', @_);
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::CreateStream', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteStream {
     my $self = shift;
-    return $self->caller->do_call('Paws::Kinesis::DeleteStream', @_);
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::DeleteStream', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStream {
     my $self = shift;
-    return $self->caller->do_call('Paws::Kinesis::DescribeStream', @_);
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::DescribeStream', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetRecords {
     my $self = shift;
-    return $self->caller->do_call('Paws::Kinesis::GetRecords', @_);
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::GetRecords', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetShardIterator {
     my $self = shift;
-    return $self->caller->do_call('Paws::Kinesis::GetShardIterator', @_);
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::GetShardIterator', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListStreams {
     my $self = shift;
-    return $self->caller->do_call('Paws::Kinesis::ListStreams', @_);
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::ListStreams', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListTagsForStream {
     my $self = shift;
-    return $self->caller->do_call('Paws::Kinesis::ListTagsForStream', @_);
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::ListTagsForStream', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub MergeShards {
     my $self = shift;
-    return $self->caller->do_call('Paws::Kinesis::MergeShards', @_);
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::MergeShards', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutRecord {
     my $self = shift;
-    return $self->caller->do_call('Paws::Kinesis::PutRecord', @_);
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::PutRecord', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutRecords {
     my $self = shift;
-    return $self->caller->do_call('Paws::Kinesis::PutRecords', @_);
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::PutRecords', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTagsFromStream {
     my $self = shift;
-    return $self->caller->do_call('Paws::Kinesis::RemoveTagsFromStream', @_);
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::RemoveTagsFromStream', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SplitShard {
     my $self = shift;
-    return $self->caller->do_call('Paws::Kinesis::SplitShard', @_);
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::SplitShard', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAllStream {
     my $self = shift;

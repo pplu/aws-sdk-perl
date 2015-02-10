@@ -13,183 +13,228 @@ package Paws::AutoScaling {
   
   sub AttachInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::AttachInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::AttachInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CompleteLifecycleAction {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::CompleteLifecycleAction', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::CompleteLifecycleAction', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateAutoScalingGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::CreateAutoScalingGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::CreateAutoScalingGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateLaunchConfiguration {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::CreateLaunchConfiguration', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::CreateLaunchConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateOrUpdateTags {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::CreateOrUpdateTags', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::CreateOrUpdateTags', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteAutoScalingGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DeleteAutoScalingGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DeleteAutoScalingGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteLaunchConfiguration {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DeleteLaunchConfiguration', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DeleteLaunchConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteLifecycleHook {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DeleteLifecycleHook', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DeleteLifecycleHook', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteNotificationConfiguration {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DeleteNotificationConfiguration', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DeleteNotificationConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeletePolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DeletePolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DeletePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteScheduledAction {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DeleteScheduledAction', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DeleteScheduledAction', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteTags {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DeleteTags', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DeleteTags', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAccountLimits {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeAccountLimits', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeAccountLimits', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAdjustmentTypes {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeAdjustmentTypes', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeAdjustmentTypes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAutoScalingGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeAutoScalingGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeAutoScalingGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAutoScalingInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeAutoScalingInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeAutoScalingInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAutoScalingNotificationTypes {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeAutoScalingNotificationTypes', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeAutoScalingNotificationTypes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLaunchConfigurations {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeLaunchConfigurations', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeLaunchConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLifecycleHooks {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeLifecycleHooks', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeLifecycleHooks', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLifecycleHookTypes {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeLifecycleHookTypes', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeLifecycleHookTypes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeMetricCollectionTypes {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeMetricCollectionTypes', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeMetricCollectionTypes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeNotificationConfigurations {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeNotificationConfigurations', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeNotificationConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribePolicies {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribePolicies', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribePolicies', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeScalingActivities {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeScalingActivities', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeScalingActivities', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeScalingProcessTypes {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeScalingProcessTypes', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeScalingProcessTypes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeScheduledActions {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeScheduledActions', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeScheduledActions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTags {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeTags', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeTags', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTerminationPolicyTypes {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DescribeTerminationPolicyTypes', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeTerminationPolicyTypes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DetachInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DetachInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DetachInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisableMetricsCollection {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::DisableMetricsCollection', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DisableMetricsCollection', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub EnableMetricsCollection {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::EnableMetricsCollection', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::EnableMetricsCollection', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub EnterStandby {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::EnterStandby', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::EnterStandby', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ExecutePolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::ExecutePolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::ExecutePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ExitStandby {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::ExitStandby', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::ExitStandby', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutLifecycleHook {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::PutLifecycleHook', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::PutLifecycleHook', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutNotificationConfiguration {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::PutNotificationConfiguration', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::PutNotificationConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutScalingPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::PutScalingPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::PutScalingPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutScheduledUpdateGroupAction {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::PutScheduledUpdateGroupAction', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::PutScheduledUpdateGroupAction', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RecordLifecycleActionHeartbeat {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::RecordLifecycleActionHeartbeat', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::RecordLifecycleActionHeartbeat', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ResumeProcesses {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::ResumeProcesses', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::ResumeProcesses', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetDesiredCapacity {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::SetDesiredCapacity', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::SetDesiredCapacity', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetInstanceHealth {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::SetInstanceHealth', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::SetInstanceHealth', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SuspendProcesses {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::SuspendProcesses', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::SuspendProcesses', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub TerminateInstanceInAutoScalingGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::TerminateInstanceInAutoScalingGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::TerminateInstanceInAutoScalingGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAutoScalingGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::AutoScaling::UpdateAutoScalingGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::UpdateAutoScalingGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAllAutoScalingGroups {
     my $self = shift;

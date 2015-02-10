@@ -14,115 +14,143 @@ package Paws::Route53 {
   
   sub AssociateVPCWithHostedZone {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::AssociateVPCWithHostedZone', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::AssociateVPCWithHostedZone', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ChangeResourceRecordSets {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::ChangeResourceRecordSets', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::ChangeResourceRecordSets', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ChangeTagsForResource {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::ChangeTagsForResource', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::ChangeTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateHealthCheck {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::CreateHealthCheck', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::CreateHealthCheck', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateHostedZone {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::CreateHostedZone', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::CreateHostedZone', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateReusableDelegationSet {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::CreateReusableDelegationSet', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::CreateReusableDelegationSet', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteHealthCheck {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::DeleteHealthCheck', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::DeleteHealthCheck', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteHostedZone {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::DeleteHostedZone', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::DeleteHostedZone', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteReusableDelegationSet {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::DeleteReusableDelegationSet', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::DeleteReusableDelegationSet', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisassociateVPCFromHostedZone {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::DisassociateVPCFromHostedZone', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::DisassociateVPCFromHostedZone', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetChange {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::GetChange', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetChange', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetCheckerIpRanges {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::GetCheckerIpRanges', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetCheckerIpRanges', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetGeoLocation {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::GetGeoLocation', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetGeoLocation', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetHealthCheck {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::GetHealthCheck', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetHealthCheck', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetHealthCheckCount {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::GetHealthCheckCount', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetHealthCheckCount', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetHealthCheckLastFailureReason {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::GetHealthCheckLastFailureReason', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetHealthCheckLastFailureReason', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetHealthCheckStatus {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::GetHealthCheckStatus', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetHealthCheckStatus', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetHostedZone {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::GetHostedZone', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetHostedZone', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetReusableDelegationSet {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::GetReusableDelegationSet', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetReusableDelegationSet', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListGeoLocations {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::ListGeoLocations', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListGeoLocations', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListHealthChecks {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::ListHealthChecks', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListHealthChecks', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListHostedZones {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::ListHostedZones', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListHostedZones', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListResourceRecordSets {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::ListResourceRecordSets', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListResourceRecordSets', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListReusableDelegationSets {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::ListReusableDelegationSets', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListReusableDelegationSets', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListTagsForResource {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::ListTagsForResource', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListTagsForResources {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::ListTagsForResources', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListTagsForResources', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateHealthCheck {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::UpdateHealthCheck', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::UpdateHealthCheck', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateHostedZoneComment {
     my $self = shift;
-    return $self->caller->do_call('Paws::Route53::UpdateHostedZoneComment', @_);
+    my $call_object = $self->new_with_coercions('Paws::Route53::UpdateHostedZoneComment', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListAllHealthChecks {
     my $self = shift;
@@ -159,8 +187,8 @@ package Paws::Route53 {
     my $array = [];
     push @$array, @{ $result->ResourceRecordSets };
 
-    while ($result->ARRAY(0x40fbd80)) {
-      $result = $self->ListResourceRecordSets(@_, ARRAY(0x3f8e358) => $result->ARRAY(0x40fbd80));
+    while ($result->ARRAY(0x3e333c8)) {
+      $result = $self->ListResourceRecordSets(@_, ARRAY(0x3d8e238) => $result->ARRAY(0x3e333c8));
       push @$array, @{ $result->ResourceRecordSets };
     }
 

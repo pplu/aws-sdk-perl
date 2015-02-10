@@ -4,6 +4,7 @@ use Moose;
 
 has caller => (is => 'ro', isa => 'Str', default => 'Paws::Net::Caller'); 
 
+__PACKAGE__->meta->make_immutable;
 1;
 
 package Paws;
@@ -37,20 +38,54 @@ sub available_services {
   return grep { $_ ne 'API' } map { $_ =~ s/^$class_prefix//; $_ } Module::Find::findsubmod Paws;
 }
 
-sub service {
-  my ($self, $service_name) = @_;
-
-  # If ->service is invoked via Paws->service, without an instance
+sub get_self {
+  my $self = shift;
   if (not ref($self)) {
     if (not defined Paws->_default_object) {
       Paws->_default_object(Paws->new(config => Paws->default_config));
     }
-    $self = Paws->_default_object;
+    return Paws->_default_object;
+  } else {
+    return $self;
   }
+}
+
+sub class_for_service {
+  my ($self, $service_name) = @_;
+  $self = $self->get_self;
 
   my $class = $self->_class_prefix . $service_name;
   $self->load_class($class);
   return $class;
+}
+
+sub service {
+  my ($self, $service_name, %constructor_params) = @_;
+  $self = $self->get_self;
+
+  my $caller;
+  if (defined $constructor_params{ caller }) {
+    if (ref($constructor_params{ caller })) {
+      # already constructed caller
+      $caller = $constructor_params{ caller };
+    } else {
+      $self->load_class($constructor_params{ caller });
+      $caller = $constructor_params{ caller }->new;
+    }
+    delete $constructor_params{ caller };
+  } else {
+    $caller = $self->config->caller;
+    $self->load_class($caller);
+    $caller = $caller->new;
+  }
+
+  my $class = $self->class_for_service($service_name);
+  my $instance = $class->new(
+    caller => $caller, 
+    %constructor_params
+  );
+
+  return $instance;
 }
 
 1;

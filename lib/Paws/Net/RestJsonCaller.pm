@@ -3,8 +3,10 @@ package Paws::Net::RestJsonCaller {
   use HTTP::Request::Common;
   use POSIX qw(strftime); 
 
-  sub _api_caller {
-    my ($self, $call_class, $call_params_object, $request) = @_;
+  sub prepare_request_for_call {
+    my ($self, $call) = @_;
+
+    my $request = Paws::Net::APIRequest->new();
 
     die "Pending implementation in " . __PACKAGE__;
  

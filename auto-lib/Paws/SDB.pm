@@ -13,43 +13,53 @@ package Paws::SDB {
   
   sub BatchDeleteAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SDB::BatchDeleteAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SDB::BatchDeleteAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub BatchPutAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SDB::BatchPutAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SDB::BatchPutAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateDomain {
     my $self = shift;
-    return $self->caller->do_call('Paws::SDB::CreateDomain', @_);
+    my $call_object = $self->new_with_coercions('Paws::SDB::CreateDomain', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SDB::DeleteAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SDB::DeleteAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDomain {
     my $self = shift;
-    return $self->caller->do_call('Paws::SDB::DeleteDomain', @_);
+    my $call_object = $self->new_with_coercions('Paws::SDB::DeleteDomain', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DomainMetadata {
     my $self = shift;
-    return $self->caller->do_call('Paws::SDB::DomainMetadata', @_);
+    my $call_object = $self->new_with_coercions('Paws::SDB::DomainMetadata', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SDB::GetAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SDB::GetAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListDomains {
     my $self = shift;
-    return $self->caller->do_call('Paws::SDB::ListDomains', @_);
+    my $call_object = $self->new_with_coercions('Paws::SDB::ListDomains', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PutAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::SDB::PutAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::SDB::PutAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub Select {
     my $self = shift;
-    return $self->caller->do_call('Paws::SDB::Select', @_);
+    my $call_object = $self->new_with_coercions('Paws::SDB::Select', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListAllDomains {
     my $self = shift;

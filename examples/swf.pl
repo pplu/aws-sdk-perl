@@ -11,7 +11,7 @@ use Paws;
 
 my $result;
 
-my $swf = Paws->service('SimpleWorkflow')->new(
+my $swf = Paws->service('SimpleWorkflow',
   region => 'eu-west-1',
 );
 

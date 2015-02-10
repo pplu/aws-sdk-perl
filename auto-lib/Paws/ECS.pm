@@ -13,83 +13,103 @@ package Paws::ECS {
   
   sub CreateCluster {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::CreateCluster', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::CreateCluster', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCluster {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::DeleteCluster', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::DeleteCluster', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeregisterContainerInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::DeregisterContainerInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::DeregisterContainerInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeregisterTaskDefinition {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::DeregisterTaskDefinition', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::DeregisterTaskDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClusters {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::DescribeClusters', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::DescribeClusters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeContainerInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::DescribeContainerInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::DescribeContainerInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTaskDefinition {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::DescribeTaskDefinition', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::DescribeTaskDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTasks {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::DescribeTasks', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::DescribeTasks', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DiscoverPollEndpoint {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::DiscoverPollEndpoint', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::DiscoverPollEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListClusters {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::ListClusters', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::ListClusters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListContainerInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::ListContainerInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::ListContainerInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListTaskDefinitions {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::ListTaskDefinitions', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::ListTaskDefinitions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListTasks {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::ListTasks', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::ListTasks', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RegisterContainerInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::RegisterContainerInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::RegisterContainerInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RegisterTaskDefinition {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::RegisterTaskDefinition', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::RegisterTaskDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RunTask {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::RunTask', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::RunTask', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub StartTask {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::StartTask', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::StartTask', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub StopTask {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::StopTask', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::StopTask', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SubmitContainerStateChange {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::SubmitContainerStateChange', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::SubmitContainerStateChange', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SubmitTaskStateChange {
     my $self = shift;
-    return $self->caller->do_call('Paws::ECS::SubmitTaskStateChange', @_);
+    my $call_object = $self->new_with_coercions('Paws::ECS::SubmitTaskStateChange', @_);
+    return $self->caller->do_call($self, $call_object);
   }
 }
 1;

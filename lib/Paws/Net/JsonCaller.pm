@@ -37,17 +37,20 @@ package Paws::Net::JsonCaller {
     return \%p;
   }
 
-  sub _api_caller {
-    my ($self, $call_class, $call_params_object, $request) = @_;
+  sub prepare_request_for_call {
+    my ($self, $call) = @_;
+
+    my $request = Paws::Net::APIRequest->new();
+
     $request->url($self->_api_endpoint);
     $request->method('POST');
 
-    $request->parameters({ Action => $call_class->_api_call,
+    $request->parameters({ Action => $call->_api_call,
                            Version => $self->version,
                            AWSAccessKeyId => $self->access_key,
                            Timestamp => strftime("%Y-%m-%dT%H:%M:%SZ",gmtime),
                         });
-    $request->header('X-Amz-Target', sprintf('%s.%s', $self->target_prefix, $call_class->_api_call));
+    $request->header('X-Amz-Target', sprintf('%s.%s', $self->target_prefix, $call->_api_call));
 
     my $j_version = $self->json_version;
     $request->headers->content_type("application/x-amz-json-$j_version");
@@ -56,8 +59,10 @@ package Paws::Net::JsonCaller {
     $request->header( 'X-Amz-Date' => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
     $request->header( Host => $self->endpoint_host );
 
-    my $data = $self->_to_jsoncaller_params($call_params_object);
+    my $data = $self->_to_jsoncaller_params($call);
     $request->content(to_json($data));
+
+    $self->sign($request);
 
     return $request;
   }

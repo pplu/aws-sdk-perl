@@ -14,103 +14,128 @@ package Paws::CodeDeploy {
   
   sub BatchGetApplications {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::BatchGetApplications', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetApplications', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub BatchGetDeployments {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::BatchGetDeployments', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetDeployments', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateApplication {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::CreateApplication', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::CreateApplication', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateDeployment {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::CreateDeployment', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::CreateDeployment', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateDeploymentConfig {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::CreateDeploymentConfig', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::CreateDeploymentConfig', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateDeploymentGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::CreateDeploymentGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::CreateDeploymentGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteApplication {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::DeleteApplication', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::DeleteApplication', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDeploymentConfig {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::DeleteDeploymentConfig', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::DeleteDeploymentConfig', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDeploymentGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::DeleteDeploymentGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::DeleteDeploymentGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetApplication {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::GetApplication', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::GetApplication', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetApplicationRevision {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::GetApplicationRevision', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::GetApplicationRevision', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetDeployment {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::GetDeployment', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::GetDeployment', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetDeploymentConfig {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::GetDeploymentConfig', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::GetDeploymentConfig', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetDeploymentGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::GetDeploymentGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::GetDeploymentGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetDeploymentInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::GetDeploymentInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::GetDeploymentInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListApplicationRevisions {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::ListApplicationRevisions', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListApplicationRevisions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListApplications {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::ListApplications', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListApplications', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListDeploymentConfigs {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::ListDeploymentConfigs', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListDeploymentConfigs', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListDeploymentGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::ListDeploymentGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListDeploymentGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListDeploymentInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::ListDeploymentInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListDeploymentInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListDeployments {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::ListDeployments', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListDeployments', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RegisterApplicationRevision {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::RegisterApplicationRevision', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::RegisterApplicationRevision', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub StopDeployment {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::StopDeployment', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::StopDeployment', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateApplication {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::UpdateApplication', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::UpdateApplication', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDeploymentGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::CodeDeploy::UpdateDeploymentGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::UpdateDeploymentGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
 }
 1;

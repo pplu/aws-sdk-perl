@@ -13,27 +13,33 @@ package Paws::ImportExport {
   
   sub CancelJob {
     my $self = shift;
-    return $self->caller->do_call('Paws::ImportExport::CancelJob', @_);
+    my $call_object = $self->new_with_coercions('Paws::ImportExport::CancelJob', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateJob {
     my $self = shift;
-    return $self->caller->do_call('Paws::ImportExport::CreateJob', @_);
+    my $call_object = $self->new_with_coercions('Paws::ImportExport::CreateJob', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetShippingLabel {
     my $self = shift;
-    return $self->caller->do_call('Paws::ImportExport::GetShippingLabel', @_);
+    my $call_object = $self->new_with_coercions('Paws::ImportExport::GetShippingLabel', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetStatus {
     my $self = shift;
-    return $self->caller->do_call('Paws::ImportExport::GetStatus', @_);
+    my $call_object = $self->new_with_coercions('Paws::ImportExport::GetStatus', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListJobs {
     my $self = shift;
-    return $self->caller->do_call('Paws::ImportExport::ListJobs', @_);
+    my $call_object = $self->new_with_coercions('Paws::ImportExport::ListJobs', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateJob {
     my $self = shift;
-    return $self->caller->do_call('Paws::ImportExport::UpdateJob', @_);
+    my $call_object = $self->new_with_coercions('Paws::ImportExport::UpdateJob', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListAllJobs {
     my $self = shift;

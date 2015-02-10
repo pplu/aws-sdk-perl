@@ -14,15 +14,18 @@ package Paws::CloudSearchDomain {
   
   sub Search {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearchDomain::Search', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearchDomain::Search', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub Suggest {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearchDomain::Suggest', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearchDomain::Suggest', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UploadDocuments {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudSearchDomain::UploadDocuments', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudSearchDomain::UploadDocuments', @_);
+    return $self->caller->do_call($self, $call_object);
   }
 }
 1;

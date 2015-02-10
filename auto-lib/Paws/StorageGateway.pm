@@ -14,199 +14,248 @@ package Paws::StorageGateway {
   
   sub ActivateGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::ActivateGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::ActivateGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AddCache {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::AddCache', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::AddCache', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AddUploadBuffer {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::AddUploadBuffer', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::AddUploadBuffer', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AddWorkingStorage {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::AddWorkingStorage', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::AddWorkingStorage', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CancelArchival {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::CancelArchival', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::CancelArchival', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CancelRetrieval {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::CancelRetrieval', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::CancelRetrieval', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateCachediSCSIVolume {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::CreateCachediSCSIVolume', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateCachediSCSIVolume', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateSnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::CreateSnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateSnapshotFromVolumeRecoveryPoint {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPoint', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPoint', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateStorediSCSIVolume {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::CreateStorediSCSIVolume', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateStorediSCSIVolume', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateTapes {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::CreateTapes', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateTapes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteBandwidthRateLimit {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DeleteBandwidthRateLimit', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DeleteBandwidthRateLimit', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteChapCredentials {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DeleteChapCredentials', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DeleteChapCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DeleteGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DeleteGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSnapshotSchedule {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DeleteSnapshotSchedule', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DeleteSnapshotSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteTape {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DeleteTape', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DeleteTape', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteTapeArchive {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DeleteTapeArchive', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DeleteTapeArchive', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVolume {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DeleteVolume', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DeleteVolume', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeBandwidthRateLimit {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DescribeBandwidthRateLimit', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeBandwidthRateLimit', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCache {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DescribeCache', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeCache', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCachediSCSIVolumes {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DescribeCachediSCSIVolumes', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeCachediSCSIVolumes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeChapCredentials {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DescribeChapCredentials', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeChapCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeGatewayInformation {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DescribeGatewayInformation', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeGatewayInformation', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeMaintenanceStartTime {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DescribeMaintenanceStartTime', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeMaintenanceStartTime', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSnapshotSchedule {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DescribeSnapshotSchedule', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeSnapshotSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStorediSCSIVolumes {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DescribeStorediSCSIVolumes', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeStorediSCSIVolumes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTapeArchives {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DescribeTapeArchives', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeTapeArchives', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTapeRecoveryPoints {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DescribeTapeRecoveryPoints', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeTapeRecoveryPoints', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTapes {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DescribeTapes', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeTapes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeUploadBuffer {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DescribeUploadBuffer', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeUploadBuffer', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeVTLDevices {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DescribeVTLDevices', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeVTLDevices', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeWorkingStorage {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DescribeWorkingStorage', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeWorkingStorage', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisableGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::DisableGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DisableGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListGateways {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::ListGateways', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::ListGateways', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListLocalDisks {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::ListLocalDisks', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::ListLocalDisks', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListVolumeRecoveryPoints {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::ListVolumeRecoveryPoints', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::ListVolumeRecoveryPoints', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListVolumes {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::ListVolumes', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::ListVolumes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ResetCache {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::ResetCache', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::ResetCache', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RetrieveTapeArchive {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::RetrieveTapeArchive', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::RetrieveTapeArchive', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RetrieveTapeRecoveryPoint {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::RetrieveTapeRecoveryPoint', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::RetrieveTapeRecoveryPoint', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ShutdownGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::ShutdownGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::ShutdownGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub StartGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::StartGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::StartGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateBandwidthRateLimit {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::UpdateBandwidthRateLimit', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateBandwidthRateLimit', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateChapCredentials {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::UpdateChapCredentials', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateChapCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateGatewayInformation {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::UpdateGatewayInformation', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateGatewayInformation', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateGatewaySoftwareNow {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::UpdateGatewaySoftwareNow', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateGatewaySoftwareNow', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateMaintenanceStartTime {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::UpdateMaintenanceStartTime', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateMaintenanceStartTime', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateSnapshotSchedule {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::UpdateSnapshotSchedule', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateSnapshotSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateVTLDeviceType {
     my $self = shift;
-    return $self->caller->do_call('Paws::StorageGateway::UpdateVTLDeviceType', @_);
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateVTLDeviceType', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAllTapeArchives {
     my $self = shift;

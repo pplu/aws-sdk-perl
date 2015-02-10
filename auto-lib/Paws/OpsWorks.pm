@@ -14,263 +14,328 @@ package Paws::OpsWorks {
   
   sub AssignInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::AssignInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::AssignInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AssignVolume {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::AssignVolume', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::AssignVolume', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AssociateElasticIp {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::AssociateElasticIp', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::AssociateElasticIp', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AttachElasticLoadBalancer {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::AttachElasticLoadBalancer', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::AttachElasticLoadBalancer', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CloneStack {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::CloneStack', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::CloneStack', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateApp {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::CreateApp', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::CreateApp', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateDeployment {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::CreateDeployment', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::CreateDeployment', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::CreateInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::CreateInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateLayer {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::CreateLayer', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::CreateLayer', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateStack {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::CreateStack', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::CreateStack', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateUserProfile {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::CreateUserProfile', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::CreateUserProfile', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteApp {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DeleteApp', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DeleteApp', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DeleteInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DeleteInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteLayer {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DeleteLayer', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DeleteLayer', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteStack {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DeleteStack', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DeleteStack', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteUserProfile {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DeleteUserProfile', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DeleteUserProfile', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeregisterElasticIp {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DeregisterElasticIp', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DeregisterElasticIp', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeregisterInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DeregisterInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DeregisterInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeregisterRdsDbInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DeregisterRdsDbInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DeregisterRdsDbInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeregisterVolume {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DeregisterVolume', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DeregisterVolume', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeApps {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeApps', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeApps', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCommands {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeCommands', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeCommands', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDeployments {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeDeployments', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeDeployments', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeElasticIps {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeElasticIps', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeElasticIps', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeElasticLoadBalancers {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeElasticLoadBalancers', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeElasticLoadBalancers', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLayers {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeLayers', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeLayers', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLoadBasedAutoScaling {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeLoadBasedAutoScaling', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeLoadBasedAutoScaling', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeMyUserProfile {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeMyUserProfile', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeMyUserProfile', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribePermissions {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribePermissions', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribePermissions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeRaidArrays {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeRaidArrays', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeRaidArrays', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeRdsDbInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeRdsDbInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeRdsDbInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeServiceErrors {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeServiceErrors', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeServiceErrors', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStackProvisioningParameters {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeStackProvisioningParameters', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeStackProvisioningParameters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStacks {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeStacks', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeStacks', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStackSummary {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeStackSummary', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeStackSummary', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTimeBasedAutoScaling {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeTimeBasedAutoScaling', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeTimeBasedAutoScaling', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeUserProfiles {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeUserProfiles', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeUserProfiles', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeVolumes {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DescribeVolumes', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeVolumes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DetachElasticLoadBalancer {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DetachElasticLoadBalancer', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DetachElasticLoadBalancer', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisassociateElasticIp {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::DisassociateElasticIp', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DisassociateElasticIp', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetHostnameSuggestion {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::GetHostnameSuggestion', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::GetHostnameSuggestion', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RebootInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::RebootInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::RebootInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RegisterElasticIp {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::RegisterElasticIp', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::RegisterElasticIp', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RegisterInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::RegisterInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::RegisterInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RegisterRdsDbInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::RegisterRdsDbInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::RegisterRdsDbInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RegisterVolume {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::RegisterVolume', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::RegisterVolume', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetLoadBasedAutoScaling {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::SetLoadBasedAutoScaling', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::SetLoadBasedAutoScaling', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetPermission {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::SetPermission', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::SetPermission', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetTimeBasedAutoScaling {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::SetTimeBasedAutoScaling', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::SetTimeBasedAutoScaling', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub StartInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::StartInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::StartInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub StartStack {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::StartStack', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::StartStack', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub StopInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::StopInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::StopInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub StopStack {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::StopStack', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::StopStack', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UnassignInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::UnassignInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::UnassignInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UnassignVolume {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::UnassignVolume', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::UnassignVolume', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateApp {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::UpdateApp', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::UpdateApp', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateElasticIp {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::UpdateElasticIp', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::UpdateElasticIp', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::UpdateInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::UpdateInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateLayer {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::UpdateLayer', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::UpdateLayer', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateMyUserProfile {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::UpdateMyUserProfile', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::UpdateMyUserProfile', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateRdsDbInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::UpdateRdsDbInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::UpdateRdsDbInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateStack {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::UpdateStack', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::UpdateStack', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateUserProfile {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::UpdateUserProfile', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::UpdateUserProfile', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateVolume {
     my $self = shift;
-    return $self->caller->do_call('Paws::OpsWorks::UpdateVolume', @_);
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::UpdateVolume', @_);
+    return $self->caller->do_call($self, $call_object);
   }
 }
 1;

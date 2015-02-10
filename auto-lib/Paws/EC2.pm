@@ -13,643 +13,803 @@ package Paws::EC2 {
   
   sub AcceptVpcPeeringConnection {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::AcceptVpcPeeringConnection', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::AcceptVpcPeeringConnection', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AllocateAddress {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::AllocateAddress', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::AllocateAddress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AssignPrivateIpAddresses {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::AssignPrivateIpAddresses', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::AssignPrivateIpAddresses', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AssociateAddress {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::AssociateAddress', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::AssociateAddress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AssociateDhcpOptions {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::AssociateDhcpOptions', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::AssociateDhcpOptions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AssociateRouteTable {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::AssociateRouteTable', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::AssociateRouteTable', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AttachClassicLinkVpc {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::AttachClassicLinkVpc', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::AttachClassicLinkVpc', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AttachInternetGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::AttachInternetGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::AttachInternetGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AttachNetworkInterface {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::AttachNetworkInterface', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::AttachNetworkInterface', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AttachVolume {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::AttachVolume', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::AttachVolume', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AttachVpnGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::AttachVpnGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::AttachVpnGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AuthorizeSecurityGroupEgress {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::AuthorizeSecurityGroupEgress', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::AuthorizeSecurityGroupEgress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AuthorizeSecurityGroupIngress {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::AuthorizeSecurityGroupIngress', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::AuthorizeSecurityGroupIngress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub BundleInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::BundleInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::BundleInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CancelBundleTask {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CancelBundleTask', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CancelBundleTask', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CancelConversionTask {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CancelConversionTask', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CancelConversionTask', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CancelExportTask {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CancelExportTask', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CancelExportTask', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CancelReservedInstancesListing {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CancelReservedInstancesListing', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CancelReservedInstancesListing', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CancelSpotInstanceRequests {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CancelSpotInstanceRequests', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CancelSpotInstanceRequests', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ConfirmProductInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ConfirmProductInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ConfirmProductInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CopyImage {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CopyImage', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CopyImage', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CopySnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CopySnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CopySnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateCustomerGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateCustomerGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateCustomerGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateDhcpOptions {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateDhcpOptions', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateDhcpOptions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateImage {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateImage', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateImage', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateInstanceExportTask {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateInstanceExportTask', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateInstanceExportTask', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateInternetGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateInternetGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateInternetGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateKeyPair {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateKeyPair', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateKeyPair', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateNetworkAcl {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateNetworkAcl', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateNetworkAcl', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateNetworkAclEntry {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateNetworkAclEntry', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateNetworkAclEntry', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateNetworkInterface {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateNetworkInterface', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateNetworkInterface', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreatePlacementGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreatePlacementGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreatePlacementGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateReservedInstancesListing {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateReservedInstancesListing', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateReservedInstancesListing', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateRoute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateRoute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateRoute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateRouteTable {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateRouteTable', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateRouteTable', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateSecurityGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateSecurityGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateSecurityGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateSnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateSnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateSpotDatafeedSubscription {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateSpotDatafeedSubscription', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateSpotDatafeedSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateSubnet {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateSubnet', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateSubnet', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateTags {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateTags', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateTags', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateVolume {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateVolume', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateVolume', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateVpc {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateVpc', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateVpc', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateVpcPeeringConnection {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateVpcPeeringConnection', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateVpcPeeringConnection', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateVpnConnection {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateVpnConnection', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateVpnConnection', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateVpnConnectionRoute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateVpnConnectionRoute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateVpnConnectionRoute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateVpnGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::CreateVpnGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateVpnGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCustomerGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteCustomerGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteCustomerGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDhcpOptions {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteDhcpOptions', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteDhcpOptions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteInternetGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteInternetGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteInternetGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteKeyPair {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteKeyPair', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteKeyPair', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteNetworkAcl {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteNetworkAcl', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteNetworkAcl', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteNetworkAclEntry {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteNetworkAclEntry', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteNetworkAclEntry', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteNetworkInterface {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteNetworkInterface', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteNetworkInterface', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeletePlacementGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeletePlacementGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeletePlacementGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteRoute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteRoute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteRoute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteRouteTable {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteRouteTable', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteRouteTable', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSecurityGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteSecurityGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteSecurityGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteSnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSpotDatafeedSubscription {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteSpotDatafeedSubscription', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteSpotDatafeedSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSubnet {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteSubnet', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteSubnet', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteTags {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteTags', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTags', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVolume {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteVolume', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteVolume', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVpc {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteVpc', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteVpc', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVpcPeeringConnection {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteVpcPeeringConnection', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteVpcPeeringConnection', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVpnConnection {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteVpnConnection', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteVpnConnection', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVpnConnectionRoute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteVpnConnectionRoute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteVpnConnectionRoute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVpnGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeleteVpnGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteVpnGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeregisterImage {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DeregisterImage', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeregisterImage', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAccountAttributes {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeAccountAttributes', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeAccountAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAddresses {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeAddresses', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeAddresses', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAvailabilityZones {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeAvailabilityZones', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeAvailabilityZones', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeBundleTasks {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeBundleTasks', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeBundleTasks', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClassicLinkInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeClassicLinkInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeClassicLinkInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeConversionTasks {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeConversionTasks', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeConversionTasks', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCustomerGateways {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeCustomerGateways', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeCustomerGateways', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDhcpOptions {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeDhcpOptions', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeDhcpOptions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeExportTasks {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeExportTasks', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeExportTasks', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeImageAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeImageAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeImageAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeImages {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeImages', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeImages', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeInstanceAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeInstanceAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInstanceAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeInstanceStatus {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeInstanceStatus', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInstanceStatus', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeInternetGateways {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeInternetGateways', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInternetGateways', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeKeyPairs {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeKeyPairs', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeKeyPairs', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeNetworkAcls {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeNetworkAcls', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeNetworkAcls', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeNetworkInterfaceAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeNetworkInterfaceAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeNetworkInterfaceAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeNetworkInterfaces {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeNetworkInterfaces', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeNetworkInterfaces', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribePlacementGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribePlacementGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribePlacementGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeRegions {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeRegions', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeRegions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeReservedInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeReservedInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeReservedInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeReservedInstancesListings {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeReservedInstancesListings', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeReservedInstancesListings', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeReservedInstancesModifications {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeReservedInstancesModifications', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeReservedInstancesModifications', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeReservedInstancesOfferings {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeReservedInstancesOfferings', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeReservedInstancesOfferings', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeRouteTables {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeRouteTables', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeRouteTables', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSecurityGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeSecurityGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSecurityGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSnapshotAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeSnapshotAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSnapshotAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSnapshots {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeSnapshots', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSpotDatafeedSubscription {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeSpotDatafeedSubscription', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSpotDatafeedSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSpotInstanceRequests {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeSpotInstanceRequests', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSpotInstanceRequests', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSpotPriceHistory {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeSpotPriceHistory', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSpotPriceHistory', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSubnets {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeSubnets', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSubnets', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTags {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeTags', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTags', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeVolumeAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeVolumeAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVolumeAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeVolumes {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeVolumes', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVolumes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeVolumeStatus {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeVolumeStatus', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVolumeStatus', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeVpcAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeVpcAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeVpcClassicLink {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeVpcClassicLink', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcClassicLink', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeVpcPeeringConnections {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeVpcPeeringConnections', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcPeeringConnections', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeVpcs {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeVpcs', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcs', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeVpnConnections {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeVpnConnections', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpnConnections', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeVpnGateways {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DescribeVpnGateways', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpnGateways', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DetachClassicLinkVpc {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DetachClassicLinkVpc', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DetachClassicLinkVpc', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DetachInternetGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DetachInternetGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DetachInternetGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DetachNetworkInterface {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DetachNetworkInterface', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DetachNetworkInterface', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DetachVolume {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DetachVolume', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DetachVolume', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DetachVpnGateway {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DetachVpnGateway', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DetachVpnGateway', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisableVgwRoutePropagation {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DisableVgwRoutePropagation', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisableVgwRoutePropagation', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisableVpcClassicLink {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DisableVpcClassicLink', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisableVpcClassicLink', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisassociateAddress {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DisassociateAddress', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateAddress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisassociateRouteTable {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::DisassociateRouteTable', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateRouteTable', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub EnableVgwRoutePropagation {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::EnableVgwRoutePropagation', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::EnableVgwRoutePropagation', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub EnableVolumeIO {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::EnableVolumeIO', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::EnableVolumeIO', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub EnableVpcClassicLink {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::EnableVpcClassicLink', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::EnableVpcClassicLink', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetConsoleOutput {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::GetConsoleOutput', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetConsoleOutput', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetPasswordData {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::GetPasswordData', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetPasswordData', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ImportInstance {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ImportInstance', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ImportInstance', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ImportKeyPair {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ImportKeyPair', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ImportKeyPair', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ImportVolume {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ImportVolume', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ImportVolume', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyImageAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ModifyImageAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyImageAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyInstanceAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ModifyInstanceAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyInstanceAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyNetworkInterfaceAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ModifyNetworkInterfaceAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyNetworkInterfaceAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyReservedInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ModifyReservedInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyReservedInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifySnapshotAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ModifySnapshotAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifySnapshotAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifySubnetAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ModifySubnetAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifySubnetAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyVolumeAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ModifyVolumeAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVolumeAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyVpcAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ModifyVpcAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpcAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub MonitorInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::MonitorInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::MonitorInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PurchaseReservedInstancesOffering {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::PurchaseReservedInstancesOffering', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::PurchaseReservedInstancesOffering', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RebootInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::RebootInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::RebootInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RegisterImage {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::RegisterImage', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::RegisterImage', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RejectVpcPeeringConnection {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::RejectVpcPeeringConnection', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::RejectVpcPeeringConnection', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ReleaseAddress {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ReleaseAddress', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ReleaseAddress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ReplaceNetworkAclAssociation {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ReplaceNetworkAclAssociation', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ReplaceNetworkAclAssociation', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ReplaceNetworkAclEntry {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ReplaceNetworkAclEntry', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ReplaceNetworkAclEntry', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ReplaceRoute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ReplaceRoute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ReplaceRoute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ReplaceRouteTableAssociation {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ReplaceRouteTableAssociation', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ReplaceRouteTableAssociation', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ReportInstanceStatus {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ReportInstanceStatus', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ReportInstanceStatus', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RequestSpotInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::RequestSpotInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::RequestSpotInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ResetImageAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ResetImageAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ResetImageAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ResetInstanceAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ResetInstanceAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ResetInstanceAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ResetNetworkInterfaceAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ResetNetworkInterfaceAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ResetNetworkInterfaceAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ResetSnapshotAttribute {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::ResetSnapshotAttribute', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::ResetSnapshotAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RevokeSecurityGroupEgress {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::RevokeSecurityGroupEgress', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::RevokeSecurityGroupEgress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RevokeSecurityGroupIngress {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::RevokeSecurityGroupIngress', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::RevokeSecurityGroupIngress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RunInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::RunInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::RunInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub StartInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::StartInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::StartInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub StopInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::StopInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::StopInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub TerminateInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::TerminateInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::TerminateInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UnassignPrivateIpAddresses {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::UnassignPrivateIpAddresses', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::UnassignPrivateIpAddresses', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UnmonitorInstances {
     my $self = shift;
-    return $self->caller->do_call('Paws::EC2::UnmonitorInstances', @_);
+    my $call_object = $self->new_with_coercions('Paws::EC2::UnmonitorInstances', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAllInstances {
     my $self = shift;

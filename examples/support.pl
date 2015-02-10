@@ -3,7 +3,7 @@
 use Paws;
 use Data::Printer;
 
-my $support = Paws->service('Support')->new(
+my $support = Paws->service('Support',
   region => 'us-east-1'
 );
 

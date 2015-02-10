@@ -1,5 +1,5 @@
 package Test10ResponseReadFromFile {
-  use Moose::Role;
+  use Moose;
   use File::Slurp;
   use Module::Runtime;
   use Data::Dumper;
@@ -8,27 +8,18 @@ package Test10ResponseReadFromFile {
   has response_file => (isa => 'Str', is => 'rw');
 
   sub do_call {
-    my ($self, $call_class, @params) = @_;
-    Module::Runtime::require_module($call_class);
-    Module::Runtime::require_module($call_class->_returns);
+    my ($self, $service, $call_object) = @_;
+
+    my $requestObj = $service->prepare_request_for_call($call_object); 
 
     my $content = read_file($self->response_file);
-    my $result = $self->_process_response($content);
+
+    my $unserialized_struct = $service->unserialize_response( $content );
 
     diag("DATASTRUCUTRE FROM RESPONSE");
-    diag(Dumper($result));
+    diag(Dumper($unserialized_struct));
 
-    if ($call_class->_returns){
-      if ($call_class->_result_key){
-        $result = $result->{ $call_class->_result_key };
-      }
-
-      my $o_result = $call_class->_returns->from_result($result);
-      return $o_result;
-    } else {
-      return 1;
-    }
-    return 0;
+    return $service->response_to_object($unserialized_struct, $call_object);
   }
 }
 

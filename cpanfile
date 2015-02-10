@@ -16,6 +16,7 @@ requires 'Hash::Flatten';
 requires 'MooseX::Getopt';
 requires 'ARGV::Struct';
 requires 'Module::Find';
+requires 'Getopt::Long';
 
 on 'build' => sub {
   requires 'Data::Printer';

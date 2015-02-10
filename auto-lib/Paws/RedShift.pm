@@ -13,227 +13,283 @@ package Paws::RedShift {
   
   sub AuthorizeClusterSecurityGroupIngress {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::AuthorizeClusterSecurityGroupIngress', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::AuthorizeClusterSecurityGroupIngress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub AuthorizeSnapshotAccess {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::AuthorizeSnapshotAccess', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::AuthorizeSnapshotAccess', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CopyClusterSnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::CopyClusterSnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CopyClusterSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateCluster {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::CreateCluster', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CreateCluster', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateClusterParameterGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::CreateClusterParameterGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CreateClusterParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateClusterSecurityGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::CreateClusterSecurityGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CreateClusterSecurityGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateClusterSnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::CreateClusterSnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CreateClusterSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateClusterSubnetGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::CreateClusterSubnetGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CreateClusterSubnetGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateEventSubscription {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::CreateEventSubscription', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CreateEventSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateHsmClientCertificate {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::CreateHsmClientCertificate', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CreateHsmClientCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateHsmConfiguration {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::CreateHsmConfiguration', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CreateHsmConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateTags {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::CreateTags', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CreateTags', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCluster {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DeleteCluster', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteCluster', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteClusterParameterGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DeleteClusterParameterGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteClusterParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteClusterSecurityGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DeleteClusterSecurityGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteClusterSecurityGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteClusterSnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DeleteClusterSnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteClusterSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteClusterSubnetGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DeleteClusterSubnetGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteClusterSubnetGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteEventSubscription {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DeleteEventSubscription', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteEventSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteHsmClientCertificate {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DeleteHsmClientCertificate', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteHsmClientCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteHsmConfiguration {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DeleteHsmConfiguration', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteHsmConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteTags {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DeleteTags', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteTags', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClusterParameterGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeClusterParameterGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterParameterGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClusterParameters {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeClusterParameters', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterParameters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClusters {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeClusters', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClusterSecurityGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeClusterSecurityGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterSecurityGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClusterSnapshots {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeClusterSnapshots', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClusterSubnetGroups {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeClusterSubnetGroups', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterSubnetGroups', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClusterVersions {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeClusterVersions', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterVersions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDefaultClusterParameters {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeDefaultClusterParameters', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeDefaultClusterParameters', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEventCategories {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeEventCategories', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeEventCategories', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEvents {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeEvents', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeEvents', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEventSubscriptions {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeEventSubscriptions', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeEventSubscriptions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeHsmClientCertificates {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeHsmClientCertificates', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeHsmClientCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeHsmConfigurations {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeHsmConfigurations', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeHsmConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLoggingStatus {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeLoggingStatus', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeLoggingStatus', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeOrderableClusterOptions {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeOrderableClusterOptions', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeOrderableClusterOptions', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeReservedNodeOfferings {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeReservedNodeOfferings', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeReservedNodeOfferings', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeReservedNodes {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeReservedNodes', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeReservedNodes', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeResize {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeResize', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeResize', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTags {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DescribeTags', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeTags', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisableLogging {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DisableLogging', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DisableLogging', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DisableSnapshotCopy {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::DisableSnapshotCopy', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DisableSnapshotCopy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub EnableLogging {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::EnableLogging', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::EnableLogging', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub EnableSnapshotCopy {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::EnableSnapshotCopy', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::EnableSnapshotCopy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyCluster {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::ModifyCluster', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyCluster', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyClusterParameterGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::ModifyClusterParameterGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyClusterParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyClusterSubnetGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::ModifyClusterSubnetGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyClusterSubnetGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifyEventSubscription {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::ModifyEventSubscription', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyEventSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ModifySnapshotCopyRetentionPeriod {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::ModifySnapshotCopyRetentionPeriod', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifySnapshotCopyRetentionPeriod', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub PurchaseReservedNodeOffering {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::PurchaseReservedNodeOffering', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::PurchaseReservedNodeOffering', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RebootCluster {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::RebootCluster', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::RebootCluster', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ResetClusterParameterGroup {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::ResetClusterParameterGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ResetClusterParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RestoreFromClusterSnapshot {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::RestoreFromClusterSnapshot', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::RestoreFromClusterSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RevokeClusterSecurityGroupIngress {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::RevokeClusterSecurityGroupIngress', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::RevokeClusterSecurityGroupIngress', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RevokeSnapshotAccess {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::RevokeSnapshotAccess', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::RevokeSnapshotAccess', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RotateEncryptionKey {
     my $self = shift;
-    return $self->caller->do_call('Paws::RedShift::RotateEncryptionKey', @_);
+    my $call_object = $self->new_with_coercions('Paws::RedShift::RotateEncryptionKey', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAllClusterParameterGroups {
     my $self = shift;

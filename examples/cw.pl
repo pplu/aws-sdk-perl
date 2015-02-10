@@ -7,9 +7,7 @@ use Data::Printer;
 
 use Paws;
 
-my $sv = Paws->service('CloudWatch');
-
-my $cw = $sv->new(
+my $cw = Paws->service('CloudWatch',
   region => 'eu-west-1',
 );
 

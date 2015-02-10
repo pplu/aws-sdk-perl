@@ -59,7 +59,7 @@ use Data::Printer;
 
 use Paws;
 
-my $cf = Paws->service('CloudFormation')->new(
+my $cf = Paws->service('CloudFormation',
   region => 'eu-west-1',
 );
 

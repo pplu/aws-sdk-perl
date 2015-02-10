@@ -14,55 +14,68 @@ package Paws::CognitoSync {
   
   sub DeleteDataset {
     my $self = shift;
-    return $self->caller->do_call('Paws::CognitoSync::DeleteDataset', @_);
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::DeleteDataset', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDataset {
     my $self = shift;
-    return $self->caller->do_call('Paws::CognitoSync::DescribeDataset', @_);
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::DescribeDataset', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeIdentityPoolUsage {
     my $self = shift;
-    return $self->caller->do_call('Paws::CognitoSync::DescribeIdentityPoolUsage', @_);
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::DescribeIdentityPoolUsage', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeIdentityUsage {
     my $self = shift;
-    return $self->caller->do_call('Paws::CognitoSync::DescribeIdentityUsage', @_);
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::DescribeIdentityUsage', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetIdentityPoolConfiguration {
     my $self = shift;
-    return $self->caller->do_call('Paws::CognitoSync::GetIdentityPoolConfiguration', @_);
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::GetIdentityPoolConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListDatasets {
     my $self = shift;
-    return $self->caller->do_call('Paws::CognitoSync::ListDatasets', @_);
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::ListDatasets', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListIdentityPoolUsage {
     my $self = shift;
-    return $self->caller->do_call('Paws::CognitoSync::ListIdentityPoolUsage', @_);
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::ListIdentityPoolUsage', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListRecords {
     my $self = shift;
-    return $self->caller->do_call('Paws::CognitoSync::ListRecords', @_);
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::ListRecords', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub RegisterDevice {
     my $self = shift;
-    return $self->caller->do_call('Paws::CognitoSync::RegisterDevice', @_);
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::RegisterDevice', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetIdentityPoolConfiguration {
     my $self = shift;
-    return $self->caller->do_call('Paws::CognitoSync::SetIdentityPoolConfiguration', @_);
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::SetIdentityPoolConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SubscribeToDataset {
     my $self = shift;
-    return $self->caller->do_call('Paws::CognitoSync::SubscribeToDataset', @_);
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::SubscribeToDataset', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UnsubscribeFromDataset {
     my $self = shift;
-    return $self->caller->do_call('Paws::CognitoSync::UnsubscribeFromDataset', @_);
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::UnsubscribeFromDataset', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateRecords {
     my $self = shift;
-    return $self->caller->do_call('Paws::CognitoSync::UpdateRecords', @_);
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::UpdateRecords', @_);
+    return $self->caller->do_call($self, $call_object);
   }
 }
 1;

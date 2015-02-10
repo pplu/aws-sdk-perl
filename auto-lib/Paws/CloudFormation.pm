@@ -13,71 +13,88 @@ package Paws::CloudFormation {
   
   sub CancelUpdateStack {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::CancelUpdateStack', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::CancelUpdateStack', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub CreateStack {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::CreateStack', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::CreateStack', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DeleteStack {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::DeleteStack', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DeleteStack', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStackEvents {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::DescribeStackEvents', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStackEvents', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStackResource {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::DescribeStackResource', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStackResource', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStackResources {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::DescribeStackResources', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStackResources', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStacks {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::DescribeStacks', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStacks', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub EstimateTemplateCost {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::EstimateTemplateCost', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::EstimateTemplateCost', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetStackPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::GetStackPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::GetStackPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetTemplate {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::GetTemplate', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::GetTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub GetTemplateSummary {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::GetTemplateSummary', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::GetTemplateSummary', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListStackResources {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::ListStackResources', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListStackResources', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ListStacks {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::ListStacks', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListStacks', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SetStackPolicy {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::SetStackPolicy', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::SetStackPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub SignalResource {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::SignalResource', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::SignalResource', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub UpdateStack {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::UpdateStack', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::UpdateStack', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub ValidateTemplate {
     my $self = shift;
-    return $self->caller->do_call('Paws::CloudFormation::ValidateTemplate', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ValidateTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAllStackEvents {
     my $self = shift;
