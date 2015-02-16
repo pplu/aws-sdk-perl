@@ -7,11 +7,12 @@ use Test::More;
 use Test::Exception;
 use YAML qw/DumpFile LoadFile/;
 use XML::Simple;
+use File::Slurp;
+use Module::Runtime;
 
 use Paws;
-use Test10ResponseReadFromFile;
 
-my $aws = Paws->new(config => Paws::SDK::Config->new( caller => 'Test10ResponseReadFromFile' ) );
+my $aws = Paws->new();
 
 use Data::Dumper;
 
@@ -42,19 +43,28 @@ sub test_file {
 
   SKIP: {
     skip "$test_def_file is lacking service or call entry",1 if (not $test->{service} or not $test->{call});
+
     my $service = $aws->service($test->{service},
       region => 'fake_region',
     );
-    $service->caller->response_file($file);
-    my $call = $test->{ call };
+
+    my $call_class = $service->meta->name . '::' . $test->{ call };
+    Paws->load_class($call_class);
+
     my $res;
     my $passed = lives_ok {
-      $res = $service->$call;
-    } "Call $test->{service}\-\>$call from $file";
+      my $content = read_file($file);
+      my $unserialized_struct = $service->unserialize_response( $content );
+
+      diag("DATASTRUCUTRE FROM RESPONSE");
+      diag(Dumper($unserialized_struct));
+
+      $res = $service->response_to_object($unserialized_struct, $call_class);
+    } "Call $test->{service}\-\>$test->{ call } from $file";
 
     diag(Dumper($res));
     if (not $passed) {
-      ok(0, "Can't test method access because something went horribly wrong in the call to $call");
+      ok(0, "Can't test method access because something went horribly wrong in the call to $test->{ call }");
       next;
     }
 
