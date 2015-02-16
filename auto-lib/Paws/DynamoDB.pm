@@ -170,7 +170,7 @@ B<Reading Data>
 
 I<GetItem> - Returns a set of attributes for the item that has a given
 primary key. By default, I<GetItem> performs an eventually consistent
-read; however, applications can specify a strongly consistent read
+read; however, applications can request a strongly consistent read
 instead.
 
 =item *
@@ -377,19 +377,17 @@ amounts of data, such as from Amazon Elastic MapReduce (EMR), or copy
 data from another database into DynamoDB. In order to improve
 performance with these large-scale operations, I<BatchWriteItem> does
 not behave in the same way as individual I<PutItem> and I<DeleteItem>
-calls would For example, you cannot specify conditions on individual
+calls would. For example, you cannot specify conditions on individual
 put and delete requests, and I<BatchWriteItem> does not return deleted
 items in the response.
 
 If you use a programming language that supports concurrency, such as
 Java, you can use threads to write items in parallel. Your application
 must include the necessary logic to manage the threads. With languages
-that don't support threading, such as PHP, you must update or delete
-the specified items one at a time. In both situations,
-I<BatchWriteItem> provides an alternative where the API performs the
-specified put and delete operations in parallel, giving you the power
-of the thread pool approach without having to introduce complexity into
-your application.
+that don't support threading, such as PHP, you must update provides an
+alternative where the API performs the specified put and delete
+operations in parallel, giving you the power of the thread pool
+approach without having to introduce complexity into your application.
 
 Parallel processing reduces latency, but each specified put and delete
 request consumes the same number of write capacity units whether it is
@@ -724,8 +722,8 @@ index.
   
 
 The I<Scan> operation returns one or more items and item attributes by
-accessing every item in the table. To have DynamoDB return fewer items,
-you can provide a I<ScanFilter> operation.
+accessing every item in a table or a secondary index. To have DynamoDB
+return fewer items, you can provide a I<ScanFilter> operation.
 
 If the total number of scanned items exceeds the maximum data set size
 limit of 1 MB, the scan stops and results are returned to the user as a
@@ -736,10 +734,10 @@ limit. A scan can result in no table data meeting the filter criteria.
 The result set is eventually consistent.
 
 By default, I<Scan> operations proceed sequentially; however, for
-faster performance on large tables, applications can request a parallel
-I<Scan> operation by specifying the I<Segment> and I<TotalSegments>
-parameters. For more information, see Parallel Scan in the I<Amazon
-DynamoDB Developer Guide>.
+faster performance on a large table or secondary index, applications
+can request a parallel I<Scan> operation by providing the I<Segment>
+and I<TotalSegments> parameters. For more information, see Parallel
+Scan in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -761,9 +759,11 @@ DynamoDB Developer Guide>.
 
 Edits an existing item's attributes, or adds a new item to the table if
 it does not already exist. You can put, delete, or add attribute
-values. You can also perform a conditional update (insert a new
-attribute name-value pair if it doesn't exist, or replace an existing
-name-value pair if it has certain expected attribute values).
+values. You can also perform a conditional update on an existing item
+(insert a new attribute name-value pair if it doesn't exist, or replace
+an existing name-value pair if it has certain expected attribute
+values). If conditions are specified and the item does not exist, then
+the operation fails and a new item is not created.
 
 You can also return the item's attribute values in the same
 I<UpdateItem> operation using the I<ReturnValues> parameter.

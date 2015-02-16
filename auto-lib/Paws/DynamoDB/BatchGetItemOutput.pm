@@ -20,7 +20,7 @@ Paws::DynamoDB::BatchGetItemOutput
 
   
 
-The write capacity units consumed by the operation.
+The read capacity units consumed by the operation.
 
 Each element consists of:
 
@@ -82,7 +82,7 @@ items in the table.
 =item *
 
 I<AttributesToGet> - One or more attributes to be retrieved from the
-table or index. By default, all attributes are returned. If a specified
+table or index. By default, all attributes are returned. If a requested
 attribute is not found, it does not appear in the result.
 
 =item *

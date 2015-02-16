@@ -48,11 +48,11 @@ instead. Note that if you use I<AttributesToGet> and
 I<ProjectionExpression> at the same time, DynamoDB will return a
 I<ValidationException> exception.
 
-This parameter allows you to retrieve lists or maps; however, it cannot
-retrieve individual list or map elements.
+This parameter allows you to retrieve attributes of type List or Map;
+however, it cannot retrieve individual elements within a List or a Map.
 
 The names of one or more attributes to retrieve. If no attribute names
-are specified, then all attributes will be returned. If any of the
+are provided, then all attributes will be returned. If any of the
 requested attributes are not found, they will not appear in the result.
 
 Note that I<AttributesToGet> has no effect on provisioned throughput
@@ -88,15 +88,15 @@ consistent reads; otherwise, eventually consistent reads are used.
 
   
 
-One or more substitution tokens for simplifying complex expressions.
+One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
 
 =over
 
 =item *
 
-To shorten an attribute name that is very long or unwieldy in an
-expression.
+To access an attribute whose name conflicts with a DynamoDB reserved
+word.
 
 =item *
 
@@ -111,18 +111,20 @@ misinterpreted in an expression.
 =back
 
 Use the B<
-name. For example, consider the following expression:
+name. For example, consider the following attribute name:
 
 =over
 
 =item *
 
-C<order.customerInfo.LastName = "Smith" OR order.customerInfo.LastName
-= "Jones">
+C<Percentile>
 
 =back
 
-Now suppose that you specified the following for
+The name of this attribute conflicts with a reserved word, so it cannot
+be used directly in an expression. (For the complete list of reserved
+words, go to Reserved Words in the I<Amazon DynamoDB Developer Guide>).
+To work around this, you could specify the following for
 I<ExpressionAttributeNames>:
 
 =over
@@ -133,7 +135,8 @@ C<{"
 
 =back
 
-The expression can now be simplified as follows:
+You could then use this substitution in an expression, as in this
+example:
 
 =over
 
@@ -142,6 +145,9 @@ The expression can now be simplified as follows:
 C<
 
 =back
+
+Tokens that begin with the B<:> character are I<expression attribute
+values>, which are placeholders for the actual value at runtime.
 
 For more information on expression attribute names, go to Accessing
 Item Attributes in the I<Amazon DynamoDB Developer Guide>.
@@ -163,8 +169,8 @@ A map of attribute names to I<AttributeValue> objects, representing the
 primary key of the item to retrieve.
 
 For the primary key, you must provide all of the attributes. For
-example, with a hash type primary key, you only need to specify the
-hash attribute. For a hash-and-range type primary key, you must specify
+example, with a hash type primary key, you only need to provide the
+hash attribute. For a hash-and-range type primary key, you must provide
 both the hash attribute and the range attribute.
 
 
@@ -189,8 +195,8 @@ If no attribute names are specified, then all attributes will be
 returned. If any of the requested attributes are not found, they will
 not appear in the result.
 
-For more information on projection expressions, go to Accessing Item
-Attributes in the I<Amazon DynamoDB Developer Guide>.
+For more information, go to Accessing Item Attributes in the I<Amazon
+DynamoDB Developer Guide>.
 
 
 

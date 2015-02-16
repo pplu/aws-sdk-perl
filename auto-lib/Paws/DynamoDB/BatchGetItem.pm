@@ -51,8 +51,8 @@ Each element in the map consists of the following:
 I<Keys> - An array of primary key attribute values that define specific
 items in the table. For each primary key, you must provide I<all> of
 the key attributes. For example, with a hash type primary key, you only
-need to specify the hash attribute. For a hash-and-range type primary
-key, you must specify I<both> the hash attribute and the range
+need to provide the hash attribute. For a hash-and-range type primary
+key, you must provide I<both> the hash attribute and the range
 attribute.
 
 =item *

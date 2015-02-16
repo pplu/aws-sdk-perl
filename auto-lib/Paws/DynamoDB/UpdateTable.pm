@@ -59,7 +59,7 @@ index.
   
 
 An array of one or more global secondary indexes for the table. For
-each index in the array, you can specify one action:
+each index in the array, you can request one action:
 
 =over
 

@@ -174,7 +174,7 @@ data types allowed are Number and Number Set.
 
 =back
 
-If you specify any attributes that are part of an index key, then the
+If you provide any attributes that are part of an index key, then the
 data types for those attributes must match those of the schema in the
 table's attribute definition.
 
@@ -196,8 +196,6 @@ instead. Note that if you use I<ConditionalOperator> and I<
 ConditionExpression > at the same time, DynamoDB will return a
 I<ValidationException> exception.
 
-This parameter does not support lists or maps.
-
 A logical operator to apply to the conditions in the I<Expected> map:
 
 =over
@@ -217,6 +215,8 @@ entire map evaluates to true.
 If you omit I<ConditionalOperator>, then C<AND> is the default.
 
 The operation will succeed only if the entire map evaluates to true.
+
+This parameter does not support attributes of type List or Map.
 
 
 
@@ -277,8 +277,6 @@ instead. Note that if you use I<Expected> and I< ConditionExpression >
 at the same time, DynamoDB will return a I<ValidationException>
 exception.
 
-This parameter does not support lists or maps.
-
 A map of attribute/condition pairs. I<Expected> provides a conditional
 block for the I<UpdateItem> operation.
 
@@ -316,8 +314,7 @@ C<A>, and C<a> is greater than C<B>. For a list of code values, see
 http://en.wikipedia.org/wiki/ASCII
 
 For type Binary, DynamoDB treats each byte of the binary data as
-unsigned when it compares binary values, for example when evaluating
-query expressions.
+unsigned when it compares binary values.
 
 =item *
 
@@ -342,9 +339,9 @@ and maps.
 I<AttributeValueList> can contain only one I<AttributeValue> element of
 type String, Number, Binary, String Set, Number Set, or Binary Set. If
 an item contains an I<AttributeValue> element of a different type than
-the one specified in the request, the value does not match. For
-example, C<{"S":"6"}> does not equal C<{"N":"6"}>. Also, C<{"N":"6"}>
-does not equal C<{"NS":["6", "2", "1"]}>.
+the one provided in the request, the value does not match. For example,
+C<{"S":"6"}> does not equal C<{"N":"6"}>. Also, C<{"N":"6"}> does not
+equal C<{"NS":["6", "2", "1"]}>.
 
 =item *
 
@@ -354,7 +351,7 @@ lists and maps.
 I<AttributeValueList> can contain only one I<AttributeValue> of type
 String, Number, Binary, String Set, Number Set, or Binary Set. If an
 item contains an I<AttributeValue> of a different type than the one
-specified in the request, the value does not match. For example,
+provided in the request, the value does not match. For example,
 C<{"S":"6"}> does not equal C<{"N":"6"}>. Also, C<{"N":"6"}> does not
 equal C<{"NS":["6", "2", "1"]}>.
 
@@ -364,7 +361,7 @@ C<LE> : Less than or equal.
 
 I<AttributeValueList> can contain only one I<AttributeValue> element of
 type String, Number, or Binary (not a set type). If an item contains an
-I<AttributeValue> element of a different type than the one specified in
+I<AttributeValue> element of a different type than the one provided in
 the request, the value does not match. For example, C<{"S":"6"}> does
 not equal C<{"N":"6"}>. Also, C<{"N":"6"}> does not compare to
 C<{"NS":["6", "2", "1"]}>.
@@ -375,7 +372,7 @@ C<LT> : Less than.
 
 I<AttributeValueList> can contain only one I<AttributeValue> of type
 String, Number, or Binary (not a set type). If an item contains an
-I<AttributeValue> element of a different type than the one specified in
+I<AttributeValue> element of a different type than the one provided in
 the request, the value does not match. For example, C<{"S":"6"}> does
 not equal C<{"N":"6"}>. Also, C<{"N":"6"}> does not compare to
 C<{"NS":["6", "2", "1"]}>.
@@ -386,7 +383,7 @@ C<GE> : Greater than or equal.
 
 I<AttributeValueList> can contain only one I<AttributeValue> element of
 type String, Number, or Binary (not a set type). If an item contains an
-I<AttributeValue> element of a different type than the one specified in
+I<AttributeValue> element of a different type than the one provided in
 the request, the value does not match. For example, C<{"S":"6"}> does
 not equal C<{"N":"6"}>. Also, C<{"N":"6"}> does not compare to
 C<{"NS":["6", "2", "1"]}>.
@@ -397,7 +394,7 @@ C<GT> : Greater than.
 
 I<AttributeValueList> can contain only one I<AttributeValue> element of
 type String, Number, or Binary (not a set type). If an item contains an
-I<AttributeValue> element of a different type than the one specified in
+I<AttributeValue> element of a different type than the one provided in
 the request, the value does not match. For example, C<{"S":"6"}> does
 not equal C<{"N":"6"}>. Also, C<{"N":"6"}> does not compare to
 C<{"NS":["6", "2", "1"]}>.
@@ -489,7 +486,7 @@ the same type, either String, Number, or Binary (not a set type). A
 target attribute matches if the target value is greater than, or equal
 to, the first element and less than, or equal to, the second element.
 If an item contains an I<AttributeValue> element of a different type
-than the one specified in the request, the value does not match. For
+than the one provided in the request, the value does not match. For
 example, C<{"S":"6"}> does not compare to C<{"N":"6"}>. Also,
 C<{"N":"6"}> does not compare to C<{"NS":["6", "2", "1"]}>
 
@@ -543,6 +540,8 @@ I<AttributeValueList> and I<ComparisonOperator>. Note that if you use
 both sets of parameters at once, DynamoDB will return a
 I<ValidationException> exception.
 
+This parameter does not support attributes of type List or Map.
+
 
 
 
@@ -556,15 +555,15 @@ I<ValidationException> exception.
 
   
 
-One or more substitution tokens for simplifying complex expressions.
+One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
 
 =over
 
 =item *
 
-To shorten an attribute name that is very long or unwieldy in an
-expression.
+To access an attribute whose name conflicts with a DynamoDB reserved
+word.
 
 =item *
 
@@ -579,18 +578,20 @@ misinterpreted in an expression.
 =back
 
 Use the B<
-name. For example, consider the following expression:
+name. For example, consider the following attribute name:
 
 =over
 
 =item *
 
-C<order.customerInfo.LastName = "Smith" OR order.customerInfo.LastName
-= "Jones">
+C<Percentile>
 
 =back
 
-Now suppose that you specified the following for
+The name of this attribute conflicts with a reserved word, so it cannot
+be used directly in an expression. (For the complete list of reserved
+words, go to Reserved Words in the I<Amazon DynamoDB Developer Guide>).
+To work around this, you could specify the following for
 I<ExpressionAttributeNames>:
 
 =over
@@ -601,7 +602,8 @@ C<{"
 
 =back
 
-The expression can now be simplified as follows:
+You could then use this substitution in an expression, as in this
+example:
 
 =over
 
@@ -610,6 +612,9 @@ The expression can now be simplified as follows:
 C<
 
 =back
+
+Tokens that begin with the B<:> character are I<expression attribute
+values>, which are placeholders for the actual value at runtime.
 
 For more information on expression attribute names, go to Accessing
 Item Attributes in the I<Amazon DynamoDB Developer Guide>.
@@ -665,8 +670,8 @@ The primary key of the item to be updated. Each element consists of an
 attribute name and a value for that attribute.
 
 For the primary key, you must provide all of the attributes. For
-example, with a hash type primary key, you only need to specify the
-hash attribute. For a hash-and-range type primary key, you must specify
+example, with a hash type primary key, you only need to provide the
+hash attribute. For a hash-and-range type primary key, you must provide
 both the hash attribute and the range attribute.
 
 

@@ -108,7 +108,7 @@ C<ALL> - All of the table attributes are projected into the index.
 
 I<NonKeyAttributes> - A list of one or more non-key attribute names
 that are projected into the secondary index. The total count of
-attributes specified in I<NonKeyAttributes>, summed across all of the
+attributes provided in I<NonKeyAttributes>, summed across all of the
 secondary indexes, must not exceed 20. If you project the same
 attribute into two different indexes, this counts as two distinct
 attributes when determining the total.
@@ -155,11 +155,11 @@ C<RANGE>.
 
 =back
 
-For a primary key that consists of a hash attribute, you must specify
+For a primary key that consists of a hash attribute, you must provide
 exactly one element with a I<KeyType> of C<HASH>.
 
 For a primary key that consists of hash and range attributes, you must
-specify exactly two elements, in this order: The first element must
+provide exactly two elements, in this order: The first element must
 have a I<KeyType> of C<HASH>, and the second element must have a
 I<KeyType> of C<RANGE>.
 
@@ -234,7 +234,7 @@ C<ALL> - All of the table attributes are projected into the index.
 
 I<NonKeyAttributes> - A list of one or more non-key attribute names
 that are projected into the secondary index. The total count of
-attributes specified in I<NonKeyAttributes>, summed across all of the
+attributes provided in I<NonKeyAttributes>, summed across all of the
 secondary indexes, must not exceed 20. If you project the same
 attribute into two different indexes, this counts as two distinct
 attributes when determining the total.
