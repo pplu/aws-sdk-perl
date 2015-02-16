@@ -19,7 +19,8 @@ Paws::IAM::GetAccountSummaryResponse
 
   
 
-A set of key value pairs containing account-level information.
+A set of key value pairs containing information about IAM entity usage
+and IAM quotas.
 
 C<SummaryMap> contains the following keys:
 
@@ -27,106 +28,213 @@ C<SummaryMap> contains the following keys:
 
 =item *
 
-C<AccessKeysPerUserQuota> - Maximum number of active access keys
-allowed per IAM user
+B<AccessKeysPerUserQuota>
+
+The maximum number of active access keys allowed for each IAM user.
 
 =item *
 
-C<AccountAccessKeysPresent> - 1 if the root account has an access key,
-0 otherwise
+B<AccountAccessKeysPresent>
+
+This value is 1 if the AWS account (root) has an access key, otherwise
+it is 0.
 
 =item *
 
-C<AccountMFAEnabled> - 1 if the root account has an MFA device assigned
-to it, 0 otherwise
+B<AccountMFAEnabled>
+
+This value is 1 if the AWS account (root) has an MFA device assigned,
+otherwise it is 0.
 
 =item *
 
-C<AccountSigningCertificatesPresent> - 1 if the root account has a
-signing certificate, 0 otherwise
+B<AccountSigningCertificatesPresent>
+
+This value is 1 if the AWS account (root) has a signing certificate,
+otherwise it is 0.
 
 =item *
 
-C<AssumeRolePolicySizeQuota> - Maximum allowed size for assume role
-policy documents (trust policies), in non-whitespace characters
+B<AssumeRolePolicySizeQuota>
+
+The maximum allowed size for assume role policy documents (trust
+policies), in non-whitespace characters.
 
 =item *
 
-C<GroupPolicySizeQuota> - Maximum allowed size for IAM group policy
-documents, in non-whitespace characters
+B<AttachedPoliciesPerGroupQuota>
+
+The maximum number of managed policies that can be attached to an IAM
+group.
 
 =item *
 
-C<Groups> - Number of IAM groups in the AWS account
+B<AttachedPoliciesPerRoleQuota>
+
+The maximum number of managed policies that can be attached to an IAM
+role.
 
 =item *
 
-C<GroupsPerUserQuota> - Maximum number of IAM groups each IAM user can
-belong to
+B<AttachedPoliciesPerUserQuota>
+
+The maximum number of managed policies that can be attached to an IAM
+user.
 
 =item *
 
-C<GroupsQuota> - Maximum number of IAM groups allowed in the AWS
-account
+B<GroupPolicySizeQuota>
+
+The maximum allowed size for the aggregate of all inline policies
+embedded in an IAM group, in non-whitespace characters.
 
 =item *
 
-C<InstanceProfiles> - Number of instance profiles in the AWS account
+B<Groups>
+
+The number of IAM groups in the AWS account.
 
 =item *
 
-C<InstanceProfilesQuota> - Maximum number of instance profiles allowed
-in the AWS account
+B<GroupsPerUserQuota>
+
+The maximum number of IAM groups each IAM user can belong to.
 
 =item *
 
-C<MFADevices> - Number of MFA devices, either assigned or unassigned
+B<GroupsQuota>
+
+The maximum number of IAM groups allowed in the AWS account.
 
 =item *
 
-C<MFADevicesInUse> - Number of MFA devices that have been assigned to
-an IAM user or to the root account
+B<InstanceProfiles>
+
+The number of instance profiles in the AWS account.
 
 =item *
 
-C<RolePolicySizeQuota> - Maximum allowed size for IAM role policy
-documents (permissions policies), in non-whitespace characters
+B<InstanceProfilesQuota>
+
+The maximum number of instance profiles allowed in the AWS account.
 
 =item *
 
-C<Roles> - Number of roles IAM in the AWS account
+B<MFADevices>
+
+The number of MFA devices in the AWS account, including those assigned
+and unassigned.
 
 =item *
 
-C<RolesQuota> - Maximum number of IAM roles allowed in the AWS account
+B<MFADevicesInUse>
+
+The number of MFA devices that have been assigned to an IAM user or to
+the AWS account (root).
 
 =item *
 
-C<UserPolicySizeQuota> - Maximum allowed size for IAM user policy
-documents, in non-whitespace characters
+B<Policies>
+
+The number of customer managed policies in the AWS account.
 
 =item *
 
-C<Users> - Number of IAM users in the AWS account
+B<PoliciesQuota>
+
+The maximum number of customer managed policies allowed in the AWS
+account.
 
 =item *
 
-C<UsersQuota> - Maximum number of IAM users allowed in the AWS account
+B<PolicySizeQuota>
+
+The maximum allowed size of a customer managed policy, in
+non-whitespace characters.
 
 =item *
 
-C<ServerCertificates> - Number of server certificates in the AWS
-account
+B<PolicyVersionsInUse>
+
+The number of managed policies that are attached to IAM users, groups,
+or roles in the AWS account.
 
 =item *
 
-C<ServerCertificatesQuota> - Maximum number of server certificates
-allowed in the AWS account
+B<PolicyVersionsInUseQuota>
+
+The maximum number of managed policies that can be attached to IAM
+users, groups, or roles in the AWS account.
 
 =item *
 
-C<SigningCertificatesPerUserQuota> - Maximum number of X509 signing
-certificates allowed per IAM user
+B<Providers>
+
+The number of identity providers in the AWS account.
+
+=item *
+
+B<RolePolicySizeQuota>
+
+The maximum allowed size for the aggregate of all inline policies
+(access policies, not the trust policy) embedded in an IAM role, in
+non-whitespace characters.
+
+=item *
+
+B<Roles>
+
+The number of IAM roles in the AWS account.
+
+=item *
+
+B<RolesQuota>
+
+The maximum number of IAM roles allowed in the AWS account.
+
+=item *
+
+B<ServerCertificates>
+
+The number of server certificates in the AWS account.
+
+=item *
+
+B<ServerCertificatesQuota>
+
+The maximum number of server certificates allowed in the AWS account.
+
+=item *
+
+B<SigningCertificatesPerUserQuota>
+
+The maximum number of X.509 signing certificates allowed for each IAM
+user.
+
+=item *
+
+B<UserPolicySizeQuota>
+
+The maximum allowed size for the aggregate of all inline policies
+embedded in an IAM user, in non-whitespace characters.
+
+=item *
+
+B<Users>
+
+The number of IAM users in the AWS account.
+
+=item *
+
+B<UsersQuota>
+
+The maximum number of IAM users allowed in the AWS account.
+
+=item *
+
+B<VersionsPerPolicyQuota>
+
+The maximum number of policy versions allowed for each managed policy.
 
 =back
 

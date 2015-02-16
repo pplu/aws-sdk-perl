@@ -1,12 +1,12 @@
 
-package Paws::IAM::DeleteGroupPolicy {
+package Paws::IAM::AttachGroupPolicy {
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyName => (is => 'ro', isa => 'Str', required => 1);
+  has PolicyArn => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteGroupPolicy');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachGroupPolicy');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
@@ -16,19 +16,19 @@ package Paws::IAM::DeleteGroupPolicy {
 
 =head1 NAME
 
-Paws::IAM::DeleteGroupPolicy - Arguments for method DeleteGroupPolicy on Paws::IAM
+Paws::IAM::AttachGroupPolicy - Arguments for method AttachGroupPolicy on Paws::IAM
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteGroupPolicy on the 
+This class represents the parameters used for calling the method AttachGroupPolicy on the 
 AWS Identity and Access Management service. Use the attributes of this class
-as arguments to method DeleteGroupPolicy.
+as arguments to method AttachGroupPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteGroupPolicy.
+You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AttachGroupPolicy.
 
 As an example:
 
-  $service_obj->DeleteGroupPolicy(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->AttachGroupPolicy(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
@@ -38,8 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name (friendly name, not ARN) identifying the group that the policy
-is embedded in.
+The name (friendly name, not ARN) of the group to attach the policy to.
 
 
 
@@ -50,26 +49,15 @@ is embedded in.
 
 
 
-=head2 B<REQUIRED> PolicyName => Str
+=head2 B<REQUIRED> PolicyArn => Str
 
   
-
-The name identifying the policy document to delete.
-
-
-
-
-
-
-
-
-
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteGroupPolicy in Paws::IAM
+This class forms part of L<Paws>, and documents parameters for AttachGroupPolicy in Paws::IAM
 
 =head1 BUGS and CONTRIBUTIONS
 

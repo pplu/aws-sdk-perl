@@ -1,12 +1,12 @@
 
-package Paws::IAM::DeleteUserPolicy {
+package Paws::IAM::DetachUserPolicy {
   use Moose;
-  has PolicyName => (is => 'ro', isa => 'Str', required => 1);
+  has PolicyArn => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteUserPolicy');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachUserPolicy');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
@@ -16,45 +16,34 @@ package Paws::IAM::DeleteUserPolicy {
 
 =head1 NAME
 
-Paws::IAM::DeleteUserPolicy - Arguments for method DeleteUserPolicy on Paws::IAM
+Paws::IAM::DetachUserPolicy - Arguments for method DetachUserPolicy on Paws::IAM
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteUserPolicy on the 
+This class represents the parameters used for calling the method DetachUserPolicy on the 
 AWS Identity and Access Management service. Use the attributes of this class
-as arguments to method DeleteUserPolicy.
+as arguments to method DetachUserPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteUserPolicy.
+You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DetachUserPolicy.
 
 As an example:
 
-  $service_obj->DeleteUserPolicy(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->DetachUserPolicy(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> PolicyName => Str
+=head2 B<REQUIRED> PolicyArn => Str
 
   
-
-The name identifying the policy document to delete.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> UserName => Str
 
   
 
-The name (friendly name, not ARN) identifying the user that the policy
-is embedded in.
+The name (friendly name, not ARN) of the user to detach the policy
+from.
 
 
 
@@ -69,7 +58,7 @@ is embedded in.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteUserPolicy in Paws::IAM
+This class forms part of L<Paws>, and documents parameters for DetachUserPolicy in Paws::IAM
 
 =head1 BUGS and CONTRIBUTIONS
 
