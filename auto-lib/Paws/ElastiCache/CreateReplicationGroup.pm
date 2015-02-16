@@ -22,6 +22,7 @@ package Paws::ElastiCache::CreateReplicationGroup {
   has SnapshotName => (is => 'ro', isa => 'Str');
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -60,10 +61,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Specifies whether a read-only replica will be automatically promoted to
 read/write primary if the existing primary fails.
 
-If C<true>, automatic failover is enabled for this replication group.
-If C<false>, automatic failover is disabled for this replication group.
+If C<true>, Multi-AZ is enabled for this replication group. If
+C<false>, Multi-AZ is disabled for this replication group.
 
 Default: false
+
+ElastiCache Multi-AZ replication groups is not supported on:
+
+=over
+
+=item * Redis versions earlier than 2.8.6.
+
+=item * T1 and T2 cache node types.
+
+=back
 
 
 
@@ -78,11 +89,7 @@ Default: false
 
   
 
-Determines whether minor engine upgrades will be applied automatically
-to the node group during the maintenance window. A value of C<true>
-allows these upgrades to occur; C<false> disables automatic upgrades.
-
-Default: C<true>
+This parameter is currently disabled.
 
 
 
@@ -233,7 +240,7 @@ Default: redis
 
 The version number of the cach engine to be used for the cache clusters
 in this replication group. To view the supported cache engine versions,
-use the I<DescribeCacheEngineVersions> operation.
+use the I<DescribeCacheEngineVersions> action.
 
 
 
@@ -251,6 +258,8 @@ use the I<DescribeCacheEngineVersions> operation.
 The Amazon Resource Name (ARN) of the Amazon Simple Notification
 Service (SNS) topic to which notifications will be sent.
 
+The Amazon SNS topic owner must be the same as the cache cluster owner.
+
 
 
 
@@ -267,8 +276,8 @@ Service (SNS) topic to which notifications will be sent.
 The number of cache clusters this replication group will initially
 have.
 
-If I<AutomaticFailover> is C<enabled>, the value of this parameter must
-be at least 2.
+If I<Multi-AZ> is C<enabled>, the value of this parameter must be at
+least 2.
 
 The maximum permitted value for I<NumCacheClusters> is 6 (primary plus
 5 replicas). If you need to exceed this limit, please fill out the
@@ -308,12 +317,19 @@ A list of EC2 availability zones in which the replication group's cache
 clusters will be created. The order of the availability zones in the
 list is not important.
 
+If you are creating your replication group in an Amazon VPC
+(recommended), you can only locate cache clusters in availability zones
+associated with the subnets in the selected subnet group.
+
+The number of availability zones listed must equal the value of
+I<NumCacheClusters>.
+
 Default: system chosen availability zones.
 
 Example: One Redis cache cluster in each of three availability zones.
-PreferredAvailabilityZones.member.1=us-east-1a
-PreferredAvailabilityZones.member.2=us-east-1c
-PreferredAvailabilityZones.member.3=us-east-1d
+PreferredAvailabilityZones.member.1=us-west-2a
+PreferredAvailabilityZones.member.2=us-west-2c
+PreferredAvailabilityZones.member.3=us-west-2c
 
 
 
@@ -506,6 +522,22 @@ automatically choose an appropriate time range.
 
 B<Note:> This parameter is only valid if the C<Engine> parameter is
 C<redis>.
+
+
+
+
+
+
+
+
+
+
+=head2 Tags => ArrayRef[Paws::ElastiCache::Tag]
+
+  
+
+A list of cost allocation tags to be added to this resource. A tag is a
+key-value pair. A tag key must be accompanied by a tag value.
 
 
 
