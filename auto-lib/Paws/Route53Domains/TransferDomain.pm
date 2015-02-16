@@ -7,7 +7,7 @@ package Paws::Route53Domains::TransferDomain {
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has DurationInYears => (is => 'ro', isa => 'Int', required => 1);
   has IdnLangCode => (is => 'ro', isa => 'Str');
-  has Nameservers => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::Nameserver]', required => 1);
+  has Nameservers => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::Nameserver]');
   has PrivacyProtectAdminContact => (is => 'ro', isa => 'Bool');
   has PrivacyProtectRegistrantContact => (is => 'ro', isa => 'Bool');
   has PrivacyProtectTechContact => (is => 'ro', isa => 'Bool');
@@ -178,7 +178,7 @@ Reserved for future use.
 
 
 
-=head2 B<REQUIRED> Nameservers => ArrayRef[Paws::Route53Domains::Nameserver]
+=head2 Nameservers => ArrayRef[Paws::Route53Domains::Nameserver]
 
   
 
@@ -187,6 +187,8 @@ Contains details for the host and glue IP addresses.
 Type: Complex
 
 Children: C<GlueIps>, C<Name>
+
+Required: No
 
 
 
