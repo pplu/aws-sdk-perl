@@ -17,6 +17,11 @@ package Paws::Route53Domains {
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::CheckDomainAvailability', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteTagsForDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::DeleteTagsForDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisableDomainAutoRenew {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::DisableDomainAutoRenew', @_);
@@ -57,6 +62,11 @@ package Paws::Route53Domains {
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::ListOperations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::ListTagsForDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RegisterDomain {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::RegisterDomain', @_);
@@ -85,6 +95,11 @@ package Paws::Route53Domains {
   sub UpdateDomainNameservers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::UpdateDomainNameservers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateTagsForDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::UpdateTagsForDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
 }
@@ -146,6 +161,29 @@ determine the availability of the domain name.
 
 
 
+=head2 DeleteTagsForDomain()
+
+  Arguments described in: L<Paws::Route53Domains::DeleteTagsForDomain>
+
+  Returns: L<Paws::Route53Domains::DeleteTagsForDomainResponse>
+
+  
+
+This operation deletes the specified tags for a domain.
+
+All tag operations are eventually consistent; subsequent operations may
+not immediately represent all issued operations.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DisableDomainAutoRenew()
 
   Arguments described in: L<Paws::Route53Domains::DisableDomainAutoRenew>
@@ -156,6 +194,11 @@ determine the availability of the domain name.
 
 This operation disables automatic renewal of domain registration for
 the specified domain.
+
+Caution! Amazon Route 53 doesn't have a manual renewal process, so if
+you disable automatic renewal, registration for the domain will not be
+renewed when the expiration date passes, and you will lose control of
+the domain name.
 
 
 
@@ -207,11 +250,10 @@ renewing your domain registration is billed to your AWS account.
 
 The period during which you can renew a domain name varies by TLD. For
 a list of TLDs and their renewal policies, see "Renewal, restoration,
-and deletion times"
-(http://wiki.gandi.net/en/domains/renew
-on the website for our registrar partner, Gandi. Route 53 requires that
-you renew before the end of the renewal period that is listed on the
-Gandi website so we can complete processing before the deadline.
+and deletion times" on the website for our registrar partner, Gandi.
+Route 53 requires that you renew before the end of the renewal period
+that is listed on the Gandi website so we can complete processing
+before the deadline.
 
 
 
@@ -332,6 +374,30 @@ complete.
 
 
 
+=head2 ListTagsForDomain()
+
+  Arguments described in: L<Paws::Route53Domains::ListTagsForDomain>
+
+  Returns: L<Paws::Route53Domains::ListTagsForDomainResponse>
+
+  
+
+This operation returns all of the tags that are associated with the
+specified domain.
+
+All tag operations are eventually consistent; subsequent operations may
+not immediately represent all issued operations.
+
+
+
+
+
+
+
+
+
+
+
 =head2 RegisterDomain()
 
   Arguments described in: L<Paws::Route53Domains::RegisterDomain>
@@ -412,38 +478,30 @@ registrar.
   
 
 This operation transfers a domain from another registrar to Amazon
-Route 53. Domains are registered by the AWS registrar, Gandi upon
-transfer.
+Route 53. When the transfer is complete, the domain is registered with
+the AWS registrar partner, Gandi.
 
-To transfer a domain, you need to meet all the domain transfer
-criteria, including the following:
+For transfer requirements, a detailed procedure, and information about
+viewing the status of a domain transfer, see Transferring Registration
+for a Domain to Amazon Route 53 in the Amazon Route 53 Developer Guide.
 
-=over
+If the registrar for your domain is also the DNS service provider for
+the domain, we highly recommend that you consider transferring your DNS
+service to Amazon Route 53 or to another DNS service provider before
+you transfer your registration. Some registrars provide free DNS
+service when you purchase a domain registration. When you transfer the
+registration, the previous registrar will not renew your domain
+registration and could end your DNS service at any time.
 
-=item * You must supply nameservers to transfer a domain.
-
-=item * You must disable the domain transfer lock (if any) before
-transferring the domain.
-
-=item * A minimum of 60 days must have elapsed since the domain's
-registration or last transfer.
-
-=back
-
-We recommend you use the Amazon Route 53 as the DNS service for your
-domain. You can create a hosted zone in Amazon Route 53 for your
-current domain before transferring your domain.
-
-Note that upon transfer, the domain duration is extended for a year if
-not otherwise specified. Autorenew is enabled by default.
+Caution! If the registrar for your domain is also the DNS service
+provider for the domain and you don't transfer DNS service to another
+provider, your website, email, and the web applications associated with
+the domain might become unavailable.
 
 If the transfer is successful, this method returns an operation ID that
 you can use to track the progress and completion of the action. If the
-request is not completed successfully, the domain registrant will be
+transfer doesn't complete successfully, the domain registrant will be
 notified by email.
-
-Transferring domains charges your AWS account an amount based on the
-top-level domain. For more information, see Amazon Route 53 Pricing.
 
 
 
@@ -529,6 +587,29 @@ If successful, this operation returns an operation ID that you can use
 to track the progress and completion of the action. If the request is
 not completed successfully, the domain registrant will be notified by
 email.
+
+
+
+
+
+
+
+
+
+
+
+=head2 UpdateTagsForDomain()
+
+  Arguments described in: L<Paws::Route53Domains::UpdateTagsForDomain>
+
+  Returns: L<Paws::Route53Domains::UpdateTagsForDomainResponse>
+
+  
+
+This operation adds or updates tags for a specified domain.
+
+All tag operations are eventually consistent; subsequent operations may
+not immediately represent all issued operations.
 
 
 
