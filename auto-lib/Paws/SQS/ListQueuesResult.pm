@@ -2,7 +2,7 @@
 package Paws::SQS::ListQueuesResult {
   use Moose;
   with 'Paws::API::ResultParser';
-  has QueueUrls => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'QueueUrl');
+  has QueueUrls => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'QueueUrl', traits => ['Unwrapped',]);
 
 }
 1;

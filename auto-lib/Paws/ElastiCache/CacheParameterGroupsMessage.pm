@@ -2,7 +2,7 @@
 package Paws::ElastiCache::CacheParameterGroupsMessage {
   use Moose;
   with 'Paws::API::ResultParser';
-  has CacheParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheParameterGroup]', traits => ['Unwrapped'], xmlname => 'CacheParameterGroup');
+  has CacheParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheParameterGroup]', xmlname => 'CacheParameterGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
 }

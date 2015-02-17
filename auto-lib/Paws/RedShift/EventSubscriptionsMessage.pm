@@ -2,7 +2,7 @@
 package Paws::RedShift::EventSubscriptionsMessage {
   use Moose;
   with 'Paws::API::ResultParser';
-  has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::EventSubscription]', traits => ['Unwrapped'], xmlname => 'EventSubscription');
+  has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::EventSubscription]', xmlname => 'EventSubscription', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
 }

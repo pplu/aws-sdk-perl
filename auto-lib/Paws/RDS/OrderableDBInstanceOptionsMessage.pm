@@ -3,7 +3,7 @@ package Paws::RDS::OrderableDBInstanceOptionsMessage {
   use Moose;
   with 'Paws::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
-  has OrderableDBInstanceOptions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OrderableDBInstanceOption]', traits => ['Unwrapped'], xmlname => 'OrderableDBInstanceOption');
+  has OrderableDBInstanceOptions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OrderableDBInstanceOption]', xmlname => 'OrderableDBInstanceOption', traits => ['Unwrapped',]);
 
 }
 1;

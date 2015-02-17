@@ -2,7 +2,7 @@
 package Paws::ElastiCache::EventsMessage {
   use Moose;
   with 'Paws::API::ResultParser';
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Event]', traits => ['Unwrapped'], xmlname => 'Event');
+  has Events => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Event]', xmlname => 'Event', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
 }
