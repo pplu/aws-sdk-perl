@@ -3,7 +3,7 @@ package Paws::S3::PutBucketLogging {
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
   has BucketLoggingStatus => (is => 'ro', isa => 'Paws::S3::BucketLoggingStatus', required => 1);
-  has ContentMD5 => (is => 'ro', isa => 'Str');
+  has ContentMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-MD5' );
 
   use MooseX::ClassAttribute;
 

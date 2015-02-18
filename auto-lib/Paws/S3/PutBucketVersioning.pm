@@ -2,8 +2,8 @@
 package Paws::S3::PutBucketVersioning {
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has ContentMD5 => (is => 'ro', isa => 'Str');
-  has MFA => (is => 'ro', isa => 'Str');
+  has ContentMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-MD5' );
+  has MFA => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-mfa' );
   has VersioningConfiguration => (is => 'ro', isa => 'Paws::S3::VersioningConfiguration', required => 1);
 
   use MooseX::ClassAttribute;

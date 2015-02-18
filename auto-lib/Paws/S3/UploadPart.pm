@@ -3,13 +3,13 @@ package Paws::S3::UploadPart {
   use Moose;
   has Body => (is => 'ro', isa => 'Str');
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has ContentLength => (is => 'ro', isa => 'Int');
-  has ContentMD5 => (is => 'ro', isa => 'Str');
+  has ContentLength => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'Content-Length' );
+  has ContentMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-MD5' );
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has PartNumber => (is => 'ro', isa => 'Int', required => 1);
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
-  has SSECustomerKey => (is => 'ro', isa => 'Str');
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
+  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm' );
+  has SSECustomerKey => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key' );
+  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5' );
   has UploadId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -18,7 +18,7 @@ package Paws::S3::UploadPart {
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::UploadPartOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UploadPartResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 

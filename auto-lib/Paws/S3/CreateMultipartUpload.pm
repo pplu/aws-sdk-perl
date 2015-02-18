@@ -1,27 +1,27 @@
 
 package Paws::S3::CreateMultipartUpload {
   use Moose;
-  has ACL => (is => 'ro', isa => 'Str');
+  has ACL => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-acl' );
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has CacheControl => (is => 'ro', isa => 'Str');
-  has ContentDisposition => (is => 'ro', isa => 'Str');
-  has ContentEncoding => (is => 'ro', isa => 'Str');
-  has ContentLanguage => (is => 'ro', isa => 'Str');
-  has ContentType => (is => 'ro', isa => 'Str');
-  has Expires => (is => 'ro', isa => 'Str');
-  has GrantFullControl => (is => 'ro', isa => 'Str');
-  has GrantRead => (is => 'ro', isa => 'Str');
-  has GrantReadACP => (is => 'ro', isa => 'Str');
-  has GrantWriteACP => (is => 'ro', isa => 'Str');
+  has CacheControl => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Cache-Control' );
+  has ContentDisposition => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Disposition' );
+  has ContentEncoding => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Encoding' );
+  has ContentLanguage => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Language' );
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type' );
+  has Expires => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Expires' );
+  has GrantFullControl => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-full-control' );
+  has GrantRead => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-read' );
+  has GrantReadACP => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-read-acp' );
+  has GrantWriteACP => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-write-acp' );
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata');
-  has ServerSideEncryption => (is => 'ro', isa => 'Str');
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
-  has SSECustomerKey => (is => 'ro', isa => 'Str');
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str');
-  has StorageClass => (is => 'ro', isa => 'Str');
-  has WebsiteRedirectLocation => (is => 'ro', isa => 'Str');
+  has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption' );
+  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm' );
+  has SSECustomerKey => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key' );
+  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5' );
+  has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id' );
+  has StorageClass => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-storage-class' );
+  has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-website-redirect-location' );
 
   use MooseX::ClassAttribute;
 
@@ -29,7 +29,7 @@ package Paws::S3::CreateMultipartUpload {
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}?uploads');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::CreateMultipartUploadOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateMultipartUploadResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 

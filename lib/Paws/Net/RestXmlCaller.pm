@@ -2,6 +2,7 @@ package Paws::Net::RestXmlCaller {
   use Moose::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime); 
+  use URI::Template;
 
   sub array_flatten_string {
     my $self = shift;
@@ -48,18 +49,32 @@ package Paws::Net::RestXmlCaller {
     return %p;
   }
 
+  sub _call_uri {
+    my ($self, $call) = @_;
+    my $uri_template = $call->meta->name->_api_uri;
+    my $t = URI::Template->new( $uri_template );
+    my $vars = { map { $_ => $call->$_ } $t->variables };
+    return $t->process_to_string($vars);
+  }
+
   sub prepare_request_for_call {
     my ($self, $call) = @_;
 
     my $request = Paws::Net::APIRequest->new();
+    my $uri = $self->_call_uri($call);
 
-    $request->url($self->_api_endpoint);
-    $request->method('POST');
+use Data::Dumper;
+print Dumper('URI', $uri);
+    $request->uri($uri);
 
-    $request->parameters({ Action => $call->_api_call, 
-                           Version   => $self->version,
+    $request->url($self->_api_endpoint($call) . $uri);
+    $request->method($call->_api_method);
+
+    $request->parameters({ Version   => $self->version,
                            $self->_to_querycaller_params($call) 
     });
+
+    #$request->headers({});
 
     $request->generate_content_from_parameters;
 

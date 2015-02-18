@@ -26,7 +26,7 @@ package [% c.api %]::[% operation.name %] {
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
-  [%- IF (member.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% member.locationName %]' [% END %]
+  [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName %]' [% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
   use MooseX::ClassAttribute;
@@ -35,7 +35,7 @@ package [% c.api %]::[% operation.name %] {
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '[% operation.http.requestUri %]');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => '[% operation.http.method %]');
   class_has _returns => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% c.api %]::[% c.shapename_for_operation_output(op_name) %]'[% END %]);
-  class_has _result_key => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% op_name %]Result'[% END %]);
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 [% c.class_documentation_template | eval %]
@@ -51,8 +51,8 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
-  [%- IF (member.members.xmlname) %], traits => ['Unwrapped'], xmlname => '[% member.members.xmlname %]'[% END %]
-  [%- IF (member.xmlname) %], traits => ['Unwrapped'], xmlname => '[% member.xmlname %]'[% END %]
+  [%- IF (member.member.locationName) %], traits => ['Unwrapped'], xmlname => '[% member.member.locationName %]'[% END %]
+  [%- IF (member.locationName) %], traits => ['Unwrapped'], xmlname => '[% member.locationName %]'[% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
 }

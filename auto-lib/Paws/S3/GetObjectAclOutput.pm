@@ -2,7 +2,7 @@
 package Paws::S3::GetObjectAclOutput {
   use Moose;
   with 'Paws::API::ResultParser';
-  has Grants => (is => 'ro', isa => 'ArrayRef[Paws::S3::Grant]');
+  has Grants => (is => 'ro', isa => 'ArrayRef[Paws::S3::Grant]', traits => ['Unwrapped'], xmlname => 'Grant');
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
 
 }

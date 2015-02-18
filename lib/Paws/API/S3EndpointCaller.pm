@@ -1,4 +1,4 @@
-package Paws::API::SingleEndpointCaller {
+package Paws::API::S3EndpointCaller {
   use Moose::Role;
   requires 'service';
 
@@ -9,13 +9,17 @@ package Paws::API::SingleEndpointCaller {
   }
 
   sub endpoint_host {
-    my $self = shift;
-    return sprintf '%s.amazonaws.com', $self->service;
+    my ($self, $call) = @_;
+    if ($call) {
+      return sprintf '%s.%s.amazonaws.com', $call->Bucket, $self->service;
+    } else {
+      return sprintf '%s.amazonaws.com', $self->service;
+    }
   }
 
   sub _api_endpoint {
     my $self = shift;
-    return sprintf '%s://%s', 'https', $self->endpoint_host;
+    return sprintf '%s://%s', 'https', $self->endpoint_host(@_);
   }
 }
 

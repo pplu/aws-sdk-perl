@@ -3,7 +3,7 @@ package Paws::S3::DeleteObject {
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
   has Key => (is => 'ro', isa => 'Str', required => 1);
-  has MFA => (is => 'ro', isa => 'Str');
+  has MFA => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-mfa' );
   has VersionId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -12,7 +12,7 @@ package Paws::S3::DeleteObject {
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::DeleteObjectOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteObjectResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 

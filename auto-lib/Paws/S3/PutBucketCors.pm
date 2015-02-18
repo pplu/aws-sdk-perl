@@ -2,7 +2,7 @@
 package Paws::S3::PutBucketCors {
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has ContentMD5 => (is => 'ro', isa => 'Str');
+  has ContentMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-MD5' );
   has CORSConfiguration => (is => 'ro', isa => 'Paws::S3::CORSConfiguration');
 
   use MooseX::ClassAttribute;

@@ -2,15 +2,15 @@
 package Paws::S3::HeadObject {
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has IfMatch => (is => 'ro', isa => 'Str');
-  has IfModifiedSince => (is => 'ro', isa => 'Str');
-  has IfNoneMatch => (is => 'ro', isa => 'Str');
-  has IfUnmodifiedSince => (is => 'ro', isa => 'Str');
+  has IfMatch => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-Match' );
+  has IfModifiedSince => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-Modified-Since' );
+  has IfNoneMatch => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-None-Match' );
+  has IfUnmodifiedSince => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-Unmodified-Since' );
   has Key => (is => 'ro', isa => 'Str', required => 1);
-  has Range => (is => 'ro', isa => 'Str');
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
-  has SSECustomerKey => (is => 'ro', isa => 'Str');
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
+  has Range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Range' );
+  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm' );
+  has SSECustomerKey => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key' );
+  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5' );
   has VersionId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -19,7 +19,7 @@ package Paws::S3::HeadObject {
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'HEAD');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::HeadObjectOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'HeadObjectResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 

@@ -12,7 +12,7 @@ package Paws::S3::CompleteMultipartUpload {
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::CompleteMultipartUploadOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CompleteMultipartUploadResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 
