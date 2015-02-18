@@ -22,6 +22,7 @@ package Paws::ElastiCache::CreateCacheCluster {
   has SnapshotName => (is => 'ro', isa => 'Str');
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -57,11 +58,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-Determines whether minor engine upgrades will be applied automatically
-to the node group during the maintenance window. A value of C<true>
-allows these upgrades to occur; C<false> disables automatic upgrades.
-
-Default: C<true>
+This parameter is currently disabled.
 
 
 
@@ -269,7 +266,7 @@ C<memcached> | C<redis>
 
 The version number of the cache engine to be used for this cache
 cluster. To view the supported cache engine versions, use the
-I<DescribeCacheEngineVersions> operation.
+I<DescribeCacheEngineVersions> action.
 
 
 
@@ -287,6 +284,8 @@ I<DescribeCacheEngineVersions> operation.
 The Amazon Resource Name (ARN) of the Amazon Simple Notification
 Service (SNS) topic to which notifications will be sent.
 
+The Amazon SNS topic owner must be the same as the cache cluster owner.
+
 
 
 
@@ -302,12 +301,12 @@ Service (SNS) topic to which notifications will be sent.
 
 The initial number of cache nodes that the cache cluster will have.
 
-For Memcached, valid values are between 1 and 20. If you need to exceed
-this limit, please fill out the ElastiCache Limit Increase Request form
-at http://aws.amazon.com/contact-us/elasticache-node-limit-request/.
+For clusters running Redis, this value must be 1. For clusters running
+Memcached, this value must be between 1 and 50.
 
-For Redis, only single-node cache cluster are supported at this time,
-so the value for this parameter must be 1.
+If you need more than 50 nodes for your Memcached cluster, please fill
+out the ElastiCache Limit Increase Request form at
+http://aws.amazon.com/contact-us/elasticache-node-limit-request/.
 
 
 
@@ -364,6 +363,13 @@ The order of the zones in the list is not important.
 
 This option is only supported on Memcached.
 
+If you are creating your cache cluster in an Amazon VPC (recommended)
+you can only locate nodes in Availability Zones that are associated
+with the subnets in the selected subnet group.
+
+The number of Availability Zones listed must equal the value of
+C<NumCacheNodes>.
+
 If you want all the nodes in the same Availability Zone, use
 C<PreferredAvailabilityZone> instead, or repeat the Availability Zone
 multiple times in the list.
@@ -372,10 +378,10 @@ Default: System chosen Availability Zones.
 
 Example: One Memcached node in each of three different Availability
 Zones:
-C<PreferredAvailabilityZones.member.1=us-east-1a&PreferredAvailabilityZones.member.2=us-east-1b&PreferredAvailabilityZones.member.3=us-east-1d>
+C<PreferredAvailabilityZones.member.1=us-west-2a&PreferredAvailabilityZones.member.2=us-west-2b&PreferredAvailabilityZones.member.3=us-west-2c>
 
 Example: All three Memcached nodes in one Availability Zone:
-C<PreferredAvailabilityZones.member.1=us-east-1a&PreferredAvailabilityZones.member.2=us-east-1a&PreferredAvailabilityZones.member.3=us-east-1a>
+C<PreferredAvailabilityZones.member.1=us-west-2a&PreferredAvailabilityZones.member.2=us-west-2a&PreferredAvailabilityZones.member.3=us-west-2a>
 
 
 
@@ -414,10 +420,10 @@ to the specified replication group as a read replica; otherwise, the
 cache cluster will be a standalone primary that is not part of any
 replication group.
 
-If the specified replication group is Automatic Failover enabled and
-the availability zone is not specified, the cache cluster will be
-created in availability zones that provide the best spread of read
-replicas across availability zones.
+If the specified replication group is Multi-AZ enabled and the
+availability zone is not specified, the cache cluster will be created
+in availability zones that provide the best spread of read replicas
+across availability zones.
 
 B<Note:> This parameter is only valid if the C<Engine> parameter is
 C<redis>.
@@ -530,6 +536,22 @@ automatically choose an appropriate time range.
 
 B<Note:> This parameter is only valid if the C<Engine> parameter is
 C<redis>.
+
+
+
+
+
+
+
+
+
+
+=head2 Tags => ArrayRef[Paws::ElastiCache::Tag]
+
+  
+
+A list of cost allocation tags to be added to this resource. A tag is a
+key-value pair. A tag key must be accompanied by a tag value.
 
 
 

@@ -81,12 +81,7 @@ Default: C<false>
 
   
 
-If C<true>, then minor engine upgrades will be applied automatically to
-the cache cluster during the maintenance window.
-
-Valid values: C<true> | C<false>
-
-Default: C<true>
+This parameter is currently disabled.
 
 
 
@@ -108,6 +103,16 @@ Availability Zones.
 Valid values: C<single-az> | C<cross-az>.
 
 This option is only supported for Memcached cache clusters.
+
+You cannot specify C<single-az> if the Memcached cache cluster already
+has cache nodes in different Availability Zones. If C<cross-az> is
+specified, existing Memcached nodes remain in their current
+Availability Zone.
+
+Only newly created nodes will be located in different Availability
+Zones. For instructions on how to move existing Memcached nodes to
+different Availability Zones, see the B<Availability Zone
+Considerations> section of Cache Node Considerations for Memcached.
 
 
 
@@ -140,7 +145,7 @@ string.
 
 A list of cache node IDs to be removed. A node ID is a numeric
 identifier (0001, 0002, etc.). This parameter is only valid when
-NumCacheNodes is less than the existing number of cache nodes. The
+I<NumCacheNodes> is less than the existing number of cache nodes. The
 number of cache node IDs supplied in this parameter must match the
 difference between the existing number of cache nodes in the cluster or
 pending cache nodes, whichever is greater, and the value of
@@ -221,7 +226,7 @@ The upgraded version of the cache engine to be run on the cache nodes.
 The list of Availability Zones where the new Memcached cache nodes will
 be created.
 
-This parameter is only valid when C<NumCacheNodes> in the request is
+This parameter is only valid when I<NumCacheNodes> in the request is
 greater than the sum of the number of active cache nodes and the number
 of cache nodes pending creation (which may be zero). The number of
 Availability Zones supplied in this list must match the cache nodes
@@ -266,7 +271,7 @@ B<Impact of new add/remove requests upon pending requests>
 
 Scenarios
 
-Pending Operation
+Pending action
 
 New Request
 
@@ -311,7 +316,7 @@ are performed immediately. If the new create request is B<Apply
 Immediately - No>, all creates are pending.
 
 Example:
-C<NewAvailabilityZones.member.1=us-east-1a&NewAvailabilityZones.member.2=us-east-1b&NewAvailabilityZones.member.3=us-east-1d>
+C<NewAvailabilityZones.member.1=us-west-2a&NewAvailabilityZones.member.2=us-west-2b&NewAvailabilityZones.member.3=us-west-2c>
 
 
 
@@ -328,6 +333,8 @@ C<NewAvailabilityZones.member.1=us-east-1a&NewAvailabilityZones.member.2=us-east
 
 The Amazon Resource Name (ARN) of the Amazon SNS topic to which
 notifications will be sent.
+
+The Amazon SNS topic owner must be same as the cache cluster owner.
 
 
 
@@ -372,8 +379,8 @@ If you are removing cache nodes, you must use the
 C<CacheNodeIdsToRemove> parameter to provide the IDs of the specific
 cache nodes to remove.
 
-For cache clusters running Redis, the value of C<NumCacheNodes>must be
-1.
+For clusters running Redis, this value must be 1. For clusters running
+Memcached, this value must be between 1 and 50.
 
 B<Note:>
 
@@ -395,7 +402,7 @@ previous pending action to add nodes. The customer can modify the
 previous pending action to add more nodes or explicitly cancel the
 pending request and retry the new request. To cancel pending actions to
 modify the number of cache nodes in a cluster, use the
-C<ModifyCacheCluster> request and set C<NumCacheNodes> equal to the
+C<ModifyCacheCluster> request and set I<NumCacheNodes> equal to the
 number of cache nodes currently in the cache cluster.
 
 

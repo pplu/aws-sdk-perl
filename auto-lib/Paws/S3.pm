@@ -257,62 +257,6 @@ package Paws::S3 {
     my $call_object = $self->new_with_coercions('Paws::S3::UploadPartCopy', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListAllMultipartUploads {
-    my $self = shift;
-
-    my $result = $self->ListMultipartUploads(@_);
-    my $array = [];
-    push @$array, @{ $result->ARRAY(0x40245b0) };
-
-    while ($result->ARRAY(0x235d118)) {
-      $result = $self->ListMultipartUploads(@_, ARRAY(0x4050278) => $result->ARRAY(0x235d118));
-      push @$array, @{ $result->ARRAY(0x40245b0) };
-    }
-
-    return 'Paws::S3::ListMultipartUploads'->_returns->new(ARRAY(0x40245b0) => $array);
-  }
-  sub ListAllObjects {
-    my $self = shift;
-
-    my $result = $self->ListObjects(@_);
-    my $array = [];
-    push @$array, @{ $result->ARRAY(0x40409c0) };
-
-    while ($result->NextMarker || Contents[-1].Key) {
-      $result = $self->ListObjects(@_, Marker => $result->NextMarker || Contents[-1].Key);
-      push @$array, @{ $result->ARRAY(0x40409c0) };
-    }
-
-    return 'Paws::S3::ListObjects'->_returns->new(ARRAY(0x40409c0) => $array);
-  }
-  sub ListAllObjectVersions {
-    my $self = shift;
-
-    my $result = $self->ListObjectVersions(@_);
-    my $array = [];
-    push @$array, @{ $result->ARRAY(0x401f520) };
-
-    while ($result->ARRAY(0x3e614f0)) {
-      $result = $self->ListObjectVersions(@_, ARRAY(0x414cd48) => $result->ARRAY(0x3e614f0));
-      push @$array, @{ $result->ARRAY(0x401f520) };
-    }
-
-    return 'Paws::S3::ListObjectVersions'->_returns->new(ARRAY(0x401f520) => $array);
-  }
-  sub ListAllParts {
-    my $self = shift;
-
-    my $result = $self->ListParts(@_);
-    my $array = [];
-    push @$array, @{ $result->Parts };
-
-    while ($result->NextPartNumberMarker) {
-      $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
-      push @$array, @{ $result->Parts };
-    }
-
-    return 'Paws::S3::ListParts'->_returns->new(Parts => $array);
-  }
 }
 1;
 

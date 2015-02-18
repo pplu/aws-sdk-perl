@@ -26,6 +26,21 @@ package Paws::IAM {
     my $call_object = $self->new_with_coercions('Paws::IAM::AddUserToGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AttachGroupPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::AttachGroupPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AttachRolePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::AttachRolePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AttachUserPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::AttachUserPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ChangePassword {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::ChangePassword', @_);
@@ -59,6 +74,16 @@ package Paws::IAM {
   sub CreateOpenIDConnectProvider {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::CreateOpenIDConnectProvider', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreatePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::CreatePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreatePolicyVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::CreatePolicyVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateRole {
@@ -126,6 +151,16 @@ package Paws::IAM {
     my $call_object = $self->new_with_coercions('Paws::IAM::DeleteOpenIDConnectProvider', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeletePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeletePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeletePolicyVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeletePolicyVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRole {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::DeleteRole', @_);
@@ -164,6 +199,21 @@ package Paws::IAM {
   sub DeleteVirtualMFADevice {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::DeleteVirtualMFADevice', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DetachGroupPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::DetachGroupPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DetachRolePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::DetachRolePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DetachUserPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::DetachUserPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub EnableMFADevice {
@@ -221,6 +271,16 @@ package Paws::IAM {
     my $call_object = $self->new_with_coercions('Paws::IAM::GetOpenIDConnectProvider', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetPolicyVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetPolicyVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetRole {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::GetRole', @_);
@@ -261,6 +321,26 @@ package Paws::IAM {
     my $call_object = $self->new_with_coercions('Paws::IAM::ListAccountAliases', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAttachedGroupPolicies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListAttachedGroupPolicies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAttachedRolePolicies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListAttachedRolePolicies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAttachedUserPolicies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListAttachedUserPolicies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListEntitiesForPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListEntitiesForPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListGroupPolicies {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::ListGroupPolicies', @_);
@@ -294,6 +374,16 @@ package Paws::IAM {
   sub ListOpenIDConnectProviders {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::ListOpenIDConnectProviders', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListPolicies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListPolicies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListPolicyVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListPolicyVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListRolePolicies {
@@ -371,6 +461,11 @@ package Paws::IAM {
     my $call_object = $self->new_with_coercions('Paws::IAM::ResyncMFADevice', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SetDefaultPolicyVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::SetDefaultPolicyVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateAccessKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::UpdateAccessKey', @_);
@@ -430,230 +525,6 @@ package Paws::IAM {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::UploadSigningCertificate', @_);
     return $self->caller->do_call($self, $call_object);
-  }
-  sub GetAllGroups {
-    my $self = shift;
-
-    my $result = $self->GetGroup(@_);
-    my $array = [];
-    push @$array, @{ $result->Users };
-
-    while ($result->Marker) {
-      $result = $self->GetGroup(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Users };
-    }
-
-    return 'Paws::IAM::GetGroup'->_returns->new(Users => $array);
-  }
-  sub ListAllAccessKeys {
-    my $self = shift;
-
-    my $result = $self->ListAccessKeys(@_);
-    my $array = [];
-    push @$array, @{ $result->AccessKeyMetadata };
-
-    while ($result->Marker) {
-      $result = $self->ListAccessKeys(@_, Marker => $result->Marker);
-      push @$array, @{ $result->AccessKeyMetadata };
-    }
-
-    return 'Paws::IAM::ListAccessKeys'->_returns->new(AccessKeyMetadata => $array);
-  }
-  sub ListAllAccountAliases {
-    my $self = shift;
-
-    my $result = $self->ListAccountAliases(@_);
-    my $array = [];
-    push @$array, @{ $result->AccountAliases };
-
-    while ($result->Marker) {
-      $result = $self->ListAccountAliases(@_, Marker => $result->Marker);
-      push @$array, @{ $result->AccountAliases };
-    }
-
-    return 'Paws::IAM::ListAccountAliases'->_returns->new(AccountAliases => $array);
-  }
-  sub ListAllGroupPolicies {
-    my $self = shift;
-
-    my $result = $self->ListGroupPolicies(@_);
-    my $array = [];
-    push @$array, @{ $result->PolicyNames };
-
-    while ($result->Marker) {
-      $result = $self->ListGroupPolicies(@_, Marker => $result->Marker);
-      push @$array, @{ $result->PolicyNames };
-    }
-
-    return 'Paws::IAM::ListGroupPolicies'->_returns->new(PolicyNames => $array);
-  }
-  sub ListAllGroups {
-    my $self = shift;
-
-    my $result = $self->ListGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->Groups };
-
-    while ($result->Marker) {
-      $result = $self->ListGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Groups };
-    }
-
-    return 'Paws::IAM::ListGroups'->_returns->new(Groups => $array);
-  }
-  sub ListAllGroupsForUser {
-    my $self = shift;
-
-    my $result = $self->ListGroupsForUser(@_);
-    my $array = [];
-    push @$array, @{ $result->Groups };
-
-    while ($result->Marker) {
-      $result = $self->ListGroupsForUser(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Groups };
-    }
-
-    return 'Paws::IAM::ListGroupsForUser'->_returns->new(Groups => $array);
-  }
-  sub ListAllInstanceProfiles {
-    my $self = shift;
-
-    my $result = $self->ListInstanceProfiles(@_);
-    my $array = [];
-    push @$array, @{ $result->InstanceProfiles };
-
-    while ($result->Marker) {
-      $result = $self->ListInstanceProfiles(@_, Marker => $result->Marker);
-      push @$array, @{ $result->InstanceProfiles };
-    }
-
-    return 'Paws::IAM::ListInstanceProfiles'->_returns->new(InstanceProfiles => $array);
-  }
-  sub ListAllInstanceProfilesForRole {
-    my $self = shift;
-
-    my $result = $self->ListInstanceProfilesForRole(@_);
-    my $array = [];
-    push @$array, @{ $result->InstanceProfiles };
-
-    while ($result->Marker) {
-      $result = $self->ListInstanceProfilesForRole(@_, Marker => $result->Marker);
-      push @$array, @{ $result->InstanceProfiles };
-    }
-
-    return 'Paws::IAM::ListInstanceProfilesForRole'->_returns->new(InstanceProfiles => $array);
-  }
-  sub ListAllMFADevices {
-    my $self = shift;
-
-    my $result = $self->ListMFADevices(@_);
-    my $array = [];
-    push @$array, @{ $result->MFADevices };
-
-    while ($result->Marker) {
-      $result = $self->ListMFADevices(@_, Marker => $result->Marker);
-      push @$array, @{ $result->MFADevices };
-    }
-
-    return 'Paws::IAM::ListMFADevices'->_returns->new(MFADevices => $array);
-  }
-  sub ListAllRolePolicies {
-    my $self = shift;
-
-    my $result = $self->ListRolePolicies(@_);
-    my $array = [];
-    push @$array, @{ $result->PolicyNames };
-
-    while ($result->Marker) {
-      $result = $self->ListRolePolicies(@_, Marker => $result->Marker);
-      push @$array, @{ $result->PolicyNames };
-    }
-
-    return 'Paws::IAM::ListRolePolicies'->_returns->new(PolicyNames => $array);
-  }
-  sub ListAllRoles {
-    my $self = shift;
-
-    my $result = $self->ListRoles(@_);
-    my $array = [];
-    push @$array, @{ $result->Roles };
-
-    while ($result->Marker) {
-      $result = $self->ListRoles(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Roles };
-    }
-
-    return 'Paws::IAM::ListRoles'->_returns->new(Roles => $array);
-  }
-  sub ListAllServerCertificates {
-    my $self = shift;
-
-    my $result = $self->ListServerCertificates(@_);
-    my $array = [];
-    push @$array, @{ $result->ServerCertificateMetadataList };
-
-    while ($result->Marker) {
-      $result = $self->ListServerCertificates(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ServerCertificateMetadataList };
-    }
-
-    return 'Paws::IAM::ListServerCertificates'->_returns->new(ServerCertificateMetadataList => $array);
-  }
-  sub ListAllSigningCertificates {
-    my $self = shift;
-
-    my $result = $self->ListSigningCertificates(@_);
-    my $array = [];
-    push @$array, @{ $result->Certificates };
-
-    while ($result->Marker) {
-      $result = $self->ListSigningCertificates(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Certificates };
-    }
-
-    return 'Paws::IAM::ListSigningCertificates'->_returns->new(Certificates => $array);
-  }
-  sub ListAllUserPolicies {
-    my $self = shift;
-
-    my $result = $self->ListUserPolicies(@_);
-    my $array = [];
-    push @$array, @{ $result->PolicyNames };
-
-    while ($result->Marker) {
-      $result = $self->ListUserPolicies(@_, Marker => $result->Marker);
-      push @$array, @{ $result->PolicyNames };
-    }
-
-    return 'Paws::IAM::ListUserPolicies'->_returns->new(PolicyNames => $array);
-  }
-  sub ListAllUsers {
-    my $self = shift;
-
-    my $result = $self->ListUsers(@_);
-    my $array = [];
-    push @$array, @{ $result->Users };
-
-    while ($result->Marker) {
-      $result = $self->ListUsers(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Users };
-    }
-
-    return 'Paws::IAM::ListUsers'->_returns->new(Users => $array);
-  }
-  sub ListAllVirtualMFADevices {
-    my $self = shift;
-
-    my $result = $self->ListVirtualMFADevices(@_);
-    my $array = [];
-    push @$array, @{ $result->VirtualMFADevices };
-
-    while ($result->Marker) {
-      $result = $self->ListVirtualMFADevices(@_, Marker => $result->Marker);
-      push @$array, @{ $result->VirtualMFADevices };
-    }
-
-    return 'Paws::IAM::ListVirtualMFADevices'->_returns->new(VirtualMFADevices => $array);
   }
 }
 1;
@@ -812,6 +683,89 @@ about instance profiles, go to About Instance Profiles.
   
 
 Adds the specified user to the specified group.
+
+
+
+
+
+
+
+
+
+
+
+=head2 AttachGroupPolicy()
+
+  Arguments described in: L<Paws::IAM::AttachGroupPolicy>
+
+  Returns: nothing
+
+  
+
+Attaches the specified managed policy to the specified group.
+
+You use this API to attach a managed policy to a group. To embed an
+inline policy in a group, use PutGroupPolicy.
+
+For more information about policies, refer to Managed Policies and
+Inline Policies in the I<Using IAM> guide.
+
+
+
+
+
+
+
+
+
+
+
+=head2 AttachRolePolicy()
+
+  Arguments described in: L<Paws::IAM::AttachRolePolicy>
+
+  Returns: nothing
+
+  
+
+Attaches the specified managed policy to the specified role.
+
+When you attach a managed policy to a role, the managed policy is used
+as the role's access (permissions) policy. You cannot use a managed
+policy as the role's trust policy. The role's trust policy is created
+at the same time as the role, using CreateRole. You can update a role's
+trust policy using UpdateAssumeRolePolicy.
+
+Use this API to attach a managed policy to a role. To embed an inline
+policy in a role, use PutRolePolicy. For more information about
+policies, refer to Managed Policies and Inline Policies in the I<Using
+IAM> guide.
+
+
+
+
+
+
+
+
+
+
+
+=head2 AttachUserPolicy()
+
+  Arguments described in: L<Paws::IAM::AttachUserPolicy>
+
+  Returns: nothing
+
+  
+
+Attaches the specified managed policy to the specified user.
+
+You use this API to attach a managed policy to a user. To embed an
+inline policy in a user, use PutUserPolicy.
+
+For more information about policies, refer to Managed Policies and
+Inline Policies in the I<Using IAM> guide.
 
 
 
@@ -1003,6 +957,66 @@ Because trust for the OIDC provider is ultimately derived from the IAM
 provider that this action creates, it is a best practice to limit
 access to the CreateOpenIDConnectProvider action to highly-privileged
 users.
+
+
+
+
+
+
+
+
+
+
+
+=head2 CreatePolicy()
+
+  Arguments described in: L<Paws::IAM::CreatePolicy>
+
+  Returns: L<Paws::IAM::CreatePolicyResponse>
+
+  
+
+Creates a new managed policy for your AWS account.
+
+This operation creates a policy version with a version identifier of
+C<v1> and sets v1 as the policy's default version. For more information
+about policy versions, see Versioning for Managed Policies in the
+I<Using IAM> guide.
+
+For more information about managed policies in general, refer to
+Managed Policies and Inline Policies in the I<Using IAM> guide.
+
+
+
+
+
+
+
+
+
+
+
+=head2 CreatePolicyVersion()
+
+  Arguments described in: L<Paws::IAM::CreatePolicyVersion>
+
+  Returns: L<Paws::IAM::CreatePolicyVersionResponse>
+
+  
+
+Creates a new version of the specified managed policy. To update a
+managed policy, you create a new policy version. A managed policy can
+have up to five versions. If the policy has five versions, you must
+delete an existing version using DeletePolicyVersion before you create
+a new version.
+
+Optionally, you can set the new version as the policy's default
+version. The default version is the operative version; that is, the
+version that is in effect for the IAM users, groups, and roles that the
+policy is attached to.
+
+For more information about managed policy versions, see Versioning for
+Managed Policies in the I<Using IAM> guide.
 
 
 
@@ -1258,8 +1272,13 @@ have any attached policies.
 
   
 
-Deletes the specified policy that is associated with the specified
+Deletes the specified inline policy that is embedded in the specified
 group.
+
+A group can also have managed policies attached to it. To detach a
+managed policy from a group, use DetachGroupPolicy. For more
+information about policies, refer to Managed Policies and Inline
+Policies in the I<Using IAM> guide.
 
 
 
@@ -1355,6 +1374,80 @@ call the action for a provider that was already deleted.
 
 
 
+=head2 DeletePolicy()
+
+  Arguments described in: L<Paws::IAM::DeletePolicy>
+
+  Returns: nothing
+
+  
+
+Deletes the specified managed policy.
+
+Before you can delete a managed policy, you must detach the policy from
+all users, groups, and roles that it is attached to, and you must
+delete all of the policy's versions. The following steps describe the
+process for deleting a managed policy:
+
+=over
+
+=item 1. Detach the policy from all users, groups, and roles that the
+policy is attached to, using the DetachUserPolicy, DetachGroupPolicy,
+or DetachRolePolicy APIs. To list all the users, groups, and roles that
+a policy is attached to, use ListEntitiesForPolicy.
+
+=item 2. Delete all versions of the policy using DeletePolicyVersion.
+To list the policy's versions, use ListPolicyVersions. You cannot use
+DeletePolicyVersion to delete the version that is marked as the default
+version. You delete the policy's default version in the next step of
+the process.
+
+=item 3. Delete the policy (this automatically deletes the policy's
+default version) using this API.
+
+=back
+
+For information about managed policies, refer to Managed Policies and
+Inline Policies in the I<Using IAM> guide.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DeletePolicyVersion()
+
+  Arguments described in: L<Paws::IAM::DeletePolicyVersion>
+
+  Returns: nothing
+
+  
+
+Deletes the specified version of the specified managed policy.
+
+You cannot delete the default version of a policy using this API. To
+delete the default version of a policy, use DeletePolicy. To find out
+which version of a policy is marked as the default version, use
+ListPolicyVersions.
+
+For information about versions for managed policies, refer to
+Versioning for Managed Policies in the I<Using IAM> guide.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DeleteRole()
 
   Arguments described in: L<Paws::IAM::DeleteRole>
@@ -1389,7 +1482,13 @@ running on the instance.
 
   
 
-Deletes the specified policy associated with the specified role.
+Deletes the specified inline policy that is embedded in the specified
+role.
+
+A role can also have managed policies attached to it. To detach a
+managed policy from a role, use DetachRolePolicy. For more information
+about policies, refer to Managed Policies and Inline Policies in the
+I<Using IAM> guide.
 
 
 
@@ -1513,7 +1612,13 @@ have any keys or signing certificates, or have any attached policies.
 
   
 
-Deletes the specified policy associated with the specified user.
+Deletes the specified inline policy that is embedded in the specified
+user.
+
+A user can also have managed policies attached to it. To detach a
+managed policy from a user, use DetachUserPolicy. For more information
+about policies, refer to Managed Policies and Inline Policies in the
+I<Using IAM> guide.
 
 
 
@@ -1538,6 +1643,81 @@ Deletes a virtual MFA device.
 You must deactivate a user's virtual MFA device before you can delete
 it. For information about deactivating MFA devices, see
 DeactivateMFADevice.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DetachGroupPolicy()
+
+  Arguments described in: L<Paws::IAM::DetachGroupPolicy>
+
+  Returns: nothing
+
+  
+
+Removes the specified managed policy from the specified group.
+
+A group can also have inline policies embedded with it. To delete an
+inline policy, use the DeleteGroupPolicy API. For information about
+policies, refer to Managed Policies and Inline Policies in the I<Using
+IAM> guide.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DetachRolePolicy()
+
+  Arguments described in: L<Paws::IAM::DetachRolePolicy>
+
+  Returns: nothing
+
+  
+
+Removes the specified managed policy from the specified role.
+
+A role can also have inline policies embedded with it. To delete an
+inline policy, use the DeleteRolePolicy API. For information about
+policies, refer to Managed Policies and Inline Policies in the I<Using
+IAM> guide.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DetachUserPolicy()
+
+  Arguments described in: L<Paws::IAM::DetachUserPolicy>
+
+  Returns: nothing
+
+  
+
+Removes the specified managed policy from the specified user.
+
+A user can also have inline policies embedded with it. To delete an
+inline policy, use the DeleteUserPolicy API. For information about
+policies, refer to Managed Policies and Inline Policies in the I<Using
+IAM> guide.
 
 
 
@@ -1649,8 +1829,8 @@ about using a password policy, go to Managing an IAM Password Policy.
 
   
 
-Retrieves account level information about account entity usage and IAM
-quotas.
+Retrieves information about IAM entity usage and IAM quotas in the AWS
+account.
 
 For information about limitations on IAM entities, see Limitations on
 IAM Entities in the I<Using IAM> guide.
@@ -1716,10 +1896,16 @@ paginate the results using the C<MaxItems> and C<Marker> parameters.
 
   
 
-Retrieves the specified policy document for the specified group. The
-returned policy is URL-encoded according to RFC 3986. For more
-information about RFC 3986, go to
-http://www.faqs.org/rfcs/rfc3986.html.
+Retrieves the specified inline policy document that is embedded in the
+specified group.
+
+A group can also have managed policies attached to it. To retrieve a
+managed policy document that is attached to a group, use GetPolicy to
+determine the policy's default version, then use GetPolicyVersion to
+retrieve the policy document.
+
+For more information about policies, refer to Managed Policies and
+Inline Policies in the I<Using IAM> guide.
 
 
 
@@ -1796,6 +1982,69 @@ Returns information about the specified OpenID Connect provider.
 
 
 
+=head2 GetPolicy()
+
+  Arguments described in: L<Paws::IAM::GetPolicy>
+
+  Returns: L<Paws::IAM::GetPolicyResponse>
+
+  
+
+Retrieves information about the specified managed policy, including the
+policy's default version and the total number of users, groups, and
+roles that the policy is attached to. For a list of the specific users,
+groups, and roles that the policy is attached to, use the
+ListEntitiesForPolicy API. This API returns metadata about the policy.
+To retrieve the policy document for a specific version of the policy,
+use GetPolicyVersion.
+
+This API retrieves information about managed policies. To retrieve
+information about an inline policy that is embedded with a user, group,
+or role, use the GetUserPolicy, GetGroupPolicy, or GetRolePolicy API.
+
+For more information about policies, refer to Managed Policies and
+Inline Policies in the I<Using IAM> guide.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetPolicyVersion()
+
+  Arguments described in: L<Paws::IAM::GetPolicyVersion>
+
+  Returns: L<Paws::IAM::GetPolicyVersionResponse>
+
+  
+
+Retrieves information about the specified version of the specified
+managed policy, including the policy document.
+
+To list the available versions for a policy, use ListPolicyVersions.
+
+This API retrieves information about managed policies. To retrieve
+information about an inline policy that is embedded in a user, group,
+or role, use the GetUserPolicy, GetGroupPolicy, or GetRolePolicy API.
+
+For more information about the types of policies, refer to Managed
+Policies and Inline Policies in the I<Using IAM> guide.
+
+
+
+
+
+
+
+
+
+
+
 =head2 GetRole()
 
   Arguments described in: L<Paws::IAM::GetRole>
@@ -1831,12 +2080,19 @@ http://www.faqs.org/rfcs/rfc3986.html.
 
   
 
-Retrieves the specified policy document for the specified role. For
-more information about roles, go to Working with Roles.
+Retrieves the specified inline policy document that is embedded with
+the specified role.
 
-The returned policy is URL-encoded according to RFC 3986. For more
-information about RFC 3986, go to
-http://www.faqs.org/rfcs/rfc3986.html.
+A role can also have managed policies attached to it. To retrieve a
+managed policy document that is attached to a role, use GetPolicy to
+determine the policy's default version, then use GetPolicyVersion to
+retrieve the policy document.
+
+For more information about policies, refer to Managed Policies and
+Inline Policies in the I<Using IAM> guide.
+
+For more information about roles, go to Using Roles to Delegate
+Permissions and Federate Identities.
 
 
 
@@ -1923,10 +2179,16 @@ implicitly based on the AWS access key ID used to sign the request.
 
   
 
-Retrieves the specified policy document for the specified user. The
-returned policy is URL-encoded according to RFC 3986. For more
-information about RFC 3986, go to
-http://www.faqs.org/rfcs/rfc3986.html.
+Retrieves the specified inline policy document that is embedded in the
+specified user.
+
+A user can also have managed policies attached to it. To retrieve a
+managed policy document that is attached to a user, use GetPolicy to
+determine the policy's default version, then use GetPolicyVersion to
+retrieve the policy document.
+
+For more information about policies, refer to Managed Policies and
+Inline Policies in the I<Using IAM> guide.
 
 
 
@@ -1996,6 +2258,128 @@ parameters.
 
 
 
+=head2 ListAttachedGroupPolicies()
+
+  Arguments described in: L<Paws::IAM::ListAttachedGroupPolicies>
+
+  Returns: L<Paws::IAM::ListAttachedGroupPoliciesResponse>
+
+  
+
+Lists all managed policies that are attached to the specified group.
+
+A group can also have inline policies embedded with it. To list the
+inline policies for a group, use the ListGroupPolicies API. For
+information about policies, refer to Managed Policies and Inline
+Policies in the I<Using IAM> guide.
+
+You can paginate the results using the C<MaxItems> and C<Marker>
+parameters. You can use the C<PathPrefix> parameter to limit the list
+of policies to only those matching the specified path prefix. If there
+are no policies attached to the specified group (or none that match the
+specified path prefix), the action returns an empty list.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ListAttachedRolePolicies()
+
+  Arguments described in: L<Paws::IAM::ListAttachedRolePolicies>
+
+  Returns: L<Paws::IAM::ListAttachedRolePoliciesResponse>
+
+  
+
+Lists all managed policies that are attached to the specified role.
+
+A role can also have inline policies embedded with it. To list the
+inline policies for a role, use the ListRolePolicies API. For
+information about policies, refer to Managed Policies and Inline
+Policies in the I<Using IAM> guide.
+
+You can paginate the results using the C<MaxItems> and C<Marker>
+parameters. You can use the C<PathPrefix> parameter to limit the list
+of policies to only those matching the specified path prefix. If there
+are no policies attached to the specified role (or none that match the
+specified path prefix), the action returns an empty list.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ListAttachedUserPolicies()
+
+  Arguments described in: L<Paws::IAM::ListAttachedUserPolicies>
+
+  Returns: L<Paws::IAM::ListAttachedUserPoliciesResponse>
+
+  
+
+Lists all managed policies that are attached to the specified user.
+
+A user can also have inline policies embedded with it. To list the
+inline policies for a user, use the ListUserPolicies API. For
+information about policies, refer to Managed Policies and Inline
+Policies in the I<Using IAM> guide.
+
+You can paginate the results using the C<MaxItems> and C<Marker>
+parameters. You can use the C<PathPrefix> parameter to limit the list
+of policies to only those matching the specified path prefix. If there
+are no policies attached to the specified group (or none that match the
+specified path prefix), the action returns an empty list.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ListEntitiesForPolicy()
+
+  Arguments described in: L<Paws::IAM::ListEntitiesForPolicy>
+
+  Returns: L<Paws::IAM::ListEntitiesForPolicyResponse>
+
+  
+
+Lists all users, groups, and roles that the specified managed policy is
+attached to.
+
+You can use the optional C<EntityFilter> parameter to limit the results
+to a particular type of entity (users, groups, or roles). For example,
+to list only the roles that are attached to the specified policy, set
+C<EntityFilter> to C<Role>.
+
+You can paginate the results using the C<MaxItems> and C<Marker>
+parameters.
+
+
+
+
+
+
+
+
+
+
+
 =head2 ListGroupPolicies()
 
   Arguments described in: L<Paws::IAM::ListGroupPolicies>
@@ -2004,11 +2388,17 @@ parameters.
 
   
 
-Lists the names of the policies associated with the specified group. If
-there are none, the action returns an empty list.
+Lists the names of the inline policies that are embedded in the
+specified group.
+
+A group can also have managed policies attached to it. To list the
+managed policies that are attached to a group, use
+ListAttachedGroupPolicies. For more information about policies, refer
+to Managed Policies and Inline Policies in the I<Using IAM> guide.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
-parameters.
+parameters. If there are no inline policies embedded with the specified
+group, the action returns an empty list.
 
 
 
@@ -2163,6 +2553,64 @@ account.
 
 
 
+=head2 ListPolicies()
+
+  Arguments described in: L<Paws::IAM::ListPolicies>
+
+  Returns: L<Paws::IAM::ListPoliciesResponse>
+
+  
+
+Lists all the managed policies that are available to your account,
+including your own customer managed policies and all AWS managed
+policies.
+
+You can filter the list of policies that is returned using the optional
+C<OnlyAttached>, C<Scope>, and C<PathPrefix> parameters. For example,
+to list only the customer managed policies in your AWS account, set
+C<Scope> to C<Local>. To list only AWS managed policies, set C<Scope>
+to C<AWS>.
+
+You can paginate the results using the C<MaxItems> and C<Marker>
+parameters.
+
+For more information about managed policies, refer to Managed Policies
+and Inline Policies in the I<Using IAM> guide.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ListPolicyVersions()
+
+  Arguments described in: L<Paws::IAM::ListPolicyVersions>
+
+  Returns: L<Paws::IAM::ListPolicyVersionsResponse>
+
+  
+
+Lists information about the versions of the specified managed policy,
+including the version that is set as the policy's default version.
+
+For more information about managed policies, refer to Managed Policies
+and Inline Policies in the I<Using IAM> guide.
+
+
+
+
+
+
+
+
+
+
+
 =head2 ListRolePolicies()
 
   Arguments described in: L<Paws::IAM::ListRolePolicies>
@@ -2171,11 +2619,17 @@ account.
 
   
 
-Lists the names of the policies associated with the specified role. If
-there are none, the action returns an empty list.
+Lists the names of the inline policies that are embedded in the
+specified role.
+
+A role can also have managed policies attached to it. To list the
+managed policies that are attached to a role, use
+ListAttachedRolePolicies. For more information about policies, refer to
+Managed Policies and Inline Policies in the I<Using IAM> guide.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
-parameters.
+parameters. If there are no inline policies embedded with the specified
+role, the action returns an empty list.
 
 
 
@@ -2301,11 +2755,16 @@ has no associated users.
 
   
 
-Lists the names of the policies associated with the specified user. If
-there are none, the action returns an empty list.
+Lists the names of the inline policies embedded in the specified user.
+
+A user can also have managed policies attached to it. To list the
+managed policies that are attached to a user, use
+ListAttachedUserPolicies. For more information about policies, refer to
+Managed Policies and Inline Policies in the I<Using IAM> guide.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
-parameters.
+parameters. If there are no inline policies embedded with the specified
+user, the action returns an empty list.
 
 
 
@@ -2376,20 +2835,22 @@ parameters.
 
   
 
-Adds (or updates) a policy document associated with the specified
-group. For information about policies, refer to Overview of Policies in
-the I<Using IAM> guide.
+Adds (or updates) an inline policy document that is embedded in the
+specified group.
 
-For information about limits on the number of policies you can
-associate with a group, see Limitations on IAM Entities in the I<Using
+A user can also have managed policies attached to it. To attach a
+managed policy to a group, use AttachGroupPolicy. To create a new
+managed policy, use CreatePolicy. For information about policies, refer
+to Managed Policies and Inline Policies in the I<Using IAM> guide.
+
+For information about limits on the number of inline policies that you
+can embed in a group, see Limitations on IAM Entities in the I<Using
 IAM> guide.
 
 Because policy documents can be large, you should use POST rather than
-GET when calling C<PutGroupPolicy>. For information about setting up
-signatures and authorization through the API, go to Signing AWS API
-Requests in the I<AWS General Reference>. For general information about
-using the Query API with IAM, go to Making Query Requests in the
-I<Using IAM> guide.
+GET when calling C<PutGroupPolicy>. For general information about using
+the Query API with IAM, go to Making Query Requests in the I<Using IAM>
+guide.
 
 
 
@@ -2409,19 +2870,29 @@ I<Using IAM> guide.
 
   
 
-Adds (or updates) a policy document associated with the specified role.
-For information about policies, go to Overview of Policies in the
-I<Using IAM> guide.
+Adds (or updates) an inline policy document that is embedded in the
+specified role.
 
-For information about limits on the policies you can associate with a
-role, see Limitations on IAM Entities in the I<Using IAM> guide.
+When you embed an inline policy in a role, the inline policy is used as
+the role's access (permissions) policy. The role's trust policy is
+created at the same time as the role, using CreateRole. You can update
+a role's trust policy using UpdateAssumeRolePolicy. For more
+information about roles, go to Using Roles to Delegate Permissions and
+Federate Identities.
+
+A role can also have a managed policy attached to it. To attach a
+managed policy to a role, use AttachRolePolicy. To create a new managed
+policy, use CreatePolicy. For information about policies, refer to
+Managed Policies and Inline Policies in the I<Using IAM> guide.
+
+For information about limits on the number of inline policies that you
+can embed with a role, see Limitations on IAM Entities in the I<Using
+IAM> guide.
 
 Because policy documents can be large, you should use POST rather than
-GET when calling C<PutRolePolicy>. For information about setting up
-signatures and authorization through the API, go to Signing AWS API
-Requests in the I<AWS General Reference>. For general information about
-using the Query API with IAM, go to Making Query Requests in the
-I<Using IAM> guide.
+GET when calling C<PutRolePolicy>. For general information about using
+the Query API with IAM, go to Making Query Requests in the I<Using IAM>
+guide.
 
 
 
@@ -2441,20 +2912,22 @@ I<Using IAM> guide.
 
   
 
-Adds (or updates) a policy document associated with the specified user.
-For information about policies, refer to Overview of Policies in the
-I<Using IAM> guide.
+Adds (or updates) an inline policy document that is embedded in the
+specified user.
 
-For information about limits on the number of policies you can
-associate with a user, see Limitations on IAM Entities in the I<Using
+A user can also have a managed policy attached to it. To attach a
+managed policy to a user, use AttachUserPolicy. To create a new managed
+policy, use CreatePolicy. For information about policies, refer to
+Managed Policies and Inline Policies in the I<Using IAM> guide.
+
+For information about limits on the number of inline policies that you
+can embed in a user, see Limitations on IAM Entities in the I<Using
 IAM> guide.
 
 Because policy documents can be large, you should use POST rather than
-GET when calling C<PutUserPolicy>. For information about setting up
-signatures and authorization through the API, go to Signing AWS API
-Requests in the I<AWS General Reference>. For general information about
-using the Query API with IAM, go to Making Query Requests in the
-I<Using IAM> guide.
+GET when calling C<PutUserPolicy>. For general information about using
+the Query API with IAM, go to Making Query Requests in the I<Using IAM>
+guide.
 
 
 
@@ -2561,6 +3034,34 @@ devices, go to Using a Virtual MFA Device in the I<Using IAM> guide.
 
 
 
+=head2 SetDefaultPolicyVersion()
+
+  Arguments described in: L<Paws::IAM::SetDefaultPolicyVersion>
+
+  Returns: nothing
+
+  
+
+Sets the specified version of the specified policy as the policy's
+default (operative) version.
+
+This action affects all users, groups, and roles that the policy is
+attached to. To list the users, groups, and roles that the policy is
+attached to, use the ListEntitiesForPolicy API.
+
+For information about managed policies, refer to Managed Policies and
+Inline Policies in the I<Using IAM> guide.
+
+
+
+
+
+
+
+
+
+
+
 =head2 UpdateAccessKey()
 
   Arguments described in: L<Paws::IAM::UpdateAccessKey>
@@ -2629,7 +3130,8 @@ Password Policy in the I<Using IAM> guide.
   
 
 Updates the policy that grants an entity permission to assume a role.
-For more information about roles, go to Working with Roles.
+For more information about roles, go to Using Roles to Delegate
+Permissions and Federate Identities.
 
 
 

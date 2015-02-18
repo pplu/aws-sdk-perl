@@ -39,6 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of the cache security group to delete.
 
+You cannot delete the default security group.
+
 
 
 

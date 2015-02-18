@@ -2,6 +2,7 @@
 package Paws::Route53Domains::UpdateDomainNameservers {
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  has FIAuthKey => (is => 'ro', isa => 'Str');
   has Nameservers => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::Nameserver]', required => 1);
 
   use MooseX::ClassAttribute;
@@ -49,6 +50,21 @@ the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
 are not supported.
 
 Required: Yes
+
+
+
+
+
+
+
+
+
+
+=head2 FIAuthKey => Str
+
+  
+
+The authorization key for .fi domains
 
 
 

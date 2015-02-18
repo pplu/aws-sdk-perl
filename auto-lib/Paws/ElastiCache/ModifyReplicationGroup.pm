@@ -83,6 +83,16 @@ primary if the existing primary encounters a failure.
 
 Valid values: C<true> | C<false>
 
+ElastiCache Multi-AZ replication groups are not supported on:
+
+=over
+
+=item * Redis versions earlier than 2.8.6.
+
+=item * T1 and T2 cache node types.
+
+=back
+
 
 
 
@@ -96,10 +106,7 @@ Valid values: C<true> | C<false>
 
   
 
-Determines whether minor engine upgrades will be applied automatically
-to all of the clusters in the replication group during the maintenance
-window. A value of C<true> allows these upgrades to occur; C<false>
-disables automatic upgrades.
+This parameter is currently disabled.
 
 
 
@@ -173,6 +180,8 @@ clusters in the replication group.
 
 The Amazon Resource Name (ARN) of the Amazon SNS topic to which
 notifications will be sent.
+
+The Amazon SNS topic owner must be same as the replication group owner.
 
 
 

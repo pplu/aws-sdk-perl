@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name of the policy document to delete.
+The name identifying the policy document to delete.
 
 
 
@@ -53,7 +53,8 @@ The name of the policy document to delete.
 
   
 
-The name of the role the associated with the policy.
+The name (friendly name, not ARN) identifying the role that the policy
+is embedded in.
 
 
 

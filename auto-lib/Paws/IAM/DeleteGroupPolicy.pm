@@ -38,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name of the group the policy is associated with.
+The name (friendly name, not ARN) identifying the group that the policy
+is embedded in.
 
 
 
@@ -53,7 +54,7 @@ The name of the group the policy is associated with.
 
   
 
-The name of the policy document to delete.
+The name identifying the policy document to delete.
 
 
 

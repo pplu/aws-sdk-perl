@@ -5,12 +5,17 @@ use Paws::API;
 package Paws::ElastiCache {
   use Moose;
   sub service { 'elasticache' }
-  sub version { '2014-09-30' }
+  sub version { '2015-02-02' }
   sub flattened_arrays { 0 }
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
   
+  sub AddTagsToResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::AddTagsToResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AuthorizeCacheSecurityGroupIngress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::AuthorizeCacheSecurityGroupIngress', @_);
@@ -141,6 +146,11 @@ package Paws::ElastiCache {
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeSnapshots', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyCacheCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::ModifyCacheCluster', @_);
@@ -171,6 +181,11 @@ package Paws::ElastiCache {
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::RebootCacheCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RemoveTagsFromResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::RemoveTagsFromResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ResetCacheParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::ResetCacheParameterGroup', @_);
@@ -180,174 +195,6 @@ package Paws::ElastiCache {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::RevokeCacheSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeAllCacheClusters {
-    my $self = shift;
-
-    my $result = $self->DescribeCacheClusters(@_);
-    my $array = [];
-    push @$array, @{ $result->CacheClusters };
-
-    while ($result->Marker) {
-      $result = $self->DescribeCacheClusters(@_, Marker => $result->Marker);
-      push @$array, @{ $result->CacheClusters };
-    }
-
-    return 'Paws::ElastiCache::DescribeCacheClusters'->_returns->new(CacheClusters => $array);
-  }
-  sub DescribeAllCacheEngineVersions {
-    my $self = shift;
-
-    my $result = $self->DescribeCacheEngineVersions(@_);
-    my $array = [];
-    push @$array, @{ $result->CacheEngineVersions };
-
-    while ($result->Marker) {
-      $result = $self->DescribeCacheEngineVersions(@_, Marker => $result->Marker);
-      push @$array, @{ $result->CacheEngineVersions };
-    }
-
-    return 'Paws::ElastiCache::DescribeCacheEngineVersions'->_returns->new(CacheEngineVersions => $array);
-  }
-  sub DescribeAllCacheParameterGroups {
-    my $self = shift;
-
-    my $result = $self->DescribeCacheParameterGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->CacheParameterGroups };
-
-    while ($result->Marker) {
-      $result = $self->DescribeCacheParameterGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->CacheParameterGroups };
-    }
-
-    return 'Paws::ElastiCache::DescribeCacheParameterGroups'->_returns->new(CacheParameterGroups => $array);
-  }
-  sub DescribeAllCacheParameters {
-    my $self = shift;
-
-    my $result = $self->DescribeCacheParameters(@_);
-    my $array = [];
-    push @$array, @{ $result->Parameters };
-
-    while ($result->Marker) {
-      $result = $self->DescribeCacheParameters(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Parameters };
-    }
-
-    return 'Paws::ElastiCache::DescribeCacheParameters'->_returns->new(Parameters => $array);
-  }
-  sub DescribeAllCacheSecurityGroups {
-    my $self = shift;
-
-    my $result = $self->DescribeCacheSecurityGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->CacheSecurityGroups };
-
-    while ($result->Marker) {
-      $result = $self->DescribeCacheSecurityGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->CacheSecurityGroups };
-    }
-
-    return 'Paws::ElastiCache::DescribeCacheSecurityGroups'->_returns->new(CacheSecurityGroups => $array);
-  }
-  sub DescribeAllCacheSubnetGroups {
-    my $self = shift;
-
-    my $result = $self->DescribeCacheSubnetGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->CacheSubnetGroups };
-
-    while ($result->Marker) {
-      $result = $self->DescribeCacheSubnetGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->CacheSubnetGroups };
-    }
-
-    return 'Paws::ElastiCache::DescribeCacheSubnetGroups'->_returns->new(CacheSubnetGroups => $array);
-  }
-  sub DescribeAllEngineDefaultParameters {
-    my $self = shift;
-
-    my $result = $self->DescribeEngineDefaultParameters(@_);
-    my $array = [];
-    push @$array, @{ $result->EngineDefaults.Parameters };
-
-    while ($result->EngineDefaults.Marker) {
-      $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults.Marker);
-      push @$array, @{ $result->EngineDefaults.Parameters };
-    }
-
-    return 'Paws::ElastiCache::DescribeEngineDefaultParameters'->_returns->new(EngineDefaults.Parameters => $array);
-  }
-  sub DescribeAllEvents {
-    my $self = shift;
-
-    my $result = $self->DescribeEvents(@_);
-    my $array = [];
-    push @$array, @{ $result->Events };
-
-    while ($result->Marker) {
-      $result = $self->DescribeEvents(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Events };
-    }
-
-    return 'Paws::ElastiCache::DescribeEvents'->_returns->new(Events => $array);
-  }
-  sub DescribeAllReplicationGroups {
-    my $self = shift;
-
-    my $result = $self->DescribeReplicationGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->ReplicationGroups };
-
-    while ($result->Marker) {
-      $result = $self->DescribeReplicationGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ReplicationGroups };
-    }
-
-    return 'Paws::ElastiCache::DescribeReplicationGroups'->_returns->new(ReplicationGroups => $array);
-  }
-  sub DescribeAllReservedCacheNodes {
-    my $self = shift;
-
-    my $result = $self->DescribeReservedCacheNodes(@_);
-    my $array = [];
-    push @$array, @{ $result->ReservedCacheNodes };
-
-    while ($result->Marker) {
-      $result = $self->DescribeReservedCacheNodes(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ReservedCacheNodes };
-    }
-
-    return 'Paws::ElastiCache::DescribeReservedCacheNodes'->_returns->new(ReservedCacheNodes => $array);
-  }
-  sub DescribeAllReservedCacheNodesOfferings {
-    my $self = shift;
-
-    my $result = $self->DescribeReservedCacheNodesOfferings(@_);
-    my $array = [];
-    push @$array, @{ $result->ReservedCacheNodesOfferings };
-
-    while ($result->Marker) {
-      $result = $self->DescribeReservedCacheNodesOfferings(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ReservedCacheNodesOfferings };
-    }
-
-    return 'Paws::ElastiCache::DescribeReservedCacheNodesOfferings'->_returns->new(ReservedCacheNodesOfferings => $array);
-  }
-  sub DescribeAllSnapshots {
-    my $self = shift;
-
-    my $result = $self->DescribeSnapshots(@_);
-    my $array = [];
-    push @$array, @{ $result->Snapshots };
-
-    while ($result->Marker) {
-      $result = $self->DescribeSnapshots(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Snapshots };
-    }
-
-    return 'Paws::ElastiCache::DescribeSnapshots'->_returns->new(Snapshots => $array);
   }
 }
 1;
@@ -395,6 +242,36 @@ their cache and can receive alarms if a part of their cache runs hot.
 
 =head1 METHODS
 
+=head2 AddTagsToResource()
+
+  Arguments described in: L<Paws::ElastiCache::AddTagsToResource>
+
+  Returns: L<Paws::ElastiCache::TagListMessage>
+
+  
+
+The I<AddTagsToResource> action adds up to 10 cost allocation tags to
+the named resource. A I<cost allocation tag> is a key-value pair where
+the key and value are case-sensitive. Cost allocation tags can be used
+to categorize and track your AWS costs.
+
+When you apply tags to your ElastiCache resources, AWS generates a cost
+allocation report as a comma-separated value (CSV) file with your usage
+and costs aggregated by your tags. You can apply tags that represent
+business categories (such as cost centers, application names, or
+owners) to organize your costs across multiple services. For more
+information, see Using Cost Allocation Tags in Amazon ElastiCache.
+
+
+
+
+
+
+
+
+
+
+
 =head2 AuthorizeCacheSecurityGroupIngress()
 
   Arguments described in: L<Paws::ElastiCache::AuthorizeCacheSecurityGroupIngress>
@@ -403,10 +280,13 @@ their cache and can receive alarms if a part of their cache runs hot.
 
   
 
-The I<AuthorizeCacheSecurityGroupIngress> operation allows network
-ingress to a cache security group. Applications using ElastiCache must
-be running on Amazon EC2, and Amazon EC2 security groups are used as
-the authorization mechanism.
+The I<AuthorizeCacheSecurityGroupIngress> action allows network ingress
+to a cache security group. Applications using ElastiCache must be
+running on Amazon EC2, and Amazon EC2 security groups are used as the
+authorization mechanism.
+
+You cannot authorize ingress from an Amazon EC2 security group in one
+region to an ElastiCache cluster in another region.
 
 
 
@@ -426,7 +306,7 @@ the authorization mechanism.
 
   
 
-The I<CopySnapshot> operation makes a copy of an existing snapshot.
+The I<CopySnapshot> action makes a copy of an existing snapshot.
 
 
 
@@ -446,8 +326,8 @@ The I<CopySnapshot> operation makes a copy of an existing snapshot.
 
   
 
-The I<CreateCacheCluster> operation creates a cache cluster. All nodes
-in the cache cluster run the same protocol-compliant cache engine
+The I<CreateCacheCluster> action creates a cache cluster. All nodes in
+the cache cluster run the same protocol-compliant cache engine
 software, either Memcached or Redis.
 
 
@@ -468,9 +348,9 @@ software, either Memcached or Redis.
 
   
 
-The I<CreateCacheParameterGroup> operation creates a new cache
-parameter group. A cache parameter group is a collection of parameters
-that you apply to all of the nodes in a cache cluster.
+The I<CreateCacheParameterGroup> action creates a new cache parameter
+group. A cache parameter group is a collection of parameters that you
+apply to all of the nodes in a cache cluster.
 
 
 
@@ -490,7 +370,7 @@ that you apply to all of the nodes in a cache cluster.
 
   
 
-The I<CreateCacheSecurityGroup> operation creates a new cache security
+The I<CreateCacheSecurityGroup> action creates a new cache security
 group. Use a cache security group to control access to one or more
 cache clusters.
 
@@ -517,8 +397,7 @@ instead. For more information, see CreateCacheSubnetGroup.
 
   
 
-The I<CreateCacheSubnetGroup> operation creates a new cache subnet
-group.
+The I<CreateCacheSubnetGroup> action creates a new cache subnet group.
 
 Use this parameter only when you are creating a cluster in an Amazon
 Virtual Private Cloud (VPC).
@@ -541,7 +420,7 @@ Virtual Private Cloud (VPC).
 
   
 
-The I<CreateReplicationGroup> operation creates a replication group. A
+The I<CreateReplicationGroup> action creates a replication group. A
 replication group is a collection of cache clusters, where one of the
 cache clusters is a read/write primary and the others are read-only
 replicas. Writes to the primary are automatically propagated to the
@@ -572,8 +451,8 @@ B<Note:> This action is valid only for Redis.
 
   
 
-The I<CreateSnapshot> operation creates a copy of an entire cache
-cluster at a specific moment in time.
+The I<CreateSnapshot> action creates a copy of an entire cache cluster
+at a specific moment in time.
 
 
 
@@ -593,16 +472,14 @@ cluster at a specific moment in time.
 
   
 
-The I<DeleteCacheCluster> operation deletes a previously provisioned
-cache cluster. I<DeleteCacheCluster> deletes all associated cache
-nodes, node endpoints and the cache cluster itself. When you receive a
-successful response from this operation, Amazon ElastiCache immediately
-begins deleting the cache cluster; you cannot cancel or revert this
-operation.
+The I<DeleteCacheCluster> action deletes a previously provisioned cache
+cluster. I<DeleteCacheCluster> deletes all associated cache nodes, node
+endpoints and the cache cluster itself. When you receive a successful
+response from this action, Amazon ElastiCache immediately begins
+deleting the cache cluster; you cannot cancel or revert this action.
 
 This API cannot be used to delete a cache cluster that is the last read
-replica of a replication group that has automatic failover mode
-enabled.
+replica of a replication group that has Multi-AZ mode enabled.
 
 
 
@@ -622,7 +499,7 @@ enabled.
 
   
 
-The I<DeleteCacheParameterGroup> operation deletes the specified cache
+The I<DeleteCacheParameterGroup> action deletes the specified cache
 parameter group. You cannot delete a cache parameter group if it is
 associated with any cache clusters.
 
@@ -644,8 +521,10 @@ associated with any cache clusters.
 
   
 
-The I<DeleteCacheSecurityGroup> operation deletes a cache security
-group.
+The I<DeleteCacheSecurityGroup> action deletes a cache security group.
+
+You cannot delete a cache security group if it is associated with any
+cache clusters.
 
 
 
@@ -665,7 +544,10 @@ group.
 
   
 
-The I<DeleteCacheSubnetGroup> operation deletes a cache subnet group.
+The I<DeleteCacheSubnetGroup> action deletes a cache subnet group.
+
+You cannot delete a cache subnet group if it is associated with any
+cache clusters.
 
 
 
@@ -685,14 +567,15 @@ The I<DeleteCacheSubnetGroup> operation deletes a cache subnet group.
 
   
 
-The I<DeleteReplicationGroup> operation deletes an existing cluster. By
-default, this operation deletes the entire cluster, including the
-primary node group and all of the read replicas. You can optionally
-delete only the read replicas, while retaining the primary node group.
+The I<DeleteReplicationGroup> action deletes an existing replication
+group. By default, this action deletes the entire replication group,
+including the primary cluster and all of the read replicas. You can
+optionally delete only the read replicas, while retaining the primary
+cluster.
 
-When you receive a successful response from this operation, Amazon
+When you receive a successful response from this action, Amazon
 ElastiCache immediately begins deleting the selected resources; you
-cannot cancel or revert this operation.
+cannot cancel or revert this action.
 
 
 
@@ -712,10 +595,9 @@ cannot cancel or revert this operation.
 
   
 
-The I<DeleteSnapshot> operation deletes an existing snapshot. When you
-receive a successful response from this operation, ElastiCache
-immediately begins deleting the snapshot; you cannot cancel or revert
-this operation.
+The I<DeleteSnapshot> action deletes an existing snapshot. When you
+receive a successful response from this action, ElastiCache immediately
+begins deleting the snapshot; you cannot cancel or revert this action.
 
 
 
@@ -735,7 +617,7 @@ this operation.
 
   
 
-The I<DescribeCacheClusters> operation returns information about all
+The I<DescribeCacheClusters> action returns information about all
 provisioned cache clusters if no cache cluster identifier is specified,
 or about a specific cache cluster if a cache cluster identifier is
 supplied.
@@ -778,7 +660,7 @@ endpoint information for the removed nodes is displayed.
 
   
 
-The I<DescribeCacheEngineVersions> operation returns a list of the
+The I<DescribeCacheEngineVersions> action returns a list of the
 available cache engines and their versions.
 
 
@@ -799,7 +681,7 @@ available cache engines and their versions.
 
   
 
-The I<DescribeCacheParameterGroups> operation returns a list of cache
+The I<DescribeCacheParameterGroups> action returns a list of cache
 parameter group descriptions. If a cache parameter group name is
 specified, the list will contain only the descriptions for that group.
 
@@ -821,7 +703,7 @@ specified, the list will contain only the descriptions for that group.
 
   
 
-The I<DescribeCacheParameters> operation returns the detailed parameter
+The I<DescribeCacheParameters> action returns the detailed parameter
 list for a particular cache parameter group.
 
 
@@ -842,7 +724,7 @@ list for a particular cache parameter group.
 
   
 
-The I<DescribeCacheSecurityGroups> operation returns a list of cache
+The I<DescribeCacheSecurityGroups> action returns a list of cache
 security group descriptions. If a cache security group name is
 specified, the list will contain only the description of that group.
 
@@ -864,9 +746,9 @@ specified, the list will contain only the description of that group.
 
   
 
-The I<DescribeCacheSubnetGroups> operation returns a list of cache
-subnet group descriptions. If a subnet group name is specified, the
-list will contain only the description of that group.
+The I<DescribeCacheSubnetGroups> action returns a list of cache subnet
+group descriptions. If a subnet group name is specified, the list will
+contain only the description of that group.
 
 
 
@@ -886,7 +768,7 @@ list will contain only the description of that group.
 
   
 
-The I<DescribeEngineDefaultParameters> operation returns the default
+The I<DescribeEngineDefaultParameters> action returns the default
 engine and system parameter information for the specified cache engine.
 
 
@@ -907,10 +789,10 @@ engine and system parameter information for the specified cache engine.
 
   
 
-The I<DescribeEvents> operation returns events related to cache
-clusters, cache security groups, and cache parameter groups. You can
-obtain events specific to a particular cache cluster, cache security
-group, or cache parameter group by providing the name as a parameter.
+The I<DescribeEvents> action returns events related to cache clusters,
+cache security groups, and cache parameter groups. You can obtain
+events specific to a particular cache cluster, cache security group, or
+cache parameter group by providing the name as a parameter.
 
 By default, only the events occurring within the last hour are
 returned; however, you can retrieve up to 14 days' worth of events if
@@ -934,7 +816,7 @@ necessary.
 
   
 
-The I<DescribeReplicationGroups> operation returns information about a
+The I<DescribeReplicationGroups> action returns information about a
 particular replication group. If no identifier is specified,
 I<DescribeReplicationGroups> returns information about all replication
 groups.
@@ -957,7 +839,7 @@ groups.
 
   
 
-The I<DescribeReservedCacheNodes> operation returns information about
+The I<DescribeReservedCacheNodes> action returns information about
 reserved cache nodes for this account, or about a specified reserved
 cache node.
 
@@ -979,7 +861,7 @@ cache node.
 
   
 
-The I<DescribeReservedCacheNodesOfferings> operation lists available
+The I<DescribeReservedCacheNodesOfferings> action lists available
 reserved cache node offerings.
 
 
@@ -1000,10 +882,38 @@ reserved cache node offerings.
 
   
 
-The I<DescribeSnapshots> operation returns information about cache
-cluster snapshots. By default, I<DescribeSnapshots> lists all of your
+The I<DescribeSnapshots> action returns information about cache cluster
+snapshots. By default, I<DescribeSnapshots> lists all of your
 snapshots; it can optionally describe a single snapshot, or just the
 snapshots associated with a particular cache cluster.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ListTagsForResource()
+
+  Arguments described in: L<Paws::ElastiCache::ListTagsForResource>
+
+  Returns: L<Paws::ElastiCache::TagListMessage>
+
+  
+
+The I<ListTagsForResource> action lists all cost allocation tags
+currently on the named resource. A I<cost allocation tag> is a
+key-value pair where the key is case-sensitive and the value is
+optional. Cost allocation tags can be used to categorize and track your
+AWS costs.
+
+You can have a maximum of 10 cost allocation tags on an ElastiCache
+resource. For more information, see Using Cost Allocation Tags in
+Amazon ElastiCache.
 
 
 
@@ -1023,8 +933,8 @@ snapshots associated with a particular cache cluster.
 
   
 
-The I<ModifyCacheCluster> operation modifies the settings for a cache
-cluster. You can use this operation to change one or more cluster
+The I<ModifyCacheCluster> action modifies the settings for a cache
+cluster. You can use this action to change one or more cluster
 configuration parameters by specifying the parameters and the new
 values.
 
@@ -1046,7 +956,7 @@ values.
 
   
 
-The I<ModifyCacheParameterGroup> operation modifies the parameters of a
+The I<ModifyCacheParameterGroup> action modifies the parameters of a
 cache parameter group. You can modify up to 20 parameters in a single
 request by submitting a list parameter name and value pairs.
 
@@ -1068,8 +978,8 @@ request by submitting a list parameter name and value pairs.
 
   
 
-The I<ModifyCacheSubnetGroup> operation modifies an existing cache
-subnet group.
+The I<ModifyCacheSubnetGroup> action modifies an existing cache subnet
+group.
 
 
 
@@ -1089,7 +999,7 @@ subnet group.
 
   
 
-The I<ModifyReplicationGroup> operation modifies the settings for a
+The I<ModifyReplicationGroup> action modifies the settings for a
 replication group.
 
 
@@ -1110,8 +1020,8 @@ replication group.
 
   
 
-The I<PurchaseReservedCacheNodesOffering> operation allows you to
-purchase a reserved cache node offering.
+The I<PurchaseReservedCacheNodesOffering> action allows you to purchase
+a reserved cache node offering.
 
 
 
@@ -1131,7 +1041,7 @@ purchase a reserved cache node offering.
 
   
 
-The I<RebootCacheCluster> operation reboots some, or all, of the cache
+The I<RebootCacheCluster> action reboots some, or all, of the cache
 nodes within a provisioned cache cluster. This API will apply any
 modified cache parameter groups to the cache cluster. The reboot action
 takes place as soon as possible, and results in a momentary outage to
@@ -1153,6 +1063,27 @@ When the reboot is complete, a cache cluster event is created.
 
 
 
+=head2 RemoveTagsFromResource()
+
+  Arguments described in: L<Paws::ElastiCache::RemoveTagsFromResource>
+
+  Returns: L<Paws::ElastiCache::TagListMessage>
+
+  
+
+The I<RemoveTagsFromResource> action removes the tags identified by the
+C<TagKeys> list from the named resource.
+
+
+
+
+
+
+
+
+
+
+
 =head2 ResetCacheParameterGroup()
 
   Arguments described in: L<Paws::ElastiCache::ResetCacheParameterGroup>
@@ -1161,7 +1092,7 @@ When the reboot is complete, a cache cluster event is created.
 
   
 
-The I<ResetCacheParameterGroup> operation modifies the parameters of a
+The I<ResetCacheParameterGroup> action modifies the parameters of a
 cache parameter group to the engine or system default value. You can
 reset specific parameters by submitting a list of parameter names. To
 reset the entire cache parameter group, specify the
@@ -1185,9 +1116,9 @@ I<ResetAllParameters> and I<CacheParameterGroupName> parameters.
 
   
 
-The I<RevokeCacheSecurityGroupIngress> operation revokes ingress from a
-cache security group. Use this operation to disallow access from an
-Amazon EC2 security group that had been previously authorized.
+The I<RevokeCacheSecurityGroupIngress> action revokes ingress from a
+cache security group. Use this action to disallow access from an Amazon
+EC2 security group that had been previously authorized.
 
 
 

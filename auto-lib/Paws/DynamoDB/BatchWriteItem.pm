@@ -58,8 +58,8 @@ I<Key> - A map of primary key attribute values that uniquely identify
 the ! item. Each entry in this map consists of an attribute name and an
 attribute value. For each primary key, you must provide I<all> of the
 key attributes. For example, with a hash type primary key, you only
-need to specify the hash attribute. For a hash-and-range type primary
-key, you must specify I<both> the hash attribute and the range
+need to provide the hash attribute. For a hash-and-range type primary
+key, you must provide I<both> the hash attribute and the range
 attribute.
 
 =back

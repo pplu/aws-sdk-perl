@@ -78,9 +78,9 @@ Valid Values: C<1 | 3 | 31536000 | 94608000>
   
 
 An optional marker returned from a prior request. Use this marker for
-pagination of results from this operation. If this parameter is
-specified, the response includes only records beyond the marker, up to
-the value specified by I<MaxRecords>.
+pagination of results from this action. If this parameter is specified,
+the response includes only records beyond the marker, up to the value
+specified by I<MaxRecords>.
 
 
 
@@ -120,7 +120,7 @@ Constraints: minimum 20; maximum 100.
 The offering type filter value. Use this parameter to show only the
 available offerings matching the specified offering type.
 
-Valid Values: C<"Light Utilization" | "Medium Utilization" | "Heavy
+Valid Values: C<"Light Utilization"|"Medium Utilization"|"Heavy
 Utilization">
 
 

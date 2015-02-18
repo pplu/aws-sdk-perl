@@ -7,6 +7,8 @@ package Paws::Route53::ListTagsForResources {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTagsForResources');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/tags/{ResourceType}');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ListTagsForResourcesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListTagsForResourcesResult');
 }

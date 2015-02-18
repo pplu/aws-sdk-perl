@@ -1,0 +1,18 @@
+2015-02-09
+ - Paws->service and $aws->service no longer return a class that
+   has to be constructed. Instead they return an INSTANCE of the
+   class. Attributes for the constructor can be passed as the 
+   subsequent parameters of ->service.
+   A method class_for_service returns the service class in the "old"
+   fashion
+   ->service('X')->new(region => 'Y') is now
+   ->service('X', region => 'Y')
+   or
+   ->class_for_service('X')->new(region => 'Y')
+
+   The recommended one is ->service('X', region => 'Y')
+2015-02-10
+ - Adding paginators broke lots of classes (not loading)
+   deactivated paginators on json, query and restxml classes
+   The only guys who conserves paginators is EC2
+ 
