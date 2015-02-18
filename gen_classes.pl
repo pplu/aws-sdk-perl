@@ -51,6 +51,7 @@ my $namespaces = {
   ses => 'SES',
   simpledb => 'SimpleDB',
   swf => 'SimpleWorkflow',
+  ssm => 'SSM',
   sns => 'SNS',
   sqs => 'SQS',
   storagegateway => 'StorageGateway',
