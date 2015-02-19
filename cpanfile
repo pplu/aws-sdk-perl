@@ -19,6 +19,7 @@ requires 'MooseX::Getopt';
 requires 'ARGV::Struct';
 requires 'Module::Find';
 requires 'Getopt::Long';
+requires 'Browser::Open';
 
 on 'build' => sub {
   requires 'Data::Printer';

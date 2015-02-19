@@ -4,24 +4,34 @@ use Paws::API;
 
 package Paws::Signin {
   use Moose;
-  has service => (is => 'ro', isa => 'Str', default => 'signin.aws');
-  has version => (is => 'ro', isa => 'Str', default => '2010-05-08');
-  has flattened_arrays => (is => 'ro', isa => 'Str', default => '0');
+  sub service { 'signin.aws' }
+  sub version { '2010-05-08' }
+  sub flattened_arrays { 0 }
 
-  use MooseX::ClassAttribute;
-  class_has endpoint_role => (is => 'ro', isa => 'Str', default => 'Paws::API::SigninEndpointCaller');
-  class_has signature_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::NoSignature');
-  class_has parameter_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::SigninCaller');
-  class_has response_role => (is => 'ro', isa => 'Str', default => 'Paws::Net::JsonResponse');
-
+  with 'Paws::API::Caller', 'Paws::API::SigninEndpointCaller', 'Paws::Net::NoSignature', 'Paws::Net::SigninCaller', 'Paws::Net::JsonResponse';
   
   sub GetSigninToken {
     my $self = shift;
-    return $self->do_call('Paws::Signin::GetSigninToken', @_);
+    my $call_object = $self->new_with_coercions('Paws::Signin::GetSigninToken', @_);
+    return $self->caller->do_call($self, $call_object);
   }
+
   sub Login {
     my $self = shift;
-    return $self->do_call('Paws::Signin::Login', @_);
+
+    my $call_object = $self->new_with_coercions('Paws::Signin::Login', @_);
+    my $requestObj = $self->prepare_request_for_call($call_object); 
+
+    my $url = $requestObj->url;
+    my @param;
+    for my $p (keys %{ $requestObj->parameters }) {
+      push @param , join '=' , map { $self->caller->_uri_escape($_,"^A-Za-z0-9\-_.~") } ($p, $requestObj->parameters->{$p});
+    }
+    $url .= '?' . (join '&', @param) if (@param);
+    $requestObj->url($url);
+
+
+    return $self->response_to_object({ URL => $requestObj->url }, $call_object);
   }
 }
 1;

@@ -1,9 +1,9 @@
 
 package Paws::Signin::Login {
   use Moose;
-  has Issuer => (is => 'ro', isa => 'Str');
-  has Destination => (is => 'ro', isa => 'Str');
-  has SigninToken => (is => 'ro', isa => 'Str');
+  has Issuer => (is => 'ro', isa => 'Str', required => 1);
+  has Destination => (is => 'ro', isa => 'Str', required => 1);
+  has SigninToken => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 

@@ -1,0 +1,24 @@
+#!/usr/bin/env perl
+
+use Paws;
+use Browser::Open qw( open_browser );
+
+my $user = $ENV{USER} or 'paws federated user';
+my $issuer = 'http://aws.amazon.com';
+my $dest = 'https://console.aws.amazon.com/';
+
+my $creds = Paws->service('STS')->GetFederationToken(Name => $user, Policy => '{"Version": "2012-10-17","Statement": {"Effect": "Allow","Action": "*", "Resource": "*" } }');
+
+my $token = Paws->service('Signin')->GetSigninToken(
+  SessionId => $creds->Credentials->AccessKeyId, 
+  SessionKey => $creds->Credentials->SecretAccessKey, 
+  SessionToken => $creds->Credentials->SessionToken
+);
+
+my $url = Paws->service('Signin')->Login(
+  Issuer => $issuer,
+  Destination => $dest,
+  SigninToken => $token->SigninToken
+);
+
+open_browser($url->URL);

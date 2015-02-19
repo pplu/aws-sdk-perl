@@ -1,8 +1,8 @@
 
-package Paws::Signin::GetSigninTokenResponse {
+package Paws::Signin::LoginResponse {
   use Moose;
   with 'Paws::API::ResultParser';
-  has SigninToken => (is => 'ro', isa => 'Str', required => 1);
+  has URL => (is => 'ro', isa => 'Str', required => 1);
 }
 1;
 

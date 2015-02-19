@@ -1,7 +1,9 @@
 
 package Paws::Signin::GetSigninToken {
   use Moose;
-  has Session => (is => 'ro', isa => 'Str');
+  has SessionId => (is => 'ro', isa => 'Str', required => 1);
+  has SessionKey => (is => 'ro', isa => 'Str', required => 1);
+  has SessionToken => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
