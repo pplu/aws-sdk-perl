@@ -3,7 +3,7 @@ package Paws::ElastiCache::DescribeSnapshotsListMessage {
   use Moose;
   with 'Paws::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
-  has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Snapshot]', traits => ['Unwrapped'], xmlname => 'Snapshot');
+  has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Snapshot]', xmlname => 'Snapshot', traits => ['Unwrapped',]);
 
 }
 1;

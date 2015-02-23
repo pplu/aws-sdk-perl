@@ -2,14 +2,14 @@
 package Paws::S3::PutBucketAcl {
   use Moose;
   has AccessControlPolicy => (is => 'ro', isa => 'Paws::S3::AccessControlPolicy');
-  has ACL => (is => 'ro', isa => 'Str');
+  has ACL => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-acl' );
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has ContentMD5 => (is => 'ro', isa => 'Str');
-  has GrantFullControl => (is => 'ro', isa => 'Str');
-  has GrantRead => (is => 'ro', isa => 'Str');
-  has GrantReadACP => (is => 'ro', isa => 'Str');
-  has GrantWrite => (is => 'ro', isa => 'Str');
-  has GrantWriteACP => (is => 'ro', isa => 'Str');
+  has ContentMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-MD5' );
+  has GrantFullControl => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-full-control' );
+  has GrantRead => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-read' );
+  has GrantReadACP => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-read-acp' );
+  has GrantWrite => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-write' );
+  has GrantWriteACP => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-write-acp' );
 
   use MooseX::ClassAttribute;
 

@@ -2,20 +2,20 @@
 package Paws::S3::UploadPartCopy {
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has CopySource => (is => 'ro', isa => 'Str', required => 1);
-  has CopySourceIfMatch => (is => 'ro', isa => 'Str');
-  has CopySourceIfModifiedSince => (is => 'ro', isa => 'Str');
-  has CopySourceIfNoneMatch => (is => 'ro', isa => 'Str');
-  has CopySourceIfUnmodifiedSince => (is => 'ro', isa => 'Str');
-  has CopySourceRange => (is => 'ro', isa => 'Str');
-  has CopySourceSSECustomerAlgorithm => (is => 'ro', isa => 'Str');
-  has CopySourceSSECustomerKey => (is => 'ro', isa => 'Str');
-  has CopySourceSSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
+  has CopySource => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source' , required => 1);
+  has CopySourceIfMatch => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-if-match' );
+  has CopySourceIfModifiedSince => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-if-modified-since' );
+  has CopySourceIfNoneMatch => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-if-none-match' );
+  has CopySourceIfUnmodifiedSince => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-if-unmodified-since' );
+  has CopySourceRange => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-range' );
+  has CopySourceSSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-server-side-encryption-customer-algorithm' );
+  has CopySourceSSECustomerKey => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-server-side-encryption-customer-key' );
+  has CopySourceSSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-server-side-encryption-customer-key-MD5' );
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has PartNumber => (is => 'ro', isa => 'Int', required => 1);
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
-  has SSECustomerKey => (is => 'ro', isa => 'Str');
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
+  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm' );
+  has SSECustomerKey => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key' );
+  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5' );
   has UploadId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -24,7 +24,7 @@ package Paws::S3::UploadPartCopy {
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::UploadPartCopyOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UploadPartCopyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 

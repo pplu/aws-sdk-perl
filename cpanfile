@@ -11,12 +11,15 @@ requires 'DateTime';
 requires 'DateTime::Format::ISO8601';
 requires 'URL::Encode';
 requires 'URL::Encode::XS';
+requires 'URI::Template';
+requires 'Digest::HMAC';
 # For the paws CLI
 requires 'Hash::Flatten';
 requires 'MooseX::Getopt';
 requires 'ARGV::Struct';
 requires 'Module::Find';
 requires 'Getopt::Long';
+requires 'Browser::Open';
 
 on 'build' => sub {
   requires 'Data::Printer';

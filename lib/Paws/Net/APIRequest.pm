@@ -7,9 +7,8 @@ package Paws::Net::APIRequest {
   has headers    => (is => 'rw', isa => 'HTTP::Headers', default => sub { HTTP::Headers->new });
   has content    => (is => 'rw', isa => 'Str');
   has method     => (is => 'rw', isa => 'Str');
+  has uri        => (is => 'rw', isa => 'Str');
   has url        => (is => 'rw', isa => 'Str');
-
-  sub uri { '/' };
 
   sub header {
     my ($self, $header, $value) = @_;

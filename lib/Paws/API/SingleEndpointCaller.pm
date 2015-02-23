@@ -15,7 +15,7 @@ package Paws::API::SingleEndpointCaller {
 
   sub _api_endpoint {
     my $self = shift;
-    return sprintf '%s://%s/', 'https', $self->endpoint_host;
+    return sprintf '%s://%s', 'https', $self->endpoint_host;
   }
 }
 

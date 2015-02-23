@@ -2,7 +2,7 @@
 package Paws::SQS::ListDeadLetterSourceQueuesResult {
   use Moose;
   with 'Paws::API::ResultParser';
-  has queueUrls => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'QueueUrl', required => 1);
+  has queueUrls => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'QueueUrl', traits => ['Unwrapped',], required => 1);
 
 }
 1;

@@ -2,7 +2,7 @@
 package Paws::S3::PutBucketWebsite {
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has ContentMD5 => (is => 'ro', isa => 'Str');
+  has ContentMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-MD5' );
   has WebsiteConfiguration => (is => 'ro', isa => 'Paws::S3::WebsiteConfiguration', required => 1);
 
   use MooseX::ClassAttribute;

@@ -64,6 +64,18 @@ package Paws::API::Builder {
     die "Please help me generate a good name for the paginator $name";
   }
 
+  has encoders_file => (is => 'ro', lazy => 1, default => sub {
+    my $file = shift->api_file;
+    $file =~ s/\.normal\./.encoders./;
+    return $file;
+  });
+
+  has encoders_struct => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return $self->_load_json_file($self->encoders_file)->{ encoding };
+  });
+
+
   has inner_classes => (is => 'rw', isa => 'HashRef', default => sub { {} });
   has enums => (is => 'rw', isa => 'HashRef', default => sub { {} });
 

@@ -78,6 +78,8 @@ package Paws::API::Caller {
   sub response_to_object {
     my ($self, $unserialized_struct, $call_object) = @_;
 
+    $call_object = $call_object->meta->name;
+
     if ($call_object->_returns){
       if ($call_object->_result_key){
         $unserialized_struct = $unserialized_struct->{ $call_object->_result_key };

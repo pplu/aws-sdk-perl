@@ -46,10 +46,14 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
   use Moose;
   with 'Paws::API::ResultParser';
 [% FOREACH param_name IN shape.members.keys.sort -%]
-  [%- member = c.shape(shape.members.$param_name.shape) -%]
+  [%- traits = [] -%]
+  [%- member_shape_name = shape.members.$param_name.shape %]
+  [%- member = c.shape(member_shape_name) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
-  [%- IF (member.locationName) %], traits => ['Unwrapped'], xmlname => '[% member.locationName %]'[% END %]
-  [%- IF (member.type == 'list' and member.member.locationName) %], traits => ['Unwrapped'], xmlname => '[% member.member.locationName %]'[% END %]
+  [%- IF (member.locationName); traits.push('Unwrapped') %], xmlname => '[% member.locationName %]'[% END %]
+  [%- IF (member.type == 'list' and member.member.locationName); traits.push('Unwrapped') %], xmlname => '[% member.member.locationName %]'[% END %]
+  [%- encoder = c.encoders_struct.$member_shape_name; IF (encoder); traits.push('JSONAttribute') %], decode_as => '[% encoder.encoding %]', method => '[% encoder.alias %]'[% END %]
+  [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]',[% END %]][% END -%]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
 }
@@ -180,7 +184,8 @@ package [% c.api %] {
         $output .= "  use Moose;\n";
         my $members = $iclass->{members};
         foreach my $param_name (sort keys %$members){
-          my $param_props = $self->shape($members->{ $param_name }->{ shape });
+          my $member_shape_name = $members->{ $param_name }->{ shape };
+          my $param_props = $self->shape($member_shape_name);
 
           my $callit = $self->get_caller_class_type($members->{ $param_name }->{ shape });
           $self->make_inner_class($param_props,$callit);
@@ -195,9 +200,18 @@ package [% c.api %] {
             $type = eval { $self->get_caller_class_type($members->{ $param_name }->{ shape }) };
             if ($@) { die "In Inner Class: $inner_class: $@"; }
           }
+          my $traits = [];
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
           if (defined $members->{ $param_name }->{locationName}) {
-            $output .= ", traits => ['Unwrapped'], xmlname => '$members->{ $param_name }->{locationName}'";
+            push @$traits, 'Unwrapped';
+            $output .= ", xmlname => '$members->{ $param_name }->{locationName}'";
+          }
+          if (defined $self->encoders_struct and my $encoder = $self->encoders_struct->{ $member_shape_name }) {
+            push @$traits, 'JSONAttribute';
+            $output .= ", decode_as => '$encoder->{ encoding }', method => '$encoder->{ alias }'";
+          }
+          if (@$traits) {
+            $output .= ", traits => [" . (join ',', map { "'$_'" } @$traits) . "]";
           }
           $output .= ", required => 1" if ($self->required_in_shape($iclass,$param_name));
           $output .= ");\n";

@@ -2,7 +2,7 @@
 package Paws::ElastiCache::TagListMessage {
   use Moose;
   with 'Paws::API::ResultParser';
-  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]', traits => ['Unwrapped'], xmlname => 'Tag');
+  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]', xmlname => 'Tag', traits => ['Unwrapped',]);
 
 }
 1;

@@ -2,7 +2,7 @@
 package Paws::SDB::ListDomainsResult {
   use Moose;
   with 'Paws::API::ResultParser';
-  has DomainNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'DomainName');
+  has DomainNames => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'DomainName', traits => ['Unwrapped',]);
   has NextToken => (is => 'ro', isa => 'Str');
 
 }
