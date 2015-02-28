@@ -43,6 +43,7 @@ package Paws::Net::JsonCaller {
     my $request = Paws::Net::APIRequest->new();
 
     $request->url($self->_api_endpoint . '/');
+    $request->uri('/');
     $request->method('POST');
 
     $request->parameters({ Action => $call->_api_call,
