@@ -1,4 +1,4 @@
-package Paws::Net::CredentialsProviderChain {
+package Paws::Credential::ProviderChain {
   use Moose;
 
   use Module::Runtime qw//;
@@ -7,13 +7,13 @@ package Paws::Net::CredentialsProviderChain {
     is => 'ro', 
     isa => 'ArrayRef[Str]', 
     default => sub {
-      [ 'Paws::Net::EnvCredentials', 'Paws::Net::FileCredentials', 'Paws::Net::InstanceProfileCredentials' ]
+      [ 'Paws::Credential::Environment', 'Paws::Credential::File', 'Paws::Credential::InstanceProfile' ]
     },
   );
 
   has selected_provider => (
     is => 'rw',
-    does => 'Paws::Net::Credentials',
+    does => 'Paws::Credential',
     handles => [ 'access_key', 'secret_key', 'session_token' ], 
   );
 
@@ -31,7 +31,7 @@ package Paws::Net::CredentialsProviderChain {
     die "Can't find any credentials. I tried with " . (join ',', @{ $self->providers })
   }
 
-  with 'Paws::Net::Credentials';
+  with 'Paws::Credential';
 }
 
 1;

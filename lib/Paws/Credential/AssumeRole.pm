@@ -1,9 +1,9 @@
-package Paws::Net::AssumeRoleCredentials {
+package Paws::Credential::AssumeRole {
   use JSON;
   use Moose;
   use DateTime;
   use DateTime::Format::ISO8601;
-  with 'Paws::Net::Credentials';
+  with 'Paws::Credential';
 
   has expiration => (
     is => 'rw',

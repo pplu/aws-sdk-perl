@@ -73,9 +73,9 @@ Credentials
 ============
 
 There are various ways of transmitting credentials to the SDK. By default a 
-CredentialsProviderChain is used. This chain tries to use the EnvCredentials, later the 
-FileCredentials, and later the InstanceProfileCredentials other credential providers have
-to be passed explicitly when requesting a service.
+ProviderChain is used. This chain tries to use the Environment, later the 
+File, and later the InstanceProfile credential modules until it finds credentials. 
+Other credential providers have to be passed explicitly when requesting a service.
 
 ```
 my $svc = Paws->service('IAM', credentials => ...CredentialProvider...->new(...));
@@ -83,14 +83,14 @@ my $svc = Paws->service('IAM', credentials => ...CredentialProvider...->new(...)
 
 These Credential providers work as follows:
 
-EnvCredentials
+Paws::Credential::Environment
 
 tries to find credentials in the process environment variables
  - Access Key in AWS_ACCESS_KEY or AWS_ACCESS_KEY_ID
  - Secret Key in AWS_SECRET_KEY or AWS_SECRET_ACCESS_KEY
  - Session Token [optional] in AWS_SESSION_TOKEN
 
-FileCredentials
+Paws::Credential::File
 
 tries to find credentials in ~/.aws/credentials. This file is an ini formatted file
 as specified in http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-config-files.
@@ -98,17 +98,27 @@ as specified in http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting
 it will try to find keys aws_access_key_id, aws_secret_access_key and aws_session_token in the default profile,
 or in the profile specified by ENV variable AWS_DEFAULT_PROFILE.
 
-InstanceProfileCredentials
+Paws::Credential::InstanceProfile
 
 Instance Profiles (Roles) are also supported, so if you're running on an 
 instance with a Role, the SDK will automatically pick up credentials. 
 
-STSCredentials
+Paws::Credential::STS
 
 With the STS Credential provider, you can use temporary federated credentials with 
 optionally restricted permissions, obtained via the AWS STS service.
 
-AssumeRoleCredentials
+```
+my $cred_provider = Paws::Credential::STS->new(
+  Name => 'MyName',
+  DurationSeconds => 900,
+  Policy => '{"Version":"2012-10-17","Statement":[{"Effect": "Allow","Action":["ec2:DescribeInstances"],"Resource":"*"}]}'
+);
+my $ec2 = Paws->service('EC2', credentials => $cred_provider, region => 'eu-west-1');
+$ec2->DescribeIsntances;
+```
+
+Paws::Credential::AssumeRole
 
 With the AssumeRole provider you can enable cross account access (call other accounts
 APIs without needing them to provide you with access keys and secret keys.
@@ -116,7 +126,7 @@ APIs without needing them to provide you with access keys and secret keys.
 ```
 my $ec2 = Paws->service('EC2',
   region => 'eu-west-1', 
-  credentials => Paws::Net::AssumeRoleCredentials->new(
+  credentials => Paws::Credential::AssumeRole->new(
     RoleArn => 'arn:aws:iam::123456789012:role/AdminRole',
     RoleSessionName => 'CrossAccountTest',
     ExternalId => 'MyExternalId',

@@ -1,4 +1,4 @@
-package Paws::Net::FileCredentials {
+package Paws::Credential::File {
   use Moose;
   use Config::INI::Reader;
 
@@ -39,7 +39,7 @@ package Paws::Net::FileCredentials {
     return $st;
   });
 
-  with 'Paws::Net::Credentials';
+  with 'Paws::Credential';
 
   no Moose;
 }

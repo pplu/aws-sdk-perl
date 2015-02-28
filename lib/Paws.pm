@@ -141,9 +141,9 @@ Please never burn credentials into your code. That's why the methods for passing
 
 When instancing a service object, we can pass in custom credential providers
 
-  use Paws::Net::STSCredentials;
+  use Paws::Credential::STS;
 
-  my $cred_provider = Paws::Net::STSCredentials->new(
+  my $cred_provider = Paws::Credential::STS->new(
     Name => 'MyName',
     DurationSeconds => 900,
     Policy => '{"Version":"2012-10-17","Statement":[{"Effect": "Allow","Action":["ec2:DescribeInstances"],"Resource":"*"}]}'
