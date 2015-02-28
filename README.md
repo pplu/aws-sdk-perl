@@ -137,12 +137,20 @@ service classes, transmit credentials, etc. Look at the TODO for expected change
 As of 2015-02 I'm documenting breaking changes in the Changes file. API changes that break stuff
 will be documented there. Please read the Changes file before updating your git clone.
 
+Using the SDK in your code
+================
+
+Although the code isn't considered stable yet, it works, and more than one person is using it 
+already. I recommend you to use a fixed checkout of the repo, via a git submodule, for example. 
+Try to keep up-to-date by updating frequently, but read the Changes file before, so you can see 
+if there is any before-seen breakage in the process.
+
 Supported AWS Services
 ================
 
 Just load a class (via Paws->service). (note that there is also a method in Paws that lists all
 loadable service classes (the cli uses it, so try out the CLI!). If a service is not supported,
-it will die on construction with an explicit "non supported API" message. Basically all query and
+it will warn on construction with an explicit "non supported API" message. Basically all query and
 json services are supported. RestXML and RestJSON services are in the coming.
 
 Documentation
