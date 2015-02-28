@@ -7,7 +7,7 @@ package Paws::Net::CredentialsProviderChain {
     is => 'ro', 
     isa => 'ArrayRef[Str]', 
     default => sub {
-      [ 'Paws::Net::EnvCredentials', 'Paws::Net::InstanceProfileCredentials' ]
+      [ 'Paws::Net::EnvCredentials', 'Paws::Net::FileCredentials', 'Paws::Net::InstanceProfileCredentials' ]
     },
   );
 
