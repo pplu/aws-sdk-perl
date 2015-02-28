@@ -35,7 +35,7 @@ package Paws::Credential::AssumeRole {
   }
 
   has sts => (is => 'ro', isa => 'Paws::STS', default => sub {
-    Paws->service('STS')->new();
+    Paws->service('STS');
   });
 
   has DurationSeconds => (is => 'rw', isa => 'Maybe[Int]');
