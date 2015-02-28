@@ -5,7 +5,6 @@ package Paws::ECS::RegisterTaskDefinitionResponse {
   has taskDefinition => (is => 'ro', isa => 'Paws::ECS::TaskDefinition');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -22,3 +21,4 @@ Paws::ECS::RegisterTaskDefinitionResponse
 
 =cut
 
+1;

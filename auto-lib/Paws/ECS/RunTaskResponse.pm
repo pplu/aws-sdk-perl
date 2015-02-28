@@ -6,7 +6,6 @@ package Paws::ECS::RunTaskResponse {
   has tasks => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Task]');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -49,3 +48,4 @@ successfully placed on your cluster will be described here.
 
 =cut
 
+1;

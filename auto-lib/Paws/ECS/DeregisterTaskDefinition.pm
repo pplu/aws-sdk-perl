@@ -7,7 +7,7 @@ package Paws::ECS::DeregisterTaskDefinition {
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterTaskDefinition');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DeregisterTaskDefinitionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeregisterTaskDefinitionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 

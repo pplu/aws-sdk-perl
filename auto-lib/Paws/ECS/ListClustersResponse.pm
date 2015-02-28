@@ -6,7 +6,6 @@ package Paws::ECS::ListClustersResponse {
   has nextToken => (is => 'ro', isa => 'Str');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -52,3 +51,4 @@ is C<null> when there are no more results to return.
 
 =cut
 
+1;

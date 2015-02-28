@@ -7,7 +7,7 @@ package Paws::ECS::DeleteCluster {
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DeleteClusterResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 
@@ -37,7 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The cluster you want to delete.
+The short name or full Amazon Resource Name (ARN) of the cluster that
+you want to delete.
 
 
 

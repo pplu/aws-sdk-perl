@@ -6,7 +6,6 @@ package Paws::ECS::ListContainerInstancesResponse {
   has nextToken => (is => 'ro', isa => 'Str');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -53,3 +52,4 @@ return.
 
 =cut
 
+1;

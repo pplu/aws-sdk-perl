@@ -8,7 +8,7 @@ package Paws::ECS::StopTask {
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopTask');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::StopTaskResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'StopTaskResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 

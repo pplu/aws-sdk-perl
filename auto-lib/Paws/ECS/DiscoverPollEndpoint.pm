@@ -1,13 +1,14 @@
 
 package Paws::ECS::DiscoverPollEndpoint {
   use Moose;
+  has cluster => (is => 'ro', isa => 'Str');
   has containerInstance => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DiscoverPollEndpoint');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DiscoverPollEndpointResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DiscoverPollEndpointResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 
@@ -32,6 +33,21 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+=head2 cluster => Str
+
+  
+
+The cluster that the container instance belongs to.
+
+
+
+
+
+
+
+
+
 
 =head2 containerInstance => Str
 

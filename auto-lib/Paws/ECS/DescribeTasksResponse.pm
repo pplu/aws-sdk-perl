@@ -6,7 +6,6 @@ package Paws::ECS::DescribeTasksResponse {
   has tasks => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Task]');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -37,3 +36,4 @@ The list of tasks.
 
 =cut
 
+1;

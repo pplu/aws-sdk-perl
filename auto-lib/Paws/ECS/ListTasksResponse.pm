@@ -6,7 +6,6 @@ package Paws::ECS::ListTasksResponse {
   has taskArns => (is => 'ro', isa => 'ArrayRef[Str]');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -52,3 +51,4 @@ C<ListTasks> request.
 
 =cut
 
+1;

@@ -11,7 +11,7 @@ package Paws::ECS::ListTasks {
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTasks');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::ListTasksResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListTasksResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 
