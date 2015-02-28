@@ -46,7 +46,7 @@ Paws::Signin - Perl Interface to AWS Console Signin service
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
+  my $obj = Paws->service('...');
   my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
 
 =cut

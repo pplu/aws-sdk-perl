@@ -18,7 +18,7 @@ use Test::More;
   # Get an Paws object, with defaults and then a service
   my $aws = Paws->new;
   cmp_ok($aws->config->caller, 'eq', 'Paws::Net::Caller', 'Got default caller');
-  my $svc = $aws->service('SQS')->new( region => 'eu-west-1', version => 1 );
+  my $svc = $aws->service('SQS', region => 'eu-west-1', version => 1 );
   ok($svc->does('Paws::Net::Caller'), 'Correct default caller class');
 }
 
@@ -26,15 +26,15 @@ use Test::More;
   # Personalize Paws object, then get a service
   my $aws = Paws->new(config => Paws::SDK::Config->new(caller => 'A::NEW::CALLER'));
   cmp_ok($aws->config->caller, 'eq', 'A::NEW::CALLER', 'Got new caller');
-  my $svc = $aws->service('SQS')->new( region => 'eu-west-1', version => 1 );
+  my $svc = $aws->service('SQS', region => 'eu-west-1', version => 1 );
   ok($svc->does('A::NEW::CALLER'), 'Correct custom caller class');
   
-  my $svc2 = $aws->service('SQS')->new( region => 'eu-west-1', version => 1 );
+  my $svc2 = $aws->service('SQS', region => 'eu-west-1', version => 1 );
 
   cmp_ok($svc->meta->name, 'eq', $svc2->meta->name, 'Got the same class calling service twice');
 
   my $aws2 = Paws->new(config => Paws::SDK::Config->new(caller => 'A::NEW::CALLER2'));
-  my $svc3 = $aws2->service('SQS')->new( region => 'eu-west-1', version => 1 );
+  my $svc3 = $aws2->service('SQS', region => 'eu-west-1', version => 1 );
 
   ok($svc3->does('A::NEW::CALLER2'), 'Correct custom caller class');
 
@@ -43,7 +43,7 @@ use Test::More;
 
 {
   # Get a service through the Paws class
-  my $svc = Paws->service('SQS')->new( region => 'eu-west-1', version => 1 );
+  my $svc = Paws->service('SQS', region => 'eu-west-1', version => 1 );
   ok($svc->does('Paws::Net::Caller'), 'Correct default caller class');
 }
 
