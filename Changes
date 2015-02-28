@@ -1,3 +1,6 @@
+2015-02-28
+ - The default CredentialProviderChain will now try to read an ini
+   file in ~/.aws/credentials with the aws credentials
 2015-02-09
  - Paws->service and $aws->service no longer return a class that
    has to be constructed. Instead they return an INSTANCE of the
