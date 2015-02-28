@@ -1,6 +1,8 @@
 2015-02-28
  - The default CredentialProviderChain will now try to read an ini
    file in ~/.aws/credentials with the aws credentials
+ - The Credential providers have been moved into Paws::Credential namespace
+ - The role that all Credential Providers have to add is now Paws::Credential
 2015-02-09
  - Paws->service and $aws->service no longer return a class that
    has to be constructed. Instead they return an INSTANCE of the
