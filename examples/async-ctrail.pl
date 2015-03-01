@@ -10,16 +10,14 @@ use Data::Dumper;
 use Data::Printer;
 
 use Future;
+use Future::Utils;
 
 my $aws = Paws->new(
   config => Paws::SDK::Config->new(caller => 'Paws::Net::MojoAsyncCaller')
 );
 
 my $regions = { 
-  map { $_ => { 
-          client => $aws->service('CloudTrail', region => $_)
-        } 
-      } (
+  map { ($_ => { client => $aws->service('CloudTrail', region => $_) }) } (
           "us-east-1", "ap-northeast-1", "sa-east-1",
           "ap-southeast-1", "ap-southeast-2", "us-west-2",
           "us-west-1", "eu-west-1", "eu-central-1",
@@ -45,9 +43,7 @@ foreach my $region (keys %$regions) {
       return Future->done;
     }
   });
-}
-
-Mojo::IOLoop->start unless Mojo::IOLoop->is_running;
+};
 
 Future->needs_all(@ops)->get;
 
