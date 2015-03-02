@@ -11,11 +11,7 @@ package Paws::API::ResultParser {
       next if (not my $meta = $class->meta->get_attribute($att));
 
       my $key = $meta->does('Paws::API::Attribute::Trait::Unwrapped') ? $meta->xmlname : $att;
-
       my $att_type = $meta->type_constraint;
-
-      my $value = $result->{ $key };
-      my $value_ref = ref($value);
 
       #use Data::Dumper;
       #print STDERR "GOING TO DO AN $att_type\n";
@@ -24,6 +20,9 @@ package Paws::API::ResultParser {
 
       # We'll consider that an attribute without brackets [] isn't an array type
       if ($att_type !~ m/\[.*\]$/) {
+        my $value = $result->{ $key };
+        my $value_ref = ref($value);
+
         if ($att_type =~ m/\:\:/) {
           # Make the att_type stringify for module loading
           Module::Runtime::require_module("$att_type");
@@ -124,6 +123,9 @@ package Paws::API::ResultParser {
           }
         }
       } elsif (my ($type) = ($att_type =~ m/^ArrayRef\[(.*)\]$/)) {
+        my $value = $result->{ $att };
+        my $value_ref = ref($value);
+
         if ($value_ref eq 'HASH') {
           if (exists $value->{ member }) {
             $value = $value->{ member };
