@@ -8,11 +8,11 @@ package Paws::API::Caller {
 
   has credentials => (
     is => 'ro',
-    does => 'Paws::Net::Credentials',
+    does => 'Paws::Credential',
     lazy => 1,
     default => sub { 
-      require Paws::Net::CredentialsProviderChain;
-      return Paws::Net::CredentialsProviderChain->new 
+      require Paws::Credential::ProviderChain;
+      return Paws::Credential::ProviderChain->new 
     },
     handles => [ 'access_key', 'secret_key', 'session_token' ],
   );

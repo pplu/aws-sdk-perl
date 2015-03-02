@@ -98,7 +98,7 @@ Paws - A Perl SDK for AWS (Amazon Web Services) APIs
 =head1 SYNOPSIS
 
   use Paws;
-  my $obj = Paws->service('...')->new;
+  my $obj = Paws->service('...');
   my $res = $obj->MethodCall(Arg1 => $val1, Arg2 => $val2);
   print $res->AttributeFromResult;
 
@@ -117,21 +117,34 @@ kept stable, and changes to it should be notified via ChangeLog
 
 Please take a look at classes in the Paws::XXX namespace
 
-=head1 SERVICE CLASSES
+=head1 SERVICES CLASSES
 
-Each service in AWS (EC2, CloudFormation, SQS, SNS, etc) has an service class associated. The service class represents the properties that a web service has (how to call it, what methods it has, how to authenticate, etc). When a service class is instanced, it will be able to make calls. To obtaing a service class is done via the ->service method
+Each service in AWS (EC2, CloudFormation, SQS, SNS, etc) has a service class. The service class represents the properties that a web service has (how to call it, what methods it has, how to authenticate, etc). When a service class is instanced with the right properties (region, if needed, credentials, caller, etc), it will be able to make calls to the service.
+
+Service classes are obtained through
+
+  my $service_class = Paws->class_for_service('Service');
+  my $service_object = $service_class->new(region => '...', caller => ...)
+
+Although they are seldom needed. 99% of the time you want service objects directly obtained with the ->service method (read next section) since you have to write less code.
+
+=head1 SERVICE OBJECTS
+
+Each Service Object represents the ability to call methods on a service endpoint. Those endpoints are
+either global, or bound to a region depending on the service. Also, each object can be customized 
+with a credential provider, that tells the object where to obtain credentials for the call (you can
+get them from the environment, from the filesystem, from the AWS Instance Profile, STS, etc.
+
+To obtain a service object, call the ->service method
 
   use Paws;
-  my $service_class = Paws->service('Service');
+  my $service = Paws->service('Service');
 
-To obtain an instance, call ->new on the class, and pass in the required parameters
+You can pass extra parameters if the service is bound to a region:
 
-  my $service = $service_class->new(region => '...');
+  my $service = Paws->service('Service', region => 'us-east-1');
 
-As a shortcut, you can use:
-
-  use Paws;
-  my $service = Paws->service('Service')->new(region => '...');
+These parameters are basically passed to the service class constructor
 
 =head1 AUTHENTICATION
 
@@ -141,14 +154,14 @@ Please never burn credentials into your code. That's why the methods for passing
 
 When instancing a service object, we can pass in custom credential providers
 
-  use Paws::Net::STSCredentials;
+  use Paws::Credential::STS;
 
-  my $cred_provider = Paws::Net::STSCredentials->new(
+  my $cred_provider = Paws::Credential::STS->new(
     Name => 'MyName',
     DurationSeconds => 900,
     Policy => '{"Version":"2012-10-17","Statement":[{"Effect": "Allow","Action":["ec2:DescribeInstances"],"Resource":"*"}]}'
   );
-  my $ec2 = Paws->service('EC2')->new(credentials => $cred_provider, region => 'eu-west-1');
+  my $ec2 = Paws->service('EC2', credentials => $cred_provider, region => 'eu-west-1');
 
 In this example we instance a service object that uses the STS service to create temporary credentials that only let the service object call DescribeInstances.
 

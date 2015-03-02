@@ -69,19 +69,71 @@ my $summary = $iam->GetAccountSummary;
 p $summary->SummaryMap;
 ```
 
-ACCESS_KEY and SECRET_KEY are transmitted via ENVIRONMENT variables for the moment.
-This behaviour will be changed. You also have to tell Perl where to get find the API
-classes (with -I option). IAM Roles are also supported, so if your running on an 
-instance with a Role, the SDK will automatically pick up credentials. You can also
-specify custom ways to get credentials creating your own credential providers, or using
-some like Paws::Net::STSCredentials, which will call STS to get temporary federated 
-credentials.
+Credentials
+============
+
+There are various ways of transmitting credentials to the SDK. By default a 
+ProviderChain is used. This chain tries to use the Environment, later the 
+File, and later the InstanceProfile credential modules until it finds credentials. 
+Other credential providers have to be passed explicitly when requesting a service.
 
 ```
-export AWS_ACCESS_KEY=....
-export AWS_SECRET_KEY=....
+my $svc = Paws->service('IAM', credentials => ...CredentialProvider...->new(...));
+```
 
-perl -I lib -I auto-lib myscript.pl
+These Credential providers work as follows:
+
+Paws::Credential::Environment
+
+tries to find credentials in the process environment variables
+ - Access Key in AWS_ACCESS_KEY or AWS_ACCESS_KEY_ID
+ - Secret Key in AWS_SECRET_KEY or AWS_SECRET_ACCESS_KEY
+ - Session Token [optional] in AWS_SESSION_TOKEN
+
+Paws::Credential::File
+
+tries to find credentials in ~/.aws/credentials. This file is an ini formatted file
+as specified in http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-config-files.
+
+it will try to find keys aws_access_key_id, aws_secret_access_key and aws_session_token in the default profile,
+or in the profile specified by ENV variable AWS_DEFAULT_PROFILE.
+
+Paws::Credential::InstanceProfile
+
+Instance Profiles (Roles) are also supported, so if you're running on an 
+instance with a Role, the SDK will automatically pick up credentials. 
+
+Paws::Credential::STS
+
+With the STS Credential provider, you can use temporary federated credentials with 
+optionally restricted permissions, obtained via the AWS STS service.
+
+```
+my $cred_provider = Paws::Credential::STS->new(
+  Name => 'MyName',
+  DurationSeconds => 900,
+  Policy => '{"Version":"2012-10-17","Statement":[{"Effect": "Allow","Action":["ec2:DescribeInstances"],"Resource":"*"}]}'
+);
+my $ec2 = Paws->service('EC2', credentials => $cred_provider, region => 'eu-west-1');
+$ec2->DescribeIsntances;
+```
+
+Paws::Credential::AssumeRole
+
+With the AssumeRole provider you can enable cross account access (call other accounts
+APIs without needing them to provide you with access keys and secret keys.
+
+```
+my $ec2 = Paws->service('EC2',
+  region => 'eu-west-1', 
+  credentials => Paws::Credential::AssumeRole->new(
+    RoleArn => 'arn:aws:iam::123456789012:role/AdminRole',
+    RoleSessionName => 'CrossAccountTest',
+    ExternalId => 'MyExternalId',
+  )
+);
+# get security groups from account 123456789012
+$ec2->DescribeSecurityGroups();
 ```
 
 Status
@@ -95,12 +147,20 @@ service classes, transmit credentials, etc. Look at the TODO for expected change
 As of 2015-02 I'm documenting breaking changes in the Changes file. API changes that break stuff
 will be documented there. Please read the Changes file before updating your git clone.
 
+Using the SDK in your code
+================
+
+Although the code isn't considered stable yet, it works, and more than one person is using it 
+already. I recommend you to use a fixed checkout of the repo, via a git submodule, for example. 
+Try to keep up-to-date by updating frequently, but read the Changes file before, so you can see 
+if there is any before-seen breakage in the process.
+
 Supported AWS Services
 ================
 
 Just load a class (via Paws->service). (note that there is also a method in Paws that lists all
 loadable service classes (the cli uses it, so try out the CLI!). If a service is not supported,
-it will die on construction with an explicit "non supported API" message. Basically all query and
+it will warn on construction with an explicit "non supported API" message. Basically all query and
 json services are supported. RestXML and RestJSON services are in the coming.
 
 Documentation

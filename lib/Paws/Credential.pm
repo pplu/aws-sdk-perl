@@ -1,12 +1,9 @@
-package Paws::Net::Credentials {
+package Paws::Credential {
   use Moose::Role;
 
   requires 'access_key';
   requires 'secret_key';
   requires 'session_token';
-  #has access_key    => (is => 'rw');
-  #has secret_key    => (is => 'rw');
-  #has session_token => (is => 'rw');
 
   sub are_set {
     my $self = shift;

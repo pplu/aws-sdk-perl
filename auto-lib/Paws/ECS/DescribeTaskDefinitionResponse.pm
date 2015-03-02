@@ -5,7 +5,6 @@ package Paws::ECS::DescribeTaskDefinitionResponse {
   has taskDefinition => (is => 'ro', isa => 'Paws::ECS::TaskDefinition');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -33,3 +32,4 @@ The full task definition description.
 
 =cut
 
+1;

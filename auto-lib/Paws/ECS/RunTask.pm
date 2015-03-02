@@ -10,7 +10,7 @@ package Paws::ECS::RunTask {
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RunTask');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::RunTaskResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RunTaskResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 

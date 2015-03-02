@@ -4,5 +4,6 @@ package Paws::ECS::TaskDefinition {
   has family => (is => 'ro', isa => 'Str');
   has revision => (is => 'ro', isa => 'Int');
   has taskDefinitionArn => (is => 'ro', isa => 'Str');
+  has volumes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Volume]');
 }
 1;

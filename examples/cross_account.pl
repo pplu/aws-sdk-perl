@@ -1,12 +1,12 @@
 #!/usr/bin/perl
 
 use Paws;
-use Paws::Net::AssumeRoleCredentials;
+use Paws::Credential::AssumeRole;
 
 my $ec2 = Paws->service('EC2',
   region => 'eu-west-1', 
-  credentials => Paws::Net::AssumeRoleCredentials->new(
-    RoleArn => 'arn:aws:iam::123456789012:role/AdminCapside',
+  credentials => Paws::Credential::AssumeRole->new(
+    RoleArn => 'arn:aws:iam::123456789012:role/AdminRole',
     RoleSessionName => 'CrossAccountTest',
     ExternalId => 'MyExternalId',
   )

@@ -1,9 +1,9 @@
-package Paws::Net::STSCredentials {
+package Paws::Credential::STS {
   use JSON;
   use Moose;
   use DateTime;
   use DateTime::Format::ISO8601;
-  with 'Paws::Net::Credentials';
+  with 'Paws::Credential';
 
   has expiration => (
     is => 'rw',
@@ -35,7 +35,7 @@ package Paws::Net::STSCredentials {
   }
 
   has sts => (is => 'ro', isa => 'Paws::STS', default => sub {
-    Paws->service('STS')->new();
+    Paws->service('STS');
   });
 
   has Name => (is => 'rw', isa => 'Str', required => 1);

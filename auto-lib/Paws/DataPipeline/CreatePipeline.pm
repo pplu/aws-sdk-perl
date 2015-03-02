@@ -3,6 +3,7 @@ package Paws::DataPipeline::CreatePipeline {
   use Moose;
   has description => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str', required => 1);
+  has tags => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Tag]');
   has uniqueId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -57,6 +58,23 @@ The description of the new pipeline.
 The name of the new pipeline. You can use the same name for multiple
 pipelines associated with your AWS account, because AWS Data Pipeline
 assigns each new pipeline a unique pipeline identifier.
+
+
+
+
+
+
+
+
+
+
+=head2 tags => ArrayRef[Paws::DataPipeline::Tag]
+
+  
+
+A list of tags to associate with a pipeline at creation time. Tags let
+you control access to pipelines. For more information, see Controlling
+User Access to Pipelines in the I<AWS Data Pipeline Developer Guide>.
 
 
 

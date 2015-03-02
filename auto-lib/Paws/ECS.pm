@@ -6,9 +6,10 @@ package Paws::ECS {
   use Moose;
   sub service { 'ecs' }
   sub version { '2014-11-13' }
-  sub flattened_arrays { 0 }
+  sub target_prefix { 'AmazonEC2ContainerServiceV20141113' }
+  sub json_version { "1.1" }
 
-  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
   sub CreateCluster {
@@ -64,6 +65,11 @@ package Paws::ECS {
   sub ListContainerInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::ListContainerInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTaskDefinitionFamilies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::ListTaskDefinitionFamilies', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTaskDefinitions {
@@ -234,6 +240,8 @@ cluster. This instance will no longer be available to run tasks.
 
   
 
+NOT YET IMPLEMENTED.
+
 Deregisters the specified task definition. You will no longer be able
 to run tasks from this definition after deregistration.
 
@@ -297,7 +305,10 @@ instance requested.
 
   
 
-Describes a task definition.
+Describes a task definition. You can specify a C<family> and
+C<revision> to find information on a specific task definition, or you
+can simply specify the family to find the latest revision in that
+family.
 
 
 
@@ -393,6 +404,27 @@ Returns a list of container instances in a specified cluster.
 
 
 
+=head2 ListTaskDefinitionFamilies()
+
+  Arguments described in: L<Paws::ECS::ListTaskDefinitionFamilies>
+
+  Returns: L<Paws::ECS::ListTaskDefinitionFamiliesResponse>
+
+  
+
+Returns a list of task definition families that are registered to your
+account. You can filter the results with the C<familyPrefix> parameter.
+
+
+
+
+
+
+
+
+
+
+
 =head2 ListTaskDefinitions()
 
   Arguments described in: L<Paws::ECS::ListTaskDefinitions>
@@ -470,7 +502,10 @@ instance will become available to place containers on.
   
 
 Registers a new task definition from the supplied C<family> and
-C<containerDefinitions>.
+C<containerDefinitions>. Optionally, you can add data volumes to your
+containers with the C<volumes> parameter. For more information on task
+definition parameters and defaults, see Amazon ECS Task Definitions in
+the I<Amazon EC2 Container Service Developer Guide>.
 
 
 

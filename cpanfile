@@ -13,6 +13,7 @@ requires 'URL::Encode';
 requires 'URL::Encode::XS';
 requires 'URI::Template';
 requires 'Digest::HMAC';
+requires 'Config::INI';
 # For the paws CLI
 requires 'Hash::Flatten';
 requires 'MooseX::Getopt';

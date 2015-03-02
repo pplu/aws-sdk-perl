@@ -6,7 +6,6 @@ package Paws::ECS::DescribeClustersResponse {
   has failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -37,3 +36,4 @@ The list of clusters.
 
 =cut
 
+1;

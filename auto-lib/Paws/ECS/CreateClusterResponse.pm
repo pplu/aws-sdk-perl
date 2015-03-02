@@ -5,7 +5,6 @@ package Paws::ECS::CreateClusterResponse {
   has cluster => (is => 'ro', isa => 'Paws::ECS::Cluster');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -33,3 +32,4 @@ The full description of your new cluster.
 
 =cut
 
+1;

@@ -9,7 +9,7 @@ package Paws::ECS::ListContainerInstances {
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListContainerInstances');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::ListContainerInstancesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListContainerInstancesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 
