@@ -15,8 +15,7 @@ package Paws::API::ResultParser {
 
       #use Data::Dumper;
       #print STDERR "GOING TO DO AN $att_type\n";
-      #print STDERR "VALUE: " . Dumper($value);
-      #print STDERR "REF de \$value: " . ref($value) . "\n";
+      #print STDERR "VALUE: " . Dumper($result);
 
       # We'll consider that an attribute without brackets [] isn't an array type
       if ($att_type !~ m/\[.*\]$/) {
@@ -124,6 +123,7 @@ package Paws::API::ResultParser {
         }
       } elsif (my ($type) = ($att_type =~ m/^ArrayRef\[(.*)\]$/)) {
         my $value = $result->{ $att };
+        $value = $result->{ $key } if (not defined $value and $key ne $att);
         my $value_ref = ref($value);
 
         if ($value_ref eq 'HASH') {
