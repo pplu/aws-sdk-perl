@@ -1,10 +1,8 @@
 
-package Paws::Route53::GetHostedZoneResponse {
+package Paws::Route53::GetHostedZoneCountResponse {
   use Moose;
   with 'Paws::API::ResultParser';
-  has DelegationSet => (is => 'ro', isa => 'Paws::Route53::DelegationSet');
-  has HostedZone => (is => 'ro', isa => 'Paws::Route53::HostedZone', required => 1);
-  has VPCs => (is => 'ro', isa => 'ArrayRef[Paws::Route53::VPC]', traits => ['Unwrapped'], xmlname => 'VPC');
+  has HostedZoneCount => (is => 'ro', isa => 'Num', required => 1);
 
 }
 1;
@@ -31,44 +29,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 DelegationSet => Paws::Route53::DelegationSet
+=head2 B<REQUIRED> HostedZoneCount => Num
 
   
 
-A complex type that contains information about the name servers for the
-specified hosted zone.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> HostedZone => Paws::Route53::HostedZone
-
-  
-
-A complex type that contains the information about the specified hosted
-zone.
-
-
-
-
-
-
-
-
-
-
-=head2 VPCs => ArrayRef[Paws::Route53::VPC]
-
-  
-
-A complex type that contains information about VPCs associated with the
-specified hosted zone.
+The number of hosted zones associated with the current AWS account.
 
 
 

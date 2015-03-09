@@ -8,7 +8,7 @@ package Paws::Route53::GetHealthCheckCount {
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/healthcheckcount');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::GetHealthCheckCountResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetHealthCheckCountResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 

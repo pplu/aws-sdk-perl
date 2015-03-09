@@ -9,7 +9,7 @@ package Paws::Route53::DeleteHealthCheck {
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/healthcheck/{HealthCheckId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::DeleteHealthCheckResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteHealthCheckResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 
