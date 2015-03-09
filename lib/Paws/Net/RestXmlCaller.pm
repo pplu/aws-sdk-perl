@@ -63,20 +63,14 @@ package Paws::Net::RestXmlCaller {
     my $request = Paws::Net::APIRequest->new();
     my $uri = $self->_call_uri($call);
 
-use Data::Dumper;
-print Dumper('URI', $uri);
     $request->uri($uri);
-
     $request->url($self->_api_endpoint($call) . $uri);
+
     $request->method($call->_api_method);
 
-    $request->parameters({ Version   => $self->version,
-                           $self->_to_querycaller_params($call) 
-    });
+    $request->parameters({ $self->_to_querycaller_params($call) });
 
-    #$request->headers({});
-
-    $request->generate_content_from_parameters;
+    #$request->generate_content_from_parameters;
 
     $self->sign($request);
 
