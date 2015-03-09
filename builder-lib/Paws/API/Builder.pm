@@ -39,6 +39,17 @@ package Paws::API::Builder {
     return $self->_load_json_file($self->paginators_file)->{ pagination };
   });
 
+  has encoders_file => (is => 'ro', lazy => 1, default => sub {
+    my $file = shift->api_file;
+    $file =~ s/\.normal\./.encoders./;
+    return $file;
+  });
+
+  has encoders_struct => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return $self->_load_json_file($self->encoders_file)->{ encoding };
+  });
+
   sub get_paginator_name {
     my ($self,$name) = @_;
     return $name if ($name =~ s/^Describe/DescribeAll/);
