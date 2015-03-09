@@ -5,15 +5,15 @@ package Paws::Net::RestXMLResponse {
   
   sub unserialize_response {
     my ($self, $data) = @_;
+
     my $xml = XML::Simple::XMLin( $data,
-            ForceArray    => qr/(?:item|Errors)/i,
+            ForceArray    => [ qr/(?:^item$|Errors)/i, ],
             KeyAttr       => '',
             SuppressEmpty => undef,
     );
     if ( defined $xml->{Errors} ) {
       croak "Error: $data";
     }
-
     return $xml;
   }
 }
