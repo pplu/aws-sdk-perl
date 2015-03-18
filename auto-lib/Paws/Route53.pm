@@ -102,6 +102,11 @@ package Paws::Route53 {
     my $call_object = $self->new_with_coercions('Paws::Route53::GetHostedZone', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetHostedZoneCount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetHostedZoneCount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetReusableDelegationSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::GetReusableDelegationSet', @_);
@@ -120,6 +125,11 @@ package Paws::Route53 {
   sub ListHostedZones {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::ListHostedZones', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListHostedZonesByName {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListHostedZonesByName', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListResourceRecordSets {
@@ -169,31 +179,6 @@ Paws::Route53 - Perl Interface to AWS Amazon Route 53
   my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
 
 =head1 DESCRIPTION
-
-
-
-Amazon Route 53
-
-Amazon Route 53 is a scalable Domain Name System (DNS) web service. It
-provides secure and reliable routing to your infrastructure that uses
-Amazon Web Services (AWS) products, such as Amazon Elastic Compute
-Cloud (Amazon EC2), Elastic Load Balancing, or Amazon Simple Storage
-Service (Amazon S3). You can also use Amazon Route 53 to route users to
-your infrastructure outside of AWS.
-
-Amazon Route 53 is an authoritative DNS service, meaning it translates
-friendly domains names like www.example.com into IP addresses like
-192.0.2.1. Amazon Route 53 responds to DNS queries using a global
-network of authoritative DNS servers, which reduces latency. For a list
-of the locations of Amazon Route 53 DNS servers, see The Amazon Route
-53 Global Network on the Amazon Route 53 detail page.
-
-
-
-
-
-
-
 
 
 
@@ -690,6 +675,27 @@ the hosted zone when you created it.
 
 
 
+=head2 GetHostedZoneCount()
+
+  Arguments described in: L<Paws::Route53::GetHostedZoneCount>
+
+  Returns: L<Paws::Route53::GetHostedZoneCountResponse>
+
+  
+
+To retrieve a count of all your hosted zones, send a C<GET> request to
+the C<2013-04-01/hostedzonecount> resource.
+
+
+
+
+
+
+
+
+
+
+
 =head2 GetReusableDelegationSet()
 
   Arguments described in: L<Paws::Route53::GetReusableDelegationSet>
@@ -791,6 +797,37 @@ displayed on a single page. You can control the length of the page that
 is displayed by using the C<MaxItems> parameter. You can use the
 C<Marker> parameter to control the hosted zone that the list begins
 with.
+
+Amazon Route 53 returns a maximum of 100 items. If you set MaxItems to
+a value greater than 100, Amazon Route 53 returns only the first 100.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ListHostedZonesByName()
+
+  Arguments described in: L<Paws::Route53::ListHostedZonesByName>
+
+  Returns: L<Paws::Route53::ListHostedZonesByNameResponse>
+
+  
+
+To retrieve a list of your hosted zones in lexicographic order, send a
+C<GET> request to the C<2013-04-01/hostedzonesbyname> resource. The
+response to this request includes a C<HostedZones> element with zero or
+more C<HostedZone> child elements lexicographically ordered by DNS
+name. By default, the list of hosted zones is displayed on a single
+page. You can control the length of the page that is displayed by using
+the C<MaxItems> parameter. You can use the C<DNSName> and
+C<HostedZoneId> parameters to control the hosted zone that the list
+begins with.
 
 Amazon Route 53 returns a maximum of 100 items. If you set MaxItems to
 a value greater than 100, Amazon Route 53 returns only the first 100.
