@@ -6,7 +6,7 @@ package Paws::SQS {
   use Moose;
   sub service { 'sqs' }
   sub version { '2012-11-05' }
-  sub flattened_arrays { 0 }
+  sub flattened_arrays { 1 }
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
