@@ -122,8 +122,8 @@ Default: Instances are launched and terminated individually
 
   
 
-The maximum hourly price for any Spot Instance launched to fulfill the
-request.
+The maximum hourly price (bid) for any Spot Instance launched to
+fulfill the request.
 
 
 

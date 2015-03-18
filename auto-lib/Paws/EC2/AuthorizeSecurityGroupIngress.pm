@@ -82,7 +82,7 @@ number. For the ICMP type number, use C<-1> to specify all ICMP types.
 
   
 
-The ID of the security group.
+The ID of the security group. Required for a nondefault VPC.
 
 
 
@@ -112,8 +112,8 @@ The ID of the security group.
 
   
 
-A set of IP permissions. You can't specify a source security group and
-a CIDR IP address range.
+A set of IP permissions. Can be used to specify multiple rules in a
+single command.
 
 
 
@@ -129,7 +129,7 @@ a CIDR IP address range.
   
 
 The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
-Numbers). Use C<-1> to specify all.
+Numbers). (VPC only) Use C<-1> to specify all.
 
 
 

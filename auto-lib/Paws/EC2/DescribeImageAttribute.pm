@@ -41,6 +41,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The AMI attribute.
 
+B<Note>: Depending on your account privileges, the
+C<blockDeviceMapping> attribute may return a C<Client.AuthFailure>
+error. If this happens, use DescribeImages to get information about the
+block device mapping for the AMI.
+
 
 
 

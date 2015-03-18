@@ -3,6 +3,8 @@ package Paws::EC2::DescribeSnapshots {
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has MaxResults => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
   has OwnerIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'Owner' );
   has RestorableByUserIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RestorableBy' );
   has SnapshotIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SnapshotId' );
@@ -109,6 +111,49 @@ C<volume-id> - The ID of the volume the snapshot is for.
 C<volume-size> - The size of the volume, in GiB.
 
 =back
+
+
+
+
+
+
+
+
+
+
+=head2 MaxResults => Int
+
+  
+
+The maximum number of snapshot results returned by C<DescribeSnapshots>
+in paginated output. When this parameter is used, C<DescribeSnapshots>
+only returns C<MaxResults> results in a single page along with a
+C<NextToken> response element. The remaining results of the initial
+request can be seen by sending another C<DescribeSnapshots> request
+with the returned C<NextToken> value. This value can be between 5 and
+1000; if C<MaxResults> is given a value larger than 1000, only 1000
+results are returned. If this parameter is not used, then
+C<DescribeSnapshots> returns all results. You cannot specify this
+parameter and the snapshot IDs parameter in the same request.
+
+
+
+
+
+
+
+
+
+
+=head2 NextToken => Str
+
+  
+
+The C<NextToken> value returned from a previous paginated
+C<DescribeSnapshots> request where C<MaxResults> was used and the
+results exceeded the value of that parameter. Pagination continues from
+the end of the previous results that returned the C<NextToken> value.
+This value is C<null> when there are no more results to return.
 
 
 

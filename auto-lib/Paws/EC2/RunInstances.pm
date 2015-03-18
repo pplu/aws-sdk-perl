@@ -91,7 +91,7 @@ The block device mapping.
 
 Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. For more information, see How to Ensure Idempotency in
-the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 Constraints: Maximum 64 ASCII characters
 
@@ -207,7 +207,7 @@ Default: C<stop>
   
 
 The instance type. For more information, see Instance Types in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 Default: C<m1.small>
 
@@ -228,7 +228,7 @@ The ID of the kernel.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see PV-GRUB in the I<Amazon Elastic Compute Cloud
-User Guide for Linux>.
+User Guide>.
 
 
 
@@ -380,7 +380,7 @@ The ID of the RAM disk.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see PV-GRUB in the I<Amazon Elastic Compute Cloud
-User Guide for Linux>.
+User Guide>.
 
 
 

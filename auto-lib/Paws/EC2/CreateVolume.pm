@@ -72,7 +72,7 @@ automatically encrypted. There is no way to create an encrypted volume
 from an unencrypted snapshot or vice versa. If your AMI uses encrypted
 volumes, you can only launch it on supported instance types. For more
 information, see Amazon EBS Encryption in the I<Amazon Elastic Compute
-Cloud User Guide for Linux>.
+Cloud User Guide>.
 
 
 
@@ -128,7 +128,9 @@ arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd5
 The size of the volume, in GiBs.
 
 Constraints: If the volume type is C<io1>, the minimum size of the
-volume is 4 GiB.
+volume is 4 GiB; otherwise, the minimum size is 1 GiB. The maximum
+volume size is 1024 GiB. If you specify a snapshot, the volume size
+must be equal to or larger than the snapshot size.
 
 Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.

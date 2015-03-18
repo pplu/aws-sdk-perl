@@ -126,7 +126,8 @@ created.
 
   
 
-One or more security group IDs. Required for nondefault VPCs.
+One or more security group IDs. Required for security groups in a
+nondefault VPC.
 
 Default: Describes all your security groups.
 
@@ -143,8 +144,10 @@ Default: Describes all your security groups.
 
   
 
-[EC2-Classic, default VPC] One or more security group names. You can
-specify either the security group name or the security group ID.
+[EC2-Classic and default VPC only] One or more security group names.
+You can specify either the security group name or the security group
+ID. For security groups in a nondefault VPC, use the C<group-name>
+filter to describe security groups by name.
 
 Default: Describes all your security groups.
 

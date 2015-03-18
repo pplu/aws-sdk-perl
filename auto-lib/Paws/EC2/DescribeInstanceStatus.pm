@@ -167,7 +167,8 @@ Constraints: Maximum 100 explicitly specified instance IDs.
 The maximum number of paginated instance items per response. The call
 also returns a token that you can specify in a subsequent call to get
 the next set of results. If the value is greater than 1000, we return
-only 1000 items.
+only 1000 items. You cannot specify this parameter and the instance IDs
+parameter in the same request.
 
 Default: 1000
 

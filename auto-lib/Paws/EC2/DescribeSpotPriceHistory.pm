@@ -45,7 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The Availability Zone.
+Filters the results by the specified Availability Zone.
 
 
 
@@ -64,7 +64,8 @@ The Availability Zone.
 
   
 
-The end date and time of the Spot Price history data.
+The date and time, up to the current date, from which to stop
+retrieving the price history data.
 
 
 
@@ -124,7 +125,7 @@ than or less than comparison is not supported.
 
   
 
-One or more instance types.
+Filters the results by the specified instance types.
 
 
 
@@ -139,7 +140,9 @@ One or more instance types.
 
   
 
-The number of rows to return.
+The maximum number of items to return for this call. The call also
+returns a token that you can specify in a subsequent call to get the
+next set of results.
 
 
 
@@ -154,7 +157,8 @@ The number of rows to return.
 
   
 
-The next set of rows to return.
+The token for the next set of items. (You received this token from a
+prior call.)
 
 
 
@@ -169,7 +173,7 @@ The next set of rows to return.
 
   
 
-One or more basic product descriptions.
+Filters the results by the specified basic product descriptions.
 
 
 
@@ -184,7 +188,8 @@ One or more basic product descriptions.
 
   
 
-The start date and time of the Spot Price history data.
+The date and time, up to the past 90 days, from which to start
+retrieving the price history data.
 
 
 

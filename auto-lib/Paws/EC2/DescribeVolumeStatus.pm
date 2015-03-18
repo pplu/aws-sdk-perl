@@ -120,7 +120,9 @@ C<volume-status.status> - The status of the volume (C<ok> | C<impaired>
 
   
 
-The maximum number of paginated volume items per response.
+The maximum number of paginated volume items per response. You cannot
+specify this parameter and the volume IDs parameter in the same
+request.
 
 
 

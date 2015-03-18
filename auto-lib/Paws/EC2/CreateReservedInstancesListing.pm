@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Unique, case-sensitive identifier you provide to ensure idempotency of
 your listings. This helps avoid duplicate listings. For more
 information, see Ensuring Idempotency in the I<Amazon Elastic Compute
-Cloud User Guide for Linux>.
+Cloud User Guide>.
 
 
 
