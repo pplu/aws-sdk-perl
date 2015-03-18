@@ -72,7 +72,7 @@ Identifies the pipeline that contains the objects.
 
 Specifies the status to be set on all the objects in C<objectIds>. For
 components, this can be either C<PAUSE> or C<RESUME>. For instances,
-this can be either C<CANCEL>, C<RERUN>, or C<MARK_FINISHED>.
+this can be either C<TRY_CANCEL>, C<RERUN>, or C<MARK_FINISHED>.
 
 
 

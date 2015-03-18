@@ -17,6 +17,11 @@ package Paws::DataPipeline {
     my $call_object = $self->new_with_coercions('Paws::DataPipeline::ActivatePipeline', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AddTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DataPipeline::AddTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreatePipeline {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DataPipeline::CreatePipeline', @_);
@@ -65,6 +70,11 @@ package Paws::DataPipeline {
   sub QueryObjects {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DataPipeline::QueryObjects', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DataPipeline::RemoveTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ReportTaskProgress {
@@ -124,7 +134,7 @@ data sources, schedules, dependencies, and the transforms to be
 performed on the data.
 
 The second set of actions are used by a task runner application that
-calls the AWS Data Pipeline API to receive the next task ready for
+calls the AWS Data Pipeline service to receive the next task ready for
 processing. The logic for performing the task, such as querying the
 data, running data analysis, or converting the data from one format to
 another, is contained within the task runner. The task runner performs
@@ -168,6 +178,26 @@ Call this action to start processing pipeline tasks of a pipeline
 you've created using the CreatePipeline and PutPipelineDefinition
 actions. A pipeline cannot be modified after it has been successfully
 activated.
+
+
+
+
+
+
+
+
+
+
+
+=head2 AddTags()
+
+  Arguments described in: L<Paws::DataPipeline::AddTags>
+
+  Returns: L<Paws::DataPipeline::AddTagsOutput>
+
+  
+
+Add or modify tags in an existing pipeline.
 
 
 
@@ -437,6 +467,26 @@ the value you set for query. This means the action may return an empty
 result set with a value set for marker. If C<HasMoreResults> is set to
 C<True>, you should continue to call QueryObjects, passing in the
 returned value for marker, until C<HasMoreResults> returns C<False>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 RemoveTags()
+
+  Arguments described in: L<Paws::DataPipeline::RemoveTags>
+
+  Returns: L<Paws::DataPipeline::RemoveTagsOutput>
+
+  
+
+Remove existing tags from a pipeline.
 
 
 

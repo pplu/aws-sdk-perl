@@ -4,5 +4,6 @@ package Paws::DataPipeline::PipelineDescription {
   has fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]', required => 1);
   has name => (is => 'ro', isa => 'Str', required => 1);
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
+  has tags => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Tag]');
 }
 1;
