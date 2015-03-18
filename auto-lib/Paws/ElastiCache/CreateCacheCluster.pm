@@ -302,9 +302,9 @@ The Amazon SNS topic owner must be the same as the cache cluster owner.
 The initial number of cache nodes that the cache cluster will have.
 
 For clusters running Redis, this value must be 1. For clusters running
-Memcached, this value must be between 1 and 50.
+Memcached, this value must be between 1 and 20.
 
-If you need more than 50 nodes for your Memcached cluster, please fill
+If you need more than 20 nodes for your Memcached cluster, please fill
 out the ElastiCache Limit Increase Request form at
 http://aws.amazon.com/contact-us/elasticache-node-limit-request/.
 
@@ -396,8 +396,28 @@ C<PreferredAvailabilityZones.member.1=us-west-2a&PreferredAvailabilityZones.memb
 
   
 
-The weekly time range (in UTC) during which system maintenance can
-occur.
+Specifies the weekly time range during which maintenance on the cache
+cluster is performed. It is specified as a range in the format
+ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
+is a 60 minute period. Valid values for C<ddd> are:
+
+=over
+
+=item * C<sun>
+
+=item * C<mon>
+
+=item * C<tue>
+
+=item * C<wed>
+
+=item * C<thu>
+
+=item * C<fri>
+
+=item * C<sat>
+
+=back
 
 Example: C<sun:05:00-sun:09:00>
 

@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 The name of the resource to which the tags are to be added, for example
-C<myCluster01>.
+C<arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster>.
 
 
 

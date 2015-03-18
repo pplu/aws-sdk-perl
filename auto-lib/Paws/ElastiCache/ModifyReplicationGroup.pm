@@ -214,12 +214,30 @@ Valid values: C<active> | C<inactive>
 
   
 
-The weekly time range (in UTC) during which replication group system
-maintenance can occur. Note that system maintenance may result in an
-outage. This change is made immediately. If you are moving this window
-to the current time, there must be at least 120 minutes between the
-current time and end of the window to ensure that pending changes are
-applied.
+Specifies the weekly time range during which maintenance on the cache
+cluster is performed. It is specified as a range in the format
+ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
+is a 60 minute period. Valid values for C<ddd> are:
+
+=over
+
+=item * C<sun>
+
+=item * C<mon>
+
+=item * C<tue>
+
+=item * C<wed>
+
+=item * C<thu>
+
+=item * C<fri>
+
+=item * C<sat>
+
+=back
+
+Example: C<sun:05:00-sun:09:00>
 
 
 

@@ -19,7 +19,7 @@ Paws::ElastiCache::TagListMessage
 
   
 
-A list of cost allocation tags as a key-value pair.
+A list of cost allocation tags as key-value pairs.
 
 
 

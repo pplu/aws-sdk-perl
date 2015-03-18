@@ -39,7 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 The name of the ElastiCache resource from which you want the listed
-tags removed, for example C<myCluster01>.
+tags removed, for example
+C<arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster>.
 
 
 

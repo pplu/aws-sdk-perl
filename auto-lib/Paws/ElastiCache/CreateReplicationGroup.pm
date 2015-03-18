@@ -238,9 +238,9 @@ Default: redis
 
   
 
-The version number of the cach engine to be used for the cache clusters
-in this replication group. To view the supported cache engine versions,
-use the I<DescribeCacheEngineVersions> action.
+The version number of the cache engine to be used for the cache
+clusters in this replication group. To view the supported cache engine
+versions, use the I<DescribeCacheEngineVersions> action.
 
 
 
@@ -281,7 +281,7 @@ least 2.
 
 The maximum permitted value for I<NumCacheClusters> is 6 (primary plus
 5 replicas). If you need to exceed this limit, please fill out the
-ElastiCache Limit Increase Request forrm at
+ElastiCache Limit Increase Request form at
 http://aws.amazon.com/contact-us/elasticache-node-limit-request.
 
 
@@ -344,8 +344,28 @@ PreferredAvailabilityZones.member.3=us-west-2c
 
   
 
-The weekly time range (in UTC) during which system maintenance can
-occur.
+Specifies the weekly time range during which maintenance on the cache
+cluster is performed. It is specified as a range in the format
+ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
+is a 60 minute period. Valid values for C<ddd> are:
+
+=over
+
+=item * C<sun>
+
+=item * C<mon>
+
+=item * C<tue>
+
+=item * C<wed>
+
+=item * C<thu>
+
+=item * C<fri>
+
+=item * C<sat>
+
+=back
 
 Example: C<sun:05:00-sun:09:00>
 
