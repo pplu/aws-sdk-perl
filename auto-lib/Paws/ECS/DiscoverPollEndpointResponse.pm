@@ -5,7 +5,6 @@ package Paws::ECS::DiscoverPollEndpointResponse {
   has endpoint => (is => 'ro', isa => 'Str');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -33,3 +32,4 @@ The endpoint for the Amazon ECS agent to poll.
 
 =cut
 
+1;

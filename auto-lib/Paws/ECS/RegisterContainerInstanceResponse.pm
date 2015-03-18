@@ -5,7 +5,6 @@ package Paws::ECS::RegisterContainerInstanceResponse {
   has containerInstance => (is => 'ro', isa => 'Paws::ECS::ContainerInstance');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -22,3 +21,4 @@ Paws::ECS::RegisterContainerInstanceResponse
 
 =cut
 
+1;

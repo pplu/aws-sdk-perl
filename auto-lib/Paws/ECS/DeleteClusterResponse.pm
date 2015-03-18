@@ -5,7 +5,6 @@ package Paws::ECS::DeleteClusterResponse {
   has cluster => (is => 'ro', isa => 'Paws::ECS::Cluster');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -33,3 +32,4 @@ The full description of the deleted cluster.
 
 =cut
 
+1;

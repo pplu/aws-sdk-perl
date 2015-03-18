@@ -6,7 +6,6 @@ package Paws::ECS::ListTaskDefinitionsResponse {
   has taskDefinitionArns => (is => 'ro', isa => 'ArrayRef[Str]');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -53,3 +52,4 @@ C<ListTaskDefintions> request.
 
 =cut
 
+1;

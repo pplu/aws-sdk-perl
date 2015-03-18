@@ -5,7 +5,6 @@ package Paws::ECS::SubmitContainerStateChangeResponse {
   has acknowledgment => (is => 'ro', isa => 'Str');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -33,3 +32,4 @@ Acknowledgement of the state change.
 
 =cut
 
+1;

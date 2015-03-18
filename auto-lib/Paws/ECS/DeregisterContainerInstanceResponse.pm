@@ -5,7 +5,6 @@ package Paws::ECS::DeregisterContainerInstanceResponse {
   has containerInstance => (is => 'ro', isa => 'Paws::ECS::ContainerInstance');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -22,3 +21,4 @@ Paws::ECS::DeregisterContainerInstanceResponse
 
 =cut
 
+1;

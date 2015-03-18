@@ -9,7 +9,7 @@ package Paws::ECS::ListTaskDefinitions {
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTaskDefinitions');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::ListTaskDefinitionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListTaskDefinitionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 
@@ -39,10 +39,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name of the family that you want to filter the
-C<ListTaskDefinitions> results with. Specifying a C<familyPrefix> will
-limit the listed task definitions to definitions that belong to that
-family.
+The full family name that you want to filter the C<ListTaskDefinitions>
+results with. Specifying a C<familyPrefix> will limit the listed task
+definitions to task definition revisions that belong to that family.
 
 
 

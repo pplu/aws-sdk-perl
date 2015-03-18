@@ -5,7 +5,6 @@ package Paws::ECS::StopTaskResponse {
   has task => (is => 'ro', isa => 'Paws::ECS::Task');
 
 }
-1;
 
 ### main pod documentation begin ###
 
@@ -22,3 +21,4 @@ Paws::ECS::StopTaskResponse
 
 =cut
 
+1;
