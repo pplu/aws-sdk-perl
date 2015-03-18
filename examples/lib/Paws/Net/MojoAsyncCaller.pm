@@ -1,7 +1,7 @@
 package Paws::Net::MojoAsyncCaller {
   use Moose;
 
-  use Mojo::IOLoop::Future;
+  use MojoX::IOLoop::Future;
   use Mojo::UserAgent;
 
   has ua => (is => 'ro', isa => 'Mojo::UserAgent', default => sub {
@@ -29,7 +29,7 @@ package Paws::Net::MojoAsyncCaller {
     my $method = lc($requestObj->method);
     my $response_class = $call_object->_returns;
 
-    my $future = Mojo::IOLoop::Future->new;
+    my $future = MojoX::IOLoop::Future->new;
     $self->ua->$method(
       $requestObj->url =>  
       $headers => 
