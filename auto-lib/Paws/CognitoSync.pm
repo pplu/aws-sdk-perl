@@ -12,6 +12,11 @@ package Paws::CognitoSync {
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
   
+  sub BulkPublish {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::BulkPublish', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDataset {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoSync::DeleteDataset', @_);
@@ -30,6 +35,11 @@ package Paws::CognitoSync {
   sub DescribeIdentityUsage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoSync::DescribeIdentityUsage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetBulkPublishDetails {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::GetBulkPublishDetails', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetIdentityPoolConfiguration {
@@ -114,6 +124,11 @@ accessible only to credentials assigned to that identity. In order to
 use the Cognito Sync service, you need to make API calls using
 credentials retrieved with Amazon Cognito Identity service.
 
+If you want to use Cognito Sync in an Android or iOS application, you
+will probably want to make API calls via the AWS Mobile SDK. To learn
+more, see the Developer Guide for Android and the Developer Guide for
+iOS.
+
 
 
 
@@ -125,6 +140,30 @@ credentials retrieved with Amazon Cognito Identity service.
 
 =head1 METHODS
 
+=head2 BulkPublish()
+
+  Arguments described in: L<Paws::CognitoSync::BulkPublish>
+
+  Returns: L<Paws::CognitoSync::BulkPublishResponse>
+
+  
+
+Initiates a bulk publish of all existing datasets for an Identity Pool
+to the configured stream. Customers are limited to one successful bulk
+publish per 24 hours. Bulk publish is an asynchronous request,
+customers can see the status of the request via the
+GetBulkPublishDetails operation.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DeleteDataset()
 
   Arguments described in: L<Paws::CognitoSync::DeleteDataset>
@@ -135,8 +174,11 @@ credentials retrieved with Amazon Cognito Identity service.
 
 Deletes the specific dataset. The dataset will be deleted permanently,
 and the action can't be undone. Datasets that this dataset was merged
-with will no longer report the merge. Any consequent operation on this
-dataset will result in a ResourceNotFoundException.
+with will no longer report the merge. Any subsequent operation on this
+dataset will result in a C<ResourceNotFoundException>.
+
+C<DeleteDataset> can be called with temporary user credentials provided
+by Cognito Identity or with developer credentials.
 
 
 
@@ -156,11 +198,14 @@ dataset will result in a ResourceNotFoundException.
 
   
 
-Gets metadata about a dataset by identity and dataset name. The
-credentials used to make this API call need to have access to the
-identity data. With Amazon Cognito Sync, each identity has access only
-to its own data. You should use Amazon Cognito Identity service to
-retrieve the credentials necessary to make this API call.
+Gets meta data about a dataset by identity and dataset name. With
+Amazon Cognito Sync, each identity has access only to its own data.
+Thus, the credentials used to make this API call need to have access to
+the identity data.
+
+C<DescribeDataset> can be called with temporary user credentials
+provided by Cognito Identity or with developer credentials. You should
+use Cognito Identity credentials to make this API call.
 
 
 
@@ -183,6 +228,10 @@ retrieve the credentials necessary to make this API call.
 Gets usage details (for example, data storage) about a particular
 identity pool.
 
+C<DescribeIdentityPoolUsage> can only be called with developer
+credentials. You cannot make this API call with the temporary user
+credentials provided by Cognito Identity.
+
 
 
 
@@ -203,6 +252,29 @@ identity pool.
 
 Gets usage information for an identity, including number of datasets
 and data usage.
+
+C<DescribeIdentityUsage> can be called with temporary user credentials
+provided by Cognito Identity or with developer credentials.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetBulkPublishDetails()
+
+  Arguments described in: L<Paws::CognitoSync::GetBulkPublishDetails>
+
+  Returns: L<Paws::CognitoSync::GetBulkPublishDetailsResponse>
+
+  
+
+Get the status of the last BulkPublish operation for an identity pool.
 
 
 
@@ -242,11 +314,13 @@ Gets the configuration settings of an identity pool.
 
   
 
-Lists datasets for an identity. The credentials used to make this API
-call need to have access to the identity data. With Amazon Cognito
-Sync, each identity has access only to its own data. You should use
-Amazon Cognito Identity service to retrieve the credentials necessary
-to make this API call.
+Lists datasets for an identity. With Amazon Cognito Sync, each identity
+has access only to its own data. Thus, the credentials used to make
+this API call need to have access to the identity data.
+
+C<ListDatasets> can be called with temporary user credentials provided
+by Cognito Identity or with developer credentials. You should use the
+Cognito Identity credentials to make this API call.
 
 
 
@@ -268,6 +342,10 @@ to make this API call.
 
 Gets a list of identity pools registered with Cognito.
 
+C<ListIdentityPoolUsage> can only be called with developer credentials.
+You cannot make this API call with the temporary user credentials
+provided by Cognito Identity.
+
 
 
 
@@ -287,11 +365,13 @@ Gets a list of identity pools registered with Cognito.
   
 
 Gets paginated records, optionally changed after a particular sync
-count for a dataset and identity. The credentials used to make this API
-call need to have access to the identity data. With Amazon Cognito
-Sync, each identity has access only to its own data. You should use
-Amazon Cognito Identity service to retrieve the credentials necessary
-to make this API call.
+count for a dataset and identity. With Amazon Cognito Sync, each
+identity has access only to its own data. Thus, the credentials used to
+make this API call need to have access to the identity data.
+
+C<ListRecords> can be called with temporary user credentials provided
+by Cognito Identity or with developer credentials. You should use
+Cognito Identity credentials to make this API call.
 
 
 
@@ -372,7 +452,7 @@ another device.
 
   
 
-Unsubscribe from receiving notifications when a dataset is modified by
+Unsubscribes from receiving notifications when a dataset is modified by
 another device.
 
 
@@ -393,11 +473,12 @@ another device.
 
   
 
-Posts updates to records and add and delete records for a dataset and
-user. The credentials used to make this API call need to have access to
-the identity data. With Amazon Cognito Sync, each identity has access
-only to its own data. You should use Amazon Cognito Identity service to
-retrieve the credentials necessary to make this API call.
+Posts updates to records and adds and deletes records for a dataset and
+user.
+
+C<UpdateRecords> can only be called with temporary user credentials
+provided by Cognito Identity. You cannot make this API call with
+developer credentials.
 
 
 

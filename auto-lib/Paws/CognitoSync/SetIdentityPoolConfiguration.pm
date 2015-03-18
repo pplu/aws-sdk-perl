@@ -1,6 +1,7 @@
 
 package Paws::CognitoSync::SetIdentityPoolConfiguration {
   use Moose;
+  has CognitoStreams => (is => 'ro', isa => 'Paws::CognitoSync::CognitoStreams');
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
   has PushSync => (is => 'ro', isa => 'Paws::CognitoSync::PushSync');
 
@@ -34,6 +35,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+=head2 CognitoStreams => Paws::CognitoSync::CognitoStreams
+
+  
+
+Options to apply to this identity pool for Amazon Cognito streams.
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> IdentityPoolId => Str
 
   
@@ -55,7 +71,7 @@ Cognito. This is the ID of the pool to modify.
 
   
 
-Configuration options to be applied to the identity pool.
+Options to apply to this identity pool for push synchronization.
 
 
 

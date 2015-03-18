@@ -2,6 +2,7 @@
 package Paws::CognitoSync::GetIdentityPoolConfigurationResponse {
   use Moose;
   with 'Paws::API::ResultParser';
+  has CognitoStreams => (is => 'ro', isa => 'Paws::CognitoSync::CognitoStreams');
   has IdentityPoolId => (is => 'ro', isa => 'Str');
   has PushSync => (is => 'ro', isa => 'Paws::CognitoSync::PushSync');
 
@@ -15,6 +16,20 @@ package Paws::CognitoSync::GetIdentityPoolConfigurationResponse {
 Paws::CognitoSync::GetIdentityPoolConfigurationResponse
 
 =head1 ATTRIBUTES
+
+=head2 CognitoStreams => Paws::CognitoSync::CognitoStreams
+
+  
+
+Options to apply to this identity pool for Amazon Cognito streams.
+
+
+
+
+
+
+
+
 
 =head2 IdentityPoolId => Str
 
@@ -36,7 +51,7 @@ Cognito.
 
   
 
-Configuration options applied to the identity pool.
+Options to apply to this identity pool for push synchronization.
 
 
 
