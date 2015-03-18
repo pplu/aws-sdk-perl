@@ -3,6 +3,7 @@ package Paws::CloudWatchLogs::PutLogEventsResponse {
   use Moose;
   with 'Paws::API::ResultParser';
   has nextSequenceToken => (is => 'ro', isa => 'Str');
+  has rejectedLogEventsInfo => (is => 'ro', isa => 'Paws::CloudWatchLogs::RejectedLogEventsInfo');
 
 }
 
@@ -15,6 +16,9 @@ Paws::CloudWatchLogs::PutLogEventsResponse
 =head1 ATTRIBUTES
 
 =head2 nextSequenceToken => Str
+
+  
+=head2 rejectedLogEventsInfo => Paws::CloudWatchLogs::RejectedLogEventsInfo
 
   
 

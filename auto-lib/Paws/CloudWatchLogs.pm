@@ -370,7 +370,8 @@ By default, this operation returns up to 50 log streams. If there are
 more log streams to list, the response would contain a C<nextToken>
 value in the response body. You can also limit the number of log
 streams returned in the response by specifying the C<limit> parameter
-in the request.
+in the request. This operation has a limit of five transactions per
+second, after which transactions are throttled.
 
 
 
@@ -458,7 +459,7 @@ The batch of events must satisfy the following constraints:
 
 =over
 
-=item * The maximum batch size is 32,768 bytes, and this size is
+=item * The maximum batch size is 1,048,576 bytes, and this size is
 calculated as the sum of all event messages in UTF-8, plus 26 bytes for
 each log event.
 
@@ -471,7 +472,7 @@ or the retention period of the log group.
 =item * The log events in the batch must be in chronological ordered by
 their C<timestamp>.
 
-=item * The maximum number of log events in a batch is 1,000.
+=item * The maximum number of log events in a batch is 10,000.
 
 =back
 

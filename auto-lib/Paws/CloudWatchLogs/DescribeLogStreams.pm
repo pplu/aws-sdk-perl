@@ -1,10 +1,12 @@
 
 package Paws::CloudWatchLogs::DescribeLogStreams {
   use Moose;
+  has descending => (is => 'ro', isa => 'Bool');
   has limit => (is => 'ro', isa => 'Int');
   has logGroupName => (is => 'ro', isa => 'Str', required => 1);
   has logStreamNamePrefix => (is => 'ro', isa => 'Str');
   has nextToken => (is => 'ro', isa => 'Str');
+  has orderBy => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -36,6 +38,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+=head2 descending => Bool
+
+  
+
+If set to true, results are returned in descending order. If you don't
+specify a value or set it to false, results are returned in ascending
+order.
+
+
+
+
+
+
+
+
+
+
 =head2 limit => Int
 
   
@@ -60,6 +79,19 @@ specify a value, the request would return up to 50 items.
 
   
 
+Will only return log streams that match the provided
+logStreamNamePrefix. If you don't specify a value, no prefix filter is
+applied.
+
+
+
+
+
+
+
+
+
+
 =head2 nextToken => Str
 
   
@@ -67,6 +99,24 @@ specify a value, the request would return up to 50 items.
 A string token used for pagination that points to the next page of
 results. It must be a value obtained from the response of the previous
 C<DescribeLogStreams> request.
+
+
+
+
+
+
+
+
+
+
+=head2 orderBy => Str
+
+  
+
+Specifies what to order the returned log streams by. Valid arguments
+are 'LogStreamName' or 'LastEventTime'. If you don't specify a value,
+results are ordered by LogStreamName. If 'LastEventTime' is chosen, the
+request cannot also contain a logStreamNamePrefix.
 
 
 
