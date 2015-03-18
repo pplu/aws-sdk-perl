@@ -10,7 +10,7 @@ package Paws::CloudFront::ListDistributions2014_11_06 {
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2014-11-06/distribution');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::ListDistributionsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListDistributionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
 

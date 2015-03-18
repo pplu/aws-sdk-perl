@@ -2,7 +2,7 @@
 package Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity2014_11_06 {
   use Moose;
   has Id => (is => 'ro', isa => 'Str', required => 1);
-  has IfMatch => (is => 'ro', isa => 'Str');
+  has IfMatch => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-Match' );
 
   use MooseX::ClassAttribute;
 
