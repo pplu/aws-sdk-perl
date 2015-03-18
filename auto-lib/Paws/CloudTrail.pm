@@ -32,6 +32,11 @@ package Paws::CloudTrail {
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::GetTrailStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub LookupEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudTrail::LookupEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartLogging {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::StartLogging', @_);
@@ -177,6 +182,41 @@ your account.
 Returns a JSON-formatted list of information about the specified trail.
 Fields include information on delivery errors, Amazon SNS and Amazon S3
 errors, and start and stop logging times for each trail.
+
+
+
+
+
+
+
+
+
+
+
+=head2 LookupEvents()
+
+  Arguments described in: L<Paws::CloudTrail::LookupEvents>
+
+  Returns: L<Paws::CloudTrail::LookupEventsResponse>
+
+  
+
+Looks up API activity events captured by CloudTrail that create,
+update, or delete resources in your account. Events for a region can be
+looked up for the times in which you had CloudTrail turned on in that
+region during the last seven days. Lookup supports five different
+attributes: time range (defined by a start time and end time), user
+name, event name, resource type, and resource name. All attributes are
+optional. The maximum number of attributes that can be specified in any
+one lookup request are time range and one other attribute. The default
+number of results returned is 10, with a maximum of 50 possible. The
+response includes a token that you can use to get the next page of
+results. The rate of lookup requests is limited to one per second per
+account.
+
+Events that occurred during the selected time range will not be
+available for lookup if CloudTrail logging was not enabled when the
+events occurred.
 
 
 
