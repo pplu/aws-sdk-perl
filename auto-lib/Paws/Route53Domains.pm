@@ -122,6 +122,20 @@ Paws::Route53Domains - Perl Interface to AWS Amazon Route 53 Domains
 
 
 
+Amazon Route 53 Domains
+
+Amazon Route 53 permits Interned Domain Name registration, trasnfer and
+management
+
+
+
+
+
+
+
+
+
+
 =head1 METHODS
 
 =head2 CheckDomainAvailability()

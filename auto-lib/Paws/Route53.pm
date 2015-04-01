@@ -182,6 +182,31 @@ Paws::Route53 - Perl Interface to AWS Amazon Route 53
 
 
 
+Amazon Route 53
+
+Amazon Route 53 is a scalable Domain Name System (DNS) web service. It
+provides secure and reliable routing to your infrastructure that uses
+Amazon Web Services (AWS) products, such as Amazon Elastic Compute
+Cloud (Amazon EC2), Elastic Load Balancing, or Amazon Simple Storage
+Service (Amazon S3). You can also use Amazon Route 53 to route users to
+your infrastructure outside of AWS.
+
+Amazon Route 53 is an authoritative DNS service, meaning it translates
+friendly domains names like www.example.com into IP addresses like
+192.0.2.1. Amazon Route 53 responds to DNS queries using a global
+network of authoritative DNS servers, which reduces latency. For a list
+of the locations of Amazon Route 53 DNS servers, see The Amazon Route
+53 Global Network on the Amazon Route 53 detail page.
+
+
+
+
+
+
+
+
+
+
 =head1 METHODS
 
 =head2 AssociateVPCWithHostedZone()
