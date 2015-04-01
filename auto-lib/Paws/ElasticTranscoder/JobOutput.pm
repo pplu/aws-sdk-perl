@@ -1,10 +1,14 @@
 package Paws::ElasticTranscoder::JobOutput {
   use Moose;
   has AlbumArt => (is => 'ro', isa => 'Paws::ElasticTranscoder::JobAlbumArt');
+  has AppliedColorSpaceConversion => (is => 'ro', isa => 'Str');
   has Captions => (is => 'ro', isa => 'Paws::ElasticTranscoder::Captions');
   has Composition => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Clip]');
   has Duration => (is => 'ro', isa => 'Num');
+  has DurationMillis => (is => 'ro', isa => 'Num');
   has Encryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
+  has FileSize => (is => 'ro', isa => 'Num');
+  has FrameRate => (is => 'ro', isa => 'Str');
   has Height => (is => 'ro', isa => 'Int');
   has Id => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str');

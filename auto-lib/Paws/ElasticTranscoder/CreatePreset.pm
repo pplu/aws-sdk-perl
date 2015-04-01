@@ -57,8 +57,8 @@ A section of the request body that specifies the audio parameters.
 
   
 
-The container type for the output file. Valid values include C<fmp4>,
-C<mp3>, C<mp4>, C<ogg>, C<ts>, and C<webm>.
+The container type for the output file. Valid values include C<flv>,
+C<fmp4>, C<gif>, C<mp3>, C<mp4>, C<mpg>, C<ogg>, C<ts>, and C<webm>.
 
 
 
