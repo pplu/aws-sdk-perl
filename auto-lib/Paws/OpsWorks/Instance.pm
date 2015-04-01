@@ -4,6 +4,7 @@ package Paws::OpsWorks::Instance {
   has Architecture => (is => 'ro', isa => 'Str');
   has AutoScalingType => (is => 'ro', isa => 'Str');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::BlockDeviceMapping]');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
@@ -22,6 +23,7 @@ package Paws::OpsWorks::Instance {
   has PublicDns => (is => 'ro', isa => 'Str');
   has PublicIp => (is => 'ro', isa => 'Str');
   has RegisteredBy => (is => 'ro', isa => 'Str');
+  has ReportedAgentVersion => (is => 'ro', isa => 'Str');
   has ReportedOs => (is => 'ro', isa => 'Paws::OpsWorks::ReportedOs');
   has RootDeviceType => (is => 'ro', isa => 'Str');
   has RootDeviceVolumeId => (is => 'ro', isa => 'Str');

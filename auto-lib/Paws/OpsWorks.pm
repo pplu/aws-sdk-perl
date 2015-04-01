@@ -460,7 +460,9 @@ permissions, see Managing User Permissions.
 
 Assigns one of the stack's registered Amazon EBS volumes to a specified
 instance. The volume must first be registered with the stack by calling
-RegisterVolume. For more information, see Resource Management.
+RegisterVolume. After you register the volume, you must call
+UpdateVolume to specify a mount point before calling C<AssignVolume>.
+For more information, see Resource Management.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that

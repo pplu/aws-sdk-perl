@@ -232,7 +232,7 @@ use custom AMIs with OpsWorks, see Using Custom AMIs.
 
   
 
-The instance SSH key name.
+The instance's Amazon EC2 key name.
 
 
 

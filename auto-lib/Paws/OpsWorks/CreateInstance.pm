@@ -5,6 +5,7 @@ package Paws::OpsWorks::CreateInstance {
   has Architecture => (is => 'ro', isa => 'Str');
   has AutoScalingType => (is => 'ro', isa => 'Str');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::BlockDeviceMapping]');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
   has Hostname => (is => 'ro', isa => 'Str');
   has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
@@ -105,6 +106,22 @@ For load-based or time-based instances, the type.
 
 The instance Availability Zone. For more information, see Regions and
 Endpoints.
+
+
+
+
+
+
+
+
+
+
+=head2 BlockDeviceMappings => ArrayRef[Paws::OpsWorks::BlockDeviceMapping]
+
+  
+
+An array of C<BlockDeviceMapping> objects that specify the instance's
+block devices. For more information, see Block Device Mapping.
 
 
 
@@ -254,7 +271,7 @@ the Root Device.
 
   
 
-The instance SSH key name.
+The instance's Amazon EC2 key pair name.
 
 
 

@@ -210,8 +210,13 @@ instance. For more information, see Storage for the Root Device.
 
   
 
-A default SSH key for the stack instances. You can override this value
-when you create or update an instance.
+A default Amazon EC2 key pair name. The default value is none. If you
+specify a key pair name, AWS OpsWorks installs the public key on the
+instance and you can use the private key with an SSH client to log in
+to the instance. For more information, see Using SSH to Communicate
+with an Instance and Managing SSH Access. You can override this setting
+by specifying a different key pair, or no key pair, when you create an
+instance.
 
 
 
@@ -259,13 +264,13 @@ name. The other themes are:
 
 =item * C<Clouds>
 
-=item * C<European_Cities>
+=item * C<Europe_Cities>
 
 =item * C<Fruits>
 
 =item * C<Greek_Deities>
 
-=item * C<Legendary_Creatures_from_Japan>
+=item * C<Legendary_creatures_from_Japan>
 
 =item * C<Planets_and_Moons>
 

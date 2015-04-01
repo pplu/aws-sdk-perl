@@ -232,11 +232,14 @@ An array of C<Package> objects that describe the layer packages.
 
   
 
-The layer short name, which is used internally by AWS OpsWorks and by
-Chef recipes. The short name is also used as the name for the directory
-where your app files are installed. It can have a maximum of 200
-characters, which are limited to the alphanumeric characters, '-', '_',
-and '.'.
+For custom layers only, use this parameter to specify the layer's short
+name, which is used internally by AWS OpsWorks and by Chef recipes. The
+short name is also used as the name for the directory where your app
+files are installed. It can have a maximum of 200 characters, which are
+limited to the alphanumeric characters, '-', '_', and '.'.
+
+The built-in layers' short names are defined by AWS OpsWorks. For more
+information, see the Layer Reference
 
 
 
