@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
 
+use lib 't/lib';
 use Paws::Credential::Environment;
 use Paws::Credential::InstanceProfile;
 use Paws::Credential::ProviderChain;

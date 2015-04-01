@@ -14,6 +14,12 @@ use Paws;
 
 my $aws = Paws->new();
 
+if (not $ENV{AWS_TEST_RESPONSES}){
+  ok(1, 'Not testing responses (yet). Set AWS_TEST_RESPONSES to do it');
+  done_testing;
+  exit 0;
+}
+
 use Data::Dumper;
 
 my $dir = 't/10_responses';
