@@ -1,9 +1,7 @@
 
-package Paws::S3::GetObjectAclOutput {
+package Paws::S3::AbortMultipartUploadOutput {
   use Moose;
   with 'Paws::API::ResultParser';
-  has Grants => (is => 'ro', isa => 'ArrayRef[Paws::S3::Grant]', traits => ['Unwrapped'], xmlname => 'Grant');
-  has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
   has RequestCharged => (is => 'ro', isa => 'Str');
 
 }
@@ -30,25 +28,6 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
-
-=head2 Grants => ArrayRef[Paws::S3::Grant]
-
-  
-
-A list of grants.
-
-
-
-
-
-
-
-
-
-
-=head2 Owner => Paws::S3::Owner
-
-  
 
 =head2 RequestCharged => Str
 

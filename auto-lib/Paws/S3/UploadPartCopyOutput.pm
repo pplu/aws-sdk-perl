@@ -4,6 +4,7 @@ package Paws::S3::UploadPartCopyOutput {
   with 'Paws::API::ResultParser';
   has CopyPartResult => (is => 'ro', isa => 'Paws::S3::CopyPartResult');
   has CopySourceVersionId => (is => 'ro', isa => 'Str');
+  has RequestCharged => (is => 'ro', isa => 'Str');
   has ServerSideEncryption => (is => 'ro', isa => 'Str');
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
@@ -53,6 +54,10 @@ versioning on the source bucket.
 
 
 
+
+=head2 RequestCharged => Str
+
+  
 
 =head2 ServerSideEncryption => Str
 

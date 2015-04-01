@@ -4,6 +4,7 @@ package Paws::S3::CreateMultipartUploadOutput {
   with 'Paws::API::ResultParser';
   has Bucket => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str');
+  has RequestCharged => (is => 'ro', isa => 'Str');
   has ServerSideEncryption => (is => 'ro', isa => 'Str');
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
@@ -64,6 +65,10 @@ Object key for which the multipart upload was initiated.
 
 
 
+
+=head2 RequestCharged => Str
+
+  
 
 =head2 ServerSideEncryption => Str
 

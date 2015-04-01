@@ -3,6 +3,7 @@ package Paws::S3::GetObjectTorrent {
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
   has Key => (is => 'ro', isa => 'Str', required => 1);
+  has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
 
   use MooseX::ClassAttribute;
 
@@ -26,6 +27,9 @@ Paws::S3::GetObjectTorrentOutput
 
   
 =head2 B<REQUIRED> Key => Str
+
+  
+=head2 RequestPayer => Str
 
   
 

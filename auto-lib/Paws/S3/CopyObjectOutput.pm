@@ -5,6 +5,7 @@ package Paws::S3::CopyObjectOutput {
   has CopyObjectResult => (is => 'ro', isa => 'Paws::S3::CopyObjectResult');
   has CopySourceVersionId => (is => 'ro', isa => 'Str');
   has Expiration => (is => 'ro', isa => 'Str');
+  has RequestCharged => (is => 'ro', isa => 'Str');
   has ServerSideEncryption => (is => 'ro', isa => 'Str');
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
@@ -58,6 +59,10 @@ header.
 
 
 
+
+=head2 RequestCharged => Str
+
+  
 
 =head2 ServerSideEncryption => Str
 

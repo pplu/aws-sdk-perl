@@ -4,6 +4,7 @@ package Paws::S3::DeleteObject {
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has MFA => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-mfa' );
+  has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
   has VersionId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -45,6 +46,9 @@ space, and the value that is displayed on your authentication device.
 
 
 
+=head2 RequestPayer => Str
+
+  
 =head2 VersionId => Str
 
   

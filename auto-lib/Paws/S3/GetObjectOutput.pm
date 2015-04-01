@@ -17,6 +17,8 @@ package Paws::S3::GetObjectOutput {
   has LastModified => (is => 'ro', isa => 'Str');
   has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata');
   has MissingMeta => (is => 'ro', isa => 'Int');
+  has ReplicationStatus => (is => 'ro', isa => 'Str');
+  has RequestCharged => (is => 'ro', isa => 'Str');
   has Restore => (is => 'ro', isa => 'Str');
   has ServerSideEncryption => (is => 'ro', isa => 'Str');
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
@@ -275,6 +277,14 @@ HTTP headers.
 
 
 
+
+=head2 ReplicationStatus => Str
+
+  
+
+=head2 RequestCharged => Str
+
+  
 
 =head2 Restore => Str
 

@@ -7,6 +7,7 @@ package Paws::S3::CompleteMultipartUploadOutput {
   has Expiration => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str');
   has Location => (is => 'ro', isa => 'Str');
+  has RequestCharged => (is => 'ro', isa => 'Str');
   has ServerSideEncryption => (is => 'ro', isa => 'Str');
   has SSEKMSKeyId => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
@@ -77,6 +78,10 @@ rule-id is URL encoded.
   
 
 =head2 Location => Str
+
+  
+
+=head2 RequestCharged => Str
 
   
 

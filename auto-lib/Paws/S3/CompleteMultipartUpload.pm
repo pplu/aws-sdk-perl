@@ -4,6 +4,7 @@ package Paws::S3::CompleteMultipartUpload {
   has Bucket => (is => 'ro', isa => 'Str', required => 1);
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has MultipartUpload => (is => 'ro', isa => 'Paws::S3::CompletedMultipartUpload');
+  has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
   has UploadId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -31,6 +32,9 @@ Paws::S3::CompleteMultipartUploadOutput
 
   
 =head2 MultipartUpload => Paws::S3::CompletedMultipartUpload
+
+  
+=head2 RequestPayer => Str
 
   
 =head2 B<REQUIRED> UploadId => Str

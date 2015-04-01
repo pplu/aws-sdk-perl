@@ -11,13 +11,14 @@ package Paws::S3::PutObjectAcl {
   has GrantWrite => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-write' );
   has GrantWriteACP => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-write-acp' );
   has Key => (is => 'ro', isa => 'Str', required => 1);
+  has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutObjectAcl');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}?acl');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectAclOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
@@ -26,7 +27,7 @@ package Paws::S3::PutObjectAcl {
 
 =head1 NAME
 
-Paws::S3::
+Paws::S3::PutObjectAclOutput
 
 =head1 ATTRIBUTES
 
@@ -126,6 +127,9 @@ Allows grantee to write the ACL for the applicable bucket.
 
 
 =head2 B<REQUIRED> Key => Str
+
+  
+=head2 RequestPayer => Str
 
   
 

@@ -18,6 +18,7 @@ package Paws::S3::PutObject {
   has GrantWriteACP => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-write-acp' );
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata');
+  has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
   has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption' );
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm' );
   has SSECustomerKey => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key' );
@@ -253,6 +254,9 @@ A map of metadata to store with the object in S3.
 
 
 
+=head2 RequestPayer => Str
+
+  
 =head2 ServerSideEncryption => Str
 
   

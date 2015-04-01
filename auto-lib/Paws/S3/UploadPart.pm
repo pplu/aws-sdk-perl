@@ -7,6 +7,7 @@ package Paws::S3::UploadPart {
   has ContentMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-MD5' );
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has PartNumber => (is => 'ro', isa => 'Int', required => 1);
+  has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm' );
   has SSECustomerKey => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key' );
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5' );
@@ -71,6 +72,9 @@ Part number of part being uploaded.
 
 
 
+=head2 RequestPayer => Str
+
+  
 =head2 SSECustomerAlgorithm => Str
 
   

@@ -8,6 +8,7 @@ package Paws::S3::HeadObject {
   has IfUnmodifiedSince => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-Unmodified-Since' );
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has Range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Range' );
+  has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm' );
   has SSECustomerKey => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key' );
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5' );
@@ -113,6 +114,9 @@ http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
 
 
 
+=head2 RequestPayer => Str
+
+  
 =head2 SSECustomerAlgorithm => Str
 
   

@@ -11,6 +11,7 @@ package Paws::S3::ListPartsOutput {
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
   has PartNumberMarker => (is => 'ro', isa => 'Int');
   has Parts => (is => 'ro', isa => 'ArrayRef[Paws::S3::Part]');
+  has RequestCharged => (is => 'ro', isa => 'Str');
   has StorageClass => (is => 'ro', isa => 'Str');
   has UploadId => (is => 'ro', isa => 'Str');
 
@@ -151,6 +152,10 @@ Part number after which listing begins.
 
 
 =head2 Parts => ArrayRef[Paws::S3::Part]
+
+  
+
+=head2 RequestCharged => Str
 
   
 

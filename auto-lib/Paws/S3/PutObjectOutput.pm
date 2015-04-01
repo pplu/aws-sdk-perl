@@ -4,6 +4,7 @@ package Paws::S3::PutObjectOutput {
   with 'Paws::API::ResultParser';
   has ETag => (is => 'ro', isa => 'Str');
   has Expiration => (is => 'ro', isa => 'Str');
+  has RequestCharged => (is => 'ro', isa => 'Str');
   has ServerSideEncryption => (is => 'ro', isa => 'Str');
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
@@ -66,6 +67,10 @@ rule-id is URL encoded.
 
 
 
+
+=head2 RequestCharged => Str
+
+  
 
 =head2 ServerSideEncryption => Str
 

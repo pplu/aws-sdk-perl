@@ -24,6 +24,7 @@ package Paws::S3::CopyObject {
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata');
   has MetadataDirective => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-metadata-directive' );
+  has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
   has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption' );
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm' );
   has SSECustomerKey => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key' );
@@ -361,6 +362,9 @@ replaced with metadata provided in the request.
 
 
 
+=head2 RequestPayer => Str
+
+  
 =head2 ServerSideEncryption => Str
 
   

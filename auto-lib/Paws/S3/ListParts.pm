@@ -5,6 +5,7 @@ package Paws::S3::ListParts {
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has MaxParts => (is => 'ro', isa => 'Int');
   has PartNumberMarker => (is => 'ro', isa => 'Int');
+  has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
   has UploadId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -60,6 +61,9 @@ higher part numbers will be listed.
 
 
 
+=head2 RequestPayer => Str
+
+  
 =head2 B<REQUIRED> UploadId => Str
 
   

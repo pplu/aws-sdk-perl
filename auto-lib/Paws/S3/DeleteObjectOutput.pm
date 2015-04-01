@@ -3,6 +3,7 @@ package Paws::S3::DeleteObjectOutput {
   use Moose;
   with 'Paws::API::ResultParser';
   has DeleteMarker => (is => 'ro', isa => 'Bool');
+  has RequestCharged => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
 
 }
@@ -45,6 +46,10 @@ Specifies whether the versioned object that was permanently deleted was
 
 
 
+
+=head2 RequestCharged => Str
+
+  
 
 =head2 VersionId => Str
 

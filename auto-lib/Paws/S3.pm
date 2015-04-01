@@ -57,6 +57,11 @@ package Paws::S3 {
     my $call_object = $self->new_with_coercions('Paws::S3::DeleteBucketPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteBucketReplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::DeleteBucketReplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteBucketTagging {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::DeleteBucketTagging', @_);
@@ -110,6 +115,11 @@ package Paws::S3 {
   sub GetBucketPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::GetBucketPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetBucketReplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::GetBucketReplication', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetBucketRequestPayment {
@@ -212,6 +222,11 @@ package Paws::S3 {
     my $call_object = $self->new_with_coercions('Paws::S3::PutBucketPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutBucketReplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::PutBucketReplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutBucketRequestPayment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::PutBucketRequestPayment', @_);
@@ -277,13 +292,34 @@ Paws::S3 - Perl Interface to AWS Amazon Simple Storage Service
 
 
 
+Amazon Simple Storage Service
+
+Amazon Simple Storage Service is storage for the Internet. It is
+designed to make web-scale computing easier for developers.
+
+Amazon S3 has a simple web services interface that you can use to store
+and retrieve any amount of data, at any time, from anywhere on the web.
+It gives any developer access to the same highly scalable, reliable,
+fast, inexpensive data storage infrastructure that Amazon uses to run
+its own global network of web sites. The service aims to maximize
+benefits of scale and to pass those benefits on to developers.
+
+
+
+
+
+
+
+
+
+
 =head1 METHODS
 
 =head2 AbortMultipartUpload()
 
   Arguments described in: L<Paws::S3::AbortMultipartUpload>
 
-  Returns: nothing
+  Returns: L<Paws::S3::AbortMultipartUploadOutput>
 
   
 
@@ -469,6 +505,15 @@ Deletes the policy from the bucket.
 
 
 
+
+
+=head2 DeleteBucketReplication()
+
+  Arguments described in: L<Paws::S3::DeleteBucketReplication>
+
+  Returns: nothing
+
+  
 
 
 =head2 DeleteBucketTagging()
@@ -694,6 +739,15 @@ Returns the policy of a specified bucket.
 
 
 
+
+
+=head2 GetBucketReplication()
+
+  Arguments described in: L<Paws::S3::GetBucketReplication>
+
+  Returns: L<Paws::S3::GetBucketReplicationOutput>
+
+  
 
 
 =head2 GetBucketRequestPayment()
@@ -1108,6 +1162,27 @@ one in this request completely replaces it.
 
 
 
+=head2 PutBucketReplication()
+
+  Arguments described in: L<Paws::S3::PutBucketReplication>
+
+  Returns: nothing
+
+  
+
+Creates a new replication configuration (or replaces an existing one,
+if present).
+
+
+
+
+
+
+
+
+
+
+
 =head2 PutBucketRequestPayment()
 
   Arguments described in: L<Paws::S3::PutBucketRequestPayment>
@@ -1119,7 +1194,9 @@ one in this request completely replaces it.
 Sets the request payment configuration for a bucket. By default, the
 bucket owner pays for downloads from the bucket. This configuration
 parameter enables the bucket owner (only) to specify that the person
-requesting the download will be charged for the download.
+requesting the download will be charged for the download. Documentation
+on requester pays buckets can be found at
+http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html
 
 
 
@@ -1216,7 +1293,7 @@ Adds an object to a bucket.
 
   Arguments described in: L<Paws::S3::PutObjectAcl>
 
-  Returns: nothing
+  Returns: L<Paws::S3::PutObjectAclOutput>
 
   
 
@@ -1237,7 +1314,7 @@ permissions for an object that already exists in a bucket
 
   Arguments described in: L<Paws::S3::RestoreObject>
 
-  Returns: nothing
+  Returns: L<Paws::S3::RestoreObjectOutput>
 
   
 

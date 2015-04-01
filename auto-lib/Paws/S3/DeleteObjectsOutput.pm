@@ -4,6 +4,7 @@ package Paws::S3::DeleteObjectsOutput {
   with 'Paws::API::ResultParser';
   has Deleted => (is => 'ro', isa => 'ArrayRef[Paws::S3::DeletedObject]');
   has Errors => (is => 'ro', isa => 'ArrayRef[Paws::S3::Error]');
+  has RequestCharged => (is => 'ro', isa => 'Str');
 
 }
 1;
@@ -35,6 +36,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 =head2 Errors => ArrayRef[Paws::S3::Error]
+
+  
+
+=head2 RequestCharged => Str
 
   
 

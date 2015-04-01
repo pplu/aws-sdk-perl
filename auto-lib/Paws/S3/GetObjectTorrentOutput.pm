@@ -3,6 +3,7 @@ package Paws::S3::GetObjectTorrentOutput {
   use Moose;
   with 'Paws::API::ResultParser';
   has Body => (is => 'ro', isa => 'Str');
+  has RequestCharged => (is => 'ro', isa => 'Str');
 
 }
 1;
@@ -30,6 +31,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 =head2 Body => Str
+
+  
+
+=head2 RequestCharged => Str
 
   
 
