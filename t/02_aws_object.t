@@ -1,10 +1,10 @@
 #!/usr/bin/env perl
 
 package A::NEW::CALLER {
-  use Moose::Role;
+  use Moose;
 };
 package A::NEW::CALLER2 {
-  use Moose::Role;
+  use Moose;
 };
 
 
@@ -19,7 +19,7 @@ use Test::More;
   my $aws = Paws->new;
   cmp_ok($aws->config->caller, 'eq', 'Paws::Net::Caller', 'Got default caller');
   my $svc = $aws->service('SQS', region => 'eu-west-1', version => 1 );
-  ok($svc->does('Paws::Net::Caller'), 'Correct default caller class');
+  ok($svc->caller->isa('Paws::Net::Caller'), 'Correct default caller class');
 }
 
 {
@@ -27,7 +27,7 @@ use Test::More;
   my $aws = Paws->new(config => Paws::SDK::Config->new(caller => 'A::NEW::CALLER'));
   cmp_ok($aws->config->caller, 'eq', 'A::NEW::CALLER', 'Got new caller');
   my $svc = $aws->service('SQS', region => 'eu-west-1', version => 1 );
-  ok($svc->does('A::NEW::CALLER'), 'Correct custom caller class');
+  ok($svc->caller->isa('A::NEW::CALLER'), 'Correct custom caller class');
   
   my $svc2 = $aws->service('SQS', region => 'eu-west-1', version => 1 );
 
@@ -36,15 +36,15 @@ use Test::More;
   my $aws2 = Paws->new(config => Paws::SDK::Config->new(caller => 'A::NEW::CALLER2'));
   my $svc3 = $aws2->service('SQS', region => 'eu-west-1', version => 1 );
 
-  ok($svc3->does('A::NEW::CALLER2'), 'Correct custom caller class');
+  ok($svc3->caller->isa('A::NEW::CALLER2'), 'Correct custom caller class');
 
-  cmp_ok($svc2->meta->name, 'ne', $svc3->meta->name, 'Got different classes calling on different Paws instances');
+  cmp_ok($svc2->caller->meta->name, 'ne', $svc3->caller->meta->name, 'Got different classes calling on different Paws instances');
 }
 
 {
   # Get a service through the Paws class
   my $svc = Paws->service('SQS', region => 'eu-west-1', version => 1 );
-  ok($svc->does('Paws::Net::Caller'), 'Correct default caller class');
+  ok($svc->caller->isa('Paws::Net::Caller'), 'Correct default caller class');
 }
 
 done_testing;
