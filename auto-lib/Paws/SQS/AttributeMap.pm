@@ -3,8 +3,8 @@ package Paws::SQS::AttributeMap {
   with 'Paws::API::MapParser';
 
   use MooseX::ClassAttribute;
-  class_has xml_keys =>(is => 'ro', default => 'key');
-  class_has xml_values =>(is => 'ro', default => 'value');
+  class_has xml_keys =>(is => 'ro', default => 'Name');
+  class_has xml_values =>(is => 'ro', default => 'Value');
 
   has ApproximateNumberOfMessages => (is => 'ro', isa => 'Str');
   has ApproximateNumberOfMessagesDelayed => (is => 'ro', isa => 'Str');

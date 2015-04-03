@@ -126,8 +126,8 @@ package [% c.api %] {
 
           my $type = $self->get_caller_class_type($iclass->{value}->{shape});
 
-          my $xml_keys = $iclass->{keys}->{xmlname} || 'key';
-          my $xml_values = $iclass->{members}->{xmlname} || 'value';
+          my $xml_keys = $iclass->{key}->{locationName} || 'key';
+          my $xml_values = $iclass->{value}->{locationName} || 'value';
           $output .= "\n";
           $output .= "  use MooseX::ClassAttribute;\n";
           $output .= "  class_has xml_keys =>(is => 'ro', default => '$xml_keys');\n";
@@ -146,8 +146,8 @@ package [% c.api %] {
           $output .= "  use Moose;\n";
           $output .= "  with 'Paws::API::StrToStrMapParser';\n";
 
-          my $xml_keys = $iclass->{keys}->{xmlname} || 'key';
-          my $xml_values = $iclass->{members}->{xmlname} || 'value';
+          my $xml_keys = $iclass->{key}->{locationName} || 'key';
+          my $xml_values = $iclass->{value}->{locationName} || 'value';
           $output .= "\n";
           $output .= "  use MooseX::ClassAttribute;\n";
           $output .= "  class_has xml_keys =>(is => 'ro', default => '$xml_keys');\n";
@@ -163,8 +163,8 @@ package [% c.api %] {
           $output .= "  use Moose;\n";
           $output .= "  with 'Paws::API::StrToObjMapParser';\n";
 
-          my $xml_keys = $iclass->{keys}->{xmlname} || 'key';
-          my $xml_values = $iclass->{members}->{xmlname} || 'value';
+          my $xml_keys = $iclass->{key}->{locationName} || 'key';
+          my $xml_values = $iclass->{value}->{locationName} || 'value';
           $output .= "\n";
           $output .= "  use MooseX::ClassAttribute;\n";
           $output .= "  class_has xml_keys =>(is => 'ro', default => '$xml_keys');\n";
