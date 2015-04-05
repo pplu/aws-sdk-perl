@@ -7,12 +7,12 @@ use Test::More;
 use Paws;
 use Test::CustomCredentials;
 
-sub test_params {
+sub request_has_params {
   my ($test_params, $request) = @_;
 
   foreach my $param (keys %$test_params) {
     cmp_ok($request->parameters->{ $param }, 'eq', $test_params->{ $param }, 
-           "existant parameter called $param with expected value"
+           "request has a parameter called $param with expected value"
     );
   }
 }
@@ -44,7 +44,7 @@ $test_params = {
   'BlockDeviceMapping.3.VirtualName' => 'ephemeral0'
 };
 
-test_params($test_params, $request);
+request_has_params($test_params, $request);
 
 $request = $ec2->RunInstances(
   ImageId => 'ami-XXXXX',
@@ -64,7 +64,7 @@ $test_params = {
   'NetworkInterface.1.SecurityGroupId.2' => 'sg-2',
 };
 
-test_params($test_params, $request);
+request_has_params($test_params, $request);
 
 
 my $sqs = $aws->service('SQS', endpoint => 'dummy', region => 'dummy', credentials => Test::CustomCredentials->new);
@@ -86,16 +86,16 @@ $request = $sqs->SendMessageBatch(
 
 $test_params = {
   'Entries.1.Id' => 'test_msg_001',
-  'Entries.1.MessageBody' => 'test message body 1',
+  'Entries.1.MessageBody' => 'test message body 201',
   'Entries.2.Id' => 'test_msg_002',
-  'Entries.2.MessageBody' => 'test message body 2',
+  'Entries.2.MessageBody' => 'test message body 202',
   'Entries.2.DelaySeconds' => '60',
   'Entries.2.MessageAttribute.1.Name' => 'test_attribute_name_1',
   'Entries.2.MessageAttribute.1.Value.StringValue' => 'test_attribute_value_1',
   'Entries.2.MessageAttribute.1.Value.DataType' => 'String',
 };
 
-test_params($test_params, $request);
+request_has_params($test_params, $request);
 
 my $sns = $aws->service('SNS', endpoint => 'dummy', region => 'dummy', credentials => Test::CustomCredentials->new);
 
@@ -110,10 +110,10 @@ $test_params = {
   'Attributes.entry.1.key' =>  'EventEndpointCreated',
   'PlatformApplicationArn' =>  'arn:aws:sns:us-west-2:123456789012:app/GCM/gcmpushapp',
   'Action' =>  'SetPlatformApplicationAttributes',
-  'Attributes.entry.1.value' =>  'arn%3Aaws%3Asns%3Aus-west-2%3A123456789012%3Atopicarn',
+  'Attributes.entry.1.value' =>  'arn:aws:sns:us-west-2:123456789012:topicarn',
 };
 
-test_params($test_params, $request);
+request_has_params($test_params, $request);
 
 
 my $ses = $aws->service('SES', endpoint => 'dummy', region => 'dummy', credentials => Test::CustomCredentials->new);
@@ -133,7 +133,7 @@ $test_params = {
   'Source' => 'user@example.com',
 };
 
-test_params($test_params, $request);
+request_has_params($test_params, $request);
 
 $request = $ses->GetIdentityNotificationAttributes(
   Identities => [ 'user@example.com' ]
@@ -143,7 +143,7 @@ $test_params = {
   'Identities.member.1' => 'user@example.com',
 };
 
-test_params($test_params, $request);
+request_has_params($test_params, $request);
 
 my $cfn = $aws->service('CloudFormation', endpoint => 'dummy', region => 'dummy', credentials => Test::CustomCredentials->new);
 
@@ -165,7 +165,7 @@ $test_params = {
   'Parameters.member.1.ParameterValue' => 'us-east-1a'
 };
 
-test_params($test_params, $request);
+request_has_params($test_params, $request);
 
 
 my $asg = $aws->service('AutoScaling', endpoint => 'dummy', region => 'dummy', credentials => Test::CustomCredentials->new);
@@ -181,7 +181,7 @@ $test_params = {
   'InstanceIds.member.2' => 'i-123456789'
 };
 
-test_params($test_params, $request);
+request_has_params($test_params, $request);
 
 
 $request = $asg->CreateAutoScalingGroup(
@@ -211,7 +211,7 @@ $test_params = {
   'Action' => 'CreateAutoScalingGroup',
 };
 
-test_params($test_params, $request);
+request_has_params($test_params, $request);
 
 
 done_testing;

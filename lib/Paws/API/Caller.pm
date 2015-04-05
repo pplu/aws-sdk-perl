@@ -25,24 +25,33 @@ package Paws::API::Caller {
     my %p;
     foreach my $att (keys %params){
       my $att_meta = $class->meta->find_attribute_by_name($att);
-      croak "$class doesn't have an $att" if (not defined $att_meta);
-      my $type = $att_meta->type_constraint;
 
-      if ($type eq 'Bool') {
-        $p{ $att } = ($params{ $att } == 1)?1:0;
-      } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
-        $p{ $att } = $params{ $att };
-      } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
-        my $subtype = "$1";
-        if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
+      if ($class->does('Paws::API::StrToObjMapParser')) {
+        my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
+        Module::Runtime::require_module($subtype);
+        $p{ Map }->{ $att } = $subtype->new(%{ $params{ $att } });
+      } elsif ($class->does('Paws::API::StrToStrMapParser')) {
+        $p{ Map }->{ $att } = $params{ $att };
+      } else {
+        croak "$class doesn't have an $att" if (not defined $att_meta);
+        my $type = $att_meta->type_constraint;
+
+        if ($type eq 'Bool') {
+          $p{ $att } = ($params{ $att } == 1)?1:0;
+        } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
+          $p{ $att } = $params{ $att };
+        } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
+          my $subtype = "$1";
+          if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
+            $p{ $att } = $params{ $att };
+          } else {
+            $p{ $att } = [ map { $self->new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ];
+          }
+        } elsif ($type->isa('Moose::Meta::TypeConstraint::Enum')){
           $p{ $att } = $params{ $att };
         } else {
-          $p{ $att } = [ map { $self->new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ];
+          $p{ $att } = $self->new_with_coercions("$type", %{ $params{ $att } });
         }
-      } elsif ($type->isa('Moose::Meta::TypeConstraint::Enum')){
-        $p{ $att } = $params{ $att };
-      } else {
-        $p{ $att } = $self->new_with_coercions("$type", %{ $params{ $att } });
       }
     }
     return $class->new(%p);

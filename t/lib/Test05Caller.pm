@@ -6,9 +6,6 @@ package Test05Caller {
 
     my $requestObj = $service->prepare_request_for_call($call_object); 
 
-use Data::Dumper;
-print Dumper($requestObj);
-
     return $requestObj;
   }
 

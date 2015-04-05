@@ -205,6 +205,10 @@ package [% c.api %] {
             push @$traits, 'Unwrapped';
             $output .= ", xmlname => '$members->{ $param_name }->{locationName}'";
           }
+          if (defined $members->{ $param_name }->{locationName}) {
+            push @$traits, 'NameInRequest';
+            $output .= ", request_name => '$members->{ $param_name }->{locationName}'";
+          }
           if (defined $self->encoders_struct and my $encoder = $self->encoders_struct->{ $member_shape_name }) {
             push @$traits, 'JSONAttribute';
             $output .= ", decode_as => '$encoder->{ encoding }', method => '$encoder->{ alias }'";
