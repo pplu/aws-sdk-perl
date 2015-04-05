@@ -7,16 +7,16 @@ tests:
     path: DhcpOptions.DhcpConfigurations.0.Key
   - expected: example.com
     op: eq
-    path: DhcpOptions.DhcpConfigurations.0.Values.0
+    path: DhcpOptions.DhcpConfigurations.0.Values.0.Value
   - expected: domain-name-servers
     op: eq
     path: DhcpOptions.DhcpConfigurations.1.Key
   - expected: 10.2.5.1
     op: eq
-    path: DhcpOptions.DhcpConfigurations.1.Values.0
+    path: DhcpOptions.DhcpConfigurations.1.Values.0.Value
   - expected: 10.2.5.2
     op: eq
-    path: DhcpOptions.DhcpConfigurations.1.Values.1
+    path: DhcpOptions.DhcpConfigurations.1.Values.1.Value
   - expected: dopt-7a8b9c2d
     op: eq
     path: DhcpOptions.DhcpOptionsId
