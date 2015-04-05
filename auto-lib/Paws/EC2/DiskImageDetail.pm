@@ -1,7 +1,7 @@
 package Paws::EC2::DiskImageDetail {
   use Moose;
-  has Bytes => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'bytes', required => 1);
-  has Format => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'format', required => 1);
-  has ImportManifestUrl => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'importManifestUrl', required => 1);
+  has Bytes => (is => 'ro', isa => 'Num', xmlname => 'bytes', traits => ['Unwrapped'], required => 1);
+  has Format => (is => 'ro', isa => 'Str', xmlname => 'format', traits => ['Unwrapped'], required => 1);
+  has ImportManifestUrl => (is => 'ro', isa => 'Str', xmlname => 'importManifestUrl', traits => ['Unwrapped'], required => 1);
 }
 1;

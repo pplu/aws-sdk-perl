@@ -2,8 +2,8 @@
 package Paws::EC2::DescribeClassicLinkInstancesResult {
   use Moose;
   with 'Paws::API::UnwrappedParser';
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClassicLinkInstance]', traits => ['Unwrapped'], xmlname => 'instancesSet');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
+  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClassicLinkInstance]', xmlname => 'instancesSet', traits => ['Unwrapped',]);
+  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
 
 }
 1;

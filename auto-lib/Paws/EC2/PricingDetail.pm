@@ -1,6 +1,6 @@
 package Paws::EC2::PricingDetail {
   use Moose;
-  has Count => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'count');
-  has Price => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'price');
+  has Count => (is => 'ro', isa => 'Int', xmlname => 'count', traits => ['Unwrapped']);
+  has Price => (is => 'ro', isa => 'Num', xmlname => 'price', traits => ['Unwrapped']);
 }
 1;

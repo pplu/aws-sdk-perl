@@ -2,7 +2,7 @@
 package Paws::EC2::ConfirmProductInstanceResult {
   use Moose;
   with 'Paws::API::UnwrappedParser';
-  has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
+  has OwnerId => (is => 'ro', isa => 'Str', xmlname => 'ownerId', traits => ['Unwrapped',]);
 
 }
 1;

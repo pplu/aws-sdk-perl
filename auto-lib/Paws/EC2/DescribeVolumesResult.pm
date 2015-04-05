@@ -2,8 +2,8 @@
 package Paws::EC2::DescribeVolumesResult {
   use Moose;
   with 'Paws::API::UnwrappedParser';
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
-  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Volume]', traits => ['Unwrapped'], xmlname => 'volumeSet');
+  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
+  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Volume]', xmlname => 'volumeSet', traits => ['Unwrapped',]);
 
 }
 1;

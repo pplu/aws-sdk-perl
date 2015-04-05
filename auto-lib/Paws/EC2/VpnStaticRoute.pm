@@ -1,7 +1,7 @@
 package Paws::EC2::VpnStaticRoute {
   use Moose;
-  has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'destinationCidrBlock');
-  has Source => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'source');
-  has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'state');
+  has DestinationCidrBlock => (is => 'ro', isa => 'Str', xmlname => 'destinationCidrBlock', traits => ['Unwrapped']);
+  has Source => (is => 'ro', isa => 'Str', xmlname => 'source', traits => ['Unwrapped']);
+  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
 }
 1;

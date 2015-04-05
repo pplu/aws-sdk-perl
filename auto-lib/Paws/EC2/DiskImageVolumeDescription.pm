@@ -1,6 +1,6 @@
 package Paws::EC2::DiskImageVolumeDescription {
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id', required => 1);
-  has Size => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'size');
+  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', traits => ['Unwrapped'], required => 1);
+  has Size => (is => 'ro', isa => 'Num', xmlname => 'size', traits => ['Unwrapped']);
 }
 1;

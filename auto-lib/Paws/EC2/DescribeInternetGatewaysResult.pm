@@ -2,7 +2,7 @@
 package Paws::EC2::DescribeInternetGatewaysResult {
   use Moose;
   with 'Paws::API::UnwrappedParser';
-  has InternetGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InternetGateway]', traits => ['Unwrapped'], xmlname => 'internetGatewaySet');
+  has InternetGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InternetGateway]', xmlname => 'internetGatewaySet', traits => ['Unwrapped',]);
 
 }
 1;

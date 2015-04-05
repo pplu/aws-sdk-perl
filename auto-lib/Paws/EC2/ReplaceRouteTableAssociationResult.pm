@@ -2,7 +2,7 @@
 package Paws::EC2::ReplaceRouteTableAssociationResult {
   use Moose;
   with 'Paws::API::UnwrappedParser';
-  has NewAssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'newAssociationId');
+  has NewAssociationId => (is => 'ro', isa => 'Str', xmlname => 'newAssociationId', traits => ['Unwrapped',]);
 
 }
 1;

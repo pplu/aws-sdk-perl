@@ -2,8 +2,8 @@
 package Paws::EC2::DescribeInstancesResult {
   use Moose;
   with 'Paws::API::UnwrappedParser';
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
-  has Reservations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Reservation]', traits => ['Unwrapped'], xmlname => 'reservationSet');
+  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
+  has Reservations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Reservation]', xmlname => 'reservationSet', traits => ['Unwrapped',]);
 
 }
 1;

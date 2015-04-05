@@ -1,8 +1,8 @@
 package Paws::EC2::PriceSchedule {
   use Moose;
-  has Active => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'active');
-  has CurrencyCode => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'currencyCode');
-  has Price => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'price');
-  has Term => (is => 'ro', isa => 'Num', traits => ['Unwrapped'], xmlname => 'term');
+  has Active => (is => 'ro', isa => 'Bool', xmlname => 'active', traits => ['Unwrapped']);
+  has CurrencyCode => (is => 'ro', isa => 'Str', xmlname => 'currencyCode', traits => ['Unwrapped']);
+  has Price => (is => 'ro', isa => 'Num', xmlname => 'price', traits => ['Unwrapped']);
+  has Term => (is => 'ro', isa => 'Num', xmlname => 'term', traits => ['Unwrapped']);
 }
 1;

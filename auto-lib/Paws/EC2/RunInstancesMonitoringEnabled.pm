@@ -1,5 +1,5 @@
 package Paws::EC2::RunInstancesMonitoringEnabled {
   use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'enabled', required => 1);
+  has Enabled => (is => 'ro', isa => 'Bool', xmlname => 'enabled', traits => ['Unwrapped'], required => 1);
 }
 1;

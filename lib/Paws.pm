@@ -15,6 +15,7 @@ use Moose::Util qw//;
 use Module::Runtime qw//;
 
 use Paws::API::JSONAttribute;
+use Paws::API::Base64Attribute;
 
 use Paws::Net::Caller;
 use Paws::API;

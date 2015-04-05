@@ -1,13 +1,13 @@
 package Paws::EC2::Subnet {
   use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'availabilityZone');
-  has AvailableIpAddressCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'availableIpAddressCount');
-  has CidrBlock => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cidrBlock');
-  has DefaultForAz => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'defaultForAz');
-  has MapPublicIpOnLaunch => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'mapPublicIpOnLaunch');
-  has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'state');
-  has SubnetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'subnetId');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', traits => ['Unwrapped'], xmlname => 'tagSet');
-  has VpcId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'vpcId');
+  has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
+  has AvailableIpAddressCount => (is => 'ro', isa => 'Int', xmlname => 'availableIpAddressCount', traits => ['Unwrapped']);
+  has CidrBlock => (is => 'ro', isa => 'Str', xmlname => 'cidrBlock', traits => ['Unwrapped']);
+  has DefaultForAz => (is => 'ro', isa => 'Bool', xmlname => 'defaultForAz', traits => ['Unwrapped']);
+  has MapPublicIpOnLaunch => (is => 'ro', isa => 'Bool', xmlname => 'mapPublicIpOnLaunch', traits => ['Unwrapped']);
+  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
+  has SubnetId => (is => 'ro', isa => 'Str', xmlname => 'subnetId', traits => ['Unwrapped']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
+  has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
 }
 1;

@@ -1,9 +1,9 @@
 package Paws::EC2::NetworkInterfaceAssociation {
   use Moose;
-  has AllocationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'allocationId');
-  has AssociationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'associationId');
-  has IpOwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ipOwnerId');
-  has PublicDnsName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicDnsName');
-  has PublicIp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicIp');
+  has AllocationId => (is => 'ro', isa => 'Str', xmlname => 'allocationId', traits => ['Unwrapped']);
+  has AssociationId => (is => 'ro', isa => 'Str', xmlname => 'associationId', traits => ['Unwrapped']);
+  has IpOwnerId => (is => 'ro', isa => 'Str', xmlname => 'ipOwnerId', traits => ['Unwrapped']);
+  has PublicDnsName => (is => 'ro', isa => 'Str', xmlname => 'publicDnsName', traits => ['Unwrapped']);
+  has PublicIp => (is => 'ro', isa => 'Str', xmlname => 'publicIp', traits => ['Unwrapped']);
 }
 1;

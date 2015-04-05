@@ -2,7 +2,7 @@
 package Paws::EC2::CopyImageResult {
   use Moose;
   with 'Paws::API::UnwrappedParser';
-  has ImageId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'imageId');
+  has ImageId => (is => 'ro', isa => 'Str', xmlname => 'imageId', traits => ['Unwrapped',]);
 
 }
 1;

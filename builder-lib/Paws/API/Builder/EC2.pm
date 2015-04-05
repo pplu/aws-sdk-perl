@@ -54,10 +54,14 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
   use Moose;
   with 'Paws::API::UnwrappedParser';
 [% FOREACH param_name IN shape.members.keys.sort -%]
-  [%- member = c.shape(shape.members.$param_name.shape) -%]
+  [%- traits = [] -%]
+  [%- member_shape_name = shape.members.$param_name.shape %]
+  [%- member = c.shape(member_shape_name) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
-  [%- IF (shape.members.${param_name}.locationName) %], traits => ['Unwrapped'], xmlname => '[% shape.members.${param_name}.locationName %]'[% END %]
+  [%- IF (shape.members.${param_name}.locationName); traits.push('Unwrapped') %], xmlname => '[% shape.members.${param_name}.locationName %]'[% END %]
+  [%- encoder = c.encoders_struct.$member_shape_name; IF (encoder); traits.push('Base64Attribute') %], decode_as => '[% encoder.encoding %]', method => '[% param_name %]'[% END %]
   [%- IF (member.members.xmlname and (member.members.xmlname != 'item')) %], traits => ['Unwrapped'], xmlname => '[% member.members.xmlname %]'[% END %]
+  [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]',[% END %]][% END -%]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
 }
@@ -140,6 +144,7 @@ package [% c.api %] {
  
         my $members = $iclass->{members};
         foreach my $param_name (sort keys %$members){
+          my $member_shape_name = $members->{ $param_name }->{ shape };
           my $param_props = $self->shape($members->{ $param_name }->{ shape });
 
           my $callit = $self->get_caller_class_type($members->{ $param_name }->{ shape });
@@ -155,9 +160,19 @@ package [% c.api %] {
             $type = eval { $self->get_caller_class_type($members->{ $param_name }->{ shape }) };
             if ($@) { die "In Inner Class: $inner_class: $@"; }
           }
+
+          my $traits = [];
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
           if (defined $members->{ $param_name }->{locationName}) {
-            $output .= ", traits => ['Unwrapped'], xmlname => '$members->{ $param_name }->{locationName}'";
+            push @$traits, 'Unwrapped';
+            $output .= ", xmlname => '$members->{ $param_name }->{locationName}'";
+          }
+          if (defined $self->encoders_struct and my $encoder = $self->encoders_struct->{ $member_shape_name }) {
+            push @$traits, 'Base64Attribute';
+            $output .= ", decode_as => '$encoder->{ encoding }', method => '$encoder->{ alias }'";
+          }
+          if (@$traits) {
+            $output .= ", traits => [" . (join ',', map { "'$_'" } @$traits) . "]";
           }
           $output .= ", required => 1" if ($self->required_in_shape($iclass,$param_name));
           $output .= ");\n";

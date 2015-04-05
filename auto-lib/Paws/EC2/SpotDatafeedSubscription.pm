@@ -1,9 +1,9 @@
 package Paws::EC2::SpotDatafeedSubscription {
   use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bucket');
-  has Fault => (is => 'ro', isa => 'Paws::EC2::SpotInstanceStateFault', traits => ['Unwrapped'], xmlname => 'fault');
-  has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
-  has Prefix => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'prefix');
-  has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'state');
+  has Bucket => (is => 'ro', isa => 'Str', xmlname => 'bucket', traits => ['Unwrapped']);
+  has Fault => (is => 'ro', isa => 'Paws::EC2::SpotInstanceStateFault', xmlname => 'fault', traits => ['Unwrapped']);
+  has OwnerId => (is => 'ro', isa => 'Str', xmlname => 'ownerId', traits => ['Unwrapped']);
+  has Prefix => (is => 'ro', isa => 'Str', xmlname => 'prefix', traits => ['Unwrapped']);
+  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
 }
 1;

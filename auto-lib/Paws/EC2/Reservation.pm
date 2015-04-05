@@ -2,11 +2,11 @@
 package Paws::EC2::Reservation {
   use Moose;
   with 'Paws::API::UnwrappedParser';
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', traits => ['Unwrapped'], xmlname => 'groupSet');
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Instance]', traits => ['Unwrapped'], xmlname => 'instancesSet');
-  has OwnerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerId');
-  has RequesterId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'requesterId');
-  has ReservationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'reservationId');
+  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', xmlname => 'groupSet', traits => ['Unwrapped',]);
+  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Instance]', xmlname => 'instancesSet', traits => ['Unwrapped',]);
+  has OwnerId => (is => 'ro', isa => 'Str', xmlname => 'ownerId', traits => ['Unwrapped',]);
+  has RequesterId => (is => 'ro', isa => 'Str', xmlname => 'requesterId', traits => ['Unwrapped',]);
+  has ReservationId => (is => 'ro', isa => 'Str', xmlname => 'reservationId', traits => ['Unwrapped',]);
 
 }
 1;

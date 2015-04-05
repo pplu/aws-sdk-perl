@@ -2,7 +2,7 @@
 package Paws::EC2::AttachVpnGatewayResult {
   use Moose;
   with 'Paws::API::UnwrappedParser';
-  has VpcAttachment => (is => 'ro', isa => 'Paws::EC2::VpcAttachment', traits => ['Unwrapped'], xmlname => 'attachment');
+  has VpcAttachment => (is => 'ro', isa => 'Paws::EC2::VpcAttachment', xmlname => 'attachment', traits => ['Unwrapped',]);
 
 }
 1;

@@ -2,7 +2,7 @@
 package Paws::EC2::DescribeSecurityGroupsResult {
   use Moose;
   with 'Paws::API::UnwrappedParser';
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SecurityGroup]', traits => ['Unwrapped'], xmlname => 'securityGroupInfo');
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SecurityGroup]', xmlname => 'securityGroupInfo', traits => ['Unwrapped',]);
 
 }
 1;

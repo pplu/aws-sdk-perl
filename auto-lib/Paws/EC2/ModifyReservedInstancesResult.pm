@@ -2,7 +2,7 @@
 package Paws::EC2::ModifyReservedInstancesResult {
   use Moose;
   with 'Paws::API::UnwrappedParser';
-  has ReservedInstancesModificationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'reservedInstancesModificationId');
+  has ReservedInstancesModificationId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstancesModificationId', traits => ['Unwrapped',]);
 
 }
 1;

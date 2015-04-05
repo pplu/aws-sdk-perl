@@ -2,12 +2,12 @@
 package Paws::EC2::VolumeAttachment {
   use Moose;
   with 'Paws::API::UnwrappedParser';
-  has AttachTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachTime');
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'deleteOnTermination');
-  has Device => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'device');
-  has InstanceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'instanceId');
-  has State => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status');
-  has VolumeId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'volumeId');
+  has AttachTime => (is => 'ro', isa => 'Str', xmlname => 'attachTime', traits => ['Unwrapped',]);
+  has DeleteOnTermination => (is => 'ro', isa => 'Bool', xmlname => 'deleteOnTermination', traits => ['Unwrapped',]);
+  has Device => (is => 'ro', isa => 'Str', xmlname => 'device', traits => ['Unwrapped',]);
+  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped',]);
+  has State => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
+  has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped',]);
 
 }
 1;

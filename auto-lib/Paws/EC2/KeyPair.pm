@@ -2,9 +2,9 @@
 package Paws::EC2::KeyPair {
   use Moose;
   with 'Paws::API::UnwrappedParser';
-  has KeyFingerprint => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyFingerprint');
-  has KeyMaterial => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyMaterial');
-  has KeyName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'keyName');
+  has KeyFingerprint => (is => 'ro', isa => 'Str', xmlname => 'keyFingerprint', traits => ['Unwrapped',]);
+  has KeyMaterial => (is => 'ro', isa => 'Str', xmlname => 'keyMaterial', traits => ['Unwrapped',]);
+  has KeyName => (is => 'ro', isa => 'Str', xmlname => 'keyName', traits => ['Unwrapped',]);
 
 }
 1;
