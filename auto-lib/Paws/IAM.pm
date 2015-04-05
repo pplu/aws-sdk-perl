@@ -1784,7 +1784,7 @@ I<Using IAM> guide.
 Retrieves information about all IAM users, groups, and roles in your
 account, including their relationships to one another and their
 policies. Use this API to obtain a snapshot of the configuration of IAM
-permissions (users, groups, roles, and their policies) in your account.
+permissions (users, groups, roles, and policies) in your account.
 
 You can optionally filter the results using the C<Filter> parameter.
 You can paginate the results using the C<MaxItems> and C<Marker>

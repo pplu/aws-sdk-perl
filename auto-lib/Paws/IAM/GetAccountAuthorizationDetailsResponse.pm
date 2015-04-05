@@ -5,6 +5,7 @@ package Paws::IAM::GetAccountAuthorizationDetailsResponse {
   has GroupDetailList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::GroupDetail]');
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
+  has Policies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ManagedPolicyDetail]');
   has RoleDetailList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::RoleDetail]');
   has UserDetailList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::UserDetail]');
 
@@ -56,6 +57,20 @@ using the C<Marker> request parameter to retrieve more items.
 If C<IsTruncated> is C<true>, this element is present and contains the
 value to use for the C<Marker> parameter in a subsequent pagination
 request.
+
+
+
+
+
+
+
+
+
+=head2 Policies => ArrayRef[Paws::IAM::ManagedPolicyDetail]
+
+  
+
+A list containing information about managed policies.
 
 
 

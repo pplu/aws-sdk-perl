@@ -39,8 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A list of entity types (user, group, or role) for filtering the
-results.
+A list of entity types (user, group, role, local managed policy, or AWS
+managed policy) for filtering the results.
 
 
 
