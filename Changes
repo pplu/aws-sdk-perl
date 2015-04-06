@@ -1,4 +1,6 @@
-0.02 ?
+0.02 6 Apr 2015 18:30:00
+ - Service updates
+ - Map types were not being passed correctly to APIs
 
 0.01 2 Apr 2015 02:35:00
  - First version launched to CPAN
