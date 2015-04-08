@@ -1,4 +1,0 @@
----
-call: DescribeTags
-service: AutoScaling
-tests: []

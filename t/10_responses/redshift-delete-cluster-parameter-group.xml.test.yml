@@ -1,4 +1,0 @@
----
-call: DeleteClusterParameterGroup
-service: RedShift
-tests: []

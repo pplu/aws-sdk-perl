@@ -1,7 +1,0 @@
----
-call: CreateStorageLocation
-service: ElasticBeanstalk
-tests:
-  - expected: elasticbeanstalk-us-east-1-780612358023
-    op: eq
-    path: S3Bucket

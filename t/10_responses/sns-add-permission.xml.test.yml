@@ -1,4 +1,0 @@
----
-call: AddPermission
-service: SNS
-tests: []

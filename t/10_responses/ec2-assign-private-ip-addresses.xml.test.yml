@@ -1,3 +1,0 @@
----
-call: AssignPrivateIpAddresses
-service: EC2

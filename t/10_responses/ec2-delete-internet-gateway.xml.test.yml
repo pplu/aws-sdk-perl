@@ -1,3 +1,0 @@
----
-call: DeleteInternetGateway
-service: EC2

@@ -1,4 +1,0 @@
----
-call: DescribeScheduledActions
-service: AutoScaling
-tests: []

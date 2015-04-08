@@ -1,4 +1,0 @@
----
-call: DescribeEventSubscriptions
-service: RDS
-tests: []

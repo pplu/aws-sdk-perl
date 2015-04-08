@@ -1,4 +1,0 @@
----
-call: DescribeNotificationConfigurations
-service: AutoScaling
-tests: []

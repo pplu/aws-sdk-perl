@@ -1,4 +1,0 @@
----
-call: DeleteIdentity
-service: SES
-tests: []

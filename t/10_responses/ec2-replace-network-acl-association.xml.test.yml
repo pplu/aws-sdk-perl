@@ -1,7 +1,0 @@
----
-call: ReplaceNetworkAclAssociation
-service: EC2
-tests:
-  - expected: aclassoc-17b85d7e
-    op: eq
-    path: NewAssociationId

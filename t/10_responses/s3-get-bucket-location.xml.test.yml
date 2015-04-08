@@ -1,7 +1,0 @@
----
-call: GetBucketLocation
-service: S3
-tests:
-  - expected: EU
-    op: eq
-    path: LocationConstraint

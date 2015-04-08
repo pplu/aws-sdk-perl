@@ -1,7 +1,0 @@
----
-call: ConfirmProductInstance
-service: EC2
-tests:
-  - expected: 111122223333
-    op: eq
-    path: OwnerId

@@ -1,4 +1,0 @@
----
-call: DescribeLaunchConfigurations
-service: AutoScaling
-tests: []

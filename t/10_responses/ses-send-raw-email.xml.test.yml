@@ -1,7 +1,0 @@
----
-call: SendRawEmail
-service: SES
-tests:
-  - expected: 00000131d51d6b36-1d4f9293-0aee-4503-b573-9ae4e70e9e38-000000
-    op: eq
-    path: MessageId

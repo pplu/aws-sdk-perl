@@ -1,4 +1,0 @@
----
-call: DeleteApplication
-service: ElasticBeanstalk
-tests: []
