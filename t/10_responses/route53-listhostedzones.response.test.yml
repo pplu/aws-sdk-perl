@@ -1,0 +1,25 @@
+---
+call: ListHostedZones
+service: Route53
+tests:
+  - expected: 100
+    op: eq
+    path: MaxItems
+  - expected: 0
+    op: eq
+    path: IsTruncated
+  - expected: 0
+    op: eq
+    path: HostedZones.0.Config.PrivateZone
+  - expected: pplusdomain.net.
+    op: eq
+    path: HostedZones.0.Name
+  - expected: 00000000-0000-0000-0000-000000000000
+    op: eq
+    path: HostedZones.0.CallerReference
+  - expected: 5
+    op: eq
+    path: HostedZones.0.ResourceRecordSetCount
+  - expected: /hostedzone/00000000000000
+    op: eq
+    path: HostedZones.0.Id

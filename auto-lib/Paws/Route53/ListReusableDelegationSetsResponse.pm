@@ -4,7 +4,7 @@ package Paws::Route53::ListReusableDelegationSetsResponse {
   with 'Paws::API::ResultParser';
   has DelegationSets => (is => 'ro', isa => 'ArrayRef[Paws::Route53::DelegationSet]', traits => ['Unwrapped'], xmlname => 'DelegationSet', required => 1);
   has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has Marker => (is => 'ro', isa => 'Str', required => 1);
+  has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Str', required => 1);
   has NextMarker => (is => 'ro', isa => 'Str');
 
@@ -68,7 +68,7 @@ Valid Values: C<true> | C<false>
 
 
 
-=head2 B<REQUIRED> Marker => Str
+=head2 Marker => Str
 
   
 

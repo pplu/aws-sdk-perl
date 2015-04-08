@@ -1,0 +1,10 @@
+---
+call: ListTagsForResource
+service: Route53
+tests:
+  - expected: 00000000000000
+    op: eq
+    path: ResourceTagSet.ResourceId
+  - expected: hostedzone
+    op: eq
+    path: ResourceTagSet.ResourceType

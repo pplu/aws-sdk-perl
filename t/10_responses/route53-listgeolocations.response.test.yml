@@ -1,0 +1,2146 @@
+---
+call: ListGeoLocations
+service: Route53
+tests:
+  - expected: India
+    op: eq
+    path: GeoLocationDetailsList.101.CountryName
+  - expected: Palau
+    op: eq
+    path: GeoLocationDetailsList.181.CountryName
+  - expected: PA
+    op: eq
+    path: GeoLocationDetailsList.268.SubdivisionCode
+  - expected: SK
+    op: eq
+    path: GeoLocationDetailsList.198.CountryCode
+  - expected: French Guiana
+    op: eq
+    path: GeoLocationDetailsList.77.CountryName
+  - expected: MM
+    op: eq
+    path: GeoLocationDetailsList.142.CountryCode
+  - expected: Togo
+    op: eq
+    path: GeoLocationDetailsList.213.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.275.CountryName
+  - expected: Ireland
+    op: eq
+    path: GeoLocationDetailsList.98.CountryName
+  - expected: Maryland
+    op: eq
+    path: GeoLocationDetailsList.250.SubdivisionName
+  - expected: CG
+    op: eq
+    path: GeoLocationDetailsList.41.CountryCode
+  - expected: Lebanon
+    op: eq
+    path: GeoLocationDetailsList.123.CountryName
+  - expected: KM
+    op: eq
+    path: GeoLocationDetailsList.115.CountryCode
+  - expected: Georgia
+    op: eq
+    path: GeoLocationDetailsList.240.SubdivisionName
+  - expected: ID
+    op: eq
+    path: GeoLocationDetailsList.97.CountryCode
+  - expected: GR
+    op: eq
+    path: GeoLocationDetailsList.86.CountryCode
+  - expected: SV
+    op: eq
+    path: GeoLocationDetailsList.206.CountryCode
+  - expected: GA
+    op: eq
+    path: GeoLocationDetailsList.240.SubdivisionCode
+  - expected: WY
+    op: eq
+    path: GeoLocationDetailsList.280.SubdivisionCode
+  - expected: Georgia
+    op: eq
+    path: GeoLocationDetailsList.76.CountryName
+  - expected: Philippines
+    op: eq
+    path: GeoLocationDetailsList.173.CountryName
+  - expected: BO
+    op: eq
+    path: GeoLocationDetailsList.29.CountryCode
+  - expected: Lesotho
+    op: eq
+    path: GeoLocationDetailsList.128.CountryName
+  - expected: CA
+    op: eq
+    path: GeoLocationDetailsList.37.CountryCode
+  - expected: Cyprus
+    op: eq
+    path: GeoLocationDetailsList.53.CountryName
+  - expected: Gibraltar
+    op: eq
+    path: GeoLocationDetailsList.80.CountryName
+  - expected: Iraq
+    op: eq
+    path: GeoLocationDetailsList.103.CountryName
+  - expected: OH
+    op: eq
+    path: GeoLocationDetailsList.265.SubdivisionCode
+  - expected: MP
+    op: eq
+    path: GeoLocationDetailsList.145.CountryCode
+  - expected: MI
+    op: eq
+    path: GeoLocationDetailsList.252.SubdivisionCode
+  - expected: Morocco
+    op: eq
+    path: GeoLocationDetailsList.133.CountryName
+  - expected: Azerbaijan
+    op: eq
+    path: GeoLocationDetailsList.16.CountryName
+  - expected: Rhode Island
+    op: eq
+    path: GeoLocationDetailsList.269.SubdivisionName
+  - expected: PT
+    op: eq
+    path: GeoLocationDetailsList.180.CountryCode
+  - expected: Republic of the Congo
+    op: eq
+    path: GeoLocationDetailsList.41.CountryName
+  - expected: NJ
+    op: eq
+    path: GeoLocationDetailsList.261.SubdivisionCode
+  - expected: MA
+    op: eq
+    path: GeoLocationDetailsList.249.SubdivisionCode
+  - expected: JE
+    op: eq
+    path: GeoLocationDetailsList.107.CountryCode
+  - expected: SZ
+    op: eq
+    path: GeoLocationDetailsList.209.CountryCode
+  - expected: BR
+    op: eq
+    path: GeoLocationDetailsList.31.CountryCode
+  - expected: JP
+    op: eq
+    path: GeoLocationDetailsList.110.CountryCode
+  - expected: EE
+    op: eq
+    path: GeoLocationDetailsList.62.CountryCode
+  - expected: ND
+    op: eq
+    path: GeoLocationDetailsList.258.SubdivisionCode
+  - expected: Indiana
+    op: eq
+    path: GeoLocationDetailsList.245.SubdivisionName
+  - expected: GG
+    op: eq
+    path: GeoLocationDetailsList.78.CountryCode
+  - expected: AG
+    op: eq
+    path: GeoLocationDetailsList.4.CountryCode
+  - expected: Alabama
+    op: eq
+    path: GeoLocationDetailsList.231.SubdivisionName
+  - expected: Sierra Leone
+    op: eq
+    path: GeoLocationDetailsList.199.CountryName
+  - expected: East Timor
+    op: eq
+    path: GeoLocationDetailsList.217.CountryName
+  - expected: Belgium
+    op: eq
+    path: GeoLocationDetailsList.20.CountryName
+  - expected: Hashemite Kingdom of Jordan
+    op: eq
+    path: GeoLocationDetailsList.109.CountryName
+  - expected: LY
+    op: eq
+    path: GeoLocationDetailsList.132.CountryCode
+  - expected: Greenland
+    op: eq
+    path: GeoLocationDetailsList.81.CountryName
+  - expected: Benin
+    op: eq
+    path: GeoLocationDetailsList.25.CountryName
+  - expected: CO
+    op: eq
+    path: GeoLocationDetailsList.48.CountryCode
+  - expected: PY
+    op: eq
+    path: GeoLocationDetailsList.182.CountryCode
+  - expected: AX
+    op: eq
+    path: GeoLocationDetailsList.15.CountryCode
+  - expected: Saudi Arabia
+    op: eq
+    path: GeoLocationDetailsList.189.CountryName
+  - expected: Mozambique
+    op: eq
+    path: GeoLocationDetailsList.155.CountryName
+  - expected: Jersey
+    op: eq
+    path: GeoLocationDetailsList.107.CountryName
+  - expected: JM
+    op: eq
+    path: GeoLocationDetailsList.108.CountryCode
+  - expected: PW
+    op: eq
+    path: GeoLocationDetailsList.181.CountryCode
+  - expected: Andorra
+    op: eq
+    path: GeoLocationDetailsList.1.CountryName
+  - expected: Singapore
+    op: eq
+    path: GeoLocationDetailsList.194.CountryName
+  - expected: ER
+    op: eq
+    path: GeoLocationDetailsList.64.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.253.CountryName
+  - expected: MO
+    op: eq
+    path: GeoLocationDetailsList.144.CountryCode
+  - expected: IT
+    op: eq
+    path: GeoLocationDetailsList.106.CountryCode
+  - expected: Malta
+    op: eq
+    path: GeoLocationDetailsList.149.CountryName
+  - expected: Equatorial Guinea
+    op: eq
+    path: GeoLocationDetailsList.85.CountryName
+  - expected: Brunei
+    op: eq
+    path: GeoLocationDetailsList.28.CountryName
+  - expected: NZ
+    op: eq
+    path: GeoLocationDetailsList.167.CountryCode
+  - expected: Montserrat
+    op: eq
+    path: GeoLocationDetailsList.148.CountryName
+  - expected: LA
+    op: eq
+    path: GeoLocationDetailsList.122.CountryCode
+  - expected: Slovakia
+    op: eq
+    path: GeoLocationDetailsList.198.CountryName
+  - expected: 'Myanmar [Burma]'
+    op: eq
+    path: GeoLocationDetailsList.142.CountryName
+  - expected: GT
+    op: eq
+    path: GeoLocationDetailsList.88.CountryCode
+  - expected: VU
+    op: eq
+    path: GeoLocationDetailsList.289.CountryCode
+  - expected: Kyrgyzstan
+    op: eq
+    path: GeoLocationDetailsList.112.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.256.CountryCode
+  - expected: NG
+    op: eq
+    path: GeoLocationDetailsList.160.CountryCode
+  - expected: NE
+    op: eq
+    path: GeoLocationDetailsList.259.SubdivisionCode
+  - expected: Wallis and Futuna
+    op: eq
+    path: GeoLocationDetailsList.290.CountryName
+  - expected: TK
+    op: eq
+    path: GeoLocationDetailsList.216.CountryCode
+  - expected: Sint Maarten
+    op: eq
+    path: GeoLocationDetailsList.207.CountryName
+  - expected: New Hampshire
+    op: eq
+    path: GeoLocationDetailsList.260.SubdivisionName
+  - expected: Palestine
+    op: eq
+    path: GeoLocationDetailsList.179.CountryName
+  - expected: CR
+    op: eq
+    path: GeoLocationDetailsList.49.CountryCode
+  - expected: BB
+    op: eq
+    path: GeoLocationDetailsList.18.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.265.CountryCode
+  - expected: Senegal
+    op: eq
+    path: GeoLocationDetailsList.201.CountryName
+  - expected: Turks and Caicos Islands
+    op: eq
+    path: GeoLocationDetailsList.210.CountryName
+  - expected: Botswana
+    op: eq
+    path: GeoLocationDetailsList.34.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.237.CountryName
+  - expected: Alaska
+    op: eq
+    path: GeoLocationDetailsList.230.SubdivisionName
+  - expected: MR
+    op: eq
+    path: GeoLocationDetailsList.147.CountryCode
+  - expected: Haiti
+    op: eq
+    path: GeoLocationDetailsList.95.CountryName
+  - expected: GQ
+    op: eq
+    path: GeoLocationDetailsList.85.CountryCode
+  - expected: Syria
+    op: eq
+    path: GeoLocationDetailsList.208.CountryName
+  - expected: Saint Helena
+    op: eq
+    path: GeoLocationDetailsList.195.CountryName
+  - expected: AS
+    op: eq
+    path: GeoLocationDetailsList.300.ContinentCode
+  - expected: TH
+    op: eq
+    path: GeoLocationDetailsList.214.CountryCode
+  - expected: TD
+    op: eq
+    path: GeoLocationDetailsList.211.CountryCode
+  - expected: AI
+    op: eq
+    path: GeoLocationDetailsList.5.CountryCode
+  - expected: Default
+    op: eq
+    path: GeoLocationDetailsList.0.CountryName
+  - expected: NF
+    op: eq
+    path: GeoLocationDetailsList.159.CountryCode
+  - expected: Swaziland
+    op: eq
+    path: GeoLocationDetailsList.209.CountryName
+  - expected: FO
+    op: eq
+    path: GeoLocationDetailsList.71.CountryCode
+  - expected: SD
+    op: eq
+    path: GeoLocationDetailsList.271.SubdivisionCode
+  - expected: RI
+    op: eq
+    path: GeoLocationDetailsList.269.SubdivisionCode
+  - expected: FK
+    op: eq
+    path: GeoLocationDetailsList.69.CountryCode
+  - expected: UT
+    op: eq
+    path: GeoLocationDetailsList.274.SubdivisionCode
+  - expected: Israel
+    op: eq
+    path: GeoLocationDetailsList.99.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.254.CountryName
+  - expected: WF
+    op: eq
+    path: GeoLocationDetailsList.290.CountryCode
+  - expected: Burundi
+    op: eq
+    path: GeoLocationDetailsList.24.CountryName
+  - expected: Seychelles
+    op: eq
+    path: GeoLocationDetailsList.191.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.260.CountryCode
+  - expected: IR
+    op: eq
+    path: GeoLocationDetailsList.104.CountryCode
+  - expected: Antigua and Barbuda
+    op: eq
+    path: GeoLocationDetailsList.4.CountryName
+  - expected: Mongolia
+    op: eq
+    path: GeoLocationDetailsList.143.CountryName
+  - expected: TT
+    op: eq
+    path: GeoLocationDetailsList.222.CountryCode
+  - expected: Oman
+    op: eq
+    path: GeoLocationDetailsList.168.CountryName
+  - expected: GI
+    op: eq
+    path: GeoLocationDetailsList.80.CountryCode
+  - expected: Federated States of Micronesia
+    op: eq
+    path: GeoLocationDetailsList.70.CountryName
+  - expected: MD
+    op: eq
+    path: GeoLocationDetailsList.135.CountryCode
+  - expected: CI
+    op: eq
+    path: GeoLocationDetailsList.43.CountryCode
+  - expected: Italy
+    op: eq
+    path: GeoLocationDetailsList.106.CountryName
+  - expected: PK
+    op: eq
+    path: GeoLocationDetailsList.174.CountryCode
+  - expected: Vanuatu
+    op: eq
+    path: GeoLocationDetailsList.289.CountryName
+  - expected: GN
+    op: eq
+    path: GeoLocationDetailsList.83.CountryCode
+  - expected: ZM
+    op: eq
+    path: GeoLocationDetailsList.296.CountryCode
+  - expected: '*'
+    op: eq
+    path: GeoLocationDetailsList.0.CountryCode
+  - expected: Saint Vincent and the Grenadines
+    op: eq
+    path: GeoLocationDetailsList.284.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.246.CountryCode
+  - expected: Central African Republic
+    op: eq
+    path: GeoLocationDetailsList.40.CountryName
+  - expected: AM
+    op: eq
+    path: GeoLocationDetailsList.7.CountryCode
+  - expected: GW
+    op: eq
+    path: GeoLocationDetailsList.90.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.257.CountryCode
+  - expected: UM
+    op: eq
+    path: GeoLocationDetailsList.228.CountryCode
+  - expected: MC
+    op: eq
+    path: GeoLocationDetailsList.134.CountryCode
+  - expected: Tanzania
+    op: eq
+    path: GeoLocationDetailsList.225.CountryName
+  - expected: TN
+    op: eq
+    path: GeoLocationDetailsList.219.CountryCode
+  - expected: PG
+    op: eq
+    path: GeoLocationDetailsList.172.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.256.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.240.CountryCode
+  - expected: São Tomé and Príncipe
+    op: eq
+    path: GeoLocationDetailsList.205.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.265.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.268.CountryName
+  - expected: Africa
+    op: eq
+    path: GeoLocationDetailsList.298.ContinentName
+  - expected: MH
+    op: eq
+    path: GeoLocationDetailsList.139.CountryCode
+  - expected: Venezuela
+    op: eq
+    path: GeoLocationDetailsList.285.CountryName
+  - expected: Hawaii
+    op: eq
+    path: GeoLocationDetailsList.241.SubdivisionName
+  - expected: MS
+    op: eq
+    path: GeoLocationDetailsList.148.CountryCode
+  - expected: Grenada
+    op: eq
+    path: GeoLocationDetailsList.75.CountryName
+  - expected: MV
+    op: eq
+    path: GeoLocationDetailsList.151.CountryCode
+  - expected: Mali
+    op: eq
+    path: GeoLocationDetailsList.141.CountryName
+  - expected: SS
+    op: eq
+    path: GeoLocationDetailsList.204.CountryCode
+  - expected: BH
+    op: eq
+    path: GeoLocationDetailsList.23.CountryCode
+  - expected: Somalia
+    op: eq
+    path: GeoLocationDetailsList.202.CountryName
+  - expected: U.S. Virgin Islands
+    op: eq
+    path: GeoLocationDetailsList.287.CountryName
+  - expected: TX
+    op: eq
+    path: GeoLocationDetailsList.273.SubdivisionCode
+  - expected: LR
+    op: eq
+    path: GeoLocationDetailsList.127.CountryCode
+  - expected: Cayman Islands
+    op: eq
+    path: GeoLocationDetailsList.120.CountryName
+  - expected: Nevada
+    op: eq
+    path: GeoLocationDetailsList.263.SubdivisionName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.234.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.266.CountryName
+  - expected: Algeria
+    op: eq
+    path: GeoLocationDetailsList.60.CountryName
+  - expected: Cuba
+    op: eq
+    path: GeoLocationDetailsList.50.CountryName
+  - expected: Finland
+    op: eq
+    path: GeoLocationDetailsList.67.CountryName
+  - expected: Australia
+    op: eq
+    path: GeoLocationDetailsList.13.CountryName
+  - expected: Luxembourg
+    op: eq
+    path: GeoLocationDetailsList.130.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.249.CountryCode
+  - expected: SE
+    op: eq
+    path: GeoLocationDetailsList.193.CountryCode
+  - expected: GP
+    op: eq
+    path: GeoLocationDetailsList.84.CountryCode
+  - expected: Poland
+    op: eq
+    path: GeoLocationDetailsList.175.CountryName
+  - expected: South Africa
+    op: eq
+    path: GeoLocationDetailsList.295.CountryName
+  - expected: AT
+    op: eq
+    path: GeoLocationDetailsList.12.CountryCode
+  - expected: AE
+    op: eq
+    path: GeoLocationDetailsList.2.CountryCode
+  - expected: UA
+    op: eq
+    path: GeoLocationDetailsList.226.CountryCode
+  - expected: AK
+    op: eq
+    path: GeoLocationDetailsList.230.SubdivisionCode
+  - expected: Malaysia
+    op: eq
+    path: GeoLocationDetailsList.154.CountryName
+  - expected: TJ
+    op: eq
+    path: GeoLocationDetailsList.215.CountryCode
+  - expected: HU
+    op: eq
+    path: GeoLocationDetailsList.96.CountryCode
+  - expected: LA
+    op: eq
+    path: GeoLocationDetailsList.248.SubdivisionCode
+  - expected: SI
+    op: eq
+    path: GeoLocationDetailsList.196.CountryCode
+  - expected: British Virgin Islands
+    op: eq
+    path: GeoLocationDetailsList.286.CountryName
+  - expected: AR
+    op: eq
+    path: GeoLocationDetailsList.232.SubdivisionCode
+  - expected: Congo
+    op: eq
+    path: GeoLocationDetailsList.39.CountryName
+  - expected: Gambia
+    op: eq
+    path: GeoLocationDetailsList.82.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.237.CountryCode
+  - expected: AL
+    op: eq
+    path: GeoLocationDetailsList.231.SubdivisionCode
+  - expected: Tuvalu
+    op: eq
+    path: GeoLocationDetailsList.223.CountryName
+  - expected: RO
+    op: eq
+    path: GeoLocationDetailsList.185.CountryCode
+  - expected: Mississippi
+    op: eq
+    path: GeoLocationDetailsList.255.SubdivisionName
+  - expected: LV
+    op: eq
+    path: GeoLocationDetailsList.131.CountryCode
+  - expected: BE
+    op: eq
+    path: GeoLocationDetailsList.20.CountryCode
+  - expected: TO
+    op: eq
+    path: GeoLocationDetailsList.220.CountryCode
+  - expected: Guinea
+    op: eq
+    path: GeoLocationDetailsList.83.CountryName
+  - expected: NL
+    op: eq
+    path: GeoLocationDetailsList.162.CountryCode
+  - expected: AF
+    op: eq
+    path: GeoLocationDetailsList.3.CountryCode
+  - expected: BN
+    op: eq
+    path: GeoLocationDetailsList.28.CountryCode
+  - expected: VT
+    op: eq
+    path: GeoLocationDetailsList.276.SubdivisionCode
+  - expected: Uzbekistan
+    op: eq
+    path: GeoLocationDetailsList.282.CountryName
+  - expected: Lithuania
+    op: eq
+    path: GeoLocationDetailsList.129.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.264.CountryCode
+  - expected: NA
+    op: eq
+    path: GeoLocationDetailsList.156.CountryCode
+  - expected: New Caledonia
+    op: eq
+    path: GeoLocationDetailsList.157.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.243.CountryName
+  - expected: VI
+    op: eq
+    path: GeoLocationDetailsList.287.CountryCode
+  - expected: Rwanda
+    op: eq
+    path: GeoLocationDetailsList.188.CountryName
+  - expected: MT
+    op: eq
+    path: GeoLocationDetailsList.256.SubdivisionCode
+  - expected: SM
+    op: eq
+    path: GeoLocationDetailsList.200.CountryCode
+  - expected: VC
+    op: eq
+    path: GeoLocationDetailsList.284.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.252.CountryName
+  - expected: GL
+    op: eq
+    path: GeoLocationDetailsList.81.CountryCode
+  - expected: VA
+    op: eq
+    path: GeoLocationDetailsList.275.SubdivisionCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.241.CountryCode
+  - expected: PE
+    op: eq
+    path: GeoLocationDetailsList.170.CountryCode
+  - expected: California
+    op: eq
+    path: GeoLocationDetailsList.234.SubdivisionName
+  - expected: CZ
+    op: eq
+    path: GeoLocationDetailsList.54.CountryCode
+  - expected: CT
+    op: eq
+    path: GeoLocationDetailsList.236.SubdivisionCode
+  - expected: TC
+    op: eq
+    path: GeoLocationDetailsList.210.CountryCode
+  - expected: PM
+    op: eq
+    path: GeoLocationDetailsList.176.CountryCode
+  - expected: NH
+    op: eq
+    path: GeoLocationDetailsList.260.SubdivisionCode
+  - expected: Åland
+    op: eq
+    path: GeoLocationDetailsList.15.CountryName
+  - expected: IA
+    op: eq
+    path: GeoLocationDetailsList.242.SubdivisionCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.242.CountryCode
+  - expected: ML
+    op: eq
+    path: GeoLocationDetailsList.141.CountryCode
+  - expected: LK
+    op: eq
+    path: GeoLocationDetailsList.126.CountryCode
+  - expected: NC
+    op: eq
+    path: GeoLocationDetailsList.257.SubdivisionCode
+  - expected: KW
+    op: eq
+    path: GeoLocationDetailsList.119.CountryCode
+  - expected: District of Columbia
+    op: eq
+    path: GeoLocationDetailsList.237.SubdivisionName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.231.CountryName
+  - expected: HI
+    op: eq
+    path: GeoLocationDetailsList.241.SubdivisionCode
+  - expected: Massachusetts
+    op: eq
+    path: GeoLocationDetailsList.249.SubdivisionName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.238.CountryName
+  - expected: CC
+    op: eq
+    path: GeoLocationDetailsList.38.CountryCode
+  - expected: IL
+    op: eq
+    path: GeoLocationDetailsList.244.SubdivisionCode
+  - expected: AN
+    op: eq
+    path: GeoLocationDetailsList.299.ContinentCode
+  - expected: MG
+    op: eq
+    path: GeoLocationDetailsList.138.CountryCode
+  - expected: Taiwan
+    op: eq
+    path: GeoLocationDetailsList.224.CountryName
+  - expected: XK
+    op: eq
+    path: GeoLocationDetailsList.292.CountryCode
+  - expected: IQ
+    op: eq
+    path: GeoLocationDetailsList.103.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.278.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.269.CountryName
+  - expected: Maldives
+    op: eq
+    path: GeoLocationDetailsList.151.CountryName
+  - expected: BS
+    op: eq
+    path: GeoLocationDetailsList.32.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.232.CountryName
+  - expected: AF
+    op: eq
+    path: GeoLocationDetailsList.298.ContinentCode
+  - expected: PF
+    op: eq
+    path: GeoLocationDetailsList.171.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.247.CountryCode
+  - expected: Gabon
+    op: eq
+    path: GeoLocationDetailsList.73.CountryName
+  - expected: CU
+    op: eq
+    path: GeoLocationDetailsList.50.CountryCode
+  - expected: Belarus
+    op: eq
+    path: GeoLocationDetailsList.35.CountryName
+  - expected: Argentina
+    op: eq
+    path: GeoLocationDetailsList.10.CountryName
+  - expected: Guyana
+    op: eq
+    path: GeoLocationDetailsList.91.CountryName
+  - expected: FM
+    op: eq
+    path: GeoLocationDetailsList.70.CountryCode
+  - expected: LS
+    op: eq
+    path: GeoLocationDetailsList.128.CountryCode
+  - expected: Denmark
+    op: eq
+    path: GeoLocationDetailsList.57.CountryName
+  - expected: France
+    op: eq
+    path: GeoLocationDetailsList.72.CountryName
+  - expected: Curaçao
+    op: eq
+    path: GeoLocationDetailsList.52.CountryName
+  - expected: PS
+    op: eq
+    path: GeoLocationDetailsList.179.CountryCode
+  - expected: Paraguay
+    op: eq
+    path: GeoLocationDetailsList.182.CountryName
+  - expected: Austria
+    op: eq
+    path: GeoLocationDetailsList.12.CountryName
+  - expected: Michigan
+    op: eq
+    path: GeoLocationDetailsList.252.SubdivisionName
+  - expected: UZ
+    op: eq
+    path: GeoLocationDetailsList.282.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.271.CountryName
+  - expected: Suriname
+    op: eq
+    path: GeoLocationDetailsList.203.CountryName
+  - expected: Bhutan
+    op: eq
+    path: GeoLocationDetailsList.33.CountryName
+  - expected: Oregon
+    op: eq
+    path: GeoLocationDetailsList.267.SubdivisionName
+  - expected: Zambia
+    op: eq
+    path: GeoLocationDetailsList.296.CountryName
+  - expected: UG
+    op: eq
+    path: GeoLocationDetailsList.227.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.268.CountryCode
+  - expected: IE
+    op: eq
+    path: GeoLocationDetailsList.98.CountryCode
+  - expected: Hungary
+    op: eq
+    path: GeoLocationDetailsList.96.CountryName
+  - expected: SL
+    op: eq
+    path: GeoLocationDetailsList.199.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.244.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.274.CountryCode
+  - expected: NC
+    op: eq
+    path: GeoLocationDetailsList.157.CountryCode
+  - expected: MN
+    op: eq
+    path: GeoLocationDetailsList.143.CountryCode
+  - expected: BJ
+    op: eq
+    path: GeoLocationDetailsList.25.CountryCode
+  - expected: Eritrea
+    op: eq
+    path: GeoLocationDetailsList.64.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.246.CountryName
+  - expected: Solomon Islands
+    op: eq
+    path: GeoLocationDetailsList.190.CountryName
+  - expected: Svalbard and Jan Mayen
+    op: eq
+    path: GeoLocationDetailsList.197.CountryName
+  - expected: Montana
+    op: eq
+    path: GeoLocationDetailsList.256.SubdivisionName
+  - expected: Netherlands
+    op: eq
+    path: GeoLocationDetailsList.162.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.250.CountryName
+  - expected: AW
+    op: eq
+    path: GeoLocationDetailsList.14.CountryCode
+  - expected: Réunion
+    op: eq
+    path: GeoLocationDetailsList.184.CountryName
+  - expected: Hong Kong
+    op: eq
+    path: GeoLocationDetailsList.92.CountryName
+  - expected: Bermuda
+    op: eq
+    path: GeoLocationDetailsList.27.CountryName
+  - expected: NP
+    op: eq
+    path: GeoLocationDetailsList.164.CountryCode
+  - expected: Burkina Faso
+    op: eq
+    path: GeoLocationDetailsList.21.CountryName
+  - expected: ME
+    op: eq
+    path: GeoLocationDetailsList.136.CountryCode
+  - expected: KY
+    op: eq
+    path: GeoLocationDetailsList.120.CountryCode
+  - expected: Colorado
+    op: eq
+    path: GeoLocationDetailsList.235.SubdivisionName
+  - expected: SC
+    op: eq
+    path: GeoLocationDetailsList.191.CountryCode
+  - expected: Kazakhstan
+    op: eq
+    path: GeoLocationDetailsList.121.CountryName
+  - expected: Canada
+    op: eq
+    path: GeoLocationDetailsList.37.CountryName
+  - expected: PL
+    op: eq
+    path: GeoLocationDetailsList.175.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.267.CountryCode
+  - expected: Sudan
+    op: eq
+    path: GeoLocationDetailsList.192.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.274.CountryName
+  - expected: Russia
+    op: eq
+    path: GeoLocationDetailsList.187.CountryName
+  - expected: Spain
+    op: eq
+    path: GeoLocationDetailsList.65.CountryName
+  - expected: OK
+    op: eq
+    path: GeoLocationDetailsList.266.SubdivisionCode
+  - expected: GM
+    op: eq
+    path: GeoLocationDetailsList.82.CountryCode
+  - expected: Missouri
+    op: eq
+    path: GeoLocationDetailsList.254.SubdivisionName
+  - expected: NA
+    op: eq
+    path: GeoLocationDetailsList.302.ContinentCode
+  - expected: BI
+    op: eq
+    path: GeoLocationDetailsList.24.CountryCode
+  - expected: Wisconsin
+    op: eq
+    path: GeoLocationDetailsList.278.SubdivisionName
+  - expected: Romania
+    op: eq
+    path: GeoLocationDetailsList.185.CountryName
+  - expected: West Virginia
+    op: eq
+    path: GeoLocationDetailsList.279.SubdivisionName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.241.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.280.CountryCode
+  - expected: New Mexico
+    op: eq
+    path: GeoLocationDetailsList.262.SubdivisionName
+  - expected: Saint Pierre and Miquelon
+    op: eq
+    path: GeoLocationDetailsList.176.CountryName
+  - expected: HN
+    op: eq
+    path: GeoLocationDetailsList.93.CountryCode
+  - expected: TF
+    op: eq
+    path: GeoLocationDetailsList.212.CountryCode
+  - expected: Macedonia
+    op: eq
+    path: GeoLocationDetailsList.140.CountryName
+  - expected: Florida
+    op: eq
+    path: GeoLocationDetailsList.239.SubdivisionName
+  - expected: CH
+    op: eq
+    path: GeoLocationDetailsList.42.CountryCode
+  - expected: Dominica
+    op: eq
+    path: GeoLocationDetailsList.58.CountryName
+  - expected: IN
+    op: eq
+    path: GeoLocationDetailsList.245.SubdivisionCode
+  - expected: North Carolina
+    op: eq
+    path: GeoLocationDetailsList.257.SubdivisionName
+  - expected: Ecuador
+    op: eq
+    path: GeoLocationDetailsList.61.CountryName
+  - expected: BZ
+    op: eq
+    path: GeoLocationDetailsList.36.CountryCode
+  - expected: DK
+    op: eq
+    path: GeoLocationDetailsList.57.CountryCode
+  - expected: GB
+    op: eq
+    path: GeoLocationDetailsList.74.CountryCode
+  - expected: YT
+    op: eq
+    path: GeoLocationDetailsList.294.CountryCode
+  - expected: Samoa
+    op: eq
+    path: GeoLocationDetailsList.291.CountryName
+  - expected: Peru
+    op: eq
+    path: GeoLocationDetailsList.170.CountryName
+  - expected: NI
+    op: eq
+    path: GeoLocationDetailsList.161.CountryCode
+  - expected: GY
+    op: eq
+    path: GeoLocationDetailsList.91.CountryCode
+  - expected: CK
+    op: eq
+    path: GeoLocationDetailsList.44.CountryCode
+  - expected: Pakistan
+    op: eq
+    path: GeoLocationDetailsList.174.CountryName
+  - expected: SH
+    op: eq
+    path: GeoLocationDetailsList.195.CountryCode
+  - expected: CF
+    op: eq
+    path: GeoLocationDetailsList.40.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.276.CountryName
+  - expected: Asia
+    op: eq
+    path: GeoLocationDetailsList.300.ContinentName
+  - expected: SG
+    op: eq
+    path: GeoLocationDetailsList.194.CountryCode
+  - expected: French Polynesia
+    op: eq
+    path: GeoLocationDetailsList.171.CountryName
+  - expected: Namibia
+    op: eq
+    path: GeoLocationDetailsList.156.CountryName
+  - expected: Tonga
+    op: eq
+    path: GeoLocationDetailsList.220.CountryName
+  - expected: BT
+    op: eq
+    path: GeoLocationDetailsList.33.CountryCode
+  - expected: Papua New Guinea
+    op: eq
+    path: GeoLocationDetailsList.172.CountryName
+  - expected: AZ
+    op: eq
+    path: GeoLocationDetailsList.233.SubdivisionCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.261.CountryCode
+  - expected: OC
+    op: eq
+    path: GeoLocationDetailsList.303.ContinentCode
+  - expected: CL
+    op: eq
+    path: GeoLocationDetailsList.45.CountryCode
+  - expected: El Salvador
+    op: eq
+    path: GeoLocationDetailsList.206.CountryName
+  - expected: Iran
+    op: eq
+    path: GeoLocationDetailsList.104.CountryName
+  - expected: Bahrain
+    op: eq
+    path: GeoLocationDetailsList.23.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.230.CountryName
+  - expected: CD
+    op: eq
+    path: GeoLocationDetailsList.39.CountryCode
+  - expected: MZ
+    op: eq
+    path: GeoLocationDetailsList.155.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.255.CountryCode
+  - expected: Bulgaria
+    op: eq
+    path: GeoLocationDetailsList.22.CountryName
+  - expected: IL
+    op: eq
+    path: GeoLocationDetailsList.99.CountryCode
+  - expected: SN
+    op: eq
+    path: GeoLocationDetailsList.201.CountryCode
+  - expected: SD
+    op: eq
+    path: GeoLocationDetailsList.192.CountryCode
+  - expected: Kentucky
+    op: eq
+    path: GeoLocationDetailsList.247.SubdivisionName
+  - expected: RU
+    op: eq
+    path: GeoLocationDetailsList.187.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.233.CountryCode
+  - expected: Sri Lanka
+    op: eq
+    path: GeoLocationDetailsList.126.CountryName
+  - expected: Mexico
+    op: eq
+    path: GeoLocationDetailsList.153.CountryName
+  - expected: MD
+    op: eq
+    path: GeoLocationDetailsList.250.SubdivisionCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.278.CountryName
+  - expected: Bosnia and Herzegovina
+    op: eq
+    path: GeoLocationDetailsList.17.CountryName
+  - expected: KG
+    op: eq
+    path: GeoLocationDetailsList.112.CountryCode
+  - expected: South Dakota
+    op: eq
+    path: GeoLocationDetailsList.271.SubdivisionName
+  - expected: DM
+    op: eq
+    path: GeoLocationDetailsList.58.CountryCode
+  - expected: SB
+    op: eq
+    path: GeoLocationDetailsList.190.CountryCode
+  - expected: MU
+    op: eq
+    path: GeoLocationDetailsList.150.CountryCode
+  - expected: KN
+    op: eq
+    path: GeoLocationDetailsList.116.CountryCode
+  - expected: RS
+    op: eq
+    path: GeoLocationDetailsList.186.CountryCode
+  - expected: Serbia
+    op: eq
+    path: GeoLocationDetailsList.186.CountryName
+  - expected: Kansas
+    op: eq
+    path: GeoLocationDetailsList.246.SubdivisionName
+  - expected: AZ
+    op: eq
+    path: GeoLocationDetailsList.16.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.275.CountryCode
+  - expected: Tajikistan
+    op: eq
+    path: GeoLocationDetailsList.215.CountryName
+  - expected: SX
+    op: eq
+    path: GeoLocationDetailsList.207.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.236.CountryCode
+  - expected: Bahamas
+    op: eq
+    path: GeoLocationDetailsList.32.CountryName
+  - expected: New Jersey
+    op: eq
+    path: GeoLocationDetailsList.261.SubdivisionName
+  - expected: MW
+    op: eq
+    path: GeoLocationDetailsList.152.CountryCode
+  - expected: Nauru
+    op: eq
+    path: GeoLocationDetailsList.165.CountryName
+  - expected: TL
+    op: eq
+    path: GeoLocationDetailsList.217.CountryCode
+  - expected: RW
+    op: eq
+    path: GeoLocationDetailsList.188.CountryCode
+  - expected: SA
+    op: eq
+    path: GeoLocationDetailsList.304.ContinentCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.264.CountryName
+  - expected: KE
+    op: eq
+    path: GeoLocationDetailsList.111.CountryCode
+  - expected: WI
+    op: eq
+    path: GeoLocationDetailsList.278.SubdivisionCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.236.CountryName
+  - expected: Bonaire
+    op: eq
+    path: GeoLocationDetailsList.30.CountryName
+  - expected: ID
+    op: eq
+    path: GeoLocationDetailsList.243.SubdivisionCode
+  - expected: Dominican Republic
+    op: eq
+    path: GeoLocationDetailsList.59.CountryName
+  - expected: Antarctica
+    op: eq
+    path: GeoLocationDetailsList.9.CountryName
+  - expected: NE
+    op: eq
+    path: GeoLocationDetailsList.158.CountryCode
+  - expected: Vatican City
+    op: eq
+    path: GeoLocationDetailsList.283.CountryName
+  - expected: Ukraine
+    op: eq
+    path: GeoLocationDetailsList.226.CountryName
+  - expected: HK
+    op: eq
+    path: GeoLocationDetailsList.92.CountryCode
+  - expected: Nepal
+    op: eq
+    path: GeoLocationDetailsList.164.CountryName
+  - expected: VG
+    op: eq
+    path: GeoLocationDetailsList.286.CountryCode
+  - expected: Utah
+    op: eq
+    path: GeoLocationDetailsList.274.SubdivisionName
+  - expected: Martinique
+    op: eq
+    path: GeoLocationDetailsList.146.CountryName
+  - expected: IO
+    op: eq
+    path: GeoLocationDetailsList.102.CountryCode
+  - expected: Thailand
+    op: eq
+    path: GeoLocationDetailsList.214.CountryName
+  - expected: LI
+    op: eq
+    path: GeoLocationDetailsList.125.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.229.CountryCode
+  - expected: Saint Kitts and Nevis
+    op: eq
+    path: GeoLocationDetailsList.116.CountryName
+  - expected: Greece
+    op: eq
+    path: GeoLocationDetailsList.86.CountryName
+  - expected: Oceania
+    op: eq
+    path: GeoLocationDetailsList.303.ContinentName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.248.CountryName
+  - expected: Faroe Islands
+    op: eq
+    path: GeoLocationDetailsList.71.CountryName
+  - expected: Laos
+    op: eq
+    path: GeoLocationDetailsList.122.CountryName
+  - expected: AQ
+    op: eq
+    path: GeoLocationDetailsList.9.CountryCode
+  - expected: TV
+    op: eq
+    path: GeoLocationDetailsList.223.CountryCode
+  - expected: AD
+    op: eq
+    path: GeoLocationDetailsList.1.CountryCode
+  - expected: Texas
+    op: eq
+    path: GeoLocationDetailsList.273.SubdivisionName
+  - expected: NM
+    op: eq
+    path: GeoLocationDetailsList.262.SubdivisionCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.262.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.242.CountryName
+  - expected: SJ
+    op: eq
+    path: GeoLocationDetailsList.197.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.234.CountryName
+  - expected: Norfolk Island
+    op: eq
+    path: GeoLocationDetailsList.159.CountryName
+  - expected: Vietnam
+    op: eq
+    path: GeoLocationDetailsList.288.CountryName
+  - expected: NR
+    op: eq
+    path: GeoLocationDetailsList.165.CountryCode
+  - expected: Antarctica
+    op: eq
+    path: GeoLocationDetailsList.299.ContinentName
+  - expected: Ghana
+    op: eq
+    path: GeoLocationDetailsList.79.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.279.CountryCode
+  - expected: United Kingdom
+    op: eq
+    path: GeoLocationDetailsList.74.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.239.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.248.CountryCode
+  - expected: MK
+    op: eq
+    path: GeoLocationDetailsList.140.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.277.CountryName
+  - expected: Jamaica
+    op: eq
+    path: GeoLocationDetailsList.108.CountryName
+  - expected: Virginia
+    op: eq
+    path: GeoLocationDetailsList.275.SubdivisionName
+  - expected: Tokelau
+    op: eq
+    path: GeoLocationDetailsList.216.CountryName
+  - expected: SA
+    op: eq
+    path: GeoLocationDetailsList.189.CountryCode
+  - expected: Latvia
+    op: eq
+    path: GeoLocationDetailsList.131.CountryName
+  - expected: GA
+    op: eq
+    path: GeoLocationDetailsList.73.CountryCode
+  - expected: Portugal
+    op: eq
+    path: GeoLocationDetailsList.180.CountryName
+  - expected: Nebraska
+    op: eq
+    path: GeoLocationDetailsList.259.SubdivisionName
+  - expected: Arkansas
+    op: eq
+    path: GeoLocationDetailsList.232.SubdivisionName
+  - expected: Guadeloupe
+    op: eq
+    path: GeoLocationDetailsList.84.CountryName
+  - expected: South Carolina
+    op: eq
+    path: GeoLocationDetailsList.270.SubdivisionName
+  - expected: Zimbabwe
+    op: eq
+    path: GeoLocationDetailsList.297.CountryName
+  - expected: LB
+    op: eq
+    path: GeoLocationDetailsList.123.CountryCode
+  - expected: WS
+    op: eq
+    path: GeoLocationDetailsList.291.CountryCode
+  - expected: Germany
+    op: eq
+    path: GeoLocationDetailsList.55.CountryName
+  - expected: Uruguay
+    op: eq
+    path: GeoLocationDetailsList.281.CountryName
+  - expected: KI
+    op: eq
+    path: GeoLocationDetailsList.114.CountryCode
+  - expected: SY
+    op: eq
+    path: GeoLocationDetailsList.208.CountryCode
+  - expected: Switzerland
+    op: eq
+    path: GeoLocationDetailsList.42.CountryName
+  - expected: Colombia
+    op: eq
+    path: GeoLocationDetailsList.48.CountryName
+  - expected: GS
+    op: eq
+    path: GeoLocationDetailsList.87.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.229.CountryName
+  - expected: OM
+    op: eq
+    path: GeoLocationDetailsList.168.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.255.CountryName
+  - expected: Wyoming
+    op: eq
+    path: GeoLocationDetailsList.280.SubdivisionName
+  - expected: LU
+    op: eq
+    path: GeoLocationDetailsList.130.CountryCode
+  - expected: Trinidad and Tobago
+    op: eq
+    path: GeoLocationDetailsList.222.CountryName
+  - expected: U.S. Minor Outlying Islands
+    op: eq
+    path: GeoLocationDetailsList.228.CountryName
+  - expected: GH
+    op: eq
+    path: GeoLocationDetailsList.79.CountryCode
+  - expected: KS
+    op: eq
+    path: GeoLocationDetailsList.246.SubdivisionCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.259.CountryName
+  - expected: MQ
+    op: eq
+    path: GeoLocationDetailsList.146.CountryCode
+  - expected: Aruba
+    op: eq
+    path: GeoLocationDetailsList.14.CountryName
+  - expected: AL
+    op: eq
+    path: GeoLocationDetailsList.6.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.258.CountryName
+  - expected: Belize
+    op: eq
+    path: GeoLocationDetailsList.36.CountryName
+  - expected: BW
+    op: eq
+    path: GeoLocationDetailsList.34.CountryCode
+  - expected: 500
+    op: eq
+    path: MaxItems
+  - expected: Louisiana
+    op: eq
+    path: GeoLocationDetailsList.248.SubdivisionName
+  - expected: ES
+    op: eq
+    path: GeoLocationDetailsList.65.CountryCode
+  - expected: PR
+    op: eq
+    path: GeoLocationDetailsList.178.CountryCode
+  - expected: Honduras
+    op: eq
+    path: GeoLocationDetailsList.93.CountryName
+  - expected: Afghanistan
+    op: eq
+    path: GeoLocationDetailsList.3.CountryName
+  - expected: Turkmenistan
+    op: eq
+    path: GeoLocationDetailsList.218.CountryName
+  - expected: NY
+    op: eq
+    path: GeoLocationDetailsList.264.SubdivisionCode
+  - expected: HT
+    op: eq
+    path: GeoLocationDetailsList.95.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.276.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.266.CountryCode
+  - expected: KR
+    op: eq
+    path: GeoLocationDetailsList.118.CountryCode
+  - expected: Libya
+    op: eq
+    path: GeoLocationDetailsList.132.CountryName
+  - expected: VE
+    op: eq
+    path: GeoLocationDetailsList.285.CountryCode
+  - expected: Sweden
+    op: eq
+    path: GeoLocationDetailsList.193.CountryName
+  - expected: EG
+    op: eq
+    path: GeoLocationDetailsList.63.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.263.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.235.CountryCode
+  - expected: Mauritius
+    op: eq
+    path: GeoLocationDetailsList.150.CountryName
+  - expected: MF
+    op: eq
+    path: GeoLocationDetailsList.137.CountryCode
+  - expected: AS
+    op: eq
+    path: GeoLocationDetailsList.11.CountryCode
+  - expected: Niger
+    op: eq
+    path: GeoLocationDetailsList.158.CountryName
+  - expected: HR
+    op: eq
+    path: GeoLocationDetailsList.94.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.247.CountryName
+  - expected: BL
+    op: eq
+    path: GeoLocationDetailsList.26.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.258.CountryCode
+  - expected: Vermont
+    op: eq
+    path: GeoLocationDetailsList.276.SubdivisionName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.245.CountryCode
+  - expected: Mayotte
+    op: eq
+    path: GeoLocationDetailsList.294.CountryName
+  - expected: Albania
+    op: eq
+    path: GeoLocationDetailsList.6.CountryName
+  - expected: MA
+    op: eq
+    path: GeoLocationDetailsList.133.CountryCode
+  - expected: North Korea
+    op: eq
+    path: GeoLocationDetailsList.117.CountryName
+  - expected: TR
+    op: eq
+    path: GeoLocationDetailsList.221.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.250.CountryCode
+  - expected: DE
+    op: eq
+    path: GeoLocationDetailsList.238.SubdivisionCode
+  - expected: Iceland
+    op: eq
+    path: GeoLocationDetailsList.105.CountryName
+  - expected: Nigeria
+    op: eq
+    path: GeoLocationDetailsList.160.CountryName
+  - expected: AO
+    op: eq
+    path: GeoLocationDetailsList.8.CountryCode
+  - expected: Puerto Rico
+    op: eq
+    path: GeoLocationDetailsList.178.CountryName
+  - expected: Niue
+    op: eq
+    path: GeoLocationDetailsList.166.CountryName
+  - expected: 'Cocos [Keeling] Islands'
+    op: eq
+    path: GeoLocationDetailsList.38.CountryName
+  - expected: TN
+    op: eq
+    path: GeoLocationDetailsList.272.SubdivisionCode
+  - expected: AR
+    op: eq
+    path: GeoLocationDetailsList.10.CountryCode
+  - expected: NU
+    op: eq
+    path: GeoLocationDetailsList.166.CountryCode
+  - expected: Guinea-Bissau
+    op: eq
+    path: GeoLocationDetailsList.90.CountryName
+  - expected: MO
+    op: eq
+    path: GeoLocationDetailsList.254.SubdivisionCode
+  - expected: Slovenia
+    op: eq
+    path: GeoLocationDetailsList.196.CountryName
+  - expected: WA
+    op: eq
+    path: GeoLocationDetailsList.277.SubdivisionCode
+  - expected: Guernsey
+    op: eq
+    path: GeoLocationDetailsList.78.CountryName
+  - expected: Europe
+    op: eq
+    path: GeoLocationDetailsList.301.ContinentName
+  - expected: WV
+    op: eq
+    path: GeoLocationDetailsList.279.SubdivisionCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.235.CountryName
+  - expected: Tunisia
+    op: eq
+    path: GeoLocationDetailsList.219.CountryName
+  - expected: Pennsylvania
+    op: eq
+    path: GeoLocationDetailsList.268.SubdivisionName
+  - expected: ZW
+    op: eq
+    path: GeoLocationDetailsList.297.CountryCode
+  - expected: Comoros
+    op: eq
+    path: GeoLocationDetailsList.115.CountryName
+  - expected: United Arab Emirates
+    op: eq
+    path: GeoLocationDetailsList.2.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.270.CountryName
+  - expected: CY
+    op: eq
+    path: GeoLocationDetailsList.53.CountryCode
+  - expected: Armenia
+    op: eq
+    path: GeoLocationDetailsList.7.CountryName
+  - expected: Washington
+    op: eq
+    path: GeoLocationDetailsList.277.SubdivisionName
+  - expected: Chad
+    op: eq
+    path: GeoLocationDetailsList.211.CountryName
+  - expected: BQ
+    op: eq
+    path: GeoLocationDetailsList.30.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.251.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.240.CountryName
+  - expected: Connecticut
+    op: eq
+    path: GeoLocationDetailsList.236.SubdivisionName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.267.CountryName
+  - expected: ET
+    op: eq
+    path: GeoLocationDetailsList.66.CountryCode
+  - expected: Cook Islands
+    op: eq
+    path: GeoLocationDetailsList.44.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.272.CountryName
+  - expected: EC
+    op: eq
+    path: GeoLocationDetailsList.61.CountryCode
+  - expected: Cape Verde
+    op: eq
+    path: GeoLocationDetailsList.51.CountryName
+  - expected: China
+    op: eq
+    path: GeoLocationDetailsList.47.CountryName
+  - expected: KP
+    op: eq
+    path: GeoLocationDetailsList.117.CountryCode
+  - expected: CN
+    op: eq
+    path: GeoLocationDetailsList.47.CountryCode
+  - expected: DO
+    op: eq
+    path: GeoLocationDetailsList.59.CountryCode
+  - expected: Northern Mariana Islands
+    op: eq
+    path: GeoLocationDetailsList.145.CountryName
+  - expected: IN
+    op: eq
+    path: GeoLocationDetailsList.101.CountryCode
+  - expected: Nicaragua
+    op: eq
+    path: GeoLocationDetailsList.161.CountryName
+  - expected: DC
+    op: eq
+    path: GeoLocationDetailsList.237.SubdivisionCode
+  - expected: PA
+    op: eq
+    path: GeoLocationDetailsList.169.CountryCode
+  - expected: GE
+    op: eq
+    path: GeoLocationDetailsList.76.CountryCode
+  - expected: Madagascar
+    op: eq
+    path: GeoLocationDetailsList.138.CountryName
+  - expected: GU
+    op: eq
+    path: GeoLocationDetailsList.89.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.273.CountryName
+  - expected: DE
+    op: eq
+    path: GeoLocationDetailsList.55.CountryCode
+  - expected: SO
+    op: eq
+    path: GeoLocationDetailsList.202.CountryCode
+  - expected: DJ
+    op: eq
+    path: GeoLocationDetailsList.56.CountryCode
+  - expected: Arizona
+    op: eq
+    path: GeoLocationDetailsList.233.SubdivisionName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.263.CountryCode
+  - expected: Bolivia
+    op: eq
+    path: GeoLocationDetailsList.29.CountryName
+  - expected: Minnesota
+    op: eq
+    path: GeoLocationDetailsList.253.SubdivisionName
+  - expected: North Dakota
+    op: eq
+    path: GeoLocationDetailsList.258.SubdivisionName
+  - expected: FR
+    op: eq
+    path: GeoLocationDetailsList.72.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.232.CountryCode
+  - expected: Brazil
+    op: eq
+    path: GeoLocationDetailsList.31.CountryName
+  - expected: South America
+    op: eq
+    path: GeoLocationDetailsList.304.ContinentName
+  - expected: Marshall Islands
+    op: eq
+    path: GeoLocationDetailsList.139.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.270.CountryCode
+  - expected: MT
+    op: eq
+    path: GeoLocationDetailsList.149.CountryCode
+  - expected: Japan
+    op: eq
+    path: GeoLocationDetailsList.110.CountryName
+  - expected: MS
+    op: eq
+    path: GeoLocationDetailsList.255.SubdivisionCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.272.CountryCode
+  - expected: Montenegro
+    op: eq
+    path: GeoLocationDetailsList.136.CountryName
+  - expected: Saint Barthélemy
+    op: eq
+    path: GeoLocationDetailsList.26.CountryName
+  - expected: Uganda
+    op: eq
+    path: GeoLocationDetailsList.227.CountryName
+  - expected: GF
+    op: eq
+    path: GeoLocationDetailsList.77.CountryCode
+  - expected: JO
+    op: eq
+    path: GeoLocationDetailsList.109.CountryCode
+  - expected: NO
+    op: eq
+    path: GeoLocationDetailsList.163.CountryCode
+  - expected: OR
+    op: eq
+    path: GeoLocationDetailsList.267.SubdivisionCode
+  - expected: KY
+    op: eq
+    path: GeoLocationDetailsList.247.SubdivisionCode
+  - expected: French Southern Territories
+    op: eq
+    path: GeoLocationDetailsList.212.CountryName
+  - expected: British Indian Ocean Territory
+    op: eq
+    path: GeoLocationDetailsList.102.CountryName
+  - expected: PN
+    op: eq
+    path: GeoLocationDetailsList.177.CountryCode
+  - expected: Bangladesh
+    op: eq
+    path: GeoLocationDetailsList.19.CountryName
+  - expected: BD
+    op: eq
+    path: GeoLocationDetailsList.19.CountryCode
+  - expected: MN
+    op: eq
+    path: GeoLocationDetailsList.253.SubdivisionCode
+  - expected: VA
+    op: eq
+    path: GeoLocationDetailsList.283.CountryCode
+  - expected: Iowa
+    op: eq
+    path: GeoLocationDetailsList.242.SubdivisionName
+  - expected: Croatia
+    op: eq
+    path: GeoLocationDetailsList.94.CountryName
+  - expected: GD
+    op: eq
+    path: GeoLocationDetailsList.75.CountryCode
+  - expected: Costa Rica
+    op: eq
+    path: GeoLocationDetailsList.49.CountryName
+  - expected: IS
+    op: eq
+    path: GeoLocationDetailsList.105.CountryCode
+  - expected: Monaco
+    op: eq
+    path: GeoLocationDetailsList.134.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.277.CountryCode
+  - expected: Kiribati
+    op: eq
+    path: GeoLocationDetailsList.114.CountryName
+  - expected: Kosovo
+    op: eq
+    path: GeoLocationDetailsList.292.CountryName
+  - expected: ST
+    op: eq
+    path: GeoLocationDetailsList.205.CountryCode
+  - expected: SC
+    op: eq
+    path: GeoLocationDetailsList.270.SubdivisionCode
+  - expected: Ethiopia
+    op: eq
+    path: GeoLocationDetailsList.66.CountryName
+  - expected: CO
+    op: eq
+    path: GeoLocationDetailsList.235.SubdivisionCode
+  - expected: FJ
+    op: eq
+    path: GeoLocationDetailsList.68.CountryCode
+  - expected: MX
+    op: eq
+    path: GeoLocationDetailsList.153.CountryCode
+  - expected: Idaho
+    op: eq
+    path: GeoLocationDetailsList.243.SubdivisionName
+  - expected: Turkey
+    op: eq
+    path: GeoLocationDetailsList.221.CountryName
+  - expected: 0
+    op: eq
+    path: IsTruncated
+  - expected: Fiji
+    op: eq
+    path: GeoLocationDetailsList.68.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.239.CountryCode
+  - expected: Guam
+    op: eq
+    path: GeoLocationDetailsList.89.CountryName
+  - expected: New York
+    op: eq
+    path: GeoLocationDetailsList.264.SubdivisionName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.231.CountryCode
+  - expected: North America
+    op: eq
+    path: GeoLocationDetailsList.302.ContinentName
+  - expected: Indonesia
+    op: eq
+    path: GeoLocationDetailsList.97.CountryName
+  - expected: Kuwait
+    op: eq
+    path: GeoLocationDetailsList.119.CountryName
+  - expected: Saint Lucia
+    op: eq
+    path: GeoLocationDetailsList.124.CountryName
+  - expected: PH
+    op: eq
+    path: GeoLocationDetailsList.173.CountryCode
+  - expected: YE
+    op: eq
+    path: GeoLocationDetailsList.293.CountryCode
+  - expected: CW
+    op: eq
+    path: GeoLocationDetailsList.52.CountryCode
+  - expected: SR
+    op: eq
+    path: GeoLocationDetailsList.203.CountryCode
+  - expected: TW
+    op: eq
+    path: GeoLocationDetailsList.224.CountryCode
+  - expected: IM
+    op: eq
+    path: GeoLocationDetailsList.100.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.253.CountryCode
+  - expected: CV
+    op: eq
+    path: GeoLocationDetailsList.51.CountryCode
+  - expected: Czech Republic
+    op: eq
+    path: GeoLocationDetailsList.54.CountryName
+  - expected: Cameroon
+    op: eq
+    path: GeoLocationDetailsList.46.CountryName
+  - expected: DZ
+    op: eq
+    path: GeoLocationDetailsList.60.CountryCode
+  - expected: UY
+    op: eq
+    path: GeoLocationDetailsList.281.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.279.CountryName
+  - expected: Oklahoma
+    op: eq
+    path: GeoLocationDetailsList.266.SubdivisionName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.243.CountryCode
+  - expected: Yemen
+    op: eq
+    path: GeoLocationDetailsList.293.CountryName
+  - expected: Illinois
+    op: eq
+    path: GeoLocationDetailsList.244.SubdivisionName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.273.CountryCode
+  - expected: FI
+    op: eq
+    path: GeoLocationDetailsList.67.CountryCode
+  - expected: BG
+    op: eq
+    path: GeoLocationDetailsList.22.CountryCode
+  - expected: Saint Martin
+    op: eq
+    path: GeoLocationDetailsList.137.CountryName
+  - expected: ZA
+    op: eq
+    path: GeoLocationDetailsList.295.CountryCode
+  - expected: Barbados
+    op: eq
+    path: GeoLocationDetailsList.18.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.238.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.230.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.254.CountryCode
+  - expected: TM
+    op: eq
+    path: GeoLocationDetailsList.218.CountryCode
+  - expected: Tennessee
+    op: eq
+    path: GeoLocationDetailsList.272.SubdivisionName
+  - expected: Republic of Moldova
+    op: eq
+    path: GeoLocationDetailsList.135.CountryName
+  - expected: NV
+    op: eq
+    path: GeoLocationDetailsList.263.SubdivisionCode
+  - expected: Panama
+    op: eq
+    path: GeoLocationDetailsList.169.CountryName
+  - expected: Malawi
+    op: eq
+    path: GeoLocationDetailsList.152.CountryName
+  - expected: ME
+    op: eq
+    path: GeoLocationDetailsList.251.SubdivisionCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.259.CountryCode
+  - expected: TZ
+    op: eq
+    path: GeoLocationDetailsList.225.CountryCode
+  - expected: Ivory Coast
+    op: eq
+    path: GeoLocationDetailsList.43.CountryName
+  - expected: LT
+    op: eq
+    path: GeoLocationDetailsList.129.CountryCode
+  - expected: BY
+    op: eq
+    path: GeoLocationDetailsList.35.CountryCode
+  - expected: American Samoa
+    op: eq
+    path: GeoLocationDetailsList.11.CountryName
+  - expected: Chile
+    op: eq
+    path: GeoLocationDetailsList.45.CountryName
+  - expected: Isle of Man
+    op: eq
+    path: GeoLocationDetailsList.100.CountryName
+  - expected: Angola
+    op: eq
+    path: GeoLocationDetailsList.8.CountryName
+  - expected: RE
+    op: eq
+    path: GeoLocationDetailsList.184.CountryCode
+  - expected: LC
+    op: eq
+    path: GeoLocationDetailsList.124.CountryCode
+  - expected: EU
+    op: eq
+    path: GeoLocationDetailsList.301.ContinentCode
+  - expected: Delaware
+    op: eq
+    path: GeoLocationDetailsList.238.SubdivisionName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.251.CountryCode
+  - expected: Mauritania
+    op: eq
+    path: GeoLocationDetailsList.147.CountryName
+  - expected: Republic of Korea
+    op: eq
+    path: GeoLocationDetailsList.118.CountryName
+  - expected: Estonia
+    op: eq
+    path: GeoLocationDetailsList.62.CountryName
+  - expected: MY
+    op: eq
+    path: GeoLocationDetailsList.154.CountryCode
+  - expected: FL
+    op: eq
+    path: GeoLocationDetailsList.239.SubdivisionCode
+  - expected: CA
+    op: eq
+    path: GeoLocationDetailsList.234.SubdivisionCode
+  - expected: Kenya
+    op: eq
+    path: GeoLocationDetailsList.111.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.271.CountryCode
+  - expected: Macao
+    op: eq
+    path: GeoLocationDetailsList.144.CountryName
+  - expected: Egypt
+    op: eq
+    path: GeoLocationDetailsList.63.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.249.CountryName
+  - expected: Ohio
+    op: eq
+    path: GeoLocationDetailsList.265.SubdivisionName
+  - expected: Liberia
+    op: eq
+    path: GeoLocationDetailsList.127.CountryName
+  - expected: VN
+    op: eq
+    path: GeoLocationDetailsList.288.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.280.CountryName
+  - expected: Falkland Islands
+    op: eq
+    path: GeoLocationDetailsList.69.CountryName
+  - expected: BM
+    op: eq
+    path: GeoLocationDetailsList.27.CountryCode
+  - expected: QA
+    op: eq
+    path: GeoLocationDetailsList.183.CountryCode
+  - expected: BA
+    op: eq
+    path: GeoLocationDetailsList.17.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.245.CountryName
+  - expected: KH
+    op: eq
+    path: GeoLocationDetailsList.113.CountryCode
+  - expected: Anguilla
+    op: eq
+    path: GeoLocationDetailsList.5.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.244.CountryCode
+  - expected: Djibouti
+    op: eq
+    path: GeoLocationDetailsList.56.CountryName
+  - expected: Qatar
+    op: eq
+    path: GeoLocationDetailsList.183.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.260.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.257.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.262.CountryCode
+  - expected: Guatemala
+    op: eq
+    path: GeoLocationDetailsList.88.CountryName
+  - expected: Maine
+    op: eq
+    path: GeoLocationDetailsList.251.SubdivisionName
+  - expected: Liechtenstein
+    op: eq
+    path: GeoLocationDetailsList.125.CountryName
+  - expected: Pitcairn Islands
+    op: eq
+    path: GeoLocationDetailsList.177.CountryName
+  - expected: TG
+    op: eq
+    path: GeoLocationDetailsList.213.CountryCode
+  - expected: KZ
+    op: eq
+    path: GeoLocationDetailsList.121.CountryCode
+  - expected: CM
+    op: eq
+    path: GeoLocationDetailsList.46.CountryCode
+  - expected: South Georgia and the South Sandwich Islands
+    op: eq
+    path: GeoLocationDetailsList.87.CountryName
+  - expected: BF
+    op: eq
+    path: GeoLocationDetailsList.21.CountryCode
+  - expected: South Sudan
+    op: eq
+    path: GeoLocationDetailsList.204.CountryName
+  - expected: Norway
+    op: eq
+    path: GeoLocationDetailsList.163.CountryName
+  - expected: Cambodia
+    op: eq
+    path: GeoLocationDetailsList.113.CountryName
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.252.CountryCode
+  - expected: US
+    op: eq
+    path: GeoLocationDetailsList.269.CountryCode
+  - expected: San Marino
+    op: eq
+    path: GeoLocationDetailsList.200.CountryName
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.261.CountryName
+  - expected: New Zealand
+    op: eq
+    path: GeoLocationDetailsList.167.CountryName
+  - expected: AU
+    op: eq
+    path: GeoLocationDetailsList.13.CountryCode
+  - expected: United States
+    op: eq
+    path: GeoLocationDetailsList.233.CountryName

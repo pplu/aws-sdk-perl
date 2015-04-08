@@ -1,0 +1,10 @@
+---
+call: ListReusableDelegationSets
+service: Route53
+tests:
+  - expected: 100
+    op: eq
+    path: MaxItems
+  - expected: 0
+    op: eq
+    path: IsTruncated

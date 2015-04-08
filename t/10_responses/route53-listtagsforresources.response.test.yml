@@ -1,0 +1,4 @@
+---
+call: ListTagsForResources
+service: Route53
+tests: []

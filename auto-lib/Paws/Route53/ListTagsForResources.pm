@@ -1,7 +1,6 @@
 
 package Paws::Route53::ListTagsForResources {
   use Moose;
-  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -21,21 +20,6 @@ package Paws::Route53::ListTagsForResources {
 Paws::Route53::ListTagsForResourcesResponse
 
 =head1 ATTRIBUTES
-
-=head2 B<REQUIRED> ResourceIds => ArrayRef[Str]
-
-  
-
-A complex type that contains the ResourceId element for each resource
-for which you want to get a list of tags.
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ResourceType => Str
 
