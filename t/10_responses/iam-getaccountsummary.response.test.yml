@@ -1,0 +1,79 @@
+---
+call: GetAccountSummary
+service: IAM
+tests:
+  - expected: 5
+    op: ==
+    path: SummaryMap.Users
+  - expected: 100
+    op: ==
+    path: SummaryMap.GroupsQuota
+  - expected: 2048
+    op: ==
+    path: SummaryMap.UserPolicySizeQuota
+  - expected: 10000
+    op: ==
+    path: SummaryMap.PolicyVersionsInUseQuota
+  - expected: 0
+    op: ==
+    path: SummaryMap.Groups
+  - expected: 20
+    op: ==
+    path: SummaryMap.ServerCertificatesQuota
+  - expected: 0
+    op: ==
+    path: SummaryMap.AccountSigningCertificatesPresent
+  - expected: 2
+    op: ==
+    path: SummaryMap.AccessKeysPerUserQuota
+  - expected: 0
+    op: ==
+    path: SummaryMap.PolicyVersionsInUse
+  - expected: 2
+    op: ==
+    path: SummaryMap.AttachedPoliciesPerUserQuota
+  - expected: 10
+    op: ==
+    path: SummaryMap.GroupsPerUserQuota
+  - expected: 2
+    op: ==
+    path: SummaryMap.AttachedPoliciesPerGroupQuota
+  - expected: 0
+    op: ==
+    path: SummaryMap.Policies
+  - expected: 0
+    op: ==
+    path: SummaryMap.MFADevices
+  - expected: 5000
+    op: ==
+    path: SummaryMap.UsersQuota
+  - expected: 0
+    op: ==
+    path: SummaryMap.AccountAccessKeysPresent
+  - expected: 0
+    op: ==
+    path: SummaryMap.MFADevicesInUse
+  - expected: 5120
+    op: ==
+    path: SummaryMap.PolicySizeQuota
+  - expected: 2
+    op: ==
+    path: SummaryMap.SigningCertificatesPerUserQuota
+  - expected: 5120
+    op: ==
+    path: SummaryMap.GroupPolicySizeQuota
+  - expected: 1000
+    op: ==
+    path: SummaryMap.PoliciesQuota
+  - expected: 5
+    op: ==
+    path: SummaryMap.VersionsPerPolicyQuota
+  - expected: 0
+    op: ==
+    path: SummaryMap.ServerCertificates
+  - expected: 0
+    op: ==
+    path: SummaryMap.AccountMFAEnabled
+  - expected: 2
+    op: ==
+    path: SummaryMap.AttachedPoliciesPerRoleQuota
