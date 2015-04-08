@@ -1,0 +1,46 @@
+---
+call: LookupEvents
+service: CloudTrail
+tests:
+  - expected: AWS::IAM::User
+    op: eq
+    path: Events.0.Resources.0.ResourceType
+  - expected: root
+    op: eq
+    path: Events.0.Username
+  - expected: '{"eventVersion":"1.02","userIdentity":{"type":"Root","principalId":"000000000000","arn":"arn:aws:iam::000000000000:root","accountId":"000000000000","accessKeyId":"ASI00000000000000000","sessionContext":{"attributes":{"mfaAuthenticated":"false","creationDate":"2015-04-06T16:11:13Z"}}},"eventTime":"2015-04-06T16:12:16Z","eventSource":"iam.amazonaws.com","eventName":"CreateAccessKey","awsRegion":"us-east-1","sourceIPAddress":"10.100.100.100","userAgent":"console.amazonaws.com","requestParameters":{"userName":"testsdk"},"responseElements":{"accessKey":{"status":"Active","accessKeyId":"AKI00000000000000000","userName":"testsdk","createDate":"Apr 6, 2015 4:12:16 PM"}},"requestID":"00000000-0000-0000-0000-000000000000","eventID":"00000000-0000-0000-0000-000000000000","eventType":"AwsApiCall","recipientAccountId":"000000000000"}'
+    op: eq
+    path: Events.0.CloudTrailEvent
+  - expected: AKI00000000000000000
+    op: eq
+    path: Events.0.Resources.1.ResourceName
+  - expected: '{"eventVersion":"1.02","userIdentity":{"type":"Root","principalId":"000000000000","arn":"arn:aws:iam::000000000000:root","accountId":"000000000000"},"eventTime":"2015-04-06T16:11:13Z","eventSource":"signin.amazonaws.com","eventName":"ConsoleLogin","awsRegion":"us-east-1","sourceIPAddress":"10.100.100.100","userAgent":"Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0 Iceweasel/31.5.3","requestParameters":null,"responseElements":{"ConsoleLogin":"Success"},"additionalEventData":{"LoginTo":"https://console.aws.amazon.com/console/home?nc2\u003dh_m_mc\u0026state\u003dhashArgs%23\u0026isauthcode\u003dtrue","MobileVersion":"No","MFAUsed":"No"},"eventID":"00000000-0000-0000-0000-000000000000","eventType":"AwsApiCall","recipientAccountId":"000000000000"}'
+    op: eq
+    path: Events.1.CloudTrailEvent
+  - expected: 1428336736
+    op: eq
+    path: Events.0.EventTime
+  - expected: AWS::IAM::AccessKey
+    op: eq
+    path: Events.0.Resources.1.ResourceType
+  - expected: root
+    op: eq
+    path: Events.1.Username
+  - expected: 00000000-0000-0000-0000-000000000000
+    op: eq
+    path: Events.0.EventId
+  - expected: testsdk
+    op: eq
+    path: Events.0.Resources.0.ResourceName
+  - expected: CreateAccessKey
+    op: eq
+    path: Events.0.EventName
+  - expected: 00000000-0000-0000-0000-000000000000
+    op: eq
+    path: Events.1.EventId
+  - expected: ConsoleLogin
+    op: eq
+    path: Events.1.EventName
+  - expected: 1428336673
+    op: eq
+    path: Events.1.EventTime
