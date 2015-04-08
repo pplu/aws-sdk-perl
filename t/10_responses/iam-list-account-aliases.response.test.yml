@@ -1,0 +1,10 @@
+---
+call: ListAccountAliases
+service: IAM
+tests:
+  - expected: foocorporation
+    op: eq
+    path: AccountAliases.0
+  - expected: 0
+    op: eq
+    path: IsTruncated

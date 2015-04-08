@@ -1,0 +1,7 @@
+---
+call: VerifyDomainIdentity
+service: SES
+tests:
+  - expected: QTKknzFg2J4ygwa+XvHAxUl1hyHoY0gVfZdfjIedHZ0=
+    op: eq
+    path: VerificationToken

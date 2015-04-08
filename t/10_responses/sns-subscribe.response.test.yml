@@ -1,0 +1,7 @@
+---
+call: Subscribe
+service: SNS
+tests:
+  - expected: pending confirmation
+    op: eq
+    path: SubscriptionArn

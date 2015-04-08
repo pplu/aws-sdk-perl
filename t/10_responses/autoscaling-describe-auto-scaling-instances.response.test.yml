@@ -1,0 +1,4 @@
+---
+call: DescribeAutoScalingInstances
+service: AutoScaling
+tests: []

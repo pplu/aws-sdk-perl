@@ -1,0 +1,4 @@
+---
+call: AddPermission
+service: SQS
+tests: []

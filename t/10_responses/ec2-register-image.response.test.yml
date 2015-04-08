@@ -1,0 +1,7 @@
+---
+call: RegisterImage
+service: EC2
+tests:
+  - expected: ami-1a2b3c4d
+    op: eq
+    path: ImageId

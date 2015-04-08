@@ -1,0 +1,4 @@
+---
+call: DescribeAlarmHistory
+service: CloudWatch
+tests: []

@@ -1,0 +1,26 @@
+---
+call: ListServerCertificates
+service: IAM
+tests:
+  - expected: '2016-03-15T10:58:24Z'
+    op: eq
+    path: 'ServerCertificateMetadataList.0.Expiration'
+  - expected: 'AAAAAAAAAAAAAAAAAAAAA'
+    op: eq
+    path: 'ServerCertificateMetadataList.0.ServerCertificateId'
+  - expected: '/production/'
+    op: eq
+    path: 'ServerCertificateMetadataList.0.Path'
+  - expected: '2014-02-18T16:24:16Z'
+    op: eq
+    path: 'ServerCertificateMetadataList.0.UploadDate'
+  - expected: 'arn:aws:iam::333333333333:server-certificate/production/wildcard1'
+    op: eq
+    path: 'ServerCertificateMetadataList.0.Arn'
+  - expected: 'wildcard1'
+    op: eq
+    path: 'ServerCertificateMetadataList.0.ServerCertificateName'
+  - expected: 0
+    op: ==
+    path: 'IsTruncated'
+

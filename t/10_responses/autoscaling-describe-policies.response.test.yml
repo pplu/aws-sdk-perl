@@ -1,0 +1,4 @@
+---
+call: DescribePolicies
+service: AutoScaling
+tests: []

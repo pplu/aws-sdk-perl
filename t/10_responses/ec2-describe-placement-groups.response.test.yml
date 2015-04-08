@@ -1,0 +1,13 @@
+---
+call: DescribePlacementGroups
+service: EC2
+tests:
+  - expected: Project-cluster
+    op: eq
+    path: PlacementGroups.0.GroupName
+  - expected: available
+    op: eq
+    path: PlacementGroups.0.State
+  - expected: cluster
+    op: eq
+    path: PlacementGroups.0.Strategy

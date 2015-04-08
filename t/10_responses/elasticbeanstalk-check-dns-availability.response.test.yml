@@ -1,0 +1,10 @@
+---
+call: CheckDNSAvailability
+service: ElasticBeanstalk
+tests:
+  - expected: 1
+    op: eq
+    path: Available
+  - expected: sampleapplication.elasticbeanstalk.amazonaws.com
+    op: eq
+    path: FullyQualifiedCNAME

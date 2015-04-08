@@ -1,0 +1,436 @@
+---
+call: CreateConfigurationTemplate
+service: ElasticBeanstalk
+tests:
+  - expected: SampleApp
+    op: eq
+    path: ApplicationName
+  - expected: 2010-11-17T03:48:19.640Z
+    op: eq
+    path: DateCreated
+  - expected: 2010-11-17T03:48:19.640Z
+    op: eq
+    path: DateUpdated
+  - expected: ConfigTemplateDescription
+    op: eq
+    path: Description
+  - expected: aws:autoscaling:launchconfiguration
+    op: eq
+    path: OptionSettings.0.Namespace
+  - expected: ImageId
+    op: eq
+    path: OptionSettings.0.OptionName
+  - expected: ami-f2f0069b
+    op: eq
+    path: OptionSettings.0.Value
+  - expected: aws:elasticbeanstalk:sns:topics
+    op: eq
+    path: OptionSettings.1.Namespace
+  - expected: Notification Endpoint
+    op: eq
+    path: OptionSettings.1.OptionName
+  - expected: ~
+    op: eq
+    path: OptionSettings.1.Value
+  - expected: aws:elasticbeanstalk:application:environment
+    op: eq
+    path: OptionSettings.10.Namespace
+  - expected: PARAM5
+    op: eq
+    path: OptionSettings.10.OptionName
+  - expected: ~
+    op: eq
+    path: OptionSettings.10.Value
+  - expected: aws:autoscaling:trigger
+    op: eq
+    path: OptionSettings.11.Namespace
+  - expected: MeasureName
+    op: eq
+    path: OptionSettings.11.OptionName
+  - expected: NetworkOut
+    op: eq
+    path: OptionSettings.11.Value
+  - expected: aws:elb:healthcheck
+    op: eq
+    path: OptionSettings.12.Namespace
+  - expected: Interval
+    op: eq
+    path: OptionSettings.12.OptionName
+  - expected: 30
+    op: eq
+    path: OptionSettings.12.Value
+  - expected: aws:elasticbeanstalk:application
+    op: eq
+    path: OptionSettings.13.Namespace
+  - expected: Application Healthcheck URL
+    op: eq
+    path: OptionSettings.13.OptionName
+  - expected: /
+    op: eq
+    path: OptionSettings.13.Value
+  - expected: aws:elasticbeanstalk:sns:topics
+    op: eq
+    path: OptionSettings.14.Namespace
+  - expected: Notification Topic ARN
+    op: eq
+    path: OptionSettings.14.OptionName
+  - expected: ~
+    op: eq
+    path: OptionSettings.14.Value
+  - expected: aws:autoscaling:trigger
+    op: eq
+    path: OptionSettings.15.Namespace
+  - expected: LowerBreachScaleIncrement
+    op: eq
+    path: OptionSettings.15.OptionName
+  - expected: -1
+    op: eq
+    path: OptionSettings.15.Value
+  - expected: aws:elasticbeanstalk:container:tomcat:jvmoptions
+    op: eq
+    path: OptionSettings.16.Namespace
+  - expected: XX:MaxPermSize
+    op: eq
+    path: OptionSettings.16.OptionName
+  - expected: 64m
+    op: eq
+    path: OptionSettings.16.Value
+  - expected: aws:autoscaling:trigger
+    op: eq
+    path: OptionSettings.17.Namespace
+  - expected: UpperBreachScaleIncrement
+    op: eq
+    path: OptionSettings.17.OptionName
+  - expected: 1
+    op: eq
+    path: OptionSettings.17.Value
+  - expected: aws:autoscaling:asg
+    op: eq
+    path: OptionSettings.18.Namespace
+  - expected: MinSize
+    op: eq
+    path: OptionSettings.18.OptionName
+  - expected: 1
+    op: eq
+    path: OptionSettings.18.Value
+  - expected: aws:autoscaling:asg
+    op: eq
+    path: OptionSettings.19.Namespace
+  - expected: Custom Availability Zones
+    op: eq
+    path: OptionSettings.19.OptionName
+  - expected: us-east-1a
+    op: eq
+    path: OptionSettings.19.Value
+  - expected: aws:elasticbeanstalk:application:environment
+    op: eq
+    path: OptionSettings.2.Namespace
+  - expected: PARAM4
+    op: eq
+    path: OptionSettings.2.OptionName
+  - expected: ~
+    op: eq
+    path: OptionSettings.2.Value
+  - expected: aws:autoscaling:asg
+    op: eq
+    path: OptionSettings.20.Namespace
+  - expected: Availability Zones
+    op: eq
+    path: OptionSettings.20.OptionName
+  - expected: Any 1
+    op: eq
+    path: OptionSettings.20.Value
+  - expected: aws:elasticbeanstalk:hostmanager
+    op: eq
+    path: OptionSettings.21.Namespace
+  - expected: LogPublicationControl
+    op: eq
+    path: OptionSettings.21.OptionName
+  - expected: false
+    op: eq
+    path: OptionSettings.21.Value
+  - expected: aws:elasticbeanstalk:container:tomcat:jvmoptions
+    op: eq
+    path: OptionSettings.22.Namespace
+  - expected: JVM Options
+    op: eq
+    path: OptionSettings.22.OptionName
+  - expected: ~
+    op: eq
+    path: OptionSettings.22.Value
+  - expected: aws:elasticbeanstalk:sns:topics
+    op: eq
+    path: OptionSettings.23.Namespace
+  - expected: Notification Topic Name
+    op: eq
+    path: OptionSettings.23.OptionName
+  - expected: ~
+    op: eq
+    path: OptionSettings.23.Value
+  - expected: aws:elasticbeanstalk:application:environment
+    op: eq
+    path: OptionSettings.24.Namespace
+  - expected: PARAM2
+    op: eq
+    path: OptionSettings.24.OptionName
+  - expected: ~
+    op: eq
+    path: OptionSettings.24.Value
+  - expected: aws:elb:loadbalancer
+    op: eq
+    path: OptionSettings.25.Namespace
+  - expected: LoadBalancerHTTPPort
+    op: eq
+    path: OptionSettings.25.OptionName
+  - expected: 80
+    op: eq
+    path: OptionSettings.25.Value
+  - expected: aws:elb:healthcheck
+    op: eq
+    path: OptionSettings.26.Namespace
+  - expected: Timeout
+    op: eq
+    path: OptionSettings.26.OptionName
+  - expected: 5
+    op: eq
+    path: OptionSettings.26.Value
+  - expected: aws:autoscaling:trigger
+    op: eq
+    path: OptionSettings.27.Namespace
+  - expected: BreachDuration
+    op: eq
+    path: OptionSettings.27.OptionName
+  - expected: 2
+    op: eq
+    path: OptionSettings.27.Value
+  - expected: aws:autoscaling:launchconfiguration
+    op: eq
+    path: OptionSettings.28.Namespace
+  - expected: MonitoringInterval
+    op: eq
+    path: OptionSettings.28.OptionName
+  - expected: 5 minute
+    op: eq
+    path: OptionSettings.28.Value
+  - expected: aws:elasticbeanstalk:application:environment
+    op: eq
+    path: OptionSettings.29.Namespace
+  - expected: PARAM1
+    op: eq
+    path: OptionSettings.29.OptionName
+  - expected: ~
+    op: eq
+    path: OptionSettings.29.Value
+  - expected: aws:elasticbeanstalk:application:environment
+    op: eq
+    path: OptionSettings.3.Namespace
+  - expected: JDBC_CONNECTION_STRING
+    op: eq
+    path: OptionSettings.3.OptionName
+  - expected: ~
+    op: eq
+    path: OptionSettings.3.Value
+  - expected: aws:autoscaling:asg
+    op: eq
+    path: OptionSettings.30.Namespace
+  - expected: MaxSize
+    op: eq
+    path: OptionSettings.30.OptionName
+  - expected: 4
+    op: eq
+    path: OptionSettings.30.Value
+  - expected: aws:autoscaling:trigger
+    op: eq
+    path: OptionSettings.31.Namespace
+  - expected: LowerThreshold
+    op: eq
+    path: OptionSettings.31.OptionName
+  - expected: 2000000
+    op: eq
+    path: OptionSettings.31.Value
+  - expected: aws:elasticbeanstalk:application:environment
+    op: eq
+    path: OptionSettings.32.Namespace
+  - expected: AWS_SECRET_KEY
+    op: eq
+    path: OptionSettings.32.OptionName
+  - expected: ~
+    op: eq
+    path: OptionSettings.32.Value
+  - expected: aws:elasticbeanstalk:application:environment
+    op: eq
+    path: OptionSettings.33.Namespace
+  - expected: AWS_ACCESS_KEY_ID
+    op: eq
+    path: OptionSettings.33.OptionName
+  - expected: ~
+    op: eq
+    path: OptionSettings.33.Value
+  - expected: aws:autoscaling:trigger
+    op: eq
+    path: OptionSettings.34.Namespace
+  - expected: UpperThreshold
+    op: eq
+    path: OptionSettings.34.OptionName
+  - expected: 6000000
+    op: eq
+    path: OptionSettings.34.Value
+  - expected: aws:elasticbeanstalk:sns:topics
+    op: eq
+    path: OptionSettings.35.Namespace
+  - expected: Notification Protocol
+    op: eq
+    path: OptionSettings.35.OptionName
+  - expected: email
+    op: eq
+    path: OptionSettings.35.Value
+  - expected: aws:autoscaling:trigger
+    op: eq
+    path: OptionSettings.36.Namespace
+  - expected: Unit
+    op: eq
+    path: OptionSettings.36.OptionName
+  - expected: Bytes
+    op: eq
+    path: OptionSettings.36.Value
+  - expected: aws:elasticbeanstalk:container:tomcat:jvmoptions
+    op: eq
+    path: OptionSettings.37.Namespace
+  - expected: Xmx
+    op: eq
+    path: OptionSettings.37.OptionName
+  - expected: 256m
+    op: eq
+    path: OptionSettings.37.Value
+  - expected: aws:autoscaling:asg
+    op: eq
+    path: OptionSettings.38.Namespace
+  - expected: Cooldown
+    op: eq
+    path: OptionSettings.38.OptionName
+  - expected: 360
+    op: eq
+    path: OptionSettings.38.Value
+  - expected: aws:autoscaling:trigger
+    op: eq
+    path: OptionSettings.39.Namespace
+  - expected: Period
+    op: eq
+    path: OptionSettings.39.OptionName
+  - expected: 1
+    op: eq
+    path: OptionSettings.39.Value
+  - expected: aws:autoscaling:launchconfiguration
+    op: eq
+    path: OptionSettings.4.Namespace
+  - expected: SecurityGroups
+    op: eq
+    path: OptionSettings.4.OptionName
+  - expected: elasticbeanstalk-default
+    op: eq
+    path: OptionSettings.4.Value
+  - expected: aws:elasticbeanstalk:container:tomcat:jvmoptions
+    op: eq
+    path: OptionSettings.40.Namespace
+  - expected: Xms
+    op: eq
+    path: OptionSettings.40.OptionName
+  - expected: 256m
+    op: eq
+    path: OptionSettings.40.Value
+  - expected: aws:autoscaling:launchconfiguration
+    op: eq
+    path: OptionSettings.41.Namespace
+  - expected: EC2KeyName
+    op: eq
+    path: OptionSettings.41.OptionName
+  - expected: ~
+    op: eq
+    path: OptionSettings.41.Value
+  - expected: aws:elb:policies
+    op: eq
+    path: OptionSettings.42.Namespace
+  - expected: Stickiness Policy
+    op: eq
+    path: OptionSettings.42.OptionName
+  - expected: false
+    op: eq
+    path: OptionSettings.42.Value
+  - expected: aws:elasticbeanstalk:application:environment
+    op: eq
+    path: OptionSettings.43.Namespace
+  - expected: PARAM3
+    op: eq
+    path: OptionSettings.43.OptionName
+  - expected: ~
+    op: eq
+    path: OptionSettings.43.Value
+  - expected: aws:elb:healthcheck
+    op: eq
+    path: OptionSettings.44.Namespace
+  - expected: HealthyThreshold
+    op: eq
+    path: OptionSettings.44.OptionName
+  - expected: 3
+    op: eq
+    path: OptionSettings.44.Value
+  - expected: aws:elb:loadbalancer
+    op: eq
+    path: OptionSettings.45.Namespace
+  - expected: SSLCertificateId
+    op: eq
+    path: OptionSettings.45.OptionName
+  - expected: ~
+    op: eq
+    path: OptionSettings.45.Value
+  - expected: aws:elb:healthcheck
+    op: eq
+    path: OptionSettings.5.Namespace
+  - expected: UnhealthyThreshold
+    op: eq
+    path: OptionSettings.5.OptionName
+  - expected: 5
+    op: eq
+    path: OptionSettings.5.Value
+  - expected: aws:autoscaling:launchconfiguration
+    op: eq
+    path: OptionSettings.6.Namespace
+  - expected: InstanceType
+    op: eq
+    path: OptionSettings.6.OptionName
+  - expected: t1.micro
+    op: eq
+    path: OptionSettings.6.Value
+  - expected: aws:autoscaling:trigger
+    op: eq
+    path: OptionSettings.7.Namespace
+  - expected: Statistic
+    op: eq
+    path: OptionSettings.7.OptionName
+  - expected: Average
+    op: eq
+    path: OptionSettings.7.Value
+  - expected: aws:elb:loadbalancer
+    op: eq
+    path: OptionSettings.8.Namespace
+  - expected: LoadBalancerHTTPSPort
+    op: eq
+    path: OptionSettings.8.OptionName
+  - expected: OFF
+    op: eq
+    path: OptionSettings.8.Value
+  - expected: aws:elb:policies
+    op: eq
+    path: OptionSettings.9.Namespace
+  - expected: Stickiness Cookie Expiration
+    op: eq
+    path: OptionSettings.9.OptionName
+  - expected: 0
+    op: eq
+    path: OptionSettings.9.Value
+  - expected: 32bit Amazon Linux running Tomcat 7
+    op: eq
+    path: SolutionStackName
+  - expected: AppTemplate
+    op: eq
+    path: TemplateName

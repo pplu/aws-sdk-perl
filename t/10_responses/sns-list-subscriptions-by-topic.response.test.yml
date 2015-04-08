@@ -1,0 +1,19 @@
+---
+call: ListSubscriptionsByTopic
+service: SNS
+tests:
+  - expected: example@amazon.com
+    op: eq
+    path: Subscriptions.0.Endpoint
+  - expected: 123456789012
+    op: eq
+    path: Subscriptions.0.Owner
+  - expected: email
+    op: eq
+    path: Subscriptions.0.Protocol
+  - expected: arn:aws:sns:us-east-1:123456789012:My-Topic:80289ba6-0fd4-4079-afb4-ce8c8260f0ca
+    op: eq
+    path: Subscriptions.0.SubscriptionArn
+  - expected: arn:aws:sns:us-east-1:123456789012:My-Topic
+    op: eq
+    path: Subscriptions.0.TopicArn

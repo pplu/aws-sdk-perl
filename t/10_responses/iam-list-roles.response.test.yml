@@ -1,0 +1,61 @@
+---
+call: ListRoles
+service: IAM
+tests:
+  - expected: 0
+    op: eq
+    path: IsTruncated
+  - expected: arn:aws:iam::123456789012:role/application_abc/component_xyz/S3Access
+    op: eq
+    path: Roles.0.Arn
+  - expected: sts:AssumeRole
+    op: eq
+    path: Roles.0.Policy.Statement.0.Action.0
+  - expected: Allow
+    op: eq
+    path: Roles.0.Policy.Statement.0.Effect
+  - expected: ec2.amazonaws.com
+    op: eq
+    path: Roles.0.Policy.Statement.0.Principal.Service.0
+  - expected: 2008-10-17
+    op: eq
+    path: Roles.0.Policy.Version
+  - expected: 2012-05-09T15:45:35Z
+    op: eq
+    path: Roles.0.CreateDate
+  - expected: /application_abc/component_xyz/
+    op: eq
+    path: Roles.0.Path
+  - expected: AROACVSVTSZYEXAMPLEYK
+    op: eq
+    path: Roles.0.RoleId
+  - expected: S3Access
+    op: eq
+    path: Roles.0.RoleName
+  - expected: arn:aws:iam::123456789012:role/application_abc/component_xyz/SDBAccess
+    op: eq
+    path: Roles.1.Arn
+  - expected: sts:AssumeRole
+    op: eq
+    path: Roles.1.Policy.Statement.0.Action.0
+  - expected: Allow
+    op: eq
+    path: Roles.1.Policy.Statement.0.Effect
+  - expected: ec2.amazonaws.com
+    op: eq
+    path: Roles.1.Policy.Statement.0.Principal.Service.0
+  - expected: 2008-10-17
+    op: eq
+    path: Roles.1.Policy.Version
+  - expected: 2012-05-09T15:45:45Z
+    op: eq
+    path: Roles.1.CreateDate
+  - expected: /application_abc/component_xyz/
+    op: eq
+    path: Roles.1.Path
+  - expected: AROAC2ICXG32EXAMPLEWK
+    op: eq
+    path: Roles.1.RoleId
+  - expected: SDBAccess
+    op: eq
+    path: Roles.1.RoleName

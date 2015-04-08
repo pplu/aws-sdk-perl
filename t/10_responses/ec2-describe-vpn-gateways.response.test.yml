@@ -1,0 +1,22 @@
+---
+call: DescribeVpnGateways
+service: EC2
+tests:
+  - expected: us-east-1a
+    op: eq
+    path: VpnGateways.0.AvailabilityZone
+  - expected: available
+    op: eq
+    path: VpnGateways.0.State
+  - expected: ipsec.1
+    op: eq
+    path: VpnGateways.0.Type
+  - expected: attached
+    op: eq
+    path: VpnGateways.0.VpcAttachments.0.State
+  - expected: vpc-1a2b3c4d
+    op: eq
+    path: VpnGateways.0.VpcAttachments.0.VpcId
+  - expected: vgw-8db04f81
+    op: eq
+    path: VpnGateways.0.VpnGatewayId

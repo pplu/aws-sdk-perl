@@ -1,0 +1,46 @@
+---
+call: DescribeVolumeStatus
+service: EC2
+tests:
+  - expected: us-west-2a
+    op: eq
+    path: VolumeStatuses.0.AvailabilityZone
+  - expected: vol-bc71579a
+    op: eq
+    path: VolumeStatuses.0.VolumeId
+  - expected: io-enabled
+    op: eq
+    path: VolumeStatuses.0.VolumeStatus.Details.0.Name
+  - expected: passed
+    op: eq
+    path: VolumeStatuses.0.VolumeStatus.Details.0.Status
+  - expected: io-performance
+    op: eq
+    path: VolumeStatuses.0.VolumeStatus.Details.1.Name
+  - expected: not-applicable
+    op: eq
+    path: VolumeStatuses.0.VolumeStatus.Details.1.Status
+  - expected: ok
+    op: eq
+    path: VolumeStatuses.0.VolumeStatus.Status
+  - expected: us-west-2b
+    op: eq
+    path: VolumeStatuses.1.AvailabilityZone
+  - expected: vol-a8d2e991
+    op: eq
+    path: VolumeStatuses.1.VolumeId
+  - expected: io-enabled
+    op: eq
+    path: VolumeStatuses.1.VolumeStatus.Details.0.Name
+  - expected: passed
+    op: eq
+    path: VolumeStatuses.1.VolumeStatus.Details.0.Status
+  - expected: io-performance
+    op: eq
+    path: VolumeStatuses.1.VolumeStatus.Details.1.Name
+  - expected: not-applicable
+    op: eq
+    path: VolumeStatuses.1.VolumeStatus.Details.1.Status
+  - expected: ok
+    op: eq
+    path: VolumeStatuses.1.VolumeStatus.Status

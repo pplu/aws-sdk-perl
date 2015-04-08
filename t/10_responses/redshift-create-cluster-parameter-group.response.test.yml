@@ -1,0 +1,13 @@
+---
+call: CreateClusterParameterGroup
+service: RedShift
+tests:
+  - expected: description my parameter group
+    op: eq
+    path: ClusterParameterGroup.Description
+  - expected: redshift-1.0
+    op: eq
+    path: ClusterParameterGroup.ParameterGroupFamily
+  - expected: parametergroup1
+    op: eq
+    path: ClusterParameterGroup.ParameterGroupName

@@ -1,0 +1,34 @@
+---
+call: CreateInstanceExportTask
+service: EC2
+tests:
+  - expected: Example for docs
+    op: eq
+    path: ExportTask.Description
+  - expected: export-i-1234wxyz
+    op: eq
+    path: ExportTask.ExportTaskId
+  - expected: OVA
+    op: eq
+    path: ExportTask.ExportToS3Task.ContainerFormat
+  - expected: VMDK
+    op: eq
+    path: ExportTask.ExportToS3Task.DiskImageFormat
+  - expected: my-bucket-for-exported-vm
+    op: eq
+    path: ExportTask.ExportToS3Task.S3Bucket
+  - expected: my-exports/ export-i-1234wxyz .ova
+    op: eq
+    path: ExportTask.ExportToS3Task.S3Key
+  - expected: i-12345678
+    op: eq
+    path: ExportTask.InstanceExportDetails.InstanceId
+  - expected: VMWare
+    op: eq
+    path: ExportTask.InstanceExportDetails.TargetEnvironment
+  - expected: active
+    op: eq
+    path: ExportTask.State
+  - expected: Running
+    op: eq
+    path: ExportTask.StatusMessage

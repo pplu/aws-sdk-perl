@@ -1,0 +1,16 @@
+---
+call: CreateSpotDatafeedSubscription
+service: EC2
+tests:
+  - expected: myawsbucket
+    op: eq
+    path: SpotDatafeedSubscription.Bucket
+  - expected: 111122223333
+    op: eq
+    path: SpotDatafeedSubscription.OwnerId
+  - expected: spotdata_
+    op: eq
+    path: SpotDatafeedSubscription.Prefix
+  - expected: Active
+    op: eq
+    path: SpotDatafeedSubscription.State

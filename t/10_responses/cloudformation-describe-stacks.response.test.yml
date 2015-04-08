@@ -1,0 +1,4 @@
+---
+call: DescribeStacks
+service: CloudFormation
+tests: []

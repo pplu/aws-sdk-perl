@@ -1,0 +1,196 @@
+---
+call: DescribeSecurityGroups
+service: EC2
+tests:
+  - expected: quicklaunch-0
+    op: eq
+    path: SecurityGroups.0.Description
+  - expected: sg-68d8a958
+    op: eq
+    path: SecurityGroups.0.GroupId
+  - expected: quicklaunch-0
+    op: eq
+    path: SecurityGroups.0.GroupName
+  - expected: 22
+    op: eq
+    path: SecurityGroups.0.IpPermissions.0.FromPort
+  - expected: tcp
+    op: eq
+    path: SecurityGroups.0.IpPermissions.0.IpProtocol
+  - expected: 0.0.0.0/0
+    op: eq
+    path: SecurityGroups.0.IpPermissions.0.IpRanges.0.CidrIp
+  - expected: 22
+    op: eq
+    path: SecurityGroups.0.IpPermissions.0.ToPort
+  - expected: 123456789012
+    op: eq
+    path: SecurityGroups.0.OwnerId
+  - expected: quicklaunch-1
+    op: eq
+    path: SecurityGroups.1.Description
+  - expected: sg-72334242
+    op: eq
+    path: SecurityGroups.1.GroupId
+  - expected: quicklaunch-1
+    op: eq
+    path: SecurityGroups.1.GroupName
+  - expected: 3389
+    op: eq
+    path: SecurityGroups.1.IpPermissions.0.FromPort
+  - expected: tcp
+    op: eq
+    path: SecurityGroups.1.IpPermissions.0.IpProtocol
+  - expected: 0.0.0.0/0
+    op: eq
+    path: SecurityGroups.1.IpPermissions.0.IpRanges.0.CidrIp
+  - expected: 3389
+    op: eq
+    path: SecurityGroups.1.IpPermissions.0.ToPort
+  - expected: 123456789012
+    op: eq
+    path: SecurityGroups.1.OwnerId
+  - expected: For iPython notebook.
+    op: eq
+    path: SecurityGroups.2.Description
+  - expected: sg-4e970e7e
+    op: eq
+    path: SecurityGroups.2.GroupId
+  - expected: notebook
+    op: eq
+    path: SecurityGroups.2.GroupName
+  - expected: 22
+    op: eq
+    path: SecurityGroups.2.IpPermissions.0.FromPort
+  - expected: tcp
+    op: eq
+    path: SecurityGroups.2.IpPermissions.0.IpProtocol
+  - expected: 0.0.0.0/0
+    op: eq
+    path: SecurityGroups.2.IpPermissions.0.IpRanges.0.CidrIp
+  - expected: 22
+    op: eq
+    path: SecurityGroups.2.IpPermissions.0.ToPort
+  - expected: 443
+    op: eq
+    path: SecurityGroups.2.IpPermissions.1.FromPort
+  - expected: tcp
+    op: eq
+    path: SecurityGroups.2.IpPermissions.1.IpProtocol
+  - expected: 0.0.0.0/0
+    op: eq
+    path: SecurityGroups.2.IpPermissions.1.IpRanges.0.CidrIp
+  - expected: 443
+    op: eq
+    path: SecurityGroups.2.IpPermissions.1.ToPort
+  - expected: 8888
+    op: eq
+    path: SecurityGroups.2.IpPermissions.2.FromPort
+  - expected: tcp
+    op: eq
+    path: SecurityGroups.2.IpPermissions.2.IpProtocol
+  - expected: 0.0.0.0/0
+    op: eq
+    path: SecurityGroups.2.IpPermissions.2.IpRanges.0.CidrIp
+  - expected: 8888
+    op: eq
+    path: SecurityGroups.2.IpPermissions.2.ToPort
+  - expected: 123456789012
+    op: eq
+    path: SecurityGroups.2.OwnerId
+  - expected: default group
+    op: eq
+    path: SecurityGroups.3.Description
+  - expected: sg-eab831da
+    op: eq
+    path: SecurityGroups.3.GroupId
+  - expected: default
+    op: eq
+    path: SecurityGroups.3.GroupName
+  - expected: 0
+    op: eq
+    path: SecurityGroups.3.IpPermissions.0.FromPort
+  - expected: tcp
+    op: eq
+    path: SecurityGroups.3.IpPermissions.0.IpProtocol
+  - expected: 65535
+    op: eq
+    path: SecurityGroups.3.IpPermissions.0.ToPort
+  - expected: sg-eab831da
+    op: eq
+    path: SecurityGroups.3.IpPermissions.0.UserIdGroupPairs.0.GroupId
+  - expected: default
+    op: eq
+    path: SecurityGroups.3.IpPermissions.0.UserIdGroupPairs.0.GroupName
+  - expected: 123456789012
+    op: eq
+    path: SecurityGroups.3.IpPermissions.0.UserIdGroupPairs.0.UserId
+  - expected: 0
+    op: eq
+    path: SecurityGroups.3.IpPermissions.1.FromPort
+  - expected: udp
+    op: eq
+    path: SecurityGroups.3.IpPermissions.1.IpProtocol
+  - expected: 65535
+    op: eq
+    path: SecurityGroups.3.IpPermissions.1.ToPort
+  - expected: sg-eab831da
+    op: eq
+    path: SecurityGroups.3.IpPermissions.1.UserIdGroupPairs.0.GroupId
+  - expected: default
+    op: eq
+    path: SecurityGroups.3.IpPermissions.1.UserIdGroupPairs.0.GroupName
+  - expected: 123456789012
+    op: eq
+    path: SecurityGroups.3.IpPermissions.1.UserIdGroupPairs.0.UserId
+  - expected: -1
+    op: eq
+    path: SecurityGroups.3.IpPermissions.2.FromPort
+  - expected: icmp
+    op: eq
+    path: SecurityGroups.3.IpPermissions.2.IpProtocol
+  - expected: -1
+    op: eq
+    path: SecurityGroups.3.IpPermissions.2.ToPort
+  - expected: sg-eab831da
+    op: eq
+    path: SecurityGroups.3.IpPermissions.2.UserIdGroupPairs.0.GroupId
+  - expected: default
+    op: eq
+    path: SecurityGroups.3.IpPermissions.2.UserIdGroupPairs.0.GroupName
+  - expected: 123456789012
+    op: eq
+    path: SecurityGroups.3.IpPermissions.2.UserIdGroupPairs.0.UserId
+  - expected: 123456789012
+    op: eq
+    path: SecurityGroups.3.OwnerId
+  - expected: default VPC security group
+    op: eq
+    path: SecurityGroups.4.Description
+  - expected: sg-97b1aefb
+    op: eq
+    path: SecurityGroups.4.GroupId
+  - expected: default
+    op: eq
+    path: SecurityGroups.4.GroupName
+  - expected: -1
+    op: eq
+    path: SecurityGroups.4.IpPermissions.0.IpProtocol
+  - expected: sg-97b1aefb
+    op: eq
+    path: SecurityGroups.4.IpPermissions.0.UserIdGroupPairs.0.GroupId
+  - expected: 123456789012
+    op: eq
+    path: SecurityGroups.4.IpPermissions.0.UserIdGroupPairs.0.UserId
+  - expected: -1
+    op: eq
+    path: SecurityGroups.4.IpPermissionsEgress.0.IpProtocol
+  - expected: 0.0.0.0/0
+    op: eq
+    path: SecurityGroups.4.IpPermissionsEgress.0.IpRanges.0.CidrIp
+  - expected: 123456789012
+    op: eq
+    path: SecurityGroups.4.OwnerId
+  - expected: vpc-8d2910e4
+    op: eq
+    path: SecurityGroups.4.VpcId

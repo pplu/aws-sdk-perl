@@ -1,0 +1,16 @@
+---
+call: MonitorInstances
+service: EC2
+tests:
+  - expected: i-43a4412a
+    op: eq
+    path: InstanceMonitorings.0.InstanceId
+  - expected: pending
+    op: eq
+    path: InstanceMonitorings.0.Monitoring.State
+  - expected: i-23a3397d
+    op: eq
+    path: InstanceMonitorings.1.InstanceId
+  - expected: pending
+    op: eq
+    path: InstanceMonitorings.1.Monitoring.State

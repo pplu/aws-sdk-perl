@@ -1,0 +1,34 @@
+---
+call: GetQueueAttributes
+service: SQS
+tests:
+  - expected: 0
+    op: eq
+    path: Attributes.ApproximateNumberOfMessages
+  - expected: 0
+    op: eq
+    path: Attributes.ApproximateNumberOfMessagesDelayed
+  - expected: 0
+    op: eq
+    path: Attributes.ApproximateNumberOfMessagesNotVisible
+  - expected: 1351044153
+    op: eq
+    path: Attributes.CreatedTimestamp
+  - expected: 0
+    op: eq
+    path: Attributes.DelaySeconds
+  - expected: 1351044214
+    op: eq
+    path: Attributes.LastModifiedTimestamp
+  - expected: 65536
+    op: eq
+    path: Attributes.MaximumMessageSize
+  - expected: 345600
+    op: eq
+    path: Attributes.MessageRetentionPeriod
+  - expected: arn:aws:sqs:us-east-1:123456789012:test1351044153
+    op: eq
+    path: Attributes.QueueArn
+  - expected: 45
+    op: eq
+    path: Attributes.VisibilityTimeout

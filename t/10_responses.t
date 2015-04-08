@@ -26,9 +26,9 @@ my $dir = 't/10_responses';
 opendir(my $dh, $dir);
 my @files = @ARGV;
 if (not @files) {
-  @files = map { "$dir/$_" } grep { $_ =~ m/\.xml$/ or $_ =~ m/\.json$/ } sort readdir($dh);
+  @files = map { "$dir/$_" } grep { $_ =~ m/\.response$/ } sort readdir($dh);
 } else {
-  @files = grep { $_ =~ m/\.xml$/ or $_ =~ m/\.json$/ } @files;
+  @files = grep { $_ =~ m/\.response$/ } @files;
 }
 
 BAIL_OUT("No test cases to execute") if (not @files);

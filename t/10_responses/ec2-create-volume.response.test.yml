@@ -1,0 +1,25 @@
+---
+call: CreateVolume
+service: EC2
+tests:
+  - expected: us-east-1a
+    op: eq
+    path: AvailabilityZone
+  - expected: YYYY-MM-DDTHH:MM:SS.000Z
+    op: eq
+    path: CreateTime
+  - expected: 80
+    op: eq
+    path: Size
+  - expected: ~
+    op: eq
+    path: SnapshotId
+  - expected: creating
+    op: eq
+    path: State
+  - expected: vol-1a2b3c4d
+    op: eq
+    path: VolumeId
+  - expected: standard
+    op: eq
+    path: VolumeType

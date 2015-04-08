@@ -1,0 +1,22 @@
+---
+call: DescribeClusterSecurityGroups
+service: RedShift
+tests:
+  - expected: default
+    op: eq
+    path: ClusterSecurityGroups.0.ClusterSecurityGroupName
+  - expected: default
+    op: eq
+    path: ClusterSecurityGroups.0.Description
+  - expected: 0.0.0.0/0
+    op: eq
+    path: ClusterSecurityGroups.0.IPRanges.0.CIDRIP
+  - expected: authorized
+    op: eq
+    path: ClusterSecurityGroups.0.IPRanges.0.Status
+  - expected: securitygroup1
+    op: eq
+    path: ClusterSecurityGroups.1.ClusterSecurityGroupName
+  - expected: my security group
+    op: eq
+    path: ClusterSecurityGroups.1.Description

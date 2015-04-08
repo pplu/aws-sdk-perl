@@ -1,0 +1,7 @@
+---
+call: Publish
+service: SNS
+tests:
+  - expected: 94f20ce6-13c5-43a0-9a9e-ca52d816e90b
+    op: eq
+    path: MessageId

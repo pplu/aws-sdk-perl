@@ -1,0 +1,7 @@
+---
+call: ListTopics
+service: SNS
+tests:
+  - expected: arn:aws:sns:us-east-1:123456789012:My-Topic
+    op: eq
+    path: Topics.0.TopicArn

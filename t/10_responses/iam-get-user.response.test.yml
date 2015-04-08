@@ -1,0 +1,13 @@
+---
+call: GetUser
+service: IAM
+tests:
+  - expected: arn:aws:iam::123456789012:root
+    op: eq
+    path: User.Arn
+  - expected: 2011-12-19T23:16:46Z
+    op: eq
+    path: User.CreateDate
+  - expected: 123456789012
+    op: eq
+    path: User.UserId

@@ -1,0 +1,82 @@
+---
+call: DescribeEvents
+service: ElasticBeanstalk
+tests:
+  - expected: SampleApp
+    op: eq
+    path: Events.0.ApplicationName
+  - expected: SampleAppVersion
+    op: eq
+    path: Events.0.EnvironmentName
+  - expected: 2010-11-17T20:25:35.191Z
+    op: eq
+    path: Events.0.EventDate
+  - expected: Successfully completed createEnvironment activity.
+    op: eq
+    path: Events.0.Message
+  - expected: bb01fa74-f287-11df-8a78-9f77047e0d0c
+    op: eq
+    path: Events.0.RequestId
+  - expected: INFO
+    op: eq
+    path: Events.0.Severity
+  - expected: New Version
+    op: eq
+    path: Events.0.VersionLabel
+  - expected: SampleApp
+    op: eq
+    path: Events.1.ApplicationName
+  - expected: SampleAppVersion
+    op: eq
+    path: Events.1.EnvironmentName
+  - expected: 2010-11-17T20:21:30Z
+    op: eq
+    path: Events.1.EventDate
+  - expected: 'Launching a new EC2 instance: i-04a8c569'
+    op: eq
+    path: Events.1.Message
+  - expected: DEBUG
+    op: eq
+    path: Events.1.Severity
+  - expected: New Version
+    op: eq
+    path: Events.1.VersionLabel
+  - expected: SampleApp
+    op: eq
+    path: Events.2.ApplicationName
+  - expected: SampleAppVersion
+    op: eq
+    path: Events.2.EnvironmentName
+  - expected: 2010-11-17T20:20:32.008Z
+    op: eq
+    path: Events.2.EventDate
+  - expected: At least one EC2 instance has entered the InService lifecycle state.
+    op: eq
+    path: Events.2.Message
+  - expected: bb01fa74-f287-11df-8a78-9f77047e0d0c
+    op: eq
+    path: Events.2.RequestId
+  - expected: INFO
+    op: eq
+    path: Events.2.Severity
+  - expected: New Version
+    op: eq
+    path: Events.2.VersionLabel
+  - expected: SampleApp
+    op: eq
+    path: Events.3.ApplicationName
+  - expected: SampleAppVersion
+    op: eq
+    path: Events.3.EnvironmentName
+  - expected: 2010-11-17T20:19:28Z
+    op: eq
+    path: Events.3.EventDate
+  - expected: 'Elastic Load Balancer elasticbeanstalk-SampleAppVersion has failed 0 healthy instances - Environment may not be available.'
+    op: eq
+    path: Events.3.Message
+  - expected: WARN
+    op: eq
+    path: Events.3.Severity
+  - expected: New Version
+    op: eq
+    path: Events.3.VersionLabel

@@ -1,0 +1,4 @@
+---
+call: ListStacks
+service: CloudFormation
+tests: []

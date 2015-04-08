@@ -1,0 +1,13 @@
+---
+call: DescribeClusterVersions
+service: RedShift
+tests:
+  - expected: redshift-1.0
+    op: eq
+    path: ClusterVersions.0.ClusterParameterGroupFamily
+  - expected: 1.0
+    op: eq
+    path: ClusterVersions.0.ClusterVersion
+  - expected: release db engine 1.0.54
+    op: eq
+    path: ClusterVersions.0.Description

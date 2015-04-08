@@ -1,0 +1,142 @@
+---
+call: RunInstances
+service: EC2
+tests:
+  - expected: 0
+    op: eq
+    path: Instances.0.AmiLaunchIndex
+  - expected: i386
+    op: eq
+    path: Instances.0.Architecture
+  - expected: ~
+    op: eq
+    path: Instances.0.ClientToken
+  - expected: xen
+    op: eq
+    path: Instances.0.Hypervisor
+  - expected: ami-31814f58
+    op: eq
+    path: Instances.0.ImageId
+  - expected: i-0ee0356c
+    op: eq
+    path: Instances.0.InstanceId
+  - expected: m1.small
+    op: eq
+    path: Instances.0.InstanceType
+  - expected: aki-805ea7e9
+    op: eq
+    path: Instances.0.KernelId
+  - expected: 2011-12-20T08:29:31.000Z
+    op: eq
+    path: Instances.0.LaunchTime
+  - expected: disabled
+    op: eq
+    path: Instances.0.Monitoring.State
+  - expected: 2011-12-20T08:29:31.000Z
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.Attachment.AttachTime
+  - expected: eni-attach-0326646a
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.Attachment.AttachmentId
+  - expected: 1
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.Attachment.DeleteOnTermination
+  - expected: 0
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.Attachment.DeviceIndex
+  - expected: attaching
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.Attachment.Status
+  - expected: ~
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.Description
+  - expected: sg-050c1369
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.Groups.0.GroupId
+  - expected: default
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.Groups.0.GroupName
+  - expected: eni-c6bb50ae
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.NetworkInterfaceId
+  - expected: 111122223333
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.OwnerId
+  - expected: 10.0.0.142
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.PrivateIpAddress
+  - expected: 1
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.SourceDestCheck
+  - expected: in-use
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.Status
+  - expected: subnet-b2a249da
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.SubnetId
+  - expected: vpc-1ea24976
+    op: eq
+    path: Instances.0.NetworkInterfaces.0.VpcId
+  - expected: us-east-1b
+    op: eq
+    path: Instances.0.Placement.AvailabilityZone
+  - expected: ~
+    op: eq
+    path: Instances.0.Placement.GroupName
+  - expected: default
+    op: eq
+    path: Instances.0.Placement.Tenancy
+  - expected: ~
+    op: eq
+    path: Instances.0.PrivateDnsName
+  - expected: 10.0.0.142
+    op: eq
+    path: Instances.0.PrivateIpAddress
+  - expected: ~
+    op: eq
+    path: Instances.0.PublicDnsName
+  - expected: /dev/sda1
+    op: eq
+    path: Instances.0.RootDeviceName
+  - expected: ebs
+    op: eq
+    path: Instances.0.RootDeviceType
+  - expected: sg-050c1369
+    op: eq
+    path: Instances.0.SecurityGroups.0.GroupId
+  - expected: default
+    op: eq
+    path: Instances.0.SecurityGroups.0.GroupName
+  - expected: 1
+    op: eq
+    path: Instances.0.SourceDestCheck
+  - expected: 0
+    op: eq
+    path: Instances.0.State.Code
+  - expected: pending
+    op: eq
+    path: Instances.0.State.Name
+  - expected: pending
+    op: eq
+    path: Instances.0.StateReason.Code
+  - expected: pending
+    op: eq
+    path: Instances.0.StateReason.Message
+  - expected: ~
+    op: eq
+    path: Instances.0.StateTransitionReason
+  - expected: subnet-b2a249da
+    op: eq
+    path: Instances.0.SubnetId
+  - expected: paravirtual
+    op: eq
+    path: Instances.0.VirtualizationType
+  - expected: vpc-1ea24976
+    op: eq
+    path: Instances.0.VpcId
+  - expected: 111122223333
+    op: eq
+    path: OwnerId
+  - expected: r-157ad274
+    op: eq
+    path: ReservationId

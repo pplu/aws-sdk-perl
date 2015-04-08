@@ -1,0 +1,16 @@
+---
+call: CreateVpnGateway
+service: EC2
+tests:
+  - expected: us-east-1a
+    op: eq
+    path: VpnGateway.AvailabilityZone
+  - expected: pending
+    op: eq
+    path: VpnGateway.State
+  - expected: ipsec.1
+    op: eq
+    path: VpnGateway.Type
+  - expected: vgw-8db04f81
+    op: eq
+    path: VpnGateway.VpnGatewayId

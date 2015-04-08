@@ -1,0 +1,28 @@
+---
+call: CreateSnapshot
+service: EC2
+tests:
+  - expected: Daily Backup
+    op: eq
+    path: Description
+  - expected: 111122223333
+    op: eq
+    path: OwnerId
+  - expected: 60%
+    op: eq
+    path: Progress
+  - expected: snap-1a2b3c4d
+    op: eq
+    path: SnapshotId
+  - expected: YYYY-MM-DDTHH:MM:SS.000Z
+    op: eq
+    path: StartTime
+  - expected: pending
+    op: eq
+    path: State
+  - expected: vol-1a2b3c4d
+    op: eq
+    path: VolumeId
+  - expected: 30
+    op: eq
+    path: VolumeSize

@@ -1,0 +1,4 @@
+---
+call: ModifySnapshotAttribute
+service: EC2
+tests: ''

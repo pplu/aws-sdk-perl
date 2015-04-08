@@ -1,0 +1,100 @@
+---
+call: DescribeReservedNodeOfferings
+service: RedShift
+tests:
+  - expected: 94608000
+    op: eq
+    path: ReservedNodeOfferings.0.Duration
+  - expected: 24000
+    op: ==
+    path: ReservedNodeOfferings.0.FixedPrice
+  - expected: dw.hs1.8xlarge
+    op: eq
+    path: ReservedNodeOfferings.0.NodeType
+  - expected: Heavy Utilization
+    op: eq
+    path: ReservedNodeOfferings.0.OfferingType
+  - expected: 0.912
+    op: eq
+    path: ReservedNodeOfferings.0.RecurringCharges.0.RecurringChargeAmount
+  - expected: Hourly
+    op: eq
+    path: ReservedNodeOfferings.0.RecurringCharges.0.RecurringChargeFrequency
+  - expected: c48ab04c-bc77-4ce4-8ada-b10c15c7b8b3
+    op: eq
+    path: ReservedNodeOfferings.0.ReservedNodeOfferingId
+  - expected: 0
+    op: ==
+    path: ReservedNodeOfferings.0.UsagePrice
+  - expected: 31536000
+    op: eq
+    path: ReservedNodeOfferings.1.Duration
+  - expected: 20000
+    op: ==
+    path: ReservedNodeOfferings.1.FixedPrice
+  - expected: dw.hs1.8xlarge
+    op: eq
+    path: ReservedNodeOfferings.1.NodeType
+  - expected: Heavy Utilization
+    op: eq
+    path: ReservedNodeOfferings.1.OfferingType
+  - expected: 1.72
+    op: eq
+    path: ReservedNodeOfferings.1.RecurringCharges.0.RecurringChargeAmount
+  - expected: Hourly
+    op: eq
+    path: ReservedNodeOfferings.1.RecurringCharges.0.RecurringChargeFrequency
+  - expected: 248e7b75-5f85-40dc-9d11-6f1e6c7cf9c2
+    op: eq
+    path: ReservedNodeOfferings.1.ReservedNodeOfferingId
+  - expected: 0
+    op: ==
+    path: ReservedNodeOfferings.1.UsagePrice
+  - expected: 31536000
+    op: eq
+    path: ReservedNodeOfferings.2.Duration
+  - expected: 2500
+    op: ==
+    path: ReservedNodeOfferings.2.FixedPrice
+  - expected: dw.hs1.xlarge
+    op: eq
+    path: ReservedNodeOfferings.2.NodeType
+  - expected: Heavy Utilization
+    op: eq
+    path: ReservedNodeOfferings.2.OfferingType
+  - expected: 0.215
+    op: eq
+    path: ReservedNodeOfferings.2.RecurringCharges.0.RecurringChargeAmount
+  - expected: Hourly
+    op: eq
+    path: ReservedNodeOfferings.2.RecurringCharges.0.RecurringChargeFrequency
+  - expected: d586503b-7006-4cf5-888a-cf8f694e07bb
+    op: eq
+    path: ReservedNodeOfferings.2.ReservedNodeOfferingId
+  - expected: 0
+    op: ==
+    path: ReservedNodeOfferings.2.UsagePrice
+  - expected: 94608000
+    op: eq
+    path: ReservedNodeOfferings.3.Duration
+  - expected: 3000
+    op: ==
+    path: ReservedNodeOfferings.3.FixedPrice
+  - expected: dw.hs1.xlarge
+    op: eq
+    path: ReservedNodeOfferings.3.NodeType
+  - expected: Heavy Utilization
+    op: eq
+    path: ReservedNodeOfferings.3.OfferingType
+  - expected: 0.114
+    op: eq
+    path: ReservedNodeOfferings.3.RecurringCharges.0.RecurringChargeAmount
+  - expected: Hourly
+    op: eq
+    path: ReservedNodeOfferings.3.RecurringCharges.0.RecurringChargeFrequency
+  - expected: 4b2293b4-64a6-4e4a-9042-cf617efa3b76
+    op: eq
+    path: ReservedNodeOfferings.3.ReservedNodeOfferingId
+  - expected: 0
+    op: ==
+    path: ReservedNodeOfferings.3.UsagePrice

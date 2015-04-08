@@ -1,0 +1,43 @@
+---
+call: DeleteClusterSnapshot
+service: RedShift
+tests:
+  - expected: us-east-1a
+    op: eq
+    path: Snapshot.AvailabilityZone
+  - expected: 2012-12-06T23:09:01.475Z
+    op: eq
+    path: Snapshot.ClusterCreateTime
+  - expected: examplecluster
+    op: eq
+    path: Snapshot.ClusterIdentifier
+  - expected: 1.0
+    op: eq
+    path: Snapshot.ClusterVersion
+  - expected: mydb
+    op: eq
+    path: Snapshot.DBName
+  - expected: masteruser
+    op: eq
+    path: Snapshot.MasterUsername
+  - expected: dw.hs1.xlarge
+    op: eq
+    path: Snapshot.NodeType
+  - expected: 3
+    op: eq
+    path: Snapshot.NumberOfNodes
+  - expected: 5439
+    op: eq
+    path: Snapshot.Port
+  - expected: 2012-12-07T23:31:02.372Z
+    op: eq
+    path: Snapshot.SnapshotCreateTime
+  - expected: snapshot-1234
+    op: eq
+    path: Snapshot.SnapshotIdentifier
+  - expected: manual
+    op: eq
+    path: Snapshot.SnapshotType
+  - expected: deleted
+    op: eq
+    path: Snapshot.Status

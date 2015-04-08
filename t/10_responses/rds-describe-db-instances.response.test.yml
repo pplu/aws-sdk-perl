@@ -1,0 +1,4 @@
+---
+call: DescribeDBInstances
+service: RDS
+tests: []

@@ -1,0 +1,7 @@
+---
+call: ListIdentities
+service: SES
+tests:
+  - expected: 'test@example.com'
+    op: eq
+    path: 'Identities.0'

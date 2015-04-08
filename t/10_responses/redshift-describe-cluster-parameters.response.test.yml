@@ -1,0 +1,136 @@
+---
+call: DescribeClusterParameters
+service: RedShift
+tests:
+  - expected: string
+    op: eq
+    path: Parameters.0.DataType
+  - expected: Sets the display format for date and time values.
+    op: eq
+    path: Parameters.0.Description
+  - expected: 1
+    op: eq
+    path: Parameters.0.IsModifiable
+  - expected: datestyle
+    op: eq
+    path: Parameters.0.ParameterName
+  - expected: 'ISO, MDY'
+    op: eq
+    path: Parameters.0.ParameterValue
+  - expected: engine-default
+    op: eq
+    path: Parameters.0.Source
+  - expected: -15-2
+    op: eq
+    path: Parameters.1.AllowedValues
+  - expected: integer
+    op: eq
+    path: Parameters.1.DataType
+  - expected: Sets the number of digits displayed for floating-point values
+    op: eq
+    path: Parameters.1.Description
+  - expected: 1
+    op: eq
+    path: Parameters.1.IsModifiable
+  - expected: extra_float_digits
+    op: eq
+    path: Parameters.1.ParameterName
+  - expected: 0
+    op: eq
+    path: Parameters.1.ParameterValue
+  - expected: engine-default
+    op: eq
+    path: Parameters.1.Source
+  - expected: string
+    op: eq
+    path: Parameters.2.DataType
+  - expected: This parameter applies a user-defined label to a group of queries that are run during the same session..
+    op: eq
+    path: Parameters.2.Description
+  - expected: 1
+    op: eq
+    path: Parameters.2.IsModifiable
+  - expected: query_group
+    op: eq
+    path: Parameters.2.ParameterName
+  - expected: default
+    op: eq
+    path: Parameters.2.ParameterValue
+  - expected: engine-default
+    op: eq
+    path: Parameters.2.Source
+  - expected: 'true,false'
+    op: eq
+    path: Parameters.3.AllowedValues
+  - expected: boolean
+    op: eq
+    path: Parameters.3.DataType
+  - expected: require ssl for all databaseconnections
+    op: eq
+    path: Parameters.3.Description
+  - expected: 1
+    op: eq
+    path: Parameters.3.IsModifiable
+  - expected: require_ssl
+    op: eq
+    path: Parameters.3.ParameterName
+  - expected: false
+    op: eq
+    path: Parameters.3.ParameterValue
+  - expected: engine-default
+    op: eq
+    path: Parameters.3.Source
+  - expected: string
+    op: eq
+    path: Parameters.4.DataType
+  - expected: Sets the schema search order for names that are not schema-qualified.
+    op: eq
+    path: Parameters.4.Description
+  - expected: 1
+    op: eq
+    path: Parameters.4.IsModifiable
+  - expected: search_path
+    op: eq
+    path: Parameters.4.ParameterName
+  - expected: '$user, public'
+    op: eq
+    path: Parameters.4.ParameterValue
+  - expected: engine-default
+    op: eq
+    path: Parameters.4.Source
+  - expected: integer
+    op: eq
+    path: Parameters.5.DataType
+  - expected: Aborts any statement that takes over the specified number of milliseconds.
+    op: eq
+    path: Parameters.5.Description
+  - expected: 1
+    op: eq
+    path: Parameters.5.IsModifiable
+  - expected: statement_timeout
+    op: eq
+    path: Parameters.5.ParameterName
+  - expected: 0
+    op: eq
+    path: Parameters.5.ParameterValue
+  - expected: engine-default
+    op: eq
+    path: Parameters.5.Source
+  - expected: string
+    op: eq
+    path: Parameters.6.DataType
+  - expected: wlm json configuration
+    op: eq
+    path: Parameters.6.Description
+  - expected: 1
+    op: eq
+    path: Parameters.6.IsModifiable
+  - expected: wlm_json_configuration
+    op: eq
+    path: Parameters.6.ParameterName
+  - expected: '[{"query_concurrency":5}]'
+    op: eq
+    path: Parameters.6.ParameterValue
+  - expected: engine-default
+    op: eq
+    path: Parameters.6.Source

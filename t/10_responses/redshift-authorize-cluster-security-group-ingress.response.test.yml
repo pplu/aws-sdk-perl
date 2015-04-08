@@ -1,0 +1,16 @@
+---
+call: AuthorizeClusterSecurityGroupIngress
+service: RedShift
+tests:
+  - expected: securitygroup1
+    op: eq
+    path: ClusterSecurityGroup.ClusterSecurityGroupName
+  - expected: my security group
+    op: eq
+    path: ClusterSecurityGroup.Description
+  - expected: 192.168.40.3/32
+    op: eq
+    path: ClusterSecurityGroup.IPRanges.0.CIDRIP
+  - expected: authorized
+    op: eq
+    path: ClusterSecurityGroup.IPRanges.0.Status

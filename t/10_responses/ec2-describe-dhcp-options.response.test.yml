@@ -1,0 +1,19 @@
+---
+call: DescribeDhcpOptions
+service: EC2
+tests:
+  - expected: domain-name
+    op: eq
+    path: DhcpOptions.0.DhcpConfigurations.0.Key
+  - expected: us-west-2.compute.internal
+    op: eq
+    path: DhcpOptions.0.DhcpConfigurations.0.Values.0.Value
+  - expected: domain-name-servers
+    op: eq
+    path: DhcpOptions.0.DhcpConfigurations.1.Key
+  - expected: AmazonProvidedDNS
+    op: eq
+    path: DhcpOptions.0.DhcpConfigurations.1.Values.0.Value
+  - expected: dopt-eb291082
+    op: eq
+    path: DhcpOptions.0.DhcpOptionsId

@@ -1,0 +1,4 @@
+---
+call: DescribeLoadBalancers
+service: ELB
+tests: []

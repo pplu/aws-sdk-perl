@@ -1,0 +1,7 @@
+---
+call: CopySnapshot
+service: EC2
+tests:
+  - expected: snap-2a2b3c4d
+    op: eq
+    path: SnapshotId

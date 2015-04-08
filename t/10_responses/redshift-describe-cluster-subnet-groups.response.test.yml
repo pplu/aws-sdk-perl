@@ -1,0 +1,34 @@
+---
+call: DescribeClusterSubnetGroups
+service: RedShift
+tests:
+  - expected: my-subnet-group
+    op: eq
+    path: ClusterSubnetGroups.0.ClusterSubnetGroupName
+  - expected: my subnet group
+    op: eq
+    path: ClusterSubnetGroups.0.Description
+  - expected: Complete
+    op: eq
+    path: ClusterSubnetGroups.0.SubnetGroupStatus
+  - expected: us-east-1a
+    op: eq
+    path: ClusterSubnetGroups.0.Subnets.0.SubnetAvailabilityZone.Name
+  - expected: subnet-71c5091c
+    op: eq
+    path: ClusterSubnetGroups.0.Subnets.0.SubnetIdentifier
+  - expected: Active
+    op: eq
+    path: ClusterSubnetGroups.0.Subnets.0.SubnetStatus
+  - expected: us-east-1a
+    op: eq
+    path: ClusterSubnetGroups.0.Subnets.1.SubnetAvailabilityZone.Name
+  - expected: subnet-78de1215
+    op: eq
+    path: ClusterSubnetGroups.0.Subnets.1.SubnetIdentifier
+  - expected: Active
+    op: eq
+    path: ClusterSubnetGroups.0.Subnets.1.SubnetStatus
+  - expected: vpc-5d917a30
+    op: eq
+    path: ClusterSubnetGroups.0.VpcId

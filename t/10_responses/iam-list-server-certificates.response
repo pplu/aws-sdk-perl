@@ -1,0 +1,18 @@
+<ListServerCertificatesResponse xmlns="https://iam.amazonaws.com/doc/2010-05-08/">
+  <ListServerCertificatesResult>
+    <IsTruncated>false</IsTruncated>
+    <ServerCertificateMetadataList>
+      <member>
+        <Expiration>2016-03-15T10:58:24Z</Expiration>
+        <ServerCertificateName>wildcard1</ServerCertificateName>
+        <Path>/production/</Path>
+        <Arn>arn:aws:iam::333333333333:server-certificate/production/wildcard1</Arn>
+        <UploadDate>2014-02-18T16:24:16Z</UploadDate>
+        <ServerCertificateId>AAAAAAAAAAAAAAAAAAAAA</ServerCertificateId>
+      </member>
+    </ServerCertificateMetadataList>
+  </ListServerCertificatesResult>
+  <ResponseMetadata>
+    <RequestId>7923397d-347f-11e4-b4f8-37c6eabd2d37</RequestId>
+  </ResponseMetadata>
+</ListServerCertificatesResponse>

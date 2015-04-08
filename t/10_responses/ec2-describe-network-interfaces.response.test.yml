@@ -1,0 +1,154 @@
+---
+call: DescribeNetworkInterfaces
+service: EC2
+tests:
+  - expected: 2012-07-01T21:45:27.000Z
+    op: eq
+    path: NetworkInterfaces.0.Attachment.AttachTime
+  - expected: eni-attach-6537fc0c
+    op: eq
+    path: NetworkInterfaces.0.Attachment.AttachmentId
+  - expected: 1
+    op: eq
+    path: NetworkInterfaces.0.Attachment.DeleteOnTermination
+  - expected: 0
+    op: eq
+    path: NetworkInterfaces.0.Attachment.DeviceIndex
+  - expected: i-22197876
+    op: eq
+    path: NetworkInterfaces.0.Attachment.InstanceId
+  - expected: 123456789012
+    op: eq
+    path: NetworkInterfaces.0.Attachment.InstanceOwnerId
+  - expected: attached
+    op: eq
+    path: NetworkInterfaces.0.Attachment.Status
+  - expected: ap-southeast-1b
+    op: eq
+    path: NetworkInterfaces.0.AvailabilityZone
+  - expected: ~
+    op: eq
+    path: NetworkInterfaces.0.Description
+  - expected: sg-3f4b5653
+    op: eq
+    path: NetworkInterfaces.0.Groups.0.GroupId
+  - expected: default
+    op: eq
+    path: NetworkInterfaces.0.Groups.0.GroupName
+  - expected: 02:81:60:cb:27:37
+    op: eq
+    path: NetworkInterfaces.0.MacAddress
+  - expected: eni-0f62d866
+    op: eq
+    path: NetworkInterfaces.0.NetworkInterfaceId
+  - expected: 123456789012
+    op: eq
+    path: NetworkInterfaces.0.OwnerId
+  - expected: 10.0.0.146
+    op: eq
+    path: NetworkInterfaces.0.PrivateIpAddress
+  - expected: 1
+    op: eq
+    path: NetworkInterfaces.0.PrivateIpAddresses.0.Primary
+  - expected: 10.0.0.146
+    op: eq
+    path: NetworkInterfaces.0.PrivateIpAddresses.0.PrivateIpAddress
+  - expected: 0
+    op: eq
+    path: NetworkInterfaces.0.PrivateIpAddresses.1.Primary
+  - expected: 10.0.0.148
+    op: eq
+    path: NetworkInterfaces.0.PrivateIpAddresses.1.PrivateIpAddress
+  - expected: 0
+    op: eq
+    path: NetworkInterfaces.0.PrivateIpAddresses.2.Primary
+  - expected: 10.0.0.150
+    op: eq
+    path: NetworkInterfaces.0.PrivateIpAddresses.2.PrivateIpAddress
+  - expected: 0
+    op: eq
+    path: NetworkInterfaces.0.RequesterManaged
+  - expected: 1
+    op: eq
+    path: NetworkInterfaces.0.SourceDestCheck
+  - expected: in-use
+    op: eq
+    path: NetworkInterfaces.0.Status
+  - expected: subnet-c53c87ac
+    op: eq
+    path: NetworkInterfaces.0.SubnetId
+  - expected: vpc-cc3c87a5
+    op: eq
+    path: NetworkInterfaces.0.VpcId
+  - expected: 2012-06-27T20:08:44.000Z
+    op: eq
+    path: NetworkInterfaces.1.Attachment.AttachTime
+  - expected: eni-attach-a99c57c0
+    op: eq
+    path: NetworkInterfaces.1.Attachment.AttachmentId
+  - expected: 1
+    op: eq
+    path: NetworkInterfaces.1.Attachment.DeleteOnTermination
+  - expected: 0
+    op: eq
+    path: NetworkInterfaces.1.Attachment.DeviceIndex
+  - expected: i-886401dc
+    op: eq
+    path: NetworkInterfaces.1.Attachment.InstanceId
+  - expected: 123456789012
+    op: eq
+    path: NetworkInterfaces.1.Attachment.InstanceOwnerId
+  - expected: attached
+    op: eq
+    path: NetworkInterfaces.1.Attachment.Status
+  - expected: ap-southeast-1b
+    op: eq
+    path: NetworkInterfaces.1.AvailabilityZone
+  - expected: Primary network interface
+    op: eq
+    path: NetworkInterfaces.1.Description
+  - expected: sg-a2a0b2ce
+    op: eq
+    path: NetworkInterfaces.1.Groups.0.GroupId
+  - expected: quick-start-1
+    op: eq
+    path: NetworkInterfaces.1.Groups.0.GroupName
+  - expected: 02:78:d7:00:8a:1e
+    op: eq
+    path: NetworkInterfaces.1.MacAddress
+  - expected: eni-a66ed5cf
+    op: eq
+    path: NetworkInterfaces.1.NetworkInterfaceId
+  - expected: 123456789012
+    op: eq
+    path: NetworkInterfaces.1.OwnerId
+  - expected: 10.0.1.233
+    op: eq
+    path: NetworkInterfaces.1.PrivateIpAddress
+  - expected: 1
+    op: eq
+    path: NetworkInterfaces.1.PrivateIpAddresses.0.Primary
+  - expected: 10.0.1.233
+    op: eq
+    path: NetworkInterfaces.1.PrivateIpAddresses.0.PrivateIpAddress
+  - expected: 0
+    op: eq
+    path: NetworkInterfaces.1.PrivateIpAddresses.1.Primary
+  - expected: 10.0.1.20
+    op: eq
+    path: NetworkInterfaces.1.PrivateIpAddresses.1.PrivateIpAddress
+  - expected: 0
+    op: eq
+    path: NetworkInterfaces.1.RequesterManaged
+  - expected: 1
+    op: eq
+    path: NetworkInterfaces.1.SourceDestCheck
+  - expected: in-use
+    op: eq
+    path: NetworkInterfaces.1.Status
+  - expected: subnet-cd8a35a4
+    op: eq
+    path: NetworkInterfaces.1.SubnetId
+  - expected: vpc-f28a359b
+    op: eq
+    path: NetworkInterfaces.1.VpcId

@@ -1,0 +1,109 @@
+---
+call: CancelReservedInstancesListing
+service: EC2
+tests:
+  - expected: XqJIt1342112125076
+    op: eq
+    path: ReservedInstancesListings.0.ClientToken
+  - expected: 2012-07-12T16:55:28.000Z
+    op: eq
+    path: ReservedInstancesListings.0.CreateDate
+  - expected: 0
+    op: eq
+    path: ReservedInstancesListings.0.InstanceCounts.0.InstanceCount
+  - expected: Available
+    op: eq
+    path: ReservedInstancesListings.0.InstanceCounts.0.State
+  - expected: 0
+    op: eq
+    path: ReservedInstancesListings.0.InstanceCounts.1.InstanceCount
+  - expected: Sold
+    op: eq
+    path: ReservedInstancesListings.0.InstanceCounts.1.State
+  - expected: 1
+    op: eq
+    path: ReservedInstancesListings.0.InstanceCounts.2.InstanceCount
+  - expected: Cancelled
+    op: eq
+    path: ReservedInstancesListings.0.InstanceCounts.2.State
+  - expected: 0
+    op: eq
+    path: ReservedInstancesListings.0.InstanceCounts.3.InstanceCount
+  - expected: Pending
+    op: eq
+    path: ReservedInstancesListings.0.InstanceCounts.3.State
+  - expected: 0
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.0.Active
+  - expected: USD
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.0.CurrencyCode
+  - expected: 166.64
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.0.Price
+  - expected: 5
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.0.Term
+  - expected: 0
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.1.Active
+  - expected: USD
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.1.CurrencyCode
+  - expected: 133.32
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.1.Price
+  - expected: 4
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.1.Term
+  - expected: 0
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.2.Active
+  - expected: USD
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.2.CurrencyCode
+  - expected: 99.99
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.2.Price
+  - expected: 3
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.2.Term
+  - expected: 0
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.3.Active
+  - expected: USD
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.3.CurrencyCode
+  - expected: 66.66
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.3.Price
+  - expected: 2
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.3.Term
+  - expected: 0
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.4.Active
+  - expected: USD
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.4.CurrencyCode
+  - expected: 33.33
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.4.Price
+  - expected: 1
+    op: eq
+    path: ReservedInstancesListings.0.PriceSchedules.4.Term
+  - expected: af9f760e-9b3f-417a-ad5e-93f0cexample
+    op: eq
+    path: ReservedInstancesListings.0.ReservedInstancesId
+  - expected: 3ebe97b5-f273-43b6-a204-7a18cexample
+    op: eq
+    path: ReservedInstancesListings.0.ReservedInstancesListingId
+  - expected: cancelled
+    op: eq
+    path: ReservedInstancesListings.0.Status
+  - expected: CANCELLED
+    op: eq
+    path: ReservedInstancesListings.0.StatusMessage
+  - expected: 2012-07-12T16:55:28.000Z
+    op: eq
+    path: ReservedInstancesListings.0.UpdateDate

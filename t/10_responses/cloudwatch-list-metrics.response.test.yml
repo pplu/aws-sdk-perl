@@ -1,0 +1,976 @@
+---
+call: ListMetrics
+service: CloudWatch
+tests:
+  - expected: VolumeId
+    op: eq
+    path: Metrics.0.Dimensions.0.Name
+  - expected: vol-267b761f
+    op: eq
+    path: Metrics.0.Dimensions.0.Value
+  - expected: VolumeIdleTime
+    op: eq
+    path: Metrics.0.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.0.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.1.Dimensions.0.Name
+  - expected: vol-04c7c53d
+    op: eq
+    path: Metrics.1.Dimensions.0.Value
+  - expected: VolumeReadBytes
+    op: eq
+    path: Metrics.1.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.1.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.10.Dimensions.0.Name
+  - expected: i-70d08042
+    op: eq
+    path: Metrics.10.Dimensions.0.Value
+  - expected: StatusCheckFailed_Instance
+    op: eq
+    path: Metrics.10.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.10.Namespace
+  - expected: QueueName
+    op: eq
+    path: Metrics.11.Dimensions.0.Name
+  - expected: foobar
+    op: eq
+    path: Metrics.11.Dimensions.0.Value
+  - expected: ApproximateNumberOfMessagesDelayed
+    op: eq
+    path: Metrics.11.MetricName
+  - expected: AWS/SQS
+    op: eq
+    path: Metrics.11.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.12.Dimensions.0.Name
+  - expected: vol-04c7c53d
+    op: eq
+    path: Metrics.12.Dimensions.0.Value
+  - expected: VolumeReadOps
+    op: eq
+    path: Metrics.12.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.12.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.13.Dimensions.0.Name
+  - expected: i-d63c6ce4
+    op: eq
+    path: Metrics.13.Dimensions.0.Value
+  - expected: CPUUtilization
+    op: eq
+    path: Metrics.13.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.13.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.14.Dimensions.0.Name
+  - expected: vol-267b761f
+    op: eq
+    path: Metrics.14.Dimensions.0.Value
+  - expected: VolumeTotalWriteTime
+    op: eq
+    path: Metrics.14.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.14.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.15.Dimensions.0.Name
+  - expected: vol-a8d2e991
+    op: eq
+    path: Metrics.15.Dimensions.0.Value
+  - expected: VolumeWriteOps
+    op: eq
+    path: Metrics.15.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.15.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.16.Dimensions.0.Name
+  - expected: i-78f1b94a
+    op: eq
+    path: Metrics.16.Dimensions.0.Value
+  - expected: CPUUtilization
+    op: eq
+    path: Metrics.16.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.16.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.17.Dimensions.0.Name
+  - expected: vol-267b761f
+    op: eq
+    path: Metrics.17.Dimensions.0.Value
+  - expected: VolumeQueueLength
+    op: eq
+    path: Metrics.17.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.17.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.18.Dimensions.0.Name
+  - expected: i-20277712
+    op: eq
+    path: Metrics.18.Dimensions.0.Value
+  - expected: DiskWriteBytes
+    op: eq
+    path: Metrics.18.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.18.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.19.Dimensions.0.Name
+  - expected: vol-267b761f
+    op: eq
+    path: Metrics.19.Dimensions.0.Value
+  - expected: VolumeTotalReadTime
+    op: eq
+    path: Metrics.19.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.19.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.2.Dimensions.0.Name
+  - expected: i-d63c6ce4
+    op: eq
+    path: Metrics.2.Dimensions.0.Value
+  - expected: DiskReadBytes
+    op: eq
+    path: Metrics.2.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.2.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.20.Dimensions.0.Name
+  - expected: vol-04c7c53d
+    op: eq
+    path: Metrics.20.Dimensions.0.Value
+  - expected: VolumeWriteOps
+    op: eq
+    path: Metrics.20.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.20.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.21.Dimensions.0.Name
+  - expected: i-70d08042
+    op: eq
+    path: Metrics.21.Dimensions.0.Value
+  - expected: CPUUtilization
+    op: eq
+    path: Metrics.21.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.21.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.22.Dimensions.0.Name
+  - expected: i-20277712
+    op: eq
+    path: Metrics.22.Dimensions.0.Value
+  - expected: StatusCheckFailed_Instance
+    op: eq
+    path: Metrics.22.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.22.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.23.Dimensions.0.Name
+  - expected: i-20277712
+    op: eq
+    path: Metrics.23.Dimensions.0.Value
+  - expected: CPUUtilization
+    op: eq
+    path: Metrics.23.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.23.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.24.Dimensions.0.Name
+  - expected: i-20277712
+    op: eq
+    path: Metrics.24.Dimensions.0.Value
+  - expected: DiskReadBytes
+    op: eq
+    path: Metrics.24.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.24.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.25.Dimensions.0.Name
+  - expected: vol-04c7c53d
+    op: eq
+    path: Metrics.25.Dimensions.0.Value
+  - expected: VolumeIdleTime
+    op: eq
+    path: Metrics.25.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.25.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.26.Dimensions.0.Name
+  - expected: vol-203b3919
+    op: eq
+    path: Metrics.26.Dimensions.0.Value
+  - expected: VolumeQueueLength
+    op: eq
+    path: Metrics.26.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.26.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.27.Dimensions.0.Name
+  - expected: i-d63c6ce4
+    op: eq
+    path: Metrics.27.Dimensions.0.Value
+  - expected: DiskReadOps
+    op: eq
+    path: Metrics.27.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.27.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.28.Dimensions.0.Name
+  - expected: vol-a8d2e991
+    op: eq
+    path: Metrics.28.Dimensions.0.Value
+  - expected: VolumeIdleTime
+    op: eq
+    path: Metrics.28.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.28.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.29.Dimensions.0.Name
+  - expected: vol-267b761f
+    op: eq
+    path: Metrics.29.Dimensions.0.Value
+  - expected: VolumeWriteBytes
+    op: eq
+    path: Metrics.29.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.29.Namespace
+  - expected: QueueName
+    op: eq
+    path: Metrics.3.Dimensions.0.Name
+  - expected: foobar
+    op: eq
+    path: Metrics.3.Dimensions.0.Value
+  - expected: NumberOfEmptyReceives
+    op: eq
+    path: Metrics.3.MetricName
+  - expected: AWS/SQS
+    op: eq
+    path: Metrics.3.Namespace
+  - expected: QueueName
+    op: eq
+    path: Metrics.30.Dimensions.0.Name
+  - expected: foobar
+    op: eq
+    path: Metrics.30.Dimensions.0.Value
+  - expected: ApproximateNumberOfMessagesVisible
+    op: eq
+    path: Metrics.30.MetricName
+  - expected: AWS/SQS
+    op: eq
+    path: Metrics.30.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.31.Dimensions.0.Name
+  - expected: i-70d08042
+    op: eq
+    path: Metrics.31.Dimensions.0.Value
+  - expected: DiskReadBytes
+    op: eq
+    path: Metrics.31.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.31.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.32.Dimensions.0.Name
+  - expected: i-78f1b94a
+    op: eq
+    path: Metrics.32.Dimensions.0.Value
+  - expected: StatusCheckFailed_Instance
+    op: eq
+    path: Metrics.32.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.32.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.33.Dimensions.0.Name
+  - expected: vol-267b761f
+    op: eq
+    path: Metrics.33.Dimensions.0.Value
+  - expected: VolumeReadOps
+    op: eq
+    path: Metrics.33.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.33.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.34.Dimensions.0.Name
+  - expected: i-78f1b94a
+    op: eq
+    path: Metrics.34.Dimensions.0.Value
+  - expected: DiskReadOps
+    op: eq
+    path: Metrics.34.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.34.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.35.Dimensions.0.Name
+  - expected: vol-a8d2e991
+    op: eq
+    path: Metrics.35.Dimensions.0.Value
+  - expected: VolumeTotalWriteTime
+    op: eq
+    path: Metrics.35.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.35.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.36.Dimensions.0.Name
+  - expected: i-d63c6ce4
+    op: eq
+    path: Metrics.36.Dimensions.0.Value
+  - expected: StatusCheckFailed_System
+    op: eq
+    path: Metrics.36.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.36.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.37.Dimensions.0.Name
+  - expected: i-70d08042
+    op: eq
+    path: Metrics.37.Dimensions.0.Value
+  - expected: NetworkOut
+    op: eq
+    path: Metrics.37.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.37.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.38.Dimensions.0.Name
+  - expected: i-d63c6ce4
+    op: eq
+    path: Metrics.38.Dimensions.0.Value
+  - expected: StatusCheckFailed
+    op: eq
+    path: Metrics.38.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.38.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.39.Dimensions.0.Name
+  - expected: vol-a8d2e991
+    op: eq
+    path: Metrics.39.Dimensions.0.Value
+  - expected: VolumeReadOps
+    op: eq
+    path: Metrics.39.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.39.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.4.Dimensions.0.Name
+  - expected: i-78f1b94a
+    op: eq
+    path: Metrics.4.Dimensions.0.Value
+  - expected: NetworkOut
+    op: eq
+    path: Metrics.4.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.4.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.40.Dimensions.0.Name
+  - expected: vol-203b3919
+    op: eq
+    path: Metrics.40.Dimensions.0.Value
+  - expected: VolumeTotalWriteTime
+    op: eq
+    path: Metrics.40.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.40.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.41.Dimensions.0.Name
+  - expected: vol-203b3919
+    op: eq
+    path: Metrics.41.Dimensions.0.Value
+  - expected: VolumeReadBytes
+    op: eq
+    path: Metrics.41.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.41.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.42.Dimensions.0.Name
+  - expected: i-d63c6ce4
+    op: eq
+    path: Metrics.42.Dimensions.0.Value
+  - expected: DiskWriteOps
+    op: eq
+    path: Metrics.42.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.42.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.43.Dimensions.0.Name
+  - expected: i-78f1b94a
+    op: eq
+    path: Metrics.43.Dimensions.0.Value
+  - expected: DiskWriteOps
+    op: eq
+    path: Metrics.43.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.43.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.44.Dimensions.0.Name
+  - expected: vol-a8d2e991
+    op: eq
+    path: Metrics.44.Dimensions.0.Value
+  - expected: VolumeQueueLength
+    op: eq
+    path: Metrics.44.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.44.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.45.Dimensions.0.Name
+  - expected: vol-203b3919
+    op: eq
+    path: Metrics.45.Dimensions.0.Value
+  - expected: VolumeIdleTime
+    op: eq
+    path: Metrics.45.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.45.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.46.Dimensions.0.Name
+  - expected: i-78f1b94a
+    op: eq
+    path: Metrics.46.Dimensions.0.Value
+  - expected: StatusCheckFailed
+    op: eq
+    path: Metrics.46.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.46.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.47.Dimensions.0.Name
+  - expected: i-70d08042
+    op: eq
+    path: Metrics.47.Dimensions.0.Value
+  - expected: StatusCheckFailed
+    op: eq
+    path: Metrics.47.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.47.Namespace
+  - expected: QueueName
+    op: eq
+    path: Metrics.48.Dimensions.0.Name
+  - expected: foobar
+    op: eq
+    path: Metrics.48.Dimensions.0.Value
+  - expected: NumberOfMessagesSent
+    op: eq
+    path: Metrics.48.MetricName
+  - expected: AWS/SQS
+    op: eq
+    path: Metrics.48.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.49.Dimensions.0.Name
+  - expected: vol-04c7c53d
+    op: eq
+    path: Metrics.49.Dimensions.0.Value
+  - expected: VolumeQueueLength
+    op: eq
+    path: Metrics.49.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.49.Namespace
+  - expected: QueueName
+    op: eq
+    path: Metrics.5.Dimensions.0.Name
+  - expected: foobar
+    op: eq
+    path: Metrics.5.Dimensions.0.Value
+  - expected: ApproximateNumberOfMessagesNotVisible
+    op: eq
+    path: Metrics.5.MetricName
+  - expected: AWS/SQS
+    op: eq
+    path: Metrics.5.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.50.Dimensions.0.Name
+  - expected: vol-267b761f
+    op: eq
+    path: Metrics.50.Dimensions.0.Value
+  - expected: VolumeReadBytes
+    op: eq
+    path: Metrics.50.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.50.Namespace
+  - expected: TableName
+    op: eq
+    path: Metrics.51.Dimensions.0.Name
+  - expected: fromcli
+    op: eq
+    path: Metrics.51.Dimensions.0.Value
+  - expected: ProvisionedReadCapacityUnits
+    op: eq
+    path: Metrics.51.MetricName
+  - expected: AWS/DynamoDB
+    op: eq
+    path: Metrics.51.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.52.Dimensions.0.Name
+  - expected: i-70d08042
+    op: eq
+    path: Metrics.52.Dimensions.0.Value
+  - expected: StatusCheckFailed_System
+    op: eq
+    path: Metrics.52.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.52.Namespace
+  - expected: QueueName
+    op: eq
+    path: Metrics.53.Dimensions.0.Name
+  - expected: foobar
+    op: eq
+    path: Metrics.53.Dimensions.0.Value
+  - expected: NumberOfMessagesDeleted
+    op: eq
+    path: Metrics.53.MetricName
+  - expected: AWS/SQS
+    op: eq
+    path: Metrics.53.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.54.Dimensions.0.Name
+  - expected: vol-a8d2e991
+    op: eq
+    path: Metrics.54.Dimensions.0.Value
+  - expected: VolumeReadBytes
+    op: eq
+    path: Metrics.54.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.54.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.55.Dimensions.0.Name
+  - expected: i-20277712
+    op: eq
+    path: Metrics.55.Dimensions.0.Value
+  - expected: DiskWriteOps
+    op: eq
+    path: Metrics.55.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.55.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.56.Dimensions.0.Name
+  - expected: i-20277712
+    op: eq
+    path: Metrics.56.Dimensions.0.Value
+  - expected: NetworkOut
+    op: eq
+    path: Metrics.56.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.56.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.57.Dimensions.0.Name
+  - expected: i-20277712
+    op: eq
+    path: Metrics.57.Dimensions.0.Value
+  - expected: DiskReadOps
+    op: eq
+    path: Metrics.57.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.57.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.58.Dimensions.0.Name
+  - expected: i-20277712
+    op: eq
+    path: Metrics.58.Dimensions.0.Value
+  - expected: StatusCheckFailed_System
+    op: eq
+    path: Metrics.58.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.58.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.59.Dimensions.0.Name
+  - expected: i-d63c6ce4
+    op: eq
+    path: Metrics.59.Dimensions.0.Value
+  - expected: NetworkOut
+    op: eq
+    path: Metrics.59.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.59.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.6.Dimensions.0.Name
+  - expected: vol-04c7c53d
+    op: eq
+    path: Metrics.6.Dimensions.0.Value
+  - expected: VolumeTotalReadTime
+    op: eq
+    path: Metrics.6.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.6.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.60.Dimensions.0.Name
+  - expected: i-20277712
+    op: eq
+    path: Metrics.60.Dimensions.0.Value
+  - expected: NetworkIn
+    op: eq
+    path: Metrics.60.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.60.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.61.Dimensions.0.Name
+  - expected: vol-203b3919
+    op: eq
+    path: Metrics.61.Dimensions.0.Value
+  - expected: VolumeWriteBytes
+    op: eq
+    path: Metrics.61.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.61.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.62.Dimensions.0.Name
+  - expected: i-70d08042
+    op: eq
+    path: Metrics.62.Dimensions.0.Value
+  - expected: DiskWriteBytes
+    op: eq
+    path: Metrics.62.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.62.Namespace
+  - expected: QueueName
+    op: eq
+    path: Metrics.63.Dimensions.0.Name
+  - expected: foobar
+    op: eq
+    path: Metrics.63.Dimensions.0.Value
+  - expected: NumberOfMessagesReceived
+    op: eq
+    path: Metrics.63.MetricName
+  - expected: AWS/SQS
+    op: eq
+    path: Metrics.63.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.64.Dimensions.0.Name
+  - expected: vol-203b3919
+    op: eq
+    path: Metrics.64.Dimensions.0.Value
+  - expected: VolumeReadOps
+    op: eq
+    path: Metrics.64.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.64.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.65.Dimensions.0.Name
+  - expected: vol-203b3919
+    op: eq
+    path: Metrics.65.Dimensions.0.Value
+  - expected: VolumeTotalReadTime
+    op: eq
+    path: Metrics.65.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.65.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.66.Dimensions.0.Name
+  - expected: i-70d08042
+    op: eq
+    path: Metrics.66.Dimensions.0.Value
+  - expected: DiskWriteOps
+    op: eq
+    path: Metrics.66.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.66.Namespace
+  - expected: TableName
+    op: eq
+    path: Metrics.67.Dimensions.0.Name
+  - expected: fromcli
+    op: eq
+    path: Metrics.67.Dimensions.0.Value
+  - expected: ProvisionedWriteCapacityUnits
+    op: eq
+    path: Metrics.67.MetricName
+  - expected: AWS/DynamoDB
+    op: eq
+    path: Metrics.67.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.68.Dimensions.0.Name
+  - expected: vol-04c7c53d
+    op: eq
+    path: Metrics.68.Dimensions.0.Value
+  - expected: VolumeTotalWriteTime
+    op: eq
+    path: Metrics.68.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.68.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.69.Dimensions.0.Name
+  - expected: vol-a8d2e991
+    op: eq
+    path: Metrics.69.Dimensions.0.Value
+  - expected: VolumeTotalReadTime
+    op: eq
+    path: Metrics.69.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.69.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.7.Dimensions.0.Name
+  - expected: vol-203b3919
+    op: eq
+    path: Metrics.7.Dimensions.0.Value
+  - expected: VolumeWriteOps
+    op: eq
+    path: Metrics.7.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.7.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.70.Dimensions.0.Name
+  - expected: vol-04c7c53d
+    op: eq
+    path: Metrics.70.Dimensions.0.Value
+  - expected: VolumeWriteBytes
+    op: eq
+    path: Metrics.70.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.70.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.71.Dimensions.0.Name
+  - expected: i-78f1b94a
+    op: eq
+    path: Metrics.71.Dimensions.0.Value
+  - expected: DiskReadBytes
+    op: eq
+    path: Metrics.71.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.71.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.72.Dimensions.0.Name
+  - expected: i-d63c6ce4
+    op: eq
+    path: Metrics.72.Dimensions.0.Value
+  - expected: DiskWriteBytes
+    op: eq
+    path: Metrics.72.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.72.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.73.Dimensions.0.Name
+  - expected: i-20277712
+    op: eq
+    path: Metrics.73.Dimensions.0.Value
+  - expected: StatusCheckFailed
+    op: eq
+    path: Metrics.73.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.73.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.74.Dimensions.0.Name
+  - expected: i-d63c6ce4
+    op: eq
+    path: Metrics.74.Dimensions.0.Value
+  - expected: StatusCheckFailed_Instance
+    op: eq
+    path: Metrics.74.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.74.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.75.Dimensions.0.Name
+  - expected: i-70d08042
+    op: eq
+    path: Metrics.75.Dimensions.0.Value
+  - expected: NetworkIn
+    op: eq
+    path: Metrics.75.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.75.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.76.Dimensions.0.Name
+  - expected: i-78f1b94a
+    op: eq
+    path: Metrics.76.Dimensions.0.Value
+  - expected: NetworkIn
+    op: eq
+    path: Metrics.76.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.76.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.77.Dimensions.0.Name
+  - expected: i-70d08042
+    op: eq
+    path: Metrics.77.Dimensions.0.Value
+  - expected: DiskReadOps
+    op: eq
+    path: Metrics.77.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.77.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.78.Dimensions.0.Name
+  - expected: i-d63c6ce4
+    op: eq
+    path: Metrics.78.Dimensions.0.Value
+  - expected: NetworkIn
+    op: eq
+    path: Metrics.78.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.78.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.79.Dimensions.0.Name
+  - expected: i-78f1b94a
+    op: eq
+    path: Metrics.79.Dimensions.0.Value
+  - expected: StatusCheckFailed_System
+    op: eq
+    path: Metrics.79.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.79.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.8.Dimensions.0.Name
+  - expected: vol-267b761f
+    op: eq
+    path: Metrics.8.Dimensions.0.Value
+  - expected: VolumeWriteOps
+    op: eq
+    path: Metrics.8.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.8.Namespace
+  - expected: InstanceId
+    op: eq
+    path: Metrics.80.Dimensions.0.Name
+  - expected: i-78f1b94a
+    op: eq
+    path: Metrics.80.Dimensions.0.Value
+  - expected: DiskWriteBytes
+    op: eq
+    path: Metrics.80.MetricName
+  - expected: AWS/EC2
+    op: eq
+    path: Metrics.80.Namespace
+  - expected: VolumeId
+    op: eq
+    path: Metrics.9.Dimensions.0.Name
+  - expected: vol-a8d2e991
+    op: eq
+    path: Metrics.9.Dimensions.0.Value
+  - expected: VolumeWriteBytes
+    op: eq
+    path: Metrics.9.MetricName
+  - expected: AWS/EBS
+    op: eq
+    path: Metrics.9.Namespace

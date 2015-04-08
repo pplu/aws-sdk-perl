@@ -1,0 +1,40 @@
+---
+call: DescribeEnvironments
+service: ElasticBeanstalk
+tests:
+  - expected: SampleApp
+    op: eq
+    path: Environments.0.ApplicationName
+  - expected: SampleApp-jxb293wg7n.elasticbeanstalk.amazonaws.com
+    op: eq
+    path: Environments.0.CNAME
+  - expected: 2010-11-17T03:59:33.520Z
+    op: eq
+    path: Environments.0.DateCreated
+  - expected: 2010-11-17T04:01:40.668Z
+    op: eq
+    path: Environments.0.DateUpdated
+  - expected: EnvDescrip
+    op: eq
+    path: Environments.0.Description
+  - expected: elasticbeanstalk-SampleApp-1394386994.us-east-1.elb.amazonaws.com
+    op: eq
+    path: Environments.0.EndpointURL
+  - expected: e-icsgecu3wf
+    op: eq
+    path: Environments.0.EnvironmentId
+  - expected: SampleApp
+    op: eq
+    path: Environments.0.EnvironmentName
+  - expected: Green
+    op: eq
+    path: Environments.0.Health
+  - expected: 32bit Amazon Linux running Tomcat 7
+    op: eq
+    path: Environments.0.SolutionStackName
+  - expected: Available
+    op: eq
+    path: Environments.0.Status
+  - expected: Version1
+    op: eq
+    path: Environments.0.VersionLabel

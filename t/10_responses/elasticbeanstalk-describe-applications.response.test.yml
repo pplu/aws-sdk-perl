@@ -1,0 +1,19 @@
+---
+call: DescribeApplications
+service: ElasticBeanstalk
+tests:
+  - expected: SampleApplication
+    op: eq
+    path: Applications.0.ApplicationName
+  - expected: Default
+    op: eq
+    path: Applications.0.ConfigurationTemplates.0
+  - expected: 2010-11-16T20:20:51.974Z
+    op: eq
+    path: Applications.0.DateCreated
+  - expected: 2010-11-16T20:20:51.974Z
+    op: eq
+    path: Applications.0.DateUpdated
+  - expected: Sample Description
+    op: eq
+    path: Applications.0.Description
