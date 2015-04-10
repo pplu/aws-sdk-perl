@@ -42,6 +42,7 @@ my $namespaces = {
   kms => 'KMS',
   lambda => 'Lambda',
   logs => 'CloudWatchLogs',
+  machinelearning => 'MachineLearning',
   opsworks => 'OpsWorks',
   rds => 'RDS',
   redshift => 'RedShift',
@@ -58,6 +59,7 @@ my $namespaces = {
   sts => 'STS',
   support => 'Support',
   sdb => 'SDB',
+  workspaces => 'WorkSpaces',
   _retry => 'SKIP_THIS_CLASS', 
   _regions => 'SKIP_THIS_CLASS',
 };
