@@ -1,13 +1,14 @@
 
-package Paws::Lambda::GetFunction {
+package Paws::Lambda::UpdateFunctionCode {
   use Moose;
   has FunctionName => (is => 'ro', isa => 'Str', required => 1);
+  has ZipFile => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetFunction');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::GetFunctionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetFunctionResult');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFunctionCode');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateFunctionCodeResult');
 }
 1;
 
@@ -15,19 +16,19 @@ package Paws::Lambda::GetFunction {
 
 =head1 NAME
 
-Paws::Lambda::GetFunction - Arguments for method GetFunction on Paws::Lambda
+Paws::Lambda::UpdateFunctionCode - Arguments for method UpdateFunctionCode on Paws::Lambda
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetFunction on the 
+This class represents the parameters used for calling the method UpdateFunctionCode on the 
 AWS Lambda service. Use the attributes of this class
-as arguments to method GetFunction.
+as arguments to method UpdateFunctionCode.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetFunction.
+You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateFunctionCode.
 
 As an example:
 
-  $service_obj->GetFunction(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->UpdateFunctionCode(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
@@ -37,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The Lambda function name.
+The existing Lambda function name whose code you want to replace.
 
 You can specify an unqualified function name (for example, "Thumbnail")
 or you can specify Amazon Resource Name (ARN) of the function (for
@@ -56,11 +57,26 @@ limited to 64 character in length.
 
 
 
+=head2 B<REQUIRED> ZipFile => Str
+
+  
+
+Based64-encoded .zip file containing your packaged source code.
+
+
+
+
+
+
+
+
+
+
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetFunction in Paws::Lambda
+This class forms part of L<Paws>, and documents parameters for UpdateFunctionCode in Paws::Lambda
 
 =head1 BUGS and CONTRIBUTIONS
 

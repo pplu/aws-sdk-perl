@@ -3,14 +3,12 @@ package Paws::Lambda::FunctionConfiguration {
   use Moose;
   with 'Paws::API::ResultParser';
   has CodeSize => (is => 'ro', isa => 'Num');
-  has ConfigurationId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has FunctionARN => (is => 'ro', isa => 'Str');
+  has FunctionArn => (is => 'ro', isa => 'Str');
   has FunctionName => (is => 'ro', isa => 'Str');
   has Handler => (is => 'ro', isa => 'Str');
   has LastModified => (is => 'ro', isa => 'Str');
   has MemorySize => (is => 'ro', isa => 'Int');
-  has Mode => (is => 'ro', isa => 'Str');
   has Role => (is => 'ro', isa => 'Str');
   has Runtime => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
@@ -40,21 +38,6 @@ The size, in bytes, of the function .zip file you uploaded.
 
 
 
-=head2 ConfigurationId => Str
-
-  
-
-A Lambda-assigned unique identifier for the current function code and
-related configuration.
-
-
-
-
-
-
-
-
-
 =head2 Description => Str
 
   
@@ -69,7 +52,7 @@ The user-provided description.
 
 
 
-=head2 FunctionARN => Str
+=head2 FunctionArn => Str
 
   
 
@@ -131,20 +114,6 @@ The timestamp of the last time you updated the function.
 
 The memory size, in MB, you configured for the function. Must be a
 multiple of 64 MB.
-
-
-
-
-
-
-
-
-
-=head2 Mode => Str
-
-  
-
-The type of the Lambda function you uploaded.
 
 
 

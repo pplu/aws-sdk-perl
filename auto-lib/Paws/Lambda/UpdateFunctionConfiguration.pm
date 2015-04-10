@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A short user-defined function description. Lambda does not use this
+A short user-defined function description. AWS Lambda does not use this
 value. Assign a meaningful description as you see fit.
 
 
@@ -59,6 +59,14 @@ value. Assign a meaningful description as you see fit.
   
 
 The name of the Lambda function.
+
+You can specify an unqualified function name (for example, "Thumbnail")
+or you can specify Amazon Resource Name (ARN) of the function (for
+example, "arn:aws:lambda:us-west-2:account-id:function:ThumbNail"). AWS
+Lambda also allows you to specify only the account ID qualifier (for
+example, "account-id:Thumbnail"). Note that the length constraint
+applies only to the ARN. If you specify only the function name, it is
+limited to 64 character in length.
 
 
 
@@ -89,12 +97,12 @@ Node.js, it is the I<module-name.export> value in your function.
 
   
 
-The amount of memory, in MB, your Lambda function is given. Lambda uses
-this memory size to infer the amount of CPU allocated to your function.
-Your function use-case determines your CPU and memory requirements. For
-example, a database operation might need less memory compared to an
-image processing function. The default value is 128 MB. The value must
-be a multiple of 64 MB.
+The amount of memory, in MB, your Lambda function is given. AWS Lambda
+uses this memory size to infer the amount of CPU allocated to your
+function. Your function use-case determines your CPU and memory
+requirements. For example, a database operation might need less memory
+compared to an image processing function. The default value is 128 MB.
+The value must be a multiple of 64 MB.
 
 
 
@@ -125,7 +133,7 @@ when it executes your function.
 
   
 
-The function execution time at which Lambda should terminate the
+The function execution time at which AWS Lambda should terminate the
 function. Because the execution time has cost implications, we
 recommend you set this value based on your expected execution time. The
 default is 3 seconds.
