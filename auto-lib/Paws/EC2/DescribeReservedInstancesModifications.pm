@@ -119,7 +119,7 @@ updated.
 
   
 
-The token for the next page of data.
+The token to retrieve the next page of results.
 
 
 

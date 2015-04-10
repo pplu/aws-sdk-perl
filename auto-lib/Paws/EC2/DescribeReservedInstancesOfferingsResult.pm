@@ -20,7 +20,8 @@ Paws::EC2::DescribeReservedInstancesOfferingsResult
 
   
 
-The next paginated set of results to return.
+The token to use to retrieve the next page of results. This value is
+C<null> when there are no more results to return.
 
 
 

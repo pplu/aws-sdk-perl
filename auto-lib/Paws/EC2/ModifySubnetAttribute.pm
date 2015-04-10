@@ -38,6 +38,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+Specify C<true> to indicate that instances launched into the specified
+subnet should be assigned public IP address.
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> SubnetId => Str
 
   

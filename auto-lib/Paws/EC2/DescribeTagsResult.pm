@@ -20,8 +20,8 @@ Paws::EC2::DescribeTagsResult
 
   
 
-The token to use when requesting the next set of items. If there are no
-additional items to return, the string is empty.
+The token to use to retrieve the next page of results. This value is
+C<null> when there are no more results to return..
 
 
 

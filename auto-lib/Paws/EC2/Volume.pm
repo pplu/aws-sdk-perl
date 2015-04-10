@@ -82,10 +82,10 @@ number of IOPS that are provisioned for the volume. For General Purpose
 and the rate at which the volume accumulates I/O credits for bursting.
 For more information on General Purpose (SSD) baseline performance, I/O
 credits, and bursting, see Amazon EBS Volume Types in the I<Amazon
-Elastic Compute Cloud User Guide>.
+Elastic Compute Cloud User Guide for Linux>.
 
-Constraint: Range is 100 to 4000 for Provisioned IOPS (SSD) volumes and
-3 to 3072 for General Purpose (SSD) volumes.
+Constraint: Range is 100 to 20000 for Provisioned IOPS (SSD) volumes
+and 3 to 10000 for General Purpose (SSD) volumes.
 
 Condition: This parameter is required for requests to create C<io1>
 volumes; it is not used in requests to create C<standard> or C<gp2>

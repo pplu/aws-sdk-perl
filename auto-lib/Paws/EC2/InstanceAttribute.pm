@@ -175,7 +175,8 @@ The RAM disk ID.
 
   
 
-The name of the root device (for example, C</dev/sda1>).
+The name of the root device (for example, C</dev/sda1> or
+C</dev/xvda>).
 
 
 

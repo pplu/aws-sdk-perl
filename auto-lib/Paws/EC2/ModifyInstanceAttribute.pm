@@ -74,7 +74,7 @@ volume is deleted when the instance is terminated.
 To add instance store volumes to an Amazon EBS-backed instance, you
 must add them when you launch the instance. For more information, see
 Updating the Block Device Mapping when Launching an Instance in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
@@ -132,10 +132,6 @@ usage charges apply when using an EBS Optimized instance.
 at least one security group, even if it's just the default security
 group for the VPC. You must specify the security group ID, not the
 security group name.
-
-For example, if you want the instance to be in sg-1a1a1a1a and
-sg-9b9b9b9b, specify C<GroupId.1=sg-1a1a1a1a> and
-C<GroupId.2=sg-9b9b9b9b>.
 
 
 

@@ -57,8 +57,15 @@ A description for the new Amazon EBS snapshot.
 
   
 
-The destination region of the snapshot copy operation. This parameter
-is required in the C<PresignedUrl>.
+The destination region to use in the C<PresignedUrl> parameter of a
+snapshot copy operation. This parameter is only valid for specifying
+the destination region in a C<PresignedUrl> parameter, where it is
+required.
+
+C<CopySnapshot> sends the snapshot copy to the regional endpoint that
+you send the HTTP request to, such as C<ec2.us-east-1.amazonaws.com>
+(in the AWS CLI, this is specified with the C<--region> parameter or
+the default region in your AWS configuration file).
 
 
 

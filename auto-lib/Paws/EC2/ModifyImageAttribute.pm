@@ -95,6 +95,8 @@ The ID of the AMI.
 
   
 
+A launch permission modification.
+
 
 
 

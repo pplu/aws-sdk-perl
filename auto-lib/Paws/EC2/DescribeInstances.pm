@@ -72,7 +72,7 @@ termination.
 =item *
 
 C<block-device-mapping.device-name> - The device name for the Amazon
-EBS volume (for example, C</dev/sdh>).
+EBS volume (for example, C</dev/sdh> or C<xvdh>).
 
 =item *
 
@@ -141,7 +141,7 @@ C<stopped>).
 
 =item *
 
-C<instance-type> - The type of instance (for example, C<m1.small>).
+C<instance-type> - The type of instance (for example, C<t2.micro>).
 
 =item *
 
@@ -240,7 +240,7 @@ same launch request, you'll also get one reservation ID.
 =item *
 
 C<root-device-name> - The name of the root device for the instance (for
-example, C</dev/sda1>).
+example, C</dev/sda1> or C</dev/xvda>).
 
 =item *
 
@@ -361,11 +361,11 @@ network interface.
 
 =item *
 
-C<network-interface.source-destination-check> - Whether the network
-interface performs source/destination checking. A value of C<true>
-means checking is enabled, and C<false> means checking is disabled. The
-value must be C<false> for the network interface to perform network
-address translation (NAT) in your VPC.
+C<network-interface.source-dest-check> - Whether the network interface
+performs source/destination checking. A value of C<true> means checking
+is enabled, and C<false> means checking is disabled. The value must be
+C<false> for the network interface to perform network address
+translation (NAT) in your VPC.
 
 =item *
 
@@ -484,11 +484,12 @@ Default: Describes all your instances.
 
   
 
-The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results. If the value is greater than 1000, we return only
-1000 items. You cannot specify this parameter and the instance IDs
-parameter in the same request.
+The maximum number of results to return for the request in a single
+page. The remaining results of the initial request can be seen by
+sending another request with the returned C<NextToken> value. This
+value can be between 5 and 1000; if C<MaxResults> is given a value
+larger than 1000, only 1000 results are returned. You cannot specify
+this parameter and the instance IDs parameter in the same request.
 
 
 
@@ -503,8 +504,7 @@ parameter in the same request.
 
   
 
-The token for the next set of items to return. (You received this token
-from a prior call.)
+The token to request the next page of results.
 
 
 

@@ -40,7 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 A unique, case-sensitive token you provide to ensure idempotency of
-your modification request.
+your modification request. For more information, see Ensuring
+Idempotency.
 
 
 

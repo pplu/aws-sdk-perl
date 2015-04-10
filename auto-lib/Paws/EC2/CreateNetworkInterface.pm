@@ -119,8 +119,8 @@ C<privateIpAddresses>.
 
 The number of IP addresses you can assign to a network interface varies
 by instance type. For more information, see Private IP Addresses Per
-ENI Per Instance Type in the I<Amazon Elastic Compute Cloud User
-Guide>.
+ENI Per Instance Type in the I<Amazon Elastic Compute Cloud User Guide
+for Linux>.
 
 
 

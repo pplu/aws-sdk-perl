@@ -84,10 +84,11 @@ C<value> - The tag value.
 
   
 
-The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results. If the value is greater than 1000, we return only
-1000 items.
+The maximum number of results to return for the request in a single
+page. The remaining results of the initial request can be seen by
+sending another request with the returned C<NextToken> value. This
+value can be between 5 and 1000; if C<MaxResults> is given a value
+larger than 1000, only 1000 results are returned.
 
 
 
@@ -102,8 +103,7 @@ next set of results. If the value is greater than 1000, we return only
 
   
 
-The token for the next set of items to return. (You received this token
-from a prior call.)
+The token to retrieve the next page of results.
 
 
 

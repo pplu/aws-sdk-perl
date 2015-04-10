@@ -166,7 +166,7 @@ Default: C<default>
 
 The instance type on which the Reserved Instance can be used. For more
 information, see Instance Types in the I<Amazon Elastic Compute Cloud
-User Guide>.
+User Guide for Linux>.
 
 
 
@@ -216,7 +216,10 @@ Default: 20
 
   
 
-The maximum number of offerings to return. The maximum is 100.
+The maximum number of results to return for the request in a single
+page. The remaining results of the initial request can be seen by
+sending another request with the returned C<NextToken> value. The
+maximum is 100.
 
 Default: 100
 
@@ -251,7 +254,7 @@ Default: 2592000 (1 month)
 
   
 
-The token to use when requesting the next paginated set of offerings.
+The token to retrieve the next page of results.
 
 
 

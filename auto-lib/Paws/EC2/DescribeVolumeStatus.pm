@@ -120,9 +120,16 @@ C<volume-status.status> - The status of the volume (C<ok> | C<impaired>
 
   
 
-The maximum number of paginated volume items per response. You cannot
-specify this parameter and the volume IDs parameter in the same
-request.
+The maximum number of volume results returned by
+C<DescribeVolumeStatus> in paginated output. When this parameter is
+used, the request only returns C<MaxResults> results in a single page
+along with a C<NextToken> response element. The remaining results of
+the initial request can be seen by sending another request with the
+returned C<NextToken> value. This value can be between 5 and 1000; if
+C<MaxResults> is given a value larger than 1000, only 1000 results are
+returned. If this parameter is not used, then C<DescribeVolumeStatus>
+returns all results. You cannot specify this parameter and the volume
+IDs parameter in the same request.
 
 
 
@@ -137,8 +144,10 @@ request.
 
   
 
-The next paginated set of results to return using the pagination token
-returned by a previous call.
+The C<NextToken> value to include in a future C<DescribeVolumeStatus>
+request. When the results of the request exceed C<MaxResults>, this
+value can be used to retrieve the next page of results. This value is
+C<null> when there are no more results to return.
 
 
 
