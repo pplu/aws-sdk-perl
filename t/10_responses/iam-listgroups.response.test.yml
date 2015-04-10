@@ -1,0 +1,22 @@
+---
+call: ListGroups
+service: IAM
+tests:
+  - expected: AGP000000000000000000
+    op: eq
+    path: Groups.0.GroupId
+  - expected: testgroup
+    op: eq
+    path: Groups.0.GroupName
+  - expected: 2015-04-08T23:19:05Z
+    op: eq
+    path: Groups.0.CreateDate
+  - expected: arn:aws:iam::000000000000:group/testgroup
+    op: eq
+    path: Groups.0.Arn
+  - expected: /
+    op: eq
+    path: Groups.0.Path
+  - expected: 0
+    op: eq
+    path: IsTruncated

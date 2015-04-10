@@ -1,0 +1,19 @@
+---
+call: GetUser
+service: IAM
+tests:
+  - expected: 2014-11-22T13:27:16Z
+    op: eq
+    path: User.CreateDate
+  - expected: arn:aws:iam::000000000000:user/testsdk
+    op: eq
+    path: User.Arn
+  - expected: testsdk
+    op: eq
+    path: User.UserName
+  - expected: /
+    op: eq
+    path: User.Path
+  - expected: AID000000000000000000
+    op: eq
+    path: User.UserId
