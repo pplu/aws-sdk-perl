@@ -74,7 +74,7 @@ Stack data type.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListStacks in Paws::CloudFormation
+This class forms part of L<Paws>, documenting arguments for method ListStacks in L<Paws::CloudFormation>
 
 =head1 BUGS and CONTRIBUTIONS
 

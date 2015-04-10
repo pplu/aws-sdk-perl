@@ -890,7 +890,7 @@ Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateItem in Paws::DynamoDB
+This class forms part of L<Paws>, documenting arguments for method UpdateItem in L<Paws::DynamoDB>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -71,7 +71,7 @@ The name of the vault.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetVaultNotifications in Paws::Glacier
+This class forms part of L<Paws>, documenting arguments for method GetVaultNotifications in L<Paws::Glacier>
 
 =head1 BUGS and CONTRIBUTIONS
 

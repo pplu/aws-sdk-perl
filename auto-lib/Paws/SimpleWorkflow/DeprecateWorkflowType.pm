@@ -68,7 +68,7 @@ The workflow type to deprecate.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeprecateWorkflowType in Paws::SimpleWorkflow
+This class forms part of L<Paws>, documenting arguments for method DeprecateWorkflowType in L<Paws::SimpleWorkflow>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -197,7 +197,7 @@ S3.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateDataSourceFromRDS in Paws::MachineLearning
+This class forms part of L<Paws>, documenting arguments for method CreateDataSourceFromRDS in L<Paws::MachineLearning>
 
 =head1 BUGS and CONTRIBUTIONS
 

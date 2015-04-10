@@ -52,7 +52,7 @@ A list of configuration recorder names.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeConfigurationRecorders in Paws::Config
+This class forms part of L<Paws>, documenting arguments for method DescribeConfigurationRecorders in L<Paws::Config>
 
 =head1 BUGS and CONTRIBUTIONS
 

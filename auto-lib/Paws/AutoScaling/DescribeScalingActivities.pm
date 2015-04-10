@@ -106,7 +106,7 @@ from a previous call.)
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeScalingActivities in Paws::AutoScaling
+This class forms part of L<Paws>, documenting arguments for method DescribeScalingActivities in L<Paws::AutoScaling>
 
 =head1 BUGS and CONTRIBUTIONS
 

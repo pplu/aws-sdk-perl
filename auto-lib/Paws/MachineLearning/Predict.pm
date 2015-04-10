@@ -62,7 +62,7 @@ A unique identifier of the C<MLModel>.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for Predict in Paws::MachineLearning
+This class forms part of L<Paws>, documenting arguments for method Predict in L<Paws::MachineLearning>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -56,7 +56,7 @@ between 1 and 256 characters long.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateTopic in Paws::SNS
+This class forms part of L<Paws>, documenting arguments for method CreateTopic in L<Paws::SNS>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -52,7 +52,7 @@ The name of the trail for which you are requesting the current status.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetTrailStatus in Paws::CloudTrail
+This class forms part of L<Paws>, documenting arguments for method GetTrailStatus in L<Paws::CloudTrail>
 
 =head1 BUGS and CONTRIBUTIONS
 

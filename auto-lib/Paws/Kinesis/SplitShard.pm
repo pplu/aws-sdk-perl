@@ -91,7 +91,7 @@ The name of the stream for the shard split.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for SplitShard in Paws::Kinesis
+This class forms part of L<Paws>, documenting arguments for method SplitShard in L<Paws::Kinesis>
 
 =head1 BUGS and CONTRIBUTIONS
 

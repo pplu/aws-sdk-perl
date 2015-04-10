@@ -68,7 +68,7 @@ The receipt handle associated with the message to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteMessage in Paws::SQS
+This class forms part of L<Paws>, documenting arguments for method DeleteMessage in L<Paws::SQS>
 
 =head1 BUGS and CONTRIBUTIONS
 

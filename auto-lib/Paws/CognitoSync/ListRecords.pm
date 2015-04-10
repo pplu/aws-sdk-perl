@@ -153,7 +153,7 @@ A token containing a session ID, identity ID, and expiration.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListRecords in Paws::CognitoSync
+This class forms part of L<Paws>, documenting arguments for method ListRecords in L<Paws::CognitoSync>
 
 =head1 BUGS and CONTRIBUTIONS
 

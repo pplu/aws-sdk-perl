@@ -70,7 +70,7 @@ A JSON-formatted list of service codes available for AWS services.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeServices in Paws::Support
+This class forms part of L<Paws>, documenting arguments for method DescribeServices in L<Paws::Support>
 
 =head1 BUGS and CONTRIBUTIONS
 

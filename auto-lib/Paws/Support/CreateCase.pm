@@ -192,7 +192,7 @@ The title of the AWS Support case.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateCase in Paws::Support
+This class forms part of L<Paws>, documenting arguments for method CreateCase in L<Paws::Support>
 
 =head1 BUGS and CONTRIBUTIONS
 

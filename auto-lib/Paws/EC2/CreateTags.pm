@@ -75,7 +75,7 @@ we set the value to an empty string.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateTags in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method CreateTags in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

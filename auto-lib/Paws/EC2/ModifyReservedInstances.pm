@@ -86,7 +86,7 @@ The configuration settings for the Reserved Instances to modify.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ModifyReservedInstances in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method ModifyReservedInstances in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

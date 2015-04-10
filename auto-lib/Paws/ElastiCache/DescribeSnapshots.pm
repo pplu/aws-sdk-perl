@@ -132,7 +132,7 @@ automatically and manually created snapshots.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeSnapshots in Paws::ElastiCache
+This class forms part of L<Paws>, documenting arguments for method DescribeSnapshots in L<Paws::ElastiCache>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -91,7 +91,7 @@ with the specified stack.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeElasticIps in Paws::OpsWorks
+This class forms part of L<Paws>, documenting arguments for method DescribeElasticIps in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 

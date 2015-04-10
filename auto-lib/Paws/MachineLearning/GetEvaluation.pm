@@ -54,7 +54,7 @@ access the information.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetEvaluation in Paws::MachineLearning
+This class forms part of L<Paws>, documenting arguments for method GetEvaluation in L<Paws::MachineLearning>
 
 =head1 BUGS and CONTRIBUTIONS
 

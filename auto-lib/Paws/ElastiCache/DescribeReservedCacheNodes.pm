@@ -237,7 +237,7 @@ purchased reservations matching the specified offering identifier.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeReservedCacheNodes in Paws::ElastiCache
+This class forms part of L<Paws>, documenting arguments for method DescribeReservedCacheNodes in L<Paws::ElastiCache>
 
 =head1 BUGS and CONTRIBUTIONS
 

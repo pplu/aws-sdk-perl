@@ -52,7 +52,7 @@ The name of the on-premises instance to get information about
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetOnPremisesInstance in Paws::CodeDeploy
+This class forms part of L<Paws>, documenting arguments for method GetOnPremisesInstance in L<Paws::CodeDeploy>
 
 =head1 BUGS and CONTRIBUTIONS
 

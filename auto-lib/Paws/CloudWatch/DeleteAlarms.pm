@@ -52,7 +52,7 @@ A list of alarms to be deleted.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteAlarms in Paws::CloudWatch
+This class forms part of L<Paws>, documenting arguments for method DeleteAlarms in L<Paws::CloudWatch>
 
 =head1 BUGS and CONTRIBUTIONS
 

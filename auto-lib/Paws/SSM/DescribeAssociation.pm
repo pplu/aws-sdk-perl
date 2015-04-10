@@ -68,7 +68,7 @@ The name of the configuration document.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeAssociation in Paws::SSM
+This class forms part of L<Paws>, documenting arguments for method DescribeAssociation in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 

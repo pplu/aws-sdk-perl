@@ -57,7 +57,7 @@ Specifies the name of the suggester you want to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteSuggester in Paws::CloudSearch
+This class forms part of L<Paws>, documenting arguments for method DeleteSuggester in L<Paws::CloudSearch>
 
 =head1 BUGS and CONTRIBUTIONS
 

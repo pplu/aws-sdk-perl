@@ -175,7 +175,7 @@ Constraints: Positive integer from 1 to 32766
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateNetworkAclEntry in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method CreateNetworkAclEntry in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

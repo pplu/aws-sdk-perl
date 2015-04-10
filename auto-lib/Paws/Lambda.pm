@@ -138,8 +138,17 @@ Paws::Lambda - Perl Interface to AWS AWS Lambda
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('Lambda')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -165,11 +174,11 @@ AWS LambdaL How it Works in the I<AWS Lambda Developer Guide>.
 
 =head1 METHODS
 
-=head2 AddPermission()
+=head2 AddPermission(Action => Str, FunctionName => Str, Principal => Str, StatementId => Str, [SourceAccount => Str, SourceArn => Str])
 
-  Arguments described in: L<Paws::Lambda::AddPermission>
+Each argument is described in detail in: L<Paws::Lambda::AddPermission>
 
-  Returns: L<Paws::Lambda::AddPermissionResponse>
+Returns: a L<Paws::Lambda::AddPermissionResponse> instance
 
   
 
@@ -195,11 +204,11 @@ action.
 
 
 
-=head2 CreateEventSourceMapping()
+=head2 CreateEventSourceMapping(EventSourceArn => Str, FunctionName => Str, StartingPosition => Str, [BatchSize => Int, Enabled => Bool])
 
-  Arguments described in: L<Paws::Lambda::CreateEventSourceMapping>
+Each argument is described in detail in: L<Paws::Lambda::CreateEventSourceMapping>
 
-  Returns: L<Paws::Lambda::EventSourceMappingConfiguration>
+Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
   
 
@@ -234,11 +243,11 @@ C<lambda:CreateEventSourceMapping> action.
 
 
 
-=head2 CreateFunction()
+=head2 CreateFunction(Code => Paws::Lambda::FunctionCode, FunctionName => Str, Handler => Str, Role => Str, Runtime => Str, [MemorySize => Int, Description => Str, Timeout => Int])
 
-  Arguments described in: L<Paws::Lambda::CreateFunction>
+Each argument is described in detail in: L<Paws::Lambda::CreateFunction>
 
-  Returns: L<Paws::Lambda::FunctionConfiguration>
+Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
   
 
@@ -260,11 +269,11 @@ action.
 
 
 
-=head2 DeleteEventSourceMapping()
+=head2 DeleteEventSourceMapping(UUID => Str)
 
-  Arguments described in: L<Paws::Lambda::DeleteEventSourceMapping>
+Each argument is described in detail in: L<Paws::Lambda::DeleteEventSourceMapping>
 
-  Returns: L<Paws::Lambda::EventSourceMappingConfiguration>
+Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
   
 
@@ -284,11 +293,11 @@ C<lambda:DeleteEventSourceMapping> action.
 
 
 
-=head2 DeleteFunction()
+=head2 DeleteFunction(FunctionName => Str)
 
-  Arguments described in: L<Paws::Lambda::DeleteFunction>
+Each argument is described in detail in: L<Paws::Lambda::DeleteFunction>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -310,11 +319,11 @@ action.
 
 
 
-=head2 GetEventSourceMapping()
+=head2 GetEventSourceMapping(UUID => Str)
 
-  Arguments described in: L<Paws::Lambda::GetEventSourceMapping>
+Each argument is described in detail in: L<Paws::Lambda::GetEventSourceMapping>
 
-  Returns: L<Paws::Lambda::EventSourceMappingConfiguration>
+Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
   
 
@@ -334,11 +343,11 @@ C<lambda:GetEventSourceMapping> action.
 
 
 
-=head2 GetFunction()
+=head2 GetFunction(FunctionName => Str)
 
-  Arguments described in: L<Paws::Lambda::GetFunction>
+Each argument is described in detail in: L<Paws::Lambda::GetFunction>
 
-  Returns: L<Paws::Lambda::GetFunctionResponse>
+Returns: a L<Paws::Lambda::GetFunctionResponse> instance
 
   
 
@@ -361,11 +370,11 @@ action.
 
 
 
-=head2 GetFunctionConfiguration()
+=head2 GetFunctionConfiguration(FunctionName => Str)
 
-  Arguments described in: L<Paws::Lambda::GetFunctionConfiguration>
+Each argument is described in detail in: L<Paws::Lambda::GetFunctionConfiguration>
 
-  Returns: L<Paws::Lambda::FunctionConfiguration>
+Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
   
 
@@ -386,11 +395,11 @@ C<lambda:GetFunctionConfiguration> operation.
 
 
 
-=head2 GetPolicy()
+=head2 GetPolicy(FunctionName => Str)
 
-  Arguments described in: L<Paws::Lambda::GetPolicy>
+Each argument is described in detail in: L<Paws::Lambda::GetPolicy>
 
-  Returns: L<Paws::Lambda::GetPolicyResponse>
+Returns: a L<Paws::Lambda::GetPolicyResponse> instance
 
   
 
@@ -409,11 +418,11 @@ You need permission for the C<lambda:GetPolicy action.>
 
 
 
-=head2 Invoke()
+=head2 Invoke(FunctionName => Str, [ClientContext => Str, InvocationType => Str, Payload => Str, LogType => Str])
 
-  Arguments described in: L<Paws::Lambda::Invoke>
+Each argument is described in detail in: L<Paws::Lambda::Invoke>
 
-  Returns: L<Paws::Lambda::InvocationResponse>
+Returns: a L<Paws::Lambda::InvocationResponse> instance
 
   
 
@@ -431,20 +440,20 @@ This operation requires permission for the C<lambda:Invoke> action.
 
 
 
-=head2 InvokeAsync()
+=head2 InvokeAsync(FunctionName => Str, InvokeArgs => Str)
 
-  Arguments described in: L<Paws::Lambda::InvokeAsync>
+Each argument is described in detail in: L<Paws::Lambda::InvokeAsync>
 
-  Returns: L<Paws::Lambda::InvokeAsyncResponse>
+Returns: a L<Paws::Lambda::InvokeAsyncResponse> instance
 
   
 
 
-=head2 ListEventSourceMappings()
+=head2 ListEventSourceMappings([Marker => Str, MaxItems => Int, EventSourceArn => Str, FunctionName => Str])
 
-  Arguments described in: L<Paws::Lambda::ListEventSourceMappings>
+Each argument is described in detail in: L<Paws::Lambda::ListEventSourceMappings>
 
-  Returns: L<Paws::Lambda::ListEventSourceMappingsResponse>
+Returns: a L<Paws::Lambda::ListEventSourceMappingsResponse> instance
 
   
 
@@ -469,11 +478,11 @@ C<lambda:ListEventSourceMappings> action.
 
 
 
-=head2 ListFunctions()
+=head2 ListFunctions([MaxItems => Int, Marker => Str])
 
-  Arguments described in: L<Paws::Lambda::ListFunctions>
+Each argument is described in detail in: L<Paws::Lambda::ListFunctions>
 
-  Returns: L<Paws::Lambda::ListFunctionsResponse>
+Returns: a L<Paws::Lambda::ListFunctionsResponse> instance
 
   
 
@@ -494,11 +503,11 @@ action.
 
 
 
-=head2 RemovePermission()
+=head2 RemovePermission(FunctionName => Str, StatementId => Str)
 
-  Arguments described in: L<Paws::Lambda::RemovePermission>
+Each argument is described in detail in: L<Paws::Lambda::RemovePermission>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -520,11 +529,11 @@ You need permission for the C<lambda:RemovePermission> action.
 
 
 
-=head2 UpdateEventSourceMapping()
+=head2 UpdateEventSourceMapping(UUID => Str, [BatchSize => Int, FunctionName => Str, Enabled => Bool])
 
-  Arguments described in: L<Paws::Lambda::UpdateEventSourceMapping>
+Each argument is described in detail in: L<Paws::Lambda::UpdateEventSourceMapping>
 
-  Returns: L<Paws::Lambda::EventSourceMappingConfiguration>
+Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
   
 
@@ -547,11 +556,11 @@ C<lambda:UpdateEventSourceMapping> action.
 
 
 
-=head2 UpdateFunctionCode()
+=head2 UpdateFunctionCode(FunctionName => Str, ZipFile => Str)
 
-  Arguments described in: L<Paws::Lambda::UpdateFunctionCode>
+Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionCode>
 
-  Returns: L<Paws::Lambda::FunctionConfiguration>
+Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
   
 
@@ -572,11 +581,11 @@ action.
 
 
 
-=head2 UpdateFunctionConfiguration()
+=head2 UpdateFunctionConfiguration(FunctionName => Str, [Role => Str, Description => Str, MemorySize => Int, Timeout => Int, Handler => Str])
 
-  Arguments described in: L<Paws::Lambda::UpdateFunctionConfiguration>
+Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionConfiguration>
 
-  Returns: L<Paws::Lambda::FunctionConfiguration>
+Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
   
 

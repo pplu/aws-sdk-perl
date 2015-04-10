@@ -96,7 +96,7 @@ is "default".
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for PutKeyPolicy in Paws::KMS
+This class forms part of L<Paws>, documenting arguments for method PutKeyPolicy in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 

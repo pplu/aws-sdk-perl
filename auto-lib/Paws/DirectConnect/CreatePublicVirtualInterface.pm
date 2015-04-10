@@ -59,7 +59,7 @@ Default: None
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreatePublicVirtualInterface in Paws::DirectConnect
+This class forms part of L<Paws>, documenting arguments for method CreatePublicVirtualInterface in L<Paws::DirectConnect>
 
 =head1 BUGS and CONTRIBUTIONS
 

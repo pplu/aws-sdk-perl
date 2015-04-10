@@ -54,7 +54,7 @@ topic.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for PutDeliveryChannel in Paws::Config
+This class forms part of L<Paws>, documenting arguments for method PutDeliveryChannel in L<Paws::Config>
 
 =head1 BUGS and CONTRIBUTIONS
 

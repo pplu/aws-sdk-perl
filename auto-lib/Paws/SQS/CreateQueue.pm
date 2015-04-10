@@ -101,7 +101,7 @@ The name for the queue to be created.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateQueue in Paws::SQS
+This class forms part of L<Paws>, documenting arguments for method CreateQueue in L<Paws::SQS>
 
 =head1 BUGS and CONTRIBUTIONS
 

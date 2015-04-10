@@ -88,7 +88,7 @@ C<SnsTopic> is cleared and publishing is disabled.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for SetIdentityNotificationTopic in Paws::SES
+This class forms part of L<Paws>, documenting arguments for method SetIdentityNotificationTopic in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 

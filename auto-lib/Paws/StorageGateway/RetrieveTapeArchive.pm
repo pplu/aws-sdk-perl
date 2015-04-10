@@ -74,7 +74,7 @@ from the virtual tape shelf (VTS).
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RetrieveTapeArchive in Paws::StorageGateway
+This class forms part of L<Paws>, documenting arguments for method RetrieveTapeArchive in L<Paws::StorageGateway>
 
 =head1 BUGS and CONTRIBUTIONS
 

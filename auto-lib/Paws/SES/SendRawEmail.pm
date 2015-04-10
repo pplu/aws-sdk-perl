@@ -109,7 +109,7 @@ information, see RFC 2047.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for SendRawEmail in Paws::SES
+This class forms part of L<Paws>, documenting arguments for method SendRawEmail in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 

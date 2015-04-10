@@ -74,7 +74,7 @@ The ID of the new network ACL to associate with the subnet.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ReplaceNetworkAclAssociation in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method ReplaceNetworkAclAssociation in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

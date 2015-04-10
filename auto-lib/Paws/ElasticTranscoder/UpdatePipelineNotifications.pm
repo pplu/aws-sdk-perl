@@ -95,7 +95,7 @@ is the ARN that Amazon SNS returned when you created the topic.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdatePipelineNotifications in Paws::ElasticTranscoder
+This class forms part of L<Paws>, documenting arguments for method UpdatePipelineNotifications in L<Paws::ElasticTranscoder>
 
 =head1 BUGS and CONTRIBUTIONS
 

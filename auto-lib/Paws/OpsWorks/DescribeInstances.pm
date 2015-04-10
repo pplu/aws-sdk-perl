@@ -88,7 +88,7 @@ descriptions of the instances associated with the specified stack.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeInstances in Paws::OpsWorks
+This class forms part of L<Paws>, documenting arguments for method DescribeInstances in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 

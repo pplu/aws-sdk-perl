@@ -52,7 +52,7 @@ The name of the stream to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteStream in Paws::Kinesis
+This class forms part of L<Paws>, documenting arguments for method DeleteStream in L<Paws::Kinesis>
 
 =head1 BUGS and CONTRIBUTIONS
 

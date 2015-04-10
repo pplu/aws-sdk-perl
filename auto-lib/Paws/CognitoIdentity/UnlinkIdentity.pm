@@ -85,7 +85,7 @@ Provider names to unlink from this identity.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UnlinkIdentity in Paws::CognitoIdentity
+This class forms part of L<Paws>, documenting arguments for method UnlinkIdentity in L<Paws::CognitoIdentity>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -84,7 +84,7 @@ The name of the stream to describe.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeStream in Paws::Kinesis
+This class forms part of L<Paws>, documenting arguments for method DescribeStream in L<Paws::Kinesis>
 
 =head1 BUGS and CONTRIBUTIONS
 

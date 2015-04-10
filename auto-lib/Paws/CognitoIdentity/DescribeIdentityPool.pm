@@ -52,7 +52,7 @@ An identity pool ID in the format REGION:GUID.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeIdentityPool in Paws::CognitoIdentity
+This class forms part of L<Paws>, documenting arguments for method DescribeIdentityPool in L<Paws::CognitoIdentity>
 
 =head1 BUGS and CONTRIBUTIONS
 

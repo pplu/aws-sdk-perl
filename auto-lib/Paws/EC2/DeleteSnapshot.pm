@@ -57,7 +57,7 @@ The ID of the Amazon EBS snapshot.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteSnapshot in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DeleteSnapshot in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

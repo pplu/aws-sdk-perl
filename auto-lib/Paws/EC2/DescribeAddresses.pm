@@ -133,7 +133,7 @@ Default: Describes all your Elastic IP addresses.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeAddresses in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DescribeAddresses in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

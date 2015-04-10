@@ -52,7 +52,7 @@ Token that identifies the grant to be retired.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RetireGrant in Paws::KMS
+This class forms part of L<Paws>, documenting arguments for method RetireGrant in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 

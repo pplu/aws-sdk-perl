@@ -249,8 +249,17 @@ Paws::AutoScaling - Perl Interface to AWS Auto Scaling
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('AutoScaling')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -274,11 +283,11 @@ Load Balancing services.
 
 =head1 METHODS
 
-=head2 AttachInstances()
+=head2 AttachInstances(AutoScalingGroupName => Str, [InstanceIds => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::AutoScaling::AttachInstances>
+Each argument is described in detail in: L<Paws::AutoScaling::AttachInstances>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -297,11 +306,11 @@ Auto Scaling Group in the I<Auto Scaling Developer Guide>.
 
 
 
-=head2 CompleteLifecycleAction()
+=head2 CompleteLifecycleAction(AutoScalingGroupName => Str, LifecycleActionResult => Str, LifecycleActionToken => Str, LifecycleHookName => Str)
 
-  Arguments described in: L<Paws::AutoScaling::CompleteLifecycleAction>
+Each argument is described in detail in: L<Paws::AutoScaling::CompleteLifecycleAction>
 
-  Returns: L<Paws::AutoScaling::CompleteLifecycleActionAnswer>
+Returns: a L<Paws::AutoScaling::CompleteLifecycleActionAnswer> instance
 
   
 
@@ -342,11 +351,11 @@ Terminating State in the I<Auto Scaling Developer Guide>.
 
 
 
-=head2 CreateAutoScalingGroup()
+=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [InstanceId => Str, PlacementGroup => Str, DesiredCapacity => Int, LoadBalancerNames => ArrayRef[Str], AvailabilityZones => ArrayRef[Str], HealthCheckGracePeriod => Int, DefaultCooldown => Int, HealthCheckType => Str, LaunchConfigurationName => Str, TerminationPolicies => ArrayRef[Str], Tags => ArrayRef[Paws::AutoScaling::Tag], VPCZoneIdentifier => Str])
 
-  Arguments described in: L<Paws::AutoScaling::CreateAutoScalingGroup>
+Each argument is described in detail in: L<Paws::AutoScaling::CreateAutoScalingGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -366,11 +375,11 @@ and updating these limits, see DescribeAccountLimits.
 
 
 
-=head2 CreateLaunchConfiguration()
+=head2 CreateLaunchConfiguration(LaunchConfigurationName => Str, [SecurityGroups => ArrayRef[Str], KeyName => Str, ClassicLinkVPCId => Str, IamInstanceProfile => Str, UserData => Str, AssociatePublicIpAddress => Bool, SpotPrice => Str, InstanceType => Str, PlacementTenancy => Str, ClassicLinkVPCSecurityGroups => ArrayRef[Str], EbsOptimized => Bool, InstanceMonitoring => Paws::AutoScaling::InstanceMonitoring, BlockDeviceMappings => ArrayRef[Paws::AutoScaling::BlockDeviceMapping], ImageId => Str, KernelId => Str, RamdiskId => Str, InstanceId => Str])
 
-  Arguments described in: L<Paws::AutoScaling::CreateLaunchConfiguration>
+Each argument is described in detail in: L<Paws::AutoScaling::CreateLaunchConfiguration>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -390,11 +399,11 @@ viewing and updating these limits, see DescribeAccountLimits.
 
 
 
-=head2 CreateOrUpdateTags()
+=head2 CreateOrUpdateTags(Tags => ArrayRef[Paws::AutoScaling::Tag])
 
-  Arguments described in: L<Paws::AutoScaling::CreateOrUpdateTags>
+Each argument is described in detail in: L<Paws::AutoScaling::CreateOrUpdateTags>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -417,11 +426,11 @@ Tags in the I<Auto Scaling Developer Guide>.
 
 
 
-=head2 DeleteAutoScalingGroup()
+=head2 DeleteAutoScalingGroup(AutoScalingGroupName => Str, [ForceDelete => Bool])
 
-  Arguments described in: L<Paws::AutoScaling::DeleteAutoScalingGroup>
+Each argument is described in detail in: L<Paws::AutoScaling::DeleteAutoScalingGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -443,11 +452,11 @@ AutoScalingGroup to zero.
 
 
 
-=head2 DeleteLaunchConfiguration()
+=head2 DeleteLaunchConfiguration(LaunchConfigurationName => Str)
 
-  Arguments described in: L<Paws::AutoScaling::DeleteLaunchConfiguration>
+Each argument is described in detail in: L<Paws::AutoScaling::DeleteLaunchConfiguration>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -467,11 +476,11 @@ available for use.
 
 
 
-=head2 DeleteLifecycleHook()
+=head2 DeleteLifecycleHook(AutoScalingGroupName => Str, LifecycleHookName => Str)
 
-  Arguments described in: L<Paws::AutoScaling::DeleteLifecycleHook>
+Each argument is described in detail in: L<Paws::AutoScaling::DeleteLifecycleHook>
 
-  Returns: L<Paws::AutoScaling::DeleteLifecycleHookAnswer>
+Returns: a L<Paws::AutoScaling::DeleteLifecycleHookAnswer> instance
 
   
 
@@ -491,11 +500,11 @@ instances).
 
 
 
-=head2 DeleteNotificationConfiguration()
+=head2 DeleteNotificationConfiguration(AutoScalingGroupName => Str, TopicARN => Str)
 
-  Arguments described in: L<Paws::AutoScaling::DeleteNotificationConfiguration>
+Each argument is described in detail in: L<Paws::AutoScaling::DeleteNotificationConfiguration>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -511,11 +520,11 @@ Deletes the specified notification.
 
 
 
-=head2 DeletePolicy()
+=head2 DeletePolicy(PolicyName => Str, [AutoScalingGroupName => Str])
 
-  Arguments described in: L<Paws::AutoScaling::DeletePolicy>
+Each argument is described in detail in: L<Paws::AutoScaling::DeletePolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -531,11 +540,11 @@ Deletes the specified Auto Scaling policy.
 
 
 
-=head2 DeleteScheduledAction()
+=head2 DeleteScheduledAction(ScheduledActionName => Str, [AutoScalingGroupName => Str])
 
-  Arguments described in: L<Paws::AutoScaling::DeleteScheduledAction>
+Each argument is described in detail in: L<Paws::AutoScaling::DeleteScheduledAction>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -551,11 +560,11 @@ Deletes the specified scheduled action.
 
 
 
-=head2 DeleteTags()
+=head2 DeleteTags(Tags => ArrayRef[Paws::AutoScaling::Tag])
 
-  Arguments described in: L<Paws::AutoScaling::DeleteTags>
+Each argument is described in detail in: L<Paws::AutoScaling::DeleteTags>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -573,9 +582,9 @@ Deletes the specified tags.
 
 =head2 DescribeAccountLimits()
 
-  Arguments described in: L<Paws::AutoScaling::DescribeAccountLimits>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeAccountLimits>
 
-  Returns: L<Paws::AutoScaling::DescribeAccountLimitsAnswer>
+Returns: a L<Paws::AutoScaling::DescribeAccountLimitsAnswer> instance
 
   
 
@@ -597,9 +606,9 @@ Service Limits.
 
 =head2 DescribeAdjustmentTypes()
 
-  Arguments described in: L<Paws::AutoScaling::DescribeAdjustmentTypes>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeAdjustmentTypes>
 
-  Returns: L<Paws::AutoScaling::DescribeAdjustmentTypesAnswer>
+Returns: a L<Paws::AutoScaling::DescribeAdjustmentTypesAnswer> instance
 
   
 
@@ -615,11 +624,11 @@ Lists the policy adjustment types for use with PutScalingPolicy.
 
 
 
-=head2 DescribeAutoScalingGroups()
+=head2 DescribeAutoScalingGroups([AutoScalingGroupNames => ArrayRef[Str], NextToken => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::AutoScaling::DescribeAutoScalingGroups>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeAutoScalingGroups>
 
-  Returns: L<Paws::AutoScaling::AutoScalingGroupsType>
+Returns: a L<Paws::AutoScaling::AutoScalingGroupsType> instance
 
   
 
@@ -641,11 +650,11 @@ the C<NextToken> parameter.
 
 
 
-=head2 DescribeAutoScalingInstances()
+=head2 DescribeAutoScalingInstances([MaxRecords => Int, NextToken => Str, InstanceIds => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::AutoScaling::DescribeAutoScalingInstances>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeAutoScalingInstances>
 
-  Returns: L<Paws::AutoScaling::AutoScalingInstancesType>
+Returns: a L<Paws::AutoScaling::AutoScalingInstancesType> instance
 
   
 
@@ -669,9 +678,9 @@ the call with the returned token in the C<NextToken> parameter.
 
 =head2 DescribeAutoScalingNotificationTypes()
 
-  Arguments described in: L<Paws::AutoScaling::DescribeAutoScalingNotificationTypes>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeAutoScalingNotificationTypes>
 
-  Returns: L<Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer>
+Returns: a L<Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer> instance
 
   
 
@@ -687,11 +696,11 @@ Lists the notification types that are supported by Auto Scaling.
 
 
 
-=head2 DescribeLaunchConfigurations()
+=head2 DescribeLaunchConfigurations([MaxRecords => Int, LaunchConfigurationNames => ArrayRef[Str], NextToken => Str])
 
-  Arguments described in: L<Paws::AutoScaling::DescribeLaunchConfigurations>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeLaunchConfigurations>
 
-  Returns: L<Paws::AutoScaling::LaunchConfigurationsType>
+Returns: a L<Paws::AutoScaling::LaunchConfigurationsType> instance
 
   
 
@@ -713,11 +722,11 @@ the C<NextToken> parameter.
 
 
 
-=head2 DescribeLifecycleHooks()
+=head2 DescribeLifecycleHooks(AutoScalingGroupName => Str, [LifecycleHookNames => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::AutoScaling::DescribeLifecycleHooks>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeLifecycleHooks>
 
-  Returns: L<Paws::AutoScaling::DescribeLifecycleHooksAnswer>
+Returns: a L<Paws::AutoScaling::DescribeLifecycleHooksAnswer> instance
 
   
 
@@ -735,9 +744,9 @@ Describes the lifecycle hooks for the specified Auto Scaling group.
 
 =head2 DescribeLifecycleHookTypes()
 
-  Arguments described in: L<Paws::AutoScaling::DescribeLifecycleHookTypes>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeLifecycleHookTypes>
 
-  Returns: L<Paws::AutoScaling::DescribeLifecycleHookTypesAnswer>
+Returns: a L<Paws::AutoScaling::DescribeLifecycleHookTypesAnswer> instance
 
   
 
@@ -755,9 +764,9 @@ Describes the available types of lifecycle hooks.
 
 =head2 DescribeMetricCollectionTypes()
 
-  Arguments described in: L<Paws::AutoScaling::DescribeMetricCollectionTypes>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeMetricCollectionTypes>
 
-  Returns: L<Paws::AutoScaling::DescribeMetricCollectionTypesAnswer>
+Returns: a L<Paws::AutoScaling::DescribeMetricCollectionTypesAnswer> instance
 
   
 
@@ -777,11 +786,11 @@ must explicitly request it when calling EnableMetricsCollection.
 
 
 
-=head2 DescribeNotificationConfigurations()
+=head2 DescribeNotificationConfigurations([NextToken => Str, MaxRecords => Int, AutoScalingGroupNames => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::AutoScaling::DescribeNotificationConfigurations>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeNotificationConfigurations>
 
-  Returns: L<Paws::AutoScaling::DescribeNotificationConfigurationsAnswer>
+Returns: a L<Paws::AutoScaling::DescribeNotificationConfigurationsAnswer> instance
 
   
 
@@ -798,11 +807,11 @@ Scaling group.
 
 
 
-=head2 DescribePolicies()
+=head2 DescribePolicies([AutoScalingGroupName => Str, MaxRecords => Int, NextToken => Str, PolicyNames => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::AutoScaling::DescribePolicies>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribePolicies>
 
-  Returns: L<Paws::AutoScaling::PoliciesType>
+Returns: a L<Paws::AutoScaling::PoliciesType> instance
 
   
 
@@ -823,11 +832,11 @@ the C<NextToken> parameter.
 
 
 
-=head2 DescribeScalingActivities()
+=head2 DescribeScalingActivities([ActivityIds => ArrayRef[Str], AutoScalingGroupName => Str, MaxRecords => Int, NextToken => Str])
 
-  Arguments described in: L<Paws::AutoScaling::DescribeScalingActivities>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeScalingActivities>
 
-  Returns: L<Paws::AutoScaling::ActivitiesType>
+Returns: a L<Paws::AutoScaling::ActivitiesType> instance
 
   
 
@@ -853,9 +862,9 @@ the C<NextToken> parameter.
 
 =head2 DescribeScalingProcessTypes()
 
-  Arguments described in: L<Paws::AutoScaling::DescribeScalingProcessTypes>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeScalingProcessTypes>
 
-  Returns: L<Paws::AutoScaling::ProcessesType>
+Returns: a L<Paws::AutoScaling::ProcessesType> instance
 
   
 
@@ -872,11 +881,11 @@ SuspendProcesses actions.
 
 
 
-=head2 DescribeScheduledActions()
+=head2 DescribeScheduledActions([NextToken => Str, MaxRecords => Int, StartTime => Str, AutoScalingGroupName => Str, EndTime => Str, ScheduledActionNames => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::AutoScaling::DescribeScheduledActions>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeScheduledActions>
 
-  Returns: L<Paws::AutoScaling::ScheduledActionsType>
+Returns: a L<Paws::AutoScaling::ScheduledActionsType> instance
 
   
 
@@ -894,11 +903,11 @@ DescribeScalingActivities.
 
 
 
-=head2 DescribeTags()
+=head2 DescribeTags([NextToken => Str, MaxRecords => Int, Filters => ArrayRef[Paws::AutoScaling::Filter]])
 
-  Arguments described in: L<Paws::AutoScaling::DescribeTags>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeTags>
 
-  Returns: L<Paws::AutoScaling::TagsType>
+Returns: a L<Paws::AutoScaling::TagsType> instance
 
   
 
@@ -925,9 +934,9 @@ match, no special message is returned.
 
 =head2 DescribeTerminationPolicyTypes()
 
-  Arguments described in: L<Paws::AutoScaling::DescribeTerminationPolicyTypes>
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeTerminationPolicyTypes>
 
-  Returns: L<Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer>
+Returns: a L<Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer> instance
 
   
 
@@ -943,11 +952,11 @@ Lists the termination policies supported by Auto Scaling.
 
 
 
-=head2 DetachInstances()
+=head2 DetachInstances(AutoScalingGroupName => Str, ShouldDecrementDesiredCapacity => Bool, [InstanceIds => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::AutoScaling::DetachInstances>
+Each argument is described in detail in: L<Paws::AutoScaling::DetachInstances>
 
-  Returns: L<Paws::AutoScaling::DetachInstancesAnswer>
+Returns: a L<Paws::AutoScaling::DetachInstancesAnswer> instance
 
   
 
@@ -968,11 +977,11 @@ Group in the I<Auto Scaling Developer Guide>.
 
 
 
-=head2 DisableMetricsCollection()
+=head2 DisableMetricsCollection(AutoScalingGroupName => Str, [Metrics => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::AutoScaling::DisableMetricsCollection>
+Each argument is described in detail in: L<Paws::AutoScaling::DisableMetricsCollection>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -989,11 +998,11 @@ Scaling group.
 
 
 
-=head2 EnableMetricsCollection()
+=head2 EnableMetricsCollection(AutoScalingGroupName => Str, Granularity => Str, [Metrics => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::AutoScaling::EnableMetricsCollection>
+Each argument is described in detail in: L<Paws::AutoScaling::EnableMetricsCollection>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1013,11 +1022,11 @@ launch configuration for the group is set to C<True>.
 
 
 
-=head2 EnterStandby()
+=head2 EnterStandby(AutoScalingGroupName => Str, ShouldDecrementDesiredCapacity => Bool, [InstanceIds => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::AutoScaling::EnterStandby>
+Each argument is described in detail in: L<Paws::AutoScaling::EnterStandby>
 
-  Returns: L<Paws::AutoScaling::EnterStandbyAnswer>
+Returns: a L<Paws::AutoScaling::EnterStandbyAnswer> instance
 
   
 
@@ -1036,11 +1045,11 @@ Scaling Developer Guide>.
 
 
 
-=head2 ExecutePolicy()
+=head2 ExecutePolicy(PolicyName => Str, [HonorCooldown => Bool, AutoScalingGroupName => Str])
 
-  Arguments described in: L<Paws::AutoScaling::ExecutePolicy>
+Each argument is described in detail in: L<Paws::AutoScaling::ExecutePolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1056,11 +1065,11 @@ Executes the specified policy.
 
 
 
-=head2 ExitStandby()
+=head2 ExitStandby(AutoScalingGroupName => Str, [InstanceIds => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::AutoScaling::ExitStandby>
+Each argument is described in detail in: L<Paws::AutoScaling::ExitStandby>
 
-  Returns: L<Paws::AutoScaling::ExitStandbyAnswer>
+Returns: a L<Paws::AutoScaling::ExitStandbyAnswer> instance
 
   
 
@@ -1079,11 +1088,11 @@ Scaling Developer Guide>.
 
 
 
-=head2 PutLifecycleHook()
+=head2 PutLifecycleHook(AutoScalingGroupName => Str, LifecycleHookName => Str, [NotificationMetadata => Str, HeartbeatTimeout => Int, DefaultResult => Str, LifecycleTransition => Str, RoleARN => Str, NotificationTargetARN => Str])
 
-  Arguments described in: L<Paws::AutoScaling::PutLifecycleHook>
+Each argument is described in detail in: L<Paws::AutoScaling::PutLifecycleHook>
 
-  Returns: L<Paws::AutoScaling::PutLifecycleHookAnswer>
+Returns: a L<Paws::AutoScaling::PutLifecycleHookAnswer> instance
 
   
 
@@ -1128,11 +1137,11 @@ Terminating State in the I<Auto Scaling Developer Guide>.
 
 
 
-=head2 PutNotificationConfiguration()
+=head2 PutNotificationConfiguration(AutoScalingGroupName => Str, NotificationTypes => ArrayRef[Str], TopicARN => Str)
 
-  Arguments described in: L<Paws::AutoScaling::PutNotificationConfiguration>
+Each argument is described in detail in: L<Paws::AutoScaling::PutNotificationConfiguration>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1155,11 +1164,11 @@ This configuration overwrites an existing configuration.
 
 
 
-=head2 PutScalingPolicy()
+=head2 PutScalingPolicy(AdjustmentType => Str, AutoScalingGroupName => Str, PolicyName => Str, ScalingAdjustment => Int, [MinAdjustmentStep => Int, Cooldown => Int])
 
-  Arguments described in: L<Paws::AutoScaling::PutScalingPolicy>
+Each argument is described in detail in: L<Paws::AutoScaling::PutScalingPolicy>
 
-  Returns: L<Paws::AutoScaling::PolicyARNType>
+Returns: a L<Paws::AutoScaling::PolicyARNType> instance
 
   
 
@@ -1178,11 +1187,11 @@ an existing policy is not changed in this update request.
 
 
 
-=head2 PutScheduledUpdateGroupAction()
+=head2 PutScheduledUpdateGroupAction(AutoScalingGroupName => Str, ScheduledActionName => Str, [MaxSize => Int, Recurrence => Str, StartTime => Str, MinSize => Int, Time => Str, EndTime => Str, DesiredCapacity => Int])
 
-  Arguments described in: L<Paws::AutoScaling::PutScheduledUpdateGroupAction>
+Each argument is described in detail in: L<Paws::AutoScaling::PutScheduledUpdateGroupAction>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1207,11 +1216,11 @@ Auto Scaling supports the date and time expressed in
 
 
 
-=head2 RecordLifecycleActionHeartbeat()
+=head2 RecordLifecycleActionHeartbeat(AutoScalingGroupName => Str, LifecycleActionToken => Str, LifecycleHookName => Str)
 
-  Arguments described in: L<Paws::AutoScaling::RecordLifecycleActionHeartbeat>
+Each argument is described in detail in: L<Paws::AutoScaling::RecordLifecycleActionHeartbeat>
 
-  Returns: L<Paws::AutoScaling::RecordLifecycleActionHeartbeatAnswer>
+Returns: a L<Paws::AutoScaling::RecordLifecycleActionHeartbeatAnswer> instance
 
   
 
@@ -1253,11 +1262,11 @@ Terminating State in the I<Auto Scaling Developer Guide>.
 
 
 
-=head2 ResumeProcesses()
+=head2 ResumeProcesses(AutoScalingGroupName => Str, [ScalingProcesses => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::AutoScaling::ResumeProcesses>
+Each argument is described in detail in: L<Paws::AutoScaling::ResumeProcesses>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1277,11 +1286,11 @@ Resume Auto Scaling Processes in the I<Auto Scaling Developer Guide>.
 
 
 
-=head2 SetDesiredCapacity()
+=head2 SetDesiredCapacity(AutoScalingGroupName => Str, DesiredCapacity => Int, [HonorCooldown => Bool])
 
-  Arguments described in: L<Paws::AutoScaling::SetDesiredCapacity>
+Each argument is described in detail in: L<Paws::AutoScaling::SetDesiredCapacity>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1297,11 +1306,11 @@ Sets the size of the specified AutoScalingGroup.
 
 
 
-=head2 SetInstanceHealth()
+=head2 SetInstanceHealth(HealthStatus => Str, InstanceId => Str, [ShouldRespectGracePeriod => Bool])
 
-  Arguments described in: L<Paws::AutoScaling::SetInstanceHealth>
+Each argument is described in detail in: L<Paws::AutoScaling::SetInstanceHealth>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1320,11 +1329,11 @@ Guide>.
 
 
 
-=head2 SuspendProcesses()
+=head2 SuspendProcesses(AutoScalingGroupName => Str, [ScalingProcesses => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::AutoScaling::SuspendProcesses>
+Each argument is described in detail in: L<Paws::AutoScaling::SuspendProcesses>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1351,11 +1360,11 @@ the I<Auto Scaling Developer Guide>.
 
 
 
-=head2 TerminateInstanceInAutoScalingGroup()
+=head2 TerminateInstanceInAutoScalingGroup(InstanceId => Str, ShouldDecrementDesiredCapacity => Bool)
 
-  Arguments described in: L<Paws::AutoScaling::TerminateInstanceInAutoScalingGroup>
+Each argument is described in detail in: L<Paws::AutoScaling::TerminateInstanceInAutoScalingGroup>
 
-  Returns: L<Paws::AutoScaling::ActivityType>
+Returns: a L<Paws::AutoScaling::ActivityType> instance
 
   
 
@@ -1375,11 +1384,11 @@ terminated immediately.
 
 
 
-=head2 UpdateAutoScalingGroup()
+=head2 UpdateAutoScalingGroup(AutoScalingGroupName => Str, [MinSize => Int, DesiredCapacity => Int, PlacementGroup => Str, HealthCheckGracePeriod => Int, AvailabilityZones => ArrayRef[Str], TerminationPolicies => ArrayRef[Str], LaunchConfigurationName => Str, MaxSize => Int, HealthCheckType => Str, DefaultCooldown => Int, VPCZoneIdentifier => Str])
 
-  Arguments described in: L<Paws::AutoScaling::UpdateAutoScalingGroup>
+Each argument is described in detail in: L<Paws::AutoScaling::UpdateAutoScalingGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 

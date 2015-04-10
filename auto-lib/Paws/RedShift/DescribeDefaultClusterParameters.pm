@@ -98,7 +98,7 @@ The name of the cluster parameter group family.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeDefaultClusterParameters in Paws::RedShift
+This class forms part of L<Paws>, documenting arguments for method DescribeDefaultClusterParameters in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -72,7 +72,7 @@ of results.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListPresets in Paws::ElasticTranscoder
+This class forms part of L<Paws>, documenting arguments for method ListPresets in L<Paws::ElasticTranscoder>
 
 =head1 BUGS and CONTRIBUTIONS
 

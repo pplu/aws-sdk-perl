@@ -70,7 +70,7 @@ parameters must be passed explicitly for operations that take them.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeTrustedAdvisorCheckResult in Paws::Support
+This class forms part of L<Paws>, documenting arguments for method DescribeTrustedAdvisorCheckResult in L<Paws::Support>
 
 =head1 BUGS and CONTRIBUTIONS
 

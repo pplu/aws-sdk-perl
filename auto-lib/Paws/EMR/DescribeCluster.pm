@@ -52,7 +52,7 @@ The identifier of the cluster to describe.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeCluster in Paws::EMR
+This class forms part of L<Paws>, documenting arguments for method DescribeCluster in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 

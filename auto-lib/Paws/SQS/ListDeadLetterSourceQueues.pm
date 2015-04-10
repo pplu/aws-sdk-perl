@@ -52,7 +52,7 @@ The queue URL of a dead letter queue.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListDeadLetterSourceQueues in Paws::SQS
+This class forms part of L<Paws>, documenting arguments for method ListDeadLetterSourceQueues in L<Paws::SQS>
 
 =head1 BUGS and CONTRIBUTIONS
 

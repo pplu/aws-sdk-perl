@@ -87,7 +87,7 @@ represent the virtual tapes you want to describe.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeTapeArchives in Paws::StorageGateway
+This class forms part of L<Paws>, documenting arguments for method DescribeTapeArchives in L<Paws::StorageGateway>
 
 =head1 BUGS and CONTRIBUTIONS
 

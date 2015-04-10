@@ -53,7 +53,7 @@ are 128, 256, 512, 1024 and so on. The current limit is 1024 bytes.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GenerateRandom in Paws::KMS
+This class forms part of L<Paws>, documenting arguments for method GenerateRandom in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 

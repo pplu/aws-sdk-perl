@@ -129,7 +129,7 @@ The ARN of the topic you want to subscribe to.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for Subscribe in Paws::SNS
+This class forms part of L<Paws>, documenting arguments for method Subscribe in L<Paws::SNS>
 
 =head1 BUGS and CONTRIBUTIONS
 

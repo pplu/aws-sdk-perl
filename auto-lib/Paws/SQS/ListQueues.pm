@@ -53,7 +53,7 @@ name begins with the specified string are returned.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListQueues in Paws::SQS
+This class forms part of L<Paws>, documenting arguments for method ListQueues in L<Paws::SQS>
 
 =head1 BUGS and CONTRIBUTIONS
 

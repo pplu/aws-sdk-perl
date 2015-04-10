@@ -69,7 +69,7 @@ The URL of the Amazon SQS queue to take action on.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RemovePermission in Paws::SQS
+This class forms part of L<Paws>, documenting arguments for method RemovePermission in L<Paws::SQS>
 
 =head1 BUGS and CONTRIBUTIONS
 

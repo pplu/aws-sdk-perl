@@ -52,7 +52,7 @@ The IDs of the Trusted Advisor checks.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeTrustedAdvisorCheckRefreshStatuses in Paws::Support
+This class forms part of L<Paws>, documenting arguments for method DescribeTrustedAdvisorCheckRefreshStatuses in L<Paws::Support>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -52,7 +52,7 @@ The ID assigned to the C<MLModel> during creation.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteRealtimeEndpoint in Paws::MachineLearning
+This class forms part of L<Paws>, documenting arguments for method DeleteRealtimeEndpoint in L<Paws::MachineLearning>
 
 =head1 BUGS and CONTRIBUTIONS
 

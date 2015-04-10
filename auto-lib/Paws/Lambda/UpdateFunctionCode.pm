@@ -76,7 +76,7 @@ Based64-encoded .zip file containing your packaged source code.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateFunctionCode in Paws::Lambda
+This class forms part of L<Paws>, documenting arguments for method UpdateFunctionCode in L<Paws::Lambda>
 
 =head1 BUGS and CONTRIBUTIONS
 

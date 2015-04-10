@@ -52,7 +52,7 @@ A user-supplied ID that uniquely identifies the C<MLModel>.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteMLModel in Paws::MachineLearning
+This class forms part of L<Paws>, documenting arguments for method DeleteMLModel in L<Paws::MachineLearning>
 
 =head1 BUGS and CONTRIBUTIONS
 

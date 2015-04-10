@@ -69,7 +69,7 @@ The pagination token that indicates the next set of results to retrieve
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListBootstrapActions in Paws::EMR
+This class forms part of L<Paws>, documenting arguments for method ListBootstrapActions in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 

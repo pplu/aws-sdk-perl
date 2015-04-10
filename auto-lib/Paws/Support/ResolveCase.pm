@@ -54,7 +54,7 @@ case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ResolveCase in Paws::Support
+This class forms part of L<Paws>, documenting arguments for method ResolveCase in L<Paws::Support>
 
 =head1 BUGS and CONTRIBUTIONS
 

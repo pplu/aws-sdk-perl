@@ -52,7 +52,7 @@ The Amazon RDS instance's ARN.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeregisterRdsDbInstance in Paws::OpsWorks
+This class forms part of L<Paws>, documenting arguments for method DeregisterRdsDbInstance in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 

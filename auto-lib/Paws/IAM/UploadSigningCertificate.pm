@@ -68,7 +68,7 @@ The name of the user the signing certificate is for.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UploadSigningCertificate in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method UploadSigningCertificate in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -69,7 +69,7 @@ The label for the client.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateLunaClient in Paws::CloudHSM
+This class forms part of L<Paws>, documenting arguments for method CreateLunaClient in L<Paws::CloudHSM>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -70,7 +70,7 @@ TargetARN for specified VolumeARN.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteChapCredentials in Paws::StorageGateway
+This class forms part of L<Paws>, documenting arguments for method DeleteChapCredentials in L<Paws::StorageGateway>
 
 =head1 BUGS and CONTRIBUTIONS
 

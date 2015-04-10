@@ -129,7 +129,7 @@ The size must be gigabyte (1024*1024*1024 byte) aligned.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateTapes in Paws::StorageGateway
+This class forms part of L<Paws>, documenting arguments for method CreateTapes in L<Paws::StorageGateway>
 
 =head1 BUGS and CONTRIBUTIONS
 

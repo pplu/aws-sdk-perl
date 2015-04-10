@@ -135,7 +135,7 @@ A section of the request body that specifies the video parameters.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreatePreset in Paws::ElasticTranscoder
+This class forms part of L<Paws>, documenting arguments for method CreatePreset in L<Paws::ElasticTranscoder>
 
 =head1 BUGS and CONTRIBUTIONS
 

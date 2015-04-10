@@ -52,7 +52,7 @@ The ARN of the client to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteLunaClient in Paws::CloudHSM
+This class forms part of L<Paws>, documenting arguments for method DeleteLunaClient in L<Paws::CloudHSM>
 
 =head1 BUGS and CONTRIBUTIONS
 

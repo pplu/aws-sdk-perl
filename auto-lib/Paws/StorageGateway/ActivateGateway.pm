@@ -163,7 +163,7 @@ I<Valid Values>: "IBM-ULT3580-TD5"
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ActivateGateway in Paws::StorageGateway
+This class forms part of L<Paws>, documenting arguments for method ActivateGateway in L<Paws::StorageGateway>
 
 =head1 BUGS and CONTRIBUTIONS
 

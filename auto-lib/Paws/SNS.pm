@@ -149,8 +149,17 @@ Paws::SNS - Perl Interface to AWS Amazon Simple Notification Service
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('SNS')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -183,11 +192,11 @@ For a list of available SDKs, go to Tools for Amazon Web Services.
 
 =head1 METHODS
 
-=head2 AddPermission()
+=head2 AddPermission(ActionName => ArrayRef[Str], AWSAccountId => ArrayRef[Str], Label => Str, TopicArn => Str)
 
-  Arguments described in: L<Paws::SNS::AddPermission>
+Each argument is described in detail in: L<Paws::SNS::AddPermission>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -204,11 +213,11 @@ for the specified AWS accounts to the specified actions.
 
 
 
-=head2 ConfirmSubscription()
+=head2 ConfirmSubscription(Token => Str, TopicArn => Str, [AuthenticateOnUnsubscribe => Str])
 
-  Arguments described in: L<Paws::SNS::ConfirmSubscription>
+Each argument is described in detail in: L<Paws::SNS::ConfirmSubscription>
 
-  Returns: L<Paws::SNS::ConfirmSubscriptionResponse>
+Returns: a L<Paws::SNS::ConfirmSubscriptionResponse> instance
 
   
 
@@ -228,11 +237,11 @@ only when the C<AuthenticateOnUnsubscribe> flag is set to "true".
 
 
 
-=head2 CreatePlatformApplication()
+=head2 CreatePlatformApplication(Attributes => Paws::SNS::MapStringToString, Name => Str, Platform => Str)
 
-  Arguments described in: L<Paws::SNS::CreatePlatformApplication>
+Each argument is described in detail in: L<Paws::SNS::CreatePlatformApplication>
 
-  Returns: L<Paws::SNS::CreatePlatformApplicationResponse>
+Returns: a L<Paws::SNS::CreatePlatformApplicationResponse> instance
 
   
 
@@ -262,11 +271,11 @@ Amazon SNS Mobile Push Notifications.
 
 
 
-=head2 CreatePlatformEndpoint()
+=head2 CreatePlatformEndpoint(PlatformApplicationArn => Str, Token => Str, [CustomUserData => Str, Attributes => Paws::SNS::MapStringToString])
 
-  Arguments described in: L<Paws::SNS::CreatePlatformEndpoint>
+Each argument is described in detail in: L<Paws::SNS::CreatePlatformEndpoint>
 
-  Returns: L<Paws::SNS::CreateEndpointResponse>
+Returns: a L<Paws::SNS::CreateEndpointResponse> instance
 
   
 
@@ -297,11 +306,11 @@ for Baidu.
 
 
 
-=head2 CreateTopic()
+=head2 CreateTopic(Name => Str)
 
-  Arguments described in: L<Paws::SNS::CreateTopic>
+Each argument is described in detail in: L<Paws::SNS::CreateTopic>
 
-  Returns: L<Paws::SNS::CreateTopicResponse>
+Returns: a L<Paws::SNS::CreateTopicResponse> instance
 
   
 
@@ -321,11 +330,11 @@ ARN is returned without creating a new topic.
 
 
 
-=head2 DeleteEndpoint()
+=head2 DeleteEndpoint(EndpointArn => Str)
 
-  Arguments described in: L<Paws::SNS::DeleteEndpoint>
+Each argument is described in detail in: L<Paws::SNS::DeleteEndpoint>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -342,11 +351,11 @@ more information, see Using Amazon SNS Mobile Push Notifications.
 
 
 
-=head2 DeletePlatformApplication()
+=head2 DeletePlatformApplication(PlatformApplicationArn => Str)
 
-  Arguments described in: L<Paws::SNS::DeletePlatformApplication>
+Each argument is described in detail in: L<Paws::SNS::DeletePlatformApplication>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -364,11 +373,11 @@ Using Amazon SNS Mobile Push Notifications.
 
 
 
-=head2 DeleteTopic()
+=head2 DeleteTopic(TopicArn => Str)
 
-  Arguments described in: L<Paws::SNS::DeleteTopic>
+Each argument is described in detail in: L<Paws::SNS::DeleteTopic>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -387,11 +396,11 @@ does not exist does not result in an error.
 
 
 
-=head2 GetEndpointAttributes()
+=head2 GetEndpointAttributes(EndpointArn => Str)
 
-  Arguments described in: L<Paws::SNS::GetEndpointAttributes>
+Each argument is described in detail in: L<Paws::SNS::GetEndpointAttributes>
 
-  Returns: L<Paws::SNS::GetEndpointAttributesResponse>
+Returns: a L<Paws::SNS::GetEndpointAttributesResponse> instance
 
   
 
@@ -409,11 +418,11 @@ see Using Amazon SNS Mobile Push Notifications.
 
 
 
-=head2 GetPlatformApplicationAttributes()
+=head2 GetPlatformApplicationAttributes(PlatformApplicationArn => Str)
 
-  Arguments described in: L<Paws::SNS::GetPlatformApplicationAttributes>
+Each argument is described in detail in: L<Paws::SNS::GetPlatformApplicationAttributes>
 
-  Returns: L<Paws::SNS::GetPlatformApplicationAttributesResponse>
+Returns: a L<Paws::SNS::GetPlatformApplicationAttributesResponse> instance
 
   
 
@@ -431,11 +440,11 @@ information, see Using Amazon SNS Mobile Push Notifications.
 
 
 
-=head2 GetSubscriptionAttributes()
+=head2 GetSubscriptionAttributes(SubscriptionArn => Str)
 
-  Arguments described in: L<Paws::SNS::GetSubscriptionAttributes>
+Each argument is described in detail in: L<Paws::SNS::GetSubscriptionAttributes>
 
-  Returns: L<Paws::SNS::GetSubscriptionAttributesResponse>
+Returns: a L<Paws::SNS::GetSubscriptionAttributesResponse> instance
 
   
 
@@ -451,11 +460,11 @@ Returns all of the properties of a subscription.
 
 
 
-=head2 GetTopicAttributes()
+=head2 GetTopicAttributes(TopicArn => Str)
 
-  Arguments described in: L<Paws::SNS::GetTopicAttributes>
+Each argument is described in detail in: L<Paws::SNS::GetTopicAttributes>
 
-  Returns: L<Paws::SNS::GetTopicAttributesResponse>
+Returns: a L<Paws::SNS::GetTopicAttributesResponse> instance
 
   
 
@@ -472,11 +481,11 @@ might differ based on the authorization of the user.
 
 
 
-=head2 ListEndpointsByPlatformApplication()
+=head2 ListEndpointsByPlatformApplication(PlatformApplicationArn => Str, [NextToken => Str])
 
-  Arguments described in: L<Paws::SNS::ListEndpointsByPlatformApplication>
+Each argument is described in detail in: L<Paws::SNS::ListEndpointsByPlatformApplication>
 
-  Returns: L<Paws::SNS::ListEndpointsByPlatformApplicationResponse>
+Returns: a L<Paws::SNS::ListEndpointsByPlatformApplicationResponse> instance
 
   
 
@@ -501,11 +510,11 @@ SNS Mobile Push Notifications.
 
 
 
-=head2 ListPlatformApplications()
+=head2 ListPlatformApplications([NextToken => Str])
 
-  Arguments described in: L<Paws::SNS::ListPlatformApplications>
+Each argument is described in detail in: L<Paws::SNS::ListPlatformApplications>
 
-  Returns: L<Paws::SNS::ListPlatformApplicationsResponse>
+Returns: a L<Paws::SNS::ListPlatformApplicationsResponse> instance
 
   
 
@@ -529,11 +538,11 @@ see Using Amazon SNS Mobile Push Notifications.
 
 
 
-=head2 ListSubscriptions()
+=head2 ListSubscriptions([NextToken => Str])
 
-  Arguments described in: L<Paws::SNS::ListSubscriptions>
+Each argument is described in detail in: L<Paws::SNS::ListSubscriptions>
 
-  Returns: L<Paws::SNS::ListSubscriptionsResponse>
+Returns: a L<Paws::SNS::ListSubscriptionsResponse> instance
 
   
 
@@ -552,11 +561,11 @@ parameter in a new C<ListSubscriptions> call to get further results.
 
 
 
-=head2 ListSubscriptionsByTopic()
+=head2 ListSubscriptionsByTopic(TopicArn => Str, [NextToken => Str])
 
-  Arguments described in: L<Paws::SNS::ListSubscriptionsByTopic>
+Each argument is described in detail in: L<Paws::SNS::ListSubscriptionsByTopic>
 
-  Returns: L<Paws::SNS::ListSubscriptionsByTopicResponse>
+Returns: a L<Paws::SNS::ListSubscriptionsByTopicResponse> instance
 
   
 
@@ -576,11 +585,11 @@ results.
 
 
 
-=head2 ListTopics()
+=head2 ListTopics([NextToken => Str])
 
-  Arguments described in: L<Paws::SNS::ListTopics>
+Each argument is described in detail in: L<Paws::SNS::ListTopics>
 
-  Returns: L<Paws::SNS::ListTopicsResponse>
+Returns: a L<Paws::SNS::ListTopicsResponse> instance
 
   
 
@@ -599,11 +608,11 @@ call to get further results.
 
 
 
-=head2 Publish()
+=head2 Publish(Message => Str, [Subject => Str, MessageStructure => Str, TargetArn => Str, TopicArn => Str, MessageAttributes => Paws::SNS::MessageAttributeMap])
 
-  Arguments described in: L<Paws::SNS::Publish>
+Each argument is described in detail in: L<Paws::SNS::Publish>
 
-  Returns: L<Paws::SNS::PublishResponse>
+Returns: a L<Paws::SNS::PublishResponse> instance
 
   
 
@@ -629,11 +638,11 @@ shows a request and response for publishing to a mobile endpoint.
 
 
 
-=head2 RemovePermission()
+=head2 RemovePermission(Label => Str, TopicArn => Str)
 
-  Arguments described in: L<Paws::SNS::RemovePermission>
+Each argument is described in detail in: L<Paws::SNS::RemovePermission>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -649,11 +658,11 @@ Removes a statement from a topic's access control policy.
 
 
 
-=head2 SetEndpointAttributes()
+=head2 SetEndpointAttributes(Attributes => Paws::SNS::MapStringToString, EndpointArn => Str)
 
-  Arguments described in: L<Paws::SNS::SetEndpointAttributes>
+Each argument is described in detail in: L<Paws::SNS::SetEndpointAttributes>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -671,11 +680,11 @@ information, see Using Amazon SNS Mobile Push Notifications.
 
 
 
-=head2 SetPlatformApplicationAttributes()
+=head2 SetPlatformApplicationAttributes(Attributes => Paws::SNS::MapStringToString, PlatformApplicationArn => Str)
 
-  Arguments described in: L<Paws::SNS::SetPlatformApplicationAttributes>
+Each argument is described in detail in: L<Paws::SNS::SetPlatformApplicationAttributes>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -693,11 +702,11 @@ information, see Using Amazon SNS Mobile Push Notifications.
 
 
 
-=head2 SetSubscriptionAttributes()
+=head2 SetSubscriptionAttributes(AttributeName => Str, SubscriptionArn => Str, [AttributeValue => Str])
 
-  Arguments described in: L<Paws::SNS::SetSubscriptionAttributes>
+Each argument is described in detail in: L<Paws::SNS::SetSubscriptionAttributes>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -714,11 +723,11 @@ value.
 
 
 
-=head2 SetTopicAttributes()
+=head2 SetTopicAttributes(AttributeName => Str, TopicArn => Str, [AttributeValue => Str])
 
-  Arguments described in: L<Paws::SNS::SetTopicAttributes>
+Each argument is described in detail in: L<Paws::SNS::SetTopicAttributes>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -734,11 +743,11 @@ Allows a topic owner to set an attribute of the topic to a new value.
 
 
 
-=head2 Subscribe()
+=head2 Subscribe(Protocol => Str, TopicArn => Str, [Endpoint => Str])
 
-  Arguments described in: L<Paws::SNS::Subscribe>
+Each argument is described in detail in: L<Paws::SNS::Subscribe>
 
-  Returns: L<Paws::SNS::SubscribeResponse>
+Returns: a L<Paws::SNS::SubscribeResponse> instance
 
   
 
@@ -757,11 +766,11 @@ the confirmation message. Confirmation tokens are valid for three days.
 
 
 
-=head2 Unsubscribe()
+=head2 Unsubscribe(SubscriptionArn => Str)
 
-  Arguments described in: L<Paws::SNS::Unsubscribe>
+Each argument is described in detail in: L<Paws::SNS::Unsubscribe>
 
-  Returns: nothing
+Returns: nothing
 
   
 

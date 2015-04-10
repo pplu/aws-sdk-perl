@@ -68,7 +68,7 @@ The ARN of the topic for which you wish to find subscriptions.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListSubscriptionsByTopic in Paws::SNS
+This class forms part of L<Paws>, documenting arguments for method ListSubscriptionsByTopic in L<Paws::SNS>
 
 =head1 BUGS and CONTRIBUTIONS
 

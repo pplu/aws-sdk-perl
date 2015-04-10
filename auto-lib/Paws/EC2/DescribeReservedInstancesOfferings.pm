@@ -317,7 +317,7 @@ One or more Reserved Instances offering IDs.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeReservedInstancesOfferings in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DescribeReservedInstancesOfferings in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

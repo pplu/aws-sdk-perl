@@ -106,7 +106,7 @@ The name of the vault.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetJobOutput in Paws::Glacier
+This class forms part of L<Paws>, documenting arguments for method GetJobOutput in L<Paws::Glacier>
 
 =head1 BUGS and CONTRIBUTIONS
 

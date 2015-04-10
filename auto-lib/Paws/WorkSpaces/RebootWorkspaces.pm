@@ -52,7 +52,7 @@ An array of structures that specify the WorkSpaces to reboot.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RebootWorkspaces in Paws::WorkSpaces
+This class forms part of L<Paws>, documenting arguments for method RebootWorkspaces in L<Paws::WorkSpaces>
 
 =head1 BUGS and CONTRIBUTIONS
 

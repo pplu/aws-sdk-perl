@@ -57,7 +57,7 @@ The name of the analysis scheme you want to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteAnalysisScheme in Paws::CloudSearch
+This class forms part of L<Paws>, documenting arguments for method DeleteAnalysisScheme in L<Paws::CloudSearch>
 
 =head1 BUGS and CONTRIBUTIONS
 

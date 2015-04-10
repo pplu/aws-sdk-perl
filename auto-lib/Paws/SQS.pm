@@ -109,8 +109,17 @@ Paws::SQS - Perl Interface to AWS Amazon Simple Queue Service
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('SQS')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -172,11 +181,11 @@ For a list of available SDKs, go to Tools for Amazon Web Services.
 
 =head1 METHODS
 
-=head2 AddPermission()
+=head2 AddPermission(Actions => ArrayRef[Str], AWSAccountIds => ArrayRef[Str], Label => Str, QueueUrl => Str)
 
-  Arguments described in: L<Paws::SQS::AddPermission>
+Each argument is described in detail in: L<Paws::SQS::AddPermission>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -212,11 +221,11 @@ C<&Attribute.2=that>
 
 
 
-=head2 ChangeMessageVisibility()
+=head2 ChangeMessageVisibility(QueueUrl => Str, ReceiptHandle => Str, VisibilityTimeout => Int)
 
-  Arguments described in: L<Paws::SQS::ChangeMessageVisibility>
+Each argument is described in detail in: L<Paws::SQS::ChangeMessageVisibility>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -263,11 +272,11 @@ value you set with the C<ChangeMessageVisibility> action.
 
 
 
-=head2 ChangeMessageVisibilityBatch()
+=head2 ChangeMessageVisibilityBatch(Entries => ArrayRef[Paws::SQS::ChangeMessageVisibilityBatchRequestEntry], QueueUrl => Str)
 
-  Arguments described in: L<Paws::SQS::ChangeMessageVisibilityBatch>
+Each argument is described in detail in: L<Paws::SQS::ChangeMessageVisibilityBatch>
 
-  Returns: L<Paws::SQS::ChangeMessageVisibilityBatchResult>
+Returns: a L<Paws::SQS::ChangeMessageVisibilityBatchResult> instance
 
   
 
@@ -298,11 +307,11 @@ C<&Attribute.2=that>
 
 
 
-=head2 CreateQueue()
+=head2 CreateQueue(QueueName => Str, [Attributes => Paws::SQS::AttributeMap])
 
-  Arguments described in: L<Paws::SQS::CreateQueue>
+Each argument is described in detail in: L<Paws::SQS::CreateQueue>
 
-  Returns: L<Paws::SQS::CreateQueueResult>
+Returns: a L<Paws::SQS::CreateQueueResult> instance
 
   
 
@@ -347,11 +356,11 @@ C<&Attribute.2=that>
 
 
 
-=head2 DeleteMessage()
+=head2 DeleteMessage(QueueUrl => Str, ReceiptHandle => Str)
 
-  Arguments described in: L<Paws::SQS::DeleteMessage>
+Each argument is described in detail in: L<Paws::SQS::DeleteMessage>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -388,11 +397,11 @@ not a problem.
 
 
 
-=head2 DeleteMessageBatch()
+=head2 DeleteMessageBatch(Entries => ArrayRef[Paws::SQS::DeleteMessageBatchRequestEntry], QueueUrl => Str)
 
-  Arguments described in: L<Paws::SQS::DeleteMessageBatch>
+Each argument is described in detail in: L<Paws::SQS::DeleteMessageBatch>
 
-  Returns: L<Paws::SQS::DeleteMessageBatchResult>
+Returns: a L<Paws::SQS::DeleteMessageBatchResult> instance
 
   
 
@@ -423,11 +432,11 @@ C<&Attribute.2=that>
 
 
 
-=head2 DeleteQueue()
+=head2 DeleteQueue(QueueUrl => Str)
 
-  Arguments described in: L<Paws::SQS::DeleteQueue>
+Each argument is described in detail in: L<Paws::SQS::DeleteQueue>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -459,11 +468,11 @@ in the I<Amazon SQS Developer Guide>.
 
 
 
-=head2 GetQueueAttributes()
+=head2 GetQueueAttributes(QueueUrl => Str, [AttributeNames => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::SQS::GetQueueAttributes>
+Each argument is described in detail in: L<Paws::SQS::GetQueueAttributes>
 
-  Returns: L<Paws::SQS::GetQueueAttributesResult>
+Returns: a L<Paws::SQS::GetQueueAttributesResult> instance
 
   
 
@@ -540,11 +549,11 @@ C<&Attribute.2=that>
 
 
 
-=head2 GetQueueUrl()
+=head2 GetQueueUrl(QueueName => Str, [QueueOwnerAWSAccountId => Str])
 
-  Arguments described in: L<Paws::SQS::GetQueueUrl>
+Each argument is described in detail in: L<Paws::SQS::GetQueueUrl>
 
-  Returns: L<Paws::SQS::GetQueueUrlResult>
+Returns: a L<Paws::SQS::GetQueueUrlResult> instance
 
   
 
@@ -568,11 +577,11 @@ Guide>.
 
 
 
-=head2 ListDeadLetterSourceQueues()
+=head2 ListDeadLetterSourceQueues(QueueUrl => Str)
 
-  Arguments described in: L<Paws::SQS::ListDeadLetterSourceQueues>
+Each argument is described in detail in: L<Paws::SQS::ListDeadLetterSourceQueues>
 
-  Returns: L<Paws::SQS::ListDeadLetterSourceQueuesResult>
+Returns: a L<Paws::SQS::ListDeadLetterSourceQueuesResult> instance
 
   
 
@@ -592,11 +601,11 @@ SQS Dead Letter Queues.
 
 
 
-=head2 ListQueues()
+=head2 ListQueues([QueueNamePrefix => Str])
 
-  Arguments described in: L<Paws::SQS::ListQueues>
+Each argument is described in detail in: L<Paws::SQS::ListQueues>
 
-  Returns: L<Paws::SQS::ListQueuesResult>
+Returns: a L<Paws::SQS::ListQueuesResult> instance
 
   
 
@@ -615,11 +624,11 @@ the specified value are returned.
 
 
 
-=head2 PurgeQueue()
+=head2 PurgeQueue(QueueUrl => Str)
 
-  Arguments described in: L<Paws::SQS::PurgeQueue>
+Each argument is described in detail in: L<Paws::SQS::PurgeQueue>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -645,11 +654,11 @@ deleted within the next minute.
 
 
 
-=head2 ReceiveMessage()
+=head2 ReceiveMessage(QueueUrl => Str, [MaxNumberOfMessages => Int, WaitTimeSeconds => Int, AttributeNames => ArrayRef[Str], MessageAttributeNames => ArrayRef[Str], VisibilityTimeout => Int])
 
-  Arguments described in: L<Paws::SQS::ReceiveMessage>
+Each argument is described in detail in: L<Paws::SQS::ReceiveMessage>
 
-  Returns: L<Paws::SQS::ReceiveMessageResult>
+Returns: a L<Paws::SQS::ReceiveMessageResult> instance
 
   
 
@@ -723,11 +732,11 @@ that it can handle new attributes gracefully.
 
 
 
-=head2 RemovePermission()
+=head2 RemovePermission(Label => Str, QueueUrl => Str)
 
-  Arguments described in: L<Paws::SQS::RemovePermission>
+Each argument is described in detail in: L<Paws::SQS::RemovePermission>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -744,11 +753,11 @@ C<Label> parameter. Only the owner of the queue can remove permissions.
 
 
 
-=head2 SendMessage()
+=head2 SendMessage(MessageBody => Str, QueueUrl => Str, [DelaySeconds => Int, MessageAttributes => Paws::SQS::MessageAttributeMap])
 
-  Arguments described in: L<Paws::SQS::SendMessage>
+Each argument is described in detail in: L<Paws::SQS::SendMessage>
 
-  Returns: L<Paws::SQS::SendMessageResult>
+Returns: a L<Paws::SQS::SendMessageResult> instance
 
   
 
@@ -776,11 +785,11 @@ not included in the list, your request will be rejected.
 
 
 
-=head2 SendMessageBatch()
+=head2 SendMessageBatch(Entries => ArrayRef[Paws::SQS::SendMessageBatchRequestEntry], QueueUrl => Str)
 
-  Arguments described in: L<Paws::SQS::SendMessageBatch>
+Each argument is described in detail in: L<Paws::SQS::SendMessageBatch>
 
-  Returns: L<Paws::SQS::SendMessageBatchResult>
+Returns: a L<Paws::SQS::SendMessageBatchResult> instance
 
   
 
@@ -825,11 +834,11 @@ C<&Attribute.2=that>
 
 
 
-=head2 SetQueueAttributes()
+=head2 SetQueueAttributes(Attributes => Paws::SQS::AttributeMap, QueueUrl => Str)
 
-  Arguments described in: L<Paws::SQS::SetQueueAttributes>
+Each argument is described in detail in: L<Paws::SQS::SetQueueAttributes>
 
-  Returns: nothing
+Returns: nothing
 
   
 

@@ -10,6 +10,13 @@ package Paws::API::Builder {
 
   has api => (is => 'ro', required => 1);
 
+  sub service_name {
+    my $self = shift;
+    my $svc = $self->api;
+    $svc =~ s/^.*\:\://;
+    return $svc;
+  }
+
   has api_file => (is => 'ro', required => 1);
 
   has api_struct => (is => 'ro', lazy => 1, default => sub {
@@ -183,7 +190,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for [% operation.name %] in [% c.api %]
+This class forms part of L<Paws>, documenting arguments for method [% operation.name %] in L<[% c.api %]>
 
 =head1 BUGS and CONTRIBUTIONS
 
@@ -205,8 +212,17 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('[% c.service_name %]')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    \# if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    \# of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    \# if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    \# the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -215,11 +231,27 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 =head1 METHODS
 [% FOR op IN c.api_struct.operations.keys.sort %]
   [%- op_name = c.api_struct.operations.$op.name %]
-=head2 [% op_name %]()
+=head2 [% op_name %](
+[%- out_shape = c.input_for_operation(op_name) %]
+[%- req_list = out_shape.required.sort %]
+[%- FOREACH out_name IN req_list -%]
+  [%- member = c.shape(out_shape.members.$out_name.shape) -%]
+  [%- out_name %] => [% member.perl_type %]
+  [%- IF (NOT loop.last) %], [% END %]
+[%- END %]
+[%- opt_list = c.optional_params_in_shape(out_shape) %]
+[%- IF (opt_list.size > 0) %]
+[%- IF (req_list.size > 0) %], [% END %][
+[%- FOREACH out_name IN opt_list %]
+  [%- member = c.shape(out_shape.members.$out_name.shape) -%]
+  [%- out_name %] => [% member.perl_type %]
+  [%- IF (NOT loop.last) %], [% END %]
+[%- END %]]
+[%- END %])
 
-  Arguments described in: L<[% c.api %]::[% op_name %]>
+Each argument is described in detail in: L<[% c.api %]::[% op_name %]>
 
-  Returns: [% out_shape = c.shapename_for_operation_output(op_name); IF (out_shape) %]L<[% c.api %]::[% out_shape %]>[% ELSE %]nothing[% END %]
+Returns: [% out_shape = c.shapename_for_operation_output(op_name); IF (out_shape) %]a L<[% c.api %]::[% out_shape %]> instance[% ELSE %]nothing[% END %]
 
   [% c.doc_for_method(op_name) %]
 
@@ -241,6 +273,14 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
   sub required_in_shape {
     my ($self, $shape, $attribute) = @_;
     return (1 == (grep { $_ eq $attribute } @{ $shape->{ required } }));
+  }
+
+  sub optional_params_in_shape {
+    my ($self, $shape) = @_;
+    return [] if (not $shape);
+    my $req = $shape->{ required } || [];
+    my %required = map { ($_ => 1) } @$req;
+    return [ grep { not defined $required{ $_ } } keys %{ $shape->{ members } } ];
   }
 
   sub shapename_for_operation_output {
@@ -285,7 +325,6 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
   sub save_class {
     my ($self, $class_name, $content) = @_;
     return if (not defined $class_name);
-    print "SAVE: $class_name\n";
     my @class_parts = split /\:\:/, $class_name;
     my $class_file_name = "auto-lib/" . ( join '/', @class_parts ) . ".pm";
     if (0) {#-e $class_file_name) { #not doing this, because there are unimportant differences in files

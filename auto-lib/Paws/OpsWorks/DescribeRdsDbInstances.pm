@@ -69,7 +69,7 @@ returns descriptions of all registered Amazon RDS instances.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeRdsDbInstances in Paws::OpsWorks
+This class forms part of L<Paws>, documenting arguments for method DescribeRdsDbInstances in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 

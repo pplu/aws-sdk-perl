@@ -101,7 +101,7 @@ data available.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListMetrics in Paws::CloudWatch
+This class forms part of L<Paws>, documenting arguments for method ListMetrics in L<Paws::CloudWatch>
 
 =head1 BUGS and CONTRIBUTIONS
 

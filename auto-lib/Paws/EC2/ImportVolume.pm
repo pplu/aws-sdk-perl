@@ -83,7 +83,7 @@ An optional description for the volume being imported.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ImportVolume in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method ImportVolume in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

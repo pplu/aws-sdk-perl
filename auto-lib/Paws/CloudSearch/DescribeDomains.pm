@@ -52,7 +52,7 @@ The names of the domains you want to include in the response.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeDomains in Paws::CloudSearch
+This class forms part of L<Paws>, documenting arguments for method DescribeDomains in L<Paws::CloudSearch>
 
 =head1 BUGS and CONTRIBUTIONS
 

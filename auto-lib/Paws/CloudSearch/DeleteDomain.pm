@@ -52,7 +52,7 @@ The name of the domain you want to permanently delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteDomain in Paws::CloudSearch
+This class forms part of L<Paws>, documenting arguments for method DeleteDomain in L<Paws::CloudSearch>
 
 =head1 BUGS and CONTRIBUTIONS
 

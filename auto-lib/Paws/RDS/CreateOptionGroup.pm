@@ -121,7 +121,7 @@ Example: C<myoptiongroup>
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateOptionGroup in Paws::RDS
+This class forms part of L<Paws>, documenting arguments for method CreateOptionGroup in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 

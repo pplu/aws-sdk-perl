@@ -110,7 +110,7 @@ default is false (the latest log events are returned first).
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetLogEvents in Paws::CloudWatchLogs
+This class forms part of L<Paws>, documenting arguments for method GetLogEvents in L<Paws::CloudWatchLogs>
 
 =head1 BUGS and CONTRIBUTIONS
 

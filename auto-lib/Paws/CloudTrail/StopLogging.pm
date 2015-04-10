@@ -53,7 +53,7 @@ logging AWS API calls.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for StopLogging in Paws::CloudTrail
+This class forms part of L<Paws>, documenting arguments for method StopLogging in L<Paws::CloudTrail>
 
 =head1 BUGS and CONTRIBUTIONS
 

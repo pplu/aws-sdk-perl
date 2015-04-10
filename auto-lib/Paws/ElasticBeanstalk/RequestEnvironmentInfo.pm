@@ -98,7 +98,7 @@ The type of information to request.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RequestEnvironmentInfo in Paws::ElasticBeanstalk
+This class forms part of L<Paws>, documenting arguments for method RequestEnvironmentInfo in L<Paws::ElasticBeanstalk>
 
 =head1 BUGS and CONTRIBUTIONS
 

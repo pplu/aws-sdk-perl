@@ -147,7 +147,7 @@ The Elastic IP address. This is required for EC2-Classic.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AssociateAddress in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method AssociateAddress in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

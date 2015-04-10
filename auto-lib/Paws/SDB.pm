@@ -74,8 +74,17 @@ Paws::SDB - Perl Interface to AWS Amazon SimpleDB
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('SDB')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -110,11 +119,11 @@ Visit http://aws.amazon.com/simpledb/ for more information.
 
 =head1 METHODS
 
-=head2 BatchDeleteAttributes()
+=head2 BatchDeleteAttributes(DomainName => Str, Items => ArrayRef[Paws::SDB::DeletableItem])
 
-  Arguments described in: L<Paws::SDB::BatchDeleteAttributes>
+Each argument is described in detail in: L<Paws::SDB::BatchDeleteAttributes>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -142,11 +151,11 @@ The following limitations are enforced for this operation:
 
 
 
-=head2 BatchPutAttributes()
+=head2 BatchPutAttributes(DomainName => Str, Items => ArrayRef[Paws::SDB::ReplaceableItem])
 
-  Arguments described in: L<Paws::SDB::BatchPutAttributes>
+Each argument is described in detail in: L<Paws::SDB::BatchPutAttributes>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -217,11 +226,11 @@ The following limitations are enforced for this operation:
 
 
 
-=head2 CreateDomain()
+=head2 CreateDomain(DomainName => Str)
 
-  Arguments described in: L<Paws::SDB::CreateDomain>
+Each argument is described in detail in: L<Paws::SDB::CreateDomain>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -245,11 +254,11 @@ http://aws.amazon.com/contact-us/simpledb-limit-request/.
 
 
 
-=head2 DeleteAttributes()
+=head2 DeleteAttributes(DomainName => Str, ItemName => Str, [Attributes => ArrayRef[Paws::SDB::Attribute], Expected => Paws::SDB::UpdateCondition])
 
-  Arguments described in: L<Paws::SDB::DeleteAttributes>
+Each argument is described in detail in: L<Paws::SDB::DeleteAttributes>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -275,11 +284,11 @@ PutAttributes operation (write) might not return updated item data.
 
 
 
-=head2 DeleteDomain()
+=head2 DeleteDomain(DomainName => Str)
 
-  Arguments described in: L<Paws::SDB::DeleteDomain>
+Each argument is described in detail in: L<Paws::SDB::DeleteDomain>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -297,11 +306,11 @@ operation might take 10 or more seconds to complete.
 
 
 
-=head2 DomainMetadata()
+=head2 DomainMetadata(DomainName => Str)
 
-  Arguments described in: L<Paws::SDB::DomainMetadata>
+Each argument is described in detail in: L<Paws::SDB::DomainMetadata>
 
-  Returns: L<Paws::SDB::DomainMetadataResult>
+Returns: a L<Paws::SDB::DomainMetadataResult> instance
 
   
 
@@ -319,11 +328,11 @@ of the attribute names and values.
 
 
 
-=head2 GetAttributes()
+=head2 GetAttributes(DomainName => Str, ItemName => Str, [AttributeNames => ArrayRef[Str], ConsistentRead => Bool])
 
-  Arguments described in: L<Paws::SDB::GetAttributes>
+Each argument is described in detail in: L<Paws::SDB::GetAttributes>
 
-  Returns: L<Paws::SDB::GetAttributesResult>
+Returns: a L<Paws::SDB::GetAttributesResult> instance
 
   
 
@@ -345,11 +354,11 @@ error as it cannot guarantee the item does not exist on other replicas.
 
 
 
-=head2 ListDomains()
+=head2 ListDomains([NextToken => Str, MaxNumberOfDomains => Int])
 
-  Arguments described in: L<Paws::SDB::ListDomains>
+Each argument is described in detail in: L<Paws::SDB::ListDomains>
 
-  Returns: L<Paws::SDB::ListDomainsResult>
+Returns: a L<Paws::SDB::ListDomainsResult> instance
 
   
 
@@ -371,11 +380,11 @@ call.
 
 
 
-=head2 PutAttributes()
+=head2 PutAttributes(Attributes => ArrayRef[Paws::SDB::ReplaceableAttribute], DomainName => Str, ItemName => Str, [Expected => Paws::SDB::UpdateCondition])
 
-  Arguments described in: L<Paws::SDB::PutAttributes>
+Each argument is described in detail in: L<Paws::SDB::PutAttributes>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -431,11 +440,11 @@ The following limitations are enforced for this operation:
 
 
 
-=head2 Select()
+=head2 Select(SelectExpression => Str, [NextToken => Str, ConsistentRead => Bool])
 
-  Arguments described in: L<Paws::SDB::Select>
+Each argument is described in detail in: L<Paws::SDB::Select>
 
-  Returns: L<Paws::SDB::SelectResult>
+Returns: a L<Paws::SDB::SelectResult> instance
 
   
 

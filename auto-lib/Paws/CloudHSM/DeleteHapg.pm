@@ -52,7 +52,7 @@ The ARN of the high-availability partition group to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteHapg in Paws::CloudHSM
+This class forms part of L<Paws>, documenting arguments for method DeleteHapg in L<Paws::CloudHSM>
 
 =head1 BUGS and CONTRIBUTIONS
 

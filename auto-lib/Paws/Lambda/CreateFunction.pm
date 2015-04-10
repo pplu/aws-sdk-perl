@@ -186,7 +186,7 @@ default is 3 seconds.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateFunction in Paws::Lambda
+This class forms part of L<Paws>, documenting arguments for method CreateFunction in L<Paws::Lambda>
 
 =head1 BUGS and CONTRIBUTIONS
 

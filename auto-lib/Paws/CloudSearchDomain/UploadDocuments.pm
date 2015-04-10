@@ -77,7 +77,7 @@ A batch of documents formatted in JSON or HTML.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UploadDocuments in Paws::CloudSearchDomain
+This class forms part of L<Paws>, documenting arguments for method UploadDocuments in L<Paws::CloudSearchDomain>
 
 =head1 BUGS and CONTRIBUTIONS
 

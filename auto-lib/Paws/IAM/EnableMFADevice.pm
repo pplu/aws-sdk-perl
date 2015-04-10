@@ -101,7 +101,7 @@ The name of the user for whom you want to enable the MFA device.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for EnableMFADevice in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method EnableMFADevice in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -57,7 +57,7 @@ The name of the key pair.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteKeyPair in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DeleteKeyPair in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

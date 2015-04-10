@@ -210,7 +210,7 @@ Default value: false
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateAccountPasswordPolicy in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method UpdateAccountPasswordPolicy in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

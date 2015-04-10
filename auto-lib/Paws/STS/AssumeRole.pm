@@ -178,7 +178,7 @@ returns an "access denied" error.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AssumeRole in Paws::STS
+This class forms part of L<Paws>, documenting arguments for method AssumeRole in L<Paws::STS>
 
 =head1 BUGS and CONTRIBUTIONS
 

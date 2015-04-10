@@ -539,8 +539,17 @@ Paws::IAM - Perl Interface to AWS AWS Identity and Access Management
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('IAM')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -628,11 +637,11 @@ access key.
 
 =head1 METHODS
 
-=head2 AddClientIDToOpenIDConnectProvider()
+=head2 AddClientIDToOpenIDConnectProvider(ClientID => Str, OpenIDConnectProviderArn => Str)
 
-  Arguments described in: L<Paws::IAM::AddClientIDToOpenIDConnectProvider>
+Each argument is described in detail in: L<Paws::IAM::AddClientIDToOpenIDConnectProvider>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -652,11 +661,11 @@ add an existing client ID to the provider.
 
 
 
-=head2 AddRoleToInstanceProfile()
+=head2 AddRoleToInstanceProfile(InstanceProfileName => Str, RoleName => Str)
 
-  Arguments described in: L<Paws::IAM::AddRoleToInstanceProfile>
+Each argument is described in detail in: L<Paws::IAM::AddRoleToInstanceProfile>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -674,11 +683,11 @@ about instance profiles, go to About Instance Profiles.
 
 
 
-=head2 AddUserToGroup()
+=head2 AddUserToGroup(GroupName => Str, UserName => Str)
 
-  Arguments described in: L<Paws::IAM::AddUserToGroup>
+Each argument is described in detail in: L<Paws::IAM::AddUserToGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -694,11 +703,11 @@ Adds the specified user to the specified group.
 
 
 
-=head2 AttachGroupPolicy()
+=head2 AttachGroupPolicy(GroupName => Str, PolicyArn => Str)
 
-  Arguments described in: L<Paws::IAM::AttachGroupPolicy>
+Each argument is described in detail in: L<Paws::IAM::AttachGroupPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -720,11 +729,11 @@ Inline Policies in the I<Using IAM> guide.
 
 
 
-=head2 AttachRolePolicy()
+=head2 AttachRolePolicy(PolicyArn => Str, RoleName => Str)
 
-  Arguments described in: L<Paws::IAM::AttachRolePolicy>
+Each argument is described in detail in: L<Paws::IAM::AttachRolePolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -751,11 +760,11 @@ IAM> guide.
 
 
 
-=head2 AttachUserPolicy()
+=head2 AttachUserPolicy(PolicyArn => Str, UserName => Str)
 
-  Arguments described in: L<Paws::IAM::AttachUserPolicy>
+Each argument is described in detail in: L<Paws::IAM::AttachUserPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -777,11 +786,11 @@ Inline Policies in the I<Using IAM> guide.
 
 
 
-=head2 ChangePassword()
+=head2 ChangePassword(NewPassword => Str, OldPassword => Str)
 
-  Arguments described in: L<Paws::IAM::ChangePassword>
+Each argument is described in detail in: L<Paws::IAM::ChangePassword>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -802,11 +811,11 @@ in the I<Using IAM> guide.
 
 
 
-=head2 CreateAccessKey()
+=head2 CreateAccessKey([UserName => Str])
 
-  Arguments described in: L<Paws::IAM::CreateAccessKey>
+Each argument is described in detail in: L<Paws::IAM::CreateAccessKey>
 
-  Returns: L<Paws::IAM::CreateAccessKeyResponse>
+Returns: a L<Paws::IAM::CreateAccessKeyResponse> instance
 
   
 
@@ -838,11 +847,11 @@ associated user and then create new keys.
 
 
 
-=head2 CreateAccountAlias()
+=head2 CreateAccountAlias(AccountAlias => Str)
 
-  Arguments described in: L<Paws::IAM::CreateAccountAlias>
+Each argument is described in detail in: L<Paws::IAM::CreateAccountAlias>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -860,11 +869,11 @@ I<Using IAM> guide.
 
 
 
-=head2 CreateGroup()
+=head2 CreateGroup(GroupName => Str, [Path => Str])
 
-  Arguments described in: L<Paws::IAM::CreateGroup>
+Each argument is described in detail in: L<Paws::IAM::CreateGroup>
 
-  Returns: L<Paws::IAM::CreateGroupResponse>
+Returns: a L<Paws::IAM::CreateGroupResponse> instance
 
   
 
@@ -883,11 +892,11 @@ Limitations on IAM Entities in the I<Using IAM> guide.
 
 
 
-=head2 CreateInstanceProfile()
+=head2 CreateInstanceProfile(InstanceProfileName => Str, [Path => Str])
 
-  Arguments described in: L<Paws::IAM::CreateInstanceProfile>
+Each argument is described in detail in: L<Paws::IAM::CreateInstanceProfile>
 
-  Returns: L<Paws::IAM::CreateInstanceProfileResponse>
+Returns: a L<Paws::IAM::CreateInstanceProfileResponse> instance
 
   
 
@@ -907,11 +916,11 @@ see Limitations on IAM Entities in the I<Using IAM> guide.
 
 
 
-=head2 CreateLoginProfile()
+=head2 CreateLoginProfile(Password => Str, UserName => Str, [PasswordResetRequired => Bool])
 
-  Arguments described in: L<Paws::IAM::CreateLoginProfile>
+Each argument is described in detail in: L<Paws::IAM::CreateLoginProfile>
 
-  Returns: L<Paws::IAM::CreateLoginProfileResponse>
+Returns: a L<Paws::IAM::CreateLoginProfileResponse> instance
 
   
 
@@ -930,11 +939,11 @@ I<Using IAM> guide.
 
 
 
-=head2 CreateOpenIDConnectProvider()
+=head2 CreateOpenIDConnectProvider(ThumbprintList => ArrayRef[Str], Url => Str, [ClientIDList => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::IAM::CreateOpenIDConnectProvider>
+Each argument is described in detail in: L<Paws::IAM::CreateOpenIDConnectProvider>
 
-  Returns: L<Paws::IAM::CreateOpenIDConnectProviderResponse>
+Returns: a L<Paws::IAM::CreateOpenIDConnectProviderResponse> instance
 
   
 
@@ -968,11 +977,11 @@ users.
 
 
 
-=head2 CreatePolicy()
+=head2 CreatePolicy(PolicyDocument => Str, PolicyName => Str, [Path => Str, Description => Str])
 
-  Arguments described in: L<Paws::IAM::CreatePolicy>
+Each argument is described in detail in: L<Paws::IAM::CreatePolicy>
 
-  Returns: L<Paws::IAM::CreatePolicyResponse>
+Returns: a L<Paws::IAM::CreatePolicyResponse> instance
 
   
 
@@ -996,11 +1005,11 @@ Managed Policies and Inline Policies in the I<Using IAM> guide.
 
 
 
-=head2 CreatePolicyVersion()
+=head2 CreatePolicyVersion(PolicyArn => Str, PolicyDocument => Str, [SetAsDefault => Bool])
 
-  Arguments described in: L<Paws::IAM::CreatePolicyVersion>
+Each argument is described in detail in: L<Paws::IAM::CreatePolicyVersion>
 
-  Returns: L<Paws::IAM::CreatePolicyVersionResponse>
+Returns: a L<Paws::IAM::CreatePolicyVersionResponse> instance
 
   
 
@@ -1028,11 +1037,11 @@ Managed Policies in the I<Using IAM> guide.
 
 
 
-=head2 CreateRole()
+=head2 CreateRole(AssumeRolePolicyDocument => Str, RoleName => Str, [Path => Str])
 
-  Arguments described in: L<Paws::IAM::CreateRole>
+Each argument is described in detail in: L<Paws::IAM::CreateRole>
 
-  Returns: L<Paws::IAM::CreateRoleResponse>
+Returns: a L<Paws::IAM::CreateRoleResponse> instance
 
   
 
@@ -1056,11 +1065,11 @@ http://www.faqs.org/rfcs/rfc3986.html.
 
 
 
-=head2 CreateSAMLProvider()
+=head2 CreateSAMLProvider(Name => Str, SAMLMetadataDocument => Str)
 
-  Arguments described in: L<Paws::IAM::CreateSAMLProvider>
+Each argument is described in detail in: L<Paws::IAM::CreateSAMLProvider>
 
-  Returns: L<Paws::IAM::CreateSAMLProviderResponse>
+Returns: a L<Paws::IAM::CreateSAMLProviderResponse> instance
 
   
 
@@ -1096,11 +1105,11 @@ Temporary Credentials> guide.
 
 
 
-=head2 CreateUser()
+=head2 CreateUser(UserName => Str, [Path => Str])
 
-  Arguments described in: L<Paws::IAM::CreateUser>
+Each argument is described in detail in: L<Paws::IAM::CreateUser>
 
-  Returns: L<Paws::IAM::CreateUserResponse>
+Returns: a L<Paws::IAM::CreateUserResponse> instance
 
   
 
@@ -1119,11 +1128,11 @@ create, see Limitations on IAM Entities in the I<Using IAM> guide.
 
 
 
-=head2 CreateVirtualMFADevice()
+=head2 CreateVirtualMFADevice(VirtualMFADeviceName => Str, [Path => Str])
 
-  Arguments described in: L<Paws::IAM::CreateVirtualMFADevice>
+Each argument is described in detail in: L<Paws::IAM::CreateVirtualMFADevice>
 
-  Returns: L<Paws::IAM::CreateVirtualMFADeviceResponse>
+Returns: a L<Paws::IAM::CreateVirtualMFADeviceResponse> instance
 
   
 
@@ -1151,11 +1160,11 @@ following secure procedures.
 
 
 
-=head2 DeactivateMFADevice()
+=head2 DeactivateMFADevice(SerialNumber => Str, UserName => Str)
 
-  Arguments described in: L<Paws::IAM::DeactivateMFADevice>
+Each argument is described in detail in: L<Paws::IAM::DeactivateMFADevice>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1175,11 +1184,11 @@ devices, go to Using a Virtual MFA Device in the I<Using IAM> guide.
 
 
 
-=head2 DeleteAccessKey()
+=head2 DeleteAccessKey(AccessKeyId => Str, [UserName => Str])
 
-  Arguments described in: L<Paws::IAM::DeleteAccessKey>
+Each argument is described in detail in: L<Paws::IAM::DeleteAccessKey>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1201,11 +1210,11 @@ associated users.
 
 
 
-=head2 DeleteAccountAlias()
+=head2 DeleteAccountAlias(AccountAlias => Str)
 
-  Arguments described in: L<Paws::IAM::DeleteAccountAlias>
+Each argument is described in detail in: L<Paws::IAM::DeleteAccountAlias>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1225,9 +1234,9 @@ I<Using IAM> guide.
 
 =head2 DeleteAccountPasswordPolicy()
 
-  Arguments described in: L<Paws::IAM::DeleteAccountPasswordPolicy>
+Each argument is described in detail in: L<Paws::IAM::DeleteAccountPasswordPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1243,11 +1252,11 @@ Deletes the password policy for the AWS account.
 
 
 
-=head2 DeleteGroup()
+=head2 DeleteGroup(GroupName => Str)
 
-  Arguments described in: L<Paws::IAM::DeleteGroup>
+Each argument is described in detail in: L<Paws::IAM::DeleteGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1264,11 +1273,11 @@ have any attached policies.
 
 
 
-=head2 DeleteGroupPolicy()
+=head2 DeleteGroupPolicy(GroupName => Str, PolicyName => Str)
 
-  Arguments described in: L<Paws::IAM::DeleteGroupPolicy>
+Each argument is described in detail in: L<Paws::IAM::DeleteGroupPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1290,11 +1299,11 @@ Policies in the I<Using IAM> guide.
 
 
 
-=head2 DeleteInstanceProfile()
+=head2 DeleteInstanceProfile(InstanceProfileName => Str)
 
-  Arguments described in: L<Paws::IAM::DeleteInstanceProfile>
+Each argument is described in detail in: L<Paws::IAM::DeleteInstanceProfile>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1319,11 +1328,11 @@ Profiles.
 
 
 
-=head2 DeleteLoginProfile()
+=head2 DeleteLoginProfile(UserName => Str)
 
-  Arguments described in: L<Paws::IAM::DeleteLoginProfile>
+Each argument is described in detail in: L<Paws::IAM::DeleteLoginProfile>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1347,11 +1356,11 @@ UpdateAccessKey and DeleteAccessKey.
 
 
 
-=head2 DeleteOpenIDConnectProvider()
+=head2 DeleteOpenIDConnectProvider(OpenIDConnectProviderArn => Str)
 
-  Arguments described in: L<Paws::IAM::DeleteOpenIDConnectProvider>
+Each argument is described in detail in: L<Paws::IAM::DeleteOpenIDConnectProvider>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1374,11 +1383,11 @@ call the action for a provider that was already deleted.
 
 
 
-=head2 DeletePolicy()
+=head2 DeletePolicy(PolicyArn => Str)
 
-  Arguments described in: L<Paws::IAM::DeletePolicy>
+Each argument is described in detail in: L<Paws::IAM::DeletePolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1420,11 +1429,11 @@ Inline Policies in the I<Using IAM> guide.
 
 
 
-=head2 DeletePolicyVersion()
+=head2 DeletePolicyVersion(PolicyArn => Str, VersionId => Str)
 
-  Arguments described in: L<Paws::IAM::DeletePolicyVersion>
+Each argument is described in detail in: L<Paws::IAM::DeletePolicyVersion>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1448,11 +1457,11 @@ Versioning for Managed Policies in the I<Using IAM> guide.
 
 
 
-=head2 DeleteRole()
+=head2 DeleteRole(RoleName => Str)
 
-  Arguments described in: L<Paws::IAM::DeleteRole>
+Each argument is described in detail in: L<Paws::IAM::DeleteRole>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1474,11 +1483,11 @@ running on the instance.
 
 
 
-=head2 DeleteRolePolicy()
+=head2 DeleteRolePolicy(PolicyName => Str, RoleName => Str)
 
-  Arguments described in: L<Paws::IAM::DeleteRolePolicy>
+Each argument is described in detail in: L<Paws::IAM::DeleteRolePolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1500,11 +1509,11 @@ I<Using IAM> guide.
 
 
 
-=head2 DeleteSAMLProvider()
+=head2 DeleteSAMLProvider(SAMLProviderArn => Str)
 
-  Arguments described in: L<Paws::IAM::DeleteSAMLProvider>
+Each argument is described in detail in: L<Paws::IAM::DeleteSAMLProvider>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1526,11 +1535,11 @@ This operation requires Signature Version 4.
 
 
 
-=head2 DeleteServerCertificate()
+=head2 DeleteServerCertificate(ServerCertificateName => Str)
 
-  Arguments described in: L<Paws::IAM::DeleteServerCertificate>
+Each argument is described in detail in: L<Paws::IAM::DeleteServerCertificate>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1556,11 +1565,11 @@ Balancing API Reference>.
 
 
 
-=head2 DeleteSigningCertificate()
+=head2 DeleteSigningCertificate(CertificateId => Str, [UserName => Str])
 
-  Arguments described in: L<Paws::IAM::DeleteSigningCertificate>
+Each argument is described in detail in: L<Paws::IAM::DeleteSigningCertificate>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1583,11 +1592,11 @@ associated users.
 
 
 
-=head2 DeleteUser()
+=head2 DeleteUser(UserName => Str)
 
-  Arguments described in: L<Paws::IAM::DeleteUser>
+Each argument is described in detail in: L<Paws::IAM::DeleteUser>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1604,11 +1613,11 @@ have any keys or signing certificates, or have any attached policies.
 
 
 
-=head2 DeleteUserPolicy()
+=head2 DeleteUserPolicy(PolicyName => Str, UserName => Str)
 
-  Arguments described in: L<Paws::IAM::DeleteUserPolicy>
+Each argument is described in detail in: L<Paws::IAM::DeleteUserPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1630,11 +1639,11 @@ I<Using IAM> guide.
 
 
 
-=head2 DeleteVirtualMFADevice()
+=head2 DeleteVirtualMFADevice(SerialNumber => Str)
 
-  Arguments described in: L<Paws::IAM::DeleteVirtualMFADevice>
+Each argument is described in detail in: L<Paws::IAM::DeleteVirtualMFADevice>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1654,11 +1663,11 @@ DeactivateMFADevice.
 
 
 
-=head2 DetachGroupPolicy()
+=head2 DetachGroupPolicy(GroupName => Str, PolicyArn => Str)
 
-  Arguments described in: L<Paws::IAM::DetachGroupPolicy>
+Each argument is described in detail in: L<Paws::IAM::DetachGroupPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1679,11 +1688,11 @@ IAM> guide.
 
 
 
-=head2 DetachRolePolicy()
+=head2 DetachRolePolicy(PolicyArn => Str, RoleName => Str)
 
-  Arguments described in: L<Paws::IAM::DetachRolePolicy>
+Each argument is described in detail in: L<Paws::IAM::DetachRolePolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1704,11 +1713,11 @@ IAM> guide.
 
 
 
-=head2 DetachUserPolicy()
+=head2 DetachUserPolicy(PolicyArn => Str, UserName => Str)
 
-  Arguments described in: L<Paws::IAM::DetachUserPolicy>
+Each argument is described in detail in: L<Paws::IAM::DetachUserPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1729,11 +1738,11 @@ IAM> guide.
 
 
 
-=head2 EnableMFADevice()
+=head2 EnableMFADevice(AuthenticationCode1 => Str, AuthenticationCode2 => Str, SerialNumber => Str, UserName => Str)
 
-  Arguments described in: L<Paws::IAM::EnableMFADevice>
+Each argument is described in detail in: L<Paws::IAM::EnableMFADevice>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1753,9 +1762,9 @@ subsequent login by the user name associated with the device.
 
 =head2 GenerateCredentialReport()
 
-  Arguments described in: L<Paws::IAM::GenerateCredentialReport>
+Each argument is described in detail in: L<Paws::IAM::GenerateCredentialReport>
 
-  Returns: L<Paws::IAM::GenerateCredentialReportResponse>
+Returns: a L<Paws::IAM::GenerateCredentialReportResponse> instance
 
   
 
@@ -1773,11 +1782,11 @@ I<Using IAM> guide.
 
 
 
-=head2 GetAccountAuthorizationDetails()
+=head2 GetAccountAuthorizationDetails([Filter => ArrayRef[Str], Marker => Str, MaxItems => Int])
 
-  Arguments described in: L<Paws::IAM::GetAccountAuthorizationDetails>
+Each argument is described in detail in: L<Paws::IAM::GetAccountAuthorizationDetails>
 
-  Returns: L<Paws::IAM::GetAccountAuthorizationDetailsResponse>
+Returns: a L<Paws::IAM::GetAccountAuthorizationDetailsResponse> instance
 
   
 
@@ -1802,9 +1811,9 @@ parameters.
 
 =head2 GetAccountPasswordPolicy()
 
-  Arguments described in: L<Paws::IAM::GetAccountPasswordPolicy>
+Each argument is described in detail in: L<Paws::IAM::GetAccountPasswordPolicy>
 
-  Returns: L<Paws::IAM::GetAccountPasswordPolicyResponse>
+Returns: a L<Paws::IAM::GetAccountPasswordPolicyResponse> instance
 
   
 
@@ -1823,9 +1832,9 @@ about using a password policy, go to Managing an IAM Password Policy.
 
 =head2 GetAccountSummary()
 
-  Arguments described in: L<Paws::IAM::GetAccountSummary>
+Each argument is described in detail in: L<Paws::IAM::GetAccountSummary>
 
-  Returns: L<Paws::IAM::GetAccountSummaryResponse>
+Returns: a L<Paws::IAM::GetAccountSummaryResponse> instance
 
   
 
@@ -1847,9 +1856,9 @@ IAM Entities in the I<Using IAM> guide.
 
 =head2 GetCredentialReport()
 
-  Arguments described in: L<Paws::IAM::GetCredentialReport>
+Each argument is described in detail in: L<Paws::IAM::GetCredentialReport>
 
-  Returns: L<Paws::IAM::GetCredentialReportResponse>
+Returns: a L<Paws::IAM::GetCredentialReportResponse> instance
 
   
 
@@ -1867,11 +1876,11 @@ I<Using IAM> guide.
 
 
 
-=head2 GetGroup()
+=head2 GetGroup(GroupName => Str, [Marker => Str, MaxItems => Int])
 
-  Arguments described in: L<Paws::IAM::GetGroup>
+Each argument is described in detail in: L<Paws::IAM::GetGroup>
 
-  Returns: L<Paws::IAM::GetGroupResponse>
+Returns: a L<Paws::IAM::GetGroupResponse> instance
 
   
 
@@ -1888,11 +1897,11 @@ paginate the results using the C<MaxItems> and C<Marker> parameters.
 
 
 
-=head2 GetGroupPolicy()
+=head2 GetGroupPolicy(GroupName => Str, PolicyName => Str)
 
-  Arguments described in: L<Paws::IAM::GetGroupPolicy>
+Each argument is described in detail in: L<Paws::IAM::GetGroupPolicy>
 
-  Returns: L<Paws::IAM::GetGroupPolicyResponse>
+Returns: a L<Paws::IAM::GetGroupPolicyResponse> instance
 
   
 
@@ -1917,11 +1926,11 @@ Inline Policies in the I<Using IAM> guide.
 
 
 
-=head2 GetInstanceProfile()
+=head2 GetInstanceProfile(InstanceProfileName => Str)
 
-  Arguments described in: L<Paws::IAM::GetInstanceProfile>
+Each argument is described in detail in: L<Paws::IAM::GetInstanceProfile>
 
-  Returns: L<Paws::IAM::GetInstanceProfileResponse>
+Returns: a L<Paws::IAM::GetInstanceProfileResponse> instance
 
   
 
@@ -1940,11 +1949,11 @@ information about ARNs, go to ARNs.
 
 
 
-=head2 GetLoginProfile()
+=head2 GetLoginProfile(UserName => Str)
 
-  Arguments described in: L<Paws::IAM::GetLoginProfile>
+Each argument is described in detail in: L<Paws::IAM::GetLoginProfile>
 
-  Returns: L<Paws::IAM::GetLoginProfileResponse>
+Returns: a L<Paws::IAM::GetLoginProfileResponse> instance
 
   
 
@@ -1962,11 +1971,11 @@ a 404 (C<NoSuchEntity>) error.
 
 
 
-=head2 GetOpenIDConnectProvider()
+=head2 GetOpenIDConnectProvider(OpenIDConnectProviderArn => Str)
 
-  Arguments described in: L<Paws::IAM::GetOpenIDConnectProvider>
+Each argument is described in detail in: L<Paws::IAM::GetOpenIDConnectProvider>
 
-  Returns: L<Paws::IAM::GetOpenIDConnectProviderResponse>
+Returns: a L<Paws::IAM::GetOpenIDConnectProviderResponse> instance
 
   
 
@@ -1982,11 +1991,11 @@ Returns information about the specified OpenID Connect provider.
 
 
 
-=head2 GetPolicy()
+=head2 GetPolicy(PolicyArn => Str)
 
-  Arguments described in: L<Paws::IAM::GetPolicy>
+Each argument is described in detail in: L<Paws::IAM::GetPolicy>
 
-  Returns: L<Paws::IAM::GetPolicyResponse>
+Returns: a L<Paws::IAM::GetPolicyResponse> instance
 
   
 
@@ -2015,11 +2024,11 @@ Inline Policies in the I<Using IAM> guide.
 
 
 
-=head2 GetPolicyVersion()
+=head2 GetPolicyVersion(PolicyArn => Str, VersionId => Str)
 
-  Arguments described in: L<Paws::IAM::GetPolicyVersion>
+Each argument is described in detail in: L<Paws::IAM::GetPolicyVersion>
 
-  Returns: L<Paws::IAM::GetPolicyVersionResponse>
+Returns: a L<Paws::IAM::GetPolicyVersionResponse> instance
 
   
 
@@ -2045,11 +2054,11 @@ Policies and Inline Policies in the I<Using IAM> guide.
 
 
 
-=head2 GetRole()
+=head2 GetRole(RoleName => Str)
 
-  Arguments described in: L<Paws::IAM::GetRole>
+Each argument is described in detail in: L<Paws::IAM::GetRole>
 
-  Returns: L<Paws::IAM::GetRoleResponse>
+Returns: a L<Paws::IAM::GetRoleResponse> instance
 
   
 
@@ -2072,11 +2081,11 @@ http://www.faqs.org/rfcs/rfc3986.html.
 
 
 
-=head2 GetRolePolicy()
+=head2 GetRolePolicy(PolicyName => Str, RoleName => Str)
 
-  Arguments described in: L<Paws::IAM::GetRolePolicy>
+Each argument is described in detail in: L<Paws::IAM::GetRolePolicy>
 
-  Returns: L<Paws::IAM::GetRolePolicyResponse>
+Returns: a L<Paws::IAM::GetRolePolicyResponse> instance
 
   
 
@@ -2104,11 +2113,11 @@ Permissions and Federate Identities.
 
 
 
-=head2 GetSAMLProvider()
+=head2 GetSAMLProvider(SAMLProviderArn => Str)
 
-  Arguments described in: L<Paws::IAM::GetSAMLProvider>
+Each argument is described in detail in: L<Paws::IAM::GetSAMLProvider>
 
-  Returns: L<Paws::IAM::GetSAMLProviderResponse>
+Returns: a L<Paws::IAM::GetSAMLProviderResponse> instance
 
   
 
@@ -2127,11 +2136,11 @@ This operation requires Signature Version 4.
 
 
 
-=head2 GetServerCertificate()
+=head2 GetServerCertificate(ServerCertificateName => Str)
 
-  Arguments described in: L<Paws::IAM::GetServerCertificate>
+Each argument is described in detail in: L<Paws::IAM::GetServerCertificate>
 
-  Returns: L<Paws::IAM::GetServerCertificateResponse>
+Returns: a L<Paws::IAM::GetServerCertificateResponse> instance
 
   
 
@@ -2147,11 +2156,11 @@ Retrieves information about the specified server certificate.
 
 
 
-=head2 GetUser()
+=head2 GetUser([UserName => Str])
 
-  Arguments described in: L<Paws::IAM::GetUser>
+Each argument is described in detail in: L<Paws::IAM::GetUser>
 
-  Returns: L<Paws::IAM::GetUserResponse>
+Returns: a L<Paws::IAM::GetUserResponse> instance
 
   
 
@@ -2171,11 +2180,11 @@ implicitly based on the AWS access key ID used to sign the request.
 
 
 
-=head2 GetUserPolicy()
+=head2 GetUserPolicy(PolicyName => Str, UserName => Str)
 
-  Arguments described in: L<Paws::IAM::GetUserPolicy>
+Each argument is described in detail in: L<Paws::IAM::GetUserPolicy>
 
-  Returns: L<Paws::IAM::GetUserPolicyResponse>
+Returns: a L<Paws::IAM::GetUserPolicyResponse> instance
 
   
 
@@ -2200,11 +2209,11 @@ Inline Policies in the I<Using IAM> guide.
 
 
 
-=head2 ListAccessKeys()
+=head2 ListAccessKeys([MaxItems => Int, UserName => Str, Marker => Str])
 
-  Arguments described in: L<Paws::IAM::ListAccessKeys>
+Each argument is described in detail in: L<Paws::IAM::ListAccessKeys>
 
-  Returns: L<Paws::IAM::ListAccessKeysResponse>
+Returns: a L<Paws::IAM::ListAccessKeysResponse> instance
 
   
 
@@ -2233,11 +2242,11 @@ accessible only during key and user creation.
 
 
 
-=head2 ListAccountAliases()
+=head2 ListAccountAliases([Marker => Str, MaxItems => Int])
 
-  Arguments described in: L<Paws::IAM::ListAccountAliases>
+Each argument is described in detail in: L<Paws::IAM::ListAccountAliases>
 
-  Returns: L<Paws::IAM::ListAccountAliasesResponse>
+Returns: a L<Paws::IAM::ListAccountAliasesResponse> instance
 
   
 
@@ -2258,11 +2267,11 @@ parameters.
 
 
 
-=head2 ListAttachedGroupPolicies()
+=head2 ListAttachedGroupPolicies(GroupName => Str, [PathPrefix => Str, MaxItems => Int, Marker => Str])
 
-  Arguments described in: L<Paws::IAM::ListAttachedGroupPolicies>
+Each argument is described in detail in: L<Paws::IAM::ListAttachedGroupPolicies>
 
-  Returns: L<Paws::IAM::ListAttachedGroupPoliciesResponse>
+Returns: a L<Paws::IAM::ListAttachedGroupPoliciesResponse> instance
 
   
 
@@ -2289,11 +2298,11 @@ specified path prefix), the action returns an empty list.
 
 
 
-=head2 ListAttachedRolePolicies()
+=head2 ListAttachedRolePolicies(RoleName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
 
-  Arguments described in: L<Paws::IAM::ListAttachedRolePolicies>
+Each argument is described in detail in: L<Paws::IAM::ListAttachedRolePolicies>
 
-  Returns: L<Paws::IAM::ListAttachedRolePoliciesResponse>
+Returns: a L<Paws::IAM::ListAttachedRolePoliciesResponse> instance
 
   
 
@@ -2320,11 +2329,11 @@ specified path prefix), the action returns an empty list.
 
 
 
-=head2 ListAttachedUserPolicies()
+=head2 ListAttachedUserPolicies(UserName => Str, [Marker => Str, PathPrefix => Str, MaxItems => Int])
 
-  Arguments described in: L<Paws::IAM::ListAttachedUserPolicies>
+Each argument is described in detail in: L<Paws::IAM::ListAttachedUserPolicies>
 
-  Returns: L<Paws::IAM::ListAttachedUserPoliciesResponse>
+Returns: a L<Paws::IAM::ListAttachedUserPoliciesResponse> instance
 
   
 
@@ -2351,11 +2360,11 @@ specified path prefix), the action returns an empty list.
 
 
 
-=head2 ListEntitiesForPolicy()
+=head2 ListEntitiesForPolicy(PolicyArn => Str, [PathPrefix => Str, EntityFilter => Str, MaxItems => Int, Marker => Str])
 
-  Arguments described in: L<Paws::IAM::ListEntitiesForPolicy>
+Each argument is described in detail in: L<Paws::IAM::ListEntitiesForPolicy>
 
-  Returns: L<Paws::IAM::ListEntitiesForPolicyResponse>
+Returns: a L<Paws::IAM::ListEntitiesForPolicyResponse> instance
 
   
 
@@ -2380,11 +2389,11 @@ parameters.
 
 
 
-=head2 ListGroupPolicies()
+=head2 ListGroupPolicies(GroupName => Str, [Marker => Str, MaxItems => Int])
 
-  Arguments described in: L<Paws::IAM::ListGroupPolicies>
+Each argument is described in detail in: L<Paws::IAM::ListGroupPolicies>
 
-  Returns: L<Paws::IAM::ListGroupPoliciesResponse>
+Returns: a L<Paws::IAM::ListGroupPoliciesResponse> instance
 
   
 
@@ -2410,11 +2419,11 @@ group, the action returns an empty list.
 
 
 
-=head2 ListGroups()
+=head2 ListGroups([Marker => Str, MaxItems => Int, PathPrefix => Str])
 
-  Arguments described in: L<Paws::IAM::ListGroups>
+Each argument is described in detail in: L<Paws::IAM::ListGroups>
 
-  Returns: L<Paws::IAM::ListGroupsResponse>
+Returns: a L<Paws::IAM::ListGroupsResponse> instance
 
   
 
@@ -2433,11 +2442,11 @@ parameters.
 
 
 
-=head2 ListGroupsForUser()
+=head2 ListGroupsForUser(UserName => Str, [Marker => Str, MaxItems => Int])
 
-  Arguments described in: L<Paws::IAM::ListGroupsForUser>
+Each argument is described in detail in: L<Paws::IAM::ListGroupsForUser>
 
-  Returns: L<Paws::IAM::ListGroupsForUserResponse>
+Returns: a L<Paws::IAM::ListGroupsForUserResponse> instance
 
   
 
@@ -2456,11 +2465,11 @@ parameters.
 
 
 
-=head2 ListInstanceProfiles()
+=head2 ListInstanceProfiles([Marker => Str, PathPrefix => Str, MaxItems => Int])
 
-  Arguments described in: L<Paws::IAM::ListInstanceProfiles>
+Each argument is described in detail in: L<Paws::IAM::ListInstanceProfiles>
 
-  Returns: L<Paws::IAM::ListInstanceProfilesResponse>
+Returns: a L<Paws::IAM::ListInstanceProfilesResponse> instance
 
   
 
@@ -2481,11 +2490,11 @@ parameters.
 
 
 
-=head2 ListInstanceProfilesForRole()
+=head2 ListInstanceProfilesForRole(RoleName => Str, [MaxItems => Int, Marker => Str])
 
-  Arguments described in: L<Paws::IAM::ListInstanceProfilesForRole>
+Each argument is described in detail in: L<Paws::IAM::ListInstanceProfilesForRole>
 
-  Returns: L<Paws::IAM::ListInstanceProfilesForRoleResponse>
+Returns: a L<Paws::IAM::ListInstanceProfilesForRoleResponse> instance
 
   
 
@@ -2506,11 +2515,11 @@ parameters.
 
 
 
-=head2 ListMFADevices()
+=head2 ListMFADevices([Marker => Str, MaxItems => Int, UserName => Str])
 
-  Arguments described in: L<Paws::IAM::ListMFADevices>
+Each argument is described in detail in: L<Paws::IAM::ListMFADevices>
 
-  Returns: L<Paws::IAM::ListMFADevicesResponse>
+Returns: a L<Paws::IAM::ListMFADevicesResponse> instance
 
   
 
@@ -2534,9 +2543,9 @@ parameters.
 
 =head2 ListOpenIDConnectProviders()
 
-  Arguments described in: L<Paws::IAM::ListOpenIDConnectProviders>
+Each argument is described in detail in: L<Paws::IAM::ListOpenIDConnectProviders>
 
-  Returns: L<Paws::IAM::ListOpenIDConnectProvidersResponse>
+Returns: a L<Paws::IAM::ListOpenIDConnectProvidersResponse> instance
 
   
 
@@ -2553,11 +2562,11 @@ account.
 
 
 
-=head2 ListPolicies()
+=head2 ListPolicies([Marker => Str, Scope => Str, PathPrefix => Str, OnlyAttached => Bool, MaxItems => Int])
 
-  Arguments described in: L<Paws::IAM::ListPolicies>
+Each argument is described in detail in: L<Paws::IAM::ListPolicies>
 
-  Returns: L<Paws::IAM::ListPoliciesResponse>
+Returns: a L<Paws::IAM::ListPoliciesResponse> instance
 
   
 
@@ -2587,11 +2596,11 @@ and Inline Policies in the I<Using IAM> guide.
 
 
 
-=head2 ListPolicyVersions()
+=head2 ListPolicyVersions(PolicyArn => Str, [Marker => Str, MaxItems => Int])
 
-  Arguments described in: L<Paws::IAM::ListPolicyVersions>
+Each argument is described in detail in: L<Paws::IAM::ListPolicyVersions>
 
-  Returns: L<Paws::IAM::ListPolicyVersionsResponse>
+Returns: a L<Paws::IAM::ListPolicyVersionsResponse> instance
 
   
 
@@ -2611,11 +2620,11 @@ and Inline Policies in the I<Using IAM> guide.
 
 
 
-=head2 ListRolePolicies()
+=head2 ListRolePolicies(RoleName => Str, [Marker => Str, MaxItems => Int])
 
-  Arguments described in: L<Paws::IAM::ListRolePolicies>
+Each argument is described in detail in: L<Paws::IAM::ListRolePolicies>
 
-  Returns: L<Paws::IAM::ListRolePoliciesResponse>
+Returns: a L<Paws::IAM::ListRolePoliciesResponse> instance
 
   
 
@@ -2641,11 +2650,11 @@ role, the action returns an empty list.
 
 
 
-=head2 ListRoles()
+=head2 ListRoles([Marker => Str, MaxItems => Int, PathPrefix => Str])
 
-  Arguments described in: L<Paws::IAM::ListRoles>
+Each argument is described in detail in: L<Paws::IAM::ListRoles>
 
-  Returns: L<Paws::IAM::ListRolesResponse>
+Returns: a L<Paws::IAM::ListRolesResponse> instance
 
   
 
@@ -2672,9 +2681,9 @@ http://www.faqs.org/rfcs/rfc3986.html.
 
 =head2 ListSAMLProviders()
 
-  Arguments described in: L<Paws::IAM::ListSAMLProviders>
+Each argument is described in detail in: L<Paws::IAM::ListSAMLProviders>
 
-  Returns: L<Paws::IAM::ListSAMLProvidersResponse>
+Returns: a L<Paws::IAM::ListSAMLProvidersResponse> instance
 
   
 
@@ -2692,11 +2701,11 @@ This operation requires Signature Version 4.
 
 
 
-=head2 ListServerCertificates()
+=head2 ListServerCertificates([PathPrefix => Str, MaxItems => Int, Marker => Str])
 
-  Arguments described in: L<Paws::IAM::ListServerCertificates>
+Each argument is described in detail in: L<Paws::IAM::ListServerCertificates>
 
-  Returns: L<Paws::IAM::ListServerCertificatesResponse>
+Returns: a L<Paws::IAM::ListServerCertificatesResponse> instance
 
   
 
@@ -2716,11 +2725,11 @@ parameters.
 
 
 
-=head2 ListSigningCertificates()
+=head2 ListSigningCertificates([Marker => Str, MaxItems => Int, UserName => Str])
 
-  Arguments described in: L<Paws::IAM::ListSigningCertificates>
+Each argument is described in detail in: L<Paws::IAM::ListSigningCertificates>
 
-  Returns: L<Paws::IAM::ListSigningCertificatesResponse>
+Returns: a L<Paws::IAM::ListSigningCertificatesResponse> instance
 
   
 
@@ -2747,11 +2756,11 @@ has no associated users.
 
 
 
-=head2 ListUserPolicies()
+=head2 ListUserPolicies(UserName => Str, [Marker => Str, MaxItems => Int])
 
-  Arguments described in: L<Paws::IAM::ListUserPolicies>
+Each argument is described in detail in: L<Paws::IAM::ListUserPolicies>
 
-  Returns: L<Paws::IAM::ListUserPoliciesResponse>
+Returns: a L<Paws::IAM::ListUserPoliciesResponse> instance
 
   
 
@@ -2776,11 +2785,11 @@ user, the action returns an empty list.
 
 
 
-=head2 ListUsers()
+=head2 ListUsers([Marker => Str, MaxItems => Int, PathPrefix => Str])
 
-  Arguments described in: L<Paws::IAM::ListUsers>
+Each argument is described in detail in: L<Paws::IAM::ListUsers>
 
-  Returns: L<Paws::IAM::ListUsersResponse>
+Returns: a L<Paws::IAM::ListUsersResponse> instance
 
   
 
@@ -2801,11 +2810,11 @@ parameters.
 
 
 
-=head2 ListVirtualMFADevices()
+=head2 ListVirtualMFADevices([Marker => Str, MaxItems => Int, AssignmentStatus => Str])
 
-  Arguments described in: L<Paws::IAM::ListVirtualMFADevices>
+Each argument is described in detail in: L<Paws::IAM::ListVirtualMFADevices>
 
-  Returns: L<Paws::IAM::ListVirtualMFADevicesResponse>
+Returns: a L<Paws::IAM::ListVirtualMFADevicesResponse> instance
 
   
 
@@ -2827,11 +2836,11 @@ parameters.
 
 
 
-=head2 PutGroupPolicy()
+=head2 PutGroupPolicy(GroupName => Str, PolicyDocument => Str, PolicyName => Str)
 
-  Arguments described in: L<Paws::IAM::PutGroupPolicy>
+Each argument is described in detail in: L<Paws::IAM::PutGroupPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -2862,11 +2871,11 @@ guide.
 
 
 
-=head2 PutRolePolicy()
+=head2 PutRolePolicy(PolicyDocument => Str, PolicyName => Str, RoleName => Str)
 
-  Arguments described in: L<Paws::IAM::PutRolePolicy>
+Each argument is described in detail in: L<Paws::IAM::PutRolePolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -2904,11 +2913,11 @@ guide.
 
 
 
-=head2 PutUserPolicy()
+=head2 PutUserPolicy(PolicyDocument => Str, PolicyName => Str, UserName => Str)
 
-  Arguments described in: L<Paws::IAM::PutUserPolicy>
+Each argument is described in detail in: L<Paws::IAM::PutUserPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -2939,11 +2948,11 @@ guide.
 
 
 
-=head2 RemoveClientIDFromOpenIDConnectProvider()
+=head2 RemoveClientIDFromOpenIDConnectProvider(ClientID => Str, OpenIDConnectProviderArn => Str)
 
-  Arguments described in: L<Paws::IAM::RemoveClientIDFromOpenIDConnectProvider>
+Each argument is described in detail in: L<Paws::IAM::RemoveClientIDFromOpenIDConnectProvider>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -2963,11 +2972,11 @@ try to remove a client ID that was removed previously.
 
 
 
-=head2 RemoveRoleFromInstanceProfile()
+=head2 RemoveRoleFromInstanceProfile(InstanceProfileName => Str, RoleName => Str)
 
-  Arguments described in: L<Paws::IAM::RemoveRoleFromInstanceProfile>
+Each argument is described in detail in: L<Paws::IAM::RemoveRoleFromInstanceProfile>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -2991,11 +3000,11 @@ information about instance profiles, go to About Instance Profiles.
 
 
 
-=head2 RemoveUserFromGroup()
+=head2 RemoveUserFromGroup(GroupName => Str, UserName => Str)
 
-  Arguments described in: L<Paws::IAM::RemoveUserFromGroup>
+Each argument is described in detail in: L<Paws::IAM::RemoveUserFromGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -3011,11 +3020,11 @@ Removes the specified user from the specified group.
 
 
 
-=head2 ResyncMFADevice()
+=head2 ResyncMFADevice(AuthenticationCode1 => Str, AuthenticationCode2 => Str, SerialNumber => Str, UserName => Str)
 
-  Arguments described in: L<Paws::IAM::ResyncMFADevice>
+Each argument is described in detail in: L<Paws::IAM::ResyncMFADevice>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -3034,11 +3043,11 @@ devices, go to Using a Virtual MFA Device in the I<Using IAM> guide.
 
 
 
-=head2 SetDefaultPolicyVersion()
+=head2 SetDefaultPolicyVersion(PolicyArn => Str, VersionId => Str)
 
-  Arguments described in: L<Paws::IAM::SetDefaultPolicyVersion>
+Each argument is described in detail in: L<Paws::IAM::SetDefaultPolicyVersion>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -3062,11 +3071,11 @@ Inline Policies in the I<Using IAM> guide.
 
 
 
-=head2 UpdateAccessKey()
+=head2 UpdateAccessKey(AccessKeyId => Str, Status => Str, [UserName => Str])
 
-  Arguments described in: L<Paws::IAM::UpdateAccessKey>
+Each argument is described in detail in: L<Paws::IAM::UpdateAccessKey>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -3093,11 +3102,11 @@ in the I<Using IAM> guide.
 
 
 
-=head2 UpdateAccountPasswordPolicy()
+=head2 UpdateAccountPasswordPolicy([RequireSymbols => Bool, PasswordReusePrevention => Int, MinimumPasswordLength => Int, RequireNumbers => Bool, RequireLowercaseCharacters => Bool, AllowUsersToChangePassword => Bool, MaxPasswordAge => Int, RequireUppercaseCharacters => Bool, HardExpiry => Bool])
 
-  Arguments described in: L<Paws::IAM::UpdateAccountPasswordPolicy>
+Each argument is described in detail in: L<Paws::IAM::UpdateAccountPasswordPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -3121,11 +3130,11 @@ Password Policy in the I<Using IAM> guide.
 
 
 
-=head2 UpdateAssumeRolePolicy()
+=head2 UpdateAssumeRolePolicy(PolicyDocument => Str, RoleName => Str)
 
-  Arguments described in: L<Paws::IAM::UpdateAssumeRolePolicy>
+Each argument is described in detail in: L<Paws::IAM::UpdateAssumeRolePolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -3143,11 +3152,11 @@ Permissions and Federate Identities.
 
 
 
-=head2 UpdateGroup()
+=head2 UpdateGroup(GroupName => Str, [NewGroupName => Str, NewPath => Str])
 
-  Arguments described in: L<Paws::IAM::UpdateGroup>
+Each argument is described in detail in: L<Paws::IAM::UpdateGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -3172,11 +3181,11 @@ Permissions and Policies.
 
 
 
-=head2 UpdateLoginProfile()
+=head2 UpdateLoginProfile(UserName => Str, [PasswordResetRequired => Bool, Password => Str])
 
-  Arguments described in: L<Paws::IAM::UpdateLoginProfile>
+Each argument is described in detail in: L<Paws::IAM::UpdateLoginProfile>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -3196,11 +3205,11 @@ the I<Using IAM> guide.
 
 
 
-=head2 UpdateOpenIDConnectProviderThumbprint()
+=head2 UpdateOpenIDConnectProviderThumbprint(OpenIDConnectProviderArn => Str, ThumbprintList => ArrayRef[Str])
 
-  Arguments described in: L<Paws::IAM::UpdateOpenIDConnectProviderThumbprint>
+Each argument is described in detail in: L<Paws::IAM::UpdateOpenIDConnectProviderThumbprint>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -3232,11 +3241,11 @@ users.
 
 
 
-=head2 UpdateSAMLProvider()
+=head2 UpdateSAMLProvider(SAMLMetadataDocument => Str, SAMLProviderArn => Str)
 
-  Arguments described in: L<Paws::IAM::UpdateSAMLProvider>
+Each argument is described in detail in: L<Paws::IAM::UpdateSAMLProvider>
 
-  Returns: L<Paws::IAM::UpdateSAMLProviderResponse>
+Returns: a L<Paws::IAM::UpdateSAMLProviderResponse> instance
 
   
 
@@ -3254,11 +3263,11 @@ This operation requires Signature Version 4.
 
 
 
-=head2 UpdateServerCertificate()
+=head2 UpdateServerCertificate(ServerCertificateName => Str, [NewPath => Str, NewServerCertificateName => Str])
 
-  Arguments described in: L<Paws::IAM::UpdateServerCertificate>
+Each argument is described in detail in: L<Paws::IAM::UpdateServerCertificate>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -3284,11 +3293,11 @@ Policies.
 
 
 
-=head2 UpdateSigningCertificate()
+=head2 UpdateSigningCertificate(CertificateId => Str, Status => Str, [UserName => Str])
 
-  Arguments described in: L<Paws::IAM::UpdateSigningCertificate>
+Each argument is described in detail in: L<Paws::IAM::UpdateSigningCertificate>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -3315,11 +3324,11 @@ Certificates in the I<Using IAM> guide.
 
 
 
-=head2 UpdateUser()
+=head2 UpdateUser(UserName => Str, [NewUserName => Str, NewPath => Str])
 
-  Arguments described in: L<Paws::IAM::UpdateUser>
+Each argument is described in detail in: L<Paws::IAM::UpdateUser>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -3344,11 +3353,11 @@ Policies.
 
 
 
-=head2 UploadServerCertificate()
+=head2 UploadServerCertificate(CertificateBody => Str, PrivateKey => Str, ServerCertificateName => Str, [CertificateChain => Str, Path => Str])
 
-  Arguments described in: L<Paws::IAM::UploadServerCertificate>
+Each argument is described in detail in: L<Paws::IAM::UploadServerCertificate>
 
-  Returns: L<Paws::IAM::UploadServerCertificateResponse>
+Returns: a L<Paws::IAM::UploadServerCertificateResponse> instance
 
   
 
@@ -3377,11 +3386,11 @@ I<Using IAM> guide.
 
 
 
-=head2 UploadSigningCertificate()
+=head2 UploadSigningCertificate(CertificateBody => Str, [UserName => Str])
 
-  Arguments described in: L<Paws::IAM::UploadSigningCertificate>
+Each argument is described in detail in: L<Paws::IAM::UploadSigningCertificate>
 
-  Returns: L<Paws::IAM::UploadSigningCertificateResponse>
+Returns: a L<Paws::IAM::UploadSigningCertificateResponse> instance
 
   
 

@@ -52,7 +52,7 @@ A list of job flows to be shutdown.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for TerminateJobFlows in Paws::EMR
+This class forms part of L<Paws>, documenting arguments for method TerminateJobFlows in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 

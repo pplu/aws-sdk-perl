@@ -191,7 +191,7 @@ exclusive. You can specify at most one of these in a request.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListOpenWorkflowExecutions in Paws::SimpleWorkflow
+This class forms part of L<Paws>, documenting arguments for method ListOpenWorkflowExecutions in L<Paws::SimpleWorkflow>
 
 =head1 BUGS and CONTRIBUTIONS
 

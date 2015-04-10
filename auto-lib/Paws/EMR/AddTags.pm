@@ -72,7 +72,7 @@ value string with a maximum of 256 characters.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AddTags in Paws::EMR
+This class forms part of L<Paws>, documenting arguments for method AddTags in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 

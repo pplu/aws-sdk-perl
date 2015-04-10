@@ -70,7 +70,7 @@ null if this is the first call.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeWorkspaceDirectories in Paws::WorkSpaces
+This class forms part of L<Paws>, documenting arguments for method DescribeWorkspaceDirectories in L<Paws::WorkSpaces>
 
 =head1 BUGS and CONTRIBUTIONS
 

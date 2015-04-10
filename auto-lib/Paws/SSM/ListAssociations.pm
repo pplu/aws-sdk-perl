@@ -88,7 +88,7 @@ from a previous call.)
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListAssociations in Paws::SSM
+This class forms part of L<Paws>, documenting arguments for method ListAssociations in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 

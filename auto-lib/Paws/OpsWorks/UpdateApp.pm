@@ -228,7 +228,7 @@ The app type.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateApp in Paws::OpsWorks
+This class forms part of L<Paws>, documenting arguments for method UpdateApp in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 

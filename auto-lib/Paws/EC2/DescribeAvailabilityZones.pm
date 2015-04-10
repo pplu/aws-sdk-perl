@@ -96,7 +96,7 @@ The names of one or more Availability Zones.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeAvailabilityZones in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DescribeAvailabilityZones in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

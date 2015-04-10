@@ -123,7 +123,7 @@ Optional key:value pairs mapping provider names to provider app IDs.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateIdentityPool in Paws::CognitoIdentity
+This class forms part of L<Paws>, documenting arguments for method CreateIdentityPool in L<Paws::CognitoIdentity>
 
 =head1 BUGS and CONTRIBUTIONS
 

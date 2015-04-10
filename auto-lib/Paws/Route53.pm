@@ -175,8 +175,17 @@ Paws::Route53 - Perl Interface to AWS Amazon Route 53
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('Route53')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -209,11 +218,11 @@ of the locations of Amazon Route 53 DNS servers, see The Amazon Route
 
 =head1 METHODS
 
-=head2 AssociateVPCWithHostedZone()
+=head2 AssociateVPCWithHostedZone(HostedZoneId => Str, VPC => Paws::Route53::VPC, [Comment => Str])
 
-  Arguments described in: L<Paws::Route53::AssociateVPCWithHostedZone>
+Each argument is described in detail in: L<Paws::Route53::AssociateVPCWithHostedZone>
 
-  Returns: L<Paws::Route53::AssociateVPCWithHostedZoneResponse>
+Returns: a L<Paws::Route53::AssociateVPCWithHostedZoneResponse> instance
 
   
 
@@ -238,11 +247,11 @@ operation for how to track the progress of your change.
 
 
 
-=head2 ChangeResourceRecordSets()
+=head2 ChangeResourceRecordSets(ChangeBatch => Paws::Route53::ChangeBatch, HostedZoneId => Str)
 
-  Arguments described in: L<Paws::Route53::ChangeResourceRecordSets>
+Each argument is described in detail in: L<Paws::Route53::ChangeResourceRecordSets>
 
-  Returns: L<Paws::Route53::ChangeResourceRecordSetsResponse>
+Returns: a L<Paws::Route53::ChangeResourceRecordSetsResponse> instance
 
   
 
@@ -288,20 +297,20 @@ elements in a request cannot exceed 32,000 characters.
 
 
 
-=head2 ChangeTagsForResource()
+=head2 ChangeTagsForResource(ResourceId => Str, ResourceType => Str, [AddTags => ArrayRef[Paws::Route53::Tag], RemoveTagKeys => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::Route53::ChangeTagsForResource>
+Each argument is described in detail in: L<Paws::Route53::ChangeTagsForResource>
 
-  Returns: L<Paws::Route53::ChangeTagsForResourceResponse>
+Returns: a L<Paws::Route53::ChangeTagsForResourceResponse> instance
 
   
 
 
-=head2 CreateHealthCheck()
+=head2 CreateHealthCheck(CallerReference => Str, HealthCheckConfig => Paws::Route53::HealthCheckConfig)
 
-  Arguments described in: L<Paws::Route53::CreateHealthCheck>
+Each argument is described in detail in: L<Paws::Route53::CreateHealthCheck>
 
-  Returns: L<Paws::Route53::CreateHealthCheckResponse>
+Returns: a L<Paws::Route53::CreateHealthCheckResponse> instance
 
   
 
@@ -323,11 +332,11 @@ about the health check.
 
 
 
-=head2 CreateHostedZone()
+=head2 CreateHostedZone(CallerReference => Str, Name => Str, [VPC => Paws::Route53::VPC, DelegationSetId => Str, HostedZoneConfig => Paws::Route53::HostedZoneConfig])
 
-  Arguments described in: L<Paws::Route53::CreateHostedZone>
+Each argument is described in detail in: L<Paws::Route53::CreateHostedZone>
 
-  Returns: L<Paws::Route53::CreateHostedZoneResponse>
+Returns: a L<Paws::Route53::CreateHostedZoneResponse> instance
 
   
 
@@ -364,11 +373,11 @@ those 4 NS records for the zone, instead of alloting a new one.
 
 
 
-=head2 CreateReusableDelegationSet()
+=head2 CreateReusableDelegationSet(CallerReference => Str, [HostedZoneId => Str])
 
-  Arguments described in: L<Paws::Route53::CreateReusableDelegationSet>
+Each argument is described in detail in: L<Paws::Route53::CreateReusableDelegationSet>
 
-  Returns: L<Paws::Route53::CreateReusableDelegationSetResponse>
+Returns: a L<Paws::Route53::CreateReusableDelegationSetResponse> instance
 
   
 
@@ -393,11 +402,11 @@ delegationSet associated with that particular hosted zone as reusable.
 
 
 
-=head2 DeleteHealthCheck()
+=head2 DeleteHealthCheck(HealthCheckId => Str)
 
-  Arguments described in: L<Paws::Route53::DeleteHealthCheck>
+Each argument is described in detail in: L<Paws::Route53::DeleteHealthCheck>
 
-  Returns: L<Paws::Route53::DeleteHealthCheckResponse>
+Returns: a L<Paws::Route53::DeleteHealthCheckResponse> instance
 
   
 
@@ -424,11 +433,11 @@ ChangeResourceRecordSets.
 
 
 
-=head2 DeleteHostedZone()
+=head2 DeleteHostedZone(Id => Str)
 
-  Arguments described in: L<Paws::Route53::DeleteHostedZone>
+Each argument is described in detail in: L<Paws::Route53::DeleteHostedZone>
 
-  Returns: L<Paws::Route53::DeleteHostedZoneResponse>
+Returns: a L<Paws::Route53::DeleteHostedZoneResponse> instance
 
   
 
@@ -457,11 +466,11 @@ deleting records from your hosted zone, see ChangeResourceRecordSets.
 
 
 
-=head2 DeleteReusableDelegationSet()
+=head2 DeleteReusableDelegationSet(Id => Str)
 
-  Arguments described in: L<Paws::Route53::DeleteReusableDelegationSet>
+Each argument is described in detail in: L<Paws::Route53::DeleteReusableDelegationSet>
 
-  Returns: L<Paws::Route53::DeleteReusableDelegationSetResponse>
+Returns: a L<Paws::Route53::DeleteReusableDelegationSetResponse> instance
 
   
 
@@ -486,11 +495,11 @@ deny your request with a C<DelegationSetInUse> error.
 
 
 
-=head2 DisassociateVPCFromHostedZone()
+=head2 DisassociateVPCFromHostedZone(HostedZoneId => Str, VPC => Paws::Route53::VPC, [Comment => Str])
 
-  Arguments described in: L<Paws::Route53::DisassociateVPCFromHostedZone>
+Each argument is described in detail in: L<Paws::Route53::DisassociateVPCFromHostedZone>
 
-  Returns: L<Paws::Route53::DisassociateVPCFromHostedZoneResponse>
+Returns: a L<Paws::Route53::DisassociateVPCFromHostedZoneResponse> instance
 
   
 
@@ -515,11 +524,11 @@ operation for how to track the progress of your change.
 
 
 
-=head2 GetChange()
+=head2 GetChange(Id => Str)
 
-  Arguments described in: L<Paws::Route53::GetChange>
+Each argument is described in detail in: L<Paws::Route53::GetChange>
 
-  Returns: L<Paws::Route53::GetChangeResponse>
+Returns: a L<Paws::Route53::GetChangeResponse> instance
 
   
 
@@ -545,9 +554,9 @@ Route 53 DNS servers.
 
 =head2 GetCheckerIpRanges()
 
-  Arguments described in: L<Paws::Route53::GetCheckerIpRanges>
+Each argument is described in detail in: L<Paws::Route53::GetCheckerIpRanges>
 
-  Returns: L<Paws::Route53::GetCheckerIpRangesResponse>
+Returns: a L<Paws::Route53::GetCheckerIpRangesResponse> instance
 
   
 
@@ -567,11 +576,11 @@ checkers to check the health of your resources.
 
 
 
-=head2 GetGeoLocation()
+=head2 GetGeoLocation([SubdivisionCode => Str, ContinentCode => Str, CountryCode => Str])
 
-  Arguments described in: L<Paws::Route53::GetGeoLocation>
+Each argument is described in detail in: L<Paws::Route53::GetGeoLocation>
 
-  Returns: L<Paws::Route53::GetGeoLocationResponse>
+Returns: a L<Paws::Route53::GetGeoLocationResponse> instance
 
   
 
@@ -589,11 +598,11 @@ continentcode | countrycode | countrycode and subdivisioncode.
 
 
 
-=head2 GetHealthCheck()
+=head2 GetHealthCheck(HealthCheckId => Str)
 
-  Arguments described in: L<Paws::Route53::GetHealthCheck>
+Each argument is described in detail in: L<Paws::Route53::GetHealthCheck>
 
-  Returns: L<Paws::Route53::GetHealthCheckResponse>
+Returns: a L<Paws::Route53::GetHealthCheckResponse> instance
 
   
 
@@ -612,9 +621,9 @@ C<2013-04-01/healthcheck/I<health check ID>> resource.
 
 =head2 GetHealthCheckCount()
 
-  Arguments described in: L<Paws::Route53::GetHealthCheckCount>
+Each argument is described in detail in: L<Paws::Route53::GetHealthCheckCount>
 
-  Returns: L<Paws::Route53::GetHealthCheckCountResponse>
+Returns: a L<Paws::Route53::GetHealthCheckCountResponse> instance
 
   
 
@@ -631,11 +640,11 @@ the C<2013-04-01/healthcheckcount> resource.
 
 
 
-=head2 GetHealthCheckLastFailureReason()
+=head2 GetHealthCheckLastFailureReason(HealthCheckId => Str)
 
-  Arguments described in: L<Paws::Route53::GetHealthCheckLastFailureReason>
+Each argument is described in detail in: L<Paws::Route53::GetHealthCheckLastFailureReason>
 
-  Returns: L<Paws::Route53::GetHealthCheckLastFailureReasonResponse>
+Returns: a L<Paws::Route53::GetHealthCheckLastFailureReasonResponse> instance
 
   
 
@@ -655,11 +664,11 @@ resource.
 
 
 
-=head2 GetHealthCheckStatus()
+=head2 GetHealthCheckStatus(HealthCheckId => Str)
 
-  Arguments described in: L<Paws::Route53::GetHealthCheckStatus>
+Each argument is described in detail in: L<Paws::Route53::GetHealthCheckStatus>
 
-  Returns: L<Paws::Route53::GetHealthCheckStatusResponse>
+Returns: a L<Paws::Route53::GetHealthCheckStatusResponse> instance
 
   
 
@@ -677,11 +686,11 @@ use this call to get a health check's current status.
 
 
 
-=head2 GetHostedZone()
+=head2 GetHostedZone(Id => Str)
 
-  Arguments described in: L<Paws::Route53::GetHostedZone>
+Each argument is described in detail in: L<Paws::Route53::GetHostedZone>
 
-  Returns: L<Paws::Route53::GetHostedZoneResponse>
+Returns: a L<Paws::Route53::GetHostedZoneResponse> instance
 
   
 
@@ -702,9 +711,9 @@ the hosted zone when you created it.
 
 =head2 GetHostedZoneCount()
 
-  Arguments described in: L<Paws::Route53::GetHostedZoneCount>
+Each argument is described in detail in: L<Paws::Route53::GetHostedZoneCount>
 
-  Returns: L<Paws::Route53::GetHostedZoneCountResponse>
+Returns: a L<Paws::Route53::GetHostedZoneCountResponse> instance
 
   
 
@@ -721,11 +730,11 @@ the C<2013-04-01/hostedzonecount> resource.
 
 
 
-=head2 GetReusableDelegationSet()
+=head2 GetReusableDelegationSet(Id => Str)
 
-  Arguments described in: L<Paws::Route53::GetReusableDelegationSet>
+Each argument is described in detail in: L<Paws::Route53::GetReusableDelegationSet>
 
-  Returns: L<Paws::Route53::GetReusableDelegationSetResponse>
+Returns: a L<Paws::Route53::GetReusableDelegationSetResponse> instance
 
   
 
@@ -742,11 +751,11 @@ C<2013-04-01/delegationset/I<delegation set ID>> resource.
 
 
 
-=head2 ListGeoLocations()
+=head2 ListGeoLocations([StartSubdivisionCode => Str, MaxItems => Str, StartCountryCode => Str, StartContinentCode => Str])
 
-  Arguments described in: L<Paws::Route53::ListGeoLocations>
+Each argument is described in detail in: L<Paws::Route53::ListGeoLocations>
 
-  Returns: L<Paws::Route53::ListGeoLocationsResponse>
+Returns: a L<Paws::Route53::ListGeoLocationsResponse> instance
 
   
 
@@ -776,11 +785,11 @@ with.
 
 
 
-=head2 ListHealthChecks()
+=head2 ListHealthChecks([Marker => Str, MaxItems => Str])
 
-  Arguments described in: L<Paws::Route53::ListHealthChecks>
+Each argument is described in detail in: L<Paws::Route53::ListHealthChecks>
 
-  Returns: L<Paws::Route53::ListHealthChecksResponse>
+Returns: a L<Paws::Route53::ListHealthChecksResponse> instance
 
   
 
@@ -806,11 +815,11 @@ a value greater than 100, Amazon Route 53 returns only the first 100.
 
 
 
-=head2 ListHostedZones()
+=head2 ListHostedZones([Marker => Str, MaxItems => Str, DelegationSetId => Str])
 
-  Arguments described in: L<Paws::Route53::ListHostedZones>
+Each argument is described in detail in: L<Paws::Route53::ListHostedZones>
 
-  Returns: L<Paws::Route53::ListHostedZonesResponse>
+Returns: a L<Paws::Route53::ListHostedZonesResponse> instance
 
   
 
@@ -836,11 +845,11 @@ a value greater than 100, Amazon Route 53 returns only the first 100.
 
 
 
-=head2 ListHostedZonesByName()
+=head2 ListHostedZonesByName([DNSName => Str, HostedZoneId => Str, MaxItems => Str])
 
-  Arguments described in: L<Paws::Route53::ListHostedZonesByName>
+Each argument is described in detail in: L<Paws::Route53::ListHostedZonesByName>
 
-  Returns: L<Paws::Route53::ListHostedZonesByNameResponse>
+Returns: a L<Paws::Route53::ListHostedZonesByNameResponse> instance
 
   
 
@@ -867,11 +876,11 @@ a value greater than 100, Amazon Route 53 returns only the first 100.
 
 
 
-=head2 ListResourceRecordSets()
+=head2 ListResourceRecordSets(HostedZoneId => Str, [StartRecordIdentifier => Str, StartRecordName => Str, StartRecordType => Str, MaxItems => Str])
 
-  Arguments described in: L<Paws::Route53::ListResourceRecordSets>
+Each argument is described in detail in: L<Paws::Route53::ListResourceRecordSets>
 
-  Returns: L<Paws::Route53::ListResourceRecordSetsResponse>
+Returns: a L<Paws::Route53::ListResourceRecordSetsResponse> instance
 
   
 
@@ -936,11 +945,11 @@ ListResourceRecordSets by that process.
 
 
 
-=head2 ListReusableDelegationSets()
+=head2 ListReusableDelegationSets([MaxItems => Str, Marker => Str])
 
-  Arguments described in: L<Paws::Route53::ListReusableDelegationSets>
+Each argument is described in detail in: L<Paws::Route53::ListReusableDelegationSets>
 
-  Returns: L<Paws::Route53::ListReusableDelegationSetsResponse>
+Returns: a L<Paws::Route53::ListReusableDelegationSetsResponse> instance
 
   
 
@@ -966,29 +975,29 @@ a value greater than 100, Amazon Route 53 returns only the first 100.
 
 
 
-=head2 ListTagsForResource()
+=head2 ListTagsForResource(ResourceId => Str, ResourceType => Str)
 
-  Arguments described in: L<Paws::Route53::ListTagsForResource>
+Each argument is described in detail in: L<Paws::Route53::ListTagsForResource>
 
-  Returns: L<Paws::Route53::ListTagsForResourceResponse>
-
-  
-
-
-=head2 ListTagsForResources()
-
-  Arguments described in: L<Paws::Route53::ListTagsForResources>
-
-  Returns: L<Paws::Route53::ListTagsForResourcesResponse>
+Returns: a L<Paws::Route53::ListTagsForResourceResponse> instance
 
   
 
 
-=head2 UpdateHealthCheck()
+=head2 ListTagsForResources(ResourceType => Str)
 
-  Arguments described in: L<Paws::Route53::UpdateHealthCheck>
+Each argument is described in detail in: L<Paws::Route53::ListTagsForResources>
 
-  Returns: L<Paws::Route53::UpdateHealthCheckResponse>
+Returns: a L<Paws::Route53::ListTagsForResourcesResponse> instance
+
+  
+
+
+=head2 UpdateHealthCheck(HealthCheckId => Str, [ResourcePath => Str, FullyQualifiedDomainName => Str, IPAddress => Str, FailureThreshold => Int, HealthCheckVersion => Num, Port => Int, SearchString => Str])
+
+Each argument is described in detail in: L<Paws::Route53::UpdateHealthCheck>
+
+Returns: a L<Paws::Route53::UpdateHealthCheckResponse> instance
 
   
 
@@ -1010,11 +1019,11 @@ which contains metadata about the health check.
 
 
 
-=head2 UpdateHostedZoneComment()
+=head2 UpdateHostedZoneComment(Id => Str, [Comment => Str])
 
-  Arguments described in: L<Paws::Route53::UpdateHostedZoneComment>
+Each argument is described in detail in: L<Paws::Route53::UpdateHostedZoneComment>
 
-  Returns: L<Paws::Route53::UpdateHostedZoneCommentResponse>
+Returns: a L<Paws::Route53::UpdateHostedZoneCommentResponse> instance
 
   
 

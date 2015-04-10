@@ -73,7 +73,7 @@ The ID of the VPC to which the instance is linked.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DetachClassicLinkVpc in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DetachClassicLinkVpc in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

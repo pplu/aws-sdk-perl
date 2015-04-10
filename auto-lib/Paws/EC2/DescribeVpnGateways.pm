@@ -128,7 +128,7 @@ Default: Describes all your virtual private gateways.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeVpnGateways in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DescribeVpnGateways in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

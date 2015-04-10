@@ -52,7 +52,7 @@ One or more associations.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateAssociationBatch in Paws::SSM
+This class forms part of L<Paws>, documenting arguments for method CreateAssociationBatch in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 

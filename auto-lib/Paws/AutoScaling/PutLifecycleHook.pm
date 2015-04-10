@@ -216,7 +216,7 @@ updating existing hooks.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for PutLifecycleHook in Paws::AutoScaling
+This class forms part of L<Paws>, documenting arguments for method PutLifecycleHook in L<Paws::AutoScaling>
 
 =head1 BUGS and CONTRIBUTIONS
 

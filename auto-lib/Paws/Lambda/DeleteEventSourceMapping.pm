@@ -52,7 +52,7 @@ The event source mapping ID.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteEventSourceMapping in Paws::Lambda
+This class forms part of L<Paws>, documenting arguments for method DeleteEventSourceMapping in L<Paws::Lambda>
 
 =head1 BUGS and CONTRIBUTIONS
 

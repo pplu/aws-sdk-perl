@@ -68,7 +68,7 @@ The name or Amazon Resource Name (ARN) of the policy.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeletePolicy in Paws::AutoScaling
+This class forms part of L<Paws>, documenting arguments for method DeletePolicy in L<Paws::AutoScaling>
 
 =head1 BUGS and CONTRIBUTIONS
 

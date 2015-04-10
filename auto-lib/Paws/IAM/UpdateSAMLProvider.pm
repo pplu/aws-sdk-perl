@@ -73,7 +73,7 @@ The Amazon Resource Name (ARN) of the SAML provider to update.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateSAMLProvider in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method UpdateSAMLProvider in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

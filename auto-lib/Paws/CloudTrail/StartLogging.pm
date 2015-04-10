@@ -52,7 +52,7 @@ The name of the trail for which CloudTrail logs AWS API calls.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for StartLogging in Paws::CloudTrail
+This class forms part of L<Paws>, documenting arguments for method StartLogging in L<Paws::CloudTrail>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -68,7 +68,7 @@ The name of the user who the policy is associated with.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetUserPolicy in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method GetUserPolicy in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

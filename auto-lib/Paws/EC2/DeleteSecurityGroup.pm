@@ -74,7 +74,7 @@ specify either the security group name or the security group ID.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteSecurityGroup in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DeleteSecurityGroup in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

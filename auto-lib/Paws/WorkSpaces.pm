@@ -60,8 +60,17 @@ Paws::WorkSpaces - Perl Interface to AWS Amazon WorkSpaces
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('WorkSpaces')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -84,11 +93,11 @@ parameters, and errors.
 
 =head1 METHODS
 
-=head2 CreateWorkspaces()
+=head2 CreateWorkspaces(Workspaces => ArrayRef[Paws::WorkSpaces::WorkspaceRequest])
 
-  Arguments described in: L<Paws::WorkSpaces::CreateWorkspaces>
+Each argument is described in detail in: L<Paws::WorkSpaces::CreateWorkspaces>
 
-  Returns: L<Paws::WorkSpaces::CreateWorkspacesResult>
+Returns: a L<Paws::WorkSpaces::CreateWorkspacesResult> instance
 
   
 
@@ -107,11 +116,11 @@ created.
 
 
 
-=head2 DescribeWorkspaceBundles()
+=head2 DescribeWorkspaceBundles([Owner => Str, BundleIds => ArrayRef[Str], NextToken => Str])
 
-  Arguments described in: L<Paws::WorkSpaces::DescribeWorkspaceBundles>
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceBundles>
 
-  Returns: L<Paws::WorkSpaces::DescribeWorkspaceBundlesResult>
+Returns: a L<Paws::WorkSpaces::DescribeWorkspaceBundlesResult> instance
 
   
 
@@ -136,11 +145,11 @@ call to this operation to retrieve the next set of items.
 
 
 
-=head2 DescribeWorkspaceDirectories()
+=head2 DescribeWorkspaceDirectories([NextToken => Str, DirectoryIds => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::WorkSpaces::DescribeWorkspaceDirectories>
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceDirectories>
 
-  Returns: L<Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult>
+Returns: a L<Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult> instance
 
   
 
@@ -163,11 +172,11 @@ call to this operation to retrieve the next set of items.
 
 
 
-=head2 DescribeWorkspaces()
+=head2 DescribeWorkspaces([BundleId => Str, DirectoryId => Str, WorkspaceIds => ArrayRef[Str], NextToken => Str, UserName => Str, Limit => Int])
 
-  Arguments described in: L<Paws::WorkSpaces::DescribeWorkspaces>
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaces>
 
-  Returns: L<Paws::WorkSpaces::DescribeWorkspacesResult>
+Returns: a L<Paws::WorkSpaces::DescribeWorkspacesResult> instance
 
   
 
@@ -191,11 +200,11 @@ call to this operation to retrieve the next set of items.
 
 
 
-=head2 RebootWorkspaces()
+=head2 RebootWorkspaces(RebootWorkspaceRequests => ArrayRef[Paws::WorkSpaces::RebootRequest])
 
-  Arguments described in: L<Paws::WorkSpaces::RebootWorkspaces>
+Each argument is described in detail in: L<Paws::WorkSpaces::RebootWorkspaces>
 
-  Returns: L<Paws::WorkSpaces::RebootWorkspacesResult>
+Returns: a L<Paws::WorkSpaces::RebootWorkspacesResult> instance
 
   
 
@@ -217,11 +226,11 @@ have rebooted.
 
 
 
-=head2 RebuildWorkspaces()
+=head2 RebuildWorkspaces(RebuildWorkspaceRequests => ArrayRef[Paws::WorkSpaces::RebuildRequest])
 
-  Arguments described in: L<Paws::WorkSpaces::RebuildWorkspaces>
+Each argument is described in detail in: L<Paws::WorkSpaces::RebuildWorkspaces>
 
-  Returns: L<Paws::WorkSpaces::RebuildWorkspacesResult>
+Returns: a L<Paws::WorkSpaces::RebuildWorkspacesResult> instance
 
   
 
@@ -261,11 +270,11 @@ have been completely rebuilt.
 
 
 
-=head2 TerminateWorkspaces()
+=head2 TerminateWorkspaces(TerminateWorkspaceRequests => ArrayRef[Paws::WorkSpaces::TerminateRequest])
 
-  Arguments described in: L<Paws::WorkSpaces::TerminateWorkspaces>
+Each argument is described in detail in: L<Paws::WorkSpaces::TerminateWorkspaces>
 
-  Returns: L<Paws::WorkSpaces::TerminateWorkspacesResult>
+Returns: a L<Paws::WorkSpaces::TerminateWorkspacesResult> instance
 
   
 

@@ -218,7 +218,7 @@ Example: C<2009-07-08T18:00Z>
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeEvents in Paws::RedShift
+This class forms part of L<Paws>, documenting arguments for method DescribeEvents in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 

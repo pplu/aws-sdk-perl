@@ -126,7 +126,7 @@ C<EC2SecurityGroupName> or C<EC2SecurityGroupId> must be provided.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AuthorizeDBSecurityGroupIngress in Paws::RDS
+This class forms part of L<Paws>, documenting arguments for method AuthorizeDBSecurityGroupIngress in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 

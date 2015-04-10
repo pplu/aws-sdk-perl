@@ -130,8 +130,17 @@ Paws::CloudFront - Perl Interface to AWS Amazon CloudFront
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('CloudFront')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -141,189 +150,189 @@ Paws::CloudFront - Perl Interface to AWS Amazon CloudFront
 
 =head2 CreateCloudFrontOriginAccessIdentity2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::CreateCloudFrontOriginAccessIdentity2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::CreateCloudFrontOriginAccessIdentity2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 CreateDistribution2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::CreateDistribution2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::CreateDistribution2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 CreateInvalidation2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::CreateInvalidation2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::CreateInvalidation2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 CreateStreamingDistribution2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::CreateStreamingDistribution2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDistribution2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 DeleteCloudFrontOriginAccessIdentity2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 DeleteDistribution2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::DeleteDistribution2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::DeleteDistribution2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 DeleteStreamingDistribution2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::DeleteStreamingDistribution2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::DeleteStreamingDistribution2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 GetCloudFrontOriginAccessIdentity2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentity2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentity2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 GetCloudFrontOriginAccessIdentityConfig2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 GetDistribution2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::GetDistribution2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::GetDistribution2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 GetDistributionConfig2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::GetDistributionConfig2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::GetDistributionConfig2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 GetInvalidation2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::GetInvalidation2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::GetInvalidation2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 GetStreamingDistribution2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::GetStreamingDistribution2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistribution2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 GetStreamingDistributionConfig2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::GetStreamingDistributionConfig2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistributionConfig2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 ListCloudFrontOriginAccessIdentities2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::ListCloudFrontOriginAccessIdentities2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::ListCloudFrontOriginAccessIdentities2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 ListDistributions2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::ListDistributions2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::ListDistributions2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 ListInvalidations2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::ListInvalidations2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::ListInvalidations2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 ListStreamingDistributions2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::ListStreamingDistributions2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::ListStreamingDistributions2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 UpdateCloudFrontOriginAccessIdentity2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 UpdateDistribution2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::UpdateDistribution2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::UpdateDistribution2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
 =head2 UpdateStreamingDistribution2014_11_06()
 
-  Arguments described in: L<Paws::CloudFront::UpdateStreamingDistribution2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::UpdateStreamingDistribution2014_11_06>
 
-  Returns: nothing
+Returns: nothing
 
   
 

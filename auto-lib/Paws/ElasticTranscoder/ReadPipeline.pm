@@ -52,7 +52,7 @@ The identifier of the pipeline to read.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ReadPipeline in Paws::ElasticTranscoder
+This class forms part of L<Paws>, documenting arguments for method ReadPipeline in L<Paws::ElasticTranscoder>
 
 =head1 BUGS and CONTRIBUTIONS
 

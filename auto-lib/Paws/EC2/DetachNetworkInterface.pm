@@ -73,7 +73,7 @@ Specifies whether to force a detachment.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DetachNetworkInterface in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DetachNetworkInterface in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -184,7 +184,7 @@ Elastic Beanstalk returns an C<InvalidParameterValue> error.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateConfigurationTemplate in Paws::ElasticBeanstalk
+This class forms part of L<Paws>, documenting arguments for method CreateConfigurationTemplate in L<Paws::ElasticBeanstalk>
 
 =head1 BUGS and CONTRIBUTIONS
 

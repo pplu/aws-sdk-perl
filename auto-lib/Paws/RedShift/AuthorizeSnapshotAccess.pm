@@ -88,7 +88,7 @@ The identifier of the snapshot the account is authorized to restore.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AuthorizeSnapshotAccess in Paws::RedShift
+This class forms part of L<Paws>, documenting arguments for method AuthorizeSnapshotAccess in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 

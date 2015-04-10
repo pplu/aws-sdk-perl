@@ -55,7 +55,7 @@ of C<Submitted>, use the ListJobsByStatus API action.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CancelJob in Paws::ElasticTranscoder
+This class forms part of L<Paws>, documenting arguments for method CancelJob in L<Paws::ElasticTranscoder>
 
 =head1 BUGS and CONTRIBUTIONS
 

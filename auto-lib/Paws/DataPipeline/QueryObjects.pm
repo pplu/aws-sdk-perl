@@ -124,7 +124,7 @@ possible values are: C<COMPONENT>, C<INSTANCE>, and C<ATTEMPT>.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for QueryObjects in Paws::DataPipeline
+This class forms part of L<Paws>, documenting arguments for method QueryObjects in L<Paws::DataPipeline>
 
 =head1 BUGS and CONTRIBUTIONS
 

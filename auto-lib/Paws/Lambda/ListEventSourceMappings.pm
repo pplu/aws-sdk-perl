@@ -111,7 +111,7 @@ return in response. This value must be greater than 0.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListEventSourceMappings in Paws::Lambda
+This class forms part of L<Paws>, documenting arguments for method ListEventSourceMappings in L<Paws::Lambda>
 
 =head1 BUGS and CONTRIBUTIONS
 

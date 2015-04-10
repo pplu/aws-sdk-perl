@@ -52,7 +52,7 @@ The name of the role to get information about.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetRole in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method GetRole in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -53,7 +53,7 @@ you want to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteCluster in Paws::ECS
+This class forms part of L<Paws>, documenting arguments for method DeleteCluster in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 

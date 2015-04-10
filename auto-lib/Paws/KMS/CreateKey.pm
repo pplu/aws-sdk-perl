@@ -88,7 +88,7 @@ to the account. The key is the root of trust.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateKey in Paws::KMS
+This class forms part of L<Paws>, documenting arguments for method CreateKey in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 

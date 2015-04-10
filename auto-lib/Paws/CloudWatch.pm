@@ -79,8 +79,17 @@ Paws::CloudWatch - Perl Interface to AWS Amazon CloudWatch
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('CloudWatch')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -169,11 +178,11 @@ libraries, which you can find at the following AWS developer centers:
 
 =head1 METHODS
 
-=head2 DeleteAlarms()
+=head2 DeleteAlarms(AlarmNames => ArrayRef[Str])
 
-  Arguments described in: L<Paws::CloudWatch::DeleteAlarms>
+Each argument is described in detail in: L<Paws::CloudWatch::DeleteAlarms>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -190,11 +199,11 @@ deleted.
 
 
 
-=head2 DescribeAlarmHistory()
+=head2 DescribeAlarmHistory([AlarmName => Str, HistoryItemType => Str, StartDate => Str, NextToken => Str, MaxRecords => Int, EndDate => Str])
 
-  Arguments described in: L<Paws::CloudWatch::DescribeAlarmHistory>
+Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmHistory>
 
-  Returns: L<Paws::CloudWatch::DescribeAlarmHistoryOutput>
+Returns: a L<Paws::CloudWatch::DescribeAlarmHistoryOutput> instance
 
   
 
@@ -212,11 +221,11 @@ returns histories for all of the owner's alarms.
 
 
 
-=head2 DescribeAlarms()
+=head2 DescribeAlarms([ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str, StateValue => Str])
 
-  Arguments described in: L<Paws::CloudWatch::DescribeAlarms>
+Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarms>
 
-  Returns: L<Paws::CloudWatch::DescribeAlarmsOutput>
+Returns: a L<Paws::CloudWatch::DescribeAlarmsOutput> instance
 
   
 
@@ -235,11 +244,11 @@ action.
 
 
 
-=head2 DescribeAlarmsForMetric()
+=head2 DescribeAlarmsForMetric(MetricName => Str, Namespace => Str, [Unit => Str, Period => Int, Statistic => Str, Dimensions => ArrayRef[Paws::CloudWatch::Dimension]])
 
-  Arguments described in: L<Paws::CloudWatch::DescribeAlarmsForMetric>
+Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmsForMetric>
 
-  Returns: L<Paws::CloudWatch::DescribeAlarmsForMetricOutput>
+Returns: a L<Paws::CloudWatch::DescribeAlarmsForMetricOutput> instance
 
   
 
@@ -256,11 +265,11 @@ or unit to filter the set of alarms further.
 
 
 
-=head2 DisableAlarmActions()
+=head2 DisableAlarmActions(AlarmNames => ArrayRef[Str])
 
-  Arguments described in: L<Paws::CloudWatch::DisableAlarmActions>
+Each argument is described in detail in: L<Paws::CloudWatch::DisableAlarmActions>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -278,11 +287,11 @@ will execute.
 
 
 
-=head2 EnableAlarmActions()
+=head2 EnableAlarmActions(AlarmNames => ArrayRef[Str])
 
-  Arguments described in: L<Paws::CloudWatch::EnableAlarmActions>
+Each argument is described in detail in: L<Paws::CloudWatch::EnableAlarmActions>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -298,11 +307,11 @@ Enables actions for the specified alarms.
 
 
 
-=head2 GetMetricStatistics()
+=head2 GetMetricStatistics(EndTime => Str, MetricName => Str, Namespace => Str, Period => Int, StartTime => Str, Statistics => ArrayRef[Str], [Unit => Str, Dimensions => ArrayRef[Paws::CloudWatch::Dimension]])
 
-  Arguments described in: L<Paws::CloudWatch::GetMetricStatistics>
+Each argument is described in detail in: L<Paws::CloudWatch::GetMetricStatistics>
 
-  Returns: L<Paws::CloudWatch::GetMetricStatisticsOutput>
+Returns: a L<Paws::CloudWatch::GetMetricStatisticsOutput> instance
 
   
 
@@ -352,11 +361,11 @@ in the I<Amazon CloudWatch Developer Guide>.
 
 
 
-=head2 ListMetrics()
+=head2 ListMetrics([Dimensions => ArrayRef[Paws::CloudWatch::DimensionFilter], NextToken => Str, Namespace => Str, MetricName => Str])
 
-  Arguments described in: L<Paws::CloudWatch::ListMetrics>
+Each argument is described in detail in: L<Paws::CloudWatch::ListMetrics>
 
-  Returns: L<Paws::CloudWatch::ListMetricsOutput>
+Returns: a L<Paws::CloudWatch::ListMetricsOutput> instance
 
   
 
@@ -374,11 +383,11 @@ statistical data for a given metric.
 
 
 
-=head2 PutMetricAlarm()
+=head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Statistic => Str, Threshold => Num, [OKActions => ArrayRef[Str], Unit => Str, AlarmActions => ArrayRef[Str], Dimensions => ArrayRef[Paws::CloudWatch::Dimension], InsufficientDataActions => ArrayRef[Str], AlarmDescription => Str, ActionsEnabled => Bool])
 
-  Arguments described in: L<Paws::CloudWatch::PutMetricAlarm>
+Each argument is described in detail in: L<Paws::CloudWatch::PutMetricAlarm>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -401,11 +410,11 @@ C<StateValue> is then executed.
 
 
 
-=head2 PutMetricData()
+=head2 PutMetricData(MetricData => ArrayRef[Paws::CloudWatch::MetricDatum], Namespace => Str)
 
-  Arguments described in: L<Paws::CloudWatch::PutMetricData>
+Each argument is described in detail in: L<Paws::CloudWatch::PutMetricData>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -438,11 +447,11 @@ C<GetMetricStatistics>.
 
 
 
-=head2 SetAlarmState()
+=head2 SetAlarmState(AlarmName => Str, StateReason => Str, StateValue => Str, [StateReasonData => Str])
 
-  Arguments described in: L<Paws::CloudWatch::SetAlarmState>
+Each argument is described in detail in: L<Paws::CloudWatch::SetAlarmState>
 
-  Returns: nothing
+Returns: nothing
 
   
 

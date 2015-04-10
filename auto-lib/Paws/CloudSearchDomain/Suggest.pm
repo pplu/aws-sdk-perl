@@ -84,7 +84,7 @@ Specifies the name of the suggester to use to find suggested matches.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for Suggest in Paws::CloudSearchDomain
+This class forms part of L<Paws>, documenting arguments for method Suggest in L<Paws::CloudSearchDomain>
 
 =head1 BUGS and CONTRIBUTIONS
 

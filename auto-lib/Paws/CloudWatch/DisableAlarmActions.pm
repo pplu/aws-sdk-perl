@@ -52,7 +52,7 @@ The names of the alarms to disable actions for.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DisableAlarmActions in Paws::CloudWatch
+This class forms part of L<Paws>, documenting arguments for method DisableAlarmActions in L<Paws::CloudWatch>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -120,7 +120,7 @@ The name of the stream.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetShardIterator in Paws::Kinesis
+This class forms part of L<Paws>, documenting arguments for method GetShardIterator in L<Paws::Kinesis>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -100,8 +100,17 @@ Paws::CognitoSync - Perl Interface to AWS Amazon Cognito Sync
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('CognitoSync')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -140,11 +149,11 @@ iOS.
 
 =head1 METHODS
 
-=head2 BulkPublish()
+=head2 BulkPublish(IdentityPoolId => Str)
 
-  Arguments described in: L<Paws::CognitoSync::BulkPublish>
+Each argument is described in detail in: L<Paws::CognitoSync::BulkPublish>
 
-  Returns: L<Paws::CognitoSync::BulkPublishResponse>
+Returns: a L<Paws::CognitoSync::BulkPublishResponse> instance
 
   
 
@@ -164,11 +173,11 @@ GetBulkPublishDetails operation.
 
 
 
-=head2 DeleteDataset()
+=head2 DeleteDataset(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str)
 
-  Arguments described in: L<Paws::CognitoSync::DeleteDataset>
+Each argument is described in detail in: L<Paws::CognitoSync::DeleteDataset>
 
-  Returns: L<Paws::CognitoSync::DeleteDatasetResponse>
+Returns: a L<Paws::CognitoSync::DeleteDatasetResponse> instance
 
   
 
@@ -190,11 +199,11 @@ by Cognito Identity or with developer credentials.
 
 
 
-=head2 DescribeDataset()
+=head2 DescribeDataset(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str)
 
-  Arguments described in: L<Paws::CognitoSync::DescribeDataset>
+Each argument is described in detail in: L<Paws::CognitoSync::DescribeDataset>
 
-  Returns: L<Paws::CognitoSync::DescribeDatasetResponse>
+Returns: a L<Paws::CognitoSync::DescribeDatasetResponse> instance
 
   
 
@@ -217,11 +226,11 @@ use Cognito Identity credentials to make this API call.
 
 
 
-=head2 DescribeIdentityPoolUsage()
+=head2 DescribeIdentityPoolUsage(IdentityPoolId => Str)
 
-  Arguments described in: L<Paws::CognitoSync::DescribeIdentityPoolUsage>
+Each argument is described in detail in: L<Paws::CognitoSync::DescribeIdentityPoolUsage>
 
-  Returns: L<Paws::CognitoSync::DescribeIdentityPoolUsageResponse>
+Returns: a L<Paws::CognitoSync::DescribeIdentityPoolUsageResponse> instance
 
   
 
@@ -242,11 +251,11 @@ credentials provided by Cognito Identity.
 
 
 
-=head2 DescribeIdentityUsage()
+=head2 DescribeIdentityUsage(IdentityId => Str, IdentityPoolId => Str)
 
-  Arguments described in: L<Paws::CognitoSync::DescribeIdentityUsage>
+Each argument is described in detail in: L<Paws::CognitoSync::DescribeIdentityUsage>
 
-  Returns: L<Paws::CognitoSync::DescribeIdentityUsageResponse>
+Returns: a L<Paws::CognitoSync::DescribeIdentityUsageResponse> instance
 
   
 
@@ -266,11 +275,11 @@ provided by Cognito Identity or with developer credentials.
 
 
 
-=head2 GetBulkPublishDetails()
+=head2 GetBulkPublishDetails(IdentityPoolId => Str)
 
-  Arguments described in: L<Paws::CognitoSync::GetBulkPublishDetails>
+Each argument is described in detail in: L<Paws::CognitoSync::GetBulkPublishDetails>
 
-  Returns: L<Paws::CognitoSync::GetBulkPublishDetailsResponse>
+Returns: a L<Paws::CognitoSync::GetBulkPublishDetailsResponse> instance
 
   
 
@@ -286,11 +295,11 @@ Get the status of the last BulkPublish operation for an identity pool.
 
 
 
-=head2 GetIdentityPoolConfiguration()
+=head2 GetIdentityPoolConfiguration(IdentityPoolId => Str)
 
-  Arguments described in: L<Paws::CognitoSync::GetIdentityPoolConfiguration>
+Each argument is described in detail in: L<Paws::CognitoSync::GetIdentityPoolConfiguration>
 
-  Returns: L<Paws::CognitoSync::GetIdentityPoolConfigurationResponse>
+Returns: a L<Paws::CognitoSync::GetIdentityPoolConfigurationResponse> instance
 
   
 
@@ -306,11 +315,11 @@ Gets the configuration settings of an identity pool.
 
 
 
-=head2 ListDatasets()
+=head2 ListDatasets(IdentityId => Str, IdentityPoolId => Str, [NextToken => Str, MaxResults => Int])
 
-  Arguments described in: L<Paws::CognitoSync::ListDatasets>
+Each argument is described in detail in: L<Paws::CognitoSync::ListDatasets>
 
-  Returns: L<Paws::CognitoSync::ListDatasetsResponse>
+Returns: a L<Paws::CognitoSync::ListDatasetsResponse> instance
 
   
 
@@ -332,11 +341,11 @@ Cognito Identity credentials to make this API call.
 
 
 
-=head2 ListIdentityPoolUsage()
+=head2 ListIdentityPoolUsage([MaxResults => Int, NextToken => Str])
 
-  Arguments described in: L<Paws::CognitoSync::ListIdentityPoolUsage>
+Each argument is described in detail in: L<Paws::CognitoSync::ListIdentityPoolUsage>
 
-  Returns: L<Paws::CognitoSync::ListIdentityPoolUsageResponse>
+Returns: a L<Paws::CognitoSync::ListIdentityPoolUsageResponse> instance
 
   
 
@@ -356,11 +365,11 @@ provided by Cognito Identity.
 
 
 
-=head2 ListRecords()
+=head2 ListRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, [NextToken => Str, SyncSessionToken => Str, MaxResults => Int, LastSyncCount => Num])
 
-  Arguments described in: L<Paws::CognitoSync::ListRecords>
+Each argument is described in detail in: L<Paws::CognitoSync::ListRecords>
 
-  Returns: L<Paws::CognitoSync::ListRecordsResponse>
+Returns: a L<Paws::CognitoSync::ListRecordsResponse> instance
 
   
 
@@ -383,11 +392,11 @@ Cognito Identity credentials to make this API call.
 
 
 
-=head2 RegisterDevice()
+=head2 RegisterDevice(IdentityId => Str, IdentityPoolId => Str, Platform => Str, Token => Str)
 
-  Arguments described in: L<Paws::CognitoSync::RegisterDevice>
+Each argument is described in detail in: L<Paws::CognitoSync::RegisterDevice>
 
-  Returns: L<Paws::CognitoSync::RegisterDeviceResponse>
+Returns: a L<Paws::CognitoSync::RegisterDeviceResponse> instance
 
   
 
@@ -403,11 +412,11 @@ Registers a device to receive push sync notifications.
 
 
 
-=head2 SetIdentityPoolConfiguration()
+=head2 SetIdentityPoolConfiguration(IdentityPoolId => Str, [CognitoStreams => Paws::CognitoSync::CognitoStreams, PushSync => Paws::CognitoSync::PushSync])
 
-  Arguments described in: L<Paws::CognitoSync::SetIdentityPoolConfiguration>
+Each argument is described in detail in: L<Paws::CognitoSync::SetIdentityPoolConfiguration>
 
-  Returns: L<Paws::CognitoSync::SetIdentityPoolConfigurationResponse>
+Returns: a L<Paws::CognitoSync::SetIdentityPoolConfigurationResponse> instance
 
   
 
@@ -423,11 +432,11 @@ Sets the necessary configuration for push sync.
 
 
 
-=head2 SubscribeToDataset()
+=head2 SubscribeToDataset(DatasetName => Str, DeviceId => Str, IdentityId => Str, IdentityPoolId => Str)
 
-  Arguments described in: L<Paws::CognitoSync::SubscribeToDataset>
+Each argument is described in detail in: L<Paws::CognitoSync::SubscribeToDataset>
 
-  Returns: L<Paws::CognitoSync::SubscribeToDatasetResponse>
+Returns: a L<Paws::CognitoSync::SubscribeToDatasetResponse> instance
 
   
 
@@ -444,11 +453,11 @@ another device.
 
 
 
-=head2 UnsubscribeFromDataset()
+=head2 UnsubscribeFromDataset(DatasetName => Str, DeviceId => Str, IdentityId => Str, IdentityPoolId => Str)
 
-  Arguments described in: L<Paws::CognitoSync::UnsubscribeFromDataset>
+Each argument is described in detail in: L<Paws::CognitoSync::UnsubscribeFromDataset>
 
-  Returns: L<Paws::CognitoSync::UnsubscribeFromDatasetResponse>
+Returns: a L<Paws::CognitoSync::UnsubscribeFromDatasetResponse> instance
 
   
 
@@ -465,11 +474,11 @@ another device.
 
 
 
-=head2 UpdateRecords()
+=head2 UpdateRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, SyncSessionToken => Str, [RecordPatches => ArrayRef[Paws::CognitoSync::RecordPatch], DeviceId => Str, ClientContext => Str])
 
-  Arguments described in: L<Paws::CognitoSync::UpdateRecords>
+Each argument is described in detail in: L<Paws::CognitoSync::UpdateRecords>
 
-  Returns: L<Paws::CognitoSync::UpdateRecordsResponse>
+Returns: a L<Paws::CognitoSync::UpdateRecordsResponse> instance
 
   
 

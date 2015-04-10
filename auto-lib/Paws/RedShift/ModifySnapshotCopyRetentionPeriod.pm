@@ -81,7 +81,7 @@ Constraints: Must be at least 1 and no more than 35.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ModifySnapshotCopyRetentionPeriod in Paws::RedShift
+This class forms part of L<Paws>, documenting arguments for method ModifySnapshotCopyRetentionPeriod in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 

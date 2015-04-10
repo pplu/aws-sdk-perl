@@ -130,7 +130,7 @@ Sample - C< "{\"randomSeed\":\"some-random-seed\",
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateDataSourceFromS3 in Paws::MachineLearning
+This class forms part of L<Paws>, documenting arguments for method CreateDataSourceFromS3 in L<Paws::MachineLearning>
 
 =head1 BUGS and CONTRIBUTIONS
 

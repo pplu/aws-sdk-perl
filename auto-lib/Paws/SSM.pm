@@ -80,8 +80,17 @@ Paws::SSM - Perl Interface to AWS Amazon Simple Systems Management Service
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('SSM')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -127,11 +136,11 @@ Note that configuration documents are not supported on Linux instances.
 
 =head1 METHODS
 
-=head2 CreateAssociation()
+=head2 CreateAssociation(InstanceId => Str, Name => Str)
 
-  Arguments described in: L<Paws::SSM::CreateAssociation>
+Each argument is described in detail in: L<Paws::SSM::CreateAssociation>
 
-  Returns: L<Paws::SSM::CreateAssociationResult>
+Returns: a L<Paws::SSM::CreateAssociationResult> instance
 
   
 
@@ -156,11 +165,11 @@ configuration document with the new configuration document.
 
 
 
-=head2 CreateAssociationBatch()
+=head2 CreateAssociationBatch(Entries => ArrayRef[Paws::SSM::CreateAssociationBatchRequestEntry])
 
-  Arguments described in: L<Paws::SSM::CreateAssociationBatch>
+Each argument is described in detail in: L<Paws::SSM::CreateAssociationBatch>
 
-  Returns: L<Paws::SSM::CreateAssociationBatchResult>
+Returns: a L<Paws::SSM::CreateAssociationBatchResult> instance
 
   
 
@@ -185,11 +194,11 @@ configuration document with the new configuration document.
 
 
 
-=head2 CreateDocument()
+=head2 CreateDocument(Content => Str, Name => Str)
 
-  Arguments described in: L<Paws::SSM::CreateDocument>
+Each argument is described in detail in: L<Paws::SSM::CreateDocument>
 
-  Returns: L<Paws::SSM::CreateDocumentResult>
+Returns: a L<Paws::SSM::CreateDocumentResult> instance
 
   
 
@@ -208,11 +217,11 @@ CreateAssociation to associate it with one or more running instances.
 
 
 
-=head2 DeleteAssociation()
+=head2 DeleteAssociation(InstanceId => Str, Name => Str)
 
-  Arguments described in: L<Paws::SSM::DeleteAssociation>
+Each argument is described in detail in: L<Paws::SSM::DeleteAssociation>
 
-  Returns: L<Paws::SSM::DeleteAssociationResult>
+Returns: a L<Paws::SSM::DeleteAssociationResult> instance
 
   
 
@@ -235,11 +244,11 @@ with the desired configuration and associate it with the instance.
 
 
 
-=head2 DeleteDocument()
+=head2 DeleteDocument(Name => Str)
 
-  Arguments described in: L<Paws::SSM::DeleteDocument>
+Each argument is described in detail in: L<Paws::SSM::DeleteDocument>
 
-  Returns: L<Paws::SSM::DeleteDocumentResult>
+Returns: a L<Paws::SSM::DeleteDocumentResult> instance
 
   
 
@@ -258,11 +267,11 @@ associated with the configuration document before you can delete it.
 
 
 
-=head2 DescribeAssociation()
+=head2 DescribeAssociation(InstanceId => Str, Name => Str)
 
-  Arguments described in: L<Paws::SSM::DescribeAssociation>
+Each argument is described in detail in: L<Paws::SSM::DescribeAssociation>
 
-  Returns: L<Paws::SSM::DescribeAssociationResult>
+Returns: a L<Paws::SSM::DescribeAssociationResult> instance
 
   
 
@@ -279,11 +288,11 @@ instance.
 
 
 
-=head2 DescribeDocument()
+=head2 DescribeDocument(Name => Str)
 
-  Arguments described in: L<Paws::SSM::DescribeDocument>
+Each argument is described in detail in: L<Paws::SSM::DescribeDocument>
 
-  Returns: L<Paws::SSM::DescribeDocumentResult>
+Returns: a L<Paws::SSM::DescribeDocumentResult> instance
 
   
 
@@ -299,11 +308,11 @@ Describes the specified configuration document.
 
 
 
-=head2 GetDocument()
+=head2 GetDocument(Name => Str)
 
-  Arguments described in: L<Paws::SSM::GetDocument>
+Each argument is described in detail in: L<Paws::SSM::GetDocument>
 
-  Returns: L<Paws::SSM::GetDocumentResult>
+Returns: a L<Paws::SSM::GetDocumentResult> instance
 
   
 
@@ -319,11 +328,11 @@ Gets the contents of the specified configuration document.
 
 
 
-=head2 ListAssociations()
+=head2 ListAssociations(AssociationFilterList => ArrayRef[Paws::SSM::AssociationFilter], [NextToken => Str, MaxResults => Int])
 
-  Arguments described in: L<Paws::SSM::ListAssociations>
+Each argument is described in detail in: L<Paws::SSM::ListAssociations>
 
-  Returns: L<Paws::SSM::ListAssociationsResult>
+Returns: a L<Paws::SSM::ListAssociationsResult> instance
 
   
 
@@ -340,11 +349,11 @@ instance.
 
 
 
-=head2 ListDocuments()
+=head2 ListDocuments([NextToken => Str, DocumentFilterList => ArrayRef[Paws::SSM::DocumentFilter], MaxResults => Int])
 
-  Arguments described in: L<Paws::SSM::ListDocuments>
+Each argument is described in detail in: L<Paws::SSM::ListDocuments>
 
-  Returns: L<Paws::SSM::ListDocumentsResult>
+Returns: a L<Paws::SSM::ListDocumentsResult> instance
 
   
 
@@ -360,11 +369,11 @@ Describes one or more of your configuration documents.
 
 
 
-=head2 UpdateAssociationStatus()
+=head2 UpdateAssociationStatus(AssociationStatus => Paws::SSM::AssociationStatus, InstanceId => Str, Name => Str)
 
-  Arguments described in: L<Paws::SSM::UpdateAssociationStatus>
+Each argument is described in detail in: L<Paws::SSM::UpdateAssociationStatus>
 
-  Returns: L<Paws::SSM::UpdateAssociationStatusResult>
+Returns: a L<Paws::SSM::UpdateAssociationStatusResult> instance
 
   
 

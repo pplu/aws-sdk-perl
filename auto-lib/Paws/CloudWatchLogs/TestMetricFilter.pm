@@ -46,7 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for TestMetricFilter in Paws::CloudWatchLogs
+This class forms part of L<Paws>, documenting arguments for method TestMetricFilter in L<Paws::CloudWatchLogs>
 
 =head1 BUGS and CONTRIBUTIONS
 

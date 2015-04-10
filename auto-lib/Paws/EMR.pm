@@ -110,8 +110,17 @@ Paws::EMR - Perl Interface to AWS Amazon Elastic MapReduce
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('EMR')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -134,11 +143,11 @@ scientific simulation, and data warehousing.
 
 =head1 METHODS
 
-=head2 AddInstanceGroups()
+=head2 AddInstanceGroups(InstanceGroups => ArrayRef[Paws::EMR::InstanceGroupConfig], JobFlowId => Str)
 
-  Arguments described in: L<Paws::EMR::AddInstanceGroups>
+Each argument is described in detail in: L<Paws::EMR::AddInstanceGroups>
 
-  Returns: L<Paws::EMR::AddInstanceGroupsOutput>
+Returns: a L<Paws::EMR::AddInstanceGroupsOutput> instance
 
   
 
@@ -154,11 +163,11 @@ AddInstanceGroups adds an instance group to a running cluster.
 
 
 
-=head2 AddJobFlowSteps()
+=head2 AddJobFlowSteps(JobFlowId => Str, Steps => ArrayRef[Paws::EMR::StepConfig])
 
-  Arguments described in: L<Paws::EMR::AddJobFlowSteps>
+Each argument is described in detail in: L<Paws::EMR::AddJobFlowSteps>
 
-  Returns: L<Paws::EMR::AddJobFlowStepsOutput>
+Returns: a L<Paws::EMR::AddJobFlowStepsOutput> instance
 
   
 
@@ -197,11 +206,11 @@ states: STARTING, BOOTSTRAPPING, RUNNING, or WAITING.
 
 
 
-=head2 AddTags()
+=head2 AddTags(ResourceId => Str, Tags => ArrayRef[Paws::EMR::Tag])
 
-  Arguments described in: L<Paws::EMR::AddTags>
+Each argument is described in detail in: L<Paws::EMR::AddTags>
 
-  Returns: L<Paws::EMR::AddTagsOutput>
+Returns: a L<Paws::EMR::AddTagsOutput> instance
 
   
 
@@ -220,11 +229,11 @@ Amazon EMR Resources.
 
 
 
-=head2 DescribeCluster()
+=head2 DescribeCluster(ClusterId => Str)
 
-  Arguments described in: L<Paws::EMR::DescribeCluster>
+Each argument is described in detail in: L<Paws::EMR::DescribeCluster>
 
-  Returns: L<Paws::EMR::DescribeClusterOutput>
+Returns: a L<Paws::EMR::DescribeClusterOutput> instance
 
   
 
@@ -242,11 +251,11 @@ cluster steps, see ListSteps.
 
 
 
-=head2 DescribeJobFlows()
+=head2 DescribeJobFlows([JobFlowIds => ArrayRef[Str], CreatedAfter => Str, JobFlowStates => ArrayRef[Str], CreatedBefore => Str])
 
-  Arguments described in: L<Paws::EMR::DescribeJobFlows>
+Each argument is described in detail in: L<Paws::EMR::DescribeJobFlows>
 
-  Returns: L<Paws::EMR::DescribeJobFlowsOutput>
+Returns: a L<Paws::EMR::DescribeJobFlowsOutput> instance
 
   
 
@@ -287,11 +296,11 @@ descriptions.
 
 
 
-=head2 DescribeStep()
+=head2 DescribeStep(ClusterId => Str, StepId => Str)
 
-  Arguments described in: L<Paws::EMR::DescribeStep>
+Each argument is described in detail in: L<Paws::EMR::DescribeStep>
 
-  Returns: L<Paws::EMR::DescribeStepOutput>
+Returns: a L<Paws::EMR::DescribeStepOutput> instance
 
   
 
@@ -307,11 +316,11 @@ Provides more detail about the cluster step.
 
 
 
-=head2 ListBootstrapActions()
+=head2 ListBootstrapActions(ClusterId => Str, [Marker => Str])
 
-  Arguments described in: L<Paws::EMR::ListBootstrapActions>
+Each argument is described in detail in: L<Paws::EMR::ListBootstrapActions>
 
-  Returns: L<Paws::EMR::ListBootstrapActionsOutput>
+Returns: a L<Paws::EMR::ListBootstrapActionsOutput> instance
 
   
 
@@ -328,11 +337,11 @@ cluster.
 
 
 
-=head2 ListClusters()
+=head2 ListClusters([ClusterStates => ArrayRef[Str], CreatedAfter => Str, Marker => Str, CreatedBefore => Str])
 
-  Arguments described in: L<Paws::EMR::ListClusters>
+Each argument is described in detail in: L<Paws::EMR::ListClusters>
 
-  Returns: L<Paws::EMR::ListClustersOutput>
+Returns: a L<Paws::EMR::ListClustersOutput> instance
 
   
 
@@ -353,11 +362,11 @@ calls.
 
 
 
-=head2 ListInstanceGroups()
+=head2 ListInstanceGroups(ClusterId => Str, [Marker => Str])
 
-  Arguments described in: L<Paws::EMR::ListInstanceGroups>
+Each argument is described in detail in: L<Paws::EMR::ListInstanceGroups>
 
-  Returns: L<Paws::EMR::ListInstanceGroupsOutput>
+Returns: a L<Paws::EMR::ListInstanceGroupsOutput> instance
 
   
 
@@ -373,11 +382,11 @@ Provides all available details about the instance groups in a cluster.
 
 
 
-=head2 ListInstances()
+=head2 ListInstances(ClusterId => Str, [InstanceGroupTypes => ArrayRef[Str], Marker => Str, InstanceGroupId => Str])
 
-  Arguments described in: L<Paws::EMR::ListInstances>
+Each argument is described in detail in: L<Paws::EMR::ListInstances>
 
-  Returns: L<Paws::EMR::ListInstancesOutput>
+Returns: a L<Paws::EMR::ListInstancesOutput> instance
 
   
 
@@ -397,11 +406,11 @@ jobs, and the IP addresses for cluster instances, etc.
 
 
 
-=head2 ListSteps()
+=head2 ListSteps(ClusterId => Str, [StepStates => ArrayRef[Str], StepIds => ArrayRef[Str], Marker => Str])
 
-  Arguments described in: L<Paws::EMR::ListSteps>
+Each argument is described in detail in: L<Paws::EMR::ListSteps>
 
-  Returns: L<Paws::EMR::ListStepsOutput>
+Returns: a L<Paws::EMR::ListStepsOutput> instance
 
   
 
@@ -417,11 +426,11 @@ Provides a list of steps for the cluster.
 
 
 
-=head2 ModifyInstanceGroups()
+=head2 ModifyInstanceGroups([InstanceGroups => ArrayRef[Paws::EMR::InstanceGroupModifyConfig]])
 
-  Arguments described in: L<Paws::EMR::ModifyInstanceGroups>
+Each argument is described in detail in: L<Paws::EMR::ModifyInstanceGroups>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -440,11 +449,11 @@ will either succeed or fail atomically.
 
 
 
-=head2 RemoveTags()
+=head2 RemoveTags(ResourceId => Str, TagKeys => ArrayRef[Str])
 
-  Arguments described in: L<Paws::EMR::RemoveTags>
+Each argument is described in detail in: L<Paws::EMR::RemoveTags>
 
-  Returns: L<Paws::EMR::RemoveTagsOutput>
+Returns: a L<Paws::EMR::RemoveTagsOutput> instance
 
   
 
@@ -466,11 +475,11 @@ cluster:
 
 
 
-=head2 RunJobFlow()
+=head2 RunJobFlow(Instances => Paws::EMR::JobFlowInstancesConfig, Name => Str, [Steps => ArrayRef[Paws::EMR::StepConfig], AmiVersion => Str, LogUri => Str, NewSupportedProducts => ArrayRef[Paws::EMR::SupportedProductConfig], Tags => ArrayRef[Paws::EMR::Tag], JobFlowRole => Str, ServiceRole => Str, VisibleToAllUsers => Bool, BootstrapActions => ArrayRef[Paws::EMR::BootstrapActionConfig], AdditionalInfo => Str, SupportedProducts => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::EMR::RunJobFlow>
+Each argument is described in detail in: L<Paws::EMR::RunJobFlow>
 
-  Returns: L<Paws::EMR::RunJobFlowOutput>
+Returns: a L<Paws::EMR::RunJobFlowOutput> instance
 
   
 
@@ -510,11 +519,11 @@ your results.
 
 
 
-=head2 SetTerminationProtection()
+=head2 SetTerminationProtection(JobFlowIds => ArrayRef[Str], TerminationProtected => Bool)
 
-  Arguments described in: L<Paws::EMR::SetTerminationProtection>
+Each argument is described in detail in: L<Paws::EMR::SetTerminationProtection>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -548,11 +557,11 @@ the I<Amazon Elastic MapReduce Developer's Guide.>
 
 
 
-=head2 SetVisibleToAllUsers()
+=head2 SetVisibleToAllUsers(JobFlowIds => ArrayRef[Str], VisibleToAllUsers => Bool)
 
-  Arguments described in: L<Paws::EMR::SetVisibleToAllUsers>
+Each argument is described in detail in: L<Paws::EMR::SetVisibleToAllUsers>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -573,11 +582,11 @@ created the job flow or the AWS account that owns the job flow.
 
 
 
-=head2 TerminateJobFlows()
+=head2 TerminateJobFlows(JobFlowIds => ArrayRef[Str])
 
-  Arguments described in: L<Paws::EMR::TerminateJobFlows>
+Each argument is described in detail in: L<Paws::EMR::TerminateJobFlows>
 
-  Returns: nothing
+Returns: nothing
 
   
 

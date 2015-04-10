@@ -80,8 +80,17 @@ Paws::Config - Perl Interface to AWS AWS Config
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('Config')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -124,11 +133,11 @@ Console, see What Is AWS Config? in the I<AWS Config Developer Guide>.
 
 =head1 METHODS
 
-=head2 DeleteDeliveryChannel()
+=head2 DeleteDeliveryChannel(DeliveryChannelName => Str)
 
-  Arguments described in: L<Paws::Config::DeleteDeliveryChannel>
+Each argument is described in detail in: L<Paws::Config::DeleteDeliveryChannel>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -149,11 +158,11 @@ StopConfigurationRecorder action.
 
 
 
-=head2 DeliverConfigSnapshot()
+=head2 DeliverConfigSnapshot(deliveryChannelName => Str)
 
-  Arguments described in: L<Paws::Config::DeliverConfigSnapshot>
+Each argument is described in detail in: L<Paws::Config::DeliverConfigSnapshot>
 
-  Returns: L<Paws::Config::DeliverConfigSnapshotResponse>
+Returns: a L<Paws::Config::DeliverConfigSnapshotResponse> instance
 
   
 
@@ -184,11 +193,11 @@ complete.
 
 
 
-=head2 DescribeConfigurationRecorders()
+=head2 DescribeConfigurationRecorders([ConfigurationRecorderNames => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::Config::DescribeConfigurationRecorders>
+Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRecorders>
 
-  Returns: L<Paws::Config::DescribeConfigurationRecordersResponse>
+Returns: a L<Paws::Config::DescribeConfigurationRecordersResponse> instance
 
   
 
@@ -206,11 +215,11 @@ all the configuration recorders associated with the account.
 
 
 
-=head2 DescribeConfigurationRecorderStatus()
+=head2 DescribeConfigurationRecorderStatus([ConfigurationRecorderNames => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::Config::DescribeConfigurationRecorderStatus>
+Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRecorderStatus>
 
-  Returns: L<Paws::Config::DescribeConfigurationRecorderStatusResponse>
+Returns: a L<Paws::Config::DescribeConfigurationRecorderStatusResponse> instance
 
   
 
@@ -228,11 +237,11 @@ status of all configuration recorder associated with the account.
 
 
 
-=head2 DescribeDeliveryChannels()
+=head2 DescribeDeliveryChannels([DeliveryChannelNames => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::Config::DescribeDeliveryChannels>
+Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannels>
 
-  Returns: L<Paws::Config::DescribeDeliveryChannelsResponse>
+Returns: a L<Paws::Config::DescribeDeliveryChannelsResponse> instance
 
   
 
@@ -250,11 +259,11 @@ delivery channels associated with the account.
 
 
 
-=head2 DescribeDeliveryChannelStatus()
+=head2 DescribeDeliveryChannelStatus([DeliveryChannelNames => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::Config::DescribeDeliveryChannelStatus>
+Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannelStatus>
 
-  Returns: L<Paws::Config::DescribeDeliveryChannelStatusResponse>
+Returns: a L<Paws::Config::DescribeDeliveryChannelStatusResponse> instance
 
   
 
@@ -272,11 +281,11 @@ status of all delivery channels associated with the account.
 
 
 
-=head2 GetResourceConfigHistory()
+=head2 GetResourceConfigHistory(resourceId => Str, resourceType => Str, [nextToken => Str, limit => Int, laterTime => Str, chronologicalOrder => Str, earlierTime => Str])
 
-  Arguments described in: L<Paws::Config::GetResourceConfigHistory>
+Each argument is described in detail in: L<Paws::Config::GetResourceConfigHistory>
 
-  Returns: L<Paws::Config::GetResourceConfigHistoryResponse>
+Returns: a L<Paws::Config::GetResourceConfigHistoryResponse> instance
 
   
 
@@ -297,11 +306,11 @@ request.
 
 
 
-=head2 PutConfigurationRecorder()
+=head2 PutConfigurationRecorder(ConfigurationRecorder => Paws::Config::ConfigurationRecorder)
 
-  Arguments described in: L<Paws::Config::PutConfigurationRecorder>
+Each argument is described in detail in: L<Paws::Config::PutConfigurationRecorder>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -322,11 +331,11 @@ configuration recorder and specify a role.
 
 
 
-=head2 PutDeliveryChannel()
+=head2 PutDeliveryChannel(DeliveryChannel => Paws::Config::DeliveryChannel)
 
-  Arguments described in: L<Paws::Config::PutDeliveryChannel>
+Each argument is described in detail in: L<Paws::Config::PutDeliveryChannel>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -350,11 +359,11 @@ existing value for the parameter that is not changed.
 
 
 
-=head2 StartConfigurationRecorder()
+=head2 StartConfigurationRecorder(ConfigurationRecorderName => Str)
 
-  Arguments described in: L<Paws::Config::StartConfigurationRecorder>
+Each argument is described in detail in: L<Paws::Config::StartConfigurationRecorder>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -374,11 +383,11 @@ start the configuration recorder.
 
 
 
-=head2 StopConfigurationRecorder()
+=head2 StopConfigurationRecorder(ConfigurationRecorderName => Str)
 
-  Arguments described in: L<Paws::Config::StopConfigurationRecorder>
+Each argument is described in detail in: L<Paws::Config::StopConfigurationRecorder>
 
-  Returns: nothing
+Returns: nothing
 
   
 

@@ -118,7 +118,7 @@ The workflowId of the workflow execution to signal.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for SignalWorkflowExecution in Paws::SimpleWorkflow
+This class forms part of L<Paws>, documenting arguments for method SignalWorkflowExecution in L<Paws::SimpleWorkflow>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -104,7 +104,7 @@ The ARN of the topic whose access control policy you wish to modify.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AddPermission in Paws::SNS
+This class forms part of L<Paws>, documenting arguments for method AddPermission in L<Paws::SNS>
 
 =head1 BUGS and CONTRIBUTIONS
 

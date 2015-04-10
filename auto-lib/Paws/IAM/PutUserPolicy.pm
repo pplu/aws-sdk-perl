@@ -84,7 +84,7 @@ The name of the user to associate the policy with.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for PutUserPolicy in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method PutUserPolicy in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

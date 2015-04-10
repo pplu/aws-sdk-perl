@@ -68,7 +68,7 @@ The name of the configuration template to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteConfigurationTemplate in Paws::ElasticBeanstalk
+This class forms part of L<Paws>, documenting arguments for method DeleteConfigurationTemplate in L<Paws::ElasticBeanstalk>
 
 =head1 BUGS and CONTRIBUTIONS
 

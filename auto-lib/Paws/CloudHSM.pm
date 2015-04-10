@@ -110,8 +110,17 @@ Paws::CloudHSM - Perl Interface to AWS Amazon CloudHSM
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('CloudHSM')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -130,11 +139,11 @@ AWS CloudHSM Service
 
 =head1 METHODS
 
-=head2 CreateHapg()
+=head2 CreateHapg(Label => Str)
 
-  Arguments described in: L<Paws::CloudHSM::CreateHapg>
+Each argument is described in detail in: L<Paws::CloudHSM::CreateHapg>
 
-  Returns: L<Paws::CloudHSM::CreateHapgResponse>
+Returns: a L<Paws::CloudHSM::CreateHapgResponse> instance
 
   
 
@@ -152,11 +161,11 @@ HSMs.
 
 
 
-=head2 CreateHsm()
+=head2 CreateHsm(IamRoleArn => Str, SshKey => Str, SubnetId => Str, SubscriptionType => Str, [EniIp => Str, SyslogIp => Str, ClientToken => Str, ExternalId => Str])
 
-  Arguments described in: L<Paws::CloudHSM::CreateHsm>
+Each argument is described in detail in: L<Paws::CloudHSM::CreateHsm>
 
-  Returns: L<Paws::CloudHSM::CreateHsmResponse>
+Returns: a L<Paws::CloudHSM::CreateHsmResponse> instance
 
   
 
@@ -174,11 +183,11 @@ HSM.
 
 
 
-=head2 CreateLunaClient()
+=head2 CreateLunaClient(Certificate => Str, [Label => Str])
 
-  Arguments described in: L<Paws::CloudHSM::CreateLunaClient>
+Each argument is described in detail in: L<Paws::CloudHSM::CreateLunaClient>
 
-  Returns: L<Paws::CloudHSM::CreateLunaClientResponse>
+Returns: a L<Paws::CloudHSM::CreateLunaClientResponse> instance
 
   
 
@@ -194,11 +203,11 @@ Creates an HSM client.
 
 
 
-=head2 DeleteHapg()
+=head2 DeleteHapg(HapgArn => Str)
 
-  Arguments described in: L<Paws::CloudHSM::DeleteHapg>
+Each argument is described in detail in: L<Paws::CloudHSM::DeleteHapg>
 
-  Returns: L<Paws::CloudHSM::DeleteHapgResponse>
+Returns: a L<Paws::CloudHSM::DeleteHapgResponse> instance
 
   
 
@@ -214,11 +223,11 @@ Deletes a high-availability partition group.
 
 
 
-=head2 DeleteHsm()
+=head2 DeleteHsm(HsmArn => Str)
 
-  Arguments described in: L<Paws::CloudHSM::DeleteHsm>
+Each argument is described in detail in: L<Paws::CloudHSM::DeleteHsm>
 
-  Returns: L<Paws::CloudHSM::DeleteHsmResponse>
+Returns: a L<Paws::CloudHSM::DeleteHsmResponse> instance
 
   
 
@@ -235,11 +244,11 @@ key material cannot be recovered.
 
 
 
-=head2 DeleteLunaClient()
+=head2 DeleteLunaClient(ClientArn => Str)
 
-  Arguments described in: L<Paws::CloudHSM::DeleteLunaClient>
+Each argument is described in detail in: L<Paws::CloudHSM::DeleteLunaClient>
 
-  Returns: L<Paws::CloudHSM::DeleteLunaClientResponse>
+Returns: a L<Paws::CloudHSM::DeleteLunaClientResponse> instance
 
   
 
@@ -255,11 +264,11 @@ Deletes a client.
 
 
 
-=head2 DescribeHapg()
+=head2 DescribeHapg(HapgArn => Str)
 
-  Arguments described in: L<Paws::CloudHSM::DescribeHapg>
+Each argument is described in detail in: L<Paws::CloudHSM::DescribeHapg>
 
-  Returns: L<Paws::CloudHSM::DescribeHapgResponse>
+Returns: a L<Paws::CloudHSM::DescribeHapgResponse> instance
 
   
 
@@ -275,11 +284,11 @@ Retrieves information about a high-availability partition group.
 
 
 
-=head2 DescribeHsm()
+=head2 DescribeHsm([HsmSerialNumber => Str, HsmArn => Str])
 
-  Arguments described in: L<Paws::CloudHSM::DescribeHsm>
+Each argument is described in detail in: L<Paws::CloudHSM::DescribeHsm>
 
-  Returns: L<Paws::CloudHSM::DescribeHsmResponse>
+Returns: a L<Paws::CloudHSM::DescribeHsmResponse> instance
 
   
 
@@ -296,11 +305,11 @@ or its serial number.
 
 
 
-=head2 DescribeLunaClient()
+=head2 DescribeLunaClient([ClientArn => Str, CertificateFingerprint => Str])
 
-  Arguments described in: L<Paws::CloudHSM::DescribeLunaClient>
+Each argument is described in detail in: L<Paws::CloudHSM::DescribeLunaClient>
 
-  Returns: L<Paws::CloudHSM::DescribeLunaClientResponse>
+Returns: a L<Paws::CloudHSM::DescribeLunaClientResponse> instance
 
   
 
@@ -316,11 +325,11 @@ Retrieves information about an HSM client.
 
 
 
-=head2 GetConfig()
+=head2 GetConfig(ClientArn => Str, ClientVersion => Str, HapgList => ArrayRef[Str])
 
-  Arguments described in: L<Paws::CloudHSM::GetConfig>
+Each argument is described in detail in: L<Paws::CloudHSM::GetConfig>
 
-  Returns: L<Paws::CloudHSM::GetConfigResponse>
+Returns: a L<Paws::CloudHSM::GetConfigResponse> instance
 
   
 
@@ -339,9 +348,9 @@ availability partition groups the client is associated with.
 
 =head2 ListAvailableZones()
 
-  Arguments described in: L<Paws::CloudHSM::ListAvailableZones>
+Each argument is described in detail in: L<Paws::CloudHSM::ListAvailableZones>
 
-  Returns: L<Paws::CloudHSM::ListAvailableZonesResponse>
+Returns: a L<Paws::CloudHSM::ListAvailableZonesResponse> instance
 
   
 
@@ -357,11 +366,11 @@ Lists the Availability Zones that have available AWS CloudHSM capacity.
 
 
 
-=head2 ListHapgs()
+=head2 ListHapgs([NextToken => Str])
 
-  Arguments described in: L<Paws::CloudHSM::ListHapgs>
+Each argument is described in detail in: L<Paws::CloudHSM::ListHapgs>
 
-  Returns: L<Paws::CloudHSM::ListHapgsResponse>
+Returns: a L<Paws::CloudHSM::ListHapgsResponse> instance
 
   
 
@@ -382,11 +391,11 @@ to retrieve the next set of items.
 
 
 
-=head2 ListHsms()
+=head2 ListHsms([NextToken => Str])
 
-  Arguments described in: L<Paws::CloudHSM::ListHsms>
+Each argument is described in detail in: L<Paws::CloudHSM::ListHsms>
 
-  Returns: L<Paws::CloudHSM::ListHsmsResponse>
+Returns: a L<Paws::CloudHSM::ListHsmsResponse> instance
 
   
 
@@ -408,11 +417,11 @@ retrieve the next set of items.
 
 
 
-=head2 ListLunaClients()
+=head2 ListLunaClients([NextToken => Str])
 
-  Arguments described in: L<Paws::CloudHSM::ListLunaClients>
+Each argument is described in detail in: L<Paws::CloudHSM::ListLunaClients>
 
-  Returns: L<Paws::CloudHSM::ListLunaClientsResponse>
+Returns: a L<Paws::CloudHSM::ListLunaClientsResponse> instance
 
   
 
@@ -433,11 +442,11 @@ ListLunaClients to retrieve the next set of items.
 
 
 
-=head2 ModifyHapg()
+=head2 ModifyHapg(HapgArn => Str, [PartitionSerialList => ArrayRef[Str], Label => Str])
 
-  Arguments described in: L<Paws::CloudHSM::ModifyHapg>
+Each argument is described in detail in: L<Paws::CloudHSM::ModifyHapg>
 
-  Returns: L<Paws::CloudHSM::ModifyHapgResponse>
+Returns: a L<Paws::CloudHSM::ModifyHapgResponse> instance
 
   
 
@@ -453,11 +462,11 @@ Modifies an existing high-availability partition group.
 
 
 
-=head2 ModifyHsm()
+=head2 ModifyHsm(HsmArn => Str, [ExternalId => Str, EniIp => Str, SyslogIp => Str, IamRoleArn => Str, SubnetId => Str])
 
-  Arguments described in: L<Paws::CloudHSM::ModifyHsm>
+Each argument is described in detail in: L<Paws::CloudHSM::ModifyHsm>
 
-  Returns: L<Paws::CloudHSM::ModifyHsmResponse>
+Returns: a L<Paws::CloudHSM::ModifyHsmResponse> instance
 
   
 
@@ -473,11 +482,11 @@ Modifies an HSM.
 
 
 
-=head2 ModifyLunaClient()
+=head2 ModifyLunaClient(Certificate => Str, ClientArn => Str)
 
-  Arguments described in: L<Paws::CloudHSM::ModifyLunaClient>
+Each argument is described in detail in: L<Paws::CloudHSM::ModifyLunaClient>
 
-  Returns: L<Paws::CloudHSM::ModifyLunaClientResponse>
+Returns: a L<Paws::CloudHSM::ModifyLunaClientResponse> instance
 
   
 

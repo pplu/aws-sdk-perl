@@ -52,7 +52,7 @@ The domain for which you want to get a list of tags.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListTagsForDomain in Paws::Route53Domains
+This class forms part of L<Paws>, documenting arguments for method ListTagsForDomain in L<Paws::Route53Domains>
 
 =head1 BUGS and CONTRIBUTIONS
 

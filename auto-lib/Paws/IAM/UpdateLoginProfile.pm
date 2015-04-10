@@ -84,7 +84,7 @@ The name of the user whose password you want to update.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateLoginProfile in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method UpdateLoginProfile in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

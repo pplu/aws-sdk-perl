@@ -112,7 +112,7 @@ specify C<PhysicalResourceId>.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeStackResources in Paws::CloudFormation
+This class forms part of L<Paws>, documenting arguments for method DescribeStackResources in L<Paws::CloudFormation>
 
 =head1 BUGS and CONTRIBUTIONS
 

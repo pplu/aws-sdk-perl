@@ -104,7 +104,7 @@ C<DataSource> used in the C<Evaluation>.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateEvaluation in Paws::MachineLearning
+This class forms part of L<Paws>, documenting arguments for method CreateEvaluation in L<Paws::MachineLearning>
 
 =head1 BUGS and CONTRIBUTIONS
 

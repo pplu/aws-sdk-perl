@@ -95,8 +95,17 @@ Paws::CloudWatchLogs - Perl Interface to AWS Amazon CloudWatch Logs
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('CloudWatchLogs')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -177,11 +186,11 @@ libraries, which you can find at the following AWS developer centers:
 
 =head1 METHODS
 
-=head2 CreateLogGroup()
+=head2 CreateLogGroup(logGroupName => Str)
 
-  Arguments described in: L<Paws::CloudWatchLogs::CreateLogGroup>
+Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateLogGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -210,11 +219,11 @@ You must use the following guidelines when naming a log group:
 
 
 
-=head2 CreateLogStream()
+=head2 CreateLogStream(logGroupName => Str, logStreamName => Str)
 
-  Arguments described in: L<Paws::CloudWatchLogs::CreateLogStream>
+Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateLogStream>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -242,11 +251,11 @@ You must use the following guidelines when naming a log stream:
 
 
 
-=head2 DeleteLogGroup()
+=head2 DeleteLogGroup(logGroupName => Str)
 
-  Arguments described in: L<Paws::CloudWatchLogs::DeleteLogGroup>
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteLogGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -263,11 +272,11 @@ all the archived log events associated with it.
 
 
 
-=head2 DeleteLogStream()
+=head2 DeleteLogStream(logGroupName => Str, logStreamName => Str)
 
-  Arguments described in: L<Paws::CloudWatchLogs::DeleteLogStream>
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteLogStream>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -284,11 +293,11 @@ events associated with it.
 
 
 
-=head2 DeleteMetricFilter()
+=head2 DeleteMetricFilter(filterName => Str, logGroupName => Str)
 
-  Arguments described in: L<Paws::CloudWatchLogs::DeleteMetricFilter>
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteMetricFilter>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -304,11 +313,11 @@ Deletes a metric filter associated with the specified log group.
 
 
 
-=head2 DeleteRetentionPolicy()
+=head2 DeleteRetentionPolicy(logGroupName => Str)
 
-  Arguments described in: L<Paws::CloudWatchLogs::DeleteRetentionPolicy>
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteRetentionPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -326,11 +335,11 @@ policy.
 
 
 
-=head2 DescribeLogGroups()
+=head2 DescribeLogGroups([logGroupNamePrefix => Str, limit => Int, nextToken => Str])
 
-  Arguments described in: L<Paws::CloudWatchLogs::DescribeLogGroups>
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogGroups>
 
-  Returns: L<Paws::CloudWatchLogs::DescribeLogGroupsResponse>
+Returns: a L<Paws::CloudWatchLogs::DescribeLogGroupsResponse> instance
 
   
 
@@ -354,11 +363,11 @@ request.
 
 
 
-=head2 DescribeLogStreams()
+=head2 DescribeLogStreams(logGroupName => Str, [descending => Bool, orderBy => Str, nextToken => Str, logStreamNamePrefix => Str, limit => Int])
 
-  Arguments described in: L<Paws::CloudWatchLogs::DescribeLogStreams>
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogStreams>
 
-  Returns: L<Paws::CloudWatchLogs::DescribeLogStreamsResponse>
+Returns: a L<Paws::CloudWatchLogs::DescribeLogStreamsResponse> instance
 
   
 
@@ -383,11 +392,11 @@ second, after which transactions are throttled.
 
 
 
-=head2 DescribeMetricFilters()
+=head2 DescribeMetricFilters(logGroupName => Str, [limit => Int, filterNamePrefix => Str, nextToken => Str])
 
-  Arguments described in: L<Paws::CloudWatchLogs::DescribeMetricFilters>
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeMetricFilters>
 
-  Returns: L<Paws::CloudWatchLogs::DescribeMetricFiltersResponse>
+Returns: a L<Paws::CloudWatchLogs::DescribeMetricFiltersResponse> instance
 
   
 
@@ -411,11 +420,11 @@ parameter in the request.
 
 
 
-=head2 GetLogEvents()
+=head2 GetLogEvents(logGroupName => Str, logStreamName => Str, [startFromHead => Bool, endTime => Num, limit => Int, nextToken => Str, startTime => Num])
 
-  Arguments described in: L<Paws::CloudWatchLogs::GetLogEvents>
+Each argument is described in detail in: L<Paws::CloudWatchLogs::GetLogEvents>
 
-  Returns: L<Paws::CloudWatchLogs::GetLogEventsResponse>
+Returns: a L<Paws::CloudWatchLogs::GetLogEventsResponse> instance
 
   
 
@@ -441,11 +450,11 @@ request.
 
 
 
-=head2 PutLogEvents()
+=head2 PutLogEvents(logEvents => ArrayRef[Paws::CloudWatchLogs::InputLogEvent], logGroupName => Str, logStreamName => Str, [sequenceToken => Str])
 
-  Arguments described in: L<Paws::CloudWatchLogs::PutLogEvents>
+Each argument is described in detail in: L<Paws::CloudWatchLogs::PutLogEvents>
 
-  Returns: L<Paws::CloudWatchLogs::PutLogEventsResponse>
+Returns: a L<Paws::CloudWatchLogs::PutLogEventsResponse> instance
 
   
 
@@ -486,11 +495,11 @@ their C<timestamp>.
 
 
 
-=head2 PutMetricFilter()
+=head2 PutMetricFilter(filterName => Str, filterPattern => Str, logGroupName => Str, metricTransformations => ArrayRef[Paws::CloudWatchLogs::MetricTransformation])
 
-  Arguments described in: L<Paws::CloudWatchLogs::PutMetricFilter>
+Each argument is described in detail in: L<Paws::CloudWatchLogs::PutMetricFilter>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -508,11 +517,11 @@ metric data from log events ingested through C<PutLogEvents> requests.
 
 
 
-=head2 PutRetentionPolicy()
+=head2 PutRetentionPolicy(logGroupName => Str, retentionInDays => Int)
 
-  Arguments described in: L<Paws::CloudWatchLogs::PutRetentionPolicy>
+Each argument is described in detail in: L<Paws::CloudWatchLogs::PutRetentionPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -530,11 +539,11 @@ events in the specified log group.
 
 
 
-=head2 TestMetricFilter()
+=head2 TestMetricFilter(filterPattern => Str, logEventMessages => ArrayRef[Str])
 
-  Arguments described in: L<Paws::CloudWatchLogs::TestMetricFilter>
+Each argument is described in detail in: L<Paws::CloudWatchLogs::TestMetricFilter>
 
-  Returns: L<Paws::CloudWatchLogs::TestMetricFilterResponse>
+Returns: a L<Paws::CloudWatchLogs::TestMetricFilterResponse> instance
 
   
 

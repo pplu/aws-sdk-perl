@@ -157,7 +157,7 @@ tasks that belong to that service.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListTasks in Paws::ECS
+This class forms part of L<Paws>, documenting arguments for method ListTasks in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -52,7 +52,7 @@ The name of the domain to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteDomain in Paws::SDB
+This class forms part of L<Paws>, documenting arguments for method DeleteDomain in L<Paws::SDB>
 
 =head1 BUGS and CONTRIBUTIONS
 

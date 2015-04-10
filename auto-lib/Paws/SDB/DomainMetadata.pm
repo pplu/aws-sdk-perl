@@ -52,7 +52,7 @@ The name of the domain for which to display the metadata of.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DomainMetadata in Paws::SDB
+This class forms part of L<Paws>, documenting arguments for method DomainMetadata in L<Paws::SDB>
 
 =head1 BUGS and CONTRIBUTIONS
 

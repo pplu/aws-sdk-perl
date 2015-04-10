@@ -87,7 +87,7 @@ Provides options for specifying notification configuration.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for SetVaultNotifications in Paws::Glacier
+This class forms part of L<Paws>, documenting arguments for method SetVaultNotifications in L<Paws::Glacier>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -68,7 +68,7 @@ The name of the load balancer.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ModifyLoadBalancerAttributes in Paws::ELB
+This class forms part of L<Paws>, documenting arguments for method ModifyLoadBalancerAttributes in L<Paws::ELB>
 
 =head1 BUGS and CONTRIBUTIONS
 

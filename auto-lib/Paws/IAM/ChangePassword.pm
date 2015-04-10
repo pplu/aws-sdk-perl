@@ -69,7 +69,7 @@ The IAM user's current password.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ChangePassword in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method ChangePassword in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -68,7 +68,7 @@ A list of tag keys. Each corresponding tag is removed from the stream.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RemoveTagsFromStream in Paws::Kinesis
+This class forms part of L<Paws>, documenting arguments for method RemoveTagsFromStream in L<Paws::Kinesis>
 
 =head1 BUGS and CONTRIBUTIONS
 

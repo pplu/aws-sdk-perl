@@ -99,7 +99,7 @@ the call.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeWorkspaceBundles in Paws::WorkSpaces
+This class forms part of L<Paws>, documenting arguments for method DescribeWorkspaceBundles in L<Paws::WorkSpaces>
 
 =head1 BUGS and CONTRIBUTIONS
 

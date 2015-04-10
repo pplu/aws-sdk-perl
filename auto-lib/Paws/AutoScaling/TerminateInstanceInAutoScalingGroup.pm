@@ -69,7 +69,7 @@ Auto Scaling group.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for TerminateInstanceInAutoScalingGroup in Paws::AutoScaling
+This class forms part of L<Paws>, documenting arguments for method TerminateInstanceInAutoScalingGroup in L<Paws::AutoScaling>
 
 =head1 BUGS and CONTRIBUTIONS
 

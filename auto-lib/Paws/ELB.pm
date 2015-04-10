@@ -164,8 +164,17 @@ Paws::ELB - Perl Interface to AWS Elastic Load Balancing
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('ELB')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -214,11 +223,11 @@ Reference.
 
 =head1 METHODS
 
-=head2 AddTags()
+=head2 AddTags(LoadBalancerNames => ArrayRef[Str], Tags => ArrayRef[Paws::ELB::Tag])
 
-  Arguments described in: L<Paws::ELB::AddTags>
+Each argument is described in detail in: L<Paws::ELB::AddTags>
 
-  Returns: L<Paws::ELB::AddTagsOutput>
+Returns: a L<Paws::ELB::AddTagsOutput> instance
 
   
 
@@ -243,11 +252,11 @@ Developer Guide>.
 
 
 
-=head2 ApplySecurityGroupsToLoadBalancer()
+=head2 ApplySecurityGroupsToLoadBalancer(LoadBalancerName => Str, SecurityGroups => ArrayRef[Str])
 
-  Arguments described in: L<Paws::ELB::ApplySecurityGroupsToLoadBalancer>
+Each argument is described in detail in: L<Paws::ELB::ApplySecurityGroupsToLoadBalancer>
 
-  Returns: L<Paws::ELB::ApplySecurityGroupsToLoadBalancerOutput>
+Returns: a L<Paws::ELB::ApplySecurityGroupsToLoadBalancerOutput> instance
 
   
 
@@ -268,11 +277,11 @@ I<Elastic Load Balancing Developer Guide>.
 
 
 
-=head2 AttachLoadBalancerToSubnets()
+=head2 AttachLoadBalancerToSubnets(LoadBalancerName => Str, Subnets => ArrayRef[Str])
 
-  Arguments described in: L<Paws::ELB::AttachLoadBalancerToSubnets>
+Each argument is described in detail in: L<Paws::ELB::AttachLoadBalancerToSubnets>
 
-  Returns: L<Paws::ELB::AttachLoadBalancerToSubnetsOutput>
+Returns: a L<Paws::ELB::AttachLoadBalancerToSubnetsOutput> instance
 
   
 
@@ -294,11 +303,11 @@ Guide>.
 
 
 
-=head2 ConfigureHealthCheck()
+=head2 ConfigureHealthCheck(HealthCheck => Paws::ELB::HealthCheck, LoadBalancerName => Str)
 
-  Arguments described in: L<Paws::ELB::ConfigureHealthCheck>
+Each argument is described in detail in: L<Paws::ELB::ConfigureHealthCheck>
 
-  Returns: L<Paws::ELB::ConfigureHealthCheckOutput>
+Returns: a L<Paws::ELB::ConfigureHealthCheckOutput> instance
 
   
 
@@ -318,11 +327,11 @@ Developer Guide>.
 
 
 
-=head2 CreateAppCookieStickinessPolicy()
+=head2 CreateAppCookieStickinessPolicy(CookieName => Str, LoadBalancerName => Str, PolicyName => Str)
 
-  Arguments described in: L<Paws::ELB::CreateAppCookieStickinessPolicy>
+Each argument is described in detail in: L<Paws::ELB::CreateAppCookieStickinessPolicy>
 
-  Returns: L<Paws::ELB::CreateAppCookieStickinessPolicyOutput>
+Returns: a L<Paws::ELB::CreateAppCookieStickinessPolicyOutput> instance
 
   
 
@@ -358,11 +367,11 @@ Stickiness in the I<Elastic Load Balancing Developer Guide>.
 
 
 
-=head2 CreateLBCookieStickinessPolicy()
+=head2 CreateLBCookieStickinessPolicy(LoadBalancerName => Str, PolicyName => Str, [CookieExpirationPeriod => Num])
 
-  Arguments described in: L<Paws::ELB::CreateLBCookieStickinessPolicy>
+Each argument is described in detail in: L<Paws::ELB::CreateLBCookieStickinessPolicy>
 
-  Returns: L<Paws::ELB::CreateLBCookieStickinessPolicyOutput>
+Returns: a L<Paws::ELB::CreateLBCookieStickinessPolicyOutput> instance
 
   
 
@@ -396,11 +405,11 @@ the I<Elastic Load Balancing Developer Guide>.
 
 
 
-=head2 CreateLoadBalancer()
+=head2 CreateLoadBalancer(Listeners => ArrayRef[Paws::ELB::Listener], LoadBalancerName => Str, [SecurityGroups => ArrayRef[Str], Scheme => Str, Tags => ArrayRef[Paws::ELB::Tag], Subnets => ArrayRef[Str], AvailabilityZones => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::ELB::CreateLoadBalancer>
+Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancer>
 
-  Returns: L<Paws::ELB::CreateAccessPointOutput>
+Returns: a L<Paws::ELB::CreateAccessPointOutput> instance
 
   
 
@@ -454,11 +463,11 @@ EC2-VPC, see Deploy Elastic Load Balancing in Amazon VPC.
 
 
 
-=head2 CreateLoadBalancerListeners()
+=head2 CreateLoadBalancerListeners(Listeners => ArrayRef[Paws::ELB::Listener], LoadBalancerName => Str)
 
-  Arguments described in: L<Paws::ELB::CreateLoadBalancerListeners>
+Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancerListeners>
 
-  Returns: L<Paws::ELB::CreateLoadBalancerListenerOutput>
+Returns: a L<Paws::ELB::CreateLoadBalancerListenerOutput> instance
 
   
 
@@ -480,11 +489,11 @@ I<Elastic Load Balancing Developer Guide>.
 
 
 
-=head2 CreateLoadBalancerPolicy()
+=head2 CreateLoadBalancerPolicy(LoadBalancerName => Str, PolicyName => Str, PolicyTypeName => Str, [PolicyAttributes => ArrayRef[Paws::ELB::PolicyAttribute]])
 
-  Arguments described in: L<Paws::ELB::CreateLoadBalancerPolicy>
+Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancerPolicy>
 
-  Returns: L<Paws::ELB::CreateLoadBalancerPolicyOutput>
+Returns: a L<Paws::ELB::CreateLoadBalancerPolicyOutput> instance
 
   
 
@@ -503,11 +512,11 @@ back-end application server, depending on your policy type.
 
 
 
-=head2 DeleteLoadBalancer()
+=head2 DeleteLoadBalancer(LoadBalancerName => Str)
 
-  Arguments described in: L<Paws::ELB::DeleteLoadBalancer>
+Each argument is described in detail in: L<Paws::ELB::DeleteLoadBalancer>
 
-  Returns: L<Paws::ELB::DeleteAccessPointOutput>
+Returns: a L<Paws::ELB::DeleteAccessPointOutput> instance
 
   
 
@@ -535,11 +544,11 @@ deleted, a call to C<DeleteLoadBalancer> action still succeeds.
 
 
 
-=head2 DeleteLoadBalancerListeners()
+=head2 DeleteLoadBalancerListeners(LoadBalancerName => Str, LoadBalancerPorts => ArrayRef[Int])
 
-  Arguments described in: L<Paws::ELB::DeleteLoadBalancerListeners>
+Each argument is described in detail in: L<Paws::ELB::DeleteLoadBalancerListeners>
 
-  Returns: L<Paws::ELB::DeleteLoadBalancerListenerOutput>
+Returns: a L<Paws::ELB::DeleteLoadBalancerListenerOutput> instance
 
   
 
@@ -555,11 +564,11 @@ Deletes listeners from the load balancer for the specified port.
 
 
 
-=head2 DeleteLoadBalancerPolicy()
+=head2 DeleteLoadBalancerPolicy(LoadBalancerName => Str, PolicyName => Str)
 
-  Arguments described in: L<Paws::ELB::DeleteLoadBalancerPolicy>
+Each argument is described in detail in: L<Paws::ELB::DeleteLoadBalancerPolicy>
 
-  Returns: L<Paws::ELB::DeleteLoadBalancerPolicyOutput>
+Returns: a L<Paws::ELB::DeleteLoadBalancerPolicyOutput> instance
 
   
 
@@ -576,11 +585,11 @@ be enabled for any listeners.
 
 
 
-=head2 DeregisterInstancesFromLoadBalancer()
+=head2 DeregisterInstancesFromLoadBalancer(Instances => ArrayRef[Paws::ELB::Instance], LoadBalancerName => Str)
 
-  Arguments described in: L<Paws::ELB::DeregisterInstancesFromLoadBalancer>
+Each argument is described in detail in: L<Paws::ELB::DeregisterInstancesFromLoadBalancer>
 
-  Returns: L<Paws::ELB::DeregisterEndPointsOutput>
+Returns: a L<Paws::ELB::DeregisterEndPointsOutput> instance
 
   
 
@@ -606,11 +615,11 @@ deregistered from the load balancer.
 
 
 
-=head2 DescribeInstanceHealth()
+=head2 DescribeInstanceHealth(LoadBalancerName => Str, [Instances => ArrayRef[Paws::ELB::Instance]])
 
-  Arguments described in: L<Paws::ELB::DescribeInstanceHealth>
+Each argument is described in detail in: L<Paws::ELB::DescribeInstanceHealth>
 
-  Returns: L<Paws::ELB::DescribeEndPointStateOutput>
+Returns: a L<Paws::ELB::DescribeEndPointStateOutput> instance
 
   
 
@@ -631,11 +640,11 @@ to create the load balancer.
 
 
 
-=head2 DescribeLoadBalancerAttributes()
+=head2 DescribeLoadBalancerAttributes(LoadBalancerName => Str)
 
-  Arguments described in: L<Paws::ELB::DescribeLoadBalancerAttributes>
+Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancerAttributes>
 
-  Returns: L<Paws::ELB::DescribeLoadBalancerAttributesOutput>
+Returns: a L<Paws::ELB::DescribeLoadBalancerAttributesOutput> instance
 
   
 
@@ -652,11 +661,11 @@ with the specified load balancer.
 
 
 
-=head2 DescribeLoadBalancerPolicies()
+=head2 DescribeLoadBalancerPolicies([LoadBalancerName => Str, PolicyNames => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::ELB::DescribeLoadBalancerPolicies>
+Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancerPolicies>
 
-  Returns: L<Paws::ELB::DescribeLoadBalancerPoliciesOutput>
+Returns: a L<Paws::ELB::DescribeLoadBalancerPoliciesOutput> instance
 
   
 
@@ -679,11 +688,11 @@ C<ELBSample-> prefix.
 
 
 
-=head2 DescribeLoadBalancerPolicyTypes()
+=head2 DescribeLoadBalancerPolicyTypes([PolicyTypeNames => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::ELB::DescribeLoadBalancerPolicyTypes>
+Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancerPolicyTypes>
 
-  Returns: L<Paws::ELB::DescribeLoadBalancerPolicyTypesOutput>
+Returns: a L<Paws::ELB::DescribeLoadBalancerPolicyTypesOutput> instance
 
   
 
@@ -703,11 +712,11 @@ applied to a load balancer.
 
 
 
-=head2 DescribeLoadBalancers()
+=head2 DescribeLoadBalancers([PageSize => Int, LoadBalancerNames => ArrayRef[Str], Marker => Str])
 
-  Arguments described in: L<Paws::ELB::DescribeLoadBalancers>
+Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancers>
 
-  Returns: L<Paws::ELB::DescribeAccessPointsOutput>
+Returns: a L<Paws::ELB::DescribeAccessPointsOutput> instance
 
   
 
@@ -728,11 +737,11 @@ account credentials that was used to create the load balancer.
 
 
 
-=head2 DescribeTags()
+=head2 DescribeTags(LoadBalancerNames => ArrayRef[Str])
 
-  Arguments described in: L<Paws::ELB::DescribeTags>
+Each argument is described in detail in: L<Paws::ELB::DescribeTags>
 
-  Returns: L<Paws::ELB::DescribeTagsOutput>
+Returns: a L<Paws::ELB::DescribeTagsOutput> instance
 
   
 
@@ -748,11 +757,11 @@ Describes the tags associated with one or more load balancers.
 
 
 
-=head2 DetachLoadBalancerFromSubnets()
+=head2 DetachLoadBalancerFromSubnets(LoadBalancerName => Str, Subnets => ArrayRef[Str])
 
-  Arguments described in: L<Paws::ELB::DetachLoadBalancerFromSubnets>
+Each argument is described in detail in: L<Paws::ELB::DetachLoadBalancerFromSubnets>
 
-  Returns: L<Paws::ELB::DetachLoadBalancerFromSubnetsOutput>
+Returns: a L<Paws::ELB::DetachLoadBalancerFromSubnetsOutput> instance
 
   
 
@@ -775,11 +784,11 @@ balancer.
 
 
 
-=head2 DisableAvailabilityZonesForLoadBalancer()
+=head2 DisableAvailabilityZonesForLoadBalancer(AvailabilityZones => ArrayRef[Str], LoadBalancerName => Str)
 
-  Arguments described in: L<Paws::ELB::DisableAvailabilityZonesForLoadBalancer>
+Each argument is described in detail in: L<Paws::ELB::DisableAvailabilityZonesForLoadBalancer>
 
-  Returns: L<Paws::ELB::RemoveAvailabilityZonesOutput>
+Returns: a L<Paws::ELB::RemoveAvailabilityZonesOutput> instance
 
   
 
@@ -809,11 +818,11 @@ Guide>.
 
 
 
-=head2 EnableAvailabilityZonesForLoadBalancer()
+=head2 EnableAvailabilityZonesForLoadBalancer(AvailabilityZones => ArrayRef[Str], LoadBalancerName => Str)
 
-  Arguments described in: L<Paws::ELB::EnableAvailabilityZonesForLoadBalancer>
+Each argument is described in detail in: L<Paws::ELB::EnableAvailabilityZonesForLoadBalancer>
 
-  Returns: L<Paws::ELB::AddAvailabilityZonesOutput>
+Returns: a L<Paws::ELB::AddAvailabilityZonesOutput> instance
 
   
 
@@ -840,11 +849,11 @@ Guide>.
 
 
 
-=head2 ModifyLoadBalancerAttributes()
+=head2 ModifyLoadBalancerAttributes(LoadBalancerAttributes => Paws::ELB::LoadBalancerAttributes, LoadBalancerName => Str)
 
-  Arguments described in: L<Paws::ELB::ModifyLoadBalancerAttributes>
+Each argument is described in detail in: L<Paws::ELB::ModifyLoadBalancerAttributes>
 
-  Returns: L<Paws::ELB::ModifyLoadBalancerAttributesOutput>
+Returns: a L<Paws::ELB::ModifyLoadBalancerAttributesOutput> instance
 
   
 
@@ -880,11 +889,11 @@ For more information, see the following:
 
 
 
-=head2 RegisterInstancesWithLoadBalancer()
+=head2 RegisterInstancesWithLoadBalancer(Instances => ArrayRef[Paws::ELB::Instance], LoadBalancerName => Str)
 
-  Arguments described in: L<Paws::ELB::RegisterInstancesWithLoadBalancer>
+Each argument is described in detail in: L<Paws::ELB::RegisterInstancesWithLoadBalancer>
 
-  Returns: L<Paws::ELB::RegisterEndPointsOutput>
+Returns: a L<Paws::ELB::RegisterEndPointsOutput> instance
 
   
 
@@ -927,11 +936,11 @@ check the state of the newly registered instances.
 
 
 
-=head2 RemoveTags()
+=head2 RemoveTags(LoadBalancerNames => ArrayRef[Str], Tags => ArrayRef[Paws::ELB::TagKeyOnly])
 
-  Arguments described in: L<Paws::ELB::RemoveTags>
+Each argument is described in detail in: L<Paws::ELB::RemoveTags>
 
-  Returns: L<Paws::ELB::RemoveTagsOutput>
+Returns: a L<Paws::ELB::RemoveTagsOutput> instance
 
   
 
@@ -947,11 +956,11 @@ Removes one or more tags from the specified load balancer.
 
 
 
-=head2 SetLoadBalancerListenerSSLCertificate()
+=head2 SetLoadBalancerListenerSSLCertificate(LoadBalancerName => Str, LoadBalancerPort => Int, SSLCertificateId => Str)
 
-  Arguments described in: L<Paws::ELB::SetLoadBalancerListenerSSLCertificate>
+Each argument is described in detail in: L<Paws::ELB::SetLoadBalancerListenerSSLCertificate>
 
-  Returns: L<Paws::ELB::SetLoadBalancerListenerSSLCertificateOutput>
+Returns: a L<Paws::ELB::SetLoadBalancerListenerSSLCertificateOutput> instance
 
   
 
@@ -973,11 +982,11 @@ Developer Guide>.
 
 
 
-=head2 SetLoadBalancerPoliciesForBackendServer()
+=head2 SetLoadBalancerPoliciesForBackendServer(InstancePort => Int, LoadBalancerName => Str, PolicyNames => ArrayRef[Str])
 
-  Arguments described in: L<Paws::ELB::SetLoadBalancerPoliciesForBackendServer>
+Each argument is described in detail in: L<Paws::ELB::SetLoadBalancerPoliciesForBackendServer>
 
-  Returns: L<Paws::ELB::SetLoadBalancerPoliciesForBackendServerOutput>
+Returns: a L<Paws::ELB::SetLoadBalancerPoliciesForBackendServerOutput> instance
 
   
 
@@ -1007,11 +1016,11 @@ server.
 
 
 
-=head2 SetLoadBalancerPoliciesOfListener()
+=head2 SetLoadBalancerPoliciesOfListener(LoadBalancerName => Str, LoadBalancerPort => Int, PolicyNames => ArrayRef[Str])
 
-  Arguments described in: L<Paws::ELB::SetLoadBalancerPoliciesOfListener>
+Each argument is described in detail in: L<Paws::ELB::SetLoadBalancerPoliciesOfListener>
 
-  Returns: L<Paws::ELB::SetLoadBalancerPoliciesOfListenerOutput>
+Returns: a L<Paws::ELB::SetLoadBalancerPoliciesOfListenerOutput> instance
 
   
 

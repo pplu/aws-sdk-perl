@@ -101,7 +101,7 @@ The filter to limit the step list based on certain states.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListSteps in Paws::EMR
+This class forms part of L<Paws>, documenting arguments for method ListSteps in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 

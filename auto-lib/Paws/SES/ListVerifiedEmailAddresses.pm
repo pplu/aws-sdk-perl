@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListVerifiedEmailAddresses in Paws::SES
+This class forms part of L<Paws>, documenting arguments for method ListVerifiedEmailAddresses in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 

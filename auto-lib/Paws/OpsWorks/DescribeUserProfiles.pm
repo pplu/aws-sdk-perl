@@ -52,7 +52,7 @@ An array of IAM user ARNs that identify the users to be described.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeUserProfiles in Paws::OpsWorks
+This class forms part of L<Paws>, documenting arguments for method DescribeUserProfiles in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 

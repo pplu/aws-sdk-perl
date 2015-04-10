@@ -53,7 +53,7 @@ example C<arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster>.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListTagsForResource in Paws::ElastiCache
+This class forms part of L<Paws>, documenting arguments for method ListTagsForResource in L<Paws::ElastiCache>
 
 =head1 BUGS and CONTRIBUTIONS
 

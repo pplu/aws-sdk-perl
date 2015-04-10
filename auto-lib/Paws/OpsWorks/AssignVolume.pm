@@ -68,7 +68,7 @@ The volume ID.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AssignVolume in Paws::OpsWorks
+This class forms part of L<Paws>, documenting arguments for method AssignVolume in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 

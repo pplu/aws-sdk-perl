@@ -155,7 +155,7 @@ ID for the initiated multipart upload.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for  in Paws::S3
+This class forms part of L<Paws>, documenting arguments for method  in L<Paws::S3>
 
 =head1 BUGS and CONTRIBUTIONS
 

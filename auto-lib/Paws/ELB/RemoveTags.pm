@@ -69,7 +69,7 @@ A list of tag keys to remove.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RemoveTags in Paws::ELB
+This class forms part of L<Paws>, documenting arguments for method RemoveTags in L<Paws::ELB>
 
 =head1 BUGS and CONTRIBUTIONS
 

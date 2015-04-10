@@ -150,7 +150,7 @@ The ID of the subnet to associate with the network interface.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateNetworkInterface in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method CreateNetworkInterface in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -95,8 +95,17 @@ Paws::Support - Perl Interface to AWS AWS Support
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('Support')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -180,11 +189,11 @@ your resources.
 
 =head1 METHODS
 
-=head2 AddAttachmentsToSet()
+=head2 AddAttachmentsToSet(attachments => ArrayRef[Paws::Support::Attachment], [attachmentSetId => Str])
 
-  Arguments described in: L<Paws::Support::AddAttachmentsToSet>
+Each argument is described in detail in: L<Paws::Support::AddAttachmentsToSet>
 
-  Returns: L<Paws::Support::AddAttachmentsToSetResponse>
+Returns: a L<Paws::Support::AddAttachmentsToSetResponse> instance
 
   
 
@@ -210,11 +219,11 @@ set is 3, and the maximum size of any attachment in the set is 5 MB.
 
 
 
-=head2 AddCommunicationToCase()
+=head2 AddCommunicationToCase(communicationBody => Str, [attachmentSetId => Str, caseId => Str, ccEmailAddresses => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::Support::AddCommunicationToCase>
+Each argument is described in detail in: L<Paws::Support::AddCommunicationToCase>
 
-  Returns: L<Paws::Support::AddCommunicationToCaseResponse>
+Returns: a L<Paws::Support::AddCommunicationToCaseResponse> instance
 
   
 
@@ -239,11 +248,11 @@ Center.
 
 
 
-=head2 CreateCase()
+=head2 CreateCase(communicationBody => Str, subject => Str, [issueType => Str, categoryCode => Str, severityCode => Str, ccEmailAddresses => ArrayRef[Str], language => Str, attachmentSetId => Str, serviceCode => Str])
 
-  Arguments described in: L<Paws::Support::CreateCase>
+Each argument is described in detail in: L<Paws::Support::CreateCase>
 
-  Returns: L<Paws::Support::CreateCaseResponse>
+Returns: a L<Paws::Support::CreateCaseResponse> instance
 
   
 
@@ -308,11 +317,11 @@ existing AWS Support cases.
 
 
 
-=head2 DescribeAttachment()
+=head2 DescribeAttachment(attachmentId => Str)
 
-  Arguments described in: L<Paws::Support::DescribeAttachment>
+Each argument is described in detail in: L<Paws::Support::DescribeAttachment>
 
-  Returns: L<Paws::Support::DescribeAttachmentResponse>
+Returns: a L<Paws::Support::DescribeAttachmentResponse> instance
 
   
 
@@ -332,11 +341,11 @@ DescribeCommunications operation.
 
 
 
-=head2 DescribeCases()
+=head2 DescribeCases([language => Str, displayId => Str, maxResults => Int, caseIdList => ArrayRef[Str], includeCommunications => Bool, beforeTime => Str, includeResolvedCases => Bool, afterTime => Str, nextToken => Str])
 
-  Arguments described in: L<Paws::Support::DescribeCases>
+Each argument is described in detail in: L<Paws::Support::DescribeCases>
 
-  Returns: L<Paws::Support::DescribeCasesResponse>
+Returns: a L<Paws::Support::DescribeCasesResponse> instance
 
   
 
@@ -372,11 +381,11 @@ objects.
 
 
 
-=head2 DescribeCommunications()
+=head2 DescribeCommunications(caseId => Str, [maxResults => Int, afterTime => Str, nextToken => Str, beforeTime => Str])
 
-  Arguments described in: L<Paws::Support::DescribeCommunications>
+Each argument is described in detail in: L<Paws::Support::DescribeCommunications>
 
-  Returns: L<Paws::Support::DescribeCommunicationsResponse>
+Returns: a L<Paws::Support::DescribeCommunicationsResponse> instance
 
   
 
@@ -404,11 +413,11 @@ the resumption of pagination.
 
 
 
-=head2 DescribeServices()
+=head2 DescribeServices([language => Str, serviceCodeList => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::Support::DescribeServices>
+Each argument is described in detail in: L<Paws::Support::DescribeServices>
 
-  Returns: L<Paws::Support::DescribeServicesResponse>
+Returns: a L<Paws::Support::DescribeServicesResponse> instance
 
   
 
@@ -435,11 +444,11 @@ always have the most recent set of service and category codes.
 
 
 
-=head2 DescribeSeverityLevels()
+=head2 DescribeSeverityLevels([language => Str])
 
-  Arguments described in: L<Paws::Support::DescribeSeverityLevels>
+Each argument is described in detail in: L<Paws::Support::DescribeSeverityLevels>
 
-  Returns: L<Paws::Support::DescribeSeverityLevelsResponse>
+Returns: a L<Paws::Support::DescribeSeverityLevelsResponse> instance
 
   
 
@@ -457,11 +466,11 @@ CaseDetails data type included in any CreateCase request.
 
 
 
-=head2 DescribeTrustedAdvisorCheckRefreshStatuses()
+=head2 DescribeTrustedAdvisorCheckRefreshStatuses(checkIds => ArrayRef[Str])
 
-  Arguments described in: L<Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses>
+Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses>
 
-  Returns: L<Paws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResponse>
+Returns: a L<Paws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResponse> instance
 
   
 
@@ -479,11 +488,11 @@ DescribeTrustedAdvisorChecks.
 
 
 
-=head2 DescribeTrustedAdvisorCheckResult()
+=head2 DescribeTrustedAdvisorCheckResult(checkId => Str, [language => Str])
 
-  Arguments described in: L<Paws::Support::DescribeTrustedAdvisorCheckResult>
+Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorCheckResult>
 
-  Returns: L<Paws::Support::DescribeTrustedAdvisorCheckResultResponse>
+Returns: a L<Paws::Support::DescribeTrustedAdvisorCheckResultResponse> instance
 
   
 
@@ -527,11 +536,11 @@ In addition, the response contains these fields:
 
 
 
-=head2 DescribeTrustedAdvisorChecks()
+=head2 DescribeTrustedAdvisorChecks(language => Str)
 
-  Arguments described in: L<Paws::Support::DescribeTrustedAdvisorChecks>
+Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorChecks>
 
-  Returns: L<Paws::Support::DescribeTrustedAdvisorChecksResponse>
+Returns: a L<Paws::Support::DescribeTrustedAdvisorChecksResponse> instance
 
   
 
@@ -551,11 +560,11 @@ TrustedAdvisorCheckDescription for each check.
 
 
 
-=head2 DescribeTrustedAdvisorCheckSummaries()
+=head2 DescribeTrustedAdvisorCheckSummaries(checkIds => ArrayRef[Str])
 
-  Arguments described in: L<Paws::Support::DescribeTrustedAdvisorCheckSummaries>
+Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorCheckSummaries>
 
-  Returns: L<Paws::Support::DescribeTrustedAdvisorCheckSummariesResponse>
+Returns: a L<Paws::Support::DescribeTrustedAdvisorCheckSummariesResponse> instance
 
   
 
@@ -575,11 +584,11 @@ The response contains an array of TrustedAdvisorCheckSummary objects.
 
 
 
-=head2 RefreshTrustedAdvisorCheck()
+=head2 RefreshTrustedAdvisorCheck(checkId => Str)
 
-  Arguments described in: L<Paws::Support::RefreshTrustedAdvisorCheck>
+Each argument is described in detail in: L<Paws::Support::RefreshTrustedAdvisorCheck>
 
-  Returns: L<Paws::Support::RefreshTrustedAdvisorCheckResponse>
+Returns: a L<Paws::Support::RefreshTrustedAdvisorCheckResponse> instance
 
   
 
@@ -612,11 +621,11 @@ milliseconds, until the check is eligible for refresh.
 
 
 
-=head2 ResolveCase()
+=head2 ResolveCase([caseId => Str])
 
-  Arguments described in: L<Paws::Support::ResolveCase>
+Each argument is described in detail in: L<Paws::Support::ResolveCase>
 
-  Returns: L<Paws::Support::ResolveCaseResponse>
+Returns: a L<Paws::Support::ResolveCaseResponse> instance
 
   
 

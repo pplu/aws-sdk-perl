@@ -120,7 +120,7 @@ Data to be encrypted.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for Encrypt in Paws::KMS
+This class forms part of L<Paws>, documenting arguments for method Encrypt in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 

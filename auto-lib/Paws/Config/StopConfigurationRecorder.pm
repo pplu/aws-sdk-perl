@@ -53,7 +53,7 @@ made to the resources.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for StopConfigurationRecorder in Paws::Config
+This class forms part of L<Paws>, documenting arguments for method StopConfigurationRecorder in L<Paws::Config>
 
 =head1 BUGS and CONTRIBUTIONS
 

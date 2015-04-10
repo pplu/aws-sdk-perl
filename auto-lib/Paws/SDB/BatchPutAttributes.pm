@@ -68,7 +68,7 @@ A list of items on which to perform the operation.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for BatchPutAttributes in Paws::SDB
+This class forms part of L<Paws>, documenting arguments for method BatchPutAttributes in L<Paws::SDB>
 
 =head1 BUGS and CONTRIBUTIONS
 

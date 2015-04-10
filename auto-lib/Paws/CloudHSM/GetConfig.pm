@@ -85,7 +85,7 @@ that are associated with the client.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetConfig in Paws::CloudHSM
+This class forms part of L<Paws>, documenting arguments for method GetConfig in L<Paws::CloudHSM>
 
 =head1 BUGS and CONTRIBUTIONS
 

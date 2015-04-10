@@ -68,7 +68,7 @@ The new name.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateElasticIp in Paws::OpsWorks
+This class forms part of L<Paws>, documenting arguments for method UpdateElasticIp in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 

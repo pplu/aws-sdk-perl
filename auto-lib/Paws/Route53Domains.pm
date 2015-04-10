@@ -115,8 +115,17 @@ Paws::Route53Domains - Perl Interface to AWS Amazon Route 53 Domains
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('Route53Domains')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -138,11 +147,11 @@ management
 
 =head1 METHODS
 
-=head2 CheckDomainAvailability()
+=head2 CheckDomainAvailability(DomainName => Str, [IdnLangCode => Str])
 
-  Arguments described in: L<Paws::Route53Domains::CheckDomainAvailability>
+Each argument is described in detail in: L<Paws::Route53Domains::CheckDomainAvailability>
 
-  Returns: L<Paws::Route53Domains::CheckDomainAvailabilityResponse>
+Returns: a L<Paws::Route53Domains::CheckDomainAvailabilityResponse> instance
 
   
 
@@ -161,11 +170,11 @@ determine the availability of the domain name.
 
 
 
-=head2 DeleteTagsForDomain()
+=head2 DeleteTagsForDomain(DomainName => Str, TagsToDelete => ArrayRef[Str])
 
-  Arguments described in: L<Paws::Route53Domains::DeleteTagsForDomain>
+Each argument is described in detail in: L<Paws::Route53Domains::DeleteTagsForDomain>
 
-  Returns: L<Paws::Route53Domains::DeleteTagsForDomainResponse>
+Returns: a L<Paws::Route53Domains::DeleteTagsForDomainResponse> instance
 
   
 
@@ -184,11 +193,11 @@ not immediately represent all issued operations.
 
 
 
-=head2 DisableDomainAutoRenew()
+=head2 DisableDomainAutoRenew(DomainName => Str)
 
-  Arguments described in: L<Paws::Route53Domains::DisableDomainAutoRenew>
+Each argument is described in detail in: L<Paws::Route53Domains::DisableDomainAutoRenew>
 
-  Returns: L<Paws::Route53Domains::DisableDomainAutoRenewResponse>
+Returns: a L<Paws::Route53Domains::DisableDomainAutoRenewResponse> instance
 
   
 
@@ -210,11 +219,11 @@ the domain name.
 
 
 
-=head2 DisableDomainTransferLock()
+=head2 DisableDomainTransferLock(DomainName => Str)
 
-  Arguments described in: L<Paws::Route53Domains::DisableDomainTransferLock>
+Each argument is described in detail in: L<Paws::Route53Domains::DisableDomainTransferLock>
 
-  Returns: L<Paws::Route53Domains::DisableDomainTransferLockResponse>
+Returns: a L<Paws::Route53Domains::DisableDomainTransferLockResponse> instance
 
   
 
@@ -236,11 +245,11 @@ the domain registrant will be notified by email.
 
 
 
-=head2 EnableDomainAutoRenew()
+=head2 EnableDomainAutoRenew(DomainName => Str)
 
-  Arguments described in: L<Paws::Route53Domains::EnableDomainAutoRenew>
+Each argument is described in detail in: L<Paws::Route53Domains::EnableDomainAutoRenew>
 
-  Returns: L<Paws::Route53Domains::EnableDomainAutoRenewResponse>
+Returns: a L<Paws::Route53Domains::EnableDomainAutoRenewResponse> instance
 
   
 
@@ -265,11 +274,11 @@ before the deadline.
 
 
 
-=head2 EnableDomainTransferLock()
+=head2 EnableDomainTransferLock(DomainName => Str)
 
-  Arguments described in: L<Paws::Route53Domains::EnableDomainTransferLock>
+Each argument is described in detail in: L<Paws::Route53Domains::EnableDomainTransferLock>
 
-  Returns: L<Paws::Route53Domains::EnableDomainTransferLockResponse>
+Returns: a L<Paws::Route53Domains::EnableDomainTransferLockResponse> instance
 
   
 
@@ -290,11 +299,11 @@ email.
 
 
 
-=head2 GetDomainDetail()
+=head2 GetDomainDetail(DomainName => Str)
 
-  Arguments described in: L<Paws::Route53Domains::GetDomainDetail>
+Each argument is described in detail in: L<Paws::Route53Domains::GetDomainDetail>
 
-  Returns: L<Paws::Route53Domains::GetDomainDetailResponse>
+Returns: a L<Paws::Route53Domains::GetDomainDetailResponse> instance
 
   
 
@@ -311,11 +320,11 @@ domain's contact information is also returned as part of the output.
 
 
 
-=head2 GetOperationDetail()
+=head2 GetOperationDetail(OperationId => Str)
 
-  Arguments described in: L<Paws::Route53Domains::GetOperationDetail>
+Each argument is described in detail in: L<Paws::Route53Domains::GetOperationDetail>
 
-  Returns: L<Paws::Route53Domains::GetOperationDetailResponse>
+Returns: a L<Paws::Route53Domains::GetOperationDetailResponse> instance
 
   
 
@@ -332,11 +341,11 @@ completed.
 
 
 
-=head2 ListDomains()
+=head2 ListDomains([MaxItems => Int, Marker => Str])
 
-  Arguments described in: L<Paws::Route53Domains::ListDomains>
+Each argument is described in detail in: L<Paws::Route53Domains::ListDomains>
 
-  Returns: L<Paws::Route53Domains::ListDomainsResponse>
+Returns: a L<Paws::Route53Domains::ListDomainsResponse> instance
 
   
 
@@ -353,11 +362,11 @@ Route 53 for the current AWS account.
 
 
 
-=head2 ListOperations()
+=head2 ListOperations([MaxItems => Int, Marker => Str])
 
-  Arguments described in: L<Paws::Route53Domains::ListOperations>
+Each argument is described in detail in: L<Paws::Route53Domains::ListOperations>
 
-  Returns: L<Paws::Route53Domains::ListOperationsResponse>
+Returns: a L<Paws::Route53Domains::ListOperationsResponse> instance
 
   
 
@@ -374,11 +383,11 @@ complete.
 
 
 
-=head2 ListTagsForDomain()
+=head2 ListTagsForDomain(DomainName => Str)
 
-  Arguments described in: L<Paws::Route53Domains::ListTagsForDomain>
+Each argument is described in detail in: L<Paws::Route53Domains::ListTagsForDomain>
 
-  Returns: L<Paws::Route53Domains::ListTagsForDomainResponse>
+Returns: a L<Paws::Route53Domains::ListTagsForDomainResponse> instance
 
   
 
@@ -398,11 +407,11 @@ not immediately represent all issued operations.
 
 
 
-=head2 RegisterDomain()
+=head2 RegisterDomain(AdminContact => Paws::Route53Domains::ContactDetail, DomainName => Str, DurationInYears => Int, RegistrantContact => Paws::Route53Domains::ContactDetail, TechContact => Paws::Route53Domains::ContactDetail, [PrivacyProtectAdminContact => Bool, AutoRenew => Bool, IdnLangCode => Str, PrivacyProtectTechContact => Bool, PrivacyProtectRegistrantContact => Bool])
 
-  Arguments described in: L<Paws::Route53Domains::RegisterDomain>
+Each argument is described in detail in: L<Paws::Route53Domains::RegisterDomain>
 
-  Returns: L<Paws::Route53Domains::RegisterDomainResponse>
+Returns: a L<Paws::Route53Domains::RegisterDomainResponse> instance
 
   
 
@@ -447,11 +456,11 @@ domain. For more information, see Amazon Route 53 Pricing.
 
 
 
-=head2 RetrieveDomainAuthCode()
+=head2 RetrieveDomainAuthCode(DomainName => Str)
 
-  Arguments described in: L<Paws::Route53Domains::RetrieveDomainAuthCode>
+Each argument is described in detail in: L<Paws::Route53Domains::RetrieveDomainAuthCode>
 
-  Returns: L<Paws::Route53Domains::RetrieveDomainAuthCodeResponse>
+Returns: a L<Paws::Route53Domains::RetrieveDomainAuthCodeResponse> instance
 
   
 
@@ -469,11 +478,11 @@ registrar.
 
 
 
-=head2 TransferDomain()
+=head2 TransferDomain(AdminContact => Paws::Route53Domains::ContactDetail, DomainName => Str, DurationInYears => Int, RegistrantContact => Paws::Route53Domains::ContactDetail, TechContact => Paws::Route53Domains::ContactDetail, [PrivacyProtectRegistrantContact => Bool, Nameservers => ArrayRef[Paws::Route53Domains::Nameserver], PrivacyProtectAdminContact => Bool, PrivacyProtectTechContact => Bool, IdnLangCode => Str, AuthCode => Str, AutoRenew => Bool])
 
-  Arguments described in: L<Paws::Route53Domains::TransferDomain>
+Each argument is described in detail in: L<Paws::Route53Domains::TransferDomain>
 
-  Returns: L<Paws::Route53Domains::TransferDomainResponse>
+Returns: a L<Paws::Route53Domains::TransferDomainResponse> instance
 
   
 
@@ -513,11 +522,11 @@ notified by email.
 
 
 
-=head2 UpdateDomainContact()
+=head2 UpdateDomainContact(DomainName => Str, [AdminContact => Paws::Route53Domains::ContactDetail, RegistrantContact => Paws::Route53Domains::ContactDetail, TechContact => Paws::Route53Domains::ContactDetail])
 
-  Arguments described in: L<Paws::Route53Domains::UpdateDomainContact>
+Each argument is described in detail in: L<Paws::Route53Domains::UpdateDomainContact>
 
-  Returns: L<Paws::Route53Domains::UpdateDomainContactResponse>
+Returns: a L<Paws::Route53Domains::UpdateDomainContactResponse> instance
 
   
 
@@ -540,11 +549,11 @@ notified by email.
 
 
 
-=head2 UpdateDomainContactPrivacy()
+=head2 UpdateDomainContactPrivacy(DomainName => Str, [AdminPrivacy => Bool, TechPrivacy => Bool, RegistrantPrivacy => Bool])
 
-  Arguments described in: L<Paws::Route53Domains::UpdateDomainContactPrivacy>
+Each argument is described in detail in: L<Paws::Route53Domains::UpdateDomainContactPrivacy>
 
-  Returns: L<Paws::Route53Domains::UpdateDomainContactPrivacyResponse>
+Returns: a L<Paws::Route53Domains::UpdateDomainContactPrivacyResponse> instance
 
   
 
@@ -570,11 +579,11 @@ successfully, the domain registrant will be notified by email.
 
 
 
-=head2 UpdateDomainNameservers()
+=head2 UpdateDomainNameservers(DomainName => Str, Nameservers => ArrayRef[Paws::Route53Domains::Nameserver], [FIAuthKey => Str])
 
-  Arguments described in: L<Paws::Route53Domains::UpdateDomainNameservers>
+Each argument is described in detail in: L<Paws::Route53Domains::UpdateDomainNameservers>
 
-  Returns: L<Paws::Route53Domains::UpdateDomainNameserversResponse>
+Returns: a L<Paws::Route53Domains::UpdateDomainNameserversResponse> instance
 
   
 
@@ -598,11 +607,11 @@ email.
 
 
 
-=head2 UpdateTagsForDomain()
+=head2 UpdateTagsForDomain(DomainName => Str, [TagsToUpdate => ArrayRef[Paws::Route53Domains::Tag]])
 
-  Arguments described in: L<Paws::Route53Domains::UpdateTagsForDomain>
+Each argument is described in detail in: L<Paws::Route53Domains::UpdateTagsForDomain>
 
-  Returns: L<Paws::Route53Domains::UpdateTagsForDomainResponse>
+Returns: a L<Paws::Route53Domains::UpdateTagsForDomainResponse> instance
 
   
 

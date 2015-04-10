@@ -52,7 +52,7 @@ The name of the RDS event notification subscription you want to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteEventSubscription in Paws::RDS
+This class forms part of L<Paws>, documenting arguments for method DeleteEventSubscription in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 

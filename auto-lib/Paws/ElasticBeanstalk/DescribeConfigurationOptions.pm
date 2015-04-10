@@ -122,7 +122,7 @@ want to describe.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeConfigurationOptions in Paws::ElasticBeanstalk
+This class forms part of L<Paws>, documenting arguments for method DescribeConfigurationOptions in L<Paws::ElasticBeanstalk>
 
 =head1 BUGS and CONTRIBUTIONS
 

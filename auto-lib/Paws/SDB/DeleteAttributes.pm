@@ -105,7 +105,7 @@ individual objects that contain one or more value-attribute pairs.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteAttributes in Paws::SDB
+This class forms part of L<Paws>, documenting arguments for method DeleteAttributes in L<Paws::SDB>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -52,7 +52,7 @@ An email address to be removed from the list of verified addresses.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteVerifiedEmailAddress in Paws::SES
+This class forms part of L<Paws>, documenting arguments for method DeleteVerifiedEmailAddress in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 

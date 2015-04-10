@@ -130,8 +130,17 @@ Paws::Glacier - Perl Interface to AWS Amazon Glacier
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('Glacier')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -189,11 +198,11 @@ deleting archives.
 
 =head1 METHODS
 
-=head2 AbortMultipartUpload()
+=head2 AbortMultipartUpload(accountId => Str, uploadId => Str, vaultName => Str)
 
-  Arguments described in: L<Paws::Glacier::AbortMultipartUpload>
+Each argument is described in detail in: L<Paws::Glacier::AbortMultipartUpload>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -228,11 +237,11 @@ Glacier Developer Guide>.
 
 
 
-=head2 CompleteMultipartUpload()
+=head2 CompleteMultipartUpload(accountId => Str, uploadId => Str, vaultName => Str, [archiveSize => Str, checksum => Str])
 
-  Arguments described in: L<Paws::Glacier::CompleteMultipartUpload>
+Each argument is described in detail in: L<Paws::Glacier::CompleteMultipartUpload>
 
-  Returns: L<Paws::Glacier::ArchiveCreationOutput>
+Returns: a L<Paws::Glacier::ArchiveCreationOutput> instance
 
   
 
@@ -291,11 +300,11 @@ Upload in the I<Amazon Glacier Developer Guide>.
 
 
 
-=head2 CreateVault()
+=head2 CreateVault(accountId => Str, vaultName => Str)
 
-  Arguments described in: L<Paws::Glacier::CreateVault>
+Each argument is described in detail in: L<Paws::Glacier::CreateVault>
 
-  Returns: L<Paws::Glacier::CreateVaultOutput>
+Returns: a L<Paws::Glacier::CreateVaultOutput> instance
 
   
 
@@ -341,11 +350,11 @@ Developer Guide>.
 
 
 
-=head2 DeleteArchive()
+=head2 DeleteArchive(accountId => Str, archiveId => Str, vaultName => Str)
 
-  Arguments described in: L<Paws::Glacier::DeleteArchive>
+Each argument is described in detail in: L<Paws::Glacier::DeleteArchive>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -389,11 +398,11 @@ Developer Guide>.
 
 
 
-=head2 DeleteVault()
+=head2 DeleteVault(accountId => Str, vaultName => Str)
 
-  Arguments described in: L<Paws::Glacier::DeleteVault>
+Each argument is described in detail in: L<Paws::Glacier::DeleteVault>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -429,11 +438,11 @@ Developer Guide>.
 
 
 
-=head2 DeleteVaultNotifications()
+=head2 DeleteVaultNotifications(accountId => Str, vaultName => Str)
 
-  Arguments described in: L<Paws::Glacier::DeleteVaultNotifications>
+Each argument is described in detail in: L<Paws::Glacier::DeleteVaultNotifications>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -463,11 +472,11 @@ Configuration in the Amazon Glacier Developer Guide.
 
 
 
-=head2 DescribeJob()
+=head2 DescribeJob(accountId => Str, jobId => Str, vaultName => Str)
 
-  Arguments described in: L<Paws::Glacier::DescribeJob>
+Each argument is described in detail in: L<Paws::Glacier::DescribeJob>
 
-  Returns: L<Paws::Glacier::GlacierJobDescription>
+Returns: a L<Paws::Glacier::GlacierJobDescription> instance
 
   
 
@@ -504,11 +513,11 @@ Archives in Amazon Glacier in the I<Amazon Glacier Developer Guide>.
 
 
 
-=head2 DescribeVault()
+=head2 DescribeVault(accountId => Str, vaultName => Str)
 
-  Arguments described in: L<Paws::Glacier::DescribeVault>
+Each argument is described in detail in: L<Paws::Glacier::DescribeVault>
 
-  Returns: L<Paws::Glacier::DescribeVaultOutput>
+Returns: a L<Paws::Glacier::DescribeVaultOutput> instance
 
   
 
@@ -543,20 +552,20 @@ Glacier Developer Guide>.
 
 
 
-=head2 GetDataRetrievalPolicy()
+=head2 GetDataRetrievalPolicy(accountId => Str)
 
-  Arguments described in: L<Paws::Glacier::GetDataRetrievalPolicy>
+Each argument is described in detail in: L<Paws::Glacier::GetDataRetrievalPolicy>
 
-  Returns: L<Paws::Glacier::GetDataRetrievalPolicyOutput>
+Returns: a L<Paws::Glacier::GetDataRetrievalPolicyOutput> instance
 
   
 
 
-=head2 GetJobOutput()
+=head2 GetJobOutput(accountId => Str, jobId => Str, vaultName => Str, [range => Str])
 
-  Arguments described in: L<Paws::Glacier::GetJobOutput>
+Each argument is described in detail in: L<Paws::Glacier::GetJobOutput>
 
-  Returns: L<Paws::Glacier::GetJobOutputOutput>
+Returns: a L<Paws::Glacier::GetJobOutputOutput> instance
 
   
 
@@ -628,11 +637,11 @@ Output
 
 
 
-=head2 GetVaultNotifications()
+=head2 GetVaultNotifications(accountId => Str, vaultName => Str)
 
-  Arguments described in: L<Paws::Glacier::GetVaultNotifications>
+Each argument is described in detail in: L<Paws::Glacier::GetVaultNotifications>
 
-  Returns: L<Paws::Glacier::GetVaultNotificationsOutput>
+Returns: a L<Paws::Glacier::GetVaultNotificationsOutput> instance
 
   
 
@@ -665,11 +674,11 @@ Configuration in the I<Amazon Glacier Developer Guide>.
 
 
 
-=head2 InitiateJob()
+=head2 InitiateJob(accountId => Str, vaultName => Str, [jobParameters => Paws::Glacier::JobParameters])
 
-  Arguments described in: L<Paws::Glacier::InitiateJob>
+Each argument is described in detail in: L<Paws::Glacier::InitiateJob>
 
-  Returns: L<Paws::Glacier::InitiateJobOutput>
+Returns: a L<Paws::Glacier::InitiateJobOutput> instance
 
   
 
@@ -818,11 +827,11 @@ a Job and Downloading a Vault Inventory
 
 
 
-=head2 InitiateMultipartUpload()
+=head2 InitiateMultipartUpload(accountId => Str, vaultName => Str, [archiveDescription => Str, partSize => Str])
 
-  Arguments described in: L<Paws::Glacier::InitiateMultipartUpload>
+Each argument is described in detail in: L<Paws::Glacier::InitiateMultipartUpload>
 
-  Returns: L<Paws::Glacier::InitiateMultipartUploadOutput>
+Returns: a L<Paws::Glacier::InitiateMultipartUploadOutput> instance
 
   
 
@@ -873,11 +882,11 @@ Upload in the I<Amazon Glacier Developer Guide>.
 
 
 
-=head2 ListJobs()
+=head2 ListJobs(accountId => Str, vaultName => Str, [completed => Str, statuscode => Str, marker => Str, limit => Str])
 
-  Arguments described in: L<Paws::Glacier::ListJobs>
+Each argument is described in detail in: L<Paws::Glacier::ListJobs>
 
-  Returns: L<Paws::Glacier::ListJobsOutput>
+Returns: a L<Paws::Glacier::ListJobsOutput> instance
 
   
 
@@ -936,11 +945,11 @@ For the underlying REST API, go to List Jobs
 
 
 
-=head2 ListMultipartUploads()
+=head2 ListMultipartUploads(accountId => Str, vaultName => Str, [marker => Str, limit => Str])
 
-  Arguments described in: L<Paws::Glacier::ListMultipartUploads>
+Each argument is described in detail in: L<Paws::Glacier::ListMultipartUploads>
 
-  Returns: L<Paws::Glacier::ListMultipartUploadsOutput>
+Returns: a L<Paws::Glacier::ListMultipartUploadsOutput> instance
 
   
 
@@ -986,11 +995,11 @@ I<Amazon Glacier Developer Guide>.
 
 
 
-=head2 ListParts()
+=head2 ListParts(accountId => Str, uploadId => Str, vaultName => Str, [limit => Str, marker => Str])
 
-  Arguments described in: L<Paws::Glacier::ListParts>
+Each argument is described in detail in: L<Paws::Glacier::ListParts>
 
-  Returns: L<Paws::Glacier::ListPartsOutput>
+Returns: a L<Paws::Glacier::ListPartsOutput> instance
 
   
 
@@ -1030,11 +1039,11 @@ Developer Guide>.
 
 
 
-=head2 ListVaults()
+=head2 ListVaults(accountId => Str, [marker => Str, limit => Str])
 
-  Arguments described in: L<Paws::Glacier::ListVaults>
+Each argument is described in detail in: L<Paws::Glacier::ListVaults>
 
-  Returns: L<Paws::Glacier::ListVaultsOutput>
+Returns: a L<Paws::Glacier::ListVaultsOutput> instance
 
   
 
@@ -1070,20 +1079,20 @@ Glacier Developer Guide>.
 
 
 
-=head2 SetDataRetrievalPolicy()
+=head2 SetDataRetrievalPolicy(accountId => Str, [Policy => Paws::Glacier::DataRetrievalPolicy])
 
-  Arguments described in: L<Paws::Glacier::SetDataRetrievalPolicy>
+Each argument is described in detail in: L<Paws::Glacier::SetDataRetrievalPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
 
-=head2 SetVaultNotifications()
+=head2 SetVaultNotifications(accountId => Str, vaultName => Str, [vaultNotificationConfig => Paws::Glacier::VaultNotificationConfig])
 
-  Arguments described in: L<Paws::Glacier::SetVaultNotifications>
+Each argument is described in detail in: L<Paws::Glacier::SetVaultNotifications>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1136,11 +1145,11 @@ Configuration in the I<Amazon Glacier Developer Guide>.
 
 
 
-=head2 UploadArchive()
+=head2 UploadArchive(accountId => Str, vaultName => Str, [checksum => Str, archiveDescription => Str, body => Str])
 
-  Arguments described in: L<Paws::Glacier::UploadArchive>
+Each argument is described in detail in: L<Paws::Glacier::UploadArchive>
 
-  Returns: L<Paws::Glacier::ArchiveCreationOutput>
+Returns: a L<Paws::Glacier::ArchiveCreationOutput> instance
 
   
 
@@ -1194,11 +1203,11 @@ Developer Guide>.
 
 
 
-=head2 UploadMultipartPart()
+=head2 UploadMultipartPart(accountId => Str, uploadId => Str, vaultName => Str, [body => Str, checksum => Str, range => Str])
 
-  Arguments described in: L<Paws::Glacier::UploadMultipartPart>
+Each argument is described in detail in: L<Paws::Glacier::UploadMultipartPart>
 
-  Returns: L<Paws::Glacier::UploadMultipartPartOutput>
+Returns: a L<Paws::Glacier::UploadMultipartPartOutput> instance
 
   
 

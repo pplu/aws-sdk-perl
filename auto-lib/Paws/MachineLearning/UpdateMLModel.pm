@@ -91,7 +91,7 @@ C<MLModel>, such as C<false>.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateMLModel in Paws::MachineLearning
+This class forms part of L<Paws>, documenting arguments for method UpdateMLModel in L<Paws::MachineLearning>
 
 =head1 BUGS and CONTRIBUTIONS
 

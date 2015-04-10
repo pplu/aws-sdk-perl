@@ -52,7 +52,7 @@ The ID of the Reserved Instance listing.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CancelReservedInstancesListing in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method CancelReservedInstancesListing in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

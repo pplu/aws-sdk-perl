@@ -99,7 +99,7 @@ The ARN of the resource that the pending maintenance action applies to.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ApplyPendingMaintenanceAction in Paws::RDS
+This class forms part of L<Paws>, documenting arguments for method ApplyPendingMaintenanceAction in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -174,8 +174,17 @@ Paws::ElasticBeanstalk - Perl Interface to AWS AWS Elastic Beanstalk
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('ElasticBeanstalk')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -213,11 +222,11 @@ Glossary>.
 
 =head1 METHODS
 
-=head2 AbortEnvironmentUpdate()
+=head2 AbortEnvironmentUpdate([EnvironmentId => Str, EnvironmentName => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::AbortEnvironmentUpdate>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::AbortEnvironmentUpdate>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -234,11 +243,11 @@ version deployment.
 
 
 
-=head2 CheckDNSAvailability()
+=head2 CheckDNSAvailability(CNAMEPrefix => Str)
 
-  Arguments described in: L<Paws::ElasticBeanstalk::CheckDNSAvailability>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::CheckDNSAvailability>
 
-  Returns: L<Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage>
+Returns: a L<Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage> instance
 
   
 
@@ -254,11 +263,11 @@ Checks if the specified CNAME is available.
 
 
 
-=head2 CreateApplication()
+=head2 CreateApplication(ApplicationName => Str, [Description => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::CreateApplication>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateApplication>
 
-  Returns: L<Paws::ElasticBeanstalk::ApplicationDescriptionMessage>
+Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionMessage> instance
 
   
 
@@ -275,11 +284,11 @@ C<default> and no application versions.
 
 
 
-=head2 CreateApplicationVersion()
+=head2 CreateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [AutoCreateApplication => Bool, Description => Str, SourceBundle => Paws::ElasticBeanstalk::S3Location])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::CreateApplicationVersion>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateApplicationVersion>
 
-  Returns: L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage>
+Returns: a L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage> instance
 
   
 
@@ -300,11 +309,11 @@ attempt to launch an environment from the application version.
 
 
 
-=head2 CreateConfigurationTemplate()
+=head2 CreateConfigurationTemplate(ApplicationName => Str, TemplateName => Str, [SourceConfiguration => Paws::ElasticBeanstalk::SourceConfiguration, Description => Str, SolutionStackName => Str, EnvironmentId => Str, OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::CreateConfigurationTemplate>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateConfigurationTemplate>
 
-  Returns: L<Paws::ElasticBeanstalk::ConfigurationSettingsDescription>
+Returns: a L<Paws::ElasticBeanstalk::ConfigurationSettingsDescription> instance
 
   
 
@@ -334,11 +343,11 @@ Related Topics
 
 
 
-=head2 CreateEnvironment()
+=head2 CreateEnvironment(ApplicationName => Str, EnvironmentName => Str, [Tier => Paws::ElasticBeanstalk::EnvironmentTier, CNAMEPrefix => Str, Tags => ArrayRef[Paws::ElasticBeanstalk::Tag], SolutionStackName => Str, Description => Str, OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification], TemplateName => Str, VersionLabel => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::CreateEnvironment>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateEnvironment>
 
-  Returns: L<Paws::ElasticBeanstalk::EnvironmentDescription>
+Returns: a L<Paws::ElasticBeanstalk::EnvironmentDescription> instance
 
   
 
@@ -357,9 +366,9 @@ specified configuration.
 
 =head2 CreateStorageLocation()
 
-  Arguments described in: L<Paws::ElasticBeanstalk::CreateStorageLocation>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateStorageLocation>
 
-  Returns: L<Paws::ElasticBeanstalk::CreateStorageLocationResultMessage>
+Returns: a L<Paws::ElasticBeanstalk::CreateStorageLocationResultMessage> instance
 
   
 
@@ -377,11 +386,11 @@ This location is used to store user log files.
 
 
 
-=head2 DeleteApplication()
+=head2 DeleteApplication(ApplicationName => Str, [TerminateEnvByForce => Bool])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::DeleteApplication>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DeleteApplication>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -401,11 +410,11 @@ You cannot delete an application that has a running environment.
 
 
 
-=head2 DeleteApplicationVersion()
+=head2 DeleteApplicationVersion(ApplicationName => Str, VersionLabel => Str, [DeleteSourceBundle => Bool])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::DeleteApplicationVersion>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DeleteApplicationVersion>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -424,11 +433,11 @@ running environment.
 
 
 
-=head2 DeleteConfigurationTemplate()
+=head2 DeleteConfigurationTemplate(ApplicationName => Str, TemplateName => Str)
 
-  Arguments described in: L<Paws::ElasticBeanstalk::DeleteConfigurationTemplate>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DeleteConfigurationTemplate>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -449,11 +458,11 @@ environment.
 
 
 
-=head2 DeleteEnvironmentConfiguration()
+=head2 DeleteEnvironmentConfiguration(ApplicationName => Str, EnvironmentName => Str)
 
-  Arguments described in: L<Paws::ElasticBeanstalk::DeleteEnvironmentConfiguration>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DeleteEnvironmentConfiguration>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -478,11 +487,11 @@ action.
 
 
 
-=head2 DescribeApplications()
+=head2 DescribeApplications([ApplicationNames => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::DescribeApplications>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeApplications>
 
-  Returns: L<Paws::ElasticBeanstalk::ApplicationDescriptionsMessage>
+Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionsMessage> instance
 
   
 
@@ -498,11 +507,11 @@ Returns the descriptions of existing applications.
 
 
 
-=head2 DescribeApplicationVersions()
+=head2 DescribeApplicationVersions([VersionLabels => ArrayRef[Str], ApplicationName => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::DescribeApplicationVersions>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeApplicationVersions>
 
-  Returns: L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage>
+Returns: a L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage> instance
 
   
 
@@ -518,11 +527,11 @@ Returns descriptions for existing application versions.
 
 
 
-=head2 DescribeConfigurationOptions()
+=head2 DescribeConfigurationOptions([SolutionStackName => Str, EnvironmentName => Str, TemplateName => Str, ApplicationName => Str, Options => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::DescribeConfigurationOptions>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeConfigurationOptions>
 
-  Returns: L<Paws::ElasticBeanstalk::ConfigurationOptionsDescription>
+Returns: a L<Paws::ElasticBeanstalk::ConfigurationOptionsDescription> instance
 
   
 
@@ -542,11 +551,11 @@ environment if an option value is changed.
 
 
 
-=head2 DescribeConfigurationSettings()
+=head2 DescribeConfigurationSettings(ApplicationName => Str, [TemplateName => Str, EnvironmentName => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::DescribeConfigurationSettings>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeConfigurationSettings>
 
-  Returns: L<Paws::ElasticBeanstalk::ConfigurationSettingsDescriptions>
+Returns: a L<Paws::ElasticBeanstalk::ConfigurationSettingsDescriptions> instance
 
   
 
@@ -578,11 +587,11 @@ Related Topics
 
 
 
-=head2 DescribeEnvironmentResources()
+=head2 DescribeEnvironmentResources([EnvironmentId => Str, EnvironmentName => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::DescribeEnvironmentResources>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvironmentResources>
 
-  Returns: L<Paws::ElasticBeanstalk::EnvironmentResourceDescriptionsMessage>
+Returns: a L<Paws::ElasticBeanstalk::EnvironmentResourceDescriptionsMessage> instance
 
   
 
@@ -598,11 +607,11 @@ Returns AWS resources for this environment.
 
 
 
-=head2 DescribeEnvironments()
+=head2 DescribeEnvironments([EnvironmentNames => ArrayRef[Str], IncludeDeleted => Bool, ApplicationName => Str, VersionLabel => Str, EnvironmentIds => ArrayRef[Str], IncludedDeletedBackTo => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::DescribeEnvironments>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvironments>
 
-  Returns: L<Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage>
+Returns: a L<Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage> instance
 
   
 
@@ -618,11 +627,11 @@ Returns descriptions for existing environments.
 
 
 
-=head2 DescribeEvents()
+=head2 DescribeEvents([EnvironmentId => Str, NextToken => Str, EnvironmentName => Str, StartTime => Str, ApplicationName => Str, RequestId => Str, MaxRecords => Int, EndTime => Str, TemplateName => Str, Severity => Str, VersionLabel => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::DescribeEvents>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEvents>
 
-  Returns: L<Paws::ElasticBeanstalk::EventDescriptionsMessage>
+Returns: a L<Paws::ElasticBeanstalk::EventDescriptionsMessage> instance
 
   
 
@@ -644,9 +653,9 @@ C<NextToken>.
 
 =head2 ListAvailableSolutionStacks()
 
-  Arguments described in: L<Paws::ElasticBeanstalk::ListAvailableSolutionStacks>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::ListAvailableSolutionStacks>
 
-  Returns: L<Paws::ElasticBeanstalk::ListAvailableSolutionStacksResultMessage>
+Returns: a L<Paws::ElasticBeanstalk::ListAvailableSolutionStacksResultMessage> instance
 
   
 
@@ -662,11 +671,11 @@ Returns a list of the available solution stack names.
 
 
 
-=head2 RebuildEnvironment()
+=head2 RebuildEnvironment([EnvironmentName => Str, EnvironmentId => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::RebuildEnvironment>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::RebuildEnvironment>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -684,11 +693,11 @@ forces a restart.
 
 
 
-=head2 RequestEnvironmentInfo()
+=head2 RequestEnvironmentInfo(InfoType => Str, [EnvironmentId => Str, EnvironmentName => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::RequestEnvironmentInfo>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::RequestEnvironmentInfo>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -723,11 +732,11 @@ Related Topics
 
 
 
-=head2 RestartAppServer()
+=head2 RestartAppServer([EnvironmentId => Str, EnvironmentName => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::RestartAppServer>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::RestartAppServer>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -744,11 +753,11 @@ running on each Amazon EC2 instance.
 
 
 
-=head2 RetrieveEnvironmentInfo()
+=head2 RetrieveEnvironmentInfo(InfoType => Str, [EnvironmentName => Str, EnvironmentId => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::RetrieveEnvironmentInfo>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::RetrieveEnvironmentInfo>
 
-  Returns: L<Paws::ElasticBeanstalk::RetrieveEnvironmentInfoResultMessage>
+Returns: a L<Paws::ElasticBeanstalk::RetrieveEnvironmentInfoResultMessage> instance
 
   
 
@@ -773,11 +782,11 @@ Related Topics
 
 
 
-=head2 SwapEnvironmentCNAMEs()
+=head2 SwapEnvironmentCNAMEs([SourceEnvironmentName => Str, DestinationEnvironmentId => Str, DestinationEnvironmentName => Str, SourceEnvironmentId => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::SwapEnvironmentCNAMEs>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::SwapEnvironmentCNAMEs>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -793,11 +802,11 @@ Swaps the CNAMEs of two environments.
 
 
 
-=head2 TerminateEnvironment()
+=head2 TerminateEnvironment([EnvironmentId => Str, TerminateResources => Bool, EnvironmentName => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::TerminateEnvironment>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::TerminateEnvironment>
 
-  Returns: L<Paws::ElasticBeanstalk::EnvironmentDescription>
+Returns: a L<Paws::ElasticBeanstalk::EnvironmentDescription> instance
 
   
 
@@ -813,11 +822,11 @@ Terminates the specified environment.
 
 
 
-=head2 UpdateApplication()
+=head2 UpdateApplication(ApplicationName => Str, [Description => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::UpdateApplication>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateApplication>
 
-  Returns: L<Paws::ElasticBeanstalk::ApplicationDescriptionMessage>
+Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionMessage> instance
 
   
 
@@ -836,11 +845,11 @@ remains unchanged. To clear these properties, specify an empty string.
 
 
 
-=head2 UpdateApplicationVersion()
+=head2 UpdateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [Description => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::UpdateApplicationVersion>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateApplicationVersion>
 
-  Returns: L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage>
+Returns: a L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage> instance
 
   
 
@@ -860,11 +869,11 @@ remains unchanged. To clear properties, specify an empty string.
 
 
 
-=head2 UpdateConfigurationTemplate()
+=head2 UpdateConfigurationTemplate(ApplicationName => Str, TemplateName => Str, [OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification], Description => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::UpdateConfigurationTemplate>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateConfigurationTemplate>
 
-  Returns: L<Paws::ElasticBeanstalk::ConfigurationSettingsDescription>
+Returns: a L<Paws::ElasticBeanstalk::ConfigurationSettingsDescription> instance
 
   
 
@@ -893,11 +902,11 @@ Related Topics
 
 
 
-=head2 UpdateEnvironment()
+=head2 UpdateEnvironment([TemplateName => Str, VersionLabel => Str, OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification], OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], SolutionStackName => Str, EnvironmentName => Str, Description => Str, Tier => Paws::ElasticBeanstalk::EnvironmentTier, EnvironmentId => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::UpdateEnvironment>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateEnvironment>
 
-  Returns: L<Paws::ElasticBeanstalk::EnvironmentDescription>
+Returns: a L<Paws::ElasticBeanstalk::EnvironmentDescription> instance
 
   
 
@@ -925,11 +934,11 @@ descriptions with different C<DeploymentStatus> values.
 
 
 
-=head2 ValidateConfigurationSettings()
+=head2 ValidateConfigurationSettings(ApplicationName => Str, OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], [EnvironmentName => Str, TemplateName => Str])
 
-  Arguments described in: L<Paws::ElasticBeanstalk::ValidateConfigurationSettings>
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::ValidateConfigurationSettings>
 
-  Returns: L<Paws::ElasticBeanstalk::ConfigurationSettingsValidationMessages>
+Returns: a L<Paws::ElasticBeanstalk::ConfigurationSettingsValidationMessages> instance
 
   
 

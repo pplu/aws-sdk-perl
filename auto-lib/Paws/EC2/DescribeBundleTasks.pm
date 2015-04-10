@@ -122,7 +122,7 @@ C<update-time> - The time of the most recent update for the task.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeBundleTasks in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DescribeBundleTasks in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

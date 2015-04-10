@@ -86,7 +86,7 @@ The name of the server certificate that you want to update.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateServerCertificate in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method UpdateServerCertificate in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

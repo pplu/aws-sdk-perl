@@ -87,7 +87,7 @@ the set of policies for this load balancer.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateLBCookieStickinessPolicy in Paws::ELB
+This class forms part of L<Paws>, documenting arguments for method CreateLBCookieStickinessPolicy in L<Paws::ELB>
 
 =head1 BUGS and CONTRIBUTIONS
 

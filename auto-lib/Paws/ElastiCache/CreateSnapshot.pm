@@ -69,7 +69,7 @@ A name for the snapshot being created.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateSnapshot in Paws::ElastiCache
+This class forms part of L<Paws>, documenting arguments for method CreateSnapshot in L<Paws::ElastiCache>
 
 =head1 BUGS and CONTRIBUTIONS
 

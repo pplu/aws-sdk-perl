@@ -62,7 +62,7 @@ Required: Yes
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for EnableDomainTransferLock in Paws::Route53Domains
+This class forms part of L<Paws>, documenting arguments for method EnableDomainTransferLock in L<Paws::Route53Domains>
 
 =head1 BUGS and CONTRIBUTIONS
 

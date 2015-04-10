@@ -57,7 +57,7 @@ A DHCP configuration option.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateDhcpOptions in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method CreateDhcpOptions in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

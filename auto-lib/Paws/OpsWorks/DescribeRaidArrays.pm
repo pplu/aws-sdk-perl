@@ -88,7 +88,7 @@ The stack ID.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeRaidArrays in Paws::OpsWorks
+This class forms part of L<Paws>, documenting arguments for method DescribeRaidArrays in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 

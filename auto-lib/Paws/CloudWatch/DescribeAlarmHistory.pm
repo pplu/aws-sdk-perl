@@ -133,7 +133,7 @@ The starting date to retrieve alarm history.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeAlarmHistory in Paws::CloudWatch
+This class forms part of L<Paws>, documenting arguments for method DescribeAlarmHistory in L<Paws::CloudWatch>
 
 =head1 BUGS and CONTRIBUTIONS
 

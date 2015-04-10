@@ -73,7 +73,7 @@ arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DiscoverPollEndpoint in Paws::ECS
+This class forms part of L<Paws>, documenting arguments for method DiscoverPollEndpoint in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 

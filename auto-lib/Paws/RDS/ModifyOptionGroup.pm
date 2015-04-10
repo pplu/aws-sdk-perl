@@ -109,7 +109,7 @@ Options in this list are removed from the option group.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ModifyOptionGroup in Paws::RDS
+This class forms part of L<Paws>, documenting arguments for method ModifyOptionGroup in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 

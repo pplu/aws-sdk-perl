@@ -68,7 +68,7 @@ The tag key-value pairs to remove from the on-premises instances.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RemoveTagsFromOnPremisesInstances in Paws::CodeDeploy
+This class forms part of L<Paws>, documenting arguments for method RemoveTagsFromOnPremisesInstances in L<Paws::CodeDeploy>
 
 =head1 BUGS and CONTRIBUTIONS
 

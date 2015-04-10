@@ -69,7 +69,7 @@ The name of the domain you want to describe.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeAvailabilityOptions in Paws::CloudSearch
+This class forms part of L<Paws>, documenting arguments for method DescribeAvailabilityOptions in L<Paws::CloudSearch>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -350,8 +350,17 @@ Paws::OpsWorks - Perl Interface to AWS AWS OpsWorks
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('OpsWorks')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -424,11 +433,11 @@ as possible.
 
 =head1 METHODS
 
-=head2 AssignInstance()
+=head2 AssignInstance(InstanceId => Str, LayerIds => ArrayRef[Str])
 
-  Arguments described in: L<Paws::OpsWorks::AssignInstance>
+Each argument is described in detail in: L<Paws::OpsWorks::AssignInstance>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -450,11 +459,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 AssignVolume()
+=head2 AssignVolume(VolumeId => Str, [InstanceId => Str])
 
-  Arguments described in: L<Paws::OpsWorks::AssignVolume>
+Each argument is described in detail in: L<Paws::OpsWorks::AssignVolume>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -479,11 +488,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 AssociateElasticIp()
+=head2 AssociateElasticIp(ElasticIp => Str, [InstanceId => Str])
 
-  Arguments described in: L<Paws::OpsWorks::AssociateElasticIp>
+Each argument is described in detail in: L<Paws::OpsWorks::AssociateElasticIp>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -507,11 +516,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 AttachElasticLoadBalancer()
+=head2 AttachElasticLoadBalancer(ElasticLoadBalancerName => Str, LayerId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::AttachElasticLoadBalancer>
+Each argument is described in detail in: L<Paws::OpsWorks::AttachElasticLoadBalancer>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -537,11 +546,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 CloneStack()
+=head2 CloneStack(ServiceRoleArn => Str, SourceStackId => Str, [UseOpsworksSecurityGroups => Bool, DefaultAvailabilityZone => Str, CloneAppIds => ArrayRef[Str], Name => Str, DefaultInstanceProfileArn => Str, UseCustomCookbooks => Bool, DefaultSubnetId => Str, DefaultRootDeviceType => Str, ClonePermissions => Bool, HostnameTheme => Str, ChefConfiguration => Paws::OpsWorks::ChefConfiguration, Attributes => Paws::OpsWorks::StackAttributes, DefaultSshKeyName => Str, CustomCookbooksSource => Paws::OpsWorks::Source, VpcId => Str, Region => Str, ConfigurationManager => Paws::OpsWorks::StackConfigurationManager, CustomJson => Str, DefaultOs => Str])
 
-  Arguments described in: L<Paws::OpsWorks::CloneStack>
+Each argument is described in detail in: L<Paws::OpsWorks::CloneStack>
 
-  Returns: L<Paws::OpsWorks::CloneStackResult>
+Returns: a L<Paws::OpsWorks::CloneStackResult> instance
 
   
 
@@ -562,11 +571,11 @@ information on user permissions, see Managing User Permissions.
 
 
 
-=head2 CreateApp()
+=head2 CreateApp(Name => Str, StackId => Str, Type => Str, [EnableSsl => Bool, DataSources => ArrayRef[Paws::OpsWorks::DataSource], Environment => ArrayRef[Paws::OpsWorks::EnvironmentVariable], AppSource => Paws::OpsWorks::Source, Domains => ArrayRef[Str], Shortname => Str, SslConfiguration => Paws::OpsWorks::SslConfiguration, Description => Str, Attributes => Paws::OpsWorks::AppAttributes])
 
-  Arguments described in: L<Paws::OpsWorks::CreateApp>
+Each argument is described in detail in: L<Paws::OpsWorks::CreateApp>
 
-  Returns: L<Paws::OpsWorks::CreateAppResult>
+Returns: a L<Paws::OpsWorks::CreateAppResult> instance
 
   
 
@@ -588,11 +597,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 CreateDeployment()
+=head2 CreateDeployment(Command => Paws::OpsWorks::DeploymentCommand, StackId => Str, [CustomJson => Str, AppId => Str, Comment => Str, InstanceIds => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::OpsWorks::CreateDeployment>
+Each argument is described in detail in: L<Paws::OpsWorks::CreateDeployment>
 
-  Returns: L<Paws::OpsWorks::CreateDeploymentResult>
+Returns: a L<Paws::OpsWorks::CreateDeploymentResult> instance
 
   
 
@@ -614,11 +623,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 CreateInstance()
+=head2 CreateInstance(InstanceType => Str, LayerIds => ArrayRef[Str], StackId => Str, [RootDeviceType => Str, VirtualizationType => Str, SshKeyName => Str, AvailabilityZone => Str, AutoScalingType => Str, Os => Str, AmiId => Str, Hostname => Str, SubnetId => Str, InstallUpdatesOnBoot => Bool, EbsOptimized => Bool, BlockDeviceMappings => ArrayRef[Paws::OpsWorks::BlockDeviceMapping], Architecture => Str])
 
-  Arguments described in: L<Paws::OpsWorks::CreateInstance>
+Each argument is described in detail in: L<Paws::OpsWorks::CreateInstance>
 
-  Returns: L<Paws::OpsWorks::CreateInstanceResult>
+Returns: a L<Paws::OpsWorks::CreateInstanceResult> instance
 
   
 
@@ -640,11 +649,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 CreateLayer()
+=head2 CreateLayer(Name => Str, Shortname => Str, StackId => Str, Type => Str, [Packages => ArrayRef[Str], CustomRecipes => Paws::OpsWorks::Recipes, LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration, CustomInstanceProfileArn => Str, CustomSecurityGroupIds => ArrayRef[Str], AutoAssignElasticIps => Bool, Attributes => Paws::OpsWorks::LayerAttributes, InstallUpdatesOnBoot => Bool, EnableAutoHealing => Bool, UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[Paws::OpsWorks::VolumeConfiguration], AutoAssignPublicIps => Bool])
 
-  Arguments described in: L<Paws::OpsWorks::CreateLayer>
+Each argument is described in detail in: L<Paws::OpsWorks::CreateLayer>
 
-  Returns: L<Paws::OpsWorks::CreateLayerResult>
+Returns: a L<Paws::OpsWorks::CreateLayerResult> instance
 
   
 
@@ -672,11 +681,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 CreateStack()
+=head2 CreateStack(DefaultInstanceProfileArn => Str, Name => Str, Region => Str, ServiceRoleArn => Str, [CustomJson => Str, DefaultOs => Str, ConfigurationManager => Paws::OpsWorks::StackConfigurationManager, VpcId => Str, CustomCookbooksSource => Paws::OpsWorks::Source, DefaultSshKeyName => Str, Attributes => Paws::OpsWorks::StackAttributes, HostnameTheme => Str, ChefConfiguration => Paws::OpsWorks::ChefConfiguration, DefaultRootDeviceType => Str, UseCustomCookbooks => Bool, DefaultSubnetId => Str, DefaultAvailabilityZone => Str, UseOpsworksSecurityGroups => Bool])
 
-  Arguments described in: L<Paws::OpsWorks::CreateStack>
+Each argument is described in detail in: L<Paws::OpsWorks::CreateStack>
 
-  Returns: L<Paws::OpsWorks::CreateStackResult>
+Returns: a L<Paws::OpsWorks::CreateStackResult> instance
 
   
 
@@ -696,11 +705,11 @@ information on user permissions, see Managing User Permissions.
 
 
 
-=head2 CreateUserProfile()
+=head2 CreateUserProfile(IamUserArn => Str, [SshPublicKey => Str, SshUsername => Str, AllowSelfManagement => Bool])
 
-  Arguments described in: L<Paws::OpsWorks::CreateUserProfile>
+Each argument is described in detail in: L<Paws::OpsWorks::CreateUserProfile>
 
-  Returns: L<Paws::OpsWorks::CreateUserProfileResult>
+Returns: a L<Paws::OpsWorks::CreateUserProfileResult> instance
 
   
 
@@ -720,11 +729,11 @@ information on user permissions, see Managing User Permissions.
 
 
 
-=head2 DeleteApp()
+=head2 DeleteApp(AppId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::DeleteApp>
+Each argument is described in detail in: L<Paws::OpsWorks::DeleteApp>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -745,11 +754,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DeleteInstance()
+=head2 DeleteInstance(InstanceId => Str, [DeleteElasticIp => Bool, DeleteVolumes => Bool])
 
-  Arguments described in: L<Paws::OpsWorks::DeleteInstance>
+Each argument is described in detail in: L<Paws::OpsWorks::DeleteInstance>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -773,11 +782,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DeleteLayer()
+=head2 DeleteLayer(LayerId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::DeleteLayer>
+Each argument is described in detail in: L<Paws::OpsWorks::DeleteLayer>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -800,11 +809,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DeleteStack()
+=head2 DeleteStack(StackId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::DeleteStack>
+Each argument is described in detail in: L<Paws::OpsWorks::DeleteStack>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -827,11 +836,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DeleteUserProfile()
+=head2 DeleteUserProfile(IamUserArn => Str)
 
-  Arguments described in: L<Paws::OpsWorks::DeleteUserProfile>
+Each argument is described in detail in: L<Paws::OpsWorks::DeleteUserProfile>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -851,11 +860,11 @@ information on user permissions, see Managing User Permissions.
 
 
 
-=head2 DeregisterElasticIp()
+=head2 DeregisterElasticIp(ElasticIp => Str)
 
-  Arguments described in: L<Paws::OpsWorks::DeregisterElasticIp>
+Each argument is described in detail in: L<Paws::OpsWorks::DeregisterElasticIp>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -878,11 +887,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DeregisterInstance()
+=head2 DeregisterInstance(InstanceId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::DeregisterInstance>
+Each argument is described in detail in: L<Paws::OpsWorks::DeregisterInstance>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -906,11 +915,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DeregisterRdsDbInstance()
+=head2 DeregisterRdsDbInstance(RdsDbInstanceArn => Str)
 
-  Arguments described in: L<Paws::OpsWorks::DeregisterRdsDbInstance>
+Each argument is described in detail in: L<Paws::OpsWorks::DeregisterRdsDbInstance>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -931,11 +940,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DeregisterVolume()
+=head2 DeregisterVolume(VolumeId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::DeregisterVolume>
+Each argument is described in detail in: L<Paws::OpsWorks::DeregisterVolume>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -957,11 +966,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeApps()
+=head2 DescribeApps([AppIds => ArrayRef[Str], StackId => Str])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeApps>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeApps>
 
-  Returns: L<Paws::OpsWorks::DescribeAppsResult>
+Returns: a L<Paws::OpsWorks::DescribeAppsResult> instance
 
   
 
@@ -984,11 +993,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeCommands()
+=head2 DescribeCommands([InstanceId => Str, DeploymentId => Str, CommandIds => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeCommands>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeCommands>
 
-  Returns: L<Paws::OpsWorks::DescribeCommandsResult>
+Returns: a L<Paws::OpsWorks::DescribeCommandsResult> instance
 
   
 
@@ -1011,11 +1020,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeDeployments()
+=head2 DescribeDeployments([StackId => Str, AppId => Str, DeploymentIds => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeDeployments>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeDeployments>
 
-  Returns: L<Paws::OpsWorks::DescribeDeploymentsResult>
+Returns: a L<Paws::OpsWorks::DescribeDeploymentsResult> instance
 
   
 
@@ -1038,11 +1047,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeElasticIps()
+=head2 DescribeElasticIps([Ips => ArrayRef[Str], StackId => Str, InstanceId => Str])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeElasticIps>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeElasticIps>
 
-  Returns: L<Paws::OpsWorks::DescribeElasticIpsResult>
+Returns: a L<Paws::OpsWorks::DescribeElasticIpsResult> instance
 
   
 
@@ -1065,11 +1074,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeElasticLoadBalancers()
+=head2 DescribeElasticLoadBalancers([LayerIds => ArrayRef[Str], StackId => Str])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeElasticLoadBalancers>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeElasticLoadBalancers>
 
-  Returns: L<Paws::OpsWorks::DescribeElasticLoadBalancersResult>
+Returns: a L<Paws::OpsWorks::DescribeElasticLoadBalancersResult> instance
 
   
 
@@ -1092,11 +1101,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeInstances()
+=head2 DescribeInstances([InstanceIds => ArrayRef[Str], StackId => Str, LayerId => Str])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeInstances>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeInstances>
 
-  Returns: L<Paws::OpsWorks::DescribeInstancesResult>
+Returns: a L<Paws::OpsWorks::DescribeInstancesResult> instance
 
   
 
@@ -1119,11 +1128,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeLayers()
+=head2 DescribeLayers([LayerIds => ArrayRef[Str], StackId => Str])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeLayers>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeLayers>
 
-  Returns: L<Paws::OpsWorks::DescribeLayersResult>
+Returns: a L<Paws::OpsWorks::DescribeLayersResult> instance
 
   
 
@@ -1146,11 +1155,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeLoadBasedAutoScaling()
+=head2 DescribeLoadBasedAutoScaling(LayerIds => ArrayRef[Str])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeLoadBasedAutoScaling>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeLoadBasedAutoScaling>
 
-  Returns: L<Paws::OpsWorks::DescribeLoadBasedAutoScalingResult>
+Returns: a L<Paws::OpsWorks::DescribeLoadBasedAutoScalingResult> instance
 
   
 
@@ -1175,9 +1184,9 @@ permissions, see Managing User Permissions.
 
 =head2 DescribeMyUserProfile()
 
-  Arguments described in: L<Paws::OpsWorks::DescribeMyUserProfile>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeMyUserProfile>
 
-  Returns: L<Paws::OpsWorks::DescribeMyUserProfileResult>
+Returns: a L<Paws::OpsWorks::DescribeMyUserProfileResult> instance
 
   
 
@@ -1198,11 +1207,11 @@ User Permissions.
 
 
 
-=head2 DescribePermissions()
+=head2 DescribePermissions([IamUserArn => Str, StackId => Str])
 
-  Arguments described in: L<Paws::OpsWorks::DescribePermissions>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribePermissions>
 
-  Returns: L<Paws::OpsWorks::DescribePermissionsResult>
+Returns: a L<Paws::OpsWorks::DescribePermissionsResult> instance
 
   
 
@@ -1223,11 +1232,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeRaidArrays()
+=head2 DescribeRaidArrays([InstanceId => Str, StackId => Str, RaidArrayIds => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeRaidArrays>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeRaidArrays>
 
-  Returns: L<Paws::OpsWorks::DescribeRaidArraysResult>
+Returns: a L<Paws::OpsWorks::DescribeRaidArraysResult> instance
 
   
 
@@ -1250,11 +1259,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeRdsDbInstances()
+=head2 DescribeRdsDbInstances(StackId => Str, [RdsDbInstanceArns => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeRdsDbInstances>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeRdsDbInstances>
 
-  Returns: L<Paws::OpsWorks::DescribeRdsDbInstancesResult>
+Returns: a L<Paws::OpsWorks::DescribeRdsDbInstancesResult> instance
 
   
 
@@ -1275,11 +1284,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeServiceErrors()
+=head2 DescribeServiceErrors([ServiceErrorIds => ArrayRef[Str], InstanceId => Str, StackId => Str])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeServiceErrors>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeServiceErrors>
 
-  Returns: L<Paws::OpsWorks::DescribeServiceErrorsResult>
+Returns: a L<Paws::OpsWorks::DescribeServiceErrorsResult> instance
 
   
 
@@ -1300,11 +1309,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeStackProvisioningParameters()
+=head2 DescribeStackProvisioningParameters(StackId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::DescribeStackProvisioningParameters>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeStackProvisioningParameters>
 
-  Returns: L<Paws::OpsWorks::DescribeStackProvisioningParametersResult>
+Returns: a L<Paws::OpsWorks::DescribeStackProvisioningParametersResult> instance
 
   
 
@@ -1325,11 +1334,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeStacks()
+=head2 DescribeStacks([StackIds => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeStacks>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeStacks>
 
-  Returns: L<Paws::OpsWorks::DescribeStacksResult>
+Returns: a L<Paws::OpsWorks::DescribeStacksResult> instance
 
   
 
@@ -1350,11 +1359,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeStackSummary()
+=head2 DescribeStackSummary(StackId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::DescribeStackSummary>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeStackSummary>
 
-  Returns: L<Paws::OpsWorks::DescribeStackSummaryResult>
+Returns: a L<Paws::OpsWorks::DescribeStackSummaryResult> instance
 
   
 
@@ -1377,11 +1386,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeTimeBasedAutoScaling()
+=head2 DescribeTimeBasedAutoScaling(InstanceIds => ArrayRef[Str])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeTimeBasedAutoScaling>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeTimeBasedAutoScaling>
 
-  Returns: L<Paws::OpsWorks::DescribeTimeBasedAutoScalingResult>
+Returns: a L<Paws::OpsWorks::DescribeTimeBasedAutoScalingResult> instance
 
   
 
@@ -1405,11 +1414,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeUserProfiles()
+=head2 DescribeUserProfiles([IamUserArns => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeUserProfiles>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeUserProfiles>
 
-  Returns: L<Paws::OpsWorks::DescribeUserProfilesResult>
+Returns: a L<Paws::OpsWorks::DescribeUserProfilesResult> instance
 
   
 
@@ -1429,11 +1438,11 @@ information on user permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeVolumes()
+=head2 DescribeVolumes([StackId => Str, VolumeIds => ArrayRef[Str], InstanceId => Str, RaidArrayId => Str])
 
-  Arguments described in: L<Paws::OpsWorks::DescribeVolumes>
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeVolumes>
 
-  Returns: L<Paws::OpsWorks::DescribeVolumesResult>
+Returns: a L<Paws::OpsWorks::DescribeVolumesResult> instance
 
   
 
@@ -1456,11 +1465,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DetachElasticLoadBalancer()
+=head2 DetachElasticLoadBalancer(ElasticLoadBalancerName => Str, LayerId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::DetachElasticLoadBalancer>
+Each argument is described in detail in: L<Paws::OpsWorks::DetachElasticLoadBalancer>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1481,11 +1490,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DisassociateElasticIp()
+=head2 DisassociateElasticIp(ElasticIp => Str)
 
-  Arguments described in: L<Paws::OpsWorks::DisassociateElasticIp>
+Each argument is described in detail in: L<Paws::OpsWorks::DisassociateElasticIp>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1508,11 +1517,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 GetHostnameSuggestion()
+=head2 GetHostnameSuggestion(LayerId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::GetHostnameSuggestion>
+Each argument is described in detail in: L<Paws::OpsWorks::GetHostnameSuggestion>
 
-  Returns: L<Paws::OpsWorks::GetHostnameSuggestionResult>
+Returns: a L<Paws::OpsWorks::GetHostnameSuggestionResult> instance
 
   
 
@@ -1534,11 +1543,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 RebootInstance()
+=head2 RebootInstance(InstanceId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::RebootInstance>
+Each argument is described in detail in: L<Paws::OpsWorks::RebootInstance>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1560,11 +1569,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 RegisterElasticIp()
+=head2 RegisterElasticIp(ElasticIp => Str, StackId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::RegisterElasticIp>
+Each argument is described in detail in: L<Paws::OpsWorks::RegisterElasticIp>
 
-  Returns: L<Paws::OpsWorks::RegisterElasticIpResult>
+Returns: a L<Paws::OpsWorks::RegisterElasticIpResult> instance
 
   
 
@@ -1588,11 +1597,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 RegisterInstance()
+=head2 RegisterInstance(StackId => Str, [RsaPublicKey => Str, InstanceIdentity => Paws::OpsWorks::InstanceIdentity, PublicIp => Str, PrivateIp => Str, RsaPublicKeyFingerprint => Str, Hostname => Str])
 
-  Arguments described in: L<Paws::OpsWorks::RegisterInstance>
+Each argument is described in detail in: L<Paws::OpsWorks::RegisterInstance>
 
-  Returns: L<Paws::OpsWorks::RegisterInstanceResult>
+Returns: a L<Paws::OpsWorks::RegisterInstanceResult> instance
 
   
 
@@ -1621,11 +1630,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 RegisterRdsDbInstance()
+=head2 RegisterRdsDbInstance(DbPassword => Str, DbUser => Str, RdsDbInstanceArn => Str, StackId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::RegisterRdsDbInstance>
+Each argument is described in detail in: L<Paws::OpsWorks::RegisterRdsDbInstance>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1646,11 +1655,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 RegisterVolume()
+=head2 RegisterVolume(StackId => Str, [Ec2VolumeId => Str])
 
-  Arguments described in: L<Paws::OpsWorks::RegisterVolume>
+Each argument is described in detail in: L<Paws::OpsWorks::RegisterVolume>
 
-  Returns: L<Paws::OpsWorks::RegisterVolumeResult>
+Returns: a L<Paws::OpsWorks::RegisterVolumeResult> instance
 
   
 
@@ -1674,11 +1683,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 SetLoadBasedAutoScaling()
+=head2 SetLoadBasedAutoScaling(LayerId => Str, [DownScaling => Paws::OpsWorks::AutoScalingThresholds, UpScaling => Paws::OpsWorks::AutoScalingThresholds, Enable => Bool])
 
-  Arguments described in: L<Paws::OpsWorks::SetLoadBasedAutoScaling>
+Each argument is described in detail in: L<Paws::OpsWorks::SetLoadBasedAutoScaling>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1706,11 +1715,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 SetPermission()
+=head2 SetPermission(IamUserArn => Str, StackId => Str, [AllowSudo => Bool, Level => Str, AllowSsh => Bool])
 
-  Arguments described in: L<Paws::OpsWorks::SetPermission>
+Each argument is described in detail in: L<Paws::OpsWorks::SetPermission>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1732,11 +1741,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 SetTimeBasedAutoScaling()
+=head2 SetTimeBasedAutoScaling(InstanceId => Str, [AutoScalingSchedule => Paws::OpsWorks::WeeklyAutoScalingSchedule])
 
-  Arguments described in: L<Paws::OpsWorks::SetTimeBasedAutoScaling>
+Each argument is described in detail in: L<Paws::OpsWorks::SetTimeBasedAutoScaling>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1759,11 +1768,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 StartInstance()
+=head2 StartInstance(InstanceId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::StartInstance>
+Each argument is described in detail in: L<Paws::OpsWorks::StartInstance>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1785,11 +1794,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 StartStack()
+=head2 StartStack(StackId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::StartStack>
+Each argument is described in detail in: L<Paws::OpsWorks::StartStack>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1810,11 +1819,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 StopInstance()
+=head2 StopInstance(InstanceId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::StopInstance>
+Each argument is described in detail in: L<Paws::OpsWorks::StopInstance>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1838,11 +1847,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 StopStack()
+=head2 StopStack(StackId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::StopStack>
+Each argument is described in detail in: L<Paws::OpsWorks::StopStack>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1863,11 +1872,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UnassignInstance()
+=head2 UnassignInstance(InstanceId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::UnassignInstance>
+Each argument is described in detail in: L<Paws::OpsWorks::UnassignInstance>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1891,11 +1900,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UnassignVolume()
+=head2 UnassignVolume(VolumeId => Str)
 
-  Arguments described in: L<Paws::OpsWorks::UnassignVolume>
+Each argument is described in detail in: L<Paws::OpsWorks::UnassignVolume>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1917,11 +1926,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UpdateApp()
+=head2 UpdateApp(AppId => Str, [Attributes => Paws::OpsWorks::AppAttributes, Type => Str, SslConfiguration => Paws::OpsWorks::SslConfiguration, Description => Str, Environment => ArrayRef[Paws::OpsWorks::EnvironmentVariable], AppSource => Paws::OpsWorks::Source, Domains => ArrayRef[Str], Name => Str, EnableSsl => Bool, DataSources => ArrayRef[Paws::OpsWorks::DataSource]])
 
-  Arguments described in: L<Paws::OpsWorks::UpdateApp>
+Each argument is described in detail in: L<Paws::OpsWorks::UpdateApp>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1942,11 +1951,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UpdateElasticIp()
+=head2 UpdateElasticIp(ElasticIp => Str, [Name => Str])
 
-  Arguments described in: L<Paws::OpsWorks::UpdateElasticIp>
+Each argument is described in detail in: L<Paws::OpsWorks::UpdateElasticIp>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1968,11 +1977,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UpdateInstance()
+=head2 UpdateInstance(InstanceId => Str, [Hostname => Str, AmiId => Str, Architecture => Str, EbsOptimized => Bool, SshKeyName => Str, AutoScalingType => Str, Os => Str, InstallUpdatesOnBoot => Bool, InstanceType => Str, LayerIds => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::OpsWorks::UpdateInstance>
+Each argument is described in detail in: L<Paws::OpsWorks::UpdateInstance>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1993,11 +2002,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UpdateLayer()
+=head2 UpdateLayer(LayerId => Str, [Packages => ArrayRef[Str], Shortname => Str, EnableAutoHealing => Bool, CustomInstanceProfileArn => Str, LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration, InstallUpdatesOnBoot => Bool, Attributes => Paws::OpsWorks::LayerAttributes, CustomRecipes => Paws::OpsWorks::Recipes, AutoAssignPublicIps => Bool, UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[Paws::OpsWorks::VolumeConfiguration], AutoAssignElasticIps => Bool, Name => Str, CustomSecurityGroupIds => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::OpsWorks::UpdateLayer>
+Each argument is described in detail in: L<Paws::OpsWorks::UpdateLayer>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -2018,11 +2027,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UpdateMyUserProfile()
+=head2 UpdateMyUserProfile([SshPublicKey => Str])
 
-  Arguments described in: L<Paws::OpsWorks::UpdateMyUserProfile>
+Each argument is described in detail in: L<Paws::OpsWorks::UpdateMyUserProfile>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -2043,11 +2052,11 @@ User Permissions.
 
 
 
-=head2 UpdateRdsDbInstance()
+=head2 UpdateRdsDbInstance(RdsDbInstanceArn => Str, [DbUser => Str, DbPassword => Str])
 
-  Arguments described in: L<Paws::OpsWorks::UpdateRdsDbInstance>
+Each argument is described in detail in: L<Paws::OpsWorks::UpdateRdsDbInstance>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -2068,11 +2077,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UpdateStack()
+=head2 UpdateStack(StackId => Str, [ServiceRoleArn => Str, ConfigurationManager => Paws::OpsWorks::StackConfigurationManager, CustomJson => Str, DefaultOs => Str, HostnameTheme => Str, ChefConfiguration => Paws::OpsWorks::ChefConfiguration, Attributes => Paws::OpsWorks::StackAttributes, CustomCookbooksSource => Paws::OpsWorks::Source, DefaultSshKeyName => Str, DefaultInstanceProfileArn => Str, Name => Str, UseCustomCookbooks => Bool, DefaultSubnetId => Str, DefaultRootDeviceType => Str, UseOpsworksSecurityGroups => Bool, DefaultAvailabilityZone => Str])
 
-  Arguments described in: L<Paws::OpsWorks::UpdateStack>
+Each argument is described in detail in: L<Paws::OpsWorks::UpdateStack>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -2093,11 +2102,11 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UpdateUserProfile()
+=head2 UpdateUserProfile(IamUserArn => Str, [AllowSelfManagement => Bool, SshPublicKey => Str, SshUsername => Str])
 
-  Arguments described in: L<Paws::OpsWorks::UpdateUserProfile>
+Each argument is described in detail in: L<Paws::OpsWorks::UpdateUserProfile>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -2117,11 +2126,11 @@ information on user permissions, see Managing User Permissions.
 
 
 
-=head2 UpdateVolume()
+=head2 UpdateVolume(VolumeId => Str, [Name => Str, MountPoint => Str])
 
-  Arguments described in: L<Paws::OpsWorks::UpdateVolume>
+Each argument is described in detail in: L<Paws::OpsWorks::UpdateVolume>
 
-  Returns: nothing
+Returns: nothing
 
   
 

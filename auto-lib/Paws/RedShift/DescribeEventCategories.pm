@@ -55,7 +55,7 @@ Valid values: cluster, snapshot, parameter group, and security group.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeEventCategories in Paws::RedShift
+This class forms part of L<Paws>, documenting arguments for method DescribeEventCategories in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 

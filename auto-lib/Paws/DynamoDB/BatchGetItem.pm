@@ -89,7 +89,7 @@ C<false> (the default), an eventually consistent read is used.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for BatchGetItem in Paws::DynamoDB
+This class forms part of L<Paws>, documenting arguments for method BatchGetItem in L<Paws::DynamoDB>
 
 =head1 BUGS and CONTRIBUTIONS
 

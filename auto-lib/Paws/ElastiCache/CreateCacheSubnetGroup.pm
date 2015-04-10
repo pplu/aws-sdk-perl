@@ -90,7 +90,7 @@ A list of VPC subnet IDs for the cache subnet group.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateCacheSubnetGroup in Paws::ElastiCache
+This class forms part of L<Paws>, documenting arguments for method CreateCacheSubnetGroup in L<Paws::ElastiCache>
 
 =head1 BUGS and CONTRIBUTIONS
 

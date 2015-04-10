@@ -69,7 +69,7 @@ A list of StepConfig to be executed by the job flow.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AddJobFlowSteps in Paws::EMR
+This class forms part of L<Paws>, documenting arguments for method AddJobFlowSteps in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 

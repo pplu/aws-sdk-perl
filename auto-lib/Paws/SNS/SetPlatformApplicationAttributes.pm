@@ -96,7 +96,7 @@ PlatformApplicationArn for SetPlatformApplicationAttributes action.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for SetPlatformApplicationAttributes in Paws::SNS
+This class forms part of L<Paws>, documenting arguments for method SetPlatformApplicationAttributes in L<Paws::SNS>
 
 =head1 BUGS and CONTRIBUTIONS
 

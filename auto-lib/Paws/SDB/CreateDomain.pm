@@ -54,7 +54,7 @@ characters and can contain the following characters: a-z, A-Z, 0-9,
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateDomain in Paws::SDB
+This class forms part of L<Paws>, documenting arguments for method CreateDomain in L<Paws::SDB>
 
 =head1 BUGS and CONTRIBUTIONS
 

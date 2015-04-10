@@ -94,7 +94,7 @@ C<workerGroup>; the string must be an exact, case-sensitive, match.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for PollForTask in Paws::DataPipeline
+This class forms part of L<Paws>, documenting arguments for method PollForTask in L<Paws::DataPipeline>
 
 =head1 BUGS and CONTRIBUTIONS
 

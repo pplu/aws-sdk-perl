@@ -58,7 +58,7 @@ indexing options.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteIndexField in Paws::CloudSearch
+This class forms part of L<Paws>, documenting arguments for method DeleteIndexField in L<Paws::CloudSearch>
 
 =head1 BUGS and CONTRIBUTIONS
 

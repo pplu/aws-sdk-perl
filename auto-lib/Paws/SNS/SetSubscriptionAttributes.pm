@@ -87,7 +87,7 @@ The ARN of the subscription to modify.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for SetSubscriptionAttributes in Paws::SNS
+This class forms part of L<Paws>, documenting arguments for method SetSubscriptionAttributes in L<Paws::SNS>
 
 =head1 BUGS and CONTRIBUTIONS
 

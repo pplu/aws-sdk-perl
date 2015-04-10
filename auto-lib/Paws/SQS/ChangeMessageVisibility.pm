@@ -87,7 +87,7 @@ message's visibility timeout.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ChangeMessageVisibility in Paws::SQS
+This class forms part of L<Paws>, documenting arguments for method ChangeMessageVisibility in L<Paws::SQS>
 
 =head1 BUGS and CONTRIBUTIONS
 

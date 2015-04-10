@@ -52,7 +52,7 @@ The encoded message that was returned with the response.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DecodeAuthorizationMessage in Paws::STS
+This class forms part of L<Paws>, documenting arguments for method DecodeAuthorizationMessage in L<Paws::STS>
 
 =head1 BUGS and CONTRIBUTIONS
 

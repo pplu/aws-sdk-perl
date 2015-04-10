@@ -77,7 +77,7 @@ is an empty string.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteTags in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DeleteTags in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

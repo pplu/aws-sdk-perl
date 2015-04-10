@@ -68,7 +68,7 @@ The workflow execution to describe.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeWorkflowExecution in Paws::SimpleWorkflow
+This class forms part of L<Paws>, documenting arguments for method DescribeWorkflowExecution in L<Paws::SimpleWorkflow>
 
 =head1 BUGS and CONTRIBUTIONS
 

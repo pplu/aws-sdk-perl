@@ -122,7 +122,7 @@ maintenance window. Must be at least 30 minutes.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for PromoteReadReplica in Paws::RDS
+This class forms part of L<Paws>, documenting arguments for method PromoteReadReplica in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 

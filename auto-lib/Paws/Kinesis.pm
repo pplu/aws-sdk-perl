@@ -90,8 +90,17 @@ Paws::Kinesis - Perl Interface to AWS Amazon Kinesis
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('Kinesis')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -113,11 +122,11 @@ time processing of streaming big data.
 
 =head1 METHODS
 
-=head2 AddTagsToStream()
+=head2 AddTagsToStream(StreamName => Str, Tags => Paws::Kinesis::TagMap)
 
-  Arguments described in: L<Paws::Kinesis::AddTagsToStream>
+Each argument is described in detail in: L<Paws::Kinesis::AddTagsToStream>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -137,11 +146,11 @@ overwrites any existing tags that correspond to the specified tag keys.
 
 
 
-=head2 CreateStream()
+=head2 CreateStream(ShardCount => Int, StreamName => Str)
 
-  Arguments described in: L<Paws::Kinesis::CreateStream>
+Each argument is described in detail in: L<Paws::Kinesis::CreateStream>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -202,11 +211,11 @@ C<CreateStream> has a limit of 5 transactions per second per account.
 
 
 
-=head2 DeleteStream()
+=head2 DeleteStream(StreamName => Str)
 
-  Arguments described in: L<Paws::Kinesis::DeleteStream>
+Each argument is described in detail in: L<Paws::Kinesis::DeleteStream>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -241,11 +250,11 @@ C<DeleteStream> has a limit of 5 transactions per second per account.
 
 
 
-=head2 DescribeStream()
+=head2 DescribeStream(StreamName => Str, [Limit => Int, ExclusiveStartShardId => Str])
 
-  Arguments described in: L<Paws::Kinesis::DescribeStream>
+Each argument is described in detail in: L<Paws::Kinesis::DescribeStream>
 
-  Returns: L<Paws::Kinesis::DescribeStreamOutput>
+Returns: a L<Paws::Kinesis::DescribeStreamOutput> instance
 
   
 
@@ -284,11 +293,11 @@ account.
 
 
 
-=head2 GetRecords()
+=head2 GetRecords(ShardIterator => Str, [Limit => Int])
 
-  Arguments described in: L<Paws::Kinesis::GetRecords>
+Each argument is described in detail in: L<Paws::Kinesis::GetRecords>
 
-  Returns: L<Paws::Kinesis::GetRecordsOutput>
+Returns: a L<Paws::Kinesis::GetRecordsOutput> instance
 
   
 
@@ -351,11 +360,11 @@ the I<Amazon Kinesis Developer Guide>.
 
 
 
-=head2 GetShardIterator()
+=head2 GetShardIterator(ShardId => Str, ShardIteratorType => Str, StreamName => Str, [StartingSequenceNumber => Str])
 
-  Arguments described in: L<Paws::Kinesis::GetShardIterator>
+Each argument is described in detail in: L<Paws::Kinesis::GetShardIterator>
 
-  Returns: L<Paws::Kinesis::GetShardIteratorOutput>
+Returns: a L<Paws::Kinesis::GetShardIteratorOutput> instance
 
   
 
@@ -411,11 +420,11 @@ account per open shard.
 
 
 
-=head2 ListStreams()
+=head2 ListStreams([Limit => Int, ExclusiveStartStreamName => Str])
 
-  Arguments described in: L<Paws::Kinesis::ListStreams>
+Each argument is described in detail in: L<Paws::Kinesis::ListStreams>
 
-  Returns: L<Paws::Kinesis::ListStreamsOutput>
+Returns: a L<Paws::Kinesis::ListStreamsOutput> instance
 
   
 
@@ -448,11 +457,11 @@ C<ListStreams> has a limit of 5 transactions per second per account.
 
 
 
-=head2 ListTagsForStream()
+=head2 ListTagsForStream(StreamName => Str, [Limit => Int, ExclusiveStartTagKey => Str])
 
-  Arguments described in: L<Paws::Kinesis::ListTagsForStream>
+Each argument is described in detail in: L<Paws::Kinesis::ListTagsForStream>
 
-  Returns: L<Paws::Kinesis::ListTagsForStreamOutput>
+Returns: a L<Paws::Kinesis::ListTagsForStreamOutput> instance
 
   
 
@@ -468,11 +477,11 @@ Lists the tags for the specified Amazon Kinesis stream.
 
 
 
-=head2 MergeShards()
+=head2 MergeShards(AdjacentShardToMerge => Str, ShardToMerge => Str, StreamName => Str)
 
-  Arguments described in: L<Paws::Kinesis::MergeShards>
+Each argument is described in detail in: L<Paws::Kinesis::MergeShards>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -527,11 +536,11 @@ C<MergeShards> has limit of 5 transactions per second per account.
 
 
 
-=head2 PutRecord()
+=head2 PutRecord(Data => Str, PartitionKey => Str, StreamName => Str, [ExplicitHashKey => Str, SequenceNumberForOrdering => Str])
 
-  Arguments described in: L<Paws::Kinesis::PutRecord>
+Each argument is described in detail in: L<Paws::Kinesis::PutRecord>
 
-  Returns: L<Paws::Kinesis::PutRecordOutput>
+Returns: a L<Paws::Kinesis::PutRecordOutput> instance
 
   
 
@@ -588,11 +597,11 @@ are added to an Amazon Kinesis stream.
 
 
 
-=head2 PutRecords()
+=head2 PutRecords(Records => ArrayRef[Paws::Kinesis::PutRecordsRequestEntry], StreamName => Str)
 
-  Arguments described in: L<Paws::Kinesis::PutRecords>
+Each argument is described in detail in: L<Paws::Kinesis::PutRecords>
 
-  Returns: L<Paws::Kinesis::PutRecordsOutput>
+Returns: a L<Paws::Kinesis::PutRecordsOutput> instance
 
   
 
@@ -663,11 +672,11 @@ are added to an Amazon Kinesis stream.
 
 
 
-=head2 RemoveTagsFromStream()
+=head2 RemoveTagsFromStream(StreamName => Str, TagKeys => ArrayRef[Str])
 
-  Arguments described in: L<Paws::Kinesis::RemoveTagsFromStream>
+Each argument is described in detail in: L<Paws::Kinesis::RemoveTagsFromStream>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -685,11 +694,11 @@ If you specify a tag that does not exist, it is ignored.
 
 
 
-=head2 SplitShard()
+=head2 SplitShard(NewStartingHashKey => Str, ShardToSplit => Str, StreamName => Str)
 
-  Arguments described in: L<Paws::Kinesis::SplitShard>
+Each argument is described in detail in: L<Paws::Kinesis::SplitShard>
 
-  Returns: nothing
+Returns: nothing
 
   
 

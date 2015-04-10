@@ -150,8 +150,17 @@ Paws::MachineLearning - Perl Interface to AWS Amazon Machine Learning
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('MachineLearning')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -170,11 +179,11 @@ Definition of the public APIs exposed by Amazon Machine Learning
 
 =head1 METHODS
 
-=head2 CreateBatchPrediction()
+=head2 CreateBatchPrediction(BatchPredictionDataSourceId => Str, BatchPredictionId => Str, MLModelId => Str, OutputUri => Str, [BatchPredictionName => Str])
 
-  Arguments described in: L<Paws::MachineLearning::CreateBatchPrediction>
+Each argument is described in detail in: L<Paws::MachineLearning::CreateBatchPrediction>
 
-  Returns: L<Paws::MachineLearning::CreateBatchPredictionOutput>
+Returns: a L<Paws::MachineLearning::CreateBatchPredictionOutput> instance
 
   
 
@@ -205,11 +214,11 @@ specified by the C<OutputUri> parameter.
 
 
 
-=head2 CreateDataSourceFromRDS()
+=head2 CreateDataSourceFromRDS(DataSourceId => Str, RDSData => Paws::MachineLearning::RDSDataSpec, RoleARN => Str, [DataSourceName => Str, ComputeStatistics => Bool])
 
-  Arguments described in: L<Paws::MachineLearning::CreateDataSourceFromRDS>
+Each argument is described in detail in: L<Paws::MachineLearning::CreateDataSourceFromRDS>
 
-  Returns: L<Paws::MachineLearning::CreateDataSourceFromRDSOutput>
+Returns: a L<Paws::MachineLearning::CreateDataSourceFromRDSOutput> instance
 
   
 
@@ -240,11 +249,11 @@ attribute of the GetDataSource operation response.
 
 
 
-=head2 CreateDataSourceFromRedshift()
+=head2 CreateDataSourceFromRedshift(DataSourceId => Str, DataSpec => Paws::MachineLearning::RedshiftDataSpec, RoleARN => Str, [ComputeStatistics => Bool, DataSourceName => Str])
 
-  Arguments described in: L<Paws::MachineLearning::CreateDataSourceFromRedshift>
+Each argument is described in detail in: L<Paws::MachineLearning::CreateDataSourceFromRedshift>
 
-  Returns: L<Paws::MachineLearning::CreateDataSourceFromRedshiftOutput>
+Returns: a L<Paws::MachineLearning::CreateDataSourceFromRedshiftOutput> instance
 
   
 
@@ -290,11 +299,11 @@ Machine Learning Developer Guide.
 
 
 
-=head2 CreateDataSourceFromS3()
+=head2 CreateDataSourceFromS3(DataSourceId => Str, DataSpec => Paws::MachineLearning::S3DataSpec, [ComputeStatistics => Bool, DataSourceName => Str])
 
-  Arguments described in: L<Paws::MachineLearning::CreateDataSourceFromS3>
+Each argument is described in detail in: L<Paws::MachineLearning::CreateDataSourceFromS3>
 
-  Returns: L<Paws::MachineLearning::CreateDataSourceFromS3Output>
+Returns: a L<Paws::MachineLearning::CreateDataSourceFromS3Output> instance
 
   
 
@@ -343,11 +352,11 @@ the Amazon Machine Learning Developer Guide.
 
 
 
-=head2 CreateEvaluation()
+=head2 CreateEvaluation(EvaluationDataSourceId => Str, EvaluationId => Str, MLModelId => Str, [EvaluationName => Str])
 
-  Arguments described in: L<Paws::MachineLearning::CreateEvaluation>
+Each argument is described in detail in: L<Paws::MachineLearning::CreateEvaluation>
 
-  Returns: L<Paws::MachineLearning::CreateEvaluationOutput>
+Returns: a L<Paws::MachineLearning::CreateEvaluationOutput> instance
 
   
 
@@ -381,11 +390,11 @@ evaluation during the creation operation.
 
 
 
-=head2 CreateMLModel()
+=head2 CreateMLModel(MLModelId => Str, MLModelType => Str, TrainingDataSourceId => Str, [Parameters => Paws::MachineLearning::TrainingParameters, Recipe => Str, RecipeUri => Str, MLModelName => Str])
 
-  Arguments described in: L<Paws::MachineLearning::CreateMLModel>
+Each argument is described in detail in: L<Paws::MachineLearning::CreateMLModel>
 
-  Returns: L<Paws::MachineLearning::CreateMLModelOutput>
+Returns: a L<Paws::MachineLearning::CreateMLModelOutput> instance
 
   
 
@@ -420,11 +429,11 @@ CreateDataSourceFromRedshift operations.
 
 
 
-=head2 CreateRealtimeEndpoint()
+=head2 CreateRealtimeEndpoint(MLModelId => Str)
 
-  Arguments described in: L<Paws::MachineLearning::CreateRealtimeEndpoint>
+Each argument is described in detail in: L<Paws::MachineLearning::CreateRealtimeEndpoint>
 
-  Returns: L<Paws::MachineLearning::CreateRealtimeEndpointOutput>
+Returns: a L<Paws::MachineLearning::CreateRealtimeEndpointOutput> instance
 
   
 
@@ -442,11 +451,11 @@ prediction requests for the specified C<MLModel>.
 
 
 
-=head2 DeleteBatchPrediction()
+=head2 DeleteBatchPrediction(BatchPredictionId => Str)
 
-  Arguments described in: L<Paws::MachineLearning::DeleteBatchPrediction>
+Each argument is described in detail in: L<Paws::MachineLearning::DeleteBatchPrediction>
 
-  Returns: L<Paws::MachineLearning::DeleteBatchPredictionOutput>
+Returns: a L<Paws::MachineLearning::DeleteBatchPredictionOutput> instance
 
   
 
@@ -469,11 +478,11 @@ The result of the C<DeleteBatchPrediction> operation is irreversible.
 
 
 
-=head2 DeleteDataSource()
+=head2 DeleteDataSource(DataSourceId => Str)
 
-  Arguments described in: L<Paws::MachineLearning::DeleteDataSource>
+Each argument is described in detail in: L<Paws::MachineLearning::DeleteDataSource>
 
-  Returns: L<Paws::MachineLearning::DeleteDataSourceOutput>
+Returns: a L<Paws::MachineLearning::DeleteDataSourceOutput> instance
 
   
 
@@ -495,11 +504,11 @@ The results of the C<DeleteDataSource> operation are irreversible.
 
 
 
-=head2 DeleteEvaluation()
+=head2 DeleteEvaluation(EvaluationId => Str)
 
-  Arguments described in: L<Paws::MachineLearning::DeleteEvaluation>
+Each argument is described in detail in: L<Paws::MachineLearning::DeleteEvaluation>
 
-  Returns: L<Paws::MachineLearning::DeleteEvaluationOutput>
+Returns: a L<Paws::MachineLearning::DeleteEvaluationOutput> instance
 
   
 
@@ -522,11 +531,11 @@ The results of the C<DeleteEvaluation> operation are irreversible.
 
 
 
-=head2 DeleteMLModel()
+=head2 DeleteMLModel(MLModelId => Str)
 
-  Arguments described in: L<Paws::MachineLearning::DeleteMLModel>
+Each argument is described in detail in: L<Paws::MachineLearning::DeleteMLModel>
 
-  Returns: L<Paws::MachineLearning::DeleteMLModelOutput>
+Returns: a L<Paws::MachineLearning::DeleteMLModelOutput> instance
 
   
 
@@ -548,11 +557,11 @@ The result of the C<DeleteMLModel> operation is irreversible.
 
 
 
-=head2 DeleteRealtimeEndpoint()
+=head2 DeleteRealtimeEndpoint(MLModelId => Str)
 
-  Arguments described in: L<Paws::MachineLearning::DeleteRealtimeEndpoint>
+Each argument is described in detail in: L<Paws::MachineLearning::DeleteRealtimeEndpoint>
 
-  Returns: L<Paws::MachineLearning::DeleteRealtimeEndpointOutput>
+Returns: a L<Paws::MachineLearning::DeleteRealtimeEndpointOutput> instance
 
   
 
@@ -568,11 +577,11 @@ Deletes a real time endpoint of an C<MLModel>.
 
 
 
-=head2 DescribeBatchPredictions()
+=head2 DescribeBatchPredictions([EQ => Str, LE => Str, Prefix => Str, SortOrder => Str, GE => Str, Limit => Int, FilterVariable => Str, LT => Str, NE => Str, NextToken => Str, GT => Str])
 
-  Arguments described in: L<Paws::MachineLearning::DescribeBatchPredictions>
+Each argument is described in detail in: L<Paws::MachineLearning::DescribeBatchPredictions>
 
-  Returns: L<Paws::MachineLearning::DescribeBatchPredictionsOutput>
+Returns: a L<Paws::MachineLearning::DescribeBatchPredictionsOutput> instance
 
   
 
@@ -589,11 +598,11 @@ criteria in the request.
 
 
 
-=head2 DescribeDataSources()
+=head2 DescribeDataSources([EQ => Str, LE => Str, Limit => Int, FilterVariable => Str, Prefix => Str, SortOrder => Str, GE => Str, LT => Str, NextToken => Str, NE => Str, GT => Str])
 
-  Arguments described in: L<Paws::MachineLearning::DescribeDataSources>
+Each argument is described in detail in: L<Paws::MachineLearning::DescribeDataSources>
 
-  Returns: L<Paws::MachineLearning::DescribeDataSourcesOutput>
+Returns: a L<Paws::MachineLearning::DescribeDataSourcesOutput> instance
 
   
 
@@ -610,11 +619,11 @@ request.
 
 
 
-=head2 DescribeEvaluations()
+=head2 DescribeEvaluations([NextToken => Str, NE => Str, GT => Str, LT => Str, FilterVariable => Str, Limit => Int, Prefix => Str, SortOrder => Str, GE => Str, EQ => Str, LE => Str])
 
-  Arguments described in: L<Paws::MachineLearning::DescribeEvaluations>
+Each argument is described in detail in: L<Paws::MachineLearning::DescribeEvaluations>
 
-  Returns: L<Paws::MachineLearning::DescribeEvaluationsOutput>
+Returns: a L<Paws::MachineLearning::DescribeEvaluationsOutput> instance
 
   
 
@@ -631,11 +640,11 @@ in the request.
 
 
 
-=head2 DescribeMLModels()
+=head2 DescribeMLModels([FilterVariable => Str, Limit => Int, Prefix => Str, SortOrder => Str, GE => Str, EQ => Str, LE => Str, NextToken => Str, NE => Str, GT => Str, LT => Str])
 
-  Arguments described in: L<Paws::MachineLearning::DescribeMLModels>
+Each argument is described in detail in: L<Paws::MachineLearning::DescribeMLModels>
 
-  Returns: L<Paws::MachineLearning::DescribeMLModelsOutput>
+Returns: a L<Paws::MachineLearning::DescribeMLModelsOutput> instance
 
   
 
@@ -652,11 +661,11 @@ request.
 
 
 
-=head2 GetBatchPrediction()
+=head2 GetBatchPrediction(BatchPredictionId => Str)
 
-  Arguments described in: L<Paws::MachineLearning::GetBatchPrediction>
+Each argument is described in detail in: L<Paws::MachineLearning::GetBatchPrediction>
 
-  Returns: L<Paws::MachineLearning::GetBatchPredictionOutput>
+Returns: a L<Paws::MachineLearning::GetBatchPredictionOutput> instance
 
   
 
@@ -673,11 +682,11 @@ and data file information for a C<Batch Prediction> request.
 
 
 
-=head2 GetDataSource()
+=head2 GetDataSource(DataSourceId => Str, [Verbose => Bool])
 
-  Arguments described in: L<Paws::MachineLearning::GetDataSource>
+Each argument is described in detail in: L<Paws::MachineLearning::GetDataSource>
 
-  Returns: L<Paws::MachineLearning::GetDataSourceOutput>
+Returns: a L<Paws::MachineLearning::GetDataSourceOutput> instance
 
   
 
@@ -698,11 +707,11 @@ pointed to by the DataSource to the normal format.
 
 
 
-=head2 GetEvaluation()
+=head2 GetEvaluation(EvaluationId => Str)
 
-  Arguments described in: L<Paws::MachineLearning::GetEvaluation>
+Each argument is described in detail in: L<Paws::MachineLearning::GetEvaluation>
 
-  Returns: L<Paws::MachineLearning::GetEvaluationOutput>
+Returns: a L<Paws::MachineLearning::GetEvaluationOutput> instance
 
   
 
@@ -719,11 +728,11 @@ status of the C<Evaluation>.
 
 
 
-=head2 GetMLModel()
+=head2 GetMLModel(MLModelId => Str, [Verbose => Bool])
 
-  Arguments described in: L<Paws::MachineLearning::GetMLModel>
+Each argument is described in detail in: L<Paws::MachineLearning::GetMLModel>
 
-  Returns: L<Paws::MachineLearning::GetMLModelOutput>
+Returns: a L<Paws::MachineLearning::GetMLModelOutput> instance
 
   
 
@@ -742,11 +751,11 @@ C<GetMLModel> provides results in normal or verbose format.
 
 
 
-=head2 Predict()
+=head2 Predict(MLModelId => Str, PredictEndpoint => Str, Record => Paws::MachineLearning::Record)
 
-  Arguments described in: L<Paws::MachineLearning::Predict>
+Each argument is described in detail in: L<Paws::MachineLearning::Predict>
 
-  Returns: L<Paws::MachineLearning::PredictOutput>
+Returns: a L<Paws::MachineLearning::PredictOutput> instance
 
   
 
@@ -766,11 +775,11 @@ on the type of requested model.
 
 
 
-=head2 UpdateBatchPrediction()
+=head2 UpdateBatchPrediction(BatchPredictionId => Str, BatchPredictionName => Str)
 
-  Arguments described in: L<Paws::MachineLearning::UpdateBatchPrediction>
+Each argument is described in detail in: L<Paws::MachineLearning::UpdateBatchPrediction>
 
-  Returns: L<Paws::MachineLearning::UpdateBatchPredictionOutput>
+Returns: a L<Paws::MachineLearning::UpdateBatchPredictionOutput> instance
 
   
 
@@ -789,11 +798,11 @@ the updated data element.
 
 
 
-=head2 UpdateDataSource()
+=head2 UpdateDataSource(DataSourceId => Str, DataSourceName => Str)
 
-  Arguments described in: L<Paws::MachineLearning::UpdateDataSource>
+Each argument is described in detail in: L<Paws::MachineLearning::UpdateDataSource>
 
-  Returns: L<Paws::MachineLearning::UpdateDataSourceOutput>
+Returns: a L<Paws::MachineLearning::UpdateDataSourceOutput> instance
 
   
 
@@ -812,11 +821,11 @@ updated data element.
 
 
 
-=head2 UpdateEvaluation()
+=head2 UpdateEvaluation(EvaluationId => Str, EvaluationName => Str)
 
-  Arguments described in: L<Paws::MachineLearning::UpdateEvaluation>
+Each argument is described in detail in: L<Paws::MachineLearning::UpdateEvaluation>
 
-  Returns: L<Paws::MachineLearning::UpdateEvaluationOutput>
+Returns: a L<Paws::MachineLearning::UpdateEvaluationOutput> instance
 
   
 
@@ -835,11 +844,11 @@ updated data element.
 
 
 
-=head2 UpdateMLModel()
+=head2 UpdateMLModel(MLModelId => Str, [MLModelName => Str, ScoreThreshold => Num])
 
-  Arguments described in: L<Paws::MachineLearning::UpdateMLModel>
+Each argument is described in detail in: L<Paws::MachineLearning::UpdateMLModel>
 
-  Returns: L<Paws::MachineLearning::UpdateMLModelOutput>
+Returns: a L<Paws::MachineLearning::UpdateMLModelOutput> instance
 
   
 

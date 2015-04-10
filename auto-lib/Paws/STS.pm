@@ -54,8 +54,17 @@ Paws::STS - Perl Interface to AWS AWS Security Token Service
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('STS')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -106,11 +115,11 @@ turn it on and find your log files, see the AWS CloudTrail User Guide.
 
 =head1 METHODS
 
-=head2 AssumeRole()
+=head2 AssumeRole(RoleArn => Str, RoleSessionName => Str, [Policy => Str, SerialNumber => Str, DurationSeconds => Int, TokenCode => Str, ExternalId => Str])
 
-  Arguments described in: L<Paws::STS::AssumeRole>
+Each argument is described in detail in: L<Paws::STS::AssumeRole>
 
-  Returns: L<Paws::STS::AssumeRoleResponse>
+Returns: a L<Paws::STS::AssumeRoleResponse> instance
 
   
 
@@ -199,11 +208,11 @@ time-based one-time password (TOTP) that the MFA devices produces.
 
 
 
-=head2 AssumeRoleWithSAML()
+=head2 AssumeRoleWithSAML(PrincipalArn => Str, RoleArn => Str, SAMLAssertion => Str, [Policy => Str, DurationSeconds => Int])
 
-  Arguments described in: L<Paws::STS::AssumeRoleWithSAML>
+Each argument is described in detail in: L<Paws::STS::AssumeRoleWithSAML>
 
-  Returns: L<Paws::STS::AssumeRoleWithSAMLResponse>
+Returns: a L<Paws::STS::AssumeRoleWithSAMLResponse> instance
 
   
 
@@ -272,11 +281,11 @@ I<Using Temporary Security Credentials>.
 
 
 
-=head2 AssumeRoleWithWebIdentity()
+=head2 AssumeRoleWithWebIdentity(RoleArn => Str, RoleSessionName => Str, WebIdentityToken => Str, [Policy => Str, ProviderId => Str, DurationSeconds => Int])
 
-  Arguments described in: L<Paws::STS::AssumeRoleWithWebIdentity>
+Each argument is described in detail in: L<Paws::STS::AssumeRoleWithWebIdentity>
 
-  Returns: L<Paws::STS::AssumeRoleWithWebIdentityResponse>
+Returns: a L<Paws::STS::AssumeRoleWithWebIdentityResponse> instance
 
   
 
@@ -358,11 +367,11 @@ web identity federation to get access to content in Amazon S3.
 
 
 
-=head2 DecodeAuthorizationMessage()
+=head2 DecodeAuthorizationMessage(EncodedMessage => Str)
 
-  Arguments described in: L<Paws::STS::DecodeAuthorizationMessage>
+Each argument is described in detail in: L<Paws::STS::DecodeAuthorizationMessage>
 
-  Returns: L<Paws::STS::DecodeAuthorizationMessageResponse>
+Returns: a L<Paws::STS::DecodeAuthorizationMessageResponse> instance
 
   
 
@@ -411,11 +420,11 @@ request.
 
 
 
-=head2 GetFederationToken()
+=head2 GetFederationToken(Name => Str, [DurationSeconds => Int, Policy => Str])
 
-  Arguments described in: L<Paws::STS::GetFederationToken>
+Each argument is described in detail in: L<Paws::STS::GetFederationToken>
 
-  Returns: L<Paws::STS::GetFederationTokenResponse>
+Returns: a L<Paws::STS::GetFederationTokenResponse> instance
 
   
 
@@ -503,11 +512,11 @@ Access for Federated Users in I<Using Temporary Security Credentials>.
 
 
 
-=head2 GetSessionToken()
+=head2 GetSessionToken([TokenCode => Str, DurationSeconds => Int, SerialNumber => Str])
 
-  Arguments described in: L<Paws::STS::GetSessionToken>
+Each argument is described in detail in: L<Paws::STS::GetSessionToken>
 
-  Returns: L<Paws::STS::GetSessionTokenResponse>
+Returns: a L<Paws::STS::GetSessionTokenResponse> instance
 
   
 

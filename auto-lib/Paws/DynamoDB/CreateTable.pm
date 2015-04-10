@@ -275,7 +275,7 @@ The name of the table to create.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateTable in Paws::DynamoDB
+This class forms part of L<Paws>, documenting arguments for method CreateTable in L<Paws::DynamoDB>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -53,7 +53,7 @@ null if this is the first call.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListLunaClients in Paws::CloudHSM
+This class forms part of L<Paws>, documenting arguments for method ListLunaClients in L<Paws::CloudHSM>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -218,7 +218,7 @@ only purchased reservations matching the specified offering identifier.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeReservedDBInstances in Paws::RDS
+This class forms part of L<Paws>, documenting arguments for method DescribeReservedDBInstances in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 

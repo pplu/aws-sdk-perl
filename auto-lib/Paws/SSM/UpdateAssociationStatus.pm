@@ -84,7 +84,7 @@ The name of the configuration document.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateAssociationStatus in Paws::SSM
+This class forms part of L<Paws>, documenting arguments for method UpdateAssociationStatus in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -70,7 +70,7 @@ key-value pair. A tag key must be accompanied by a tag value.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AddTagsToResource in Paws::ElastiCache
+This class forms part of L<Paws>, documenting arguments for method AddTagsToResource in L<Paws::ElastiCache>
 
 =head1 BUGS and CONTRIBUTIONS
 

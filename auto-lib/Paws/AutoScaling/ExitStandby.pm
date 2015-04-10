@@ -68,7 +68,7 @@ One or more instance IDs. You must specify at least one instance ID.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ExitStandby in Paws::AutoScaling
+This class forms part of L<Paws>, documenting arguments for method ExitStandby in L<Paws::AutoScaling>
 
 =head1 BUGS and CONTRIBUTIONS
 

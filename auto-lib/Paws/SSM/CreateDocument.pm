@@ -69,7 +69,7 @@ A name for the configuration document.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateDocument in Paws::SSM
+This class forms part of L<Paws>, documenting arguments for method CreateDocument in L<Paws::SSM>
 
 =head1 BUGS and CONTRIBUTIONS
 

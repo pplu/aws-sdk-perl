@@ -68,7 +68,7 @@ Job flow in which to add the instance groups.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AddInstanceGroups in Paws::EMR
+This class forms part of L<Paws>, documenting arguments for method AddInstanceGroups in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 

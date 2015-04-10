@@ -55,7 +55,7 @@ to retrieve the next set of results.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListPipelines in Paws::DataPipeline
+This class forms part of L<Paws>, documenting arguments for method ListPipelines in L<Paws::DataPipeline>
 
 =head1 BUGS and CONTRIBUTIONS
 

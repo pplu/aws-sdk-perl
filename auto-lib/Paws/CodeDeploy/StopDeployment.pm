@@ -52,7 +52,7 @@ The unique ID of a deployment.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for StopDeployment in Paws::CodeDeploy
+This class forms part of L<Paws>, documenting arguments for method StopDeployment in L<Paws::CodeDeploy>
 
 =head1 BUGS and CONTRIBUTIONS
 

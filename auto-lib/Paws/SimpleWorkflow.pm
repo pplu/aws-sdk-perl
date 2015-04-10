@@ -180,8 +180,17 @@ Paws::SimpleWorkflow - Perl Interface to AWS Amazon Simple Workflow Service
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('SimpleWorkflow')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -215,11 +224,11 @@ the Amazon SWF programming model, see the Amazon SWF Developer Guide.
 
 =head1 METHODS
 
-=head2 CountClosedWorkflowExecutions()
+=head2 CountClosedWorkflowExecutions(domain => Str, [closeStatusFilter => Paws::SimpleWorkflow::CloseStatusFilter, tagFilter => Paws::SimpleWorkflow::TagFilter, startTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter, typeFilter => Paws::SimpleWorkflow::WorkflowTypeFilter, closeTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter, executionFilter => Paws::SimpleWorkflow::WorkflowExecutionFilter])
 
-  Arguments described in: L<Paws::SimpleWorkflow::CountClosedWorkflowExecutions>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::CountClosedWorkflowExecutions>
 
-  Returns: L<Paws::SimpleWorkflow::WorkflowExecutionCount>
+Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionCount> instance
 
   
 
@@ -276,11 +285,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 CountOpenWorkflowExecutions()
+=head2 CountOpenWorkflowExecutions(domain => Str, startTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter, [executionFilter => Paws::SimpleWorkflow::WorkflowExecutionFilter, tagFilter => Paws::SimpleWorkflow::TagFilter, typeFilter => Paws::SimpleWorkflow::WorkflowTypeFilter])
 
-  Arguments described in: L<Paws::SimpleWorkflow::CountOpenWorkflowExecutions>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::CountOpenWorkflowExecutions>
 
-  Returns: L<Paws::SimpleWorkflow::WorkflowExecutionCount>
+Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionCount> instance
 
   
 
@@ -337,11 +346,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 CountPendingActivityTasks()
+=head2 CountPendingActivityTasks(domain => Str, taskList => Paws::SimpleWorkflow::TaskList)
 
-  Arguments described in: L<Paws::SimpleWorkflow::CountPendingActivityTasks>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::CountPendingActivityTasks>
 
-  Returns: L<Paws::SimpleWorkflow::PendingTaskCount>
+Returns: a L<Paws::SimpleWorkflow::PendingTaskCount> instance
 
   
 
@@ -385,11 +394,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 CountPendingDecisionTasks()
+=head2 CountPendingDecisionTasks(domain => Str, taskList => Paws::SimpleWorkflow::TaskList)
 
-  Arguments described in: L<Paws::SimpleWorkflow::CountPendingDecisionTasks>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::CountPendingDecisionTasks>
 
-  Returns: L<Paws::SimpleWorkflow::PendingTaskCount>
+Returns: a L<Paws::SimpleWorkflow::PendingTaskCount> instance
 
   
 
@@ -433,11 +442,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 DeprecateActivityType()
+=head2 DeprecateActivityType(activityType => Paws::SimpleWorkflow::ActivityType, domain => Str)
 
-  Arguments described in: L<Paws::SimpleWorkflow::DeprecateActivityType>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::DeprecateActivityType>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -493,11 +502,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 DeprecateDomain()
+=head2 DeprecateDomain(name => Str)
 
-  Arguments described in: L<Paws::SimpleWorkflow::DeprecateDomain>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::DeprecateDomain>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -545,11 +554,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 DeprecateWorkflowType()
+=head2 DeprecateWorkflowType(domain => Str, workflowType => Paws::SimpleWorkflow::WorkflowType)
 
-  Arguments described in: L<Paws::SimpleWorkflow::DeprecateWorkflowType>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::DeprecateWorkflowType>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -606,11 +615,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 DescribeActivityType()
+=head2 DescribeActivityType(activityType => Paws::SimpleWorkflow::ActivityType, domain => Str)
 
-  Arguments described in: L<Paws::SimpleWorkflow::DescribeActivityType>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::DescribeActivityType>
 
-  Returns: L<Paws::SimpleWorkflow::ActivityTypeDetail>
+Returns: a L<Paws::SimpleWorkflow::ActivityTypeDetail> instance
 
   
 
@@ -662,11 +671,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 DescribeDomain()
+=head2 DescribeDomain(name => Str)
 
-  Arguments described in: L<Paws::SimpleWorkflow::DescribeDomain>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::DescribeDomain>
 
-  Returns: L<Paws::SimpleWorkflow::DomainDetail>
+Returns: a L<Paws::SimpleWorkflow::DomainDetail> instance
 
   
 
@@ -707,11 +716,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 DescribeWorkflowExecution()
+=head2 DescribeWorkflowExecution(domain => Str, execution => Paws::SimpleWorkflow::WorkflowExecution)
 
-  Arguments described in: L<Paws::SimpleWorkflow::DescribeWorkflowExecution>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::DescribeWorkflowExecution>
 
-  Returns: L<Paws::SimpleWorkflow::WorkflowExecutionDetail>
+Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionDetail> instance
 
   
 
@@ -755,11 +764,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 DescribeWorkflowType()
+=head2 DescribeWorkflowType(domain => Str, workflowType => Paws::SimpleWorkflow::WorkflowType)
 
-  Arguments described in: L<Paws::SimpleWorkflow::DescribeWorkflowType>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::DescribeWorkflowType>
 
-  Returns: L<Paws::SimpleWorkflow::WorkflowTypeDetail>
+Returns: a L<Paws::SimpleWorkflow::WorkflowTypeDetail> instance
 
   
 
@@ -811,11 +820,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 GetWorkflowExecutionHistory()
+=head2 GetWorkflowExecutionHistory(domain => Str, execution => Paws::SimpleWorkflow::WorkflowExecution, [nextPageToken => Str, maximumPageSize => Int, reverseOrder => Bool])
 
-  Arguments described in: L<Paws::SimpleWorkflow::GetWorkflowExecutionHistory>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::GetWorkflowExecutionHistory>
 
-  Returns: L<Paws::SimpleWorkflow::History>
+Returns: a L<Paws::SimpleWorkflow::History> instance
 
   
 
@@ -860,11 +869,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 ListActivityTypes()
+=head2 ListActivityTypes(domain => Str, registrationStatus => Str, [reverseOrder => Bool, name => Str, nextPageToken => Str, maximumPageSize => Int])
 
-  Arguments described in: L<Paws::SimpleWorkflow::ListActivityTypes>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::ListActivityTypes>
 
-  Returns: L<Paws::SimpleWorkflow::ActivityTypeInfos>
+Returns: a L<Paws::SimpleWorkflow::ActivityTypeInfos> instance
 
   
 
@@ -909,11 +918,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 ListClosedWorkflowExecutions()
+=head2 ListClosedWorkflowExecutions(domain => Str, [nextPageToken => Str, maximumPageSize => Int, closeTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter, typeFilter => Paws::SimpleWorkflow::WorkflowTypeFilter, executionFilter => Paws::SimpleWorkflow::WorkflowExecutionFilter, closeStatusFilter => Paws::SimpleWorkflow::CloseStatusFilter, reverseOrder => Bool, tagFilter => Paws::SimpleWorkflow::TagFilter, startTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter])
 
-  Arguments described in: L<Paws::SimpleWorkflow::ListClosedWorkflowExecutions>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::ListClosedWorkflowExecutions>
 
-  Returns: L<Paws::SimpleWorkflow::WorkflowExecutionInfos>
+Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionInfos> instance
 
   
 
@@ -972,11 +981,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 ListDomains()
+=head2 ListDomains(registrationStatus => Str, [nextPageToken => Str, maximumPageSize => Int, reverseOrder => Bool])
 
-  Arguments described in: L<Paws::SimpleWorkflow::ListDomains>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::ListDomains>
 
-  Returns: L<Paws::SimpleWorkflow::DomainInfos>
+Returns: a L<Paws::SimpleWorkflow::DomainInfos> instance
 
   
 
@@ -1023,11 +1032,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 ListOpenWorkflowExecutions()
+=head2 ListOpenWorkflowExecutions(domain => Str, startTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter, [nextPageToken => Str, maximumPageSize => Int, typeFilter => Paws::SimpleWorkflow::WorkflowTypeFilter, executionFilter => Paws::SimpleWorkflow::WorkflowExecutionFilter, reverseOrder => Bool, tagFilter => Paws::SimpleWorkflow::TagFilter])
 
-  Arguments described in: L<Paws::SimpleWorkflow::ListOpenWorkflowExecutions>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::ListOpenWorkflowExecutions>
 
-  Returns: L<Paws::SimpleWorkflow::WorkflowExecutionInfos>
+Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionInfos> instance
 
   
 
@@ -1086,11 +1095,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 ListWorkflowTypes()
+=head2 ListWorkflowTypes(domain => Str, registrationStatus => Str, [maximumPageSize => Int, nextPageToken => Str, reverseOrder => Bool, name => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::ListWorkflowTypes>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::ListWorkflowTypes>
 
-  Returns: L<Paws::SimpleWorkflow::WorkflowTypeInfos>
+Returns: a L<Paws::SimpleWorkflow::WorkflowTypeInfos> instance
 
   
 
@@ -1132,11 +1141,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 PollForActivityTask()
+=head2 PollForActivityTask(domain => Str, taskList => Paws::SimpleWorkflow::TaskList, [identity => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::PollForActivityTask>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::PollForActivityTask>
 
-  Returns: L<Paws::SimpleWorkflow::ActivityTask>
+Returns: a L<Paws::SimpleWorkflow::ActivityTask> instance
 
   
 
@@ -1189,11 +1198,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 PollForDecisionTask()
+=head2 PollForDecisionTask(domain => Str, taskList => Paws::SimpleWorkflow::TaskList, [reverseOrder => Bool, identity => Str, maximumPageSize => Int, nextPageToken => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::PollForDecisionTask>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::PollForDecisionTask>
 
-  Returns: L<Paws::SimpleWorkflow::DecisionTask>
+Returns: a L<Paws::SimpleWorkflow::DecisionTask> instance
 
   
 
@@ -1256,11 +1265,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 RecordActivityTaskHeartbeat()
+=head2 RecordActivityTaskHeartbeat(taskToken => Str, [details => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::RecordActivityTaskHeartbeat>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::RecordActivityTaskHeartbeat>
 
-  Returns: L<Paws::SimpleWorkflow::ActivityTaskStatus>
+Returns: a L<Paws::SimpleWorkflow::ActivityTaskStatus> instance
 
   
 
@@ -1327,11 +1336,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 RegisterActivityType()
+=head2 RegisterActivityType(domain => Str, name => Str, version => Str, [defaultTaskStartToCloseTimeout => Str, defaultTaskList => Paws::SimpleWorkflow::TaskList, description => Str, defaultTaskHeartbeatTimeout => Str, defaultTaskScheduleToCloseTimeout => Str, defaultTaskScheduleToStartTimeout => Str, defaultTaskPriority => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::RegisterActivityType>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::RegisterActivityType>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1387,11 +1396,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 RegisterDomain()
+=head2 RegisterDomain(name => Str, workflowExecutionRetentionPeriodInDays => Str, [description => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::RegisterDomain>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::RegisterDomain>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1432,11 +1441,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 RegisterWorkflowType()
+=head2 RegisterWorkflowType(domain => Str, name => Str, version => Str, [defaultTaskStartToCloseTimeout => Str, defaultTaskList => Paws::SimpleWorkflow::TaskList, defaultExecutionStartToCloseTimeout => Str, defaultTaskPriority => Str, description => Str, defaultChildPolicy => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::RegisterWorkflowType>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::RegisterWorkflowType>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1495,11 +1504,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 RequestCancelWorkflowExecution()
+=head2 RequestCancelWorkflowExecution(domain => Str, workflowId => Str, [runId => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::RequestCancelWorkflowExecution>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::RequestCancelWorkflowExecution>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1549,11 +1558,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 RespondActivityTaskCanceled()
+=head2 RespondActivityTaskCanceled(taskToken => Str, [details => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::RespondActivityTaskCanceled>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::RespondActivityTaskCanceled>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1608,11 +1617,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 RespondActivityTaskCompleted()
+=head2 RespondActivityTaskCompleted(taskToken => Str, [result => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::RespondActivityTaskCompleted>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::RespondActivityTaskCompleted>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1667,11 +1676,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 RespondActivityTaskFailed()
+=head2 RespondActivityTaskFailed(taskToken => Str, [details => Str, reason => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::RespondActivityTaskFailed>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::RespondActivityTaskFailed>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1720,11 +1729,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 RespondDecisionTaskCompleted()
+=head2 RespondDecisionTaskCompleted(taskToken => Str, [decisions => ArrayRef[Paws::SimpleWorkflow::Decision], executionContext => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::RespondDecisionTaskCompleted>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::RespondDecisionTaskCompleted>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1758,11 +1767,11 @@ Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 SignalWorkflowExecution()
+=head2 SignalWorkflowExecution(domain => Str, signalName => Str, workflowId => Str, [runId => Str, input => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::SignalWorkflowExecution>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::SignalWorkflowExecution>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1811,11 +1820,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 StartWorkflowExecution()
+=head2 StartWorkflowExecution(domain => Str, workflowId => Str, workflowType => Paws::SimpleWorkflow::WorkflowType, [input => Str, childPolicy => Str, executionStartToCloseTimeout => Str, taskStartToCloseTimeout => Str, tagList => ArrayRef[Str], taskList => Paws::SimpleWorkflow::TaskList, taskPriority => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::StartWorkflowExecution>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::StartWorkflowExecution>
 
-  Returns: L<Paws::SimpleWorkflow::Run>
+Returns: a L<Paws::SimpleWorkflow::Run> instance
 
   
 
@@ -1881,11 +1890,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 TerminateWorkflowExecution()
+=head2 TerminateWorkflowExecution(domain => Str, workflowId => Str, [details => Str, reason => Str, runId => Str, childPolicy => Str])
 
-  Arguments described in: L<Paws::SimpleWorkflow::TerminateWorkflowExecution>
+Each argument is described in detail in: L<Paws::SimpleWorkflow::TerminateWorkflowExecution>
 
-  Returns: nothing
+Returns: nothing
 
   
 

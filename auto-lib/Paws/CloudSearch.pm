@@ -144,8 +144,17 @@ Paws::CloudSearch - Perl Interface to AWS Amazon CloudSearch
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('CloudSearch')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -175,11 +184,11 @@ regions and endpoints, see Regions and Endpoints.
 
 =head1 METHODS
 
-=head2 BuildSuggesters()
+=head2 BuildSuggesters(DomainName => Str)
 
-  Arguments described in: L<Paws::CloudSearch::BuildSuggesters>
+Each argument is described in detail in: L<Paws::CloudSearch::BuildSuggesters>
 
-  Returns: L<Paws::CloudSearch::BuildSuggestersResponse>
+Returns: a L<Paws::CloudSearch::BuildSuggestersResponse> instance
 
   
 
@@ -196,11 +205,11 @@ Suggesters in the I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 CreateDomain()
+=head2 CreateDomain(DomainName => Str)
 
-  Arguments described in: L<Paws::CloudSearch::CreateDomain>
+Each argument is described in detail in: L<Paws::CloudSearch::CreateDomain>
 
-  Returns: L<Paws::CloudSearch::CreateDomainResponse>
+Returns: a L<Paws::CloudSearch::CreateDomainResponse> instance
 
   
 
@@ -217,11 +226,11 @@ Search Domain in the I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DefineAnalysisScheme()
+=head2 DefineAnalysisScheme(AnalysisScheme => Paws::CloudSearch::AnalysisScheme, DomainName => Str)
 
-  Arguments described in: L<Paws::CloudSearch::DefineAnalysisScheme>
+Each argument is described in detail in: L<Paws::CloudSearch::DefineAnalysisScheme>
 
-  Returns: L<Paws::CloudSearch::DefineAnalysisSchemeResponse>
+Returns: a L<Paws::CloudSearch::DefineAnalysisSchemeResponse> instance
 
   
 
@@ -240,11 +249,11 @@ I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DefineExpression()
+=head2 DefineExpression(DomainName => Str, Expression => Paws::CloudSearch::Expression)
 
-  Arguments described in: L<Paws::CloudSearch::DefineExpression>
+Each argument is described in detail in: L<Paws::CloudSearch::DefineExpression>
 
-  Returns: L<Paws::CloudSearch::DefineExpressionResponse>
+Returns: a L<Paws::CloudSearch::DefineExpressionResponse> instance
 
   
 
@@ -263,11 +272,11 @@ Configuring Expressions in the I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DefineIndexField()
+=head2 DefineIndexField(DomainName => Str, IndexField => Paws::CloudSearch::IndexField)
 
-  Arguments described in: L<Paws::CloudSearch::DefineIndexField>
+Each argument is described in detail in: L<Paws::CloudSearch::DefineIndexField>
 
-  Returns: L<Paws::CloudSearch::DefineIndexFieldResponse>
+Returns: a L<Paws::CloudSearch::DefineIndexFieldResponse> instance
 
   
 
@@ -290,11 +299,11 @@ Configuring Index Fields in the I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DefineSuggester()
+=head2 DefineSuggester(DomainName => Str, Suggester => Paws::CloudSearch::Suggester)
 
-  Arguments described in: L<Paws::CloudSearch::DefineSuggester>
+Each argument is described in detail in: L<Paws::CloudSearch::DefineSuggester>
 
-  Returns: L<Paws::CloudSearch::DefineSuggesterResponse>
+Returns: a L<Paws::CloudSearch::DefineSuggesterResponse> instance
 
   
 
@@ -315,11 +324,11 @@ I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DeleteAnalysisScheme()
+=head2 DeleteAnalysisScheme(AnalysisSchemeName => Str, DomainName => Str)
 
-  Arguments described in: L<Paws::CloudSearch::DeleteAnalysisScheme>
+Each argument is described in detail in: L<Paws::CloudSearch::DeleteAnalysisScheme>
 
-  Returns: L<Paws::CloudSearch::DeleteAnalysisSchemeResponse>
+Returns: a L<Paws::CloudSearch::DeleteAnalysisSchemeResponse> instance
 
   
 
@@ -336,11 +345,11 @@ Analysis Schemes in the I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DeleteDomain()
+=head2 DeleteDomain(DomainName => Str)
 
-  Arguments described in: L<Paws::CloudSearch::DeleteDomain>
+Each argument is described in detail in: L<Paws::CloudSearch::DeleteDomain>
 
-  Returns: L<Paws::CloudSearch::DeleteDomainResponse>
+Returns: a L<Paws::CloudSearch::DeleteDomainResponse> instance
 
   
 
@@ -358,11 +367,11 @@ Deleting a Search Domain in the I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DeleteExpression()
+=head2 DeleteExpression(DomainName => Str, ExpressionName => Str)
 
-  Arguments described in: L<Paws::CloudSearch::DeleteExpression>
+Each argument is described in detail in: L<Paws::CloudSearch::DeleteExpression>
 
-  Returns: L<Paws::CloudSearch::DeleteExpressionResponse>
+Returns: a L<Paws::CloudSearch::DeleteExpressionResponse> instance
 
   
 
@@ -380,11 +389,11 @@ Guide>.
 
 
 
-=head2 DeleteIndexField()
+=head2 DeleteIndexField(DomainName => Str, IndexFieldName => Str)
 
-  Arguments described in: L<Paws::CloudSearch::DeleteIndexField>
+Each argument is described in detail in: L<Paws::CloudSearch::DeleteIndexField>
 
-  Returns: L<Paws::CloudSearch::DeleteIndexFieldResponse>
+Returns: a L<Paws::CloudSearch::DeleteIndexFieldResponse> instance
 
   
 
@@ -402,11 +411,11 @@ Guide>.
 
 
 
-=head2 DeleteSuggester()
+=head2 DeleteSuggester(DomainName => Str, SuggesterName => Str)
 
-  Arguments described in: L<Paws::CloudSearch::DeleteSuggester>
+Each argument is described in detail in: L<Paws::CloudSearch::DeleteSuggester>
 
-  Returns: L<Paws::CloudSearch::DeleteSuggesterResponse>
+Returns: a L<Paws::CloudSearch::DeleteSuggesterResponse> instance
 
   
 
@@ -423,11 +432,11 @@ Suggestions in the I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DescribeAnalysisSchemes()
+=head2 DescribeAnalysisSchemes(DomainName => Str, [AnalysisSchemeNames => ArrayRef[Str], Deployed => Bool])
 
-  Arguments described in: L<Paws::CloudSearch::DescribeAnalysisSchemes>
+Each argument is described in detail in: L<Paws::CloudSearch::DescribeAnalysisSchemes>
 
-  Returns: L<Paws::CloudSearch::DescribeAnalysisSchemesResponse>
+Returns: a L<Paws::CloudSearch::DescribeAnalysisSchemesResponse> instance
 
   
 
@@ -450,11 +459,11 @@ Guide>.
 
 
 
-=head2 DescribeAvailabilityOptions()
+=head2 DescribeAvailabilityOptions(DomainName => Str, [Deployed => Bool])
 
-  Arguments described in: L<Paws::CloudSearch::DescribeAvailabilityOptions>
+Each argument is described in detail in: L<Paws::CloudSearch::DescribeAvailabilityOptions>
 
-  Returns: L<Paws::CloudSearch::DescribeAvailabilityOptionsResponse>
+Returns: a L<Paws::CloudSearch::DescribeAvailabilityOptionsResponse> instance
 
   
 
@@ -474,11 +483,11 @@ the I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DescribeDomains()
+=head2 DescribeDomains([DomainNames => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::CloudSearch::DescribeDomains>
+Each argument is described in detail in: L<Paws::CloudSearch::DescribeDomains>
 
-  Returns: L<Paws::CloudSearch::DescribeDomainsResponse>
+Returns: a L<Paws::CloudSearch::DescribeDomainsResponse> instance
 
   
 
@@ -500,11 +509,11 @@ CloudSearch Developer Guide>.
 
 
 
-=head2 DescribeExpressions()
+=head2 DescribeExpressions(DomainName => Str, [ExpressionNames => ArrayRef[Str], Deployed => Bool])
 
-  Arguments described in: L<Paws::CloudSearch::DescribeExpressions>
+Each argument is described in detail in: L<Paws::CloudSearch::DescribeExpressions>
 
-  Returns: L<Paws::CloudSearch::DescribeExpressionsResponse>
+Returns: a L<Paws::CloudSearch::DescribeExpressionsResponse> instance
 
   
 
@@ -525,11 +534,11 @@ I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DescribeIndexFields()
+=head2 DescribeIndexFields(DomainName => Str, [Deployed => Bool, FieldNames => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::CloudSearch::DescribeIndexFields>
+Each argument is described in detail in: L<Paws::CloudSearch::DescribeIndexFields>
 
-  Returns: L<Paws::CloudSearch::DescribeIndexFieldsResponse>
+Returns: a L<Paws::CloudSearch::DescribeIndexFieldsResponse> instance
 
   
 
@@ -550,11 +559,11 @@ Information in the I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DescribeScalingParameters()
+=head2 DescribeScalingParameters(DomainName => Str)
 
-  Arguments described in: L<Paws::CloudSearch::DescribeScalingParameters>
+Each argument is described in detail in: L<Paws::CloudSearch::DescribeScalingParameters>
 
-  Returns: L<Paws::CloudSearch::DescribeScalingParametersResponse>
+Returns: a L<Paws::CloudSearch::DescribeScalingParametersResponse> instance
 
   
 
@@ -573,11 +582,11 @@ I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DescribeServiceAccessPolicies()
+=head2 DescribeServiceAccessPolicies(DomainName => Str, [Deployed => Bool])
 
-  Arguments described in: L<Paws::CloudSearch::DescribeServiceAccessPolicies>
+Each argument is described in detail in: L<Paws::CloudSearch::DescribeServiceAccessPolicies>
 
-  Returns: L<Paws::CloudSearch::DescribeServiceAccessPoliciesResponse>
+Returns: a L<Paws::CloudSearch::DescribeServiceAccessPoliciesResponse> instance
 
   
 
@@ -598,11 +607,11 @@ I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DescribeSuggesters()
+=head2 DescribeSuggesters(DomainName => Str, [SuggesterNames => ArrayRef[Str], Deployed => Bool])
 
-  Arguments described in: L<Paws::CloudSearch::DescribeSuggesters>
+Each argument is described in detail in: L<Paws::CloudSearch::DescribeSuggesters>
 
-  Returns: L<Paws::CloudSearch::DescribeSuggestersResponse>
+Returns: a L<Paws::CloudSearch::DescribeSuggestersResponse> instance
 
   
 
@@ -624,11 +633,11 @@ Suggestions in the I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 IndexDocuments()
+=head2 IndexDocuments(DomainName => Str)
 
-  Arguments described in: L<Paws::CloudSearch::IndexDocuments>
+Each argument is described in detail in: L<Paws::CloudSearch::IndexDocuments>
 
-  Returns: L<Paws::CloudSearch::IndexDocumentsResponse>
+Returns: a L<Paws::CloudSearch::IndexDocumentsResponse> instance
 
   
 
@@ -648,9 +657,9 @@ options whose OptionStatus is C<RequiresIndexDocuments>.
 
 =head2 ListDomainNames()
 
-  Arguments described in: L<Paws::CloudSearch::ListDomainNames>
+Each argument is described in detail in: L<Paws::CloudSearch::ListDomainNames>
 
-  Returns: L<Paws::CloudSearch::ListDomainNamesResponse>
+Returns: a L<Paws::CloudSearch::ListDomainNamesResponse> instance
 
   
 
@@ -666,11 +675,11 @@ Lists all search domains owned by an account.
 
 
 
-=head2 UpdateAvailabilityOptions()
+=head2 UpdateAvailabilityOptions(DomainName => Str, MultiAZ => Bool)
 
-  Arguments described in: L<Paws::CloudSearch::UpdateAvailabilityOptions>
+Each argument is described in detail in: L<Paws::CloudSearch::UpdateAvailabilityOptions>
 
-  Returns: L<Paws::CloudSearch::UpdateAvailabilityOptionsResponse>
+Returns: a L<Paws::CloudSearch::UpdateAvailabilityOptionsResponse> instance
 
   
 
@@ -692,11 +701,11 @@ Guide>.
 
 
 
-=head2 UpdateScalingParameters()
+=head2 UpdateScalingParameters(DomainName => Str, ScalingParameters => Paws::CloudSearch::ScalingParameters)
 
-  Arguments described in: L<Paws::CloudSearch::UpdateScalingParameters>
+Each argument is described in detail in: L<Paws::CloudSearch::UpdateScalingParameters>
 
-  Returns: L<Paws::CloudSearch::UpdateScalingParametersResponse>
+Returns: a L<Paws::CloudSearch::UpdateScalingParametersResponse> instance
 
   
 
@@ -719,11 +728,11 @@ CloudSearch Developer Guide>.
 
 
 
-=head2 UpdateServiceAccessPolicies()
+=head2 UpdateServiceAccessPolicies(AccessPolicies => Str, DomainName => Str)
 
-  Arguments described in: L<Paws::CloudSearch::UpdateServiceAccessPolicies>
+Each argument is described in detail in: L<Paws::CloudSearch::UpdateServiceAccessPolicies>
 
-  Returns: L<Paws::CloudSearch::UpdateServiceAccessPoliciesResponse>
+Returns: a L<Paws::CloudSearch::UpdateServiceAccessPoliciesResponse> instance
 
   
 

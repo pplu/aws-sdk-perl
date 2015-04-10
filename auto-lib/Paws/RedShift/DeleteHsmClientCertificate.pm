@@ -52,7 +52,7 @@ The identifier of the HSM client certificate to be deleted.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteHsmClientCertificate in Paws::RedShift
+This class forms part of L<Paws>, documenting arguments for method DeleteHsmClientCertificate in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 

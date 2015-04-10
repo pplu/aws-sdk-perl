@@ -209,8 +209,17 @@ Paws::ElastiCache - Perl Interface to AWS Amazon ElastiCache
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('ElastiCache')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -242,11 +251,11 @@ their cache and can receive alarms if a part of their cache runs hot.
 
 =head1 METHODS
 
-=head2 AddTagsToResource()
+=head2 AddTagsToResource(ResourceName => Str, Tags => ArrayRef[Paws::ElastiCache::Tag])
 
-  Arguments described in: L<Paws::ElastiCache::AddTagsToResource>
+Each argument is described in detail in: L<Paws::ElastiCache::AddTagsToResource>
 
-  Returns: L<Paws::ElastiCache::TagListMessage>
+Returns: a L<Paws::ElastiCache::TagListMessage> instance
 
   
 
@@ -272,11 +281,11 @@ information, see Using Cost Allocation Tags in Amazon ElastiCache.
 
 
 
-=head2 AuthorizeCacheSecurityGroupIngress()
+=head2 AuthorizeCacheSecurityGroupIngress(CacheSecurityGroupName => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str)
 
-  Arguments described in: L<Paws::ElastiCache::AuthorizeCacheSecurityGroupIngress>
+Each argument is described in detail in: L<Paws::ElastiCache::AuthorizeCacheSecurityGroupIngress>
 
-  Returns: L<Paws::ElastiCache::AuthorizeCacheSecurityGroupIngressResult>
+Returns: a L<Paws::ElastiCache::AuthorizeCacheSecurityGroupIngressResult> instance
 
   
 
@@ -298,11 +307,11 @@ region to an ElastiCache cluster in another region.
 
 
 
-=head2 CopySnapshot()
+=head2 CopySnapshot(SourceSnapshotName => Str, TargetSnapshotName => Str)
 
-  Arguments described in: L<Paws::ElastiCache::CopySnapshot>
+Each argument is described in detail in: L<Paws::ElastiCache::CopySnapshot>
 
-  Returns: L<Paws::ElastiCache::CopySnapshotResult>
+Returns: a L<Paws::ElastiCache::CopySnapshotResult> instance
 
   
 
@@ -318,11 +327,11 @@ The I<CopySnapshot> action makes a copy of an existing snapshot.
 
 
 
-=head2 CreateCacheCluster()
+=head2 CreateCacheCluster(CacheClusterId => Str, [PreferredAvailabilityZone => Str, NotificationTopicArn => Str, PreferredMaintenanceWindow => Str, PreferredAvailabilityZones => ArrayRef[Str], SnapshotWindow => Str, AutoMinorVersionUpgrade => Bool, SnapshotArns => ArrayRef[Str], ReplicationGroupId => Str, SnapshotName => Str, SecurityGroupIds => ArrayRef[Str], NumCacheNodes => Int, CacheSubnetGroupName => Str, EngineVersion => Str, CacheParameterGroupName => Str, CacheNodeType => Str, Tags => ArrayRef[Paws::ElastiCache::Tag], CacheSecurityGroupNames => ArrayRef[Str], Port => Int, SnapshotRetentionLimit => Int, AZMode => Str, Engine => Str])
 
-  Arguments described in: L<Paws::ElastiCache::CreateCacheCluster>
+Each argument is described in detail in: L<Paws::ElastiCache::CreateCacheCluster>
 
-  Returns: L<Paws::ElastiCache::CreateCacheClusterResult>
+Returns: a L<Paws::ElastiCache::CreateCacheClusterResult> instance
 
   
 
@@ -340,11 +349,11 @@ software, either Memcached or Redis.
 
 
 
-=head2 CreateCacheParameterGroup()
+=head2 CreateCacheParameterGroup(CacheParameterGroupFamily => Str, CacheParameterGroupName => Str, Description => Str)
 
-  Arguments described in: L<Paws::ElastiCache::CreateCacheParameterGroup>
+Each argument is described in detail in: L<Paws::ElastiCache::CreateCacheParameterGroup>
 
-  Returns: L<Paws::ElastiCache::CreateCacheParameterGroupResult>
+Returns: a L<Paws::ElastiCache::CreateCacheParameterGroupResult> instance
 
   
 
@@ -362,11 +371,11 @@ apply to all of the nodes in a cache cluster.
 
 
 
-=head2 CreateCacheSecurityGroup()
+=head2 CreateCacheSecurityGroup(CacheSecurityGroupName => Str, Description => Str)
 
-  Arguments described in: L<Paws::ElastiCache::CreateCacheSecurityGroup>
+Each argument is described in detail in: L<Paws::ElastiCache::CreateCacheSecurityGroup>
 
-  Returns: L<Paws::ElastiCache::CreateCacheSecurityGroupResult>
+Returns: a L<Paws::ElastiCache::CreateCacheSecurityGroupResult> instance
 
   
 
@@ -389,11 +398,11 @@ instead. For more information, see CreateCacheSubnetGroup.
 
 
 
-=head2 CreateCacheSubnetGroup()
+=head2 CreateCacheSubnetGroup(CacheSubnetGroupDescription => Str, CacheSubnetGroupName => Str, SubnetIds => ArrayRef[Str])
 
-  Arguments described in: L<Paws::ElastiCache::CreateCacheSubnetGroup>
+Each argument is described in detail in: L<Paws::ElastiCache::CreateCacheSubnetGroup>
 
-  Returns: L<Paws::ElastiCache::CreateCacheSubnetGroupResult>
+Returns: a L<Paws::ElastiCache::CreateCacheSubnetGroupResult> instance
 
   
 
@@ -412,11 +421,11 @@ Virtual Private Cloud (VPC).
 
 
 
-=head2 CreateReplicationGroup()
+=head2 CreateReplicationGroup(ReplicationGroupDescription => Str, ReplicationGroupId => Str, [PreferredMaintenanceWindow => Str, NotificationTopicArn => Str, AutoMinorVersionUpgrade => Bool, SnapshotArns => ArrayRef[Str], PrimaryClusterId => Str, SnapshotWindow => Str, CacheParameterGroupName => Str, EngineVersion => Str, CacheNodeType => Str, SecurityGroupIds => ArrayRef[Str], SnapshotName => Str, CacheSubnetGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], Engine => Str, SnapshotRetentionLimit => Int, PreferredCacheClusterAZs => ArrayRef[Str], AutomaticFailoverEnabled => Bool, Port => Int, Tags => ArrayRef[Paws::ElastiCache::Tag], NumCacheClusters => Int])
 
-  Arguments described in: L<Paws::ElastiCache::CreateReplicationGroup>
+Each argument is described in detail in: L<Paws::ElastiCache::CreateReplicationGroup>
 
-  Returns: L<Paws::ElastiCache::CreateReplicationGroupResult>
+Returns: a L<Paws::ElastiCache::CreateReplicationGroupResult> instance
 
   
 
@@ -443,11 +452,11 @@ B<Note:> This action is valid only for Redis.
 
 
 
-=head2 CreateSnapshot()
+=head2 CreateSnapshot(CacheClusterId => Str, SnapshotName => Str)
 
-  Arguments described in: L<Paws::ElastiCache::CreateSnapshot>
+Each argument is described in detail in: L<Paws::ElastiCache::CreateSnapshot>
 
-  Returns: L<Paws::ElastiCache::CreateSnapshotResult>
+Returns: a L<Paws::ElastiCache::CreateSnapshotResult> instance
 
   
 
@@ -464,11 +473,11 @@ at a specific moment in time.
 
 
 
-=head2 DeleteCacheCluster()
+=head2 DeleteCacheCluster(CacheClusterId => Str, [FinalSnapshotIdentifier => Str])
 
-  Arguments described in: L<Paws::ElastiCache::DeleteCacheCluster>
+Each argument is described in detail in: L<Paws::ElastiCache::DeleteCacheCluster>
 
-  Returns: L<Paws::ElastiCache::DeleteCacheClusterResult>
+Returns: a L<Paws::ElastiCache::DeleteCacheClusterResult> instance
 
   
 
@@ -491,11 +500,11 @@ replica of a replication group that has Multi-AZ mode enabled.
 
 
 
-=head2 DeleteCacheParameterGroup()
+=head2 DeleteCacheParameterGroup(CacheParameterGroupName => Str)
 
-  Arguments described in: L<Paws::ElastiCache::DeleteCacheParameterGroup>
+Each argument is described in detail in: L<Paws::ElastiCache::DeleteCacheParameterGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -513,11 +522,11 @@ associated with any cache clusters.
 
 
 
-=head2 DeleteCacheSecurityGroup()
+=head2 DeleteCacheSecurityGroup(CacheSecurityGroupName => Str)
 
-  Arguments described in: L<Paws::ElastiCache::DeleteCacheSecurityGroup>
+Each argument is described in detail in: L<Paws::ElastiCache::DeleteCacheSecurityGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -536,11 +545,11 @@ cache clusters.
 
 
 
-=head2 DeleteCacheSubnetGroup()
+=head2 DeleteCacheSubnetGroup(CacheSubnetGroupName => Str)
 
-  Arguments described in: L<Paws::ElastiCache::DeleteCacheSubnetGroup>
+Each argument is described in detail in: L<Paws::ElastiCache::DeleteCacheSubnetGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -559,11 +568,11 @@ cache clusters.
 
 
 
-=head2 DeleteReplicationGroup()
+=head2 DeleteReplicationGroup(ReplicationGroupId => Str, [RetainPrimaryCluster => Bool, FinalSnapshotIdentifier => Str])
 
-  Arguments described in: L<Paws::ElastiCache::DeleteReplicationGroup>
+Each argument is described in detail in: L<Paws::ElastiCache::DeleteReplicationGroup>
 
-  Returns: L<Paws::ElastiCache::DeleteReplicationGroupResult>
+Returns: a L<Paws::ElastiCache::DeleteReplicationGroupResult> instance
 
   
 
@@ -587,11 +596,11 @@ cannot cancel or revert this action.
 
 
 
-=head2 DeleteSnapshot()
+=head2 DeleteSnapshot(SnapshotName => Str)
 
-  Arguments described in: L<Paws::ElastiCache::DeleteSnapshot>
+Each argument is described in detail in: L<Paws::ElastiCache::DeleteSnapshot>
 
-  Returns: L<Paws::ElastiCache::DeleteSnapshotResult>
+Returns: a L<Paws::ElastiCache::DeleteSnapshotResult> instance
 
   
 
@@ -609,11 +618,11 @@ begins deleting the snapshot; you cannot cancel or revert this action.
 
 
 
-=head2 DescribeCacheClusters()
+=head2 DescribeCacheClusters([ShowCacheNodeInfo => Bool, MaxRecords => Int, CacheClusterId => Str, Marker => Str])
 
-  Arguments described in: L<Paws::ElastiCache::DescribeCacheClusters>
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheClusters>
 
-  Returns: L<Paws::ElastiCache::CacheClusterMessage>
+Returns: a L<Paws::ElastiCache::CacheClusterMessage> instance
 
   
 
@@ -652,11 +661,11 @@ endpoint information for the removed nodes is displayed.
 
 
 
-=head2 DescribeCacheEngineVersions()
+=head2 DescribeCacheEngineVersions([Engine => Str, Marker => Str, DefaultOnly => Bool, CacheParameterGroupFamily => Str, EngineVersion => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::ElastiCache::DescribeCacheEngineVersions>
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheEngineVersions>
 
-  Returns: L<Paws::ElastiCache::CacheEngineVersionMessage>
+Returns: a L<Paws::ElastiCache::CacheEngineVersionMessage> instance
 
   
 
@@ -673,11 +682,11 @@ available cache engines and their versions.
 
 
 
-=head2 DescribeCacheParameterGroups()
+=head2 DescribeCacheParameterGroups([MaxRecords => Int, Marker => Str, CacheParameterGroupName => Str])
 
-  Arguments described in: L<Paws::ElastiCache::DescribeCacheParameterGroups>
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheParameterGroups>
 
-  Returns: L<Paws::ElastiCache::CacheParameterGroupsMessage>
+Returns: a L<Paws::ElastiCache::CacheParameterGroupsMessage> instance
 
   
 
@@ -695,11 +704,11 @@ specified, the list will contain only the descriptions for that group.
 
 
 
-=head2 DescribeCacheParameters()
+=head2 DescribeCacheParameters(CacheParameterGroupName => Str, [Marker => Str, Source => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::ElastiCache::DescribeCacheParameters>
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheParameters>
 
-  Returns: L<Paws::ElastiCache::CacheParameterGroupDetails>
+Returns: a L<Paws::ElastiCache::CacheParameterGroupDetails> instance
 
   
 
@@ -716,11 +725,11 @@ list for a particular cache parameter group.
 
 
 
-=head2 DescribeCacheSecurityGroups()
+=head2 DescribeCacheSecurityGroups([Marker => Str, MaxRecords => Int, CacheSecurityGroupName => Str])
 
-  Arguments described in: L<Paws::ElastiCache::DescribeCacheSecurityGroups>
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheSecurityGroups>
 
-  Returns: L<Paws::ElastiCache::CacheSecurityGroupMessage>
+Returns: a L<Paws::ElastiCache::CacheSecurityGroupMessage> instance
 
   
 
@@ -738,11 +747,11 @@ specified, the list will contain only the description of that group.
 
 
 
-=head2 DescribeCacheSubnetGroups()
+=head2 DescribeCacheSubnetGroups([Marker => Str, MaxRecords => Int, CacheSubnetGroupName => Str])
 
-  Arguments described in: L<Paws::ElastiCache::DescribeCacheSubnetGroups>
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheSubnetGroups>
 
-  Returns: L<Paws::ElastiCache::CacheSubnetGroupMessage>
+Returns: a L<Paws::ElastiCache::CacheSubnetGroupMessage> instance
 
   
 
@@ -760,11 +769,11 @@ contain only the description of that group.
 
 
 
-=head2 DescribeEngineDefaultParameters()
+=head2 DescribeEngineDefaultParameters(CacheParameterGroupFamily => Str, [Marker => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::ElastiCache::DescribeEngineDefaultParameters>
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeEngineDefaultParameters>
 
-  Returns: L<Paws::ElastiCache::DescribeEngineDefaultParametersResult>
+Returns: a L<Paws::ElastiCache::DescribeEngineDefaultParametersResult> instance
 
   
 
@@ -781,11 +790,11 @@ engine and system parameter information for the specified cache engine.
 
 
 
-=head2 DescribeEvents()
+=head2 DescribeEvents([EndTime => Str, Marker => Str, Duration => Int, StartTime => Str, SourceIdentifier => Str, SourceType => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::ElastiCache::DescribeEvents>
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeEvents>
 
-  Returns: L<Paws::ElastiCache::EventsMessage>
+Returns: a L<Paws::ElastiCache::EventsMessage> instance
 
   
 
@@ -808,11 +817,11 @@ necessary.
 
 
 
-=head2 DescribeReplicationGroups()
+=head2 DescribeReplicationGroups([Marker => Str, MaxRecords => Int, ReplicationGroupId => Str])
 
-  Arguments described in: L<Paws::ElastiCache::DescribeReplicationGroups>
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeReplicationGroups>
 
-  Returns: L<Paws::ElastiCache::ReplicationGroupMessage>
+Returns: a L<Paws::ElastiCache::ReplicationGroupMessage> instance
 
   
 
@@ -831,11 +840,11 @@ groups.
 
 
 
-=head2 DescribeReservedCacheNodes()
+=head2 DescribeReservedCacheNodes([ReservedCacheNodesOfferingId => Str, CacheNodeType => Str, Marker => Str, MaxRecords => Int, ProductDescription => Str, OfferingType => Str, Duration => Str, ReservedCacheNodeId => Str])
 
-  Arguments described in: L<Paws::ElastiCache::DescribeReservedCacheNodes>
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeReservedCacheNodes>
 
-  Returns: L<Paws::ElastiCache::ReservedCacheNodeMessage>
+Returns: a L<Paws::ElastiCache::ReservedCacheNodeMessage> instance
 
   
 
@@ -853,11 +862,11 @@ cache node.
 
 
 
-=head2 DescribeReservedCacheNodesOfferings()
+=head2 DescribeReservedCacheNodesOfferings([CacheNodeType => Str, Marker => Str, Duration => Str, OfferingType => Str, ReservedCacheNodesOfferingId => Str, MaxRecords => Int, ProductDescription => Str])
 
-  Arguments described in: L<Paws::ElastiCache::DescribeReservedCacheNodesOfferings>
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeReservedCacheNodesOfferings>
 
-  Returns: L<Paws::ElastiCache::ReservedCacheNodesOfferingMessage>
+Returns: a L<Paws::ElastiCache::ReservedCacheNodesOfferingMessage> instance
 
   
 
@@ -874,11 +883,11 @@ reserved cache node offerings.
 
 
 
-=head2 DescribeSnapshots()
+=head2 DescribeSnapshots([MaxRecords => Int, SnapshotSource => Str, SnapshotName => Str, Marker => Str, CacheClusterId => Str])
 
-  Arguments described in: L<Paws::ElastiCache::DescribeSnapshots>
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeSnapshots>
 
-  Returns: L<Paws::ElastiCache::DescribeSnapshotsListMessage>
+Returns: a L<Paws::ElastiCache::DescribeSnapshotsListMessage> instance
 
   
 
@@ -897,11 +906,11 @@ snapshots associated with a particular cache cluster.
 
 
 
-=head2 ListTagsForResource()
+=head2 ListTagsForResource(ResourceName => Str)
 
-  Arguments described in: L<Paws::ElastiCache::ListTagsForResource>
+Each argument is described in detail in: L<Paws::ElastiCache::ListTagsForResource>
 
-  Returns: L<Paws::ElastiCache::TagListMessage>
+Returns: a L<Paws::ElastiCache::TagListMessage> instance
 
   
 
@@ -925,11 +934,11 @@ Amazon ElastiCache.
 
 
 
-=head2 ModifyCacheCluster()
+=head2 ModifyCacheCluster(CacheClusterId => Str, [AZMode => Str, SnapshotRetentionLimit => Int, NewAvailabilityZones => ArrayRef[Str], CacheSecurityGroupNames => ArrayRef[Str], CacheNodeIdsToRemove => ArrayRef[Str], NumCacheNodes => Int, SecurityGroupIds => ArrayRef[Str], EngineVersion => Str, CacheParameterGroupName => Str, SnapshotWindow => Str, AutoMinorVersionUpgrade => Bool, ApplyImmediately => Bool, NotificationTopicStatus => Str, NotificationTopicArn => Str, PreferredMaintenanceWindow => Str])
 
-  Arguments described in: L<Paws::ElastiCache::ModifyCacheCluster>
+Each argument is described in detail in: L<Paws::ElastiCache::ModifyCacheCluster>
 
-  Returns: L<Paws::ElastiCache::ModifyCacheClusterResult>
+Returns: a L<Paws::ElastiCache::ModifyCacheClusterResult> instance
 
   
 
@@ -948,11 +957,11 @@ values.
 
 
 
-=head2 ModifyCacheParameterGroup()
+=head2 ModifyCacheParameterGroup(CacheParameterGroupName => Str, ParameterNameValues => ArrayRef[Paws::ElastiCache::ParameterNameValue])
 
-  Arguments described in: L<Paws::ElastiCache::ModifyCacheParameterGroup>
+Each argument is described in detail in: L<Paws::ElastiCache::ModifyCacheParameterGroup>
 
-  Returns: L<Paws::ElastiCache::CacheParameterGroupNameMessage>
+Returns: a L<Paws::ElastiCache::CacheParameterGroupNameMessage> instance
 
   
 
@@ -970,11 +979,11 @@ request by submitting a list parameter name and value pairs.
 
 
 
-=head2 ModifyCacheSubnetGroup()
+=head2 ModifyCacheSubnetGroup(CacheSubnetGroupName => Str, [SubnetIds => ArrayRef[Str], CacheSubnetGroupDescription => Str])
 
-  Arguments described in: L<Paws::ElastiCache::ModifyCacheSubnetGroup>
+Each argument is described in detail in: L<Paws::ElastiCache::ModifyCacheSubnetGroup>
 
-  Returns: L<Paws::ElastiCache::ModifyCacheSubnetGroupResult>
+Returns: a L<Paws::ElastiCache::ModifyCacheSubnetGroupResult> instance
 
   
 
@@ -991,11 +1000,11 @@ group.
 
 
 
-=head2 ModifyReplicationGroup()
+=head2 ModifyReplicationGroup(ReplicationGroupId => Str, [SnapshotWindow => Str, PrimaryClusterId => Str, AutoMinorVersionUpgrade => Bool, ApplyImmediately => Bool, NotificationTopicStatus => Str, PreferredMaintenanceWindow => Str, NotificationTopicArn => Str, ReplicationGroupDescription => Str, SnapshotRetentionLimit => Int, AutomaticFailoverEnabled => Bool, CacheSecurityGroupNames => ArrayRef[Str], SecurityGroupIds => ArrayRef[Str], SnapshottingClusterId => Str, EngineVersion => Str, CacheParameterGroupName => Str])
 
-  Arguments described in: L<Paws::ElastiCache::ModifyReplicationGroup>
+Each argument is described in detail in: L<Paws::ElastiCache::ModifyReplicationGroup>
 
-  Returns: L<Paws::ElastiCache::ModifyReplicationGroupResult>
+Returns: a L<Paws::ElastiCache::ModifyReplicationGroupResult> instance
 
   
 
@@ -1012,11 +1021,11 @@ replication group.
 
 
 
-=head2 PurchaseReservedCacheNodesOffering()
+=head2 PurchaseReservedCacheNodesOffering(ReservedCacheNodesOfferingId => Str, [CacheNodeCount => Int, ReservedCacheNodeId => Str])
 
-  Arguments described in: L<Paws::ElastiCache::PurchaseReservedCacheNodesOffering>
+Each argument is described in detail in: L<Paws::ElastiCache::PurchaseReservedCacheNodesOffering>
 
-  Returns: L<Paws::ElastiCache::PurchaseReservedCacheNodesOfferingResult>
+Returns: a L<Paws::ElastiCache::PurchaseReservedCacheNodesOfferingResult> instance
 
   
 
@@ -1033,11 +1042,11 @@ a reserved cache node offering.
 
 
 
-=head2 RebootCacheCluster()
+=head2 RebootCacheCluster(CacheClusterId => Str, CacheNodeIdsToReboot => ArrayRef[Str])
 
-  Arguments described in: L<Paws::ElastiCache::RebootCacheCluster>
+Each argument is described in detail in: L<Paws::ElastiCache::RebootCacheCluster>
 
-  Returns: L<Paws::ElastiCache::RebootCacheClusterResult>
+Returns: a L<Paws::ElastiCache::RebootCacheClusterResult> instance
 
   
 
@@ -1063,11 +1072,11 @@ When the reboot is complete, a cache cluster event is created.
 
 
 
-=head2 RemoveTagsFromResource()
+=head2 RemoveTagsFromResource(ResourceName => Str, TagKeys => ArrayRef[Str])
 
-  Arguments described in: L<Paws::ElastiCache::RemoveTagsFromResource>
+Each argument is described in detail in: L<Paws::ElastiCache::RemoveTagsFromResource>
 
-  Returns: L<Paws::ElastiCache::TagListMessage>
+Returns: a L<Paws::ElastiCache::TagListMessage> instance
 
   
 
@@ -1084,11 +1093,11 @@ C<TagKeys> list from the named resource.
 
 
 
-=head2 ResetCacheParameterGroup()
+=head2 ResetCacheParameterGroup(CacheParameterGroupName => Str, ParameterNameValues => ArrayRef[Paws::ElastiCache::ParameterNameValue], [ResetAllParameters => Bool])
 
-  Arguments described in: L<Paws::ElastiCache::ResetCacheParameterGroup>
+Each argument is described in detail in: L<Paws::ElastiCache::ResetCacheParameterGroup>
 
-  Returns: L<Paws::ElastiCache::CacheParameterGroupNameMessage>
+Returns: a L<Paws::ElastiCache::CacheParameterGroupNameMessage> instance
 
   
 
@@ -1108,11 +1117,11 @@ I<ResetAllParameters> and I<CacheParameterGroupName> parameters.
 
 
 
-=head2 RevokeCacheSecurityGroupIngress()
+=head2 RevokeCacheSecurityGroupIngress(CacheSecurityGroupName => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str)
 
-  Arguments described in: L<Paws::ElastiCache::RevokeCacheSecurityGroupIngress>
+Each argument is described in detail in: L<Paws::ElastiCache::RevokeCacheSecurityGroupIngress>
 
-  Returns: L<Paws::ElastiCache::RevokeCacheSecurityGroupIngressResult>
+Returns: a L<Paws::ElastiCache::RevokeCacheSecurityGroupIngressResult> instance
 
   
 

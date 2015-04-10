@@ -70,7 +70,7 @@ I<HsmSerialNumber> parameter must be specified.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeHsm in Paws::CloudHSM
+This class forms part of L<Paws>, documenting arguments for method DescribeHsm in L<Paws::CloudHSM>
 
 =head1 BUGS and CONTRIBUTIONS
 

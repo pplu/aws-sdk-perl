@@ -270,8 +270,17 @@ Paws::StorageGateway - Perl Interface to AWS AWS Storage Gateway
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('StorageGateway')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -324,11 +333,11 @@ Gateway.
 
 =head1 METHODS
 
-=head2 ActivateGateway()
+=head2 ActivateGateway(ActivationKey => Str, GatewayName => Str, GatewayRegion => Str, GatewayTimezone => Str, [MediumChangerType => Str, GatewayType => Str, TapeDriveType => Str])
 
-  Arguments described in: L<Paws::StorageGateway::ActivateGateway>
+Each argument is described in detail in: L<Paws::StorageGateway::ActivateGateway>
 
-  Returns: L<Paws::StorageGateway::ActivateGatewayOutput>
+Returns: a L<Paws::StorageGateway::ActivateGatewayOutput> instance
 
   
 
@@ -353,11 +362,11 @@ You must turn on the gateway VM before you can activate your gateway.
 
 
 
-=head2 AddCache()
+=head2 AddCache(DiskIds => ArrayRef[Str], GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::AddCache>
+Each argument is described in detail in: L<Paws::StorageGateway::AddCache>
 
-  Returns: L<Paws::StorageGateway::AddCacheOutput>
+Returns: a L<Paws::StorageGateway::AddCacheOutput> instance
 
   
 
@@ -379,11 +388,11 @@ configure as cache.
 
 
 
-=head2 AddUploadBuffer()
+=head2 AddUploadBuffer(DiskIds => ArrayRef[Str], GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::AddUploadBuffer>
+Each argument is described in detail in: L<Paws::StorageGateway::AddUploadBuffer>
 
-  Returns: L<Paws::StorageGateway::AddUploadBufferOutput>
+Returns: a L<Paws::StorageGateway::AddUploadBufferOutput> instance
 
   
 
@@ -405,11 +414,11 @@ want to configure as upload buffer.
 
 
 
-=head2 AddWorkingStorage()
+=head2 AddWorkingStorage(DiskIds => ArrayRef[Str], GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::AddWorkingStorage>
+Each argument is described in detail in: L<Paws::StorageGateway::AddWorkingStorage>
 
-  Returns: L<Paws::StorageGateway::AddWorkingStorageOutput>
+Returns: a L<Paws::StorageGateway::AddWorkingStorageOutput> instance
 
   
 
@@ -436,11 +445,11 @@ you want to configure as working storage.
 
 
 
-=head2 CancelArchival()
+=head2 CancelArchival(GatewayARN => Str, TapeARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::CancelArchival>
+Each argument is described in detail in: L<Paws::StorageGateway::CancelArchival>
 
-  Returns: L<Paws::StorageGateway::CancelArchivalOutput>
+Returns: a L<Paws::StorageGateway::CancelArchivalOutput> instance
 
   
 
@@ -457,11 +466,11 @@ after the archiving process is initiated.
 
 
 
-=head2 CancelRetrieval()
+=head2 CancelRetrieval(GatewayARN => Str, TapeARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::CancelRetrieval>
+Each argument is described in detail in: L<Paws::StorageGateway::CancelRetrieval>
 
-  Returns: L<Paws::StorageGateway::CancelRetrievalOutput>
+Returns: a L<Paws::StorageGateway::CancelRetrievalOutput> instance
 
   
 
@@ -479,11 +488,11 @@ is returned to the VTS.
 
 
 
-=head2 CreateCachediSCSIVolume()
+=head2 CreateCachediSCSIVolume(ClientToken => Str, GatewayARN => Str, NetworkInterfaceId => Str, TargetName => Str, VolumeSizeInBytes => Num, [SnapshotId => Str])
 
-  Arguments described in: L<Paws::StorageGateway::CreateCachediSCSIVolume>
+Each argument is described in detail in: L<Paws::StorageGateway::CreateCachediSCSIVolume>
 
-  Returns: L<Paws::StorageGateway::CreateCachediSCSIVolumeOutput>
+Returns: a L<Paws::StorageGateway::CreateCachediSCSIVolumeOutput> instance
 
   
 
@@ -512,11 +521,11 @@ initiators can use to connect to the volume target.
 
 
 
-=head2 CreateSnapshot()
+=head2 CreateSnapshot(SnapshotDescription => Str, VolumeARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::CreateSnapshot>
+Each argument is described in detail in: L<Paws::StorageGateway::CreateSnapshot>
 
-  Returns: L<Paws::StorageGateway::CreateSnapshotOutput>
+Returns: a L<Paws::StorageGateway::CreateSnapshotOutput> instance
 
   
 
@@ -551,11 +560,11 @@ information, .
 
 
 
-=head2 CreateSnapshotFromVolumeRecoveryPoint()
+=head2 CreateSnapshotFromVolumeRecoveryPoint(SnapshotDescription => Str, VolumeARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPoint>
+Each argument is described in detail in: L<Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPoint>
 
-  Returns: L<Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointOutput>
+Returns: a L<Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointOutput> instance
 
   
 
@@ -590,11 +599,11 @@ information, in I<Amazon Elastic Compute Cloud API Reference>.
 
 
 
-=head2 CreateStorediSCSIVolume()
+=head2 CreateStorediSCSIVolume(DiskId => Str, GatewayARN => Str, NetworkInterfaceId => Str, PreserveExistingData => Bool, TargetName => Str, [SnapshotId => Str])
 
-  Arguments described in: L<Paws::StorageGateway::CreateStorediSCSIVolume>
+Each argument is described in detail in: L<Paws::StorageGateway::CreateStorediSCSIVolume>
 
-  Returns: L<Paws::StorageGateway::CreateStorediSCSIVolumeOutput>
+Returns: a L<Paws::StorageGateway::CreateStorediSCSIVolumeOutput> instance
 
   
 
@@ -622,11 +631,11 @@ initiators can use to connect to the volume target.
 
 
 
-=head2 CreateTapes()
+=head2 CreateTapes(ClientToken => Str, GatewayARN => Str, NumTapesToCreate => Int, TapeBarcodePrefix => Str, TapeSizeInBytes => Num)
 
-  Arguments described in: L<Paws::StorageGateway::CreateTapes>
+Each argument is described in detail in: L<Paws::StorageGateway::CreateTapes>
 
-  Returns: L<Paws::StorageGateway::CreateTapesOutput>
+Returns: a L<Paws::StorageGateway::CreateTapesOutput> instance
 
   
 
@@ -647,11 +656,11 @@ gateway.
 
 
 
-=head2 DeleteBandwidthRateLimit()
+=head2 DeleteBandwidthRateLimit(BandwidthType => Str, GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DeleteBandwidthRateLimit>
+Each argument is described in detail in: L<Paws::StorageGateway::DeleteBandwidthRateLimit>
 
-  Returns: L<Paws::StorageGateway::DeleteBandwidthRateLimitOutput>
+Returns: a L<Paws::StorageGateway::DeleteBandwidthRateLimitOutput> instance
 
   
 
@@ -671,11 +680,11 @@ Amazon Resource Name (ARN) of the gateway in your request.
 
 
 
-=head2 DeleteChapCredentials()
+=head2 DeleteChapCredentials(InitiatorName => Str, TargetARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DeleteChapCredentials>
+Each argument is described in detail in: L<Paws::StorageGateway::DeleteChapCredentials>
 
-  Returns: L<Paws::StorageGateway::DeleteChapCredentialsOutput>
+Returns: a L<Paws::StorageGateway::DeleteChapCredentialsOutput> instance
 
   
 
@@ -692,11 +701,11 @@ This operation deletes Challenge-Handshake Authentication Protocol
 
 
 
-=head2 DeleteGateway()
+=head2 DeleteGateway(GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DeleteGateway>
+Each argument is described in detail in: L<Paws::StorageGateway::DeleteGateway>
 
-  Returns: L<Paws::StorageGateway::DeleteGatewayOutput>
+Returns: a L<Paws::StorageGateway::DeleteGatewayOutput> instance
 
   
 
@@ -728,11 +737,11 @@ console. For more information, see the AWS Storage Gateway Detail Page.
 
 
 
-=head2 DeleteSnapshotSchedule()
+=head2 DeleteSnapshotSchedule(VolumeARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DeleteSnapshotSchedule>
+Each argument is described in detail in: L<Paws::StorageGateway::DeleteSnapshotSchedule>
 
-  Returns: L<Paws::StorageGateway::DeleteSnapshotScheduleOutput>
+Returns: a L<Paws::StorageGateway::DeleteSnapshotScheduleOutput> instance
 
   
 
@@ -757,11 +766,11 @@ I<Amazon Elastic Compute Cloud API Reference>.
 
 
 
-=head2 DeleteTape()
+=head2 DeleteTape(GatewayARN => Str, TapeARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DeleteTape>
+Each argument is described in detail in: L<Paws::StorageGateway::DeleteTape>
 
-  Returns: L<Paws::StorageGateway::DeleteTapeOutput>
+Returns: a L<Paws::StorageGateway::DeleteTapeOutput> instance
 
   
 
@@ -777,11 +786,11 @@ Deletes the specified virtual tape.
 
 
 
-=head2 DeleteTapeArchive()
+=head2 DeleteTapeArchive(TapeARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DeleteTapeArchive>
+Each argument is described in detail in: L<Paws::StorageGateway::DeleteTapeArchive>
 
-  Returns: L<Paws::StorageGateway::DeleteTapeArchiveOutput>
+Returns: a L<Paws::StorageGateway::DeleteTapeArchiveOutput> instance
 
   
 
@@ -797,11 +806,11 @@ Deletes the specified virtual tape from the virtual tape shelf (VTS).
 
 
 
-=head2 DeleteVolume()
+=head2 DeleteVolume(VolumeARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DeleteVolume>
+Each argument is described in detail in: L<Paws::StorageGateway::DeleteVolume>
 
-  Returns: L<Paws::StorageGateway::DeleteVolumeOutput>
+Returns: a L<Paws::StorageGateway::DeleteVolumeOutput> instance
 
   
 
@@ -831,11 +840,11 @@ storage volume you want to delete.
 
 
 
-=head2 DescribeBandwidthRateLimit()
+=head2 DescribeBandwidthRateLimit(GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DescribeBandwidthRateLimit>
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeBandwidthRateLimit>
 
-  Returns: L<Paws::StorageGateway::DescribeBandwidthRateLimitOutput>
+Returns: a L<Paws::StorageGateway::DescribeBandwidthRateLimitOutput> instance
 
   
 
@@ -859,11 +868,11 @@ gateway in your request.
 
 
 
-=head2 DescribeCache()
+=head2 DescribeCache(GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DescribeCache>
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeCache>
 
-  Returns: L<Paws::StorageGateway::DescribeCacheOutput>
+Returns: a L<Paws::StorageGateway::DescribeCacheOutput> instance
 
   
 
@@ -883,11 +892,11 @@ includes the amount of cache allocated and used.
 
 
 
-=head2 DescribeCachediSCSIVolumes()
+=head2 DescribeCachediSCSIVolumes(VolumeARNs => ArrayRef[Str])
 
-  Arguments described in: L<Paws::StorageGateway::DescribeCachediSCSIVolumes>
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeCachediSCSIVolumes>
 
-  Returns: L<Paws::StorageGateway::DescribeCachediSCSIVolumesOutput>
+Returns: a L<Paws::StorageGateway::DescribeCachediSCSIVolumesOutput> instance
 
   
 
@@ -909,11 +918,11 @@ by volume Amazon Resource Name (ARN).
 
 
 
-=head2 DescribeChapCredentials()
+=head2 DescribeChapCredentials(TargetARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DescribeChapCredentials>
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeChapCredentials>
 
-  Returns: L<Paws::StorageGateway::DescribeChapCredentialsOutput>
+Returns: a L<Paws::StorageGateway::DescribeChapCredentialsOutput> instance
 
   
 
@@ -931,11 +940,11 @@ one for each target-initiator pair.
 
 
 
-=head2 DescribeGatewayInformation()
+=head2 DescribeGatewayInformation(GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DescribeGatewayInformation>
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeGatewayInformation>
 
-  Returns: L<Paws::StorageGateway::DescribeGatewayInformationOutput>
+Returns: a L<Paws::StorageGateway::DescribeGatewayInformationOutput> instance
 
   
 
@@ -954,11 +963,11 @@ the Amazon Resource Name (ARN) of the gateway in your request.
 
 
 
-=head2 DescribeMaintenanceStartTime()
+=head2 DescribeMaintenanceStartTime(GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DescribeMaintenanceStartTime>
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeMaintenanceStartTime>
 
-  Returns: L<Paws::StorageGateway::DescribeMaintenanceStartTimeOutput>
+Returns: a L<Paws::StorageGateway::DescribeMaintenanceStartTimeOutput> instance
 
   
 
@@ -976,11 +985,11 @@ of the gateway's time zone.
 
 
 
-=head2 DescribeSnapshotSchedule()
+=head2 DescribeSnapshotSchedule(VolumeARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DescribeSnapshotSchedule>
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeSnapshotSchedule>
 
-  Returns: L<Paws::StorageGateway::DescribeSnapshotScheduleOutput>
+Returns: a L<Paws::StorageGateway::DescribeSnapshotScheduleOutput> instance
 
   
 
@@ -998,11 +1007,11 @@ which snapshots are automatically initiated on the volume.
 
 
 
-=head2 DescribeStorediSCSIVolumes()
+=head2 DescribeStorediSCSIVolumes(VolumeARNs => ArrayRef[Str])
 
-  Arguments described in: L<Paws::StorageGateway::DescribeStorediSCSIVolumes>
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeStorediSCSIVolumes>
 
-  Returns: L<Paws::StorageGateway::DescribeStorediSCSIVolumesOutput>
+Returns: a L<Paws::StorageGateway::DescribeStorediSCSIVolumesOutput> instance
 
   
 
@@ -1021,11 +1030,11 @@ information sorted by volume ARNs.
 
 
 
-=head2 DescribeTapeArchives()
+=head2 DescribeTapeArchives([Marker => Str, TapeARNs => ArrayRef[Str], Limit => Int])
 
-  Arguments described in: L<Paws::StorageGateway::DescribeTapeArchives>
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeTapeArchives>
 
-  Returns: L<Paws::StorageGateway::DescribeTapeArchivesOutput>
+Returns: a L<Paws::StorageGateway::DescribeTapeArchivesOutput> instance
 
   
 
@@ -1046,11 +1055,11 @@ your account.
 
 
 
-=head2 DescribeTapeRecoveryPoints()
+=head2 DescribeTapeRecoveryPoints(GatewayARN => Str, [Marker => Str, Limit => Int])
 
-  Arguments described in: L<Paws::StorageGateway::DescribeTapeRecoveryPoints>
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeTapeRecoveryPoints>
 
-  Returns: L<Paws::StorageGateway::DescribeTapeRecoveryPointsOutput>
+Returns: a L<Paws::StorageGateway::DescribeTapeRecoveryPointsOutput> instance
 
   
 
@@ -1072,11 +1081,11 @@ gateway.
 
 
 
-=head2 DescribeTapes()
+=head2 DescribeTapes(GatewayARN => Str, [Limit => Int, TapeARNs => ArrayRef[Str], Marker => Str])
 
-  Arguments described in: L<Paws::StorageGateway::DescribeTapes>
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeTapes>
 
-  Returns: L<Paws::StorageGateway::DescribeTapesOutput>
+Returns: a L<Paws::StorageGateway::DescribeTapesOutput> instance
 
   
 
@@ -1094,11 +1103,11 @@ of all virtual tapes associated with the specified gateway.
 
 
 
-=head2 DescribeUploadBuffer()
+=head2 DescribeUploadBuffer(GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DescribeUploadBuffer>
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeUploadBuffer>
 
-  Returns: L<Paws::StorageGateway::DescribeUploadBufferOutput>
+Returns: a L<Paws::StorageGateway::DescribeUploadBufferOutput> instance
 
   
 
@@ -1120,11 +1129,11 @@ used.
 
 
 
-=head2 DescribeVTLDevices()
+=head2 DescribeVTLDevices(GatewayARN => Str, [Limit => Int, VTLDeviceARNs => ArrayRef[Str], Marker => Str])
 
-  Arguments described in: L<Paws::StorageGateway::DescribeVTLDevices>
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeVTLDevices>
 
-  Returns: L<Paws::StorageGateway::DescribeVTLDevicesOutput>
+Returns: a L<Paws::StorageGateway::DescribeVTLDevicesOutput> instance
 
   
 
@@ -1144,11 +1153,11 @@ The list of VTL devices must be from one gateway.
 
 
 
-=head2 DescribeWorkingStorage()
+=head2 DescribeWorkingStorage(GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DescribeWorkingStorage>
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeWorkingStorage>
 
-  Returns: L<Paws::StorageGateway::DescribeWorkingStorageOutput>
+Returns: a L<Paws::StorageGateway::DescribeWorkingStorageOutput> instance
 
   
 
@@ -1174,11 +1183,11 @@ and it includes the amount of working storage allocated and used.
 
 
 
-=head2 DisableGateway()
+=head2 DisableGateway(GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::DisableGateway>
+Each argument is described in detail in: L<Paws::StorageGateway::DisableGateway>
 
-  Returns: L<Paws::StorageGateway::DisableGatewayOutput>
+Returns: a L<Paws::StorageGateway::DisableGatewayOutput> instance
 
   
 
@@ -1201,11 +1210,11 @@ Once a gateway is disabled it cannot be enabled.
 
 
 
-=head2 ListGateways()
+=head2 ListGateways([Marker => Str, Limit => Int])
 
-  Arguments described in: L<Paws::StorageGateway::ListGateways>
+Each argument is described in detail in: L<Paws::StorageGateway::ListGateways>
 
-  Returns: L<Paws::StorageGateway::ListGatewaysOutput>
+Returns: a L<Paws::StorageGateway::ListGatewaysOutput> instance
 
   
 
@@ -1232,11 +1241,11 @@ the next page of gateways.
 
 
 
-=head2 ListLocalDisks()
+=head2 ListLocalDisks(GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::ListLocalDisks>
+Each argument is described in detail in: L<Paws::StorageGateway::ListLocalDisks>
 
-  Returns: L<Paws::StorageGateway::ListLocalDisksOutput>
+Returns: a L<Paws::StorageGateway::ListLocalDisksOutput> instance
 
   
 
@@ -1262,11 +1271,11 @@ disk content is corrupted).
 
 
 
-=head2 ListVolumeRecoveryPoints()
+=head2 ListVolumeRecoveryPoints(GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::ListVolumeRecoveryPoints>
+Each argument is described in detail in: L<Paws::StorageGateway::ListVolumeRecoveryPoints>
 
-  Returns: L<Paws::StorageGateway::ListVolumeRecoveryPointsOutput>
+Returns: a L<Paws::StorageGateway::ListVolumeRecoveryPointsOutput> instance
 
   
 
@@ -1289,11 +1298,11 @@ operation.
 
 
 
-=head2 ListVolumes()
+=head2 ListVolumes(GatewayARN => Str, [Limit => Int, Marker => Str])
 
-  Arguments described in: L<Paws::StorageGateway::ListVolumes>
+Each argument is described in detail in: L<Paws::StorageGateway::ListVolumes>
 
-  Returns: L<Paws::StorageGateway::ListVolumesOutput>
+Returns: a L<Paws::StorageGateway::ListVolumesOutput> instance
 
   
 
@@ -1319,11 +1328,11 @@ subsequent request to retrieve the next set of volumes.
 
 
 
-=head2 ResetCache()
+=head2 ResetCache(GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::ResetCache>
+Each argument is described in detail in: L<Paws::StorageGateway::ResetCache>
 
-  Returns: L<Paws::StorageGateway::ResetCacheOutput>
+Returns: a L<Paws::StorageGateway::ResetCacheOutput> instance
 
   
 
@@ -1342,11 +1351,11 @@ cache disks.
 
 
 
-=head2 RetrieveTapeArchive()
+=head2 RetrieveTapeArchive(GatewayARN => Str, TapeARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::RetrieveTapeArchive>
+Each argument is described in detail in: L<Paws::StorageGateway::RetrieveTapeArchive>
 
-  Returns: L<Paws::StorageGateway::RetrieveTapeArchiveOutput>
+Returns: a L<Paws::StorageGateway::RetrieveTapeArchiveOutput> instance
 
   
 
@@ -1369,11 +1378,11 @@ before you can retrieve it to another gateway.
 
 
 
-=head2 RetrieveTapeRecoveryPoint()
+=head2 RetrieveTapeRecoveryPoint(GatewayARN => Str, TapeARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::RetrieveTapeRecoveryPoint>
+Each argument is described in detail in: L<Paws::StorageGateway::RetrieveTapeRecoveryPoint>
 
-  Returns: L<Paws::StorageGateway::RetrieveTapeRecoveryPointOutput>
+Returns: a L<Paws::StorageGateway::RetrieveTapeRecoveryPointOutput> instance
 
   
 
@@ -1397,11 +1406,11 @@ gateway-VTL. There is no charge for retrieving recovery points.
 
 
 
-=head2 ShutdownGateway()
+=head2 ShutdownGateway(GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::ShutdownGateway>
+Each argument is described in detail in: L<Paws::StorageGateway::ShutdownGateway>
 
-  Returns: L<Paws::StorageGateway::ShutdownGatewayOutput>
+Returns: a L<Paws::StorageGateway::ShutdownGatewayOutput> instance
 
   
 
@@ -1440,11 +1449,11 @@ the gateway.
 
 
 
-=head2 StartGateway()
+=head2 StartGateway(GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::StartGateway>
+Each argument is described in detail in: L<Paws::StorageGateway::StartGateway>
 
-  Returns: L<Paws::StorageGateway::StartGatewayOutput>
+Returns: a L<Paws::StorageGateway::StartGatewayOutput> instance
 
   
 
@@ -1472,11 +1481,11 @@ of the gateway in your request.
 
 
 
-=head2 UpdateBandwidthRateLimit()
+=head2 UpdateBandwidthRateLimit(GatewayARN => Str, [AverageDownloadRateLimitInBitsPerSec => Num, AverageUploadRateLimitInBitsPerSec => Num])
 
-  Arguments described in: L<Paws::StorageGateway::UpdateBandwidthRateLimit>
+Each argument is described in detail in: L<Paws::StorageGateway::UpdateBandwidthRateLimit>
 
-  Returns: L<Paws::StorageGateway::UpdateBandwidthRateLimitOutput>
+Returns: a L<Paws::StorageGateway::UpdateBandwidthRateLimitOutput> instance
 
   
 
@@ -1503,11 +1512,11 @@ of the gateway in your request.
 
 
 
-=head2 UpdateChapCredentials()
+=head2 UpdateChapCredentials(InitiatorName => Str, SecretToAuthenticateInitiator => Str, TargetARN => Str, [SecretToAuthenticateTarget => Str])
 
-  Arguments described in: L<Paws::StorageGateway::UpdateChapCredentials>
+Each argument is described in detail in: L<Paws::StorageGateway::UpdateChapCredentials>
 
-  Returns: L<Paws::StorageGateway::UpdateChapCredentialsOutput>
+Returns: a L<Paws::StorageGateway::UpdateChapCredentialsOutput> instance
 
   
 
@@ -1530,11 +1539,11 @@ credentials.
 
 
 
-=head2 UpdateGatewayInformation()
+=head2 UpdateGatewayInformation(GatewayARN => Str, [GatewayTimezone => Str, GatewayName => Str])
 
-  Arguments described in: L<Paws::StorageGateway::UpdateGatewayInformation>
+Each argument is described in detail in: L<Paws::StorageGateway::UpdateGatewayInformation>
 
-  Returns: L<Paws::StorageGateway::UpdateGatewayInformationOutput>
+Returns: a L<Paws::StorageGateway::UpdateGatewayInformationOutput> instance
 
   
 
@@ -1552,11 +1561,11 @@ the Amazon Resource Name (ARN) of the gateway in your request.
 
 
 
-=head2 UpdateGatewaySoftwareNow()
+=head2 UpdateGatewaySoftwareNow(GatewayARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::UpdateGatewaySoftwareNow>
+Each argument is described in detail in: L<Paws::StorageGateway::UpdateGatewaySoftwareNow>
 
-  Returns: L<Paws::StorageGateway::UpdateGatewaySoftwareNowOutput>
+Returns: a L<Paws::StorageGateway::UpdateGatewaySoftwareNowOutput> instance
 
   
 
@@ -1583,11 +1592,11 @@ Your Linux iSCSI Settings, respectively.
 
 
 
-=head2 UpdateMaintenanceStartTime()
+=head2 UpdateMaintenanceStartTime(DayOfWeek => Int, GatewayARN => Str, HourOfDay => Int, MinuteOfHour => Int)
 
-  Arguments described in: L<Paws::StorageGateway::UpdateMaintenanceStartTime>
+Each argument is described in detail in: L<Paws::StorageGateway::UpdateMaintenanceStartTime>
 
-  Returns: L<Paws::StorageGateway::UpdateMaintenanceStartTimeOutput>
+Returns: a L<Paws::StorageGateway::UpdateMaintenanceStartTimeOutput> instance
 
   
 
@@ -1605,11 +1614,11 @@ is the time in your gateway's time zone.
 
 
 
-=head2 UpdateSnapshotSchedule()
+=head2 UpdateSnapshotSchedule(RecurrenceInHours => Int, StartAt => Int, VolumeARN => Str, [Description => Str])
 
-  Arguments described in: L<Paws::StorageGateway::UpdateSnapshotSchedule>
+Each argument is described in detail in: L<Paws::StorageGateway::UpdateSnapshotSchedule>
 
-  Returns: L<Paws::StorageGateway::UpdateSnapshotScheduleOutput>
+Returns: a L<Paws::StorageGateway::UpdateSnapshotScheduleOutput> instance
 
   
 
@@ -1635,11 +1644,11 @@ hours) of snapshots.
 
 
 
-=head2 UpdateVTLDeviceType()
+=head2 UpdateVTLDeviceType(DeviceType => Str, VTLDeviceARN => Str)
 
-  Arguments described in: L<Paws::StorageGateway::UpdateVTLDeviceType>
+Each argument is described in detail in: L<Paws::StorageGateway::UpdateVTLDeviceType>
 
-  Returns: L<Paws::StorageGateway::UpdateVTLDeviceTypeOutput>
+Returns: a L<Paws::StorageGateway::UpdateVTLDeviceTypeOutput> instance
 
   
 

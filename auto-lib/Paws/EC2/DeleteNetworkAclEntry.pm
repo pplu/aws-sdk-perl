@@ -89,7 +89,7 @@ The rule number of the entry to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteNetworkAclEntry in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DeleteNetworkAclEntry in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

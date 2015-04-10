@@ -110,8 +110,17 @@ Paws::CognitoIdentity - Perl Interface to AWS Amazon Cognito Identity
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('CognitoIdentity')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -165,11 +174,11 @@ Mobile SDK. To learn more, see the AWS Mobile SDK Developer Guide.
 
 =head1 METHODS
 
-=head2 CreateIdentityPool()
+=head2 CreateIdentityPool(AllowUnauthenticatedIdentities => Bool, IdentityPoolName => Str, [OpenIdConnectProviderARNs => ArrayRef[Str], SupportedLoginProviders => Paws::CognitoIdentity::IdentityProviders, DeveloperProviderName => Str])
 
-  Arguments described in: L<Paws::CognitoIdentity::CreateIdentityPool>
+Each argument is described in detail in: L<Paws::CognitoIdentity::CreateIdentityPool>
 
-  Returns: L<Paws::CognitoIdentity::IdentityPool>
+Returns: a L<Paws::CognitoIdentity::IdentityPool> instance
 
   
 
@@ -187,11 +196,11 @@ identity pools is 60 per account.
 
 
 
-=head2 DeleteIdentityPool()
+=head2 DeleteIdentityPool(IdentityPoolId => Str)
 
-  Arguments described in: L<Paws::CognitoIdentity::DeleteIdentityPool>
+Each argument is described in detail in: L<Paws::CognitoIdentity::DeleteIdentityPool>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -208,11 +217,11 @@ authenticate with the pool.
 
 
 
-=head2 DescribeIdentity()
+=head2 DescribeIdentity(IdentityId => Str)
 
-  Arguments described in: L<Paws::CognitoIdentity::DescribeIdentity>
+Each argument is described in detail in: L<Paws::CognitoIdentity::DescribeIdentity>
 
-  Returns: L<Paws::CognitoIdentity::IdentityDescription>
+Returns: a L<Paws::CognitoIdentity::IdentityDescription> instance
 
   
 
@@ -229,11 +238,11 @@ identity was created and any associated linked logins.
 
 
 
-=head2 DescribeIdentityPool()
+=head2 DescribeIdentityPool(IdentityPoolId => Str)
 
-  Arguments described in: L<Paws::CognitoIdentity::DescribeIdentityPool>
+Each argument is described in detail in: L<Paws::CognitoIdentity::DescribeIdentityPool>
 
-  Returns: L<Paws::CognitoIdentity::IdentityPool>
+Returns: a L<Paws::CognitoIdentity::IdentityPool> instance
 
   
 
@@ -250,11 +259,11 @@ ID description, creation date, and current number of users.
 
 
 
-=head2 GetCredentialsForIdentity()
+=head2 GetCredentialsForIdentity(IdentityId => Str, [Logins => Paws::CognitoIdentity::LoginsMap])
 
-  Arguments described in: L<Paws::CognitoIdentity::GetCredentialsForIdentity>
+Each argument is described in detail in: L<Paws::CognitoIdentity::GetCredentialsForIdentity>
 
-  Returns: L<Paws::CognitoIdentity::GetCredentialsForIdentityResponse>
+Returns: a L<Paws::CognitoIdentity::GetCredentialsForIdentityResponse> instance
 
   
 
@@ -273,11 +282,11 @@ to AWS Security Token Service with the appropriate role for the token.
 
 
 
-=head2 GetId()
+=head2 GetId(IdentityPoolId => Str, [Logins => Paws::CognitoIdentity::LoginsMap, AccountId => Str])
 
-  Arguments described in: L<Paws::CognitoIdentity::GetId>
+Each argument is described in detail in: L<Paws::CognitoIdentity::GetId>
 
-  Returns: L<Paws::CognitoIdentity::GetIdResponse>
+Returns: a L<Paws::CognitoIdentity::GetIdResponse> instance
 
   
 
@@ -294,11 +303,11 @@ create an implicit linked account.
 
 
 
-=head2 GetIdentityPoolRoles()
+=head2 GetIdentityPoolRoles([IdentityPoolId => Str])
 
-  Arguments described in: L<Paws::CognitoIdentity::GetIdentityPoolRoles>
+Each argument is described in detail in: L<Paws::CognitoIdentity::GetIdentityPoolRoles>
 
-  Returns: L<Paws::CognitoIdentity::GetIdentityPoolRolesResponse>
+Returns: a L<Paws::CognitoIdentity::GetIdentityPoolRolesResponse> instance
 
   
 
@@ -314,11 +323,11 @@ Gets the roles for an identity pool.
 
 
 
-=head2 GetOpenIdToken()
+=head2 GetOpenIdToken(IdentityId => Str, [Logins => Paws::CognitoIdentity::LoginsMap])
 
-  Arguments described in: L<Paws::CognitoIdentity::GetOpenIdToken>
+Each argument is described in detail in: L<Paws::CognitoIdentity::GetOpenIdToken>
 
-  Returns: L<Paws::CognitoIdentity::GetOpenIdTokenResponse>
+Returns: a L<Paws::CognitoIdentity::GetOpenIdTokenResponse> instance
 
   
 
@@ -338,11 +347,11 @@ The OpenId token is valid for 15 minutes.
 
 
 
-=head2 GetOpenIdTokenForDeveloperIdentity()
+=head2 GetOpenIdTokenForDeveloperIdentity(IdentityPoolId => Str, Logins => Paws::CognitoIdentity::LoginsMap, [IdentityId => Str, TokenDuration => Num])
 
-  Arguments described in: L<Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentity>
+Each argument is described in detail in: L<Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentity>
 
-  Returns: L<Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentityResponse>
+Returns: a L<Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentityResponse> instance
 
   
 
@@ -372,11 +381,11 @@ specified C<IdentityPoolId>.
 
 
 
-=head2 ListIdentities()
+=head2 ListIdentities(IdentityPoolId => Str, MaxResults => Int, [NextToken => Str])
 
-  Arguments described in: L<Paws::CognitoIdentity::ListIdentities>
+Each argument is described in detail in: L<Paws::CognitoIdentity::ListIdentities>
 
-  Returns: L<Paws::CognitoIdentity::ListIdentitiesResponse>
+Returns: a L<Paws::CognitoIdentity::ListIdentitiesResponse> instance
 
   
 
@@ -392,11 +401,11 @@ Lists the identities in a pool.
 
 
 
-=head2 ListIdentityPools()
+=head2 ListIdentityPools(MaxResults => Int, [NextToken => Str])
 
-  Arguments described in: L<Paws::CognitoIdentity::ListIdentityPools>
+Each argument is described in detail in: L<Paws::CognitoIdentity::ListIdentityPools>
 
-  Returns: L<Paws::CognitoIdentity::ListIdentityPoolsResponse>
+Returns: a L<Paws::CognitoIdentity::ListIdentityPoolsResponse> instance
 
   
 
@@ -412,11 +421,11 @@ Lists all of the Cognito identity pools registered for your account.
 
 
 
-=head2 LookupDeveloperIdentity()
+=head2 LookupDeveloperIdentity(IdentityPoolId => Str, [NextToken => Str, IdentityId => Str, MaxResults => Int, DeveloperUserIdentifier => Str])
 
-  Arguments described in: L<Paws::CognitoIdentity::LookupDeveloperIdentity>
+Each argument is described in detail in: L<Paws::CognitoIdentity::LookupDeveloperIdentity>
 
-  Returns: L<Paws::CognitoIdentity::LookupDeveloperIdentityResponse>
+Returns: a L<Paws::CognitoIdentity::LookupDeveloperIdentityResponse> instance
 
   
 
@@ -441,11 +450,11 @@ C<ResourceConflictException> is thrown.
 
 
 
-=head2 MergeDeveloperIdentities()
+=head2 MergeDeveloperIdentities(DestinationUserIdentifier => Str, DeveloperProviderName => Str, IdentityPoolId => Str, SourceUserIdentifier => Str)
 
-  Arguments described in: L<Paws::CognitoIdentity::MergeDeveloperIdentities>
+Each argument is described in detail in: L<Paws::CognitoIdentity::MergeDeveloperIdentities>
 
-  Returns: L<Paws::CognitoIdentity::MergeDeveloperIdentitiesResponse>
+Returns: a L<Paws::CognitoIdentity::MergeDeveloperIdentitiesResponse> instance
 
   
 
@@ -469,11 +478,11 @@ thrown.
 
 
 
-=head2 SetIdentityPoolRoles()
+=head2 SetIdentityPoolRoles(IdentityPoolId => Str, Roles => Paws::CognitoIdentity::RolesMap)
 
-  Arguments described in: L<Paws::CognitoIdentity::SetIdentityPoolRoles>
+Each argument is described in detail in: L<Paws::CognitoIdentity::SetIdentityPoolRoles>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -490,11 +499,11 @@ calls to C<GetCredentialsForIdentity> action.
 
 
 
-=head2 UnlinkDeveloperIdentity()
+=head2 UnlinkDeveloperIdentity(DeveloperProviderName => Str, DeveloperUserIdentifier => Str, IdentityId => Str, IdentityPoolId => Str)
 
-  Arguments described in: L<Paws::CognitoIdentity::UnlinkDeveloperIdentity>
+Each argument is described in detail in: L<Paws::CognitoIdentity::UnlinkDeveloperIdentity>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -514,11 +523,11 @@ Cognito identity becomes inaccessible.
 
 
 
-=head2 UnlinkIdentity()
+=head2 UnlinkIdentity(IdentityId => Str, Logins => Paws::CognitoIdentity::LoginsMap, LoginsToRemove => ArrayRef[Str])
 
-  Arguments described in: L<Paws::CognitoIdentity::UnlinkIdentity>
+Each argument is described in detail in: L<Paws::CognitoIdentity::UnlinkIdentity>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -536,11 +545,11 @@ last linked login will make this identity inaccessible.
 
 
 
-=head2 UpdateIdentityPool()
+=head2 UpdateIdentityPool(AllowUnauthenticatedIdentities => Bool, IdentityPoolId => Str, IdentityPoolName => Str, [DeveloperProviderName => Str, OpenIdConnectProviderARNs => ArrayRef[Str], SupportedLoginProviders => Paws::CognitoIdentity::IdentityProviders])
 
-  Arguments described in: L<Paws::CognitoIdentity::UpdateIdentityPool>
+Each argument is described in detail in: L<Paws::CognitoIdentity::UpdateIdentityPool>
 
-  Returns: L<Paws::CognitoIdentity::IdentityPool>
+Returns: a L<Paws::CognitoIdentity::IdentityPool> instance
 
   
 

@@ -68,7 +68,7 @@ The mnemonic name for the policy being deleted.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteLoadBalancerPolicy in Paws::ELB
+This class forms part of L<Paws>, documenting arguments for method DeleteLoadBalancerPolicy in L<Paws::ELB>
 
 =head1 BUGS and CONTRIBUTIONS
 

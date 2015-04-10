@@ -52,7 +52,7 @@ An array of structures that specify the WorkSpaces to create.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateWorkspaces in Paws::WorkSpaces
+This class forms part of L<Paws>, documenting arguments for method CreateWorkspaces in L<Paws::WorkSpaces>
 
 =head1 BUGS and CONTRIBUTIONS
 

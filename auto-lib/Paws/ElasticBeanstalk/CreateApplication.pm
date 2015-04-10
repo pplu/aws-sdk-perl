@@ -72,7 +72,7 @@ Describes the application.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateApplication in Paws::ElasticBeanstalk
+This class forms part of L<Paws>, documenting arguments for method CreateApplication in L<Paws::ElasticBeanstalk>
 
 =head1 BUGS and CONTRIBUTIONS
 

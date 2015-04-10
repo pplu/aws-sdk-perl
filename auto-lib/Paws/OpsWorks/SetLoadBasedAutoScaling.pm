@@ -104,7 +104,7 @@ amount of time, AWS OpsWorks starts a specified number of instances.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for SetLoadBasedAutoScaling in Paws::OpsWorks
+This class forms part of L<Paws>, documenting arguments for method SetLoadBasedAutoScaling in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 

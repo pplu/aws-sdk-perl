@@ -196,7 +196,7 @@ If set to null, the results will be sorted in an arbitrary order.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListApplicationRevisions in Paws::CodeDeploy
+This class forms part of L<Paws>, documenting arguments for method ListApplicationRevisions in L<Paws::CodeDeploy>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -460,7 +460,7 @@ The Base64-encoded MIME user data for the instances.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RunInstances in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method RunInstances in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

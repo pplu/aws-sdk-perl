@@ -125,7 +125,7 @@ Default: C<false>
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteDBInstance in Paws::RDS
+This class forms part of L<Paws>, documenting arguments for method DeleteDBInstance in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 

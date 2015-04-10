@@ -69,7 +69,7 @@ The AWS account ID of the account that created the queue.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetQueueUrl in Paws::SQS
+This class forms part of L<Paws>, documenting arguments for method GetQueueUrl in L<Paws::SQS>
 
 =head1 BUGS and CONTRIBUTIONS
 

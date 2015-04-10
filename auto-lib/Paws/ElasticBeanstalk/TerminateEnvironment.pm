@@ -117,7 +117,7 @@ Valid Values: C<true> | C<false>
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for TerminateEnvironment in Paws::ElasticBeanstalk
+This class forms part of L<Paws>, documenting arguments for method TerminateEnvironment in L<Paws::ElasticBeanstalk>
 
 =head1 BUGS and CONTRIBUTIONS
 

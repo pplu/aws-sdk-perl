@@ -142,7 +142,7 @@ Valid Values: C<user | system | engine-default>
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeDBParameters in Paws::RDS
+This class forms part of L<Paws>, documenting arguments for method DescribeDBParameters in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 

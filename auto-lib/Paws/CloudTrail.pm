@@ -65,8 +65,17 @@ Paws::CloudTrail - Perl Interface to AWS AWS CloudTrail
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('CloudTrail')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -107,11 +116,11 @@ included with each AWS API call listed in the log files.
 
 =head1 METHODS
 
-=head2 CreateTrail()
+=head2 CreateTrail(Name => Str, S3BucketName => Str, [CloudWatchLogsRoleArn => Str, CloudWatchLogsLogGroupArn => Str, IncludeGlobalServiceEvents => Bool, SnsTopicName => Str, S3KeyPrefix => Str])
 
-  Arguments described in: L<Paws::CloudTrail::CreateTrail>
+Each argument is described in detail in: L<Paws::CloudTrail::CreateTrail>
 
-  Returns: L<Paws::CloudTrail::CreateTrailResponse>
+Returns: a L<Paws::CloudTrail::CreateTrailResponse> instance
 
   
 
@@ -130,11 +139,11 @@ an Amazon S3 bucket.
 
 
 
-=head2 DeleteTrail()
+=head2 DeleteTrail(Name => Str)
 
-  Arguments described in: L<Paws::CloudTrail::DeleteTrail>
+Each argument is described in detail in: L<Paws::CloudTrail::DeleteTrail>
 
-  Returns: L<Paws::CloudTrail::DeleteTrailResponse>
+Returns: a L<Paws::CloudTrail::DeleteTrailResponse> instance
 
   
 
@@ -150,11 +159,11 @@ Deletes a trail.
 
 
 
-=head2 DescribeTrails()
+=head2 DescribeTrails([trailNameList => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::CloudTrail::DescribeTrails>
+Each argument is described in detail in: L<Paws::CloudTrail::DescribeTrails>
 
-  Returns: L<Paws::CloudTrail::DescribeTrailsResponse>
+Returns: a L<Paws::CloudTrail::DescribeTrailsResponse> instance
 
   
 
@@ -171,11 +180,11 @@ your account.
 
 
 
-=head2 GetTrailStatus()
+=head2 GetTrailStatus(Name => Str)
 
-  Arguments described in: L<Paws::CloudTrail::GetTrailStatus>
+Each argument is described in detail in: L<Paws::CloudTrail::GetTrailStatus>
 
-  Returns: L<Paws::CloudTrail::GetTrailStatusResponse>
+Returns: a L<Paws::CloudTrail::GetTrailStatusResponse> instance
 
   
 
@@ -193,11 +202,11 @@ errors, and start and stop logging times for each trail.
 
 
 
-=head2 LookupEvents()
+=head2 LookupEvents([NextToken => Str, StartTime => Str, LookupAttributes => ArrayRef[Paws::CloudTrail::LookupAttribute], MaxResults => Int, EndTime => Str])
 
-  Arguments described in: L<Paws::CloudTrail::LookupEvents>
+Each argument is described in detail in: L<Paws::CloudTrail::LookupEvents>
 
-  Returns: L<Paws::CloudTrail::LookupEventsResponse>
+Returns: a L<Paws::CloudTrail::LookupEventsResponse> instance
 
   
 
@@ -228,11 +237,11 @@ events occurred.
 
 
 
-=head2 StartLogging()
+=head2 StartLogging(Name => Str)
 
-  Arguments described in: L<Paws::CloudTrail::StartLogging>
+Each argument is described in detail in: L<Paws::CloudTrail::StartLogging>
 
-  Returns: L<Paws::CloudTrail::StartLoggingResponse>
+Returns: a L<Paws::CloudTrail::StartLoggingResponse> instance
 
   
 
@@ -249,11 +258,11 @@ trail.
 
 
 
-=head2 StopLogging()
+=head2 StopLogging(Name => Str)
 
-  Arguments described in: L<Paws::CloudTrail::StopLogging>
+Each argument is described in detail in: L<Paws::CloudTrail::StopLogging>
 
-  Returns: L<Paws::CloudTrail::StopLoggingResponse>
+Returns: a L<Paws::CloudTrail::StopLoggingResponse> instance
 
   
 
@@ -272,11 +281,11 @@ is the only way to stop recording.
 
 
 
-=head2 UpdateTrail()
+=head2 UpdateTrail(Name => Str, [CloudWatchLogsRoleArn => Str, S3KeyPrefix => Str, SnsTopicName => Str, S3BucketName => Str, IncludeGlobalServiceEvents => Bool, CloudWatchLogsLogGroupArn => Str])
 
-  Arguments described in: L<Paws::CloudTrail::UpdateTrail>
+Each argument is described in detail in: L<Paws::CloudTrail::UpdateTrail>
 
-  Returns: L<Paws::CloudTrail::UpdateTrailResponse>
+Returns: a L<Paws::CloudTrail::UpdateTrailResponse> instance
 
   
 

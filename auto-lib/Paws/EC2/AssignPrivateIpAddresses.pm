@@ -109,7 +109,7 @@ private IP addresses.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AssignPrivateIpAddresses in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method AssignPrivateIpAddresses in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

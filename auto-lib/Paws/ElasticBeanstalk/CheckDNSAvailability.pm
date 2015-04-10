@@ -52,7 +52,7 @@ The prefix used when this CNAME is reserved.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CheckDNSAvailability in Paws::ElasticBeanstalk
+This class forms part of L<Paws>, documenting arguments for method CheckDNSAvailability in L<Paws::ElasticBeanstalk>
 
 =head1 BUGS and CONTRIBUTIONS
 

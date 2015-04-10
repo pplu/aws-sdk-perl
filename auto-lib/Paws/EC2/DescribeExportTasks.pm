@@ -52,7 +52,7 @@ One or more export task IDs.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeExportTasks in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DescribeExportTasks in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

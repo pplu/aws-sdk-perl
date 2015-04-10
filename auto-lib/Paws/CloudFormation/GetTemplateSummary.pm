@@ -101,7 +101,7 @@ C<StackName>, C<TemplateBody>, or C<TemplateURL>.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetTemplateSummary in Paws::CloudFormation
+This class forms part of L<Paws>, documenting arguments for method GetTemplateSummary in L<Paws::CloudFormation>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -52,7 +52,7 @@ The name or the unique identifier associated with the stack.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteStack in Paws::CloudFormation
+This class forms part of L<Paws>, documenting arguments for method DeleteStack in L<Paws::CloudFormation>
 
 =head1 BUGS and CONTRIBUTIONS
 

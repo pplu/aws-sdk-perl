@@ -53,7 +53,7 @@ virtual tape shelf (VTS).
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteTapeArchive in Paws::StorageGateway
+This class forms part of L<Paws>, documenting arguments for method DeleteTapeArchive in L<Paws::StorageGateway>
 
 =head1 BUGS and CONTRIBUTIONS
 

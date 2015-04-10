@@ -87,7 +87,7 @@ A user-specified description for the cache parameter group.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateCacheParameterGroup in Paws::ElastiCache
+This class forms part of L<Paws>, documenting arguments for method CreateCacheParameterGroup in L<Paws::ElastiCache>
 
 =head1 BUGS and CONTRIBUTIONS
 

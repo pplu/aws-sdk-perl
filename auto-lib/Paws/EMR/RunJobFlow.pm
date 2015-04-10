@@ -299,7 +299,7 @@ the IAM user that created the job flow can view and manage it.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RunJobFlow in Paws::EMR
+This class forms part of L<Paws>, documenting arguments for method RunJobFlow in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 

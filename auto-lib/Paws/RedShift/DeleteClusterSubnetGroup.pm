@@ -52,7 +52,7 @@ The name of the cluster subnet group name to be deleted.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteClusterSubnetGroup in Paws::RedShift
+This class forms part of L<Paws>, documenting arguments for method DeleteClusterSubnetGroup in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 

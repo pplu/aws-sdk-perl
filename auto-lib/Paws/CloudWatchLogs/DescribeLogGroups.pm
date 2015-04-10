@@ -76,7 +76,7 @@ C<DescribeLogGroups> request.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeLogGroups in Paws::CloudWatchLogs
+This class forms part of L<Paws>, documenting arguments for method DescribeLogGroups in L<Paws::CloudWatchLogs>
 
 =head1 BUGS and CONTRIBUTIONS
 

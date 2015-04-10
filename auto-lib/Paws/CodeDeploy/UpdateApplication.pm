@@ -68,7 +68,7 @@ The new name that you want to change the application to.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateApplication in Paws::CodeDeploy
+This class forms part of L<Paws>, documenting arguments for method UpdateApplication in L<Paws::CodeDeploy>
 
 =head1 BUGS and CONTRIBUTIONS
 

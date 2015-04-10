@@ -68,7 +68,7 @@ The name of the lifecycle hook.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteLifecycleHook in Paws::AutoScaling
+This class forms part of L<Paws>, documenting arguments for method DeleteLifecycleHook in L<Paws::AutoScaling>
 
 =head1 BUGS and CONTRIBUTIONS
 

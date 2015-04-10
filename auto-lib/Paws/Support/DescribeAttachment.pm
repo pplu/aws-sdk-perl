@@ -53,7 +53,7 @@ DescribeCommunications operation.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeAttachment in Paws::Support
+This class forms part of L<Paws>, documenting arguments for method DescribeAttachment in L<Paws::Support>
 
 =head1 BUGS and CONTRIBUTIONS
 

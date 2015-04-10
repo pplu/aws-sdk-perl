@@ -56,7 +56,7 @@ account are returned.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeResize in Paws::RedShift
+This class forms part of L<Paws>, documenting arguments for method DescribeResize in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 

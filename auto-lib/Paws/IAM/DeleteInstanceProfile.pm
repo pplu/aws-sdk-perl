@@ -52,7 +52,7 @@ The name of the instance profile to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteInstanceProfile in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method DeleteInstanceProfile in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

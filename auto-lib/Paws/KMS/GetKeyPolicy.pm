@@ -80,7 +80,7 @@ String that contains the name of the policy. Currently, this must be
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetKeyPolicy in Paws::KMS
+This class forms part of L<Paws>, documenting arguments for method GetKeyPolicy in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 

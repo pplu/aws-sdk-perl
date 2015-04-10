@@ -53,7 +53,7 @@ information.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeletePreset in Paws::ElasticTranscoder
+This class forms part of L<Paws>, documenting arguments for method DeletePreset in L<Paws::ElasticTranscoder>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -53,7 +53,7 @@ delivered.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeliverConfigSnapshot in Paws::Config
+This class forms part of L<Paws>, documenting arguments for method DeliverConfigSnapshot in L<Paws::Config>
 
 =head1 BUGS and CONTRIBUTIONS
 

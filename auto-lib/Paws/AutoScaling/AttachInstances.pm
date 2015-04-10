@@ -68,7 +68,7 @@ One or more EC2 instance IDs. You must specify at least one ID.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AttachInstances in Paws::AutoScaling
+This class forms part of L<Paws>, documenting arguments for method AttachInstances in L<Paws::AutoScaling>
 
 =head1 BUGS and CONTRIBUTIONS
 

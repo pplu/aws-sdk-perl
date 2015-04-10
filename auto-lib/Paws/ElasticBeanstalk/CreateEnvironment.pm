@@ -254,7 +254,7 @@ sample application in the container.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateEnvironment in Paws::ElasticBeanstalk
+This class forms part of L<Paws>, documenting arguments for method CreateEnvironment in L<Paws::ElasticBeanstalk>
 
 =head1 BUGS and CONTRIBUTIONS
 

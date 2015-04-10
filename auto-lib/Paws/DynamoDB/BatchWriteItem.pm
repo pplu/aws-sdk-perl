@@ -123,7 +123,7 @@ statistics are returned.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for BatchWriteItem in Paws::DynamoDB
+This class forms part of L<Paws>, documenting arguments for method BatchWriteItem in L<Paws::DynamoDB>
 
 =head1 BUGS and CONTRIBUTIONS
 

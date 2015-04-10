@@ -155,8 +155,17 @@ Paws::ECS - Perl Interface to AWS Amazon EC2 Container Service
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('ECS')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -188,11 +197,11 @@ infrastructure.
 
 =head1 METHODS
 
-=head2 CreateCluster()
+=head2 CreateCluster([clusterName => Str])
 
-  Arguments described in: L<Paws::ECS::CreateCluster>
+Each argument is described in detail in: L<Paws::ECS::CreateCluster>
 
-  Returns: L<Paws::ECS::CreateClusterResponse>
+Returns: a L<Paws::ECS::CreateClusterResponse> instance
 
   
 
@@ -211,11 +220,11 @@ C<CreateCluster> action.
 
 
 
-=head2 CreateService()
+=head2 CreateService(serviceName => Str, [clientToken => Str, desiredCount => Int, cluster => Str, taskDefinition => Str, role => Str, loadBalancers => ArrayRef[Paws::ECS::LoadBalancer]])
 
-  Arguments described in: L<Paws::ECS::CreateService>
+Each argument is described in detail in: L<Paws::ECS::CreateService>
 
-  Returns: L<Paws::ECS::CreateServiceResponse>
+Returns: a L<Paws::ECS::CreateServiceResponse> instance
 
   
 
@@ -234,11 +243,11 @@ task in the specified cluster.
 
 
 
-=head2 DeleteCluster()
+=head2 DeleteCluster(cluster => Str)
 
-  Arguments described in: L<Paws::ECS::DeleteCluster>
+Each argument is described in detail in: L<Paws::ECS::DeleteCluster>
 
-  Returns: L<Paws::ECS::DeleteClusterResponse>
+Returns: a L<Paws::ECS::DeleteClusterResponse> instance
 
   
 
@@ -257,11 +266,11 @@ deregister them with DeregisterContainerInstance.
 
 
 
-=head2 DeleteService()
+=head2 DeleteService(service => Str, [cluster => Str])
 
-  Arguments described in: L<Paws::ECS::DeleteService>
+Each argument is described in detail in: L<Paws::ECS::DeleteService>
 
-  Returns: L<Paws::ECS::DeleteServiceResponse>
+Returns: a L<Paws::ECS::DeleteServiceResponse> instance
 
   
 
@@ -277,11 +286,11 @@ Deletes a specified service within a cluster.
 
 
 
-=head2 DeregisterContainerInstance()
+=head2 DeregisterContainerInstance(containerInstance => Str, [force => Bool, cluster => Str])
 
-  Arguments described in: L<Paws::ECS::DeregisterContainerInstance>
+Each argument is described in detail in: L<Paws::ECS::DeregisterContainerInstance>
 
-  Returns: L<Paws::ECS::DeregisterContainerInstanceResponse>
+Returns: a L<Paws::ECS::DeregisterContainerInstanceResponse> instance
 
   
 
@@ -298,11 +307,11 @@ cluster. This instance will no longer be available to run tasks.
 
 
 
-=head2 DeregisterTaskDefinition()
+=head2 DeregisterTaskDefinition(taskDefinition => Str)
 
-  Arguments described in: L<Paws::ECS::DeregisterTaskDefinition>
+Each argument is described in detail in: L<Paws::ECS::DeregisterTaskDefinition>
 
-  Returns: L<Paws::ECS::DeregisterTaskDefinitionResponse>
+Returns: a L<Paws::ECS::DeregisterTaskDefinitionResponse> instance
 
   
 
@@ -321,11 +330,11 @@ to run tasks from this definition after deregistration.
 
 
 
-=head2 DescribeClusters()
+=head2 DescribeClusters([clusters => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::ECS::DescribeClusters>
+Each argument is described in detail in: L<Paws::ECS::DescribeClusters>
 
-  Returns: L<Paws::ECS::DescribeClustersResponse>
+Returns: a L<Paws::ECS::DescribeClustersResponse> instance
 
   
 
@@ -341,11 +350,11 @@ Describes one or more of your clusters.
 
 
 
-=head2 DescribeContainerInstances()
+=head2 DescribeContainerInstances(containerInstances => ArrayRef[Str], [cluster => Str])
 
-  Arguments described in: L<Paws::ECS::DescribeContainerInstances>
+Each argument is described in detail in: L<Paws::ECS::DescribeContainerInstances>
 
-  Returns: L<Paws::ECS::DescribeContainerInstancesResponse>
+Returns: a L<Paws::ECS::DescribeContainerInstancesResponse> instance
 
   
 
@@ -363,11 +372,11 @@ instance requested.
 
 
 
-=head2 DescribeServices()
+=head2 DescribeServices(services => ArrayRef[Str], [cluster => Str])
 
-  Arguments described in: L<Paws::ECS::DescribeServices>
+Each argument is described in detail in: L<Paws::ECS::DescribeServices>
 
-  Returns: L<Paws::ECS::DescribeServicesResponse>
+Returns: a L<Paws::ECS::DescribeServicesResponse> instance
 
   
 
@@ -383,11 +392,11 @@ Describes the specified services running in your cluster.
 
 
 
-=head2 DescribeTaskDefinition()
+=head2 DescribeTaskDefinition(taskDefinition => Str)
 
-  Arguments described in: L<Paws::ECS::DescribeTaskDefinition>
+Each argument is described in detail in: L<Paws::ECS::DescribeTaskDefinition>
 
-  Returns: L<Paws::ECS::DescribeTaskDefinitionResponse>
+Returns: a L<Paws::ECS::DescribeTaskDefinitionResponse> instance
 
   
 
@@ -406,11 +415,11 @@ family.
 
 
 
-=head2 DescribeTasks()
+=head2 DescribeTasks(tasks => ArrayRef[Str], [cluster => Str])
 
-  Arguments described in: L<Paws::ECS::DescribeTasks>
+Each argument is described in detail in: L<Paws::ECS::DescribeTasks>
 
-  Returns: L<Paws::ECS::DescribeTasksResponse>
+Returns: a L<Paws::ECS::DescribeTasksResponse> instance
 
   
 
@@ -426,11 +435,11 @@ Describes a specified task or tasks.
 
 
 
-=head2 DiscoverPollEndpoint()
+=head2 DiscoverPollEndpoint([containerInstance => Str, cluster => Str])
 
-  Arguments described in: L<Paws::ECS::DiscoverPollEndpoint>
+Each argument is described in detail in: L<Paws::ECS::DiscoverPollEndpoint>
 
-  Returns: L<Paws::ECS::DiscoverPollEndpointResponse>
+Returns: a L<Paws::ECS::DiscoverPollEndpointResponse> instance
 
   
 
@@ -450,11 +459,11 @@ for updates.
 
 
 
-=head2 ListClusters()
+=head2 ListClusters([maxResults => Int, nextToken => Str])
 
-  Arguments described in: L<Paws::ECS::ListClusters>
+Each argument is described in detail in: L<Paws::ECS::ListClusters>
 
-  Returns: L<Paws::ECS::ListClustersResponse>
+Returns: a L<Paws::ECS::ListClustersResponse> instance
 
   
 
@@ -470,11 +479,11 @@ Returns a list of existing clusters.
 
 
 
-=head2 ListContainerInstances()
+=head2 ListContainerInstances([cluster => Str, maxResults => Int, nextToken => Str])
 
-  Arguments described in: L<Paws::ECS::ListContainerInstances>
+Each argument is described in detail in: L<Paws::ECS::ListContainerInstances>
 
-  Returns: L<Paws::ECS::ListContainerInstancesResponse>
+Returns: a L<Paws::ECS::ListContainerInstancesResponse> instance
 
   
 
@@ -490,11 +499,11 @@ Returns a list of container instances in a specified cluster.
 
 
 
-=head2 ListServices()
+=head2 ListServices([maxResults => Int, nextToken => Str, cluster => Str])
 
-  Arguments described in: L<Paws::ECS::ListServices>
+Each argument is described in detail in: L<Paws::ECS::ListServices>
 
-  Returns: L<Paws::ECS::ListServicesResponse>
+Returns: a L<Paws::ECS::ListServicesResponse> instance
 
   
 
@@ -510,11 +519,11 @@ Lists the services that are running in a specified cluster.
 
 
 
-=head2 ListTaskDefinitionFamilies()
+=head2 ListTaskDefinitionFamilies([maxResults => Int, familyPrefix => Str, nextToken => Str])
 
-  Arguments described in: L<Paws::ECS::ListTaskDefinitionFamilies>
+Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitionFamilies>
 
-  Returns: L<Paws::ECS::ListTaskDefinitionFamiliesResponse>
+Returns: a L<Paws::ECS::ListTaskDefinitionFamiliesResponse> instance
 
   
 
@@ -531,11 +540,11 @@ account. You can filter the results with the C<familyPrefix> parameter.
 
 
 
-=head2 ListTaskDefinitions()
+=head2 ListTaskDefinitions([maxResults => Int, nextToken => Str, familyPrefix => Str])
 
-  Arguments described in: L<Paws::ECS::ListTaskDefinitions>
+Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitions>
 
-  Returns: L<Paws::ECS::ListTaskDefinitionsResponse>
+Returns: a L<Paws::ECS::ListTaskDefinitionsResponse> instance
 
   
 
@@ -553,11 +562,11 @@ parameter.
 
 
 
-=head2 ListTasks()
+=head2 ListTasks([nextToken => Str, maxResults => Int, family => Str, startedBy => Str, containerInstance => Str, serviceName => Str, cluster => Str])
 
-  Arguments described in: L<Paws::ECS::ListTasks>
+Each argument is described in detail in: L<Paws::ECS::ListTasks>
 
-  Returns: L<Paws::ECS::ListTasksResponse>
+Returns: a L<Paws::ECS::ListTasksResponse> instance
 
   
 
@@ -575,11 +584,11 @@ C<family> and C<containerInstance> parameters.
 
 
 
-=head2 RegisterContainerInstance()
+=head2 RegisterContainerInstance([instanceIdentityDocumentSignature => Str, versionInfo => Paws::ECS::VersionInfo, totalResources => ArrayRef[Paws::ECS::Resource], instanceIdentityDocument => Str, cluster => Str])
 
-  Arguments described in: L<Paws::ECS::RegisterContainerInstance>
+Each argument is described in detail in: L<Paws::ECS::RegisterContainerInstance>
 
-  Returns: L<Paws::ECS::RegisterContainerInstanceResponse>
+Returns: a L<Paws::ECS::RegisterContainerInstanceResponse> instance
 
   
 
@@ -599,11 +608,11 @@ instance will become available to place containers on.
 
 
 
-=head2 RegisterTaskDefinition()
+=head2 RegisterTaskDefinition(containerDefinitions => ArrayRef[Paws::ECS::ContainerDefinition], family => Str, [volumes => ArrayRef[Paws::ECS::Volume]])
 
-  Arguments described in: L<Paws::ECS::RegisterTaskDefinition>
+Each argument is described in detail in: L<Paws::ECS::RegisterTaskDefinition>
 
-  Returns: L<Paws::ECS::RegisterTaskDefinitionResponse>
+Returns: a L<Paws::ECS::RegisterTaskDefinitionResponse> instance
 
   
 
@@ -623,11 +632,11 @@ the I<Amazon EC2 Container Service Developer Guide>.
 
 
 
-=head2 RunTask()
+=head2 RunTask(taskDefinition => Str, [cluster => Str, overrides => Paws::ECS::TaskOverride, startedBy => Str, count => Int])
 
-  Arguments described in: L<Paws::ECS::RunTask>
+Each argument is described in detail in: L<Paws::ECS::RunTask>
 
-  Returns: L<Paws::ECS::RunTaskResponse>
+Returns: a L<Paws::ECS::RunTaskResponse> instance
 
   
 
@@ -647,11 +656,11 @@ The C<count> parameter is limited to 10 tasks per call.
 
 
 
-=head2 StartTask()
+=head2 StartTask(containerInstances => ArrayRef[Str], taskDefinition => Str, [cluster => Str, overrides => Paws::ECS::TaskOverride, startedBy => Str])
 
-  Arguments described in: L<Paws::ECS::StartTask>
+Each argument is described in detail in: L<Paws::ECS::StartTask>
 
-  Returns: L<Paws::ECS::StartTaskResponse>
+Returns: a L<Paws::ECS::StartTaskResponse> instance
 
   
 
@@ -671,11 +680,11 @@ The list of container instances to start tasks on is limited to 10.
 
 
 
-=head2 StopTask()
+=head2 StopTask(task => Str, [cluster => Str])
 
-  Arguments described in: L<Paws::ECS::StopTask>
+Each argument is described in detail in: L<Paws::ECS::StopTask>
 
-  Returns: L<Paws::ECS::StopTaskResponse>
+Returns: a L<Paws::ECS::StopTaskResponse> instance
 
   
 
@@ -691,11 +700,11 @@ Stops a running task.
 
 
 
-=head2 SubmitContainerStateChange()
+=head2 SubmitContainerStateChange([exitCode => Int, status => Str, containerName => Str, task => Str, networkBindings => ArrayRef[Paws::ECS::NetworkBinding], reason => Str, cluster => Str])
 
-  Arguments described in: L<Paws::ECS::SubmitContainerStateChange>
+Each argument is described in detail in: L<Paws::ECS::SubmitContainerStateChange>
 
-  Returns: L<Paws::ECS::SubmitContainerStateChangeResponse>
+Returns: a L<Paws::ECS::SubmitContainerStateChangeResponse> instance
 
   
 
@@ -714,11 +723,11 @@ Sent to acknowledge that a container changed states.
 
 
 
-=head2 SubmitTaskStateChange()
+=head2 SubmitTaskStateChange([status => Str, task => Str, reason => Str, cluster => Str])
 
-  Arguments described in: L<Paws::ECS::SubmitTaskStateChange>
+Each argument is described in detail in: L<Paws::ECS::SubmitTaskStateChange>
 
-  Returns: L<Paws::ECS::SubmitTaskStateChangeResponse>
+Returns: a L<Paws::ECS::SubmitTaskStateChangeResponse> instance
 
   
 
@@ -737,11 +746,11 @@ Sent to acknowledge that a task changed states.
 
 
 
-=head2 UpdateService()
+=head2 UpdateService(service => Str, [desiredCount => Int, cluster => Str, taskDefinition => Str])
 
-  Arguments described in: L<Paws::ECS::UpdateService>
+Each argument is described in detail in: L<Paws::ECS::UpdateService>
 
-  Returns: L<Paws::ECS::UpdateServiceResponse>
+Returns: a L<Paws::ECS::UpdateServiceResponse> instance
 
   
 

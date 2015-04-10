@@ -68,7 +68,7 @@ The keys of the tags to remove.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RemoveTags in Paws::DataPipeline
+This class forms part of L<Paws>, documenting arguments for method RemoveTags in L<Paws::DataPipeline>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -121,7 +121,7 @@ Example: C<my-option-group>
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CopyOptionGroup in Paws::RDS
+This class forms part of L<Paws>, documenting arguments for method CopyOptionGroup in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 

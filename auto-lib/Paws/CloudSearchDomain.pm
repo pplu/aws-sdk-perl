@@ -40,8 +40,17 @@ Paws::CloudSearchDomain - Perl Interface to AWS Amazon CloudSearch Domain
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('CloudSearchDomain')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -70,11 +79,11 @@ For more information, see the Amazon CloudSearch Developer Guide.
 
 =head1 METHODS
 
-=head2 Search()
+=head2 Search(query => Str, [highlight => Str, cursor => Str, sort => Str, size => Num, queryOptions => Str, partial => Bool, expr => Str, facet => Str, start => Num, return => Str, queryParser => Str, filterQuery => Str])
 
-  Arguments described in: L<Paws::CloudSearchDomain::Search>
+Each argument is described in detail in: L<Paws::CloudSearchDomain::Search>
 
-  Returns: L<Paws::CloudSearchDomain::SearchResponse>
+Returns: a L<Paws::CloudSearchDomain::SearchResponse> instance
 
   
 
@@ -119,11 +128,11 @@ displayed on the domain dashboard in the Amazon CloudSearch console.
 
 
 
-=head2 Suggest()
+=head2 Suggest(query => Str, suggester => Str, [size => Num])
 
-  Arguments described in: L<Paws::CloudSearchDomain::Suggest>
+Each argument is described in detail in: L<Paws::CloudSearchDomain::Suggest>
 
-  Returns: L<Paws::CloudSearchDomain::SuggestResponse>
+Returns: a L<Paws::CloudSearchDomain::SuggestResponse> instance
 
   
 
@@ -156,11 +165,11 @@ console.
 
 
 
-=head2 UploadDocuments()
+=head2 UploadDocuments(contentType => Str, documents => Str)
 
-  Arguments described in: L<Paws::CloudSearchDomain::UploadDocuments>
+Each argument is described in detail in: L<Paws::CloudSearchDomain::UploadDocuments>
 
-  Returns: L<Paws::CloudSearchDomain::UploadDocumentsResponse>
+Returns: a L<Paws::CloudSearchDomain::UploadDocumentsResponse> instance
 
   
 

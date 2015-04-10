@@ -120,8 +120,17 @@ Paws::DataPipeline - Perl Interface to AWS AWS Data Pipeline
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('DataPipeline')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -163,11 +172,11 @@ service.
 
 =head1 METHODS
 
-=head2 ActivatePipeline()
+=head2 ActivatePipeline(pipelineId => Str, [startTimestamp => Str, parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue]])
 
-  Arguments described in: L<Paws::DataPipeline::ActivatePipeline>
+Each argument is described in detail in: L<Paws::DataPipeline::ActivatePipeline>
 
-  Returns: L<Paws::DataPipeline::ActivatePipelineOutput>
+Returns: a L<Paws::DataPipeline::ActivatePipelineOutput> instance
 
   
 
@@ -190,11 +199,11 @@ and then activate it.
 
 
 
-=head2 AddTags()
+=head2 AddTags(pipelineId => Str, tags => ArrayRef[Paws::DataPipeline::Tag])
 
-  Arguments described in: L<Paws::DataPipeline::AddTags>
+Each argument is described in detail in: L<Paws::DataPipeline::AddTags>
 
-  Returns: L<Paws::DataPipeline::AddTagsOutput>
+Returns: a L<Paws::DataPipeline::AddTagsOutput> instance
 
   
 
@@ -210,11 +219,11 @@ Adds or modifies tags for the specified pipeline.
 
 
 
-=head2 CreatePipeline()
+=head2 CreatePipeline(name => Str, uniqueId => Str, [description => Str, tags => ArrayRef[Paws::DataPipeline::Tag]])
 
-  Arguments described in: L<Paws::DataPipeline::CreatePipeline>
+Each argument is described in detail in: L<Paws::DataPipeline::CreatePipeline>
 
-  Returns: L<Paws::DataPipeline::CreatePipelineOutput>
+Returns: a L<Paws::DataPipeline::CreatePipelineOutput> instance
 
   
 
@@ -231,11 +240,11 @@ the pipeline.
 
 
 
-=head2 DeactivatePipeline()
+=head2 DeactivatePipeline(pipelineId => Str, [cancelActive => Bool])
 
-  Arguments described in: L<Paws::DataPipeline::DeactivatePipeline>
+Each argument is described in detail in: L<Paws::DataPipeline::DeactivatePipeline>
 
-  Returns: L<Paws::DataPipeline::DeactivatePipelineOutput>
+Returns: a L<Paws::DataPipeline::DeactivatePipelineOutput> instance
 
   
 
@@ -256,11 +265,11 @@ specify the date and time to resume the pipeline.
 
 
 
-=head2 DeletePipeline()
+=head2 DeletePipeline(pipelineId => Str)
 
-  Arguments described in: L<Paws::DataPipeline::DeletePipeline>
+Each argument is described in detail in: L<Paws::DataPipeline::DeletePipeline>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -283,11 +292,11 @@ components. Components that are paused by SetStatus can be resumed.
 
 
 
-=head2 DescribeObjects()
+=head2 DescribeObjects(objectIds => ArrayRef[Str], pipelineId => Str, [evaluateExpressions => Bool, marker => Str])
 
-  Arguments described in: L<Paws::DataPipeline::DescribeObjects>
+Each argument is described in detail in: L<Paws::DataPipeline::DescribeObjects>
 
-  Returns: L<Paws::DataPipeline::DescribeObjectsOutput>
+Returns: a L<Paws::DataPipeline::DescribeObjectsOutput> instance
 
   
 
@@ -305,11 +314,11 @@ define the properties of the object.
 
 
 
-=head2 DescribePipelines()
+=head2 DescribePipelines(pipelineIds => ArrayRef[Str])
 
-  Arguments described in: L<Paws::DataPipeline::DescribePipelines>
+Each argument is described in detail in: L<Paws::DataPipeline::DescribePipelines>
 
-  Returns: L<Paws::DataPipeline::DescribePipelinesOutput>
+Returns: a L<Paws::DataPipeline::DescribePipelinesOutput> instance
 
   
 
@@ -334,11 +343,11 @@ pipeline, call GetPipelineDefinition.
 
 
 
-=head2 EvaluateExpression()
+=head2 EvaluateExpression(expression => Str, objectId => Str, pipelineId => Str)
 
-  Arguments described in: L<Paws::DataPipeline::EvaluateExpression>
+Each argument is described in detail in: L<Paws::DataPipeline::EvaluateExpression>
 
-  Returns: L<Paws::DataPipeline::EvaluateExpressionOutput>
+Returns: a L<Paws::DataPipeline::EvaluateExpressionOutput> instance
 
   
 
@@ -356,11 +365,11 @@ evaluate SQL queries stored in Amazon S3.
 
 
 
-=head2 GetPipelineDefinition()
+=head2 GetPipelineDefinition(pipelineId => Str, [version => Str])
 
-  Arguments described in: L<Paws::DataPipeline::GetPipelineDefinition>
+Each argument is described in detail in: L<Paws::DataPipeline::GetPipelineDefinition>
 
-  Returns: L<Paws::DataPipeline::GetPipelineDefinitionOutput>
+Returns: a L<Paws::DataPipeline::GetPipelineDefinitionOutput> instance
 
   
 
@@ -378,11 +387,11 @@ provided using PutPipelineDefinition.
 
 
 
-=head2 ListPipelines()
+=head2 ListPipelines([marker => Str])
 
-  Arguments described in: L<Paws::DataPipeline::ListPipelines>
+Each argument is described in detail in: L<Paws::DataPipeline::ListPipelines>
 
-  Returns: L<Paws::DataPipeline::ListPipelinesOutput>
+Returns: a L<Paws::DataPipeline::ListPipelinesOutput> instance
 
   
 
@@ -399,11 +408,11 @@ permission to access.
 
 
 
-=head2 PollForTask()
+=head2 PollForTask(workerGroup => Str, [instanceIdentity => Paws::DataPipeline::InstanceIdentity, hostname => Str])
 
-  Arguments described in: L<Paws::DataPipeline::PollForTask>
+Each argument is described in detail in: L<Paws::DataPipeline::PollForTask>
 
-  Returns: L<Paws::DataPipeline::PollForTaskOutput>
+Returns: a L<Paws::DataPipeline::PollForTaskOutput> instance
 
   
 
@@ -433,11 +442,11 @@ response, and this can take up to 90 seconds.
 
 
 
-=head2 PutPipelineDefinition()
+=head2 PutPipelineDefinition(pipelineId => Str, pipelineObjects => ArrayRef[Paws::DataPipeline::PipelineObject], [parameterObjects => ArrayRef[Paws::DataPipeline::ParameterObject], parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue]])
 
-  Arguments described in: L<Paws::DataPipeline::PutPipelineDefinition>
+Each argument is described in detail in: L<Paws::DataPipeline::PutPipelineDefinition>
 
-  Returns: L<Paws::DataPipeline::PutPipelineDefinitionOutput>
+Returns: a L<Paws::DataPipeline::PutPipelineDefinitionOutput> instance
 
   
 
@@ -474,11 +483,11 @@ action and returned by the GetPipelineDefinition action.
 
 
 
-=head2 QueryObjects()
+=head2 QueryObjects(pipelineId => Str, sphere => Str, [marker => Str, limit => Int, query => Paws::DataPipeline::Query])
 
-  Arguments described in: L<Paws::DataPipeline::QueryObjects>
+Each argument is described in detail in: L<Paws::DataPipeline::QueryObjects>
 
-  Returns: L<Paws::DataPipeline::QueryObjectsOutput>
+Returns: a L<Paws::DataPipeline::QueryObjectsOutput> instance
 
   
 
@@ -495,11 +504,11 @@ specified set of conditions.
 
 
 
-=head2 RemoveTags()
+=head2 RemoveTags(pipelineId => Str, tagKeys => ArrayRef[Str])
 
-  Arguments described in: L<Paws::DataPipeline::RemoveTags>
+Each argument is described in detail in: L<Paws::DataPipeline::RemoveTags>
 
-  Returns: L<Paws::DataPipeline::RemoveTagsOutput>
+Returns: a L<Paws::DataPipeline::RemoveTagsOutput> instance
 
   
 
@@ -515,11 +524,11 @@ Removes existing tags from the specified pipeline.
 
 
 
-=head2 ReportTaskProgress()
+=head2 ReportTaskProgress(taskId => Str, [fields => ArrayRef[Paws::DataPipeline::Field]])
 
-  Arguments described in: L<Paws::DataPipeline::ReportTaskProgress>
+Each argument is described in detail in: L<Paws::DataPipeline::ReportTaskProgress>
 
-  Returns: L<Paws::DataPipeline::ReportTaskProgressOutput>
+Returns: a L<Paws::DataPipeline::ReportTaskProgressOutput> instance
 
   
 
@@ -547,11 +556,11 @@ runners should call C<ReportTaskProgress> every 60 seconds.
 
 
 
-=head2 ReportTaskRunnerHeartbeat()
+=head2 ReportTaskRunnerHeartbeat(taskrunnerId => Str, [workerGroup => Str, hostname => Str])
 
-  Arguments described in: L<Paws::DataPipeline::ReportTaskRunnerHeartbeat>
+Each argument is described in detail in: L<Paws::DataPipeline::ReportTaskRunnerHeartbeat>
 
-  Returns: L<Paws::DataPipeline::ReportTaskRunnerHeartbeatOutput>
+Returns: a L<Paws::DataPipeline::ReportTaskRunnerHeartbeatOutput> instance
 
   
 
@@ -571,11 +580,11 @@ has failed and restart a new instance.
 
 
 
-=head2 SetStatus()
+=head2 SetStatus(objectIds => ArrayRef[Str], pipelineId => Str, status => Str)
 
-  Arguments described in: L<Paws::DataPipeline::SetStatus>
+Each argument is described in detail in: L<Paws::DataPipeline::SetStatus>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -596,11 +605,11 @@ attempting to do so returns C<InvalidRequestException>.
 
 
 
-=head2 SetTaskStatus()
+=head2 SetTaskStatus(taskId => Str, taskStatus => Str, [errorMessage => Str, errorStackTrace => Str, errorId => Str])
 
-  Arguments described in: L<Paws::DataPipeline::SetTaskStatus>
+Each argument is described in detail in: L<Paws::DataPipeline::SetTaskStatus>
 
-  Returns: L<Paws::DataPipeline::SetTaskStatusOutput>
+Returns: a L<Paws::DataPipeline::SetTaskStatusOutput> instance
 
   
 
@@ -621,11 +630,11 @@ ReportTaskProgress.
 
 
 
-=head2 ValidatePipelineDefinition()
+=head2 ValidatePipelineDefinition(pipelineId => Str, pipelineObjects => ArrayRef[Paws::DataPipeline::PipelineObject], [parameterObjects => ArrayRef[Paws::DataPipeline::ParameterObject], parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue]])
 
-  Arguments described in: L<Paws::DataPipeline::ValidatePipelineDefinition>
+Each argument is described in detail in: L<Paws::DataPipeline::ValidatePipelineDefinition>
 
-  Returns: L<Paws::DataPipeline::ValidatePipelineDefinitionOutput>
+Returns: a L<Paws::DataPipeline::ValidatePipelineDefinitionOutput> instance
 
   
 

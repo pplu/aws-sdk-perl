@@ -108,7 +108,7 @@ instances in the list.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListDeploymentInstances in Paws::CodeDeploy
+This class forms part of L<Paws>, documenting arguments for method ListDeploymentInstances in L<Paws::CodeDeploy>
 
 =head1 BUGS and CONTRIBUTIONS
 

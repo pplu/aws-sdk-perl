@@ -48,7 +48,7 @@ The StreamingDistributionList type.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for  in Paws::CloudFront
+This class forms part of L<Paws>, documenting arguments for method  in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

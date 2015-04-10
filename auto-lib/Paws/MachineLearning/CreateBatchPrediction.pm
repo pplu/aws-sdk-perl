@@ -126,7 +126,7 @@ Machine Learning Developer Guide.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateBatchPrediction in Paws::MachineLearning
+This class forms part of L<Paws>, documenting arguments for method CreateBatchPrediction in L<Paws::MachineLearning>
 
 =head1 BUGS and CONTRIBUTIONS
 

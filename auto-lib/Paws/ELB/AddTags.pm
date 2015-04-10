@@ -69,7 +69,7 @@ A list of tags for each load balancer.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AddTags in Paws::ELB
+This class forms part of L<Paws>, documenting arguments for method AddTags in L<Paws::ELB>
 
 =head1 BUGS and CONTRIBUTIONS
 

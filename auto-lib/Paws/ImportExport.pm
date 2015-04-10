@@ -54,8 +54,17 @@ Paws::ImportExport - Perl Interface to AWS AWS Import/Export
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('ImportExport')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -80,11 +89,11 @@ effective than upgrading your connectivity.
 
 =head1 METHODS
 
-=head2 CancelJob()
+=head2 CancelJob(JobId => Str, [APIVersion => Str])
 
-  Arguments described in: L<Paws::ImportExport::CancelJob>
+Each argument is described in detail in: L<Paws::ImportExport::CancelJob>
 
-  Returns: L<Paws::ImportExport::CancelJobOutput>
+Returns: a L<Paws::ImportExport::CancelJobOutput> instance
 
   
 
@@ -101,11 +110,11 @@ it. The operation fails if the job has already started or is complete.
 
 
 
-=head2 CreateJob()
+=head2 CreateJob(JobType => Str, Manifest => Str, ValidateOnly => Bool, [APIVersion => Str, ManifestAddendum => Str])
 
-  Arguments described in: L<Paws::ImportExport::CreateJob>
+Each argument is described in detail in: L<Paws::ImportExport::CreateJob>
 
-  Returns: L<Paws::ImportExport::CreateJobOutput>
+Returns: a L<Paws::ImportExport::CreateJobOutput> instance
 
   
 
@@ -126,34 +135,11 @@ should ship your storage device.
 
 
 
-=head2 GetShippingLabel()
+=head2 GetShippingLabel(jobIds => ArrayRef[Str], [postalCode => Str, name => Str, street3 => Str, country => Str, phoneNumber => Str, stateOrProvince => Str, street1 => Str, city => Str, company => Str, APIVersion => Str, street2 => Str])
 
-  Arguments described in: L<Paws::ImportExport::GetShippingLabel>
+Each argument is described in detail in: L<Paws::ImportExport::GetShippingLabel>
 
-  Returns: L<Paws::ImportExport::GetShippingLabelOutput>
-
-  
-
-This operation returns information about a job, including where the job
-is in the processing pipeline, the status of the results, and the
-signature value associated with the job. You can only return
-information about jobs you own.
-
-
-
-
-
-
-
-
-
-
-
-=head2 GetStatus()
-
-  Arguments described in: L<Paws::ImportExport::GetStatus>
-
-  Returns: L<Paws::ImportExport::GetStatusOutput>
+Returns: a L<Paws::ImportExport::GetShippingLabelOutput> instance
 
   
 
@@ -172,11 +158,34 @@ information about jobs you own.
 
 
 
-=head2 ListJobs()
+=head2 GetStatus(JobId => Str, [APIVersion => Str])
 
-  Arguments described in: L<Paws::ImportExport::ListJobs>
+Each argument is described in detail in: L<Paws::ImportExport::GetStatus>
 
-  Returns: L<Paws::ImportExport::ListJobsOutput>
+Returns: a L<Paws::ImportExport::GetStatusOutput> instance
+
+  
+
+This operation returns information about a job, including where the job
+is in the processing pipeline, the status of the results, and the
+signature value associated with the job. You can only return
+information about jobs you own.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ListJobs([Marker => Str, MaxJobs => Int, APIVersion => Str])
+
+Each argument is described in detail in: L<Paws::ImportExport::ListJobs>
+
+Returns: a L<Paws::ImportExport::ListJobsOutput> instance
 
   
 
@@ -196,11 +205,11 @@ Test2 followed by Test1.
 
 
 
-=head2 UpdateJob()
+=head2 UpdateJob(JobId => Str, JobType => Str, Manifest => Str, ValidateOnly => Bool, [APIVersion => Str])
 
-  Arguments described in: L<Paws::ImportExport::UpdateJob>
+Each argument is described in detail in: L<Paws::ImportExport::UpdateJob>
 
-  Returns: L<Paws::ImportExport::UpdateJobOutput>
+Returns: a L<Paws::ImportExport::UpdateJobOutput> instance
 
   
 

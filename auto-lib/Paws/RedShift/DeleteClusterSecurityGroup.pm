@@ -52,7 +52,7 @@ The name of the cluster security group to be deleted.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteClusterSecurityGroup in Paws::RedShift
+This class forms part of L<Paws>, documenting arguments for method DeleteClusterSecurityGroup in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 

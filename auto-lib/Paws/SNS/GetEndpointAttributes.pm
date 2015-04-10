@@ -52,7 +52,7 @@ EndpointArn for GetEndpointAttributes input.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetEndpointAttributes in Paws::SNS
+This class forms part of L<Paws>, documenting arguments for method GetEndpointAttributes in L<Paws::SNS>
 
 =head1 BUGS and CONTRIBUTIONS
 

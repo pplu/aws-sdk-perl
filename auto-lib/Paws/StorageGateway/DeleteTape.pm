@@ -70,7 +70,7 @@ The Amazon Resource Name (ARN) of the virtual tape to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteTape in Paws::StorageGateway
+This class forms part of L<Paws>, documenting arguments for method DeleteTape in L<Paws::StorageGateway>
 
 =head1 BUGS and CONTRIBUTIONS
 

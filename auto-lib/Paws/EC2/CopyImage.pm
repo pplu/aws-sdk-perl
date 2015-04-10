@@ -123,7 +123,7 @@ The name of the region that contains the AMI to copy.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CopyImage in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method CopyImage in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

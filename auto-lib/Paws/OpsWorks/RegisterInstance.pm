@@ -149,7 +149,7 @@ The ID of the stack that the instance is to be registered with.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RegisterInstance in Paws::OpsWorks
+This class forms part of L<Paws>, documenting arguments for method RegisterInstance in L<Paws::OpsWorks>
 
 =head1 BUGS and CONTRIBUTIONS
 

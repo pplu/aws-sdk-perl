@@ -104,7 +104,7 @@ The body of an email communication to add to the support case.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AddCommunicationToCase in Paws::Support
+This class forms part of L<Paws>, documenting arguments for method AddCommunicationToCase in L<Paws::Support>
 
 =head1 BUGS and CONTRIBUTIONS
 

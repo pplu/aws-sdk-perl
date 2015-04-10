@@ -72,7 +72,7 @@ attachments are added to the specified set, if it exists.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AddAttachmentsToSet in Paws::Support
+This class forms part of L<Paws>, documenting arguments for method AddAttachmentsToSet in L<Paws::Support>
 
 =head1 BUGS and CONTRIBUTIONS
 

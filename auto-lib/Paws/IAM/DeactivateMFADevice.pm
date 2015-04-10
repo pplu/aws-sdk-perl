@@ -69,7 +69,7 @@ The name of the user whose MFA device you want to deactivate.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeactivateMFADevice in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method DeactivateMFADevice in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

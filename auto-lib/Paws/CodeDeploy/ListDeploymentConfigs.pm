@@ -54,7 +54,7 @@ deployment configurations in the list.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListDeploymentConfigs in Paws::CodeDeploy
+This class forms part of L<Paws>, documenting arguments for method ListDeploymentConfigs in L<Paws::CodeDeploy>
 
 =head1 BUGS and CONTRIBUTIONS
 

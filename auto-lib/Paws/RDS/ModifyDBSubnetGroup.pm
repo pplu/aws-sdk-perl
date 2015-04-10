@@ -90,7 +90,7 @@ The EC2 subnet IDs for the DB subnet group.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ModifyDBSubnetGroup in Paws::RDS
+This class forms part of L<Paws>, documenting arguments for method ModifyDBSubnetGroup in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 

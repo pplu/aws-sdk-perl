@@ -271,7 +271,7 @@ are updating.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateStack in Paws::CloudFormation
+This class forms part of L<Paws>, documenting arguments for method UpdateStack in L<Paws::CloudFormation>
 
 =head1 BUGS and CONTRIBUTIONS
 

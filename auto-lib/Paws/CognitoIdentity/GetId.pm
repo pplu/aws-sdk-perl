@@ -97,7 +97,7 @@ The available provider names for C<Logins> are as follows:
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetId in Paws::CognitoIdentity
+This class forms part of L<Paws>, documenting arguments for method GetId in L<Paws::CognitoIdentity>
 
 =head1 BUGS and CONTRIBUTIONS
 

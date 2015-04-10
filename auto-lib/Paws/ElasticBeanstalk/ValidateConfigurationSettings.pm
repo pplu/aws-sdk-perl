@@ -107,7 +107,7 @@ Condition: You cannot specify both this and an environment name.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ValidateConfigurationSettings in Paws::ElasticBeanstalk
+This class forms part of L<Paws>, documenting arguments for method ValidateConfigurationSettings in L<Paws::ElasticBeanstalk>
 
 =head1 BUGS and CONTRIBUTIONS
 

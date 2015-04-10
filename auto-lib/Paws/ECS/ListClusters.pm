@@ -79,7 +79,7 @@ value is C<null> when there are no more results to return.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListClusters in Paws::ECS
+This class forms part of L<Paws>, documenting arguments for method ListClusters in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 

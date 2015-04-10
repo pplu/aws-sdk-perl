@@ -121,7 +121,7 @@ A resumption point for pagination.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeCommunications in Paws::Support
+This class forms part of L<Paws>, documenting arguments for method DescribeCommunications in L<Paws::Support>
 
 =head1 BUGS and CONTRIBUTIONS
 

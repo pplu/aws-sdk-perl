@@ -131,7 +131,7 @@ The name of the stream to put the data record into.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for PutRecord in Paws::Kinesis
+This class forms part of L<Paws>, documenting arguments for method PutRecord in L<Paws::Kinesis>
 
 =head1 BUGS and CONTRIBUTIONS
 

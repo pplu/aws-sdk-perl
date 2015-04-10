@@ -52,7 +52,7 @@ The unique identifier for the Trusted Advisor check.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RefreshTrustedAdvisorCheck in Paws::Support
+This class forms part of L<Paws>, documenting arguments for method RefreshTrustedAdvisorCheck in L<Paws::Support>
 
 =head1 BUGS and CONTRIBUTIONS
 

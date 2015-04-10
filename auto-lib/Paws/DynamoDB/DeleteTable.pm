@@ -52,7 +52,7 @@ The name of the table to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteTable in Paws::DynamoDB
+This class forms part of L<Paws>, documenting arguments for method DeleteTable in L<Paws::DynamoDB>
 
 =head1 BUGS and CONTRIBUTIONS
 

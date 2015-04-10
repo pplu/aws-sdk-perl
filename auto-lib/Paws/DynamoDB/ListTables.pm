@@ -71,7 +71,7 @@ specified, the limit is 100.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListTables in Paws::DynamoDB
+This class forms part of L<Paws>, documenting arguments for method ListTables in L<Paws::DynamoDB>
 
 =head1 BUGS and CONTRIBUTIONS
 

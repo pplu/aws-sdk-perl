@@ -114,8 +114,17 @@ Paws::SES - Perl Interface to AWS Amazon Simple Email Service
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('SES')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -138,11 +147,11 @@ Amazon SES Developer Guide.
 
 =head1 METHODS
 
-=head2 DeleteIdentity()
+=head2 DeleteIdentity(Identity => Str)
 
-  Arguments described in: L<Paws::SES::DeleteIdentity>
+Each argument is described in detail in: L<Paws::SES::DeleteIdentity>
 
-  Returns: L<Paws::SES::DeleteIdentityResponse>
+Returns: a L<Paws::SES::DeleteIdentityResponse> instance
 
   
 
@@ -161,11 +170,11 @@ This action is throttled at one request per second.
 
 
 
-=head2 DeleteVerifiedEmailAddress()
+=head2 DeleteVerifiedEmailAddress(EmailAddress => Str)
 
-  Arguments described in: L<Paws::SES::DeleteVerifiedEmailAddress>
+Each argument is described in detail in: L<Paws::SES::DeleteVerifiedEmailAddress>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -188,11 +197,11 @@ This action is throttled at one request per second.
 
 
 
-=head2 GetIdentityDkimAttributes()
+=head2 GetIdentityDkimAttributes(Identities => ArrayRef[Str])
 
-  Arguments described in: L<Paws::SES::GetIdentityDkimAttributes>
+Each argument is described in detail in: L<Paws::SES::GetIdentityDkimAttributes>
 
-  Returns: L<Paws::SES::GetIdentityDkimAttributesResponse>
+Returns: a L<Paws::SES::GetIdentityDkimAttributesResponse> instance
 
   
 
@@ -233,11 +242,11 @@ to the Amazon SES Developer Guide.
 
 
 
-=head2 GetIdentityNotificationAttributes()
+=head2 GetIdentityNotificationAttributes(Identities => ArrayRef[Str])
 
-  Arguments described in: L<Paws::SES::GetIdentityNotificationAttributes>
+Each argument is described in detail in: L<Paws::SES::GetIdentityNotificationAttributes>
 
-  Returns: L<Paws::SES::GetIdentityNotificationAttributesResponse>
+Returns: a L<Paws::SES::GetIdentityNotificationAttributesResponse> instance
 
   
 
@@ -259,11 +268,11 @@ Amazon SES Developer Guide.
 
 
 
-=head2 GetIdentityVerificationAttributes()
+=head2 GetIdentityVerificationAttributes(Identities => ArrayRef[Str])
 
-  Arguments described in: L<Paws::SES::GetIdentityVerificationAttributes>
+Each argument is described in detail in: L<Paws::SES::GetIdentityVerificationAttributes>
 
-  Returns: L<Paws::SES::GetIdentityVerificationAttributesResponse>
+Returns: a L<Paws::SES::GetIdentityVerificationAttributesResponse> instance
 
   
 
@@ -285,9 +294,9 @@ This action is throttled at one request per second.
 
 =head2 GetSendQuota()
 
-  Arguments described in: L<Paws::SES::GetSendQuota>
+Each argument is described in detail in: L<Paws::SES::GetSendQuota>
 
-  Returns: L<Paws::SES::GetSendQuotaResponse>
+Returns: a L<Paws::SES::GetSendQuotaResponse> instance
 
   
 
@@ -307,9 +316,9 @@ This action is throttled at one request per second.
 
 =head2 GetSendStatistics()
 
-  Arguments described in: L<Paws::SES::GetSendStatistics>
+Each argument is described in detail in: L<Paws::SES::GetSendStatistics>
 
-  Returns: L<Paws::SES::GetSendStatisticsResponse>
+Returns: a L<Paws::SES::GetSendStatisticsResponse> instance
 
   
 
@@ -331,11 +340,11 @@ This action is throttled at one request per second.
 
 
 
-=head2 ListIdentities()
+=head2 ListIdentities([NextToken => Str, MaxItems => Int, IdentityType => Str])
 
-  Arguments described in: L<Paws::SES::ListIdentities>
+Each argument is described in detail in: L<Paws::SES::ListIdentities>
 
-  Returns: L<Paws::SES::ListIdentitiesResponse>
+Returns: a L<Paws::SES::ListIdentitiesResponse> instance
 
   
 
@@ -356,9 +365,9 @@ This action is throttled at one request per second.
 
 =head2 ListVerifiedEmailAddresses()
 
-  Arguments described in: L<Paws::SES::ListVerifiedEmailAddresses>
+Each argument is described in detail in: L<Paws::SES::ListVerifiedEmailAddresses>
 
-  Returns: L<Paws::SES::ListVerifiedEmailAddressesResponse>
+Returns: a L<Paws::SES::ListVerifiedEmailAddressesResponse> instance
 
   
 
@@ -381,11 +390,11 @@ This action is throttled at one request per second.
 
 
 
-=head2 SendEmail()
+=head2 SendEmail(Destination => Paws::SES::Destination, Message => Paws::SES::Message, Source => Str, [ReplyToAddresses => ArrayRef[Str], ReturnPath => Str])
 
-  Arguments described in: L<Paws::SES::SendEmail>
+Each argument is described in detail in: L<Paws::SES::SendEmail>
 
-  Returns: L<Paws::SES::SendEmailResponse>
+Returns: a L<Paws::SES::SendEmailResponse> instance
 
   
 
@@ -421,11 +430,11 @@ about your sending quota, go to the Amazon SES Developer Guide.
 
 
 
-=head2 SendRawEmail()
+=head2 SendRawEmail(RawMessage => Paws::SES::RawMessage, [Destinations => ArrayRef[Str], Source => Str])
 
-  Arguments described in: L<Paws::SES::SendRawEmail>
+Each argument is described in detail in: L<Paws::SES::SendRawEmail>
 
-  Returns: L<Paws::SES::SendRawEmailResponse>
+Returns: a L<Paws::SES::SendRawEmailResponse> instance
 
   
 
@@ -468,11 +477,11 @@ about your sending quota, go to the Amazon SES Developer Guide.
 
 
 
-=head2 SetIdentityDkimEnabled()
+=head2 SetIdentityDkimEnabled(DkimEnabled => Bool, Identity => Str)
 
-  Arguments described in: L<Paws::SES::SetIdentityDkimEnabled>
+Each argument is described in detail in: L<Paws::SES::SetIdentityDkimEnabled>
 
-  Returns: L<Paws::SES::SetIdentityDkimEnabledResponse>
+Returns: a L<Paws::SES::SetIdentityDkimEnabledResponse> instance
 
   
 
@@ -509,11 +518,11 @@ Developer Guide.
 
 
 
-=head2 SetIdentityFeedbackForwardingEnabled()
+=head2 SetIdentityFeedbackForwardingEnabled(ForwardingEnabled => Bool, Identity => Str)
 
-  Arguments described in: L<Paws::SES::SetIdentityFeedbackForwardingEnabled>
+Each argument is described in detail in: L<Paws::SES::SetIdentityFeedbackForwardingEnabled>
 
-  Returns: L<Paws::SES::SetIdentityFeedbackForwardingEnabledResponse>
+Returns: a L<Paws::SES::SetIdentityFeedbackForwardingEnabledResponse> instance
 
   
 
@@ -538,11 +547,11 @@ Amazon SES Developer Guide.
 
 
 
-=head2 SetIdentityNotificationTopic()
+=head2 SetIdentityNotificationTopic(Identity => Str, NotificationType => Str, [SnsTopic => Str])
 
-  Arguments described in: L<Paws::SES::SetIdentityNotificationTopic>
+Each argument is described in detail in: L<Paws::SES::SetIdentityNotificationTopic>
 
-  Returns: L<Paws::SES::SetIdentityNotificationTopicResponse>
+Returns: a L<Paws::SES::SetIdentityNotificationTopicResponse> instance
 
   
 
@@ -566,11 +575,11 @@ Developer Guide.
 
 
 
-=head2 VerifyDomainDkim()
+=head2 VerifyDomainDkim(Domain => Str)
 
-  Arguments described in: L<Paws::SES::VerifyDomainDkim>
+Each argument is described in detail in: L<Paws::SES::VerifyDomainDkim>
 
-  Returns: L<Paws::SES::VerifyDomainDkimResponse>
+Returns: a L<Paws::SES::VerifyDomainDkimResponse> instance
 
   
 
@@ -600,11 +609,11 @@ to the Amazon SES Developer Guide.
 
 
 
-=head2 VerifyDomainIdentity()
+=head2 VerifyDomainIdentity(Domain => Str)
 
-  Arguments described in: L<Paws::SES::VerifyDomainIdentity>
+Each argument is described in detail in: L<Paws::SES::VerifyDomainIdentity>
 
-  Returns: L<Paws::SES::VerifyDomainIdentityResponse>
+Returns: a L<Paws::SES::VerifyDomainIdentityResponse> instance
 
   
 
@@ -622,11 +631,11 @@ This action is throttled at one request per second.
 
 
 
-=head2 VerifyEmailAddress()
+=head2 VerifyEmailAddress(EmailAddress => Str)
 
-  Arguments described in: L<Paws::SES::VerifyEmailAddress>
+Each argument is described in detail in: L<Paws::SES::VerifyEmailAddress>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -649,11 +658,11 @@ This action is throttled at one request per second.
 
 
 
-=head2 VerifyEmailIdentity()
+=head2 VerifyEmailIdentity(EmailAddress => Str)
 
-  Arguments described in: L<Paws::SES::VerifyEmailIdentity>
+Each argument is described in detail in: L<Paws::SES::VerifyEmailIdentity>
 
-  Returns: L<Paws::SES::VerifyEmailIdentityResponse>
+Returns: a L<Paws::SES::VerifyEmailIdentityResponse> instance
 
   
 

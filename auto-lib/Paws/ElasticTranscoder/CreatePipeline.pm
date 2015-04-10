@@ -388,7 +388,7 @@ thumbnails that it stores in your Amazon S3 bucket.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreatePipeline in Paws::ElasticTranscoder
+This class forms part of L<Paws>, documenting arguments for method CreatePipeline in L<Paws::ElasticTranscoder>
 
 =head1 BUGS and CONTRIBUTIONS
 

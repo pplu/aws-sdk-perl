@@ -207,7 +207,7 @@ is found, returns an C<InvalidParameterValue> error.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateEnvironment in Paws::ElasticBeanstalk
+This class forms part of L<Paws>, documenting arguments for method UpdateEnvironment in L<Paws::ElasticBeanstalk>
 
 =head1 BUGS and CONTRIBUTIONS
 

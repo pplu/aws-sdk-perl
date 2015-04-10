@@ -70,7 +70,7 @@ in the response for PollForTask.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ReportTaskProgress in Paws::DataPipeline
+This class forms part of L<Paws>, documenting arguments for method ReportTaskProgress in L<Paws::DataPipeline>
 
 =head1 BUGS and CONTRIBUTIONS
 

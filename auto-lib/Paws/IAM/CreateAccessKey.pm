@@ -52,7 +52,7 @@ The user name that the new key will belong to.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateAccessKey in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method CreateAccessKey in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

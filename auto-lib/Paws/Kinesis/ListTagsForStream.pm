@@ -89,7 +89,7 @@ The name of the stream.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListTagsForStream in Paws::Kinesis
+This class forms part of L<Paws>, documenting arguments for method ListTagsForStream in L<Paws::Kinesis>
 
 =head1 BUGS and CONTRIBUTIONS
 

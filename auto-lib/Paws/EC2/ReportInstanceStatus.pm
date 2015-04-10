@@ -182,7 +182,7 @@ The status of all instances listed.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ReportInstanceStatus in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method ReportInstanceStatus in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

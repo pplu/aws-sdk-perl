@@ -106,7 +106,7 @@ The ID of the pipeline that contains the object definitions.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeObjects in Paws::DataPipeline
+This class forms part of L<Paws>, documenting arguments for method DescribeObjects in L<Paws::DataPipeline>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -57,7 +57,7 @@ The name of the C<Expression> to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteExpression in Paws::CloudSearch
+This class forms part of L<Paws>, documenting arguments for method DeleteExpression in L<Paws::CloudSearch>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -68,7 +68,7 @@ The name of the on-premises instance to register.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RegisterOnPremisesInstance in Paws::CodeDeploy
+This class forms part of L<Paws>, documenting arguments for method RegisterOnPremisesInstance in L<Paws::CodeDeploy>
 
 =head1 BUGS and CONTRIBUTIONS
 

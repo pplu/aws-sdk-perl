@@ -216,7 +216,7 @@ Default: Describes snapshots for which you have launch permissions.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeSnapshots in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DescribeSnapshots in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

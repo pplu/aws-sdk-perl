@@ -71,7 +71,7 @@ a source identifier from.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RemoveSourceIdentifierFromSubscription in Paws::RDS
+This class forms part of L<Paws>, documenting arguments for method RemoveSourceIdentifierFromSubscription in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 

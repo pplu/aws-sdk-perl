@@ -52,7 +52,7 @@ The names of the alarms to enable actions for.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for EnableAlarmActions in Paws::CloudWatch
+This class forms part of L<Paws>, documenting arguments for method EnableAlarmActions in L<Paws::CloudWatch>
 
 =head1 BUGS and CONTRIBUTIONS
 

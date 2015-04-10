@@ -111,7 +111,7 @@ GetFederationToken in I<Using Temporary Security Credentials>.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetFederationToken in Paws::STS
+This class forms part of L<Paws>, documenting arguments for method GetFederationToken in L<Paws::STS>
 
 =head1 BUGS and CONTRIBUTIONS
 

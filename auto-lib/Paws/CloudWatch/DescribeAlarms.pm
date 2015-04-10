@@ -134,7 +134,7 @@ The state value to be used in matching alarms.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeAlarms in Paws::CloudWatch
+This class forms part of L<Paws>, documenting arguments for method DescribeAlarms in L<Paws::CloudWatch>
 
 =head1 BUGS and CONTRIBUTIONS
 

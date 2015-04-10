@@ -69,7 +69,7 @@ The identity for which DKIM signing should be enabled or disabled.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for SetIdentityDkimEnabled in Paws::SES
+This class forms part of L<Paws>, documenting arguments for method SetIdentityDkimEnabled in L<Paws::SES>
 
 =head1 BUGS and CONTRIBUTIONS
 

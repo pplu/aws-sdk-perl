@@ -88,7 +88,7 @@ The identifier of the snapshot that the account can no longer access.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RevokeSnapshotAccess in Paws::RedShift
+This class forms part of L<Paws>, documenting arguments for method RevokeSnapshotAccess in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -59,7 +59,7 @@ Default: The address is for use with instances in EC2-Classic.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AllocateAddress in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method AllocateAddress in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

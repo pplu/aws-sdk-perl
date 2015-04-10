@@ -130,7 +130,7 @@ the events.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetWorkflowExecutionHistory in Paws::SimpleWorkflow
+This class forms part of L<Paws>, documenting arguments for method GetWorkflowExecutionHistory in L<Paws::SimpleWorkflow>
 
 =head1 BUGS and CONTRIBUTIONS
 

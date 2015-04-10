@@ -78,7 +78,7 @@ two different regions, can have the same name.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateStream in Paws::Kinesis
+This class forms part of L<Paws>, documenting arguments for method CreateStream in L<Paws::Kinesis>
 
 =head1 BUGS and CONTRIBUTIONS
 

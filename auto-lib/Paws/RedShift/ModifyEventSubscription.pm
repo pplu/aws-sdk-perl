@@ -172,7 +172,7 @@ subscription.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ModifyEventSubscription in Paws::RedShift
+This class forms part of L<Paws>, documenting arguments for method ModifyEventSubscription in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 

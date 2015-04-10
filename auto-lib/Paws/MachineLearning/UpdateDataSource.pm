@@ -69,7 +69,7 @@ replace the current description.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateDataSource in Paws::MachineLearning
+This class forms part of L<Paws>, documenting arguments for method UpdateDataSource in L<Paws::MachineLearning>
 
 =head1 BUGS and CONTRIBUTIONS
 

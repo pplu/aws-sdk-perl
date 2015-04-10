@@ -68,7 +68,7 @@ The set of key-value pairs to use to create the tags.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for AddTagsToStream in Paws::Kinesis
+This class forms part of L<Paws>, documenting arguments for method AddTagsToStream in L<Paws::Kinesis>
 
 =head1 BUGS and CONTRIBUTIONS
 

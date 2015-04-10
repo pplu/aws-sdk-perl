@@ -52,7 +52,7 @@ The name of the delivery channel to delete.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteDeliveryChannel in Paws::Config
+This class forms part of L<Paws>, documenting arguments for method DeleteDeliveryChannel in L<Paws::Config>
 
 =head1 BUGS and CONTRIBUTIONS
 

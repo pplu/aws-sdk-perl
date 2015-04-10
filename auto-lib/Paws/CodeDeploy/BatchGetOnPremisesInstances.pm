@@ -52,7 +52,7 @@ The names of the on-premises instances to get information about.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for BatchGetOnPremisesInstances in Paws::CodeDeploy
+This class forms part of L<Paws>, documenting arguments for method BatchGetOnPremisesInstances in L<Paws::CodeDeploy>
 
 =head1 BUGS and CONTRIBUTIONS
 

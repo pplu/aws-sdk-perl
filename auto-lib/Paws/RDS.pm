@@ -314,8 +314,17 @@ Paws::RDS - Perl Interface to AWS Amazon Relational Database Service
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('RDS')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -362,11 +371,11 @@ Available RDS Interfaces.
 
 =head1 METHODS
 
-=head2 AddSourceIdentifierToSubscription()
+=head2 AddSourceIdentifierToSubscription(SourceIdentifier => Str, SubscriptionName => Str)
 
-  Arguments described in: L<Paws::RDS::AddSourceIdentifierToSubscription>
+Each argument is described in detail in: L<Paws::RDS::AddSourceIdentifierToSubscription>
 
-  Returns: L<Paws::RDS::AddSourceIdentifierToSubscriptionResult>
+Returns: a L<Paws::RDS::AddSourceIdentifierToSubscriptionResult> instance
 
   
 
@@ -383,11 +392,11 @@ subscription.
 
 
 
-=head2 AddTagsToResource()
+=head2 AddTagsToResource(ResourceName => Str, Tags => ArrayRef[Paws::RDS::Tag])
 
-  Arguments described in: L<Paws::RDS::AddTagsToResource>
+Each argument is described in detail in: L<Paws::RDS::AddTagsToResource>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -409,11 +418,11 @@ Resources.
 
 
 
-=head2 ApplyPendingMaintenanceAction()
+=head2 ApplyPendingMaintenanceAction(ApplyAction => Str, OptInType => Str, ResourceIdentifier => Str)
 
-  Arguments described in: L<Paws::RDS::ApplyPendingMaintenanceAction>
+Each argument is described in detail in: L<Paws::RDS::ApplyPendingMaintenanceAction>
 
-  Returns: L<Paws::RDS::ApplyPendingMaintenanceActionResult>
+Returns: a L<Paws::RDS::ApplyPendingMaintenanceActionResult> instance
 
   
 
@@ -430,11 +439,11 @@ instance).
 
 
 
-=head2 AuthorizeDBSecurityGroupIngress()
+=head2 AuthorizeDBSecurityGroupIngress(DBSecurityGroupName => Str, [EC2SecurityGroupId => Str, EC2SecurityGroupOwnerId => Str, EC2SecurityGroupName => Str, CIDRIP => Str])
 
-  Arguments described in: L<Paws::RDS::AuthorizeDBSecurityGroupIngress>
+Each argument is described in detail in: L<Paws::RDS::AuthorizeDBSecurityGroupIngress>
 
-  Returns: L<Paws::RDS::AuthorizeDBSecurityGroupIngressResult>
+Returns: a L<Paws::RDS::AuthorizeDBSecurityGroupIngressResult> instance
 
   
 
@@ -464,11 +473,11 @@ For an overview of CIDR ranges, go to the Wikipedia Tutorial.
 
 
 
-=head2 CopyDBParameterGroup()
+=head2 CopyDBParameterGroup(SourceDBParameterGroupIdentifier => Str, TargetDBParameterGroupDescription => Str, TargetDBParameterGroupIdentifier => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
 
-  Arguments described in: L<Paws::RDS::CopyDBParameterGroup>
+Each argument is described in detail in: L<Paws::RDS::CopyDBParameterGroup>
 
-  Returns: L<Paws::RDS::CopyDBParameterGroupResult>
+Returns: a L<Paws::RDS::CopyDBParameterGroupResult> instance
 
   
 
@@ -484,11 +493,11 @@ Copies the specified DB parameter group.
 
 
 
-=head2 CopyDBSnapshot()
+=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
 
-  Arguments described in: L<Paws::RDS::CopyDBSnapshot>
+Each argument is described in detail in: L<Paws::RDS::CopyDBSnapshot>
 
-  Returns: L<Paws::RDS::CopyDBSnapshotResult>
+Returns: a L<Paws::RDS::CopyDBSnapshotResult> instance
 
   
 
@@ -505,11 +514,11 @@ Copies the specified DBSnapshot. The source DBSnapshot must be in the
 
 
 
-=head2 CopyOptionGroup()
+=head2 CopyOptionGroup(SourceOptionGroupIdentifier => Str, TargetOptionGroupDescription => Str, TargetOptionGroupIdentifier => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
 
-  Arguments described in: L<Paws::RDS::CopyOptionGroup>
+Each argument is described in detail in: L<Paws::RDS::CopyOptionGroup>
 
-  Returns: L<Paws::RDS::CopyOptionGroupResult>
+Returns: a L<Paws::RDS::CopyOptionGroupResult> instance
 
   
 
@@ -525,11 +534,11 @@ Copies the specified option group.
 
 
 
-=head2 CreateDBInstance()
+=head2 CreateDBInstance(AllocatedStorage => Int, DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, MasterUsername => Str, MasterUserPassword => Str, [PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, TdeCredentialPassword => Str, MultiAZ => Bool, DBParameterGroupName => Str, StorageType => Str, AutoMinorVersionUpgrade => Bool, TdeCredentialArn => Str, PreferredBackupWindow => Str, DBSubnetGroupName => Str, DBName => Str, KmsKeyId => Str, LicenseModel => Str, EngineVersion => Str, VpcSecurityGroupIds => ArrayRef[Str], OptionGroupName => Str, Iops => Int, Port => Int, DBSecurityGroups => ArrayRef[Str], AvailabilityZone => Str, CharacterSetName => Str, StorageEncrypted => Bool, Tags => ArrayRef[Paws::RDS::Tag], BackupRetentionPeriod => Int])
 
-  Arguments described in: L<Paws::RDS::CreateDBInstance>
+Each argument is described in detail in: L<Paws::RDS::CreateDBInstance>
 
-  Returns: L<Paws::RDS::CreateDBInstanceResult>
+Returns: a L<Paws::RDS::CreateDBInstanceResult> instance
 
   
 
@@ -545,11 +554,11 @@ Creates a new DB instance.
 
 
 
-=head2 CreateDBInstanceReadReplica()
+=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [Port => Int, StorageType => Str, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, Tags => ArrayRef[Paws::RDS::Tag], DBSubnetGroupName => Str, DBInstanceClass => Str, PubliclyAccessible => Bool, OptionGroupName => Str, Iops => Int])
 
-  Arguments described in: L<Paws::RDS::CreateDBInstanceReadReplica>
+Each argument is described in detail in: L<Paws::RDS::CreateDBInstanceReadReplica>
 
-  Returns: L<Paws::RDS::CreateDBInstanceReadReplicaResult>
+Returns: a L<Paws::RDS::CreateDBInstanceReadReplicaResult> instance
 
   
 
@@ -573,11 +582,11 @@ The source DB instance must have backup retention enabled.
 
 
 
-=head2 CreateDBParameterGroup()
+=head2 CreateDBParameterGroup(DBParameterGroupFamily => Str, DBParameterGroupName => Str, Description => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
 
-  Arguments described in: L<Paws::RDS::CreateDBParameterGroup>
+Each argument is described in detail in: L<Paws::RDS::CreateDBParameterGroup>
 
-  Returns: L<Paws::RDS::CreateDBParameterGroupResult>
+Returns: a L<Paws::RDS::CreateDBParameterGroupResult> instance
 
   
 
@@ -615,11 +624,11 @@ modified.
 
 
 
-=head2 CreateDBSecurityGroup()
+=head2 CreateDBSecurityGroup(DBSecurityGroupDescription => Str, DBSecurityGroupName => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
 
-  Arguments described in: L<Paws::RDS::CreateDBSecurityGroup>
+Each argument is described in detail in: L<Paws::RDS::CreateDBSecurityGroup>
 
-  Returns: L<Paws::RDS::CreateDBSecurityGroupResult>
+Returns: a L<Paws::RDS::CreateDBSecurityGroupResult> instance
 
   
 
@@ -636,11 +645,11 @@ DB instance.
 
 
 
-=head2 CreateDBSnapshot()
+=head2 CreateDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
 
-  Arguments described in: L<Paws::RDS::CreateDBSnapshot>
+Each argument is described in detail in: L<Paws::RDS::CreateDBSnapshot>
 
-  Returns: L<Paws::RDS::CreateDBSnapshotResult>
+Returns: a L<Paws::RDS::CreateDBSnapshotResult> instance
 
   
 
@@ -657,11 +666,11 @@ state.
 
 
 
-=head2 CreateDBSubnetGroup()
+=head2 CreateDBSubnetGroup(DBSubnetGroupDescription => Str, DBSubnetGroupName => Str, SubnetIds => ArrayRef[Str], [Tags => ArrayRef[Paws::RDS::Tag]])
 
-  Arguments described in: L<Paws::RDS::CreateDBSubnetGroup>
+Each argument is described in detail in: L<Paws::RDS::CreateDBSubnetGroup>
 
-  Returns: L<Paws::RDS::CreateDBSubnetGroupResult>
+Returns: a L<Paws::RDS::CreateDBSubnetGroupResult> instance
 
   
 
@@ -678,11 +687,11 @@ one subnet in at least two AZs in the region.
 
 
 
-=head2 CreateEventSubscription()
+=head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [EventCategories => ArrayRef[Str], SourceIds => ArrayRef[Str], Enabled => Bool, SourceType => Str, Tags => ArrayRef[Paws::RDS::Tag]])
 
-  Arguments described in: L<Paws::RDS::CreateEventSubscription>
+Each argument is described in detail in: L<Paws::RDS::CreateEventSubscription>
 
-  Returns: L<Paws::RDS::CreateEventSubscriptionResult>
+Returns: a L<Paws::RDS::CreateEventSubscriptionResult> instance
 
   
 
@@ -718,11 +727,11 @@ your customer account.
 
 
 
-=head2 CreateOptionGroup()
+=head2 CreateOptionGroup(EngineName => Str, MajorEngineVersion => Str, OptionGroupDescription => Str, OptionGroupName => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
 
-  Arguments described in: L<Paws::RDS::CreateOptionGroup>
+Each argument is described in detail in: L<Paws::RDS::CreateOptionGroup>
 
-  Returns: L<Paws::RDS::CreateOptionGroupResult>
+Returns: a L<Paws::RDS::CreateOptionGroupResult> instance
 
   
 
@@ -738,11 +747,11 @@ Creates a new option group. You can create up to 20 option groups.
 
 
 
-=head2 DeleteDBInstance()
+=head2 DeleteDBInstance(DBInstanceIdentifier => Str, [FinalDBSnapshotIdentifier => Str, SkipFinalSnapshot => Bool])
 
-  Arguments described in: L<Paws::RDS::DeleteDBInstance>
+Each argument is described in detail in: L<Paws::RDS::DeleteDBInstance>
 
-  Returns: L<Paws::RDS::DeleteDBInstanceResult>
+Returns: a L<Paws::RDS::DeleteDBInstanceResult> instance
 
   
 
@@ -768,11 +777,11 @@ The action cannot be canceled or reverted once submitted.
 
 
 
-=head2 DeleteDBParameterGroup()
+=head2 DeleteDBParameterGroup(DBParameterGroupName => Str)
 
-  Arguments described in: L<Paws::RDS::DeleteDBParameterGroup>
+Each argument is described in detail in: L<Paws::RDS::DeleteDBParameterGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -789,11 +798,11 @@ deleted cannot be associated with any DB instances.
 
 
 
-=head2 DeleteDBSecurityGroup()
+=head2 DeleteDBSecurityGroup(DBSecurityGroupName => Str)
 
-  Arguments described in: L<Paws::RDS::DeleteDBSecurityGroup>
+Each argument is described in detail in: L<Paws::RDS::DeleteDBSecurityGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -812,11 +821,11 @@ instances.
 
 
 
-=head2 DeleteDBSnapshot()
+=head2 DeleteDBSnapshot(DBSnapshotIdentifier => Str)
 
-  Arguments described in: L<Paws::RDS::DeleteDBSnapshot>
+Each argument is described in detail in: L<Paws::RDS::DeleteDBSnapshot>
 
-  Returns: L<Paws::RDS::DeleteDBSnapshotResult>
+Returns: a L<Paws::RDS::DeleteDBSnapshotResult> instance
 
   
 
@@ -835,11 +844,11 @@ The DBSnapshot must be in the C<available> state to be deleted.
 
 
 
-=head2 DeleteDBSubnetGroup()
+=head2 DeleteDBSubnetGroup(DBSubnetGroupName => Str)
 
-  Arguments described in: L<Paws::RDS::DeleteDBSubnetGroup>
+Each argument is described in detail in: L<Paws::RDS::DeleteDBSubnetGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -858,11 +867,11 @@ instances.
 
 
 
-=head2 DeleteEventSubscription()
+=head2 DeleteEventSubscription(SubscriptionName => Str)
 
-  Arguments described in: L<Paws::RDS::DeleteEventSubscription>
+Each argument is described in detail in: L<Paws::RDS::DeleteEventSubscription>
 
-  Returns: L<Paws::RDS::DeleteEventSubscriptionResult>
+Returns: a L<Paws::RDS::DeleteEventSubscriptionResult> instance
 
   
 
@@ -878,11 +887,11 @@ Deletes an RDS event notification subscription.
 
 
 
-=head2 DeleteOptionGroup()
+=head2 DeleteOptionGroup(OptionGroupName => Str)
 
-  Arguments described in: L<Paws::RDS::DeleteOptionGroup>
+Each argument is described in detail in: L<Paws::RDS::DeleteOptionGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -900,9 +909,9 @@ Deletes an existing option group.
 
 =head2 DescribeAccountAttributes()
 
-  Arguments described in: L<Paws::RDS::DescribeAccountAttributes>
+Each argument is described in detail in: L<Paws::RDS::DescribeAccountAttributes>
 
-  Returns: L<Paws::RDS::AccountAttributesMessage>
+Returns: a L<Paws::RDS::AccountAttributesMessage> instance
 
   
 
@@ -923,11 +932,11 @@ This command does not take any parameters.
 
 
 
-=head2 DescribeCertificates()
+=head2 DescribeCertificates([CertificateIdentifier => Str, Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], MaxRecords => Int])
 
-  Arguments described in: L<Paws::RDS::DescribeCertificates>
+Each argument is described in detail in: L<Paws::RDS::DescribeCertificates>
 
-  Returns: L<Paws::RDS::CertificateMessage>
+Returns: a L<Paws::RDS::CertificateMessage> instance
 
   
 
@@ -944,11 +953,11 @@ account.
 
 
 
-=head2 DescribeDBEngineVersions()
+=head2 DescribeDBEngineVersions([DefaultOnly => Bool, Filters => ArrayRef[Paws::RDS::Filter], DBParameterGroupFamily => Str, Engine => Str, ListSupportedCharacterSets => Bool, EngineVersion => Str, Marker => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RDS::DescribeDBEngineVersions>
+Each argument is described in detail in: L<Paws::RDS::DescribeDBEngineVersions>
 
-  Returns: L<Paws::RDS::DBEngineVersionMessage>
+Returns: a L<Paws::RDS::DBEngineVersionMessage> instance
 
   
 
@@ -964,11 +973,11 @@ Returns a list of the available DB engines.
 
 
 
-=head2 DescribeDBInstances()
+=head2 DescribeDBInstances([MaxRecords => Int, Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], DBInstanceIdentifier => Str])
 
-  Arguments described in: L<Paws::RDS::DescribeDBInstances>
+Each argument is described in detail in: L<Paws::RDS::DescribeDBInstances>
 
-  Returns: L<Paws::RDS::DBInstanceMessage>
+Returns: a L<Paws::RDS::DBInstanceMessage> instance
 
   
 
@@ -985,11 +994,11 @@ pagination.
 
 
 
-=head2 DescribeDBLogFiles()
+=head2 DescribeDBLogFiles(DBInstanceIdentifier => Str, [MaxRecords => Int, FileSize => Num, FileLastWritten => Num, Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], FilenameContains => Str])
 
-  Arguments described in: L<Paws::RDS::DescribeDBLogFiles>
+Each argument is described in detail in: L<Paws::RDS::DescribeDBLogFiles>
 
-  Returns: L<Paws::RDS::DescribeDBLogFilesResponse>
+Returns: a L<Paws::RDS::DescribeDBLogFilesResponse> instance
 
   
 
@@ -1005,11 +1014,11 @@ Returns a list of DB log files for the DB instance.
 
 
 
-=head2 DescribeDBParameterGroups()
+=head2 DescribeDBParameterGroups([Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, DBParameterGroupName => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RDS::DescribeDBParameterGroups>
+Each argument is described in detail in: L<Paws::RDS::DescribeDBParameterGroups>
 
-  Returns: L<Paws::RDS::DBParameterGroupsMessage>
+Returns: a L<Paws::RDS::DBParameterGroupsMessage> instance
 
   
 
@@ -1027,11 +1036,11 @@ description of the specified DB parameter group.
 
 
 
-=head2 DescribeDBParameters()
+=head2 DescribeDBParameters(DBParameterGroupName => Str, [Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], Source => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RDS::DescribeDBParameters>
+Each argument is described in detail in: L<Paws::RDS::DescribeDBParameters>
 
-  Returns: L<Paws::RDS::DBParameterGroupDetails>
+Returns: a L<Paws::RDS::DBParameterGroupDetails> instance
 
   
 
@@ -1048,11 +1057,11 @@ group.
 
 
 
-=head2 DescribeDBSecurityGroups()
+=head2 DescribeDBSecurityGroups([MaxRecords => Int, DBSecurityGroupName => Str, Marker => Str, Filters => ArrayRef[Paws::RDS::Filter]])
 
-  Arguments described in: L<Paws::RDS::DescribeDBSecurityGroups>
+Each argument is described in detail in: L<Paws::RDS::DescribeDBSecurityGroups>
 
-  Returns: L<Paws::RDS::DBSecurityGroupMessage>
+Returns: a L<Paws::RDS::DBSecurityGroupMessage> instance
 
   
 
@@ -1070,11 +1079,11 @@ descriptions of the specified DB security group.
 
 
 
-=head2 DescribeDBSnapshots()
+=head2 DescribeDBSnapshots([Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, DBInstanceIdentifier => Str, SnapshotType => Str, DBSnapshotIdentifier => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RDS::DescribeDBSnapshots>
+Each argument is described in detail in: L<Paws::RDS::DescribeDBSnapshots>
 
-  Returns: L<Paws::RDS::DBSnapshotMessage>
+Returns: a L<Paws::RDS::DBSnapshotMessage> instance
 
   
 
@@ -1090,11 +1099,11 @@ Returns information about DB snapshots. This API supports pagination.
 
 
 
-=head2 DescribeDBSubnetGroups()
+=head2 DescribeDBSubnetGroups([Marker => Str, DBSubnetGroupName => Str, Filters => ArrayRef[Paws::RDS::Filter], MaxRecords => Int])
 
-  Arguments described in: L<Paws::RDS::DescribeDBSubnetGroups>
+Each argument is described in detail in: L<Paws::RDS::DescribeDBSubnetGroups>
 
-  Returns: L<Paws::RDS::DBSubnetGroupMessage>
+Returns: a L<Paws::RDS::DBSubnetGroupMessage> instance
 
   
 
@@ -1114,11 +1123,11 @@ For an overview of CIDR ranges, go to the Wikipedia Tutorial.
 
 
 
-=head2 DescribeEngineDefaultParameters()
+=head2 DescribeEngineDefaultParameters(DBParameterGroupFamily => Str, [Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], MaxRecords => Int])
 
-  Arguments described in: L<Paws::RDS::DescribeEngineDefaultParameters>
+Each argument is described in detail in: L<Paws::RDS::DescribeEngineDefaultParameters>
 
-  Returns: L<Paws::RDS::DescribeEngineDefaultParametersResult>
+Returns: a L<Paws::RDS::DescribeEngineDefaultParametersResult> instance
 
   
 
@@ -1135,11 +1144,11 @@ specified database engine.
 
 
 
-=head2 DescribeEventCategories()
+=head2 DescribeEventCategories([Filters => ArrayRef[Paws::RDS::Filter], SourceType => Str])
 
-  Arguments described in: L<Paws::RDS::DescribeEventCategories>
+Each argument is described in detail in: L<Paws::RDS::DescribeEventCategories>
 
-  Returns: L<Paws::RDS::EventCategoriesMessage>
+Returns: a L<Paws::RDS::EventCategoriesMessage> instance
 
   
 
@@ -1158,11 +1167,11 @@ Guide.
 
 
 
-=head2 DescribeEvents()
+=head2 DescribeEvents([EventCategories => ArrayRef[Str], Duration => Int, Filters => ArrayRef[Paws::RDS::Filter], StartTime => Str, SourceIdentifier => Str, MaxRecords => Int, SourceType => Str, EndTime => Str, Marker => Str])
 
-  Arguments described in: L<Paws::RDS::DescribeEvents>
+Each argument is described in detail in: L<Paws::RDS::DescribeEvents>
 
-  Returns: L<Paws::RDS::EventsMessage>
+Returns: a L<Paws::RDS::EventsMessage> instance
 
   
 
@@ -1182,11 +1191,11 @@ as a parameter. By default, the past hour of events are returned.
 
 
 
-=head2 DescribeEventSubscriptions()
+=head2 DescribeEventSubscriptions([SubscriptionName => Str, Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], MaxRecords => Int])
 
-  Arguments described in: L<Paws::RDS::DescribeEventSubscriptions>
+Each argument is described in detail in: L<Paws::RDS::DescribeEventSubscriptions>
 
-  Returns: L<Paws::RDS::EventSubscriptionsMessage>
+Returns: a L<Paws::RDS::EventSubscriptionsMessage> instance
 
   
 
@@ -1207,11 +1216,11 @@ subscription.
 
 
 
-=head2 DescribeOptionGroupOptions()
+=head2 DescribeOptionGroupOptions(EngineName => Str, [Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], MajorEngineVersion => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RDS::DescribeOptionGroupOptions>
+Each argument is described in detail in: L<Paws::RDS::DescribeOptionGroupOptions>
 
-  Returns: L<Paws::RDS::OptionGroupOptionsMessage>
+Returns: a L<Paws::RDS::OptionGroupOptionsMessage> instance
 
   
 
@@ -1227,11 +1236,11 @@ Describes all available options.
 
 
 
-=head2 DescribeOptionGroups()
+=head2 DescribeOptionGroups([MajorEngineVersion => Str, Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], EngineName => Str, MaxRecords => Int, OptionGroupName => Str])
 
-  Arguments described in: L<Paws::RDS::DescribeOptionGroups>
+Each argument is described in detail in: L<Paws::RDS::DescribeOptionGroups>
 
-  Returns: L<Paws::RDS::OptionGroups>
+Returns: a L<Paws::RDS::OptionGroups> instance
 
   
 
@@ -1247,11 +1256,11 @@ Describes the available option groups.
 
 
 
-=head2 DescribeOrderableDBInstanceOptions()
+=head2 DescribeOrderableDBInstanceOptions(Engine => Str, [EngineVersion => Str, DBInstanceClass => Str, LicenseModel => Str, Marker => Str, MaxRecords => Int, Filters => ArrayRef[Paws::RDS::Filter], Vpc => Bool])
 
-  Arguments described in: L<Paws::RDS::DescribeOrderableDBInstanceOptions>
+Each argument is described in detail in: L<Paws::RDS::DescribeOrderableDBInstanceOptions>
 
-  Returns: L<Paws::RDS::OrderableDBInstanceOptionsMessage>
+Returns: a L<Paws::RDS::OrderableDBInstanceOptionsMessage> instance
 
   
 
@@ -1268,11 +1277,11 @@ engine.
 
 
 
-=head2 DescribePendingMaintenanceActions()
+=head2 DescribePendingMaintenanceActions([Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], MaxRecords => Int, ResourceIdentifier => Str])
 
-  Arguments described in: L<Paws::RDS::DescribePendingMaintenanceActions>
+Each argument is described in detail in: L<Paws::RDS::DescribePendingMaintenanceActions>
 
-  Returns: L<Paws::RDS::PendingMaintenanceActionsMessage>
+Returns: a L<Paws::RDS::PendingMaintenanceActionsMessage> instance
 
   
 
@@ -1289,11 +1298,11 @@ least one pending maintenance action.
 
 
 
-=head2 DescribeReservedDBInstances()
+=head2 DescribeReservedDBInstances([OfferingType => Str, Filters => ArrayRef[Paws::RDS::Filter], Duration => Str, MultiAZ => Bool, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str, Marker => Str, DBInstanceClass => Str, ProductDescription => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RDS::DescribeReservedDBInstances>
+Each argument is described in detail in: L<Paws::RDS::DescribeReservedDBInstances>
 
-  Returns: L<Paws::RDS::ReservedDBInstanceMessage>
+Returns: a L<Paws::RDS::ReservedDBInstanceMessage> instance
 
   
 
@@ -1310,11 +1319,11 @@ about a specified reserved DB instance.
 
 
 
-=head2 DescribeReservedDBInstancesOfferings()
+=head2 DescribeReservedDBInstancesOfferings([Filters => ArrayRef[Paws::RDS::Filter], MultiAZ => Bool, Duration => Str, OfferingType => Str, DBInstanceClass => Str, Marker => Str, ReservedDBInstancesOfferingId => Str, MaxRecords => Int, ProductDescription => Str])
 
-  Arguments described in: L<Paws::RDS::DescribeReservedDBInstancesOfferings>
+Each argument is described in detail in: L<Paws::RDS::DescribeReservedDBInstancesOfferings>
 
-  Returns: L<Paws::RDS::ReservedDBInstancesOfferingMessage>
+Returns: a L<Paws::RDS::ReservedDBInstancesOfferingMessage> instance
 
   
 
@@ -1330,11 +1339,11 @@ Lists available reserved DB instance offerings.
 
 
 
-=head2 DownloadDBLogFilePortion()
+=head2 DownloadDBLogFilePortion(DBInstanceIdentifier => Str, LogFileName => Str, [Marker => Str, NumberOfLines => Int])
 
-  Arguments described in: L<Paws::RDS::DownloadDBLogFilePortion>
+Each argument is described in detail in: L<Paws::RDS::DownloadDBLogFilePortion>
 
-  Returns: L<Paws::RDS::DownloadDBLogFilePortionDetails>
+Returns: a L<Paws::RDS::DownloadDBLogFilePortionDetails> instance
 
   
 
@@ -1350,11 +1359,11 @@ Downloads all or a portion of the specified log file.
 
 
 
-=head2 ListTagsForResource()
+=head2 ListTagsForResource(ResourceName => Str, [Filters => ArrayRef[Paws::RDS::Filter]])
 
-  Arguments described in: L<Paws::RDS::ListTagsForResource>
+Each argument is described in detail in: L<Paws::RDS::ListTagsForResource>
 
-  Returns: L<Paws::RDS::TagListMessage>
+Returns: a L<Paws::RDS::TagListMessage> instance
 
   
 
@@ -1373,11 +1382,11 @@ RDS Resources.
 
 
 
-=head2 ModifyDBInstance()
+=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [VpcSecurityGroupIds => ArrayRef[Str], EngineVersion => Str, DBInstanceClass => Str, Iops => Int, OptionGroupName => Str, AllowMajorVersionUpgrade => Bool, DBSecurityGroups => ArrayRef[Str], AllocatedStorage => Int, BackupRetentionPeriod => Int, PreferredMaintenanceWindow => Str, ApplyImmediately => Bool, NewDBInstanceIdentifier => Str, TdeCredentialPassword => Str, StorageType => Str, AutoMinorVersionUpgrade => Bool, DBParameterGroupName => Str, MultiAZ => Bool, PreferredBackupWindow => Str, MasterUserPassword => Str, TdeCredentialArn => Str, CACertificateIdentifier => Str])
 
-  Arguments described in: L<Paws::RDS::ModifyDBInstance>
+Each argument is described in detail in: L<Paws::RDS::ModifyDBInstance>
 
-  Returns: L<Paws::RDS::ModifyDBInstanceResult>
+Returns: a L<Paws::RDS::ModifyDBInstanceResult> instance
 
   
 
@@ -1395,11 +1404,11 @@ values in the request.
 
 
 
-=head2 ModifyDBParameterGroup()
+=head2 ModifyDBParameterGroup(DBParameterGroupName => Str, Parameters => ArrayRef[Paws::RDS::Parameter])
 
-  Arguments described in: L<Paws::RDS::ModifyDBParameterGroup>
+Each argument is described in detail in: L<Paws::RDS::ModifyDBParameterGroup>
 
-  Returns: L<Paws::RDS::DBParameterGroupNameMessage>
+Returns: a L<Paws::RDS::DBParameterGroupNameMessage> instance
 
   
 
@@ -1434,11 +1443,11 @@ modified.
 
 
 
-=head2 ModifyDBSubnetGroup()
+=head2 ModifyDBSubnetGroup(DBSubnetGroupName => Str, SubnetIds => ArrayRef[Str], [DBSubnetGroupDescription => Str])
 
-  Arguments described in: L<Paws::RDS::ModifyDBSubnetGroup>
+Each argument is described in detail in: L<Paws::RDS::ModifyDBSubnetGroup>
 
-  Returns: L<Paws::RDS::ModifyDBSubnetGroupResult>
+Returns: a L<Paws::RDS::ModifyDBSubnetGroupResult> instance
 
   
 
@@ -1455,11 +1464,11 @@ least one subnet in at least two AZs in the region.
 
 
 
-=head2 ModifyEventSubscription()
+=head2 ModifyEventSubscription(SubscriptionName => Str, [EventCategories => ArrayRef[Str], Enabled => Bool, SnsTopicArn => Str, SourceType => Str])
 
-  Arguments described in: L<Paws::RDS::ModifyEventSubscription>
+Each argument is described in detail in: L<Paws::RDS::ModifyEventSubscription>
 
-  Returns: L<Paws::RDS::ModifyEventSubscriptionResult>
+Returns: a L<Paws::RDS::ModifyEventSubscriptionResult> instance
 
   
 
@@ -1483,11 +1492,11 @@ B<DescribeEventCategories> action.
 
 
 
-=head2 ModifyOptionGroup()
+=head2 ModifyOptionGroup(OptionGroupName => Str, [OptionsToRemove => ArrayRef[Str], ApplyImmediately => Bool, OptionsToInclude => ArrayRef[Paws::RDS::OptionConfiguration]])
 
-  Arguments described in: L<Paws::RDS::ModifyOptionGroup>
+Each argument is described in detail in: L<Paws::RDS::ModifyOptionGroup>
 
-  Returns: L<Paws::RDS::ModifyOptionGroupResult>
+Returns: a L<Paws::RDS::ModifyOptionGroupResult> instance
 
   
 
@@ -1503,11 +1512,11 @@ Modifies an existing option group.
 
 
 
-=head2 PromoteReadReplica()
+=head2 PromoteReadReplica(DBInstanceIdentifier => Str, [PreferredBackupWindow => Str, BackupRetentionPeriod => Int])
 
-  Arguments described in: L<Paws::RDS::PromoteReadReplica>
+Each argument is described in detail in: L<Paws::RDS::PromoteReadReplica>
 
-  Returns: L<Paws::RDS::PromoteReadReplicaResult>
+Returns: a L<Paws::RDS::PromoteReadReplicaResult> instance
 
   
 
@@ -1528,11 +1537,11 @@ primary instance, backups are taken based on your backup settings.
 
 
 
-=head2 PurchaseReservedDBInstancesOffering()
+=head2 PurchaseReservedDBInstancesOffering(ReservedDBInstancesOfferingId => Str, [ReservedDBInstanceId => Str, Tags => ArrayRef[Paws::RDS::Tag], DBInstanceCount => Int])
 
-  Arguments described in: L<Paws::RDS::PurchaseReservedDBInstancesOffering>
+Each argument is described in detail in: L<Paws::RDS::PurchaseReservedDBInstancesOffering>
 
-  Returns: L<Paws::RDS::PurchaseReservedDBInstancesOfferingResult>
+Returns: a L<Paws::RDS::PurchaseReservedDBInstancesOfferingResult> instance
 
   
 
@@ -1548,11 +1557,11 @@ Purchases a reserved DB instance offering.
 
 
 
-=head2 RebootDBInstance()
+=head2 RebootDBInstance(DBInstanceIdentifier => Str, [ForceFailover => Bool])
 
-  Arguments described in: L<Paws::RDS::RebootDBInstance>
+Each argument is described in detail in: L<Paws::RDS::RebootDBInstance>
 
-  Returns: L<Paws::RDS::RebootDBInstanceResult>
+Returns: a L<Paws::RDS::RebootDBInstanceResult> instance
 
   
 
@@ -1586,11 +1595,11 @@ transactions.
 
 
 
-=head2 RemoveSourceIdentifierFromSubscription()
+=head2 RemoveSourceIdentifierFromSubscription(SourceIdentifier => Str, SubscriptionName => Str)
 
-  Arguments described in: L<Paws::RDS::RemoveSourceIdentifierFromSubscription>
+Each argument is described in detail in: L<Paws::RDS::RemoveSourceIdentifierFromSubscription>
 
-  Returns: L<Paws::RDS::RemoveSourceIdentifierFromSubscriptionResult>
+Returns: a L<Paws::RDS::RemoveSourceIdentifierFromSubscriptionResult> instance
 
   
 
@@ -1607,11 +1616,11 @@ subscription.
 
 
 
-=head2 RemoveTagsFromResource()
+=head2 RemoveTagsFromResource(ResourceName => Str, TagKeys => ArrayRef[Str])
 
-  Arguments described in: L<Paws::RDS::RemoveTagsFromResource>
+Each argument is described in detail in: L<Paws::RDS::RemoveTagsFromResource>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -1630,11 +1639,11 @@ RDS Resources.
 
 
 
-=head2 ResetDBParameterGroup()
+=head2 ResetDBParameterGroup(DBParameterGroupName => Str, [Parameters => ArrayRef[Paws::RDS::Parameter], ResetAllParameters => Bool])
 
-  Arguments described in: L<Paws::RDS::ResetDBParameterGroup>
+Each argument is described in detail in: L<Paws::RDS::ResetDBParameterGroup>
 
-  Returns: L<Paws::RDS::DBParameterGroupNameMessage>
+Returns: a L<Paws::RDS::DBParameterGroupNameMessage> instance
 
   
 
@@ -1657,11 +1666,11 @@ or C<RebootDBInstance> request.
 
 
 
-=head2 RestoreDBInstanceFromDBSnapshot()
+=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [Tags => ArrayRef[Paws::RDS::Tag], AvailabilityZone => Str, Port => Int, Engine => Str, Iops => Int, OptionGroupName => Str, DBInstanceClass => Str, LicenseModel => Str, DBSubnetGroupName => Str, DBName => Str, TdeCredentialArn => Str, StorageType => Str, AutoMinorVersionUpgrade => Bool, MultiAZ => Bool, TdeCredentialPassword => Str, PubliclyAccessible => Bool])
 
-  Arguments described in: L<Paws::RDS::RestoreDBInstanceFromDBSnapshot>
+Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceFromDBSnapshot>
 
-  Returns: L<Paws::RDS::RestoreDBInstanceFromDBSnapshotResult>
+Returns: a L<Paws::RDS::RestoreDBInstanceFromDBSnapshotResult> instance
 
   
 
@@ -1690,11 +1699,11 @@ snapshot.
 
 
 
-=head2 RestoreDBInstanceToPointInTime()
+=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [TdeCredentialArn => Str, AutoMinorVersionUpgrade => Bool, StorageType => Str, MultiAZ => Bool, RestoreTime => Str, TdeCredentialPassword => Str, PubliclyAccessible => Bool, UseLatestRestorableTime => Bool, Tags => ArrayRef[Paws::RDS::Tag], AvailabilityZone => Str, Port => Int, Engine => Str, Iops => Int, OptionGroupName => Str, LicenseModel => Str, DBInstanceClass => Str, DBSubnetGroupName => Str, DBName => Str])
 
-  Arguments described in: L<Paws::RDS::RestoreDBInstanceToPointInTime>
+Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceToPointInTime>
 
-  Returns: L<Paws::RDS::RestoreDBInstanceToPointInTimeResult>
+Returns: a L<Paws::RDS::RestoreDBInstanceToPointInTimeResult> instance
 
   
 
@@ -1715,11 +1724,11 @@ group.
 
 
 
-=head2 RevokeDBSecurityGroupIngress()
+=head2 RevokeDBSecurityGroupIngress(DBSecurityGroupName => Str, [EC2SecurityGroupOwnerId => Str, EC2SecurityGroupId => Str, EC2SecurityGroupName => Str, CIDRIP => Str])
 
-  Arguments described in: L<Paws::RDS::RevokeDBSecurityGroupIngress>
+Each argument is described in detail in: L<Paws::RDS::RevokeDBSecurityGroupIngress>
 
-  Returns: L<Paws::RDS::RevokeDBSecurityGroupIngressResult>
+Returns: a L<Paws::RDS::RevokeDBSecurityGroupIngressResult> instance
 
   
 

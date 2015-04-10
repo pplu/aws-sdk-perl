@@ -102,7 +102,7 @@ Cognito. The ID of the pool to which this identity belongs.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UnsubscribeFromDataset in Paws::CognitoSync
+This class forms part of L<Paws>, documenting arguments for method UnsubscribeFromDataset in L<Paws::CognitoSync>
 
 =head1 BUGS and CONTRIBUTIONS
 

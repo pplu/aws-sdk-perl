@@ -81,7 +81,7 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateAlias in Paws::KMS
+This class forms part of L<Paws>, documenting arguments for method CreateAlias in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 

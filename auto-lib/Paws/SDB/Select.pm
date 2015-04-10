@@ -89,7 +89,7 @@ The expression used to query the domain.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for Select in Paws::SDB
+This class forms part of L<Paws>, documenting arguments for method Select in L<Paws::SDB>
 
 =head1 BUGS and CONTRIBUTIONS
 

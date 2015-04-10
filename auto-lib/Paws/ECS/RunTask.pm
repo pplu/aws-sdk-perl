@@ -115,7 +115,7 @@ Resource Name (ARN) of the task definition that you want to run.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for RunTask in Paws::ECS
+This class forms part of L<Paws>, documenting arguments for method RunTask in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 

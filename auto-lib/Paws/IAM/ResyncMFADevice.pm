@@ -100,7 +100,7 @@ The name of the user whose MFA device you want to resynchronize.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ResyncMFADevice in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method ResyncMFADevice in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

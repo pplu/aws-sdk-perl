@@ -68,7 +68,7 @@ The stream name associated with the request.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for PutRecords in Paws::Kinesis
+This class forms part of L<Paws>, documenting arguments for method PutRecords in L<Paws::Kinesis>
 
 =head1 BUGS and CONTRIBUTIONS
 

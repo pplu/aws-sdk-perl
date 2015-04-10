@@ -1,3 +1,8 @@
+0.03 10 Apr 2015 22:00:00
+ - Service updates
+ - Support for new services (like MachineLearning and WorkSpaces)
+ - Better documentation for arguments to methods (and caller classes)
+
 0.02 6 Apr 2015 18:30:00
  - Service updates
  - Map types were not being passed correctly to APIs

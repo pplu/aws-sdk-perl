@@ -68,7 +68,7 @@ The workflow type to describe.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeWorkflowType in Paws::SimpleWorkflow
+This class forms part of L<Paws>, documenting arguments for method DescribeWorkflowType in L<Paws::SimpleWorkflow>
 
 =head1 BUGS and CONTRIBUTIONS
 

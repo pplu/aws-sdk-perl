@@ -72,7 +72,7 @@ only the IAM user that created a job flow can view and manage it.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for SetVisibleToAllUsers in Paws::EMR
+This class forms part of L<Paws>, documenting arguments for method SetVisibleToAllUsers in L<Paws::EMR>
 
 =head1 BUGS and CONTRIBUTIONS
 

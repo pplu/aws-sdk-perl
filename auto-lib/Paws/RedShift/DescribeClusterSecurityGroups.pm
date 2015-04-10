@@ -149,7 +149,7 @@ associated with them.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeClusterSecurityGroups in Paws::RedShift
+This class forms part of L<Paws>, documenting arguments for method DescribeClusterSecurityGroups in L<Paws::RedShift>
 
 =head1 BUGS and CONTRIBUTIONS
 

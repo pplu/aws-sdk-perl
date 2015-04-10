@@ -71,7 +71,7 @@ groups in the list.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListDeploymentGroups in Paws::CodeDeploy
+This class forms part of L<Paws>, documenting arguments for method ListDeploymentGroups in L<Paws::CodeDeploy>
 
 =head1 BUGS and CONTRIBUTIONS
 

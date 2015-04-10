@@ -166,8 +166,17 @@ Paws::ElasticTranscoder - Perl Interface to AWS Amazon Elastic Transcoder
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('ElasticTranscoder')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -188,11 +197,11 @@ The AWS Elastic Transcoder Service.
 
 =head1 METHODS
 
-=head2 CancelJob()
+=head2 CancelJob(Id => Str)
 
-  Arguments described in: L<Paws::ElasticTranscoder::CancelJob>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::CancelJob>
 
-  Returns: L<Paws::ElasticTranscoder::CancelJobResponse>
+Returns: a L<Paws::ElasticTranscoder::CancelJobResponse> instance
 
   
 
@@ -212,11 +221,11 @@ identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
 
 
 
-=head2 CreateJob()
+=head2 CreateJob(Input => Paws::ElasticTranscoder::JobInput, PipelineId => Str, [Playlists => ArrayRef[Paws::ElasticTranscoder::CreateJobPlaylist], OutputKeyPrefix => Str, Outputs => ArrayRef[Paws::ElasticTranscoder::CreateJobOutput], Output => Paws::ElasticTranscoder::CreateJobOutput, UserMetadata => Paws::ElasticTranscoder::UserMetadata])
 
-  Arguments described in: L<Paws::ElasticTranscoder::CreateJob>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::CreateJob>
 
-  Returns: L<Paws::ElasticTranscoder::CreateJobResponse>
+Returns: a L<Paws::ElasticTranscoder::CreateJobResponse> instance
 
   
 
@@ -239,11 +248,11 @@ one output for the Kindle Fire and another output for the Apple iPhone
 
 
 
-=head2 CreatePipeline()
+=head2 CreatePipeline(InputBucket => Str, Name => Str, Role => Str, [ContentConfig => Paws::ElasticTranscoder::PipelineOutputConfig, Notifications => Paws::ElasticTranscoder::Notifications, OutputBucket => Str, AwsKmsKeyArn => Str, ThumbnailConfig => Paws::ElasticTranscoder::PipelineOutputConfig])
 
-  Arguments described in: L<Paws::ElasticTranscoder::CreatePipeline>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::CreatePipeline>
 
-  Returns: L<Paws::ElasticTranscoder::CreatePipelineResponse>
+Returns: a L<Paws::ElasticTranscoder::CreatePipelineResponse> instance
 
   
 
@@ -260,11 +269,11 @@ specify.
 
 
 
-=head2 CreatePreset()
+=head2 CreatePreset(Container => Str, Name => Str, [Video => Paws::ElasticTranscoder::VideoParameters, Audio => Paws::ElasticTranscoder::AudioParameters, Thumbnails => Paws::ElasticTranscoder::Thumbnails, Description => Str])
 
-  Arguments described in: L<Paws::ElasticTranscoder::CreatePreset>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::CreatePreset>
 
-  Returns: L<Paws::ElasticTranscoder::CreatePresetResponse>
+Returns: a L<Paws::ElasticTranscoder::CreatePresetResponse> instance
 
   
 
@@ -298,11 +307,11 @@ audiovisual services>.
 
 
 
-=head2 DeletePipeline()
+=head2 DeletePipeline(Id => Str)
 
-  Arguments described in: L<Paws::ElasticTranscoder::DeletePipeline>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::DeletePipeline>
 
-  Returns: L<Paws::ElasticTranscoder::DeletePipelineResponse>
+Returns: a L<Paws::ElasticTranscoder::DeletePipelineResponse> instance
 
   
 
@@ -322,11 +331,11 @@ currently in use, C<DeletePipeline> returns an error.
 
 
 
-=head2 DeletePreset()
+=head2 DeletePreset(Id => Str)
 
-  Arguments described in: L<Paws::ElasticTranscoder::DeletePreset>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::DeletePreset>
 
-  Returns: L<Paws::ElasticTranscoder::DeletePresetResponse>
+Returns: a L<Paws::ElasticTranscoder::DeletePresetResponse> instance
 
   
 
@@ -346,11 +355,11 @@ Transcoder.
 
 
 
-=head2 ListJobsByPipeline()
+=head2 ListJobsByPipeline(PipelineId => Str, [PageToken => Str, Ascending => Str])
 
-  Arguments described in: L<Paws::ElasticTranscoder::ListJobsByPipeline>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::ListJobsByPipeline>
 
-  Returns: L<Paws::ElasticTranscoder::ListJobsByPipelineResponse>
+Returns: a L<Paws::ElasticTranscoder::ListJobsByPipelineResponse> instance
 
   
 
@@ -371,11 +380,11 @@ satisfies the search criteria.
 
 
 
-=head2 ListJobsByStatus()
+=head2 ListJobsByStatus(Status => Str, [PageToken => Str, Ascending => Str])
 
-  Arguments described in: L<Paws::ElasticTranscoder::ListJobsByStatus>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::ListJobsByStatus>
 
-  Returns: L<Paws::ElasticTranscoder::ListJobsByStatusResponse>
+Returns: a L<Paws::ElasticTranscoder::ListJobsByStatusResponse> instance
 
   
 
@@ -393,11 +402,11 @@ that satisfies the search criteria.
 
 
 
-=head2 ListPipelines()
+=head2 ListPipelines([Ascending => Str, PageToken => Str])
 
-  Arguments described in: L<Paws::ElasticTranscoder::ListPipelines>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::ListPipelines>
 
-  Returns: L<Paws::ElasticTranscoder::ListPipelinesResponse>
+Returns: a L<Paws::ElasticTranscoder::ListPipelinesResponse> instance
 
   
 
@@ -414,11 +423,11 @@ with the current AWS account.
 
 
 
-=head2 ListPresets()
+=head2 ListPresets([Ascending => Str, PageToken => Str])
 
-  Arguments described in: L<Paws::ElasticTranscoder::ListPresets>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::ListPresets>
 
-  Returns: L<Paws::ElasticTranscoder::ListPresetsResponse>
+Returns: a L<Paws::ElasticTranscoder::ListPresetsResponse> instance
 
   
 
@@ -436,11 +445,11 @@ region.
 
 
 
-=head2 ReadJob()
+=head2 ReadJob(Id => Str)
 
-  Arguments described in: L<Paws::ElasticTranscoder::ReadJob>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::ReadJob>
 
-  Returns: L<Paws::ElasticTranscoder::ReadJobResponse>
+Returns: a L<Paws::ElasticTranscoder::ReadJobResponse> instance
 
   
 
@@ -456,11 +465,11 @@ The ReadJob operation returns detailed information about a job.
 
 
 
-=head2 ReadPipeline()
+=head2 ReadPipeline(Id => Str)
 
-  Arguments described in: L<Paws::ElasticTranscoder::ReadPipeline>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::ReadPipeline>
 
-  Returns: L<Paws::ElasticTranscoder::ReadPipelineResponse>
+Returns: a L<Paws::ElasticTranscoder::ReadPipelineResponse> instance
 
   
 
@@ -476,11 +485,11 @@ The ReadPipeline operation gets detailed information about a pipeline.
 
 
 
-=head2 ReadPreset()
+=head2 ReadPreset(Id => Str)
 
-  Arguments described in: L<Paws::ElasticTranscoder::ReadPreset>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::ReadPreset>
 
-  Returns: L<Paws::ElasticTranscoder::ReadPresetResponse>
+Returns: a L<Paws::ElasticTranscoder::ReadPresetResponse> instance
 
   
 
@@ -496,11 +505,11 @@ The ReadPreset operation gets detailed information about a preset.
 
 
 
-=head2 TestRole()
+=head2 TestRole(InputBucket => Str, OutputBucket => Str, Role => Str, Topics => ArrayRef[Str])
 
-  Arguments described in: L<Paws::ElasticTranscoder::TestRole>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::TestRole>
 
-  Returns: L<Paws::ElasticTranscoder::TestRoleResponse>
+Returns: a L<Paws::ElasticTranscoder::TestRoleResponse> instance
 
   
 
@@ -523,11 +532,11 @@ topics that you specify.
 
 
 
-=head2 UpdatePipeline()
+=head2 UpdatePipeline(Id => Str, [AwsKmsKeyArn => Str, Name => Str, InputBucket => Str, ThumbnailConfig => Paws::ElasticTranscoder::PipelineOutputConfig, ContentConfig => Paws::ElasticTranscoder::PipelineOutputConfig, Notifications => Paws::ElasticTranscoder::Notifications, Role => Str])
 
-  Arguments described in: L<Paws::ElasticTranscoder::UpdatePipeline>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipeline>
 
-  Returns: L<Paws::ElasticTranscoder::UpdatePipelineResponse>
+Returns: a L<Paws::ElasticTranscoder::UpdatePipelineResponse> instance
 
   
 
@@ -547,11 +556,11 @@ that you submit after you change settings.
 
 
 
-=head2 UpdatePipelineNotifications()
+=head2 UpdatePipelineNotifications(Id => Str, Notifications => Paws::ElasticTranscoder::Notifications)
 
-  Arguments described in: L<Paws::ElasticTranscoder::UpdatePipelineNotifications>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipelineNotifications>
 
-  Returns: L<Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse>
+Returns: a L<Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse> instance
 
   
 
@@ -571,11 +580,11 @@ returns the values that you specified in the request.
 
 
 
-=head2 UpdatePipelineStatus()
+=head2 UpdatePipelineStatus(Id => Str, Status => Str)
 
-  Arguments described in: L<Paws::ElasticTranscoder::UpdatePipelineStatus>
+Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipelineStatus>
 
-  Returns: L<Paws::ElasticTranscoder::UpdatePipelineStatusResponse>
+Returns: a L<Paws::ElasticTranscoder::UpdatePipelineStatusResponse> instance
 
   
 

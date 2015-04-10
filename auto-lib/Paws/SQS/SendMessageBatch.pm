@@ -68,7 +68,7 @@ The URL of the Amazon SQS queue to take action on.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for SendMessageBatch in Paws::SQS
+This class forms part of L<Paws>, documenting arguments for method SendMessageBatch in L<Paws::SQS>
 
 =head1 BUGS and CONTRIBUTIONS
 

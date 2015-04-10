@@ -137,7 +137,7 @@ C<All>, all policies are returned.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListPolicies in Paws::IAM
+This class forms part of L<Paws>, documenting arguments for method ListPolicies in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

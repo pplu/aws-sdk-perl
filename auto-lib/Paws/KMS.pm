@@ -150,8 +150,17 @@ Paws::KMS - Perl Interface to AWS AWS Key Management Service
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('KMS')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -251,11 +260,11 @@ console.
 
 =head1 METHODS
 
-=head2 CreateAlias()
+=head2 CreateAlias(AliasName => Str, TargetKeyId => Str)
 
-  Arguments described in: L<Paws::KMS::CreateAlias>
+Each argument is described in detail in: L<Paws::KMS::CreateAlias>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -277,11 +286,11 @@ forward slash (alias/aws...) is reserved by Amazon Web Services (AWS).
 
 
 
-=head2 CreateGrant()
+=head2 CreateGrant(GranteePrincipal => Str, KeyId => Str, [GrantTokens => ArrayRef[Str], Operations => ArrayRef[Str], Constraints => Paws::KMS::GrantConstraints, RetiringPrincipal => Str])
 
-  Arguments described in: L<Paws::KMS::CreateGrant>
+Each argument is described in detail in: L<Paws::KMS::CreateGrant>
 
-  Returns: L<Paws::KMS::CreateGrantResponse>
+Returns: a L<Paws::KMS::CreateGrantResponse> instance
 
   
 
@@ -311,11 +320,11 @@ policies attached to the user.
 
 
 
-=head2 CreateKey()
+=head2 CreateKey([KeyUsage => Str, Policy => Str, Description => Str])
 
-  Arguments described in: L<Paws::KMS::CreateKey>
+Each argument is described in detail in: L<Paws::KMS::CreateKey>
 
-  Returns: L<Paws::KMS::CreateKeyResponse>
+Returns: a L<Paws::KMS::CreateKeyResponse> instance
 
   
 
@@ -335,11 +344,11 @@ GenerateDataKey and GenerateDataKeyWithoutPlaintext.
 
 
 
-=head2 Decrypt()
+=head2 Decrypt(CiphertextBlob => Str, [GrantTokens => ArrayRef[Str], EncryptionContext => Paws::KMS::EncryptionContextType])
 
-  Arguments described in: L<Paws::KMS::Decrypt>
+Each argument is described in detail in: L<Paws::KMS::Decrypt>
 
-  Returns: L<Paws::KMS::DecryptResponse>
+Returns: a L<Paws::KMS::DecryptResponse> instance
 
   
 
@@ -376,11 +385,11 @@ specific trusted accounts.
 
 
 
-=head2 DeleteAlias()
+=head2 DeleteAlias(AliasName => Str)
 
-  Arguments described in: L<Paws::KMS::DeleteAlias>
+Each argument is described in detail in: L<Paws::KMS::DeleteAlias>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -396,11 +405,11 @@ Deletes the specified alias.
 
 
 
-=head2 DescribeKey()
+=head2 DescribeKey(KeyId => Str)
 
-  Arguments described in: L<Paws::KMS::DescribeKey>
+Each argument is described in detail in: L<Paws::KMS::DescribeKey>
 
-  Returns: L<Paws::KMS::DescribeKeyResponse>
+Returns: a L<Paws::KMS::DescribeKeyResponse> instance
 
   
 
@@ -416,11 +425,11 @@ Provides detailed information about the specified customer master key.
 
 
 
-=head2 DisableKey()
+=head2 DisableKey(KeyId => Str)
 
-  Arguments described in: L<Paws::KMS::DisableKey>
+Each argument is described in detail in: L<Paws::KMS::DisableKey>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -436,11 +445,11 @@ Marks a key as disabled, thereby preventing its use.
 
 
 
-=head2 DisableKeyRotation()
+=head2 DisableKeyRotation(KeyId => Str)
 
-  Arguments described in: L<Paws::KMS::DisableKeyRotation>
+Each argument is described in detail in: L<Paws::KMS::DisableKeyRotation>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -456,11 +465,11 @@ Disables rotation of the specified key.
 
 
 
-=head2 EnableKey()
+=head2 EnableKey(KeyId => Str)
 
-  Arguments described in: L<Paws::KMS::EnableKey>
+Each argument is described in detail in: L<Paws::KMS::EnableKey>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -477,11 +486,11 @@ Marks a key as enabled, thereby permitting its use. You can have up to
 
 
 
-=head2 EnableKeyRotation()
+=head2 EnableKeyRotation(KeyId => Str)
 
-  Arguments described in: L<Paws::KMS::EnableKeyRotation>
+Each argument is described in detail in: L<Paws::KMS::EnableKeyRotation>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -497,11 +506,11 @@ Enables rotation of the specified customer master key.
 
 
 
-=head2 Encrypt()
+=head2 Encrypt(KeyId => Str, Plaintext => Str, [GrantTokens => ArrayRef[Str], EncryptionContext => Paws::KMS::EncryptionContextType])
 
-  Arguments described in: L<Paws::KMS::Encrypt>
+Each argument is described in detail in: L<Paws::KMS::Encrypt>
 
-  Returns: L<Paws::KMS::EncryptResponse>
+Returns: a L<Paws::KMS::EncryptResponse> instance
 
   
 
@@ -543,11 +552,11 @@ of your choosing.
 
 
 
-=head2 GenerateDataKey()
+=head2 GenerateDataKey(KeyId => Str, [EncryptionContext => Paws::KMS::EncryptionContextType, GrantTokens => ArrayRef[Str], NumberOfBytes => Int, KeySpec => Str])
 
-  Arguments described in: L<Paws::KMS::GenerateDataKey>
+Each argument is described in detail in: L<Paws::KMS::GenerateDataKey>
 
-  Returns: L<Paws::KMS::GenerateDataKeyResponse>
+Returns: a L<Paws::KMS::GenerateDataKeyResponse> instance
 
   
 
@@ -596,11 +605,11 @@ use this log to help track the use of particular data.
 
 
 
-=head2 GenerateDataKeyWithoutPlaintext()
+=head2 GenerateDataKeyWithoutPlaintext(KeyId => Str, [KeySpec => Str, NumberOfBytes => Int, GrantTokens => ArrayRef[Str], EncryptionContext => Paws::KMS::EncryptionContextType])
 
-  Arguments described in: L<Paws::KMS::GenerateDataKeyWithoutPlaintext>
+Each argument is described in detail in: L<Paws::KMS::GenerateDataKeyWithoutPlaintext>
 
-  Returns: L<Paws::KMS::GenerateDataKeyWithoutPlaintextResponse>
+Returns: a L<Paws::KMS::GenerateDataKeyWithoutPlaintextResponse> instance
 
   
 
@@ -620,11 +629,11 @@ the plaintext copy of that key.
 
 
 
-=head2 GenerateRandom()
+=head2 GenerateRandom([NumberOfBytes => Int])
 
-  Arguments described in: L<Paws::KMS::GenerateRandom>
+Each argument is described in detail in: L<Paws::KMS::GenerateRandom>
 
-  Returns: L<Paws::KMS::GenerateRandomResponse>
+Returns: a L<Paws::KMS::GenerateRandomResponse> instance
 
   
 
@@ -640,11 +649,11 @@ Generates an unpredictable byte string.
 
 
 
-=head2 GetKeyPolicy()
+=head2 GetKeyPolicy(KeyId => Str, PolicyName => Str)
 
-  Arguments described in: L<Paws::KMS::GetKeyPolicy>
+Each argument is described in detail in: L<Paws::KMS::GetKeyPolicy>
 
-  Returns: L<Paws::KMS::GetKeyPolicyResponse>
+Returns: a L<Paws::KMS::GetKeyPolicyResponse> instance
 
   
 
@@ -660,11 +669,11 @@ Retrieves a policy attached to the specified key.
 
 
 
-=head2 GetKeyRotationStatus()
+=head2 GetKeyRotationStatus(KeyId => Str)
 
-  Arguments described in: L<Paws::KMS::GetKeyRotationStatus>
+Each argument is described in detail in: L<Paws::KMS::GetKeyRotationStatus>
 
-  Returns: L<Paws::KMS::GetKeyRotationStatusResponse>
+Returns: a L<Paws::KMS::GetKeyRotationStatusResponse> instance
 
   
 
@@ -681,11 +690,11 @@ enabled for the specified key.
 
 
 
-=head2 ListAliases()
+=head2 ListAliases([Limit => Int, Marker => Str])
 
-  Arguments described in: L<Paws::KMS::ListAliases>
+Each argument is described in detail in: L<Paws::KMS::ListAliases>
 
-  Returns: L<Paws::KMS::ListAliasesResponse>
+Returns: a L<Paws::KMS::ListAliasesResponse> instance
 
   
 
@@ -701,11 +710,11 @@ Lists all of the key aliases in the account.
 
 
 
-=head2 ListGrants()
+=head2 ListGrants(KeyId => Str, [Marker => Str, Limit => Int])
 
-  Arguments described in: L<Paws::KMS::ListGrants>
+Each argument is described in detail in: L<Paws::KMS::ListGrants>
 
-  Returns: L<Paws::KMS::ListGrantsResponse>
+Returns: a L<Paws::KMS::ListGrantsResponse> instance
 
   
 
@@ -721,11 +730,11 @@ List the grants for a specified key.
 
 
 
-=head2 ListKeyPolicies()
+=head2 ListKeyPolicies(KeyId => Str, [Marker => Str, Limit => Int])
 
-  Arguments described in: L<Paws::KMS::ListKeyPolicies>
+Each argument is described in detail in: L<Paws::KMS::ListKeyPolicies>
 
-  Returns: L<Paws::KMS::ListKeyPoliciesResponse>
+Returns: a L<Paws::KMS::ListKeyPoliciesResponse> instance
 
   
 
@@ -741,11 +750,11 @@ Retrieves a list of policies attached to a key.
 
 
 
-=head2 ListKeys()
+=head2 ListKeys([Marker => Str, Limit => Int])
 
-  Arguments described in: L<Paws::KMS::ListKeys>
+Each argument is described in detail in: L<Paws::KMS::ListKeys>
 
-  Returns: L<Paws::KMS::ListKeysResponse>
+Returns: a L<Paws::KMS::ListKeysResponse> instance
 
   
 
@@ -761,11 +770,11 @@ Lists the customer master keys.
 
 
 
-=head2 PutKeyPolicy()
+=head2 PutKeyPolicy(KeyId => Str, Policy => Str, PolicyName => Str)
 
-  Arguments described in: L<Paws::KMS::PutKeyPolicy>
+Each argument is described in detail in: L<Paws::KMS::PutKeyPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -781,11 +790,11 @@ Attaches a policy to the specified key.
 
 
 
-=head2 ReEncrypt()
+=head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [SourceEncryptionContext => Paws::KMS::EncryptionContextType, GrantTokens => ArrayRef[Str], DestinationEncryptionContext => Paws::KMS::EncryptionContextType])
 
-  Arguments described in: L<Paws::KMS::ReEncrypt>
+Each argument is described in detail in: L<Paws::KMS::ReEncrypt>
 
-  Returns: L<Paws::KMS::ReEncryptResponse>
+Returns: a L<Paws::KMS::ReEncryptResponse> instance
 
   
 
@@ -804,11 +813,11 @@ change the encryption context of a ciphertext.
 
 
 
-=head2 RetireGrant()
+=head2 RetireGrant(GrantToken => Str)
 
-  Arguments described in: L<Paws::KMS::RetireGrant>
+Each argument is described in detail in: L<Paws::KMS::RetireGrant>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -838,11 +847,11 @@ operation
 
 
 
-=head2 RevokeGrant()
+=head2 RevokeGrant(GrantId => Str, KeyId => Str)
 
-  Arguments described in: L<Paws::KMS::RevokeGrant>
+Each argument is described in detail in: L<Paws::KMS::RevokeGrant>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -859,11 +868,11 @@ that depend on it.
 
 
 
-=head2 UpdateKeyDescription()
+=head2 UpdateKeyDescription(Description => Str, KeyId => Str)
 
-  Arguments described in: L<Paws::KMS::UpdateKeyDescription>
+Each argument is described in detail in: L<Paws::KMS::UpdateKeyDescription>
 
-  Returns: nothing
+Returns: nothing
 
   
 

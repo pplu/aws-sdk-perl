@@ -156,7 +156,7 @@ log file delivery.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateTrail in Paws::CloudTrail
+This class forms part of L<Paws>, documenting arguments for method UpdateTrail in L<Paws::CloudTrail>
 
 =head1 BUGS and CONTRIBUTIONS
 

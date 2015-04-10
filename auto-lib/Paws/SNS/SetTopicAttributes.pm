@@ -87,7 +87,7 @@ The ARN of the topic to modify.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for SetTopicAttributes in Paws::SNS
+This class forms part of L<Paws>, documenting arguments for method SetTopicAttributes in L<Paws::SNS>
 
 =head1 BUGS and CONTRIBUTIONS
 

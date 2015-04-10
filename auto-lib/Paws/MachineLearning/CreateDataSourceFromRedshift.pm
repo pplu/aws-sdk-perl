@@ -186,7 +186,7 @@ the C<S3StagingLocation>
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for CreateDataSourceFromRedshift in Paws::MachineLearning
+This class forms part of L<Paws>, documenting arguments for method CreateDataSourceFromRedshift in L<Paws::MachineLearning>
 
 =head1 BUGS and CONTRIBUTIONS
 

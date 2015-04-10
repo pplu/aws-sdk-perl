@@ -72,7 +72,7 @@ the sequence number of a data record in the shard.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GetRecords in Paws::Kinesis
+This class forms part of L<Paws>, documenting arguments for method GetRecords in L<Paws::Kinesis>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -204,7 +204,7 @@ The topic you want to publish to.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for Publish in Paws::SNS
+This class forms part of L<Paws>, documenting arguments for method Publish in L<Paws::SNS>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -102,7 +102,7 @@ One or more VPCs for which you want to describe the ClassicLink status.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeVpcClassicLink in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DescribeVpcClassicLink in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

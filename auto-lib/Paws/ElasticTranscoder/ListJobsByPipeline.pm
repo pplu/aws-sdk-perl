@@ -88,7 +88,7 @@ The ID of the pipeline for which you want to get job information.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListJobsByPipeline in Paws::ElasticTranscoder
+This class forms part of L<Paws>, documenting arguments for method ListJobsByPipeline in L<Paws::ElasticTranscoder>
 
 =head1 BUGS and CONTRIBUTIONS
 

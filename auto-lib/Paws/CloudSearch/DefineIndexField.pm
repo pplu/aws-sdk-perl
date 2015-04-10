@@ -57,7 +57,7 @@ The index field and field options you want to configure.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DefineIndexField in Paws::CloudSearch
+This class forms part of L<Paws>, documenting arguments for method DefineIndexField in L<Paws::CloudSearch>
 
 =head1 BUGS and CONTRIBUTIONS
 

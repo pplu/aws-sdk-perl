@@ -70,7 +70,7 @@ than one IP address.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UnassignPrivateIpAddresses in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method UnassignPrivateIpAddresses in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

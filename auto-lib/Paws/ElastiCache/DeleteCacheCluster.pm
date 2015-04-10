@@ -71,7 +71,7 @@ snapshot, and then deletes the cache cluster immediately afterward.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteCacheCluster in Paws::ElastiCache
+This class forms part of L<Paws>, documenting arguments for method DeleteCacheCluster in L<Paws::ElastiCache>
 
 =head1 BUGS and CONTRIBUTIONS
 

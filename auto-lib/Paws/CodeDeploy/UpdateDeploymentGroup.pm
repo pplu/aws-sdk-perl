@@ -168,7 +168,7 @@ A replacement service role's ARN, if you want to change it.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for UpdateDeploymentGroup in Paws::CodeDeploy
+This class forms part of L<Paws>, documenting arguments for method UpdateDeploymentGroup in L<Paws::CodeDeploy>
 
 =head1 BUGS and CONTRIBUTIONS
 

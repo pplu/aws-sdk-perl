@@ -123,7 +123,7 @@ is independent of the C<tag-key> filter.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DescribeCustomerGateways in Paws::EC2
+This class forms part of L<Paws>, documenting arguments for method DescribeCustomerGateways in L<Paws::EC2>
 
 =head1 BUGS and CONTRIBUTIONS
 

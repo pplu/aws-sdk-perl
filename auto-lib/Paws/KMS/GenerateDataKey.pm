@@ -139,7 +139,7 @@ that you use the C<KeySpec> parameter instead.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for GenerateDataKey in Paws::KMS
+This class forms part of L<Paws>, documenting arguments for method GenerateDataKey in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 

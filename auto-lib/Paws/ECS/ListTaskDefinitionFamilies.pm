@@ -99,7 +99,7 @@ value. This value is C<null> when there are no more results to return.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for ListTaskDefinitionFamilies in Paws::ECS
+This class forms part of L<Paws>, documenting arguments for method ListTaskDefinitionFamilies in L<Paws::ECS>
 
 =head1 BUGS and CONTRIBUTIONS
 

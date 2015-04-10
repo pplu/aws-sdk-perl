@@ -304,8 +304,17 @@ Paws::RedShift - Perl Interface to AWS Amazon Redshift
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('RedShift')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -349,11 +358,11 @@ that make up your data warehouse.
 
 =head1 METHODS
 
-=head2 AuthorizeClusterSecurityGroupIngress()
+=head2 AuthorizeClusterSecurityGroupIngress(ClusterSecurityGroupName => Str, [CIDRIP => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str])
 
-  Arguments described in: L<Paws::RedShift::AuthorizeClusterSecurityGroupIngress>
+Each argument is described in detail in: L<Paws::RedShift::AuthorizeClusterSecurityGroupIngress>
 
-  Returns: L<Paws::RedShift::AuthorizeClusterSecurityGroupIngressResult>
+Returns: a L<Paws::RedShift::AuthorizeClusterSecurityGroupIngressResult> instance
 
   
 
@@ -386,11 +395,11 @@ Redshift Cluster Management Guide>.
 
 
 
-=head2 AuthorizeSnapshotAccess()
+=head2 AuthorizeSnapshotAccess(AccountWithRestoreAccess => Str, SnapshotIdentifier => Str, [SnapshotClusterIdentifier => Str])
 
-  Arguments described in: L<Paws::RedShift::AuthorizeSnapshotAccess>
+Each argument is described in detail in: L<Paws::RedShift::AuthorizeSnapshotAccess>
 
-  Returns: L<Paws::RedShift::AuthorizeSnapshotAccessResult>
+Returns: a L<Paws::RedShift::AuthorizeSnapshotAccessResult> instance
 
   
 
@@ -410,11 +419,11 @@ Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
-=head2 CopyClusterSnapshot()
+=head2 CopyClusterSnapshot(SourceSnapshotIdentifier => Str, TargetSnapshotIdentifier => Str, [SourceSnapshotClusterIdentifier => Str])
 
-  Arguments described in: L<Paws::RedShift::CopyClusterSnapshot>
+Each argument is described in detail in: L<Paws::RedShift::CopyClusterSnapshot>
 
-  Returns: L<Paws::RedShift::CopyClusterSnapshotResult>
+Returns: a L<Paws::RedShift::CopyClusterSnapshotResult> instance
 
   
 
@@ -442,11 +451,11 @@ Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
-=head2 CreateCluster()
+=head2 CreateCluster(ClusterIdentifier => Str, MasterUsername => Str, MasterUserPassword => Str, NodeType => Str, [AutomatedSnapshotRetentionPeriod => Int, ClusterParameterGroupName => Str, NumberOfNodes => Int, VpcSecurityGroupIds => ArrayRef[Str], KmsKeyId => Str, DBName => Str, HsmClientCertificateIdentifier => Str, Tags => ArrayRef[Paws::RedShift::Tag], AvailabilityZone => Str, Port => Int, ClusterType => Str, ClusterSecurityGroups => ArrayRef[Str], Encrypted => Bool, PubliclyAccessible => Bool, PreferredMaintenanceWindow => Str, ElasticIp => Str, HsmConfigurationIdentifier => Str, ClusterVersion => Str, ClusterSubnetGroupName => Str, AllowVersionUpgrade => Bool])
 
-  Arguments described in: L<Paws::RedShift::CreateCluster>
+Each argument is described in detail in: L<Paws::RedShift::CreateCluster>
 
-  Returns: L<Paws::RedShift::CreateClusterResult>
+Returns: a L<Paws::RedShift::CreateClusterResult> instance
 
   
 
@@ -468,11 +477,11 @@ Redshift Cluster Management Guide> .
 
 
 
-=head2 CreateClusterParameterGroup()
+=head2 CreateClusterParameterGroup(Description => Str, ParameterGroupFamily => Str, ParameterGroupName => Str, [Tags => ArrayRef[Paws::RedShift::Tag]])
 
-  Arguments described in: L<Paws::RedShift::CreateClusterParameterGroup>
+Each argument is described in detail in: L<Paws::RedShift::CreateClusterParameterGroup>
 
-  Returns: L<Paws::RedShift::CreateClusterParameterGroupResult>
+Returns: a L<Paws::RedShift::CreateClusterParameterGroupResult> instance
 
   
 
@@ -498,11 +507,11 @@ the I<Amazon Redshift Cluster Management Guide>.
 
 
 
-=head2 CreateClusterSecurityGroup()
+=head2 CreateClusterSecurityGroup(ClusterSecurityGroupName => Str, Description => Str, [Tags => ArrayRef[Paws::RedShift::Tag]])
 
-  Arguments described in: L<Paws::RedShift::CreateClusterSecurityGroup>
+Each argument is described in detail in: L<Paws::RedShift::CreateClusterSecurityGroup>
 
-  Returns: L<Paws::RedShift::CreateClusterSecurityGroupResult>
+Returns: a L<Paws::RedShift::CreateClusterSecurityGroupResult> instance
 
   
 
@@ -523,11 +532,11 @@ Guide>.
 
 
 
-=head2 CreateClusterSnapshot()
+=head2 CreateClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [Tags => ArrayRef[Paws::RedShift::Tag]])
 
-  Arguments described in: L<Paws::RedShift::CreateClusterSnapshot>
+Each argument is described in detail in: L<Paws::RedShift::CreateClusterSnapshot>
 
-  Returns: L<Paws::RedShift::CreateClusterSnapshotResult>
+Returns: a L<Paws::RedShift::CreateClusterSnapshotResult> instance
 
   
 
@@ -547,11 +556,11 @@ Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
-=head2 CreateClusterSubnetGroup()
+=head2 CreateClusterSubnetGroup(ClusterSubnetGroupName => Str, Description => Str, SubnetIds => ArrayRef[Str], [Tags => ArrayRef[Paws::RedShift::Tag]])
 
-  Arguments described in: L<Paws::RedShift::CreateClusterSubnetGroup>
+Each argument is described in detail in: L<Paws::RedShift::CreateClusterSubnetGroup>
 
-  Returns: L<Paws::RedShift::CreateClusterSubnetGroupResult>
+Returns: a L<Paws::RedShift::CreateClusterSubnetGroupResult> instance
 
   
 
@@ -572,11 +581,11 @@ Subnet Groups in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
-=head2 CreateEventSubscription()
+=head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [Tags => ArrayRef[Paws::RedShift::Tag], Enabled => Bool, SourceIds => ArrayRef[Str], EventCategories => ArrayRef[Str], SourceType => Str, Severity => Str])
 
-  Arguments described in: L<Paws::RedShift::CreateEventSubscription>
+Each argument is described in detail in: L<Paws::RedShift::CreateEventSubscription>
 
-  Returns: L<Paws::RedShift::CreateEventSubscriptionResult>
+Returns: a L<Paws::RedShift::CreateEventSubscriptionResult> instance
 
   
 
@@ -615,11 +624,11 @@ if you specify a source ID.
 
 
 
-=head2 CreateHsmClientCertificate()
+=head2 CreateHsmClientCertificate(HsmClientCertificateIdentifier => Str, [Tags => ArrayRef[Paws::RedShift::Tag]])
 
-  Arguments described in: L<Paws::RedShift::CreateHsmClientCertificate>
+Each argument is described in detail in: L<Paws::RedShift::CreateHsmClientCertificate>
 
-  Returns: L<Paws::RedShift::CreateHsmClientCertificateResult>
+Returns: a L<Paws::RedShift::CreateHsmClientCertificateResult> instance
 
   
 
@@ -644,11 +653,11 @@ Cluster Management Guide.
 
 
 
-=head2 CreateHsmConfiguration()
+=head2 CreateHsmConfiguration(Description => Str, HsmConfigurationIdentifier => Str, HsmIpAddress => Str, HsmPartitionName => Str, HsmPartitionPassword => Str, HsmServerPublicCertificate => Str, [Tags => ArrayRef[Paws::RedShift::Tag]])
 
-  Arguments described in: L<Paws::RedShift::CreateHsmConfiguration>
+Each argument is described in detail in: L<Paws::RedShift::CreateHsmConfiguration>
 
-  Returns: L<Paws::RedShift::CreateHsmConfigurationResult>
+Returns: a L<Paws::RedShift::CreateHsmConfigurationResult> instance
 
   
 
@@ -672,11 +681,11 @@ Modules in the Amazon Redshift Cluster Management Guide.
 
 
 
-=head2 CreateTags()
+=head2 CreateTags(ResourceName => Str, Tags => ArrayRef[Paws::RedShift::Tag])
 
-  Arguments described in: L<Paws::RedShift::CreateTags>
+Each argument is described in detail in: L<Paws::RedShift::CreateTags>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -699,11 +708,11 @@ for that key will be updated with the new value.
 
 
 
-=head2 DeleteCluster()
+=head2 DeleteCluster(ClusterIdentifier => Str, [SkipFinalClusterSnapshot => Bool, FinalClusterSnapshotIdentifier => Str])
 
-  Arguments described in: L<Paws::RedShift::DeleteCluster>
+Each argument is described in detail in: L<Paws::RedShift::DeleteCluster>
 
-  Returns: L<Paws::RedShift::DeleteClusterResult>
+Returns: a L<Paws::RedShift::DeleteClusterResult> instance
 
   
 
@@ -735,11 +744,11 @@ Clusters in the I<Amazon Redshift Cluster Management Guide> .
 
 
 
-=head2 DeleteClusterParameterGroup()
+=head2 DeleteClusterParameterGroup(ParameterGroupName => Str)
 
-  Arguments described in: L<Paws::RedShift::DeleteClusterParameterGroup>
+Each argument is described in detail in: L<Paws::RedShift::DeleteClusterParameterGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -756,11 +765,11 @@ a parameter group if it is associated with a cluster.
 
 
 
-=head2 DeleteClusterSecurityGroup()
+=head2 DeleteClusterSecurityGroup(ClusterSecurityGroupName => Str)
 
-  Arguments described in: L<Paws::RedShift::DeleteClusterSecurityGroup>
+Each argument is described in detail in: L<Paws::RedShift::DeleteClusterSecurityGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -783,11 +792,11 @@ Guide>.
 
 
 
-=head2 DeleteClusterSnapshot()
+=head2 DeleteClusterSnapshot(SnapshotIdentifier => Str, [SnapshotClusterIdentifier => Str])
 
-  Arguments described in: L<Paws::RedShift::DeleteClusterSnapshot>
+Each argument is described in detail in: L<Paws::RedShift::DeleteClusterSnapshot>
 
-  Returns: L<Paws::RedShift::DeleteClusterSnapshotResult>
+Returns: a L<Paws::RedShift::DeleteClusterSnapshotResult> instance
 
   
 
@@ -812,11 +821,11 @@ snapshot.
 
 
 
-=head2 DeleteClusterSubnetGroup()
+=head2 DeleteClusterSubnetGroup(ClusterSubnetGroupName => Str)
 
-  Arguments described in: L<Paws::RedShift::DeleteClusterSubnetGroup>
+Each argument is described in detail in: L<Paws::RedShift::DeleteClusterSubnetGroup>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -832,11 +841,11 @@ Deletes the specified cluster subnet group.
 
 
 
-=head2 DeleteEventSubscription()
+=head2 DeleteEventSubscription(SubscriptionName => Str)
 
-  Arguments described in: L<Paws::RedShift::DeleteEventSubscription>
+Each argument is described in detail in: L<Paws::RedShift::DeleteEventSubscription>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -852,11 +861,11 @@ Deletes an Amazon Redshift event notification subscription.
 
 
 
-=head2 DeleteHsmClientCertificate()
+=head2 DeleteHsmClientCertificate(HsmClientCertificateIdentifier => Str)
 
-  Arguments described in: L<Paws::RedShift::DeleteHsmClientCertificate>
+Each argument is described in detail in: L<Paws::RedShift::DeleteHsmClientCertificate>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -872,11 +881,11 @@ Deletes the specified HSM client certificate.
 
 
 
-=head2 DeleteHsmConfiguration()
+=head2 DeleteHsmConfiguration(HsmConfigurationIdentifier => Str)
 
-  Arguments described in: L<Paws::RedShift::DeleteHsmConfiguration>
+Each argument is described in detail in: L<Paws::RedShift::DeleteHsmConfiguration>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -892,11 +901,11 @@ Deletes the specified Amazon Redshift HSM configuration.
 
 
 
-=head2 DeleteTags()
+=head2 DeleteTags(ResourceName => Str, TagKeys => ArrayRef[Str])
 
-  Arguments described in: L<Paws::RedShift::DeleteTags>
+Each argument is described in detail in: L<Paws::RedShift::DeleteTags>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -913,11 +922,11 @@ resource from which you want to delete the tag or tags.
 
 
 
-=head2 DescribeClusterParameterGroups()
+=head2 DescribeClusterParameterGroups([TagKeys => ArrayRef[Str], ParameterGroupName => Str, TagValues => ArrayRef[Str], Marker => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RedShift::DescribeClusterParameterGroups>
+Each argument is described in detail in: L<Paws::RedShift::DescribeClusterParameterGroups>
 
-  Returns: L<Paws::RedShift::ClusterParameterGroupsMessage>
+Returns: a L<Paws::RedShift::ClusterParameterGroupsMessage> instance
 
   
 
@@ -952,11 +961,11 @@ associated with them.
 
 
 
-=head2 DescribeClusterParameters()
+=head2 DescribeClusterParameters(ParameterGroupName => Str, [Marker => Str, MaxRecords => Int, Source => Str])
 
-  Arguments described in: L<Paws::RedShift::DescribeClusterParameters>
+Each argument is described in detail in: L<Paws::RedShift::DescribeClusterParameters>
 
-  Returns: L<Paws::RedShift::ClusterParameterGroupDetails>
+Returns: a L<Paws::RedShift::ClusterParameterGroupDetails> instance
 
   
 
@@ -984,11 +993,11 @@ Guide>.
 
 
 
-=head2 DescribeClusters()
+=head2 DescribeClusters([MaxRecords => Int, TagKeys => ArrayRef[Str], ClusterIdentifier => Str, Marker => Str, TagValues => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::RedShift::DescribeClusters>
+Each argument is described in detail in: L<Paws::RedShift::DescribeClusters>
 
-  Returns: L<Paws::RedShift::ClustersMessage>
+Returns: a L<Paws::RedShift::ClustersMessage> instance
 
   
 
@@ -1018,11 +1027,11 @@ with them.
 
 
 
-=head2 DescribeClusterSecurityGroups()
+=head2 DescribeClusterSecurityGroups([Marker => Str, TagValues => ArrayRef[Str], TagKeys => ArrayRef[Str], MaxRecords => Int, ClusterSecurityGroupName => Str])
 
-  Arguments described in: L<Paws::RedShift::DescribeClusterSecurityGroups>
+Each argument is described in detail in: L<Paws::RedShift::DescribeClusterSecurityGroups>
 
-  Returns: L<Paws::RedShift::ClusterSecurityGroupMessage>
+Returns: a L<Paws::RedShift::ClusterSecurityGroupMessage> instance
 
   
 
@@ -1055,11 +1064,11 @@ associated with them.
 
 
 
-=head2 DescribeClusterSnapshots()
+=head2 DescribeClusterSnapshots([SnapshotType => Str, ClusterIdentifier => Str, SnapshotIdentifier => Str, MaxRecords => Int, StartTime => Str, Marker => Str, TagValues => ArrayRef[Str], TagKeys => ArrayRef[Str], EndTime => Str, OwnerAccount => Str])
 
-  Arguments described in: L<Paws::RedShift::DescribeClusterSnapshots>
+Each argument is described in detail in: L<Paws::RedShift::DescribeClusterSnapshots>
 
-  Returns: L<Paws::RedShift::SnapshotMessage>
+Returns: a L<Paws::RedShift::SnapshotMessage> instance
 
   
 
@@ -1092,11 +1101,11 @@ with them.
 
 
 
-=head2 DescribeClusterSubnetGroups()
+=head2 DescribeClusterSubnetGroups([ClusterSubnetGroupName => Str, TagValues => ArrayRef[Str], Marker => Str, TagKeys => ArrayRef[Str], MaxRecords => Int])
 
-  Arguments described in: L<Paws::RedShift::DescribeClusterSubnetGroups>
+Each argument is described in detail in: L<Paws::RedShift::DescribeClusterSubnetGroups>
 
-  Returns: L<Paws::RedShift::ClusterSubnetGroupMessage>
+Returns: a L<Paws::RedShift::ClusterSubnetGroupMessage> instance
 
   
 
@@ -1126,11 +1135,11 @@ associated with them.
 
 
 
-=head2 DescribeClusterVersions()
+=head2 DescribeClusterVersions([ClusterParameterGroupFamily => Str, ClusterVersion => Str, Marker => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RedShift::DescribeClusterVersions>
+Each argument is described in detail in: L<Paws::RedShift::DescribeClusterVersions>
 
-  Returns: L<Paws::RedShift::ClusterVersionsMessage>
+Returns: a L<Paws::RedShift::ClusterVersionsMessage> instance
 
   
 
@@ -1150,11 +1159,11 @@ Redshift Cluster Management Guide>
 
 
 
-=head2 DescribeDefaultClusterParameters()
+=head2 DescribeDefaultClusterParameters(ParameterGroupFamily => Str, [Marker => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RedShift::DescribeDefaultClusterParameters>
+Each argument is described in detail in: L<Paws::RedShift::DescribeDefaultClusterParameters>
 
-  Returns: L<Paws::RedShift::DescribeDefaultClusterParametersResult>
+Returns: a L<Paws::RedShift::DescribeDefaultClusterParametersResult> instance
 
   
 
@@ -1175,11 +1184,11 @@ Guide>.
 
 
 
-=head2 DescribeEventCategories()
+=head2 DescribeEventCategories([SourceType => Str])
 
-  Arguments described in: L<Paws::RedShift::DescribeEventCategories>
+Each argument is described in detail in: L<Paws::RedShift::DescribeEventCategories>
 
-  Returns: L<Paws::RedShift::EventCategoriesMessage>
+Returns: a L<Paws::RedShift::EventCategoriesMessage> instance
 
   
 
@@ -1197,11 +1206,11 @@ types, go to Amazon Redshift Event Notifications.
 
 
 
-=head2 DescribeEvents()
+=head2 DescribeEvents([EndTime => Str, Duration => Int, Marker => Str, StartTime => Str, SourceIdentifier => Str, MaxRecords => Int, SourceType => Str])
 
-  Arguments described in: L<Paws::RedShift::DescribeEvents>
+Each argument is described in detail in: L<Paws::RedShift::DescribeEvents>
 
-  Returns: L<Paws::RedShift::EventsMessage>
+Returns: a L<Paws::RedShift::EventsMessage> instance
 
   
 
@@ -1221,11 +1230,11 @@ are returned.
 
 
 
-=head2 DescribeEventSubscriptions()
+=head2 DescribeEventSubscriptions([SubscriptionName => Str, Marker => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RedShift::DescribeEventSubscriptions>
+Each argument is described in detail in: L<Paws::RedShift::DescribeEventSubscriptions>
 
-  Returns: L<Paws::RedShift::EventSubscriptionsMessage>
+Returns: a L<Paws::RedShift::EventSubscriptionsMessage> instance
 
   
 
@@ -1243,11 +1252,11 @@ name, lists the description for that subscription.
 
 
 
-=head2 DescribeHsmClientCertificates()
+=head2 DescribeHsmClientCertificates([TagKeys => ArrayRef[Str], HsmClientCertificateIdentifier => Str, TagValues => ArrayRef[Str], Marker => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RedShift::DescribeHsmClientCertificates>
+Each argument is described in detail in: L<Paws::RedShift::DescribeHsmClientCertificates>
 
-  Returns: L<Paws::RedShift::HsmClientCertificateMessage>
+Returns: a L<Paws::RedShift::HsmClientCertificateMessage> instance
 
   
 
@@ -1276,11 +1285,11 @@ values associated with them.
 
 
 
-=head2 DescribeHsmConfigurations()
+=head2 DescribeHsmConfigurations([HsmConfigurationIdentifier => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], Marker => Str, TagValues => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::RedShift::DescribeHsmConfigurations>
+Each argument is described in detail in: L<Paws::RedShift::DescribeHsmConfigurations>
 
-  Returns: L<Paws::RedShift::HsmConfigurationMessage>
+Returns: a L<Paws::RedShift::HsmConfigurationMessage> instance
 
   
 
@@ -1309,11 +1318,11 @@ values associated with them.
 
 
 
-=head2 DescribeLoggingStatus()
+=head2 DescribeLoggingStatus(ClusterIdentifier => Str)
 
-  Arguments described in: L<Paws::RedShift::DescribeLoggingStatus>
+Each argument is described in detail in: L<Paws::RedShift::DescribeLoggingStatus>
 
-  Returns: L<Paws::RedShift::LoggingStatus>
+Returns: a L<Paws::RedShift::LoggingStatus> instance
 
   
 
@@ -1330,11 +1339,11 @@ is being logged for the specified Amazon Redshift cluster.
 
 
 
-=head2 DescribeOrderableClusterOptions()
+=head2 DescribeOrderableClusterOptions([NodeType => Str, ClusterVersion => Str, Marker => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RedShift::DescribeOrderableClusterOptions>
+Each argument is described in detail in: L<Paws::RedShift::DescribeOrderableClusterOptions>
 
-  Returns: L<Paws::RedShift::OrderableClusterOptionsMessage>
+Returns: a L<Paws::RedShift::OrderableClusterOptionsMessage> instance
 
   
 
@@ -1358,11 +1367,11 @@ the I<Amazon Redshift Cluster Management Guide>
 
 
 
-=head2 DescribeReservedNodeOfferings()
+=head2 DescribeReservedNodeOfferings([Marker => Str, ReservedNodeOfferingId => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RedShift::DescribeReservedNodeOfferings>
+Each argument is described in detail in: L<Paws::RedShift::DescribeReservedNodeOfferings>
 
-  Returns: L<Paws::RedShift::ReservedNodeOfferingsMessage>
+Returns: a L<Paws::RedShift::ReservedNodeOfferingsMessage> instance
 
   
 
@@ -1387,11 +1396,11 @@ Reserved Nodes in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
-=head2 DescribeReservedNodes()
+=head2 DescribeReservedNodes([ReservedNodeId => Str, Marker => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RedShift::DescribeReservedNodes>
+Each argument is described in detail in: L<Paws::RedShift::DescribeReservedNodes>
 
-  Returns: L<Paws::RedShift::ReservedNodesMessage>
+Returns: a L<Paws::RedShift::ReservedNodesMessage> instance
 
   
 
@@ -1407,11 +1416,11 @@ Returns the descriptions of the reserved nodes.
 
 
 
-=head2 DescribeResize()
+=head2 DescribeResize(ClusterIdentifier => Str)
 
-  Arguments described in: L<Paws::RedShift::DescribeResize>
+Each argument is described in detail in: L<Paws::RedShift::DescribeResize>
 
-  Returns: L<Paws::RedShift::ResizeProgressMessage>
+Returns: a L<Paws::RedShift::ResizeProgressMessage> instance
 
   
 
@@ -1434,11 +1443,11 @@ a different number or type of nodes for the cluster.
 
 
 
-=head2 DescribeTags()
+=head2 DescribeTags([TagKeys => ArrayRef[Str], Marker => Str, TagValues => ArrayRef[Str], ResourceName => Str, ResourceType => Str, MaxRecords => Int])
 
-  Arguments described in: L<Paws::RedShift::DescribeTags>
+Each argument is described in detail in: L<Paws::RedShift::DescribeTags>
 
-  Returns: L<Paws::RedShift::TaggedResourceListMessage>
+Returns: a L<Paws::RedShift::TaggedResourceListMessage> instance
 
   
 
@@ -1481,11 +1490,11 @@ with them.
 
 
 
-=head2 DisableLogging()
+=head2 DisableLogging(ClusterIdentifier => Str)
 
-  Arguments described in: L<Paws::RedShift::DisableLogging>
+Each argument is described in detail in: L<Paws::RedShift::DisableLogging>
 
-  Returns: L<Paws::RedShift::LoggingStatus>
+Returns: a L<Paws::RedShift::LoggingStatus> instance
 
   
 
@@ -1502,11 +1511,11 @@ the specified Amazon Redshift cluster.
 
 
 
-=head2 DisableSnapshotCopy()
+=head2 DisableSnapshotCopy(ClusterIdentifier => Str)
 
-  Arguments described in: L<Paws::RedShift::DisableSnapshotCopy>
+Each argument is described in detail in: L<Paws::RedShift::DisableSnapshotCopy>
 
-  Returns: L<Paws::RedShift::DisableSnapshotCopyResult>
+Returns: a L<Paws::RedShift::DisableSnapshotCopyResult> instance
 
   
 
@@ -1523,11 +1532,11 @@ region for a specified cluster.
 
 
 
-=head2 EnableLogging()
+=head2 EnableLogging(BucketName => Str, ClusterIdentifier => Str, [S3KeyPrefix => Str])
 
-  Arguments described in: L<Paws::RedShift::EnableLogging>
+Each argument is described in detail in: L<Paws::RedShift::EnableLogging>
 
-  Returns: L<Paws::RedShift::LoggingStatus>
+Returns: a L<Paws::RedShift::LoggingStatus> instance
 
   
 
@@ -1544,11 +1553,11 @@ for the specified Amazon Redshift cluster.
 
 
 
-=head2 EnableSnapshotCopy()
+=head2 EnableSnapshotCopy(ClusterIdentifier => Str, DestinationRegion => Str, [RetentionPeriod => Int])
 
-  Arguments described in: L<Paws::RedShift::EnableSnapshotCopy>
+Each argument is described in detail in: L<Paws::RedShift::EnableSnapshotCopy>
 
-  Returns: L<Paws::RedShift::EnableSnapshotCopyResult>
+Returns: a L<Paws::RedShift::EnableSnapshotCopyResult> instance
 
   
 
@@ -1565,11 +1574,11 @@ region for a specified cluster.
 
 
 
-=head2 ModifyCluster()
+=head2 ModifyCluster(ClusterIdentifier => Str, [PreferredMaintenanceWindow => Str, NumberOfNodes => Int, VpcSecurityGroupIds => ArrayRef[Str], HsmClientCertificateIdentifier => Str, ClusterParameterGroupName => Str, AutomatedSnapshotRetentionPeriod => Int, NodeType => Str, ClusterVersion => Str, ClusterSecurityGroups => ArrayRef[Str], AllowVersionUpgrade => Bool, ClusterType => Str, NewClusterIdentifier => Str, HsmConfigurationIdentifier => Str, MasterUserPassword => Str])
 
-  Arguments described in: L<Paws::RedShift::ModifyCluster>
+Each argument is described in detail in: L<Paws::RedShift::ModifyCluster>
 
-  Returns: L<Paws::RedShift::ModifyClusterResult>
+Returns: a L<Paws::RedShift::ModifyClusterResult> instance
 
   
 
@@ -1597,11 +1606,11 @@ not change.
 
 
 
-=head2 ModifyClusterParameterGroup()
+=head2 ModifyClusterParameterGroup(ParameterGroupName => Str, Parameters => ArrayRef[Paws::RedShift::Parameter])
 
-  Arguments described in: L<Paws::RedShift::ModifyClusterParameterGroup>
+Each argument is described in detail in: L<Paws::RedShift::ModifyClusterParameterGroup>
 
-  Returns: L<Paws::RedShift::ClusterParameterGroupNameMessage>
+Returns: a L<Paws::RedShift::ClusterParameterGroupNameMessage> instance
 
   
 
@@ -1621,11 +1630,11 @@ Guide>.
 
 
 
-=head2 ModifyClusterSubnetGroup()
+=head2 ModifyClusterSubnetGroup(ClusterSubnetGroupName => Str, SubnetIds => ArrayRef[Str], [Description => Str])
 
-  Arguments described in: L<Paws::RedShift::ModifyClusterSubnetGroup>
+Each argument is described in detail in: L<Paws::RedShift::ModifyClusterSubnetGroup>
 
-  Returns: L<Paws::RedShift::ModifyClusterSubnetGroupResult>
+Returns: a L<Paws::RedShift::ModifyClusterSubnetGroupResult> instance
 
   
 
@@ -1643,11 +1652,11 @@ new list of subnets.
 
 
 
-=head2 ModifyEventSubscription()
+=head2 ModifyEventSubscription(SubscriptionName => Str, [EventCategories => ArrayRef[Str], SourceIds => ArrayRef[Str], Severity => Str, SnsTopicArn => Str, SourceType => Str, Enabled => Bool])
 
-  Arguments described in: L<Paws::RedShift::ModifyEventSubscription>
+Each argument is described in detail in: L<Paws::RedShift::ModifyEventSubscription>
 
-  Returns: L<Paws::RedShift::ModifyEventSubscriptionResult>
+Returns: a L<Paws::RedShift::ModifyEventSubscriptionResult> instance
 
   
 
@@ -1663,11 +1672,11 @@ Modifies an existing Amazon Redshift event notification subscription.
 
 
 
-=head2 ModifySnapshotCopyRetentionPeriod()
+=head2 ModifySnapshotCopyRetentionPeriod(ClusterIdentifier => Str, RetentionPeriod => Int)
 
-  Arguments described in: L<Paws::RedShift::ModifySnapshotCopyRetentionPeriod>
+Each argument is described in detail in: L<Paws::RedShift::ModifySnapshotCopyRetentionPeriod>
 
-  Returns: L<Paws::RedShift::ModifySnapshotCopyRetentionPeriodResult>
+Returns: a L<Paws::RedShift::ModifySnapshotCopyRetentionPeriodResult> instance
 
   
 
@@ -1684,11 +1693,11 @@ destination region after they are copied from the source region.
 
 
 
-=head2 PurchaseReservedNodeOffering()
+=head2 PurchaseReservedNodeOffering(ReservedNodeOfferingId => Str, [NodeCount => Int])
 
-  Arguments described in: L<Paws::RedShift::PurchaseReservedNodeOffering>
+Each argument is described in detail in: L<Paws::RedShift::PurchaseReservedNodeOffering>
 
-  Returns: L<Paws::RedShift::PurchaseReservedNodeOfferingResult>
+Returns: a L<Paws::RedShift::PurchaseReservedNodeOfferingResult> instance
 
   
 
@@ -1712,11 +1721,11 @@ Reserved Nodes in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
-=head2 RebootCluster()
+=head2 RebootCluster(ClusterIdentifier => Str)
 
-  Arguments described in: L<Paws::RedShift::RebootCluster>
+Each argument is described in detail in: L<Paws::RedShift::RebootCluster>
 
-  Returns: L<Paws::RedShift::RebootClusterResult>
+Returns: a L<Paws::RedShift::RebootClusterResult> instance
 
   
 
@@ -1738,11 +1747,11 @@ Management Guide>
 
 
 
-=head2 ResetClusterParameterGroup()
+=head2 ResetClusterParameterGroup(ParameterGroupName => Str, [ResetAllParameters => Bool, Parameters => ArrayRef[Paws::RedShift::Parameter]])
 
-  Arguments described in: L<Paws::RedShift::ResetClusterParameterGroup>
+Each argument is described in detail in: L<Paws::RedShift::ResetClusterParameterGroup>
 
-  Returns: L<Paws::RedShift::ClusterParameterGroupNameMessage>
+Returns: a L<Paws::RedShift::ClusterParameterGroupNameMessage> instance
 
   
 
@@ -1762,11 +1771,11 @@ you must reboot any associated clusters.
 
 
 
-=head2 RestoreFromClusterSnapshot()
+=head2 RestoreFromClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [ElasticIp => Str, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, AllowVersionUpgrade => Bool, ClusterSubnetGroupName => Str, HsmConfigurationIdentifier => Str, HsmClientCertificateIdentifier => Str, KmsKeyId => Str, VpcSecurityGroupIds => ArrayRef[Str], OwnerAccount => Str, SnapshotClusterIdentifier => Str, AutomatedSnapshotRetentionPeriod => Int, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], Port => Int, AvailabilityZone => Str])
 
-  Arguments described in: L<Paws::RedShift::RestoreFromClusterSnapshot>
+Each argument is described in detail in: L<Paws::RedShift::RestoreFromClusterSnapshot>
 
-  Returns: L<Paws::RedShift::RestoreFromClusterSnapshotResult>
+Returns: a L<Paws::RedShift::RestoreFromClusterSnapshotResult> instance
 
   
 
@@ -1794,11 +1803,11 @@ Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
-=head2 RevokeClusterSecurityGroupIngress()
+=head2 RevokeClusterSecurityGroupIngress(ClusterSecurityGroupName => Str, [EC2SecurityGroupName => Str, CIDRIP => Str, EC2SecurityGroupOwnerId => Str])
 
-  Arguments described in: L<Paws::RedShift::RevokeClusterSecurityGroupIngress>
+Each argument is described in detail in: L<Paws::RedShift::RevokeClusterSecurityGroupIngress>
 
-  Returns: L<Paws::RedShift::RevokeClusterSecurityGroupIngressResult>
+Returns: a L<Paws::RedShift::RevokeClusterSecurityGroupIngressResult> instance
 
   
 
@@ -1818,11 +1827,11 @@ Groups in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
-=head2 RevokeSnapshotAccess()
+=head2 RevokeSnapshotAccess(AccountWithRestoreAccess => Str, SnapshotIdentifier => Str, [SnapshotClusterIdentifier => Str])
 
-  Arguments described in: L<Paws::RedShift::RevokeSnapshotAccess>
+Each argument is described in detail in: L<Paws::RedShift::RevokeSnapshotAccess>
 
-  Returns: L<Paws::RedShift::RevokeSnapshotAccessResult>
+Returns: a L<Paws::RedShift::RevokeSnapshotAccessResult> instance
 
   
 
@@ -1843,11 +1852,11 @@ Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
-=head2 RotateEncryptionKey()
+=head2 RotateEncryptionKey(ClusterIdentifier => Str)
 
-  Arguments described in: L<Paws::RedShift::RotateEncryptionKey>
+Each argument is described in detail in: L<Paws::RedShift::RotateEncryptionKey>
 
-  Returns: L<Paws::RedShift::RotateEncryptionKeyResult>
+Returns: a L<Paws::RedShift::RotateEncryptionKeyResult> instance
 
   
 

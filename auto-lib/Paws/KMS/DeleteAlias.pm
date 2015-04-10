@@ -52,7 +52,7 @@ The alias to be deleted.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, and documents parameters for DeleteAlias in Paws::KMS
+This class forms part of L<Paws>, documenting arguments for method DeleteAlias in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 

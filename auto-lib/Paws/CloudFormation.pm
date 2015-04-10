@@ -109,8 +109,17 @@ Paws::CloudFormation - Perl Interface to AWS AWS CloudFormation
 
   use Paws;
 
-  my $obj = Paws->service('...')->new;
-  my $res = $obj->Method(Arg1 => $val1, Arg2 => $val2);
+  my $obj = Paws->service('CloudFormation')->new;
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
 
 =head1 DESCRIPTION
 
@@ -150,11 +159,11 @@ http://aws.amazon.com/documentation/.
 
 =head1 METHODS
 
-=head2 CancelUpdateStack()
+=head2 CancelUpdateStack(StackName => Str)
 
-  Arguments described in: L<Paws::CloudFormation::CancelUpdateStack>
+Each argument is described in detail in: L<Paws::CloudFormation::CancelUpdateStack>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -174,11 +183,11 @@ Only stacks that are in the UPDATE_IN_PROGRESS state can be canceled.
 
 
 
-=head2 CreateStack()
+=head2 CreateStack(StackName => Str, [TemplateBody => Str, NotificationARNs => ArrayRef[Str], Parameters => ArrayRef[Paws::CloudFormation::Parameter], Tags => ArrayRef[Paws::CloudFormation::Tag], StackPolicyBody => Str, DisableRollback => Bool, StackPolicyURL => Str, OnFailure => Str, TemplateURL => Str, Capabilities => ArrayRef[Str], TimeoutInMinutes => Int])
 
-  Arguments described in: L<Paws::CloudFormation::CreateStack>
+Each argument is described in detail in: L<Paws::CloudFormation::CreateStack>
 
-  Returns: L<Paws::CloudFormation::CreateStackOutput>
+Returns: a L<Paws::CloudFormation::CreateStackOutput> instance
 
   
 
@@ -196,11 +205,11 @@ the stack via the DescribeStacks API.
 
 
 
-=head2 DeleteStack()
+=head2 DeleteStack(StackName => Str)
 
-  Arguments described in: L<Paws::CloudFormation::DeleteStack>
+Each argument is described in detail in: L<Paws::CloudFormation::DeleteStack>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -218,11 +227,11 @@ API if the deletion has been completed successfully.
 
 
 
-=head2 DescribeStackEvents()
+=head2 DescribeStackEvents([StackName => Str, NextToken => Str])
 
-  Arguments described in: L<Paws::CloudFormation::DescribeStackEvents>
+Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackEvents>
 
-  Returns: L<Paws::CloudFormation::DescribeStackEventsOutput>
+Returns: a L<Paws::CloudFormation::DescribeStackEventsOutput> instance
 
   
 
@@ -243,11 +252,11 @@ deleted by specifying the unique stack identifier (stack ID).
 
 
 
-=head2 DescribeStackResource()
+=head2 DescribeStackResource(LogicalResourceId => Str, StackName => Str)
 
-  Arguments described in: L<Paws::CloudFormation::DescribeStackResource>
+Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackResource>
 
-  Returns: L<Paws::CloudFormation::DescribeStackResourceOutput>
+Returns: a L<Paws::CloudFormation::DescribeStackResourceOutput> instance
 
   
 
@@ -266,11 +275,11 @@ for up to 90 days after the stack has been deleted.
 
 
 
-=head2 DescribeStackResources()
+=head2 DescribeStackResources([StackName => Str, LogicalResourceId => Str, PhysicalResourceId => Str])
 
-  Arguments described in: L<Paws::CloudFormation::DescribeStackResources>
+Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackResources>
 
-  Returns: L<Paws::CloudFormation::DescribeStackResourcesOutput>
+Returns: a L<Paws::CloudFormation::DescribeStackResourcesOutput> instance
 
   
 
@@ -305,11 +314,11 @@ C<PhysicalResourceId> in the same request.
 
 
 
-=head2 DescribeStacks()
+=head2 DescribeStacks([StackName => Str, NextToken => Str])
 
-  Arguments described in: L<Paws::CloudFormation::DescribeStacks>
+Each argument is described in detail in: L<Paws::CloudFormation::DescribeStacks>
 
-  Returns: L<Paws::CloudFormation::DescribeStacksOutput>
+Returns: a L<Paws::CloudFormation::DescribeStacksOutput> instance
 
   
 
@@ -326,11 +335,11 @@ specified, then it returns the description for all the stacks created.
 
 
 
-=head2 EstimateTemplateCost()
+=head2 EstimateTemplateCost([Parameters => ArrayRef[Paws::CloudFormation::Parameter], TemplateURL => Str, TemplateBody => Str])
 
-  Arguments described in: L<Paws::CloudFormation::EstimateTemplateCost>
+Each argument is described in detail in: L<Paws::CloudFormation::EstimateTemplateCost>
 
-  Returns: L<Paws::CloudFormation::EstimateTemplateCostOutput>
+Returns: a L<Paws::CloudFormation::EstimateTemplateCostOutput> instance
 
   
 
@@ -348,11 +357,11 @@ the resources required to run the template.
 
 
 
-=head2 GetStackPolicy()
+=head2 GetStackPolicy(StackName => Str)
 
-  Arguments described in: L<Paws::CloudFormation::GetStackPolicy>
+Each argument is described in detail in: L<Paws::CloudFormation::GetStackPolicy>
 
-  Returns: L<Paws::CloudFormation::GetStackPolicyOutput>
+Returns: a L<Paws::CloudFormation::GetStackPolicyOutput> instance
 
   
 
@@ -369,11 +378,11 @@ a policy, a null value is returned.
 
 
 
-=head2 GetTemplate()
+=head2 GetTemplate(StackName => Str)
 
-  Arguments described in: L<Paws::CloudFormation::GetTemplate>
+Each argument is described in detail in: L<Paws::CloudFormation::GetTemplate>
 
-  Returns: L<Paws::CloudFormation::GetTemplateOutput>
+Returns: a L<Paws::CloudFormation::GetTemplateOutput> instance
 
   
 
@@ -395,11 +404,11 @@ If the template does not exist, a C<ValidationError> is returned.
 
 
 
-=head2 GetTemplateSummary()
+=head2 GetTemplateSummary([TemplateBody => Str, TemplateURL => Str, StackName => Str])
 
-  Arguments described in: L<Paws::CloudFormation::GetTemplateSummary>
+Each argument is described in detail in: L<Paws::CloudFormation::GetTemplateSummary>
 
-  Returns: L<Paws::CloudFormation::GetTemplateSummaryOutput>
+Returns: a L<Paws::CloudFormation::GetTemplateSummaryOutput> instance
 
   
 
@@ -426,11 +435,11 @@ template does not exist, a C<ValidationError> is returned.
 
 
 
-=head2 ListStackResources()
+=head2 ListStackResources(StackName => Str, [NextToken => Str])
 
-  Arguments described in: L<Paws::CloudFormation::ListStackResources>
+Each argument is described in detail in: L<Paws::CloudFormation::ListStackResources>
 
-  Returns: L<Paws::CloudFormation::ListStackResourcesOutput>
+Returns: a L<Paws::CloudFormation::ListStackResourcesOutput> instance
 
   
 
@@ -449,11 +458,11 @@ up to 90 days after the stack has been deleted.
 
 
 
-=head2 ListStacks()
+=head2 ListStacks([NextToken => Str, StackStatusFilter => ArrayRef[Str]])
 
-  Arguments described in: L<Paws::CloudFormation::ListStacks>
+Each argument is described in detail in: L<Paws::CloudFormation::ListStacks>
 
-  Returns: L<Paws::CloudFormation::ListStacksOutput>
+Returns: a L<Paws::CloudFormation::ListStacksOutput> instance
 
   
 
@@ -473,11 +482,11 @@ returned (including existing stacks and stacks that have been deleted).
 
 
 
-=head2 SetStackPolicy()
+=head2 SetStackPolicy(StackName => Str, [StackPolicyURL => Str, StackPolicyBody => Str])
 
-  Arguments described in: L<Paws::CloudFormation::SetStackPolicy>
+Each argument is described in detail in: L<Paws::CloudFormation::SetStackPolicy>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -493,11 +502,11 @@ Sets a stack policy for a specified stack.
 
 
 
-=head2 SignalResource()
+=head2 SignalResource(LogicalResourceId => Str, StackName => Str, Status => Str, UniqueId => Str)
 
-  Arguments described in: L<Paws::CloudFormation::SignalResource>
+Each argument is described in detail in: L<Paws::CloudFormation::SignalResource>
 
-  Returns: nothing
+Returns: nothing
 
   
 
@@ -519,11 +528,11 @@ other than an Amazon EC2 instance.
 
 
 
-=head2 UpdateStack()
+=head2 UpdateStack(StackName => Str, [StackPolicyDuringUpdateURL => Str, NotificationARNs => ArrayRef[Str], TemplateBody => Str, UsePreviousTemplate => Bool, Parameters => ArrayRef[Paws::CloudFormation::Parameter], StackPolicyDuringUpdateBody => Str, StackPolicyBody => Str, StackPolicyURL => Str, Capabilities => ArrayRef[Str], TemplateURL => Str])
 
-  Arguments described in: L<Paws::CloudFormation::UpdateStack>
+Each argument is described in detail in: L<Paws::CloudFormation::UpdateStack>
 
-  Returns: L<Paws::CloudFormation::UpdateStackOutput>
+Returns: a L<Paws::CloudFormation::UpdateStackOutput> instance
 
   
 
@@ -550,11 +559,11 @@ stack, and monitoring the progress of the update, see Updating a Stack.
 
 
 
-=head2 ValidateTemplate()
+=head2 ValidateTemplate([TemplateURL => Str, TemplateBody => Str])
 
-  Arguments described in: L<Paws::CloudFormation::ValidateTemplate>
+Each argument is described in detail in: L<Paws::CloudFormation::ValidateTemplate>
 
-  Returns: L<Paws::CloudFormation::ValidateTemplateOutput>
+Returns: a L<Paws::CloudFormation::ValidateTemplateOutput> instance
 
   
 
