@@ -43,8 +43,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name of an existing AWS CodeDeploy application within the AWS user
-account.
+The name of an existing AWS CodeDeploy application associated with the
+applicable IAM user or AWS account.
 
 
 
@@ -173,9 +173,9 @@ The order to sort the list results by:
 
 =over
 
-=item * ascending: Sort the list results in ascending order.
+=item * ascending: Sort the list of results in ascending order.
 
-=item * descending: Sort the list results in descending order.
+=item * descending: Sort the list of results in descending order.
 
 =back
 

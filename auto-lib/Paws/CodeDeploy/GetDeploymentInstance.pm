@@ -53,8 +53,7 @@ The unique ID of a deployment.
 
   
 
-The unique ID of an Amazon EC2 instance in the deployment's deployment
-group.
+The unique ID of an instance in the deployment's deployment group.
 
 
 

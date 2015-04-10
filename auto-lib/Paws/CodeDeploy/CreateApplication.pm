@@ -37,8 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name of the application. This name must be unique within the AWS
-user account.
+The name of the application. This name must be unique with the
+applicable IAM user or AWS account.
 
 
 

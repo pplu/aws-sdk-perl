@@ -37,8 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name of an existing deployment configuration within the AWS user
-account.
+The name of an existing deployment configuration associated with the
+applicable IAM user or AWS account.
 
 
 

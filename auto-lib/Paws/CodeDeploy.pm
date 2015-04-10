@@ -12,6 +12,11 @@ package Paws::CodeDeploy {
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub AddTagsToOnPremisesInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::AddTagsToOnPremisesInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGetApplications {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetApplications', @_);
@@ -20,6 +25,11 @@ package Paws::CodeDeploy {
   sub BatchGetDeployments {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetDeployments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchGetOnPremisesInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetOnPremisesInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateApplication {
@@ -57,6 +67,11 @@ package Paws::CodeDeploy {
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::DeleteDeploymentGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeregisterOnPremisesInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::DeregisterOnPremisesInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::GetApplication', @_);
@@ -85,6 +100,11 @@ package Paws::CodeDeploy {
   sub GetDeploymentInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::GetDeploymentInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetOnPremisesInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::GetOnPremisesInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListApplicationRevisions {
@@ -117,9 +137,24 @@ package Paws::CodeDeploy {
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListDeployments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListOnPremisesInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListOnPremisesInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RegisterApplicationRevision {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::RegisterApplicationRevision', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegisterOnPremisesInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::RegisterOnPremisesInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveTagsFromOnPremisesInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::RemoveTagsFromOnPremisesInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopDeployment {
@@ -171,79 +206,62 @@ You can use the AWS CodeDeploy APIs to work with the following items:
 
 =item *
 
-I<Applications>, which are unique identifiers that AWS CodeDeploy uses
-to ensure that the correct combinations of revisions, deployment
-configurations, and deployment groups are being referenced during
+Applications are unique identifiers that AWS CodeDeploy uses to ensure
+that the correct combinations of revisions, deployment configurations,
+and deployment groups are being referenced during deployments.
+
+You can use the AWS CodeDeploy APIs to create, delete, get, list, and
+update applications.
+
+=item *
+
+Deployment configurations are sets of deployment rules and deployment
+success and failure conditions that AWS CodeDeploy uses during
 deployments.
 
-You can work with applications by calling CreateApplication,
-DeleteApplication, GetApplication, ListApplications,
-BatchGetApplications, and UpdateApplication to create, delete, and get
-information about applications, and to change information about an
-application, respectively.
+You can use the AWS CodeDeploy APIs to create, delete, get, and list
+deployment configurations.
 
 =item *
 
-I<Deployment configurations>, which are sets of deployment rules and
-deployment success and failure conditions that AWS CodeDeploy uses
-during deployments.
+Deployment groups are groups of instances to which application
+revisions can be deployed.
 
-You can work with deployment configurations by calling
-CreateDeploymentConfig, DeleteDeploymentConfig, GetDeploymentConfig,
-and ListDeploymentConfigs to create, delete, and get information about
-deployment configurations, respectively.
+You can use the AWS CodeDeploy APIs to create, delete, get, list, and
+update deployment groups.
 
 =item *
 
-I<Deployment groups>, which represent groups of Amazon EC2 instances to
-which application revisions can be deployed.
+Instances represent Amazon EC2 instances to which application revisions
+are deployed. Instances are identified by their Amazon EC2 tags or Auto
+Scaling group names. Instances belong to deployment groups.
 
-You can work with deployment groups by calling CreateDeploymentGroup,
-DeleteDeploymentGroup, GetDeploymentGroup, ListDeploymentGroups, and
-UpdateDeploymentGroup to create, delete, and get information about
-single and multiple deployment groups, and to change information about
-a deployment group, respectively.
+You can use the AWS CodeDeploy APIs to get and list instances.
 
 =item *
 
-I<Deployment instances> (also known simply as I<instances>), which
-represent Amazon EC2 instances to which application revisions are
-deployed. Deployment instances are identified by their Amazon EC2 tags
-or Auto Scaling group names. Deployment instances belong to deployment
+Deployments represent the process of deploying revisions to instances.
+
+You can use the AWS CodeDeploy APIs to create, get, list, and stop
+deployments.
+
+=item *
+
+Application revisions are archive files that are stored in Amazon S3
+buckets or GitHub repositories. These revisions contain source content
+(such as source code, web pages, executable files, any deployment
+scripts, and similar) along with an Application Specification file
+(AppSpec file). (The AppSpec file is unique to AWS CodeDeploy; it
+defines a series of deployment actions that you want AWS CodeDeploy to
+execute.) An application revision is uniquely identified by its Amazon
+S3 object key and its ETag, version, or both (for application revisions
+that are stored in Amazon S3 buckets) or by its repository name and
+commit ID (for applications revisions that are stored in GitHub
+repositories). Application revisions are deployed through deployment
 groups.
 
-You can work with deployment instances by calling GetDeploymentInstance
-and ListDeploymentInstances to get information about single and
-multiple deployment instances, respectively.
-
-=item *
-
-I<Deployments>, which represent the process of deploying revisions to
-deployment groups.
-
-You can work with deployments by calling CreateDeployment,
-GetDeployment, ListDeployments, BatchGetDeployments, and StopDeployment
-to create and get information about deployments, and to stop a
-deployment, respectively.
-
-=item *
-
-I<Application revisions> (also known simply as I<revisions>), which are
-archive files that are stored in Amazon S3 buckets or GitHub
-repositories. These revisions contain source content (such as source
-code, web pages, executable files, any deployment scripts, and similar)
-along with an Application Specification file (AppSpec file). (The
-AppSpec file is unique to AWS CodeDeploy; it defines a series of
-deployment actions that you want AWS CodeDeploy to execute.) An
-application revision is uniquely identified by its Amazon S3 object key
-and its ETag, version, or both. Application revisions are deployed to
-deployment groups.
-
-You can work with application revisions by calling
-GetApplicationRevision, ListApplicationRevisions, and
-RegisterApplicationRevision to get information about application
-revisions and to inform AWS CodeDeploy about an application revision,
-respectively.
+You can use the AWS CodeDeploy APIs to get, list, and register
+application revisions.
 
 =back
 
@@ -257,6 +275,26 @@ respectively.
 
 
 =head1 METHODS
+
+=head2 AddTagsToOnPremisesInstances()
+
+  Arguments described in: L<Paws::CodeDeploy::AddTagsToOnPremisesInstances>
+
+  Returns: nothing
+
+  
+
+Adds tags to on-premises instances.
+
+
+
+
+
+
+
+
+
+
 
 =head2 BatchGetApplications()
 
@@ -298,6 +336,26 @@ Gets information about one or more deployments.
 
 
 
+=head2 BatchGetOnPremisesInstances()
+
+  Arguments described in: L<Paws::CodeDeploy::BatchGetOnPremisesInstances>
+
+  Returns: L<Paws::CodeDeploy::BatchGetOnPremisesInstancesOutput>
+
+  
+
+Gets information about one or more on-premises instances.
+
+
+
+
+
+
+
+
+
+
+
 =head2 CreateApplication()
 
   Arguments described in: L<Paws::CodeDeploy::CreateApplication>
@@ -326,7 +384,7 @@ Creates a new application.
 
   
 
-Deploys an application revision to the specified deployment group.
+Deploys an application revision through the specified deployment group.
 
 
 
@@ -431,6 +489,26 @@ Also, predefined configurations cannot be deleted.
   
 
 Deletes a deployment group.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DeregisterOnPremisesInstance()
+
+  Arguments described in: L<Paws::CodeDeploy::DeregisterOnPremisesInstance>
+
+  Returns: nothing
+
+  
+
+Deregisters an on-premises instance.
 
 
 
@@ -550,7 +628,27 @@ Gets information about a deployment group.
 
   
 
-Gets information about an Amazon EC2 instance as part of a deployment.
+Gets information about an instance as part of a deployment.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetOnPremisesInstance()
+
+  Arguments described in: L<Paws::CodeDeploy::GetOnPremisesInstance>
+
+  Returns: L<Paws::CodeDeploy::GetOnPremisesInstanceOutput>
+
+  
+
+Gets information about an on-premises instance.
 
 
 
@@ -590,7 +688,8 @@ Lists information about revisions for an application.
 
   
 
-Lists the applications registered within the AWS user account.
+Lists the applications registered with the applicable IAM user or AWS
+account.
 
 
 
@@ -610,7 +709,8 @@ Lists the applications registered within the AWS user account.
 
   
 
-Lists the deployment configurations within the AWS user account.
+Lists the deployment configurations with the applicable IAM user or AWS
+account.
 
 
 
@@ -630,8 +730,8 @@ Lists the deployment configurations within the AWS user account.
 
   
 
-Lists the deployment groups for an application registered within the
-AWS user account.
+Lists the deployment groups for an application registered with the
+applicable IAM user or AWS account.
 
 
 
@@ -651,8 +751,8 @@ AWS user account.
 
   
 
-Lists the Amazon EC2 instances for a deployment within the AWS user
-account.
+Lists the instances for a deployment associated with the applicable IAM
+user or AWS account.
 
 
 
@@ -672,8 +772,33 @@ account.
 
   
 
-Lists the deployments under a deployment group for an application
-registered within the AWS user account.
+Lists the deployments within a deployment group for an application
+registered with the applicable IAM user or AWS account.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ListOnPremisesInstances()
+
+  Arguments described in: L<Paws::CodeDeploy::ListOnPremisesInstances>
+
+  Returns: L<Paws::CodeDeploy::ListOnPremisesInstancesOutput>
+
+  
+
+Gets a list of one or more on-premises instance names.
+
+Unless otherwise specified, both registered and deregistered
+on-premises instance names will be listed. To list only registered or
+deregistered on-premises instance names, use the registration status
+parameter.
 
 
 
@@ -694,6 +819,46 @@ registered within the AWS user account.
   
 
 Registers with AWS CodeDeploy a revision for the specified application.
+
+
+
+
+
+
+
+
+
+
+
+=head2 RegisterOnPremisesInstance()
+
+  Arguments described in: L<Paws::CodeDeploy::RegisterOnPremisesInstance>
+
+  Returns: nothing
+
+  
+
+Registers an on-premises instance.
+
+
+
+
+
+
+
+
+
+
+
+=head2 RemoveTagsFromOnPremisesInstances()
+
+  Arguments described in: L<Paws::CodeDeploy::RemoveTagsFromOnPremisesInstances>
+
+  Returns: nothing
+
+  
+
+Removes one or more tags from one or more on-premises instances.
 
 
 

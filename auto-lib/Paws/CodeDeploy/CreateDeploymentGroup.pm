@@ -6,7 +6,8 @@ package Paws::CodeDeploy::CreateDeploymentGroup {
   has deploymentConfigName => (is => 'ro', isa => 'Str');
   has deploymentGroupName => (is => 'ro', isa => 'Str', required => 1);
   has ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]');
-  has serviceRoleArn => (is => 'ro', isa => 'Str');
+  has onPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]');
+  has serviceRoleArn => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -42,8 +43,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name of an existing AWS CodeDeploy application within the AWS user
-account.
+The name of an existing AWS CodeDeploy application associated with the
+applicable IAM user or AWS account.
 
 
 
@@ -79,13 +80,13 @@ predefined values, or it can be a custom deployment configuration:
 =over
 
 =item * CodeDeployDefault.AllAtOnce deploys an application revision to
-up to all of the Amazon EC2 instances at once. The overall deployment
-succeeds if the application revision deploys to at least one of the
-instances. The overall deployment fails after the application revision
-fails to deploy to all of the instances. For example, for 9 instances,
-deploy to up to all 9 instances at once. The overall deployment
-succeeds if any of the 9 instances is successfully deployed to, and it
-fails if all 9 instances fail to be deployed to.
+up to all of the instances at once. The overall deployment succeeds if
+the application revision deploys to at least one of the instances. The
+overall deployment fails after the application revision fails to deploy
+to all of the instances. For example, for 9 instances, deploy to up to
+all 9 instances at once. The overall deployment succeeds if any of the
+9 instances is successfully deployed to, and it fails if all 9
+instances fail to be deployed to.
 
 =item * CodeDeployDefault.HalfAtATime deploys to up to half of the
 instances at a time (with fractions rounded down). The overall
@@ -101,10 +102,10 @@ instances, even if the overall deployment fails.
 to only one of the instances at a time. The overall deployment succeeds
 if the application revision deploys to all of the instances. The
 overall deployment fails after the application revision first fails to
-deploy to any one instance. For example, for 9 instances, deploy to one
-instance at a time. The overall deployment succeeds if all 9 instances
-are successfully deployed to, and it fails if any of one of the 9
-instances fail to be deployed to. Note that the deployment may
+deploy to any one instances. For example, for 9 instances, deploy to
+one instance at a time. The overall deployment succeeds if all 9
+instances are successfully deployed to, and it fails if any of one of
+the 9 instances fail to be deployed to. Note that the deployment may
 successfully deploy to some instances, even if the overall deployment
 fails. This is the default deployment configuration if a configuration
 isn't specified for either the deployment or the deployment group.
@@ -153,7 +154,22 @@ The Amazon EC2 tags to filter on.
 
 
 
-=head2 serviceRoleArn => Str
+=head2 onPremisesInstanceTagFilters => ArrayRef[Paws::CodeDeploy::TagFilter]
+
+  
+
+The on-premises instance tags to filter on.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> serviceRoleArn => Str
 
   
 

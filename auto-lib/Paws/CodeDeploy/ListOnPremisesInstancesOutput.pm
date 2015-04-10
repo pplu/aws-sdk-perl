@@ -1,8 +1,8 @@
 
-package Paws::CodeDeploy::ListDeploymentInstancesOutput {
+package Paws::CodeDeploy::ListOnPremisesInstancesOutput {
   use Moose;
   with 'Paws::API::ResultParser';
-  has instancesList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has instanceNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has nextToken => (is => 'ro', isa => 'Str');
 
 }
@@ -11,15 +11,15 @@ package Paws::CodeDeploy::ListDeploymentInstancesOutput {
 
 =head1 NAME
 
-Paws::CodeDeploy::ListDeploymentInstancesOutput
+Paws::CodeDeploy::ListOnPremisesInstancesOutput
 
 =head1 ATTRIBUTES
 
-=head2 instancesList => ArrayRef[Str]
+=head2 instanceNames => ArrayRef[Str]
 
   
 
-A list of instances IDs.
+The list of matching on-premises instance names.
 
 
 
@@ -35,7 +35,7 @@ A list of instances IDs.
 
 If the amount of information that is returned is significantly large,
 an identifier will also be returned, which can be used in a subsequent
-list deployment instances call to return the next set of deployment
+list on-premises instances call to return the next set of on-premises
 instances in the list.
 
 

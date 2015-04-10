@@ -7,6 +7,7 @@ package Paws::CodeDeploy::UpdateDeploymentGroup {
   has deploymentConfigName => (is => 'ro', isa => 'Str');
   has ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]');
   has newDeploymentGroupName => (is => 'ro', isa => 'Str');
+  has onPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]');
   has serviceRoleArn => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -122,6 +123,22 @@ change them.
   
 
 The new name of the deployment group, if you want to change it.
+
+
+
+
+
+
+
+
+
+
+=head2 onPremisesInstanceTagFilters => ArrayRef[Paws::CodeDeploy::TagFilter]
+
+  
+
+The replacement set of on-premises instance tags for filter on, if you
+want to change them.
 
 
 

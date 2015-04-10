@@ -42,8 +42,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name of an existing AWS CodeDeploy application within the AWS user
-account.
+The name of an existing AWS CodeDeploy application associated with the
+applicable IAM user or AWS account.
 
 
 
@@ -58,8 +58,8 @@ account.
 
   
 
-The name of an existing deployment configuration within the AWS user
-account.
+The name of an existing deployment configuration associated with the
+applicable IAM user or AWS account.
 
 If not specified, the value configured in the deployment group will be
 used as the default. If the deployment group does not have a deployment
