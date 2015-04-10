@@ -1,10 +1,10 @@
 
-package Paws::S3::NotificationConfiguration {
+package Paws::S3::NotificationConfigurationDeprecated {
   use Moose;
   with 'Paws::API::ResultParser';
-  has LambdaFunctionConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::LambdaFunctionConfiguration]');
-  has QueueConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::QueueConfiguration]');
-  has TopicConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::TopicConfiguration]');
+  has CloudFunctionConfiguration => (is => 'ro', isa => 'Paws::S3::CloudFunctionConfiguration');
+  has QueueConfiguration => (is => 'ro', isa => 'Paws::S3::QueueConfigurationDeprecated');
+  has TopicConfiguration => (is => 'ro', isa => 'Paws::S3::TopicConfigurationDeprecated');
 
 }
 1;
@@ -31,15 +31,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 LambdaFunctionConfigurations => ArrayRef[Paws::S3::LambdaFunctionConfiguration]
+=head2 CloudFunctionConfiguration => Paws::S3::CloudFunctionConfiguration
 
   
 
-=head2 QueueConfigurations => ArrayRef[Paws::S3::QueueConfiguration]
+=head2 QueueConfiguration => Paws::S3::QueueConfigurationDeprecated
 
   
 
-=head2 TopicConfigurations => ArrayRef[Paws::S3::TopicConfiguration]
+=head2 TopicConfiguration => Paws::S3::TopicConfigurationDeprecated
 
   
 

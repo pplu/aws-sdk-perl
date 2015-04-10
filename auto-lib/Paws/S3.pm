@@ -112,6 +112,11 @@ package Paws::S3 {
     my $call_object = $self->new_with_coercions('Paws::S3::GetBucketNotification', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetBucketNotificationConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::GetBucketNotificationConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetBucketPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::GetBucketPolicy', @_);
@@ -215,6 +220,11 @@ package Paws::S3 {
   sub PutBucketNotification {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::PutBucketNotification', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutBucketNotificationConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::PutBucketNotificationConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutBucketPolicy {
@@ -705,11 +715,31 @@ owner.
 
   Arguments described in: L<Paws::S3::GetBucketNotification>
 
-  Returns: L<Paws::S3::GetBucketNotificationOutput>
+  Returns: L<Paws::S3::NotificationConfigurationDeprecated>
 
   
 
-Return the notification configuration of a bucket.
+Deprecated, see the GetBucketNotificationConfiguration operation.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetBucketNotificationConfiguration()
+
+  Arguments described in: L<Paws::S3::GetBucketNotificationConfiguration>
+
+  Returns: L<Paws::S3::NotificationConfiguration>
+
+  
+
+Returns the notification configuration of a bucket.
 
 
 
@@ -1124,6 +1154,26 @@ status of a bucket, you must be the bucket owner.
 =head2 PutBucketNotification()
 
   Arguments described in: L<Paws::S3::PutBucketNotification>
+
+  Returns: nothing
+
+  
+
+Deprecated, see the PutBucketNotificationConfiguraiton operation.
+
+
+
+
+
+
+
+
+
+
+
+=head2 PutBucketNotificationConfiguration()
+
+  Arguments described in: L<Paws::S3::PutBucketNotificationConfiguration>
 
   Returns: nothing
 
