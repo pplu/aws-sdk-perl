@@ -4,6 +4,7 @@ package Paws::ECS::StartTask {
   has cluster => (is => 'ro', isa => 'Str');
   has containerInstances => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride');
+  has startedBy => (is => 'ro', isa => 'Str');
   has taskDefinition => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -60,6 +61,8 @@ default cluster is assumed..
 The container instance UUIDs or full Amazon Resource Name (ARN) entries
 for the container instances on which you would like to place your task.
 
+The list of container instances to start tasks on is limited to 10.
+
 
 
 
@@ -70,6 +73,25 @@ for the container instances on which you would like to place your task.
 
 
 =head2 overrides => Paws::ECS::TaskOverride
+
+  
+
+A list of container overrides in JSON format that specify the name of a
+container in the specified task definition and the command it should
+run instead of its default. A total of 8192 characters are allowed for
+overrides. This limit includes the JSON formatting characters of the
+override structure.
+
+
+
+
+
+
+
+
+
+
+=head2 startedBy => Str
 
   
 

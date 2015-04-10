@@ -5,6 +5,7 @@ package Paws::ECS::RegisterContainerInstance {
   has instanceIdentityDocument => (is => 'ro', isa => 'Str');
   has instanceIdentityDocumentSignature => (is => 'ro', isa => 'Str');
   has totalResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]');
+  has versionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo');
 
   use MooseX::ClassAttribute;
 
@@ -62,6 +63,10 @@ specify a cluster, the default cluster is assumed..
   
 
 =head2 totalResources => ArrayRef[Paws::ECS::Resource]
+
+  
+
+=head2 versionInfo => Paws::ECS::VersionInfo
 
   
 

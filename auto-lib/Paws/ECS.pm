@@ -17,9 +17,19 @@ package Paws::ECS {
     my $call_object = $self->new_with_coercions('Paws::ECS::CreateCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateService {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::CreateService', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::DeleteCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteService {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::DeleteService', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeregisterContainerInstance {
@@ -40,6 +50,11 @@ package Paws::ECS {
   sub DescribeContainerInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::DescribeContainerInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeServices {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::DescribeServices', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTaskDefinition {
@@ -65,6 +80,11 @@ package Paws::ECS {
   sub ListContainerInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::ListContainerInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListServices {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::ListServices', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTaskDefinitionFamilies {
@@ -115,6 +135,11 @@ package Paws::ECS {
   sub SubmitTaskStateChange {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::SubmitTaskStateChange', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateService {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::UpdateService', @_);
     return $self->caller->do_call($self, $call_object);
   }
 }
@@ -176,7 +201,28 @@ a C<default> cluster when you launch your first container instance.
 However, you can create your own cluster with a unique name with the
 C<CreateCluster> action.
 
-During the preview, each account is limited to two clusters.
+
+
+
+
+
+
+
+
+
+
+=head2 CreateService()
+
+  Arguments described in: L<Paws::ECS::CreateService>
+
+  Returns: L<Paws::ECS::CreateServiceResponse>
+
+  
+
+Runs and maintains a desired number of tasks from a specified task
+definition. If the number of tasks running in a service drops below
+C<desiredCount>, Amazon ECS will spawn another instantiation of the
+task in the specified cluster.
 
 
 
@@ -200,6 +246,26 @@ Deletes the specified cluster. You must deregister all container
 instances from this cluster before you may delete it. You can list the
 container instances in a cluster with ListContainerInstances and
 deregister them with DeregisterContainerInstance.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DeleteService()
+
+  Arguments described in: L<Paws::ECS::DeleteService>
+
+  Returns: L<Paws::ECS::DeleteServiceResponse>
+
+  
+
+Deletes a specified service within a cluster.
 
 
 
@@ -286,6 +352,26 @@ Describes one or more of your clusters.
 Describes Amazon EC2 Container Service container instances. Returns
 metadata about registered and remaining resources on each container
 instance requested.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeServices()
+
+  Arguments described in: L<Paws::ECS::DescribeServices>
+
+  Returns: L<Paws::ECS::DescribeServicesResponse>
+
+  
+
+Describes the specified services running in your cluster.
 
 
 
@@ -393,6 +479,26 @@ Returns a list of existing clusters.
   
 
 Returns a list of container instances in a specified cluster.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ListServices()
+
+  Arguments described in: L<Paws::ECS::ListServices>
+
+  Returns: L<Paws::ECS::ListServicesResponse>
+
+  
+
+Lists the services that are running in a specified cluster.
 
 
 
@@ -529,6 +635,8 @@ Start a task using random placement and the default Amazon ECS
 scheduler. If you want to use your own scheduler or place a task on a
 specific container instance, use C<StartTask> instead.
 
+The C<count> parameter is limited to 10 tasks per call.
+
 
 
 
@@ -550,6 +658,8 @@ specific container instance, use C<StartTask> instead.
 Starts a new task from the specified task definition on the specified
 container instance or instances. If you want to use the default Amazon
 ECS scheduler to place your task, use C<RunTask> instead.
+
+The list of container instances to start tasks on is limited to 10.
 
 
 
@@ -616,6 +726,42 @@ This action is only used by the Amazon EC2 Container Service agent, and
 it is not intended for use outside of the agent.
 
 Sent to acknowledge that a task changed states.
+
+
+
+
+
+
+
+
+
+
+
+=head2 UpdateService()
+
+  Arguments described in: L<Paws::ECS::UpdateService>
+
+  Returns: L<Paws::ECS::UpdateServiceResponse>
+
+  
+
+Modify the desired count or task definition used in a service.
+
+You can add to or subtract from the number of instantiations of a task
+definition in a service by specifying the cluster that the service is
+running in and a new C<desiredCount> parameter.
+
+You can use C<UpdateService> to modify your task definition and deploy
+a new version of your service, one task at a time. If you modify the
+task definition with C<UpdateService>, Amazon ECS spawns a task with
+the new version of the task definition and then stops an old task after
+the new version is running. Because C<UpdateService> starts a new
+version of the task before stopping an old version, your cluster must
+have capacity to support one more instantiation of the task when
+C<UpdateService> is run. If your cluster cannot support another
+instantiation of the task used in your service, you can reduce the
+desired count of your service by one before modifying the task
+definition.
 
 
 

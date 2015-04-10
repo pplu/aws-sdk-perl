@@ -6,6 +6,7 @@ package Paws::ECS::Task {
   has desiredStatus => (is => 'ro', isa => 'Str');
   has lastStatus => (is => 'ro', isa => 'Str');
   has overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride');
+  has startedBy => (is => 'ro', isa => 'Str');
   has taskArn => (is => 'ro', isa => 'Str');
   has taskDefinitionArn => (is => 'ro', isa => 'Str');
 }

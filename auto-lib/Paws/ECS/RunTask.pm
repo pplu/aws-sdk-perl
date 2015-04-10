@@ -4,6 +4,7 @@ package Paws::ECS::RunTask {
   has cluster => (is => 'ro', isa => 'Str');
   has count => (is => 'ro', isa => 'Int');
   has overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride');
+  has startedBy => (is => 'ro', isa => 'Str');
   has taskDefinition => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -57,8 +58,10 @@ default cluster is assumed..
 
   
 
-The number of instances of the specified task that you would like to
-place on your cluster.
+The number of instantiations of the specified task that you would like
+to place on your cluster.
+
+The C<count> parameter is limited to 10 tasks per call.
 
 
 
@@ -70,6 +73,25 @@ place on your cluster.
 
 
 =head2 overrides => Paws::ECS::TaskOverride
+
+  
+
+A list of container overrides in JSON format that specify the name of a
+container in the specified task definition and the command it should
+run instead of its default. A total of 8192 characters are allowed for
+overrides. This limit includes the JSON formatting characters of the
+override structure.
+
+
+
+
+
+
+
+
+
+
+=head2 startedBy => Str
 
   
 

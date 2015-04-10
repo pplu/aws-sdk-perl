@@ -6,6 +6,8 @@ package Paws::ECS::ListTasks {
   has family => (is => 'ro', isa => 'Str');
   has maxResults => (is => 'ro', isa => 'Int');
   has nextToken => (is => 'ro', isa => 'Str');
+  has serviceName => (is => 'ro', isa => 'Str');
+  has startedBy => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -129,6 +131,27 @@ when there are no more results to return.
 
 
 
+
+=head2 serviceName => Str
+
+  
+
+The name of the service that you want to filter the C<ListTasks>
+results with. Specifying a C<serviceName> will limit the results to
+tasks that belong to that service.
+
+
+
+
+
+
+
+
+
+
+=head2 startedBy => Str
+
+  
 
 
 
