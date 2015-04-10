@@ -2,6 +2,7 @@ package Paws::RDS::PendingModifiedValues {
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
+  has CACertificateIdentifier => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');

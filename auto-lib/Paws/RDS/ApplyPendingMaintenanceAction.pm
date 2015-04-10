@@ -54,8 +54,8 @@ The pending maintenance action to apply to this resource.
 
   
 
-Specify an opt-in request, or undo an opt-in request. An opt-in request
-of type C<immediate> cannot be undone.
+A value that specifies the type of opt-in request, or undoes an opt-in
+request. An opt-in request of type C<immediate> cannot be undone.
 
 Valid values:
 
@@ -84,8 +84,7 @@ requests.
 
   
 
-The ARN of the resource (for example, a DB Instance) that the pending
-maintenance action applies to.
+The ARN of the resource that the pending maintenance action applies to.
 
 
 

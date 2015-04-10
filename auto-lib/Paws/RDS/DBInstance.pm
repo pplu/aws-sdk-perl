@@ -4,6 +4,7 @@ package Paws::RDS::DBInstance {
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
+  has CACertificateIdentifier => (is => 'ro', isa => 'Str');
   has CharacterSetName => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');

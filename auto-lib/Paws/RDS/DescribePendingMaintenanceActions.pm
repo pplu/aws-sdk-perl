@@ -40,13 +40,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+A filter that specifies one or more resources to return pending
+maintenance actions for.
+
 Supported filters:
 
 =over
 
 =item * C<db-instance-id> - Accepts DB instance identifiers and DB
-instance ARNs. The result list will only include maintenance actions
-for the specified DB Instances.
+instance Amazon Resource Names (ARNs). The results list will only
+include pending maintenance actions for the DB instances identified by
+these ARNs.
 
 =back
 
@@ -66,7 +70,7 @@ for the specified DB Instances.
 An optional pagination token provided by a previous
 C<DescribePendingMaintenanceActions> request. If this parameter is
 specified, the response includes only records beyond the marker, up to
-a number of records specified by C<MaxRecords> .
+a number of records specified by C<MaxRecords>.
 
 
 
@@ -103,7 +107,7 @@ Constraints: minimum 20, maximum 100
 
   
 
-The ARN of the resource to return pending maintenance actions for.
+The ARN of a resource to return pending maintenance actions for.
 
 
 

@@ -6,6 +6,7 @@ package Paws::RDS::ModifyDBInstance {
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
+  has CACertificateIdentifier => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
@@ -241,6 +242,22 @@ Replicas
 
 
 
+=head2 CACertificateIdentifier => Str
+
+  
+
+Indicates the certificate which needs to be associated with the
+instance.
+
+
+
+
+
+
+
+
+
+
 =head2 DBInstanceClass => Str
 
   
@@ -447,7 +464,7 @@ alphanumeric characters (Oracle), or 8 to 128 alphanumeric characters
 (SQL Server).
 
 Amazon RDS API actions never return the password, so this action
-provides a way to regain access to a master instance user if the
+provides a way to regain access to a primary instance user if the
 password is lost. This includes restoring privileges that may have been
 accidentally revoked.
 

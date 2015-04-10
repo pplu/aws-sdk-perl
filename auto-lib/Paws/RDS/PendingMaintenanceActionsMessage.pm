@@ -23,7 +23,7 @@ Paws::RDS::PendingMaintenanceActionsMessage
 An optional pagination token provided by a previous
 C<DescribePendingMaintenanceActions> request. If this parameter is
 specified, the response includes only records beyond the marker, up to
-a number of records specified by C<MaxRecords> .
+a number of records specified by C<MaxRecords>.
 
 
 
@@ -37,7 +37,7 @@ a number of records specified by C<MaxRecords> .
 
   
 
-Provides a list of the pending maintenance actions for the resource.
+A list of the pending maintenance actions for the resource.
 
 
 

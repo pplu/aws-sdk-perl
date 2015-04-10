@@ -121,6 +121,16 @@ package Paws::RDS {
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteOptionGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAccountAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeAccountAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDBEngineVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBEngineVersions', @_);
@@ -321,8 +331,8 @@ administration tasks, freeing up developers to focus on what makes
 their applications and businesses unique.
 
 Amazon RDS gives you access to the capabilities of a MySQL, PostgreSQL,
-Microsoft SQL Server, or Oracle database server. This means the code,
-applications, and tools you already use today with your existing
+Microsoft SQL Server, Oracle, or Aurora database server. This means the
+code, applications, and tools you already use today with your existing
 databases work with Amazon RDS without modification. Amazon RDS
 automatically backs up your database and maintains the database
 software that powers your DB instance. Amazon RDS is flexible: you can
@@ -407,7 +417,8 @@ Resources.
 
   
 
-Applies a pending maintenance action to a resource.
+Applies a pending maintenance action to a resource (for example, a DB
+instance).
 
 
 
@@ -768,9 +779,6 @@ The action cannot be canceled or reverted once submitted.
 Deletes a specified DBParameterGroup. The DBParameterGroup to be
 deleted cannot be associated with any DB instances.
 
-The specified DB parameter group cannot be associated with any DB
-instances.
-
 
 
 
@@ -879,6 +887,52 @@ Deletes an RDS event notification subscription.
   
 
 Deletes an existing option group.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeAccountAttributes()
+
+  Arguments described in: L<Paws::RDS::DescribeAccountAttributes>
+
+  Returns: L<Paws::RDS::AccountAttributesMessage>
+
+  
+
+Lists all of the attributes for a customer account. The attributes
+include Amazon RDS quotas for the account, such as the number of DB
+instances allowed. The description for a quota includes the quota name,
+current usage toward that quota, and the quota's maximum value.
+
+This command does not take any parameters.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeCertificates()
+
+  Arguments described in: L<Paws::RDS::DescribeCertificates>
+
+  Returns: L<Paws::RDS::CertificateMessage>
+
+  
+
+Lists the set of CA certificates provided by Amazon RDS for this AWS
+account.
 
 
 
@@ -1222,7 +1276,7 @@ engine.
 
   
 
-Returns a list of resources (for example, DB Instances) that have at
+Returns a list of resources (for example, DB instances) that have at
 least one pending maintenance action.
 
 
