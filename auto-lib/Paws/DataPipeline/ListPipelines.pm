@@ -37,11 +37,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The starting point for the results to be returned. The first time you
-call ListPipelines, this value should be empty. As long as the action
-returns C<HasMoreResults> as C<True>, you can call ListPipelines again
-and pass the marker value from the response to retrieve the next set of
-results.
+The starting point for the results to be returned. For the first call,
+this value should be empty. As long as there are more results, continue
+to call C<ListPipelines> with the marker value from the previous call
+to retrieve the next set of results.
 
 
 

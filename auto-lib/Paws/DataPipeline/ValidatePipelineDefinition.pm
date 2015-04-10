@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A list of parameter objects used with the pipeline.
+The parameter objects used with the pipeline.
 
 
 
@@ -55,7 +55,7 @@ A list of parameter objects used with the pipeline.
 
   
 
-A list of parameter values used with the pipeline.
+The parameter values used with the pipeline.
 
 
 
@@ -70,7 +70,7 @@ A list of parameter values used with the pipeline.
 
   
 
-Identifies the pipeline whose definition is to be validated.
+The ID of the pipeline.
 
 
 
@@ -85,8 +85,8 @@ Identifies the pipeline whose definition is to be validated.
 
   
 
-A list of objects that define the pipeline changes to validate against
-the pipeline.
+The objects that define the pipeline changes to validate against the
+pipeline.
 
 
 

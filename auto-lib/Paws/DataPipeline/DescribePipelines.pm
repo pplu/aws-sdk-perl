@@ -37,9 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-Identifiers of the pipelines to describe. You can pass as many as 25
-identifiers in a single call to DescribePipelines. You can obtain
-pipeline identifiers by calling ListPipelines.
+The IDs of the pipelines to describe. You can pass as many as 25
+identifiers in a single call. To obtain pipeline IDs, call
+ListPipelines.
 
 
 

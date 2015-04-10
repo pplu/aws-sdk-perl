@@ -54,9 +54,8 @@ ReportTaskProgressInput object.
 
   
 
-Identifier of the task assigned to the task runner. This value is
-provided in the TaskObject that the service returns with the response
-for the PollForTask action.
+The ID of the task assigned to the task runner. This value is provided
+in the response for PollForTask.
 
 
 

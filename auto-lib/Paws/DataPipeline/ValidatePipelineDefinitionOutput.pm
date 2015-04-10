@@ -20,7 +20,7 @@ Paws::DataPipeline::ValidatePipelineDefinitionOutput
 
   
 
-If C<True>, there were validation errors.
+Indicates whether there were validation errors.
 
 
 
@@ -34,8 +34,7 @@ If C<True>, there were validation errors.
 
   
 
-Lists the validation errors that were found by
-ValidatePipelineDefinition.
+Any validation errors that were found.
 
 
 
@@ -49,8 +48,7 @@ ValidatePipelineDefinition.
 
   
 
-Lists the validation warnings that were found by
-ValidatePipelineDefinition.
+Any validation warnings that were found.
 
 
 

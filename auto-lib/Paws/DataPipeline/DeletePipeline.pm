@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The identifier of the pipeline to be deleted.
+The ID of the pipeline.
 
 
 

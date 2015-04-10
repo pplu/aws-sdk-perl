@@ -54,7 +54,7 @@ The expression to evaluate.
 
   
 
-The identifier of the object.
+The ID of the object.
 
 
 
@@ -69,7 +69,7 @@ The identifier of the object.
 
   
 
-The identifier of the pipeline.
+The ID of the pipeline.
 
 
 

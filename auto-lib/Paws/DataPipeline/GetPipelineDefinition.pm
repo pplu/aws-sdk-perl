@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The identifier of the pipeline.
+The ID of the pipeline.
 
 
 
@@ -53,10 +53,9 @@ The identifier of the pipeline.
 
   
 
-The version of the pipeline definition to retrieve. This parameter
-accepts the values C<latest> (default) and C<active>. Where C<latest>
-indicates the last definition saved to the pipeline and C<active>
-indicates the last definition of the pipeline that was activated.
+The version of the pipeline definition to retrieve. Set this parameter
+to C<latest> (default) to use the last definition saved to the pipeline
+or C<active> to use the last definition that was activated.
 
 
 

@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A list of parameter objects used with the pipeline.
+The parameter objects used with the pipeline.
 
 
 
@@ -55,7 +55,7 @@ A list of parameter objects used with the pipeline.
 
   
 
-A list of parameter values used with the pipeline.
+The parameter values used with the pipeline.
 
 
 
@@ -70,7 +70,7 @@ A list of parameter values used with the pipeline.
 
   
 
-The identifier of the pipeline to be configured.
+The ID of the pipeline.
 
 
 
@@ -85,8 +85,8 @@ The identifier of the pipeline to be configured.
 
   
 
-The objects that define the pipeline. These will overwrite the existing
-pipeline definition.
+The objects that define the pipeline. These objects overwrite the
+existing pipeline definition.
 
 
 

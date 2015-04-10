@@ -20,7 +20,7 @@ Paws::DataPipeline::DescribeObjectsOutput
 
   
 
-If C<True>, there are more pages of results to return.
+Indicates whether there are more results to return.
 
 
 
@@ -35,7 +35,8 @@ If C<True>, there are more pages of results to return.
   
 
 The starting point for the next page of results. To view the next page
-of results, call DescribeObjects again with this marker value.
+of results, call C<DescribeObjects> again with this marker value. If
+the value is null, there are no more results.
 
 
 
@@ -49,8 +50,7 @@ of results, call DescribeObjects again with this marker value.
 
   
 
-An array of object definitions that are returned by the call to
-DescribeObjects.
+An array of object definitions.
 
 
 

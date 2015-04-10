@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The public DNS name of the calling task runner.
+The public DNS name of the task runner.
 
 
 
@@ -54,9 +54,9 @@ The public DNS name of the calling task runner.
 
   
 
-The identifier of the task runner. This value should be unique across
-your AWS account. In the case of AWS Data Pipeline Task Runner launched
-on a resource managed by AWS Data Pipeline, the web service provides a
+The ID of the task runner. This value should be unique across your AWS
+account. In the case of AWS Data Pipeline Task Runner launched on a
+resource managed by AWS Data Pipeline, the web service provides a
 unique identifier when it launches the application. If you have written
 a custom task runner, you should assign a unique identifier for the
 task runner.
@@ -74,12 +74,11 @@ task runner.
 
   
 
-Indicates the type of task the task runner is configured to accept and
-process. The worker group is set as a field on objects in the pipeline
-when they are created. You can only specify a single value for
-C<workerGroup> in the call to ReportTaskRunnerHeartbeat. There are no
-wildcard values permitted in C<workerGroup>, the string must be an
-exact, case-sensitive, match.
+The type of task the task runner is configured to accept and process.
+The worker group is set as a field on objects in the pipeline when they
+are created. You can only specify a single value for C<workerGroup>.
+There are no wildcard values permitted in C<workerGroup>; the string
+must be an exact, case-sensitive, match.
 
 
 

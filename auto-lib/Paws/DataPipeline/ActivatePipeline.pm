@@ -3,6 +3,7 @@ package Paws::DataPipeline::ActivatePipeline {
   use Moose;
   has parameterValues => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterValue]');
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
+  has startTimestamp => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -38,8 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-Returns a list of parameter values to pass to the pipeline at
-activation.
+A list of parameter values to pass to the pipeline at activation.
 
 
 
@@ -54,7 +54,23 @@ activation.
 
   
 
-The identifier of the pipeline to activate.
+The ID of the pipeline.
+
+
+
+
+
+
+
+
+
+
+=head2 startTimestamp => Str
+
+  
+
+The date and time to resume the pipeline. By default, the pipeline
+resumes from the last completed execution.
 
 
 

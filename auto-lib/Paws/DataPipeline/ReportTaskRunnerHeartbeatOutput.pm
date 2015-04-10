@@ -18,8 +18,7 @@ Paws::DataPipeline::ReportTaskRunnerHeartbeatOutput
 
   
 
-Indicates whether the calling task runner should terminate. If C<True>,
-the task runner that called ReportTaskRunnerHeartbeat should terminate.
+Indicates whether the calling task runner should terminate.
 
 
 

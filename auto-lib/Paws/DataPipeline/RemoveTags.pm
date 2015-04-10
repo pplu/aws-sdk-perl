@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The pipeline from which you want to remove tags.
+The ID of the pipeline.
 
 
 
@@ -53,7 +53,7 @@ The pipeline from which you want to remove tags.
 
   
 
-The keys of the tags you wish to remove.
+The keys of the tags to remove.
 
 
 

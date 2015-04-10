@@ -20,8 +20,8 @@ Paws::DataPipeline::ListPipelinesOutput
 
   
 
-If C<True>, there are more results that can be obtained by a subsequent
-call to ListPipelines.
+Indicates whether there are more results that can be obtained by a
+subsequent call.
 
 
 
@@ -35,9 +35,9 @@ call to ListPipelines.
 
   
 
-If not null, indicates the starting point for the set of pipeline
-identifiers that the next call to ListPipelines will retrieve. If null,
-there are no more pipeline identifiers.
+The starting point for the next page of results. To view the next page
+of results, call C<ListPipelinesOutput> again with this marker value.
+If the value is null, there are no more results.
 
 
 
@@ -51,10 +51,9 @@ there are no more pipeline identifiers.
 
   
 
-A list of all the pipeline identifiers that your account has permission
-to access. If you require additional information about the pipelines,
-you can use these identifiers to call DescribePipelines and
-GetPipelineDefinition.
+The pipeline identifiers. If you require additional information about
+the pipelines, you can use these identifiers to call DescribePipelines
+and GetPipelineDefinition.
 
 
 

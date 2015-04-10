@@ -20,7 +20,7 @@ Paws::DataPipeline::GetPipelineDefinitionOutput
 
   
 
-Returns a list of parameter objects used in the pipeline definition.
+The parameter objects used in the pipeline definition.
 
 
 
@@ -34,7 +34,7 @@ Returns a list of parameter objects used in the pipeline definition.
 
   
 
-Returns a list of parameter values used in the pipeline definition.
+The parameter values used in the pipeline definition.
 
 
 
@@ -48,7 +48,7 @@ Returns a list of parameter values used in the pipeline definition.
 
   
 
-An array of objects defined in the pipeline.
+The objects defined in the pipeline.
 
 
 

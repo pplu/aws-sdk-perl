@@ -41,10 +41,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-If an error occurred during the task, this value specifies an id value
-that represents the error. This value is set on the physical attempt
-object. It is used to display error information to the user. It should
-not start with string "Service_" which is reserved by the system.
+If an error occurred during the task, this value specifies the error
+code. This value is set on the physical attempt object. It is used to
+display error information to the user. It should not start with string
+"Service_" which is reserved by the system.
 
 
 
@@ -95,8 +95,8 @@ The web service does not parse this value.
 
   
 
-Identifies the task assigned to the task runner. This value is set in
-the TaskObject that is returned by the PollForTask action.
+The ID of the task assigned to the task runner. This value is provided
+in the response for PollForTask.
 
 
 
@@ -111,8 +111,8 @@ the TaskObject that is returned by the PollForTask action.
 
   
 
-If C<FINISHED>, the task successfully completed. If C<FAILED> the task
-ended unsuccessfully. The C<FALSE> value is used by preconditions.
+If C<FINISHED>, the task successfully completed. If C<FAILED>, the task
+ended unsuccessfully. Preconditions use false.
 
 
 

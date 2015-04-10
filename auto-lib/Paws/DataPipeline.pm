@@ -27,6 +27,11 @@ package Paws::DataPipeline {
     my $call_object = $self->new_with_coercions('Paws::DataPipeline::CreatePipeline', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeactivatePipeline {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DataPipeline::DeactivatePipeline', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeletePipeline {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DataPipeline::DeletePipeline', @_);
@@ -122,25 +127,10 @@ Paws::DataPipeline - Perl Interface to AWS AWS Data Pipeline
 
 
 
-AWS Data Pipeline is a web service that configures and manages a
-data-driven workflow called a pipeline. AWS Data Pipeline handles the
-details of scheduling and ensuring that data dependencies are met so
-your application can focus on processing the data.
-
-The AWS Data Pipeline SDKs and CLI implements two main sets of
-functionality. The first set of actions configure the pipeline in the
-web service. You perform these actions to create a pipeline and define
-data sources, schedules, dependencies, and the transforms to be
-performed on the data.
-
-The second set of actions are used by a task runner application that
-calls the AWS Data Pipeline service to receive the next task ready for
-processing. The logic for performing the task, such as querying the
-data, running data analysis, or converting the data from one format to
-another, is contained within the task runner. The task runner performs
-the task assigned to it by the web service, reporting progress to the
-web service as it does so. When the task is done, the task runner
-reports the final success or failure of the task to the web service.
+AWS Data Pipeline configures and manages a data-driven workflow called
+a pipeline. AWS Data Pipeline handles the details of scheduling and
+ensuring that data dependencies are met so that your application can
+focus on processing the data.
 
 AWS Data Pipeline provides a JAR implementation of a task runner called
 AWS Data Pipeline Task Runner. AWS Data Pipeline Task Runner provides
@@ -149,6 +139,18 @@ queries and running data analysis using Amazon Elastic MapReduce
 (Amazon EMR). You can use AWS Data Pipeline Task Runner as your task
 runner, or you can write your own task runner to provide custom data
 management.
+
+AWS Data Pipeline implements two main sets of functionality. Use the
+first set to create a pipeline and define data sources, schedules,
+dependencies, and the transforms to be performed on the data. Use the
+second set in your task runner application to receive the next task
+ready for processing. The logic for performing the task, such as
+querying the data, running data analysis, or converting the data from
+one format to another, is contained within the task runner. The task
+runner performs the task assigned to it by the web service, reporting
+progress to the web service as it does so. When the task is done, the
+task runner reports the final success or failure of the task to the web
+service.
 
 
 
@@ -169,15 +171,14 @@ management.
 
   
 
-Validates a pipeline and initiates processing. If the pipeline does not
-pass validation, activation fails. You cannot perform this operation on
-FINISHED pipelines and attempting to do so will return an
-InvalidRequestException.
+Validates the specified pipeline and starts processing pipeline tasks.
+If the pipeline does not pass validation, activation fails.
 
-Call this action to start processing pipeline tasks of a pipeline
-you've created using the CreatePipeline and PutPipelineDefinition
-actions. A pipeline cannot be modified after it has been successfully
-activated.
+If you need to pause the pipeline to investigate an issue with a
+component, such as a data source or script, call DeactivatePipeline.
+
+To activate a finished pipeline, modify the end date for the pipeline
+and then activate it.
 
 
 
@@ -197,7 +198,7 @@ activated.
 
   
 
-Add or modify tags in an existing pipeline.
+Adds or modifies tags for the specified pipeline.
 
 
 
@@ -217,8 +218,33 @@ Add or modify tags in an existing pipeline.
 
   
 
-Creates a new empty pipeline. When this action succeeds, you can then
-use the PutPipelineDefinition action to populate the pipeline.
+Creates a new, empty pipeline. Use PutPipelineDefinition to populate
+the pipeline.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DeactivatePipeline()
+
+  Arguments described in: L<Paws::DataPipeline::DeactivatePipeline>
+
+  Returns: L<Paws::DataPipeline::DeactivatePipelineOutput>
+
+  
+
+Deactivates the specified running pipeline. The pipeline is set to the
+C<DEACTIVATING> state until the deactivation process completes.
+
+To resume a deactivated pipeline, use ActivatePipeline. By default, the
+pipeline resumes from the last completed execution. Optionally, you can
+specify the date and time to resume the pipeline.
 
 
 
@@ -238,15 +264,14 @@ use the PutPipelineDefinition action to populate the pipeline.
 
   
 
-Permanently deletes a pipeline, its pipeline definition and its run
-history. You cannot query or restore a deleted pipeline. AWS Data
-Pipeline will attempt to cancel instances associated with the pipeline
-that are currently being processed by task runners. Deleting a pipeline
-cannot be undone.
+Deletes a pipeline, its pipeline definition, and its run history. AWS
+Data Pipeline attempts to cancel instances associated with the pipeline
+that are currently being processed by task runners.
 
-To temporarily pause a pipeline instead of deleting it, call SetStatus
-with the status set to Pause on individual components. Components that
-are paused by SetStatus can be resumed.
+Deleting a pipeline cannot be undone. You cannot query or restore a
+deleted pipeline. To temporarily pause a pipeline instead of deleting
+it, call SetStatus with the status set to C<PAUSE> on individual
+components. Components that are paused by SetStatus can be resumed.
 
 
 
@@ -266,7 +291,7 @@ are paused by SetStatus can be resumed.
 
   
 
-Returns the object definitions for a set of objects associated with the
+Gets the object definitions for a set of objects associated with the
 pipeline. Object definitions are composed of a set of fields that
 define the properties of the object.
 
@@ -288,16 +313,16 @@ define the properties of the object.
 
   
 
-Retrieve metadata about one or more pipelines. The information
+Retrieves metadata about one or more pipelines. The information
 retrieved includes the name of the pipeline, the pipeline identifier,
 its current state, and the user account that owns the pipeline. Using
 account credentials, you can retrieve metadata about pipelines that you
 or your IAM users have created. If you are using an IAM user account,
-you can retrieve metadata about only those pipelines you have read
-permission for.
+you can retrieve metadata about only those pipelines for which you have
+read permissions.
 
 To retrieve the full pipeline definition instead of metadata about the
-pipeline, call the GetPipelineDefinition action.
+pipeline, call GetPipelineDefinition.
 
 
 
@@ -317,8 +342,9 @@ pipeline, call the GetPipelineDefinition action.
 
   
 
-Evaluates a string in the context of a specified object. A task runner
-can use this action to evaluate SQL queries stored in Amazon S3.
+Task runners call C<EvaluateExpression> to evaluate a string in the
+context of the specified object. For example, a task runner can
+evaluate SQL queries stored in Amazon S3.
 
 
 
@@ -338,9 +364,9 @@ can use this action to evaluate SQL queries stored in Amazon S3.
 
   
 
-Returns the definition of the specified pipeline. You can call
-GetPipelineDefinition to retrieve the pipeline definition you provided
-using PutPipelineDefinition.
+Gets the definition of the specified pipeline. You can call
+C<GetPipelineDefinition> to retrieve the pipeline definition that you
+provided using PutPipelineDefinition.
 
 
 
@@ -360,9 +386,8 @@ using PutPipelineDefinition.
 
   
 
-Returns a list of pipeline identifiers for all active pipelines.
-Identifiers are returned only for pipelines you have permission to
-access.
+Lists the pipeline identifiers for all active pipelines that you have
+permission to access.
 
 
 
@@ -382,22 +407,21 @@ access.
 
   
 
-Task runners call this action to receive a task to perform from AWS
+Task runners call C<PollForTask> to receive a task to perform from AWS
 Data Pipeline. The task runner specifies which tasks it can perform by
-setting a value for the workerGroup parameter of the PollForTask call.
-The task returned by PollForTask may come from any of the pipelines
-that match the workerGroup value passed in by the task runner and that
-was launched using the IAM user credentials specified by the task
-runner.
+setting a value for the C<workerGroup> parameter. The task returned can
+come from any of the pipelines that match the C<workerGroup> value
+passed in by the task runner and that was launched using the IAM user
+credentials specified by the task runner.
 
-If tasks are ready in the work queue, PollForTask returns a response
-immediately. If no tasks are available in the queue, PollForTask uses
-long-polling and holds on to a poll connection for up to a 90 seconds
-during which time the first newly scheduled task is handed to the task
-runner. To accomodate this, set the socket timeout in your task runner
-to 90 seconds. The task runner should not call PollForTask again on the
-same C<workerGroup> until it receives a response, and this may take up
-to 90 seconds.
+If tasks are ready in the work queue, C<PollForTask> returns a response
+immediately. If no tasks are available in the queue, C<PollForTask>
+uses long-polling and holds on to a poll connection for up to a 90
+seconds, during which time the first newly scheduled task is handed to
+the task runner. To accomodate this, set the socket timeout in your
+task runner to 90 seconds. The task runner should not call
+C<PollForTask> again on the same C<workerGroup> until it receives a
+response, and this can take up to 90 seconds.
 
 
 
@@ -417,12 +441,11 @@ to 90 seconds.
 
   
 
-Adds tasks, schedules, and preconditions that control the behavior of
-the pipeline. You can use PutPipelineDefinition to populate a new
-pipeline.
+Adds tasks, schedules, and preconditions to the specified pipeline. You
+can use C<PutPipelineDefinition> to populate a new pipeline.
 
-PutPipelineDefinition also validates the configuration as it adds it to
-the pipeline. Changes to the pipeline are saved unless one of the
+C<PutPipelineDefinition> also validates the configuration as it adds it
+to the pipeline. Changes to the pipeline are saved unless one of the
 following three validation errors exists in the pipeline.
 
 =over
@@ -438,7 +461,7 @@ allowed objects.
 
 =back
 
-Pipeline object definitions are passed to the PutPipelineDefinition
+Pipeline object definitions are passed to the C<PutPipelineDefinition>
 action and returned by the GetPipelineDefinition action.
 
 
@@ -459,14 +482,8 @@ action and returned by the GetPipelineDefinition action.
 
   
 
-Queries a pipeline for the names of objects that match a specified set
-of conditions.
-
-The objects returned by QueryObjects are paginated and then filtered by
-the value you set for query. This means the action may return an empty
-result set with a value set for marker. If C<HasMoreResults> is set to
-C<True>, you should continue to call QueryObjects, passing in the
-returned value for marker, until C<HasMoreResults> returns C<False>.
+Queries the specified pipeline for the names of objects that match the
+specified set of conditions.
 
 
 
@@ -486,7 +503,7 @@ returned value for marker, until C<HasMoreResults> returns C<False>.
 
   
 
-Remove existing tags from a pipeline.
+Removes existing tags from the specified pipeline.
 
 
 
@@ -506,20 +523,19 @@ Remove existing tags from a pipeline.
 
   
 
-Updates the AWS Data Pipeline service on the progress of the calling
-task runner. When the task runner is assigned a task, it should call
-ReportTaskProgress to acknowledge that it has the task within 2
-minutes. If the web service does not recieve this acknowledgement
-within the 2 minute window, it will assign the task in a subsequent
-PollForTask call. After this initial acknowledgement, the task runner
-only needs to report progress every 15 minutes to maintain its
-ownership of the task. You can change this reporting time from 15
+Task runners call C<ReportTaskProgress> when assigned a task to
+acknowledge that it has the task. If the web service does not receive
+this acknowledgement within 2 minutes, it assigns the task in a
+subsequent PollForTask call. After this initial acknowledgement, the
+task runner only needs to report progress every 15 minutes to maintain
+its ownership of the task. You can change this reporting time from 15
 minutes by specifying a C<reportProgressTimeout> field in your
-pipeline. If a task runner does not report its status after 5 minutes,
-AWS Data Pipeline will assume that the task runner is unable to process
-the task and will reassign the task in a subsequent response to
-PollForTask. task runners should call ReportTaskProgress every 60
-seconds.
+pipeline.
+
+If a task runner does not report its status after 5 minutes, AWS Data
+Pipeline assumes that the task runner is unable to process the task and
+reassigns the task in a subsequent response to PollForTask. Task
+runners should call C<ReportTaskProgress> every 60 seconds.
 
 
 
@@ -539,11 +555,11 @@ seconds.
 
   
 
-Task runners call ReportTaskRunnerHeartbeat every 15 minutes to
-indicate that they are operational. In the case of AWS Data Pipeline
-Task Runner launched on a resource managed by AWS Data Pipeline, the
-web service can use this call to detect when the task runner
-application has failed and restart a new instance.
+Task runners call C<ReportTaskRunnerHeartbeat> every 15 minutes to
+indicate that they are operational. If the AWS Data Pipeline Task
+Runner is launched on a resource managed by AWS Data Pipeline, the web
+service can use this call to detect when the task runner application
+has failed and restart a new instance.
 
 
 
@@ -563,12 +579,12 @@ application has failed and restart a new instance.
 
   
 
-Requests that the status of an array of physical or logical pipeline
-objects be updated in the pipeline. This update may not occur
-immediately, but is eventually consistent. The status that can be set
-depends on the type of object, e.g. DataNode or Activity. You cannot
-perform this operation on FINISHED pipelines and attempting to do so
-will return an InvalidRequestException.
+Requests that the status of the specified physical or logical pipeline
+objects be updated in the specified pipeline. This update might not
+occur immediately, but is eventually consistent. The status that can be
+set depends on the type of object (for example, DataNode or Activity).
+You cannot perform this operation on C<FINISHED> pipelines and
+attempting to do so returns C<InvalidRequestException>.
 
 
 
@@ -588,11 +604,12 @@ will return an InvalidRequestException.
 
   
 
-Notifies AWS Data Pipeline that a task is completed and provides
-information about the final status. The task runner calls this action
-regardless of whether the task was sucessful. The task runner does not
-need to call SetTaskStatus for tasks that are canceled by the web
-service during a call to ReportTaskProgress.
+Task runners call C<SetTaskStatus> to notify AWS Data Pipeline that a
+task is completed and provide information about the final status. A
+task runner makes this call regardless of whether the task was
+sucessful. A task runner does not need to call C<SetTaskStatus> for
+tasks that are canceled by the web service during a call to
+ReportTaskProgress.
 
 
 
@@ -612,8 +629,8 @@ service during a call to ReportTaskProgress.
 
   
 
-Tests the pipeline definition with a set of validation checks to ensure
-that it is well formed and can run without error.
+Validates the specified pipeline definition to ensure that it is well
+formed and can be run without error.
 
 
 

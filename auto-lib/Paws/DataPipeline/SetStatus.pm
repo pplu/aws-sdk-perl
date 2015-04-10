@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-Identifies an array of objects. The corresponding objects can be either
+The IDs of the objects. The corresponding objects can be either
 physical or components, but not a mix of both types.
 
 
@@ -55,7 +55,7 @@ physical or components, but not a mix of both types.
 
   
 
-Identifies the pipeline that contains the objects.
+The ID of the pipeline that contains the objects.
 
 
 
@@ -70,9 +70,9 @@ Identifies the pipeline that contains the objects.
 
   
 
-Specifies the status to be set on all the objects in C<objectIds>. For
-components, this can be either C<PAUSE> or C<RESUME>. For instances,
-this can be either C<TRY_CANCEL>, C<RERUN>, or C<MARK_FINISHED>.
+The status to be set on all the objects specified in C<objectIds>. For
+components, use C<PAUSE> or C<RESUME>. For instances, use
+C<TRY_CANCEL>, C<RERUN>, or C<MARK_FINISHED>.
 
 
 

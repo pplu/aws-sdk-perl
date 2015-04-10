@@ -18,8 +18,8 @@ Paws::DataPipeline::CreatePipelineOutput
 
   
 
-The ID that AWS Data Pipeline assigns the newly created pipeline. The
-ID is a string of the form: df-06372391ZG65EXAMPLE.
+The ID that AWS Data Pipeline assigns the newly created pipeline. For
+example, C<df-06372391ZG65EXAMPLE>.
 
 
 

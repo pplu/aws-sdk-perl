@@ -20,8 +20,8 @@ Paws::DataPipeline::QueryObjectsOutput
 
   
 
-If C<True>, there are more results that can be obtained by a subsequent
-call to QueryObjects.
+Indicates whether there are more results that can be obtained by a
+subsequent call.
 
 
 
@@ -35,7 +35,7 @@ call to QueryObjects.
 
   
 
-A list of identifiers that match the query selectors.
+The identifiers that match the query selectors.
 
 
 
@@ -49,10 +49,9 @@ A list of identifiers that match the query selectors.
 
   
 
-The starting point for the results to be returned. As long as the
-action returns C<HasMoreResults> as C<True>, you can call QueryObjects
-again and pass the marker value from the response to retrieve the next
-set of results.
+The starting point for the next page of results. To view the next page
+of results, call C<QueryObjects> again with this marker value. If the
+value is null, there are no more results.
 
 
 

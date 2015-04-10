@@ -56,11 +56,10 @@ when the object descriptions are returned.
 
   
 
-The starting point for the results to be returned. The first time you
-call DescribeObjects, this value should be empty. As long as the action
-returns C<HasMoreResults> as C<True>, you can call DescribeObjects
-again and pass the marker value from the response to retrieve the next
-set of results.
+The starting point for the results to be returned. For the first call,
+this value should be empty. As long as there are more results, continue
+to call C<DescribeObjects> with the marker value from the previous call
+to retrieve the next set of results.
 
 
 
@@ -75,9 +74,9 @@ set of results.
 
   
 
-Identifiers of the pipeline objects that contain the definitions to be
+The IDs of the pipeline objects that contain the definitions to be
 described. You can pass as many as 25 identifiers in a single call to
-DescribeObjects.
+C<DescribeObjects>.
 
 
 
@@ -92,7 +91,7 @@ DescribeObjects.
 
   
 
-Identifier of the pipeline that contains the object definitions.
+The ID of the pipeline that contains the object definitions.
 
 
 

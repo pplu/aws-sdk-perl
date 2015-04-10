@@ -20,9 +20,9 @@ Paws::DataPipeline::PutPipelineDefinitionOutput
 
   
 
-If C<True>, there were validation errors. If errored is C<True>, the
-pipeline definition is stored but cannot be activated until you correct
-the pipeline and call PutPipelineDefinition to commit the corrected
+Indicates whether there were validation errors, and the pipeline
+definition is stored but cannot be activated until you correct the
+pipeline and call C<PutPipelineDefinition> to commit the corrected
 pipeline.
 
 
@@ -37,8 +37,8 @@ pipeline.
 
   
 
-A list of the validation errors that are associated with the objects
-defined in C<pipelineObjects>.
+The validation errors that are associated with the objects defined in
+C<pipelineObjects>.
 
 
 
@@ -52,8 +52,8 @@ defined in C<pipelineObjects>.
 
   
 
-A list of the validation warnings that are associated with the objects
-defined in C<pipelineObjects>.
+The validation warnings that are associated with the objects defined in
+C<pipelineObjects>.
 
 
 

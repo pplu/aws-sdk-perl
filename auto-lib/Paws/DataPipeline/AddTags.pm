@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The identifier of the pipeline to which you want to add the tags.
+The ID of the pipeline.
 
 
 
@@ -53,7 +53,7 @@ The identifier of the pipeline to which you want to add the tags.
 
   
 
-The tags as key/value pairs to add to the pipeline.
+The tags to add, as key/value pairs.
 
 
 

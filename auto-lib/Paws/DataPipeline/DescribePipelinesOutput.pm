@@ -18,7 +18,7 @@ Paws::DataPipeline::DescribePipelinesOutput
 
   
 
-An array of descriptions returned for the specified pipelines.
+An array of descriptions for the specified pipelines.
 
 
 
