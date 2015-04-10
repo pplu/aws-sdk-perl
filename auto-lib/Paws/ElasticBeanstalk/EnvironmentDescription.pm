@@ -2,6 +2,7 @@
 package Paws::ElasticBeanstalk::EnvironmentDescription {
   use Moose;
   with 'Paws::API::ResultParser';
+  has AbortableOperationInProgress => (is => 'ro', isa => 'Bool');
   has ApplicationName => (is => 'ro', isa => 'Str');
   has CNAME => (is => 'ro', isa => 'Str');
   has DateCreated => (is => 'ro', isa => 'Str');
@@ -28,6 +29,21 @@ package Paws::ElasticBeanstalk::EnvironmentDescription {
 Paws::ElasticBeanstalk::EnvironmentDescription
 
 =head1 ATTRIBUTES
+
+=head2 AbortableOperationInProgress => Bool
+
+  
+
+Lists in-progress environment updates and application version
+deployments that you can cancel.
+
+
+
+
+
+
+
+
 
 =head2 ApplicationName => Str
 

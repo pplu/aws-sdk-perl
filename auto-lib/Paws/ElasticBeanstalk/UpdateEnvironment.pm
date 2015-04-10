@@ -6,6 +6,7 @@ package Paws::ElasticBeanstalk::UpdateEnvironment {
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]');
   has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]');
+  has SolutionStackName => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
   has Tier => (is => 'ro', isa => 'Paws::ElasticBeanstalk::EnvironmentTier');
   has VersionLabel => (is => 'ro', isa => 'Str');
@@ -122,6 +123,22 @@ configuration options to the requested value.
 
 A list of custom user-defined configuration options to remove from the
 configuration set for this environment.
+
+
+
+
+
+
+
+
+
+
+=head2 SolutionStackName => Str
+
+  
+
+This specifies the platform version that the environment will run after
+the environment is updated.
 
 
 

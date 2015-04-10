@@ -11,6 +11,11 @@ package Paws::ElasticBeanstalk {
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
   
+  sub AbortEnvironmentUpdate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::AbortEnvironmentUpdate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CheckDNSAvailability {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::CheckDNSAvailability', @_);
@@ -208,6 +213,27 @@ Glossary>.
 
 =head1 METHODS
 
+=head2 AbortEnvironmentUpdate()
+
+  Arguments described in: L<Paws::ElasticBeanstalk::AbortEnvironmentUpdate>
+
+  Returns: nothing
+
+  
+
+Cancels in-progress environment configuration update or application
+version deployment.
+
+
+
+
+
+
+
+
+
+
+
 =head2 CheckDNSAvailability()
 
   Arguments described in: L<Paws::ElasticBeanstalk::CheckDNSAvailability>
@@ -258,6 +284,11 @@ C<default> and no application versions.
   
 
 Creates an application version for the specified application.
+
+Once you create an application version with a specified Amazon S3
+bucket and key location, you cannot change that Amazon S3 location. If
+you change the Amazon S3 location, you receive an exception when you
+attempt to launch an environment from the application version.
 
 
 
@@ -358,6 +389,8 @@ Deletes the specified application along with all associated versions
 and configurations. The application versions will not be deleted from
 your Amazon S3 bucket.
 
+You cannot delete an application that has a running environment.
+
 
 
 
@@ -378,6 +411,9 @@ your Amazon S3 bucket.
 
 Deletes the specified version from the specified application.
 
+You cannot delete an application version that is associated with a
+running environment.
+
 
 
 
@@ -397,6 +433,11 @@ Deletes the specified version from the specified application.
   
 
 Deletes the specified configuration template.
+
+When you launch an environment using a configuration template, the
+environment gets a copy of the template. You can delete or modify the
+environment's copy of the template without affecting the running
+environment.
 
 
 
@@ -588,6 +629,9 @@ Returns descriptions for existing environments.
 Returns list of event descriptions matching criteria up to the last 6
 weeks.
 
+This action returns the most recent 1,000 events from the specified
+C<NextToken>.
+
 
 
 
@@ -653,8 +697,13 @@ deployed environment.
 
 Setting the C<InfoType> to C<tail> compiles the last lines from the
 application server log files of every Amazon EC2 instance in your
-environment. Use RetrieveEnvironmentInfo to access the compiled
-information.
+environment.
+
+Setting the C<InfoType> to C<bundle> compresses the application server
+log files for every Amazon EC2 instance into a C<.zip> file. Legacy and
+.NET containers do not support bundle logs.
+
+Use RetrieveEnvironmentInfo to obtain the set of logs.
 
 Related Topics
 
@@ -774,6 +823,9 @@ Terminates the specified environment.
 
 Updates the specified application to have the specified properties.
 
+If a property (for example, C<description>) is not provided, the value
+remains unchanged. To clear these properties, specify an empty string.
+
 
 
 
@@ -795,6 +847,9 @@ Updates the specified application to have the specified properties.
 Updates the specified application version to have the specified
 properties.
 
+If a property (for example, C<description>) is not provided, the value
+remains unchanged. To clear properties, specify an empty string.
+
 
 
 
@@ -815,6 +870,10 @@ properties.
 
 Updates the specified configuration template to have the specified
 properties or configuration option values.
+
+If a property (for example, C<ApplicationName>) is not provided, its
+value remains unchanged. To clear such properties, specify an empty
+string.
 
 Related Topics
 
