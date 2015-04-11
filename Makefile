@@ -1,3 +1,5 @@
+test:
+	prove -I lib -I auto-lib -I t/lib t/
 
 pull-other-sdks:
 	git submodule init
