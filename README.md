@@ -115,7 +115,7 @@ my $cred_provider = Paws::Credential::STS->new(
   Policy => '{"Version":"2012-10-17","Statement":[{"Effect": "Allow","Action":["ec2:DescribeInstances"],"Resource":"*"}]}'
 );
 my $ec2 = Paws->service('EC2', credentials => $cred_provider, region => 'eu-west-1');
-$ec2->DescribeIsntances;
+$ec2->DescribeInstances;
 ```
 
 Paws::Credential::AssumeRole
