@@ -243,7 +243,7 @@ C<lambda:CreateEventSourceMapping> action.
 
 
 
-=head2 CreateFunction(Code => Paws::Lambda::FunctionCode, FunctionName => Str, Handler => Str, Role => Str, Runtime => Str, [MemorySize => Int, Description => Str, Timeout => Int])
+=head2 CreateFunction(Code => Paws::Lambda::FunctionCode, FunctionName => Str, Handler => Str, Role => Str, Runtime => Str, [Description => Str, MemorySize => Int, Timeout => Int])
 
 Each argument is described in detail in: L<Paws::Lambda::CreateFunction>
 
@@ -418,7 +418,7 @@ You need permission for the C<lambda:GetPolicy action.>
 
 
 
-=head2 Invoke(FunctionName => Str, [ClientContext => Str, InvocationType => Str, Payload => Str, LogType => Str])
+=head2 Invoke(FunctionName => Str, [ClientContext => Str, InvocationType => Str, LogType => Str, Payload => Str])
 
 Each argument is described in detail in: L<Paws::Lambda::Invoke>
 
@@ -449,7 +449,7 @@ Returns: a L<Paws::Lambda::InvokeAsyncResponse> instance
   
 
 
-=head2 ListEventSourceMappings([Marker => Str, MaxItems => Int, EventSourceArn => Str, FunctionName => Str])
+=head2 ListEventSourceMappings([EventSourceArn => Str, FunctionName => Str, Marker => Str, MaxItems => Int])
 
 Each argument is described in detail in: L<Paws::Lambda::ListEventSourceMappings>
 
@@ -478,7 +478,7 @@ C<lambda:ListEventSourceMappings> action.
 
 
 
-=head2 ListFunctions([MaxItems => Int, Marker => Str])
+=head2 ListFunctions([Marker => Str, MaxItems => Int])
 
 Each argument is described in detail in: L<Paws::Lambda::ListFunctions>
 
@@ -529,7 +529,7 @@ You need permission for the C<lambda:RemovePermission> action.
 
 
 
-=head2 UpdateEventSourceMapping(UUID => Str, [BatchSize => Int, FunctionName => Str, Enabled => Bool])
+=head2 UpdateEventSourceMapping(UUID => Str, [BatchSize => Int, Enabled => Bool, FunctionName => Str])
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateEventSourceMapping>
 
@@ -581,7 +581,7 @@ action.
 
 
 
-=head2 UpdateFunctionConfiguration(FunctionName => Str, [Role => Str, Description => Str, MemorySize => Int, Timeout => Int, Handler => Str])
+=head2 UpdateFunctionConfiguration(FunctionName => Str, [Description => Str, Handler => Str, MemorySize => Int, Role => Str, Timeout => Int])
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionConfiguration>
 

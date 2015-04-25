@@ -327,7 +327,7 @@ The I<CopySnapshot> action makes a copy of an existing snapshot.
 
 
 
-=head2 CreateCacheCluster(CacheClusterId => Str, [PreferredAvailabilityZone => Str, NotificationTopicArn => Str, PreferredMaintenanceWindow => Str, PreferredAvailabilityZones => ArrayRef[Str], SnapshotWindow => Str, AutoMinorVersionUpgrade => Bool, SnapshotArns => ArrayRef[Str], ReplicationGroupId => Str, SnapshotName => Str, SecurityGroupIds => ArrayRef[Str], NumCacheNodes => Int, CacheSubnetGroupName => Str, EngineVersion => Str, CacheParameterGroupName => Str, CacheNodeType => Str, Tags => ArrayRef[Paws::ElastiCache::Tag], CacheSecurityGroupNames => ArrayRef[Str], Port => Int, SnapshotRetentionLimit => Int, AZMode => Str, Engine => Str])
+=head2 CreateCacheCluster(CacheClusterId => Str, [AutoMinorVersionUpgrade => Bool, AZMode => Str, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], CacheSubnetGroupName => Str, Engine => Str, EngineVersion => Str, NotificationTopicArn => Str, NumCacheNodes => Int, Port => Int, PreferredAvailabilityZone => Str, PreferredAvailabilityZones => ArrayRef[Str], PreferredMaintenanceWindow => Str, ReplicationGroupId => Str, SecurityGroupIds => ArrayRef[Str], SnapshotArns => ArrayRef[Str], SnapshotName => Str, SnapshotRetentionLimit => Int, SnapshotWindow => Str, Tags => ArrayRef[Paws::ElastiCache::Tag]])
 
 Each argument is described in detail in: L<Paws::ElastiCache::CreateCacheCluster>
 
@@ -421,7 +421,7 @@ Virtual Private Cloud (VPC).
 
 
 
-=head2 CreateReplicationGroup(ReplicationGroupDescription => Str, ReplicationGroupId => Str, [PreferredMaintenanceWindow => Str, NotificationTopicArn => Str, AutoMinorVersionUpgrade => Bool, SnapshotArns => ArrayRef[Str], PrimaryClusterId => Str, SnapshotWindow => Str, CacheParameterGroupName => Str, EngineVersion => Str, CacheNodeType => Str, SecurityGroupIds => ArrayRef[Str], SnapshotName => Str, CacheSubnetGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], Engine => Str, SnapshotRetentionLimit => Int, PreferredCacheClusterAZs => ArrayRef[Str], AutomaticFailoverEnabled => Bool, Port => Int, Tags => ArrayRef[Paws::ElastiCache::Tag], NumCacheClusters => Int])
+=head2 CreateReplicationGroup(ReplicationGroupDescription => Str, ReplicationGroupId => Str, [AutomaticFailoverEnabled => Bool, AutoMinorVersionUpgrade => Bool, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], CacheSubnetGroupName => Str, Engine => Str, EngineVersion => Str, NotificationTopicArn => Str, NumCacheClusters => Int, Port => Int, PreferredCacheClusterAZs => ArrayRef[Str], PreferredMaintenanceWindow => Str, PrimaryClusterId => Str, SecurityGroupIds => ArrayRef[Str], SnapshotArns => ArrayRef[Str], SnapshotName => Str, SnapshotRetentionLimit => Int, SnapshotWindow => Str, Tags => ArrayRef[Paws::ElastiCache::Tag]])
 
 Each argument is described in detail in: L<Paws::ElastiCache::CreateReplicationGroup>
 
@@ -568,7 +568,7 @@ cache clusters.
 
 
 
-=head2 DeleteReplicationGroup(ReplicationGroupId => Str, [RetainPrimaryCluster => Bool, FinalSnapshotIdentifier => Str])
+=head2 DeleteReplicationGroup(ReplicationGroupId => Str, [FinalSnapshotIdentifier => Str, RetainPrimaryCluster => Bool])
 
 Each argument is described in detail in: L<Paws::ElastiCache::DeleteReplicationGroup>
 
@@ -618,7 +618,7 @@ begins deleting the snapshot; you cannot cancel or revert this action.
 
 
 
-=head2 DescribeCacheClusters([ShowCacheNodeInfo => Bool, MaxRecords => Int, CacheClusterId => Str, Marker => Str])
+=head2 DescribeCacheClusters([CacheClusterId => Str, Marker => Str, MaxRecords => Int, ShowCacheNodeInfo => Bool])
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheClusters>
 
@@ -661,7 +661,7 @@ endpoint information for the removed nodes is displayed.
 
 
 
-=head2 DescribeCacheEngineVersions([Engine => Str, Marker => Str, DefaultOnly => Bool, CacheParameterGroupFamily => Str, EngineVersion => Str, MaxRecords => Int])
+=head2 DescribeCacheEngineVersions([CacheParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheEngineVersions>
 
@@ -682,7 +682,7 @@ available cache engines and their versions.
 
 
 
-=head2 DescribeCacheParameterGroups([MaxRecords => Int, Marker => Str, CacheParameterGroupName => Str])
+=head2 DescribeCacheParameterGroups([CacheParameterGroupName => Str, Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheParameterGroups>
 
@@ -704,7 +704,7 @@ specified, the list will contain only the descriptions for that group.
 
 
 
-=head2 DescribeCacheParameters(CacheParameterGroupName => Str, [Marker => Str, Source => Str, MaxRecords => Int])
+=head2 DescribeCacheParameters(CacheParameterGroupName => Str, [Marker => Str, MaxRecords => Int, Source => Str])
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheParameters>
 
@@ -725,7 +725,7 @@ list for a particular cache parameter group.
 
 
 
-=head2 DescribeCacheSecurityGroups([Marker => Str, MaxRecords => Int, CacheSecurityGroupName => Str])
+=head2 DescribeCacheSecurityGroups([CacheSecurityGroupName => Str, Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheSecurityGroups>
 
@@ -747,7 +747,7 @@ specified, the list will contain only the description of that group.
 
 
 
-=head2 DescribeCacheSubnetGroups([Marker => Str, MaxRecords => Int, CacheSubnetGroupName => Str])
+=head2 DescribeCacheSubnetGroups([CacheSubnetGroupName => Str, Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheSubnetGroups>
 
@@ -790,7 +790,7 @@ engine and system parameter information for the specified cache engine.
 
 
 
-=head2 DescribeEvents([EndTime => Str, Marker => Str, Duration => Int, StartTime => Str, SourceIdentifier => Str, SourceType => Str, MaxRecords => Int])
+=head2 DescribeEvents([Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeEvents>
 
@@ -840,7 +840,7 @@ groups.
 
 
 
-=head2 DescribeReservedCacheNodes([ReservedCacheNodesOfferingId => Str, CacheNodeType => Str, Marker => Str, MaxRecords => Int, ProductDescription => Str, OfferingType => Str, Duration => Str, ReservedCacheNodeId => Str])
+=head2 DescribeReservedCacheNodes([CacheNodeType => Str, Duration => Str, Marker => Str, MaxRecords => Int, OfferingType => Str, ProductDescription => Str, ReservedCacheNodeId => Str, ReservedCacheNodesOfferingId => Str])
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeReservedCacheNodes>
 
@@ -862,7 +862,7 @@ cache node.
 
 
 
-=head2 DescribeReservedCacheNodesOfferings([CacheNodeType => Str, Marker => Str, Duration => Str, OfferingType => Str, ReservedCacheNodesOfferingId => Str, MaxRecords => Int, ProductDescription => Str])
+=head2 DescribeReservedCacheNodesOfferings([CacheNodeType => Str, Duration => Str, Marker => Str, MaxRecords => Int, OfferingType => Str, ProductDescription => Str, ReservedCacheNodesOfferingId => Str])
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeReservedCacheNodesOfferings>
 
@@ -883,7 +883,7 @@ reserved cache node offerings.
 
 
 
-=head2 DescribeSnapshots([MaxRecords => Int, SnapshotSource => Str, SnapshotName => Str, Marker => Str, CacheClusterId => Str])
+=head2 DescribeSnapshots([CacheClusterId => Str, Marker => Str, MaxRecords => Int, SnapshotName => Str, SnapshotSource => Str])
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeSnapshots>
 
@@ -934,7 +934,7 @@ Amazon ElastiCache.
 
 
 
-=head2 ModifyCacheCluster(CacheClusterId => Str, [AZMode => Str, SnapshotRetentionLimit => Int, NewAvailabilityZones => ArrayRef[Str], CacheSecurityGroupNames => ArrayRef[Str], CacheNodeIdsToRemove => ArrayRef[Str], NumCacheNodes => Int, SecurityGroupIds => ArrayRef[Str], EngineVersion => Str, CacheParameterGroupName => Str, SnapshotWindow => Str, AutoMinorVersionUpgrade => Bool, ApplyImmediately => Bool, NotificationTopicStatus => Str, NotificationTopicArn => Str, PreferredMaintenanceWindow => Str])
+=head2 ModifyCacheCluster(CacheClusterId => Str, [ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, AZMode => Str, CacheNodeIdsToRemove => ArrayRef[Str], CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], EngineVersion => Str, NewAvailabilityZones => ArrayRef[Str], NotificationTopicArn => Str, NotificationTopicStatus => Str, NumCacheNodes => Int, PreferredMaintenanceWindow => Str, SecurityGroupIds => ArrayRef[Str], SnapshotRetentionLimit => Int, SnapshotWindow => Str])
 
 Each argument is described in detail in: L<Paws::ElastiCache::ModifyCacheCluster>
 
@@ -979,7 +979,7 @@ request by submitting a list parameter name and value pairs.
 
 
 
-=head2 ModifyCacheSubnetGroup(CacheSubnetGroupName => Str, [SubnetIds => ArrayRef[Str], CacheSubnetGroupDescription => Str])
+=head2 ModifyCacheSubnetGroup(CacheSubnetGroupName => Str, [CacheSubnetGroupDescription => Str, SubnetIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::ElastiCache::ModifyCacheSubnetGroup>
 
@@ -1000,7 +1000,7 @@ group.
 
 
 
-=head2 ModifyReplicationGroup(ReplicationGroupId => Str, [SnapshotWindow => Str, PrimaryClusterId => Str, AutoMinorVersionUpgrade => Bool, ApplyImmediately => Bool, NotificationTopicStatus => Str, PreferredMaintenanceWindow => Str, NotificationTopicArn => Str, ReplicationGroupDescription => Str, SnapshotRetentionLimit => Int, AutomaticFailoverEnabled => Bool, CacheSecurityGroupNames => ArrayRef[Str], SecurityGroupIds => ArrayRef[Str], SnapshottingClusterId => Str, EngineVersion => Str, CacheParameterGroupName => Str])
+=head2 ModifyReplicationGroup(ReplicationGroupId => Str, [ApplyImmediately => Bool, AutomaticFailoverEnabled => Bool, AutoMinorVersionUpgrade => Bool, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], EngineVersion => Str, NotificationTopicArn => Str, NotificationTopicStatus => Str, PreferredMaintenanceWindow => Str, PrimaryClusterId => Str, ReplicationGroupDescription => Str, SecurityGroupIds => ArrayRef[Str], SnapshotRetentionLimit => Int, SnapshottingClusterId => Str, SnapshotWindow => Str])
 
 Each argument is described in detail in: L<Paws::ElastiCache::ModifyReplicationGroup>
 

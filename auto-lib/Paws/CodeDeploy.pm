@@ -385,7 +385,7 @@ Creates a new application.
 
 
 
-=head2 CreateDeployment(applicationName => Str, [description => Str, deploymentConfigName => Str, revision => Paws::CodeDeploy::RevisionLocation, ignoreApplicationStopFailures => Bool, deploymentGroupName => Str])
+=head2 CreateDeployment(applicationName => Str, [deploymentConfigName => Str, deploymentGroupName => Str, description => Str, ignoreApplicationStopFailures => Bool, revision => Paws::CodeDeploy::RevisionLocation])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeployment>
 
@@ -425,7 +425,7 @@ Creates a new deployment configuration.
 
 
 
-=head2 CreateDeploymentGroup(applicationName => Str, deploymentGroupName => Str, serviceRoleArn => Str, [deploymentConfigName => Str, ec2TagFilters => ArrayRef[Paws::CodeDeploy::EC2TagFilter], onPremisesInstanceTagFilters => ArrayRef[Paws::CodeDeploy::TagFilter], autoScalingGroups => ArrayRef[Str]])
+=head2 CreateDeploymentGroup(applicationName => Str, deploymentGroupName => Str, serviceRoleArn => Str, [autoScalingGroups => ArrayRef[Str], deploymentConfigName => Str, ec2TagFilters => ArrayRef[Paws::CodeDeploy::EC2TagFilter], onPremisesInstanceTagFilters => ArrayRef[Paws::CodeDeploy::TagFilter]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentGroup>
 
@@ -669,7 +669,7 @@ Gets information about an on-premises instance.
 
 
 
-=head2 ListApplicationRevisions(applicationName => Str, [s3KeyPrefix => Str, deployed => Str, sortOrder => Str, sortBy => Str, nextToken => Str, s3Bucket => Str])
+=head2 ListApplicationRevisions(applicationName => Str, [deployed => Str, nextToken => Str, s3Bucket => Str, s3KeyPrefix => Str, sortBy => Str, sortOrder => Str])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::ListApplicationRevisions>
 
@@ -773,7 +773,7 @@ user or AWS account.
 
 
 
-=head2 ListDeployments([deploymentGroupName => Str, createTimeRange => Paws::CodeDeploy::TimeRange, includeOnlyStatuses => ArrayRef[Str], nextToken => Str, applicationName => Str])
+=head2 ListDeployments([applicationName => Str, createTimeRange => Paws::CodeDeploy::TimeRange, deploymentGroupName => Str, includeOnlyStatuses => ArrayRef[Str], nextToken => Str])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::ListDeployments>
 
@@ -794,7 +794,7 @@ registered with the applicable IAM user or AWS account.
 
 
 
-=head2 ListOnPremisesInstances([tagFilters => ArrayRef[Paws::CodeDeploy::TagFilter], nextToken => Str, registrationStatus => Str])
+=head2 ListOnPremisesInstances([nextToken => Str, registrationStatus => Str, tagFilters => ArrayRef[Paws::CodeDeploy::TagFilter]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::ListOnPremisesInstances>
 
@@ -899,7 +899,7 @@ Attempts to stop an ongoing deployment.
 
 
 
-=head2 UpdateApplication([newApplicationName => Str, applicationName => Str])
+=head2 UpdateApplication([applicationName => Str, newApplicationName => Str])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::UpdateApplication>
 
@@ -919,7 +919,7 @@ Changes an existing application's name.
 
 
 
-=head2 UpdateDeploymentGroup(applicationName => Str, currentDeploymentGroupName => Str, [autoScalingGroups => ArrayRef[Str], newDeploymentGroupName => Str, serviceRoleArn => Str, onPremisesInstanceTagFilters => ArrayRef[Paws::CodeDeploy::TagFilter], deploymentConfigName => Str, ec2TagFilters => ArrayRef[Paws::CodeDeploy::EC2TagFilter]])
+=head2 UpdateDeploymentGroup(applicationName => Str, currentDeploymentGroupName => Str, [autoScalingGroups => ArrayRef[Str], deploymentConfigName => Str, ec2TagFilters => ArrayRef[Paws::CodeDeploy::EC2TagFilter], newDeploymentGroupName => Str, onPremisesInstanceTagFilters => ArrayRef[Paws::CodeDeploy::TagFilter], serviceRoleArn => Str])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::UpdateDeploymentGroup>
 

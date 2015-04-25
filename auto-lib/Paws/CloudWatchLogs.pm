@@ -335,7 +335,7 @@ policy.
 
 
 
-=head2 DescribeLogGroups([logGroupNamePrefix => Str, limit => Int, nextToken => Str])
+=head2 DescribeLogGroups([limit => Int, logGroupNamePrefix => Str, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogGroups>
 
@@ -363,7 +363,7 @@ request.
 
 
 
-=head2 DescribeLogStreams(logGroupName => Str, [descending => Bool, orderBy => Str, nextToken => Str, logStreamNamePrefix => Str, limit => Int])
+=head2 DescribeLogStreams(logGroupName => Str, [descending => Bool, limit => Int, logStreamNamePrefix => Str, nextToken => Str, orderBy => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogStreams>
 
@@ -392,7 +392,7 @@ second, after which transactions are throttled.
 
 
 
-=head2 DescribeMetricFilters(logGroupName => Str, [limit => Int, filterNamePrefix => Str, nextToken => Str])
+=head2 DescribeMetricFilters(logGroupName => Str, [filterNamePrefix => Str, limit => Int, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeMetricFilters>
 
@@ -420,7 +420,7 @@ parameter in the request.
 
 
 
-=head2 GetLogEvents(logGroupName => Str, logStreamName => Str, [startFromHead => Bool, endTime => Num, limit => Int, nextToken => Str, startTime => Num])
+=head2 GetLogEvents(logGroupName => Str, logStreamName => Str, [endTime => Num, limit => Int, nextToken => Str, startFromHead => Bool, startTime => Num])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::GetLogEvents>
 

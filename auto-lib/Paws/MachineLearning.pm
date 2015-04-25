@@ -214,7 +214,7 @@ specified by the C<OutputUri> parameter.
 
 
 
-=head2 CreateDataSourceFromRDS(DataSourceId => Str, RDSData => Paws::MachineLearning::RDSDataSpec, RoleARN => Str, [DataSourceName => Str, ComputeStatistics => Bool])
+=head2 CreateDataSourceFromRDS(DataSourceId => Str, RDSData => Paws::MachineLearning::RDSDataSpec, RoleARN => Str, [ComputeStatistics => Bool, DataSourceName => Str])
 
 Each argument is described in detail in: L<Paws::MachineLearning::CreateDataSourceFromRDS>
 
@@ -390,7 +390,7 @@ evaluation during the creation operation.
 
 
 
-=head2 CreateMLModel(MLModelId => Str, MLModelType => Str, TrainingDataSourceId => Str, [Parameters => Paws::MachineLearning::TrainingParameters, Recipe => Str, RecipeUri => Str, MLModelName => Str])
+=head2 CreateMLModel(MLModelId => Str, MLModelType => Str, TrainingDataSourceId => Str, [MLModelName => Str, Parameters => Paws::MachineLearning::TrainingParameters, Recipe => Str, RecipeUri => Str])
 
 Each argument is described in detail in: L<Paws::MachineLearning::CreateMLModel>
 
@@ -577,7 +577,7 @@ Deletes a real time endpoint of an C<MLModel>.
 
 
 
-=head2 DescribeBatchPredictions([EQ => Str, LE => Str, Prefix => Str, SortOrder => Str, GE => Str, Limit => Int, FilterVariable => Str, LT => Str, NE => Str, NextToken => Str, GT => Str])
+=head2 DescribeBatchPredictions([EQ => Str, FilterVariable => Str, GE => Str, GT => Str, LE => Str, Limit => Int, LT => Str, NE => Str, NextToken => Str, Prefix => Str, SortOrder => Str])
 
 Each argument is described in detail in: L<Paws::MachineLearning::DescribeBatchPredictions>
 
@@ -598,7 +598,7 @@ criteria in the request.
 
 
 
-=head2 DescribeDataSources([EQ => Str, LE => Str, Limit => Int, FilterVariable => Str, Prefix => Str, SortOrder => Str, GE => Str, LT => Str, NextToken => Str, NE => Str, GT => Str])
+=head2 DescribeDataSources([EQ => Str, FilterVariable => Str, GE => Str, GT => Str, LE => Str, Limit => Int, LT => Str, NE => Str, NextToken => Str, Prefix => Str, SortOrder => Str])
 
 Each argument is described in detail in: L<Paws::MachineLearning::DescribeDataSources>
 
@@ -619,7 +619,7 @@ request.
 
 
 
-=head2 DescribeEvaluations([NextToken => Str, NE => Str, GT => Str, LT => Str, FilterVariable => Str, Limit => Int, Prefix => Str, SortOrder => Str, GE => Str, EQ => Str, LE => Str])
+=head2 DescribeEvaluations([EQ => Str, FilterVariable => Str, GE => Str, GT => Str, LE => Str, Limit => Int, LT => Str, NE => Str, NextToken => Str, Prefix => Str, SortOrder => Str])
 
 Each argument is described in detail in: L<Paws::MachineLearning::DescribeEvaluations>
 
@@ -640,7 +640,7 @@ in the request.
 
 
 
-=head2 DescribeMLModels([FilterVariable => Str, Limit => Int, Prefix => Str, SortOrder => Str, GE => Str, EQ => Str, LE => Str, NextToken => Str, NE => Str, GT => Str, LT => Str])
+=head2 DescribeMLModels([EQ => Str, FilterVariable => Str, GE => Str, GT => Str, LE => Str, Limit => Int, LT => Str, NE => Str, NextToken => Str, Prefix => Str, SortOrder => Str])
 
 Each argument is described in detail in: L<Paws::MachineLearning::DescribeMLModels>
 

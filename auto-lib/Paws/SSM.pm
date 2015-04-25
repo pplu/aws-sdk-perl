@@ -328,7 +328,7 @@ Gets the contents of the specified configuration document.
 
 
 
-=head2 ListAssociations(AssociationFilterList => ArrayRef[Paws::SSM::AssociationFilter], [NextToken => Str, MaxResults => Int])
+=head2 ListAssociations(AssociationFilterList => ArrayRef[Paws::SSM::AssociationFilter], [MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SSM::ListAssociations>
 
@@ -349,7 +349,7 @@ instance.
 
 
 
-=head2 ListDocuments([NextToken => Str, DocumentFilterList => ArrayRef[Paws::SSM::DocumentFilter], MaxResults => Int])
+=head2 ListDocuments([DocumentFilterList => ArrayRef[Paws::SSM::DocumentFilter], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SSM::ListDocuments>
 

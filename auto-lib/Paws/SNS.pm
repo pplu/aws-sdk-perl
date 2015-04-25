@@ -271,7 +271,7 @@ Amazon SNS Mobile Push Notifications.
 
 
 
-=head2 CreatePlatformEndpoint(PlatformApplicationArn => Str, Token => Str, [CustomUserData => Str, Attributes => Paws::SNS::MapStringToString])
+=head2 CreatePlatformEndpoint(PlatformApplicationArn => Str, Token => Str, [Attributes => Paws::SNS::MapStringToString, CustomUserData => Str])
 
 Each argument is described in detail in: L<Paws::SNS::CreatePlatformEndpoint>
 
@@ -608,7 +608,7 @@ call to get further results.
 
 
 
-=head2 Publish(Message => Str, [Subject => Str, MessageStructure => Str, TargetArn => Str, TopicArn => Str, MessageAttributes => Paws::SNS::MessageAttributeMap])
+=head2 Publish(Message => Str, [MessageAttributes => Paws::SNS::MessageAttributeMap, MessageStructure => Str, Subject => Str, TargetArn => Str, TopicArn => Str])
 
 Each argument is described in detail in: L<Paws::SNS::Publish>
 

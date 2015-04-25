@@ -405,7 +405,7 @@ the I<Elastic Load Balancing Developer Guide>.
 
 
 
-=head2 CreateLoadBalancer(Listeners => ArrayRef[Paws::ELB::Listener], LoadBalancerName => Str, [SecurityGroups => ArrayRef[Str], Scheme => Str, Tags => ArrayRef[Paws::ELB::Tag], Subnets => ArrayRef[Str], AvailabilityZones => ArrayRef[Str]])
+=head2 CreateLoadBalancer(Listeners => ArrayRef[Paws::ELB::Listener], LoadBalancerName => Str, [AvailabilityZones => ArrayRef[Str], Scheme => Str, SecurityGroups => ArrayRef[Str], Subnets => ArrayRef[Str], Tags => ArrayRef[Paws::ELB::Tag]])
 
 Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancer>
 
@@ -712,7 +712,7 @@ applied to a load balancer.
 
 
 
-=head2 DescribeLoadBalancers([PageSize => Int, LoadBalancerNames => ArrayRef[Str], Marker => Str])
+=head2 DescribeLoadBalancers([LoadBalancerNames => ArrayRef[Str], Marker => Str, PageSize => Int])
 
 Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancers>
 

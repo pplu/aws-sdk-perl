@@ -333,7 +333,7 @@ Gateway.
 
 =head1 METHODS
 
-=head2 ActivateGateway(ActivationKey => Str, GatewayName => Str, GatewayRegion => Str, GatewayTimezone => Str, [MediumChangerType => Str, GatewayType => Str, TapeDriveType => Str])
+=head2 ActivateGateway(ActivationKey => Str, GatewayName => Str, GatewayRegion => Str, GatewayTimezone => Str, [GatewayType => Str, MediumChangerType => Str, TapeDriveType => Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::ActivateGateway>
 
@@ -1030,7 +1030,7 @@ information sorted by volume ARNs.
 
 
 
-=head2 DescribeTapeArchives([Marker => Str, TapeARNs => ArrayRef[Str], Limit => Int])
+=head2 DescribeTapeArchives([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeTapeArchives>
 
@@ -1055,7 +1055,7 @@ your account.
 
 
 
-=head2 DescribeTapeRecoveryPoints(GatewayARN => Str, [Marker => Str, Limit => Int])
+=head2 DescribeTapeRecoveryPoints(GatewayARN => Str, [Limit => Int, Marker => Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeTapeRecoveryPoints>
 
@@ -1081,7 +1081,7 @@ gateway.
 
 
 
-=head2 DescribeTapes(GatewayARN => Str, [Limit => Int, TapeARNs => ArrayRef[Str], Marker => Str])
+=head2 DescribeTapes(GatewayARN => Str, [Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeTapes>
 
@@ -1129,7 +1129,7 @@ used.
 
 
 
-=head2 DescribeVTLDevices(GatewayARN => Str, [Limit => Int, VTLDeviceARNs => ArrayRef[Str], Marker => Str])
+=head2 DescribeVTLDevices(GatewayARN => Str, [Limit => Int, Marker => Str, VTLDeviceARNs => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeVTLDevices>
 
@@ -1210,7 +1210,7 @@ Once a gateway is disabled it cannot be enabled.
 
 
 
-=head2 ListGateways([Marker => Str, Limit => Int])
+=head2 ListGateways([Limit => Int, Marker => Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListGateways>
 
@@ -1539,7 +1539,7 @@ credentials.
 
 
 
-=head2 UpdateGatewayInformation(GatewayARN => Str, [GatewayTimezone => Str, GatewayName => Str])
+=head2 UpdateGatewayInformation(GatewayARN => Str, [GatewayName => Str, GatewayTimezone => Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::UpdateGatewayInformation>
 

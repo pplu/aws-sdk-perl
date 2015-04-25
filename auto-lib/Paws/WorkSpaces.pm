@@ -116,7 +116,7 @@ created.
 
 
 
-=head2 DescribeWorkspaceBundles([Owner => Str, BundleIds => ArrayRef[Str], NextToken => Str])
+=head2 DescribeWorkspaceBundles([BundleIds => ArrayRef[Str], NextToken => Str, Owner => Str])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceBundles>
 
@@ -145,7 +145,7 @@ call to this operation to retrieve the next set of items.
 
 
 
-=head2 DescribeWorkspaceDirectories([NextToken => Str, DirectoryIds => ArrayRef[Str]])
+=head2 DescribeWorkspaceDirectories([DirectoryIds => ArrayRef[Str], NextToken => Str])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceDirectories>
 
@@ -172,7 +172,7 @@ call to this operation to retrieve the next set of items.
 
 
 
-=head2 DescribeWorkspaces([BundleId => Str, DirectoryId => Str, WorkspaceIds => ArrayRef[Str], NextToken => Str, UserName => Str, Limit => Int])
+=head2 DescribeWorkspaces([BundleId => Str, DirectoryId => Str, Limit => Int, NextToken => Str, UserName => Str, WorkspaceIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaces>
 

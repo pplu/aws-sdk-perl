@@ -439,7 +439,7 @@ instance).
 
 
 
-=head2 AuthorizeDBSecurityGroupIngress(DBSecurityGroupName => Str, [EC2SecurityGroupId => Str, EC2SecurityGroupOwnerId => Str, EC2SecurityGroupName => Str, CIDRIP => Str])
+=head2 AuthorizeDBSecurityGroupIngress(DBSecurityGroupName => Str, [CIDRIP => Str, EC2SecurityGroupId => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str])
 
 Each argument is described in detail in: L<Paws::RDS::AuthorizeDBSecurityGroupIngress>
 
@@ -534,7 +534,7 @@ Copies the specified option group.
 
 
 
-=head2 CreateDBInstance(AllocatedStorage => Int, DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, MasterUsername => Str, MasterUserPassword => Str, [PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, TdeCredentialPassword => Str, MultiAZ => Bool, DBParameterGroupName => Str, StorageType => Str, AutoMinorVersionUpgrade => Bool, TdeCredentialArn => Str, PreferredBackupWindow => Str, DBSubnetGroupName => Str, DBName => Str, KmsKeyId => Str, LicenseModel => Str, EngineVersion => Str, VpcSecurityGroupIds => ArrayRef[Str], OptionGroupName => Str, Iops => Int, Port => Int, DBSecurityGroups => ArrayRef[Str], AvailabilityZone => Str, CharacterSetName => Str, StorageEncrypted => Bool, Tags => ArrayRef[Paws::RDS::Tag], BackupRetentionPeriod => Int])
+=head2 CreateDBInstance(AllocatedStorage => Int, DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, MasterUsername => Str, MasterUserPassword => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], DBSubnetGroupName => Str, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag], TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstance>
 
@@ -554,7 +554,7 @@ Creates a new DB instance.
 
 
 
-=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [Port => Int, StorageType => Str, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, Tags => ArrayRef[Paws::RDS::Tag], DBSubnetGroupName => Str, DBInstanceClass => Str, PubliclyAccessible => Bool, OptionGroupName => Str, Iops => Int])
+=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, DBInstanceClass => Str, DBSubnetGroupName => Str, Iops => Int, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstanceReadReplica>
 
@@ -687,7 +687,7 @@ one subnet in at least two AZs in the region.
 
 
 
-=head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [EventCategories => ArrayRef[Str], SourceIds => ArrayRef[Str], Enabled => Bool, SourceType => Str, Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str], SourceIds => ArrayRef[Str], SourceType => Str, Tags => ArrayRef[Paws::RDS::Tag]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateEventSubscription>
 
@@ -907,7 +907,7 @@ Deletes an existing option group.
 
 
 
-=head2 DescribeAccountAttributes()
+=head2 DescribeAccountAttributes( => )
 
 Each argument is described in detail in: L<Paws::RDS::DescribeAccountAttributes>
 
@@ -932,7 +932,7 @@ This command does not take any parameters.
 
 
 
-=head2 DescribeCertificates([CertificateIdentifier => Str, Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], MaxRecords => Int])
+=head2 DescribeCertificates([CertificateIdentifier => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeCertificates>
 
@@ -953,7 +953,7 @@ account.
 
 
 
-=head2 DescribeDBEngineVersions([DefaultOnly => Bool, Filters => ArrayRef[Paws::RDS::Filter], DBParameterGroupFamily => Str, Engine => Str, ListSupportedCharacterSets => Bool, EngineVersion => Str, Marker => Str, MaxRecords => Int])
+=head2 DescribeDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[Paws::RDS::Filter], ListSupportedCharacterSets => Bool, Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBEngineVersions>
 
@@ -973,7 +973,7 @@ Returns a list of the available DB engines.
 
 
 
-=head2 DescribeDBInstances([MaxRecords => Int, Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], DBInstanceIdentifier => Str])
+=head2 DescribeDBInstances([DBInstanceIdentifier => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBInstances>
 
@@ -994,7 +994,7 @@ pagination.
 
 
 
-=head2 DescribeDBLogFiles(DBInstanceIdentifier => Str, [MaxRecords => Int, FileSize => Num, FileLastWritten => Num, Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], FilenameContains => Str])
+=head2 DescribeDBLogFiles(DBInstanceIdentifier => Str, [FileLastWritten => Num, FilenameContains => Str, FileSize => Num, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBLogFiles>
 
@@ -1014,7 +1014,7 @@ Returns a list of DB log files for the DB instance.
 
 
 
-=head2 DescribeDBParameterGroups([Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, DBParameterGroupName => Str, MaxRecords => Int])
+=head2 DescribeDBParameterGroups([DBParameterGroupName => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBParameterGroups>
 
@@ -1036,7 +1036,7 @@ description of the specified DB parameter group.
 
 
 
-=head2 DescribeDBParameters(DBParameterGroupName => Str, [Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], Source => Str, MaxRecords => Int])
+=head2 DescribeDBParameters(DBParameterGroupName => Str, [Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, Source => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBParameters>
 
@@ -1057,7 +1057,7 @@ group.
 
 
 
-=head2 DescribeDBSecurityGroups([MaxRecords => Int, DBSecurityGroupName => Str, Marker => Str, Filters => ArrayRef[Paws::RDS::Filter]])
+=head2 DescribeDBSecurityGroups([DBSecurityGroupName => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBSecurityGroups>
 
@@ -1079,7 +1079,7 @@ descriptions of the specified DB security group.
 
 
 
-=head2 DescribeDBSnapshots([Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, DBInstanceIdentifier => Str, SnapshotType => Str, DBSnapshotIdentifier => Str, MaxRecords => Int])
+=head2 DescribeDBSnapshots([DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBSnapshots>
 
@@ -1099,7 +1099,7 @@ Returns information about DB snapshots. This API supports pagination.
 
 
 
-=head2 DescribeDBSubnetGroups([Marker => Str, DBSubnetGroupName => Str, Filters => ArrayRef[Paws::RDS::Filter], MaxRecords => Int])
+=head2 DescribeDBSubnetGroups([DBSubnetGroupName => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBSubnetGroups>
 
@@ -1123,7 +1123,7 @@ For an overview of CIDR ranges, go to the Wikipedia Tutorial.
 
 
 
-=head2 DescribeEngineDefaultParameters(DBParameterGroupFamily => Str, [Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], MaxRecords => Int])
+=head2 DescribeEngineDefaultParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeEngineDefaultParameters>
 
@@ -1167,7 +1167,7 @@ Guide.
 
 
 
-=head2 DescribeEvents([EventCategories => ArrayRef[Str], Duration => Int, Filters => ArrayRef[Paws::RDS::Filter], StartTime => Str, SourceIdentifier => Str, MaxRecords => Int, SourceType => Str, EndTime => Str, Marker => Str])
+=head2 DescribeEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str], Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeEvents>
 
@@ -1191,7 +1191,7 @@ as a parameter. By default, the past hour of events are returned.
 
 
 
-=head2 DescribeEventSubscriptions([SubscriptionName => Str, Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], MaxRecords => Int])
+=head2 DescribeEventSubscriptions([Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeEventSubscriptions>
 
@@ -1216,7 +1216,7 @@ subscription.
 
 
 
-=head2 DescribeOptionGroupOptions(EngineName => Str, [Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], MajorEngineVersion => Str, MaxRecords => Int])
+=head2 DescribeOptionGroupOptions(EngineName => Str, [Filters => ArrayRef[Paws::RDS::Filter], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeOptionGroupOptions>
 
@@ -1236,7 +1236,7 @@ Describes all available options.
 
 
 
-=head2 DescribeOptionGroups([MajorEngineVersion => Str, Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], EngineName => Str, MaxRecords => Int, OptionGroupName => Str])
+=head2 DescribeOptionGroups([EngineName => Str, Filters => ArrayRef[Paws::RDS::Filter], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int, OptionGroupName => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeOptionGroups>
 
@@ -1256,7 +1256,7 @@ Describes the available option groups.
 
 
 
-=head2 DescribeOrderableDBInstanceOptions(Engine => Str, [EngineVersion => Str, DBInstanceClass => Str, LicenseModel => Str, Marker => Str, MaxRecords => Int, Filters => ArrayRef[Paws::RDS::Filter], Vpc => Bool])
+=head2 DescribeOrderableDBInstanceOptions(Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[Paws::RDS::Filter], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeOrderableDBInstanceOptions>
 
@@ -1277,7 +1277,7 @@ engine.
 
 
 
-=head2 DescribePendingMaintenanceActions([Marker => Str, Filters => ArrayRef[Paws::RDS::Filter], MaxRecords => Int, ResourceIdentifier => Str])
+=head2 DescribePendingMaintenanceActions([Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribePendingMaintenanceActions>
 
@@ -1298,7 +1298,7 @@ least one pending maintenance action.
 
 
 
-=head2 DescribeReservedDBInstances([OfferingType => Str, Filters => ArrayRef[Paws::RDS::Filter], Duration => Str, MultiAZ => Bool, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str, Marker => Str, DBInstanceClass => Str, ProductDescription => Str, MaxRecords => Int])
+=head2 DescribeReservedDBInstances([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeReservedDBInstances>
 
@@ -1319,7 +1319,7 @@ about a specified reserved DB instance.
 
 
 
-=head2 DescribeReservedDBInstancesOfferings([Filters => ArrayRef[Paws::RDS::Filter], MultiAZ => Bool, Duration => Str, OfferingType => Str, DBInstanceClass => Str, Marker => Str, ReservedDBInstancesOfferingId => Str, MaxRecords => Int, ProductDescription => Str])
+=head2 DescribeReservedDBInstancesOfferings([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstancesOfferingId => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeReservedDBInstancesOfferings>
 
@@ -1382,7 +1382,7 @@ RDS Resources.
 
 
 
-=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [VpcSecurityGroupIds => ArrayRef[Str], EngineVersion => Str, DBInstanceClass => Str, Iops => Int, OptionGroupName => Str, AllowMajorVersionUpgrade => Bool, DBSecurityGroups => ArrayRef[Str], AllocatedStorage => Int, BackupRetentionPeriod => Int, PreferredMaintenanceWindow => Str, ApplyImmediately => Bool, NewDBInstanceIdentifier => Str, TdeCredentialPassword => Str, StorageType => Str, AutoMinorVersionUpgrade => Bool, DBParameterGroupName => Str, MultiAZ => Bool, PreferredBackupWindow => Str, MasterUserPassword => Str, TdeCredentialArn => Str, CACertificateIdentifier => Str])
+=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, DBInstanceClass => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], EngineVersion => Str, Iops => Int, MasterUserPassword => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBInstance>
 
@@ -1464,7 +1464,7 @@ least one subnet in at least two AZs in the region.
 
 
 
-=head2 ModifyEventSubscription(SubscriptionName => Str, [EventCategories => ArrayRef[Str], Enabled => Bool, SnsTopicArn => Str, SourceType => Str])
+=head2 ModifyEventSubscription(SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str], SnsTopicArn => Str, SourceType => Str])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyEventSubscription>
 
@@ -1492,7 +1492,7 @@ B<DescribeEventCategories> action.
 
 
 
-=head2 ModifyOptionGroup(OptionGroupName => Str, [OptionsToRemove => ArrayRef[Str], ApplyImmediately => Bool, OptionsToInclude => ArrayRef[Paws::RDS::OptionConfiguration]])
+=head2 ModifyOptionGroup(OptionGroupName => Str, [ApplyImmediately => Bool, OptionsToInclude => ArrayRef[Paws::RDS::OptionConfiguration], OptionsToRemove => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyOptionGroup>
 
@@ -1512,7 +1512,7 @@ Modifies an existing option group.
 
 
 
-=head2 PromoteReadReplica(DBInstanceIdentifier => Str, [PreferredBackupWindow => Str, BackupRetentionPeriod => Int])
+=head2 PromoteReadReplica(DBInstanceIdentifier => Str, [BackupRetentionPeriod => Int, PreferredBackupWindow => Str])
 
 Each argument is described in detail in: L<Paws::RDS::PromoteReadReplica>
 
@@ -1537,7 +1537,7 @@ primary instance, backups are taken based on your backup settings.
 
 
 
-=head2 PurchaseReservedDBInstancesOffering(ReservedDBInstancesOfferingId => Str, [ReservedDBInstanceId => Str, Tags => ArrayRef[Paws::RDS::Tag], DBInstanceCount => Int])
+=head2 PurchaseReservedDBInstancesOffering(ReservedDBInstancesOfferingId => Str, [DBInstanceCount => Int, ReservedDBInstanceId => Str, Tags => ArrayRef[Paws::RDS::Tag]])
 
 Each argument is described in detail in: L<Paws::RDS::PurchaseReservedDBInstancesOffering>
 
@@ -1666,7 +1666,7 @@ or C<RebootDBInstance> request.
 
 
 
-=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [Tags => ArrayRef[Paws::RDS::Tag], AvailabilityZone => Str, Port => Int, Engine => Str, Iops => Int, OptionGroupName => Str, DBInstanceClass => Str, LicenseModel => Str, DBSubnetGroupName => Str, DBName => Str, TdeCredentialArn => Str, StorageType => Str, AutoMinorVersionUpgrade => Bool, MultiAZ => Bool, TdeCredentialPassword => Str, PubliclyAccessible => Bool])
+=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag], TdeCredentialArn => Str, TdeCredentialPassword => Str])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceFromDBSnapshot>
 
@@ -1699,7 +1699,7 @@ snapshot.
 
 
 
-=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [TdeCredentialArn => Str, AutoMinorVersionUpgrade => Bool, StorageType => Str, MultiAZ => Bool, RestoreTime => Str, TdeCredentialPassword => Str, PubliclyAccessible => Bool, UseLatestRestorableTime => Bool, Tags => ArrayRef[Paws::RDS::Tag], AvailabilityZone => Str, Port => Int, Engine => Str, Iops => Int, OptionGroupName => Str, LicenseModel => Str, DBInstanceClass => Str, DBSubnetGroupName => Str, DBName => Str])
+=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceToPointInTime>
 
@@ -1724,7 +1724,7 @@ group.
 
 
 
-=head2 RevokeDBSecurityGroupIngress(DBSecurityGroupName => Str, [EC2SecurityGroupOwnerId => Str, EC2SecurityGroupId => Str, EC2SecurityGroupName => Str, CIDRIP => Str])
+=head2 RevokeDBSecurityGroupIngress(DBSecurityGroupName => Str, [CIDRIP => Str, EC2SecurityGroupId => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str])
 
 Each argument is described in detail in: L<Paws::RDS::RevokeDBSecurityGroupIngress>
 

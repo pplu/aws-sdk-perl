@@ -174,7 +174,7 @@ Mobile SDK. To learn more, see the AWS Mobile SDK Developer Guide.
 
 =head1 METHODS
 
-=head2 CreateIdentityPool(AllowUnauthenticatedIdentities => Bool, IdentityPoolName => Str, [OpenIdConnectProviderARNs => ArrayRef[Str], SupportedLoginProviders => Paws::CognitoIdentity::IdentityProviders, DeveloperProviderName => Str])
+=head2 CreateIdentityPool(AllowUnauthenticatedIdentities => Bool, IdentityPoolName => Str, [DeveloperProviderName => Str, OpenIdConnectProviderARNs => ArrayRef[Str], SupportedLoginProviders => Paws::CognitoIdentity::IdentityProviders])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::CreateIdentityPool>
 
@@ -282,7 +282,7 @@ to AWS Security Token Service with the appropriate role for the token.
 
 
 
-=head2 GetId(IdentityPoolId => Str, [Logins => Paws::CognitoIdentity::LoginsMap, AccountId => Str])
+=head2 GetId(IdentityPoolId => Str, [AccountId => Str, Logins => Paws::CognitoIdentity::LoginsMap])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::GetId>
 
@@ -421,7 +421,7 @@ Lists all of the Cognito identity pools registered for your account.
 
 
 
-=head2 LookupDeveloperIdentity(IdentityPoolId => Str, [NextToken => Str, IdentityId => Str, MaxResults => Int, DeveloperUserIdentifier => Str])
+=head2 LookupDeveloperIdentity(IdentityPoolId => Str, [DeveloperUserIdentifier => Str, IdentityId => Str, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::LookupDeveloperIdentity>
 

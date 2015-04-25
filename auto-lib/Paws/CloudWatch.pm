@@ -199,7 +199,7 @@ deleted.
 
 
 
-=head2 DescribeAlarmHistory([AlarmName => Str, HistoryItemType => Str, StartDate => Str, NextToken => Str, MaxRecords => Int, EndDate => Str])
+=head2 DescribeAlarmHistory([AlarmName => Str, EndDate => Str, HistoryItemType => Str, MaxRecords => Int, NextToken => Str, StartDate => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmHistory>
 
@@ -244,7 +244,7 @@ action.
 
 
 
-=head2 DescribeAlarmsForMetric(MetricName => Str, Namespace => Str, [Unit => Str, Period => Int, Statistic => Str, Dimensions => ArrayRef[Paws::CloudWatch::Dimension]])
+=head2 DescribeAlarmsForMetric(MetricName => Str, Namespace => Str, [Dimensions => ArrayRef[Paws::CloudWatch::Dimension], Period => Int, Statistic => Str, Unit => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmsForMetric>
 
@@ -307,7 +307,7 @@ Enables actions for the specified alarms.
 
 
 
-=head2 GetMetricStatistics(EndTime => Str, MetricName => Str, Namespace => Str, Period => Int, StartTime => Str, Statistics => ArrayRef[Str], [Unit => Str, Dimensions => ArrayRef[Paws::CloudWatch::Dimension]])
+=head2 GetMetricStatistics(EndTime => Str, MetricName => Str, Namespace => Str, Period => Int, StartTime => Str, Statistics => ArrayRef[Str], [Dimensions => ArrayRef[Paws::CloudWatch::Dimension], Unit => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::GetMetricStatistics>
 
@@ -361,7 +361,7 @@ in the I<Amazon CloudWatch Developer Guide>.
 
 
 
-=head2 ListMetrics([Dimensions => ArrayRef[Paws::CloudWatch::DimensionFilter], NextToken => Str, Namespace => Str, MetricName => Str])
+=head2 ListMetrics([Dimensions => ArrayRef[Paws::CloudWatch::DimensionFilter], MetricName => Str, Namespace => Str, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::ListMetrics>
 
@@ -383,7 +383,7 @@ statistical data for a given metric.
 
 
 
-=head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Statistic => Str, Threshold => Num, [OKActions => ArrayRef[Str], Unit => Str, AlarmActions => ArrayRef[Str], Dimensions => ArrayRef[Paws::CloudWatch::Dimension], InsufficientDataActions => ArrayRef[Str], AlarmDescription => Str, ActionsEnabled => Bool])
+=head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Statistic => Str, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str], AlarmDescription => Str, Dimensions => ArrayRef[Paws::CloudWatch::Dimension], InsufficientDataActions => ArrayRef[Str], OKActions => ArrayRef[Str], Unit => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::PutMetricAlarm>
 

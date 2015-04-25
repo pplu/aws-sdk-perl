@@ -882,7 +882,7 @@ Upload in the I<Amazon Glacier Developer Guide>.
 
 
 
-=head2 ListJobs(accountId => Str, vaultName => Str, [completed => Str, statuscode => Str, marker => Str, limit => Str])
+=head2 ListJobs(accountId => Str, vaultName => Str, [completed => Str, limit => Str, marker => Str, statuscode => Str])
 
 Each argument is described in detail in: L<Paws::Glacier::ListJobs>
 
@@ -945,7 +945,7 @@ For the underlying REST API, go to List Jobs
 
 
 
-=head2 ListMultipartUploads(accountId => Str, vaultName => Str, [marker => Str, limit => Str])
+=head2 ListMultipartUploads(accountId => Str, vaultName => Str, [limit => Str, marker => Str])
 
 Each argument is described in detail in: L<Paws::Glacier::ListMultipartUploads>
 
@@ -1039,7 +1039,7 @@ Developer Guide>.
 
 
 
-=head2 ListVaults(accountId => Str, [marker => Str, limit => Str])
+=head2 ListVaults(accountId => Str, [limit => Str, marker => Str])
 
 Each argument is described in detail in: L<Paws::Glacier::ListVaults>
 
@@ -1145,7 +1145,7 @@ Configuration in the I<Amazon Glacier Developer Guide>.
 
 
 
-=head2 UploadArchive(accountId => Str, vaultName => Str, [checksum => Str, archiveDescription => Str, body => Str])
+=head2 UploadArchive(accountId => Str, vaultName => Str, [archiveDescription => Str, body => Str, checksum => Str])
 
 Each argument is described in detail in: L<Paws::Glacier::UploadArchive>
 

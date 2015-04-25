@@ -221,7 +221,7 @@ identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
 
 
 
-=head2 CreateJob(Input => Paws::ElasticTranscoder::JobInput, PipelineId => Str, [Playlists => ArrayRef[Paws::ElasticTranscoder::CreateJobPlaylist], OutputKeyPrefix => Str, Outputs => ArrayRef[Paws::ElasticTranscoder::CreateJobOutput], Output => Paws::ElasticTranscoder::CreateJobOutput, UserMetadata => Paws::ElasticTranscoder::UserMetadata])
+=head2 CreateJob(Input => Paws::ElasticTranscoder::JobInput, PipelineId => Str, [Output => Paws::ElasticTranscoder::CreateJobOutput, OutputKeyPrefix => Str, Outputs => ArrayRef[Paws::ElasticTranscoder::CreateJobOutput], Playlists => ArrayRef[Paws::ElasticTranscoder::CreateJobPlaylist], UserMetadata => Paws::ElasticTranscoder::UserMetadata])
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::CreateJob>
 
@@ -248,7 +248,7 @@ one output for the Kindle Fire and another output for the Apple iPhone
 
 
 
-=head2 CreatePipeline(InputBucket => Str, Name => Str, Role => Str, [ContentConfig => Paws::ElasticTranscoder::PipelineOutputConfig, Notifications => Paws::ElasticTranscoder::Notifications, OutputBucket => Str, AwsKmsKeyArn => Str, ThumbnailConfig => Paws::ElasticTranscoder::PipelineOutputConfig])
+=head2 CreatePipeline(InputBucket => Str, Name => Str, Role => Str, [AwsKmsKeyArn => Str, ContentConfig => Paws::ElasticTranscoder::PipelineOutputConfig, Notifications => Paws::ElasticTranscoder::Notifications, OutputBucket => Str, ThumbnailConfig => Paws::ElasticTranscoder::PipelineOutputConfig])
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::CreatePipeline>
 
@@ -269,7 +269,7 @@ specify.
 
 
 
-=head2 CreatePreset(Container => Str, Name => Str, [Video => Paws::ElasticTranscoder::VideoParameters, Audio => Paws::ElasticTranscoder::AudioParameters, Thumbnails => Paws::ElasticTranscoder::Thumbnails, Description => Str])
+=head2 CreatePreset(Container => Str, Name => Str, [Audio => Paws::ElasticTranscoder::AudioParameters, Description => Str, Thumbnails => Paws::ElasticTranscoder::Thumbnails, Video => Paws::ElasticTranscoder::VideoParameters])
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::CreatePreset>
 
@@ -355,7 +355,7 @@ Transcoder.
 
 
 
-=head2 ListJobsByPipeline(PipelineId => Str, [PageToken => Str, Ascending => Str])
+=head2 ListJobsByPipeline(PipelineId => Str, [Ascending => Str, PageToken => Str])
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::ListJobsByPipeline>
 
@@ -380,7 +380,7 @@ satisfies the search criteria.
 
 
 
-=head2 ListJobsByStatus(Status => Str, [PageToken => Str, Ascending => Str])
+=head2 ListJobsByStatus(Status => Str, [Ascending => Str, PageToken => Str])
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::ListJobsByStatus>
 
@@ -532,7 +532,7 @@ topics that you specify.
 
 
 
-=head2 UpdatePipeline(Id => Str, [AwsKmsKeyArn => Str, Name => Str, InputBucket => Str, ThumbnailConfig => Paws::ElasticTranscoder::PipelineOutputConfig, ContentConfig => Paws::ElasticTranscoder::PipelineOutputConfig, Notifications => Paws::ElasticTranscoder::Notifications, Role => Str])
+=head2 UpdatePipeline(Id => Str, [AwsKmsKeyArn => Str, ContentConfig => Paws::ElasticTranscoder::PipelineOutputConfig, InputBucket => Str, Name => Str, Notifications => Paws::ElasticTranscoder::Notifications, Role => Str, ThumbnailConfig => Paws::ElasticTranscoder::PipelineOutputConfig])
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipeline>
 

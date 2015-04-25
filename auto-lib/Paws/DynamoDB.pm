@@ -485,7 +485,7 @@ You can use the I<DescribeTable> API to check the table status.
 
 
 
-=head2 DeleteItem(Key => Paws::DynamoDB::Key, TableName => Str, [ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap, ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap, ReturnItemCollectionMetrics => Str, ConditionExpression => Str, ReturnValues => Str, ConditionalOperator => Str, ReturnConsumedCapacity => Str, Expected => Paws::DynamoDB::ExpectedAttributeMap])
+=head2 DeleteItem(Key => Paws::DynamoDB::Key, TableName => Str, [ConditionalOperator => Str, ConditionExpression => Str, Expected => Paws::DynamoDB::ExpectedAttributeMap, ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap, ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap, ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ReturnValues => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDB::DeleteItem>
 
@@ -582,7 +582,7 @@ a few seconds, and then try the DescribeTable request again.
 
 
 
-=head2 GetItem(Key => Paws::DynamoDB::Key, TableName => Str, [ProjectionExpression => Str, AttributesToGet => ArrayRef[Str], ReturnConsumedCapacity => Str, ConsistentRead => Bool, ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap])
+=head2 GetItem(Key => Paws::DynamoDB::Key, TableName => Str, [AttributesToGet => ArrayRef[Str], ConsistentRead => Bool, ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap, ProjectionExpression => Str, ReturnConsumedCapacity => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDB::GetItem>
 
@@ -632,7 +632,7 @@ returning a maximum of 100 table names.
 
 
 
-=head2 PutItem(Item => Paws::DynamoDB::PutItemInputAttributeMap, TableName => Str, [ConditionExpression => Str, ReturnItemCollectionMetrics => Str, ConditionalOperator => Str, ReturnValues => Str, ReturnConsumedCapacity => Str, Expected => Paws::DynamoDB::ExpectedAttributeMap, ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap, ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap])
+=head2 PutItem(Item => Paws::DynamoDB::PutItemInputAttributeMap, TableName => Str, [ConditionalOperator => Str, ConditionExpression => Str, Expected => Paws::DynamoDB::ExpectedAttributeMap, ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap, ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap, ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ReturnValues => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDB::PutItem>
 
@@ -679,7 +679,7 @@ the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 Query(KeyConditions => Paws::DynamoDB::KeyConditions, TableName => Str, [ProjectionExpression => Str, AttributesToGet => ArrayRef[Str], ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap, ConsistentRead => Bool, ScanIndexForward => Bool, ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap, ConditionalOperator => Str, FilterExpression => Str, ReturnConsumedCapacity => Str, Limit => Int, ExclusiveStartKey => Paws::DynamoDB::Key, IndexName => Str, QueryFilter => Paws::DynamoDB::FilterConditionMap, Select => Str])
+=head2 Query(KeyConditions => Paws::DynamoDB::KeyConditions, TableName => Str, [AttributesToGet => ArrayRef[Str], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => Paws::DynamoDB::Key, ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap, ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap, FilterExpression => Str, IndexName => Str, Limit => Int, ProjectionExpression => Str, QueryFilter => Paws::DynamoDB::FilterConditionMap, ReturnConsumedCapacity => Str, ScanIndexForward => Bool, Select => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDB::Query>
 
@@ -722,7 +722,7 @@ index.
 
 
 
-=head2 Scan(TableName => Str, [ScanFilter => Paws::DynamoDB::FilterConditionMap, ProjectionExpression => Str, AttributesToGet => ArrayRef[Str], Limit => Int, ExclusiveStartKey => Paws::DynamoDB::Key, ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap, TotalSegments => Int, ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap, Segment => Int, ConditionalOperator => Str, IndexName => Str, FilterExpression => Str, ReturnConsumedCapacity => Str, Select => Str])
+=head2 Scan(TableName => Str, [AttributesToGet => ArrayRef[Str], ConditionalOperator => Str, ExclusiveStartKey => Paws::DynamoDB::Key, ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap, ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap, FilterExpression => Str, IndexName => Str, Limit => Int, ProjectionExpression => Str, ReturnConsumedCapacity => Str, ScanFilter => Paws::DynamoDB::FilterConditionMap, Segment => Int, Select => Str, TotalSegments => Int])
 
 Each argument is described in detail in: L<Paws::DynamoDB::Scan>
 
@@ -758,7 +758,7 @@ Scan in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 UpdateItem(Key => Paws::DynamoDB::Key, TableName => Str, [Expected => Paws::DynamoDB::ExpectedAttributeMap, AttributeUpdates => Paws::DynamoDB::AttributeUpdates, ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ConditionExpression => Str, ReturnValues => Str, UpdateExpression => Str, ConditionalOperator => Str, ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap, ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap])
+=head2 UpdateItem(Key => Paws::DynamoDB::Key, TableName => Str, [AttributeUpdates => Paws::DynamoDB::AttributeUpdates, ConditionalOperator => Str, ConditionExpression => Str, Expected => Paws::DynamoDB::ExpectedAttributeMap, ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap, ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap, ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ReturnValues => Str, UpdateExpression => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDB::UpdateItem>
 
@@ -787,7 +787,7 @@ I<UpdateItem> operation using the I<ReturnValues> parameter.
 
 
 
-=head2 UpdateTable(TableName => Str, [GlobalSecondaryIndexUpdates => ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexUpdate], ProvisionedThroughput => Paws::DynamoDB::ProvisionedThroughput, AttributeDefinitions => ArrayRef[Paws::DynamoDB::AttributeDefinition]])
+=head2 UpdateTable(TableName => Str, [AttributeDefinitions => ArrayRef[Paws::DynamoDB::AttributeDefinition], GlobalSecondaryIndexUpdates => ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexUpdate], ProvisionedThroughput => Paws::DynamoDB::ProvisionedThroughput])
 
 Each argument is described in detail in: L<Paws::DynamoDB::UpdateTable>
 

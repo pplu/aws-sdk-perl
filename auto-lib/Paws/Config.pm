@@ -281,7 +281,7 @@ status of all delivery channels associated with the account.
 
 
 
-=head2 GetResourceConfigHistory(resourceId => Str, resourceType => Str, [nextToken => Str, limit => Int, laterTime => Str, chronologicalOrder => Str, earlierTime => Str])
+=head2 GetResourceConfigHistory(resourceId => Str, resourceType => Str, [chronologicalOrder => Str, earlierTime => Str, laterTime => Str, limit => Int, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::GetResourceConfigHistory>
 

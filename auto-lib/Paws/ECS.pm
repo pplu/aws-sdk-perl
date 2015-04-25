@@ -220,7 +220,7 @@ C<CreateCluster> action.
 
 
 
-=head2 CreateService(serviceName => Str, [clientToken => Str, desiredCount => Int, cluster => Str, taskDefinition => Str, role => Str, loadBalancers => ArrayRef[Paws::ECS::LoadBalancer]])
+=head2 CreateService(serviceName => Str, [clientToken => Str, cluster => Str, desiredCount => Int, loadBalancers => ArrayRef[Paws::ECS::LoadBalancer], role => Str, taskDefinition => Str])
 
 Each argument is described in detail in: L<Paws::ECS::CreateService>
 
@@ -286,7 +286,7 @@ Deletes a specified service within a cluster.
 
 
 
-=head2 DeregisterContainerInstance(containerInstance => Str, [force => Bool, cluster => Str])
+=head2 DeregisterContainerInstance(containerInstance => Str, [cluster => Str, force => Bool])
 
 Each argument is described in detail in: L<Paws::ECS::DeregisterContainerInstance>
 
@@ -435,7 +435,7 @@ Describes a specified task or tasks.
 
 
 
-=head2 DiscoverPollEndpoint([containerInstance => Str, cluster => Str])
+=head2 DiscoverPollEndpoint([cluster => Str, containerInstance => Str])
 
 Each argument is described in detail in: L<Paws::ECS::DiscoverPollEndpoint>
 
@@ -499,7 +499,7 @@ Returns a list of container instances in a specified cluster.
 
 
 
-=head2 ListServices([maxResults => Int, nextToken => Str, cluster => Str])
+=head2 ListServices([cluster => Str, maxResults => Int, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListServices>
 
@@ -519,7 +519,7 @@ Lists the services that are running in a specified cluster.
 
 
 
-=head2 ListTaskDefinitionFamilies([maxResults => Int, familyPrefix => Str, nextToken => Str])
+=head2 ListTaskDefinitionFamilies([familyPrefix => Str, maxResults => Int, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitionFamilies>
 
@@ -540,7 +540,7 @@ account. You can filter the results with the C<familyPrefix> parameter.
 
 
 
-=head2 ListTaskDefinitions([maxResults => Int, nextToken => Str, familyPrefix => Str])
+=head2 ListTaskDefinitions([familyPrefix => Str, maxResults => Int, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitions>
 
@@ -562,7 +562,7 @@ parameter.
 
 
 
-=head2 ListTasks([nextToken => Str, maxResults => Int, family => Str, startedBy => Str, containerInstance => Str, serviceName => Str, cluster => Str])
+=head2 ListTasks([cluster => Str, containerInstance => Str, family => Str, maxResults => Int, nextToken => Str, serviceName => Str, startedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListTasks>
 
@@ -584,7 +584,7 @@ C<family> and C<containerInstance> parameters.
 
 
 
-=head2 RegisterContainerInstance([instanceIdentityDocumentSignature => Str, versionInfo => Paws::ECS::VersionInfo, totalResources => ArrayRef[Paws::ECS::Resource], instanceIdentityDocument => Str, cluster => Str])
+=head2 RegisterContainerInstance([cluster => Str, instanceIdentityDocument => Str, instanceIdentityDocumentSignature => Str, totalResources => ArrayRef[Paws::ECS::Resource], versionInfo => Paws::ECS::VersionInfo])
 
 Each argument is described in detail in: L<Paws::ECS::RegisterContainerInstance>
 
@@ -632,7 +632,7 @@ the I<Amazon EC2 Container Service Developer Guide>.
 
 
 
-=head2 RunTask(taskDefinition => Str, [cluster => Str, overrides => Paws::ECS::TaskOverride, startedBy => Str, count => Int])
+=head2 RunTask(taskDefinition => Str, [cluster => Str, count => Int, overrides => Paws::ECS::TaskOverride, startedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::RunTask>
 
@@ -700,7 +700,7 @@ Stops a running task.
 
 
 
-=head2 SubmitContainerStateChange([exitCode => Int, status => Str, containerName => Str, task => Str, networkBindings => ArrayRef[Paws::ECS::NetworkBinding], reason => Str, cluster => Str])
+=head2 SubmitContainerStateChange([cluster => Str, containerName => Str, exitCode => Int, networkBindings => ArrayRef[Paws::ECS::NetworkBinding], reason => Str, status => Str, task => Str])
 
 Each argument is described in detail in: L<Paws::ECS::SubmitContainerStateChange>
 
@@ -723,7 +723,7 @@ Sent to acknowledge that a container changed states.
 
 
 
-=head2 SubmitTaskStateChange([status => Str, task => Str, reason => Str, cluster => Str])
+=head2 SubmitTaskStateChange([cluster => Str, reason => Str, status => Str, task => Str])
 
 Each argument is described in detail in: L<Paws::ECS::SubmitTaskStateChange>
 
@@ -746,7 +746,7 @@ Sent to acknowledge that a task changed states.
 
 
 
-=head2 UpdateService(service => Str, [desiredCount => Int, cluster => Str, taskDefinition => Str])
+=head2 UpdateService(service => Str, [cluster => Str, desiredCount => Int, taskDefinition => Str])
 
 Each argument is described in detail in: L<Paws::ECS::UpdateService>
 

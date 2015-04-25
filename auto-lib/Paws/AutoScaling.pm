@@ -351,7 +351,7 @@ Terminating State in the I<Auto Scaling Developer Guide>.
 
 
 
-=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [InstanceId => Str, PlacementGroup => Str, DesiredCapacity => Int, LoadBalancerNames => ArrayRef[Str], AvailabilityZones => ArrayRef[Str], HealthCheckGracePeriod => Int, DefaultCooldown => Int, HealthCheckType => Str, LaunchConfigurationName => Str, TerminationPolicies => ArrayRef[Str], Tags => ArrayRef[Paws::AutoScaling::Tag], VPCZoneIdentifier => Str])
+=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [AvailabilityZones => ArrayRef[Str], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, InstanceId => Str, LaunchConfigurationName => Str, LoadBalancerNames => ArrayRef[Str], PlacementGroup => Str, Tags => ArrayRef[Paws::AutoScaling::Tag], TerminationPolicies => ArrayRef[Str], VPCZoneIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::CreateAutoScalingGroup>
 
@@ -375,7 +375,7 @@ and updating these limits, see DescribeAccountLimits.
 
 
 
-=head2 CreateLaunchConfiguration(LaunchConfigurationName => Str, [SecurityGroups => ArrayRef[Str], KeyName => Str, ClassicLinkVPCId => Str, IamInstanceProfile => Str, UserData => Str, AssociatePublicIpAddress => Bool, SpotPrice => Str, InstanceType => Str, PlacementTenancy => Str, ClassicLinkVPCSecurityGroups => ArrayRef[Str], EbsOptimized => Bool, InstanceMonitoring => Paws::AutoScaling::InstanceMonitoring, BlockDeviceMappings => ArrayRef[Paws::AutoScaling::BlockDeviceMapping], ImageId => Str, KernelId => Str, RamdiskId => Str, InstanceId => Str])
+=head2 CreateLaunchConfiguration(LaunchConfigurationName => Str, [AssociatePublicIpAddress => Bool, BlockDeviceMappings => ArrayRef[Paws::AutoScaling::BlockDeviceMapping], ClassicLinkVPCId => Str, ClassicLinkVPCSecurityGroups => ArrayRef[Str], EbsOptimized => Bool, IamInstanceProfile => Str, ImageId => Str, InstanceId => Str, InstanceMonitoring => Paws::AutoScaling::InstanceMonitoring, InstanceType => Str, KernelId => Str, KeyName => Str, PlacementTenancy => Str, RamdiskId => Str, SecurityGroups => ArrayRef[Str], SpotPrice => Str, UserData => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::CreateLaunchConfiguration>
 
@@ -580,7 +580,7 @@ Deletes the specified tags.
 
 
 
-=head2 DescribeAccountLimits()
+=head2 DescribeAccountLimits( => )
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeAccountLimits>
 
@@ -604,7 +604,7 @@ Service Limits.
 
 
 
-=head2 DescribeAdjustmentTypes()
+=head2 DescribeAdjustmentTypes( => )
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeAdjustmentTypes>
 
@@ -624,7 +624,7 @@ Lists the policy adjustment types for use with PutScalingPolicy.
 
 
 
-=head2 DescribeAutoScalingGroups([AutoScalingGroupNames => ArrayRef[Str], NextToken => Str, MaxRecords => Int])
+=head2 DescribeAutoScalingGroups([AutoScalingGroupNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeAutoScalingGroups>
 
@@ -650,7 +650,7 @@ the C<NextToken> parameter.
 
 
 
-=head2 DescribeAutoScalingInstances([MaxRecords => Int, NextToken => Str, InstanceIds => ArrayRef[Str]])
+=head2 DescribeAutoScalingInstances([InstanceIds => ArrayRef[Str], MaxRecords => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeAutoScalingInstances>
 
@@ -676,7 +676,7 @@ the call with the returned token in the C<NextToken> parameter.
 
 
 
-=head2 DescribeAutoScalingNotificationTypes()
+=head2 DescribeAutoScalingNotificationTypes( => )
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeAutoScalingNotificationTypes>
 
@@ -696,7 +696,7 @@ Lists the notification types that are supported by Auto Scaling.
 
 
 
-=head2 DescribeLaunchConfigurations([MaxRecords => Int, LaunchConfigurationNames => ArrayRef[Str], NextToken => Str])
+=head2 DescribeLaunchConfigurations([LaunchConfigurationNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeLaunchConfigurations>
 
@@ -742,7 +742,7 @@ Describes the lifecycle hooks for the specified Auto Scaling group.
 
 
 
-=head2 DescribeLifecycleHookTypes()
+=head2 DescribeLifecycleHookTypes( => )
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeLifecycleHookTypes>
 
@@ -762,7 +762,7 @@ Describes the available types of lifecycle hooks.
 
 
 
-=head2 DescribeMetricCollectionTypes()
+=head2 DescribeMetricCollectionTypes( => )
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeMetricCollectionTypes>
 
@@ -786,7 +786,7 @@ must explicitly request it when calling EnableMetricsCollection.
 
 
 
-=head2 DescribeNotificationConfigurations([NextToken => Str, MaxRecords => Int, AutoScalingGroupNames => ArrayRef[Str]])
+=head2 DescribeNotificationConfigurations([AutoScalingGroupNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeNotificationConfigurations>
 
@@ -860,7 +860,7 @@ the C<NextToken> parameter.
 
 
 
-=head2 DescribeScalingProcessTypes()
+=head2 DescribeScalingProcessTypes( => )
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeScalingProcessTypes>
 
@@ -881,7 +881,7 @@ SuspendProcesses actions.
 
 
 
-=head2 DescribeScheduledActions([NextToken => Str, MaxRecords => Int, StartTime => Str, AutoScalingGroupName => Str, EndTime => Str, ScheduledActionNames => ArrayRef[Str]])
+=head2 DescribeScheduledActions([AutoScalingGroupName => Str, EndTime => Str, MaxRecords => Int, NextToken => Str, ScheduledActionNames => ArrayRef[Str], StartTime => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeScheduledActions>
 
@@ -903,7 +903,7 @@ DescribeScalingActivities.
 
 
 
-=head2 DescribeTags([NextToken => Str, MaxRecords => Int, Filters => ArrayRef[Paws::AutoScaling::Filter]])
+=head2 DescribeTags([Filters => ArrayRef[Paws::AutoScaling::Filter], MaxRecords => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeTags>
 
@@ -932,7 +932,7 @@ match, no special message is returned.
 
 
 
-=head2 DescribeTerminationPolicyTypes()
+=head2 DescribeTerminationPolicyTypes( => )
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeTerminationPolicyTypes>
 
@@ -1045,7 +1045,7 @@ Scaling Developer Guide>.
 
 
 
-=head2 ExecutePolicy(PolicyName => Str, [HonorCooldown => Bool, AutoScalingGroupName => Str])
+=head2 ExecutePolicy(PolicyName => Str, [AutoScalingGroupName => Str, HonorCooldown => Bool])
 
 Each argument is described in detail in: L<Paws::AutoScaling::ExecutePolicy>
 
@@ -1088,7 +1088,7 @@ Scaling Developer Guide>.
 
 
 
-=head2 PutLifecycleHook(AutoScalingGroupName => Str, LifecycleHookName => Str, [NotificationMetadata => Str, HeartbeatTimeout => Int, DefaultResult => Str, LifecycleTransition => Str, RoleARN => Str, NotificationTargetARN => Str])
+=head2 PutLifecycleHook(AutoScalingGroupName => Str, LifecycleHookName => Str, [DefaultResult => Str, HeartbeatTimeout => Int, LifecycleTransition => Str, NotificationMetadata => Str, NotificationTargetARN => Str, RoleARN => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::PutLifecycleHook>
 
@@ -1164,7 +1164,7 @@ This configuration overwrites an existing configuration.
 
 
 
-=head2 PutScalingPolicy(AdjustmentType => Str, AutoScalingGroupName => Str, PolicyName => Str, ScalingAdjustment => Int, [MinAdjustmentStep => Int, Cooldown => Int])
+=head2 PutScalingPolicy(AdjustmentType => Str, AutoScalingGroupName => Str, PolicyName => Str, ScalingAdjustment => Int, [Cooldown => Int, MinAdjustmentStep => Int])
 
 Each argument is described in detail in: L<Paws::AutoScaling::PutScalingPolicy>
 
@@ -1187,7 +1187,7 @@ an existing policy is not changed in this update request.
 
 
 
-=head2 PutScheduledUpdateGroupAction(AutoScalingGroupName => Str, ScheduledActionName => Str, [MaxSize => Int, Recurrence => Str, StartTime => Str, MinSize => Int, Time => Str, EndTime => Str, DesiredCapacity => Int])
+=head2 PutScheduledUpdateGroupAction(AutoScalingGroupName => Str, ScheduledActionName => Str, [DesiredCapacity => Int, EndTime => Str, MaxSize => Int, MinSize => Int, Recurrence => Str, StartTime => Str, Time => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::PutScheduledUpdateGroupAction>
 
@@ -1384,7 +1384,7 @@ terminated immediately.
 
 
 
-=head2 UpdateAutoScalingGroup(AutoScalingGroupName => Str, [MinSize => Int, DesiredCapacity => Int, PlacementGroup => Str, HealthCheckGracePeriod => Int, AvailabilityZones => ArrayRef[Str], TerminationPolicies => ArrayRef[Str], LaunchConfigurationName => Str, MaxSize => Int, HealthCheckType => Str, DefaultCooldown => Int, VPCZoneIdentifier => Str])
+=head2 UpdateAutoScalingGroup(AutoScalingGroupName => Str, [AvailabilityZones => ArrayRef[Str], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, LaunchConfigurationName => Str, MaxSize => Int, MinSize => Int, PlacementGroup => Str, TerminationPolicies => ArrayRef[Str], VPCZoneIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::UpdateAutoScalingGroup>
 

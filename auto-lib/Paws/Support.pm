@@ -248,7 +248,7 @@ Center.
 
 
 
-=head2 CreateCase(communicationBody => Str, subject => Str, [issueType => Str, categoryCode => Str, severityCode => Str, ccEmailAddresses => ArrayRef[Str], language => Str, attachmentSetId => Str, serviceCode => Str])
+=head2 CreateCase(communicationBody => Str, subject => Str, [attachmentSetId => Str, categoryCode => Str, ccEmailAddresses => ArrayRef[Str], issueType => Str, language => Str, serviceCode => Str, severityCode => Str])
 
 Each argument is described in detail in: L<Paws::Support::CreateCase>
 
@@ -341,7 +341,7 @@ DescribeCommunications operation.
 
 
 
-=head2 DescribeCases([language => Str, displayId => Str, maxResults => Int, caseIdList => ArrayRef[Str], includeCommunications => Bool, beforeTime => Str, includeResolvedCases => Bool, afterTime => Str, nextToken => Str])
+=head2 DescribeCases([afterTime => Str, beforeTime => Str, caseIdList => ArrayRef[Str], displayId => Str, includeCommunications => Bool, includeResolvedCases => Bool, language => Str, maxResults => Int, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::Support::DescribeCases>
 
@@ -381,7 +381,7 @@ objects.
 
 
 
-=head2 DescribeCommunications(caseId => Str, [maxResults => Int, afterTime => Str, nextToken => Str, beforeTime => Str])
+=head2 DescribeCommunications(caseId => Str, [afterTime => Str, beforeTime => Str, maxResults => Int, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::Support::DescribeCommunications>
 

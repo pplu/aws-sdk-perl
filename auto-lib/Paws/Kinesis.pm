@@ -250,7 +250,7 @@ C<DeleteStream> has a limit of 5 transactions per second per account.
 
 
 
-=head2 DescribeStream(StreamName => Str, [Limit => Int, ExclusiveStartShardId => Str])
+=head2 DescribeStream(StreamName => Str, [ExclusiveStartShardId => Str, Limit => Int])
 
 Each argument is described in detail in: L<Paws::Kinesis::DescribeStream>
 
@@ -420,7 +420,7 @@ account per open shard.
 
 
 
-=head2 ListStreams([Limit => Int, ExclusiveStartStreamName => Str])
+=head2 ListStreams([ExclusiveStartStreamName => Str, Limit => Int])
 
 Each argument is described in detail in: L<Paws::Kinesis::ListStreams>
 
@@ -457,7 +457,7 @@ C<ListStreams> has a limit of 5 transactions per second per account.
 
 
 
-=head2 ListTagsForStream(StreamName => Str, [Limit => Int, ExclusiveStartTagKey => Str])
+=head2 ListTagsForStream(StreamName => Str, [ExclusiveStartTagKey => Str, Limit => Int])
 
 Each argument is described in detail in: L<Paws::Kinesis::ListTagsForStream>
 

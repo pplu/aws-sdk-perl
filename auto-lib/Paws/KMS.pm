@@ -286,7 +286,7 @@ forward slash (alias/aws...) is reserved by Amazon Web Services (AWS).
 
 
 
-=head2 CreateGrant(GranteePrincipal => Str, KeyId => Str, [GrantTokens => ArrayRef[Str], Operations => ArrayRef[Str], Constraints => Paws::KMS::GrantConstraints, RetiringPrincipal => Str])
+=head2 CreateGrant(GranteePrincipal => Str, KeyId => Str, [Constraints => Paws::KMS::GrantConstraints, GrantTokens => ArrayRef[Str], Operations => ArrayRef[Str], RetiringPrincipal => Str])
 
 Each argument is described in detail in: L<Paws::KMS::CreateGrant>
 
@@ -320,7 +320,7 @@ policies attached to the user.
 
 
 
-=head2 CreateKey([KeyUsage => Str, Policy => Str, Description => Str])
+=head2 CreateKey([Description => Str, KeyUsage => Str, Policy => Str])
 
 Each argument is described in detail in: L<Paws::KMS::CreateKey>
 
@@ -344,7 +344,7 @@ GenerateDataKey and GenerateDataKeyWithoutPlaintext.
 
 
 
-=head2 Decrypt(CiphertextBlob => Str, [GrantTokens => ArrayRef[Str], EncryptionContext => Paws::KMS::EncryptionContextType])
+=head2 Decrypt(CiphertextBlob => Str, [EncryptionContext => Paws::KMS::EncryptionContextType, GrantTokens => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::KMS::Decrypt>
 
@@ -506,7 +506,7 @@ Enables rotation of the specified customer master key.
 
 
 
-=head2 Encrypt(KeyId => Str, Plaintext => Str, [GrantTokens => ArrayRef[Str], EncryptionContext => Paws::KMS::EncryptionContextType])
+=head2 Encrypt(KeyId => Str, Plaintext => Str, [EncryptionContext => Paws::KMS::EncryptionContextType, GrantTokens => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::KMS::Encrypt>
 
@@ -552,7 +552,7 @@ of your choosing.
 
 
 
-=head2 GenerateDataKey(KeyId => Str, [EncryptionContext => Paws::KMS::EncryptionContextType, GrantTokens => ArrayRef[Str], NumberOfBytes => Int, KeySpec => Str])
+=head2 GenerateDataKey(KeyId => Str, [EncryptionContext => Paws::KMS::EncryptionContextType, GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
 
 Each argument is described in detail in: L<Paws::KMS::GenerateDataKey>
 
@@ -605,7 +605,7 @@ use this log to help track the use of particular data.
 
 
 
-=head2 GenerateDataKeyWithoutPlaintext(KeyId => Str, [KeySpec => Str, NumberOfBytes => Int, GrantTokens => ArrayRef[Str], EncryptionContext => Paws::KMS::EncryptionContextType])
+=head2 GenerateDataKeyWithoutPlaintext(KeyId => Str, [EncryptionContext => Paws::KMS::EncryptionContextType, GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
 
 Each argument is described in detail in: L<Paws::KMS::GenerateDataKeyWithoutPlaintext>
 
@@ -710,7 +710,7 @@ Lists all of the key aliases in the account.
 
 
 
-=head2 ListGrants(KeyId => Str, [Marker => Str, Limit => Int])
+=head2 ListGrants(KeyId => Str, [Limit => Int, Marker => Str])
 
 Each argument is described in detail in: L<Paws::KMS::ListGrants>
 
@@ -730,7 +730,7 @@ List the grants for a specified key.
 
 
 
-=head2 ListKeyPolicies(KeyId => Str, [Marker => Str, Limit => Int])
+=head2 ListKeyPolicies(KeyId => Str, [Limit => Int, Marker => Str])
 
 Each argument is described in detail in: L<Paws::KMS::ListKeyPolicies>
 
@@ -750,7 +750,7 @@ Retrieves a list of policies attached to a key.
 
 
 
-=head2 ListKeys([Marker => Str, Limit => Int])
+=head2 ListKeys([Limit => Int, Marker => Str])
 
 Each argument is described in detail in: L<Paws::KMS::ListKeys>
 
@@ -790,7 +790,7 @@ Attaches a policy to the specified key.
 
 
 
-=head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [SourceEncryptionContext => Paws::KMS::EncryptionContextType, GrantTokens => ArrayRef[Str], DestinationEncryptionContext => Paws::KMS::EncryptionContextType])
+=head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [DestinationEncryptionContext => Paws::KMS::EncryptionContextType, GrantTokens => ArrayRef[Str], SourceEncryptionContext => Paws::KMS::EncryptionContextType])
 
 Each argument is described in detail in: L<Paws::KMS::ReEncrypt>
 

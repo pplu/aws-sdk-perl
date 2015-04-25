@@ -161,7 +161,7 @@ HSMs.
 
 
 
-=head2 CreateHsm(IamRoleArn => Str, SshKey => Str, SubnetId => Str, SubscriptionType => Str, [EniIp => Str, SyslogIp => Str, ClientToken => Str, ExternalId => Str])
+=head2 CreateHsm(IamRoleArn => Str, SshKey => Str, SubnetId => Str, SubscriptionType => Str, [ClientToken => Str, EniIp => Str, ExternalId => Str, SyslogIp => Str])
 
 Each argument is described in detail in: L<Paws::CloudHSM::CreateHsm>
 
@@ -284,7 +284,7 @@ Retrieves information about a high-availability partition group.
 
 
 
-=head2 DescribeHsm([HsmSerialNumber => Str, HsmArn => Str])
+=head2 DescribeHsm([HsmArn => Str, HsmSerialNumber => Str])
 
 Each argument is described in detail in: L<Paws::CloudHSM::DescribeHsm>
 
@@ -305,7 +305,7 @@ or its serial number.
 
 
 
-=head2 DescribeLunaClient([ClientArn => Str, CertificateFingerprint => Str])
+=head2 DescribeLunaClient([CertificateFingerprint => Str, ClientArn => Str])
 
 Each argument is described in detail in: L<Paws::CloudHSM::DescribeLunaClient>
 
@@ -346,7 +346,7 @@ availability partition groups the client is associated with.
 
 
 
-=head2 ListAvailableZones()
+=head2 ListAvailableZones( => )
 
 Each argument is described in detail in: L<Paws::CloudHSM::ListAvailableZones>
 
@@ -442,7 +442,7 @@ ListLunaClients to retrieve the next set of items.
 
 
 
-=head2 ModifyHapg(HapgArn => Str, [PartitionSerialList => ArrayRef[Str], Label => Str])
+=head2 ModifyHapg(HapgArn => Str, [Label => Str, PartitionSerialList => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::CloudHSM::ModifyHapg>
 
@@ -462,7 +462,7 @@ Modifies an existing high-availability partition group.
 
 
 
-=head2 ModifyHsm(HsmArn => Str, [ExternalId => Str, EniIp => Str, SyslogIp => Str, IamRoleArn => Str, SubnetId => Str])
+=head2 ModifyHsm(HsmArn => Str, [EniIp => Str, ExternalId => Str, IamRoleArn => Str, SubnetId => Str, SyslogIp => Str])
 
 Each argument is described in detail in: L<Paws::CloudHSM::ModifyHsm>
 

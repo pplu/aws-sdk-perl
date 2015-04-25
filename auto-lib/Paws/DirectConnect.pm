@@ -575,7 +575,7 @@ interconnect.
 
 
 
-=head2 DescribeLocations()
+=head2 DescribeLocations( => )
 
 Each argument is described in detail in: L<Paws::DirectConnect::DescribeLocations>
 
@@ -597,7 +597,7 @@ CreateConnection or CreateInterconnect.
 
 
 
-=head2 DescribeVirtualGateways()
+=head2 DescribeVirtualGateways( => )
 
 Each argument is described in detail in: L<Paws::DirectConnect::DescribeVirtualGateways>
 
@@ -622,7 +622,7 @@ or the EC2 CreateVpnGateway action.
 
 
 
-=head2 DescribeVirtualInterfaces([virtualInterfaceId => Str, connectionId => Str])
+=head2 DescribeVirtualInterfaces([connectionId => Str, virtualInterfaceId => Str])
 
 Each argument is described in detail in: L<Paws::DirectConnect::DescribeVirtualInterfaces>
 

@@ -234,7 +234,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 =head2 [% op_name %](
 [%- out_shape = c.input_for_operation(op_name) %]
 [%- req_list = out_shape.required.sort %]
-[%- FOREACH out_name IN req_list -%]
+[%- FOREACH out_name IN req_list.sort -%]
   [%- member = c.shape(out_shape.members.$out_name.shape) -%]
   [%- out_name %] => [% member.perl_type %]
   [%- IF (NOT loop.last) %], [% END %]
@@ -242,7 +242,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 [%- opt_list = c.optional_params_in_shape(out_shape) %]
 [%- IF (opt_list.size > 0) %]
 [%- IF (req_list.size > 0) %], [% END %][
-[%- FOREACH out_name IN opt_list %]
+[%- FOREACH out_name IN opt_list.sort %]
   [%- member = c.shape(out_shape.members.$out_name.shape) -%]
   [%- out_name %] => [% member.perl_type %]
   [%- IF (NOT loop.last) %], [% END %]

@@ -116,7 +116,7 @@ included with each AWS API call listed in the log files.
 
 =head1 METHODS
 
-=head2 CreateTrail(Name => Str, S3BucketName => Str, [CloudWatchLogsRoleArn => Str, CloudWatchLogsLogGroupArn => Str, IncludeGlobalServiceEvents => Bool, SnsTopicName => Str, S3KeyPrefix => Str])
+=head2 CreateTrail(Name => Str, S3BucketName => Str, [CloudWatchLogsLogGroupArn => Str, CloudWatchLogsRoleArn => Str, IncludeGlobalServiceEvents => Bool, S3KeyPrefix => Str, SnsTopicName => Str])
 
 Each argument is described in detail in: L<Paws::CloudTrail::CreateTrail>
 
@@ -202,7 +202,7 @@ errors, and start and stop logging times for each trail.
 
 
 
-=head2 LookupEvents([NextToken => Str, StartTime => Str, LookupAttributes => ArrayRef[Paws::CloudTrail::LookupAttribute], MaxResults => Int, EndTime => Str])
+=head2 LookupEvents([EndTime => Str, LookupAttributes => ArrayRef[Paws::CloudTrail::LookupAttribute], MaxResults => Int, NextToken => Str, StartTime => Str])
 
 Each argument is described in detail in: L<Paws::CloudTrail::LookupEvents>
 
@@ -281,7 +281,7 @@ is the only way to stop recording.
 
 
 
-=head2 UpdateTrail(Name => Str, [CloudWatchLogsRoleArn => Str, S3KeyPrefix => Str, SnsTopicName => Str, S3BucketName => Str, IncludeGlobalServiceEvents => Bool, CloudWatchLogsLogGroupArn => Str])
+=head2 UpdateTrail(Name => Str, [CloudWatchLogsLogGroupArn => Str, CloudWatchLogsRoleArn => Str, IncludeGlobalServiceEvents => Bool, S3BucketName => Str, S3KeyPrefix => Str, SnsTopicName => Str])
 
 Each argument is described in detail in: L<Paws::CloudTrail::UpdateTrail>
 

@@ -354,7 +354,7 @@ error as it cannot guarantee the item does not exist on other replicas.
 
 
 
-=head2 ListDomains([NextToken => Str, MaxNumberOfDomains => Int])
+=head2 ListDomains([MaxNumberOfDomains => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SDB::ListDomains>
 
@@ -440,7 +440,7 @@ The following limitations are enforced for this operation:
 
 
 
-=head2 Select(SelectExpression => Str, [NextToken => Str, ConsistentRead => Bool])
+=head2 Select(SelectExpression => Str, [ConsistentRead => Bool, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SDB::Select>
 

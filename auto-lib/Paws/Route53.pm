@@ -332,7 +332,7 @@ about the health check.
 
 
 
-=head2 CreateHostedZone(CallerReference => Str, Name => Str, [VPC => Paws::Route53::VPC, DelegationSetId => Str, HostedZoneConfig => Paws::Route53::HostedZoneConfig])
+=head2 CreateHostedZone(CallerReference => Str, Name => Str, [DelegationSetId => Str, HostedZoneConfig => Paws::Route53::HostedZoneConfig, VPC => Paws::Route53::VPC])
 
 Each argument is described in detail in: L<Paws::Route53::CreateHostedZone>
 
@@ -552,7 +552,7 @@ Route 53 DNS servers.
 
 
 
-=head2 GetCheckerIpRanges()
+=head2 GetCheckerIpRanges( => )
 
 Each argument is described in detail in: L<Paws::Route53::GetCheckerIpRanges>
 
@@ -576,7 +576,7 @@ checkers to check the health of your resources.
 
 
 
-=head2 GetGeoLocation([SubdivisionCode => Str, ContinentCode => Str, CountryCode => Str])
+=head2 GetGeoLocation([ContinentCode => Str, CountryCode => Str, SubdivisionCode => Str])
 
 Each argument is described in detail in: L<Paws::Route53::GetGeoLocation>
 
@@ -619,7 +619,7 @@ C<2013-04-01/healthcheck/I<health check ID>> resource.
 
 
 
-=head2 GetHealthCheckCount()
+=head2 GetHealthCheckCount( => )
 
 Each argument is described in detail in: L<Paws::Route53::GetHealthCheckCount>
 
@@ -709,7 +709,7 @@ the hosted zone when you created it.
 
 
 
-=head2 GetHostedZoneCount()
+=head2 GetHostedZoneCount( => )
 
 Each argument is described in detail in: L<Paws::Route53::GetHostedZoneCount>
 
@@ -751,7 +751,7 @@ C<2013-04-01/delegationset/I<delegation set ID>> resource.
 
 
 
-=head2 ListGeoLocations([StartSubdivisionCode => Str, MaxItems => Str, StartCountryCode => Str, StartContinentCode => Str])
+=head2 ListGeoLocations([MaxItems => Str, StartContinentCode => Str, StartCountryCode => Str, StartSubdivisionCode => Str])
 
 Each argument is described in detail in: L<Paws::Route53::ListGeoLocations>
 
@@ -815,7 +815,7 @@ a value greater than 100, Amazon Route 53 returns only the first 100.
 
 
 
-=head2 ListHostedZones([Marker => Str, MaxItems => Str, DelegationSetId => Str])
+=head2 ListHostedZones([DelegationSetId => Str, Marker => Str, MaxItems => Str])
 
 Each argument is described in detail in: L<Paws::Route53::ListHostedZones>
 
@@ -876,7 +876,7 @@ a value greater than 100, Amazon Route 53 returns only the first 100.
 
 
 
-=head2 ListResourceRecordSets(HostedZoneId => Str, [StartRecordIdentifier => Str, StartRecordName => Str, StartRecordType => Str, MaxItems => Str])
+=head2 ListResourceRecordSets(HostedZoneId => Str, [MaxItems => Str, StartRecordIdentifier => Str, StartRecordName => Str, StartRecordType => Str])
 
 Each argument is described in detail in: L<Paws::Route53::ListResourceRecordSets>
 
@@ -945,7 +945,7 @@ ListResourceRecordSets by that process.
 
 
 
-=head2 ListReusableDelegationSets([MaxItems => Str, Marker => Str])
+=head2 ListReusableDelegationSets([Marker => Str, MaxItems => Str])
 
 Each argument is described in detail in: L<Paws::Route53::ListReusableDelegationSets>
 
@@ -993,7 +993,7 @@ Returns: a L<Paws::Route53::ListTagsForResourcesResponse> instance
   
 
 
-=head2 UpdateHealthCheck(HealthCheckId => Str, [ResourcePath => Str, FullyQualifiedDomainName => Str, IPAddress => Str, FailureThreshold => Int, HealthCheckVersion => Num, Port => Int, SearchString => Str])
+=head2 UpdateHealthCheck(HealthCheckId => Str, [FailureThreshold => Int, FullyQualifiedDomainName => Str, HealthCheckVersion => Num, IPAddress => Str, Port => Int, ResourcePath => Str, SearchString => Str])
 
 Each argument is described in detail in: L<Paws::Route53::UpdateHealthCheck>
 

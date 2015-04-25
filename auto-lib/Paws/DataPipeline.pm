@@ -172,7 +172,7 @@ service.
 
 =head1 METHODS
 
-=head2 ActivatePipeline(pipelineId => Str, [startTimestamp => Str, parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue]])
+=head2 ActivatePipeline(pipelineId => Str, [parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue], startTimestamp => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ActivatePipeline>
 
@@ -408,7 +408,7 @@ permission to access.
 
 
 
-=head2 PollForTask(workerGroup => Str, [instanceIdentity => Paws::DataPipeline::InstanceIdentity, hostname => Str])
+=head2 PollForTask(workerGroup => Str, [hostname => Str, instanceIdentity => Paws::DataPipeline::InstanceIdentity])
 
 Each argument is described in detail in: L<Paws::DataPipeline::PollForTask>
 
@@ -483,7 +483,7 @@ action and returned by the GetPipelineDefinition action.
 
 
 
-=head2 QueryObjects(pipelineId => Str, sphere => Str, [marker => Str, limit => Int, query => Paws::DataPipeline::Query])
+=head2 QueryObjects(pipelineId => Str, sphere => Str, [limit => Int, marker => Str, query => Paws::DataPipeline::Query])
 
 Each argument is described in detail in: L<Paws::DataPipeline::QueryObjects>
 
@@ -556,7 +556,7 @@ runners should call C<ReportTaskProgress> every 60 seconds.
 
 
 
-=head2 ReportTaskRunnerHeartbeat(taskrunnerId => Str, [workerGroup => Str, hostname => Str])
+=head2 ReportTaskRunnerHeartbeat(taskrunnerId => Str, [hostname => Str, workerGroup => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ReportTaskRunnerHeartbeat>
 
@@ -605,7 +605,7 @@ attempting to do so returns C<InvalidRequestException>.
 
 
 
-=head2 SetTaskStatus(taskId => Str, taskStatus => Str, [errorMessage => Str, errorStackTrace => Str, errorId => Str])
+=head2 SetTaskStatus(taskId => Str, taskStatus => Str, [errorId => Str, errorMessage => Str, errorStackTrace => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::SetTaskStatus>
 

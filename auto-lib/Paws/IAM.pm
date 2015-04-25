@@ -977,7 +977,7 @@ users.
 
 
 
-=head2 CreatePolicy(PolicyDocument => Str, PolicyName => Str, [Path => Str, Description => Str])
+=head2 CreatePolicy(PolicyDocument => Str, PolicyName => Str, [Description => Str, Path => Str])
 
 Each argument is described in detail in: L<Paws::IAM::CreatePolicy>
 
@@ -1232,7 +1232,7 @@ I<Using IAM> guide.
 
 
 
-=head2 DeleteAccountPasswordPolicy()
+=head2 DeleteAccountPasswordPolicy( => )
 
 Each argument is described in detail in: L<Paws::IAM::DeleteAccountPasswordPolicy>
 
@@ -1760,7 +1760,7 @@ subsequent login by the user name associated with the device.
 
 
 
-=head2 GenerateCredentialReport()
+=head2 GenerateCredentialReport( => )
 
 Each argument is described in detail in: L<Paws::IAM::GenerateCredentialReport>
 
@@ -1809,7 +1809,7 @@ parameters.
 
 
 
-=head2 GetAccountPasswordPolicy()
+=head2 GetAccountPasswordPolicy( => )
 
 Each argument is described in detail in: L<Paws::IAM::GetAccountPasswordPolicy>
 
@@ -1830,7 +1830,7 @@ about using a password policy, go to Managing an IAM Password Policy.
 
 
 
-=head2 GetAccountSummary()
+=head2 GetAccountSummary( => )
 
 Each argument is described in detail in: L<Paws::IAM::GetAccountSummary>
 
@@ -1854,7 +1854,7 @@ IAM Entities in the I<Using IAM> guide.
 
 
 
-=head2 GetCredentialReport()
+=head2 GetCredentialReport( => )
 
 Each argument is described in detail in: L<Paws::IAM::GetCredentialReport>
 
@@ -2209,7 +2209,7 @@ Inline Policies in the I<Using IAM> guide.
 
 
 
-=head2 ListAccessKeys([MaxItems => Int, UserName => Str, Marker => Str])
+=head2 ListAccessKeys([Marker => Str, MaxItems => Int, UserName => Str])
 
 Each argument is described in detail in: L<Paws::IAM::ListAccessKeys>
 
@@ -2267,7 +2267,7 @@ parameters.
 
 
 
-=head2 ListAttachedGroupPolicies(GroupName => Str, [PathPrefix => Str, MaxItems => Int, Marker => Str])
+=head2 ListAttachedGroupPolicies(GroupName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
 
 Each argument is described in detail in: L<Paws::IAM::ListAttachedGroupPolicies>
 
@@ -2329,7 +2329,7 @@ specified path prefix), the action returns an empty list.
 
 
 
-=head2 ListAttachedUserPolicies(UserName => Str, [Marker => Str, PathPrefix => Str, MaxItems => Int])
+=head2 ListAttachedUserPolicies(UserName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
 
 Each argument is described in detail in: L<Paws::IAM::ListAttachedUserPolicies>
 
@@ -2360,7 +2360,7 @@ specified path prefix), the action returns an empty list.
 
 
 
-=head2 ListEntitiesForPolicy(PolicyArn => Str, [PathPrefix => Str, EntityFilter => Str, MaxItems => Int, Marker => Str])
+=head2 ListEntitiesForPolicy(PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str])
 
 Each argument is described in detail in: L<Paws::IAM::ListEntitiesForPolicy>
 
@@ -2465,7 +2465,7 @@ parameters.
 
 
 
-=head2 ListInstanceProfiles([Marker => Str, PathPrefix => Str, MaxItems => Int])
+=head2 ListInstanceProfiles([Marker => Str, MaxItems => Int, PathPrefix => Str])
 
 Each argument is described in detail in: L<Paws::IAM::ListInstanceProfiles>
 
@@ -2490,7 +2490,7 @@ parameters.
 
 
 
-=head2 ListInstanceProfilesForRole(RoleName => Str, [MaxItems => Int, Marker => Str])
+=head2 ListInstanceProfilesForRole(RoleName => Str, [Marker => Str, MaxItems => Int])
 
 Each argument is described in detail in: L<Paws::IAM::ListInstanceProfilesForRole>
 
@@ -2541,7 +2541,7 @@ parameters.
 
 
 
-=head2 ListOpenIDConnectProviders()
+=head2 ListOpenIDConnectProviders( => )
 
 Each argument is described in detail in: L<Paws::IAM::ListOpenIDConnectProviders>
 
@@ -2562,7 +2562,7 @@ account.
 
 
 
-=head2 ListPolicies([Marker => Str, Scope => Str, PathPrefix => Str, OnlyAttached => Bool, MaxItems => Int])
+=head2 ListPolicies([Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, Scope => Str])
 
 Each argument is described in detail in: L<Paws::IAM::ListPolicies>
 
@@ -2679,7 +2679,7 @@ http://www.faqs.org/rfcs/rfc3986.html.
 
 
 
-=head2 ListSAMLProviders()
+=head2 ListSAMLProviders( => )
 
 Each argument is described in detail in: L<Paws::IAM::ListSAMLProviders>
 
@@ -2701,7 +2701,7 @@ This operation requires Signature Version 4.
 
 
 
-=head2 ListServerCertificates([PathPrefix => Str, MaxItems => Int, Marker => Str])
+=head2 ListServerCertificates([Marker => Str, MaxItems => Int, PathPrefix => Str])
 
 Each argument is described in detail in: L<Paws::IAM::ListServerCertificates>
 
@@ -2810,7 +2810,7 @@ parameters.
 
 
 
-=head2 ListVirtualMFADevices([Marker => Str, MaxItems => Int, AssignmentStatus => Str])
+=head2 ListVirtualMFADevices([AssignmentStatus => Str, Marker => Str, MaxItems => Int])
 
 Each argument is described in detail in: L<Paws::IAM::ListVirtualMFADevices>
 
@@ -3102,7 +3102,7 @@ in the I<Using IAM> guide.
 
 
 
-=head2 UpdateAccountPasswordPolicy([RequireSymbols => Bool, PasswordReusePrevention => Int, MinimumPasswordLength => Int, RequireNumbers => Bool, RequireLowercaseCharacters => Bool, AllowUsersToChangePassword => Bool, MaxPasswordAge => Int, RequireUppercaseCharacters => Bool, HardExpiry => Bool])
+=head2 UpdateAccountPasswordPolicy([AllowUsersToChangePassword => Bool, HardExpiry => Bool, MaxPasswordAge => Int, MinimumPasswordLength => Int, PasswordReusePrevention => Int, RequireLowercaseCharacters => Bool, RequireNumbers => Bool, RequireSymbols => Bool, RequireUppercaseCharacters => Bool])
 
 Each argument is described in detail in: L<Paws::IAM::UpdateAccountPasswordPolicy>
 
@@ -3181,7 +3181,7 @@ Permissions and Policies.
 
 
 
-=head2 UpdateLoginProfile(UserName => Str, [PasswordResetRequired => Bool, Password => Str])
+=head2 UpdateLoginProfile(UserName => Str, [Password => Str, PasswordResetRequired => Bool])
 
 Each argument is described in detail in: L<Paws::IAM::UpdateLoginProfile>
 
@@ -3324,7 +3324,7 @@ Certificates in the I<Using IAM> guide.
 
 
 
-=head2 UpdateUser(UserName => Str, [NewUserName => Str, NewPath => Str])
+=head2 UpdateUser(UserName => Str, [NewPath => Str, NewUserName => Str])
 
 Each argument is described in detail in: L<Paws::IAM::UpdateUser>
 

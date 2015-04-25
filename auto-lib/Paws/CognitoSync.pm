@@ -315,7 +315,7 @@ Gets the configuration settings of an identity pool.
 
 
 
-=head2 ListDatasets(IdentityId => Str, IdentityPoolId => Str, [NextToken => Str, MaxResults => Int])
+=head2 ListDatasets(IdentityId => Str, IdentityPoolId => Str, [MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoSync::ListDatasets>
 
@@ -365,7 +365,7 @@ provided by Cognito Identity.
 
 
 
-=head2 ListRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, [NextToken => Str, SyncSessionToken => Str, MaxResults => Int, LastSyncCount => Num])
+=head2 ListRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, [LastSyncCount => Num, MaxResults => Int, NextToken => Str, SyncSessionToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoSync::ListRecords>
 
@@ -474,7 +474,7 @@ another device.
 
 
 
-=head2 UpdateRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, SyncSessionToken => Str, [RecordPatches => ArrayRef[Paws::CognitoSync::RecordPatch], DeviceId => Str, ClientContext => Str])
+=head2 UpdateRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, SyncSessionToken => Str, [ClientContext => Str, DeviceId => Str, RecordPatches => ArrayRef[Paws::CognitoSync::RecordPatch]])
 
 Each argument is described in detail in: L<Paws::CognitoSync::UpdateRecords>
 

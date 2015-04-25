@@ -292,7 +292,7 @@ This action is throttled at one request per second.
 
 
 
-=head2 GetSendQuota()
+=head2 GetSendQuota( => )
 
 Each argument is described in detail in: L<Paws::SES::GetSendQuota>
 
@@ -314,7 +314,7 @@ This action is throttled at one request per second.
 
 
 
-=head2 GetSendStatistics()
+=head2 GetSendStatistics( => )
 
 Each argument is described in detail in: L<Paws::SES::GetSendStatistics>
 
@@ -340,7 +340,7 @@ This action is throttled at one request per second.
 
 
 
-=head2 ListIdentities([NextToken => Str, MaxItems => Int, IdentityType => Str])
+=head2 ListIdentities([IdentityType => Str, MaxItems => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SES::ListIdentities>
 
@@ -363,7 +363,7 @@ This action is throttled at one request per second.
 
 
 
-=head2 ListVerifiedEmailAddresses()
+=head2 ListVerifiedEmailAddresses( => )
 
 Each argument is described in detail in: L<Paws::SES::ListVerifiedEmailAddresses>
 

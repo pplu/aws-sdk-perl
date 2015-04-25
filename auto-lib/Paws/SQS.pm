@@ -654,7 +654,7 @@ deleted within the next minute.
 
 
 
-=head2 ReceiveMessage(QueueUrl => Str, [MaxNumberOfMessages => Int, WaitTimeSeconds => Int, AttributeNames => ArrayRef[Str], MessageAttributeNames => ArrayRef[Str], VisibilityTimeout => Int])
+=head2 ReceiveMessage(QueueUrl => Str, [AttributeNames => ArrayRef[Str], MaxNumberOfMessages => Int, MessageAttributeNames => ArrayRef[Str], VisibilityTimeout => Int, WaitTimeSeconds => Int])
 
 Each argument is described in detail in: L<Paws::SQS::ReceiveMessage>
 

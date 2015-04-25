@@ -251,7 +251,7 @@ cluster steps, see ListSteps.
 
 
 
-=head2 DescribeJobFlows([JobFlowIds => ArrayRef[Str], CreatedAfter => Str, JobFlowStates => ArrayRef[Str], CreatedBefore => Str])
+=head2 DescribeJobFlows([CreatedAfter => Str, CreatedBefore => Str, JobFlowIds => ArrayRef[Str], JobFlowStates => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EMR::DescribeJobFlows>
 
@@ -337,7 +337,7 @@ cluster.
 
 
 
-=head2 ListClusters([ClusterStates => ArrayRef[Str], CreatedAfter => Str, Marker => Str, CreatedBefore => Str])
+=head2 ListClusters([ClusterStates => ArrayRef[Str], CreatedAfter => Str, CreatedBefore => Str, Marker => Str])
 
 Each argument is described in detail in: L<Paws::EMR::ListClusters>
 
@@ -382,7 +382,7 @@ Provides all available details about the instance groups in a cluster.
 
 
 
-=head2 ListInstances(ClusterId => Str, [InstanceGroupTypes => ArrayRef[Str], Marker => Str, InstanceGroupId => Str])
+=head2 ListInstances(ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str], Marker => Str])
 
 Each argument is described in detail in: L<Paws::EMR::ListInstances>
 
@@ -406,7 +406,7 @@ jobs, and the IP addresses for cluster instances, etc.
 
 
 
-=head2 ListSteps(ClusterId => Str, [StepStates => ArrayRef[Str], StepIds => ArrayRef[Str], Marker => Str])
+=head2 ListSteps(ClusterId => Str, [Marker => Str, StepIds => ArrayRef[Str], StepStates => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EMR::ListSteps>
 
@@ -475,7 +475,7 @@ cluster:
 
 
 
-=head2 RunJobFlow(Instances => Paws::EMR::JobFlowInstancesConfig, Name => Str, [Steps => ArrayRef[Paws::EMR::StepConfig], AmiVersion => Str, LogUri => Str, NewSupportedProducts => ArrayRef[Paws::EMR::SupportedProductConfig], Tags => ArrayRef[Paws::EMR::Tag], JobFlowRole => Str, ServiceRole => Str, VisibleToAllUsers => Bool, BootstrapActions => ArrayRef[Paws::EMR::BootstrapActionConfig], AdditionalInfo => Str, SupportedProducts => ArrayRef[Str]])
+=head2 RunJobFlow(Instances => Paws::EMR::JobFlowInstancesConfig, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, BootstrapActions => ArrayRef[Paws::EMR::BootstrapActionConfig], JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[Paws::EMR::SupportedProductConfig], ServiceRole => Str, Steps => ArrayRef[Paws::EMR::StepConfig], SupportedProducts => ArrayRef[Str], Tags => ArrayRef[Paws::EMR::Tag], VisibleToAllUsers => Bool])
 
 Each argument is described in detail in: L<Paws::EMR::RunJobFlow>
 

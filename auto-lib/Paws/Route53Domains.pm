@@ -341,7 +341,7 @@ completed.
 
 
 
-=head2 ListDomains([MaxItems => Int, Marker => Str])
+=head2 ListDomains([Marker => Str, MaxItems => Int])
 
 Each argument is described in detail in: L<Paws::Route53Domains::ListDomains>
 
@@ -362,7 +362,7 @@ Route 53 for the current AWS account.
 
 
 
-=head2 ListOperations([MaxItems => Int, Marker => Str])
+=head2 ListOperations([Marker => Str, MaxItems => Int])
 
 Each argument is described in detail in: L<Paws::Route53Domains::ListOperations>
 
@@ -407,7 +407,7 @@ not immediately represent all issued operations.
 
 
 
-=head2 RegisterDomain(AdminContact => Paws::Route53Domains::ContactDetail, DomainName => Str, DurationInYears => Int, RegistrantContact => Paws::Route53Domains::ContactDetail, TechContact => Paws::Route53Domains::ContactDetail, [PrivacyProtectAdminContact => Bool, AutoRenew => Bool, IdnLangCode => Str, PrivacyProtectTechContact => Bool, PrivacyProtectRegistrantContact => Bool])
+=head2 RegisterDomain(AdminContact => Paws::Route53Domains::ContactDetail, DomainName => Str, DurationInYears => Int, RegistrantContact => Paws::Route53Domains::ContactDetail, TechContact => Paws::Route53Domains::ContactDetail, [AutoRenew => Bool, IdnLangCode => Str, PrivacyProtectAdminContact => Bool, PrivacyProtectRegistrantContact => Bool, PrivacyProtectTechContact => Bool])
 
 Each argument is described in detail in: L<Paws::Route53Domains::RegisterDomain>
 
@@ -478,7 +478,7 @@ registrar.
 
 
 
-=head2 TransferDomain(AdminContact => Paws::Route53Domains::ContactDetail, DomainName => Str, DurationInYears => Int, RegistrantContact => Paws::Route53Domains::ContactDetail, TechContact => Paws::Route53Domains::ContactDetail, [PrivacyProtectRegistrantContact => Bool, Nameservers => ArrayRef[Paws::Route53Domains::Nameserver], PrivacyProtectAdminContact => Bool, PrivacyProtectTechContact => Bool, IdnLangCode => Str, AuthCode => Str, AutoRenew => Bool])
+=head2 TransferDomain(AdminContact => Paws::Route53Domains::ContactDetail, DomainName => Str, DurationInYears => Int, RegistrantContact => Paws::Route53Domains::ContactDetail, TechContact => Paws::Route53Domains::ContactDetail, [AuthCode => Str, AutoRenew => Bool, IdnLangCode => Str, Nameservers => ArrayRef[Paws::Route53Domains::Nameserver], PrivacyProtectAdminContact => Bool, PrivacyProtectRegistrantContact => Bool, PrivacyProtectTechContact => Bool])
 
 Each argument is described in detail in: L<Paws::Route53Domains::TransferDomain>
 
@@ -549,7 +549,7 @@ notified by email.
 
 
 
-=head2 UpdateDomainContactPrivacy(DomainName => Str, [AdminPrivacy => Bool, TechPrivacy => Bool, RegistrantPrivacy => Bool])
+=head2 UpdateDomainContactPrivacy(DomainName => Str, [AdminPrivacy => Bool, RegistrantPrivacy => Bool, TechPrivacy => Bool])
 
 Each argument is described in detail in: L<Paws::Route53Domains::UpdateDomainContactPrivacy>
 

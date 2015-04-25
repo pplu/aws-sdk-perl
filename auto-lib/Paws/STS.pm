@@ -115,7 +115,7 @@ turn it on and find your log files, see the AWS CloudTrail User Guide.
 
 =head1 METHODS
 
-=head2 AssumeRole(RoleArn => Str, RoleSessionName => Str, [Policy => Str, SerialNumber => Str, DurationSeconds => Int, TokenCode => Str, ExternalId => Str])
+=head2 AssumeRole(RoleArn => Str, RoleSessionName => Str, [DurationSeconds => Int, ExternalId => Str, Policy => Str, SerialNumber => Str, TokenCode => Str])
 
 Each argument is described in detail in: L<Paws::STS::AssumeRole>
 
@@ -208,7 +208,7 @@ time-based one-time password (TOTP) that the MFA devices produces.
 
 
 
-=head2 AssumeRoleWithSAML(PrincipalArn => Str, RoleArn => Str, SAMLAssertion => Str, [Policy => Str, DurationSeconds => Int])
+=head2 AssumeRoleWithSAML(PrincipalArn => Str, RoleArn => Str, SAMLAssertion => Str, [DurationSeconds => Int, Policy => Str])
 
 Each argument is described in detail in: L<Paws::STS::AssumeRoleWithSAML>
 
@@ -281,7 +281,7 @@ I<Using Temporary Security Credentials>.
 
 
 
-=head2 AssumeRoleWithWebIdentity(RoleArn => Str, RoleSessionName => Str, WebIdentityToken => Str, [Policy => Str, ProviderId => Str, DurationSeconds => Int])
+=head2 AssumeRoleWithWebIdentity(RoleArn => Str, RoleSessionName => Str, WebIdentityToken => Str, [DurationSeconds => Int, Policy => Str, ProviderId => Str])
 
 Each argument is described in detail in: L<Paws::STS::AssumeRoleWithWebIdentity>
 
@@ -512,7 +512,7 @@ Access for Federated Users in I<Using Temporary Security Credentials>.
 
 
 
-=head2 GetSessionToken([TokenCode => Str, DurationSeconds => Int, SerialNumber => Str])
+=head2 GetSessionToken([DurationSeconds => Int, SerialNumber => Str, TokenCode => Str])
 
 Each argument is described in detail in: L<Paws::STS::GetSessionToken>
 

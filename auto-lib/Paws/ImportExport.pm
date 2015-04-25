@@ -135,7 +135,7 @@ should ship your storage device.
 
 
 
-=head2 GetShippingLabel(jobIds => ArrayRef[Str], [postalCode => Str, name => Str, street3 => Str, country => Str, phoneNumber => Str, stateOrProvince => Str, street1 => Str, city => Str, company => Str, APIVersion => Str, street2 => Str])
+=head2 GetShippingLabel(jobIds => ArrayRef[Str], [APIVersion => Str, city => Str, company => Str, country => Str, name => Str, phoneNumber => Str, postalCode => Str, stateOrProvince => Str, street1 => Str, street2 => Str, street3 => Str])
 
 Each argument is described in detail in: L<Paws::ImportExport::GetShippingLabel>
 
@@ -181,7 +181,7 @@ information about jobs you own.
 
 
 
-=head2 ListJobs([Marker => Str, MaxJobs => Int, APIVersion => Str])
+=head2 ListJobs([APIVersion => Str, Marker => Str, MaxJobs => Int])
 
 Each argument is described in detail in: L<Paws::ImportExport::ListJobs>
 

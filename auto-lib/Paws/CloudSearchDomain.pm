@@ -79,7 +79,7 @@ For more information, see the Amazon CloudSearch Developer Guide.
 
 =head1 METHODS
 
-=head2 Search(query => Str, [highlight => Str, cursor => Str, sort => Str, size => Num, queryOptions => Str, partial => Bool, expr => Str, facet => Str, start => Num, return => Str, queryParser => Str, filterQuery => Str])
+=head2 Search(query => Str, [cursor => Str, expr => Str, facet => Str, filterQuery => Str, highlight => Str, partial => Bool, queryOptions => Str, queryParser => Str, return => Str, size => Num, sort => Str, start => Num])
 
 Each argument is described in detail in: L<Paws::CloudSearchDomain::Search>
 

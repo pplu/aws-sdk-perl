@@ -509,7 +509,7 @@ CloudSearch Developer Guide>.
 
 
 
-=head2 DescribeExpressions(DomainName => Str, [ExpressionNames => ArrayRef[Str], Deployed => Bool])
+=head2 DescribeExpressions(DomainName => Str, [Deployed => Bool, ExpressionNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeExpressions>
 
@@ -607,7 +607,7 @@ I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DescribeSuggesters(DomainName => Str, [SuggesterNames => ArrayRef[Str], Deployed => Bool])
+=head2 DescribeSuggesters(DomainName => Str, [Deployed => Bool, SuggesterNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeSuggesters>
 
@@ -655,7 +655,7 @@ options whose OptionStatus is C<RequiresIndexDocuments>.
 
 
 
-=head2 ListDomainNames()
+=head2 ListDomainNames( => )
 
 Each argument is described in detail in: L<Paws::CloudSearch::ListDomainNames>
 

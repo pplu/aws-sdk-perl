@@ -970,7 +970,7 @@ and deploy applications faster.
 
 =head1 METHODS
 
-=head2 AcceptVpcPeeringConnection([VpcPeeringConnectionId => Str, DryRun => Bool])
+=head2 AcceptVpcPeeringConnection([DryRun => Bool, VpcPeeringConnectionId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::AcceptVpcPeeringConnection>
 
@@ -1018,7 +1018,7 @@ I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 AssignPrivateIpAddresses(NetworkInterfaceId => Str, [SecondaryPrivateIpAddressCount => Int, AllowReassignment => Bool, PrivateIpAddresses => ArrayRef[Str]])
+=head2 AssignPrivateIpAddresses(NetworkInterfaceId => Str, [AllowReassignment => Bool, PrivateIpAddresses => ArrayRef[Str], SecondaryPrivateIpAddressCount => Int])
 
 Each argument is described in detail in: L<Paws::EC2::AssignPrivateIpAddresses>
 
@@ -1048,7 +1048,7 @@ AssignPrivateIpAddresses is available only in EC2-VPC.
 
 
 
-=head2 AssociateAddress([PublicIp => Str, PrivateIpAddress => Str, DryRun => Bool, NetworkInterfaceId => Str, AllowReassociation => Bool, AllocationId => Str, InstanceId => Str])
+=head2 AssociateAddress([AllocationId => Str, AllowReassociation => Bool, DryRun => Bool, InstanceId => Str, NetworkInterfaceId => Str, PrivateIpAddress => Str, PublicIp => Str])
 
 Each argument is described in detail in: L<Paws::EC2::AssociateAddress>
 
@@ -1295,7 +1295,7 @@ Virtual Private Cloud User Guide>.
 
 
 
-=head2 AuthorizeSecurityGroupEgress(GroupId => Str, [SourceSecurityGroupOwnerId => Str, IpPermissions => ArrayRef[Paws::EC2::IpPermission], ToPort => Int, CidrIp => Str, DryRun => Bool, FromPort => Int, SourceSecurityGroupName => Str, IpProtocol => Str])
+=head2 AuthorizeSecurityGroupEgress(GroupId => Str, [CidrIp => Str, DryRun => Bool, FromPort => Int, IpPermissions => ArrayRef[Paws::EC2::IpPermission], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
 
 Each argument is described in detail in: L<Paws::EC2::AuthorizeSecurityGroupEgress>
 
@@ -1335,7 +1335,7 @@ possible. However, a small delay might occur.
 
 
 
-=head2 AuthorizeSecurityGroupIngress([FromPort => Int, CidrIp => Str, GroupId => Str, DryRun => Bool, SourceSecurityGroupName => Str, IpProtocol => Str, GroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int, IpPermissions => ArrayRef[Paws::EC2::IpPermission]])
+=head2 AuthorizeSecurityGroupIngress([CidrIp => Str, DryRun => Bool, FromPort => Int, GroupId => Str, GroupName => Str, IpPermissions => ArrayRef[Paws::EC2::IpPermission], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
 
 Each argument is described in detail in: L<Paws::EC2::AuthorizeSecurityGroupIngress>
 
@@ -1551,7 +1551,7 @@ instance is eligible for support.
 
 
 
-=head2 CopyImage(Name => Str, SourceImageId => Str, SourceRegion => Str, [ClientToken => Str, DryRun => Bool, Description => Str])
+=head2 CopyImage(Name => Str, SourceImageId => Str, SourceRegion => Str, [ClientToken => Str, Description => Str, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CopyImage>
 
@@ -1577,7 +1577,7 @@ Cloud User Guide for Linux>.
 
 
 
-=head2 CopySnapshot(SourceRegion => Str, SourceSnapshotId => Str, [PresignedUrl => Str, DryRun => Bool, DestinationRegion => Str, Description => Str])
+=head2 CopySnapshot(SourceRegion => Str, SourceSnapshotId => Str, [Description => Str, DestinationRegion => Str, DryRun => Bool, PresignedUrl => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CopySnapshot>
 
@@ -1713,7 +1713,7 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 
 
-=head2 CreateImage(InstanceId => Str, Name => Str, [BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping], DryRun => Bool, Description => Str, NoReboot => Bool])
+=head2 CreateImage(InstanceId => Str, Name => Str, [BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping], Description => Str, DryRun => Bool, NoReboot => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateImage>
 
@@ -1743,7 +1743,7 @@ I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 CreateInstanceExportTask(InstanceId => Str, [ExportToS3Task => Paws::EC2::ExportToS3TaskSpecification, TargetEnvironment => Str, Description => Str])
+=head2 CreateInstanceExportTask(InstanceId => Str, [Description => Str, ExportToS3Task => Paws::EC2::ExportToS3TaskSpecification, TargetEnvironment => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateInstanceExportTask>
 
@@ -1850,7 +1850,7 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 
 
-=head2 CreateNetworkAclEntry(CidrBlock => Str, Egress => Bool, NetworkAclId => Str, Protocol => Str, RuleAction => Str, RuleNumber => Int, [IcmpTypeCode => Paws::EC2::IcmpTypeCode, DryRun => Bool, PortRange => Paws::EC2::PortRange])
+=head2 CreateNetworkAclEntry(CidrBlock => Str, Egress => Bool, NetworkAclId => Str, Protocol => Str, RuleAction => Str, RuleNumber => Int, [DryRun => Bool, IcmpTypeCode => Paws::EC2::IcmpTypeCode, PortRange => Paws::EC2::PortRange])
 
 Each argument is described in detail in: L<Paws::EC2::CreateNetworkAclEntry>
 
@@ -1887,7 +1887,7 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 
 
-=head2 CreateNetworkInterface(SubnetId => Str, [DryRun => Bool, SecondaryPrivateIpAddressCount => Int, PrivateIpAddress => Str, Groups => ArrayRef[Str], Description => Str, PrivateIpAddresses => ArrayRef[Paws::EC2::PrivateIpAddressSpecification]])
+=head2 CreateNetworkInterface(SubnetId => Str, [Description => Str, DryRun => Bool, Groups => ArrayRef[Str], PrivateIpAddress => Str, PrivateIpAddresses => ArrayRef[Paws::EC2::PrivateIpAddressSpecification], SecondaryPrivateIpAddressCount => Int])
 
 Each argument is described in detail in: L<Paws::EC2::CreateNetworkInterface>
 
@@ -1976,7 +1976,7 @@ Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 CreateRoute(DestinationCidrBlock => Str, RouteTableId => Str, [GatewayId => Str, InstanceId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str, DryRun => Bool])
+=head2 CreateRoute(DestinationCidrBlock => Str, RouteTableId => Str, [DryRun => Bool, GatewayId => Str, InstanceId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateRoute>
 
@@ -2095,7 +2095,7 @@ RevokeSecurityGroupIngress, and RevokeSecurityGroupEgress.
 
 
 
-=head2 CreateSnapshot(VolumeId => Str, [DryRun => Bool, Description => Str])
+=head2 CreateSnapshot(VolumeId => Str, [Description => Str, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateSnapshot>
 
@@ -2142,7 +2142,7 @@ Encryption in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 CreateSpotDatafeedSubscription(Bucket => Str, [Prefix => Str, DryRun => Bool])
+=head2 CreateSpotDatafeedSubscription(Bucket => Str, [DryRun => Bool, Prefix => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateSpotDatafeedSubscription>
 
@@ -2165,7 +2165,7 @@ Compute Cloud User Guide for Linux>.
 
 
 
-=head2 CreateSubnet(CidrBlock => Str, VpcId => Str, [DryRun => Bool, AvailabilityZone => Str])
+=head2 CreateSubnet(CidrBlock => Str, VpcId => Str, [AvailabilityZone => Str, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateSubnet>
 
@@ -2236,7 +2236,7 @@ I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 CreateVolume(AvailabilityZone => Str, [VolumeType => Str, KmsKeyId => Str, Size => Int, SnapshotId => Str, DryRun => Bool, Iops => Int, Encrypted => Bool])
+=head2 CreateVolume(AvailabilityZone => Str, [DryRun => Bool, Encrypted => Bool, Iops => Int, KmsKeyId => Str, Size => Int, SnapshotId => Str, VolumeType => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateVolume>
 
@@ -2302,7 +2302,7 @@ Options Sets in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 
-=head2 CreateVpcPeeringConnection([PeerOwnerId => Str, VpcId => Str, PeerVpcId => Str, DryRun => Bool])
+=head2 CreateVpcPeeringConnection([DryRun => Bool, PeerOwnerId => Str, PeerVpcId => Str, VpcId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateVpcPeeringConnection>
 
@@ -2638,7 +2638,7 @@ main route table.
 
 
 
-=head2 DeleteSecurityGroup([GroupName => Str, DryRun => Bool, GroupId => Str])
+=head2 DeleteSecurityGroup([DryRun => Bool, GroupId => Str, GroupName => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DeleteSecurityGroup>
 
@@ -2741,7 +2741,7 @@ in the subnet before you can delete the subnet.
 
 
 
-=head2 DeleteTags(Resources => ArrayRef[Str], [Tags => ArrayRef[Paws::EC2::Tag], DryRun => Bool])
+=head2 DeleteTags(Resources => ArrayRef[Str], [DryRun => Bool, Tags => ArrayRef[Paws::EC2::Tag]])
 
 Each argument is described in detail in: L<Paws::EC2::DeleteTags>
 
@@ -2993,7 +2993,7 @@ you can allocate for use with EC2-VPC.
 
 
 
-=head2 DescribeAddresses([PublicIps => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], AllocationIds => ArrayRef[Str]])
+=head2 DescribeAddresses([AllocationIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], PublicIps => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeAddresses>
 
@@ -3017,7 +3017,7 @@ I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 DescribeAvailabilityZones([Filters => ArrayRef[Paws::EC2::Filter], DryRun => Bool, ZoneNames => ArrayRef[Str]])
+=head2 DescribeAvailabilityZones([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], ZoneNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeAvailabilityZones>
 
@@ -3044,7 +3044,7 @@ I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 DescribeBundleTasks([Filters => ArrayRef[Paws::EC2::Filter], BundleIds => ArrayRef[Str], DryRun => Bool])
+=head2 DescribeBundleTasks([BundleIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeBundleTasks>
 
@@ -3069,7 +3069,7 @@ image manifest name you provided to the bundle task.
 
 
 
-=head2 DescribeClassicLinkInstances([NextToken => Str, DryRun => Bool, InstanceIds => ArrayRef[Str], MaxResults => Int, Filters => ArrayRef[Paws::EC2::Filter]])
+=head2 DescribeClassicLinkInstances([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], InstanceIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeClassicLinkInstances>
 
@@ -3092,7 +3092,7 @@ information about other instances.
 
 
 
-=head2 DescribeConversionTasks([ConversionTaskIds => ArrayRef[Str], Filters => ArrayRef[Paws::EC2::Filter], DryRun => Bool])
+=head2 DescribeConversionTasks([ConversionTaskIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeConversionTasks>
 
@@ -3114,7 +3114,7 @@ Amazon EC2 in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 DescribeCustomerGateways([Filters => ArrayRef[Paws::EC2::Filter], CustomerGatewayIds => ArrayRef[Str], DryRun => Bool])
+=head2 DescribeCustomerGateways([CustomerGatewayIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeCustomerGateways>
 
@@ -3202,7 +3202,7 @@ only one attribute at a time.
 
 
 
-=head2 DescribeImages([Filters => ArrayRef[Paws::EC2::Filter], ExecutableUsers => ArrayRef[Str], Owners => ArrayRef[Str], DryRun => Bool, ImageIds => ArrayRef[Str]])
+=head2 DescribeImages([DryRun => Bool, ExecutableUsers => ArrayRef[Str], Filters => ArrayRef[Paws::EC2::Filter], ImageIds => ArrayRef[Str], Owners => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeImages>
 
@@ -3253,7 +3253,7 @@ C<sourceDestCheck> | C<groupSet> | C<ebsOptimized> | C<sriovNetSupport>
 
 
 
-=head2 DescribeInstances([DryRun => Bool, NextToken => Str, MaxResults => Int, InstanceIds => ArrayRef[Str], Filters => ArrayRef[Paws::EC2::Filter]])
+=head2 DescribeInstances([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], InstanceIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeInstances>
 
@@ -3283,7 +3283,7 @@ This interval is usually less than one hour.
 
 
 
-=head2 DescribeInstanceStatus([IncludeAllInstances => Bool, InstanceIds => ArrayRef[Str], MaxResults => Int, Filters => ArrayRef[Paws::EC2::Filter], DryRun => Bool, NextToken => Str])
+=head2 DescribeInstanceStatus([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], IncludeAllInstances => Bool, InstanceIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeInstanceStatus>
 
@@ -3429,7 +3429,7 @@ Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 DescribeNetworkAcls([NetworkAclIds => ArrayRef[Str], Filters => ArrayRef[Paws::EC2::Filter], DryRun => Bool])
+=head2 DescribeNetworkAcls([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], NetworkAclIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeNetworkAcls>
 
@@ -3452,7 +3452,7 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 
 
-=head2 DescribeNetworkInterfaceAttribute(NetworkInterfaceId => Str, [DryRun => Bool, Attribute => Str])
+=head2 DescribeNetworkInterfaceAttribute(NetworkInterfaceId => Str, [Attribute => Str, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeNetworkInterfaceAttribute>
 
@@ -3473,7 +3473,7 @@ attribute at a time.
 
 
 
-=head2 DescribeNetworkInterfaces([DryRun => Bool, NetworkInterfaceIds => ArrayRef[Str], Filters => ArrayRef[Paws::EC2::Filter]])
+=head2 DescribeNetworkInterfaces([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], NetworkInterfaceIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeNetworkInterfaces>
 
@@ -3493,7 +3493,7 @@ Describes one or more of your network interfaces.
 
 
 
-=head2 DescribePlacementGroups([DryRun => Bool, GroupNames => ArrayRef[Str], Filters => ArrayRef[Paws::EC2::Filter]])
+=head2 DescribePlacementGroups([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], GroupNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribePlacementGroups>
 
@@ -3515,7 +3515,7 @@ the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 DescribeRegions([Filters => ArrayRef[Paws::EC2::Filter], RegionNames => ArrayRef[Str], DryRun => Bool])
+=head2 DescribeRegions([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], RegionNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeRegions>
 
@@ -3538,7 +3538,7 @@ Endpoints.
 
 
 
-=head2 DescribeReservedInstances([ReservedInstancesIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], OfferingType => Str])
+=head2 DescribeReservedInstances([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], OfferingType => Str, ReservedInstancesIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstances>
 
@@ -3561,7 +3561,7 @@ in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 DescribeReservedInstancesListings([ReservedInstancesListingId => Str, Filters => ArrayRef[Paws::EC2::Filter], ReservedInstancesId => Str])
+=head2 DescribeReservedInstancesListings([Filters => ArrayRef[Paws::EC2::Filter], ReservedInstancesId => Str, ReservedInstancesListingId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesListings>
 
@@ -3603,7 +3603,7 @@ Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 DescribeReservedInstancesModifications([NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str], Filters => ArrayRef[Paws::EC2::Filter]])
+=head2 DescribeReservedInstancesModifications([Filters => ArrayRef[Paws::EC2::Filter], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesModifications>
 
@@ -3629,7 +3629,7 @@ Elastic Compute Cloud User Guide for Linux.
 
 
 
-=head2 DescribeReservedInstancesOfferings([InstanceType => Str, MaxInstanceCount => Int, MinDuration => Num, NextToken => Str, AvailabilityZone => Str, IncludeMarketplace => Bool, Filters => ArrayRef[Paws::EC2::Filter], OfferingType => Str, DryRun => Bool, ProductDescription => Str, InstanceTenancy => Str, ReservedInstancesOfferingIds => ArrayRef[Str], MaxResults => Int, MaxDuration => Num])
+=head2 DescribeReservedInstancesOfferings([AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Num, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Num, NextToken => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesOfferings>
 
@@ -3656,7 +3656,7 @@ Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 DescribeRouteTables([Filters => ArrayRef[Paws::EC2::Filter], DryRun => Bool, RouteTableIds => ArrayRef[Str]])
+=head2 DescribeRouteTables([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], RouteTableIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeRouteTables>
 
@@ -3679,7 +3679,7 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 
 
-=head2 DescribeSecurityGroups([Filters => ArrayRef[Paws::EC2::Filter], GroupNames => ArrayRef[Str], GroupIds => ArrayRef[Str], DryRun => Bool])
+=head2 DescribeSecurityGroups([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], GroupIds => ArrayRef[Str], GroupNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSecurityGroups>
 
@@ -3729,7 +3729,7 @@ Snapshots in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 DescribeSnapshots([NextToken => Str, DryRun => Bool, SnapshotIds => ArrayRef[Str], OwnerIds => ArrayRef[Str], MaxResults => Int, Filters => ArrayRef[Paws::EC2::Filter], RestorableByUserIds => ArrayRef[Str]])
+=head2 DescribeSnapshots([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, NextToken => Str, OwnerIds => ArrayRef[Str], RestorableByUserIds => ArrayRef[Str], SnapshotIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSnapshots>
 
@@ -3823,7 +3823,7 @@ Guide for Linux>.
 
 
 
-=head2 DescribeSpotInstanceRequests([DryRun => Bool, SpotInstanceRequestIds => ArrayRef[Str], Filters => ArrayRef[Paws::EC2::Filter]])
+=head2 DescribeSpotInstanceRequests([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], SpotInstanceRequestIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSpotInstanceRequests>
 
@@ -3856,7 +3856,7 @@ instance lifecycle is C<spot>.
 
 
 
-=head2 DescribeSpotPriceHistory([EndTime => Str, ProductDescriptions => ArrayRef[Str], MaxResults => Int, StartTime => Str, DryRun => Bool, AvailabilityZone => Str, Filters => ArrayRef[Paws::EC2::Filter], InstanceTypes => ArrayRef[Str], NextToken => Str])
+=head2 DescribeSpotPriceHistory([AvailabilityZone => Str, DryRun => Bool, EndTime => Str, Filters => ArrayRef[Paws::EC2::Filter], InstanceTypes => ArrayRef[Str], MaxResults => Int, NextToken => Str, ProductDescriptions => ArrayRef[Str], StartTime => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSpotPriceHistory>
 
@@ -3885,7 +3885,7 @@ that the price changed.
 
 
 
-=head2 DescribeSubnets([Filters => ArrayRef[Paws::EC2::Filter], DryRun => Bool, SubnetIds => ArrayRef[Str]])
+=head2 DescribeSubnets([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], SubnetIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSubnets>
 
@@ -3908,7 +3908,7 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 
 
-=head2 DescribeTags([DryRun => Bool, NextToken => Str, MaxResults => Int, Filters => ArrayRef[Paws::EC2::Filter]])
+=head2 DescribeTags([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeTags>
 
@@ -3931,7 +3931,7 @@ I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 DescribeVolumeAttribute(VolumeId => Str, [DryRun => Bool, Attribute => Str])
+=head2 DescribeVolumeAttribute(VolumeId => Str, [Attribute => Str, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVolumeAttribute>
 
@@ -3955,7 +3955,7 @@ in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 DescribeVolumes([VolumeIds => ArrayRef[Str], Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, DryRun => Bool, NextToken => Str])
+=head2 DescribeVolumes([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVolumes>
 
@@ -3986,7 +3986,7 @@ in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 DescribeVolumeStatus([VolumeIds => ArrayRef[Str], MaxResults => Int, Filters => ArrayRef[Paws::EC2::Filter], DryRun => Bool, NextToken => Str])
+=head2 DescribeVolumeStatus([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVolumeStatus>
 
@@ -4045,7 +4045,7 @@ of accepting I/O.)
 
 
 
-=head2 DescribeVpcAttribute(VpcId => Str, [DryRun => Bool, Attribute => Str])
+=head2 DescribeVpcAttribute(VpcId => Str, [Attribute => Str, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpcAttribute>
 
@@ -4066,7 +4066,7 @@ only one attribute at a time.
 
 
 
-=head2 DescribeVpcClassicLink([DryRun => Bool, VpcIds => ArrayRef[Str], Filters => ArrayRef[Paws::EC2::Filter]])
+=head2 DescribeVpcClassicLink([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], VpcIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpcClassicLink>
 
@@ -4086,7 +4086,7 @@ Describes the ClassicLink status of one or more VPCs.
 
 
 
-=head2 DescribeVpcPeeringConnections([Filters => ArrayRef[Paws::EC2::Filter], DryRun => Bool, VpcPeeringConnectionIds => ArrayRef[Str]])
+=head2 DescribeVpcPeeringConnections([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], VpcPeeringConnectionIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpcPeeringConnections>
 
@@ -4106,7 +4106,7 @@ Describes one or more of your VPC peering connections.
 
 
 
-=head2 DescribeVpcs([DryRun => Bool, VpcIds => ArrayRef[Str], Filters => ArrayRef[Paws::EC2::Filter]])
+=head2 DescribeVpcs([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], VpcIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpcs>
 
@@ -4126,7 +4126,7 @@ Describes one or more of your VPCs.
 
 
 
-=head2 DescribeVpnConnections([VpnConnectionIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter]])
+=head2 DescribeVpnConnections([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], VpnConnectionIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpnConnections>
 
@@ -4150,7 +4150,7 @@ Cloud User Guide>.
 
 
 
-=head2 DescribeVpnGateways([VpnGatewayIds => ArrayRef[Str], Filters => ArrayRef[Paws::EC2::Filter], DryRun => Bool])
+=head2 DescribeVpnGateways([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], VpnGatewayIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpnGateways>
 
@@ -4219,7 +4219,7 @@ instances with Elastic IP addresses.
 
 
 
-=head2 DetachNetworkInterface(AttachmentId => Str, [Force => Bool, DryRun => Bool])
+=head2 DetachNetworkInterface(AttachmentId => Str, [DryRun => Bool, Force => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DetachNetworkInterface>
 
@@ -4239,7 +4239,7 @@ Detaches a network interface from an instance.
 
 
 
-=head2 DetachVolume(VolumeId => Str, [InstanceId => Str, Device => Str, Force => Bool, DryRun => Bool])
+=head2 DetachVolume(VolumeId => Str, [Device => Str, DryRun => Bool, Force => Bool, InstanceId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DetachVolume>
 
@@ -4342,7 +4342,7 @@ VPC that has EC2-Classic instances linked to it.
 
 
 
-=head2 DisassociateAddress([AssociationId => Str, PublicIp => Str, DryRun => Bool])
+=head2 DisassociateAddress([AssociationId => Str, DryRun => Bool, PublicIp => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DisassociateAddress>
 
@@ -4538,7 +4538,7 @@ trying to retrieve the generated password.
 
 
 
-=head2 ImportInstance(Platform => Str, [DiskImages => ArrayRef[Paws::EC2::DiskImage], Description => Str, LaunchSpecification => Paws::EC2::ImportInstanceLaunchSpecification, DryRun => Bool])
+=head2 ImportInstance(Platform => Str, [Description => Str, DiskImages => ArrayRef[Paws::EC2::DiskImage], DryRun => Bool, LaunchSpecification => Paws::EC2::ImportInstanceLaunchSpecification])
 
 Each argument is described in detail in: L<Paws::EC2::ImportInstance>
 
@@ -4615,7 +4615,7 @@ Compute Cloud User Guide for Linux>.
 
 
 
-=head2 ModifyImageAttribute(ImageId => Str, [OperationType => Str, Value => Str, Attribute => Str, DryRun => Bool, LaunchPermission => Paws::EC2::LaunchPermissionModifications, UserGroups => ArrayRef[Str], ProductCodes => ArrayRef[Str], Description => Paws::EC2::AttributeValue, UserIds => ArrayRef[Str]])
+=head2 ModifyImageAttribute(ImageId => Str, [Attribute => Str, Description => Paws::EC2::AttributeValue, DryRun => Bool, LaunchPermission => Paws::EC2::LaunchPermissionModifications, OperationType => Str, ProductCodes => ArrayRef[Str], UserGroups => ArrayRef[Str], UserIds => ArrayRef[Str], Value => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyImageAttribute>
 
@@ -4639,7 +4639,7 @@ Marketplace product code cannot be made public.
 
 
 
-=head2 ModifyInstanceAttribute(InstanceId => Str, [SourceDestCheck => Paws::EC2::AttributeBooleanValue, UserData => Paws::EC2::BlobAttributeValue, BlockDeviceMappings => ArrayRef[Paws::EC2::InstanceBlockDeviceMappingSpecification], DisableApiTermination => Paws::EC2::AttributeBooleanValue, SriovNetSupport => Paws::EC2::AttributeValue, Groups => ArrayRef[Str], Value => Str, EbsOptimized => Paws::EC2::AttributeBooleanValue, Attribute => Str, DryRun => Bool, InstanceInitiatedShutdownBehavior => Paws::EC2::AttributeValue, Kernel => Paws::EC2::AttributeValue, Ramdisk => Paws::EC2::AttributeValue, InstanceType => Paws::EC2::AttributeValue])
+=head2 ModifyInstanceAttribute(InstanceId => Str, [Attribute => Str, BlockDeviceMappings => ArrayRef[Paws::EC2::InstanceBlockDeviceMappingSpecification], DisableApiTermination => Paws::EC2::AttributeBooleanValue, DryRun => Bool, EbsOptimized => Paws::EC2::AttributeBooleanValue, Groups => ArrayRef[Str], InstanceInitiatedShutdownBehavior => Paws::EC2::AttributeValue, InstanceType => Paws::EC2::AttributeValue, Kernel => Paws::EC2::AttributeValue, Ramdisk => Paws::EC2::AttributeValue, SourceDestCheck => Paws::EC2::AttributeBooleanValue, SriovNetSupport => Paws::EC2::AttributeValue, UserData => Paws::EC2::BlobAttributeValue, Value => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyInstanceAttribute>
 
@@ -4664,7 +4664,7 @@ I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 ModifyNetworkInterfaceAttribute(NetworkInterfaceId => Str, [Groups => ArrayRef[Str], DryRun => Bool, Attachment => Paws::EC2::NetworkInterfaceAttachmentChanges, Description => Paws::EC2::AttributeValue, SourceDestCheck => Paws::EC2::AttributeBooleanValue])
+=head2 ModifyNetworkInterfaceAttribute(NetworkInterfaceId => Str, [Attachment => Paws::EC2::NetworkInterfaceAttachmentChanges, Description => Paws::EC2::AttributeValue, DryRun => Bool, Groups => ArrayRef[Str], SourceDestCheck => Paws::EC2::AttributeBooleanValue])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyNetworkInterfaceAttribute>
 
@@ -4711,7 +4711,7 @@ Elastic Compute Cloud User Guide for Linux.
 
 
 
-=head2 ModifySnapshotAttribute(SnapshotId => Str, [OperationType => Str, Attribute => Str, DryRun => Bool, GroupNames => ArrayRef[Str], CreateVolumePermission => Paws::EC2::CreateVolumePermissionModifications, UserIds => ArrayRef[Str]])
+=head2 ModifySnapshotAttribute(SnapshotId => Str, [Attribute => Str, CreateVolumePermission => Paws::EC2::CreateVolumePermissionModifications, DryRun => Bool, GroupNames => ArrayRef[Str], OperationType => Str, UserIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::ModifySnapshotAttribute>
 
@@ -4790,7 +4790,7 @@ that are stateless or disposable.
 
 
 
-=head2 ModifyVpcAttribute(VpcId => Str, [EnableDnsSupport => Paws::EC2::AttributeBooleanValue, EnableDnsHostnames => Paws::EC2::AttributeBooleanValue])
+=head2 ModifyVpcAttribute(VpcId => Str, [EnableDnsHostnames => Paws::EC2::AttributeBooleanValue, EnableDnsSupport => Paws::EC2::AttributeBooleanValue])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyVpcAttribute>
 
@@ -4895,7 +4895,7 @@ Guide for Linux>.
 
 
 
-=head2 RegisterImage(Name => Str, [BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping], SriovNetSupport => Str, DryRun => Bool, ImageLocation => Str, Architecture => Str, RootDeviceName => Str, KernelId => Str, RamdiskId => Str, Description => Str, VirtualizationType => Str])
+=head2 RegisterImage(Name => Str, [Architecture => Str, BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping], Description => Str, DryRun => Bool, ImageLocation => Str, KernelId => Str, RamdiskId => Str, RootDeviceName => Str, SriovNetSupport => Str, VirtualizationType => Str])
 
 Each argument is described in detail in: L<Paws::EC2::RegisterImage>
 
@@ -4960,7 +4960,7 @@ initiated, use DeleteVpcPeeringConnection.
 
 
 
-=head2 ReleaseAddress([DryRun => Bool, PublicIp => Str, AllocationId => Str])
+=head2 ReleaseAddress([AllocationId => Str, DryRun => Bool, PublicIp => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ReleaseAddress>
 
@@ -5019,7 +5019,7 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 
-=head2 ReplaceNetworkAclEntry(CidrBlock => Str, Egress => Bool, NetworkAclId => Str, Protocol => Str, RuleAction => Str, RuleNumber => Int, [IcmpTypeCode => Paws::EC2::IcmpTypeCode, DryRun => Bool, PortRange => Paws::EC2::PortRange])
+=head2 ReplaceNetworkAclEntry(CidrBlock => Str, Egress => Bool, NetworkAclId => Str, Protocol => Str, RuleAction => Str, RuleNumber => Int, [DryRun => Bool, IcmpTypeCode => Paws::EC2::IcmpTypeCode, PortRange => Paws::EC2::PortRange])
 
 Each argument is described in detail in: L<Paws::EC2::ReplaceNetworkAclEntry>
 
@@ -5041,7 +5041,7 @@ User Guide>.
 
 
 
-=head2 ReplaceRoute(DestinationCidrBlock => Str, RouteTableId => Str, [DryRun => Bool, GatewayId => Str, InstanceId => Str, VpcPeeringConnectionId => Str, NetworkInterfaceId => Str])
+=head2 ReplaceRoute(DestinationCidrBlock => Str, RouteTableId => Str, [DryRun => Bool, GatewayId => Str, InstanceId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ReplaceRoute>
 
@@ -5094,7 +5094,7 @@ table.
 
 
 
-=head2 ReportInstanceStatus(Instances => ArrayRef[Str], ReasonCodes => ArrayRef[Str], Status => Str, [Description => Str, EndTime => Str, DryRun => Bool, StartTime => Str])
+=head2 ReportInstanceStatus(Instances => ArrayRef[Str], ReasonCodes => ArrayRef[Str], Status => Str, [Description => Str, DryRun => Bool, EndTime => Str, StartTime => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ReportInstanceStatus>
 
@@ -5122,7 +5122,7 @@ DescribeInstanceStatus.
 
 
 
-=head2 RequestSpotInstances(SpotPrice => Str, [InstanceCount => Int, LaunchGroup => Str, AvailabilityZoneGroup => Str, DryRun => Bool, ValidFrom => Str, ValidUntil => Str, Type => Str, LaunchSpecification => Paws::EC2::RequestSpotLaunchSpecification])
+=head2 RequestSpotInstances(SpotPrice => Str, [AvailabilityZoneGroup => Str, DryRun => Bool, InstanceCount => Int, LaunchGroup => Str, LaunchSpecification => Paws::EC2::RequestSpotLaunchSpecification, Type => Str, ValidFrom => Str, ValidUntil => Str])
 
 Each argument is described in detail in: L<Paws::EC2::RequestSpotInstances>
 
@@ -5198,7 +5198,7 @@ Private Cloud User Guide>.
 
 
 
-=head2 ResetNetworkInterfaceAttribute(NetworkInterfaceId => Str, [SourceDestCheck => Str, DryRun => Bool])
+=head2 ResetNetworkInterfaceAttribute(NetworkInterfaceId => Str, [DryRun => Bool, SourceDestCheck => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ResetNetworkInterfaceAttribute>
 
@@ -5242,7 +5242,7 @@ Snapshots in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 RevokeSecurityGroupEgress(GroupId => Str, [DryRun => Bool, CidrIp => Str, FromPort => Int, IpProtocol => Str, SourceSecurityGroupName => Str, ToPort => Int, IpPermissions => ArrayRef[Paws::EC2::IpPermission], SourceSecurityGroupOwnerId => Str])
+=head2 RevokeSecurityGroupEgress(GroupId => Str, [CidrIp => Str, DryRun => Bool, FromPort => Int, IpPermissions => ArrayRef[Paws::EC2::IpPermission], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
 
 Each argument is described in detail in: L<Paws::EC2::RevokeSecurityGroupEgress>
 
@@ -5272,7 +5272,7 @@ quickly as possible. However, a small delay might occur.
 
 
 
-=head2 RevokeSecurityGroupIngress([GroupName => Str, SourceSecurityGroupOwnerId => Str, IpPermissions => ArrayRef[Paws::EC2::IpPermission], ToPort => Int, SourceSecurityGroupName => Str, IpProtocol => Str, FromPort => Int, CidrIp => Str, GroupId => Str, DryRun => Bool])
+=head2 RevokeSecurityGroupIngress([CidrIp => Str, DryRun => Bool, FromPort => Int, GroupId => Str, GroupName => Str, IpPermissions => ArrayRef[Paws::EC2::IpPermission], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
 
 Each argument is described in detail in: L<Paws::EC2::RevokeSecurityGroupIngress>
 
@@ -5302,7 +5302,7 @@ quickly as possible. However, a small delay might occur.
 
 
 
-=head2 RunInstances(ImageId => Str, MaxCount => Int, MinCount => Int, [Monitoring => Paws::EC2::RunInstancesMonitoringEnabled, BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping], DisableApiTermination => Bool, DryRun => Bool, EbsOptimized => Bool, KernelId => Str, RamdiskId => Str, ClientToken => Str, InstanceType => Str, Placement => Paws::EC2::Placement, InstanceInitiatedShutdownBehavior => Str, UserData => Str, SecurityGroupIds => ArrayRef[Str], SubnetId => Str, NetworkInterfaces => ArrayRef[Paws::EC2::InstanceNetworkInterfaceSpecification], SecurityGroups => ArrayRef[Str], KeyName => Str, AdditionalInfo => Str, PrivateIpAddress => Str, IamInstanceProfile => Paws::EC2::IamInstanceProfileSpecification])
+=head2 RunInstances(ImageId => Str, MaxCount => Int, MinCount => Int, [AdditionalInfo => Str, BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping], ClientToken => Str, DisableApiTermination => Bool, DryRun => Bool, EbsOptimized => Bool, IamInstanceProfile => Paws::EC2::IamInstanceProfileSpecification, InstanceInitiatedShutdownBehavior => Str, InstanceType => Str, KernelId => Str, KeyName => Str, Monitoring => Paws::EC2::RunInstancesMonitoringEnabled, NetworkInterfaces => ArrayRef[Paws::EC2::InstanceNetworkInterfaceSpecification], Placement => Paws::EC2::Placement, PrivateIpAddress => Str, RamdiskId => Str, SecurityGroupIds => ArrayRef[Str], SecurityGroups => ArrayRef[Str], SubnetId => Str, UserData => Str])
 
 Each argument is described in detail in: L<Paws::EC2::RunInstances>
 
@@ -5393,7 +5393,7 @@ Compute Cloud User Guide for Linux>.
 
 
 
-=head2 StopInstances(InstanceIds => ArrayRef[Str], [Force => Bool, DryRun => Bool])
+=head2 StopInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool, Force => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::StopInstances>
 

@@ -309,7 +309,7 @@ attempt to launch an environment from the application version.
 
 
 
-=head2 CreateConfigurationTemplate(ApplicationName => Str, TemplateName => Str, [SourceConfiguration => Paws::ElasticBeanstalk::SourceConfiguration, Description => Str, SolutionStackName => Str, EnvironmentId => Str, OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]])
+=head2 CreateConfigurationTemplate(ApplicationName => Str, TemplateName => Str, [Description => Str, EnvironmentId => Str, OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], SolutionStackName => Str, SourceConfiguration => Paws::ElasticBeanstalk::SourceConfiguration])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateConfigurationTemplate>
 
@@ -343,7 +343,7 @@ Related Topics
 
 
 
-=head2 CreateEnvironment(ApplicationName => Str, EnvironmentName => Str, [Tier => Paws::ElasticBeanstalk::EnvironmentTier, CNAMEPrefix => Str, Tags => ArrayRef[Paws::ElasticBeanstalk::Tag], SolutionStackName => Str, Description => Str, OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification], TemplateName => Str, VersionLabel => Str])
+=head2 CreateEnvironment(ApplicationName => Str, EnvironmentName => Str, [CNAMEPrefix => Str, Description => Str, OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification], SolutionStackName => Str, Tags => ArrayRef[Paws::ElasticBeanstalk::Tag], TemplateName => Str, Tier => Paws::ElasticBeanstalk::EnvironmentTier, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateEnvironment>
 
@@ -364,7 +364,7 @@ specified configuration.
 
 
 
-=head2 CreateStorageLocation()
+=head2 CreateStorageLocation( => )
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateStorageLocation>
 
@@ -507,7 +507,7 @@ Returns the descriptions of existing applications.
 
 
 
-=head2 DescribeApplicationVersions([VersionLabels => ArrayRef[Str], ApplicationName => Str])
+=head2 DescribeApplicationVersions([ApplicationName => Str, VersionLabels => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeApplicationVersions>
 
@@ -527,7 +527,7 @@ Returns descriptions for existing application versions.
 
 
 
-=head2 DescribeConfigurationOptions([SolutionStackName => Str, EnvironmentName => Str, TemplateName => Str, ApplicationName => Str, Options => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]])
+=head2 DescribeConfigurationOptions([ApplicationName => Str, EnvironmentName => Str, Options => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification], SolutionStackName => Str, TemplateName => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeConfigurationOptions>
 
@@ -551,7 +551,7 @@ environment if an option value is changed.
 
 
 
-=head2 DescribeConfigurationSettings(ApplicationName => Str, [TemplateName => Str, EnvironmentName => Str])
+=head2 DescribeConfigurationSettings(ApplicationName => Str, [EnvironmentName => Str, TemplateName => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeConfigurationSettings>
 
@@ -607,7 +607,7 @@ Returns AWS resources for this environment.
 
 
 
-=head2 DescribeEnvironments([EnvironmentNames => ArrayRef[Str], IncludeDeleted => Bool, ApplicationName => Str, VersionLabel => Str, EnvironmentIds => ArrayRef[Str], IncludedDeletedBackTo => Str])
+=head2 DescribeEnvironments([ApplicationName => Str, EnvironmentIds => ArrayRef[Str], EnvironmentNames => ArrayRef[Str], IncludedDeletedBackTo => Str, IncludeDeleted => Bool, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvironments>
 
@@ -627,7 +627,7 @@ Returns descriptions for existing environments.
 
 
 
-=head2 DescribeEvents([EnvironmentId => Str, NextToken => Str, EnvironmentName => Str, StartTime => Str, ApplicationName => Str, RequestId => Str, MaxRecords => Int, EndTime => Str, TemplateName => Str, Severity => Str, VersionLabel => Str])
+=head2 DescribeEvents([ApplicationName => Str, EndTime => Str, EnvironmentId => Str, EnvironmentName => Str, MaxRecords => Int, NextToken => Str, RequestId => Str, Severity => Str, StartTime => Str, TemplateName => Str, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEvents>
 
@@ -651,7 +651,7 @@ C<NextToken>.
 
 
 
-=head2 ListAvailableSolutionStacks()
+=head2 ListAvailableSolutionStacks( => )
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::ListAvailableSolutionStacks>
 
@@ -671,7 +671,7 @@ Returns a list of the available solution stack names.
 
 
 
-=head2 RebuildEnvironment([EnvironmentName => Str, EnvironmentId => Str])
+=head2 RebuildEnvironment([EnvironmentId => Str, EnvironmentName => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::RebuildEnvironment>
 
@@ -753,7 +753,7 @@ running on each Amazon EC2 instance.
 
 
 
-=head2 RetrieveEnvironmentInfo(InfoType => Str, [EnvironmentName => Str, EnvironmentId => Str])
+=head2 RetrieveEnvironmentInfo(InfoType => Str, [EnvironmentId => Str, EnvironmentName => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::RetrieveEnvironmentInfo>
 
@@ -782,7 +782,7 @@ Related Topics
 
 
 
-=head2 SwapEnvironmentCNAMEs([SourceEnvironmentName => Str, DestinationEnvironmentId => Str, DestinationEnvironmentName => Str, SourceEnvironmentId => Str])
+=head2 SwapEnvironmentCNAMEs([DestinationEnvironmentId => Str, DestinationEnvironmentName => Str, SourceEnvironmentId => Str, SourceEnvironmentName => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::SwapEnvironmentCNAMEs>
 
@@ -802,7 +802,7 @@ Swaps the CNAMEs of two environments.
 
 
 
-=head2 TerminateEnvironment([EnvironmentId => Str, TerminateResources => Bool, EnvironmentName => Str])
+=head2 TerminateEnvironment([EnvironmentId => Str, EnvironmentName => Str, TerminateResources => Bool])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::TerminateEnvironment>
 
@@ -869,7 +869,7 @@ remains unchanged. To clear properties, specify an empty string.
 
 
 
-=head2 UpdateConfigurationTemplate(ApplicationName => Str, TemplateName => Str, [OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification], Description => Str])
+=head2 UpdateConfigurationTemplate(ApplicationName => Str, TemplateName => Str, [Description => Str, OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateConfigurationTemplate>
 
@@ -902,7 +902,7 @@ Related Topics
 
 
 
-=head2 UpdateEnvironment([TemplateName => Str, VersionLabel => Str, OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification], OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], SolutionStackName => Str, EnvironmentName => Str, Description => Str, Tier => Paws::ElasticBeanstalk::EnvironmentTier, EnvironmentId => Str])
+=head2 UpdateEnvironment([Description => Str, EnvironmentId => Str, EnvironmentName => Str, OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification], SolutionStackName => Str, TemplateName => Str, Tier => Paws::ElasticBeanstalk::EnvironmentTier, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateEnvironment>
 

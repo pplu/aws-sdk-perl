@@ -183,7 +183,7 @@ Only stacks that are in the UPDATE_IN_PROGRESS state can be canceled.
 
 
 
-=head2 CreateStack(StackName => Str, [TemplateBody => Str, NotificationARNs => ArrayRef[Str], Parameters => ArrayRef[Paws::CloudFormation::Parameter], Tags => ArrayRef[Paws::CloudFormation::Tag], StackPolicyBody => Str, DisableRollback => Bool, StackPolicyURL => Str, OnFailure => Str, TemplateURL => Str, Capabilities => ArrayRef[Str], TimeoutInMinutes => Int])
+=head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str], DisableRollback => Bool, NotificationARNs => ArrayRef[Str], OnFailure => Str, Parameters => ArrayRef[Paws::CloudFormation::Parameter], StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[Paws::CloudFormation::Tag], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateStack>
 
@@ -227,7 +227,7 @@ API if the deletion has been completed successfully.
 
 
 
-=head2 DescribeStackEvents([StackName => Str, NextToken => Str])
+=head2 DescribeStackEvents([NextToken => Str, StackName => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackEvents>
 
@@ -275,7 +275,7 @@ for up to 90 days after the stack has been deleted.
 
 
 
-=head2 DescribeStackResources([StackName => Str, LogicalResourceId => Str, PhysicalResourceId => Str])
+=head2 DescribeStackResources([LogicalResourceId => Str, PhysicalResourceId => Str, StackName => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackResources>
 
@@ -314,7 +314,7 @@ C<PhysicalResourceId> in the same request.
 
 
 
-=head2 DescribeStacks([StackName => Str, NextToken => Str])
+=head2 DescribeStacks([NextToken => Str, StackName => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::DescribeStacks>
 
@@ -335,7 +335,7 @@ specified, then it returns the description for all the stacks created.
 
 
 
-=head2 EstimateTemplateCost([Parameters => ArrayRef[Paws::CloudFormation::Parameter], TemplateURL => Str, TemplateBody => Str])
+=head2 EstimateTemplateCost([Parameters => ArrayRef[Paws::CloudFormation::Parameter], TemplateBody => Str, TemplateURL => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::EstimateTemplateCost>
 
@@ -404,7 +404,7 @@ If the template does not exist, a C<ValidationError> is returned.
 
 
 
-=head2 GetTemplateSummary([TemplateBody => Str, TemplateURL => Str, StackName => Str])
+=head2 GetTemplateSummary([StackName => Str, TemplateBody => Str, TemplateURL => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::GetTemplateSummary>
 
@@ -482,7 +482,7 @@ returned (including existing stacks and stacks that have been deleted).
 
 
 
-=head2 SetStackPolicy(StackName => Str, [StackPolicyURL => Str, StackPolicyBody => Str])
+=head2 SetStackPolicy(StackName => Str, [StackPolicyBody => Str, StackPolicyURL => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::SetStackPolicy>
 
@@ -528,7 +528,7 @@ other than an Amazon EC2 instance.
 
 
 
-=head2 UpdateStack(StackName => Str, [StackPolicyDuringUpdateURL => Str, NotificationARNs => ArrayRef[Str], TemplateBody => Str, UsePreviousTemplate => Bool, Parameters => ArrayRef[Paws::CloudFormation::Parameter], StackPolicyDuringUpdateBody => Str, StackPolicyBody => Str, StackPolicyURL => Str, Capabilities => ArrayRef[Str], TemplateURL => Str])
+=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str], NotificationARNs => ArrayRef[Str], Parameters => ArrayRef[Paws::CloudFormation::Parameter], StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
 
 Each argument is described in detail in: L<Paws::CloudFormation::UpdateStack>
 
@@ -559,7 +559,7 @@ stack, and monitoring the progress of the update, see Updating a Stack.
 
 
 
-=head2 ValidateTemplate([TemplateURL => Str, TemplateBody => Str])
+=head2 ValidateTemplate([TemplateBody => Str, TemplateURL => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::ValidateTemplate>
 
