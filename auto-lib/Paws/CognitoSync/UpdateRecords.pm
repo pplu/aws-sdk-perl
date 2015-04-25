@@ -43,9 +43,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-Intended to supply a device ID that will populate the C<lastModifiedBy>
-field referenced in other methods. The C<ClientContext> field is not
-yet implemented.
+Intended to supply a device ID that will populate the lastModifiedBy
+field referenced in other methods. The ClientContext field is not yet
+implemented.
 
 
 

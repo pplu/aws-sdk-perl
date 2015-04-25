@@ -42,6 +42,11 @@ package Paws::CognitoSync {
     my $call_object = $self->new_with_coercions('Paws::CognitoSync::GetBulkPublishDetails', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCognitoEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::GetCognitoEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetIdentityPoolConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoSync::GetIdentityPoolConfiguration', @_);
@@ -65,6 +70,11 @@ package Paws::CognitoSync {
   sub RegisterDevice {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoSync::RegisterDevice', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SetCognitoEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoSync::SetCognitoEvents', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SetIdentityPoolConfiguration {
@@ -184,10 +194,10 @@ Returns: a L<Paws::CognitoSync::DeleteDatasetResponse> instance
 Deletes the specific dataset. The dataset will be deleted permanently,
 and the action can't be undone. Datasets that this dataset was merged
 with will no longer report the merge. Any subsequent operation on this
-dataset will result in a C<ResourceNotFoundException>.
+dataset will result in a ResourceNotFoundException.
 
-C<DeleteDataset> can be called with temporary user credentials provided
-by Cognito Identity or with developer credentials.
+DeleteDataset can be called with temporary user credentials provided by
+Cognito Identity or with developer credentials.
 
 
 
@@ -212,9 +222,9 @@ Amazon Cognito Sync, each identity has access only to its own data.
 Thus, the credentials used to make this API call need to have access to
 the identity data.
 
-C<DescribeDataset> can be called with temporary user credentials
-provided by Cognito Identity or with developer credentials. You should
-use Cognito Identity credentials to make this API call.
+DescribeDataset can be called with temporary user credentials provided
+by Cognito Identity or with developer credentials. You should use
+Cognito Identity credentials to make this API call.
 
 
 
@@ -237,7 +247,7 @@ Returns: a L<Paws::CognitoSync::DescribeIdentityPoolUsageResponse> instance
 Gets usage details (for example, data storage) about a particular
 identity pool.
 
-C<DescribeIdentityPoolUsage> can only be called with developer
+DescribeIdentityPoolUsage can only be called with developer
 credentials. You cannot make this API call with the temporary user
 credentials provided by Cognito Identity.
 
@@ -262,7 +272,7 @@ Returns: a L<Paws::CognitoSync::DescribeIdentityUsageResponse> instance
 Gets usage information for an identity, including number of datasets
 and data usage.
 
-C<DescribeIdentityUsage> can be called with temporary user credentials
+DescribeIdentityUsage can be called with temporary user credentials
 provided by Cognito Identity or with developer credentials.
 
 
@@ -284,6 +294,27 @@ Returns: a L<Paws::CognitoSync::GetBulkPublishDetailsResponse> instance
   
 
 Get the status of the last BulkPublish operation for an identity pool.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetCognitoEvents(IdentityPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoSync::GetCognitoEvents>
+
+Returns: a L<Paws::CognitoSync::GetCognitoEventsResponse> instance
+
+  
+
+Gets the events and the corresponding Lambda functions associated with
+an identity pool
 
 
 
@@ -327,8 +358,8 @@ Lists datasets for an identity. With Amazon Cognito Sync, each identity
 has access only to its own data. Thus, the credentials used to make
 this API call need to have access to the identity data.
 
-C<ListDatasets> can be called with temporary user credentials provided
-by Cognito Identity or with developer credentials. You should use the
+ListDatasets can be called with temporary user credentials provided by
+Cognito Identity or with developer credentials. You should use the
 Cognito Identity credentials to make this API call.
 
 
@@ -351,7 +382,7 @@ Returns: a L<Paws::CognitoSync::ListIdentityPoolUsageResponse> instance
 
 Gets a list of identity pools registered with Cognito.
 
-C<ListIdentityPoolUsage> can only be called with developer credentials.
+ListIdentityPoolUsage can only be called with developer credentials.
 You cannot make this API call with the temporary user credentials
 provided by Cognito Identity.
 
@@ -378,9 +409,9 @@ count for a dataset and identity. With Amazon Cognito Sync, each
 identity has access only to its own data. Thus, the credentials used to
 make this API call need to have access to the identity data.
 
-C<ListRecords> can be called with temporary user credentials provided
-by Cognito Identity or with developer credentials. You should use
-Cognito Identity credentials to make this API call.
+ListRecords can be called with temporary user credentials provided by
+Cognito Identity or with developer credentials. You should use Cognito
+Identity credentials to make this API call.
 
 
 
@@ -401,6 +432,29 @@ Returns: a L<Paws::CognitoSync::RegisterDeviceResponse> instance
   
 
 Registers a device to receive push sync notifications.
+
+
+
+
+
+
+
+
+
+
+
+=head2 SetCognitoEvents(Events => Paws::CognitoSync::Events, IdentityPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoSync::SetCognitoEvents>
+
+Returns: nothing
+
+  
+
+Sets the AWS Lambda function for a given event type for an identity
+pool. This request only updates the key/value pair specified. Other
+key/values pairs are not updated. To remove a key value pair, pass a
+empty value for the particular key.
 
 
 
@@ -485,7 +539,7 @@ Returns: a L<Paws::CognitoSync::UpdateRecordsResponse> instance
 Posts updates to records and adds and deletes records for a dataset and
 user.
 
-C<UpdateRecords> can only be called with temporary user credentials
+UpdateRecords can only be called with temporary user credentials
 provided by Cognito Identity. You cannot make this API call with
 developer credentials.
 

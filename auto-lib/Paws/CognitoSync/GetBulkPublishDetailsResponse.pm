@@ -23,7 +23,7 @@ Paws::CognitoSync::GetBulkPublishDetailsResponse
 
   
 
-If C<BulkPublishStatus> is SUCCEEDED, the time the last bulk publish
+If BulkPublishStatus is SUCCEEDED, the time the last bulk publish
 operation completed.
 
 
@@ -54,16 +54,15 @@ The date/time at which the last bulk publish was initiated.
 
 Status of the last bulk publish operation, valid values are:
 
-C<NOT_STARTED> - No bulk publish has been requested for this identity
-pool
+NOT_STARTED - No bulk publish has been requested for this identity pool
 
-C<IN_PROGRESS> - Data is being published to the configured stream
+IN_PROGRESS - Data is being published to the configured stream
 
-C<SUCCEEDED> - All data for the identity pool has been published to the
+SUCCEEDED - All data for the identity pool has been published to the
 configured stream
 
-C<FAILED> - Some portion of the data has failed to publish, check
-C<FailureMessage> for the cause.
+FAILED - Some portion of the data has failed to publish, check
+FailureMessage for the cause.
 
 
 
