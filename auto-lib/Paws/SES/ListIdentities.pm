@@ -56,7 +56,7 @@ listed.
 
   
 
-The maximum number of identities per page. Possible values are 1-100
+The maximum number of identities per page. Possible values are 1-1000
 inclusive.
 
 

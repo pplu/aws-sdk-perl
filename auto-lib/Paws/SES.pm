@@ -136,6 +136,9 @@ This is the API Reference for Amazon Simple Email Service (Amazon SES).
 This documentation is intended to be used in conjunction with the
 Amazon SES Developer Guide.
 
+For a list of Amazon SES endpoints to use in service requests, see
+Regions and Amazon SES in the Amazon SES Developer Guide.
+
 
 
 
@@ -227,7 +230,8 @@ domain name identities, not for email addresses.
 
 =back
 
-This action is throttled at one request per second.
+This action is throttled at one request per second and can only get
+DKIM attributes for up to 100 identities at a time.
 
 For more information about creating DNS records using DKIM tokens, go
 to the Amazon SES Developer Guide.
@@ -253,7 +257,8 @@ Returns: a L<Paws::SES::GetIdentityNotificationAttributesResponse> instance
 Given a list of verified identities (email addresses and/or domains),
 returns a structure describing identity notification attributes.
 
-This action is throttled at one request per second.
+This action is throttled at one request per second and can only get
+notification attributes for up to 100 identities at a time.
 
 For more information about using notifications with Amazon SES, see the
 Amazon SES Developer Guide.
@@ -280,7 +285,8 @@ Given a list of identities (email addresses and/or domains), returns
 the verification status and (for domain identities) the verification
 token for each identity.
 
-This action is throttled at one request per second.
+This action is throttled at one request per second and can only get
+verification attributes for up to 100 identities at a time.
 
 
 
@@ -402,10 +408,10 @@ Composes an email message based on input data, and then immediately
 queues the message for sending.
 
 You can only send email from verified email addresses and domains. If
-you have not requested production access to Amazon SES, you must also
-verify every recipient email address except for the recipients provided
-by the Amazon SES mailbox simulator. For more information, go to the
-Amazon SES Developer Guide.
+your account is still in the Amazon SES sandbox, you must also verify
+every recipient email address except for the recipients provided by the
+Amazon SES mailbox simulator. For more information, go to the Amazon
+SES Developer Guide.
 
 The total size of the message cannot exceed 10 MB.
 
@@ -444,10 +450,10 @@ emails. The raw text of the message must comply with Internet email
 standards; otherwise, the message cannot be sent.
 
 You can only send email from verified email addresses and domains. If
-you have not requested production access to Amazon SES, you must also
-verify every recipient email address except for the recipients provided
-by the Amazon SES mailbox simulator. For more information, go to the
-Amazon SES Developer Guide.
+your account is still in the Amazon SES sandbox, you must also verify
+every recipient email address except for the recipients provided by the
+Amazon SES mailbox simulator. For more information, go to the Amazon
+SES Developer Guide.
 
 The total size of the message cannot exceed 10 MB. This includes any
 attachments that are part of the message.
@@ -532,6 +538,9 @@ email. Feedback forwarding can only be disabled when Amazon Simple
 Notification Service (Amazon SNS) topics are specified for both bounces
 and complaints.
 
+Feedback forwarding does not apply to delivery notifications. Delivery
+notifications are only available through Amazon SNS.
+
 This action is throttled at one request per second.
 
 For more information about using notifications with Amazon SES, see the
@@ -559,6 +568,10 @@ Given an identity (email address or domain), sets the Amazon Simple
 Notification Service (Amazon SNS) topic to which Amazon SES will
 publish bounce, complaint, and/or delivery notifications for emails
 sent with that identity as the C<Source>.
+
+Unless feedback forwarding is enabled, you must specify Amazon SNS
+topics for bounce and complaint notifications. For more information,
+see C<SetIdentityFeedbackForwardingEnabled>.
 
 This action is throttled at one request per second.
 

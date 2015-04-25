@@ -88,13 +88,20 @@ For more information, go to the Amazon SES Developer Guide.
 
   
 
-The identity's email address.
+The identity's email address. If you do not provide a value for this
+parameter, you must specify a "From" address in the raw text of the
+message. (You can also specify both.)
 
 By default, the string must be 7-bit ASCII. If the text must contain
 any other characters, then you must use MIME encoded-word syntax (RFC
 2047) instead of a literal string. MIME encoded-word syntax uses the
 following form: C<=?charset?encoding?encoded-text?=>. For more
 information, see RFC 2047.
+
+If you specify the C<Source> parameter and have feedback forwarding
+enabled, then bounces and complaints will be sent to this email
+address. This takes precedence over any I<Return-Path> header that you
+might include in the raw text of the message.
 
 
 
