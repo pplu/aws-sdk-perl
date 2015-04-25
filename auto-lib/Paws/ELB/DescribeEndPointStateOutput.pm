@@ -19,7 +19,7 @@ Paws::ELB::DescribeEndPointStateOutput
 
   
 
-A list containing health information for the specified instances.
+Information about the health of the instances.
 
 
 

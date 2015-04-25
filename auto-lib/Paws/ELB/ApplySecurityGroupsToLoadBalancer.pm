@@ -38,8 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name associated with the load balancer. The name must be unique
-within the set of load balancers associated with your AWS account.
+The name of the load balancer.
 
 
 
@@ -54,9 +53,8 @@ within the set of load balancers associated with your AWS account.
 
   
 
-A list of security group IDs to associate with your load balancer in
-VPC. The security group IDs must be provided as the ID and not the
-security group name (For example, sg-1234).
+The IDs of the security groups to associate with the load balancer.
+Note that you cannot specify the name of the security group.
 
 
 

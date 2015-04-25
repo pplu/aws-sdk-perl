@@ -38,8 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A list of EC2 instance IDs consisting of all instances to be
-deregistered.
+The IDs of the instances.
 
 
 
@@ -54,7 +53,7 @@ deregistered.
 
   
 
-The name associated with the load balancer.
+The name of the load balancer.
 
 
 

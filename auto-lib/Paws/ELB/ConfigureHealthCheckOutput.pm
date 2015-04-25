@@ -19,7 +19,7 @@ Paws::ELB::ConfigureHealthCheckOutput
 
   
 
-The updated healthcheck for the instances.
+The updated health check.
 
 
 

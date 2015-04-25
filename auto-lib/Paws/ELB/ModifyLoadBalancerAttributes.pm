@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-Attributes of the load balancer.
+The attributes of the load balancer.
 
 
 

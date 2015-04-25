@@ -38,8 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A list of instance IDs that should be registered with the load
-balancer.
+The IDs of the instances.
 
 
 
@@ -54,8 +53,7 @@ balancer.
 
   
 
-The name associated with the load balancer. The name must be unique
-within your set of load balancers.
+The name of the load balancer.
 
 
 

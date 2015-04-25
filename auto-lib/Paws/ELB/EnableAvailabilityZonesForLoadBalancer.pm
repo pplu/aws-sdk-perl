@@ -38,8 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A list of new Availability Zones for the load balancer. Each
-Availability Zone must be in the same region as the load balancer.
+The Availability Zones. These must be in the same region as the load
+balancer.
 
 
 
@@ -54,7 +54,7 @@ Availability Zone must be in the same region as the load balancer.
 
   
 
-The name associated with the load balancer.
+The name of the load balancer.
 
 
 

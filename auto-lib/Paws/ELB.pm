@@ -182,35 +182,16 @@ Paws::ELB - Perl Interface to AWS Elastic Load Balancing
 
 Elastic Load Balancing
 
-Elastic Load Balancing is a way to automatically distribute incoming
-web traffic across applications that run on multiple Amazon Elastic
-Compute Cloud (Amazon EC2) instances.
+Elastic Load Balancing automatically distributes incoming web traffic
+across multiple Amazon EC2 instances.
 
-You can create, access, and manage Elastic Load Balancing using the AWS
-Management Console or the Elastic Load Balancing API. For more
-information about Elastic Load Balancing interfaces, see Accessing
-Elastic Load Balancing.
+All Elastic Load Balancing actions and commands are I<idempotent>,
+which means that they complete no more than one time. If you repeat a
+request or a command, the action succeeds with a 200 OK response code.
 
-This reference guide contains documentation for the Query API and the
-AWS command line interface commands, to manage Elastic Load Balancing.
-
-For detailed information about Elastic Load Balancing features and
-their associated actions or commands, go to Managing Load Balancers in
-the I<Elastic Load Balancing Developer Guide>.
-
-This reference guide is based on the current WSDL, which is available
-at: .
-
-B<Endpoints>
-
-The examples in this guide assume that your load balancers are created
-in the US East (Northern Virginia) region and use us-east-1 as the
-endpoint.
-
-You can create your load balancers in other AWS regions. For
-information about regions and endpoints supported by Elastic Load
-Balancing, see Regions and Endpoints in the Amazon Web Services General
-Reference.
+For detailed information about the features of Elastic Load Balancing,
+see Managing Load Balancers in the I<Elastic Load Balancing Developer
+Guide>.
 
 
 
@@ -231,13 +212,12 @@ Returns: a L<Paws::ELB::AddTagsOutput> instance
 
   
 
-Adds one or more tags for the specified load balancer. Each load
-balancer can have a maximum of 10 tags. Each tag consists of a key and
-an optional value.
+Adds the specified tags to the specified load balancer. Each load
+balancer can have a maximum of 10 tags.
 
-Tag keys must be unique for each load balancer. If a tag with the same
-key is already associated with the load balancer, this action will
-update the value of the key.
+Each tag consists of a key and an optional value. If a tag with the
+same key is already associated with the load balancer, C<AddTags>
+updates its value.
 
 For more information, see Tagging in the I<Elastic Load Balancing
 Developer Guide>.
@@ -260,11 +240,11 @@ Returns: a L<Paws::ELB::ApplySecurityGroupsToLoadBalancerOutput> instance
 
   
 
-Associates one or more security groups with your load balancer in
-Amazon Virtual Private Cloud (Amazon VPC). The provided security group
-IDs will override any currently applied security groups.
+Associates one or more security groups with your load balancer in a
+virtual private cloud (VPC). The specified security groups override the
+previously associated security groups.
 
-For more information, see Manage Security Groups in Amazon VPC in the
+For more information, see Manage Security Groups for Amazon VPC in the
 I<Elastic Load Balancing Developer Guide>.
 
 
@@ -285,13 +265,12 @@ Returns: a L<Paws::ELB::AttachLoadBalancerToSubnetsOutput> instance
 
   
 
-Adds one or more subnets to the set of configured subnets in the Amazon
-Virtual Private Cloud (Amazon VPC) for the load balancer.
+Adds one or more subnets to the set of configured subnets for the
+specified load balancer.
 
-The load balancers evenly distribute requests across all of the
-registered subnets. For more information, see Deploy Elastic Load
-Balancing in Amazon VPC in the I<Elastic Load Balancing Developer
-Guide>.
+The load balancer evenly distributes requests across all registered
+subnets. For more information, see Elastic Load Balancing in Amazon VPC
+in the I<Elastic Load Balancing Developer Guide>.
 
 
 
@@ -311,10 +290,10 @@ Returns: a L<Paws::ELB::ConfigureHealthCheckOutput> instance
 
   
 
-Specifies the health check settings to use for evaluating the health
+Specifies the health check settings to use when evaluating the health
 state of your back-end instances.
 
-For more information, see Health Check in the I<Elastic Load Balancing
+For more information, see Health Checks in the I<Elastic Load Balancing
 Developer Guide>.
 
 
@@ -341,7 +320,7 @@ only with HTTP/HTTPS listeners.
 
 This policy is similar to the policy created by
 CreateLBCookieStickinessPolicy, except that the lifetime of the special
-Elastic Load Balancing cookie follows the lifetime of the
+Elastic Load Balancing cookie, C<AWSELB>, follows the lifetime of the
 application-generated cookie specified in the policy configuration. The
 load balancer only inserts a new stickiness cookie when the application
 response includes a new application cookie.
@@ -349,13 +328,8 @@ response includes a new application cookie.
 If the application cookie is explicitly removed or expires, the session
 stops being sticky until a new application cookie is issued.
 
-An application client must receive and send two cookies: the
-application-generated cookie and the special Elastic Load Balancing
-cookie named C<AWSELB>. This is the default behavior for many common
-web browsers.
-
-For more information, see Enabling Application-Controlled Session
-Stickiness in the I<Elastic Load Balancing Developer Guide>.
+For more information, see Application-Controlled Session Stickiness in
+the I<Elastic Load Balancing Developer Guide>.
 
 
 
@@ -380,20 +354,20 @@ by the lifetime of the browser (user-agent) or a specified expiration
 period. This policy can be associated only with HTTP/HTTPS listeners.
 
 When a load balancer implements this policy, the load balancer uses a
-special cookie to track the backend server instance for each request.
+special cookie to track the back-end server instance for each request.
 When the load balancer receives a request, it first checks to see if
 this cookie is present in the request. If so, the load balancer sends
 the request to the application server specified in the cookie. If not,
 the load balancer sends the request to a server that is chosen based on
-the existing load balancing algorithm.
+the existing load-balancing algorithm.
 
 A cookie is inserted into the response for binding subsequent requests
 from the same user to that server. The validity of the cookie is based
 on the cookie expiration time, which is specified in the policy
 configuration.
 
-For more information, see Enabling Duration-Based Session Stickiness in
-the I<Elastic Load Balancing Developer Guide>.
+For more information, see Duration-Based Session Stickiness in the
+I<Elastic Load Balancing Developer Guide>.
 
 
 
@@ -413,45 +387,34 @@ Returns: a L<Paws::ELB::CreateAccessPointOutput> instance
 
   
 
-Creates a new load balancer.
+Creates a load balancer.
 
-After the call has completed successfully, a new load balancer is
-created with a unique Domain Name Service (DNS) name. The DNS name
-includes the name of the AWS region in which the load balance was
-created. For example, if your load balancer was created in the United
-States, the DNS name might end with either of the following:
+If the call completes successfully, a new load balancer is created with
+a unique Domain Name Service (DNS) name. The DNS name includes the name
+of the AWS region in which the load balancer was created. For example,
+the DNS name might end with either of the following:
 
 =over
 
-=item * I<us-east-1.elb.amazonaws.com> (for the Northern Virginia
-region)
+=item * C<us-east-1.elb.amazonaws.com>
 
-=item * I<us-west-1.elb.amazonaws.com> (for the Northern California
-region)
+=item * C<us-west-2.elb.amazonaws.com>
 
 =back
 
 For information about the AWS regions supported by Elastic Load
-Balancing, see Regions and Endpoints.
+Balancing, see Regions and Endpoints in the I<Amazon Web Services
+General Reference>.
 
-You can create up to 20 load balancers per region per account.
+You can create up to 20 load balancers per region per account. You can
+request an increase for the number of load balancers for your account.
+For more information, see Elastic Load Balancing Limits in the
+I<Elastic Load Balancing Developer Guide>.
 
-Elastic Load Balancing supports load balancing your Amazon EC2
-instances launched within any one of the following platforms:
-
-=over
-
-=item * I<EC2-Classic>
-
-For information on creating and managing your load balancers in
-EC2-Classic, see Deploy Elastic Load Balancing in Amazon EC2-Classic.
-
-=item * I<EC2-VPC>
-
-For information on creating and managing your load balancers in
-EC2-VPC, see Deploy Elastic Load Balancing in Amazon VPC.
-
-=back
+Elastic Load Balancing supports load balancing your EC2 instances
+launched in either the EC2-Classic or EC2-VPC platform. For more
+information, see Elastic Load Balancing in EC2-Classic or Elastic Load
+Balancing in a VPC in the I<Elastic Load Balancing Developer Guide>.
 
 
 
@@ -471,10 +434,10 @@ Returns: a L<Paws::ELB::CreateLoadBalancerListenerOutput> instance
 
   
 
-Creates one or more listeners on a load balancer for the specified
-port. If a listener with the given port does not already exist, it will
-be created; otherwise, the properties of the new listener must match
-the properties of the existing listener.
+Creates one or more listeners for the specified load balancer. If a
+listener with the specified port does not already exist, it is created;
+otherwise, the properties of the new listener must match the properties
+of the existing listener.
 
 For more information, see Add a Listener to Your Load Balancer in the
 I<Elastic Load Balancing Developer Guide>.
@@ -497,10 +460,12 @@ Returns: a L<Paws::ELB::CreateLoadBalancerPolicyOutput> instance
 
   
 
-Creates a new policy that contains the necessary attributes depending
-on the policy type. Policies are settings that are saved for your load
-balancer and that can be applied to the front-end listener, or the
-back-end application server, depending on your policy type.
+Creates a policy with the specified attributes for the specified load
+balancer.
+
+Policies are settings that are saved for your load balancer and that
+can be applied to the front-end listener or the back-end application
+server, depending on the policy type.
 
 
 
@@ -522,17 +487,14 @@ Returns: a L<Paws::ELB::DeleteAccessPointOutput> instance
 
 Deletes the specified load balancer.
 
-If attempting to recreate the load balancer, you must reconfigure all
-the settings. The DNS name associated with a deleted load balancer will
-no longer be usable. Once deleted, the name and associated DNS record
-of the load balancer no longer exist and traffic sent to any of its IP
-addresses will no longer be delivered to back-end instances.
+If you are attempting to recreate a load balancer, you must reconfigure
+all settings. The DNS name associated with a deleted load balancer are
+no longer usable. The name and associated DNS record of the deleted
+load balancer no longer exist and traffic sent to any of its IP
+addresses is no longer delivered to back-end instances.
 
-To successfully call this API, you must provide the same account
-credentials as were used to create the load balancer.
-
-By design, if the load balancer does not exist or has already been
-deleted, a call to C<DeleteLoadBalancer> action still succeeds.
+If the load balancer does not exist or has already been deleted, the
+call to C<DeleteLoadBalancer> still succeeds.
 
 
 
@@ -552,7 +514,7 @@ Returns: a L<Paws::ELB::DeleteLoadBalancerListenerOutput> instance
 
   
 
-Deletes listeners from the load balancer for the specified port.
+Deletes the specified listeners from the specified load balancer.
 
 
 
@@ -572,8 +534,8 @@ Returns: a L<Paws::ELB::DeleteLoadBalancerPolicyOutput> instance
 
   
 
-Deletes a policy from the load balancer. The specified policy must not
-be enabled for any listeners.
+Deletes the specified policy from the specified load balancer. This
+policy must not be enabled for any listeners.
 
 
 
@@ -593,17 +555,15 @@ Returns: a L<Paws::ELB::DeregisterEndPointsOutput> instance
 
   
 
-Deregisters instances from the load balancer. Once the instance is
-deregistered, it will stop receiving traffic from the load balancer.
+Deregisters the specified instances from the specified load balancer.
+After the instance is deregistered, it no longer receives traffic from
+the load balancer.
 
-In order to successfully call this API, the same account credentials as
-those used to create the load balancer must be provided.
-
-For more information, see De-register and Register Amazon EC2 Instances
-in the I<Elastic Load Balancing Developer Guide>.
-
-You can use DescribeLoadBalancers to verify if the instance is
+You can use DescribeLoadBalancers to verify that the instance is
 deregistered from the load balancer.
+
+For more information, see Deregister and Register Amazon EC2 Instances
+in the I<Elastic Load Balancing Developer Guide>.
 
 
 
@@ -623,12 +583,10 @@ Returns: a L<Paws::ELB::DescribeEndPointStateOutput> instance
 
   
 
-Returns the current state of the specified instances registered with
-the specified load balancer. If no instances are specified, the state
-of all the instances registered with the load balancer is returned.
-
-You must provide the same account credentials as those that were used
-to create the load balancer.
+Describes the state of the specified instances registered with the
+specified load balancer. If no instances are specified, the call
+describes the state of all instances registered with the load balancer,
+not including any terminated instances.
 
 
 
@@ -648,8 +606,7 @@ Returns: a L<Paws::ELB::DescribeLoadBalancerAttributesOutput> instance
 
   
 
-Returns detailed information about all of the attributes associated
-with the specified load balancer.
+Describes the attributes for the specified load balancer.
 
 
 
@@ -669,14 +626,15 @@ Returns: a L<Paws::ELB::DescribeLoadBalancerPoliciesOutput> instance
 
   
 
-Returns detailed descriptions of the policies. If you specify a load
-balancer name, the action returns the descriptions of all the policies
-created for the load balancer. If you specify a policy name associated
-with your load balancer, the action returns the description of that
-policy. If you don't specify a load balancer name, the action returns
-descriptions of the specified sample policies, or descriptions of all
-the sample policies. The names of the sample policies have the
-C<ELBSample-> prefix.
+Describes the specified policies.
+
+If you specify a load balancer name, the action returns the
+descriptions of all policies created for the load balancer. If you
+specify a policy name associated with your load balancer, the action
+returns the description of that policy. If you don't specify a load
+balancer name, the action returns descriptions of the specified sample
+policies, or descriptions of all sample policies. The names of the
+sample policies have the C<ELBSample-> prefix.
 
 
 
@@ -696,11 +654,10 @@ Returns: a L<Paws::ELB::DescribeLoadBalancerPolicyTypesOutput> instance
 
   
 
-Returns meta-information on the specified load balancer policies
-defined by the Elastic Load Balancing service. The policy types that
-are returned from this action can be used in a CreateLoadBalancerPolicy
-action to instantiate specific policy configurations that will be
-applied to a load balancer.
+Describes the specified load balancer policy types.
+
+You can use these policy types with CreateLoadBalancerPolicy to create
+policy configurations for a load balancer.
 
 
 
@@ -720,12 +677,8 @@ Returns: a L<Paws::ELB::DescribeAccessPointsOutput> instance
 
   
 
-Returns detailed configuration information for all the load balancers
-created for the account. If you specify load balancer names, the action
-returns configuration information of the specified load balancers.
-
-In order to retrieve this information, you must provide the same
-account credentials that was used to create the load balancer.
+Describes the specified the load balancers. If no load balancers are
+specified, the call describes all of your load balancers.
 
 
 
@@ -745,7 +698,7 @@ Returns: a L<Paws::ELB::DescribeTagsOutput> instance
 
   
 
-Describes the tags associated with one or more load balancers.
+Describes the tags associated with the specified load balancers.
 
 
 
@@ -765,14 +718,13 @@ Returns: a L<Paws::ELB::DetachLoadBalancerFromSubnetsOutput> instance
 
   
 
-Removes subnets from the set of configured subnets in the Amazon
-Virtual Private Cloud (Amazon VPC) for the load balancer.
+Removes the specified subnets from the set of configured subnets for
+the load balancer.
 
-After a subnet is removed all of the EC2 instances registered with the
-load balancer that are in the removed subnet will go into the
-I<OutOfService> state. When a subnet is removed, the load balancer will
-balance the traffic among the remaining routable subnets for the load
-balancer.
+After a subnet is removed, all EC2 instances registered with the load
+balancer in the removed subnet go into the C<OutOfService> state. Then,
+the load balancer balances the traffic among the remaining routable
+subnets.
 
 
 
@@ -792,17 +744,15 @@ Returns: a L<Paws::ELB::RemoveAvailabilityZonesOutput> instance
 
   
 
-Removes the specified EC2 Availability Zones from the set of configured
-Availability Zones for the load balancer.
+Removes the specified Availability Zones from the set of Availability
+Zones for the specified load balancer.
 
 There must be at least one Availability Zone registered with a load
-balancer at all times. Once an Availability Zone is removed, all the
+balancer at all times. After an Availability Zone is removed, all
 instances registered with the load balancer that are in the removed
-Availability Zone go into the I<OutOfService> state. Upon Availability
-Zone removal, the load balancer attempts to equally balance the traffic
-among its remaining usable Availability Zones. Trying to remove an
-Availability Zone that was not associated with the load balancer does
-nothing.
+Availability Zone go into the C<OutOfService> state. Then, the load
+balancer attempts to equally balance the traffic among its remaining
+Availability Zones.
 
 For more information, see Disable an Availability Zone from a
 Load-Balanced Application in the I<Elastic Load Balancing Developer
@@ -826,18 +776,14 @@ Returns: a L<Paws::ELB::AddAvailabilityZonesOutput> instance
 
   
 
-Adds one or more EC2 Availability Zones to the load balancer.
+Adds the specified Availability Zones to the set of Availability Zones
+for the specified load balancer.
 
 The load balancer evenly distributes requests across all its registered
 Availability Zones that contain instances.
 
-The new EC2 Availability Zones to be added must be in the same EC2
-Region as the Availability Zones for which the load balancer was
-created.
-
-For more information, see Expand a Load Balanced Application to an
-Additional Availability Zone in the I<Elastic Load Balancing Developer
-Guide>.
+For more information, see Add Availability Zone in the I<Elastic Load
+Balancing Developer Guide>.
 
 
 
@@ -857,7 +803,7 @@ Returns: a L<Paws::ELB::ModifyLoadBalancerAttributesOutput> instance
 
   
 
-Modifies the attributes of a specified load balancer.
+Modifies the attributes of the specified load balancer.
 
 You can modify the load balancer attributes, such as C<AccessLogs>,
 C<ConnectionDraining>, and C<CrossZoneLoadBalancing> by either enabling
@@ -865,7 +811,8 @@ or disabling them. Or, you can modify the load balancer attribute
 C<ConnectionSettings> by specifying an idle connection timeout value
 for your load balancer.
 
-For more information, see the following:
+For more information, see the following in the I<Elastic Load Balancing
+Developer Guide>:
 
 =over
 
@@ -897,34 +844,36 @@ Returns: a L<Paws::ELB::RegisterEndPointsOutput> instance
 
   
 
-Adds new instances to the load balancer.
+Adds the specified instances to the specified load balancer.
 
-Once the instance is registered, it starts receiving traffic and
-requests from the load balancer. Any instance that is not in any of the
-Availability Zones registered for the load balancer will be moved to
-the I<OutOfService> state. It will move to the I<InService> state when
-the Availability Zone is added to the load balancer.
+The instance must be a running instance in the same network as the load
+balancer (EC2-Classic or the same VPC). If you have EC2-Classic
+instances and a load balancer in a VPC with ClassicLink enabled, you
+can link the EC2-Classic instances to that VPC and then register the
+linked EC2-Classic instances with the load balancer in the VPC.
 
-When an instance registered with a load balancer is stopped and then
-restarted, the IP addresses associated with the instance changes.
-Elastic Load Balancing cannot recognize the new IP address, which
-prevents it from routing traffic to the instances. We recommend that
-you de-register your Amazon EC2 instances from your load balancer after
-you stop your instance, and then register the load balancer with your
-instance after you've restarted. To de-register your instances from
-load balancer, use DeregisterInstancesFromLoadBalancer action.
+Note that C<RegisterInstanceWithLoadBalancer> completes when the
+request has been registered. Instance registration happens shortly
+afterwards. To check the state of the registered instances, use
+DescribeLoadBalancers or DescribeInstanceHealth.
 
-For more information, see De-register and Register Amazon EC2 Instances
-in the I<Elastic Load Balancing Developer Guide>.
+After the instance is registered, it starts receiving traffic and
+requests from the load balancer. Any instance that is not in one of the
+Availability Zones registered for the load balancer is moved to the
+C<OutOfService> state. If an Availability Zone is added to the load
+balancer later, any instances registered with the load balancer move to
+the C<InService> state.
 
-In order for this call to be successful, you must provide the same
-account credentials as those that were used to create the load
-balancer. Completion of this API does not guarantee that operation has
-completed. Rather, it means that the request has been registered and
-the changes will happen shortly.
+If you stop an instance registered with a load balancer and then start
+it, the IP addresses associated with the instance changes. Elastic Load
+Balancing cannot recognize the new IP address, which prevents it from
+routing traffic to the instances. We recommend that you use the
+following sequence: stop the instance, deregister the instance, start
+the instance, and then register the instance. To deregister instances
+from a load balancer, use DeregisterInstancesFromLoadBalancer.
 
-You can use DescribeLoadBalancers or DescribeInstanceHealth action to
-check the state of the newly registered instances.
+For more information, see Deregister and Register EC2 Instances in the
+I<Elastic Load Balancing Developer Guide>.
 
 
 
@@ -968,8 +917,8 @@ Sets the certificate that terminates the specified listener's SSL
 connections. The specified certificate replaces any prior certificate
 that was used on the same load balancer and port.
 
-For more information on updating your SSL certificate, see Updating an
-SSL Certificate for a Load Balancer in the I<Elastic Load Balancing
+For more information about updating your SSL certificate, see Updating
+an SSL Certificate for a Load Balancer in the I<Elastic Load Balancing
 Developer Guide>.
 
 
@@ -990,21 +939,18 @@ Returns: a L<Paws::ELB::SetLoadBalancerPoliciesForBackendServerOutput> instance
 
   
 
-Replaces the current set of policies associated with a port on which
-the back-end server is listening with a new set of policies. After the
-policies have been created using CreateLoadBalancerPolicy, they can be
-applied here as a list. At this time, only the back-end server
-authentication policy type can be applied to the back-end ports; this
-policy type is composed of multiple public key policies.
+Replaces the set of policies associated with the specified port on
+which the back-end server is listening with a new set of policies. At
+this time, only the back-end server authentication policy type can be
+applied to the back-end ports; this policy type is composed of multiple
+public key policies.
 
-The I<SetLoadBalancerPoliciesForBackendServer> replaces the current set
-of policies associated with the specified instance port. Every time you
-use this action to enable the policies, use the C<PolicyNames>
-parameter to list all the policies you want to enable.
+Each time you use C<SetLoadBalancerPoliciesForBackendServer> to enable
+the policies, use the C<PolicyNames> parameter to list the policies
+that you want to enable.
 
-You can use DescribeLoadBalancers or DescribeLoadBalancerPolicies
-action to verify that the policy has been associated with the back-end
-server.
+You can use DescribeLoadBalancers or DescribeLoadBalancerPolicies to
+verify that the policy is associated with the back-end server.
 
 
 
@@ -1024,8 +970,9 @@ Returns: a L<Paws::ELB::SetLoadBalancerPoliciesOfListenerOutput> instance
 
   
 
-Associates, updates, or disables a policy with a listener on the load
-balancer. You can associate multiple policies with a listener.
+Associates, updates, or disables a policy with a listener for the
+specified load balancer. You can associate multiple policies with a
+listener.
 
 
 

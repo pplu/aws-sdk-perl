@@ -20,7 +20,7 @@ Paws::ELB::DescribeAccessPointsOutput
 
   
 
-A list of load balancer description structures.
+Information about the load balancers.
 
 
 
@@ -34,8 +34,8 @@ A list of load balancer description structures.
 
   
 
-Specifies the value of next marker if the request returned more than
-one page of results.
+The marker to use when requesting the next set of results. If there are
+no additional results, the string is empty.
 
 
 

@@ -19,7 +19,7 @@ Paws::ELB::DescribeLoadBalancerPoliciesOutput
 
   
 
-A list of policy description structures.
+Information about the policies.
 
 
 

@@ -38,8 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A structure containing the configuration information for the new
-healthcheck.
+The configuration information for the new health check.
 
 
 
@@ -54,9 +53,7 @@ healthcheck.
 
   
 
-The mnemonic name associated with the load balancer. The name must be
-unique within the set of load balancers associated with your AWS
-account.
+The name of the load balancer.
 
 
 

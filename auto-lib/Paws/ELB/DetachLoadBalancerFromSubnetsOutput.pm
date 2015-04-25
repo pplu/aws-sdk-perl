@@ -19,7 +19,7 @@ Paws::ELB::DetachLoadBalancerFromSubnetsOutput
 
   
 
-A list of subnet IDs the load balancer is now attached to.
+The IDs of the remaining subnets for the load balancer.
 
 
 

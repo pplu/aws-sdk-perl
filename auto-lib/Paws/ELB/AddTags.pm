@@ -38,8 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name of the load balancer to tag. You can specify a maximum of one
-load balancer name.
+The name of the load balancer. You can specify one load balancer only.
 
 
 
@@ -54,7 +53,7 @@ load balancer name.
 
   
 
-A list of tags for each load balancer.
+The tags.
 
 
 

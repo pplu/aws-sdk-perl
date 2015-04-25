@@ -38,10 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The mnemonic name associated with the load balancer. If no name is
-specified, the operation returns the attributes of either all the
-sample policies pre-defined by Elastic Load Balancing or the specified
-sample polices.
+The name of the load balancer.
 
 
 
@@ -56,8 +53,7 @@ sample polices.
 
   
 
-The names of load balancer policies you've created or Elastic Load
-Balancing sample policy names.
+The names of the policies.
 
 
 

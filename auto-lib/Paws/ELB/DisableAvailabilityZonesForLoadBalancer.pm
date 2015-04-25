@@ -38,11 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A list of Availability Zones to be removed from the load balancer.
-
-There must be at least one Availability Zone registered with a load
-balancer at all times. Specified Availability Zones must be in the same
-region.
+The Availability Zones.
 
 
 
@@ -57,7 +53,7 @@ region.
 
   
 
-The name associated with the load balancer.
+The name of the load balancer.
 
 
 

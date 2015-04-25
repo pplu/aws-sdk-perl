@@ -19,7 +19,7 @@ Paws::ELB::RemoveAvailabilityZonesOutput
 
   
 
-A list of updated Availability Zones for the load balancer.
+The remaining Availability Zones for the load balancer.
 
 
 

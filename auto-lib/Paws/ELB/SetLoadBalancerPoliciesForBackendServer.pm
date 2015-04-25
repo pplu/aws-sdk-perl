@@ -54,8 +54,7 @@ The port number associated with the back-end server.
 
   
 
-The mnemonic name associated with the load balancer. This name must be
-unique within the set of your load balancers.
+The name of the load balancer.
 
 
 
@@ -70,7 +69,7 @@ unique within the set of your load balancers.
 
   
 
-List of policy names to be set. If the list is empty, then all current
+The names of the policies. If the list is empty, then all current
 polices are removed from the back-end server.
 
 

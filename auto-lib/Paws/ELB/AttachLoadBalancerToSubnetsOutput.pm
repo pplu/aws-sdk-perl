@@ -19,7 +19,7 @@ Paws::ELB::AttachLoadBalancerToSubnetsOutput
 
   
 
-A list of subnet IDs attached to the load balancer.
+The IDs of the subnets attached to the load balancer.
 
 
 

@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name associated with the load balancer to be detached.
+The name of the load balancer.
 
 
 
@@ -53,8 +53,7 @@ The name associated with the load balancer to be detached.
 
   
 
-A list of subnet IDs to remove from the set of configured subnets for
-the load balancer.
+The IDs of the subnets.
 
 
 

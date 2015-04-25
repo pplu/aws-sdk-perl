@@ -38,8 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A list of C<LoadBalancerPort>, C<InstancePort>, C<Protocol>,
-C<InstanceProtocol>, and C<SSLCertificateId> items.
+The listeners.
 
 
 

@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A list of instance IDs whose states are being queried.
+The IDs of the instances.
 
 
 

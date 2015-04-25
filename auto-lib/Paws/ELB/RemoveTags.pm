@@ -54,7 +54,7 @@ balancer name.
 
   
 
-A list of tag keys to remove.
+The list of tag keys to remove.
 
 
 

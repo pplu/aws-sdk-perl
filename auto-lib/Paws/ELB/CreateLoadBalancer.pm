@@ -43,14 +43,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A list of Availability Zones.
+One or more Availability Zones from the same region as the load
+balancer. Traffic is equally distributed across all specified
+Availability Zones.
 
-At least one Availability Zone must be specified. Specified
-Availability Zones must be in the same EC2 Region as the load balancer.
-Traffic will be equally distributed across all zones.
+You must specify at least one Availability Zone.
 
-You can later add more Availability Zones after the creation of the
-load balancer by calling EnableAvailabilityZonesForLoadBalancer action.
+You can add more Availability Zones after you create the load balancer
+using EnableAvailabilityZonesForLoadBalancer.
 
 
 
@@ -65,8 +65,10 @@ load balancer by calling EnableAvailabilityZonesForLoadBalancer action.
 
   
 
-A list of the following tuples: Protocol, LoadBalancerPort,
-InstanceProtocol, InstancePort, and SSLCertificateId.
+The listeners.
+
+For more information, see Listener Configurations for Elastic Load
+Balancing in the I<Elastic Load Balancing Developer Guide>.
 
 
 
@@ -81,9 +83,11 @@ InstanceProtocol, InstancePort, and SSLCertificateId.
 
   
 
-The name associated with the load balancer. The name must be unique
-within your set of load balancers, must have a maximum of 32
-characters, and must only contain alphanumeric characters or hyphens.
+The name of the load balancer.
+
+This name must be unique within your AWS account, must have a maximum
+of 32 characters, must contain only alphanumeric characters or hyphens,
+and cannot begin or end with a hyphen.
 
 
 
@@ -98,18 +102,16 @@ characters, and must only contain alphanumeric characters or hyphens.
 
   
 
-The type of a load balancer.
+The type of a load balancer. Valid only for load balancers in a VPC.
 
 By default, Elastic Load Balancing creates an Internet-facing load
 balancer with a publicly resolvable DNS name, which resolves to public
 IP addresses. For more information about Internet-facing and Internal
-load balancers, see Internet-facing and Internal Load Balancers.
+load balancers, see Internet-facing and Internal Load Balancers in the
+I<Elastic Load Balancing Developer Guide>.
 
-Specify the value C<internal> for this option to create an internal
-load balancer with a DNS name that resolves to private IP addresses.
-
-This option is only available for load balancers created within
-EC2-VPC.
+Specify C<internal> to create an internal load balancer with a DNS name
+that resolves to private IP addresses.
 
 
 
@@ -124,7 +126,7 @@ EC2-VPC.
 
   
 
-The security groups to assign to your load balancer within your VPC.
+The IDs of the security groups to assign to the load balancer.
 
 
 
@@ -139,8 +141,9 @@ The security groups to assign to your load balancer within your VPC.
 
   
 
-A list of subnet IDs in your VPC to attach to your load balancer.
-Specify one subnet per Availability Zone.
+The IDs of the subnets in your VPC to attach to the load balancer.
+Specify one subnet per Availability Zone specified in
+C<AvailabilityZones>.
 
 
 
@@ -157,8 +160,8 @@ Specify one subnet per Availability Zone.
 
 A list of tags to assign to the load balancer.
 
-For more information about setting tags for your load balancer, see
-Tagging.
+For more information about tagging your load balancer, see Tagging in
+the I<Elastic Load Balancing Developer Guide>.
 
 
 

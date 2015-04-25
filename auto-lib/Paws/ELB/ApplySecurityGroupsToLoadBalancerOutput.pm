@@ -19,7 +19,7 @@ Paws::ELB::ApplySecurityGroupsToLoadBalancerOutput
 
   
 
-A list of security group IDs associated with your load balancer.
+The IDs of the security groups associated with the load balancer.
 
 
 

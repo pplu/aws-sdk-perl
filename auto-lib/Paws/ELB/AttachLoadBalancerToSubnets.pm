@@ -38,8 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name associated with the load balancer. The name must be unique
-within the set of load balancers associated with your AWS account.
+The name of the load balancer.
 
 
 
@@ -54,8 +53,8 @@ within the set of load balancers associated with your AWS account.
 
   
 
-A list of subnet IDs to add for the load balancer. You can add only one
-subnet per Availability Zone.
+The IDs of the subnets to add for the load balancer. You can add only
+one subnet per Availability Zone.
 
 
 

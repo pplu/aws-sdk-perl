@@ -39,9 +39,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The time period in seconds after which the cookie should be considered
-stale. Not specifying this parameter indicates that the sticky session
-will last for the duration of the browser session.
+The time period, in seconds, after which the cookie should be
+considered stale. If you do not specify this parameter, the sticky
+session lasts for the duration of the browser session.
 
 
 
@@ -56,7 +56,7 @@ will last for the duration of the browser session.
 
   
 
-The name associated with the load balancer.
+The name of the load balancer.
 
 
 
@@ -71,7 +71,7 @@ The name associated with the load balancer.
 
   
 
-The name of the policy being created. The name must be unique within
+The name of the policy being created. This name must be unique within
 the set of policies for this load balancer.
 
 

@@ -19,7 +19,7 @@ Paws::ELB::AddAvailabilityZonesOutput
 
   
 
-An updated list of Availability Zones for the load balancer.
+The updated list of Availability Zones for the load balancer.
 
 
 

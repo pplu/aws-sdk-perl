@@ -19,8 +19,7 @@ Paws::ELB::DeregisterEndPointsOutput
 
   
 
-An updated list of remaining instances registered with the load
-balancer.
+The remaining instances registered with the load balancer.
 
 
 

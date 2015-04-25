@@ -54,7 +54,7 @@ The name of the load balancer.
 
   
 
-The external port of the load balancer to associate the policy.
+The external port of the load balancer for the policy.
 
 
 
@@ -69,8 +69,8 @@ The external port of the load balancer to associate the policy.
 
   
 
-List of policies to be associated with the listener. If the list is
-empty, the current policy is removed from the listener.
+The names of the policies. If the list is empty, the current policy is
+removed from the listener.
 
 
 

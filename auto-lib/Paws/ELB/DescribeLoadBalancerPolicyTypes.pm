@@ -37,9 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-Specifies the name of the policy types. If no names are specified,
-returns the description of all the policy types defined by Elastic Load
-Balancing service.
+The names of the policy types. If no names are specified, describes all
+policy types defined by Elastic Load Balancing.
 
 
 

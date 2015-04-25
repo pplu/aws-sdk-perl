@@ -19,7 +19,7 @@ Paws::ELB::DescribeLoadBalancerAttributesOutput
 
   
 
-The load balancer attributes structure.
+Information about the load balancer attributes.
 
 
 

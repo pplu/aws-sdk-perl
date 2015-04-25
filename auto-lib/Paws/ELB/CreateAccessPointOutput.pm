@@ -19,7 +19,7 @@ Paws::ELB::CreateAccessPointOutput
 
   
 
-The DNS name for the load balancer.
+The DNS name of the load balancer.
 
 
 

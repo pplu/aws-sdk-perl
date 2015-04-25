@@ -19,7 +19,7 @@ Paws::ELB::RegisterEndPointsOutput
 
   
 
-An updated list of instances for the load balancer.
+The updated list of instances for the load balancer.
 
 
 

@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A list of load balancer names associated with the account.
+The names of the load balancers.
 
 
 
@@ -54,8 +54,8 @@ A list of load balancer names associated with the account.
 
   
 
-An optional parameter used for pagination of results from this call. If
-specified, the response includes only records beyond the marker.
+The marker for the next set of results. (You received this marker from
+a previous call.)
 
 
 
@@ -70,8 +70,8 @@ specified, the response includes only records beyond the marker.
 
   
 
-The number of results returned in each page. The default is 400. You
-cannot specify a page size greater than 400 or less than 1.
+The maximum number of results to return with this call (a number from 1
+to 400). The default is 400.
 
 
 

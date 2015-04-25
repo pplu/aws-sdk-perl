@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The mnemonic name associated with the load balancer.
+The name of the load balancer.
 
 
 
@@ -53,8 +53,7 @@ The mnemonic name associated with the load balancer.
 
   
 
-The client port number(s) of the load balancer listener(s) to be
-removed.
+The client port numbers of the listeners.
 
 
 

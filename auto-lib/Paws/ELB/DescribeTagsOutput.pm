@@ -19,7 +19,7 @@ Paws::ELB::DescribeTagsOutput
 
   
 
-A list of tag description structures.
+Information about the tags.
 
 
 

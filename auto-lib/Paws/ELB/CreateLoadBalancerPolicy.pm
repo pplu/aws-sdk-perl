@@ -40,8 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name associated with the LoadBalancer for which the policy is being
-created.
+The name of the load balancer.
 
 
 
@@ -56,7 +55,7 @@ created.
 
   
 
-A list of attributes associated with the policy being created.
+The attributes for the policy.
 
 
 
@@ -71,7 +70,7 @@ A list of attributes associated with the policy being created.
 
   
 
-The name of the load balancer policy being created. The name must be
+The name of the load balancer policy to be created. This name must be
 unique within the set of policies for this load balancer.
 
 
@@ -87,9 +86,8 @@ unique within the set of policies for this load balancer.
 
   
 
-The name of the base policy type being used to create this policy. To
-get the list of policy types, use the DescribeLoadBalancerPolicyTypes
-action.
+The name of the base policy type. To get the list of policy types, use
+DescribeLoadBalancerPolicyTypes.
 
 
 

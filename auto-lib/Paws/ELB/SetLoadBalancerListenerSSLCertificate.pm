@@ -69,9 +69,7 @@ The port that uses the specified SSL certificate.
 
   
 
-The Amazon Resource Number (ARN) of the SSL certificate chain to use.
-For more information on SSL certificates, see Managing Server
-Certificates in the I<AWS Identity and Access Management User Guide>.
+The Amazon Resource Name (ARN) of the SSL certificate.
 
 
 
