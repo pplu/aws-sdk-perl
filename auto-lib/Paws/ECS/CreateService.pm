@@ -44,7 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. Up to 64 ASCII characters are allowed.
+of the request. Up to 32 ASCII characters are allowed.
 
 
 

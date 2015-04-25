@@ -153,6 +153,19 @@ tasks that belong to that service.
 
   
 
+The C<startedBy> value that you want to filter the task results with.
+Specifying a C<startedBy> value will limit the results to tasks that
+were started with that value.
+
+
+
+
+
+
+
+
+
+
 
 
 =head1 SEE ALSO

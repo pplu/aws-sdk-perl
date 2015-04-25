@@ -95,6 +95,25 @@ override structure.
 
   
 
+An optional tag specified when a task is started. For example if you
+automatically trigger a task to run a batch process job, you could
+apply a unique identifier for that job to your task with the
+C<startedBy> parameter. You can then identify which tasks belong to
+that job by filtering the results of a ListTasks call with the
+C<startedBy> value.
+
+If a task is started by an Amazon ECS service, then the C<startedBy>
+parameter contains the deployment ID of the service that starts it.
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> taskDefinition => Str
 
   
