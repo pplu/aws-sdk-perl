@@ -205,6 +205,8 @@ Returns the name of one or more specified configuration recorders. If
 the recorder name is not specified, this action returns the names of
 all the configuration recorders associated with the account.
 
+Currently, you can specify only one configuration recorder per account.
+
 
 
 
@@ -226,6 +228,8 @@ Returns: a L<Paws::Config::DescribeConfigurationRecorderStatusResponse> instance
 Returns the current status of the specified configuration recorder. If
 a configuration recorder is not specified, this action returns the
 status of all configuration recorder associated with the account.
+
+Currently, you can specify only one configuration recorder per account.
 
 
 
@@ -249,6 +253,8 @@ Returns details about the specified delivery channel. If a delivery
 channel is not specified, this action returns the details of all
 delivery channels associated with the account.
 
+Currently, you can specify only one delivery channel per account.
+
 
 
 
@@ -270,6 +276,8 @@ Returns: a L<Paws::Config::DescribeDeliveryChannelStatusResponse> instance
 Returns the current status of the specified delivery channel. If a
 delivery channel is not specified, this action returns the current
 status of all delivery channels associated with the account.
+
+Currently, you can specify only one delivery channel per account.
 
 
 
@@ -296,6 +304,11 @@ results returned on the page. If a limit is specified, a C<nextToken>
 is returned as part of the result that you can use to continue this
 request.
 
+Each call to the API is limited to span a duration of seven days. It is
+likely that the number of records returned is smaller than the
+specified C<limit>. In such cases, you can make another call, using the
+C<nextToken> .
+
 
 
 
@@ -320,6 +333,8 @@ configurations.
 You can use this action to change the role (C<roleARN>) of an existing
 recorder. To change the role, call the action on the existing
 configuration recorder and specify a role.
+
+Currently, you can specify only one configuration recorder per account.
 
 
 
@@ -348,6 +363,8 @@ or an Amazon SNS topic, call this action and specify the changed values
 for the S3 bucket and the SNS topic. If you specify a different value
 for either the S3 bucket or the SNS topic, this action will keep the
 existing value for the parameter that is not changed.
+
+Currently, you can specify only one delivery channel per account.
 
 
 
