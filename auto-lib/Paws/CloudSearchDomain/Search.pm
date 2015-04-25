@@ -76,8 +76,15 @@ Defines one or more numeric expressions that can be used to sort
 results or specify search or filter criteria. You can also specify
 expressions as return fields.
 
-For more information about defining and using expressions, see
-Configuring Expressions in the I<Amazon CloudSearch Developer Guide>.
+You specify the expressions in JSON using the form
+C<{"EXPRESSIONNAME":"EXPRESSION"}>. You can define and use multiple
+expressions in a search request. For example:
+
+C<{"expression1":"_score*rating", "expression2":"(1/rank)*year"}>
+
+For information about the variables, operators, and functions you can
+use in expressions, see Writing Expressions in the I<Amazon CloudSearch
+Developer Guide>.
 
 
 
@@ -132,6 +139,26 @@ values, use the C<buckets> option instead of C<sort>.
 If no facet options are specified, facet counts are computed for all
 field values, the facets are sorted by facet count, and the top 10
 facets are returned in the results.
+
+To count particular buckets of values, use the C<buckets> option. For
+example, the following request uses the C<buckets> option to calculate
+and return facet counts by decade.
+
+C<{"year":{"buckets":["[1970,1979]","[1980,1989]","[1990,1999]","[2000,2009]","[2010,}"]}}>
+
+To sort facets by facet count, use the C<count> option. For example,
+the following request sets the C<sort> option to C<count> to sort the
+facet values by facet count, with the facet values that have the most
+matching documents listed first. Setting the C<size> option to 3
+returns only the top three facet values.
+
+C<{"year":{"sort":"count","size":3}}>
+
+To sort the facets by value, use the C<bucket> option. For example, the
+following request sets the C<sort> option to C<bucket> to sort the
+facet values numerically by year, with earliest year listed first.
+
+C<{"year":{"sort":"bucket"}}>
 
 For more information, see Getting and Using Facet Information in the
 I<Amazon CloudSearch Developer Guide>.
@@ -206,6 +233,12 @@ If no highlight options are specified for a field, the returned field
 text is treated as HTML and the first match is highlighted with
 emphasis tags: C<&lt;emE<gt>search-term&lt;/em&gt;>.
 
+For example, the following request retrieves highlights for the
+C<actors> and C<title> fields.
+
+C<{ "actors": {}, "title": {"format": "text","max_phrases":
+2,"pre_tag": "B<","post_tag": ">"} }>
+
 
 
 
@@ -269,7 +302,8 @@ Your Data in the I<Amazon CloudSearch Developer Guide>.
   
 
 Configures options for the query parser specified in the C<queryParser>
-parameter.
+parameter. You specify the options in JSON using the following form
+C<{"OPTION1":"VALUE1","OPTION2":VALUE2"..."OPTIONN":"VALUEN"}.>
 
 The options you can configure vary according to which parser you use:
 
