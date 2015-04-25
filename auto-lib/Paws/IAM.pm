@@ -226,6 +226,11 @@ package Paws::IAM {
     my $call_object = $self->new_with_coercions('Paws::IAM::GenerateCredentialReport', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAccessKeyLastUsed {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetAccessKeyLastUsed', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAccountAuthorizationDetails {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::GetAccountAuthorizationDetails', @_);
@@ -595,15 +600,6 @@ have an existing application that uses Signature Version 2, you do not
 have to update it to use Signature Version 4. However, some operations
 now require Signature Version 4. The documentation for operations that
 require version 4 indicate this requirement.
-
-B<Recording API requests>
-
-IAM supports AWS CloudTrail, which is a service that records AWS calls
-for your AWS account and delivers log files to an Amazon S3 bucket. By
-using information collected by CloudTrail, you can determine what
-requests were successfully made to IAM, who made the request, when it
-was made, and so on. To learn more about CloudTrail, including how to
-turn it on and find your log files, see the AWS CloudTrail User Guide.
 
 B<Additional Resources>
 
@@ -1771,6 +1767,29 @@ Returns: a L<Paws::IAM::GenerateCredentialReportResponse> instance
 Generates a credential report for the AWS account. For more information
 about the credential report, see Getting Credential Reports in the
 I<Using IAM> guide.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetAccessKeyLastUsed(AccessKeyId => Str)
+
+Each argument is described in detail in: L<Paws::IAM::GetAccessKeyLastUsed>
+
+Returns: a L<Paws::IAM::GetAccessKeyLastUsedResponse> instance
+
+  
+
+Retrieves information about when the specified access key was last
+used. The information includes the date and time of last use, along
+with the AWS service and region that were specified in the last request
+made with that key.
 
 
 
@@ -3310,9 +3329,6 @@ implicitly based on the AWS access key ID used to sign the request.
 Because this action works for access keys under the AWS account, you
 can use this action to manage root credentials even if the AWS account
 has no associated users.
-
-For information about rotating certificates, see Managing Keys and
-Certificates in the I<Using IAM> guide.
 
 
 
