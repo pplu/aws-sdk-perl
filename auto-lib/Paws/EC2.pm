@@ -5,7 +5,7 @@ use Paws::API;
 package Paws::EC2 {
   use Moose;
   sub service { 'ec2' }
-  sub version { '2014-10-01' }
+  sub version { '2015-03-01' }
   sub flattened_arrays { 1 }
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::EC2Caller', 'Paws::Net::XMLResponse';
@@ -94,6 +94,11 @@ package Paws::EC2 {
   sub CancelExportTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CancelExportTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CancelImportTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CancelImportTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CancelReservedInstancesListing {
@@ -406,6 +411,16 @@ package Paws::EC2 {
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeImages', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeImportImageTasks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeImportImageTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeImportSnapshotTasks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeImportSnapshotTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeInstanceAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInstanceAttribute', @_);
@@ -636,6 +651,11 @@ package Paws::EC2 {
     my $call_object = $self->new_with_coercions('Paws::EC2::GetPasswordData', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ImportImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ImportImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ImportInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ImportInstance', @_);
@@ -644,6 +664,11 @@ package Paws::EC2 {
   sub ImportKeyPair {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ImportKeyPair', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ImportSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ImportSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ImportVolume {
@@ -1476,6 +1501,26 @@ disk image, the command fails and returns an error.
 
 
 
+=head2 CancelImportTask([CancelReason => Str, DryRun => Bool, ImportTaskId => Str])
+
+Each argument is described in detail in: L<Paws::EC2::CancelImportTask>
+
+Returns: a L<Paws::EC2::CancelImportTaskResult> instance
+
+  
+
+Cancels an in-process import virtual machine or import snapshot task.
+
+
+
+
+
+
+
+
+
+
+
 =head2 CancelReservedInstancesListing(ReservedInstancesListingId => Str)
 
 Each argument is described in detail in: L<Paws::EC2::CancelReservedInstancesListing>
@@ -1638,6 +1683,13 @@ region, and 9059, which is reserved in the C<eu-west-1> region.
 For more information about VPN customer gateways, see Adding a Hardware
 Virtual Private Gateway to Your VPC in the I<Amazon Virtual Private
 Cloud User Guide>.
+
+You cannot create more than one customer gateway with the same VPN
+type, IP address, and BGP ASN parameter values. If you run an identical
+request more than one time, the first request creates the customer
+gateway, and subsequent requests return information about the existing
+customer gateway. The subsequent requests do not create new customer
+gateway resources.
 
 
 
@@ -3228,6 +3280,48 @@ unspecified interval after deregistration.
 
 
 
+=head2 DescribeImportImageTasks([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], ImportTaskIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeImportImageTasks>
+
+Returns: a L<Paws::EC2::DescribeImportImageTasksResult> instance
+
+  
+
+Displays details about an import virtual machine or import snapshot
+tasks that are already created.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeImportSnapshotTasks([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], ImportTaskIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeImportSnapshotTasks>
+
+Returns: a L<Paws::EC2::DescribeImportSnapshotTasksResult> instance
+
+  
+
+Displays details about an import snapshot tasks that is already
+created.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DescribeInstanceAttribute(Attribute => Str, InstanceId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeInstanceAttribute>
@@ -4538,6 +4632,27 @@ trying to retrieve the generated password.
 
 
 
+=head2 ImportImage([Architecture => Str, ClientData => Paws::EC2::ClientData, ClientToken => Str, Description => Str, DiskContainers => ArrayRef[Paws::EC2::ImageDiskContainer], DryRun => Bool, Hypervisor => Str, LicenseType => Str, Platform => Str, RoleName => Str])
+
+Each argument is described in detail in: L<Paws::EC2::ImportImage>
+
+Returns: a L<Paws::EC2::ImportImageResult> instance
+
+  
+
+Import single or multi-volume disk images or Amazon EBS snapshots into
+an Amazon Machine Image (AMI).
+
+
+
+
+
+
+
+
+
+
+
 =head2 ImportInstance(Platform => Str, [Description => Str, DiskImages => ArrayRef[Paws::EC2::DiskImage], DryRun => Bool, LaunchSpecification => Paws::EC2::ImportInstanceLaunchSpecification])
 
 Each argument is described in detail in: L<Paws::EC2::ImportInstance>
@@ -4547,11 +4662,12 @@ Returns: a L<Paws::EC2::ImportInstanceResult> instance
   
 
 Creates an import instance task using metadata from the specified disk
-image. After importing the image, you then upload it using the
-C<ec2-import-volume> command in the EC2 command line tools. For more
-information, see Using the Command Line Tools to Import Your Virtual
-Machine to Amazon EC2 in the I<Amazon Elastic Compute Cloud User Guide
-for Linux>.
+image. ImportInstance only supports single-volume VMs. To import
+multi-volume VMs, use ImportImage. After importing the image, you then
+upload it using the C<ec2-import-volume> command in the EC2 command
+line tools. For more information, see Using the Command Line Tools to
+Import Your Virtual Machine to Amazon EC2 in the I<Amazon Elastic
+Compute Cloud User Guide for Linux>.
 
 
 
@@ -4579,6 +4695,26 @@ public key. The private key is never transferred between you and AWS.
 
 For more information about key pairs, see Key Pairs in the I<Amazon
 Elastic Compute Cloud User Guide for Linux>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ImportSnapshot([ClientData => Paws::EC2::ClientData, ClientToken => Str, Description => Str, DiskContainer => Paws::EC2::SnapshotDiskContainer, DryRun => Bool, RoleName => Str])
+
+Each argument is described in detail in: L<Paws::EC2::ImportSnapshot>
+
+Returns: a L<Paws::EC2::ImportSnapshotResult> instance
+
+  
+
+Import a disk into an Amazon Elastic Block Store (Amazon EBS) snapshot.
 
 
 

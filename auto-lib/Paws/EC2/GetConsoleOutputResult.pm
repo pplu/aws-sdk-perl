@@ -3,7 +3,7 @@ package Paws::EC2::GetConsoleOutputResult {
   use Moose;
   with 'Paws::API::UnwrappedParser';
   has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped',]);
-  has Output => (is => 'ro', isa => 'Str', xmlname => 'output', decode_as => 'Base64', method => 'Output', traits => ['Unwrapped','Base64Attribute',]);
+  has Output => (is => 'ro', isa => 'Str', xmlname => 'output', traits => ['Unwrapped',]);
   has Timestamp => (is => 'ro', isa => 'Str', xmlname => 'timestamp', traits => ['Unwrapped',]);
 
 }

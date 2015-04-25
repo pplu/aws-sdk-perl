@@ -64,15 +64,6 @@ A description for the instance being imported.
 
   
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Platform => Str
 
   
