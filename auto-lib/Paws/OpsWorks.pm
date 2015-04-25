@@ -441,8 +441,20 @@ Returns: nothing
 
   
 
-Assign a registered instance to a custom layer. You cannot use this
-action with instances that were created with AWS OpsWorks.
+Assign a registered instance to a layer.
+
+=over
+
+=item * You can assign registered on-premises instances to any layer
+type.
+
+=item * You can assign registered Amazon EC2 instances only to custom
+layers.
+
+=item * You cannot use this action with instances that were created
+with AWS OpsWorks.
+
+=back
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack or an attached policy that
