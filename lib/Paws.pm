@@ -153,7 +153,13 @@ Service classes by default try to authenticate with a chained autheticator. The 
 
 Please never burn credentials into your code. That's why the methods for passing an explicit access key and secret key are not documented.
 
-When instancing a service object, we can pass in custom credential providers
+So, instancing a service with
+
+  my $ec2 = Paws->service('EC2', region => 'eu-west-1');
+
+we get an service object that will try to authenticate with environment, credential file, or an instance role.
+
+When instancing a service object, you can also pass a custom credential provider:
 
   use Paws::Credential::STS;
 
