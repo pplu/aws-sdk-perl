@@ -10,6 +10,8 @@ describing input and output parameters.
 
 The project is actually generating all of it's classes from botocore
 
+[![Build Status](https://travis-ci.org/pplu/aws-sdk-perl.svg?branch=master)](https://travis-ci.org/pplu/aws-sdk-perl)
+
 Organization
 ============
 
