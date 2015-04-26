@@ -1,12 +1,3 @@
 [submodule "botocore"]
 	path = botocore
 	url = https://github.com/pplu/botocore.git
-[submodule "aws-sdk-core-ruby"]
-	path = aws-sdk-core-ruby
-	url = https://github.com/aws/aws-sdk-core-ruby.git
-[submodule "aws-sdk-php"]
-	path = aws-sdk-php
-	url = https://github.com/aws/aws-sdk-php
-[submodule "aws-sdk-js"]
-	path = aws-sdk-js
-	url = https://github.com/aws/aws-sdk-js
