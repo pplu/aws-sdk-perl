@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::Route53Domains {
   use Moose;
   sub service { 'route53domains' }

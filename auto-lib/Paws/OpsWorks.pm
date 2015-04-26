@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::OpsWorks {
   use Moose;
   sub service { 'opsworks' }

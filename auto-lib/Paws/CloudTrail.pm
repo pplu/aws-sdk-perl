@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::CloudTrail {
   use Moose;
   sub service { 'cloudtrail' }

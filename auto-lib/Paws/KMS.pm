@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::KMS {
   use Moose;
   sub service { 'kms' }

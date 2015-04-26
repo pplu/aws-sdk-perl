@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::ElasticTranscoder {
   warn "Paws::ElasticTranscoder is not stable / supported / entirely developed";
   use Moose;

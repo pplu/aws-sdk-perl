@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::SES {
   use Moose;
   sub service { 'email' }

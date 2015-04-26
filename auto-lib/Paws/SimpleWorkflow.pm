@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::SimpleWorkflow {
   use Moose;
   sub service { 'swf' }

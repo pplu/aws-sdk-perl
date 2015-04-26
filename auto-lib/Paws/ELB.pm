@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::ELB {
   use Moose;
   sub service { 'elasticloadbalancing' }

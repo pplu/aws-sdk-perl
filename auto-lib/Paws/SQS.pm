@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::SQS {
   use Moose;
   sub service { 'sqs' }

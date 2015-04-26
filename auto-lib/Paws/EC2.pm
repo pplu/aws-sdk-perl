@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::EC2 {
   use Moose;
   sub service { 'ec2' }

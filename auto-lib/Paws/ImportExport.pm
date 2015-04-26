@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::ImportExport {
   use Moose;
   sub service { 'importexport' }

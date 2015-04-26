@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::IAM {
   use Moose;
   sub service { 'iam' }

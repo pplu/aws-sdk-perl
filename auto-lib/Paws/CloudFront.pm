@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::CloudFront {
   warn "Paws::CloudFront is not stable / supported / entirely developed";
   use Moose;

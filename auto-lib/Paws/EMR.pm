@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::EMR {
   use Moose;
   sub service { 'elasticmapreduce' }

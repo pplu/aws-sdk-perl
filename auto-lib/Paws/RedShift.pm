@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::RedShift {
   use Moose;
   sub service { 'redshift' }

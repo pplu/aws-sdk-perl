@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::Support {
   use Moose;
   sub service { 'support' }

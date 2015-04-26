@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::ECS {
   use Moose;
   sub service { 'ecs' }

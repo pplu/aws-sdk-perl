@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::DataPipeline {
   use Moose;
   sub service { 'datapipeline' }

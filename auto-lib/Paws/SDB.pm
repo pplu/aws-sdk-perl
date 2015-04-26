@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::SDB {
   use Moose;
   sub service { 'sdb' }

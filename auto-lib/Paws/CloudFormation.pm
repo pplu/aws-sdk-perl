@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::CloudFormation {
   use Moose;
   sub service { 'cloudformation' }

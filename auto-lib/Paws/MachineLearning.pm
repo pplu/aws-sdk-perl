@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::MachineLearning {
   use Moose;
   sub service { 'machinelearning' }

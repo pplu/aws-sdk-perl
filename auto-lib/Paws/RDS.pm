@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::RDS {
   use Moose;
   sub service { 'rds' }

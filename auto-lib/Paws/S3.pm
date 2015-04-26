@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::S3 {
   warn "Paws::S3 is not stable / supported / entirely developed";
   use Moose;

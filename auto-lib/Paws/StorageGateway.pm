@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::StorageGateway {
   use Moose;
   sub service { 'storagegateway' }

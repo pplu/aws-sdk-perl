@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::CloudHSM {
   use Moose;
   sub service { 'cloudhsm' }

@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::CodeDeploy {
   use Moose;
   sub service { 'codedeploy' }

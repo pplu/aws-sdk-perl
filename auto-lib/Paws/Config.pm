@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::Config {
   use Moose;
   sub service { 'config' }

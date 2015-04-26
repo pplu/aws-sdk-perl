@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::DynamoDB {
   use Moose;
   sub service { 'dynamodb' }

@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::CloudWatch {
   use Moose;
   sub service { 'monitoring' }

@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::CloudSearchDomain {
   warn "Paws::CloudSearchDomain is not stable / supported / entirely developed";
   use Moose;

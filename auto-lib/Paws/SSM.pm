@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::SSM {
   use Moose;
   sub service { 'ssm' }

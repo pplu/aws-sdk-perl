@@ -69,14 +69,12 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
 1;#);
 
   has service_class_template => (is => 'ro', isa => 'Str', default => q#
-use Paws::API;
-[% IF (c.enums.size) %]
+[%- IF (c.enums.size) -%]
 use Moose::Util::TypeConstraints;
 [%- FOR enum_name IN c.enums.keys.sort %]
 enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %]];
 [%- END %]
-[% END %]
-
+[%- END -%]
 package [% c.api %] {
   use Moose;
   sub service { '[% c.service %]' }

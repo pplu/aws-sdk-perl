@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::Signin {
   use Moose;
   sub service { 'signin.aws' }

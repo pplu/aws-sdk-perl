@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::ElastiCache {
   use Moose;
   sub service { 'elasticache' }

@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::AutoScaling {
   use Moose;
   sub service { 'autoscaling' }

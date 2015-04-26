@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::ElasticBeanstalk {
   use Moose;
   sub service { 'elasticbeanstalk' }

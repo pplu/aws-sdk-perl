@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::Glacier {
   warn "Paws::Glacier is not stable / supported / entirely developed";
   use Moose;

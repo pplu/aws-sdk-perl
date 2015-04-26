@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::CognitoIdentity {
   use Moose;
   sub service { 'cognito-identity' }

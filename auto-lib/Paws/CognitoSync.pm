@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::CognitoSync {
   warn "Paws::CognitoSync is not stable / supported / entirely developed";
   use Moose;

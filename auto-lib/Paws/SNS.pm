@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::SNS {
   use Moose;
   sub service { 'sns' }

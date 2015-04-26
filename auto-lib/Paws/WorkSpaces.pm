@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::WorkSpaces {
   use Moose;
   sub service { 'workspaces' }

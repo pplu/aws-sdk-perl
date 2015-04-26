@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::Kinesis {
   use Moose;
   sub service { 'kinesis' }

@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::CloudSearch {
   use Moose;
   sub service { 'cloudsearch' }

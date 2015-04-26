@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::Route53 {
   warn "Paws::Route53 is not stable / supported / entirely developed";
   use Moose;

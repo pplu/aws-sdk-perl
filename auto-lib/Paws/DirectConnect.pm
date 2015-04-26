@@ -1,7 +1,3 @@
-
-use Paws::API;
-
-
 package Paws::DirectConnect {
   use Moose;
   sub service { 'directconnect' }
