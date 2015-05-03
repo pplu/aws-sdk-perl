@@ -9,7 +9,8 @@ package Paws::DynamoDB::Query {
   has ExpressionAttributeValues => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeValueMap');
   has FilterExpression => (is => 'ro', isa => 'Str');
   has IndexName => (is => 'ro', isa => 'Str');
-  has KeyConditions => (is => 'ro', isa => 'Paws::DynamoDB::KeyConditions', required => 1);
+  has KeyConditionExpression => (is => 'ro', isa => 'Str');
+  has KeyConditions => (is => 'ro', isa => 'Paws::DynamoDB::KeyConditions');
   has Limit => (is => 'ro', isa => 'Int');
   has ProjectionExpression => (is => 'ro', isa => 'Str');
   has QueryFilter => (is => 'ro', isa => 'Paws::DynamoDB::FilterConditionMap');
@@ -52,10 +53,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-There is a newer parameter available. Use I<ProjectionExpression>
-instead. Note that if you use I<AttributesToGet> and
-I<ProjectionExpression> at the same time, DynamoDB will return a
-I<ValidationException> exception.
+This is a legacy parameter, for backward compatibility. New
+applications should use I<ProjectionExpression> instead. Do not combine
+legacy parameters and expression parameters in a single API call;
+otherwise, DynamoDB will return a I<ValidationException> exception.
 
 This parameter allows you to retrieve attributes of type List or Map;
 however, it cannot retrieve individual elements within a List or a Map.
@@ -96,6 +97,11 @@ cannot fetch attributes from the parent table.
 =head2 ConditionalOperator => Str
 
   
+
+This is a legacy parameter, for backward compatibility. New
+applications should use I<FilterExpression> instead. Do not combine
+legacy parameters and expression parameters in a single API call;
+otherwise, DynamoDB will return a I<ValidationException> exception.
 
 A logical operator to apply to the conditions in a I<QueryFilter> map:
 
@@ -207,7 +213,7 @@ C<Percentile>
 
 The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
-words, go to Reserved Words in the I<Amazon DynamoDB Developer Guide>).
+words, see Reserved Words in the I<Amazon DynamoDB Developer Guide>).
 To work around this, you could specify the following for
 I<ExpressionAttributeNames>:
 
@@ -233,8 +239,9 @@ C<
 Tokens that begin with the B<:> character are I<expression attribute
 values>, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, go to Accessing
-Item Attributes in the I<Amazon DynamoDB Developer Guide>.
+For more information on expression attribute names, see Using
+Placeholders for Attribute Names and Values in the I<Amazon DynamoDB
+Developer Guide>.
 
 
 
@@ -267,8 +274,9 @@ You could then use these values in an expression, such as this:
 
 C<ProductStatus IN (:avail, :back, :disc)>
 
-For more information on expression attribute values, go to Specifying
-Conditions in the I<Amazon DynamoDB Developer Guide>.
+For more information on expression attribute values, see Using
+Placeholders for Attribute Names and Values in the I<Amazon DynamoDB
+Developer Guide>.
 
 
 
@@ -291,8 +299,11 @@ A I<FilterExpression> is applied after the items have already been
 read; the process of filtering does not consume any additional read
 capacity units.
 
-For more information, go to Filter Expressions in the I<Amazon DynamoDB
+For more information, see Filter Expressions in the I<Amazon DynamoDB
 Developer Guide>.
+
+I<FilterExpression> replaces the legacy I<QueryFilter> and
+I<ConditionalOperator> parameters.
 
 
 
@@ -308,7 +319,8 @@ Developer Guide>.
   
 
 The name of an index to query. This index can be any local secondary
-index or global secondary index on the table.
+index or global secondary index on the table. Note that if you use the
+I<IndexName> parameter, you must also provide I<TableName.>
 
 
 
@@ -319,9 +331,128 @@ index or global secondary index on the table.
 
 
 
-=head2 B<REQUIRED> KeyConditions => Paws::DynamoDB::KeyConditions
+=head2 KeyConditionExpression => Str
 
   
+
+The condition that specifies the key value(s) for items to be retrieved
+by the I<Query> action.
+
+The condition must perform an equality test on a single hash key value.
+The condition can also test for one or more range key values. A
+I<Query> can use I<KeyConditionExpression> to retrieve a single item
+with a given hash and range key value, or several items that have the
+same hash key value but different range key values.
+
+The hash key equality test is required, and must be specified in the
+following format:
+
+C<hashAttributeName> I<=> C<:hashval>
+
+If you also want to provide a range key condition, it must be combined
+using I<AND> with the hash key condition. Following is an example,
+using the B<=> comparison operator for the range key:
+
+C<hashAttributeName> I<=> C<:hashval> I<AND> C<rangeAttributeName> I<=>
+C<:rangeval>
+
+Valid comparisons for the range key condition are as follows:
+
+=over
+
+=item *
+
+C<rangeAttributeName> I<=> C<:rangeval> - true if the range key is
+equal to C<:rangeval>.
+
+=item *
+
+C<rangeAttributeName> I<E<lt>> C<:rangeval> - true if the range key is
+less than C<:rangeval>.
+
+=item *
+
+C<rangeAttributeName> I<E<lt>=> C<:rangeval> - true if the range key is
+less than or equal to C<:rangeval>.
+
+=item *
+
+C<rangeAttributeName> I<E<gt>> C<:rangeval> - true if the range key is
+greater than C<:rangeval>.
+
+=item *
+
+C<rangeAttributeName> I<E<gt>= >C<:rangeval> - true if the range key is
+greater than or equal to C<:rangeval>.
+
+=item *
+
+C<rangeAttributeName> I<BETWEEN> C<:rangeval1> I<AND> C<:rangeval2> -
+true if the range key is less than or greater than C<:rangeval1>, and
+less than or equal to C<:rangeval2>.
+
+=item *
+
+I<begins_with (>C<rangeAttributeName>, C<:rangeval>I<)> - true if the
+range key begins with a particular operand. Note that the function name
+C<begins_with> is case-sensitive.
+
+=back
+
+Use the I<ExpressionAttributeValues> parameter to replace tokens such
+as C<:hashval> and C<:rangeval> with actual values at runtime.
+
+You can optionally use the I<ExpressionAttributeNames> parameter to
+replace the names of the hash and range attributes with placeholder
+tokens. This might be necessary if an attribute name conflicts with a
+DynamoDB reserved word. For example, the following
+I<KeyConditionExpression> causes an error because I<Size> is a reserved
+word:
+
+=over
+
+=item * C<Size = :myval>
+
+=back
+
+To work around this, define a placeholder (such a C<
+represent the attribute name I<Size>. I<KeyConditionExpression> then is
+as follows:
+
+=over
+
+=item * C<
+
+=back
+
+For a list of reserved words, see Reserved Words in the I<Amazon
+DynamoDB Developer Guide>.
+
+For more information on I<ExpressionAttributeNames> and
+I<ExpressionAttributeValues>, see Using Placeholders for Attribute
+Names and Values in the I<Amazon DynamoDB Developer Guide>.
+
+I<KeyConditionExpression> replaces the legacy I<KeyConditions>
+parameter.
+
+
+
+
+
+
+
+
+
+
+=head2 KeyConditions => Paws::DynamoDB::KeyConditions
+
+  
+
+This is a legacy parameter, for backward compatibility. New
+applications should use I<KeyConditionExpression> instead. Do not
+combine legacy parameters and expression parameters in a single API
+call; otherwise, DynamoDB will return a I<ValidationException>
+exception.
 
 The selection criteria for the query. For a query on a table, you can
 have conditions only on the table primary key attributes. You must
@@ -329,14 +460,14 @@ provide the hash key attribute name and value as an C<EQ> condition.
 You can optionally provide a second condition, referring to the range
 key attribute.
 
-If you do not provide a range key condition, all of the items that
-match the hash key will be retrieved. If a I<FilterExpression> or
+If you don't provide a range key condition, all of the items that match
+the hash key will be retrieved. If a I<FilterExpression> or
 I<QueryFilter> is present, it will be applied after the items are
 retrieved.
 
 For a query on an index, you can have conditions only on the index key
 attributes. You must provide the index hash attribute name and value as
-an EQ condition. You can optionally provide a second condition,
+an C<EQ> condition. You can optionally provide a second condition,
 referring to the index key range attribute.
 
 Each I<KeyConditions> element consists of an attribute name to compare,
@@ -507,8 +638,11 @@ If no attribute names are specified, then all attributes will be
 returned. If any of the requested attributes are not found, they will
 not appear in the result.
 
-For more information, go to Accessing Item Attributes in the I<Amazon
+For more information, see Accessing Item Attributes in the I<Amazon
 DynamoDB Developer Guide>.
+
+I<ProjectionExpression> replaces the legacy I<AttributesToGet>
+parameter.
 
 
 
@@ -523,9 +657,10 @@ DynamoDB Developer Guide>.
 
   
 
-There is a newer parameter available. Use I<FilterExpression> instead.
-Note that if you use I<QueryFilter> and I<FilterExpression> at the same
-time, DynamoDB will return a I<ValidationException> exception.
+This is a legacy parameter, for backward compatibility. New
+applications should use I<FilterExpression> instead. Do not combine
+legacy parameters and expression parameters in a single API call;
+otherwise, DynamoDB will return a I<ValidationException> exception.
 
 A condition that evaluates the query results after the items are read
 and returns only the desired values.
@@ -680,6 +815,10 @@ both I<Select> and I<AttributesToGet> together in a single request,
 unless the value for I<Select> is C<SPECIFIC_ATTRIBUTES>. (This usage
 is equivalent to specifying I<AttributesToGet> without any value for
 I<Select>.)
+
+If you use the I<ProjectionExpression> parameter, then the value for
+I<Select> can only be C<SPECIFIC_ATTRIBUTES>. Any other value for
+I<Select> will return an error.
 
 
 

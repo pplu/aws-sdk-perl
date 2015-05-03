@@ -48,9 +48,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-There is a newer parameter available. Use I<UpdateExpression> instead.
-Note that if you use I<AttributeUpdates> and I<UpdateExpression> at the
-same time, DynamoDB will return a I<ValidationException> exception.
+This is a legacy parameter, for backward compatibility. New
+applications should use I<UpdateExpression> instead. Do not combine
+legacy parameters and expression parameters in a single API call;
+otherwise, DynamoDB will return a I<ValidationException> exception.
 
 This parameter can be used for modifying top-level attributes; however,
 it does not support individual list or map elements.
@@ -191,10 +192,10 @@ table's attribute definition.
 
   
 
-There is a newer parameter available. Use I<ConditionExpression>
-instead. Note that if you use I<ConditionalOperator> and I<
-ConditionExpression > at the same time, DynamoDB will return a
-I<ValidationException> exception.
+This is a legacy parameter, for backward compatibility. New
+applications should use I<ConditionExpression> instead. Do not combine
+legacy parameters and expression parameters in a single API call;
+otherwise, DynamoDB will return a I<ValidationException> exception.
 
 A logical operator to apply to the conditions in the I<Expected> map:
 
@@ -256,8 +257,11 @@ Logical operators: C<AND | OR | NOT>
 
 =back
 
-For more information on condition expressions, go to Specifying
+For more information on condition expressions, see Specifying
 Conditions in the I<Amazon DynamoDB Developer Guide>.
+
+I<ConditionExpression> replaces the legacy I<ConditionalOperator> and
+I<Expected> parameters.
 
 
 
@@ -272,9 +276,10 @@ Conditions in the I<Amazon DynamoDB Developer Guide>.
 
   
 
-There is a newer parameter available. Use I< ConditionExpression >
-instead. Note that if you use I<Expected> and I< ConditionExpression >
-at the same time, DynamoDB will return a I<ValidationException>
+This is a legacy parameter, for backward compatibility. New
+applications should use I< ConditionExpression > instead. Do not
+combine legacy parameters and expression parameters in a single API
+call; otherwise, DynamoDB will return a I<ValidationException>
 exception.
 
 A map of attribute/condition pairs. I<Expected> provides a conditional
@@ -590,7 +595,7 @@ C<Percentile>
 
 The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
-words, go to Reserved Words in the I<Amazon DynamoDB Developer Guide>).
+words, see Reserved Words in the I<Amazon DynamoDB Developer Guide>).
 To work around this, you could specify the following for
 I<ExpressionAttributeNames>:
 
@@ -616,8 +621,9 @@ C<
 Tokens that begin with the B<:> character are I<expression attribute
 values>, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, go to Accessing
-Item Attributes in the I<Amazon DynamoDB Developer Guide>.
+For more information on expression attribute names, see Using
+Placeholders for Attribute Names and Values in the I<Amazon DynamoDB
+Developer Guide>.
 
 
 
@@ -650,8 +656,9 @@ You could then use these values in an expression, such as this:
 
 C<ProductStatus IN (:avail, :back, :disc)>
 
-For more information on expression attribute values, go to Specifying
-Conditions in the I<Amazon DynamoDB Developer Guide>.
+For more information on expression attribute values, see Using
+Placeholders for Attribute Names and Values in the I<Amazon DynamoDB
+Developer Guide>.
 
 
 
@@ -874,8 +881,10 @@ nested attributes.
 You can have many actions in a single expression, such as the
 following: C<SET a=:value1, b=:value2 DELETE :value3, :value4, :value5>
 
-For more information on update expressions, go to Modifying Items and
+For more information on update expressions, see Modifying Items and
 Attributes in the I<Amazon DynamoDB Developer Guide>.
+
+I<UpdateExpression> replaces the legacy I<AttributeUpdates> parameter.
 
 
 

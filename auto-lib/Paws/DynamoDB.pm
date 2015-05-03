@@ -108,7 +108,7 @@ B<Overview>
 
 This is the Amazon DynamoDB API Reference. This guide provides
 descriptions and samples of the low-level DynamoDB API. For information
-about DynamoDB application development, go to the Amazon DynamoDB
+about DynamoDB application development, see the Amazon DynamoDB
 Developer Guide.
 
 Instead of making the requests to the low-level DynamoDB API directly
@@ -116,13 +116,13 @@ from your application, we recommend that you use the AWS Software
 Development Kits (SDKs). The easy-to-use libraries in the AWS SDKs make
 it unnecessary to call the low-level DynamoDB API directly from your
 application. The libraries take care of request authentication,
-serialization, and connection management. For more information, go to
+serialization, and connection management. For more information, see
 Using the AWS SDKs with DynamoDB in the I<Amazon DynamoDB Developer
 Guide>.
 
 If you decide to code against the low-level DynamoDB API directly, you
 will need to write the necessary code to authenticate your requests.
-For more information on signing your requests, go to Using the DynamoDB
+For more information on signing your requests, see Using the DynamoDB
 API in the I<Amazon DynamoDB Developer Guide>.
 
 The following are short descriptions of each low-level API action,
@@ -164,7 +164,7 @@ I<DeleteTable> - Deletes a table and all of its indexes.
 
 =back
 
-For conceptual information about managing tables, go to Working with
+For conceptual information about managing tables, see Working with
 Tables in the I<Amazon DynamoDB Developer Guide>.
 
 B<Reading Data>
@@ -206,7 +206,7 @@ predictable performance.
 
 =back
 
-For conceptual information about reading data, go to Working with Items
+For conceptual information about reading data, see Working with Items
 and Query and Scan Operations in the I<Amazon DynamoDB Developer
 Guide>.
 
@@ -245,8 +245,8 @@ with a maximum total request size of 16 MB.
 
 =back
 
-For conceptual information about modifying data, go to Working with
-Items and Query and Scan Operations in the I<Amazon DynamoDB Developer
+For conceptual information about modifying data, see Working with Items
+and Query and Scan Operations in the I<Amazon DynamoDB Developer
 Guide>.
 
 
@@ -303,7 +303,7 @@ to throttling on the individual tables. If you delay the batch
 operation using exponential backoff, the individual requests in the
 batch are much more likely to succeed.
 
-For more information, go to Batch Operations and Error Handling in the
+For more information, see Batch Operations and Error Handling in the
 I<Amazon DynamoDB Developer Guide>.
 
 By default, I<BatchGetItem> performs eventually consistent reads on
@@ -374,7 +374,7 @@ to throttling on the individual tables. If you delay the batch
 operation using exponential backoff, the individual requests in the
 batch are much more likely to succeed.
 
-For more information, go to Batch Operations and Error Handling in the
+For more information, see Batch Operations and Error Handling in the
 I<Amazon DynamoDB Developer Guide>.
 
 With I<BatchWriteItem>, you can efficiently write or delete large
@@ -389,10 +389,12 @@ items in the response.
 If you use a programming language that supports concurrency, such as
 Java, you can use threads to write items in parallel. Your application
 must include the necessary logic to manage the threads. With languages
-that don't support threading, such as PHP, you must update provides an
-alternative where the API performs the specified put and delete
-operations in parallel, giving you the power of the thread pool
-approach without having to introduce complexity into your application.
+that don't support threading, such as PHP, you must update or delete
+the specified items one at a time. In both situations,
+I<BatchWriteItem> provides an alternative where the API performs the
+specified put and delete operations in parallel, giving you the power
+of the thread pool approach without having to introduce complexity into
+your application.
 
 Parallel processing reduces latency, but each specified put and delete
 request consumes the same number of write capacity units whether it is
@@ -675,7 +677,7 @@ the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 Query(KeyConditions => Paws::DynamoDB::KeyConditions, TableName => Str, [AttributesToGet => ArrayRef[Str], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => Paws::DynamoDB::Key, ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap, ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap, FilterExpression => Str, IndexName => Str, Limit => Int, ProjectionExpression => Str, QueryFilter => Paws::DynamoDB::FilterConditionMap, ReturnConsumedCapacity => Str, ScanIndexForward => Bool, Select => Str])
+=head2 Query(TableName => Str, [AttributesToGet => ArrayRef[Str], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => Paws::DynamoDB::Key, ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap, ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap, FilterExpression => Str, IndexName => Str, KeyConditionExpression => Str, KeyConditions => Paws::DynamoDB::KeyConditions, Limit => Int, ProjectionExpression => Str, QueryFilter => Paws::DynamoDB::FilterConditionMap, ReturnConsumedCapacity => Str, ScanIndexForward => Bool, Select => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDB::Query>
 
@@ -683,12 +685,16 @@ Returns: a L<Paws::DynamoDB::QueryOutput> instance
 
   
 
-A I<Query> operation directly accesses items from a table using the
-table primary key, or from an index using the index key. You must
-provide a specific hash key value. You can narrow the scope of the
-query by using comparison operators on the range key value, or on the
-index key. You can use the I<ScanIndexForward> parameter to get results
-in forward or reverse order, by range key or by index key.
+A I<Query> operation uses the primary key of a table or a secondary
+index to directly access items from that table or index.
+
+Use the I<KeyConditionExpression> parameter to provide a specific hash
+key value. The I<Query> operation will return all of the items from the
+table or index with that hash key value. You can optionally narrow the
+scope of the I<Query> by specifying a range key value and a comparison
+operator in the I<KeyConditionExpression>. You can use the
+I<ScanIndexForward> parameter to get results in forward or reverse
+order, by range key or by index key.
 
 Queries that do not return results consume the minimum number of read
 capacity units for that type of read operation.

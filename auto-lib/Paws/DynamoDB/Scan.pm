@@ -51,10 +51,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-There is a newer parameter available. Use I<ProjectionExpression>
-instead. Note that if you use I<AttributesToGet> and
-I<ProjectionExpression> at the same time, DynamoDB will return a
-I<ValidationException> exception.
+This is a legacy parameter, for backward compatibility. New
+applications should use I<ProjectionExpression> instead. Do not combine
+legacy parameters and expression parameters in a single API call;
+otherwise, DynamoDB will return a I<ValidationException> exception.
 
 This parameter allows you to retrieve attributes of type List or Map;
 however, it cannot retrieve individual elements within a List or a Map.
@@ -80,10 +80,10 @@ size, not on the amount of data that is returned to an application.
 
   
 
-There is a newer parameter available. Use I<ConditionExpression>
-instead. Note that if you use I<ConditionalOperator> and I<
-ConditionExpression > at the same time, DynamoDB will return a
-I<ValidationException> exception.
+This is a legacy parameter, for backward compatibility. New
+applications should use I<FilterExpression> instead. Do not combine
+legacy parameters and expression parameters in a single API call;
+otherwise, DynamoDB will return a I<ValidationException> exception.
 
 A logical operator to apply to the conditions in a I<ScanFilter> map:
 
@@ -179,7 +179,7 @@ C<Percentile>
 
 The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
-words, go to Reserved Words in the I<Amazon DynamoDB Developer Guide>).
+words, see Reserved Words in the I<Amazon DynamoDB Developer Guide>).
 To work around this, you could specify the following for
 I<ExpressionAttributeNames>:
 
@@ -205,8 +205,9 @@ C<
 Tokens that begin with the B<:> character are I<expression attribute
 values>, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, go to Accessing
-Item Attributes in the I<Amazon DynamoDB Developer Guide>.
+For more information on expression attribute names, see Using
+Placeholders for Attribute Names and Values in the I<Amazon DynamoDB
+Developer Guide>.
 
 
 
@@ -239,8 +240,9 @@ You could then use these values in an expression, such as this:
 
 C<ProductStatus IN (:avail, :back, :disc)>
 
-For more information on expression attribute values, go to Specifying
-Conditions in the I<Amazon DynamoDB Developer Guide>.
+For more information on expression attribute values, see Using
+Placeholders for Attribute Names and Values in the I<Amazon DynamoDB
+Developer Guide>.
 
 
 
@@ -263,8 +265,11 @@ A I<FilterExpression> is applied after the items have already been
 read; the process of filtering does not consume any additional read
 capacity units.
 
-For more information, go to Filter Expressions in the I<Amazon DynamoDB
+For more information, see Filter Expressions in the I<Amazon DynamoDB
 Developer Guide>.
+
+I<FilterExpression> replaces the legacy I<ScanFilter> and
+I<ConditionalOperator> parameters.
 
 
 
@@ -330,8 +335,11 @@ If no attribute names are specified, then all attributes will be
 returned. If any of the requested attributes are not found, they will
 not appear in the result.
 
-For more information, go to Accessing Item Attributes in the I<Amazon
+For more information, see Accessing Item Attributes in the I<Amazon
 DynamoDB Developer Guide>.
+
+I<ProjectionExpression> replaces the legacy I<AttributesToGet>
+parameter.
 
 
 
@@ -350,9 +358,10 @@ DynamoDB Developer Guide>.
 
   
 
-There is a newer parameter available. Use I<FilterExpression> instead.
-Note that if you use I<ScanFilter> and I<FilterExpression> at the same
-time, DynamoDB will return a I<ValidationException> exception.
+This is a legacy parameter, for backward compatibility. New
+applications should use I<FilterExpression> instead. Do not combine
+legacy parameters and expression parameters in a single API call;
+otherwise, DynamoDB will return a I<ValidationException> exception.
 
 A condition that evaluates the scan results and returns only the
 desired values.

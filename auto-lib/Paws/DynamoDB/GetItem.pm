@@ -43,10 +43,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-There is a newer parameter available. Use I<ProjectionExpression>
-instead. Note that if you use I<AttributesToGet> and
-I<ProjectionExpression> at the same time, DynamoDB will return a
-I<ValidationException> exception.
+This is a legacy parameter, for backward compatibility. New
+applications should use I<ProjectionExpression> instead. Do not combine
+legacy parameters and expression parameters in a single API call;
+otherwise, DynamoDB will return a I<ValidationException> exception.
 
 This parameter allows you to retrieve attributes of type List or Map;
 however, it cannot retrieve individual elements within a List or a Map.
@@ -123,7 +123,7 @@ C<Percentile>
 
 The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
-words, go to Reserved Words in the I<Amazon DynamoDB Developer Guide>).
+words, see Reserved Words in the I<Amazon DynamoDB Developer Guide>).
 To work around this, you could specify the following for
 I<ExpressionAttributeNames>:
 
@@ -149,8 +149,9 @@ C<
 Tokens that begin with the B<:> character are I<expression attribute
 values>, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, go to Accessing
-Item Attributes in the I<Amazon DynamoDB Developer Guide>.
+For more information on expression attribute names, see Using
+Placeholders for Attribute Names and Values in the I<Amazon DynamoDB
+Developer Guide>.
 
 
 
@@ -195,8 +196,11 @@ If no attribute names are specified, then all attributes will be
 returned. If any of the requested attributes are not found, they will
 not appear in the result.
 
-For more information, go to Accessing Item Attributes in the I<Amazon
+For more information, see Accessing Item Attributes in the I<Amazon
 DynamoDB Developer Guide>.
+
+I<ProjectionExpression> replaces the legacy I<AttributesToGet>
+parameter.
 
 
 
