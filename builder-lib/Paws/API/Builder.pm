@@ -26,7 +26,7 @@ package Paws::API::Builder {
 
   has waiters_file => (is => 'ro', lazy => 1, default => sub {
     my $file = shift->api_file;
-    $file =~ s/\.normal\./.waiters./;
+    $file =~ s/\/service-2\./\/waiters-2./;
     return $file;
   });
 
@@ -37,7 +37,9 @@ package Paws::API::Builder {
 
   has paginators_file => (is => 'ro', lazy => 1, default => sub {
     my $file = shift->api_file;
-    $file =~ s/\.normal\./.paginators./;
+print "PAG: FILE: $file\n";
+    $file =~ s/\/service-2\./\/paginators-1./;
+print "PAG: FILE: $file\n";
     return $file;
   });
 
@@ -48,7 +50,7 @@ package Paws::API::Builder {
 
   has encoders_file => (is => 'ro', lazy => 1, default => sub {
     my $file = shift->api_file;
-    $file =~ s/\.normal\./.encoders./;
+    $file =~ s/\/service-2\./\/encoders-1./;
     return $file;
   });
 
@@ -70,18 +72,6 @@ package Paws::API::Builder {
     return 'PollForAllDecisionTasks' if ($name eq 'PollForDecisionTask');
     die "Please help me generate a good name for the paginator $name";
   }
-
-  has encoders_file => (is => 'ro', lazy => 1, default => sub {
-    my $file = shift->api_file;
-    $file =~ s/\.normal\./.encoders./;
-    return $file;
-  });
-
-  has encoders_struct => (is => 'ro', lazy => 1, default => sub {
-    my $self = shift;
-    return $self->_load_json_file($self->encoders_file)->{ encoding };
-  });
-
 
   has inner_classes => (is => 'rw', isa => 'HashRef', default => sub { {} });
   has enums => (is => 'rw', isa => 'HashRef', default => sub { {} });
@@ -134,6 +124,7 @@ package Paws::API::Builder {
 
   sub _load_json_file {
     my ($self,$file) = @_;
+print "Trying to load $file\n";
     return {} if (not -e $file);
     return from_json(read_file($file));
   }
