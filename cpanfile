@@ -23,16 +23,16 @@ requires 'Module::Find';
 requires 'Getopt::Long';
 requires 'Browser::Open';
 
-on 'build' => sub {
+on 'develop' => sub {
   requires 'Data::Printer';
   requires 'Template';
-  requires 'File::Slurp';
   requires 'Pod::HTML2Pod';
   requires 'Dist::Zilla';
   requires 'Dist::Zilla::Plugin::Prereqs::FromCPANfile';
   requires 'Dist::Zilla::PluginBundle::Git';
 };
 on 'test' => sub {
+  requires 'File::Slurp';
   requires 'Data::Path';
   requires 'YAML';
   requires 'Test::Class::Moose::Load';
