@@ -24,7 +24,6 @@ requires 'Getopt::Long';
 requires 'Browser::Open';
 
 on 'develop' => sub {
-  requires 'Data::Printer';
   requires 'Template';
   requires 'Pod::HTML2Pod';
   requires 'Dist::Zilla';
@@ -32,6 +31,7 @@ on 'develop' => sub {
   requires 'Dist::Zilla::PluginBundle::Git';
 };
 on 'test' => sub {
+  requires 'Data::Printer';
   requires 'File::Slurp';
   requires 'Data::Path';
   requires 'YAML';
