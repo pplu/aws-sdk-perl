@@ -8,6 +8,7 @@ use lib 't/lib';
 use Test::More;
 use Paws;
 use Test::CustomCredentials;
+use JSON;
 
 sub request_has_params {
   my ($test_params, $request) = @_;
@@ -215,5 +216,29 @@ $test_params = {
 
 request_has_params($test_params, $request);
 
+my $cognito = $aws->service('CognitoIdentity', region => 'dummy', credentials => Test::CustomCredentials->new);
+
+$request = $cognito->GetOpenIdTokenForDeveloperIdentity(
+  IdentityPoolId => 'eu-west-1:00000000-0000-0000-0000-000000000000',
+  Logins => {
+    provider_name => 'user_name@x.com'
+  }
+);
+
+sub request_contentjson {
+  my ($test_params, $request) = @_;
+  
+  my $content = $request->content;
+  my $datastructure = decode_json($content);
+
+  is_deeply($datastructure, $test_params, 'Request JSON content is equivalent to the expected datastructure');
+}
+
+$test_params = {
+  Logins => { provider_name => 'user_name@x.com'},
+  IdentityPoolId =>"eu-west-1:00000000-0000-0000-0000-000000000000"
+};
+
+request_contentjson($test_params, $request);
 
 done_testing;
