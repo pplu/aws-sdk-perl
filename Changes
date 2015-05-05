@@ -1,5 +1,7 @@
 0.06 5 May 2015 23:30:00
  - Fix Map handling in JsonCaller (and add tests)
+ - Add META.* information for CPAN packaging (CHORNY)
+ - Fix cpanfile dependencies for build/test scenarios (CHORNY)
 
 0.05 3 May 2015 23:00:00
  - Delete files that were leftover from old API generations
