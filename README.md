@@ -188,6 +188,11 @@ paws EC2 --region eu-west-1 DescribeInstances
 
 Will output information from your instances
 
+License
+================
+
+This code is distributed under the GNU Lesser General Public License, Version 3
+
 Thanks
 ================
 Luis Alberto Gimenez (@agimenez) for 
