@@ -1,3 +1,8 @@
+0.07 
+ - Generate META.yml
+ - Add LICENSE info
+ - Packaging corrections
+
 0.06 5 May 2015 23:30:00
  - Fix Map handling in JsonCaller (and add tests)
  - Add META.* information for CPAN packaging (CHORNY)
