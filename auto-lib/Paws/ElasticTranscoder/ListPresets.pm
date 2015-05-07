@@ -1,12 +1,14 @@
 
 package Paws::ElasticTranscoder::ListPresets {
   use Moose;
-  has Ascending => (is => 'ro', isa => 'Str');
-  has PageToken => (is => 'ro', isa => 'Str');
+  has Ascending => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Ascending' );
+  has PageToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'PageToken' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListPresets');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/presets');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::ListPresetsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListPresetsResult');
 }

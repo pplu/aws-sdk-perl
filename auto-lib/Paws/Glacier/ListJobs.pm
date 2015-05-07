@@ -1,16 +1,18 @@
 
 package Paws::Glacier::ListJobs {
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', required => 1);
-  has completed => (is => 'ro', isa => 'Str');
-  has limit => (is => 'ro', isa => 'Str');
-  has marker => (is => 'ro', isa => 'Str');
-  has statuscode => (is => 'ro', isa => 'Str');
-  has vaultName => (is => 'ro', isa => 'Str', required => 1);
+  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has completed => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'completed' );
+  has limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit' );
+  has marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
+  has statuscode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'statuscode' );
+  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListJobs');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/jobs');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ListJobsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListJobsResult');
 }

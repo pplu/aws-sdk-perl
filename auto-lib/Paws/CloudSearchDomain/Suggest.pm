@@ -1,13 +1,15 @@
 
 package Paws::CloudSearchDomain::Suggest {
   use Moose;
-  has query => (is => 'ro', isa => 'Str', required => 1);
-  has size => (is => 'ro', isa => 'Num');
-  has suggester => (is => 'ro', isa => 'Str', required => 1);
+  has query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q' , required => 1);
+  has size => (is => 'ro', isa => 'Num', traits => ['ParamInQuery'], query_name => 'size' );
+  has suggester => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'suggester' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'Suggest');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-01-01/suggest?format=sdk&pretty=true');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearchDomain::SuggestResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SuggestResult');
 }

@@ -1,12 +1,14 @@
 
 package Paws::CloudSearchDomain::UploadDocuments {
   use Moose;
-  has contentType => (is => 'ro', isa => 'Str', required => 1);
+  has contentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type' , required => 1);
   has documents => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadDocuments');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-01-01/documents/batch?format=sdk');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearchDomain::UploadDocumentsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UploadDocumentsResult');
 }

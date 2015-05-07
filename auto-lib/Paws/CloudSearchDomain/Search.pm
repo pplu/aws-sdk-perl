@@ -1,23 +1,25 @@
 
 package Paws::CloudSearchDomain::Search {
   use Moose;
-  has cursor => (is => 'ro', isa => 'Str');
-  has expr => (is => 'ro', isa => 'Str');
-  has facet => (is => 'ro', isa => 'Str');
-  has filterQuery => (is => 'ro', isa => 'Str');
-  has highlight => (is => 'ro', isa => 'Str');
-  has partial => (is => 'ro', isa => 'Bool');
-  has query => (is => 'ro', isa => 'Str', required => 1);
-  has queryOptions => (is => 'ro', isa => 'Str');
-  has queryParser => (is => 'ro', isa => 'Str');
-  has return => (is => 'ro', isa => 'Str');
-  has size => (is => 'ro', isa => 'Num');
-  has sort => (is => 'ro', isa => 'Str');
-  has start => (is => 'ro', isa => 'Num');
+  has cursor => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'cursor' );
+  has expr => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'expr' );
+  has facet => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'facet' );
+  has filterQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fq' );
+  has highlight => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'highlight' );
+  has partial => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'partial' );
+  has query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q' , required => 1);
+  has queryOptions => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q.options' );
+  has queryParser => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q.parser' );
+  has return => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'return' );
+  has size => (is => 'ro', isa => 'Num', traits => ['ParamInQuery'], query_name => 'size' );
+  has sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort' );
+  has start => (is => 'ro', isa => 'Num', traits => ['ParamInQuery'], query_name => 'start' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'Search');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-01-01/search?format=sdk&pretty=true');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearchDomain::SearchResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SearchResult');
 }

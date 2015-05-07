@@ -1,15 +1,17 @@
 
 package Paws::Lambda::Invoke {
   use Moose;
-  has ClientContext => (is => 'ro', isa => 'Str');
-  has FunctionName => (is => 'ro', isa => 'Str', required => 1);
-  has InvocationType => (is => 'ro', isa => 'Str');
-  has LogType => (is => 'ro', isa => 'Str');
+  has ClientContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Client-Context' );
+  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
+  has InvocationType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Invocation-Type' );
+  has LogType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Log-Type' );
   has Payload => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'Invoke');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/invocations');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::InvocationResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'InvokeResult');
 }

@@ -4,11 +4,13 @@ package Paws::Lambda::UpdateEventSourceMapping {
   has BatchSize => (is => 'ro', isa => 'Int');
   has Enabled => (is => 'ro', isa => 'Bool');
   has FunctionName => (is => 'ro', isa => 'Str');
-  has UUID => (is => 'ro', isa => 'Str', required => 1);
+  has UUID => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UUID' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEventSourceMapping');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/event-source-mappings/{UUID}');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::EventSourceMappingConfiguration');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateEventSourceMappingResult');
 }

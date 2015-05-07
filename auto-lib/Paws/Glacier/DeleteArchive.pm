@@ -1,13 +1,15 @@
 
 package Paws::Glacier::DeleteArchive {
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', required => 1);
-  has archiveId => (is => 'ro', isa => 'Str', required => 1);
-  has vaultName => (is => 'ro', isa => 'Str', required => 1);
+  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has archiveId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'archiveId' , required => 1);
+  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteArchive');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/archives/{archiveId}');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }

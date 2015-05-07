@@ -1,13 +1,15 @@
 
 package Paws::Glacier::DescribeJob {
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', required => 1);
-  has jobId => (is => 'ro', isa => 'Str', required => 1);
-  has vaultName => (is => 'ro', isa => 'Str', required => 1);
+  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has jobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId' , required => 1);
+  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeJob');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/jobs/{jobId}');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::GlacierJobDescription');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeJobResult');
 }

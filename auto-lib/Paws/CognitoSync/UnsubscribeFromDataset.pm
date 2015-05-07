@@ -1,14 +1,16 @@
 
 package Paws::CognitoSync::UnsubscribeFromDataset {
   use Moose;
-  has DatasetName => (is => 'ro', isa => 'Str', required => 1);
-  has DeviceId => (is => 'ro', isa => 'Str', required => 1);
-  has IdentityId => (is => 'ro', isa => 'Str', required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
+  has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName' , required => 1);
+  has DeviceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeviceId' , required => 1);
+  has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId' , required => 1);
+  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UnsubscribeFromDataset');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::UnsubscribeFromDatasetResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UnsubscribeFromDatasetResult');
 }

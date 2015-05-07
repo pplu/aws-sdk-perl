@@ -3,7 +3,7 @@ package Paws::ElasticTranscoder::UpdatePipeline {
   use Moose;
   has AwsKmsKeyArn => (is => 'ro', isa => 'Str');
   has ContentConfig => (is => 'ro', isa => 'Paws::ElasticTranscoder::PipelineOutputConfig');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
   has InputBucket => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Notifications => (is => 'ro', isa => 'Paws::ElasticTranscoder::Notifications');
@@ -13,6 +13,8 @@ package Paws::ElasticTranscoder::UpdatePipeline {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePipeline');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/pipelines/{Id}');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::UpdatePipelineResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdatePipelineResult');
 }

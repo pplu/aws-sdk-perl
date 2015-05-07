@@ -1,16 +1,18 @@
 
 package Paws::Glacier::UploadMultipartPart {
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', required => 1);
+  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
   has body => (is => 'ro', isa => 'Str');
-  has checksum => (is => 'ro', isa => 'Str');
-  has range => (is => 'ro', isa => 'Str');
-  has uploadId => (is => 'ro', isa => 'Str', required => 1);
-  has vaultName => (is => 'ro', isa => 'Str', required => 1);
+  has checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sha256-tree-hash' );
+  has range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Range' );
+  has uploadId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'uploadId' , required => 1);
+  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadMultipartPart');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::UploadMultipartPartOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UploadMultipartPartResult');
 }

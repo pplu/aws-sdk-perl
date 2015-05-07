@@ -1,15 +1,17 @@
 
 package Paws::Glacier::ListParts {
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', required => 1);
-  has limit => (is => 'ro', isa => 'Str');
-  has marker => (is => 'ro', isa => 'Str');
-  has uploadId => (is => 'ro', isa => 'Str', required => 1);
-  has vaultName => (is => 'ro', isa => 'Str', required => 1);
+  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit' );
+  has marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
+  has uploadId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'uploadId' , required => 1);
+  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListParts');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ListPartsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListPartsResult');
 }

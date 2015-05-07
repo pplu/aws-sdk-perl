@@ -1,14 +1,16 @@
 
 package Paws::Glacier::InitiateMultipartUpload {
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', required => 1);
-  has archiveDescription => (is => 'ro', isa => 'Str');
-  has partSize => (is => 'ro', isa => 'Str');
-  has vaultName => (is => 'ro', isa => 'Str', required => 1);
+  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has archiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-archive-description' );
+  has partSize => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-part-size' );
+  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'InitiateMultipartUpload');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/multipart-uploads');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::InitiateMultipartUploadOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'InitiateMultipartUploadResult');
 }

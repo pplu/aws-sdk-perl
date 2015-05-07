@@ -2,7 +2,7 @@
 package Paws::Lambda::AddPermission {
   use Moose;
   has Action => (is => 'ro', isa => 'Str', required => 1);
-  has FunctionName => (is => 'ro', isa => 'Str', required => 1);
+  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
   has Principal => (is => 'ro', isa => 'Str', required => 1);
   has SourceAccount => (is => 'ro', isa => 'Str');
   has SourceArn => (is => 'ro', isa => 'Str');
@@ -11,6 +11,8 @@ package Paws::Lambda::AddPermission {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddPermission');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/versions/HEAD/policy');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::AddPermissionResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'AddPermissionResult');
 }

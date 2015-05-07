@@ -1,14 +1,16 @@
 
 package Paws::Glacier::GetJobOutput {
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', required => 1);
-  has jobId => (is => 'ro', isa => 'Str', required => 1);
-  has range => (is => 'ro', isa => 'Str');
-  has vaultName => (is => 'ro', isa => 'Str', required => 1);
+  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has jobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId' , required => 1);
+  has range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Range' );
+  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetJobOutput');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/jobs/{jobId}/output');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::GetJobOutputOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetJobOutputResult');
 }
