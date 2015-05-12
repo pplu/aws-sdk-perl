@@ -33,6 +33,11 @@ package Paws::Glacier {
     my $call_object = $self->new_with_coercions('Paws::Glacier::DeleteVault', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteVaultAccessPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glacier::DeleteVaultAccessPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteVaultNotifications {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glacier::DeleteVaultNotifications', @_);
@@ -56,6 +61,11 @@ package Paws::Glacier {
   sub GetJobOutput {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glacier::GetJobOutput', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetVaultAccessPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glacier::GetVaultAccessPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetVaultNotifications {
@@ -96,6 +106,11 @@ package Paws::Glacier {
   sub SetDataRetrievalPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glacier::SetDataRetrievalPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SetVaultAccessPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glacier::SetVaultAccessPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SetVaultNotifications {
@@ -434,6 +449,35 @@ Developer Guide>.
 
 
 
+=head2 DeleteVaultAccessPolicy(accountId => Str, vaultName => Str)
+
+Each argument is described in detail in: L<Paws::Glacier::DeleteVaultAccessPolicy>
+
+Returns: nothing
+
+  
+
+This operation deletes the access policy associated with the specified
+vault. The operation is eventually consistentE<acirc>E<128>E<148>that
+is, it might take some time for Amazon Glacier to completely remove the
+access policy, and you might still see the effect of the policy for a
+short time after you send the delete request.
+
+This operation is idempotent. You can invoke delete multiple times,
+even if there is no policy associated with the vault. For more
+information about vault access policies, see Amazon Glacier Access
+Control with Vault Access Policies.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DeleteVaultNotifications(accountId => Str, vaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::DeleteVaultNotifications>
@@ -556,6 +600,20 @@ Returns: a L<Paws::Glacier::GetDataRetrievalPolicyOutput> instance
 
   
 
+This operation returns the current data retrieval policy for the
+account and region specified in the GET request. For more information
+about data retrieval policies, see Amazon Glacier Data Retrieval
+Policies.
+
+
+
+
+
+
+
+
+
+
 
 =head2 GetJobOutput(accountId => Str, jobId => Str, vaultName => Str, [range => Str])
 
@@ -591,10 +649,10 @@ range using the C<Range> header.
 
 =item 2.
 
-Along with the data, the response includes a checksum of the payload.
-You compute the checksum of the payload on the client and compare it
-with the checksum you received in the response to ensure you received
-all the expected data.
+Along with the data, the response includes a SHA256 tree hash of the
+payload. You compute the checksum of the payload on the client and
+compare it with the checksum you received in the response to ensure you
+received all the expected data.
 
 =item 3.
 
@@ -622,6 +680,31 @@ Using AWS Identity and Access Management (IAM).
 For conceptual information and the underlying REST API, go to
 Downloading a Vault Inventory, Downloading an Archive, and Get Job
 Output
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetVaultAccessPolicy(accountId => Str, vaultName => Str)
+
+Each argument is described in detail in: L<Paws::Glacier::GetVaultAccessPolicy>
+
+Returns: a L<Paws::Glacier::GetVaultAccessPolicyOutput> instance
+
+  
+
+This operation retrieves the C<access-policy> subresource set on the
+vaultE<acirc>E<128>E<148>for more information on setting this
+subresource, see Set Vault Access Policy (PUT access-policy). If there
+is no access policy set on the vault, the operation returns a C<404 Not
+found> error. For more information about vault access policies, see
+Amazon Glacier Access Control with Vault Access Policies.
 
 
 
@@ -689,6 +772,12 @@ Retrieving data from Amazon Glacier is a two-step process:
 =item 1.
 
 Initiate a retrieval job.
+
+A data retrieval policy can cause your initiate retrieval job request
+to fail with a PolicyEnforcedException exception. For more information
+about data retrieval policies, see Amazon Glacier Data Retrieval
+Policies. For more information about the PolicyEnforcedException
+exception, see Error Responses.
 
 =item 2.
 
@@ -1082,6 +1171,50 @@ Each argument is described in detail in: L<Paws::Glacier::SetDataRetrievalPolicy
 Returns: nothing
 
   
+
+This operation sets and then enacts a data retrieval policy in the
+region specified in the PUT request. You can set one policy per region
+for an AWS account. The policy is enacted within a few minutes of a
+successful PUT operation.
+
+The set policy operation does not affect retrieval jobs that were in
+progress before the policy was enacted. For more information about data
+retrieval policies, see Amazon Glacier Data Retrieval Policies.
+
+
+
+
+
+
+
+
+
+
+
+=head2 SetVaultAccessPolicy(accountId => Str, vaultName => Str, [policy => Paws::Glacier::VaultAccessPolicy])
+
+Each argument is described in detail in: L<Paws::Glacier::SetVaultAccessPolicy>
+
+Returns: nothing
+
+  
+
+This operation configures an access policy for a vault and will
+overwrite an existing policy. To configure a vault access policy, send
+a PUT request to the C<access-policy> subresource of the vault. An
+access policy is specific to a vault and is also called a vault
+subresource. You can set one access policy per vault and the policy can
+be up to 20 KB in size. For more information about vault access
+policies, see Amazon Glacier Access Control with Vault Access Policies.
+
+
+
+
+
+
+
+
+
 
 
 =head2 SetVaultNotifications(accountId => Str, vaultName => Str, [vaultNotificationConfig => Paws::Glacier::VaultNotificationConfig])

@@ -39,6 +39,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+The C<AccountId> value is the AWS account ID. This value must match the
+AWS account ID associated with the credentials used to sign the
+request. You can either specify an AWS account ID or optionally a
+single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
+account ID associated with the credentials used to sign the request. If
+you specify your Account ID, do not include any hyphens (apos-apos) in
+the ID.
+
+
+
+
+
+
+
+
+
+
 
 
 =head1 SEE ALSO

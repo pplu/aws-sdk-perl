@@ -19,6 +19,17 @@ Paws::Glacier::GetDataRetrievalPolicyOutput
 
   
 
+Contains the returned data retrieval policy in JSON format.
+
+
+
+
+
+
+
+
+
+
 
 =cut
 
