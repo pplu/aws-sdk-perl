@@ -1042,10 +1042,8 @@ roles, go to Working with Roles. For information about limitations on
 role names and the number of roles you can create, go to Limitations on
 IAM Entities in the I<Using IAM> guide.
 
-The example policy grants permission to an EC2 instance to assume the
-role. The policy is URL-encoded according to RFC 3986. For more
-information about RFC 3986, go to
-http://www.faqs.org/rfcs/rfc3986.html.
+The policy in the following example grants permission to an EC2
+instance to assume the role.
 
 
 
@@ -1805,10 +1803,10 @@ Returns: a L<Paws::IAM::GetAccountAuthorizationDetailsResponse> instance
 
   
 
-Retrieves information about all IAM users, groups, and roles in your
-account, including their relationships to one another and their
-policies. Use this API to obtain a snapshot of the configuration of IAM
-permissions (users, groups, roles, and policies) in your account.
+Retrieves information about all IAM users, groups, roles, and policies
+in your account, including their relationships to one another. Use this
+API to obtain a snapshot of the configuration of IAM permissions
+(users, groups, roles, and policies) in your account.
 
 You can optionally filter the results using the C<Filter> parameter.
 You can paginate the results using the C<MaxItems> and C<Marker>
@@ -2081,10 +2079,6 @@ Retrieves information about the specified role, including the role's
 path, GUID, ARN, and the policy granting permission to assume the role.
 For more information about ARNs, go to ARNs. For more information about
 roles, go to Working with Roles.
-
-The returned policy is URL-encoded according to RFC 3986. For more
-information about RFC 3986, go to
-http://www.faqs.org/rfcs/rfc3986.html.
 
 
 
@@ -2679,10 +2673,6 @@ to Working with Roles.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
-
-The returned policy is URL-encoded according to RFC 3986. For more
-information about RFC 3986, go to
-http://www.faqs.org/rfcs/rfc3986.html.
 
 
 

@@ -45,8 +45,6 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The policy document.
 
-The policy must be URL-encoded according to RFC 3986.
-
 
 
 

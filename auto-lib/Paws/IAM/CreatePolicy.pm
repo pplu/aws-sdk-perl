@@ -84,8 +84,6 @@ slash (/).
 
 The policy document.
 
-The policy must be URL-encoded according to RFC 3986.
-
 
 
 
