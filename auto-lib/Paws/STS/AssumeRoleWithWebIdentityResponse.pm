@@ -43,9 +43,9 @@ specified when you called C<AssumeRole>.
 
   
 
-The intended audience of the web identity token. This is traditionally
-the client identifier issued to the application that requested the web
-identity token.
+The intended audience (also known as client ID) of the web identity
+token. This is traditionally the client identifier issued to the
+application that requested the web identity token.
 
 
 
@@ -92,7 +92,7 @@ form. The service rejects any policy with a packed size greater than
 
 The issuing authority of the web identity token presented. For OpenID
 Connect ID Tokens this contains the value of the C<iss> field. For
-OAuth 2.0 Access Tokens, this contains the value of the C<ProviderId>
+OAuth 2.0 access tokens, this contains the value of the C<ProviderId>
 parameter that was passed in the C<AssumeRoleWithWebIdentity> request.
 
 
@@ -111,9 +111,9 @@ The unique user identifier that is returned by the identity provider.
 This identifier is associated with the C<WebIdentityToken> that was
 submitted with the C<AssumeRoleWithWebIdentity> call. The identifier is
 typically unique to the user and the application that acquired the
-C<WebIdentityToken> (pairwise identifier). If an OpenID Connect ID
-token was submitted in the C<WebIdentityToken>, this value is returned
-by the identity provider as the token's C<sub> (Subject) claim.
+C<WebIdentityToken> (pairwise identifier). For OpenID Connect ID
+tokens, this field contains the value returned by the identity provider
+as the token's C<sub> (Subject) claim.
 
 
 

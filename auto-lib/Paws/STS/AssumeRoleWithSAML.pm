@@ -44,8 +44,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The duration, in seconds, of the role session. The value can range from
 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the
 value is set to 3600 seconds. An expiration can also be specified in
-the SAML authentication response's C<NotOnOrAfter> value. The actual
-expiration time is whichever value is shorter.
+the SAML authentication response's C<SessionNotOnOrAfter> value. The
+actual expiration time is whichever value is shorter.
+
+The maximum duration for a session is 1 hour, and the minimum duration
+is 15 minutes, even if values outside this range are specified.
 
 
 
@@ -71,6 +74,9 @@ security credentials. You cannot use the passed policy to grant
 permissions that are in excess of those allowed by the access policy of
 the role that is being assumed. For more information, see Permissions
 for AssumeRoleWithSAML in I<Using Temporary Security Credentials>.
+
+The policy must be 2048 bytes or shorter, and its packed size must be
+less than 450 bytes.
 
 
 

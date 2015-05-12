@@ -85,11 +85,15 @@ Credentials>.
 
   
 
-The fully-qualified host component of the domain name of the identity
-provider. Specify this value only for OAuth access tokens. Do not
-specify this value for OpenID Connect ID tokens, such as
-C<accounts.google.com>. Do not include URL schemes and port numbers.
-Currently, C<www.amazon.com> and C<graph.facebook.com> are supported.
+The fully qualified host component of the domain name of the identity
+provider.
+
+Specify this value only for OAuth 2.0 access tokens. Currently
+C<www.amazon.com> and C<graph.facebook.com> are the only supported
+identity providers for OAuth 2.0 access tokens. Do not include URL
+schemes and port numbers.
+
+Do not specify this value for OpenID Connect ID tokens.
 
 
 

@@ -75,6 +75,15 @@ and Access Management (IAM) users or for users that you authenticate
 more detailed information about using this service, go to Using
 Temporary Security Credentials.
 
+As an alternative to using the API, you can use one of the AWS SDKs,
+which consist of libraries and sample code for various programming
+languages and platforms (Java, Ruby, .NET, iOS, Android, etc.). The
+SDKs provide a convenient way to create programmatic access to STS. For
+example, the SDKs take care of cryptographically signing requests,
+managing errors, and retrying requests automatically. For information
+about the AWS SDKs, including how to download and install them, see the
+Tools for Amazon Web Services page.
+
 For information about setting up signatures and authorization through
 the API, go to Signing AWS API Requests in the I<AWS General
 Reference>. For general information about the Query API, go to Making
@@ -87,6 +96,14 @@ specific AWS product, you can find the product's technical
 documentation at http://aws.amazon.com/documentation/.
 
 B<Endpoints>
+
+The AWS Security Token Service (STS) has a default endpoint of
+https://sts.amazonaws.com that maps to the US East (N. Virginia)
+region. Additional regions are available, but must first be activated
+in the AWS Management Console before you can use a different region's
+endpoint. For more information about activating a region for STS see
+Activating STS in a New Region in the I<Using Temporary Security
+Credentials> guide.
 
 For information about STS endpoints, see Regions and Endpoints in the
 I<AWS General Reference>.
@@ -224,7 +241,10 @@ Applications can use these temporary security credentials to sign calls
 to AWS services. The credentials are valid for the duration that you
 specified when calling C<AssumeRoleWithSAML>, which can be up to 3600
 seconds (1 hour) or until the time specified in the SAML authentication
-response's C<NotOnOrAfter> value, whichever is shorter.
+response's C<SessionNotOnOrAfter> value, whichever is shorter.
+
+The maximum duration for a session is 1 hour, and the minimum duration
+is 15 minutes, even if values outside this range are specified.
 
 Optionally, you can pass an IAM access policy to this operation. If you
 choose not to pass a policy, the temporary security credentials that
@@ -287,8 +307,17 @@ Returns: a L<Paws::STS::AssumeRoleWithWebIdentityResponse> instance
 
 Returns a set of temporary security credentials for users who have been
 authenticated in a mobile or web application with a web identity
-provider, such as Login with Amazon, Amazon Cognito, Facebook, or
-Google.
+provider, such as Amazon Cognito, Login with Amazon, Facebook, Google,
+or any OpenID Connect-compatible identity provider.
+
+For mobile applications, we recommend that you use Amazon Cognito. You
+can use Amazon Cognito with the AWS SDK for iOS and the AWS SDK for
+Android to uniquely identify a user and supply the user with a
+consistent identity throughout the lifetime of an application.
+
+To learn more about Amazon Cognito, see Amazon Cognito Overview in the
+I<AWS SDK for Android Developer Guide> guide and Amazon Cognito
+Overview in the I<AWS SDK for iOS Developer Guide>.
 
 Calling C<AssumeRoleWithWebIdentity> does not require the use of AWS
 security credentials. Therefore, you can distribute an application (for
@@ -328,7 +357,7 @@ identity token. In other words, the identity provider must be specified
 in the role's trust policy.
 
 For more information about how to use web identity federation and the
-C<AssumeRoleWithWebIdentity>, see the following resources:
+C<AssumeRoleWithWebIdentity> API, see the following resources:
 
 =over
 
@@ -379,6 +408,10 @@ or she has requested, the request returns a
 C<Client.UnauthorizedOperation> response (an HTTP 403 response). Some
 AWS actions additionally return an encoded message that can provide
 details about this authorization failure.
+
+Only certain AWS actions return an encoded authorization message. The
+documentation for an individual action indicates whether that action
+returns an encoded message in addition to returning an HTTP code.
 
 The message is encoded because the details of the authorization status
 can constitute privileged information that the user who requested the
@@ -434,9 +467,13 @@ of an IAM user, this call is appropriate in contexts where those
 credentials can be safely stored, usually in a server-based
 application.
 
-B<Note:> Do not use this call in mobile applications or client-based
-web applications that directly get temporary security credentials. For
-those types of applications, use C<AssumeRoleWithWebIdentity>.
+If you are creating a mobile-based or browser-based app that can
+authenticate users using a web identity provider like Login with
+Amazon, Facebook, Google, or an OpenID Connect-compatible identity
+provider, we recommend that you use Amazon Cognito or
+C<AssumeRoleWithWebIdentity>. For more information, see Creating
+Temporary Security Credentials for Mobile Apps Using Identity Providers
+in I<Using Temporary Security Credentials>.
 
 The C<GetFederationToken> action must be called by using the long-term
 AWS security credentials of an IAM user. You can also call
@@ -532,6 +569,11 @@ that are created by IAM users are valid for the duration that you
 specify, between 900 seconds (15 minutes) and 129600 seconds (36
 hours); credentials that are created by using account credentials have
 a maximum duration of 3600 seconds (1 hour).
+
+We recommend that you do not call C<GetSessionToken> with root account
+credentials. Instead, follow our best practices by creating one or more
+IAM users, giving them the necessary permissions, and using IAM users
+for everyday interaction with AWS.
 
 The permissions associated with the temporary security credentials
 returned by C<GetSessionToken> are based on the permissions associated
