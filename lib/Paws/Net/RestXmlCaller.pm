@@ -53,7 +53,8 @@ package Paws::Net::RestXmlCaller {
     my ($self, $call) = @_;
     my $uri_template = $call->meta->name->_api_uri;
     my $t = URI::Template->new( $uri_template );
-    my $vars = { map { $_ => $call->$_ } $t->variables };
+
+    my $vars = { map { my $att_name = $_->name; $_->does('Paws::API::Attribute::Trait::ParamInURI') ? ($_->uri_name => $call->$att_name ) : () } ($call->meta->get_all_attributes) };
     return $t->process_to_string($vars);
   }
 

@@ -1,7 +1,7 @@
 
 package Paws::S3::ListObjects {
   use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', required => 1);
+  has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
   has Delimiter => (is => 'ro', isa => 'Str');
   has EncodingType => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');

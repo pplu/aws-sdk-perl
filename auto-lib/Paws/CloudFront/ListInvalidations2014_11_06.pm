@@ -1,7 +1,7 @@
 
 package Paws::CloudFront::ListInvalidations2014_11_06 {
   use Moose;
-  has DistributionId => (is => 'ro', isa => 'Str', required => 1);
+  has DistributionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DistributionId' , required => 1);
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Str');
 

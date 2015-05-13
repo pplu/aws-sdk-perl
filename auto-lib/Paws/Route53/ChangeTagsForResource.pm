@@ -3,8 +3,8 @@ package Paws::Route53::ChangeTagsForResource {
   use Moose;
   has AddTags => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Tag]');
   has RemoveTagKeys => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
+  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId' , required => 1);
+  has ResourceType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceType' , required => 1);
 
   use MooseX::ClassAttribute;
 
