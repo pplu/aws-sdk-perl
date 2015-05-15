@@ -53,6 +53,11 @@ package Paws::CloudWatchLogs {
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeMetricFilters', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub FilterLogEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::FilterLogEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetLogEvents {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::GetLogEvents', @_);
@@ -405,6 +410,40 @@ are more metric filters to list, the response would contain a
 C<nextToken> value in the response body. You can also limit the number
 of metric filters returned in the response by specifying the C<limit>
 parameter in the request.
+
+
+
+
+
+
+
+
+
+
+
+=head2 FilterLogEvents(logGroupName => Str, [endTime => Num, filterPattern => Str, interleaved => Bool, limit => Int, logStreamNames => ArrayRef[Str], nextToken => Str, startTime => Num])
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::FilterLogEvents>
+
+Returns: a L<Paws::CloudWatchLogs::FilterLogEventsResponse> instance
+
+  
+
+Retrieves log events, optionally filtered by a filter pattern from the
+specified log group. You can provide an optional time range to filter
+the results on the event C<timestamp>. You can limit the streams
+searched to an explicit list of C<logStreamNames>.
+
+By default, this operation returns as much matching log events as can
+fit in a response size of 1MB, up to 10,000 log events, or all the
+events found within a time-bounded scan window. If the response
+includes a C<nextToken>, then there is more data to search, and the
+search can be resumed with a new request providing the nextToken. The
+response will contain a list of C<searchedLogStreams> that contains
+information about which streams were searched in the request and
+whether they have been searched completely or require further
+pagination. The C<limit> parameter in the request. can be used to
+specify the maximum number of events to return in a page.
 
 
 
