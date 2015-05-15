@@ -56,8 +56,8 @@ is the name of the resource that given in the template.
 
   
 
-The stack name or ID that includes the resource that you want to
-signal.
+The stack name or unique stack ID that includes the resource that you
+want to signal.
 
 
 

@@ -55,13 +55,12 @@ stacks, you must explicitly acknowledge their capabilities by
 specifying this parameter.
 
 Currently, the only valid value is C<CAPABILITY_IAM>, which is required
-for the following resources: AWS::CloudFormation::Stack,
-AWS::IAM::AccessKey, AWS::IAM::Group, AWS::IAM::InstanceProfile,
-AWS::IAM::Policy, AWS::IAM::Role, AWS::IAM::User, and
-AWS::IAM::UserToGroupAddition. If your stack template contains these
-resources, we recommend that you review any permissions associated with
-them. If you don't specify this parameter, this action returns an
-C<InsufficientCapabilities> error.
+for the following resources: AWS::IAM::AccessKey, AWS::IAM::Group,
+AWS::IAM::InstanceProfile, AWS::IAM::Policy, AWS::IAM::Role,
+AWS::IAM::User, and AWS::IAM::UserToGroupAddition. If your stack
+template contains these resources, we recommend that you review any
+permissions associated with them. If you don't specify this parameter,
+this action returns an C<InsufficientCapabilities> error.
 
 
 
@@ -147,11 +146,12 @@ stack.
 
   
 
-The name associated with the stack. The name must be unique within your
-AWS account.
+The name that is associated with the stack. The name must be unique in
+the region in which you are creating the stack.
 
-Must contain only alphanumeric characters (case sensitive) and start
-with an alpha character. Maximum length of the name is 255 characters.
+A stack name can contain only alphanumeric characters (case sensitive)
+and hyphens. It must start with an alphabetic character and cannot be
+longer than 255 characters.
 
 
 
@@ -241,7 +241,7 @@ C<TemplateURL> parameter, but not both.
   
 
 Location of file containing the template body. The URL must point to a
-template (max size: 307,200 bytes) located in an S3 bucket in the same
+template (max size: 460,800 bytes) located in an S3 bucket in the same
 region as the stack. For more information, go to the Template Anatomy
 in the AWS CloudFormation User Guide.
 

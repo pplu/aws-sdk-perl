@@ -5,6 +5,7 @@ package Paws::CloudFormation::GetTemplateSummaryOutput {
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
   has CapabilitiesReason => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has Metadata => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::ParameterDeclaration]');
   has Version => (is => 'ro', isa => 'Str');
 
@@ -42,7 +43,8 @@ InsufficientCapabilities error.
 
   
 
-The capabilities reason found within the template.
+The list of resources that generated the values in the C<Capabilities>
+response element.
 
 
 
@@ -58,6 +60,20 @@ The capabilities reason found within the template.
 
 The value that is defined in the C<Description> property of the
 template.
+
+
+
+
+
+
+
+
+
+=head2 Metadata => Str
+
+  
+
+The value that is defined for the C<Metadata> property of the template.
 
 
 
