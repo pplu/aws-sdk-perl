@@ -21,7 +21,7 @@ Paws::EC2::CancelImportTaskResult
 
   
 
-The task ID of the ImportImage or ImportSnapshot task being canceled.
+The ID of the task being canceled.
 
 
 
@@ -35,8 +35,7 @@ The task ID of the ImportImage or ImportSnapshot task being canceled.
 
   
 
-The current state of the ImportImage or ImportSnapshot task being
-canceled.
+The current state of the task being canceled.
 
 
 
@@ -50,8 +49,7 @@ canceled.
 
   
 
-The current state of the ImportImage or ImportSnapshot task being
-canceled.
+The current state of the task being canceled.
 
 
 

@@ -20,8 +20,8 @@ Paws::EC2::DescribeImportImageTasksResult
 
   
 
-A list of zero or more ImportImage tasks that are currently active or
-completed/cancelled in the previous 7 days.
+A list of zero or more import image tasks that are currently active or
+were completed or canceled in the previous 7 days.
 
 
 
@@ -35,7 +35,8 @@ completed/cancelled in the previous 7 days.
 
   
 
-The token to get the next page of paginated describe requests.
+The token to use to get the next page of results. This value is C<null>
+when there are no more results to return.
 
 
 

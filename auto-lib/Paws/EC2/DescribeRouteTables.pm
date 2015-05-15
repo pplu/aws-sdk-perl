@@ -39,6 +39,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 Filters => ArrayRef[Paws::EC2::Filter]
 
   
@@ -75,6 +89,11 @@ C<route-table-id> - The ID of the route table.
 
 C<route.destination-cidr-block> - The CIDR range specified in a route
 in the table.
+
+=item *
+
+C<route.destination-prefix-list-id> - The ID (prefix) of the AWS
+service specified in a route in the table.
 
 =item *
 

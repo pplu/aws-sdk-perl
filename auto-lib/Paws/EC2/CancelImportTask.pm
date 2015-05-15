@@ -54,11 +54,25 @@ The reason for canceling the task.
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 ImportTaskId => Str
 
   
 
-The ID of the ImportImage or ImportSnapshot task to be cancelled.
+The ID of the import image or import snapshot task to be canceled.
 
 
 

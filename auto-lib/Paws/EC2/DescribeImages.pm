@@ -41,6 +41,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 ExecutableUsers => ArrayRef[Str]
 
   
@@ -78,23 +92,23 @@ termination.
 
 =item *
 
-C<block-device-mapping.device-name> - The device name for the Amazon
-EBS volume (for example, C</dev/sdh>).
+C<block-device-mapping.device-name> - The device name for the EBS
+volume (for example, C</dev/sdh>).
 
 =item *
 
 C<block-device-mapping.snapshot-id> - The ID of the snapshot used for
-the Amazon EBS volume.
+the EBS volume.
 
 =item *
 
-C<block-device-mapping.volume-size> - The volume size of the Amazon EBS
+C<block-device-mapping.volume-size> - The volume size of the EBS
 volume, in GiB.
 
 =item *
 
-C<block-device-mapping.volume-type> - The volume type of the Amazon EBS
-volume (C<gp2> | C<standard> | C<io1>).
+C<block-device-mapping.volume-type> - The volume type of the EBS volume
+(C<gp2> | C<standard> | C<io1>).
 
 =item *
 

@@ -46,7 +46,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The architecture of the virtual machine being imported (optional).
+The architecture of the virtual machine.
+
+Valid values: C<i386> | C<x86_64>
 
 
 
@@ -61,7 +63,7 @@ The architecture of the virtual machine being imported (optional).
 
   
 
-Client-specific data.
+The client-specific data.
 
 
 
@@ -76,7 +78,7 @@ Client-specific data.
 
   
 
-The token to enable idempotency for VM import requests (optional).
+The token to enable idempotency for VM import requests.
 
 
 
@@ -91,7 +93,7 @@ The token to enable idempotency for VM import requests (optional).
 
   
 
-A description string for the import image task (optional).
+A description string for the import image task.
 
 
 
@@ -106,15 +108,42 @@ A description string for the import image task (optional).
 
   
 
+Information about the disk containers.
+
+
+
+
+
+
+
+
+
+
 =head2 DryRun => Bool
 
   
+
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
 
 =head2 Hypervisor => Str
 
   
 
-The target hypervisor platform to use (optional).
+The target hypervisor platform.
+
+Valid values: C<xen>
 
 
 
@@ -130,14 +159,14 @@ The target hypervisor platform to use (optional).
   
 
 The license type to be used for the Amazon Machine Image (AMI) after
-importing (optional).
+importing.
 
 B<Note:> You may only use BYOL if you have existing licenses with
 rights to use these licenses in a third party cloud like AWS. For more
 information, see VM Import/Export Prerequisites in the I<Amazon Elastic
 Compute Cloud User Guide for Linux>.
 
-Valid Values: AWS | BYOL
+Valid values: C<AWS> | C<BYOL>
 
 
 
@@ -152,7 +181,9 @@ Valid Values: AWS | BYOL
 
   
 
-The operating system of the virtual machine being imported (optional).
+The operating system of the virtual machine.
+
+Valid values: C<Windows> | C<Linux>
 
 
 
@@ -167,8 +198,8 @@ The operating system of the virtual machine being imported (optional).
 
   
 
-The name of the role to use when not using the default role name
-'vmimport' (optional).
+The name of the role to use when not using the default role,
+'vmimport'.
 
 
 

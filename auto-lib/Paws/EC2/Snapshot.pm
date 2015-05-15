@@ -88,7 +88,7 @@ ID that owns the snapshot.
 
   
 
-The AWS account ID of the Amazon EBS snapshot owner.
+The AWS account ID of the EBS snapshot owner.
 
 
 

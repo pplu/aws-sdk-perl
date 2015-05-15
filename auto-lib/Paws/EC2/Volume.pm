@@ -29,6 +29,17 @@ Paws::EC2::Volume
 =head2 Attachments => ArrayRef[Paws::EC2::VolumeAttachment]
 
   
+
+Information about the volume attachments.
+
+
+
+
+
+
+
+
+
 =head2 AvailabilityZone => Str
 
   

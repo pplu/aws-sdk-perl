@@ -19,6 +19,17 @@ Paws::EC2::ImportInstanceResult
 
   
 
+Information about the conversion task.
+
+
+
+
+
+
+
+
+
+
 
 =cut
 

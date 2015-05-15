@@ -41,11 +41,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 Filters => ArrayRef[Paws::EC2::Filter]
 
   
 
-The filters to be applied on a describe request.
+One or more filters.
 
 
 
@@ -60,7 +74,7 @@ The filters to be applied on a describe request.
 
   
 
-A list of IDs of the ImportSnapshot tasks to describe.
+A list of import snapshot task IDs.
 
 
 
@@ -75,7 +89,7 @@ A list of IDs of the ImportSnapshot tasks to describe.
 
   
 
-The maximum number of results in a page.
+The maximum number of results to return in a single request.
 
 
 
@@ -90,7 +104,7 @@ The maximum number of results in a page.
 
   
 
-The token to get to the next page of paginated describe requests.
+A token that indicates the next page of results.
 
 
 

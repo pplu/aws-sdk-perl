@@ -40,6 +40,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 Filters => ArrayRef[Paws::EC2::Filter]
 
   
@@ -90,7 +104,7 @@ placed (for example, 2014-08-07T11:54:42.000Z).
 
 =item *
 
-C<state> - The state of the Reserved Instance (C<pending-payment> |
+C<state> - The state of the Reserved Instance (C<payment-pending> |
 C<active> | C<payment-failed> | C<retired>).
 
 =item *

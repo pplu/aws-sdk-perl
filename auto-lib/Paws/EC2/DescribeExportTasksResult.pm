@@ -19,6 +19,17 @@ Paws::EC2::DescribeExportTasksResult
 
   
 
+Information about the export tasks.
+
+
+
+
+
+
+
+
+
+
 
 =cut
 
