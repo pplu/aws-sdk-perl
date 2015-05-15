@@ -1,7 +1,10 @@
-0.07 
+0.07 15 May 2015 19:30:00
  - Generate META.yml
  - Add LICENSE info
  - Packaging corrections
+ - Lots of documentation updates
+ - Support for new features in CloudWatchLogs, EC2 (VPC endpoint support), CloudFormation
+ - New API: Paws::DS (Directory Service)
 
 0.06 5 May 2015 23:30:00
  - Fix Map handling in JsonCaller (and add tests)
