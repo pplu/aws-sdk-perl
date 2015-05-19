@@ -19,6 +19,17 @@ Paws::EC2::CreateInstanceExportTaskResult
 
   
 
+Information about the instance export task.
+
+
+
+
+
+
+
+
+
+
 
 =cut
 

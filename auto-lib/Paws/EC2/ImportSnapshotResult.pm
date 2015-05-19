@@ -21,7 +21,7 @@ Paws::EC2::ImportSnapshotResult
 
   
 
-Description of the import snapshot task.
+A description of the import snapshot task.
 
 
 
@@ -35,7 +35,7 @@ Description of the import snapshot task.
 
   
 
-Task ID of the ImportSnapshot task.
+The ID of the import snapshot task.
 
 
 
@@ -48,6 +48,17 @@ Task ID of the ImportSnapshot task.
 =head2 SnapshotTaskDetail => Paws::EC2::SnapshotTaskDetail
 
   
+
+Information about the import snapshot task.
+
+
+
+
+
+
+
+
+
 
 
 =cut

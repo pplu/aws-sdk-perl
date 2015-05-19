@@ -29,7 +29,7 @@ Paws::EC2::ImportImageResult
 
   
 
-Architecture of the virtual machine being imported.
+The architecture of the virtual machine.
 
 
 
@@ -57,7 +57,7 @@ A description of the import task.
 
   
 
-Target hypervisor of the import task.
+The target hypervisor of the import task.
 
 
 
@@ -71,7 +71,7 @@ Target hypervisor of the import task.
 
   
 
-The Amazon Machine Image (AMI) ID created by the import task.
+The ID of the Amazon Machine Image (AMI) created by the import task.
 
 
 
@@ -85,7 +85,7 @@ The Amazon Machine Image (AMI) ID created by the import task.
 
   
 
-The task id of the ImportImage task.
+The task ID of the import image task.
 
 
 
@@ -99,7 +99,7 @@ The task id of the ImportImage task.
 
   
 
-License type of the virtual machine being imported.
+The license type of the virtual machine.
 
 
 
@@ -113,7 +113,7 @@ License type of the virtual machine being imported.
 
   
 
-Operating system of the VM being imported.
+The operating system of the virtual machine.
 
 
 
@@ -127,7 +127,7 @@ Operating system of the VM being imported.
 
   
 
-The task's progress.
+The progress of the task.
 
 
 
@@ -140,6 +140,17 @@ The task's progress.
 =head2 SnapshotDetails => ArrayRef[Paws::EC2::SnapshotDetail]
 
   
+
+Information about the snapshots.
+
+
+
+
+
+
+
+
+
 =head2 Status => Str
 
   

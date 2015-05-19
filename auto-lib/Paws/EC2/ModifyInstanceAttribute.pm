@@ -74,7 +74,7 @@ volume is deleted when the instance is terminated.
 To add instance store volumes to an Amazon EBS-backed instance, you
 must add them when you launch the instance. For more information, see
 Updating the Block Device Mapping when Launching an Instance in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -104,6 +104,20 @@ Amazon EC2 console, CLI, or API; otherwise, you can.
 =head2 DryRun => Bool
 
   
+
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
 
 =head2 EbsOptimized => Paws::EC2::AttributeBooleanValue
 

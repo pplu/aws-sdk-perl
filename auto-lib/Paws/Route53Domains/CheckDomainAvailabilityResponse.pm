@@ -48,6 +48,11 @@ is forbidden.
 =item * C<RESERVED> E<acirc>E<128>E<147> The domain name has been
 reserved for another person or organization.
 
+=item * C<DONT_KNOW> E<acirc>E<128>E<147> The TLD registry didn't reply
+with a definitive answer about whether the domain name is available.
+Amazon Route 53 can return this response for a variety of reasons, for
+example, the registry is performing maintenance. Try again later.
+
 =back
 
 

@@ -49,7 +49,7 @@ A list of product codes.
 
   
 
-The ID of the Amazon EBS snapshot.
+The ID of the EBS snapshot.
 
 
 

@@ -20,8 +20,8 @@ Paws::EC2::DescribeImportSnapshotTasksResult
 
   
 
-A list of zero or more ImportSnapshot tasks that are currently active
-or completed/cancelled in the previous 7 days.
+A list of zero or more import snapshot tasks that are currently active
+or were completed or canceled in the previous 7 days.
 
 
 
@@ -35,7 +35,8 @@ or completed/cancelled in the previous 7 days.
 
   
 
-The token to get to the next page of paginated describe requests.
+The token to use to get the next page of results. This value is C<null>
+when there are no more results to return.
 
 
 

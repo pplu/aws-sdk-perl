@@ -41,7 +41,8 @@ InsufficientCapabilities error.
 
   
 
-The capabilities reason found within the template.
+The list of resources that generated the values in the C<Capabilities>
+response element.
 
 
 

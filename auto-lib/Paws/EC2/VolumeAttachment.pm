@@ -38,8 +38,7 @@ The time stamp when the attachment initiated.
 
   
 
-Indicates whether the Amazon EBS volume is deleted on instance
-termination.
+Indicates whether the EBS volume is deleted on instance termination.
 
 
 

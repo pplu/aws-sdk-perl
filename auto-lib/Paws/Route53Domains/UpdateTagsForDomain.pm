@@ -95,7 +95,7 @@ Type: String
 Default: None
 
 Valid values: Unicode characters including alphanumeric, space, and
-".:/=+\-%@"
+".:/=+\-@"
 
 Constraints: Each key can be 1-128 characters long.
 
@@ -112,7 +112,7 @@ Type: String
 Default: None
 
 Valid values: Unicode characters including alphanumeric, space, and
-".:/=+\-%@"
+".:/=+\-@"
 
 Constraints: Each value can be 0-256 characters long.
 

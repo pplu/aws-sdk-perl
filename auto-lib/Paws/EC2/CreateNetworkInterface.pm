@@ -58,6 +58,20 @@ A description for the network interface.
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 Groups => ArrayRef[Str]
 
   
@@ -119,8 +133,8 @@ C<privateIpAddresses>.
 
 The number of IP addresses you can assign to a network interface varies
 by instance type. For more information, see Private IP Addresses Per
-ENI Per Instance Type in the I<Amazon Elastic Compute Cloud User Guide
-for Linux>.
+ENI Per Instance Type in the I<Amazon Elastic Compute Cloud User
+Guide>.
 
 
 

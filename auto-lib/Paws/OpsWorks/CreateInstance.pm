@@ -89,7 +89,8 @@ Instance Families and Types.
 
   
 
-For load-based or time-based instances, the type.
+For load-based or time-based instances, the type. Windows stacks can
+use only time-based instances.
 
 
 
@@ -225,6 +226,10 @@ An array that contains the instance layer IDs.
 
 The instance's operating system, which must be set to one of the
 following.
+
+For Windows stacks: Microsoft Windows Server 2012 R2.
+
+For Linux stacks:
 
 =over
 

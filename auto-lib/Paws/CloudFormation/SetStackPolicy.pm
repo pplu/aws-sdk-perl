@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name or stack ID that you want to associate a policy with.
+The name or unique stack ID that you want to associate a policy with.
 
 
 

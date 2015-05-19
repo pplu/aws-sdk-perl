@@ -20,7 +20,7 @@ Paws::EC2::DescribeSpotPriceHistoryResult
 
   
 
-The token to use to retrieve the next page of results. This value is
+The token required to retrieve the next set of results. This value is
 C<null> when there are no more results to return.
 
 

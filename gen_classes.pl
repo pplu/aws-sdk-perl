@@ -27,6 +27,7 @@ my $namespaces = {
   config => 'Config',
   datapipeline => 'DataPipeline',
   directconnect => 'DirectConnect',
+  ds => 'DS',
   dynamodb => 'DynamoDB',
   ec2 => 'EC2',
   elasticache => 'ElastiCache',

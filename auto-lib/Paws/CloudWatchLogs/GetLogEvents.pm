@@ -48,7 +48,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 The maximum number of log events returned in the response. If you don't
-specify a value, the request would return as much log events as can fit
+specify a value, the request would return as many log events as can fit
 in a response size of 1MB, up to 10,000 log events.
 
 

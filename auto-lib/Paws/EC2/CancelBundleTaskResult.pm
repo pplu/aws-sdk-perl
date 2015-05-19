@@ -19,7 +19,7 @@ Paws::EC2::CancelBundleTaskResult
 
   
 
-The bundle task.
+Information about the bundle task.
 
 
 
