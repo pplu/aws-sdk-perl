@@ -60,12 +60,27 @@ Filters the results by the specified Availability Zone.
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 EndTime => Str
 
   
 
 The date and time, up to the current date, from which to stop
-retrieving the price history data.
+retrieving the price history data, in UTC format (for example,
+I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 
 
 
@@ -106,9 +121,10 @@ wildcards; greater than or less than comparison is not supported).
 
 =item *
 
-C<timestamp> - The timestamp of the Spot Price history (for example,
-2010-08-16T05:06:11.000Z). You can use wildcards (* and ?). Greater
-than or less than comparison is not supported.
+C<timestamp> - The timestamp of the Spot Price history, in UTC format
+(for example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). You can use
+wildcards (* and ?). Greater than or less than comparison is not
+supported.
 
 =back
 
@@ -140,11 +156,10 @@ Filters the results by the specified instance types.
 
   
 
-The maximum number of results to return for the request in a single
-page. The remaining results of the initial request can be seen by
-sending another request with the returned C<NextToken> value. This
-value can be between 5 and 1000; if C<MaxResults> is given a value
-larger than 1000, only 1000 results are returned.
+The maximum number of results to return in a single call. Specify a
+value between 1 and 1000. The default value is 1000. To retrieve the
+remaining results, make another call with the returned C<NextToken>
+value.
 
 
 
@@ -159,7 +174,7 @@ larger than 1000, only 1000 results are returned.
 
   
 
-The token to retrieve the next page of results.
+The token for the next set of results.
 
 
 
@@ -190,7 +205,8 @@ Filters the results by the specified basic product descriptions.
   
 
 The date and time, up to the past 90 days, from which to start
-retrieving the price history data.
+retrieving the price history data, in UTC format (for example,
+I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 
 
 

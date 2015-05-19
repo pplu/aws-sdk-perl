@@ -164,7 +164,7 @@ importing.
 B<Note:> You may only use BYOL if you have existing licenses with
 rights to use these licenses in a third party cloud like AWS. For more
 information, see VM Import/Export Prerequisites in the I<Amazon Elastic
-Compute Cloud User Guide for Linux>.
+Compute Cloud User Guide>.
 
 Valid values: C<AWS> | C<BYOL>
 

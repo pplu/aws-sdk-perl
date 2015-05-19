@@ -220,7 +220,7 @@ Default: C<stop>
   
 
 The instance type. For more information, see Instance Types in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 Default: C<m1.small>
 
@@ -241,7 +241,7 @@ The ID of the kernel.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see PV-GRUB in the I<Amazon Elastic Compute Cloud
-User Guide for Linux>.
+User Guide>.
 
 
 
@@ -394,7 +394,7 @@ The ID of the RAM disk.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see PV-GRUB in the I<Amazon Elastic Compute Cloud
-User Guide for Linux>.
+User Guide>.
 
 
 
