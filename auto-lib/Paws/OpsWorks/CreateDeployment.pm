@@ -97,7 +97,7 @@ such as '"'.:
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
 For more information on custom JSON, see Use Custom JSON to Modify the
-Stack Configuration JSON.
+Stack Configuration Attributes.
 
 
 

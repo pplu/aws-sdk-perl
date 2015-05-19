@@ -83,7 +83,8 @@ by the different instance types, see Instance Families and Types.
 
   
 
-For load-based or time-based instances, the type.
+For load-based or time-based instances, the type. Windows stacks can
+use only time-based instances.
 
 
 
@@ -203,21 +204,25 @@ The instance's layer IDs.
 The instance's operating system, which must be set to one of the
 following.
 
+For Windows stacks: Microsoft Windows Server 2012 R2.
+
+For Linux stacks:
+
 =over
 
-=item * Standard operating systems: An Amazon Linux version such as
+=item * Standard operating systems: an Amazon Linux version such as
 C<Amazon Linux 2014.09>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04 LTS>.
 
 =item * Custom AMIs: C<Custom>
 
 =back
 
-The default option is the current Amazon Linux version, such as
-C<Amazon Linux 2014.09>. If you set this parameter to C<Custom>, you
-must use the CreateInstance action's AmiId parameter to specify the
-custom AMI that you want to use. For more information on the standard
-operating systems, see Operating SystemsFor more information on how to
-use custom AMIs with OpsWorks, see Using Custom AMIs.
+The default option is the current Amazon Linux version. If you set this
+parameter to C<Custom>, you must use the CreateInstance action's AmiId
+parameter to specify the custom AMI that you want to use. For more
+information on the standard operating systems, see Operating SystemsFor
+more information on how to use custom AMIs with OpsWorks, see Using
+Custom AMIs.
 
 
 
