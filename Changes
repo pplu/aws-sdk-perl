@@ -1,3 +1,8 @@
+0.08 19 May 2015 22:12:00
+ - EC2 SpotFleet API calls
+ - Opsworks support for Windows
+ - Update to ElasticBeanstalk API (ResourceName)
+
 0.07 15 May 2015 19:30:00
  - Generate META.yml
  - Add LICENSE info
