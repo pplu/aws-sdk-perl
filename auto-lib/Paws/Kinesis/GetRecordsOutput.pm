@@ -2,6 +2,7 @@
 package Paws::Kinesis::GetRecordsOutput {
   use Moose;
   with 'Paws::API::ResultParser';
+  has MillisBehindLatest => (is => 'ro', isa => 'Num');
   has NextShardIterator => (is => 'ro', isa => 'Str');
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Record]', required => 1);
 
@@ -14,6 +15,23 @@ package Paws::Kinesis::GetRecordsOutput {
 Paws::Kinesis::GetRecordsOutput
 
 =head1 ATTRIBUTES
+
+=head2 MillisBehindLatest => Num
+
+  
+
+The number of milliseconds the GetRecords response is from the tip of
+the stream, indicating how far behind current time the consumer is. A
+value of zero indicates record processing is caught up, and there are
+no new records to process at this moment.
+
+
+
+
+
+
+
+
 
 =head2 NextShardIterator => Str
 
