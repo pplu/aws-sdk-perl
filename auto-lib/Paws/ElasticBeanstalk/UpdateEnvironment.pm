@@ -173,9 +173,8 @@ C<InvalidParameterValue> error.
 
 This specifies the tier to use to update the environment.
 
-Condition: You can only update the tier version for an environment. If
-you change the name of the type, AWS Elastic Beanstalk returns
-C<InvalidParameterValue> error.
+Condition: At this time, if you change the tier version, name, or type,
+AWS Elastic Beanstalk returns C<InvalidParameterValue> error.
 
 
 

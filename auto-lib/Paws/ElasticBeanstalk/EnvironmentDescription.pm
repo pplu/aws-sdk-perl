@@ -34,8 +34,12 @@ Paws::ElasticBeanstalk::EnvironmentDescription
 
   
 
-Lists in-progress environment updates and application version
-deployments that you can cancel.
+Indicates if there is an in-progress environment configuration update
+or application version deployment that you can cancel.
+
+C<true:> There is an update in progress.
+
+C<false:> There are no updates currently in progress.
 
 
 
