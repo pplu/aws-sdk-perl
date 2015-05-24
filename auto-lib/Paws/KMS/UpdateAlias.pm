@@ -1,12 +1,12 @@
 
-package Paws::KMS::CreateAlias {
+package Paws::KMS::UpdateAlias {
   use Moose;
   has AliasName => (is => 'ro', isa => 'Str', required => 1);
   has TargetKeyId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAlias');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAlias');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
@@ -16,19 +16,19 @@ package Paws::KMS::CreateAlias {
 
 =head1 NAME
 
-Paws::KMS::CreateAlias - Arguments for method CreateAlias on Paws::KMS
+Paws::KMS::UpdateAlias - Arguments for method UpdateAlias on Paws::KMS
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateAlias on the 
+This class represents the parameters used for calling the method UpdateAlias on the 
 AWS Key Management Service service. Use the attributes of this class
-as arguments to method CreateAlias.
+as arguments to method UpdateAlias.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateAlias.
+You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAlias.
 
 As an example:
 
-  $service_obj->CreateAlias(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->UpdateAlias(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
@@ -38,9 +38,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-String that contains the display name. The name must start with the
-word "alias" followed by a forward slash (alias/). Aliases that begin
-with "alias/AWS" are reserved.
+String that contains the name of the alias to be modifed. The name must
+start with the word "alias" followed by a forward slash (alias/).
+Aliases that begin with "alias/AWS" are reserved.
 
 
 
@@ -55,9 +55,9 @@ with "alias/AWS" are reserved.
 
   
 
-An identifier of the key for which you are creating the alias. This
-value cannot be another alias but can be a globally unique identifier
-or a fully specified ARN to a key.
+Unique identifier of the customer master key to be associated with the
+alias. This value can be a globally unique identifier or the fully
+specified ARN of a key.
 
 =over
 
@@ -82,7 +82,7 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateAlias in L<Paws::KMS>
+This class forms part of L<Paws>, documenting arguments for method UpdateAlias in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 
