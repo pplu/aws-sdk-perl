@@ -1,7 +1,9 @@
 
 package Paws::KMS::RetireGrant {
   use Moose;
-  has GrantToken => (is => 'ro', isa => 'Str', required => 1);
+  has GrantId => (is => 'ro', isa => 'Str');
+  has GrantToken => (is => 'ro', isa => 'Str');
+  has KeyId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +35,61 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> GrantToken => Str
+=head2 GrantId => Str
+
+  
+
+Unique identifier of the grant to be retired. The grant ID is returned
+by the C<CreateGrant> function.
+
+=over
+
+=item * Grant ID Example -
+0123456789012345678901234567890123456789012345678901234567890123
+
+=back
+
+
+
+
+
+
+
+
+
+
+=head2 GrantToken => Str
 
   
 
 Token that identifies the grant to be retired.
+
+
+
+
+
+
+
+
+
+
+=head2 KeyId => Str
+
+  
+
+A unique identifier for the customer master key associated with the
+grant. This value can be a globally unique identifier or a fully
+specified ARN of the key.
+
+=over
+
+=item * Key ARN Example -
+arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+
+=item * Globally Unique Key ID Example -
+12345678-1234-1234-1234-123456789012
+
+=back
 
 
 

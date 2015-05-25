@@ -14,7 +14,7 @@ package Paws::Net::Caller {
     default     => sub {
         use HTTP::Tiny;
         HTTP::Tiny->new(
-            'agent' => 'AWS Perl SDK 0.1',
+            'agent' => 'AWS Perl SDK ' . $Paws::VERSION,
         );
     }
   );
