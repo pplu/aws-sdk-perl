@@ -1,7 +1,6 @@
 
 package Paws::EC2::ImportImageResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has Architecture => (is => 'ro', isa => 'Str', xmlname => 'architecture', traits => ['Unwrapped',]);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped',]);
   has Hypervisor => (is => 'ro', isa => 'Str', xmlname => 'hypervisor', traits => ['Unwrapped',]);

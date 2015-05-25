@@ -1,7 +1,6 @@
 
 package Paws::Kinesis::GetRecordsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has MillisBehindLatest => (is => 'ro', isa => 'Num');
   has NextShardIterator => (is => 'ro', isa => 'Str');
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Record]', required => 1);

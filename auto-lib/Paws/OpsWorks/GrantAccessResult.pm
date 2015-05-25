@@ -1,7 +1,6 @@
 
 package Paws::OpsWorks::GrantAccessResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has TemporaryCredential => (is => 'ro', isa => 'Paws::OpsWorks::TemporaryCredential');
 
 }

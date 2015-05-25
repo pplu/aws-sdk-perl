@@ -1,7 +1,6 @@
 
 package Paws::EC2::MoveAddressToVpcResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has AllocationId => (is => 'ro', isa => 'Str', xmlname => 'allocationId', traits => ['Unwrapped',]);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
 

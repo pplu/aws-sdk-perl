@@ -1,7 +1,6 @@
 
 package Paws::SDB::DomainMetadataResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AttributeNameCount => (is => 'ro', isa => 'Int');
   has AttributeNamesSizeBytes => (is => 'ro', isa => 'Num');
   has AttributeValueCount => (is => 'ro', isa => 'Int');

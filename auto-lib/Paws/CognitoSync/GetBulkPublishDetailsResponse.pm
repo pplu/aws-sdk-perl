@@ -1,7 +1,6 @@
 
 package Paws::CognitoSync::GetBulkPublishDetailsResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has BulkPublishCompleteTime => (is => 'ro', isa => 'Str');
   has BulkPublishStartTime => (is => 'ro', isa => 'Str');
   has BulkPublishStatus => (is => 'ro', isa => 'Str');

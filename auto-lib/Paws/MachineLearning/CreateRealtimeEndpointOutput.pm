@@ -1,7 +1,6 @@
 
 package Paws::MachineLearning::CreateRealtimeEndpointOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has MLModelId => (is => 'ro', isa => 'Str');
   has RealtimeEndpointInfo => (is => 'ro', isa => 'Paws::MachineLearning::RealtimeEndpointInfo');
 

@@ -1,7 +1,6 @@
 
 package Paws::DS::UpdateRadiusResult {
   use Moose;
-  with 'Paws::API::ResultParser';
 
 }
 

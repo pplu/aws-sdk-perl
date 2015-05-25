@@ -1,7 +1,6 @@
 
 package Paws::ImportExport::GetShippingLabelOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ShippingLabelURL => (is => 'ro', isa => 'Str');
   has Warning => (is => 'ro', isa => 'Str');
 

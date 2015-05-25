@@ -1,7 +1,6 @@
 
 package Paws::Lambda::ListEventSourceMappingsResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has EventSourceMappings => (is => 'ro', isa => 'ArrayRef[Paws::Lambda::EventSourceMappingConfiguration]');
   has NextMarker => (is => 'ro', isa => 'Str');
 

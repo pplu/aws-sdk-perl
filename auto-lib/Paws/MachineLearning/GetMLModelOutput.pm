@@ -1,7 +1,6 @@
 
 package Paws::MachineLearning::GetMLModelOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
   has EndpointInfo => (is => 'ro', isa => 'Paws::MachineLearning::RealtimeEndpointInfo');

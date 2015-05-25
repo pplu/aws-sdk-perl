@@ -1,7 +1,6 @@
 
 package Paws::WorkSpaces::CreateWorkspacesResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has FailedRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::FailedCreateWorkspaceRequest]');
   has PendingRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Workspace]');
 

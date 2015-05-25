@@ -1,7 +1,6 @@
 
 package Paws::EC2::RequestSpotFleetResponse {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has SpotFleetRequestId => (is => 'ro', isa => 'Str', xmlname => 'spotFleetRequestId', traits => ['Unwrapped',], required => 1);
 
 }

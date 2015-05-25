@@ -1,7 +1,6 @@
 
 package Paws::DS::CreateAliasResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Alias => (is => 'ro', isa => 'Str');
   has DirectoryId => (is => 'ro', isa => 'Str');
 

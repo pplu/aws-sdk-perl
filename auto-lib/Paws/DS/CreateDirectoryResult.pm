@@ -1,7 +1,6 @@
 
 package Paws::DS::CreateDirectoryResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has DirectoryId => (is => 'ro', isa => 'Str');
 
 }

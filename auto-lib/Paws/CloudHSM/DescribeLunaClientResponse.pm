@@ -1,7 +1,6 @@
 
 package Paws::CloudHSM::DescribeLunaClientResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Certificate => (is => 'ro', isa => 'Str');
   has CertificateFingerprint => (is => 'ro', isa => 'Str');
   has ClientArn => (is => 'ro', isa => 'Str');

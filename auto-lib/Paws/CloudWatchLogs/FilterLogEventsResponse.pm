@@ -1,7 +1,6 @@
 
 package Paws::CloudWatchLogs::FilterLogEventsResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has events => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::FilteredLogEvent]');
   has nextToken => (is => 'ro', isa => 'Str');
   has searchedLogStreams => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::SearchedLogStream]');

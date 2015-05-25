@@ -49,7 +49,6 @@ package [% c.api %]::[% operation.name %] {
 [%- IF (shape) %]
 package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
   use Moose;
-  with 'Paws::API::ResultParser';
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'

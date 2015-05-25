@@ -1,7 +1,6 @@
 
 package Paws::SQS::ChangeMessageVisibilityBatchResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Failed => (is => 'ro', isa => 'ArrayRef[Paws::SQS::BatchResultErrorEntry]', xmlname => 'BatchResultErrorEntry', traits => ['Unwrapped',], required => 1);
   has Successful => (is => 'ro', isa => 'ArrayRef[Paws::SQS::ChangeMessageVisibilityBatchResultEntry]', xmlname => 'ChangeMessageVisibilityBatchResultEntry', traits => ['Unwrapped',], required => 1);
 

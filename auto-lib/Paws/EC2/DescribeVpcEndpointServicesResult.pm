@@ -1,7 +1,6 @@
 
 package Paws::EC2::DescribeVpcEndpointServicesResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has ServiceNames => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'serviceNameSet', traits => ['Unwrapped',]);
 

@@ -1,7 +1,6 @@
 
 package Paws::EC2::VolumeAttachment {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has AttachTime => (is => 'ro', isa => 'Str', xmlname => 'attachTime', traits => ['Unwrapped',]);
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', xmlname => 'deleteOnTermination', traits => ['Unwrapped',]);
   has Device => (is => 'ro', isa => 'Str', xmlname => 'device', traits => ['Unwrapped',]);

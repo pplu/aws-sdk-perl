@@ -1,7 +1,6 @@
 
 package Paws::CognitoSync::ListRecordsResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Count => (is => 'ro', isa => 'Int');
   has DatasetDeletedAfterRequestedSyncCount => (is => 'ro', isa => 'Bool');
   has DatasetExists => (is => 'ro', isa => 'Bool');

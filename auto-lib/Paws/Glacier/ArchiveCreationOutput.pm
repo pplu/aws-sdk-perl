@@ -1,7 +1,6 @@
 
 package Paws::Glacier::ArchiveCreationOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has archiveId => (is => 'ro', isa => 'Str');
   has checksum => (is => 'ro', isa => 'Str');
   has location => (is => 'ro', isa => 'Str');

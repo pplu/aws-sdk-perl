@@ -1,7 +1,6 @@
 
 package Paws::DS::CreateComputerResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Computer => (is => 'ro', isa => 'Paws::DS::Computer');
 
 }

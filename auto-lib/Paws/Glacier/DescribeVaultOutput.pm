@@ -1,7 +1,6 @@
 
 package Paws::Glacier::DescribeVaultOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has CreationDate => (is => 'ro', isa => 'Str');
   has LastInventoryDate => (is => 'ro', isa => 'Str');
   has NumberOfArchives => (is => 'ro', isa => 'Num');

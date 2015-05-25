@@ -1,7 +1,6 @@
 
 package Paws::DS::EnableSsoResult {
   use Moose;
-  with 'Paws::API::ResultParser';
 
 }
 

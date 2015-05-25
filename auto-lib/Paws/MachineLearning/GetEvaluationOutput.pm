@@ -1,7 +1,6 @@
 
 package Paws::MachineLearning::GetEvaluationOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
   has EvaluationDataSourceId => (is => 'ro', isa => 'Str');

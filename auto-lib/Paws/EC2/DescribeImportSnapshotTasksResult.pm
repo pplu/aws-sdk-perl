@@ -1,7 +1,6 @@
 
 package Paws::EC2::DescribeImportSnapshotTasksResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has ImportSnapshotTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImportSnapshotTask]', xmlname => 'importSnapshotTaskSet', traits => ['Unwrapped',]);
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
 

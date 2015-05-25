@@ -1,7 +1,6 @@
 
 package Paws::SSM::DescribeAssociationResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AssociationDescription => (is => 'ro', isa => 'Paws::SSM::AssociationDescription');
 
 }

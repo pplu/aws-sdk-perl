@@ -1,7 +1,6 @@
 
 package Paws::Glacier::CreateVaultOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has location => (is => 'ro', isa => 'Str');
 
 }

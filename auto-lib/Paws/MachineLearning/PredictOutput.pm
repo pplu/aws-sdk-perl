@@ -1,7 +1,6 @@
 
 package Paws::MachineLearning::PredictOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Prediction => (is => 'ro', isa => 'Paws::MachineLearning::Prediction');
 
 }

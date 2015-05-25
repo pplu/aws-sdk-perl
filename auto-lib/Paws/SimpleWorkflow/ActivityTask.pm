@@ -1,7 +1,6 @@
 
 package Paws::SimpleWorkflow::ActivityTask {
   use Moose;
-  with 'Paws::API::ResultParser';
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has activityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', required => 1);
   has input => (is => 'ro', isa => 'Str');

@@ -1,7 +1,6 @@
 
 package Paws::S3::GetObjectOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AcceptRanges => (is => 'ro', isa => 'Str');
   has Body => (is => 'ro', isa => 'Str');
   has CacheControl => (is => 'ro', isa => 'Str');

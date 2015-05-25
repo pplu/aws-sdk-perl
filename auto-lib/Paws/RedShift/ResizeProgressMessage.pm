@@ -1,7 +1,6 @@
 
 package Paws::RedShift::ResizeProgressMessage {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AvgResizeRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
   has ElapsedTimeInSeconds => (is => 'ro', isa => 'Num');
   has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => 'Num');

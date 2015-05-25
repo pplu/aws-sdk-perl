@@ -1,7 +1,6 @@
 
 package Paws::ECS::DiscoverPollEndpointResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has endpoint => (is => 'ro', isa => 'Str');
 
 }

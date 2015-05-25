@@ -1,7 +1,6 @@
 
 package Paws::OpsWorks::RegisterInstanceResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has InstanceId => (is => 'ro', isa => 'Str');
 
 }

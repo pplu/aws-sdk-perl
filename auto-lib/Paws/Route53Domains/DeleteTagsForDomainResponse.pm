@@ -1,7 +1,6 @@
 
 package Paws::Route53Domains::DeleteTagsForDomainResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
 
 }
 

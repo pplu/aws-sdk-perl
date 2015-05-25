@@ -1,7 +1,6 @@
 
 package Paws::RedShift::ClusterSubnetGroupMessage {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ClusterSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterSubnetGroup]', xmlname => 'ClusterSubnetGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 

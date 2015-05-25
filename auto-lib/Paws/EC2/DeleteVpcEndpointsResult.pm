@@ -1,7 +1,6 @@
 
 package Paws::EC2::DeleteVpcEndpointsResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has Unsuccessful => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UnsuccessfulItem]', xmlname => 'unsuccessful', traits => ['Unwrapped',]);
 
 }

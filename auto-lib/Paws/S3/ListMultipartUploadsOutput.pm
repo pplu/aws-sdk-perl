@@ -1,7 +1,6 @@
 
 package Paws::S3::ListMultipartUploadsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Bucket => (is => 'ro', isa => 'Str');
   has CommonPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::S3::CommonPrefix]');
   has Delimiter => (is => 'ro', isa => 'Str');

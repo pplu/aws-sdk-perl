@@ -1,7 +1,6 @@
 
 package Paws::S3::GetBucketReplicationOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ReplicationConfiguration => (is => 'ro', isa => 'Paws::S3::ReplicationConfiguration');
 
 }

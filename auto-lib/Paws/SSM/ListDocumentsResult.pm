@@ -1,7 +1,6 @@
 
 package Paws::SSM::ListDocumentsResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has DocumentIdentifiers => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentIdentifier]');
   has NextToken => (is => 'ro', isa => 'Str');
 

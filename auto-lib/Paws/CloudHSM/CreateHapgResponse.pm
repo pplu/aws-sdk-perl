@@ -1,7 +1,6 @@
 
 package Paws::CloudHSM::CreateHapgResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has HapgArn => (is => 'ro', isa => 'Str');
 
 }

@@ -1,7 +1,6 @@
 
 package Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Directories => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::WorkspaceDirectory]');
   has NextToken => (is => 'ro', isa => 'Str');
 

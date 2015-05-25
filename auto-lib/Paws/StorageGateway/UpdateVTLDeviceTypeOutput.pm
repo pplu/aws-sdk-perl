@@ -1,7 +1,6 @@
 
 package Paws::StorageGateway::UpdateVTLDeviceTypeOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has VTLDeviceARN => (is => 'ro', isa => 'Str');
 
 }

@@ -1,7 +1,6 @@
 
 package Paws::CognitoSync::BulkPublishResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has IdentityPoolId => (is => 'ro', isa => 'Str');
 
 }

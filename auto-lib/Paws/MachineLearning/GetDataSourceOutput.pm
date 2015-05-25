@@ -1,7 +1,6 @@
 
 package Paws::MachineLearning::GetDataSourceOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ComputeStatistics => (is => 'ro', isa => 'Bool');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');

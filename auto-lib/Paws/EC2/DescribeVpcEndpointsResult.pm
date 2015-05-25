@@ -1,7 +1,6 @@
 
 package Paws::EC2::DescribeVpcEndpointsResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has VpcEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcEndpoint]', xmlname => 'vpcEndpointSet', traits => ['Unwrapped',]);
 

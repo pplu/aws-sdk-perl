@@ -1,7 +1,6 @@
 
 package Paws::EC2::CreateVpcEndpointResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped',]);
   has VpcEndpoint => (is => 'ro', isa => 'Paws::EC2::VpcEndpoint', xmlname => 'vpcEndpoint', traits => ['Unwrapped',]);
 

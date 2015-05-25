@@ -1,7 +1,6 @@
 
 package Paws::DS::DescribeSnapshotsResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has NextToken => (is => 'ro', isa => 'Str');
   has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::DS::Snapshot]');
 

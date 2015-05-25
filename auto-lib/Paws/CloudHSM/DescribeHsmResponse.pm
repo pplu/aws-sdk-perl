@@ -1,7 +1,6 @@
 
 package Paws::CloudHSM::DescribeHsmResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has EniId => (is => 'ro', isa => 'Str');
   has EniIp => (is => 'ro', isa => 'Str');

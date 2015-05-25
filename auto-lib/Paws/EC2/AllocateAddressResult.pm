@@ -1,7 +1,6 @@
 
 package Paws::EC2::AllocateAddressResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has AllocationId => (is => 'ro', isa => 'Str', xmlname => 'allocationId', traits => ['Unwrapped',]);
   has Domain => (is => 'ro', isa => 'Str', xmlname => 'domain', traits => ['Unwrapped',]);
   has PublicIp => (is => 'ro', isa => 'Str', xmlname => 'publicIp', traits => ['Unwrapped',]);

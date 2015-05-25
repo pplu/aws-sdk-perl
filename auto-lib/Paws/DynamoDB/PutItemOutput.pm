@@ -1,7 +1,6 @@
 
 package Paws::DynamoDB::PutItemOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Attributes => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
   has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
   has ItemCollectionMetrics => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionMetrics');

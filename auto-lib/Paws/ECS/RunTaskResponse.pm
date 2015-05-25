@@ -1,7 +1,6 @@
 
 package Paws::ECS::RunTaskResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]');
   has tasks => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Task]');
 

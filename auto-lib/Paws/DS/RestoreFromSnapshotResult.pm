@@ -1,7 +1,6 @@
 
 package Paws::DS::RestoreFromSnapshotResult {
   use Moose;
-  with 'Paws::API::ResultParser';
 
 }
 

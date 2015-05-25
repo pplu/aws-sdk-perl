@@ -1,7 +1,6 @@
 
 package Paws::EC2::ImportKeyPairResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has KeyFingerprint => (is => 'ro', isa => 'Str', xmlname => 'keyFingerprint', traits => ['Unwrapped',]);
   has KeyName => (is => 'ro', isa => 'Str', xmlname => 'keyName', traits => ['Unwrapped',]);
 

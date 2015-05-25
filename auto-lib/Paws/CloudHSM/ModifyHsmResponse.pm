@@ -1,7 +1,6 @@
 
 package Paws::CloudHSM::ModifyHsmResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has HsmArn => (is => 'ro', isa => 'Str');
 
 }
