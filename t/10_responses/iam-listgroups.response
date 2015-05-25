@@ -3,11 +3,11 @@
     <IsTruncated>false</IsTruncated>
     <Groups>
       <member>
-        <GroupId>AGP000000000000000000</GroupId>
-        <GroupName>testgroup</GroupName>
         <Path>/</Path>
-        <Arn>arn:aws:iam::000000000000:group/testgroup</Arn>
-        <CreateDate>2015-04-08T23:19:05Z</CreateDate>
+        <GroupName>Admins</GroupName>
+        <Arn>arn:aws:iam::000000000000:group/Admins</Arn>
+        <GroupId>AGPAAAAAAAAAAAAAAAAAA</GroupId>
+        <CreateDate>2012-12-20T22:00:00Z</CreateDate>
       </member>
     </Groups>
   </ListGroupsResult>
