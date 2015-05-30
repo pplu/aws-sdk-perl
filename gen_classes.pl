@@ -30,6 +30,7 @@ my $namespaces = {
   ds => 'DS',
   dynamodb => 'DynamoDB',
   ec2 => 'EC2',
+  efs => 'EFS',
   elasticache => 'ElastiCache',
   elasticbeanstalk => 'ElasticBeanstalk',
   elastictranscoder => 'ElasticTranscoder',
