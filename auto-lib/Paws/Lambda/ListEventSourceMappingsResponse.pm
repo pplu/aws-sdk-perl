@@ -19,7 +19,7 @@ Paws::Lambda::ListEventSourceMappingsResponse
 
   
 
-An arrary of C<EventSourceMappingConfiguration> objects.
+An array of C<EventSourceMappingConfiguration> objects.
 
 
 

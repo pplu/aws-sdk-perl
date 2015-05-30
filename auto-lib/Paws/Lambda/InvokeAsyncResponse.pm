@@ -18,6 +18,17 @@ Paws::Lambda::InvokeAsyncResponse
 
   
 
+It will be 202 upon success.
+
+
+
+
+
+
+
+
+
+
 
 =cut
 
