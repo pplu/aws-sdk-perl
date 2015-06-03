@@ -4,10 +4,17 @@
     <Groups>
       <member>
         <Path>/</Path>
-        <GroupName>Admins</GroupName>
-        <Arn>arn:aws:iam::000000000000:group/Admins</Arn>
+        <GroupName>group1</GroupName>
+        <Arn>arn:aws:iam::000000000000:group/group1</Arn>
         <GroupId>AGPAAAAAAAAAAAAAAAAAA</GroupId>
-        <CreateDate>2012-12-20T22:00:00Z</CreateDate>
+        <CreateDate>2015-06-03T21:54:22Z</CreateDate>
+      </member>
+      <member>
+        <Path>/</Path>
+        <GroupName>group2</GroupName>
+        <Arn>arn:aws:iam::000000000000:group/group2</Arn>
+        <GroupId>AGPAAAAAAAAAAAAAAAAAA</GroupId>
+        <CreateDate>2015-06-03T21:54:44Z</CreateDate>
       </member>
     </Groups>
   </ListGroupsResult>
