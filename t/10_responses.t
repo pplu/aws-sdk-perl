@@ -14,12 +14,6 @@ use Paws;
 
 my $aws = Paws->new();
 
-if (not $ENV{AWS_TEST_RESPONSES}){
-  ok(1, 'Not testing responses (yet). Set AWS_TEST_RESPONSES to do it');
-  done_testing;
-  exit 0;
-}
-
 use Data::Dumper;
 
 my $dir = 't/10_responses';
@@ -49,6 +43,7 @@ sub test_file {
 
   SKIP: {
     skip "$test_def_file is lacking service or call entry",1 if (not $test->{service} or not $test->{call});
+    local $TODO = "$test_def_file is TODO: $test->{todo}" if (defined $test->{todo});
 
     my $service = $aws->service($test->{service},
       region => 'fake_region',
