@@ -2,6 +2,6 @@
 
 my @args = @ARGV;
 
-my @cmd = ('paws', $args[0], '--debug', '--caller', 'TestMakerCaller', @args[1..$#args]);
+my @cmd = ('perl', '-I', 't/lib', 'bin/paws', $args[0], '--caller', 'TestMakerCaller', @args[1..$#args]);
 
 system @cmd;
