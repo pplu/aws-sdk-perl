@@ -14,7 +14,7 @@ Paws::SQS::GetQueueAttributesResult
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => Paws::SQS::AttributeMap
+=head2 Attributes => Paws::SQS::QueueAttributeMap
 
   
 
