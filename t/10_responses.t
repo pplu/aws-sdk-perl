@@ -12,6 +12,7 @@ use Module::Runtime;
 
 use Paws;
 
+my $debug = $ENV{DEBUG_TESTS} || 0;
 my $aws = Paws->new();
 
 use Data::Dumper;
@@ -57,13 +58,16 @@ sub test_file {
       my $content = read_file($file);
       my $unserialized_struct = $service->unserialize_response( $content );
 
-      diag("DATASTRUCUTRE FROM RESPONSE");
-      diag(Dumper($unserialized_struct));
+      if ($debug){
+        diag("DATASTRUCUTRE FROM RESPONSE");
+        diag(Dumper($unserialized_struct));
+      }
 
       $res = $service->response_to_object($unserialized_struct, $call_class);
     } "Call $test->{service}\-\>$test->{ call } from $file";
 
-    diag(Dumper($res));
+    diag(Dumper($res)) if ($debug);
+
     if (not $passed) {
       ok(0, "Can't test method access because something went horribly wrong in the call to $test->{ call }");
       next;
