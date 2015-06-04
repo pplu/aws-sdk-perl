@@ -68,7 +68,7 @@ sub test_file {
 
     diag(Dumper($res)) if ($debug);
 
-    if (not $passed) {
+    if (not $passed or $TODO) {
       ok(0, "Can't test method access because something went horribly wrong in the call to $test->{ call }");
       next;
     }
