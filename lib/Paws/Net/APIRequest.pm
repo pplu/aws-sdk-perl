@@ -16,6 +16,13 @@ package Paws::Net::APIRequest {
     return $self->headers->header($header);
   }
 
+   sub header_hash {
+     my $self = shift;
+     my $headers = {};
+     $self->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
+     return $headers;
+   }
+
   sub generate_content_from_parameters {
     my $self = shift;
     $self->headers->content_type('application/x-www-form-urlencoded');
