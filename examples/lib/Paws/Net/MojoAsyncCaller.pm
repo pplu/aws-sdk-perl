@@ -13,8 +13,7 @@ package Paws::Net::MojoAsyncCaller {
 
     my $requestObj = $service->prepare_request_for_call($call_object); 
 
-    my $headers = {};
-    $requestObj->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
+    my $headers = $requestObj->header_hash;
 
     my $url = $requestObj->url;
     if ($requestObj->method eq 'GET') {

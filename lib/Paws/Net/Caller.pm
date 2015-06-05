@@ -45,9 +45,7 @@ package Paws::Net::Caller {
 
     my $requestObj = $service->prepare_request_for_call($call_object); 
 
-    my $headers = {};
-    $requestObj->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
-    # HTTP::Tiny has made setting Host header illegal. It derives Host from URL
+    my $headers = $requestObj->header_hash;
     delete $headers->{Host};
 
     #TODO: this has to be moved into the appropiate caller
