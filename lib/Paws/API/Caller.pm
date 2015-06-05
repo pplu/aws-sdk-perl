@@ -84,8 +84,20 @@ package Paws::API::Caller {
     return $refHash;
   }
 
+  sub handle_response {
+    my ($self, $call_object, $http_status, $content, $headers) = @_;
+    my $unserialized_struct;
+    $unserialized_struct = $self->unserialize_response( $content );
+
+    if ( $http_status >= 300 ) {
+        return $self->error_to_exception($unserialized_struct, $call_object, $http_status, $content, $headers);
+    } else {
+        return $self->response_to_object($unserialized_struct, $call_object, $http_status, $content, $headers);
+    }
+  }
+
   sub response_to_object {
-    my ($self, $unserialized_struct, $call_object) = @_;
+    my ($self, $unserialized_struct, $call_object, $http_status, $content, $headers) = @_;
 
     $call_object = $call_object->meta->name;
 
