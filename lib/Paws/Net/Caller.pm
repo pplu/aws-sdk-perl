@@ -50,6 +50,7 @@ package Paws::Net::Caller {
     # HTTP::Tiny has made setting Host header illegal. It derives Host from URL
     delete $headers->{Host};
 
+    #TODO: this has to be moved into the appropiate caller
     my $url = $requestObj->url;
     if ($requestObj->method eq 'GET') {
       my @param;
@@ -69,15 +70,12 @@ package Paws::Net::Caller {
       }
     );
 
-    my $unserialized_struct;
-    if ( $response->{success} ) {
-        $unserialized_struct = $service->unserialize_response( $response->{content} );
+    my $res = $service->handle_response($call_object, $response->{status}, $response->{content}, $response->{headers});
+    if ($res->isa('Paws::Exception')) {
+      $res->throw;
     } else {
-        #TODO: retry or croak based on error codes
-        croak "POST Request failed: $response->{status} $response->{reason} $response->{content}\n";
+      return $res;
     }
-
-    return $service->response_to_object($unserialized_struct, $call_object);
   }
 }
 

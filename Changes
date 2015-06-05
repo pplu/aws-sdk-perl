@@ -1,5 +1,9 @@
 0.09 
  - Difference between SQS message AttributeMaps and QueueAttribute maps (thnks codehead) 
+ - Paws now returns structured exceptions (Paws::Exception) with information of errors from
+   the APIs. The exceptions stringify so you don't have to worry about too much breakage. If you
+   were parsing the error message from the exception, you should now use Paws::Exceptions accessors
+   to get the already parsed information
 
 0.08 19 May 2015 22:12:00
  - EC2 SpotFleet API calls
