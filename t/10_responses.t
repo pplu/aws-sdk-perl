@@ -94,7 +94,11 @@ sub test_file {
         die "Didn't know how to get a result to compare to. Check that test has path or dpath entry";
       }
 
-      cmp_ok($got, $t->{op}, $t->{expected}, "Got $path $t->{op} $t->{expected} from result");
+      if (not defined $got and not defined $t->{expected}){
+        ok(1, "Got undef on $path from result");
+      } else {
+        cmp_ok($got, $t->{op}, $t->{expected}, "Got $path $t->{op} $t->{expected} from result");
+      }
     }
   }
 }
