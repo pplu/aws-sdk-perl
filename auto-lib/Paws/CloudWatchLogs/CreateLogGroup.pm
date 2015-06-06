@@ -37,6 +37,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+The name of the log group to create.
+
+
+
+
+
+
+
+
+
+
 
 
 =head1 SEE ALSO

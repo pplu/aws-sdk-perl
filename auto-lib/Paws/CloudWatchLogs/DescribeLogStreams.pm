@@ -75,6 +75,17 @@ specify a value, the request would return up to 50 items.
 
   
 
+The log group name for which log streams are to be listed.
+
+
+
+
+
+
+
+
+
+
 =head2 logStreamNamePrefix => Str
 
   
