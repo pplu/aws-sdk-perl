@@ -14,17 +14,6 @@ package Paws::Net::MojoAsyncCaller {
     my $requestObj = $service->prepare_request_for_call($call_object); 
 
     my $headers = $requestObj->header_hash;
-
-    my $url = $requestObj->url;
-    if ($requestObj->method eq 'GET') {
-      my @param;
-      for my $p (keys %{ $requestObj->parameters }) {
-        push @param , join '=' , map { $self->_uri_escape($_,"^A-Za-z0-9\-_.~") } ($p, $requestObj->parameters->{$p});
-      }
-      $url .= '?' . (join '&', @param) if (@param);
-      $requestObj->url($url);
-    }
-
     my $method = lc($requestObj->method);
     my $response_class = $call_object->_returns;
 
@@ -35,17 +24,16 @@ package Paws::Net::MojoAsyncCaller {
       ($requestObj->content)?$requestObj->content:() =>
       sub {
         my ( $ua, $response ) = @_;
-        if ( $response->success ) {
+
+        my $res = $service->handle_response($call_object, $response->res->code, $response->res->body, $response->res->headers->to_hash);
+        if ($res->isa('Paws::Exception')) {
+          $future->fail($res);
+        } else {
           if ($response_class) {
-            my $unserialized_struct = $service->unserialize_response( $response->res->body );
-            my $result = $service->response_to_object($unserialized_struct, $call_object);
-            $future->done($result);
+            $future->done($res);
           } else {
             $future->done(1);
           }
-        } else {
-          #TODO: retry or croak based on error codes
-          $future->fail( $response->res->body );
         }
       }   
     );
