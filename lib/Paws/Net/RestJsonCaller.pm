@@ -77,8 +77,6 @@ package Paws::Net::RestJsonCaller {
     my $data = $self->_to_jsoncaller_params($call);
     $request->content(to_json($data));
 
-    #$request->generate_content_from_parameters;
-
     $self->sign($request);
 
     return $request;

@@ -6,27 +6,35 @@ package Paws::Net::XMLResponse {
   sub error_to_exception {
     my ($self, $struct, $call_object, $http_status, $content, $headers) = @_;
 
-    my ($error, $request_id);
+    my ($code, $error, $request_id);
 
     if (exists $struct->{Errors}){
       $error = $struct->{Errors}->[0]->{Error};
     } elsif (exists $struct->{Error}){
       $error = $struct->{Error};
     } else {
-      die "Unrecognized error message format";
+      $error = $struct;
+    }
+
+    if (exists $error->{Code}){
+      $code = $error->{Code};
+    } else {
+      $code = $http_status;
     }
 
     if (exists $struct->{RequestId}) {
       $request_id = $struct->{RequestId};
     } elsif (exists $struct->{RequestID}){
       $request_id = $struct->{RequestID};
+    } elsif (exists $headers->{ 'x-amzn-requestid' }) {
+      $request_id = $headers->{ 'x-amzn-requestid' };
     } else {
       die "Cannot find RequestId in error message"
     }
 
     Paws::Exception->new(
       message => $error->{Message}, 
-      code => $error->{Code}, 
+      code => $code, 
       request_id => $request_id
     );
   }
