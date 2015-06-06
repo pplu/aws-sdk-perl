@@ -1,0 +1,4 @@
+---
+call: CreatePlacementGroup
+service: EC2
+tests: []
