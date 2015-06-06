@@ -112,7 +112,7 @@ The maximum number of events to return in a page of results. Default is
 
   
 
-The name of the log group to query
+The name of the log group to query.
 
 
 

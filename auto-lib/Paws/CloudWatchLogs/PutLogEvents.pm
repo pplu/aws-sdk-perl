@@ -44,9 +44,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+The name of the log group to put log events to.
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> logStreamName => Str
 
   
+
+The name of the log stream to put log events to.
+
+
+
+
+
+
+
+
+
 
 =head2 sequenceToken => Str
 

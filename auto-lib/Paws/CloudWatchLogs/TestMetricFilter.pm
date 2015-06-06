@@ -42,6 +42,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+A list of log event messages to test.
+
+
+
+
+
+
+
+
+
+
 
 
 =head1 SEE ALSO
