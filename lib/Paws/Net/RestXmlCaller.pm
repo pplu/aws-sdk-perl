@@ -70,8 +70,6 @@ package Paws::Net::RestXmlCaller {
 
     $request->parameters({ $self->_to_querycaller_params($call) });
 
-    #$request->generate_content_from_parameters;
-
     $self->sign($request);
 
     return $request;

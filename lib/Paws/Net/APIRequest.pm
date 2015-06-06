@@ -22,18 +22,6 @@ package Paws::Net::APIRequest {
      $self->headers->scan(sub { $headers->{ $_[0] } = $_[1] });
      return $headers;
    }
-
-  sub generate_content_from_parameters {
-    my $self = shift;
-    $self->headers->content_type('application/x-www-form-urlencoded');
-    my $url = URI->new('http:');
-    $url->query_form($self->parameters);
-    my $content = $url->query;
-    # HTML/4.01 says that line breaks are represented as "CR LF" pairs (i.e., `%0D%0A')
-    $content =~ s/(?<!%0D)%0A/%0D%0A/g if (defined $content);
-
-    $self->content($content);
-  }
 }
 
 1;
