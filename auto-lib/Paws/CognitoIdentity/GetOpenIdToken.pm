@@ -54,7 +54,10 @@ A unique identifier in the format REGION:GUID.
   
 
 A set of optional name-value pairs that map provider names to provider
-tokens.
+tokens. When using graph.facebook.com and www.amazon.com, supply the
+access_token returned from the provider's authflow. For
+accounts.google.com or any other OpenId Connect provider, always
+include the id_token.
 
 
 
