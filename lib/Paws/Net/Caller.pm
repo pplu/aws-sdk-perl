@@ -1,10 +1,3 @@
-package Paws::Net::Caller::Attribute::Trait::NameInRequest {
-  use Moose::Role;
-  use Moose::Util;
-  Moose::Util::meta_attribute_alias('NameInRequest');
-  has request_name => (is => 'ro', isa => 'Str');
-}
-
 package Paws::Net::Caller {
   use Moose;
   use Carp qw(croak);
