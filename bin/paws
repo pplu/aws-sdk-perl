@@ -76,7 +76,7 @@ my %args = %{ ARGV::Struct->new(argv => [ '{', @args, '}' ])->parse };
 # $call is a Meta Method Object. It can be called via execute
 my $result = eval {$call->execute($service, %args) };
 if ($@) {
-  if ($@->isa('Moose::Exception::AttributeIsRequired')) {
+  if (ref($@) and $@->isa('Moose::Exception::AttributeIsRequired')) {
     print "Call to $method_name requires argument " . $@->attribute_name . "\n";
   } else {
     die $@;
