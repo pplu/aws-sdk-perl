@@ -6,8 +6,8 @@ package TestResponseRecorder {
   use File::Slurp;
   use JSON;
 
-  has replay_calls => (is => 'ro', isa => 'Bool', required => 1);
-  has conversation_dir => (is => 'ro', isa => 'Str');
+  has replay_calls => (is => 'ro', isa => 'Bool', required => 1, default => sub { not defined $ENV{PAWS_CONVERSATION_DIR} });
+  has conversation_dir => (is => 'ro', isa => 'Str', required => 1, default => sub { $ENV{PAWS_CONVERSATION_DIR} });
   has _request_nums => (is => 'ro', isa => 'HashRef[Int]', default => sub { {} });
 
   sub do_call {
@@ -33,16 +33,6 @@ package TestResponseRecorder {
       my $headers = $requestObj->header_hash;
       # HTTP::Tiny has made setting Host header illegal. It derives Host from URL
       delete $headers->{Host};
-
-      my $url = $requestObj->url;
-      if ($requestObj->method eq 'GET') {
-        my @param;
-        for my $p (keys %{ $requestObj->parameters }) {
-          push @param , join '=' , map { $self->_uri_escape($_,"^A-Za-z0-9\-_.~") } ($p, $requestObj->parameters->{$p});
-        }
-        $url .= '?' . (join '&', @param) if (@param);
-        $requestObj->url($url);
-      }
 
       my $response = $self->ua->request(
         $requestObj->method,
