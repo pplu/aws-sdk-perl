@@ -7,6 +7,7 @@ package Paws::StorageGateway::DescribeGatewayInformationOutput {
   has GatewayState => (is => 'ro', isa => 'Str');
   has GatewayTimezone => (is => 'ro', isa => 'Str');
   has GatewayType => (is => 'ro', isa => 'Str');
+  has LastSoftwareUpdate => (is => 'ro', isa => 'Str');
   has NextUpdateAvailabilityDate => (is => 'ro', isa => 'Str');
 
 }
@@ -84,7 +85,23 @@ gateway.
 
   
 
-TBD
+The type of the gateway.
+
+
+
+
+
+
+
+
+
+=head2 LastSoftwareUpdate => Str
+
+  
+
+The date on which the last software update was applied to the gateway.
+If the gateway has never been updated, this field does not return a
+value in the response.
 
 
 
@@ -98,7 +115,7 @@ TBD
 
   
 
-The date at which an update to the gateway is available. This date is
+The date on which an update to the gateway is available. This date is
 in the time zone of the gateway. If the gateway is not available for an
 update this field is not returned in the response.
 
