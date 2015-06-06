@@ -1,7 +1,6 @@
 
 package Paws::EFS::FileSystemDescription {
   use Moose;
-  with 'Paws::API::ResultParser';
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has CreationToken => (is => 'ro', isa => 'Str', required => 1);
   has FileSystemId => (is => 'ro', isa => 'Str', required => 1);

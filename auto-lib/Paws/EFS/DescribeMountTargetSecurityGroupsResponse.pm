@@ -1,7 +1,6 @@
 
 package Paws::EFS::DescribeMountTargetSecurityGroupsResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
 }

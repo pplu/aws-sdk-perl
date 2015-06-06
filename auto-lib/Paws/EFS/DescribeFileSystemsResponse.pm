@@ -1,7 +1,6 @@
 
 package Paws::EFS::DescribeFileSystemsResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has FileSystems => (is => 'ro', isa => 'ArrayRef[Paws::EFS::FileSystemDescription]');
   has Marker => (is => 'ro', isa => 'Str');
   has NextMarker => (is => 'ro', isa => 'Str');

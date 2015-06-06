@@ -1,7 +1,6 @@
 
 package Paws::StorageGateway::ListVolumeInitiatorsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Initiators => (is => 'ro', isa => 'ArrayRef[Str]');
 
 }

@@ -1,7 +1,6 @@
 
 package Paws::CognitoIdentity::DeleteIdentitiesResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has UnprocessedIdentityIds => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::UnprocessedIdentityId]');
 
 }

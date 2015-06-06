@@ -1,7 +1,6 @@
 
 package Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has nextToken => (is => 'ro', isa => 'Str');
   has subscriptionFilters => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::SubscriptionFilter]');
 

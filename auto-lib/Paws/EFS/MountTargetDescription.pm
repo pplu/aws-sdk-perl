@@ -1,7 +1,6 @@
 
 package Paws::EFS::MountTargetDescription {
   use Moose;
-  with 'Paws::API::ResultParser';
   has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
   has IpAddress => (is => 'ro', isa => 'Str');
   has LifeCycleState => (is => 'ro', isa => 'Str', required => 1);

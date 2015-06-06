@@ -1,7 +1,6 @@
 
 package Paws::EFS::DescribeTagsResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
   has NextMarker => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EFS::Tag]', required => 1);
