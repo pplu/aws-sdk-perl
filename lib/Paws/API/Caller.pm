@@ -87,6 +87,11 @@ package Paws::API::Caller {
 
   sub handle_response {
     my ($self, $call_object, $http_status, $content, $headers) = @_;
+
+    if ( $http_status == 599 ) {
+        return Paws::Exception->new(message => $content, code => 'ConnectionError', request_id => '');
+    }
+
     my $unserialized_struct;
     $unserialized_struct = $self->unserialize_response( $content );
 
