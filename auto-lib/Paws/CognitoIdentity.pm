@@ -13,6 +13,11 @@ package Paws::CognitoIdentity {
     my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::CreateIdentityPool', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteIdentities {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::DeleteIdentities', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteIdentityPool {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::DeleteIdentityPool', @_);
@@ -180,7 +185,31 @@ Returns: a L<Paws::CognitoIdentity::IdentityPool> instance
 
 Creates a new identity pool. The identity pool is a store of user
 identity information that is specific to your AWS account. The limit on
-identity pools is 60 per account.
+identity pools is 60 per account. You must use AWS Developer
+credentials to call this API.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DeleteIdentities(IdentityIdsToDelete => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdentity::DeleteIdentities>
+
+Returns: a L<Paws::CognitoIdentity::DeleteIdentitiesResponse> instance
+
+  
+
+Deletes identities from an identity pool. You can specify a list of
+1-60 identities that you want to delete.
+
+You must use AWS Developer credentials to call this API.
 
 
 
@@ -203,6 +232,8 @@ Returns: nothing
 Deletes a user pool. Once a pool is deleted, users will not be able to
 authenticate with the pool.
 
+You must use AWS Developer credentials to call this API.
+
 
 
 
@@ -224,6 +255,8 @@ Returns: a L<Paws::CognitoIdentity::IdentityDescription> instance
 Returns metadata related to the given identity, including when the
 identity was created and any associated linked logins.
 
+You must use AWS Developer credentials to call this API.
+
 
 
 
@@ -244,6 +277,8 @@ Returns: a L<Paws::CognitoIdentity::IdentityPool> instance
 
 Gets details about a particular identity pool, including the pool name,
 ID description, creation date, and current number of users.
+
+You must use AWS Developer credentials to call this API.
 
 
 
@@ -268,6 +303,8 @@ logins will be validated against supported login providers. If the
 token is for cognito-identity.amazonaws.com, it will be passed through
 to AWS Security Token Service with the appropriate role for the token.
 
+This is a public API. You do not need any credentials to call this API.
+
 
 
 
@@ -289,6 +326,9 @@ Returns: a L<Paws::CognitoIdentity::GetIdResponse> instance
 Generates (or retrieves) a Cognito ID. Supplying multiple logins will
 create an implicit linked account.
 
+token+";"+tokenSecret.
+
+This is a public API. You do not need any credentials to call this API.
 
 
 
@@ -299,7 +339,8 @@ create an implicit linked account.
 
 
 
-=head2 GetIdentityPoolRoles([IdentityPoolId => Str])
+
+=head2 GetIdentityPoolRoles(IdentityPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::GetIdentityPoolRoles>
 
@@ -308,6 +349,8 @@ Returns: a L<Paws::CognitoIdentity::GetIdentityPoolRolesResponse> instance
   
 
 Gets the roles for an identity pool.
+
+You must use AWS Developer credentials to call this API.
 
 
 
@@ -332,6 +375,8 @@ is returned by GetId. You can optionally add additional logins for the
 identity. Supplying multiple logins creates an implicit link.
 
 The OpenId token is valid for 15 minutes.
+
+This is a public API. You do not need any credentials to call this API.
 
 
 
@@ -367,6 +412,7 @@ authenticated/unauthenticated identity, you can do so by providing the
 existing C<IdentityId>. This API will create the identity in the
 specified C<IdentityPoolId>.
 
+You must use AWS Developer credentials to call this API.
 
 
 
@@ -377,7 +423,8 @@ specified C<IdentityPoolId>.
 
 
 
-=head2 ListIdentities(IdentityPoolId => Str, MaxResults => Int, [NextToken => Str])
+
+=head2 ListIdentities(IdentityPoolId => Str, MaxResults => Int, [HideDisabled => Bool, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::ListIdentities>
 
@@ -386,6 +433,8 @@ Returns: a L<Paws::CognitoIdentity::ListIdentitiesResponse> instance
   
 
 Lists the identities in a pool.
+
+You must use AWS Developer credentials to call this API.
 
 
 
@@ -406,6 +455,8 @@ Returns: a L<Paws::CognitoIdentity::ListIdentityPoolsResponse> instance
   
 
 Lists all of the Cognito identity pools registered for your account.
+
+This is a public API. You do not need any credentials to call this API.
 
 
 
@@ -436,6 +487,8 @@ If the values are verified against the database, the response returns
 both values and is the same as the request. Otherwise a
 C<ResourceConflictException> is thrown.
 
+You must use AWS Developer credentials to call this API.
+
 
 
 
@@ -464,6 +517,8 @@ can be merged. If the users to be merged are associated with the same
 public provider, but as two different users, an exception will be
 thrown.
 
+You must use AWS Developer credentials to call this API.
+
 
 
 
@@ -484,6 +539,8 @@ Returns: nothing
 
 Sets the roles for an identity pool. These roles are used when making
 calls to C<GetCredentialsForIdentity> action.
+
+You must use AWS Developer credentials to call this API.
 
 
 
@@ -509,6 +566,8 @@ they are seen. If, for a given Cognito identity, you remove all
 federated identities as well as the developer user identifier, the
 Cognito identity becomes inaccessible.
 
+This is a public API. You do not need any credentials to call this API.
+
 
 
 
@@ -531,6 +590,8 @@ Unlinks a federated identity from an existing account. Unlinked logins
 will be considered new identities next time they are seen. Removing the
 last linked login will make this identity inaccessible.
 
+This is a public API. You do not need any credentials to call this API.
+
 
 
 
@@ -550,6 +611,8 @@ Returns: a L<Paws::CognitoIdentity::IdentityPool> instance
   
 
 Updates a user pool.
+
+You must use AWS Developer credentials to call this API.
 
 
 

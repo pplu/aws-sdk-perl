@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdentity::GetIdentityPoolRoles {
   use Moose;
-  has IdentityPoolId => (is => 'ro', isa => 'Str');
+  has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 IdentityPoolId => Str
+=head2 B<REQUIRED> IdentityPoolId => Str
 
   
 
