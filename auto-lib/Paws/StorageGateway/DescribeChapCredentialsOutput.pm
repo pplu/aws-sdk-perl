@@ -33,8 +33,8 @@ B<InitiatorName>: The iSCSI initiator that connects to the target.
 =item *
 
 B<SecretToAuthenticateInitiator>: The secret key that the initiator
-(e.g. Windows client) must provide to participate in mutual CHAP with
-the target.
+(for example, the Windows client) must provide to participate in mutual
+CHAP with the target.
 
 =item *
 
