@@ -3,6 +3,7 @@ package Paws::Net::RestXMLResponse {
   use XML::Simple qw//;
   use Carp qw(croak);
   use HTTP::Status;
+  use Paws::Exception;
 
   sub unserialize_response {
     my ($self, $data) = @_;

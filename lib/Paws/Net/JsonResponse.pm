@@ -2,6 +2,7 @@ package Paws::Net::JsonResponse {
   use Moose::Role;
   use JSON;
   use Carp qw(croak);
+  use Paws::Exception;
   
   sub unserialize_response {
     my ($self, $data) = @_;

@@ -2,6 +2,7 @@ package Paws::Net::XMLResponse {
   use Moose::Role;
   use XML::Simple qw//;
   use Carp qw(croak);
+  use Paws::Exception;
 
   sub error_to_exception {
     my ($self, $struct, $call_object, $http_status, $content, $headers) = @_;
