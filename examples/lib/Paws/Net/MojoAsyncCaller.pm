@@ -1,5 +1,6 @@
 package Paws::Net::MojoAsyncCaller {
   use Moose;
+  with 'Paws::Net::CallerRole';
 
   use MojoX::IOLoop::Future;
   use Mojo::UserAgent;

@@ -1,8 +1,13 @@
 package Paws::SDK::Config;
 
 use Moose;
+use Moose::Util::TypeConstraints;
 
-has caller => (is => 'ro', isa => 'Str', default => 'Paws::Net::Caller'); 
+role_type('Paws::Credential');
+role_type('Paws::Net::CallerRole');
+
+has caller      => (is => 'ro', isa => 'Str|Paws::Net::CallerRole', default => 'Paws::Net::Caller'); 
+has credentials => (is => 'ro', isa => 'Str|Paws::Credential', default => 'Paws::Credential::ProviderChain');
 
 __PACKAGE__->meta->make_immutable;
 1;
@@ -19,7 +24,6 @@ use Module::Runtime qw//;
 use Paws::API::JSONAttribute;
 use Paws::API::Base64Attribute;
 
-use Paws::Net::Caller;
 use Paws::API;
 use Moose::Util::TypeConstraints;
 
@@ -32,7 +36,10 @@ coerce 'Paws::SDK::Config',
 };
 has config => (isa => 'Paws::SDK::Config', is => 'rw', coerce => 1, default => sub { Paws->default_config });
 
+# Holds a fully constructed Paws instance so continuous calls to get_self are all done over the
+# same (implicit) object. This happens when the user calls Paws->service, as opposed to $instance->service
 class_has _default_object => (is => 'rw', isa => 'Paws');
+
 class_has default_config => (is => 'rw', isa => 'Paws::SDK::Config', default => sub { Paws::SDK::Config->new });
 
 sub load_class {
@@ -72,29 +79,40 @@ sub service {
   my ($self, $service_name, %constructor_params) = @_;
   $self = $self->get_self;
 
-  my $caller;
-  if (defined $constructor_params{ caller }) {
-    if (ref($constructor_params{ caller })) {
-      # already constructed caller
-      $caller = $constructor_params{ caller };
-    } else {
-      $self->load_class($constructor_params{ caller });
-      $caller = $constructor_params{ caller }->new;
-    }
-    delete $constructor_params{ caller };
-  } else {
-    $caller = $self->config->caller;
-    $self->load_class($caller);
-    $caller = $caller->new;
-  }
+  $self->_handle_string_or_instance(\%constructor_params, 'caller');
+  $self->_handle_string_or_instance(\%constructor_params, 'credentials');
 
   my $class = $self->class_for_service($service_name);
   my $instance = $class->new(
-    caller => $caller, 
     %constructor_params
   );
 
   return $instance;
+}
+
+sub _string_to_instance {
+  my ($self, $string) = @_;
+  # String can be either a string with the class name in it
+  # or an object. We want to construct an instance if it's a string
+  # but if it's already an object, we leave it untouched
+  if (not ref($string)) {
+    $self->load_class($string);
+    return $string->new;
+  } else {
+    return $string;
+  }
+}
+
+# Takes 
+sub _handle_string_or_instance {
+  my ($self, $params, $for_param) = @_;
+
+  if (defined $params->{ $for_param }) {
+    $params->{ $for_param } = $self->_string_to_instance($params->{ $for_param });
+  } else {
+    $params->{ $for_param } = $self->_string_to_instance($self->config->$for_param);
+  }
+  return $params;
 }
 
 1;
