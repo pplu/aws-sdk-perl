@@ -1,29 +1,30 @@
 package Paws::Net::Regions {
   use Moose;
   use JSON;
+  use autodie;
 
-  has 'rules', is => 'rw', isa => 'Str', required => 1;
+  has rules => ( is => 'rw', isa => 'Str', required => 1 );
 
-  has 'default_scheme', is => 'ro', isa => 'Str', default => 'https';
+  has default_scheme => ( is => 'ro', isa => 'Str', default => 'https' );
 
-  has 'json', is => 'ro', lazy => 1, default  => sub {
-    my $self = shift;
-    my $json = JSON->new->pretty;
-    $json = $json->relaxed([1]); # At some point input did fail without this
-    local $/ = undef;
-    open my $fh, '<', $self->{rules}
-      or die "Could not open json: $self->{rules}";
-    $json = <$fh>;
-    close $fh or die "Whatever";
-    decode_json($json);
-  };
-
-  sub get_rules_for_service {
-    my $self = shift;
-    my $service_name  = shift;
-print "SERVICE NAME: $service_name\n";
-    return $self->json->{$service_name};
-  }
+  has json => ( 
+    is => 'ro', 
+    lazy => 1,
+    traits => [ 'Hash' ],
+    handles => {
+      get_rules_for_service => 'get',
+    }, 
+    default => sub {
+      my $self = shift;
+      my $json = JSON->new->pretty;
+      $json = $json->relaxed([1]); # At some point input did fail without this
+      local $/ = undef;
+      open my $fh, '<', $self->rules;
+      $json = <$fh>;
+      close $fh;
+      decode_json($json);
+    }
+  );
 
   sub construct_endpoint {
     my $self = shift;
