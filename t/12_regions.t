@@ -285,7 +285,7 @@ sub test_known_endpoints {
     for my $service ( sort keys %{ $known_regions->{$region} } ) {
       my $expected_endpoint = $known_regions->{ $region }->{ $service };
       my $endpoint = $resolver->construct_endpoint($service, $region);
-      cmp_ok($endpoint, 'eq', $expected_endpoint, "Endpoint for $service in $region is $expected_endpoint");
+      cmp_ok($endpoint->{ url }->host, 'eq', $expected_endpoint, "Endpoint for $service in $region is $expected_endpoint");
     }
   }
 }

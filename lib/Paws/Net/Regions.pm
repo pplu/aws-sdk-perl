@@ -2,6 +2,7 @@ package Paws::Net::Regions {
   use Moose;
   use JSON;
   use autodie;
+  use URI::Template;
 
   has rules => ( is => 'rw', isa => 'Str', required => 1 );
 
@@ -27,13 +28,9 @@ package Paws::Net::Regions {
   );
 
   sub construct_endpoint {
-    my $self = shift;
-    my $service = shift;
-    my $region = shift;
-    my %args = @_;
-    $args{scheme} = $self->{default_sheme}
-      unless defined $args{scheme};
+    my ($self, $service, $region, %args) = @_;
 
+    my $scheme = $self->default_scheme;
     my $service_rules = $self->get_rules_for_service($service);
     $service_rules = $self->get_rules_for_service('_default');
 
@@ -42,7 +39,13 @@ package Paws::Net::Regions {
     if ( not defined $endpoint_info ) {
       die "NoRegionError()";
     } else {
-      die "UnkownEndpointError(service $service. region: $region)"
+      my $template = URI::Template->new($endpoint_info->{uri});
+      my $url = $template->process(
+        service => $service,
+        region => $region,
+        scheme => $scheme,
+      );
+      $endpoint_info->{ url } = $url;
     }
 
     return $endpoint_info;
@@ -56,7 +59,7 @@ package Paws::Net::Regions {
 
     for my $rule ( @$service_rules ) {
       if ( $self->_matches_rule($rule, $region, %args) ) {
-        return { uri => $rule->{ uri }, %{ $self->{ properties } } };
+        return { uri => $rule->{ uri }, properties => { (defined $self->{ properties }) ? $self->{ properties } : () } };
       }
     }
     return undef;
@@ -72,46 +75,49 @@ package Paws::Net::Regions {
     return 0;
   }
 
-  sub _matches_constraint {
-    my %constraint_funcs = (
+  has constraints => (
+    is => 'ro',
+    init_arg => undef,
+    default => sub {
+      {
       startsWith => sub {
         my ( $a, $v ) = @_;
-        print "DEBUG: str $a starts with $v\n";
-        $a =~ /^$v.*/i;
+        return $a =~ /^$v.*/i;
       },
       notStartsWith => sub {
         my ( $a, $v ) = @_;
-        print "DEBUG str $a not starts with $v\n";
-        $a !~ /^$v.*/i;
+        return $a !~ /^$v.*/i;
       },
       equals => sub {
         my ( $a, $v ) = @_;
-        print "DEBUG str '$a' is equal to '$v'\n";
-        $a =~ /^$v$/i;
+        return $a eq $v;
       },
       notEquals => sub {
         # in the sample json, notEqual region's is always null
         # this needs review
-        return;
-       # my ( $a, $v ) = @_;
-       # print "DEBUG str '' != $v\n";
-       # '' !~ /^$v$/i;
+        my ( $a, $v ) = @_;
+        return 1 if (defined $a and not defined $v);
+        return 1 if (not defined $a and defined $v);
+        return $a ne $v;
       },
       oneOf => sub {
-        my ( $a, @v ) = @_;
-        print "DEBUG str $a in \@v\n";
-        for my $b (@v) {
-          return 1 if $a =~ /$b/;
+        my ( $a, $v ) = @_;
+        for my $b (@$v) {
+          return 1 if $a eq $b;
         }
-        return;
+        return 0;
       }
-    );
+      };
+    }
+  );
+
+  sub _matches_constraint {
     my ($self, $region, $constraint, %args ) = @_;
     my $property = $constraint->[0];
     die "We only know how to apply constraints to region" if ($property ne 'region');
     my $func  = $constraint->[1];
     my $value = $constraint->[2];
-    return $constraint_funcs{$func}->($region,$value);
+    return $self->constraints->{$func}->($region,$value);
   }
 }
 
