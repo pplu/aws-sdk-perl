@@ -137,6 +137,11 @@ package Paws::EC2 {
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateDhcpOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateFlowLogs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateFlowLogs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateImage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateImage', @_);
@@ -260,6 +265,11 @@ package Paws::EC2 {
   sub DeleteDhcpOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteDhcpOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteFlowLogs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteFlowLogs', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteInternetGateway {
@@ -410,6 +420,11 @@ package Paws::EC2 {
   sub DescribeExportTasks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeExportTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeFlowLogs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeFlowLogs', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeImageAttribute {
@@ -1850,6 +1865,35 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 
 
+=head2 CreateFlowLogs(DeliverLogsPermissionArn => Str, LogGroupName => Str, ResourceIds => ArrayRef[Str], ResourceType => Str, TrafficType => Str, [ClientToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::CreateFlowLogs>
+
+Returns: a L<Paws::EC2::CreateFlowLogsResult> instance
+
+  
+
+Creates one or more flow logs to capture IP traffic for a specific
+network interface, subnet, or VPC. Flow logs are delivered to a
+specified log group in Amazon CloudWatch Logs. If you specify a VPC or
+subnet in the request, a log stream is created in CloudWatch Logs for
+each network interface in the subnet or VPC. Log streams can include
+information about accepted and rejected traffic to a network interface.
+You can view the data in your log streams using Amazon CloudWatch Logs.
+
+In your request, you must also specify an IAM role that has permission
+to publish logs to CloudWatch Logs.
+
+
+
+
+
+
+
+
+
+
+
 =head2 CreateImage(InstanceId => Str, Name => Str, [BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping], Description => Str, DryRun => Bool, NoReboot => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateImage>
@@ -2091,7 +2135,7 @@ want to purchase additional capacity. Reserved Instances bought and
 sold through the Reserved Instance Marketplace work like any other
 Reserved Instances.
 
-To sell your Reserved Instances, you must first register as a Seller in
+To sell your Reserved Instances, you must first register as a seller in
 the Reserved Instance Marketplace. After completing the registration
 process, you can create a Reserved Instance Marketplace listing of some
 or all of your Reserved Instances, and specify the upfront price to
@@ -2618,6 +2662,26 @@ Deletes the specified set of DHCP options. You must disassociate the
 set of DHCP options before you can delete it. You can disassociate the
 set of DHCP options by associating either a new set of options or the
 default set of options with the VPC.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DeleteFlowLogs(FlowLogIds => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::EC2::DeleteFlowLogs>
+
+Returns: a L<Paws::EC2::DeleteFlowLogsResult> instance
+
+  
+
+Deletes one or more flow logs.
 
 
 
@@ -3353,6 +3417,28 @@ Returns: a L<Paws::EC2::DescribeExportTasksResult> instance
   
 
 Describes one or more of your export tasks.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeFlowLogs([Filter => ArrayRef[Paws::EC2::Filter], FlowLogIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeFlowLogs>
+
+Returns: a L<Paws::EC2::DescribeFlowLogsResult> instance
+
+  
+
+Describes one or more flow logs. To view the information in your flow
+logs (the log streams for the network interfaces), you must use the
+CloudWatch Logs console or the CloudWatch Logs API.
 
 
 
@@ -5255,9 +5341,8 @@ Returns: a L<Paws::EC2::PurchaseReservedInstancesOfferingResult> instance
 
 Purchases a Reserved Instance for use with your account. With Amazon
 EC2 Reserved Instances, you obtain a capacity reservation for a certain
-instance configuration over a specified period of time. You pay a lower
-usage rate than with On-Demand instances for the time that you actually
-use the capacity reservation.
+instance configuration over a specified period of time and pay a lower
+hourly rate compared to on-Demand Instance pricing.
 
 Use DescribeReservedInstancesOfferings to get a list of Reserved
 Instance offerings that match your specifications. After you've

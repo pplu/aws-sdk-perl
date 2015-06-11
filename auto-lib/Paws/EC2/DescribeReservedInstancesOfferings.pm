@@ -116,9 +116,16 @@ Marketplace are listed.
 
 =item *
 
-C<product-description> - The description of the Reserved Instance
-(C<Linux/UNIX> | C<Linux/UNIX (Amazon VPC)> | C<Windows> | C<Windows
-(Amazon VPC)>).
+C<product-description> - The Reserved Instance product platform
+description. Instances that include C<(Amazon VPC)> in the product
+platform description will only be displayed to EC2-Classic account
+holders and are for use with Amazon VPC. (C<Linux/UNIX> | C<Linux/UNIX
+(Amazon VPC)> | C<SUSE Linux> | C<SUSE Linux (Amazon VPC)> | C<Red Hat
+Enterprise Linux> | C<Red Hat Enterprise Linux (Amazon VPC)> |
+C<Windows> | C<Windows (Amazon VPC)>) | C<Windows with SQL Server
+Standard> | C<Windows with SQL Server Standard (Amazon VPC)> |
+C<Windows with SQL Server Web> | C< Windows with SQL Server Web (Amazon
+VPC))>
 
 =item *
 
@@ -300,8 +307,8 @@ C<Medium Utilization> Reserved Instance offering type.
 
   
 
-The Reserved Instance description. Instances that include C<(Amazon
-VPC)> in the description are for use with Amazon VPC.
+The Reserved Instance product platform description. Instances that
+include C<(Amazon VPC)> in the description are for use with Amazon VPC.
 
 
 
