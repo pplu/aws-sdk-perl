@@ -1,16 +1,4 @@
-#!/usr/bin/perl
-
-#from tests import unittest, BaseSessionTest, create_session
-#import mock
-#from nose.tools import assert_equals
-#from botocore import regions
-#from botocore.exceptions import UnknownEndpointError
-#from botocore.exceptions import NoRegionError
-
-# NOTE: sqs endpoint updated to be the CN in the SSL cert because
-# a bug in python2.6 prevents subjectAltNames from being parsed
-# and subsequently being used in cert validation.
-# Same thing is needed for rds.
+#!/usr/bin/env perl
 
 use JSON;
 my $known_regions = <<'EOF';
@@ -280,195 +268,28 @@ my $known_regions = <<'EOF';
 }
 EOF
 
-#print "$known_regions\n"
-
 use FindBin;
 use lib "$FindBin::Bin/../lib";
-use Regions;
+use Paws::Net::Regions;
 use Data::Dumper;
-my $rules    = "$FindBin::Bin/../data/_endpoints.json";
+use Test::More;
+my $rules    = "$FindBin::Bin/../botocore/botocore/data/_endpoints.json";
 
 sub test_known_endpoints {
-    my $resolver = EndpointResolver->new( rules => $rules );
-    my $json = JSON->new->pretty;
-    $json = $json->relaxed([1]);
-    my $known_regions = $json->decode($known_regions, { utf8  => 1 });
-    for my $region ( keys %$known_regions ) {
-      for my $service ( keys $known_regions->{$region} ) {
-        my $endpoint = "https://" . $known_regions->{$region}{$service};
-        _test_single_service_region($service, $region, $endpoint, $resolver);
-      }
-    }
-}
+  my $resolver = Paws::Net::Regions->new( rules => $rules );
+  my $json = JSON->new->pretty;
+  $json = $json->relaxed([1]);
+  my $known_regions = $json->decode($known_regions);
 
-sub _test_single_service_region {
-  my ($service, $region, $endpoint, $resolver ) = @_;
-  my $resolver = EndpointResolver->new( rules => $rules );
-  my $actual_endpoint = $resolver->construct_endpoint($service, $region);
-  if ( defined $actual_endpoint and $actual_endpoint{uri} =~ /^$endpoint$/ ) {
-    print "OK $actual_enpoint{uri}\n";
-  } else {
-    print "ERROR [$actual_endpoint{uri}]\n      [$endpoint]\n"
+  for my $region ( sort keys %$known_regions ) {
+    for my $service ( sort keys %{ $known_regions->{$region} } ) {
+      my $expected_endpoint = $known_regions->{ $region }->{ $service };
+      my $endpoint = $resolver->construct_endpoint($service, $region);
+      cmp_ok($endpoint, 'eq', $expected_endpoint, "Endpoint for $service in $region is $expected_endpoint");
+    }
   }
 }
 
 test_known_endpoints();
 
-__DATA__
-
-class TestEndpointHeuristics(unittest.TestCase):
-
-    def create_endpoint_resolver(self, rules):
-        return regions.EndpointResolver(rules)
-
-    def test_matches_exact_rule(self):
-        resolver = self.create_endpoint_resolver({
-            'iam': [
-                {'uri': 'https://{service}.us-gov.amazonaws.com',
-                 'constraints': [['region', 'startsWith', 'us-gov']]}
-            ]
-        })
-        endpoint = resolver.construct_endpoint(
-            service_name='iam', region_name='us-gov-1')
-        self.assertEqual(endpoint['uri'], 'https://iam.us-gov.amazonaws.com')
-        self.assertEqual(endpoint['properties'], {})
-
-    def test_no_match_throws_exception(self):
-        resolver = self.create_endpoint_resolver({
-            'iam': [
-                {'uri': 'https://{service}.us-gov.amazonaws.com',
-                 'constraints': [['region', 'startsWith', 'us-gov']]}
-            ]
-        })
-        with self.assertRaises(UnknownEndpointError):
-            resolver.construct_endpoint(service_name='iam',
-                                        region_name='not-us-gov-2')
-
-    def test_no_region_throws_specific_error(self):
-        resolver = self.create_endpoint_resolver({
-            'iam': [
-                {'uri': 'https://{service}.us-gov.amazonaws.com',
-                 'constraints': [['region', 'startsWith', 'us-gov']]}
-            ]
-        })
-        with self.assertRaises(NoRegionError):
-            resolver.construct_endpoint(service_name='iam',
-                                        region_name=None)
-
-    def test_use_default_section_if_no_service_name(self):
-        resolver = self.create_endpoint_resolver({
-            '_default': [
-                {'uri': 'https://{service}.us-gov.amazonaws.com',
-                 'constraints': [['region', 'startsWith', 'us-gov']]}
-            ]
-        })
-        self.assertEqual(
-            resolver.construct_endpoint(service_name='iam',
-                                        region_name='us-gov-1')['uri'],
-            'https://iam.us-gov.amazonaws.com')
-
-    def test_use_default_section_if_no_service_rule_matches(self):
-        resolver = self.create_endpoint_resolver({
-            '_default': [
-                {"uri":"{scheme}://{service}.{region}.amazonaws.com",
-                 "constraints": [
-                    ["region", "notEquals", None]
-                ]}
-            ],
-            'iam': [
-                {'uri': 'https://{service}.us-gov.amazonaws.com',
-                 'constraints': [['region', 'startsWith', 'us-gov']]}
-            ]
-        })
-        self.assertEqual(
-            resolver.construct_endpoint(service_name='iam',
-                                        region_name='other-region')['uri'],
-            'https://iam.other-region.amazonaws.com')
-
-    def test_matches_last_rule(self):
-        resolver = self.create_endpoint_resolver({
-            "s3":[
-                {
-                    "uri":"{scheme}://s3.amazonaws.com",
-                    "constraints":[
-                        ["region", "oneOf", ["us-east-1", None]]
-                    ]
-                },
-                {
-                    "uri":"{scheme}://{service}-{region}.amazonaws.com.cn",
-                    "constraints":[
-                        ["region", "startsWith", "cn-"]
-                    ]
-                },
-                {
-                    "uri":"{scheme}://{service}-{region}.amazonaws.com",
-                    "constraints": [
-                        ["region", "notEquals", None]
-                    ]
-                }
-            ],
-        })
-        self.assertEqual(
-            resolver.construct_endpoint(service_name='s3',
-                                        region_name='us-east-1')['uri'],
-            'https://s3.amazonaws.com')
-        self.assertEqual(
-            resolver.construct_endpoint(service_name='s3',
-                                        region_name=None)['uri'],
-            'https://s3.amazonaws.com')
-        self.assertEqual(
-            resolver.construct_endpoint(service_name='s3',
-                                        region_name='us-west-2')['uri'],
-            'https://s3-us-west-2.amazonaws.com')
-        self.assertEqual(
-            resolver.construct_endpoint(service_name='s3',
-                                        region_name='cn-north-1')['uri'],
-            'https://s3-cn-north-1.amazonaws.com.cn')
-
-    def test_not_starts_with(self):
-        resolver = self.create_endpoint_resolver({
-            'iam': [
-                {'uri': 'https://route53.amazonaws.com',
-                 'constraints': [['region', 'notStartsWith', 'cn-']]}
-            ]
-        })
-        self.assertEqual(
-            resolver.construct_endpoint(service_name='iam',
-                                        region_name='us-east-1')['uri'],
-            'https://route53.amazonaws.com')
-
-    def test_can_add_rule(self):
-        # This shows how a customer could add their own rules.
-        resolver = self.create_endpoint_resolver({
-            'iam': [
-                {'uri': 'https://{service}.us-gov.amazonaws.com',
-                 'constraints': [['region', 'startsWith', 'us-gov']]}
-            ]
-        })
-        resolver.get_rules_for_service('iam').insert(
-            0, {'uri': 'https://my.custom.location',
-                'constraints': [['region', 'equals', 'custom-region']]})
-        self.assertEqual(
-            resolver.construct_endpoint(service_name='iam',
-                                        region_name='custom-region')['uri'],
-            'https://my.custom.location')
-
-    def test_property_bags_returned(self):
-        resolver = self.create_endpoint_resolver({
-            'iam': [
-                {'uri': 'https://{service}.us-gov.amazonaws.com',
-                 'constraints': [['region', 'startsWith', 'us-gov']],
-                 'properties': {
-                     'signatureVersion': 'v4',
-                     'credentialScope': {
-                         'region': 'us-east-1'
-                     }
-                 }}
-            ]
-        })
-        endpoint = resolver.construct_endpoint(
-            service_name='iam', region_name='us-gov-1')
-        self.assertEqual(endpoint['properties'],
-                         {'credentialScope': {'region': 'us-east-1'},
-                          'signatureVersion': 'v4'})
-
+done_testing;

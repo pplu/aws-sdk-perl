@@ -1,7 +1,4 @@
-package EndpointResolver
-{
-
-  use v5.10.1;
+package Paws::Net::Regions {
   use Moose;
   use JSON;
 
@@ -9,14 +6,14 @@ package EndpointResolver
 
   has 'default_scheme', is => 'ro', isa => 'Str', default => 'https';
 
-  has 'json', is => 'ro', default  => sub {
+  has 'json', is => 'ro', lazy => 1, default  => sub {
     my $self = shift;
     my $json = JSON->new->pretty;
     $json = $json->relaxed([1]); # At some point input did fail without this
-    local $/;
+    local $/ = undef;
     open my $fh, '<', $self->{rules}
       or die "Could not open json: $self->{rules}";
-      $json= <$fh>;
+    $json = <$fh>;
     close $fh or die "Whatever";
     decode_json($json);
   };
@@ -24,6 +21,7 @@ package EndpointResolver
   sub get_rules_for_service {
     my $self = shift;
     my $service_name  = shift;
+print "SERVICE NAME: $service_name\n";
     return $self->json->{$service_name};
   }
 
@@ -34,49 +32,43 @@ package EndpointResolver
     my %args = @_;
     $args{scheme} = $self->{default_sheme}
       unless defined $args{scheme};
-    my @service_rules = $self->get_rules_for_service($service);
-    my $endpoint = $self->_match_rules(@service_rules, $region, %args);
-    $endpoint = $self->_match_rules('_default',$region, %args)
-      unless defined $endpoint;
 
-    if ( ! defined $endpoint ) {
-      if ( ! defined $region ) {
-        die "NoRegionError()";
-      } else {
-        die "UnkownEndpointError(service $service. region: $region)"
-      }
+    my $service_rules = $self->get_rules_for_service($service);
+    $service_rules = $self->get_rules_for_service('_default');
+
+    my $endpoint_info = $self->_match_rules($service_rules, $region, %args);
+
+    if ( not defined $endpoint_info ) {
+      die "NoRegionError()";
+    } else {
+      die "UnkownEndpointError(service $service. region: $region)"
     }
 
-    return $endpoint;
+    return $endpoint_info;
   }
 
   sub _match_rules {
-    my ( $self, @service_rules, $region, %args ) = @_;
-    return unless scalar(@service_rules) gt 0;
-    for my $rule ( @service_rules ) {
-      #next unless defined $rule and defined $region;
+    my ( $self, $service_rules, $region, %args ) = @_;
+
+    return undef if (not defined $service_rules);
+    return undef if scalar(@$service_rules) == 0;
+
+    for my $rule ( @$service_rules ) {
       if ( $self->_matches_rule($rule, $region, %args) ) {
-        for my $entry (@{ $rule }) {
-          if ( defined $entry->{properties} ) {
-            encode_json($entry);
-          } else {
-            print "{ uri: " . $entry->{uri} . " }\n";
-          }
-        }
+        return { uri => $rule->{ uri }, %{ $self->{ properties } } };
       }
     }
+    return undef;
   }
 
   sub _matches_rule {
     my( $self, $rule, $region, %args ) = @_;
-    for my $maybe (@{ $rule }) {
-      next unless defined $maybe->{constraints};
-      if ( $self->_matches_constraint(
-             $region, $maybe->{constraints}, %args)) {
-        return;
+    for my $constraint (@{ $rule->{ constraints} }) {
+      if ( $self->_matches_constraint($region, $constraint, %args)) {
+        return 1;
       }
     }
-    return 1;
+    return 0;
   }
 
   sub _matches_constraint {
@@ -113,9 +105,11 @@ package EndpointResolver
         return;
       }
     );
-    my ($self, $region, @constraint, %args ) = @_;
-    my $func  = $constraint[0][0][1];
-    my $value = $constraint[0][0][2];
+    my ($self, $region, $constraint, %args ) = @_;
+    my $property = $constraint->[0];
+    die "We only know how to apply constraints to region" if ($property ne 'region');
+    my $func  = $constraint->[1];
+    my $value = $constraint->[2];
     return $constraint_funcs{$func}->($region,$value);
   }
 }
