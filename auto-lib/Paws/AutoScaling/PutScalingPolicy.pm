@@ -6,7 +6,7 @@ package Paws::AutoScaling::PutScalingPolicy {
   has Cooldown => (is => 'ro', isa => 'Int');
   has MinAdjustmentStep => (is => 'ro', isa => 'Int');
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
-  has ScalingAdjustment => (is => 'ro', isa => 'Int', required => 1);
+  has ScalingAdjustment => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -42,9 +42,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-Specifies whether the C<ScalingAdjustment> is an absolute number or a
-percentage of the current capacity. Valid values are
-C<ChangeInCapacity>, C<ExactCapacity>, and C<PercentChangeInCapacity>.
+The adjustment type. Valid values are C<ChangeInCapacity>,
+C<ExactCapacity>, and C<PercentChangeInCapacity>.
 
 For more information, see Dynamic Scaling in the I<Auto Scaling
 Developer Guide>.
@@ -127,13 +126,13 @@ The name of the policy.
 
 
 
-=head2 B<REQUIRED> ScalingAdjustment => Int
+=head2 ScalingAdjustment => Int
 
   
 
 The number of instances by which to scale. C<AdjustmentType> determines
-the interpretation of this number (e.g., as an absolute number or as a
-percentage of the existing Auto Scaling group size). A positive
+the interpretation of this number (for example, as an absolute number
+or as a percentage of the existing Auto Scaling group size). A positive
 increment adds to the current capacity and a negative value removes
 from the current capacity.
 

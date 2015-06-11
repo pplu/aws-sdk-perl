@@ -112,10 +112,10 @@ the group and less than or equal to the maximum size of the group.
 
   
 
-The amount of time, in second, that Auto Scaling waits before checking
+The amount of time, in seconds, that Auto Scaling waits before checking
 the health status of an instance. The grace period begins when the
-instance passes System Status and the Instance Status checks from
-Amazon EC2. For more information, see DescribeInstanceStatus.
+instance passes the system status and instance status checks from
+Amazon EC2. For more information, see .
 
 
 
@@ -228,15 +228,15 @@ Scaling Group in the I<Auto Scaling Developer Guide>.
 
   
 
-The subnet identifier for the Amazon VPC connection, if applicable. You
-can specify several subnets in a comma-separated list.
+The ID of the subnet, if you are launching into a VPC. You can specify
+several subnets in a comma-separated list.
 
 When you specify C<VPCZoneIdentifier> with C<AvailabilityZones>, ensure
 that the subnets' Availability Zones match the values you specify for
 C<AvailabilityZones>.
 
-For more information, see Auto Scaling and Amazon VPC in the I<Auto
-Scaling Developer Guide>.
+For more information, see Auto Scaling and Amazon Virtual Private Cloud
+in the I<Auto Scaling Developer Guide>.
 
 
 

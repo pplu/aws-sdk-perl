@@ -56,8 +56,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Used for groups that launch instances into a virtual private cloud
 (VPC). Specifies whether to assign a public IP address to each
-instance. For more information, see Auto Scaling and Amazon VPC in the
-I<Auto Scaling Developer Guide>.
+instance. For more information, see Auto Scaling and Amazon Virtual
+Private Cloud in the I<Auto Scaling Developer Guide>.
 
 If you specify a value for this parameter, be sure to specify at least
 one subnet using the I<VPCZoneIdentifier> parameter when you create
@@ -158,12 +158,12 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 The name or the Amazon Resource Name (ARN) of the instance profile
 associated with the IAM role for the instance.
 
-Amazon EC2 instances launched with an IAM role will automatically have
-AWS security credentials available. You can use IAM roles with Auto
-Scaling to automatically enable applications running on your Amazon EC2
-instances to securely access other AWS resources. For more information,
-see Launch Auto Scaling Instances with an IAM Role in the I<Auto
-Scaling Developer Guide>.
+EC2 instances launched with an IAM role will automatically have AWS
+security credentials available. You can use IAM roles with Auto Scaling
+to automatically enable applications running on your EC2 instances to
+securely access other AWS resources. For more information, see Launch
+Auto Scaling Instances with an IAM Role in the I<Auto Scaling Developer
+Guide>.
 
 
 
@@ -223,9 +223,9 @@ Instance in the I<Auto Scaling Developer Guide>.
 Enables detailed monitoring if it is disabled. Detailed monitoring is
 enabled by default.
 
-When detailed monitoring is enabled, Amazon Cloudwatch generates
+When detailed monitoring is enabled, Amazon CloudWatch generates
 metrics every minute and your account is charged a fee. When you
-disable detailed monitoring, by specifying C<False>, Cloudwatch
+disable detailed monitoring, by specifying C<False>, CloudWatch
 generates metrics every 5 minutes. For more information, see Monitor
 Your Auto Scaling Instances in the I<Auto Scaling Developer Guide>.
 
@@ -242,9 +242,9 @@ Your Auto Scaling Instances in the I<Auto Scaling Developer Guide>.
 
   
 
-The instance type of the Amazon EC2 instance. For information about
-available Amazon EC2 instance types, see Available Instance Types in
-the I<Amazon Elastic Cloud Compute User Guide.>
+The instance type of the EC2 instance. For information about available
+instance types, see Available Instance Types in the I<Amazon Elastic
+Cloud Compute User Guide.>
 
 
 
@@ -259,7 +259,7 @@ the I<Amazon Elastic Cloud Compute User Guide.>
 
   
 
-The ID of the kernel associated with the Amazon EC2 AMI.
+The ID of the kernel associated with the AMI.
 
 
 
@@ -307,18 +307,18 @@ the scope of your AWS account.
   
 
 The tenancy of the instance. An instance with a tenancy of C<dedicated>
-runs on single-tenant hardware and can only be launched in a VPC.
+runs on single-tenant hardware and can only be launched into a VPC.
 
 You must set the value of this parameter to C<dedicated> if want to
-launch Dedicated Instances in a shared tenancy VPC (VPC with instance
+launch Dedicated Instances into a shared tenancy VPC (VPC with instance
 placement tenancy attribute set to C<default>).
 
 If you specify a value for this parameter, be sure to specify at least
-one VPC subnet using the I<VPCZoneIdentifier> parameter when you create
+one subnet using the I<VPCZoneIdentifier> parameter when you create
 your group.
 
-For more information, see Auto Scaling and Amazon VPC in the I<Auto
-Scaling Developer Guide>.
+For more information, see Auto Scaling and Amazon Virtual Private Cloud
+in the I<Auto Scaling Developer Guide>.
 
 Valid values: C<default> | C<dedicated>
 
@@ -335,7 +335,7 @@ Valid values: C<default> | C<dedicated>
 
   
 
-The ID of the RAM disk associated with the Amazon EC2 AMI.
+The ID of the RAM disk associated with the AMI.
 
 
 
@@ -357,7 +357,7 @@ security group names or the security group IDs. For more information
 about security groups for EC2-Classic, see Amazon EC2 Security Groups
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-If your instances are launched in a VPC, specify security group IDs.
+If your instances are launched into a VPC, specify security group IDs.
 For more information, see Security Groups for Your VPC in the I<Amazon
 Virtual Private Cloud User Guide>.
 

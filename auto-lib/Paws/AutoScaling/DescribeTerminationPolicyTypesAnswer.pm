@@ -18,9 +18,9 @@ Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer
 
   
 
-The Termination policies supported by Auto Scaling. They are:
-C<OldestInstance>, C<OldestLaunchConfiguration>, C<NewestInstance>,
-C<ClosestToNextInstanceHour>, and C<Default>.
+The termination policies supported by Auto Scaling (C<OldestInstance>,
+C<OldestLaunchConfiguration>, C<NewestInstance>,
+C<ClosestToNextInstanceHour>, and C<Default>).
 
 
 
