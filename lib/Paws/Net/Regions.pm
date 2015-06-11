@@ -28,23 +28,24 @@ package Paws::Net::Regions {
   );
 
   sub construct_endpoint {
-    my ($self, $service, $region, %args) = @_;
+    my ($self, $service, $region, $args) = @_;
 
-    my $scheme = $self->default_scheme;
+    $args->{ service } = $service;
+    $args->{ region  } = $region;
+    $args->{ scheme  } = $self->default_scheme if (not defined $args->{scheme});
+
     my $service_rules = $self->get_rules_for_service($service);
-    $service_rules = $self->get_rules_for_service('_default');
-
-    my $endpoint_info = $self->_match_rules($service_rules, $region, %args);
+    my $endpoint_info = $self->_match_rules($service_rules, $region, $args);
+    if (not defined $endpoint_info) {
+      $service_rules = $self->get_rules_for_service('_default');
+      $endpoint_info = $self->_match_rules($service_rules, $region, $args);
+    }
 
     if ( not defined $endpoint_info ) {
       die "NoRegionError()";
     } else {
       my $template = URI::Template->new($endpoint_info->{uri});
-      my $url = $template->process(
-        service => $service,
-        region => $region,
-        scheme => $scheme,
-      );
+      my $url = $template->process($args);
       $endpoint_info->{ url } = $url;
     }
 
@@ -52,13 +53,13 @@ package Paws::Net::Regions {
   }
 
   sub _match_rules {
-    my ( $self, $service_rules, $region, %args ) = @_;
+    my ( $self, $service_rules, $region, $args ) = @_;
 
     return undef if (not defined $service_rules);
     return undef if scalar(@$service_rules) == 0;
 
     for my $rule ( @$service_rules ) {
-      if ( $self->_matches_rule($rule, $region, %args) ) {
+      if ( $self->_matches_rule($rule, $region, $args) ) {
         return { uri => $rule->{ uri }, properties => { (defined $self->{ properties }) ? $self->{ properties } : () } };
       }
     }
@@ -66,11 +67,13 @@ package Paws::Net::Regions {
   }
 
   sub _matches_rule {
-    my( $self, $rule, $region, %args ) = @_;
-    for my $constraint (@{ $rule->{ constraints} }) {
-      if ( $self->_matches_constraint($region, $constraint, %args)) {
-        return 1;
-      }
+    my( $self, $rule, $region, $args ) = @_;
+
+    return 1 if (not defined $rule->{ constraints });
+
+    my @constraints = @{ $rule->{ constraints } };
+    for my $constraint (@constraints) {
+      return 1 if ( $self->_matches_constraint($region, $constraint, $args) );
     }
     return 0;
   }
@@ -103,6 +106,7 @@ package Paws::Net::Regions {
       oneOf => sub {
         my ( $a, $v ) = @_;
         for my $b (@$v) {
+          next if (not defined $b);
           return 1 if $a eq $b;
         }
         return 0;
@@ -112,7 +116,7 @@ package Paws::Net::Regions {
   );
 
   sub _matches_constraint {
-    my ($self, $region, $constraint, %args ) = @_;
+    my ($self, $region, $constraint, $args ) = @_;
     my $property = $constraint->[0];
     die "We only know how to apply constraints to region" if ($property ne 'region');
     my $func  = $constraint->[1];
