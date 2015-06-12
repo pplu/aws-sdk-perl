@@ -53,45 +53,44 @@ The name or Amazon Resource Name (ARN) of the group.
 
   
 
-One or more of the following metrics:
+One or more metrics. If you omit this parameter, all metrics are
+disabled.
 
 =over
 
 =item *
 
-GroupMinSize
+C<GroupMinSize>
 
 =item *
 
-GroupMaxSize
+C<GroupMaxSize>
 
 =item *
 
-GroupDesiredCapacity
+C<GroupDesiredCapacity>
 
 =item *
 
-GroupInServiceInstances
+C<GroupInServiceInstances>
 
 =item *
 
-GroupPendingInstances
+C<GroupPendingInstances>
 
 =item *
 
-GroupStandbyInstances
+C<GroupStandbyInstances>
 
 =item *
 
-GroupTerminatingInstances
+C<GroupTerminatingInstances>
 
 =item *
 
-GroupTotalInstances
+C<GroupTotalInstances>
 
 =back
-
-If you omit this parameter, all metrics are disabled.
 
 
 
