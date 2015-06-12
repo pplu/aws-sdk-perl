@@ -270,7 +270,9 @@ EOF
 
 use FindBin;
 use lib "$FindBin::Bin/../lib";
+use Paws;
 use Paws::Net::Regions;
+use Paws::API::ServiceToClass;
 use Data::Dumper;
 use Test::More;
 my $rules    = "$FindBin::Bin/../botocore/botocore/data/_endpoints.json";
@@ -288,6 +290,21 @@ sub test_known_endpoints {
       cmp_ok($endpoint->{ url }->host, 'eq', $expected_endpoint, "Endpoint for $service in $region is $expected_endpoint");
     }
   }
+
+  for my $region ( sort keys %$known_regions ) {
+    for my $service ( sort keys %{ $known_regions->{$region} } ) {
+      my $expected_endpoint = $known_regions->{ $region }->{ $service };
+
+      # If we don't have a Class for a service, just skip it
+      my $paws_service = eval { Paws::API::ServiceToClass::service_to_class($service); };
+      next if (not defined $paws_service);
+
+      my $svc = Paws->service($paws_service, region => $region);
+      my $endpoint = $resolver->construct_endpoint($service, $region);
+      cmp_ok($svc->endpoint_host, 'eq', $expected_endpoint, "Endpoint for $service in $region is $expected_endpoint");
+    }
+  }
+
 }
 
 test_known_endpoints();

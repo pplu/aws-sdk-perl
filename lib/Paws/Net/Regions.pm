@@ -60,7 +60,7 @@ package Paws::Net::Regions {
 
     for my $rule ( @$service_rules ) {
       if ( $self->_matches_rule($rule, $region, $args) ) {
-        return { uri => $rule->{ uri }, properties => { (defined $self->{ properties }) ? $self->{ properties } : () } };
+        return { uri => $rule->{ uri }, (defined $rule->{ properties }) ? %{ $rule->{ properties } } : () };
       }
     }
     return undef;
@@ -85,6 +85,8 @@ package Paws::Net::Regions {
       {
       startsWith => sub {
         my ( $a, $v ) = @_;
+        return 0 if (not defined $a and defined $v);
+        return 0 if (defined $a and not defined $v);
         return $a =~ /^$v.*/i;
       },
       notStartsWith => sub {
@@ -101,6 +103,7 @@ package Paws::Net::Regions {
         my ( $a, $v ) = @_;
         return 1 if (defined $a and not defined $v);
         return 1 if (not defined $a and defined $v);
+        return 0 if (not defined $a and not defined $v);
         return $a ne $v;
       },
       oneOf => sub {
