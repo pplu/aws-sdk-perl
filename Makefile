@@ -4,6 +4,11 @@ test:
 pull-other-sdks:
 	git submodule init
 	git submodule update
+	cd botocore && git checkout develop
+	cd botocore && git remote add boto https://github.com/boto/botocore.git
+
+pull-boto-develop:
+	cd botocore && git pull boto develop
 
 gen-classes:
 	rm -r auto-lib/Paws/*

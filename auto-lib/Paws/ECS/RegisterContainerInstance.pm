@@ -58,17 +58,68 @@ specify a cluster, the default cluster is assumed..
 
   
 
+The instance identity document for the Amazon EC2 instance to register.
+This document can be found by running the following command from the
+instance: C<curl
+http://169.254.169.254/latest/dynamic/instance-identity/document/>
+
+
+
+
+
+
+
+
+
+
 =head2 instanceIdentityDocumentSignature => Str
 
   
+
+The instance identity document signature for the Amazon EC2 instance to
+register. This signature can be found by running the following command
+from the instance: C<curl
+http://169.254.169.254/latest/dynamic/instance-identity/signature/>
+
+
+
+
+
+
+
+
+
 
 =head2 totalResources => ArrayRef[Paws::ECS::Resource]
 
   
 
+The resources available on the instance.
+
+
+
+
+
+
+
+
+
+
 =head2 versionInfo => Paws::ECS::VersionInfo
 
   
+
+The version information for the Amazon ECS container agent and Docker
+daemon running on the container instance.
+
+
+
+
+
+
+
+
+
 
 
 

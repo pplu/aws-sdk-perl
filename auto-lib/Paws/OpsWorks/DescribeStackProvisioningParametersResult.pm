@@ -1,7 +1,6 @@
 
 package Paws::OpsWorks::DescribeStackProvisioningParametersResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AgentInstallerUrl => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::OpsWorks::Parameters');
 

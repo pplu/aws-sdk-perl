@@ -1,7 +1,6 @@
 
 package Paws::Glacier::InitiateMultipartUploadOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has location => (is => 'ro', isa => 'Str');
   has uploadId => (is => 'ro', isa => 'Str');
 

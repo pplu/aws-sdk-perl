@@ -1,7 +1,6 @@
 
 package Paws::EC2::CancelSpotFleetRequestsResponse {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has SuccessfulFleetRequests => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CancelSpotFleetRequestsSuccessItem]', xmlname => 'successfulFleetRequestSet', traits => ['Unwrapped',]);
   has UnsuccessfulFleetRequests => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CancelSpotFleetRequestsErrorItem]', xmlname => 'unsuccessfulFleetRequestSet', traits => ['Unwrapped',]);
 

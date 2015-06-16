@@ -1,7 +1,6 @@
 
 package Paws::CognitoSync::GetCognitoEventsResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Events => (is => 'ro', isa => 'Paws::CognitoSync::Events');
 
 }

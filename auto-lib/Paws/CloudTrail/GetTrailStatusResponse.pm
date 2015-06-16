@@ -1,7 +1,6 @@
 
 package Paws::CloudTrail::GetTrailStatusResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has IsLogging => (is => 'ro', isa => 'Bool');
   has LatestCloudWatchLogsDeliveryError => (is => 'ro', isa => 'Str');
   has LatestCloudWatchLogsDeliveryTime => (is => 'ro', isa => 'Str');

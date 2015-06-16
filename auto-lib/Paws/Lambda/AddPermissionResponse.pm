@@ -1,7 +1,6 @@
 
 package Paws::Lambda::AddPermissionResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Statement => (is => 'ro', isa => 'Str');
 
 }

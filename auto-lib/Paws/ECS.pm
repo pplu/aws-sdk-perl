@@ -133,6 +133,11 @@ package Paws::ECS {
     my $call_object = $self->new_with_coercions('Paws::ECS::SubmitTaskStateChange', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateContainerAgent {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::UpdateContainerAgent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateService {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::UpdateService', @_);
@@ -216,7 +221,7 @@ C<CreateCluster> action.
 
 
 
-=head2 CreateService(serviceName => Str, [clientToken => Str, cluster => Str, desiredCount => Int, loadBalancers => ArrayRef[Paws::ECS::LoadBalancer], role => Str, taskDefinition => Str])
+=head2 CreateService(desiredCount => Int, serviceName => Str, taskDefinition => Str, [clientToken => Str, cluster => Str, loadBalancers => ArrayRef[Paws::ECS::LoadBalancer], role => Str])
 
 Each argument is described in detail in: L<Paws::ECS::CreateService>
 
@@ -558,7 +563,7 @@ parameter.
 
 
 
-=head2 ListTasks([cluster => Str, containerInstance => Str, family => Str, maxResults => Int, nextToken => Str, serviceName => Str, startedBy => Str])
+=head2 ListTasks([cluster => Str, containerInstance => Str, desiredStatus => Str, family => Str, maxResults => Int, nextToken => Str, serviceName => Str, startedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListTasks>
 
@@ -567,8 +572,9 @@ Returns: a L<Paws::ECS::ListTasksResponse> instance
   
 
 Returns a list of tasks for a specified cluster. You can filter the
-results by family name or by a particular container instance with the
-C<family> and C<containerInstance> parameters.
+results by family name, by a particular container instance, or by the
+desired status of the task with the C<family>, C<containerInstance>,
+and C<desiredStatus> parameters.
 
 
 
@@ -731,6 +737,27 @@ This action is only used by the Amazon EC2 Container Service agent, and
 it is not intended for use outside of the agent.
 
 Sent to acknowledge that a task changed states.
+
+
+
+
+
+
+
+
+
+
+
+=head2 UpdateContainerAgent(containerInstance => Str, [cluster => Str])
+
+Each argument is described in detail in: L<Paws::ECS::UpdateContainerAgent>
+
+Returns: a L<Paws::ECS::UpdateContainerAgentResponse> instance
+
+  
+
+Updates the Amazon ECS container agent on a specified container
+instance.
 
 
 

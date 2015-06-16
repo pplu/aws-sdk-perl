@@ -1,7 +1,6 @@
 
 package Paws::EC2::CreateSecurityGroupResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has GroupId => (is => 'ro', isa => 'Str', xmlname => 'groupId', traits => ['Unwrapped',]);
 
 }

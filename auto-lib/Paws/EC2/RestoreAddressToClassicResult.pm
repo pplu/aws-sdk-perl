@@ -1,7 +1,6 @@
 
 package Paws::EC2::RestoreAddressToClassicResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has PublicIp => (is => 'ro', isa => 'Str', xmlname => 'publicIp', traits => ['Unwrapped',]);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
 

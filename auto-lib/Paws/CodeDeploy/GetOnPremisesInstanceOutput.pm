@@ -1,7 +1,6 @@
 
 package Paws::CodeDeploy::GetOnPremisesInstanceOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has instanceInfo => (is => 'ro', isa => 'Paws::CodeDeploy::InstanceInfo');
 
 }

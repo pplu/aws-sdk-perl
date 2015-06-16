@@ -67,8 +67,8 @@ using EnableAvailabilityZonesForLoadBalancer.
 
 The listeners.
 
-For more information, see Listener Configurations for Elastic Load
-Balancing in the I<Elastic Load Balancing Developer Guide>.
+For more information, see Listeners for Your Load Balancer in the
+I<Elastic Load Balancing Developer Guide>.
 
 
 

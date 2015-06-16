@@ -1,7 +1,6 @@
 
 package Paws::EC2::CancelReservedInstancesListingResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has ReservedInstancesListings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesListing]', xmlname => 'reservedInstancesListingsSet', traits => ['Unwrapped',]);
 
 }

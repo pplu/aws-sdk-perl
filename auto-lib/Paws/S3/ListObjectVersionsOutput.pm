@@ -1,7 +1,6 @@
 
 package Paws::S3::ListObjectVersionsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has CommonPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::S3::CommonPrefix]');
   has DeleteMarkers => (is => 'ro', isa => 'ArrayRef[Paws::S3::DeleteMarkerEntry]');
   has Delimiter => (is => 'ro', isa => 'Str');

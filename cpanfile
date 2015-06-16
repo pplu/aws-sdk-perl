@@ -1,5 +1,6 @@
 requires 'Moose';
 requires 'MooseX::ClassAttribute';
+requires 'Throwable::Error';
 requires 'Data::Compare';
 requires 'URI';
 requires 'Net::Amazon::Signature::V3';
@@ -30,6 +31,7 @@ on 'develop' => sub {
   requires 'Dist::Zilla::Plugin::Prereqs::FromCPANfile';
   requires 'Dist::Zilla::Plugin::VersionFromModule';
   requires 'Dist::Zilla::PluginBundle::Git';
+  requires 'Carp::Always';
 };
 on 'test' => sub {
   requires 'Data::Printer';
@@ -38,4 +40,5 @@ on 'test' => sub {
   requires 'YAML';
   requires 'Test::Class::Moose::Load';
   requires 'Test::Pod';
+  requires 'Hash::MD5';
 };

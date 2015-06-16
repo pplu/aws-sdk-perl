@@ -1,7 +1,6 @@
 
 package Paws::ECS::ListServicesResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has nextToken => (is => 'ro', isa => 'Str');
   has serviceArns => (is => 'ro', isa => 'ArrayRef[Str]');
 

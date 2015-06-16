@@ -44,7 +44,6 @@ package [% c.api %]::[% operation.name %] {
 [%- IF (shape) %]
 package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
   use Moose;
-  with 'Paws::API::ResultParser';
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- traits = []; write_encoders = [] -%]
   [%- member_shape_name = shape.members.$param_name.shape %]

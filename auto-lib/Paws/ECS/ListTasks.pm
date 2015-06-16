@@ -3,6 +3,7 @@ package Paws::ECS::ListTasks {
   use Moose;
   has cluster => (is => 'ro', isa => 'Str');
   has containerInstance => (is => 'ro', isa => 'Str');
+  has desiredStatus => (is => 'ro', isa => 'Str');
   has family => (is => 'ro', isa => 'Str');
   has maxResults => (is => 'ro', isa => 'Int');
   has nextToken => (is => 'ro', isa => 'Str');
@@ -64,6 +65,25 @@ The container instance UUID or full Amazon Resource Name (ARN) of the
 container instance that you want to filter the C<ListTasks> results
 with. Specifying a C<containerInstance> will limit the results to tasks
 that belong to that container instance.
+
+
+
+
+
+
+
+
+
+
+=head2 desiredStatus => Str
+
+  
+
+The task status that you want to filter the C<ListTasks> results with.
+Specifying a C<desiredStatus> of C<STOPPED> will limit the results to
+tasks that are in the C<STOPPED> status, which can be useful for
+debugging tasks that are not starting properly or have died or
+finished. The default status filter is C<RUNNING>.
 
 
 

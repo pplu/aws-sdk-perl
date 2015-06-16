@@ -1,7 +1,6 @@
 
 package Paws::ElasticBeanstalk::EnvironmentDescription {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AbortableOperationInProgress => (is => 'ro', isa => 'Bool');
   has ApplicationName => (is => 'ro', isa => 'Str');
   has CNAME => (is => 'ro', isa => 'Str');

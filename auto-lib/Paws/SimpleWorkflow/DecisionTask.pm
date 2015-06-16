@@ -1,7 +1,6 @@
 
 package Paws::SimpleWorkflow::DecisionTask {
   use Moose;
-  with 'Paws::API::ResultParser';
   has events => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::HistoryEvent]', required => 1);
   has nextPageToken => (is => 'ro', isa => 'Str');
   has previousStartedEventId => (is => 'ro', isa => 'Num');

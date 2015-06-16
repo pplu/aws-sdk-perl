@@ -1,7 +1,6 @@
 
 package Paws::MachineLearning::DescribeDataSourcesOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has NextToken => (is => 'ro', isa => 'Str');
   has Results => (is => 'ro', isa => 'ArrayRef[Paws::MachineLearning::DataSource]');
 

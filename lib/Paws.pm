@@ -21,10 +21,16 @@ use Paws::API::Base64Attribute;
 
 use Paws::Net::Caller;
 use Paws::API;
+use Moose::Util::TypeConstraints;
 
 has _class_prefix => (isa => 'Str', is => 'ro', default => 'Paws::');
 
-has config => (isa => 'Paws::SDK::Config', is => 'rw', default => sub { Paws->default_config });
+coerce 'Paws::SDK::Config',
+  from 'HashRef',
+   via {
+     Paws::SDK::Config->new($_);
+};
+has config => (isa => 'Paws::SDK::Config', is => 'rw', coerce => 1, default => sub { Paws->default_config });
 
 class_has _default_object => (is => 'rw', isa => 'Paws');
 class_has default_config => (is => 'rw', isa => 'Paws::SDK::Config', default => sub { Paws::SDK::Config->new });

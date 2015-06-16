@@ -64,9 +64,31 @@ in a response size of 1MB, up to 10,000 log events.
 
   
 
+The name of the log group to query.
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> logStreamName => Str
 
   
+
+The name of the log stream to query.
+
+
+
+
+
+
+
+
+
 
 =head2 nextToken => Str
 

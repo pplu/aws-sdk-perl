@@ -1,7 +1,6 @@
 
 package Paws::IAM::ListPoliciesResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has Policies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Policy]');

@@ -3,11 +3,11 @@ package Paws::ECS::CreateService {
   use Moose;
   has clientToken => (is => 'ro', isa => 'Str');
   has cluster => (is => 'ro', isa => 'Str');
-  has desiredCount => (is => 'ro', isa => 'Int');
+  has desiredCount => (is => 'ro', isa => 'Int', required => 1);
   has loadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]');
   has role => (is => 'ro', isa => 'Str');
   has serviceName => (is => 'ro', isa => 'Str', required => 1);
-  has taskDefinition => (is => 'ro', isa => 'Str');
+  has taskDefinition => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -72,7 +72,7 @@ default cluster is assumed.
 
 
 
-=head2 desiredCount => Int
+=head2 B<REQUIRED> desiredCount => Int
 
   
 
@@ -139,7 +139,7 @@ numbers, hyphens, and underscores are allowed.
 
 
 
-=head2 taskDefinition => Str
+=head2 B<REQUIRED> taskDefinition => Str
 
   
 

@@ -1,7 +1,6 @@
 
 package Paws::Glacier::ListPartsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ArchiveDescription => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');

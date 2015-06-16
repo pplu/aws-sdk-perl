@@ -1,7 +1,6 @@
 
 package Paws::DS::GetSnapshotLimitsResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has SnapshotLimits => (is => 'ro', isa => 'Paws::DS::SnapshotLimits');
 
 }

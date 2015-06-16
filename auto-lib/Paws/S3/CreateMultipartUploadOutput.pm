@@ -1,7 +1,6 @@
 
 package Paws::S3::CreateMultipartUploadOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Bucket => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str');
   has RequestCharged => (is => 'ro', isa => 'Str');

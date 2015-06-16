@@ -1,7 +1,6 @@
 
 package Paws::ECS::DescribeServicesResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]');
   has services => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Service]');
 

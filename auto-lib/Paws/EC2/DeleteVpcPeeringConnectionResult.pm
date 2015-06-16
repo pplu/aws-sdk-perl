@@ -1,7 +1,6 @@
 
 package Paws::EC2::DeleteVpcPeeringConnectionResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has Return => (is => 'ro', isa => 'Bool', xmlname => 'return', traits => ['Unwrapped',]);
 
 }

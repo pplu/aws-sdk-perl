@@ -1,7 +1,6 @@
 
 package Paws::RedShift::ClusterSecurityGroupMessage {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterSecurityGroup]', xmlname => 'ClusterSecurityGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 

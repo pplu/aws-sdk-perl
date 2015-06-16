@@ -1,7 +1,6 @@
 
 package Paws::Route53::GetHostedZoneCountResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has HostedZoneCount => (is => 'ro', isa => 'Num', required => 1);
 
 }

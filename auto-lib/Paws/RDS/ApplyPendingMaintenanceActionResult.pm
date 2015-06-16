@@ -1,7 +1,6 @@
 
 package Paws::RDS::ApplyPendingMaintenanceActionResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ResourcePendingMaintenanceActions => (is => 'ro', isa => 'Paws::RDS::ResourcePendingMaintenanceActions');
 
 }

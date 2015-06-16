@@ -1,7 +1,6 @@
 
 package Paws::WorkSpaces::DescribeWorkspaceBundlesResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Bundles => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::WorkspaceBundle]');
   has NextToken => (is => 'ro', isa => 'Str');
 

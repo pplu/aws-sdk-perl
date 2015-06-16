@@ -1,7 +1,6 @@
 
 package Paws::WorkSpaces::RebootWorkspacesResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has FailedRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::FailedWorkspaceChangeRequest]');
 
 }

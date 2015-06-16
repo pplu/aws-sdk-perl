@@ -1,7 +1,6 @@
 
 package Paws::Lambda::FunctionConfiguration {
   use Moose;
-  with 'Paws::API::ResultParser';
   has CodeSize => (is => 'ro', isa => 'Num');
   has Description => (is => 'ro', isa => 'Str');
   has FunctionArn => (is => 'ro', isa => 'Str');

@@ -83,7 +83,7 @@ if ($opts->{ debug }) {
 my $result = eval {$call->execute($service, %args) };
 if ($@) {
   print $@ if ($opts->{debug});
-  if ($@->isa('Moose::Exception::AttributeIsRequired')) {
+  if (ref($@) and $@->isa('Moose::Exception::AttributeIsRequired')) {
     print "Call to $method_name requires argument " . $@->attribute_name . "\n";
   } else {
     die $@;

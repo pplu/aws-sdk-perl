@@ -1,7 +1,6 @@
 
 package Paws::STS::AssumeRoleWithWebIdentityResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AssumedRoleUser => (is => 'ro', isa => 'Paws::STS::AssumedRoleUser');
   has Audience => (is => 'ro', isa => 'Str');
   has Credentials => (is => 'ro', isa => 'Paws::STS::Credentials');

@@ -1,7 +1,6 @@
 
 package Paws::Route53Domains::UpdateTagsForDomainResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
 
 }
 

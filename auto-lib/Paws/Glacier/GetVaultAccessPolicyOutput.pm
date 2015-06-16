@@ -1,7 +1,6 @@
 
 package Paws::Glacier::GetVaultAccessPolicyOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has policy => (is => 'ro', isa => 'Paws::Glacier::VaultAccessPolicy');
 
 }

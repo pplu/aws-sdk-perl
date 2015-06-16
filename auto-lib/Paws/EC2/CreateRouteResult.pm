@@ -1,7 +1,6 @@
 
 package Paws::EC2::CreateRouteResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped',]);
   has Return => (is => 'ro', isa => 'Bool', xmlname => 'return', traits => ['Unwrapped',]);
 

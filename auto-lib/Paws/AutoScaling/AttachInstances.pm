@@ -53,7 +53,7 @@ The name of the group.
 
   
 
-One or more EC2 instance IDs. You must specify at least one ID.
+One or more EC2 instance IDs.
 
 
 

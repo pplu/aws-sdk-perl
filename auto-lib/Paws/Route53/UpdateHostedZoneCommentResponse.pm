@@ -1,7 +1,6 @@
 
 package Paws::Route53::UpdateHostedZoneCommentResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has HostedZone => (is => 'ro', isa => 'Paws::Route53::HostedZone', required => 1);
 
 }

@@ -1,7 +1,6 @@
 
 package Paws::RedShift::LoggingStatus {
   use Moose;
-  with 'Paws::API::ResultParser';
   has BucketName => (is => 'ro', isa => 'Str');
   has LastFailureMessage => (is => 'ro', isa => 'Str');
   has LastFailureTime => (is => 'ro', isa => 'Str');

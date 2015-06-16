@@ -1,7 +1,6 @@
 
 package Paws::StorageGateway::DescribeCacheOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has CacheAllocatedInBytes => (is => 'ro', isa => 'Num');
   has CacheDirtyPercentage => (is => 'ro', isa => 'Num');
   has CacheHitPercentage => (is => 'ro', isa => 'Num');

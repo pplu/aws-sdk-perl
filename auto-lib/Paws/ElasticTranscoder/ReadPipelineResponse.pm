@@ -1,7 +1,6 @@
 
 package Paws::ElasticTranscoder::ReadPipelineResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Pipeline => (is => 'ro', isa => 'Paws::ElasticTranscoder::Pipeline');
   has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Warning]');
 

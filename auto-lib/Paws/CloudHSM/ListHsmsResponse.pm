@@ -1,7 +1,6 @@
 
 package Paws::CloudHSM::ListHsmsResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has HsmList => (is => 'ro', isa => 'ArrayRef[Str]');
   has NextToken => (is => 'ro', isa => 'Str');
 

@@ -1,7 +1,6 @@
 
 package Paws::DS::GetDirectoryLimitsResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has DirectoryLimits => (is => 'ro', isa => 'Paws::DS::DirectoryLimits');
 
 }

@@ -1,7 +1,6 @@
 
 package Paws::DS::DescribeDirectoriesResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has DirectoryDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::DS::DirectoryDescription]');
   has NextToken => (is => 'ro', isa => 'Str');
 

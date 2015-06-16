@@ -1,7 +1,6 @@
 
 package Paws::Glacier::GlacierJobDescription {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Action => (is => 'ro', isa => 'Str');
   has ArchiveId => (is => 'ro', isa => 'Str');
   has ArchiveSHA256TreeHash => (is => 'ro', isa => 'Str');

@@ -1,7 +1,6 @@
 
 package Paws::Lambda::InvokeAsyncResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Status => (is => 'ro', isa => 'Int');
 
 }
@@ -18,6 +17,17 @@ Paws::Lambda::InvokeAsyncResponse
 =head2 Status => Int
 
   
+
+It will be 202 upon success.
+
+
+
+
+
+
+
+
+
 
 
 =cut

@@ -1,7 +1,6 @@
 
 package Paws::DS::CreateSnapshotResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has SnapshotId => (is => 'ro', isa => 'Str');
 
 }

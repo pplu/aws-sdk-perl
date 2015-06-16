@@ -1,7 +1,6 @@
 
 package Paws::CloudTrail::UpdateTrailResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has CloudWatchLogsLogGroupArn => (is => 'ro', isa => 'Str');
   has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');

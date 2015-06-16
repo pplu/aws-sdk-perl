@@ -1,7 +1,6 @@
 
 package Paws::EC2::DescribeSpotFleetRequestHistoryResponse {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has HistoryRecords => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HistoryRecord]', xmlname => 'historyRecordSet', traits => ['Unwrapped',], required => 1);
   has LastEvaluatedTime => (is => 'ro', isa => 'Str', xmlname => 'lastEvaluatedTime', traits => ['Unwrapped',], required => 1);
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);

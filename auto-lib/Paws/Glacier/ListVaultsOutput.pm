@@ -1,7 +1,6 @@
 
 package Paws::Glacier::ListVaultsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
   has VaultList => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::DescribeVaultOutput]');
 

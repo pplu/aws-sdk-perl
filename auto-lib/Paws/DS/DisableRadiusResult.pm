@@ -1,7 +1,6 @@
 
 package Paws::DS::DisableRadiusResult {
   use Moose;
-  with 'Paws::API::ResultParser';
 
 }
 

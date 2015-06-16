@@ -1,7 +1,6 @@
 
 package Paws::Glacier::GetVaultNotificationsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has vaultNotificationConfig => (is => 'ro', isa => 'Paws::Glacier::VaultNotificationConfig');
 
 }

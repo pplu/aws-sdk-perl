@@ -1,4 +1,5 @@
 ---
+todo: 'Havent implemented decoders yet'
 call: GetConsoleOutput
 service: EC2
 tests:

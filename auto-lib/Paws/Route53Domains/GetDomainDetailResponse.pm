@@ -1,7 +1,6 @@
 
 package Paws::Route53Domains::GetDomainDetailResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AbuseContactEmail => (is => 'ro', isa => 'Str');
   has AbuseContactPhone => (is => 'ro', isa => 'Str');
   has AdminContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail', required => 1);

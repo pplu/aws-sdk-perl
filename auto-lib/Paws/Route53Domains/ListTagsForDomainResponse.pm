@@ -1,7 +1,6 @@
 
 package Paws::Route53Domains::ListTagsForDomainResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has TagList => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::Tag]', required => 1);
 
 }

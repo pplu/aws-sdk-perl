@@ -1,7 +1,6 @@
 
 package Paws::DS::DisableSsoResult {
   use Moose;
-  with 'Paws::API::ResultParser';
 
 }
 

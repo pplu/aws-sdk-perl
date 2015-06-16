@@ -178,16 +178,20 @@ Paws::ELB - Perl Interface to AWS Elastic Load Balancing
 
 Elastic Load Balancing
 
-Elastic Load Balancing automatically distributes incoming web traffic
-across multiple Amazon EC2 instances.
+Elastic Load Balancing distributes incoming traffic across your EC2
+instances.
 
-All Elastic Load Balancing actions and commands are I<idempotent>,
-which means that they complete no more than one time. If you repeat a
-request or a command, the action succeeds with a 200 OK response code.
-
-For detailed information about the features of Elastic Load Balancing,
-see Managing Load Balancers in the I<Elastic Load Balancing Developer
+For information about the features of Elastic Load Balancing, see What
+Is Elastic Load Balancing? in the I<Elastic Load Balancing Developer
 Guide>.
+
+For information about the AWS regions supported by Elastic Load
+Balancing, see Regions and Endpoints - Elastic Load Balancing in the
+I<Amazon Web Services General Reference>.
+
+All Elastic Load Balancing operations are I<idempotent>, which means
+that they complete at most one time. If you repeat an operation, it
+succeeds with a 200 OK response code.
 
 
 
@@ -215,8 +219,8 @@ Each tag consists of a key and an optional value. If a tag with the
 same key is already associated with the load balancer, C<AddTags>
 updates its value.
 
-For more information, see Tagging in the I<Elastic Load Balancing
-Developer Guide>.
+For more information, see Tag Your Load Balancer in the I<Elastic Load
+Balancing Developer Guide>.
 
 
 
@@ -240,8 +244,8 @@ Associates one or more security groups with your load balancer in a
 virtual private cloud (VPC). The specified security groups override the
 previously associated security groups.
 
-For more information, see Manage Security Groups for Amazon VPC in the
-I<Elastic Load Balancing Developer Guide>.
+For more information, see Security Groups for Load Balancers in a VPC
+in the I<Elastic Load Balancing Developer Guide>.
 
 
 
@@ -265,8 +269,8 @@ Adds one or more subnets to the set of configured subnets for the
 specified load balancer.
 
 The load balancer evenly distributes requests across all registered
-subnets. For more information, see Elastic Load Balancing in Amazon VPC
-in the I<Elastic Load Balancing Developer Guide>.
+subnets. For more information, see Add or Remove Subnets for Your Load
+Balancer in a VPC in the I<Elastic Load Balancing Developer Guide>.
 
 
 
@@ -289,8 +293,8 @@ Returns: a L<Paws::ELB::ConfigureHealthCheckOutput> instance
 Specifies the health check settings to use when evaluating the health
 state of your back-end instances.
 
-For more information, see Health Checks in the I<Elastic Load Balancing
-Developer Guide>.
+For more information, see Configure Health Checks in the I<Elastic Load
+Balancing Developer Guide>.
 
 
 
@@ -386,31 +390,15 @@ Returns: a L<Paws::ELB::CreateAccessPointOutput> instance
 Creates a load balancer.
 
 If the call completes successfully, a new load balancer is created with
-a unique Domain Name Service (DNS) name. The DNS name includes the name
-of the AWS region in which the load balancer was created. For example,
-the DNS name might end with either of the following:
-
-=over
-
-=item * C<us-east-1.elb.amazonaws.com>
-
-=item * C<us-west-2.elb.amazonaws.com>
-
-=back
-
-For information about the AWS regions supported by Elastic Load
-Balancing, see Regions and Endpoints in the I<Amazon Web Services
-General Reference>.
+a unique Domain Name Service (DNS) name. The load balancer receives
+incoming traffic and routes it to the registered instances. For more
+information, see How Elastic Load Balancing Works in the I<Elastic Load
+Balancing Developer Guide>.
 
 You can create up to 20 load balancers per region per account. You can
 request an increase for the number of load balancers for your account.
 For more information, see Elastic Load Balancing Limits in the
 I<Elastic Load Balancing Developer Guide>.
-
-Elastic Load Balancing supports load balancing your EC2 instances
-launched in either the EC2-Classic or EC2-VPC platform. For more
-information, see Elastic Load Balancing in EC2-Classic or Elastic Load
-Balancing in a VPC in the I<Elastic Load Balancing Developer Guide>.
 
 
 

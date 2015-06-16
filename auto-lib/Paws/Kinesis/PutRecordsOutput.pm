@@ -1,7 +1,6 @@
 
 package Paws::Kinesis::PutRecordsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has FailedRecordCount => (is => 'ro', isa => 'Int');
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::PutRecordsResultEntry]', required => 1);
 

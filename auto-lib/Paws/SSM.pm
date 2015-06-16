@@ -92,9 +92,9 @@ Paws::SSM - Perl Interface to AWS Amazon Simple Systems Management Service
 
 
 
-AWS Simple Systems Management enables you to configure and manage your
-EC2 instances. You can create a configuration document and then
-associate it with one or more running instances.
+Amazon EC2 Simple Systems Manager (SSM) enables you to configure and
+manage your EC2 instances. You can create a configuration document and
+then associate it with one or more running instances.
 
 You can use a configuration document to automate the following tasks
 for your Windows instances:
@@ -103,15 +103,15 @@ for your Windows instances:
 
 =item *
 
+Join an AWS Directory
+
+=item *
+
 Install, repair, or uninstall software using an MSI package
 
 =item *
 
 Run PowerShell scripts
-
-=item *
-
-Join an AWS Directory
 
 =item *
 

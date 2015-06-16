@@ -60,7 +60,7 @@ The name or Amazon Resource Name (ARN) of the Auto Scaling group.
 
   
 
-The number of Amazon EC2 instances that should be running in the group.
+The number of EC2 instances that should be running in the group.
 
 
 
@@ -105,7 +105,7 @@ The maximum size for the Auto Scaling group.
 
   
 
-The minimum size for the new Auto Scaling group.
+The minimum size for the Auto Scaling group.
 
 
 
@@ -121,8 +121,8 @@ The minimum size for the new Auto Scaling group.
   
 
 The time when recurring future actions will start. Start time is
-specified by the user following the Unix cron syntax format. For
-information about cron syntax, go to Wikipedia, The Free Encyclopedia.
+specified by the user following the Unix cron syntax format. For more
+information, see Cron in Wikipedia.
 
 When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
 form the boundaries of when the recurring action will start and stop.
@@ -155,14 +155,14 @@ The name of this scaling action.
 
   
 
-The time for this action to start, as in C<--start-time
-2010-06-01T00:00:00Z>.
+The time for this action to start, in "YYYY-MM-DDThh:mm:ssZ" format in
+UTC/GMT only (for example, C<2014-06-01T00:00:00Z>).
 
 If you try to schedule your action in the past, Auto Scaling returns an
 error message.
 
 When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
-form the boundaries of when the recurring action will start and stop.
+form the boundaries of when the recurring action starts and stops.
 
 
 
@@ -177,13 +177,10 @@ form the boundaries of when the recurring action will start and stop.
 
   
 
-C<Time> is deprecated.
+C<Time> is deprecated; use C<StartTime> instead.
 
-The time for this action to start. C<Time> is an alias for C<StartTime>
-and can be specified instead of C<StartTime>, or vice versa. If both
-C<Time> and C<StartTime> are specified, their values should be
-identical. Otherwise, C<PutScheduledUpdateGroupAction> will return an
-error.
+The time for this action to start. If both C<Time> and C<StartTime> are
+specified, their values must be identical.
 
 
 
