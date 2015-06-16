@@ -6,6 +6,9 @@ package Paws::Net::JsonResponse {
   
   sub unserialize_response {
     my ($self, $data) = @_;
+
+    return {} if ($data eq '');
+
     my $json = from_json( $data );
     return $json;
   }
