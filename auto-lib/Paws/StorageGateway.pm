@@ -489,7 +489,7 @@ is returned to the VTS.
 
 
 
-=head2 CreateCachediSCSIVolume(ClientToken => Str, GatewayARN => Str, NetworkInterfaceId => Str, TargetName => Str, VolumeSizeInBytes => Num, [SnapshotId => Str])
+=head2 CreateCachediSCSIVolume(ClientToken => Str, GatewayARN => Str, NetworkInterfaceId => Str, TargetName => Str, VolumeSizeInBytes => Int, [SnapshotId => Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::CreateCachediSCSIVolume>
 
@@ -633,7 +633,7 @@ initiators can use to connect to the volume target.
 
 
 
-=head2 CreateTapes(ClientToken => Str, GatewayARN => Str, NumTapesToCreate => Int, TapeBarcodePrefix => Str, TapeSizeInBytes => Num)
+=head2 CreateTapes(ClientToken => Str, GatewayARN => Str, NumTapesToCreate => Int, TapeBarcodePrefix => Str, TapeSizeInBytes => Int)
 
 Each argument is described in detail in: L<Paws::StorageGateway::CreateTapes>
 
@@ -1514,7 +1514,7 @@ of the gateway in your request.
 
 
 
-=head2 UpdateBandwidthRateLimit(GatewayARN => Str, [AverageDownloadRateLimitInBitsPerSec => Num, AverageUploadRateLimitInBitsPerSec => Num])
+=head2 UpdateBandwidthRateLimit(GatewayARN => Str, [AverageDownloadRateLimitInBitsPerSec => Int, AverageUploadRateLimitInBitsPerSec => Int])
 
 Each argument is described in detail in: L<Paws::StorageGateway::UpdateBandwidthRateLimit>
 

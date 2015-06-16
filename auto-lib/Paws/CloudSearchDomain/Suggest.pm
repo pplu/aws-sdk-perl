@@ -2,7 +2,7 @@
 package Paws::CloudSearchDomain::Suggest {
   use Moose;
   has query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q' , required => 1);
-  has size => (is => 'ro', isa => 'Num', traits => ['ParamInQuery'], query_name => 'size' );
+  has size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size' );
   has suggester => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'suggester' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -52,7 +52,7 @@ Specifies the string for which you want to get suggestions.
 
 
 
-=head2 size => Num
+=head2 size => Int
 
   
 

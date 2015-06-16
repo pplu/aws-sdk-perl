@@ -1,7 +1,7 @@
 
 package Paws::Lambda::FunctionConfiguration {
   use Moose;
-  has CodeSize => (is => 'ro', isa => 'Num');
+  has CodeSize => (is => 'ro', isa => 'Int');
   has Description => (is => 'ro', isa => 'Str');
   has FunctionArn => (is => 'ro', isa => 'Str');
   has FunctionName => (is => 'ro', isa => 'Str');
@@ -23,7 +23,7 @@ Paws::Lambda::FunctionConfiguration
 
 =head1 ATTRIBUTES
 
-=head2 CodeSize => Num
+=head2 CodeSize => Int
 
   
 

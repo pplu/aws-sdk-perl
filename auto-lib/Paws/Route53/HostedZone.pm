@@ -4,6 +4,6 @@ package Paws::Route53::HostedZone {
   has Config => (is => 'ro', isa => 'Paws::Route53::HostedZoneConfig');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceRecordSetCount => (is => 'ro', isa => 'Num');
+  has ResourceRecordSetCount => (is => 'ro', isa => 'Int');
 }
 1;

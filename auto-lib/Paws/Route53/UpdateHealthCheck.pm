@@ -4,7 +4,7 @@ package Paws::Route53::UpdateHealthCheck {
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
   has HealthCheckId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'HealthCheckId' , required => 1);
-  has HealthCheckVersion => (is => 'ro', isa => 'Num');
+  has HealthCheckVersion => (is => 'ro', isa => 'Int');
   has IPAddress => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has ResourcePath => (is => 'ro', isa => 'Str');
@@ -80,7 +80,7 @@ The ID of the health check to update.
 
 
 
-=head2 HealthCheckVersion => Num
+=head2 HealthCheckVersion => Int
 
   
 

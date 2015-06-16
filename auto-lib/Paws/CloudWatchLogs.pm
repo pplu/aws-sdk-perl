@@ -484,7 +484,7 @@ the C<limit> parameter in the request.
 
 
 
-=head2 FilterLogEvents(logGroupName => Str, [endTime => Num, filterPattern => Str, interleaved => Bool, limit => Int, logStreamNames => ArrayRef[Str], nextToken => Str, startTime => Num])
+=head2 FilterLogEvents(logGroupName => Str, [endTime => Int, filterPattern => Str, interleaved => Bool, limit => Int, logStreamNames => ArrayRef[Str], nextToken => Str, startTime => Int])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::FilterLogEvents>
 
@@ -518,7 +518,7 @@ specify the maximum number of events to return in a page.
 
 
 
-=head2 GetLogEvents(logGroupName => Str, logStreamName => Str, [endTime => Num, limit => Int, nextToken => Str, startFromHead => Bool, startTime => Num])
+=head2 GetLogEvents(logGroupName => Str, logStreamName => Str, [endTime => Int, limit => Int, nextToken => Str, startFromHead => Bool, startTime => Int])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::GetLogEvents>
 

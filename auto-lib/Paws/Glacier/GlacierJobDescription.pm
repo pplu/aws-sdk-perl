@@ -4,12 +4,12 @@ package Paws::Glacier::GlacierJobDescription {
   has Action => (is => 'ro', isa => 'Str');
   has ArchiveId => (is => 'ro', isa => 'Str');
   has ArchiveSHA256TreeHash => (is => 'ro', isa => 'Str');
-  has ArchiveSizeInBytes => (is => 'ro', isa => 'Num');
+  has ArchiveSizeInBytes => (is => 'ro', isa => 'Int');
   has Completed => (is => 'ro', isa => 'Bool');
   has CompletionDate => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has InventoryRetrievalParameters => (is => 'ro', isa => 'Paws::Glacier::InventoryRetrievalJobDescription');
-  has InventorySizeInBytes => (is => 'ro', isa => 'Num');
+  has InventorySizeInBytes => (is => 'ro', isa => 'Int');
   has JobDescription => (is => 'ro', isa => 'Str');
   has JobId => (is => 'ro', isa => 'Str');
   has RetrievalByteRange => (is => 'ro', isa => 'Str');
@@ -74,7 +74,7 @@ For inventory retrieval jobs, this field is null.
 
 
 
-=head2 ArchiveSizeInBytes => Num
+=head2 ArchiveSizeInBytes => Int
 
   
 
@@ -148,7 +148,7 @@ Parameters used for range inventory retrieval.
 
 
 
-=head2 InventorySizeInBytes => Num
+=head2 InventorySizeInBytes => Int
 
   
 

@@ -392,7 +392,7 @@ provided by Cognito Identity.
 
 
 
-=head2 ListRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, [LastSyncCount => Num, MaxResults => Int, NextToken => Str, SyncSessionToken => Str])
+=head2 ListRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, [LastSyncCount => Int, MaxResults => Int, NextToken => Str, SyncSessionToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoSync::ListRecords>
 

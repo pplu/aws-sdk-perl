@@ -388,7 +388,7 @@ This is a public API. You do not need any credentials to call this API.
 
 
 
-=head2 GetOpenIdTokenForDeveloperIdentity(IdentityPoolId => Str, Logins => Paws::CognitoIdentity::LoginsMap, [IdentityId => Str, TokenDuration => Num])
+=head2 GetOpenIdTokenForDeveloperIdentity(IdentityPoolId => Str, Logins => Paws::CognitoIdentity::LoginsMap, [IdentityId => Str, TokenDuration => Int])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentity>
 

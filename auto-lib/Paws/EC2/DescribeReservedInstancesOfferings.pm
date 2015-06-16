@@ -7,10 +7,10 @@ package Paws::EC2::DescribeReservedInstancesOfferings {
   has IncludeMarketplace => (is => 'ro', isa => 'Bool');
   has InstanceTenancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceTenancy' );
   has InstanceType => (is => 'ro', isa => 'Str');
-  has MaxDuration => (is => 'ro', isa => 'Num');
+  has MaxDuration => (is => 'ro', isa => 'Int');
   has MaxInstanceCount => (is => 'ro', isa => 'Int');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has MinDuration => (is => 'ro', isa => 'Num');
+  has MinDuration => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
   has OfferingType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringType' );
   has ProductDescription => (is => 'ro', isa => 'Str');
@@ -198,7 +198,7 @@ User Guide>.
 
 
 
-=head2 MaxDuration => Num
+=head2 MaxDuration => Int
 
   
 
@@ -253,7 +253,7 @@ Default: 100
 
 
 
-=head2 MinDuration => Num
+=head2 MinDuration => Int
 
   
 

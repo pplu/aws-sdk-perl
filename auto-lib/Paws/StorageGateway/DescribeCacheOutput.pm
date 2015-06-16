@@ -1,7 +1,7 @@
 
 package Paws::StorageGateway::DescribeCacheOutput {
   use Moose;
-  has CacheAllocatedInBytes => (is => 'ro', isa => 'Num');
+  has CacheAllocatedInBytes => (is => 'ro', isa => 'Int');
   has CacheDirtyPercentage => (is => 'ro', isa => 'Num');
   has CacheHitPercentage => (is => 'ro', isa => 'Num');
   has CacheMissPercentage => (is => 'ro', isa => 'Num');
@@ -19,7 +19,7 @@ Paws::StorageGateway::DescribeCacheOutput
 
 =head1 ATTRIBUTES
 
-=head2 CacheAllocatedInBytes => Num
+=head2 CacheAllocatedInBytes => Int
 
   
 =head2 CacheDirtyPercentage => Num

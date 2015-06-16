@@ -3,7 +3,7 @@ package Paws::Glacier::UploadListElement {
   has ArchiveDescription => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has MultipartUploadId => (is => 'ro', isa => 'Str');
-  has PartSizeInBytes => (is => 'ro', isa => 'Num');
+  has PartSizeInBytes => (is => 'ro', isa => 'Int');
   has VaultARN => (is => 'ro', isa => 'Str');
 }
 1;

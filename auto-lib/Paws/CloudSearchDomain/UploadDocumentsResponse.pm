@@ -1,8 +1,8 @@
 
 package Paws::CloudSearchDomain::UploadDocumentsResponse {
   use Moose;
-  has adds => (is => 'ro', isa => 'Num');
-  has deletes => (is => 'ro', isa => 'Num');
+  has adds => (is => 'ro', isa => 'Int');
+  has deletes => (is => 'ro', isa => 'Int');
   has status => (is => 'ro', isa => 'Str');
   has warnings => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::DocumentServiceWarning]');
 
@@ -17,7 +17,7 @@ Paws::CloudSearchDomain::UploadDocumentsResponse
 
 =head1 ATTRIBUTES
 
-=head2 adds => Num
+=head2 adds => Int
 
   
 
@@ -31,7 +31,7 @@ The number of documents that were added to the search domain.
 
 
 
-=head2 deletes => Num
+=head2 deletes => Int
 
   
 

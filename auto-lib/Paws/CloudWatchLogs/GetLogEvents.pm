@@ -1,13 +1,13 @@
 
 package Paws::CloudWatchLogs::GetLogEvents {
   use Moose;
-  has endTime => (is => 'ro', isa => 'Num');
+  has endTime => (is => 'ro', isa => 'Int');
   has limit => (is => 'ro', isa => 'Int');
   has logGroupName => (is => 'ro', isa => 'Str', required => 1);
   has logStreamName => (is => 'ro', isa => 'Str', required => 1);
   has nextToken => (is => 'ro', isa => 'Str');
   has startFromHead => (is => 'ro', isa => 'Bool');
-  has startTime => (is => 'ro', isa => 'Num');
+  has startTime => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 endTime => Num
+=head2 endTime => Int
 
   
 
@@ -124,7 +124,7 @@ default is false (the latest log events are returned first).
 
 
 
-=head2 startTime => Num
+=head2 startTime => Int
 
   
 

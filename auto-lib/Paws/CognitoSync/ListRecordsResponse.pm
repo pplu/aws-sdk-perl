@@ -4,7 +4,7 @@ package Paws::CognitoSync::ListRecordsResponse {
   has Count => (is => 'ro', isa => 'Int');
   has DatasetDeletedAfterRequestedSyncCount => (is => 'ro', isa => 'Bool');
   has DatasetExists => (is => 'ro', isa => 'Bool');
-  has DatasetSyncCount => (is => 'ro', isa => 'Num');
+  has DatasetSyncCount => (is => 'ro', isa => 'Int');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
   has MergedDatasetNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -64,7 +64,7 @@ Indicates whether the dataset exists.
 
 
 
-=head2 DatasetSyncCount => Num
+=head2 DatasetSyncCount => Int
 
   
 

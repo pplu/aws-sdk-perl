@@ -5,7 +5,7 @@ package Paws::StorageGateway::CreateTapes {
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has NumTapesToCreate => (is => 'ro', isa => 'Int', required => 1);
   has TapeBarcodePrefix => (is => 'ro', isa => 'Str', required => 1);
-  has TapeSizeInBytes => (is => 'ro', isa => 'Num', required => 1);
+  has TapeSizeInBytes => (is => 'ro', isa => 'Int', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -108,7 +108,7 @@ letters A-Z.
 
 
 
-=head2 B<REQUIRED> TapeSizeInBytes => Num
+=head2 B<REQUIRED> TapeSizeInBytes => Int
 
   
 

@@ -990,7 +990,7 @@ pagination.
 
 
 
-=head2 DescribeDBLogFiles(DBInstanceIdentifier => Str, [FileLastWritten => Num, FilenameContains => Str, FileSize => Num, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
+=head2 DescribeDBLogFiles(DBInstanceIdentifier => Str, [FileLastWritten => Int, FilenameContains => Str, FileSize => Int, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBLogFiles>
 

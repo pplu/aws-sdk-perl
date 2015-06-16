@@ -2,17 +2,17 @@
 package Paws::RedShift::ResizeProgressMessage {
   use Moose;
   has AvgResizeRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
-  has ElapsedTimeInSeconds => (is => 'ro', isa => 'Num');
-  has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => 'Num');
+  has ElapsedTimeInSeconds => (is => 'ro', isa => 'Int');
+  has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => 'Int');
   has ImportTablesCompleted => (is => 'ro', isa => 'ArrayRef[Str]');
   has ImportTablesInProgress => (is => 'ro', isa => 'ArrayRef[Str]');
   has ImportTablesNotStarted => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ProgressInMegaBytes => (is => 'ro', isa => 'Num');
+  has ProgressInMegaBytes => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
   has TargetClusterType => (is => 'ro', isa => 'Str');
   has TargetNodeType => (is => 'ro', isa => 'Str');
   has TargetNumberOfNodes => (is => 'ro', isa => 'Int');
-  has TotalResizeDataInMegaBytes => (is => 'ro', isa => 'Num');
+  has TotalResizeDataInMegaBytes => (is => 'ro', isa => 'Int');
 
 }
 1;
@@ -41,7 +41,7 @@ this value shows the average rate of the entire resize operation.
 
 
 
-=head2 ElapsedTimeInSeconds => Num
+=head2 ElapsedTimeInSeconds => Int
 
   
 
@@ -57,7 +57,7 @@ actual time, in seconds, for the resize operation.
 
 
 
-=head2 EstimatedTimeToCompletionInSeconds => Num
+=head2 EstimatedTimeToCompletionInSeconds => Int
 
   
 
@@ -122,7 +122,7 @@ Valid Values: List of table names
 
 
 
-=head2 ProgressInMegaBytes => Num
+=head2 ProgressInMegaBytes => Int
 
   
 
@@ -203,7 +203,7 @@ operation is complete.
 
 
 
-=head2 TotalResizeDataInMegaBytes => Num
+=head2 TotalResizeDataInMegaBytes => Int
 
   
 

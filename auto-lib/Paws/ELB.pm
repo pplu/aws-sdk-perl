@@ -341,7 +341,7 @@ the I<Elastic Load Balancing Developer Guide>.
 
 
 
-=head2 CreateLBCookieStickinessPolicy(LoadBalancerName => Str, PolicyName => Str, [CookieExpirationPeriod => Num])
+=head2 CreateLBCookieStickinessPolicy(LoadBalancerName => Str, PolicyName => Str, [CookieExpirationPeriod => Int])
 
 Each argument is described in detail in: L<Paws::ELB::CreateLBCookieStickinessPolicy>
 

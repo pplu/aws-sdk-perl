@@ -15,7 +15,7 @@ package Paws::MachineLearning::GetMLModelOutput {
   has Schema => (is => 'ro', isa => 'Str');
   has ScoreThreshold => (is => 'ro', isa => 'Num');
   has ScoreThresholdLastUpdatedAt => (is => 'ro', isa => 'Str');
-  has SizeInBytes => (is => 'ro', isa => 'Num');
+  has SizeInBytes => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
   has TrainingDataSourceId => (is => 'ro', isa => 'Str');
   has TrainingParameters => (is => 'ro', isa => 'Paws::MachineLearning::TrainingParameters');
@@ -262,7 +262,7 @@ expressed in epoch time.
 
 
 
-=head2 SizeInBytes => Num
+=head2 SizeInBytes => Int
 
   
 =head2 Status => Str

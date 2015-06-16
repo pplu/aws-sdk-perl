@@ -2,9 +2,9 @@
 package Paws::RDS::DescribeDBLogFiles {
   use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has FileLastWritten => (is => 'ro', isa => 'Num');
+  has FileLastWritten => (is => 'ro', isa => 'Int');
   has FilenameContains => (is => 'ro', isa => 'Str');
-  has FileSize => (is => 'ro', isa => 'Num');
+  has FileSize => (is => 'ro', isa => 'Int');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -67,7 +67,7 @@ Constraints:
 
 
 
-=head2 FileLastWritten => Num
+=head2 FileLastWritten => Int
 
   
 
@@ -99,7 +99,7 @@ specified string.
 
 
 
-=head2 FileSize => Num
+=head2 FileSize => Int
 
   
 

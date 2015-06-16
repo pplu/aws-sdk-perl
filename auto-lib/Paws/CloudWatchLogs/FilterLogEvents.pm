@@ -1,14 +1,14 @@
 
 package Paws::CloudWatchLogs::FilterLogEvents {
   use Moose;
-  has endTime => (is => 'ro', isa => 'Num');
+  has endTime => (is => 'ro', isa => 'Int');
   has filterPattern => (is => 'ro', isa => 'Str');
   has interleaved => (is => 'ro', isa => 'Bool');
   has limit => (is => 'ro', isa => 'Int');
   has logGroupName => (is => 'ro', isa => 'Str', required => 1);
   has logStreamNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has nextToken => (is => 'ro', isa => 'Str');
-  has startTime => (is => 'ro', isa => 'Num');
+  has startTime => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 endTime => Num
+=head2 endTime => Int
 
   
 
@@ -155,7 +155,7 @@ continue paginating the FilterLogEvents results.
 
 
 
-=head2 startTime => Num
+=head2 startTime => Int
 
   
 

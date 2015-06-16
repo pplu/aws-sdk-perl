@@ -1,7 +1,7 @@
 
 package Paws::ELB::CreateLBCookieStickinessPolicy {
   use Moose;
-  has CookieExpirationPeriod => (is => 'ro', isa => 'Num');
+  has CookieExpirationPeriod => (is => 'ro', isa => 'Int');
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 CookieExpirationPeriod => Num
+=head2 CookieExpirationPeriod => Int
 
   
 

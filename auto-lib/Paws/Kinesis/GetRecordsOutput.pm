@@ -1,7 +1,7 @@
 
 package Paws::Kinesis::GetRecordsOutput {
   use Moose;
-  has MillisBehindLatest => (is => 'ro', isa => 'Num');
+  has MillisBehindLatest => (is => 'ro', isa => 'Int');
   has NextShardIterator => (is => 'ro', isa => 'Str');
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Record]', required => 1);
 
@@ -15,7 +15,7 @@ Paws::Kinesis::GetRecordsOutput
 
 =head1 ATTRIBUTES
 
-=head2 MillisBehindLatest => Num
+=head2 MillisBehindLatest => Int
 
   
 

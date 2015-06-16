@@ -3931,7 +3931,7 @@ Elastic Compute Cloud User Guide.
 
 
 
-=head2 DescribeReservedInstancesOfferings([AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Num, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Num, NextToken => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str]])
+=head2 DescribeReservedInstancesOfferings([AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Int, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesOfferings>
 

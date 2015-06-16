@@ -393,7 +393,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
       $type = 'Str';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'long') {
       #TODO: Check
-      $type = 'Num';
+      $type = 'Int';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'double') {
       #TODO: Check
       $type = 'Num';
