@@ -45,29 +45,16 @@ package [% c.api %]::[% operation.name %] {
 package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
   use Moose;
 [% FOREACH param_name IN shape.members.keys.sort -%]
-  [%- traits = []; write_encoders = [] -%]
+  [%- traits = [] -%]
   [%- member_shape_name = shape.members.$param_name.shape %]
   [%- member = c.shape(member_shape_name) -%]
-  [%- encoder = c.encoders_struct.$member_shape_name;
-      IF (encoder);
-        write_encoders.push(encoder);
-        encoder.coerce_from = member.perl_type; 
-        member.perl_type = "${ c.api }\:\:${ c.shapename_for_operation_output(op_name) }\:\:$param_name";
-        encoder.coerce_to = member.perl_type;
-      END 
-  -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (member.locationName); traits.push('Unwrapped') %], xmlname => '[% member.locationName %]'[% END %]
   [%- IF (member.type == 'list' and member.member.locationName); traits.push('Unwrapped') %], xmlname => '[% member.member.locationName %]'[% END %]
-  [%- IF (encoder) %], coerce => 1[% END %]
+  [%- encoder = c.encoders_struct.$member_shape_name; IF (encoder); traits.push('JSONAttribute') %], decode_as => '[% encoder.encoding %]', method => '[% encoder.alias %]'[% END %]
   [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]',[% END %]][% END -%]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
-[%- FOREACH encoder_type IN write_encoders %]
-   [% encoder = c.encoders_struct.${ encoder_type } %]
-   coerce '[% encoder.coerce_from %]'
-     => from '[% encoder.coerce_to %]', => via { 'DUMMY' };
-[% END -%]
 }
 [%- END %]
 1;
