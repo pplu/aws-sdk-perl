@@ -2,10 +2,14 @@
 
 package A::NEW::CALLER_2 {
   use Moose;
+  with 'Paws::Net::CallerRole';
+  sub do_call { 'CALLER2' }
 };
 
 package A::NEW::CALLER_3 {
   use Moose;
+  with 'Paws::Net::CallerRole';
+  sub do_call { 'CALLER3' }
 };
 
 
@@ -18,7 +22,7 @@ use Test::More;
 
 # Get an Paws object, with defaults and then a service
 my $aws = Paws->new;
-cmp_ok($aws->config->caller, 'eq', 'Paws::Net::Caller', 'Got default caller');
+ok($aws->config->caller->isa('Paws::Net::Caller'), 'Got default caller');
 my $svc = $aws->service('SQS', region => 'eu-west-1' );
 ok($svc->caller->isa('Paws::Net::Caller'), 'Correct default caller class');
 
