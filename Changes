@@ -12,6 +12,8 @@
    in Java https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
    Those Ints are passed to AWS as int() instead of Strings, because AWS APIs (CloudWatchLogs
    for example) isn't able to transform String to long (we get an API error)
+ - Refactored the config attribute of the Paws class. Also documented what you can configure from
+   the config, so now the "config" is official.
 
 0.08 19 May 2015 22:12:00
  - EC2 SpotFleet API calls

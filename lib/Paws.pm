@@ -1,8 +1,46 @@
 package Paws::SDK::Config;
 
 use Moose;
+use Moose::Util::TypeConstraints;
+use Paws::Net::CallerRole;
+use Paws::Credential;
 
-has caller => (is => 'ro', isa => 'Str', default => 'Paws::Net::Caller'); 
+coerce 'Paws::Net::CallerRole',
+  from 'Str',
+   via {
+     my $class = $_; 
+     Paws->load_class($class);
+     return $class->new() 
+   };
+
+coerce 'Paws::Credential',
+  from 'Str',
+   via { $_->new() };
+
+has region => (
+  is => 'ro',
+  isa => 'Str|Undef',
+  default => sub { undef }
+);
+
+has caller => (
+  is => 'ro', 
+  does => 'Paws::Net::CallerRole', 
+  default => sub { 
+    Paws->load_class('Paws::Net::Caller');
+    Paws::Net::Caller->new 
+  },
+  coerce => 1
+); 
+has credentials => (
+  is => 'ro', 
+  does => 'Paws::Credential', 
+  default => sub {
+    Paws->load_class('Paws::Credential::ProviderChain'); 
+    Paws::Credential::ProviderChain->new 
+  },
+  coerce => 1
+);
 
 __PACKAGE__->meta->make_immutable;
 1;
@@ -19,7 +57,6 @@ use Module::Runtime qw//;
 use Paws::API::JSONAttribute;
 use Paws::API::Base64Attribute;
 
-use Paws::Net::Caller;
 use Paws::API;
 use Moose::Util::TypeConstraints;
 
@@ -32,7 +69,10 @@ coerce 'Paws::SDK::Config',
 };
 has config => (isa => 'Paws::SDK::Config', is => 'rw', coerce => 1, default => sub { Paws->default_config });
 
+# Holds a fully constructed Paws instance so continuous calls to get_self are all done over the
+# same (implicit) object. This happens when the user calls Paws->service, as opposed to $instance->service
 class_has _default_object => (is => 'rw', isa => 'Paws');
+
 class_has default_config => (is => 'rw', isa => 'Paws::SDK::Config', default => sub { Paws::SDK::Config->new });
 
 sub load_class {
@@ -72,25 +112,12 @@ sub service {
   my ($self, $service_name, %constructor_params) = @_;
   $self = $self->get_self;
 
-  my $caller;
-  if (defined $constructor_params{ caller }) {
-    if (ref($constructor_params{ caller })) {
-      # already constructed caller
-      $caller = $constructor_params{ caller };
-    } else {
-      $self->load_class($constructor_params{ caller });
-      $caller = $constructor_params{ caller }->new;
-    }
-    delete $constructor_params{ caller };
-  } else {
-    $caller = $self->config->caller;
-    $self->load_class($caller);
-    $caller = $caller->new;
-  }
+  $constructor_params{ region } = $self->config->region if (not exists $constructor_params{ region });
+  $constructor_params{ caller } = $self->config->caller if (not exists $constructor_params{ caller });
+  $constructor_params{ credentials } = $self->config->credentials if (not exists $constructor_params{ credentials });
 
   my $class = $self->class_for_service($service_name);
   my $instance = $class->new(
-    caller => $caller, 
     %constructor_params
   );
 
@@ -203,6 +230,60 @@ If the parameter to be passed in is a complex value (an object)
 The AWS APIs return nested datastructures in various formats. The SDK converts these datastructures into objects that can then be used as wanted.
 
   my $private_dns = $result->Reservations->[0]->Instances->[0]->PrivateDnsName;
+
+=head1 CONFIGURATION
+
+Paws instances have a configuration. The configuration is basically a specification of values that will be passed to the service method each time
+it's called
+
+  # the credentials and the caller keys accept an instance or the name of a class as a 
+  # string (the class will be loaded and the constructor of that class will be automatically called
+  my $paws1 = Paws->new(config => { credentials => MyCredProvider->new, region => 'eu-west-1' });
+  my $paws2 = Paws->new(config => { caller => 'MyCustomCaller' });
+  
+  # EC2 service with MyCredProvider in eu-west-1
+  my $ec2 = $paws1->service('EC2');
+
+  # DynamoDB service with MyCustomCaller in us-east-1. region is needed because it's not in the config
+  my $ddb = $paws2->service('DynamoDB', region => 'us-east-1');
+
+  # DynamoDB in eu-west-1 with MyCredProvider
+  my $other_ddb = $paws1->service('DynamoDB');
+
+The attributes that can be configured are:
+
+=head3 credentials
+
+Accepts a string which value is the name of a class, or an already instanced object. If a string is passed, the class will be loaded, and the 
+constructor called (without parameters). Also, the resulting instance or the already instanced object has to have the L<Paws::Credential> role.
+
+=head3 caller
+
+Accepts a string which value is the name of a class, or an already instanced object. If a string is passed, the class will be loaded, and the 
+constructor called (without parameters). Also, the resulting instance or the already instanced object has to have the L<Paws::Net::CallerRole> role.
+
+=head3 region
+
+A string representing the region that service objects will be instanced with. Default value is undefined, meaning that you will have to specify
+the desired region every time you call the B<service> method.
+
+=head1 Pluggability
+
+=head2 Crendential Provider Pluggability
+
+Credential classes need to have the Role L<Paws::Credential> applied. This obliges them to implement access_key, secret_key and session_token methods. 
+The obtention of this data can be customized to be retrieved whereever the developer considers useful (files, environment, other services, etc). Take
+a look at the Paws::Credential::XXXX namespace to find already implemented credential providers.
+
+The credential objects' access_key, secret_key and session_token methods will be called each time an API call has to be signed.
+
+=head2 Caller Pluggability
+
+Caller classes need to have the Role L<Paws::Net::CallerRole> applied. This obliges them to implement the do_call method. Tests use this interface to
+mock calls and responses to the APIs (without using the network). If you want to use Asyncronous IO, take a look at the L<Paws::Net::MojoAsyncCaller>
+in the examples directory.
+
+The caller instance is responsable for doing the network Input/Output with some type of HTTP request library, and returning the Result from the API.
 
 =head1 AUTHOR
 

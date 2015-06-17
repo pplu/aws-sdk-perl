@@ -1,6 +1,7 @@
 package Paws::Net::Caller {
   use Moose;
   use Carp qw(croak);
+  with 'Paws::Net::CallerRole';
 
   has debug              => ( is => 'rw', required => 0, default => sub { 0 } );
   has ua => (is => 'rw', required => 1, lazy => 1,

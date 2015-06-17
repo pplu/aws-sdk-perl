@@ -21,8 +21,8 @@ sub request_has_params {
 }
 
 my $test_params;
-my $aws = Paws->new(config => Paws::SDK::Config->new( caller => 'Test05Caller' ) );
-my $ec2 = $aws->service('EC2', region => 'dummy', credentials => Test::CustomCredentials->new);
+my $aws = Paws->new(config => { caller => 'Test05Caller', credentials => 'Test::CustomCredentials', region => 'dummy' } );
+my $ec2 = $aws->service('EC2');
 
 my $request = $ec2->CreateImage(
   Description => 'Standard Web Server v1.0',
@@ -70,7 +70,7 @@ $test_params = {
 request_has_params($test_params, $request);
 
 
-my $sqs = $aws->service('SQS', endpoint => 'dummy', region => 'dummy', credentials => Test::CustomCredentials->new);
+my $sqs = $aws->service('SQS');
 
 $request = $sqs->SendMessageBatch(
   QueueUrl => 'http://sqs.us-east-1.amazonaws.com/123456789012/testQueue/',
@@ -100,7 +100,7 @@ $test_params = {
 
 request_has_params($test_params, $request);
 
-my $sns = $aws->service('SNS', endpoint => 'dummy', region => 'dummy', credentials => Test::CustomCredentials->new);
+my $sns = $aws->service('SNS');
 
 $request = $sns->SetPlatformApplicationAttributes(
   Attributes => {
@@ -119,7 +119,7 @@ $test_params = {
 request_has_params($test_params, $request);
 
 
-my $ses = $aws->service('SES', endpoint => 'dummy', region => 'dummy', credentials => Test::CustomCredentials->new);
+my $ses = $aws->service('SES');
 
 $request = $ses->SendEmail(
   Destination => { ToAddresses => [ 'allan@example.com' ] },
@@ -138,6 +138,24 @@ $test_params = {
 
 request_has_params($test_params, $request);
 
+
+my $iam = $aws->service('IAM');
+
+$request = $iam->CreateRole(
+  AssumeRolePolicyDocument => '{}',
+  Path => '/',
+  RoleName => 'MyRole'
+);
+
+$test_params = {
+  AssumeRolePolicyDocument => '{}',
+  Path => '/',
+  RoleName => 'MyRole'
+};
+
+request_has_params($test_params, $request);
+
+
 $request = $ses->GetIdentityNotificationAttributes(
   Identities => [ 'user@example.com' ]
 ); 
@@ -148,7 +166,7 @@ $test_params = {
 
 request_has_params($test_params, $request);
 
-my $cfn = $aws->service('CloudFormation', endpoint => 'dummy', region => 'dummy', credentials => Test::CustomCredentials->new);
+my $cfn = $aws->service('CloudFormation');
 
 $request = $cfn->CreateStack(
   StackName => 'MyStack',
@@ -171,7 +189,7 @@ $test_params = {
 request_has_params($test_params, $request);
 
 
-my $asg = $aws->service('AutoScaling', endpoint => 'dummy', region => 'dummy', credentials => Test::CustomCredentials->new);
+my $asg = $aws->service('AutoScaling');
 
 $request = $asg->AttachInstances(
   AutoScalingGroupName => 'ASGNAME',
@@ -216,7 +234,7 @@ $test_params = {
 
 request_has_params($test_params, $request);
 
-my $cognito = $aws->service('CognitoIdentity', region => 'dummy', credentials => Test::CustomCredentials->new);
+my $cognito = $aws->service('CognitoIdentity');
 
 $request = $cognito->GetOpenIdTokenForDeveloperIdentity(
   IdentityPoolId => 'eu-west-1:00000000-0000-0000-0000-000000000000',
