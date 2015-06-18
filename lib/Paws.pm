@@ -15,7 +15,11 @@ coerce 'Paws::Net::CallerRole',
 
 coerce 'Paws::Credential',
   from 'Str',
-   via { $_->new() };
+   via { 
+     my $class = $_;
+     Paws->load_class($class);
+     return $class->new();
+   };
 
 has region => (
   is => 'ro',
@@ -26,6 +30,7 @@ has region => (
 has caller => (
   is => 'ro', 
   does => 'Paws::Net::CallerRole', 
+  lazy => 1,
   default => sub { 
     Paws->load_class('Paws::Net::Caller');
     Paws::Net::Caller->new 
@@ -34,7 +39,8 @@ has caller => (
 ); 
 has credentials => (
   is => 'ro', 
-  does => 'Paws::Credential', 
+  does => 'Paws::Credential',
+  lazy => 1,
   default => sub {
     Paws->load_class('Paws::Credential::ProviderChain'); 
     Paws::Credential::ProviderChain->new 
