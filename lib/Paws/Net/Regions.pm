@@ -3,29 +3,17 @@ package Paws::Net::Regions {
   use JSON;
   use autodie;
   use URI::Template;
+  use Paws::RegionInfo;
 
-  has rules => ( is => 'rw', isa => 'Str', required => 1 );
+  has config => (is => 'ro', isa => 'HashRef', default => sub {
+    return Paws::RegionInfo::get();
+  },
+  traits => [ 'Hash' ],
+  handles => {
+    get_rules_for_service => 'get'
+  });
 
   has default_scheme => ( is => 'ro', isa => 'Str', default => 'https' );
-
-  has json => ( 
-    is => 'ro', 
-    lazy => 1,
-    traits => [ 'Hash' ],
-    handles => {
-      get_rules_for_service => 'get',
-    }, 
-    default => sub {
-      my $self = shift;
-      my $json = JSON->new->pretty;
-      $json = $json->relaxed([1]); # At some point input did fail without this
-      local $/ = undef;
-      open my $fh, '<', $self->rules;
-      $json = <$fh>;
-      close $fh;
-      decode_json($json);
-    }
-  );
 
   sub construct_endpoint {
     my ($self, $service, $region, $args) = @_;

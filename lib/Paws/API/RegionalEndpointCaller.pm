@@ -11,8 +11,7 @@ package Paws::API::RegionalEndpointCaller {
     lazy => 1,
     default => sub {
       my $self = shift;
-      my $rules = "botocore/botocore/data/_endpoints.json";
-      my $resolver = Paws::Net::Regions->new( rules => $rules );
+      my $resolver = Paws::Net::Regions->new();
       my $endpoint = $resolver->construct_endpoint($self->service, $self->region);
       return $endpoint;
     }
