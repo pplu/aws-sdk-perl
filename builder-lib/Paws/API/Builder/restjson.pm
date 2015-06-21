@@ -8,12 +8,6 @@ package Paws::API::Builder::restjson {
   use Moose;
   extends 'Paws::API::Builder';
 
-  has service => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ endpointPrefix } });
-  has version => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ apiVersion } });
-  has endpoint_role => (is => 'ro', lazy => 1, default => sub { defined $_[0]->api_struct->{metadata}->{ globalEndpoint } ? 
-                                                                   'Paws::API::SingleEndpointCaller':
-                                                                   'Paws::API::RegionalEndpointCaller' 
-                                                              } );
   has wrapped_responses => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{ result_wrapped } });
   has response_role  => (is => 'ro', lazy => 1, default => sub { 'Paws::Net::RestJsonResponse' });
   has parameter_role => (is => 'ro', lazy => 1, default => sub { return "Paws::Net::RestJsonCaller" });
