@@ -4,6 +4,8 @@ package Paws::ECS::ListTaskDefinitions {
   has familyPrefix => (is => 'ro', isa => 'Str');
   has maxResults => (is => 'ro', isa => 'Int');
   has nextToken => (is => 'ro', isa => 'Str');
+  has sort => (is => 'ro', isa => 'Str');
+  has status => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -84,6 +86,48 @@ C<ListTaskDefinitions> request where C<maxResults> was used and the
 results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the C<nextToken> value.
 This value is C<null> when there are no more results to return.
+
+
+
+
+
+
+
+
+
+
+=head2 sort => Str
+
+  
+
+The order in which to sort the results. Valid values are C<ASC> and
+C<DESC>. By default (C<ASC>), task definitions are listed
+lexicographically by family name and in ascending numerical order by
+revision so that the newest task definitions in a family are listed
+last. Setting this parameter to C<DESC> reverses the sort order on
+family name and revision so that the newest task definitions in a
+family are listed first.
+
+
+
+
+
+
+
+
+
+
+=head2 status => Str
+
+  
+
+The task definition status that you want to filter the
+C<ListTaskDefinitions> results with. By default, only C<ACTIVE> task
+definitions are listed. By setting this parameter to C<INACTIVE>, you
+can view task definitions that are C<INACTIVE> as long as an active
+task or service still references them. If you paginate the resulting
+output, be sure to keep the C<status> value constant in each subsequent
+request.
 
 
 

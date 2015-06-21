@@ -145,7 +145,8 @@ numbers, hyphens, and underscores are allowed.
 
 The C<family> and C<revision> (C<family:revision>) or full Amazon
 Resource Name (ARN) of the task definition that you want to run in your
-service.
+service. If a C<revision> is not specified, the latest C<ACTIVE>
+revision is used.
 
 
 

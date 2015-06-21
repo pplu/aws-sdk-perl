@@ -316,10 +316,18 @@ Returns: a L<Paws::ECS::DeregisterTaskDefinitionResponse> instance
 
   
 
-NOT YET IMPLEMENTED.
+Deregisters the specified task definition by family and revision. Upon
+deregistration, the task definition is marked as C<INACTIVE>. Existing
+tasks and services that reference an C<INACTIVE> task definition
+continue to run without disruption. Existing services that reference an
+C<INACTIVE> task definition can still scale up or down by modifying the
+service's desired count.
 
-Deregisters the specified task definition. You will no longer be able
-to run tasks from this definition after deregistration.
+You cannot use an C<INACTIVE> task definition to run new tasks or
+create new services, and you cannot update an existing service to
+reference an C<INACTIVE> task definition (although there may be up to a
+10 minute window following deregistration where these restrictions have
+not yet taken effect).
 
 
 
@@ -403,8 +411,11 @@ Returns: a L<Paws::ECS::DescribeTaskDefinitionResponse> instance
 
 Describes a task definition. You can specify a C<family> and
 C<revision> to find information on a specific task definition, or you
-can simply specify the family to find the latest revision in that
-family.
+can simply specify the family to find the latest C<ACTIVE> revision in
+that family.
+
+You can only describe C<INACTIVE> task definitions while an active task
+or service references them.
 
 
 
@@ -529,7 +540,9 @@ Returns: a L<Paws::ECS::ListTaskDefinitionFamiliesResponse> instance
   
 
 Returns a list of task definition families that are registered to your
-account. You can filter the results with the C<familyPrefix> parameter.
+account (which may include task definition families that no longer have
+any C<ACTIVE> task definitions). You can filter the results with the
+C<familyPrefix> parameter.
 
 
 
@@ -541,7 +554,7 @@ account. You can filter the results with the C<familyPrefix> parameter.
 
 
 
-=head2 ListTaskDefinitions([familyPrefix => Str, maxResults => Int, nextToken => Str])
+=head2 ListTaskDefinitions([familyPrefix => Str, maxResults => Int, nextToken => Str, sort => Str, status => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitions>
 
@@ -551,7 +564,7 @@ Returns: a L<Paws::ECS::ListTaskDefinitionsResponse> instance
 
 Returns a list of task definitions that are registered to your account.
 You can filter the results by family name with the C<familyPrefix>
-parameter.
+parameter or by status with the C<status> parameter.
 
 
 
