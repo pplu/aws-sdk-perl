@@ -13,7 +13,7 @@ use Module::Runtime;
 use Paws;
 
 my $debug = $ENV{DEBUG_TESTS} || 0;
-my $aws = Paws->new();
+my $aws = Paws->new(config => { credentials => 'Test::CustomCredentials' });
 
 use Data::Dumper;
 
