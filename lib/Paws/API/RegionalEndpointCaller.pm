@@ -2,7 +2,7 @@ package Paws::API::RegionalEndpointCaller {
   use Moose::Role;
   use Paws::Net::Regions;
 
-  has region => (is => 'rw', isa => 'Str', required => 1);
+  has region => (is => 'rw', isa => 'Str|Undef');
   requires 'service';
 
   has _endpoint_info => (
@@ -17,6 +17,18 @@ package Paws::API::RegionalEndpointCaller {
       return $endpoint;
     }
   );
+
+  has _region_for_signature => (
+    is => 'rw', 
+    isa => 'Str', 
+    lazy => 1,
+    init_arg => undef, 
+    default => sub {
+      my $self = shift;
+      $self->_endpoint_info->{ credentialScope }->{ region } or $self->region;
+    }
+  );
+
 
   has endpoint_host => (
     is => 'ro',

@@ -14,7 +14,7 @@ package Paws::Net::V4Signature {
       $request->header( 'X-Amz-Security-Token' => $self->session_token );
     }
 
-    my $sig = Net::Amazon::Signature::V4->new( $self->access_key, $self->secret_key, $self->region, $self->service );
+    my $sig = Net::Amazon::Signature::V4->new( $self->access_key, $self->secret_key, $self->_region_for_signature, $self->service );
     $sig->sign( $request );
   }
 }
