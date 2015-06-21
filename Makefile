@@ -1,6 +1,11 @@
 test:
 	prove -I lib -I auto-lib -I t/lib t/
 
+cover:
+	cover -delete
+	HARNESS_PERL_SWITCHES=-MDevel::Cover make test
+	cover
+
 pull-other-sdks:
 	git submodule init
 	git submodule update

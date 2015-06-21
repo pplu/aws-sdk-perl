@@ -32,6 +32,7 @@ on 'develop' => sub {
   requires 'Dist::Zilla::Plugin::VersionFromModule';
   requires 'Dist::Zilla::PluginBundle::Git';
   requires 'Carp::Always';
+  requires 'Devel::Cover';
 };
 on 'test' => sub {
   requires 'Data::Printer';
