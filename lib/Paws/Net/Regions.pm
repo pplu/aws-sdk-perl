@@ -91,6 +91,7 @@ package Paws::Net::Regions {
       },
       notStartsWith => sub {
         my ( $a, $v ) = @_;
+        return 0 if (not defined $a);
         return $a !~ /^$v.*/i;
       },
       equals => sub {
@@ -109,7 +110,8 @@ package Paws::Net::Regions {
       oneOf => sub {
         my ( $a, $v ) = @_;
         for my $b (@$v) {
-          next if (not defined $b);
+          return not defined($a) if (not defined($b));
+          return not defined($b) if (not defined($a));
           return 1 if $a eq $b;
         }
         return 0;
