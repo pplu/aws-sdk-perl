@@ -18,11 +18,7 @@ package Paws::API::Builder {
   }
 
   has api_file => (is => 'ro', required => 1);
-
-  has api_struct => (is => 'ro', lazy => 1, default => sub {
-    my $self = shift;
-    return $self->_load_json_file($self->api_file);
-  });
+  has api_struct => (is => 'ro', required => 1);
 
   has waiters_file => (is => 'ro', lazy => 1, default => sub {
     my $file = shift->api_file;
@@ -80,7 +76,7 @@ print "PAG: FILE: $file\n";
     is => 'ro', 
     lazy => 1, 
     default => sub { 
-      sprintf "Paws::Net::%sSignature", uc $_[0]->api_struct->{metadata}{signatureVersion} 
+      sprintf "Paws::Net::%sSignature", uc $_[0]->api_struct->metadata->signatureVersion 
     } 
   );
 
@@ -88,7 +84,7 @@ print "PAG: FILE: $file\n";
     is => 'ro', 
     lazy => 1, 
     default => sub { 
-      my $type = $_[0]->api_struct->{metadata}->{protocol}; 
+      my $type = $_[0]->api_struct->metadata->protocol; 
       substr($type,0,1) = uc substr($type,0,1); 
       return "Paws::Net::${type}Caller" 
     },
@@ -97,7 +93,7 @@ print "PAG: FILE: $file\n";
   has operations_struct => (
     is => 'ro', 
     lazy => 1, 
-    default => sub { $_[0]->api_struct->{operations} },
+    default => sub { $_[0]->api_struct->operations },
     isa => 'HashRef',
     traits => [ 'Hash' ],
     handles => {
@@ -110,7 +106,7 @@ print "PAG: FILE: $file\n";
   has shape_struct => (
     is => 'ro',
     lazy => 1,
-    default => sub { $_[0]->api_struct->{shapes} },
+    default => sub { $_[0]->api_struct->shapes },
     isa => 'HashRef',
     traits => [ 'Hash' ],
     handles => {
@@ -138,9 +134,9 @@ print "Trying to load $file\n";
 
 =head1 ATTRIBUTES
 
-[% FOREACH param_name IN shape.members.keys.sort -%]
-  [%- member = c.shape(shape.members.$param_name.shape) -%]
-=head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% member.perl_type %]
+[% FOREACH param_name IN shape.member_list.sort -%]
+  [%- member = c.shape(shape.member_get(param_name).shape) -%]
+=head2 [%- IF (c.shape.is_required(param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% member.perl_type %]
 
   [% c.doc_for_param_name_in_shape(shape, param_name) %]
 [% END %]
@@ -171,9 +167,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-[% FOREACH param_name IN shape.members.keys.sort -%]
-  [%- member = c.shape(shape.members.$param_name.shape) -%]
-=head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% member.perl_type %]
+[% FOREACH param_name IN shape.member_list.sort -%]
+  [%- member = c.shape(shape.member_get(param_name).shape) -%]
+=head2 [%- IF (c.shape.is_required(param_name) %]B<REQUIRED> [% END %][% param_name %] => [% member.perl_type %]
 
   [% c.doc_for_param_name_in_shape(shape, param_name) %]
 
@@ -262,54 +258,31 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 
   sub required_in_shape {
-    my ($self, $shape, $attribute) = @_;
-    return (1 == (grep { $_ eq $attribute } @{ $shape->{ required } }));
+    confess "Don't call this";
   }
 
   sub optional_params_in_shape {
-    my ($self, $shape) = @_;
-    return [] if (not $shape);
-    my $req = $shape->{ required } || [];
-    my %required = map { ($_ => 1) } @$req;
-    return [ grep { not defined $required{ $_ } } keys %{ $shape->{ members } } ];
+    confess "Don't call this";
   }
 
   sub shapename_for_operation_output {
-    my ($self, $operation) = @_;
-
-    my $op = $self->operation($operation);
-    return if (not $op);
-
-    my $shape = $op->{ output }->{ shape };
-    return $shape;    
+    confess "Don't call this";
   }
 
   sub result_for_operation {
-    my ($self, $operation) = @_;
-
-    my $shape = $self->shapename_for_operation_output($operation);
-    return if (not $shape);
-
-    return $self->shape($shape);
+    confess "Don't call this";
   }
 
   sub shapename_for_operation_input {
-    my ($self, $operation) = @_;
-
-    my $op = $self->operation($operation);
-    return if (not $op);
-
-    my $shape = $op->{ input }->{ shape };
-    return $shape;  
+    confess "Don't call this";
   }
 
   sub input_for_operation {
-    my ($self, $operation) = @_;
-
-    my $shape = $self->shapename_for_operation_input($operation);
-    return if (not $shape);
-
-    return $self->shape($shape);
+    #confess "Don't call this";
+    my ($self, $op_name) = @_;
+    return $self->shape(
+      $self->api_struct->operation($op_name)->input_shapename
+    );
   }
 
   use autodie;
@@ -379,49 +352,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
   sub get_caller_class_type {
     my ($self, $for_shape) = @_;
-    my $param_props = $self->shape($for_shape);
-
-    my $type;
-    if (not exists $param_props->{ type }) {
-      die "Shape $for_shape doesn't have a type entry in def " . Dumper($param_props);
-    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'list') {
-      $self->flattened_arrays(1) if ($param_props->{ flattened });
-      my $inner_type = $self->get_caller_class_type($param_props->{member}->{shape});
-      $type = "ArrayRef[$inner_type]";
-    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'timestamp') {
-      # TODO: Paws::API::TimeStamp
-      $type = 'Str';
-    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'long') {
-      #TODO: Check
-      $type = 'Num';
-    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'double') {
-      #TODO: Check
-      $type = 'Num';
-    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'float') {
-      #TODO: Check
-      $type = 'Num';
-    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'boolean') {
-      # TODO: Bool
-      $type = 'Bool';
-    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'integer') {
-      $type = 'Int';
-    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'string') {
-      $type = 'Str';
-    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'blob') {
-      # TODO: check
-      $type = 'Str';
-    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'map') {
-      $type = $self->namespace_shape($for_shape);
-      $self->make_inner_class($param_props, $type);
-    } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'structure') {
-      $type = $self->namespace_shape($for_shape);
-      $self->make_inner_class($param_props, $type);
-    }
-    if (not defined $type) {
-      p $param_props;
-      die "Unknown type: $for_shape $param_props->{ type }";
-    }
-    return $type;
+    confess "Stop calling me for '$for_shape'!";
   }
 
   sub namespace_shape {
@@ -441,46 +372,6 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     my $self = shift;
     my $output = '';
     my ($calls, $results);
-
-    foreach my $op (sort $self->operations){
-      my $operation = $self->operation($op);
-      my $api_call = $operation->{name};
-
-      #
-      # Parse inputs for the operation
-      #
-      if      (not keys %{$operation->{ input }}) {
-        # There is no input inner classes in a class with no memebers
-      } elsif (defined $operation->{input}->{shape}) {
-        my $input_shape = $self->shape($operation->{input}->{shape});
-        if (keys %{ $input_shape->{members} }){
-          foreach my $member (keys %{ $input_shape->{members} }) {
-            my $ishape = $self->shape($input_shape->{members}->{$member}->{shape});
-            $ishape->{perl_type} = $self->get_caller_class_type($input_shape->{members}{ $member }{shape});
-            $self->make_inner_class($ishape, $ishape->{perl_type});
-          }
-        }
-      } else {
-        die "Found an input that's not a structure " . Dumper($operation->{ input });
-      }
-      #
-      # Parse outputs for the operation
-      #
-      if      (not keys %{$operation->{ output }}){
-        # There is no output class
-      } elsif (defined $operation->{output}->{shape}) {
-        my $output_shape = $self->shape($operation->{output}->{shape});
-        if (keys %{ $output_shape->{members} }){
-          foreach my $member (keys %{ $output_shape->{members} }) {
-            my $member_shape_name = $output_shape->{members}->{$member}->{shape};
-            my $oshape = $self->shape($member_shape_name);
-            $oshape->{perl_type} = $self->get_caller_class_type($member_shape_name);
-          }
-        }
-      } else {
-        die "Found an output that's not a structure " . Dumper($operation->{ output });
-      }
-    }
 
     foreach my $op_name ($self->operations) {
       next if (not defined $self->operation($op_name)->{name});

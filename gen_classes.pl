@@ -100,8 +100,10 @@ print @failures;
 sub process_api {
   my ($api, $file) = @_;
 
-  my $struct = from_json(read_file($file));
-  my $type = $struct->{metadata}->{protocol} or die "Type of API call not found";
+  use Paws::JsonSchema;
+
+  my $schema = Paws::JsonSchema->MooseX::DataModel::new_from_json(scalar(read_file($file)));
+  my $type = $schema->metadata->protocol or die "Type of API call not found";
 
   my $overrides = { 'Paws::EC2' => 'EC2' };
   $type = $overrides->{ $api } if (defined $overrides->{ $api });
@@ -110,7 +112,12 @@ sub process_api {
   my $class_maker = "Paws::API::Builder::${type}";
   require_module $class_maker;
 
-  my $c = $class_maker->new(api_file => $file, api => $api);
+  my $c = $class_maker->new(
+    api_file => $file, 
+    api => $api, 
+    api_struct => $schema,
+  );
+
   $c->process_api;
 }
 

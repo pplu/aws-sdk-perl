@@ -9,9 +9,9 @@ package Paws::API::Builder::EC2 {
 
   extends 'Paws::API::Builder';
 
-  has service => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ endpointPrefix } });
-  has version => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ apiVersion } });
-  has endpoint_role => (is => 'ro', lazy => 1, default => sub { defined $_[0]->api_struct->{metadata}->{ globalEndpoint } ? 
+  has service => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->metadata->endpointPrefix });
+  has version => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->metadata->apiVersion });
+  has endpoint_role => (is => 'ro', lazy => 1, default => sub { defined $_[0]->api_struct->metadata->globalEndpoint ? 
                                                                    'Paws::API::SingleEndpointCaller':
                                                                    'Paws::API::RegionalEndpointCaller' 
                                                               } );
@@ -34,7 +34,7 @@ package [% c.api %]::[% operation.name %] {
   [%- member = c.shape(shape.members.$param_name.shape) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (shape.members.${param_name}.locationName) %], traits => ['NameInRequest'], request_name => '[% shape.members.${param_name}.locationName %]' [% END %]
-  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
+  [%- IF (c.shape.is_required(param_name)) %], required => 1[% END %]);
 [% END %]
   use MooseX::ClassAttribute;
 
@@ -62,7 +62,7 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
   [%- encoder = c.encoders_struct.$member_shape_name; IF (encoder); traits.push('Base64Attribute') %], decode_as => '[% encoder.encoding %]', method => '[% param_name %]'[% END %]
   [%- IF (member.members.xmlname and (member.members.xmlname != 'item')) %], traits => ['Unwrapped'], xmlname => '[% member.members.xmlname %]'[% END %]
   [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]',[% END %]][% END -%]
-  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
+  [%- IF (c.shape.is_required(param_name)) %], required => 1[% END %]);
 [% END %]
 }
 [%- END %]
@@ -140,12 +140,14 @@ package [% c.api %] {
         $output .= "package $inner_class {\n";
         $output .= "  use Moose;\n";
  
-        my $members = $iclass->{members};
-        foreach my $param_name (sort keys %$members){
-          my $member_shape_name = $members->{ $param_name }->{ shape };
-          my $param_props = $self->shape($members->{ $param_name }->{ shape });
+        my $members = $iclass->members;
+        foreach my $param_name (sort $iclass->member_list){
+          my $member_shape_name = $iclass->member_get($param_name)->shape;
+print "MEMBER $member_shape_name\n";
+          my $param_props = $self->shape($member_shape_name);
 
-          my $callit = $self->get_caller_class_type($members->{ $param_name }->{ shape });
+print Dumper($iclass);
+          my $callit = $self->get_caller_class_type($member_shape_name);
           $self->make_inner_class($param_props,$callit);
 
           my $type;
@@ -172,7 +174,8 @@ package [% c.api %] {
           if (@$traits) {
             $output .= ", traits => [" . (join ',', map { "'$_'" } @$traits) . "]";
           }
-          $output .= ", required => 1" if ($self->required_in_shape($iclass,$param_name));
+
+          $output .= ", required => 1" if ($iclass->is_required($param_name));
           $output .= ");\n";
         }
         $output .= "}\n1;\n";
