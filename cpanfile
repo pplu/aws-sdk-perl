@@ -29,6 +29,7 @@ on 'develop' => sub {
   requires 'Dist::Zilla';
   requires 'Dist::Zilla::Plugin::Prereqs::FromCPANfile';
   requires 'Dist::Zilla::PluginBundle::Git';
+  requires 'Carp::Always';
 };
 on 'test' => sub {
   requires 'Data::Printer';
