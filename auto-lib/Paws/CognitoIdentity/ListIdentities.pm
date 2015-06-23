@@ -1,6 +1,7 @@
 
 package Paws::CognitoIdentity::ListIdentities {
   use Moose;
+  has HideDisabled => (is => 'ro', isa => 'Bool');
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
   has MaxResults => (is => 'ro', isa => 'Int', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
@@ -34,6 +35,23 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+=head2 HideDisabled => Bool
+
+  
+
+An optional boolean parameter that allows you to hide disabled
+identities. If omitted, the ListIdentities API will include disabled
+identities in the response.
+
+
+
+
+
+
+
+
+
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 

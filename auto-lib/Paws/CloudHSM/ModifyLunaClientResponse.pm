@@ -1,7 +1,6 @@
 
 package Paws::CloudHSM::ModifyLunaClientResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ClientArn => (is => 'ro', isa => 'Str');
 
 }

@@ -56,6 +56,20 @@ C<xvdh>).
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> InstanceId => Str
 
   
@@ -75,8 +89,8 @@ The ID of the instance.
 
   
 
-The ID of the Amazon EBS volume. The volume and instance must be within
-the same Availability Zone.
+The ID of the EBS volume. The volume and instance must be within the
+same Availability Zone.
 
 
 

@@ -53,12 +53,12 @@ resources that can affect permissions in your AWS account. For those
 stacks, you must explicitly acknowledge their capabilities by
 specifying this parameter. Currently, the only valid value is
 C<CAPABILITY_IAM>, which is required for the following resources:
-AWS::CloudFormation::Stack, AWS::IAM::AccessKey, AWS::IAM::Group,
-AWS::IAM::InstanceProfile, AWS::IAM::Policy, AWS::IAM::Role,
-AWS::IAM::User, and AWS::IAM::UserToGroupAddition. If your stack
-template contains these resources, we recommend that you review any
-permissions associated with them. If you don't specify this parameter,
-this action returns an InsufficientCapabilities error.
+AWS::IAM::AccessKey, AWS::IAM::Group, AWS::IAM::InstanceProfile,
+AWS::IAM::Policy, AWS::IAM::Role, AWS::IAM::User, and
+AWS::IAM::UserToGroupAddition. If your stack template contains these
+resources, we recommend that you review any permissions associated with
+them. If you don't specify this parameter, this action returns an
+InsufficientCapabilities error.
 
 
 
@@ -90,7 +90,7 @@ stack.
   
 
 A list of C<Parameter> structures that specify input parameters for the
-stack.
+stack. For more information, see the Parameter data type.
 
 
 
@@ -105,10 +105,7 @@ stack.
 
   
 
-The name or stack ID of the stack to update.
-
-Must contain only alphanumeric characters (case sensitive) and start
-with an alpha character. Maximum length of the name is 255 characters.
+The name or unique stack ID of the stack to update.
 
 
 

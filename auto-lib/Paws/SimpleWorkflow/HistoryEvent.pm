@@ -21,7 +21,7 @@ package Paws::SimpleWorkflow::HistoryEvent {
   has decisionTaskScheduledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::DecisionTaskScheduledEventAttributes');
   has decisionTaskStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::DecisionTaskStartedEventAttributes');
   has decisionTaskTimedOutEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::DecisionTaskTimedOutEventAttributes');
-  has eventId => (is => 'ro', isa => 'Num', required => 1);
+  has eventId => (is => 'ro', isa => 'Int', required => 1);
   has eventTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has eventType => (is => 'ro', isa => 'Str', required => 1);
   has externalWorkflowExecutionCancelRequestedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExternalWorkflowExecutionCancelRequestedEventAttributes');

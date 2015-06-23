@@ -1,13 +1,12 @@
 
 package Paws::Glacier::ListPartsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ArchiveDescription => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MultipartUploadId => (is => 'ro', isa => 'Str');
   has Parts => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::PartListElement]');
-  has PartSizeInBytes => (is => 'ro', isa => 'Num');
+  has PartSizeInBytes => (is => 'ro', isa => 'Int');
   has VaultARN => (is => 'ro', isa => 'Str');
 
 }
@@ -94,7 +93,7 @@ A list of the part sizes of the multipart upload.
 
 
 
-=head2 PartSizeInBytes => Num
+=head2 PartSizeInBytes => Int
 
   
 

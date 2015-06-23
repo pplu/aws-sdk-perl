@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name or the unique identifier associated with the stack, which are
+The name or the stack ID that is associated with the stack, which are
 not always interchangeable. For running stacks, you can specify either
 the stack's name or its unique stack ID. For deleted stack, you must
 specify the unique stack ID.
@@ -81,7 +81,7 @@ C<StackName>, C<TemplateBody>, or C<TemplateURL>.
   
 
 Location of file containing the template body. The URL must point to a
-template (max size: 307,200 bytes) located in an Amazon S3 bucket. For
+template (max size: 460,800 bytes) located in an Amazon S3 bucket. For
 more information about templates, see Template Anatomy in the AWS
 CloudFormation User Guide.
 

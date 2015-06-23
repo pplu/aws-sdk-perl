@@ -1,7 +1,6 @@
 
 package Paws::Signin::GetSigninTokenResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has SigninToken => (is => 'ro', isa => 'Str', required => 1);
 }
 1;

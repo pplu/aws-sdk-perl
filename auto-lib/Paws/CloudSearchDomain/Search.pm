@@ -11,9 +11,9 @@ package Paws::CloudSearchDomain::Search {
   has queryOptions => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q.options' );
   has queryParser => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q.parser' );
   has return => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'return' );
-  has size => (is => 'ro', isa => 'Num', traits => ['ParamInQuery'], query_name => 'size' );
+  has size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size' );
   has sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort' );
-  has start => (is => 'ro', isa => 'Num', traits => ['ParamInQuery'], query_name => 'start' );
+  has start => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'start' );
 
   use MooseX::ClassAttribute;
 
@@ -485,7 +485,7 @@ calculated for each document, specify C<_score>.
 
 
 
-=head2 size => Num
+=head2 size => Int
 
   
 
@@ -526,7 +526,7 @@ Developer Guide>.
 
 
 
-=head2 start => Num
+=head2 start => Int
 
   
 

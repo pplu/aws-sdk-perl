@@ -1,7 +1,6 @@
 
 package Paws::Glacier::InitiateJobOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has jobId => (is => 'ro', isa => 'Str');
   has location => (is => 'ro', isa => 'Str');
 

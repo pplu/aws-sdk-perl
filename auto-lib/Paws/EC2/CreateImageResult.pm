@@ -1,7 +1,6 @@
 
 package Paws::EC2::CreateImageResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has ImageId => (is => 'ro', isa => 'Str', xmlname => 'imageId', traits => ['Unwrapped',]);
 
 }

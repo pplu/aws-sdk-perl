@@ -989,7 +989,7 @@ Returns: a L<Paws::Route53::ListTagsForResourcesResponse> instance
   
 
 
-=head2 UpdateHealthCheck(HealthCheckId => Str, [FailureThreshold => Int, FullyQualifiedDomainName => Str, HealthCheckVersion => Num, IPAddress => Str, Port => Int, ResourcePath => Str, SearchString => Str])
+=head2 UpdateHealthCheck(HealthCheckId => Str, [FailureThreshold => Int, FullyQualifiedDomainName => Str, HealthCheckVersion => Int, IPAddress => Str, Port => Int, ResourcePath => Str, SearchString => Str])
 
 Each argument is described in detail in: L<Paws::Route53::UpdateHealthCheck>
 

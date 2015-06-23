@@ -1,7 +1,6 @@
 
 package Paws::SSM::CreateAssociationBatchResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Failed => (is => 'ro', isa => 'ArrayRef[Paws::SSM::FailedCreateAssociation]');
   has Successful => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AssociationDescription]');
 

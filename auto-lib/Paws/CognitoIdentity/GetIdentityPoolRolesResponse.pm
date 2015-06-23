@@ -1,7 +1,6 @@
 
 package Paws::CognitoIdentity::GetIdentityPoolRolesResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has IdentityPoolId => (is => 'ro', isa => 'Str');
   has Roles => (is => 'ro', isa => 'Paws::CognitoIdentity::RolesMap');
 

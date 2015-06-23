@@ -9,10 +9,10 @@ package Paws::RedShift::Snapshot {
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has CurrentBackupRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
   has DBName => (is => 'ro', isa => 'Str');
-  has ElapsedTimeInSeconds => (is => 'ro', isa => 'Num');
+  has ElapsedTimeInSeconds => (is => 'ro', isa => 'Int');
   has Encrypted => (is => 'ro', isa => 'Bool');
   has EncryptedWithHSM => (is => 'ro', isa => 'Bool');
-  has EstimatedSecondsToCompletion => (is => 'ro', isa => 'Num');
+  has EstimatedSecondsToCompletion => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');

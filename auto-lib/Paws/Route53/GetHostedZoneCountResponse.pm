@@ -1,8 +1,7 @@
 
 package Paws::Route53::GetHostedZoneCountResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
-  has HostedZoneCount => (is => 'ro', isa => 'Num', required => 1);
+  has HostedZoneCount => (is => 'ro', isa => 'Int', required => 1);
 
 }
 1;
@@ -29,7 +28,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> HostedZoneCount => Num
+=head2 B<REQUIRED> HostedZoneCount => Int
 
   
 

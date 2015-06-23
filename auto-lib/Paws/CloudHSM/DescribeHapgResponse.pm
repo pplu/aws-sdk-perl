@@ -1,7 +1,6 @@
 
 package Paws::CloudHSM::DescribeHapgResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has HapgArn => (is => 'ro', isa => 'Str');
   has HapgSerial => (is => 'ro', isa => 'Str');
   has HsmsLastActionFailed => (is => 'ro', isa => 'ArrayRef[Str]');

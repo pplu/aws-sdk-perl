@@ -2,7 +2,10 @@
 package Paws::Lambda::UpdateFunctionCode {
   use Moose;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
-  has ZipFile => (is => 'ro', isa => 'Str', required => 1);
+  has S3Bucket => (is => 'ro', isa => 'Str');
+  has S3Key => (is => 'ro', isa => 'Str');
+  has S3ObjectVersion => (is => 'ro', isa => 'Str');
+  has ZipFile => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -59,7 +62,56 @@ limited to 64 character in length.
 
 
 
-=head2 B<REQUIRED> ZipFile => Str
+=head2 S3Bucket => Str
+
+  
+
+Amazon S3 bucket name where the .zip file containing your deployment
+package is stored. This bucket must reside in the same AWS region where
+you are creating the Lambda function.
+
+
+
+
+
+
+
+
+
+
+=head2 S3Key => Str
+
+  
+
+The Amazon S3 object (the deployment package) key name you want to
+upload.
+
+
+
+
+
+
+
+
+
+
+=head2 S3ObjectVersion => Str
+
+  
+
+The Amazon S3 object (the deployment package) version you want to
+upload.
+
+
+
+
+
+
+
+
+
+
+=head2 ZipFile => Str
 
   
 

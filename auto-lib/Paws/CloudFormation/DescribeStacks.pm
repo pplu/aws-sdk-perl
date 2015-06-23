@@ -54,8 +54,8 @@ is one.
 
   
 
-The name or the unique identifier associated with the stack, which are
-not always interchangeable:
+The name or the unique stack ID that is associated with the stack,
+which are not always interchangeable:
 
 =over
 

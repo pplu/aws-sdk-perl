@@ -1,11 +1,10 @@
 
 package Paws::SimpleWorkflow::ActivityTask {
   use Moose;
-  with 'Paws::API::ResultParser';
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has activityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', required => 1);
   has input => (is => 'ro', isa => 'Str');
-  has startedEventId => (is => 'ro', isa => 'Num', required => 1);
+  has startedEventId => (is => 'ro', isa => 'Int', required => 1);
   has taskToken => (is => 'ro', isa => 'Str', required => 1);
   has workflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', required => 1);
 
@@ -63,7 +62,7 @@ implementation.
 
 
 
-=head2 B<REQUIRED> startedEventId => Num
+=head2 B<REQUIRED> startedEventId => Int
 
   
 

@@ -1,7 +1,6 @@
 
 package Paws::ECS::DescribeClustersResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has clusters => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Cluster]');
   has failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]');
 

@@ -1,7 +1,6 @@
 
 package Paws::S3::UploadPartCopyOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has CopyPartResult => (is => 'ro', isa => 'Paws::S3::CopyPartResult');
   has CopySourceVersionId => (is => 'ro', isa => 'Str');
   has RequestCharged => (is => 'ro', isa => 'Str');

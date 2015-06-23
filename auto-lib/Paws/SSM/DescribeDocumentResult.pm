@@ -1,7 +1,6 @@
 
 package Paws::SSM::DescribeDocumentResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Document => (is => 'ro', isa => 'Paws::SSM::DocumentDescription');
 
 }

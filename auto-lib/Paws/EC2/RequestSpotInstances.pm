@@ -2,6 +2,7 @@
 package Paws::EC2::RequestSpotInstances {
   use Moose;
   has AvailabilityZoneGroup => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZoneGroup' );
+  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has InstanceCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'instanceCount' );
   has LaunchGroup => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchGroup' );
@@ -75,9 +76,40 @@ Default: Instances are launched in any available Availability Zone.
 
 
 
+=head2 ClientToken => Str
+
+  
+
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see How to Ensure
+Idempotency in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+
+
+
+
+
+
+
+
 =head2 DryRun => Bool
 
   
+
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
 
 =head2 InstanceCount => Int
 

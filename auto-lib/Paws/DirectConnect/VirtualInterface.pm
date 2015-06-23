@@ -1,7 +1,6 @@
 
 package Paws::DirectConnect::VirtualInterface {
   use Moose;
-  with 'Paws::API::ResultParser';
   has amazonAddress => (is => 'ro', isa => 'Str');
   has asn => (is => 'ro', isa => 'Int');
   has authKey => (is => 'ro', isa => 'Str');

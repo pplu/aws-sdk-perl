@@ -1,13 +1,13 @@
 
 package Paws::CloudWatchLogs::GetLogEvents {
   use Moose;
-  has endTime => (is => 'ro', isa => 'Num');
+  has endTime => (is => 'ro', isa => 'Int');
   has limit => (is => 'ro', isa => 'Int');
   has logGroupName => (is => 'ro', isa => 'Str', required => 1);
   has logStreamName => (is => 'ro', isa => 'Str', required => 1);
   has nextToken => (is => 'ro', isa => 'Str');
   has startFromHead => (is => 'ro', isa => 'Bool');
-  has startTime => (is => 'ro', isa => 'Num');
+  has startTime => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 endTime => Num
+=head2 endTime => Int
 
   
 
@@ -48,7 +48,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 The maximum number of log events returned in the response. If you don't
-specify a value, the request would return as much log events as can fit
+specify a value, the request would return as many log events as can fit
 in a response size of 1MB, up to 10,000 log events.
 
 
@@ -64,9 +64,31 @@ in a response size of 1MB, up to 10,000 log events.
 
   
 
+The name of the log group to query.
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> logStreamName => Str
 
   
+
+The name of the log stream to query.
+
+
+
+
+
+
+
+
+
 
 =head2 nextToken => Str
 
@@ -102,7 +124,7 @@ default is false (the latest log events are returned first).
 
 
 
-=head2 startTime => Num
+=head2 startTime => Int
 
   
 

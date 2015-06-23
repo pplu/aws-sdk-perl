@@ -1,7 +1,33 @@
-0.07 
+0.09 
+ - Difference between SQS message AttributeMaps and QueueAttribute maps (thnks codehead) 
+ - Paws now returns structured exceptions (Paws::Exception) with information of errors from
+   the APIs. The exceptions stringify so you don't have to worry about too much breakage. If you
+   were parsing the error message from the exception, you should now use Paws::Exceptions accessors
+   to get the already parsed information
+ - Refactoring in the different callers to move functionalities only where needed
+ - SQS Maps are now working correctly (QueueMaps were ill defined). Thanks to codehead
+ - Fix bug for JSONCaller: when response doesn't have a body, the operation would succeed, but an
+   invalid json string exception was thrown
+ - longs changed to Moose type Int, instead of Num (longs are 64 bit integers 
+   in Java https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
+   Those Ints are passed to AWS as int() instead of Strings, because AWS APIs (CloudWatchLogs
+   for example) isn't able to transform String to long (we get an API error)
+ - Refactored the config attribute of the Paws class. Also documented what you can configure from
+   the config, so now the "config" is official.
+
+0.08 19 May 2015 22:12:00
+ - EC2 SpotFleet API calls
+ - Opsworks support for Windows
+ - Update to ElasticBeanstalk API (ResourceName)
+ - UserAgent now report Paws version number
+
+0.07 15 May 2015 19:30:00
  - Generate META.yml
  - Add LICENSE info
  - Packaging corrections
+ - Lots of documentation updates
+ - Support for new features in CloudWatchLogs, EC2 (VPC endpoint support), CloudFormation
+ - New API: Paws::DS (Directory Service)
 
 0.06 5 May 2015 23:30:00
  - Fix Map handling in JsonCaller (and add tests)

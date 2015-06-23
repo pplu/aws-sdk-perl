@@ -1,7 +1,7 @@
 
 package Paws::S3::PutBucketPolicy {
   use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', required => 1);
+  has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
   has ContentMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-MD5' );
   has Policy => (is => 'ro', isa => 'Str', required => 1);
 

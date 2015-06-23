@@ -1,7 +1,7 @@
 package Paws::EC2 {
   use Moose;
   sub service { 'ec2' }
-  sub version { '2015-03-01' }
+  sub version { '2015-04-15' }
   sub flattened_arrays { 1 }
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::EC2Caller', 'Paws::Net::XMLResponse';
@@ -102,6 +102,11 @@ package Paws::EC2 {
     my $call_object = $self->new_with_coercions('Paws::EC2::CancelReservedInstancesListing', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelSpotFleetRequests {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CancelSpotFleetRequests', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelSpotInstanceRequests {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CancelSpotInstanceRequests', @_);
@@ -130,6 +135,11 @@ package Paws::EC2 {
   sub CreateDhcpOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateDhcpOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateFlowLogs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateFlowLogs', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateImage {
@@ -222,6 +232,11 @@ package Paws::EC2 {
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateVpc', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateVpcEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateVpcEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateVpcPeeringConnection {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateVpcPeeringConnection', @_);
@@ -250,6 +265,11 @@ package Paws::EC2 {
   sub DeleteDhcpOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteDhcpOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteFlowLogs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteFlowLogs', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteInternetGateway {
@@ -327,6 +347,11 @@ package Paws::EC2 {
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteVpc', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteVpcEndpoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteVpcEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteVpcPeeringConnection {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteVpcPeeringConnection', @_);
@@ -397,6 +422,11 @@ package Paws::EC2 {
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeExportTasks', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeFlowLogs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeFlowLogs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeImageAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeImageAttribute', @_);
@@ -442,6 +472,11 @@ package Paws::EC2 {
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeKeyPairs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeMovingAddresses {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeMovingAddresses', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeNetworkAcls {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeNetworkAcls', @_);
@@ -460,6 +495,11 @@ package Paws::EC2 {
   sub DescribePlacementGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribePlacementGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribePrefixLists {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribePrefixLists', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeRegions {
@@ -512,6 +552,21 @@ package Paws::EC2 {
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSpotDatafeedSubscription', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeSpotFleetInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSpotFleetInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeSpotFleetRequestHistory {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSpotFleetRequestHistory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeSpotFleetRequests {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSpotFleetRequests', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeSpotInstanceRequests {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSpotInstanceRequests', @_);
@@ -555,6 +610,16 @@ package Paws::EC2 {
   sub DescribeVpcClassicLink {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcClassicLink', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeVpcEndpoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeVpcEndpointServices {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcEndpointServices', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeVpcPeeringConnections {
@@ -712,9 +777,19 @@ package Paws::EC2 {
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpcAttribute', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyVpcEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpcEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub MonitorInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::MonitorInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub MoveAddressToVpc {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::MoveAddressToVpc', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PurchaseReservedInstancesOffering {
@@ -767,6 +842,11 @@ package Paws::EC2 {
     my $call_object = $self->new_with_coercions('Paws::EC2::ReportInstanceStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RequestSpotFleet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::RequestSpotFleet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RequestSpotInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::RequestSpotInstances', @_);
@@ -790,6 +870,11 @@ package Paws::EC2 {
   sub ResetSnapshotAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ResetSnapshotAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RestoreAddressToClassic {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::RestoreAddressToClassic', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RevokeSecurityGroupEgress {
@@ -1027,7 +1112,7 @@ Acquires an Elastic IP address.
 
 An Elastic IP address is for use either in the EC2-Classic platform or
 in a VPC. For more information, see Elastic IP Addresses in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -1053,9 +1138,9 @@ addresses, or you can specify the number of secondary IP addresses to
 be automatically assigned within the subnet's CIDR block range. The
 number of secondary IP addresses that you can assign to an instance
 varies by instance type. For information about instance types, see
-Instance Types in the I<Amazon Elastic Compute Cloud User Guide for
-Linux>. For more information about Elastic IP addresses, see Elastic IP
-Addresses in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+Instance Types in the I<Amazon Elastic Compute Cloud User Guide>. For
+more information about Elastic IP addresses, see Elastic IP Addresses
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 AssignPrivateIpAddresses is available only in EC2-VPC.
 
@@ -1082,7 +1167,7 @@ interface.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
 in a VPC. For more information, see Elastic IP Addresses in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 [EC2-Classic, VPC in an EC2-VPC-only account] If the Elastic IP address
 is already associated with a different instance, it is disassociated
@@ -1248,18 +1333,17 @@ Returns: a L<Paws::EC2::VolumeAttachment> instance
 
   
 
-Attaches an Amazon EBS volume to a running or stopped instance and
-exposes it to the instance with the specified device name.
+Attaches an EBS volume to a running or stopped instance and exposes it
+to the instance with the specified device name.
 
-Encrypted Amazon EBS volumes may only be attached to instances that
-support Amazon EBS encryption. For more information, see Amazon EBS
-Encryption in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+Encrypted EBS volumes may only be attached to instances that support
+Amazon EBS encryption. For more information, see Amazon EBS Encryption
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
-For a list of supported device names, see Attaching an Amazon EBS
-Volume to an Instance. Any device names that aren't reserved for
-instance store volumes can be used for Amazon EBS volumes. For more
-information, see Amazon EC2 Instance Store in the I<Amazon Elastic
-Compute Cloud User Guide for Linux>.
+For a list of supported device names, see Attaching an EBS Volume to an
+Instance. Any device names that aren't reserved for instance store
+volumes can be used for EBS volumes. For more information, see Amazon
+EC2 Instance Store in the I<Amazon Elastic Compute Cloud User Guide>.
 
 If a volume has an AWS Marketplace product code:
 
@@ -1281,8 +1365,8 @@ Windows instance and attach it to a Linux instance.
 For an overview of the AWS Marketplace, see Introducing AWS
 Marketplace.
 
-For more information about Amazon EBS volumes, see Attaching Amazon EBS
-Volumes in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+For more information about EBS volumes, see Attaching Amazon EBS
+Volumes in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -1462,7 +1546,7 @@ command fails and returns an exception.
 
 For more information, see Using the Command Line Tools to Import Your
 Virtual Machine to Amazon EC2 in the I<Amazon Elastic Compute Cloud
-User Guide for Linux>.
+User Guide>.
 
 
 
@@ -1529,7 +1613,27 @@ Cancels the specified Reserved Instance listing in the Reserved
 Instance Marketplace.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
-Elastic Compute Cloud User Guide for Linux>.
+Elastic Compute Cloud User Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 CancelSpotFleetRequests(SpotFleetRequestIds => ArrayRef[Str], TerminateInstances => Bool, [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::CancelSpotFleetRequests>
+
+Returns: a L<Paws::EC2::CancelSpotFleetRequestsResponse> instance
+
+  
+
+Cancels the specified Spot fleet requests.
 
 
 
@@ -1554,7 +1658,7 @@ instances that Amazon EC2 starts on your behalf when the bid price that
 you specify exceeds the current Spot Price. Amazon EC2 periodically
 sets the Spot Price based on available Spot Instance capacity and
 current Spot Instance requests. For more information, see Spot Instance
-Requests in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+Requests in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Canceling a Spot Instance request does not terminate running Spot
 Instances associated with the request.
@@ -1602,11 +1706,11 @@ Returns: a L<Paws::EC2::CopyImageResult> instance
 
 Initiates the copy of an AMI from the specified source region to the
 current region. You specify the destination region by using its
-endpoint when making the request. AMIs that use encrypted Amazon EBS
-snapshots cannot be copied with this method.
+endpoint when making the request. AMIs that use encrypted EBS snapshots
+cannot be copied with this method.
 
 For more information, see Copying AMIs in the I<Amazon Elastic Compute
-Cloud User Guide for Linux>.
+Cloud User Guide>.
 
 
 
@@ -1626,20 +1730,20 @@ Returns: a L<Paws::EC2::CopySnapshotResult> instance
 
   
 
-Copies a point-in-time snapshot of an Amazon EBS volume and stores it
-in Amazon S3. You can copy the snapshot within the same region or from
-one region to another. You can use the snapshot to create Amazon EBS
-volumes or Amazon Machine Images (AMIs). The snapshot is copied to the
-regional endpoint that you send the HTTP request to.
+Copies a point-in-time snapshot of an EBS volume and stores it in
+Amazon S3. You can copy the snapshot within the same region or from one
+region to another. You can use the snapshot to create EBS volumes or
+Amazon Machine Images (AMIs). The snapshot is copied to the regional
+endpoint that you send the HTTP request to.
 
-Copies of encrypted Amazon EBS snapshots remain encrypted. Copies of
+Copies of encrypted EBS snapshots remain encrypted. Copies of
 unencrypted snapshots remain unencrypted.
 
 Copying snapshots that were encrypted with non-default AWS Key
 Management Service (KMS) master keys is not supported at this time.
 
 For more information, see Copying an Amazon EBS Snapshot in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -1761,6 +1865,35 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 
 
+=head2 CreateFlowLogs(DeliverLogsPermissionArn => Str, LogGroupName => Str, ResourceIds => ArrayRef[Str], ResourceType => Str, TrafficType => Str, [ClientToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::CreateFlowLogs>
+
+Returns: a L<Paws::EC2::CreateFlowLogsResult> instance
+
+  
+
+Creates one or more flow logs to capture IP traffic for a specific
+network interface, subnet, or VPC. Flow logs are delivered to a
+specified log group in Amazon CloudWatch Logs. If you specify a VPC or
+subnet in the request, a log stream is created in CloudWatch Logs for
+each network interface in the subnet or VPC. Log streams can include
+information about accepted and rejected traffic to a network interface.
+You can view the data in your log streams using Amazon CloudWatch Logs.
+
+In your request, you must also specify an IAM role that has permission
+to publish logs to CloudWatch Logs.
+
+
+
+
+
+
+
+
+
+
+
 =head2 CreateImage(InstanceId => Str, Name => Str, [BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping], Description => Str, DryRun => Bool, NoReboot => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateImage>
@@ -1779,7 +1912,7 @@ instance from this new AMI, the instance automatically launches with
 those additional volumes.
 
 For more information, see Creating Amazon EBS-Backed Linux AMIs in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -1799,12 +1932,12 @@ Returns: a L<Paws::EC2::CreateInstanceExportTaskResult> instance
 
   
 
-Exports a running or stopped instance to an Amazon S3 bucket.
+Exports a running or stopped instance to an S3 bucket.
 
 For information about the supported operating systems, image formats,
 and known limitations for the types of instances you can export, see
 Exporting EC2 Instances in the I<Amazon Elastic Compute Cloud User
-Guide for Linux>.
+Guide>.
 
 
 
@@ -1861,7 +1994,7 @@ you create it. To create a key pair that is available in all regions,
 use ImportKeyPair.
 
 For more information about key pairs, see Key Pairs in the I<Amazon
-Elastic Compute Cloud User Guide for Linux>.
+Elastic Compute Cloud User Guide>.
 
 
 
@@ -1946,7 +2079,7 @@ Returns: a L<Paws::EC2::CreateNetworkInterfaceResult> instance
 Creates a network interface in the specified subnet.
 
 For more information about network interfaces, see Elastic Network
-Interfaces in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+Interfaces in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -1971,8 +2104,7 @@ must give the group a name that's unique within the scope of your
 account.
 
 For more information about placement groups and cluster instances, see
-Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide for
-Linux>.
+Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -2003,7 +2135,7 @@ want to purchase additional capacity. Reserved Instances bought and
 sold through the Reserved Instance Marketplace work like any other
 Reserved Instances.
 
-To sell your Reserved Instances, you must first register as a Seller in
+To sell your Reserved Instances, you must first register as a seller in
 the Reserved Instance Marketplace. After completing the registration
 process, you can create a Reserved Instance Marketplace listing of some
 or all of your Reserved Instances, and specify the upfront price to
@@ -2012,7 +2144,7 @@ for purchase. To view the details of your Reserved Instance listing,
 you can use the DescribeReservedInstancesListings operation.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
-Elastic Compute Cloud User Guide for Linux>.
+Elastic Compute Cloud User Guide>.
 
 
 
@@ -2024,11 +2156,11 @@ Elastic Compute Cloud User Guide for Linux>.
 
 
 
-=head2 CreateRoute(DestinationCidrBlock => Str, RouteTableId => Str, [DryRun => Bool, GatewayId => Str, InstanceId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str])
+=head2 CreateRoute(DestinationCidrBlock => Str, RouteTableId => Str, [ClientToken => Str, DryRun => Bool, GatewayId => Str, InstanceId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateRoute>
 
-Returns: nothing
+Returns: a L<Paws::EC2::CreateRouteResult> instance
 
   
 
@@ -2108,9 +2240,9 @@ Creates a security group.
 
 A security group is for use with instances either in the EC2-Classic
 platform or in a specific VPC. For more information, see Amazon EC2
-Security Groups in the I<Amazon Elastic Compute Cloud User Guide for
-Linux> and Security Groups for Your VPC in the I<Amazon Virtual Private
-Cloud User Guide>.
+Security Groups in the I<Amazon Elastic Compute Cloud User Guide> and
+Security Groups for Your VPC in the I<Amazon Virtual Private Cloud User
+Guide>.
 
 EC2-Classic: You can have up to 500 security groups.
 
@@ -2151,26 +2283,26 @@ Returns: a L<Paws::EC2::Snapshot> instance
 
   
 
-Creates a snapshot of an Amazon EBS volume and stores it in Amazon S3.
-You can use snapshots for backups, to make copies of Amazon EBS
-volumes, and to save data before shutting down an instance.
+Creates a snapshot of an EBS volume and stores it in Amazon S3. You can
+use snapshots for backups, to make copies of EBS volumes, and to save
+data before shutting down an instance.
 
 When a snapshot is created, any AWS Marketplace product codes that are
 associated with the source volume are propagated to the snapshot.
 
 You can take a snapshot of an attached volume that is in use. However,
-snapshots only capture data that has been written to your Amazon EBS
-volume at the time the snapshot command is issued; this may exclude any
-data that has been cached by any applications or the operating system.
-If you can pause any file systems on the volume long enough to take a
-snapshot, your snapshot should be complete. However, if you cannot
-pause all file writes to the volume, you should unmount the volume from
-within the instance, issue the snapshot command, and then remount the
-volume to ensure a consistent and complete snapshot. You may remount
-and use your volume while the snapshot status is C<pending>.
+snapshots only capture data that has been written to your EBS volume at
+the time the snapshot command is issued; this may exclude any data that
+has been cached by any applications or the operating system. If you can
+pause any file systems on the volume long enough to take a snapshot,
+your snapshot should be complete. However, if you cannot pause all file
+writes to the volume, you should unmount the volume from within the
+instance, issue the snapshot command, and then remount the volume to
+ensure a consistent and complete snapshot. You may remount and use your
+volume while the snapshot status is C<pending>.
 
-To create a snapshot for Amazon EBS volumes that serve as root devices,
-you should stop the instance before taking the snapshot.
+To create a snapshot for EBS volumes that serve as root devices, you
+should stop the instance before taking the snapshot.
 
 Snapshots that are taken from encrypted volumes are automatically
 encrypted. Volumes that are created from encrypted snapshots are also
@@ -2178,7 +2310,7 @@ automatically encrypted. Your encrypted volumes and any associated
 snapshots always remain protected.
 
 For more information, see Amazon Elastic Block Store and Amazon EBS
-Encryption in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+Encryption in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -2201,7 +2333,7 @@ Returns: a L<Paws::EC2::CreateSpotDatafeedSubscriptionResult> instance
 Creates a data feed for Spot Instances, enabling you to view Spot
 Instance usage logs. You can create one data feed per AWS account. For
 more information, see Spot Instance Data Feed in the I<Amazon Elastic
-Compute Cloud User Guide for Linux>.
+Compute Cloud User Guide>.
 
 
 
@@ -2272,7 +2404,7 @@ Each tag consists of a key and optional value. Tag keys must be unique
 per resource.
 
 For more information about tags, see Tagging Your Resources in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -2292,23 +2424,23 @@ Returns: a L<Paws::EC2::Volume> instance
 
   
 
-Creates an Amazon EBS volume that can be attached to an instance in the
-same Availability Zone. The volume is created in the regional endpoint
-that you send the HTTP request to. For more information see Regions and
+Creates an EBS volume that can be attached to an instance in the same
+Availability Zone. The volume is created in the regional endpoint that
+you send the HTTP request to. For more information see Regions and
 Endpoints.
 
-You can create a new empty volume or restore a volume from an Amazon
-EBS snapshot. Any AWS Marketplace product codes from the snapshot are
+You can create a new empty volume or restore a volume from an EBS
+snapshot. Any AWS Marketplace product codes from the snapshot are
 propagated to the volume.
 
 You can create encrypted volumes with the C<Encrypted> parameter.
 Encrypted volumes may only be attached to instances that support Amazon
 EBS encryption. Volumes that are created from encrypted snapshots are
 also automatically encrypted. For more information, see Amazon EBS
-Encryption in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+Encryption in the I<Amazon Elastic Compute Cloud User Guide>.
 
 For more information, see Creating or Restoring an Amazon EBS Volume in
-the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -2339,6 +2471,32 @@ By default, each instance you launch in the VPC has the default DHCP
 options, which includes only a default DNS server that we provide
 (AmazonProvidedDNS). For more information about DHCP options, see DHCP
 Options Sets in the I<Amazon Virtual Private Cloud User Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 CreateVpcEndpoint(ServiceName => Str, VpcId => Str, [ClientToken => Str, DryRun => Bool, PolicyDocument => Str, RouteTableIds => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::EC2::CreateVpcEndpoint>
+
+Returns: a L<Paws::EC2::CreateVpcEndpointResult> instance
+
+  
+
+Creates a VPC endpoint for a specified AWS service. An endpoint enables
+you to create a private connection between your VPC and another AWS
+service in your account. You can specify an endpoint policy to attach
+to the endpoint that will control access to the service from your VPC.
+You can also specify the VPC route tables that use the endpoint.
+
+Currently, only endpoints to Amazon S3 are supported.
 
 
 
@@ -2515,6 +2673,26 @@ default set of options with the VPC.
 
 
 
+=head2 DeleteFlowLogs(FlowLogIds => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::EC2::DeleteFlowLogs>
+
+Returns: a L<Paws::EC2::DeleteFlowLogsResult> instance
+
+  
+
+Deletes one or more flow logs.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DeleteInternetGateway(InternetGatewayId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DeleteInternetGateway>
@@ -2631,8 +2809,7 @@ Returns: nothing
 Deletes the specified placement group. You must terminate all instances
 in the placement group before you can delete the placement group. For
 more information about placement groups and cluster instances, see
-Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide for
-Linux>.
+Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -2729,12 +2906,12 @@ So regardless of which prior snapshots have been deleted, all active
 snapshots will have access to all the information needed to restore the
 volume.
 
-You cannot delete a snapshot of the root device of an Amazon EBS volume
-used by a registered AMI. You must first de-register the AMI before you
-can delete the snapshot.
+You cannot delete a snapshot of the root device of an EBS volume used
+by a registered AMI. You must first de-register the AMI before you can
+delete the snapshot.
 
 For more information, see Deleting an Amazon EBS Snapshot in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -2756,7 +2933,7 @@ Returns: nothing
 
 Deletes the data feed for Spot Instances. For more information, see
 Spot Instance Data Feed in the I<Amazon Elastic Compute Cloud User
-Guide for Linux>.
+Guide>.
 
 
 
@@ -2801,7 +2978,7 @@ Deletes the specified set of tags from the specified set of resources.
 This call is designed to follow a C<DescribeTags> request.
 
 For more information about tags, see Tagging Your Resources in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -2821,13 +2998,13 @@ Returns: nothing
 
   
 
-Deletes the specified Amazon EBS volume. The volume must be in the
+Deletes the specified EBS volume. The volume must be in the
 C<available> state (not attached to an instance).
 
 The volume may remain in the C<deleting> state for several minutes.
 
 For more information, see Deleting an Amazon EBS Volume in the I<Amazon
-Elastic Compute Cloud User Guide for Linux>.
+Elastic Compute Cloud User Guide>.
 
 
 
@@ -2853,6 +3030,28 @@ For example, you must terminate all instances running in the VPC,
 delete all security groups associated with the VPC (except the default
 one), delete all route tables associated with the VPC (except the
 default one), and so on.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DeleteVpcEndpoints(VpcEndpointIds => ArrayRef[Str], [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::DeleteVpcEndpoints>
+
+Returns: a L<Paws::EC2::DeleteVpcEndpointsResult> instance
+
+  
+
+Deletes one or more specified VPC endpoints. Deleting the endpoint also
+deletes the endpoint routes in the route tables that were associated
+with the endpoint.
 
 
 
@@ -3053,7 +3252,7 @@ Describes one or more of your Elastic IP addresses.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
 in a VPC. For more information, see Elastic IP Addresses in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -3080,7 +3279,7 @@ this request to view the state and any provided message for that
 Availability Zone.
 
 For more information, see Regions and Availability Zones in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -3150,7 +3349,7 @@ Returns: a L<Paws::EC2::DescribeConversionTasksResult> instance
 
 Describes one or more of your conversion tasks. For more information,
 see Using the Command Line Tools to Import Your Virtual Machine to
-Amazon EC2 in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+Amazon EC2 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -3218,6 +3417,28 @@ Returns: a L<Paws::EC2::DescribeExportTasksResult> instance
   
 
 Describes one or more of your export tasks.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeFlowLogs([Filter => ArrayRef[Paws::EC2::Filter], FlowLogIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeFlowLogs>
+
+Returns: a L<Paws::EC2::DescribeFlowLogsResult> instance
+
+  
+
+Describes one or more flow logs. To view the information in your flow
+logs (the log streams for the network interfaces), you must use the
+CloudWatch Logs console or the CloudWatch Logs API.
 
 
 
@@ -3305,8 +3526,7 @@ Returns: a L<Paws::EC2::DescribeImportSnapshotTasksResult> instance
 
   
 
-Displays details about an import snapshot tasks that is already
-created.
+Describes your import snapshot tasks.
 
 
 
@@ -3381,90 +3601,35 @@ Returns: a L<Paws::EC2::DescribeInstanceStatusResult> instance
 
   
 
-Describes the status of one or more instances, including any scheduled
-events.
+Describes the status of one or more instances.
 
-Instance status has two main components:
-
-=over
-
-=item *
-
-System Status reports impaired functionality that stems from issues
-related to the systems that support an instance, such as such as
-hardware failures and network connectivity problems. This call reports
-such problems as impaired reachability.
-
-=item *
-
-Instance Status reports impaired functionality that arises from
-problems internal to the instance. This call reports such problems as
-impaired reachability.
-
-=back
-
-Instance status provides information about four types of scheduled
-events for an instance that may require your attention:
+Instance status includes the following components:
 
 =over
 
 =item *
 
-Scheduled Reboot: When Amazon EC2 determines that an instance must be
-rebooted, the instances status returns one of two event codes:
-C<system-reboot> or C<instance-reboot>. System reboot commonly occurs
-if certain maintenance or upgrade operations require a reboot of the
-underlying host that supports an instance. Instance reboot commonly
-occurs if the instance must be rebooted, rather than the underlying
-host. Rebooting events include a scheduled start and end time.
-
-=item *
-
-System Maintenance: When Amazon EC2 determines that an instance
-requires maintenance that requires power or network impact, the
-instance status is the event code C<system-maintenance>. System
-maintenance is either power maintenance or network maintenance. For
-power maintenance, your instance will be unavailable for a brief period
-of time and then rebooted. For network maintenance, your instance will
-experience a brief loss of network connectivity. System maintenance
-events include a scheduled start and end time. You will also be
-notified by email if one of your instances is set for system
-maintenance. The email message indicates when your instance is
-scheduled for maintenance.
-
-=item *
-
-Scheduled Retirement: When Amazon EC2 determines that an instance must
-be shut down, the instance status is the event code
-C<instance-retirement>. Retirement commonly occurs when the underlying
-host is degraded and must be replaced. Retirement events include a
-scheduled start and end time. You will also be notified by email if one
-of your instances is set to retiring. The email message indicates when
-your instance will be permanently retired.
-
-=item *
-
-Scheduled Stop: When Amazon EC2 determines that an instance must be
-shut down, the instances status returns an event code called
-C<instance-stop>. Stop events include a scheduled start and end time.
-You will also be notified by email if one of your instances is set to
-stop. The email message indicates when your instance will be stopped.
-
-=back
-
-When your instance is retired, it will either be terminated (if its
-root device type is the instance-store) or stopped (if its root device
-type is an EBS volume). Instances stopped due to retirement will not be
-restarted, but you can do so manually. You can also avoid retirement of
-EBS-backed instances by manually restarting your instance when its
-event code is C<instance-retirement>. This ensures that your instance
-is started on a different underlying host.
-
-For more information about failed status checks, see Troubleshooting
+B<Status checks> - Amazon EC2 performs status checks on running EC2
+instances to identify hardware and software issues. For more
+information, see Status Checks for Your Instances and Troubleshooting
 Instances with Failed Status Checks in the I<Amazon Elastic Compute
-Cloud User Guide for Linux>. For more information about working with
-scheduled events, see Working with an Instance That Has a Scheduled
-Event in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+Cloud User Guide>.
+
+=item *
+
+B<Scheduled events> - Amazon EC2 can schedule events (such as reboot,
+stop, or terminate) for your instances related to hardware issues,
+software updates, or system maintenance. For more information, see
+Scheduled Events for Your Instances in the I<Amazon Elastic Compute
+Cloud User Guide>.
+
+=item *
+
+B<Instance state> - You can manage your instances from the moment you
+launch them through their termination. For more information, see
+Instance Lifecycle in the I<Amazon Elastic Compute Cloud User Guide>.
+
+=back
 
 
 
@@ -3507,7 +3672,30 @@ Returns: a L<Paws::EC2::DescribeKeyPairsResult> instance
 Describes one or more of your key pairs.
 
 For more information about key pairs, see Key Pairs in the I<Amazon
-Elastic Compute Cloud User Guide for Linux>.
+Elastic Compute Cloud User Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeMovingAddresses([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, NextToken => Str, PublicIps => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeMovingAddresses>
+
+Returns: a L<Paws::EC2::DescribeMovingAddressesResult> instance
+
+  
+
+Describes your Elastic IP addresses that are being moved to the EC2-VPC
+platform, or that are being restored to the EC2-Classic platform. This
+request does not return information about any other Elastic IP
+addresses in your account.
 
 
 
@@ -3593,7 +3781,31 @@ Returns: a L<Paws::EC2::DescribePlacementGroupsResult> instance
 
 Describes one or more of your placement groups. For more information
 about placement groups and cluster instances, see Cluster Instances in
-the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribePrefixLists([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, NextToken => Str, PrefixListIds => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::EC2::DescribePrefixLists>
+
+Returns: a L<Paws::EC2::DescribePrefixListsResult> instance
+
+  
+
+Describes available AWS services in a prefix list format, which
+includes the prefix list name and prefix list ID of the service and the
+IP address range for the service. A prefix list ID is required for
+creating an outbound security group rule that allows traffic from a VPC
+to access an AWS service through a VPC endpoint.
 
 
 
@@ -3639,7 +3851,7 @@ Returns: a L<Paws::EC2::DescribeReservedInstancesResult> instance
 Describes one or more of the Reserved Instances that you purchased.
 
 For more information about Reserved Instances, see Reserved Instances
-in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -3681,7 +3893,7 @@ Instance listings to you until your demand is met. You are charged
 based on the total price of all of the listings that you purchase.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
-Elastic Compute Cloud User Guide for Linux>.
+Elastic Compute Cloud User Guide>.
 
 
 
@@ -3707,7 +3919,7 @@ modification requests is returned. If a modification ID is specified,
 only information about the specific modification is returned.
 
 For more information, see Modifying Reserved Instances in the Amazon
-Elastic Compute Cloud User Guide for Linux.
+Elastic Compute Cloud User Guide.
 
 
 
@@ -3719,7 +3931,7 @@ Elastic Compute Cloud User Guide for Linux.
 
 
 
-=head2 DescribeReservedInstancesOfferings([AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Num, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Num, NextToken => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str]])
+=head2 DescribeReservedInstancesOfferings([AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Int, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesOfferings>
 
@@ -3734,7 +3946,7 @@ insufficient capacity errors, and you pay a lower usage rate than the
 rate charged for On-Demand instances for the actual time used.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
-Elastic Compute Cloud User Guide for Linux>.
+Elastic Compute Cloud User Guide>.
 
 
 
@@ -3781,9 +3993,9 @@ Describes one or more of your security groups.
 
 A security group is for use with instances either in the EC2-Classic
 platform or in a specific VPC. For more information, see Amazon EC2
-Security Groups in the I<Amazon Elastic Compute Cloud User Guide for
-Linux> and Security Groups for Your VPC in the I<Amazon Virtual Private
-Cloud User Guide>.
+Security Groups in the I<Amazon Elastic Compute Cloud User Guide> and
+Security Groups for Your VPC in the I<Amazon Virtual Private Cloud User
+Guide>.
 
 
 
@@ -3806,8 +4018,8 @@ Returns: a L<Paws::EC2::DescribeSnapshotAttributeResult> instance
 Describes the specified attribute of the specified snapshot. You can
 specify only one attribute at a time.
 
-For more information about Amazon EBS snapshots, see Amazon EBS
-Snapshots in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+For more information about EBS snapshots, see Amazon EBS Snapshots in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -3827,11 +4039,11 @@ Returns: a L<Paws::EC2::DescribeSnapshotsResult> instance
 
   
 
-Describes one or more of the Amazon EBS snapshots available to you.
-Available snapshots include public snapshots available for any AWS
-account to launch, private snapshots that you own, and private
-snapshots owned by another AWS account but for which you've been given
-explicit create volume permissions.
+Describes one or more of the EBS snapshots available to you. Available
+snapshots include public snapshots available for any AWS account to
+launch, private snapshots that you own, and private snapshots owned by
+another AWS account but for which you've been given explicit create
+volume permissions.
 
 The create volume permissions fall into the following categories:
 
@@ -3878,8 +4090,8 @@ results is returned along with a C<NextToken> value that can be passed
 to a subsequent C<DescribeSnapshots> request to retrieve the remaining
 results.
 
-For more information about Amazon EBS snapshots, see Amazon EBS
-Snapshots in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+For more information about EBS snapshots, see Amazon EBS Snapshots in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -3901,7 +4113,72 @@ Returns: a L<Paws::EC2::DescribeSpotDatafeedSubscriptionResult> instance
 
 Describes the data feed for Spot Instances. For more information, see
 Spot Instance Data Feed in the I<Amazon Elastic Compute Cloud User
-Guide for Linux>.
+Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeSpotFleetInstances(SpotFleetRequestId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeSpotFleetInstances>
+
+Returns: a L<Paws::EC2::DescribeSpotFleetInstancesResponse> instance
+
+  
+
+Describes the running instances for the specified Spot fleet.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeSpotFleetRequestHistory(SpotFleetRequestId => Str, StartTime => Str, [DryRun => Bool, EventType => Str, MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeSpotFleetRequestHistory>
+
+Returns: a L<Paws::EC2::DescribeSpotFleetRequestHistoryResponse> instance
+
+  
+
+Describes the events for the specified Spot fleet request during the
+specified time.
+
+Spot fleet events are delayed by up to 30 seconds before they can be
+described. This ensures that you can query by the last evaluated time
+and not miss a recorded event.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeSpotFleetRequests([DryRun => Bool, MaxResults => Int, NextToken => Str, SpotFleetRequestIds => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeSpotFleetRequests>
+
+Returns: a L<Paws::EC2::DescribeSpotFleetRequestsResponse> instance
+
+  
+
+Describes your Spot fleet requests.
 
 
 
@@ -3926,8 +4203,8 @@ Instances are instances that Amazon EC2 launches when the bid price
 that you specify exceeds the current Spot Price. Amazon EC2
 periodically sets the Spot Price based on available Spot Instance
 capacity and current Spot Instance requests. For more information, see
-Spot Instance Requests in the I<Amazon Elastic Compute Cloud User Guide
-for Linux>.
+Spot Instance Requests in the I<Amazon Elastic Compute Cloud User
+Guide>.
 
 You can use C<DescribeSpotInstanceRequests> to find a running Spot
 Instance by examining the response. If the status of the Spot Instance
@@ -3957,7 +4234,7 @@ Returns: a L<Paws::EC2::DescribeSpotPriceHistoryResult> instance
 Describes the Spot Price history. The prices returned are listed in
 chronological order, from the oldest to the most recent, for up to the
 past 90 days. For more information, see Spot Instance Pricing History
-in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 When you specify a start and end time, this operation returns the
 prices of the instance types within the time range that you specified
@@ -4009,7 +4286,7 @@ Returns: a L<Paws::EC2::DescribeTagsResult> instance
 Describes one or more of the tags for your EC2 resources.
 
 For more information about tags, see Tagging Your Resources in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -4032,8 +4309,8 @@ Returns: a L<Paws::EC2::DescribeVolumeAttributeResult> instance
 Describes the specified attribute of the specified volume. You can
 specify only one attribute at a time.
 
-For more information about Amazon EBS volumes, see Amazon EBS Volumes
-in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+For more information about EBS volumes, see Amazon EBS Volumes in the
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -4053,7 +4330,7 @@ Returns: a L<Paws::EC2::DescribeVolumesResult> instance
 
   
 
-Describes the specified Amazon EBS volumes.
+Describes the specified EBS volumes.
 
 If you are describing a long list of volumes, you can paginate the
 output to make the list more manageable. The C<MaxResults> parameter
@@ -4063,8 +4340,8 @@ results is returned along with a C<NextToken> value that can be passed
 to a subsequent C<DescribeVolumes> request to retrieve the remaining
 results.
 
-For more information about Amazon EBS volumes, see Amazon EBS Volumes
-in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+For more information about EBS volumes, see Amazon EBS Volumes in the
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -4165,6 +4442,47 @@ Returns: a L<Paws::EC2::DescribeVpcClassicLinkResult> instance
   
 
 Describes the ClassicLink status of one or more VPCs.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeVpcEndpoints([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, NextToken => Str, VpcEndpointIds => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeVpcEndpoints>
+
+Returns: a L<Paws::EC2::DescribeVpcEndpointsResult> instance
+
+  
+
+Describes one or more of your VPC endpoints.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeVpcEndpointServices([DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeVpcEndpointServices>
+
+Returns: a L<Paws::EC2::DescribeVpcEndpointServicesResult> instance
+
+  
+
+Describes all supported AWS services that can be specified when
+creating a VPC endpoint.
 
 
 
@@ -4337,10 +4655,10 @@ Returns: a L<Paws::EC2::VolumeAttachment> instance
 
   
 
-Detaches an Amazon EBS volume from an instance. Make sure to unmount
-any file systems on the device within your operating system before
-detaching the volume. Failure to do so results in the volume being
-stuck in a busy state while detaching.
+Detaches an EBS volume from an instance. Make sure to unmount any file
+systems on the device within your operating system before detaching the
+volume. Failure to do so results in the volume being stuck in a busy
+state while detaching.
 
 If an Amazon EBS volume is the root device of an instance, it can't be
 detached while the instance is running. To detach the root volume, stop
@@ -4350,7 +4668,7 @@ When a volume with an AWS Marketplace product code is detached from an
 instance, the product code is no longer associated with the instance.
 
 For more information, see Detaching an Amazon EBS Volume in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -4445,7 +4763,7 @@ interface it's associated with.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
 in a VPC. For more information, see Elastic IP Addresses in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 This is an idempotent operation. If you perform the operation more than
 once, Amazon EC2 doesn't return an error.
@@ -4542,7 +4860,7 @@ VPC's route tables have existing routes for address ranges within the
 C<10.0.0.0/8> IP address range, excluding local routes for VPCs in the
 C<10.0.0.0/16> and C<10.1.0.0/16> IP address ranges. For more
 information, see ClassicLink in the Amazon Elastic Compute Cloud User
-Guide for Linux.
+Guide.
 
 
 
@@ -4636,8 +4954,8 @@ Returns: a L<Paws::EC2::ImportImageResult> instance
 
   
 
-Import single or multi-volume disk images or Amazon EBS snapshots into
-an Amazon Machine Image (AMI).
+Import single or multi-volume disk images or EBS snapshots into an
+Amazon Machine Image (AMI).
 
 
 
@@ -4658,12 +4976,12 @@ Returns: a L<Paws::EC2::ImportInstanceResult> instance
   
 
 Creates an import instance task using metadata from the specified disk
-image. ImportInstance only supports single-volume VMs. To import
+image. C<ImportInstance> only supports single-volume VMs. To import
 multi-volume VMs, use ImportImage. After importing the image, you then
 upload it using the C<ec2-import-volume> command in the EC2 command
 line tools. For more information, see Using the Command Line Tools to
 Import Your Virtual Machine to Amazon EC2 in the I<Amazon Elastic
-Compute Cloud User Guide for Linux>.
+Compute Cloud User Guide>.
 
 
 
@@ -4690,7 +5008,7 @@ key). With ImportKeyPair, you create the key pair and give AWS just the
 public key. The private key is never transferred between you and AWS.
 
 For more information about key pairs, see Key Pairs in the I<Amazon
-Elastic Compute Cloud User Guide for Linux>.
+Elastic Compute Cloud User Guide>.
 
 
 
@@ -4710,7 +5028,7 @@ Returns: a L<Paws::EC2::ImportSnapshotResult> instance
 
   
 
-Import a disk into an Amazon Elastic Block Store (Amazon EBS) snapshot.
+Imports a disk into an EBS snapshot.
 
 
 
@@ -4735,7 +5053,7 @@ image. After importing the image, you then upload it using the
 C<ec2-import-volume> command in the Amazon EC2 command-line interface
 (CLI) tools. For more information, see Using the Command Line Tools to
 Import Your Virtual Machine to Amazon EC2 in the I<Amazon Elastic
-Compute Cloud User Guide for Linux>.
+Compute Cloud User Guide>.
 
 
 
@@ -4784,7 +5102,7 @@ specify only one attribute at a time.
 
 To modify some attributes, the instance must be stopped. For more
 information, see Modifying Attributes of a Stopped Instance in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -4831,7 +5149,7 @@ The Reserved Instances to be modified must be identical, except for
 Availability Zone, network platform, and instance type.
 
 For more information, see Modifying Reserved Instances in the Amazon
-Elastic Compute Cloud User Guide for Linux.
+Elastic Compute Cloud User Guide.
 
 
 
@@ -4858,7 +5176,7 @@ If you need to both add and remove account IDs for a snapshot, you must
 use multiple API calls.
 
 For more information on modifying snapshot permissions, see Sharing
-Snapshots in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+Snapshots in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Snapshots with AWS Marketplace product codes cannot be made public.
 
@@ -4942,6 +5260,28 @@ Modifies the specified attribute of the specified VPC.
 
 
 
+=head2 ModifyVpcEndpoint(VpcEndpointId => Str, [AddRouteTableIds => ArrayRef[Str], DryRun => Bool, PolicyDocument => Str, RemoveRouteTableIds => ArrayRef[Str], ResetPolicy => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::ModifyVpcEndpoint>
+
+Returns: a L<Paws::EC2::ModifyVpcEndpointResult> instance
+
+  
+
+Modifies attributes of a specified VPC endpoint. You can modify the
+policy associated with the endpoint, and you can add and remove route
+tables associated with the endpoint.
+
+
+
+
+
+
+
+
+
+
+
 =head2 MonitorInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::MonitorInstances>
@@ -4952,7 +5292,34 @@ Returns: a L<Paws::EC2::MonitorInstancesResult> instance
 
 Enables monitoring for a running instance. For more information about
 monitoring instances, see Monitoring Your Instances and Volumes in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 MoveAddressToVpc(PublicIp => Str, [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::MoveAddressToVpc>
+
+Returns: a L<Paws::EC2::MoveAddressToVpcResult> instance
+
+  
+
+Moves an Elastic IP address from the EC2-Classic platform to the
+EC2-VPC platform. The Elastic IP address must be allocated to your
+account, and it must not be associated with an instance. After the
+Elastic IP address is moved, it is no longer available for use in the
+EC2-Classic platform, unless you move it back using the
+RestoreAddressToClassic request. You cannot move an Elastic IP address
+that's allocated for use in the EC2-VPC platform to the EC2-Classic
+platform.
 
 
 
@@ -4974,9 +5341,8 @@ Returns: a L<Paws::EC2::PurchaseReservedInstancesOfferingResult> instance
 
 Purchases a Reserved Instance for use with your account. With Amazon
 EC2 Reserved Instances, you obtain a capacity reservation for a certain
-instance configuration over a specified period of time. You pay a lower
-usage rate than with On-Demand instances for the time that you actually
-use the capacity reservation.
+instance configuration over a specified period of time and pay a lower
+hourly rate compared to on-Demand Instance pricing.
 
 Use DescribeReservedInstancesOfferings to get a list of Reserved
 Instance offerings that match your specifications. After you've
@@ -4984,8 +5350,7 @@ purchased a Reserved Instance, you can check for your new Reserved
 Instance with DescribeReservedInstances.
 
 For more information, see Reserved Instances and Reserved Instance
-Marketplace in the I<Amazon Elastic Compute Cloud User Guide for
-Linux>.
+Marketplace in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -5015,7 +5380,7 @@ minutes, Amazon EC2 performs a hard reboot.
 
 For more information about troubleshooting, see Getting Console Output
 and Rebooting Instances in the I<Amazon Elastic Compute Cloud User
-Guide for Linux>.
+Guide>.
 
 
 
@@ -5038,7 +5403,7 @@ Returns: a L<Paws::EC2::RegisterImageResult> instance
 Registers an AMI. When you're creating an AMI, this is the final step
 you must complete before you can launch an instance from the AMI. For
 more information about creating AMIs, see Creating Your Own AMIs in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 For Amazon EBS-backed instances, CreateImage creates and registers the
 AMI in a single request, so you don't have to register the AMI
@@ -5047,7 +5412,7 @@ yourself.
 You can also use C<RegisterImage> to create an Amazon EBS-backed AMI
 from a snapshot of a root device volume. For more information, see
 Launching an Instance from a Snapshot in the I<Amazon Elastic Compute
-Cloud User Guide for Linux>.
+Cloud User Guide>.
 
 If needed, you can deregister an AMI at any time. Any modifications you
 make to an AMI backed by an instance store volume invalidates its
@@ -5254,7 +5619,30 @@ DescribeInstanceStatus.
 
 
 
-=head2 RequestSpotInstances(SpotPrice => Str, [AvailabilityZoneGroup => Str, DryRun => Bool, InstanceCount => Int, LaunchGroup => Str, LaunchSpecification => Paws::EC2::RequestSpotLaunchSpecification, Type => Str, ValidFrom => Str, ValidUntil => Str])
+=head2 RequestSpotFleet(SpotFleetRequestConfig => Paws::EC2::SpotFleetRequestConfigData, [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::RequestSpotFleet>
+
+Returns: a L<Paws::EC2::RequestSpotFleetResponse> instance
+
+  
+
+Creates a Spot fleet request.
+
+For more information, see Spot Fleets in the I<Amazon Elastic Compute
+Cloud User Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 RequestSpotInstances(SpotPrice => Str, [AvailabilityZoneGroup => Str, ClientToken => Str, DryRun => Bool, InstanceCount => Int, LaunchGroup => Str, LaunchSpecification => Paws::EC2::RequestSpotLaunchSpecification, Type => Str, ValidFrom => Str, ValidUntil => Str])
 
 Each argument is described in detail in: L<Paws::EC2::RequestSpotInstances>
 
@@ -5267,7 +5655,7 @@ Amazon EC2 launches when the bid price that you specify exceeds the
 current Spot Price. Amazon EC2 periodically sets the Spot Price based
 on available Spot Instance capacity and current Spot Instance requests.
 For more information, see Spot Instance Requests in the I<Amazon
-Elastic Compute Cloud User Guide for Linux>.
+Elastic Compute Cloud User Guide>.
 
 
 
@@ -5362,7 +5750,31 @@ Returns: nothing
 Resets permission settings for the specified snapshot.
 
 For more information on modifying snapshot permissions, see Sharing
-Snapshots in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+Snapshots in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 RestoreAddressToClassic(PublicIp => Str, [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::RestoreAddressToClassic>
+
+Returns: a L<Paws::EC2::RestoreAddressToClassicResult> instance
+
+  
+
+Restores an Elastic IP address that was previously moved to the EC2-VPC
+platform back to the EC2-Classic platform. You cannot move an Elastic
+IP address that was originally allocated for use in EC2-VPC. The
+Elastic IP address must not be associated with an instance or network
+interface.
 
 
 
@@ -5451,18 +5863,17 @@ state of your instance, call DescribeInstances.
 
 If you don't specify a security group when launching an instance,
 Amazon EC2 uses the default security group. For more information, see
-Security Groups in the I<Amazon Elastic Compute Cloud User Guide for
-Linux>.
+Security Groups in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Linux instances have access to the public key of the key pair at boot.
 You can use this key to provide secure access to the instance. Amazon
 EC2 public images use this feature to provide secure access without
 passwords. For more information, see Key Pairs in the I<Amazon Elastic
-Compute Cloud User Guide for Linux>.
+Compute Cloud User Guide>.
 
 You can provide optional user data when launching an instance. For more
 information, see Instance Metadata in the I<Amazon Elastic Compute
-Cloud User Guide for Linux>.
+Cloud User Guide>.
 
 If any of the AMIs have a product code attached for which the user has
 not subscribed, C<RunInstances> fails.
@@ -5473,7 +5884,7 @@ C<RunInstances> fails.
 
 For more information about troubleshooting, see What To Do If An
 Instance Immediately Terminates, and Troubleshooting Connecting to Your
-Instance in the I<Amazon Elastic Compute Cloud User Guide for Linux>.
+Instance in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -5513,7 +5924,7 @@ Performing this operation on an instance that uses an instance store as
 its root device returns an error.
 
 For more information, see Stopping Instances in the I<Amazon Elastic
-Compute Cloud User Guide for Linux>.
+Compute Cloud User Guide>.
 
 
 
@@ -5561,11 +5972,11 @@ instance persist. When you terminate an instance, the root device and
 any other devices attached during the instance launch are automatically
 deleted. For more information about the differences between stopping
 and terminating instances, see Instance Lifecycle in the I<Amazon
-Elastic Compute Cloud User Guide for Linux>.
+Elastic Compute Cloud User Guide>.
 
 For more information about troubleshooting, see Troubleshooting
-Stopping Your Instance in the I<Amazon Elastic Compute Cloud User Guide
-for Linux>.
+Stopping Your Instance in the I<Amazon Elastic Compute Cloud User
+Guide>.
 
 
 
@@ -5591,9 +6002,9 @@ terminate an instance more than once, each call succeeds.
 Terminated instances remain visible after termination (for
 approximately one hour).
 
-By default, Amazon EC2 deletes all Amazon EBS volumes that were
-attached when the instance launched. Volumes attached after instance
-launch continue running.
+By default, Amazon EC2 deletes all EBS volumes that were attached when
+the instance launched. Volumes attached after instance launch continue
+running.
 
 You can stop, start, and terminate EBS-backed instances. You can only
 terminate instance store-backed instances. What happens to an instance
@@ -5603,11 +6014,11 @@ instance persist. When you terminate an instance, the root device and
 any other devices attached during the instance launch are automatically
 deleted. For more information about the differences between stopping
 and terminating instances, see Instance Lifecycle in the I<Amazon
-Elastic Compute Cloud User Guide for Linux>.
+Elastic Compute Cloud User Guide>.
 
 For more information about troubleshooting, see Troubleshooting
 Terminating Your Instance in the I<Amazon Elastic Compute Cloud User
-Guide for Linux>.
+Guide>.
 
 
 
@@ -5650,7 +6061,7 @@ Returns: a L<Paws::EC2::UnmonitorInstancesResult> instance
 
 Disables monitoring for a running instance. For more information about
 monitoring instances, see Monitoring Your Instances and Volumes in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 

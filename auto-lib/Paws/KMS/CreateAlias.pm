@@ -38,8 +38,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-String that contains the display name. Aliases that begin with AWS are
-reserved.
+String that contains the display name. The name must start with the
+word "alias" followed by a forward slash (alias/). Aliases that begin
+with "alias/AWS" are reserved.
 
 
 
@@ -64,7 +65,7 @@ or a fully specified ARN to a key.
 arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =item * Globally Unique Key ID Example -
-12345678-1234-1234-123456789012
+12345678-1234-1234-1234-123456789012
 
 =back
 

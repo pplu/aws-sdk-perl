@@ -2,21 +2,36 @@
 call: ListGroups
 service: IAM
 tests:
-  - expected: AGP000000000000000000
-    op: eq
-    path: Groups.0.GroupId
-  - expected: testgroup
-    op: eq
-    path: Groups.0.GroupName
-  - expected: 2015-04-08T23:19:05Z
-    op: eq
-    path: Groups.0.CreateDate
-  - expected: arn:aws:iam::000000000000:group/testgroup
-    op: eq
-    path: Groups.0.Arn
-  - expected: /
-    op: eq
-    path: Groups.0.Path
   - expected: 0
     op: eq
     path: IsTruncated
+  - expected: group2
+    op: eq
+    path: Groups.1.GroupName
+  - expected: /
+    op: eq
+    path: Groups.1.Path
+  - expected: arn:aws:iam::000000000000:group/group2
+    op: eq
+    path: Groups.1.Arn
+  - expected: 2015-06-03T21:54:44Z
+    op: eq
+    path: Groups.1.CreateDate
+  - expected: group1
+    op: eq
+    path: Groups.0.GroupName
+  - expected: /
+    op: eq
+    path: Groups.0.Path
+  - expected: AGPAAAAAAAAAAAAAAAAAA
+    op: eq
+    path: Groups.1.GroupId
+  - expected: 2015-06-03T21:54:22Z
+    op: eq
+    path: Groups.0.CreateDate
+  - expected: AGPAAAAAAAAAAAAAAAAAA
+    op: eq
+    path: Groups.0.GroupId
+  - expected: arn:aws:iam::000000000000:group/group1
+    op: eq
+    path: Groups.0.Arn

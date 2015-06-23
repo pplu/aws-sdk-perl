@@ -1,7 +1,6 @@
 
 package Paws::SSM::DeleteDocumentResult {
   use Moose;
-  with 'Paws::API::ResultParser';
 
 }
 

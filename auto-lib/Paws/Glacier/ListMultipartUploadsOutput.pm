@@ -1,7 +1,6 @@
 
 package Paws::Glacier::ListMultipartUploadsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Marker => (is => 'ro', isa => 'Str');
   has UploadsList => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::UploadListElement]');
 

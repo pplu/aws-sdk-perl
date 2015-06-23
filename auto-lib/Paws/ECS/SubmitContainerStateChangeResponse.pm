@@ -1,7 +1,6 @@
 
 package Paws::ECS::SubmitContainerStateChangeResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has acknowledgment => (is => 'ro', isa => 'Str');
 
 }

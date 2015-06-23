@@ -5,7 +5,7 @@ package Paws::StorageGateway::Disk {
   has DiskId => (is => 'ro', isa => 'Str');
   has DiskNode => (is => 'ro', isa => 'Str');
   has DiskPath => (is => 'ro', isa => 'Str');
-  has DiskSizeInBytes => (is => 'ro', isa => 'Num');
+  has DiskSizeInBytes => (is => 'ro', isa => 'Int');
   has DiskStatus => (is => 'ro', isa => 'Str');
 }
 1;

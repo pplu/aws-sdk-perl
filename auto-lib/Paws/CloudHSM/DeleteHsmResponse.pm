@@ -1,7 +1,6 @@
 
 package Paws::CloudHSM::DeleteHsmResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Status => (is => 'ro', isa => 'Str', required => 1);
 
 }

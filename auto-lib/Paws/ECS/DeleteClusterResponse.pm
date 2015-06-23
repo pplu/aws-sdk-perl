@@ -1,7 +1,6 @@
 
 package Paws::ECS::DeleteClusterResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has cluster => (is => 'ro', isa => 'Paws::ECS::Cluster');
 
 }

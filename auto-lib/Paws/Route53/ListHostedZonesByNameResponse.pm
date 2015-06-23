@@ -1,7 +1,6 @@
 
 package Paws::Route53::ListHostedZonesByNameResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has DNSName => (is => 'ro', isa => 'Str');
   has HostedZoneId => (is => 'ro', isa => 'Str');
   has HostedZones => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HostedZone]', traits => ['Unwrapped'], xmlname => 'HostedZone', required => 1);

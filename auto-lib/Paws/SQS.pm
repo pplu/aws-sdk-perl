@@ -303,7 +303,7 @@ C<&Attribute.2=that>
 
 
 
-=head2 CreateQueue(QueueName => Str, [Attributes => Paws::SQS::AttributeMap])
+=head2 CreateQueue(QueueName => Str, [Attributes => Paws::SQS::QueueAttributeMap])
 
 Each argument is described in detail in: L<Paws::SQS::CreateQueue>
 
@@ -830,7 +830,7 @@ C<&Attribute.2=that>
 
 
 
-=head2 SetQueueAttributes(Attributes => Paws::SQS::AttributeMap, QueueUrl => Str)
+=head2 SetQueueAttributes(Attributes => Paws::SQS::QueueAttributeMap, QueueUrl => Str)
 
 Each argument is described in detail in: L<Paws::SQS::SetQueueAttributes>
 

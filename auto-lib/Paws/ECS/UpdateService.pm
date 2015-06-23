@@ -90,9 +90,11 @@ The name of the service that you want to update.
 
 The C<family> and C<revision> (C<family:revision>) or full Amazon
 Resource Name (ARN) of the task definition that you want to run in your
-service. If you modify the task definition with C<UpdateService>,
-Amazon ECS spawns a task with the new version of the task definition
-and then stops an old task after the new version is running.
+service. If a C<revision> is not specified, the latest C<ACTIVE>
+revision is used. If you modify the task definition with
+C<UpdateService>, Amazon ECS spawns a task with the new version of the
+task definition and then stops an old task after the new version is
+running.
 
 
 

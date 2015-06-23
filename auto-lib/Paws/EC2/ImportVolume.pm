@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The Availability Zone for the resulting Amazon EBS volume.
+The Availability Zone for the resulting EBS volume.
 
 
 
@@ -56,7 +56,7 @@ The Availability Zone for the resulting Amazon EBS volume.
 
   
 
-An optional description for the volume being imported.
+A description of the volume.
 
 
 
@@ -71,13 +71,49 @@ An optional description for the volume being imported.
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> Image => Paws::EC2::DiskImageDetail
 
   
 
+The disk image.
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> Volume => Paws::EC2::VolumeDetail
 
   
+
+The volume size.
+
+
+
+
+
+
+
+
+
 
 
 

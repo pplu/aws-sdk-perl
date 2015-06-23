@@ -1,7 +1,6 @@
 
 package Paws::EC2::DescribeVolumeAttributeResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has AutoEnableIO => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'autoEnableIO', traits => ['Unwrapped',]);
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', xmlname => 'productCodes', traits => ['Unwrapped',]);
   has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped',]);

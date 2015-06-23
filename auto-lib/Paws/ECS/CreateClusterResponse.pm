@@ -1,7 +1,6 @@
 
 package Paws::ECS::CreateClusterResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has cluster => (is => 'ro', isa => 'Paws::ECS::Cluster');
 
 }

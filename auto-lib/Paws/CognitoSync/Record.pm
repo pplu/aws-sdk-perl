@@ -4,7 +4,7 @@ package Paws::CognitoSync::Record {
   has Key => (is => 'ro', isa => 'Str');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has SyncCount => (is => 'ro', isa => 'Num');
+  has SyncCount => (is => 'ro', isa => 'Int');
   has Value => (is => 'ro', isa => 'Str');
 }
 1;

@@ -112,7 +112,7 @@ The contents of the private key in PEM-encoded format.
   
 
 The name for the server certificate. Do not include the path in this
-value.
+value. The name of the certificate cannot contain any spaces.
 
 
 

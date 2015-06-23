@@ -1,7 +1,7 @@
 
 package Paws::S3::PutBucketReplication {
   use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', required => 1);
+  has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
   has ContentMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-MD5' );
   has ReplicationConfiguration => (is => 'ro', isa => 'Paws::S3::ReplicationConfiguration', required => 1);
 

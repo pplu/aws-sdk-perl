@@ -1,7 +1,6 @@
 
 package Paws::CloudHSM::ListLunaClientsResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ClientList => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 

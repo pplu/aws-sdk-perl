@@ -67,17 +67,17 @@ package Paws::Net::RestJsonCaller {
     my ($self, $call) = @_;
 
     my $request = Paws::Net::APIRequest->new();
+
     my $uri = $self->_call_uri($call);
-
     $request->uri($uri);
-    $request->url($self->_api_endpoint($call) . $uri);
 
-    $request->method($call->_api_method);
-
+    my $url = $self->_api_endpoint($call) . $uri;
+    $request->url($url);
+    
     my $data = $self->_to_jsoncaller_params($call);
     $request->content(to_json($data));
-
-    #$request->generate_content_from_parameters;
+    
+    $request->method($call->_api_method);
 
     $self->sign($request);
 

@@ -1,7 +1,6 @@
 
 package Paws::ElasticBeanstalk::EnvironmentDescription {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AbortableOperationInProgress => (is => 'ro', isa => 'Bool');
   has ApplicationName => (is => 'ro', isa => 'Str');
   has CNAME => (is => 'ro', isa => 'Str');
@@ -34,8 +33,12 @@ Paws::ElasticBeanstalk::EnvironmentDescription
 
   
 
-Lists in-progress environment updates and application version
-deployments that you can cancel.
+Indicates if there is an in-progress environment configuration update
+or application version deployment that you can cancel.
+
+C<true:> There is an update in progress.
+
+C<false:> There are no updates currently in progress.
 
 
 

@@ -1,7 +1,6 @@
 
 package Paws::CloudTrail::LookupEventsResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Event]');
   has NextToken => (is => 'ro', isa => 'Str');
 

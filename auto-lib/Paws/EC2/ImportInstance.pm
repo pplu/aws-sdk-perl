@@ -56,13 +56,49 @@ A description for the instance being imported.
 
   
 
+The disk image.
+
+
+
+
+
+
+
+
+
+
 =head2 DryRun => Bool
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 LaunchSpecification => Paws::EC2::ImportInstanceLaunchSpecification
 
   
+
+The launch specification.
+
+
+
+
+
+
+
+
+
 
 =head2 B<REQUIRED> Platform => Str
 

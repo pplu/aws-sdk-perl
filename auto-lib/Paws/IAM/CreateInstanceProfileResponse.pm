@@ -1,7 +1,6 @@
 
 package Paws::IAM::CreateInstanceProfileResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has InstanceProfile => (is => 'ro', isa => 'Paws::IAM::InstanceProfile', required => 1);
 
 }

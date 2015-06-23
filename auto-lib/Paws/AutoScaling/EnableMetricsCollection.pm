@@ -54,8 +54,8 @@ The name or ARN of the Auto Scaling group.
 
   
 
-The granularity to associate with the metrics to collect. Currently,
-the only valid value is "1Minute".
+The granularity to associate with the metrics to collect. The only
+valid value is C<1Minute>.
 
 
 
@@ -70,48 +70,47 @@ the only valid value is "1Minute".
 
   
 
-One or more of the following metrics:
+One or more metrics. If you omit this parameter, all metrics are
+enabled.
 
 =over
 
 =item *
 
-GroupMinSize
+C<GroupMinSize>
 
 =item *
 
-GroupMaxSize
+C<GroupMaxSize>
 
 =item *
 
-GroupDesiredCapacity
+C<GroupDesiredCapacity>
 
 =item *
 
-GroupInServiceInstances
+C<GroupInServiceInstances>
 
 =item *
 
-GroupPendingInstances
+C<GroupPendingInstances>
 
 =item *
 
-GroupStandbyInstances
+C<GroupStandbyInstances>
 
 =item *
 
-GroupTerminatingInstances
+C<GroupTerminatingInstances>
 
 =item *
 
-GroupTotalInstances
+C<GroupTotalInstances>
 
 =back
 
-If you omit this parameter, all metrics are enabled.
-
-The C<GroupStandbyInstances> metric is not returned by default. You
-must explicitly request it when calling EnableMetricsCollection.
+Note that the C<GroupStandbyInstances> metric is not enabled by
+default. You must explicitly request this metric.
 
 
 

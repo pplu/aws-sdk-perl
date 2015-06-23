@@ -131,15 +131,29 @@ Default: C<false>
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 EbsOptimized => Bool
 
   
 
 Indicates whether the instance is optimized for EBS I/O. This
 optimization provides dedicated throughput to Amazon EBS and an
-optimized configuration stack to provide optimal Amazon EBS I/O
-performance. This optimization isn't available with all instance types.
-Additional usage charges apply when using an EBS-optimized instance.
+optimized configuration stack to provide optimal EBS I/O performance.
+This optimization isn't available with all instance types. Additional
+usage charges apply when using an EBS-optimized instance.
 
 Default: C<false>
 
@@ -206,7 +220,7 @@ Default: C<stop>
   
 
 The instance type. For more information, see Instance Types in the
-I<Amazon Elastic Compute Cloud User Guide for Linux>.
+I<Amazon Elastic Compute Cloud User Guide>.
 
 Default: C<m1.small>
 
@@ -227,7 +241,7 @@ The ID of the kernel.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see PV-GRUB in the I<Amazon Elastic Compute Cloud
-User Guide for Linux>.
+User Guide>.
 
 
 
@@ -245,8 +259,9 @@ User Guide for Linux>.
 The name of the key pair. You can create a key pair using CreateKeyPair
 or ImportKeyPair.
 
-If you launch an instance without specifying a key pair, you can't
-connect to the instance.
+If you do not specify a key pair, you can't connect to the instance
+unless you choose an AMI that is configured to allow users another way
+to log in.
 
 
 
@@ -379,7 +394,7 @@ The ID of the RAM disk.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see PV-GRUB in the I<Amazon Elastic Compute Cloud
-User Guide for Linux>.
+User Guide>.
 
 
 

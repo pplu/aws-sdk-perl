@@ -1,8 +1,7 @@
 
 package Paws::Route53::GetHealthCheckCountResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
-  has HealthCheckCount => (is => 'ro', isa => 'Num', required => 1);
+  has HealthCheckCount => (is => 'ro', isa => 'Int', required => 1);
 
 }
 1;
@@ -29,7 +28,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> HealthCheckCount => Num
+=head2 B<REQUIRED> HealthCheckCount => Int
 
   
 

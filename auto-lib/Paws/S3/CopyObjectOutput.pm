@@ -1,7 +1,6 @@
 
 package Paws::S3::CopyObjectOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has CopyObjectResult => (is => 'ro', isa => 'Paws::S3::CopyObjectResult');
   has CopySourceVersionId => (is => 'ro', isa => 'Str');
   has Expiration => (is => 'ro', isa => 'Str');

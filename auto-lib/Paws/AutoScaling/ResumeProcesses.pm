@@ -57,21 +57,37 @@ One or more of the following processes:
 
 =over
 
-=item * Launch
+=item *
 
-=item * Terminate
+C<Launch>
 
-=item * HealthCheck
+=item *
 
-=item * ReplaceUnhealthy
+C<Terminate>
 
-=item * AZRebalance
+=item *
 
-=item * AlarmNotification
+C<HealthCheck>
 
-=item * ScheduledActions
+=item *
 
-=item * AddToLoadBalancer
+C<ReplaceUnhealthy>
+
+=item *
+
+C<AZRebalance>
+
+=item *
+
+C<AlarmNotification>
+
+=item *
+
+C<ScheduledActions>
+
+=item *
+
+C<AddToLoadBalancer>
 
 =back
 

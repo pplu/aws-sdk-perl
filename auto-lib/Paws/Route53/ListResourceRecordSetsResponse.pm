@@ -1,7 +1,6 @@
 
 package Paws::Route53::ListResourceRecordSetsResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
   has MaxItems => (is => 'ro', isa => 'Str', required => 1);
   has NextRecordIdentifier => (is => 'ro', isa => 'Str');

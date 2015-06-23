@@ -1,7 +1,6 @@
 
 package Paws::ElasticBeanstalk::ConfigurationSettingsDescription {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ApplicationName => (is => 'ro', isa => 'Str');
   has DateCreated => (is => 'ro', isa => 'Str');
   has DateUpdated => (is => 'ro', isa => 'Str');

@@ -39,6 +39,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 Filters => ArrayRef[Paws::EC2::Filter]
 
   
@@ -192,7 +206,7 @@ C<state> - The state of the Spot Instance request (C<open> | C<active>
 | C<closed> | C<cancelled> | C<failed>). Spot bid status information
 can help you track your Amazon EC2 Spot Instance requests. For more
 information, see Spot Bid Status in the Amazon Elastic Compute Cloud
-User Guide for Linux.
+User Guide.
 
 =item *
 

@@ -188,14 +188,13 @@ point in time.
 
 =back
 
-The default limit for an AWS account is 10 shards per stream. If you
-need to create a stream with more than 10 shards, contact AWS Support
-to increase the limit on your account.
+For the default shard limit for an AWS account, see Amazon Kinesis
+Limits. If you need to increase this limit, contact AWS Support
 
 You can use C<DescribeStream> to check the stream status, which is
 returned in C<StreamStatus>.
 
-C<CreateStream> has a limit of 5 transactions per second per account.
+CreateStream has a limit of 5 transactions per second per account.
 
 
 
@@ -234,7 +233,7 @@ and any tags are dissociated from the stream.
 You can use the DescribeStream operation to check the state of the
 stream, which is returned in C<StreamStatus>.
 
-C<DeleteStream> has a limit of 5 transactions per second per account.
+DeleteStream has a limit of 5 transactions per second per account.
 
 
 
@@ -276,8 +275,7 @@ available, you can request them using the shard ID of the last shard
 returned. Specify this ID in the C<ExclusiveStartShardId> parameter in
 a subsequent request to C<DescribeStream>.
 
-C<DescribeStream> has a limit of 10 transactions per second per
-account.
+DescribeStream has a limit of 10 transactions per second per account.
 
 
 
@@ -303,18 +301,18 @@ Specify a shard iterator using the C<ShardIterator> parameter. The
 shard iterator specifies the position in the shard from which you want
 to start reading data records sequentially. If there are no records
 available in the portion of the shard that the iterator points to,
-C<GetRecords> returns an empty list. Note that it might take multiple
+GetRecords returns an empty list. Note that it might take multiple
 calls to get to a portion of the shard that contains records.
 
 You can scale by provisioning multiple shards. Your application should
 have one thread per shard, each reading continuously from its stream.
-To read from a stream continually, call C<GetRecords> in a loop. Use
+To read from a stream continually, call GetRecords in a loop. Use
 GetShardIterator to get the shard iterator to specify in the first
-C<GetRecords> call. C<GetRecords> returns a new shard iterator in
+GetRecords call. GetRecords returns a new shard iterator in
 C<NextShardIterator>. Specify the shard iterator returned in
-C<NextShardIterator> in subsequent calls to C<GetRecords>. Note that if
+C<NextShardIterator> in subsequent calls to GetRecords. Note that if
 the shard has been closed, the shard iterator can't return more data
-and C<GetRecords> returns C<null> in C<NextShardIterator>. You can
+and GetRecords returns C<null> in C<NextShardIterator>. You can
 terminate the loop when the shard is closed, or when the shard iterator
 reaches the record with the sequence number or other attribute that
 marks it as the last record to process.
@@ -322,29 +320,28 @@ marks it as the last record to process.
 Each data record can be up to 50 KB in size, and each shard can read up
 to 2 MB per second. You can ensure that your calls don't exceed the
 maximum supported size or throughput by using the C<Limit> parameter to
-specify the maximum number of records that C<GetRecords> can return.
+specify the maximum number of records that GetRecords can return.
 Consider your average record size when determining this limit. For
 example, if your average record size is 40 KB, you can limit the data
 returned to about 1 MB per call by specifying 25 as the limit.
 
-The size of the data returned by C<GetRecords> will vary depending on
-the utilization of the shard. The maximum size of data that
-C<GetRecords> can return is 10 MB. If a call returns 10 MB of data,
-subsequent calls made within the next 5 seconds throw
+The size of the data returned by GetRecords will vary depending on the
+utilization of the shard. The maximum size of data that GetRecords can
+return is 10 MB. If a call returns this amount of data, subsequent
+calls made within the next 5 seconds throw
 C<ProvisionedThroughputExceededException>. If there is insufficient
 provisioned throughput on the shard, subsequent calls made within the
 next 1 second throw C<ProvisionedThroughputExceededException>. Note
-that C<GetRecords> won't return any data when it throws an exception.
-For this reason, we recommend that you wait one second between calls to
-C<GetRecords>; however, it's possible that the application will get
+that GetRecords won't return any data when it throws an exception. For
+this reason, we recommend that you wait one second between calls to
+GetRecords; however, it's possible that the application will get
 exceptions for longer than 1 second.
 
-To detect whether the application is falling behind in processing, add
-a timestamp to your records and note how long it takes to process them.
-You can also monitor how much data is in a stream using the CloudWatch
-metrics for write operations (C<PutRecord> and C<PutRecords>). For more
-information, see Monitoring Amazon Kinesis with Amazon CloudWatch in
-the I<Amazon Kinesis Developer Guide>.
+To detect whether the application is falling behind in processing, you
+can use the C<MillisBehindLatest> response attribute. You can also
+monitor the amount of data in a stream using the CloudWatch metrics.
+For more information, see Monitoring Amazon Kinesis with Amazon
+CloudWatch in the I<Amazon Kinesis Developer Guide>.
 
 
 
@@ -388,23 +385,23 @@ most recent record in the shard, by using the shard iterator type
 C<LATEST>, so that you always read the most recent data in the shard.
 
 When you repeatedly read from an Amazon Kinesis stream use a
-GetShardIterator request to get the first shard iterator to to use in
-your first C<GetRecords> request and then use the shard iterator
-returned by the C<GetRecords> request in C<NextShardIterator> for
-subsequent reads. A new shard iterator is returned by every
-C<GetRecords> request in C<NextShardIterator>, which you use in the
-C<ShardIterator> parameter of the next C<GetRecords> request.
+GetShardIterator request to get the first shard iterator for use in
+your first GetRecords request and then use the shard iterator returned
+by the GetRecords request in C<NextShardIterator> for subsequent reads.
+A new shard iterator is returned by every GetRecords request in
+C<NextShardIterator>, which you use in the C<ShardIterator> parameter
+of the next GetRecords request.
 
-If a C<GetShardIterator> request is made too often, you receive a
+If a GetShardIterator request is made too often, you receive a
 C<ProvisionedThroughputExceededException>. For more information about
 throughput limits, see GetRecords.
 
 If the shard is closed, the iterator can't return more data, and
-C<GetShardIterator> returns C<null> for its C<ShardIterator>. A shard
-can be closed using SplitShard or MergeShards.
+GetShardIterator returns C<null> for its C<ShardIterator>. A shard can
+be closed using SplitShard or MergeShards.
 
-C<GetShardIterator> has a limit of 5 transactions per second per
-account per open shard.
+GetShardIterator has a limit of 5 transactions per second per account
+per open shard.
 
 
 
@@ -441,7 +438,7 @@ C<ListStreams>. The group of stream names returned by the subsequent
 request is then added to the list. You can continue this process until
 all the stream names have been collected in the list.
 
-C<ListStreams> has a limit of 5 transactions per second per account.
+ListStreams has a limit of 5 transactions per second per account.
 
 
 
@@ -561,20 +558,21 @@ with each data record to determine which shard a given data record
 belongs to.
 
 Partition keys are Unicode strings, with a maximum length limit of 256
-bytes. An MD5 hash function is used to map partition keys to 128-bit
-integer values and to map associated data records to shards using the
-hash key ranges of the shards. You can override hashing the partition
-key to determine the shard by explicitly specifying a hash value using
-the C<ExplicitHashKey> parameter. For more information, see Partition
-Key in the I<Amazon Kinesis Developer Guide>.
+characters for each key. An MD5 hash function is used to map partition
+keys to 128-bit integer values and to map associated data records to
+shards using the hash key ranges of the shards. You can override
+hashing the partition key to determine the shard by explicitly
+specifying a hash value using the C<ExplicitHashKey> parameter. For
+more information, see Adding Data to a Stream in the I<Amazon Kinesis
+Developer Guide>.
 
 C<PutRecord> returns the shard ID of where the data record was placed
 and the sequence number that was assigned to the data record.
 
 Sequence numbers generally increase over time. To guarantee strictly
 increasing ordering, use the C<SequenceNumberForOrdering> parameter.
-For more information, see Sequence Number in the I<Amazon Kinesis
-Developer Guide>.
+For more information, see Adding Data to a Stream in the I<Amazon
+Kinesis Developer Guide>.
 
 If a C<PutRecord> request cannot be processed because of insufficient
 provisioned throughput on the shard involved in the request,
@@ -622,7 +620,7 @@ MD5 hash function is used to map partition keys to 128-bit integer
 values and to map associated data records to shards. As a result of
 this hashing mechanism, all data records with the same partition key
 map to the same shard within the stream. For more information, see
-Partition Key in the I<Amazon Kinesis Developer Guide>.
+Adding Data to a Stream in the I<Amazon Kinesis Developer Guide>.
 
 Each record in the C<Records> array may include an optional parameter,
 C<ExplicitHashKey>, which overrides the partition key to shard mapping.
@@ -654,6 +652,9 @@ C<ProvisionedThroughputExceededException> or C<InternalFailure>.
 C<ErrorMessage> provides more detailed information about the
 C<ProvisionedThroughputExceededException> exception including the
 account ID, stream name, and shard ID of the record that was throttled.
+For more information about partially successful responses, see Adding
+Multiple Records with PutRecords in the I<Amazon Kinesis Developer
+Guide>.
 
 Data records are accessible for only 24 hours from the time that they
 are added to an Amazon Kinesis stream.
@@ -738,9 +739,8 @@ If the specified stream does not exist, C<DescribeStream> returns a
 C<ResourceNotFoundException>. If you try to create more shards than are
 authorized for your account, you receive a C<LimitExceededException>.
 
-The default limit for an AWS account is 10 shards per stream. If you
-need to create a stream with more than 10 shards, contact AWS Support
-to increase the limit on your account.
+For the default shard limit for an AWS account, see Amazon Kinesis
+Limits. If you need to increase this limit, contact AWS Support
 
 If you try to operate on too many streams in parallel using
 CreateStream, DeleteStream, MergeShards or SplitShard, you receive a

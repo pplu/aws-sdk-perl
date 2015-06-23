@@ -1,7 +1,6 @@
 
 package Paws::CognitoIdentity::IdentityDescription {
   use Moose;
-  with 'Paws::API::ResultParser';
   has CreationDate => (is => 'ro', isa => 'Str');
   has IdentityId => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');

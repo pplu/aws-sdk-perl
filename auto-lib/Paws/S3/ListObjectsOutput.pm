@@ -1,7 +1,6 @@
 
 package Paws::S3::ListObjectsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has CommonPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::S3::CommonPrefix]');
   has Contents => (is => 'ro', isa => 'ArrayRef[Paws::S3::Object]');
   has Delimiter => (is => 'ro', isa => 'Str');

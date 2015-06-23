@@ -2,7 +2,7 @@ package Paws::EC2::ReservedInstances {
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
   has CurrencyCode => (is => 'ro', isa => 'Str', xmlname => 'currencyCode', traits => ['Unwrapped']);
-  has Duration => (is => 'ro', isa => 'Num', xmlname => 'duration', traits => ['Unwrapped']);
+  has Duration => (is => 'ro', isa => 'Int', xmlname => 'duration', traits => ['Unwrapped']);
   has End => (is => 'ro', isa => 'Str', xmlname => 'end', traits => ['Unwrapped']);
   has FixedPrice => (is => 'ro', isa => 'Num', xmlname => 'fixedPrice', traits => ['Unwrapped']);
   has InstanceCount => (is => 'ro', isa => 'Int', xmlname => 'instanceCount', traits => ['Unwrapped']);

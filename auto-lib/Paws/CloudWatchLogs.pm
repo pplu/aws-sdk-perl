@@ -38,6 +38,11 @@ package Paws::CloudWatchLogs {
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteRetentionPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteSubscriptionFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteSubscriptionFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeLogGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeLogGroups', @_);
@@ -51,6 +56,16 @@ package Paws::CloudWatchLogs {
   sub DescribeMetricFilters {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeMetricFilters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeSubscriptionFilters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeSubscriptionFilters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub FilterLogEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::FilterLogEvents', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetLogEvents {
@@ -71,6 +86,11 @@ package Paws::CloudWatchLogs {
   sub PutRetentionPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutRetentionPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutSubscriptionFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutSubscriptionFilter', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TestMetricFilter {
@@ -331,6 +351,26 @@ policy.
 
 
 
+=head2 DeleteSubscriptionFilter(filterName => Str, logGroupName => Str)
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteSubscriptionFilter>
+
+Returns: nothing
+
+  
+
+Deletes a subscription filter associated with the specified log group.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DescribeLogGroups([limit => Int, logGroupNamePrefix => Str, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogGroups>
@@ -416,7 +456,69 @@ parameter in the request.
 
 
 
-=head2 GetLogEvents(logGroupName => Str, logStreamName => Str, [endTime => Num, limit => Int, nextToken => Str, startFromHead => Bool, startTime => Num])
+=head2 DescribeSubscriptionFilters(logGroupName => Str, [filterNamePrefix => Str, limit => Int, nextToken => Str])
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeSubscriptionFilters>
+
+Returns: a L<Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse> instance
+
+  
+
+Returns all the subscription filters associated with the specified log
+group. The list returned in the response is ASCII-sorted by filter
+name.
+
+By default, this operation returns up to 50 subscription filters. If
+there are more subscription filters to list, the response would contain
+a C<nextToken> value in the response body. You can also limit the
+number of subscription filters returned in the response by specifying
+the C<limit> parameter in the request.
+
+
+
+
+
+
+
+
+
+
+
+=head2 FilterLogEvents(logGroupName => Str, [endTime => Int, filterPattern => Str, interleaved => Bool, limit => Int, logStreamNames => ArrayRef[Str], nextToken => Str, startTime => Int])
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::FilterLogEvents>
+
+Returns: a L<Paws::CloudWatchLogs::FilterLogEventsResponse> instance
+
+  
+
+Retrieves log events, optionally filtered by a filter pattern from the
+specified log group. You can provide an optional time range to filter
+the results on the event C<timestamp>. You can limit the streams
+searched to an explicit list of C<logStreamNames>.
+
+By default, this operation returns as much matching log events as can
+fit in a response size of 1MB, up to 10,000 log events, or all the
+events found within a time-bounded scan window. If the response
+includes a C<nextToken>, then there is more data to search, and the
+search can be resumed with a new request providing the nextToken. The
+response will contain a list of C<searchedLogStreams> that contains
+information about which streams were searched in the request and
+whether they have been searched completely or require further
+pagination. The C<limit> parameter in the request. can be used to
+specify the maximum number of events to return in a page.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetLogEvents(logGroupName => Str, logStreamName => Str, [endTime => Int, limit => Int, nextToken => Str, startFromHead => Bool, startTime => Int])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::GetLogEvents>
 
@@ -503,6 +605,9 @@ Creates or updates a metric filter and associates it with the specified
 log group. Metric filters allow you to configure rules to extract
 metric data from log events ingested through C<PutLogEvents> requests.
 
+The maximum number of metric filters that can be associated with a log
+group is 100.
+
 
 
 
@@ -524,6 +629,34 @@ Returns: nothing
 Sets the retention of the specified log group. A retention policy
 allows you to configure the number of days you want to retain log
 events in the specified log group.
+
+
+
+
+
+
+
+
+
+
+
+=head2 PutSubscriptionFilter(destinationArn => Str, filterName => Str, filterPattern => Str, logGroupName => Str, roleArn => Str)
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::PutSubscriptionFilter>
+
+Returns: nothing
+
+  
+
+Creates or updates a subscription filter and associates it with the
+specified log group. Subscription filters allow you to subscribe to a
+real-time stream of log events ingested through C<PutLogEvents>
+requests and have them delivered to a specific destination. Currently
+the only supported destination is an Amazon Kinesis stream belonging to
+the same account as the subscription filter.
+
+Currently there can only be one subscription filter associated with a
+log group.
 
 
 

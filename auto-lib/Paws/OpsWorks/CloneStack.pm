@@ -149,7 +149,7 @@ such as '"'.:
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
 For more information on custom JSON, see Use Custom JSON to Modify the
-Stack Configuration JSON
+Stack Configuration Attributes
 
 
 
@@ -205,11 +205,14 @@ following.
 
 =over
 
-=item * Standard operating systems: an Amazon Linux version such as
-C<Amazon Linux 2014.09>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04 LTS>.
+=item * Standard Linux operating systems: an Amazon Linux version such
+as C<Amazon Linux 2014.09>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04
+LTS>.
 
-=item * Custom AMIs: C<Custom>. You specify the custom AMI you want to
-use when you create instances.
+=item * Custom Linux AMIs: C<Custom>. You specify the custom AMI you
+want to use when you create instances.
+
+=item * Microsoft Windows Server 2012 R2.
 
 =back
 

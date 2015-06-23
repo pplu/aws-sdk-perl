@@ -40,6 +40,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 Filters => ArrayRef[Paws::EC2::Filter]
 
   
@@ -61,7 +75,7 @@ years), in seconds (C<31536000> | C<94608000>).
 =item *
 
 C<end> - The time when the Reserved Instance expires (for example,
-2014-08-07T11:54:42.000Z).
+2015-08-07T11:54:42.000Z).
 
 =item *
 
@@ -75,9 +89,16 @@ be used.
 
 =item *
 
-C<product-description> - The product description of the Reserved
-Instance (C<Linux/UNIX> | C<Linux/UNIX (Amazon VPC)> | C<Windows> |
-C<Windows (Amazon VPC)>).
+C<product-description> - The Reserved Instance product platform
+description. Instances that include C<(Amazon VPC)> in the product
+platform description will only be displayed to EC2-Classic account
+holders and are for use with Amazon VPC. (C<Linux/UNIX> | C<Linux/UNIX
+(Amazon VPC)> | C<SUSE Linux> | C<SUSE Linux (Amazon VPC)> | C<Red Hat
+Enterprise Linux> | C<Red Hat Enterprise Linux (Amazon VPC)> |
+C<Windows> | C<Windows (Amazon VPC)> | C<Windows with SQL Server
+Standard> | C<Windows with SQL Server Standard (Amazon VPC)> |
+C<Windows with SQL Server Web> | C<Windows with SQL Server Web (Amazon
+VPC)>).
 
 =item *
 
@@ -90,7 +111,7 @@ placed (for example, 2014-08-07T11:54:42.000Z).
 
 =item *
 
-C<state> - The state of the Reserved Instance (C<pending-payment> |
+C<state> - The state of the Reserved Instance (C<payment-pending> |
 C<active> | C<payment-failed> | C<retired>).
 
 =item *

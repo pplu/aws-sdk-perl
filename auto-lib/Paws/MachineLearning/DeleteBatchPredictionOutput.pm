@@ -1,7 +1,6 @@
 
 package Paws::MachineLearning::DeleteBatchPredictionOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has BatchPredictionId => (is => 'ro', isa => 'Str');
 
 }

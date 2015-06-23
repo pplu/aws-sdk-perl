@@ -1,7 +1,6 @@
 
 package Paws::RedShift::ClustersMessage {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Clusters => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Cluster]', xmlname => 'Cluster', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 

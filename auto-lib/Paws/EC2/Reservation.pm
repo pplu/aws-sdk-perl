@@ -1,7 +1,6 @@
 
 package Paws::EC2::Reservation {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', xmlname => 'groupSet', traits => ['Unwrapped',]);
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Instance]', xmlname => 'instancesSet', traits => ['Unwrapped',]);
   has OwnerId => (is => 'ro', isa => 'Str', xmlname => 'ownerId', traits => ['Unwrapped',]);

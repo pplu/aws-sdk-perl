@@ -1,7 +1,6 @@
 
 package Paws::ECS::ListClustersResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has clusterArns => (is => 'ro', isa => 'ArrayRef[Str]');
   has nextToken => (is => 'ro', isa => 'Str');
 

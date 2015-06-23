@@ -1,7 +1,7 @@
 
 package Paws::SQS::SetQueueAttributes {
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SQS::AttributeMap', traits => ['NameInRequest'], request_name => 'Attribute' , required => 1);
+  has Attributes => (is => 'ro', isa => 'Paws::SQS::QueueAttributeMap', traits => ['NameInRequest'], request_name => 'Attribute' , required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Attributes => Paws::SQS::AttributeMap
+=head2 B<REQUIRED> Attributes => Paws::SQS::QueueAttributeMap
 
   
 

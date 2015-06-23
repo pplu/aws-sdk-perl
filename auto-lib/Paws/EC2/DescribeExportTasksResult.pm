@@ -1,7 +1,6 @@
 
 package Paws::EC2::DescribeExportTasksResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has ExportTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ExportTask]', xmlname => 'exportTaskSet', traits => ['Unwrapped',]);
 
 }
@@ -18,6 +17,17 @@ Paws::EC2::DescribeExportTasksResult
 =head2 ExportTasks => ArrayRef[Paws::EC2::ExportTask]
 
   
+
+Information about the export tasks.
+
+
+
+
+
+
+
+
+
 
 
 =cut

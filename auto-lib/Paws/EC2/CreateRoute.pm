@@ -1,6 +1,7 @@
 
 package Paws::EC2::CreateRoute {
   use Moose;
+  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCidrBlock' , required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has GatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'gatewayId' );
@@ -12,7 +13,7 @@ package Paws::EC2::CreateRoute {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRoute');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateRouteResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
 1;
@@ -39,6 +40,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+=head2 ClientToken => Str
+
+  
+
+Unique, case-sensitive identifier you provide to ensure the idempotency
+of the request. For more information, see How to Ensure Idempotency.
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> DestinationCidrBlock => Str
 
   
@@ -58,6 +75,20 @@ decisions are based on the most specific match.
 =head2 DryRun => Bool
 
   
+
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
 
 =head2 GatewayId => Str
 

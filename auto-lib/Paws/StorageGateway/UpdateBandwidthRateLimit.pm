@@ -1,8 +1,8 @@
 
 package Paws::StorageGateway::UpdateBandwidthRateLimit {
   use Moose;
-  has AverageDownloadRateLimitInBitsPerSec => (is => 'ro', isa => 'Num');
-  has AverageUploadRateLimitInBitsPerSec => (is => 'ro', isa => 'Num');
+  has AverageDownloadRateLimitInBitsPerSec => (is => 'ro', isa => 'Int');
+  has AverageUploadRateLimitInBitsPerSec => (is => 'ro', isa => 'Int');
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 AverageDownloadRateLimitInBitsPerSec => Num
+=head2 AverageDownloadRateLimitInBitsPerSec => Int
 
   
 
@@ -50,7 +50,7 @@ The average download bandwidth rate limit in bits per second.
 
 
 
-=head2 AverageUploadRateLimitInBitsPerSec => Num
+=head2 AverageUploadRateLimitInBitsPerSec => Int
 
   
 

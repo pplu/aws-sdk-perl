@@ -176,8 +176,8 @@ launch configuration and associates it with the group. This launch
 configuration derives its attributes from the specified instance, with
 the exception of the block device mapping.
 
-For more information, see Create an Auto Scaling Group Using an EC2
-Instance ID in the I<Auto Scaling Developer Guide>.
+For more information, see Create an Auto Scaling Group from an EC2
+Instance in the I<Auto Scaling Developer Guide>.
 
 
 
@@ -258,7 +258,8 @@ The minimum size of the group.
   
 
 The name of the placement group into which you'll launch your
-instances, if any. For more information, see Placement Groups.
+instances, if any. For more information, see Placement Groups in the
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -278,8 +279,8 @@ resource type, resource ID, key, value, and a propagate flag. Valid
 values: key=I<value>, value=I<value>, propagate=I<true> or I<false>.
 Value and propagate are optional parameters.
 
-For more information, see Add, Modify, or Remove Auto Scaling Group
-Tags in the I<Auto Scaling Developer Guide>.
+For more information, see Tagging Auto Scaling Groups and Instances in
+the I<Auto Scaling Developer Guide>.
 
 
 
@@ -321,8 +322,8 @@ If you specify subnets and Availability Zones with this call, ensure
 that the subnets' Availability Zones match the Availability Zones
 specified.
 
-For more information, see Auto Scaling and Amazon VPC in the I<Auto
-Scaling Developer Guide>.
+For more information, see Auto Scaling and Amazon Virtual Private Cloud
+in the I<Auto Scaling Developer Guide>.
 
 
 

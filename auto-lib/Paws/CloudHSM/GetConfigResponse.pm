@@ -1,7 +1,6 @@
 
 package Paws::CloudHSM::GetConfigResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ConfigCred => (is => 'ro', isa => 'Str');
   has ConfigFile => (is => 'ro', isa => 'Str');
   has ConfigType => (is => 'ro', isa => 'Str');
