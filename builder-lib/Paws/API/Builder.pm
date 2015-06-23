@@ -18,6 +18,10 @@ package Paws::API::Builder {
     return $svc;
   }
 
+  has service => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ endpointPrefix } });
+  has version => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ apiVersion } });
+  has endpoint_role => (is => 'ro', lazy => 1, default => 'Paws::API::RegionalEndpointCaller' );
+
   has api_file => (is => 'ro', required => 1);
 
   has api_struct => (is => 'ro', lazy => 1, default => sub {

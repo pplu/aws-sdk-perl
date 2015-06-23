@@ -87,7 +87,7 @@ package Paws::Net::RestXmlCaller {
     my $uri = $self->_call_uri($call);
     $request->uri($uri);
 
-    my $url = $self->_api_endpoint($call) . $uri;
+    my $url = $self->_api_endpoint . $uri;
     if ($call->_api_method eq 'GET'){
       my @param;
       my %qc_params = $self->_to_querycaller_params($call);

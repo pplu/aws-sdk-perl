@@ -5,6 +5,7 @@
    were parsing the error message from the exception, you should now use Paws::Exceptions accessors
    to get the already parsed information
  - Refactoring in the different callers to move functionalities only where needed
+ - Endpoint resolution support (first version by Iñigo Tejedor)
  - SQS Maps are now working correctly (QueueMaps were ill defined). Thanks to codehead
  - Fix bug for JSONCaller: when response doesn't have a body, the operation would succeed, but an
    invalid json string exception was thrown
