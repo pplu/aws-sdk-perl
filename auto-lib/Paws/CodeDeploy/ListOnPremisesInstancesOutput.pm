@@ -1,7 +1,6 @@
 
 package Paws::CodeDeploy::ListOnPremisesInstancesOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has instanceNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has nextToken => (is => 'ro', isa => 'Str');
 

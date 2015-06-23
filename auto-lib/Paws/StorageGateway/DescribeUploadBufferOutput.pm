@@ -1,11 +1,10 @@
 
 package Paws::StorageGateway::DescribeUploadBufferOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has DiskIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has GatewayARN => (is => 'ro', isa => 'Str');
-  has UploadBufferAllocatedInBytes => (is => 'ro', isa => 'Num');
-  has UploadBufferUsedInBytes => (is => 'ro', isa => 'Num');
+  has UploadBufferAllocatedInBytes => (is => 'ro', isa => 'Int');
+  has UploadBufferUsedInBytes => (is => 'ro', isa => 'Int');
 
 }
 
@@ -23,10 +22,10 @@ Paws::StorageGateway::DescribeUploadBufferOutput
 =head2 GatewayARN => Str
 
   
-=head2 UploadBufferAllocatedInBytes => Num
+=head2 UploadBufferAllocatedInBytes => Int
 
   
-=head2 UploadBufferUsedInBytes => Num
+=head2 UploadBufferUsedInBytes => Int
 
   
 

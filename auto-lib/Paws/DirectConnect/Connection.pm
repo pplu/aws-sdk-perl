@@ -1,7 +1,6 @@
 
 package Paws::DirectConnect::Connection {
   use Moose;
-  with 'Paws::API::ResultParser';
   has bandwidth => (is => 'ro', isa => 'Str');
   has connectionId => (is => 'ro', isa => 'Str');
   has connectionName => (is => 'ro', isa => 'Str');

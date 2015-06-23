@@ -1,7 +1,6 @@
 
 package Paws::EC2::DescribeConversionTasksResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has ConversionTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ConversionTask]', xmlname => 'conversionTasks', traits => ['Unwrapped',]);
 
 }
@@ -18,6 +17,17 @@ Paws::EC2::DescribeConversionTasksResult
 =head2 ConversionTasks => ArrayRef[Paws::EC2::ConversionTask]
 
   
+
+Information about the conversion tasks.
+
+
+
+
+
+
+
+
+
 
 
 =cut

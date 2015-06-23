@@ -1,7 +1,6 @@
 
 package Paws::Lambda::EventSourceMappingConfiguration {
   use Moose;
-  with 'Paws::API::ResultParser';
   has BatchSize => (is => 'ro', isa => 'Int');
   has EventSourceArn => (is => 'ro', isa => 'Str');
   has FunctionArn => (is => 'ro', isa => 'Str');

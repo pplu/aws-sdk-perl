@@ -1,11 +1,10 @@
 
 package Paws::StorageGateway::DescribeWorkingStorageOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has DiskIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has GatewayARN => (is => 'ro', isa => 'Str');
-  has WorkingStorageAllocatedInBytes => (is => 'ro', isa => 'Num');
-  has WorkingStorageUsedInBytes => (is => 'ro', isa => 'Num');
+  has WorkingStorageAllocatedInBytes => (is => 'ro', isa => 'Int');
+  has WorkingStorageUsedInBytes => (is => 'ro', isa => 'Int');
 
 }
 
@@ -37,7 +36,7 @@ working storage, then the DiskIds array is empty.
 =head2 GatewayARN => Str
 
   
-=head2 WorkingStorageAllocatedInBytes => Num
+=head2 WorkingStorageAllocatedInBytes => Int
 
   
 
@@ -52,7 +51,7 @@ working storage is configured for the gateway, this field returns 0.
 
 
 
-=head2 WorkingStorageUsedInBytes => Num
+=head2 WorkingStorageUsedInBytes => Int
 
   
 

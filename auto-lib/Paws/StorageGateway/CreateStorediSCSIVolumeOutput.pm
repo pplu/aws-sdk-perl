@@ -1,10 +1,9 @@
 
 package Paws::StorageGateway::CreateStorediSCSIVolumeOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has TargetARN => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
-  has VolumeSizeInBytes => (is => 'ro', isa => 'Num');
+  has VolumeSizeInBytes => (is => 'ro', isa => 'Int');
 
 }
 
@@ -45,7 +44,7 @@ The Amazon Resource Name (ARN) of the configured volume.
 
 
 
-=head2 VolumeSizeInBytes => Num
+=head2 VolumeSizeInBytes => Int
 
   
 

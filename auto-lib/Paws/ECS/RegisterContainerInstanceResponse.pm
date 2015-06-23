@@ -1,7 +1,6 @@
 
 package Paws::ECS::RegisterContainerInstanceResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has containerInstance => (is => 'ro', isa => 'Paws::ECS::ContainerInstance');
 
 }

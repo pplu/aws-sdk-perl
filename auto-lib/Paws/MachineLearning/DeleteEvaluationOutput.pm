@@ -1,7 +1,6 @@
 
 package Paws::MachineLearning::DeleteEvaluationOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has EvaluationId => (is => 'ro', isa => 'Str');
 
 }

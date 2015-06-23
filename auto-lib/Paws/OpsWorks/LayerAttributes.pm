@@ -1,6 +1,11 @@
 package Paws::OpsWorks::LayerAttributes {
   use Moose;
   with 'Paws::API::MapParser';
+
+  use MooseX::ClassAttribute;
+  class_has xml_keys =>(is => 'ro', default => 'key');
+  class_has xml_values =>(is => 'ro', default => 'value');
+
   has BundlerVersion => (is => 'ro', isa => 'Str');
   has EnableHaproxyStats => (is => 'ro', isa => 'Str');
   has GangliaPassword => (is => 'ro', isa => 'Str');
@@ -26,4 +31,4 @@ package Paws::OpsWorks::LayerAttributes {
   has RubyVersion => (is => 'ro', isa => 'Str');
   has RubygemsVersion => (is => 'ro', isa => 'Str');
 }
-1;
+1

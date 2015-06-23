@@ -1,7 +1,6 @@
 
 package Paws::S3::UploadPartOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ETag => (is => 'ro', isa => 'Str');
   has RequestCharged => (is => 'ro', isa => 'Str');
   has ServerSideEncryption => (is => 'ro', isa => 'Str');

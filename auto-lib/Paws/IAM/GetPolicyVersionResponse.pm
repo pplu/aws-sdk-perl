@@ -1,7 +1,6 @@
 
 package Paws::IAM::GetPolicyVersionResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has PolicyVersion => (is => 'ro', isa => 'Paws::IAM::PolicyVersion');
 
 }

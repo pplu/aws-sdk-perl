@@ -59,7 +59,7 @@ are passed, only C<TemplateBody> is used.
   
 
 Location of file containing the template body. The URL must point to a
-template (max size: 307,200 bytes) located in an S3 bucket in the same
+template (max size: 460,800 bytes) located in an S3 bucket in the same
 region as the stack. For more information, go to Template Anatomy in
 the AWS CloudFormation User Guide.
 

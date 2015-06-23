@@ -61,6 +61,20 @@ currently available to you.
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 Encrypted => Bool
 
   
@@ -72,7 +86,7 @@ automatically encrypted. There is no way to create an encrypted volume
 from an unencrypted snapshot or vice versa. If your AMI uses encrypted
 volumes, you can only launch it on supported instance types. For more
 information, see Amazon EBS Encryption in the I<Amazon Elastic Compute
-Cloud User Guide for Linux>.
+Cloud User Guide>.
 
 
 

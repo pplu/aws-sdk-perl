@@ -1,7 +1,6 @@
 
 package Paws::ECS::RegisterTaskDefinitionResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has taskDefinition => (is => 'ro', isa => 'Paws::ECS::TaskDefinition');
 
 }

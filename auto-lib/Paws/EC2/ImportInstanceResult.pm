@@ -1,7 +1,6 @@
 
 package Paws::EC2::ImportInstanceResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has ConversionTask => (is => 'ro', isa => 'Paws::EC2::ConversionTask', xmlname => 'conversionTask', traits => ['Unwrapped',]);
 
 }
@@ -18,6 +17,17 @@ Paws::EC2::ImportInstanceResult
 =head2 ConversionTask => Paws::EC2::ConversionTask
 
   
+
+Information about the conversion task.
+
+
+
+
+
+
+
+
+
 
 
 =cut

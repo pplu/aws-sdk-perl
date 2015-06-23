@@ -37,6 +37,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+The name of the log group that is associated with the retention policy
+to delete.
+
+
+
+
+
+
+
+
+
+
 
 
 =head1 SEE ALSO

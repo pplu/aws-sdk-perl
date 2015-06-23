@@ -4,7 +4,7 @@ package Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentity {
   has IdentityId => (is => 'ro', isa => 'Str');
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
   has Logins => (is => 'ro', isa => 'Paws::CognitoIdentity::LoginsMap', required => 1);
-  has TokenDuration => (is => 'ro', isa => 'Num');
+  has TokenDuration => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -89,7 +89,7 @@ you create an identity pool, you can specify the supported logins.
 
 
 
-=head2 TokenDuration => Num
+=head2 TokenDuration => Int
 
   
 

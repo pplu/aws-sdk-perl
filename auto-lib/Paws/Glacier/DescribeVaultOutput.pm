@@ -1,11 +1,10 @@
 
 package Paws::Glacier::DescribeVaultOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has CreationDate => (is => 'ro', isa => 'Str');
   has LastInventoryDate => (is => 'ro', isa => 'Str');
-  has NumberOfArchives => (is => 'ro', isa => 'Num');
-  has SizeInBytes => (is => 'ro', isa => 'Num');
+  has NumberOfArchives => (is => 'ro', isa => 'Int');
+  has SizeInBytes => (is => 'ro', isa => 'Int');
   has VaultARN => (is => 'ro', isa => 'Str');
   has VaultName => (is => 'ro', isa => 'Str');
 
@@ -51,7 +50,7 @@ string representation of ISO 8601 date format, for example,
 
 
 
-=head2 NumberOfArchives => Num
+=head2 NumberOfArchives => Int
 
   
 
@@ -67,7 +66,7 @@ for example, if you just created the vault.
 
 
 
-=head2 SizeInBytes => Num
+=head2 SizeInBytes => Int
 
   
 

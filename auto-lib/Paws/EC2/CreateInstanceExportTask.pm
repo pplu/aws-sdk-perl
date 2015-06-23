@@ -56,6 +56,17 @@ The maximum length is 255 bytes.
 
   
 
+The format and location for an instance export task.
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> InstanceId => Str
 
   

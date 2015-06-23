@@ -1,7 +1,6 @@
 
 package Paws::CloudFormation::ValidateTemplateOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
   has CapabilitiesReason => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -41,7 +40,8 @@ InsufficientCapabilities error.
 
   
 
-The capabilities reason found within the template.
+The list of resources that generated the values in the C<Capabilities>
+response element.
 
 
 

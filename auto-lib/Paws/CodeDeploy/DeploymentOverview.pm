@@ -1,9 +1,9 @@
 package Paws::CodeDeploy::DeploymentOverview {
   use Moose;
-  has Failed => (is => 'ro', isa => 'Num');
-  has InProgress => (is => 'ro', isa => 'Num');
-  has Pending => (is => 'ro', isa => 'Num');
-  has Skipped => (is => 'ro', isa => 'Num');
-  has Succeeded => (is => 'ro', isa => 'Num');
+  has Failed => (is => 'ro', isa => 'Int');
+  has InProgress => (is => 'ro', isa => 'Int');
+  has Pending => (is => 'ro', isa => 'Int');
+  has Skipped => (is => 'ro', isa => 'Int');
+  has Succeeded => (is => 'ro', isa => 'Int');
 }
 1;

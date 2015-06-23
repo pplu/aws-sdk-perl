@@ -1,7 +1,6 @@
 
 package Paws::RDS::DBParameterGroupsMessage {
   use Moose;
-  with 'Paws::API::ResultParser';
   has DBParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBParameterGroup]', xmlname => 'DBParameterGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 

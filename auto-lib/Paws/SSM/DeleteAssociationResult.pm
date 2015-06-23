@@ -1,7 +1,6 @@
 
 package Paws::SSM::DeleteAssociationResult {
   use Moose;
-  with 'Paws::API::ResultParser';
 
 }
 

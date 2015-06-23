@@ -47,7 +47,7 @@ globally unique identifier or the fully specified ARN to a key.
 arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =item * Globally Unique Key ID Example -
-12345678-1234-1234-123456789012
+12345678-1234-1234-1234-123456789012
 
 =back
 

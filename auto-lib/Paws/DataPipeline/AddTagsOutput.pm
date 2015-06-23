@@ -1,7 +1,6 @@
 
 package Paws::DataPipeline::AddTagsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
 
 }
 

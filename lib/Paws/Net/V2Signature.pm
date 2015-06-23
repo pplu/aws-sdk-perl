@@ -72,8 +72,6 @@ sub sign {
 
     $sign_this .= $self->www_form_urlencode(\%sign_hash);
 
-    warn "QUERY TO SIGN: $sign_this" if ($self->debug);
-
     my $encoded = encode_base64(hmac_sha256($sign_this, $self->secret_key), '');
 
     $request->parameters->{ Signature } = $encoded;

@@ -1,7 +1,6 @@
 
 package Paws::ECS::CreateServiceResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has service => (is => 'ro', isa => 'Paws::ECS::Service');
 
 }

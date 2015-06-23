@@ -1,7 +1,6 @@
 
 package Paws::SSM::ListAssociationsResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Associations => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Association]');
   has NextToken => (is => 'ro', isa => 'Str');
 

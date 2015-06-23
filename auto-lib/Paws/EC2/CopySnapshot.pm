@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A description for the new Amazon EBS snapshot.
+A description for the EBS snapshot.
 
 
 
@@ -80,6 +80,20 @@ the default region in your AWS configuration file).
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 PresignedUrl => Str
 
   
@@ -91,8 +105,8 @@ other cases. The C<PresignedUrl> should use the snapshot source
 endpoint, the C<CopySnapshot> action, and include the C<SourceRegion>,
 C<SourceSnapshotId>, and C<DestinationRegion> parameters. The
 C<PresignedUrl> must be signed using AWS Signature Version 4. Because
-Amazon EBS snapshots are stored in Amazon S3, the signing algorithm for
-this parameter uses the same logic that is described in Authenticating
+EBS snapshots are stored in Amazon S3, the signing algorithm for this
+parameter uses the same logic that is described in Authenticating
 Requests by Using Query Parameters (AWS Signature Version 4) in the
 I<Amazon Simple Storage Service API Reference>. An invalid or
 improperly signed C<PresignedUrl> will cause the copy operation to fail
@@ -126,7 +140,7 @@ The ID of the region that contains the snapshot to be copied.
 
   
 
-The ID of the Amazon EBS snapshot to copy.
+The ID of the EBS snapshot to copy.
 
 
 

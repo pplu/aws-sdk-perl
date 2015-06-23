@@ -42,9 +42,7 @@ The number of shards that the stream will use. The throughput of the
 stream is a function of the number of shards; more shards are required
 for greater provisioned throughput.
 
-B<Note:> The default limit for an AWS account is 10 shards per stream.
-If you need to create a stream with more than 10 shards, contact AWS
-Support to increase the limit on your account.
+DefaultShardLimit;
 
 
 

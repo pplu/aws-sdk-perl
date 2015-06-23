@@ -1,7 +1,6 @@
 
 package Paws::EC2::Volume {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeAttachment]', xmlname => 'attachmentSet', traits => ['Unwrapped',]);
   has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped',]);
   has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', traits => ['Unwrapped',]);
@@ -29,6 +28,17 @@ Paws::EC2::Volume
 =head2 Attachments => ArrayRef[Paws::EC2::VolumeAttachment]
 
   
+
+Information about the volume attachments.
+
+
+
+
+
+
+
+
+
 =head2 AvailabilityZone => Str
 
   
@@ -82,7 +92,7 @@ number of IOPS that are provisioned for the volume. For General Purpose
 and the rate at which the volume accumulates I/O credits for bursting.
 For more information on General Purpose (SSD) baseline performance, I/O
 credits, and bursting, see Amazon EBS Volume Types in the I<Amazon
-Elastic Compute Cloud User Guide for Linux>.
+Elastic Compute Cloud User Guide>.
 
 Constraint: Range is 100 to 20000 for Provisioned IOPS (SSD) volumes
 and 3 to 10000 for General Purpose (SSD) volumes.

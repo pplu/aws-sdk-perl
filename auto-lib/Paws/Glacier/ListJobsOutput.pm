@@ -1,7 +1,6 @@
 
 package Paws::Glacier::ListJobsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has JobList => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::GlacierJobDescription]');
   has Marker => (is => 'ro', isa => 'Str');
 

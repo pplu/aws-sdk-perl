@@ -1,7 +1,6 @@
 
 package Paws::AutoScaling::DescribeMetricCollectionTypesAnswer {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Granularities => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::MetricGranularityType]');
   has Metrics => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::MetricCollectionType]');
 
@@ -20,7 +19,7 @@ Paws::AutoScaling::DescribeMetricCollectionTypesAnswer
 
   
 
-The granularities for the listed metrics.
+The granularities for the metrics.
 
 
 
@@ -34,46 +33,7 @@ The granularities for the listed metrics.
 
   
 
-One or more of the following metrics:
-
-=over
-
-=item *
-
-GroupMinSize
-
-=item *
-
-GroupMaxSize
-
-=item *
-
-GroupDesiredCapacity
-
-=item *
-
-GroupInServiceInstances
-
-=item *
-
-GroupPendingInstances
-
-=item *
-
-GroupStandbyInstances
-
-=item *
-
-GroupTerminatingInstances
-
-=item *
-
-GroupTotalInstances
-
-=back
-
-The C<GroupStandbyInstances> metric is not returned by default. You
-must explicitly request it when calling EnableMetricsCollection.
+One or more metrics.
 
 
 

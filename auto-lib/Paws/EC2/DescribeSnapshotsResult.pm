@@ -1,7 +1,6 @@
 
 package Paws::EC2::DescribeSnapshotsResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Snapshot]', xmlname => 'snapshotSet', traits => ['Unwrapped',]);
 
@@ -37,6 +36,17 @@ return.
 =head2 Snapshots => ArrayRef[Paws::EC2::Snapshot]
 
   
+
+Information about the snapshots.
+
+
+
+
+
+
+
+
+
 
 
 =cut

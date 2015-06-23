@@ -1,7 +1,6 @@
 
 package Paws::DataPipeline::DeactivatePipelineOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
 
 }
 

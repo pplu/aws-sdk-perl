@@ -8,8 +8,8 @@ package Paws::Route53::ResourceRecordSet {
   has Region => (is => 'ro', isa => 'Str');
   has ResourceRecords => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ResourceRecord]');
   has SetIdentifier => (is => 'ro', isa => 'Str');
-  has TTL => (is => 'ro', isa => 'Num');
+  has TTL => (is => 'ro', isa => 'Int');
   has Type => (is => 'ro', isa => 'Str', required => 1);
-  has Weight => (is => 'ro', isa => 'Num');
+  has Weight => (is => 'ro', isa => 'Int');
 }
 1;

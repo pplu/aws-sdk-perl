@@ -1,7 +1,6 @@
 
 package Paws::EC2::DescribeVpcAttributeResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has EnableDnsHostnames => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'enableDnsHostnames', traits => ['Unwrapped',]);
   has EnableDnsSupport => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'enableDnsSupport', traits => ['Unwrapped',]);
   has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped',]);

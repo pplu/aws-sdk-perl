@@ -1,7 +1,6 @@
 
 package Paws::MachineLearning::DeleteMLModelOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has MLModelId => (is => 'ro', isa => 'Str');
 
 }

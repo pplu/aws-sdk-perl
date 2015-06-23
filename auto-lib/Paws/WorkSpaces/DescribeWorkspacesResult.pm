@@ -1,7 +1,6 @@
 
 package Paws::WorkSpaces::DescribeWorkspacesResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has NextToken => (is => 'ro', isa => 'Str');
   has Workspaces => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Workspace]');
 

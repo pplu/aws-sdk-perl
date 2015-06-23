@@ -1,7 +1,6 @@
 
 package Paws::ImportExport::GetStatusOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ArtifactList => (is => 'ro', isa => 'ArrayRef[Paws::ImportExport::Artifact]');
   has Carrier => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');

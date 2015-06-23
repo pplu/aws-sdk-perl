@@ -40,6 +40,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 Filters => ArrayRef[Paws::EC2::Filter]
 
   
@@ -51,6 +65,11 @@ One or more filters.
 =item *
 
 C<description> - The description of the security group.
+
+=item *
+
+C<egress.ip-permission.prefix-list-id> - The ID (prefix) of the AWS
+service to which the security group allows access.
 
 =item *
 

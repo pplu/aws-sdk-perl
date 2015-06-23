@@ -42,11 +42,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+The client-specific data.
+
+
+
+
+
+
+
+
+
+
 =head2 ClientToken => Str
 
   
 
-Token to enable idempotency for VM import requests (optional).
+Token to enable idempotency for VM import requests.
 
 
 
@@ -61,7 +72,7 @@ Token to enable idempotency for VM import requests (optional).
 
   
 
-The description string for the ImportSnapshot task.
+The description string for the import snapshot task.
 
 
 
@@ -76,16 +87,41 @@ The description string for the ImportSnapshot task.
 
   
 
+Information about the disk container.
+
+
+
+
+
+
+
+
+
+
 =head2 DryRun => Bool
 
   
+
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
 
 =head2 RoleName => Str
 
   
 
-The name of the role to use when not using the default role name
-'vmimport' (optional).
+The name of the role to use when not using the default role,
+'vmimport'.
 
 
 

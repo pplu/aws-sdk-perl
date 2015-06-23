@@ -1,7 +1,6 @@
 
 package Paws::Glacier::GetJobOutputOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has acceptRanges => (is => 'ro', isa => 'Str');
   has archiveDescription => (is => 'ro', isa => 'Str');
   has body => (is => 'ro', isa => 'Str');

@@ -37,8 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name or stack ID that is associated with the stack whose policy you
-want to get.
+The name or unique stack ID that is associated with the stack whose
+policy you want to get.
 
 
 

@@ -1,7 +1,6 @@
 
 package Paws::EC2::CancelImportTaskResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has ImportTaskId => (is => 'ro', isa => 'Str', xmlname => 'importTaskId', traits => ['Unwrapped',]);
   has PreviousState => (is => 'ro', isa => 'Str', xmlname => 'previousState', traits => ['Unwrapped',]);
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped',]);
@@ -21,7 +20,7 @@ Paws::EC2::CancelImportTaskResult
 
   
 
-The task ID of the ImportImage or ImportSnapshot task being canceled.
+The ID of the task being canceled.
 
 
 
@@ -35,8 +34,7 @@ The task ID of the ImportImage or ImportSnapshot task being canceled.
 
   
 
-The current state of the ImportImage or ImportSnapshot task being
-canceled.
+The current state of the task being canceled.
 
 
 
@@ -50,8 +48,7 @@ canceled.
 
   
 
-The current state of the ImportImage or ImportSnapshot task being
-canceled.
+The current state of the task being canceled.
 
 
 

@@ -1,7 +1,7 @@
 
 package Paws::Route53::ListResourceRecordSets {
   use Moose;
-  has HostedZoneId => (is => 'ro', isa => 'Str', required => 1);
+  has HostedZoneId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
   has MaxItems => (is => 'ro', isa => 'Str');
   has StartRecordIdentifier => (is => 'ro', isa => 'Str');
   has StartRecordName => (is => 'ro', isa => 'Str');

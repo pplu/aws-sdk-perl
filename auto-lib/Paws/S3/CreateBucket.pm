@@ -2,7 +2,7 @@
 package Paws::S3::CreateBucket {
   use Moose;
   has ACL => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-acl' );
-  has Bucket => (is => 'ro', isa => 'Str', required => 1);
+  has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
   has CreateBucketConfiguration => (is => 'ro', isa => 'Paws::S3::CreateBucketConfiguration');
   has GrantFullControl => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-full-control' );
   has GrantRead => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-read' );

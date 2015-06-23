@@ -19,6 +19,8 @@ package Paws::Net::JsonCaller {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
         if ($att_type eq 'Bool') {
           $p{ $key } = ($params->$att)?\1:\0;
+        } elsif ($att_type eq 'Int') {
+          $p{ $key } = int($params->$att);
         } elsif ($self->_is_internal_type($att_type)) {
           $p{ $key } = $params->$att;
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {

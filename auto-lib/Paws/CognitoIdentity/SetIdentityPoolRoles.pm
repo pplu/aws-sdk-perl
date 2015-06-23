@@ -53,8 +53,9 @@ An identity pool ID in the format REGION:GUID.
 
   
 
-The map of roles associated with this pool. Currently only
-authenticated and unauthenticated roles are supported.
+The map of roles associated with this pool. For a given role, the key
+will be either "authenticated" or "unauthenticated" and the value will
+be the Role ARN.
 
 
 

@@ -1,9 +1,8 @@
 
 package Paws::StorageGateway::DescribeBandwidthRateLimitOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
-  has AverageDownloadRateLimitInBitsPerSec => (is => 'ro', isa => 'Num');
-  has AverageUploadRateLimitInBitsPerSec => (is => 'ro', isa => 'Num');
+  has AverageDownloadRateLimitInBitsPerSec => (is => 'ro', isa => 'Int');
+  has AverageUploadRateLimitInBitsPerSec => (is => 'ro', isa => 'Int');
   has GatewayARN => (is => 'ro', isa => 'Str');
 
 }
@@ -16,7 +15,7 @@ Paws::StorageGateway::DescribeBandwidthRateLimitOutput
 
 =head1 ATTRIBUTES
 
-=head2 AverageDownloadRateLimitInBitsPerSec => Num
+=head2 AverageDownloadRateLimitInBitsPerSec => Int
 
   
 
@@ -32,7 +31,7 @@ set.
 
 
 
-=head2 AverageUploadRateLimitInBitsPerSec => Num
+=head2 AverageUploadRateLimitInBitsPerSec => Int
 
   
 

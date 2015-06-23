@@ -16,7 +16,7 @@ package Paws::Net::S3Signature {
 
     $request->header('X-Amz-Content-Sha256' => 'UNSIGNED-PAYLOAD');
 
-    my $sig = Net::Amazon::Signature::V4->new( $self->access_key, $self->secret_key, $self->region, $self->service );
+    my $sig = Net::Amazon::Signature::V4->new( $self->access_key, $self->secret_key, $self->_region_for_signature, $self->service );
     $sig->sign( $request );
   }
 }

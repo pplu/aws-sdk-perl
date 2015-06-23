@@ -1,7 +1,6 @@
 
 package Paws::EC2::DescribeVpcClassicLinkResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has Vpcs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcClassicLink]', xmlname => 'vpcSet', traits => ['Unwrapped',]);
 
 }

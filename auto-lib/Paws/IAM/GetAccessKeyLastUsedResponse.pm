@@ -1,7 +1,6 @@
 
 package Paws::IAM::GetAccessKeyLastUsedResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AccessKeyLastUsed => (is => 'ro', isa => 'Paws::IAM::AccessKeyLastUsed');
   has UserName => (is => 'ro', isa => 'Str');
 

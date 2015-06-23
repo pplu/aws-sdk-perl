@@ -133,6 +133,11 @@ package Paws::ECS {
     my $call_object = $self->new_with_coercions('Paws::ECS::SubmitTaskStateChange', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateContainerAgent {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::UpdateContainerAgent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateService {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::UpdateService', @_);
@@ -216,7 +221,7 @@ C<CreateCluster> action.
 
 
 
-=head2 CreateService(serviceName => Str, [clientToken => Str, cluster => Str, desiredCount => Int, loadBalancers => ArrayRef[Paws::ECS::LoadBalancer], role => Str, taskDefinition => Str])
+=head2 CreateService(desiredCount => Int, serviceName => Str, taskDefinition => Str, [clientToken => Str, cluster => Str, loadBalancers => ArrayRef[Paws::ECS::LoadBalancer], role => Str])
 
 Each argument is described in detail in: L<Paws::ECS::CreateService>
 
@@ -311,10 +316,18 @@ Returns: a L<Paws::ECS::DeregisterTaskDefinitionResponse> instance
 
   
 
-NOT YET IMPLEMENTED.
+Deregisters the specified task definition by family and revision. Upon
+deregistration, the task definition is marked as C<INACTIVE>. Existing
+tasks and services that reference an C<INACTIVE> task definition
+continue to run without disruption. Existing services that reference an
+C<INACTIVE> task definition can still scale up or down by modifying the
+service's desired count.
 
-Deregisters the specified task definition. You will no longer be able
-to run tasks from this definition after deregistration.
+You cannot use an C<INACTIVE> task definition to run new tasks or
+create new services, and you cannot update an existing service to
+reference an C<INACTIVE> task definition (although there may be up to a
+10 minute window following deregistration where these restrictions have
+not yet taken effect).
 
 
 
@@ -398,8 +411,11 @@ Returns: a L<Paws::ECS::DescribeTaskDefinitionResponse> instance
 
 Describes a task definition. You can specify a C<family> and
 C<revision> to find information on a specific task definition, or you
-can simply specify the family to find the latest revision in that
-family.
+can simply specify the family to find the latest C<ACTIVE> revision in
+that family.
+
+You can only describe C<INACTIVE> task definitions while an active task
+or service references them.
 
 
 
@@ -524,7 +540,9 @@ Returns: a L<Paws::ECS::ListTaskDefinitionFamiliesResponse> instance
   
 
 Returns a list of task definition families that are registered to your
-account. You can filter the results with the C<familyPrefix> parameter.
+account (which may include task definition families that no longer have
+any C<ACTIVE> task definitions). You can filter the results with the
+C<familyPrefix> parameter.
 
 
 
@@ -536,7 +554,7 @@ account. You can filter the results with the C<familyPrefix> parameter.
 
 
 
-=head2 ListTaskDefinitions([familyPrefix => Str, maxResults => Int, nextToken => Str])
+=head2 ListTaskDefinitions([familyPrefix => Str, maxResults => Int, nextToken => Str, sort => Str, status => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitions>
 
@@ -546,7 +564,7 @@ Returns: a L<Paws::ECS::ListTaskDefinitionsResponse> instance
 
 Returns a list of task definitions that are registered to your account.
 You can filter the results by family name with the C<familyPrefix>
-parameter.
+parameter or by status with the C<status> parameter.
 
 
 
@@ -558,7 +576,7 @@ parameter.
 
 
 
-=head2 ListTasks([cluster => Str, containerInstance => Str, family => Str, maxResults => Int, nextToken => Str, serviceName => Str, startedBy => Str])
+=head2 ListTasks([cluster => Str, containerInstance => Str, desiredStatus => Str, family => Str, maxResults => Int, nextToken => Str, serviceName => Str, startedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListTasks>
 
@@ -567,8 +585,9 @@ Returns: a L<Paws::ECS::ListTasksResponse> instance
   
 
 Returns a list of tasks for a specified cluster. You can filter the
-results by family name or by a particular container instance with the
-C<family> and C<containerInstance> parameters.
+results by family name, by a particular container instance, or by the
+desired status of the task with the C<family>, C<containerInstance>,
+and C<desiredStatus> parameters.
 
 
 
@@ -731,6 +750,27 @@ This action is only used by the Amazon EC2 Container Service agent, and
 it is not intended for use outside of the agent.
 
 Sent to acknowledge that a task changed states.
+
+
+
+
+
+
+
+
+
+
+
+=head2 UpdateContainerAgent(containerInstance => Str, [cluster => Str])
+
+Each argument is described in detail in: L<Paws::ECS::UpdateContainerAgent>
+
+Returns: a L<Paws::ECS::UpdateContainerAgentResponse> instance
+
+  
+
+Updates the Amazon ECS container agent on a specified container
+instance.
 
 
 

@@ -1,7 +1,6 @@
 
 package Paws::Glacier::UploadMultipartPartOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has checksum => (is => 'ro', isa => 'Str');
 
 }

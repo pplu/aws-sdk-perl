@@ -1,7 +1,6 @@
 
 package Paws::DataPipeline::RemoveTagsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
 
 }
 

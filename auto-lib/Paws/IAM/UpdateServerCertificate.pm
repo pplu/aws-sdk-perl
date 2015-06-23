@@ -56,7 +56,8 @@ updating the server certificate's path.
   
 
 The new name for the server certificate. Include this only if you are
-updating the server certificate's name.
+updating the server certificate's name. The name of the certificate
+cannot contain any spaces.
 
 
 

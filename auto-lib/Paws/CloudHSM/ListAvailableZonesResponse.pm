@@ -1,7 +1,6 @@
 
 package Paws::CloudHSM::ListAvailableZonesResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AZList => (is => 'ro', isa => 'ArrayRef[Str]');
 
 }

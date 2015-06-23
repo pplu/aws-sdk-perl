@@ -1,7 +1,6 @@
 
 package Paws::ECS::StopTaskResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has task => (is => 'ro', isa => 'Paws::ECS::Task');
 
 }

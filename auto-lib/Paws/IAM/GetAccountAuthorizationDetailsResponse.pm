@@ -1,7 +1,6 @@
 
 package Paws::IAM::GetAccountAuthorizationDetailsResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has GroupDetailList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::GroupDetail]');
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');

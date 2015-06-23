@@ -1,7 +1,6 @@
 
 package Paws::ECS::ListContainerInstancesResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has containerInstanceArns => (is => 'ro', isa => 'ArrayRef[Str]');
   has nextToken => (is => 'ro', isa => 'Str');
 

@@ -77,10 +77,15 @@ The list of container instances to start tasks on is limited to 10.
   
 
 A list of container overrides in JSON format that specify the name of a
-container in the specified task definition and the command it should
-run instead of its default. A total of 8192 characters are allowed for
-overrides. This limit includes the JSON formatting characters of the
-override structure.
+container in the specified task definition and the overrides it should
+receive. You can override the default command for a container (that is
+specified in the task definition or Docker image) with a C<command>
+override. You can also override existing environment variables (that
+are specified in the task definition or Docker image) on a container or
+add new environment variables to it with an C<environment> override.
+
+A total of 8192 characters are allowed for overrides. This limit
+includes the JSON formatting characters of the override structure.
 
 
 
@@ -119,7 +124,8 @@ parameter contains the deployment ID of the service that starts it.
   
 
 The C<family> and C<revision> (C<family:revision>) or full Amazon
-Resource Name (ARN) of the task definition that you want to start.
+Resource Name (ARN) of the task definition that you want to start. If a
+C<revision> is not specified, the latest C<ACTIVE> revision is used.
 
 
 

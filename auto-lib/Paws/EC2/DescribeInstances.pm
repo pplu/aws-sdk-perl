@@ -41,6 +41,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 Filters => ArrayRef[Paws::EC2::Filter]
 
   
@@ -59,30 +73,27 @@ C<availability-zone> - The Availability Zone of the instance.
 
 =item *
 
-C<block-device-mapping.attach-time> - The attach time for an Amazon EBS
-volume mapped to the instance, for example,
-C<2010-09-15T17:15:20.000Z>.
+C<block-device-mapping.attach-time> - The attach time for an EBS volume
+mapped to the instance, for example, C<2010-09-15T17:15:20.000Z>.
 
 =item *
 
 C<block-device-mapping.delete-on-termination> - A Boolean that
-indicates whether the Amazon EBS volume is deleted on instance
-termination.
+indicates whether the EBS volume is deleted on instance termination.
 
 =item *
 
-C<block-device-mapping.device-name> - The device name for the Amazon
-EBS volume (for example, C</dev/sdh> or C<xvdh>).
+C<block-device-mapping.device-name> - The device name for the EBS
+volume (for example, C</dev/sdh> or C<xvdh>).
 
 =item *
 
-C<block-device-mapping.status> - The status for the Amazon EBS volume
+C<block-device-mapping.status> - The status for the EBS volume
 (C<attaching> | C<attached> | C<detaching> | C<detached>).
 
 =item *
 
-C<block-device-mapping.volume-id> - The volume ID of the Amazon EBS
-volume.
+C<block-device-mapping.volume-id> - The volume ID of the EBS volume.
 
 =item *
 

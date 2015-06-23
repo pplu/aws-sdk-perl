@@ -1,7 +1,7 @@
 
 package Paws::S3::DeleteBucketWebsite {
   use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', required => 1);
+  has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
 
   use MooseX::ClassAttribute;
 

@@ -1,7 +1,6 @@
 
 package Paws::EC2::DescribeCustomerGatewaysResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has CustomerGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CustomerGateway]', xmlname => 'customerGatewaySet', traits => ['Unwrapped',]);
 
 }

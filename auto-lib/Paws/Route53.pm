@@ -5,7 +5,7 @@ package Paws::Route53 {
   sub version { '2013-04-01' }
   sub flattened_arrays { 0 }
 
-  with 'Paws::API::Caller', 'Paws::API::SingleEndpointCaller', 'Paws::Net::V3HTTPSSignature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V3HTTPSSignature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
 
   
   sub AssociateVPCWithHostedZone {
@@ -989,7 +989,7 @@ Returns: a L<Paws::Route53::ListTagsForResourcesResponse> instance
   
 
 
-=head2 UpdateHealthCheck(HealthCheckId => Str, [FailureThreshold => Int, FullyQualifiedDomainName => Str, HealthCheckVersion => Num, IPAddress => Str, Port => Int, ResourcePath => Str, SearchString => Str])
+=head2 UpdateHealthCheck(HealthCheckId => Str, [FailureThreshold => Int, FullyQualifiedDomainName => Str, HealthCheckVersion => Int, IPAddress => Str, Port => Int, ResourcePath => Str, SearchString => Str])
 
 Each argument is described in detail in: L<Paws::Route53::UpdateHealthCheck>
 

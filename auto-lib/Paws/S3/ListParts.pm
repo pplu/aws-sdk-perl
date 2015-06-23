@@ -1,8 +1,8 @@
 
 package Paws::S3::ListParts {
   use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has Key => (is => 'ro', isa => 'Str', required => 1);
+  has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
+  has Key => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Key' , required => 1);
   has MaxParts => (is => 'ro', isa => 'Int');
   has PartNumberMarker => (is => 'ro', isa => 'Int');
   has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );

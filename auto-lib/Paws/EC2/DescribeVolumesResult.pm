@@ -1,7 +1,6 @@
 
 package Paws::EC2::DescribeVolumesResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Volume]', xmlname => 'volumeSet', traits => ['Unwrapped',]);
 
@@ -37,6 +36,17 @@ return.
 =head2 Volumes => ArrayRef[Paws::EC2::Volume]
 
   
+
+Information about the volumes.
+
+
+
+
+
+
+
+
+
 
 
 =cut

@@ -1,7 +1,6 @@
 
 package Paws::CognitoIdentity::IdentityPool {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AllowUnauthenticatedIdentities => (is => 'ro', isa => 'Bool', required => 1);
   has DeveloperProviderName => (is => 'ro', isa => 'Str');
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);

@@ -1,13 +1,12 @@
 
 package Paws::SDB::DomainMetadataResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AttributeNameCount => (is => 'ro', isa => 'Int');
-  has AttributeNamesSizeBytes => (is => 'ro', isa => 'Num');
+  has AttributeNamesSizeBytes => (is => 'ro', isa => 'Int');
   has AttributeValueCount => (is => 'ro', isa => 'Int');
-  has AttributeValuesSizeBytes => (is => 'ro', isa => 'Num');
+  has AttributeValuesSizeBytes => (is => 'ro', isa => 'Int');
   has ItemCount => (is => 'ro', isa => 'Int');
-  has ItemNamesSizeBytes => (is => 'ro', isa => 'Num');
+  has ItemNamesSizeBytes => (is => 'ro', isa => 'Int');
   has Timestamp => (is => 'ro', isa => 'Int');
 
 }
@@ -35,7 +34,7 @@ The number of unique attribute names in the domain.
 
 
 
-=head2 AttributeNamesSizeBytes => Num
+=head2 AttributeNamesSizeBytes => Int
 
   
 
@@ -63,7 +62,7 @@ The number of all attribute name/value pairs in the domain.
 
 
 
-=head2 AttributeValuesSizeBytes => Num
+=head2 AttributeValuesSizeBytes => Int
 
   
 
@@ -91,7 +90,7 @@ The number of all items in the domain.
 
 
 
-=head2 ItemNamesSizeBytes => Num
+=head2 ItemNamesSizeBytes => Int
 
   
 

@@ -1,7 +1,6 @@
 
 package Paws::ECS::ListTaskDefinitionFamiliesResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has families => (is => 'ro', isa => 'ArrayRef[Str]');
   has nextToken => (is => 'ro', isa => 'Str');
 

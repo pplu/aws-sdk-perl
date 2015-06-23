@@ -12,6 +12,11 @@ package Paws::AutoScaling {
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::AttachInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AttachLoadBalancers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::AttachLoadBalancers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CompleteLifecycleAction {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::CompleteLifecycleAction', @_);
@@ -107,6 +112,11 @@ package Paws::AutoScaling {
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeLifecycleHookTypes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeLoadBalancers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeLoadBalancers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeMetricCollectionTypes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeMetricCollectionTypes', @_);
@@ -150,6 +160,11 @@ package Paws::AutoScaling {
   sub DetachInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::DetachInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DetachLoadBalancers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DetachLoadBalancers', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DisableMetricsCollection {
@@ -289,8 +304,36 @@ Returns: nothing
 
 Attaches one or more EC2 instances to the specified Auto Scaling group.
 
-For more information, see Attach Amazon EC2 Instances to Your Existing
-Auto Scaling Group in the I<Auto Scaling Developer Guide>.
+For more information, see Attach EC2 Instances to Your Auto Scaling
+Group in the I<Auto Scaling Developer Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 AttachLoadBalancers([AutoScalingGroupName => Str, LoadBalancerNames => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::AutoScaling::AttachLoadBalancers>
+
+Returns: a L<Paws::AutoScaling::AttachLoadBalancersResultType> instance
+
+  
+
+Attaches one or more load balancers to the specified Auto Scaling
+group.
+
+To describe the load balancers for an Auto Scaling group, use
+DescribeLoadBalancers. To detach the load balancer from the Auto
+Scaling group, use DetachLoadBalancers.
+
+For more information, see Attach a Load Balancer to Your Auto Scaling
+Group in the I<Auto Scaling Developer Guide>.
 
 
 
@@ -361,6 +404,9 @@ If you exceed your maximum limit of Auto Scaling groups, which by
 default is 20 per region, the call fails. For information about viewing
 and updating these limits, see DescribeAccountLimits.
 
+For more information, see Auto Scaling Groups in the I<Auto Scaling
+Developer Guide>.
+
 
 
 
@@ -385,6 +431,9 @@ If you exceed your maximum limit of launch configurations, which by
 default is 100 per region, the call fails. For information about
 viewing and updating these limits, see DescribeAccountLimits.
 
+For more information, see Launch Configurations in the I<Auto Scaling
+Developer Guide>.
+
 
 
 
@@ -405,12 +454,19 @@ Returns: nothing
 
 Creates or updates tags for the specified Auto Scaling group.
 
-A tag's definition is composed of a resource ID, resource type, key and
-value, and the propagate flag. Value and the propagate flag are
-optional parameters. See the Request Parameters for more information.
+A tag is defined by its resource ID, resource type, key, value, and
+propagate flag. The value and the propagate flag are optional
+parameters. The only supported resource type is C<auto-scaling-group>,
+and the resource ID must be the name of the group. The
+C<PropagateAtLaunch> flag determines whether the tag is added to
+instances launched in the group. Valid values are C<true> or C<false>.
 
-For more information, see Add, Modify, or Remove Auto Scaling Group
-Tags in the I<Auto Scaling Developer Guide>.
+When you specify a tag with a key that already exists, the operation
+overwrites the previous tag definition, and you do not get an error
+message.
+
+For more information, see Tagging Auto Scaling Groups and Instances in
+the I<Auto Scaling Developer Guide>.
 
 
 
@@ -434,9 +490,9 @@ Deletes the specified Auto Scaling group.
 
 The group must have no instances and no scaling activities in progress.
 
-To remove all instances before calling DeleteAutoScalingGroup, you can
-call UpdateAutoScalingGroup to set the minimum and maximum size of the
-AutoScalingGroup to zero.
+To remove all instances before calling C<DeleteAutoScalingGroup>, call
+UpdateAutoScalingGroup to set the minimum and maximum size of the Auto
+Scaling group to zero.
 
 
 
@@ -588,7 +644,7 @@ Describes the current Auto Scaling resource limits for your AWS
 account.
 
 For information about requesting an increase in these limits, see AWS
-Service Limits.
+Service Limits in the I<Amazon Web Services General Reference>.
 
 
 
@@ -608,7 +664,7 @@ Returns: a L<Paws::AutoScaling::DescribeAdjustmentTypesAnswer> instance
 
   
 
-Lists the policy adjustment types for use with PutScalingPolicy.
+Describes the policy adjustment types for use with PutScalingPolicy.
 
 
 
@@ -631,11 +687,6 @@ Returns: a L<Paws::AutoScaling::AutoScalingGroupsType> instance
 Describes one or more Auto Scaling groups. If a list of names is not
 provided, the call describes all Auto Scaling groups.
 
-You can specify a maximum number of items to be returned with a single
-call. If there are more items to return, the call returns a token. To
-get the next set of items, repeat the call with the returned token in
-the C<NextToken> parameter.
-
 
 
 
@@ -657,11 +708,6 @@ Returns: a L<Paws::AutoScaling::AutoScalingInstancesType> instance
 Describes one or more Auto Scaling instances. If a list is not
 provided, the call describes all instances.
 
-You can describe up to a maximum of 50 instances with a single call. By
-default, a call returns up to 20 instances. If there are more items to
-return, the call returns a token. To get the next set of items, repeat
-the call with the returned token in the C<NextToken> parameter.
-
 
 
 
@@ -680,7 +726,7 @@ Returns: a L<Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer> inst
 
   
 
-Lists the notification types that are supported by Auto Scaling.
+Describes the notification types that are supported by Auto Scaling.
 
 
 
@@ -702,11 +748,6 @@ Returns: a L<Paws::AutoScaling::LaunchConfigurationsType> instance
 
 Describes one or more launch configurations. If you omit the list of
 names, then the call describes all launch configurations.
-
-You can specify a maximum number of items to be returned with a single
-call. If there are more items to return, the call returns a token. To
-get the next set of items, repeat the call with the returned token in
-the C<NextToken> parameter.
 
 
 
@@ -758,6 +799,26 @@ Describes the available types of lifecycle hooks.
 
 
 
+=head2 DescribeLoadBalancers(AutoScalingGroupName => Str, [MaxRecords => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeLoadBalancers>
+
+Returns: a L<Paws::AutoScaling::DescribeLoadBalancersResponse> instance
+
+  
+
+Describes the load balancers for the specified Auto Scaling group.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DescribeMetricCollectionTypes( => )
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeMetricCollectionTypes>
@@ -766,11 +827,11 @@ Returns: a L<Paws::AutoScaling::DescribeMetricCollectionTypesAnswer> instance
 
   
 
-Returns a list of metrics and a corresponding list of granularities for
-each metric.
+Describes the available CloudWatch metrics for Auto Scaling.
 
-The C<GroupStandbyInstances> metric is not returned by default. You
-must explicitly request it when calling EnableMetricsCollection.
+Note that the C<GroupStandbyInstances> metric is not returned by
+default. You must explicitly request this metric when calling
+EnableMetricsCollection.
 
 
 
@@ -813,11 +874,6 @@ Returns: a L<Paws::AutoScaling::PoliciesType> instance
 
 Describes the policies for the specified Auto Scaling group.
 
-You can specify a maximum number of items to be returned with a single
-call. If there are more items to return, the call returns a token. To
-get the next set of items, repeat the call with the returned token in
-the C<NextToken> parameter.
-
 
 
 
@@ -841,11 +897,6 @@ group. If you omit the C<ActivityIds>, the call returns all activities
 from the past six weeks. Activities are sorted by the start time.
 Activities still in progress appear first on the list.
 
-You can specify a maximum number of items to be returned with a single
-call. If there are more items to return, the call returns a token. To
-get the next set of items, repeat the call with the returned token in
-the C<NextToken> parameter.
-
 
 
 
@@ -864,8 +915,8 @@ Returns: a L<Paws::AutoScaling::ProcessesType> instance
 
   
 
-Returns scaling process types for use in the ResumeProcesses and
-SuspendProcesses actions.
+Describes the scaling process types for use with ResumeProcesses and
+SuspendProcesses.
 
 
 
@@ -885,8 +936,8 @@ Returns: a L<Paws::AutoScaling::ScheduledActionsType> instance
 
   
 
-Lists the actions scheduled for your Auto Scaling group that haven't
-been executed. To list the actions that were already executed, use
+Describes the actions scheduled for your Auto Scaling group that
+haven't run. To describe the actions that have already run, use
 DescribeScalingActivities.
 
 
@@ -936,7 +987,7 @@ Returns: a L<Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer> instance
 
   
 
-Lists the termination policies supported by Auto Scaling.
+Describes the termination policies supported by Auto Scaling.
 
 
 
@@ -962,6 +1013,32 @@ from the rest of the Auto Scaling group.
 
 For more information, see Detach EC2 Instances from Your Auto Scaling
 Group in the I<Auto Scaling Developer Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DetachLoadBalancers([AutoScalingGroupName => Str, LoadBalancerNames => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::AutoScaling::DetachLoadBalancers>
+
+Returns: a L<Paws::AutoScaling::DetachLoadBalancersResultType> instance
+
+  
+
+Removes one or more load balancers from the specified Auto Scaling
+group.
+
+When you detach a load balancer, it enters the C<Removing> state while
+deregistering the instances in the group. When all instances are
+deregistered, then you can no longer describe the load balancer using
+DescribeLoadBalancers. Note that the instances remain running.
 
 
 
@@ -1160,7 +1237,7 @@ This configuration overwrites an existing configuration.
 
 
 
-=head2 PutScalingPolicy(AdjustmentType => Str, AutoScalingGroupName => Str, PolicyName => Str, ScalingAdjustment => Int, [Cooldown => Int, MinAdjustmentStep => Int])
+=head2 PutScalingPolicy(AdjustmentType => Str, AutoScalingGroupName => Str, PolicyName => Str, [Cooldown => Int, MinAdjustmentStep => Int, ScalingAdjustment => Int])
 
 Each argument is described in detail in: L<Paws::AutoScaling::PutScalingPolicy>
 
@@ -1198,9 +1275,6 @@ affected Auto Scaling group.
 
 For more information, see Scheduled Scaling in the I<Auto Scaling
 Developer Guide>.
-
-Auto Scaling supports the date and time expressed in
-"YYYY-MM-DDThh:mm:ssZ" format in UTC/GMT only.
 
 
 
@@ -1290,7 +1364,10 @@ Returns: nothing
 
   
 
-Sets the size of the specified AutoScalingGroup.
+Sets the size of the specified Auto Scaling group.
+
+For more information about desired capacity, see What Is Auto Scaling?
+in the I<Auto Scaling Developer Guide>.
 
 
 
@@ -1388,40 +1465,40 @@ Returns: nothing
 
   
 
-Updates the configuration for the specified AutoScalingGroup.
+Updates the configuration for the specified Auto Scaling group.
 
-To update an Auto Scaling group with a launch configuration that has
-the C<InstanceMonitoring> flag set to C<False>, you must first ensure
-that collection of group metrics is disabled. Otherwise, calls to
-UpdateAutoScalingGroup will fail. If you have previously enabled group
-metrics collection, you can disable collection of all group metrics by
-calling DisableMetricsCollection.
+To update an Auto Scaling group with a launch configuration with
+C<InstanceMonitoring> set to C<False>, you must first disable the
+collection of group metrics. Otherwise, you will get an error. If you
+have previously enabled the collection of group metrics, you can
+disable it using DisableMetricsCollection.
 
 The new settings are registered upon the completion of this call. Any
 launch configuration settings take effect on any triggers after this
 call returns. Scaling activities that are currently in progress aren't
 affected.
 
+Note the following:
+
 =over
 
 =item *
 
-If a new value is specified for I<MinSize> without specifying the value
-for I<DesiredCapacity>, and if the new I<MinSize> is larger than the
-current size of the Auto Scaling group, there will be an implicit call
-to SetDesiredCapacity to set the group to the new I<MinSize>.
+If you specify a new value for C<MinSize> without specifying a value
+for C<DesiredCapacity>, and the new C<MinSize> is larger than the
+current size of the group, we implicitly call SetDesiredCapacity to set
+the size of the group to the new value of C<MinSize>.
 
 =item *
 
-If a new value is specified for I<MaxSize> without specifying the value
-for I<DesiredCapacity>, and the new I<MaxSize> is smaller than the
-current size of the Auto Scaling group, there will be an implicit call
-to SetDesiredCapacity to set the group to the new I<MaxSize>.
+If you specify a new value for C<MaxSize> without specifying a value
+for C<DesiredCapacity>, and the new C<MaxSize> is smaller than the
+current size of the group, we implicitly call SetDesiredCapacity to set
+the size of the group to the new value of C<MaxSize>.
 
 =item *
 
-All other optional parameters are left unchanged if not passed in the
-request.
+All other optional parameters are left unchanged if not specified.
 
 =back
 

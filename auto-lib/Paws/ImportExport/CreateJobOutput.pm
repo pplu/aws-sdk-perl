@@ -1,7 +1,6 @@
 
 package Paws::ImportExport::CreateJobOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has ArtifactList => (is => 'ro', isa => 'ArrayRef[Paws::ImportExport::Artifact]');
   has JobId => (is => 'ro', isa => 'Str');
   has JobType => (is => 'ro', isa => 'Str');

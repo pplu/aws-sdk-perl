@@ -1,7 +1,6 @@
 
 package Paws::EC2::VolumeAttachment {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has AttachTime => (is => 'ro', isa => 'Str', xmlname => 'attachTime', traits => ['Unwrapped',]);
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', xmlname => 'deleteOnTermination', traits => ['Unwrapped',]);
   has Device => (is => 'ro', isa => 'Str', xmlname => 'device', traits => ['Unwrapped',]);
@@ -38,8 +37,7 @@ The time stamp when the attachment initiated.
 
   
 
-Indicates whether the Amazon EBS volume is deleted on instance
-termination.
+Indicates whether the EBS volume is deleted on instance termination.
 
 
 

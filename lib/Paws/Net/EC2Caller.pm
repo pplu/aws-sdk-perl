@@ -59,6 +59,18 @@ package Paws::Net::EC2Caller {
     return %p;
   }
 
+  sub generate_content_from_parameters {
+    my ($self, $request) = @_;
+
+    $request->headers->content_type('application/x-www-form-urlencoded');
+    my $url = URI->new('http:');
+    $url->query_form($request->parameters);
+    my $content = $url->query;
+    # HTML/4.01 says that line breaks are represented as "CR LF" pairs (i.e., `%0D%0A')
+    $content =~ s/(?<!%0D)%0A/%0D%0A/g if (defined $content);
+    return $content;
+  }
+
   sub prepare_request_for_call {
     my ($self, $call) = @_;
 
@@ -73,10 +85,12 @@ package Paws::Net::EC2Caller {
                            $self->_to_querycaller_params($call) 
     });
 
-    $request->generate_content_from_parameters;
+    $request->content($self->generate_content_from_parameters($request));
 
     $self->sign($request);
 
+use Data::Dumper;
+print Dumper($request);
     return $request;
   }
 }

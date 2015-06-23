@@ -42,6 +42,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 Filters => ArrayRef[Paws::EC2::Filter]
 
   
@@ -56,9 +70,9 @@ C<availability-zone> - The Availability Zone of the instance.
 
 =item *
 
-C<event.code> - The code identifying the type of event
-(C<instance-reboot> | C<system-reboot> | C<system-maintenance> |
-C<instance-retirement> | C<instance-stop>).
+C<event.code> - The code for the scheduled event (C<instance-reboot> |
+C<system-reboot> | C<system-maintenance> | C<instance-retirement> |
+C<instance-stop>).
 
 =item *
 
@@ -66,21 +80,21 @@ C<event.description> - A description of the event.
 
 =item *
 
-C<event.not-after> - The latest end time for the scheduled event, for
-example: C<2010-09-15T17:15:20.000Z>.
+C<event.not-after> - The latest end time for the scheduled event (for
+example, C<2014-09-15T17:15:20.000Z>).
 
 =item *
 
-C<event.not-before> - The earliest start time for the scheduled event,
-for example: C<2010-09-15T17:15:20.000Z>.
+C<event.not-before> - The earliest start time for the scheduled event
+(for example, C<2014-09-15T17:15:20.000Z>).
 
 =item *
 
-C<instance-state-code> - A code representing the state of the instance,
-as a 16-bit unsigned integer. The high byte is an opaque internal value
-and should be ignored. The low byte is set based on the state
-represented. The valid values are 0 (pending), 16 (running), 32
-(shutting-down), 48 (terminated), 64 (stopping), and 80 (stopped).
+C<instance-state-code> - The code for the instance state, as a 16-bit
+unsigned integer. The high byte is an opaque internal value and should
+be ignored. The low byte is set based on the state represented. The
+valid values are 0 (pending), 16 (running), 32 (shutting-down), 48
+(terminated), 64 (stopping), and 80 (stopped).
 
 =item *
 

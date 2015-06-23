@@ -5,7 +5,7 @@ package Paws::CloudFront {
   sub version { '2014-11-06' }
   sub flattened_arrays { 0 }
 
-  with 'Paws::API::Caller', 'Paws::API::SingleEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
 
   
   sub CreateCloudFrontOriginAccessIdentity2014_11_06 {

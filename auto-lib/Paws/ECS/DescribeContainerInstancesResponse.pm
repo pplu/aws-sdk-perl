@@ -1,7 +1,6 @@
 
 package Paws::ECS::DescribeContainerInstancesResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has containerInstances => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerInstance]');
   has failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]');
 

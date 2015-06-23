@@ -1,7 +1,6 @@
 
 package Paws::Glacier::GetDataRetrievalPolicyOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Policy => (is => 'ro', isa => 'Paws::Glacier::DataRetrievalPolicy');
 
 }

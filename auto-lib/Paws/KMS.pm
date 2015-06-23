@@ -128,6 +128,11 @@ package Paws::KMS {
     my $call_object = $self->new_with_coercions('Paws::KMS::RevokeGrant', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateAlias {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::UpdateAlias', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateKeyDescription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::UpdateKeyDescription', @_);
@@ -272,6 +277,11 @@ contain only alphanumeric characters, forward slashes (/), underscores
 by a forward slash (alias/). An alias that begins with "aws" after the
 forward slash (alias/aws...) is reserved by Amazon Web Services (AWS).
 
+To associate an alias with a different key, call UpdateAlias.
+
+Note that you cannot create or update an alias that represents a key in
+another account.
+
 
 
 
@@ -389,7 +399,8 @@ Returns: nothing
 
   
 
-Deletes the specified alias.
+Deletes the specified alias. To associate an alias with a different
+key, call UpdateAlias.
 
 
 
@@ -799,6 +810,14 @@ exposing the plaintext of the data on the client side. The data is
 first decrypted and then encrypted. This operation can also be used to
 change the encryption context of a ciphertext.
 
+Unlike other actions, C<ReEncrypt> is authorized twice - once as
+C<ReEncryptFrom> on the source key and once as C<ReEncryptTo> on the
+destination key. We therefore recommend that you include the
+C<"action":"kms:ReEncrypt*"> statement in your key policies to permit
+re-encryption from or to the key. The statement is included
+automatically when you authorize use of the key through the console but
+must be included manually when you set a policy by using the
+PutKeyPolicy function.
 
 
 
@@ -809,7 +828,8 @@ change the encryption context of a ciphertext.
 
 
 
-=head2 RetireGrant(GrantToken => Str)
+
+=head2 RetireGrant([GrantId => Str, GrantToken => Str, KeyId => Str])
 
 Each argument is described in detail in: L<Paws::KMS::RetireGrant>
 
@@ -833,6 +853,12 @@ operation
 
 =back
 
+The grant to retire must be identified by its grant token or by a
+combination of the key ARN and the grant ID. A grant token is a unique
+variable-length base64-encoded string. A grant ID is a 64 character
+unique identifier of a grant. Both are returned by the C<CreateGrant>
+function.
+
 
 
 
@@ -853,6 +879,39 @@ Returns: nothing
 
 Revokes a grant. You can revoke a grant to actively deny operations
 that depend on it.
+
+
+
+
+
+
+
+
+
+
+
+=head2 UpdateAlias(AliasName => Str, TargetKeyId => Str)
+
+Each argument is described in detail in: L<Paws::KMS::UpdateAlias>
+
+Returns: nothing
+
+  
+
+Updates an alias to associate it with a different key.
+
+An alias name can contain only alphanumeric characters, forward slashes
+(/), underscores (_), and dashes (-). An alias must start with the word
+"alias" followed by a forward slash (alias/). An alias that begins with
+"aws" after the forward slash (alias/aws...) is reserved by Amazon Web
+Services (AWS).
+
+An alias is not a property of a key. Therefore, an alias can be
+associated with and disassociated from an existing key without changing
+the properties of the key.
+
+Note that you cannot create or update an alias that represents a key in
+another account.
 
 
 

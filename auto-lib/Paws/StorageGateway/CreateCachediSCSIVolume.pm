@@ -6,7 +6,7 @@ package Paws::StorageGateway::CreateCachediSCSIVolume {
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has SnapshotId => (is => 'ro', isa => 'Str');
   has TargetName => (is => 'ro', isa => 'Str', required => 1);
-  has VolumeSizeInBytes => (is => 'ro', isa => 'Num', required => 1);
+  has VolumeSizeInBytes => (is => 'ro', isa => 'Int', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -58,7 +58,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-=head2 B<REQUIRED> VolumeSizeInBytes => Num
+=head2 B<REQUIRED> VolumeSizeInBytes => Int
 
   
 

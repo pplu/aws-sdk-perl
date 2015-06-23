@@ -218,6 +218,11 @@ package Paws::OpsWorks {
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::GetHostnameSuggestion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GrantAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::GrantAccess', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RebootInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::RebootInstance', @_);
@@ -1540,6 +1545,28 @@ B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GrantAccess(InstanceId => Str, [ValidForInMinutes => Int])
+
+Each argument is described in detail in: L<Paws::OpsWorks::GrantAccess>
+
+Returns: a L<Paws::OpsWorks::GrantAccessResult> instance
+
+  
+
+This API can be used only with Windows stacks.
+
+Grants RDP access to a Windows instance for a specified time period.
 
 
 

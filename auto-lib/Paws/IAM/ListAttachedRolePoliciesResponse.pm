@@ -1,7 +1,6 @@
 
 package Paws::IAM::ListAttachedRolePoliciesResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AttachedPolicies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::AttachedPolicy]');
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');

@@ -1,7 +1,6 @@
 
 package Paws::Lambda::InvocationResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has FunctionError => (is => 'ro', isa => 'Str');
   has LogResult => (is => 'ro', isa => 'Str');
   has Payload => (is => 'ro', isa => 'Str');

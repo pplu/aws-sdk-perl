@@ -6,6 +6,6 @@ package Paws::CloudSearchDomain::Fields {
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
 
-  has Map => (is => 'ro', isa => 'HashRef[Str]');
+  has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Str]]');
 }
 1

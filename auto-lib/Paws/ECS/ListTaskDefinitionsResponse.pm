@@ -1,7 +1,6 @@
 
 package Paws::ECS::ListTaskDefinitionsResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has nextToken => (is => 'ro', isa => 'Str');
   has taskDefinitionArns => (is => 'ro', isa => 'ArrayRef[Str]');
 

@@ -1,7 +1,6 @@
 
 package Paws::RedShift::HsmClientCertificateMessage {
   use Moose;
-  with 'Paws::API::ResultParser';
   has HsmClientCertificates => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::HsmClientCertificate]', xmlname => 'HsmClientCertificate', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 

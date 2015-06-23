@@ -1,7 +1,6 @@
 
 package Paws::EC2::ImportSnapshotResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped',]);
   has ImportTaskId => (is => 'ro', isa => 'Str', xmlname => 'importTaskId', traits => ['Unwrapped',]);
   has SnapshotTaskDetail => (is => 'ro', isa => 'Paws::EC2::SnapshotTaskDetail', xmlname => 'snapshotTaskDetail', traits => ['Unwrapped',]);
@@ -21,7 +20,7 @@ Paws::EC2::ImportSnapshotResult
 
   
 
-Description of the import snapshot task.
+A description of the import snapshot task.
 
 
 
@@ -35,7 +34,7 @@ Description of the import snapshot task.
 
   
 
-Task ID of the ImportSnapshot task.
+The ID of the import snapshot task.
 
 
 
@@ -48,6 +47,17 @@ Task ID of the ImportSnapshot task.
 =head2 SnapshotTaskDetail => Paws::EC2::SnapshotTaskDetail
 
   
+
+Information about the import snapshot task.
+
+
+
+
+
+
+
+
+
 
 
 =cut

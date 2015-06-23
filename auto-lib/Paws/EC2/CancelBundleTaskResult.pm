@@ -1,7 +1,6 @@
 
 package Paws::EC2::CancelBundleTaskResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has BundleTask => (is => 'ro', isa => 'Paws::EC2::BundleTask', xmlname => 'bundleInstanceTask', traits => ['Unwrapped',]);
 
 }
@@ -19,7 +18,7 @@ Paws::EC2::CancelBundleTaskResult
 
   
 
-The bundle task.
+Information about the bundle task.
 
 
 

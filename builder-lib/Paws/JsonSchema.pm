@@ -89,7 +89,7 @@ package Paws::JsonSchema::Shape {
           return "ArrayRef[$inner_class]" 
         } when /^list$/;
         return 'Str' when /^timestamp$/;
-        return 'Num' when /^long$/;
+        return 'Int' when /^long$/;
         return 'Num' when /^double$/;
         return 'Num' when /^float$/;
         return 'Bool' when /^Boolean$/;

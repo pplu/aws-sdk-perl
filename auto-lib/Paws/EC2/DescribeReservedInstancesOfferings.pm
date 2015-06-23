@@ -7,10 +7,10 @@ package Paws::EC2::DescribeReservedInstancesOfferings {
   has IncludeMarketplace => (is => 'ro', isa => 'Bool');
   has InstanceTenancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceTenancy' );
   has InstanceType => (is => 'ro', isa => 'Str');
-  has MaxDuration => (is => 'ro', isa => 'Num');
+  has MaxDuration => (is => 'ro', isa => 'Int');
   has MaxInstanceCount => (is => 'ro', isa => 'Int');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has MinDuration => (is => 'ro', isa => 'Num');
+  has MinDuration => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
   has OfferingType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringType' );
   has ProductDescription => (is => 'ro', isa => 'Str');
@@ -65,6 +65,20 @@ The Availability Zone in which the Reserved Instance can be used.
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 Filters => ArrayRef[Paws::EC2::Filter]
 
   
@@ -102,9 +116,16 @@ Marketplace are listed.
 
 =item *
 
-C<product-description> - The description of the Reserved Instance
-(C<Linux/UNIX> | C<Linux/UNIX (Amazon VPC)> | C<Windows> | C<Windows
-(Amazon VPC)>).
+C<product-description> - The Reserved Instance product platform
+description. Instances that include C<(Amazon VPC)> in the product
+platform description will only be displayed to EC2-Classic account
+holders and are for use with Amazon VPC. (C<Linux/UNIX> | C<Linux/UNIX
+(Amazon VPC)> | C<SUSE Linux> | C<SUSE Linux (Amazon VPC)> | C<Red Hat
+Enterprise Linux> | C<Red Hat Enterprise Linux (Amazon VPC)> |
+C<Windows> | C<Windows (Amazon VPC)>) | C<Windows with SQL Server
+Standard> | C<Windows with SQL Server Standard (Amazon VPC)> |
+C<Windows with SQL Server Web> | C< Windows with SQL Server Web (Amazon
+VPC))>
 
 =item *
 
@@ -166,7 +187,7 @@ Default: C<default>
 
 The instance type on which the Reserved Instance can be used. For more
 information, see Instance Types in the I<Amazon Elastic Compute Cloud
-User Guide for Linux>.
+User Guide>.
 
 
 
@@ -177,7 +198,7 @@ User Guide for Linux>.
 
 
 
-=head2 MaxDuration => Num
+=head2 MaxDuration => Int
 
   
 
@@ -232,7 +253,7 @@ Default: 100
 
 
 
-=head2 MinDuration => Num
+=head2 MinDuration => Int
 
   
 
@@ -286,8 +307,8 @@ C<Medium Utilization> Reserved Instance offering type.
 
   
 
-The Reserved Instance description. Instances that include C<(Amazon
-VPC)> in the description are for use with Amazon VPC.
+The Reserved Instance product platform description. Instances that
+include C<(Amazon VPC)> in the description are for use with Amazon VPC.
 
 
 

@@ -1,7 +1,6 @@
 
 package Paws::S3::ListPartsOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Bucket => (is => 'ro', isa => 'Str');
   has Initiator => (is => 'ro', isa => 'Paws::S3::Initiator');
   has IsTruncated => (is => 'ro', isa => 'Bool');

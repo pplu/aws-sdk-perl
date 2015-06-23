@@ -1,7 +1,6 @@
 
 package Paws::EC2::DescribeSnapshotAttributeResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has CreateVolumePermissions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CreateVolumePermission]', xmlname => 'createVolumePermission', traits => ['Unwrapped',]);
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', xmlname => 'productCodes', traits => ['Unwrapped',]);
   has SnapshotId => (is => 'ro', isa => 'Str', xmlname => 'snapshotId', traits => ['Unwrapped',]);
@@ -49,7 +48,7 @@ A list of product codes.
 
   
 
-The ID of the Amazon EBS snapshot.
+The ID of the EBS snapshot.
 
 
 

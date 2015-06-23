@@ -12,13 +12,8 @@ use Module::Runtime;
 
 use Paws;
 
-my $aws = Paws->new();
-
-if (not $ENV{AWS_TEST_RESPONSES}){
-  ok(1, 'Not testing responses (yet). Set AWS_TEST_RESPONSES to do it');
-  done_testing;
-  exit 0;
-}
+my $debug = $ENV{DEBUG_TESTS} || 0;
+my $aws = Paws->new(config => { credentials => 'Test::CustomCredentials' });
 
 use Data::Dumper;
 
@@ -49,6 +44,7 @@ sub test_file {
 
   SKIP: {
     skip "$test_def_file is lacking service or call entry",1 if (not $test->{service} or not $test->{call});
+    local $TODO = "$test_def_file is TODO: $test->{todo}" if (defined $test->{todo});
 
     my $service = $aws->service($test->{service},
       region => 'fake_region',
@@ -62,14 +58,17 @@ sub test_file {
       my $content = read_file($file);
       my $unserialized_struct = $service->unserialize_response( $content );
 
-      diag("DATASTRUCUTRE FROM RESPONSE");
-      diag(Dumper($unserialized_struct));
+      if ($debug){
+        diag("DATASTRUCUTRE FROM RESPONSE");
+        diag(Dumper($unserialized_struct));
+      }
 
       $res = $service->response_to_object($unserialized_struct, $call_class);
     } "Call $test->{service}\-\>$test->{ call } from $file";
 
-    diag(Dumper($res));
-    if (not $passed) {
+    diag(Dumper($res)) if ($debug);
+
+    if (not $passed or $TODO) {
       ok(0, "Can't test method access because something went horribly wrong in the call to $test->{ call }");
       next;
     }
@@ -95,7 +94,11 @@ sub test_file {
         die "Didn't know how to get a result to compare to. Check that test has path or dpath entry";
       }
 
-      cmp_ok($got, $t->{op}, $t->{expected}, "Got $path $t->{op} $t->{expected} from result");
+      if (not defined $got and not defined $t->{expected}){
+        ok(1, "Got undef on $path from result");
+      } else {
+        cmp_ok($got, $t->{op}, $t->{expected}, "Got $path $t->{op} $t->{expected} from result");
+      }
     }
   }
 }

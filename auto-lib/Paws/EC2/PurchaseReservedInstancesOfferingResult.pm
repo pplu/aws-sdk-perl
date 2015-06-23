@@ -1,7 +1,6 @@
 
 package Paws::EC2::PurchaseReservedInstancesOfferingResult {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
   has ReservedInstancesId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstancesId', traits => ['Unwrapped',]);
 
 }

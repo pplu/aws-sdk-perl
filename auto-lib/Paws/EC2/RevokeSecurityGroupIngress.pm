@@ -62,6 +62,20 @@ specifying a source security group.
 
   
 
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+
+
+
+
+
+
+
 =head2 FromPort => Int
 
   
@@ -145,7 +159,9 @@ Numbers). Use C<-1> to specify all.
   
 
 [EC2-Classic, default VPC] The name of the source security group. You
-can't specify a source security group and a CIDR IP address range.
+can't specify this parameter in combination with the following
+parameters: the CIDR IP address range, the start of the port range, and
+the end of the port range.
 
 
 
@@ -160,8 +176,9 @@ can't specify a source security group and a CIDR IP address range.
 
   
 
-The ID of the source security group. You can't specify a source
-security group and a CIDR IP address range.
+The ID of the source security group. You can't specify this parameter
+in combination with the following parameters: the CIDR IP address
+range, the start of the port range, and the end of the port range.
 
 
 

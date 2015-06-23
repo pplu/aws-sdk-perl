@@ -2,7 +2,7 @@
 package Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity2014_11_06 {
   use Moose;
   has CloudFrontOriginAccessIdentityConfig => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentityConfig', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
   has IfMatch => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-Match' );
 
   use MooseX::ClassAttribute;

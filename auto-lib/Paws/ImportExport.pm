@@ -4,7 +4,7 @@ package Paws::ImportExport {
   sub version { '2010-06-01' }
   sub flattened_arrays { 0 }
 
-  with 'Paws::API::Caller', 'Paws::API::SingleEndpointCaller', 'Paws::Net::V2Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V2Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
   
   sub CancelJob {
@@ -139,10 +139,8 @@ Returns: a L<Paws::ImportExport::GetShippingLabelOutput> instance
 
   
 
-This operation returns information about a job, including where the job
-is in the processing pipeline, the status of the results, and the
-signature value associated with the job. You can only return
-information about jobs you own.
+This operation generates a pre-paid UPS shipping label that you will
+use to ship your device to AWS for processing.
 
 
 

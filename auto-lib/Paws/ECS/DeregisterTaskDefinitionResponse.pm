@@ -1,7 +1,6 @@
 
 package Paws::ECS::DeregisterTaskDefinitionResponse {
   use Moose;
-  with 'Paws::API::ResultParser';
   has taskDefinition => (is => 'ro', isa => 'Paws::ECS::TaskDefinition');
 
 }

@@ -1,7 +1,6 @@
 
 package Paws::SQS::DeleteMessageBatchResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Failed => (is => 'ro', isa => 'ArrayRef[Paws::SQS::BatchResultErrorEntry]', xmlname => 'BatchResultErrorEntry', traits => ['Unwrapped',], required => 1);
   has Successful => (is => 'ro', isa => 'ArrayRef[Paws::SQS::DeleteMessageBatchResultEntry]', xmlname => 'DeleteMessageBatchResultEntry', traits => ['Unwrapped',], required => 1);
 

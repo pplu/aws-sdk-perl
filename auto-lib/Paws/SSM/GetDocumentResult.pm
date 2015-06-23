@@ -1,7 +1,6 @@
 
 package Paws::SSM::GetDocumentResult {
   use Moose;
-  with 'Paws::API::ResultParser';
   has Content => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 

@@ -1,7 +1,6 @@
 
 package Paws::MachineLearning::CreateDataSourceFromRDSOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has DataSourceId => (is => 'ro', isa => 'Str');
 
 }

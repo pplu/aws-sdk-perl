@@ -9,12 +9,6 @@ package Paws::API::Builder::EC2 {
 
   extends 'Paws::API::Builder';
 
-  has service => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->metadata->endpointPrefix });
-  has version => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->metadata->apiVersion });
-  has endpoint_role => (is => 'ro', lazy => 1, default => sub { defined $_[0]->api_struct->metadata->globalEndpoint ? 
-                                                                   'Paws::API::SingleEndpointCaller':
-                                                                   'Paws::API::RegionalEndpointCaller' 
-                                                              } );
   has response_role  => (is => 'ro', lazy => 1, default => sub { 'Paws::Net::XMLResponse' });
 
   has '+parameter_role' => (
@@ -52,7 +46,6 @@ package [% c.api %]::[% operation.name %] {
 [%- IF (shape) %]
 package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
   use Moose;
-  with 'Paws::API::UnwrappedParser';
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- traits = [] -%]
   [%- member_shape_name = shape.members.$param_name.shape %]
@@ -116,7 +109,7 @@ package [% c.api %] {
 #);
 
 
-  sub make_inner_class {
+  override make_inner_class => sub {
     my $self = shift;
     my $iclass = shift;
     my $inner_class = shift;
@@ -179,9 +172,8 @@ print Dumper($iclass);
           $output .= ");\n";
         }
         $output .= "}\n1;\n";
-        $self->save_class($inner_class, $output);
       }
-    }
+    };
 }
 
 1;

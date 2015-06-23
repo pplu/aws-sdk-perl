@@ -1,7 +1,6 @@
 
 package Paws::S3::PutObjectAclOutput {
   use Moose;
-  with 'Paws::API::ResultParser';
   has RequestCharged => (is => 'ro', isa => 'Str');
 
 }

@@ -3,11 +3,18 @@
     <IsTruncated>false</IsTruncated>
     <Groups>
       <member>
-        <GroupId>AGP000000000000000000</GroupId>
-        <GroupName>testgroup</GroupName>
         <Path>/</Path>
-        <Arn>arn:aws:iam::000000000000:group/testgroup</Arn>
-        <CreateDate>2015-04-08T23:19:05Z</CreateDate>
+        <GroupName>group1</GroupName>
+        <Arn>arn:aws:iam::000000000000:group/group1</Arn>
+        <GroupId>AGPAAAAAAAAAAAAAAAAAA</GroupId>
+        <CreateDate>2015-06-03T21:54:22Z</CreateDate>
+      </member>
+      <member>
+        <Path>/</Path>
+        <GroupName>group2</GroupName>
+        <Arn>arn:aws:iam::000000000000:group/group2</Arn>
+        <GroupId>AGPAAAAAAAAAAAAAAAAAA</GroupId>
+        <CreateDate>2015-06-03T21:54:44Z</CreateDate>
       </member>
     </Groups>
   </ListGroupsResult>

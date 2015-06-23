@@ -113,9 +113,8 @@ The name of the lifecycle hook.
 
   
 
-The Amazon EC2 instance state to which you want to attach the lifecycle
-hook. See DescribeLifecycleHookTypes for a list of available lifecycle
-hook types.
+The instance state to which you want to attach the lifecycle hook. For
+a list of lifecycle hook types, see DescribeLifecycleHookTypes.
 
 This parameter is required for new lifecycle hooks, but optional when
 updating existing hooks.

@@ -1,7 +1,6 @@
 
 package Paws::RDS::AccountAttributesMessage {
   use Moose;
-  with 'Paws::API::ResultParser';
   has AccountQuotas => (is => 'ro', isa => 'ArrayRef[Paws::RDS::AccountQuota]', xmlname => 'AccountQuota', traits => ['Unwrapped',]);
 
 }
