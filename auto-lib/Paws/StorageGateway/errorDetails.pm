@@ -1,4 +1,4 @@
-package Paws::CognitoIdentity::RolesMap {
+package Paws::StorageGateway::errorDetails {
   use Moose;
   with 'Paws::API::StrToStrMapParser';
 

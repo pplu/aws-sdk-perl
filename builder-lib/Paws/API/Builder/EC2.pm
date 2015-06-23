@@ -115,7 +115,7 @@ package [% c.api %] {
 #);
 
 
-  sub make_inner_class {
+  override make_inner_class => sub {
     my $self = shift;
     my $iclass = shift;
     my $inner_class = shift;
@@ -175,9 +175,8 @@ package [% c.api %] {
           $output .= ");\n";
         }
         $output .= "}\n1;\n";
-        $self->save_class($inner_class, $output);
       }
-    }
+    };
 }
 
 1;
