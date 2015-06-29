@@ -30,7 +30,7 @@ package Paws::Net::RestJsonCaller {
           }
         } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
           $p{ $key } = $params->$att;
-        } elsif ($params->$att->does('Paws::API::StrToStrMapParser')){ 
+        } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')){ 
           $p{ $key } = { %{ $params->$att->Map }  };
         } else {
           $p{ $key } = $self->_to_jsoncaller_params($params->$att);

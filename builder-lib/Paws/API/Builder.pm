@@ -667,7 +667,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
         } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'string') {
           $output .= "package $inner_class {\n"; 
           $output .= "  use Moose;\n";
-          $output .= "  with 'Paws::API::StrToStrMapParser';\n";
+          $output .= "  with 'Paws::API::StrToNativeMapParser';\n";
 
           my $xml_keys = $iclass->{key}->{locationName} || 'key';
           my $xml_values = $iclass->{value}->{locationName} || 'value';
@@ -682,7 +682,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
         } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'float') {
           $output .= "package $inner_class {\n";
           $output .= "  use Moose;\n";
-          $output .= "  with 'Paws::API::StrToStrMapParser';\n";
+          $output .= "  with 'Paws::API::StrToNativeMapParser';\n";
 
           my $xml_keys = $iclass->{key}->{locationName} || 'key';
           my $xml_values = $iclass->{value}->{locationName} || 'value';
@@ -714,7 +714,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
           my $type = $self->get_caller_class_type($iclass->{value}->{shape});
           $output .= "package $inner_class {\n";
           $output .= "  use Moose;\n";
-          $output .= "  with 'Paws::API::StrToStrMapParser';\n";
+          $output .= "  with 'Paws::API::StrToNativeMapParser';\n";
 
           my $xml_keys = $iclass->{key}->{locationName} || 'key';
           my $xml_values = $iclass->{value}->{locationName} || 'value';
