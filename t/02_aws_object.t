@@ -1,5 +1,7 @@
 #!/usr/bin/env perl
 
+use lib 't/lib';
+
 package A::NEW::CALLER {
   use Moose;
   with 'Paws::Net::CallerRole';
