@@ -107,11 +107,11 @@ invoking your function.
 
   
 
-The AWS account ID (without a hyphen) of the source owner. If the
-C<SourceArn> identifies a bucket, then this is the bucket owner's
-account ID. You can use this additional condition to ensure the bucket
-you specify is owned by a specific account (it is possible the bucket
-owner deleted the bucket and some other AWS account created the
+The AWS account ID (without a hyphen) of the source owner. For example,
+if the C<SourceArn> identifies a bucket, then this is the bucket
+owner's account ID. You can use this additional condition to ensure the
+bucket you specify is owned by a specific account (it is possible the
+bucket owner deleted the bucket and some other AWS account created the
 bucket). You can also use this condition to specify all sources (that
 is, you don't specify the C<SourceArn>) owned by a specific account.
 

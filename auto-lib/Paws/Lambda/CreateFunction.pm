@@ -46,7 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A structure that includes ZipFile.
+The code for the Lambda function.
 
 
 
@@ -102,7 +102,10 @@ functions to other AWS Lambda APIs, such as Invoke.
   
 
 The function within your code that Lambda calls to begin execution. For
-Node.js, it is the I<module-name>.I<export> value in your function.
+Node.js, it is the I<module-name>.I<export> value in your function. For
+Java, it can be C<package.class-name::handler> or
+C<package.class-name>. For more information, see Lambda Function
+Handler (Java).
 
 
 
@@ -155,7 +158,7 @@ resources. For more information, see AWS Lambda: How it Works
   
 
 The runtime environment for the Lambda function you are uploading.
-Currently, Lambda supports only "nodejs" as the runtime.
+Currently, Lambda supports "java" and "nodejs" as the runtime.
 
 
 

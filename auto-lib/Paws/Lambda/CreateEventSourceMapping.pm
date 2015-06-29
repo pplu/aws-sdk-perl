@@ -61,7 +61,8 @@ records.
 
   
 
-Indicates whether AWS Lambda should begin polling the event source.
+Indicates whether AWS Lambda should begin polling the event source, the
+default is not enabled.
 
 
 
