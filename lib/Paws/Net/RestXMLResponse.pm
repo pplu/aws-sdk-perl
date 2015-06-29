@@ -8,6 +8,8 @@ package Paws::Net::RestXMLResponse {
   sub unserialize_response {
     my ($self, $data) = @_;
 
+    return {} if ($data eq '');
+
     my $xml = XML::Simple::XMLin( $data,
             ForceArray    => [ qr/(?:^item$|Errors)/i, ],
             KeyAttr       => '',
