@@ -195,9 +195,9 @@ For major version upgrades, if a non-default cluster parameter group is
 currently in use, a new cluster parameter group in the cluster
 parameter group family for the new version must be specified. The new
 cluster parameter group can be the default for that cluster parameter
-group family. For more information about managing parameter groups, go
-to Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
-Management Guide>.
+group family. For more information about parameters and parameter
+groups, go to Amazon Redshift Parameter Groups in the I<Amazon Redshift
+Cluster Management Guide>.
 
 Example: C<1.0>
 
@@ -331,8 +331,8 @@ connection is switched to the new cluster. When the new connection is
 complete, the original access permissions for the cluster are restored.
 You can use DescribeResize to track the progress of the resize request.
 
-Valid Values: C< dw1.xlarge> | C<dw1.8xlarge> | C<dw2.large> |
-C<dw2.8xlarge>.
+Valid Values: C< ds1.xlarge> | C<ds1.8xlarge> | C< ds2.xlarge> |
+C<ds2.8xlarge> | C<dc1.large> | C<dc1.8xlarge>.
 
 
 

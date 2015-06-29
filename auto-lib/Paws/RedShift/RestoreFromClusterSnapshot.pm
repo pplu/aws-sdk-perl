@@ -12,6 +12,7 @@ package Paws::RedShift::RestoreFromClusterSnapshot {
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has NodeType => (is => 'ro', isa => 'Str');
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -266,6 +267,31 @@ keys in an HSM.
 The AWS Key Management Service (KMS) key ID of the encryption key that
 you want to use to encrypt data in the cluster that you restore from a
 shared snapshot.
+
+
+
+
+
+
+
+
+
+
+=head2 NodeType => Str
+
+  
+
+The node type that the restored cluster will be provisioned with.
+
+Default: The node type of the cluster from which the snapshot was
+taken. You can modify this if you are using any DS node type. In that
+case, you can choose to restore into another DS node type of the same
+size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or
+ds2.xlarge into ds1.xlarge. If you have a DC instance type, you must
+restore into that same instance type and size. In other words, you can
+only restore a dc1.large instance type into another dc1.large instance
+type. For more information about node types, see About Clusters and
+Nodes in the I<Amazon Redshift Cluster Management Guide>
 
 
 

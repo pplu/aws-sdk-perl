@@ -4,6 +4,7 @@ package Paws::RedShift::EnableSnapshotCopy {
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DestinationRegion => (is => 'ro', isa => 'Str', required => 1);
   has RetentionPeriod => (is => 'ro', isa => 'Int');
+  has SnapshotCopyGrantName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -81,6 +82,22 @@ region after they are copied from the source region.
 Default: 7.
 
 Constraints: Must be at least 1 and no more than 35.
+
+
+
+
+
+
+
+
+
+
+=head2 SnapshotCopyGrantName => Str
+
+  
+
+The name of the snapshot copy grant to use when snapshots of an AWS
+KMS-encrypted cluster are copied to the destination region.
 
 
 

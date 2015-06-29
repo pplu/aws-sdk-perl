@@ -62,6 +62,11 @@ package Paws::RedShift {
     my $call_object = $self->new_with_coercions('Paws::RedShift::CreateHsmConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateSnapshotCopyGrant {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CreateSnapshotCopyGrant', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::CreateTags', @_);
@@ -105,6 +110,11 @@ package Paws::RedShift {
   sub DeleteHsmConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteHsmConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteSnapshotCopyGrant {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteSnapshotCopyGrant', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteTags {
@@ -200,6 +210,11 @@ package Paws::RedShift {
   sub DescribeResize {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeResize', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeSnapshotCopyGrants {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeSnapshotCopyGrants', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTags {
@@ -490,8 +505,8 @@ the cluster is created by using ModifyCluster.
 
 Parameters in the parameter group define specific behavior that applies
 to the databases you create on the cluster. For more information about
-managing parameter groups, go to Amazon Redshift Parameter Groups in
-the I<Amazon Redshift Cluster Management Guide>.
+parameters and parameter groups, go to Amazon Redshift Parameter Groups
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
@@ -666,6 +681,32 @@ will then store its encryption keys in the HSM.
 In addition to creating an HSM configuration, you must also create an
 HSM client certificate. For more information, go to Hardware Security
 Modules in the Amazon Redshift Cluster Management Guide.
+
+
+
+
+
+
+
+
+
+
+
+=head2 CreateSnapshotCopyGrant(SnapshotCopyGrantName => Str, [KmsKeyId => Str, Tags => ArrayRef[Paws::RedShift::Tag]])
+
+Each argument is described in detail in: L<Paws::RedShift::CreateSnapshotCopyGrant>
+
+Returns: a L<Paws::RedShift::CreateSnapshotCopyGrantResult> instance
+
+  
+
+Creates a snapshot copy grant that permits Amazon Redshift to use a
+customer master key (CMK) from AWS Key Management Service (AWS KMS) to
+encrypt copied snapshots in a destination region.
+
+For more information about managing snapshot copy grants, go to Amazon
+Redshift Database Encryption in the I<Amazon Redshift Cluster
+Management Guide>.
 
 
 
@@ -897,6 +938,26 @@ Deletes the specified Amazon Redshift HSM configuration.
 
 
 
+=head2 DeleteSnapshotCopyGrant(SnapshotCopyGrantName => Str)
+
+Each argument is described in detail in: L<Paws::RedShift::DeleteSnapshotCopyGrant>
+
+Returns: nothing
+
+  
+
+Deletes the specified snapshot copy grant.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DeleteTags(ResourceName => Str, TagKeys => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::RedShift::DeleteTags>
@@ -932,9 +993,9 @@ group, the response includes the parameter group name, description, and
 parameter group family name. You can optionally specify a name to
 retrieve the description of a specific parameter group.
 
-For more information about managing parameter groups, go to Amazon
-Redshift Parameter Groups in the I<Amazon Redshift Cluster Management
-Guide>.
+For more information about parameters and parameter groups, go to
+Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
+Management Guide>.
 
 If you specify both tag keys and tag values in the same request, Amazon
 Redshift returns all parameter groups that match any combination of the
@@ -975,9 +1036,9 @@ specific type. For example, to retrieve parameters that were modified
 by a user action such as from ModifyClusterParameterGroup, you can
 specify I<source> equal to I<user>.
 
-For more information about managing parameter groups, go to Amazon
-Redshift Parameter Groups in the I<Amazon Redshift Cluster Management
-Guide>.
+For more information about parameters and parameter groups, go to
+Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
+Management Guide>.
 
 
 
@@ -1166,9 +1227,9 @@ Returns: a L<Paws::RedShift::DescribeDefaultClusterParametersResult> instance
 Returns a list of parameter settings for the specified parameter group
 family.
 
-For more information about managing parameter groups, go to Amazon
-Redshift Parameter Groups in the I<Amazon Redshift Cluster Management
-Guide>.
+For more information about parameters and parameter groups, go to
+Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
+Management Guide>.
 
 
 
@@ -1379,7 +1440,7 @@ node offering you want to purchase. You then use the unique offering ID
 in you call to PurchaseReservedNodeOffering to reserve one or more
 nodes for your Amazon Redshift cluster.
 
-For more information about managing parameter groups, go to Purchasing
+For more information about reserved node offerings, go to Purchasing
 Reserved Nodes in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -1428,6 +1489,31 @@ as C<SUCCEEDED> until the next resize.
 
 A resize operation can be requested using ModifyCluster and specifying
 a different number or type of nodes for the cluster.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeSnapshotCopyGrants([Marker => Str, MaxRecords => Int, SnapshotCopyGrantName => Str, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeSnapshotCopyGrants>
+
+Returns: a L<Paws::RedShift::SnapshotCopyGrantMessage> instance
+
+  
+
+Returns a list of snapshot copy grants owned by the AWS account in the
+destination region.
+
+For more information about managing snapshot copy grants, go to Amazon
+Redshift Database Encryption in the I<Amazon Redshift Cluster
+Management Guide>.
 
 
 
@@ -1518,6 +1604,11 @@ Returns: a L<Paws::RedShift::DisableSnapshotCopyResult> instance
 Disables the automatic copying of snapshots from one region to another
 region for a specified cluster.
 
+If your cluster and its snapshots are encrypted using a customer master
+key (CMK) from AWS KMS, use DeleteSnapshotCopyGrant to delete the grant
+that grants Amazon Redshift permission to the CMK in the destination
+region.
+
 
 
 
@@ -1549,7 +1640,7 @@ for the specified Amazon Redshift cluster.
 
 
 
-=head2 EnableSnapshotCopy(ClusterIdentifier => Str, DestinationRegion => Str, [RetentionPeriod => Int])
+=head2 EnableSnapshotCopy(ClusterIdentifier => Str, DestinationRegion => Str, [RetentionPeriod => Int, SnapshotCopyGrantName => Str])
 
 Each argument is described in detail in: L<Paws::RedShift::EnableSnapshotCopy>
 
@@ -1612,9 +1703,9 @@ Returns: a L<Paws::RedShift::ClusterParameterGroupNameMessage> instance
 
 Modifies the parameters of a parameter group.
 
-For more information about managing parameter groups, go to Amazon
-Redshift Parameter Groups in the I<Amazon Redshift Cluster Management
-Guide>.
+For more information about parameters and parameter groups, go to
+Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
+Management Guide>.
 
 
 
@@ -1698,13 +1789,13 @@ Returns: a L<Paws::RedShift::PurchaseReservedNodeOfferingResult> instance
   
 
 Allows you to purchase reserved nodes. Amazon Redshift offers a
-predefined set of reserved node offerings. You can purchase one of the
-offerings. You can call the DescribeReservedNodeOfferings API to obtain
-the available reserved node offerings. You can call this API by
+predefined set of reserved node offerings. You can purchase one or more
+of the offerings. You can call the DescribeReservedNodeOfferings API to
+obtain the available reserved node offerings. You can call this API by
 providing a specific reserved node offering and the number of nodes you
 want to reserve.
 
-For more information about managing parameter groups, go to Purchasing
+For more information about reserved node offerings, go to Purchasing
 Reserved Nodes in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -1767,7 +1858,7 @@ you must reboot any associated clusters.
 
 
 
-=head2 RestoreFromClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ElasticIp => Str, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, KmsKeyId => Str, OwnerAccount => Str, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, SnapshotClusterIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 RestoreFromClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ElasticIp => Str, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, KmsKeyId => Str, NodeType => Str, OwnerAccount => Str, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, SnapshotClusterIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RedShift::RestoreFromClusterSnapshot>
 
@@ -1775,13 +1866,15 @@ Returns: a L<Paws::RedShift::RestoreFromClusterSnapshotResult> instance
 
   
 
-Creates a new cluster from a snapshot. Amazon Redshift creates the
-resulting cluster with the same configuration as the original cluster
-from which the snapshot was created, except that the new cluster is
-created with the default cluster security and parameter group. After
-Amazon Redshift creates the cluster you can use the ModifyCluster API
-to associate a different security group and different parameter group
-with the restored cluster.
+Creates a new cluster from a snapshot. By default, Amazon Redshift
+creates the resulting cluster with the same configuration as the
+original cluster from which the snapshot was created, except that the
+new cluster is created with the default cluster security and parameter
+groups. After Amazon Redshift creates the cluster, you can use the
+ModifyCluster API to associate a different security group and different
+parameter group with the restored cluster. If you are using a DS node
+type, you can also choose to change to another DS node type of the same
+size during restore.
 
 If you restore a cluster into a VPC, you must provide a cluster subnet
 group where you want the cluster restored.

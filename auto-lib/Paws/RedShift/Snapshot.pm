@@ -19,6 +19,7 @@ package Paws::RedShift::Snapshot {
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+  has RestorableNodeTypes => (is => 'ro', isa => 'ArrayRef[Str]');
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');

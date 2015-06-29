@@ -474,8 +474,8 @@ The node type to be provisioned for the cluster. For information about
 node types, go to Working with Clusters in the I<Amazon Redshift
 Cluster Management Guide>.
 
-Valid Values: C<dw1.xlarge> | C<dw1.8xlarge> | C<dw2.large> |
-C<dw2.8xlarge>.
+Valid Values: C<ds1.xlarge> | C<ds1.8xlarge> | C<ds2.xlarge> |
+C<ds2.8xlarge> | C<dc1.large> | C<dc1.8xlarge>.
 
 
 

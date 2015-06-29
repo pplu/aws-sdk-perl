@@ -121,6 +121,8 @@ types are:
 
 =item * Parameter group
 
+=item * Snapshot copy grant
+
 =back
 
 For more information about Amazon Redshift resource types and

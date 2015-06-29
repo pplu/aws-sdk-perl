@@ -55,13 +55,12 @@ tags. For example, C<arn:aws:redshift:us-east-1:123456789:cluster:t1>.
   
 
 One or more name/value pairs to add as tags to the specified resource.
-Each tag name is passed in with the parameter C<tag-key> and the
-corresponding value is passed in with the parameter C<tag-value>. The
-C<tag-key> and C<tag-value> parameters are separated by a colon (:).
-Separate multiple tags with a space. For example, C<--tags
-"tag-key"="owner":"tag-value"="admin"
-"tag-key"="environment":"tag-value"="test"
-"tag-key"="version":"tag-value"="1.0">.
+Each tag name is passed in with the parameter C<Key> and the
+corresponding value is passed in with the parameter C<Value>. The
+C<Key> and C<Value> parameters are separated by a comma (,). Separate
+multiple tags with a space. For example, C<--tags
+"Key"="owner","Value"="admin" "Key"="environment","Value"="test"
+"Key"="version","Value"="1.0">.
 
 
 
