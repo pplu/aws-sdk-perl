@@ -64,10 +64,10 @@ ID.
 
 The archive description that you are uploading in parts.
 
-The part size must be a megabyte (1024 KB) multiplied by a power of
-2E<acirc>E<128>E<148>for example, 1048576 (1 MB), 2097152 (2 MB),
-4194304 (4 MB), 8388608 (8 MB), and so on. The minimum allowable part
-size is 1 MB, and the maximum is 4 GB (4096 MB).
+The part size must be a megabyte (1024 KB) multiplied by a power of 2,
+for example 1048576 (1 MB), 2097152 (2 MB), 4194304 (4 MB), 8388608 (8
+MB), and so on. The minimum allowable part size is 1 MB, and the
+maximum is 4 GB (4096 MB).
 
 
 

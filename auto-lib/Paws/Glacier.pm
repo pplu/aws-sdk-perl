@@ -13,6 +13,11 @@ package Paws::Glacier {
     my $call_object = $self->new_with_coercions('Paws::Glacier::AbortMultipartUpload', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AddTagsToVault {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glacier::AddTagsToVault', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CompleteMultipartUpload {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glacier::CompleteMultipartUpload', @_);
@@ -98,9 +103,19 @@ package Paws::Glacier {
     my $call_object = $self->new_with_coercions('Paws::Glacier::ListParts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForVault {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glacier::ListTagsForVault', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListVaults {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glacier::ListVaults', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveTagsFromVault {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glacier::RemoveTagsFromVault', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SetDataRetrievalPolicy {
@@ -237,6 +252,32 @@ Using AWS Identity and Access Management (IAM).
 For conceptual information and underlying REST API, go to Working with
 Archives in Amazon Glacier and Abort Multipart Upload in the I<Amazon
 Glacier Developer Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 AddTagsToVault(accountId => Str, vaultName => Str, [Tags => Paws::Glacier::TagMap])
+
+Each argument is described in detail in: L<Paws::Glacier::AddTagsToVault>
+
+Returns: nothing
+
+  
+
+This operation adds the specified tags to a vault. Each tag is composed
+of a key and a value. Each vault can have up to 10 tags. If your
+request would cause the tag limit for the vault to be exceeded, the
+operation throws the C<LimitExceededException> error. If a tag already
+exists on the vault under a specified key, the existing key value will
+be overwritten. For more information about tags, see Tagging Amazon
+Glacier Resources.
 
 
 
@@ -458,10 +499,10 @@ Returns: nothing
   
 
 This operation deletes the access policy associated with the specified
-vault. The operation is eventually consistentE<acirc>E<128>E<148>that
-is, it might take some time for Amazon Glacier to completely remove the
-access policy, and you might still see the effect of the policy for a
-short time after you send the delete request.
+vault. The operation is eventually consistent; that is, it might take
+some time for Amazon Glacier to completely remove the access policy,
+and you might still see the effect of the policy for a short time after
+you send the delete request.
 
 This operation is idempotent. You can invoke delete multiple times,
 even if there is no policy associated with the vault. For more
@@ -487,8 +528,8 @@ Returns: nothing
   
 
 This operation deletes the notification configuration set for a vault.
-The operation is eventually consistent;that is, it might take some time
-for Amazon Glacier to completely disable the notifications and you
+The operation is eventually consistent; that is, it might take some
+time for Amazon Glacier to completely disable the notifications and you
 might still receive some notifications for a short time after you send
 the delete request.
 
@@ -700,11 +741,11 @@ Returns: a L<Paws::Glacier::GetVaultAccessPolicyOutput> instance
   
 
 This operation retrieves the C<access-policy> subresource set on the
-vaultE<acirc>E<128>E<148>for more information on setting this
-subresource, see Set Vault Access Policy (PUT access-policy). If there
-is no access policy set on the vault, the operation returns a C<404 Not
-found> error. For more information about vault access policies, see
-Amazon Glacier Access Control with Vault Access Policies.
+vault; for more information on setting this subresource, see Set Vault
+Access Policy (PUT access-policy). If there is no access policy set on
+the vault, the operation returns a C<404 Not found> error. For more
+information about vault access policies, see Amazon Glacier Access
+Control with Vault Access Policies.
 
 
 
@@ -1124,6 +1165,28 @@ Developer Guide>.
 
 
 
+=head2 ListTagsForVault(accountId => Str, vaultName => Str)
+
+Each argument is described in detail in: L<Paws::Glacier::ListTagsForVault>
+
+Returns: a L<Paws::Glacier::ListTagsForVaultOutput> instance
+
+  
+
+This operation lists all the tags attached to a vault. The operation
+returns an empty map if there are no tags. For more information about
+tags, see Tagging Amazon Glacier Resources.
+
+
+
+
+
+
+
+
+
+
+
 =head2 ListVaults(accountId => Str, [limit => Str, marker => Str])
 
 Each argument is described in detail in: L<Paws::Glacier::ListVaults>
@@ -1153,6 +1216,29 @@ Using AWS Identity and Access Management (IAM).
 For conceptual information and underlying REST API, go to Retrieving
 Vault Metadata in Amazon Glacier and List Vaults in the I<Amazon
 Glacier Developer Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 RemoveTagsFromVault(accountId => Str, vaultName => Str, [TagKeys => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::Glacier::RemoveTagsFromVault>
+
+Returns: nothing
+
+  
+
+This operation removes one or more tags from the set of tags attached
+to a vault. For more information about tags, see Tagging Amazon Glacier
+Resources. This operation is idempotent. The operation will be
+successful, even if there are no tags attached to the vault.
 
 
 
