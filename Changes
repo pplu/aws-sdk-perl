@@ -1,4 +1,5 @@
-0.09 
+0.09 25 Jun 2015 17:00:00
+ - API updates from botocore until 2015-06-29
  - Difference between SQS message AttributeMaps and QueueAttribute maps (thnks codehead) 
  - Paws now returns structured exceptions (Paws::Exception) with information of errors from
    the APIs. The exceptions stringify so you don't have to worry about too much breakage. If you
