@@ -1,5 +1,6 @@
 package Paws::OpsWorks::Stack {
   use Moose;
+  has AgentVersion => (is => 'ro', isa => 'Str');
   has Arn => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::StackAttributes');
   has ChefConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::ChefConfiguration');

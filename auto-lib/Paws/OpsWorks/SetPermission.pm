@@ -104,7 +104,7 @@ strings. You cannot set your own permissions level.
 =back
 
 For more information on the permissions associated with these levels,
-see Managing User Permissions
+see Managing User Permissions.
 
 
 

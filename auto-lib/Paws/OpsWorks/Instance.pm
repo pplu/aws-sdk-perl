@@ -1,5 +1,6 @@
 package Paws::OpsWorks::Instance {
   use Moose;
+  has AgentVersion => (is => 'ro', isa => 'Str');
   has AmiId => (is => 'ro', isa => 'Str');
   has Architecture => (is => 'ro', isa => 'Str');
   has AutoScalingType => (is => 'ro', isa => 'Str');
@@ -18,6 +19,7 @@ package Paws::OpsWorks::Instance {
   has LastServiceErrorId => (is => 'ro', isa => 'Str');
   has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has Os => (is => 'ro', isa => 'Str');
+  has Platform => (is => 'ro', isa => 'Str');
   has PrivateDns => (is => 'ro', isa => 'Str');
   has PrivateIp => (is => 'ro', isa => 'Str');
   has PublicDns => (is => 'ro', isa => 'Str');

@@ -108,6 +108,11 @@ package Paws::OpsWorks {
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::DeregisterVolume', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAgentVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeAgentVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeApps {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeApps', @_);
@@ -559,7 +564,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 CloneStack(ServiceRoleArn => Str, SourceStackId => Str, [Attributes => Paws::OpsWorks::StackAttributes, ChefConfiguration => Paws::OpsWorks::ChefConfiguration, CloneAppIds => ArrayRef[Str], ClonePermissions => Bool, ConfigurationManager => Paws::OpsWorks::StackConfigurationManager, CustomCookbooksSource => Paws::OpsWorks::Source, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultInstanceProfileArn => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, Name => Str, Region => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool, VpcId => Str])
+=head2 CloneStack(ServiceRoleArn => Str, SourceStackId => Str, [AgentVersion => Str, Attributes => Paws::OpsWorks::StackAttributes, ChefConfiguration => Paws::OpsWorks::ChefConfiguration, CloneAppIds => ArrayRef[Str], ClonePermissions => Bool, ConfigurationManager => Paws::OpsWorks::StackConfigurationManager, CustomCookbooksSource => Paws::OpsWorks::Source, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultInstanceProfileArn => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, Name => Str, Region => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool, VpcId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CloneStack>
 
@@ -568,7 +573,8 @@ Returns: a L<Paws::OpsWorks::CloneStackResult> instance
   
 
 Creates a clone of a specified stack. For more information, see Clone a
-Stack.
+Stack. By default, all parameters are set to the values used by the
+parent stack.
 
 B<Required Permissions>: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more
@@ -636,7 +642,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 CreateInstance(InstanceType => Str, LayerIds => ArrayRef[Str], StackId => Str, [AmiId => Str, Architecture => Str, AutoScalingType => Str, AvailabilityZone => Str, BlockDeviceMappings => ArrayRef[Paws::OpsWorks::BlockDeviceMapping], EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, Os => Str, RootDeviceType => Str, SshKeyName => Str, SubnetId => Str, VirtualizationType => Str])
+=head2 CreateInstance(InstanceType => Str, LayerIds => ArrayRef[Str], StackId => Str, [AgentVersion => Str, AmiId => Str, Architecture => Str, AutoScalingType => Str, AvailabilityZone => Str, BlockDeviceMappings => ArrayRef[Paws::OpsWorks::BlockDeviceMapping], EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, Os => Str, RootDeviceType => Str, SshKeyName => Str, SubnetId => Str, VirtualizationType => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateInstance>
 
@@ -694,7 +700,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 CreateStack(DefaultInstanceProfileArn => Str, Name => Str, Region => Str, ServiceRoleArn => Str, [Attributes => Paws::OpsWorks::StackAttributes, ChefConfiguration => Paws::OpsWorks::ChefConfiguration, ConfigurationManager => Paws::OpsWorks::StackConfigurationManager, CustomCookbooksSource => Paws::OpsWorks::Source, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool, VpcId => Str])
+=head2 CreateStack(DefaultInstanceProfileArn => Str, Name => Str, Region => Str, ServiceRoleArn => Str, [AgentVersion => Str, Attributes => Paws::OpsWorks::StackAttributes, ChefConfiguration => Paws::OpsWorks::ChefConfiguration, ConfigurationManager => Paws::OpsWorks::StackConfigurationManager, CustomCookbooksSource => Paws::OpsWorks::Source, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool, VpcId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateStack>
 
@@ -968,6 +974,29 @@ B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeAgentVersions([ConfigurationManager => Paws::OpsWorks::StackConfigurationManager, StackId => Str])
+
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeAgentVersions>
+
+Returns: a L<Paws::OpsWorks::DescribeAgentVersionsResult> instance
+
+  
+
+Describes the available AWS OpsWorks agent versions. You must specify a
+stack ID or a configuration manager. C<DescribeAgentVersions> returns a
+list of available agent versions for the specified stack or
+configuration manager.
 
 
 
@@ -1564,7 +1593,7 @@ Returns: a L<Paws::OpsWorks::GrantAccessResult> instance
 
   
 
-This API can be used only with Windows stacks.
+This action can be used only with Windows stacks.
 
 Grants RDP access to a Windows instance for a specified time period.
 
@@ -1648,7 +1677,8 @@ complete registration operation has two primary steps, installing the
 AWS OpsWorks agent on the instance and registering the instance with
 the stack. C<RegisterInstance> handles only the second step. You should
 instead use the AWS CLI C<register> command, which performs the entire
-registration operation.
+registration operation. For more information, see Registering an
+Instance with an AWS OpsWorks Stack.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack or an attached policy that
@@ -2012,7 +2042,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UpdateInstance(InstanceId => Str, [AmiId => Str, Architecture => Str, AutoScalingType => Str, EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, InstanceType => Str, LayerIds => ArrayRef[Str], Os => Str, SshKeyName => Str])
+=head2 UpdateInstance(InstanceId => Str, [AgentVersion => Str, AmiId => Str, Architecture => Str, AutoScalingType => Str, EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, InstanceType => Str, LayerIds => ArrayRef[Str], Os => Str, SshKeyName => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateInstance>
 
@@ -2112,7 +2142,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UpdateStack(StackId => Str, [Attributes => Paws::OpsWorks::StackAttributes, ChefConfiguration => Paws::OpsWorks::ChefConfiguration, ConfigurationManager => Paws::OpsWorks::StackConfigurationManager, CustomCookbooksSource => Paws::OpsWorks::Source, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultInstanceProfileArn => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, Name => Str, ServiceRoleArn => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool])
+=head2 UpdateStack(StackId => Str, [AgentVersion => Str, Attributes => Paws::OpsWorks::StackAttributes, ChefConfiguration => Paws::OpsWorks::ChefConfiguration, ConfigurationManager => Paws::OpsWorks::StackConfigurationManager, CustomCookbooksSource => Paws::OpsWorks::Source, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultInstanceProfileArn => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, Name => Str, ServiceRoleArn => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool])
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateStack>
 

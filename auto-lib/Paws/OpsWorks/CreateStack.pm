@@ -1,6 +1,7 @@
 
 package Paws::OpsWorks::CreateStack {
   use Moose;
+  has AgentVersion => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::StackAttributes');
   has ChefConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::ChefConfiguration');
   has ConfigurationManager => (is => 'ro', isa => 'Paws::OpsWorks::StackConfigurationManager');
@@ -50,11 +51,47 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+=head2 AgentVersion => Str
+
+  
+
+The default AWS OpsWorks agent version. You have the following options:
+
+=over
+
+=item * Auto-update - Set this parameter to C<LATEST>. AWS OpsWorks
+automatically installs new agent versions on the stack's instances as
+soon as they are available.
+
+=item * Fixed version - Set this parameter to your preferred agent
+version. To update the agent version, you must edit the stack
+configuration and specify a new version. AWS OpsWorks then
+automatically installs that version on the stack's instances.
+
+=back
+
+The default setting is C<LATEST>. To specify an agent version, you must
+use the complete version number, not the abbreviated number shown on
+the console. For a list of available agent version numbers, call
+DescribeAgentVersions.
+
+You can also specify an agent version when you create or update an
+instance, which overrides the stack's default setting.
+
+
+
+
+
+
+
+
+
+
 =head2 Attributes => Paws::OpsWorks::StackAttributes
 
   
 
-One or more user-defined key/value pairs to be added to the stack
+One or more user-defined key-value pairs to be added to the stack
 attributes.
 
 
@@ -88,7 +125,7 @@ information, see Create a New Stack.
   
 
 The configuration manager. When you clone a stack we recommend that you
-use the configuration manager to specify the Chef version, 0.9, 11.4,
+use the configuration manager to specify the Chef version: 0.9, 11.4,
 or 11.10. The default value is currently 11.4.
 
 
@@ -109,9 +146,9 @@ or 11.10. The default value is currently 11.4.
   
 
 A string that contains user-defined, custom JSON. It can be used to
-override the corresponding default stack configuration attribute
-values, or to pass data to recipes. The string should be in the
-following format and must escape characters such as '"'.:
+override the corresponding default stack configuration attribute values
+or to pass data to recipes. The string should be in the following
+escape characters such as '"':
 
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
@@ -149,9 +186,9 @@ zone. For more information, see the C<VpcId> parameter description.
 
   
 
-The ARN of an IAM profile that is the default profile for all of the
-stack's EC2 instances. For more information about IAM ARNs, see Using
-Identifiers.
+The Amazon Resource Name (ARN) of an IAM profile that is the default
+profile for all of the stack's EC2 instances. For more information
+about IAM ARNs, see Using Identifiers.
 
 
 
@@ -166,23 +203,27 @@ Identifiers.
 
   
 
-The stack's operating system, which must be set to one of the
-following.
+The stack's default operating system, which is installed on every
+instance unless you specify a different operating system when you
+create the instance. You can specify one of the following.
 
 =over
 
-=item * Standard Linux operating systems: an Amazon Linux version such
-as C<Amazon Linux 2014.09>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04
+=item * A supported Linux operating system: An Amazon Linux version,
+such as C<Amazon Linux 2015.03>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04
 LTS>.
 
-=item * Custom Linux AMIs: C<Custom>. You specify the custom AMI you
-want to use when you create instances.
+=item * C<Microsoft Windows Server 2012 R2 Base>.
 
-=item * Microsoft Windows Server 2012 R2.
+=item * A custom AMI: C<Custom>. You specify the custom AMI you want to
+use when you create instances. For more information, see Using Custom
+AMIs.
 
 =back
 
-The default option is the current Amazon Linux version.
+The default option is the current Amazon Linux version. For more
+information on the supported operating systems, see AWS OpsWorks
+Operating Systems.
 
 
 
@@ -197,7 +238,7 @@ The default option is the current Amazon Linux version.
 
   
 
-The default root device type. This value is used by default for all
+The default root device type. This value is the default for all
 instances in the stack, but you can override it when you create an
 instance. The default option is C<instance-store>. For more
 information, see Storage for the Root Device.
@@ -257,8 +298,8 @@ description.
 
   
 
-The stack's host name theme, with spaces are replaced by underscores.
-The theme is used to generate host names for the stack's instances. By
+The stack's host name theme, with spaces replaced by underscores. The
+theme is used to generate host names for the stack's instances. By
 default, C<HostnameTheme> is set to C<Layer_Dependent>, which creates
 host names by appending integers to the layer's short name. The other
 themes are:
@@ -320,7 +361,7 @@ The stack name.
 
   
 
-The stack AWS region, such as "us-east-1". For more information about
+The stack's AWS region, such as "us-east-1". For more information about
 Amazon regions, see Regions and Endpoints.
 
 
@@ -336,7 +377,7 @@ Amazon regions, see Regions and Endpoints.
 
   
 
-The stack AWS Identity and Access Management (IAM) role, which allows
+The stack's AWS Identity and Access Management (IAM) role, which allows
 AWS OpsWorks to work with AWS resources on your behalf. You must set
 this parameter to the Amazon Resource Name (ARN) for an existing IAM
 role. For more information about IAM ARNs, see Using Identifiers.
@@ -382,7 +423,7 @@ settings:
 
 =item * True - AWS OpsWorks automatically associates the appropriate
 built-in security group with each layer (default setting). You can
-associate additional security groups with a layer after you create it
+associate additional security groups with a layer after you create it,
 but you cannot delete the built-in security group.
 
 =item * False - AWS OpsWorks does not associate built-in security
@@ -409,16 +450,16 @@ For more information, see Create a New Stack.
 
   
 
-The ID of the VPC that the stack is to be launched into. It must be in
-the specified region. All instances are launched into this VPC, and you
+The ID of the VPC that the stack is to be launched into. The VPC must
+be in the stack's region. All instances are launched into this VPC. You
 cannot change the ID later.
 
 =over
 
-=item * If your account supports EC2 Classic, the default value is no
-VPC.
+=item * If your account supports EC2-Classic, the default value is C<no
+VPC>.
 
-=item * If your account does not support EC2 Classic, the default value
+=item * If your account does not support EC2-Classic, the default value
 is the default VPC for the specified region.
 
 =back
@@ -442,7 +483,7 @@ specified region.
 =back
 
 For more information on how to use AWS OpsWorks with a VPC, see Running
-a Stack in a VPC. For more information on default VPC and EC2 Classic,
+a Stack in a VPC. For more information on default VPC and EC2-Classic,
 see Supported Platforms.
 
 

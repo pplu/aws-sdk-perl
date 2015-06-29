@@ -1,6 +1,7 @@
 
 package Paws::OpsWorks::CloneStack {
   use Moose;
+  has AgentVersion => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::StackAttributes');
   has ChefConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::ChefConfiguration');
   has CloneAppIds => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -52,6 +53,42 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+=head2 AgentVersion => Str
+
+  
+
+The default AWS OpsWorks agent version. You have the following options:
+
+=over
+
+=item * Auto-update - Set this parameter to C<LATEST>. AWS OpsWorks
+automatically installs new agent versions on the stack's instances as
+soon as they are available.
+
+=item * Fixed version - Set this parameter to your preferred agent
+version. To update the agent version, you must edit the stack
+configuration and specify a new version. AWS OpsWorks then
+automatically installs that version on the stack's instances.
+
+=back
+
+The default setting is C<LATEST>. To specify an agent version, you must
+use the complete version number, not the abbreviated number shown on
+the console. For a list of available agent version numbers, call
+DescribeAgentVersions.
+
+You can also specify an agent version when you create or update an
+instance, which overrides the stack's default setting.
+
+
+
+
+
+
+
+
+
 
 =head2 Attributes => Paws::OpsWorks::StackAttributes
 
@@ -120,9 +157,9 @@ Whether to clone the source stack's permissions.
 
   
 
-The configuration manager. When you clone a stack we recommend that you
-use the configuration manager to specify the Chef version, 0.9, 11.4,
-or 11.10. The default value is currently 11.4.
+The configuration manager. When you clone a Linux stack we recommend
+that you use the configuration manager to specify the Chef version:
+0.9, 11.4, or 11.10. The default value is currently 11.10.
 
 
 
@@ -144,7 +181,7 @@ or 11.10. The default value is currently 11.4.
 A string that contains user-defined, custom JSON. It is used to
 override the corresponding default stack configuration JSON values. The
 string should be in the following format and must escape characters
-such as '"'.:
+such as '"':
 
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
@@ -205,18 +242,24 @@ following.
 
 =over
 
-=item * Standard Linux operating systems: an Amazon Linux version such
-as C<Amazon Linux 2014.09>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04
+=item * A supported Linux operating system: An Amazon Linux version,
+such as C<Amazon Linux 2015.03>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04
 LTS>.
 
-=item * Custom Linux AMIs: C<Custom>. You specify the custom AMI you
-want to use when you create instances.
+=item * C<Microsoft Windows Server 2012 R2 Base>.
 
-=item * Microsoft Windows Server 2012 R2.
+=item * A custom AMI: C<Custom>. You specify the custom AMI you want to
+use when you create instances. For more information on how to use
+custom AMIs with OpsWorks, see Using Custom AMIs.
 
 =back
 
-The default option is the current Amazon Linux version.
+The default option is the parent stack's operating system. For more
+information on the supported operating systems, see AWS OpsWorks
+Operating Systems.
+
+You can specify a different Linux operating system for the cloned
+stack, but you cannot change from Linux to Windows or Windows to Linux.
 
 
 

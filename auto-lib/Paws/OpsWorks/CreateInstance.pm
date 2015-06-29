@@ -1,6 +1,7 @@
 
 package Paws::OpsWorks::CreateInstance {
   use Moose;
+  has AgentVersion => (is => 'ro', isa => 'Str');
   has AmiId => (is => 'ro', isa => 'Str');
   has Architecture => (is => 'ro', isa => 'Str');
   has AutoScalingType => (is => 'ro', isa => 'Str');
@@ -48,13 +49,44 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+=head2 AgentVersion => Str
+
+  
+
+The default AWS OpsWorks agent version. You have the following options:
+
+=over
+
+=item * C<INHERIT> - Use the stack's default agent version setting.
+
+=item * I<version_number> - Use the specified agent version. This value
+overrides the stack's default setting. To update the agent version,
+edit the instance configuration and specify a new version. AWS OpsWorks
+then automatically installs that version on the instance.
+
+=back
+
+The default setting is C<INHERIT>. To specify an agent version, you
+must use the complete version number, not the abbreviated number shown
+on the console. For a list of available agent version numbers, call
+DescribeAgentVersions.
+
+
+
+
+
+
+
+
+
+
 =head2 AmiId => Str
 
   
 
 A custom AMI ID to be used to create the instance. The AMI should be
-based on one of the standard AWS OpsWorks AMIs: Amazon Linux, Ubuntu
-12.04 LTS, or Ubuntu 14.04 LTS. For more information, see Instances.
+based on one of the supported operating systems. For more information,
+see Using Custom AMIs.
 
 If you specify a custom AMI, you must set C<Os> to C<Custom>.
 
@@ -171,8 +203,8 @@ Whether to install operating system and package updates when the
 instance boots. The default value is C<true>. To control when updates
 are installed, set this value to C<false>. You must then update your
 instances manually by using CreateDeployment to run the
-C<update_dependencies> stack command or manually running C<yum> (Amazon
-Linux) or C<apt-get> (Ubuntu) on the instances.
+C<update_dependencies> stack command or by manually running C<yum>
+(Amazon Linux) or C<apt-get> (Ubuntu) on the instances.
 
 We strongly recommend using the default value of C<true> to ensure that
 your instances have the latest security updates.
@@ -190,11 +222,12 @@ your instances have the latest security updates.
 
   
 
-The instance type. AWS OpsWorks supports all instance types except
-Cluster Compute, Cluster GPU, and High Memory Cluster. For more
-information, see Instance Families and Types. The parameter values that
-you use to specify the various types are in the API Name column of the
-Available Instance Types table.
+The instance type, such as C<t2.micro>. For a list of supported
+instance types, open the stack in the console, choose B<Instances>, and
+choose B<+ Instance>. The B<Size> list contains the currently supported
+types. For more information, see Instance Families and Types. The
+parameter values that you use to specify the various types are in the
+B<API Name> column of the B<Available Instance Types> table.
 
 
 
@@ -209,7 +242,7 @@ Available Instance Types table.
 
   
 
-An array that contains the instance layer IDs.
+An array that contains the instance's layer IDs.
 
 
 
@@ -227,25 +260,27 @@ An array that contains the instance layer IDs.
 The instance's operating system, which must be set to one of the
 following.
 
-For Windows stacks: Microsoft Windows Server 2012 R2.
-
-For Linux stacks:
-
 =over
 
-=item * Standard operating systems: an Amazon Linux version such as
-C<Amazon Linux 2014.09>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04 LTS>.
+=item * A supported Linux operating system: An Amazon Linux version,
+such as C<Amazon Linux 2015.03>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04
+LTS>.
 
-=item * Custom AMIs: C<Custom>
+=item * C<Microsoft Windows Server 2012 R2 Base>.
+
+=item * A custom AMI: C<Custom>.
 
 =back
+
+For more information on the supported operating systems, see AWS
+OpsWorks Operating Systems.
 
 The default option is the current Amazon Linux version. If you set this
 parameter to C<Custom>, you must use the CreateInstance action's AmiId
 parameter to specify the custom AMI that you want to use. For more
-information on the standard operating systems, see Operating SystemsFor
-more information on how to use custom AMIs with OpsWorks, see Using
-Custom AMIs.
+information on the supported operating systems, see Operating
+SystemsFor more information on how to use custom AMIs with AWS
+OpsWorks, see Using Custom AMIs.
 
 
 
@@ -276,7 +311,7 @@ the Root Device.
 
   
 
-The instance's Amazon EC2 key pair name.
+The instance's Amazon EC2 key-pair name.
 
 
 
