@@ -1,7 +1,9 @@
 package Paws::CloudFront::CacheBehavior {
   use Moose;
   has AllowedMethods => (is => 'ro', isa => 'Paws::CloudFront::AllowedMethods');
+  has DefaultTTL => (is => 'ro', isa => 'Int');
   has ForwardedValues => (is => 'ro', isa => 'Paws::CloudFront::ForwardedValues', required => 1);
+  has MaxTTL => (is => 'ro', isa => 'Int');
   has MinTTL => (is => 'ro', isa => 'Int', required => 1);
   has PathPattern => (is => 'ro', isa => 'Str', required => 1);
   has SmoothStreaming => (is => 'ro', isa => 'Bool');

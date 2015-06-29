@@ -1,5 +1,5 @@
 
-package Paws::CloudFront::UpdateStreamingDistribution2014_11_06 {
+package Paws::CloudFront::UpdateStreamingDistribution2015_04_17 {
   use Moose;
   has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
   has IfMatch => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-Match' );
@@ -8,7 +8,7 @@ package Paws::CloudFront::UpdateStreamingDistribution2014_11_06 {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStreamingDistribution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2014-11-06/streaming-distribution/{Id}/config');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-04-17/streaming-distribution/{Id}/config');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::UpdateStreamingDistributionResult');
   class_has _result_key => (isa => 'Str', is => 'ro');

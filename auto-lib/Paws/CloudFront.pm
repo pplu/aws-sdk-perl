@@ -2,115 +2,115 @@ package Paws::CloudFront {
   warn "Paws::CloudFront is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cloudfront' }
-  sub version { '2014-11-06' }
+  sub version { '2015-04-17' }
   sub flattened_arrays { 0 }
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
 
   
-  sub CreateCloudFrontOriginAccessIdentity2014_11_06 {
+  sub CreateCloudFrontOriginAccessIdentity2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateCloudFrontOriginAccessIdentity2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateCloudFrontOriginAccessIdentity2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateDistribution2014_11_06 {
+  sub CreateDistribution2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateDistribution2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateDistribution2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateInvalidation2014_11_06 {
+  sub CreateInvalidation2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateInvalidation2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateInvalidation2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateStreamingDistribution2014_11_06 {
+  sub CreateStreamingDistribution2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateStreamingDistribution2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateStreamingDistribution2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteCloudFrontOriginAccessIdentity2014_11_06 {
+  sub DeleteCloudFrontOriginAccessIdentity2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteDistribution2014_11_06 {
+  sub DeleteDistribution2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteDistribution2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteDistribution2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteStreamingDistribution2014_11_06 {
+  sub DeleteStreamingDistribution2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteStreamingDistribution2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteStreamingDistribution2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetCloudFrontOriginAccessIdentity2014_11_06 {
+  sub GetCloudFrontOriginAccessIdentity2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetCloudFrontOriginAccessIdentity2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetCloudFrontOriginAccessIdentity2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetCloudFrontOriginAccessIdentityConfig2014_11_06 {
+  sub GetCloudFrontOriginAccessIdentityConfig2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetDistribution2014_11_06 {
+  sub GetDistribution2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetDistribution2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetDistribution2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetDistributionConfig2014_11_06 {
+  sub GetDistributionConfig2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetDistributionConfig2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetDistributionConfig2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetInvalidation2014_11_06 {
+  sub GetInvalidation2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetInvalidation2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetInvalidation2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetStreamingDistribution2014_11_06 {
+  sub GetStreamingDistribution2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetStreamingDistribution2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetStreamingDistribution2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetStreamingDistributionConfig2014_11_06 {
+  sub GetStreamingDistributionConfig2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetStreamingDistributionConfig2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetStreamingDistributionConfig2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListCloudFrontOriginAccessIdentities2014_11_06 {
+  sub ListCloudFrontOriginAccessIdentities2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListCloudFrontOriginAccessIdentities2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListCloudFrontOriginAccessIdentities2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListDistributions2014_11_06 {
+  sub ListDistributions2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListDistributions2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListDistributions2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListInvalidations2014_11_06 {
+  sub ListInvalidations2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListInvalidations2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListInvalidations2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListStreamingDistributions2014_11_06 {
+  sub ListStreamingDistributions2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListStreamingDistributions2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListStreamingDistributions2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub UpdateCloudFrontOriginAccessIdentity2014_11_06 {
+  sub UpdateCloudFrontOriginAccessIdentity2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub UpdateDistribution2014_11_06 {
+  sub UpdateDistribution2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateDistribution2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateDistribution2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub UpdateStreamingDistribution2014_11_06 {
+  sub UpdateStreamingDistribution2015_04_17 {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateStreamingDistribution2014_11_06', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateStreamingDistribution2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
 }
@@ -144,189 +144,189 @@ Paws::CloudFront - Perl Interface to AWS Amazon CloudFront
 
 =head1 METHODS
 
-=head2 CreateCloudFrontOriginAccessIdentity2014_11_06( => )
+=head2 CreateCloudFrontOriginAccessIdentity2015_04_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::CreateCloudFrontOriginAccessIdentity2014_11_06>
-
-Returns: nothing
-
-  
-
-
-=head2 CreateDistribution2014_11_06( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::CreateDistribution2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::CreateCloudFrontOriginAccessIdentity2015_04_17>
 
 Returns: nothing
 
   
 
 
-=head2 CreateInvalidation2014_11_06( => )
+=head2 CreateDistribution2015_04_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::CreateInvalidation2014_11_06>
-
-Returns: nothing
-
-  
-
-
-=head2 CreateStreamingDistribution2014_11_06( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDistribution2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::CreateDistribution2015_04_17>
 
 Returns: nothing
 
   
 
 
-=head2 DeleteCloudFrontOriginAccessIdentity2014_11_06( => )
+=head2 CreateInvalidation2015_04_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity2014_11_06>
-
-Returns: nothing
-
-  
-
-
-=head2 DeleteDistribution2014_11_06( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::DeleteDistribution2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::CreateInvalidation2015_04_17>
 
 Returns: nothing
 
   
 
 
-=head2 DeleteStreamingDistribution2014_11_06( => )
+=head2 CreateStreamingDistribution2015_04_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::DeleteStreamingDistribution2014_11_06>
-
-Returns: nothing
-
-  
-
-
-=head2 GetCloudFrontOriginAccessIdentity2014_11_06( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentity2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDistribution2015_04_17>
 
 Returns: nothing
 
   
 
 
-=head2 GetCloudFrontOriginAccessIdentityConfig2014_11_06( => )
+=head2 DeleteCloudFrontOriginAccessIdentity2015_04_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig2014_11_06>
-
-Returns: nothing
-
-  
-
-
-=head2 GetDistribution2014_11_06( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::GetDistribution2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity2015_04_17>
 
 Returns: nothing
 
   
 
 
-=head2 GetDistributionConfig2014_11_06( => )
+=head2 DeleteDistribution2015_04_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::GetDistributionConfig2014_11_06>
-
-Returns: nothing
-
-  
-
-
-=head2 GetInvalidation2014_11_06( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::GetInvalidation2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::DeleteDistribution2015_04_17>
 
 Returns: nothing
 
   
 
 
-=head2 GetStreamingDistribution2014_11_06( => )
+=head2 DeleteStreamingDistribution2015_04_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistribution2014_11_06>
-
-Returns: nothing
-
-  
-
-
-=head2 GetStreamingDistributionConfig2014_11_06( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistributionConfig2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::DeleteStreamingDistribution2015_04_17>
 
 Returns: nothing
 
   
 
 
-=head2 ListCloudFrontOriginAccessIdentities2014_11_06( => )
+=head2 GetCloudFrontOriginAccessIdentity2015_04_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::ListCloudFrontOriginAccessIdentities2014_11_06>
-
-Returns: nothing
-
-  
-
-
-=head2 ListDistributions2014_11_06( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::ListDistributions2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentity2015_04_17>
 
 Returns: nothing
 
   
 
 
-=head2 ListInvalidations2014_11_06( => )
+=head2 GetCloudFrontOriginAccessIdentityConfig2015_04_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::ListInvalidations2014_11_06>
-
-Returns: nothing
-
-  
-
-
-=head2 ListStreamingDistributions2014_11_06( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::ListStreamingDistributions2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig2015_04_17>
 
 Returns: nothing
 
   
 
 
-=head2 UpdateCloudFrontOriginAccessIdentity2014_11_06( => )
+=head2 GetDistribution2015_04_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity2014_11_06>
-
-Returns: nothing
-
-  
-
-
-=head2 UpdateDistribution2014_11_06( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::UpdateDistribution2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::GetDistribution2015_04_17>
 
 Returns: nothing
 
   
 
 
-=head2 UpdateStreamingDistribution2014_11_06( => )
+=head2 GetDistributionConfig2015_04_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::UpdateStreamingDistribution2014_11_06>
+Each argument is described in detail in: L<Paws::CloudFront::GetDistributionConfig2015_04_17>
+
+Returns: nothing
+
+  
+
+
+=head2 GetInvalidation2015_04_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::GetInvalidation2015_04_17>
+
+Returns: nothing
+
+  
+
+
+=head2 GetStreamingDistribution2015_04_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistribution2015_04_17>
+
+Returns: nothing
+
+  
+
+
+=head2 GetStreamingDistributionConfig2015_04_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistributionConfig2015_04_17>
+
+Returns: nothing
+
+  
+
+
+=head2 ListCloudFrontOriginAccessIdentities2015_04_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::ListCloudFrontOriginAccessIdentities2015_04_17>
+
+Returns: nothing
+
+  
+
+
+=head2 ListDistributions2015_04_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::ListDistributions2015_04_17>
+
+Returns: nothing
+
+  
+
+
+=head2 ListInvalidations2015_04_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::ListInvalidations2015_04_17>
+
+Returns: nothing
+
+  
+
+
+=head2 ListStreamingDistributions2015_04_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::ListStreamingDistributions2015_04_17>
+
+Returns: nothing
+
+  
+
+
+=head2 UpdateCloudFrontOriginAccessIdentity2015_04_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity2015_04_17>
+
+Returns: nothing
+
+  
+
+
+=head2 UpdateDistribution2015_04_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::UpdateDistribution2015_04_17>
+
+Returns: nothing
+
+  
+
+
+=head2 UpdateStreamingDistribution2015_04_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::UpdateStreamingDistribution2015_04_17>
 
 Returns: nothing
 

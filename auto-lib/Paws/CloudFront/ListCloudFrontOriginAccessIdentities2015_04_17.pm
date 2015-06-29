@@ -1,5 +1,5 @@
 
-package Paws::CloudFront::ListCloudFrontOriginAccessIdentities2014_11_06 {
+package Paws::CloudFront::ListCloudFrontOriginAccessIdentities2015_04_17 {
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Str');
@@ -7,7 +7,7 @@ package Paws::CloudFront::ListCloudFrontOriginAccessIdentities2014_11_06 {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListCloudFrontOriginAccessIdentities');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2014-11-06/origin-access-identity/cloudfront');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-04-17/origin-access-identity/cloudfront');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::ListCloudFrontOriginAccessIdentitiesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
