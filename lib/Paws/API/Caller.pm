@@ -73,6 +73,10 @@ package Paws::API::Caller {
           }
         } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
           $refHash->{ $key } = $params->$att;
+        } elsif ($params->$att->does('Paws::API::StrToStrMapParser')) {
+          $refHash->{$key} = $params->$att->Map;
+        } elsif ($params->$att->does('Paws::API::StrToObjMapParser')) {
+          $refHash->{$key} = { map { ($_ => $self->to_hash($params->$att->Map->{$_})) } keys %{ $params->$att->Map } };
         } else {
           $refHash->{ $key } = $self->to_hash($params->$att);
         }
