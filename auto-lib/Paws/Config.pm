@@ -323,14 +323,18 @@ Returns: nothing
 
   
 
-Creates a new configuration recorder to record the resource
+Creates a new configuration recorder to record the selected resource
 configurations.
 
-You can use this action to change the role (C<roleARN>) of an existing
-recorder. To change the role, call the action on the existing
-configuration recorder and specify a role.
+You can use this action to change the role C<roleARN> and/or the
+C<recordingGroup> of an existing recorder. To change the role, call the
+action on the existing configuration recorder and specify a role.
 
 Currently, you can specify only one configuration recorder per account.
+
+If C<ConfigurationRecorder> does not have the B<recordingGroup>
+parameter specified, the default is to record all supported resource
+types.
 
 
 
@@ -380,8 +384,8 @@ Returns: nothing
 
   
 
-Starts recording configurations of all the resources associated with
-the account.
+Starts recording configurations of the AWS resources you have selected
+to record in your AWS account.
 
 You must have created at least one delivery channel to successfully
 start the configuration recorder.
@@ -404,8 +408,8 @@ Returns: nothing
 
   
 
-Stops recording configurations of all the resources associated with the
-account.
+Stops recording configurations of the AWS resources you have selected
+to record in your AWS account.
 
 
 
