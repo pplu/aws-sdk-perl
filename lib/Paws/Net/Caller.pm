@@ -32,7 +32,9 @@ package Paws::Net::Caller {
     );
 
     my $res = $service->handle_response($call_object, $response->{status}, $response->{content}, $response->{headers});
-    if ($res->isa('Paws::Exception')) {
+    if (not ref($res)){
+      return $res;
+    } elsif ($res->isa('Paws::Exception')) {
       $res->throw;
     } else {
       return $res;
