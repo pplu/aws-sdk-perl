@@ -27,7 +27,7 @@ package Paws::API::Caller {
         my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
         Module::Runtime::require_module($subtype);
         $p{ Map }->{ $att } = $subtype->new(%{ $params{ $att } });
-      } elsif ($class->does('Paws::API::StrToStrMapParser')) {
+      } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
         $p{ Map }->{ $att } = $params{ $att };
       } else {
         croak "$class doesn't have an $att" if (not defined $att_meta);
@@ -73,7 +73,7 @@ package Paws::API::Caller {
           }
         } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
           $refHash->{ $key } = $params->$att;
-        } elsif ($params->$att->does('Paws::API::StrToStrMapParser')) {
+        } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')) {
           $refHash->{$key} = $params->$att->Map;
         } elsif ($params->$att->does('Paws::API::StrToObjMapParser')) {
           $refHash->{$key} = { map { ($_ => $self->to_hash($params->$att->Map->{$_})) } keys %{ $params->$att->Map } };
@@ -175,7 +175,7 @@ package Paws::API::Caller {
                 } elsif (not defined $value){
                   $args{ $att } = $att_class->new(Map => {});
                 }  
-              } elsif ($att_class->does('Paws::API::StrToStrMapParser')) {
+              } elsif ($att_class->does('Paws::API::StrToNativeMapParser')) {
                 my $xml_keys = $att_class->xml_keys;
                 my $xml_values = $att_class->xml_values;
 

@@ -1,6 +1,6 @@
 package Paws::CloudSearchDomain::Fields {
   use Moose;
-  with 'Paws::API::StrToStrMapParser';
+  with 'Paws::API::StrToNativeMapParser';
 
   use MooseX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');

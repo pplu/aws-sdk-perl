@@ -54,8 +54,22 @@ package Paws::Net::RestXmlCaller {
     my $uri_template = $call->meta->name->_api_uri;
     my $t = URI::Template->new( $uri_template );
 
-    my $vars = { map { my $att_name = $_->name; $_->does('Paws::API::Attribute::Trait::ParamInURI') ? ($_->uri_name => $call->$att_name ) : () } ($call->meta->get_all_attributes) };
-    return $t->process_to_string($vars);
+    my $vars = {};
+    my $qparams = {};
+
+    foreach my $attribute ($call->meta->get_all_attributes) {
+      my $att_name = $attribute->name;
+      if ($attribute->does('Paws::API::Attribute::Trait::ParamInURI')) {
+        $vars->{ $attribute->uri_name } = $call->$att_name
+      }
+      if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
+        $qparams->{ $attribute->query_name } = $call->$att_name if (defined $call->$att_name);
+      }
+    }
+
+    my $uri = $t->process($vars);
+    $uri->query_form(%$qparams);
+    return $uri->as_string;
   }
 
   # URI escaping adapted from URI::Escape

@@ -47,7 +47,7 @@ package Paws::Net::QueryCaller {
             map { $p{ "$key.$i.Value.$_" } = $complex_value{$_} } keys %complex_value;
             $i++;
           }
-        } elsif ($params->$att->does('Paws::API::StrToStrMapParser')) {
+        } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')) {
           my $i = 1;
           foreach my $map_key (keys %{ $params->$att->Map }){
             $p{ "$key.entry.$i.key" }   = $map_key;
