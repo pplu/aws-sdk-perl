@@ -87,11 +87,6 @@ sub test_file {
           chomp $message;
           ok(0, "Exception accessing $t->{path}: $message");
         }
-      } elsif (defined $t->{dpath}){
-        $path = $t->{dpath};
-        use Data::Path;
-        my $hpath = Data::Path->new($res);
-        $got = $hpath->get($t->{dpath});
       } else {
         die "Didn't know how to get a result to compare to. Check that test has path or dpath entry";
       }
