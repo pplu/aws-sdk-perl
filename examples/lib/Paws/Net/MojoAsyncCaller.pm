@@ -27,14 +27,13 @@ package Paws::Net::MojoAsyncCaller {
         my ( $ua, $response ) = @_;
 
         my $res = $service->handle_response($call_object, $response->res->code, $response->res->body, $response->res->headers->to_hash);
+
+        if (not ref($res)){
+            $future->done($res);
         if ($res->isa('Paws::Exception')) {
           $future->fail($res);
         } else {
-          if ($response_class) {
-            $future->done($res);
-          } else {
-            $future->done(1);
-          }
+          $future->done($res);
         }
       }   
     );
