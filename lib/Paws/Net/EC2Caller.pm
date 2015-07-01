@@ -89,8 +89,6 @@ package Paws::Net::EC2Caller {
 
     $self->sign($request);
 
-use Data::Dumper;
-print Dumper($request);
     return $request;
   }
 }
