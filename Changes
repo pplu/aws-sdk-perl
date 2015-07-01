@@ -1,5 +1,7 @@
 0.10 
  - Don't dump request in EC2 Caller
+ - Paws::Net::Caller was not correctly handling cases where the API only returns success (1) (osoriano)
+ - Tests don't use Data::Path anymore (using own "mini-implementation")
 
 0.09 25 Jun 2015 17:00:00
  - API updates from botocore until 2015-06-29
