@@ -1,4 +1,7 @@
-0.10 
+0.11 02 Jul 2015 
+ - Bump up verion in response to: #105600: Please don't let your version length decrease (mst)
+
+0.10 01 Jul 2015 
  - Don't dump request in EC2 Caller
  - Paws::Net::Caller was not correctly handling cases where the API only returns success (1) (osoriano)
  - Tests don't use Data::Path anymore (using own "mini-implementation")
