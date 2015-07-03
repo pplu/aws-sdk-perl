@@ -22,7 +22,7 @@ package [% c.api %]::[% operation.name %] {
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName %]' [% END %]
   [%- IF (shape.members.$param_name.location == 'uri') %], traits => ['ParamInURI'], uri_name => '[% shape.members.$param_name.locationName %]' [% END %]
-  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
+  [%- IF (shape.is_required(param_name)) %], required => 1[% END %]);
 [% END %]
   use MooseX::ClassAttribute;
 
@@ -47,7 +47,7 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (member.member.locationName) %], traits => ['Unwrapped'], xmlname => '[% member.member.locationName %]'[% END %]
   [%- IF (member.locationName) %], traits => ['Unwrapped'], xmlname => '[% member.locationName %]'[% END %]
-  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
+  [%- IF (shape.is_required(param_name)) %], required => 1[% END %]);
 [% END %]
 }
 [%- END %]

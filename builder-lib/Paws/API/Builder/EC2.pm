@@ -11,11 +11,9 @@ package Paws::API::Builder::EC2 {
 
   has response_role  => (is => 'ro', lazy => 1, default => sub { 'Paws::Net::XMLResponse' });
 
-  has '+parameter_role' => (
-    default => sub {
+  override parameter_role => sub {
       return "Paws::Net::EC2Caller"
-    },
-  );
+  };
 
   has '+flattened_arrays' => (default => '1');
 

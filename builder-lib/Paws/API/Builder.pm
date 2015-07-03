@@ -18,12 +18,16 @@ package Paws::API::Builder {
     return $svc;
   }
 
-  has service => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ endpointPrefix } });
-  has version => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ apiVersion } });
+  has service => (is => 'ro', lazy => 1, default => sub { shift->api_struct->metadata->endpointPrefix });
+  has version => (is => 'ro', lazy => 1, default => sub { shift->api_struct->metadata->apiVersion });
   has endpoint_role => (is => 'ro', lazy => 1, default => 'Paws::API::RegionalEndpointCaller' );
 
   has api_file => (is => 'ro', required => 1);
-  has api_struct => (is => 'ro', required => 1);
+  has api_struct => (
+    is => 'ro', 
+    required => 1,
+    handles => [ qw/operation operations inner_shapes shapes shape/ ],
+  );
 
   has waiters_file => (is => 'ro', lazy => 1, default => sub {
     my $file = shift->api_file;
@@ -74,145 +78,6 @@ package Paws::API::Builder {
 
   has inner_classes => (is => 'rw', isa => 'HashRef', default => sub { {} });
   has enums => (is => 'rw', isa => 'HashRef', default => sub { {} });
-
-  has signature_role => (
-    is => 'ro', 
-    lazy => 1, 
-    default => sub { 
-      sprintf "Paws::Net::%sSignature", uc $_[0]->api_struct->metadata->signatureVersion 
-    } 
-  );
-
-  has parameter_role => (
-    is => 'ro', 
-    lazy => 1, 
-    default => sub { 
-      my $type = $_[0]->api_struct->metadata->protocol; 
-      substr($type,0,1) = uc substr($type,0,1); 
-      return "Paws::Net::${type}Caller" 
-    },
-  );
-
-  has operations_struct => (
-    is => 'ro', 
-    lazy => 1, 
-    default => sub { $_[0]->api_struct->operations },
-    isa => 'HashRef',
-    traits => [ 'Hash' ],
-    handles => {
-      operations => 'keys',
-      operation  => 'get',
-      has_operation => 'exists',
-    },
-  );
-
-  has shape_struct => (
-    is => 'ro',
-    lazy => 1,
-    default => sub { 
-      my $self = shift;
-      my $shapes = $self->api_struct->{shapes};
-      return $shapes;
-    },
-    isa => 'HashRef',
-    traits => [ 'Hash' ],
-    handles => {
-      shape  => 'get',
-      set_shape => 'set',
-      has_shape => 'exists',
-      shapes => 'keys',
-    },
-  );
-
-  has _input_shapes => (
-    is => 'ro',
-    isa => 'HashRef',
-    lazy => 1,
-    default => sub {
-      my $self = shift;
-      my $ret = {};
-      foreach my $op ($self->operations) {
-        my $operation = $self->operation($op);
-        my $sh_name = $operation->{ input }->{ shape };
-        $ret->{ $sh_name } = $self->shape($sh_name) if (defined $sh_name);
-      }
-      return $ret;
-    },
-    traits => [ 'Hash' ],
-    handles => {
-      input_shape => 'get',
-      input_shapes => 'keys',
-      is_input_shape => 'exists',
-    }
-  );
-
-  has _output_shapes => (
-    is => 'ro',
-    isa => 'HashRef',
-    lazy => 1,
-    default => sub {
-      my $self = shift;
-      my $ret = {};
-      foreach my $op ($self->operations) {
-        my $operation = $self->operation($op);
-        my $sh_name = $operation->{ output }->{ shape };
-        $ret->{ $sh_name } = $self->shape($sh_name) if (defined $sh_name);
-      }
-      return $ret;
-    },
-    traits => [ 'Hash' ],
-    handles => {
-      output_shape => 'get',
-      output_shapes => 'keys',
-      is_output_shape => 'exists',
-    }
-  );
-
-  has _exception_shapes => (
-    is => 'ro',
-    isa => 'HashRef',
-    lazy => 1,
-    default => sub {
-      my $self = shift;
-      my $ret = {};
-      foreach my $shape_name ($self->shapes) {
-        my $shape = $self->shape($shape_name);
-        $ret->{ $shape_name } = $shape if (defined $shape->{ exception });
-      }
-      return $ret;
-    },
-    traits => [ 'Hash' ],
-    handles => {
-      exception_shape => 'get',
-      exception_shapes => 'keys',
-      is_exception_shape => 'exists',
-    }
-  );
-
-  has _inner_shapes => (
-    is => 'ro',
-    lazy => 1,
-    isa => 'HashRef',
-    default => sub { 
-      my $self = shift;
-      my $ret = {};
-      foreach my $shape_name ($self->shapes) {
-        my $shape = $self->shape($shape_name);
-        $ret->{ $shape_name } = $shape if (( $shape->{type} eq 'structure' or $shape->{type} eq 'map')
-                                           and not $self->is_exception_shape($shape_name)
-                                           and not $self->is_output_shape($shape_name)
-                                           and not $self->is_input_shape($shape_name)
-                                          );
-      }
-      return $ret;
-    },
-    traits => [ 'Hash' ],
-    handles => {
-      inner_shape => 'get',
-      inner_shapes => 'keys',
-      is_inner_shape => 'exists',
-    }
-  );
 
   has flattened_arrays => (is => 'rw', isa => 'Bool', default => sub { 0 });
 
@@ -354,10 +219,6 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 #);
 
 
-  sub required_in_shape {
-    confess "Don't call this";
-  }
-
   sub optional_params_in_shape {
     confess "Don't call this";
   }
@@ -404,34 +265,6 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     close $file;
   }
 
-  sub register_enum {
-    my ($self, $enum_class, $definition) = @_;
-    die "Already an Inner Class" if ($self->inner_classes->{ $enum_class });
-    if (    defined $self->enums->{ $enum_class }
-        and not $self->enums_equal($self->enums->{ $enum_class }, $definition)
-       ){
-      die "Unequal defs";
-    } else {
-      $self->enums->{ $enum_class } = $definition;
-    }
-  }
-
-  sub register_inner_class {
-    my ($self, $class_name, $definition) = @_;
-    die "Already an Enum" if ($self->enums->{ $class_name });
-    if (defined $self->shape($class_name) and not $self->definitions_equal($self->shape($class_name), $definition)){
-      print "---- Registered Definition ----\n";
-      my $temp = [ sort keys %{ $self->shape($class_name)->{members} } ];
-      p $temp;
-      print "---- New Definition ------\n";
-      $temp = [ sort keys %{ $definition->{members} } ];
-      p $temp;
-      die "$class_name tried to register but was already registered";
-    } else {
-      $self->set_shape($class_name, $definition);
-    }
-  }
-
   sub enums_equal {
     my ($self, $left, $right) = @_;
     return Compare(
@@ -448,11 +281,6 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
   }
 
   use Carp;
-
-  sub get_caller_class_type {
-    my ($self, $for_shape) = @_;
-    confess "Stop calling me for '$for_shape'!";
-  }
 
   sub namespace_shape {
     my ($self, $shape) = @_;
@@ -472,28 +300,20 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     my $output = '';
     my ($calls, $results);
 
-    say 'Inner Shapes: ' . join ',', sort $self->inner_shapes;
-    say 'Output Shapes: ' . join ',', sort $self->output_shapes;
-    say 'Input Shapes: ' . join ',', sort $self->input_shapes;
-
-    foreach my $shape_name ($self->shapes) {
-      $self->shape($shape_name)->{perl_type} = $self->get_caller_class_type($shape_name);
-    }
-
     foreach my $op_name ($self->operations) {
       if (defined $self->operation($op_name)->{name}) {
         my $class_name = $self->namespace_shape($self->operation($op_name)->{name});
         my $output = $self->process_template(
           $self->callargs_class_template,
-          { c => $self, op_name => $op_name }
+          { c => $self->api_struct, op_name => $op_name }
         );
         $self->save_class($class_name, $output);
       }
-      if (defined $self->shapename_for_operation_output($op_name)) {
-        my $class_name = $self->namespace_shape($self->shapename_for_operation_output($op_name));
+      if (defined $self->operation($op_name)->output_shapename) {
+        my $class_name = $self->namespace_shape($self->operation($op_name)->output_shapename);
         my $output = $self->process_template(
           $self->callresult_class_template,
-          { c => $self, op_name => $op_name }
+          { c => $self->api_struct, op_name => $op_name }
         );
         $self->save_class($class_name, $output);
       }
@@ -507,7 +327,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
       $self->save_class($class_name, $output);
     }
 
-    my $class_out = $self->process_template($self->service_class_template, { c => $self });
+    my $class_out = $self->process_template($self->service_class_template, { c => $self->api_struct });
     $self->save_class($self->api, $class_out);
   }
 
@@ -581,7 +401,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
           $output .= "  use Moose;\n";
           $output .= "  with 'Paws::API::MapParser';\n";
 
-          my $type = $self->get_caller_class_type($iclass->{value}->{shape});
+          my $type = $self->shape($iclass->{value}->{shape})->perl_class;
           my $xml_keys = $iclass->{key}->{locationName} || 'key';
           my $xml_values = $iclass->{value}->{locationName} || 'value';
           $output .= "\n";
@@ -627,7 +447,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
           $output .= "  has Map => (is => 'ro', isa => 'HashRef[Num]');\n";
           $output .= "}\n1\n";
         } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'structure') {
-          my $type = $self->get_caller_class_type($iclass->{value}->{shape});
+          my $type = $self->shape($iclass->{value}->{shape})->perl_class;
           $output .= "package $inner_class {\n";
           $output .= "  use Moose;\n";
           $output .= "  with 'Paws::API::StrToObjMapParser';\n";
@@ -643,7 +463,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
           $output .= "  has Map => (is => 'ro', isa => 'HashRef[$type]');\n";
           $output .= "}\n1\n";
         } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'list') {
-          my $type = $self->get_caller_class_type($iclass->{value}->{shape});
+          my $type = $self->shape($iclass->{value}->{shape})->perl_class;
           $output .= "package $inner_class {\n";
           $output .= "  use Moose;\n";
           $output .= "  with 'Paws::API::StrToStrMapParser';\n";
@@ -676,8 +496,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
             #$self->register_enum($type, $param_props->{enum});
             $type = 'Str';
           } else {
-            $type = eval { $self->get_caller_class_type($members->{ $param_name }->{ shape }) };
-            if ($@) { die "In Inner Class: $inner_class: $@"; }
+            $type = $self->shape($members->{ $param_name }->{ shape })->perl_class;
           }
           my $traits = [];
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
@@ -696,7 +515,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
           if (@$traits) {
             $output .= ", traits => [" . (join ',', map { "'$_'" } @$traits) . "]";
           }
-          $output .= ", required => 1" if ($self->required_in_shape($iclass,$param_name));
+          $output .= ", required => 1" if ($self->shape($member_shape_name)->is_required($param_name));
           $output .= ");\n";
         }
         $output .= "}\n1;\n";
