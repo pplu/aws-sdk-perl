@@ -1,11 +1,12 @@
 0.12 09 Jul 2015
- -  New API: CodePipeline
- -  New API: CodeCommit
- -  EC2 API update: copy encrypted snapshots between regions
- -  SES API update: support for Sending Authorization
- -  ECS API update
- -  IAM update: support for SSH Keys
- -  Autoscaling update: Support for scaling policies with steps
+ - New API: CodePipeline
+ - New API: CodeCommit
+ - EC2 API update: copy encrypted snapshots between regions
+ - SES API update: support for Sending Authorization
+ - ECS API update
+ - IAM update: support for SSH Keys
+ - Autoscaling update: Support for scaling policies with steps
+ - Fix DeleteMessageBatch,SendMessageBatch and ChangeMessageVisibilityBatch (thanks mbartold)
 
 0.11 02 Jul 2015 
  - Bump up verion in response to: #105600: Please don't let your version length decrease (mst)

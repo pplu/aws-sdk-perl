@@ -279,3 +279,5 @@ CHORNY for CPAN and cpanfile packaging corrections
 Iñigo Tejedor for service endpoint resolution based on rules
 
 codehead for helping fix SQS Queue Maps
+
+mbartold for helping fix SQS MessageBatch functionality
