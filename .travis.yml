@@ -1,7 +1,14 @@
 language: perl
 perl:
-  - "5.21"
+  - "dev"
+  - "5.22"
   - "5.20"
   - "5.18"
   - "5.16"
   - "5.14"
+matrix:
+  allow_failures:
+    - perl: dev
+sudo: false
+before_install:
+  - eval $(curl https://travis-perl.github.io/init) --auto
