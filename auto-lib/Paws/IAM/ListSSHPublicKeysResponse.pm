@@ -1,9 +1,9 @@
 
-package Paws::IAM::ListUsersResponse {
+package Paws::IAM::ListSSHPublicKeysResponse {
   use Moose;
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
-  has Users => (is => 'ro', isa => 'ArrayRef[Paws::IAM::User]', required => 1);
+  has SSHPublicKeys => (is => 'ro', isa => 'ArrayRef[Paws::IAM::SSHPublicKeyMetadata]');
 
 }
 1;
@@ -12,7 +12,7 @@ package Paws::IAM::ListUsersResponse {
 
 =head1 NAME
 
-Paws::IAM::ListUsersResponse
+Paws::IAM::ListSSHPublicKeysResponse
 
 =head1 ATTRIBUTES
 
@@ -48,11 +48,11 @@ request.
 
 
 
-=head2 B<REQUIRED> Users => ArrayRef[Paws::IAM::User]
+=head2 SSHPublicKeys => ArrayRef[Paws::IAM::SSHPublicKeyMetadata]
 
   
 
-A list of users.
+A list of SSH public keys.
 
 
 
