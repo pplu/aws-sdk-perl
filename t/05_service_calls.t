@@ -88,14 +88,14 @@ $request = $sqs->SendMessageBatch(
 );
 
 $test_params = {
-  'Entries.1.Id' => 'test_msg_001',
-  'Entries.1.MessageBody' => 'test message body 201',
-  'Entries.2.Id' => 'test_msg_002',
-  'Entries.2.MessageBody' => 'test message body 202',
-  'Entries.2.DelaySeconds' => '60',
-  'Entries.2.MessageAttribute.1.Name' => 'test_attribute_name_1',
-  'Entries.2.MessageAttribute.1.Value.StringValue' => 'test_attribute_value_1',
-  'Entries.2.MessageAttribute.1.Value.DataType' => 'String',
+  'SendMessageBatchRequestEntry.1.Id' => 'test_msg_001',
+  'SendMessageBatchRequestEntry.1.MessageBody' => 'test message body 201',
+  'SendMessageBatchRequestEntry.2.Id' => 'test_msg_002',
+  'SendMessageBatchRequestEntry.2.MessageBody' => 'test message body 202',
+  'SendMessageBatchRequestEntry.2.DelaySeconds' => '60',
+  'SendMessageBatchRequestEntry.2.MessageAttribute.1.Name' => 'test_attribute_name_1',
+  'SendMessageBatchRequestEntry.2.MessageAttribute.1.Value.StringValue' => 'test_attribute_value_1',
+  'SendMessageBatchRequestEntry.2.MessageAttribute.1.Value.DataType' => 'String',
 };
 
 request_has_params($test_params, $request);
