@@ -1,6 +1,7 @@
 package Paws::API::EndpointResolver {
   use Moose::Role;
   use URI::Template;
+  use Paws::Exception;
 
   has region => (is => 'rw', isa => 'Str|Undef');
   requires 'service';
@@ -78,7 +79,11 @@ package Paws::API::EndpointResolver {
     }
 
     if ( not defined $endpoint_info ) {
-      die "NoRegionError()";
+      Paws::Exception->throw(
+        message => "No endpoint for region '$args->{ region }'",
+        code => 'NoRegionError',
+        request_id => ''
+      );
     } else {
       my $template = URI::Template->new($endpoint_info->{uri});
       my $url = $template->process($args);
