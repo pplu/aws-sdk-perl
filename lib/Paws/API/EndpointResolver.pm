@@ -1,4 +1,4 @@
-package Paws::API::RegionalEndpointCaller {
+package Paws::API::EndpointResolver {
   use Moose::Role;
   use URI::Template;
 

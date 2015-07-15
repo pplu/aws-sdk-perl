@@ -5,7 +5,7 @@ package Paws::DynamoDB {
   sub target_prefix { 'DynamoDB_20120810' }
   sub json_version { "1.0" }
 
-  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   has '+region_rules' => (default => sub {
     my $regioninfo;

@@ -4,7 +4,7 @@ package Paws::EC2 {
   sub version { '2015-04-15' }
   sub flattened_arrays { 1 }
 
-  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::EC2Caller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::EC2Caller', 'Paws::Net::XMLResponse';
 
   
   sub AcceptVpcPeeringConnection {

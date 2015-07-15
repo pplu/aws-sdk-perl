@@ -5,7 +5,7 @@ package Paws::S3 {
   sub version { '2006-03-01' }
   sub flattened_arrays { 1 }
 
-  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::S3Signature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::S3Signature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
 
   has '+region_rules' => (default => sub {
     my $regioninfo;
