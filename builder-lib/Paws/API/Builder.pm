@@ -551,12 +551,9 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     my $output = '';
     my ($calls, $results);
 
-    say 'Inner Shapes: ' . join ',', sort $self->inner_shapes;
-    say 'Output Shapes: ' . join ',', sort $self->output_shapes;
-    say 'Input Shapes: ' . join ',', sort $self->input_shapes;
-
     foreach my $shape_name ($self->shapes) {
       $self->shape($shape_name)->{perl_type} = $self->get_caller_class_type($shape_name);
+      warn "Shape $shape_name is non-compliant" if ($shape_name =~ m/^[a-z]/);
     }
 
     foreach my $op_name ($self->operations) {
