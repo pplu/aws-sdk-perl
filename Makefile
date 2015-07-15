@@ -16,6 +16,7 @@ pull-boto-develop:
 	cd botocore && git pull boto develop
 
 gen-classes:
+	mkdir auto-lib/Paws/DeleteMe
 	rm -r auto-lib/Paws/*
 	./gen_classes.pl
 
