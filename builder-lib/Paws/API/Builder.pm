@@ -9,6 +9,8 @@ package Paws::API::Builder {
   use JSON;
   use v5.10;
 
+  use Paws::API::RegionBuilder; 
+
   has api => (is => 'ro', required => 1);
 
   sub service_name {
@@ -96,6 +98,15 @@ package Paws::API::Builder {
       return "Paws::Net::${type}Caller" 
     },
   );
+
+  has service_endpoint_rules => (is => 'ro', lazy => 1, default => sub { 
+    my $self = shift; 
+    my $s = Paws::API::RegionBuilder->new( 
+      rules => 'botocore/botocore/data/_endpoints.json', 
+      service  => $self->service, 
+    ); 
+    $s->region_accessor; 
+  });
 
   has operations_struct => (
     is => 'ro', 

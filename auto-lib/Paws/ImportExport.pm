@@ -6,6 +6,24 @@ package Paws::ImportExport {
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V2Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
+  has '+region_rules' => (default => sub {
+    my $regioninfo;
+      $regioninfo = [
+    {
+      constraints => [
+        [
+          'region',
+          'notStartsWith',
+          'cn-'
+        ]
+      ],
+      uri => 'https://importexport.amazonaws.com'
+    }
+  ];
+
+    return $regioninfo;
+  });
+
   
   sub CancelJob {
     my $self = shift;

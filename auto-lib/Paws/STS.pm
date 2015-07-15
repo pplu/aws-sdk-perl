@@ -6,6 +6,42 @@ package Paws::STS {
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
+  has '+region_rules' => (default => sub {
+    my $regioninfo;
+      $regioninfo = [
+    {
+      constraints => [
+        [
+          'region',
+          'startsWith',
+          'cn-'
+        ]
+      ],
+      uri => '{scheme}://{service}.cn-north-1.amazonaws.com.cn'
+    },
+    {
+      constraints => [
+        [
+          'region',
+          'startsWith',
+          'us-gov'
+        ]
+      ],
+      uri => 'https://{service}.{region}.amazonaws.com'
+    },
+    {
+      properties => {
+        credentialScope => {
+          region => 'us-east-1'
+        }
+      },
+      uri => 'https://sts.amazonaws.com'
+    }
+  ];
+
+    return $regioninfo;
+  });
+
   
   sub AssumeRole {
     my $self = shift;

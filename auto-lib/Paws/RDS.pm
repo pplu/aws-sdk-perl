@@ -6,6 +6,24 @@ package Paws::RDS {
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
+  has '+region_rules' => (default => sub {
+    my $regioninfo;
+      $regioninfo = [
+    {
+      constraints => [
+        [
+          'region',
+          'equals',
+          'us-east-1'
+        ]
+      ],
+      uri => 'https://rds.amazonaws.com'
+    }
+  ];
+
+    return $regioninfo;
+  });
+
   
   sub AddSourceIdentifierToSubscription {
     my $self = shift;

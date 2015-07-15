@@ -7,6 +7,79 @@ package Paws::S3 {
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::S3Signature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
 
+  has '+region_rules' => (default => sub {
+    my $regioninfo;
+      $regioninfo = [
+    {
+      constraints => [
+        [
+          'region',
+          'oneOf',
+          [
+            'us-east-1',
+            undef
+          ]
+        ]
+      ],
+      properties => {
+        credentialScope => {
+          region => 'us-east-1'
+        }
+      },
+      uri => '{scheme}://s3.amazonaws.com'
+    },
+    {
+      constraints => [
+        [
+          'region',
+          'startsWith',
+          'cn-'
+        ]
+      ],
+      properties => {
+        signatureVersion => 's3v4'
+      },
+      uri => '{scheme}://{service}.{region}.amazonaws.com.cn'
+    },
+    {
+      constraints => [
+        [
+          'region',
+          'oneOf',
+          [
+            'us-east-1',
+            'ap-northeast-1',
+            'sa-east-1',
+            'ap-southeast-1',
+            'ap-southeast-2',
+            'us-west-2',
+            'us-west-1',
+            'eu-west-1',
+            'us-gov-west-1',
+            'fips-us-gov-west-1'
+          ]
+        ]
+      ],
+      uri => '{scheme}://{service}-{region}.amazonaws.com'
+    },
+    {
+      constraints => [
+        [
+          'region',
+          'notEquals',
+          undef
+        ]
+      ],
+      properties => {
+        signatureVersion => 's3v4'
+      },
+      uri => '{scheme}://{service}.{region}.amazonaws.com'
+    }
+  ];
+
+    return $regioninfo;
+  });
+
   
   sub AbortMultipartUpload {
     my $self = shift;

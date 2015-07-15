@@ -6,6 +6,44 @@ package Paws::SQS {
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
+  has '+region_rules' => (default => sub {
+    my $regioninfo;
+      $regioninfo = [
+    {
+      constraints => [
+        [
+          'region',
+          'equals',
+          'us-east-1'
+        ]
+      ],
+      uri => 'https://queue.amazonaws.com'
+    },
+    {
+      constraints => [
+        [
+          'region',
+          'startsWith',
+          'cn-'
+        ]
+      ],
+      uri => 'https://{region}.queue.amazonaws.com.cn'
+    },
+    {
+      constraints => [
+        [
+          'region',
+          'notEquals',
+          undef
+        ]
+      ],
+      uri => 'https://{region}.queue.amazonaws.com'
+    }
+  ];
+
+    return $regioninfo;
+  });
+
   
   sub AddPermission {
     my $self = shift;

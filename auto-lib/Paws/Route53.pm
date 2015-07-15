@@ -7,6 +7,24 @@ package Paws::Route53 {
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V3HTTPSSignature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
 
+  has '+region_rules' => (default => sub {
+    my $regioninfo;
+      $regioninfo = [
+    {
+      constraints => [
+        [
+          'region',
+          'notStartsWith',
+          'cn-'
+        ]
+      ],
+      uri => 'https://route53.amazonaws.com'
+    }
+  ];
+
+    return $regioninfo;
+  });
+
   
   sub AssociateVPCWithHostedZone {
     my $self = shift;

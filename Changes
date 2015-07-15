@@ -1,3 +1,7 @@
+0.13
+ - Information for calculating region endpoints is moved into service classes, not the RegionInfo
+   class that holds all endpoint information for all services.
+
 0.12 09 Jul 2015
  - New API: CodePipeline
  - New API: CodeCommit

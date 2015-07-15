@@ -7,6 +7,54 @@ package Paws::EMR {
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
+  has '+region_rules' => (default => sub {
+    my $regioninfo;
+      $regioninfo = [
+    {
+      constraints => [
+        [
+          'region',
+          'startsWith',
+          'cn-'
+        ]
+      ],
+      uri => 'https://elasticmapreduce.cn-north-1.amazonaws.com.cn'
+    },
+    {
+      constraints => [
+        [
+          'region',
+          'equals',
+          'eu-central-1'
+        ]
+      ],
+      uri => 'https://elasticmapreduce.eu-central-1.amazonaws.com'
+    },
+    {
+      constraints => [
+        [
+          'region',
+          'equals',
+          'us-east-1'
+        ]
+      ],
+      uri => 'https://elasticmapreduce.us-east-1.amazonaws.com'
+    },
+    {
+      constraints => [
+        [
+          'region',
+          'notEquals',
+          undef
+        ]
+      ],
+      uri => 'https://{region}.elasticmapreduce.amazonaws.com'
+    }
+  ];
+
+    return $regioninfo;
+  });
+
   
   sub AddInstanceGroups {
     my $self = shift;

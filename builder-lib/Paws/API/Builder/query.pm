@@ -70,6 +70,7 @@ package [% c.api %] {
 
   with 'Paws::API::Caller', '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]', '[% c.response_role %]';
 
+  [%- c.service_endpoint_rules %]
   [% FOR op IN c.api_struct.operations.keys.sort %]
   [%- op_name = c.api_struct.operations.$op.name %]
   sub [% op_name %] {

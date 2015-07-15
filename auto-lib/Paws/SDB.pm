@@ -6,6 +6,24 @@ package Paws::SDB {
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V2Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
+  has '+region_rules' => (default => sub {
+    my $regioninfo;
+      $regioninfo = [
+    {
+      constraints => [
+        [
+          'region',
+          'equals',
+          'us-east-1'
+        ]
+      ],
+      uri => 'https://sdb.amazonaws.com'
+    }
+  ];
+
+    return $regioninfo;
+  });
+
   
   sub BatchDeleteAttributes {
     my $self = shift;

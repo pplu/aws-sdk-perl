@@ -7,6 +7,29 @@ package Paws::CloudFront {
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
 
+  has '+region_rules' => (default => sub {
+    my $regioninfo;
+      $regioninfo = [
+    {
+      constraints => [
+        [
+          'region',
+          'notStartsWith',
+          'cn-'
+        ]
+      ],
+      properties => {
+        credentialScope => {
+          region => 'us-east-1'
+        }
+      },
+      uri => 'https://cloudfront.amazonaws.com'
+    }
+  ];
+
+    return $regioninfo;
+  });
+
   
   sub CreateCloudFrontOriginAccessIdentity2015_04_17 {
     my $self = shift;

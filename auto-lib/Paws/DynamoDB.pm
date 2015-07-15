@@ -7,6 +7,30 @@ package Paws::DynamoDB {
 
   with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
+  has '+region_rules' => (default => sub {
+    my $regioninfo;
+      $regioninfo = [
+    {
+      constraints => [
+        [
+          'region',
+          'equals',
+          'local'
+        ]
+      ],
+      properties => {
+        credentialScope => {
+          region => 'us-east-1',
+          service => 'dynamodb'
+        }
+      },
+      uri => 'http://localhost:8000'
+    }
+  ];
+
+    return $regioninfo;
+  });
+
   
   sub BatchGetItem {
     my $self = shift;
