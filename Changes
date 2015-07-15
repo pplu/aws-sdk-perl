@@ -1,6 +1,7 @@
 0.13
  - New API: DynamoDB Streams
  - New API: DeviceFarm
+ - Paws::Credentials::File. Support for changing the filename via ENVIRONMENT (AWS_CONFIG_FILE)
 
 0.12 09 Jul 2015
  - New API: CodePipeline
