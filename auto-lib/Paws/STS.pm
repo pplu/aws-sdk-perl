@@ -30,12 +30,22 @@ package Paws::STS {
       uri => 'https://{service}.{region}.amazonaws.com'
     },
     {
+      constraints => [
+        [
+          'region',
+          'equals',
+          undef
+        ]
+      ],
       properties => {
         credentialScope => {
           region => 'us-east-1'
         }
       },
       uri => 'https://sts.amazonaws.com'
+    },
+    {
+      uri => 'https://{service}.{region}.amazonaws.com'
     }
   ];
 

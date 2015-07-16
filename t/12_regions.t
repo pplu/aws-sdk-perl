@@ -253,6 +253,7 @@ my $known_regions = <<'EOF';
     "elasticmapreduce": "us-gov-west-1.elasticmapreduce.amazonaws.com",
     "rds": "rds.us-gov-west-1.amazonaws.com",
     "sns": "sns.us-gov-west-1.amazonaws.com",
+    # The endpoint has been replaced with the name in the common name.
     "sqs": "us-gov-west-1.queue.amazonaws.com",
     "s3": "s3-us-gov-west-1.amazonaws.com",
     "autoscaling": "autoscaling.us-gov-west-1.amazonaws.com",
@@ -280,7 +281,21 @@ my $rules    = "$FindBin::Bin/../botocore/botocore/data/_endpoints.json";
 
 my $json = JSON->new->pretty;
 $json = $json->relaxed([1]);
+
 my $known_regions = $json->decode($known_regions);
+# Override some differences with botocore handling of STS. It looks like they don't
+# support regional endpoints for STS
+$known_regions->{ '[UNDEF]' }->{ sts }        = 'sts.amazonaws.com';
+$known_regions->{ 'us-east-1' }->{ sts }      = 'sts.us-east-1.amazonaws.com';
+$known_regions->{ 'us-west-2' }->{ sts }      = 'sts.us-west-2.amazonaws.com';
+$known_regions->{ 'us-west-1' }->{ sts }      = 'sts.us-west-1.amazonaws.com';
+$known_regions->{ 'eu-west-1' }->{ sts }      = 'sts.eu-west-1.amazonaws.com';
+$known_regions->{ 'eu-central-1' }->{ sts }   = 'sts.eu-central-1.amazonaws.com';
+$known_regions->{ 'ap-southeast-1' }->{ sts } = 'sts.ap-southeast-1.amazonaws.com';
+$known_regions->{ 'ap-southeast-2' }->{ sts } = 'sts.ap-southeast-2.amazonaws.com';
+$known_regions->{ 'ap-northeast-1' }->{ sts } = 'sts.ap-northeast-1.amazonaws.com';
+$known_regions->{ 'sa-east-1' }->{ sts }      = 'sts.sa-east-1.amazonaws.com';
+
 my $paws = Paws->new(config => { credentials => 'Test::CustomCredentials' });
 
 for my $region ( sort keys %$known_regions ) {
@@ -294,6 +309,7 @@ for my $region ( sort keys %$known_regions ) {
       next;
     }
 
+    $region = undef if ($region eq '[UNDEF]');
     my $svc = $paws->service($paws_service, region => $region);
     cmp_ok($svc->endpoint_host, 'eq', $expected_endpoint, "Paws->service('$service', region => $region) endpoint is $expected_endpoint");
   }

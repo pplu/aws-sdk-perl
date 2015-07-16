@@ -6,6 +6,8 @@
    class that holds all endpoint information for all services.
  - Rename RegionalEndpointCaller role to EndpointResolver
  - Throw structured exception if an endpoint can't be calculated
+ - Support for STS regional endpoint when used passing a region to $paws->service('STS', region => 'Desired region'). 
+   $paws->service('STS') still uses the global sts.amazonaws.com endpoint
 
 0.12 09 Jul 2015
  - New API: CodePipeline
