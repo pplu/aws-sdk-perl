@@ -8,6 +8,7 @@
  - Throw structured exception if an endpoint can't be calculated
  - Support for STS regional endpoint when used passing a region to $paws->service('STS', region => 'Desired region'). 
    $paws->service('STS') still uses the global sts.amazonaws.com endpoint
+ - Signin service working again (still hand-coded...)
 
 0.12 09 Jul 2015
  - New API: CodePipeline

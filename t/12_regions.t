@@ -295,6 +295,8 @@ $known_regions->{ 'ap-southeast-1' }->{ sts } = 'sts.ap-southeast-1.amazonaws.co
 $known_regions->{ 'ap-southeast-2' }->{ sts } = 'sts.ap-southeast-2.amazonaws.com';
 $known_regions->{ 'ap-northeast-1' }->{ sts } = 'sts.ap-northeast-1.amazonaws.com';
 $known_regions->{ 'sa-east-1' }->{ sts }      = 'sts.sa-east-1.amazonaws.com';
+#Signin service is Paws only
+$known_regions->{ '[UNDEF]' }->{ signin }     = 'signin.aws.amazon.com';
 
 my $paws = Paws->new(config => { credentials => 'Test::CustomCredentials' });
 
@@ -305,12 +307,13 @@ for my $region ( sort keys %$known_regions ) {
     # If we don't have a Class for a service, just skip it
     my $paws_service = eval { Paws::API::ServiceToClass::service_to_class($service); };
     if (not defined $paws_service){
-      warn "No service for $paws_service";
+      warn "No service for $service";
       next;
     }
 
-    $region = undef if ($region eq '[UNDEF]');
-    my $svc = $paws->service($paws_service, region => $region);
+    my $paws_region = ($region eq '[UNDEF]') ? undef : $region;
+    my $svc = $paws->service($paws_service, region => $paws_region);
+
     cmp_ok($svc->endpoint_host, 'eq', $expected_endpoint, "Paws->service('$service', region => $region) endpoint is $expected_endpoint");
   }
 }
