@@ -9,6 +9,7 @@
  - Support for STS regional endpoint when used passing a region to $paws->service('STS', region => 'Desired region'). 
    $paws->service('STS') still uses the global sts.amazonaws.com endpoint
  - Signin service working again (still hand-coded...)
+ - paws cli now displays all attributes for call parameters, and their requiredness
 
 0.12 09 Jul 2015
  - New API: CodePipeline
