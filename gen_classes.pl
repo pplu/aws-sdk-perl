@@ -13,15 +13,6 @@ use lib 'builder-lib', 't/lib';
 use Module::Runtime qw/require_module/;
 
 use Paws::API::ServiceToClass;
-use Paws::API::RegionBuilder;
-
-print "Building Paws::API::RegionBuilder\n";
-my $s = Paws::API::RegionBuilder->new(
-  rules => 'botocore/botocore/data/_endpoints.json',
-  file  => 'auto-lib/Paws/RegionInfo.pm',
-);
-
-$s->write_file;
  
 my (@files) = @ARGV;
 

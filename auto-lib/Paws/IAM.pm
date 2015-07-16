@@ -4,7 +4,43 @@ package Paws::IAM {
   sub version { '2010-05-08' }
   sub flattened_arrays { 0 }
 
-  with 'Paws::API::Caller', 'Paws::API::RegionalEndpointCaller', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+
+  has '+region_rules' => (default => sub {
+    my $regioninfo;
+      $regioninfo = [
+    {
+      constraints => [
+        [
+          'region',
+          'startsWith',
+          'cn-'
+        ]
+      ],
+      uri => 'https://{service}.cn-north-1.amazonaws.com.cn'
+    },
+    {
+      constraints => [
+        [
+          'region',
+          'startsWith',
+          'us-gov'
+        ]
+      ],
+      uri => 'https://{service}.us-gov.amazonaws.com'
+    },
+    {
+      properties => {
+        credentialScope => {
+          region => 'us-east-1'
+        }
+      },
+      uri => 'https://iam.amazonaws.com'
+    }
+  ];
+
+    return $regioninfo;
+  });
 
   
   sub AddClientIDToOpenIDConnectProvider {

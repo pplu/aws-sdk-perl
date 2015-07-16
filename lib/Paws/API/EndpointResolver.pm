@@ -1,36 +1,89 @@
-package Paws::Net::Regions {
-  use Moose;
-  use JSON;
-  use autodie;
+package Paws::API::EndpointResolver {
+  use Moose::Role;
   use URI::Template;
-  use Paws::RegionInfo;
+  use Paws::Exception;
 
-  has config => (is => 'ro', isa => 'HashRef', default => sub {
-    return Paws::RegionInfo::get();
-  },
-  traits => [ 'Hash' ],
-  handles => {
-    get_rules_for_service => 'get'
-  });
+  has region => (is => 'rw', isa => 'Str|Undef');
+  requires 'service';
+
+  has _endpoint_info => (
+    is => 'ro',
+    init_arg => undef,
+    lazy => 1,
+    default => sub {
+      shift->_construct_endpoint;
+    }
+  );
+
+  has _region_for_signature => (
+    is => 'rw', 
+    isa => 'Str', 
+    lazy => 1,
+    init_arg => undef, 
+    default => sub {
+      my $self = shift;
+      $self->_endpoint_info->{ credentialScope }->{ region } or $self->region;
+    }
+  );
+
+
+  has endpoint_host => (
+    is => 'ro',
+    isa => 'Str',
+    lazy => 1,
+    default => sub {
+      shift->_endpoint_info->{ url }->host;
+    }
+  ); 
+
+  has _api_endpoint => (
+    is => 'ro',
+    isa => 'Str',
+    lazy => 1,
+    default => sub {
+      shift->_endpoint_info->{ url }->as_string;
+    }
+  ); 
+
+  has region_rules => (is => 'ro', isa => 'ArrayRef');
+
+  has _default_rules => (is => 'ro', isa => 'ArrayRef', default => sub {
+    [ { constraints => [ [ 'region', 'startsWith', 'cn-' ] ], 
+        properties => { signatureVersion => 'v4' }, 
+        uri => '{scheme}://{service}.{region}.amazonaws.com.cn'
+      },
+      { constraints => [ [ 'region', 'notEquals', undef ] ],
+        uri => '{scheme}://{service}.{region}.amazonaws.com'
+      },
+    ]    
+    },
+  );
 
   has default_scheme => ( is => 'ro', isa => 'Str', default => 'https' );
 
-  sub construct_endpoint {
-    my ($self, $service, $region, $args) = @_;
+  sub _construct_endpoint {
+    my ($self) = @_;
 
-    $args->{ service } = $service;
-    $args->{ region  } = $region;
+    my $args = {};
+    $args->{ service } = $self->service;
+    $args->{ region  } = $self->region;
     $args->{ scheme  } = $self->default_scheme if (not defined $args->{scheme});
 
-    my $service_rules = $self->get_rules_for_service($service);
-    my $endpoint_info = $self->_match_rules($service_rules, $region, $args);
+    my $service_rules = $self->region_rules;
+    my $endpoint_info = $self->_match_rules($self->region_rules, $args->{ region }, $args);
+    if (not defined $self->region_rules) {
+      $endpoint_info = $self->_match_rules($self->region_rules, $args->{ region }, $args);
+    }
     if (not defined $endpoint_info) {
-      $service_rules = $self->get_rules_for_service('_default');
-      $endpoint_info = $self->_match_rules($service_rules, $region, $args);
+      $endpoint_info = $self->_match_rules($self->_default_rules, $args->{ region }, $args);
     }
 
     if ( not defined $endpoint_info ) {
-      die "NoRegionError()";
+      Paws::Exception->throw(
+        message => "No endpoint for region '$args->{ region }'",
+        code => 'NoRegionError',
+        request_id => ''
+      );
     } else {
       my $template = URI::Template->new($endpoint_info->{uri});
       my $url = $template->process($args);

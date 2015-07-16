@@ -2,6 +2,10 @@
  - New API: DynamoDB Streams
  - New API: DeviceFarm
  - Paws::Credentials::File. Support for changing the filename via ENVIRONMENT (AWS_CONFIG_FILE)
+ - Information for calculating region endpoints is moved into service classes, not the RegionInfo
+   class that holds all endpoint information for all services.
+ - Rename RegionalEndpointCaller role to EndpointResolver
+ - Throw structured exception if an endpoint can't be calculated
 
 0.12 09 Jul 2015
  - New API: CodePipeline

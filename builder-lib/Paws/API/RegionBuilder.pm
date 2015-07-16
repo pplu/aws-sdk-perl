@@ -5,16 +5,12 @@ package Paws::API::RegionBuilder {
   use Data::Dumper;
   use Template;
 
-  has rules => ( is => 'rw', isa => 'Str', required => 1 );
-  has file  => ( is => 'rw', isa => 'Str', required => 1 );
+  has rules =>   (is => 'rw', isa => 'Str', required => 1);
+  has service => (is => 'ro', isa => 'Str', required => 1);
 
   has json => ( 
     is => 'ro', 
     lazy => 1,
-    traits => [ 'Hash' ],
-    handles => {
-      get_rules_for_service => 'get',
-    }, 
     default => sub {
       my $self = shift;
       my $json = JSON->new->pretty;
@@ -23,7 +19,7 @@ package Paws::API::RegionBuilder {
       open my $fh, '<', $self->rules;
       $json = <$fh>;
       close $fh;
-      return decode_json($json);
+      return decode_json($json)->{ $self->service };
     }
   );
 
@@ -33,7 +29,7 @@ package Paws::API::RegionBuilder {
     lazy => 1,
     default => sub {
       my $self = shift;
-      my $d = Data::Dumper->new([ $self->json ], [ 'data' ]);
+      my $d = Data::Dumper->new([ $self->json ], [ 'regioninfo' ]);
       $d->Indent(1);
       $d->Pad('  ');
       $d->Quotekeys(0);
@@ -42,34 +38,25 @@ package Paws::API::RegionBuilder {
     }
   );
 
-   has template => (is => 'ro', isa => 'Str', default => q#
-package Paws::RegionInfo {
-
-  sub get {
-    my $data;
-  [% c.perl_ds %]
-    return $data;
-  }
-
-}
-1;
+   has region_accessor_template => (is => 'ro', isa => 'Str', default => q#
+  has '+region_rules' => (default => sub {
+    my $regioninfo;
+    [% c.perl_ds %]
+    return $regioninfo;
+  });
 #);
 
-  sub process_template {
+  sub region_accessor {
     my ($self) = @_;
-    my $tt = Template->new;
-    my $template = $self->template;
-    my $output = '';
-    $tt->process(\$template, { c => $self }, \$output) || die $tt->error();
-    return $output;
-  }
-
-  sub write_file {
-    my ($self) = @_;
-    my $content = $self->process_template;
-    open my $fh, '>', $self->file;
-    print $fh $content;
-    close $fh;
+    if (defined $self->json) {
+      my $tt = Template->new;
+      my $template = $self->region_accessor_template;
+      my $output = '';
+      $tt->process(\$template, { c => $self }, \$output) || die $tt->error();
+      return $output;
+    } else {
+      return '';
+    }
   }
 }
 1;

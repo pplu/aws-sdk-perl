@@ -9,6 +9,8 @@ package Paws::API::Builder {
   use JSON;
   use v5.10;
 
+  use Paws::API::RegionBuilder; 
+
   has api => (is => 'ro', required => 1);
 
   sub service_name {
@@ -20,7 +22,7 @@ package Paws::API::Builder {
 
   has service => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ endpointPrefix } });
   has version => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ apiVersion } });
-  has endpoint_role => (is => 'ro', lazy => 1, default => 'Paws::API::RegionalEndpointCaller' );
+  has endpoint_role => (is => 'ro', lazy => 1, default => 'Paws::API::EndpointResolver' );
 
   has api_file => (is => 'ro', required => 1);
 
@@ -96,6 +98,15 @@ package Paws::API::Builder {
       return "Paws::Net::${type}Caller" 
     },
   );
+
+  has service_endpoint_rules => (is => 'ro', lazy => 1, default => sub { 
+    my $self = shift; 
+    my $s = Paws::API::RegionBuilder->new( 
+      rules => 'botocore/botocore/data/_endpoints.json', 
+      service  => $self->service, 
+    ); 
+    $s->region_accessor; 
+  });
 
   has operations_struct => (
     is => 'ro', 
@@ -540,12 +551,9 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     my $output = '';
     my ($calls, $results);
 
-    say 'Inner Shapes: ' . join ',', sort $self->inner_shapes;
-    say 'Output Shapes: ' . join ',', sort $self->output_shapes;
-    say 'Input Shapes: ' . join ',', sort $self->input_shapes;
-
     foreach my $shape_name ($self->shapes) {
       $self->shape($shape_name)->{perl_type} = $self->get_caller_class_type($shape_name);
+      warn "Shape $shape_name is non-compliant" if ($shape_name =~ m/^[a-z]/);
     }
 
     foreach my $op_name ($self->operations) {

@@ -273,13 +273,11 @@ EOF
 use FindBin;
 use lib "$FindBin::Bin/../lib";
 use Paws;
-use Paws::Net::Regions;
 use Paws::API::ServiceToClass;
 use Data::Dumper;
 use Test::More;
 my $rules    = "$FindBin::Bin/../botocore/botocore/data/_endpoints.json";
 
-my $resolver = Paws::Net::Regions->new( rules => $rules );
 my $json = JSON->new->pretty;
 $json = $json->relaxed([1]);
 my $known_regions = $json->decode($known_regions);
@@ -288,21 +286,15 @@ my $paws = Paws->new(config => { credentials => 'Test::CustomCredentials' });
 for my $region ( sort keys %$known_regions ) {
   for my $service ( sort keys %{ $known_regions->{$region} } ) {
     my $expected_endpoint = $known_regions->{ $region }->{ $service };
-    my $endpoint = $resolver->construct_endpoint($service, $region);
-    cmp_ok($endpoint->{ url }->host, 'eq', $expected_endpoint, "Paws::Net::Regions reports endpoint for $service in $region is $expected_endpoint");
-  }
-}
-
-for my $region ( sort keys %$known_regions ) {
-  for my $service ( sort keys %{ $known_regions->{$region} } ) {
-    my $expected_endpoint = $known_regions->{ $region }->{ $service };
 
     # If we don't have a Class for a service, just skip it
     my $paws_service = eval { Paws::API::ServiceToClass::service_to_class($service); };
-    next if (not defined $paws_service);
+    if (not defined $paws_service){
+      warn "No service for $paws_service";
+      next;
+    }
 
     my $svc = $paws->service($paws_service, region => $region);
-    my $endpoint = $resolver->construct_endpoint($service, $region);
     cmp_ok($svc->endpoint_host, 'eq', $expected_endpoint, "Paws->service('$service', region => $region) endpoint is $expected_endpoint");
   }
 }
