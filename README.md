@@ -281,3 +281,6 @@ Iñigo Tejedor for service endpoint resolution based on rules
 codehead for helping fix SQS Queue Maps
 
 mbartold for helping fix SQS MessageBatch functionality
+
+coreymayer for reporting bug in RestXmlCaller
+
