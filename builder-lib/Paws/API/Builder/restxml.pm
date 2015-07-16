@@ -48,6 +48,7 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (member.member.locationName) %], traits => ['Unwrapped'], xmlname => '[% member.member.locationName %]'[% END %]
   [%- IF (member.locationName) %], traits => ['Unwrapped'], xmlname => '[% member.locationName %]'[% END %]
+  [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
 }
