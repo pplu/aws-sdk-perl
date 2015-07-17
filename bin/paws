@@ -85,6 +85,12 @@ if ($@) {
   print $@ if ($opts->{debug});
   if (ref($@) and $@->isa('Moose::Exception::AttributeIsRequired')) {
     print "Call to $method_name requires argument " . $@->attribute_name . "\n";
+    my $call_class = Moose::Util::find_meta($@->class_name);
+    my @atts = sort map { $_->name } $call_class->get_all_attributes;
+    foreach my $att_name (@atts) {
+      my $attribute = $call_class->find_attribute_by_name($att_name);
+      say sprintf "%s: %s %s", $attribute->name, $attribute->type_constraint->name, ($attribute->is_required ? 'REQUIRED' : '');
+    }
   } else {
     die $@;
   }

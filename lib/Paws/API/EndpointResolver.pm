@@ -79,8 +79,9 @@ package Paws::API::EndpointResolver {
     }
 
     if ( not defined $endpoint_info ) {
+      my $region_for_exception = (defined $args->{ region }) ? $args->{ region } : '';
       Paws::Exception->throw(
-        message => "No endpoint for region '$args->{ region }'",
+        message => "No endpoint for service $args->{ service } in region '$region_for_exception'",
         code => 'NoRegionError',
         request_id => ''
       );

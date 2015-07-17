@@ -96,7 +96,13 @@ package Paws::Net::RestXmlCaller {
   sub prepare_request_for_call {
     my ($self, $call) = @_;
 
-    my $request = Paws::Net::APIRequest->new();
+    my $request;
+    if ($self->isa('Paws::S3')){
+      require Paws::Net::S3APIRequest;
+      $request = Paws::Net::S3APIRequest->new();
+    } else {
+      $request = Paws::Net::APIRequest->new();
+    }
 
     my $uri = $self->_call_uri($call);
     $request->uri($uri);
@@ -117,6 +123,10 @@ package Paws::Net::RestXmlCaller {
     }
 
     $request->method($call->_api_method);
+
+    #$request->headers->header( 'content-length' => $self->content_length ) if $content;
+    #$request->headers->header( 'content-type'   => $self->content_type ) if $content;
+    #$request->content();
 
     $self->sign($request);
 

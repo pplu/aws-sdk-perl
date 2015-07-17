@@ -10,6 +10,8 @@
    $paws->service('STS') still uses the global sts.amazonaws.com endpoint
  - Paws::Credential::AssumeRole and Paws::Credential::STS support new sts_region attribute to select region. Default
    is to use the global region
+ - Signin service working again (still hand-coded...)
+ - paws cli now displays all attributes for call parameters, and their requiredness
 
 0.12 09 Jul 2015
  - New API: CodePipeline
