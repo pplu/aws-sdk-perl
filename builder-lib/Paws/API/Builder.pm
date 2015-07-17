@@ -99,10 +99,14 @@ package Paws::API::Builder {
     },
   );
 
+  has endpoints_file => (is => 'ro', isa => 'Str', default => sub {
+    'botocore/botocore/data/_endpoints.json';
+  });
+
   has service_endpoint_rules => (is => 'ro', lazy => 1, default => sub { 
     my $self = shift; 
     my $s = Paws::API::RegionBuilder->new( 
-      rules => 'botocore/botocore/data/_endpoints.json', 
+      rules    => $self->endpoints_file, 
       service  => $self->service, 
     ); 
     $s->region_accessor; 
