@@ -22,13 +22,13 @@ coerce 'Paws::Credential',
    };
 
 has region => (
-  is => 'ro',
+  is => 'rw',
   isa => 'Str|Undef',
   default => sub { undef }
 );
 
 has caller => (
-  is => 'ro', 
+  is => 'rw',
   does => 'Paws::Net::CallerRole', 
   lazy => 1,
   default => sub { 
@@ -38,7 +38,7 @@ has caller => (
   coerce => 1
 ); 
 has credentials => (
-  is => 'ro', 
+  is => 'rw',
   does => 'Paws::Credential',
   lazy => 1,
   default => sub {
