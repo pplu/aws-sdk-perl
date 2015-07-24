@@ -21,6 +21,8 @@ use warnings;
 use Paws;
 use Test::More;
 
+Paws->default_config->credentials('Test::CustomCredentials');
+
 # Get an Paws object, with defaults and then a service
 my $aws = Paws->new;
 ok($aws->config->caller->isa('Paws::Net::Caller'), 'Got default caller');
