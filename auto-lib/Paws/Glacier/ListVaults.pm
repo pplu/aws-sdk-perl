@@ -46,7 +46,7 @@ AWS account ID associated with the credentials used to sign the
 request. You can either specify an AWS account ID or optionally a
 single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
-you specify your Account ID, do not include any hyphens (apos-apos) in
+you specify your account ID, do not include any hyphens (apos-apos) in
 the ID.
 
 
