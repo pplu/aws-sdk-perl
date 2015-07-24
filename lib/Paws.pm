@@ -161,7 +161,7 @@ Please take a look at classes in the Paws::XXX namespace
 
 =head1 SERVICES CLASSES
 
-Each service in AWS (EC2, CloudFormation, SQS, SNS, etc) has a service class. The service class represents the properties that a web service has (how to call it, what methods it has, how to authenticate, etc). When a service class is instanced with the right properties (region, if needed, credentials, caller, etc), it will be able to make calls to the service.
+Each service in AWS (EC2, CloudFormation, SQS, SNS, etc) has a service class. The service class represents the properties that a web service has (how to call it, what methods it has, how to authenticate, etc). When a service class is instantiated with the right properties (region, if needed, credentials, caller, etc), it will be able to make calls to the service.
 
 Service classes are obtained through
 
@@ -177,7 +177,7 @@ either global, or bound to a region depending on the service. Also, each object 
 with a credential provider, that tells the object where to obtain credentials for the call (you can
 get them from the environment, from the filesystem, from the AWS Instance Profile, STS, etc.
 
-To obtain a service object, call the ->service method
+To obtain a service object, call the C<< ->service >> method
 
   use Paws;
   my $service = Paws->service('Service');
@@ -190,17 +190,17 @@ These parameters are basically passed to the service class constructor
 
 =head1 AUTHENTICATION
 
-Service classes by default try to authenticate with a chained autheticator. The chained authenticator tries to first find credentials in your enviroinment variables B<AWS_ACCESS_KEY> and B<AWS_SECRET_KEY> (note that B<AWS_ACCESS_KEY_ID> and B<AWS_SECRET_ACCESS_KEY> are also scanned for compatibility with the official SDKs). Second, it will look for credentials in the B<default> profile of the B<~/.aws/credentials> or the file in B<AWS_CONFIG_FILE> env variable (an ini-formatted file). Last, if no environment variables are found, then a call to retrieve Role credentials is done. If your instance is running on an AWS instance, and has a Role assigned, the SDK will automatically retrieve credentials to call any services that the instances Role permits.
+Service classes by default try to authenticate with a chained authenticator. The chained authenticator tries to first find credentials in your environment variables B<AWS_ACCESS_KEY> and B<AWS_SECRET_KEY> (note that B<AWS_ACCESS_KEY_ID> and B<AWS_SECRET_ACCESS_KEY> are also scanned for compatibility with the official SDKs). Second, it will look for credentials in the B<default> profile of the B<~/.aws/credentials> or the file in B<AWS_CONFIG_FILE> env variable (an ini-formatted file). Last, if no environment variables are found, then a call to retrieve Role credentials is done. If your instance is running on an AWS instance, and has a Role assigned, the SDK will automatically retrieve credentials to call any services that the instances Role permits.
 
 Please never burn credentials into your code. That's why the methods for passing an explicit access key and secret key are not documented.
 
-So, instancing a service with
+So, instantiating a service with
 
   my $ec2 = Paws->service('EC2', region => 'eu-west-1');
 
 we get an service object that will try to authenticate with environment, credential file, or an instance role.
 
-When instancing a service object, you can also pass a custom credential provider:
+When instantiating a service object, you can also pass a custom credential provider:
 
   use Paws::Credential::STS;
 
@@ -260,22 +260,22 @@ The attributes that can be configured are:
 
 =head3 credentials
 
-Accepts a string which value is the name of a class, or an already instanced object. If a string is passed, the class will be loaded, and the 
-constructor called (without parameters). Also, the resulting instance or the already instanced object has to have the L<Paws::Credential> role.
+Accepts a string which value is the name of a class, or an already instantiated object. If a string is passed, the class will be loaded, and the 
+constructor called (without parameters). Also, the resulting instance or the already instantiated object has to have the L<Paws::Credential> role.
 
 =head3 caller
 
-Accepts a string which value is the name of a class, or an already instanced object. If a string is passed, the class will be loaded, and the 
-constructor called (without parameters). Also, the resulting instance or the already instanced object has to have the L<Paws::Net::CallerRole> role.
+Accepts a string which value is the name of a class, or an already instantiated object. If a string is passed, the class will be loaded, and the 
+constructor called (without parameters). Also, the resulting instance or the already instantiated object has to have the L<Paws::Net::CallerRole> role.
 
 =head3 region
 
-A string representing the region that service objects will be instanced with. Default value is undefined, meaning that you will have to specify
+A string representing the region that service objects will be instantiated with. Default value is undefined, meaning that you will have to specify
 the desired region every time you call the B<service> method.
 
 =head1 Pluggability
 
-=head2 Crendential Provider Pluggability
+=head2 Credential Provider Pluggability
 
 Credential classes need to have the Role L<Paws::Credential> applied. This obliges them to implement access_key, secret_key and session_token methods. 
 The obtention of this data can be customized to be retrieved whereever the developer considers useful (files, environment, other services, etc). Take
