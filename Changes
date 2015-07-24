@@ -1,3 +1,12 @@
+0.14
+ - LWP Caller (Paws::Net::LWPCaller). Paws supports calling behind HTTPS proxies with LWP (dtikhonov)
+ - Fixes to Paws.pm documentation
+ - Glacier API update: support for Vault Locking
+ - EMR API update: Support for new Applications specification 
+ - EC2 API update:
+   - CreateRoute drops the ClientToken param
+   - Support for SpotFleetLaunchSpecification
+
 0.13
  - New API: DynamoDB Streams
  - New API: DeviceFarm
