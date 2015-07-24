@@ -104,8 +104,8 @@ Specifies whether the destination snapshot should be encrypted. There
 is no way to create an unencrypted snapshot copy from an encrypted
 snapshot; however, you can encrypt a copy of an unencrypted snapshot
 with this flag. The default CMK for EBS is used unless a non-default
-AWS Key Management Service (KMS) CMK is specified with C<KmsKeyId>. For
-more information, see Amazon EBS Encryption in the I<Amazon Elastic
+AWS Key Management Service (AWS KMS) CMK is specified with C<KmsKeyId>.
+For more information, see Amazon EBS Encryption in the I<Amazon Elastic
 Compute Cloud User Guide>.
 
 
@@ -121,9 +121,9 @@ Compute Cloud User Guide>.
 
   
 
-The full ARN of the AWS Key Management Service (KMS) CMK to use when
-creating the snapshot copy. This parameter is only required if you want
-to use a non-default CMK; if this parameter is not specified, the
+The full ARN of the AWS Key Management Service (AWS KMS) CMK to use
+when creating the snapshot copy. This parameter is only required if you
+want to use a non-default CMK; if this parameter is not specified, the
 default CMK for EBS is used. The ARN contains the C<arn:aws:kms>
 namespace, followed by the region of the CMK, the AWS account ID of the
 CMK owner, the C<key> namespace, and then the CMK ID. For example,

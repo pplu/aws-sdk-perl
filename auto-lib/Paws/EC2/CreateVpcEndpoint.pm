@@ -110,8 +110,8 @@ One or more route table IDs.
   
 
 The AWS service name, in the form
-com.amazonaws.E<lt>regionE<gt>.E<lt>serviceE<gt>. To get a list of
-available services, use the DescribeVpcEndpointServices request.
+C<com.amazonaws.I<region>.I<service>>. To get a list of available
+services, use the DescribeVpcEndpointServices request.
 
 
 

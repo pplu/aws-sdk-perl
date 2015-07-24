@@ -1,7 +1,6 @@
 
 package Paws::EC2::CreateRoute {
   use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCidrBlock' , required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has GatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'gatewayId' );
@@ -39,22 +38,6 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
-
-=head2 ClientToken => Str
-
-  
-
-Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see How to Ensure Idempotency.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> DestinationCidrBlock => Str
 

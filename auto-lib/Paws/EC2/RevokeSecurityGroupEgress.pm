@@ -142,9 +142,9 @@ Numbers). Use C<-1> to specify all.
 
   
 
-[EC2-Classic, default VPC] The name of the destination security group.
-You can't specify a destination security group and a CIDR IP address
-range.
+The name of a destination security group. To revoke outbound access to
+a destination security group, we recommend that you use a set of IP
+permissions instead.
 
 
 
@@ -159,8 +159,9 @@ range.
 
   
 
-The ID of the destination security group. You can't specify a
-destination security group and a CIDR IP address range.
+The AWS account number for a destination security group. To revoke
+outbound access to a destination security group, we recommend that you
+use a set of IP permissions instead.
 
 
 
