@@ -3,12 +3,15 @@ package Paws::EMR::RunJobFlow {
   use Moose;
   has AdditionalInfo => (is => 'ro', isa => 'Str');
   has AmiVersion => (is => 'ro', isa => 'Str');
+  has Applications => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Application]');
   has BootstrapActions => (is => 'ro', isa => 'ArrayRef[Paws::EMR::BootstrapActionConfig]');
+  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
   has Instances => (is => 'ro', isa => 'Paws::EMR::JobFlowInstancesConfig', required => 1);
   has JobFlowRole => (is => 'ro', isa => 'Str');
   has LogUri => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NewSupportedProducts => (is => 'ro', isa => 'ArrayRef[Paws::EMR::SupportedProductConfig]');
+  has ReleaseLabel => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepConfig]');
   has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -64,14 +67,15 @@ A JSON string for selecting additional features.
 
   
 
+For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
+greater, use ReleaseLabel.
+
 The version of the Amazon Machine Image (AMI) to use when launching
 Amazon EC2 instances in the job flow. The following values are valid:
 
 =over
 
-=item * "latest" (uses the latest AMI)
-
-=item * The version number of the AMI to use, for example, "2.0"
+=item * The version number of the AMI to use, for example, "2.0."
 
 =back
 
@@ -93,12 +97,48 @@ the I<Amazon Elastic MapReduce Developer's Guide.>
 
 
 
+=head2 Applications => ArrayRef[Paws::EMR::Application]
+
+  
+
+Amazon EMR releases 4.x or later.
+
+A list of applications for the cluster. Valid values are: "Hadoop",
+"Hive", "Mahout", "Pig", and "Spark." They are case insensitive.
+
+
+
+
+
+
+
+
+
+
 =head2 BootstrapActions => ArrayRef[Paws::EMR::BootstrapActionConfig]
 
   
 
 A list of bootstrap actions that will be run before Hadoop is started
 on the cluster nodes.
+
+
+
+
+
+
+
+
+
+
+=head2 Configurations => ArrayRef[Paws::EMR::Configuration]
+
+  
+
+Amazon EMR releases 4.x or later.
+
+The list of configurations supplied for the EMR cluster you are
+creating.
 
 
 
@@ -177,6 +217,9 @@ The name of the job flow.
 
   
 
+For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
+greater, use Applications.
+
 A list of strings that indicates third-party software to use with the
 job flow that accepts a user argument list. EMR accepts and forwards
 the argument list to the corresponding installation script as bootstrap
@@ -185,15 +228,45 @@ MapR Distribution for Hadoop. Currently supported values are:
 
 =over
 
-=item * "mapr-m3" - launch the job flow using MapR M3 Edition.
+=item * "mapr-m3" - launch the cluster using MapR M3 Edition.
 
-=item * "mapr-m5" - launch the job flow using MapR M5 Edition.
+=item * "mapr-m5" - launch the cluster using MapR M5 Edition.
 
 =item * "mapr" with the user arguments specifying "--edition,m3" or
 "--edition,m5" - launch the job flow using MapR M3 or M5 Edition
 respectively.
 
+=item * "mapr-m7" - launch the cluster using MapR M7 Edition.
+
+=item * "hunk" - launch the cluster with the Hunk Big Data Analtics
+Platform.
+
+=item * "hue"- launch the cluster with Hue installed.
+
+=item * "spark" - launch the cluster with Apache Spark installed.
+
+=item * "ganglia" - launch the cluster with the Ganglia Monitoring
+System installed.
+
 =back
+
+
+
+
+
+
+
+
+
+
+=head2 ReleaseLabel => Str
+
+  
+
+Amazon EMR releases 4.x or later.
+
+The release label for the Amazon EMR release. For Amazon EMR 3.x and
+2.x AMIs, use amiVersion instead instead of ReleaseLabel.
 
 
 
@@ -238,6 +311,9 @@ A list of steps to be executed by the job flow.
 =head2 SupportedProducts => ArrayRef[Str]
 
   
+
+For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
+greater, use Applications.
 
 A list of strings that indicates third-party software to use with the
 job flow. For more information, go to Use Third Party Applications with

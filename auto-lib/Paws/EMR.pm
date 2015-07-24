@@ -519,7 +519,7 @@ cluster:
 
 
 
-=head2 RunJobFlow(Instances => Paws::EMR::JobFlowInstancesConfig, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, BootstrapActions => ArrayRef[Paws::EMR::BootstrapActionConfig], JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[Paws::EMR::SupportedProductConfig], ServiceRole => Str, Steps => ArrayRef[Paws::EMR::StepConfig], SupportedProducts => ArrayRef[Str], Tags => ArrayRef[Paws::EMR::Tag], VisibleToAllUsers => Bool])
+=head2 RunJobFlow(Instances => Paws::EMR::JobFlowInstancesConfig, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[Paws::EMR::Application], BootstrapActions => ArrayRef[Paws::EMR::BootstrapActionConfig], Configurations => ArrayRef[Paws::EMR::Configuration], JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[Paws::EMR::SupportedProductConfig], ReleaseLabel => Str, ServiceRole => Str, Steps => ArrayRef[Paws::EMR::StepConfig], SupportedProducts => ArrayRef[Str], Tags => ArrayRef[Paws::EMR::Tag], VisibleToAllUsers => Bool])
 
 Each argument is described in detail in: L<Paws::EMR::RunJobFlow>
 
