@@ -1,14 +1,15 @@
 
-package Paws::Glacier::SetDataRetrievalPolicy {
+package Paws::Glacier::CompleteVaultLock {
   use Moose;
   has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has Policy => (is => 'ro', isa => 'Paws::Glacier::DataRetrievalPolicy');
+  has lockId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'lockId' , required => 1);
+  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetDataRetrievalPolicy');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/policies/data-retrieval');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CompleteVaultLock');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/lock-policy/{lockId}');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
 }
@@ -18,19 +19,19 @@ package Paws::Glacier::SetDataRetrievalPolicy {
 
 =head1 NAME
 
-Paws::Glacier::SetDataRetrievalPolicy - Arguments for method SetDataRetrievalPolicy on Paws::Glacier
+Paws::Glacier::CompleteVaultLock - Arguments for method CompleteVaultLock on Paws::Glacier
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SetDataRetrievalPolicy on the 
+This class represents the parameters used for calling the method CompleteVaultLock on the 
 Amazon Glacier service. Use the attributes of this class
-as arguments to method SetDataRetrievalPolicy.
+as arguments to method CompleteVaultLock.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetDataRetrievalPolicy.
+You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CompleteVaultLock.
 
 As an example:
 
-  $service_obj->SetDataRetrievalPolicy(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->CompleteVaultLock(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
@@ -57,11 +58,27 @@ the ID.
 
 
 
-=head2 Policy => Paws::Glacier::DataRetrievalPolicy
+=head2 B<REQUIRED> lockId => Str
 
   
 
-The data retrieval policy in JSON format.
+The C<lockId> value is the lock ID obtained from a InitiateVaultLock
+request.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> vaultName => Str
+
+  
+
+The name of the vault.
 
 
 
@@ -76,7 +93,7 @@ The data retrieval policy in JSON format.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method SetDataRetrievalPolicy in L<Paws::Glacier>
+This class forms part of L<Paws>, documenting arguments for method CompleteVaultLock in L<Paws::Glacier>
 
 =head1 BUGS and CONTRIBUTIONS
 

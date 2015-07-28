@@ -57,9 +57,9 @@ Indicates whether the snapshot is encrypted.
 
   
 
-The full ARN of the AWS Key Management Service (KMS) Customer Master
-Key (CMK) that was used to protect the volume encryption key for the
-parent volume.
+The full ARN of the AWS Key Management Service (AWS KMS) customer
+master key (CMK) that was used to protect the volume encryption key for
+the parent volume.
 
 
 

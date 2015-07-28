@@ -1,7 +1,6 @@
 
 package Paws::EC2::CreateRouteResult {
   use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped',]);
   has Return => (is => 'ro', isa => 'Bool', xmlname => 'return', traits => ['Unwrapped',]);
 
 }
@@ -14,21 +13,6 @@ package Paws::EC2::CreateRouteResult {
 Paws::EC2::CreateRouteResult
 
 =head1 ATTRIBUTES
-
-=head2 ClientToken => Str
-
-  
-
-Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request.
-
-
-
-
-
-
-
-
 
 =head2 Return => Bool
 

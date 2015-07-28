@@ -45,6 +45,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The snapshot attribute to modify.
 
+Only volume creation permissions may be modified at the customer level.
+
 
 
 

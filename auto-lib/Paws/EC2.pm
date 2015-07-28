@@ -1739,8 +1739,8 @@ endpoint that you send the HTTP request to.
 Copies of encrypted EBS snapshots remain encrypted. Copies of
 unencrypted snapshots remain unencrypted, unless the C<Encrypted> flag
 is specified during the snapshot copy operation. By default, encrypted
-snapshot copies use the default AWS Key Management Service (KMS)
-Customer Master Key (CMK); however, you can specify a non-default CMK
+snapshot copies use the default AWS Key Management Service (AWS KMS)
+customer master key (CMK); however, you can specify a non-default CMK
 with the C<KmsKeyId> parameter.
 
 For more information, see Copying an Amazon EBS Snapshot in the
@@ -2157,7 +2157,7 @@ Elastic Compute Cloud User Guide>.
 
 
 
-=head2 CreateRoute(DestinationCidrBlock => Str, RouteTableId => Str, [ClientToken => Str, DryRun => Bool, GatewayId => Str, InstanceId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str])
+=head2 CreateRoute(DestinationCidrBlock => Str, RouteTableId => Str, [DryRun => Bool, GatewayId => Str, InstanceId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateRoute>
 
@@ -5407,9 +5407,11 @@ Returns: a L<Paws::EC2::RegisterImageResult> instance
   
 
 Registers an AMI. When you're creating an AMI, this is the final step
-you must complete before you can launch an instance from the AMI. For
-more information about creating AMIs, see Creating Your Own AMIs in the
-I<Amazon Elastic Compute Cloud User Guide>.
+you must complete before you can launch an instance from the AMI. This
+step is required if you're creating an instance store-backed Linux or
+Windows AMI. For more information, see Creating an Instance
+Store-Backed Linux AMI and Creating an Instance Store-Backed Windows
+AMI in the I<Amazon Elastic Compute Cloud User Guide>.
 
 For Amazon EBS-backed instances, CreateImage creates and registers the
 AMI in a single request, so you don't have to register the AMI
@@ -5417,8 +5419,10 @@ yourself.
 
 You can also use C<RegisterImage> to create an Amazon EBS-backed AMI
 from a snapshot of a root device volume. For more information, see
-Launching an Instance from a Snapshot in the I<Amazon Elastic Compute
-Cloud User Guide>.
+Launching an Instance from a Backup in the I<Amazon Elastic Compute
+Cloud User Guide>. Note that although you can create a Windows AMI from
+a snapshot, you can't launch an instance from the AMI - use the
+CreateImage command instead.
 
 If needed, you can deregister an AMI at any time. Any modifications you
 make to an AMI backed by an instance store volume invalidates its

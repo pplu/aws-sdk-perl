@@ -284,3 +284,6 @@ mbartold for helping fix SQS MessageBatch functionality
 
 coreymayer for reporting bug in RestXmlCaller
 
+arc (Aaron Crane) for documentation patches
+
+dtikhonov for LWP Caller and bug reporting/fixing

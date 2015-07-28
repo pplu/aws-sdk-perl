@@ -13,6 +13,11 @@ package Paws::Glacier {
     my $call_object = $self->new_with_coercions('Paws::Glacier::AbortMultipartUpload', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AbortVaultLock {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glacier::AbortVaultLock', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AddTagsToVault {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glacier::AddTagsToVault', @_);
@@ -21,6 +26,11 @@ package Paws::Glacier {
   sub CompleteMultipartUpload {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glacier::CompleteMultipartUpload', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CompleteVaultLock {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glacier::CompleteVaultLock', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateVault {
@@ -73,6 +83,11 @@ package Paws::Glacier {
     my $call_object = $self->new_with_coercions('Paws::Glacier::GetVaultAccessPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetVaultLock {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glacier::GetVaultLock', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetVaultNotifications {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glacier::GetVaultNotifications', @_);
@@ -86,6 +101,11 @@ package Paws::Glacier {
   sub InitiateMultipartUpload {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glacier::InitiateMultipartUpload', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub InitiateVaultLock {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glacier::InitiateVaultLock', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListJobs {
@@ -263,6 +283,42 @@ Glacier Developer Guide>.
 
 
 
+=head2 AbortVaultLock(accountId => Str, vaultName => Str)
+
+Each argument is described in detail in: L<Paws::Glacier::AbortVaultLock>
+
+Returns: nothing
+
+  
+
+This operation aborts the vault locking process if the vault lock is
+not in the C<Locked> state. If the vault lock is in the C<Locked> state
+when this operation is requested, the operation returns an
+C<AccessDeniedException> error. Aborting the vault locking process
+removes the vault lock policy from the specified vault.
+
+A vault lock is put into the C<InProgress> state by calling
+InitiateVaultLock. A vault lock is put into the C<Locked> state by
+calling CompleteVaultLock. You can get the state of a vault lock by
+calling GetVaultLock. For more information about the vault locking
+process, see Amazon Glacier Vault Lock. For more information about
+vault lock policies, see Amazon Glacier Access Control with Vault Lock
+Policies.
+
+This operation is idempotent. You can successfully invoke this
+operation multiple times, if the vault lock is in the C<InProgress>
+state or if there is no policy associated with the vault.
+
+
+
+
+
+
+
+
+
+
+
 =head2 AddTagsToVault(accountId => Str, vaultName => Str, [Tags => Paws::Glacier::TagMap])
 
 Each argument is described in detail in: L<Paws::Glacier::AddTagsToVault>
@@ -341,6 +397,41 @@ Using AWS Identity and Access Management (IAM).
 For conceptual information and underlying REST API, go to Uploading
 Large Archives in Parts (Multipart Upload) and Complete Multipart
 Upload in the I<Amazon Glacier Developer Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 CompleteVaultLock(accountId => Str, lockId => Str, vaultName => Str)
+
+Each argument is described in detail in: L<Paws::Glacier::CompleteVaultLock>
+
+Returns: nothing
+
+  
+
+This operation completes the vault locking process by transitioning the
+vault lock from the C<InProgress> state to the C<Locked> state, which
+causes the vault lock policy to become unchangeable. A vault lock is
+put into the C<InProgress> state by calling InitiateVaultLock. You can
+obtain the state of the vault lock by calling GetVaultLock. For more
+information about the vault locking process, Amazon Glacier Vault Lock.
+
+This operation is idempotent. This request is always successful if the
+vault lock is in the C<Locked> state and the provided lock ID matches
+the lock ID originally used to lock the vault.
+
+If an invalid lock ID is passed in the request when the vault lock is
+in the C<Locked> state, the operation returns an
+C<AccessDeniedException> error. If an invalid lock ID is passed in the
+request when the vault lock is in the C<InProgress> state, the
+operation throws an C<InvalidParameter> error.
 
 
 
@@ -757,6 +848,58 @@ Control with Vault Access Policies.
 
 
 
+=head2 GetVaultLock(accountId => Str, vaultName => Str)
+
+Each argument is described in detail in: L<Paws::Glacier::GetVaultLock>
+
+Returns: a L<Paws::Glacier::GetVaultLockOutput> instance
+
+  
+
+This operation retrieves the following attributes from the
+C<lock-policy> subresource set on the specified vault:
+
+=over
+
+=item *
+
+The vault lock policy set on the vault.
+
+=item *
+
+The state of the vault lock, which is either C<InProgess> or C<Locked>.
+
+=item *
+
+When the lock ID expires. The lock ID is used to complete the vault
+locking process.
+
+=item *
+
+When the vault lock was initiated and put into the C<InProgress> state.
+
+=back
+
+A vault lock is put into the C<InProgress> state by calling
+InitiateVaultLock. A vault lock is put into the C<Locked> state by
+calling CompleteVaultLock. You can abort the vault locking process by
+calling AbortVaultLock. For more information about the vault locking
+process, Amazon Glacier Vault Lock.
+
+If there is no vault lock policy set on the vault, the operation
+returns a C<404 Not found> error. For more information about vault lock
+policies, Amazon Glacier Access Control with Vault Lock Policies.
+
+
+
+
+
+
+
+
+
+
+
 =head2 GetVaultNotifications(accountId => Str, vaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::GetVaultNotifications>
@@ -997,6 +1140,67 @@ Using AWS Identity and Access Management (IAM).
 For conceptual information and underlying REST API, go to Uploading
 Large Archives in Parts (Multipart Upload) and Initiate Multipart
 Upload in the I<Amazon Glacier Developer Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 InitiateVaultLock(accountId => Str, vaultName => Str, [policy => Paws::Glacier::VaultLockPolicy])
+
+Each argument is described in detail in: L<Paws::Glacier::InitiateVaultLock>
+
+Returns: a L<Paws::Glacier::InitiateVaultLockOutput> instance
+
+  
+
+This operation initiates the vault locking process by doing the
+following:
+
+=over
+
+=item *
+
+Installing a vault lock policy on the specified vault.
+
+=item *
+
+Setting the lock state of vault lock to C<InProgress>.
+
+=item *
+
+Returning a lock ID, which is used to complete the vault locking
+process.
+
+=back
+
+You can set one vault lock policy for each vault and this policy can be
+up to 20 KB in size. For more information about vault lock policies,
+see Amazon Glacier Access Control with Vault Lock Policies.
+
+You must complete the vault locking process within 24 hours after the
+vault lock enters the C<InProgress> state. After the 24 hour window
+ends, the lock ID expires, the vault automatically exits the
+C<InProgress> state, and the vault lock policy is removed from the
+vault. You call CompleteVaultLock to complete the vault locking process
+by setting the state of the vault lock to C<Locked>.
+
+After a vault lock is in the C<Locked> state, you cannot initiate a new
+vault lock for the vault.
+
+You can abort the vault locking process by calling AbortVaultLock. You
+can get the state of the vault lock by calling GetVaultLock. For more
+information about the vault locking process, Amazon Glacier Vault Lock.
+
+If this operation is called when the vault lock is in the C<InProgress>
+state, the operation returns an C<AccessDeniedException> error. When
+the vault lock is in the C<InProgress> state you must call
+AbortVaultLock before you can initiate a new vault lock policy.
 
 
 
