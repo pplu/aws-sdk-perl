@@ -43,6 +43,11 @@ GetOptionsFromArray(\@args, $opts, @opts);
 
 my $method_name = shift @args;
 
+if (exists $$opts{caller}) {
+  eval "require $$opts{caller}";            # e.g. Paws::Net::LWPCaller
+  $$opts{caller} = $$opts{caller}->new;
+}
+
 $service = $aws->service($service_name, %$opts);
 
 my $call;
