@@ -122,7 +122,7 @@ http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
   
 
 Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256, aws:kms).
+AES256).
 
 
 

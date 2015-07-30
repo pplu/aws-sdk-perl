@@ -184,7 +184,8 @@ ensure the encryption key was transmitted without error.
 
   
 
-Part number of part being copied.
+Part number of part being copied. This is a positive integer between 1
+and 10,000.
 
 
 
@@ -202,7 +203,7 @@ Part number of part being copied.
   
 
 Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256, aws:kms).
+AES256).
 
 
 

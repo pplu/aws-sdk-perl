@@ -242,7 +242,7 @@ S3 (e.g., AES256, aws:kms).
   
 
 Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256, aws:kms).
+AES256).
 
 
 

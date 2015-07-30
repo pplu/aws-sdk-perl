@@ -22,6 +22,7 @@ package Paws::S3::HeadObjectOutput {
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
   has SSEKMSKeyId => (is => 'ro', isa => 'Str');
+  has StorageClass => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str');
 
@@ -350,6 +351,10 @@ master encryption key that was used for the object.
 
 
 
+
+=head2 StorageClass => Str
+
+  
 
 =head2 VersionId => Str
 

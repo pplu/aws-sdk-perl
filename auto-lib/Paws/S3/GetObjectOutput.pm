@@ -8,6 +8,7 @@ package Paws::S3::GetObjectOutput {
   has ContentEncoding => (is => 'ro', isa => 'Str');
   has ContentLanguage => (is => 'ro', isa => 'Str');
   has ContentLength => (is => 'ro', isa => 'Int');
+  has ContentRange => (is => 'ro', isa => 'Str');
   has ContentType => (is => 'ro', isa => 'Str');
   has DeleteMarker => (is => 'ro', isa => 'Bool');
   has ETag => (is => 'ro', isa => 'Str');
@@ -23,6 +24,7 @@ package Paws::S3::GetObjectOutput {
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
   has SSEKMSKeyId => (is => 'ro', isa => 'Str');
+  has StorageClass => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str');
 
@@ -137,6 +139,21 @@ The language the content is in.
   
 
 Size of the body in bytes.
+
+
+
+
+
+
+
+
+
+
+=head2 ContentRange => Str
+
+  
+
+The portion of the object returned in the response.
 
 
 
@@ -366,6 +383,10 @@ master encryption key that was used for the object.
 
 
 
+
+=head2 StorageClass => Str
+
+  
 
 =head2 VersionId => Str
 

@@ -62,7 +62,8 @@ the body cannot be determined automatically.
 
   
 
-Part number of part being uploaded.
+Part number of part being uploaded. This is a positive integer between
+1 and 10,000.
 
 
 
@@ -80,7 +81,7 @@ Part number of part being uploaded.
   
 
 Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256, aws:kms).
+AES256).
 
 
 

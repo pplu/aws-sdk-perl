@@ -212,7 +212,7 @@ Sets the Expires header of the response.
   
 
 Specifies the algorithm to use to when encrypting the object (e.g.,
-AES256, aws:kms).
+AES256).
 
 
 
