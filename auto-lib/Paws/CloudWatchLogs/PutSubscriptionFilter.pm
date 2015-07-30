@@ -5,7 +5,7 @@ package Paws::CloudWatchLogs::PutSubscriptionFilter {
   has filterName => (is => 'ro', isa => 'Str', required => 1);
   has filterPattern => (is => 'ro', isa => 'Str', required => 1);
   has logGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has roleArn => (is => 'ro', isa => 'Str', required => 1);
+  has roleArn => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +41,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The ARN of an Amazon Kinesis stream to deliver matching log events to.
+The ARN of the destination to deliver matching log events to.
+Currently, the supported destinations are:
+
+=over
+
+=item * A Amazon Kinesis stream belonging to the same account as the
+subscription filter, for same-account delivery.
+
+=item * A logical destination (used via an ARN of C<Destination>)
+belonging to a different account, for cross-account delivery.
+
+=back
 
 
 
@@ -98,12 +109,14 @@ The name of the log group to associate the subscription filter with.
 
 
 
-=head2 B<REQUIRED> roleArn => Str
+=head2 roleArn => Str
 
   
 
 The ARN of an IAM role that grants Amazon CloudWatch Logs permissions
-to do Amazon Kinesis PutRecord requests on the desitnation stream.
+to deliver ingested log events to the destination stream. You don't
+need to provide the ARN when you are working with a logical destination
+(used via an ARN of C<Destination>) for cross-account delivery.
 
 
 

@@ -18,6 +18,11 @@ package Paws::CloudWatchLogs {
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::CreateLogStream', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteLogGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteLogGroup', @_);
@@ -41,6 +46,11 @@ package Paws::CloudWatchLogs {
   sub DeleteSubscriptionFilter {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteSubscriptionFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDestinations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeDestinations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLogGroups {
@@ -71,6 +81,16 @@ package Paws::CloudWatchLogs {
   sub GetLogEvents {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::GetLogEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutDestinationPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutDestinationPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutLogEvents {
@@ -267,6 +287,28 @@ You must use the following guidelines when naming a log stream:
 
 
 
+=head2 DeleteDestination(destinationName => Str)
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteDestination>
+
+Returns: nothing
+
+  
+
+Deletes the destination with the specified name and eventually disables
+all the subscription filters that publish to it. This will not delete
+the physical resource encapsulated by the destination.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DeleteLogGroup(logGroupName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteLogGroup>
@@ -360,6 +402,34 @@ Returns: nothing
   
 
 Deletes a subscription filter associated with the specified log group.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeDestinations([DestinationNamePrefix => Str, limit => Int, nextToken => Str])
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeDestinations>
+
+Returns: a L<Paws::CloudWatchLogs::DescribeDestinationsResponse> instance
+
+  
+
+Returns all the destinations that are associated with the AWS account
+making the request. The list returned in the response is ASCII-sorted
+by destination name.
+
+By default, this operation returns up to 50 destinations. If there are
+more destinations to list, the response would contain a C<nextToken>
+value in the response body. You can also limit the number of
+destinations returned in the response by specifying the C<limit>
+parameter in the request.
 
 
 
@@ -548,6 +618,61 @@ request.
 
 
 
+=head2 PutDestination(destinationName => Str, roleArn => Str, targetArn => Str)
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestination>
+
+Returns: a L<Paws::CloudWatchLogs::PutDestinationResponse> instance
+
+  
+
+Creates or updates a C<Destination>. A destination encapsulates a
+physical resource (such as a Kinesis stream) and allows you to
+subscribe to a real-time stream of log events of a different account,
+ingested through C<PutLogEvents> requests. Currently, the only
+supported physical resource is a Amazon Kinesis stream belonging to the
+same account as the destination.
+
+A destination controls what is written to its Amazon Kinesis stream
+through an access policy. By default, PutDestination does not set any
+access policy with the destination, which means a cross-account user
+will not be able to call C<PutSubscriptionFilter> against this
+destination. To enable that, the destination owner must call
+C<PutDestinationPolicy> after PutDestination.
+
+
+
+
+
+
+
+
+
+
+
+=head2 PutDestinationPolicy(accessPolicy => Str, destinationName => Str)
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestinationPolicy>
+
+Returns: nothing
+
+  
+
+Creates or updates an access policy associated with an existing
+C<Destination>. An access policy is an IAM policy document that is used
+to authorize claims to register a subscription filter against a given
+destination.
+
+
+
+
+
+
+
+
+
+
+
 =head2 PutLogEvents(logEvents => ArrayRef[Paws::CloudWatchLogs::InputLogEvent], logGroupName => Str, logStreamName => Str, [sequenceToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutLogEvents>
@@ -640,7 +765,7 @@ events in the specified log group.
 
 
 
-=head2 PutSubscriptionFilter(destinationArn => Str, filterName => Str, filterPattern => Str, logGroupName => Str, roleArn => Str)
+=head2 PutSubscriptionFilter(destinationArn => Str, filterName => Str, filterPattern => Str, logGroupName => Str, [roleArn => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutSubscriptionFilter>
 
@@ -651,9 +776,18 @@ Returns: nothing
 Creates or updates a subscription filter and associates it with the
 specified log group. Subscription filters allow you to subscribe to a
 real-time stream of log events ingested through C<PutLogEvents>
-requests and have them delivered to a specific destination. Currently
-the only supported destination is an Amazon Kinesis stream belonging to
-the same account as the subscription filter.
+requests and have them delivered to a specific destination. Currently,
+the supported destinations are:
+
+=over
+
+=item * A Amazon Kinesis stream belonging to the same account as the
+subscription filter, for same-account delivery.
+
+=item * A logical destination (used via an ARN of C<Destination>)
+belonging to a different account, for cross-account delivery.
+
+=back
 
 Currently there can only be one subscription filter associated with a
 log group.
