@@ -6,6 +6,7 @@
  - EC2 API update:
    - CreateRoute drops the ClientToken param
    - Support for SpotFleetLaunchSpecification
+ - CloudWatch Logs API update: Support Destinations
 
 0.13
  - New API: DynamoDB Streams
