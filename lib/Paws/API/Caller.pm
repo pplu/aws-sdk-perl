@@ -130,9 +130,9 @@ package Paws::API::Caller {
       my $key = $meta->does('Paws::API::Attribute::Trait::Unwrapped') ? $meta->xmlname : $att;
       my $att_type = $meta->type_constraint;
 
-      #use Data::Dumper;
-      #print STDERR "GOING TO DO AN $att_type\n";
-      #print STDERR "VALUE: " . Dumper($result);
+#      use Data::Dumper;
+#      print STDERR "GOING TO DO AN $att_type\n";
+#      print STDERR "VALUE: " . Dumper($result);
 
       # We'll consider that an attribute without brackets [] isn't an array type
       if ($att_type !~ m/\[.*\]$/) {
@@ -152,6 +152,9 @@ package Paws::API::Caller {
                 my $xml_keys = $att_class->xml_keys;
                 my $xml_values = $att_class->xml_values;
 
+                #TODO: handle in one place
+                # We really have to select the handling of the value based on the type of API (query/json)
+                # query-xml often has the member/entry. json doesn't
                 if ($value_ref eq 'HASH') {
                   if (exists $value->{ member }) {
                     $value = $value->{ member };
@@ -168,10 +171,13 @@ package Paws::API::Caller {
                 my $inner_class = $att_class->meta->get_attribute('Map')->type_constraint->name;
                 ($inner_class) = ($inner_class =~ m/\[(.*)\]$/);
                 Module::Runtime::require_module("$inner_class");
+                # We really have to select the handling of the value based on the type of API (query/json)
+                # query handles mappings with [ { Key => 'X', Value => 'KeyXsValue' }, { Key => 'Y', Value => KeyYsValue } ]
                 if ($value_ref eq 'ARRAY') {
                   $args{ $att } = $att_class->new(Map => { map { ( $_->{ $xml_keys } => $self->new_from_struct($inner_class, $_->{ $xml_values }) ) } @$value } );
                 } elsif ($value_ref eq 'HASH') {
-                  $args{ $att } = $att_class->new(Map => { $value->{ $xml_keys } => $self->new_from_struct($inner_class, $value->{ $xml_values }) });
+                  die "I got a MAP with a HASH value";
+                  $args{ $att } = $att_class->new(Map => $value);
                 } elsif (not defined $value){
                   $args{ $att } = $att_class->new(Map => {});
                 }  
@@ -179,6 +185,7 @@ package Paws::API::Caller {
                 my $xml_keys = $att_class->xml_keys;
                 my $xml_values = $att_class->xml_values;
 
+                #TODO: handle in one place
                 if ($value_ref eq 'HASH') {
                   if (exists $value->{ member }) {
                     $value = $value->{ member };
@@ -195,12 +202,13 @@ package Paws::API::Caller {
                 if ($value_ref eq 'ARRAY') {
                   $args{ $att } = $att_class->new(Map => { map { ( $_->{ $xml_keys } => $_->{ $xml_values } ) } @$value } );
                 } elsif ($value_ref eq 'HASH') {
-                  $args{ $att } = $att_class->new(Map => { $value->{ $xml_keys } => $value->{ $xml_values } } );
+                  $args{ $att } = $att_class->new(Map => $value);
                 }
               } elsif ($att_class->does('Paws::API::MapParser')) {
                 my $xml_keys = $att_class->xml_keys;
                 my $xml_values = $att_class->xml_values;
 
+                #TODO: handle in one place
                 if ($value_ref eq 'HASH') {
                   if (exists $value->{ member }) {
                     $value = $value->{ member };
