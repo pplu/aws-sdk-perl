@@ -1,0 +1,4 @@
+---
+call: GetItem
+service: DynamoDB
+tests: []

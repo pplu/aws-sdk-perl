@@ -1,0 +1,4 @@
+---
+call: PutItem
+service: DynamoDB
+tests: []
