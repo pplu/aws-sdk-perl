@@ -1,0 +1,32 @@
+<ValidateTemplateResponse xmlns="http://cloudformation.amazonaws.com/doc/2010-05-15/">
+  <ValidateTemplateResult>
+    <Description>AWS CloudFormation Sample Template AutoScalingMultiAZWithNotifications: Create a multi-az, load balanced and Auto Scaled sample web site running on an Apache Web Serever. The application is configured to span all Availability Zones in the region and is Auto-Scaled based on the CPU utilization of the web servers. Notifications will be sent to the operator email address on scaling events. The instances are load balanced with a simple health check against the default web page. **WARNING** This template creates one or more Amazon EC2 instances and an Elastic Load Balancer. You will be billed for the AWS resources used if you create a stack from this template.</Description>
+    <Parameters>
+      <member>
+        <ParameterKey>OperatorEMail</ParameterKey>
+        <NoEcho>false</NoEcho>
+        <Description>EMail address to notify if there are any scaling operations</Description>
+      </member>
+      <member>
+        <ParameterKey>SSHLocation</ParameterKey>
+        <NoEcho>false</NoEcho>
+        <Description>The IP address range that can be used to SSH to the EC2 instances</Description>
+        <DefaultValue>0.0.0.0/0</DefaultValue>
+      </member>
+      <member>
+        <ParameterKey>KeyName</ParameterKey>
+        <NoEcho>false</NoEcho>
+        <Description>The EC2 Key Pair to allow SSH access to the instances</Description>
+      </member>
+      <member>
+        <ParameterKey>InstanceType</ParameterKey>
+        <NoEcho>false</NoEcho>
+        <Description>WebServer EC2 instance type</Description>
+        <DefaultValue>m1.small</DefaultValue>
+      </member>
+    </Parameters>
+  </ValidateTemplateResult>
+  <ResponseMetadata>
+    <RequestId>d9592883-3856-11e5-a12d-c990c4465bd2</RequestId>
+  </ResponseMetadata>
+</ValidateTemplateResponse>
