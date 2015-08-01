@@ -38,6 +38,32 @@ package Paws::Net::JsonResponse {
       request_id => $request_id
     );
   }
+
+  sub handle_response_strtonativemap {
+    my ($self, $att_class, $value) = @_;
+
+    if (not defined $value){
+      return $att_class->new(Map => {});
+    } else {
+      return $att_class->new(Map => $value);
+    }
+  }
+
+  sub handle_response_strtoobjmap {
+    my ($self, $att_class, $value) = @_;
+
+    my $inner_class = $att_class->meta->get_attribute('Map')->type_constraint->name;
+    ($inner_class) = ($inner_class =~ m/\[(.*)\]$/);
+    Module::Runtime::require_module("$inner_class");
+
+    if (not defined $value){
+      return $att_class->new(Map => {});
+    } else {
+      return $att_class->new(Map => { 
+        map { ($_ => $self->new_from_struct($inner_class, $value->{ $_ }) ) } keys %$value 
+      });
+    }
+  }
 }
 
 1;

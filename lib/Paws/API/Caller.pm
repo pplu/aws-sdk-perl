@@ -149,65 +149,9 @@ package Paws::API::Caller {
               my $att_class = $att_type->class;
 
               if ($att_class->does('Paws::API::StrToObjMapParser')) {
-                my $xml_keys = $att_class->xml_keys;
-                my $xml_values = $att_class->xml_values;
-
-                if ($value_ref eq 'HASH') {
-                  if (exists $value->{ member }) {
-                    $value = $value->{ member };
-                  } elsif (exists $value->{ entry }) {
-                    $value = $value->{ entry  };
-                  } elsif (keys %$value == 1) {
-                    $value = $value->{ (keys %$value)[0] };
-                  } else {
-                    #die "Can't detect the item that has the array in the response hash";
-                  }
-                  $value_ref = ref($value);
-                }
-        
-                my $inner_class = $att_class->meta->get_attribute('Map')->type_constraint->name;
-                ($inner_class) = ($inner_class =~ m/\[(.*)\]$/);
-                Module::Runtime::require_module("$inner_class");
-
-                if (not defined $value){
-                  $args{ $att } = $att_class->new(Map => {});
-                } else {
-                  # when there is only one element in maps, there is no array
-                  $value = [ $value ] if ($value_ref eq 'HASH');
-
-                  my $map = {};
-                  foreach my $value (@$value) {
-                    my $k = $value->{ $xml_keys };
-                    if (ref($k) eq 'HASH'){
-                      # DynamoDB has "objects" as keys...
-                      $k = join '#', each %$k;
-                    }
-                    $map->{ $k } = $self->new_from_struct($inner_class, $value->{ $xml_values });
-                  }
-                  $args{ $att } = $att_class->new(Map => $map);
-                }
+                $args{ $att } = $self->handle_response_strtoobjmap($att_class, $value);
               } elsif ($att_class->does('Paws::API::StrToNativeMapParser')) {
-                my $xml_keys = $att_class->xml_keys;
-                my $xml_values = $att_class->xml_values;
-
-                if ($value_ref eq 'HASH') {
-                  if (exists $value->{ member }) {
-                    $value = $value->{ member };
-                  } elsif (exists $value->{ entry }) {
-                    $value = $value->{ entry  };
-                  } elsif (keys %$value == 1) {
-                    $value = $value->{ (keys %$value)[0] };
-                  } else {
-                    #die "Can't detect the item that has the array in the response hash";
-                  }
-                  $value_ref = ref($value);
-                }
-        
-                if ($value_ref eq 'ARRAY') {
-                  $args{ $att } = $att_class->new(Map => { map { ( $_->{ $xml_keys } => $_->{ $xml_values } ) } @$value } );
-                } elsif ($value_ref eq 'HASH') {
-                  $args{ $att } = $att_class->new(Map => { $value->{ $xml_keys } => $value->{ $xml_values } } );
-                }
+                $args{ $att } = $self->handle_response_strtonativemap($att_class, $value);
               } elsif ($att_class->does('Paws::API::MapParser')) {
                 my $xml_keys = $att_class->xml_keys;
                 my $xml_values = $att_class->xml_values;

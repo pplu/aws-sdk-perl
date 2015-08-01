@@ -31,6 +31,8 @@ package Paws::Net::Caller {
       }
     );
 
+use Data::Dumper;
+print Dumper($response);
     my $res = $service->handle_response($call_object, $response->{status}, $response->{content}, $response->{headers});
     if (not ref($res)){
       return $res;
