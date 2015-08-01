@@ -130,9 +130,9 @@ package Paws::API::Caller {
       my $key = $meta->does('Paws::API::Attribute::Trait::Unwrapped') ? $meta->xmlname : $att;
       my $att_type = $meta->type_constraint;
 
-      #use Data::Dumper;
-      #print STDERR "GOING TO DO AN $att_type\n";
-      #print STDERR "VALUE: " . Dumper($result);
+#      use Data::Dumper;
+#      print STDERR "GOING TO DO AN $att_type\n";
+#      print STDERR "VALUE: " . Dumper($result);
 
       # We'll consider that an attribute without brackets [] isn't an array type
       if ($att_type !~ m/\[.*\]$/) {
@@ -156,6 +156,7 @@ package Paws::API::Caller {
                 my $xml_keys = $att_class->xml_keys;
                 my $xml_values = $att_class->xml_values;
 
+                #TODO: handle in one place
                 if ($value_ref eq 'HASH') {
                   if (exists $value->{ member }) {
                     $value = $value->{ member };

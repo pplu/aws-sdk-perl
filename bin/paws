@@ -43,7 +43,6 @@ GetOptionsFromArray(\@args, $opts, @opts);
 
 my $method_name = shift @args;
 
-my $config = {};
 if (exists $opts->{caller}) {
   Paws->load_class($opts->{ caller });
   $opts->{ caller } = $opts->{ caller }->new;
