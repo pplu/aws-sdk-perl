@@ -1,0 +1,7 @@
+---
+call: GetItem
+service: DynamoDB
+tests:
+  - expected: amqp://rabbitmq.company.com
+    op: eq
+    path: Item.Map.{S#celery.broker_url}.S

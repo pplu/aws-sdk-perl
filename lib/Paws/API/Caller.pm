@@ -168,13 +168,24 @@ package Paws::API::Caller {
                 my $inner_class = $att_class->meta->get_attribute('Map')->type_constraint->name;
                 ($inner_class) = ($inner_class =~ m/\[(.*)\]$/);
                 Module::Runtime::require_module("$inner_class");
-                if ($value_ref eq 'ARRAY') {
-                  $args{ $att } = $att_class->new(Map => { map { ( $_->{ $xml_keys } => $self->new_from_struct($inner_class, $_->{ $xml_values }) ) } @$value } );
-                } elsif ($value_ref eq 'HASH') {
-                  $args{ $att } = $att_class->new(Map => { $value->{ $xml_keys } => $self->new_from_struct($inner_class, $value->{ $xml_values }) });
-                } elsif (not defined $value){
+
+                if (not defined $value){
                   $args{ $att } = $att_class->new(Map => {});
-                }  
+                } else {
+                  # when there is only one element in maps, there is no array
+                  $value = [ $value ] if ($value_ref eq 'HASH');
+
+                  my $map = {};
+                  foreach my $value (@$value) {
+                    my $k = $value->{ $xml_keys };
+                    if (ref($k) eq 'HASH'){
+                      # DynamoDB has "objects" as keys...
+                      $k = join '#', each %$k;
+                    }
+                    $map->{ $k } = $self->new_from_struct($inner_class, $value->{ $xml_values });
+                  }
+                  $args{ $att } = $att_class->new(Map => $map);
+                }
               } elsif ($att_class->does('Paws::API::StrToNativeMapParser')) {
                 my $xml_keys = $att_class->xml_keys;
                 my $xml_values = $att_class->xml_values;
