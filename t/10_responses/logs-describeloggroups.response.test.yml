@@ -1,0 +1,19 @@
+---
+call: DescribeLogGroups
+service: CloudWatchLogs
+tests:
+  - expected: 0
+    op: eq
+    path: logGroups.0.metricFilterCount
+  - expected: 0
+    op: eq
+    path: logGroups.0.storedBytes
+  - expected: test_log_group
+    op: eq
+    path: logGroups.0.logGroupName
+  - expected: 1431545271411
+    op: eq
+    path: logGroups.0.creationTime
+  - expected: arn:aws:logs:eu-west-1:000000000000:log-group:test_log_group:*
+    op: eq
+    path: logGroups.0.arn
