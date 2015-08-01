@@ -1,0 +1,16 @@
+---
+call: ListDomains
+service: Route53Domains
+tests:
+  - expected: example.net
+    op: eq
+    path: Domains.0.DomainName
+  - expected: 1454954662
+    op: eq
+    path: Domains.0.Expiry
+  - expected: 1
+    op: eq
+    path: Domains.0.AutoRenew
+  - expected: 1
+    op: eq
+    path: Domains.0.TransferLock
