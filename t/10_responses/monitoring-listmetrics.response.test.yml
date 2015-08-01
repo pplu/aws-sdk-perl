@@ -1,0 +1,118 @@
+---
+call: ListMetrics
+service: CloudWatch
+tests:
+  - expected: elasticbeanstalk-eu-west-1-000000000000
+    op: eq
+    path: Metrics.4.Dimensions.0.Value
+  - expected: BucketName
+    op: eq
+    path: Metrics.1.Dimensions.0.Name
+  - expected: StandardStorage
+    op: eq
+    path: Metrics.5.Dimensions.1.Value
+  - expected: StorageType
+    op: eq
+    path: Metrics.1.Dimensions.1.Name
+  - expected: StandardStorage
+    op: eq
+    path: Metrics.1.Dimensions.1.Value
+  - expected: StorageType
+    op: eq
+    path: Metrics.3.Dimensions.1.Name
+  - expected: AWS/S3
+    op: eq
+    path: Metrics.2.Namespace
+  - expected: AllStorageTypes
+    op: eq
+    path: Metrics.4.Dimensions.1.Value
+  - expected: AllStorageTypes
+    op: eq
+    path: Metrics.0.Dimensions.1.Value
+  - expected: elasticbeanstalk-eu-west-1-000000000000
+    op: eq
+    path: Metrics.2.Dimensions.0.Value
+  - expected: BucketSizeBytes
+    op: eq
+    path: Metrics.2.MetricName
+  - expected: AWS/S3
+    op: eq
+    path: Metrics.4.Namespace
+  - expected: AWS/S3
+    op: eq
+    path: Metrics.0.Namespace
+  - expected: AWS/S3
+    op: eq
+    path: Metrics.1.Namespace
+  - expected: BucketSizeBytes
+    op: eq
+    path: Metrics.5.MetricName
+  - expected: StorageType
+    op: eq
+    path: Metrics.0.Dimensions.1.Name
+  - expected: NumberOfObjects
+    op: eq
+    path: Metrics.4.MetricName
+  - expected: StorageType
+    op: eq
+    path: Metrics.5.Dimensions.1.Name
+  - expected: BucketSizeBytes
+    op: eq
+    path: Metrics.1.MetricName
+  - expected: NumberOfObjects
+    op: eq
+    path: Metrics.0.MetricName
+  - expected: StorageType
+    op: eq
+    path: Metrics.2.Dimensions.1.Name
+  - expected: AWS/S3
+    op: eq
+    path: Metrics.3.Namespace
+  - expected: BucketName
+    op: eq
+    path: Metrics.2.Dimensions.0.Name
+  - expected: pplu
+    op: eq
+    path: Metrics.5.Dimensions.0.Value
+  - expected: UserErrors
+    op: eq
+    path: Metrics.6.MetricName
+  - expected: pplu-logs
+    op: eq
+    path: Metrics.1.Dimensions.0.Value
+  - expected: StandardStorage
+    op: eq
+    path: Metrics.2.Dimensions.1.Value
+  - expected: AllStorageTypes
+    op: eq
+    path: Metrics.3.Dimensions.1.Value
+  - expected: pplu
+    op: eq
+    path: Metrics.3.Dimensions.0.Value
+  - expected: NumberOfObjects
+    op: eq
+    path: Metrics.3.MetricName
+  - expected: AWS/DynamoDB
+    op: eq
+    path: Metrics.6.Namespace
+  - expected: BucketName
+    op: eq
+    path: Metrics.3.Dimensions.0.Name
+  - expected: pplu-logs
+    op: eq
+    path: Metrics.0.Dimensions.0.Value
+  - expected: BucketName
+    op: eq
+    path: Metrics.5.Dimensions.0.Name
+  - expected: BucketName
+    op: eq
+    path: Metrics.4.Dimensions.0.Name
+  - expected: BucketName
+    op: eq
+    path: Metrics.0.Dimensions.0.Name
+  - expected: StorageType
+    op: eq
+    path: Metrics.4.Dimensions.1.Name
+  - expected: AWS/S3
+    op: eq
+    path: Metrics.5.Namespace

@@ -1,0 +1,37 @@
+---
+call: GetMetricStatistics
+service: CloudWatch
+tests:
+  - expected: 1.0
+    op: eq
+    path: Datapoints.0.Average
+  - expected: 1.0
+    op: eq
+    path: Datapoints.1.Minimum
+  - expected: 1.0
+    op: eq
+    path: Datapoints.1.Average
+  - expected: 2015-08-01T08:09:00Z
+    op: eq
+    path: Datapoints.0.Timestamp
+  - expected: 1.0
+    op: eq
+    path: Datapoints.0.Minimum
+  - expected: UserErrors
+    op: eq
+    path: Label
+  - expected: Count
+    op: eq
+    path: Datapoints.1.Unit
+  - expected: 2015-08-01T08:15:00Z
+    op: eq
+    path: Datapoints.1.Timestamp
+  - expected: Count
+    op: eq
+    path: Datapoints.0.Unit
+  - expected: 1.0
+    op: eq
+    path: Datapoints.1.Maximum
+  - expected: 1.0
+    op: eq
+    path: Datapoints.0.Maximum
