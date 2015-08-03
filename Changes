@@ -1,5 +1,6 @@
 0.14
  - LWP Caller (Paws::Net::LWPCaller). Paws supports calling behind HTTPS proxies with LWP (dtikhonov)
+ - Maps in JSON type APIS are correctly handled (Issue #40 and #45, PR #46). Thanks to vivus-ignis and dtikhonov
  - Fixes to Paws.pm documentation
  - Glacier API update: support for Vault Locking
  - EMR API update: Support for new Applications specification 
@@ -8,7 +9,7 @@
    - Support for SpotFleetLaunchSpecification
  - CloudWatch Logs API update: Support Destinations
 
-0.13
+0.13 17 Jul 2015
  - New API: DynamoDB Streams
  - New API: DeviceFarm
  - Paws::Credentials::File. Support for changing the filename via ENVIRONMENT (AWS_CONFIG_FILE)
