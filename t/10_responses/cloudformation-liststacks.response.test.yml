@@ -14,10 +14,10 @@ tests:
   - expected: XX
     op: eq
     path: StackSummaries.0.TemplateDescription
-  - expected: arn:aws:cloudformation:eu-west-1:000000000000:stack/Test/00000000-0000-0000-0000-000000000000
+  - expected: arn:aws:cloudformation:eu-west-1:000000000000:stack/Test/00000000-0000-0000-00000000000000000
     op: eq
     path: StackSummaries.0.StackId
-  - expected: arn:aws:cloudformation:eu-west-1:000000000000:stack/awseb-e-q664i9asmm-stack/00000000-0000-0000-0000-000000000000
+  - expected: arn:aws:cloudformation:eu-west-1:000000000000:stack/awseb-e-q664i9asmm-stack/00000000-0000-0000-00000000000000000
     op: eq
     path: StackSummaries.1.StackId
   - expected: DELETE_COMPLETE
