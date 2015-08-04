@@ -6,6 +6,8 @@ package Paws::RDS::DBInstance {
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CACertificateIdentifier => (is => 'ro', isa => 'Str');
   has CharacterSetName => (is => 'ro', isa => 'Str');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
+  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has DBInstanceStatus => (is => 'ro', isa => 'Str');
@@ -13,7 +15,9 @@ package Paws::RDS::DBInstance {
   has DBParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBParameterGroupStatus]');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSecurityGroupMembership]');
   has DBSubnetGroup => (is => 'ro', isa => 'Paws::RDS::DBSubnetGroup');
+  has DbInstancePort => (is => 'ro', isa => 'Int');
   has DbiResourceId => (is => 'ro', isa => 'Str');
+  has DomainMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DomainMembership]');
   has Endpoint => (is => 'ro', isa => 'Paws::RDS::Endpoint');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');

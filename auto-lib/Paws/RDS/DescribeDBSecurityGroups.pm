@@ -71,8 +71,8 @@ This parameter is not currently supported.
   
 
 An optional pagination token provided by a previous
-DescribeDBSecurityGroups request. If this parameter is specified, the
-response includes only records beyond the marker, up to the value
+C<DescribeDBSecurityGroups> request. If this parameter is specified,
+the response includes only records beyond the marker, up to the value
 specified by C<MaxRecords>.
 
 
@@ -91,11 +91,11 @@ specified by C<MaxRecords>.
 The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
 token called a marker is included in the response so that the remaining
-results may be retrieved.
+results can be retrieved.
 
 Default: 100
 
-Constraints: minimum 20, maximum 100
+Constraints: Minimum 20, maximum 100.
 
 
 

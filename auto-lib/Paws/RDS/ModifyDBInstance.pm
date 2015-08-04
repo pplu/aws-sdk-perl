@@ -7,10 +7,12 @@ package Paws::RDS::ModifyDBInstance {
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CACertificateIdentifier => (is => 'ro', isa => 'Str');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Domain => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -67,7 +69,7 @@ B<MySQL>
 
 Default: Uses existing setting
 
-Valid Values: 5-3072
+Valid Values: 5-6144
 
 Constraints: Value supplied must be at least 10% greater than the
 current value. Values that are not at least 10% greater than the
@@ -80,7 +82,7 @@ B<PostgreSQL>
 
 Default: Uses existing setting
 
-Valid Values: 5-3072
+Valid Values: 5-6144
 
 Constraints: Value supplied must be at least 10% greater than the
 current value. Values that are not at least 10% greater than the
@@ -93,7 +95,7 @@ B<Oracle>
 
 Default: Uses existing setting
 
-Valid Values: 10-3072
+Valid Values: 10-6144
 
 Constraints: Value supplied must be at least 10% greater than the
 current value. Values that are not at least 10% greater than the
@@ -112,12 +114,12 @@ size, storage type (standard or Provisioned IOPS), amount of IOPS
 provisioned (if any), and the number of prior scale storage operations.
 Typical migration times are under 24 hours, but the process can take up
 to several days in some cases. During the migration, the DB instance
-will be available for use, but may experience performance degradation.
-While the migration takes place, nightly backups for the instance will
-be suspended. No other Amazon RDS operations can take place for the
-instance, including modifying the instance, rebooting the instance,
-deleting the instance, creating a Read Replica for the instance, and
-creating a DB snapshot of the instance.
+will be available for use, but might experience performance
+degradation. While the migration takes place, nightly backups for the
+instance will be suspended. No other Amazon RDS operations can take
+place for the instance, including modifying the instance, rebooting the
+instance, deleting the instance, creating a Read Replica for the
+instance, and creating a DB snapshot of the instance.
 
 
 
@@ -246,8 +248,23 @@ Replicas
 
   
 
-Indicates the certificate which needs to be associated with the
+Indicates the certificate that needs to be associated with the
 instance.
+
+
+
+
+
+
+
+
+
+
+=head2 CopyTagsToSnapshot => Bool
+
+  
+
+This property is not currently implemented.
 
 
 
@@ -370,6 +387,25 @@ Constraints:
 
 
 
+=head2 Domain => Str
+
+  
+
+Specify the Active Directory Domain to move the instance to.
+
+The specified Active Directory Domain must be created prior to this
+operation. Currently only SQL Server instance can be created in a
+Domain
+
+
+
+
+
+
+
+
+
+
 =head2 EngineVersion => Str
 
   
@@ -428,12 +464,12 @@ size, storage type (standard or Provisioned IOPS), amount of IOPS
 provisioned (if any), and the number of prior scale storage operations.
 Typical migration times are under 24 hours, but the process can take up
 to several days in some cases. During the migration, the DB instance
-will be available for use, but may experience performance degradation.
-While the migration takes place, nightly backups for the instance will
-be suspended. No other Amazon RDS operations can take place for the
-instance, including modifying the instance, rebooting the instance,
-deleting the instance, creating a Read Replica for the instance, and
-creating a DB snapshot of the instance.
+will be available for use, but might experience performance
+degradation. While the migration takes place, nightly backups for the
+instance will be suspended. No other Amazon RDS operations can take
+place for the instance, including modifying the instance, rebooting the
+instance, deleting the instance, creating a Read Replica for the
+instance, and creating a DB snapshot of the instance.
 
 
 
@@ -465,8 +501,8 @@ alphanumeric characters (Oracle), or 8 to 128 alphanumeric characters
 
 Amazon RDS API actions never return the password, so this action
 provides a way to regain access to a primary instance user if the
-password is lost. This includes restoring privileges that may have been
-accidentally revoked.
+password is lost. This includes restoring privileges that might have
+been accidentally revoked.
 
 
 
@@ -487,6 +523,9 @@ the next maintenance window unless the C<ApplyImmediately> parameter is
 set to C<true> for this request.
 
 Constraints: Cannot be specified if the DB instance is a Read Replica.
+This parameter cannot be used with SQL Server DB instances. Multi-AZ
+for SQL Server DB instances is set using the Mirroring option in an
+option group associated with the DB instance.
 
 
 
@@ -561,8 +600,9 @@ instance
 
 The daily time range during which automated backups are created if
 automated backups are enabled, as determined by the
-C<BackupRetentionPeriod>. Changing this parameter does not result in an
-outage and the change is asynchronously applied as soon as possible.
+C<BackupRetentionPeriod> parameter. Changing this parameter does not
+result in an outage and the change is asynchronously applied as soon as
+possible.
 
 Constraints:
 
@@ -570,7 +610,7 @@ Constraints:
 
 =item * Must be in the format hh24:mi-hh24:mi
 
-=item * Times should be Universal Time Coordinated (UTC)
+=item * Times should be in Universal Time Coordinated (UTC)
 
 =item * Must not conflict with the preferred maintenance window
 
@@ -592,14 +632,14 @@ Constraints:
   
 
 The weekly time range (in UTC) during which system maintenance can
-occur, which may result in an outage. Changing this parameter does not
-result in an outage, except in the following situation, and the change
-is asynchronously applied as soon as possible. If there are pending
-actions that cause a reboot, and the maintenance window is changed to
-include the current time, then changing this parameter will cause a
-reboot of the DB instance. If moving this window to the current time,
-there must be at least 30 minutes between the current time and end of
-the window to ensure pending changes are applied.
+occur, which might result in an outage. Changing this parameter does
+not result in an outage, except in the following situation, and the
+change is asynchronously applied as soon as possible. If there are
+pending actions that cause a reboot, and the maintenance window is
+changed to include the current time, then changing this parameter will
+cause a reboot of the DB instance. If moving this window to the current
+time, there must be at least 30 minutes between the current time and
+end of the window to ensure pending changes are applied.
 
 Default: Uses existing setting
 

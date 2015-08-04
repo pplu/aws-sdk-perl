@@ -69,7 +69,7 @@ Constraints:
 
 =item * Must not be "Default"
 
-=item * May not contain spaces
+=item * Cannot contain spaces
 
 =back
 

@@ -1,24 +1,27 @@
 
 package Paws::RDS::CreateDBInstance {
   use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int', required => 1);
+  has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
+  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str', required => 1);
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBName => (is => 'ro', isa => 'Str');
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has Domain => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LicenseModel => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
-  has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
+  has MasterUsername => (is => 'ro', isa => 'Str');
+  has MasterUserPassword => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -62,7 +65,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> AllocatedStorage => Int
+=head2 AllocatedStorage => Int
 
   
 
@@ -73,20 +76,20 @@ Type: Integer
 
 B<MySQL>
 
-Constraints: Must be an integer from 5 to 3072.
+Constraints: Must be an integer from 5 to 6144.
 
 B<PostgreSQL>
 
-Constraints: Must be an integer from 5 to 3072.
+Constraints: Must be an integer from 5 to 6144.
 
 B<Oracle>
 
-Constraints: Must be an integer from 10 to 3072.
+Constraints: Must be an integer from 10 to 6144.
 
 B<SQL Server>
 
-Constraints: Must be an integer from 200 to 1024 (Standard Edition and
-Enterprise Edition) or from 20 to 1024 (Express Edition and Web
+Constraints: Must be an integer from 200 to 4096 (Standard Edition and
+Enterprise Edition) or from 20 to 4096 (Express Edition and Web
 Edition)
 
 
@@ -188,6 +191,40 @@ associated with the specified CharacterSet.
 
 
 
+=head2 CopyTagsToSnapshot => Bool
+
+  
+
+This property is not currently implemented.
+
+
+
+
+
+
+
+
+
+
+=head2 DBClusterIdentifier => Str
+
+  
+
+The identifier of the DB cluster that the instance will belong to.
+
+For information on creating a DB cluster, see CreateDBCluster.
+
+Type: String
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> DBInstanceClass => Str
 
   
@@ -268,8 +305,8 @@ Constraints:
 B<PostgreSQL>
 
 The name of the database to create when the DB instance is created. If
-this parameter is not specified, no database is created in the DB
-instance.
+this parameter is not specified, the default "postgres" database is
+created in the DB instance.
 
 Constraints:
 
@@ -374,6 +411,21 @@ If there is no DB subnet group, then it is a non-VPC DB instance.
 
 
 
+=head2 Domain => Str
+
+  
+
+Specify the Active Directory Domain to create the instance in.
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> Engine => Str
 
   
@@ -417,10 +469,11 @@ us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
 ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
 us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
 
-=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41>
+=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41
+| 5.5.42>
 
 =item * B<Version 5.6 (Available in all regions):> C< 5.6.19a | 5.6.19b
-| 5.6.21 | 5.6.21b | 5.6.22>
+| 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23>
 
 =back
 
@@ -436,10 +489,11 @@ us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
 ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
 us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
 
-=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41>
+=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41
+| 5.5.42>
 
 =item * B<Version 5.6 (Available in all regions):> C< 5.6.19a | 5.6.19b
-| 5.6.21 | 5.6.21b | 5.6.22>
+| 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23>
 
 =back
 
@@ -455,10 +509,11 @@ us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
 ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
 us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
 
-=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41>
+=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41
+| 5.5.42>
 
 =item * B<Version 5.6 (Available in all regions):> C< 5.6.19a | 5.6.19b
-| 5.6.21 | 5.6.21b | 5.6.22>
+| 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23>
 
 =back
 
@@ -474,10 +529,11 @@ us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
 ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
 us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
 
-=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41>
+=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41
+| 5.5.42>
 
 =item * B<Version 5.6 (Available in all regions):> C< 5.6.19a | 5.6.19b
-| 5.6.21 | 5.6.21b | 5.6.22>
+| 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23>
 
 =back
 
@@ -493,6 +549,8 @@ us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 |
 =item * B<Version 11.2 (Available in all regions):> C< 11.2.0.3.v1 |
 11.2.0.3.v2 | 11.2.0.4.v1 | 11.2.0.4.v3>
 
+=item * B<Version 12.1 (Available in all regions):> C< 12.1.0.1.v1>
+
 =back
 
 B<Oracle Database Enterprise Edition (oracle-ee)>
@@ -507,6 +565,24 @@ us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 |
 =item * B<Version 11.2 (Available in all regions):> C< 11.2.0.3.v1 |
 11.2.0.3.v2 | 11.2.0.4.v1 | 11.2.0.4.v3>
 
+=item * B<Version 12.1 (Available in all regions):> C< 12.1.0.1.v1>
+
+=back
+
+B<Oracle Database Enterprise Edition (oracle-ee)>
+
+=over
+
+=item * B<Version 11.2 (Only available in the following regions:
+ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
+us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 |
+11.2.0.2.v6 | 11.2.0.2.v7>
+
+=item * B<Version 11.2 (Available in all regions):> C< 11.2.0.3.v1 |
+11.2.0.3.v2 | 11.2.0.4.v1 | 11.2.0.4.v3>
+
+=item * B<Version 12.1 (Available in all regions):> C< 12.1.0.1.v1>
+
 =back
 
 B<Oracle Database Standard Edition (oracle-se)>
@@ -521,6 +597,9 @@ us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
 eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
 11.2.0.4.v3>
 
+=item * B<Version 12.1 (Only available in the following regions:
+eu-central-1, us-west-1):> C< 12.1.0.1.v1>
+
 =back
 
 B<Oracle Database Standard Edition (oracle-se)>
@@ -534,6 +613,26 @@ us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
 =item * B<Version 11.2 (Only available in the following regions:
 eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
 11.2.0.4.v3>
+
+=item * B<Version 12.1 (Only available in the following regions:
+eu-central-1, us-west-1):> C< 12.1.0.1.v1>
+
+=back
+
+B<Oracle Database Standard Edition (oracle-se)>
+
+=over
+
+=item * B<Version 11.2 (Only available in the following regions:
+us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
+11.2.0.2.v7>
+
+=item * B<Version 11.2 (Only available in the following regions:
+eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
+11.2.0.4.v3>
+
+=item * B<Version 12.1 (Only available in the following regions:
+eu-central-1, us-west-1):> C< 12.1.0.1.v1>
 
 =back
 
@@ -549,6 +648,9 @@ us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
 eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
 11.2.0.4.v3>
 
+=item * B<Version 12.1 (Only available in the following regions:
+eu-central-1, us-west-1):> C< 12.1.0.1.v1>
+
 =back
 
 B<Oracle Database Standard Edition One (oracle-se1)>
@@ -563,6 +665,26 @@ us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
 eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
 11.2.0.4.v3>
 
+=item * B<Version 12.1 (Only available in the following regions:
+eu-central-1, us-west-1):> C< 12.1.0.1.v1>
+
+=back
+
+B<Oracle Database Standard Edition One (oracle-se1)>
+
+=over
+
+=item * B<Version 11.2 (Only available in the following regions:
+us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
+11.2.0.2.v7>
+
+=item * B<Version 11.2 (Only available in the following regions:
+eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
+11.2.0.4.v3>
+
+=item * B<Version 12.1 (Only available in the following regions:
+eu-central-1, us-west-1):> C< 12.1.0.1.v1>
+
 =back
 
 B<PostgreSQL>
@@ -573,7 +695,10 @@ B<PostgreSQL>
 ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
 us-west-1, us-west-2):> C< 9.3.1 | 9.3.2>
 
-=item * B<Version 9.3 (Available in all regions):> C< 9.3.3 | 9.3.5>
+=item * B<Version 9.3 (Available in all regions):> C< 9.3.3 | 9.3.5 |
+9.3.6>
+
+=item * B<Version 9.4 (Available in all regions):> C< 9.4.1>
 
 =back
 
@@ -585,7 +710,25 @@ B<PostgreSQL>
 ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
 us-west-1, us-west-2):> C< 9.3.1 | 9.3.2>
 
-=item * B<Version 9.3 (Available in all regions):> C< 9.3.3 | 9.3.5>
+=item * B<Version 9.3 (Available in all regions):> C< 9.3.3 | 9.3.5 |
+9.3.6>
+
+=item * B<Version 9.4 (Available in all regions):> C< 9.4.1>
+
+=back
+
+B<PostgreSQL>
+
+=over
+
+=item * B<Version 9.3 (Only available in the following regions:
+ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
+us-west-1, us-west-2):> C< 9.3.1 | 9.3.2>
+
+=item * B<Version 9.3 (Available in all regions):> C< 9.3.3 | 9.3.5 |
+9.3.6>
+
+=item * B<Version 9.4 (Available in all regions):> C< 9.4.1>
 
 =back
 
@@ -758,7 +901,7 @@ C<general-public-license>
 
 
 
-=head2 B<REQUIRED> MasterUsername => Str
+=head2 MasterUsername => Str
 
   
 
@@ -831,7 +974,7 @@ Constraints:
 
 
 
-=head2 B<REQUIRED> MasterUserPassword => Str
+=head2 MasterUserPassword => Str
 
   
 
@@ -871,6 +1014,9 @@ Constraints: Must contain from 8 to 128 characters.
 
 Specifies if the DB instance is a Multi-AZ deployment. You cannot set
 the AvailabilityZone parameter if the MultiAZ parameter is set to true.
+Do not set this value if you want a Multi-AZ deployment for a SQL
+Server DB instance. Multi-AZ for SQL Server is set using the Mirroring
+option in an option group.
 
 
 
@@ -955,12 +1101,22 @@ automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter. For more information, see DB Instance Backups.
 
 Default: A 30-minute window selected at random from an 8-hour block of
-time per region. See the Amazon RDS User Guide for the time blocks for
-each region from which the default backup windows are assigned.
+time per region. To see the time blocks available, see Adjusting the
+Preferred Maintenance Window in the I<Amazon RDS User Guide.>
 
-Constraints: Must be in the format C<hh24:mi-hh24:mi>. Times should be
-Universal Time Coordinated (UTC). Must not conflict with the preferred
-maintenance window. Must be at least 30 minutes.
+Constraints:
+
+=over
+
+=item * Must be in the format C<hh24:mi-hh24:mi>.
+
+=item * Times should be in Universal Coordinated Time (UTC).
+
+=item * Must not conflict with the preferred maintenance window.
+
+=item * Must be at least 30 minutes.
+
+=back
 
 
 
@@ -975,15 +1131,16 @@ maintenance window. Must be at least 30 minutes.
 
   
 
-The weekly time range (in UTC) during which system maintenance can
-occur. For more information, see DB Instance Maintenance.
+The weekly time range during which system maintenance can occur, in
+Universal Coordinated Time (UTC). For more information, see DB Instance
+Maintenance.
 
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 Default: A 30-minute window selected at random from an 8-hour block of
 time per region, occurring on a random day of the week. To see the time
 blocks available, see Adjusting the Preferred Maintenance Window in the
-Amazon RDS User Guide.
+I<Amazon RDS User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 

@@ -3,6 +3,7 @@ package Paws::RDS::CreateDBInstanceReadReplica {
   use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
@@ -83,6 +84,21 @@ Example: C<us-east-1d>
 
 
 
+=head2 CopyTagsToSnapshot => Bool
+
+  
+
+This property is not currently implemented.
+
+
+
+
+
+
+
+
+
+
 =head2 DBInstanceClass => Str
 
   
@@ -110,9 +126,9 @@ Default: Inherits from the source DB instance.
 
   
 
-The DB instance identifier of the Read Replica. This is the unique key
-that identifies a DB instance. This parameter is stored as a lowercase
-string.
+The DB instance identifier of the Read Replica. This identifier is the
+unique key that identifies a DB instance. This parameter is stored as a
+lowercase string.
 
 
 

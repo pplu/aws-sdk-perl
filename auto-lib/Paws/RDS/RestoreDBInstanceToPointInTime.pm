@@ -3,9 +3,12 @@ package Paws::RDS::RestoreDBInstanceToPointInTime {
   use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBName => (is => 'ro', isa => 'Str');
+  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has Domain => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has LicenseModel => (is => 'ro', isa => 'Str');
@@ -21,6 +24,7 @@ package Paws::RDS::RestoreDBInstanceToPointInTime {
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
   has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 
@@ -91,6 +95,21 @@ Example: C<us-east-1a>
 
 
 
+=head2 CopyTagsToSnapshot => Bool
+
+  
+
+This property is not currently implemented.
+
+
+
+
+
+
+
+
+
+
 =head2 DBInstanceClass => Str
 
   
@@ -131,11 +150,43 @@ This parameter is not used for the MySQL engine.
 
 
 
+=head2 DBSecurityGroups => ArrayRef[Str]
+
+  
+
+A list of DB security groups to associate with this DB instance.
+
+Default: The default DB security group for the database engine.
+
+
+
+
+
+
+
+
+
+
 =head2 DBSubnetGroupName => Str
 
   
 
 The DB subnet group name to use for the new instance.
+
+
+
+
+
+
+
+
+
+
+=head2 Domain => Str
+
+  
+
+Specify the Active Directory Domain to restore the instance in.
 
 
 
@@ -312,7 +363,8 @@ set, the DB instance will be private.
 
 The date and time to restore from.
 
-Valid Values: Value must be a UTC time
+Valid Values: Value must be a time in Universal Coordinated Time (UTC)
+format
 
 Constraints:
 
@@ -461,6 +513,24 @@ restored from the latest backup time.
 Default: C<false>
 
 Constraints: Cannot be specified if RestoreTime parameter is provided.
+
+
+
+
+
+
+
+
+
+
+=head2 VpcSecurityGroupIds => ArrayRef[Str]
+
+  
+
+A list of EC2 VPC security groups to associate with this DB instance.
+
+Default: The default EC2 VPC security group for the DB subnet group's
+VPC.
 
 
 

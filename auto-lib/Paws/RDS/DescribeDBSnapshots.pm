@@ -42,9 +42,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A DB instance identifier to retrieve the list of DB snapshots for.
-Cannot be used in conjunction with C<DBSnapshotIdentifier>. This
-parameter is not case sensitive.
+A DB instance identifier to retrieve the list of DB snapshots for. This
+parameter cannot be used in conjunction with C<DBSnapshotIdentifier>.
+This parameter is not case-sensitive.
 
 Constraints:
 
@@ -71,19 +71,19 @@ Constraints:
 
   
 
-A specific DB snapshot identifier to describe. Cannot be used in
-conjunction with C<DBInstanceIdentifier>. This value is stored as a
-lowercase string.
+A specific DB snapshot identifier to describe. This parameter cannot be
+used in conjunction with C<DBInstanceIdentifier>. This value is stored
+as a lowercase string.
 
 Constraints:
 
 =over
 
-=item * Must be 1 to 255 alphanumeric characters
+=item * Must be 1 to 255 alphanumeric characters.
 
-=item * First character must be a letter
+=item * First character must be a letter.
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item * Cannot end with a hyphen or contain two consecutive hyphens.
 
 =item * If this is the identifier of an automated snapshot, the
 C<SnapshotType> parameter must also be specified.
@@ -139,11 +139,11 @@ specified by C<MaxRecords>.
 The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
 token called a marker is included in the response so that the remaining
-results may be retrieved.
+results can be retrieved.
 
 Default: 100
 
-Constraints: minimum 20, maximum 100
+Constraints: Minimum 20, maximum 100.
 
 
 

@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The user-supplied instance identifier. If this parameter is specified,
 information from only the specific DB instance is returned. This
-parameter isn't case sensitive.
+parameter isn't case-sensitive.
 
 Constraints:
 
@@ -84,9 +84,10 @@ This parameter is not currently supported.
 
   
 
-An optional pagination token provided by a previous DescribeDBInstances
-request. If this parameter is specified, the response includes only
-records beyond the marker, up to the value specified by C<MaxRecords> .
+An optional pagination token provided by a previous
+C<DescribeDBInstances> request. If this parameter is specified, the
+response includes only records beyond the marker, up to the value
+specified by C<MaxRecords>.
 
 
 
@@ -104,11 +105,11 @@ records beyond the marker, up to the value specified by C<MaxRecords> .
 The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
 token called a marker is included in the response so that the remaining
-results may be retrieved.
+results can be retrieved.
 
 Default: 100
 
-Constraints: minimum 20, maximum 100
+Constraints: Minimum 20, maximum 100.
 
 
 

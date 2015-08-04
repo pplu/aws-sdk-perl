@@ -118,7 +118,7 @@ retrieved.
 
 Default: 100
 
-Constraints: minimum 20, maximum 100
+Constraints: Minimum 20, maximum 100.
 
 
 
@@ -152,8 +152,7 @@ available offerings matching the specified Multi-AZ parameter.
 The offering type filter value. Specify this parameter to show only the
 available offerings matching the specified offering type.
 
-Valid Values: C<"Light Utilization" | "Medium Utilization" | "Heavy
-Utilization">
+Valid Values: C<"Partial Upfront" | "All Upfront" | "No Upfront">
 
 
 

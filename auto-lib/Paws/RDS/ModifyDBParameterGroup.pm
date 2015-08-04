@@ -70,7 +70,7 @@ Constraints:
 An array of parameter names, values, and the apply method for the
 parameter update. At least one parameter name, value, and apply method
 must be supplied; subsequent arguments are optional. A maximum of 20
-parameters may be modified in a single request.
+parameters can be modified in a single request.
 
 Valid Values (for the application method): C<immediate |
 pending-reboot>

@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-A required parameter. Options available for the given Engine name will
+A required parameter. Options available for the given engine name will
 be described.
 
 
@@ -112,7 +112,7 @@ results can be retrieved.
 
 Default: 100
 
-Constraints: minimum 20, maximum 100
+Constraints: Minimum 20, maximum 100.
 
 
 

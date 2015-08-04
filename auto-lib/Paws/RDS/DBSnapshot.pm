@@ -17,6 +17,7 @@ package Paws::RDS::DBSnapshot {
   has Port => (is => 'ro', isa => 'Int');
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
+  has SourceDBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SourceRegion => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StorageType => (is => 'ro', isa => 'Str');

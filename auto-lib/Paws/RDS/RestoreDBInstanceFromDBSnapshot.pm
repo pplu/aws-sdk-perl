@@ -3,11 +3,14 @@ package Paws::RDS::RestoreDBInstanceFromDBSnapshot {
   use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBName => (is => 'ro', isa => 'Str');
+  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has Domain => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has LicenseModel => (is => 'ro', isa => 'Str');
@@ -19,6 +22,7 @@ package Paws::RDS::RestoreDBInstanceFromDBSnapshot {
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 
@@ -89,6 +93,21 @@ Example: C<us-east-1a>
 
 
 
+=head2 CopyTagsToSnapshot => Bool
+
+  
+
+This property is not currently implemented.
+
+
+
+
+
+
+
+
+
+
 =head2 DBInstanceClass => Str
 
   
@@ -115,7 +134,7 @@ db.t2.small | db.t2.medium>
   
 
 Name of the DB instance to create from the DB snapshot. This parameter
-isn't case sensitive.
+isn't case-sensitive.
 
 Constraints:
 
@@ -147,6 +166,23 @@ Example: C<my-snapshot-id>
 The database name for the restored DB instance.
 
 This parameter doesn't apply to the MySQL engine.
+
+
+
+
+
+
+
+
+
+
+=head2 DBSecurityGroups => ArrayRef[Str]
+
+  
+
+A list of DB security groups to associate with this DB instance.
+
+Default: The default DB security group for the database engine.
 
 
 
@@ -189,6 +225,21 @@ Constraints:
   
 
 The DB subnet group name to use for the new instance.
+
+
+
+
+
+
+
+
+
+
+=head2 Domain => Str
+
+  
+
+Specify the Active Directory Domain to restore the instance in.
 
 
 
@@ -412,6 +463,24 @@ encryption.
 
 The password for the given ARN from the Key Store in order to access
 the device.
+
+
+
+
+
+
+
+
+
+
+=head2 VpcSecurityGroupIds => ArrayRef[Str]
+
+  
+
+A list of EC2 VPC security groups to associate with this DB instance.
+
+Default: The default EC2 VPC security group for the DB subnet group's
+VPC.
 
 
 

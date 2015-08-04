@@ -45,6 +45,11 @@ package Paws::RDS {
     my $call_object = $self->new_with_coercions('Paws::RDS::AuthorizeDBSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CopyDBClusterSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CopyDBClusterSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CopyDBParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CopyDBParameterGroup', @_);
@@ -58,6 +63,21 @@ package Paws::RDS {
   sub CopyOptionGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CopyOptionGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateDBCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateDBClusterParameterGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBClusterParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateDBClusterSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBClusterSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateDBInstance {
@@ -98,6 +118,21 @@ package Paws::RDS {
   sub CreateOptionGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateOptionGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDBCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDBClusterParameterGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBClusterParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDBClusterSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBClusterSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDBInstance {
@@ -145,6 +180,26 @@ package Paws::RDS {
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeCertificates', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDBClusterParameterGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBClusterParameterGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDBClusterParameters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBClusterParameters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDBClusters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBClusters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDBClusterSnapshots {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBClusterSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDBEngineVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBEngineVersions', @_);
@@ -183,6 +238,11 @@ package Paws::RDS {
   sub DescribeDBSubnetGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBSubnetGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeEngineDefaultClusterParameters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeEngineDefaultClusterParameters', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEngineDefaultParameters {
@@ -240,9 +300,24 @@ package Paws::RDS {
     my $call_object = $self->new_with_coercions('Paws::RDS::DownloadDBLogFilePortion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub FailoverDBCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::FailoverDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyDBCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyDBClusterParameterGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBClusterParameterGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyDBInstance {
@@ -295,9 +370,24 @@ package Paws::RDS {
     my $call_object = $self->new_with_coercions('Paws::RDS::RemoveTagsFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ResetDBClusterParameterGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ResetDBClusterParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ResetDBParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ResetDBParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RestoreDBClusterFromSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::RestoreDBClusterFromSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RestoreDBClusterToPointInTime {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::RestoreDBClusterToPointInTime', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RestoreDBInstanceFromDBSnapshot {
@@ -348,7 +438,7 @@ Amazon Relational Database Service
 
 Amazon Relational Database Service (Amazon RDS) is a web service that
 makes it easier to set up, operate, and scale a relational database in
-the cloud. It provides cost-efficient, resizable capacity for an
+the cloud. It provides cost-efficient, resizeable capacity for an
 industry-standard relational database and manages common database
 administration tasks, freeing up developers to focus on what makes
 their applications and businesses unique.
@@ -367,10 +457,10 @@ you use.
 This is an interface reference for Amazon RDS. It contains
 documentation for a programming or command line interface you can use
 to manage Amazon RDS. Note that Amazon RDS is asynchronous, which means
-that some interfaces may require techniques such as polling or callback
-functions to determine when a command has been applied. In this
-reference, the parameter descriptions indicate whether a command is
-applied immediately, on the next instance reboot, or during the
+that some interfaces might require techniques such as polling or
+callback functions to determine when a command has been applied. In
+this reference, the parameter descriptions indicate whether a command
+is applied immediately, on the next instance reboot, or during the
 maintenance window. For a summary of the Amazon RDS interfaces, go to
 Available RDS Interfaces.
 
@@ -416,8 +506,8 @@ Returns: nothing
 
 Adds metadata tags to an Amazon RDS resource. These tags can also be
 used with cost allocation reporting to track cost associated with
-Amazon RDS resources, or used in Condition statement in IAM policy for
-Amazon RDS.
+Amazon RDS resources, or used in a Condition statement in an IAM policy
+for Amazon RDS.
 
 For an overview on tagging Amazon RDS resources, see Tagging Amazon RDS
 Resources.
@@ -440,8 +530,8 @@ Returns: a L<Paws::RDS::ApplyPendingMaintenanceActionResult> instance
 
   
 
-Applies a pending maintenance action to a resource (for example, a DB
-instance).
+Applies a pending maintenance action to a resource (for example, to a
+DB instance).
 
 
 
@@ -470,12 +560,33 @@ for this API are one of CIDR range, EC2SecurityGroupId for VPC, or
 (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
 EC2SecurityGroupId for non-VPC).
 
-You cannot authorize ingress from an EC2 security group in one Region
+You cannot authorize ingress from an EC2 security group in one region
 to an Amazon RDS DB instance in another. You cannot authorize ingress
 from a VPC security group in one VPC to an Amazon RDS DB instance in
 another.
 
 For an overview of CIDR ranges, go to the Wikipedia Tutorial.
+
+
+
+
+
+
+
+
+
+
+
+=head2 CopyDBClusterSnapshot(SourceDBClusterSnapshotIdentifier => Str, TargetDBClusterSnapshotIdentifier => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
+
+Each argument is described in detail in: L<Paws::RDS::CopyDBClusterSnapshot>
+
+Returns: a L<Paws::RDS::CopyDBClusterSnapshotResult> instance
+
+  
+
+Creates a snapshot of a DB cluster. For more information on Amazon
+Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
 
 
 
@@ -507,7 +618,7 @@ Copies the specified DB parameter group.
 
 
 
-=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, Tags => ArrayRef[Paws::RDS::Tag]])
 
 Each argument is described in detail in: L<Paws::RDS::CopyDBSnapshot>
 
@@ -548,7 +659,97 @@ Copies the specified option group.
 
 
 
-=head2 CreateDBInstance(AllocatedStorage => Int, DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, MasterUsername => Str, MasterUserPassword => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], DBSubnetGroupName => Str, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag], TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 CreateDBCluster([AvailabilityZones => ArrayRef[Str], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterIdentifier => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, Engine => Str, EngineVersion => Str, MasterUsername => Str, MasterUserPassword => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, Tags => ArrayRef[Paws::RDS::Tag], VpcSecurityGroupIds => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::RDS::CreateDBCluster>
+
+Returns: a L<Paws::RDS::CreateDBClusterResult> instance
+
+  
+
+Creates a new Amazon Aurora DB cluster. For more information on Amazon
+Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
+=head2 CreateDBClusterParameterGroup(DBClusterParameterGroupName => Str, DBParameterGroupFamily => Str, Description => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
+
+Each argument is described in detail in: L<Paws::RDS::CreateDBClusterParameterGroup>
+
+Returns: a L<Paws::RDS::CreateDBClusterParameterGroupResult> instance
+
+  
+
+Creates a new DB cluster parameter group.
+
+Parameters in a DB cluster parameter group apply to all of the
+instances in a DB cluster.
+
+A DB cluster parameter group is initially created with the default
+parameters for the database engine used by instances in the DB cluster.
+To provide custom values for any of the parameters, you must modify the
+group after creating it using ModifyDBClusterParameterGroup. Once
+you've created a DB cluster parameter group, you need to associate it
+with your DB cluster using ModifyDBCluster. When you associate a new DB
+cluster parameter group with a running DB cluster, you need to reboot
+the DB instances in the DB cluster without failover for the new DB
+cluster parameter group and associated settings to take effect.
+
+After you create a DB cluster parameter group, you should wait at least
+5 minutes before creating your first DB cluster that uses that DB
+cluster parameter group as the default parameter group. This allows
+Amazon RDS to fully complete the create action before the DB cluster
+parameter group is used as the default for a new DB cluster. This is
+especially important for parameters that are critical when creating the
+default database for a DB cluster, such as the character set for the
+default database defined by the C<character_set_database> parameter.
+You can use the I<Parameter Groups> option of the Amazon RDS console or
+the DescribeDBClusterParameters command to verify that your DB cluster
+parameter group has been created or modified.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
+=head2 CreateDBClusterSnapshot(DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
+
+Each argument is described in detail in: L<Paws::RDS::CreateDBClusterSnapshot>
+
+Returns: a L<Paws::RDS::CreateDBClusterSnapshotResult> instance
+
+  
+
+Creates a snapshot of a DB cluster. For more information on Amazon
+Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
+=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], DBSubnetGroupName => Str, Domain => Str, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag], TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstance>
 
@@ -568,7 +769,7 @@ Creates a new DB instance.
 
 
 
-=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, DBInstanceClass => Str, DBSubnetGroupName => Str, Iops => Int, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, Iops => Int, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstanceReadReplica>
 
@@ -576,8 +777,8 @@ Returns: a L<Paws::RDS::CreateDBInstanceReadReplicaResult> instance
 
   
 
-Creates a DB instance that acts as a Read Replica of a source DB
-instance.
+Creates a DB instance for a DB instance running MySQL or PostgreSQL
+that acts as a Read Replica of a source DB instance.
 
 All Read Replica DB instances are created as Single-AZ deployments with
 backups disabled. All other DB instance attributes (including DB
@@ -761,6 +962,85 @@ Creates a new option group. You can create up to 20 option groups.
 
 
 
+=head2 DeleteDBCluster([DBClusterIdentifier => Str, FinalDBSnapshotIdentifier => Str, SkipFinalSnapshot => Bool])
+
+Each argument is described in detail in: L<Paws::RDS::DeleteDBCluster>
+
+Returns: a L<Paws::RDS::DeleteDBClusterResult> instance
+
+  
+
+The DeleteDBCluster action deletes a previously provisioned DB cluster.
+A successful response from the web service indicates the request was
+received correctly. When you delete a DB cluster, all automated backups
+for that DB cluster are deleted and cannot be recovered. Manual DB
+cluster snapshots of the DB cluster to be deleted are not deleted.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
+=head2 DeleteDBClusterParameterGroup(DBClusterParameterGroupName => Str)
+
+Each argument is described in detail in: L<Paws::RDS::DeleteDBClusterParameterGroup>
+
+Returns: nothing
+
+  
+
+Deletes a specified DB cluster parameter group. The DB cluster
+parameter group to be deleted cannot be associated with any DB
+clusters.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
+=head2 DeleteDBClusterSnapshot(DBClusterSnapshotIdentifier => Str)
+
+Each argument is described in detail in: L<Paws::RDS::DeleteDBClusterSnapshot>
+
+Returns: a L<Paws::RDS::DeleteDBClusterSnapshotResult> instance
+
+  
+
+Deletes a DB cluster snapshot. If the snapshot is being copied, the
+copy operation is terminated.
+
+The DB cluster snapshot must be in the C<available> state to be
+deleted.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
 =head2 DeleteDBInstance(DBInstanceIdentifier => Str, [FinalDBSnapshotIdentifier => Str, SkipFinalSnapshot => Bool])
 
 Each argument is described in detail in: L<Paws::RDS::DeleteDBInstance>
@@ -780,6 +1060,10 @@ If a final DB snapshot is requested the status of the RDS instance will
 be "deleting" until the DB snapshot is created. The API action
 C<DescribeDBInstance> is used to monitor the status of this operation.
 The action cannot be canceled or reverted once submitted.
+
+Note that when a DB instance is in a failure state and has a status of
+'failed', 'incompatible-restore', or 'incompatible-network', it can
+only be deleted when the SkipFinalSnapshot parameter is set to "true".
 
 
 
@@ -967,6 +1251,104 @@ account.
 
 
 
+=head2 DescribeDBClusterParameterGroups([DBClusterParameterGroupName => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterParameterGroups>
+
+Returns: a L<Paws::RDS::DBClusterParameterGroupsMessage> instance
+
+  
+
+Returns a list of C<DBClusterParameterGroup> descriptions. If a
+C<DBClusterParameterGroupName> parameter is specified, the list will
+contain only the description of the specified DB cluster parameter
+group.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeDBClusterParameters(DBClusterParameterGroupName => Str, [Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, Source => Str])
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterParameters>
+
+Returns: a L<Paws::RDS::DBClusterParameterGroupDetails> instance
+
+  
+
+Returns the detailed parameter list for a particular DB cluster
+parameter group.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeDBClusters([DBClusterIdentifier => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBClusters>
+
+Returns: a L<Paws::RDS::DBClusterMessage> instance
+
+  
+
+Returns information about provisioned Aurora DB clusters. This API
+supports pagination.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeDBClusterSnapshots([DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, SnapshotType => Str])
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterSnapshots>
+
+Returns: a L<Paws::RDS::DBClusterSnapshotMessage> instance
+
+  
+
+Returns information about DB cluster snapshots. This API supports
+pagination.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
 =head2 DescribeDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[Paws::RDS::Filter], ListSupportedCharacterSets => Bool, Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBEngineVersions>
@@ -1137,6 +1519,30 @@ For an overview of CIDR ranges, go to the Wikipedia Tutorial.
 
 
 
+=head2 DescribeEngineDefaultClusterParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
+
+Each argument is described in detail in: L<Paws::RDS::DescribeEngineDefaultClusterParameters>
+
+Returns: a L<Paws::RDS::DescribeEngineDefaultClusterParametersResult> instance
+
+  
+
+Returns the default engine and system parameter information for the
+cluster database engine.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
 =head2 DescribeEngineDefaultParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeEngineDefaultParameters>
@@ -1168,8 +1574,8 @@ Returns: a L<Paws::RDS::EventCategoriesMessage> instance
 
 Displays a list of categories for all event source types, or, if
 specified, for a specified source type. You can see a list of the event
-categories and source types in the Events topic in the Amazon RDS User
-Guide.
+categories and source types in the Events topic in the I<Amazon RDS
+User Guide.>
 
 
 
@@ -1361,7 +1767,42 @@ Returns: a L<Paws::RDS::DownloadDBLogFilePortionDetails> instance
 
   
 
-Downloads all or a portion of the specified log file.
+Downloads all or a portion of the specified log file, up to 1 MB in
+size.
+
+
+
+
+
+
+
+
+
+
+
+=head2 FailoverDBCluster([DBClusterIdentifier => Str])
+
+Each argument is described in detail in: L<Paws::RDS::FailoverDBCluster>
+
+Returns: a L<Paws::RDS::FailoverDBClusterResult> instance
+
+  
+
+Forces a failover for a DB cluster.
+
+A failover for a DB cluster promotes one of the read-only instances in
+the DB cluster to the master DB instance (the cluster writer) and
+deletes the current primary instance.
+
+Amazon Aurora will automatically fail over to a read-only instance, if
+one exists, when the primary instance fails. You can force a failover
+when you want to simulate a failure of a DB instance for testing.
+Because each instance in a DB cluster has its own endpoint address, you
+will need to clean up and re-establish any existing connections that
+use those endpoint addresses when the failover is complete.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
 
 
 
@@ -1396,7 +1837,72 @@ RDS Resources.
 
 
 
-=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, DBInstanceClass => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], EngineVersion => Str, Iops => Int, MasterUserPassword => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 ModifyDBCluster([ApplyImmediately => Bool, BackupRetentionPeriod => Int, DBClusterIdentifier => Str, DBClusterParameterGroupName => Str, MasterUserPassword => Str, NewDBClusterIdentifier => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::RDS::ModifyDBCluster>
+
+Returns: a L<Paws::RDS::ModifyDBClusterResult> instance
+
+  
+
+Modify a setting for an Amazon Aurora DB cluster. You can change one or
+more database configuration parameters by specifying these parameters
+and the new values in the request. For more information on Amazon
+Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
+=head2 ModifyDBClusterParameterGroup(DBClusterParameterGroupName => Str, Parameters => ArrayRef[Paws::RDS::Parameter])
+
+Each argument is described in detail in: L<Paws::RDS::ModifyDBClusterParameterGroup>
+
+Returns: a L<Paws::RDS::DBClusterParameterGroupNameMessage> instance
+
+  
+
+Modifies the parameters of a DB cluster parameter group. To modify more
+than one parameter, submit a list of the following: C<ParameterName>,
+C<ParameterValue>, and C<ApplyMethod>. A maximum of 20 parameters can
+be modified in a single request.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
+
+Changes to dynamic parameters are applied immediately. Changes to
+static parameters require a reboot without failover to the DB cluster
+associated with the parameter group before the change can take effect.
+
+After you create a DB cluster parameter group, you should wait at least
+5 minutes before creating your first DB cluster that uses that DB
+cluster parameter group as the default parameter group. This allows
+Amazon RDS to fully complete the create action before the parameter
+group is used as the default for a new DB cluster. This is especially
+important for parameters that are critical when creating the default
+database for a DB cluster, such as the character set for the default
+database defined by the C<character_set_database> parameter. You can
+use the I<Parameter Groups> option of the Amazon RDS console or the
+DescribeDBClusterParameters command to verify that your DB cluster
+parameter group has been created or modified.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], Domain => Str, EngineVersion => Str, Iops => Int, MasterUserPassword => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBInstance>
 
@@ -1653,6 +2159,39 @@ RDS Resources.
 
 
 
+=head2 ResetDBClusterParameterGroup(DBClusterParameterGroupName => Str, [Parameters => ArrayRef[Paws::RDS::Parameter], ResetAllParameters => Bool])
+
+Each argument is described in detail in: L<Paws::RDS::ResetDBClusterParameterGroup>
+
+Returns: a L<Paws::RDS::DBClusterParameterGroupNameMessage> instance
+
+  
+
+Modifies the parameters of a DB cluster parameter group to the default
+value. To reset specific parameters submit a list of the following:
+C<ParameterName> and C<ApplyMethod>. To reset the entire DB cluster
+parameter group, specify the C<DBClusterParameterGroupName> and
+C<ResetAllParameters> parameters.
+
+When resetting the entire group, dynamic parameters are updated
+immediately and static parameters are set to C<pending-reboot> to take
+effect on the next DB instance restart or RebootDBInstance request. You
+must call RebootDBInstance for every DB instance in your DB cluster
+that you want the updated static parameter to apply to.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
 =head2 ResetDBParameterGroup(DBParameterGroupName => Str, [Parameters => ArrayRef[Paws::RDS::Parameter], ResetAllParameters => Bool])
 
 Each argument is described in detail in: L<Paws::RDS::ResetDBParameterGroup>
@@ -1680,7 +2219,61 @@ or C<RebootDBInstance> request.
 
 
 
-=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag], TdeCredentialArn => Str, TdeCredentialPassword => Str])
+=head2 RestoreDBClusterFromSnapshot(DBClusterIdentifier => Str, Engine => Str, SnapshotIdentifier => Str, [AvailabilityZones => ArrayRef[Str], DatabaseName => Str, DBSubnetGroupName => Str, EngineVersion => Str, OptionGroupName => Str, Port => Int, Tags => ArrayRef[Paws::RDS::Tag], VpcSecurityGroupIds => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterFromSnapshot>
+
+Returns: a L<Paws::RDS::RestoreDBClusterFromSnapshotResult> instance
+
+  
+
+Creates a new DB cluster from a DB cluster snapshot. The target DB
+cluster is created from the source DB cluster restore point with the
+same configuration as the original source DB cluster, except that the
+new DB cluster is created with the default security group.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
+=head2 RestoreDBClusterToPointInTime(DBClusterIdentifier => Str, SourceDBClusterIdentifier => Str, [DBSubnetGroupName => Str, OptionGroupName => Str, Port => Int, RestoreToTime => Str, Tags => ArrayRef[Paws::RDS::Tag], UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterToPointInTime>
+
+Returns: a L<Paws::RDS::RestoreDBClusterToPointInTimeResult> instance
+
+  
+
+Restores a DB cluster to an arbitrary point in time. Users can restore
+to any point in time before C<LatestRestorableTime> for up to
+C<BackupRetentionPeriod> days. The target DB cluster is created from
+the source DB cluster with the same configuration as the original DB
+cluster, except that the new DB cluster is created with the default DB
+security group.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
+
+
+
+
+
+
+
+
+
+
+
+=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSecurityGroups => ArrayRef[Str], DBSubnetGroupName => Str, Domain => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag], TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceFromDBSnapshot>
 
@@ -1689,9 +2282,14 @@ Returns: a L<Paws::RDS::RestoreDBInstanceFromDBSnapshotResult> instance
   
 
 Creates a new DB instance from a DB snapshot. The target database is
-created from the source database restore point with the same
-configuration as the original source database, except that the new RDS
-instance is created with the default security group.
+created from the source database restore point with the most of
+original configuration, but in a system chosen availability zone with
+the default security group, the default subnet group, and the default
+DB parameter group. By default, the new DB instance is created as a
+single-AZ deployment except when the instance is a SQL Server instance
+that has an option group that is associated with mirroring; in this
+case, the instance becomes a mirrored AZ deployment and not a single-AZ
+deployment.
 
 If your intent is to replace your original DB instance with the new,
 restored DB instance, then rename your original DB instance before you
@@ -1713,7 +2311,7 @@ snapshot.
 
 
 
-=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])
+=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSecurityGroups => ArrayRef[Str], DBSubnetGroupName => Str, Domain => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceToPointInTime>
 
@@ -1723,10 +2321,14 @@ Returns: a L<Paws::RDS::RestoreDBInstanceToPointInTimeResult> instance
 
 Restores a DB instance to an arbitrary point-in-time. Users can restore
 to any point in time before the LatestRestorableTime for up to
-BackupRetentionPeriod days. The target database is created from the
-source database with the same configuration as the original database
-except that the DB instance is created with the default DB security
-group.
+BackupRetentionPeriod days. The target database is created with the
+most of original configuration, but in a system chosen availability
+zone with the default security group, the default subnet group, and the
+default DB parameter group. By default, the new DB instance is created
+as a single-AZ deployment except when the instance is a SQL Server
+instance that has an option group that is associated with mirroring; in
+this case, the instance becomes a mirrored deployment and not a
+single-AZ deployment.
 
 
 

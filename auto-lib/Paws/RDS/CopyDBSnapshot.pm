@@ -1,6 +1,7 @@
 
 package Paws::RDS::CopyDBSnapshot {
   use Moose;
+  has CopyTags => (is => 'ro', isa => 'Bool');
   has SourceDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has TargetDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -34,6 +35,21 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+=head2 CopyTags => Bool
+
+  
+
+This property is not currently implemented.
+
+
+
+
+
+
+
+
+
 
 =head2 B<REQUIRED> SourceDBSnapshotIdentifier => Str
 

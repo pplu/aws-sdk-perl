@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 The DB instance identifier for the DB instance to be deleted. This
-parameter isn't case sensitive.
+parameter isn't case-sensitive.
 
 Constraints:
 
@@ -104,6 +104,10 @@ Determines whether a final DB snapshot is created before the DB
 instance is deleted. If C<true> is specified, no DBSnapshot is created.
 If C<false> is specified, a DB snapshot is created before the DB
 instance is deleted.
+
+Note that when a DB instance is in a failure state and has a status of
+'failed', 'incompatible-restore', or 'incompatible-network', it can
+only be deleted when the SkipFinalSnapshot parameter is set to "true".
 
 Specify C<true> when deleting a Read Replica.
 

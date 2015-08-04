@@ -40,7 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The identifier or ARN for the source option group.
+The identifier or ARN for the source option group. For information
+about creating an ARN, see Constructing an RDS Amazon Resource Name
+(ARN).
 
 Constraints:
 

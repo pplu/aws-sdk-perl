@@ -72,7 +72,7 @@ Constraints:
 
 =back
 
-This value is stored as a lower-case string.
+This value is stored as a lowercase string.
 
 
 

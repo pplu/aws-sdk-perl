@@ -84,7 +84,9 @@ requests.
 
   
 
-The ARN of the resource that the pending maintenance action applies to.
+The RDS Amazon Resource Name (ARN) of the resource that the pending
+maintenance action applies to. For information about creating an ARN,
+see Constructing an RDS Amazon Resource Name (ARN).
 
 
 

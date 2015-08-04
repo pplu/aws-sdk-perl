@@ -18,7 +18,7 @@ Paws::RDS::DBParameterGroupNameMessage
 
   
 
-The name of the DB parameter group.
+Provides the name of the DB parameter group.
 
 
 

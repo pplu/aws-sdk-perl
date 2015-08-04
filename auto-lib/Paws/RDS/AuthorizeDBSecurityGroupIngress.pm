@@ -73,7 +73,7 @@ The name of the DB security group to add authorization to.
 
 Id of the EC2 security group to authorize. For VPC DB security groups,
 C<EC2SecurityGroupId> must be provided. Otherwise,
-EC2SecurityGroupOwnerId and either C<EC2SecurityGroupName> or
+C<EC2SecurityGroupOwnerId> and either C<EC2SecurityGroupName> or
 C<EC2SecurityGroupId> must be provided.
 
 
@@ -91,7 +91,7 @@ C<EC2SecurityGroupId> must be provided.
 
 Name of the EC2 security group to authorize. For VPC DB security
 groups, C<EC2SecurityGroupId> must be provided. Otherwise,
-EC2SecurityGroupOwnerId and either C<EC2SecurityGroupName> or
+C<EC2SecurityGroupOwnerId> and either C<EC2SecurityGroupName> or
 C<EC2SecurityGroupId> must be provided.
 
 
@@ -107,10 +107,10 @@ C<EC2SecurityGroupId> must be provided.
 
   
 
-AWS Account Number of the owner of the EC2 security group specified in
-the EC2SecurityGroupName parameter. The AWS Access Key ID is not an
+AWS account number of the owner of the EC2 security group specified in
+the C<EC2SecurityGroupName> parameter. The AWS Access Key ID is not an
 acceptable value. For VPC DB security groups, C<EC2SecurityGroupId>
-must be provided. Otherwise, EC2SecurityGroupOwnerId and either
+must be provided. Otherwise, C<EC2SecurityGroupOwnerId> and either
 C<EC2SecurityGroupName> or C<EC2SecurityGroupId> must be provided.
 
 
