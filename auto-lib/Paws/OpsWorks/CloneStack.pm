@@ -220,9 +220,9 @@ description.
 
   
 
-The ARN of an IAM profile that is the default profile for all of the
-stack's EC2 instances. For more information about IAM ARNs, see Using
-Identifiers.
+The Amazon Resource Name (ARN) of an IAM profile that is the default
+profile for all of the stack's EC2 instances. For more information
+about IAM ARNs, see Using Identifiers.
 
 
 
@@ -243,8 +243,8 @@ following.
 =over
 
 =item * A supported Linux operating system: An Amazon Linux version,
-such as C<Amazon Linux 2015.03>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04
-LTS>.
+such as C<Amazon Linux 2015.03>, C<Red Hat Enterprise Linux 7>,
+C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04 LTS>.
 
 =item * C<Microsoft Windows Server 2012 R2 Base>.
 
@@ -484,11 +484,11 @@ associate additional security groups with a layer after you create it
 but you cannot delete the built-in security group.
 
 =item * False - AWS OpsWorks does not associate built-in security
-groups with layers. You must create appropriate EC2 security groups and
-associate a security group with each layer that you create. However,
-you can still manually associate a built-in security group with a layer
-on creation; custom security groups are required only for those layers
-that need custom settings.
+groups with layers. You must create appropriate Amazon Elastic Compute
+Cloud (Amazon EC2) security groups and associate a security group with
+each layer that you create. However, you can still manually associate a
+built-in security group with a layer on creation; custom security
+groups are required only for those layers that need custom settings.
 
 =back
 

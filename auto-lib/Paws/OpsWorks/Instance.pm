@@ -9,6 +9,8 @@ package Paws::OpsWorks::Instance {
   has CreatedAt => (is => 'ro', isa => 'Str');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
+  has EcsClusterArn => (is => 'ro', isa => 'Str');
+  has EcsContainerInstanceArn => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
   has Hostname => (is => 'ro', isa => 'Str');
   has InfrastructureClass => (is => 'ro', isa => 'Str');

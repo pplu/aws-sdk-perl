@@ -210,8 +210,8 @@ create the instance. You can specify one of the following.
 =over
 
 =item * A supported Linux operating system: An Amazon Linux version,
-such as C<Amazon Linux 2015.03>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04
-LTS>.
+such as C<Amazon Linux 2015.03>, C<Red Hat Enterprise Linux 7>,
+C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04 LTS>.
 
 =item * C<Microsoft Windows Server 2012 R2 Base>.
 

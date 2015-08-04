@@ -7,6 +7,7 @@ package Paws::OpsWorks::LayerAttributes {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has BundlerVersion => (is => 'ro', isa => 'Str');
+  has EcsClusterArn => (is => 'ro', isa => 'Str');
   has EnableHaproxyStats => (is => 'ro', isa => 'Str');
   has GangliaPassword => (is => 'ro', isa => 'Str');
   has GangliaUrl => (is => 'ro', isa => 'Str');

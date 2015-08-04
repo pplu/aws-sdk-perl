@@ -5,6 +5,7 @@ package Paws::OpsWorks::UpdateLayer {
   has AutoAssignElasticIps => (is => 'ro', isa => 'Bool');
   has AutoAssignPublicIps => (is => 'ro', isa => 'Bool');
   has CustomInstanceProfileArn => (is => 'ro', isa => 'Str');
+  has CustomJson => (is => 'ro', isa => 'Str');
   has CustomRecipes => (is => 'ro', isa => 'Paws::OpsWorks::Recipes');
   has CustomSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has EnableAutoHealing => (is => 'ro', isa => 'Bool');
@@ -102,6 +103,23 @@ How to Edit a Layer.
 
 The ARN of an IAM profile to be used for all of the layer's EC2
 instances. For more information about IAM ARNs, see Using Identifiers.
+
+
+
+
+
+
+
+
+
+
+=head2 CustomJson => Str
+
+  
+
+A JSON-formatted string containing custom stack configuration and
+deployment attributes to be installed on the layer's instances. For
+more information, see Using Custom JSON.
 
 
 

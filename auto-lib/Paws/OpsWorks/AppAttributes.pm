@@ -7,6 +7,7 @@ package Paws::OpsWorks::AppAttributes {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has AutoBundleOnDeploy => (is => 'ro', isa => 'Str');
+  has AwsFlowRubySettings => (is => 'ro', isa => 'Str');
   has DocumentRoot => (is => 'ro', isa => 'Str');
   has RailsEnv => (is => 'ro', isa => 'Str');
 }

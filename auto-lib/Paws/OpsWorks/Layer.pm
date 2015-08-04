@@ -5,6 +5,7 @@ package Paws::OpsWorks::Layer {
   has AutoAssignPublicIps => (is => 'ro', isa => 'Bool');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CustomInstanceProfileArn => (is => 'ro', isa => 'Str');
+  has CustomJson => (is => 'ro', isa => 'Str');
   has CustomRecipes => (is => 'ro', isa => 'Paws::OpsWorks::Recipes');
   has CustomSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has DefaultRecipes => (is => 'ro', isa => 'Paws::OpsWorks::Recipes');

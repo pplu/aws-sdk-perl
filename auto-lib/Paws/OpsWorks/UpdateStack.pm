@@ -208,8 +208,8 @@ following:
 =over
 
 =item * A supported Linux operating system: An Amazon Linux version,
-such as C<Amazon Linux 2015.03>, C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04
-LTS>.
+such as C<Amazon Linux 2015.03>, C<Red Hat Enterprise Linux 7>,
+C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04 LTS>.
 
 =item * C<Microsoft Windows Server 2012 R2 Base>.
 
@@ -358,14 +358,7 @@ The stack's new name.
 
   
 
-The stack IAM role, which allows AWS OpsWorks to work with AWS
-resources on your behalf. You must set this parameter to the ARN for an
-existing IAM role. For more information about IAM ARNs, see Using
-Identifiers.
-
-There is no default value. You must set this parameter to a valid
-service role ARN or the action will fail. You can specify the stack's
-current service role ARN, if you prefer, but you must do so explicitly.
+Do not use this parameter. You cannot update a stack's service role.
 
 
 

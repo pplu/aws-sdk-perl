@@ -5,6 +5,7 @@ package Paws::OpsWorks::CreateLayer {
   has AutoAssignElasticIps => (is => 'ro', isa => 'Bool');
   has AutoAssignPublicIps => (is => 'ro', isa => 'Bool');
   has CustomInstanceProfileArn => (is => 'ro', isa => 'Str');
+  has CustomJson => (is => 'ro', isa => 'Str');
   has CustomRecipes => (is => 'ro', isa => 'Paws::OpsWorks::Recipes');
   has CustomSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has EnableAutoHealing => (is => 'ro', isa => 'Bool');
@@ -52,8 +53,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-One or more user-defined key/value pairs to be added to the stack
+One or more user-defined key-value pairs to be added to the stack
 attributes.
+
+To create a cluster layer, set the C<EcsClusterArn> attribute to the
+cluster's ARN.
 
 
 
@@ -101,8 +105,25 @@ How to Edit a Layer.
 
   
 
-The ARN of an IAM profile that to be used for the layer's EC2
-instances. For more information about IAM ARNs, see Using Identifiers.
+The ARN of an IAM profile to be used for the layer's EC2 instances. For
+more information about IAM ARNs, see Using Identifiers.
+
+
+
+
+
+
+
+
+
+
+=head2 CustomJson => Str
+
+  
+
+A JSON-formatted string containing custom stack configuration and
+deployment attributes to be installed on the layer's instances. For
+more information, see Using Custom JSON.
 
 
 
@@ -166,11 +187,11 @@ Whether to install operating system and package updates when the
 instance boots. The default value is C<true>. To control when updates
 are installed, set this value to C<false>. You must then update your
 instances manually by using CreateDeployment to run the
-C<update_dependencies> stack command or manually running C<yum> (Amazon
-Linux) or C<apt-get> (Ubuntu) on the instances.
+C<update_dependencies> stack command or by manually running C<yum>
+(Amazon Linux) or C<apt-get> (Ubuntu) on the instances.
 
-We strongly recommend using the default value of C<true>, to ensure
-that your instances have the latest security updates.
+To ensure that your instances have the latest security updates, we
+strongly recommend using the default value of C<true>.
 
 
 
@@ -185,9 +206,9 @@ that your instances have the latest security updates.
 
   
 
-A LifeCycleEventConfiguration object that you can use to configure the
-Shutdown event to specify an execution timeout and enable or disable
-Elastic Load Balancer connection draining.
+A C<LifeCycleEventConfiguration> object that you can use to configure
+the Shutdown event to specify an execution timeout and enable or
+disable Elastic Load Balancer connection draining.
 
 
 
@@ -217,7 +238,7 @@ The layer name, which is used by the console.
 
   
 
-An array of C<Package> objects that describe the layer packages.
+An array of C<Package> objects that describes the layer packages.
 
 
 
@@ -239,7 +260,7 @@ files are installed. It can have a maximum of 200 characters, which are
 limited to the alphanumeric characters, '-', '_', and '.'.
 
 The built-in layers' short names are defined by AWS OpsWorks. For more
-information, see the Layer Reference
+information, see the Layer Reference.
 
 
 

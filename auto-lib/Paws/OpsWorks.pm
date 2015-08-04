@@ -88,6 +88,11 @@ package Paws::OpsWorks {
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::DeleteUserProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeregisterEcsCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DeregisterEcsCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeregisterElasticIp {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::DeregisterElasticIp', @_);
@@ -126,6 +131,11 @@ package Paws::OpsWorks {
   sub DescribeDeployments {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeDeployments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeEcsClusters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::DescribeEcsClusters', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeElasticIps {
@@ -231,6 +241,11 @@ package Paws::OpsWorks {
   sub RebootInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::RebootInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegisterEcsCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::RegisterEcsCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RegisterElasticIp {
@@ -418,15 +433,15 @@ stacks in any AWS Region.
 B<Chef Versions>
 
 When you call CreateStack, CloneStack, or UpdateStack we recommend you
-use the C<ConfigurationManager> parameter to specify the Chef version,
-0.9, 11.4, or 11.10. The default value is currently 11.10. For more
+use the C<ConfigurationManager> parameter to specify the Chef version.
+The recommended value for Linux stacks, which is also the default
+value, is currently 11.10. Windows stacks use Chef 12.2. For more
 information, see Chef Versions.
 
-You can still specify Chef 0.9 for your stack, but new features are not
-available for Chef 0.9 stacks, and support is scheduled to end on July
-24, 2014. We do not recommend using Chef 0.9 for new stacks, and we
-recommend migrating your existing Chef 0.9 stacks to Chef 11.10 as soon
-as possible.
+You can also specify Chef 11.4 or Chef 0.9 for your Linux stack.
+However, Chef 0.9 has been deprecated. We do not recommend using Chef
+0.9 for new stacks, and we recommend migrating your existing Chef 0.9
+stacks to Chef 11.10 as soon as possible.
 
 
 
@@ -462,10 +477,10 @@ with AWS OpsWorks.
 
 =back
 
-B<Required Permissions>: To use this action, an IAM user must have a
-Manage permissions level for the stack or an attached policy that
-explicitly grants permissions. For more information on user
-permissions, see Managing User Permissions.
+B<Required Permissions>: To use this action, an AWS Identity and Access
+Management (IAM) user must have a Manage permissions level for the
+stack or an attached policy that explicitly grants permissions. For
+more information on user permissions, see Managing User Permissions.
 
 
 
@@ -668,7 +683,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 CreateLayer(Name => Str, Shortname => Str, StackId => Str, Type => Str, [Attributes => Paws::OpsWorks::LayerAttributes, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CustomInstanceProfileArn => Str, CustomRecipes => Paws::OpsWorks::Recipes, CustomSecurityGroupIds => ArrayRef[Str], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration, Packages => ArrayRef[Str], UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[Paws::OpsWorks::VolumeConfiguration]])
+=head2 CreateLayer(Name => Str, Shortname => Str, StackId => Str, Type => Str, [Attributes => Paws::OpsWorks::LayerAttributes, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => Paws::OpsWorks::Recipes, CustomSecurityGroupIds => ArrayRef[Str], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration, Packages => ArrayRef[Str], UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[Paws::OpsWorks::VolumeConfiguration]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateLayer>
 
@@ -879,6 +894,32 @@ information on user permissions, see Managing User Permissions.
 
 
 
+=head2 DeregisterEcsCluster(EcsClusterArn => Str)
+
+Each argument is described in detail in: L<Paws::OpsWorks::DeregisterEcsCluster>
+
+Returns: nothing
+
+  
+
+Deregisters a specified Amazon ECS cluster from a stack. For more
+information, see Resource Management.
+
+B<Required Permissions>: To use this action, an IAM user must have a
+Manage permissions level for the stack or an attached policy that
+explicitly grants permissions. For more information on user
+permissions, see .
+
+
+
+
+
+
+
+
+
+
+
 =head2 DeregisterElasticIp(ElasticIp => Str)
 
 Each argument is described in detail in: L<Paws::OpsWorks::DeregisterElasticIp>
@@ -1077,6 +1118,35 @@ You must specify at least one of the parameters.
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
+permissions, see Managing User Permissions.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeEcsClusters([EcsClusterArns => ArrayRef[Str], MaxResults => Int, NextToken => Str, StackId => Str])
+
+Each argument is described in detail in: L<Paws::OpsWorks::DescribeEcsClusters>
+
+Returns: a L<Paws::OpsWorks::DescribeEcsClustersResult> instance
+
+  
+
+Describes Amazon ECS clusters that are registered with a stack. If you
+specify only a stack ID, you can use the C<MaxResults> and C<NextToken>
+parameters to paginate the response. However, AWS OpsWorks currently
+supports only one cluster per layer, so the result set has a maximum of
+one element.
+
+B<Required Permissions>: To use this action, an IAM user must have a
+Show, Deploy, or Manage permissions level for the stack or an attached
+policy that explicitly grants permission. For more information on user
 permissions, see Managing User Permissions.
 
 
@@ -1633,6 +1703,33 @@ permissions, see Managing User Permissions.
 
 
 
+=head2 RegisterEcsCluster(EcsClusterArn => Str, StackId => Str)
+
+Each argument is described in detail in: L<Paws::OpsWorks::RegisterEcsCluster>
+
+Returns: a L<Paws::OpsWorks::RegisterEcsClusterResult> instance
+
+  
+
+Registers a specified Amazon ECS cluster with a stack. You can register
+only one cluster with a stack. A cluster can be registered with only
+one stack. For more information, see Resource Management.
+
+B<Required Permissions>: To use this action, an IAM user must have a
+Manage permissions level for the stack or an attached policy that
+explicitly grants permissions. For more information on user
+permissions, see Managing User Permissions.
+
+
+
+
+
+
+
+
+
+
+
 =head2 RegisterElasticIp(ElasticIp => Str, StackId => Str)
 
 Each argument is described in detail in: L<Paws::OpsWorks::RegisterElasticIp>
@@ -2067,7 +2164,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UpdateLayer(LayerId => Str, [Attributes => Paws::OpsWorks::LayerAttributes, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CustomInstanceProfileArn => Str, CustomRecipes => Paws::OpsWorks::Recipes, CustomSecurityGroupIds => ArrayRef[Str], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration, Name => Str, Packages => ArrayRef[Str], Shortname => Str, UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[Paws::OpsWorks::VolumeConfiguration]])
+=head2 UpdateLayer(LayerId => Str, [Attributes => Paws::OpsWorks::LayerAttributes, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => Paws::OpsWorks::Recipes, CustomSecurityGroupIds => ArrayRef[Str], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration, Name => Str, Packages => ArrayRef[Str], Shortname => Str, UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[Paws::OpsWorks::VolumeConfiguration]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateLayer>
 
