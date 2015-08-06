@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes {
   has continuedExecutionRunId => (is => 'ro', isa => 'Str');
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has input => (is => 'ro', isa => 'Str');
+  has lambdaRole => (is => 'ro', isa => 'Str');
   has parentInitiatedEventId => (is => 'ro', isa => 'Int');
   has parentWorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution');
   has tagList => (is => 'ro', isa => 'ArrayRef[Str]');

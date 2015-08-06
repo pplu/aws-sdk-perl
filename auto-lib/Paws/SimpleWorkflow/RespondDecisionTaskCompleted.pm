@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 The list of decisions (possibly empty) made by the decider while
-processing this decision task. See the docs for the Decision structure
+processing this decision task. See the docs for the decision structure
 for details.
 
 

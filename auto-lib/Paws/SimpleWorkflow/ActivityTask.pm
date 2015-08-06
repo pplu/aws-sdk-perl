@@ -66,7 +66,7 @@ implementation.
 
   
 
-The id of the C<ActivityTaskStarted> event recorded in the history.
+The ID of the C<ActivityTaskStarted> event recorded in the history.
 
 
 

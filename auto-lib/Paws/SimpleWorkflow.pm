@@ -770,7 +770,7 @@ Returns: a L<Paws::SimpleWorkflow::WorkflowTypeDetail> instance
 
 Returns information about the specified I<workflow type>. This includes
 configuration settings specified when the type was registered and other
-information such as creation date, current status, etc.
+information such as creation date, current status, and so on.
 
 B<Access Control>
 
@@ -1214,9 +1214,9 @@ connection open and responds as soon a task becomes available. If no
 decision task is available in the specified task list before the
 timeout of 60 seconds expires, an empty result is returned. An empty
 result, in this context, means that a DecisionTask is returned, but
-that the value of taskToken is an empty string.
+that the value of C<taskToken> is an empty string.
 
-Deciders should set their client side socket timeout to at least 70
+Deciders should set their client-side socket timeout to at least 70
 seconds (10 seconds higher than the timeout). Because the number of
 workflow history events for a single workflow execution might be very
 large, the result returned might be split up across a number of pages.
@@ -1437,7 +1437,7 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 RegisterWorkflowType(domain => Str, name => Str, version => Str, [defaultChildPolicy => Str, defaultExecutionStartToCloseTimeout => Str, defaultTaskList => Paws::SimpleWorkflow::TaskList, defaultTaskPriority => Str, defaultTaskStartToCloseTimeout => Str, description => Str])
+=head2 RegisterWorkflowType(domain => Str, name => Str, version => Str, [defaultChildPolicy => Str, defaultExecutionStartToCloseTimeout => Str, defaultLambdaRole => Str, defaultTaskList => Paws::SimpleWorkflow::TaskList, defaultTaskPriority => Str, defaultTaskStartToCloseTimeout => Str, description => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::RegisterWorkflowType>
 
@@ -1816,7 +1816,7 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
 
-=head2 StartWorkflowExecution(domain => Str, workflowId => Str, workflowType => Paws::SimpleWorkflow::WorkflowType, [childPolicy => Str, executionStartToCloseTimeout => Str, input => Str, tagList => ArrayRef[Str], taskList => Paws::SimpleWorkflow::TaskList, taskPriority => Str, taskStartToCloseTimeout => Str])
+=head2 StartWorkflowExecution(domain => Str, workflowId => Str, workflowType => Paws::SimpleWorkflow::WorkflowType, [childPolicy => Str, executionStartToCloseTimeout => Str, input => Str, lambdaRole => Str, tagList => ArrayRef[Str], taskList => Paws::SimpleWorkflow::TaskList, taskPriority => Str, taskStartToCloseTimeout => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::StartWorkflowExecution>
 

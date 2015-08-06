@@ -5,6 +5,7 @@ package Paws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttribute
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Int', required => 1);
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has input => (is => 'ro', isa => 'Str');
+  has lambdaRole => (is => 'ro', isa => 'Str');
   has tagList => (is => 'ro', isa => 'ArrayRef[Str]');
   has taskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', required => 1);
   has taskPriority => (is => 'ro', isa => 'Str');

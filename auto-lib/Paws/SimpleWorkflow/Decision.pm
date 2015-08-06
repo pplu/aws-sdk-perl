@@ -10,6 +10,7 @@ package Paws::SimpleWorkflow::Decision {
   has requestCancelActivityTaskDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes');
   has requestCancelExternalWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttributes');
   has scheduleActivityTaskDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes');
+  has scheduleLambdaFunctionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ScheduleLambdaFunctionDecisionAttributes');
   has signalExternalWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes');
   has startChildWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes');
   has startTimerDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartTimerDecisionAttributes');

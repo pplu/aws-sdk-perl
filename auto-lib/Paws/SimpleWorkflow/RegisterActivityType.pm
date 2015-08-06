@@ -50,7 +50,7 @@ If set, specifies the default maximum time before which a worker
 processing a task of this type must report progress by calling
 RecordActivityTaskHeartbeat. If the timeout is exceeded, the activity
 task is automatically timed out. This default can be overridden when
-scheduling an activity task using the C<ScheduleActivityTask> Decision.
+scheduling an activity task using the C<ScheduleActivityTask> decision.
 If the activity worker subsequently attempts to record a heartbeat or
 returns a result, the activity worker receives an C<UnknownResource>
 fault. In this case, Amazon SWF no longer considers the activity task
@@ -75,7 +75,7 @@ to 0. The value "NONE" can be used to specify unlimited duration.
 If set, specifies the default task list to use for scheduling tasks of
 this activity type. This default task list is used if a task list is
 not provided when a task is scheduled through the
-C<ScheduleActivityTask> Decision.
+C<ScheduleActivityTask> decision.
 
 
 
@@ -113,7 +113,7 @@ Priority in the I<Amazon Simple Workflow Developer Guide>.
 
 If set, specifies the default maximum duration for a task of this
 activity type. This default can be overridden when scheduling an
-activity task using the C<ScheduleActivityTask> Decision.
+activity task using the C<ScheduleActivityTask> decision.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
@@ -134,7 +134,7 @@ to 0. The value "NONE" can be used to specify unlimited duration.
 If set, specifies the default maximum duration that a task of this
 activity type can wait before being assigned to a worker. This default
 can be overridden when scheduling an activity task using the
-C<ScheduleActivityTask> Decision.
+C<ScheduleActivityTask> decision.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
@@ -155,7 +155,7 @@ to 0. The value "NONE" can be used to specify unlimited duration.
 If set, specifies the default maximum duration that a worker can take
 to process tasks of this activity type. This default can be overridden
 when scheduling an activity task using the C<ScheduleActivityTask>
-Decision.
+decision.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.

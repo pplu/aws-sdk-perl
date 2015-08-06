@@ -3,6 +3,7 @@ package Paws::SimpleWorkflow::RegisterWorkflowType {
   use Moose;
   has defaultChildPolicy => (is => 'ro', isa => 'Str');
   has defaultExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str');
+  has defaultLambdaRole => (is => 'ro', isa => 'Str');
   has defaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList');
   has defaultTaskPriority => (is => 'ro', isa => 'Str');
   has defaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -50,7 +51,7 @@ executions when a workflow execution of this type is terminated, by
 calling the TerminateWorkflowExecution action explicitly or due to an
 expired timeout. This default can be overridden when starting a
 workflow execution using the StartWorkflowExecution action or the
-C<StartChildWorkflowExecution> Decision.
+C<StartChildWorkflowExecution> decision.
 
 The supported child policies are:
 
@@ -83,8 +84,8 @@ continue to run.
 
 If set, specifies the default maximum duration for executions of this
 workflow type. You can override this default when starting an execution
-through the StartWorkflowExecution Action or
-C<StartChildWorkflowExecution> Decision.
+through the StartWorkflowExecution action or
+C<StartChildWorkflowExecution> decision.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. Unlike some of the other timeout parameters in Amazon SWF, you
@@ -102,6 +103,26 @@ will always cause the workflow execution to time out.
 
 
 
+=head2 defaultLambdaRole => Str
+
+  
+
+The ARN of the default IAM role to use when a workflow execution of
+this type invokes AWS Lambda functions.
+
+This default can be overridden when starting a workflow execution using
+the StartWorkflowExecution action or the C<StartChildWorkflowExecution>
+and C<ContinueAsNewWorkflowExecution> decision.
+
+
+
+
+
+
+
+
+
+
 =head2 defaultTaskList => Paws::SimpleWorkflow::TaskList
 
   
@@ -109,8 +130,8 @@ will always cause the workflow execution to time out.
 If set, specifies the default task list to use for scheduling decision
 tasks for executions of this workflow type. This default is used only
 if a task list is not provided when starting the execution through the
-StartWorkflowExecution Action or C<StartChildWorkflowExecution>
-Decision.
+StartWorkflowExecution action or C<StartChildWorkflowExecution>
+decision.
 
 
 
@@ -149,7 +170,7 @@ Priority in the I<Amazon Simple Workflow Developer Guide>.
 If set, specifies the default maximum duration of decision tasks for
 this workflow type. This default can be overridden when starting a
 workflow execution using the StartWorkflowExecution action or the
-C<StartChildWorkflowExecution> Decision.
+C<StartChildWorkflowExecution> decision.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.

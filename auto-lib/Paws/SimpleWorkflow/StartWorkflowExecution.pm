@@ -5,6 +5,7 @@ package Paws::SimpleWorkflow::StartWorkflowExecution {
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has input => (is => 'ro', isa => 'Str');
+  has lambdaRole => (is => 'ro', isa => 'Str');
   has tagList => (is => 'ro', isa => 'ArrayRef[Str]');
   has taskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList');
   has taskPriority => (is => 'ro', isa => 'Str');
@@ -133,6 +134,26 @@ The input for the workflow execution. This is a free form string which
 should be meaningful to the workflow you are starting. This C<input> is
 made available to the new workflow execution in the
 C<WorkflowExecutionStarted> history event.
+
+
+
+
+
+
+
+
+
+
+=head2 lambdaRole => Str
+
+  
+
+The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda
+functions.
+
+In order for this workflow execution to invoke AWS Lambda functions, an
+appropriate IAM role must be specified either as a default for the
+workflow type or through this field.
 
 
 

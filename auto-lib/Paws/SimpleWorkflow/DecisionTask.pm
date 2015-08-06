@@ -58,7 +58,7 @@ returned in a single call.
 
   
 
-The id of the DecisionTaskStarted event of the previous decision task
+The ID of the DecisionTaskStarted event of the previous decision task
 of this workflow execution that was processed by the decider. This can
 be used to determine the events in the history new since the last
 decision task received by the decider.
@@ -75,7 +75,7 @@ decision task received by the decider.
 
   
 
-The id of the C<DecisionTaskStarted> event recorded in the history.
+The ID of the C<DecisionTaskStarted> event recorded in the history.
 
 
 

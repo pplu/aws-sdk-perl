@@ -73,8 +73,8 @@ Specifies the workflow execution for which to return the history.
 
 The maximum number of results that will be returned per call.
 C<nextPageToken> can be used to obtain futher pages of results. The
-default is 100, which is the maximum allowed page size. You can,
-however, specify a page size I<smaller> than 100.
+default is 1000, which is the maximum allowed page size. You can,
+however, specify a page size I<smaller> than the maximum.
 
 This is an upper limit only; the actual number of results returned per
 call may be fewer than the specified maximum.
