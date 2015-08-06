@@ -1,0 +1,7 @@
+---
+call: CheckDomainAvailability
+service: Route53Domains
+tests:
+  - expected: UNAVAILABLE
+    op: eq
+    path: Availability

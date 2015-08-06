@@ -1,0 +1,24 @@
+<GetMetricStatisticsResponse xmlns="http://monitoring.amazonaws.com/doc/2010-08-01/">
+  <GetMetricStatisticsResult>
+    <Datapoints>
+      <member>
+        <Timestamp>2015-08-01T08:09:00Z</Timestamp>
+        <Unit>Count</Unit>
+        <Minimum>1.0</Minimum>
+        <Maximum>1.0</Maximum>
+        <Average>1.0</Average>
+      </member>
+      <member>
+        <Timestamp>2015-08-01T08:15:00Z</Timestamp>
+        <Unit>Count</Unit>
+        <Minimum>1.0</Minimum>
+        <Maximum>1.0</Maximum>
+        <Average>1.0</Average>
+      </member>
+    </Datapoints>
+    <Label>UserErrors</Label>
+  </GetMetricStatisticsResult>
+  <ResponseMetadata>
+    <RequestId>9183aec1-3855-11e5-a69d-7508f4c9c82d</RequestId>
+  </ResponseMetadata>
+</GetMetricStatisticsResponse>

@@ -1,0 +1,10 @@
+---
+call: GetLogEvents
+service: CloudWatchLogs
+tests:
+  - expected: b/32078235137974283558538556067731051541562410408704212992
+    op: eq
+    path: nextBackwardToken
+  - expected: f/32078235137974283558538556067731051541562410408704212992
+    op: eq
+    path: nextForwardToken

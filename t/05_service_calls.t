@@ -20,6 +20,15 @@ sub request_has_params {
   }
 }
 
+sub request_contentjson {
+  my ($test_params, $request) = @_;
+  
+  my $content = $request->content;
+  my $datastructure = decode_json($content);
+
+  is_deeply($datastructure, $test_params, 'Request JSON content is equivalent to the expected datastructure');
+}
+
 my $test_params;
 my $aws = Paws->new(config => { caller => 'Test05Caller', credentials => 'Test::CustomCredentials', region => 'dummy' } );
 my $ec2 = $aws->service('EC2');
@@ -243,20 +252,34 @@ $request = $cognito->GetOpenIdTokenForDeveloperIdentity(
   }
 );
 
-sub request_contentjson {
-  my ($test_params, $request) = @_;
-  
-  my $content = $request->content;
-  my $datastructure = decode_json($content);
-
-  is_deeply($datastructure, $test_params, 'Request JSON content is equivalent to the expected datastructure');
-}
-
 $test_params = {
   Logins => { provider_name => 'user_name@x.com'},
   IdentityPoolId =>"eu-west-1:00000000-0000-0000-0000-000000000000"
 };
 
 request_contentjson($test_params, $request);
+
+my $dynamo = $aws->service('DynamoDB');
+
+$request = $dynamo->GetItem(
+  TableName            => "test_config",
+  ProjectionExpression => 'name',
+  Key                  => {
+    'name' => { S => 'celery.broker_url' }
+  }
+);
+
+$test_params = {
+  TableName => 'test_config',
+  ProjectionExpression => 'name',
+  Key                  => {
+    'name' => { S => 'celery.broker_url' }
+  }
+};
+
+request_contentjson($test_params, $request);
+
+
+
 
 done_testing;

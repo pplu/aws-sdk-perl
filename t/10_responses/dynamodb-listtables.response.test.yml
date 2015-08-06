@@ -1,0 +1,10 @@
+---
+call: ListTables
+service: DynamoDB
+tests:
+  - expected: Table1
+    op: eq
+    path: TableNames.0
+  - expected: test_config
+    op: eq
+    path: TableNames.1

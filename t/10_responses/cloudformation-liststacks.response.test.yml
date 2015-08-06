@@ -1,0 +1,43 @@
+---
+call: ListStacks
+service: CloudFormation
+tests:
+  - expected: DELETE_COMPLETE
+    op: eq
+    path: StackSummaries.1.StackStatus
+  - expected: 2015-02-10T00:13:29.418Z
+    op: eq
+    path: StackSummaries.0.DeletionTime
+  - expected: 2014-11-30T22:03:12.715Z
+    op: eq
+    path: StackSummaries.1.CreationTime
+  - expected: XX
+    op: eq
+    path: StackSummaries.0.TemplateDescription
+  - expected: arn:aws:cloudformation:eu-west-1:000000000000:stack/Test/00000000-0000-0000-00000000000000000
+    op: eq
+    path: StackSummaries.0.StackId
+  - expected: arn:aws:cloudformation:eu-west-1:000000000000:stack/awseb-e-q664i9asmm-stack/00000000-0000-0000-00000000000000000
+    op: eq
+    path: StackSummaries.1.StackId
+  - expected: DELETE_COMPLETE
+    op: eq
+    path: StackSummaries.0.StackStatus
+  - expected: awseb-e-q664i9asmm-stack
+    op: eq
+    path: StackSummaries.1.StackName
+  - expected: 2015-02-10T00:13:00.792Z
+    op: eq
+    path: StackSummaries.0.CreationTime
+  - expected: "AWS Elastic Beanstalk environment (Name: 'Default-Environment'  Id: 'e-q664i9asmm')"
+    op: eq
+    path: StackSummaries.1.TemplateDescription
+  - expected: 2015-02-19T22:10:13.283Z
+    op: eq
+    path: StackSummaries.1.DeletionTime
+  - expected: 2014-11-30T22:10:21.995Z
+    op: eq
+    path: StackSummaries.1.LastUpdatedTime
+  - expected: Test
+    op: eq
+    path: StackSummaries.0.StackName

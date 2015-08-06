@@ -1,0 +1,1 @@
+{"logGroups":[{"arn":"arn:aws:logs:eu-west-1:000000000000:log-group:test_log_group:*","creationTime":1431545271411,"logGroupName":"test_log_group","metricFilterCount":0,"storedBytes":0}]}

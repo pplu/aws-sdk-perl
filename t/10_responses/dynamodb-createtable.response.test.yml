@@ -1,0 +1,55 @@
+---
+call: CreateTable
+service: DynamoDB
+tests:
+  - expected: S
+    op: eq
+    path: TableDescription.AttributeDefinitions.1.AttributeType
+  - expected: 0
+    op: eq
+    path: TableDescription.ItemCount
+  - expected: HASH
+    op: eq
+    path: TableDescription.KeySchema.0.KeyType
+  - expected: 0
+    op: eq
+    path: TableDescription.ProvisionedThroughput.NumberOfDecreasesToday
+  - expected: CREATING
+    op: eq
+    path: TableDescription.TableStatus
+  - expected: arn:aws:dynamodb:us-east-1:000000000000:table/Table1
+    op: eq
+    path: TableDescription.TableArn
+  - expected: Str1
+    op: eq
+    path: TableDescription.AttributeDefinitions.1.AttributeName
+  - expected: Str1
+    op: eq
+    path: TableDescription.KeySchema.0.AttributeName
+  - expected: 1
+    op: eq
+    path: TableDescription.ProvisionedThroughput.WriteCapacityUnits
+  - expected: 1
+    op: eq
+    path: TableDescription.ProvisionedThroughput.ReadCapacityUnits
+  - expected: 1438426023.977
+    op: eq
+    path: TableDescription.CreationDateTime
+  - expected: N
+    op: eq
+    path: TableDescription.AttributeDefinitions.0.AttributeType
+  - expected: Int1
+    op: eq
+    path: TableDescription.KeySchema.1.AttributeName
+  - expected: 0
+    op: eq
+    path: TableDescription.TableSizeBytes
+  - expected: Table1
+    op: eq
+    path: TableDescription.TableName
+  - expected: RANGE
+    op: eq
+    path: TableDescription.KeySchema.1.KeyType
+  - expected: Int1
+    op: eq
+    path: TableDescription.AttributeDefinitions.0.AttributeName

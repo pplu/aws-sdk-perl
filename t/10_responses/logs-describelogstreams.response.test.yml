@@ -1,0 +1,22 @@
+---
+call: DescribeLogStreams
+service: CloudWatchLogs
+tests:
+  - expected: test_stream_name
+    op: eq
+    path: logStreams.0.logStreamName
+  - expected: 1431554069632
+    op: eq
+    path: logStreams.0.lastIngestionTime
+  - expected: 0
+    op: eq
+    path: logStreams.0.storedBytes
+  - expected: 49545729768044048309158352465459424171909606459303791266
+    op: eq
+    path: logStreams.0.uploadSequenceToken
+  - expected: arn:aws:logs:eu-west-1:000000000000:log-group:test_log_group:log-stream:test_stream_name
+    op: eq
+    path: logStreams.0.arn
+  - expected: 1431545388246
+    op: eq
+    path: logStreams.0.creationTime

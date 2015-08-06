@@ -1,0 +1,1 @@
+{"Item":{"name":{"S":"celery.broker_url"},"value":{"S":"amqp://rabbitmq.company.com"}}}

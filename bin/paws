@@ -43,6 +43,11 @@ GetOptionsFromArray(\@args, $opts, @opts);
 
 my $method_name = shift @args;
 
+if (exists $opts->{caller}) {
+  Paws->load_class($opts->{ caller });
+  $opts->{ caller } = $opts->{ caller }->new;
+}
+
 $service = $aws->service($service_name, %$opts);
 
 my $call;
