@@ -77,20 +77,21 @@ Allowed values include the following:
 
 =item *
 
+BUILTIN_FUZZ: The built-in fuzz type.
+
+=item *
+
+BUILTIN_EXPLORER: For Android, an app explorer that will traverse an
+Android app, interacting with it and capturing screenshots at the same
+time.
+
+=item *
+
 APPIUM_JAVA_JUNIT: The Appium Java JUnit type.
 
 =item *
 
 APPIUM_JAVA_TESTNG: The Appium Java TestNG type.
-
-=item *
-
-BUILTIN_EXPLORER: An app explorer that will traverse an app,
-interacting with it and capturing screenshots at the same time.
-
-=item *
-
-BUILTIN_FUZZ: The built-in fuzz type.
 
 =item *
 
@@ -102,7 +103,15 @@ INSTRUMENTATION: The Instrumentation type.
 
 =item *
 
+UIAUTOMATION: The uiautomation type.
+
+=item *
+
 UIAUTOMATOR: The uiautomator type.
+
+=item *
+
+XCTEST: The XCode test type.
 
 =back
 

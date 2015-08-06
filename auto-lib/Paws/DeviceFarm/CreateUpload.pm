@@ -97,6 +97,14 @@ ANDROID_APP: An Android upload.
 
 =item *
 
+IOS_APP: An iOS upload.
+
+=item *
+
+EXTERNAL_DATA: An external data upload.
+
+=item *
+
 APPIUM_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package
 upload.
 
@@ -111,15 +119,15 @@ CALABASH_TEST_PACKAGE: A Calabash test package upload.
 
 =item *
 
-EXTERNAL_DATA: An external data upload.
-
-=item *
-
 INSTRUMENTATION_TEST_PACKAGE: An instrumentation upload.
 
 =item *
 
 UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.
+
+=item *
+
+XCTEST_TEST_PACKAGE: An XCode test package upload.
 
 =back
 

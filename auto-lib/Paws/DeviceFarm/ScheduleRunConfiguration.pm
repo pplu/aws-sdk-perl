@@ -1,6 +1,7 @@
 package Paws::DeviceFarm::ScheduleRunConfiguration {
   use Moose;
   has auxiliaryApps => (is => 'ro', isa => 'ArrayRef[Str]');
+  has billingMethod => (is => 'ro', isa => 'Str');
   has extraDataPackageArn => (is => 'ro', isa => 'Str');
   has locale => (is => 'ro', isa => 'Str');
   has location => (is => 'ro', isa => 'Paws::DeviceFarm::Location');

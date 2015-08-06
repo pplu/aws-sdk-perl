@@ -1,6 +1,7 @@
 package Paws::DeviceFarm::Run {
   use Moose;
   has arn => (is => 'ro', isa => 'Str');
+  has billingMethod => (is => 'ro', isa => 'Str');
   has completedJobs => (is => 'ro', isa => 'Int');
   has counters => (is => 'ro', isa => 'Paws::DeviceFarm::Counters');
   has created => (is => 'ro', isa => 'Str');

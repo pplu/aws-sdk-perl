@@ -23,6 +23,11 @@ package Paws::DeviceFarm {
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateUpload', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAccountSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetAccountSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetDevice {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetDevice', @_);
@@ -158,8 +163,8 @@ Paws::DeviceFarm - Perl Interface to AWS AWS Device Farm
 
 
 AWS Device Farm is a service that enables mobile app developers to test
-Android and Fire OS apps on physical phones, tablets, and other devices
-in the cloud.
+Android, iOS, and Fire OS apps on physical phones, tablets, and other
+devices in the cloud.
 
 
 
@@ -221,6 +226,27 @@ Returns: a L<Paws::DeviceFarm::CreateUploadResult> instance
   
 
 Uploads an app or test scripts.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetAccountSettings( => )
+
+Each argument is described in detail in: L<Paws::DeviceFarm::GetAccountSettings>
+
+Returns: a L<Paws::DeviceFarm::GetAccountSettingsResult> instance
+
+  
+
+Returns the number of unmetered iOS and/or unmetered Android devices
+that have been purchased by the account.
 
 
 

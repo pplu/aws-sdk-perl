@@ -10,6 +10,7 @@
  - CloudWatch Logs API update: Support Destinations
  - RDS API update: Support for Aurora (new DBCluster calls)
  - Opsworks API update: support for RHEL7
+ - DeviceFarm API update: support for iOS
 
 0.13 17 Jul 2015
  - New API: DynamoDB Streams
