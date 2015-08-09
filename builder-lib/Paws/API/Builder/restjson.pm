@@ -23,6 +23,7 @@ package [% c.api %]::[% operation.name %] {
   [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName %]' [% END %]
   [%- IF (shape.members.$param_name.location == 'querystring') %], traits => ['ParamInQuery'], query_name => '[% shape.members.$param_name.locationName %]' [% END %]
   [%- IF (shape.members.$param_name.location == 'uri') %], traits => ['ParamInURI'], uri_name => '[% shape.members.$param_name.locationName %]' [% END %]
+  [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
   use MooseX::ClassAttribute;
@@ -48,6 +49,7 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (member.members.xmlname) %], traits => ['Unwrapped'], xmlname => '[% member.members.xmlname %]'[% END %]
   [%- IF (member.xmlname) %], traits => ['Unwrapped'], xmlname => '[% member.xmlname %]'[% END %]
+  [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
 }
