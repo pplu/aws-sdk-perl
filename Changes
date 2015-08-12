@@ -1,7 +1,10 @@
+0.15
+ - fix unicode issues in test t/10_responses.t (ioanrogers)
+
 0.14
  - LWP Caller (Paws::Net::LWPCaller). Paws supports calling behind HTTPS proxies with LWP (dtikhonov)
  - Maps in JSON type APIS are correctly handled (Issue #40 and #45, PR #46). Thanks to vivus-ignis and dtikhonov
- - Fixes to Paws.pm documentation
+ - Fixes to Paws.pm documentation (arc)
  - Glacier API update: support for Vault Locking
  - EMR API update: Support for new Applications specification 
  - EC2 API update:
