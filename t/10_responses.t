@@ -57,7 +57,7 @@ sub test_file {
 
     my $res;
     my $passed = lives_ok {
-      my $content = read_file($file);
+      my $content = read_file($file, {binmode => ':utf8'});
       my $unserialized_struct = $service->unserialize_response( $content );
 
       if ($debug){

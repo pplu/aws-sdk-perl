@@ -36,7 +36,7 @@
         <OptionName>InstanceType</OptionName>
         <Value>t1.micro</Value>
         <Namespace>aws:autoscaling:launchconfiguration</Namespace>
-￼￼￼</member>
+</member>
 <member>
 <OptionName>Statistic</OptionName>
   <Value>Average</Value>
@@ -151,7 +151,7 @@
   <OptionName>PARAM1</OptionName>
   <Value/>
   <Namespace>aws:elasticbeanstalk:application:environment</Namespace>
-￼￼￼</member>
+</member>
 <member>
   <OptionName>MaxSize</OptionName>
   <Value>4</Value>
@@ -206,7 +206,7 @@
   <OptionName>Xms</OptionName>
   <Value>256m</Value>
  <Namespace>aws:elasticbeanstalk:container:tomcat:jvmoptions</Namespace>
-￼￼￼</member>
+</member>
 <member>
 <OptionName>EC2KeyName</OptionName>
         <Value/>
