@@ -13,6 +13,11 @@ package Paws::Net::Caller {
     }
   );
 
+  sub is_retriable {
+    my ($self, $exception) = @_;
+    1;
+  }
+
   sub do_call {
     my ($self, $service, $call_object) = @_;
 
@@ -22,22 +27,27 @@ package Paws::Net::Caller {
     # HTTP::Tiny derives the Host header from the URL. It's an error to set it.
     delete $headers->{Host};
 
-    my $response = $self->ua->request(
-      $requestObj->method,
-      $requestObj->url,
-      {
-        headers => $headers,
-        (defined $requestObj->content)?(content => $requestObj->content):(),
+    my $tries = 0;
+    while ($tries < $max_tries) {
+      my $response = $self->ua->request(
+        $requestObj->method,
+        $requestObj->url,
+        {
+          headers => $headers,
+          (defined $requestObj->content)?(content => $requestObj->content):(),
+        }
+      );
+  
+      my $res = $service->handle_response($call_object, $response->{status}, $response->{content}, $response->{headers});
+      if (not ref($res)){
+        return $res;
+      } elsif ($res->isa('Paws::Exception')) {
+        if (not $self->is_retriable($res)){
+          $res->throw;
+        }
+      } else {
+        return $res;
       }
-    );
-
-    my $res = $service->handle_response($call_object, $response->{status}, $response->{content}, $response->{headers});
-    if (not ref($res)){
-      return $res;
-    } elsif ($res->isa('Paws::Exception')) {
-      $res->throw;
-    } else {
-      return $res;
     }
   }
 }
