@@ -26,16 +26,24 @@ package Paws::Net::MojoAsyncCaller {
       sub {
         my ( $ua, $response ) = @_;
 
+use Data::Dumper;
+print Dumper($response);
+        if ($response->error) { 
+          $future->fail(Paws::Exception->new(code => 'No Region', message => $response->error->{ message }));
+          return $future;
+        }
+
         my $res = $service->handle_response($call_object, $response->res->code, $response->res->body, $response->res->headers->to_hash);
 
-        if (not ref($res)){
+        if (not ref($res)) {
             $future->done($res);
-        if ($res->isa('Paws::Exception')) {
+        } elsif ($res->isa('Paws::Exception')) {
           $future->fail($res);
         } else {
           $future->done($res);
         }
-      }   
+        return $future;
+      } 
     );
     return $future;   
   }

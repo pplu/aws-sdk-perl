@@ -21,6 +21,7 @@ my $regions = {
           "us-east-1", "ap-northeast-1", "sa-east-1",
           "ap-southeast-1", "ap-southeast-2", "us-west-2",
           "us-west-1", "eu-west-1", "eu-central-1",
+#          "xxx",
         )
 };
 
@@ -37,11 +38,17 @@ foreach my $region (keys %$regions) {
         my $res = shift;
         $regions->{ $region }->{ logging } = $res->IsLogging;
         return Future->done;
+      })->else(sub {
+        $regions->{ $region }->{ client } = undef;
+        delete $regions->{ $region }->{ active };
       });
     } else {
       $regions->{ $region }->{ active } = 0;
       return Future->done;
     }
+  })->else(sub {
+    $regions->{ $region }->{ client } = undef;
+    delete $regions->{ $region }->{ active };
   });
 };
 
