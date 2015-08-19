@@ -1,5 +1,6 @@
 0.15
  - fix unicode issues in test t/10_responses.t (ioanrogers)
+ - ElasticBeanstalk API update: support for Instance and Environment health 
 
 0.14
  - LWP Caller (Paws::Net::LWPCaller). Paws supports calling behind HTTPS proxies with LWP (dtikhonov)

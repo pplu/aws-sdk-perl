@@ -82,6 +82,11 @@ package Paws::ElasticBeanstalk {
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeConfigurationSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeEnvironmentHealth {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeEnvironmentHealth', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeEnvironmentResources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeEnvironmentResources', @_);
@@ -95,6 +100,11 @@ package Paws::ElasticBeanstalk {
   sub DescribeEvents {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeInstancesHealth {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeInstancesHealth', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAvailableSolutionStacks {
@@ -586,6 +596,28 @@ Related Topics
 
 
 
+=head2 DescribeEnvironmentHealth([AttributeNames => ArrayRef[Str], EnvironmentId => Str, EnvironmentName => Str])
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvironmentHealth>
+
+Returns: a L<Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult> instance
+
+  
+
+Returns information about the overall health of the specified
+environment. The B<DescribeEnvironmentHealth> operation is only
+available with AWS Elastic Beanstalk Enhanced Health.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DescribeEnvironmentResources([EnvironmentId => Str, EnvironmentName => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvironmentResources>
@@ -639,6 +671,29 @@ weeks.
 
 This action returns the most recent 1,000 events from the specified
 C<NextToken>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeInstancesHealth([AttributeNames => ArrayRef[Str], EnvironmentId => Str, EnvironmentName => Str, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeInstancesHealth>
+
+Returns: a L<Paws::ElasticBeanstalk::DescribeInstancesHealthResult> instance
+
+  
+
+Returns more detailed information about the health of the specified
+instances (for example, CPU utilization, load average, and causes). The
+B<DescribeInstancesHealth> operation is only available with AWS Elastic
+Beanstalk Enhanced Health.
 
 
 

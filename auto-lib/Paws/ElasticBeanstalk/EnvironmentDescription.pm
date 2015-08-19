@@ -11,6 +11,7 @@ package Paws::ElasticBeanstalk::EnvironmentDescription {
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has Health => (is => 'ro', isa => 'Str');
+  has HealthStatus => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'Paws::ElasticBeanstalk::EnvironmentResourcesDescription');
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -195,6 +196,21 @@ C<RestartEnvironement> request.
 =back
 
 Default: C<Grey>
+
+
+
+
+
+
+
+
+
+=head2 HealthStatus => Str
+
+  
+
+Returns the health status of the application running in your
+environment. For more information, see Health Colors and Statuses.
 
 
 
