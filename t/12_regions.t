@@ -2,7 +2,7 @@
 
 use lib 't/lib';
 
-use JSON;
+use JSON::MaybeXS;
 my $known_regions = <<'EOF';
 {
   "us-east-1": {
@@ -279,7 +279,7 @@ use Data::Dumper;
 use Test::More;
 my $rules    = "$FindBin::Bin/../botocore/botocore/data/_endpoints.json";
 
-my $json = JSON->new->pretty;
+my $json = JSON()->new->pretty;
 $json = $json->relaxed([1]);
 
 my $known_regions = $json->decode($known_regions);

@@ -4,7 +4,7 @@ package TestResponseRecorder {
 
   use Hash::MD5;
   use File::Slurper qw(read_text write_text);
-  use JSON;
+  use JSON::MaybeXS;
 
   has replay_calls => (is => 'ro', isa => 'Bool', required => 1, default => sub { not defined $ENV{PAWS_CONVERSATION_DIR} });
   has conversation_dir => (is => 'ro', isa => 'Str', required => 1, default => sub { $ENV{PAWS_CONVERSATION_DIR} });

@@ -1,6 +1,6 @@
 package Paws::Net::JsonCaller {
   use Moose::Role;
-  use JSON;
+  use JSON::MaybeXS;
   use POSIX qw(strftime);
   requires 'json_version';
 
@@ -67,7 +67,7 @@ package Paws::Net::JsonCaller {
     $request->header( Host => $self->endpoint_host );
 
     my $data = $self->_to_jsoncaller_params($call);
-    $request->content(to_json($data));
+    $request->content(encode_json($data));
 
     $self->sign($request);
 

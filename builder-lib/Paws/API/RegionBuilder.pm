@@ -1,7 +1,7 @@
 package Paws::API::RegionBuilder {
   use Moose;
   use autodie;
-  use JSON;
+  use JSON::MaybeXS;
   use Data::Dumper;
   use Template;
   use File::Slurper 'read_text';

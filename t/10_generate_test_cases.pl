@@ -3,7 +3,7 @@
 use Hash::Flatten qw/flatten/;
 use XML::Simple;
 use YAML qw/LoadFile DumpFile/;
-use JSON qw/from_json/;
+use JSON::MaybeXS;
 use File::Slurper 'read_text';
 use strict;
 use warnings;
@@ -59,7 +59,7 @@ sub generate_test_case {
 
   my $result_file = $file;
   $result_file =~ s/\.xml/.json/;
-  my $result = from_json(read_text($result_file));
+  my $result = decode_json(read_text($result_file));
   delete $result->{ResponseMetadata};
 
   $result = flatten($result, { HashDelimiter => '.', ArrayDelimiter => '.' });
