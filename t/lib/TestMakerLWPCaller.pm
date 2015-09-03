@@ -3,7 +3,7 @@ package TestMakerLWPCaller {
   use Moose;
   extends 'Paws::Net::LWPCaller';
   use Carp;
-  use File::Slurp;
+  use File::Slurper 'write_text';
   use YAML qw/DumpFile/;
   use Hash::Flatten qw//;
 
@@ -24,7 +24,7 @@ package TestMakerLWPCaller {
     );
 
     my $test_file_name = 't/10_responses/' . $service->service . '-' . lc($call_object->_api_call . '.response');
-    write_file($test_file_name, $response->content);
+    write_text($test_file_name, $response->content);
     print "Written response to $test_file_name\n";
     my $service_class = $service->meta->name;
     $service_class =~ s/Paws\:\://;

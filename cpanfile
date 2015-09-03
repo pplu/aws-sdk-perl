@@ -37,7 +37,7 @@ on 'develop' => sub {
 };
 on 'test' => sub {
   requires 'Data::Printer';
-  requires 'File::Slurp';
+  requires 'File::Slurper';
   requires 'YAML';
   requires 'Test::Class::Moose::Load';
   requires 'Test::Pod';
