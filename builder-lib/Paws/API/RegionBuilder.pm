@@ -4,6 +4,7 @@ package Paws::API::RegionBuilder {
   use JSON;
   use Data::Dumper;
   use Template;
+  use File::Slurper 'read_text';
 
   has rules =>   (is => 'rw', isa => 'Str', required => 1);
   has service => (is => 'ro', isa => 'Str', required => 1);
@@ -13,12 +14,7 @@ package Paws::API::RegionBuilder {
     lazy => 1,
     default => sub {
       my $self = shift;
-      my $json = JSON->new->pretty;
-      $json = $json->relaxed([1]); # At some point input did fail without this
-      local $/ = undef;
-      open my $fh, '<', $self->rules;
-      $json = <$fh>;
-      close $fh;
+      my $json = read_text($self->rules);
       return decode_json($json)->{ $self->service };
     }
   );

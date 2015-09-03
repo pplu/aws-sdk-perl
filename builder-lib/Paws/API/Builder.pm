@@ -432,10 +432,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     my $class_file_name = "auto-lib/" . ( join '/', @class_parts ) . ".pm";
     if (0) {#-e $class_file_name) { #not doing this, because there are unimportant differences in files
       {
-      open my $read, '<', $class_file_name;
-      local $/=undef;
-      my $read_content = <$read>;
-      close $read;
+      my $read_content = read_text($class_file_name);
       die "Non matching for $class_file_name: going to store $content\nvs stored: $read_content" if ($read_content ne $content);
       }
     }
