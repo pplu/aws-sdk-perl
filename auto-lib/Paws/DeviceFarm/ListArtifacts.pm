@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The artifacts' ARNs.
+The Run, Job, Suite, or Test ARN.
 
 
 
