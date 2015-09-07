@@ -3,6 +3,7 @@
  - ElasticBeanstalk API update: support for Instance and Environment health 
  - Codepipeline API update: support for encription key
  - Config API update: ListDiscoveredResources
+ - EC2 API update: Resource oriented bidding for spot instances
 
 0.14 06 Aug 2015
  - LWP Caller (Paws::Net::LWPCaller). Paws supports calling behind HTTPS proxies with LWP (dtikhonov)

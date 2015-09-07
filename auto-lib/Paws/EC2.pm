@@ -5407,22 +5407,31 @@ Returns: a L<Paws::EC2::RegisterImageResult> instance
   
 
 Registers an AMI. When you're creating an AMI, this is the final step
-you must complete before you can launch an instance from the AMI. This
-step is required if you're creating an instance store-backed Linux or
-Windows AMI. For more information, see Creating an Instance
-Store-Backed Linux AMI and Creating an Instance Store-Backed Windows
-AMI in the I<Amazon Elastic Compute Cloud User Guide>.
+you must complete before you can launch an instance from the AMI. For
+more information about creating AMIs, see Creating Your Own AMIs in the
+I<Amazon Elastic Compute Cloud User Guide>.
 
 For Amazon EBS-backed instances, CreateImage creates and registers the
 AMI in a single request, so you don't have to register the AMI
 yourself.
 
-You can also use C<RegisterImage> to create an Amazon EBS-backed AMI
-from a snapshot of a root device volume. For more information, see
-Launching an Instance from a Backup in the I<Amazon Elastic Compute
-Cloud User Guide>. Note that although you can create a Windows AMI from
-a snapshot, you can't launch an instance from the AMI - use the
-CreateImage command instead.
+You can also use C<RegisterImage> to create an Amazon EBS-backed Linux
+AMI from a snapshot of a root device volume. For more information, see
+Launching an Instance from a Snapshot in the I<Amazon Elastic Compute
+Cloud User Guide>.
+
+Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and
+SUSE Linux Enterprise Server (SLES), use the EC2 C<billingProduct> code
+associated with an AMI to verify subscription status for package
+updates. Creating an AMI from an EBS snapshot does not maintain this
+billing code, and subsequent instances launched from such an AMI will
+not be able to connect to package update infrastructure.
+
+Similarly, although you can create a Windows AMI from a snapshot, you
+can't successfully launch an instance from the AMI.
+
+To create Windows AMIs or to create AMIs for Linux operating systems
+that must retain AMI billing codes to work properly, see CreateImage.
 
 If needed, you can deregister an AMI at any time. Any modifications you
 make to an AMI backed by an instance store volume invalidates its
@@ -5639,8 +5648,12 @@ Returns: a L<Paws::EC2::RequestSpotFleetResponse> instance
 
 Creates a Spot fleet request.
 
-For more information, see Spot Fleets in the I<Amazon Elastic Compute
-Cloud User Guide>.
+You can submit a single request that specifies multiple instance types,
+each with its own instance weighting that reflects its value to your
+application workload. Amazon EC2 computes the bid price for each launch
+specification and requests Spot Instances in the Spot pool where the
+price per unit is the lowest. For more information, see Spot Fleets in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -5875,6 +5888,12 @@ If you don't specify a security group when launching an instance,
 Amazon EC2 uses the default security group. For more information, see
 Security Groups in the I<Amazon Elastic Compute Cloud User Guide>.
 
+[EC2-VPC only accounts] If you don't specify a subnet in the request,
+we choose a default subnet from your default VPC for you.
+
+[EC2-Classic accounts] If you're launching into EC2-Classic and you
+don't specify an Availability Zone, we choose one for you.
+
 Linux instances have access to the public key of the key pair at boot.
 You can use this key to provide secure access to the instance. Amazon
 EC2 public images use this feature to provide secure access without
@@ -6020,11 +6039,11 @@ You can stop, start, and terminate EBS-backed instances. You can only
 terminate instance store-backed instances. What happens to an instance
 differs if you stop it or terminate it. For example, when you stop an
 instance, the root device and any other devices attached to the
-instance persist. When you terminate an instance, the root device and
-any other devices attached during the instance launch are automatically
-deleted. For more information about the differences between stopping
-and terminating instances, see Instance Lifecycle in the I<Amazon
-Elastic Compute Cloud User Guide>.
+instance persist. When you terminate an instance, any attached EBS
+volumes with the C<DeleteOnTermination> block device mapping parameter
+set to C<true> are automatically deleted. For more information about
+the differences between stopping and terminating instances, see
+Instance Lifecycle in the I<Amazon Elastic Compute Cloud User Guide>.
 
 For more information about troubleshooting, see Troubleshooting
 Terminating Your Instance in the I<Amazon Elastic Compute Cloud User
