@@ -199,7 +199,9 @@ in the source location, or a user takes action to re-run the most
 recent artifact through the pipeline. You can call GetPipelineState,
 which displays the status of a pipeline, including the status of stages
 in the pipeline, or GetPipeline, which returns the entire structure of
-the pipeline, including the stages of that pipeline.
+the pipeline, including the stages of that pipeline. For more
+information about the structure of stages and actions, also refer to
+the AWS CodePipeline Pipeline Structure Reference.
 
 Pipeline stages include I<actions>, which are categorized into
 categories such as source or build actions performed within a stage of
@@ -244,6 +246,8 @@ You can work with jobs by calling:
 =item * AcknowledgeJob, which confirms whether a job worker has
 received the specified job,
 
+=item * GetJobDetails, which returns the details of a job,
+
 =item * PollForJobs, which determines whether there are any jobs to act
 upon,
 
@@ -264,6 +268,9 @@ You can work with third party jobs by calling:
 
 =item * AcknowledgeThirdPartyJob, which confirms whether a job worker
 has received the specified job,
+
+=item * GetThirdPartyJobDetails, which requests the details of a job
+for a partner action,
 
 =item * PollForThirdPartyJobs, which determines whether there are any
 jobs to act upon,
