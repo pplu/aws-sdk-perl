@@ -1,6 +1,6 @@
-package Paws::Config::Relationship {
+package Paws::Config::ResourceIdentifier {
   use Moose;
-  has relationshipName => (is => 'ro', isa => 'Str');
+  has resourceDeletionTime => (is => 'ro', isa => 'Str');
   has resourceId => (is => 'ro', isa => 'Str');
   has resourceName => (is => 'ro', isa => 'Str');
   has resourceType => (is => 'ro', isa => 'Str');

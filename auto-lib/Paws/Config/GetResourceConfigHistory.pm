@@ -92,8 +92,9 @@ time is taken.
 
   
 
-The maximum number of configuration items returned in each page. The
-default is 10. You cannot specify a limit greater than 100.
+The maximum number of configuration items returned on each page. The
+default is 10. You cannot specify a limit greater than 100. If you
+specify 0, AWS Config uses the default.
 
 
 
@@ -108,7 +109,8 @@ default is 10. You cannot specify a limit greater than 100.
 
   
 
-An optional parameter used for pagination of the results.
+The C<nextToken> string returned on a previous page that you use to get
+the next page of results in a paginated response.
 
 
 

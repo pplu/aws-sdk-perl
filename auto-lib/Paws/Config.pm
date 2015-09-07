@@ -43,6 +43,11 @@ package Paws::Config {
     my $call_object = $self->new_with_coercions('Paws::Config::GetResourceConfigHistory', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDiscoveredResources {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::ListDiscoveredResources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutConfigurationRecorder {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::PutConfigurationRecorder', @_);
@@ -295,15 +300,53 @@ Returns: a L<Paws::Config::GetResourceConfigHistoryResponse> instance
 
 Returns a list of configuration items for the specified resource. The
 list contains details about each state of the resource during the
-specified time interval. You can specify a C<limit> on the number of
-results returned on the page. If a limit is specified, a C<nextToken>
-is returned as part of the result that you can use to continue this
-request.
+specified time interval.
+
+The response is paginated, and by default, AWS Config returns a limit
+of 10 configuration items per page. You can customize this number with
+the C<limit> parameter. The response includes a C<nextToken> string,
+and to get the next page of results, run the request again and enter
+this string for the C<nextToken> parameter.
 
 Each call to the API is limited to span a duration of seven days. It is
 likely that the number of records returned is smaller than the
 specified C<limit>. In such cases, you can make another call, using the
-C<nextToken> .
+C<nextToken>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ListDiscoveredResources(resourceType => Str, [includeDeletedResources => Bool, limit => Int, nextToken => Str, resourceIds => ArrayRef[Str], resourceName => Str])
+
+Each argument is described in detail in: L<Paws::Config::ListDiscoveredResources>
+
+Returns: a L<Paws::Config::ListDiscoveredResourcesResponse> instance
+
+  
+
+Accepts a resource type and returns a list of resource identifiers for
+the resources of that type. A resource identifier includes the resource
+type, ID, and (if available) the custom resource name. The results
+consist of resources that AWS Config has discovered, including those
+that AWS Config is not currently recording. You can narrow the results
+to include only resources that have specific resource IDs or a resource
+name.
+
+You can specify either resource IDs or a resource name but not both in
+the same request.
+
+The response is paginated, and by default AWS Config lists 100 resource
+identifiers on each page. You can customize this number with the
+C<limit> parameter. The response includes a C<nextToken> string, and to
+get the next page of results, run the request again and enter this
+string for the C<nextToken> parameter.
 
 
 

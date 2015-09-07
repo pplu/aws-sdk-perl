@@ -2,8 +2,9 @@
  - fix unicode issues in test t/10_responses.t (ioanrogers)
  - ElasticBeanstalk API update: support for Instance and Environment health 
  - Codepipeline API update: support for encription key
+ - Config API update: ListDiscoveredResources
 
-0.14
+0.14 06 Aug 2015
  - LWP Caller (Paws::Net::LWPCaller). Paws supports calling behind HTTPS proxies with LWP (dtikhonov)
  - Maps in JSON type APIS are correctly handled (Issue #40 and #45, PR #46). Thanks to vivus-ignis and dtikhonov
  - Fixes to Paws.pm documentation (arc)

@@ -33,7 +33,8 @@ resources.
 
   
 
-A token used for pagination of results.
+The string that you use in a subsequent request to get the next page of
+results in a paginated response.
 
 
 
