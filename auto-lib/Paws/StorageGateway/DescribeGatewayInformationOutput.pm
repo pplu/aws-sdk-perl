@@ -3,6 +3,7 @@ package Paws::StorageGateway::DescribeGatewayInformationOutput {
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
   has GatewayId => (is => 'ro', isa => 'Str');
+  has GatewayName => (is => 'ro', isa => 'Str');
   has GatewayNetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::NetworkInterface]');
   has GatewayState => (is => 'ro', isa => 'Str');
   has GatewayTimezone => (is => 'ro', isa => 'Str');
@@ -28,6 +29,20 @@ Paws::StorageGateway::DescribeGatewayInformationOutput
   
 
 The gateway ID.
+
+
+
+
+
+
+
+
+
+=head2 GatewayName => Str
+
+  
+
+The gateway name.
 
 
 

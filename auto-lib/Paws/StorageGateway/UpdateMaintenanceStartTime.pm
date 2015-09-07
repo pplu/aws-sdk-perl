@@ -59,7 +59,7 @@ The maintenance start time day of the week.
 
   
 
-The hour component of the maintenance start time represented as hh,
+The hour component of the maintenance start time represented as I<hh>,
 where I<hh> is the hour (00 to 23). The hour of the day is in the time
 zone of the gateway.
 

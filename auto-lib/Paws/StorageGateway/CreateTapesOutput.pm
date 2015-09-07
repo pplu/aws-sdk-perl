@@ -17,8 +17,8 @@ Paws::StorageGateway::CreateTapesOutput
 
   
 
-A list of unique Amazon Resource Named (ARN) the represents the virtual
-tapes that were created.
+A list of unique Amazon Resource Named (ARN) that represents the
+virtual tapes that were created.
 
 
 

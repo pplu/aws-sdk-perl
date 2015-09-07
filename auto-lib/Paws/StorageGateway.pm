@@ -18,6 +18,11 @@ package Paws::StorageGateway {
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::AddCache', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AddTagsToResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::AddTagsToResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AddUploadBuffer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::AddUploadBuffer', @_);
@@ -183,6 +188,11 @@ package Paws::StorageGateway {
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::ListLocalDisks', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListVolumeInitiators {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::ListVolumeInitiators', @_);
@@ -196,6 +206,11 @@ package Paws::StorageGateway {
   sub ListVolumes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::ListVolumes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveTagsFromResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::RemoveTagsFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ResetCache {
@@ -378,6 +393,59 @@ gateway-cached volume architecture (see Storage Gateway Concepts).
 In the request, you specify the gateway Amazon Resource Name (ARN) to
 which you want to add cache, and one or more disk IDs that you want to
 configure as cache.
+
+
+
+
+
+
+
+
+
+
+
+=head2 AddTagsToResource(ResourceARN => Str, Tags => ArrayRef[Paws::StorageGateway::Tag])
+
+Each argument is described in detail in: L<Paws::StorageGateway::AddTagsToResource>
+
+Returns: a L<Paws::StorageGateway::AddTagsToResourceOutput> instance
+
+  
+
+This operation adds one or more tags to the specified resource. You use
+tags to add metadata to resources, which you can use to categorize
+these resources. For example, you can categorize resources by purpose,
+owner, environment, or team. Each tag consists of a key and a value,
+which you define. You can add tags to the following AWS Storage Gateway
+resources:
+
+=over
+
+=item *
+
+Storage gateways of all types
+
+=back
+
+=over
+
+=item *
+
+Storage Volumes
+
+=back
+
+=over
+
+=item *
+
+Virtual Tapes
+
+=back
+
+You can create a maximum of 10 tags for each resource. Virtual tapes
+and storage volumes that are recovered to a new gateway maintain their
+tags.
 
 
 
@@ -816,11 +884,11 @@ Returns: a L<Paws::StorageGateway::DeleteVolumeOutput> instance
 
   
 
-This operation delete the specified gateway volume that you previously
-created using the CreateStorediSCSIVolume API. For gateway-stored
-volumes, the local disk that was configured as the storage volume is
-not deleted. You can reuse the local disk to create another storage
-volume.
+This operation deletes the specified gateway volume that you previously
+created using the CreateCachediSCSIVolume or CreateStorediSCSIVolume
+API. For gateway-stored volumes, the local disk that was configured as
+the storage volume is not deleted. You can reuse the local disk to
+create another storage volume.
 
 Before you delete a gateway volume, make sure there are no iSCSI
 connections to the volume you are deleting. You should also make sure
@@ -1273,6 +1341,27 @@ disk content is corrupted).
 
 
 
+=head2 ListTagsForResource([Limit => Int, Marker => Str, ResourceARN => Str])
+
+Each argument is described in detail in: L<Paws::StorageGateway::ListTagsForResource>
+
+Returns: a L<Paws::StorageGateway::ListTagsForResourceOutput> instance
+
+  
+
+This operation lists the tags that have been added to the specified
+resource.
+
+
+
+
+
+
+
+
+
+
+
 =head2 ListVolumeInitiators(VolumeARN => Str)
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListVolumeInitiators>
@@ -1341,6 +1430,26 @@ field in the body to limit the number of volumes in the response. If
 the number of volumes returned in the response is truncated, the
 response includes a Marker field. You can use this Marker value in your
 subsequent request to retrieve the next set of volumes.
+
+
+
+
+
+
+
+
+
+
+
+=head2 RemoveTagsFromResource([ResourceARN => Str, TagKeys => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::StorageGateway::RemoveTagsFromResource>
+
+Returns: a L<Paws::StorageGateway::RemoveTagsFromResourceOutput> instance
+
+  
+
+This operation removes one or more tags from the specified resource.
 
 
 
