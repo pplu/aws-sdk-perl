@@ -23,6 +23,7 @@ requires 'ARGV::Struct';
 requires 'Module::Find';
 requires 'Getopt::Long';
 requires 'Browser::Open';
+requires 'File::HomeDir';
 
 on 'develop' => sub {
   requires 'Template';
