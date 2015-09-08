@@ -1,6 +1,10 @@
 0.15
  - fix unicode issues in test t/10_responses.t (ioanrogers)
  - fix bug handling responses with ArrayRef of Maps (DynamoDB reported by stevecaldwell77)
+ - Pull Request #53 (karenetheridge): "Update some module dependencies"
+   - JSON Parsing now depending on JSON::MaybeXS
+   - include META.json in package
+   - remove uri_escape code for perl 5.8
  - ElasticBeanstalk API update: support for Instance and Environment health 
  - Codepipeline API update: support for encription key
  - Config API update: ListDiscoveredResources

@@ -289,3 +289,7 @@ arc (Aaron Crane) for documentation patches
 dtikhonov for LWP Caller and bug reporting/fixing
 
 vivus-ignis for DynamoDB bug reporting and test scripts for DynamoDB
+
+karenetheridge for bug reporting, pull requests and help
+
+ioanrogers for fixing unicode issues in tests
