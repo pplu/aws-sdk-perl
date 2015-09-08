@@ -6,7 +6,7 @@ use warnings;
 use Data::Printer;
 use Data::Dumper;
 use JSON::MaybeXS;
-use File::Slurper 'read_text';
+use File::Slurper 'read_binary';
 
 use lib 'builder-lib', 't/lib';
 
@@ -48,7 +48,7 @@ print @failures;
 sub process_api {
   my ($api, $file) = @_;
 
-  my $struct = decode_json(read_text($file));
+  my $struct = decode_json(read_binary($file));
   my $type = $struct->{metadata}->{protocol} or die "Type of API call not found";
 
   my $overrides = { 'Paws::EC2' => 'EC2' };

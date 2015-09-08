@@ -5,8 +5,8 @@ package Paws::API::Builder {
   use Data::Dumper;
   use Data::Printer;
   use Template;
-  use File::Slurper 'read_text';
-  use JSON:MaybeXS;
+  use File::Slurper 'read_binary';
+  use JSON::MaybeXS;
   use v5.10;
 
   use Paws::API::RegionBuilder; 
@@ -238,7 +238,7 @@ package Paws::API::Builder {
   sub _load_json_file {
     my ($self,$file) = @_;
     return {} if (not -e $file);
-    return decode_json(read_text($file));
+    return decode_json(read_binary($file));
   }
 
   has class_documentation_template => (is => 'ro', isa => 'Str', default => q#
