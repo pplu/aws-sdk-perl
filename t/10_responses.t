@@ -9,7 +9,7 @@ use Test::More;
 use Test::Exception;
 use YAML qw/DumpFile LoadFile/;
 use XML::Simple;
-use File::Slurp;
+use File::Slurper 'read_text';
 use Module::Runtime;
 
 use Paws;
@@ -57,7 +57,7 @@ sub test_file {
 
     my $res;
     my $passed = lives_ok {
-      my $content = read_file($file, {binmode => ':utf8'});
+      my $content = read_text($file);
       my $unserialized_struct = $service->unserialize_response( $content );
 
       if ($debug){

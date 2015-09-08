@@ -2,7 +2,7 @@ package Paws::API::JSONAttribute {
   use Moose::Role;
   Moose::Util::meta_attribute_alias('JSONAttribute');
 
-  use JSON qw//;
+  use JSON::MaybeXS;
   use URL::Encode;
 
   has method    => (is => 'rw', isa => 'Str', required => 1);
@@ -17,12 +17,12 @@ package Paws::API::JSONAttribute {
     if ($self->decode_as eq 'JSON') {
       $coderef = sub {
         my $self = shift;
-        return JSON::decode_json($self->$closure());
+        return decode_json($self->$closure());
       };
     } elsif ($self->decode_as eq 'URLJSON') {
       $coderef = sub {
         my $self = shift;
-        return JSON::decode_json(URL::Encode::url_decode($self->$closure()));
+        return decode_json(URL::Encode::url_decode($self->$closure()));
       };
     } else {
       die "Unrecognized JSONAttribute decode_as attribute";

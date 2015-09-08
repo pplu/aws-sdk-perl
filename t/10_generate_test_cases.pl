@@ -3,8 +3,8 @@
 use Hash::Flatten qw/flatten/;
 use XML::Simple;
 use YAML qw/LoadFile DumpFile/;
-use JSON qw/from_json/;
-use File::Slurp;
+use JSON::MaybeXS;
+use File::Slurper 'read_text';
 use strict;
 use warnings;
 
@@ -27,7 +27,7 @@ exit 0;
 sub generate_test_case {
   my $file = shift;
   # Generate a YAML file with the API class to call
-  my $xml = read_file($file);
+  my $xml = read_text($file);
   my $struct = XML::Simple::XMLin($xml);
 
   my ($api) = $file =~ m/\/(\w+?)\-/;
@@ -59,7 +59,7 @@ sub generate_test_case {
 
   my $result_file = $file;
   $result_file =~ s/\.xml/.json/;
-  my $result = from_json(read_file($result_file));
+  my $result = decode_json(read_text($result_file));
   delete $result->{ResponseMetadata};
 
   $result = flatten($result, { HashDelimiter => '.', ArrayDelimiter => '.' });

@@ -1,5 +1,4 @@
 package Paws::Credential::STS {
-  use JSON;
   use Moose;
   use DateTime;
   use DateTime::Format::ISO8601;

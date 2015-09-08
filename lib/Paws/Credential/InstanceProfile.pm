@@ -1,5 +1,5 @@
 package Paws::Credential::InstanceProfile {
-  use JSON;
+  use JSON::MaybeXS;
   use Moose;
   use DateTime;
   use DateTime::Format::ISO8601;
@@ -68,7 +68,7 @@ package Paws::Credential::InstanceProfile {
     $r = $ua->get($self->metadata_url . $r->{content});
     return unless $r->{success};
 
-    my $json = eval { from_json($r->{content}) };
+    my $json = eval { decode_json($r->{content}) };
     if ($@) { die "Error in JSON from metadata URL" }
 
     $self->actual_creds($json);

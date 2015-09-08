@@ -8,7 +8,7 @@ use lib 't/lib';
 use Test::More;
 use Paws;
 use Test::CustomCredentials;
-use JSON;
+use JSON::MaybeXS;
 
 sub request_has_params {
   my ($test_params, $request) = @_;
