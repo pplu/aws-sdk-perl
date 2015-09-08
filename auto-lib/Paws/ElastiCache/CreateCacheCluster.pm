@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::CreateCacheCluster {
+package Paws::ElastiCache::CreateCacheCluster;
   use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AZMode => (is => 'ro', isa => 'Str');
@@ -29,7 +29,6 @@ package Paws::ElastiCache::CreateCacheCluster {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCacheCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CreateCacheClusterResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCacheClusterResult');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::Kinesis::GetShardIteratorOutput {
+package Paws::Kinesis::GetShardIteratorOutput;
   use Moose;
   has ShardIterator => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

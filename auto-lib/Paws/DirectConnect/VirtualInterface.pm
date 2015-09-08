@@ -1,5 +1,5 @@
 
-package Paws::DirectConnect::VirtualInterface {
+package Paws::DirectConnect::VirtualInterface;
   use Moose;
   has amazonAddress => (is => 'ro', isa => 'Str');
   has asn => (is => 'ro', isa => 'Int');
@@ -17,7 +17,6 @@ package Paws::DirectConnect::VirtualInterface {
   has virtualInterfaceType => (is => 'ro', isa => 'Str');
   has vlan => (is => 'ro', isa => 'Int');
 
-}
 
 ### main pod documentation begin ###
 

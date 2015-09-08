@@ -1,11 +1,10 @@
 
-package Paws::DynamoDB::BatchWriteItemOutput {
+package Paws::DynamoDB::BatchWriteItemOutput;
   use Moose;
   has ConsumedCapacity => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ConsumedCapacity]');
   has ItemCollectionMetrics => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionMetricsPerTable');
   has UnprocessedItems => (is => 'ro', isa => 'Paws::DynamoDB::BatchWriteItemRequestMap');
 
-}
 
 ### main pod documentation begin ###
 

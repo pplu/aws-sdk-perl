@@ -1,4 +1,4 @@
-package Paws::DynamoDBStreams::MapAttributeValue {
+package Paws::DynamoDBStreams::MapAttributeValue;
   use Moose;
   with 'Paws::API::StrToObjMapParser';
 
@@ -7,5 +7,4 @@ package Paws::DynamoDBStreams::MapAttributeValue {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Paws::DynamoDBStreams::AttributeValue]');
-}
 1

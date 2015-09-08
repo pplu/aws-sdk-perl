@@ -1,5 +1,5 @@
 
-package Paws::Route53Domains::RegisterDomain {
+package Paws::Route53Domains::RegisterDomain;
   use Moose;
   has AdminContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail', required => 1);
   has AutoRenew => (is => 'ro', isa => 'Bool');
@@ -17,7 +17,6 @@ package Paws::Route53Domains::RegisterDomain {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterDomain');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::RegisterDomainResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

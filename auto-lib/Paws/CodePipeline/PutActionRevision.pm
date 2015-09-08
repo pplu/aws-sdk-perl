@@ -1,5 +1,5 @@
 
-package Paws::CodePipeline::PutActionRevision {
+package Paws::CodePipeline::PutActionRevision;
   use Moose;
   has actionName => (is => 'ro', isa => 'Str', required => 1);
   has actionRevision => (is => 'ro', isa => 'Paws::CodePipeline::ActionRevision', required => 1);
@@ -11,7 +11,6 @@ package Paws::CodePipeline::PutActionRevision {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutActionRevision');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::PutActionRevisionOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

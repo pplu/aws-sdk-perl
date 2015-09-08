@@ -1,10 +1,9 @@
 
-package Paws::ElastiCache::CacheClusterMessage {
+package Paws::ElastiCache::CacheClusterMessage;
   use Moose;
   has CacheClusters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheCluster]', xmlname => 'CacheCluster', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

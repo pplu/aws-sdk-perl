@@ -1,4 +1,4 @@
-package Paws::ElasticTranscoder::Artwork {
+package Paws::ElasticTranscoder::Artwork;
   use Moose;
   has AlbumArtFormat => (is => 'ro', isa => 'Str');
   has Encryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
@@ -7,5 +7,4 @@ package Paws::ElasticTranscoder::Artwork {
   has MaxWidth => (is => 'ro', isa => 'Str');
   has PaddingPolicy => (is => 'ro', isa => 'Str');
   has SizingPolicy => (is => 'ro', isa => 'Str');
-}
 1;

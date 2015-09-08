@@ -1,4 +1,4 @@
-package Paws::SimpleWorkflow::ActivityTaskScheduledEventAttributes {
+package Paws::SimpleWorkflow::ActivityTaskScheduledEventAttributes;
   use Moose;
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has activityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', required => 1);
@@ -11,5 +11,4 @@ package Paws::SimpleWorkflow::ActivityTaskScheduledEventAttributes {
   has startToCloseTimeout => (is => 'ro', isa => 'Str');
   has taskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', required => 1);
   has taskPriority => (is => 'ro', isa => 'Str');
-}
 1;

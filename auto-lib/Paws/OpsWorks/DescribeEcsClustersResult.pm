@@ -1,10 +1,9 @@
 
-package Paws::OpsWorks::DescribeEcsClustersResult {
+package Paws::OpsWorks::DescribeEcsClustersResult;
   use Moose;
   has EcsClusters => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::EcsCluster]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

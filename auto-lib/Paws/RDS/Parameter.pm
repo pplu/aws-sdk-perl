@@ -1,4 +1,4 @@
-package Paws::RDS::Parameter {
+package Paws::RDS::Parameter;
   use Moose;
   has AllowedValues => (is => 'ro', isa => 'Str');
   has ApplyMethod => (is => 'ro', isa => 'Str');
@@ -10,5 +10,4 @@ package Paws::RDS::Parameter {
   has ParameterName => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str');
-}
 1;

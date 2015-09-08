@@ -1,10 +1,9 @@
 
-package Paws::RDS::EventsMessage {
+package Paws::RDS::EventsMessage;
   use Moose;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Event]', xmlname => 'Event', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

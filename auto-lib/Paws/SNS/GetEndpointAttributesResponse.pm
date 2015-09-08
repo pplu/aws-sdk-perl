@@ -1,9 +1,8 @@
 
-package Paws::SNS::GetEndpointAttributesResponse {
+package Paws::SNS::GetEndpointAttributesResponse;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString');
 
-}
 1;
 
 ### main pod documentation begin ###

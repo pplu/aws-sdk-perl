@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::RegisterEcsClusterResult {
+package Paws::OpsWorks::RegisterEcsClusterResult;
   use Moose;
   has EcsClusterArn => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

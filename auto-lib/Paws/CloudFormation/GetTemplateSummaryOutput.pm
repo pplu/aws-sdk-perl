@@ -1,5 +1,5 @@
 
-package Paws::CloudFormation::GetTemplateSummaryOutput {
+package Paws::CloudFormation::GetTemplateSummaryOutput;
   use Moose;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
   has CapabilitiesReason => (is => 'ro', isa => 'Str');
@@ -8,7 +8,6 @@ package Paws::CloudFormation::GetTemplateSummaryOutput {
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::ParameterDeclaration]');
   has Version => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

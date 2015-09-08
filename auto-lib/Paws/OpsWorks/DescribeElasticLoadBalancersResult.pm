@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeElasticLoadBalancersResult {
+package Paws::OpsWorks::DescribeElasticLoadBalancersResult;
   use Moose;
   has ElasticLoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::ElasticLoadBalancer]');
 
-}
 
 ### main pod documentation begin ###
 

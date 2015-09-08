@@ -1,9 +1,8 @@
 
-package Paws::CloudHSM::ModifyHapgResponse {
+package Paws::CloudHSM::ModifyHapgResponse;
   use Moose;
   has HapgArn => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,5 +1,5 @@
 
-package Paws::CodeDeploy::ListApplicationRevisions {
+package Paws::CodeDeploy::ListApplicationRevisions;
   use Moose;
   has applicationName => (is => 'ro', isa => 'Str', required => 1);
   has deployed => (is => 'ro', isa => 'Str');
@@ -14,7 +14,6 @@ package Paws::CodeDeploy::ListApplicationRevisions {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListApplicationRevisions');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::ListApplicationRevisionsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

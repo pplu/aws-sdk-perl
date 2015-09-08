@@ -1,4 +1,4 @@
-package Paws::EFS {
+package Paws::EFS;
   warn "Paws::EFS is not stable / supported / entirely developed";
   use Moose;
   sub service { 'elasticfilesystem' }
@@ -63,7 +63,6 @@ package Paws::EFS {
     my $call_object = $self->new_with_coercions('Paws::EFS::ModifyMountTargetSecurityGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

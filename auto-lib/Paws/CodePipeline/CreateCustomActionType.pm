@@ -1,5 +1,5 @@
 
-package Paws::CodePipeline::CreateCustomActionType {
+package Paws::CodePipeline::CreateCustomActionType;
   use Moose;
   has category => (is => 'ro', isa => 'Str', required => 1);
   has configurationProperties => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionConfigurationProperty]');
@@ -14,7 +14,6 @@ package Paws::CodePipeline::CreateCustomActionType {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCustomActionType');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::CreateCustomActionTypeOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

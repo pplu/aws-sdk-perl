@@ -1,10 +1,9 @@
 
-package Paws::CodeCommit::BatchGetRepositoriesOutput {
+package Paws::CodeCommit::BatchGetRepositoriesOutput;
   use Moose;
   has repositories => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryMetadata]');
   has repositoriesNotFound => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 
 ### main pod documentation begin ###
 

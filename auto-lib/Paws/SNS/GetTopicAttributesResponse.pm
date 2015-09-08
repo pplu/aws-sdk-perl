@@ -1,9 +1,8 @@
 
-package Paws::SNS::GetTopicAttributesResponse {
+package Paws::SNS::GetTopicAttributesResponse;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::SNS::TopicAttributesMap');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 
-package Paws::DirectConnect::Interconnect {
+package Paws::DirectConnect::Interconnect;
   use Moose;
   has bandwidth => (is => 'ro', isa => 'Str');
   has interconnectId => (is => 'ro', isa => 'Str');
@@ -8,7 +8,6 @@ package Paws::DirectConnect::Interconnect {
   has location => (is => 'ro', isa => 'Str');
   has region => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

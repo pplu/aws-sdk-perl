@@ -1,10 +1,9 @@
 
-package Paws::AutoScaling::DescribeLoadBalancersResponse {
+package Paws::AutoScaling::DescribeLoadBalancersResponse;
   use Moose;
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::LoadBalancerState]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

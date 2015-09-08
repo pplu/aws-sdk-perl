@@ -1,4 +1,4 @@
-package Paws::DynamoDB::AttributeValue {
+package Paws::DynamoDB::AttributeValue;
   use Moose;
   has B => (is => 'ro', isa => 'Str');
   has BOOL => (is => 'ro', isa => 'Bool');
@@ -10,5 +10,4 @@ package Paws::DynamoDB::AttributeValue {
   has NULL => (is => 'ro', isa => 'Bool');
   has S => (is => 'ro', isa => 'Str');
   has SS => (is => 'ro', isa => 'ArrayRef[Str]');
-}
 1;

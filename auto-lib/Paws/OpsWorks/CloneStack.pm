@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::CloneStack {
+package Paws::OpsWorks::CloneStack;
   use Moose;
   has AgentVersion => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::StackAttributes');
@@ -29,7 +29,6 @@ package Paws::OpsWorks::CloneStack {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CloneStack');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::CloneStackResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

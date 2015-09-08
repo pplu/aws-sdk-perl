@@ -1,4 +1,4 @@
-package Paws::StorageGateway::StorediSCSIVolume {
+package Paws::StorageGateway::StorediSCSIVolume;
   use Moose;
   has PreservedExistingData => (is => 'ro', isa => 'Bool');
   has SourceSnapshotId => (is => 'ro', isa => 'Str');
@@ -10,5 +10,4 @@ package Paws::StorageGateway::StorediSCSIVolume {
   has VolumeStatus => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');
   has VolumeiSCSIAttributes => (is => 'ro', isa => 'Paws::StorageGateway::VolumeiSCSIAttributes');
-}
 1;

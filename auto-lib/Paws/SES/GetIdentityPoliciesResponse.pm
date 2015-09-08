@@ -1,9 +1,8 @@
 
-package Paws::SES::GetIdentityPoliciesResponse {
+package Paws::SES::GetIdentityPoliciesResponse;
   use Moose;
   has Policies => (is => 'ro', isa => 'Paws::SES::PolicyMap', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

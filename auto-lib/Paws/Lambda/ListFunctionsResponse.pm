@@ -1,10 +1,9 @@
 
-package Paws::Lambda::ListFunctionsResponse {
+package Paws::Lambda::ListFunctionsResponse;
   use Moose;
   has Functions => (is => 'ro', isa => 'ArrayRef[Paws::Lambda::FunctionConfiguration]');
   has NextMarker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

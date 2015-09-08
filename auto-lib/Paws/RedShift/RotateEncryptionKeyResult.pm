@@ -1,9 +1,8 @@
 
-package Paws::RedShift::RotateEncryptionKeyResult {
+package Paws::RedShift::RotateEncryptionKeyResult;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Paws::RedShift::Cluster');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::CodePipeline::GetThirdPartyJobDetailsOutput {
+package Paws::CodePipeline::GetThirdPartyJobDetailsOutput;
   use Moose;
   has jobDetails => (is => 'ro', isa => 'Paws::CodePipeline::ThirdPartyJobDetails');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,10 +1,9 @@
 
-package Paws::StorageGateway::DeleteChapCredentialsOutput {
+package Paws::StorageGateway::DeleteChapCredentialsOutput;
   use Moose;
   has InitiatorName => (is => 'ro', isa => 'Str');
   has TargetARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

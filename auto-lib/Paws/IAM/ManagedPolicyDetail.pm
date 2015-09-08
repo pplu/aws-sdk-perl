@@ -1,4 +1,4 @@
-package Paws::IAM::ManagedPolicyDetail {
+package Paws::IAM::ManagedPolicyDetail;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has AttachmentCount => (is => 'ro', isa => 'Int');
@@ -11,5 +11,4 @@ package Paws::IAM::ManagedPolicyDetail {
   has PolicyName => (is => 'ro', isa => 'Str');
   has PolicyVersionList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyVersion]');
   has UpdateDate => (is => 'ro', isa => 'Str');
-}
 1;

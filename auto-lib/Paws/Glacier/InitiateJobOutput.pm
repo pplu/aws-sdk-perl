@@ -1,10 +1,9 @@
 
-package Paws::Glacier::InitiateJobOutput {
+package Paws::Glacier::InitiateJobOutput;
   use Moose;
   has jobId => (is => 'ro', isa => 'Str');
   has location => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

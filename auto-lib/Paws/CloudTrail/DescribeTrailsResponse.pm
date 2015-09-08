@@ -1,9 +1,8 @@
 
-package Paws::CloudTrail::DescribeTrailsResponse {
+package Paws::CloudTrail::DescribeTrailsResponse;
   use Moose;
   has trailList => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Trail]');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,4 +1,4 @@
-package Paws::CloudFront::Distribution {
+package Paws::CloudFront::Distribution;
   use Moose;
   has ActiveTrustedSigners => (is => 'ro', isa => 'Paws::CloudFront::ActiveTrustedSigners', required => 1);
   has DistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::DistributionConfig', required => 1);
@@ -7,5 +7,4 @@ package Paws::CloudFront::Distribution {
   has InProgressInvalidationBatches => (is => 'ro', isa => 'Int', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
-}
 1;

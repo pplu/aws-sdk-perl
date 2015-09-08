@@ -1,11 +1,10 @@
 
-package Paws::SES::GetSendQuotaResponse {
+package Paws::SES::GetSendQuotaResponse;
   use Moose;
   has Max24HourSend => (is => 'ro', isa => 'Num');
   has MaxSendRate => (is => 'ro', isa => 'Num');
   has SentLast24Hours => (is => 'ro', isa => 'Num');
 
-}
 1;
 
 ### main pod documentation begin ###

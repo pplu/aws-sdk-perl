@@ -1,11 +1,10 @@
 
-package Paws::IAM::ListAccessKeysResponse {
+package Paws::IAM::ListAccessKeysResponse;
   use Moose;
   has AccessKeyMetadata => (is => 'ro', isa => 'ArrayRef[Paws::IAM::AccessKeyMetadata]', required => 1);
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

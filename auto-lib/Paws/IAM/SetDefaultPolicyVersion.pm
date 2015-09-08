@@ -1,5 +1,5 @@
 
-package Paws::IAM::SetDefaultPolicyVersion {
+package Paws::IAM::SetDefaultPolicyVersion;
   use Moose;
   has PolicyArn => (is => 'ro', isa => 'Str', required => 1);
   has VersionId => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::IAM::SetDefaultPolicyVersion {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetDefaultPolicyVersion');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

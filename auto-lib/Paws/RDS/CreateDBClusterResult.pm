@@ -1,9 +1,8 @@
 
-package Paws::RDS::CreateDBClusterResult {
+package Paws::RDS::CreateDBClusterResult;
   use Moose;
   has DBCluster => (is => 'ro', isa => 'Paws::RDS::DBCluster');
 
-}
 1;
 
 ### main pod documentation begin ###

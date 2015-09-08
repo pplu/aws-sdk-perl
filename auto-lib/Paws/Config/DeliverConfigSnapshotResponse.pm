@@ -1,9 +1,8 @@
 
-package Paws::Config::DeliverConfigSnapshotResponse {
+package Paws::Config::DeliverConfigSnapshotResponse;
   use Moose;
   has configSnapshotId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

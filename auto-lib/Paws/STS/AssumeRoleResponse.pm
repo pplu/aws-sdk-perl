@@ -1,11 +1,10 @@
 
-package Paws::STS::AssumeRoleResponse {
+package Paws::STS::AssumeRoleResponse;
   use Moose;
   has AssumedRoleUser => (is => 'ro', isa => 'Paws::STS::AssumedRoleUser');
   has Credentials => (is => 'ro', isa => 'Paws::STS::Credentials');
   has PackedPolicySize => (is => 'ro', isa => 'Int');
 
-}
 1;
 
 ### main pod documentation begin ###

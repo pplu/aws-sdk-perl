@@ -1,4 +1,4 @@
-package Paws::EC2::SpotFleetRequestConfigData {
+package Paws::EC2::SpotFleetRequestConfigData;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped']);
   has IamFleetRole => (is => 'ro', isa => 'Str', xmlname => 'iamFleetRole', traits => ['Unwrapped'], required => 1);
@@ -8,5 +8,4 @@ package Paws::EC2::SpotFleetRequestConfigData {
   has TerminateInstancesWithExpiration => (is => 'ro', isa => 'Bool', xmlname => 'terminateInstancesWithExpiration', traits => ['Unwrapped']);
   has ValidFrom => (is => 'ro', isa => 'Str', xmlname => 'validFrom', traits => ['Unwrapped']);
   has ValidUntil => (is => 'ro', isa => 'Str', xmlname => 'validUntil', traits => ['Unwrapped']);
-}
 1;

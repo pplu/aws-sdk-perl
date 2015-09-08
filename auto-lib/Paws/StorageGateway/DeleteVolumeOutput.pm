@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::DeleteVolumeOutput {
+package Paws::StorageGateway::DeleteVolumeOutput;
   use Moose;
   has VolumeARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

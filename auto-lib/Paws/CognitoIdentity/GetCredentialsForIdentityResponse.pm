@@ -1,10 +1,9 @@
 
-package Paws::CognitoIdentity::GetCredentialsForIdentityResponse {
+package Paws::CognitoIdentity::GetCredentialsForIdentityResponse;
   use Moose;
   has Credentials => (is => 'ro', isa => 'Paws::CognitoIdentity::Credentials');
   has IdentityId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

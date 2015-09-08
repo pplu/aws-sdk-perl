@@ -1,4 +1,4 @@
-package Paws::ImportExport {
+package Paws::ImportExport;
   use Moose;
   sub service { 'importexport' }
   sub version { '2010-06-01' }
@@ -55,7 +55,6 @@ package Paws::ImportExport {
     my $call_object = $self->new_with_coercions('Paws::ImportExport::UpdateJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

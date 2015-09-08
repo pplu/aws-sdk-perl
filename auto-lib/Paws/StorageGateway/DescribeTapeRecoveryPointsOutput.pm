@@ -1,11 +1,10 @@
 
-package Paws::StorageGateway::DescribeTapeRecoveryPointsOutput {
+package Paws::StorageGateway::DescribeTapeRecoveryPointsOutput;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has TapeRecoveryPointInfos => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::TapeRecoveryPointInfo]');
 
-}
 
 ### main pod documentation begin ###
 

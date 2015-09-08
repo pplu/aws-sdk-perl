@@ -1,9 +1,8 @@
 
-package Paws::MachineLearning::UpdateEvaluationOutput {
+package Paws::MachineLearning::UpdateEvaluationOutput;
   use Moose;
   has EvaluationId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

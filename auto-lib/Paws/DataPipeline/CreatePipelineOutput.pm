@@ -1,9 +1,8 @@
 
-package Paws::DataPipeline::CreatePipelineOutput {
+package Paws::DataPipeline::CreatePipelineOutput;
   use Moose;
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

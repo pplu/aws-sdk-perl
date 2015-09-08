@@ -1,4 +1,4 @@
-package Paws::ElasticBeanstalk {
+package Paws::ElasticBeanstalk;
   use Moose;
   sub service { 'elasticbeanstalk' }
   sub version { '2010-12-01' }
@@ -167,7 +167,6 @@ package Paws::ElasticBeanstalk {
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ValidateConfigurationSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

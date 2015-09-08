@@ -1,9 +1,8 @@
 
-package Paws::Glacier::InitiateVaultLockOutput {
+package Paws::Glacier::InitiateVaultLockOutput;
   use Moose;
   has lockId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

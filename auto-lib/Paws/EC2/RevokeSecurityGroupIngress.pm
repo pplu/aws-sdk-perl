@@ -1,5 +1,5 @@
 
-package Paws::EC2::RevokeSecurityGroupIngress {
+package Paws::EC2::RevokeSecurityGroupIngress;
   use Moose;
   has CidrIp => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -17,7 +17,6 @@ package Paws::EC2::RevokeSecurityGroupIngress {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupIngress');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

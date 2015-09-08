@@ -1,5 +1,5 @@
 
-package Paws::RDS::PurchaseReservedDBInstancesOffering {
+package Paws::RDS::PurchaseReservedDBInstancesOffering;
   use Moose;
   has DBInstanceCount => (is => 'ro', isa => 'Int');
   has ReservedDBInstanceId => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::RDS::PurchaseReservedDBInstancesOffering {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedDBInstancesOffering');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::PurchaseReservedDBInstancesOfferingResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedDBInstancesOfferingResult');
-}
 1;
 
 ### main pod documentation begin ###

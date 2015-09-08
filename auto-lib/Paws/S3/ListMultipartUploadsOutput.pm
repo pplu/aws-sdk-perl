@@ -1,5 +1,5 @@
 
-package Paws::S3::ListMultipartUploadsOutput {
+package Paws::S3::ListMultipartUploadsOutput;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str');
   has CommonPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::S3::CommonPrefix]');
@@ -14,7 +14,6 @@ package Paws::S3::ListMultipartUploadsOutput {
   has UploadIdMarker => (is => 'ro', isa => 'Str');
   has Uploads => (is => 'ro', isa => 'ArrayRef[Paws::S3::MultipartUpload]');
 
-}
 1;
 
 ### main pod documentation begin ###

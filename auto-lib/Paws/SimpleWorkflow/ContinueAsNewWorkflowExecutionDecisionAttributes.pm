@@ -1,4 +1,4 @@
-package Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes {
+package Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes;
   use Moose;
   has childPolicy => (is => 'ro', isa => 'Str');
   has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
@@ -9,5 +9,4 @@ package Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes {
   has taskPriority => (is => 'ro', isa => 'Str');
   has taskStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has workflowTypeVersion => (is => 'ro', isa => 'Str');
-}
 1;

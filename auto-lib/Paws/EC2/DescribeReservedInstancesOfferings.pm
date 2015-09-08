@@ -1,5 +1,5 @@
 
-package Paws::EC2::DescribeReservedInstancesOfferings {
+package Paws::EC2::DescribeReservedInstancesOfferings;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -21,7 +21,6 @@ package Paws::EC2::DescribeReservedInstancesOfferings {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesOfferings');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeReservedInstancesOfferingsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

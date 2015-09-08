@@ -1,10 +1,9 @@
 
-package Paws::DynamoDBStreams::GetRecordsOutput {
+package Paws::DynamoDBStreams::GetRecordsOutput;
   use Moose;
   has NextShardIterator => (is => 'ro', isa => 'Str');
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDBStreams::Record]');
 
-}
 
 ### main pod documentation begin ###
 

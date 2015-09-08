@@ -1,5 +1,5 @@
 
-package Paws::IAM::ListGroups {
+package Paws::IAM::ListGroups;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Int');
@@ -10,7 +10,6 @@ package Paws::IAM::ListGroups {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListGroups');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::ListGroupsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListGroupsResult');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::SES::ListVerifiedEmailAddressesResponse {
+package Paws::SES::ListVerifiedEmailAddressesResponse;
   use Moose;
   has VerifiedEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 1;
 
 ### main pod documentation begin ###

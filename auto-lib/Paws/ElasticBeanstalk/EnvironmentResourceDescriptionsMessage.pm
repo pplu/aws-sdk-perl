@@ -1,9 +1,8 @@
 
-package Paws::ElasticBeanstalk::EnvironmentResourceDescriptionsMessage {
+package Paws::ElasticBeanstalk::EnvironmentResourceDescriptionsMessage;
   use Moose;
   has EnvironmentResources => (is => 'ro', isa => 'Paws::ElasticBeanstalk::EnvironmentResourceDescription');
 
-}
 1;
 
 ### main pod documentation begin ###

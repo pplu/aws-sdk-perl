@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::DescribeDataset {
+package Paws::CognitoSync::DescribeDataset;
   use Moose;
   has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName' , required => 1);
   has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId' , required => 1);
@@ -12,7 +12,6 @@ package Paws::CognitoSync::DescribeDataset {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::DescribeDatasetResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDatasetResult');
-}
 1;
 
 ### main pod documentation begin ###

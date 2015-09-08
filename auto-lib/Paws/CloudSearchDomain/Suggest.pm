@@ -1,5 +1,5 @@
 
-package Paws::CloudSearchDomain::Suggest {
+package Paws::CloudSearchDomain::Suggest;
   use Moose;
   has query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q' , required => 1);
   has size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size' );
@@ -12,7 +12,6 @@ package Paws::CloudSearchDomain::Suggest {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearchDomain::SuggestResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SuggestResult');
-}
 1;
 
 ### main pod documentation begin ###

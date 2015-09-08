@@ -1,4 +1,4 @@
-package Paws::OpsWorks::StackAttributes {
+package Paws::OpsWorks::StackAttributes;
   use Moose;
   with 'Paws::API::MapParser';
 
@@ -7,5 +7,4 @@ package Paws::OpsWorks::StackAttributes {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Color => (is => 'ro', isa => 'Str');
-}
 1

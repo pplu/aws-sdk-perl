@@ -1,5 +1,5 @@
 
-package Paws::DeviceFarm::GetDevicePoolCompatibility {
+package Paws::DeviceFarm::GetDevicePoolCompatibility;
   use Moose;
   has appArn => (is => 'ro', isa => 'Str', required => 1);
   has devicePoolArn => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::DeviceFarm::GetDevicePoolCompatibility {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDevicePoolCompatibility');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::GetDevicePoolCompatibilityResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

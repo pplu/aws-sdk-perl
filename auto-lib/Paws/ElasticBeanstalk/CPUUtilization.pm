@@ -1,4 +1,4 @@
-package Paws::ElasticBeanstalk::CPUUtilization {
+package Paws::ElasticBeanstalk::CPUUtilization;
   use Moose;
   has IOWait => (is => 'ro', isa => 'Num');
   has IRQ => (is => 'ro', isa => 'Num');
@@ -7,5 +7,4 @@ package Paws::ElasticBeanstalk::CPUUtilization {
   has SoftIRQ => (is => 'ro', isa => 'Num');
   has System => (is => 'ro', isa => 'Num');
   has User => (is => 'ro', isa => 'Num');
-}
 1;

@@ -1,9 +1,8 @@
 
-package Paws::RDS::ModifyEventSubscriptionResult {
+package Paws::RDS::ModifyEventSubscriptionResult;
   use Moose;
   has EventSubscription => (is => 'ro', isa => 'Paws::RDS::EventSubscription');
 
-}
 1;
 
 ### main pod documentation begin ###

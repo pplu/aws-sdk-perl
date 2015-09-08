@@ -1,5 +1,5 @@
 
-package Paws::RedShift::LoggingStatus {
+package Paws::RedShift::LoggingStatus;
   use Moose;
   has BucketName => (is => 'ro', isa => 'Str');
   has LastFailureMessage => (is => 'ro', isa => 'Str');
@@ -8,7 +8,6 @@ package Paws::RedShift::LoggingStatus {
   has LoggingEnabled => (is => 'ro', isa => 'Bool');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

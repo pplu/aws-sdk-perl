@@ -1,10 +1,9 @@
 
-package Paws::KMS::CreateGrantResponse {
+package Paws::KMS::CreateGrantResponse;
   use Moose;
   has GrantId => (is => 'ro', isa => 'Str');
   has GrantToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

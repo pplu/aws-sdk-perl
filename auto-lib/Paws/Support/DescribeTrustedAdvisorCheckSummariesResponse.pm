@@ -1,9 +1,8 @@
 
-package Paws::Support::DescribeTrustedAdvisorCheckSummariesResponse {
+package Paws::Support::DescribeTrustedAdvisorCheckSummariesResponse;
   use Moose;
   has summaries => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorCheckSummary]', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

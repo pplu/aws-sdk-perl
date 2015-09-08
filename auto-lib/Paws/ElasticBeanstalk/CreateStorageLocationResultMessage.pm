@@ -1,9 +1,8 @@
 
-package Paws::ElasticBeanstalk::CreateStorageLocationResultMessage {
+package Paws::ElasticBeanstalk::CreateStorageLocationResultMessage;
   use Moose;
   has S3Bucket => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

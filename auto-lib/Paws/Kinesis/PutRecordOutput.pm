@@ -1,10 +1,9 @@
 
-package Paws::Kinesis::PutRecordOutput {
+package Paws::Kinesis::PutRecordOutput;
   use Moose;
   has SequenceNumber => (is => 'ro', isa => 'Str', required => 1);
   has ShardId => (is => 'ro', isa => 'Str', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

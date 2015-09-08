@@ -1,5 +1,5 @@
 
-package Paws::SES::SendEmail {
+package Paws::SES::SendEmail;
   use Moose;
   has Destination => (is => 'ro', isa => 'Paws::SES::Destination', required => 1);
   has Message => (is => 'ro', isa => 'Paws::SES::Message', required => 1);
@@ -14,7 +14,6 @@ package Paws::SES::SendEmail {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendEmail');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::SendEmailResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SendEmailResult');
-}
 1;
 
 ### main pod documentation begin ###

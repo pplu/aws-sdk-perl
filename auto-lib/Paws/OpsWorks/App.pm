@@ -1,4 +1,4 @@
-package Paws::OpsWorks::App {
+package Paws::OpsWorks::App;
   use Moose;
   has AppId => (is => 'ro', isa => 'Str');
   has AppSource => (is => 'ro', isa => 'Paws::OpsWorks::Source');
@@ -14,5 +14,4 @@ package Paws::OpsWorks::App {
   has SslConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::SslConfiguration');
   has StackId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
-}
 1;

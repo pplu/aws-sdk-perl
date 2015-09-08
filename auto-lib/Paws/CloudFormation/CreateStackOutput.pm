@@ -1,9 +1,8 @@
 
-package Paws::CloudFormation::CreateStackOutput {
+package Paws::CloudFormation::CreateStackOutput;
   use Moose;
   has StackId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

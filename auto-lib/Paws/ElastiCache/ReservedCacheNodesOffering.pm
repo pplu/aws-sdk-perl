@@ -1,4 +1,4 @@
-package Paws::ElastiCache::ReservedCacheNodesOffering {
+package Paws::ElastiCache::ReservedCacheNodesOffering;
   use Moose;
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
@@ -8,5 +8,4 @@ package Paws::ElastiCache::ReservedCacheNodesOffering {
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::RecurringCharge]');
   has ReservedCacheNodesOfferingId => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
-}
 1;

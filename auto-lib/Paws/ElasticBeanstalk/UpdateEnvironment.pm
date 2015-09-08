@@ -1,5 +1,5 @@
 
-package Paws::ElasticBeanstalk::UpdateEnvironment {
+package Paws::ElasticBeanstalk::UpdateEnvironment;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has EnvironmentId => (is => 'ro', isa => 'Str');
@@ -16,7 +16,6 @@ package Paws::ElasticBeanstalk::UpdateEnvironment {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEnvironment');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::EnvironmentDescription');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateEnvironmentResult');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::EMR::JobFlowDetail {
+package Paws::EMR::JobFlowDetail;
   use Moose;
   has AmiVersion => (is => 'ro', isa => 'Str');
   has BootstrapActions => (is => 'ro', isa => 'ArrayRef[Paws::EMR::BootstrapActionDetail]');
@@ -12,5 +12,4 @@ package Paws::EMR::JobFlowDetail {
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepDetail]');
   has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str]');
   has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
-}
 1;

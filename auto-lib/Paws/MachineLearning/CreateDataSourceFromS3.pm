@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::CreateDataSourceFromS3 {
+package Paws::MachineLearning::CreateDataSourceFromS3;
   use Moose;
   has ComputeStatistics => (is => 'ro', isa => 'Bool');
   has DataSourceId => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::MachineLearning::CreateDataSourceFromS3 {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDataSourceFromS3');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::CreateDataSourceFromS3Output');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

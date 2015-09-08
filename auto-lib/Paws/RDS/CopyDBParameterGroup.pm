@@ -1,5 +1,5 @@
 
-package Paws::RDS::CopyDBParameterGroup {
+package Paws::RDS::CopyDBParameterGroup;
   use Moose;
   has SourceDBParameterGroupIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
@@ -11,7 +11,6 @@ package Paws::RDS::CopyDBParameterGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyDBParameterGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CopyDBParameterGroupResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopyDBParameterGroupResult');
-}
 1;
 
 ### main pod documentation begin ###

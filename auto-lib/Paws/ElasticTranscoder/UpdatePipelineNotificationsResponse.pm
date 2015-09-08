@@ -1,9 +1,8 @@
 
-package Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse {
+package Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse;
   use Moose;
   has Pipeline => (is => 'ro', isa => 'Paws::ElasticTranscoder::Pipeline');
 
-}
 1;
 
 ### main pod documentation begin ###

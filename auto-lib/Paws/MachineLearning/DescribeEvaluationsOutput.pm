@@ -1,10 +1,9 @@
 
-package Paws::MachineLearning::DescribeEvaluationsOutput {
+package Paws::MachineLearning::DescribeEvaluationsOutput;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has Results => (is => 'ro', isa => 'ArrayRef[Paws::MachineLearning::Evaluation]');
 
-}
 
 ### main pod documentation begin ###
 

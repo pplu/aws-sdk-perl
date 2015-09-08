@@ -1,4 +1,4 @@
-package Paws::OpsWorks::Source {
+package Paws::OpsWorks::Source;
   use Moose;
   has Password => (is => 'ro', isa => 'Str');
   has Revision => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::OpsWorks::Source {
   has Type => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
   has Username => (is => 'ro', isa => 'Str');
-}
 1;

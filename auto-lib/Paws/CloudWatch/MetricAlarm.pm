@@ -1,4 +1,4 @@
-package Paws::CloudWatch::MetricAlarm {
+package Paws::CloudWatch::MetricAlarm;
   use Moose;
   has ActionsEnabled => (is => 'ro', isa => 'Bool');
   has AlarmActions => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -21,5 +21,4 @@ package Paws::CloudWatch::MetricAlarm {
   has Statistic => (is => 'ro', isa => 'Str');
   has Threshold => (is => 'ro', isa => 'Num');
   has Unit => (is => 'ro', isa => 'Str');
-}
 1;

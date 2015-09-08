@@ -1,4 +1,4 @@
-package Paws::EC2::SecurityGroup {
+package Paws::EC2::SecurityGroup;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', xmlname => 'groupDescription', traits => ['Unwrapped']);
   has GroupId => (is => 'ro', isa => 'Str', xmlname => 'groupId', traits => ['Unwrapped']);
@@ -8,5 +8,4 @@ package Paws::EC2::SecurityGroup {
   has OwnerId => (is => 'ro', isa => 'Str', xmlname => 'ownerId', traits => ['Unwrapped']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
   has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
-}
 1;

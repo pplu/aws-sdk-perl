@@ -1,4 +1,4 @@
-package Paws::SimpleWorkflow::Decision {
+package Paws::SimpleWorkflow::Decision;
   use Moose;
   has cancelTimerDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::CancelTimerDecisionAttributes');
   has cancelWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes');
@@ -14,5 +14,4 @@ package Paws::SimpleWorkflow::Decision {
   has signalExternalWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes');
   has startChildWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes');
   has startTimerDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartTimerDecisionAttributes');
-}
 1;

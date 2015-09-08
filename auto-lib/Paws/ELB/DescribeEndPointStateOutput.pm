@@ -1,9 +1,8 @@
 
-package Paws::ELB::DescribeEndPointStateOutput {
+package Paws::ELB::DescribeEndPointStateOutput;
   use Moose;
   has InstanceStates => (is => 'ro', isa => 'ArrayRef[Paws::ELB::InstanceState]');
 
-}
 1;
 
 ### main pod documentation begin ###

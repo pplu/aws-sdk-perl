@@ -1,5 +1,5 @@
 
-package Paws::CloudWatchLogs::DescribeDestinations {
+package Paws::CloudWatchLogs::DescribeDestinations;
   use Moose;
   has DestinationNamePrefix => (is => 'ro', isa => 'Str');
   has limit => (is => 'ro', isa => 'Int');
@@ -10,7 +10,6 @@ package Paws::CloudWatchLogs::DescribeDestinations {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDestinations');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchLogs::DescribeDestinationsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

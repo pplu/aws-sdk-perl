@@ -1,5 +1,5 @@
 
-package Paws::SimpleWorkflow::GetWorkflowExecutionHistory {
+package Paws::SimpleWorkflow::GetWorkflowExecutionHistory;
   use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has execution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', required => 1);
@@ -12,7 +12,6 @@ package Paws::SimpleWorkflow::GetWorkflowExecutionHistory {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetWorkflowExecutionHistory');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::History');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

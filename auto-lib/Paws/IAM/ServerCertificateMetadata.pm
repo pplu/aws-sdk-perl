@@ -1,4 +1,4 @@
-package Paws::IAM::ServerCertificateMetadata {
+package Paws::IAM::ServerCertificateMetadata;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has Expiration => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::IAM::ServerCertificateMetadata {
   has ServerCertificateId => (is => 'ro', isa => 'Str', required => 1);
   has ServerCertificateName => (is => 'ro', isa => 'Str', required => 1);
   has UploadDate => (is => 'ro', isa => 'Str');
-}
 1;

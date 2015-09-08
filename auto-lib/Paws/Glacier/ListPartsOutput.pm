@@ -1,5 +1,5 @@
 
-package Paws::Glacier::ListPartsOutput {
+package Paws::Glacier::ListPartsOutput;
   use Moose;
   has ArchiveDescription => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::Glacier::ListPartsOutput {
   has PartSizeInBytes => (is => 'ro', isa => 'Int');
   has VaultARN => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

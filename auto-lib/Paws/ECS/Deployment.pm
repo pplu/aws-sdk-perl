@@ -1,4 +1,4 @@
-package Paws::ECS::Deployment {
+package Paws::ECS::Deployment;
   use Moose;
   has createdAt => (is => 'ro', isa => 'Str');
   has desiredCount => (is => 'ro', isa => 'Int');
@@ -8,5 +8,4 @@ package Paws::ECS::Deployment {
   has status => (is => 'ro', isa => 'Str');
   has taskDefinition => (is => 'ro', isa => 'Str');
   has updatedAt => (is => 'ro', isa => 'Str');
-}
 1;

@@ -1,4 +1,4 @@
-package Paws::Config::ConfigurationRecorderStatus {
+package Paws::Config::ConfigurationRecorderStatus;
   use Moose;
   has lastErrorCode => (is => 'ro', isa => 'Str');
   has lastErrorMessage => (is => 'ro', isa => 'Str');
@@ -8,5 +8,4 @@ package Paws::Config::ConfigurationRecorderStatus {
   has lastStopTime => (is => 'ro', isa => 'Str');
   has name => (is => 'ro', isa => 'Str');
   has recording => (is => 'ro', isa => 'Bool');
-}
 1;

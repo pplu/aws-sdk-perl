@@ -1,5 +1,5 @@
 
-package Paws::Route53Domains::GetOperationDetail {
+package Paws::Route53Domains::GetOperationDetail;
   use Moose;
   has OperationId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::Route53Domains::GetOperationDetail {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetOperationDetail');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::GetOperationDetailResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

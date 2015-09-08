@@ -1,5 +1,5 @@
 
-package Paws::CloudHSM::ListHapgs {
+package Paws::CloudHSM::ListHapgs;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -8,7 +8,6 @@ package Paws::CloudHSM::ListHapgs {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListHapgs');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSM::ListHapgsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

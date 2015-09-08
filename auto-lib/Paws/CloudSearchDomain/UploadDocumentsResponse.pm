@@ -1,12 +1,11 @@
 
-package Paws::CloudSearchDomain::UploadDocumentsResponse {
+package Paws::CloudSearchDomain::UploadDocumentsResponse;
   use Moose;
   has adds => (is => 'ro', isa => 'Int');
   has deletes => (is => 'ro', isa => 'Int');
   has status => (is => 'ro', isa => 'Str');
   has warnings => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::DocumentServiceWarning]');
 
-}
 1;
 
 ### main pod documentation begin ###

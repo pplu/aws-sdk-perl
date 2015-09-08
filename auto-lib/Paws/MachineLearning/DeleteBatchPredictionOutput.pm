@@ -1,9 +1,8 @@
 
-package Paws::MachineLearning::DeleteBatchPredictionOutput {
+package Paws::MachineLearning::DeleteBatchPredictionOutput;
   use Moose;
   has BatchPredictionId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

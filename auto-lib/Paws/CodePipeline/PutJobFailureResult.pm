@@ -1,5 +1,5 @@
 
-package Paws::CodePipeline::PutJobFailureResult {
+package Paws::CodePipeline::PutJobFailureResult;
   use Moose;
   has failureDetails => (is => 'ro', isa => 'Paws::CodePipeline::FailureDetails', required => 1);
   has jobId => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::CodePipeline::PutJobFailureResult {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutJobFailureResult');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

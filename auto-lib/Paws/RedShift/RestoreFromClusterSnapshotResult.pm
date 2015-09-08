@@ -1,9 +1,8 @@
 
-package Paws::RedShift::RestoreFromClusterSnapshotResult {
+package Paws::RedShift::RestoreFromClusterSnapshotResult;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Paws::RedShift::Cluster');
 
-}
 1;
 
 ### main pod documentation begin ###

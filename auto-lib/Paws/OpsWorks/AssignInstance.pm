@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::AssignInstance {
+package Paws::OpsWorks::AssignInstance;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -9,7 +9,6 @@ package Paws::OpsWorks::AssignInstance {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssignInstance');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

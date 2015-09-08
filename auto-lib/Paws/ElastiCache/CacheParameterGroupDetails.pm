@@ -1,11 +1,10 @@
 
-package Paws::ElastiCache::CacheParameterGroupDetails {
+package Paws::ElastiCache::CacheParameterGroupDetails;
   use Moose;
   has CacheNodeTypeSpecificParameters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificParameter]', xmlname => 'CacheNodeTypeSpecificParameter', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Parameter]', xmlname => 'Parameter', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

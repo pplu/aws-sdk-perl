@@ -1,5 +1,5 @@
 
-package Paws::IAM::GetPolicy {
+package Paws::IAM::GetPolicy;
   use Moose;
   has PolicyArn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::IAM::GetPolicy {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetPolicy');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::GetPolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetPolicyResult');
-}
 1;
 
 ### main pod documentation begin ###

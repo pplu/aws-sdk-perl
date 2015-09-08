@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::CreateDataSourceFromRedshift {
+package Paws::MachineLearning::CreateDataSourceFromRedshift;
   use Moose;
   has ComputeStatistics => (is => 'ro', isa => 'Bool');
   has DataSourceId => (is => 'ro', isa => 'Str', required => 1);
@@ -12,7 +12,6 @@ package Paws::MachineLearning::CreateDataSourceFromRedshift {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDataSourceFromRedshift');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::CreateDataSourceFromRedshiftOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

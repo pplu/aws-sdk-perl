@@ -1,5 +1,5 @@
 
-package Paws::CloudHSM::DescribeLunaClientResponse {
+package Paws::CloudHSM::DescribeLunaClientResponse;
   use Moose;
   has Certificate => (is => 'ro', isa => 'Str');
   has CertificateFingerprint => (is => 'ro', isa => 'Str');
@@ -7,7 +7,6 @@ package Paws::CloudHSM::DescribeLunaClientResponse {
   has Label => (is => 'ro', isa => 'Str');
   has LastModifiedTimestamp => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

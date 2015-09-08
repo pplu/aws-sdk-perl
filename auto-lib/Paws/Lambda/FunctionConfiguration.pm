@@ -1,5 +1,5 @@
 
-package Paws::Lambda::FunctionConfiguration {
+package Paws::Lambda::FunctionConfiguration;
   use Moose;
   has CodeSize => (is => 'ro', isa => 'Int');
   has Description => (is => 'ro', isa => 'Str');
@@ -12,7 +12,6 @@ package Paws::Lambda::FunctionConfiguration {
   has Runtime => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
 
-}
 1;
 
 ### main pod documentation begin ###

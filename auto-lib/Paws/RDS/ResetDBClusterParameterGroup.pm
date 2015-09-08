@@ -1,5 +1,5 @@
 
-package Paws::RDS::ResetDBClusterParameterGroup {
+package Paws::RDS::ResetDBClusterParameterGroup;
   use Moose;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Parameter]');
@@ -10,7 +10,6 @@ package Paws::RDS::ResetDBClusterParameterGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetDBClusterParameterGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBClusterParameterGroupNameMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ResetDBClusterParameterGroupResult');
-}
 1;
 
 ### main pod documentation begin ###

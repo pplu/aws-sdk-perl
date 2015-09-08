@@ -1,9 +1,8 @@
 
-package Paws::EC2::CreateInternetGatewayResult {
+package Paws::EC2::CreateInternetGatewayResult;
   use Moose;
   has InternetGateway => (is => 'ro', isa => 'Paws::EC2::InternetGateway', xmlname => 'internetGateway', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

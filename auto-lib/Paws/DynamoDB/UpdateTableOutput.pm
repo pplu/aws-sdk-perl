@@ -1,9 +1,8 @@
 
-package Paws::DynamoDB::UpdateTableOutput {
+package Paws::DynamoDB::UpdateTableOutput;
   use Moose;
   has TableDescription => (is => 'ro', isa => 'Paws::DynamoDB::TableDescription');
 
-}
 
 ### main pod documentation begin ###
 

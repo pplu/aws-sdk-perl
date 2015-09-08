@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateVolume {
+package Paws::EC2::CreateVolume;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -15,7 +15,6 @@ package Paws::EC2::CreateVolume {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVolume');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::Volume');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

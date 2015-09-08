@@ -1,9 +1,8 @@
 
-package Paws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResponse {
+package Paws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResponse;
   use Moose;
   has statuses => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorCheckRefreshStatus]', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

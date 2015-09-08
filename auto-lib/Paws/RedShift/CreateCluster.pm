@@ -1,5 +1,5 @@
 
-package Paws::RedShift::CreateCluster {
+package Paws::RedShift::CreateCluster;
   use Moose;
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
@@ -31,7 +31,6 @@ package Paws::RedShift::CreateCluster {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::CreateClusterResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterResult');
-}
 1;
 
 ### main pod documentation begin ###

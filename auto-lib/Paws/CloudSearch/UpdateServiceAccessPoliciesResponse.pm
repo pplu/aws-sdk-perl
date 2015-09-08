@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::UpdateServiceAccessPoliciesResponse {
+package Paws::CloudSearch::UpdateServiceAccessPoliciesResponse;
   use Moose;
   has AccessPolicies => (is => 'ro', isa => 'Paws::CloudSearch::AccessPoliciesStatus', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

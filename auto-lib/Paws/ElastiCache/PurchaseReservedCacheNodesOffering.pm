@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::PurchaseReservedCacheNodesOffering {
+package Paws::ElastiCache::PurchaseReservedCacheNodesOffering;
   use Moose;
   has CacheNodeCount => (is => 'ro', isa => 'Int');
   has ReservedCacheNodeId => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::ElastiCache::PurchaseReservedCacheNodesOffering {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedCacheNodesOffering');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::PurchaseReservedCacheNodesOfferingResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedCacheNodesOfferingResult');
-}
 1;
 
 ### main pod documentation begin ###

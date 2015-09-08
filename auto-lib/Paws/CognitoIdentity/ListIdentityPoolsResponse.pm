@@ -1,10 +1,9 @@
 
-package Paws::CognitoIdentity::ListIdentityPoolsResponse {
+package Paws::CognitoIdentity::ListIdentityPoolsResponse;
   use Moose;
   has IdentityPools => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::IdentityPoolShortDescription]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,10 +1,9 @@
 
-package Paws::DeviceFarm::GetDevicePoolCompatibilityResult {
+package Paws::DeviceFarm::GetDevicePoolCompatibilityResult;
   use Moose;
   has compatibleDevices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DevicePoolCompatibilityResult]');
   has incompatibleDevices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DevicePoolCompatibilityResult]');
 
-}
 
 ### main pod documentation begin ###
 

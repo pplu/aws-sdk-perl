@@ -1,5 +1,5 @@
 
-package Paws::S3::UploadPartCopy {
+package Paws::S3::UploadPartCopy;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
   has CopySource => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source' , required => 1);
@@ -26,7 +26,6 @@ package Paws::S3::UploadPartCopy {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::UploadPartCopyOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

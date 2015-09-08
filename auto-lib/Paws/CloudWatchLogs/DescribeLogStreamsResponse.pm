@@ -1,10 +1,9 @@
 
-package Paws::CloudWatchLogs::DescribeLogStreamsResponse {
+package Paws::CloudWatchLogs::DescribeLogStreamsResponse;
   use Moose;
   has logStreams => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::LogStream]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

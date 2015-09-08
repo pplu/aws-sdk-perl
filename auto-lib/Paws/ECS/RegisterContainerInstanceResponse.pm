@@ -1,9 +1,8 @@
 
-package Paws::ECS::RegisterContainerInstanceResponse {
+package Paws::ECS::RegisterContainerInstanceResponse;
   use Moose;
   has containerInstance => (is => 'ro', isa => 'Paws::ECS::ContainerInstance');
 
-}
 
 ### main pod documentation begin ###
 

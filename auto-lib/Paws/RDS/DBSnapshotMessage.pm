@@ -1,10 +1,9 @@
 
-package Paws::RDS::DBSnapshotMessage {
+package Paws::RDS::DBSnapshotMessage;
   use Moose;
   has DBSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSnapshot]', xmlname => 'DBSnapshot', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::RedShift::ReservedNodeOffering {
+package Paws::RedShift::ReservedNodeOffering;
   use Moose;
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
@@ -8,5 +8,4 @@ package Paws::RedShift::ReservedNodeOffering {
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::RecurringCharge]');
   has ReservedNodeOfferingId => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
-}
 1;

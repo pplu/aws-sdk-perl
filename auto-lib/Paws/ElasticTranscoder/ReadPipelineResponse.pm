@@ -1,10 +1,9 @@
 
-package Paws::ElasticTranscoder::ReadPipelineResponse {
+package Paws::ElasticTranscoder::ReadPipelineResponse;
   use Moose;
   has Pipeline => (is => 'ro', isa => 'Paws::ElasticTranscoder::Pipeline');
   has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Warning]');
 
-}
 1;
 
 ### main pod documentation begin ###

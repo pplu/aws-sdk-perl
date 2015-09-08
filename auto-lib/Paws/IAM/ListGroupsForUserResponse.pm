@@ -1,11 +1,10 @@
 
-package Paws::IAM::ListGroupsForUserResponse {
+package Paws::IAM::ListGroupsForUserResponse;
   use Moose;
   has Groups => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Group]', required => 1);
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

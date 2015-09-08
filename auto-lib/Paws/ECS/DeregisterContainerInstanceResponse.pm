@@ -1,9 +1,8 @@
 
-package Paws::ECS::DeregisterContainerInstanceResponse {
+package Paws::ECS::DeregisterContainerInstanceResponse;
   use Moose;
   has containerInstance => (is => 'ro', isa => 'Paws::ECS::ContainerInstance');
 
-}
 
 ### main pod documentation begin ###
 

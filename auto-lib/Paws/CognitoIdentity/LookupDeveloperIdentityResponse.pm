@@ -1,11 +1,10 @@
 
-package Paws::CognitoIdentity::LookupDeveloperIdentityResponse {
+package Paws::CognitoIdentity::LookupDeveloperIdentityResponse;
   use Moose;
   has DeveloperUserIdentifierList => (is => 'ro', isa => 'ArrayRef[Str]');
   has IdentityId => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

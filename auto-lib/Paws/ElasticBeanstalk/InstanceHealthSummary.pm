@@ -1,4 +1,4 @@
-package Paws::ElasticBeanstalk::InstanceHealthSummary {
+package Paws::ElasticBeanstalk::InstanceHealthSummary;
   use Moose;
   has Degraded => (is => 'ro', isa => 'Int');
   has Info => (is => 'ro', isa => 'Int');
@@ -8,5 +8,4 @@ package Paws::ElasticBeanstalk::InstanceHealthSummary {
   has Severe => (is => 'ro', isa => 'Int');
   has Unknown => (is => 'ro', isa => 'Int');
   has Warning => (is => 'ro', isa => 'Int');
-}
 1;

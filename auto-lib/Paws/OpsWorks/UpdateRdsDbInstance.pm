@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::UpdateRdsDbInstance {
+package Paws::OpsWorks::UpdateRdsDbInstance;
   use Moose;
   has DbPassword => (is => 'ro', isa => 'Str');
   has DbUser => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::OpsWorks::UpdateRdsDbInstance {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRdsDbInstance');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

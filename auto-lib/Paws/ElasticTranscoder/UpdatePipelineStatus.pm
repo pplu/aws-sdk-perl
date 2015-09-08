@@ -1,5 +1,5 @@
 
-package Paws::ElasticTranscoder::UpdatePipelineStatus {
+package Paws::ElasticTranscoder::UpdatePipelineStatus;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::ElasticTranscoder::UpdatePipelineStatus {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::UpdatePipelineStatusResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdatePipelineStatusResult');
-}
 1;
 
 ### main pod documentation begin ###

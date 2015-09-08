@@ -1,5 +1,5 @@
 
-package Paws::ElasticTranscoder::UpdatePipelineNotifications {
+package Paws::ElasticTranscoder::UpdatePipelineNotifications;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
   has Notifications => (is => 'ro', isa => 'Paws::ElasticTranscoder::Notifications', required => 1);
@@ -11,7 +11,6 @@ package Paws::ElasticTranscoder::UpdatePipelineNotifications {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdatePipelineNotificationsResult');
-}
 1;
 
 ### main pod documentation begin ###

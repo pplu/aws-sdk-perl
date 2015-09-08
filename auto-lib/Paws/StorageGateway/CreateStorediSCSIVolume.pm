@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::CreateStorediSCSIVolume {
+package Paws::StorageGateway::CreateStorediSCSIVolume;
   use Moose;
   has DiskId => (is => 'ro', isa => 'Str', required => 1);
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
@@ -13,7 +13,6 @@ package Paws::StorageGateway::CreateStorediSCSIVolume {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStorediSCSIVolume');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::CreateStorediSCSIVolumeOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

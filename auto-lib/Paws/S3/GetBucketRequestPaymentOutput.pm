@@ -1,9 +1,8 @@
 
-package Paws::S3::GetBucketRequestPaymentOutput {
+package Paws::S3::GetBucketRequestPaymentOutput;
   use Moose;
   has Payer => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

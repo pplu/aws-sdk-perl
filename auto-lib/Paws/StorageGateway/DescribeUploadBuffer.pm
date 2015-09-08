@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::DescribeUploadBuffer {
+package Paws::StorageGateway::DescribeUploadBuffer;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::StorageGateway::DescribeUploadBuffer {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeUploadBuffer');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::DescribeUploadBufferOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

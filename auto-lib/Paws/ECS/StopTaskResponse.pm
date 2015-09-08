@@ -1,9 +1,8 @@
 
-package Paws::ECS::StopTaskResponse {
+package Paws::ECS::StopTaskResponse;
   use Moose;
   has task => (is => 'ro', isa => 'Paws::ECS::Task');
 
-}
 
 ### main pod documentation begin ###
 

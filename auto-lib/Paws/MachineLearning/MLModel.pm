@@ -1,4 +1,4 @@
-package Paws::MachineLearning::MLModel {
+package Paws::MachineLearning::MLModel;
   use Moose;
   has Algorithm => (is => 'ro', isa => 'Str');
   has CreatedAt => (is => 'ro', isa => 'Str');
@@ -16,5 +16,4 @@ package Paws::MachineLearning::MLModel {
   has Status => (is => 'ro', isa => 'Str');
   has TrainingDataSourceId => (is => 'ro', isa => 'Str');
   has TrainingParameters => (is => 'ro', isa => 'Paws::MachineLearning::TrainingParameters');
-}
 1;

@@ -1,10 +1,9 @@
 
-package Paws::MachineLearning::DescribeMLModelsOutput {
+package Paws::MachineLearning::DescribeMLModelsOutput;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has Results => (is => 'ro', isa => 'ArrayRef[Paws::MachineLearning::MLModel]');
 
-}
 
 ### main pod documentation begin ###
 

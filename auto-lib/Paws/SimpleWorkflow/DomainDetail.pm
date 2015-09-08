@@ -1,10 +1,9 @@
 
-package Paws::SimpleWorkflow::DomainDetail {
+package Paws::SimpleWorkflow::DomainDetail;
   use Moose;
   has configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::DomainConfiguration', required => 1);
   has domainInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::DomainInfo', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

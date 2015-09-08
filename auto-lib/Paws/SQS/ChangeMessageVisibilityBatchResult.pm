@@ -1,10 +1,9 @@
 
-package Paws::SQS::ChangeMessageVisibilityBatchResult {
+package Paws::SQS::ChangeMessageVisibilityBatchResult;
   use Moose;
   has Failed => (is => 'ro', isa => 'ArrayRef[Paws::SQS::BatchResultErrorEntry]', xmlname => 'BatchResultErrorEntry', traits => ['Unwrapped',], required => 1);
   has Successful => (is => 'ro', isa => 'ArrayRef[Paws::SQS::ChangeMessageVisibilityBatchResultEntry]', xmlname => 'ChangeMessageVisibilityBatchResultEntry', traits => ['Unwrapped',], required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

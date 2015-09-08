@@ -1,4 +1,4 @@
-package Paws::Support::CaseDetails {
+package Paws::Support::CaseDetails;
   use Moose;
   has caseId => (is => 'ro', isa => 'Str');
   has categoryCode => (is => 'ro', isa => 'Str');
@@ -12,5 +12,4 @@ package Paws::Support::CaseDetails {
   has subject => (is => 'ro', isa => 'Str');
   has submittedBy => (is => 'ro', isa => 'Str');
   has timeCreated => (is => 'ro', isa => 'Str');
-}
 1;

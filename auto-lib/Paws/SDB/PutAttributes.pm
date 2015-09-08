@@ -1,5 +1,5 @@
 
-package Paws::SDB::PutAttributes {
+package Paws::SDB::PutAttributes;
   use Moose;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::ReplaceableAttribute]', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::SDB::PutAttributes {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutAttributes');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

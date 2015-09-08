@@ -1,4 +1,4 @@
-package Paws::DeviceFarm {
+package Paws::DeviceFarm;
   use Moose;
   sub service { 'devicefarm' }
   sub version { '2015-06-23' }
@@ -133,7 +133,6 @@ package Paws::DeviceFarm {
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ScheduleRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 
-package Paws::RDS::RebootDBInstance {
+package Paws::RDS::RebootDBInstance;
   use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ForceFailover => (is => 'ro', isa => 'Bool');
@@ -9,7 +9,6 @@ package Paws::RDS::RebootDBInstance {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RebootDBInstance');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RebootDBInstanceResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RebootDBInstanceResult');
-}
 1;
 
 ### main pod documentation begin ###

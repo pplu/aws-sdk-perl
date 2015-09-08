@@ -1,4 +1,4 @@
-package Paws::OpsWorks::DailyAutoScalingSchedule {
+package Paws::OpsWorks::DailyAutoScalingSchedule;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -7,5 +7,4 @@ package Paws::OpsWorks::DailyAutoScalingSchedule {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Str]');
-}
 1

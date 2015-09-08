@@ -1,5 +1,5 @@
 
-package Paws::SDB::DomainMetadata {
+package Paws::SDB::DomainMetadata;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::SDB::DomainMetadata {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DomainMetadata');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SDB::DomainMetadataResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DomainMetadataResult');
-}
 1;
 
 ### main pod documentation begin ###

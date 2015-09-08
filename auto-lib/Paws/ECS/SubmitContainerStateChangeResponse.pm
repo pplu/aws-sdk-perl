@@ -1,9 +1,8 @@
 
-package Paws::ECS::SubmitContainerStateChangeResponse {
+package Paws::ECS::SubmitContainerStateChangeResponse;
   use Moose;
   has acknowledgment => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

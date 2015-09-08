@@ -1,10 +1,9 @@
 
-package Paws::CloudWatchLogs::DescribeDestinationsResponse {
+package Paws::CloudWatchLogs::DescribeDestinationsResponse;
   use Moose;
   has destinations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::Destination]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

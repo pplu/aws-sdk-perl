@@ -1,5 +1,5 @@
 
-package Paws::CloudTrail::CreateTrail {
+package Paws::CloudTrail::CreateTrail;
   use Moose;
   has CloudWatchLogsLogGroupArn => (is => 'ro', isa => 'Str');
   has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
@@ -14,7 +14,6 @@ package Paws::CloudTrail::CreateTrail {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTrail');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudTrail::CreateTrailResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +61,7 @@ CloudWatchLogsRoleArn.
   
 
 Specifies the role for the CloudWatch Logs endpoint to assume to write
-to a userE<acirc>E<128>E<153>s log group.
+to a userE<rsquo>s log group.
 
 
 

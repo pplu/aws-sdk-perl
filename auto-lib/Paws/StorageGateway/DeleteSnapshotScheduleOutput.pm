@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::DeleteSnapshotScheduleOutput {
+package Paws::StorageGateway::DeleteSnapshotScheduleOutput;
   use Moose;
   has VolumeARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

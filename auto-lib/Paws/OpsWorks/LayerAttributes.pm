@@ -1,4 +1,4 @@
-package Paws::OpsWorks::LayerAttributes {
+package Paws::OpsWorks::LayerAttributes;
   use Moose;
   with 'Paws::API::MapParser';
 
@@ -31,5 +31,4 @@ package Paws::OpsWorks::LayerAttributes {
   has RailsStack => (is => 'ro', isa => 'Str');
   has RubyVersion => (is => 'ro', isa => 'Str');
   has RubygemsVersion => (is => 'ro', isa => 'Str');
-}
 1

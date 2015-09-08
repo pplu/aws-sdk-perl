@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::UpdateDataSource {
+package Paws::MachineLearning::UpdateDataSource;
   use Moose;
   has DataSourceId => (is => 'ro', isa => 'Str', required => 1);
   has DataSourceName => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::MachineLearning::UpdateDataSource {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDataSource');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::UpdateDataSourceOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

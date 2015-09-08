@@ -1,10 +1,9 @@
 
-package Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentityResponse {
+package Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentityResponse;
   use Moose;
   has IdentityId => (is => 'ro', isa => 'Str');
   has Token => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

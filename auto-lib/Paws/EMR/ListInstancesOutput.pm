@@ -1,10 +1,9 @@
 
-package Paws::EMR::ListInstancesOutput {
+package Paws::EMR::ListInstancesOutput;
   use Moose;
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Instance]');
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,4 +1,4 @@
-package Paws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes {
+package Paws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes;
   use Moose;
   has childPolicy => (is => 'ro', isa => 'Str', required => 1);
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Int', required => 1);
@@ -11,5 +11,4 @@ package Paws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes {
   has taskPriority => (is => 'ro', isa => 'Str');
   has taskStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has workflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', required => 1);
-}
 1;

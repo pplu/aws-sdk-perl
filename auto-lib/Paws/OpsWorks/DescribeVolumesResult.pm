@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeVolumesResult {
+package Paws::OpsWorks::DescribeVolumesResult;
   use Moose;
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Volume]');
 
-}
 
 ### main pod documentation begin ###
 

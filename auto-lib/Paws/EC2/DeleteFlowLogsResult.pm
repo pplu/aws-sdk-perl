@@ -1,9 +1,8 @@
 
-package Paws::EC2::DeleteFlowLogsResult {
+package Paws::EC2::DeleteFlowLogsResult;
   use Moose;
   has Unsuccessful => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UnsuccessfulItem]', xmlname => 'unsuccessful', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

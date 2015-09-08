@@ -1,5 +1,5 @@
 
-package Paws::RDS::DescribeOptionGroups {
+package Paws::RDS::DescribeOptionGroups;
   use Moose;
   has EngineName => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
@@ -13,7 +13,6 @@ package Paws::RDS::DescribeOptionGroups {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroups');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::OptionGroups');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroupsResult');
-}
 1;
 
 ### main pod documentation begin ###

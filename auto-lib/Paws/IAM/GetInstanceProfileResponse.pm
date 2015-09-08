@@ -1,9 +1,8 @@
 
-package Paws::IAM::GetInstanceProfileResponse {
+package Paws::IAM::GetInstanceProfileResponse;
   use Moose;
   has InstanceProfile => (is => 'ro', isa => 'Paws::IAM::InstanceProfile', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

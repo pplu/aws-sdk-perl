@@ -1,9 +1,8 @@
 
-package Paws::CloudFormation::EstimateTemplateCostOutput {
+package Paws::CloudFormation::EstimateTemplateCostOutput;
   use Moose;
   has Url => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

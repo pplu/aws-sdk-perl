@@ -1,4 +1,4 @@
-package Paws::CodePipeline::QueryParamMap {
+package Paws::CodePipeline::QueryParamMap;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -7,5 +7,4 @@ package Paws::CodePipeline::QueryParamMap {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Str]');
-}
 1

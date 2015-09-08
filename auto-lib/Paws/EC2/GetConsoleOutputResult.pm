@@ -1,11 +1,10 @@
 
-package Paws::EC2::GetConsoleOutputResult {
+package Paws::EC2::GetConsoleOutputResult;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped',]);
   has Output => (is => 'ro', isa => 'Str', xmlname => 'output', traits => ['Unwrapped',]);
   has Timestamp => (is => 'ro', isa => 'Str', xmlname => 'timestamp', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

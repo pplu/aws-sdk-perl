@@ -1,4 +1,4 @@
-package Paws::OpsWorks::Volume {
+package Paws::OpsWorks::Volume;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has Device => (is => 'ro', isa => 'Str');
@@ -13,5 +13,4 @@ package Paws::OpsWorks::Volume {
   has Status => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');
-}
 1;

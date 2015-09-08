@@ -1,9 +1,8 @@
 
-package Paws::SES::VerifyDomainDkimResponse {
+package Paws::SES::VerifyDomainDkimResponse;
   use Moose;
   has DkimTokens => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

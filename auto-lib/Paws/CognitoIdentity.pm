@@ -1,4 +1,4 @@
-package Paws::CognitoIdentity {
+package Paws::CognitoIdentity;
   use Moose;
   sub service { 'cognito-identity' }
   sub version { '2014-06-30' }
@@ -98,7 +98,6 @@ package Paws::CognitoIdentity {
     my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::UpdateIdentityPool', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

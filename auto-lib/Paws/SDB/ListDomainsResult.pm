@@ -1,10 +1,9 @@
 
-package Paws::SDB::ListDomainsResult {
+package Paws::SDB::ListDomainsResult;
   use Moose;
   has DomainNames => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'DomainName', traits => ['Unwrapped',]);
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

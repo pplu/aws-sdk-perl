@@ -1,9 +1,8 @@
 
-package Paws::IAM::GetServerCertificateResponse {
+package Paws::IAM::GetServerCertificateResponse;
   use Moose;
   has ServerCertificate => (is => 'ro', isa => 'Paws::IAM::ServerCertificate', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

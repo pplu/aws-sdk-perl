@@ -1,10 +1,9 @@
 
-package Paws::CodeCommit::ListRepositoriesOutput {
+package Paws::CodeCommit::ListRepositoriesOutput;
   use Moose;
   has nextToken => (is => 'ro', isa => 'Str');
   has repositories => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryNameIdPair]');
 
-}
 
 ### main pod documentation begin ###
 

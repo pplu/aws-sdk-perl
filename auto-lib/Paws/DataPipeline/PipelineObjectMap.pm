@@ -1,4 +1,4 @@
-package Paws::DataPipeline::PipelineObjectMap {
+package Paws::DataPipeline::PipelineObjectMap;
   use Moose;
   with 'Paws::API::StrToObjMapParser';
 
@@ -7,5 +7,4 @@ package Paws::DataPipeline::PipelineObjectMap {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Paws::DataPipeline::PipelineObject]');
-}
 1

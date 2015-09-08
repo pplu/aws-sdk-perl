@@ -1,9 +1,8 @@
 
-package Paws::ECS::UpdateServiceResponse {
+package Paws::ECS::UpdateServiceResponse;
   use Moose;
   has service => (is => 'ro', isa => 'Paws::ECS::Service');
 
-}
 
 ### main pod documentation begin ###
 

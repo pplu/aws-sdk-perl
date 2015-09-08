@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::GetDeviceResult {
+package Paws::DeviceFarm::GetDeviceResult;
   use Moose;
   has device => (is => 'ro', isa => 'Paws::DeviceFarm::Device');
 
-}
 
 ### main pod documentation begin ###
 

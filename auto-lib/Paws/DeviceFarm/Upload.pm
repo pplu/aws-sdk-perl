@@ -1,4 +1,4 @@
-package Paws::DeviceFarm::Upload {
+package Paws::DeviceFarm::Upload;
   use Moose;
   has arn => (is => 'ro', isa => 'Str');
   has contentType => (is => 'ro', isa => 'Str');
@@ -9,5 +9,4 @@ package Paws::DeviceFarm::Upload {
   has status => (is => 'ro', isa => 'Str');
   has type => (is => 'ro', isa => 'Str');
   has url => (is => 'ro', isa => 'Str');
-}
 1;

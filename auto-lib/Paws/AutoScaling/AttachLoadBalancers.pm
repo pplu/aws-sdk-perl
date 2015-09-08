@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::AttachLoadBalancers {
+package Paws::AutoScaling::AttachLoadBalancers;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -9,7 +9,6 @@ package Paws::AutoScaling::AttachLoadBalancers {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachLoadBalancers');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::AttachLoadBalancersResultType');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'AttachLoadBalancersResult');
-}
 1;
 
 ### main pod documentation begin ###

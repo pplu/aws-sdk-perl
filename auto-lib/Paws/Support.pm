@@ -1,4 +1,4 @@
-package Paws::Support {
+package Paws::Support;
   use Moose;
   sub service { 'support' }
   sub version { '2013-04-15' }
@@ -78,7 +78,6 @@ package Paws::Support {
     my $call_object = $self->new_with_coercions('Paws::Support::ResolveCase', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

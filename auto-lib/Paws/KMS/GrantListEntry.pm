@@ -1,4 +1,4 @@
-package Paws::KMS::GrantListEntry {
+package Paws::KMS::GrantListEntry;
   use Moose;
   has Constraints => (is => 'ro', isa => 'Paws::KMS::GrantConstraints');
   has GrantId => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::KMS::GrantListEntry {
   has IssuingAccount => (is => 'ro', isa => 'Str');
   has Operations => (is => 'ro', isa => 'ArrayRef[Str]');
   has RetiringPrincipal => (is => 'ro', isa => 'Str');
-}
 1;

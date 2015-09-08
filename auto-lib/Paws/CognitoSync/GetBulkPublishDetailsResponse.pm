@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::GetBulkPublishDetailsResponse {
+package Paws::CognitoSync::GetBulkPublishDetailsResponse;
   use Moose;
   has BulkPublishCompleteTime => (is => 'ro', isa => 'Str');
   has BulkPublishStartTime => (is => 'ro', isa => 'Str');
@@ -7,7 +7,6 @@ package Paws::CognitoSync::GetBulkPublishDetailsResponse {
   has FailureMessage => (is => 'ro', isa => 'Str');
   has IdentityPoolId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

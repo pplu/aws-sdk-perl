@@ -1,5 +1,5 @@
 
-package Paws::ElasticBeanstalk::ConfigurationSettingsDescription {
+package Paws::ElasticBeanstalk::ConfigurationSettingsDescription;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
   has DateCreated => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::ElasticBeanstalk::ConfigurationSettingsDescription {
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

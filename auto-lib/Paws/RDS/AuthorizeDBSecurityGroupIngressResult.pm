@@ -1,9 +1,8 @@
 
-package Paws::RDS::AuthorizeDBSecurityGroupIngressResult {
+package Paws::RDS::AuthorizeDBSecurityGroupIngressResult;
   use Moose;
   has DBSecurityGroup => (is => 'ro', isa => 'Paws::RDS::DBSecurityGroup');
 
-}
 1;
 
 ### main pod documentation begin ###

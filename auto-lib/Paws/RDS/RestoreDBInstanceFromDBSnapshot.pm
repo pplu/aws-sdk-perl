@@ -1,5 +1,5 @@
 
-package Paws::RDS::RestoreDBInstanceFromDBSnapshot {
+package Paws::RDS::RestoreDBInstanceFromDBSnapshot;
   use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
@@ -29,7 +29,6 @@ package Paws::RDS::RestoreDBInstanceFromDBSnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromDBSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RestoreDBInstanceFromDBSnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromDBSnapshotResult');
-}
 1;
 
 ### main pod documentation begin ###

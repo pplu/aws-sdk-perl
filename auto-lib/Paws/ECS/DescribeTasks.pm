@@ -1,5 +1,5 @@
 
-package Paws::ECS::DescribeTasks {
+package Paws::ECS::DescribeTasks;
   use Moose;
   has cluster => (is => 'ro', isa => 'Str');
   has tasks => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -9,7 +9,6 @@ package Paws::ECS::DescribeTasks {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTasks');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DescribeTasksResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

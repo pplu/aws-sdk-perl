@@ -1,4 +1,4 @@
-package Paws::RDS::PendingModifiedValues {
+package Paws::RDS::PendingModifiedValues;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
@@ -11,5 +11,4 @@ package Paws::RDS::PendingModifiedValues {
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has Port => (is => 'ro', isa => 'Int');
   has StorageType => (is => 'ro', isa => 'Str');
-}
 1;

@@ -1,4 +1,4 @@
-package Paws::OpsWorks::ElasticLoadBalancer {
+package Paws::OpsWorks::ElasticLoadBalancer;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has DnsName => (is => 'ro', isa => 'Str');
@@ -9,5 +9,4 @@ package Paws::OpsWorks::ElasticLoadBalancer {
   has StackId => (is => 'ro', isa => 'Str');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has VpcId => (is => 'ro', isa => 'Str');
-}
 1;

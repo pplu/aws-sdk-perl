@@ -1,5 +1,5 @@
 
-package Paws::EC2::VolumeAttachment {
+package Paws::EC2::VolumeAttachment;
   use Moose;
   has AttachTime => (is => 'ro', isa => 'Str', xmlname => 'attachTime', traits => ['Unwrapped',]);
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', xmlname => 'deleteOnTermination', traits => ['Unwrapped',]);
@@ -8,7 +8,6 @@ package Paws::EC2::VolumeAttachment {
   has State => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
   has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

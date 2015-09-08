@@ -1,10 +1,9 @@
 
-package Paws::DeviceFarm::ListSamplesResult {
+package Paws::DeviceFarm::ListSamplesResult;
   use Moose;
   has nextToken => (is => 'ro', isa => 'Str');
   has samples => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Sample]');
 
-}
 
 ### main pod documentation begin ###
 

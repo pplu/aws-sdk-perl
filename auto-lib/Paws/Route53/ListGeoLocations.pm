@@ -1,5 +1,5 @@
 
-package Paws::Route53::ListGeoLocations {
+package Paws::Route53::ListGeoLocations;
   use Moose;
   has MaxItems => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maxitems' );
   has StartContinentCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'startcontinentcode' );
@@ -13,7 +13,6 @@ package Paws::Route53::ListGeoLocations {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ListGeoLocationsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

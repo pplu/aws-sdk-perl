@@ -1,5 +1,5 @@
 
-package Paws::EC2::StartInstances {
+package Paws::EC2::StartInstances;
   use Moose;
   has AdditionalInfo => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'additionalInfo' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -10,7 +10,6 @@ package Paws::EC2::StartInstances {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartInstances');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::StartInstancesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

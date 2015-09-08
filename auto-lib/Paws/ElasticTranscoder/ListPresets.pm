@@ -1,5 +1,5 @@
 
-package Paws::ElasticTranscoder::ListPresets {
+package Paws::ElasticTranscoder::ListPresets;
   use Moose;
   has Ascending => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Ascending' );
   has PageToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'PageToken' );
@@ -11,7 +11,6 @@ package Paws::ElasticTranscoder::ListPresets {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::ListPresetsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListPresetsResult');
-}
 1;
 
 ### main pod documentation begin ###

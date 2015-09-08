@@ -1,9 +1,8 @@
 
-package Paws::CloudHSM::DeleteHsmResponse {
+package Paws::CloudHSM::DeleteHsmResponse;
   use Moose;
   has Status => (is => 'ro', isa => 'Str', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

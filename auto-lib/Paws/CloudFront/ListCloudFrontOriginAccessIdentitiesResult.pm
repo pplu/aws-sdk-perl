@@ -1,9 +1,8 @@
 
-package Paws::CloudFront::ListCloudFrontOriginAccessIdentitiesResult {
+package Paws::CloudFront::ListCloudFrontOriginAccessIdentitiesResult;
   use Moose;
   has CloudFrontOriginAccessIdentityList => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentityList');
 
-}
 1;
 
 ### main pod documentation begin ###

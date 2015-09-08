@@ -1,5 +1,5 @@
 
-package Paws::SSM::ListAssociations {
+package Paws::SSM::ListAssociations;
   use Moose;
   has AssociationFilterList => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AssociationFilter]', required => 1);
   has MaxResults => (is => 'ro', isa => 'Int');
@@ -10,7 +10,6 @@ package Paws::SSM::ListAssociations {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAssociations');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::ListAssociationsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

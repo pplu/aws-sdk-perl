@@ -1,9 +1,8 @@
 
-package Paws::Route53::GetHealthCheckCountResponse {
+package Paws::Route53::GetHealthCheckCountResponse;
   use Moose;
   has HealthCheckCount => (is => 'ro', isa => 'Int', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

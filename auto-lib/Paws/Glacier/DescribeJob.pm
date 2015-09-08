@@ -1,5 +1,5 @@
 
-package Paws::Glacier::DescribeJob {
+package Paws::Glacier::DescribeJob;
   use Moose;
   has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
   has jobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId' , required => 1);
@@ -12,7 +12,6 @@ package Paws::Glacier::DescribeJob {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::GlacierJobDescription');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeJobResult');
-}
 1;
 
 ### main pod documentation begin ###

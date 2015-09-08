@@ -1,4 +1,4 @@
-package Paws::OpsWorks::AppAttributes {
+package Paws::OpsWorks::AppAttributes;
   use Moose;
   with 'Paws::API::MapParser';
 
@@ -10,5 +10,4 @@ package Paws::OpsWorks::AppAttributes {
   has AwsFlowRubySettings => (is => 'ro', isa => 'Str');
   has DocumentRoot => (is => 'ro', isa => 'Str');
   has RailsEnv => (is => 'ro', isa => 'Str');
-}
 1

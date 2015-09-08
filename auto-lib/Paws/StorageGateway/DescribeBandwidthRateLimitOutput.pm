@@ -1,11 +1,10 @@
 
-package Paws::StorageGateway::DescribeBandwidthRateLimitOutput {
+package Paws::StorageGateway::DescribeBandwidthRateLimitOutput;
   use Moose;
   has AverageDownloadRateLimitInBitsPerSec => (is => 'ro', isa => 'Int');
   has AverageUploadRateLimitInBitsPerSec => (is => 'ro', isa => 'Int');
   has GatewayARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

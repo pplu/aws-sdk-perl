@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::RegisterDevice {
+package Paws::CognitoSync::RegisterDevice;
   use Moose;
   has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId' , required => 1);
   has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId' , required => 1);
@@ -13,7 +13,6 @@ package Paws::CognitoSync::RegisterDevice {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::RegisterDeviceResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RegisterDeviceResult');
-}
 1;
 
 ### main pod documentation begin ###

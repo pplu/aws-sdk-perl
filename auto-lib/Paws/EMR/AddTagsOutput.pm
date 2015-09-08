@@ -1,8 +1,7 @@
 
-package Paws::EMR::AddTagsOutput {
+package Paws::EMR::AddTagsOutput;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

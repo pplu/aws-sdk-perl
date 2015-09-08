@@ -1,4 +1,4 @@
-package Paws::ECS::Cluster {
+package Paws::ECS::Cluster;
   use Moose;
   has activeServicesCount => (is => 'ro', isa => 'Int');
   has clusterArn => (is => 'ro', isa => 'Str');
@@ -7,5 +7,4 @@ package Paws::ECS::Cluster {
   has registeredContainerInstancesCount => (is => 'ro', isa => 'Int');
   has runningTasksCount => (is => 'ro', isa => 'Int');
   has status => (is => 'ro', isa => 'Str');
-}
 1;

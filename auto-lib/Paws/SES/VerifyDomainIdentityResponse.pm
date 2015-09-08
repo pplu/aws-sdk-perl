@@ -1,9 +1,8 @@
 
-package Paws::SES::VerifyDomainIdentityResponse {
+package Paws::SES::VerifyDomainIdentityResponse;
   use Moose;
   has VerificationToken => (is => 'ro', isa => 'Str', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

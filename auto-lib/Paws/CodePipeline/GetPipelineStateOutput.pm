@@ -1,5 +1,5 @@
 
-package Paws::CodePipeline::GetPipelineStateOutput {
+package Paws::CodePipeline::GetPipelineStateOutput;
   use Moose;
   has created => (is => 'ro', isa => 'Str');
   has pipelineName => (is => 'ro', isa => 'Str');
@@ -7,7 +7,6 @@ package Paws::CodePipeline::GetPipelineStateOutput {
   has stageStates => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::StageState]');
   has updated => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

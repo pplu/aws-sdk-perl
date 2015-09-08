@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::UpdateSnapshotSchedule {
+package Paws::StorageGateway::UpdateSnapshotSchedule;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has RecurrenceInHours => (is => 'ro', isa => 'Int', required => 1);
@@ -11,7 +11,6 @@ package Paws::StorageGateway::UpdateSnapshotSchedule {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSnapshotSchedule');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::UpdateSnapshotScheduleOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

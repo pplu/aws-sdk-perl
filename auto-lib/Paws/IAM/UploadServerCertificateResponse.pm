@@ -1,9 +1,8 @@
 
-package Paws::IAM::UploadServerCertificateResponse {
+package Paws::IAM::UploadServerCertificateResponse;
   use Moose;
   has ServerCertificateMetadata => (is => 'ro', isa => 'Paws::IAM::ServerCertificateMetadata');
 
-}
 1;
 
 ### main pod documentation begin ###

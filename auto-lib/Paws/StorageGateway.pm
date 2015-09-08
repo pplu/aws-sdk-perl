@@ -1,4 +1,4 @@
-package Paws::StorageGateway {
+package Paws::StorageGateway;
   use Moose;
   sub service { 'storagegateway' }
   sub version { '2013-06-30' }
@@ -273,7 +273,6 @@ package Paws::StorageGateway {
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateVTLDeviceType', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###
@@ -791,11 +790,11 @@ a gateway, your next step is to remove it from your environment.
 
 You no longer pay software charges after the gateway is deleted;
 however, your existing Amazon EBS snapshots persist and you will
-continue to be billed for these snapshots.E<Acirc> You can choose to
-remove all remaining Amazon EBS snapshots by canceling your Amazon EC2
-subscription.E<Acirc> If you prefer not to cancel your Amazon EC2
-subscription, you can delete your snapshots using the Amazon EC2
-console. For more information, see the AWS Storage Gateway Detail Page.
+continue to be billed for these snapshots. You can choose to remove all
+remaining Amazon EBS snapshots by canceling your Amazon EC2
+subscription. If you prefer not to cancel your Amazon EC2 subscription,
+you can delete your snapshots using the Amazon EC2 console. For more
+information, see the AWS Storage Gateway Detail Page.
 
 
 

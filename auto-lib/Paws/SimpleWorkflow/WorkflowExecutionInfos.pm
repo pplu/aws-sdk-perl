@@ -1,10 +1,9 @@
 
-package Paws::SimpleWorkflow::WorkflowExecutionInfos {
+package Paws::SimpleWorkflow::WorkflowExecutionInfos;
   use Moose;
   has executionInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::WorkflowExecutionInfo]', required => 1);
   has nextPageToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

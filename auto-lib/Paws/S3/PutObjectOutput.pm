@@ -1,5 +1,5 @@
 
-package Paws::S3::PutObjectOutput {
+package Paws::S3::PutObjectOutput;
   use Moose;
   has ETag => (is => 'ro', isa => 'Str');
   has Expiration => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::S3::PutObjectOutput {
   has SSEKMSKeyId => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

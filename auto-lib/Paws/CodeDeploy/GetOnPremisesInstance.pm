@@ -1,5 +1,5 @@
 
-package Paws::CodeDeploy::GetOnPremisesInstance {
+package Paws::CodeDeploy::GetOnPremisesInstance;
   use Moose;
   has instanceName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::CodeDeploy::GetOnPremisesInstance {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetOnPremisesInstance');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::GetOnPremisesInstanceOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

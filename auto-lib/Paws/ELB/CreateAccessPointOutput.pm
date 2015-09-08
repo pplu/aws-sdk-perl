@@ -1,9 +1,8 @@
 
-package Paws::ELB::CreateAccessPointOutput {
+package Paws::ELB::CreateAccessPointOutput;
   use Moose;
   has DNSName => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

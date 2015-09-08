@@ -1,4 +1,4 @@
-package Paws::OpsWorks::VolumeConfiguration {
+package Paws::OpsWorks::VolumeConfiguration;
   use Moose;
   has Iops => (is => 'ro', isa => 'Int');
   has MountPoint => (is => 'ro', isa => 'Str', required => 1);
@@ -6,5 +6,4 @@ package Paws::OpsWorks::VolumeConfiguration {
   has RaidLevel => (is => 'ro', isa => 'Int');
   has Size => (is => 'ro', isa => 'Int', required => 1);
   has VolumeType => (is => 'ro', isa => 'Str');
-}
 1;

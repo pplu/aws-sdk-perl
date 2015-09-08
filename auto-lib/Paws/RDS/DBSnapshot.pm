@@ -1,4 +1,4 @@
-package Paws::RDS::DBSnapshot {
+package Paws::RDS::DBSnapshot;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
@@ -23,5 +23,4 @@ package Paws::RDS::DBSnapshot {
   has StorageType => (is => 'ro', isa => 'Str');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
-}
 1;

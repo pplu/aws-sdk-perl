@@ -1,10 +1,9 @@
 
-package Paws::Glacier::ListVaultsOutput {
+package Paws::Glacier::ListVaultsOutput;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has VaultList => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::DescribeVaultOutput]');
 
-}
 1;
 
 ### main pod documentation begin ###

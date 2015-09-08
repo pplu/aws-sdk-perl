@@ -1,5 +1,5 @@
 
-package Paws::DynamoDB::DeleteItem {
+package Paws::DynamoDB::DeleteItem;
   use Moose;
   has ConditionalOperator => (is => 'ro', isa => 'Str');
   has ConditionExpression => (is => 'ro', isa => 'Str');
@@ -17,7 +17,6 @@ package Paws::DynamoDB::DeleteItem {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteItem');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::DeleteItemOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::RedShift::TaggedResourceListMessage {
+package Paws::RedShift::TaggedResourceListMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has TaggedResources => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::TaggedResource]', xmlname => 'TaggedResource', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

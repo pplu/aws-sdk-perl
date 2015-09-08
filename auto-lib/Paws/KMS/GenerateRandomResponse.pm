@@ -1,9 +1,8 @@
 
-package Paws::KMS::GenerateRandomResponse {
+package Paws::KMS::GenerateRandomResponse;
   use Moose;
   has Plaintext => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

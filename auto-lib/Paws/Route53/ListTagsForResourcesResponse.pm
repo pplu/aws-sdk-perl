@@ -1,9 +1,8 @@
 
-package Paws::Route53::ListTagsForResourcesResponse {
+package Paws::Route53::ListTagsForResourcesResponse;
   use Moose;
   has ResourceTagSets => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ResourceTagSet]', traits => ['Unwrapped'], xmlname => 'ResourceTagSet', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

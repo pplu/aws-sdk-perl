@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::ListDomainNamesResponse {
+package Paws::CloudSearch::ListDomainNamesResponse;
   use Moose;
   has DomainNames => (is => 'ro', isa => 'Paws::CloudSearch::DomainNameMap');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::RevokeCacheSecurityGroupIngress {
+package Paws::ElastiCache::RevokeCacheSecurityGroupIngress;
   use Moose;
   has CacheSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
   has EC2SecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::ElastiCache::RevokeCacheSecurityGroupIngress {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeCacheSecurityGroupIngress');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::RevokeCacheSecurityGroupIngressResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeCacheSecurityGroupIngressResult');
-}
 1;
 
 ### main pod documentation begin ###

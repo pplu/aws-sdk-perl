@@ -1,4 +1,4 @@
-package Paws::ElasticTranscoder::CreateJobOutput {
+package Paws::ElasticTranscoder::CreateJobOutput;
   use Moose;
   has AlbumArt => (is => 'ro', isa => 'Paws::ElasticTranscoder::JobAlbumArt');
   has Captions => (is => 'ro', isa => 'Paws::ElasticTranscoder::Captions');
@@ -11,5 +11,4 @@ package Paws::ElasticTranscoder::CreateJobOutput {
   has ThumbnailEncryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
   has ThumbnailPattern => (is => 'ro', isa => 'Str');
   has Watermarks => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::JobWatermark]');
-}
 1;

@@ -1,5 +1,5 @@
 
-package Paws::DataPipeline::DeactivatePipeline {
+package Paws::DataPipeline::DeactivatePipeline;
   use Moose;
   has cancelActive => (is => 'ro', isa => 'Bool');
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::DataPipeline::DeactivatePipeline {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeactivatePipeline');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::DeactivatePipelineOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

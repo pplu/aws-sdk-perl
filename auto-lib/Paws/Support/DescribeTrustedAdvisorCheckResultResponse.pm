@@ -1,9 +1,8 @@
 
-package Paws::Support::DescribeTrustedAdvisorCheckResultResponse {
+package Paws::Support::DescribeTrustedAdvisorCheckResultResponse;
   use Moose;
   has result => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCheckResult');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::ListIdentityPoolUsage {
+package Paws::CognitoSync::ListIdentityPoolUsage;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
@@ -11,7 +11,6 @@ package Paws::CognitoSync::ListIdentityPoolUsage {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::ListIdentityPoolUsageResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListIdentityPoolUsageResult');
-}
 1;
 
 ### main pod documentation begin ###

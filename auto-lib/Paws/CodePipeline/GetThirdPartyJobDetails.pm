@@ -1,5 +1,5 @@
 
-package Paws::CodePipeline::GetThirdPartyJobDetails {
+package Paws::CodePipeline::GetThirdPartyJobDetails;
   use Moose;
   has clientToken => (is => 'ro', isa => 'Str', required => 1);
   has jobId => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::CodePipeline::GetThirdPartyJobDetails {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetThirdPartyJobDetails');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::GetThirdPartyJobDetailsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::MachineLearning::DescribeBatchPredictionsOutput {
+package Paws::MachineLearning::DescribeBatchPredictionsOutput;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has Results => (is => 'ro', isa => 'ArrayRef[Paws::MachineLearning::BatchPrediction]');
 
-}
 
 ### main pod documentation begin ###
 

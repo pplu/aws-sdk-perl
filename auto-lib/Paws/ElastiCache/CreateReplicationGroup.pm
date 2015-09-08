@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::CreateReplicationGroup {
+package Paws::ElastiCache::CreateReplicationGroup;
   use Moose;
   has AutomaticFailoverEnabled => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
@@ -29,7 +29,6 @@ package Paws::ElastiCache::CreateReplicationGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateReplicationGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CreateReplicationGroupResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateReplicationGroupResult');
-}
 1;
 
 ### main pod documentation begin ###

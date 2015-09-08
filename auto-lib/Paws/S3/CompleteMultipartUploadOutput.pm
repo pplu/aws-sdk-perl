@@ -1,5 +1,5 @@
 
-package Paws::S3::CompleteMultipartUploadOutput {
+package Paws::S3::CompleteMultipartUploadOutput;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str');
   has ETag => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::S3::CompleteMultipartUploadOutput {
   has SSEKMSKeyId => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

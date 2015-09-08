@@ -1,9 +1,8 @@
 
-package Paws::S3::RestoreObjectOutput {
+package Paws::S3::RestoreObjectOutput;
   use Moose;
   has RequestCharged => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

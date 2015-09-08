@@ -1,5 +1,5 @@
 
-package Paws::EC2::ImportImageResult {
+package Paws::EC2::ImportImageResult;
   use Moose;
   has Architecture => (is => 'ro', isa => 'Str', xmlname => 'architecture', traits => ['Unwrapped',]);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped',]);
@@ -13,7 +13,6 @@ package Paws::EC2::ImportImageResult {
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
   has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

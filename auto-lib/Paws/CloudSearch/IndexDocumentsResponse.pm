@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::IndexDocumentsResponse {
+package Paws::CloudSearch::IndexDocumentsResponse;
   use Moose;
   has FieldNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 1;
 
 ### main pod documentation begin ###

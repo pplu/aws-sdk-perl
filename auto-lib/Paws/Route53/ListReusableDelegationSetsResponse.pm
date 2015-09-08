@@ -1,5 +1,5 @@
 
-package Paws::Route53::ListReusableDelegationSetsResponse {
+package Paws::Route53::ListReusableDelegationSetsResponse;
   use Moose;
   has DelegationSets => (is => 'ro', isa => 'ArrayRef[Paws::Route53::DelegationSet]', traits => ['Unwrapped'], xmlname => 'DelegationSet', required => 1);
   has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
@@ -7,7 +7,6 @@ package Paws::Route53::ListReusableDelegationSetsResponse {
   has MaxItems => (is => 'ro', isa => 'Str', required => 1);
   has NextMarker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::RDS::OptionGroupOptionSetting {
+package Paws::RDS::OptionGroupOptionSetting;
   use Moose;
   has AllowedValues => (is => 'ro', isa => 'Str');
   has ApplyType => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::RDS::OptionGroupOptionSetting {
   has IsModifiable => (is => 'ro', isa => 'Bool');
   has SettingDescription => (is => 'ro', isa => 'Str');
   has SettingName => (is => 'ro', isa => 'Str');
-}
 1;

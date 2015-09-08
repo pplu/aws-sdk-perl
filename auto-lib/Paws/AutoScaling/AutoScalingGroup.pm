@@ -1,4 +1,4 @@
-package Paws::AutoScaling::AutoScalingGroup {
+package Paws::AutoScaling::AutoScalingGroup;
   use Moose;
   has AutoScalingGroupARN => (is => 'ro', isa => 'Str');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -20,5 +20,4 @@ package Paws::AutoScaling::AutoScalingGroup {
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::TagDescription]');
   has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str]');
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
-}
 1;

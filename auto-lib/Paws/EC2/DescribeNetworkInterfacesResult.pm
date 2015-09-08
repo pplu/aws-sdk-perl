@@ -1,9 +1,8 @@
 
-package Paws::EC2::DescribeNetworkInterfacesResult {
+package Paws::EC2::DescribeNetworkInterfacesResult;
   use Moose;
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NetworkInterface]', xmlname => 'networkInterfaceSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

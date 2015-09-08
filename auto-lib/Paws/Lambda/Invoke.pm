@@ -1,5 +1,5 @@
 
-package Paws::Lambda::Invoke {
+package Paws::Lambda::Invoke;
   use Moose;
   has ClientContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Client-Context' );
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
@@ -14,7 +14,6 @@ package Paws::Lambda::Invoke {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::InvocationResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'InvokeResult');
-}
 1;
 
 ### main pod documentation begin ###

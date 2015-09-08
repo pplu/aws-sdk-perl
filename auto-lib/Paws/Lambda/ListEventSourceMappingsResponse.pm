@@ -1,10 +1,9 @@
 
-package Paws::Lambda::ListEventSourceMappingsResponse {
+package Paws::Lambda::ListEventSourceMappingsResponse;
   use Moose;
   has EventSourceMappings => (is => 'ro', isa => 'ArrayRef[Paws::Lambda::EventSourceMappingConfiguration]');
   has NextMarker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

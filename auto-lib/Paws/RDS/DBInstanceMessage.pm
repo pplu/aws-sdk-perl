@@ -1,10 +1,9 @@
 
-package Paws::RDS::DBInstanceMessage {
+package Paws::RDS::DBInstanceMessage;
   use Moose;
   has DBInstances => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBInstance]', xmlname => 'DBInstance', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

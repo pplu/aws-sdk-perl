@@ -1,4 +1,4 @@
-package Paws::DeviceFarm::Job {
+package Paws::DeviceFarm::Job;
   use Moose;
   has arn => (is => 'ro', isa => 'Str');
   has counters => (is => 'ro', isa => 'Paws::DeviceFarm::Counters');
@@ -11,5 +11,4 @@ package Paws::DeviceFarm::Job {
   has status => (is => 'ro', isa => 'Str');
   has stopped => (is => 'ro', isa => 'Str');
   has type => (is => 'ro', isa => 'Str');
-}
 1;

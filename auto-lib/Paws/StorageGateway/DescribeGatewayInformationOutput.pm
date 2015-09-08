@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::DescribeGatewayInformationOutput {
+package Paws::StorageGateway::DescribeGatewayInformationOutput;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
   has GatewayId => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::StorageGateway::DescribeGatewayInformationOutput {
   has LastSoftwareUpdate => (is => 'ro', isa => 'Str');
   has NextUpdateAvailabilityDate => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

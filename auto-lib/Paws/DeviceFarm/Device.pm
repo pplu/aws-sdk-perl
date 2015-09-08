@@ -1,4 +1,4 @@
-package Paws::DeviceFarm::Device {
+package Paws::DeviceFarm::Device;
   use Moose;
   has arn => (is => 'ro', isa => 'Str');
   has carrier => (is => 'ro', isa => 'Str');
@@ -14,5 +14,4 @@ package Paws::DeviceFarm::Device {
   has platform => (is => 'ro', isa => 'Str');
   has radio => (is => 'ro', isa => 'Str');
   has resolution => (is => 'ro', isa => 'Paws::DeviceFarm::Resolution');
-}
 1;

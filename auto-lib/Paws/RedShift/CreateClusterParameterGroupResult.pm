@@ -1,9 +1,8 @@
 
-package Paws::RedShift::CreateClusterParameterGroupResult {
+package Paws::RedShift::CreateClusterParameterGroupResult;
   use Moose;
   has ClusterParameterGroup => (is => 'ro', isa => 'Paws::RedShift::ClusterParameterGroup');
 
-}
 1;
 
 ### main pod documentation begin ###

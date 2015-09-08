@@ -1,5 +1,5 @@
 
-package Paws::DS::CreateDirectory {
+package Paws::DS::CreateDirectory;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -13,7 +13,6 @@ package Paws::DS::CreateDirectory {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDirectory');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::CreateDirectoryResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

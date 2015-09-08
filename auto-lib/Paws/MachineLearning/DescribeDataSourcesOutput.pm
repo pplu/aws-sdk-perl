@@ -1,10 +1,9 @@
 
-package Paws::MachineLearning::DescribeDataSourcesOutput {
+package Paws::MachineLearning::DescribeDataSourcesOutput;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has Results => (is => 'ro', isa => 'ArrayRef[Paws::MachineLearning::DataSource]');
 
-}
 
 ### main pod documentation begin ###
 

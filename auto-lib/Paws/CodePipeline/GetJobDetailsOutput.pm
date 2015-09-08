@@ -1,9 +1,8 @@
 
-package Paws::CodePipeline::GetJobDetailsOutput {
+package Paws::CodePipeline::GetJobDetailsOutput;
   use Moose;
   has jobDetails => (is => 'ro', isa => 'Paws::CodePipeline::JobDetails');
 
-}
 
 ### main pod documentation begin ###
 

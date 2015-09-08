@@ -1,9 +1,8 @@
 
-package Paws::Route53Domains::RetrieveDomainAuthCodeResponse {
+package Paws::Route53Domains::RetrieveDomainAuthCodeResponse;
   use Moose;
   has AuthCode => (is => 'ro', isa => 'Str', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

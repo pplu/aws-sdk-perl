@@ -1,5 +1,5 @@
 
-package Paws::EMR::DescribeJobFlows {
+package Paws::EMR::DescribeJobFlows;
   use Moose;
   has CreatedAfter => (is => 'ro', isa => 'Str');
   has CreatedBefore => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::EMR::DescribeJobFlows {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeJobFlows');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::DescribeJobFlowsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

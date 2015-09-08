@@ -1,9 +1,8 @@
 
-package Paws::CloudWatchLogs::PutDestinationResponse {
+package Paws::CloudWatchLogs::PutDestinationResponse;
   use Moose;
   has destination => (is => 'ro', isa => 'Paws::CloudWatchLogs::Destination');
 
-}
 
 ### main pod documentation begin ###
 

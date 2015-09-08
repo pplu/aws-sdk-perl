@@ -1,4 +1,4 @@
-package Paws::RDS::Option {
+package Paws::RDS::Option;
   use Moose;
   has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSecurityGroupMembership]');
   has OptionDescription => (is => 'ro', isa => 'Str');
@@ -8,5 +8,4 @@ package Paws::RDS::Option {
   has Persistent => (is => 'ro', isa => 'Bool');
   has Port => (is => 'ro', isa => 'Int');
   has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]');
-}
 1;

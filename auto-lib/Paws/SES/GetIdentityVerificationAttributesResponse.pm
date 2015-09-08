@@ -1,9 +1,8 @@
 
-package Paws::SES::GetIdentityVerificationAttributesResponse {
+package Paws::SES::GetIdentityVerificationAttributesResponse;
   use Moose;
   has VerificationAttributes => (is => 'ro', isa => 'Paws::SES::VerificationAttributes', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

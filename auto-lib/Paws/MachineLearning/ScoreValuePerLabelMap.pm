@@ -1,4 +1,4 @@
-package Paws::MachineLearning::ScoreValuePerLabelMap {
+package Paws::MachineLearning::ScoreValuePerLabelMap;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -7,5 +7,4 @@ package Paws::MachineLearning::ScoreValuePerLabelMap {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Num]');
-}
 1

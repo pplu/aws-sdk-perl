@@ -1,4 +1,4 @@
-package Paws::RedShift::RestoreStatus {
+package Paws::RedShift::RestoreStatus;
   use Moose;
   has CurrentRestoreRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
   has ElapsedTimeInSeconds => (is => 'ro', isa => 'Int');
@@ -6,5 +6,4 @@ package Paws::RedShift::RestoreStatus {
   has ProgressInMegaBytes => (is => 'ro', isa => 'Int');
   has SnapshotSizeInMegaBytes => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
-}
 1;

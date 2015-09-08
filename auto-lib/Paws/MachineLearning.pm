@@ -1,4 +1,4 @@
-package Paws::MachineLearning {
+package Paws::MachineLearning;
   use Moose;
   sub service { 'machinelearning' }
   sub version { '2014-12-12' }
@@ -133,7 +133,6 @@ package Paws::MachineLearning {
     my $call_object = $self->new_with_coercions('Paws::MachineLearning::UpdateMLModel', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

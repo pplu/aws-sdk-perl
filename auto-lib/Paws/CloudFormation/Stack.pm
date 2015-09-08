@@ -1,4 +1,4 @@
-package Paws::CloudFormation::Stack {
+package Paws::CloudFormation::Stack;
   use Moose;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
@@ -14,5 +14,4 @@ package Paws::CloudFormation::Stack {
   has StackStatusReason => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
   has TimeoutInMinutes => (is => 'ro', isa => 'Int');
-}
 1;

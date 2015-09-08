@@ -1,5 +1,5 @@
 
-package Paws::STS::AssumeRoleWithWebIdentityResponse {
+package Paws::STS::AssumeRoleWithWebIdentityResponse;
   use Moose;
   has AssumedRoleUser => (is => 'ro', isa => 'Paws::STS::AssumedRoleUser');
   has Audience => (is => 'ro', isa => 'Str');
@@ -8,7 +8,6 @@ package Paws::STS::AssumeRoleWithWebIdentityResponse {
   has Provider => (is => 'ro', isa => 'Str');
   has SubjectFromWebIdentityToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

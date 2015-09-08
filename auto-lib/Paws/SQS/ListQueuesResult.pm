@@ -1,9 +1,8 @@
 
-package Paws::SQS::ListQueuesResult {
+package Paws::SQS::ListQueuesResult;
   use Moose;
   has QueueUrls => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'QueueUrl', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

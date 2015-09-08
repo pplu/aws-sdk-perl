@@ -1,10 +1,9 @@
 
-package Paws::AutoScaling::AutoScalingGroupsType {
+package Paws::AutoScaling::AutoScalingGroupsType;
   use Moose;
   has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::AutoScalingGroup]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

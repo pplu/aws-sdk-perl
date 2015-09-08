@@ -1,5 +1,5 @@
 
-package Paws::IAM::GetGroupPolicy {
+package Paws::IAM::GetGroupPolicy;
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::IAM::GetGroupPolicy {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetGroupPolicy');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::GetGroupPolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetGroupPolicyResult');
-}
 1;
 
 ### main pod documentation begin ###

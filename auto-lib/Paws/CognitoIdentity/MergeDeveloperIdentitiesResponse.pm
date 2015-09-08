@@ -1,9 +1,8 @@
 
-package Paws::CognitoIdentity::MergeDeveloperIdentitiesResponse {
+package Paws::CognitoIdentity::MergeDeveloperIdentitiesResponse;
   use Moose;
   has IdentityId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

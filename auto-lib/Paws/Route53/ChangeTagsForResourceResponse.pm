@@ -1,8 +1,7 @@
 
-package Paws::Route53::ChangeTagsForResourceResponse {
+package Paws::Route53::ChangeTagsForResourceResponse;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,10 @@
 
-package Paws::EC2::AllocateAddressResult {
+package Paws::EC2::AllocateAddressResult;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str', xmlname => 'allocationId', traits => ['Unwrapped',]);
   has Domain => (is => 'ro', isa => 'Str', xmlname => 'domain', traits => ['Unwrapped',]);
   has PublicIp => (is => 'ro', isa => 'Str', xmlname => 'publicIp', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

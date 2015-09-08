@@ -1,10 +1,9 @@
 
-package Paws::Glacier::InitiateMultipartUploadOutput {
+package Paws::Glacier::InitiateMultipartUploadOutput;
   use Moose;
   has location => (is => 'ro', isa => 'Str');
   has uploadId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

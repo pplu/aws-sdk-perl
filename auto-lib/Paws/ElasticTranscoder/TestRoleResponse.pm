@@ -1,10 +1,9 @@
 
-package Paws::ElasticTranscoder::TestRoleResponse {
+package Paws::ElasticTranscoder::TestRoleResponse;
   use Moose;
   has Messages => (is => 'ro', isa => 'ArrayRef[Str]');
   has Success => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

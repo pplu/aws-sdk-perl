@@ -1,9 +1,8 @@
 
-package Paws::IAM::CreateLoginProfileResponse {
+package Paws::IAM::CreateLoginProfileResponse;
   use Moose;
   has LoginProfile => (is => 'ro', isa => 'Paws::IAM::LoginProfile', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

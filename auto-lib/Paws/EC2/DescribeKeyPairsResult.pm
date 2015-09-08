@@ -1,9 +1,8 @@
 
-package Paws::EC2::DescribeKeyPairsResult {
+package Paws::EC2::DescribeKeyPairsResult;
   use Moose;
   has KeyPairs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::KeyPairInfo]', xmlname => 'keySet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::SQS::QueueAttributeMap {
+package Paws::SQS::QueueAttributeMap;
   use Moose;
   with 'Paws::API::MapParser';
 
@@ -19,5 +19,4 @@ package Paws::SQS::QueueAttributeMap {
   has ReceiveMessageWaitTimeSeconds => (is => 'ro', isa => 'Str');
   has RedrivePolicy => (is => 'ro', isa => 'Str');
   has VisibilityTimeout => (is => 'ro', isa => 'Str');
-}
 1

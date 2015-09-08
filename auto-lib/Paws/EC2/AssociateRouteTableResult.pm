@@ -1,9 +1,8 @@
 
-package Paws::EC2::AssociateRouteTableResult {
+package Paws::EC2::AssociateRouteTableResult;
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str', xmlname => 'associationId', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

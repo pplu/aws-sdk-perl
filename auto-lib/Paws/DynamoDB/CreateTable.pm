@@ -1,5 +1,5 @@
 
-package Paws::DynamoDB::CreateTable {
+package Paws::DynamoDB::CreateTable;
   use Moose;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]', required => 1);
   has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndex]');
@@ -14,7 +14,6 @@ package Paws::DynamoDB::CreateTable {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTable');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::CreateTableOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

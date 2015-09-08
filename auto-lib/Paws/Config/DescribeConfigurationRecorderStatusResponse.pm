@@ -1,9 +1,8 @@
 
-package Paws::Config::DescribeConfigurationRecorderStatusResponse {
+package Paws::Config::DescribeConfigurationRecorderStatusResponse;
   use Moose;
   has ConfigurationRecordersStatus => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConfigurationRecorderStatus]');
 
-}
 
 ### main pod documentation begin ###
 

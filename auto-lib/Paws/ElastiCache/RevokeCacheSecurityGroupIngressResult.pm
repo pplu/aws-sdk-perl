@@ -1,9 +1,8 @@
 
-package Paws::ElastiCache::RevokeCacheSecurityGroupIngressResult {
+package Paws::ElastiCache::RevokeCacheSecurityGroupIngressResult;
   use Moose;
   has CacheSecurityGroup => (is => 'ro', isa => 'Paws::ElastiCache::CacheSecurityGroup');
 
-}
 1;
 
 ### main pod documentation begin ###

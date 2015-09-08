@@ -1,9 +1,8 @@
 
-package Paws::DS::CreateComputerResult {
+package Paws::DS::CreateComputerResult;
   use Moose;
   has Computer => (is => 'ro', isa => 'Paws::DS::Computer');
 
-}
 
 ### main pod documentation begin ###
 

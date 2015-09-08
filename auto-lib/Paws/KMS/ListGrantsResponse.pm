@@ -1,11 +1,10 @@
 
-package Paws::KMS::ListGrantsResponse {
+package Paws::KMS::ListGrantsResponse;
   use Moose;
   has Grants => (is => 'ro', isa => 'ArrayRef[Paws::KMS::GrantListEntry]');
   has NextMarker => (is => 'ro', isa => 'Str');
   has Truncated => (is => 'ro', isa => 'Bool');
 
-}
 
 ### main pod documentation begin ###
 

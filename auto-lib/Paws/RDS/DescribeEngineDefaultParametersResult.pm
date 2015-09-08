@@ -1,9 +1,8 @@
 
-package Paws::RDS::DescribeEngineDefaultParametersResult {
+package Paws::RDS::DescribeEngineDefaultParametersResult;
   use Moose;
   has EngineDefaults => (is => 'ro', isa => 'Paws::RDS::EngineDefaults');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::ElasticBeanstalk::ListAvailableSolutionStacksResultMessage {
+package Paws::ElasticBeanstalk::ListAvailableSolutionStacksResultMessage;
   use Moose;
   has SolutionStackDetails => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::SolutionStackDescription]');
   has SolutionStacks => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 1;
 
 ### main pod documentation begin ###

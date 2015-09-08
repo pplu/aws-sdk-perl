@@ -1,5 +1,5 @@
 
-package Paws::RedShift::ResizeProgressMessage {
+package Paws::RedShift::ResizeProgressMessage;
   use Moose;
   has AvgResizeRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
   has ElapsedTimeInSeconds => (is => 'ro', isa => 'Int');
@@ -14,7 +14,6 @@ package Paws::RedShift::ResizeProgressMessage {
   has TargetNumberOfNodes => (is => 'ro', isa => 'Int');
   has TotalResizeDataInMegaBytes => (is => 'ro', isa => 'Int');
 
-}
 1;
 
 ### main pod documentation begin ###

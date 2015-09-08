@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateFlowLogs {
+package Paws::EC2::CreateFlowLogs;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str');
   has DeliverLogsPermissionArn => (is => 'ro', isa => 'Str', required => 1);
@@ -13,7 +13,6 @@ package Paws::EC2::CreateFlowLogs {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFlowLogs');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateFlowLogsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

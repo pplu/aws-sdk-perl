@@ -1,9 +1,8 @@
 
-package Paws::ECS::DeleteClusterResponse {
+package Paws::ECS::DeleteClusterResponse;
   use Moose;
   has cluster => (is => 'ro', isa => 'Paws::ECS::Cluster');
 
-}
 
 ### main pod documentation begin ###
 

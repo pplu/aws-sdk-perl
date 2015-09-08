@@ -1,4 +1,4 @@
-package Paws::CodeCommit::RepositoryMetadata {
+package Paws::CodeCommit::RepositoryMetadata;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has accountId => (is => 'ro', isa => 'Str');
@@ -10,5 +10,4 @@ package Paws::CodeCommit::RepositoryMetadata {
   has repositoryDescription => (is => 'ro', isa => 'Str');
   has repositoryId => (is => 'ro', isa => 'Str');
   has repositoryName => (is => 'ro', isa => 'Str');
-}
 1;

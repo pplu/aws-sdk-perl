@@ -1,9 +1,8 @@
 
-package Paws::Route53::GetHostedZoneCountResponse {
+package Paws::Route53::GetHostedZoneCountResponse;
   use Moose;
   has HostedZoneCount => (is => 'ro', isa => 'Int', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::CloudHSM::ListHapgsResponse {
+package Paws::CloudHSM::ListHapgsResponse;
   use Moose;
   has HapgList => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,4 +1,4 @@
-package Paws::StorageGateway::TapeArchive {
+package Paws::StorageGateway::TapeArchive;
   use Moose;
   has CompletionTime => (is => 'ro', isa => 'Str');
   has RetrievedTo => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::StorageGateway::TapeArchive {
   has TapeBarcode => (is => 'ro', isa => 'Str');
   has TapeSizeInBytes => (is => 'ro', isa => 'Int');
   has TapeStatus => (is => 'ro', isa => 'Str');
-}
 1;

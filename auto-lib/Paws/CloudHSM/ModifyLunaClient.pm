@@ -1,5 +1,5 @@
 
-package Paws::CloudHSM::ModifyLunaClient {
+package Paws::CloudHSM::ModifyLunaClient;
   use Moose;
   has Certificate => (is => 'ro', isa => 'Str', required => 1);
   has ClientArn => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::CloudHSM::ModifyLunaClient {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyLunaClient');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSM::ModifyLunaClientResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

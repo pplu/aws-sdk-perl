@@ -1,4 +1,4 @@
-package Paws::DS {
+package Paws::DS;
   use Moose;
   sub service { 'ds' }
   sub version { '2015-04-16' }
@@ -93,7 +93,6 @@ package Paws::DS {
     my $call_object = $self->new_with_coercions('Paws::DS::UpdateRadius', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

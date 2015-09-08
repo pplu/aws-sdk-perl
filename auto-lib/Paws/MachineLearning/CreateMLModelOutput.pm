@@ -1,9 +1,8 @@
 
-package Paws::MachineLearning::CreateMLModelOutput {
+package Paws::MachineLearning::CreateMLModelOutput;
   use Moose;
   has MLModelId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

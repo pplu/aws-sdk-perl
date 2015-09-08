@@ -1,5 +1,5 @@
 
-package Paws::IAM::UploadServerCertificate {
+package Paws::IAM::UploadServerCertificate;
   use Moose;
   has CertificateBody => (is => 'ro', isa => 'Str', required => 1);
   has CertificateChain => (is => 'ro', isa => 'Str');
@@ -12,7 +12,6 @@ package Paws::IAM::UploadServerCertificate {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadServerCertificate');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::UploadServerCertificateResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UploadServerCertificateResult');
-}
 1;
 
 ### main pod documentation begin ###

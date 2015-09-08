@@ -1,4 +1,4 @@
-package Paws::ElastiCache::CacheNodeTypeSpecificParameter {
+package Paws::ElastiCache::CacheNodeTypeSpecificParameter;
   use Moose;
   has AllowedValues => (is => 'ro', isa => 'Str');
   has CacheNodeTypeSpecificValues => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificValue]');
@@ -8,5 +8,4 @@ package Paws::ElastiCache::CacheNodeTypeSpecificParameter {
   has MinimumEngineVersion => (is => 'ro', isa => 'Str');
   has ParameterName => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str');
-}
 1;

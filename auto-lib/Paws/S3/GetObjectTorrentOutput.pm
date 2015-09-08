@@ -1,10 +1,9 @@
 
-package Paws::S3::GetObjectTorrentOutput {
+package Paws::S3::GetObjectTorrentOutput;
   use Moose;
   has Body => (is => 'ro', isa => 'Str', traits => ['ParamInBody']);
   has RequestCharged => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

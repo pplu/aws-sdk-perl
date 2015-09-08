@@ -1,9 +1,8 @@
 
-package Paws::ELB::DescribeLoadBalancerPolicyTypesOutput {
+package Paws::ELB::DescribeLoadBalancerPolicyTypesOutput;
   use Moose;
   has PolicyTypeDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::ELB::PolicyTypeDescription]');
 
-}
 1;
 
 ### main pod documentation begin ###

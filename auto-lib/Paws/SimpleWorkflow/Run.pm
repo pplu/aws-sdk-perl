@@ -1,9 +1,8 @@
 
-package Paws::SimpleWorkflow::Run {
+package Paws::SimpleWorkflow::Run;
   use Moose;
   has runId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,11 +1,10 @@
 
-package Paws::CognitoSync::ListDatasetsResponse {
+package Paws::CognitoSync::ListDatasetsResponse;
   use Moose;
   has Count => (is => 'ro', isa => 'Int');
   has Datasets => (is => 'ro', isa => 'ArrayRef[Paws::CognitoSync::Dataset]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::ActivateGatewayOutput {
+package Paws::StorageGateway::ActivateGatewayOutput;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

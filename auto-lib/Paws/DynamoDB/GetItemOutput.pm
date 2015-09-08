@@ -1,10 +1,9 @@
 
-package Paws::DynamoDB::GetItemOutput {
+package Paws::DynamoDB::GetItemOutput;
   use Moose;
   has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
   has Item => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
 
-}
 
 ### main pod documentation begin ###
 

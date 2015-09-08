@@ -1,5 +1,5 @@
 
-package Paws::Lambda::ListFunctions {
+package Paws::Lambda::ListFunctions;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker' );
   has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems' );
@@ -11,7 +11,6 @@ package Paws::Lambda::ListFunctions {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::ListFunctionsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListFunctionsResult');
-}
 1;
 
 ### main pod documentation begin ###

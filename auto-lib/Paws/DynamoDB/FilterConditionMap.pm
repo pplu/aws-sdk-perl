@@ -1,4 +1,4 @@
-package Paws::DynamoDB::FilterConditionMap {
+package Paws::DynamoDB::FilterConditionMap;
   use Moose;
   with 'Paws::API::StrToObjMapParser';
 
@@ -7,5 +7,4 @@ package Paws::DynamoDB::FilterConditionMap {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::Condition]');
-}
 1

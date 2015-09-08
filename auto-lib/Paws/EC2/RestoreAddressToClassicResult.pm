@@ -1,10 +1,9 @@
 
-package Paws::EC2::RestoreAddressToClassicResult {
+package Paws::EC2::RestoreAddressToClassicResult;
   use Moose;
   has PublicIp => (is => 'ro', isa => 'Str', xmlname => 'publicIp', traits => ['Unwrapped',]);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

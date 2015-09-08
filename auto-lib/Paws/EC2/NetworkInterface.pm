@@ -1,4 +1,4 @@
-package Paws::EC2::NetworkInterface {
+package Paws::EC2::NetworkInterface;
   use Moose;
   has Association => (is => 'ro', isa => 'Paws::EC2::NetworkInterfaceAssociation', xmlname => 'association', traits => ['Unwrapped']);
   has Attachment => (is => 'ro', isa => 'Paws::EC2::NetworkInterfaceAttachment', xmlname => 'attachment', traits => ['Unwrapped']);
@@ -18,5 +18,4 @@ package Paws::EC2::NetworkInterface {
   has SubnetId => (is => 'ro', isa => 'Str', xmlname => 'subnetId', traits => ['Unwrapped']);
   has TagSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
   has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
-}
 1;

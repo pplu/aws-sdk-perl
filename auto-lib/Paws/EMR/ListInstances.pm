@@ -1,5 +1,5 @@
 
-package Paws::EMR::ListInstances {
+package Paws::EMR::ListInstances;
   use Moose;
   has ClusterId => (is => 'ro', isa => 'Str', required => 1);
   has InstanceGroupId => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::EMR::ListInstances {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListInstances');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::ListInstancesOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

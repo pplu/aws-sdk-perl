@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::CreateDataSourceFromRDS {
+package Paws::MachineLearning::CreateDataSourceFromRDS;
   use Moose;
   has ComputeStatistics => (is => 'ro', isa => 'Bool');
   has DataSourceId => (is => 'ro', isa => 'Str', required => 1);
@@ -12,7 +12,6 @@ package Paws::MachineLearning::CreateDataSourceFromRDS {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDataSourceFromRDS');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::CreateDataSourceFromRDSOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -180,9 +179,8 @@ Sample - C< "{\"randomSeed\":\"some-random-seed\",
   
 
 The role that Amazon ML assumes on behalf of the user to create and
-activate a data pipeline in the userE<acirc>E<128>E<153>s account and
-copy data (using the C<SelectSqlQuery>) query from Amazon RDS to Amazon
-S3.
+activate a data pipeline in the userE<rsquo>s account and copy data
+(using the C<SelectSqlQuery>) query from Amazon RDS to Amazon S3.
 
 
 

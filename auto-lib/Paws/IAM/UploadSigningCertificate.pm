@@ -1,5 +1,5 @@
 
-package Paws::IAM::UploadSigningCertificate {
+package Paws::IAM::UploadSigningCertificate;
   use Moose;
   has CertificateBody => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::IAM::UploadSigningCertificate {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadSigningCertificate');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::UploadSigningCertificateResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UploadSigningCertificateResult');
-}
 1;
 
 ### main pod documentation begin ###

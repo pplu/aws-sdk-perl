@@ -1,4 +1,4 @@
-package Paws::EMR::Ec2InstanceAttributes {
+package Paws::EMR::Ec2InstanceAttributes;
   use Moose;
   has AdditionalMasterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has AdditionalSlaveSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -8,5 +8,4 @@ package Paws::EMR::Ec2InstanceAttributes {
   has EmrManagedMasterSecurityGroup => (is => 'ro', isa => 'Str');
   has EmrManagedSlaveSecurityGroup => (is => 'ro', isa => 'Str');
   has IamInstanceProfile => (is => 'ro', isa => 'Str');
-}
 1;

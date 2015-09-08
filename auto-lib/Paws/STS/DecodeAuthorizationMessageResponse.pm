@@ -1,9 +1,8 @@
 
-package Paws::STS::DecodeAuthorizationMessageResponse {
+package Paws::STS::DecodeAuthorizationMessageResponse;
   use Moose;
   has DecodedMessage => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

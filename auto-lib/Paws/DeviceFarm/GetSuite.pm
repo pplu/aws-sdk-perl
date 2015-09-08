@@ -1,5 +1,5 @@
 
-package Paws::DeviceFarm::GetSuite {
+package Paws::DeviceFarm::GetSuite;
   use Moose;
   has arn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::DeviceFarm::GetSuite {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSuite');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::GetSuiteResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

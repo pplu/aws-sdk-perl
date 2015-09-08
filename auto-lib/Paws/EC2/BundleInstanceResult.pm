@@ -1,9 +1,8 @@
 
-package Paws::EC2::BundleInstanceResult {
+package Paws::EC2::BundleInstanceResult;
   use Moose;
   has BundleTask => (is => 'ro', isa => 'Paws::EC2::BundleTask', xmlname => 'bundleInstanceTask', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

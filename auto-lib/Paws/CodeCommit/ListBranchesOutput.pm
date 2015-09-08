@@ -1,10 +1,9 @@
 
-package Paws::CodeCommit::ListBranchesOutput {
+package Paws::CodeCommit::ListBranchesOutput;
   use Moose;
   has branches => (is => 'ro', isa => 'ArrayRef[Str]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

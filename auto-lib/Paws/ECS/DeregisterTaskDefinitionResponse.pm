@@ -1,9 +1,8 @@
 
-package Paws::ECS::DeregisterTaskDefinitionResponse {
+package Paws::ECS::DeregisterTaskDefinitionResponse;
   use Moose;
   has taskDefinition => (is => 'ro', isa => 'Paws::ECS::TaskDefinition');
 
-}
 
 ### main pod documentation begin ###
 

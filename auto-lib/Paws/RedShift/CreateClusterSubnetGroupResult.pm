@@ -1,9 +1,8 @@
 
-package Paws::RedShift::CreateClusterSubnetGroupResult {
+package Paws::RedShift::CreateClusterSubnetGroupResult;
   use Moose;
   has ClusterSubnetGroup => (is => 'ro', isa => 'Paws::RedShift::ClusterSubnetGroup');
 
-}
 1;
 
 ### main pod documentation begin ###

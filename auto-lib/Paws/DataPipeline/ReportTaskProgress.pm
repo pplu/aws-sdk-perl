@@ -1,5 +1,5 @@
 
-package Paws::DataPipeline::ReportTaskProgress {
+package Paws::DataPipeline::ReportTaskProgress;
   use Moose;
   has fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]');
   has taskId => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::DataPipeline::ReportTaskProgress {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReportTaskProgress');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::ReportTaskProgressOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::EC2::DescribeVolumeStatusResult {
+package Paws::EC2::DescribeVolumeStatusResult;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has VolumeStatuses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeStatusItem]', xmlname => 'volumeStatusSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::SQS::AttributeMap {
+package Paws::SQS::AttributeMap;
   use Moose;
   with 'Paws::API::MapParser';
 
@@ -10,5 +10,4 @@ package Paws::SQS::AttributeMap {
   has ApproximateReceiveCount => (is => 'ro', isa => 'Str');
   has SenderId => (is => 'ro', isa => 'Str');
   has SentTimestamp => (is => 'ro', isa => 'Str');
-}
 1

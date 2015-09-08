@@ -1,4 +1,4 @@
-package Paws::DirectConnect::NewPublicVirtualInterfaceAllocation {
+package Paws::DirectConnect::NewPublicVirtualInterfaceAllocation;
   use Moose;
   has amazonAddress => (is => 'ro', isa => 'Str', required => 1);
   has asn => (is => 'ro', isa => 'Int', required => 1);
@@ -7,5 +7,4 @@ package Paws::DirectConnect::NewPublicVirtualInterfaceAllocation {
   has routeFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', required => 1);
   has virtualInterfaceName => (is => 'ro', isa => 'Str', required => 1);
   has vlan => (is => 'ro', isa => 'Int', required => 1);
-}
 1;

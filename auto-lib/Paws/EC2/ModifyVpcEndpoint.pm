@@ -1,5 +1,5 @@
 
-package Paws::EC2::ModifyVpcEndpoint {
+package Paws::EC2::ModifyVpcEndpoint;
   use Moose;
   has AddRouteTableIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AddRouteTableId' );
   has DryRun => (is => 'ro', isa => 'Bool');
@@ -13,7 +13,6 @@ package Paws::EC2::ModifyVpcEndpoint {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyVpcEndpoint');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyVpcEndpointResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

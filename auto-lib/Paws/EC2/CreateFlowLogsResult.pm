@@ -1,11 +1,10 @@
 
-package Paws::EC2::CreateFlowLogsResult {
+package Paws::EC2::CreateFlowLogsResult;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped',]);
   has FlowLogIds => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'flowLogIdSet', traits => ['Unwrapped',]);
   has Unsuccessful => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UnsuccessfulItem]', xmlname => 'unsuccessful', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

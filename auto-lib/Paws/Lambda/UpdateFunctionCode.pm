@@ -1,5 +1,5 @@
 
-package Paws::Lambda::UpdateFunctionCode {
+package Paws::Lambda::UpdateFunctionCode;
   use Moose;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
   has S3Bucket => (is => 'ro', isa => 'Str');
@@ -14,7 +14,6 @@ package Paws::Lambda::UpdateFunctionCode {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateFunctionCodeResult');
-}
 1;
 
 ### main pod documentation begin ###

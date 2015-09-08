@@ -1,10 +1,9 @@
 
-package Paws::RedShift::ClusterSubnetGroupMessage {
+package Paws::RedShift::ClusterSubnetGroupMessage;
   use Moose;
   has ClusterSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterSubnetGroup]', xmlname => 'ClusterSubnetGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

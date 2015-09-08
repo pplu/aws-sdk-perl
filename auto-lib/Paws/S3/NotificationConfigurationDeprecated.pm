@@ -1,11 +1,10 @@
 
-package Paws::S3::NotificationConfigurationDeprecated {
+package Paws::S3::NotificationConfigurationDeprecated;
   use Moose;
   has CloudFunctionConfiguration => (is => 'ro', isa => 'Paws::S3::CloudFunctionConfiguration');
   has QueueConfiguration => (is => 'ro', isa => 'Paws::S3::QueueConfigurationDeprecated');
   has TopicConfiguration => (is => 'ro', isa => 'Paws::S3::TopicConfigurationDeprecated');
 
-}
 1;
 
 ### main pod documentation begin ###

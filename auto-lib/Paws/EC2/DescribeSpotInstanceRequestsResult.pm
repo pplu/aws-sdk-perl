@@ -1,9 +1,8 @@
 
-package Paws::EC2::DescribeSpotInstanceRequestsResult {
+package Paws::EC2::DescribeSpotInstanceRequestsResult;
   use Moose;
   has SpotInstanceRequests => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotInstanceRequest]', xmlname => 'spotInstanceRequestSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

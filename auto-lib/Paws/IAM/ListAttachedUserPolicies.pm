@@ -1,5 +1,5 @@
 
-package Paws::IAM::ListAttachedUserPolicies {
+package Paws::IAM::ListAttachedUserPolicies;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Int');
@@ -11,7 +11,6 @@ package Paws::IAM::ListAttachedUserPolicies {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAttachedUserPolicies');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::ListAttachedUserPoliciesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListAttachedUserPoliciesResult');
-}
 1;
 
 ### main pod documentation begin ###

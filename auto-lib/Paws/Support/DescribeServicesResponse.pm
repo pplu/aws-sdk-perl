@@ -1,9 +1,8 @@
 
-package Paws::Support::DescribeServicesResponse {
+package Paws::Support::DescribeServicesResponse;
   use Moose;
   has services => (is => 'ro', isa => 'ArrayRef[Paws::Support::Service]');
 
-}
 
 ### main pod documentation begin ###
 

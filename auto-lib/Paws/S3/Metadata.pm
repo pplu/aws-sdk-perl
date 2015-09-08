@@ -1,4 +1,4 @@
-package Paws::S3::Metadata {
+package Paws::S3::Metadata;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -7,5 +7,4 @@ package Paws::S3::Metadata {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Str]');
-}
 1

@@ -1,4 +1,4 @@
-package Paws::Config {
+package Paws::Config;
   use Moose;
   sub service { 'config' }
   sub version { '2014-11-12' }
@@ -68,7 +68,6 @@ package Paws::Config {
     my $call_object = $self->new_with_coercions('Paws::Config::StopConfigurationRecorder', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

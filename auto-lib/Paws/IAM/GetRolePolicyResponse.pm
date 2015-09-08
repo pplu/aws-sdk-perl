@@ -1,11 +1,10 @@
 
-package Paws::IAM::GetRolePolicyResponse {
+package Paws::IAM::GetRolePolicyResponse;
   use Moose;
   has PolicyDocument => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute',], required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

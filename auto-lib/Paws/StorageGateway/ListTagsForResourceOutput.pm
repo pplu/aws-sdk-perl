@@ -1,11 +1,10 @@
 
-package Paws::StorageGateway::ListTagsForResourceOutput {
+package Paws::StorageGateway::ListTagsForResourceOutput;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has ResourceARN => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,9 +1,8 @@
 
-package Paws::MachineLearning::UpdateBatchPredictionOutput {
+package Paws::MachineLearning::UpdateBatchPredictionOutput;
   use Moose;
   has BatchPredictionId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

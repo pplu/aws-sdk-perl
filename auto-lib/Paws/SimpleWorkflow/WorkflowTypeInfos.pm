@@ -1,10 +1,9 @@
 
-package Paws::SimpleWorkflow::WorkflowTypeInfos {
+package Paws::SimpleWorkflow::WorkflowTypeInfos;
   use Moose;
   has nextPageToken => (is => 'ro', isa => 'Str');
   has typeInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::WorkflowTypeInfo]', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

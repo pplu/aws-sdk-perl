@@ -1,11 +1,10 @@
 
-package Paws::EFS::DescribeTagsResponse {
+package Paws::EFS::DescribeTagsResponse;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has NextMarker => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EFS::Tag]', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

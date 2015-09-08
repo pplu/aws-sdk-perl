@@ -1,9 +1,8 @@
 
-package Paws::DS::GetDirectoryLimitsResult {
+package Paws::DS::GetDirectoryLimitsResult;
   use Moose;
   has DirectoryLimits => (is => 'ro', isa => 'Paws::DS::DirectoryLimits');
 
-}
 
 ### main pod documentation begin ###
 

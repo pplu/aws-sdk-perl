@@ -1,10 +1,9 @@
 
-package Paws::EMR::ListStepsOutput {
+package Paws::EMR::ListStepsOutput;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepSummary]');
 
-}
 
 ### main pod documentation begin ###
 

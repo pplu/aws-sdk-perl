@@ -1,5 +1,5 @@
 
-package Paws::Glacier::GlacierJobDescription {
+package Paws::Glacier::GlacierJobDescription;
   use Moose;
   has Action => (is => 'ro', isa => 'Str');
   has ArchiveId => (is => 'ro', isa => 'Str');
@@ -19,7 +19,6 @@ package Paws::Glacier::GlacierJobDescription {
   has StatusMessage => (is => 'ro', isa => 'Str');
   has VaultARN => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

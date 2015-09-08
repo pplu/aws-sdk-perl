@@ -1,5 +1,5 @@
 
-package Paws::DirectConnect::Connection {
+package Paws::DirectConnect::Connection;
   use Moose;
   has bandwidth => (is => 'ro', isa => 'Str');
   has connectionId => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::DirectConnect::Connection {
   has region => (is => 'ro', isa => 'Str');
   has vlan => (is => 'ro', isa => 'Int');
 
-}
 
 ### main pod documentation begin ###
 

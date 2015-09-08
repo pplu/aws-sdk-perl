@@ -1,5 +1,5 @@
 
-package Paws::ECS::RegisterTaskDefinition {
+package Paws::ECS::RegisterTaskDefinition;
   use Moose;
   has containerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', required => 1);
   has family => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::ECS::RegisterTaskDefinition {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterTaskDefinition');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::RegisterTaskDefinitionResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

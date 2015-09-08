@@ -1,5 +1,5 @@
 
-package Paws::DS::CreateComputer {
+package Paws::DS::CreateComputer;
   use Moose;
   has ComputerAttributes => (is => 'ro', isa => 'ArrayRef[Paws::DS::Attribute]');
   has ComputerName => (is => 'ro', isa => 'Str', required => 1);
@@ -12,7 +12,6 @@ package Paws::DS::CreateComputer {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateComputer');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::CreateComputerResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

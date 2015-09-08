@@ -1,9 +1,8 @@
 
-package Paws::ECS::DeleteServiceResponse {
+package Paws::ECS::DeleteServiceResponse;
   use Moose;
   has service => (is => 'ro', isa => 'Paws::ECS::Service');
 
-}
 
 ### main pod documentation begin ###
 

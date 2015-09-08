@@ -1,9 +1,8 @@
 
-package Paws::EC2::DescribeAccountAttributesResult {
+package Paws::EC2::DescribeAccountAttributesResult;
   use Moose;
   has AccountAttributes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AccountAttribute]', xmlname => 'accountAttributeSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

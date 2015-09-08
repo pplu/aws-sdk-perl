@@ -1,4 +1,4 @@
-package Paws::DeviceFarm::UniqueProblemsByExecutionResultMap {
+package Paws::DeviceFarm::UniqueProblemsByExecutionResultMap;
   use Moose;
   with 'Paws::API::MapParser';
 
@@ -13,5 +13,4 @@ package Paws::DeviceFarm::UniqueProblemsByExecutionResultMap {
   has SKIPPED => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::UniqueProblem]');
   has STOPPED => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::UniqueProblem]');
   has WARNED => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::UniqueProblem]');
-}
 1

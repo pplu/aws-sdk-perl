@@ -1,9 +1,8 @@
 
-package Paws::CognitoIdentity::DeleteIdentitiesResponse {
+package Paws::CognitoIdentity::DeleteIdentitiesResponse;
   use Moose;
   has UnprocessedIdentityIds => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::UnprocessedIdentityId]');
 
-}
 
 ### main pod documentation begin ###
 

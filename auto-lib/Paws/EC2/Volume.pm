@@ -1,5 +1,5 @@
 
-package Paws::EC2::Volume {
+package Paws::EC2::Volume;
   use Moose;
   has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeAttachment]', xmlname => 'attachmentSet', traits => ['Unwrapped',]);
   has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped',]);
@@ -14,7 +14,6 @@ package Paws::EC2::Volume {
   has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped',]);
   has VolumeType => (is => 'ro', isa => 'Str', xmlname => 'volumeType', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

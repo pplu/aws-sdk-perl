@@ -1,4 +1,4 @@
-package Paws::OpsWorks::StackSummary {
+package Paws::OpsWorks::StackSummary;
   use Moose;
   has AppsCount => (is => 'ro', isa => 'Int');
   has Arn => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::OpsWorks::StackSummary {
   has LayersCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
-}
 1;

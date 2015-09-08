@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::ScheduleRunResult {
+package Paws::DeviceFarm::ScheduleRunResult;
   use Moose;
   has run => (is => 'ro', isa => 'Paws::DeviceFarm::Run');
 
-}
 
 ### main pod documentation begin ###
 

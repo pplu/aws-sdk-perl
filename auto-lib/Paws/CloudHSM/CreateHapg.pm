@@ -1,5 +1,5 @@
 
-package Paws::CloudHSM::CreateHapg {
+package Paws::CloudHSM::CreateHapg;
   use Moose;
   has Label => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::CloudHSM::CreateHapg {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHapg');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSM::CreateHapgResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

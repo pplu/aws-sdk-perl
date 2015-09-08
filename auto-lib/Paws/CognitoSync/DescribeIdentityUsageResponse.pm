@@ -1,9 +1,8 @@
 
-package Paws::CognitoSync::DescribeIdentityUsageResponse {
+package Paws::CognitoSync::DescribeIdentityUsageResponse;
   use Moose;
   has IdentityUsage => (is => 'ro', isa => 'Paws::CognitoSync::IdentityUsage');
 
-}
 1;
 
 ### main pod documentation begin ###

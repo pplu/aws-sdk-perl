@@ -1,5 +1,5 @@
 
-package Paws::IAM::GetSSHPublicKey {
+package Paws::IAM::GetSSHPublicKey;
   use Moose;
   has Encoding => (is => 'ro', isa => 'Str', required => 1);
   has SSHPublicKeyId => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::IAM::GetSSHPublicKey {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSSHPublicKey');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::GetSSHPublicKeyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetSSHPublicKeyResult');
-}
 1;
 
 ### main pod documentation begin ###

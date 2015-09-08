@@ -1,9 +1,8 @@
 
-package Paws::CodeDeploy::DeleteDeploymentGroupOutput {
+package Paws::CodeDeploy::DeleteDeploymentGroupOutput;
   use Moose;
   has hooksNotCleanedUp => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]');
 
-}
 
 ### main pod documentation begin ###
 

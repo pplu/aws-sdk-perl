@@ -1,10 +1,9 @@
 
-package Paws::EC2::DescribeInstanceStatusResult {
+package Paws::EC2::DescribeInstanceStatusResult;
   use Moose;
   has InstanceStatuses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceStatus]', xmlname => 'instanceStatusSet', traits => ['Unwrapped',]);
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

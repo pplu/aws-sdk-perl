@@ -1,10 +1,9 @@
 
-package Paws::CodePipeline::ListPipelinesOutput {
+package Paws::CodePipeline::ListPipelinesOutput;
   use Moose;
   has nextToken => (is => 'ro', isa => 'Str');
   has pipelines => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::PipelineSummary]');
 
-}
 
 ### main pod documentation begin ###
 

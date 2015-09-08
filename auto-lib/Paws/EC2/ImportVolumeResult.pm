@@ -1,9 +1,8 @@
 
-package Paws::EC2::ImportVolumeResult {
+package Paws::EC2::ImportVolumeResult;
   use Moose;
   has ConversionTask => (is => 'ro', isa => 'Paws::EC2::ConversionTask', xmlname => 'conversionTask', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

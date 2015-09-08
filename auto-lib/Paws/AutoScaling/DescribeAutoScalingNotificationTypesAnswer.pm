@@ -1,9 +1,8 @@
 
-package Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer {
+package Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer;
   use Moose;
   has AutoScalingNotificationTypes => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 1;
 
 ### main pod documentation begin ###

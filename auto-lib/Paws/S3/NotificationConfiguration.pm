@@ -1,11 +1,10 @@
 
-package Paws::S3::NotificationConfiguration {
+package Paws::S3::NotificationConfiguration;
   use Moose;
   has LambdaFunctionConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::LambdaFunctionConfiguration]');
   has QueueConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::QueueConfiguration]');
   has TopicConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::TopicConfiguration]');
 
-}
 1;
 
 ### main pod documentation begin ###

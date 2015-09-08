@@ -1,9 +1,8 @@
 
-package Paws::Glacier::UploadMultipartPartOutput {
+package Paws::Glacier::UploadMultipartPartOutput;
   use Moose;
   has checksum => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

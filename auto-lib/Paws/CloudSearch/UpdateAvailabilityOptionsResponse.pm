@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::UpdateAvailabilityOptionsResponse {
+package Paws::CloudSearch::UpdateAvailabilityOptionsResponse;
   use Moose;
   has AvailabilityOptions => (is => 'ro', isa => 'Paws::CloudSearch::AvailabilityOptionsStatus');
 
-}
 1;
 
 ### main pod documentation begin ###

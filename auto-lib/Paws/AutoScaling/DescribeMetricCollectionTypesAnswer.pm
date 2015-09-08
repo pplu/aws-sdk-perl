@@ -1,10 +1,9 @@
 
-package Paws::AutoScaling::DescribeMetricCollectionTypesAnswer {
+package Paws::AutoScaling::DescribeMetricCollectionTypesAnswer;
   use Moose;
   has Granularities => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::MetricGranularityType]');
   has Metrics => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::MetricCollectionType]');
 
-}
 1;
 
 ### main pod documentation begin ###

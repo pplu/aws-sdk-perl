@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeUserProfilesResult {
+package Paws::OpsWorks::DescribeUserProfilesResult;
   use Moose;
   has UserProfiles => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::UserProfile]');
 
-}
 
 ### main pod documentation begin ###
 

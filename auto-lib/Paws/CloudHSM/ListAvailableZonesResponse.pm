@@ -1,9 +1,8 @@
 
-package Paws::CloudHSM::ListAvailableZonesResponse {
+package Paws::CloudHSM::ListAvailableZonesResponse;
   use Moose;
   has AZList => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 
 ### main pod documentation begin ###
 

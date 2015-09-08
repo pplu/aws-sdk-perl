@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::UpdateEvaluation {
+package Paws::MachineLearning::UpdateEvaluation;
   use Moose;
   has EvaluationId => (is => 'ro', isa => 'Str', required => 1);
   has EvaluationName => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::MachineLearning::UpdateEvaluation {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEvaluation');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::UpdateEvaluationOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

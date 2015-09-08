@@ -1,4 +1,4 @@
-package Paws::DS::DirectoryConnectSettingsDescription {
+package Paws::DS::DirectoryConnectSettingsDescription;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has ConnectIps => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -6,5 +6,4 @@ package Paws::DS::DirectoryConnectSettingsDescription {
   has SecurityGroupId => (is => 'ro', isa => 'Str');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has VpcId => (is => 'ro', isa => 'Str');
-}
 1;

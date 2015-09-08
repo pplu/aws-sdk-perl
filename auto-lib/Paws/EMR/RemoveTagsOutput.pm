@@ -1,8 +1,7 @@
 
-package Paws::EMR::RemoveTagsOutput {
+package Paws::EMR::RemoveTagsOutput;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,4 +1,4 @@
-package Paws::RedShift::PendingModifiedValues {
+package Paws::RedShift::PendingModifiedValues;
   use Moose;
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
@@ -7,5 +7,4 @@ package Paws::RedShift::PendingModifiedValues {
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
-}
 1;

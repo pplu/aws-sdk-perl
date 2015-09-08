@@ -1,5 +1,5 @@
 
-package Paws::EC2::DeleteVpcEndpoints {
+package Paws::EC2::DeleteVpcEndpoints;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has VpcEndpointIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcEndpointId' , required => 1);
@@ -9,7 +9,6 @@ package Paws::EC2::DeleteVpcEndpoints {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpcEndpoints');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DeleteVpcEndpointsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

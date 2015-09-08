@@ -1,5 +1,5 @@
 
-package Paws::SNS::Publish {
+package Paws::SNS::Publish;
   use Moose;
   has Message => (is => 'ro', isa => 'Str', required => 1);
   has MessageAttributes => (is => 'ro', isa => 'Paws::SNS::MessageAttributeMap');
@@ -13,7 +13,6 @@ package Paws::SNS::Publish {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'Publish');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::PublishResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'PublishResult');
-}
 1;
 
 ### main pod documentation begin ###

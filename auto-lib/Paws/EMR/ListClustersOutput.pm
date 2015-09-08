@@ -1,10 +1,9 @@
 
-package Paws::EMR::ListClustersOutput {
+package Paws::EMR::ListClustersOutput;
   use Moose;
   has Clusters => (is => 'ro', isa => 'ArrayRef[Paws::EMR::ClusterSummary]');
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

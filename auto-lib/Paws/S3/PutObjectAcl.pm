@@ -1,5 +1,5 @@
 
-package Paws::S3::PutObjectAcl {
+package Paws::S3::PutObjectAcl;
   use Moose;
   has AccessControlPolicy => (is => 'ro', isa => 'Paws::S3::AccessControlPolicy');
   has ACL => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-acl' );
@@ -20,7 +20,6 @@ package Paws::S3::PutObjectAcl {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectAclOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

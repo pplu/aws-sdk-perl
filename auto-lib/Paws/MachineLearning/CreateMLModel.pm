@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::CreateMLModel {
+package Paws::MachineLearning::CreateMLModel;
   use Moose;
   has MLModelId => (is => 'ro', isa => 'Str', required => 1);
   has MLModelName => (is => 'ro', isa => 'Str');
@@ -14,7 +14,6 @@ package Paws::MachineLearning::CreateMLModel {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateMLModel');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::CreateMLModelOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -165,8 +164,8 @@ default value is 33554432.
   
 
 The data recipe for creating C<MLModel>. You must specify either the
-recipe or its URI. If you donE<acirc>E<128>E<153>t specify a recipe or
-its URI, Amazon ML creates a default.
+recipe or its URI. If you donE<rsquo>t specify a recipe or its URI,
+Amazon ML creates a default.
 
 
 
@@ -183,8 +182,8 @@ its URI, Amazon ML creates a default.
 
 The Amazon Simple Storage Service (Amazon S3) location and file name
 that contains the C<MLModel> recipe. You must specify either the recipe
-or its URI. If you donE<acirc>E<128>E<153>t specify a recipe or its
-URI, Amazon ML creates a default.
+or its URI. If you donE<rsquo>t specify a recipe or its URI, Amazon ML
+creates a default.
 
 
 

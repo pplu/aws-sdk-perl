@@ -1,5 +1,5 @@
 
-package Paws::DynamoDB::UpdateItem {
+package Paws::DynamoDB::UpdateItem;
   use Moose;
   has AttributeUpdates => (is => 'ro', isa => 'Paws::DynamoDB::AttributeUpdates');
   has ConditionalOperator => (is => 'ro', isa => 'Str');
@@ -19,7 +19,6 @@ package Paws::DynamoDB::UpdateItem {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateItem');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::UpdateItemOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

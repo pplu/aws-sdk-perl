@@ -1,4 +1,4 @@
-package Paws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttributes {
+package Paws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttributes;
   use Moose;
   has control => (is => 'ro', isa => 'Str');
   has decisionTaskCompletedEventId => (is => 'ro', isa => 'Int', required => 1);
@@ -6,5 +6,4 @@ package Paws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttri
   has runId => (is => 'ro', isa => 'Str');
   has signalName => (is => 'ro', isa => 'Str', required => 1);
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
-}
 1;

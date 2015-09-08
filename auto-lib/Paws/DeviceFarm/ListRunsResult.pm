@@ -1,10 +1,9 @@
 
-package Paws::DeviceFarm::ListRunsResult {
+package Paws::DeviceFarm::ListRunsResult;
   use Moose;
   has nextToken => (is => 'ro', isa => 'Str');
   has runs => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Run]');
 
-}
 
 ### main pod documentation begin ###
 

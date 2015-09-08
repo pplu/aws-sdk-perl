@@ -1,12 +1,11 @@
 
-package Paws::Lambda::InvocationResponse {
+package Paws::Lambda::InvocationResponse;
   use Moose;
   has FunctionError => (is => 'ro', isa => 'Str');
   has LogResult => (is => 'ro', isa => 'Str');
   has Payload => (is => 'ro', isa => 'Str');
   has StatusCode => (is => 'ro', isa => 'Int');
 
-}
 1;
 
 ### main pod documentation begin ###

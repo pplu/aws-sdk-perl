@@ -1,11 +1,10 @@
 
-package Paws::CodeDeploy::ListDeploymentGroupsOutput {
+package Paws::CodeDeploy::ListDeploymentGroupsOutput;
   use Moose;
   has applicationName => (is => 'ro', isa => 'Str');
   has deploymentGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

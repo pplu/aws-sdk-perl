@@ -1,11 +1,10 @@
 
-package Paws::ImportExport::UpdateJobOutput {
+package Paws::ImportExport::UpdateJobOutput;
   use Moose;
   has ArtifactList => (is => 'ro', isa => 'ArrayRef[Paws::ImportExport::Artifact]');
   has Success => (is => 'ro', isa => 'Bool');
   has WarningMessage => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

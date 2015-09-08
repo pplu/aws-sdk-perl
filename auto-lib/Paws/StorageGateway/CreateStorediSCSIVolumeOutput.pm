@@ -1,11 +1,10 @@
 
-package Paws::StorageGateway::CreateStorediSCSIVolumeOutput {
+package Paws::StorageGateway::CreateStorediSCSIVolumeOutput;
   use Moose;
   has TargetARN => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
   has VolumeSizeInBytes => (is => 'ro', isa => 'Int');
 
-}
 
 ### main pod documentation begin ###
 

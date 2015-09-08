@@ -1,4 +1,4 @@
-package Paws::IAM::PasswordPolicy {
+package Paws::IAM::PasswordPolicy;
   use Moose;
   has AllowUsersToChangePassword => (is => 'ro', isa => 'Bool');
   has ExpirePasswords => (is => 'ro', isa => 'Bool');
@@ -10,5 +10,4 @@ package Paws::IAM::PasswordPolicy {
   has RequireNumbers => (is => 'ro', isa => 'Bool');
   has RequireSymbols => (is => 'ro', isa => 'Bool');
   has RequireUppercaseCharacters => (is => 'ro', isa => 'Bool');
-}
 1;

@@ -1,5 +1,5 @@
 
-package Paws::EC2::DescribeImportImageTasks {
+package Paws::EC2::DescribeImportImageTasks;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]');
@@ -12,7 +12,6 @@ package Paws::EC2::DescribeImportImageTasks {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeImportImageTasks');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeImportImageTasksResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

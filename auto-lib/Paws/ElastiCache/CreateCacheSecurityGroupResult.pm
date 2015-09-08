@@ -1,9 +1,8 @@
 
-package Paws::ElastiCache::CreateCacheSecurityGroupResult {
+package Paws::ElastiCache::CreateCacheSecurityGroupResult;
   use Moose;
   has CacheSecurityGroup => (is => 'ro', isa => 'Paws::ElastiCache::CacheSecurityGroup');
 
-}
 1;
 
 ### main pod documentation begin ###

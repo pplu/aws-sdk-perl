@@ -1,9 +1,8 @@
 
-package Paws::DS::DeleteSnapshotResult {
+package Paws::DS::DeleteSnapshotResult;
   use Moose;
   has SnapshotId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

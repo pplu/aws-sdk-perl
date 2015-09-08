@@ -1,9 +1,8 @@
 
-package Paws::CognitoIdentity::GetIdResponse {
+package Paws::CognitoIdentity::GetIdResponse;
   use Moose;
   has IdentityId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,4 +1,4 @@
-package Paws::Route53 {
+package Paws::Route53;
   warn "Paws::Route53 is not stable / supported / entirely developed";
   use Moose;
   sub service { 'route53' }
@@ -176,7 +176,6 @@ package Paws::Route53 {
     my $call_object = $self->new_with_coercions('Paws::Route53::UpdateHostedZoneComment', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

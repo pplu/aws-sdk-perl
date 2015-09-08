@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::UpdateGatewayInformation {
+package Paws::StorageGateway::UpdateGatewayInformation;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has GatewayName => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::StorageGateway::UpdateGatewayInformation {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGatewayInformation');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::UpdateGatewayInformationOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

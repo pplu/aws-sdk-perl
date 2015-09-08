@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::AddTagsToResourceOutput {
+package Paws::StorageGateway::AddTagsToResourceOutput;
   use Moose;
   has ResourceARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

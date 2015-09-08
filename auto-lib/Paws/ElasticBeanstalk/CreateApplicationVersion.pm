@@ -1,5 +1,5 @@
 
-package Paws::ElasticBeanstalk::CreateApplicationVersion {
+package Paws::ElasticBeanstalk::CreateApplicationVersion;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has AutoCreateApplication => (is => 'ro', isa => 'Bool');
@@ -12,7 +12,6 @@ package Paws::ElasticBeanstalk::CreateApplicationVersion {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApplicationVersion');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateApplicationVersionResult');
-}
 1;
 
 ### main pod documentation begin ###

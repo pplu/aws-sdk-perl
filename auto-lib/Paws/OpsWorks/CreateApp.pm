@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::CreateApp {
+package Paws::OpsWorks::CreateApp;
   use Moose;
   has AppSource => (is => 'ro', isa => 'Paws::OpsWorks::Source');
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::AppAttributes');
@@ -19,7 +19,6 @@ package Paws::OpsWorks::CreateApp {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApp');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::CreateAppResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

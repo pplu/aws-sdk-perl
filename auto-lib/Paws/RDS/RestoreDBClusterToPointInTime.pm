@@ -1,5 +1,5 @@
 
-package Paws::RDS::RestoreDBClusterToPointInTime {
+package Paws::RDS::RestoreDBClusterToPointInTime;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
@@ -16,7 +16,6 @@ package Paws::RDS::RestoreDBClusterToPointInTime {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterToPointInTime');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RestoreDBClusterToPointInTimeResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterToPointInTimeResult');
-}
 1;
 
 ### main pod documentation begin ###

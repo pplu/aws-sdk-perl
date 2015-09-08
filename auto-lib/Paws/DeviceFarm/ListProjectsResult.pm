@@ -1,10 +1,9 @@
 
-package Paws::DeviceFarm::ListProjectsResult {
+package Paws::DeviceFarm::ListProjectsResult;
   use Moose;
   has nextToken => (is => 'ro', isa => 'Str');
   has projects => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Project]');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,4 +1,4 @@
-package Paws::CloudWatchLogs {
+package Paws::CloudWatchLogs;
   use Moose;
   sub service { 'logs' }
   sub version { '2014-03-28' }
@@ -118,7 +118,6 @@ package Paws::CloudWatchLogs {
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::TestMetricFilter', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::UpdateVTLDeviceTypeOutput {
+package Paws::StorageGateway::UpdateVTLDeviceTypeOutput;
   use Moose;
   has VTLDeviceARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

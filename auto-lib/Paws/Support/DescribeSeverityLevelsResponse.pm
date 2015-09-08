@@ -1,9 +1,8 @@
 
-package Paws::Support::DescribeSeverityLevelsResponse {
+package Paws::Support::DescribeSeverityLevelsResponse;
   use Moose;
   has severityLevels => (is => 'ro', isa => 'ArrayRef[Paws::Support::SeverityLevel]');
 
-}
 
 ### main pod documentation begin ###
 

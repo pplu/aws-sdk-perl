@@ -1,9 +1,8 @@
 
-package Paws::SNS::CreateTopicResponse {
+package Paws::SNS::CreateTopicResponse;
   use Moose;
   has TopicArn => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

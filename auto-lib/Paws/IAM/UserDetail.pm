@@ -1,4 +1,4 @@
-package Paws::IAM::UserDetail {
+package Paws::IAM::UserDetail;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has AttachedManagedPolicies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::AttachedPolicy]');
@@ -8,5 +8,4 @@ package Paws::IAM::UserDetail {
   has UserId => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
   has UserPolicyList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyDetail]');
-}
 1;

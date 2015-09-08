@@ -1,9 +1,8 @@
 
-package Paws::AutoScaling::DescribeAdjustmentTypesAnswer {
+package Paws::AutoScaling::DescribeAdjustmentTypesAnswer;
   use Moose;
   has AdjustmentTypes => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::AdjustmentType]');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,10 @@
 
-package Paws::ElasticBeanstalk::DescribeInstancesHealthResult {
+package Paws::ElasticBeanstalk::DescribeInstancesHealthResult;
   use Moose;
   has InstanceHealthList => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::SingleInstanceHealth]');
   has NextToken => (is => 'ro', isa => 'Str');
   has RefreshedAt => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

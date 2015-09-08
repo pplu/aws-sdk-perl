@@ -1,9 +1,8 @@
 
-package Paws::SSM::CreateAssociationResult {
+package Paws::SSM::CreateAssociationResult;
   use Moose;
   has AssociationDescription => (is => 'ro', isa => 'Paws::SSM::AssociationDescription');
 
-}
 
 ### main pod documentation begin ###
 

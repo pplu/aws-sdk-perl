@@ -1,4 +1,4 @@
-package Paws::DynamoDB::BatchGetRequestMap {
+package Paws::DynamoDB::BatchGetRequestMap;
   use Moose;
   with 'Paws::API::StrToObjMapParser';
 
@@ -7,5 +7,4 @@ package Paws::DynamoDB::BatchGetRequestMap {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::KeysAndAttributes]');
-}
 1

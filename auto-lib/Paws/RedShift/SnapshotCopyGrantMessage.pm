@@ -1,10 +1,9 @@
 
-package Paws::RedShift::SnapshotCopyGrantMessage {
+package Paws::RedShift::SnapshotCopyGrantMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has SnapshotCopyGrants => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SnapshotCopyGrant]', xmlname => 'SnapshotCopyGrant', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::DynamoDB::CreateTableOutput {
+package Paws::DynamoDB::CreateTableOutput;
   use Moose;
   has TableDescription => (is => 'ro', isa => 'Paws::DynamoDB::TableDescription');
 
-}
 
 ### main pod documentation begin ###
 

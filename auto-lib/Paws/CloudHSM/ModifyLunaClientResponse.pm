@@ -1,9 +1,8 @@
 
-package Paws::CloudHSM::ModifyLunaClientResponse {
+package Paws::CloudHSM::ModifyLunaClientResponse;
   use Moose;
   has ClientArn => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

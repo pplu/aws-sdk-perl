@@ -1,11 +1,10 @@
 
-package Paws::IAM::ListSigningCertificatesResponse {
+package Paws::IAM::ListSigningCertificatesResponse;
   use Moose;
   has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::IAM::SigningCertificate]', required => 1);
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

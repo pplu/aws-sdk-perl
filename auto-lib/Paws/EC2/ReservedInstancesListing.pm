@@ -1,4 +1,4 @@
-package Paws::EC2::ReservedInstancesListing {
+package Paws::EC2::ReservedInstancesListing;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped']);
   has CreateDate => (is => 'ro', isa => 'Str', xmlname => 'createDate', traits => ['Unwrapped']);
@@ -10,5 +10,4 @@ package Paws::EC2::ReservedInstancesListing {
   has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
   has UpdateDate => (is => 'ro', isa => 'Str', xmlname => 'updateDate', traits => ['Unwrapped']);
-}
 1;

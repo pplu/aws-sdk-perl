@@ -1,9 +1,8 @@
 
-package Paws::EC2::DescribeImagesResult {
+package Paws::EC2::DescribeImagesResult;
   use Moose;
   has Images => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Image]', xmlname => 'imagesSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

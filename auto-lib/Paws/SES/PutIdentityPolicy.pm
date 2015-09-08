@@ -1,5 +1,5 @@
 
-package Paws::SES::PutIdentityPolicy {
+package Paws::SES::PutIdentityPolicy;
   use Moose;
   has Identity => (is => 'ro', isa => 'Str', required => 1);
   has Policy => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::SES::PutIdentityPolicy {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutIdentityPolicy');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::PutIdentityPolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'PutIdentityPolicyResult');
-}
 1;
 
 ### main pod documentation begin ###

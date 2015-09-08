@@ -1,9 +1,8 @@
 
-package Paws::EC2::UnmonitorInstancesResult {
+package Paws::EC2::UnmonitorInstancesResult;
   use Moose;
   has InstanceMonitorings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceMonitoring]', xmlname => 'instancesSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

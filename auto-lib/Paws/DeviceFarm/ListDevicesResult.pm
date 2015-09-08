@@ -1,10 +1,9 @@
 
-package Paws::DeviceFarm::ListDevicesResult {
+package Paws::DeviceFarm::ListDevicesResult;
   use Moose;
   has devices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Device]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

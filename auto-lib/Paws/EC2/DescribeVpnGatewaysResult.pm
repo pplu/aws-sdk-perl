@@ -1,9 +1,8 @@
 
-package Paws::EC2::DescribeVpnGatewaysResult {
+package Paws::EC2::DescribeVpnGatewaysResult;
   use Moose;
   has VpnGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpnGateway]', xmlname => 'vpnGatewaySet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

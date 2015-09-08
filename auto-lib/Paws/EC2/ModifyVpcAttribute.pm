@@ -1,5 +1,5 @@
 
-package Paws::EC2::ModifyVpcAttribute {
+package Paws::EC2::ModifyVpcAttribute;
   use Moose;
   has EnableDnsHostnames => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue');
   has EnableDnsSupport => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue');
@@ -10,7 +10,6 @@ package Paws::EC2::ModifyVpcAttribute {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyVpcAttribute');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

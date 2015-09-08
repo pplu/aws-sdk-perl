@@ -1,10 +1,9 @@
 
-package Paws::DeviceFarm::ListJobsResult {
+package Paws::DeviceFarm::ListJobsResult;
   use Moose;
   has jobs => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Job]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

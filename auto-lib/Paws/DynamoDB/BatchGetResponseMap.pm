@@ -1,4 +1,4 @@
-package Paws::DynamoDB::BatchGetResponseMap {
+package Paws::DynamoDB::BatchGetResponseMap;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -7,5 +7,4 @@ package Paws::DynamoDB::BatchGetResponseMap {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Paws::DynamoDB::AttributeMap]]');
-}
 1

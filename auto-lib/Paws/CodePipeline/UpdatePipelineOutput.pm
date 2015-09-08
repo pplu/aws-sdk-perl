@@ -1,9 +1,8 @@
 
-package Paws::CodePipeline::UpdatePipelineOutput {
+package Paws::CodePipeline::UpdatePipelineOutput;
   use Moose;
   has pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration');
 
-}
 
 ### main pod documentation begin ###
 

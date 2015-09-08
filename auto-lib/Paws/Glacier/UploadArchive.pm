@@ -1,5 +1,5 @@
 
-package Paws::Glacier::UploadArchive {
+package Paws::Glacier::UploadArchive;
   use Moose;
   has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
   has archiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-archive-description' );
@@ -14,7 +14,6 @@ package Paws::Glacier::UploadArchive {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ArchiveCreationOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UploadArchiveResult');
-}
 1;
 
 ### main pod documentation begin ###

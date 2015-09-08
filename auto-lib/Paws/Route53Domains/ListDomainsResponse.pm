@@ -1,10 +1,9 @@
 
-package Paws::Route53Domains::ListDomainsResponse {
+package Paws::Route53Domains::ListDomainsResponse;
   use Moose;
   has Domains => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::DomainSummary]', required => 1);
   has NextPageMarker => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

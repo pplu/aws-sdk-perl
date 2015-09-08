@@ -1,9 +1,8 @@
 
-package Paws::SimpleWorkflow::ActivityTaskStatus {
+package Paws::SimpleWorkflow::ActivityTaskStatus;
   use Moose;
   has cancelRequested => (is => 'ro', isa => 'Bool', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

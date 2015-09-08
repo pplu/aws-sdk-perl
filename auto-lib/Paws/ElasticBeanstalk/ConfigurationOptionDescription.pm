@@ -1,4 +1,4 @@
-package Paws::ElasticBeanstalk::ConfigurationOptionDescription {
+package Paws::ElasticBeanstalk::ConfigurationOptionDescription;
   use Moose;
   has ChangeSeverity => (is => 'ro', isa => 'Str');
   has DefaultValue => (is => 'ro', isa => 'Str');
@@ -11,5 +11,4 @@ package Paws::ElasticBeanstalk::ConfigurationOptionDescription {
   has UserDefined => (is => 'ro', isa => 'Bool');
   has ValueOptions => (is => 'ro', isa => 'ArrayRef[Str]');
   has ValueType => (is => 'ro', isa => 'Str');
-}
 1;

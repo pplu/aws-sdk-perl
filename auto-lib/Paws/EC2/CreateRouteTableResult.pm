@@ -1,9 +1,8 @@
 
-package Paws::EC2::CreateRouteTableResult {
+package Paws::EC2::CreateRouteTableResult;
   use Moose;
   has RouteTable => (is => 'ro', isa => 'Paws::EC2::RouteTable', xmlname => 'routeTable', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

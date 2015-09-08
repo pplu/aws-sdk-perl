@@ -1,5 +1,5 @@
 
-package Paws::CognitoIdentity::GetId {
+package Paws::CognitoIdentity::GetId;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str');
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::CognitoIdentity::GetId {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetId');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdentity::GetIdResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

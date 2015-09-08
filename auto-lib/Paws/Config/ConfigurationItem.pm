@@ -1,4 +1,4 @@
-package Paws::Config::ConfigurationItem {
+package Paws::Config::ConfigurationItem;
   use Moose;
   has accountId => (is => 'ro', isa => 'Str');
   has arn => (is => 'ro', isa => 'Str');
@@ -17,5 +17,4 @@ package Paws::Config::ConfigurationItem {
   has resourceType => (is => 'ro', isa => 'Str');
   has tags => (is => 'ro', isa => 'Paws::Config::Tags');
   has version => (is => 'ro', isa => 'Str');
-}
 1;

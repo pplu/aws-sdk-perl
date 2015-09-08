@@ -1,10 +1,9 @@
 
-package Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse {
+package Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse;
   use Moose;
   has nextToken => (is => 'ro', isa => 'Str');
   has subscriptionFilters => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::SubscriptionFilter]');
 
-}
 
 ### main pod documentation begin ###
 

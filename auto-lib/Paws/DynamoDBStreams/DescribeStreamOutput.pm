@@ -1,9 +1,8 @@
 
-package Paws::DynamoDBStreams::DescribeStreamOutput {
+package Paws::DynamoDBStreams::DescribeStreamOutput;
   use Moose;
   has StreamDescription => (is => 'ro', isa => 'Paws::DynamoDBStreams::StreamDescription');
 
-}
 
 ### main pod documentation begin ###
 

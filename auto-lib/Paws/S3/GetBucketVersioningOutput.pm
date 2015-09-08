@@ -1,10 +1,9 @@
 
-package Paws::S3::GetBucketVersioningOutput {
+package Paws::S3::GetBucketVersioningOutput;
   use Moose;
   has MFADelete => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

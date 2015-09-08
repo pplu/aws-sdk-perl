@@ -1,9 +1,8 @@
 
-package Paws::RedShift::RevokeClusterSecurityGroupIngressResult {
+package Paws::RedShift::RevokeClusterSecurityGroupIngressResult;
   use Moose;
   has ClusterSecurityGroup => (is => 'ro', isa => 'Paws::RedShift::ClusterSecurityGroup');
 
-}
 1;
 
 ### main pod documentation begin ###

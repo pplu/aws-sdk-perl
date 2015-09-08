@@ -1,4 +1,4 @@
-package Paws::CognitoSync {
+package Paws::CognitoSync;
   warn "Paws::CognitoSync is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cognito-sync' }
@@ -93,7 +93,6 @@ package Paws::CognitoSync {
     my $call_object = $self->new_with_coercions('Paws::CognitoSync::UpdateRecords', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

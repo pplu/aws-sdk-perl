@@ -1,9 +1,8 @@
 
-package Paws::EC2::AttachNetworkInterfaceResult {
+package Paws::EC2::AttachNetworkInterfaceResult;
   use Moose;
   has AttachmentId => (is => 'ro', isa => 'Str', xmlname => 'attachmentId', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

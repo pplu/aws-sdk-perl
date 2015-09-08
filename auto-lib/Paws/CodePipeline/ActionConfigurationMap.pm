@@ -1,4 +1,4 @@
-package Paws::CodePipeline::ActionConfigurationMap {
+package Paws::CodePipeline::ActionConfigurationMap;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -7,5 +7,4 @@ package Paws::CodePipeline::ActionConfigurationMap {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Str]');
-}
 1

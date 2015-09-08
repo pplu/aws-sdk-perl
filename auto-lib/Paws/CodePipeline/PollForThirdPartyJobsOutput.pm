@@ -1,9 +1,8 @@
 
-package Paws::CodePipeline::PollForThirdPartyJobsOutput {
+package Paws::CodePipeline::PollForThirdPartyJobsOutput;
   use Moose;
   has jobs => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ThirdPartyJob]');
 
-}
 
 ### main pod documentation begin ###
 

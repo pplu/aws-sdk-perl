@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::DefineAnalysisSchemeResponse {
+package Paws::CloudSearch::DefineAnalysisSchemeResponse;
   use Moose;
   has AnalysisScheme => (is => 'ro', isa => 'Paws::CloudSearch::AnalysisSchemeStatus', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

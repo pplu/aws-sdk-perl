@@ -1,9 +1,8 @@
 
-package Paws::ElastiCache::CreateCacheParameterGroupResult {
+package Paws::ElastiCache::CreateCacheParameterGroupResult;
   use Moose;
   has CacheParameterGroup => (is => 'ro', isa => 'Paws::ElastiCache::CacheParameterGroup');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 
-package Paws::EC2::ModifyNetworkInterfaceAttribute {
+package Paws::EC2::ModifyNetworkInterfaceAttribute;
   use Moose;
   has Attachment => (is => 'ro', isa => 'Paws::EC2::NetworkInterfaceAttachmentChanges', traits => ['NameInRequest'], request_name => 'attachment' );
   has Description => (is => 'ro', isa => 'Paws::EC2::AttributeValue', traits => ['NameInRequest'], request_name => 'description' );
@@ -13,7 +13,6 @@ package Paws::EC2::ModifyNetworkInterfaceAttribute {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyNetworkInterfaceAttribute');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

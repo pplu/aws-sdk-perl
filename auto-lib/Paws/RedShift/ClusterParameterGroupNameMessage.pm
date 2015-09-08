@@ -1,10 +1,9 @@
 
-package Paws::RedShift::ClusterParameterGroupNameMessage {
+package Paws::RedShift::ClusterParameterGroupNameMessage;
   use Moose;
   has ParameterGroupName => (is => 'ro', isa => 'Str');
   has ParameterGroupStatus => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::EC2::DescribeVpcsResult {
+package Paws::EC2::DescribeVpcsResult;
   use Moose;
   has Vpcs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Vpc]', xmlname => 'vpcSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::DS::CreateAliasResult {
+package Paws::DS::CreateAliasResult;
   use Moose;
   has Alias => (is => 'ro', isa => 'Str');
   has DirectoryId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

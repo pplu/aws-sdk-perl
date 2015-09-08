@@ -1,9 +1,8 @@
 
-package Paws::IAM::GetSSHPublicKeyResponse {
+package Paws::IAM::GetSSHPublicKeyResponse;
   use Moose;
   has SSHPublicKey => (is => 'ro', isa => 'Paws::IAM::SSHPublicKey');
 
-}
 1;
 
 ### main pod documentation begin ###

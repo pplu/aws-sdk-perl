@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::DescribeCachediSCSIVolumesOutput {
+package Paws::StorageGateway::DescribeCachediSCSIVolumesOutput;
   use Moose;
   has CachediSCSIVolumes => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::CachediSCSIVolume]');
 
-}
 
 ### main pod documentation begin ###
 

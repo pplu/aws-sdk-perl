@@ -1,5 +1,5 @@
 
-package Paws::EFS::MountTargetDescription {
+package Paws::EFS::MountTargetDescription;
   use Moose;
   has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
   has IpAddress => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::EFS::MountTargetDescription {
   has OwnerId => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

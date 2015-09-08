@@ -1,5 +1,5 @@
 
-package Paws::Lambda::DeleteFunction {
+package Paws::Lambda::DeleteFunction;
   use Moose;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
 
@@ -10,7 +10,6 @@ package Paws::Lambda::DeleteFunction {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

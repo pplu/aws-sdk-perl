@@ -1,4 +1,4 @@
-package Paws::SNS::MessageAttributeMap {
+package Paws::SNS::MessageAttributeMap;
   use Moose;
   with 'Paws::API::StrToObjMapParser';
 
@@ -7,5 +7,4 @@ package Paws::SNS::MessageAttributeMap {
   class_has xml_values =>(is => 'ro', default => 'Value');
 
   has Map => (is => 'ro', isa => 'HashRef[Paws::SNS::MessageAttributeValue]');
-}
 1

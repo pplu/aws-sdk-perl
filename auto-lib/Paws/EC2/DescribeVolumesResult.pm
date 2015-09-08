@@ -1,10 +1,9 @@
 
-package Paws::EC2::DescribeVolumesResult {
+package Paws::EC2::DescribeVolumesResult;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Volume]', xmlname => 'volumeSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

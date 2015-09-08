@@ -1,4 +1,4 @@
-package Paws::EC2::ImportImageTask {
+package Paws::EC2::ImportImageTask;
   use Moose;
   has Architecture => (is => 'ro', isa => 'Str', xmlname => 'architecture', traits => ['Unwrapped']);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped']);
@@ -11,5 +11,4 @@ package Paws::EC2::ImportImageTask {
   has SnapshotDetails => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SnapshotDetail]', xmlname => 'snapshotDetailSet', traits => ['Unwrapped']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped']);
   has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped']);
-}
 1;

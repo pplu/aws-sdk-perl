@@ -1,9 +1,8 @@
 
-package Paws::SNS::ConfirmSubscriptionResponse {
+package Paws::SNS::ConfirmSubscriptionResponse;
   use Moose;
   has SubscriptionArn => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

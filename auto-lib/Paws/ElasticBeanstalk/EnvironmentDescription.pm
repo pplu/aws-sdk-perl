@@ -1,5 +1,5 @@
 
-package Paws::ElasticBeanstalk::EnvironmentDescription {
+package Paws::ElasticBeanstalk::EnvironmentDescription;
   use Moose;
   has AbortableOperationInProgress => (is => 'ro', isa => 'Bool');
   has ApplicationName => (is => 'ro', isa => 'Str');
@@ -19,7 +19,6 @@ package Paws::ElasticBeanstalk::EnvironmentDescription {
   has Tier => (is => 'ro', isa => 'Paws::ElasticBeanstalk::EnvironmentTier');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

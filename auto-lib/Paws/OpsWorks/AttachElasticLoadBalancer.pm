@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::AttachElasticLoadBalancer {
+package Paws::OpsWorks::AttachElasticLoadBalancer;
   use Moose;
   has ElasticLoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has LayerId => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::OpsWorks::AttachElasticLoadBalancer {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachElasticLoadBalancer');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

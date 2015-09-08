@@ -1,9 +1,8 @@
 
-package Paws::EC2::CreateInstanceExportTaskResult {
+package Paws::EC2::CreateInstanceExportTaskResult;
   use Moose;
   has ExportTask => (is => 'ro', isa => 'Paws::EC2::ExportTask', xmlname => 'exportTask', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

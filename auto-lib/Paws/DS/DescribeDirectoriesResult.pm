@@ -1,10 +1,9 @@
 
-package Paws::DS::DescribeDirectoriesResult {
+package Paws::DS::DescribeDirectoriesResult;
   use Moose;
   has DirectoryDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::DS::DirectoryDescription]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

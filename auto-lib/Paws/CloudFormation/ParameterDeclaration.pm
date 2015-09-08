@@ -1,4 +1,4 @@
-package Paws::CloudFormation::ParameterDeclaration {
+package Paws::CloudFormation::ParameterDeclaration;
   use Moose;
   has DefaultValue => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::CloudFormation::ParameterDeclaration {
   has ParameterConstraints => (is => 'ro', isa => 'Paws::CloudFormation::ParameterConstraints');
   has ParameterKey => (is => 'ro', isa => 'Str');
   has ParameterType => (is => 'ro', isa => 'Str');
-}
 1;

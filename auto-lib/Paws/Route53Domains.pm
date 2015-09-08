@@ -1,4 +1,4 @@
-package Paws::Route53Domains {
+package Paws::Route53Domains;
   use Moose;
   sub service { 'route53domains' }
   sub version { '2014-05-15' }
@@ -98,7 +98,6 @@ package Paws::Route53Domains {
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::UpdateTagsForDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

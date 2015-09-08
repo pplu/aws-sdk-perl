@@ -1,9 +1,8 @@
 
-package Paws::EC2::ReplaceNetworkAclAssociationResult {
+package Paws::EC2::ReplaceNetworkAclAssociationResult;
   use Moose;
   has NewAssociationId => (is => 'ro', isa => 'Str', xmlname => 'newAssociationId', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

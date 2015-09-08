@@ -1,4 +1,4 @@
-package Paws::ElastiCache::Snapshot {
+package Paws::ElastiCache::Snapshot;
   use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
@@ -20,5 +20,4 @@ package Paws::ElastiCache::Snapshot {
   has SnapshotWindow => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
-}
 1;

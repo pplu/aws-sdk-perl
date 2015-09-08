@@ -1,4 +1,4 @@
-package Paws::EC2 {
+package Paws::EC2;
   use Moose;
   sub service { 'ec2' }
   sub version { '2015-04-15' }
@@ -1029,7 +1029,6 @@ package Paws::EC2 {
 
     return 'Paws::EC2::DescribeVolumeStatus'->_returns->new(VolumeStatuses => $array);
   }
-}
 1;
 
 ### main pod documentation begin ###

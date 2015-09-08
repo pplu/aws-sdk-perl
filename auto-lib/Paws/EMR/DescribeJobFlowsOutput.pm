@@ -1,9 +1,8 @@
 
-package Paws::EMR::DescribeJobFlowsOutput {
+package Paws::EMR::DescribeJobFlowsOutput;
   use Moose;
   has JobFlows => (is => 'ro', isa => 'ArrayRef[Paws::EMR::JobFlowDetail]');
 
-}
 
 ### main pod documentation begin ###
 

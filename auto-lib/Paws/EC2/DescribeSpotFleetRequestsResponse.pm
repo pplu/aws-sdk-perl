@@ -1,10 +1,9 @@
 
-package Paws::EC2::DescribeSpotFleetRequestsResponse {
+package Paws::EC2::DescribeSpotFleetRequestsResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has SpotFleetRequestConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetRequestConfig]', xmlname => 'spotFleetRequestConfigSet', traits => ['Unwrapped',], required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

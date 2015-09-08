@@ -1,5 +1,5 @@
 
-package Paws::DS::UpdateRadius {
+package Paws::DS::UpdateRadius;
   use Moose;
   has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
   has RadiusSettings => (is => 'ro', isa => 'Paws::DS::RadiusSettings', required => 1);
@@ -9,7 +9,6 @@ package Paws::DS::UpdateRadius {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRadius');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::UpdateRadiusResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

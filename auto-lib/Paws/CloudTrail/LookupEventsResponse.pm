@@ -1,10 +1,9 @@
 
-package Paws::CloudTrail::LookupEventsResponse {
+package Paws::CloudTrail::LookupEventsResponse;
   use Moose;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Event]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

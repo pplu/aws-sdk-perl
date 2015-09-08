@@ -1,4 +1,4 @@
-package Paws::Kinesis {
+package Paws::Kinesis;
   use Moose;
   sub service { 'kinesis' }
   sub version { '2013-12-02' }
@@ -73,7 +73,6 @@ package Paws::Kinesis {
     my $call_object = $self->new_with_coercions('Paws::Kinesis::SplitShard', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

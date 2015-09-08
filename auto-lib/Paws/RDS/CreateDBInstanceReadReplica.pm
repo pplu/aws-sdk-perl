@@ -1,5 +1,5 @@
 
-package Paws::RDS::CreateDBInstanceReadReplica {
+package Paws::RDS::CreateDBInstanceReadReplica;
   use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
@@ -20,7 +20,6 @@ package Paws::RDS::CreateDBInstanceReadReplica {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceReadReplica');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateDBInstanceReadReplicaResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceReadReplicaResult');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::OpsWorks::RaidArray {
+package Paws::OpsWorks::RaidArray;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CreatedAt => (is => 'ro', isa => 'Str');
@@ -13,5 +13,4 @@ package Paws::OpsWorks::RaidArray {
   has Size => (is => 'ro', isa => 'Int');
   has StackId => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');
-}
 1;

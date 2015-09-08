@@ -1,4 +1,4 @@
-package Paws::SQS {
+package Paws::SQS;
   use Moose;
   sub service { 'sqs' }
   sub version { '2012-11-05' }
@@ -130,7 +130,6 @@ package Paws::SQS {
     my $call_object = $self->new_with_coercions('Paws::SQS::SetQueueAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

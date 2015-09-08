@@ -1,5 +1,5 @@
 
-package Paws::Lambda::GetPolicy {
+package Paws::Lambda::GetPolicy;
   use Moose;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
 
@@ -10,7 +10,6 @@ package Paws::Lambda::GetPolicy {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::GetPolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetPolicyResult');
-}
 1;
 
 ### main pod documentation begin ###

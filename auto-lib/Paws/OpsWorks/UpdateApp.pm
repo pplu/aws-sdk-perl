@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::UpdateApp {
+package Paws::OpsWorks::UpdateApp;
   use Moose;
   has AppId => (is => 'ro', isa => 'Str', required => 1);
   has AppSource => (is => 'ro', isa => 'Paws::OpsWorks::Source');
@@ -18,7 +18,6 @@ package Paws::OpsWorks::UpdateApp {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApp');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeAppsResult {
+package Paws::OpsWorks::DescribeAppsResult;
   use Moose;
   has Apps => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::App]');
 
-}
 
 ### main pod documentation begin ###
 

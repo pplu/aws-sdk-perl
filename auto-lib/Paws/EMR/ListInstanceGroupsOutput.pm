@@ -1,10 +1,9 @@
 
-package Paws::EMR::ListInstanceGroupsOutput {
+package Paws::EMR::ListInstanceGroupsOutput;
   use Moose;
   has InstanceGroups => (is => 'ro', isa => 'ArrayRef[Paws::EMR::InstanceGroup]');
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

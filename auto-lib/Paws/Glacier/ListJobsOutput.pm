@@ -1,10 +1,9 @@
 
-package Paws::Glacier::ListJobsOutput {
+package Paws::Glacier::ListJobsOutput;
   use Moose;
   has JobList => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::GlacierJobDescription]');
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

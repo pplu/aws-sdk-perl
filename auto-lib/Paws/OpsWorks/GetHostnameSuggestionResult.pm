@@ -1,10 +1,9 @@
 
-package Paws::OpsWorks::GetHostnameSuggestionResult {
+package Paws::OpsWorks::GetHostnameSuggestionResult;
   use Moose;
   has Hostname => (is => 'ro', isa => 'Str');
   has LayerId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

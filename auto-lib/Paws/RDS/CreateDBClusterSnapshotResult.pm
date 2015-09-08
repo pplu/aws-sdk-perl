@@ -1,9 +1,8 @@
 
-package Paws::RDS::CreateDBClusterSnapshotResult {
+package Paws::RDS::CreateDBClusterSnapshotResult;
   use Moose;
   has DBClusterSnapshot => (is => 'ro', isa => 'Paws::RDS::DBClusterSnapshot');
 
-}
 1;
 
 ### main pod documentation begin ###

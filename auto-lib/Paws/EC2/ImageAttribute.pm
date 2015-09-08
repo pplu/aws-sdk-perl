@@ -1,5 +1,5 @@
 
-package Paws::EC2::ImageAttribute {
+package Paws::EC2::ImageAttribute;
   use Moose;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', xmlname => 'blockDeviceMapping', traits => ['Unwrapped',]);
   has Description => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'description', traits => ['Unwrapped',]);
@@ -10,7 +10,6 @@ package Paws::EC2::ImageAttribute {
   has RamdiskId => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'ramdisk', traits => ['Unwrapped',]);
   has SriovNetSupport => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'sriovNetSupport', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

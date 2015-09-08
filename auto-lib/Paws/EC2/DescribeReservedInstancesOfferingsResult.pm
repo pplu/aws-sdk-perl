@@ -1,10 +1,9 @@
 
-package Paws::EC2::DescribeReservedInstancesOfferingsResult {
+package Paws::EC2::DescribeReservedInstancesOfferingsResult;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has ReservedInstancesOfferings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesOffering]', xmlname => 'reservedInstancesOfferingsSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

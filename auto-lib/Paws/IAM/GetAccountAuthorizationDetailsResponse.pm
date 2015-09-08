@@ -1,5 +1,5 @@
 
-package Paws::IAM::GetAccountAuthorizationDetailsResponse {
+package Paws::IAM::GetAccountAuthorizationDetailsResponse;
   use Moose;
   has GroupDetailList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::GroupDetail]');
   has IsTruncated => (is => 'ro', isa => 'Bool');
@@ -8,7 +8,6 @@ package Paws::IAM::GetAccountAuthorizationDetailsResponse {
   has RoleDetailList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::RoleDetail]');
   has UserDetailList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::UserDetail]');
 
-}
 1;
 
 ### main pod documentation begin ###

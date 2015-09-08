@@ -1,5 +1,5 @@
 
-package Paws::Route53::ListGeoLocationsResponse {
+package Paws::Route53::ListGeoLocationsResponse;
   use Moose;
   has GeoLocationDetailsList => (is => 'ro', isa => 'ArrayRef[Paws::Route53::GeoLocationDetails]', traits => ['Unwrapped'], xmlname => 'GeoLocationDetails', required => 1);
   has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
@@ -8,7 +8,6 @@ package Paws::Route53::ListGeoLocationsResponse {
   has NextCountryCode => (is => 'ro', isa => 'Str');
   has NextSubdivisionCode => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

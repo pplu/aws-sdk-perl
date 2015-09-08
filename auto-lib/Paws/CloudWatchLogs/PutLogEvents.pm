@@ -1,5 +1,5 @@
 
-package Paws::CloudWatchLogs::PutLogEvents {
+package Paws::CloudWatchLogs::PutLogEvents;
   use Moose;
   has logEvents => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::InputLogEvent]', required => 1);
   has logGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::CloudWatchLogs::PutLogEvents {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutLogEvents');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchLogs::PutLogEventsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::ECS::DescribeContainerInstancesResponse {
+package Paws::ECS::DescribeContainerInstancesResponse;
   use Moose;
   has containerInstances => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerInstance]');
   has failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]');
 
-}
 
 ### main pod documentation begin ###
 

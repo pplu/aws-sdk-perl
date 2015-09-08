@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::GetMLModel {
+package Paws::MachineLearning::GetMLModel;
   use Moose;
   has MLModelId => (is => 'ro', isa => 'Str', required => 1);
   has Verbose => (is => 'ro', isa => 'Bool');
@@ -9,7 +9,6 @@ package Paws::MachineLearning::GetMLModel {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetMLModel');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::GetMLModelOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

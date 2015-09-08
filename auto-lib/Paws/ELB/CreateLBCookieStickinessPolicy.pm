@@ -1,5 +1,5 @@
 
-package Paws::ELB::CreateLBCookieStickinessPolicy {
+package Paws::ELB::CreateLBCookieStickinessPolicy;
   use Moose;
   has CookieExpirationPeriod => (is => 'ro', isa => 'Int');
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::ELB::CreateLBCookieStickinessPolicy {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLBCookieStickinessPolicy');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::CreateLBCookieStickinessPolicyOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLBCookieStickinessPolicyResult');
-}
 1;
 
 ### main pod documentation begin ###

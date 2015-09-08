@@ -1,5 +1,5 @@
 
-package Paws::EC2::DescribeNetworkInterfaceAttributeResult {
+package Paws::EC2::DescribeNetworkInterfaceAttributeResult;
   use Moose;
   has Attachment => (is => 'ro', isa => 'Paws::EC2::NetworkInterfaceAttachment', xmlname => 'attachment', traits => ['Unwrapped',]);
   has Description => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'description', traits => ['Unwrapped',]);
@@ -7,7 +7,6 @@ package Paws::EC2::DescribeNetworkInterfaceAttributeResult {
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', xmlname => 'networkInterfaceId', traits => ['Unwrapped',]);
   has SourceDestCheck => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'sourceDestCheck', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

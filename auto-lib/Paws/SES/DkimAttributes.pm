@@ -1,4 +1,4 @@
-package Paws::SES::DkimAttributes {
+package Paws::SES::DkimAttributes;
   use Moose;
   with 'Paws::API::StrToObjMapParser';
 
@@ -7,5 +7,4 @@ package Paws::SES::DkimAttributes {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Paws::SES::IdentityDkimAttributes]');
-}
 1

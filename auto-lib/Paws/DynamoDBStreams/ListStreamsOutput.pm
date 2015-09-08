@@ -1,10 +1,9 @@
 
-package Paws::DynamoDBStreams::ListStreamsOutput {
+package Paws::DynamoDBStreams::ListStreamsOutput;
   use Moose;
   has LastEvaluatedStreamArn => (is => 'ro', isa => 'Str');
   has Streams => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDBStreams::Stream]');
 
-}
 
 ### main pod documentation begin ###
 

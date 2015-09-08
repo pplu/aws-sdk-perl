@@ -1,5 +1,5 @@
 
-package Paws::SimpleWorkflow::CountClosedWorkflowExecutions {
+package Paws::SimpleWorkflow::CountClosedWorkflowExecutions;
   use Moose;
   has closeStatusFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::CloseStatusFilter');
   has closeTimeFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExecutionTimeFilter');
@@ -14,7 +14,6 @@ package Paws::SimpleWorkflow::CountClosedWorkflowExecutions {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CountClosedWorkflowExecutions');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::WorkflowExecutionCount');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

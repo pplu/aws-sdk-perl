@@ -1,9 +1,8 @@
 
-package Paws::EC2::CreateCustomerGatewayResult {
+package Paws::EC2::CreateCustomerGatewayResult;
   use Moose;
   has CustomerGateway => (is => 'ro', isa => 'Paws::EC2::CustomerGateway', xmlname => 'customerGateway', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::CloudFront::ListStreamingDistributionsResult {
+package Paws::CloudFront::ListStreamingDistributionsResult;
   use Moose;
   has StreamingDistributionList => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistributionList');
 
-}
 1;
 
 ### main pod documentation begin ###

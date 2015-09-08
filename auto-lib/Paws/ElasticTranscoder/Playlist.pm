@@ -1,4 +1,4 @@
-package Paws::ElasticTranscoder::Playlist {
+package Paws::ElasticTranscoder::Playlist;
   use Moose;
   has Format => (is => 'ro', isa => 'Str');
   has HlsContentProtection => (is => 'ro', isa => 'Paws::ElasticTranscoder::HlsContentProtection');
@@ -7,5 +7,4 @@ package Paws::ElasticTranscoder::Playlist {
   has PlayReadyDrm => (is => 'ro', isa => 'Paws::ElasticTranscoder::PlayReadyDrm');
   has Status => (is => 'ro', isa => 'Str');
   has StatusDetail => (is => 'ro', isa => 'Str');
-}
 1;

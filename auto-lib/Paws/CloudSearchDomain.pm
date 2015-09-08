@@ -1,4 +1,4 @@
-package Paws::CloudSearchDomain {
+package Paws::CloudSearchDomain;
   warn "Paws::CloudSearchDomain is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cloudsearchdomain' }
@@ -23,7 +23,6 @@ package Paws::CloudSearchDomain {
     my $call_object = $self->new_with_coercions('Paws::CloudSearchDomain::UploadDocuments', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeServiceErrorsResult {
+package Paws::OpsWorks::DescribeServiceErrorsResult;
   use Moose;
   has ServiceErrors => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::ServiceError]');
 
-}
 
 ### main pod documentation begin ###
 

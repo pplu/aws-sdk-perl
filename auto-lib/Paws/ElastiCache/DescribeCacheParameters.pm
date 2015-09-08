@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::DescribeCacheParameters {
+package Paws::ElastiCache::DescribeCacheParameters;
   use Moose;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::ElastiCache::DescribeCacheParameters {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCacheParameters');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CacheParameterGroupDetails');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheParametersResult');
-}
 1;
 
 ### main pod documentation begin ###

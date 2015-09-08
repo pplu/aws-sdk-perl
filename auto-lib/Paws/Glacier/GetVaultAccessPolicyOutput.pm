@@ -1,9 +1,8 @@
 
-package Paws::Glacier::GetVaultAccessPolicyOutput {
+package Paws::Glacier::GetVaultAccessPolicyOutput;
   use Moose;
   has policy => (is => 'ro', isa => 'Paws::Glacier::VaultAccessPolicy');
 
-}
 1;
 
 ### main pod documentation begin ###

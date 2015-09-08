@@ -1,5 +1,5 @@
 
-package Paws::DynamoDBStreams::ListStreams {
+package Paws::DynamoDBStreams::ListStreams;
   use Moose;
   has ExclusiveStartStreamArn => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
@@ -10,7 +10,6 @@ package Paws::DynamoDBStreams::ListStreams {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListStreams');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDBStreams::ListStreamsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

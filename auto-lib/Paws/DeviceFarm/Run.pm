@@ -1,4 +1,4 @@
-package Paws::DeviceFarm::Run {
+package Paws::DeviceFarm::Run;
   use Moose;
   has arn => (is => 'ro', isa => 'Str');
   has billingMethod => (is => 'ro', isa => 'Str');
@@ -14,5 +14,4 @@ package Paws::DeviceFarm::Run {
   has stopped => (is => 'ro', isa => 'Str');
   has totalJobs => (is => 'ro', isa => 'Int');
   has type => (is => 'ro', isa => 'Str');
-}
 1;

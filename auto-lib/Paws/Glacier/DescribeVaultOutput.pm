@@ -1,5 +1,5 @@
 
-package Paws::Glacier::DescribeVaultOutput {
+package Paws::Glacier::DescribeVaultOutput;
   use Moose;
   has CreationDate => (is => 'ro', isa => 'Str');
   has LastInventoryDate => (is => 'ro', isa => 'Str');
@@ -8,7 +8,6 @@ package Paws::Glacier::DescribeVaultOutput {
   has VaultARN => (is => 'ro', isa => 'Str');
   has VaultName => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

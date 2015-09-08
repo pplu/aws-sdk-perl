@@ -1,9 +1,8 @@
 
-package Paws::DirectConnect::ConfirmPublicVirtualInterfaceResponse {
+package Paws::DirectConnect::ConfirmPublicVirtualInterfaceResponse;
   use Moose;
   has virtualInterfaceState => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

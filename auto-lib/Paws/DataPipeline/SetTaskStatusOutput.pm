@@ -1,8 +1,7 @@
 
-package Paws::DataPipeline::SetTaskStatusOutput {
+package Paws::DataPipeline::SetTaskStatusOutput;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

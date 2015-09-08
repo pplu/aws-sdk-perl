@@ -1,11 +1,10 @@
 
-package Paws::IAM::ListSSHPublicKeysResponse {
+package Paws::IAM::ListSSHPublicKeysResponse;
   use Moose;
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has SSHPublicKeys => (is => 'ro', isa => 'ArrayRef[Paws::IAM::SSHPublicKeyMetadata]');
 
-}
 1;
 
 ### main pod documentation begin ###

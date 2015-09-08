@@ -1,4 +1,4 @@
-package Paws::EC2::ReservedInstancesOffering {
+package Paws::EC2::ReservedInstancesOffering;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
   has CurrencyCode => (is => 'ro', isa => 'Str', xmlname => 'currencyCode', traits => ['Unwrapped']);
@@ -13,5 +13,4 @@ package Paws::EC2::ReservedInstancesOffering {
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::RecurringCharge]', xmlname => 'recurringCharges', traits => ['Unwrapped']);
   has ReservedInstancesOfferingId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstancesOfferingId', traits => ['Unwrapped']);
   has UsagePrice => (is => 'ro', isa => 'Num', xmlname => 'usagePrice', traits => ['Unwrapped']);
-}
 1;

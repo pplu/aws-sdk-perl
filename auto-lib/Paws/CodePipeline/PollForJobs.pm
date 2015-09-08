@@ -1,5 +1,5 @@
 
-package Paws::CodePipeline::PollForJobs {
+package Paws::CodePipeline::PollForJobs;
   use Moose;
   has actionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', required => 1);
   has maxBatchSize => (is => 'ro', isa => 'Int');
@@ -10,7 +10,6 @@ package Paws::CodePipeline::PollForJobs {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PollForJobs');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::PollForJobsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

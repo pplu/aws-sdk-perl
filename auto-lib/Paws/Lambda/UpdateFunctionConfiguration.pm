@@ -1,5 +1,5 @@
 
-package Paws::Lambda::UpdateFunctionConfiguration {
+package Paws::Lambda::UpdateFunctionConfiguration;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
@@ -15,7 +15,6 @@ package Paws::Lambda::UpdateFunctionConfiguration {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateFunctionConfigurationResult');
-}
 1;
 
 ### main pod documentation begin ###

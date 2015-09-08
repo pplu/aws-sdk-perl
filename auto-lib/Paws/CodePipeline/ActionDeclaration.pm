@@ -1,4 +1,4 @@
-package Paws::CodePipeline::ActionDeclaration {
+package Paws::CodePipeline::ActionDeclaration;
   use Moose;
   has actionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', required => 1);
   has configuration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfigurationMap');
@@ -7,5 +7,4 @@ package Paws::CodePipeline::ActionDeclaration {
   has outputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::OutputArtifact]');
   has roleArn => (is => 'ro', isa => 'Str');
   has runOrder => (is => 'ro', isa => 'Int');
-}
 1;

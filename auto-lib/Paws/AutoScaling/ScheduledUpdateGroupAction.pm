@@ -1,4 +1,4 @@
-package Paws::AutoScaling::ScheduledUpdateGroupAction {
+package Paws::AutoScaling::ScheduledUpdateGroupAction;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has DesiredCapacity => (is => 'ro', isa => 'Int');
@@ -10,5 +10,4 @@ package Paws::AutoScaling::ScheduledUpdateGroupAction {
   has ScheduledActionName => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
   has Time => (is => 'ro', isa => 'Str');
-}
 1;

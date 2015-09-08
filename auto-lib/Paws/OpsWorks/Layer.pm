@@ -1,4 +1,4 @@
-package Paws::OpsWorks::Layer {
+package Paws::OpsWorks::Layer;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::LayerAttributes');
   has AutoAssignElasticIps => (is => 'ro', isa => 'Bool');
@@ -21,5 +21,4 @@ package Paws::OpsWorks::Layer {
   has Type => (is => 'ro', isa => 'Str');
   has UseEbsOptimizedInstances => (is => 'ro', isa => 'Bool');
   has VolumeConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::VolumeConfiguration]');
-}
 1;

@@ -1,4 +1,4 @@
-package Paws::ElastiCache {
+package Paws::ElastiCache;
   use Moose;
   sub service { 'elasticache' }
   sub version { '2015-02-02' }
@@ -192,7 +192,6 @@ package Paws::ElastiCache {
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::RevokeCacheSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::RedShift::Parameter {
+package Paws::RedShift::Parameter;
   use Moose;
   has AllowedValues => (is => 'ro', isa => 'Str');
   has ApplyType => (is => 'ro', isa => 'Str');
@@ -9,5 +9,4 @@ package Paws::RedShift::Parameter {
   has ParameterName => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str');
-}
 1;

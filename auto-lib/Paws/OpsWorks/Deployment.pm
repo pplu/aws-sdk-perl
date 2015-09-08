@@ -1,4 +1,4 @@
-package Paws::OpsWorks::Deployment {
+package Paws::OpsWorks::Deployment;
   use Moose;
   has AppId => (is => 'ro', isa => 'Str');
   has Command => (is => 'ro', isa => 'Paws::OpsWorks::DeploymentCommand');
@@ -12,5 +12,4 @@ package Paws::OpsWorks::Deployment {
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
-}
 1;

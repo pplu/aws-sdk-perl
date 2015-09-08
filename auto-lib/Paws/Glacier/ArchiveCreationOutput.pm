@@ -1,11 +1,10 @@
 
-package Paws::Glacier::ArchiveCreationOutput {
+package Paws::Glacier::ArchiveCreationOutput;
   use Moose;
   has archiveId => (is => 'ro', isa => 'Str');
   has checksum => (is => 'ro', isa => 'Str');
   has location => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

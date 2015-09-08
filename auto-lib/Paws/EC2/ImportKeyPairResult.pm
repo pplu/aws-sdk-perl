@@ -1,10 +1,9 @@
 
-package Paws::EC2::ImportKeyPairResult {
+package Paws::EC2::ImportKeyPairResult;
   use Moose;
   has KeyFingerprint => (is => 'ro', isa => 'Str', xmlname => 'keyFingerprint', traits => ['Unwrapped',]);
   has KeyName => (is => 'ro', isa => 'Str', xmlname => 'keyName', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

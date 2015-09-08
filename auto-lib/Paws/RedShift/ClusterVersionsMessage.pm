@@ -1,10 +1,9 @@
 
-package Paws::RedShift::ClusterVersionsMessage {
+package Paws::RedShift::ClusterVersionsMessage;
   use Moose;
   has ClusterVersions => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterVersion]', xmlname => 'ClusterVersion', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::UpdateVolume {
+package Paws::OpsWorks::UpdateVolume;
   use Moose;
   has MountPoint => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::OpsWorks::UpdateVolume {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateVolume');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::EC2::DescribeFlowLogsResult {
+package Paws::EC2::DescribeFlowLogsResult;
   use Moose;
   has FlowLogs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::FlowLog]', xmlname => 'flowLogSet', traits => ['Unwrapped',]);
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

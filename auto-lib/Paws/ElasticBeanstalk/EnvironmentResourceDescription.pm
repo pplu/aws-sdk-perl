@@ -1,4 +1,4 @@
-package Paws::ElasticBeanstalk::EnvironmentResourceDescription {
+package Paws::ElasticBeanstalk::EnvironmentResourceDescription;
   use Moose;
   has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::AutoScalingGroup]');
   has EnvironmentName => (is => 'ro', isa => 'Str');
@@ -7,5 +7,4 @@ package Paws::ElasticBeanstalk::EnvironmentResourceDescription {
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::LoadBalancer]');
   has Queues => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Queue]');
   has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Trigger]');
-}
 1;

@@ -1,9 +1,8 @@
 
-package Paws::RedShift::PurchaseReservedNodeOfferingResult {
+package Paws::RedShift::PurchaseReservedNodeOfferingResult;
   use Moose;
   has ReservedNode => (is => 'ro', isa => 'Paws::RedShift::ReservedNode');
 
-}
 1;
 
 ### main pod documentation begin ###

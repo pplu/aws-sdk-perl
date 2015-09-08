@@ -1,9 +1,8 @@
 
-package Paws::ElastiCache::ModifyCacheClusterResult {
+package Paws::ElastiCache::ModifyCacheClusterResult;
   use Moose;
   has CacheCluster => (is => 'ro', isa => 'Paws::ElastiCache::CacheCluster');
 
-}
 1;
 
 ### main pod documentation begin ###

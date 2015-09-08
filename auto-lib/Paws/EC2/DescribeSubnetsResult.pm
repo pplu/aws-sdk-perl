@@ -1,9 +1,8 @@
 
-package Paws::EC2::DescribeSubnetsResult {
+package Paws::EC2::DescribeSubnetsResult;
   use Moose;
   has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Subnet]', xmlname => 'subnetSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

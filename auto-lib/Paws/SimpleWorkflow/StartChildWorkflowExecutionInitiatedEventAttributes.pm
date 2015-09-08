@@ -1,4 +1,4 @@
-package Paws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttributes {
+package Paws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttributes;
   use Moose;
   has childPolicy => (is => 'ro', isa => 'Str', required => 1);
   has control => (is => 'ro', isa => 'Str');
@@ -12,5 +12,4 @@ package Paws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttribute
   has taskStartToCloseTimeout => (is => 'ro', isa => 'Str');
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
   has workflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', required => 1);
-}
 1;

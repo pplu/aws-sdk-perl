@@ -1,5 +1,5 @@
 
-package Paws::EC2::DescribeFlowLogs {
+package Paws::EC2::DescribeFlowLogs;
   use Moose;
   has Filter => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]');
   has FlowLogIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'FlowLogId' );
@@ -11,7 +11,6 @@ package Paws::EC2::DescribeFlowLogs {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeFlowLogs');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeFlowLogsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

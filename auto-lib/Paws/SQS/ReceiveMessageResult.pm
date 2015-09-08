@@ -1,9 +1,8 @@
 
-package Paws::SQS::ReceiveMessageResult {
+package Paws::SQS::ReceiveMessageResult;
   use Moose;
   has Messages => (is => 'ro', isa => 'ArrayRef[Paws::SQS::Message]', xmlname => 'Message', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

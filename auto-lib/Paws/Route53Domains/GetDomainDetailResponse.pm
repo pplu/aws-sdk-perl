@@ -1,5 +1,5 @@
 
-package Paws::Route53Domains::GetDomainDetailResponse {
+package Paws::Route53Domains::GetDomainDetailResponse;
   use Moose;
   has AbuseContactEmail => (is => 'ro', isa => 'Str');
   has AbuseContactPhone => (is => 'ro', isa => 'Str');
@@ -23,7 +23,6 @@ package Paws::Route53Domains::GetDomainDetailResponse {
   has UpdatedDate => (is => 'ro', isa => 'Str');
   has WhoIsServer => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

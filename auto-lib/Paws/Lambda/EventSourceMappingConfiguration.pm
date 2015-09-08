@@ -1,5 +1,5 @@
 
-package Paws::Lambda::EventSourceMappingConfiguration {
+package Paws::Lambda::EventSourceMappingConfiguration;
   use Moose;
   has BatchSize => (is => 'ro', isa => 'Int');
   has EventSourceArn => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::Lambda::EventSourceMappingConfiguration {
   has StateTransitionReason => (is => 'ro', isa => 'Str');
   has UUID => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

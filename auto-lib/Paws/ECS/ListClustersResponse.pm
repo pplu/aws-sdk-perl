@@ -1,10 +1,9 @@
 
-package Paws::ECS::ListClustersResponse {
+package Paws::ECS::ListClustersResponse;
   use Moose;
   has clusterArns => (is => 'ro', isa => 'ArrayRef[Str]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

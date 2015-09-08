@@ -1,4 +1,4 @@
-package Paws::IAM::SSHPublicKey {
+package Paws::IAM::SSHPublicKey;
   use Moose;
   has Fingerprint => (is => 'ro', isa => 'Str', required => 1);
   has SSHPublicKeyBody => (is => 'ro', isa => 'Str', required => 1);
@@ -6,5 +6,4 @@ package Paws::IAM::SSHPublicKey {
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has UploadDate => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
-}
 1;

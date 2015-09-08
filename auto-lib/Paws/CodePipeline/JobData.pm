@@ -1,4 +1,4 @@
-package Paws::CodePipeline::JobData {
+package Paws::CodePipeline::JobData;
   use Moose;
   has actionConfiguration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfiguration');
   has actionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId');
@@ -8,5 +8,4 @@ package Paws::CodePipeline::JobData {
   has inputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Artifact]');
   has outputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Artifact]');
   has pipelineContext => (is => 'ro', isa => 'Paws::CodePipeline::PipelineContext');
-}
 1;

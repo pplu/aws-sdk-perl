@@ -1,5 +1,5 @@
 
-package Paws::DynamoDB::PutItem {
+package Paws::DynamoDB::PutItem;
   use Moose;
   has ConditionalOperator => (is => 'ro', isa => 'Str');
   has ConditionExpression => (is => 'ro', isa => 'Str');
@@ -17,7 +17,6 @@ package Paws::DynamoDB::PutItem {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutItem');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::PutItemOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

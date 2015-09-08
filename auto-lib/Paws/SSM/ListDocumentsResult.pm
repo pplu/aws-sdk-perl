@@ -1,10 +1,9 @@
 
-package Paws::SSM::ListDocumentsResult {
+package Paws::SSM::ListDocumentsResult;
   use Moose;
   has DocumentIdentifiers => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentIdentifier]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

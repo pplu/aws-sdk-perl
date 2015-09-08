@@ -1,5 +1,5 @@
 
-package Paws::CloudFormation::UpdateStack {
+package Paws::CloudFormation::UpdateStack;
   use Moose;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -18,7 +18,6 @@ package Paws::CloudFormation::UpdateStack {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStack');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::UpdateStackOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateStackResult');
-}
 1;
 
 ### main pod documentation begin ###

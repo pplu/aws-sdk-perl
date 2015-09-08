@@ -1,4 +1,4 @@
-package Paws::CodePipeline::ActionExecution {
+package Paws::CodePipeline::ActionExecution;
   use Moose;
   has errorDetails => (is => 'ro', isa => 'Paws::CodePipeline::ErrorDetails');
   has externalExecutionId => (is => 'ro', isa => 'Str');
@@ -7,5 +7,4 @@ package Paws::CodePipeline::ActionExecution {
   has percentComplete => (is => 'ro', isa => 'Int');
   has status => (is => 'ro', isa => 'Str');
   has summary => (is => 'ro', isa => 'Str');
-}
 1;

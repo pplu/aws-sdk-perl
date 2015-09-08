@@ -1,9 +1,8 @@
 
-package Paws::EMR::RunJobFlowOutput {
+package Paws::EMR::RunJobFlowOutput;
   use Moose;
   has JobFlowId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

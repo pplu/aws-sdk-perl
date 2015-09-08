@@ -1,9 +1,8 @@
 
-package Paws::DS::GetSnapshotLimitsResult {
+package Paws::DS::GetSnapshotLimitsResult;
   use Moose;
   has SnapshotLimits => (is => 'ro', isa => 'Paws::DS::SnapshotLimits');
 
-}
 
 ### main pod documentation begin ###
 

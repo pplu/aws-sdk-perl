@@ -1,10 +1,9 @@
 
-package Paws::DeviceFarm::ListTestsResult {
+package Paws::DeviceFarm::ListTestsResult;
   use Moose;
   has nextToken => (is => 'ro', isa => 'Str');
   has tests => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Test]');
 
-}
 
 ### main pod documentation begin ###
 

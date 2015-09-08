@@ -1,10 +1,9 @@
 
-package Paws::EC2::DescribeVpcEndpointServicesResult {
+package Paws::EC2::DescribeVpcEndpointServicesResult;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has ServiceNames => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'serviceNameSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

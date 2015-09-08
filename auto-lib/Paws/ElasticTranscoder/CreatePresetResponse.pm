@@ -1,10 +1,9 @@
 
-package Paws::ElasticTranscoder::CreatePresetResponse {
+package Paws::ElasticTranscoder::CreatePresetResponse;
   use Moose;
   has Preset => (is => 'ro', isa => 'Paws::ElasticTranscoder::Preset');
   has Warning => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

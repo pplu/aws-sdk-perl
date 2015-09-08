@@ -1,4 +1,4 @@
-package Paws::ELB::LoadBalancerDescription {
+package Paws::ELB::LoadBalancerDescription;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has BackendServerDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::ELB::BackendServerDescription]');
@@ -16,5 +16,4 @@ package Paws::ELB::LoadBalancerDescription {
   has SourceSecurityGroup => (is => 'ro', isa => 'Paws::ELB::SourceSecurityGroup');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str]');
   has VPCId => (is => 'ro', isa => 'Str');
-}
 1;

@@ -1,5 +1,5 @@
 
-package Paws::Support::DescribeCommunications {
+package Paws::Support::DescribeCommunications;
   use Moose;
   has afterTime => (is => 'ro', isa => 'Str');
   has beforeTime => (is => 'ro', isa => 'Str');
@@ -12,7 +12,6 @@ package Paws::Support::DescribeCommunications {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCommunications');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::DescribeCommunicationsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

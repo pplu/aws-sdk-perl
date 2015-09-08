@@ -1,4 +1,4 @@
-package Paws::S3::ObjectVersion {
+package Paws::S3::ObjectVersion;
   use Moose;
   has ETag => (is => 'ro', isa => 'Str');
   has IsLatest => (is => 'ro', isa => 'Bool');
@@ -8,5 +8,4 @@ package Paws::S3::ObjectVersion {
   has Size => (is => 'ro', isa => 'Int');
   has StorageClass => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
-}
 1;

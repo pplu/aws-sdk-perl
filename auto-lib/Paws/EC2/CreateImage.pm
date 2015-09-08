@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateImage {
+package Paws::EC2::CreateImage;
   use Moose;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'blockDeviceMapping' );
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
@@ -13,7 +13,6 @@ package Paws::EC2::CreateImage {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateImage');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateImageResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

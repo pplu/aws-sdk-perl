@@ -1,8 +1,7 @@
 
-package Paws::Route53::DeleteReusableDelegationSetResponse {
+package Paws::Route53::DeleteReusableDelegationSetResponse;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

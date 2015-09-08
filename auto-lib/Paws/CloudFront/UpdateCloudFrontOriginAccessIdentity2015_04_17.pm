@@ -1,5 +1,5 @@
 
-package Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity2015_04_17 {
+package Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity2015_04_17;
   use Moose;
   has CloudFrontOriginAccessIdentityConfig => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentityConfig', required => 1);
   has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
@@ -12,7 +12,6 @@ package Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity2015_04_17 {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::UpdateCloudFrontOriginAccessIdentityResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

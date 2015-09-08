@@ -1,5 +1,5 @@
 
-package Paws::Lambda::CreateFunction {
+package Paws::Lambda::CreateFunction;
   use Moose;
   has Code => (is => 'ro', isa => 'Paws::Lambda::FunctionCode', required => 1);
   has Description => (is => 'ro', isa => 'Str');
@@ -17,7 +17,6 @@ package Paws::Lambda::CreateFunction {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateFunctionResult');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::GetTestResult {
+package Paws::DeviceFarm::GetTestResult;
   use Moose;
   has test => (is => 'ro', isa => 'Paws::DeviceFarm::Test');
 
-}
 
 ### main pod documentation begin ###
 

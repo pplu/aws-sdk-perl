@@ -1,10 +1,9 @@
 
-package Paws::ElastiCache::CacheParameterGroupsMessage {
+package Paws::ElastiCache::CacheParameterGroupsMessage;
   use Moose;
   has CacheParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheParameterGroup]', xmlname => 'CacheParameterGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

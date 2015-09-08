@@ -1,9 +1,8 @@
 
-package Paws::ElastiCache::CopySnapshotResult {
+package Paws::ElastiCache::CopySnapshotResult;
   use Moose;
   has Snapshot => (is => 'ro', isa => 'Paws::ElastiCache::Snapshot');
 
-}
 1;
 
 ### main pod documentation begin ###

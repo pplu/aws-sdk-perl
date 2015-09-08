@@ -1,5 +1,5 @@
 
-package Paws::RDS::CreateDBCluster {
+package Paws::RDS::CreateDBCluster;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
@@ -24,7 +24,6 @@ package Paws::RDS::CreateDBCluster {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateDBClusterResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBClusterResult');
-}
 1;
 
 ### main pod documentation begin ###

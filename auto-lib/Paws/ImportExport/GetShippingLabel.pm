@@ -1,5 +1,5 @@
 
-package Paws::ImportExport::GetShippingLabel {
+package Paws::ImportExport::GetShippingLabel;
   use Moose;
   has APIVersion => (is => 'ro', isa => 'Str');
   has city => (is => 'ro', isa => 'Str');
@@ -19,7 +19,6 @@ package Paws::ImportExport::GetShippingLabel {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetShippingLabel');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ImportExport::GetShippingLabelOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetShippingLabelResult');
-}
 1;
 
 ### main pod documentation begin ###

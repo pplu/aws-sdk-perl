@@ -1,9 +1,8 @@
 
-package Paws::S3::PutObjectAclOutput {
+package Paws::S3::PutObjectAclOutput;
   use Moose;
   has RequestCharged => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

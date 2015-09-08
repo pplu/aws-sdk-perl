@@ -1,10 +1,9 @@
 
-package Paws::CloudFront::UpdateDistributionResult {
+package Paws::CloudFront::UpdateDistributionResult;
   use Moose;
   has Distribution => (is => 'ro', isa => 'Paws::CloudFront::Distribution');
   has ETag => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

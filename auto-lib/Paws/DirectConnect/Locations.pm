@@ -1,9 +1,8 @@
 
-package Paws::DirectConnect::Locations {
+package Paws::DirectConnect::Locations;
   use Moose;
   has locations => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Location]');
 
-}
 
 ### main pod documentation begin ###
 

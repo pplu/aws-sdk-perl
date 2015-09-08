@@ -1,9 +1,8 @@
 
-package Paws::ECS::DescribeTaskDefinitionResponse {
+package Paws::ECS::DescribeTaskDefinitionResponse;
   use Moose;
   has taskDefinition => (is => 'ro', isa => 'Paws::ECS::TaskDefinition');
 
-}
 
 ### main pod documentation begin ###
 

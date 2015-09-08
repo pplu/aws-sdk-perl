@@ -1,9 +1,8 @@
 
-package Paws::ElasticBeanstalk::ApplicationDescriptionMessage {
+package Paws::ElasticBeanstalk::ApplicationDescriptionMessage;
   use Moose;
   has Application => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationDescription');
 
-}
 1;
 
 ### main pod documentation begin ###

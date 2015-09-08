@@ -1,5 +1,5 @@
 
-package Paws::EC2::ReplaceRoute {
+package Paws::EC2::ReplaceRoute;
   use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCidrBlock' , required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -14,7 +14,6 @@ package Paws::EC2::ReplaceRoute {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceRoute');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

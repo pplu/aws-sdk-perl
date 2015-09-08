@@ -1,10 +1,9 @@
 
-package Paws::StorageGateway::DescribeTapeArchivesOutput {
+package Paws::StorageGateway::DescribeTapeArchivesOutput;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has TapeArchives => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::TapeArchive]');
 
-}
 
 ### main pod documentation begin ###
 

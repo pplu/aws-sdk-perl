@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::GetAccountSettingsResult {
+package Paws::DeviceFarm::GetAccountSettingsResult;
   use Moose;
   has accountSettings => (is => 'ro', isa => 'Paws::DeviceFarm::AccountSettings');
 
-}
 
 ### main pod documentation begin ###
 

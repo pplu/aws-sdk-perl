@@ -1,10 +1,9 @@
 
-package Paws::ECS::ListTaskDefinitionsResponse {
+package Paws::ECS::ListTaskDefinitionsResponse;
   use Moose;
   has nextToken => (is => 'ro', isa => 'Str');
   has taskDefinitionArns => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 
 ### main pod documentation begin ###
 

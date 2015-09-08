@@ -1,9 +1,8 @@
 
-package Paws::RDS::CreateDBSubnetGroupResult {
+package Paws::RDS::CreateDBSubnetGroupResult;
   use Moose;
   has DBSubnetGroup => (is => 'ro', isa => 'Paws::RDS::DBSubnetGroup');
 
-}
 1;
 
 ### main pod documentation begin ###

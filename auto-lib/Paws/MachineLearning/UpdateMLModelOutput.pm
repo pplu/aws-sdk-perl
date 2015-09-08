@@ -1,9 +1,8 @@
 
-package Paws::MachineLearning::UpdateMLModelOutput {
+package Paws::MachineLearning::UpdateMLModelOutput;
   use Moose;
   has MLModelId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

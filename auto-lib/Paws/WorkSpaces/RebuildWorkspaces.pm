@@ -1,5 +1,5 @@
 
-package Paws::WorkSpaces::RebuildWorkspaces {
+package Paws::WorkSpaces::RebuildWorkspaces;
   use Moose;
   has RebuildWorkspaceRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::RebuildRequest]', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::WorkSpaces::RebuildWorkspaces {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RebuildWorkspaces');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::RebuildWorkspacesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

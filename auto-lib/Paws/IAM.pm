@@ -1,4 +1,4 @@
-package Paws::IAM {
+package Paws::IAM;
   use Moose;
   sub service { 'iam' }
   sub version { '2010-05-08' }
@@ -588,7 +588,6 @@ package Paws::IAM {
     my $call_object = $self->new_with_coercions('Paws::IAM::UploadSSHPublicKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

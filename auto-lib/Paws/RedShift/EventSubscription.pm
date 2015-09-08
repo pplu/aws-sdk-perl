@@ -1,4 +1,4 @@
-package Paws::RedShift::EventSubscription {
+package Paws::RedShift::EventSubscription;
   use Moose;
   has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has CustomerAwsId => (is => 'ro', isa => 'Str');
@@ -11,5 +11,4 @@ package Paws::RedShift::EventSubscription {
   has Status => (is => 'ro', isa => 'Str');
   has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
-}
 1;

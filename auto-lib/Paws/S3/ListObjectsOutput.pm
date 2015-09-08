@@ -1,5 +1,5 @@
 
-package Paws::S3::ListObjectsOutput {
+package Paws::S3::ListObjectsOutput;
   use Moose;
   has CommonPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::S3::CommonPrefix]');
   has Contents => (is => 'ro', isa => 'ArrayRef[Paws::S3::Object]');
@@ -12,7 +12,6 @@ package Paws::S3::ListObjectsOutput {
   has NextMarker => (is => 'ro', isa => 'Str');
   has Prefix => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::AutoScaling::ActivitiesType {
+package Paws::AutoScaling::ActivitiesType;
   use Moose;
   has Activities => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Activity]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

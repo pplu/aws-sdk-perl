@@ -1,5 +1,5 @@
 
-package Paws::RDS::RestoreDBClusterFromSnapshot {
+package Paws::RDS::RestoreDBClusterFromSnapshot;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has DatabaseName => (is => 'ro', isa => 'Str');
@@ -18,7 +18,6 @@ package Paws::RDS::RestoreDBClusterFromSnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterFromSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RestoreDBClusterFromSnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterFromSnapshotResult');
-}
 1;
 
 ### main pod documentation begin ###

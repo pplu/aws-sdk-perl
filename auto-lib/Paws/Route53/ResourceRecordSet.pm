@@ -1,4 +1,4 @@
-package Paws::Route53::ResourceRecordSet {
+package Paws::Route53::ResourceRecordSet;
   use Moose;
   has AliasTarget => (is => 'ro', isa => 'Paws::Route53::AliasTarget');
   has Failover => (is => 'ro', isa => 'Str');
@@ -11,5 +11,4 @@ package Paws::Route53::ResourceRecordSet {
   has TTL => (is => 'ro', isa => 'Int');
   has Type => (is => 'ro', isa => 'Str', required => 1);
   has Weight => (is => 'ro', isa => 'Int');
-}
 1;

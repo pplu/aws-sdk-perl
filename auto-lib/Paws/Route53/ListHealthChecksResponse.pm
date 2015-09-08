@@ -1,5 +1,5 @@
 
-package Paws::Route53::ListHealthChecksResponse {
+package Paws::Route53::ListHealthChecksResponse;
   use Moose;
   has HealthChecks => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HealthCheck]', traits => ['Unwrapped'], xmlname => 'HealthCheck', required => 1);
   has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
@@ -7,7 +7,6 @@ package Paws::Route53::ListHealthChecksResponse {
   has MaxItems => (is => 'ro', isa => 'Str', required => 1);
   has NextMarker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

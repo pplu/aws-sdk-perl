@@ -1,11 +1,10 @@
 
-package Paws::IAM::ListPolicyVersionsResponse {
+package Paws::IAM::ListPolicyVersionsResponse;
   use Moose;
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has Versions => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyVersion]');
 
-}
 1;
 
 ### main pod documentation begin ###

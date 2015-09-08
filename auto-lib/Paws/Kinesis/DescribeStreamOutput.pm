@@ -1,9 +1,8 @@
 
-package Paws::Kinesis::DescribeStreamOutput {
+package Paws::Kinesis::DescribeStreamOutput;
   use Moose;
   has StreamDescription => (is => 'ro', isa => 'Paws::Kinesis::StreamDescription', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

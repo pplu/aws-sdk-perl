@@ -1,10 +1,9 @@
 
-package Paws::ECS::DescribeServicesResponse {
+package Paws::ECS::DescribeServicesResponse;
   use Moose;
   has failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]');
   has services => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Service]');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,9 +1,8 @@
 
-package Paws::EC2::DescribeAddressesResult {
+package Paws::EC2::DescribeAddressesResult;
   use Moose;
   has Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Address]', xmlname => 'addressesSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

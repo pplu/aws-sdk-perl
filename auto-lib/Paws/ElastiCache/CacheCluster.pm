@@ -1,4 +1,4 @@
-package Paws::ElastiCache::CacheCluster {
+package Paws::ElastiCache::CacheCluster;
   use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
@@ -22,5 +22,4 @@ package Paws::ElastiCache::CacheCluster {
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::SecurityGroupMembership]');
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
-}
 1;

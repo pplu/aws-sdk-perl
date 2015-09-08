@@ -1,9 +1,8 @@
 
-package Paws::DataPipeline::EvaluateExpressionOutput {
+package Paws::DataPipeline::EvaluateExpressionOutput;
   use Moose;
   has evaluatedExpression => (is => 'ro', isa => 'Str', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

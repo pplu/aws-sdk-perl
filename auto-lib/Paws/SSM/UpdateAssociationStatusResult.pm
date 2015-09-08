@@ -1,9 +1,8 @@
 
-package Paws::SSM::UpdateAssociationStatusResult {
+package Paws::SSM::UpdateAssociationStatusResult;
   use Moose;
   has AssociationDescription => (is => 'ro', isa => 'Paws::SSM::AssociationDescription');
 
-}
 
 ### main pod documentation begin ###
 

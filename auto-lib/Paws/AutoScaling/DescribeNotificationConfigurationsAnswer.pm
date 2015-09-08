@@ -1,10 +1,9 @@
 
-package Paws::AutoScaling::DescribeNotificationConfigurationsAnswer {
+package Paws::AutoScaling::DescribeNotificationConfigurationsAnswer;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has NotificationConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::NotificationConfiguration]', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

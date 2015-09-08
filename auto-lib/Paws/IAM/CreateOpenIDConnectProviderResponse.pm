@@ -1,9 +1,8 @@
 
-package Paws::IAM::CreateOpenIDConnectProviderResponse {
+package Paws::IAM::CreateOpenIDConnectProviderResponse;
   use Moose;
   has OpenIDConnectProviderArn => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

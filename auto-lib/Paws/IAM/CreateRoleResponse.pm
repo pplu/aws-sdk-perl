@@ -1,9 +1,8 @@
 
-package Paws::IAM::CreateRoleResponse {
+package Paws::IAM::CreateRoleResponse;
   use Moose;
   has Role => (is => 'ro', isa => 'Paws::IAM::Role', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

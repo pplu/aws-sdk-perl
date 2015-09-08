@@ -1,5 +1,5 @@
 
-package Paws::STS::GetSessionToken {
+package Paws::STS::GetSessionToken;
   use Moose;
   has DurationSeconds => (is => 'ro', isa => 'Int');
   has SerialNumber => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::STS::GetSessionToken {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSessionToken');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::STS::GetSessionTokenResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetSessionTokenResult');
-}
 1;
 
 ### main pod documentation begin ###

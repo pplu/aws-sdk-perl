@@ -1,10 +1,9 @@
 
-package Paws::RDS::EventSubscriptionsMessage {
+package Paws::RDS::EventSubscriptionsMessage;
   use Moose;
   has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::EventSubscription]', xmlname => 'EventSubscription', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

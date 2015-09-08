@@ -1,5 +1,5 @@
 
-package Paws::ElasticTranscoder::ListJobsByPipeline {
+package Paws::ElasticTranscoder::ListJobsByPipeline;
   use Moose;
   has Ascending => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Ascending' );
   has PageToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'PageToken' );
@@ -12,7 +12,6 @@ package Paws::ElasticTranscoder::ListJobsByPipeline {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::ListJobsByPipelineResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListJobsByPipelineResult');
-}
 1;
 
 ### main pod documentation begin ###

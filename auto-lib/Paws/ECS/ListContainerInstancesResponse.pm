@@ -1,10 +1,9 @@
 
-package Paws::ECS::ListContainerInstancesResponse {
+package Paws::ECS::ListContainerInstancesResponse;
   use Moose;
   has containerInstanceArns => (is => 'ro', isa => 'ArrayRef[Str]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

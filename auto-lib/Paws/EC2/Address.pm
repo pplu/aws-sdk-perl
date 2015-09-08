@@ -1,4 +1,4 @@
-package Paws::EC2::Address {
+package Paws::EC2::Address;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str', xmlname => 'allocationId', traits => ['Unwrapped']);
   has AssociationId => (is => 'ro', isa => 'Str', xmlname => 'associationId', traits => ['Unwrapped']);
@@ -8,5 +8,4 @@ package Paws::EC2::Address {
   has NetworkInterfaceOwnerId => (is => 'ro', isa => 'Str', xmlname => 'networkInterfaceOwnerId', traits => ['Unwrapped']);
   has PrivateIpAddress => (is => 'ro', isa => 'Str', xmlname => 'privateIpAddress', traits => ['Unwrapped']);
   has PublicIp => (is => 'ro', isa => 'Str', xmlname => 'publicIp', traits => ['Unwrapped']);
-}
 1;

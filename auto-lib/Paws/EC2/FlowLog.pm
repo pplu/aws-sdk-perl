@@ -1,4 +1,4 @@
-package Paws::EC2::FlowLog {
+package Paws::EC2::FlowLog;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str', xmlname => 'creationTime', traits => ['Unwrapped']);
   has DeliverLogsErrorMessage => (is => 'ro', isa => 'Str', xmlname => 'deliverLogsErrorMessage', traits => ['Unwrapped']);
@@ -9,5 +9,4 @@ package Paws::EC2::FlowLog {
   has LogGroupName => (is => 'ro', isa => 'Str', xmlname => 'logGroupName', traits => ['Unwrapped']);
   has ResourceId => (is => 'ro', isa => 'Str', xmlname => 'resourceId', traits => ['Unwrapped']);
   has TrafficType => (is => 'ro', isa => 'Str', xmlname => 'trafficType', traits => ['Unwrapped']);
-}
 1;

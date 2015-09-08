@@ -1,5 +1,5 @@
 
-package Paws::DS::CreateSnapshot {
+package Paws::DS::CreateSnapshot;
   use Moose;
   has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::DS::CreateSnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::CreateSnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

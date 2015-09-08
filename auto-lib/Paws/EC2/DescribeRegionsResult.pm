@@ -1,9 +1,8 @@
 
-package Paws::EC2::DescribeRegionsResult {
+package Paws::EC2::DescribeRegionsResult;
   use Moose;
   has Regions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Region]', xmlname => 'regionInfo', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

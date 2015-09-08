@@ -1,9 +1,8 @@
 
-package Paws::RedShift::ModifyEventSubscriptionResult {
+package Paws::RedShift::ModifyEventSubscriptionResult;
   use Moose;
   has EventSubscription => (is => 'ro', isa => 'Paws::RedShift::EventSubscription');
 
-}
 1;
 
 ### main pod documentation begin ###

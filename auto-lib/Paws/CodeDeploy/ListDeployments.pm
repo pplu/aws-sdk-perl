@@ -1,5 +1,5 @@
 
-package Paws::CodeDeploy::ListDeployments {
+package Paws::CodeDeploy::ListDeployments;
   use Moose;
   has applicationName => (is => 'ro', isa => 'Str');
   has createTimeRange => (is => 'ro', isa => 'Paws::CodeDeploy::TimeRange');
@@ -12,7 +12,6 @@ package Paws::CodeDeploy::ListDeployments {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDeployments');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::ListDeploymentsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

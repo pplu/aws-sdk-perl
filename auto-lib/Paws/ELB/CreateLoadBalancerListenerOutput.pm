@@ -1,8 +1,7 @@
 
-package Paws::ELB::CreateLoadBalancerListenerOutput {
+package Paws::ELB::CreateLoadBalancerListenerOutput;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

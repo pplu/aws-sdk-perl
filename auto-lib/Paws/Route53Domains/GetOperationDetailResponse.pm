@@ -1,5 +1,5 @@
 
-package Paws::Route53Domains::GetOperationDetailResponse {
+package Paws::Route53Domains::GetOperationDetailResponse;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
@@ -8,7 +8,6 @@ package Paws::Route53Domains::GetOperationDetailResponse {
   has SubmittedDate => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

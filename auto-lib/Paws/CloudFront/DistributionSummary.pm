@@ -1,4 +1,4 @@
-package Paws::CloudFront::DistributionSummary {
+package Paws::CloudFront::DistributionSummary;
   use Moose;
   has Aliases => (is => 'ro', isa => 'Paws::CloudFront::Aliases', required => 1);
   has CacheBehaviors => (is => 'ro', isa => 'Paws::CloudFront::CacheBehaviors', required => 1);
@@ -14,5 +14,4 @@ package Paws::CloudFront::DistributionSummary {
   has Restrictions => (is => 'ro', isa => 'Paws::CloudFront::Restrictions', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has ViewerCertificate => (is => 'ro', isa => 'Paws::CloudFront::ViewerCertificate', required => 1);
-}
 1;

@@ -1,5 +1,5 @@
 
-package Paws::Glacier::GetJobOutput {
+package Paws::Glacier::GetJobOutput;
   use Moose;
   has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
   has jobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId' , required => 1);
@@ -13,7 +13,6 @@ package Paws::Glacier::GetJobOutput {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::GetJobOutputOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetJobOutputResult');
-}
 1;
 
 ### main pod documentation begin ###

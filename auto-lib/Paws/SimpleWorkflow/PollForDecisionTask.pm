@@ -1,5 +1,5 @@
 
-package Paws::SimpleWorkflow::PollForDecisionTask {
+package Paws::SimpleWorkflow::PollForDecisionTask;
   use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has identity => (is => 'ro', isa => 'Str');
@@ -13,7 +13,6 @@ package Paws::SimpleWorkflow::PollForDecisionTask {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PollForDecisionTask');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::DecisionTask');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

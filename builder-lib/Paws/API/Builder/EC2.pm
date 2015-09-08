@@ -22,7 +22,7 @@ package Paws::API::Builder::EC2 {
   has callargs_class_template => (is => 'ro', isa => 'Str', default => q#
 [%- operation = c.operation(op_name) %]
 [%- shape = c.input_for_operation(op_name) %]
-package [% c.api %]::[% operation.name %] {
+package [% c.api %]::[% operation.name %];
   use Moose;
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
@@ -36,7 +36,6 @@ package [% c.api %]::[% operation.name %] {
   class_has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
   class_has _returns => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% c.api %]::[% c.shapename_for_operation_output(op_name) %]'[% END %]);
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 [% c.callclass_documentation_template | eval %]
 #);
@@ -45,7 +44,7 @@ package [% c.api %]::[% operation.name %] {
 [%- operation = c.result_for_operation(op_name) %]
 [%- shape = c.result_for_operation(op_name) %]
 [%- IF (shape) %]
-package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
+package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
   use Moose;
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- traits = [] -%]
@@ -59,7 +58,6 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
   [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]',[% END %]][% END -%]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
-}
 [%- END %]
 1;
 [% c.class_documentation_template | eval %]
@@ -72,7 +70,7 @@ use Moose::Util::TypeConstraints;
 enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %]];
 [%- END %]
 [%- END -%]
-package [% c.api %] {
+package [% c.api %];
   use Moose;
   sub service { '[% c.service %]' }
   sub version { '[% c.version %]' }
@@ -106,7 +104,6 @@ package [% c.api %] {
     return '[% c.api %]::[% op %]'->_returns->new([% paginator.result_key %] => $array);
   }
   [%- END %]
-}
 1;
 [% c.service_documentation_template | eval %]
 #);
@@ -120,7 +117,7 @@ package [% c.api %] {
       my $output = '';
       if ($iclass->{type} eq 'map'){
         my $keys_shape = $self->shape($iclass->{key}->{shape});
-        $output .= "package $inner_class {\n";
+        $output .= "package $inner_class;\n";
         $output .= "  use Moose;\n";
         $output .= "  with 'Paws::API::MapParser';\n";
         my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members});
@@ -130,10 +127,10 @@ package [% c.api %] {
           $output .= "  has $param_name => (is => 'ro', isa => '$type'";
           $output .= ");\n";
         }
-        $output .= "}\n1;\n";
+        $output .= "1;\n";
         $self->save_class($inner_class, $output);
       } elsif($iclass->{type} eq 'structure') {
-        $output .= "package $inner_class {\n";
+        $output .= "package $inner_class;\n";
         $output .= "  use Moose;\n";
  
         my $members = $iclass->{members};
@@ -171,7 +168,7 @@ package [% c.api %] {
           $output .= ", required => 1" if ($self->required_in_shape($iclass,$param_name));
           $output .= ");\n";
         }
-        $output .= "}\n1;\n";
+        $output .= "1;\n";
       }
     };
 }

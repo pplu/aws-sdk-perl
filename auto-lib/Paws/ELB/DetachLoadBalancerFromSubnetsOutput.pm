@@ -1,9 +1,8 @@
 
-package Paws::ELB::DetachLoadBalancerFromSubnetsOutput {
+package Paws::ELB::DetachLoadBalancerFromSubnetsOutput;
   use Moose;
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 1;
 
 ### main pod documentation begin ###

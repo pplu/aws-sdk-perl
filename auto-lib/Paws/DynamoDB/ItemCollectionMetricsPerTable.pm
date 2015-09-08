@@ -1,4 +1,4 @@
-package Paws::DynamoDB::ItemCollectionMetricsPerTable {
+package Paws::DynamoDB::ItemCollectionMetricsPerTable;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -7,5 +7,4 @@ package Paws::DynamoDB::ItemCollectionMetricsPerTable {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Paws::DynamoDB::ItemCollectionMetrics]]');
-}
 1

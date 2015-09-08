@@ -1,4 +1,4 @@
-package Paws::RDS::DBInstance {
+package Paws::RDS::DBInstance;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
@@ -41,5 +41,4 @@ package Paws::RDS::DBInstance {
   has StorageType => (is => 'ro', isa => 'Str');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]');
-}
 1;

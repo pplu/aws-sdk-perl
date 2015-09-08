@@ -1,5 +1,5 @@
 
-package Paws::ElasticBeanstalk::DescribeApplications {
+package Paws::ElasticBeanstalk::DescribeApplications;
   use Moose;
   has ApplicationNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -8,7 +8,6 @@ package Paws::ElasticBeanstalk::DescribeApplications {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeApplications');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ApplicationDescriptionsMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeApplicationsResult');
-}
 1;
 
 ### main pod documentation begin ###

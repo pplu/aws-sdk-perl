@@ -1,11 +1,10 @@
 
-package Paws::KMS::GenerateDataKeyResponse {
+package Paws::KMS::GenerateDataKeyResponse;
   use Moose;
   has CiphertextBlob => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
   has Plaintext => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::PutScalingPolicy {
+package Paws::AutoScaling::PutScalingPolicy;
   use Moose;
   has AdjustmentType => (is => 'ro', isa => 'Str', required => 1);
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -18,7 +18,6 @@ package Paws::AutoScaling::PutScalingPolicy {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutScalingPolicy');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::PolicyARNType');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'PutScalingPolicyResult');
-}
 1;
 
 ### main pod documentation begin ###

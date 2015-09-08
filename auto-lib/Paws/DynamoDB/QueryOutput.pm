@@ -1,5 +1,5 @@
 
-package Paws::DynamoDB::QueryOutput {
+package Paws::DynamoDB::QueryOutput;
   use Moose;
   has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
   has Count => (is => 'ro', isa => 'Int');
@@ -7,7 +7,6 @@ package Paws::DynamoDB::QueryOutput {
   has LastEvaluatedKey => (is => 'ro', isa => 'Paws::DynamoDB::Key');
   has ScannedCount => (is => 'ro', isa => 'Int');
 
-}
 
 ### main pod documentation begin ###
 

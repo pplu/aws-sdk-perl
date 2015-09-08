@@ -1,9 +1,8 @@
 
-package Paws::EC2::CancelBundleTaskResult {
+package Paws::EC2::CancelBundleTaskResult;
   use Moose;
   has BundleTask => (is => 'ro', isa => 'Paws::EC2::BundleTask', xmlname => 'bundleInstanceTask', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

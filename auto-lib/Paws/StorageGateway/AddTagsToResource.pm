@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::AddTagsToResource {
+package Paws::StorageGateway::AddTagsToResource;
   use Moose;
   has ResourceARN => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]', required => 1);
@@ -9,7 +9,6 @@ package Paws::StorageGateway::AddTagsToResource {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTagsToResource');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::AddTagsToResourceOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

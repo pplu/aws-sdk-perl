@@ -1,9 +1,8 @@
 
-package Paws::AutoScaling::ExitStandbyAnswer {
+package Paws::AutoScaling::ExitStandbyAnswer;
   use Moose;
   has Activities => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Activity]');
 
-}
 1;
 
 ### main pod documentation begin ###

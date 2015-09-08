@@ -1,4 +1,4 @@
-package Paws::DynamoDB::AttributeUpdates {
+package Paws::DynamoDB::AttributeUpdates;
   use Moose;
   with 'Paws::API::StrToObjMapParser';
 
@@ -7,5 +7,4 @@ package Paws::DynamoDB::AttributeUpdates {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValueUpdate]');
-}
 1

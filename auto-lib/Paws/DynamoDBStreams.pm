@@ -1,4 +1,4 @@
-package Paws::DynamoDBStreams {
+package Paws::DynamoDBStreams;
   use Moose;
   sub service { 'streams.dynamodb' }
   sub version { '2012-08-10' }
@@ -28,7 +28,6 @@ package Paws::DynamoDBStreams {
     my $call_object = $self->new_with_coercions('Paws::DynamoDBStreams::ListStreams', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

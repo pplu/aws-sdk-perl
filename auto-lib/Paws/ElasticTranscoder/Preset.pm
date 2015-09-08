@@ -1,4 +1,4 @@
-package Paws::ElasticTranscoder::Preset {
+package Paws::ElasticTranscoder::Preset;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has Audio => (is => 'ro', isa => 'Paws::ElasticTranscoder::AudioParameters');
@@ -9,5 +9,4 @@ package Paws::ElasticTranscoder::Preset {
   has Thumbnails => (is => 'ro', isa => 'Paws::ElasticTranscoder::Thumbnails');
   has Type => (is => 'ro', isa => 'Str');
   has Video => (is => 'ro', isa => 'Paws::ElasticTranscoder::VideoParameters');
-}
 1;

@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeDeploymentsResult {
+package Paws::OpsWorks::DescribeDeploymentsResult;
   use Moose;
   has Deployments => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Deployment]');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,11 +1,10 @@
 
-package Paws::EFS::DescribeFileSystemsResponse {
+package Paws::EFS::DescribeFileSystemsResponse;
   use Moose;
   has FileSystems => (is => 'ro', isa => 'ArrayRef[Paws::EFS::FileSystemDescription]');
   has Marker => (is => 'ro', isa => 'Str');
   has NextMarker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

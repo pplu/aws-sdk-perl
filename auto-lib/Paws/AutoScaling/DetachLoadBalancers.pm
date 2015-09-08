@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::DetachLoadBalancers {
+package Paws::AutoScaling::DetachLoadBalancers;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -9,7 +9,6 @@ package Paws::AutoScaling::DetachLoadBalancers {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachLoadBalancers');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::DetachLoadBalancersResultType');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DetachLoadBalancersResult');
-}
 1;
 
 ### main pod documentation begin ###

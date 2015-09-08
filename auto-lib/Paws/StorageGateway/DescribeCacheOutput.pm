@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::DescribeCacheOutput {
+package Paws::StorageGateway::DescribeCacheOutput;
   use Moose;
   has CacheAllocatedInBytes => (is => 'ro', isa => 'Int');
   has CacheDirtyPercentage => (is => 'ro', isa => 'Num');
@@ -9,7 +9,6 @@ package Paws::StorageGateway::DescribeCacheOutput {
   has DiskIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has GatewayARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

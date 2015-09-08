@@ -1,5 +1,5 @@
 
-package Paws::RDS::ModifyDBCluster {
+package Paws::RDS::ModifyDBCluster;
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
@@ -18,7 +18,6 @@ package Paws::RDS::ModifyDBCluster {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::ModifyDBClusterResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBClusterResult');
-}
 1;
 
 ### main pod documentation begin ###

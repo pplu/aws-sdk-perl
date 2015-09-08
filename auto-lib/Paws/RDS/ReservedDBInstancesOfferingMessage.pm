@@ -1,10 +1,9 @@
 
-package Paws::RDS::ReservedDBInstancesOfferingMessage {
+package Paws::RDS::ReservedDBInstancesOfferingMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedDBInstancesOfferings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ReservedDBInstancesOffering]', xmlname => 'ReservedDBInstancesOffering', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

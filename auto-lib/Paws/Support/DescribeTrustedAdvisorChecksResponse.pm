@@ -1,9 +1,8 @@
 
-package Paws::Support::DescribeTrustedAdvisorChecksResponse {
+package Paws::Support::DescribeTrustedAdvisorChecksResponse;
   use Moose;
   has checks => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorCheckDescription]', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

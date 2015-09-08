@@ -1,9 +1,8 @@
 
-package Paws::DynamoDB::DeleteTableOutput {
+package Paws::DynamoDB::DeleteTableOutput;
   use Moose;
   has TableDescription => (is => 'ro', isa => 'Paws::DynamoDB::TableDescription');
 
-}
 
 ### main pod documentation begin ###
 

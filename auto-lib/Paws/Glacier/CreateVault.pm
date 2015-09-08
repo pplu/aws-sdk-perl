@@ -1,5 +1,5 @@
 
-package Paws::Glacier::CreateVault {
+package Paws::Glacier::CreateVault;
   use Moose;
   has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
   has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
@@ -11,7 +11,6 @@ package Paws::Glacier::CreateVault {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::CreateVaultOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateVaultResult');
-}
 1;
 
 ### main pod documentation begin ###

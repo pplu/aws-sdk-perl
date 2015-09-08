@@ -1,5 +1,5 @@
 
-package Paws::EC2::CancelImportTask {
+package Paws::EC2::CancelImportTask;
   use Moose;
   has CancelReason => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool');
@@ -10,7 +10,6 @@ package Paws::EC2::CancelImportTask {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelImportTask');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CancelImportTaskResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

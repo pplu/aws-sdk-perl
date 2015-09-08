@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::ModifyCacheCluster {
+package Paws::ElastiCache::ModifyCacheCluster;
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
@@ -23,7 +23,6 @@ package Paws::ElastiCache::ModifyCacheCluster {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCacheCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::ModifyCacheClusterResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyCacheClusterResult');
-}
 1;
 
 ### main pod documentation begin ###

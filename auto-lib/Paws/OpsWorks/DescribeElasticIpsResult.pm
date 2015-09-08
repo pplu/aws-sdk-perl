@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeElasticIpsResult {
+package Paws::OpsWorks::DescribeElasticIpsResult;
   use Moose;
   has ElasticIps => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::ElasticIp]');
 
-}
 
 ### main pod documentation begin ###
 

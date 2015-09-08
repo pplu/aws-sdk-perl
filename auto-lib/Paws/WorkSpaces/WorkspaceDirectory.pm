@@ -1,4 +1,4 @@
-package Paws::WorkSpaces::WorkspaceDirectory {
+package Paws::WorkSpaces::WorkspaceDirectory;
   use Moose;
   has Alias => (is => 'ro', isa => 'Str');
   has CustomerUserName => (is => 'ro', isa => 'Str');
@@ -12,5 +12,4 @@ package Paws::WorkSpaces::WorkspaceDirectory {
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has WorkspaceCreationProperties => (is => 'ro', isa => 'Paws::WorkSpaces::DefaultWorkspaceCreationProperties');
   has WorkspaceSecurityGroupId => (is => 'ro', isa => 'Str');
-}
 1;

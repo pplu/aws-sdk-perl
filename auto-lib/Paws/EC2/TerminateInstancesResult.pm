@@ -1,9 +1,8 @@
 
-package Paws::EC2::TerminateInstancesResult {
+package Paws::EC2::TerminateInstancesResult;
   use Moose;
   has TerminatingInstances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceStateChange]', xmlname => 'instancesSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

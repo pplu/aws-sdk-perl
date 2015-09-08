@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::CreateTapesOutput {
+package Paws::StorageGateway::CreateTapesOutput;
   use Moose;
   has TapeARNs => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 
 ### main pod documentation begin ###
 

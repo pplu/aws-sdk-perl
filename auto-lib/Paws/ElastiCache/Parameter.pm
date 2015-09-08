@@ -1,4 +1,4 @@
-package Paws::ElastiCache::Parameter {
+package Paws::ElastiCache::Parameter;
   use Moose;
   has AllowedValues => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
@@ -8,5 +8,4 @@ package Paws::ElastiCache::Parameter {
   has ParameterName => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str');
-}
 1;

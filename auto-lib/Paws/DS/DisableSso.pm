@@ -1,5 +1,5 @@
 
-package Paws::DS::DisableSso {
+package Paws::DS::DisableSso;
   use Moose;
   has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
   has Password => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::DS::DisableSso {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableSso');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::DisableSsoResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

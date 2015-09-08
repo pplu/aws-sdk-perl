@@ -1,10 +1,9 @@
 
-package Paws::Route53Domains::ListOperationsResponse {
+package Paws::Route53Domains::ListOperationsResponse;
   use Moose;
   has NextPageMarker => (is => 'ro', isa => 'Str');
   has Operations => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::OperationSummary]', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,9 +1,8 @@
 
-package Paws::Route53::ChangeResourceRecordSetsResponse {
+package Paws::Route53::ChangeResourceRecordSetsResponse;
   use Moose;
   has ChangeInfo => (is => 'ro', isa => 'Paws::Route53::ChangeInfo', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

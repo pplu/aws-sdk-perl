@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeInstancesResult {
+package Paws::OpsWorks::DescribeInstancesResult;
   use Moose;
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Instance]');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,5 +1,5 @@
 
-package Paws::Kinesis::PutRecord {
+package Paws::Kinesis::PutRecord;
   use Moose;
   has Data => (is => 'ro', isa => 'Str', required => 1);
   has ExplicitHashKey => (is => 'ro', isa => 'Str');
@@ -12,7 +12,6 @@ package Paws::Kinesis::PutRecord {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutRecord');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kinesis::PutRecordOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

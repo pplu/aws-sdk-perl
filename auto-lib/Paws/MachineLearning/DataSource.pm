@@ -1,4 +1,4 @@
-package Paws::MachineLearning::DataSource {
+package Paws::MachineLearning::DataSource;
   use Moose;
   has ComputeStatistics => (is => 'ro', isa => 'Bool');
   has CreatedAt => (is => 'ro', isa => 'Str');
@@ -15,5 +15,4 @@ package Paws::MachineLearning::DataSource {
   has RedshiftMetadata => (is => 'ro', isa => 'Paws::MachineLearning::RedshiftMetadata');
   has RoleARN => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
-}
 1;

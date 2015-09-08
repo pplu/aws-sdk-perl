@@ -1,4 +1,4 @@
-package Paws::EC2::NetworkAclEntry {
+package Paws::EC2::NetworkAclEntry;
   use Moose;
   has CidrBlock => (is => 'ro', isa => 'Str', xmlname => 'cidrBlock', traits => ['Unwrapped']);
   has Egress => (is => 'ro', isa => 'Bool', xmlname => 'egress', traits => ['Unwrapped']);
@@ -7,5 +7,4 @@ package Paws::EC2::NetworkAclEntry {
   has Protocol => (is => 'ro', isa => 'Str', xmlname => 'protocol', traits => ['Unwrapped']);
   has RuleAction => (is => 'ro', isa => 'Str', xmlname => 'ruleAction', traits => ['Unwrapped']);
   has RuleNumber => (is => 'ro', isa => 'Int', xmlname => 'ruleNumber', traits => ['Unwrapped']);
-}
 1;

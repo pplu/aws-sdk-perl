@@ -1,5 +1,5 @@
 
-package Paws::RedShift::DescribeClusterSecurityGroups {
+package Paws::RedShift::DescribeClusterSecurityGroups;
   use Moose;
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -12,7 +12,6 @@ package Paws::RedShift::DescribeClusterSecurityGroups {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterSecurityGroups');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::ClusterSecurityGroupMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterSecurityGroupsResult');
-}
 1;
 
 ### main pod documentation begin ###

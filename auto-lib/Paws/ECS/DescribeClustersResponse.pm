@@ -1,10 +1,9 @@
 
-package Paws::ECS::DescribeClustersResponse {
+package Paws::ECS::DescribeClustersResponse;
   use Moose;
   has clusters => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Cluster]');
   has failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]');
 
-}
 
 ### main pod documentation begin ###
 

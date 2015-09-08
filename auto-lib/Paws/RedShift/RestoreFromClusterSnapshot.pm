@@ -1,5 +1,5 @@
 
-package Paws::RedShift::RestoreFromClusterSnapshot {
+package Paws::RedShift::RestoreFromClusterSnapshot;
   use Moose;
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
@@ -26,7 +26,6 @@ package Paws::RedShift::RestoreFromClusterSnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreFromClusterSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::RestoreFromClusterSnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreFromClusterSnapshotResult');
-}
 1;
 
 ### main pod documentation begin ###

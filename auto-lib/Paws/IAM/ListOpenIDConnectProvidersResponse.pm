@@ -1,9 +1,8 @@
 
-package Paws::IAM::ListOpenIDConnectProvidersResponse {
+package Paws::IAM::ListOpenIDConnectProvidersResponse;
   use Moose;
   has OpenIDConnectProviderList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::OpenIDConnectProviderListEntry]');
 
-}
 1;
 
 ### main pod documentation begin ###

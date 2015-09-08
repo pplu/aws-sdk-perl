@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateRoute {
+package Paws::EC2::CreateRoute;
   use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCidrBlock' , required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -14,7 +14,6 @@ package Paws::EC2::CreateRoute {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRoute');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateRouteResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

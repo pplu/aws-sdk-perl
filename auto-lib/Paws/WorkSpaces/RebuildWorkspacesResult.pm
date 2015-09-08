@@ -1,9 +1,8 @@
 
-package Paws::WorkSpaces::RebuildWorkspacesResult {
+package Paws::WorkSpaces::RebuildWorkspacesResult;
   use Moose;
   has FailedRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::FailedWorkspaceChangeRequest]');
 
-}
 
 ### main pod documentation begin ###
 

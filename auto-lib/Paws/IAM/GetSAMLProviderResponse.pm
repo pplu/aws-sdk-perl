@@ -1,11 +1,10 @@
 
-package Paws::IAM::GetSAMLProviderResponse {
+package Paws::IAM::GetSAMLProviderResponse;
   use Moose;
   has CreateDate => (is => 'ro', isa => 'Str');
   has SAMLMetadataDocument => (is => 'ro', isa => 'Str');
   has ValidUntil => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

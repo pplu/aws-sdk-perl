@@ -1,9 +1,8 @@
 
-package Paws::Glacier::GetDataRetrievalPolicyOutput {
+package Paws::Glacier::GetDataRetrievalPolicyOutput;
   use Moose;
   has Policy => (is => 'ro', isa => 'Paws::Glacier::DataRetrievalPolicy');
 
-}
 1;
 
 ### main pod documentation begin ###

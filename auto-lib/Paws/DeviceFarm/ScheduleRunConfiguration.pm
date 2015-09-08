@@ -1,4 +1,4 @@
-package Paws::DeviceFarm::ScheduleRunConfiguration {
+package Paws::DeviceFarm::ScheduleRunConfiguration;
   use Moose;
   has auxiliaryApps => (is => 'ro', isa => 'ArrayRef[Str]');
   has billingMethod => (is => 'ro', isa => 'Str');
@@ -7,5 +7,4 @@ package Paws::DeviceFarm::ScheduleRunConfiguration {
   has location => (is => 'ro', isa => 'Paws::DeviceFarm::Location');
   has networkProfileArn => (is => 'ro', isa => 'Str');
   has radios => (is => 'ro', isa => 'Paws::DeviceFarm::Radios');
-}
 1;

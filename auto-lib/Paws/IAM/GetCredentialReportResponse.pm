@@ -1,11 +1,10 @@
 
-package Paws::IAM::GetCredentialReportResponse {
+package Paws::IAM::GetCredentialReportResponse;
   use Moose;
   has Content => (is => 'ro', isa => 'Str');
   has GeneratedTime => (is => 'ro', isa => 'Str');
   has ReportFormat => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

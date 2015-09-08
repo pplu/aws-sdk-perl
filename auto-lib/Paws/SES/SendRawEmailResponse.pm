@@ -1,9 +1,8 @@
 
-package Paws::SES::SendRawEmailResponse {
+package Paws::SES::SendRawEmailResponse;
   use Moose;
   has MessageId => (is => 'ro', isa => 'Str', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

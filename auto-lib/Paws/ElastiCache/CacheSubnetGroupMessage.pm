@@ -1,10 +1,9 @@
 
-package Paws::ElastiCache::CacheSubnetGroupMessage {
+package Paws::ElastiCache::CacheSubnetGroupMessage;
   use Moose;
   has CacheSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheSubnetGroup]', xmlname => 'CacheSubnetGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

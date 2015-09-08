@@ -1,9 +1,8 @@
 
-package Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage {
+package Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage;
   use Moose;
   has ApplicationVersion => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationVersionDescription');
 
-}
 1;
 
 ### main pod documentation begin ###

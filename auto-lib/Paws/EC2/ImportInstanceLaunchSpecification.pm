@@ -1,4 +1,4 @@
-package Paws::EC2::ImportInstanceLaunchSpecification {
+package Paws::EC2::ImportInstanceLaunchSpecification;
   use Moose;
   has AdditionalInfo => (is => 'ro', isa => 'Str', xmlname => 'additionalInfo', traits => ['Unwrapped']);
   has Architecture => (is => 'ro', isa => 'Str', xmlname => 'architecture', traits => ['Unwrapped']);
@@ -11,5 +11,4 @@ package Paws::EC2::ImportInstanceLaunchSpecification {
   has PrivateIpAddress => (is => 'ro', isa => 'Str', xmlname => 'privateIpAddress', traits => ['Unwrapped']);
   has SubnetId => (is => 'ro', isa => 'Str', xmlname => 'subnetId', traits => ['Unwrapped']);
   has UserData => (is => 'ro', isa => 'Paws::EC2::UserData', xmlname => 'userData', traits => ['Unwrapped']);
-}
 1;

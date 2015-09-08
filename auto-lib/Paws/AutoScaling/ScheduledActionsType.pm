@@ -1,10 +1,9 @@
 
-package Paws::AutoScaling::ScheduledActionsType {
+package Paws::AutoScaling::ScheduledActionsType;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has ScheduledUpdateGroupActions => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::ScheduledUpdateGroupAction]');
 
-}
 1;
 
 ### main pod documentation begin ###

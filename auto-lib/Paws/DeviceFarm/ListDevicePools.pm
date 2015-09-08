@@ -1,5 +1,5 @@
 
-package Paws::DeviceFarm::ListDevicePools {
+package Paws::DeviceFarm::ListDevicePools;
   use Moose;
   has arn => (is => 'ro', isa => 'Str', required => 1);
   has nextToken => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::DeviceFarm::ListDevicePools {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDevicePools');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::ListDevicePoolsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

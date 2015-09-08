@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeAgentVersionsResult {
+package Paws::OpsWorks::DescribeAgentVersionsResult;
   use Moose;
   has AgentVersions => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::AgentVersion]');
 
-}
 
 ### main pod documentation begin ###
 

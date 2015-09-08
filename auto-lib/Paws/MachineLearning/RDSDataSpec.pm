@@ -1,4 +1,4 @@
-package Paws::MachineLearning::RDSDataSpec {
+package Paws::MachineLearning::RDSDataSpec;
   use Moose;
   has DataRearrangement => (is => 'ro', isa => 'Str');
   has DataSchema => (is => 'ro', isa => 'Str');
@@ -11,5 +11,4 @@ package Paws::MachineLearning::RDSDataSpec {
   has SelectSqlQuery => (is => 'ro', isa => 'Str', required => 1);
   has ServiceRole => (is => 'ro', isa => 'Str', required => 1);
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
-}
 1;

@@ -1,10 +1,9 @@
 
-package Paws::S3::ListBucketsOutput {
+package Paws::S3::ListBucketsOutput;
   use Moose;
   has Buckets => (is => 'ro', isa => 'ArrayRef[Paws::S3::Bucket]', traits => ['Unwrapped'], xmlname => 'Bucket');
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
 
-}
 1;
 
 ### main pod documentation begin ###

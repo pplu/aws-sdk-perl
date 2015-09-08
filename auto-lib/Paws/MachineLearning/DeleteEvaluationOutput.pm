@@ -1,9 +1,8 @@
 
-package Paws::MachineLearning::DeleteEvaluationOutput {
+package Paws::MachineLearning::DeleteEvaluationOutput;
   use Moose;
   has EvaluationId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

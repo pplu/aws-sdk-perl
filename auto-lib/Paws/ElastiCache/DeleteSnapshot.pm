@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::DeleteSnapshot {
+package Paws::ElastiCache::DeleteSnapshot;
   use Moose;
   has SnapshotName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::ElastiCache::DeleteSnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::DeleteSnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteSnapshotResult');
-}
 1;
 
 ### main pod documentation begin ###

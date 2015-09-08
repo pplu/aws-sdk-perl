@@ -1,10 +1,9 @@
 
-package Paws::ElastiCache::CacheSecurityGroupMessage {
+package Paws::ElastiCache::CacheSecurityGroupMessage;
   use Moose;
   has CacheSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheSecurityGroup]', xmlname => 'CacheSecurityGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

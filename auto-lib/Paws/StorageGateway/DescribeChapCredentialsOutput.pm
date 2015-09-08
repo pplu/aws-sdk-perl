@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::DescribeChapCredentialsOutput {
+package Paws::StorageGateway::DescribeChapCredentialsOutput;
   use Moose;
   has ChapCredentials => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::ChapInfo]');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,4 +1,4 @@
-package Paws::CloudTrail {
+package Paws::CloudTrail;
   use Moose;
   sub service { 'cloudtrail' }
   sub version { '2013-11-01' }
@@ -48,7 +48,6 @@ package Paws::CloudTrail {
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::UpdateTrail', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

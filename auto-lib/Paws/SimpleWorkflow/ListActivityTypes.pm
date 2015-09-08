@@ -1,5 +1,5 @@
 
-package Paws::SimpleWorkflow::ListActivityTypes {
+package Paws::SimpleWorkflow::ListActivityTypes;
   use Moose;
   has domain => (is => 'ro', isa => 'Str', required => 1);
   has maximumPageSize => (is => 'ro', isa => 'Int');
@@ -13,7 +13,6 @@ package Paws::SimpleWorkflow::ListActivityTypes {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListActivityTypes');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::ActivityTypeInfos');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

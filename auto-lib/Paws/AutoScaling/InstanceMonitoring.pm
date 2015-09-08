@@ -1,5 +1,4 @@
-package Paws::AutoScaling::InstanceMonitoring {
+package Paws::AutoScaling::InstanceMonitoring;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
-}
 1;

@@ -1,4 +1,4 @@
-package Paws::EMR::InstanceGroup {
+package Paws::EMR::InstanceGroup;
   use Moose;
   has BidPrice => (is => 'ro', isa => 'Str');
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
@@ -10,5 +10,4 @@ package Paws::EMR::InstanceGroup {
   has RequestedInstanceCount => (is => 'ro', isa => 'Int');
   has RunningInstanceCount => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Paws::EMR::InstanceGroupStatus');
-}
 1;

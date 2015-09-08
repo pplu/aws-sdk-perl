@@ -1,5 +1,5 @@
 
-package Paws::S3::HeadObjectOutput {
+package Paws::S3::HeadObjectOutput;
   use Moose;
   has AcceptRanges => (is => 'ro', isa => 'Str');
   has CacheControl => (is => 'ro', isa => 'Str');
@@ -26,7 +26,6 @@ package Paws::S3::HeadObjectOutput {
   has VersionId => (is => 'ro', isa => 'Str');
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

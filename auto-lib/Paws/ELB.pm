@@ -1,4 +1,4 @@
-package Paws::ELB {
+package Paws::ELB;
   use Moose;
   sub service { 'elasticloadbalancing' }
   sub version { '2012-06-01' }
@@ -147,7 +147,6 @@ package Paws::ELB {
     my $call_object = $self->new_with_coercions('Paws::ELB::SetLoadBalancerPoliciesOfListener', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::S3::AbortMultipartUploadOutput {
+package Paws::S3::AbortMultipartUploadOutput;
   use Moose;
   has RequestCharged => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::KMS::EncryptResponse {
+package Paws::KMS::EncryptResponse;
   use Moose;
   has CiphertextBlob => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

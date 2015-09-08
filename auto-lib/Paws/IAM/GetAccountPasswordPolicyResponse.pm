@@ -1,9 +1,8 @@
 
-package Paws::IAM::GetAccountPasswordPolicyResponse {
+package Paws::IAM::GetAccountPasswordPolicyResponse;
   use Moose;
   has PasswordPolicy => (is => 'ro', isa => 'Paws::IAM::PasswordPolicy', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::Support::CreateCaseResponse {
+package Paws::Support::CreateCaseResponse;
   use Moose;
   has caseId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

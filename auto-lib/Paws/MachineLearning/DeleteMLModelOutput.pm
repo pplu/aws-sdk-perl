@@ -1,9 +1,8 @@
 
-package Paws::MachineLearning::DeleteMLModelOutput {
+package Paws::MachineLearning::DeleteMLModelOutput;
   use Moose;
   has MLModelId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

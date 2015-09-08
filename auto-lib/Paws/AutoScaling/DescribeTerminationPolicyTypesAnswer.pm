@@ -1,9 +1,8 @@
 
-package Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer {
+package Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer;
   use Moose;
   has TerminationPolicyTypes => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 1;
 
 ### main pod documentation begin ###

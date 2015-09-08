@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::DescribeEcsClusters {
+package Paws::OpsWorks::DescribeEcsClusters;
   use Moose;
   has EcsClusterArns => (is => 'ro', isa => 'ArrayRef[Str]');
   has MaxResults => (is => 'ro', isa => 'Int');
@@ -11,7 +11,6 @@ package Paws::OpsWorks::DescribeEcsClusters {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEcsClusters');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::DescribeEcsClustersResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

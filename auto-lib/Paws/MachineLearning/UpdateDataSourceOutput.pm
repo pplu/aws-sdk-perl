@@ -1,9 +1,8 @@
 
-package Paws::MachineLearning::UpdateDataSourceOutput {
+package Paws::MachineLearning::UpdateDataSourceOutput;
   use Moose;
   has DataSourceId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

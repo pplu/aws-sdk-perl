@@ -1,5 +1,5 @@
 
-package Paws::S3::GetObjectOutput {
+package Paws::S3::GetObjectOutput;
   use Moose;
   has AcceptRanges => (is => 'ro', isa => 'Str');
   has Body => (is => 'ro', isa => 'Str', traits => ['ParamInBody']);
@@ -28,7 +28,6 @@ package Paws::S3::GetObjectOutput {
   has VersionId => (is => 'ro', isa => 'Str');
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

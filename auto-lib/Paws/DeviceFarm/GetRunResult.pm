@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::GetRunResult {
+package Paws::DeviceFarm::GetRunResult;
   use Moose;
   has run => (is => 'ro', isa => 'Paws::DeviceFarm::Run');
 
-}
 
 ### main pod documentation begin ###
 

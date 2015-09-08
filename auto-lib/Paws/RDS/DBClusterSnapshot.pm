@@ -1,4 +1,4 @@
-package Paws::RDS::DBClusterSnapshot {
+package Paws::RDS::DBClusterSnapshot;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -15,5 +15,4 @@ package Paws::RDS::DBClusterSnapshot {
   has SnapshotType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
-}
 1;

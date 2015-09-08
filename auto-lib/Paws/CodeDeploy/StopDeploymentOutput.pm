@@ -1,10 +1,9 @@
 
-package Paws::CodeDeploy::StopDeploymentOutput {
+package Paws::CodeDeploy::StopDeploymentOutput;
   use Moose;
   has status => (is => 'ro', isa => 'Str');
   has statusMessage => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

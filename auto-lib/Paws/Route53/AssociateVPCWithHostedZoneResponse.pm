@@ -1,9 +1,8 @@
 
-package Paws::Route53::AssociateVPCWithHostedZoneResponse {
+package Paws::Route53::AssociateVPCWithHostedZoneResponse;
   use Moose;
   has ChangeInfo => (is => 'ro', isa => 'Paws::Route53::ChangeInfo', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::CreateLaunchConfiguration {
+package Paws::AutoScaling::CreateLaunchConfiguration;
   use Moose;
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::BlockDeviceMapping]');
@@ -25,7 +25,6 @@ package Paws::AutoScaling::CreateLaunchConfiguration {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLaunchConfiguration');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

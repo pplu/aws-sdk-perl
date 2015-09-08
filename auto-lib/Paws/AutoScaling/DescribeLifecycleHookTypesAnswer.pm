@@ -1,9 +1,8 @@
 
-package Paws::AutoScaling::DescribeLifecycleHookTypesAnswer {
+package Paws::AutoScaling::DescribeLifecycleHookTypesAnswer;
   use Moose;
   has LifecycleHookTypes => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 1;
 
 ### main pod documentation begin ###

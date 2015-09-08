@@ -1,9 +1,8 @@
 
-package Paws::RedShift::CreateClusterSnapshotResult {
+package Paws::RedShift::CreateClusterSnapshotResult;
   use Moose;
   has Snapshot => (is => 'ro', isa => 'Paws::RedShift::Snapshot');
 
-}
 1;
 
 ### main pod documentation begin ###

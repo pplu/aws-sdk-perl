@@ -1,4 +1,4 @@
-package Paws::CloudSearchDomain::Fields {
+package Paws::CloudSearchDomain::Fields;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -7,5 +7,4 @@ package Paws::CloudSearchDomain::Fields {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Str]]');
-}
 1

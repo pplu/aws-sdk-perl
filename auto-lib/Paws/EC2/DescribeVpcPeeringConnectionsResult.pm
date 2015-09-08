@@ -1,9 +1,8 @@
 
-package Paws::EC2::DescribeVpcPeeringConnectionsResult {
+package Paws::EC2::DescribeVpcPeeringConnectionsResult;
   use Moose;
   has VpcPeeringConnections => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcPeeringConnection]', xmlname => 'vpcPeeringConnectionSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

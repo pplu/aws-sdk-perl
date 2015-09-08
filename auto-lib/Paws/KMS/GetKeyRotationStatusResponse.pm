@@ -1,9 +1,8 @@
 
-package Paws::KMS::GetKeyRotationStatusResponse {
+package Paws::KMS::GetKeyRotationStatusResponse;
   use Moose;
   has KeyRotationEnabled => (is => 'ro', isa => 'Bool');
 
-}
 
 ### main pod documentation begin ###
 

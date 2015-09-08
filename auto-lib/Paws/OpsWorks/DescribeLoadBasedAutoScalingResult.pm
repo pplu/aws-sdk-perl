@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeLoadBasedAutoScalingResult {
+package Paws::OpsWorks::DescribeLoadBasedAutoScalingResult;
   use Moose;
   has LoadBasedAutoScalingConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::LoadBasedAutoScalingConfiguration]');
 
-}
 
 ### main pod documentation begin ###
 

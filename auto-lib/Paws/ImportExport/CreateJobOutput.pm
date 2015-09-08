@@ -1,5 +1,5 @@
 
-package Paws::ImportExport::CreateJobOutput {
+package Paws::ImportExport::CreateJobOutput;
   use Moose;
   has ArtifactList => (is => 'ro', isa => 'ArrayRef[Paws::ImportExport::Artifact]');
   has JobId => (is => 'ro', isa => 'Str');
@@ -8,7 +8,6 @@ package Paws::ImportExport::CreateJobOutput {
   has SignatureFileContents => (is => 'ro', isa => 'Str');
   has WarningMessage => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 
-package Paws::EC2::RequestSpotFleet {
+package Paws::EC2::RequestSpotFleet;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has SpotFleetRequestConfig => (is => 'ro', isa => 'Paws::EC2::SpotFleetRequestConfigData', traits => ['NameInRequest'], request_name => 'spotFleetRequestConfig' , required => 1);
@@ -9,7 +9,6 @@ package Paws::EC2::RequestSpotFleet {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RequestSpotFleet');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::RequestSpotFleetResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

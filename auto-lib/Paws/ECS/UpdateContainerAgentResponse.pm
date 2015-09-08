@@ -1,9 +1,8 @@
 
-package Paws::ECS::UpdateContainerAgentResponse {
+package Paws::ECS::UpdateContainerAgentResponse;
   use Moose;
   has containerInstance => (is => 'ro', isa => 'Paws::ECS::ContainerInstance');
 
-}
 
 ### main pod documentation begin ###
 

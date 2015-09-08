@@ -1,10 +1,9 @@
 
-package Paws::SSM::ListAssociationsResult {
+package Paws::SSM::ListAssociationsResult;
   use Moose;
   has Associations => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Association]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

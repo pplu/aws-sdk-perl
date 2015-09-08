@@ -1,5 +1,5 @@
 
-package Paws::WorkSpaces::DescribeWorkspaces {
+package Paws::WorkSpaces::DescribeWorkspaces;
   use Moose;
   has BundleId => (is => 'ro', isa => 'Str');
   has DirectoryId => (is => 'ro', isa => 'Str');
@@ -13,7 +13,6 @@ package Paws::WorkSpaces::DescribeWorkspaces {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeWorkspaces');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::DescribeWorkspacesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

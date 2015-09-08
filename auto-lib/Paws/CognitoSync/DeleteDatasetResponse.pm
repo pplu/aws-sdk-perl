@@ -1,9 +1,8 @@
 
-package Paws::CognitoSync::DeleteDatasetResponse {
+package Paws::CognitoSync::DeleteDatasetResponse;
   use Moose;
   has Dataset => (is => 'ro', isa => 'Paws::CognitoSync::Dataset');
 
-}
 1;
 
 ### main pod documentation begin ###

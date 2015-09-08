@@ -1,11 +1,10 @@
 
-package Paws::EFS::DescribeMountTargetsResponse {
+package Paws::EFS::DescribeMountTargetsResponse;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has MountTargets => (is => 'ro', isa => 'ArrayRef[Paws::EFS::MountTargetDescription]');
   has NextMarker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

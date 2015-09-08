@@ -1,4 +1,4 @@
-package Paws::RedShift {
+package Paws::RedShift;
   use Moose;
   sub service { 'redshift' }
   sub version { '2012-12-01' }
@@ -302,7 +302,6 @@ package Paws::RedShift {
     my $call_object = $self->new_with_coercions('Paws::RedShift::RotateEncryptionKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

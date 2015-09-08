@@ -1,5 +1,5 @@
 
-package Paws::CodePipeline::PollForThirdPartyJobs {
+package Paws::CodePipeline::PollForThirdPartyJobs;
   use Moose;
   has actionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', required => 1);
   has maxBatchSize => (is => 'ro', isa => 'Int');
@@ -9,7 +9,6 @@ package Paws::CodePipeline::PollForThirdPartyJobs {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PollForThirdPartyJobs');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::PollForThirdPartyJobsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

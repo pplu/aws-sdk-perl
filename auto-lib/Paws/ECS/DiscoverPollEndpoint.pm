@@ -1,5 +1,5 @@
 
-package Paws::ECS::DiscoverPollEndpoint {
+package Paws::ECS::DiscoverPollEndpoint;
   use Moose;
   has cluster => (is => 'ro', isa => 'Str');
   has containerInstance => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::ECS::DiscoverPollEndpoint {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DiscoverPollEndpoint');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DiscoverPollEndpointResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

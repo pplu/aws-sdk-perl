@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::GetMLModelOutput {
+package Paws::MachineLearning::GetMLModelOutput;
   use Moose;
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
@@ -20,7 +20,6 @@ package Paws::MachineLearning::GetMLModelOutput {
   has TrainingDataSourceId => (is => 'ro', isa => 'Str');
   has TrainingParameters => (is => 'ro', isa => 'Paws::MachineLearning::TrainingParameters');
 
-}
 
 ### main pod documentation begin ###
 

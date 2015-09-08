@@ -1,10 +1,9 @@
 
-package Paws::RDS::DescribeDBLogFilesResponse {
+package Paws::RDS::DescribeDBLogFilesResponse;
   use Moose;
   has DescribeDBLogFiles => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DescribeDBLogFilesDetails]', xmlname => 'DescribeDBLogFilesDetails', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

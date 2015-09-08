@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::DescribeAgentVersions {
+package Paws::OpsWorks::DescribeAgentVersions;
   use Moose;
   has ConfigurationManager => (is => 'ro', isa => 'Paws::OpsWorks::StackConfigurationManager');
   has StackId => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::OpsWorks::DescribeAgentVersions {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAgentVersions');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::DescribeAgentVersionsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

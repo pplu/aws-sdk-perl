@@ -1,5 +1,5 @@
 
-package Paws::S3::ListPartsOutput {
+package Paws::S3::ListPartsOutput;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str');
   has Initiator => (is => 'ro', isa => 'Paws::S3::Initiator');
@@ -14,7 +14,6 @@ package Paws::S3::ListPartsOutput {
   has StorageClass => (is => 'ro', isa => 'Str');
   has UploadId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

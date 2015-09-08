@@ -1,9 +1,8 @@
 
-package Paws::CodeDeploy::GetDeploymentOutput {
+package Paws::CodeDeploy::GetDeploymentOutput;
   use Moose;
   has deploymentInfo => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentInfo');
 
-}
 
 ### main pod documentation begin ###
 

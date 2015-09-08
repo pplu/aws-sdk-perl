@@ -1,5 +1,5 @@
 
-package Paws::ElasticBeanstalk::DescribeConfigurationOptions {
+package Paws::ElasticBeanstalk::DescribeConfigurationOptions;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
@@ -12,7 +12,6 @@ package Paws::ElasticBeanstalk::DescribeConfigurationOptions {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationOptions');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ConfigurationOptionsDescription');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationOptionsResult');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::ModifyReplicationGroup {
+package Paws::ElastiCache::ModifyReplicationGroup;
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has AutomaticFailoverEnabled => (is => 'ro', isa => 'Bool');
@@ -23,7 +23,6 @@ package Paws::ElastiCache::ModifyReplicationGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyReplicationGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::ModifyReplicationGroupResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyReplicationGroupResult');
-}
 1;
 
 ### main pod documentation begin ###

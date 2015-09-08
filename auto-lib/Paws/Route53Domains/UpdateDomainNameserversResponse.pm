@@ -1,9 +1,8 @@
 
-package Paws::Route53Domains::UpdateDomainNameserversResponse {
+package Paws::Route53Domains::UpdateDomainNameserversResponse;
   use Moose;
   has OperationId => (is => 'ro', isa => 'Str', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

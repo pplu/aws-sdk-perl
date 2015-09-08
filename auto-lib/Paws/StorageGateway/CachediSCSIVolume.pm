@@ -1,4 +1,4 @@
-package Paws::StorageGateway::CachediSCSIVolume {
+package Paws::StorageGateway::CachediSCSIVolume;
   use Moose;
   has SourceSnapshotId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
@@ -8,5 +8,4 @@ package Paws::StorageGateway::CachediSCSIVolume {
   has VolumeStatus => (is => 'ro', isa => 'Str');
   has VolumeType => (is => 'ro', isa => 'Str');
   has VolumeiSCSIAttributes => (is => 'ro', isa => 'Paws::StorageGateway::VolumeiSCSIAttributes');
-}
 1;

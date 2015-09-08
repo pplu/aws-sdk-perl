@@ -1,9 +1,8 @@
 
-package Paws::CodeDeploy::CreateDeploymentGroupOutput {
+package Paws::CodeDeploy::CreateDeploymentGroupOutput;
   use Moose;
   has deploymentGroupId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

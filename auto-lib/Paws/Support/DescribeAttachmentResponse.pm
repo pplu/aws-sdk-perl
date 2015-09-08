@@ -1,9 +1,8 @@
 
-package Paws::Support::DescribeAttachmentResponse {
+package Paws::Support::DescribeAttachmentResponse;
   use Moose;
   has attachment => (is => 'ro', isa => 'Paws::Support::Attachment');
 
-}
 
 ### main pod documentation begin ###
 

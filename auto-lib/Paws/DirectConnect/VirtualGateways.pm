@@ -1,9 +1,8 @@
 
-package Paws::DirectConnect::VirtualGateways {
+package Paws::DirectConnect::VirtualGateways;
   use Moose;
   has virtualGateways => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::VirtualGateway]');
 
-}
 
 ### main pod documentation begin ###
 

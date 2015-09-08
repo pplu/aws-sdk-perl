@@ -1,9 +1,8 @@
 
-package Paws::Lambda::AddPermissionResponse {
+package Paws::Lambda::AddPermissionResponse;
   use Moose;
   has Statement => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

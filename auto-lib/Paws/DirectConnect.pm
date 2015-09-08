@@ -1,4 +1,4 @@
-package Paws::DirectConnect {
+package Paws::DirectConnect;
   use Moose;
   sub service { 'directconnect' }
   sub version { '2012-10-25' }
@@ -103,7 +103,6 @@ package Paws::DirectConnect {
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeVirtualInterfaces', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

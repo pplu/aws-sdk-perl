@@ -1,9 +1,8 @@
 
-package Paws::DataPipeline::PollForTaskOutput {
+package Paws::DataPipeline::PollForTaskOutput;
   use Moose;
   has taskObject => (is => 'ro', isa => 'Paws::DataPipeline::TaskObject');
 
-}
 
 ### main pod documentation begin ###
 

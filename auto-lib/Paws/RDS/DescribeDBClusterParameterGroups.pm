@@ -1,5 +1,5 @@
 
-package Paws::RDS::DescribeDBClusterParameterGroups {
+package Paws::RDS::DescribeDBClusterParameterGroups;
   use Moose;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
@@ -11,7 +11,6 @@ package Paws::RDS::DescribeDBClusterParameterGroups {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBClusterParameterGroups');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBClusterParameterGroupsMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBClusterParameterGroupsResult');
-}
 1;
 
 ### main pod documentation begin ###

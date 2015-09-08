@@ -1,9 +1,8 @@
 
-package Paws::IAM::GetAccountSummaryResponse {
+package Paws::IAM::GetAccountSummaryResponse;
   use Moose;
   has SummaryMap => (is => 'ro', isa => 'Paws::IAM::summaryMapType');
 
-}
 1;
 
 ### main pod documentation begin ###

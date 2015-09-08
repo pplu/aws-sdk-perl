@@ -1,5 +1,5 @@
 
-package Paws::SSM::CreateAssociationBatch {
+package Paws::SSM::CreateAssociationBatch;
   use Moose;
   has Entries => (is => 'ro', isa => 'ArrayRef[Paws::SSM::CreateAssociationBatchRequestEntry]', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::SSM::CreateAssociationBatch {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAssociationBatch');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::CreateAssociationBatchResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

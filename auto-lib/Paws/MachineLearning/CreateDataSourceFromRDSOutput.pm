@@ -1,9 +1,8 @@
 
-package Paws::MachineLearning::CreateDataSourceFromRDSOutput {
+package Paws::MachineLearning::CreateDataSourceFromRDSOutput;
   use Moose;
   has DataSourceId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

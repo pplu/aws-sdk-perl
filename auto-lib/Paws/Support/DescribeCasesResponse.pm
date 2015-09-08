@@ -1,10 +1,9 @@
 
-package Paws::Support::DescribeCasesResponse {
+package Paws::Support::DescribeCasesResponse;
   use Moose;
   has cases => (is => 'ro', isa => 'ArrayRef[Paws::Support::CaseDetails]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

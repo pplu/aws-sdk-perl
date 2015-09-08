@@ -1,8 +1,7 @@
 
-package Paws::SES::VerifyEmailIdentityResponse {
+package Paws::SES::VerifyEmailIdentityResponse;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

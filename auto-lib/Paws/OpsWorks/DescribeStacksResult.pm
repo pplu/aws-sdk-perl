@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeStacksResult {
+package Paws::OpsWorks::DescribeStacksResult;
   use Moose;
   has Stacks => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Stack]');
 
-}
 
 ### main pod documentation begin ###
 

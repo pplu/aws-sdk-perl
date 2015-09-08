@@ -1,5 +1,5 @@
 
-package Paws::S3::CopyObjectOutput {
+package Paws::S3::CopyObjectOutput;
   use Moose;
   has CopyObjectResult => (is => 'ro', isa => 'Paws::S3::CopyObjectResult');
   has CopySourceVersionId => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::S3::CopyObjectOutput {
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
   has SSEKMSKeyId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

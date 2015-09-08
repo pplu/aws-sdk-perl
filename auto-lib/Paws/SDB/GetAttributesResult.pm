@@ -1,9 +1,8 @@
 
-package Paws::SDB::GetAttributesResult {
+package Paws::SDB::GetAttributesResult;
   use Moose;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::Attribute]', xmlname => 'Attribute', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

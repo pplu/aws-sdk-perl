@@ -1,5 +1,5 @@
 
-package Paws::SSM::DescribeAssociation {
+package Paws::SSM::DescribeAssociation;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::SSM::DescribeAssociation {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAssociation');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::DescribeAssociationResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

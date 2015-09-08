@@ -1,9 +1,8 @@
 
-package Paws::ElastiCache::TagListMessage {
+package Paws::ElastiCache::TagListMessage;
   use Moose;
   has TagList => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]', xmlname => 'Tag', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

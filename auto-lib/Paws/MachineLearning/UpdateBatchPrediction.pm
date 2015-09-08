@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::UpdateBatchPrediction {
+package Paws::MachineLearning::UpdateBatchPrediction;
   use Moose;
   has BatchPredictionId => (is => 'ro', isa => 'Str', required => 1);
   has BatchPredictionName => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::MachineLearning::UpdateBatchPrediction {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBatchPrediction');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::UpdateBatchPredictionOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

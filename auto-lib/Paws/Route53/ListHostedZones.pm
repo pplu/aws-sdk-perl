@@ -1,5 +1,5 @@
 
-package Paws::Route53::ListHostedZones {
+package Paws::Route53::ListHostedZones;
   use Moose;
   has DelegationSetId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'delegationsetid' );
   has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
@@ -12,7 +12,6 @@ package Paws::Route53::ListHostedZones {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ListHostedZonesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::GetCognitoEvents {
+package Paws::CognitoSync::GetCognitoEvents;
   use Moose;
   has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId' , required => 1);
 
@@ -10,7 +10,6 @@ package Paws::CognitoSync::GetCognitoEvents {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::GetCognitoEventsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetCognitoEventsResult');
-}
 1;
 
 ### main pod documentation begin ###

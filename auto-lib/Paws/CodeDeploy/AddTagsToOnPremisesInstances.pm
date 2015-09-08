@@ -1,5 +1,5 @@
 
-package Paws::CodeDeploy::AddTagsToOnPremisesInstances {
+package Paws::CodeDeploy::AddTagsToOnPremisesInstances;
   use Moose;
   has instanceNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', required => 1);
@@ -9,7 +9,6 @@ package Paws::CodeDeploy::AddTagsToOnPremisesInstances {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTagsToOnPremisesInstances');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

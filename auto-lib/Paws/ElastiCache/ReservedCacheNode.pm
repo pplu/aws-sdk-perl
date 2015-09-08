@@ -1,4 +1,4 @@
-package Paws::ElastiCache::ReservedCacheNode {
+package Paws::ElastiCache::ReservedCacheNode;
   use Moose;
   has CacheNodeCount => (is => 'ro', isa => 'Int');
   has CacheNodeType => (is => 'ro', isa => 'Str');
@@ -12,5 +12,4 @@ package Paws::ElastiCache::ReservedCacheNode {
   has StartTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
-}
 1;

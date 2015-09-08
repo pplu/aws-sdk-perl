@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::DescribeCacheEngineVersions {
+package Paws::ElastiCache::DescribeCacheEngineVersions;
   use Moose;
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
   has DefaultOnly => (is => 'ro', isa => 'Bool');
@@ -13,7 +13,6 @@ package Paws::ElastiCache::DescribeCacheEngineVersions {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCacheEngineVersions');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CacheEngineVersionMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheEngineVersionsResult');
-}
 1;
 
 ### main pod documentation begin ###

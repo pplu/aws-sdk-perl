@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::CancelRetrievalOutput {
+package Paws::StorageGateway::CancelRetrievalOutput;
   use Moose;
   has TapeARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

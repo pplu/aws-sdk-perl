@@ -1,9 +1,8 @@
 
-package Paws::Route53::GetChangeResponse {
+package Paws::Route53::GetChangeResponse;
   use Moose;
   has ChangeInfo => (is => 'ro', isa => 'Paws::Route53::ChangeInfo', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

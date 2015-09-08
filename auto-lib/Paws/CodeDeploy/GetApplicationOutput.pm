@@ -1,9 +1,8 @@
 
-package Paws::CodeDeploy::GetApplicationOutput {
+package Paws::CodeDeploy::GetApplicationOutput;
   use Moose;
   has application => (is => 'ro', isa => 'Paws::CodeDeploy::ApplicationInfo');
 
-}
 
 ### main pod documentation begin ###
 

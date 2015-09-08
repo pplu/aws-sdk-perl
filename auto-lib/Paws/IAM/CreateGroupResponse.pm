@@ -1,9 +1,8 @@
 
-package Paws::IAM::CreateGroupResponse {
+package Paws::IAM::CreateGroupResponse;
   use Moose;
   has Group => (is => 'ro', isa => 'Paws::IAM::Group', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

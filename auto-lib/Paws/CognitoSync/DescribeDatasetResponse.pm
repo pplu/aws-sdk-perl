@@ -1,9 +1,8 @@
 
-package Paws::CognitoSync::DescribeDatasetResponse {
+package Paws::CognitoSync::DescribeDatasetResponse;
   use Moose;
   has Dataset => (is => 'ro', isa => 'Paws::CognitoSync::Dataset');
 
-}
 1;
 
 ### main pod documentation begin ###

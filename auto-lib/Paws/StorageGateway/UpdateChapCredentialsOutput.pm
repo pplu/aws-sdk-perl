@@ -1,10 +1,9 @@
 
-package Paws::StorageGateway::UpdateChapCredentialsOutput {
+package Paws::StorageGateway::UpdateChapCredentialsOutput;
   use Moose;
   has InitiatorName => (is => 'ro', isa => 'Str');
   has TargetARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

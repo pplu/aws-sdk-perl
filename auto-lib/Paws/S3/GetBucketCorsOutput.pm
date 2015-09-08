@@ -1,9 +1,8 @@
 
-package Paws::S3::GetBucketCorsOutput {
+package Paws::S3::GetBucketCorsOutput;
   use Moose;
   has CORSRules => (is => 'ro', isa => 'ArrayRef[Paws::S3::CORSRule]');
 
-}
 1;
 
 ### main pod documentation begin ###

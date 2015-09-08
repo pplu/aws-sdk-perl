@@ -1,4 +1,4 @@
-package Paws::AutoScaling::LaunchConfiguration {
+package Paws::AutoScaling::LaunchConfiguration;
   use Moose;
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::BlockDeviceMapping]');
@@ -19,5 +19,4 @@ package Paws::AutoScaling::LaunchConfiguration {
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has SpotPrice => (is => 'ro', isa => 'Str');
   has UserData => (is => 'ro', isa => 'Str');
-}
 1;

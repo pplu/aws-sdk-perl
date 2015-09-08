@@ -1,4 +1,4 @@
-package Paws::EMR::JobFlowInstancesDetail {
+package Paws::EMR::JobFlowInstancesDetail;
   use Moose;
   has Ec2KeyName => (is => 'ro', isa => 'Str');
   has Ec2SubnetId => (is => 'ro', isa => 'Str');
@@ -13,5 +13,4 @@ package Paws::EMR::JobFlowInstancesDetail {
   has Placement => (is => 'ro', isa => 'Paws::EMR::PlacementType');
   has SlaveInstanceType => (is => 'ro', isa => 'Str', required => 1);
   has TerminationProtected => (is => 'ro', isa => 'Bool');
-}
 1;

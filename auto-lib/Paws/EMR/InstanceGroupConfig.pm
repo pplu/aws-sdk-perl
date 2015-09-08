@@ -1,4 +1,4 @@
-package Paws::EMR::InstanceGroupConfig {
+package Paws::EMR::InstanceGroupConfig;
   use Moose;
   has BidPrice => (is => 'ro', isa => 'Str');
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
@@ -7,5 +7,4 @@ package Paws::EMR::InstanceGroupConfig {
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has Market => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
-}
 1;

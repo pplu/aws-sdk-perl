@@ -1,12 +1,11 @@
 
-package Paws::StorageGateway::DescribeUploadBufferOutput {
+package Paws::StorageGateway::DescribeUploadBufferOutput;
   use Moose;
   has DiskIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has GatewayARN => (is => 'ro', isa => 'Str');
   has UploadBufferAllocatedInBytes => (is => 'ro', isa => 'Int');
   has UploadBufferUsedInBytes => (is => 'ro', isa => 'Int');
 
-}
 
 ### main pod documentation begin ###
 

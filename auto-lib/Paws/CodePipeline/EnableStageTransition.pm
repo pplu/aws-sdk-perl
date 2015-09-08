@@ -1,5 +1,5 @@
 
-package Paws::CodePipeline::EnableStageTransition {
+package Paws::CodePipeline::EnableStageTransition;
   use Moose;
   has pipelineName => (is => 'ro', isa => 'Str', required => 1);
   has stageName => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::CodePipeline::EnableStageTransition {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableStageTransition');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

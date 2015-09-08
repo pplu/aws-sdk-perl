@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::DeleteBatchPrediction {
+package Paws::MachineLearning::DeleteBatchPrediction;
   use Moose;
   has BatchPredictionId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::MachineLearning::DeleteBatchPrediction {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteBatchPrediction');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::DeleteBatchPredictionOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

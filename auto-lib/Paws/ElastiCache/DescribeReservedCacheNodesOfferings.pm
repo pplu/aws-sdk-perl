@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::DescribeReservedCacheNodesOfferings {
+package Paws::ElastiCache::DescribeReservedCacheNodesOfferings;
   use Moose;
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Str');
@@ -14,7 +14,6 @@ package Paws::ElastiCache::DescribeReservedCacheNodesOfferings {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedCacheNodesOfferings');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::ReservedCacheNodesOfferingMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedCacheNodesOfferingsResult');
-}
 1;
 
 ### main pod documentation begin ###

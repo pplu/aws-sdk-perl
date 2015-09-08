@@ -1,10 +1,9 @@
 
-package Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage {
+package Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage;
   use Moose;
   has Available => (is => 'ro', isa => 'Bool');
   has FullyQualifiedCNAME => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

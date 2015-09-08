@@ -1,5 +1,5 @@
 
-package Paws::KMS::UpdateAlias {
+package Paws::KMS::UpdateAlias;
   use Moose;
   has AliasName => (is => 'ro', isa => 'Str', required => 1);
   has TargetKeyId => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::KMS::UpdateAlias {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAlias');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

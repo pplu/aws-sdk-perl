@@ -1,10 +1,9 @@
 
-package Paws::WorkSpaces::CreateWorkspacesResult {
+package Paws::WorkSpaces::CreateWorkspacesResult;
   use Moose;
   has FailedRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::FailedCreateWorkspaceRequest]');
   has PendingRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Workspace]');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,4 +1,4 @@
-package Paws::OpsWorks::RdsDbInstance {
+package Paws::OpsWorks::RdsDbInstance;
   use Moose;
   has Address => (is => 'ro', isa => 'Str');
   has DbInstanceIdentifier => (is => 'ro', isa => 'Str');
@@ -9,5 +9,4 @@ package Paws::OpsWorks::RdsDbInstance {
   has RdsDbInstanceArn => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
-}
 1;

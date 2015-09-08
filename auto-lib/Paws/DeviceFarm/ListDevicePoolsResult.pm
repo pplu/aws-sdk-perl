@@ -1,10 +1,9 @@
 
-package Paws::DeviceFarm::ListDevicePoolsResult {
+package Paws::DeviceFarm::ListDevicePoolsResult;
   use Moose;
   has devicePools => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DevicePool]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

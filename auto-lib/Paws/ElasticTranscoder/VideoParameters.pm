@@ -1,4 +1,4 @@
-package Paws::ElasticTranscoder::VideoParameters {
+package Paws::ElasticTranscoder::VideoParameters;
   use Moose;
   has AspectRatio => (is => 'ro', isa => 'Str');
   has BitRate => (is => 'ro', isa => 'Str');
@@ -15,5 +15,4 @@ package Paws::ElasticTranscoder::VideoParameters {
   has Resolution => (is => 'ro', isa => 'Str');
   has SizingPolicy => (is => 'ro', isa => 'Str');
   has Watermarks => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::PresetWatermark]');
-}
 1;

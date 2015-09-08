@@ -1,4 +1,4 @@
-package Paws::EC2::ReservedInstancesModification {
+package Paws::EC2::ReservedInstancesModification;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped']);
   has CreateDate => (is => 'ro', isa => 'Str', xmlname => 'createDate', traits => ['Unwrapped']);
@@ -9,5 +9,4 @@ package Paws::EC2::ReservedInstancesModification {
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped']);
   has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped']);
   has UpdateDate => (is => 'ro', isa => 'Str', xmlname => 'updateDate', traits => ['Unwrapped']);
-}
 1;

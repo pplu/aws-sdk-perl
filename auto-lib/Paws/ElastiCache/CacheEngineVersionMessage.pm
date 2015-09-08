@@ -1,10 +1,9 @@
 
-package Paws::ElastiCache::CacheEngineVersionMessage {
+package Paws::ElastiCache::CacheEngineVersionMessage;
   use Moose;
   has CacheEngineVersions => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheEngineVersion]', xmlname => 'CacheEngineVersion', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

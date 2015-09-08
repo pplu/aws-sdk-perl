@@ -1,10 +1,9 @@
 
-package Paws::RedShift::OrderableClusterOptionsMessage {
+package Paws::RedShift::OrderableClusterOptionsMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has OrderableClusterOptions => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::OrderableClusterOption]', xmlname => 'OrderableClusterOption', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

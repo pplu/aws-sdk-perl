@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::GetDataSourceOutput {
+package Paws::MachineLearning::GetDataSourceOutput;
   use Moose;
   has ComputeStatistics => (is => 'ro', isa => 'Bool');
   has CreatedAt => (is => 'ro', isa => 'Str');
@@ -19,7 +19,6 @@ package Paws::MachineLearning::GetDataSourceOutput {
   has RoleARN => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

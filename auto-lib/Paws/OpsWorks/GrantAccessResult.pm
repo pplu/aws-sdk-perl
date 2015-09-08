@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::GrantAccessResult {
+package Paws::OpsWorks::GrantAccessResult;
   use Moose;
   has TemporaryCredential => (is => 'ro', isa => 'Paws::OpsWorks::TemporaryCredential');
 
-}
 
 ### main pod documentation begin ###
 

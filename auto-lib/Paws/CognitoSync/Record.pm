@@ -1,4 +1,4 @@
-package Paws::CognitoSync::Record {
+package Paws::CognitoSync::Record;
   use Moose;
   has DeviceLastModifiedDate => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::CognitoSync::Record {
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has SyncCount => (is => 'ro', isa => 'Int');
   has Value => (is => 'ro', isa => 'Str');
-}
 1;

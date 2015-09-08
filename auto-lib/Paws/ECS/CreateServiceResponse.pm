@@ -1,9 +1,8 @@
 
-package Paws::ECS::CreateServiceResponse {
+package Paws::ECS::CreateServiceResponse;
   use Moose;
   has service => (is => 'ro', isa => 'Paws::ECS::Service');
 
-}
 
 ### main pod documentation begin ###
 

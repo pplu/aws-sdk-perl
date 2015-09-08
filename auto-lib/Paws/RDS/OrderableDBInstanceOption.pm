@@ -1,4 +1,4 @@
-package Paws::RDS::OrderableDBInstanceOption {
+package Paws::RDS::OrderableDBInstanceOption;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::RDS::AvailabilityZone]');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
@@ -11,5 +11,4 @@ package Paws::RDS::OrderableDBInstanceOption {
   has SupportsIops => (is => 'ro', isa => 'Bool');
   has SupportsStorageEncryption => (is => 'ro', isa => 'Bool');
   has Vpc => (is => 'ro', isa => 'Bool');
-}
 1;

@@ -1,5 +1,5 @@
 
-package Paws::Route53::ListHostedZonesResponse {
+package Paws::Route53::ListHostedZonesResponse;
   use Moose;
   has HostedZones => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HostedZone]', traits => ['Unwrapped'], xmlname => 'HostedZone', required => 1);
   has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
@@ -7,7 +7,6 @@ package Paws::Route53::ListHostedZonesResponse {
   has MaxItems => (is => 'ro', isa => 'Str', required => 1);
   has NextMarker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

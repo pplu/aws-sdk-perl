@@ -1,5 +1,5 @@
 
-package Paws::CognitoIdentity::IdentityPool {
+package Paws::CognitoIdentity::IdentityPool;
   use Moose;
   has AllowUnauthenticatedIdentities => (is => 'ro', isa => 'Bool', required => 1);
   has DeveloperProviderName => (is => 'ro', isa => 'Str');
@@ -8,7 +8,6 @@ package Paws::CognitoIdentity::IdentityPool {
   has OpenIdConnectProviderARNs => (is => 'ro', isa => 'ArrayRef[Str]');
   has SupportedLoginProviders => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityProviders');
 
-}
 
 ### main pod documentation begin ###
 

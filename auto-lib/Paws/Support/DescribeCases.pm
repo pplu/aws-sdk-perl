@@ -1,5 +1,5 @@
 
-package Paws::Support::DescribeCases {
+package Paws::Support::DescribeCases;
   use Moose;
   has afterTime => (is => 'ro', isa => 'Str');
   has beforeTime => (is => 'ro', isa => 'Str');
@@ -16,7 +16,6 @@ package Paws::Support::DescribeCases {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCases');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::DescribeCasesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

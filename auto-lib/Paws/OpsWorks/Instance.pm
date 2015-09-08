@@ -1,4 +1,4 @@
-package Paws::OpsWorks::Instance {
+package Paws::OpsWorks::Instance;
   use Moose;
   has AgentVersion => (is => 'ro', isa => 'Str');
   has AmiId => (is => 'ro', isa => 'Str');
@@ -39,5 +39,4 @@ package Paws::OpsWorks::Instance {
   has Status => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
   has VirtualizationType => (is => 'ro', isa => 'Str');
-}
 1;

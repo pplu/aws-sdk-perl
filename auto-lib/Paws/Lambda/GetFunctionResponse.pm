@@ -1,10 +1,9 @@
 
-package Paws::Lambda::GetFunctionResponse {
+package Paws::Lambda::GetFunctionResponse;
   use Moose;
   has Code => (is => 'ro', isa => 'Paws::Lambda::FunctionCodeLocation');
   has Configuration => (is => 'ro', isa => 'Paws::Lambda::FunctionConfiguration');
 
-}
 1;
 
 ### main pod documentation begin ###

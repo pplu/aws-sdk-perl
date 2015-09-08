@@ -1,9 +1,8 @@
 
-package Paws::IAM::ListSAMLProvidersResponse {
+package Paws::IAM::ListSAMLProvidersResponse;
   use Moose;
   has SAMLProviderList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::SAMLProviderListEntry]');
 
-}
 1;
 
 ### main pod documentation begin ###

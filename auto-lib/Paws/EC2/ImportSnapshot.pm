@@ -1,5 +1,5 @@
 
-package Paws::EC2::ImportSnapshot {
+package Paws::EC2::ImportSnapshot;
   use Moose;
   has ClientData => (is => 'ro', isa => 'Paws::EC2::ClientData');
   has ClientToken => (is => 'ro', isa => 'Str');
@@ -13,7 +13,6 @@ package Paws::EC2::ImportSnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ImportSnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

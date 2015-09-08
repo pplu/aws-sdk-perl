@@ -1,4 +1,4 @@
-package Paws::DynamoDB::KeyConditions {
+package Paws::DynamoDB::KeyConditions;
   use Moose;
   with 'Paws::API::StrToObjMapParser';
 
@@ -7,5 +7,4 @@ package Paws::DynamoDB::KeyConditions {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::Condition]');
-}
 1

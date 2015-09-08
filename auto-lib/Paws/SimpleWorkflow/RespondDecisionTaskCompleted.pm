@@ -1,5 +1,5 @@
 
-package Paws::SimpleWorkflow::RespondDecisionTaskCompleted {
+package Paws::SimpleWorkflow::RespondDecisionTaskCompleted;
   use Moose;
   has decisions => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::Decision]');
   has executionContext => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::SimpleWorkflow::RespondDecisionTaskCompleted {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RespondDecisionTaskCompleted');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

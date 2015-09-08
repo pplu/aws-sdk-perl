@@ -1,10 +1,9 @@
 
-package Paws::KMS::DecryptResponse {
+package Paws::KMS::DecryptResponse;
   use Moose;
   has KeyId => (is => 'ro', isa => 'Str');
   has Plaintext => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

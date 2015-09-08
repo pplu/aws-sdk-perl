@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::ListVolumeInitiatorsOutput {
+package Paws::StorageGateway::ListVolumeInitiatorsOutput;
   use Moose;
   has Initiators => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 
 ### main pod documentation begin ###
 

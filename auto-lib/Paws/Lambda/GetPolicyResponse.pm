@@ -1,9 +1,8 @@
 
-package Paws::Lambda::GetPolicyResponse {
+package Paws::Lambda::GetPolicyResponse;
   use Moose;
   has Policy => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

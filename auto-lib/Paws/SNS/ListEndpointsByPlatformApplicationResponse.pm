@@ -1,10 +1,9 @@
 
-package Paws::SNS::ListEndpointsByPlatformApplicationResponse {
+package Paws::SNS::ListEndpointsByPlatformApplicationResponse;
   use Moose;
   has Endpoints => (is => 'ro', isa => 'ArrayRef[Paws::SNS::Endpoint]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::CognitoSync::GetCognitoEventsResponse {
+package Paws::CognitoSync::GetCognitoEventsResponse;
   use Moose;
   has Events => (is => 'ro', isa => 'Paws::CognitoSync::Events');
 
-}
 1;
 
 ### main pod documentation begin ###

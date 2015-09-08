@@ -1,9 +1,8 @@
 
-package Paws::Support::AddCommunicationToCaseResponse {
+package Paws::Support::AddCommunicationToCaseResponse;
   use Moose;
   has result => (is => 'ro', isa => 'Bool');
 
-}
 
 ### main pod documentation begin ###
 

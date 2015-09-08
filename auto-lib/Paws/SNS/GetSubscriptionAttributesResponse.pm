@@ -1,9 +1,8 @@
 
-package Paws::SNS::GetSubscriptionAttributesResponse {
+package Paws::SNS::GetSubscriptionAttributesResponse;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::SNS::SubscriptionAttributesMap');
 
-}
 1;
 
 ### main pod documentation begin ###

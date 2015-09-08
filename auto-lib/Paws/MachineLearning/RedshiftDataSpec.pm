@@ -1,4 +1,4 @@
-package Paws::MachineLearning::RedshiftDataSpec {
+package Paws::MachineLearning::RedshiftDataSpec;
   use Moose;
   has DataRearrangement => (is => 'ro', isa => 'Str');
   has DataSchema => (is => 'ro', isa => 'Str');
@@ -7,5 +7,4 @@ package Paws::MachineLearning::RedshiftDataSpec {
   has DatabaseInformation => (is => 'ro', isa => 'Paws::MachineLearning::RedshiftDatabase', required => 1);
   has S3StagingLocation => (is => 'ro', isa => 'Str', required => 1);
   has SelectSqlQuery => (is => 'ro', isa => 'Str', required => 1);
-}
 1;

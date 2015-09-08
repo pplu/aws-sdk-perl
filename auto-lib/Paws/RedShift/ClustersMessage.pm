@@ -1,10 +1,9 @@
 
-package Paws::RedShift::ClustersMessage {
+package Paws::RedShift::ClustersMessage;
   use Moose;
   has Clusters => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Cluster]', xmlname => 'Cluster', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

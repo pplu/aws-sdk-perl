@@ -1,5 +1,5 @@
 
-package Paws::SimpleWorkflow::ActivityTask {
+package Paws::SimpleWorkflow::ActivityTask;
   use Moose;
   has activityId => (is => 'ro', isa => 'Str', required => 1);
   has activityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', required => 1);
@@ -8,7 +8,6 @@ package Paws::SimpleWorkflow::ActivityTask {
   has taskToken => (is => 'ro', isa => 'Str', required => 1);
   has workflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

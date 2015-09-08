@@ -1,9 +1,8 @@
 
-package Paws::SES::GetIdentityDkimAttributesResponse {
+package Paws::SES::GetIdentityDkimAttributesResponse;
   use Moose;
   has DkimAttributes => (is => 'ro', isa => 'Paws::SES::DkimAttributes', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

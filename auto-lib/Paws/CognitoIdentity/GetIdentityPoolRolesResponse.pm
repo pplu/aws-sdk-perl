@@ -1,10 +1,9 @@
 
-package Paws::CognitoIdentity::GetIdentityPoolRolesResponse {
+package Paws::CognitoIdentity::GetIdentityPoolRolesResponse;
   use Moose;
   has IdentityPoolId => (is => 'ro', isa => 'Str');
   has Roles => (is => 'ro', isa => 'Paws::CognitoIdentity::RolesMap');
 
-}
 
 ### main pod documentation begin ###
 

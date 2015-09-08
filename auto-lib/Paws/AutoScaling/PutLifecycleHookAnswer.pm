@@ -1,8 +1,7 @@
 
-package Paws::AutoScaling::PutLifecycleHookAnswer {
+package Paws::AutoScaling::PutLifecycleHookAnswer;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

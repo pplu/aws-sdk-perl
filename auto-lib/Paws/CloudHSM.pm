@@ -1,4 +1,4 @@
-package Paws::CloudHSM {
+package Paws::CloudHSM;
   use Moose;
   sub service { 'cloudhsm' }
   sub version { '2014-05-30' }
@@ -93,7 +93,6 @@ package Paws::CloudHSM {
     my $call_object = $self->new_with_coercions('Paws::CloudHSM::ModifyLunaClient', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

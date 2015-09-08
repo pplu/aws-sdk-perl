@@ -1,4 +1,4 @@
-package Paws::RDS::DBSecurityGroup {
+package Paws::RDS::DBSecurityGroup;
   use Moose;
   has DBSecurityGroupDescription => (is => 'ro', isa => 'Str');
   has DBSecurityGroupName => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::RDS::DBSecurityGroup {
   has IPRanges => (is => 'ro', isa => 'ArrayRef[Paws::RDS::IPRange]');
   has OwnerId => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
-}
 1;

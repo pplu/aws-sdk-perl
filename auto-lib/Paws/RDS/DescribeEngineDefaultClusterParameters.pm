@@ -1,5 +1,5 @@
 
-package Paws::RDS::DescribeEngineDefaultClusterParameters {
+package Paws::RDS::DescribeEngineDefaultClusterParameters;
   use Moose;
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
@@ -11,7 +11,6 @@ package Paws::RDS::DescribeEngineDefaultClusterParameters {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEngineDefaultClusterParameters');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DescribeEngineDefaultClusterParametersResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEngineDefaultClusterParametersResult');
-}
 1;
 
 ### main pod documentation begin ###

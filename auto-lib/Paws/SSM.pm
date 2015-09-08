@@ -1,4 +1,4 @@
-package Paws::SSM {
+package Paws::SSM;
   use Moose;
   sub service { 'ssm' }
   sub version { '2014-11-06' }
@@ -63,7 +63,6 @@ package Paws::SSM {
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdateAssociationStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

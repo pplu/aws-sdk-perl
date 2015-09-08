@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::CreateInstanceResult {
+package Paws::OpsWorks::CreateInstanceResult;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

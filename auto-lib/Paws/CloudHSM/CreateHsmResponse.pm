@@ -1,9 +1,8 @@
 
-package Paws::CloudHSM::CreateHsmResponse {
+package Paws::CloudHSM::CreateHsmResponse;
   use Moose;
   has HsmArn => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

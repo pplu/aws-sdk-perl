@@ -1,5 +1,5 @@
 
-package Paws::RDS::ModifyDBInstance {
+package Paws::RDS::ModifyDBInstance;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AllowMajorVersionUpgrade => (is => 'ro', isa => 'Bool');
@@ -31,7 +31,6 @@ package Paws::RDS::ModifyDBInstance {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBInstance');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::ModifyDBInstanceResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBInstanceResult');
-}
 1;
 
 ### main pod documentation begin ###

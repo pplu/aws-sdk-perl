@@ -1,9 +1,8 @@
 
-package Paws::RedShift::DescribeDefaultClusterParametersResult {
+package Paws::RedShift::DescribeDefaultClusterParametersResult;
   use Moose;
   has DefaultClusterParameters => (is => 'ro', isa => 'Paws::RedShift::DefaultClusterParameters');
 
-}
 1;
 
 ### main pod documentation begin ###

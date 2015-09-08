@@ -1,5 +1,5 @@
 
-package Paws::RDS::CreateDBSubnetGroup {
+package Paws::RDS::CreateDBSubnetGroup;
   use Moose;
   has DBSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::RDS::CreateDBSubnetGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSubnetGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateDBSubnetGroupResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBSubnetGroupResult');
-}
 1;
 
 ### main pod documentation begin ###

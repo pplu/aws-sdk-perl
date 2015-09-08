@@ -1,4 +1,4 @@
-package Paws::RedShift::ReservedNode {
+package Paws::RedShift::ReservedNode;
   use Moose;
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
@@ -12,5 +12,4 @@ package Paws::RedShift::ReservedNode {
   has StartTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
-}
 1;

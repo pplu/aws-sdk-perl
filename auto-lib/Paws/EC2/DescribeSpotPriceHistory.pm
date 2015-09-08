@@ -1,5 +1,5 @@
 
-package Paws::EC2::DescribeSpotPriceHistory {
+package Paws::EC2::DescribeSpotPriceHistory;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -16,7 +16,6 @@ package Paws::EC2::DescribeSpotPriceHistory {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSpotPriceHistory');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeSpotPriceHistoryResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

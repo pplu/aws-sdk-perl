@@ -1,5 +1,5 @@
 
-package Paws::Glacier::InitiateVaultLock {
+package Paws::Glacier::InitiateVaultLock;
   use Moose;
   has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
   has policy => (is => 'ro', isa => 'Paws::Glacier::VaultLockPolicy');
@@ -12,7 +12,6 @@ package Paws::Glacier::InitiateVaultLock {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::InitiateVaultLockOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'InitiateVaultLockResult');
-}
 1;
 
 ### main pod documentation begin ###

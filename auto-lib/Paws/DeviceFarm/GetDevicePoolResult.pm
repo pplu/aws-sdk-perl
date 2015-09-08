@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::GetDevicePoolResult {
+package Paws::DeviceFarm::GetDevicePoolResult;
   use Moose;
   has devicePool => (is => 'ro', isa => 'Paws::DeviceFarm::DevicePool');
 
-}
 
 ### main pod documentation begin ###
 

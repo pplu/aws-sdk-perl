@@ -1,9 +1,8 @@
 
-package Paws::SSM::DescribeDocumentResult {
+package Paws::SSM::DescribeDocumentResult;
   use Moose;
   has Document => (is => 'ro', isa => 'Paws::SSM::DocumentDescription');
 
-}
 
 ### main pod documentation begin ###
 

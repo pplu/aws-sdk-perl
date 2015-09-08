@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::CreateUploadResult {
+package Paws::DeviceFarm::CreateUploadResult;
   use Moose;
   has upload => (is => 'ro', isa => 'Paws::DeviceFarm::Upload');
 
-}
 
 ### main pod documentation begin ###
 

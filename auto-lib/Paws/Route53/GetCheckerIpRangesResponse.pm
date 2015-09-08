@@ -1,9 +1,8 @@
 
-package Paws::Route53::GetCheckerIpRangesResponse {
+package Paws::Route53::GetCheckerIpRangesResponse;
   use Moose;
   has CheckerIpRanges => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

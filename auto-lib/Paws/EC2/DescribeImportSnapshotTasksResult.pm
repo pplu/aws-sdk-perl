@@ -1,10 +1,9 @@
 
-package Paws::EC2::DescribeImportSnapshotTasksResult {
+package Paws::EC2::DescribeImportSnapshotTasksResult;
   use Moose;
   has ImportSnapshotTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImportSnapshotTask]', xmlname => 'importSnapshotTaskSet', traits => ['Unwrapped',]);
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

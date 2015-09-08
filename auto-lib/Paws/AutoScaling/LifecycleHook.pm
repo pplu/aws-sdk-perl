@@ -1,4 +1,4 @@
-package Paws::AutoScaling::LifecycleHook {
+package Paws::AutoScaling::LifecycleHook;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has DefaultResult => (is => 'ro', isa => 'Str');
@@ -9,5 +9,4 @@ package Paws::AutoScaling::LifecycleHook {
   has NotificationMetadata => (is => 'ro', isa => 'Str');
   has NotificationTargetARN => (is => 'ro', isa => 'Str');
   has RoleARN => (is => 'ro', isa => 'Str');
-}
 1;

@@ -1,5 +1,5 @@
 
-package Paws::DataPipeline::QueryObjects {
+package Paws::DataPipeline::QueryObjects;
   use Moose;
   has limit => (is => 'ro', isa => 'Int');
   has marker => (is => 'ro', isa => 'Str');
@@ -12,7 +12,6 @@ package Paws::DataPipeline::QueryObjects {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'QueryObjects');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::QueryObjectsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

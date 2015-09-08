@@ -1,11 +1,10 @@
 
-package Paws::STS::GetFederationTokenResponse {
+package Paws::STS::GetFederationTokenResponse;
   use Moose;
   has Credentials => (is => 'ro', isa => 'Paws::STS::Credentials');
   has FederatedUser => (is => 'ro', isa => 'Paws::STS::FederatedUser');
   has PackedPolicySize => (is => 'ro', isa => 'Int');
 
-}
 1;
 
 ### main pod documentation begin ###

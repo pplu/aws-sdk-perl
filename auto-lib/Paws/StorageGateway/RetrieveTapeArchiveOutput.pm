@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::RetrieveTapeArchiveOutput {
+package Paws::StorageGateway::RetrieveTapeArchiveOutput;
   use Moose;
   has TapeARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

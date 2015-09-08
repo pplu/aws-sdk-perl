@@ -1,10 +1,9 @@
 
-package Paws::SNS::ListTopicsResponse {
+package Paws::SNS::ListTopicsResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has Topics => (is => 'ro', isa => 'ArrayRef[Paws::SNS::Topic]');
 
-}
 1;
 
 ### main pod documentation begin ###

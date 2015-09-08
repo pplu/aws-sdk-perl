@@ -1,8 +1,7 @@
 
-package Paws::Route53::DeleteHealthCheckResponse {
+package Paws::Route53::DeleteHealthCheckResponse;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

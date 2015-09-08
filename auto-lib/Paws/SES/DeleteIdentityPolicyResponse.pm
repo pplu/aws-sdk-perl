@@ -1,8 +1,7 @@
 
-package Paws::SES::DeleteIdentityPolicyResponse {
+package Paws::SES::DeleteIdentityPolicyResponse;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

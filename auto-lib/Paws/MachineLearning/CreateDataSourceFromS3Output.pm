@@ -1,9 +1,8 @@
 
-package Paws::MachineLearning::CreateDataSourceFromS3Output {
+package Paws::MachineLearning::CreateDataSourceFromS3Output;
   use Moose;
   has DataSourceId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

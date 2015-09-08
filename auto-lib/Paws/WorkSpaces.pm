@@ -1,4 +1,4 @@
-package Paws::WorkSpaces {
+package Paws::WorkSpaces;
   use Moose;
   sub service { 'workspaces' }
   sub version { '2015-04-08' }
@@ -43,7 +43,6 @@ package Paws::WorkSpaces {
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::TerminateWorkspaces', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

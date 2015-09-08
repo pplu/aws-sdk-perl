@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeTimeBasedAutoScalingResult {
+package Paws::OpsWorks::DescribeTimeBasedAutoScalingResult;
   use Moose;
   has TimeBasedAutoScalingConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::TimeBasedAutoScalingConfiguration]');
 
-}
 
 ### main pod documentation begin ###
 

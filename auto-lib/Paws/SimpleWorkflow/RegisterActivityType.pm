@@ -1,5 +1,5 @@
 
-package Paws::SimpleWorkflow::RegisterActivityType {
+package Paws::SimpleWorkflow::RegisterActivityType;
   use Moose;
   has defaultTaskHeartbeatTimeout => (is => 'ro', isa => 'Str');
   has defaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList');
@@ -17,7 +17,6 @@ package Paws::SimpleWorkflow::RegisterActivityType {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterActivityType');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

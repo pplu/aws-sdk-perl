@@ -1,10 +1,9 @@
 
-package Paws::CloudFront::GetCloudFrontOriginAccessIdentityResult {
+package Paws::CloudFront::GetCloudFrontOriginAccessIdentityResult;
   use Moose;
   has CloudFrontOriginAccessIdentity => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentity');
   has ETag => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

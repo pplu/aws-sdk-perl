@@ -1,4 +1,4 @@
-package Paws::CodePipeline {
+package Paws::CodePipeline;
   use Moose;
   sub service { 'codepipeline' }
   sub version { '2015-07-09' }
@@ -123,7 +123,6 @@ package Paws::CodePipeline {
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::UpdatePipeline', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

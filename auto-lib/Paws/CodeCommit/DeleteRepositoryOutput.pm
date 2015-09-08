@@ -1,9 +1,8 @@
 
-package Paws::CodeCommit::DeleteRepositoryOutput {
+package Paws::CodeCommit::DeleteRepositoryOutput;
   use Moose;
   has repositoryId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

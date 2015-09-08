@@ -1,4 +1,4 @@
-package Paws::MachineLearning::BatchPrediction {
+package Paws::MachineLearning::BatchPrediction;
   use Moose;
   has BatchPredictionDataSourceId => (is => 'ro', isa => 'Str');
   has BatchPredictionId => (is => 'ro', isa => 'Str');
@@ -11,5 +11,4 @@ package Paws::MachineLearning::BatchPrediction {
   has Name => (is => 'ro', isa => 'Str');
   has OutputUri => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
-}
 1;

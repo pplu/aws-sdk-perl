@@ -1,10 +1,9 @@
 
-package Paws::ECS::DiscoverPollEndpointResponse {
+package Paws::ECS::DiscoverPollEndpointResponse;
   use Moose;
   has endpoint => (is => 'ro', isa => 'Str');
   has telemetryEndpoint => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

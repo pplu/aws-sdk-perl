@@ -1,9 +1,8 @@
 
-package Paws::CloudFormation::DescribeStackResourceOutput {
+package Paws::CloudFormation::DescribeStackResourceOutput;
   use Moose;
   has StackResourceDetail => (is => 'ro', isa => 'Paws::CloudFormation::StackResourceDetail');
 
-}
 1;
 
 ### main pod documentation begin ###

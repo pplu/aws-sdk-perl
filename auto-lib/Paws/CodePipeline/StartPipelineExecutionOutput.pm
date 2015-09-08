@@ -1,9 +1,8 @@
 
-package Paws::CodePipeline::StartPipelineExecutionOutput {
+package Paws::CodePipeline::StartPipelineExecutionOutput;
   use Moose;
   has pipelineExecutionId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

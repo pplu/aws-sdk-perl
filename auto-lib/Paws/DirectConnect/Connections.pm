@@ -1,9 +1,8 @@
 
-package Paws::DirectConnect::Connections {
+package Paws::DirectConnect::Connections;
   use Moose;
   has connections => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Connection]');
 
-}
 
 ### main pod documentation begin ###
 

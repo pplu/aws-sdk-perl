@@ -1,10 +1,9 @@
 
-package Paws::SimpleWorkflow::PendingTaskCount {
+package Paws::SimpleWorkflow::PendingTaskCount;
   use Moose;
   has count => (is => 'ro', isa => 'Int', required => 1);
   has truncated => (is => 'ro', isa => 'Bool');
 
-}
 
 ### main pod documentation begin ###
 

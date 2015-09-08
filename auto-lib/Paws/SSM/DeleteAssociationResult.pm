@@ -1,8 +1,7 @@
 
-package Paws::SSM::DeleteAssociationResult {
+package Paws::SSM::DeleteAssociationResult;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

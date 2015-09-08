@@ -1,8 +1,7 @@
 
-package Paws::ELB::DeleteAccessPointOutput {
+package Paws::ELB::DeleteAccessPointOutput;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

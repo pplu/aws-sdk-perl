@@ -1,10 +1,9 @@
 
-package Paws::RedShift::EventSubscriptionsMessage {
+package Paws::RedShift::EventSubscriptionsMessage;
   use Moose;
   has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::EventSubscription]', xmlname => 'EventSubscription', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

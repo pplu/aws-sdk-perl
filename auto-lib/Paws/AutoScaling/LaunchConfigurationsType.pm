@@ -1,10 +1,9 @@
 
-package Paws::AutoScaling::LaunchConfigurationsType {
+package Paws::AutoScaling::LaunchConfigurationsType;
   use Moose;
   has LaunchConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::LaunchConfiguration]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::CloudFormation {
+package Paws::CloudFormation;
   use Moose;
   sub service { 'cloudformation' }
   sub version { '2010-05-15' }
@@ -92,7 +92,6 @@ package Paws::CloudFormation {
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::ValidateTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

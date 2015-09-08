@@ -1,5 +1,5 @@
 
-package Paws::S3::UploadPart {
+package Paws::S3::UploadPart;
   use Moose;
   has Body => (is => 'ro', isa => 'Str', traits => ['ParamInBody']);
   has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
@@ -20,7 +20,6 @@ package Paws::S3::UploadPart {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::UploadPartOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

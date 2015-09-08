@@ -1,4 +1,4 @@
-package Paws::CloudFormation::StackResourceDetail {
+package Paws::CloudFormation::StackResourceDetail;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
@@ -10,5 +10,4 @@ package Paws::CloudFormation::StackResourceDetail {
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
-}
 1;

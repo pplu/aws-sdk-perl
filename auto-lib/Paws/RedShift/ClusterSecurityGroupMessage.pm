@@ -1,10 +1,9 @@
 
-package Paws::RedShift::ClusterSecurityGroupMessage {
+package Paws::RedShift::ClusterSecurityGroupMessage;
   use Moose;
   has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterSecurityGroup]', xmlname => 'ClusterSecurityGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

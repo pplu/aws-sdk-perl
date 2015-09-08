@@ -1,5 +1,5 @@
 
-package Paws::CodePipeline::AcknowledgeThirdPartyJob {
+package Paws::CodePipeline::AcknowledgeThirdPartyJob;
   use Moose;
   has clientToken => (is => 'ro', isa => 'Str', required => 1);
   has jobId => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::CodePipeline::AcknowledgeThirdPartyJob {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AcknowledgeThirdPartyJob');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::AcknowledgeThirdPartyJobOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

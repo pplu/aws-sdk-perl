@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::UpdateRecords {
+package Paws::CognitoSync::UpdateRecords;
   use Moose;
   has ClientContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-Client-Context' );
   has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName' , required => 1);
@@ -16,7 +16,6 @@ package Paws::CognitoSync::UpdateRecords {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::UpdateRecordsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateRecordsResult');
-}
 1;
 
 ### main pod documentation begin ###

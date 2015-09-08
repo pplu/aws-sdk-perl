@@ -1,4 +1,4 @@
-package Paws::ECS::ContainerDefinition {
+package Paws::ECS::ContainerDefinition;
   use Moose;
   has command => (is => 'ro', isa => 'ArrayRef[Str]');
   has cpu => (is => 'ro', isa => 'Int');
@@ -12,5 +12,4 @@ package Paws::ECS::ContainerDefinition {
   has name => (is => 'ro', isa => 'Str');
   has portMappings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PortMapping]');
   has volumesFrom => (is => 'ro', isa => 'ArrayRef[Paws::ECS::VolumeFrom]');
-}
 1;

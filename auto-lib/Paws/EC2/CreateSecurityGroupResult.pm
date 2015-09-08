@@ -1,9 +1,8 @@
 
-package Paws::EC2::CreateSecurityGroupResult {
+package Paws::EC2::CreateSecurityGroupResult;
   use Moose;
   has GroupId => (is => 'ro', isa => 'Str', xmlname => 'groupId', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

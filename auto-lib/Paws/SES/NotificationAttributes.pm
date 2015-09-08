@@ -1,4 +1,4 @@
-package Paws::SES::NotificationAttributes {
+package Paws::SES::NotificationAttributes;
   use Moose;
   with 'Paws::API::StrToObjMapParser';
 
@@ -7,5 +7,4 @@ package Paws::SES::NotificationAttributes {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Paws::SES::IdentityNotificationAttributes]');
-}
 1

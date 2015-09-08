@@ -1,8 +1,7 @@
 
-package Paws::Route53Domains::EnableDomainAutoRenewResponse {
+package Paws::Route53Domains::EnableDomainAutoRenewResponse;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

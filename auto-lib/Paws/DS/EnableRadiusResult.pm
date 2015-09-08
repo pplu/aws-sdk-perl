@@ -1,8 +1,7 @@
 
-package Paws::DS::EnableRadiusResult {
+package Paws::DS::EnableRadiusResult;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

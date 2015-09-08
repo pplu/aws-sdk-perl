@@ -1,9 +1,8 @@
 
-package Paws::CodeCommit::GetBranchOutput {
+package Paws::CodeCommit::GetBranchOutput;
   use Moose;
   has branch => (is => 'ro', isa => 'Paws::CodeCommit::BranchInfo');
 
-}
 
 ### main pod documentation begin ###
 

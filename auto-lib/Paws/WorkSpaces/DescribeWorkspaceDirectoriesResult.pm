@@ -1,10 +1,9 @@
 
-package Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult {
+package Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult;
   use Moose;
   has Directories => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::WorkspaceDirectory]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

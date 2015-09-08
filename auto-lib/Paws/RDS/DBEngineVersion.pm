@@ -1,4 +1,4 @@
-package Paws::RDS::DBEngineVersion {
+package Paws::RDS::DBEngineVersion;
   use Moose;
   has DBEngineDescription => (is => 'ro', isa => 'Str');
   has DBEngineVersionDescription => (is => 'ro', isa => 'Str');
@@ -7,5 +7,4 @@ package Paws::RDS::DBEngineVersion {
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has SupportedCharacterSets => (is => 'ro', isa => 'ArrayRef[Paws::RDS::CharacterSet]');
-}
 1;

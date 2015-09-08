@@ -1,9 +1,8 @@
 
-package Paws::S3::GetBucketPolicyOutput {
+package Paws::S3::GetBucketPolicyOutput;
   use Moose;
   has Policy => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::ElasticBeanstalk::Latency {
+package Paws::ElasticBeanstalk::Latency;
   use Moose;
   has P10 => (is => 'ro', isa => 'Num');
   has P50 => (is => 'ro', isa => 'Num');
@@ -8,5 +8,4 @@ package Paws::ElasticBeanstalk::Latency {
   has P95 => (is => 'ro', isa => 'Num');
   has P99 => (is => 'ro', isa => 'Num');
   has P999 => (is => 'ro', isa => 'Num');
-}
 1;

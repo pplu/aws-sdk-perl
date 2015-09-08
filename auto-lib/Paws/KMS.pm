@@ -1,4 +1,4 @@
-package Paws::KMS {
+package Paws::KMS;
   use Moose;
   sub service { 'kms' }
   sub version { '2014-11-01' }
@@ -138,7 +138,6 @@ package Paws::KMS {
     my $call_object = $self->new_with_coercions('Paws::KMS::UpdateKeyDescription', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::Config::ListDiscoveredResourcesResponse {
+package Paws::Config::ListDiscoveredResourcesResponse;
   use Moose;
   has nextToken => (is => 'ro', isa => 'Str');
   has resourceIdentifiers => (is => 'ro', isa => 'ArrayRef[Paws::Config::ResourceIdentifier]');
 
-}
 
 ### main pod documentation begin ###
 

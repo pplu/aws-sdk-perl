@@ -1,5 +1,5 @@
 
-package Paws::DynamoDB::Query {
+package Paws::DynamoDB::Query;
   use Moose;
   has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
   has ConditionalOperator => (is => 'ro', isa => 'Str');
@@ -24,7 +24,6 @@ package Paws::DynamoDB::Query {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'Query');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::QueryOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::CloudWatch::DescribeAlarmHistoryOutput {
+package Paws::CloudWatch::DescribeAlarmHistoryOutput;
   use Moose;
   has AlarmHistoryItems => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::AlarmHistoryItem]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

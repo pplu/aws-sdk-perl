@@ -1,5 +1,5 @@
 
-package Paws::SQS::ReceiveMessage {
+package Paws::SQS::ReceiveMessage;
   use Moose;
   has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has MaxNumberOfMessages => (is => 'ro', isa => 'Int');
@@ -13,7 +13,6 @@ package Paws::SQS::ReceiveMessage {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReceiveMessage');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SQS::ReceiveMessageResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ReceiveMessageResult');
-}
 1;
 
 ### main pod documentation begin ###

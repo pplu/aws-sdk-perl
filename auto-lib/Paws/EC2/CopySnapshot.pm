@@ -1,5 +1,5 @@
 
-package Paws::EC2::CopySnapshot {
+package Paws::EC2::CopySnapshot;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has DestinationRegion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationRegion' );
@@ -15,7 +15,6 @@ package Paws::EC2::CopySnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopySnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CopySnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

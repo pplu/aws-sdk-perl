@@ -1,10 +1,9 @@
 
-package Paws::EMR::ListBootstrapActionsOutput {
+package Paws::EMR::ListBootstrapActionsOutput;
   use Moose;
   has BootstrapActions => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Command]');
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

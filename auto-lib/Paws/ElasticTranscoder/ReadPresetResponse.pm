@@ -1,9 +1,8 @@
 
-package Paws::ElasticTranscoder::ReadPresetResponse {
+package Paws::ElasticTranscoder::ReadPresetResponse;
   use Moose;
   has Preset => (is => 'ro', isa => 'Paws::ElasticTranscoder::Preset');
 
-}
 1;
 
 ### main pod documentation begin ###

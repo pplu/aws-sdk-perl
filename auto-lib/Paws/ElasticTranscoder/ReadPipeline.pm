@@ -1,5 +1,5 @@
 
-package Paws::ElasticTranscoder::ReadPipeline {
+package Paws::ElasticTranscoder::ReadPipeline;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
 
@@ -10,7 +10,6 @@ package Paws::ElasticTranscoder::ReadPipeline {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::ReadPipelineResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ReadPipelineResult');
-}
 1;
 
 ### main pod documentation begin ###

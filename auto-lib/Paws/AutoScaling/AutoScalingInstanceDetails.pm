@@ -1,4 +1,4 @@
-package Paws::AutoScaling::AutoScalingInstanceDetails {
+package Paws::AutoScaling::AutoScalingInstanceDetails;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
@@ -6,5 +6,4 @@ package Paws::AutoScaling::AutoScalingInstanceDetails {
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
   has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
-}
 1;

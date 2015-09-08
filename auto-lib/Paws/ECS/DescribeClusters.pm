@@ -1,5 +1,5 @@
 
-package Paws::ECS::DescribeClusters {
+package Paws::ECS::DescribeClusters;
   use Moose;
   has clusters => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -8,7 +8,6 @@ package Paws::ECS::DescribeClusters {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusters');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DescribeClustersResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

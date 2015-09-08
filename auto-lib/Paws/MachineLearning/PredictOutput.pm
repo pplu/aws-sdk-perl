@@ -1,9 +1,8 @@
 
-package Paws::MachineLearning::PredictOutput {
+package Paws::MachineLearning::PredictOutput;
   use Moose;
   has Prediction => (is => 'ro', isa => 'Paws::MachineLearning::Prediction');
 
-}
 
 ### main pod documentation begin ###
 

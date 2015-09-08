@@ -1,5 +1,5 @@
 
-package Paws::KMS::GenerateDataKey {
+package Paws::KMS::GenerateDataKey;
   use Moose;
   has EncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
   has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -12,7 +12,6 @@ package Paws::KMS::GenerateDataKey {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GenerateDataKey');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::GenerateDataKeyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

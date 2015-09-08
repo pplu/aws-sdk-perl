@@ -1,10 +1,9 @@
 
-package Paws::Support::ResolveCaseResponse {
+package Paws::Support::ResolveCaseResponse;
   use Moose;
   has finalCaseStatus => (is => 'ro', isa => 'Str');
   has initialCaseStatus => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,5 +1,5 @@
 
-package Paws::ElasticTranscoder::CreatePipeline {
+package Paws::ElasticTranscoder::CreatePipeline;
   use Moose;
   has AwsKmsKeyArn => (is => 'ro', isa => 'Str');
   has ContentConfig => (is => 'ro', isa => 'Paws::ElasticTranscoder::PipelineOutputConfig');
@@ -17,7 +17,6 @@ package Paws::ElasticTranscoder::CreatePipeline {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::CreatePipelineResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePipelineResult');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::EC2::InstanceNetworkInterfaceSpecification {
+package Paws::EC2::InstanceNetworkInterfaceSpecification;
   use Moose;
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool', xmlname => 'associatePublicIpAddress', traits => ['Unwrapped']);
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', xmlname => 'deleteOnTermination', traits => ['Unwrapped']);
@@ -10,5 +10,4 @@ package Paws::EC2::InstanceNetworkInterfaceSpecification {
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrivateIpAddressSpecification]', xmlname => 'privateIpAddressesSet', traits => ['Unwrapped']);
   has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int', xmlname => 'secondaryPrivateIpAddressCount', traits => ['Unwrapped']);
   has SubnetId => (is => 'ro', isa => 'Str', xmlname => 'subnetId', traits => ['Unwrapped']);
-}
 1;

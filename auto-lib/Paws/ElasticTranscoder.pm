@@ -1,4 +1,4 @@
-package Paws::ElasticTranscoder {
+package Paws::ElasticTranscoder;
   warn "Paws::ElasticTranscoder is not stable / supported / entirely developed";
   use Moose;
   sub service { 'elastictranscoder' }
@@ -149,7 +149,6 @@ package Paws::ElasticTranscoder {
 
     return 'Paws::ElasticTranscoder::ListPresets'->_returns->new(Presets => $array);
   }
-}
 1;
 
 ### main pod documentation begin ###

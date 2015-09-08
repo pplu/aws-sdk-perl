@@ -1,9 +1,8 @@
 
-package Paws::CloudFront::ListDistributionsResult {
+package Paws::CloudFront::ListDistributionsResult;
   use Moose;
   has DistributionList => (is => 'ro', isa => 'Paws::CloudFront::DistributionList');
 
-}
 1;
 
 ### main pod documentation begin ###

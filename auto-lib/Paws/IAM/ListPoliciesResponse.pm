@@ -1,11 +1,10 @@
 
-package Paws::IAM::ListPoliciesResponse {
+package Paws::IAM::ListPoliciesResponse;
   use Moose;
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has Policies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Policy]');
 
-}
 1;
 
 ### main pod documentation begin ###

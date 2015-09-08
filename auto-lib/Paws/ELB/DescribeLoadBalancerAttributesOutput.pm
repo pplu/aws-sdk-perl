@@ -1,9 +1,8 @@
 
-package Paws::ELB::DescribeLoadBalancerAttributesOutput {
+package Paws::ELB::DescribeLoadBalancerAttributesOutput;
   use Moose;
   has LoadBalancerAttributes => (is => 'ro', isa => 'Paws::ELB::LoadBalancerAttributes');
 
-}
 1;
 
 ### main pod documentation begin ###

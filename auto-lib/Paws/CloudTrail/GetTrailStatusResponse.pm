@@ -1,5 +1,5 @@
 
-package Paws::CloudTrail::GetTrailStatusResponse {
+package Paws::CloudTrail::GetTrailStatusResponse;
   use Moose;
   has IsLogging => (is => 'ro', isa => 'Bool');
   has LatestCloudWatchLogsDeliveryError => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::CloudTrail::GetTrailStatusResponse {
   has StartLoggingTime => (is => 'ro', isa => 'Str');
   has StopLoggingTime => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

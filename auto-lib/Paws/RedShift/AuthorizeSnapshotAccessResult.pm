@@ -1,9 +1,8 @@
 
-package Paws::RedShift::AuthorizeSnapshotAccessResult {
+package Paws::RedShift::AuthorizeSnapshotAccessResult;
   use Moose;
   has Snapshot => (is => 'ro', isa => 'Paws::RedShift::Snapshot');
 
-}
 1;
 
 ### main pod documentation begin ###

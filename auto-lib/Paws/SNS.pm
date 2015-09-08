@@ -1,4 +1,4 @@
-package Paws::SNS {
+package Paws::SNS;
   use Moose;
   sub service { 'sns' }
   sub version { '2010-03-31' }
@@ -132,7 +132,6 @@ package Paws::SNS {
     my $call_object = $self->new_with_coercions('Paws::SNS::Unsubscribe', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

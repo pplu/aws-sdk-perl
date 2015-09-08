@@ -1,9 +1,8 @@
 
-package Paws::DirectConnect::DeleteVirtualInterfaceResponse {
+package Paws::DirectConnect::DeleteVirtualInterfaceResponse;
   use Moose;
   has virtualInterfaceState => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

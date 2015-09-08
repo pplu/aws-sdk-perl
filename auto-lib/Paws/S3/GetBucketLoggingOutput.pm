@@ -1,9 +1,8 @@
 
-package Paws::S3::GetBucketLoggingOutput {
+package Paws::S3::GetBucketLoggingOutput;
   use Moose;
   has LoggingEnabled => (is => 'ro', isa => 'Paws::S3::LoggingEnabled');
 
-}
 1;
 
 ### main pod documentation begin ###

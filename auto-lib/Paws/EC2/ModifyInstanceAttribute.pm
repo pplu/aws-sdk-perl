@@ -1,5 +1,5 @@
 
-package Paws::EC2::ModifyInstanceAttribute {
+package Paws::EC2::ModifyInstanceAttribute;
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'attribute' );
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceBlockDeviceMappingSpecification]', traits => ['NameInRequest'], request_name => 'blockDeviceMapping' );
@@ -22,7 +22,6 @@ package Paws::EC2::ModifyInstanceAttribute {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyInstanceAttribute');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

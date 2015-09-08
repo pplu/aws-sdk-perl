@@ -1,4 +1,4 @@
-package Paws::RDS::OptionGroupOption {
+package Paws::RDS::OptionGroupOption;
   use Moose;
   has DefaultPort => (is => 'ro', isa => 'Int');
   has Description => (is => 'ro', isa => 'Str');
@@ -11,5 +11,4 @@ package Paws::RDS::OptionGroupOption {
   has Permanent => (is => 'ro', isa => 'Bool');
   has Persistent => (is => 'ro', isa => 'Bool');
   has PortRequired => (is => 'ro', isa => 'Bool');
-}
 1;

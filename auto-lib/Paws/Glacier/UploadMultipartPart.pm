@@ -1,5 +1,5 @@
 
-package Paws::Glacier::UploadMultipartPart {
+package Paws::Glacier::UploadMultipartPart;
   use Moose;
   has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
   has body => (is => 'ro', isa => 'Str');
@@ -15,7 +15,6 @@ package Paws::Glacier::UploadMultipartPart {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::UploadMultipartPartOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UploadMultipartPartResult');
-}
 1;
 
 ### main pod documentation begin ###

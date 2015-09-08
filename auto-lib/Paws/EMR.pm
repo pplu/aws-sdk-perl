@@ -1,4 +1,4 @@
-package Paws::EMR {
+package Paws::EMR;
   use Moose;
   sub service { 'elasticmapreduce' }
   sub version { '2009-03-31' }
@@ -141,7 +141,6 @@ package Paws::EMR {
     my $call_object = $self->new_with_coercions('Paws::EMR::TerminateJobFlows', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

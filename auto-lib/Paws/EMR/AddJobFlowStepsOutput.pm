@@ -1,9 +1,8 @@
 
-package Paws::EMR::AddJobFlowStepsOutput {
+package Paws::EMR::AddJobFlowStepsOutput;
   use Moose;
   has StepIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 
 ### main pod documentation begin ###
 

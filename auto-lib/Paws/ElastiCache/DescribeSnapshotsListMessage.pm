@@ -1,10 +1,9 @@
 
-package Paws::ElastiCache::DescribeSnapshotsListMessage {
+package Paws::ElastiCache::DescribeSnapshotsListMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Snapshot]', xmlname => 'Snapshot', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

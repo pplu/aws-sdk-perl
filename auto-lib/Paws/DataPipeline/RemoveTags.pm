@@ -1,5 +1,5 @@
 
-package Paws::DataPipeline::RemoveTags {
+package Paws::DataPipeline::RemoveTags;
   use Moose;
   has pipelineId => (is => 'ro', isa => 'Str', required => 1);
   has tagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -9,7 +9,6 @@ package Paws::DataPipeline::RemoveTags {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveTags');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::RemoveTagsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

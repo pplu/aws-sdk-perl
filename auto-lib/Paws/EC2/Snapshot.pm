@@ -1,5 +1,5 @@
 
-package Paws::EC2::Snapshot {
+package Paws::EC2::Snapshot;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped',]);
   has Encrypted => (is => 'ro', isa => 'Bool', xmlname => 'encrypted', traits => ['Unwrapped',]);
@@ -14,7 +14,6 @@ package Paws::EC2::Snapshot {
   has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped',]);
   has VolumeSize => (is => 'ro', isa => 'Int', xmlname => 'volumeSize', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

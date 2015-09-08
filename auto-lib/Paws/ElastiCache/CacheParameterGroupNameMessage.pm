@@ -1,9 +1,8 @@
 
-package Paws::ElastiCache::CacheParameterGroupNameMessage {
+package Paws::ElastiCache::CacheParameterGroupNameMessage;
   use Moose;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

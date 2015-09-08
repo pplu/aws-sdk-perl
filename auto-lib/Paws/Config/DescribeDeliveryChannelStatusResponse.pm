@@ -1,9 +1,8 @@
 
-package Paws::Config::DescribeDeliveryChannelStatusResponse {
+package Paws::Config::DescribeDeliveryChannelStatusResponse;
   use Moose;
   has DeliveryChannelsStatus => (is => 'ro', isa => 'ArrayRef[Paws::Config::DeliveryChannelStatus]');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,5 +1,5 @@
 
-package Paws::IAM::GetOpenIDConnectProvider {
+package Paws::IAM::GetOpenIDConnectProvider;
   use Moose;
   has OpenIDConnectProviderArn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::IAM::GetOpenIDConnectProvider {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetOpenIDConnectProvider');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::GetOpenIDConnectProviderResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetOpenIDConnectProviderResult');
-}
 1;
 
 ### main pod documentation begin ###

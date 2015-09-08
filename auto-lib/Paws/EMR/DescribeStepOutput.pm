@@ -1,9 +1,8 @@
 
-package Paws::EMR::DescribeStepOutput {
+package Paws::EMR::DescribeStepOutput;
   use Moose;
   has Step => (is => 'ro', isa => 'Paws::EMR::Step');
 
-}
 
 ### main pod documentation begin ###
 

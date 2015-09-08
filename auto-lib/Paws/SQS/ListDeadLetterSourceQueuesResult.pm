@@ -1,9 +1,8 @@
 
-package Paws::SQS::ListDeadLetterSourceQueuesResult {
+package Paws::SQS::ListDeadLetterSourceQueuesResult;
   use Moose;
   has queueUrls => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'QueueUrl', traits => ['Unwrapped',], required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

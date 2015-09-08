@@ -1,4 +1,4 @@
-package Paws::AutoScaling::ScalingPolicy {
+package Paws::AutoScaling::ScalingPolicy;
   use Moose;
   has AdjustmentType => (is => 'ro', isa => 'Str');
   has Alarms => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Alarm]');
@@ -13,5 +13,4 @@ package Paws::AutoScaling::ScalingPolicy {
   has PolicyType => (is => 'ro', isa => 'Str');
   has ScalingAdjustment => (is => 'ro', isa => 'Int');
   has StepAdjustments => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::StepAdjustment]');
-}
 1;

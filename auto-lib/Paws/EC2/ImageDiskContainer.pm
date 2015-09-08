@@ -1,4 +1,4 @@
-package Paws::EC2::ImageDiskContainer {
+package Paws::EC2::ImageDiskContainer;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has DeviceName => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::EC2::ImageDiskContainer {
   has SnapshotId => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
   has UserBucket => (is => 'ro', isa => 'Paws::EC2::UserBucket');
-}
 1;

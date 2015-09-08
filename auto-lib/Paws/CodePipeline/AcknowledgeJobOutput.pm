@@ -1,9 +1,8 @@
 
-package Paws::CodePipeline::AcknowledgeJobOutput {
+package Paws::CodePipeline::AcknowledgeJobOutput;
   use Moose;
   has status => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

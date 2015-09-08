@@ -1,9 +1,8 @@
 
-package Paws::EC2::CopySnapshotResult {
+package Paws::EC2::CopySnapshotResult;
   use Moose;
   has SnapshotId => (is => 'ro', isa => 'Str', xmlname => 'snapshotId', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::OpsWorks::InstancesCount {
+package Paws::OpsWorks::InstancesCount;
   use Moose;
   has Assigning => (is => 'ro', isa => 'Int');
   has Booting => (is => 'ro', isa => 'Int');
@@ -19,5 +19,4 @@ package Paws::OpsWorks::InstancesCount {
   has Terminated => (is => 'ro', isa => 'Int');
   has Terminating => (is => 'ro', isa => 'Int');
   has Unassigning => (is => 'ro', isa => 'Int');
-}
 1;

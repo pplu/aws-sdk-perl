@@ -1,10 +1,9 @@
 
-package Paws::AutoScaling::PoliciesType {
+package Paws::AutoScaling::PoliciesType;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has ScalingPolicies => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::ScalingPolicy]');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::DescribeIndexFieldsResponse {
+package Paws::CloudSearch::DescribeIndexFieldsResponse;
   use Moose;
   has IndexFields => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearch::IndexFieldStatus]', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

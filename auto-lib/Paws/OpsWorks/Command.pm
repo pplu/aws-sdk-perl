@@ -1,4 +1,4 @@
-package Paws::OpsWorks::Command {
+package Paws::OpsWorks::Command;
   use Moose;
   has AcknowledgedAt => (is => 'ro', isa => 'Str');
   has CommandId => (is => 'ro', isa => 'Str');
@@ -10,5 +10,4 @@ package Paws::OpsWorks::Command {
   has LogUrl => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
-}
 1;

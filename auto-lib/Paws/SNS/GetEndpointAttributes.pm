@@ -1,5 +1,5 @@
 
-package Paws::SNS::GetEndpointAttributes {
+package Paws::SNS::GetEndpointAttributes;
   use Moose;
   has EndpointArn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::SNS::GetEndpointAttributes {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetEndpointAttributes');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::GetEndpointAttributesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetEndpointAttributesResult');
-}
 1;
 
 ### main pod documentation begin ###

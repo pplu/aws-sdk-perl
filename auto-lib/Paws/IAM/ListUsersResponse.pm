@@ -1,11 +1,10 @@
 
-package Paws::IAM::ListUsersResponse {
+package Paws::IAM::ListUsersResponse;
   use Moose;
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::IAM::User]', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

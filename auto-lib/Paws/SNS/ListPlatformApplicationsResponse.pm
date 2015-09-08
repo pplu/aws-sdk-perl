@@ -1,10 +1,9 @@
 
-package Paws::SNS::ListPlatformApplicationsResponse {
+package Paws::SNS::ListPlatformApplicationsResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has PlatformApplications => (is => 'ro', isa => 'ArrayRef[Paws::SNS::PlatformApplication]');
 
-}
 1;
 
 ### main pod documentation begin ###

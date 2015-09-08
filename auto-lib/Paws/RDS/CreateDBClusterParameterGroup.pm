@@ -1,5 +1,5 @@
 
-package Paws::RDS::CreateDBClusterParameterGroup {
+package Paws::RDS::CreateDBClusterParameterGroup;
   use Moose;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::RDS::CreateDBClusterParameterGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBClusterParameterGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateDBClusterParameterGroupResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBClusterParameterGroupResult');
-}
 1;
 
 ### main pod documentation begin ###

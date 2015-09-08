@@ -1,10 +1,9 @@
 
-package Paws::RDS::DBParameterGroupDetails {
+package Paws::RDS::DBParameterGroupDetails;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Parameter]', xmlname => 'Parameter', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

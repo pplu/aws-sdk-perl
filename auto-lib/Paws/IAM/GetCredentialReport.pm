@@ -1,5 +1,5 @@
 
-package Paws::IAM::GetCredentialReport {
+package Paws::IAM::GetCredentialReport;
   use Moose;
 
   use MooseX::ClassAttribute;
@@ -7,7 +7,6 @@ package Paws::IAM::GetCredentialReport {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCredentialReport');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::GetCredentialReportResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetCredentialReportResult');
-}
 1;
 
 ### main pod documentation begin ###

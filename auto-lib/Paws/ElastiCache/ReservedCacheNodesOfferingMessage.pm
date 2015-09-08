@@ -1,10 +1,9 @@
 
-package Paws::ElastiCache::ReservedCacheNodesOfferingMessage {
+package Paws::ElastiCache::ReservedCacheNodesOfferingMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedCacheNodesOfferings => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ReservedCacheNodesOffering]', xmlname => 'ReservedCacheNodesOffering', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

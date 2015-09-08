@@ -1,4 +1,4 @@
-package Paws::DataPipeline {
+package Paws::DataPipeline;
   use Moose;
   sub service { 'datapipeline' }
   sub version { '2012-10-29' }
@@ -103,7 +103,6 @@ package Paws::DataPipeline {
     my $call_object = $self->new_with_coercions('Paws::DataPipeline::ValidatePipelineDefinition', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

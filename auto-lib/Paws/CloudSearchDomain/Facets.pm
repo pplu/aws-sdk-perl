@@ -1,4 +1,4 @@
-package Paws::CloudSearchDomain::Facets {
+package Paws::CloudSearchDomain::Facets;
   use Moose;
   with 'Paws::API::StrToObjMapParser';
 
@@ -7,5 +7,4 @@ package Paws::CloudSearchDomain::Facets {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Paws::CloudSearchDomain::BucketInfo]');
-}
 1

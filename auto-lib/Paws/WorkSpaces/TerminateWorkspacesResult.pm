@@ -1,9 +1,8 @@
 
-package Paws::WorkSpaces::TerminateWorkspacesResult {
+package Paws::WorkSpaces::TerminateWorkspacesResult;
   use Moose;
   has FailedRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::FailedWorkspaceChangeRequest]');
 
-}
 
 ### main pod documentation begin ###
 

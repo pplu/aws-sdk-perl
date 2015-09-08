@@ -1,10 +1,9 @@
 
-package Paws::ECS::StartTaskResponse {
+package Paws::ECS::StartTaskResponse;
   use Moose;
   has failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]');
   has tasks => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Task]');
 
-}
 
 ### main pod documentation begin ###
 

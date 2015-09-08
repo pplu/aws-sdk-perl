@@ -1,9 +1,8 @@
 
-package Paws::S3::GetBucketReplicationOutput {
+package Paws::S3::GetBucketReplicationOutput;
   use Moose;
   has ReplicationConfiguration => (is => 'ro', isa => 'Paws::S3::ReplicationConfiguration');
 
-}
 1;
 
 ### main pod documentation begin ###

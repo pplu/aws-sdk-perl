@@ -1,9 +1,8 @@
 
-package Paws::DS::DeleteDirectoryResult {
+package Paws::DS::DeleteDirectoryResult;
   use Moose;
   has DirectoryId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,5 +1,5 @@
 
-package Paws::EC2::ImportVolume {
+package Paws::EC2::ImportVolume;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
@@ -12,7 +12,6 @@ package Paws::EC2::ImportVolume {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportVolume');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ImportVolumeResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

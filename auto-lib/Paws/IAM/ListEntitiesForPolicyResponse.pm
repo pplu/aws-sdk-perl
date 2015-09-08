@@ -1,5 +1,5 @@
 
-package Paws::IAM::ListEntitiesForPolicyResponse {
+package Paws::IAM::ListEntitiesForPolicyResponse;
   use Moose;
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
@@ -7,7 +7,6 @@ package Paws::IAM::ListEntitiesForPolicyResponse {
   has PolicyRoles => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyRole]');
   has PolicyUsers => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyUser]');
 
-}
 1;
 
 ### main pod documentation begin ###

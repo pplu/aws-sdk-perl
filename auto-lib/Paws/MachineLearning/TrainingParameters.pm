@@ -1,4 +1,4 @@
-package Paws::MachineLearning::TrainingParameters {
+package Paws::MachineLearning::TrainingParameters;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -7,5 +7,4 @@ package Paws::MachineLearning::TrainingParameters {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Str]');
-}
 1

@@ -1,11 +1,10 @@
 
-package Paws::KMS::ListKeyPoliciesResponse {
+package Paws::KMS::ListKeyPoliciesResponse;
   use Moose;
   has NextMarker => (is => 'ro', isa => 'Str');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has Truncated => (is => 'ro', isa => 'Bool');
 
-}
 
 ### main pod documentation begin ###
 

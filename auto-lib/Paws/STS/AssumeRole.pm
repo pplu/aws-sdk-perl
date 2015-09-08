@@ -1,5 +1,5 @@
 
-package Paws::STS::AssumeRole {
+package Paws::STS::AssumeRole;
   use Moose;
   has DurationSeconds => (is => 'ro', isa => 'Int');
   has ExternalId => (is => 'ro', isa => 'Str');
@@ -14,7 +14,6 @@ package Paws::STS::AssumeRole {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssumeRole');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::STS::AssumeRoleResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'AssumeRoleResult');
-}
 1;
 
 ### main pod documentation begin ###

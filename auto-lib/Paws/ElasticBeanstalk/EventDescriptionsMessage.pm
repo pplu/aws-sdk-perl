@@ -1,10 +1,9 @@
 
-package Paws::ElasticBeanstalk::EventDescriptionsMessage {
+package Paws::ElasticBeanstalk::EventDescriptionsMessage;
   use Moose;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::EventDescription]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

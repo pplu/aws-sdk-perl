@@ -1,5 +1,5 @@
 
-package Paws::EC2::Reservation {
+package Paws::EC2::Reservation;
   use Moose;
   has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', xmlname => 'groupSet', traits => ['Unwrapped',]);
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Instance]', xmlname => 'instancesSet', traits => ['Unwrapped',]);
@@ -7,7 +7,6 @@ package Paws::EC2::Reservation {
   has RequesterId => (is => 'ro', isa => 'Str', xmlname => 'requesterId', traits => ['Unwrapped',]);
   has ReservationId => (is => 'ro', isa => 'Str', xmlname => 'reservationId', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

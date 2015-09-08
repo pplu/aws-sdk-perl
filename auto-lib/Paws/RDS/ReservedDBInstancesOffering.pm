@@ -1,4 +1,4 @@
-package Paws::RDS::ReservedDBInstancesOffering {
+package Paws::RDS::ReservedDBInstancesOffering;
   use Moose;
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
@@ -10,5 +10,4 @@ package Paws::RDS::ReservedDBInstancesOffering {
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::RDS::RecurringCharge]');
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
-}
 1;

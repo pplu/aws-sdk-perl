@@ -1,5 +1,5 @@
 
-package Paws::EC2::DescribeVpcEndpointServices {
+package Paws::EC2::DescribeVpcEndpointServices;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has MaxResults => (is => 'ro', isa => 'Int');
@@ -10,7 +10,6 @@ package Paws::EC2::DescribeVpcEndpointServices {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpcEndpointServices');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeVpcEndpointServicesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

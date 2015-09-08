@@ -1,11 +1,10 @@
 
-package Paws::IAM::ListMFADevicesResponse {
+package Paws::IAM::ListMFADevicesResponse;
   use Moose;
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has MFADevices => (is => 'ro', isa => 'ArrayRef[Paws::IAM::MFADevice]', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

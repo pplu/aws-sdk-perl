@@ -1,10 +1,9 @@
 
-package Paws::DeviceFarm::ListArtifactsResult {
+package Paws::DeviceFarm::ListArtifactsResult;
   use Moose;
   has artifacts => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Artifact]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

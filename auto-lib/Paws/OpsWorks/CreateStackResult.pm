@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::CreateStackResult {
+package Paws::OpsWorks::CreateStackResult;
   use Moose;
   has StackId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

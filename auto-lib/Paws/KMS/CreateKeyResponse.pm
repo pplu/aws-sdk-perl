@@ -1,9 +1,8 @@
 
-package Paws::KMS::CreateKeyResponse {
+package Paws::KMS::CreateKeyResponse;
   use Moose;
   has KeyMetadata => (is => 'ro', isa => 'Paws::KMS::KeyMetadata');
 
-}
 
 ### main pod documentation begin ###
 

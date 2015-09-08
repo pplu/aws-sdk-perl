@@ -1,5 +1,5 @@
 
-package Paws::EMR::RunJobFlow {
+package Paws::EMR::RunJobFlow;
   use Moose;
   has AdditionalInfo => (is => 'ro', isa => 'Str');
   has AmiVersion => (is => 'ro', isa => 'Str');
@@ -23,7 +23,6 @@ package Paws::EMR::RunJobFlow {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RunJobFlow');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::RunJobFlowOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

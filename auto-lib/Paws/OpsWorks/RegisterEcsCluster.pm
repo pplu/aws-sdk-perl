@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::RegisterEcsCluster {
+package Paws::OpsWorks::RegisterEcsCluster;
   use Moose;
   has EcsClusterArn => (is => 'ro', isa => 'Str', required => 1);
   has StackId => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::OpsWorks::RegisterEcsCluster {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterEcsCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::RegisterEcsClusterResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

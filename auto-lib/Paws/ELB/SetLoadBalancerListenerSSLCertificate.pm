@@ -1,5 +1,5 @@
 
-package Paws::ELB::SetLoadBalancerListenerSSLCertificate {
+package Paws::ELB::SetLoadBalancerListenerSSLCertificate;
   use Moose;
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has LoadBalancerPort => (is => 'ro', isa => 'Int', required => 1);
@@ -10,7 +10,6 @@ package Paws::ELB::SetLoadBalancerListenerSSLCertificate {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerListenerSSLCertificate');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::SetLoadBalancerListenerSSLCertificateOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SetLoadBalancerListenerSSLCertificateResult');
-}
 1;
 
 ### main pod documentation begin ###

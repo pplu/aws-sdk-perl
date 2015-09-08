@@ -1,8 +1,7 @@
 
-package Paws::SES::SetIdentityNotificationTopicResponse {
+package Paws::SES::SetIdentityNotificationTopicResponse;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

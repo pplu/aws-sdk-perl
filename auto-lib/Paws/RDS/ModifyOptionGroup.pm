@@ -1,5 +1,5 @@
 
-package Paws::RDS::ModifyOptionGroup {
+package Paws::RDS::ModifyOptionGroup;
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::RDS::ModifyOptionGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyOptionGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::ModifyOptionGroupResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyOptionGroupResult');
-}
 1;
 
 ### main pod documentation begin ###

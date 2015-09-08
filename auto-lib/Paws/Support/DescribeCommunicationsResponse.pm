@@ -1,10 +1,9 @@
 
-package Paws::Support::DescribeCommunicationsResponse {
+package Paws::Support::DescribeCommunicationsResponse;
   use Moose;
   has communications => (is => 'ro', isa => 'ArrayRef[Paws::Support::Communication]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

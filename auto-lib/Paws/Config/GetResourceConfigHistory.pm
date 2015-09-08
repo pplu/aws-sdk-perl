@@ -1,5 +1,5 @@
 
-package Paws::Config::GetResourceConfigHistory {
+package Paws::Config::GetResourceConfigHistory;
   use Moose;
   has chronologicalOrder => (is => 'ro', isa => 'Str');
   has earlierTime => (is => 'ro', isa => 'Str');
@@ -14,7 +14,6 @@ package Paws::Config::GetResourceConfigHistory {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetResourceConfigHistory');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::GetResourceConfigHistoryResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

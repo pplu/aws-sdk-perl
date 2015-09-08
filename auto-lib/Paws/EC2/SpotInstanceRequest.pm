@@ -1,4 +1,4 @@
-package Paws::EC2::SpotInstanceRequest {
+package Paws::EC2::SpotInstanceRequest;
   use Moose;
   has AvailabilityZoneGroup => (is => 'ro', isa => 'Str', xmlname => 'availabilityZoneGroup', traits => ['Unwrapped']);
   has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', traits => ['Unwrapped']);
@@ -16,5 +16,4 @@ package Paws::EC2::SpotInstanceRequest {
   has Type => (is => 'ro', isa => 'Str', xmlname => 'type', traits => ['Unwrapped']);
   has ValidFrom => (is => 'ro', isa => 'Str', xmlname => 'validFrom', traits => ['Unwrapped']);
   has ValidUntil => (is => 'ro', isa => 'Str', xmlname => 'validUntil', traits => ['Unwrapped']);
-}
 1;

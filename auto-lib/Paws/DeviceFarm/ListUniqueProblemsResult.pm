@@ -1,10 +1,9 @@
 
-package Paws::DeviceFarm::ListUniqueProblemsResult {
+package Paws::DeviceFarm::ListUniqueProblemsResult;
   use Moose;
   has nextToken => (is => 'ro', isa => 'Str');
   has uniqueProblems => (is => 'ro', isa => 'Paws::DeviceFarm::UniqueProblemsByExecutionResultMap');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,5 +1,5 @@
 
-package Paws::S3::ListObjectVersionsOutput {
+package Paws::S3::ListObjectVersionsOutput;
   use Moose;
   has CommonPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::S3::CommonPrefix]');
   has DeleteMarkers => (is => 'ro', isa => 'ArrayRef[Paws::S3::DeleteMarkerEntry]');
@@ -15,7 +15,6 @@ package Paws::S3::ListObjectVersionsOutput {
   has VersionIdMarker => (is => 'ro', isa => 'Str');
   has Versions => (is => 'ro', isa => 'ArrayRef[Paws::S3::ObjectVersion]');
 
-}
 1;
 
 ### main pod documentation begin ###

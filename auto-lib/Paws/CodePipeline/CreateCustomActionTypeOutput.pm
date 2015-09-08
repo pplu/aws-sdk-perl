@@ -1,9 +1,8 @@
 
-package Paws::CodePipeline::CreateCustomActionTypeOutput {
+package Paws::CodePipeline::CreateCustomActionTypeOutput;
   use Moose;
   has actionType => (is => 'ro', isa => 'Paws::CodePipeline::ActionType', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

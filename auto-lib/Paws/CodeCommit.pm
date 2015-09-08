@@ -1,4 +1,4 @@
-package Paws::CodeCommit {
+package Paws::CodeCommit;
   use Moose;
   sub service { 'codecommit' }
   sub version { '2015-04-13' }
@@ -63,7 +63,6 @@ package Paws::CodeCommit {
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::UpdateRepositoryName', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

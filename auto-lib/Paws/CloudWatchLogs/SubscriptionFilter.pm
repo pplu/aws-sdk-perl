@@ -1,4 +1,4 @@
-package Paws::CloudWatchLogs::SubscriptionFilter {
+package Paws::CloudWatchLogs::SubscriptionFilter;
   use Moose;
   has creationTime => (is => 'ro', isa => 'Int');
   has destinationArn => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::CloudWatchLogs::SubscriptionFilter {
   has filterPattern => (is => 'ro', isa => 'Str');
   has logGroupName => (is => 'ro', isa => 'Str');
   has roleArn => (is => 'ro', isa => 'Str');
-}
 1;

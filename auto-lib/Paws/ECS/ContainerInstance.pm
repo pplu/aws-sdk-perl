@@ -1,4 +1,4 @@
-package Paws::ECS::ContainerInstance {
+package Paws::ECS::ContainerInstance;
   use Moose;
   has agentConnected => (is => 'ro', isa => 'Bool');
   has agentUpdateStatus => (is => 'ro', isa => 'Str');
@@ -10,5 +10,4 @@ package Paws::ECS::ContainerInstance {
   has runningTasksCount => (is => 'ro', isa => 'Int');
   has status => (is => 'ro', isa => 'Str');
   has versionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo');
-}
 1;

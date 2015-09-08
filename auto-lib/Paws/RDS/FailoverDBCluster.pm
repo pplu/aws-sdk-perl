@@ -1,5 +1,5 @@
 
-package Paws::RDS::FailoverDBCluster {
+package Paws::RDS::FailoverDBCluster;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
 
@@ -8,7 +8,6 @@ package Paws::RDS::FailoverDBCluster {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'FailoverDBCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::FailoverDBClusterResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'FailoverDBClusterResult');
-}
 1;
 
 ### main pod documentation begin ###

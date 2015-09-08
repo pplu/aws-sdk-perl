@@ -1,9 +1,8 @@
 
-package Paws::EC2::CreateImageResult {
+package Paws::EC2::CreateImageResult;
   use Moose;
   has ImageId => (is => 'ro', isa => 'Str', xmlname => 'imageId', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

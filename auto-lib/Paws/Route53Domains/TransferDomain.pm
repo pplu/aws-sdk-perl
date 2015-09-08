@@ -1,5 +1,5 @@
 
-package Paws::Route53Domains::TransferDomain {
+package Paws::Route53Domains::TransferDomain;
   use Moose;
   has AdminContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail', required => 1);
   has AuthCode => (is => 'ro', isa => 'Str');
@@ -19,7 +19,6 @@ package Paws::Route53Domains::TransferDomain {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'TransferDomain');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::TransferDomainResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::CloudFormation::DescribeStackEventsOutput {
+package Paws::CloudFormation::DescribeStackEventsOutput;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has StackEvents => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::StackEvent]');
 
-}
 1;
 
 ### main pod documentation begin ###

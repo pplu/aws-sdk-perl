@@ -1,5 +1,5 @@
 
-package Paws::RDS::DescribeReservedDBInstancesOfferings {
+package Paws::RDS::DescribeReservedDBInstancesOfferings;
   use Moose;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Str');
@@ -16,7 +16,6 @@ package Paws::RDS::DescribeReservedDBInstancesOfferings {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstancesOfferings');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::ReservedDBInstancesOfferingMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeReservedDBInstancesOfferingsResult');
-}
 1;
 
 ### main pod documentation begin ###

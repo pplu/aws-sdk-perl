@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeCommandsResult {
+package Paws::OpsWorks::DescribeCommandsResult;
   use Moose;
   has Commands => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Command]');
 
-}
 
 ### main pod documentation begin ###
 

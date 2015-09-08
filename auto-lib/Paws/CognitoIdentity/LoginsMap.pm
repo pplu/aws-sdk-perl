@@ -1,4 +1,4 @@
-package Paws::CognitoIdentity::LoginsMap {
+package Paws::CognitoIdentity::LoginsMap;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -7,5 +7,4 @@ package Paws::CognitoIdentity::LoginsMap {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Str]');
-}
 1

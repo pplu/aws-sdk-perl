@@ -1,10 +1,9 @@
 
-package Paws::IAM::GetAccessKeyLastUsedResponse {
+package Paws::IAM::GetAccessKeyLastUsedResponse;
   use Moose;
   has AccessKeyLastUsed => (is => 'ro', isa => 'Paws::IAM::AccessKeyLastUsed');
   has UserName => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

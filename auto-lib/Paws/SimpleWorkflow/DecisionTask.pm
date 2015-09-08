@@ -1,5 +1,5 @@
 
-package Paws::SimpleWorkflow::DecisionTask {
+package Paws::SimpleWorkflow::DecisionTask;
   use Moose;
   has events => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::HistoryEvent]', required => 1);
   has nextPageToken => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::SimpleWorkflow::DecisionTask {
   has workflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', required => 1);
   has workflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

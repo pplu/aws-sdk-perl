@@ -1,5 +1,5 @@
 
-package Paws::DataPipeline::SetTaskStatus {
+package Paws::DataPipeline::SetTaskStatus;
   use Moose;
   has errorId => (is => 'ro', isa => 'Str');
   has errorMessage => (is => 'ro', isa => 'Str');
@@ -12,7 +12,6 @@ package Paws::DataPipeline::SetTaskStatus {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetTaskStatus');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::SetTaskStatusOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

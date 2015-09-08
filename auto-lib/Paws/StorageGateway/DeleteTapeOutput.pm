@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::DeleteTapeOutput {
+package Paws::StorageGateway::DeleteTapeOutput;
   use Moose;
   has TapeARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

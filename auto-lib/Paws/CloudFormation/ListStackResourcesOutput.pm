@@ -1,10 +1,9 @@
 
-package Paws::CloudFormation::ListStackResourcesOutput {
+package Paws::CloudFormation::ListStackResourcesOutput;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has StackResourceSummaries => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::StackResourceSummary]');
 
-}
 1;
 
 ### main pod documentation begin ###

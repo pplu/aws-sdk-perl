@@ -1,4 +1,4 @@
-package Paws::CloudFront::StreamingDistributionSummary {
+package Paws::CloudFront::StreamingDistributionSummary;
   use Moose;
   has Aliases => (is => 'ro', isa => 'Paws::CloudFront::Aliases', required => 1);
   has Comment => (is => 'ro', isa => 'Str', required => 1);
@@ -10,5 +10,4 @@ package Paws::CloudFront::StreamingDistributionSummary {
   has S3Origin => (is => 'ro', isa => 'Paws::CloudFront::S3Origin', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has TrustedSigners => (is => 'ro', isa => 'Paws::CloudFront::TrustedSigners', required => 1);
-}
 1;

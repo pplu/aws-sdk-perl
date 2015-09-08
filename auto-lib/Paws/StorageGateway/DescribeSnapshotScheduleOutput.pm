@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::DescribeSnapshotScheduleOutput {
+package Paws::StorageGateway::DescribeSnapshotScheduleOutput;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has RecurrenceInHours => (is => 'ro', isa => 'Int');
@@ -7,7 +7,6 @@ package Paws::StorageGateway::DescribeSnapshotScheduleOutput {
   has Timezone => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

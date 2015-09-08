@@ -1,10 +1,9 @@
 
-package Paws::DynamoDB::ListTablesOutput {
+package Paws::DynamoDB::ListTablesOutput;
   use Moose;
   has LastEvaluatedTableName => (is => 'ro', isa => 'Str');
   has TableNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,5 +1,5 @@
 
-package Paws::DynamoDBStreams::GetShardIterator {
+package Paws::DynamoDBStreams::GetShardIterator;
   use Moose;
   has SequenceNumber => (is => 'ro', isa => 'Str');
   has ShardId => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::DynamoDBStreams::GetShardIterator {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetShardIterator');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDBStreams::GetShardIteratorOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

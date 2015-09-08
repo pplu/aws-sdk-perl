@@ -1,9 +1,8 @@
 
-package Paws::AutoScaling::DetachInstancesAnswer {
+package Paws::AutoScaling::DetachInstancesAnswer;
   use Moose;
   has Activities => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Activity]');
 
-}
 1;
 
 ### main pod documentation begin ###

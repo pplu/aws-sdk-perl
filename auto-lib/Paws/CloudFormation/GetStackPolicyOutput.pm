@@ -1,9 +1,8 @@
 
-package Paws::CloudFormation::GetStackPolicyOutput {
+package Paws::CloudFormation::GetStackPolicyOutput;
   use Moose;
   has StackPolicyBody => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

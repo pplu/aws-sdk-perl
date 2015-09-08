@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::CreateLayer {
+package Paws::OpsWorks::CreateLayer;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::LayerAttributes');
   has AutoAssignElasticIps => (is => 'ro', isa => 'Bool');
@@ -24,7 +24,6 @@ package Paws::OpsWorks::CreateLayer {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLayer');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::CreateLayerResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::RedShift::ClusterParameterGroupsMessage {
+package Paws::RedShift::ClusterParameterGroupsMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has ParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterParameterGroup]', xmlname => 'ClusterParameterGroup', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

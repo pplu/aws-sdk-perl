@@ -1,9 +1,8 @@
 
-package Paws::IAM::UpdateSAMLProviderResponse {
+package Paws::IAM::UpdateSAMLProviderResponse;
   use Moose;
   has SAMLProviderArn => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

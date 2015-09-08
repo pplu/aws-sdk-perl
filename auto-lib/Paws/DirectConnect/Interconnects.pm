@@ -1,9 +1,8 @@
 
-package Paws::DirectConnect::Interconnects {
+package Paws::DirectConnect::Interconnects;
   use Moose;
   has interconnects => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Interconnect]');
 
-}
 
 ### main pod documentation begin ###
 

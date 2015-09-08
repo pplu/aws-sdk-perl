@@ -1,9 +1,8 @@
 
-package Paws::ELB::ConfigureHealthCheckOutput {
+package Paws::ELB::ConfigureHealthCheckOutput;
   use Moose;
   has HealthCheck => (is => 'ro', isa => 'Paws::ELB::HealthCheck');
 
-}
 1;
 
 ### main pod documentation begin ###

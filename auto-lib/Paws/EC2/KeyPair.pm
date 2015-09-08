@@ -1,11 +1,10 @@
 
-package Paws::EC2::KeyPair {
+package Paws::EC2::KeyPair;
   use Moose;
   has KeyFingerprint => (is => 'ro', isa => 'Str', xmlname => 'keyFingerprint', traits => ['Unwrapped',]);
   has KeyMaterial => (is => 'ro', isa => 'Str', xmlname => 'keyMaterial', traits => ['Unwrapped',]);
   has KeyName => (is => 'ro', isa => 'Str', xmlname => 'keyName', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

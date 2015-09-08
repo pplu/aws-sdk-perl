@@ -1,5 +1,5 @@
 
-package Paws::RDS::CreateDBInstance {
+package Paws::RDS::CreateDBInstance;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
@@ -40,7 +40,6 @@ package Paws::RDS::CreateDBInstance {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstance');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateDBInstanceResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceResult');
-}
 1;
 
 ### main pod documentation begin ###

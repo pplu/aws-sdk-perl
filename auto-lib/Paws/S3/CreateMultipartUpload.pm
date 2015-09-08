@@ -1,5 +1,5 @@
 
-package Paws::S3::CreateMultipartUpload {
+package Paws::S3::CreateMultipartUpload;
   use Moose;
   has ACL => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-acl' );
   has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
@@ -31,7 +31,6 @@ package Paws::S3::CreateMultipartUpload {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::CreateMultipartUploadOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

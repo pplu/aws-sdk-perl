@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::SetCognitoEvents {
+package Paws::CognitoSync::SetCognitoEvents;
   use Moose;
   has Events => (is => 'ro', isa => 'Paws::CognitoSync::Events', required => 1);
   has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId' , required => 1);
@@ -11,7 +11,6 @@ package Paws::CognitoSync::SetCognitoEvents {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

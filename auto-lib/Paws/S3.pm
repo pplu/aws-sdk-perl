@@ -1,4 +1,4 @@
-package Paws::S3 {
+package Paws::S3;
   warn "Paws::S3 is not stable / supported / entirely developed";
   use Moose;
   sub service { 's3' }
@@ -351,7 +351,6 @@ package Paws::S3 {
     my $call_object = $self->new_with_coercions('Paws::S3::UploadPartCopy', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

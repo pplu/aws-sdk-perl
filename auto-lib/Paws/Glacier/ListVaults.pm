@@ -1,5 +1,5 @@
 
-package Paws::Glacier::ListVaults {
+package Paws::Glacier::ListVaults;
   use Moose;
   has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
   has limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit' );
@@ -12,7 +12,6 @@ package Paws::Glacier::ListVaults {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ListVaultsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListVaultsResult');
-}
 1;
 
 ### main pod documentation begin ###

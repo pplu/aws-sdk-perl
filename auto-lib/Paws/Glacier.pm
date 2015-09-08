@@ -1,4 +1,4 @@
-package Paws::Glacier {
+package Paws::Glacier;
   warn "Paws::Glacier is not stable / supported / entirely developed";
   use Moose;
   sub service { 'glacier' }
@@ -163,7 +163,6 @@ package Paws::Glacier {
     my $call_object = $self->new_with_coercions('Paws::Glacier::UploadMultipartPart', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

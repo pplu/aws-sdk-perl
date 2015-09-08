@@ -1,5 +1,5 @@
 
-package Paws::SimpleWorkflow::WorkflowExecutionDetail {
+package Paws::SimpleWorkflow::WorkflowExecutionDetail;
   use Moose;
   has executionConfiguration => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionConfiguration', required => 1);
   has executionInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionInfo', required => 1);
@@ -7,7 +7,6 @@ package Paws::SimpleWorkflow::WorkflowExecutionDetail {
   has latestExecutionContext => (is => 'ro', isa => 'Str');
   has openCounts => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionOpenCounts', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

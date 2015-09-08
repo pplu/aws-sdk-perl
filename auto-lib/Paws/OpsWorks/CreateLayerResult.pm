@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::CreateLayerResult {
+package Paws::OpsWorks::CreateLayerResult;
   use Moose;
   has LayerId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

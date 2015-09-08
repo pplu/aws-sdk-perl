@@ -1,11 +1,10 @@
 
-package Paws::Kinesis::GetRecordsOutput {
+package Paws::Kinesis::GetRecordsOutput;
   use Moose;
   has MillisBehindLatest => (is => 'ro', isa => 'Int');
   has NextShardIterator => (is => 'ro', isa => 'Str');
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Record]', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

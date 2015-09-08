@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::CreateStack {
+package Paws::OpsWorks::CreateStack;
   use Moose;
   has AgentVersion => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::StackAttributes');
@@ -26,7 +26,6 @@ package Paws::OpsWorks::CreateStack {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStack');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::CreateStackResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

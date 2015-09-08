@@ -1,11 +1,10 @@
 
-package Paws::CognitoIdentity::ListIdentitiesResponse {
+package Paws::CognitoIdentity::ListIdentitiesResponse;
   use Moose;
   has Identities => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::IdentityDescription]');
   has IdentityPoolId => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

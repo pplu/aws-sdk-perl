@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::GetEvaluationOutput {
+package Paws::MachineLearning::GetEvaluationOutput;
   use Moose;
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
@@ -14,7 +14,6 @@ package Paws::MachineLearning::GetEvaluationOutput {
   has PerformanceMetrics => (is => 'ro', isa => 'Paws::MachineLearning::PerformanceMetrics');
   has Status => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

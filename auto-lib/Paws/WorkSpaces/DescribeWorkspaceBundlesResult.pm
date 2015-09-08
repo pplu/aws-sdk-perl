@@ -1,10 +1,9 @@
 
-package Paws::WorkSpaces::DescribeWorkspaceBundlesResult {
+package Paws::WorkSpaces::DescribeWorkspaceBundlesResult;
   use Moose;
   has Bundles => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::WorkspaceBundle]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

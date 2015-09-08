@@ -1,4 +1,4 @@
-package Paws::ECS::Service {
+package Paws::ECS::Service;
   use Moose;
   has clusterArn => (is => 'ro', isa => 'Str');
   has deployments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Deployment]');
@@ -12,5 +12,4 @@ package Paws::ECS::Service {
   has serviceName => (is => 'ro', isa => 'Str');
   has status => (is => 'ro', isa => 'Str');
   has taskDefinition => (is => 'ro', isa => 'Str');
-}
 1;

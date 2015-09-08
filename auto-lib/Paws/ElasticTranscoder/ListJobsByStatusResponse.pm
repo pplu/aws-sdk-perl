@@ -1,10 +1,9 @@
 
-package Paws::ElasticTranscoder::ListJobsByStatusResponse {
+package Paws::ElasticTranscoder::ListJobsByStatusResponse;
   use Moose;
   has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Job]');
   has NextPageToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

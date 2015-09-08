@@ -1,9 +1,8 @@
 
-package Paws::Route53::GetReusableDelegationSetResponse {
+package Paws::Route53::GetReusableDelegationSetResponse;
   use Moose;
   has DelegationSet => (is => 'ro', isa => 'Paws::Route53::DelegationSet', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

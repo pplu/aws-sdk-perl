@@ -1,5 +1,5 @@
 
-package Paws::IAM::CreatePolicyVersion {
+package Paws::IAM::CreatePolicyVersion;
   use Moose;
   has PolicyArn => (is => 'ro', isa => 'Str', required => 1);
   has PolicyDocument => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::IAM::CreatePolicyVersion {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePolicyVersion');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::CreatePolicyVersionResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePolicyVersionResult');
-}
 1;
 
 ### main pod documentation begin ###

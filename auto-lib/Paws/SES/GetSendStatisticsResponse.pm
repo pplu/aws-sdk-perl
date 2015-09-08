@@ -1,9 +1,8 @@
 
-package Paws::SES::GetSendStatisticsResponse {
+package Paws::SES::GetSendStatisticsResponse;
   use Moose;
   has SendDataPoints => (is => 'ro', isa => 'ArrayRef[Paws::SES::SendDataPoint]');
 
-}
 1;
 
 ### main pod documentation begin ###

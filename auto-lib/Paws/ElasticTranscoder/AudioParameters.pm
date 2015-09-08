@@ -1,4 +1,4 @@
-package Paws::ElasticTranscoder::AudioParameters {
+package Paws::ElasticTranscoder::AudioParameters;
   use Moose;
   has AudioPackingMode => (is => 'ro', isa => 'Str');
   has BitRate => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::ElasticTranscoder::AudioParameters {
   has Codec => (is => 'ro', isa => 'Str');
   has CodecOptions => (is => 'ro', isa => 'Paws::ElasticTranscoder::AudioCodecOptions');
   has SampleRate => (is => 'ro', isa => 'Str');
-}
 1;

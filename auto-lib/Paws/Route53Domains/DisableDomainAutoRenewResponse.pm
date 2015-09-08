@@ -1,8 +1,7 @@
 
-package Paws::Route53Domains::DisableDomainAutoRenewResponse {
+package Paws::Route53Domains::DisableDomainAutoRenewResponse;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

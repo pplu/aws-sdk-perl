@@ -1,4 +1,4 @@
-package Paws::ECS::Container {
+package Paws::ECS::Container;
   use Moose;
   has containerArn => (is => 'ro', isa => 'Str');
   has exitCode => (is => 'ro', isa => 'Int');
@@ -7,5 +7,4 @@ package Paws::ECS::Container {
   has networkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]');
   has reason => (is => 'ro', isa => 'Str');
   has taskArn => (is => 'ro', isa => 'Str');
-}
 1;

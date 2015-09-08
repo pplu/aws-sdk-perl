@@ -1,5 +1,5 @@
 
-package Paws::SES::DeleteIdentityPolicy {
+package Paws::SES::DeleteIdentityPolicy;
   use Moose;
   has Identity => (is => 'ro', isa => 'Str', required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::SES::DeleteIdentityPolicy {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteIdentityPolicy');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::DeleteIdentityPolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteIdentityPolicyResult');
-}
 1;
 
 ### main pod documentation begin ###

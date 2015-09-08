@@ -1,4 +1,4 @@
-package Paws::SDB {
+package Paws::SDB;
   use Moose;
   sub service { 'sdb' }
   sub version { '2009-04-15' }
@@ -75,7 +75,6 @@ package Paws::SDB {
     my $call_object = $self->new_with_coercions('Paws::SDB::Select', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

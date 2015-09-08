@@ -1,5 +1,5 @@
 
-package Paws::CloudHSM::DescribeHsmResponse {
+package Paws::CloudHSM::DescribeHsmResponse;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has EniId => (is => 'ro', isa => 'Str');
@@ -23,7 +23,6 @@ package Paws::CloudHSM::DescribeHsmResponse {
   has VendorName => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

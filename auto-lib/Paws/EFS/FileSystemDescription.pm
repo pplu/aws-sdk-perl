@@ -1,5 +1,5 @@
 
-package Paws::EFS::FileSystemDescription {
+package Paws::EFS::FileSystemDescription;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has CreationToken => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::EFS::FileSystemDescription {
   has OwnerId => (is => 'ro', isa => 'Str', required => 1);
   has SizeInBytes => (is => 'ro', isa => 'Paws::EFS::FileSystemSize', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

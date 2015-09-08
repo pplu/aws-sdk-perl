@@ -1,10 +1,9 @@
 
-package Paws::RDS::DBSubnetGroupMessage {
+package Paws::RDS::DBSubnetGroupMessage;
   use Moose;
   has DBSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSubnetGroup]', xmlname => 'DBSubnetGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 
-package Paws::S3::UploadPartOutput {
+package Paws::S3::UploadPartOutput;
   use Moose;
   has ETag => (is => 'ro', isa => 'Str');
   has RequestCharged => (is => 'ro', isa => 'Str');
@@ -8,7 +8,6 @@ package Paws::S3::UploadPartOutput {
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
   has SSEKMSKeyId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

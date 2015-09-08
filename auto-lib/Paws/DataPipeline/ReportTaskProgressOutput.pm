@@ -1,9 +1,8 @@
 
-package Paws::DataPipeline::ReportTaskProgressOutput {
+package Paws::DataPipeline::ReportTaskProgressOutput;
   use Moose;
   has canceled => (is => 'ro', isa => 'Bool', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

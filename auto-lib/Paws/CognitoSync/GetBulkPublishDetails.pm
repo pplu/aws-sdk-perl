@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::GetBulkPublishDetails {
+package Paws::CognitoSync::GetBulkPublishDetails;
   use Moose;
   has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId' , required => 1);
 
@@ -10,7 +10,6 @@ package Paws::CognitoSync::GetBulkPublishDetails {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::GetBulkPublishDetailsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetBulkPublishDetailsResult');
-}
 1;
 
 ### main pod documentation begin ###

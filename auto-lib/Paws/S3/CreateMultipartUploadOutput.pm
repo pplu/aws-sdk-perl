@@ -1,5 +1,5 @@
 
-package Paws::S3::CreateMultipartUploadOutput {
+package Paws::S3::CreateMultipartUploadOutput;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::S3::CreateMultipartUploadOutput {
   has SSEKMSKeyId => (is => 'ro', isa => 'Str');
   has UploadId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

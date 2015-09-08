@@ -1,4 +1,4 @@
-package Paws::CodeDeploy {
+package Paws::CodeDeploy;
   use Moose;
   sub service { 'codedeploy' }
   sub version { '2014-10-06' }
@@ -168,7 +168,6 @@ package Paws::CodeDeploy {
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::UpdateDeploymentGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

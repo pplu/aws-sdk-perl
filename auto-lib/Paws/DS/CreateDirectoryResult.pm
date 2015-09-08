@@ -1,9 +1,8 @@
 
-package Paws::DS::CreateDirectoryResult {
+package Paws::DS::CreateDirectoryResult;
   use Moose;
   has DirectoryId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

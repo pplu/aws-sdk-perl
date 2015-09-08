@@ -1,9 +1,8 @@
 
-package Paws::RedShift::CreateClusterSecurityGroupResult {
+package Paws::RedShift::CreateClusterSecurityGroupResult;
   use Moose;
   has ClusterSecurityGroup => (is => 'ro', isa => 'Paws::RedShift::ClusterSecurityGroup');
 
-}
 1;
 
 ### main pod documentation begin ###

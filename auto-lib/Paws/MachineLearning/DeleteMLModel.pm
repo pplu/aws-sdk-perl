@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::DeleteMLModel {
+package Paws::MachineLearning::DeleteMLModel;
   use Moose;
   has MLModelId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::MachineLearning::DeleteMLModel {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMLModel');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::DeleteMLModelOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

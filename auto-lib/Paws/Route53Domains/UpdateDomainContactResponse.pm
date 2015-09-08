@@ -1,9 +1,8 @@
 
-package Paws::Route53Domains::UpdateDomainContactResponse {
+package Paws::Route53Domains::UpdateDomainContactResponse;
   use Moose;
   has OperationId => (is => 'ro', isa => 'Str', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

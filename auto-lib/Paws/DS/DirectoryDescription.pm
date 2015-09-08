@@ -1,4 +1,4 @@
-package Paws::DS::DirectoryDescription {
+package Paws::DS::DirectoryDescription;
   use Moose;
   has AccessUrl => (is => 'ro', isa => 'Str');
   has Alias => (is => 'ro', isa => 'Str');
@@ -18,5 +18,4 @@ package Paws::DS::DirectoryDescription {
   has StageReason => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has VpcSettings => (is => 'ro', isa => 'Paws::DS::DirectoryVpcSettingsDescription');
-}
 1;

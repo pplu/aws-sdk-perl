@@ -1,4 +1,4 @@
-package Paws::EC2::Route {
+package Paws::EC2::Route;
   use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', xmlname => 'destinationCidrBlock', traits => ['Unwrapped']);
   has DestinationPrefixListId => (is => 'ro', isa => 'Str', xmlname => 'destinationPrefixListId', traits => ['Unwrapped']);
@@ -9,5 +9,4 @@ package Paws::EC2::Route {
   has Origin => (is => 'ro', isa => 'Str', xmlname => 'origin', traits => ['Unwrapped']);
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', xmlname => 'vpcPeeringConnectionId', traits => ['Unwrapped']);
-}
 1;

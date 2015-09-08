@@ -1,11 +1,10 @@
 
-package Paws::IAM::ListAccountAliasesResponse {
+package Paws::IAM::ListAccountAliasesResponse;
   use Moose;
   has AccountAliases => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

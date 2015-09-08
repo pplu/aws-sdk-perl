@@ -1,4 +1,4 @@
-package Paws::EC2::Instance {
+package Paws::EC2::Instance;
   use Moose;
   has AmiLaunchIndex => (is => 'ro', isa => 'Int', xmlname => 'amiLaunchIndex', traits => ['Unwrapped']);
   has Architecture => (is => 'ro', isa => 'Str', xmlname => 'architecture', traits => ['Unwrapped']);
@@ -37,5 +37,4 @@ package Paws::EC2::Instance {
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
   has VirtualizationType => (is => 'ro', isa => 'Str', xmlname => 'virtualizationType', traits => ['Unwrapped']);
   has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
-}
 1;

@@ -1,9 +1,8 @@
 
-package Paws::IAM::GetPolicyVersionResponse {
+package Paws::IAM::GetPolicyVersionResponse;
   use Moose;
   has PolicyVersion => (is => 'ro', isa => 'Paws::IAM::PolicyVersion');
 
-}
 1;
 
 ### main pod documentation begin ###

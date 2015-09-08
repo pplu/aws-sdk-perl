@@ -1,5 +1,5 @@
 
-package Paws::CloudSearch::DeleteAnalysisScheme {
+package Paws::CloudSearch::DeleteAnalysisScheme;
   use Moose;
   has AnalysisSchemeName => (is => 'ro', isa => 'Str', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::CloudSearch::DeleteAnalysisScheme {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAnalysisScheme');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearch::DeleteAnalysisSchemeResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAnalysisSchemeResult');
-}
 1;
 
 ### main pod documentation begin ###

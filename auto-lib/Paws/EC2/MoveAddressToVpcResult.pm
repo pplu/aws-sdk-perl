@@ -1,10 +1,9 @@
 
-package Paws::EC2::MoveAddressToVpcResult {
+package Paws::EC2::MoveAddressToVpcResult;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str', xmlname => 'allocationId', traits => ['Unwrapped',]);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

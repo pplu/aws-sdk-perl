@@ -1,8 +1,7 @@
 
-package Paws::ELB::DeleteLoadBalancerPolicyOutput {
+package Paws::ELB::DeleteLoadBalancerPolicyOutput;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::MachineLearning::RDSMetadata {
+package Paws::MachineLearning::RDSMetadata;
   use Moose;
   has DataPipelineId => (is => 'ro', isa => 'Str');
   has Database => (is => 'ro', isa => 'Paws::MachineLearning::RDSDatabase');
@@ -6,5 +6,4 @@ package Paws::MachineLearning::RDSMetadata {
   has ResourceRole => (is => 'ro', isa => 'Str');
   has SelectSqlQuery => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
-}
 1;

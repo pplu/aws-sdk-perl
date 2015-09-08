@@ -1,5 +1,5 @@
 
-package Paws::DeviceFarm::ListSuites {
+package Paws::DeviceFarm::ListSuites;
   use Moose;
   has arn => (is => 'ro', isa => 'Str', required => 1);
   has nextToken => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::DeviceFarm::ListSuites {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListSuites');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::ListSuitesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

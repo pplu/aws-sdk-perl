@@ -1,4 +1,4 @@
-package Paws::DeviceFarm::Suite {
+package Paws::DeviceFarm::Suite;
   use Moose;
   has arn => (is => 'ro', isa => 'Str');
   has counters => (is => 'ro', isa => 'Paws::DeviceFarm::Counters');
@@ -10,5 +10,4 @@ package Paws::DeviceFarm::Suite {
   has status => (is => 'ro', isa => 'Str');
   has stopped => (is => 'ro', isa => 'Str');
   has type => (is => 'ro', isa => 'Str');
-}
 1;

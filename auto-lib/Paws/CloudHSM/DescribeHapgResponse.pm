@@ -1,5 +1,5 @@
 
-package Paws::CloudHSM::DescribeHapgResponse {
+package Paws::CloudHSM::DescribeHapgResponse;
   use Moose;
   has HapgArn => (is => 'ro', isa => 'Str');
   has HapgSerial => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::CloudHSM::DescribeHapgResponse {
   has PartitionSerialList => (is => 'ro', isa => 'ArrayRef[Str]');
   has State => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

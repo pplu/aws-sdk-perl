@@ -1,5 +1,5 @@
 
-package Paws::CloudHSM::ModifyHsm {
+package Paws::CloudHSM::ModifyHsm;
   use Moose;
   has EniIp => (is => 'ro', isa => 'Str');
   has ExternalId => (is => 'ro', isa => 'Str');
@@ -13,7 +13,6 @@ package Paws::CloudHSM::ModifyHsm {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyHsm');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSM::ModifyHsmResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

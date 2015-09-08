@@ -1,4 +1,4 @@
-package Paws::CodeDeploy::DeploymentGroupInfo {
+package Paws::CodeDeploy::DeploymentGroupInfo;
   use Moose;
   has applicationName => (is => 'ro', isa => 'Str');
   has autoScalingGroups => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]');
@@ -9,5 +9,4 @@ package Paws::CodeDeploy::DeploymentGroupInfo {
   has onPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]');
   has serviceRoleArn => (is => 'ro', isa => 'Str');
   has targetRevision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation');
-}
 1;

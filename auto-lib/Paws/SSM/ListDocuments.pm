@@ -1,5 +1,5 @@
 
-package Paws::SSM::ListDocuments {
+package Paws::SSM::ListDocuments;
   use Moose;
   has DocumentFilterList => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentFilter]');
   has MaxResults => (is => 'ro', isa => 'Int');
@@ -10,7 +10,6 @@ package Paws::SSM::ListDocuments {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDocuments');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::ListDocumentsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

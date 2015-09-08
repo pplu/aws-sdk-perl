@@ -1,9 +1,8 @@
 
-package Paws::DS::CreateSnapshotResult {
+package Paws::DS::CreateSnapshotResult;
   use Moose;
   has SnapshotId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

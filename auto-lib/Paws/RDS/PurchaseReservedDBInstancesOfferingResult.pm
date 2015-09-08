@@ -1,9 +1,8 @@
 
-package Paws::RDS::PurchaseReservedDBInstancesOfferingResult {
+package Paws::RDS::PurchaseReservedDBInstancesOfferingResult;
   use Moose;
   has ReservedDBInstance => (is => 'ro', isa => 'Paws::RDS::ReservedDBInstance');
 
-}
 1;
 
 ### main pod documentation begin ###

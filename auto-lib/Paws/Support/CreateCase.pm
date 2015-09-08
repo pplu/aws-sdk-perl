@@ -1,5 +1,5 @@
 
-package Paws::Support::CreateCase {
+package Paws::Support::CreateCase;
   use Moose;
   has attachmentSetId => (is => 'ro', isa => 'Str');
   has categoryCode => (is => 'ro', isa => 'Str');
@@ -16,7 +16,6 @@ package Paws::Support::CreateCase {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCase');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::CreateCaseResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::RDS::ReservedDBInstanceMessage {
+package Paws::RDS::ReservedDBInstanceMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedDBInstances => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ReservedDBInstance]', xmlname => 'ReservedDBInstance', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

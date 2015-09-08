@@ -1,5 +1,5 @@
 
-package Paws::Route53::GetGeoLocation {
+package Paws::Route53::GetGeoLocation;
   use Moose;
   has ContinentCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'continentcode' );
   has CountryCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'countrycode' );
@@ -12,7 +12,6 @@ package Paws::Route53::GetGeoLocation {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::GetGeoLocationResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

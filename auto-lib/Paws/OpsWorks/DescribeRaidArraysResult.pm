@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeRaidArraysResult {
+package Paws::OpsWorks::DescribeRaidArraysResult;
   use Moose;
   has RaidArrays => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::RaidArray]');
 
-}
 
 ### main pod documentation begin ###
 

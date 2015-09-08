@@ -1,10 +1,9 @@
 
-package Paws::DeviceFarm::ListSuitesResult {
+package Paws::DeviceFarm::ListSuitesResult;
   use Moose;
   has nextToken => (is => 'ro', isa => 'Str');
   has suites => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Suite]');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,4 +1,4 @@
-package Paws::CloudSearch::DateOptions {
+package Paws::CloudSearch::DateOptions;
   use Moose;
   has DefaultValue => (is => 'ro', isa => 'Str');
   has FacetEnabled => (is => 'ro', isa => 'Bool');
@@ -6,5 +6,4 @@ package Paws::CloudSearch::DateOptions {
   has SearchEnabled => (is => 'ro', isa => 'Bool');
   has SortEnabled => (is => 'ro', isa => 'Bool');
   has SourceField => (is => 'ro', isa => 'Str');
-}
 1;

@@ -1,5 +1,5 @@
 
-package Paws::Route53::ListHostedZonesByNameResponse {
+package Paws::Route53::ListHostedZonesByNameResponse;
   use Moose;
   has DNSName => (is => 'ro', isa => 'Str');
   has HostedZoneId => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::Route53::ListHostedZonesByNameResponse {
   has NextDNSName => (is => 'ro', isa => 'Str');
   has NextHostedZoneId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

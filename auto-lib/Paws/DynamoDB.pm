@@ -1,4 +1,4 @@
-package Paws::DynamoDB {
+package Paws::DynamoDB;
   use Moose;
   sub service { 'dynamodb' }
   sub version { '2012-08-10' }
@@ -97,7 +97,6 @@ package Paws::DynamoDB {
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateTable', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

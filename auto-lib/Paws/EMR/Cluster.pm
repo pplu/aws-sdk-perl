@@ -1,4 +1,4 @@
-package Paws::EMR::Cluster {
+package Paws::EMR::Cluster;
   use Moose;
   has Applications => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Application]');
   has AutoTerminate => (is => 'ro', isa => 'Bool');
@@ -17,5 +17,4 @@ package Paws::EMR::Cluster {
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Tag]');
   has TerminationProtected => (is => 'ro', isa => 'Bool');
   has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
-}
 1;

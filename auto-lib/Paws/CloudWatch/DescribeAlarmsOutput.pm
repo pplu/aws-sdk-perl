@@ -1,10 +1,9 @@
 
-package Paws::CloudWatch::DescribeAlarmsOutput {
+package Paws::CloudWatch::DescribeAlarmsOutput;
   use Moose;
   has MetricAlarms => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::MetricAlarm]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

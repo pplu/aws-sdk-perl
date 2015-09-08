@@ -1,10 +1,9 @@
 
-package Paws::CloudFormation::ListStacksOutput {
+package Paws::CloudFormation::ListStacksOutput;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has StackSummaries => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::StackSummary]');
 
-}
 1;
 
 ### main pod documentation begin ###

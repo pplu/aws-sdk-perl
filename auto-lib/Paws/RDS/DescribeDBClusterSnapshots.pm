@@ -1,5 +1,5 @@
 
-package Paws::RDS::DescribeDBClusterSnapshots {
+package Paws::RDS::DescribeDBClusterSnapshots;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
@@ -13,7 +13,6 @@ package Paws::RDS::DescribeDBClusterSnapshots {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBClusterSnapshots');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBClusterSnapshotMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBClusterSnapshotsResult');
-}
 1;
 
 ### main pod documentation begin ###

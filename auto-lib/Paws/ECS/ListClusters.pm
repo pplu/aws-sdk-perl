@@ -1,5 +1,5 @@
 
-package Paws::ECS::ListClusters {
+package Paws::ECS::ListClusters;
   use Moose;
   has maxResults => (is => 'ro', isa => 'Int');
   has nextToken => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::ECS::ListClusters {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListClusters');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::ListClustersResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

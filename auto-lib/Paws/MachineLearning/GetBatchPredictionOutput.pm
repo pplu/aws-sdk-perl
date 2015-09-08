@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::GetBatchPredictionOutput {
+package Paws::MachineLearning::GetBatchPredictionOutput;
   use Moose;
   has BatchPredictionDataSourceId => (is => 'ro', isa => 'Str');
   has BatchPredictionId => (is => 'ro', isa => 'Str');
@@ -14,7 +14,6 @@ package Paws::MachineLearning::GetBatchPredictionOutput {
   has OutputUri => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

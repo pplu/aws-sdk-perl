@@ -1,11 +1,10 @@
 
-package Paws::DataPipeline::PutPipelineDefinitionOutput {
+package Paws::DataPipeline::PutPipelineDefinitionOutput;
   use Moose;
   has errored => (is => 'ro', isa => 'Bool', required => 1);
   has validationErrors => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ValidationError]');
   has validationWarnings => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ValidationWarning]');
 
-}
 
 ### main pod documentation begin ###
 

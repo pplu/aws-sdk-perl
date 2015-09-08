@@ -1,5 +1,5 @@
 
-package Paws::ELB::DetachLoadBalancerFromSubnets {
+package Paws::ELB::DetachLoadBalancerFromSubnets;
   use Moose;
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -9,7 +9,6 @@ package Paws::ELB::DetachLoadBalancerFromSubnets {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachLoadBalancerFromSubnets');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::DetachLoadBalancerFromSubnetsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DetachLoadBalancerFromSubnetsResult');
-}
 1;
 
 ### main pod documentation begin ###

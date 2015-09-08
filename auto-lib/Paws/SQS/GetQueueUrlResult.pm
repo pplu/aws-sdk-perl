@@ -1,9 +1,8 @@
 
-package Paws::SQS::GetQueueUrlResult {
+package Paws::SQS::GetQueueUrlResult;
   use Moose;
   has QueueUrl => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

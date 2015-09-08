@@ -1,4 +1,4 @@
-package Paws::STS {
+package Paws::STS;
   use Moose;
   sub service { 'sts' }
   sub version { '2011-06-15' }
@@ -83,7 +83,6 @@ package Paws::STS {
     my $call_object = $self->new_with_coercions('Paws::STS::GetSessionToken', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::DeviceFarm::PurchasedDevicesMap {
+package Paws::DeviceFarm::PurchasedDevicesMap;
   use Moose;
   with 'Paws::API::MapParser';
 
@@ -8,5 +8,4 @@ package Paws::DeviceFarm::PurchasedDevicesMap {
 
   has ANDROID => (is => 'ro', isa => 'Int');
   has IOS => (is => 'ro', isa => 'Int');
-}
 1

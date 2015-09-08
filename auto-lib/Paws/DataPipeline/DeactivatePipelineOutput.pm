@@ -1,8 +1,7 @@
 
-package Paws::DataPipeline::DeactivatePipelineOutput {
+package Paws::DataPipeline::DeactivatePipelineOutput;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

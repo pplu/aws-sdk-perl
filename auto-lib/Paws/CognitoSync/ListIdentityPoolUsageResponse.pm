@@ -1,12 +1,11 @@
 
-package Paws::CognitoSync::ListIdentityPoolUsageResponse {
+package Paws::CognitoSync::ListIdentityPoolUsageResponse;
   use Moose;
   has Count => (is => 'ro', isa => 'Int');
   has IdentityPoolUsages => (is => 'ro', isa => 'ArrayRef[Paws::CognitoSync::IdentityPoolUsage]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

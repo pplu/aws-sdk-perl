@@ -1,4 +1,4 @@
-package Paws::Support::TrustedAdvisorCheckResult {
+package Paws::Support::TrustedAdvisorCheckResult;
   use Moose;
   has categorySpecificSummary => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCategorySpecificSummary', required => 1);
   has checkId => (is => 'ro', isa => 'Str', required => 1);
@@ -6,5 +6,4 @@ package Paws::Support::TrustedAdvisorCheckResult {
   has resourcesSummary => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorResourcesSummary', required => 1);
   has status => (is => 'ro', isa => 'Str', required => 1);
   has timestamp => (is => 'ro', isa => 'Str', required => 1);
-}
 1;

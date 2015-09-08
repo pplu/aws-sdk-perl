@@ -1,4 +1,4 @@
-package Paws::RDS::EventSubscription {
+package Paws::RDS::EventSubscription;
   use Moose;
   has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has CustomerAwsId => (is => 'ro', isa => 'Str');
@@ -9,5 +9,4 @@ package Paws::RDS::EventSubscription {
   has SourceType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
-}
 1;

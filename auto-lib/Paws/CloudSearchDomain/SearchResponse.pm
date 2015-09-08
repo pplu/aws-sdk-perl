@@ -1,11 +1,10 @@
 
-package Paws::CloudSearchDomain::SearchResponse {
+package Paws::CloudSearchDomain::SearchResponse;
   use Moose;
   has facets => (is => 'ro', isa => 'Paws::CloudSearchDomain::Facets');
   has hits => (is => 'ro', isa => 'Paws::CloudSearchDomain::Hits');
   has status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SearchStatus');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::SimpleWorkflow::WorkflowTypeDetail {
+package Paws::SimpleWorkflow::WorkflowTypeDetail;
   use Moose;
   has configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeConfiguration', required => 1);
   has typeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeInfo', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

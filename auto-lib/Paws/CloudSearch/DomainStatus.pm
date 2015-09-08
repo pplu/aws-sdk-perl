@@ -1,4 +1,4 @@
-package Paws::CloudSearch::DomainStatus {
+package Paws::CloudSearch::DomainStatus;
   use Moose;
   has ARN => (is => 'ro', isa => 'Str');
   has Created => (is => 'ro', isa => 'Bool');
@@ -13,5 +13,4 @@ package Paws::CloudSearch::DomainStatus {
   has SearchInstanceType => (is => 'ro', isa => 'Str');
   has SearchPartitionCount => (is => 'ro', isa => 'Int');
   has SearchService => (is => 'ro', isa => 'Paws::CloudSearch::ServiceEndpoint');
-}
 1;

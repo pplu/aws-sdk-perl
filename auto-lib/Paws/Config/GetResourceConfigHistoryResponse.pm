@@ -1,10 +1,9 @@
 
-package Paws::Config::GetResourceConfigHistoryResponse {
+package Paws::Config::GetResourceConfigHistoryResponse;
   use Moose;
   has configurationItems => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConfigurationItem]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

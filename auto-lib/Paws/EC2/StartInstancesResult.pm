@@ -1,9 +1,8 @@
 
-package Paws::EC2::StartInstancesResult {
+package Paws::EC2::StartInstancesResult;
   use Moose;
   has StartingInstances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceStateChange]', xmlname => 'instancesSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::DirectConnect::ConfirmConnectionResponse {
+package Paws::DirectConnect::ConfirmConnectionResponse;
   use Moose;
   has connectionState => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

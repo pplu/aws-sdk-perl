@@ -1,10 +1,9 @@
 
-package Paws::StorageGateway::ListLocalDisksOutput {
+package Paws::StorageGateway::ListLocalDisksOutput;
   use Moose;
   has Disks => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Disk]');
   has GatewayARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,12 +1,11 @@
 
-package Paws::Glacier::GetVaultLockOutput {
+package Paws::Glacier::GetVaultLockOutput;
   use Moose;
   has CreationDate => (is => 'ro', isa => 'Str');
   has ExpirationDate => (is => 'ro', isa => 'Str');
   has Policy => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

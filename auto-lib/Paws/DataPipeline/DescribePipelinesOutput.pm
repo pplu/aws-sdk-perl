@@ -1,9 +1,8 @@
 
-package Paws::DataPipeline::DescribePipelinesOutput {
+package Paws::DataPipeline::DescribePipelinesOutput;
   use Moose;
   has pipelineDescriptionList => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineDescription]', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

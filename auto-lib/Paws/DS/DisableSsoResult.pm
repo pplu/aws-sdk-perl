@@ -1,8 +1,7 @@
 
-package Paws::DS::DisableSsoResult {
+package Paws::DS::DisableSsoResult;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

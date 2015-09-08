@@ -1,10 +1,9 @@
 
-package Paws::CloudWatchLogs::PutLogEventsResponse {
+package Paws::CloudWatchLogs::PutLogEventsResponse;
   use Moose;
   has nextSequenceToken => (is => 'ro', isa => 'Str');
   has rejectedLogEventsInfo => (is => 'ro', isa => 'Paws::CloudWatchLogs::RejectedLogEventsInfo');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,4 +1,4 @@
-package Paws::StorageGateway::Disk {
+package Paws::StorageGateway::Disk;
   use Moose;
   has DiskAllocationResource => (is => 'ro', isa => 'Str');
   has DiskAllocationType => (is => 'ro', isa => 'Str');
@@ -7,5 +7,4 @@ package Paws::StorageGateway::Disk {
   has DiskPath => (is => 'ro', isa => 'Str');
   has DiskSizeInBytes => (is => 'ro', isa => 'Int');
   has DiskStatus => (is => 'ro', isa => 'Str');
-}
 1;

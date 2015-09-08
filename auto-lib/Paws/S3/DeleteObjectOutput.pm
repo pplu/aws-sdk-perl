@@ -1,11 +1,10 @@
 
-package Paws::S3::DeleteObjectOutput {
+package Paws::S3::DeleteObjectOutput;
   use Moose;
   has DeleteMarker => (is => 'ro', isa => 'Bool');
   has RequestCharged => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

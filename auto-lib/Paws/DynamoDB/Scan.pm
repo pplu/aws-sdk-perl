@@ -1,5 +1,5 @@
 
-package Paws::DynamoDB::Scan {
+package Paws::DynamoDB::Scan;
   use Moose;
   has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
   has ConditionalOperator => (is => 'ro', isa => 'Str');
@@ -23,7 +23,6 @@ package Paws::DynamoDB::Scan {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'Scan');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::ScanOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

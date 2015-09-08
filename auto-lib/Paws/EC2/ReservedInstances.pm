@@ -1,4 +1,4 @@
-package Paws::EC2::ReservedInstances {
+package Paws::EC2::ReservedInstances;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
   has CurrencyCode => (is => 'ro', isa => 'Str', xmlname => 'currencyCode', traits => ['Unwrapped']);
@@ -16,5 +16,4 @@ package Paws::EC2::ReservedInstances {
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
   has UsagePrice => (is => 'ro', isa => 'Num', xmlname => 'usagePrice', traits => ['Unwrapped']);
-}
 1;

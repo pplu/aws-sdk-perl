@@ -1,5 +1,5 @@
 
-package Paws::SDB::DomainMetadataResult {
+package Paws::SDB::DomainMetadataResult;
   use Moose;
   has AttributeNameCount => (is => 'ro', isa => 'Int');
   has AttributeNamesSizeBytes => (is => 'ro', isa => 'Int');
@@ -9,7 +9,6 @@ package Paws::SDB::DomainMetadataResult {
   has ItemNamesSizeBytes => (is => 'ro', isa => 'Int');
   has Timestamp => (is => 'ro', isa => 'Int');
 
-}
 1;
 
 ### main pod documentation begin ###

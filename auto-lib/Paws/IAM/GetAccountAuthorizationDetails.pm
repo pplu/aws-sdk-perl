@@ -1,5 +1,5 @@
 
-package Paws::IAM::GetAccountAuthorizationDetails {
+package Paws::IAM::GetAccountAuthorizationDetails;
   use Moose;
   has Filter => (is => 'ro', isa => 'ArrayRef[Str]');
   has Marker => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::IAM::GetAccountAuthorizationDetails {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetAccountAuthorizationDetails');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::GetAccountAuthorizationDetailsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetAccountAuthorizationDetailsResult');
-}
 1;
 
 ### main pod documentation begin ###

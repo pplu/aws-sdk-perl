@@ -1,10 +1,9 @@
 
-package Paws::CloudSearchDomain::SuggestResponse {
+package Paws::CloudSearchDomain::SuggestResponse;
   use Moose;
   has status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SuggestStatus');
   has suggest => (is => 'ro', isa => 'Paws::CloudSearchDomain::SuggestModel');
 
-}
 1;
 
 ### main pod documentation begin ###

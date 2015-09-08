@@ -1,9 +1,8 @@
 
-package Paws::ELB::ApplySecurityGroupsToLoadBalancerOutput {
+package Paws::ELB::ApplySecurityGroupsToLoadBalancerOutput;
   use Moose;
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 1;
 
 ### main pod documentation begin ###

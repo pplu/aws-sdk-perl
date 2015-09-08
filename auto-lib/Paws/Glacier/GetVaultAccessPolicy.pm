@@ -1,5 +1,5 @@
 
-package Paws::Glacier::GetVaultAccessPolicy {
+package Paws::Glacier::GetVaultAccessPolicy;
   use Moose;
   has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
   has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
@@ -11,7 +11,6 @@ package Paws::Glacier::GetVaultAccessPolicy {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::GetVaultAccessPolicyOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetVaultAccessPolicyResult');
-}
 1;
 
 ### main pod documentation begin ###

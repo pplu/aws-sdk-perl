@@ -1,4 +1,4 @@
-package Paws::OpsWorks {
+package Paws::OpsWorks;
   use Moose;
   sub service { 'opsworks' }
   sub version { '2013-02-18' }
@@ -358,7 +358,6 @@ package Paws::OpsWorks {
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::UpdateVolume', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

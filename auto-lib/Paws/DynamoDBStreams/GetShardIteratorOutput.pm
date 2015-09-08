@@ -1,9 +1,8 @@
 
-package Paws::DynamoDBStreams::GetShardIteratorOutput {
+package Paws::DynamoDBStreams::GetShardIteratorOutput;
   use Moose;
   has ShardIterator => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

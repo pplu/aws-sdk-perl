@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::CreateAppResult {
+package Paws::OpsWorks::CreateAppResult;
   use Moose;
   has AppId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

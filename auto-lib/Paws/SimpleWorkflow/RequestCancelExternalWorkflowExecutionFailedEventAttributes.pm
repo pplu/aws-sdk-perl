@@ -1,4 +1,4 @@
-package Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventAttributes {
+package Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventAttributes;
   use Moose;
   has cause => (is => 'ro', isa => 'Str', required => 1);
   has control => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventA
   has initiatedEventId => (is => 'ro', isa => 'Int', required => 1);
   has runId => (is => 'ro', isa => 'Str');
   has workflowId => (is => 'ro', isa => 'Str', required => 1);
-}
 1;

@@ -1,10 +1,9 @@
 
-package Paws::DeviceFarm::ListUploadsResult {
+package Paws::DeviceFarm::ListUploadsResult;
   use Moose;
   has nextToken => (is => 'ro', isa => 'Str');
   has uploads => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Upload]');
 
-}
 
 ### main pod documentation begin ###
 

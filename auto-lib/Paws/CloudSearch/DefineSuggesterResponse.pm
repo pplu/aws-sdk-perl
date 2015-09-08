@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::DefineSuggesterResponse {
+package Paws::CloudSearch::DefineSuggesterResponse;
   use Moose;
   has Suggester => (is => 'ro', isa => 'Paws::CloudSearch::SuggesterStatus', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

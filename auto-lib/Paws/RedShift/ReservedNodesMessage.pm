@@ -1,10 +1,9 @@
 
-package Paws::RedShift::ReservedNodesMessage {
+package Paws::RedShift::ReservedNodesMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedNodes => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ReservedNode]', xmlname => 'ReservedNode', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,10 @@
 
-package Paws::CognitoSync::SetIdentityPoolConfigurationResponse {
+package Paws::CognitoSync::SetIdentityPoolConfigurationResponse;
   use Moose;
   has CognitoStreams => (is => 'ro', isa => 'Paws::CognitoSync::CognitoStreams');
   has IdentityPoolId => (is => 'ro', isa => 'Str');
   has PushSync => (is => 'ro', isa => 'Paws::CognitoSync::PushSync');
 
-}
 1;
 
 ### main pod documentation begin ###

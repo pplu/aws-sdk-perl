@@ -1,4 +1,4 @@
-package Paws::EC2::BundleTask {
+package Paws::EC2::BundleTask;
   use Moose;
   has BundleId => (is => 'ro', isa => 'Str', xmlname => 'bundleId', traits => ['Unwrapped']);
   has BundleTaskError => (is => 'ro', isa => 'Paws::EC2::BundleTaskError', xmlname => 'error', traits => ['Unwrapped']);
@@ -8,5 +8,4 @@ package Paws::EC2::BundleTask {
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
   has Storage => (is => 'ro', isa => 'Paws::EC2::Storage', xmlname => 'storage', traits => ['Unwrapped']);
   has UpdateTime => (is => 'ro', isa => 'Str', xmlname => 'updateTime', traits => ['Unwrapped']);
-}
 1;

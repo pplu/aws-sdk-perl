@@ -1,5 +1,5 @@
 
-package Paws::SimpleWorkflow::ListDomains {
+package Paws::SimpleWorkflow::ListDomains;
   use Moose;
   has maximumPageSize => (is => 'ro', isa => 'Int');
   has nextPageToken => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::SimpleWorkflow::ListDomains {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDomains');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::DomainInfos');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

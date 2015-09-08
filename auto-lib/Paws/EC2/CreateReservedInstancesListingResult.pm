@@ -1,9 +1,8 @@
 
-package Paws::EC2::CreateReservedInstancesListingResult {
+package Paws::EC2::CreateReservedInstancesListingResult;
   use Moose;
   has ReservedInstancesListings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesListing]', xmlname => 'reservedInstancesListingsSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

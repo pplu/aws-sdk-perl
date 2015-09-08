@@ -1,4 +1,4 @@
-package Paws::SimpleWorkflow::HistoryEvent {
+package Paws::SimpleWorkflow::HistoryEvent;
   use Moose;
   has activityTaskCancelRequestedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes');
   has activityTaskCanceledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskCanceledEventAttributes');
@@ -57,5 +57,4 @@ package Paws::SimpleWorkflow::HistoryEvent {
   has workflowExecutionStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes');
   has workflowExecutionTerminatedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes');
   has workflowExecutionTimedOutEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes');
-}
 1;

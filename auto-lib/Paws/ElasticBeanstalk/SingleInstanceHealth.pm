@@ -1,4 +1,4 @@
-package Paws::ElasticBeanstalk::SingleInstanceHealth {
+package Paws::ElasticBeanstalk::SingleInstanceHealth;
   use Moose;
   has ApplicationMetrics => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationMetrics');
   has Causes => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -7,5 +7,4 @@ package Paws::ElasticBeanstalk::SingleInstanceHealth {
   has InstanceId => (is => 'ro', isa => 'Str');
   has LaunchedAt => (is => 'ro', isa => 'Str');
   has System => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SystemStatus');
-}
 1;

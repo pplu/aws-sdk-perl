@@ -1,4 +1,4 @@
-package Paws::Route53Domains::ContactDetail {
+package Paws::Route53Domains::ContactDetail;
   use Moose;
   has AddressLine1 => (is => 'ro', isa => 'Str');
   has AddressLine2 => (is => 'ro', isa => 'Str');
@@ -14,5 +14,4 @@ package Paws::Route53Domains::ContactDetail {
   has PhoneNumber => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has ZipCode => (is => 'ro', isa => 'Str');
-}
 1;

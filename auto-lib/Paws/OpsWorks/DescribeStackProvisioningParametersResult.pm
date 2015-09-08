@@ -1,10 +1,9 @@
 
-package Paws::OpsWorks::DescribeStackProvisioningParametersResult {
+package Paws::OpsWorks::DescribeStackProvisioningParametersResult;
   use Moose;
   has AgentInstallerUrl => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::OpsWorks::Parameters');
 
-}
 
 ### main pod documentation begin ###
 

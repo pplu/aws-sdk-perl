@@ -1,5 +1,5 @@
 
-package Paws::STS::AssumeRoleWithSAMLResponse {
+package Paws::STS::AssumeRoleWithSAMLResponse;
   use Moose;
   has AssumedRoleUser => (is => 'ro', isa => 'Paws::STS::AssumedRoleUser');
   has Audience => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::STS::AssumeRoleWithSAMLResponse {
   has Subject => (is => 'ro', isa => 'Str');
   has SubjectType => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

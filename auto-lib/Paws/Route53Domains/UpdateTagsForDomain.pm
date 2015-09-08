@@ -1,5 +1,5 @@
 
-package Paws::Route53Domains::UpdateTagsForDomain {
+package Paws::Route53Domains::UpdateTagsForDomain;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has TagsToUpdate => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::Tag]');
@@ -9,7 +9,6 @@ package Paws::Route53Domains::UpdateTagsForDomain {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTagsForDomain');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::UpdateTagsForDomainResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

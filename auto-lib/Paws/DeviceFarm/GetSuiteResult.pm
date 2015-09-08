@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::GetSuiteResult {
+package Paws::DeviceFarm::GetSuiteResult;
   use Moose;
   has suite => (is => 'ro', isa => 'Paws::DeviceFarm::Suite');
 
-}
 
 ### main pod documentation begin ###
 

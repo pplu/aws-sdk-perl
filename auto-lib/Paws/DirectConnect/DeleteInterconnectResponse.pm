@@ -1,9 +1,8 @@
 
-package Paws::DirectConnect::DeleteInterconnectResponse {
+package Paws::DirectConnect::DeleteInterconnectResponse;
   use Moose;
   has interconnectState => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

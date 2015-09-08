@@ -1,9 +1,8 @@
 
-package Paws::CloudWatchLogs::TestMetricFilterResponse {
+package Paws::CloudWatchLogs::TestMetricFilterResponse;
   use Moose;
   has matches => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricFilterMatchRecord]');
 
-}
 
 ### main pod documentation begin ###
 

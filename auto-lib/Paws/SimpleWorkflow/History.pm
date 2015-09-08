@@ -1,10 +1,9 @@
 
-package Paws::SimpleWorkflow::History {
+package Paws::SimpleWorkflow::History;
   use Moose;
   has events => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::HistoryEvent]', required => 1);
   has nextPageToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

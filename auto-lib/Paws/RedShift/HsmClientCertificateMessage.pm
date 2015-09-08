@@ -1,10 +1,9 @@
 
-package Paws::RedShift::HsmClientCertificateMessage {
+package Paws::RedShift::HsmClientCertificateMessage;
   use Moose;
   has HsmClientCertificates => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::HsmClientCertificate]', xmlname => 'HsmClientCertificate', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

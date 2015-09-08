@@ -1,10 +1,9 @@
 
-package Paws::Kinesis::PutRecordsOutput {
+package Paws::Kinesis::PutRecordsOutput;
   use Moose;
   has FailedRecordCount => (is => 'ro', isa => 'Int');
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::PutRecordsResultEntry]', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

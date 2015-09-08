@@ -1,4 +1,4 @@
-package Paws::Lambda {
+package Paws::Lambda;
   warn "Paws::Lambda is not stable / supported / entirely developed";
   use Moose;
   sub service { 'lambda' }
@@ -121,7 +121,6 @@ package Paws::Lambda {
 
     return 'Paws::Lambda::ListFunctions'->_returns->new(Functions => $array);
   }
-}
 1;
 
 ### main pod documentation begin ###

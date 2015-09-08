@@ -1,9 +1,8 @@
 
-package Paws::ElastiCache::DescribeEngineDefaultParametersResult {
+package Paws::ElastiCache::DescribeEngineDefaultParametersResult;
   use Moose;
   has EngineDefaults => (is => 'ro', isa => 'Paws::ElastiCache::EngineDefaults');
 
-}
 1;
 
 ### main pod documentation begin ###

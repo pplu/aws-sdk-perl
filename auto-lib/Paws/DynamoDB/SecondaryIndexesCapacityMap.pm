@@ -1,4 +1,4 @@
-package Paws::DynamoDB::SecondaryIndexesCapacityMap {
+package Paws::DynamoDB::SecondaryIndexesCapacityMap;
   use Moose;
   with 'Paws::API::StrToObjMapParser';
 
@@ -7,5 +7,4 @@ package Paws::DynamoDB::SecondaryIndexesCapacityMap {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::Capacity]');
-}
 1

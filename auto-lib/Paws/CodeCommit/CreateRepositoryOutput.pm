@@ -1,9 +1,8 @@
 
-package Paws::CodeCommit::CreateRepositoryOutput {
+package Paws::CodeCommit::CreateRepositoryOutput;
   use Moose;
   has repositoryMetadata => (is => 'ro', isa => 'Paws::CodeCommit::RepositoryMetadata');
 
-}
 
 ### main pod documentation begin ###
 

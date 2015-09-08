@@ -1,9 +1,8 @@
 
-package Paws::CodeDeploy::CreateApplicationOutput {
+package Paws::CodeDeploy::CreateApplicationOutput;
   use Moose;
   has applicationId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

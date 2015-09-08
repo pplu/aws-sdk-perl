@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::GetJobResult {
+package Paws::DeviceFarm::GetJobResult;
   use Moose;
   has job => (is => 'ro', isa => 'Paws::DeviceFarm::Job');
 
-}
 
 ### main pod documentation begin ###
 

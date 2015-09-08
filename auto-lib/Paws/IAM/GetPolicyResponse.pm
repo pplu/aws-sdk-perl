@@ -1,9 +1,8 @@
 
-package Paws::IAM::GetPolicyResponse {
+package Paws::IAM::GetPolicyResponse;
   use Moose;
   has Policy => (is => 'ro', isa => 'Paws::IAM::Policy');
 
-}
 1;
 
 ### main pod documentation begin ###

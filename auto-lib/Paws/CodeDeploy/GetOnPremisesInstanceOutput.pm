@@ -1,9 +1,8 @@
 
-package Paws::CodeDeploy::GetOnPremisesInstanceOutput {
+package Paws::CodeDeploy::GetOnPremisesInstanceOutput;
   use Moose;
   has instanceInfo => (is => 'ro', isa => 'Paws::CodeDeploy::InstanceInfo');
 
-}
 
 ### main pod documentation begin ###
 

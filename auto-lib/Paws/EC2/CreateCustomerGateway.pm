@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateCustomerGateway {
+package Paws::EC2::CreateCustomerGateway;
   use Moose;
   has BgpAsn => (is => 'ro', isa => 'Int', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -11,7 +11,6 @@ package Paws::EC2::CreateCustomerGateway {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCustomerGateway');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateCustomerGatewayResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

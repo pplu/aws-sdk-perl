@@ -1,4 +1,4 @@
-package Paws::MachineLearning::DetailsMap {
+package Paws::MachineLearning::DetailsMap;
   use Moose;
   with 'Paws::API::MapParser';
 
@@ -8,5 +8,4 @@ package Paws::MachineLearning::DetailsMap {
 
   has Algorithm => (is => 'ro', isa => 'Str');
   has PredictiveModelType => (is => 'ro', isa => 'Str');
-}
 1

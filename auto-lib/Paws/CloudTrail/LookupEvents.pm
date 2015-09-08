@@ -1,5 +1,5 @@
 
-package Paws::CloudTrail::LookupEvents {
+package Paws::CloudTrail::LookupEvents;
   use Moose;
   has EndTime => (is => 'ro', isa => 'Str');
   has LookupAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::LookupAttribute]');
@@ -12,7 +12,6 @@ package Paws::CloudTrail::LookupEvents {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'LookupEvents');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudTrail::LookupEventsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

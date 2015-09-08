@@ -1,4 +1,4 @@
-package Paws::ElasticTranscoder::PresetWatermark {
+package Paws::ElasticTranscoder::PresetWatermark;
   use Moose;
   has HorizontalAlign => (is => 'ro', isa => 'Str');
   has HorizontalOffset => (is => 'ro', isa => 'Str');
@@ -10,5 +10,4 @@ package Paws::ElasticTranscoder::PresetWatermark {
   has Target => (is => 'ro', isa => 'Str');
   has VerticalAlign => (is => 'ro', isa => 'Str');
   has VerticalOffset => (is => 'ro', isa => 'Str');
-}
 1;

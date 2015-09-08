@@ -1,4 +1,4 @@
-package Paws::DynamoDB::GlobalSecondaryIndexDescription {
+package Paws::DynamoDB::GlobalSecondaryIndexDescription;
   use Moose;
   has Backfilling => (is => 'ro', isa => 'Bool');
   has IndexArn => (is => 'ro', isa => 'Str');
@@ -9,5 +9,4 @@ package Paws::DynamoDB::GlobalSecondaryIndexDescription {
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]');
   has Projection => (is => 'ro', isa => 'Paws::DynamoDB::Projection');
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughputDescription');
-}
 1;

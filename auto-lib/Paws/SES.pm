@@ -1,4 +1,4 @@
-package Paws::SES {
+package Paws::SES;
   use Moose;
   sub service { 'email' }
   sub version { '2010-12-01' }
@@ -117,7 +117,6 @@ package Paws::SES {
     my $call_object = $self->new_with_coercions('Paws::SES::VerifyEmailIdentity', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

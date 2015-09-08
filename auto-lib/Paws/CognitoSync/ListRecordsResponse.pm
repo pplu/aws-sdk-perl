@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::ListRecordsResponse {
+package Paws::CognitoSync::ListRecordsResponse;
   use Moose;
   has Count => (is => 'ro', isa => 'Int');
   has DatasetDeletedAfterRequestedSyncCount => (is => 'ro', isa => 'Bool');
@@ -11,7 +11,6 @@ package Paws::CognitoSync::ListRecordsResponse {
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::CognitoSync::Record]');
   has SyncSessionToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

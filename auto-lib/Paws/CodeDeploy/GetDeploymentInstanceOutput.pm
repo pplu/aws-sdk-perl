@@ -1,9 +1,8 @@
 
-package Paws::CodeDeploy::GetDeploymentInstanceOutput {
+package Paws::CodeDeploy::GetDeploymentInstanceOutput;
   use Moose;
   has instanceSummary => (is => 'ro', isa => 'Paws::CodeDeploy::InstanceSummary');
 
-}
 
 ### main pod documentation begin ###
 

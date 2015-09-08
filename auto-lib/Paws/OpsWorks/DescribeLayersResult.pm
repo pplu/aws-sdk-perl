@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeLayersResult {
+package Paws::OpsWorks::DescribeLayersResult;
   use Moose;
   has Layers => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Layer]');
 
-}
 
 ### main pod documentation begin ###
 

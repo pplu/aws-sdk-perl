@@ -1,8 +1,7 @@
 
-package Paws::DataPipeline::RemoveTagsOutput {
+package Paws::DataPipeline::RemoveTagsOutput;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

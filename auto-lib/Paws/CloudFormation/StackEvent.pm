@@ -1,4 +1,4 @@
-package Paws::CloudFormation::StackEvent {
+package Paws::CloudFormation::StackEvent;
   use Moose;
   has EventId => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str');
@@ -10,5 +10,4 @@ package Paws::CloudFormation::StackEvent {
   has StackId => (is => 'ro', isa => 'Str', required => 1);
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
-}
 1;

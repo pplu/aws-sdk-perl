@@ -1,10 +1,9 @@
 
-package Paws::AutoScaling::AutoScalingInstancesType {
+package Paws::AutoScaling::AutoScalingInstancesType;
   use Moose;
   has AutoScalingInstances => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::AutoScalingInstanceDetails]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

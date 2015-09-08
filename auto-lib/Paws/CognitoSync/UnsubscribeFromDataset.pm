@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::UnsubscribeFromDataset {
+package Paws::CognitoSync::UnsubscribeFromDataset;
   use Moose;
   has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName' , required => 1);
   has DeviceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeviceId' , required => 1);
@@ -13,7 +13,6 @@ package Paws::CognitoSync::UnsubscribeFromDataset {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::UnsubscribeFromDatasetResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UnsubscribeFromDatasetResult');
-}
 1;
 
 ### main pod documentation begin ###

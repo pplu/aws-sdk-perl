@@ -1,4 +1,4 @@
-package Paws::IAM::summaryMapType {
+package Paws::IAM::summaryMapType;
   use Moose;
   with 'Paws::API::MapParser';
 
@@ -31,5 +31,4 @@ package Paws::IAM::summaryMapType {
   has Users => (is => 'ro', isa => 'Int');
   has UsersQuota => (is => 'ro', isa => 'Int');
   has VersionsPerPolicyQuota => (is => 'ro', isa => 'Int');
-}
 1

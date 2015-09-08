@@ -1,4 +1,4 @@
-package Paws::DynamoDB::BatchWriteItemRequestMap {
+package Paws::DynamoDB::BatchWriteItemRequestMap;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -7,5 +7,4 @@ package Paws::DynamoDB::BatchWriteItemRequestMap {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Paws::DynamoDB::WriteRequest]]');
-}
 1

@@ -1,9 +1,8 @@
 
-package Paws::Glacier::CreateVaultOutput {
+package Paws::Glacier::CreateVaultOutput;
   use Moose;
   has location => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

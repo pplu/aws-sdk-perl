@@ -1,9 +1,8 @@
 
-package Paws::AutoScaling::PolicyARNType {
+package Paws::AutoScaling::PolicyARNType;
   use Moose;
   has PolicyARN => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

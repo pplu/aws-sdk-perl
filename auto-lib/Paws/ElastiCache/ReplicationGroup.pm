@@ -1,4 +1,4 @@
-package Paws::ElastiCache::ReplicationGroup {
+package Paws::ElastiCache::ReplicationGroup;
   use Moose;
   has AutomaticFailover => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -8,5 +8,4 @@ package Paws::ElastiCache::ReplicationGroup {
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
   has SnapshottingClusterId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
-}
 1;

@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::DeleteAnalysisSchemeResponse {
+package Paws::CloudSearch::DeleteAnalysisSchemeResponse;
   use Moose;
   has AnalysisScheme => (is => 'ro', isa => 'Paws::CloudSearch::AnalysisSchemeStatus', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

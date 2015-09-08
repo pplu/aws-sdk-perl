@@ -1,4 +1,4 @@
-package Paws::DynamoDBStreams::StreamRecord {
+package Paws::DynamoDBStreams::StreamRecord;
   use Moose;
   has Keys => (is => 'ro', isa => 'Paws::DynamoDBStreams::AttributeMap');
   has NewImage => (is => 'ro', isa => 'Paws::DynamoDBStreams::AttributeMap');
@@ -6,5 +6,4 @@ package Paws::DynamoDBStreams::StreamRecord {
   has SequenceNumber => (is => 'ro', isa => 'Str');
   has SizeBytes => (is => 'ro', isa => 'Int');
   has StreamViewType => (is => 'ro', isa => 'Str');
-}
 1;

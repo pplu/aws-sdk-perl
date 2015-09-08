@@ -1,10 +1,9 @@
 
-package Paws::SNS::ListSubscriptionsByTopicResponse {
+package Paws::SNS::ListSubscriptionsByTopicResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has Subscriptions => (is => 'ro', isa => 'ArrayRef[Paws::SNS::Subscription]');
 
-}
 1;
 
 ### main pod documentation begin ###

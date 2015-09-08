@@ -1,9 +1,8 @@
 
-package Paws::RedShift::EventCategoriesMessage {
+package Paws::RedShift::EventCategoriesMessage;
   use Moose;
   has EventCategoriesMapList => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::EventCategoriesMap]', xmlname => 'EventCategoriesMap', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

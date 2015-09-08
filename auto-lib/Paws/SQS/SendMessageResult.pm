@@ -1,11 +1,10 @@
 
-package Paws::SQS::SendMessageResult {
+package Paws::SQS::SendMessageResult;
   use Moose;
   has MD5OfMessageAttributes => (is => 'ro', isa => 'Str');
   has MD5OfMessageBody => (is => 'ro', isa => 'Str');
   has MessageId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

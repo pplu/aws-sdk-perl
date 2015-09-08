@@ -1,9 +1,8 @@
 
-package Paws::ECS::SubmitTaskStateChangeResponse {
+package Paws::ECS::SubmitTaskStateChangeResponse;
   use Moose;
   has acknowledgment => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

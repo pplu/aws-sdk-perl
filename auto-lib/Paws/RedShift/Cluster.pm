@@ -1,4 +1,4 @@
-package Paws::RedShift::Cluster {
+package Paws::RedShift::Cluster;
   use Moose;
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
@@ -31,5 +31,4 @@ package Paws::RedShift::Cluster {
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
   has VpcId => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::VpcSecurityGroupMembership]');
-}
 1;

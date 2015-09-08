@@ -1,4 +1,4 @@
-package Paws::EC2::SnapshotDetail {
+package Paws::EC2::SnapshotDetail;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped']);
   has DeviceName => (is => 'ro', isa => 'Str', xmlname => 'deviceName', traits => ['Unwrapped']);
@@ -10,5 +10,4 @@ package Paws::EC2::SnapshotDetail {
   has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped']);
   has Url => (is => 'ro', isa => 'Str', xmlname => 'url', traits => ['Unwrapped']);
   has UserBucket => (is => 'ro', isa => 'Paws::EC2::UserBucketDetails', xmlname => 'userBucket', traits => ['Unwrapped']);
-}
 1;

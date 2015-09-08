@@ -1,4 +1,4 @@
-package Paws::Route53::GeoLocationDetails {
+package Paws::Route53::GeoLocationDetails;
   use Moose;
   has ContinentCode => (is => 'ro', isa => 'Str');
   has ContinentName => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::Route53::GeoLocationDetails {
   has CountryName => (is => 'ro', isa => 'Str');
   has SubdivisionCode => (is => 'ro', isa => 'Str');
   has SubdivisionName => (is => 'ro', isa => 'Str');
-}
 1;

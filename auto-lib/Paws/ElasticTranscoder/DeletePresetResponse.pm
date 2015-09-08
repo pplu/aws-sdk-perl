@@ -1,8 +1,7 @@
 
-package Paws::ElasticTranscoder::DeletePresetResponse {
+package Paws::ElasticTranscoder::DeletePresetResponse;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

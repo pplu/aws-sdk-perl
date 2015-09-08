@@ -1,9 +1,8 @@
 
-package Paws::SNS::GetPlatformApplicationAttributesResponse {
+package Paws::SNS::GetPlatformApplicationAttributesResponse;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString');
 
-}
 1;
 
 ### main pod documentation begin ###

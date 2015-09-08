@@ -1,5 +1,5 @@
 
-package Paws::RDS::ApplyPendingMaintenanceAction {
+package Paws::RDS::ApplyPendingMaintenanceAction;
   use Moose;
   has ApplyAction => (is => 'ro', isa => 'Str', required => 1);
   has OptInType => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::RDS::ApplyPendingMaintenanceAction {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ApplyPendingMaintenanceAction');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::ApplyPendingMaintenanceActionResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ApplyPendingMaintenanceActionResult');
-}
 1;
 
 ### main pod documentation begin ###

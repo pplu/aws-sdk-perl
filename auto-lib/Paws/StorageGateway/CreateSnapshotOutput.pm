@@ -1,10 +1,9 @@
 
-package Paws::StorageGateway::CreateSnapshotOutput {
+package Paws::StorageGateway::CreateSnapshotOutput;
   use Moose;
   has SnapshotId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

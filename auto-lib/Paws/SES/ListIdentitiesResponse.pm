@@ -1,10 +1,9 @@
 
-package Paws::SES::ListIdentitiesResponse {
+package Paws::SES::ListIdentitiesResponse;
   use Moose;
   has Identities => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

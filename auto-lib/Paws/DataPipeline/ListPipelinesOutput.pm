@@ -1,11 +1,10 @@
 
-package Paws::DataPipeline::ListPipelinesOutput {
+package Paws::DataPipeline::ListPipelinesOutput;
   use Moose;
   has hasMoreResults => (is => 'ro', isa => 'Bool');
   has marker => (is => 'ro', isa => 'Str');
   has pipelineIdList => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineIdName]', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,4 +1,4 @@
-package Paws::EMR::JobFlowInstancesConfig {
+package Paws::EMR::JobFlowInstancesConfig;
   use Moose;
   has AdditionalMasterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has AdditionalSlaveSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -14,5 +14,4 @@ package Paws::EMR::JobFlowInstancesConfig {
   has Placement => (is => 'ro', isa => 'Paws::EMR::PlacementType');
   has SlaveInstanceType => (is => 'ro', isa => 'Str');
   has TerminationProtected => (is => 'ro', isa => 'Bool');
-}
 1;

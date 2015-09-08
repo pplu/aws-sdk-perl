@@ -1,9 +1,8 @@
 
-package Paws::RDS::TagListMessage {
+package Paws::RDS::TagListMessage;
   use Moose;
   has TagList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]', xmlname => 'Tag', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

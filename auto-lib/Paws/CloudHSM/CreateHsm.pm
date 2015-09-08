@@ -1,5 +1,5 @@
 
-package Paws::CloudHSM::CreateHsm {
+package Paws::CloudHSM::CreateHsm;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str');
   has EniIp => (is => 'ro', isa => 'Str');
@@ -15,7 +15,6 @@ package Paws::CloudHSM::CreateHsm {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHsm');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSM::CreateHsmResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

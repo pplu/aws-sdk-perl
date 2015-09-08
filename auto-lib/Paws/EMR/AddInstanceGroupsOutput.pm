@@ -1,10 +1,9 @@
 
-package Paws::EMR::AddInstanceGroupsOutput {
+package Paws::EMR::AddInstanceGroupsOutput;
   use Moose;
   has InstanceGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has JobFlowId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

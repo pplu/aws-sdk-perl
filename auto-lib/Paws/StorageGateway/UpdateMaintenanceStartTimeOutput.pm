@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::UpdateMaintenanceStartTimeOutput {
+package Paws::StorageGateway::UpdateMaintenanceStartTimeOutput;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

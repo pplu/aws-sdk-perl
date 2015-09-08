@@ -1,5 +1,5 @@
 
-package Paws::Glacier::ListTagsForVault {
+package Paws::Glacier::ListTagsForVault;
   use Moose;
   has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
   has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
@@ -11,7 +11,6 @@ package Paws::Glacier::ListTagsForVault {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ListTagsForVaultOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListTagsForVaultResult');
-}
 1;
 
 ### main pod documentation begin ###

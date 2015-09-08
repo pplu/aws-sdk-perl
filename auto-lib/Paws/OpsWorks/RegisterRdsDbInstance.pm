@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::RegisterRdsDbInstance {
+package Paws::OpsWorks::RegisterRdsDbInstance;
   use Moose;
   has DbPassword => (is => 'ro', isa => 'Str', required => 1);
   has DbUser => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::OpsWorks::RegisterRdsDbInstance {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterRdsDbInstance');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

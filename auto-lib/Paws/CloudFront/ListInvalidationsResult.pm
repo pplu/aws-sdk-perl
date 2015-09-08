@@ -1,9 +1,8 @@
 
-package Paws::CloudFront::ListInvalidationsResult {
+package Paws::CloudFront::ListInvalidationsResult;
   use Moose;
   has InvalidationList => (is => 'ro', isa => 'Paws::CloudFront::InvalidationList');
 
-}
 1;
 
 ### main pod documentation begin ###

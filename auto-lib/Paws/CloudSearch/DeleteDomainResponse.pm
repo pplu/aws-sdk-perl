@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::DeleteDomainResponse {
+package Paws::CloudSearch::DeleteDomainResponse;
   use Moose;
   has DomainStatus => (is => 'ro', isa => 'Paws::CloudSearch::DomainStatus');
 
-}
 1;
 
 ### main pod documentation begin ###

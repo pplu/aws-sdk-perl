@@ -1,10 +1,9 @@
 
-package Paws::Kinesis::ListTagsForStreamOutput {
+package Paws::Kinesis::ListTagsForStreamOutput;
   use Moose;
   has HasMoreTags => (is => 'ro', isa => 'Bool', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Tag]', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

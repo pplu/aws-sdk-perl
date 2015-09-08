@@ -1,9 +1,8 @@
 
-package Paws::RDS::DBClusterParameterGroupNameMessage {
+package Paws::RDS::DBClusterParameterGroupNameMessage;
   use Moose;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

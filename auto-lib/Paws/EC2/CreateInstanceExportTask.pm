@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateInstanceExportTask {
+package Paws::EC2::CreateInstanceExportTask;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has ExportToS3Task => (is => 'ro', isa => 'Paws::EC2::ExportToS3TaskSpecification', traits => ['NameInRequest'], request_name => 'exportToS3' );
@@ -11,7 +11,6 @@ package Paws::EC2::CreateInstanceExportTask {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInstanceExportTask');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateInstanceExportTaskResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

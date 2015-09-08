@@ -1,5 +1,5 @@
 
-package Paws::IAM::DeletePolicy {
+package Paws::IAM::DeletePolicy;
   use Moose;
   has PolicyArn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::IAM::DeletePolicy {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeletePolicy');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

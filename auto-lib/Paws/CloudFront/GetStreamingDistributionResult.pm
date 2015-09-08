@@ -1,10 +1,9 @@
 
-package Paws::CloudFront::GetStreamingDistributionResult {
+package Paws::CloudFront::GetStreamingDistributionResult;
   use Moose;
   has ETag => (is => 'ro', isa => 'Str');
   has StreamingDistribution => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistribution');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::ListDatasets {
+package Paws::CognitoSync::ListDatasets;
   use Moose;
   has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId' , required => 1);
   has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId' , required => 1);
@@ -13,7 +13,6 @@ package Paws::CognitoSync::ListDatasets {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::ListDatasetsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListDatasetsResult');
-}
 1;
 
 ### main pod documentation begin ###

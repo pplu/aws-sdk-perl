@@ -1,9 +1,8 @@
 
-package Paws::CodePipeline::PollForJobsOutput {
+package Paws::CodePipeline::PollForJobsOutput;
   use Moose;
   has jobs => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Job]');
 
-}
 
 ### main pod documentation begin ###
 

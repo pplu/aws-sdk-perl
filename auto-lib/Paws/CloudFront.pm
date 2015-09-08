@@ -1,4 +1,4 @@
-package Paws::CloudFront {
+package Paws::CloudFront;
   warn "Paws::CloudFront is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cloudfront' }
@@ -136,7 +136,6 @@ package Paws::CloudFront {
     my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateStreamingDistribution2015_04_17', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

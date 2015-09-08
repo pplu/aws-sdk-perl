@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::CreateDomainResponse {
+package Paws::CloudSearch::CreateDomainResponse;
   use Moose;
   has DomainStatus => (is => 'ro', isa => 'Paws::CloudSearch::DomainStatus');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::RDS::AccountAttributesMessage {
+package Paws::RDS::AccountAttributesMessage;
   use Moose;
   has AccountQuotas => (is => 'ro', isa => 'ArrayRef[Paws::RDS::AccountQuota]', xmlname => 'AccountQuota', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

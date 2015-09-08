@@ -1,10 +1,9 @@
 
-package Paws::RDS::CertificateMessage {
+package Paws::RDS::CertificateMessage;
   use Moose;
   has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Certificate]', xmlname => 'Certificate', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::ECS {
+package Paws::ECS;
   use Moose;
   sub service { 'ecs' }
   sub version { '2014-11-13' }
@@ -143,7 +143,6 @@ package Paws::ECS {
     my $call_object = $self->new_with_coercions('Paws::ECS::UpdateService', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

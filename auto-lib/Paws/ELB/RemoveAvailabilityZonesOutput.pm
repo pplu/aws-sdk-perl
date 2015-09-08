@@ -1,9 +1,8 @@
 
-package Paws::ELB::RemoveAvailabilityZonesOutput {
+package Paws::ELB::RemoveAvailabilityZonesOutput;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 1;
 
 ### main pod documentation begin ###

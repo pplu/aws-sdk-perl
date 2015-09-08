@@ -1,9 +1,8 @@
 
-package Paws::ElasticTranscoder::CreateJobResponse {
+package Paws::ElasticTranscoder::CreateJobResponse;
   use Moose;
   has Job => (is => 'ro', isa => 'Paws::ElasticTranscoder::Job');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::RDS::DBClusterMessage {
+package Paws::RDS::DBClusterMessage;
   use Moose;
   has DBClusters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBCluster]', xmlname => 'DBCluster', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

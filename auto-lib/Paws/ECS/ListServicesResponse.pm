@@ -1,10 +1,9 @@
 
-package Paws::ECS::ListServicesResponse {
+package Paws::ECS::ListServicesResponse;
   use Moose;
   has nextToken => (is => 'ro', isa => 'Str');
   has serviceArns => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 
 ### main pod documentation begin ###
 

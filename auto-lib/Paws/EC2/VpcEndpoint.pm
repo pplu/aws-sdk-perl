@@ -1,4 +1,4 @@
-package Paws::EC2::VpcEndpoint {
+package Paws::EC2::VpcEndpoint;
   use Moose;
   has CreationTimestamp => (is => 'ro', isa => 'Str', xmlname => 'creationTimestamp', traits => ['Unwrapped']);
   has PolicyDocument => (is => 'ro', isa => 'Str', xmlname => 'policyDocument', traits => ['Unwrapped']);
@@ -7,5 +7,4 @@ package Paws::EC2::VpcEndpoint {
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
   has VpcEndpointId => (is => 'ro', isa => 'Str', xmlname => 'vpcEndpointId', traits => ['Unwrapped']);
   has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
-}
 1;

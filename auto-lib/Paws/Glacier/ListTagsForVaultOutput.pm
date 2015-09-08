@@ -1,9 +1,8 @@
 
-package Paws::Glacier::ListTagsForVaultOutput {
+package Paws::Glacier::ListTagsForVaultOutput;
   use Moose;
   has Tags => (is => 'ro', isa => 'Paws::Glacier::TagMap');
 
-}
 1;
 
 ### main pod documentation begin ###

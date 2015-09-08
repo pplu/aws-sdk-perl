@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::CloneStackResult {
+package Paws::OpsWorks::CloneStackResult;
   use Moose;
   has StackId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

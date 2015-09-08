@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::RegisterInstance {
+package Paws::OpsWorks::RegisterInstance;
   use Moose;
   has Hostname => (is => 'ro', isa => 'Str');
   has InstanceIdentity => (is => 'ro', isa => 'Paws::OpsWorks::InstanceIdentity');
@@ -14,7 +14,6 @@ package Paws::OpsWorks::RegisterInstance {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterInstance');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::RegisterInstanceResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

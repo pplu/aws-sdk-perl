@@ -654,7 +654,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
         my $values_shape = $self->shape($iclass->{value}->{shape});
 
         if ($keys_shape->{enum}){
-          $output .= "package $inner_class {\n";
+          $output .= "package $inner_class;\n";
           $output .= "  use Moose;\n";
           $output .= "  with 'Paws::API::MapParser';\n";
 
@@ -672,9 +672,9 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
             $output .= "  has $param_name => (is => 'ro', isa => '$type'";
             $output .= ");\n";
           }
-          $output .= "}\n1\n";
+          $output .= "1\n";
         } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'string') {
-          $output .= "package $inner_class {\n"; 
+          $output .= "package $inner_class;\n"; 
           $output .= "  use Moose;\n";
           $output .= "  with 'Paws::API::StrToNativeMapParser';\n";
 
@@ -687,9 +687,9 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
           $output .= "\n";
 
           $output .= "  has Map => (is => 'ro', isa => 'HashRef[Str]');\n";
-          $output .= "}\n1\n";
+          $output .= "1\n";
         } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'float') {
-          $output .= "package $inner_class {\n";
+          $output .= "package $inner_class;\n";
           $output .= "  use Moose;\n";
           $output .= "  with 'Paws::API::StrToNativeMapParser';\n";
 
@@ -702,10 +702,10 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
           $output .= "\n";
 
           $output .= "  has Map => (is => 'ro', isa => 'HashRef[Num]');\n";
-          $output .= "}\n1\n";
+          $output .= "1\n";
         } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'structure') {
           my $type = $self->get_caller_class_type($iclass->{value}->{shape});
-          $output .= "package $inner_class {\n";
+          $output .= "package $inner_class;\n";
           $output .= "  use Moose;\n";
           $output .= "  with 'Paws::API::StrToObjMapParser';\n";
 
@@ -718,10 +718,10 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
           $output .= "\n";
 
           $output .= "  has Map => (is => 'ro', isa => 'HashRef[$type]');\n";
-          $output .= "}\n1\n";
+          $output .= "1\n";
         } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'list') {
           my $type = $self->get_caller_class_type($iclass->{value}->{shape});
-          $output .= "package $inner_class {\n";
+          $output .= "package $inner_class;\n";
           $output .= "  use Moose;\n";
           $output .= "  with 'Paws::API::StrToNativeMapParser';\n";
 
@@ -734,12 +734,12 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
           $output .= "\n";
 
           $output .= "  has Map => (is => 'ro', isa => 'HashRef[$type]');\n";
-          $output .= "}\n1\n";
+          $output .= "1\n";
         } else {
           die "Unrecognized Map type in query API " . Dumper($iclass) . ' keys_shape ' . Dumper($keys_shape) . ' values_shape' . Dumper($values_shape);
         }
       } elsif ($iclass->{type} eq 'structure'){
-        $output .= "package $inner_class {\n";
+        $output .= "package $inner_class;\n";
         $output .= "  use Moose;\n";
         my $members = $iclass->{members};
         foreach my $param_name (sort keys %$members){
@@ -776,7 +776,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
           $output .= ", required => 1" if ($self->required_in_shape($iclass,$param_name));
           $output .= ");\n";
         }
-        $output .= "}\n1;\n";
+        $output .= "1;\n";
         return $output;
       }
   }

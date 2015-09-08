@@ -1,10 +1,9 @@
 
-package Paws::CodePipeline::ListActionTypesOutput {
+package Paws::CodePipeline::ListActionTypesOutput;
   use Moose;
   has actionTypes => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionType]', required => 1);
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

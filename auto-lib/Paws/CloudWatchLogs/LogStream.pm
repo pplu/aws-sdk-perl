@@ -1,4 +1,4 @@
-package Paws::CloudWatchLogs::LogStream {
+package Paws::CloudWatchLogs::LogStream;
   use Moose;
   has arn => (is => 'ro', isa => 'Str');
   has creationTime => (is => 'ro', isa => 'Int');
@@ -8,5 +8,4 @@ package Paws::CloudWatchLogs::LogStream {
   has logStreamName => (is => 'ro', isa => 'Str');
   has storedBytes => (is => 'ro', isa => 'Int');
   has uploadSequenceToken => (is => 'ro', isa => 'Str');
-}
 1;

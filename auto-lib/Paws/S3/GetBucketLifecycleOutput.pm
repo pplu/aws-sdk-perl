@@ -1,9 +1,8 @@
 
-package Paws::S3::GetBucketLifecycleOutput {
+package Paws::S3::GetBucketLifecycleOutput;
   use Moose;
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::S3::Rule]');
 
-}
 1;
 
 ### main pod documentation begin ###

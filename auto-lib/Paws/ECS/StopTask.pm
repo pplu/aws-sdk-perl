@@ -1,5 +1,5 @@
 
-package Paws::ECS::StopTask {
+package Paws::ECS::StopTask;
   use Moose;
   has cluster => (is => 'ro', isa => 'Str');
   has task => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::ECS::StopTask {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopTask');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::StopTaskResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

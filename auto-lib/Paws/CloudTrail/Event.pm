@@ -1,4 +1,4 @@
-package Paws::CloudTrail::Event {
+package Paws::CloudTrail::Event;
   use Moose;
   has CloudTrailEvent => (is => 'ro', isa => 'Str');
   has EventId => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::CloudTrail::Event {
   has EventTime => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Resource]');
   has Username => (is => 'ro', isa => 'Str');
-}
 1;

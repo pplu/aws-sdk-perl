@@ -1,4 +1,4 @@
-package Paws::CloudSearch::IndexField {
+package Paws::CloudSearch::IndexField;
   use Moose;
   has DateArrayOptions => (is => 'ro', isa => 'Paws::CloudSearch::DateArrayOptions');
   has DateOptions => (is => 'ro', isa => 'Paws::CloudSearch::DateOptions');
@@ -13,5 +13,4 @@ package Paws::CloudSearch::IndexField {
   has LiteralOptions => (is => 'ro', isa => 'Paws::CloudSearch::LiteralOptions');
   has TextArrayOptions => (is => 'ro', isa => 'Paws::CloudSearch::TextArrayOptions');
   has TextOptions => (is => 'ro', isa => 'Paws::CloudSearch::TextOptions');
-}
 1;

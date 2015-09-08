@@ -1,5 +1,5 @@
 
-package Paws::EC2::DescribeSpotFleetRequests {
+package Paws::EC2::DescribeSpotFleetRequests;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
@@ -11,7 +11,6 @@ package Paws::EC2::DescribeSpotFleetRequests {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSpotFleetRequests');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeSpotFleetRequestsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

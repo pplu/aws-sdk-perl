@@ -1,10 +1,9 @@
 
-package Paws::RDS::OrderableDBInstanceOptionsMessage {
+package Paws::RDS::OrderableDBInstanceOptionsMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has OrderableDBInstanceOptions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OrderableDBInstanceOption]', xmlname => 'OrderableDBInstanceOption', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

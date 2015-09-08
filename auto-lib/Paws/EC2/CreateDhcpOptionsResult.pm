@@ -1,9 +1,8 @@
 
-package Paws::EC2::CreateDhcpOptionsResult {
+package Paws::EC2::CreateDhcpOptionsResult;
   use Moose;
   has DhcpOptions => (is => 'ro', isa => 'Paws::EC2::DhcpOptions', xmlname => 'dhcpOptions', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

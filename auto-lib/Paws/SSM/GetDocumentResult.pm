@@ -1,10 +1,9 @@
 
-package Paws::SSM::GetDocumentResult {
+package Paws::SSM::GetDocumentResult;
   use Moose;
   has Content => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

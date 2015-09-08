@@ -1,9 +1,8 @@
 
-package Paws::RDS::CreateDBClusterParameterGroupResult {
+package Paws::RDS::CreateDBClusterParameterGroupResult;
   use Moose;
   has DBClusterParameterGroup => (is => 'ro', isa => 'Paws::RDS::DBClusterParameterGroup');
 
-}
 1;
 
 ### main pod documentation begin ###

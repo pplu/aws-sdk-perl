@@ -1,12 +1,11 @@
 
-package Paws::StorageGateway::DescribeWorkingStorageOutput {
+package Paws::StorageGateway::DescribeWorkingStorageOutput;
   use Moose;
   has DiskIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has GatewayARN => (is => 'ro', isa => 'Str');
   has WorkingStorageAllocatedInBytes => (is => 'ro', isa => 'Int');
   has WorkingStorageUsedInBytes => (is => 'ro', isa => 'Int');
 
-}
 
 ### main pod documentation begin ###
 

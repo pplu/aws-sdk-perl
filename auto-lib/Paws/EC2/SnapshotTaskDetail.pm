@@ -1,4 +1,4 @@
-package Paws::EC2::SnapshotTaskDetail {
+package Paws::EC2::SnapshotTaskDetail;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped']);
   has DiskImageSize => (is => 'ro', isa => 'Num', xmlname => 'diskImageSize', traits => ['Unwrapped']);
@@ -9,5 +9,4 @@ package Paws::EC2::SnapshotTaskDetail {
   has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped']);
   has Url => (is => 'ro', isa => 'Str', xmlname => 'url', traits => ['Unwrapped']);
   has UserBucket => (is => 'ro', isa => 'Paws::EC2::UserBucketDetails', xmlname => 'userBucket', traits => ['Unwrapped']);
-}
 1;

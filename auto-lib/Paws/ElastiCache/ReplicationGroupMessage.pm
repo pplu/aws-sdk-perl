@@ -1,10 +1,9 @@
 
-package Paws::ElastiCache::ReplicationGroupMessage {
+package Paws::ElastiCache::ReplicationGroupMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has ReplicationGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ReplicationGroup]', xmlname => 'ReplicationGroup', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::DynamoDBStreams::StreamDescription {
+package Paws::DynamoDBStreams::StreamDescription;
   use Moose;
   has CreationRequestDateTime => (is => 'ro', isa => 'Str');
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDBStreams::KeySchemaElement]');
@@ -9,5 +9,4 @@ package Paws::DynamoDBStreams::StreamDescription {
   has StreamStatus => (is => 'ro', isa => 'Str');
   has StreamViewType => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str');
-}
 1;

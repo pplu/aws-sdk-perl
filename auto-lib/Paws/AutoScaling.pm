@@ -1,4 +1,4 @@
-package Paws::AutoScaling {
+package Paws::AutoScaling;
   use Moose;
   sub service { 'autoscaling' }
   sub version { '2011-01-01' }
@@ -247,7 +247,6 @@ package Paws::AutoScaling {
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::UpdateAutoScalingGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

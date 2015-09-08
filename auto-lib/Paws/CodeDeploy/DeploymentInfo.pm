@@ -1,4 +1,4 @@
-package Paws::CodeDeploy::DeploymentInfo {
+package Paws::CodeDeploy::DeploymentInfo;
   use Moose;
   has applicationName => (is => 'ro', isa => 'Str');
   has completeTime => (is => 'ro', isa => 'Str');
@@ -14,5 +14,4 @@ package Paws::CodeDeploy::DeploymentInfo {
   has revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation');
   has startTime => (is => 'ro', isa => 'Str');
   has status => (is => 'ro', isa => 'Str');
-}
 1;

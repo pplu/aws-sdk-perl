@@ -1,9 +1,8 @@
 
-package Paws::ELB::DescribeTagsOutput {
+package Paws::ELB::DescribeTagsOutput;
   use Moose;
   has TagDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::ELB::TagDescription]');
 
-}
 1;
 
 ### main pod documentation begin ###

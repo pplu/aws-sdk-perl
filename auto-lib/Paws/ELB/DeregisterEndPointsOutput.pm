@@ -1,9 +1,8 @@
 
-package Paws::ELB::DeregisterEndPointsOutput {
+package Paws::ELB::DeregisterEndPointsOutput;
   use Moose;
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::ELB::Instance]');
 
-}
 1;
 
 ### main pod documentation begin ###

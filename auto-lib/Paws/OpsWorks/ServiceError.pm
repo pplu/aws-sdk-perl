@@ -1,4 +1,4 @@
-package Paws::OpsWorks::ServiceError {
+package Paws::OpsWorks::ServiceError;
   use Moose;
   has CreatedAt => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
@@ -6,5 +6,4 @@ package Paws::OpsWorks::ServiceError {
   has ServiceErrorId => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
-}
 1;

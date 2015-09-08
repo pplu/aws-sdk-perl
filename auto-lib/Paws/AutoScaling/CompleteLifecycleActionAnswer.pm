@@ -1,8 +1,7 @@
 
-package Paws::AutoScaling::CompleteLifecycleActionAnswer {
+package Paws::AutoScaling::CompleteLifecycleActionAnswer;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

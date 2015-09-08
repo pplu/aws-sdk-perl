@@ -1,12 +1,11 @@
 
-package Paws::CognitoIdentity::IdentityDescription {
+package Paws::CognitoIdentity::IdentityDescription;
   use Moose;
   has CreationDate => (is => 'ro', isa => 'Str');
   has IdentityId => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has Logins => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 
 ### main pod documentation begin ###
 

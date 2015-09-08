@@ -1,5 +1,5 @@
 
-package Paws::ElasticTranscoder::UpdatePipeline {
+package Paws::ElasticTranscoder::UpdatePipeline;
   use Moose;
   has AwsKmsKeyArn => (is => 'ro', isa => 'Str');
   has ContentConfig => (is => 'ro', isa => 'Paws::ElasticTranscoder::PipelineOutputConfig');
@@ -17,7 +17,6 @@ package Paws::ElasticTranscoder::UpdatePipeline {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::UpdatePipelineResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdatePipelineResult');
-}
 1;
 
 ### main pod documentation begin ###

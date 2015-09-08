@@ -1,4 +1,4 @@
-package Paws::SimpleWorkflow {
+package Paws::SimpleWorkflow;
   use Moose;
   sub service { 'swf' }
   sub version { '2012-01-25' }
@@ -163,7 +163,6 @@ package Paws::SimpleWorkflow {
     my $call_object = $self->new_with_coercions('Paws::SimpleWorkflow::TerminateWorkflowExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

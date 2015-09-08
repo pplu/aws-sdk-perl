@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::DeleteIndexFieldResponse {
+package Paws::CloudSearch::DeleteIndexFieldResponse;
   use Moose;
   has IndexField => (is => 'ro', isa => 'Paws::CloudSearch::IndexFieldStatus', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

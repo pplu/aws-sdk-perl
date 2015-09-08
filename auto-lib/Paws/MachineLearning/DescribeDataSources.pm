@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::DescribeDataSources {
+package Paws::MachineLearning::DescribeDataSources;
   use Moose;
   has EQ => (is => 'ro', isa => 'Str');
   has FilterVariable => (is => 'ro', isa => 'Str');
@@ -18,7 +18,6 @@ package Paws::MachineLearning::DescribeDataSources {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDataSources');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::DescribeDataSourcesOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

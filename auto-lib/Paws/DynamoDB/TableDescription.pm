@@ -1,4 +1,4 @@
-package Paws::DynamoDB::TableDescription {
+package Paws::DynamoDB::TableDescription;
   use Moose;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]');
   has CreationDateTime => (is => 'ro', isa => 'Str');
@@ -14,5 +14,4 @@ package Paws::DynamoDB::TableDescription {
   has TableName => (is => 'ro', isa => 'Str');
   has TableSizeBytes => (is => 'ro', isa => 'Int');
   has TableStatus => (is => 'ro', isa => 'Str');
-}
 1;

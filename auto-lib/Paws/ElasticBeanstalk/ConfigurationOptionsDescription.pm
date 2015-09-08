@@ -1,10 +1,9 @@
 
-package Paws::ElasticBeanstalk::ConfigurationOptionsDescription {
+package Paws::ElasticBeanstalk::ConfigurationOptionsDescription;
   use Moose;
   has Options => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionDescription]');
   has SolutionStackName => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

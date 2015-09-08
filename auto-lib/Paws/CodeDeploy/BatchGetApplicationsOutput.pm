@@ -1,9 +1,8 @@
 
-package Paws::CodeDeploy::BatchGetApplicationsOutput {
+package Paws::CodeDeploy::BatchGetApplicationsOutput;
   use Moose;
   has applicationsInfo => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ApplicationInfo]');
 
-}
 
 ### main pod documentation begin ###
 

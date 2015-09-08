@@ -1,5 +1,5 @@
 
-package Paws::S3::DeleteObjects {
+package Paws::S3::DeleteObjects;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
   has Delete => (is => 'ro', isa => 'Paws::S3::Delete', required => 1);
@@ -13,7 +13,6 @@ package Paws::S3::DeleteObjects {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::DeleteObjectsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

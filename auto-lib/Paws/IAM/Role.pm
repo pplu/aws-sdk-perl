@@ -1,4 +1,4 @@
-package Paws::IAM::Role {
+package Paws::IAM::Role;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has AssumeRolePolicyDocument => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute']);
@@ -6,5 +6,4 @@ package Paws::IAM::Role {
   has Path => (is => 'ro', isa => 'Str', required => 1);
   has RoleId => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
-}
 1;

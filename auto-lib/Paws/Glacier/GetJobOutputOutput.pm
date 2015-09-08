@@ -1,5 +1,5 @@
 
-package Paws::Glacier::GetJobOutputOutput {
+package Paws::Glacier::GetJobOutputOutput;
   use Moose;
   has acceptRanges => (is => 'ro', isa => 'Str');
   has archiveDescription => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::Glacier::GetJobOutputOutput {
   has contentType => (is => 'ro', isa => 'Str');
   has status => (is => 'ro', isa => 'Int');
 
-}
 1;
 
 ### main pod documentation begin ###

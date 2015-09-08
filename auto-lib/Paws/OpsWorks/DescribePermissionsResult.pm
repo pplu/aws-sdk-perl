@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribePermissionsResult {
+package Paws::OpsWorks::DescribePermissionsResult;
   use Moose;
   has Permissions => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Permission]');
 
-}
 
 ### main pod documentation begin ###
 

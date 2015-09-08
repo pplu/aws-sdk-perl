@@ -1,5 +1,5 @@
 
-package Paws::EC2::ReleaseAddress {
+package Paws::EC2::ReleaseAddress;
   use Moose;
   has AllocationId => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -10,7 +10,6 @@ package Paws::EC2::ReleaseAddress {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReleaseAddress');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

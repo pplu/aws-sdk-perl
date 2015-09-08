@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeStackSummaryResult {
+package Paws::OpsWorks::DescribeStackSummaryResult;
   use Moose;
   has StackSummary => (is => 'ro', isa => 'Paws::OpsWorks::StackSummary');
 
-}
 
 ### main pod documentation begin ###
 

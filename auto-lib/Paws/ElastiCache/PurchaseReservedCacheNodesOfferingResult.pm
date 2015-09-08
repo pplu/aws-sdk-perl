@@ -1,9 +1,8 @@
 
-package Paws::ElastiCache::PurchaseReservedCacheNodesOfferingResult {
+package Paws::ElastiCache::PurchaseReservedCacheNodesOfferingResult;
   use Moose;
   has ReservedCacheNode => (is => 'ro', isa => 'Paws::ElastiCache::ReservedCacheNode');
 
-}
 1;
 
 ### main pod documentation begin ###

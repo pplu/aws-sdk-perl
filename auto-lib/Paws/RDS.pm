@@ -1,4 +1,4 @@
-package Paws::RDS {
+package Paws::RDS;
   use Moose;
   sub service { 'rds' }
   sub version { '2014-10-31' }
@@ -405,7 +405,6 @@ package Paws::RDS {
     my $call_object = $self->new_with_coercions('Paws::RDS::RevokeDBSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

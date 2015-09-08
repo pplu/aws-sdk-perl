@@ -1,4 +1,4 @@
-package Paws::RedShift::Snapshot {
+package Paws::RedShift::Snapshot;
   use Moose;
   has AccountsWithRestoreAccess => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::AccountWithRestoreAccess]');
   has ActualIncrementalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
@@ -28,5 +28,4 @@ package Paws::RedShift::Snapshot {
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
   has TotalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
   has VpcId => (is => 'ro', isa => 'Str');
-}
 1;

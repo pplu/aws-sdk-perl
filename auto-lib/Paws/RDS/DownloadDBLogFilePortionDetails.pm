@@ -1,11 +1,10 @@
 
-package Paws::RDS::DownloadDBLogFilePortionDetails {
+package Paws::RDS::DownloadDBLogFilePortionDetails;
   use Moose;
   has AdditionalDataPending => (is => 'ro', isa => 'Bool');
   has LogFileData => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

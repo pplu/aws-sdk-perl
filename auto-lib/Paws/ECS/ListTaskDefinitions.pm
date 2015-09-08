@@ -1,5 +1,5 @@
 
-package Paws::ECS::ListTaskDefinitions {
+package Paws::ECS::ListTaskDefinitions;
   use Moose;
   has familyPrefix => (is => 'ro', isa => 'Str');
   has maxResults => (is => 'ro', isa => 'Int');
@@ -12,7 +12,6 @@ package Paws::ECS::ListTaskDefinitions {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTaskDefinitions');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::ListTaskDefinitionsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

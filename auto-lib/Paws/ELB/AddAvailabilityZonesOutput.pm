@@ -1,9 +1,8 @@
 
-package Paws::ELB::AddAvailabilityZonesOutput {
+package Paws::ELB::AddAvailabilityZonesOutput;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::S3::Rule {
+package Paws::S3::Rule;
   use Moose;
   has Expiration => (is => 'ro', isa => 'Paws::S3::LifecycleExpiration');
   has ID => (is => 'ro', isa => 'Str');
@@ -7,5 +7,4 @@ package Paws::S3::Rule {
   has Prefix => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has Transition => (is => 'ro', isa => 'Paws::S3::Transition');
-}
 1;

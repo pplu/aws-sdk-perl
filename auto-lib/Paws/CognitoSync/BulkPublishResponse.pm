@@ -1,9 +1,8 @@
 
-package Paws::CognitoSync::BulkPublishResponse {
+package Paws::CognitoSync::BulkPublishResponse;
   use Moose;
   has IdentityPoolId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

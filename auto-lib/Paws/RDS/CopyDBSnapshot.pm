@@ -1,5 +1,5 @@
 
-package Paws::RDS::CopyDBSnapshot {
+package Paws::RDS::CopyDBSnapshot;
   use Moose;
   has CopyTags => (is => 'ro', isa => 'Bool');
   has SourceDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::RDS::CopyDBSnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyDBSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CopyDBSnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopyDBSnapshotResult');
-}
 1;
 
 ### main pod documentation begin ###

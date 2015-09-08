@@ -1,4 +1,4 @@
-package Paws::ElasticTranscoder::Thumbnails {
+package Paws::ElasticTranscoder::Thumbnails;
   use Moose;
   has AspectRatio => (is => 'ro', isa => 'Str');
   has Format => (is => 'ro', isa => 'Str');
@@ -8,5 +8,4 @@ package Paws::ElasticTranscoder::Thumbnails {
   has PaddingPolicy => (is => 'ro', isa => 'Str');
   has Resolution => (is => 'ro', isa => 'Str');
   has SizingPolicy => (is => 'ro', isa => 'Str');
-}
 1;

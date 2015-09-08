@@ -1,10 +1,9 @@
 
-package Paws::RedShift::HsmConfigurationMessage {
+package Paws::RedShift::HsmConfigurationMessage;
   use Moose;
   has HsmConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::HsmConfiguration]', xmlname => 'HsmConfiguration', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

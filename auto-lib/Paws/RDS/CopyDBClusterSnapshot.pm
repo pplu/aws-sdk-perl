@@ -1,5 +1,5 @@
 
-package Paws::RDS::CopyDBClusterSnapshot {
+package Paws::RDS::CopyDBClusterSnapshot;
   use Moose;
   has SourceDBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
@@ -10,7 +10,6 @@ package Paws::RDS::CopyDBClusterSnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyDBClusterSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CopyDBClusterSnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopyDBClusterSnapshotResult');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::ElasticTranscoder::Job {
+package Paws::ElasticTranscoder::Job;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
@@ -11,5 +11,4 @@ package Paws::ElasticTranscoder::Job {
   has Status => (is => 'ro', isa => 'Str');
   has Timing => (is => 'ro', isa => 'Paws::ElasticTranscoder::Timing');
   has UserMetadata => (is => 'ro', isa => 'Paws::ElasticTranscoder::UserMetadata');
-}
 1;

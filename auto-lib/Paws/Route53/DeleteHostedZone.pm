@@ -1,5 +1,5 @@
 
-package Paws::Route53::DeleteHostedZone {
+package Paws::Route53::DeleteHostedZone;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
 
@@ -10,7 +10,6 @@ package Paws::Route53::DeleteHostedZone {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::DeleteHostedZoneResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

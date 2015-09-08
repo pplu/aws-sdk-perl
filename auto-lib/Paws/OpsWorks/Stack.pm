@@ -1,4 +1,4 @@
-package Paws::OpsWorks::Stack {
+package Paws::OpsWorks::Stack;
   use Moose;
   has AgentVersion => (is => 'ro', isa => 'Str');
   has Arn => (is => 'ro', isa => 'Str');
@@ -22,5 +22,4 @@ package Paws::OpsWorks::Stack {
   has UseCustomCookbooks => (is => 'ro', isa => 'Bool');
   has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str');
-}
 1;

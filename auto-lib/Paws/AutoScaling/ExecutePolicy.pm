@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::ExecutePolicy {
+package Paws::AutoScaling::ExecutePolicy;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has BreachThreshold => (is => 'ro', isa => 'Num');
@@ -12,7 +12,6 @@ package Paws::AutoScaling::ExecutePolicy {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ExecutePolicy');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

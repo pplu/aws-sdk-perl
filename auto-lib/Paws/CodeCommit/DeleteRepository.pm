@@ -1,5 +1,5 @@
 
-package Paws::CodeCommit::DeleteRepository {
+package Paws::CodeCommit::DeleteRepository;
   use Moose;
   has repositoryName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::CodeCommit::DeleteRepository {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRepository');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::DeleteRepositoryOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

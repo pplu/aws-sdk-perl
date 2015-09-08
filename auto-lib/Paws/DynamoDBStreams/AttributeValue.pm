@@ -1,4 +1,4 @@
-package Paws::DynamoDBStreams::AttributeValue {
+package Paws::DynamoDBStreams::AttributeValue;
   use Moose;
   has B => (is => 'ro', isa => 'Str');
   has BOOL => (is => 'ro', isa => 'Bool');
@@ -10,5 +10,4 @@ package Paws::DynamoDBStreams::AttributeValue {
   has NULL => (is => 'ro', isa => 'Bool');
   has S => (is => 'ro', isa => 'Str');
   has SS => (is => 'ro', isa => 'ArrayRef[Str]');
-}
 1;

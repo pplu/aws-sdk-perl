@@ -1,4 +1,4 @@
-package Paws::EC2::Image {
+package Paws::EC2::Image;
   use Moose;
   has Architecture => (is => 'ro', isa => 'Str', xmlname => 'architecture', traits => ['Unwrapped']);
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', xmlname => 'blockDeviceMapping', traits => ['Unwrapped']);
@@ -23,5 +23,4 @@ package Paws::EC2::Image {
   has StateReason => (is => 'ro', isa => 'Paws::EC2::StateReason', xmlname => 'stateReason', traits => ['Unwrapped']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
   has VirtualizationType => (is => 'ro', isa => 'Str', xmlname => 'virtualizationType', traits => ['Unwrapped']);
-}
 1;

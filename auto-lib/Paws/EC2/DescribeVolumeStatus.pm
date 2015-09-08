@@ -1,5 +1,5 @@
 
-package Paws::EC2::DescribeVolumeStatus {
+package Paws::EC2::DescribeVolumeStatus;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
@@ -12,7 +12,6 @@ package Paws::EC2::DescribeVolumeStatus {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVolumeStatus');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeVolumeStatusResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

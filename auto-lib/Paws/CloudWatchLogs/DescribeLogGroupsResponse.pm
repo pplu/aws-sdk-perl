@@ -1,10 +1,9 @@
 
-package Paws::CloudWatchLogs::DescribeLogGroupsResponse {
+package Paws::CloudWatchLogs::DescribeLogGroupsResponse;
   use Moose;
   has logGroups => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::LogGroup]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

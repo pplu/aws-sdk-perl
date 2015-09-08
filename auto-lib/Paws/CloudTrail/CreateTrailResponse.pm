@@ -1,5 +1,5 @@
 
-package Paws::CloudTrail::CreateTrailResponse {
+package Paws::CloudTrail::CreateTrailResponse;
   use Moose;
   has CloudWatchLogsLogGroupArn => (is => 'ro', isa => 'Str');
   has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::CloudTrail::CreateTrailResponse {
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
   has SnsTopicName => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -39,7 +38,7 @@ CloudTrail logs will be delivered.
   
 
 Specifies the role for the CloudWatch Logs endpoint to assume to write
-to a userE<acirc>E<128>E<153>s log group.
+to a userE<rsquo>s log group.
 
 
 

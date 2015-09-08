@@ -1,4 +1,4 @@
-package Paws::ElasticBeanstalk::EventDescription {
+package Paws::ElasticBeanstalk::EventDescription;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
@@ -8,5 +8,4 @@ package Paws::ElasticBeanstalk::EventDescription {
   has Severity => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
   has VersionLabel => (is => 'ro', isa => 'Str');
-}
 1;

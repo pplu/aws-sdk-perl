@@ -1,9 +1,8 @@
 
-package Paws::EMR::DescribeClusterOutput {
+package Paws::EMR::DescribeClusterOutput;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Paws::EMR::Cluster');
 
-}
 
 ### main pod documentation begin ###
 

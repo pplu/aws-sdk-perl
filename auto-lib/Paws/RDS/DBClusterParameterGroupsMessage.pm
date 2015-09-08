@@ -1,10 +1,9 @@
 
-package Paws::RDS::DBClusterParameterGroupsMessage {
+package Paws::RDS::DBClusterParameterGroupsMessage;
   use Moose;
   has DBClusterParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterParameterGroup]', xmlname => 'DBClusterParameterGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

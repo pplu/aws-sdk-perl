@@ -1,5 +1,5 @@
 
-package Paws::EC2::InstanceAttribute {
+package Paws::EC2::InstanceAttribute;
   use Moose;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceBlockDeviceMapping]', xmlname => 'blockDeviceMapping', traits => ['Unwrapped',]);
   has DisableApiTermination => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'disableApiTermination', traits => ['Unwrapped',]);
@@ -16,7 +16,6 @@ package Paws::EC2::InstanceAttribute {
   has SriovNetSupport => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'sriovNetSupport', traits => ['Unwrapped',]);
   has UserData => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'userData', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

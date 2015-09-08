@@ -1,10 +1,9 @@
 
-package Paws::MachineLearning::DeleteRealtimeEndpointOutput {
+package Paws::MachineLearning::DeleteRealtimeEndpointOutput;
   use Moose;
   has MLModelId => (is => 'ro', isa => 'Str');
   has RealtimeEndpointInfo => (is => 'ro', isa => 'Paws::MachineLearning::RealtimeEndpointInfo');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,10 +1,9 @@
 
-package Paws::DS::DescribeSnapshotsResult {
+package Paws::DS::DescribeSnapshotsResult;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::DS::Snapshot]');
 
-}
 
 ### main pod documentation begin ###
 

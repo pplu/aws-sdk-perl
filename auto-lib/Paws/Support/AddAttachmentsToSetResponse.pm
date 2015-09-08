@@ -1,10 +1,9 @@
 
-package Paws::Support::AddAttachmentsToSetResponse {
+package Paws::Support::AddAttachmentsToSetResponse;
   use Moose;
   has attachmentSetId => (is => 'ro', isa => 'Str');
   has expiryTime => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

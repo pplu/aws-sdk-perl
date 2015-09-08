@@ -1,10 +1,9 @@
 
-package Paws::SQS::SendMessageBatchResult {
+package Paws::SQS::SendMessageBatchResult;
   use Moose;
   has Failed => (is => 'ro', isa => 'ArrayRef[Paws::SQS::BatchResultErrorEntry]', xmlname => 'BatchResultErrorEntry', traits => ['Unwrapped',], required => 1);
   has Successful => (is => 'ro', isa => 'ArrayRef[Paws::SQS::SendMessageBatchResultEntry]', xmlname => 'SendMessageBatchResultEntry', traits => ['Unwrapped',], required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 
-package Paws::EC2::ImportImage {
+package Paws::EC2::ImportImage;
   use Moose;
   has Architecture => (is => 'ro', isa => 'Str');
   has ClientData => (is => 'ro', isa => 'Paws::EC2::ClientData');
@@ -17,7 +17,6 @@ package Paws::EC2::ImportImage {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportImage');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ImportImageResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

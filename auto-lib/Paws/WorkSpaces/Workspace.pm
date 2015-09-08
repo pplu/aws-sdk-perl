@@ -1,4 +1,4 @@
-package Paws::WorkSpaces::Workspace {
+package Paws::WorkSpaces::Workspace;
   use Moose;
   has BundleId => (is => 'ro', isa => 'Str');
   has DirectoryId => (is => 'ro', isa => 'Str');
@@ -9,5 +9,4 @@ package Paws::WorkSpaces::Workspace {
   has SubnetId => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
   has WorkspaceId => (is => 'ro', isa => 'Str');
-}
 1;

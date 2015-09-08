@@ -1,5 +1,5 @@
 
-package Paws::EFS::CreateMountTarget {
+package Paws::EFS::CreateMountTarget;
   use Moose;
   has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
   has IpAddress => (is => 'ro', isa => 'Str');
@@ -13,7 +13,6 @@ package Paws::EFS::CreateMountTarget {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EFS::MountTargetDescription');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateMountTargetResult');
-}
 1;
 
 ### main pod documentation begin ###

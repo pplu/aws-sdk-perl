@@ -1,4 +1,4 @@
-package Paws::ECS::Task {
+package Paws::ECS::Task;
   use Moose;
   has clusterArn => (is => 'ro', isa => 'Str');
   has containerInstanceArn => (is => 'ro', isa => 'Str');
@@ -9,5 +9,4 @@ package Paws::ECS::Task {
   has startedBy => (is => 'ro', isa => 'Str');
   has taskArn => (is => 'ro', isa => 'Str');
   has taskDefinitionArn => (is => 'ro', isa => 'Str');
-}
 1;

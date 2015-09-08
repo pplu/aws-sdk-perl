@@ -1,4 +1,4 @@
-package Paws::RDS::DBCluster {
+package Paws::RDS::DBCluster;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -22,5 +22,4 @@ package Paws::RDS::DBCluster {
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]');
-}
 1;

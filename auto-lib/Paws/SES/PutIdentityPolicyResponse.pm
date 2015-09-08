@@ -1,8 +1,7 @@
 
-package Paws::SES::PutIdentityPolicyResponse {
+package Paws::SES::PutIdentityPolicyResponse;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

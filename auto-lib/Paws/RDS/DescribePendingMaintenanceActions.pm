@@ -1,5 +1,5 @@
 
-package Paws::RDS::DescribePendingMaintenanceActions {
+package Paws::RDS::DescribePendingMaintenanceActions;
   use Moose;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::RDS::DescribePendingMaintenanceActions {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePendingMaintenanceActions');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::PendingMaintenanceActionsMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribePendingMaintenanceActionsResult');
-}
 1;
 
 ### main pod documentation begin ###

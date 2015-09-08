@@ -1,5 +1,5 @@
 
-package Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult {
+package Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult;
   use Moose;
   has ApplicationMetrics => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationMetrics');
   has Causes => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -10,7 +10,6 @@ package Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult {
   has RefreshedAt => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

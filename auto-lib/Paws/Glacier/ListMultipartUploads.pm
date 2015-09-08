@@ -1,5 +1,5 @@
 
-package Paws::Glacier::ListMultipartUploads {
+package Paws::Glacier::ListMultipartUploads;
   use Moose;
   has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
   has limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit' );
@@ -13,7 +13,6 @@ package Paws::Glacier::ListMultipartUploads {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ListMultipartUploadsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListMultipartUploadsResult');
-}
 1;
 
 ### main pod documentation begin ###

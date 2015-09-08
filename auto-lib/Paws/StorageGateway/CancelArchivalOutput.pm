@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::CancelArchivalOutput {
+package Paws::StorageGateway::CancelArchivalOutput;
   use Moose;
   has TapeARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

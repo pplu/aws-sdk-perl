@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeMyUserProfileResult {
+package Paws::OpsWorks::DescribeMyUserProfileResult;
   use Moose;
   has UserProfile => (is => 'ro', isa => 'Paws::OpsWorks::SelfUserProfile');
 
-}
 
 ### main pod documentation begin ###
 

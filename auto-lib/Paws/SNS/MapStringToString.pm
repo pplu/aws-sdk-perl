@@ -1,4 +1,4 @@
-package Paws::SNS::MapStringToString {
+package Paws::SNS::MapStringToString;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -7,5 +7,4 @@ package Paws::SNS::MapStringToString {
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has Map => (is => 'ro', isa => 'HashRef[Str]');
-}
 1

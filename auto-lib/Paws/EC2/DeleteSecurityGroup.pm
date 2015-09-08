@@ -1,5 +1,5 @@
 
-package Paws::EC2::DeleteSecurityGroup {
+package Paws::EC2::DeleteSecurityGroup;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has GroupId => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::EC2::DeleteSecurityGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSecurityGroup');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,9 @@
 
-package Paws::Glacier::ListMultipartUploadsOutput {
+package Paws::Glacier::ListMultipartUploadsOutput;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has UploadsList => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::UploadListElement]');
 
-}
 1;
 
 ### main pod documentation begin ###

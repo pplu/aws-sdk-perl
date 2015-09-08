@@ -14,7 +14,7 @@ package Paws::API::Builder::query {
   has callargs_class_template => (is => 'ro', isa => 'Str', default => q#
 [%- operation = c.operation(op_name) %]
 [%- shape = c.input_for_operation(op_name) %]
-package [% c.api %]::[% operation.name %] {
+package [% c.api %]::[% operation.name %];
   use Moose;
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
@@ -28,7 +28,6 @@ package [% c.api %]::[% operation.name %] {
   class_has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
   class_has _returns => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% c.api %]::[% c.shapename_for_operation_output(op_name) %]'[% END %]);
   class_has _result_key => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% op_name %]Result'[% END %]);
-}
 1;
 [% c.callclass_documentation_template | eval %]
 #);
@@ -37,7 +36,7 @@ package [% c.api %]::[% operation.name %] {
 [%- operation = c.result_for_operation(op_name) %]
 [%- shape = c.result_for_operation(op_name) %]
 [%- IF (shape) %]
-package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
+package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
   use Moose;
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- traits = [] -%]
@@ -51,7 +50,6 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %] {
   [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]',[% END %]][% END -%]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
-}
 [%- END %]
 1;
 [% c.class_documentation_template | eval %]
@@ -64,7 +62,7 @@ use Moose::Util::TypeConstraints;
 enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %]];
 [%- END %]
 [%- END -%]
-package [% c.api %] {
+package [% c.api %];
   use Moose;
   sub service { '[% c.service %]' }
   sub version { '[% c.version %]' }
@@ -98,7 +96,6 @@ package [% c.api %] {
     return '[% c.api %]::[% op %]'->_returns->new([% paginator.result_key %] => $array);
   }
   [%- END %]
-}
 1;
 [% c.service_documentation_template | eval %]
 #);

@@ -1,5 +1,5 @@
 
-package Paws::DataPipeline::PutPipelineDefinition {
+package Paws::DataPipeline::PutPipelineDefinition;
   use Moose;
   has parameterObjects => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterObject]');
   has parameterValues => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterValue]');
@@ -11,7 +11,6 @@ package Paws::DataPipeline::PutPipelineDefinition {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutPipelineDefinition');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::PutPipelineDefinitionOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

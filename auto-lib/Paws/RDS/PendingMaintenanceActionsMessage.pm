@@ -1,10 +1,9 @@
 
-package Paws::RDS::PendingMaintenanceActionsMessage {
+package Paws::RDS::PendingMaintenanceActionsMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has PendingMaintenanceActions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ResourcePendingMaintenanceActions]', xmlname => 'ResourcePendingMaintenanceActions', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###

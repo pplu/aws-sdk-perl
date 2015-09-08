@@ -1,10 +1,9 @@
 
-package Paws::CodeDeploy::ListDeploymentsOutput {
+package Paws::CodeDeploy::ListDeploymentsOutput;
   use Moose;
   has deployments => (is => 'ro', isa => 'ArrayRef[Str]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

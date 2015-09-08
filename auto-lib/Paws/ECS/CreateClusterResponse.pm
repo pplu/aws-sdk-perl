@@ -1,9 +1,8 @@
 
-package Paws::ECS::CreateClusterResponse {
+package Paws::ECS::CreateClusterResponse;
   use Moose;
   has cluster => (is => 'ro', isa => 'Paws::ECS::Cluster');
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,9 +1,8 @@
 
-package Paws::ELB::RegisterEndPointsOutput {
+package Paws::ELB::RegisterEndPointsOutput;
   use Moose;
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::ELB::Instance]');
 
-}
 1;
 
 ### main pod documentation begin ###

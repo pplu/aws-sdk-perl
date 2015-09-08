@@ -1,4 +1,4 @@
-package Paws::RDS::ReservedDBInstance {
+package Paws::RDS::ReservedDBInstance;
   use Moose;
   has CurrencyCode => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
@@ -14,5 +14,4 @@ package Paws::RDS::ReservedDBInstance {
   has StartTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
-}
 1;

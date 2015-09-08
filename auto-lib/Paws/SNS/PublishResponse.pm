@@ -1,9 +1,8 @@
 
-package Paws::SNS::PublishResponse {
+package Paws::SNS::PublishResponse;
   use Moose;
   has MessageId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

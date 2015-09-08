@@ -1,10 +1,9 @@
 
-package Paws::AutoScaling::DescribeAccountLimitsAnswer {
+package Paws::AutoScaling::DescribeAccountLimitsAnswer;
   use Moose;
   has MaxNumberOfAutoScalingGroups => (is => 'ro', isa => 'Int');
   has MaxNumberOfLaunchConfigurations => (is => 'ro', isa => 'Int');
 
-}
 1;
 
 ### main pod documentation begin ###

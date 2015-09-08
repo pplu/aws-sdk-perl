@@ -1,10 +1,9 @@
 
-package Paws::CodePipeline::PutActionRevisionOutput {
+package Paws::CodePipeline::PutActionRevisionOutput;
   use Moose;
   has newRevision => (is => 'ro', isa => 'Bool');
   has pipelineExecutionId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

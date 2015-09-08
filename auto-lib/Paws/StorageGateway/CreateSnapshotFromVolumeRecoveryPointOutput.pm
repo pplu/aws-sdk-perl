@@ -1,11 +1,10 @@
 
-package Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointOutput {
+package Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointOutput;
   use Moose;
   has SnapshotId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
   has VolumeRecoveryPointTime => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

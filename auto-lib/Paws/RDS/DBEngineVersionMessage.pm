@@ -1,10 +1,9 @@
 
-package Paws::RDS::DBEngineVersionMessage {
+package Paws::RDS::DBEngineVersionMessage;
   use Moose;
   has DBEngineVersions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBEngineVersion]', xmlname => 'DBEngineVersion', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###

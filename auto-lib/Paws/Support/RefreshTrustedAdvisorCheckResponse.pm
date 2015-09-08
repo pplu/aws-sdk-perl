@@ -1,9 +1,8 @@
 
-package Paws::Support::RefreshTrustedAdvisorCheckResponse {
+package Paws::Support::RefreshTrustedAdvisorCheckResponse;
   use Moose;
   has status => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCheckRefreshStatus', required => 1);
 
-}
 
 ### main pod documentation begin ###
 

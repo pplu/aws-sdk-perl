@@ -1,5 +1,5 @@
 
-package Paws::CloudWatch::DescribeAlarms {
+package Paws::CloudWatch::DescribeAlarms;
   use Moose;
   has ActionPrefix => (is => 'ro', isa => 'Str');
   has AlarmNamePrefix => (is => 'ro', isa => 'Str');
@@ -13,7 +13,6 @@ package Paws::CloudWatch::DescribeAlarms {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAlarms');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatch::DescribeAlarmsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmsResult');
-}
 1;
 
 ### main pod documentation begin ###

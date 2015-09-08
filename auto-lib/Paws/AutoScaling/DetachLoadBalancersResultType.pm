@@ -1,8 +1,7 @@
 
-package Paws::AutoScaling::DetachLoadBalancersResultType {
+package Paws::AutoScaling::DetachLoadBalancersResultType;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

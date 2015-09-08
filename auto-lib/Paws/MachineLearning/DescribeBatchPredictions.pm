@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::DescribeBatchPredictions {
+package Paws::MachineLearning::DescribeBatchPredictions;
   use Moose;
   has EQ => (is => 'ro', isa => 'Str');
   has FilterVariable => (is => 'ro', isa => 'Str');
@@ -18,7 +18,6 @@ package Paws::MachineLearning::DescribeBatchPredictions {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeBatchPredictions');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::DescribeBatchPredictionsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

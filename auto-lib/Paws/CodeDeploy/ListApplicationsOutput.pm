@@ -1,10 +1,9 @@
 
-package Paws::CodeDeploy::ListApplicationsOutput {
+package Paws::CodeDeploy::ListApplicationsOutput;
   use Moose;
   has applications => (is => 'ro', isa => 'ArrayRef[Str]');
   has nextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

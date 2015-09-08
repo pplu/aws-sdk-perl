@@ -1,5 +1,5 @@
 
-package Paws::RDS::ModifyDBClusterParameterGroup {
+package Paws::RDS::ModifyDBClusterParameterGroup;
   use Moose;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Parameter]', required => 1);
@@ -9,7 +9,6 @@ package Paws::RDS::ModifyDBClusterParameterGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBClusterParameterGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBClusterParameterGroupNameMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBClusterParameterGroupResult');
-}
 1;
 
 ### main pod documentation begin ###

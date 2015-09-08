@@ -1,5 +1,5 @@
 
-package Paws::DeviceFarm::GetDevicePool {
+package Paws::DeviceFarm::GetDevicePool;
   use Moose;
   has arn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::DeviceFarm::GetDevicePool {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDevicePool');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::GetDevicePoolResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###

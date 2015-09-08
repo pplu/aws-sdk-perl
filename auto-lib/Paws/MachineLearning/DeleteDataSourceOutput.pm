@@ -1,9 +1,8 @@
 
-package Paws::MachineLearning::DeleteDataSourceOutput {
+package Paws::MachineLearning::DeleteDataSourceOutput;
   use Moose;
   has DataSourceId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

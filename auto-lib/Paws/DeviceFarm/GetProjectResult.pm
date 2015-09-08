@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::GetProjectResult {
+package Paws::DeviceFarm::GetProjectResult;
   use Moose;
   has project => (is => 'ro', isa => 'Paws::DeviceFarm::Project');
 
-}
 
 ### main pod documentation begin ###
 
