@@ -57,6 +57,13 @@ package Paws::API::Caller {
   sub to_hash {
     my ($self, $params) = @_;
     my $refHash = {};
+
+    if      ($params->does('Paws::API::StrToNativeMapParser')) {
+      return $params->Map;
+    } elsif ($params->does('Paws::API::StrToObjMapParser')) {
+      return { map { ($_ => $self->to_hash($params->Map->{$_})) } keys %{ $params->Map } };
+    }
+
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
       my $key = $att;
       if (defined $params->$att) {
@@ -73,10 +80,6 @@ package Paws::API::Caller {
           }
         } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
           $refHash->{ $key } = $params->$att;
-        } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')) {
-          $refHash->{$key} = $params->$att->Map;
-        } elsif ($params->$att->does('Paws::API::StrToObjMapParser')) {
-          $refHash->{$key} = { map { ($_ => $self->to_hash($params->$att->Map->{$_})) } keys %{ $params->$att->Map } };
         } else {
           $refHash->{ $key } = $self->to_hash($params->$att);
         }
