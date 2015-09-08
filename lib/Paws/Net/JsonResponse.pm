@@ -1,6 +1,6 @@
 package Paws::Net::JsonResponse {
   use Moose::Role;
-  use JSON;
+  use JSON::MaybeXS;
   use Carp qw(croak);
   use Paws::Exception;
   
@@ -9,7 +9,7 @@ package Paws::Net::JsonResponse {
 
     return {} if ($data eq '');
 
-    my $json = from_json( $data );
+    my $json = decode_json( $data );
     return $json;
   }
 

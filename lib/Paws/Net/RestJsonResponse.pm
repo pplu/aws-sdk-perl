@@ -1,12 +1,12 @@
 package Paws::Net::RestJsonResponse {
   use Moose::Role;
-  use JSON;
+  use JSON::MaybeXS;
   use Carp qw(croak);
   use Paws::Exception;
   
   sub unserialize_response {
     my ($self, $data) = @_;
-    my $json = from_json( $data );
+    my $json = decode_json( $data );
     return $json;
   }
 

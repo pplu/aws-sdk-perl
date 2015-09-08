@@ -5,7 +5,7 @@ requires 'Data::Compare';
 requires 'URI';
 requires 'Net::Amazon::Signature::V3';
 requires 'Net::Amazon::Signature::V4';
-requires 'JSON';
+requires 'JSON::MaybeXS';
 requires 'XML::Simple';
 requires 'String::Util';
 requires 'IO::Socket::SSL';
@@ -37,9 +37,8 @@ on 'develop' => sub {
 };
 on 'test' => sub {
   requires 'Data::Printer';
-  requires 'File::Slurp';
+  requires 'File::Slurper';
   requires 'YAML';
   requires 'Test::Class::Moose::Load';
-  requires 'Test::Pod';
   requires 'Hash::MD5';
 };

@@ -108,14 +108,7 @@ our $unsafe_char = qr/[^A-Za-z0-9\-\._~]/;
 
 sub _uri_escape {
     my ($self, $str) = @_;
-    if ( $] ge '5.008' ) {
-        utf8::encode($str);
-    }
-    else {
-        $str = pack("U*", unpack("C*", $str)) # UTF-8 encode a byte string
-            if ( length $str == do { use bytes; length $str } );
-        $str = pack("C*", unpack("C*", $str)); # clear UTF-8 flag
-    }
+    utf8::encode($str);
     $str =~ s/($unsafe_char)/$escapes{$1}/ge;
     $str =~ s/ /+/go;
     return $str;

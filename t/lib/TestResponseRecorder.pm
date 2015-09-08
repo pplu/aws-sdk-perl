@@ -3,8 +3,8 @@ package TestResponseRecorder {
   extends 'Paws::Net::Caller';
 
   use Hash::MD5;
-  use File::Slurp;
-  use JSON;
+  use File::Slurper qw(read_text write_text);
+  use JSON::MaybeXS;
 
   has replay_calls => (is => 'ro', isa => 'Bool', required => 1, default => sub { not defined $ENV{PAWS_CONVERSATION_DIR} });
   has conversation_dir => (is => 'ro', isa => 'Str', required => 1, default => sub { $ENV{PAWS_CONVERSATION_DIR} });
@@ -25,7 +25,7 @@ package TestResponseRecorder {
     my $res;
     if ($self->replay_calls) {
       #LOAD HTTP request from file
-      my $response = decode_json(read_file($test_file));
+      my $response = decode_json(read_text($test_file));
       $res = $service->handle_response($call_object, $response->{status}, $response->{content}, $response->{headers});  
     } else {
       my $requestObj = $service->prepare_request_for_call($call_object);
@@ -54,7 +54,7 @@ package TestResponseRecorder {
         $response->{headers}->{ "x-amz-request-id" }  = '000000000000000000000000000000000000' 
       }
 
-      write_file($test_file, encode_json({ 
+      write_text($test_file, encode_json({ 
         content => $response->{content}, 
         headers => $response->{headers},
         status  => $response->{status}, 
