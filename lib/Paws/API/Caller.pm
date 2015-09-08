@@ -214,12 +214,24 @@ package Paws::API::Caller {
  
         if ($type =~ m/\:\:/) {
           Module::Runtime::require_module($type);
+
+          my $val;
           if (not defined $value) {
-            $args{ $att } = [ ];
+            $val = [ ];
           } elsif ($value_ref eq 'ARRAY') {
-            $args{ $att } = [ map { $self->new_from_struct($type, $_) } @$value ] ;
+            $val = $value;
           } elsif ($value_ref eq 'HASH') {
-            $args{ $att } = [ $self->new_from_struct($type, $value) ];
+            $val = [ $value ];
+          }
+
+          if ($type->does('Paws::API::StrToObjMapParser')) {
+            $args{ $att } = [ map { $self->handle_response_strtoobjmap($type, $_) } @$val ];
+          } elsif ($type->does('Paws::API::StrToNativeMapParser')) {
+            $args{ $att } = [ map { $self->handle_response_strtonativemap($type, $_) } @$val ];
+          } elsif ($type->does('Paws::API::MapParser')) {
+            die "MapParser Type in an Array. Please implement me";
+          } else {
+            $args{ $att } = [ map { $self->new_from_struct($type, $_) } @$val ];
           }
         } else {
           if (defined $value){

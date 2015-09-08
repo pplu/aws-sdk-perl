@@ -1,0 +1,16 @@
+---
+call: Scan
+service: DynamoDB
+tests:
+  - expected: 1
+    op: eq
+    path: Count
+  - expected: 1
+    op: eq
+    path: ScannedCount
+  - expected: 33
+    op: ==
+    path: Items.0.Map.count.N
+  - expected: e1@test.com
+    op: eq
+    path: Items.0.Map.email.S

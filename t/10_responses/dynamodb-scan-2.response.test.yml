@@ -1,0 +1,12 @@
+---
+call: Scan
+service: DynamoDB
+tests:
+  - expected: 0
+    op: eq
+    path: Count
+  - expected: 0
+    op: eq
+    path: ScannedCount
+  - op: ==
+    path: Items.0
