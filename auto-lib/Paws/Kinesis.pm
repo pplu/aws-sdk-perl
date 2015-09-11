@@ -156,12 +156,12 @@ supported by means of shards, which are uniquely identified groups of
 data records in an Amazon Kinesis stream.
 
 You specify and control the number of shards that a stream is composed
-of. Each open shard can support up to 5 read transactions per second,
-up to a maximum total of 2 MB of data read per second. Each shard can
-support up to 1000 records written per second, up to a maximum total of
-1 MB data written per second. You can add shards to a stream if the
-amount of data input increases and you can remove shards if the amount
-of data input decreases.
+of. Each shard can support reads up to 5 transactions per second, up to
+a maximum data read total of 2 MB per second. Each shard can support
+writes up to 1,000 records per second, up to a maximum data write total
+of 1 MB per second. You can add shards to a stream if the amount of
+data input increases and you can remove shards if the amount of data
+input decreases.
 
 The stream name identifies the stream. The name is scoped to the AWS
 account used by the application. It is also scoped by region. That is,
@@ -188,7 +188,7 @@ point in time.
 =back
 
 For the default shard limit for an AWS account, see Amazon Kinesis
-Limits. If you need to increase this limit, contact AWS Support
+Limits. If you need to increase this limit, contact AWS Support.
 
 You can use C<DescribeStream> to check the stream status, which is
 returned in C<StreamStatus>.
@@ -316,13 +316,11 @@ terminate the loop when the shard is closed, or when the shard iterator
 reaches the record with the sequence number or other attribute that
 marks it as the last record to process.
 
-Each data record can be up to 50 KB in size, and each shard can read up
+Each data record can be up to 1 MB in size, and each shard can read up
 to 2 MB per second. You can ensure that your calls don't exceed the
 maximum supported size or throughput by using the C<Limit> parameter to
 specify the maximum number of records that GetRecords can return.
-Consider your average record size when determining this limit. For
-example, if your average record size is 40 KB, you can limit the data
-returned to about 1 MB per call by specifying 25 as the limit.
+Consider your average record size when determining this limit.
 
 The size of the data returned by GetRecords will vary depending on the
 utilization of the shard. The maximum size of data that GetRecords can
@@ -338,9 +336,18 @@ exceptions for longer than 1 second.
 
 To detect whether the application is falling behind in processing, you
 can use the C<MillisBehindLatest> response attribute. You can also
-monitor the amount of data in a stream using the CloudWatch metrics.
-For more information, see Monitoring Amazon Kinesis with Amazon
-CloudWatch in the I<Amazon Kinesis Developer Guide>.
+monitor the stream using CloudWatch metrics (see Monitoring Amazon
+Kinesis in the I<Amazon Kinesis Developer Guide>).
+
+Each Amazon Kinesis record includes a value,
+C<ApproximateArrivalTimestamp>, that is set when an Amazon Kinesis
+stream successfully receives and stores a record. This is commonly
+referred to as a server-side timestamp, which is different than a
+client-side timestamp, where the timestamp is set when a data producer
+creates or sends the record to a stream. The timestamp has millisecond
+precision. There are no guarantees about the timestamp accuracy, or
+that the timestamp is always increasing. For example, records in a
+shard or across a stream might have timestamps that are out of order.
 
 
 
@@ -536,12 +543,12 @@ Returns: a L<Paws::Kinesis::PutRecordOutput> instance
 
   
 
-Puts (writes) a single data record from a producer into an Amazon
-Kinesis stream. Call C<PutRecord> to send data from the producer into
-the Amazon Kinesis stream for real-time ingestion and subsequent
-processing, one record at a time. Each shard can support up to 1000
-records written per second, up to a maximum total of 1 MB data written
-per second.
+Writes a single data record from a producer into an Amazon Kinesis
+stream. Call C<PutRecord> to send data from the producer into the
+Amazon Kinesis stream for real-time ingestion and subsequent
+processing, one record at a time. Each shard can support writes up to
+1,000 records per second, up to a maximum data write total of 1 MB per
+second.
 
 You must specify the name of the stream that captures, stores, and
 transports the data; a partition key; and the data blob itself.
@@ -598,16 +605,22 @@ Returns: a L<Paws::Kinesis::PutRecordsOutput> instance
 
   
 
-Puts (writes) multiple data records from a producer into an Amazon
-Kinesis stream in a single call (also referred to as a C<PutRecords>
-request). Use this operation to send data from a data producer into the
-Amazon Kinesis stream for real-time ingestion and processing. Each
-shard can support up to 1000 records written per second, up to a
-maximum total of 1 MB data written per second.
+Writes multiple data records from a producer into an Amazon Kinesis
+stream in a single call (also referred to as a C<PutRecords> request).
+Use this operation to send data from a data producer into the Amazon
+Kinesis stream for data ingestion and processing.
+
+Each C<PutRecords> request can support up to 500 records. Each record
+in the request can be as large as 1 MB, up to a limit of 5 MB for the
+entire request, including partition keys. Each shard can support writes
+up to 1,000 records per second, up to a maximum data write total of 1
+MB per second.
 
 You must specify the name of the stream that captures, stores, and
 transports the data; and an array of request C<Records>, with each
-record in the array requiring a partition key and data blob.
+record in the array requiring a partition key and data blob. The record
+size limit applies to the total size of the partition key and data
+blob.
 
 The data blob can be any type of data; for example, a segment from a
 log file, geographic/location data, website clickstream data, and so
@@ -739,7 +752,7 @@ C<ResourceNotFoundException>. If you try to create more shards than are
 authorized for your account, you receive a C<LimitExceededException>.
 
 For the default shard limit for an AWS account, see Amazon Kinesis
-Limits. If you need to increase this limit, contact AWS Support
+Limits. If you need to increase this limit, contact AWS Support.
 
 If you try to operate on too many streams in parallel using
 CreateStream, DeleteStream, MergeShards or SplitShard, you receive a

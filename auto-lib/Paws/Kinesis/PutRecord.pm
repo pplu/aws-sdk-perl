@@ -41,8 +41,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 The data blob to put into the record, which is base64-encoded when the
-blob is serialized. The maximum size of the data blob (the payload
-before base64-encoding) is 50 kilobytes (KB)
+blob is serialized. When the data blob (the payload before
+base64-encoding) is added to the partition key size, the total size
+must not exceed the maximum record size (1 MB).
 
 
 
