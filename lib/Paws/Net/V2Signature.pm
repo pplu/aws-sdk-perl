@@ -57,7 +57,7 @@ sub sign {
 
     $request->parameters->{ SignatureVersion } = "2";
     $request->parameters->{ SignatureMethod } = "HmacSHA256";
-    $request->parameters->{ Timestamp } = strftime("%Y-%m-%dT%H:%M:%SZ",gmtime);
+    $request->parameters->{ Timestamp } //= strftime("%Y-%m-%dT%H:%M:%SZ",gmtime);
     $request->parameters->{ AWSAccessKeyId } = $self->access_key;
 
     if ($self->session_token) {
