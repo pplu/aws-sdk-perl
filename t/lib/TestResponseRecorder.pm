@@ -2,7 +2,7 @@ package TestResponseRecorder {
   use Moose;
   extends 'Paws::Net::Caller';
 
-  use Hash::MD5;
+  use Digest::MD5 qw(md5_hex);
   use File::Slurper qw(read_text write_text);
   use JSON::MaybeXS;
 
@@ -17,7 +17,7 @@ package TestResponseRecorder {
     $h->{ _service } = $service->service;
     $h->{ _call } = $call_object->_api_call;
 
-    my $sig = Hash::MD5::sum_hash($h);
+    my $sig = md5_hex(JSON()->new(canonical => 1)->encode($h));
     my $req_num = $self->_request_nums->{ $sig } ++;
     my $req_id = $service->service . '.' . $call_object->_api_call . ".$sig.$req_num";
     my $test_file = $self->conversation_dir . '/' . $req_id;
