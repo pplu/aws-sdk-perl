@@ -461,7 +461,8 @@ After using the C<DeleteBatchPrediction> operation, you can use the
 GetBatchPrediction operation to verify that the status of the
 C<BatchPrediction> changed to DELETED.
 
-The result of the C<DeleteBatchPrediction> operation is irreversible.
+B<Caution:> The result of the C<DeleteBatchPrediction> operation is
+irreversible.
 
 
 
@@ -487,7 +488,8 @@ After using the C<DeleteDataSource> operation, you can use the
 GetDataSource operation to verify that the status of the C<DataSource>
 changed to DELETED.
 
-The results of the C<DeleteDataSource> operation are irreversible.
+B<Caution:> The results of the C<DeleteDataSource> operation are
+irreversible.
 
 
 
@@ -514,7 +516,8 @@ After invoking the C<DeleteEvaluation> operation, you can use the
 GetEvaluation operation to verify that the status of the C<Evaluation>
 changed to C<DELETED>.
 
-The results of the C<DeleteEvaluation> operation are irreversible.
+B<Caution:> The results of the C<DeleteEvaluation> operation are
+irreversible.
 
 
 
@@ -540,7 +543,8 @@ After using the C<DeleteMLModel> operation, you can use the GetMLModel
 operation to verify that the status of the C<MLModel> changed to
 DELETED.
 
-The result of the C<DeleteMLModel> operation is irreversible.
+B<Caution:> The result of the C<DeleteMLModel> operation is
+irreversible.
 
 
 
@@ -754,11 +758,11 @@ Returns: a L<Paws::MachineLearning::PredictOutput> instance
 
   
 
-Generates a prediction for the observation using the specified
-C<MLModel>.
+Generates a prediction for the observation using the specified C<ML
+Model>.
 
-Not all response parameters will be populated because this is dependent
-on the type of requested model.
+Not all response parameters will be populated. Whether a response
+parameter is populated depends on the type of model requested.
 
 
 

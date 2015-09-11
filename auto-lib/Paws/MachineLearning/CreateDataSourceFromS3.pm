@@ -111,8 +111,7 @@ required if C<DataSchemaUri> is specified.
 DataRearrangement - A JSON string representing the splitting
 requirement of a C<Datasource>.
 
-Sample - C< "{\"randomSeed\":\"some-random-seed\",
-\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}">
+Sample - C< "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}">
 
 =back
 
