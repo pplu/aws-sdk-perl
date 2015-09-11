@@ -46,7 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Allows all IAM users in your account to use the AWS Management Console
 to change their own passwords. For more information, see Letting IAM
-Users Change Their Own Passwords in the I<Using IAM> guide.
+Users Change Their Own Passwords in the I<IAM User Guide>.
 
 Default value: false
 

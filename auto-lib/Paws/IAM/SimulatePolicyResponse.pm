@@ -1,7 +1,7 @@
 
-package Paws::IAM::ListAccountAliasesResponse;
+package Paws::IAM::SimulatePolicyResponse;
   use Moose;
-  has AccountAliases => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has EvaluationResults => (is => 'ro', isa => 'ArrayRef[Paws::IAM::EvaluationResult]');
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
 
@@ -11,15 +11,15 @@ package Paws::IAM::ListAccountAliasesResponse;
 
 =head1 NAME
 
-Paws::IAM::ListAccountAliasesResponse
+Paws::IAM::SimulatePolicyResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> AccountAliases => ArrayRef[Str]
+=head2 EvaluationResults => ArrayRef[Paws::IAM::EvaluationResult]
 
   
 
-A list of aliases associated with the account.
+The results of the simulation.
 
 
 

@@ -44,7 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The policy version to delete.
 
 For more information about managed policy versions, see Versioning for
-Managed Policies in the I<Using IAM> guide.
+Managed Policies in the I<IAM User Guide>.
 
 
 

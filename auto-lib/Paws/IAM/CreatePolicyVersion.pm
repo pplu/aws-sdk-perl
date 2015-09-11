@@ -64,7 +64,7 @@ operative version; that is, the version that is in effect for the IAM
 users, groups, and roles that the policy is attached to.
 
 For more information about managed policy versions, see Versioning for
-Managed Policies in the I<Using IAM> guide.
+Managed Policies in the I<IAM User Guide>.
 
 
 

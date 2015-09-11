@@ -84,7 +84,7 @@ https://keys.server.example.com.
 
 For more information about obtaining the OIDC provider's thumbprint,
 see Obtaining the Thumbprint for an OpenID Connect Provider in the
-I<Using IAM> guide.
+I<IAM User Guide>.
 
 
 

@@ -62,8 +62,8 @@ cannot be changed.
 
 The path for the policy.
 
-For more information about paths, see IAM Identifiers in the I<Using
-IAM> guide.
+For more information about paths, see IAM Identifiers in the I<IAM User
+Guide>.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).

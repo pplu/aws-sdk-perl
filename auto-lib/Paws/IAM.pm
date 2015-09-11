@@ -283,6 +283,16 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::GetAccountSummary', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetContextKeysForCustomPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetContextKeysForCustomPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContextKeysForPrincipalPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetContextKeysForPrincipalPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCredentialReport {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::GetCredentialReport', @_);
@@ -518,6 +528,16 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::SetDefaultPolicyVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SimulateCustomPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::SimulateCustomPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SimulatePrincipalPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::SimulatePrincipalPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateAccessKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::UpdateAccessKey', @_);
@@ -669,9 +689,6 @@ information about the types of credentials used for accessing AWS.
 =item * IAM Best Practices. This topic presents a list of suggestions
 for using the IAM service to help secure your AWS resources.
 
-=item * AWS Security Token Service. This guide describes how to create
-and use temporary security credentials.
-
 =item * Signing AWS API Requests. This set of topics walk you through
 the process of signing a request using an access key ID and secret
 access key.
@@ -769,7 +786,7 @@ You use this API to attach a managed policy to a group. To embed an
 inline policy in a group, use PutGroupPolicy.
 
 For more information about policies, refer to Managed Policies and
-Inline Policies in the I<Using IAM> guide.
+Inline Policies in the I<IAM User Guide>.
 
 
 
@@ -799,8 +816,8 @@ trust policy using UpdateAssumeRolePolicy.
 
 Use this API to attach a managed policy to a role. To embed an inline
 policy in a role, use PutRolePolicy. For more information about
-policies, refer to Managed Policies and Inline Policies in the I<Using
-IAM> guide.
+policies, refer to Managed Policies and Inline Policies in the I<IAM
+User Guide>.
 
 
 
@@ -826,7 +843,7 @@ You use this API to attach a managed policy to a user. To embed an
 inline policy in a user, use PutUserPolicy.
 
 For more information about policies, refer to Managed Policies and
-Inline Policies in the I<Using IAM> guide.
+Inline Policies in the I<IAM User Guide>.
 
 
 
@@ -851,7 +868,7 @@ root account password is not affected by this action.
 
 To change the password for a different user, see UpdateLoginProfile.
 For more information about modifying passwords, see Managing Passwords
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 
 
@@ -881,7 +898,7 @@ this action to manage root credentials even if the AWS account has no
 associated users.
 
 For information about limits on the number of keys you can create, see
-Limitations on IAM Entities in the I<Using IAM> guide.
+Limitations on IAM Entities in the I<IAM User Guide>.
 
 To ensure the security of your AWS account, the secret access key is
 accessible only during key and user creation. You must save the key
@@ -909,7 +926,7 @@ Returns: nothing
 
 Creates an alias for your AWS account. For information about using an
 AWS account alias, see Using an Alias for Your AWS Account ID in the
-I<Using IAM> guide.
+I<IAM User Guide>.
 
 
 
@@ -932,7 +949,7 @@ Returns: a L<Paws::IAM::CreateGroupResponse> instance
 Creates a new group.
 
 For information about the number of groups you can create, see
-Limitations on IAM Entities in the I<Using IAM> guide.
+Limitations on IAM Entities in the I<IAM User Guide>.
 
 
 
@@ -956,7 +973,7 @@ Creates a new instance profile. For information about instance
 profiles, go to About Instance Profiles.
 
 For information about the number of instance profiles you can create,
-see Limitations on IAM Entities in the I<Using IAM> guide.
+see Limitations on IAM Entities in the I<IAM User Guide>.
 
 
 
@@ -1041,11 +1058,11 @@ Creates a new managed policy for your AWS account.
 
 This operation creates a policy version with a version identifier of
 C<v1> and sets v1 as the policy's default version. For more information
-about policy versions, see Versioning for Managed Policies in the
-I<Using IAM> guide.
+about policy versions, see Versioning for Managed Policies in the I<IAM
+User Guide>.
 
 For more information about managed policies in general, refer to
-Managed Policies and Inline Policies in the I<Using IAM> guide.
+Managed Policies and Inline Policies in the I<IAM User Guide>.
 
 
 
@@ -1077,7 +1094,7 @@ version that is in effect for the IAM users, groups, and roles that the
 policy is attached to.
 
 For more information about managed policy versions, see Versioning for
-Managed Policies in the I<Using IAM> guide.
+Managed Policies in the I<IAM User Guide>.
 
 
 
@@ -1100,7 +1117,7 @@ Returns: a L<Paws::IAM::CreateRoleResponse> instance
 Creates a new role for your AWS account. For more information about
 roles, go to Working with Roles. For information about limitations on
 role names and the number of roles you can create, go to Limitations on
-IAM Entities in the I<Using IAM> guide.
+IAM Entities in the I<IAM User Guide>.
 
 The policy in the following example grants permission to an EC2
 instance to assume the role.
@@ -1141,9 +1158,9 @@ management software that is used as your organization's IdP.
 
 This operation requires Signature Version 4.
 
-For more information, see Giving Console Access Using SAML and Creating
-Temporary Security Credentials for SAML Federation in the I<Using
-Temporary Credentials> guide.
+For more information, see Enabling SAML 2.0 Federated Users to Access
+the AWS Management Console and About SAML 2.0-based Federation in the
+I<IAM User Guide>.
 
 
 
@@ -1166,7 +1183,7 @@ Returns: a L<Paws::IAM::CreateUserResponse> instance
 Creates a new user for your AWS account.
 
 For information about limitations on the number of users you can
-create, see Limitations on IAM Entities in the I<Using IAM> guide.
+create, see Limitations on IAM Entities in the I<IAM User Guide>.
 
 
 
@@ -1270,7 +1287,7 @@ Returns: nothing
 
 Deletes the specified AWS account alias. For information about using an
 AWS account alias, see Using an Alias for Your AWS Account ID in the
-I<Using IAM> guide.
+I<IAM User Guide>.
 
 
 
@@ -1337,7 +1354,7 @@ group.
 A group can also have managed policies attached to it. To detach a
 managed policy from a group, use DetachGroupPolicy. For more
 information about policies, refer to Managed Policies and Inline
-Policies in the I<Using IAM> guide.
+Policies in the I<IAM User Guide>.
 
 
 
@@ -1467,7 +1484,7 @@ default version) using this API.
 =back
 
 For information about managed policies, refer to Managed Policies and
-Inline Policies in the I<Using IAM> guide.
+Inline Policies in the I<IAM User Guide>.
 
 
 
@@ -1495,7 +1512,7 @@ which version of a policy is marked as the default version, use
 ListPolicyVersions.
 
 For information about versions for managed policies, refer to
-Versioning for Managed Policies in the I<Using IAM> guide.
+Versioning for Managed Policies in the I<IAM User Guide>.
 
 
 
@@ -1547,7 +1564,7 @@ role.
 A role can also have managed policies attached to it. To detach a
 managed policy from a role, use DetachRolePolicy. For more information
 about policies, refer to Managed Policies and Inline Policies in the
-I<Using IAM> guide.
+I<IAM User Guide>.
 
 
 
@@ -1703,7 +1720,7 @@ user.
 A user can also have managed policies attached to it. To detach a
 managed policy from a user, use DetachUserPolicy. For more information
 about policies, refer to Managed Policies and Inline Policies in the
-I<Using IAM> guide.
+I<IAM User Guide>.
 
 
 
@@ -1751,8 +1768,8 @@ Removes the specified managed policy from the specified group.
 
 A group can also have inline policies embedded with it. To delete an
 inline policy, use the DeleteGroupPolicy API. For information about
-policies, refer to Managed Policies and Inline Policies in the I<Using
-IAM> guide.
+policies, refer to Managed Policies and Inline Policies in the I<IAM
+User Guide>.
 
 
 
@@ -1776,8 +1793,8 @@ Removes the specified managed policy from the specified role.
 
 A role can also have inline policies embedded with it. To delete an
 inline policy, use the DeleteRolePolicy API. For information about
-policies, refer to Managed Policies and Inline Policies in the I<Using
-IAM> guide.
+policies, refer to Managed Policies and Inline Policies in the I<IAM
+User Guide>.
 
 
 
@@ -1801,8 +1818,8 @@ Removes the specified managed policy from the specified user.
 
 A user can also have inline policies embedded with it. To delete an
 inline policy, use the DeleteUserPolicy API. For information about
-policies, refer to Managed Policies and Inline Policies in the I<Using
-IAM> guide.
+policies, refer to Managed Policies and Inline Policies in the I<IAM
+User Guide>.
 
 
 
@@ -1846,7 +1863,7 @@ Returns: a L<Paws::IAM::GenerateCredentialReportResponse> instance
 
 Generates a credential report for the AWS account. For more information
 about the credential report, see Getting Credential Reports in the
-I<Using IAM> guide.
+I<IAM User Guide>.
 
 
 
@@ -1941,7 +1958,77 @@ Retrieves information about IAM entity usage and IAM quotas in the AWS
 account.
 
 For information about limitations on IAM entities, see Limitations on
-IAM Entities in the I<Using IAM> guide.
+IAM Entities in the I<IAM User Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetContextKeysForCustomPolicy(PolicyInputList => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::IAM::GetContextKeysForCustomPolicy>
+
+Returns: a L<Paws::IAM::GetContextKeysForPolicyResponse> instance
+
+  
+
+Gets a list of all of the context keys referenced in C<Condition>
+elements in the input policies. The policies are supplied as a list of
+one or more strings. To get the context keys from policies associated
+with an IAM user, group, or role, use GetContextKeysForPrincipalPolicy.
+
+Context keys are variables maintained by AWS and its services that
+provide details about the context of an API query request, and can be
+evaluated by using the C<Condition> element of an IAM policy. Use
+GetContextKeysForCustomPolicy to understand what key names and values
+you must supply when you call SimulateCustomPolicy. Note that all
+parameters are shown in unencoded form here for clarity, but must be
+URL encoded to be included as a part of a real HTML request.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetContextKeysForPrincipalPolicy(PolicySourceArn => Str, [PolicyInputList => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::IAM::GetContextKeysForPrincipalPolicy>
+
+Returns: a L<Paws::IAM::GetContextKeysForPolicyResponse> instance
+
+  
+
+Gets a list of all of the context keys referenced in C<Condition>
+elements in all of the IAM policies attached to the specified IAM
+entity. The entity can be an IAM user, group, or role. If you specify a
+user, then the request also includes all of the policies attached to
+groups that the user is a member of.
+
+You can optionally include a list of one or more additional policies,
+specified as strings. If you want to include only a list of policies by
+string, use GetContextKeysForCustomPolicy instead.
+
+B<Note:> This API discloses information about the permissions granted
+to other users. If you do not want users to see other user's
+permissions, then consider allowing them to use
+GetContextKeysForCustomPolicy instead.
+
+Context keys are variables maintained by AWS and its services that
+provide details about the context of an API query request, and can be
+evaluated by using the C<Condition> element of an IAM policy. Use
+GetContextKeysForPrincipalPolicy to understand what key names and
+values you must supply when you call SimulatePrincipalPolicy.
 
 
 
@@ -1963,7 +2050,7 @@ Returns: a L<Paws::IAM::GetCredentialReportResponse> instance
 
 Retrieves a credential report for the AWS account. For more information
 about the credential report, see Getting Credential Reports in the
-I<Using IAM> guide.
+I<IAM User Guide>.
 
 
 
@@ -2013,7 +2100,7 @@ determine the policy's default version, then use GetPolicyVersion to
 retrieve the policy document.
 
 For more information about policies, refer to Managed Policies and
-Inline Policies in the I<Using IAM> guide.
+Inline Policies in the I<IAM User Guide>.
 
 
 
@@ -2111,7 +2198,7 @@ information about an inline policy that is embedded with a user, group,
 or role, use the GetUserPolicy, GetGroupPolicy, or GetRolePolicy API.
 
 For more information about policies, refer to Managed Policies and
-Inline Policies in the I<Using IAM> guide.
+Inline Policies in the I<IAM User Guide>.
 
 
 
@@ -2141,7 +2228,7 @@ information about an inline policy that is embedded in a user, group,
 or role, use the GetUserPolicy, GetGroupPolicy, or GetRolePolicy API.
 
 For more information about the types of policies, refer to Managed
-Policies and Inline Policies in the I<Using IAM> guide.
+Policies and Inline Policies in the I<IAM User Guide>.
 
 
 
@@ -2193,7 +2280,7 @@ determine the policy's default version, then use GetPolicyVersion to
 retrieve the policy document.
 
 For more information about policies, refer to Managed Policies and
-Inline Policies in the I<Using IAM> guide.
+Inline Policies in the I<IAM User Guide>.
 
 For more information about roles, go to Using Roles to Delegate
 Permissions and Federate Identities.
@@ -2319,7 +2406,7 @@ determine the policy's default version, then use GetPolicyVersion to
 retrieve the policy document.
 
 For more information about policies, refer to Managed Policies and
-Inline Policies in the I<Using IAM> guide.
+Inline Policies in the I<IAM User Guide>.
 
 
 
@@ -2374,7 +2461,7 @@ Returns: a L<Paws::IAM::ListAccountAliasesResponse> instance
 
 Lists the account aliases associated with the account. For information
 about using an AWS account alias, see Using an Alias for Your AWS
-Account ID in the I<Using IAM> guide.
+Account ID in the I<IAM User Guide>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
@@ -2402,7 +2489,7 @@ Lists all managed policies that are attached to the specified group.
 A group can also have inline policies embedded with it. To list the
 inline policies for a group, use the ListGroupPolicies API. For
 information about policies, refer to Managed Policies and Inline
-Policies in the I<Using IAM> guide.
+Policies in the I<IAM User Guide>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. You can use the C<PathPrefix> parameter to limit the list
@@ -2433,7 +2520,7 @@ Lists all managed policies that are attached to the specified role.
 A role can also have inline policies embedded with it. To list the
 inline policies for a role, use the ListRolePolicies API. For
 information about policies, refer to Managed Policies and Inline
-Policies in the I<Using IAM> guide.
+Policies in the I<IAM User Guide>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. You can use the C<PathPrefix> parameter to limit the list
@@ -2464,7 +2551,7 @@ Lists all managed policies that are attached to the specified user.
 A user can also have inline policies embedded with it. To list the
 inline policies for a user, use the ListUserPolicies API. For
 information about policies, refer to Managed Policies and Inline
-Policies in the I<Using IAM> guide.
+Policies in the I<IAM User Guide>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. You can use the C<PathPrefix> parameter to limit the list
@@ -2525,7 +2612,7 @@ specified group.
 A group can also have managed policies attached to it. To list the
 managed policies that are attached to a group, use
 ListAttachedGroupPolicies. For more information about policies, refer
-to Managed Policies and Inline Policies in the I<Using IAM> guide.
+to Managed Policies and Inline Policies in the I<IAM User Guide>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. If there are no inline policies embedded with the specified
@@ -2706,7 +2793,7 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 For more information about managed policies, refer to Managed Policies
-and Inline Policies in the I<Using IAM> guide.
+and Inline Policies in the I<IAM User Guide>.
 
 
 
@@ -2730,7 +2817,7 @@ Lists information about the versions of the specified managed policy,
 including the version that is set as the policy's default version.
 
 For more information about managed policies, refer to Managed Policies
-and Inline Policies in the I<Using IAM> guide.
+and Inline Policies in the I<IAM User Guide>.
 
 
 
@@ -2756,7 +2843,7 @@ specified role.
 A role can also have managed policies attached to it. To list the
 managed policies that are attached to a role, use
 ListAttachedRolePolicies. For more information about policies, refer to
-Managed Policies and Inline Policies in the I<Using IAM> guide.
+Managed Policies and Inline Policies in the I<IAM User Guide>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. If there are no inline policies embedded with the specified
@@ -2918,7 +3005,7 @@ Lists the names of the inline policies embedded in the specified user.
 A user can also have managed policies attached to it. To list the
 managed policies that are attached to a user, use
 ListAttachedUserPolicies. For more information about policies, refer to
-Managed Policies and Inline Policies in the I<Using IAM> guide.
+Managed Policies and Inline Policies in the I<IAM User Guide>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. If there are no inline policies embedded with the specified
@@ -2999,11 +3086,11 @@ specified group.
 A user can also have managed policies attached to it. To attach a
 managed policy to a group, use AttachGroupPolicy. To create a new
 managed policy, use CreatePolicy. For information about policies, refer
-to Managed Policies and Inline Policies in the I<Using IAM> guide.
+to Managed Policies and Inline Policies in the I<IAM User Guide>.
 
 For information about limits on the number of inline policies that you
-can embed in a group, see Limitations on IAM Entities in the I<Using
-IAM> guide.
+can embed in a group, see Limitations on IAM Entities in the I<IAM User
+Guide>.
 
 Because policy documents can be large, you should use POST rather than
 GET when calling C<PutGroupPolicy>. For general information about using
@@ -3041,11 +3128,11 @@ Federate Identities.
 A role can also have a managed policy attached to it. To attach a
 managed policy to a role, use AttachRolePolicy. To create a new managed
 policy, use CreatePolicy. For information about policies, refer to
-Managed Policies and Inline Policies in the I<Using IAM> guide.
+Managed Policies and Inline Policies in the I<IAM User Guide>.
 
 For information about limits on the number of inline policies that you
-can embed with a role, see Limitations on IAM Entities in the I<Using
-IAM> guide.
+can embed with a role, see Limitations on IAM Entities in the I<IAM
+User Guide>.
 
 Because policy documents can be large, you should use POST rather than
 GET when calling C<PutRolePolicy>. For general information about using
@@ -3076,11 +3163,11 @@ specified user.
 A user can also have a managed policy attached to it. To attach a
 managed policy to a user, use AttachUserPolicy. To create a new managed
 policy, use CreatePolicy. For information about policies, refer to
-Managed Policies and Inline Policies in the I<Using IAM> guide.
+Managed Policies and Inline Policies in the I<IAM User Guide>.
 
 For information about limits on the number of inline policies that you
-can embed in a user, see Limitations on IAM Entities in the I<Using
-IAM> guide.
+can embed in a user, see Limitations on IAM Entities in the I<IAM User
+Guide>.
 
 Because policy documents can be large, you should use POST rather than
 GET when calling C<PutUserPolicy>. For general information about using
@@ -3208,7 +3295,92 @@ attached to. To list the users, groups, and roles that the policy is
 attached to, use the ListEntitiesForPolicy API.
 
 For information about managed policies, refer to Managed Policies and
-Inline Policies in the I<Using IAM> guide.
+Inline Policies in the I<IAM User Guide>.
+
+
+
+
+
+
+
+
+
+
+
+=head2 SimulateCustomPolicy(ActionNames => ArrayRef[Str], PolicyInputList => ArrayRef[Str], [ContextEntries => ArrayRef[Paws::IAM::ContextEntry], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::IAM::SimulateCustomPolicy>
+
+Returns: a L<Paws::IAM::SimulatePolicyResponse> instance
+
+  
+
+Simulate a set of IAM policies against a list of API actions and AWS
+resources to determine the policies' effective permissions. The
+policies are provided as a list of strings.
+
+The simulation does not perform the API actions, it only checks the
+authorization to determine if the simulated policies allow or deny the
+actions.
+
+If you want to simulate existing policies attached to an IAM user,
+group, or role, use SimulatePrincipalPolicy instead.
+
+Context keys are variables maintained by AWS and its services that
+provide details about the context of an API query request, and can be
+evaluated by using the C<Condition> element of an IAM policy. To get
+the list of context keys required by the policies to simulate them
+correctly, use GetContextKeysForCustomPolicy.
+
+If the output is long, you can paginate the results using the
+C<MaxItems> and C<Marker> parameters.
+
+
+
+
+
+
+
+
+
+
+
+=head2 SimulatePrincipalPolicy(ActionNames => ArrayRef[Str], PolicySourceArn => Str, [ContextEntries => ArrayRef[Paws::IAM::ContextEntry], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str], ResourceArns => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::IAM::SimulatePrincipalPolicy>
+
+Returns: a L<Paws::IAM::SimulatePolicyResponse> instance
+
+  
+
+Simulate the set of IAM policies attached to an IAM entity against a
+list of API actions and AWS resources to determine the policies'
+effective permissions. The entity can be an IAM user, group, or role.
+If you specify a user, then the simulation also includes all of the
+policies attached to groups that the user is a member of.
+
+You can optionally include a list of one or more additional policies
+specified as strings to include in the simulation. If you want to
+simulate only policies specified as strings, use SimulateCustomPolicy
+instead.
+
+The simulation does not perform the API actions, it only checks the
+authorization to determine if the simulated policies allow or deny the
+actions.
+
+B<Note:> This API discloses information about the permissions granted
+to other users. If you do not want users to see other user's
+permissions, then consider allowing them to use SimulateCustomPolicy
+instead.
+
+Context keys are variables maintained by AWS and its services that
+provide details about the context of an API query request, and can be
+evaluated by using the C<Condition> element of an IAM policy. To get
+the list of context keys required by the policies to simulate them
+correctly, use GetContextKeysForPrincipalPolicy.
+
+If the output is long, you can paginate the results using the
+C<MaxItems> and C<Marker> parameters.
 
 
 
@@ -3239,7 +3411,7 @@ can use this action to manage root credentials even if the AWS account
 has no associated users.
 
 For information about rotating keys, see Managing Keys and Certificates
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 
 
@@ -3267,7 +3439,7 @@ reverts to its default value. See the B<Request Parameters> section for
 each parameter's default value.
 
 For more information about using a password policy, see Managing an IAM
-Password Policy in the I<Using IAM> guide.
+Password Policy in the I<IAM User Guide>.
 
 
 
@@ -3312,13 +3484,13 @@ Returns: nothing
 Updates the name and/or the path of the specified group.
 
 You should understand the implications of changing a group's path or
-name. For more information, see Renaming Users and Groups in the
-I<Using IAM> guide. To change a group name the requester must have
-appropriate permissions on both the source object and the target
-object. For example, to change Managers to MGRs, the entity making the
-request must have permission on Managers and MGRs, or must have
-permission on all (*). For more information about permissions, see
-Permissions and Policies.
+name. For more information, see Renaming Users and Groups in the I<IAM
+User Guide>. To change a group name the requester must have appropriate
+permissions on both the source object and the target object. For
+example, to change Managers to MGRs, the entity making the request must
+have permission on Managers and MGRs, or must have permission on all
+(*). For more information about permissions, see Permissions and
+Policies.
 
 
 
@@ -3342,7 +3514,7 @@ Changes the password for the specified user.
 
 Users can change their own passwords by calling ChangePassword. For
 more information about modifying passwords, see Managing Passwords in
-the I<Using IAM> guide.
+the I<IAM User Guide>.
 
 
 
@@ -3424,7 +3596,7 @@ Updates the name and/or the path of the specified server certificate.
 
 You should understand the implications of changing a server
 certificate's path or name. For more information, see Managing Server
-Certificates in the I<Using IAM> guide. To change a server certificate
+Certificates in the I<IAM User Guide>. To change a server certificate
 name the requester must have appropriate permissions on both the source
 object and the target object. For example, to change the name from
 ProductionCert to ProdCert, the entity making the request must have
@@ -3510,13 +3682,12 @@ Returns: nothing
 Updates the name and/or the path of the specified user.
 
 You should understand the implications of changing a user's path or
-name. For more information, see Renaming Users and Groups in the
-I<Using IAM> guide. To change a user name the requester must have
-appropriate permissions on both the source object and the target
-object. For example, to change Bob to Robert, the entity making the
-request must have permission on Bob and Robert, or must have permission
-on all (*). For more information about permissions, see Permissions and
-Policies.
+name. For more information, see Renaming Users and Groups in the I<IAM
+User Guide>. To change a user name the requester must have appropriate
+permissions on both the source object and the target object. For
+example, to change Bob to Robert, the entity making the request must
+have permission on Bob and Robert, or must have permission on all (*).
+For more information about permissions, see Permissions and Policies.
 
 
 
@@ -3541,15 +3712,15 @@ certificate entity includes a public key certificate, a private key,
 and an optional certificate chain, which should all be PEM-encoded.
 
 For information about the number of server certificates you can upload,
-see Limitations on IAM Entities in the I<Using IAM> guide.
+see Limitations on IAM Entities in the I<IAM User Guide>.
 
 Because the body of the public key certificate, private key, and the
 certificate chain can be large, you should use POST rather than GET
 when calling C<UploadServerCertificate>. For information about setting
 up signatures and authorization through the API, go to Signing AWS API
 Requests in the I<AWS General Reference>. For general information about
-using the Query API with IAM, go to Making Query Requests in the
-I<Using IAM> guide.
+using the Query API with IAM, go to Making Query Requests in the I<IAM
+User Guide>.
 
 
 

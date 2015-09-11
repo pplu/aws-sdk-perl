@@ -59,8 +59,8 @@ authentication response (assertions) that are received from the IdP.
 You must generate the metadata document using the identity management
 software that is used as your organization's IdP.
 
-For more information, see Creating Temporary Security Credentials for
-SAML Federation in the I<Using Temporary Security Credentials> guide.
+For more information, see About SAML 2.0-based Federation in the I<IAM
+User Guide>
 
 
 
