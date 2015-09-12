@@ -207,7 +207,7 @@ misinterpreted in an expression.
 
 =back
 
-Use the B<
+Use the hash character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 
 =over
