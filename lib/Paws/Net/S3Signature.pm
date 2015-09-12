@@ -8,6 +8,10 @@ package Paws::Net::S3Signature {
   sub sign {
     my ($self, $request) = @_;
 
+    if ($self->session_token) {
+      $request->header( 'X-Amz-Security-Token' => $self->session_token );
+    }
+
     my $hmac = Digest::HMAC_SHA1->new( $self->secret_key );
     $hmac->add( $request->string_to_sign() );
 
