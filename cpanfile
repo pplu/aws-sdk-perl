@@ -22,7 +22,7 @@ requires 'MooseX::Getopt';
 requires 'ARGV::Struct';
 requires 'Module::Find';
 requires 'Getopt::Long';
-requires 'Browser::Open';
+recommends 'Browser::Open';
 requires 'File::HomeDir';
 
 on 'develop' => sub {
