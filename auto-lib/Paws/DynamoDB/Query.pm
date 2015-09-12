@@ -221,7 +221,7 @@ I<ExpressionAttributeNames>:
 
 =item *
 
-C<{"
+{"
 
 =back
 
@@ -232,7 +232,7 @@ example:
 
 =item *
 
-C<
+
 
 =back
 
@@ -414,13 +414,13 @@ a reserved word:
 
 =back
 
-To work around this, define a placeholder (such a C<
+To work around this, define a placeholder (such a C<S>) to represent
 the attribute name I<Size>. I<KeyConditionExpression> then is as
 follows:
 
 =over
 
-=item * C<
+=item * C<S = :myval>
 
 =back
 

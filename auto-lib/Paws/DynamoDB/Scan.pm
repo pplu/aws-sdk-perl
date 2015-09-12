@@ -228,7 +228,7 @@ I<ExpressionAttributeNames>:
 
 =item *
 
-C<{"
+{"
 
 =back
 
@@ -239,7 +239,7 @@ example:
 
 =item *
 
-C<
+
 
 =back
 
