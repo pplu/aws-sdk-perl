@@ -17,7 +17,7 @@ package TestResponseRecorder {
     $h->{ _service } = $service->service;
     $h->{ _call } = $call_object->_api_call;
 
-    my $sig = md5_hex(JSON()->new(canonical => 1)->encode($h));
+    my $sig = md5_hex(JSON::MaybeXS->new(canonical => 1)->encode($h));
     my $req_num = $self->_request_nums->{ $sig } ++;
     my $req_id = $service->service . '.' . $call_object->_api_call . ".$sig.$req_num";
     my $test_file = $self->conversation_dir . '/' . $req_id;
