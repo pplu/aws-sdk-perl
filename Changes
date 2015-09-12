@@ -1,6 +1,8 @@
 0.15
  - fix unicode issues in test t/10_responses.t (ioanrogers)
  - fix bug handling responses with ArrayRef of Maps (DynamoDB reported by stevecaldwell77)
+ - fix S3 to be able to use temporary credentials (stevecaldwell77)
+ - fix bug that could produce different timestamps in Date and X-Amz-Date headers (ilmari)
  - Pull Request #53 (karenetheridge): "Update some module dependencies"
    - JSON Parsing now depending on JSON::MaybeXS
    - include META.json in package
