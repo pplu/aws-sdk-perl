@@ -1,4 +1,6 @@
-0.15
+0.16
+
+0.15 16 Sep 2015
  - fix unicode issues in test t/10_responses.t (ioanrogers)
  - fix bug handling responses with ArrayRef of Maps (DynamoDB reported by stevecaldwell77)
  - fix S3 to be able to use temporary credentials (stevecaldwell77)
