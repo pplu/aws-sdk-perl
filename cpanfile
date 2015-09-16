@@ -39,7 +39,6 @@ on 'develop' => sub {
   requires 'Devel::Cover';
 };
 on 'test' => sub {
-  requires 'Data::Printer';
   requires 'File::Slurper';
   requires 'YAML';
   requires 'Test::Class::Moose::Load';
