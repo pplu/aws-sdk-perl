@@ -1,9 +1,10 @@
 
 package Paws::EFS::DescribeMountTargets;
   use Moose;
-  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FileSystemId' , required => 1);
+  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FileSystemId' );
   has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker' );
   has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems' );
+  has MountTargetId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MountTargetId' );
 
   use MooseX::ClassAttribute;
 
@@ -36,11 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> FileSystemId => Str
+=head2 FileSystemId => Str
 
   
 
-String. The ID of the file system whose mount targets you want to list.
+Optional. String. The ID of the file system whose mount targets you
+want to list. It must be included in your request if C<MountTargetId>
+is not included.
 
 
 
@@ -74,6 +77,23 @@ the list from where the previous returning call left off.
 
 Optional. Maximum number of mount targets to return in the response. It
 must be an integer with a value greater than zero.
+
+
+
+
+
+
+
+
+
+
+=head2 MountTargetId => Str
+
+  
+
+Optional. String. The ID of the mount target that you want to have
+described. It must be included in your request if C<FileSystemId> is
+not included.
 
 
 

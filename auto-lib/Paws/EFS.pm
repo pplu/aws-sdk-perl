@@ -213,7 +213,7 @@ address when mounting the file system in an EC2 instance. You can also
 use the mount target's DNS name when mounting the file system. The EC2
 instance on which you mount the file system via the mount target can
 resolve the mount target's DNS name to its IP address. For more
-information, see How it Works: Implementation Overview
+information, see How it Works: Implementation Overview.
 
 Note that you can create mount targets for a file system in only one
 VPC, and there can be only one mount target per Availability Zone. That
@@ -284,7 +284,7 @@ Availability Zone through a mount target created in another
 Availability Zone. For more information, go to Amazon EFS product
 detail page. In addition, by always using a mount target local to the
 instance's Availability Zone, you eliminate a partial failure scenario;
-if the Availablity Zone in which your mount target is created goes
+if the Availability Zone in which your mount target is created goes
 down, then you won't be able to access your file system through that
 mount target.
 
@@ -511,7 +511,7 @@ C<elasticfilesystem:DescribeFileSystems> action.
 
 
 
-=head2 DescribeMountTargets(FileSystemId => Str, [Marker => Str, MaxItems => Int])
+=head2 DescribeMountTargets([FileSystemId => Str, Marker => Str, MaxItems => Int, MountTargetId => Str])
 
 Each argument is described in detail in: L<Paws::EFS::DescribeMountTargets>
 
@@ -519,13 +519,15 @@ Returns: a L<Paws::EFS::DescribeMountTargetsResponse> instance
 
   
 
-Returns the descriptions of the current mount targets for a file
-system. The order of mount targets returned in the response is
-unspecified.
+Returns the descriptions of all the current mount targets, or a
+specific mount target, for a file system. When requesting all of the
+current mount targets, the order of mount targets returned in the
+response is unspecified.
 
 This operation requires permission for the
-C<elasticfilesystem:DescribeMountTargets> action on the file system
-C<FileSystemId>.
+C<elasticfilesystem:DescribeMountTargets> action, on either the file
+system id that you specify in C<FileSystemId>, or on the file system of
+the mount target that you specify in C<MountTargetId>.
 
 
 
