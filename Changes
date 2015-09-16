@@ -15,6 +15,9 @@
  - S3 API update: event filtering
  - IAM API update: Policy simulation methods
  - Kinesis API update: Appoximate arrival timestamp on Record object
+ - Elastic File System API update
+ - Route53: Child and Inverted Health Checks
+ - EC2 API update: DataEncryptionKeyId and StateMessage in snapshots. Spot fleet allocation strategy
 
 0.14 06 Aug 2015
  - LWP Caller (Paws::Net::LWPCaller). Paws supports calling behind HTTPS proxies with LWP (dtikhonov)
