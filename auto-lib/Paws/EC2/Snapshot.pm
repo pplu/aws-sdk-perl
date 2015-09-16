@@ -1,6 +1,7 @@
 
 package Paws::EC2::Snapshot;
   use Moose;
+  has DataEncryptionKeyId => (is => 'ro', isa => 'Str', xmlname => 'dataEncryptionKeyId', traits => ['Unwrapped',]);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped',]);
   has Encrypted => (is => 'ro', isa => 'Bool', xmlname => 'encrypted', traits => ['Unwrapped',]);
   has KmsKeyId => (is => 'ro', isa => 'Str', xmlname => 'kmsKeyId', traits => ['Unwrapped',]);
@@ -10,6 +11,7 @@ package Paws::EC2::Snapshot;
   has SnapshotId => (is => 'ro', isa => 'Str', xmlname => 'snapshotId', traits => ['Unwrapped',]);
   has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', traits => ['Unwrapped',]);
   has State => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
+  has StateMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped',]);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped',]);
   has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped',]);
   has VolumeSize => (is => 'ro', isa => 'Int', xmlname => 'volumeSize', traits => ['Unwrapped',]);
@@ -23,6 +25,26 @@ package Paws::EC2::Snapshot;
 Paws::EC2::Snapshot
 
 =head1 ATTRIBUTES
+
+=head2 DataEncryptionKeyId => Str
+
+  
+
+The data encryption key identifier for the snapshot. This value is a
+unique identifier that corresponds to the data encryption key that was
+used to encrypt the original volume or snapshot copy. Because data
+encryption keys are inherited by volumes created from snapshots, and
+vice versa, if snapshots share the same data encryption key identifier,
+then they belong to the same volume/snapshot lineage. This parameter is
+only returned by the DescribeSnapshots API operation.
+
+
+
+
+
+
+
+
 
 =head2 Description => Str
 
@@ -115,7 +137,8 @@ The progress of the snapshot, as a percentage.
 
   
 
-The ID of the snapshot.
+The ID of the snapshot. Each snapshot receives a unique identifier when
+it is created.
 
 
 
@@ -153,6 +176,24 @@ The snapshot state.
 
 
 
+=head2 StateMessage => Str
+
+  
+
+Encrypted Amazon EBS snapshots are copied asynchronously. If a snapshot
+copy operation fails (for example, if the proper AWS Key Management
+Service (AWS KMS) permissions are not obtained) this field displays
+error state details to help you diagnose why the error occurred. This
+parameter is only returned by the DescribeSnapshots API operation.
+
+
+
+
+
+
+
+
+
 =head2 Tags => ArrayRef[Paws::EC2::Tag]
 
   
@@ -171,7 +212,7 @@ Any tags assigned to the snapshot.
 
   
 
-The ID of the volume.
+The ID of the volume that was used to create the snapshot.
 
 
 

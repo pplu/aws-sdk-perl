@@ -17,7 +17,7 @@ Paws::EC2::CancelSpotInstanceRequestsResult
 
   
 
-One or more Spot Instance requests.
+One or more Spot instance requests.
 
 
 

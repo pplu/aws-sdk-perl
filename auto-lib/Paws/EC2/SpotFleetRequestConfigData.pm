@@ -1,5 +1,6 @@
 package Paws::EC2::SpotFleetRequestConfigData;
   use Moose;
+  has AllocationStrategy => (is => 'ro', isa => 'Str', xmlname => 'allocationStrategy', traits => ['Unwrapped']);
   has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped']);
   has IamFleetRole => (is => 'ro', isa => 'Str', xmlname => 'iamFleetRole', traits => ['Unwrapped'], required => 1);
   has LaunchSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetLaunchSpecification]', xmlname => 'launchSpecifications', traits => ['Unwrapped'], required => 1);

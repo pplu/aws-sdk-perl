@@ -109,18 +109,18 @@ C<instance-type> - The type of instance (for example, C<m1.small>).
 
 =item *
 
-C<product-description> - The product description for the Spot Price
+C<product-description> - The product description for the Spot price
 (C<Linux/UNIX> | C<SUSE Linux> | C<Windows> | C<Linux/UNIX (Amazon
 VPC)> | C<SUSE Linux (Amazon VPC)> | C<Windows (Amazon VPC)>).
 
 =item *
 
-C<spot-price> - The Spot Price. The value must match exactly (or use
+C<spot-price> - The Spot price. The value must match exactly (or use
 wildcards; greater than or less than comparison is not supported).
 
 =item *
 
-C<timestamp> - The timestamp of the Spot Price history, in UTC format
+C<timestamp> - The timestamp of the Spot price history, in UTC format
 (for example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). You can use
 wildcards (* and ?). Greater than or less than comparison is not
 supported.

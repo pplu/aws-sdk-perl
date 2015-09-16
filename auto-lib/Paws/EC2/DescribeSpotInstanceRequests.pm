@@ -66,7 +66,7 @@ C<availability-zone-group> - The Availability Zone group.
 
 =item *
 
-C<create-time> - The time stamp when the Spot Instance request was
+C<create-time> - The time stamp when the Spot instance request was
 created.
 
 =item *
@@ -83,7 +83,7 @@ C<instance-id> - The ID of the instance that fulfilled the request.
 
 =item *
 
-C<launch-group> - The Spot Instance launch group.
+C<launch-group> - The Spot instance launch group.
 
 =item *
 
@@ -135,7 +135,7 @@ with.
 =item *
 
 C<launch.monitoring-enabled> - Whether monitoring is enabled for the
-Spot Instance.
+Spot instance.
 
 =item *
 
@@ -192,30 +192,30 @@ instance (C<Linux/UNIX> | C<Windows>).
 
 =item *
 
-C<spot-instance-request-id> - The Spot Instance request ID.
+C<spot-instance-request-id> - The Spot instance request ID.
 
 =item *
 
-C<spot-price> - The maximum hourly price for any Spot Instance launched
+C<spot-price> - The maximum hourly price for any Spot instance launched
 to fulfill the request.
 
 =item *
 
-C<state> - The state of the Spot Instance request (C<open> | C<active>
+C<state> - The state of the Spot instance request (C<open> | C<active>
 | C<closed> | C<cancelled> | C<failed>). Spot bid status information
-can help you track your Amazon EC2 Spot Instance requests. For more
+can help you track your Amazon EC2 Spot instance requests. For more
 information, see Spot Bid Status in the Amazon Elastic Compute Cloud
 User Guide.
 
 =item *
 
 C<status-code> - The short code describing the most recent evaluation
-of your Spot Instance request.
+of your Spot instance request.
 
 =item *
 
 C<status-message> - The message explaining the status of the Spot
-Instance request.
+instance request.
 
 =item *
 
@@ -239,7 +239,7 @@ is independent of the C<tag-key> filter.
 
 =item *
 
-C<type> - The type of Spot Instance request (C<one-time> |
+C<type> - The type of Spot instance request (C<one-time> |
 C<persistent>).
 
 =item *
@@ -270,7 +270,7 @@ C<valid-until> - The end date of the request.
 
   
 
-One or more Spot Instance request IDs.
+One or more Spot instance request IDs.
 
 
 

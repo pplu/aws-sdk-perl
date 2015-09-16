@@ -48,20 +48,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The user-specified name for a logical grouping of bids.
 
 When you specify an Availability Zone group in a Spot Instance request,
-all Spot Instances in the request are launched in the same Availability
+all Spot instances in the request are launched in the same Availability
 Zone. Instance proximity is maintained with this parameter, but the
 choice of Availability Zone is not. The group applies only to bids for
-Spot Instances of the same instance type. Any additional Spot Instance
+Spot Instances of the same instance type. Any additional Spot instance
 requests that are specified with the same Availability Zone group name
 are launched in that same Availability Zone, as long as at least one
 instance from the group is still active.
 
 If there is no active instance running in the Availability Zone group
-that you specify for a new Spot Instance request (all instances are
+that you specify for a new Spot instance request (all instances are
 terminated, the bid is expired, or the bid falls below current market),
 then Amazon EC2 launches the instance in any Availability Zone where
 the constraint can be met. Consequently, the subsequent set of Spot
-Instances could be placed in a different zone from the original
+instances could be placed in a different zone from the original
 request, even if you specified the same Availability Zone group.
 
 Default: Instances are launched in any available Availability Zone.
@@ -114,7 +114,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
   
 
-The maximum number of Spot Instances to launch.
+The maximum number of Spot instances to launch.
 
 Default: 1
 
@@ -131,7 +131,7 @@ Default: 1
 
   
 
-The instance launch group. Launch groups are Spot Instances that launch
+The instance launch group. Launch groups are Spot instances that launch
 together and terminate together.
 
 Default: Instances are launched and terminated individually
@@ -153,7 +153,7 @@ Default: Instances are launched and terminated individually
 
   
 
-The maximum hourly price (bid) for any Spot Instance launched to
+The maximum hourly price (bid) for any Spot instance launched to
 fulfill the request.
 
 
@@ -169,7 +169,7 @@ fulfill the request.
 
   
 
-The Spot Instance request type.
+The Spot instance request type.
 
 Default: C<one-time>
 

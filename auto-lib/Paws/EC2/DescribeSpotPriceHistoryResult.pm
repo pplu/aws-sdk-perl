@@ -33,7 +33,7 @@ C<null> when there are no more results to return.
 
   
 
-The historical Spot Prices.
+The historical Spot prices.
 
 
 

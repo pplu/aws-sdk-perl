@@ -55,7 +55,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
   
 
-One or more Spot Instance request IDs.
+One or more Spot instance request IDs.
 
 
 
