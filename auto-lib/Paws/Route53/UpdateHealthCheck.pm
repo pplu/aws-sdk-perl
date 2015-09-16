@@ -1,10 +1,13 @@
 
 package Paws::Route53::UpdateHealthCheck;
   use Moose;
+  has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str]');
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
   has HealthCheckId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'HealthCheckId' , required => 1);
   has HealthCheckVersion => (is => 'ro', isa => 'Int');
+  has HealthThreshold => (is => 'ro', isa => 'Int');
+  has Inverted => (is => 'ro', isa => 'Bool');
   has IPAddress => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has ResourcePath => (is => 'ro', isa => 'Str');
@@ -26,6 +29,23 @@ package Paws::Route53::UpdateHealthCheck;
 Paws::Route53::UpdateHealthCheckResponse
 
 =head1 ATTRIBUTES
+
+=head2 ChildHealthChecks => ArrayRef[Str]
+
+  
+
+For a specified parent health check, a list of C<HealthCheckId> values
+for the associated child health checks.
+
+Specify this value only if you want to change it.
+
+
+
+
+
+
+
+
 
 =head2 FailureThreshold => Int
 
@@ -88,6 +108,43 @@ this value with the current value in the health check, which prevents
 you from updating the health check when the versions don't match. Using
 C<HealthCheckVersion> lets you prevent overwriting another change to
 the health check.
+
+
+
+
+
+
+
+
+
+=head2 HealthThreshold => Int
+
+  
+
+The minimum number of child health checks that must be healthy for
+Route 53 to consider the parent health check to be healthy. Valid
+values are integers between 0 and 256, inclusive.
+
+Specify this value only if you want to change it.
+
+
+
+
+
+
+
+
+
+=head2 Inverted => Bool
+
+  
+
+A boolean value that indicates whether the status of health check
+should be inverted. For example, if a health check is healthy but
+C<Inverted> is C<True>, then Route 53 considers the health check to be
+unhealthy.
+
+Specify this value only if you want to change it.
 
 
 

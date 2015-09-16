@@ -1,8 +1,12 @@
 package Paws::Route53::HealthCheckConfig;
   use Moose;
+  has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str]');
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
+  has HealthThreshold => (is => 'ro', isa => 'Int');
   has IPAddress => (is => 'ro', isa => 'Str');
+  has Inverted => (is => 'ro', isa => 'Bool');
+  has MeasureLatency => (is => 'ro', isa => 'Bool');
   has Port => (is => 'ro', isa => 'Int');
   has RequestInterval => (is => 'ro', isa => 'Int');
   has ResourcePath => (is => 'ro', isa => 'Str');
