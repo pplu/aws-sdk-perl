@@ -148,7 +148,7 @@ Paws::CloudFront - Perl Interface to AWS Amazon CloudFront
 
   use Paws;
 
-  my $obj = Paws->service('CloudFront')->new;
+  my $obj = Paws->service('CloudFront');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

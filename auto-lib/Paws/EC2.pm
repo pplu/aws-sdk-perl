@@ -1041,7 +1041,7 @@ Paws::EC2 - Perl Interface to AWS Amazon Elastic Compute Cloud
 
   use Paws;
 
-  my $obj = Paws->service('EC2')->new;
+  my $obj = Paws->service('EC2');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

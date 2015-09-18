@@ -75,7 +75,7 @@ Paws::EFS - Perl Interface to AWS Amazon Elastic File System
 
   use Paws;
 
-  my $obj = Paws->service('EFS')->new;
+  my $obj = Paws->service('EFS');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

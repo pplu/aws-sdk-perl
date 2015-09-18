@@ -161,7 +161,7 @@ Paws::ElasticTranscoder - Perl Interface to AWS Amazon Elastic Transcoder
 
   use Paws;
 
-  my $obj = Paws->service('ElasticTranscoder')->new;
+  my $obj = Paws->service('ElasticTranscoder');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

@@ -175,7 +175,7 @@ Paws::SimpleWorkflow - Perl Interface to AWS Amazon Simple Workflow Service
 
   use Paws;
 
-  my $obj = Paws->service('SimpleWorkflow')->new;
+  my $obj = Paws->service('SimpleWorkflow');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

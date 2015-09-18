@@ -363,7 +363,7 @@ Paws::S3 - Perl Interface to AWS Amazon Simple Storage Service
 
   use Paws;
 
-  my $obj = Paws->service('S3')->new;
+  my $obj = Paws->service('S3');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

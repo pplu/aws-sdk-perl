@@ -145,7 +145,7 @@ Paws::MachineLearning - Perl Interface to AWS Amazon Machine Learning
 
   use Paws;
 
-  my $obj = Paws->service('MachineLearning')->new;
+  my $obj = Paws->service('MachineLearning');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

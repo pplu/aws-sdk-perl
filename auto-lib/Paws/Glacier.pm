@@ -175,7 +175,7 @@ Paws::Glacier - Perl Interface to AWS Amazon Glacier
 
   use Paws;
 
-  my $obj = Paws->service('Glacier')->new;
+  my $obj = Paws->service('Glacier');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

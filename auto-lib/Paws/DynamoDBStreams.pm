@@ -40,7 +40,7 @@ Paws::DynamoDBStreams - Perl Interface to AWS Amazon DynamoDB Streams
 
   use Paws;
 
-  my $obj = Paws->service('DynamoDBStreams')->new;
+  my $obj = Paws->service('DynamoDBStreams');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

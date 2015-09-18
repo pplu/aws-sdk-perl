@@ -139,7 +139,7 @@ Paws::CloudSearch - Perl Interface to AWS Amazon CloudSearch
 
   use Paws;
 
-  my $obj = Paws->service('CloudSearch')->new;
+  my $obj = Paws->service('CloudSearch');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

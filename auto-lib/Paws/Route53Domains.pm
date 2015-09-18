@@ -110,7 +110,7 @@ Paws::Route53Domains - Perl Interface to AWS Amazon Route 53 Domains
 
   use Paws;
 
-  my $obj = Paws->service('Route53Domains')->new;
+  my $obj = Paws->service('Route53Domains');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

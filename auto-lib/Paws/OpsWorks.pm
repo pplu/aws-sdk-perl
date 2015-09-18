@@ -370,7 +370,7 @@ Paws::OpsWorks - Perl Interface to AWS AWS OpsWorks
 
   use Paws;
 
-  my $obj = Paws->service('OpsWorks')->new;
+  my $obj = Paws->service('OpsWorks');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

@@ -153,7 +153,7 @@ Paws::EMR - Perl Interface to AWS Amazon Elastic MapReduce
 
   use Paws;
 
-  my $obj = Paws->service('EMR')->new;
+  my $obj = Paws->service('EMR');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

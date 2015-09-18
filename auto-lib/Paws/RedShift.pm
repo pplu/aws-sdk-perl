@@ -314,7 +314,7 @@ Paws::RedShift - Perl Interface to AWS Amazon Redshift
 
   use Paws;
 
-  my $obj = Paws->service('RedShift')->new;
+  my $obj = Paws->service('RedShift');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

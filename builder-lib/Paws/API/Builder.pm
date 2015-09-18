@@ -315,7 +315,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
   use Paws;
 
-  my $obj = Paws->service('[% c.service_name %]')->new;
+  my $obj = Paws->service('[% c.service_name %]');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

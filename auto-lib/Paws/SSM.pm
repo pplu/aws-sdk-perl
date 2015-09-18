@@ -75,7 +75,7 @@ Paws::SSM - Perl Interface to AWS Amazon Simple Systems Management Service
 
   use Paws;
 
-  my $obj = Paws->service('SSM')->new;
+  my $obj = Paws->service('SSM');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

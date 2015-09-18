@@ -159,7 +159,7 @@ Paws::ELB - Perl Interface to AWS Elastic Load Balancing
 
   use Paws;
 
-  my $obj = Paws->service('ELB')->new;
+  my $obj = Paws->service('ELB');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

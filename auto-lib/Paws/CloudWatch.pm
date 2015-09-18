@@ -74,7 +74,7 @@ Paws::CloudWatch - Perl Interface to AWS Amazon CloudWatch
 
   use Paws;
 
-  my $obj = Paws->service('CloudWatch')->new;
+  my $obj = Paws->service('CloudWatch');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

@@ -155,7 +155,7 @@ Paws::ECS - Perl Interface to AWS Amazon EC2 Container Service
 
   use Paws;
 
-  my $obj = Paws->service('ECS')->new;
+  my $obj = Paws->service('ECS');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

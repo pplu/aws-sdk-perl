@@ -109,7 +109,7 @@ Paws::DynamoDB - Perl Interface to AWS Amazon DynamoDB
 
   use Paws;
 
-  my $obj = Paws->service('DynamoDB')->new;
+  my $obj = Paws->service('DynamoDB');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],
