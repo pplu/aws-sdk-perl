@@ -115,7 +115,7 @@ Paws::DirectConnect - Perl Interface to AWS AWS Direct Connect
 
   use Paws;
 
-  my $obj = Paws->service('DirectConnect')->new;
+  my $obj = Paws->service('DirectConnect');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

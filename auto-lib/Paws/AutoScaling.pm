@@ -259,7 +259,7 @@ Paws::AutoScaling - Perl Interface to AWS Auto Scaling
 
   use Paws;
 
-  my $obj = Paws->service('AutoScaling')->new;
+  my $obj = Paws->service('AutoScaling');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

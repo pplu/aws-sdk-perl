@@ -55,7 +55,7 @@ Paws::WorkSpaces - Perl Interface to AWS Amazon WorkSpaces
 
   use Paws;
 
-  my $obj = Paws->service('WorkSpaces')->new;
+  my $obj = Paws->service('WorkSpaces');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

@@ -188,7 +188,7 @@ Paws::Route53 - Perl Interface to AWS Amazon Route 53
 
   use Paws;
 
-  my $obj = Paws->service('Route53')->new;
+  my $obj = Paws->service('Route53');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

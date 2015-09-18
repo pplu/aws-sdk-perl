@@ -129,7 +129,7 @@ Paws::SES - Perl Interface to AWS Amazon Simple Email Service
 
   use Paws;
 
-  my $obj = Paws->service('SES')->new;
+  my $obj = Paws->service('SES');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

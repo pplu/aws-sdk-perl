@@ -105,7 +105,7 @@ Paws::CognitoSync - Perl Interface to AWS Amazon Cognito Sync
 
   use Paws;
 
-  my $obj = Paws->service('CognitoSync')->new;
+  my $obj = Paws->service('CognitoSync');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

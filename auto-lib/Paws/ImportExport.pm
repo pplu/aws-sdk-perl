@@ -67,7 +67,7 @@ Paws::ImportExport - Perl Interface to AWS AWS Import/Export
 
   use Paws;
 
-  my $obj = Paws->service('ImportExport')->new;
+  my $obj = Paws->service('ImportExport');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

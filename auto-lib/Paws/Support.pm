@@ -90,7 +90,7 @@ Paws::Support - Perl Interface to AWS AWS Support
 
   use Paws;
 
-  my $obj = Paws->service('Support')->new;
+  my $obj = Paws->service('Support');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

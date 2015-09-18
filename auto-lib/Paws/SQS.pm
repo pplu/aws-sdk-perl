@@ -142,7 +142,7 @@ Paws::SQS - Perl Interface to AWS Amazon Simple Queue Service
 
   use Paws;
 
-  my $obj = Paws->service('SQS')->new;
+  my $obj = Paws->service('SQS');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],
