@@ -1,0 +1,10 @@
+package Paws::S3::LifecycleRule;
+  use Moose;
+  has Expiration => (is => 'ro', isa => 'Paws::S3::LifecycleExpiration');
+  has ID => (is => 'ro', isa => 'Str');
+  has NoncurrentVersionExpiration => (is => 'ro', isa => 'Paws::S3::NoncurrentVersionExpiration');
+  has NoncurrentVersionTransitions => (is => 'ro', isa => 'ArrayRef[Paws::S3::NoncurrentVersionTransition]', xmlname => 'NoncurrentVersionTransition', request_name => 'NoncurrentVersionTransition', traits => ['Unwrapped','NameInRequest']);
+  has Prefix => (is => 'ro', isa => 'Str', required => 1);
+  has Status => (is => 'ro', isa => 'Str', required => 1);
+  has Transitions => (is => 'ro', isa => 'ArrayRef[Paws::S3::Transition]', xmlname => 'Transition', request_name => 'Transition', traits => ['Unwrapped','NameInRequest']);
+1;

@@ -166,6 +166,11 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::GetBucketLifecycle', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetBucketLifecycleConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::GetBucketLifecycleConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetBucketLocation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::GetBucketLocation', @_);
@@ -279,6 +284,11 @@ package Paws::S3;
   sub PutBucketLifecycle {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::PutBucketLifecycle', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutBucketLifecycleConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::PutBucketLifecycleConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutBucketLogging {
@@ -734,6 +744,26 @@ Returns: a L<Paws::S3::GetBucketLifecycleOutput> instance
 
   
 
+Deprecated, see the GetBucketLifecycleConfiguration operation.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetBucketLifecycleConfiguration(Bucket => Str)
+
+Each argument is described in detail in: L<Paws::S3::GetBucketLifecycleConfiguration>
+
+Returns: a L<Paws::S3::GetBucketLifecycleConfigurationOutput> instance
+
+  
+
 Returns the lifecycle configuration information set on the bucket.
 
 
@@ -1165,7 +1195,7 @@ Sets the permissions on a bucket using access control lists (ACL).
 
 
 
-=head2 PutBucketCors(Bucket => Str, [ContentMD5 => Str, CORSConfiguration => Paws::S3::CORSConfiguration])
+=head2 PutBucketCors(Bucket => Str, CORSConfiguration => Paws::S3::CORSConfiguration, [ContentMD5 => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketCors>
 
@@ -1188,6 +1218,26 @@ Sets the cors configuration for a bucket.
 =head2 PutBucketLifecycle(Bucket => Str, [ContentMD5 => Str, LifecycleConfiguration => Paws::S3::LifecycleConfiguration])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketLifecycle>
+
+Returns: nothing
+
+  
+
+Deprecated, see the PutBucketLifecycleConfiguration operation.
+
+
+
+
+
+
+
+
+
+
+
+=head2 PutBucketLifecycleConfiguration(Bucket => Str, [LifecycleConfiguration => Paws::S3::BucketLifecycleConfiguration])
+
+Each argument is described in detail in: L<Paws::S3::PutBucketLifecycleConfiguration>
 
 Returns: nothing
 
