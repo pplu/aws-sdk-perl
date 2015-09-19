@@ -145,7 +145,7 @@ Paws::DeviceFarm - Perl Interface to AWS AWS Device Farm
 
   use Paws;
 
-  my $obj = Paws->service('DeviceFarm')->new;
+  my $obj = Paws->service('DeviceFarm');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

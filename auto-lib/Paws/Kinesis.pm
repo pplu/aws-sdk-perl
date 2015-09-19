@@ -85,7 +85,7 @@ Paws::Kinesis - Perl Interface to AWS Amazon Kinesis
 
   use Paws;
 
-  my $obj = Paws->service('Kinesis')->new;
+  my $obj = Paws->service('Kinesis');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

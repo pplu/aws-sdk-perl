@@ -620,7 +620,7 @@ Paws::IAM - Perl Interface to AWS AWS Identity and Access Management
 
   use Paws;
 
-  my $obj = Paws->service('IAM')->new;
+  my $obj = Paws->service('IAM');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

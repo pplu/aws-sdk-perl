@@ -110,7 +110,7 @@ Paws::CognitoIdentity - Perl Interface to AWS Amazon Cognito Identity
 
   use Paws;
 
-  my $obj = Paws->service('CognitoIdentity')->new;
+  my $obj = Paws->service('CognitoIdentity');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

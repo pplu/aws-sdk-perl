@@ -115,7 +115,7 @@ Paws::DataPipeline - Perl Interface to AWS AWS Data Pipeline
 
   use Paws;
 
-  my $obj = Paws->service('DataPipeline')->new;
+  my $obj = Paws->service('DataPipeline');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

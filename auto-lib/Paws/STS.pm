@@ -95,7 +95,7 @@ Paws::STS - Perl Interface to AWS AWS Security Token Service
 
   use Paws;
 
-  my $obj = Paws->service('STS')->new;
+  my $obj = Paws->service('STS');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

@@ -133,7 +133,7 @@ Paws::Lambda - Perl Interface to AWS AWS Lambda
 
   use Paws;
 
-  my $obj = Paws->service('Lambda')->new;
+  my $obj = Paws->service('Lambda');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

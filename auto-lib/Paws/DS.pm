@@ -105,7 +105,7 @@ Paws::DS - Perl Interface to AWS AWS Directory Service
 
   use Paws;
 
-  my $obj = Paws->service('DS')->new;
+  my $obj = Paws->service('DS');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

@@ -35,7 +35,7 @@ Paws::CloudSearchDomain - Perl Interface to AWS Amazon CloudSearch Domain
 
   use Paws;
 
-  my $obj = Paws->service('CloudSearchDomain')->new;
+  my $obj = Paws->service('CloudSearchDomain');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

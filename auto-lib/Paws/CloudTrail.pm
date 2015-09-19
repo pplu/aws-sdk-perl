@@ -60,7 +60,7 @@ Paws::CloudTrail - Perl Interface to AWS AWS CloudTrail
 
   use Paws;
 
-  my $obj = Paws->service('CloudTrail')->new;
+  my $obj = Paws->service('CloudTrail');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

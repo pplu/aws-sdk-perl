@@ -87,7 +87,7 @@ Paws::SDB - Perl Interface to AWS Amazon SimpleDB
 
   use Paws;
 
-  my $obj = Paws->service('SDB')->new;
+  my $obj = Paws->service('SDB');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

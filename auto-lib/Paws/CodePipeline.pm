@@ -135,7 +135,7 @@ Paws::CodePipeline - Perl Interface to AWS AWS CodePipeline
 
   use Paws;
 
-  my $obj = Paws->service('CodePipeline')->new;
+  my $obj = Paws->service('CodePipeline');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

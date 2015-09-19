@@ -144,7 +144,7 @@ Paws::SNS - Perl Interface to AWS Amazon Simple Notification Service
 
   use Paws;
 
-  my $obj = Paws->service('SNS')->new;
+  my $obj = Paws->service('SNS');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

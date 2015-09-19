@@ -105,7 +105,7 @@ Paws::CloudHSM - Perl Interface to AWS Amazon CloudHSM
 
   use Paws;
 
-  my $obj = Paws->service('CloudHSM')->new;
+  my $obj = Paws->service('CloudHSM');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

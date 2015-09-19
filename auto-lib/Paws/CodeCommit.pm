@@ -75,7 +75,7 @@ Paws::CodeCommit - Perl Interface to AWS AWS CodeCommit
 
   use Paws;
 
-  my $obj = Paws->service('CodeCommit')->new;
+  my $obj = Paws->service('CodeCommit');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

@@ -180,7 +180,7 @@ Paws::CodeDeploy - Perl Interface to AWS AWS CodeDeploy
 
   use Paws;
 
-  my $obj = Paws->service('CodeDeploy')->new;
+  my $obj = Paws->service('CodeDeploy');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

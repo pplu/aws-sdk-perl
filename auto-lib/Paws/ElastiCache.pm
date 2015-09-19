@@ -204,7 +204,7 @@ Paws::ElastiCache - Perl Interface to AWS Amazon ElastiCache
 
   use Paws;
 
-  my $obj = Paws->service('ElastiCache')->new;
+  my $obj = Paws->service('ElastiCache');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

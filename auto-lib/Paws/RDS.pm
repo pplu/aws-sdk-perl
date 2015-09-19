@@ -417,7 +417,7 @@ Paws::RDS - Perl Interface to AWS Amazon Relational Database Service
 
   use Paws;
 
-  my $obj = Paws->service('RDS')->new;
+  my $obj = Paws->service('RDS');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

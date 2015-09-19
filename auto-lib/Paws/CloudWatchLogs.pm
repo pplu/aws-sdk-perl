@@ -130,7 +130,7 @@ Paws::CloudWatchLogs - Perl Interface to AWS Amazon CloudWatch Logs
 
   use Paws;
 
-  my $obj = Paws->service('CloudWatchLogs')->new;
+  my $obj = Paws->service('CloudWatchLogs');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

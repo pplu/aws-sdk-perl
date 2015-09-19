@@ -285,7 +285,7 @@ Paws::StorageGateway - Perl Interface to AWS AWS Storage Gateway
 
   use Paws;
 
-  my $obj = Paws->service('StorageGateway')->new;
+  my $obj = Paws->service('StorageGateway');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],

@@ -104,7 +104,7 @@ Paws::CloudFormation - Perl Interface to AWS AWS CloudFormation
 
   use Paws;
 
-  my $obj = Paws->service('CloudFormation')->new;
+  my $obj = Paws->service('CloudFormation');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],
