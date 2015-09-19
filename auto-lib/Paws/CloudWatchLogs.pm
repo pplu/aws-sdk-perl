@@ -8,6 +8,16 @@ package Paws::CloudWatchLogs;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub CancelExportTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::CancelExportTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateExportTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::CreateExportTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateLogGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::CreateLogGroup', @_);
@@ -51,6 +61,11 @@ package Paws::CloudWatchLogs;
   sub DescribeDestinations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeDestinations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeExportTasks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeExportTasks', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLogGroups {
@@ -220,6 +235,52 @@ libraries, which you can find at the following AWS developer centers:
 
 
 =head1 METHODS
+
+=head2 CancelExportTask(taskId => Str)
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::CancelExportTask>
+
+Returns: nothing
+
+  
+
+Cancels an export task if it is in C<PENDING> or C<RUNNING> state.
+
+
+
+
+
+
+
+
+
+
+
+=head2 CreateExportTask(destination => Str, from => Int, logGroupName => Str, to => Int, [destinationPrefix => Str, logStreamNamePrefix => Str, taskName => Str])
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateExportTask>
+
+Returns: a L<Paws::CloudWatchLogs::CreateExportTaskResponse> instance
+
+  
+
+Creates an C<ExportTask> which allows you to efficiently export data
+from a Log Group to your Amazon S3 bucket.
+
+This is an asynchronous call. If all the required information is
+provided, this API will initiate an export task and respond with the
+task Id. Once started, C<DescribeExportTasks> can be used to get the
+status of an export task.
+
+
+
+
+
+
+
+
+
+
 
 =head2 CreateLogGroup(logGroupName => Str)
 
@@ -429,6 +490,34 @@ more destinations to list, the response would contain a C<nextToken>
 value in the response body. You can also limit the number of
 destinations returned in the response by specifying the C<limit>
 parameter in the request.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeExportTasks([limit => Int, nextToken => Str, statusCode => Str, taskId => Str])
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeExportTasks>
+
+Returns: a L<Paws::CloudWatchLogs::DescribeExportTasksResponse> instance
+
+  
+
+Returns all the export tasks that are associated with the AWS account
+making the request. The export tasks can be filtered based on C<TaskId>
+or C<TaskStatus>.
+
+By default, this operation returns up to 50 export tasks that satisfy
+the specified filters. If there are more export tasks to list, the
+response would contain a C<nextToken> value in the response body. You
+can also limit the number of export tasks returned in the response by
+specifying the C<limit> parameter in the request.
 
 
 

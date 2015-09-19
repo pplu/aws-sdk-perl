@@ -1,0 +1,12 @@
+package Paws::CloudWatchLogs::ExportTask;
+  use Moose;
+  has destination => (is => 'ro', isa => 'Str');
+  has destinationPrefix => (is => 'ro', isa => 'Str');
+  has executionInfo => (is => 'ro', isa => 'Paws::CloudWatchLogs::ExportTaskExecutionInfo');
+  has from => (is => 'ro', isa => 'Int');
+  has logGroupName => (is => 'ro', isa => 'Str');
+  has status => (is => 'ro', isa => 'Paws::CloudWatchLogs::ExportTaskStatus');
+  has taskId => (is => 'ro', isa => 'Str');
+  has taskName => (is => 'ro', isa => 'Str');
+  has to => (is => 'ro', isa => 'Int');
+1;

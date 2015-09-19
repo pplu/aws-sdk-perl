@@ -1,5 +1,6 @@
 0.16
  - S3 Update: Support for S3 Standard - Infrequent Access 
+ - CloudWatchLogs Update: Export tasks
 
 0.15 16 Sep 2015
  - fix unicode issues in test t/10_responses.t (ioanrogers)
