@@ -297,3 +297,5 @@ ioanrogers for fixing unicode issues in tests
 ilmari for fixing issues with timestamps in Date and X-Amz-Date headers
 
 stevecaldwell77 for contributing support for temporary credentials in S3
+
+Gimpson for contributing documentation fixes
