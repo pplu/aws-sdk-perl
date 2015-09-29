@@ -81,7 +81,7 @@ The available provider names for C<Logins> are as follows:
 
 =item * Amazon: C<www.amazon.com>
 
-=item * Twitter: C<www.twitter.com>
+=item * Twitter: C<api.twitter.com>
 
 =item * Digits: C<www.digits.com>
 

@@ -17,7 +17,7 @@ Paws::CognitoIdentity::GetCredentialsForIdentityResponse
 
   
 
-Credentials for the the provided identity ID.
+Credentials for the provided identity ID.
 
 
 

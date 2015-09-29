@@ -184,8 +184,24 @@ Returns: a L<Paws::CognitoIdentity::IdentityPool> instance
 
 Creates a new identity pool. The identity pool is a store of user
 identity information that is specific to your AWS account. The limit on
-identity pools is 60 per account. You must use AWS Developer
-credentials to call this API.
+identity pools is 60 per account. The keys for
+C<SupportedLoginProviders> are as follows:
+
+=over
+
+=item * Facebook: C<graph.facebook.com>
+
+=item * Google: C<accounts.google.com>
+
+=item * Amazon: C<www.amazon.com>
+
+=item * Twitter: C<api.twitter.com>
+
+=item * Digits: C<www.digits.com>
+
+=back
+
+You must use AWS Developer credentials to call this API.
 
 
 
@@ -297,10 +313,10 @@ Returns: a L<Paws::CognitoIdentity::GetCredentialsForIdentityResponse> instance
 
   
 
-Returns credentials for the the provided identity ID. Any provided
-logins will be validated against supported login providers. If the
-token is for cognito-identity.amazonaws.com, it will be passed through
-to AWS Security Token Service with the appropriate role for the token.
+Returns credentials for the provided identity ID. Any provided logins
+will be validated against supported login providers. If the token is
+for cognito-identity.amazonaws.com, it will be passed through to AWS
+Security Token Service with the appropriate role for the token.
 
 This is a public API. You do not need any credentials to call this API.
 
@@ -324,8 +340,6 @@ Returns: a L<Paws::CognitoIdentity::GetIdResponse> instance
 
 Generates (or retrieves) a Cognito ID. Supplying multiple logins will
 create an implicit linked account.
-
-token+";"+tokenSecret.
 
 This is a public API. You do not need any credentials to call this API.
 
@@ -455,7 +469,7 @@ Returns: a L<Paws::CognitoIdentity::ListIdentityPoolsResponse> instance
 
 Lists all of the Cognito identity pools registered for your account.
 
-This is a public API. You do not need any credentials to call this API.
+You must use AWS Developer credentials to call this API.
 
 
 
@@ -565,7 +579,7 @@ they are seen. If, for a given Cognito identity, you remove all
 federated identities as well as the developer user identifier, the
 Cognito identity becomes inaccessible.
 
-This is a public API. You do not need any credentials to call this API.
+You must use AWS Developer credentials to call this API.
 
 
 
