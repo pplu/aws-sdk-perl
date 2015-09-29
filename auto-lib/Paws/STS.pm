@@ -17,7 +17,7 @@ package Paws::STS;
           'cn-'
         ]
       ],
-      uri => '{scheme}://{service}.cn-north-1.amazonaws.com.cn'
+      uri => '{scheme}://{service}.{region}.amazonaws.com.cn'
     },
     {
       constraints => [

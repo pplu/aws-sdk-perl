@@ -18,7 +18,7 @@ package Paws::EMR;
           'cn-'
         ]
       ],
-      uri => 'https://elasticmapreduce.cn-north-1.amazonaws.com.cn'
+      uri => 'https://elasticmapreduce.{region}.amazonaws.com.cn'
     },
     {
       constraints => [

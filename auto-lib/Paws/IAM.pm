@@ -17,7 +17,7 @@ package Paws::IAM;
           'cn-'
         ]
       ],
-      uri => 'https://{service}.cn-north-1.amazonaws.com.cn'
+      uri => 'https://{service}.{region}.amazonaws.com.cn'
     },
     {
       constraints => [
