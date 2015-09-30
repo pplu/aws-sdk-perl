@@ -31,13 +31,17 @@ package Paws::Net::LWPCaller {
         (defined $requestObj->content)?(Content => $requestObj->content):(),
     );
 
-    my $res = $service->handle_response($call_object, $response->code, $response->content, $response->headers);
-    if (not ref($res)){
-      return $res;
-    } elsif ($res->isa('Paws::Exception')) {
-      $res->throw;
+    if ($response->code == 500 and $response->header('client-warning') eq 'Internal response') {
+        Paws::Exception->throw(message => $response->content, code => 'ConnectionError', request_id => '');
     } else {
-      return $res;
+      my $res = $service->handle_response($call_object, $response->code, $response->content, $response->headers);
+      if (not ref($res)){
+        return $res;
+      } elsif ($res->isa('Paws::Exception')) {
+        $res->throw;
+      } else {
+        return $res;
+      }
     }
   }
 }

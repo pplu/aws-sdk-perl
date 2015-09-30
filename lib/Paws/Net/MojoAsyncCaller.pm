@@ -26,14 +26,18 @@ package Paws::Net::MojoAsyncCaller {
       sub {
         my ( $ua, $response ) = @_;
 
-        my $res = $service->handle_response($call_object, $response->res->code, $response->res->body, $response->res->headers->to_hash);
-
-        if (not ref($res)){
-            $future->done($res);
-        if ($res->isa('Paws::Exception')) {
-          $future->fail($res);
+        if (my $err = $response->error and not defined $response->error->{ code }){
+          $future->fail(Paws::Exception->new(message => $err->{ message }, code => 'ConnectionError', request_id => ''));
         } else {
-          $future->done($res);
+          my $res = $service->handle_response($call_object, $response->res->code, $response->res->body, $response->res->headers->to_hash);
+
+          if (not ref($res)){
+            $future->done($res);
+          } elsif ($res->isa('Paws::Exception')) {
+            $future->fail($res);
+          } else {
+            $future->done($res);
+          }
         }
       }   
     );

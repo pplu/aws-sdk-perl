@@ -31,13 +31,18 @@ package Paws::Net::Caller {
       }
     );
 
-    my $res = $service->handle_response($call_object, $response->{status}, $response->{content}, $response->{headers});
-    if (not ref($res)){
-      return $res;
-    } elsif ($res->isa('Paws::Exception')) {
-      $res->throw;
+    if ($response->{status} == 599){
+      Paws::Exception->throw(message => $response->{content}, code => 'ConnectionError', request_id => '');
+      # Connection error. Retry
     } else {
-      return $res;
+      my $res = $service->handle_response($call_object, $response->{status}, $response->{content}, $response->{headers});
+      if (not ref($res)){
+        return $res;
+      } elsif ($res->isa('Paws::Exception')) {
+        $res->throw;
+      } else {
+        return $res;
+      }
     }
   }
 }

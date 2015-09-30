@@ -37,6 +37,10 @@ on 'develop' => sub {
   requires 'Dist::Zilla::Plugin::Test::Compile';
   requires 'Carp::Always';
   requires 'Devel::Cover';
+  # For developing / testing the pluggable callers
+  requires 'Mojolicious';
+  requires 'MojoX::IOLoop::Future';
+  requires 'LWP::UserAgent';
 };
 on 'test' => sub {
   requires 'File::Slurper';
