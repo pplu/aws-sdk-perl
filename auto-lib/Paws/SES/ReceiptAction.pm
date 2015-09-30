@@ -1,0 +1,10 @@
+package Paws::SES::ReceiptAction;
+  use Moose;
+  has AddHeaderAction => (is => 'ro', isa => 'Paws::SES::AddHeaderAction');
+  has BounceAction => (is => 'ro', isa => 'Paws::SES::BounceAction');
+  has LambdaAction => (is => 'ro', isa => 'Paws::SES::LambdaAction');
+  has S3Action => (is => 'ro', isa => 'Paws::SES::S3Action');
+  has SNSAction => (is => 'ro', isa => 'Paws::SES::SNSAction');
+  has StopAction => (is => 'ro', isa => 'Paws::SES::StopAction');
+  has WorkmailAction => (is => 'ro', isa => 'Paws::SES::WorkmailAction');
+1;

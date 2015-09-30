@@ -7,6 +7,26 @@ package Paws::SES;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
   
+  sub CloneReceiptRuleSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::CloneReceiptRuleSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateReceiptFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::CreateReceiptFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateReceiptRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::CreateReceiptRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateReceiptRuleSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::CreateReceiptRuleSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteIdentity {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::DeleteIdentity', @_);
@@ -17,9 +37,39 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::DeleteIdentityPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteReceiptFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::DeleteReceiptFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteReceiptRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::DeleteReceiptRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteReceiptRuleSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::DeleteReceiptRuleSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteVerifiedEmailAddress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::DeleteVerifiedEmailAddress', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeActiveReceiptRuleSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::DescribeActiveReceiptRuleSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeReceiptRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::DescribeReceiptRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeReceiptRuleSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::DescribeReceiptRuleSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetIdentityDkimAttributes {
@@ -62,6 +112,16 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::ListIdentityPolicies', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListReceiptFilters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::ListReceiptFilters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListReceiptRuleSets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::ListReceiptRuleSets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListVerifiedEmailAddresses {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::ListVerifiedEmailAddresses', @_);
@@ -72,6 +132,16 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::PutIdentityPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ReorderReceiptRuleSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::ReorderReceiptRuleSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SendBounce {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::SendBounce', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SendEmail {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::SendEmail', @_);
@@ -80,6 +150,11 @@ package Paws::SES;
   sub SendRawEmail {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::SendRawEmail', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SetActiveReceiptRuleSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::SetActiveReceiptRuleSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SetIdentityDkimEnabled {
@@ -95,6 +170,16 @@ package Paws::SES;
   sub SetIdentityNotificationTopic {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::SetIdentityNotificationTopic', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SetReceiptRulePosition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::SetReceiptRulePosition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateReceiptRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::UpdateReceiptRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub VerifyDomainDkim {
@@ -165,6 +250,108 @@ Regions and Amazon SES in the Amazon SES Developer Guide.
 
 =head1 METHODS
 
+=head2 CloneReceiptRuleSet(OriginalRuleSetName => Str, RuleSetName => Str)
+
+Each argument is described in detail in: L<Paws::SES::CloneReceiptRuleSet>
+
+Returns: a L<Paws::SES::CloneReceiptRuleSetResponse> instance
+
+  
+
+Creates a receipt rule set by cloning an existing one. All receipt
+rules and configurations are copied to the new receipt rule set and are
+completely independent of the source rule set.
+
+For information about setting up rule sets, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
+=head2 CreateReceiptFilter(Filter => Paws::SES::ReceiptFilter)
+
+Each argument is described in detail in: L<Paws::SES::CreateReceiptFilter>
+
+Returns: a L<Paws::SES::CreateReceiptFilterResponse> instance
+
+  
+
+Creates a new IP address filter.
+
+For information about setting up IP address filters, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
+=head2 CreateReceiptRule(Rule => Paws::SES::ReceiptRule, RuleSetName => Str, [After => Str])
+
+Each argument is described in detail in: L<Paws::SES::CreateReceiptRule>
+
+Returns: a L<Paws::SES::CreateReceiptRuleResponse> instance
+
+  
+
+Creates a receipt rule.
+
+For information about setting up receipt rules, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
+=head2 CreateReceiptRuleSet(RuleSetName => Str)
+
+Each argument is described in detail in: L<Paws::SES::CreateReceiptRuleSet>
+
+Returns: a L<Paws::SES::CreateReceiptRuleSetResponse> instance
+
+  
+
+Creates an empty receipt rule set.
+
+For information about setting up receipt rule sets, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DeleteIdentity(Identity => Str)
 
 Each argument is described in detail in: L<Paws::SES::DeleteIdentity>
@@ -219,6 +406,84 @@ This action is throttled at one request per second.
 
 
 
+=head2 DeleteReceiptFilter(FilterName => Str)
+
+Each argument is described in detail in: L<Paws::SES::DeleteReceiptFilter>
+
+Returns: a L<Paws::SES::DeleteReceiptFilterResponse> instance
+
+  
+
+Deletes the specified IP address filter.
+
+For information about managing IP address filters, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DeleteReceiptRule(RuleName => Str, RuleSetName => Str)
+
+Each argument is described in detail in: L<Paws::SES::DeleteReceiptRule>
+
+Returns: a L<Paws::SES::DeleteReceiptRuleResponse> instance
+
+  
+
+Deletes the specified receipt rule.
+
+For information about managing receipt rules, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DeleteReceiptRuleSet(RuleSetName => Str)
+
+Each argument is described in detail in: L<Paws::SES::DeleteReceiptRuleSet>
+
+Returns: a L<Paws::SES::DeleteReceiptRuleSetResponse> instance
+
+  
+
+Deletes the specified receipt rule set and all of the receipt rules it
+contains.
+
+The currently active rule set cannot be deleted.
+
+For information about managing receipt rule sets, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DeleteVerifiedEmailAddress(EmailAddress => Str)
 
 Each argument is described in detail in: L<Paws::SES::DeleteVerifiedEmailAddress>
@@ -233,6 +498,82 @@ addresses.
 The DeleteVerifiedEmailAddress action is deprecated as of the May 15,
 2012 release of Domain Verification. The DeleteIdentity action is now
 preferred.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeActiveReceiptRuleSet( => )
+
+Each argument is described in detail in: L<Paws::SES::DescribeActiveReceiptRuleSet>
+
+Returns: a L<Paws::SES::DescribeActiveReceiptRuleSetResponse> instance
+
+  
+
+Returns the metadata and receipt rules for the receipt rule set that is
+currently active.
+
+For information about setting up receipt rule sets, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeReceiptRule(RuleName => Str, RuleSetName => Str)
+
+Each argument is described in detail in: L<Paws::SES::DescribeReceiptRule>
+
+Returns: a L<Paws::SES::DescribeReceiptRuleResponse> instance
+
+  
+
+Returns the details of the specified receipt rule.
+
+For information about setting up receipt rules, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeReceiptRuleSet(RuleSetName => Str)
+
+Each argument is described in detail in: L<Paws::SES::DescribeReceiptRuleSet>
+
+Returns: a L<Paws::SES::DescribeReceiptRuleSetResponse> instance
+
+  
+
+Returns the details of the specified receipt rule set.
+
+For information about managing receipt rule sets, see the Amazon SES
+Developer Guide.
 
 This action is throttled at one request per second.
 
@@ -479,6 +820,59 @@ This action is throttled at one request per second.
 
 
 
+=head2 ListReceiptFilters( => )
+
+Each argument is described in detail in: L<Paws::SES::ListReceiptFilters>
+
+Returns: a L<Paws::SES::ListReceiptFiltersResponse> instance
+
+  
+
+Lists the IP address filters associated with your account.
+
+For information about managing IP address filters, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ListReceiptRuleSets([NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SES::ListReceiptRuleSets>
+
+Returns: a L<Paws::SES::ListReceiptRuleSetsResponse> instance
+
+  
+
+Lists the receipt rule sets that exist under your AWS account. If there
+are additional receipt rule sets to be retrieved, you will receive a
+C<NextToken> that you can provide to the next call to
+C<ListReceiptRuleSets> to retrieve the additional entries.
+
+For information about managing receipt rule sets, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
 =head2 ListVerifiedEmailAddresses( => )
 
 Each argument is described in detail in: L<Paws::SES::ListVerifiedEmailAddresses>
@@ -523,6 +917,65 @@ identity, this API will return an error.
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
 using sending authorization, see the Amazon SES Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ReorderReceiptRuleSet(RuleNames => ArrayRef[Str], RuleSetName => Str)
+
+Each argument is described in detail in: L<Paws::SES::ReorderReceiptRuleSet>
+
+Returns: a L<Paws::SES::ReorderReceiptRuleSetResponse> instance
+
+  
+
+Reorders the receipt rules within a receipt rule set.
+
+All of the rules in the rule set must be represented in this request.
+That is, this API will return an error if the reorder request
+doesnE<rsquo>t explicitly position all of the rules.
+
+For information about managing receipt rule sets, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
+=head2 SendBounce(BouncedRecipientInfoList => ArrayRef[Paws::SES::BouncedRecipientInfo], BounceSender => Str, OriginalMessageId => Str, [BounceSenderArn => Str, Explanation => Str, MessageDsn => Paws::SES::MessageDsn])
+
+Each argument is described in detail in: L<Paws::SES::SendBounce>
+
+Returns: a L<Paws::SES::SendBounceResponse> instance
+
+  
+
+Generates and sends a bounce message to the sender of an email you
+received through Amazon SES. You can only use this API on an email up
+to 24 hours after you receive it.
+
+You cannot use this API to send generic bounces for mail that was not
+received by Amazon SES.
+
+For information about receiving email through Amazon SES, see the
+Amazon SES Developer Guide.
 
 This action is throttled at one request per second.
 
@@ -668,6 +1121,34 @@ Guide.
 
 
 
+=head2 SetActiveReceiptRuleSet([RuleSetName => Str])
+
+Each argument is described in detail in: L<Paws::SES::SetActiveReceiptRuleSet>
+
+Returns: a L<Paws::SES::SetActiveReceiptRuleSetResponse> instance
+
+  
+
+Sets the specified receipt rule set as the active receipt rule set.
+
+To disable your email-receiving through Amazon SES completely, you can
+call this API with RuleSetName set to null.
+
+For information about managing receipt rule sets, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
 =head2 SetIdentityDkimEnabled(DkimEnabled => Bool, Identity => Str)
 
 Each argument is described in detail in: L<Paws::SES::SetIdentityDkimEnabled>
@@ -762,6 +1243,57 @@ This action is throttled at one request per second.
 
 For more information about feedback notification, see the Amazon SES
 Developer Guide.
+
+
+
+
+
+
+
+
+
+
+
+=head2 SetReceiptRulePosition(RuleName => Str, RuleSetName => Str, [After => Str])
+
+Each argument is described in detail in: L<Paws::SES::SetReceiptRulePosition>
+
+Returns: a L<Paws::SES::SetReceiptRulePositionResponse> instance
+
+  
+
+Sets the position of the specified receipt rule in the receipt rule
+set.
+
+For information about managing receipt rules, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+
+
+
+
+
+
+
+
+
+=head2 UpdateReceiptRule(Rule => Paws::SES::ReceiptRule, RuleSetName => Str)
+
+Each argument is described in detail in: L<Paws::SES::UpdateReceiptRule>
+
+Returns: a L<Paws::SES::UpdateReceiptRuleResponse> instance
+
+  
+
+Updates a receipt rule.
+
+For information about managing receipt rules, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
 
 
 
