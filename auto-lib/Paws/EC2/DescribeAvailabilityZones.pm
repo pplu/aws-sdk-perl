@@ -72,7 +72,7 @@ example, C<us-east-1>).
 =item *
 
 C<state> - The state of the Availability Zone (C<available> |
-C<impaired> | C<unavailable>).
+C<information> | C<impaired> | C<unavailable>).
 
 =item *
 

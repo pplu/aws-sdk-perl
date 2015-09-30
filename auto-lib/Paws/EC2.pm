@@ -1,7 +1,7 @@
 package Paws::EC2;
   use Moose;
   sub service { 'ec2' }
-  sub version { '2015-04-15' }
+  sub version { '2015-10-01' }
   sub flattened_arrays { 1 }
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::EC2Caller', 'Paws::Net::XMLResponse';
@@ -760,6 +760,11 @@ package Paws::EC2;
   sub ModifySnapshotAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifySnapshotAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifySpotFleetRequest {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifySpotFleetRequest', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifySubnetAttribute {
@@ -1633,6 +1638,14 @@ Returns: a L<Paws::EC2::CancelSpotFleetRequestsResponse> instance
   
 
 Cancels the specified Spot fleet requests.
+
+After you cancel a Spot fleet request, the Spot fleet launches no new
+Spot instances. You must specify whether the Spot fleet should also
+terminate its Spot instances. If you terminate the instances, the Spot
+fleet request enters the C<cancelled_terminating> state. Otherwise, the
+Spot fleet request enters the C<cancelled_running> state and the
+instances continue to run until they are interrupted or you terminate
+them manually.
 
 
 
@@ -5182,6 +5195,48 @@ For more information on modifying snapshot permissions, see Sharing
 Snapshots in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Snapshots with AWS Marketplace product codes cannot be made public.
+
+
+
+
+
+
+
+
+
+
+
+=head2 ModifySpotFleetRequest(SpotFleetRequestId => Str, [ExcessCapacityTerminationPolicy => Str, TargetCapacity => Int])
+
+Each argument is described in detail in: L<Paws::EC2::ModifySpotFleetRequest>
+
+Returns: a L<Paws::EC2::ModifySpotFleetRequestResponse> instance
+
+  
+
+Modifies the specified Spot fleet request.
+
+While the Spot fleet request is being modified, it is in the
+C<modifying> state.
+
+To scale up your Spot fleet, increase its target capacity. The Spot
+fleet launches the additional Spot instances according to the
+allocation strategy for the Spot fleet request. If the allocation
+strategy is C<lowestPrice>, the Spot fleet launches instances using the
+Spot pool with the lowest price. If the allocation strategy is
+C<diversified>, the Spot fleet distributes the instances across the
+Spot pools.
+
+To scale down your Spot fleet, decrease its target capacity. First, the
+Spot fleet cancels any open bids that exceed the new target capacity.
+You can request that the Spot fleet terminate Spot instances until the
+size of the fleet no longer exceeds the new target capacity. If the
+allocation strategy is C<lowestPrice>, the Spot fleet terminates the
+instances with the highest price per unit. If the allocation strategy
+is C<diversified>, the Spot fleet terminates instances across the Spot
+pools. Alternatively, you can request that the Spot fleet keep the
+fleet at its current size, but not replace any Spot instances that are
+interrupted or that you terminate manually.
 
 
 
