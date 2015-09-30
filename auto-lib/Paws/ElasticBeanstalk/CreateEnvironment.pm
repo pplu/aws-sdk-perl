@@ -156,9 +156,9 @@ configuration set for this new environment.
 
   
 
-This is an alternative to specifying a configuration name. If
-specified, AWS Elastic Beanstalk sets the configuration values to the
-default values associated with the specified solution stack.
+This is an alternative to specifying a template name. If specified, AWS
+Elastic Beanstalk sets the configuration values to the default values
+associated with the specified solution stack.
 
 Condition: You must specify either this or a C<TemplateName>, but not
 both. If you specify both, AWS Elastic Beanstalk returns an
