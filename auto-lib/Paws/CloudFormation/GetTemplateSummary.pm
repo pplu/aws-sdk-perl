@@ -80,9 +80,9 @@ C<StackName>, C<TemplateBody>, or C<TemplateURL>.
   
 
 Location of file containing the template body. The URL must point to a
-template (max size: 460,800 bytes) located in an Amazon S3 bucket. For
-more information about templates, see Template Anatomy in the AWS
-CloudFormation User Guide.
+template (max size: 460,800 bytes) that is located in an Amazon S3
+bucket. For more information about templates, see Template Anatomy in
+the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
 C<StackName>, C<TemplateBody>, or C<TemplateURL>.

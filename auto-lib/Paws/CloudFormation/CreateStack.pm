@@ -6,6 +6,7 @@ package Paws::CloudFormation::CreateStack;
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
   has OnFailure => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
+  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackPolicyBody => (is => 'ro', isa => 'Str');
   has StackPolicyURL => (is => 'ro', isa => 'Str');
@@ -141,6 +142,36 @@ stack.
 
 
 
+=head2 ResourceTypes => ArrayRef[Str]
+
+  
+
+The template resource types that you have permissions to work with for
+this create stack action, such as C<AWS::EC2::Instance>,
+C<AWS::EC2::*>, or C<Custom::MyCustomInstance>. Use the following
+syntax to describe template resource types: C<AWS::*> (for all AWS
+resource), C<Custom::*> (for all custom resources),
+C<Custom::I<logical_ID>> (for a specific custom resource),
+C<AWS::I<service_name>::*> (for all resources of a particular AWS
+service), and C<AWS::I<service_name>::I<resource_logical_ID>> (for a
+specific AWS resource).
+
+If the list of resource types doesn't include a resource that you're
+creating, the stack creation fails. By default, AWS CloudFormation
+grants permissions to all resource types. AWS Identity and Access
+Management (IAM) uses this parameter for AWS CloudFormation-specific
+condition keys in IAM policies. For more information, see Controlling
+Access with AWS Identity and Access Management.
+
+
+
+
+
+
+
+
+
+
 =head2 B<REQUIRED> StackName => Str
 
   
@@ -240,9 +271,9 @@ C<TemplateURL> parameter, but not both.
   
 
 Location of file containing the template body. The URL must point to a
-template (max size: 460,800 bytes) located in an S3 bucket in the same
-region as the stack. For more information, go to the Template Anatomy
-in the AWS CloudFormation User Guide.
+template (max size: 460,800 bytes) that is located in an Amazon S3
+bucket. For more information, go to the Template Anatomy in the AWS
+CloudFormation User Guide.
 
 Conditional: You must specify either the C<TemplateBody> or the
 C<TemplateURL> parameter, but not both.

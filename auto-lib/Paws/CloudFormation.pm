@@ -22,6 +22,11 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::DeleteStack', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAccountLimits {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeAccountLimits', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeStackEvents {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStackEvents', @_);
@@ -163,10 +168,10 @@ Returns: nothing
   
 
 Cancels an update on the specified stack. If the call completes
-successfully, the stack will roll back the update and revert to the
+successfully, the stack rolls back the update and reverts to the
 previous stack configuration.
 
-Only stacks that are in the UPDATE_IN_PROGRESS state can be canceled.
+You can cancel only stacks that are in the UPDATE_IN_PROGRESS state.
 
 
 
@@ -178,7 +183,7 @@ Only stacks that are in the UPDATE_IN_PROGRESS state can be canceled.
 
 
 
-=head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str], DisableRollback => Bool, NotificationARNs => ArrayRef[Str], OnFailure => Str, Parameters => ArrayRef[Paws::CloudFormation::Parameter], StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[Paws::CloudFormation::Tag], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
+=head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str], DisableRollback => Bool, NotificationARNs => ArrayRef[Str], OnFailure => Str, Parameters => ArrayRef[Paws::CloudFormation::Parameter], ResourceTypes => ArrayRef[Str], StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[Paws::CloudFormation::Tag], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateStack>
 
@@ -211,6 +216,27 @@ Returns: nothing
 Deletes a specified stack. Once the call completes successfully, stack
 deletion starts. Deleted stacks do not show up in the DescribeStacks
 API if the deletion has been completed successfully.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeAccountLimits([NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CloudFormation::DescribeAccountLimits>
+
+Returns: a L<Paws::CloudFormation::DescribeAccountLimitsOutput> instance
+
+  
+
+Retrieves your account's AWS CloudFormation limits, such as the maximum
+number of stacks that you can create in your account.
 
 
 
@@ -523,7 +549,7 @@ other than an Amazon EC2 instance.
 
 
 
-=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str], NotificationARNs => ArrayRef[Str], Parameters => ArrayRef[Paws::CloudFormation::Parameter], StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str], NotificationARNs => ArrayRef[Str], Parameters => ArrayRef[Paws::CloudFormation::Parameter], ResourceTypes => ArrayRef[Str], StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
 
 Each argument is described in detail in: L<Paws::CloudFormation::UpdateStack>
 

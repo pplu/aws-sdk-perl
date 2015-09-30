@@ -6,6 +6,7 @@ package Paws::CloudFormation::GetTemplateSummaryOutput;
   has Description => (is => 'ro', isa => 'Str');
   has Metadata => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::ParameterDeclaration]');
+  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str]');
   has Version => (is => 'ro', isa => 'Str');
 
 1;
@@ -87,6 +88,28 @@ The value that is defined for the C<Metadata> property of the template.
 
 A list of parameter declarations that describe various properties for
 each parameter.
+
+
+
+
+
+
+
+
+
+=head2 ResourceTypes => ArrayRef[Str]
+
+  
+
+A list of all the template resource types that are defined in the
+template, such as C<AWS::EC2::Instance>, C<AWS::Dynamo::Table>, and
+C<Custom::MyCustomInstance>. Use the following syntax to describe
+template resource types: C<AWS::*> (for all AWS resources),
+C<Custom::*> (for all custom resources), C<Custom::I<logical_ID>> (for
+a specific custom resource), C<AWS::I<service_name>::*> (for all
+resources of a particular AWS service), and
+C<AWS::I<service_name>::I<resource_logical_ID>> (for a specific AWS
+resource).
 
 
 

@@ -4,6 +4,7 @@ package Paws::CloudFormation::UpdateStack;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
+  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackPolicyBody => (is => 'ro', isa => 'Str');
   has StackPolicyDuringUpdateBody => (is => 'ro', isa => 'Str');
@@ -90,6 +91,30 @@ stack.
 
 A list of C<Parameter> structures that specify input parameters for the
 stack. For more information, see the Parameter data type.
+
+
+
+
+
+
+
+
+
+
+=head2 ResourceTypes => ArrayRef[Str]
+
+  
+
+The template resource types that you have permissions to work with for
+this update stack action, such as C<AWS::EC2::Instance>,
+C<AWS::EC2::*>, or C<Custom::MyCustomInstance>.
+
+If the list of resource types doesn't include a resource that you're
+updating, the stack update fails. By default, AWS CloudFormation grants
+permissions to all resource types. AWS Identity and Access Management
+(IAM) uses this parameter for AWS CloudFormation-specific condition
+keys in IAM policies. For more information, see Controlling Access with
+AWS Identity and Access Management
 
 
 
@@ -231,9 +256,8 @@ C<TemplateURL> parameter, but not both.
   
 
 Location of file containing the template body. The URL must point to a
-template located in an S3 bucket in the same region as the stack. For
-more information, go to Template Anatomy in the AWS CloudFormation User
-Guide.
+template that is located in an Amazon S3 bucket. For more information,
+go to Template Anatomy in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the C<TemplateBody> or the
 C<TemplateURL> parameter, but not both.

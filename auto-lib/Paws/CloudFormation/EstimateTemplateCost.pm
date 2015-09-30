@@ -74,9 +74,8 @@ are passed, only C<TemplateBody> is used.
   
 
 Location of file containing the template body. The URL must point to a
-template located in an S3 bucket in the same region as the stack. For
-more information, go to Template Anatomy in the AWS CloudFormation User
-Guide.
+template that is located in an Amazon S3 bucket. For more information,
+go to Template Anatomy in the AWS CloudFormation User Guide.
 
 Conditional: You must pass C<TemplateURL> or C<TemplateBody>. If both
 are passed, only C<TemplateBody> is used.
