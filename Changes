@@ -2,6 +2,9 @@
  - docu fixes by Gimpson
  - S3 Update: Support for S3 Standard - Infrequent Access 
  - CloudWatchLogs Update: Export tasks
+ - CloudFormation API Update: support for ResourceTypes
+ - EC2 API update: Update to SpotFleet requests
+ - SES API update: Support for Incoming mail
 
 0.15 16 Sep 2015
  - fix unicode issues in test t/10_responses.t (ioanrogers)
