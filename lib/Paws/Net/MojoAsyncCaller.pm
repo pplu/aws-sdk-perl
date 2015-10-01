@@ -6,7 +6,7 @@ package Paws::Net::MojoAsyncCaller {
   use Mojo::UserAgent;
 
   has ua => (is => 'ro', isa => 'Mojo::UserAgent', default => sub {
-    Mojo::UserAgent->new
+    Mojo::UserAgent->new->connect_timeout(15)->inactivity_timeout(60);
   });
 
   sub do_call {

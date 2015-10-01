@@ -8,7 +8,8 @@ package Paws::Net::Caller {
     default     => sub {
         use HTTP::Tiny;
         HTTP::Tiny->new(
-            'agent' => 'AWS Perl SDK ' . $Paws::VERSION,
+          agent => 'AWS Perl SDK ' . $Paws::VERSION,
+          timeout => 60,
         );
     }
   );

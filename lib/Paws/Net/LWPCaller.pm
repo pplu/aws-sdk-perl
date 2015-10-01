@@ -8,7 +8,7 @@ package Paws::Net::LWPCaller {
   has ua => (is => 'rw', required => 1, lazy => 1,
     default     => sub {
         use LWP::UserAgent;
-        my $ua = LWP::UserAgent->new;
+        my $ua = LWP::UserAgent->new(timeout => 60);
         $ua->env_proxy;
         push @{ $ua->requests_redirectable }, 'POST';
         return $ua;
