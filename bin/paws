@@ -6,7 +6,7 @@ use 5.010;
 use strict;
 use warnings;
 
-use Data::Printer;
+use Data::Dumper;
 use Paws;
 use Moose::Util;
 use ARGV::Struct;
@@ -81,7 +81,7 @@ my %args = %{ ARGV::Struct->new(argv => [ '{', @args, '}' ])->parse };
 
 if ($opts->{ debug }) {
   print "Arguments to the call:\n";
-  p %args;
+  print Dumper(\%args);
 } 
 
 # $call is a Meta Method Object. It can be called via execute
