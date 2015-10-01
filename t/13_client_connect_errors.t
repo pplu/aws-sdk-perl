@@ -6,9 +6,9 @@ use Test::More;
 use Data::Dumper;
 use Module::Runtime qw/require_module/;
 
-use Test::CustomCredentials;
-
 use lib 't/lib';
+
+use Test::CustomCredentials;
 
 my $closed_server_endpoint = 'http://localhost:65511';
 
