@@ -23,7 +23,7 @@ throws_ok {
              )->DescribeInstances;
 } 'Paws::Exception', 'got exception';
 
-like($@->message, qr/Name or service not known/, 'Correct message');
+like($@->message, qr/(?:Name or service not known|Bad hostname)/, 'Correct message');
 cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 
 diag "LWP caller";
