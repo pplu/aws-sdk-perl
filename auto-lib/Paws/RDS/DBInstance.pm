@@ -17,7 +17,6 @@ package Paws::RDS::DBInstance;
   has DBSubnetGroup => (is => 'ro', isa => 'Paws::RDS::DBSubnetGroup');
   has DbInstancePort => (is => 'ro', isa => 'Int');
   has DbiResourceId => (is => 'ro', isa => 'Str');
-  has DomainMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DomainMembership]');
   has Endpoint => (is => 'ro', isa => 'Paws::RDS::Endpoint');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');

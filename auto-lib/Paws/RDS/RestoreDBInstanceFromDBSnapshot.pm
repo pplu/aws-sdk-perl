@@ -7,10 +7,8 @@ package Paws::RDS::RestoreDBInstanceFromDBSnapshot;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBName => (is => 'ro', isa => 'Str');
-  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has Domain => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has LicenseModel => (is => 'ro', isa => 'Str');
@@ -22,7 +20,6 @@ package Paws::RDS::RestoreDBInstanceFromDBSnapshot;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 
@@ -96,7 +93,8 @@ Example: C<us-east-1a>
 
   
 
-This property is not currently implemented.
+True to copy all tags from the restored DB instance to snapshots of the
+DB instance; otherwise false. The default is false.
 
 
 
@@ -117,7 +115,7 @@ Valid Values: C<db.t1.micro | db.m1.small | db.m1.medium | db.m1.large
 | db.m1.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
 db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.r3.large | db.r3.xlarge
 | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro |
-db.t2.small | db.t2.medium>
+db.t2.small | db.t2.medium | db.t2.large>
 
 
 
@@ -139,7 +137,8 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 255 alphanumeric characters or hyphens
+=item * Must contain from 1 to 63 alphanumeric characters or hyphens (1
+to 15 for SQL Server)
 
 =item * First character must be a letter
 
@@ -175,23 +174,6 @@ This parameter doesn't apply to the MySQL engine.
 
 
 
-=head2 DBSecurityGroups => ArrayRef[Str]
-
-  
-
-A list of DB security groups to associate with this DB instance.
-
-Default: The default DB security group for the database engine.
-
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DBSnapshotIdentifier => Str
 
   
@@ -202,7 +184,7 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens
+=item * Must contain from 1 to 255 alphanumeric characters or hyphens
 
 =item * First character must be a letter
 
@@ -224,21 +206,6 @@ Constraints:
   
 
 The DB subnet group name to use for the new instance.
-
-
-
-
-
-
-
-
-
-
-=head2 Domain => Str
-
-  
-
-Specify the Active Directory Domain to restore the instance in.
 
 
 
@@ -462,24 +429,6 @@ encryption.
 
 The password for the given ARN from the Key Store in order to access
 the device.
-
-
-
-
-
-
-
-
-
-
-=head2 VpcSecurityGroupIds => ArrayRef[Str]
-
-  
-
-A list of EC2 VPC security groups to associate with this DB instance.
-
-Default: The default EC2 VPC security group for the DB subnet group's
-VPC.
 
 
 

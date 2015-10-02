@@ -14,7 +14,6 @@ package Paws::RDS::CreateDBInstance;
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has Domain => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
@@ -194,7 +193,8 @@ associated with the specified CharacterSet.
 
   
 
-This property is not currently implemented.
+True to copy all tags from the DB instance to snapshots of the DB
+instance; otherwise false. The default is false.
 
 
 
@@ -234,7 +234,7 @@ Valid Values: C<db.t1.micro | db.m1.small | db.m1.medium | db.m1.large
 | db.m1.xlarge | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge |
 db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.r3.large
 | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge |
-db.t2.micro | db.t2.small | db.t2.medium>
+db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
 
 
 
@@ -338,6 +338,22 @@ B<SQL Server>
 
 Not applicable. Must be null.
 
+B<Amazon Aurora>
+
+The name of the database to create when the primary instance of the DB
+cluster is created. If this parameter is not specified, no database is
+created in the DB instance.
+
+Constraints:
+
+=over
+
+=item * Must contain 1 to 64 alphanumeric characters
+
+=item * Cannot be a word reserved by the specified database engine
+
+=back
+
 
 
 
@@ -410,21 +426,6 @@ If there is no DB subnet group, then it is a non-VPC DB instance.
 
 
 
-=head2 Domain => Str
-
-  
-
-Specify the Active Directory Domain to create the instance in.
-
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Engine => Str
 
   
@@ -476,66 +477,6 @@ us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
 
 =back
 
-B<MySQL>
-
-=over
-
-=item * B<Version 5.1 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
-
-=item * B<Version 5.5 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
-
-=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41
-| 5.5.42>
-
-=item * B<Version 5.6 (Available in all regions):> C< 5.6.19a | 5.6.19b
-| 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23>
-
-=back
-
-B<MySQL>
-
-=over
-
-=item * B<Version 5.1 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
-
-=item * B<Version 5.5 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
-
-=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41
-| 5.5.42>
-
-=item * B<Version 5.6 (Available in all regions):> C< 5.6.19a | 5.6.19b
-| 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23>
-
-=back
-
-B<MySQL>
-
-=over
-
-=item * B<Version 5.1 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
-
-=item * B<Version 5.5 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
-
-=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41
-| 5.5.42>
-
-=item * B<Version 5.6 (Available in all regions):> C< 5.6.19a | 5.6.19b
-| 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23>
-
-=back
-
 B<Oracle Database Enterprise Edition (oracle-ee)>
 
 =over
@@ -546,41 +487,10 @@ us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 |
 11.2.0.2.v6 | 11.2.0.2.v7>
 
 =item * B<Version 11.2 (Available in all regions):> C< 11.2.0.3.v1 |
-11.2.0.3.v2 | 11.2.0.4.v1 | 11.2.0.4.v3>
+11.2.0.3.v2 | 11.2.0.3.v3 | 11.2.0.4.v1 | 11.2.0.4.v3 | 11.2.0.4.v4>
 
-=item * B<Version 12.1 (Available in all regions):> C< 12.1.0.1.v1>
-
-=back
-
-B<Oracle Database Enterprise Edition (oracle-ee)>
-
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 |
-11.2.0.2.v6 | 11.2.0.2.v7>
-
-=item * B<Version 11.2 (Available in all regions):> C< 11.2.0.3.v1 |
-11.2.0.3.v2 | 11.2.0.4.v1 | 11.2.0.4.v3>
-
-=item * B<Version 12.1 (Available in all regions):> C< 12.1.0.1.v1>
-
-=back
-
-B<Oracle Database Enterprise Edition (oracle-ee)>
-
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 |
-11.2.0.2.v6 | 11.2.0.2.v7>
-
-=item * B<Version 11.2 (Available in all regions):> C< 11.2.0.3.v1 |
-11.2.0.3.v2 | 11.2.0.4.v1 | 11.2.0.4.v3>
-
-=item * B<Version 12.1 (Available in all regions):> C< 12.1.0.1.v1>
+=item * B<Version 12.1 (Available in all regions):> C<12.1.0.1.v1 |
+12.1.0.1.v2 | 12.1.0.2.v1>
 
 =back
 
@@ -593,45 +503,11 @@ us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
 11.2.0.2.v7>
 
 =item * B<Version 11.2 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
-11.2.0.4.v3>
+eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3 |
+11.2.0.4.v1 | 11.2.0.4.v3 | 11.2.0.4.v4>
 
 =item * B<Version 12.1 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 12.1.0.1.v1>
-
-=back
-
-B<Oracle Database Standard Edition (oracle-se)>
-
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
-11.2.0.2.v7>
-
-=item * B<Version 11.2 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
-11.2.0.4.v3>
-
-=item * B<Version 12.1 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 12.1.0.1.v1>
-
-=back
-
-B<Oracle Database Standard Edition (oracle-se)>
-
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
-11.2.0.2.v7>
-
-=item * B<Version 11.2 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
-11.2.0.4.v3>
-
-=item * B<Version 12.1 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 12.1.0.1.v1>
+eu-central-1, us-west-1):> C<12.1.0.1.v1 | 12.1.0.1.v2>
 
 =back
 
@@ -644,75 +520,11 @@ us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
 11.2.0.2.v7>
 
 =item * B<Version 11.2 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
-11.2.0.4.v3>
+eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3 |
+11.2.0.4.v1 | 11.2.0.4.v3 | 11.2.0.4.v4>
 
 =item * B<Version 12.1 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 12.1.0.1.v1>
-
-=back
-
-B<Oracle Database Standard Edition One (oracle-se1)>
-
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
-11.2.0.2.v7>
-
-=item * B<Version 11.2 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
-11.2.0.4.v3>
-
-=item * B<Version 12.1 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 12.1.0.1.v1>
-
-=back
-
-B<Oracle Database Standard Edition One (oracle-se1)>
-
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
-11.2.0.2.v7>
-
-=item * B<Version 11.2 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
-11.2.0.4.v3>
-
-=item * B<Version 12.1 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 12.1.0.1.v1>
-
-=back
-
-B<PostgreSQL>
-
-=over
-
-=item * B<Version 9.3 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 9.3.1 | 9.3.2>
-
-=item * B<Version 9.3 (Available in all regions):> C< 9.3.3 | 9.3.5 |
-9.3.6>
-
-=item * B<Version 9.4 (Available in all regions):> C< 9.4.1>
-
-=back
-
-B<PostgreSQL>
-
-=over
-
-=item * B<Version 9.3 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 9.3.1 | 9.3.2>
-
-=item * B<Version 9.3 (Available in all regions):> C< 9.3.3 | 9.3.5 |
-9.3.6>
-
-=item * B<Version 9.4 (Available in all regions):> C< 9.4.1>
+eu-central-1, us-west-1):> C< 12.1.0.1.v1 | 12.1.0.1.v2>
 
 =back
 
@@ -743,30 +555,6 @@ eu-central-1, us-west-1):> C< 11.00.2100.60.v1>
 
 =back
 
-B<Microsoft SQL Server Enterprise Edition (sqlserver-ee)>
-
-=over
-
-=item * B<Version 10.50 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 10.50.2789.0.v1>
-
-=item * B<Version 11.00 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.00.2100.60.v1>
-
-=back
-
-B<Microsoft SQL Server Express Edition (sqlserver-ex)>
-
-=over
-
-=item * B<Version 10.50 (Available in all regions):> C<
-10.50.2789.0.v1>
-
-=item * B<Version 11.00 (Available in all regions):> C<
-11.00.2100.60.v1>
-
-=back
-
 B<Microsoft SQL Server Express Edition (sqlserver-ex)>
 
 =over
@@ -780,30 +568,6 @@ B<Microsoft SQL Server Express Edition (sqlserver-ex)>
 =back
 
 B<Microsoft SQL Server Standard Edition (sqlserver-se)>
-
-=over
-
-=item * B<Version 10.50 (Available in all regions):> C<
-10.50.2789.0.v1>
-
-=item * B<Version 11.00 (Available in all regions):> C<
-11.00.2100.60.v1>
-
-=back
-
-B<Microsoft SQL Server Standard Edition (sqlserver-se)>
-
-=over
-
-=item * B<Version 10.50 (Available in all regions):> C<
-10.50.2789.0.v1>
-
-=item * B<Version 11.00 (Available in all regions):> C<
-11.00.2100.60.v1>
-
-=back
-
-B<Microsoft SQL Server Web Edition (sqlserver-web)>
 
 =over
 
@@ -998,6 +762,10 @@ B<PostgreSQL>
 
 Constraints: Must contain from 8 to 128 characters.
 
+B<Amazon Aurora>
+
+Constraints: Must contain from 8 to 41 characters.
+
 
 
 
@@ -1081,6 +849,14 @@ Default: C<1433>
 
 Valid Values: C<1150-65535> except for C<1434>, C<3389>, C<47001>,
 C<49152>, and C<49152> through C<49156>.
+
+B<Amazon Aurora>
+
+Default: C<3306>
+
+Valid Values: C<1150-65535>
+
+Type: Integer
 
 
 

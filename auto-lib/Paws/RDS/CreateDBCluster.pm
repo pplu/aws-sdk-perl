@@ -5,13 +5,13 @@ package Paws::RDS::CreateDBCluster;
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
+  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
+  has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
+  has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
+  has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
@@ -125,7 +125,7 @@ cluster you are creating.
 
 
 
-=head2 DBClusterIdentifier => Str
+=head2 B<REQUIRED> DBClusterIdentifier => Str
 
   
 
@@ -199,13 +199,13 @@ A DB subnet group to associate with this DB cluster.
 
 
 
-=head2 Engine => Str
+=head2 B<REQUIRED> Engine => Str
 
   
 
 The name of the database engine to be used for this DB cluster.
 
-Valid Values: C<MySQL>
+Valid Values: C<aurora>
 
 
 
@@ -224,7 +224,7 @@ The version number of the database engine to use.
 
 B<Aurora>
 
-Example: C<5.6.0>
+Example: C<5.6.10a>
 
 
 
@@ -235,7 +235,7 @@ Example: C<5.6.0>
 
 
 
-=head2 MasterUsername => Str
+=head2 B<REQUIRED> MasterUsername => Str
 
   
 
@@ -262,7 +262,7 @@ Constraints:
 
 
 
-=head2 MasterUserPassword => Str
+=head2 B<REQUIRED> MasterUserPassword => Str
 
   
 

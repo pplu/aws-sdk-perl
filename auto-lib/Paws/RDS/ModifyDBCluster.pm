@@ -3,7 +3,7 @@ package Paws::RDS::ModifyDBCluster;
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
+  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NewDBClusterIdentifier => (is => 'ro', isa => 'Str');
@@ -92,7 +92,7 @@ Constraints:
 
 
 
-=head2 DBClusterIdentifier => Str
+=head2 B<REQUIRED> DBClusterIdentifier => Str
 
   
 

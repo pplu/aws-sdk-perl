@@ -81,7 +81,7 @@ Constraints:
 
 =back
 
-Example: mydbinstance
+Example: C<mydbinstance>
 
 
 

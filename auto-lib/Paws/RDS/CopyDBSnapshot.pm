@@ -39,7 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-This property is not currently implemented.
+True to copy all tags from the source DB snapshot to the target DB
+snapshot; otherwise false. The default is false.
 
 
 

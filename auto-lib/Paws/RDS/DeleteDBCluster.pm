@@ -1,7 +1,7 @@
 
 package Paws::RDS::DeleteDBCluster;
   use Moose;
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
+  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has FinalDBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SkipFinalSnapshot => (is => 'ro', isa => 'Bool');
 
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 DBClusterIdentifier => Str
+=head2 B<REQUIRED> DBClusterIdentifier => Str
 
   
 

@@ -12,7 +12,6 @@ package Paws::RDS::ModifyDBInstance;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Domain => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -263,7 +262,8 @@ instance.
 
   
 
-This property is not currently implemented.
+True to copy all tags from the DB instance to snapshots of the DB
+instance; otherwise false. The default is false.
 
 
 
@@ -292,7 +292,7 @@ Valid Values: C<db.t1.micro | db.m1.small | db.m1.medium | db.m1.large
 | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge |
 db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.r3.large
 | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge |
-db.t2.micro | db.t2.small | db.t2.medium>
+db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
 
 
 
@@ -376,25 +376,6 @@ Constraints:
 =item * Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
-
-
-
-
-
-
-
-
-
-
-=head2 Domain => Str
-
-  
-
-Specify the Active Directory Domain to move the instance to.
-
-The specified Active Directory Domain must be created prior to this
-operation. Currently only SQL Server instance can be created in a
-Domain
 
 
 
@@ -494,9 +475,9 @@ response.
 
 Default: Uses existing setting
 
-Constraints: Must be 8 to 41 alphanumeric characters (MySQL), 8 to 30
-alphanumeric characters (Oracle), or 8 to 128 alphanumeric characters
-(SQL Server).
+Constraints: Must be 8 to 41 alphanumeric characters (MySQL and Amazon
+Aurora), 8 to 30 alphanumeric characters (Oracle), or 8 to 128
+alphanumeric characters (SQL Server).
 
 Amazon RDS API actions never return the password, so this action
 provides a way to regain access to a primary instance user if the
