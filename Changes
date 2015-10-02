@@ -5,6 +5,10 @@
  - CloudFormation API Update: support for ResourceTypes
  - EC2 API update: Update to SpotFleet requests
  - SES API update: Support for Incoming mail
+ - RDS API update: Changes to API for Aurora DBs (DBCluster operations)
+ - CloudTrail API update: Log File Integrity Verification and Tagging
+ - Workspaces API update: Volume encrytption
+ - New ElasticSearch API (ES): All operations implemented
 
 0.15 16 Sep 2015
  - fix unicode issues in test t/10_responses.t (ioanrogers)

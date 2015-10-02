@@ -33,6 +33,7 @@ package Paws::API::ServiceToClass {
     ecs => 'ECS',
     elasticmapreduce => 'EMR',
     emr => 'EMR',
+    es => 'ES',
     email => undef,
     glacier => 'Glacier',
     iam => 'IAM',
