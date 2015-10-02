@@ -16,7 +16,7 @@ Paws::CloudTrail::DescribeTrailsResponse
 
   
 
-The list of trails.
+The list of trail objects.
 
 
 

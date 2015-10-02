@@ -36,7 +36,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name of the trail for which you are requesting the current status.
+Specifies the name or the CloudTrail ARN of the trail for which you are
+requesting status. The format of a trail ARN is
+C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>.
 
 
 
