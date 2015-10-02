@@ -1,0 +1,15 @@
+package Paws::ES::ElasticsearchDomainStatus;
+  use Moose;
+  has ARN => (is => 'ro', isa => 'Str', required => 1);
+  has AccessPolicies => (is => 'ro', isa => 'Str');
+  has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
+  has Created => (is => 'ro', isa => 'Bool');
+  has Deleted => (is => 'ro', isa => 'Bool');
+  has DomainId => (is => 'ro', isa => 'Str', required => 1);
+  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
+  has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig', required => 1);
+  has Endpoint => (is => 'ro', isa => 'Str');
+  has Processing => (is => 'ro', isa => 'Bool');
+  has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
+1;
