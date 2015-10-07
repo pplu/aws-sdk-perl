@@ -8,7 +8,15 @@
  - RDS API update: Changes to API for Aurora DBs (DBCluster operations)
  - CloudTrail API update: Log File Integrity Verification and Tagging
  - Workspaces API update: Volume encrytption
- - New ElasticSearch API (ES): All operations implemented
+ - New ElasticSearch API (ES)
+ - New WAF API (Web Application Firewall)
+ - New Firehose API
+ - New Inspector API
+ - New MarketplaceCommerceAnalytics API
+ - Config API update: Compliance rules
+ - CloudFront API update
+ - Kinesis API update: adjust the data retention window
+ - EC2 API update: Spot blocks for Defined-Duration workloads
 
 0.15 16 Sep 2015
  - fix unicode issues in test t/10_responses.t (ioanrogers)
