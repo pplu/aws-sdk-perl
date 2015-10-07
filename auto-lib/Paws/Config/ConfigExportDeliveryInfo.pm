@@ -5,4 +5,5 @@ package Paws::Config::ConfigExportDeliveryInfo;
   has lastErrorMessage => (is => 'ro', isa => 'Str');
   has lastStatus => (is => 'ro', isa => 'Str');
   has lastSuccessfulTime => (is => 'ro', isa => 'Str');
+  has nextDeliveryTime => (is => 'ro', isa => 'Str');
 1;

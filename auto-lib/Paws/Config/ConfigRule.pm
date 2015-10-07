@@ -1,0 +1,12 @@
+package Paws::Config::ConfigRule;
+  use Moose;
+  has ConfigRuleArn => (is => 'ro', isa => 'Str');
+  has ConfigRuleId => (is => 'ro', isa => 'Str');
+  has ConfigRuleName => (is => 'ro', isa => 'Str');
+  has ConfigRuleState => (is => 'ro', isa => 'Str');
+  has Description => (is => 'ro', isa => 'Str');
+  has InputParameters => (is => 'ro', isa => 'Str');
+  has MaximumExecutionFrequency => (is => 'ro', isa => 'Str');
+  has Scope => (is => 'ro', isa => 'Paws::Config::Scope');
+  has Source => (is => 'ro', isa => 'Paws::Config::Source', required => 1);
+1;

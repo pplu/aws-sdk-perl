@@ -1,0 +1,11 @@
+package Paws::Config::ConfigRuleEvaluationStatus;
+  use Moose;
+  has ConfigRuleArn => (is => 'ro', isa => 'Str');
+  has ConfigRuleId => (is => 'ro', isa => 'Str');
+  has ConfigRuleName => (is => 'ro', isa => 'Str');
+  has FirstActivatedTime => (is => 'ro', isa => 'Str');
+  has LastErrorCode => (is => 'ro', isa => 'Str');
+  has LastErrorMessage => (is => 'ro', isa => 'Str');
+  has LastFailedInvocationTime => (is => 'ro', isa => 'Str');
+  has LastSuccessfulInvocationTime => (is => 'ro', isa => 'Str');
+1;

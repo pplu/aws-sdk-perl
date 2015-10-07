@@ -8,6 +8,11 @@ package Paws::Config;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub DeleteConfigRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteConfigRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDeliveryChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteDeliveryChannel', @_);
@@ -16,6 +21,26 @@ package Paws::Config;
   sub DeliverConfigSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DeliverConfigSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeComplianceByConfigRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeComplianceByConfigRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeComplianceByResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeComplianceByResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeConfigRuleEvaluationStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeConfigRuleEvaluationStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeConfigRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeConfigRules', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeConfigurationRecorders {
@@ -38,6 +63,26 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribeDeliveryChannelStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetComplianceDetailsByConfigRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetComplianceDetailsByConfigRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetComplianceDetailsByResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetComplianceDetailsByResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetComplianceSummaryByConfigRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetComplianceSummaryByConfigRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetComplianceSummaryByResourceType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetComplianceSummaryByResourceType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetResourceConfigHistory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::GetResourceConfigHistory', @_);
@@ -48,6 +93,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::ListDiscoveredResources', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutConfigRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutConfigRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutConfigurationRecorder {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::PutConfigurationRecorder', @_);
@@ -56,6 +106,11 @@ package Paws::Config;
   sub PutDeliveryChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::PutDeliveryChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutEvaluations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutEvaluations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartConfigurationRecorder {
@@ -133,6 +188,35 @@ Console, see What Is AWS Config? in the I<AWS Config Developer Guide>.
 
 =head1 METHODS
 
+=head2 DeleteConfigRule(ConfigRuleName => Str)
+
+Each argument is described in detail in: L<Paws::Config::DeleteConfigRule>
+
+Returns: nothing
+
+  
+
+Deletes the specified AWS Config rule and all of its evaluation
+results.
+
+AWS Config sets the state of a rule to C<DELETING> until the deletion
+is complete. You cannot update a rule while it is in this state. If you
+make a C<PutConfigRule> request for the rule, you will receive a
+C<ResourceInUseException>.
+
+You can check the state of a rule by using the C<DescribeConfigRules>
+request.
+
+
+
+
+
+
+
+
+
+
+
 =head2 DeleteDeliveryChannel(DeliveryChannelName => Str)
 
 Each argument is described in detail in: L<Paws::Config::DeleteDeliveryChannel>
@@ -182,6 +266,146 @@ successfully completed.
 complete.
 
 =back
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeComplianceByConfigRule([ComplianceTypes => ArrayRef[Str], ConfigRuleNames => ArrayRef[Str], NextToken => Str])
+
+Each argument is described in detail in: L<Paws::Config::DescribeComplianceByConfigRule>
+
+Returns: a L<Paws::Config::DescribeComplianceByConfigRuleResponse> instance
+
+  
+
+Indicates whether the specified AWS Config rules are compliant. If a
+rule is noncompliant, this action returns the number of AWS resources
+that do not comply with the rule.
+
+A rule is compliant if all of the evaluated resources comply with it,
+and it is noncompliant if any of these resources do not comply.
+
+If AWS Config has no current evaluation results for the rule, it
+returns C<InsufficientData>. This result might indicate one of the
+following conditions:
+
+=over
+
+=item * AWS Config has never invoked an evaluation for the rule. To
+check whether it has, use the C<DescribeConfigRuleEvaluationStatus>
+action to get the C<LastSuccessfulInvocationTime> and
+C<LastFailedInvocationTime>.
+
+=item * The rule's AWS Lambda function is failing to send evaluation
+results to AWS Config. Verify that the role that you assigned to your
+configuration recorder includes the C<config:PutEvaluations>
+permission. If the rule is a customer managed rule, verify that the AWS
+Lambda execution role includes the C<config:PutEvaluations> permission.
+
+=item * The rule's AWS Lambda function has returned C<NOT_APPLICABLE>
+for all evaluation results. This can occur if the resources were
+deleted or removed from the rule's scope.
+
+=back
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeComplianceByResource([ComplianceTypes => ArrayRef[Str], Limit => Int, NextToken => Str, ResourceId => Str, ResourceType => Str])
+
+Each argument is described in detail in: L<Paws::Config::DescribeComplianceByResource>
+
+Returns: a L<Paws::Config::DescribeComplianceByResourceResponse> instance
+
+  
+
+Indicates whether the specified AWS resources are compliant. If a
+resource is noncompliant, this action returns the number of AWS Config
+rules that the resource does not comply with.
+
+A resource is compliant if it complies with all the AWS Config rules
+that evaluate it. It is noncompliant if it does not comply with one or
+more of these rules.
+
+If AWS Config has no current evaluation results for the resource, it
+returns C<InsufficientData>. This result might indicate one of the
+following conditions about the rules that evaluate the resource:
+
+=over
+
+=item * AWS Config has never invoked an evaluation for the rule. To
+check whether it has, use the C<DescribeConfigRuleEvaluationStatus>
+action to get the C<LastSuccessfulInvocationTime> and
+C<LastFailedInvocationTime>.
+
+=item * The rule's AWS Lambda function is failing to send evaluation
+results to AWS Config. Verify that the role that you assigned to your
+configuration recorder includes the C<config:PutEvaluations>
+permission. If the rule is a customer managed rule, verify that the AWS
+Lambda execution role includes the C<config:PutEvaluations> permission.
+
+=item * The rule's AWS Lambda function has returned C<NOT_APPLICABLE>
+for all evaluation results. This can occur if the resources were
+deleted or removed from the rule's scope.
+
+=back
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::Config::DescribeConfigRuleEvaluationStatus>
+
+Returns: a L<Paws::Config::DescribeConfigRuleEvaluationStatusResponse> instance
+
+  
+
+Returns status information for each of your AWS managed Config rules.
+The status includes information such as the last time AWS Config
+invoked the rule, the last time AWS Config failed to invoke the rule,
+and the related error for the last failure.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DescribeConfigRules([ConfigRuleNames => ArrayRef[Str], NextToken => Str])
+
+Each argument is described in detail in: L<Paws::Config::DescribeConfigRules>
+
+Returns: a L<Paws::Config::DescribeConfigRulesResponse> instance
+
+  
+
+Returns details about your AWS Config rules.
 
 
 
@@ -289,6 +513,96 @@ Currently, you can specify only one delivery channel per account.
 
 
 
+=head2 GetComplianceDetailsByConfigRule(ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str], Limit => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByConfigRule>
+
+Returns: a L<Paws::Config::GetComplianceDetailsByConfigRuleResponse> instance
+
+  
+
+Returns the evaluation results for the specified AWS Config rule. The
+results indicate which AWS resources were evaluated by the rule, when
+each resource was last evaluated, and whether each resource complies
+with the rule.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetComplianceDetailsByResource(ResourceId => Str, ResourceType => Str, [ComplianceTypes => ArrayRef[Str], NextToken => Str])
+
+Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByResource>
+
+Returns: a L<Paws::Config::GetComplianceDetailsByResourceResponse> instance
+
+  
+
+Returns the evaluation results for the specified AWS resource. The
+results indicate which AWS Config rules were used to evaluate the
+resource, when each rule was last used, and whether the resource
+complies with each rule.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetComplianceSummaryByConfigRule( => )
+
+Each argument is described in detail in: L<Paws::Config::GetComplianceSummaryByConfigRule>
+
+Returns: a L<Paws::Config::GetComplianceSummaryByConfigRuleResponse> instance
+
+  
+
+Returns the number of AWS Config rules that are compliant and
+noncompliant, up to a maximum of 25 for each.
+
+
+
+
+
+
+
+
+
+
+
+=head2 GetComplianceSummaryByResourceType([ResourceTypes => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::Config::GetComplianceSummaryByResourceType>
+
+Returns: a L<Paws::Config::GetComplianceSummaryByResourceTypeResponse> instance
+
+  
+
+Returns the number of resources that are compliant and the number that
+are noncompliant. You can specify one or more resource types to get
+these numbers for each resource type. The maximum number returned is
+100.
+
+
+
+
+
+
+
+
+
+
+
 =head2 GetResourceConfigHistory(resourceId => Str, resourceType => Str, [chronologicalOrder => Str, earlierTime => Str, laterTime => Str, limit => Int, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::GetResourceConfigHistory>
@@ -357,6 +671,59 @@ string for the C<nextToken> parameter.
 
 
 
+=head2 PutConfigRule(ConfigRule => Paws::Config::ConfigRule)
+
+Each argument is described in detail in: L<Paws::Config::PutConfigRule>
+
+Returns: nothing
+
+  
+
+Adds or updates an AWS Config rule for evaluating whether your AWS
+resources comply with your desired configurations.
+
+You can use this action for customer managed Config rules and AWS
+managed Config rules. A customer managed Config rule is a custom rule
+that you develop and maintain. An AWS managed Config rule is a
+customizable, predefined rule that is provided by AWS Config.
+
+If you are adding a new customer managed Config rule, you must first
+create the AWS Lambda function that the rule invokes to evaluate your
+resources. When you use the C<PutConfigRule> action to add the rule to
+AWS Config, you must specify the Amazon Resource Name (ARN) that AWS
+Lambda assigns to the function. Specify the ARN for the
+C<SourceIdentifier> key. This key is part of the C<Source> object,
+which is part of the C<ConfigRule> object.
+
+If you are adding a new AWS managed Config rule, specify the rule's
+identifier for the C<SourceIdentifier> key. To reference AWS managed
+Config rule identifiers, see Using AWS Managed Config Rules.
+
+For any new rule that you add, specify the C<ConfigRuleName> in the
+C<ConfigRule> object. Do not specify the C<ConfigRuleArn> or the
+C<ConfigRuleId>. These values are generated by AWS Config for new
+rules.
+
+If you are updating a rule that you have added previously, specify the
+rule's C<ConfigRuleName>, C<ConfigRuleId>, or C<ConfigRuleArn> in the
+C<ConfigRule> data type that you use in this request.
+
+The maximum number of rules that AWS Config supports is 25.
+
+For more information about developing and using AWS Config rules, see
+Evaluating AWS Resource Configurations with AWS Config in the I<AWS
+Config Developer Guide>.
+
+
+
+
+
+
+
+
+
+
+
 =head2 PutConfigurationRecorder(ConfigurationRecorder => Paws::Config::ConfigurationRecorder)
 
 Each argument is described in detail in: L<Paws::Config::PutConfigurationRecorder>
@@ -407,6 +774,28 @@ for either the S3 bucket or the SNS topic, this action will keep the
 existing value for the parameter that is not changed.
 
 Currently, you can specify only one delivery channel per account.
+
+
+
+
+
+
+
+
+
+
+
+=head2 PutEvaluations(ResultToken => Str, [Evaluations => ArrayRef[Paws::Config::Evaluation]])
+
+Each argument is described in detail in: L<Paws::Config::PutEvaluations>
+
+Returns: a L<Paws::Config::PutEvaluationsResponse> instance
+
+  
+
+Used by an AWS Lambda function to deliver evaluation results to AWS
+Config. This action is required in every AWS Lambda function that is
+invoked by an AWS Config rule.
 
 
 
