@@ -1,0 +1,11 @@
+package Paws::Firehose::DeliveryStreamDescription;
+  use Moose;
+  has CreateTimestamp => (is => 'ro', isa => 'Str');
+  has DeliveryStreamARN => (is => 'ro', isa => 'Str', required => 1);
+  has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
+  has DeliveryStreamStatus => (is => 'ro', isa => 'Str', required => 1);
+  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::DestinationDescription]', required => 1);
+  has HasMoreDestinations => (is => 'ro', isa => 'Bool', required => 1);
+  has LastUpdateTimestamp => (is => 'ro', isa => 'Str');
+  has VersionId => (is => 'ro', isa => 'Str', required => 1);
+1;
