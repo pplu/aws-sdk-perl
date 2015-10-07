@@ -13,4 +13,5 @@ package Paws::CloudFront::DistributionConfig;
   has PriceClass => (is => 'ro', isa => 'Str');
   has Restrictions => (is => 'ro', isa => 'Paws::CloudFront::Restrictions');
   has ViewerCertificate => (is => 'ro', isa => 'Paws::CloudFront::ViewerCertificate');
+  has WebACLId => (is => 'ro', isa => 'Str');
 1;

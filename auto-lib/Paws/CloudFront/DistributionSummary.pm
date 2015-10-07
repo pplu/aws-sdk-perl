@@ -14,4 +14,5 @@ package Paws::CloudFront::DistributionSummary;
   has Restrictions => (is => 'ro', isa => 'Paws::CloudFront::Restrictions', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has ViewerCertificate => (is => 'ro', isa => 'Paws::CloudFront::ViewerCertificate', required => 1);
+  has WebACLId => (is => 'ro', isa => 'Str', required => 1);
 1;
