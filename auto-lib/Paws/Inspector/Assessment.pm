@@ -1,0 +1,13 @@
+package Paws::Inspector::Assessment;
+  use Moose;
+  has applicationArn => (is => 'ro', isa => 'Str');
+  has assessmentArn => (is => 'ro', isa => 'Str');
+  has assessmentName => (is => 'ro', isa => 'Str');
+  has assessmentState => (is => 'ro', isa => 'Str');
+  has dataCollected => (is => 'ro', isa => 'Bool');
+  has durationInSeconds => (is => 'ro', isa => 'Int');
+  has endTime => (is => 'ro', isa => 'Str');
+  has failureMessage => (is => 'ro', isa => 'Str');
+  has startTime => (is => 'ro', isa => 'Str');
+  has userAttributesForFindings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]');
+1;

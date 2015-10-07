@@ -1,0 +1,15 @@
+package Paws::Inspector::Finding;
+  use Moose;
+  has agentId => (is => 'ro', isa => 'Str');
+  has attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]');
+  has autoScalingGroup => (is => 'ro', isa => 'Str');
+  has description => (is => 'ro', isa => 'Paws::Inspector::LocalizedText');
+  has finding => (is => 'ro', isa => 'Paws::Inspector::LocalizedText');
+  has findingArn => (is => 'ro', isa => 'Str');
+  has recommendation => (is => 'ro', isa => 'Paws::Inspector::LocalizedText');
+  has ruleName => (is => 'ro', isa => 'Str');
+  has rulesPackageArn => (is => 'ro', isa => 'Str');
+  has runArn => (is => 'ro', isa => 'Str');
+  has severity => (is => 'ro', isa => 'Str');
+  has userAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]');
+1;
