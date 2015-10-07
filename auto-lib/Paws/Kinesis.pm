@@ -18,6 +18,11 @@ package Paws::Kinesis;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::CreateStream', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DecreaseStreamRetentionPeriod {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::DecreaseStreamRetentionPeriod', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteStream {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::DeleteStream', @_);
@@ -36,6 +41,11 @@ package Paws::Kinesis;
   sub GetShardIterator {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::GetShardIterator', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub IncreaseStreamRetentionPeriod {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::IncreaseStreamRetentionPeriod', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListStreams {
@@ -194,6 +204,32 @@ You can use C<DescribeStream> to check the stream status, which is
 returned in C<StreamStatus>.
 
 CreateStream has a limit of 5 transactions per second per account.
+
+
+
+
+
+
+
+
+
+
+
+=head2 DecreaseStreamRetentionPeriod(RetentionPeriodHours => Int, StreamName => Str)
+
+Each argument is described in detail in: L<Paws::Kinesis::DecreaseStreamRetentionPeriod>
+
+Returns: nothing
+
+  
+
+Decreases the stream's retention period, which is the length of time
+data records are accessible after they are added to the stream. The
+minimum value of a streamE<rsquo>s retention period is 24 hours.
+
+This operation may result in lost data. For example, if the stream's
+retention period is 48 hours and is decreased to 24 hours, any data
+already in the stream that is older than 24 hours is inaccessible.
 
 
 
@@ -419,6 +455,38 @@ per open shard.
 
 
 
+=head2 IncreaseStreamRetentionPeriod(RetentionPeriodHours => Int, StreamName => Str)
+
+Each argument is described in detail in: L<Paws::Kinesis::IncreaseStreamRetentionPeriod>
+
+Returns: nothing
+
+  
+
+Increases the stream's retention period, which is the length of time
+data records are accessible after they are added to the stream. The
+maximum value of a streamE<rsquo>s retention period is 168 hours (7
+days).
+
+Upon choosing a longer stream retention period, this operation will
+increase the time period records are accessible that have not yet
+expired. However, it will not make previous data that has expired
+(older than the streamE<rsquo>s previous retention period) accessible
+after the operation has been called. For example, if a streamE<rsquo>s
+retention period is set to 24 hours and is increased to 168 hours, any
+data that is older than 24 hours will remain inaccessible to consumer
+applications.
+
+
+
+
+
+
+
+
+
+
+
 =head2 ListStreams([ExclusiveStartStreamName => Str, Limit => Int])
 
 Each argument is described in detail in: L<Paws::Kinesis::ListStreams>
@@ -584,8 +652,10 @@ If a C<PutRecord> request cannot be processed because of insufficient
 provisioned throughput on the shard involved in the request,
 C<PutRecord> throws C<ProvisionedThroughputExceededException>.
 
-Data records are accessible for only 24 hours from the time that they
-are added to an Amazon Kinesis stream.
+By default, data records are accessible for only 24 hours from the time
+that they are added to an Amazon Kinesis stream. This retention period
+can be modified using the DecreaseStreamRetentionPeriod and
+IncreaseStreamRetentionPeriod operations.
 
 
 
@@ -668,8 +738,10 @@ For more information about partially successful responses, see Adding
 Multiple Records with PutRecords in the I<Amazon Kinesis Developer
 Guide>.
 
-Data records are accessible for only 24 hours from the time that they
-are added to an Amazon Kinesis stream.
+By default, data records are accessible for only 24 hours from the time
+that they are added to an Amazon Kinesis stream. This retention period
+can be modified using the DecreaseStreamRetentionPeriod and
+IncreaseStreamRetentionPeriod operations.
 
 
 
