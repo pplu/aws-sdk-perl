@@ -2,6 +2,7 @@
 package Paws::EC2::RequestSpotInstances;
   use Moose;
   has AvailabilityZoneGroup => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZoneGroup' );
+  has BlockDurationMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'blockDurationMinutes' );
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has InstanceCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'instanceCount' );
@@ -65,6 +66,31 @@ instances could be placed in a different zone from the original
 request, even if you specified the same Availability Zone group.
 
 Default: Instances are launched in any available Availability Zone.
+
+
+
+
+
+
+
+
+
+
+=head2 BlockDurationMinutes => Int
+
+  
+
+The required duration for the Spot instances, in minutes. This value
+must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
+
+The duration period starts as soon as your Spot instance receives its
+instance ID. At the end of the duration period, Amazon EC2 marks the
+Spot instance for termination and provides a Spot instance termination
+notice, which gives the instance a two-minute warning before it
+terminates.
+
+Note that you can't specify an Availability Zone group or a launch
+group if you specify a required duration.
 
 
 

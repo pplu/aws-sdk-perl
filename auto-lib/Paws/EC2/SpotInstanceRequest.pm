@@ -1,6 +1,8 @@
 package Paws::EC2::SpotInstanceRequest;
   use Moose;
+  has ActualBlockHourlyPrice => (is => 'ro', isa => 'Str', xmlname => 'actualBlockHourlyPrice', traits => ['Unwrapped']);
   has AvailabilityZoneGroup => (is => 'ro', isa => 'Str', xmlname => 'availabilityZoneGroup', traits => ['Unwrapped']);
+  has BlockDurationMinutes => (is => 'ro', isa => 'Int', xmlname => 'blockDurationMinutes', traits => ['Unwrapped']);
   has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', traits => ['Unwrapped']);
   has Fault => (is => 'ro', isa => 'Paws::EC2::SpotInstanceStateFault', xmlname => 'fault', traits => ['Unwrapped']);
   has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
