@@ -1,5 +1,6 @@
 0.16
  - docu fixes by Gimpson
+ - Timeout for all user agents set to 60 seconds. Will be configurable soon
  - S3 Update: Support for S3 Standard - Infrequent Access 
  - CloudWatchLogs Update: Export tasks
  - CloudFormation API Update: support for ResourceTypes
