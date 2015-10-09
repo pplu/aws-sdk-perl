@@ -4,6 +4,7 @@ package Paws::Lambda::AddPermission;
   has Action => (is => 'ro', isa => 'Str', required => 1);
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
   has Principal => (is => 'ro', isa => 'Str', required => 1);
+  has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier' );
   has SourceAccount => (is => 'ro', isa => 'Str');
   has SourceArn => (is => 'ro', isa => 'Str');
   has StatementId => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +12,7 @@ package Paws::Lambda::AddPermission;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddPermission');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/versions/HEAD/policy');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/policy');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::AddPermissionResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'AddPermissionResult');
@@ -61,7 +62,7 @@ wildcard ("lambda:*") to grant permission for all AWS Lambda actions.
 
   
 
-Name of the Lambda function whose access policy you are updating by
+Name of the Lambda function whose resource policy you are updating by
 adding a new permission.
 
 You can specify an unqualified function name (for example, "Thumbnail")
@@ -92,6 +93,37 @@ permission, or any valid AWS service principal such as
 "sns.amazonaws.com". For example, you might want to allow a custom
 application in another AWS account to push events to AWS Lambda by
 invoking your function.
+
+
+
+
+
+
+
+
+
+
+=head2 Qualifier => Str
+
+  
+
+You can specify this optional query parameter to specify function
+version or alias name. The permission will then apply to the specific
+qualified ARN. For example, if you specify function version 2 as the
+qualifier, then permission applies only when request is made using
+qualified function ARN:
+
+C<arn:aws:lambda:aws-region:acct-id:function:function-name:2>
+
+If you specify alias name, for example "PROD", then the permission is
+valid only for requests made using the alias ARN:
+
+C<arn:aws:lambda:aws-region:acct-id:function:function-name:PROD>
+
+If the qualifier is not specified, the permission is valid only when
+requests is made using unqualified function ARN.
+
+C<arn:aws:lambda:aws-region:acct-id:function:function-name>
 
 
 

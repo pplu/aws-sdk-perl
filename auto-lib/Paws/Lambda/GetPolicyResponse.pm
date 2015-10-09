@@ -17,9 +17,9 @@ Paws::Lambda::GetPolicyResponse
 
   
 
-The access policy associated with the specified function. The response
-returns the same as a string using "\" as an escape character in the
-JSON.
+The resource policy associated with the specified function. The
+response returns the same as a string using "\" as an escape character
+in the JSON.
 
 
 

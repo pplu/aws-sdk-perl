@@ -2,6 +2,7 @@
 package Paws::Lambda::UpdateFunctionCode;
   use Moose;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
+  has Publish => (is => 'ro', isa => 'Bool');
   has S3Bucket => (is => 'ro', isa => 'Str');
   has S3Key => (is => 'ro', isa => 'Str');
   has S3ObjectVersion => (is => 'ro', isa => 'Str');
@@ -10,7 +11,7 @@ package Paws::Lambda::UpdateFunctionCode;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFunctionCode');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/versions/HEAD/code');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/code');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateFunctionCodeResult');
@@ -51,6 +52,22 @@ Lambda also allows you to specify only the account ID qualifier (for
 example, "account-id:Thumbnail"). Note that the length constraint
 applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
+
+
+
+
+
+
+
+
+
+
+=head2 Publish => Bool
+
+  
+
+This boolean parameter can be used to request AWS Lambda to update the
+Lambda function and publish a version as an atomic operation.
 
 
 

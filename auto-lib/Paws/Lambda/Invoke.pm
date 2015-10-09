@@ -6,6 +6,7 @@ package Paws::Lambda::Invoke;
   has InvocationType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Invocation-Type' );
   has LogType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Log-Type' );
   has Payload => (is => 'ro', isa => 'Str');
+  has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier' );
 
   use MooseX::ClassAttribute;
 
@@ -129,6 +130,28 @@ C<x-amz-log-results> header.
   
 
 JSON that you want to provide to your Lambda function as input.
+
+
+
+
+
+
+
+
+
+
+=head2 Qualifier => Str
+
+  
+
+You can use this optional paramter to specify a Lambda function version
+or alias name. If you specify function version, the API uses qualified
+function ARN to invoke a specific Lambda function. If you specify alias
+name, the API uses the alias ARN to invoke the Lambda function version
+to which the alias points.
+
+If you don't provide this parameter, then the API uses unqualified
+function ARN which results in invocation of the $LATEST version.
 
 
 

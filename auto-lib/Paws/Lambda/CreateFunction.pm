@@ -6,6 +6,7 @@ package Paws::Lambda::CreateFunction;
   has FunctionName => (is => 'ro', isa => 'Str', required => 1);
   has Handler => (is => 'ro', isa => 'Str', required => 1);
   has MemorySize => (is => 'ro', isa => 'Int');
+  has Publish => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str', required => 1);
   has Runtime => (is => 'ro', isa => 'Str', required => 1);
   has Timeout => (is => 'ro', isa => 'Int');
@@ -125,6 +126,22 @@ your function. Your function use-case determines your CPU and memory
 requirements. For example, a database operation might need less memory
 compared to an image processing function. The default value is 128 MB.
 The value must be a multiple of 64 MB.
+
+
+
+
+
+
+
+
+
+
+=head2 Publish => Bool
+
+  
+
+This boolean parameter can be used to request AWS Lambda to create the
+Lambda function and publish a version as an atomic operation.
 
 
 

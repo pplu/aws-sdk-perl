@@ -1,6 +1,7 @@
 
 package Paws::Lambda::FunctionConfiguration;
   use Moose;
+  has CodeSha256 => (is => 'ro', isa => 'Str');
   has CodeSize => (is => 'ro', isa => 'Int');
   has Description => (is => 'ro', isa => 'Str');
   has FunctionArn => (is => 'ro', isa => 'Str');
@@ -11,6 +12,7 @@ package Paws::Lambda::FunctionConfiguration;
   has Role => (is => 'ro', isa => 'Str');
   has Runtime => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
+  has Version => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -21,6 +23,20 @@ package Paws::Lambda::FunctionConfiguration;
 Paws::Lambda::FunctionConfiguration
 
 =head1 ATTRIBUTES
+
+=head2 CodeSha256 => Str
+
+  
+
+It is the SHA256 hash of your function deployment package.
+
+
+
+
+
+
+
+
 
 =head2 CodeSize => Int
 
@@ -159,6 +175,20 @@ The function execution time at which Lambda should terminate the
 function. Because the execution time has cost implications, we
 recommend you set this value based on your expected execution time. The
 default is 3 seconds.
+
+
+
+
+
+
+
+
+
+=head2 Version => Str
+
+  
+
+The version of the Lambda function.
 
 
 

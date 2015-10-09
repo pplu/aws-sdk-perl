@@ -60,8 +60,8 @@ records.
 
   
 
-Indicates whether AWS Lambda should begin polling the event source, the
-default is not enabled.
+Indicates whether AWS Lambda should begin polling the event source. By
+default, C<Enabled> is true.
 
 
 
