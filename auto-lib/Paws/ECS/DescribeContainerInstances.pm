@@ -38,8 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 The short name or full Amazon Resource Name (ARN) of the cluster that
-hosts the container instances you want to describe. If you do not
-specify a cluster, the default cluster is assumed.
+hosts the container instances to describe. If you do not specify a
+cluster, the default cluster is assumed.
 
 
 
@@ -54,7 +54,7 @@ specify a cluster, the default cluster is assumed.
 
   
 
-A space-separated list of container instance UUIDs or full Amazon
+A space-separated list of container instance IDs or full Amazon
 Resource Name (ARN) entries.
 
 

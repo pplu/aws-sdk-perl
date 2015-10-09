@@ -1,6 +1,7 @@
 
 package Paws::ECS::RegisterContainerInstance;
   use Moose;
+  has attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]');
   has cluster => (is => 'ro', isa => 'Str');
   has containerInstanceArn => (is => 'ro', isa => 'Str');
   has instanceIdentityDocument => (is => 'ro', isa => 'Str');
@@ -37,13 +38,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+=head2 attributes => ArrayRef[Paws::ECS::Attribute]
+
+  
+
+The container instance attributes that this container instance
+supports.
+
+
+
+
+
+
+
+
+
+
 =head2 cluster => Str
 
   
 
-The short name or full Amazon Resource Name (ARN) of the cluster that
-you want to register your container instance with. If you do not
-specify a cluster, the default cluster is assumed..
+The short name or full Amazon Resource Name (ARN) of the cluster with
+which to register your container instance. If you do not specify a
+cluster, the default cluster is assumed..
 
 
 
@@ -74,8 +91,8 @@ previously registered).
 
   
 
-The instance identity document for the Amazon EC2 instance to register.
-This document can be found by running the following command from the
+The instance identity document for the EC2 instance to register. This
+document can be found by running the following command from the
 instance: C<curl
 http://169.254.169.254/latest/dynamic/instance-identity/document/>
 
@@ -92,7 +109,7 @@ http://169.254.169.254/latest/dynamic/instance-identity/document/>
 
   
 
-The instance identity document signature for the Amazon EC2 instance to
+The instance identity document signature for the EC2 instance to
 register. This signature can be found by running the following command
 from the instance: C<curl
 http://169.254.169.254/latest/dynamic/instance-identity/signature/>

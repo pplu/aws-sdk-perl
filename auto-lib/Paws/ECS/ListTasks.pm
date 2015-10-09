@@ -44,8 +44,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 The short name or full Amazon Resource Name (ARN) of the cluster that
-hosts the tasks you want to list. If you do not specify a cluster, the
-default cluster is assumed..
+hosts the tasks to list. If you do not specify a cluster, the default
+cluster is assumed..
 
 
 
@@ -60,10 +60,10 @@ default cluster is assumed..
 
   
 
-The container instance UUID or full Amazon Resource Name (ARN) of the
-container instance that you want to filter the C<ListTasks> results
-with. Specifying a C<containerInstance> will limit the results to tasks
-that belong to that container instance.
+The container instance ID or full Amazon Resource Name (ARN) of the
+container instance with which to filter the C<ListTasks> results.
+Specifying a C<containerInstance> limits the results to tasks that
+belong to that container instance.
 
 
 
@@ -78,11 +78,11 @@ that belong to that container instance.
 
   
 
-The task status that you want to filter the C<ListTasks> results with.
-Specifying a C<desiredStatus> of C<STOPPED> will limit the results to
-tasks that are in the C<STOPPED> status, which can be useful for
-debugging tasks that are not starting properly or have died or
-finished. The default status filter is C<RUNNING>.
+The task status with which to filter the C<ListTasks> results.
+Specifying a C<desiredStatus> of C<STOPPED> limits the results to tasks
+that are in the C<STOPPED> status, which can be useful for debugging
+tasks that are not starting properly or have died or finished. The
+default status filter is C<RUNNING>.
 
 
 
@@ -97,9 +97,9 @@ finished. The default status filter is C<RUNNING>.
 
   
 
-The name of the family that you want to filter the C<ListTasks> results
-with. Specifying a C<family> will limit the results to tasks that
-belong to that family.
+The name of the family with which to filter the C<ListTasks> results.
+Specifying a C<family> limits the results to tasks that belong to that
+family.
 
 
 
@@ -155,9 +155,9 @@ when there are no more results to return.
 
   
 
-The name of the service that you want to filter the C<ListTasks>
-results with. Specifying a C<serviceName> will limit the results to
-tasks that belong to that service.
+The name of the service with which to filter the C<ListTasks> results.
+Specifying a C<serviceName> limits the results to tasks that belong to
+that service.
 
 
 
@@ -172,9 +172,9 @@ tasks that belong to that service.
 
   
 
-The C<startedBy> value that you want to filter the task results with.
-Specifying a C<startedBy> value will limit the results to tasks that
-were started with that value.
+The C<startedBy> value with which to filter the task results.
+Specifying a C<startedBy> value limits the results to tasks that were
+started with that value.
 
 
 

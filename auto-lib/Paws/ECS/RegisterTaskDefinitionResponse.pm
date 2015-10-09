@@ -16,6 +16,17 @@ Paws::ECS::RegisterTaskDefinitionResponse
 
   
 
+The full description of the registered task definition.
+
+
+
+
+
+
+
+
+
+
 
 =cut
 

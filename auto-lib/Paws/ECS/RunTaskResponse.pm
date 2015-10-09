@@ -17,7 +17,7 @@ Paws::ECS::RunTaskResponse
 
   
 
-Any failed tasks from your C<RunTask> action are listed here.
+Any failures associated with the call.
 
 
 
@@ -32,7 +32,7 @@ Any failed tasks from your C<RunTask> action are listed here.
   
 
 A full description of the tasks that were run. Each task that was
-successfully placed on your cluster will be described here.
+successfully placed on your cluster are described here.
 
 
 

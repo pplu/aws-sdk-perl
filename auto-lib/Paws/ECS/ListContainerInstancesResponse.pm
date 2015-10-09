@@ -17,8 +17,9 @@ Paws::ECS::ListContainerInstancesResponse
 
   
 
-The list of container instance full Amazon Resource Name (ARN) entries
-for each container instance associated with the specified cluster.
+The list of container instances with full Amazon Resource Name (ARN)
+entries for each container instance associated with the specified
+cluster.
 
 
 

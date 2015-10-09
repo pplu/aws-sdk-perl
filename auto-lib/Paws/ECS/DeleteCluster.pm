@@ -36,8 +36,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The short name or full Amazon Resource Name (ARN) of the cluster that
-you want to delete.
+The short name or full Amazon Resource Name (ARN) of the cluster to
+delete.
 
 
 

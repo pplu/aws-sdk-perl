@@ -85,8 +85,8 @@ The status of the state change request.
 
   
 
-The task UUID or full Amazon Resource Name (ARN) of the task in the
-state change request.
+The task ID or full Amazon Resource Name (ARN) of the task in the state
+change request.
 
 
 

@@ -40,8 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The full family name that you want to filter the C<ListTaskDefinitions>
-results with. Specifying a C<familyPrefix> will limit the listed task
+The full family name with which to filter the C<ListTaskDefinitions>
+results. Specifying a C<familyPrefix> limits the listed task
 definitions to task definition revisions that belong to that family.
 
 
@@ -120,8 +120,8 @@ family are listed first.
 
   
 
-The task definition status that you want to filter the
-C<ListTaskDefinitions> results with. By default, only C<ACTIVE> task
+The task definition status with which to filter the
+C<ListTaskDefinitions> results. By default, only C<ACTIVE> task
 definitions are listed. By setting this parameter to C<INACTIVE>, you
 can view task definitions that are C<INACTIVE> as long as an active
 task or service still references them. If you paginate the resulting

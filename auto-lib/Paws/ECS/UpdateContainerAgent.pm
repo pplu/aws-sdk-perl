@@ -54,7 +54,7 @@ the default cluster is assumed.
 
   
 
-The container instance UUID or full Amazon Resource Name (ARN) entries
+The container instance ID or full Amazon Resource Name (ARN) entries
 for the container instance on which you would like to update the Amazon
 ECS container agent.
 

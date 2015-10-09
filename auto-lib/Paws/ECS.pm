@@ -173,11 +173,11 @@ Paws::ECS - Perl Interface to AWS Amazon EC2 Container Service
 
 Amazon EC2 Container Service (Amazon ECS) is a highly scalable, fast,
 container management service that makes it easy to run, stop, and
-manage Docker containers on a cluster of Amazon EC2 instances. Amazon
-ECS lets you launch and stop container-enabled applications with simple
-API calls, allows you to get the state of your cluster from a
-centralized service, and gives you access to many familiar Amazon EC2
-features like security groups, Amazon EBS volumes, and IAM roles.
+manage Docker containers on a cluster of EC2 instances. Amazon ECS lets
+you launch and stop container-enabled applications with simple API
+calls, allows you to get the state of your cluster from a centralized
+service, and gives you access to many familiar Amazon EC2 features like
+security groups, Amazon EBS volumes, and IAM roles.
 
 You can use Amazon ECS to schedule the placement of containers across
 your cluster based on your resource needs, isolation policies, and
@@ -205,8 +205,8 @@ Returns: a L<Paws::ECS::CreateClusterResponse> instance
 
   
 
-Creates a new Amazon ECS cluster. By default, your account will receive
-a C<default> cluster when you launch your first container instance.
+Creates a new Amazon ECS cluster. By default, your account receives a
+C<default> cluster when you launch your first container instance.
 However, you can create your own cluster with a unique name with the
 C<CreateCluster> action.
 
@@ -230,8 +230,8 @@ Returns: a L<Paws::ECS::CreateServiceResponse> instance
 
 Runs and maintains a desired number of tasks from a specified task
 definition. If the number of tasks running in a service drops below
-C<desiredCount>, Amazon ECS will spawn another instantiation of the
-task in the specified cluster.
+C<desiredCount>, Amazon ECS spawns another instantiation of the task in
+the specified cluster.
 
 
 
@@ -295,7 +295,7 @@ Returns: a L<Paws::ECS::DeregisterContainerInstanceResponse> instance
   
 
 Deregisters an Amazon ECS container instance from the specified
-cluster. This instance will no longer be available to run tasks.
+cluster. This instance is no longer available to run tasks.
 
 If you intend to use the container instance for some other purpose
 after deregistration, you should stop all of the tasks running on the
@@ -422,9 +422,9 @@ Returns: a L<Paws::ECS::DescribeTaskDefinitionResponse> instance
   
 
 Describes a task definition. You can specify a C<family> and
-C<revision> to find information on a specific task definition, or you
-can simply specify the family to find the latest C<ACTIVE> revision in
-that family.
+C<revision> to find information about a specific task definition, or
+you can simply specify the family to find the latest C<ACTIVE> revision
+in that family.
 
 You can only describe C<INACTIVE> task definitions while an active task
 or service references them.
@@ -611,7 +611,7 @@ and C<desiredStatus> parameters.
 
 
 
-=head2 RegisterContainerInstance([cluster => Str, containerInstanceArn => Str, instanceIdentityDocument => Str, instanceIdentityDocumentSignature => Str, totalResources => ArrayRef[Paws::ECS::Resource], versionInfo => Paws::ECS::VersionInfo])
+=head2 RegisterContainerInstance([attributes => ArrayRef[Paws::ECS::Attribute], cluster => Str, containerInstanceArn => Str, instanceIdentityDocument => Str, instanceIdentityDocumentSignature => Str, totalResources => ArrayRef[Paws::ECS::Resource], versionInfo => Paws::ECS::VersionInfo])
 
 Each argument is described in detail in: L<Paws::ECS::RegisterContainerInstance>
 
@@ -622,8 +622,8 @@ Returns: a L<Paws::ECS::RegisterContainerInstanceResponse> instance
 This action is only used by the Amazon EC2 Container Service agent, and
 it is not intended for use outside of the agent.
 
-Registers an Amazon EC2 instance into the specified cluster. This
-instance will become available to place containers on.
+Registers an EC2 instance into the specified cluster. This instance
+becomes available to place containers on.
 
 
 
@@ -645,9 +645,9 @@ Returns: a L<Paws::ECS::RegisterTaskDefinitionResponse> instance
 
 Registers a new task definition from the supplied C<family> and
 C<containerDefinitions>. Optionally, you can add data volumes to your
-containers with the C<volumes> parameter. For more information on task
-definition parameters and defaults, see Amazon ECS Task Definitions in
-the I<Amazon EC2 Container Service Developer Guide>.
+containers with the C<volumes> parameter. For more information about
+task definition parameters and defaults, see Amazon ECS Task
+Definitions in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 
@@ -668,8 +668,8 @@ Returns: a L<Paws::ECS::RunTaskResponse> instance
   
 
 Start a task using random placement and the default Amazon ECS
-scheduler. If you want to use your own scheduler or place a task on a
-specific container instance, use C<StartTask> instead.
+scheduler. To use your own scheduler or place a task on a specific
+container instance, use C<StartTask> instead.
 
 The C<count> parameter is limited to 10 tasks per call.
 
@@ -692,8 +692,8 @@ Returns: a L<Paws::ECS::StartTaskResponse> instance
   
 
 Starts a new task from the specified task definition on the specified
-container instance or instances. If you want to use the default Amazon
-ECS scheduler to place your task, use C<RunTask> instead.
+container instance or instances. To use the default Amazon ECS
+scheduler to place your task, use C<RunTask> instead.
 
 The list of container instances to start tasks on is limited to 10.
 
@@ -716,6 +716,13 @@ Returns: a L<Paws::ECS::StopTaskResponse> instance
   
 
 Stops a running task.
+
+When StopTask is called on a task, the equivalent of C<docker stop> is
+issued to the containers running in the task. This results in a
+C<SIGTERM> and a 30-second timeout, after which C<SIGKILL> is sent and
+the containers are forcibly stopped. If the container handles the
+C<SIGTERM> gracefully and exits within 30 seconds from receiving it, no
+C<SIGKILL> is sent.
 
 
 
@@ -829,6 +836,13 @@ C<UpdateService> is run. If your cluster cannot support another
 instantiation of the task used in your service, you can reduce the
 desired count of your service by one before modifying the task
 definition.
+
+When UpdateService replaces a task during an update, the equivalent of
+C<docker stop> is issued to the containers running in the task. This
+results in a C<SIGTERM> and a 30-second timeout, after which C<SIGKILL>
+is sent and the containers are forcibly stopped. If the container
+handles the C<SIGTERM> gracefully and exits within 30 seconds from
+receiving it, no C<SIGKILL> is sent.
 
 
 

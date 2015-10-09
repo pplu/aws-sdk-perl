@@ -38,8 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 The short name or full Amazon Resource Name (ARN) of the cluster that
-hosts the task you want to stop. If you do not specify a cluster, the
-default cluster is assumed..
+hosts the task to stop. If you do not specify a cluster, the default
+cluster is assumed..
 
 
 
@@ -54,8 +54,8 @@ default cluster is assumed..
 
   
 
-The task UUIDs or full Amazon Resource Name (ARN) entry of the task you
-would like to stop.
+The task ID or full Amazon Resource Name (ARN) entry of the task to
+stop.
 
 
 

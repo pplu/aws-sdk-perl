@@ -39,8 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 The short name or full Amazon Resource Name (ARN) of the cluster that
-hosts the services you want to list. If you do not specify a cluster,
-the default cluster is assumed..
+hosts the services to list. If you do not specify a cluster, the
+default cluster is assumed..
 
 
 

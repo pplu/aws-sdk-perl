@@ -16,6 +16,17 @@ Paws::ECS::DeleteServiceResponse
 
   
 
+The full description of the deleted service.
+
+
+
+
+
+
+
+
+
+
 
 =cut
 

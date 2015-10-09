@@ -56,8 +56,8 @@ default cluster is assumed.
 
   
 
-The number of instantiations of the task that you would like to place
-and keep running in your service.
+The number of instantiations of the task to place and keep running in
+your service.
 
 
 
@@ -72,7 +72,7 @@ and keep running in your service.
 
   
 
-The name of the service that you want to update.
+The name of the service to update.
 
 
 
@@ -88,12 +88,11 @@ The name of the service that you want to update.
   
 
 The C<family> and C<revision> (C<family:revision>) or full Amazon
-Resource Name (ARN) of the task definition that you want to run in your
-service. If a C<revision> is not specified, the latest C<ACTIVE>
-revision is used. If you modify the task definition with
-C<UpdateService>, Amazon ECS spawns a task with the new version of the
-task definition and then stops an old task after the new version is
-running.
+Resource Name (ARN) of the task definition to run in your service. If a
+C<revision> is not specified, the latest C<ACTIVE> revision is used. If
+you modify the task definition with C<UpdateService>, Amazon ECS spawns
+a task with the new version of the task definition and then stops an
+old task after the new version is running.
 
 
 

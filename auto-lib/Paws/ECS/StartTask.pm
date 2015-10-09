@@ -40,9 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The short name or full Amazon Resource Name (ARN) of the cluster that
-you want to start your task on. If you do not specify a cluster, the
-default cluster is assumed..
+The short name or full Amazon Resource Name (ARN) of the cluster on
+which to start your task. If you do not specify a cluster, the default
+cluster is assumed..
 
 
 
@@ -57,7 +57,7 @@ default cluster is assumed..
 
   
 
-The container instance UUIDs or full Amazon Resource Name (ARN) entries
+The container instance IDs or full Amazon Resource Name (ARN) entries
 for the container instances on which you would like to place your task.
 
 The list of container instances to start tasks on is limited to 10.
@@ -123,8 +123,8 @@ parameter contains the deployment ID of the service that starts it.
   
 
 The C<family> and C<revision> (C<family:revision>) or full Amazon
-Resource Name (ARN) of the task definition that you want to start. If a
-C<revision> is not specified, the latest C<ACTIVE> revision is used.
+Resource Name (ARN) of the task definition to start. If a C<revision>
+is not specified, the latest C<ACTIVE> revision is used.
 
 
 

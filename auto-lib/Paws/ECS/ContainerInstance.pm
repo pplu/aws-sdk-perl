@@ -2,6 +2,7 @@ package Paws::ECS::ContainerInstance;
   use Moose;
   has agentConnected => (is => 'ro', isa => 'Bool');
   has agentUpdateStatus => (is => 'ro', isa => 'Str');
+  has attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]');
   has containerInstanceArn => (is => 'ro', isa => 'Str');
   has ec2InstanceId => (is => 'ro', isa => 'Str');
   has pendingTasksCount => (is => 'ro', isa => 'Int');

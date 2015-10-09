@@ -17,7 +17,7 @@ Paws::ECS::StartTaskResponse
 
   
 
-Any failed tasks from your C<StartTask> action are listed here.
+Any failures associated with the call.
 
 
 
@@ -32,7 +32,7 @@ Any failed tasks from your C<StartTask> action are listed here.
   
 
 A full description of the tasks that were started. Each task that was
-successfully placed on your container instances will be described here.
+successfully placed on your container instances are described here.
 
 
 

@@ -37,7 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The name of the cluster that hosts the service you want to delete.
+The name of the cluster that hosts the service to delete. If you do not
+specify a cluster, the default cluster is assumed.
 
 
 
@@ -52,7 +53,7 @@ The name of the cluster that hosts the service you want to delete.
 
   
 
-The name of the service you want to delete.
+The name of the service to delete.
 
 
 

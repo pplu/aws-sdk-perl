@@ -37,8 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 The C<family> and C<revision> (C<family:revision>) or full Amazon
-Resource Name (ARN) of the task definition that you want to deregister.
-You must specify a C<revision>.
+Resource Name (ARN) of the task definition to deregister. You must
+specify a C<revision>.
 
 
 

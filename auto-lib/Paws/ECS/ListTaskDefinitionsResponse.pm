@@ -36,7 +36,7 @@ return.
   
 
 The list of task definition Amazon Resource Name (ARN) entries for the
-C<ListTaskDefintions> request.
+C<ListTaskDefinitions> request.
 
 
 

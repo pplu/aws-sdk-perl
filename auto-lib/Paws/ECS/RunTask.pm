@@ -40,9 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-The short name or full Amazon Resource Name (ARN) of the cluster that
-you want to run your task on. If you do not specify a cluster, the
-default cluster is assumed..
+The short name or full Amazon Resource Name (ARN) of the cluster on
+which to run your task. If you do not specify a cluster, the default
+cluster is assumed..
 
 
 
@@ -57,8 +57,8 @@ default cluster is assumed..
 
   
 
-The number of instantiations of the specified task that you would like
-to place on your cluster.
+The number of instantiations of the specified task to place on your
+cluster.
 
 The C<count> parameter is limited to 10 tasks per call.
 
@@ -123,8 +123,8 @@ parameter contains the deployment ID of the service that starts it.
   
 
 The C<family> and C<revision> (C<family:revision>) or full Amazon
-Resource Name (ARN) of the task definition that you want to run. If a
-C<revision> is not specified, the latest C<ACTIVE> revision is used.
+Resource Name (ARN) of the task definition to run. If a C<revision> is
+not specified, the latest C<ACTIVE> revision is used.
 
 
 

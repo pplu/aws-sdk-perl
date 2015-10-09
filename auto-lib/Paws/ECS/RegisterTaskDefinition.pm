@@ -55,10 +55,9 @@ different containers that make up your task.
   
 
 You must specify a C<family> for a task definition, which allows you to
-track multiple versions of the same task definition. You can think of
-the C<family> as a name for your task definition. Up to 255 letters
-(uppercase and lowercase), numbers, hyphens, and underscores are
-allowed.
+track multiple versions of the same task definition. The C<family> is
+used as a name for your task definition. Up to 255 letters (uppercase
+and lowercase), numbers, hyphens, and underscores are allowed.
 
 
 

@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 The name of your cluster. If you do not specify a name for your
-cluster, you will create a cluster named C<default>. Up to 255 letters
+cluster, you create a cluster named C<default>. Up to 255 letters
 (uppercase and lowercase), numbers, hyphens, and underscores are
 allowed.
 
