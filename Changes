@@ -17,6 +17,9 @@
  - CloudFront API update
  - Kinesis API update: adjust the data retention window
  - EC2 API update: Spot blocks for Defined-Duration workloads
+ - Lambda API update: Support for Aliases
+ - ECS API update: new functionalities
+ - New IoT and IoTData APIs
 
 0.15 16 Sep 2015
  - fix unicode issues in test t/10_responses.t (ioanrogers)
