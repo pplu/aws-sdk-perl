@@ -38,6 +38,8 @@ package Paws::API::ServiceToClass {
     firehose => 'Firehose',
     glacier => 'Glacier',
     iam => 'IAM',
+    iot => 'IoT',
+   'iot-data' => 'IoTData',
     inspector => 'Inspector',
     importexport => 'ImportExport',
     kinesis => 'Kinesis',
