@@ -1,0 +1,10 @@
+package Paws::IoT::DynamoDBAction;
+  use Moose;
+  has hashKeyField => (is => 'ro', isa => 'Str', required => 1);
+  has hashKeyValue => (is => 'ro', isa => 'Str', required => 1);
+  has payloadField => (is => 'ro', isa => 'Str');
+  has rangeKeyField => (is => 'ro', isa => 'Str', required => 1);
+  has rangeKeyValue => (is => 'ro', isa => 'Str', required => 1);
+  has roleArn => (is => 'ro', isa => 'Str', required => 1);
+  has tableName => (is => 'ro', isa => 'Str', required => 1);
+1;

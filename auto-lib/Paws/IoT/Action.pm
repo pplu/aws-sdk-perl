@@ -1,0 +1,11 @@
+package Paws::IoT::Action;
+  use Moose;
+  has dynamoDB => (is => 'ro', isa => 'Paws::IoT::DynamoDBAction');
+  has firehose => (is => 'ro', isa => 'Paws::IoT::FirehoseAction');
+  has kinesis => (is => 'ro', isa => 'Paws::IoT::KinesisAction');
+  has lambda => (is => 'ro', isa => 'Paws::IoT::LambdaAction');
+  has republish => (is => 'ro', isa => 'Paws::IoT::RepublishAction');
+  has s3 => (is => 'ro', isa => 'Paws::IoT::S3Action');
+  has sns => (is => 'ro', isa => 'Paws::IoT::SnsAction');
+  has sqs => (is => 'ro', isa => 'Paws::IoT::SqsAction');
+1;
