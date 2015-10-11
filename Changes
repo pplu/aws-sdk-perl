@@ -1,3 +1,6 @@
+0.17
+ - loaded classes can be made immutable for better performance vs a bit more load time   
+
 0.16
  - docu fixes by Gimpson
  - Timeout for all user agents set to 60 seconds. Will be configurable soon
