@@ -123,6 +123,9 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::UpdatePipeline', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineState GetThirdPartyJobDetails ListActionTypes ListPipelines PollForJobs PollForThirdPartyJobs PutActionRevision PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult StartPipelineExecution UpdatePipeline / }
+
 1;
 
 ### main pod documentation begin ###

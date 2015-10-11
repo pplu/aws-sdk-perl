@@ -58,6 +58,9 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::UpdateElasticsearchDomainConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains ListDomainNames ListTags RemoveTags UpdateElasticsearchDomainConfig / }
+
 1;
 
 ### main pod documentation begin ###

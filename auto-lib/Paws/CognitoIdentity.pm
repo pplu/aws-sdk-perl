@@ -98,6 +98,9 @@ package Paws::CognitoIdentity;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::UpdateIdentityPool', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CreateIdentityPool DeleteIdentities DeleteIdentityPool DescribeIdentity DescribeIdentityPool GetCredentialsForIdentity GetId GetIdentityPoolRoles GetOpenIdToken GetOpenIdTokenForDeveloperIdentity ListIdentities ListIdentityPools LookupDeveloperIdentity MergeDeveloperIdentities SetIdentityPoolRoles UnlinkDeveloperIdentity UnlinkIdentity UpdateIdentityPool / }
+
 1;
 
 ### main pod documentation begin ###

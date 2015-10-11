@@ -203,6 +203,9 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateThing', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AcceptCertificateTransfer AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CreateCertificateFromCsr CreateKeysAndCertificate CreatePolicy CreatePolicyVersion CreateThing CreateTopicRule DeleteCertificate DeletePolicy DeletePolicyVersion DeleteThing DeleteTopicRule DescribeCertificate DescribeEndpoint DescribeThing DetachPrincipalPolicy DetachThingPrincipal GetLoggingOptions GetPolicy GetPolicyVersion GetTopicRule ListCertificates ListPolicies ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListThingPrincipals ListThings ListTopicRules RejectCertificateTransfer ReplaceTopicRule SetDefaultPolicyVersion SetLoggingOptions TransferCertificate UpdateCertificate UpdateThing / }
+
 1;
 
 ### main pod documentation begin ###

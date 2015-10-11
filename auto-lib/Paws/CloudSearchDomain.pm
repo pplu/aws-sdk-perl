@@ -23,6 +23,9 @@ package Paws::CloudSearchDomain;
     my $call_object = $self->new_with_coercions('Paws::CloudSearchDomain::UploadDocuments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/Search Suggest UploadDocuments / }
+
 1;
 
 ### main pod documentation begin ###

@@ -168,6 +168,9 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::UpdateDeploymentGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplications BatchGetDeployments BatchGetOnPremisesInstances CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListOnPremisesInstances RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances StopDeployment UpdateApplication UpdateDeploymentGroup / }
+
 1;
 
 ### main pod documentation begin ###

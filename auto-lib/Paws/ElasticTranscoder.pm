@@ -149,6 +149,9 @@ package Paws::ElasticTranscoder;
 
     return 'Paws::ElasticTranscoder::ListPresets'->_returns->new(Presets => $array);
   }
+
+  sub operations { qw/CancelJob CreateJob CreatePipeline CreatePreset DeletePipeline DeletePreset ListJobsByPipeline ListJobsByStatus ListPipelines ListPresets ReadJob ReadPipeline ReadPreset TestRole UpdatePipeline UpdatePipelineNotifications UpdatePipelineStatus / }
+
 1;
 
 ### main pod documentation begin ###

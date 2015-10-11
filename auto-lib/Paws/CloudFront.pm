@@ -141,6 +141,9 @@ package Paws::CloudFront;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateStreamingDistribution2015_07_27', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CreateCloudFrontOriginAccessIdentity CreateDistribution CreateInvalidation CreateStreamingDistribution DeleteCloudFrontOriginAccessIdentity DeleteDistribution DeleteStreamingDistribution GetCloudFrontOriginAccessIdentity GetCloudFrontOriginAccessIdentityConfig GetDistribution GetDistributionConfig GetInvalidation GetStreamingDistribution GetStreamingDistributionConfig ListCloudFrontOriginAccessIdentities ListDistributions ListDistributionsByWebACLId ListInvalidations ListStreamingDistributions UpdateCloudFrontOriginAccessIdentity UpdateDistribution UpdateStreamingDistribution / }
+
 1;
 
 ### main pod documentation begin ###

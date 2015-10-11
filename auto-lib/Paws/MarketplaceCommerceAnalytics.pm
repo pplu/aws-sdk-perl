@@ -13,6 +13,9 @@ package Paws::MarketplaceCommerceAnalytics;
     my $call_object = $self->new_with_coercions('Paws::MarketplaceCommerceAnalytics::GenerateDataSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/GenerateDataSet / }
+
 1;
 
 ### main pod documentation begin ###

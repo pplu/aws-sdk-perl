@@ -141,6 +141,9 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::TerminateJobFlows', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AddInstanceGroups AddJobFlowSteps AddTags DescribeCluster DescribeJobFlows DescribeStep ListBootstrapActions ListClusters ListInstanceGroups ListInstances ListSteps ModifyInstanceGroups RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
+
 1;
 
 ### main pod documentation begin ###

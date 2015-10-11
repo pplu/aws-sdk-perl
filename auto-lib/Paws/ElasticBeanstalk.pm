@@ -167,6 +167,9 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ValidateConfigurationSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AbortEnvironmentUpdate CheckDNSAvailability CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth ListAvailableSolutionStacks RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment ValidateConfigurationSettings / }
+
 1;
 
 ### main pod documentation begin ###

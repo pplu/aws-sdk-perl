@@ -361,6 +361,9 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::UploadPartCopy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AbortMultipartUpload CompleteMultipartUpload CopyObject CreateBucket CreateMultipartUpload DeleteBucket DeleteBucketCors DeleteBucketLifecycle DeleteBucketPolicy DeleteBucketReplication DeleteBucketTagging DeleteBucketWebsite DeleteObject DeleteObjects GetBucketAcl GetBucketCors GetBucketLifecycle GetBucketLifecycleConfiguration GetBucketLocation GetBucketLogging GetBucketNotification GetBucketNotificationConfiguration GetBucketPolicy GetBucketReplication GetBucketRequestPayment GetBucketTagging GetBucketVersioning GetBucketWebsite GetObject GetObjectAcl GetObjectTorrent HeadBucket HeadObject ListBuckets ListMultipartUploads ListObjects ListObjectVersions ListParts PutBucketAcl PutBucketCors PutBucketLifecycle PutBucketLifecycleConfiguration PutBucketLogging PutBucketNotification PutBucketNotificationConfiguration PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketTagging PutBucketVersioning PutBucketWebsite PutObject PutObjectAcl RestoreObject UploadPart UploadPartCopy / }
+
 1;
 
 ### main pod documentation begin ###

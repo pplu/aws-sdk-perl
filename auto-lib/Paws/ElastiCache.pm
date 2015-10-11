@@ -192,6 +192,9 @@ package Paws::ElastiCache;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::RevokeCacheSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeSnapshots ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress / }
+
 1;
 
 ### main pod documentation begin ###

@@ -127,6 +127,9 @@ package Paws::CloudSearch;
     my $call_object = $self->new_with_coercions('Paws::CloudSearch::UpdateServiceAccessPolicies', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/BuildSuggesters CreateDomain DefineAnalysisScheme DefineExpression DefineIndexField DefineSuggester DeleteAnalysisScheme DeleteDomain DeleteExpression DeleteIndexField DeleteSuggester DescribeAnalysisSchemes DescribeAvailabilityOptions DescribeDomains DescribeExpressions DescribeIndexFields DescribeScalingParameters DescribeServiceAccessPolicies DescribeSuggesters IndexDocuments ListDomainNames UpdateAvailabilityOptions UpdateScalingParameters UpdateServiceAccessPolicies / }
+
 1;
 
 ### main pod documentation begin ###

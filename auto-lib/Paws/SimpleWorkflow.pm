@@ -163,6 +163,9 @@ package Paws::SimpleWorkflow;
     my $call_object = $self->new_with_coercions('Paws::SimpleWorkflow::TerminateWorkflowExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CountClosedWorkflowExecutions CountOpenWorkflowExecutions CountPendingActivityTasks CountPendingDecisionTasks DeprecateActivityType DeprecateDomain DeprecateWorkflowType DescribeActivityType DescribeDomain DescribeWorkflowExecution DescribeWorkflowType GetWorkflowExecutionHistory ListActivityTypes ListClosedWorkflowExecutions ListDomains ListOpenWorkflowExecutions ListWorkflowTypes PollForActivityTask PollForDecisionTask RecordActivityTaskHeartbeat RegisterActivityType RegisterDomain RegisterWorkflowType RequestCancelWorkflowExecution RespondActivityTaskCanceled RespondActivityTaskCompleted RespondActivityTaskFailed RespondDecisionTaskCompleted SignalWorkflowExecution StartWorkflowExecution TerminateWorkflowExecution / }
+
 1;
 
 ### main pod documentation begin ###

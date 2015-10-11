@@ -133,6 +133,9 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ScheduleRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CreateDevicePool CreateProject CreateUpload GetAccountSettings GetDevice GetDevicePool GetDevicePoolCompatibility GetJob GetProject GetRun GetSuite GetTest GetUpload ListArtifacts ListDevicePools ListDevices ListJobs ListProjects ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads ScheduleRun / }
+
 1;
 
 ### main pod documentation begin ###

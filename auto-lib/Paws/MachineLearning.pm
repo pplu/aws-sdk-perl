@@ -133,6 +133,9 @@ package Paws::MachineLearning;
     my $call_object = $self->new_with_coercions('Paws::MachineLearning::UpdateMLModel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CreateBatchPrediction CreateDataSourceFromRDS CreateDataSourceFromRedshift CreateDataSourceFromS3 CreateEvaluation CreateMLModel CreateRealtimeEndpoint DeleteBatchPrediction DeleteDataSource DeleteEvaluation DeleteMLModel DeleteRealtimeEndpoint DescribeBatchPredictions DescribeDataSources DescribeEvaluations DescribeMLModels GetBatchPrediction GetDataSource GetEvaluation GetMLModel Predict UpdateBatchPrediction UpdateDataSource UpdateEvaluation UpdateMLModel / }
+
 1;
 
 ### main pod documentation begin ###

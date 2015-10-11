@@ -63,6 +63,9 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdateAssociationStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CreateAssociation CreateAssociationBatch CreateDocument DeleteAssociation DeleteDocument DescribeAssociation DescribeDocument GetDocument ListAssociations ListDocuments UpdateAssociationStatus / }
+
 1;
 
 ### main pod documentation begin ###

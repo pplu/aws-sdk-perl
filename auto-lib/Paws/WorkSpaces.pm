@@ -43,6 +43,9 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::TerminateWorkspaces', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CreateWorkspaces DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaces RebootWorkspaces RebuildWorkspaces TerminateWorkspaces / }
+
 1;
 
 ### main pod documentation begin ###

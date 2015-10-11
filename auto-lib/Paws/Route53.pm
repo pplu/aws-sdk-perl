@@ -176,6 +176,9 @@ package Paws::Route53;
     my $call_object = $self->new_with_coercions('Paws::Route53::UpdateHostedZoneComment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AssociateVPCWithHostedZone ChangeResourceRecordSets ChangeTagsForResource CreateHealthCheck CreateHostedZone CreateReusableDelegationSet DeleteHealthCheck DeleteHostedZone DeleteReusableDelegationSet DisassociateVPCFromHostedZone GetChange GetCheckerIpRanges GetGeoLocation GetHealthCheck GetHealthCheckCount GetHealthCheckLastFailureReason GetHealthCheckStatus GetHostedZone GetHostedZoneCount GetReusableDelegationSet ListGeoLocations ListHealthChecks ListHostedZones ListHostedZonesByName ListResourceRecordSets ListReusableDelegationSets ListTagsForResource ListTagsForResources UpdateHealthCheck UpdateHostedZoneComment / }
+
 1;
 
 ### main pod documentation begin ###

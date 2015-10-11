@@ -62,6 +62,9 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::SetAlarmState', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/DeleteAlarms DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DisableAlarmActions EnableAlarmActions GetMetricStatistics ListMetrics PutMetricAlarm PutMetricData SetAlarmState / }
+
 1;
 
 ### main pod documentation begin ###

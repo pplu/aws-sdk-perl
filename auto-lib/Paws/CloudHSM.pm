@@ -93,6 +93,9 @@ package Paws::CloudHSM;
     my $call_object = $self->new_with_coercions('Paws::CloudHSM::ModifyLunaClient', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CreateHapg CreateHsm CreateLunaClient DeleteHapg DeleteHsm DeleteLunaClient DescribeHapg DescribeHsm DescribeLunaClient GetConfig ListAvailableZones ListHapgs ListHsms ListLunaClients ModifyHapg ModifyHsm ModifyLunaClient / }
+
 1;
 
 ### main pod documentation begin ###

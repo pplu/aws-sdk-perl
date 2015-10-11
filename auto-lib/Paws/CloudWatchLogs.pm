@@ -133,6 +133,9 @@ package Paws::CloudWatchLogs;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::TestMetricFilter', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CancelExportTask CreateExportTask CreateLogGroup CreateLogStream DeleteDestination DeleteLogGroup DeleteLogStream DeleteMetricFilter DeleteRetentionPolicy DeleteSubscriptionFilter DescribeDestinations DescribeExportTasks DescribeLogGroups DescribeLogStreams DescribeMetricFilters DescribeSubscriptionFilters FilterLogEvents GetLogEvents PutDestination PutDestinationPolicy PutLogEvents PutMetricFilter PutRetentionPolicy PutSubscriptionFilter TestMetricFilter / }
+
 1;
 
 ### main pod documentation begin ###

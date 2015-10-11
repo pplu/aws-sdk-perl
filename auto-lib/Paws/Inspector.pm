@@ -188,6 +188,9 @@ package Paws::Inspector;
     my $call_object = $self->new_with_coercions('Paws::Inspector::UpdateAssessment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AddAttributesToFindings AttachAssessmentAndRulesPackage CreateApplication CreateAssessment CreateResourceGroup DeleteApplication DeleteAssessment DeleteRun DescribeApplication DescribeAssessment DescribeCrossAccountAccessRole DescribeFinding DescribeResourceGroup DescribeRulesPackage DescribeRun DetachAssessmentAndRulesPackage GetAssessmentTelemetry ListApplications ListAssessmentAgents ListAssessments ListAttachedAssessments ListAttachedRulesPackages ListFindings ListRulesPackages ListRuns ListTagsForResource LocalizeText PreviewAgentsForResourceGroup RegisterCrossAccountAccessRole RemoveAttributesFromFindings RunAssessment SetTagsForResource StartDataCollection StopDataCollection UpdateApplication UpdateAssessment / }
+
 1;
 
 ### main pod documentation begin ###

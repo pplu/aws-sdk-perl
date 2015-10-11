@@ -143,6 +143,9 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::UpdateService', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CreateCluster CreateService DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListClusters ListContainerInstances ListServices ListTaskDefinitionFamilies ListTaskDefinitions ListTasks RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange UpdateContainerAgent UpdateService / }
+
 1;
 
 ### main pod documentation begin ###

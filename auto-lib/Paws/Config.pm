@@ -123,6 +123,9 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::StopConfigurationRecorder', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/DeleteConfigRule DeleteDeliveryChannel DeliverConfigSnapshot DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetResourceConfigHistory ListDiscoveredResources PutConfigRule PutConfigurationRecorder PutDeliveryChannel PutEvaluations StartConfigurationRecorder StopConfigurationRecorder / }
+
 1;
 
 ### main pod documentation begin ###

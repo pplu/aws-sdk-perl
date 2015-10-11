@@ -130,6 +130,9 @@ package Paws::SQS;
     my $call_object = $self->new_with_coercions('Paws::SQS::SetQueueAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AddPermission ChangeMessageVisibility ChangeMessageVisibilityBatch CreateQueue DeleteMessage DeleteMessageBatch DeleteQueue GetQueueAttributes GetQueueUrl ListDeadLetterSourceQueues ListQueues PurgeQueue ReceiveMessage RemovePermission SendMessage SendMessageBatch SetQueueAttributes / }
+
 1;
 
 ### main pod documentation begin ###

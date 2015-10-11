@@ -83,6 +83,9 @@ package Paws::Kinesis;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::SplitShard', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AddTagsToStream CreateStream DecreaseStreamRetentionPeriod DeleteStream DescribeStream GetRecords GetShardIterator IncreaseStreamRetentionPeriod ListStreams ListTagsForStream MergeShards PutRecord PutRecords RemoveTagsFromStream SplitShard / }
+
 1;
 
 ### main pod documentation begin ###

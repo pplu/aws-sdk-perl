@@ -93,6 +93,9 @@ package Paws::CognitoSync;
     my $call_object = $self->new_with_coercions('Paws::CognitoSync::UpdateRecords', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/BulkPublish DeleteDataset DescribeDataset DescribeIdentityPoolUsage DescribeIdentityUsage GetBulkPublishDetails GetCognitoEvents GetIdentityPoolConfiguration ListDatasets ListIdentityPoolUsage ListRecords RegisterDevice SetCognitoEvents SetIdentityPoolConfiguration SubscribeToDataset UnsubscribeFromDataset UpdateRecords / }
+
 1;
 
 ### main pod documentation begin ###
