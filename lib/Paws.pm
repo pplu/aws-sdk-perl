@@ -47,7 +47,11 @@ has credentials => (
   },
   coerce => 1
 );
-
+has immutable => (
+  is => 'rw',
+  isa => 'Bool',
+  default => 0,
+);
 __PACKAGE__->meta->make_immutable;
 1;
 
@@ -83,7 +87,11 @@ class_has default_config => (is => 'rw', isa => 'Paws::SDK::Config', default => 
 
 sub load_class {
   my (undef, @classes) = @_;
-  Module::Runtime::require_module($_) for (@classes);
+  foreach my $class (@classes) {
+    Module::Runtime::require_module($class);
+    # immutability is a global setting that will affect all instances
+    $class->meta->make_immutable if (Paws->default_config->immutable);
+  }
 }
 
 sub available_services {
