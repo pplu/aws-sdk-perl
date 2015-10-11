@@ -96,6 +96,7 @@ sub load_class {
 
 sub available_services {
   my ($self) = @_;
+  $self = $self->get_self;
 
   my $skip_list = {
     API => 1, Credential => 1, Exception => 1
@@ -181,6 +182,10 @@ sub _preload_operations {
 
 sub _preload_scanclass {
   my ($class) = @_;
+
+  # If the class is already loaded, we really don't want to be rescanning it
+  # this avoid infinite recursion on DynamoDB, for example
+  return if (Moose::Util::find_meta($class));
 
   Paws->load_class($class);
 
