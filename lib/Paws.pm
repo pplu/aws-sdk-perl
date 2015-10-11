@@ -96,9 +96,13 @@ sub load_class {
 
 sub available_services {
   my ($self) = @_;
+
+  my $skip_list = {
+    API => 1, Credential => 1, Exception => 1
+  };
   require Module::Find;
   my $class_prefix = $self->_class_prefix;
-  return grep { $_ ne 'API' } map { $_ =~ s/^$class_prefix//; $_ } Module::Find::findsubmod Paws;
+  return grep { not $skip_list->{ $_ } } map { $_ =~ s/^$class_prefix//; $_ } Module::Find::findsubmod Paws;
 }
 
 sub get_self {
