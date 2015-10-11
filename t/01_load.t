@@ -1,8 +1,14 @@
 #!/usr/bin/env perl
 
 use Test::More;
-use Test::Class::Moose::Load qw(lib auto-lib);
+use Paws;
+use strict;
+use warnings;
+use v5.10;
 
-pass('all classes loaded');
+foreach my $service (sort Paws->available_services){
+  Paws->preload_service($service);
+  ok(1,"Loaded service $service");
+}
 
 done_testing;

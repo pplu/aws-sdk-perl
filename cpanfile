@@ -46,7 +46,6 @@ on 'develop' => sub {
 on 'test' => sub {
   requires 'File::Slurper';
   requires 'YAML';
-  requires 'Test::Class::Moose::Load';
   requires 'Test::More';
   requires 'Test::Timer';
   requires 'Test::Exception';
