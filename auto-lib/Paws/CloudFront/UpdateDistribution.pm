@@ -1,5 +1,5 @@
 
-package Paws::CloudFront::UpdateDistribution2015_07_27;
+package Paws::CloudFront::UpdateDistribution;
   use Moose;
   has DistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::DistributionConfig', required => 1);
   has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);

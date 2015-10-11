@@ -1,5 +1,5 @@
 
-package Paws::CloudFront::DeleteStreamingDistribution2015_07_27;
+package Paws::CloudFront::DeleteStreamingDistribution;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
   has IfMatch => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-Match' );

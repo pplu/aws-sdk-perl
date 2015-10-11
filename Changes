@@ -1,5 +1,7 @@
 0.17
  - loaded classes can be made immutable for better performance vs a bit more load time   
+ - CloudFront methods had dates appended to them. Now all methods don't have the
+   date appended, so anyone using CloudFront should be aware of that API change
 
 0.16
  - docu fixes by Gimpson

@@ -1,5 +1,5 @@
 
-package Paws::CloudFront::GetInvalidation2015_07_27;
+package Paws::CloudFront::GetInvalidation;
   use Moose;
   has DistributionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DistributionId' , required => 1);
   has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);

@@ -1,16 +1,15 @@
 
-package Paws::CloudFront::ListDistributionsByWebACLId2015_07_27;
+package Paws::CloudFront::ListDistributions;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker' );
   has MaxItems => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MaxItems' );
-  has WebACLId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'WebACLId' , required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDistributionsByWebACLId');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-07-27/distributionsByWebACLId/{WebACLId}');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDistributions');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-07-27/distribution');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::ListDistributionsByWebACLIdResult');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::ListDistributionsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -18,7 +17,7 @@ package Paws::CloudFront::ListDistributionsByWebACLId2015_07_27;
 
 =head1 NAME
 
-Paws::CloudFront::ListDistributionsByWebACLIdResult
+Paws::CloudFront::ListDistributionsResult
 
 =head1 ATTRIBUTES
 
@@ -47,22 +46,6 @@ Marker.)
 
 The maximum number of distributions that you want CloudFront to return
 in the response body. The maximum and default values are both 100.
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> WebACLId => Str
-
-  
-
-The Id of the AWS WAF web ACL for which you want to list the associated
-distributions. If you specify "null" for the Id, the request returns a
-list of the distributions that aren't associated with a web ACL.
 
 
 

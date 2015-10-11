@@ -1,5 +1,5 @@
 
-package Paws::CloudFront::CreateCloudFrontOriginAccessIdentity2015_07_27;
+package Paws::CloudFront::CreateCloudFrontOriginAccessIdentity;
   use Moose;
   has CloudFrontOriginAccessIdentityConfig => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentityConfig', required => 1);
 

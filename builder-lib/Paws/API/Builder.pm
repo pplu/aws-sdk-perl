@@ -559,7 +559,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
     foreach my $op_name ($self->operations) {
       if (defined $self->operation($op_name)->{name}) {
-        my $class_name = $self->namespace_shape($self->operation($op_name)->{name});
+        my $class_name = $self->namespace_shape($op_name);
         my $output = $self->process_template(
           $self->callargs_class_template,
           { c => $self, op_name => $op_name }
