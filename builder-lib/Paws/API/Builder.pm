@@ -658,6 +658,22 @@ package [% inner_class %];
 1
 #);
 
+  has map_str_to_native_template => (is => 'ro', isa => 'Str', default => q#
+[%- operation = c.operation(op_name) %]
+[%- shape = c.input_for_operation(op_name) -%]
+package [% inner_class %];
+  use Moose;
+  with 'Paws::API::StrToNativeMapParser';
+
+  use MooseX::ClassAttribute;
+  class_has xml_keys =>(is => 'ro', default => '[% iclass.key.locationName || 'key' %]');
+  class_has xml_values =>(is => 'ro', default => '[% iclass.value.locationName || 'value' %]');
+
+  has Map => (is => 'ro', isa => '[% map_class %]');
+1
+#);
+
+
   sub make_inner_class {
     my $self = shift;
     my $iclass = shift;
@@ -671,45 +687,11 @@ package [% inner_class %];
         my $values_shape = $self->shape($iclass->{value}->{shape});
 
         if ($keys_shape->{enum}){
-          $self->process_template(
-            $self->map_enum_template,
-            {
-              c => $self,
-              iclass => $iclass,
-              inner_class => $inner_class,
-              keys_shape => $keys_shape,
-              values_shape => $values_shape,
-            });
+          $self->process_template($self->map_enum_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, });
         } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'string') {
-          $output .= "package $inner_class;\n"; 
-          $output .= "  use Moose;\n";
-          $output .= "  with 'Paws::API::StrToNativeMapParser';\n";
-
-          my $xml_keys = $iclass->{key}->{locationName} || 'key';
-          my $xml_values = $iclass->{value}->{locationName} || 'value';
-          $output .= "\n";
-          $output .= "  use MooseX::ClassAttribute;\n";
-          $output .= "  class_has xml_keys =>(is => 'ro', default => '$xml_keys');\n";
-          $output .= "  class_has xml_values =>(is => 'ro', default => '$xml_values');\n";
-          $output .= "\n";
-
-          $output .= "  has Map => (is => 'ro', isa => 'HashRef[Str]');\n";
-          $output .= "1\n";
+          $self->process_template($self->map_str_to_native_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => 'HashRef[Str]' });
         } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'float') {
-          $output .= "package $inner_class;\n";
-          $output .= "  use Moose;\n";
-          $output .= "  with 'Paws::API::StrToNativeMapParser';\n";
-
-          my $xml_keys = $iclass->{key}->{locationName} || 'key';
-          my $xml_values = $iclass->{value}->{locationName} || 'value';
-          $output .= "\n";
-          $output .= "  use MooseX::ClassAttribute;\n";
-          $output .= "  class_has xml_keys =>(is => 'ro', default => '$xml_keys');\n";
-          $output .= "  class_has xml_values =>(is => 'ro', default => '$xml_values');\n";
-          $output .= "\n";
-
-          $output .= "  has Map => (is => 'ro', isa => 'HashRef[Num]');\n";
-          $output .= "1\n";
+          $self->process_template($self->map_str_to_native_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => 'HashRef[Num]' });
         } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'structure') {
           my $type = $self->get_caller_class_type($iclass->{value}->{shape});
           $output .= "package $inner_class;\n";
@@ -728,20 +710,7 @@ package [% inner_class %];
           $output .= "1\n";
         } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'list') {
           my $type = $self->get_caller_class_type($iclass->{value}->{shape});
-          $output .= "package $inner_class;\n";
-          $output .= "  use Moose;\n";
-          $output .= "  with 'Paws::API::StrToNativeMapParser';\n";
-
-          my $xml_keys = $iclass->{key}->{locationName} || 'key';
-          my $xml_values = $iclass->{value}->{locationName} || 'value';
-          $output .= "\n";
-          $output .= "  use MooseX::ClassAttribute;\n";
-          $output .= "  class_has xml_keys =>(is => 'ro', default => '$xml_keys');\n";
-          $output .= "  class_has xml_values =>(is => 'ro', default => '$xml_values');\n";
-          $output .= "\n";
-
-          $output .= "  has Map => (is => 'ro', isa => 'HashRef[$type]');\n";
-          $output .= "1\n";
+          $self->process_template($self->map_str_to_native_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
         } else {
           die "Unrecognized Map type in query API " . Dumper($iclass) . ' keys_shape ' . Dumper($keys_shape) . ' values_shape' . Dumper($values_shape);
         }
