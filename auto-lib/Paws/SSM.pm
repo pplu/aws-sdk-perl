@@ -92,8 +92,6 @@ Paws::SSM - Perl Interface to AWS Amazon Simple Systems Management Service
 
 =head1 DESCRIPTION
 
-
-
 Amazon EC2 Simple Systems Manager (SSM) enables you to configure and
 manage your EC2 instances. You can create a configuration document and
 then associate it with one or more running instances.
@@ -123,15 +121,6 @@ Configure CloudWatch Logs to monitor applications and systems
 
 Note that configuration documents are not supported on Linux instances.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
 =head2 CreateAssociation(InstanceId => Str, Name => Str)
@@ -140,9 +129,7 @@ Each argument is described in detail in: L<Paws::SSM::CreateAssociation>
 
 Returns: a L<Paws::SSM::CreateAssociationResult> instance
 
-  
-
-Associates the specified configuration document with the specified
+  Associates the specified configuration document with the specified
 instance.
 
 When you associate a configuration document with an instance, the
@@ -154,24 +141,13 @@ has an associated configuration document, we replace the current
 configuration document with the new configuration document.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateAssociationBatch(Entries => ArrayRef[L<Paws::SSM::CreateAssociationBatchRequestEntry>])
 
 Each argument is described in detail in: L<Paws::SSM::CreateAssociationBatch>
 
 Returns: a L<Paws::SSM::CreateAssociationBatchResult> instance
 
-  
-
-Associates the specified configuration documents with the specified
+  Associates the specified configuration documents with the specified
 instances.
 
 When you associate a configuration document with an instance, the
@@ -183,36 +159,16 @@ has an associated configuration document, we replace the current
 configuration document with the new configuration document.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateDocument(Content => Str, Name => Str)
 
 Each argument is described in detail in: L<Paws::SSM::CreateDocument>
 
 Returns: a L<Paws::SSM::CreateDocumentResult> instance
 
-  
-
-Creates a configuration document.
+  Creates a configuration document.
 
 After you create a configuration document, you can use
 CreateAssociation to associate it with one or more running instances.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteAssociation(InstanceId => Str, Name => Str)
@@ -221,9 +177,7 @@ Each argument is described in detail in: L<Paws::SSM::DeleteAssociation>
 
 Returns: a L<Paws::SSM::DeleteAssociationResult> instance
 
-  
-
-Disassociates the specified configuration document from the specified
+  Disassociates the specified configuration document from the specified
 instance.
 
 When you disassociate a configuration document from an instance, it
@@ -233,36 +187,16 @@ configuration document, you must create a new configuration document
 with the desired configuration and associate it with the instance.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteDocument(Name => Str)
 
 Each argument is described in detail in: L<Paws::SSM::DeleteDocument>
 
 Returns: a L<Paws::SSM::DeleteDocumentResult> instance
 
-  
-
-Deletes the specified configuration document.
+  Deletes the specified configuration document.
 
 You must use DeleteAssociation to disassociate all instances that are
 associated with the configuration document before you can delete it.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeAssociation(InstanceId => Str, Name => Str)
@@ -271,19 +205,8 @@ Each argument is described in detail in: L<Paws::SSM::DescribeAssociation>
 
 Returns: a L<Paws::SSM::DescribeAssociationResult> instance
 
-  
-
-Describes the associations for the specified configuration document or
+  Describes the associations for the specified configuration document or
 instance.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeDocument(Name => Str)
@@ -292,18 +215,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeDocument>
 
 Returns: a L<Paws::SSM::DescribeDocumentResult> instance
 
-  
-
-Describes the specified configuration document.
-
-
-
-
-
-
-
-
-
+  Describes the specified configuration document.
 
 
 =head2 GetDocument(Name => Str)
@@ -312,18 +224,7 @@ Each argument is described in detail in: L<Paws::SSM::GetDocument>
 
 Returns: a L<Paws::SSM::GetDocumentResult> instance
 
-  
-
-Gets the contents of the specified configuration document.
-
-
-
-
-
-
-
-
-
+  Gets the contents of the specified configuration document.
 
 
 =head2 ListAssociations(AssociationFilterList => ArrayRef[L<Paws::SSM::AssociationFilter>], [MaxResults => Int, NextToken => Str])
@@ -332,19 +233,8 @@ Each argument is described in detail in: L<Paws::SSM::ListAssociations>
 
 Returns: a L<Paws::SSM::ListAssociationsResult> instance
 
-  
-
-Lists the associations for the specified configuration document or
+  Lists the associations for the specified configuration document or
 instance.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListDocuments([DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], MaxResults => Int, NextToken => Str])
@@ -353,18 +243,7 @@ Each argument is described in detail in: L<Paws::SSM::ListDocuments>
 
 Returns: a L<Paws::SSM::ListDocumentsResult> instance
 
-  
-
-Describes one or more of your configuration documents.
-
-
-
-
-
-
-
-
-
+  Describes one or more of your configuration documents.
 
 
 =head2 UpdateAssociationStatus(AssociationStatus => L<Paws::SSM::AssociationStatus>, InstanceId => Str, Name => Str)
@@ -373,19 +252,8 @@ Each argument is described in detail in: L<Paws::SSM::UpdateAssociationStatus>
 
 Returns: a L<Paws::SSM::UpdateAssociationStatusResult> instance
 
-  
-
-Updates the status of the configuration document associated with the
+  Updates the status of the configuration document associated with the
 specified instance.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

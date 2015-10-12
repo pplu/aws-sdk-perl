@@ -167,8 +167,6 @@ Paws::KMS - Perl Interface to AWS AWS Key Management Service
 
 =head1 DESCRIPTION
 
-
-
 AWS Key Management Service
 
 AWS Key Management Service (KMS) is an encryption and key management
@@ -252,15 +250,6 @@ console.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
 =head2 CreateAlias(AliasName => Str, TargetKeyId => Str)
@@ -269,9 +258,7 @@ Each argument is described in detail in: L<Paws::KMS::CreateAlias>
 
 Returns: nothing
 
-  
-
-Creates a display name for a customer master key. An alias can be used
+  Creates a display name for a customer master key. An alias can be used
 to identify a key and should be unique. The console enforces a
 one-to-one mapping between the alias and a key. An alias name can
 contain only alphanumeric characters, forward slashes (/), underscores
@@ -285,24 +272,13 @@ Note that you cannot create or update an alias that represents a key in
 another account.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateGrant(GranteePrincipal => Str, KeyId => Str, [Constraints => L<Paws::KMS::GrantConstraints>, GrantTokens => ArrayRef[Str], Operations => ArrayRef[Str], RetiringPrincipal => Str])
 
 Each argument is described in detail in: L<Paws::KMS::CreateGrant>
 
 Returns: a L<Paws::KMS::CreateGrantResponse> instance
 
-  
-
-Adds a grant to a key to specify who can access the key and under what
+  Adds a grant to a key to specify who can access the key and under what
 conditions. Grants are alternate permission mechanisms to key policies.
 For more information about grants, see Grants in the developer guide.
 If a grant is absent, access to the key is evaluated based on IAM
@@ -319,37 +295,17 @@ policies attached to the user.
 =back
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateKey([Description => Str, KeyUsage => Str, Policy => Str])
 
 Each argument is described in detail in: L<Paws::KMS::CreateKey>
 
 Returns: a L<Paws::KMS::CreateKeyResponse> instance
 
-  
-
-Creates a customer master key. Customer master keys can be used to
+  Creates a customer master key. Customer master keys can be used to
 encrypt small amounts of data (less than 4K) directly, but they are
 most commonly used to encrypt or envelope data keys that are then used
 to encrypt customer data. For more information about data keys, see
 GenerateDataKey and GenerateDataKeyWithoutPlaintext.
-
-
-
-
-
-
-
-
-
 
 
 =head2 Decrypt(CiphertextBlob => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str]])
@@ -358,9 +314,7 @@ Each argument is described in detail in: L<Paws::KMS::Decrypt>
 
 Returns: a L<Paws::KMS::DecryptResponse> instance
 
-  
-
-Decrypts ciphertext. Ciphertext is plaintext that has been previously
+  Decrypts ciphertext. Ciphertext is plaintext that has been previously
 encrypted by using any of the following functions:
 
 =over
@@ -384,34 +338,14 @@ IAM user policy, you should scope the resource to specific keys or to
 specific trusted accounts.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteAlias(AliasName => Str)
 
 Each argument is described in detail in: L<Paws::KMS::DeleteAlias>
 
 Returns: nothing
 
-  
-
-Deletes the specified alias. To associate an alias with a different
+  Deletes the specified alias. To associate an alias with a different
 key, call UpdateAlias.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeKey(KeyId => Str)
@@ -420,18 +354,7 @@ Each argument is described in detail in: L<Paws::KMS::DescribeKey>
 
 Returns: a L<Paws::KMS::DescribeKeyResponse> instance
 
-  
-
-Provides detailed information about the specified customer master key.
-
-
-
-
-
-
-
-
-
+  Provides detailed information about the specified customer master key.
 
 
 =head2 DisableKey(KeyId => Str)
@@ -440,18 +363,7 @@ Each argument is described in detail in: L<Paws::KMS::DisableKey>
 
 Returns: nothing
 
-  
-
-Marks a key as disabled, thereby preventing its use.
-
-
-
-
-
-
-
-
-
+  Marks a key as disabled, thereby preventing its use.
 
 
 =head2 DisableKeyRotation(KeyId => Str)
@@ -460,18 +372,7 @@ Each argument is described in detail in: L<Paws::KMS::DisableKeyRotation>
 
 Returns: nothing
 
-  
-
-Disables rotation of the specified key.
-
-
-
-
-
-
-
-
-
+  Disables rotation of the specified key.
 
 
 =head2 EnableKey(KeyId => Str)
@@ -480,19 +381,8 @@ Each argument is described in detail in: L<Paws::KMS::EnableKey>
 
 Returns: nothing
 
-  
-
-Marks a key as enabled, thereby permitting its use. You can have up to
+  Marks a key as enabled, thereby permitting its use. You can have up to
 25 enabled keys at one time.
-
-
-
-
-
-
-
-
-
 
 
 =head2 EnableKeyRotation(KeyId => Str)
@@ -501,18 +391,7 @@ Each argument is described in detail in: L<Paws::KMS::EnableKeyRotation>
 
 Returns: nothing
 
-  
-
-Enables rotation of the specified customer master key.
-
-
-
-
-
-
-
-
-
+  Enables rotation of the specified customer master key.
 
 
 =head2 Encrypt(KeyId => Str, Plaintext => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str]])
@@ -521,9 +400,7 @@ Each argument is described in detail in: L<Paws::KMS::Encrypt>
 
 Returns: a L<Paws::KMS::EncryptResponse> instance
 
-  
-
-Encrypts plaintext into ciphertext by using a customer master key. The
+  Encrypts plaintext into ciphertext by using a customer master key. The
 C<Encrypt> function has two primary use cases:
 
 =over
@@ -552,24 +429,13 @@ key and a copy of the key encrypted under the customer master key (CMK)
 of your choosing.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GenerateDataKey(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
 
 Each argument is described in detail in: L<Paws::KMS::GenerateDataKey>
 
 Returns: a L<Paws::KMS::GenerateDataKeyResponse> instance
 
-  
-
-Generates a data key that you can use in your application to locally
+  Generates a data key that you can use in your application to locally
 encrypt data. This call returns a plaintext version of the key in the
 C<Plaintext> field of the response object and an encrypted copy of the
 key in the C<CiphertextBlob> field. The key is encrypted by using the
@@ -605,37 +471,17 @@ the key. The encryption context is logged by CloudTrail, and you can
 use this log to help track the use of particular data.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GenerateDataKeyWithoutPlaintext(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
 
 Each argument is described in detail in: L<Paws::KMS::GenerateDataKeyWithoutPlaintext>
 
 Returns: a L<Paws::KMS::GenerateDataKeyWithoutPlaintextResponse> instance
 
-  
-
-Returns a data key encrypted by a customer master key without the
+  Returns a data key encrypted by a customer master key without the
 plaintext copy of that key. Otherwise, this API functions exactly like
 GenerateDataKey. You can use this API to, for example, satisfy an audit
 requirement that an encrypted key be made available without exposing
 the plaintext copy of that key.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GenerateRandom([NumberOfBytes => Int])
@@ -644,18 +490,7 @@ Each argument is described in detail in: L<Paws::KMS::GenerateRandom>
 
 Returns: a L<Paws::KMS::GenerateRandomResponse> instance
 
-  
-
-Generates an unpredictable byte string.
-
-
-
-
-
-
-
-
-
+  Generates an unpredictable byte string.
 
 
 =head2 GetKeyPolicy(KeyId => Str, PolicyName => Str)
@@ -664,18 +499,7 @@ Each argument is described in detail in: L<Paws::KMS::GetKeyPolicy>
 
 Returns: a L<Paws::KMS::GetKeyPolicyResponse> instance
 
-  
-
-Retrieves a policy attached to the specified key.
-
-
-
-
-
-
-
-
-
+  Retrieves a policy attached to the specified key.
 
 
 =head2 GetKeyRotationStatus(KeyId => Str)
@@ -684,19 +508,8 @@ Each argument is described in detail in: L<Paws::KMS::GetKeyRotationStatus>
 
 Returns: a L<Paws::KMS::GetKeyRotationStatusResponse> instance
 
-  
-
-Retrieves a Boolean value that indicates whether key rotation is
+  Retrieves a Boolean value that indicates whether key rotation is
 enabled for the specified key.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListAliases([Limit => Int, Marker => Str])
@@ -705,18 +518,7 @@ Each argument is described in detail in: L<Paws::KMS::ListAliases>
 
 Returns: a L<Paws::KMS::ListAliasesResponse> instance
 
-  
-
-Lists all of the key aliases in the account.
-
-
-
-
-
-
-
-
-
+  Lists all of the key aliases in the account.
 
 
 =head2 ListGrants(KeyId => Str, [Limit => Int, Marker => Str])
@@ -725,18 +527,7 @@ Each argument is described in detail in: L<Paws::KMS::ListGrants>
 
 Returns: a L<Paws::KMS::ListGrantsResponse> instance
 
-  
-
-List the grants for a specified key.
-
-
-
-
-
-
-
-
-
+  List the grants for a specified key.
 
 
 =head2 ListKeyPolicies(KeyId => Str, [Limit => Int, Marker => Str])
@@ -745,18 +536,7 @@ Each argument is described in detail in: L<Paws::KMS::ListKeyPolicies>
 
 Returns: a L<Paws::KMS::ListKeyPoliciesResponse> instance
 
-  
-
-Retrieves a list of policies attached to a key.
-
-
-
-
-
-
-
-
-
+  Retrieves a list of policies attached to a key.
 
 
 =head2 ListKeys([Limit => Int, Marker => Str])
@@ -765,18 +545,7 @@ Each argument is described in detail in: L<Paws::KMS::ListKeys>
 
 Returns: a L<Paws::KMS::ListKeysResponse> instance
 
-  
-
-Lists the customer master keys.
-
-
-
-
-
-
-
-
-
+  Lists the customer master keys.
 
 
 =head2 PutKeyPolicy(KeyId => Str, Policy => Str, PolicyName => Str)
@@ -785,18 +554,7 @@ Each argument is described in detail in: L<Paws::KMS::PutKeyPolicy>
 
 Returns: nothing
 
-  
-
-Attaches a policy to the specified key.
-
-
-
-
-
-
-
-
-
+  Attaches a policy to the specified key.
 
 
 =head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>])
@@ -805,9 +563,7 @@ Each argument is described in detail in: L<Paws::KMS::ReEncrypt>
 
 Returns: a L<Paws::KMS::ReEncryptResponse> instance
 
-  
-
-Encrypts data on the server side with a new customer master key without
+  Encrypts data on the server side with a new customer master key without
 exposing the plaintext of the data on the client side. The data is
 first decrypted and then encrypted. This operation can also be used to
 change the encryption context of a ciphertext.
@@ -822,24 +578,13 @@ must be included manually when you set a policy by using the
 PutKeyPolicy function.
 
 
-
-
-
-
-
-
-
-
-
 =head2 RetireGrant([GrantId => Str, GrantToken => Str, KeyId => Str])
 
 Each argument is described in detail in: L<Paws::KMS::RetireGrant>
 
 Returns: nothing
 
-  
-
-Retires a grant. You can retire a grant when you're done using it to
+  Retires a grant. You can retire a grant when you're done using it to
 clean up. You should revoke a grant when you intend to actively deny
 operations that depend on it. The following are permitted to call this
 API:
@@ -862,34 +607,14 @@ unique identifier of a grant. Both are returned by the C<CreateGrant>
 function.
 
 
-
-
-
-
-
-
-
-
-
 =head2 RevokeGrant(GrantId => Str, KeyId => Str)
 
 Each argument is described in detail in: L<Paws::KMS::RevokeGrant>
 
 Returns: nothing
 
-  
-
-Revokes a grant. You can revoke a grant to actively deny operations
+  Revokes a grant. You can revoke a grant to actively deny operations
 that depend on it.
-
-
-
-
-
-
-
-
-
 
 
 =head2 UpdateAlias(AliasName => Str, TargetKeyId => Str)
@@ -898,9 +623,7 @@ Each argument is described in detail in: L<Paws::KMS::UpdateAlias>
 
 Returns: nothing
 
-  
-
-Updates an alias to associate it with a different key.
+  Updates an alias to associate it with a different key.
 
 An alias name can contain only alphanumeric characters, forward slashes
 (/), underscores (_), and dashes (-). An alias must start with the word
@@ -916,33 +639,13 @@ Note that you cannot create or update an alias that represents a key in
 another account.
 
 
-
-
-
-
-
-
-
-
-
 =head2 UpdateKeyDescription(Description => Str, KeyId => Str)
 
 Each argument is described in detail in: L<Paws::KMS::UpdateKeyDescription>
 
 Returns: nothing
 
-  
-
-Updates the description of a key.
-
-
-
-
-
-
-
-
-
+  Updates the description of a key.
 
 
 =head1 SEE ALSO

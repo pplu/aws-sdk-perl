@@ -72,22 +72,11 @@ Paws::Firehose - Perl Interface to AWS Amazon Kinesis Firehose
 
 =head1 DESCRIPTION
 
-
-
 Amazon Kinesis Firehose API Reference
 
 Amazon Kinesis Firehose is a fully-managed service that delivers
 real-time streaming data to destinations such as Amazon S3 and Amazon
 Redshift.
-
-
-
-
-
-
-
-
-
 
 =head1 METHODS
 
@@ -97,9 +86,7 @@ Each argument is described in detail in: L<Paws::Firehose::CreateDeliveryStream>
 
 Returns: a L<Paws::Firehose::CreateDeliveryStreamOutput> instance
 
-  
-
-Creates a delivery stream.
+  Creates a delivery stream.
 
 CreateDeliveryStream is an asynchronous operation that immediately
 returns. The initial status of the delivery stream is C<CREATING>.
@@ -161,24 +148,13 @@ Amazon S3 Bucket Access in the I<Amazon Kinesis Firehose Developer
 Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteDeliveryStream(DeliveryStreamName => Str)
 
 Each argument is described in detail in: L<Paws::Firehose::DeleteDeliveryStream>
 
 Returns: a L<Paws::Firehose::DeleteDeliveryStreamOutput> instance
 
-  
-
-Deletes a delivery stream and its data.
+  Deletes a delivery stream and its data.
 
 You can delete a delivery stream only if it is in C<ACTIVE> or
 C<DELETING> state, and not in the C<CREATING> state. While the deletion
@@ -193,36 +169,16 @@ practice, you should first stop any applications that are sending
 records before deleting a delivery stream.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeDeliveryStream(DeliveryStreamName => Str, [ExclusiveStartDestinationId => Str, Limit => Int])
 
 Each argument is described in detail in: L<Paws::Firehose::DescribeDeliveryStream>
 
 Returns: a L<Paws::Firehose::DescribeDeliveryStreamOutput> instance
 
-  
-
-Describes the specified delivery stream and gets the status. For
+  Describes the specified delivery stream and gets the status. For
 example, after your delivery stream is created, call
 DescribeDeliveryStream to see if the delivery stream is C<ACTIVE> and
 therefore ready for data to be sent to it.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListDeliveryStreams([ExclusiveStartDeliveryStreamName => Str, Limit => Int])
@@ -231,9 +187,7 @@ Each argument is described in detail in: L<Paws::Firehose::ListDeliveryStreams>
 
 Returns: a L<Paws::Firehose::ListDeliveryStreamsOutput> instance
 
-  
-
-Lists your delivery streams.
+  Lists your delivery streams.
 
 The number of delivery streams might be too large to return using a
 single call to ListDeliveryStreams. You can limit the number of
@@ -245,24 +199,13 @@ last delivery stream returned in the call in the
 C<ExclusiveStartDeliveryStreamName> parameter of a subsequent call.
 
 
-
-
-
-
-
-
-
-
-
 =head2 PutRecord(DeliveryStreamName => Str, Record => L<Paws::Firehose::Record>)
 
 Each argument is described in detail in: L<Paws::Firehose::PutRecord>
 
 Returns: a L<Paws::Firehose::PutRecordOutput> instance
 
-  
-
-Writes a single data record into an Amazon Kinesis Firehose delivery
+  Writes a single data record into an Amazon Kinesis Firehose delivery
 stream. To write multiple data records into a delivery stream, use
 PutRecordBatch. Applications using these operations are referred to as
 producers.
@@ -306,24 +249,13 @@ send the records to the destination. If the destination is unreachable
 for more than 24 hours, the data is no longer available.
 
 
-
-
-
-
-
-
-
-
-
 =head2 PutRecordBatch(DeliveryStreamName => Str, Records => ArrayRef[L<Paws::Firehose::Record>])
 
 Each argument is described in detail in: L<Paws::Firehose::PutRecordBatch>
 
 Returns: a L<Paws::Firehose::PutRecordBatchOutput> instance
 
-  
-
-Writes multiple data records into a delivery stream in a single call,
+  Writes multiple data records into a delivery stream in a single call,
 which can achieve higher throughput per producer than when writing
 single records. To write single data records into a delivery stream,
 use PutRecord. Applications using these operations are referred to as
@@ -388,24 +320,13 @@ send the records to the destination. If the destination is unreachable
 for more than 24 hours, the data is no longer available.
 
 
-
-
-
-
-
-
-
-
-
 =head2 UpdateDestination(CurrentDeliveryStreamVersionId => Str, DeliveryStreamName => Str, DestinationId => Str, [RedshiftDestinationUpdate => L<Paws::Firehose::RedshiftDestinationUpdate>, S3DestinationUpdate => L<Paws::Firehose::S3DestinationUpdate>])
 
 Each argument is described in detail in: L<Paws::Firehose::UpdateDestination>
 
 Returns: a L<Paws::Firehose::UpdateDestinationOutput> instance
 
-  
-
-Updates the specified destination of the specified delivery stream.
+  Updates the specified destination of the specified delivery stream.
 
 This operation can be used to change the destination type (for example,
 to replace the Amazon S3 destination with Amazon Redshift) or change
@@ -438,15 +359,6 @@ applied successfully, the C<VersionId> is updated, which can be
 retrieved with the DescribeDeliveryStream operation. The new
 C<VersionId> should be uses to set C<CurrentDeliveryStreamVersionId> in
 the next UpdateDestination operation.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

@@ -664,10 +664,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     if (not $doc) {
       return '';
     }
-    my $pod = $self->html_to_pod($doc);
-    $pod =~ s/^(?:\s*\n)*//;
-    $pod =~ s/(?:\s*\n)*$//;
-    return $pod;
+    return $self->html_to_pod($doc);
   }
 
   sub doc_for_service {
@@ -698,6 +695,8 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     $pod =~ s/=pod//;
     $pod =~ s/=cut$//m;
     $pod =~ s/#.*$//mg;
+    $pod =~ s/^(?:\s*\n)*//;
+    $pod =~ s/(?:\s*\n)*$//;
     return $pod;
   }
 

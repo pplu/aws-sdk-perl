@@ -161,8 +161,6 @@ Paws::SNS - Perl Interface to AWS Amazon Simple Notification Service
 
 =head1 DESCRIPTION
 
-
-
 Amazon Simple Notification Service
 
 Amazon Simple Notification Service (Amazon SNS) is a web service that
@@ -179,15 +177,6 @@ automatically takes care of tasks such as: cryptographically signing
 your service requests, retrying requests, and handling error responses.
 For a list of available SDKs, go to Tools for Amazon Web Services.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
 =head2 AddPermission(ActionName => ArrayRef[Str], AWSAccountId => ArrayRef[Str], Label => Str, TopicArn => Str)
@@ -196,19 +185,8 @@ Each argument is described in detail in: L<Paws::SNS::AddPermission>
 
 Returns: nothing
 
-  
-
-Adds a statement to a topic's access control policy, granting access
+  Adds a statement to a topic's access control policy, granting access
 for the specified AWS accounts to the specified actions.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ConfirmSubscription(Token => Str, TopicArn => Str, [AuthenticateOnUnsubscribe => Str])
@@ -217,22 +195,11 @@ Each argument is described in detail in: L<Paws::SNS::ConfirmSubscription>
 
 Returns: a L<Paws::SNS::ConfirmSubscriptionResponse> instance
 
-  
-
-Verifies an endpoint owner's intent to receive messages by validating
+  Verifies an endpoint owner's intent to receive messages by validating
 the token sent to the endpoint by an earlier C<Subscribe> action. If
 the token is valid, the action creates a new subscription and returns
 its Amazon Resource Name (ARN). This call requires an AWS signature
 only when the C<AuthenticateOnUnsubscribe> flag is set to "true".
-
-
-
-
-
-
-
-
-
 
 
 =head2 CreatePlatformApplication(Attributes => L<Paws::SNS::MapStringToString>, Name => Str, Platform => Str)
@@ -241,9 +208,7 @@ Each argument is described in detail in: L<Paws::SNS::CreatePlatformApplication>
 
 Returns: a L<Paws::SNS::CreatePlatformApplicationResponse> instance
 
-  
-
-Creates a platform application object for one of the supported push
+  Creates a platform application object for one of the supported push
 notification services, such as APNS and GCM, to which devices and
 mobile apps may register. You must specify PlatformPrincipal and
 PlatformCredential attributes when using the
@@ -260,24 +225,13 @@ C<CreatePlatformEndpoint> action. For more information, see Using
 Amazon SNS Mobile Push Notifications.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreatePlatformEndpoint(PlatformApplicationArn => Str, Token => Str, [Attributes => L<Paws::SNS::MapStringToString>, CustomUserData => Str])
 
 Each argument is described in detail in: L<Paws::SNS::CreatePlatformEndpoint>
 
 Returns: a L<Paws::SNS::CreateEndpointResponse> instance
 
-  
-
-Creates an endpoint for a device and mobile app on one of the supported
+  Creates an endpoint for a device and mobile app on one of the supported
 push notification services, such as GCM and APNS.
 C<CreatePlatformEndpoint> requires the PlatformApplicationArn that is
 returned from C<CreatePlatformApplication>. The EndpointArn that is
@@ -295,37 +249,17 @@ ChannelId. For more information, see Creating an Amazon SNS Endpoint
 for Baidu.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateTopic(Name => Str)
 
 Each argument is described in detail in: L<Paws::SNS::CreateTopic>
 
 Returns: a L<Paws::SNS::CreateTopicResponse> instance
 
-  
-
-Creates a topic to which notifications can be published. Users can
+  Creates a topic to which notifications can be published. Users can
 create at most 3000 topics. For more information, see
 http://aws.amazon.com/sns. This action is idempotent, so if the
 requester already owns a topic with the specified name, that topic's
 ARN is returned without creating a new topic.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteEndpoint(EndpointArn => Str)
@@ -334,19 +268,8 @@ Each argument is described in detail in: L<Paws::SNS::DeleteEndpoint>
 
 Returns: nothing
 
-  
-
-Deletes the endpoint from Amazon SNS. This action is idempotent. For
+  Deletes the endpoint from Amazon SNS. This action is idempotent. For
 more information, see Using Amazon SNS Mobile Push Notifications.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeletePlatformApplication(PlatformApplicationArn => Str)
@@ -355,20 +278,9 @@ Each argument is described in detail in: L<Paws::SNS::DeletePlatformApplication>
 
 Returns: nothing
 
-  
-
-Deletes a platform application object for one of the supported push
+  Deletes a platform application object for one of the supported push
 notification services, such as APNS and GCM. For more information, see
 Using Amazon SNS Mobile Push Notifications.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteTopic(TopicArn => Str)
@@ -377,21 +289,10 @@ Each argument is described in detail in: L<Paws::SNS::DeleteTopic>
 
 Returns: nothing
 
-  
-
-Deletes a topic and all its subscriptions. Deleting a topic might
+  Deletes a topic and all its subscriptions. Deleting a topic might
 prevent some messages previously sent to the topic from being delivered
 to subscribers. This action is idempotent, so deleting a topic that
 does not exist does not result in an error.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetEndpointAttributes(EndpointArn => Str)
@@ -400,20 +301,9 @@ Each argument is described in detail in: L<Paws::SNS::GetEndpointAttributes>
 
 Returns: a L<Paws::SNS::GetEndpointAttributesResponse> instance
 
-  
-
-Retrieves the endpoint attributes for a device on one of the supported
+  Retrieves the endpoint attributes for a device on one of the supported
 push notification services, such as GCM and APNS. For more information,
 see Using Amazon SNS Mobile Push Notifications.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetPlatformApplicationAttributes(PlatformApplicationArn => Str)
@@ -422,20 +312,9 @@ Each argument is described in detail in: L<Paws::SNS::GetPlatformApplicationAttr
 
 Returns: a L<Paws::SNS::GetPlatformApplicationAttributesResponse> instance
 
-  
-
-Retrieves the attributes of the platform application object for the
+  Retrieves the attributes of the platform application object for the
 supported push notification services, such as APNS and GCM. For more
 information, see Using Amazon SNS Mobile Push Notifications.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetSubscriptionAttributes(SubscriptionArn => Str)
@@ -444,18 +323,7 @@ Each argument is described in detail in: L<Paws::SNS::GetSubscriptionAttributes>
 
 Returns: a L<Paws::SNS::GetSubscriptionAttributesResponse> instance
 
-  
-
-Returns all of the properties of a subscription.
-
-
-
-
-
-
-
-
-
+  Returns all of the properties of a subscription.
 
 
 =head2 GetTopicAttributes(TopicArn => Str)
@@ -464,19 +332,8 @@ Each argument is described in detail in: L<Paws::SNS::GetTopicAttributes>
 
 Returns: a L<Paws::SNS::GetTopicAttributesResponse> instance
 
-  
-
-Returns all of the properties of a topic. Topic properties returned
+  Returns all of the properties of a topic. Topic properties returned
 might differ based on the authorization of the user.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListEndpointsByPlatformApplication(PlatformApplicationArn => Str, [NextToken => Str])
@@ -485,9 +342,7 @@ Each argument is described in detail in: L<Paws::SNS::ListEndpointsByPlatformApp
 
 Returns: a L<Paws::SNS::ListEndpointsByPlatformApplicationResponse> instance
 
-  
-
-Lists the endpoints and endpoint attributes for devices in a supported
+  Lists the endpoints and endpoint attributes for devices in a supported
 push notification service, such as GCM and APNS. The results for
 C<ListEndpointsByPlatformApplication> are paginated and return a
 limited list of endpoints, up to 100. If additional records are
@@ -499,24 +354,13 @@ return, NextToken will be null. For more information, see Using Amazon
 SNS Mobile Push Notifications.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListPlatformApplications([NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SNS::ListPlatformApplications>
 
 Returns: a L<Paws::SNS::ListPlatformApplicationsResponse> instance
 
-  
-
-Lists the platform application objects for the supported push
+  Lists the platform application objects for the supported push
 notification services, such as APNS and GCM. The results for
 C<ListPlatformApplications> are paginated and return a limited list of
 applications, up to 100. If additional records are available after the
@@ -527,36 +371,16 @@ more records to return, NextToken will be null. For more information,
 see Using Amazon SNS Mobile Push Notifications.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListSubscriptions([NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SNS::ListSubscriptions>
 
 Returns: a L<Paws::SNS::ListSubscriptionsResponse> instance
 
-  
-
-Returns a list of the requester's subscriptions. Each call returns a
+  Returns a list of the requester's subscriptions. Each call returns a
 limited list of subscriptions, up to 100. If there are more
 subscriptions, a C<NextToken> is also returned. Use the C<NextToken>
 parameter in a new C<ListSubscriptions> call to get further results.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListSubscriptionsByTopic(TopicArn => Str, [NextToken => Str])
@@ -565,22 +389,11 @@ Each argument is described in detail in: L<Paws::SNS::ListSubscriptionsByTopic>
 
 Returns: a L<Paws::SNS::ListSubscriptionsByTopicResponse> instance
 
-  
-
-Returns a list of the subscriptions to a specific topic. Each call
+  Returns a list of the subscriptions to a specific topic. Each call
 returns a limited list of subscriptions, up to 100. If there are more
 subscriptions, a C<NextToken> is also returned. Use the C<NextToken>
 parameter in a new C<ListSubscriptionsByTopic> call to get further
 results.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListTopics([NextToken => Str])
@@ -589,21 +402,10 @@ Each argument is described in detail in: L<Paws::SNS::ListTopics>
 
 Returns: a L<Paws::SNS::ListTopicsResponse> instance
 
-  
-
-Returns a list of the requester's topics. Each call returns a limited
+  Returns a list of the requester's topics. Each call returns a limited
 list of topics, up to 100. If there are more topics, a C<NextToken> is
 also returned. Use the C<NextToken> parameter in a new C<ListTopics>
 call to get further results.
-
-
-
-
-
-
-
-
-
 
 
 =head2 Publish(Message => Str, [MessageAttributes => L<Paws::SNS::MessageAttributeMap>, MessageStructure => Str, Subject => Str, TargetArn => Str, TopicArn => Str])
@@ -612,9 +414,7 @@ Each argument is described in detail in: L<Paws::SNS::Publish>
 
 Returns: a L<Paws::SNS::PublishResponse> instance
 
-  
-
-Sends a message to all of a topic's subscribed endpoints. When a
+  Sends a message to all of a topic's subscribed endpoints. When a
 C<messageId> is returned, the message has been saved and Amazon SNS
 will attempt to deliver it to the topic's subscribers shortly. The
 format of the outgoing message to each subscribed endpoint depends on
@@ -627,33 +427,13 @@ with the C<CreatePlatformEndpoint> action. The second example below
 shows a request and response for publishing to a mobile endpoint.
 
 
-
-
-
-
-
-
-
-
-
 =head2 RemovePermission(Label => Str, TopicArn => Str)
 
 Each argument is described in detail in: L<Paws::SNS::RemovePermission>
 
 Returns: nothing
 
-  
-
-Removes a statement from a topic's access control policy.
-
-
-
-
-
-
-
-
-
+  Removes a statement from a topic's access control policy.
 
 
 =head2 SetEndpointAttributes(Attributes => L<Paws::SNS::MapStringToString>, EndpointArn => Str)
@@ -662,20 +442,9 @@ Each argument is described in detail in: L<Paws::SNS::SetEndpointAttributes>
 
 Returns: nothing
 
-  
-
-Sets the attributes for an endpoint for a device on one of the
+  Sets the attributes for an endpoint for a device on one of the
 supported push notification services, such as GCM and APNS. For more
 information, see Using Amazon SNS Mobile Push Notifications.
-
-
-
-
-
-
-
-
-
 
 
 =head2 SetPlatformApplicationAttributes(Attributes => L<Paws::SNS::MapStringToString>, PlatformApplicationArn => Str)
@@ -684,20 +453,9 @@ Each argument is described in detail in: L<Paws::SNS::SetPlatformApplicationAttr
 
 Returns: nothing
 
-  
-
-Sets the attributes of the platform application object for the
+  Sets the attributes of the platform application object for the
 supported push notification services, such as APNS and GCM. For more
 information, see Using Amazon SNS Mobile Push Notifications.
-
-
-
-
-
-
-
-
-
 
 
 =head2 SetSubscriptionAttributes(AttributeName => Str, SubscriptionArn => Str, [AttributeValue => Str])
@@ -706,19 +464,8 @@ Each argument is described in detail in: L<Paws::SNS::SetSubscriptionAttributes>
 
 Returns: nothing
 
-  
-
-Allows a subscription owner to set an attribute of the topic to a new
+  Allows a subscription owner to set an attribute of the topic to a new
 value.
-
-
-
-
-
-
-
-
-
 
 
 =head2 SetTopicAttributes(AttributeName => Str, TopicArn => Str, [AttributeValue => Str])
@@ -727,18 +474,7 @@ Each argument is described in detail in: L<Paws::SNS::SetTopicAttributes>
 
 Returns: nothing
 
-  
-
-Allows a topic owner to set an attribute of the topic to a new value.
-
-
-
-
-
-
-
-
-
+  Allows a topic owner to set an attribute of the topic to a new value.
 
 
 =head2 Subscribe(Protocol => Str, TopicArn => Str, [Endpoint => Str])
@@ -747,21 +483,10 @@ Each argument is described in detail in: L<Paws::SNS::Subscribe>
 
 Returns: a L<Paws::SNS::SubscribeResponse> instance
 
-  
-
-Prepares to subscribe an endpoint by sending the endpoint a
+  Prepares to subscribe an endpoint by sending the endpoint a
 confirmation message. To actually create a subscription, the endpoint
 owner must call the C<ConfirmSubscription> action with the token from
 the confirmation message. Confirmation tokens are valid for three days.
-
-
-
-
-
-
-
-
-
 
 
 =head2 Unsubscribe(SubscriptionArn => Str)
@@ -770,24 +495,13 @@ Each argument is described in detail in: L<Paws::SNS::Unsubscribe>
 
 Returns: nothing
 
-  
-
-Deletes a subscription. If the subscription requires authentication for
+  Deletes a subscription. If the subscription requires authentication for
 deletion, only the owner of the subscription or the topic's owner can
 unsubscribe, and an AWS signature is required. If the C<Unsubscribe>
 call does not require authentication and the requester is not the
 subscription owner, a final cancellation message is delivered to the
 endpoint, so that the endpoint owner can easily resubscribe to the
 topic if the C<Unsubscribe> request was unintended.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

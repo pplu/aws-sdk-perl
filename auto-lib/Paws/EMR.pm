@@ -170,22 +170,11 @@ Paws::EMR - Perl Interface to AWS Amazon Elastic MapReduce
 
 =head1 DESCRIPTION
 
-
-
 Amazon Elastic MapReduce (Amazon EMR) is a web service that makes it
 easy to process large amounts of data efficiently. Amazon EMR uses
 Hadoop processing combined with several AWS products to do tasks such
 as web indexing, data mining, log file analysis, machine learning,
 scientific simulation, and data warehousing.
-
-
-
-
-
-
-
-
-
 
 =head1 METHODS
 
@@ -195,18 +184,7 @@ Each argument is described in detail in: L<Paws::EMR::AddInstanceGroups>
 
 Returns: a L<Paws::EMR::AddInstanceGroupsOutput> instance
 
-  
-
-AddInstanceGroups adds an instance group to a running cluster.
-
-
-
-
-
-
-
-
-
+  AddInstanceGroups adds an instance group to a running cluster.
 
 
 =head2 AddJobFlowSteps(JobFlowId => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>])
@@ -215,9 +193,7 @@ Each argument is described in detail in: L<Paws::EMR::AddJobFlowSteps>
 
 Returns: a L<Paws::EMR::AddJobFlowStepsOutput> instance
 
-  
-
-AddJobFlowSteps adds new steps to a running job flow. A maximum of 256
+  AddJobFlowSteps adds new steps to a running job flow. A maximum of 256
 steps are allowed in each job flow.
 
 If your job flow is long-running (such as a Hive data warehouse) or
@@ -243,36 +219,16 @@ You can only add steps to a job flow that is in one of the following
 states: STARTING, BOOTSTRAPPING, RUNNING, or WAITING.
 
 
-
-
-
-
-
-
-
-
-
 =head2 AddTags(ResourceId => Str, Tags => ArrayRef[L<Paws::EMR::Tag>])
 
 Each argument is described in detail in: L<Paws::EMR::AddTags>
 
 Returns: a L<Paws::EMR::AddTagsOutput> instance
 
-  
-
-Adds tags to an Amazon EMR resource. Tags make it easier to associate
+  Adds tags to an Amazon EMR resource. Tags make it easier to associate
 clusters in various ways, such as grouping clusters to track your
 Amazon EMR resource allocation costs. For more information, see Tagging
 Amazon EMR Resources.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeCluster(ClusterId => Str)
@@ -281,20 +237,9 @@ Each argument is described in detail in: L<Paws::EMR::DescribeCluster>
 
 Returns: a L<Paws::EMR::DescribeClusterOutput> instance
 
-  
-
-Provides cluster-level details including status, hardware and software
+  Provides cluster-level details including status, hardware and software
 configuration, VPC settings, and so on. For information about the
 cluster steps, see ListSteps.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeJobFlows([CreatedAfter => Str, CreatedBefore => Str, JobFlowIds => ArrayRef[Str], JobFlowStates => ArrayRef[Str]])
@@ -303,9 +248,7 @@ Each argument is described in detail in: L<Paws::EMR::DescribeJobFlows>
 
 Returns: a L<Paws::EMR::DescribeJobFlowsOutput> instance
 
-  
-
-This API is deprecated and will eventually be removed. We recommend you
+  This API is deprecated and will eventually be removed. We recommend you
 use ListClusters, DescribeCluster, ListSteps, ListInstanceGroups and
 ListBootstrapActions instead.
 
@@ -333,33 +276,13 @@ Amazon Elastic MapReduce can return a maximum of 512 job flow
 descriptions.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeStep(ClusterId => Str, StepId => Str)
 
 Each argument is described in detail in: L<Paws::EMR::DescribeStep>
 
 Returns: a L<Paws::EMR::DescribeStepOutput> instance
 
-  
-
-Provides more detail about the cluster step.
-
-
-
-
-
-
-
-
-
+  Provides more detail about the cluster step.
 
 
 =head2 ListBootstrapActions(ClusterId => Str, [Marker => Str])
@@ -368,19 +291,8 @@ Each argument is described in detail in: L<Paws::EMR::ListBootstrapActions>
 
 Returns: a L<Paws::EMR::ListBootstrapActionsOutput> instance
 
-  
-
-Provides information about the bootstrap actions associated with a
+  Provides information about the bootstrap actions associated with a
 cluster.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListClusters([ClusterStates => ArrayRef[Str], CreatedAfter => Str, CreatedBefore => Str, Marker => Str])
@@ -389,23 +301,12 @@ Each argument is described in detail in: L<Paws::EMR::ListClusters>
 
 Returns: a L<Paws::EMR::ListClustersOutput> instance
 
-  
-
-Provides the status of all clusters visible to this AWS account. Allows
+  Provides the status of all clusters visible to this AWS account. Allows
 you to filter the list of clusters based on certain criteria; for
 example, filtering by cluster creation date and time or by status. This
 call returns a maximum of 50 clusters per call, but returns a marker to
 track the paging of the cluster list across multiple ListClusters
 calls.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListInstanceGroups(ClusterId => Str, [Marker => Str])
@@ -414,18 +315,7 @@ Each argument is described in detail in: L<Paws::EMR::ListInstanceGroups>
 
 Returns: a L<Paws::EMR::ListInstanceGroupsOutput> instance
 
-  
-
-Provides all available details about the instance groups in a cluster.
-
-
-
-
-
-
-
-
-
+  Provides all available details about the instance groups in a cluster.
 
 
 =head2 ListInstances(ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str], Marker => Str])
@@ -434,22 +324,11 @@ Each argument is described in detail in: L<Paws::EMR::ListInstances>
 
 Returns: a L<Paws::EMR::ListInstancesOutput> instance
 
-  
-
-Provides information about the cluster instances that Amazon EMR
+  Provides information about the cluster instances that Amazon EMR
 provisions on behalf of a user when it creates the cluster. For
 example, this operation indicates when the EC2 instances reach the
 Ready state, when instances become available to Amazon EMR to use for
 jobs, and the IP addresses for cluster instances, etc.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListSteps(ClusterId => Str, [Marker => Str, StepIds => ArrayRef[Str], StepStates => ArrayRef[Str]])
@@ -458,18 +337,7 @@ Each argument is described in detail in: L<Paws::EMR::ListSteps>
 
 Returns: a L<Paws::EMR::ListStepsOutput> instance
 
-  
-
-Provides a list of steps for the cluster.
-
-
-
-
-
-
-
-
-
+  Provides a list of steps for the cluster.
 
 
 =head2 ModifyInstanceGroups([InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupModifyConfig>]])
@@ -478,21 +346,10 @@ Each argument is described in detail in: L<Paws::EMR::ModifyInstanceGroups>
 
 Returns: nothing
 
-  
-
-ModifyInstanceGroups modifies the number of nodes and configuration
+  ModifyInstanceGroups modifies the number of nodes and configuration
 settings of an instance group. The input parameters include the new
 target instance count for the group and the instance group ID. The call
 will either succeed or fail atomically.
-
-
-
-
-
-
-
-
-
 
 
 =head2 RemoveTags(ResourceId => Str, TagKeys => ArrayRef[Str])
@@ -501,9 +358,7 @@ Each argument is described in detail in: L<Paws::EMR::RemoveTags>
 
 Returns: a L<Paws::EMR::RemoveTagsOutput> instance
 
-  
-
-Removes tags from an Amazon EMR resource. Tags make it easier to
+  Removes tags from an Amazon EMR resource. Tags make it easier to
 associate clusters in various ways, such as grouping clusters to track
 your Amazon EMR resource allocation costs. For more information, see
 Tagging Amazon EMR Resources.
@@ -512,24 +367,13 @@ The following example removes the stack tag with value Prod from a
 cluster:
 
 
-
-
-
-
-
-
-
-
-
 =head2 RunJobFlow(Instances => L<Paws::EMR::JobFlowInstancesConfig>, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[L<Paws::EMR::Application>], BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>], Configurations => ArrayRef[L<Paws::EMR::Configuration>], JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>], ReleaseLabel => Str, ServiceRole => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>], SupportedProducts => ArrayRef[Str], Tags => ArrayRef[L<Paws::EMR::Tag>], VisibleToAllUsers => Bool])
 
 Each argument is described in detail in: L<Paws::EMR::RunJobFlow>
 
 Returns: a L<Paws::EMR::RunJobFlowOutput> instance
 
-  
-
-RunJobFlow creates and starts running a new job flow. The job flow will
+  RunJobFlow creates and starts running a new job flow. The job flow will
 run the steps specified. Once the job flow completes, the cluster is
 stopped and the HDFS partition is lost. To prevent loss of data,
 configure the last step of the job flow to store results in Amazon S3.
@@ -556,24 +400,13 @@ For long running job flows, we recommend that you periodically store
 your results.
 
 
-
-
-
-
-
-
-
-
-
 =head2 SetTerminationProtection(JobFlowIds => ArrayRef[Str], TerminationProtected => Bool)
 
 Each argument is described in detail in: L<Paws::EMR::SetTerminationProtection>
 
 Returns: nothing
 
-  
-
-SetTerminationProtection locks a job flow so the Amazon EC2 instances
+  SetTerminationProtection locks a job flow so the Amazon EC2 instances
 in the cluster cannot be terminated by user intervention, an API call,
 or in the event of a job-flow error. The cluster still terminates upon
 successful completion of the job flow. Calling SetTerminationProtection
@@ -594,38 +427,18 @@ For more information, go to Protecting a Job Flow from Termination in
 the I<Amazon Elastic MapReduce Developer's Guide.>
 
 
-
-
-
-
-
-
-
-
-
 =head2 SetVisibleToAllUsers(JobFlowIds => ArrayRef[Str], VisibleToAllUsers => Bool)
 
 Each argument is described in detail in: L<Paws::EMR::SetVisibleToAllUsers>
 
 Returns: nothing
 
-  
-
-Sets whether all AWS Identity and Access Management (IAM) users under
+  Sets whether all AWS Identity and Access Management (IAM) users under
 your account can access the specified job flows. This action works on
 running job flows. You can also set the visibility of a job flow when
 you launch it using the C<VisibleToAllUsers> parameter of RunJobFlow.
 The SetVisibleToAllUsers action can be called only by an IAM user who
 created the job flow or the AWS account that owns the job flow.
-
-
-
-
-
-
-
-
-
 
 
 =head2 TerminateJobFlows(JobFlowIds => ArrayRef[Str])
@@ -634,9 +447,7 @@ Each argument is described in detail in: L<Paws::EMR::TerminateJobFlows>
 
 Returns: nothing
 
-  
-
-TerminateJobFlows shuts a list of job flows down. When a job flow is
+  TerminateJobFlows shuts a list of job flows down. When a job flow is
 shut down, any step not yet completed is canceled and the EC2 instances
 on which the job flow is running are stopped. Any log files not already
 saved are uploaded to Amazon S3 if a LogUri was specified when the job
@@ -647,15 +458,6 @@ TerminateJobFlows is asynchronous. Depending on the configuration of
 the job flow, it may take up to 5-20 minutes for the job flow to
 completely terminate and release allocated resources, such as Amazon
 EC2 instances.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

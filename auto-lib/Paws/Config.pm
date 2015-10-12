@@ -152,8 +152,6 @@ Paws::Config - Perl Interface to AWS AWS Config
 
 =head1 DESCRIPTION
 
-
-
 AWS Config
 
 AWS Config provides a way to keep track of the configurations of all
@@ -180,15 +178,6 @@ For detailed information about AWS Config features and their associated
 actions or commands, as well as how to work with AWS Management
 Console, see What Is AWS Config? in the I<AWS Config Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
 =head2 DeleteConfigRule(ConfigRuleName => Str)
@@ -197,9 +186,7 @@ Each argument is described in detail in: L<Paws::Config::DeleteConfigRule>
 
 Returns: nothing
 
-  
-
-Deletes the specified AWS Config rule and all of its evaluation
+  Deletes the specified AWS Config rule and all of its evaluation
 results.
 
 AWS Config sets the state of a rule to C<DELETING> until the deletion
@@ -211,38 +198,18 @@ You can check the state of a rule by using the C<DescribeConfigRules>
 request.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteDeliveryChannel(DeliveryChannelName => Str)
 
 Each argument is described in detail in: L<Paws::Config::DeleteDeliveryChannel>
 
 Returns: nothing
 
-  
-
-Deletes the specified delivery channel.
+  Deletes the specified delivery channel.
 
 The delivery channel cannot be deleted if it is the only delivery
 channel and the configuration recorder is still running. To delete the
 delivery channel, stop the running configuration recorder using the
 StopConfigurationRecorder action.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeliverConfigSnapshot(deliveryChannelName => Str)
@@ -251,9 +218,7 @@ Each argument is described in detail in: L<Paws::Config::DeliverConfigSnapshot>
 
 Returns: a L<Paws::Config::DeliverConfigSnapshotResponse> instance
 
-  
-
-Schedules delivery of a configuration snapshot to the Amazon S3 bucket
+  Schedules delivery of a configuration snapshot to the Amazon S3 bucket
 in the specified delivery channel. After the delivery has started, AWS
 Config sends following notifications using an Amazon SNS topic that you
 have specified.
@@ -271,24 +236,13 @@ complete.
 =back
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeComplianceByConfigRule([ComplianceTypes => ArrayRef[Str], ConfigRuleNames => ArrayRef[Str], NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::DescribeComplianceByConfigRule>
 
 Returns: a L<Paws::Config::DescribeComplianceByConfigRuleResponse> instance
 
-  
-
-Indicates whether the specified AWS Config rules are compliant. If a
+  Indicates whether the specified AWS Config rules are compliant. If a
 rule is noncompliant, this action returns the number of AWS resources
 that do not comply with the rule.
 
@@ -319,24 +273,13 @@ deleted or removed from the rule's scope.
 =back
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeComplianceByResource([ComplianceTypes => ArrayRef[Str], Limit => Int, NextToken => Str, ResourceId => Str, ResourceType => Str])
 
 Each argument is described in detail in: L<Paws::Config::DescribeComplianceByResource>
 
 Returns: a L<Paws::Config::DescribeComplianceByResourceResponse> instance
 
-  
-
-Indicates whether the specified AWS resources are compliant. If a
+  Indicates whether the specified AWS resources are compliant. If a
 resource is noncompliant, this action returns the number of AWS Config
 rules that the resource does not comply with.
 
@@ -368,36 +311,16 @@ deleted or removed from the rule's scope.
 =back
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigRuleEvaluationStatus>
 
 Returns: a L<Paws::Config::DescribeConfigRuleEvaluationStatusResponse> instance
 
-  
-
-Returns status information for each of your AWS managed Config rules.
+  Returns status information for each of your AWS managed Config rules.
 The status includes information such as the last time AWS Config
 invoked the rule, the last time AWS Config failed to invoke the rule,
 and the related error for the last failure.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeConfigRules([ConfigRuleNames => ArrayRef[Str], NextToken => Str])
@@ -406,18 +329,7 @@ Each argument is described in detail in: L<Paws::Config::DescribeConfigRules>
 
 Returns: a L<Paws::Config::DescribeConfigRulesResponse> instance
 
-  
-
-Returns details about your AWS Config rules.
-
-
-
-
-
-
-
-
-
+  Returns details about your AWS Config rules.
 
 
 =head2 DescribeConfigurationRecorders([ConfigurationRecorderNames => ArrayRef[Str]])
@@ -426,22 +338,11 @@ Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRe
 
 Returns: a L<Paws::Config::DescribeConfigurationRecordersResponse> instance
 
-  
-
-Returns the name of one or more specified configuration recorders. If
+  Returns the name of one or more specified configuration recorders. If
 the recorder name is not specified, this action returns the names of
 all the configuration recorders associated with the account.
 
 Currently, you can specify only one configuration recorder per account.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeConfigurationRecorderStatus([ConfigurationRecorderNames => ArrayRef[Str]])
@@ -450,22 +351,11 @@ Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRe
 
 Returns: a L<Paws::Config::DescribeConfigurationRecorderStatusResponse> instance
 
-  
-
-Returns the current status of the specified configuration recorder. If
+  Returns the current status of the specified configuration recorder. If
 a configuration recorder is not specified, this action returns the
 status of all configuration recorder associated with the account.
 
 Currently, you can specify only one configuration recorder per account.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeDeliveryChannels([DeliveryChannelNames => ArrayRef[Str]])
@@ -474,22 +364,11 @@ Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannel
 
 Returns: a L<Paws::Config::DescribeDeliveryChannelsResponse> instance
 
-  
-
-Returns details about the specified delivery channel. If a delivery
+  Returns details about the specified delivery channel. If a delivery
 channel is not specified, this action returns the details of all
 delivery channels associated with the account.
 
 Currently, you can specify only one delivery channel per account.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeDeliveryChannelStatus([DeliveryChannelNames => ArrayRef[Str]])
@@ -498,22 +377,11 @@ Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannel
 
 Returns: a L<Paws::Config::DescribeDeliveryChannelStatusResponse> instance
 
-  
-
-Returns the current status of the specified delivery channel. If a
+  Returns the current status of the specified delivery channel. If a
 delivery channel is not specified, this action returns the current
 status of all delivery channels associated with the account.
 
 Currently, you can specify only one delivery channel per account.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetComplianceDetailsByConfigRule(ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str], Limit => Int, NextToken => Str])
@@ -522,21 +390,10 @@ Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByC
 
 Returns: a L<Paws::Config::GetComplianceDetailsByConfigRuleResponse> instance
 
-  
-
-Returns the evaluation results for the specified AWS Config rule. The
+  Returns the evaluation results for the specified AWS Config rule. The
 results indicate which AWS resources were evaluated by the rule, when
 each resource was last evaluated, and whether each resource complies
 with the rule.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetComplianceDetailsByResource(ResourceId => Str, ResourceType => Str, [ComplianceTypes => ArrayRef[Str], NextToken => Str])
@@ -545,21 +402,10 @@ Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByR
 
 Returns: a L<Paws::Config::GetComplianceDetailsByResourceResponse> instance
 
-  
-
-Returns the evaluation results for the specified AWS resource. The
+  Returns the evaluation results for the specified AWS resource. The
 results indicate which AWS Config rules were used to evaluate the
 resource, when each rule was last used, and whether the resource
 complies with each rule.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetComplianceSummaryByConfigRule( => )
@@ -568,19 +414,8 @@ Each argument is described in detail in: L<Paws::Config::GetComplianceSummaryByC
 
 Returns: a L<Paws::Config::GetComplianceSummaryByConfigRuleResponse> instance
 
-  
-
-Returns the number of AWS Config rules that are compliant and
+  Returns the number of AWS Config rules that are compliant and
 noncompliant, up to a maximum of 25 for each.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetComplianceSummaryByResourceType([ResourceTypes => ArrayRef[Str]])
@@ -589,21 +424,10 @@ Each argument is described in detail in: L<Paws::Config::GetComplianceSummaryByR
 
 Returns: a L<Paws::Config::GetComplianceSummaryByResourceTypeResponse> instance
 
-  
-
-Returns the number of resources that are compliant and the number that
+  Returns the number of resources that are compliant and the number that
 are noncompliant. You can specify one or more resource types to get
 these numbers for each resource type. The maximum number returned is
 100.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetResourceConfigHistory(resourceId => Str, resourceType => Str, [chronologicalOrder => Str, earlierTime => Str, laterTime => Str, limit => Int, nextToken => Str])
@@ -612,9 +436,7 @@ Each argument is described in detail in: L<Paws::Config::GetResourceConfigHistor
 
 Returns: a L<Paws::Config::GetResourceConfigHistoryResponse> instance
 
-  
-
-Returns a list of configuration items for the specified resource. The
+  Returns a list of configuration items for the specified resource. The
 list contains details about each state of the resource during the
 specified time interval.
 
@@ -630,24 +452,13 @@ specified C<limit>. In such cases, you can make another call, using the
 C<nextToken>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListDiscoveredResources(resourceType => Str, [includeDeletedResources => Bool, limit => Int, nextToken => Str, resourceIds => ArrayRef[Str], resourceName => Str])
 
 Each argument is described in detail in: L<Paws::Config::ListDiscoveredResources>
 
 Returns: a L<Paws::Config::ListDiscoveredResourcesResponse> instance
 
-  
-
-Accepts a resource type and returns a list of resource identifiers for
+  Accepts a resource type and returns a list of resource identifiers for
 the resources of that type. A resource identifier includes the resource
 type, ID, and (if available) the custom resource name. The results
 consist of resources that AWS Config has discovered, including those
@@ -665,24 +476,13 @@ get the next page of results, run the request again and enter this
 string for the C<nextToken> parameter.
 
 
-
-
-
-
-
-
-
-
-
 =head2 PutConfigRule(ConfigRule => L<Paws::Config::ConfigRule>)
 
 Each argument is described in detail in: L<Paws::Config::PutConfigRule>
 
 Returns: nothing
 
-  
-
-Adds or updates an AWS Config rule for evaluating whether your AWS
+  Adds or updates an AWS Config rule for evaluating whether your AWS
 resources comply with your desired configurations.
 
 You can use this action for customer managed Config rules and AWS
@@ -718,24 +518,13 @@ Evaluating AWS Resource Configurations with AWS Config in the I<AWS
 Config Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 PutConfigurationRecorder(ConfigurationRecorder => L<Paws::Config::ConfigurationRecorder>)
 
 Each argument is described in detail in: L<Paws::Config::PutConfigurationRecorder>
 
 Returns: nothing
 
-  
-
-Creates a new configuration recorder to record the selected resource
+  Creates a new configuration recorder to record the selected resource
 configurations.
 
 You can use this action to change the role C<roleARN> and/or the
@@ -749,24 +538,13 @@ parameter specified, the default is to record all supported resource
 types.
 
 
-
-
-
-
-
-
-
-
-
 =head2 PutDeliveryChannel(DeliveryChannel => L<Paws::Config::DeliveryChannel>)
 
 Each argument is described in detail in: L<Paws::Config::PutDeliveryChannel>
 
 Returns: nothing
 
-  
-
-Creates a new delivery channel object to deliver the configuration
+  Creates a new delivery channel object to deliver the configuration
 information to an Amazon S3 bucket, and to an Amazon SNS topic.
 
 You can use this action to change the Amazon S3 bucket or an Amazon SNS
@@ -779,35 +557,15 @@ existing value for the parameter that is not changed.
 Currently, you can specify only one delivery channel per account.
 
 
-
-
-
-
-
-
-
-
-
 =head2 PutEvaluations(ResultToken => Str, [Evaluations => ArrayRef[L<Paws::Config::Evaluation>]])
 
 Each argument is described in detail in: L<Paws::Config::PutEvaluations>
 
 Returns: a L<Paws::Config::PutEvaluationsResponse> instance
 
-  
-
-Used by an AWS Lambda function to deliver evaluation results to AWS
+  Used by an AWS Lambda function to deliver evaluation results to AWS
 Config. This action is required in every AWS Lambda function that is
 invoked by an AWS Config rule.
-
-
-
-
-
-
-
-
-
 
 
 =head2 StartConfigurationRecorder(ConfigurationRecorderName => Str)
@@ -816,22 +574,11 @@ Each argument is described in detail in: L<Paws::Config::StartConfigurationRecor
 
 Returns: nothing
 
-  
-
-Starts recording configurations of the AWS resources you have selected
+  Starts recording configurations of the AWS resources you have selected
 to record in your AWS account.
 
 You must have created at least one delivery channel to successfully
 start the configuration recorder.
-
-
-
-
-
-
-
-
-
 
 
 =head2 StopConfigurationRecorder(ConfigurationRecorderName => Str)
@@ -840,19 +587,8 @@ Each argument is described in detail in: L<Paws::Config::StopConfigurationRecord
 
 Returns: nothing
 
-  
-
-Stops recording configurations of the AWS resources you have selected
+  Stops recording configurations of the AWS resources you have selected
 to record in your AWS account.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

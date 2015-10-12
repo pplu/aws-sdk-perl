@@ -91,8 +91,6 @@ Paws::CloudWatch - Perl Interface to AWS Amazon CloudWatch
 
 =head1 DESCRIPTION
 
-
-
 This is the I<Amazon CloudWatch API Reference>. This guide provides
 detailed information about Amazon CloudWatch actions, data types,
 parameters, and errors. For detailed information about Amazon
@@ -165,15 +163,6 @@ libraries, which you can find at the following AWS developer centers:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
 =head2 DeleteAlarms(AlarmNames => ArrayRef[Str])
@@ -182,19 +171,8 @@ Each argument is described in detail in: L<Paws::CloudWatch::DeleteAlarms>
 
 Returns: nothing
 
-  
-
-Deletes all specified alarms. In the event of an error, no alarms are
+  Deletes all specified alarms. In the event of an error, no alarms are
 deleted.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeAlarmHistory([AlarmName => Str, EndDate => Str, HistoryItemType => Str, MaxRecords => Int, NextToken => Str, StartDate => Str])
@@ -203,20 +181,9 @@ Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmHistor
 
 Returns: a L<Paws::CloudWatch::DescribeAlarmHistoryOutput> instance
 
-  
-
-Retrieves history for the specified alarm. Filter alarms by date range
+  Retrieves history for the specified alarm. Filter alarms by date range
 or item type. If an alarm name is not specified, Amazon CloudWatch
 returns histories for all of the owner's alarms.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeAlarms([ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str, StateValue => Str])
@@ -225,21 +192,10 @@ Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarms>
 
 Returns: a L<Paws::CloudWatch::DescribeAlarmsOutput> instance
 
-  
-
-Retrieves alarms with the specified names. If no name is specified, all
+  Retrieves alarms with the specified names. If no name is specified, all
 alarms for the user are returned. Alarms can be retrieved by using only
 a prefix for the alarm name, the alarm state, or a prefix for any
 action.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeAlarmsForMetric(MetricName => Str, Namespace => Str, [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], Period => Int, Statistic => Str, Unit => Str])
@@ -248,19 +204,8 @@ Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmsForMe
 
 Returns: a L<Paws::CloudWatch::DescribeAlarmsForMetricOutput> instance
 
-  
-
-Retrieves all alarms for a single metric. Specify a statistic, period,
+  Retrieves all alarms for a single metric. Specify a statistic, period,
 or unit to filter the set of alarms further.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DisableAlarmActions(AlarmNames => ArrayRef[Str])
@@ -269,20 +214,9 @@ Each argument is described in detail in: L<Paws::CloudWatch::DisableAlarmActions
 
 Returns: nothing
 
-  
-
-Disables actions for the specified alarms. When an alarm's actions are
+  Disables actions for the specified alarms. When an alarm's actions are
 disabled the alarm's state may change, but none of the alarm's actions
 will execute.
-
-
-
-
-
-
-
-
-
 
 
 =head2 EnableAlarmActions(AlarmNames => ArrayRef[Str])
@@ -291,18 +225,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::EnableAlarmActions>
 
 Returns: nothing
 
-  
-
-Enables actions for the specified alarms.
-
-
-
-
-
-
-
-
-
+  Enables actions for the specified alarms.
 
 
 =head2 GetMetricStatistics(EndTime => Str, MetricName => Str, Namespace => Str, Period => Int, StartTime => Str, Statistics => ArrayRef[Str], [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], Unit => Str])
@@ -311,9 +234,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::GetMetricStatistics
 
 Returns: a L<Paws::CloudWatch::GetMetricStatisticsOutput> instance
 
-  
-
-Gets statistics for the specified metric.
+  Gets statistics for the specified metric.
 
 The maximum number of data points returned from a single
 C<GetMetricStatistics> request is 1,440, wereas the maximum number of
@@ -350,35 +271,15 @@ go to Amazon CloudWatch Metrics, Namespaces, and Dimensions Reference
 in the I<Amazon CloudWatch Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListMetrics([Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>], MetricName => Str, Namespace => Str, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::ListMetrics>
 
 Returns: a L<Paws::CloudWatch::ListMetricsOutput> instance
 
-  
-
-Returns a list of valid metrics stored for the AWS account owner.
+  Returns a list of valid metrics stored for the AWS account owner.
 Returned metrics can be used with GetMetricStatistics to obtain
 statistical data for a given metric.
-
-
-
-
-
-
-
-
-
 
 
 =head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Statistic => Str, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str], AlarmDescription => Str, Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], InsufficientDataActions => ArrayRef[Str], OKActions => ArrayRef[Str], Unit => Str])
@@ -387,9 +288,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::PutMetricAlarm>
 
 Returns: nothing
 
-  
-
-Creates or updates an alarm and associates it with the specified Amazon
+  Creates or updates an alarm and associates it with the specified Amazon
 CloudWatch metric. Optionally, this operation can associate one or more
 Amazon Simple Notification Service resources with the alarm.
 
@@ -399,24 +298,13 @@ C<StateValue> is set appropriately. Any actions associated with the
 C<StateValue> is then executed.
 
 
-
-
-
-
-
-
-
-
-
 =head2 PutMetricData(MetricData => ArrayRef[L<Paws::CloudWatch::MetricDatum>], Namespace => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatch::PutMetricData>
 
 Returns: nothing
 
-  
-
-Publishes metric data points to Amazon CloudWatch. Amazon Cloudwatch
+  Publishes metric data points to Amazon CloudWatch. Amazon Cloudwatch
 associates the data points with the specified metric. If the specified
 metric does not exist, Amazon CloudWatch creates the metric. It can
 take up to fifteen minutes for a new metric to appear in calls to the
@@ -436,37 +324,17 @@ excess of 48 hours to become available from submission time using
 C<GetMetricStatistics>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 SetAlarmState(AlarmName => Str, StateReason => Str, StateValue => Str, [StateReasonData => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::SetAlarmState>
 
 Returns: nothing
 
-  
-
-Temporarily sets the state of an alarm. When the updated C<StateValue>
+  Temporarily sets the state of an alarm. When the updated C<StateValue>
 differs from the previous value, the action configured for the
 appropriate state is invoked. This is not a permanent change. The next
 periodic alarm check (in about a minute) will set the alarm to its
 actual state.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

@@ -197,8 +197,6 @@ Paws::CodeDeploy - Perl Interface to AWS AWS CodeDeploy
 
 =head1 DESCRIPTION
 
-
-
 AWS CodeDeploy B<Overview>
 
 This is the AWS CodeDeploy API Reference. This guide provides
@@ -272,15 +270,6 @@ application revisions.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
 =head2 AddTagsToOnPremisesInstances(instanceNames => ArrayRef[Str], tags => ArrayRef[L<Paws::CodeDeploy::Tag>])
@@ -289,18 +278,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::AddTagsToOnPremises
 
 Returns: nothing
 
-  
-
-Adds tags to on-premises instances.
-
-
-
-
-
-
-
-
-
+  Adds tags to on-premises instances.
 
 
 =head2 BatchGetApplications([applicationNames => ArrayRef[Str]])
@@ -309,18 +287,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetApplication
 
 Returns: a L<Paws::CodeDeploy::BatchGetApplicationsOutput> instance
 
-  
-
-Gets information about one or more applications.
-
-
-
-
-
-
-
-
-
+  Gets information about one or more applications.
 
 
 =head2 BatchGetDeployments([deploymentIds => ArrayRef[Str]])
@@ -329,18 +296,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeployments
 
 Returns: a L<Paws::CodeDeploy::BatchGetDeploymentsOutput> instance
 
-  
-
-Gets information about one or more deployments.
-
-
-
-
-
-
-
-
-
+  Gets information about one or more deployments.
 
 
 =head2 BatchGetOnPremisesInstances([instanceNames => ArrayRef[Str]])
@@ -349,18 +305,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetOnPremisesI
 
 Returns: a L<Paws::CodeDeploy::BatchGetOnPremisesInstancesOutput> instance
 
-  
-
-Gets information about one or more on-premises instances.
-
-
-
-
-
-
-
-
-
+  Gets information about one or more on-premises instances.
 
 
 =head2 CreateApplication(applicationName => Str)
@@ -369,18 +314,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::CreateApplication>
 
 Returns: a L<Paws::CodeDeploy::CreateApplicationOutput> instance
 
-  
-
-Creates a new application.
-
-
-
-
-
-
-
-
-
+  Creates a new application.
 
 
 =head2 CreateDeployment(applicationName => Str, [deploymentConfigName => Str, deploymentGroupName => Str, description => Str, ignoreApplicationStopFailures => Bool, revision => L<Paws::CodeDeploy::RevisionLocation>])
@@ -389,18 +323,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeployment>
 
 Returns: a L<Paws::CodeDeploy::CreateDeploymentOutput> instance
 
-  
-
-Deploys an application revision through the specified deployment group.
-
-
-
-
-
-
-
-
-
+  Deploys an application revision through the specified deployment group.
 
 
 =head2 CreateDeploymentConfig(deploymentConfigName => Str, [minimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>])
@@ -409,18 +332,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentCon
 
 Returns: a L<Paws::CodeDeploy::CreateDeploymentConfigOutput> instance
 
-  
-
-Creates a new deployment configuration.
-
-
-
-
-
-
-
-
-
+  Creates a new deployment configuration.
 
 
 =head2 CreateDeploymentGroup(applicationName => Str, deploymentGroupName => Str, serviceRoleArn => Str, [autoScalingGroups => ArrayRef[Str], deploymentConfigName => Str, ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], onPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]])
@@ -429,19 +341,8 @@ Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentGro
 
 Returns: a L<Paws::CodeDeploy::CreateDeploymentGroupOutput> instance
 
-  
-
-Creates a new deployment group for application revisions to be deployed
+  Creates a new deployment group for application revisions to be deployed
 to.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteApplication(applicationName => Str)
@@ -450,18 +351,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::DeleteApplication>
 
 Returns: nothing
 
-  
-
-Deletes an application.
-
-
-
-
-
-
-
-
-
+  Deletes an application.
 
 
 =head2 DeleteDeploymentConfig(deploymentConfigName => Str)
@@ -470,21 +360,10 @@ Each argument is described in detail in: L<Paws::CodeDeploy::DeleteDeploymentCon
 
 Returns: nothing
 
-  
-
-Deletes a deployment configuration.
+  Deletes a deployment configuration.
 
 A deployment configuration cannot be deleted if it is currently in use.
 Also, predefined configurations cannot be deleted.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteDeploymentGroup(applicationName => Str, deploymentGroupName => Str)
@@ -493,18 +372,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::DeleteDeploymentGro
 
 Returns: a L<Paws::CodeDeploy::DeleteDeploymentGroupOutput> instance
 
-  
-
-Deletes a deployment group.
-
-
-
-
-
-
-
-
-
+  Deletes a deployment group.
 
 
 =head2 DeregisterOnPremisesInstance(instanceName => Str)
@@ -513,18 +381,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::DeregisterOnPremise
 
 Returns: nothing
 
-  
-
-Deregisters an on-premises instance.
-
-
-
-
-
-
-
-
-
+  Deregisters an on-premises instance.
 
 
 =head2 GetApplication(applicationName => Str)
@@ -533,18 +390,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetApplication>
 
 Returns: a L<Paws::CodeDeploy::GetApplicationOutput> instance
 
-  
-
-Gets information about an application.
-
-
-
-
-
-
-
-
-
+  Gets information about an application.
 
 
 =head2 GetApplicationRevision(applicationName => Str, revision => L<Paws::CodeDeploy::RevisionLocation>)
@@ -553,18 +399,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetApplicationRevis
 
 Returns: a L<Paws::CodeDeploy::GetApplicationRevisionOutput> instance
 
-  
-
-Gets information about an application revision.
-
-
-
-
-
-
-
-
-
+  Gets information about an application revision.
 
 
 =head2 GetDeployment(deploymentId => Str)
@@ -573,18 +408,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetDeployment>
 
 Returns: a L<Paws::CodeDeploy::GetDeploymentOutput> instance
 
-  
-
-Gets information about a deployment.
-
-
-
-
-
-
-
-
-
+  Gets information about a deployment.
 
 
 =head2 GetDeploymentConfig(deploymentConfigName => Str)
@@ -593,18 +417,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetDeploymentConfig
 
 Returns: a L<Paws::CodeDeploy::GetDeploymentConfigOutput> instance
 
-  
-
-Gets information about a deployment configuration.
-
-
-
-
-
-
-
-
-
+  Gets information about a deployment configuration.
 
 
 =head2 GetDeploymentGroup(applicationName => Str, deploymentGroupName => Str)
@@ -613,18 +426,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetDeploymentGroup>
 
 Returns: a L<Paws::CodeDeploy::GetDeploymentGroupOutput> instance
 
-  
-
-Gets information about a deployment group.
-
-
-
-
-
-
-
-
-
+  Gets information about a deployment group.
 
 
 =head2 GetDeploymentInstance(deploymentId => Str, instanceId => Str)
@@ -633,18 +435,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetDeploymentInstan
 
 Returns: a L<Paws::CodeDeploy::GetDeploymentInstanceOutput> instance
 
-  
-
-Gets information about an instance as part of a deployment.
-
-
-
-
-
-
-
-
-
+  Gets information about an instance as part of a deployment.
 
 
 =head2 GetOnPremisesInstance(instanceName => Str)
@@ -653,18 +444,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetOnPremisesInstan
 
 Returns: a L<Paws::CodeDeploy::GetOnPremisesInstanceOutput> instance
 
-  
-
-Gets information about an on-premises instance.
-
-
-
-
-
-
-
-
-
+  Gets information about an on-premises instance.
 
 
 =head2 ListApplicationRevisions(applicationName => Str, [deployed => Str, nextToken => Str, s3Bucket => Str, s3KeyPrefix => Str, sortBy => Str, sortOrder => Str])
@@ -673,18 +453,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListApplicationRevi
 
 Returns: a L<Paws::CodeDeploy::ListApplicationRevisionsOutput> instance
 
-  
-
-Lists information about revisions for an application.
-
-
-
-
-
-
-
-
-
+  Lists information about revisions for an application.
 
 
 =head2 ListApplications([nextToken => Str])
@@ -693,19 +462,8 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListApplications>
 
 Returns: a L<Paws::CodeDeploy::ListApplicationsOutput> instance
 
-  
-
-Lists the applications registered with the applicable IAM user or AWS
+  Lists the applications registered with the applicable IAM user or AWS
 account.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListDeploymentConfigs([nextToken => Str])
@@ -714,19 +472,8 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListDeploymentConfi
 
 Returns: a L<Paws::CodeDeploy::ListDeploymentConfigsOutput> instance
 
-  
-
-Lists the deployment configurations with the applicable IAM user or AWS
+  Lists the deployment configurations with the applicable IAM user or AWS
 account.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListDeploymentGroups(applicationName => Str, [nextToken => Str])
@@ -735,19 +482,8 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListDeploymentGroup
 
 Returns: a L<Paws::CodeDeploy::ListDeploymentGroupsOutput> instance
 
-  
-
-Lists the deployment groups for an application registered with the
+  Lists the deployment groups for an application registered with the
 applicable IAM user or AWS account.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListDeploymentInstances(deploymentId => Str, [instanceStatusFilter => ArrayRef[Str], nextToken => Str])
@@ -756,19 +492,8 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListDeploymentInsta
 
 Returns: a L<Paws::CodeDeploy::ListDeploymentInstancesOutput> instance
 
-  
-
-Lists the instances for a deployment associated with the applicable IAM
+  Lists the instances for a deployment associated with the applicable IAM
 user or AWS account.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListDeployments([applicationName => Str, createTimeRange => L<Paws::CodeDeploy::TimeRange>, deploymentGroupName => Str, includeOnlyStatuses => ArrayRef[Str], nextToken => Str])
@@ -777,19 +502,8 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListDeployments>
 
 Returns: a L<Paws::CodeDeploy::ListDeploymentsOutput> instance
 
-  
-
-Lists the deployments within a deployment group for an application
+  Lists the deployments within a deployment group for an application
 registered with the applicable IAM user or AWS account.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListOnPremisesInstances([nextToken => Str, registrationStatus => Str, tagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]])
@@ -798,23 +512,12 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListOnPremisesInsta
 
 Returns: a L<Paws::CodeDeploy::ListOnPremisesInstancesOutput> instance
 
-  
-
-Gets a list of one or more on-premises instance names.
+  Gets a list of one or more on-premises instance names.
 
 Unless otherwise specified, both registered and deregistered
 on-premises instance names will be listed. To list only registered or
 deregistered on-premises instance names, use the registration status
 parameter.
-
-
-
-
-
-
-
-
-
 
 
 =head2 RegisterApplicationRevision(applicationName => Str, revision => L<Paws::CodeDeploy::RevisionLocation>, [description => Str])
@@ -823,18 +526,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::RegisterApplication
 
 Returns: nothing
 
-  
-
-Registers with AWS CodeDeploy a revision for the specified application.
-
-
-
-
-
-
-
-
-
+  Registers with AWS CodeDeploy a revision for the specified application.
 
 
 =head2 RegisterOnPremisesInstance(iamUserArn => Str, instanceName => Str)
@@ -843,18 +535,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::RegisterOnPremisesI
 
 Returns: nothing
 
-  
-
-Registers an on-premises instance.
-
-
-
-
-
-
-
-
-
+  Registers an on-premises instance.
 
 
 =head2 RemoveTagsFromOnPremisesInstances(instanceNames => ArrayRef[Str], tags => ArrayRef[L<Paws::CodeDeploy::Tag>])
@@ -863,18 +544,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::RemoveTagsFromOnPre
 
 Returns: nothing
 
-  
-
-Removes one or more tags from one or more on-premises instances.
-
-
-
-
-
-
-
-
-
+  Removes one or more tags from one or more on-premises instances.
 
 
 =head2 StopDeployment(deploymentId => Str)
@@ -883,18 +553,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::StopDeployment>
 
 Returns: a L<Paws::CodeDeploy::StopDeploymentOutput> instance
 
-  
-
-Attempts to stop an ongoing deployment.
-
-
-
-
-
-
-
-
-
+  Attempts to stop an ongoing deployment.
 
 
 =head2 UpdateApplication([applicationName => Str, newApplicationName => Str])
@@ -903,18 +562,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::UpdateApplication>
 
 Returns: nothing
 
-  
-
-Changes an existing application's name.
-
-
-
-
-
-
-
-
-
+  Changes an existing application's name.
 
 
 =head2 UpdateDeploymentGroup(applicationName => Str, currentDeploymentGroupName => Str, [autoScalingGroups => ArrayRef[Str], deploymentConfigName => Str, ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], newDeploymentGroupName => Str, onPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], serviceRoleArn => Str])
@@ -923,18 +571,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::UpdateDeploymentGro
 
 Returns: a L<Paws::CodeDeploy::UpdateDeploymentGroupOutput> instance
 
-  
-
-Changes information about an existing deployment group.
-
-
-
-
-
-
-
-
-
+  Changes information about an existing deployment group.
 
 
 =head1 SEE ALSO

@@ -172,8 +172,6 @@ Paws::ECS - Perl Interface to AWS Amazon EC2 Container Service
 
 =head1 DESCRIPTION
 
-
-
 Amazon EC2 Container Service (Amazon ECS) is a highly scalable, fast,
 container management service that makes it easy to run, stop, and
 manage Docker containers on a cluster of EC2 instances. Amazon ECS lets
@@ -189,15 +187,6 @@ need for you to operate your own cluster management and configuration
 management systems or worry about scaling your management
 infrastructure.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
 =head2 CreateCluster([clusterName => Str])
@@ -206,21 +195,10 @@ Each argument is described in detail in: L<Paws::ECS::CreateCluster>
 
 Returns: a L<Paws::ECS::CreateClusterResponse> instance
 
-  
-
-Creates a new Amazon ECS cluster. By default, your account receives a
+  Creates a new Amazon ECS cluster. By default, your account receives a
 C<default> cluster when you launch your first container instance.
 However, you can create your own cluster with a unique name with the
 C<CreateCluster> action.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CreateService(desiredCount => Int, serviceName => Str, taskDefinition => Str, [clientToken => Str, cluster => Str, loadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], role => Str])
@@ -229,21 +207,10 @@ Each argument is described in detail in: L<Paws::ECS::CreateService>
 
 Returns: a L<Paws::ECS::CreateServiceResponse> instance
 
-  
-
-Runs and maintains a desired number of tasks from a specified task
+  Runs and maintains a desired number of tasks from a specified task
 definition. If the number of tasks running in a service drops below
 C<desiredCount>, Amazon ECS spawns another instantiation of the task in
 the specified cluster.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteCluster(cluster => Str)
@@ -252,21 +219,10 @@ Each argument is described in detail in: L<Paws::ECS::DeleteCluster>
 
 Returns: a L<Paws::ECS::DeleteClusterResponse> instance
 
-  
-
-Deletes the specified cluster. You must deregister all container
+  Deletes the specified cluster. You must deregister all container
 instances from this cluster before you may delete it. You can list the
 container instances in a cluster with ListContainerInstances and
 deregister them with DeregisterContainerInstance.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteService(service => Str, [cluster => Str])
@@ -275,18 +231,7 @@ Each argument is described in detail in: L<Paws::ECS::DeleteService>
 
 Returns: a L<Paws::ECS::DeleteServiceResponse> instance
 
-  
-
-Deletes a specified service within a cluster.
-
-
-
-
-
-
-
-
-
+  Deletes a specified service within a cluster.
 
 
 =head2 DeregisterContainerInstance(containerInstance => Str, [cluster => Str, force => Bool])
@@ -295,9 +240,7 @@ Each argument is described in detail in: L<Paws::ECS::DeregisterContainerInstanc
 
 Returns: a L<Paws::ECS::DeregisterContainerInstanceResponse> instance
 
-  
-
-Deregisters an Amazon ECS container instance from the specified
+  Deregisters an Amazon ECS container instance from the specified
 cluster. This instance is no longer available to run tasks.
 
 If you intend to use the container instance for some other purpose
@@ -314,24 +257,13 @@ When you terminate a container instance, it is automatically
 deregistered from your cluster.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeregisterTaskDefinition(taskDefinition => Str)
 
 Each argument is described in detail in: L<Paws::ECS::DeregisterTaskDefinition>
 
 Returns: a L<Paws::ECS::DeregisterTaskDefinitionResponse> instance
 
-  
-
-Deregisters the specified task definition by family and revision. Upon
+  Deregisters the specified task definition by family and revision. Upon
 deregistration, the task definition is marked as C<INACTIVE>. Existing
 tasks and services that reference an C<INACTIVE> task definition
 continue to run without disruption. Existing services that reference an
@@ -345,33 +277,13 @@ reference an C<INACTIVE> task definition (although there may be up to a
 not yet taken effect).
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeClusters([clusters => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeClusters>
 
 Returns: a L<Paws::ECS::DescribeClustersResponse> instance
 
-  
-
-Describes one or more of your clusters.
-
-
-
-
-
-
-
-
-
+  Describes one or more of your clusters.
 
 
 =head2 DescribeContainerInstances(containerInstances => ArrayRef[Str], [cluster => Str])
@@ -380,20 +292,9 @@ Each argument is described in detail in: L<Paws::ECS::DescribeContainerInstances
 
 Returns: a L<Paws::ECS::DescribeContainerInstancesResponse> instance
 
-  
-
-Describes Amazon EC2 Container Service container instances. Returns
+  Describes Amazon EC2 Container Service container instances. Returns
 metadata about registered and remaining resources on each container
 instance requested.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeServices(services => ArrayRef[Str], [cluster => Str])
@@ -402,18 +303,7 @@ Each argument is described in detail in: L<Paws::ECS::DescribeServices>
 
 Returns: a L<Paws::ECS::DescribeServicesResponse> instance
 
-  
-
-Describes the specified services running in your cluster.
-
-
-
-
-
-
-
-
-
+  Describes the specified services running in your cluster.
 
 
 =head2 DescribeTaskDefinition(taskDefinition => Str)
@@ -422,9 +312,7 @@ Each argument is described in detail in: L<Paws::ECS::DescribeTaskDefinition>
 
 Returns: a L<Paws::ECS::DescribeTaskDefinitionResponse> instance
 
-  
-
-Describes a task definition. You can specify a C<family> and
+  Describes a task definition. You can specify a C<family> and
 C<revision> to find information about a specific task definition, or
 you can simply specify the family to find the latest C<ACTIVE> revision
 in that family.
@@ -433,33 +321,13 @@ You can only describe C<INACTIVE> task definitions while an active task
 or service references them.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeTasks(tasks => ArrayRef[Str], [cluster => Str])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeTasks>
 
 Returns: a L<Paws::ECS::DescribeTasksResponse> instance
 
-  
-
-Describes a specified task or tasks.
-
-
-
-
-
-
-
-
-
+  Describes a specified task or tasks.
 
 
 =head2 DiscoverPollEndpoint([cluster => Str, containerInstance => Str])
@@ -468,22 +336,11 @@ Each argument is described in detail in: L<Paws::ECS::DiscoverPollEndpoint>
 
 Returns: a L<Paws::ECS::DiscoverPollEndpointResponse> instance
 
-  
-
-This action is only used by the Amazon EC2 Container Service agent, and
+  This action is only used by the Amazon EC2 Container Service agent, and
 it is not intended for use outside of the agent.
 
 Returns an endpoint for the Amazon EC2 Container Service agent to poll
 for updates.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListClusters([maxResults => Int, nextToken => Str])
@@ -492,18 +349,7 @@ Each argument is described in detail in: L<Paws::ECS::ListClusters>
 
 Returns: a L<Paws::ECS::ListClustersResponse> instance
 
-  
-
-Returns a list of existing clusters.
-
-
-
-
-
-
-
-
-
+  Returns a list of existing clusters.
 
 
 =head2 ListContainerInstances([cluster => Str, maxResults => Int, nextToken => Str])
@@ -512,18 +358,7 @@ Each argument is described in detail in: L<Paws::ECS::ListContainerInstances>
 
 Returns: a L<Paws::ECS::ListContainerInstancesResponse> instance
 
-  
-
-Returns a list of container instances in a specified cluster.
-
-
-
-
-
-
-
-
-
+  Returns a list of container instances in a specified cluster.
 
 
 =head2 ListServices([cluster => Str, maxResults => Int, nextToken => Str])
@@ -532,18 +367,7 @@ Each argument is described in detail in: L<Paws::ECS::ListServices>
 
 Returns: a L<Paws::ECS::ListServicesResponse> instance
 
-  
-
-Lists the services that are running in a specified cluster.
-
-
-
-
-
-
-
-
-
+  Lists the services that are running in a specified cluster.
 
 
 =head2 ListTaskDefinitionFamilies([familyPrefix => Str, maxResults => Int, nextToken => Str])
@@ -552,21 +376,10 @@ Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitionFamilies
 
 Returns: a L<Paws::ECS::ListTaskDefinitionFamiliesResponse> instance
 
-  
-
-Returns a list of task definition families that are registered to your
+  Returns a list of task definition families that are registered to your
 account (which may include task definition families that no longer have
 any C<ACTIVE> task definitions). You can filter the results with the
 C<familyPrefix> parameter.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListTaskDefinitions([familyPrefix => Str, maxResults => Int, nextToken => Str, sort => Str, status => Str])
@@ -575,20 +388,9 @@ Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitions>
 
 Returns: a L<Paws::ECS::ListTaskDefinitionsResponse> instance
 
-  
-
-Returns a list of task definitions that are registered to your account.
+  Returns a list of task definitions that are registered to your account.
 You can filter the results by family name with the C<familyPrefix>
 parameter or by status with the C<status> parameter.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListTasks([cluster => Str, containerInstance => Str, desiredStatus => Str, family => Str, maxResults => Int, nextToken => Str, serviceName => Str, startedBy => Str])
@@ -597,21 +399,10 @@ Each argument is described in detail in: L<Paws::ECS::ListTasks>
 
 Returns: a L<Paws::ECS::ListTasksResponse> instance
 
-  
-
-Returns a list of tasks for a specified cluster. You can filter the
+  Returns a list of tasks for a specified cluster. You can filter the
 results by family name, by a particular container instance, or by the
 desired status of the task with the C<family>, C<containerInstance>,
 and C<desiredStatus> parameters.
-
-
-
-
-
-
-
-
-
 
 
 =head2 RegisterContainerInstance([attributes => ArrayRef[L<Paws::ECS::Attribute>], cluster => Str, containerInstanceArn => Str, instanceIdentityDocument => Str, instanceIdentityDocumentSignature => Str, totalResources => ArrayRef[L<Paws::ECS::Resource>], versionInfo => L<Paws::ECS::VersionInfo>])
@@ -620,22 +411,11 @@ Each argument is described in detail in: L<Paws::ECS::RegisterContainerInstance>
 
 Returns: a L<Paws::ECS::RegisterContainerInstanceResponse> instance
 
-  
-
-This action is only used by the Amazon EC2 Container Service agent, and
+  This action is only used by the Amazon EC2 Container Service agent, and
 it is not intended for use outside of the agent.
 
 Registers an EC2 instance into the specified cluster. This instance
 becomes available to place containers on.
-
-
-
-
-
-
-
-
-
 
 
 =head2 RegisterTaskDefinition(containerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], family => Str, [volumes => ArrayRef[L<Paws::ECS::Volume>]])
@@ -644,22 +424,11 @@ Each argument is described in detail in: L<Paws::ECS::RegisterTaskDefinition>
 
 Returns: a L<Paws::ECS::RegisterTaskDefinitionResponse> instance
 
-  
-
-Registers a new task definition from the supplied C<family> and
+  Registers a new task definition from the supplied C<family> and
 C<containerDefinitions>. Optionally, you can add data volumes to your
 containers with the C<volumes> parameter. For more information about
 task definition parameters and defaults, see Amazon ECS Task
 Definitions in the I<Amazon EC2 Container Service Developer Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 RunTask(taskDefinition => Str, [cluster => Str, count => Int, overrides => L<Paws::ECS::TaskOverride>, startedBy => Str])
@@ -668,22 +437,11 @@ Each argument is described in detail in: L<Paws::ECS::RunTask>
 
 Returns: a L<Paws::ECS::RunTaskResponse> instance
 
-  
-
-Start a task using random placement and the default Amazon ECS
+  Start a task using random placement and the default Amazon ECS
 scheduler. To use your own scheduler or place a task on a specific
 container instance, use C<StartTask> instead.
 
 The C<count> parameter is limited to 10 tasks per call.
-
-
-
-
-
-
-
-
-
 
 
 =head2 StartTask(containerInstances => ArrayRef[Str], taskDefinition => Str, [cluster => Str, overrides => L<Paws::ECS::TaskOverride>, startedBy => Str])
@@ -692,22 +450,11 @@ Each argument is described in detail in: L<Paws::ECS::StartTask>
 
 Returns: a L<Paws::ECS::StartTaskResponse> instance
 
-  
-
-Starts a new task from the specified task definition on the specified
+  Starts a new task from the specified task definition on the specified
 container instance or instances. To use the default Amazon ECS
 scheduler to place your task, use C<RunTask> instead.
 
 The list of container instances to start tasks on is limited to 10.
-
-
-
-
-
-
-
-
-
 
 
 =head2 StopTask(task => Str, [cluster => Str])
@@ -716,9 +463,7 @@ Each argument is described in detail in: L<Paws::ECS::StopTask>
 
 Returns: a L<Paws::ECS::StopTaskResponse> instance
 
-  
-
-Stops a running task.
+  Stops a running task.
 
 When StopTask is called on a task, the equivalent of C<docker stop> is
 issued to the containers running in the task. This results in a
@@ -728,36 +473,16 @@ C<SIGTERM> gracefully and exits within 30 seconds from receiving it, no
 C<SIGKILL> is sent.
 
 
-
-
-
-
-
-
-
-
-
 =head2 SubmitContainerStateChange([cluster => Str, containerName => Str, exitCode => Int, networkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>], reason => Str, status => Str, task => Str])
 
 Each argument is described in detail in: L<Paws::ECS::SubmitContainerStateChange>
 
 Returns: a L<Paws::ECS::SubmitContainerStateChangeResponse> instance
 
-  
-
-This action is only used by the Amazon EC2 Container Service agent, and
+  This action is only used by the Amazon EC2 Container Service agent, and
 it is not intended for use outside of the agent.
 
 Sent to acknowledge that a container changed states.
-
-
-
-
-
-
-
-
-
 
 
 =head2 SubmitTaskStateChange([cluster => Str, reason => Str, status => Str, task => Str])
@@ -766,21 +491,10 @@ Each argument is described in detail in: L<Paws::ECS::SubmitTaskStateChange>
 
 Returns: a L<Paws::ECS::SubmitTaskStateChangeResponse> instance
 
-  
-
-This action is only used by the Amazon EC2 Container Service agent, and
+  This action is only used by the Amazon EC2 Container Service agent, and
 it is not intended for use outside of the agent.
 
 Sent to acknowledge that a task changed states.
-
-
-
-
-
-
-
-
-
 
 
 =head2 UpdateContainerAgent(containerInstance => Str, [cluster => Str])
@@ -789,9 +503,7 @@ Each argument is described in detail in: L<Paws::ECS::UpdateContainerAgent>
 
 Returns: a L<Paws::ECS::UpdateContainerAgentResponse> instance
 
-  
-
-Updates the Amazon ECS container agent on a specified container
+  Updates the Amazon ECS container agent on a specified container
 instance. Updating the Amazon ECS container agent does not interrupt
 running tasks or services on the container instance. The process for
 updating the agent differs depending on whether your container instance
@@ -805,24 +517,13 @@ Manually Updating the Amazon ECS Container Agent in the I<Amazon EC2
 Container Service Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 UpdateService(service => Str, [cluster => Str, desiredCount => Int, taskDefinition => Str])
 
 Each argument is described in detail in: L<Paws::ECS::UpdateService>
 
 Returns: a L<Paws::ECS::UpdateServiceResponse> instance
 
-  
-
-Modify the desired count or task definition used in a service.
+  Modify the desired count or task definition used in a service.
 
 You can add to or subtract from the number of instantiations of a task
 definition in a service by specifying the cluster that the service is
@@ -846,15 +547,6 @@ results in a C<SIGTERM> and a 30-second timeout, after which C<SIGKILL>
 is sent and the containers are forcibly stopped. If the container
 handles the C<SIGTERM> gracefully and exits within 30 seconds from
 receiving it, no C<SIGKILL> is sent.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

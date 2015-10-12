@@ -178,20 +178,9 @@ Paws::ElasticTranscoder - Perl Interface to AWS Amazon Elastic Transcoder
 
 =head1 DESCRIPTION
 
-
-
 AWS Elastic Transcoder Service
 
 The AWS Elastic Transcoder Service.
-
-
-
-
-
-
-
-
-
 
 =head1 METHODS
 
@@ -201,22 +190,11 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::CancelJob>
 
 Returns: a L<Paws::ElasticTranscoder::CancelJobResponse> instance
 
-  
-
-The CancelJob operation cancels an unfinished job.
+  The CancelJob operation cancels an unfinished job.
 
 You can only cancel a job that has a status of C<Submitted>. To prevent
 a pipeline from starting to process a job while you're getting the job
 identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CreateJob(Input => L<Paws::ElasticTranscoder::JobInput>, PipelineId => Str, [Output => L<Paws::ElasticTranscoder::CreateJobOutput>, OutputKeyPrefix => Str, Outputs => ArrayRef[L<Paws::ElasticTranscoder::CreateJobOutput>], Playlists => ArrayRef[L<Paws::ElasticTranscoder::CreateJobPlaylist>], UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>])
@@ -225,9 +203,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::CreateJob>
 
 Returns: a L<Paws::ElasticTranscoder::CreateJobResponse> instance
 
-  
-
-When you create a job, Elastic Transcoder returns JSON data that
+  When you create a job, Elastic Transcoder returns JSON data that
 includes the values that you specified plus information about the job
 that is created.
 
@@ -237,34 +213,14 @@ one output for the Kindle Fire and another output for the Apple iPhone
 (as opposed to the AWS Console).
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreatePipeline(InputBucket => Str, Name => Str, Role => Str, [AwsKmsKeyArn => Str, ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>, Notifications => L<Paws::ElasticTranscoder::Notifications>, OutputBucket => Str, ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>])
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::CreatePipeline>
 
 Returns: a L<Paws::ElasticTranscoder::CreatePipelineResponse> instance
 
-  
-
-The CreatePipeline operation creates a pipeline with settings that you
+  The CreatePipeline operation creates a pipeline with settings that you
 specify.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CreatePreset(Container => Str, Name => Str, [Audio => L<Paws::ElasticTranscoder::AudioParameters>, Description => Str, Thumbnails => L<Paws::ElasticTranscoder::Thumbnails>, Video => L<Paws::ElasticTranscoder::VideoParameters>])
@@ -273,9 +229,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::CreatePreset
 
 Returns: a L<Paws::ElasticTranscoder::CreatePresetResponse> instance
 
-  
-
-The CreatePreset operation creates a preset with settings that you
+  The CreatePreset operation creates a preset with settings that you
 specify.
 
 Elastic Transcoder checks the CreatePreset settings to ensure that they
@@ -296,37 +250,17 @@ I<Recommendation ITU-T H.264: Advanced video coding for generic
 audiovisual services>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeletePipeline(Id => Str)
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::DeletePipeline>
 
 Returns: a L<Paws::ElasticTranscoder::DeletePipelineResponse> instance
 
-  
-
-The DeletePipeline operation removes a pipeline.
+  The DeletePipeline operation removes a pipeline.
 
 You can only delete a pipeline that has never been used or that is not
 currently in use (doesn't contain any active jobs). If the pipeline is
 currently in use, C<DeletePipeline> returns an error.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeletePreset(Id => Str)
@@ -335,22 +269,11 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::DeletePreset
 
 Returns: a L<Paws::ElasticTranscoder::DeletePresetResponse> instance
 
-  
-
-The DeletePreset operation removes a preset that you've added in an AWS
+  The DeletePreset operation removes a preset that you've added in an AWS
 region.
 
 You can't delete the default presets that are included with Elastic
 Transcoder.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListJobsByPipeline(PipelineId => Str, [Ascending => Str, PageToken => Str])
@@ -359,23 +282,12 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::ListJobsByPi
 
 Returns: a L<Paws::ElasticTranscoder::ListJobsByPipelineResponse> instance
 
-  
-
-The ListJobsByPipeline operation gets a list of the jobs currently in a
+  The ListJobsByPipeline operation gets a list of the jobs currently in a
 pipeline.
 
 Elastic Transcoder returns all of the jobs currently in the specified
 pipeline. The response body contains one element for each job that
 satisfies the search criteria.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListJobsByStatus(Status => Str, [Ascending => Str, PageToken => Str])
@@ -384,20 +296,9 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::ListJobsBySt
 
 Returns: a L<Paws::ElasticTranscoder::ListJobsByStatusResponse> instance
 
-  
-
-The ListJobsByStatus operation gets a list of jobs that have a
+  The ListJobsByStatus operation gets a list of jobs that have a
 specified status. The response body contains one element for each job
 that satisfies the search criteria.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListPipelines([Ascending => Str, PageToken => Str])
@@ -406,19 +307,8 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::ListPipeline
 
 Returns: a L<Paws::ElasticTranscoder::ListPipelinesResponse> instance
 
-  
-
-The ListPipelines operation gets a list of the pipelines associated
+  The ListPipelines operation gets a list of the pipelines associated
 with the current AWS account.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListPresets([Ascending => Str, PageToken => Str])
@@ -427,20 +317,9 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::ListPresets>
 
 Returns: a L<Paws::ElasticTranscoder::ListPresetsResponse> instance
 
-  
-
-The ListPresets operation gets a list of the default presets included
+  The ListPresets operation gets a list of the default presets included
 with Elastic Transcoder and the presets that you've added in an AWS
 region.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ReadJob(Id => Str)
@@ -449,18 +328,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::ReadJob>
 
 Returns: a L<Paws::ElasticTranscoder::ReadJobResponse> instance
 
-  
-
-The ReadJob operation returns detailed information about a job.
-
-
-
-
-
-
-
-
-
+  The ReadJob operation returns detailed information about a job.
 
 
 =head2 ReadPipeline(Id => Str)
@@ -469,18 +337,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::ReadPipeline
 
 Returns: a L<Paws::ElasticTranscoder::ReadPipelineResponse> instance
 
-  
-
-The ReadPipeline operation gets detailed information about a pipeline.
-
-
-
-
-
-
-
-
-
+  The ReadPipeline operation gets detailed information about a pipeline.
 
 
 =head2 ReadPreset(Id => Str)
@@ -489,18 +346,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::ReadPreset>
 
 Returns: a L<Paws::ElasticTranscoder::ReadPresetResponse> instance
 
-  
-
-The ReadPreset operation gets detailed information about a preset.
-
-
-
-
-
-
-
-
-
+  The ReadPreset operation gets detailed information about a preset.
 
 
 =head2 TestRole(InputBucket => Str, OutputBucket => Str, Role => Str, Topics => ArrayRef[Str])
@@ -509,9 +355,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::TestRole>
 
 Returns: a L<Paws::ElasticTranscoder::TestRoleResponse> instance
 
-  
-
-The TestRole operation tests the IAM role used to create the pipeline.
+  The TestRole operation tests the IAM role used to create the pipeline.
 
 The C<TestRole> action lets you determine whether the IAM role you are
 using has sufficient permissions to let Elastic Transcoder perform
@@ -521,37 +365,17 @@ output buckets, and tries to send a test notification to Amazon SNS
 topics that you specify.
 
 
-
-
-
-
-
-
-
-
-
 =head2 UpdatePipeline(Id => Str, [AwsKmsKeyArn => Str, ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>, InputBucket => Str, Name => Str, Notifications => L<Paws::ElasticTranscoder::Notifications>, Role => Str, ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>])
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipeline>
 
 Returns: a L<Paws::ElasticTranscoder::UpdatePipelineResponse> instance
 
-  
-
-Use the C<UpdatePipeline> operation to update settings for a pipeline.
+  Use the C<UpdatePipeline> operation to update settings for a pipeline.
 When you change pipeline settings, your changes take effect
 immediately. Jobs that you have already submitted and that Elastic
 Transcoder has not started to process are affected in addition to jobs
 that you submit after you change settings.
-
-
-
-
-
-
-
-
-
 
 
 =head2 UpdatePipelineNotifications(Id => Str, Notifications => L<Paws::ElasticTranscoder::Notifications>)
@@ -560,22 +384,11 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipeli
 
 Returns: a L<Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse> instance
 
-  
-
-With the UpdatePipelineNotifications operation, you can update Amazon
+  With the UpdatePipelineNotifications operation, you can update Amazon
 Simple Notification Service (Amazon SNS) notifications for a pipeline.
 
 When you update notifications for a pipeline, Elastic Transcoder
 returns the values that you specified in the request.
-
-
-
-
-
-
-
-
-
 
 
 =head2 UpdatePipelineStatus(Id => Str, Status => Str)
@@ -584,9 +397,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipeli
 
 Returns: a L<Paws::ElasticTranscoder::UpdatePipelineStatusResponse> instance
 
-  
-
-The UpdatePipelineStatus operation pauses or reactivates a pipeline, so
+  The UpdatePipelineStatus operation pauses or reactivates a pipeline, so
 that the pipeline stops or restarts the processing of jobs.
 
 Changing the pipeline status is useful if you want to cancel one or
@@ -594,15 +405,6 @@ more jobs. You can't cancel jobs after Elastic Transcoder has started
 processing them; if you pause the pipeline to which you submitted the
 jobs, you have more time to get the job IDs for the jobs that you want
 to cancel, and to send a CancelJob request.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

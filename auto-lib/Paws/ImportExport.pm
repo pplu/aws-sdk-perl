@@ -84,8 +84,6 @@ Paws::ImportExport - Perl Interface to AWS AWS Import/Export
 
 =head1 DESCRIPTION
 
-
-
 AWS Import/Export Service AWS Import/Export accelerates transferring
 large amounts of data between the AWS cloud and portable storage
 devices that you mail to us. AWS Import/Export transfers data directly
@@ -93,15 +91,6 @@ onto and off of your storage devices using Amazon's high-speed internal
 network and bypassing the Internet. For large data sets, AWS
 Import/Export is often faster than Internet transfer and more cost
 effective than upgrading your connectivity.
-
-
-
-
-
-
-
-
-
 
 =head1 METHODS
 
@@ -111,19 +100,8 @@ Each argument is described in detail in: L<Paws::ImportExport::CancelJob>
 
 Returns: a L<Paws::ImportExport::CancelJobOutput> instance
 
-  
-
-This operation cancels a specified job. Only the job owner can cancel
+  This operation cancels a specified job. Only the job owner can cancel
 it. The operation fails if the job has already started or is complete.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CreateJob(JobType => Str, Manifest => Str, ValidateOnly => Bool, [APIVersion => Str, ManifestAddendum => Str])
@@ -132,23 +110,12 @@ Each argument is described in detail in: L<Paws::ImportExport::CreateJob>
 
 Returns: a L<Paws::ImportExport::CreateJobOutput> instance
 
-  
-
-This operation initiates the process of scheduling an upload or
+  This operation initiates the process of scheduling an upload or
 download of your data. You include in the request a manifest that
 describes the data transfer specifics. The response to the request
 includes a job ID, which you can use in other operations, a signature
 that you use to identify your storage device, and the address where you
 should ship your storage device.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetShippingLabel(jobIds => ArrayRef[Str], [APIVersion => Str, city => Str, company => Str, country => Str, name => Str, phoneNumber => Str, postalCode => Str, stateOrProvince => Str, street1 => Str, street2 => Str, street3 => Str])
@@ -157,19 +124,8 @@ Each argument is described in detail in: L<Paws::ImportExport::GetShippingLabel>
 
 Returns: a L<Paws::ImportExport::GetShippingLabelOutput> instance
 
-  
-
-This operation generates a pre-paid UPS shipping label that you will
+  This operation generates a pre-paid UPS shipping label that you will
 use to ship your device to AWS for processing.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetStatus(JobId => Str, [APIVersion => Str])
@@ -178,21 +134,10 @@ Each argument is described in detail in: L<Paws::ImportExport::GetStatus>
 
 Returns: a L<Paws::ImportExport::GetStatusOutput> instance
 
-  
-
-This operation returns information about a job, including where the job
+  This operation returns information about a job, including where the job
 is in the processing pipeline, the status of the results, and the
 signature value associated with the job. You can only return
 information about jobs you own.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListJobs([APIVersion => Str, Marker => Str, MaxJobs => Int])
@@ -201,22 +146,11 @@ Each argument is described in detail in: L<Paws::ImportExport::ListJobs>
 
 Returns: a L<Paws::ImportExport::ListJobsOutput> instance
 
-  
-
-This operation returns the jobs associated with the requester. AWS
+  This operation returns the jobs associated with the requester. AWS
 Import/Export lists the jobs in reverse chronological order based on
 the date of creation. For example if Job Test1 was created 2009Dec30
 and Test2 was created 2010Feb05, the ListJobs operation would return
 Test2 followed by Test1.
-
-
-
-
-
-
-
-
-
 
 
 =head2 UpdateJob(JobId => Str, JobType => Str, Manifest => Str, ValidateOnly => Bool, [APIVersion => Str])
@@ -225,22 +159,11 @@ Each argument is described in detail in: L<Paws::ImportExport::UpdateJob>
 
 Returns: a L<Paws::ImportExport::UpdateJobOutput> instance
 
-  
-
-You use this operation to change the parameters specified in the
+  You use this operation to change the parameters specified in the
 original manifest file by supplying a new manifest file. The manifest
 file attached to this request replaces the original manifest file. You
 can only use the operation after a CreateJob request but before the
 data transfer starts and you can only use it on jobs you own.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO
