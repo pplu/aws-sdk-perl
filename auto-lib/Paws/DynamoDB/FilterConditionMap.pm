@@ -26,18 +26,20 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DynamoDB::FilterConditionMap object:
 
-  $service_obj->Method(Att1 => {  => $value, ...,  => $value  });
+  $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::FilterConditionMap object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->
+  $result->Att1->Map->{ key1 }
 
 =head1 ATTRIBUTES
 
+=head2 Map => L<Paws::DynamoDB::Condition>
 
+Use the Map method to retrieve a HashRef to the map
 
 =head1 SEE ALSO
 

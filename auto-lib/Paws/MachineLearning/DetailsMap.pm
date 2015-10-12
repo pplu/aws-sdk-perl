@@ -27,14 +27,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MachineLearning::DetailsMap object:
 
-  $service_obj->Method(Att1 => {  => $value, ...,  => $value  });
+  $service_obj->Method(Att1 => { Algorithm => $value, ..., PredictiveModelType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLearning::DetailsMap object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->
+  $result->Att1->Algorithm
 
 =head1 ATTRIBUTES
 

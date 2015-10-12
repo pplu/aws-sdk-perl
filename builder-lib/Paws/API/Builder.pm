@@ -719,14 +719,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a [% inner_class %] object:
 
-  $service_obj->Method(Att1 => { [% shape.members.keys.sort.0 %] => $value, ..., [% shape.members.keys.sort.-1 %] => $value  });
+  $service_obj->Method(Att1 => { [% keys_shape.enum.sort.0 %] => $value, ..., [% keys_shape.enum.sort.-1 %] => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an [% inner_class %] object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->[% shape.members.keys.sort.0 %]
+  $result->Att1->[% keys_shape.enum.sort.0 %]
 
 =head1 ATTRIBUTES
 
@@ -765,6 +765,52 @@ package [% inner_class %];
 [% c.map_enum_documentation_template | eval %]
 #);
 
+  has map_str_to_whatever_template => (is => 'ro', isa => 'Str', default => q#
+\#\#\# main pod documentation begin \#\#\#
+
+=head1 NAME
+
+[% inner_class %]
+
+=head1 DESCRIPTION
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a [% inner_class %] object:
+
+  $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an [% inner_class %] object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->Map->{ key1 }
+
+=head1 ATTRIBUTES
+
+=head2 Map => [% c.perl_type_to_pod(c.get_caller_class_type(iclass.value.shape)) %]
+
+Use the Map method to retrieve a HashRef to the map
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<[% c.api %]>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+#);
+
   has map_str_to_native_template => (is => 'ro', isa => 'Str', default => q#
 [%- -%]
 package [% inner_class %];
@@ -777,7 +823,7 @@ package [% inner_class %];
 
   has Map => (is => 'ro', isa => '[% map_class %]');
 1;
-[% c.innerclass_documentation_template | eval %]
+[% c.map_str_to_whatever_template | eval %]
 #);
 
   has map_str_to_obj_template => (is => 'ro', isa => 'Str', default => q#
@@ -792,7 +838,7 @@ package [% inner_class %];
 
   has Map => (is => 'ro', isa => '[% map_class %]');
 1;
-[% c.innerclass_documentation_template | eval %]
+[% c.map_str_to_whatever_template | eval %]
 #);
 
   has object_template => (is => 'ro', isa => 'Str', default => q#

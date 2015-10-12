@@ -50,14 +50,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::OpsWorks::LayerAttributes object:
 
-  $service_obj->Method(Att1 => {  => $value, ...,  => $value  });
+  $service_obj->Method(Att1 => { BundlerVersion => $value, ..., RubyVersion => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::LayerAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->
+  $result->Att1->BundlerVersion
 
 =head1 ATTRIBUTES
 
