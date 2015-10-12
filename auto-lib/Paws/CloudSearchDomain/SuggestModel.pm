@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   The query string specified in the suggest request.
 
-=head2 suggestions => ArrayRef[Paws::CloudSearchDomain::SuggestionMatch]
+=head2 suggestions => ArrayRef[L<Paws::CloudSearchDomain::SuggestionMatch>]
 
   The documents that match the query string.
 

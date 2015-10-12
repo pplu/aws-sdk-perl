@@ -249,7 +249,7 @@ their cache and can receive alarms if a part of their cache runs hot.
 
 =head1 METHODS
 
-=head2 AddTagsToResource(ResourceName => Str, Tags => ArrayRef[Paws::ElastiCache::Tag])
+=head2 AddTagsToResource(ResourceName => Str, Tags => ArrayRef[L<Paws::ElastiCache::Tag>])
 
 Each argument is described in detail in: L<Paws::ElastiCache::AddTagsToResource>
 
@@ -325,7 +325,7 @@ The I<CopySnapshot> action makes a copy of an existing snapshot.
 
 
 
-=head2 CreateCacheCluster(CacheClusterId => Str, [AutoMinorVersionUpgrade => Bool, AZMode => Str, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], CacheSubnetGroupName => Str, Engine => Str, EngineVersion => Str, NotificationTopicArn => Str, NumCacheNodes => Int, Port => Int, PreferredAvailabilityZone => Str, PreferredAvailabilityZones => ArrayRef[Str], PreferredMaintenanceWindow => Str, ReplicationGroupId => Str, SecurityGroupIds => ArrayRef[Str], SnapshotArns => ArrayRef[Str], SnapshotName => Str, SnapshotRetentionLimit => Int, SnapshotWindow => Str, Tags => ArrayRef[Paws::ElastiCache::Tag]])
+=head2 CreateCacheCluster(CacheClusterId => Str, [AutoMinorVersionUpgrade => Bool, AZMode => Str, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], CacheSubnetGroupName => Str, Engine => Str, EngineVersion => Str, NotificationTopicArn => Str, NumCacheNodes => Int, Port => Int, PreferredAvailabilityZone => Str, PreferredAvailabilityZones => ArrayRef[Str], PreferredMaintenanceWindow => Str, ReplicationGroupId => Str, SecurityGroupIds => ArrayRef[Str], SnapshotArns => ArrayRef[Str], SnapshotName => Str, SnapshotRetentionLimit => Int, SnapshotWindow => Str, Tags => ArrayRef[L<Paws::ElastiCache::Tag>]])
 
 Each argument is described in detail in: L<Paws::ElastiCache::CreateCacheCluster>
 
@@ -419,7 +419,7 @@ Virtual Private Cloud (VPC).
 
 
 
-=head2 CreateReplicationGroup(ReplicationGroupDescription => Str, ReplicationGroupId => Str, [AutomaticFailoverEnabled => Bool, AutoMinorVersionUpgrade => Bool, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], CacheSubnetGroupName => Str, Engine => Str, EngineVersion => Str, NotificationTopicArn => Str, NumCacheClusters => Int, Port => Int, PreferredCacheClusterAZs => ArrayRef[Str], PreferredMaintenanceWindow => Str, PrimaryClusterId => Str, SecurityGroupIds => ArrayRef[Str], SnapshotArns => ArrayRef[Str], SnapshotName => Str, SnapshotRetentionLimit => Int, SnapshotWindow => Str, Tags => ArrayRef[Paws::ElastiCache::Tag]])
+=head2 CreateReplicationGroup(ReplicationGroupDescription => Str, ReplicationGroupId => Str, [AutomaticFailoverEnabled => Bool, AutoMinorVersionUpgrade => Bool, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], CacheSubnetGroupName => Str, Engine => Str, EngineVersion => Str, NotificationTopicArn => Str, NumCacheClusters => Int, Port => Int, PreferredCacheClusterAZs => ArrayRef[Str], PreferredMaintenanceWindow => Str, PrimaryClusterId => Str, SecurityGroupIds => ArrayRef[Str], SnapshotArns => ArrayRef[Str], SnapshotName => Str, SnapshotRetentionLimit => Int, SnapshotWindow => Str, Tags => ArrayRef[L<Paws::ElastiCache::Tag>]])
 
 Each argument is described in detail in: L<Paws::ElastiCache::CreateReplicationGroup>
 
@@ -955,7 +955,7 @@ values.
 
 
 
-=head2 ModifyCacheParameterGroup(CacheParameterGroupName => Str, ParameterNameValues => ArrayRef[Paws::ElastiCache::ParameterNameValue])
+=head2 ModifyCacheParameterGroup(CacheParameterGroupName => Str, ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>])
 
 Each argument is described in detail in: L<Paws::ElastiCache::ModifyCacheParameterGroup>
 
@@ -1091,7 +1091,7 @@ C<TagKeys> list from the named resource.
 
 
 
-=head2 ResetCacheParameterGroup(CacheParameterGroupName => Str, ParameterNameValues => ArrayRef[Paws::ElastiCache::ParameterNameValue], [ResetAllParameters => Bool])
+=head2 ResetCacheParameterGroup(CacheParameterGroupName => Str, ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>], [ResetAllParameters => Bool])
 
 Each argument is described in detail in: L<Paws::ElastiCache::ResetCacheParameterGroup>
 

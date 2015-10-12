@@ -12,7 +12,7 @@ Paws::SSM::DescribeDocumentResult
 
 =head1 ATTRIBUTES
 
-=head2 Document => Paws::SSM::DocumentDescription
+=head2 Document => L<Paws::SSM::DocumentDescription>
 
   Information about the configuration document.
 

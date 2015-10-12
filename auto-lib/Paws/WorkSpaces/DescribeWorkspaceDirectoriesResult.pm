@@ -13,7 +13,7 @@ Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult
 
 =head1 ATTRIBUTES
 
-=head2 Directories => ArrayRef[Paws::WorkSpaces::WorkspaceDirectory]
+=head2 Directories => ArrayRef[L<Paws::WorkSpaces::WorkspaceDirectory>]
 
   An array of structures that contain information about the directories.
 =head2 NextToken => Str

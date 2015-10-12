@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::SqlInj
 SqlInjectionMatchSet. Use C<DELETE> to remove a
 C<SqlInjectionMatchSetUpdate> from a C<SqlInjectionMatchSet>.
 
-=head2 B<REQUIRED> SqlInjectionMatchTuple => Paws::WAF::SqlInjectionMatchTuple
+=head2 B<REQUIRED> SqlInjectionMatchTuple => L<Paws::WAF::SqlInjectionMatchTuple>
 
   Specifies the part of a web request that you want AWS WAF to inspect
 for snippets of malicious SQL code and, if you want AWS WAF to inspect

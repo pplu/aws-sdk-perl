@@ -16,11 +16,11 @@ Paws::SimpleWorkflow::WorkflowExecutionDetail
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> executionConfiguration => Paws::SimpleWorkflow::WorkflowExecutionConfiguration
+=head2 B<REQUIRED> executionConfiguration => L<Paws::SimpleWorkflow::WorkflowExecutionConfiguration>
 
   The configuration settings for this workflow execution including
 timeout values, tasklist etc.
-=head2 B<REQUIRED> executionInfo => Paws::SimpleWorkflow::WorkflowExecutionInfo
+=head2 B<REQUIRED> executionInfo => L<Paws::SimpleWorkflow::WorkflowExecutionInfo>
 
   Information about the workflow execution.
 =head2 latestActivityTaskTimestamp => Str
@@ -35,7 +35,7 @@ require a corrective action.
 execution. A decider can provide an executionContext (a free-form
 string) when closing a decision task using
 RespondDecisionTaskCompleted.
-=head2 B<REQUIRED> openCounts => Paws::SimpleWorkflow::WorkflowExecutionOpenCounts
+=head2 B<REQUIRED> openCounts => L<Paws::SimpleWorkflow::WorkflowExecutionOpenCounts>
 
   The number of tasks for this workflow execution. This includes open and
 closed tasks of all types.

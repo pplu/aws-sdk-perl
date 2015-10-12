@@ -13,7 +13,7 @@ Paws::EC2::DescribeDhcpOptionsResult
 
 =head1 ATTRIBUTES
 
-=head2 DhcpOptions => ArrayRef[Paws::EC2::DhcpOptions]
+=head2 DhcpOptions => ArrayRef[L<Paws::EC2::DhcpOptions>]
 
   Information about one or more DHCP options sets.
 

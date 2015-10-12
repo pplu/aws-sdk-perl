@@ -54,7 +54,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::D
 
   The status of the delivery stream.
 
-=head2 B<REQUIRED> Destinations => ArrayRef[Paws::Firehose::DestinationDescription]
+=head2 B<REQUIRED> Destinations => ArrayRef[L<Paws::Firehose::DestinationDescription>]
 
   The destinations.
 

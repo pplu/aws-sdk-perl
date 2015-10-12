@@ -18,7 +18,7 @@ Paws::EC2::DescribeInstancesResult
 
   The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
-=head2 Reservations => ArrayRef[Paws::EC2::Reservation]
+=head2 Reservations => ArrayRef[L<Paws::EC2::Reservation>]
 
   One or more reservations.
 

@@ -15,7 +15,7 @@ Paws::IAM::ListSigningCertificatesResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Certificates => ArrayRef[Paws::IAM::SigningCertificate]
+=head2 B<REQUIRED> Certificates => ArrayRef[L<Paws::IAM::SigningCertificate>]
 
   A list of the user's signing certificate information.
 =head2 IsTruncated => Bool

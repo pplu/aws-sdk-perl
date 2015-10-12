@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
   The ID of the pipeline task attempt object. AWS Data Pipeline uses this
 value to track how many times a task is attempted.
 
-=head2 objects => Paws::DataPipeline::PipelineObjectMap
+=head2 objects => L<Paws::DataPipeline::PipelineObjectMap>
 
   Connection information for the location where the task runner will
 publish the output of the task.

@@ -14,10 +14,10 @@ Paws::SQS::DeleteMessageBatchResult
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Failed => ArrayRef[Paws::SQS::BatchResultErrorEntry]
+=head2 B<REQUIRED> Failed => ArrayRef[L<Paws::SQS::BatchResultErrorEntry>]
 
   A list of BatchResultErrorEntry items.
-=head2 B<REQUIRED> Successful => ArrayRef[Paws::SQS::DeleteMessageBatchResultEntry]
+=head2 B<REQUIRED> Successful => ArrayRef[L<Paws::SQS::DeleteMessageBatchResultEntry>]
 
   A list of DeleteMessageBatchResultEntry items.
 

@@ -67,7 +67,7 @@ Cognito. GUID generation is unique within a region.
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.
 
-=head2 RecordPatches => ArrayRef[Paws::CognitoSync::RecordPatch]
+=head2 RecordPatches => ArrayRef[L<Paws::CognitoSync::RecordPatch>]
 
   A list of patch operations.
 

@@ -13,7 +13,7 @@ Paws::CloudSearch::ListDomainNamesResponse
 
 =head1 ATTRIBUTES
 
-=head2 DomainNames => Paws::CloudSearch::DomainNameMap
+=head2 DomainNames => L<Paws::CloudSearch::DomainNameMap>
 
   The names of the search domains owned by an account.
 

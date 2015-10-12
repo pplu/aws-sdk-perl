@@ -65,7 +65,7 @@ parameter group family.
 
   The description for the DB cluster parameter group.
 
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 

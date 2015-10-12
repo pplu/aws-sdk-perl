@@ -13,7 +13,7 @@ Paws::EC2::TerminateInstancesResult
 
 =head1 ATTRIBUTES
 
-=head2 TerminatingInstances => ArrayRef[Paws::EC2::InstanceStateChange]
+=head2 TerminatingInstances => ArrayRef[L<Paws::EC2::InstanceStateChange>]
 
   Information about one or more terminated instances.
 

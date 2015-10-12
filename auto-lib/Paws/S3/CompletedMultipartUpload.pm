@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Complet
 
 =head1 ATTRIBUTES
 
-=head2 Parts => ArrayRef[Paws::S3::CompletedPart]
+=head2 Parts => ArrayRef[L<Paws::S3::CompletedPart>]
 
   
 

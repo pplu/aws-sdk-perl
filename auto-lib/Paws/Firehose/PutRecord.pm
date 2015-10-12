@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the delivery stream.
 
-=head2 B<REQUIRED> Record => Paws::Firehose::Record
+=head2 B<REQUIRED> Record => L<Paws::Firehose::Record>
 
   The record.
 

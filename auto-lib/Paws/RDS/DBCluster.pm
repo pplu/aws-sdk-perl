@@ -82,11 +82,11 @@ created. This same name is returned for the life of the DB cluster.
   Contains a user-supplied DB cluster identifier. This identifier is the
 unique key that identifies a DB cluster.
 
-=head2 DBClusterMembers => ArrayRef[Paws::RDS::DBClusterMember]
+=head2 DBClusterMembers => ArrayRef[L<Paws::RDS::DBClusterMember>]
 
   Provides the list of instances that make up the DB cluster.
 
-=head2 DBClusterOptionGroupMemberships => ArrayRef[Paws::RDS::DBClusterOptionGroupStatus]
+=head2 DBClusterOptionGroupMemberships => ArrayRef[L<Paws::RDS::DBClusterOptionGroupStatus>]
 
   Provides the list of option group memberships for this DB cluster.
 
@@ -152,7 +152,7 @@ occur, in Universal Coordinated Time (UTC).
 
   Specifies the current state of this DB cluster.
 
-=head2 VpcSecurityGroups => ArrayRef[Paws::RDS::VpcSecurityGroupMembership]
+=head2 VpcSecurityGroups => ArrayRef[L<Paws::RDS::VpcSecurityGroupMembership>]
 
   Provides a list of VPC security groups that the DB cluster belongs to.
 

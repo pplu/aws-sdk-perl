@@ -14,7 +14,7 @@ Paws::ElastiCache::CacheSecurityGroupMessage
 
 =head1 ATTRIBUTES
 
-=head2 CacheSecurityGroups => ArrayRef[Paws::ElastiCache::CacheSecurityGroup]
+=head2 CacheSecurityGroups => ArrayRef[L<Paws::ElastiCache::CacheSecurityGroup>]
 
   A list of cache security groups. Each element in the list contains
 detailed information about one group.

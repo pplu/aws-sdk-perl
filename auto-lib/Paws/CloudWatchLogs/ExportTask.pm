@@ -48,7 +48,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
   Prefix that was used as the start of Amazon S3 key for every object
 exported.
 
-=head2 executionInfo => Paws::CloudWatchLogs::ExportTaskExecutionInfo
+=head2 executionInfo => L<Paws::CloudWatchLogs::ExportTaskExecutionInfo>
 
   Execution info about the export task.
 
@@ -61,7 +61,7 @@ request. Events with a timestamp prior to this time were not exported.
 
   The name of the log group from which logs data was exported.
 
-=head2 status => Paws::CloudWatchLogs::ExportTaskStatus
+=head2 status => L<Paws::CloudWatchLogs::ExportTaskStatus>
 
   Status of the export task.
 

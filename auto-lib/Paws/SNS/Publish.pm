@@ -84,7 +84,7 @@ delivery).
 
 =back
 
-=head2 MessageAttributes => Paws::SNS::MessageAttributeMap
+=head2 MessageAttributes => L<Paws::SNS::MessageAttributeMap>
 
   Message attributes for Publish action.
 

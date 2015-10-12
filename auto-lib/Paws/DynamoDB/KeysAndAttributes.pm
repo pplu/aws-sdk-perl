@@ -48,7 +48,7 @@ the result.
 consistent read is used; otherwise, an eventually consistent read is
 used.
 
-=head2 ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap
+=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
   One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
@@ -114,7 +114,7 @@ values>, which are placeholders for the actual value at runtime.
 For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
-=head2 B<REQUIRED> Keys => ArrayRef[Paws::DynamoDB::Key]
+=head2 B<REQUIRED> Keys => ArrayRef[L<Paws::DynamoDB::Key>]
 
   The primary key attribute values that define the items and the
 attributes associated with the items.

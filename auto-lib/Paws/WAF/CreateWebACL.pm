@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The value returned by the most recent call to GetChangeToken.
 
-=head2 B<REQUIRED> DefaultAction => Paws::WAF::WafAction
+=head2 B<REQUIRED> DefaultAction => L<Paws::WAF::WafAction>
 
   The action that you want AWS WAF to take when a request doesn't match
 the criteria specified in any of the C<Rule> objects that are

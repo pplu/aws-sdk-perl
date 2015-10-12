@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 verify that the calling entity is allowed access to the job and its
 details.
 
-=head2 B<REQUIRED> failureDetails => Paws::CodePipeline::FailureDetails
+=head2 B<REQUIRED> failureDetails => L<Paws::CodePipeline::FailureDetails>
 
   
 

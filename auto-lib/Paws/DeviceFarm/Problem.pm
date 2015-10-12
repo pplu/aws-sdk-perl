@@ -37,11 +37,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head1 ATTRIBUTES
 
-=head2 device => Paws::DeviceFarm::Device
+=head2 device => L<Paws::DeviceFarm::Device>
 
   Information about the associated device.
 
-=head2 job => Paws::DeviceFarm::ProblemDetail
+=head2 job => L<Paws::DeviceFarm::ProblemDetail>
 
   Information about the associated job.
 
@@ -87,15 +87,15 @@ WARNED: A warning condition.
 
 =back
 
-=head2 run => Paws::DeviceFarm::ProblemDetail
+=head2 run => L<Paws::DeviceFarm::ProblemDetail>
 
   Information about the associated run.
 
-=head2 suite => Paws::DeviceFarm::ProblemDetail
+=head2 suite => L<Paws::DeviceFarm::ProblemDetail>
 
   Information about the associated suite.
 
-=head2 test => Paws::DeviceFarm::ProblemDetail
+=head2 test => L<Paws::DeviceFarm::ProblemDetail>
 
   Information about the associated test.
 

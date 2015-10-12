@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 AutoScalingSchedule => Paws::OpsWorks::WeeklyAutoScalingSchedule
+=head2 AutoScalingSchedule => L<Paws::OpsWorks::WeeklyAutoScalingSchedule>
 
   An C<AutoScalingSchedule> with the instance schedule.
 

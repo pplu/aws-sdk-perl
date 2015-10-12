@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
 =head1 ATTRIBUTES
 
-=head2 CurrentState => Paws::EC2::InstanceState
+=head2 CurrentState => L<Paws::EC2::InstanceState>
 
   The current state of the instance.
 
@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
   The ID of the instance.
 
-=head2 PreviousState => Paws::EC2::InstanceState
+=head2 PreviousState => L<Paws::EC2::InstanceState>
 
   The previous state of the instance.
 

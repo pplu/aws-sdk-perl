@@ -58,7 +58,7 @@ C<unmetered>.
 
   The total number of completed jobs.
 
-=head2 counters => Paws::DeviceFarm::Counters
+=head2 counters => L<Paws::DeviceFarm::Counters>
 
   The run's result counters.
 

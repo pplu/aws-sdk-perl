@@ -22,7 +22,7 @@ C<NextPageMarker> in the value of C<Marker>.
 Type: String
 
 Parent: C<Operations>
-=head2 B<REQUIRED> Operations => ArrayRef[Paws::Route53Domains::OperationSummary]
+=head2 B<REQUIRED> Operations => ArrayRef[L<Paws::Route53Domains::OperationSummary>]
 
   Lists summaries of the operations.
 

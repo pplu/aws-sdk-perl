@@ -36,15 +36,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
 =head1 ATTRIBUTES
 
-=head2 Keys => Paws::DynamoDBStreams::AttributeMap
+=head2 Keys => L<Paws::DynamoDBStreams::AttributeMap>
 
   The primary key attribute(s) for the DynamoDB item that was modified.
 
-=head2 NewImage => Paws::DynamoDBStreams::AttributeMap
+=head2 NewImage => L<Paws::DynamoDBStreams::AttributeMap>
 
   The item in the DynamoDB table as it appeared after it was modified.
 
-=head2 OldImage => Paws::DynamoDBStreams::AttributeMap
+=head2 OldImage => L<Paws::DynamoDBStreams::AttributeMap>
 
   The item in the DynamoDB table as it appeared before it was modified.
 

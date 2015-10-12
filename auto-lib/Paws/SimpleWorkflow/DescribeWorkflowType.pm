@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the domain in which this workflow type is registered.
 
-=head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
+=head2 B<REQUIRED> workflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
   The workflow type to describe.
 

@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::L
 
 =head1 ATTRIBUTES
 
-=head2 Shutdown => Paws::OpsWorks::ShutdownEventConfiguration
+=head2 Shutdown => L<Paws::OpsWorks::ShutdownEventConfiguration>
 
   A C<ShutdownEventConfiguration> object that specifies the Shutdown
 event configuration.

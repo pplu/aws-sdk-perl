@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
   The Availability Zone of the instance.
 
-=head2 Events => ArrayRef[Paws::EC2::InstanceStatusEvent]
+=head2 Events => ArrayRef[L<Paws::EC2::InstanceStatusEvent>]
 
   Any scheduled events associated with the instance.
 
@@ -48,17 +48,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
   The ID of the instance.
 
-=head2 InstanceState => Paws::EC2::InstanceState
+=head2 InstanceState => L<Paws::EC2::InstanceState>
 
   The intended state of the instance. DescribeInstanceStatus requires
 that an instance be in the C<running> state.
 
-=head2 InstanceStatus => Paws::EC2::InstanceStatusSummary
+=head2 InstanceStatus => L<Paws::EC2::InstanceStatusSummary>
 
   Reports impaired functionality that stems from issues internal to the
 instance, such as impaired reachability.
 
-=head2 SystemStatus => Paws::EC2::InstanceStatusSummary
+=head2 SystemStatus => L<Paws::EC2::InstanceStatusSummary>
 
   Reports impaired functionality that stems from issues related to the
 systems that support an instance, such as hardware failures and network

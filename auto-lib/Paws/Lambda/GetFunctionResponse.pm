@@ -14,10 +14,10 @@ Paws::Lambda::GetFunctionResponse
 
 =head1 ATTRIBUTES
 
-=head2 Code => Paws::Lambda::FunctionCodeLocation
+=head2 Code => L<Paws::Lambda::FunctionCodeLocation>
 
   
-=head2 Configuration => Paws::Lambda::FunctionConfiguration
+=head2 Configuration => L<Paws::Lambda::FunctionConfiguration>
 
   
 

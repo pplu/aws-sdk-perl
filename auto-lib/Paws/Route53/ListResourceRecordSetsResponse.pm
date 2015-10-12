@@ -64,7 +64,7 @@ ListResourceRecordSetsResponse$IsTruncated is true.
 This element is present only if
 ListResourceRecordSetsResponse$IsTruncated is true.
 
-=head2 B<REQUIRED> ResourceRecordSets => ArrayRef[Paws::Route53::ResourceRecordSet]
+=head2 B<REQUIRED> ResourceRecordSets => ArrayRef[L<Paws::Route53::ResourceRecordSet>]
 
   A complex type that contains information about the resource record sets
 that are returned by the request.

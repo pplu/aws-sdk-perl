@@ -47,7 +47,7 @@ C<EC2SecurityGroupName> field.
 
   The status of the EC2 security group.
 
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   The list of tags for the EC2 security group.
 

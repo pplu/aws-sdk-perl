@@ -41,7 +41,7 @@ provisioned.
 
 Default: None
 
-=head2 B<REQUIRED> newPrivateVirtualInterfaceAllocation => Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation
+=head2 B<REQUIRED> newPrivateVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation>
 
   Detailed information for the private virtual interface to be
 provisioned.

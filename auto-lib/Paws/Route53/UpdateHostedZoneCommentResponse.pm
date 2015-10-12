@@ -27,7 +27,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> HostedZone => Paws::Route53::HostedZone
+=head2 B<REQUIRED> HostedZone => L<Paws::Route53::HostedZone>
 
   
 

@@ -581,7 +581,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 CloneStack(ServiceRoleArn => Str, SourceStackId => Str, [AgentVersion => Str, Attributes => Paws::OpsWorks::StackAttributes, ChefConfiguration => Paws::OpsWorks::ChefConfiguration, CloneAppIds => ArrayRef[Str], ClonePermissions => Bool, ConfigurationManager => Paws::OpsWorks::StackConfigurationManager, CustomCookbooksSource => Paws::OpsWorks::Source, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultInstanceProfileArn => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, Name => Str, Region => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool, VpcId => Str])
+=head2 CloneStack(ServiceRoleArn => Str, SourceStackId => Str, [AgentVersion => Str, Attributes => L<Paws::OpsWorks::StackAttributes>, ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>, CloneAppIds => ArrayRef[Str], ClonePermissions => Bool, ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>, CustomCookbooksSource => L<Paws::OpsWorks::Source>, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultInstanceProfileArn => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, Name => Str, Region => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool, VpcId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CloneStack>
 
@@ -607,7 +607,7 @@ information on user permissions, see Managing User Permissions.
 
 
 
-=head2 CreateApp(Name => Str, StackId => Str, Type => Str, [AppSource => Paws::OpsWorks::Source, Attributes => Paws::OpsWorks::AppAttributes, DataSources => ArrayRef[Paws::OpsWorks::DataSource], Description => Str, Domains => ArrayRef[Str], EnableSsl => Bool, Environment => ArrayRef[Paws::OpsWorks::EnvironmentVariable], Shortname => Str, SslConfiguration => Paws::OpsWorks::SslConfiguration])
+=head2 CreateApp(Name => Str, StackId => Str, Type => Str, [AppSource => L<Paws::OpsWorks::Source>, Attributes => L<Paws::OpsWorks::AppAttributes>, DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>], Description => Str, Domains => ArrayRef[Str], EnableSsl => Bool, Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>], Shortname => Str, SslConfiguration => L<Paws::OpsWorks::SslConfiguration>])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateApp>
 
@@ -633,7 +633,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 CreateDeployment(Command => Paws::OpsWorks::DeploymentCommand, StackId => Str, [AppId => Str, Comment => Str, CustomJson => Str, InstanceIds => ArrayRef[Str]])
+=head2 CreateDeployment(Command => L<Paws::OpsWorks::DeploymentCommand>, StackId => Str, [AppId => Str, Comment => Str, CustomJson => Str, InstanceIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateDeployment>
 
@@ -659,7 +659,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 CreateInstance(InstanceType => Str, LayerIds => ArrayRef[Str], StackId => Str, [AgentVersion => Str, AmiId => Str, Architecture => Str, AutoScalingType => Str, AvailabilityZone => Str, BlockDeviceMappings => ArrayRef[Paws::OpsWorks::BlockDeviceMapping], EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, Os => Str, RootDeviceType => Str, SshKeyName => Str, SubnetId => Str, VirtualizationType => Str])
+=head2 CreateInstance(InstanceType => Str, LayerIds => ArrayRef[Str], StackId => Str, [AgentVersion => Str, AmiId => Str, Architecture => Str, AutoScalingType => Str, AvailabilityZone => Str, BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>], EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, Os => Str, RootDeviceType => Str, SshKeyName => Str, SubnetId => Str, VirtualizationType => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateInstance>
 
@@ -685,7 +685,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 CreateLayer(Name => Str, Shortname => Str, StackId => Str, Type => Str, [Attributes => Paws::OpsWorks::LayerAttributes, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => Paws::OpsWorks::Recipes, CustomSecurityGroupIds => ArrayRef[Str], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration, Packages => ArrayRef[Str], UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[Paws::OpsWorks::VolumeConfiguration]])
+=head2 CreateLayer(Name => Str, Shortname => Str, StackId => Str, Type => Str, [Attributes => L<Paws::OpsWorks::LayerAttributes>, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => L<Paws::OpsWorks::Recipes>, CustomSecurityGroupIds => ArrayRef[Str], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>, Packages => ArrayRef[Str], UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateLayer>
 
@@ -717,7 +717,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 CreateStack(DefaultInstanceProfileArn => Str, Name => Str, Region => Str, ServiceRoleArn => Str, [AgentVersion => Str, Attributes => Paws::OpsWorks::StackAttributes, ChefConfiguration => Paws::OpsWorks::ChefConfiguration, ConfigurationManager => Paws::OpsWorks::StackConfigurationManager, CustomCookbooksSource => Paws::OpsWorks::Source, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool, VpcId => Str])
+=head2 CreateStack(DefaultInstanceProfileArn => Str, Name => Str, Region => Str, ServiceRoleArn => Str, [AgentVersion => Str, Attributes => L<Paws::OpsWorks::StackAttributes>, ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>, ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>, CustomCookbooksSource => L<Paws::OpsWorks::Source>, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool, VpcId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateStack>
 
@@ -1028,7 +1028,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 DescribeAgentVersions([ConfigurationManager => Paws::OpsWorks::StackConfigurationManager, StackId => Str])
+=head2 DescribeAgentVersions([ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>, StackId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeAgentVersions>
 
@@ -1760,7 +1760,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 RegisterInstance(StackId => Str, [Hostname => Str, InstanceIdentity => Paws::OpsWorks::InstanceIdentity, PrivateIp => Str, PublicIp => Str, RsaPublicKey => Str, RsaPublicKeyFingerprint => Str])
+=head2 RegisterInstance(StackId => Str, [Hostname => Str, InstanceIdentity => L<Paws::OpsWorks::InstanceIdentity>, PrivateIp => Str, PublicIp => Str, RsaPublicKey => Str, RsaPublicKeyFingerprint => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::RegisterInstance>
 
@@ -1847,7 +1847,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 SetLoadBasedAutoScaling(LayerId => Str, [DownScaling => Paws::OpsWorks::AutoScalingThresholds, Enable => Bool, UpScaling => Paws::OpsWorks::AutoScalingThresholds])
+=head2 SetLoadBasedAutoScaling(LayerId => Str, [DownScaling => L<Paws::OpsWorks::AutoScalingThresholds>, Enable => Bool, UpScaling => L<Paws::OpsWorks::AutoScalingThresholds>])
 
 Each argument is described in detail in: L<Paws::OpsWorks::SetLoadBasedAutoScaling>
 
@@ -1905,7 +1905,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 SetTimeBasedAutoScaling(InstanceId => Str, [AutoScalingSchedule => Paws::OpsWorks::WeeklyAutoScalingSchedule])
+=head2 SetTimeBasedAutoScaling(InstanceId => Str, [AutoScalingSchedule => L<Paws::OpsWorks::WeeklyAutoScalingSchedule>])
 
 Each argument is described in detail in: L<Paws::OpsWorks::SetTimeBasedAutoScaling>
 
@@ -2090,7 +2090,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UpdateApp(AppId => Str, [AppSource => Paws::OpsWorks::Source, Attributes => Paws::OpsWorks::AppAttributes, DataSources => ArrayRef[Paws::OpsWorks::DataSource], Description => Str, Domains => ArrayRef[Str], EnableSsl => Bool, Environment => ArrayRef[Paws::OpsWorks::EnvironmentVariable], Name => Str, SslConfiguration => Paws::OpsWorks::SslConfiguration, Type => Str])
+=head2 UpdateApp(AppId => Str, [AppSource => L<Paws::OpsWorks::Source>, Attributes => L<Paws::OpsWorks::AppAttributes>, DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>], Description => Str, Domains => ArrayRef[Str], EnableSsl => Bool, Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>], Name => Str, SslConfiguration => L<Paws::OpsWorks::SslConfiguration>, Type => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateApp>
 
@@ -2166,7 +2166,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UpdateLayer(LayerId => Str, [Attributes => Paws::OpsWorks::LayerAttributes, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => Paws::OpsWorks::Recipes, CustomSecurityGroupIds => ArrayRef[Str], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration, Name => Str, Packages => ArrayRef[Str], Shortname => Str, UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[Paws::OpsWorks::VolumeConfiguration]])
+=head2 UpdateLayer(LayerId => Str, [Attributes => L<Paws::OpsWorks::LayerAttributes>, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => L<Paws::OpsWorks::Recipes>, CustomSecurityGroupIds => ArrayRef[Str], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>, Name => Str, Packages => ArrayRef[Str], Shortname => Str, UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateLayer>
 
@@ -2241,7 +2241,7 @@ permissions, see Managing User Permissions.
 
 
 
-=head2 UpdateStack(StackId => Str, [AgentVersion => Str, Attributes => Paws::OpsWorks::StackAttributes, ChefConfiguration => Paws::OpsWorks::ChefConfiguration, ConfigurationManager => Paws::OpsWorks::StackConfigurationManager, CustomCookbooksSource => Paws::OpsWorks::Source, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultInstanceProfileArn => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, Name => Str, ServiceRoleArn => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool])
+=head2 UpdateStack(StackId => Str, [AgentVersion => Str, Attributes => L<Paws::OpsWorks::StackAttributes>, ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>, ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>, CustomCookbooksSource => L<Paws::OpsWorks::Source>, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultInstanceProfileArn => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, Name => Str, ServiceRoleArn => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool])
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateStack>
 

@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Tr
 
 =head1 ATTRIBUTES
 
-=head2 costOptimizing => Paws::Support::TrustedAdvisorCostOptimizingSummary
+=head2 costOptimizing => L<Paws::Support::TrustedAdvisorCostOptimizingSummary>
 
   The summary information about cost savings for a Trusted Advisor check
 that is in the Cost Optimizing category.

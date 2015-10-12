@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the deployment configuration to create.
 
-=head2 minimumHealthyHosts => Paws::CodeDeploy::MinimumHealthyHosts
+=head2 minimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>
 
   The minimum number of healthy instances that should be available at any
 time during the deployment. There are two parameters expected in the

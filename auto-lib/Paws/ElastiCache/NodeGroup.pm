@@ -39,12 +39,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
   The identifier for the node group. A replication group contains only
 one node group; therefore, the node group ID is 0001.
 
-=head2 NodeGroupMembers => ArrayRef[Paws::ElastiCache::NodeGroupMember]
+=head2 NodeGroupMembers => ArrayRef[L<Paws::ElastiCache::NodeGroupMember>]
 
   A list containing information about individual nodes within the node
 group.
 
-=head2 PrimaryEndpoint => Paws::ElastiCache::Endpoint
+=head2 PrimaryEndpoint => L<Paws::ElastiCache::Endpoint>
 
   
 

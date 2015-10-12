@@ -12,7 +12,7 @@ Paws::DeviceFarm::GetTestResult
 
 =head1 ATTRIBUTES
 
-=head2 test => Paws::DeviceFarm::Test
+=head2 test => L<Paws::DeviceFarm::Test>
 
   
 

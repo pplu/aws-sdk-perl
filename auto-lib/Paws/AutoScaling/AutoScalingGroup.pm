@@ -75,7 +75,7 @@ further scaling activities can start.
 
   The desired size of the group.
 
-=head2 EnabledMetrics => ArrayRef[Paws::AutoScaling::EnabledMetric]
+=head2 EnabledMetrics => ArrayRef[L<Paws::AutoScaling::EnabledMetric>]
 
   The metrics enabled for the group.
 
@@ -90,7 +90,7 @@ comes into service.
   The service of interest for the health status check, which can be
 either C<EC2> for Amazon EC2 or C<ELB> for Elastic Load Balancing.
 
-=head2 Instances => ArrayRef[Paws::AutoScaling::Instance]
+=head2 Instances => ArrayRef[L<Paws::AutoScaling::Instance>]
 
   The EC2 instances associated with the group.
 
@@ -120,11 +120,11 @@ instances, if any. For more information, see Placement Groups.
   The current state of the group when DeleteAutoScalingGroup is in
 progress.
 
-=head2 SuspendedProcesses => ArrayRef[Paws::AutoScaling::SuspendedProcess]
+=head2 SuspendedProcesses => ArrayRef[L<Paws::AutoScaling::SuspendedProcess>]
 
   The suspended processes associated with the group.
 
-=head2 Tags => ArrayRef[Paws::AutoScaling::TagDescription]
+=head2 Tags => ArrayRef[L<Paws::AutoScaling::TagDescription>]
 
   The tags for the group.
 

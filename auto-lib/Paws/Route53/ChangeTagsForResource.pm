@@ -23,7 +23,7 @@ Paws::Route53::ChangeTagsForResourceResponse
 
 =head1 ATTRIBUTES
 
-=head2 AddTags => ArrayRef[Paws::Route53::Tag]
+=head2 AddTags => ArrayRef[L<Paws::Route53::Tag>]
 
   A complex type that contains a list of C<Tag> elements. Each C<Tag>
 element identifies a tag that you want to add or update for the

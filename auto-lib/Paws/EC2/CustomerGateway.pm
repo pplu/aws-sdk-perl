@@ -55,7 +55,7 @@ interface.
   The current state of the customer gateway (C<pending | available |
 deleting | deleted>).
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the customer gateway.
 

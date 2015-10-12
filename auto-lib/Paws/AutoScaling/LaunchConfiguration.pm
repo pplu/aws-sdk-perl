@@ -54,7 +54,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
   Specifies whether the instances are associated with a public IP address
 (C<true>) or not (C<false>).
 
-=head2 BlockDeviceMappings => ArrayRef[Paws::AutoScaling::BlockDeviceMapping]
+=head2 BlockDeviceMappings => ArrayRef[L<Paws::AutoScaling::BlockDeviceMapping>]
 
   A block device mapping, which specifies the block devices for the
 instance.
@@ -91,7 +91,7 @@ associated with the IAM role for the instance.
 
   The ID of the Amazon Machine Image (AMI).
 
-=head2 InstanceMonitoring => Paws::AutoScaling::InstanceMonitoring
+=head2 InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>
 
   Controls whether instances in this group are launched with detailed
 monitoring.

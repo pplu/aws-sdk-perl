@@ -61,7 +61,7 @@ range. If you specify an IP address, you cannot indicate any IP
 addresses specified in C<privateIpAddresses> as primary (only one IP
 address can be designated as primary).
 
-=head2 PrivateIpAddresses => ArrayRef[Paws::EC2::PrivateIpAddressSpecification]
+=head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>]
 
   One or more private IP addresses.
 

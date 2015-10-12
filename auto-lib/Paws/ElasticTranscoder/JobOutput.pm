@@ -51,7 +51,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head1 ATTRIBUTES
 
-=head2 AlbumArt => Paws::ElasticTranscoder::JobAlbumArt
+=head2 AlbumArt => L<Paws::ElasticTranscoder::JobAlbumArt>
 
   The album art to be associated with the output file, if any.
 
@@ -63,7 +63,7 @@ parameter shows the conversion used. If no C<ColorSpaceConversionMode>
 was defined in the preset, this parameter will not be included in the
 job response.
 
-=head2 Captions => Paws::ElasticTranscoder::Captions
+=head2 Captions => L<Paws::ElasticTranscoder::Captions>
 
   You can configure Elastic Transcoder to transcode captions, or
 subtitles, from one format to another. All captions must be in UTF-8.
@@ -123,7 +123,7 @@ page.
 For more information on sidecar files, see the Extensible Metadata
 Platform and Sidecar file Wikipedia pages.
 
-=head2 Composition => ArrayRef[Paws::ElasticTranscoder::Clip]
+=head2 Composition => ArrayRef[L<Paws::ElasticTranscoder::Clip>]
 
   You can create an output file that contains an excerpt from the input
 file. This excerpt, called a clip, can come from the beginning, middle,
@@ -140,7 +140,7 @@ Composition object cannot be null.
 
   Duration of the output file, in milliseconds.
 
-=head2 Encryption => Paws::ElasticTranscoder::Encryption
+=head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your output files. If you choose to use encryption, you must
@@ -246,7 +246,7 @@ C<Progressing>, C<Complete>, C<Canceled>, or C<Error>.
 
   Information that further explains C<Status>.
 
-=head2 ThumbnailEncryption => Paws::ElasticTranscoder::Encryption
+=head2 ThumbnailEncryption => L<Paws::ElasticTranscoder::Encryption>
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your thumbnail.
@@ -297,7 +297,7 @@ files in the format (.jpg or .png) that appears in the preset that you
 specified in the C<PresetID> value of C<CreateJobOutput>. Elastic
 Transcoder also appends the applicable file name extension.
 
-=head2 Watermarks => ArrayRef[Paws::ElasticTranscoder::JobWatermark]
+=head2 Watermarks => ArrayRef[L<Paws::ElasticTranscoder::JobWatermark>]
 
   Information about the watermarks that you want Elastic Transcoder to
 add to the video during transcoding. You can specify up to four

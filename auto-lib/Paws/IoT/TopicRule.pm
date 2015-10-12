@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::TopicR
 
 =head1 ATTRIBUTES
 
-=head2 actions => ArrayRef[Paws::IoT::Action]
+=head2 actions => ArrayRef[L<Paws::IoT::Action>]
 
   The actions associated with the rule.
 

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::D
 
 =head1 ATTRIBUTES
 
-=head2 Args => Paws::OpsWorks::DeploymentCommandArgs
+=head2 Args => L<Paws::OpsWorks::DeploymentCommandArgs>
 
   The arguments of those commands that take arguments. It should be set
 to a JSON object with the following format:

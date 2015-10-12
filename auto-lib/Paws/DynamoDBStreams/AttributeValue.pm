@@ -52,11 +52,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
   A Binary Set data type.
 
-=head2 L => ArrayRef[Paws::DynamoDBStreams::AttributeValue]
+=head2 L => ArrayRef[L<Paws::DynamoDBStreams::AttributeValue>]
 
   A List data type.
 
-=head2 M => Paws::DynamoDBStreams::MapAttributeValue
+=head2 M => L<Paws::DynamoDBStreams::MapAttributeValue>
 
   A Map data type.
 

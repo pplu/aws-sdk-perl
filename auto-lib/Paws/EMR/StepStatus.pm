@@ -37,11 +37,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepSt
 
   The execution state of the cluster step.
 
-=head2 StateChangeReason => Paws::EMR::StepStateChangeReason
+=head2 StateChangeReason => L<Paws::EMR::StepStateChangeReason>
 
   The reason for the step execution status change.
 
-=head2 Timeline => Paws::EMR::StepTimeline
+=head2 Timeline => L<Paws::EMR::StepTimeline>
 
   The timeline of the cluster step status over time.
 

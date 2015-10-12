@@ -78,7 +78,7 @@ machine.
 
   The percentage of progress of the import image task.
 
-=head2 SnapshotDetails => ArrayRef[Paws::EC2::SnapshotDetail]
+=head2 SnapshotDetails => ArrayRef[L<Paws::EC2::SnapshotDetail>]
 
   Information about the snapshots.
 

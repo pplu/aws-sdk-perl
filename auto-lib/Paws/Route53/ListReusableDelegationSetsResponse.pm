@@ -31,7 +31,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> DelegationSets => ArrayRef[Paws::Route53::DelegationSet]
+=head2 B<REQUIRED> DelegationSets => ArrayRef[L<Paws::Route53::DelegationSet>]
 
   A complex type that contains information about the reusable delegation
 sets associated with the current AWS account.

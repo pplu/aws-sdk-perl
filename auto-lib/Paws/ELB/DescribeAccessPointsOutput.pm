@@ -14,7 +14,7 @@ Paws::ELB::DescribeAccessPointsOutput
 
 =head1 ATTRIBUTES
 
-=head2 LoadBalancerDescriptions => ArrayRef[Paws::ELB::LoadBalancerDescription]
+=head2 LoadBalancerDescriptions => ArrayRef[L<Paws::ELB::LoadBalancerDescription>]
 
   Information about the load balancers.
 =head2 NextMarker => Str

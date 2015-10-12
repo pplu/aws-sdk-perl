@@ -106,7 +106,7 @@ the rule-id is URL encoded.
 
   Last modified date of the object
 
-=head2 Metadata => Paws::S3::Metadata
+=head2 Metadata => L<Paws::S3::Metadata>
 
   A map of metadata to store with the object in S3.
 

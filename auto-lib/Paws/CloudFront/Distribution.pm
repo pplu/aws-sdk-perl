@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> ActiveTrustedSigners => Paws::CloudFront::ActiveTrustedSigners
+=head2 B<REQUIRED> ActiveTrustedSigners => L<Paws::CloudFront::ActiveTrustedSigners>
 
   CloudFront automatically adds this element to the response only if
 you've set up the distribution to serve private content with signed
@@ -49,7 +49,7 @@ associated with the trusted signer's AWS account. If no KeyPairId
 element appears for a Signer, that signer can't create working signed
 URLs.
 
-=head2 B<REQUIRED> DistributionConfig => Paws::CloudFront::DistributionConfig
+=head2 B<REQUIRED> DistributionConfig => L<Paws::CloudFront::DistributionConfig>
 
   The current configuration information for the distribution.
 

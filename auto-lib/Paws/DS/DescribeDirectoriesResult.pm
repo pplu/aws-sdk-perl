@@ -13,7 +13,7 @@ Paws::DS::DescribeDirectoriesResult
 
 =head1 ATTRIBUTES
 
-=head2 DirectoryDescriptions => ArrayRef[Paws::DS::DirectoryDescription]
+=head2 DirectoryDescriptions => ArrayRef[L<Paws::DS::DirectoryDescription>]
 
   The list of DirectoryDescription objects that were retrieved.
 

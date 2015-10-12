@@ -15,7 +15,7 @@ Paws::IAM::ListInstanceProfilesForRoleResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> InstanceProfiles => ArrayRef[Paws::IAM::InstanceProfile]
+=head2 B<REQUIRED> InstanceProfiles => ArrayRef[L<Paws::IAM::InstanceProfile>]
 
   A list of instance profiles.
 =head2 IsTruncated => Bool

@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
   The region in which the I<GetRecords> request was received.
 
-=head2 dynamodb => Paws::DynamoDBStreams::StreamRecord
+=head2 dynamodb => L<Paws::DynamoDBStreams::StreamRecord>
 
   The main body of the stream record, containing all of the
 DynamoDB-specific fields.

@@ -13,7 +13,7 @@ Paws::DeviceFarm::ListArtifactsResult
 
 =head1 ATTRIBUTES
 
-=head2 artifacts => ArrayRef[Paws::DeviceFarm::Artifact]
+=head2 artifacts => ArrayRef[L<Paws::DeviceFarm::Artifact>]
 
   Information about the artifacts.
 =head2 nextToken => Str

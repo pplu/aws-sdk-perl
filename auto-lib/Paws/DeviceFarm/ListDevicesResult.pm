@@ -13,7 +13,7 @@ Paws::DeviceFarm::ListDevicesResult
 
 =head1 ATTRIBUTES
 
-=head2 devices => ArrayRef[Paws::DeviceFarm::Device]
+=head2 devices => ArrayRef[L<Paws::DeviceFarm::Device>]
 
   Information about the devices.
 =head2 nextToken => Str

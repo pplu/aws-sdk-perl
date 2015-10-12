@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the domain in which the attributes are being stored.
 
-=head2 B<REQUIRED> Items => ArrayRef[Paws::SDB::ReplaceableItem]
+=head2 B<REQUIRED> Items => ArrayRef[L<Paws::SDB::ReplaceableItem>]
 
   A list of items on which to perform the operation.
 

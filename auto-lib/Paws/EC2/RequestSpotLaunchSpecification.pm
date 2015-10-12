@@ -50,7 +50,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Reques
 
   Deprecated.
 
-=head2 BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping]
+=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
   One or more block device mapping entries.
 
@@ -64,7 +64,7 @@ usage charges apply when using an EBS Optimized instance.
 
 Default: C<false>
 
-=head2 IamInstanceProfile => Paws::EC2::IamInstanceProfileSpecification
+=head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>
 
   The IAM instance profile.
 
@@ -84,15 +84,15 @@ Default: C<false>
 
   The name of the key pair.
 
-=head2 Monitoring => Paws::EC2::RunInstancesMonitoringEnabled
+=head2 Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>
 
   
 
-=head2 NetworkInterfaces => ArrayRef[Paws::EC2::InstanceNetworkInterfaceSpecification]
+=head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>]
 
   One or more network interfaces.
 
-=head2 Placement => Paws::EC2::SpotPlacement
+=head2 Placement => L<Paws::EC2::SpotPlacement>
 
   The placement information for the instance.
 

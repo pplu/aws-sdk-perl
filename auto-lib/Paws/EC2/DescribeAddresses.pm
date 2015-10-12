@@ -48,7 +48,7 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
   One or more filters. Filter names and values are case-sensitive.
 

@@ -44,7 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 want to update. C<SqlInjectionMatchSetId> is returned by
 CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.
 
-=head2 B<REQUIRED> Updates => ArrayRef[Paws::WAF::SqlInjectionMatchSetUpdate]
+=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAF::SqlInjectionMatchSetUpdate>]
 
   An array of C<SqlInjectionMatchSetUpdate> objects that you want to
 insert into or delete from a SqlInjectionMatchSet. For more

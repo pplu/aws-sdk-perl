@@ -44,12 +44,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 ATTRIBUTES
 
-=head2 Aliases => Paws::CloudFront::Aliases
+=head2 Aliases => L<Paws::CloudFront::Aliases>
 
   A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this distribution.
 
-=head2 CacheBehaviors => Paws::CloudFront::CacheBehaviors
+=head2 CacheBehaviors => L<Paws::CloudFront::CacheBehaviors>
 
   A complex type that contains zero or more CacheBehavior elements.
 
@@ -70,11 +70,11 @@ original request, CloudFront returns a DistributionAlreadyExists error.
 
   Any comments you want to include about the distribution.
 
-=head2 CustomErrorResponses => Paws::CloudFront::CustomErrorResponses
+=head2 CustomErrorResponses => L<Paws::CloudFront::CustomErrorResponses>
 
   A complex type that contains zero or more CustomErrorResponse elements.
 
-=head2 B<REQUIRED> DefaultCacheBehavior => Paws::CloudFront::DefaultCacheBehavior
+=head2 B<REQUIRED> DefaultCacheBehavior => L<Paws::CloudFront::DefaultCacheBehavior>
 
   A complex type that describes the default cache behavior if you do not
 specify a CacheBehavior element or if files don't match any of the
@@ -100,12 +100,12 @@ object.
   Whether the distribution is enabled to accept end user requests for
 content.
 
-=head2 Logging => Paws::CloudFront::LoggingConfig
+=head2 Logging => L<Paws::CloudFront::LoggingConfig>
 
   A complex type that controls whether access logs are written for the
 distribution.
 
-=head2 B<REQUIRED> Origins => Paws::CloudFront::Origins
+=head2 B<REQUIRED> Origins => L<Paws::CloudFront::Origins>
 
   A complex type that contains information about origins for this
 distribution.
@@ -115,11 +115,11 @@ distribution.
   A complex type that contains information about price class for this
 distribution.
 
-=head2 Restrictions => Paws::CloudFront::Restrictions
+=head2 Restrictions => L<Paws::CloudFront::Restrictions>
 
   
 
-=head2 ViewerCertificate => Paws::CloudFront::ViewerCertificate
+=head2 ViewerCertificate => L<Paws::CloudFront::ViewerCertificate>
 
   
 

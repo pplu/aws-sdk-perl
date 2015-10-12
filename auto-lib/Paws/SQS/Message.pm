@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::Messag
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => Paws::SQS::AttributeMap
+=head2 Attributes => L<Paws::SQS::AttributeMap>
 
   C<SenderId>, C<SentTimestamp>, C<ApproximateReceiveCount>, and/or
 C<ApproximateFirstReceiveTimestamp>. C<SentTimestamp> and
@@ -60,7 +60,7 @@ Amazon SQS first URL decodes the message before creating the MD5
 digest. For information about MD5, go to
 http://www.faqs.org/rfcs/rfc1321.html.
 
-=head2 MessageAttributes => Paws::SQS::MessageAttributeMap
+=head2 MessageAttributes => L<Paws::SQS::MessageAttributeMap>
 
   Each message attribute consists of a Name, Type, and Value. For more
 information, see Message Attribute Items.

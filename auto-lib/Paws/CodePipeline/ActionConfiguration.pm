@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 ATTRIBUTES
 
-=head2 configuration => Paws::CodePipeline::ActionConfigurationMap
+=head2 configuration => L<Paws::CodePipeline::ActionConfigurationMap>
 
   The configuration data for the action.
 

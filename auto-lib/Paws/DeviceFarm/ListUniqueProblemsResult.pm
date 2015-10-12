@@ -19,7 +19,7 @@ Paws::DeviceFarm::ListUniqueProblemsResult
 is an identifier that is also returned, which can be used in a
 subsequent call to this operation to return the next set of items in
 the list.
-=head2 uniqueProblems => Paws::DeviceFarm::UniqueProblemsByExecutionResultMap
+=head2 uniqueProblems => L<Paws::DeviceFarm::UniqueProblemsByExecutionResultMap>
 
   Information about the unique problems.
 

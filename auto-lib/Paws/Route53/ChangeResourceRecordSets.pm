@@ -21,7 +21,7 @@ Paws::Route53::ChangeResourceRecordSetsResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> ChangeBatch => Paws::Route53::ChangeBatch
+=head2 B<REQUIRED> ChangeBatch => L<Paws::Route53::ChangeBatch>
 
   A complex type that contains an optional comment and the C<Changes>
 element.

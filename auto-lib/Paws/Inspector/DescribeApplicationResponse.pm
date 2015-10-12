@@ -12,7 +12,7 @@ Paws::Inspector::DescribeApplicationResponse
 
 =head1 ATTRIBUTES
 
-=head2 application => Paws::Inspector::Application
+=head2 application => L<Paws::Inspector::Application>
 
   Information about the application.
 

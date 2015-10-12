@@ -54,7 +54,7 @@ cluster is assumed.
   The number of instantiations of the specified task definition to place
 and keep running on your cluster.
 
-=head2 loadBalancers => ArrayRef[Paws::ECS::LoadBalancer]
+=head2 loadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
 
   A list of load balancer objects, containing the load balancer name, the
 container name (as it appears in a container definition), and the

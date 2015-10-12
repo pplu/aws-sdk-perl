@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::G
 
 =head1 ATTRIBUTES
 
-=head2 Create => Paws::DynamoDB::CreateGlobalSecondaryIndexAction
+=head2 Create => L<Paws::DynamoDB::CreateGlobalSecondaryIndexAction>
 
   The parameters required for creating a global secondary index on an
 existing table:
@@ -62,11 +62,11 @@ C<ProvisionedThroughput>
 
 =back
 
-=head2 Delete => Paws::DynamoDB::DeleteGlobalSecondaryIndexAction
+=head2 Delete => L<Paws::DynamoDB::DeleteGlobalSecondaryIndexAction>
 
   The name of an existing global secondary index to be removed.
 
-=head2 Update => Paws::DynamoDB::UpdateGlobalSecondaryIndexAction
+=head2 Update => L<Paws::DynamoDB::UpdateGlobalSecondaryIndexAction>
 
   The name of an existing global secondary index, along with new
 provisioned throughput settings to be applied to that index.

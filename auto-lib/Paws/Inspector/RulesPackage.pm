@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 ATTRIBUTES
 
-=head2 description => Paws::Inspector::LocalizedText
+=head2 description => L<Paws::Inspector::LocalizedText>
 
   The description of the rules package.
 

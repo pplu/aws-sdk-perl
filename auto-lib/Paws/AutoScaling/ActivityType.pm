@@ -13,7 +13,7 @@ Paws::AutoScaling::ActivityType
 
 =head1 ATTRIBUTES
 
-=head2 Activity => Paws::AutoScaling::Activity
+=head2 Activity => L<Paws::AutoScaling::Activity>
 
   A scaling activity.
 

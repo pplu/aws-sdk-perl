@@ -57,7 +57,7 @@ C<http://E<lt>aliasE<gt>.awsapps.com>.
 
   The alias for the directory.
 
-=head2 ConnectSettings => Paws::DS::DirectoryConnectSettingsDescription
+=head2 ConnectSettings => L<Paws::DS::DirectoryConnectSettingsDescription>
 
   A DirectoryConnectSettingsDescription object that contains additional
 information about an AD Connector directory. This member is only
@@ -87,7 +87,7 @@ the AD Connector is connected to.
 
   The fully-qualified name of the directory.
 
-=head2 RadiusSettings => Paws::DS::RadiusSettings
+=head2 RadiusSettings => L<Paws::DS::RadiusSettings>
 
   A RadiusSettings object that contains information about the RADIUS
 server configured for this directory.
@@ -125,7 +125,7 @@ information, see EnableSso and DisableSso.
 
   The directory size.
 
-=head2 VpcSettings => Paws::DS::DirectoryVpcSettingsDescription
+=head2 VpcSettings => L<Paws::DS::DirectoryVpcSettingsDescription>
 
   A DirectoryVpcSettingsDescription object that contains additional
 information about a Simple AD directory. This member is only present if

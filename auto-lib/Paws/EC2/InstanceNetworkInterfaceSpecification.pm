@@ -80,7 +80,7 @@ if creating a network interface when launching an instance.
   The private IP address of the network interface. Applies only if
 creating a network interface when launching an instance.
 
-=head2 PrivateIpAddresses => ArrayRef[Paws::EC2::PrivateIpAddressSpecification]
+=head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>]
 
   One or more private IP addresses to assign to the network interface.
 Only one private IP address can be designated as primary.

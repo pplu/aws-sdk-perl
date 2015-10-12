@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Classi
 
 =head1 ATTRIBUTES
 
-=head2 Groups => ArrayRef[Paws::EC2::GroupIdentifier]
+=head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
   A list of security groups.
 
@@ -42,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Classi
 
   The ID of the instance.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the instance.
 

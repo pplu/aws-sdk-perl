@@ -38,11 +38,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Config
   The classification of a configuration. For more information see, Amazon
 EMR Configurations.
 
-=head2 Configurations => ArrayRef[Paws::EMR::Configuration]
+=head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
 
   A list of configurations you apply to this configuration object.
 
-=head2 Properties => Paws::EMR::StringMap
+=head2 Properties => L<Paws::EMR::StringMap>
 
   A set of properties supplied to the Configuration object.
 

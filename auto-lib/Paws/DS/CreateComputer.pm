@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 ComputerAttributes => ArrayRef[Paws::DS::Attribute]
+=head2 ComputerAttributes => ArrayRef[L<Paws::DS::Attribute>]
 
   An array of Attribute objects that contain any LDAP attributes to apply
 to the computer account.

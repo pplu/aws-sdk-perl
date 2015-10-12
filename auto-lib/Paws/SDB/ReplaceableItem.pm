@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SDB::Replac
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Attributes => ArrayRef[Paws::SDB::ReplaceableAttribute]
+=head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::SDB::ReplaceableAttribute>]
 
   The list of attributes for a replaceable item.
 

@@ -42,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
   The format of the output playlist. Valid formats include C<HLSv3>,
 C<HLSv4>, and C<Smooth>.
 
-=head2 HlsContentProtection => Paws::ElasticTranscoder::HlsContentProtection
+=head2 HlsContentProtection => L<Paws::ElasticTranscoder::HlsContentProtection>
 
   The HLS content protection settings, if any, that you want Elastic
 Transcoder to apply to the output files associated with this playlist.
@@ -113,7 +113,7 @@ outputs in the playlist. For C<Smooth> playlists, the C<Audio:Profile>,
 C<Video:Profile>, and C<Video:FrameRate> to C<Video:KeyframesMaxDist>
 ratio must be the same for all outputs.
 
-=head2 PlayReadyDrm => Paws::ElasticTranscoder::PlayReadyDrm
+=head2 PlayReadyDrm => L<Paws::ElasticTranscoder::PlayReadyDrm>
 
   The DRM settings, if any, that you want Elastic Transcoder to apply to
 the output files associated with this playlist.

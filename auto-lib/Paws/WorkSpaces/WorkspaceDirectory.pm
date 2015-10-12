@@ -88,7 +88,7 @@ directory.
   An array of strings that contains the identifiers of the subnets used
 with the directory.
 
-=head2 WorkspaceCreationProperties => Paws::WorkSpaces::DefaultWorkspaceCreationProperties
+=head2 WorkspaceCreationProperties => L<Paws::WorkSpaces::DefaultWorkspaceCreationProperties>
 
   A structure that specifies the default creation properties for all
 WorkSpaces in the directory.

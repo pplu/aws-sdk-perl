@@ -91,7 +91,7 @@ parameters, and errors.
 
 =head1 METHODS
 
-=head2 CreateWorkspaces(Workspaces => ArrayRef[Paws::WorkSpaces::WorkspaceRequest])
+=head2 CreateWorkspaces(Workspaces => ArrayRef[L<Paws::WorkSpaces::WorkspaceRequest>])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::CreateWorkspaces>
 
@@ -198,7 +198,7 @@ call to this operation to retrieve the next set of items.
 
 
 
-=head2 RebootWorkspaces(RebootWorkspaceRequests => ArrayRef[Paws::WorkSpaces::RebootRequest])
+=head2 RebootWorkspaces(RebootWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebootRequest>])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::RebootWorkspaces>
 
@@ -224,7 +224,7 @@ have rebooted.
 
 
 
-=head2 RebuildWorkspaces(RebuildWorkspaceRequests => ArrayRef[Paws::WorkSpaces::RebuildRequest])
+=head2 RebuildWorkspaces(RebuildWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebuildRequest>])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::RebuildWorkspaces>
 
@@ -268,7 +268,7 @@ have been completely rebuilt.
 
 
 
-=head2 TerminateWorkspaces(TerminateWorkspaceRequests => ArrayRef[Paws::WorkSpaces::TerminateRequest])
+=head2 TerminateWorkspaces(TerminateWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::TerminateRequest>])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::TerminateWorkspaces>
 

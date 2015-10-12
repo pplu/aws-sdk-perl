@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 created. For example:
 https://cloudfront.amazonaws.com/2010-11-01/streaming-distribution/EGTXBD79H29TRA8.
 
-=head2 StreamingDistribution => Paws::CloudFront::StreamingDistribution
+=head2 StreamingDistribution => L<Paws::CloudFront::StreamingDistribution>
 
   The streaming distribution's information.
 

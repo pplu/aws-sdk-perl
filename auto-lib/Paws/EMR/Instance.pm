@@ -61,7 +61,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
 
   The public IP address of the instance.
 
-=head2 Status => Paws::EMR::InstanceStatus
+=head2 Status => L<Paws::EMR::InstanceStatus>
 
   The current status of the instance.
 

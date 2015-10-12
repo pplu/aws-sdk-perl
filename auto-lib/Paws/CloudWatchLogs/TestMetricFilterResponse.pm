@@ -12,7 +12,7 @@ Paws::CloudWatchLogs::TestMetricFilterResponse
 
 =head1 ATTRIBUTES
 
-=head2 matches => ArrayRef[Paws::CloudWatchLogs::MetricFilterMatchRecord]
+=head2 matches => ArrayRef[L<Paws::CloudWatchLogs::MetricFilterMatchRecord>]
 
   
 

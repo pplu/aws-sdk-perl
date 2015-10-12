@@ -32,12 +32,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Launch
 
 =head1 ATTRIBUTES
 
-=head2 Add => ArrayRef[Paws::EC2::LaunchPermission]
+=head2 Add => ArrayRef[L<Paws::EC2::LaunchPermission>]
 
   The AWS account ID to add to the list of launch permissions for the
 AMI.
 
-=head2 Remove => ArrayRef[Paws::EC2::LaunchPermission]
+=head2 Remove => ArrayRef[L<Paws::EC2::LaunchPermission>]
 
   The AWS account ID to remove from the list of launch permissions for
 the AMI.

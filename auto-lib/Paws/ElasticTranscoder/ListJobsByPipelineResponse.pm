@@ -14,7 +14,7 @@ Paws::ElasticTranscoder::ListJobsByPipelineResponse
 
 =head1 ATTRIBUTES
 
-=head2 Jobs => ArrayRef[Paws::ElasticTranscoder::Job]
+=head2 Jobs => ArrayRef[L<Paws::ElasticTranscoder::Job>]
 
   An array of C<Job> objects that are in the specified pipeline.
 =head2 NextPageToken => Str

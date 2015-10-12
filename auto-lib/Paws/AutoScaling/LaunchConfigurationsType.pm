@@ -14,7 +14,7 @@ Paws::AutoScaling::LaunchConfigurationsType
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> LaunchConfigurations => ArrayRef[Paws::AutoScaling::LaunchConfiguration]
+=head2 B<REQUIRED> LaunchConfigurations => ArrayRef[L<Paws::AutoScaling::LaunchConfiguration>]
 
   The launch configurations.
 =head2 NextToken => Str

@@ -22,7 +22,7 @@ you can retrieve the next set of records by providing this returned
 marker value in the C<Marker> parameter and retrying the command. If
 the C<Marker> field is empty, all response records have been retrieved
 for the request.
-=head2 Snapshots => ArrayRef[Paws::RedShift::Snapshot]
+=head2 Snapshots => ArrayRef[L<Paws::RedShift::Snapshot>]
 
   A list of Snapshot instances.
 

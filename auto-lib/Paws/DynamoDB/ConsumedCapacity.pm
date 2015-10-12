@@ -39,17 +39,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::C
 
   The total number of capacity units consumed by the operation.
 
-=head2 GlobalSecondaryIndexes => Paws::DynamoDB::SecondaryIndexesCapacityMap
+=head2 GlobalSecondaryIndexes => L<Paws::DynamoDB::SecondaryIndexesCapacityMap>
 
   The amount of throughput consumed on each global index affected by the
 operation.
 
-=head2 LocalSecondaryIndexes => Paws::DynamoDB::SecondaryIndexesCapacityMap
+=head2 LocalSecondaryIndexes => L<Paws::DynamoDB::SecondaryIndexesCapacityMap>
 
   The amount of throughput consumed on each local index affected by the
 operation.
 
-=head2 Table => Paws::DynamoDB::Capacity
+=head2 Table => L<Paws::DynamoDB::Capacity>
 
   The amount of throughput consumed on the table affected by the
 operation.

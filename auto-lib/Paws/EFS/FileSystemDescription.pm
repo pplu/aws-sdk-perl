@@ -48,7 +48,7 @@ system has.
   The AWS account that created the file system. If the file system was
 created by an IAM user, the parent account to which the user belongs is
 the owner.
-=head2 B<REQUIRED> SizeInBytes => Paws::EFS::FileSystemSize
+=head2 B<REQUIRED> SizeInBytes => L<Paws::EFS::FileSystemSize>
 
   This object provides the latest known metered size of data stored in
 the file system, in bytes, in its C<Value> field, and the time at which

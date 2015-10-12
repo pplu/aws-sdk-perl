@@ -26,7 +26,7 @@ the certificate (e.g., AWS IoT Certificate).
 =head2 certificatePem => Str
 
   The certificate data, in PEM format.
-=head2 keyPair => Paws::IoT::KeyPair
+=head2 keyPair => L<Paws::IoT::KeyPair>
 
   The generated key pair.
 

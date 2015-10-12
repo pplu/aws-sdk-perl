@@ -43,19 +43,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head1 ATTRIBUTES
 
-=head2 DateArrayOptions => Paws::CloudSearch::DateArrayOptions
+=head2 DateArrayOptions => L<Paws::CloudSearch::DateArrayOptions>
 
   
 
-=head2 DateOptions => Paws::CloudSearch::DateOptions
+=head2 DateOptions => L<Paws::CloudSearch::DateOptions>
 
   
 
-=head2 DoubleArrayOptions => Paws::CloudSearch::DoubleArrayOptions
+=head2 DoubleArrayOptions => L<Paws::CloudSearch::DoubleArrayOptions>
 
   
 
-=head2 DoubleOptions => Paws::CloudSearch::DoubleOptions
+=head2 DoubleOptions => L<Paws::CloudSearch::DoubleOptions>
 
   
 
@@ -81,31 +81,31 @@ reference a document's ID, you can use the name C<_id>.
 
   
 
-=head2 IntArrayOptions => Paws::CloudSearch::IntArrayOptions
+=head2 IntArrayOptions => L<Paws::CloudSearch::IntArrayOptions>
 
   
 
-=head2 IntOptions => Paws::CloudSearch::IntOptions
+=head2 IntOptions => L<Paws::CloudSearch::IntOptions>
 
   
 
-=head2 LatLonOptions => Paws::CloudSearch::LatLonOptions
+=head2 LatLonOptions => L<Paws::CloudSearch::LatLonOptions>
 
   
 
-=head2 LiteralArrayOptions => Paws::CloudSearch::LiteralArrayOptions
+=head2 LiteralArrayOptions => L<Paws::CloudSearch::LiteralArrayOptions>
 
   
 
-=head2 LiteralOptions => Paws::CloudSearch::LiteralOptions
+=head2 LiteralOptions => L<Paws::CloudSearch::LiteralOptions>
 
   
 
-=head2 TextArrayOptions => Paws::CloudSearch::TextArrayOptions
+=head2 TextArrayOptions => L<Paws::CloudSearch::TextArrayOptions>
 
   
 
-=head2 TextOptions => Paws::CloudSearch::TextOptions
+=head2 TextOptions => L<Paws::CloudSearch::TextOptions>
 
   
 

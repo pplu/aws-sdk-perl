@@ -37,15 +37,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> actionTypeId => Paws::CodePipeline::ActionTypeId
+=head2 B<REQUIRED> actionTypeId => L<Paws::CodePipeline::ActionTypeId>
 
   The configuration information for the action type.
 
-=head2 configuration => Paws::CodePipeline::ActionConfigurationMap
+=head2 configuration => L<Paws::CodePipeline::ActionConfigurationMap>
 
   The action declaration's configuration.
 
-=head2 inputArtifacts => ArrayRef[Paws::CodePipeline::InputArtifact]
+=head2 inputArtifacts => ArrayRef[L<Paws::CodePipeline::InputArtifact>]
 
   The name or ID of the artifact consumed by the action, such as a test
 or build artifact.
@@ -54,7 +54,7 @@ or build artifact.
 
   The action declaration's name.
 
-=head2 outputArtifacts => ArrayRef[Paws::CodePipeline::OutputArtifact]
+=head2 outputArtifacts => ArrayRef[L<Paws::CodePipeline::OutputArtifact>]
 
   The name or ID of the result of the action declaration, such as a test
 or build artifact.

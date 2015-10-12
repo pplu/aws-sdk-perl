@@ -98,7 +98,7 @@ Default: C<Grey>
 
   Returns the health status of the application running in your
 environment. For more information, see Health Colors and Statuses.
-=head2 Resources => Paws::ElasticBeanstalk::EnvironmentResourcesDescription
+=head2 Resources => L<Paws::ElasticBeanstalk::EnvironmentResourcesDescription>
 
   The description of the AWS resources used by this environment.
 =head2 SolutionStackName => Str
@@ -128,7 +128,7 @@ on it, such as update or terminate.
 
   The name of the configuration template used to originally launch this
 environment.
-=head2 Tier => Paws::ElasticBeanstalk::EnvironmentTier
+=head2 Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>
 
   Describes the current tier of this environment.
 =head2 VersionLabel => Str

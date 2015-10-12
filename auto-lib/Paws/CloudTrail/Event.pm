@@ -52,7 +52,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 
   The date and time of the event returned.
 
-=head2 Resources => ArrayRef[Paws::CloudTrail::Resource]
+=head2 Resources => ArrayRef[L<Paws::CloudTrail::Resource>]
 
   A list of resources referenced by the event returned.
 

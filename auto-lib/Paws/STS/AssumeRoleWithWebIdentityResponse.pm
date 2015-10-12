@@ -18,7 +18,7 @@ Paws::STS::AssumeRoleWithWebIdentityResponse
 
 =head1 ATTRIBUTES
 
-=head2 AssumedRoleUser => Paws::STS::AssumedRoleUser
+=head2 AssumedRoleUser => L<Paws::STS::AssumedRoleUser>
 
   The Amazon Resource Name (ARN) and the assumed role ID, which are
 identifiers that you can use to refer to the resulting temporary
@@ -31,7 +31,7 @@ specified when you called C<AssumeRole>.
   The intended audience (also known as client ID) of the web identity
 token. This is traditionally the client identifier issued to the
 application that requested the web identity token.
-=head2 Credentials => Paws::STS::Credentials
+=head2 Credentials => L<Paws::STS::Credentials>
 
   The temporary security credentials, which include an access key ID, a
 secret access key, and a security token.

@@ -13,7 +13,7 @@ Paws::Config::GetComplianceDetailsByResourceResponse
 
 =head1 ATTRIBUTES
 
-=head2 EvaluationResults => ArrayRef[Paws::Config::EvaluationResult]
+=head2 EvaluationResults => ArrayRef[L<Paws::Config::EvaluationResult>]
 
   Indicates whether the specified AWS resource complies each AWS Config
 rule.

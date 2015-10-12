@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::S
 
   The ARN of the S3 bucket.
 
-=head2 B<REQUIRED> BufferingHints => Paws::Firehose::BufferingHints
+=head2 B<REQUIRED> BufferingHints => L<Paws::Firehose::BufferingHints>
 
   The buffering option. If no value is specified, C<BufferingHints>
 object default values are used.
@@ -50,7 +50,7 @@ object default values are used.
   The compression format. If no value is specified, the default is
 C<NOCOMPRESSION>.
 
-=head2 B<REQUIRED> EncryptionConfiguration => Paws::Firehose::EncryptionConfiguration
+=head2 B<REQUIRED> EncryptionConfiguration => L<Paws::Firehose::EncryptionConfiguration>
 
   The encryption configuration. If no value is specified, the default is
 no encryption.

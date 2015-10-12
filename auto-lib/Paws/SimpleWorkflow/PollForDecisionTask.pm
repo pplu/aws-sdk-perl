@@ -80,7 +80,7 @@ C<nextPageToken> will not return a new decision task..
 the results are returned in ascending order of the C<eventTimestamp> of
 the events.
 
-=head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
+=head2 B<REQUIRED> taskList => L<Paws::SimpleWorkflow::TaskList>
 
   Specifies the task list to poll for decision tasks.
 

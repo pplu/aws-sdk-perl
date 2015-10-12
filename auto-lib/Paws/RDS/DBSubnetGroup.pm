@@ -47,7 +47,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSubn
 
   Provides the status of the DB subnet group.
 
-=head2 Subnets => ArrayRef[Paws::RDS::Subnet]
+=head2 Subnets => ArrayRef[L<Paws::RDS::Subnet>]
 
   Contains a list of Subnet elements.
 

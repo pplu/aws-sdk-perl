@@ -18,7 +18,7 @@ Paws::EC2::DescribeSpotFleetRequestsResponse
 
   The token required to retrieve the next set of results. This value is
 C<null> when there are no more results to return.
-=head2 B<REQUIRED> SpotFleetRequestConfigs => ArrayRef[Paws::EC2::SpotFleetRequestConfig]
+=head2 B<REQUIRED> SpotFleetRequestConfigs => ArrayRef[L<Paws::EC2::SpotFleetRequestConfig>]
 
   Information about the configuration of your Spot fleet.
 

@@ -27,7 +27,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> ChangeInfo => Paws::Route53::ChangeInfo
+=head2 B<REQUIRED> ChangeInfo => L<Paws::Route53::ChangeInfo>
 
   A complex type that contains the ID, the status, and the date and time
 of your C<AssociateVPCWithHostedZoneRequest>.

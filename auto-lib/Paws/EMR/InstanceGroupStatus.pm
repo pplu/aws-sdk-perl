@@ -37,11 +37,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
 
   The current state of the instance group.
 
-=head2 StateChangeReason => Paws::EMR::InstanceGroupStateChangeReason
+=head2 StateChangeReason => L<Paws::EMR::InstanceGroupStateChangeReason>
 
   The status change reason details for the instance group.
 
-=head2 Timeline => Paws::EMR::InstanceGroupTimeline
+=head2 Timeline => L<Paws::EMR::InstanceGroupTimeline>
 
   The timeline of the instance group status over time.
 

@@ -34,17 +34,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Del
 
 =head1 ATTRIBUTES
 
-=head2 configHistoryDeliveryInfo => Paws::Config::ConfigExportDeliveryInfo
+=head2 configHistoryDeliveryInfo => L<Paws::Config::ConfigExportDeliveryInfo>
 
   A list that contains the status of the delivery of the configuration
 history to the specified Amazon S3 bucket.
 
-=head2 configSnapshotDeliveryInfo => Paws::Config::ConfigExportDeliveryInfo
+=head2 configSnapshotDeliveryInfo => L<Paws::Config::ConfigExportDeliveryInfo>
 
   A list containing the status of the delivery of the snapshot to the
 specified Amazon S3 bucket.
 
-=head2 configStreamDeliveryInfo => Paws::Config::ConfigStreamDeliveryInfo
+=head2 configStreamDeliveryInfo => L<Paws::Config::ConfigStreamDeliveryInfo>
 
   A list containing the status of the delivery of the configuration
 stream notification to the specified Amazon SNS topic.

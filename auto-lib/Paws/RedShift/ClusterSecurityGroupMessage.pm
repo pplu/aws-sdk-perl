@@ -14,7 +14,7 @@ Paws::RedShift::ClusterSecurityGroupMessage
 
 =head1 ATTRIBUTES
 
-=head2 ClusterSecurityGroups => ArrayRef[Paws::RedShift::ClusterSecurityGroup]
+=head2 ClusterSecurityGroups => ArrayRef[L<Paws::RedShift::ClusterSecurityGroup>]
 
   A list of ClusterSecurityGroup instances.
 =head2 Marker => Str

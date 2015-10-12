@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Bootst
 
   The name of the bootstrap action.
 
-=head2 B<REQUIRED> ScriptBootstrapAction => Paws::EMR::ScriptBootstrapActionConfig
+=head2 B<REQUIRED> ScriptBootstrapAction => L<Paws::EMR::ScriptBootstrapActionConfig>
 
   The script run by the bootstrap action.
 

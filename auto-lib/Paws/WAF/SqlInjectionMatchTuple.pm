@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::SqlInj
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> FieldToMatch => Paws::WAF::FieldToMatch
+=head2 B<REQUIRED> FieldToMatch => L<Paws::WAF::FieldToMatch>
 
   
 

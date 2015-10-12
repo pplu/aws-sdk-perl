@@ -14,7 +14,7 @@ Paws::RedShift::HsmConfigurationMessage
 
 =head1 ATTRIBUTES
 
-=head2 HsmConfigurations => ArrayRef[Paws::RedShift::HsmConfiguration]
+=head2 HsmConfigurations => ArrayRef[L<Paws::RedShift::HsmConfiguration>]
 
   A list of Amazon Redshift HSM configurations.
 =head2 Marker => Str

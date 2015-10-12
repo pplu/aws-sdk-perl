@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SDB::Deleta
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => ArrayRef[Paws::SDB::Attribute]
+=head2 Attributes => ArrayRef[L<Paws::SDB::Attribute>]
 
   
 

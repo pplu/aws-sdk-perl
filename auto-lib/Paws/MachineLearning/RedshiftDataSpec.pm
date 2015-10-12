@@ -37,12 +37,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> DatabaseCredentials => Paws::MachineLearning::RedshiftDatabaseCredentials
+=head2 B<REQUIRED> DatabaseCredentials => L<Paws::MachineLearning::RedshiftDatabaseCredentials>
 
   Describes AWS Identity and Access Management (IAM) credentials that are
 used connect to the Amazon Redshift database.
 
-=head2 B<REQUIRED> DatabaseInformation => Paws::MachineLearning::RedshiftDatabase
+=head2 B<REQUIRED> DatabaseInformation => L<Paws::MachineLearning::RedshiftDatabase>
 
   Describes the C<DatabaseName> and C<ClusterIdentifier> for an Amazon
 Redshift C<DataSource>.

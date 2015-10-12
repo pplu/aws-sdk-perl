@@ -80,7 +80,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
   The deployment ID.
 
-=head2 deploymentOverview => Paws::CodeDeploy::DeploymentOverview
+=head2 deploymentOverview => L<Paws::CodeDeploy::DeploymentOverview>
 
   A summary of the deployment status of the instances in the deployment.
 
@@ -88,7 +88,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
   A comment about the deployment.
 
-=head2 errorInformation => Paws::CodeDeploy::ErrorInformation
+=head2 errorInformation => L<Paws::CodeDeploy::ErrorInformation>
 
   Information about any error associated with this deployment.
 
@@ -104,7 +104,7 @@ ApplicationStop deployment lifecycle event to fail to a specific
 instance, the deployment will stop to that instance, and the deployment
 to that instance will be considered to have failed.
 
-=head2 revision => Paws::CodeDeploy::RevisionLocation
+=head2 revision => L<Paws::CodeDeploy::RevisionLocation>
 
   Information about the location of application artifacts that are stored
 and the service to retrieve them from.

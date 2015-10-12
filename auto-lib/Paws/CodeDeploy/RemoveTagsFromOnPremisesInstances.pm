@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The names of the on-premises instances to remove tags from.
 
-=head2 B<REQUIRED> tags => ArrayRef[Paws::CodeDeploy::Tag]
+=head2 B<REQUIRED> tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
 
   The tag key-value pairs to remove from the on-premises instances.
 

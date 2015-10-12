@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Audio => Paws::ElasticTranscoder::AudioParameters
+=head2 Audio => L<Paws::ElasticTranscoder::AudioParameters>
 
   A section of the request body that specifies the audio parameters.
 
@@ -58,12 +58,12 @@ C<ogg>, C<ts>, and C<webm>.
   The name of the preset. We recommend that the name be unique within the
 AWS account, but uniqueness is not enforced.
 
-=head2 Thumbnails => Paws::ElasticTranscoder::Thumbnails
+=head2 Thumbnails => L<Paws::ElasticTranscoder::Thumbnails>
 
   A section of the request body that specifies the thumbnail parameters,
 if any.
 
-=head2 Video => Paws::ElasticTranscoder::VideoParameters
+=head2 Video => L<Paws::ElasticTranscoder::VideoParameters>
 
   A section of the request body that specifies the video parameters.
 

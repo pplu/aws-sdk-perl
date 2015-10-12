@@ -43,7 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   The Amazon Resource Name (ARN) for the preset.
 
-=head2 Audio => Paws::ElasticTranscoder::AudioParameters
+=head2 Audio => L<Paws::ElasticTranscoder::AudioParameters>
 
   A section of the response body that provides information about the
 audio preset values.
@@ -67,7 +67,7 @@ the preset or to delete it.
 
   The name of the preset.
 
-=head2 Thumbnails => Paws::ElasticTranscoder::Thumbnails
+=head2 Thumbnails => L<Paws::ElasticTranscoder::Thumbnails>
 
   A section of the response body that provides information about the
 thumbnail preset values, if any.
@@ -77,7 +77,7 @@ thumbnail preset values, if any.
   Whether the preset is a default preset provided by Elastic Transcoder
 (C<System>) or a preset that you have defined (C<Custom>).
 
-=head2 Video => Paws::ElasticTranscoder::VideoParameters
+=head2 Video => L<Paws::ElasticTranscoder::VideoParameters>
 
   A section of the response body that provides information about the
 video preset values.

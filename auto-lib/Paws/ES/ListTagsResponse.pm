@@ -13,7 +13,7 @@ Paws::ES::ListTagsResponse
 
 =head1 ATTRIBUTES
 
-=head2 TagList => ArrayRef[Paws::ES::Tag]
+=head2 TagList => ArrayRef[L<Paws::ES::Tag>]
 
   List of C<Tag> for the requested Elasticsearch domain.
 

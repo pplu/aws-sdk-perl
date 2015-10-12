@@ -58,7 +58,7 @@ C<default> if the default options are associated with the VPC).
 
   The current state of the VPC.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the VPC.
 

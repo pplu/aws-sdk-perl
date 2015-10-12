@@ -35,14 +35,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 ATTRIBUTES
 
-=head2 completionTime => Paws::Inspector::TimestampRange
+=head2 completionTime => L<Paws::Inspector::TimestampRange>
 
   For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum
 and maximum values of the B<completionTime> property of the Run data
 type.
 
-=head2 creationTime => Paws::Inspector::TimestampRange
+=head2 creationTime => L<Paws::Inspector::TimestampRange>
 
   For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum

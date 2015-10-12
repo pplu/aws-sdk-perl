@@ -45,7 +45,7 @@ Type: String
   Phone number for reporting abuse.
 
 Type: String
-=head2 B<REQUIRED> AdminContact => Paws::Route53Domains::ContactDetail
+=head2 B<REQUIRED> AdminContact => L<Paws::Route53Domains::ContactDetail>
 
   Provides details about the domain administrative contact.
 
@@ -85,12 +85,12 @@ Type: String
 
   The date when the registration for the domain is set to expire. The
 date format is Unix time.
-=head2 B<REQUIRED> Nameservers => ArrayRef[Paws::Route53Domains::Nameserver]
+=head2 B<REQUIRED> Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>]
 
   The name of the domain.
 
 Type: String
-=head2 B<REQUIRED> RegistrantContact => Paws::Route53Domains::ContactDetail
+=head2 B<REQUIRED> RegistrantContact => L<Paws::Route53Domains::ContactDetail>
 
   Provides details about the domain registrant.
 
@@ -147,7 +147,7 @@ status codes>. (Search on the ICANN website; web searches sometimes
 return an old version of the document.)
 
 Type: Array of String
-=head2 B<REQUIRED> TechContact => Paws::Route53Domains::ContactDetail
+=head2 B<REQUIRED> TechContact => L<Paws::Route53Domains::ContactDetail>
 
   Provides details about the domain technical contact.
 

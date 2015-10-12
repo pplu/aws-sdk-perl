@@ -21,7 +21,7 @@ C<NextMarker> value. To list more C<SqlInjectionMatchSet> objects,
 submit another C<ListSqlInjectionMatchSets> request, and specify the
 C<NextMarker> value from the response in the C<NextMarker> value in the
 next request.
-=head2 SqlInjectionMatchSets => ArrayRef[Paws::WAF::SqlInjectionMatchSetSummary]
+=head2 SqlInjectionMatchSets => ArrayRef[L<Paws::WAF::SqlInjectionMatchSetSummary>]
 
   An array of SqlInjectionMatchSetSummary objects.
 

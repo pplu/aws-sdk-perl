@@ -13,7 +13,7 @@ Paws::WAF::ListIPSetsResponse
 
 =head1 ATTRIBUTES
 
-=head2 IPSets => ArrayRef[Paws::WAF::IPSetSummary]
+=head2 IPSets => ArrayRef[L<Paws::WAF::IPSetSummary>]
 
   An array of IPSetSummary objects.
 =head2 NextMarker => Str

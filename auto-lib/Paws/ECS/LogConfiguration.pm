@@ -40,7 +40,7 @@ instance. To check the Docker Remote API version on your container
 instance, log into your container instance and run the following
 command: C<sudo docker version | grep "Server API version">
 
-=head2 options => Paws::ECS::LogConfigurationOptionsMap
+=head2 options => L<Paws::ECS::LogConfigurationOptionsMap>
 
   The configuration options to send to the log driver. This parameter
 requires version 1.19 of the Docker Remote API or greater on your

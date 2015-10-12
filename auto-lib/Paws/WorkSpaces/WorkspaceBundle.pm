@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
   The bundle identifier.
 
-=head2 ComputeType => Paws::WorkSpaces::ComputeType
+=head2 ComputeType => L<Paws::WorkSpaces::ComputeType>
 
   A ComputeType object that specifies the compute type for the bundle.
 
@@ -57,7 +57,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
   The owner of the bundle. This contains the owner's account identifier,
 or C<AMAZON> if the bundle is provided by AWS.
 
-=head2 UserStorage => Paws::WorkSpaces::UserStorage
+=head2 UserStorage => L<Paws::WorkSpaces::UserStorage>
 
   A UserStorage object that specifies the amount of user storage that the
 bundle contains.

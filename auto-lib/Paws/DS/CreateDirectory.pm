@@ -60,7 +60,7 @@ C<Administrator> and this password.
 
   The size of the directory.
 
-=head2 VpcSettings => Paws::DS::DirectoryVpcSettings
+=head2 VpcSettings => L<Paws::DS::DirectoryVpcSettings>
 
   A DirectoryVpcSettings object that contains additional information for
 the operation.

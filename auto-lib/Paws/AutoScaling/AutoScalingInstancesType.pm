@@ -14,7 +14,7 @@ Paws::AutoScaling::AutoScalingInstancesType
 
 =head1 ATTRIBUTES
 
-=head2 AutoScalingInstances => ArrayRef[Paws::AutoScaling::AutoScalingInstanceDetails]
+=head2 AutoScalingInstances => ArrayRef[L<Paws::AutoScaling::AutoScalingInstanceDetails>]
 
   The instances.
 =head2 NextToken => Str

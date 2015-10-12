@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 the cluster will use to connect to the HSM to use the database
 encryption keys.
 
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   A list of tag instances.
 

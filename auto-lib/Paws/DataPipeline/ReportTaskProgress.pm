@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 fields => ArrayRef[Paws::DataPipeline::Field]
+=head2 fields => ArrayRef[L<Paws::DataPipeline::Field>]
 
   Key-value pairs that define the properties of the
 ReportTaskProgressInput object.

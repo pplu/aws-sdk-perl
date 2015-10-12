@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Intern
 
 =head1 ATTRIBUTES
 
-=head2 Attachments => ArrayRef[Paws::EC2::InternetGatewayAttachment]
+=head2 Attachments => ArrayRef[L<Paws::EC2::InternetGatewayAttachment>]
 
   Any VPCs attached to the Internet gateway.
 
@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Intern
 
   The ID of the Internet gateway.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the Internet gateway.
 

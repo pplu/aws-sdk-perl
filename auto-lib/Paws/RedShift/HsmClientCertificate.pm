@@ -42,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::H
   The public key that the Amazon Redshift cluster will use to connect to
 the HSM. You must register the public key in the HSM.
 
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   The list of tags for the HSM client certificate.
 

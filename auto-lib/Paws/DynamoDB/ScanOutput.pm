@@ -16,7 +16,7 @@ Paws::DynamoDB::ScanOutput
 
 =head1 ATTRIBUTES
 
-=head2 ConsumedCapacity => Paws::DynamoDB::ConsumedCapacity
+=head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
 
   
 =head2 Count => Int
@@ -29,12 +29,12 @@ number of matching items before the filter was applied.
 
 If you did not use a filter in the request, then I<Count> is the same
 as I<ScannedCount>.
-=head2 Items => ArrayRef[Paws::DynamoDB::AttributeMap]
+=head2 Items => ArrayRef[L<Paws::DynamoDB::AttributeMap>]
 
   An array of item attributes that match the scan criteria. Each element
 in this array consists of an attribute name and the value for that
 attribute.
-=head2 LastEvaluatedKey => Paws::DynamoDB::Key
+=head2 LastEvaluatedKey => L<Paws::DynamoDB::Key>
 
   The primary key of the item where the operation stopped, inclusive of
 the previous result set. Use this value to start a new operation,

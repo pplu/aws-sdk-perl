@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::E
 
 =head1 ATTRIBUTES
 
-=head2 Events => ArrayRef[Paws::RedShift::EventInfoMap]
+=head2 Events => ArrayRef[L<Paws::RedShift::EventInfoMap>]
 
   The events in the event category.
 

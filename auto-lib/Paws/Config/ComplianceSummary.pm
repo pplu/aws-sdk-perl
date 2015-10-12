@@ -37,12 +37,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 
   The time that AWS Config created the compliance summary.
 
-=head2 CompliantResourceCount => Paws::Config::ComplianceContributorCount
+=head2 CompliantResourceCount => L<Paws::Config::ComplianceContributorCount>
 
   The number of AWS Config rules or AWS resources that are compliant, up
 to a maximum of 25 for rules and 100 for resources.
 
-=head2 NonCompliantResourceCount => Paws::Config::ComplianceContributorCount
+=head2 NonCompliantResourceCount => L<Paws::Config::ComplianceContributorCount>
 
   The number of AWS Config rules or AWS resources that are noncompliant,
 up to a maximum of 25 for rules and 100 for resources.

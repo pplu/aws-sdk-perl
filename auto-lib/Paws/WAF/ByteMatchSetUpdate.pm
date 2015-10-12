@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::ByteMa
 
   Specifies whether to insert or delete a ByteMatchTuple.
 
-=head2 B<REQUIRED> ByteMatchTuple => Paws::WAF::ByteMatchTuple
+=head2 B<REQUIRED> ByteMatchTuple => L<Paws::WAF::ByteMatchTuple>
 
   Information about the part of a web request that you want AWS WAF to
 inspect and the value that you want AWS WAF to search for. If you

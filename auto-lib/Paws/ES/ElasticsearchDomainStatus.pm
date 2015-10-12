@@ -46,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::Elastic
 
   IAM access policy as a JSON-formatted string.
 
-=head2 AdvancedOptions => Paws::ES::AdvancedOptions
+=head2 AdvancedOptions => L<Paws::ES::AdvancedOptions>
 
   Specifies the status of the C<AdvancedOptions>
 
@@ -79,12 +79,12 @@ domains owned by an account within an AWS region. Domain names start
 with a letter or number and can contain the following characters: a-z
 (lowercase), 0-9, and - (hyphen).
 
-=head2 EBSOptions => Paws::ES::EBSOptions
+=head2 EBSOptions => L<Paws::ES::EBSOptions>
 
   The C<EBSOptions> for the specified domain. See Configuring EBS-based
 Storage for more information.
 
-=head2 B<REQUIRED> ElasticsearchClusterConfig => Paws::ES::ElasticsearchClusterConfig
+=head2 B<REQUIRED> ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>
 
   The type and number of instances in the domain cluster.
 
@@ -99,7 +99,7 @@ search requests.
 Elasticsearch Service is processing configuration changes. C<False> if
 the configuration is active.
 
-=head2 SnapshotOptions => Paws::ES::SnapshotOptions
+=head2 SnapshotOptions => L<Paws::ES::SnapshotOptions>
 
   Specifies the status of the C<SnapshotOptions>
 

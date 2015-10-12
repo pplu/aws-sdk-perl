@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the domain that contains the workflow executions to list.
 
-=head2 executionFilter => Paws::SimpleWorkflow::WorkflowExecutionFilter
+=head2 executionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>
 
   If specified, only workflow executions matching the workflow ID
 specified in the filter are returned.
@@ -77,20 +77,20 @@ returned in a single call.
 the results are returned in descending order of the start time of the
 executions.
 
-=head2 B<REQUIRED> startTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter
+=head2 B<REQUIRED> startTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
 
   Workflow executions are included in the returned results based on
 whether their start times are within the range specified by this
 filter.
 
-=head2 tagFilter => Paws::SimpleWorkflow::TagFilter
+=head2 tagFilter => L<Paws::SimpleWorkflow::TagFilter>
 
   If specified, only executions that have the matching tag are listed.
 
 C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
 exclusive. You can specify at most one of these in a request.
 
-=head2 typeFilter => Paws::SimpleWorkflow::WorkflowTypeFilter
+=head2 typeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>
 
   If specified, only executions of the type specified in the filter are
 returned.

@@ -13,7 +13,7 @@ Paws::EMR::ListInstanceGroupsOutput
 
 =head1 ATTRIBUTES
 
-=head2 InstanceGroups => ArrayRef[Paws::EMR::InstanceGroup]
+=head2 InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroup>]
 
   The list of instance groups for the cluster and given filters.
 =head2 Marker => Str

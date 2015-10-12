@@ -141,7 +141,7 @@ types, parameters, and errors.
 
 =head1 METHODS
 
-=head2 ConnectDirectory(ConnectSettings => Paws::DS::DirectoryConnectSettings, Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str])
+=head2 ConnectDirectory(ConnectSettings => L<Paws::DS::DirectoryConnectSettings>, Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str])
 
 Each argument is described in detail in: L<Paws::DS::ConnectDirectory>
 
@@ -186,7 +186,7 @@ this operation should only be used when absolutely necessary.
 
 
 
-=head2 CreateComputer(ComputerName => Str, DirectoryId => Str, Password => Str, [ComputerAttributes => ArrayRef[Paws::DS::Attribute], OrganizationalUnitDistinguishedName => Str])
+=head2 CreateComputer(ComputerName => Str, DirectoryId => Str, Password => Str, [ComputerAttributes => ArrayRef[L<Paws::DS::Attribute>], OrganizationalUnitDistinguishedName => Str])
 
 Each argument is described in detail in: L<Paws::DS::CreateComputer>
 
@@ -207,7 +207,7 @@ computer to the directory.
 
 
 
-=head2 CreateDirectory(Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str, VpcSettings => Paws::DS::DirectoryVpcSettings])
+=head2 CreateDirectory(Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str, VpcSettings => L<Paws::DS::DirectoryVpcSettings>])
 
 Each argument is described in detail in: L<Paws::DS::CreateDirectory>
 
@@ -392,7 +392,7 @@ Disables single-sign on for a directory.
 
 
 
-=head2 EnableRadius(DirectoryId => Str, RadiusSettings => Paws::DS::RadiusSettings)
+=head2 EnableRadius(DirectoryId => Str, RadiusSettings => L<Paws::DS::RadiusSettings>)
 
 Each argument is described in detail in: L<Paws::DS::EnableRadius>
 
@@ -502,7 +502,7 @@ operation is complete.
 
 
 
-=head2 UpdateRadius(DirectoryId => Str, RadiusSettings => Paws::DS::RadiusSettings)
+=head2 UpdateRadius(DirectoryId => Str, RadiusSettings => L<Paws::DS::RadiusSettings>)
 
 Each argument is described in detail in: L<Paws::DS::UpdateRadius>
 

@@ -71,7 +71,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Snapsh
 
   The URL of the disk image from which the snapshot is created.
 
-=head2 UserBucket => Paws::EC2::UserBucketDetails
+=head2 UserBucket => L<Paws::EC2::UserBucketDetails>
 
   The S3 bucket for the disk image.
 

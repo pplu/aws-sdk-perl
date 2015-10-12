@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
   Description of the pipeline.
 
-=head2 B<REQUIRED> fields => ArrayRef[Paws::DataPipeline::Field]
+=head2 B<REQUIRED> fields => ArrayRef[L<Paws::DataPipeline::Field>]
 
   A list of read-only fields that contain metadata about the pipeline:
 @userId, @accountId, and @pipelineState.
@@ -53,7 +53,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
   The pipeline identifier that was assigned by AWS Data Pipeline. This is
 a string of the form C<df-297EG78HU43EEXAMPLE>.
 
-=head2 tags => ArrayRef[Paws::DataPipeline::Tag]
+=head2 tags => ArrayRef[L<Paws::DataPipeline::Tag>]
 
   A list of tags to associated with a pipeline. Tags let you control
 access to pipelines. For more information, see Controlling User Access

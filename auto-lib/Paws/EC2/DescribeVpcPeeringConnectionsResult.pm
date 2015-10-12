@@ -13,7 +13,7 @@ Paws::EC2::DescribeVpcPeeringConnectionsResult
 
 =head1 ATTRIBUTES
 
-=head2 VpcPeeringConnections => ArrayRef[Paws::EC2::VpcPeeringConnection]
+=head2 VpcPeeringConnections => ArrayRef[L<Paws::EC2::VpcPeeringConnection>]
 
   Information about the VPC peering connections.
 

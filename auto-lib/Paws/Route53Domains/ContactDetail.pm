@@ -133,7 +133,7 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
 
-=head2 ExtraParams => ArrayRef[Paws::Route53Domains::ExtraParam]
+=head2 ExtraParams => ArrayRef[L<Paws::Route53Domains::ExtraParam>]
 
   A list of name-value pairs for parameters required by certain top-level
 domains.

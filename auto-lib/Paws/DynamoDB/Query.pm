@@ -121,7 +121,7 @@ Strongly consistent reads are not supported on global secondary
 indexes. If you query a global secondary index with I<ConsistentRead>
 set to C<true>, you will receive a I<ValidationException>.
 
-=head2 ExclusiveStartKey => Paws::DynamoDB::Key
+=head2 ExclusiveStartKey => L<Paws::DynamoDB::Key>
 
   The primary key of the first item that this operation will evaluate.
 Use the value that was returned for I<LastEvaluatedKey> in the previous
@@ -130,7 +130,7 @@ operation.
 The data type for I<ExclusiveStartKey> must be String, Number or
 Binary. No set data types are allowed.
 
-=head2 ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap
+=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
   One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
@@ -196,7 +196,7 @@ values>, which are placeholders for the actual value at runtime.
 For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
-=head2 ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap
+=head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
 
   One or more values that can be substituted in an expression.
 
@@ -344,7 +344,7 @@ Names and Values in the I<Amazon DynamoDB Developer Guide>.
 I<KeyConditionExpression> replaces the legacy I<KeyConditions>
 parameter.
 
-=head2 KeyConditions => Paws::DynamoDB::KeyConditions
+=head2 KeyConditions => L<Paws::DynamoDB::KeyConditions>
 
   This is a legacy parameter, for backward compatibility. New
 applications should use I<KeyConditionExpression> instead. Do not
@@ -520,7 +520,7 @@ DynamoDB Developer Guide>.
 I<ProjectionExpression> replaces the legacy I<AttributesToGet>
 parameter.
 
-=head2 QueryFilter => Paws::DynamoDB::FilterConditionMap
+=head2 QueryFilter => L<Paws::DynamoDB::FilterConditionMap>
 
   This is a legacy parameter, for backward compatibility. New
 applications should use I<FilterExpression> instead. Do not combine

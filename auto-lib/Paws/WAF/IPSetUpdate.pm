@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::IPSetU
 
   Specifies whether to insert or delete an IP address with UpdateIPSet.
 
-=head2 B<REQUIRED> IPSetDescriptor => Paws::WAF::IPSetDescriptor
+=head2 B<REQUIRED> IPSetDescriptor => L<Paws::WAF::IPSetDescriptor>
 
   The IP address type (C<IPV4>) and the IP address range (in CIDR
 notation) that web requests originate from.

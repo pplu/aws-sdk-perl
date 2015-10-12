@@ -13,7 +13,7 @@ Paws::OpsWorks::DescribeEcsClustersResult
 
 =head1 ATTRIBUTES
 
-=head2 EcsClusters => ArrayRef[Paws::OpsWorks::EcsCluster]
+=head2 EcsClusters => ArrayRef[L<Paws::OpsWorks::EcsCluster>]
 
   A list of C<EcsCluster> objects containing the cluster descriptions.
 =head2 NextToken => Str

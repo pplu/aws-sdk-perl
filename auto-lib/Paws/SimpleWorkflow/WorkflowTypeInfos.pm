@@ -22,7 +22,7 @@ arguments unchanged.
 
 The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
-=head2 B<REQUIRED> typeInfos => ArrayRef[Paws::SimpleWorkflow::WorkflowTypeInfo]
+=head2 B<REQUIRED> typeInfos => ArrayRef[L<Paws::SimpleWorkflow::WorkflowTypeInfo>]
 
   The list of workflow type information.
 

@@ -52,11 +52,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::A
 
   A Binary Set data type.
 
-=head2 L => ArrayRef[Paws::DynamoDB::AttributeValue]
+=head2 L => ArrayRef[L<Paws::DynamoDB::AttributeValue>]
 
   A List of attribute values.
 
-=head2 M => Paws::DynamoDB::MapAttributeValue
+=head2 M => L<Paws::DynamoDB::MapAttributeValue>
 
   A Map of attribute values.
 

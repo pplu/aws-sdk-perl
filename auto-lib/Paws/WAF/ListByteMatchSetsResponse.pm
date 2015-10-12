@@ -13,7 +13,7 @@ Paws::WAF::ListByteMatchSetsResponse
 
 =head1 ATTRIBUTES
 
-=head2 ByteMatchSets => ArrayRef[Paws::WAF::ByteMatchSetSummary]
+=head2 ByteMatchSets => ArrayRef[L<Paws::WAF::ByteMatchSetSummary>]
 
   An array of ByteMatchSetSummary objects.
 =head2 NextMarker => Str

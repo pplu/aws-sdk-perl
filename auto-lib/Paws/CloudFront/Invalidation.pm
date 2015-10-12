@@ -43,7 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
   The identifier for the invalidation request. For example:
 IDFDVBD632BHDS5.
 
-=head2 B<REQUIRED> InvalidationBatch => Paws::CloudFront::InvalidationBatch
+=head2 B<REQUIRED> InvalidationBatch => L<Paws::CloudFront::InvalidationBatch>
 
   The current invalidation information for the batch request.
 

@@ -49,11 +49,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
   The status of the cluster subnet group. Possible values are
 C<Complete>, C<Incomplete> and C<Invalid>.
 
-=head2 Subnets => ArrayRef[Paws::RedShift::Subnet]
+=head2 Subnets => ArrayRef[L<Paws::RedShift::Subnet>]
 
   A list of the VPC Subnet elements.
 
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   The list of tags for the cluster subnet group.
 

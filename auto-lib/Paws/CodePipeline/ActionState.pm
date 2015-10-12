@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
   The name of the action.
 
-=head2 currentRevision => Paws::CodePipeline::ActionRevision
+=head2 currentRevision => L<Paws::CodePipeline::ActionRevision>
 
   
 
@@ -48,7 +48,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
   A URL link for more information about the state of the action, such as
 a deployment group details page.
 
-=head2 latestExecution => Paws::CodePipeline::ActionExecution
+=head2 latestExecution => L<Paws::CodePipeline::ActionExecution>
 
   
 

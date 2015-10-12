@@ -12,7 +12,7 @@ Paws::ECS::DeleteClusterResponse
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Paws::ECS::Cluster
+=head2 cluster => L<Paws::ECS::Cluster>
 
   The full description of the deleted cluster.
 

@@ -305,7 +305,7 @@ C<lambda:CreateEventSourceMapping> action.
 
 
 
-=head2 CreateFunction(Code => Paws::Lambda::FunctionCode, FunctionName => Str, Handler => Str, Role => Str, Runtime => Str, [Description => Str, MemorySize => Int, Publish => Bool, Timeout => Int])
+=head2 CreateFunction(Code => L<Paws::Lambda::FunctionCode>, FunctionName => Str, Handler => Str, Role => Str, Runtime => Str, [Description => Str, MemorySize => Int, Publish => Bool, Timeout => Int])
 
 Each argument is described in detail in: L<Paws::Lambda::CreateFunction>
 

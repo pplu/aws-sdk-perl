@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 ATTRIBUTES
 
-=head2 Items => ArrayRef[Paws::CloudFront::Origin]
+=head2 Items => ArrayRef[L<Paws::CloudFront::Origin>]
 
   A complex type that contains origins for this distribution.
 

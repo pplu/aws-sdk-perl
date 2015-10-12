@@ -51,7 +51,7 @@ hosts the container.
 
   The exit code returned for the state change request.
 
-=head2 networkBindings => ArrayRef[Paws::ECS::NetworkBinding]
+=head2 networkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>]
 
   The network bindings of the container.
 

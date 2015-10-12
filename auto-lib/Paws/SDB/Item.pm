@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SDB::Item o
 
   
 
-=head2 B<REQUIRED> Attributes => ArrayRef[Paws::SDB::Attribute]
+=head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::SDB::Attribute>]
 
   A list of attributes.
 

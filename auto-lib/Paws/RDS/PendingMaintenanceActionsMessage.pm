@@ -20,7 +20,7 @@ Paws::RDS::PendingMaintenanceActionsMessage
 C<DescribePendingMaintenanceActions> request. If this parameter is
 specified, the response includes only records beyond the marker, up to
 a number of records specified by C<MaxRecords>.
-=head2 PendingMaintenanceActions => ArrayRef[Paws::RDS::ResourcePendingMaintenanceActions]
+=head2 PendingMaintenanceActions => ArrayRef[L<Paws::RDS::ResourcePendingMaintenanceActions>]
 
   A list of the pending maintenance actions for the resource.
 

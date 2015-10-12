@@ -77,11 +77,11 @@ if the stack has been updated at least once.
 
   SNS topic ARNs to which stack related events are published.
 
-=head2 Outputs => ArrayRef[Paws::CloudFormation::Output]
+=head2 Outputs => ArrayRef[L<Paws::CloudFormation::Output>]
 
   A list of output structures.
 
-=head2 Parameters => ArrayRef[Paws::CloudFormation::Parameter]
+=head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
   A list of C<Parameter> structures.
 
@@ -101,7 +101,7 @@ if the stack has been updated at least once.
 
   Success/failure message associated with the stack status.
 
-=head2 Tags => ArrayRef[Paws::CloudFormation::Tag]
+=head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
 
   A list of C<Tag>s that specify cost allocation information for the
 stack.

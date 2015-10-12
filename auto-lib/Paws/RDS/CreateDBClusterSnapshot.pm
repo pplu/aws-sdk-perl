@@ -72,7 +72,7 @@ Constraints:
 
 Example: C<my-cluster1-snapshot1>
 
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   The tags to be assigned to the DB cluster snapshot.
 

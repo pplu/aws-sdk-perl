@@ -12,7 +12,7 @@ Paws::Inspector::DescribeResourceGroupResponse
 
 =head1 ATTRIBUTES
 
-=head2 resourceGroup => Paws::Inspector::ResourceGroup
+=head2 resourceGroup => L<Paws::Inspector::ResourceGroup>
 
   Information about the resource group.
 

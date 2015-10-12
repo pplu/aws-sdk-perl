@@ -50,7 +50,7 @@ that evaluated it.
 
   The time when the AWS Config rule evaluated the AWS resource.
 
-=head2 EvaluationResultIdentifier => Paws::Config::EvaluationResultIdentifier
+=head2 EvaluationResultIdentifier => L<Paws::Config::EvaluationResultIdentifier>
 
   Uniquely identifies the evaluation result.
 

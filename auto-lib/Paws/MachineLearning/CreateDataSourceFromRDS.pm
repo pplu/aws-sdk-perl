@@ -54,7 +54,7 @@ C<DataSource>.
 
   A user-supplied name or description of the C<DataSource>.
 
-=head2 B<REQUIRED> RDSData => Paws::MachineLearning::RDSDataSpec
+=head2 B<REQUIRED> RDSData => L<Paws::MachineLearning::RDSDataSpec>
 
   The data specification of an Amazon RDS C<DataSource>:
 

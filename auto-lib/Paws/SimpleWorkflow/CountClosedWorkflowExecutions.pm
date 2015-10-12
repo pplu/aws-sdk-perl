@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 closeStatusFilter => Paws::SimpleWorkflow::CloseStatusFilter
+=head2 closeStatusFilter => L<Paws::SimpleWorkflow::CloseStatusFilter>
 
   If specified, only workflow executions that match this close status are
 counted. This filter has an affect only if C<executionStatus> is
@@ -48,7 +48,7 @@ C<closeStatusFilter>, C<executionFilter>, C<typeFilter> and
 C<tagFilter> are mutually exclusive. You can specify at most one of
 these in a request.
 
-=head2 closeTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter
+=head2 closeTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
 
   If specified, only workflow executions that meet the close time
 criteria of the filter are counted.
@@ -60,7 +60,7 @@ must specify one of these in a request but not both.
 
   The name of the domain containing the workflow executions to count.
 
-=head2 executionFilter => Paws::SimpleWorkflow::WorkflowExecutionFilter
+=head2 executionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>
 
   If specified, only workflow executions matching the C<WorkflowId> in
 the filter are counted.
@@ -69,7 +69,7 @@ C<closeStatusFilter>, C<executionFilter>, C<typeFilter> and
 C<tagFilter> are mutually exclusive. You can specify at most one of
 these in a request.
 
-=head2 startTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter
+=head2 startTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
 
   If specified, only workflow executions that meet the start time
 criteria of the filter are counted.
@@ -77,7 +77,7 @@ criteria of the filter are counted.
 C<startTimeFilter> and C<closeTimeFilter> are mutually exclusive. You
 must specify one of these in a request but not both.
 
-=head2 tagFilter => Paws::SimpleWorkflow::TagFilter
+=head2 tagFilter => L<Paws::SimpleWorkflow::TagFilter>
 
   If specified, only executions that have a tag that matches the filter
 are counted.
@@ -86,7 +86,7 @@ C<closeStatusFilter>, C<executionFilter>, C<typeFilter> and
 C<tagFilter> are mutually exclusive. You can specify at most one of
 these in a request.
 
-=head2 typeFilter => Paws::SimpleWorkflow::WorkflowTypeFilter
+=head2 typeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>
 
   If specified, indicates the type of the workflow executions to be
 counted.

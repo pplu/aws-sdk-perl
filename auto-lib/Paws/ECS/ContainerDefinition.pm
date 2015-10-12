@@ -125,7 +125,7 @@ Docker Remote API and the C<--dns-search> option to docker run.
 parameter maps to C<Dns> in the Create a container section of the
 Docker Remote API and the C<--dns> option to docker run.
 
-=head2 dockerLabels => Paws::ECS::DockerLabelsMap
+=head2 dockerLabels => L<Paws::ECS::DockerLabelsMap>
 
   A key/value map of labels to add to the container. This parameter maps
 to C<Labels> in the Create a container section of the Docker Remote API
@@ -161,7 +161,7 @@ C<Entrypoint> in the Create a container section of the Docker Remote
 API and the C<--entrypoint> option to docker run. For more information,
 see https://docs.docker.com/reference/builder/
 
-=head2 environment => ArrayRef[Paws::ECS::KeyValuePair]
+=head2 environment => ArrayRef[L<Paws::ECS::KeyValuePair>]
 
   The environment variables to pass to a container. This parameter maps
 to C<Env> in the Create a container section of the Docker Remote API
@@ -177,7 +177,7 @@ container is assumed to be essential.
 
 All tasks must have at least one essential container.
 
-=head2 extraHosts => ArrayRef[Paws::ECS::HostEntry]
+=head2 extraHosts => ArrayRef[L<Paws::ECS::HostEntry>]
 
   A list of hostnames and IP address mappings to append to the
 C</etc/hosts> file on the container. This parameter maps to
@@ -218,7 +218,7 @@ able to communicate with each other without requiring links or host
 port mappings. Network isolation is achieved on the container instance
 using security groups and VPC settings.
 
-=head2 logConfiguration => Paws::ECS::LogConfiguration
+=head2 logConfiguration => L<Paws::ECS::LogConfiguration>
 
   The log configuration specification for the container. This parameter
 maps to C<LogConfig> in the Create a container section of the Docker
@@ -244,7 +244,7 @@ is killed. This parameter maps to C<Memory> in the Create a container
 section of the Docker Remote API and the C<--memory> option to docker
 run.
 
-=head2 mountPoints => ArrayRef[Paws::ECS::MountPoint]
+=head2 mountPoints => ArrayRef[L<Paws::ECS::MountPoint>]
 
   The mount points for data volumes in your container. This parameter
 maps to C<Volumes> in the Create a container section of the Docker
@@ -260,7 +260,7 @@ underscores are allowed. This parameter maps to C<name> in the Create a
 container section of the Docker Remote API and the C<--name> option to
 docker run.
 
-=head2 portMappings => ArrayRef[Paws::ECS::PortMapping]
+=head2 portMappings => ArrayRef[L<Paws::ECS::PortMapping>]
 
   The list of port mappings for the container. Port mappings allow
 containers to access ports on the host container instance to send or
@@ -282,7 +282,7 @@ its root file system. This parameter maps to C<ReadonlyRootfs> in the
 Create a container section of the Docker Remote API and the
 C<--read-only> option to C<docker run>.
 
-=head2 ulimits => ArrayRef[Paws::ECS::Ulimit]
+=head2 ulimits => ArrayRef[L<Paws::ECS::Ulimit>]
 
   A list of C<ulimits> to set in the container. This parameter maps to
 C<Ulimits> in the Create a container section of the Docker Remote API
@@ -299,7 +299,7 @@ docker version | grep "Server API version">
 C<User> in the Create a container section of the Docker Remote API and
 the C<--user> option to docker run.
 
-=head2 volumesFrom => ArrayRef[Paws::ECS::VolumeFrom]
+=head2 volumesFrom => ArrayRef[L<Paws::ECS::VolumeFrom>]
 
   Data volumes to mount from another container. This parameter maps to
 C<VolumesFrom> in the Create a container section of the Docker Remote

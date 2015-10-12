@@ -12,7 +12,7 @@ Paws::DeviceFarm::CreateUploadResult
 
 =head1 ATTRIBUTES
 
-=head2 upload => Paws::DeviceFarm::Upload
+=head2 upload => L<Paws::DeviceFarm::Upload>
 
   The newly created upload.
 

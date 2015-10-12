@@ -14,7 +14,7 @@ Paws::RDS::DBSnapshotMessage
 
 =head1 ATTRIBUTES
 
-=head2 DBSnapshots => ArrayRef[Paws::RDS::DBSnapshot]
+=head2 DBSnapshots => ArrayRef[L<Paws::RDS::DBSnapshot>]
 
   A list of DBSnapshot instances.
 =head2 Marker => Str

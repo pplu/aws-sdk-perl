@@ -57,7 +57,7 @@ deployment group, if you want to change them.
   The replacement deployment configuration name to use, if you want to
 change it.
 
-=head2 ec2TagFilters => ArrayRef[Paws::CodeDeploy::EC2TagFilter]
+=head2 ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
   The replacement set of Amazon EC2 tags to filter on, if you want to
 change them.
@@ -66,7 +66,7 @@ change them.
 
   The new name of the deployment group, if you want to change it.
 
-=head2 onPremisesInstanceTagFilters => ArrayRef[Paws::CodeDeploy::TagFilter]
+=head2 onPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
   The replacement set of on-premises instance tags for filter on, if you
 want to change them.

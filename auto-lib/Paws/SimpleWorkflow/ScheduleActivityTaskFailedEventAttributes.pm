@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
   The activityId provided in the C<ScheduleActivityTask> decision that
 failed.
 
-=head2 B<REQUIRED> activityType => Paws::SimpleWorkflow::ActivityType
+=head2 B<REQUIRED> activityType => L<Paws::SimpleWorkflow::ActivityType>
 
   The activity type provided in the C<ScheduleActivityTask> decision that
 failed.

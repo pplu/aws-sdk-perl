@@ -44,7 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Only volume creation permissions may be modified at the customer level.
 
-=head2 CreateVolumePermission => Paws::EC2::CreateVolumePermissionModifications
+=head2 CreateVolumePermission => L<Paws::EC2::CreateVolumePermissionModifications>
 
   A JSON representation of the snapshot attribute modification.
 

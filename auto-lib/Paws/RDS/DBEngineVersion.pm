@@ -50,7 +50,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBEngi
 
   The name of the DB parameter group family for the database engine.
 
-=head2 DefaultCharacterSet => Paws::RDS::CharacterSet
+=head2 DefaultCharacterSet => L<Paws::RDS::CharacterSet>
 
   The default character set for new instances of this engine version, if
 the C<CharacterSetName> parameter of the CreateDBInstance API is not
@@ -64,12 +64,12 @@ specified.
 
   The version number of the database engine.
 
-=head2 SupportedCharacterSets => ArrayRef[Paws::RDS::CharacterSet]
+=head2 SupportedCharacterSets => ArrayRef[L<Paws::RDS::CharacterSet>]
 
   A list of the character sets supported by this engine for the
 C<CharacterSetName> parameter of the CreateDBInstance API.
 
-=head2 ValidUpgradeTarget => ArrayRef[Paws::RDS::UpgradeTarget]
+=head2 ValidUpgradeTarget => ArrayRef[L<Paws::RDS::UpgradeTarget>]
 
   A list of engine versions that this database engine version can be
 upgraded to.

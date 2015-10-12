@@ -12,7 +12,7 @@ Paws::CodePipeline::GetThirdPartyJobDetailsOutput
 
 =head1 ATTRIBUTES
 
-=head2 jobDetails => Paws::CodePipeline::ThirdPartyJobDetails
+=head2 jobDetails => L<Paws::CodePipeline::ThirdPartyJobDetails>
 
   The details of the job, including any protected values defined for the
 job.

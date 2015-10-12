@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Applic
 
 =head1 ATTRIBUTES
 
-=head2 AdditionalInfo => Paws::EMR::StringMap
+=head2 AdditionalInfo => L<Paws::EMR::StringMap>
 
   This option is for advanced users only. This is meta information about
 third-party applications that third-party vendors use for testing

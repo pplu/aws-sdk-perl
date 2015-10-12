@@ -28,7 +28,7 @@ Paws::S3::
 =head2 ContentMD5 => Str
 
   
-=head2 B<REQUIRED> WebsiteConfiguration => Paws::S3::WebsiteConfiguration
+=head2 B<REQUIRED> WebsiteConfiguration => L<Paws::S3::WebsiteConfiguration>
 
   
 

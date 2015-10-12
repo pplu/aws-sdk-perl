@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 AttributeUpdates => Paws::DynamoDB::AttributeUpdates
+=head2 AttributeUpdates => L<Paws::DynamoDB::AttributeUpdates>
 
   This is a legacy parameter, for backward compatibility. New
 applications should use I<UpdateExpression> instead. Do not combine
@@ -238,7 +238,7 @@ Conditions in the I<Amazon DynamoDB Developer Guide>.
 I<ConditionExpression> replaces the legacy I<ConditionalOperator> and
 I<Expected> parameters.
 
-=head2 Expected => Paws::DynamoDB::ExpectedAttributeMap
+=head2 Expected => L<Paws::DynamoDB::ExpectedAttributeMap>
 
   This is a legacy parameter, for backward compatibility. New
 applications should use I< ConditionExpression > instead. Do not
@@ -511,7 +511,7 @@ I<ValidationException> exception.
 
 This parameter does not support attributes of type List or Map.
 
-=head2 ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap
+=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
   One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
@@ -577,7 +577,7 @@ values>, which are placeholders for the actual value at runtime.
 For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
-=head2 ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap
+=head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
 
   One or more values that can be substituted in an expression.
 
@@ -600,7 +600,7 @@ C<ProductStatus IN (:avail, :back, :disc)>
 For more information on expression attribute values, see Specifying
 Conditions in the I<Amazon DynamoDB Developer Guide>.
 
-=head2 B<REQUIRED> Key => Paws::DynamoDB::Key
+=head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
 
   The primary key of the item to be updated. Each element consists of an
 attribute name and a value for that attribute.

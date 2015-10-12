@@ -69,7 +69,7 @@ I<SHUTDOWN>, I<THROTTLED>.
 
   This data type property is currently not used.
 
-=head2 telemetry => ArrayRef[Paws::Inspector::Telemetry]
+=head2 telemetry => ArrayRef[L<Paws::Inspector::Telemetry>]
 
   The Inspector application data metrics collected by the agent.
 

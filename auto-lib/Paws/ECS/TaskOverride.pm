@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::TaskOv
 
 =head1 ATTRIBUTES
 
-=head2 containerOverrides => ArrayRef[Paws::ECS::ContainerOverride]
+=head2 containerOverrides => ArrayRef[L<Paws::ECS::ContainerOverride>]
 
   One or more container overrides sent to a task.
 

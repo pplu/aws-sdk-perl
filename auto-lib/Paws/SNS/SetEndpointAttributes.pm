@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Attributes => Paws::SNS::MapStringToString
+=head2 B<REQUIRED> Attributes => L<Paws::SNS::MapStringToString>
 
   A map of the endpoint attributes. Attributes in this map include the
 following:

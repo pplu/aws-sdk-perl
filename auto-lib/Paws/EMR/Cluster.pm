@@ -47,7 +47,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Cluste
 
 =head1 ATTRIBUTES
 
-=head2 Applications => ArrayRef[Paws::EMR::Application]
+=head2 Applications => ArrayRef[L<Paws::EMR::Application>]
 
   The applications installed on this cluster.
 
@@ -56,13 +56,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Cluste
   Specifies whether the cluster should terminate after completing all
 steps.
 
-=head2 Configurations => ArrayRef[Paws::EMR::Configuration]
+=head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
 
   Amazon EMR releases 4.x or later.
 
 The list of Configurations supplied to the EMR cluster.
 
-=head2 Ec2InstanceAttributes => Paws::EMR::Ec2InstanceAttributes
+=head2 Ec2InstanceAttributes => L<Paws::EMR::Ec2InstanceAttributes>
 
   
 
@@ -110,11 +110,11 @@ only an approximation and does not reflect the actual billing rate.
   The IAM role that will be assumed by the Amazon EMR service to access
 AWS resources on your behalf.
 
-=head2 Status => Paws::EMR::ClusterStatus
+=head2 Status => L<Paws::EMR::ClusterStatus>
 
   The current status details about the cluster.
 
-=head2 Tags => ArrayRef[Paws::EMR::Tag]
+=head2 Tags => ArrayRef[L<Paws::EMR::Tag>]
 
   A list of tags associated with a cluster.
 

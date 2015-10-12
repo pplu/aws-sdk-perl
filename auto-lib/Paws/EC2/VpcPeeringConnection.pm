@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpcPee
 
 =head1 ATTRIBUTES
 
-=head2 AccepterVpcInfo => Paws::EC2::VpcPeeringConnectionVpcInfo
+=head2 AccepterVpcInfo => L<Paws::EC2::VpcPeeringConnectionVpcInfo>
 
   The information of the peer VPC.
 
@@ -44,15 +44,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpcPee
 
   The time that an unaccepted VPC peering connection will expire.
 
-=head2 RequesterVpcInfo => Paws::EC2::VpcPeeringConnectionVpcInfo
+=head2 RequesterVpcInfo => L<Paws::EC2::VpcPeeringConnectionVpcInfo>
 
   The information of the requester VPC.
 
-=head2 Status => Paws::EC2::VpcPeeringConnectionStateReason
+=head2 Status => L<Paws::EC2::VpcPeeringConnectionStateReason>
 
   The status of the VPC peering connection.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the resource.
 

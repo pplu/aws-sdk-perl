@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   A unique identifier in the format REGION:GUID.
 
-=head2 B<REQUIRED> Logins => Paws::CognitoIdentity::LoginsMap
+=head2 B<REQUIRED> Logins => L<Paws::CognitoIdentity::LoginsMap>
 
   A set of optional name-value pairs that map provider names to provider
 tokens.

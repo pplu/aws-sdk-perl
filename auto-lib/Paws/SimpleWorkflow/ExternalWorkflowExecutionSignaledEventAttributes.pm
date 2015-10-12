@@ -39,7 +39,7 @@ corresponding to the C<SignalExternalWorkflowExecution> decision to
 request this signal. This information can be useful for diagnosing
 problems by tracing back the chain of events leading up to this event.
 
-=head2 B<REQUIRED> workflowExecution => Paws::SimpleWorkflow::WorkflowExecution
+=head2 B<REQUIRED> workflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The external workflow execution that the signal was delivered to.
 

@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Se
 
 =head1 ATTRIBUTES
 
-=head2 categories => ArrayRef[Paws::Support::Category]
+=head2 categories => ArrayRef[L<Paws::Support::Category>]
 
   A list of categories that describe the type of support issue a case
 describes. Categories consist of a category name and a category code.

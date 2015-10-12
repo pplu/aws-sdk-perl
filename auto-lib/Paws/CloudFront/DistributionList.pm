@@ -43,7 +43,7 @@ If your results were truncated, you can make a follow-up pagination
 request using the Marker request parameter to retrieve more
 distributions in the list.
 
-=head2 Items => ArrayRef[Paws::CloudFront::DistributionSummary]
+=head2 Items => ArrayRef[L<Paws::CloudFront::DistributionSummary>]
 
   A complex type that contains one DistributionSummary element for each
 distribution that was created by the current AWS account.

@@ -32,11 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepDe
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> ExecutionStatusDetail => Paws::EMR::StepExecutionStatusDetail
+=head2 B<REQUIRED> ExecutionStatusDetail => L<Paws::EMR::StepExecutionStatusDetail>
 
   The description of the step status.
 
-=head2 B<REQUIRED> StepConfig => Paws::EMR::StepConfig
+=head2 B<REQUIRED> StepConfig => L<Paws::EMR::StepConfig>
 
   The step configuration.
 

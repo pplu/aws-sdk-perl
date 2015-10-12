@@ -32,11 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::EBSOpti
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Options => Paws::ES::EBSOptions
+=head2 B<REQUIRED> Options => L<Paws::ES::EBSOptions>
 
   Specifies the EBS options for the specified Elasticsearch domain.
 
-=head2 B<REQUIRED> Status => Paws::ES::OptionStatus
+=head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
 
   Specifies the status of the EBS options for the specified Elasticsearch
 domain.

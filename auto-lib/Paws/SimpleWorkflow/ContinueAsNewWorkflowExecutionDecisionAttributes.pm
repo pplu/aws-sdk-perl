@@ -103,7 +103,7 @@ maximum of 5 tags can be specified. You can list workflow executions
 with a specific tag by calling ListOpenWorkflowExecutions or
 ListClosedWorkflowExecutions and specifying a TagFilter.
 
-=head2 taskList => Paws::SimpleWorkflow::TaskList
+=head2 taskList => L<Paws::SimpleWorkflow::TaskList>
 
   
 

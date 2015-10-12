@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Evaluations => ArrayRef[Paws::Config::Evaluation]
+=head2 Evaluations => ArrayRef[L<Paws::Config::Evaluation>]
 
   The assessments that the AWS Lambda function performs. Each evaluation
 identifies an AWS resource and indicates whether it complies with the

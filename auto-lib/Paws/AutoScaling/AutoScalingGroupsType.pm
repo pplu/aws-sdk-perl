@@ -14,7 +14,7 @@ Paws::AutoScaling::AutoScalingGroupsType
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> AutoScalingGroups => ArrayRef[Paws::AutoScaling::AutoScalingGroup]
+=head2 B<REQUIRED> AutoScalingGroups => ArrayRef[L<Paws::AutoScaling::AutoScalingGroup>]
 
   The groups.
 =head2 NextToken => Str

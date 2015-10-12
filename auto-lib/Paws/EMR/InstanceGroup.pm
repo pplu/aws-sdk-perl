@@ -45,7 +45,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
   The bid price for each EC2 instance in the instance group when
 launching nodes as Spot Instances, expressed in USD.
 
-=head2 Configurations => ArrayRef[Paws::EMR::Configuration]
+=head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
 
   Amazon EMR releases 4.x or later.
 
@@ -82,7 +82,7 @@ ON_DEMAND or SPOT.
 
   The number of instances currently running in this instance group.
 
-=head2 Status => Paws::EMR::InstanceGroupStatus
+=head2 Status => L<Paws::EMR::InstanceGroupStatus>
 
   The current status of the instance group.
 

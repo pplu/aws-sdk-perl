@@ -29,7 +29,7 @@ results.
   When C<IsTruncated> is C<true>, this element is present and contains
 the value to use for the C<Marker> parameter in a subsequent pagination
 request.
-=head2 Versions => ArrayRef[Paws::IAM::PolicyVersion]
+=head2 Versions => ArrayRef[L<Paws::IAM::PolicyVersion>]
 
   A list of policy versions.
 

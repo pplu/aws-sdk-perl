@@ -100,7 +100,7 @@ db-snapshot
 
 Constraints: The name must be less than 255 characters.
 
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 

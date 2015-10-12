@@ -12,7 +12,7 @@ Paws::Support::DescribeAttachmentResponse
 
 =head1 ATTRIBUTES
 
-=head2 attachment => Paws::Support::Attachment
+=head2 attachment => L<Paws::Support::Attachment>
 
   The attachment content and file name.
 

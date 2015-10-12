@@ -20,14 +20,14 @@ Paws::STS::AssumeRoleWithSAMLResponse
 
 =head1 ATTRIBUTES
 
-=head2 AssumedRoleUser => Paws::STS::AssumedRoleUser
+=head2 AssumedRoleUser => L<Paws::STS::AssumedRoleUser>
 
   
 =head2 Audience => Str
 
   The value of the C<Recipient> attribute of the
 C<SubjectConfirmationData> element of the SAML assertion.
-=head2 Credentials => Paws::STS::Credentials
+=head2 Credentials => L<Paws::STS::Credentials>
 
   
 =head2 Issuer => Str

@@ -17,10 +17,10 @@ Paws::EC2::Reservation
 
 =head1 ATTRIBUTES
 
-=head2 Groups => ArrayRef[Paws::EC2::GroupIdentifier]
+=head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
   One or more security groups.
-=head2 Instances => ArrayRef[Paws::EC2::Instance]
+=head2 Instances => ArrayRef[L<Paws::EC2::Instance>]
 
   One or more instances.
 =head2 OwnerId => Str

@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::TaskDe
 
 =head1 ATTRIBUTES
 
-=head2 containerDefinitions => ArrayRef[Paws::ECS::ContainerDefinition]
+=head2 containerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>]
 
   A list of container definitions in JSON format that describe the
 different containers that make up your task. For more information about
@@ -48,7 +48,7 @@ Definitions in the I<Amazon EC2 Container Service Developer Guide>.
 
   The family of your task definition, used as the definition name.
 
-=head2 requiresAttributes => ArrayRef[Paws::ECS::Attribute]
+=head2 requiresAttributes => ArrayRef[L<Paws::ECS::Attribute>]
 
   The container instance attributes required by your task.
 
@@ -69,7 +69,7 @@ previous revisions in this family).
 
   The full Amazon Resource Name (ARN) of the of the task definition.
 
-=head2 volumes => ArrayRef[Paws::ECS::Volume]
+=head2 volumes => ArrayRef[L<Paws::ECS::Volume>]
 
   The list of volumes in a task. For more information about volume
 definition parameters and defaults, see Amazon ECS Task Definitions in

@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
   The ID of the instance.
 
-=head2 Monitoring => Paws::EC2::Monitoring
+=head2 Monitoring => L<Paws::EC2::Monitoring>
 
   The monitoring information.
 

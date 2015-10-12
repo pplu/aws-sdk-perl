@@ -12,7 +12,7 @@ Paws::Route53Domains::ListTagsForDomainResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> TagList => ArrayRef[Paws::Route53Domains::Tag]
+=head2 B<REQUIRED> TagList => ArrayRef[L<Paws::Route53Domains::Tag>]
 
   A list of the tags that are associated with the specified domain.
 

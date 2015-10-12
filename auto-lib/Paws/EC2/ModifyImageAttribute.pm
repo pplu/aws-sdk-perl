@@ -45,7 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the attribute to modify.
 
-=head2 Description => Paws::EC2::AttributeValue
+=head2 Description => L<Paws::EC2::AttributeValue>
 
   A description for the AMI.
 
@@ -60,7 +60,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
   The ID of the AMI.
 
-=head2 LaunchPermission => Paws::EC2::LaunchPermissionModifications
+=head2 LaunchPermission => L<Paws::EC2::LaunchPermissionModifications>
 
   A launch permission modification.
 

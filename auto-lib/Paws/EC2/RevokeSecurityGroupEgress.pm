@@ -61,7 +61,7 @@ number. For the ICMP type number, use C<-1> to specify all ICMP types.
 
   The ID of the security group.
 
-=head2 IpPermissions => ArrayRef[Paws::EC2::IpPermission]
+=head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
   A set of IP permissions. You can't specify a destination security group
 and a CIDR IP address range.

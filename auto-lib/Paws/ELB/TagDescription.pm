@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::TagDes
 
   The name of the load balancer.
 
-=head2 Tags => ArrayRef[Paws::ELB::Tag]
+=head2 Tags => ArrayRef[L<Paws::ELB::Tag>]
 
   The tags.
 

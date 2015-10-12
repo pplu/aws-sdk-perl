@@ -13,7 +13,7 @@ Paws::WorkSpaces::DescribeWorkspaceBundlesResult
 
 =head1 ATTRIBUTES
 
-=head2 Bundles => ArrayRef[Paws::WorkSpaces::WorkspaceBundle]
+=head2 Bundles => ArrayRef[L<Paws::WorkSpaces::WorkspaceBundle>]
 
   An array of structures that contain information about the bundles.
 =head2 NextToken => Str

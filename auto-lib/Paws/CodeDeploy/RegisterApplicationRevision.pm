@@ -43,7 +43,7 @@ applicable IAM user or AWS account.
 
   A comment about the revision.
 
-=head2 B<REQUIRED> revision => Paws::CodeDeploy::RevisionLocation
+=head2 B<REQUIRED> revision => L<Paws::CodeDeploy::RevisionLocation>
 
   Information about the application revision to register, including the
 revision's type and its location.

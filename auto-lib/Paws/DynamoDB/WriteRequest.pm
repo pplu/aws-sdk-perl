@@ -32,11 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::W
 
 =head1 ATTRIBUTES
 
-=head2 DeleteRequest => Paws::DynamoDB::DeleteRequest
+=head2 DeleteRequest => L<Paws::DynamoDB::DeleteRequest>
 
   A request to perform a I<DeleteItem> operation.
 
-=head2 PutRequest => Paws::DynamoDB::PutRequest
+=head2 PutRequest => L<Paws::DynamoDB::PutRequest>
 
   A request to perform a I<PutItem> operation.
 

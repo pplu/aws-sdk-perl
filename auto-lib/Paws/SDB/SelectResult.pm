@@ -14,7 +14,7 @@ Paws::SDB::SelectResult
 
 =head1 ATTRIBUTES
 
-=head2 Items => ArrayRef[Paws::SDB::Item]
+=head2 Items => ArrayRef[L<Paws::SDB::Item>]
 
   A list of items that match the select expression.
 =head2 NextToken => Str

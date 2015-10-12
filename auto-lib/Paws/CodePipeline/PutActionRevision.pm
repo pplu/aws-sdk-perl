@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the action that will process the revision.
 
-=head2 B<REQUIRED> actionRevision => Paws::CodePipeline::ActionRevision
+=head2 B<REQUIRED> actionRevision => L<Paws::CodePipeline::ActionRevision>
 
   
 

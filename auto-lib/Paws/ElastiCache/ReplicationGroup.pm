@@ -61,12 +61,12 @@ ElastiCache Multi-AZ replication groups are not supported on:
   The names of all the cache clusters that are part of this replication
 group.
 
-=head2 NodeGroups => ArrayRef[Paws::ElastiCache::NodeGroup]
+=head2 NodeGroups => ArrayRef[L<Paws::ElastiCache::NodeGroup>]
 
   A single element list with information about the nodes in the
 replication group.
 
-=head2 PendingModifiedValues => Paws::ElastiCache::ReplicationGroupPendingModifiedValues
+=head2 PendingModifiedValues => L<Paws::ElastiCache::ReplicationGroupPendingModifiedValues>
 
   A group of settings to be applied to the replication group, either
 immediately or during the next maintenance window.

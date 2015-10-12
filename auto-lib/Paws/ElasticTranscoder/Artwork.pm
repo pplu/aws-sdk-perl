@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   The format of album art, if any. Valid formats are C<.jpg> and C<.png>.
 
-=head2 Encryption => Paws::ElasticTranscoder::Encryption
+=head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your artwork.

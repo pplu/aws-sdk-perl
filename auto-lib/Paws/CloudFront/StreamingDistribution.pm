@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> ActiveTrustedSigners => Paws::CloudFront::ActiveTrustedSigners
+=head2 B<REQUIRED> ActiveTrustedSigners => L<Paws::CloudFront::ActiveTrustedSigners>
 
   CloudFront automatically adds this element to the response only if
 you've set up the distribution to serve private content with signed
@@ -68,7 +68,7 @@ EGTXBD79H29TRA8.
 Deployed, the distribution's information is fully propagated throughout
 the Amazon CloudFront system.
 
-=head2 B<REQUIRED> StreamingDistributionConfig => Paws::CloudFront::StreamingDistributionConfig
+=head2 B<REQUIRED> StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>
 
   The current configuration information for the streaming distribution.
 

@@ -31,7 +31,7 @@ response element.
 =head2 Description => Str
 
   The description found within the template.
-=head2 Parameters => ArrayRef[Paws::CloudFormation::TemplateParameter]
+=head2 Parameters => ArrayRef[L<Paws::CloudFormation::TemplateParameter>]
 
   A list of C<TemplateParameter> structures.
 

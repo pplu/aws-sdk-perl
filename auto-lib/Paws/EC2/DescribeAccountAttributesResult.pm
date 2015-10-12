@@ -13,7 +13,7 @@ Paws::EC2::DescribeAccountAttributesResult
 
 =head1 ATTRIBUTES
 
-=head2 AccountAttributes => ArrayRef[Paws::EC2::AccountAttribute]
+=head2 AccountAttributes => ArrayRef[L<Paws::EC2::AccountAttribute>]
 
   Information about one or more account attributes.
 

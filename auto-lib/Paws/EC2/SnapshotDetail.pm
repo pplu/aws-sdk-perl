@@ -76,7 +76,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Snapsh
 
   The URL used to access the disk image.
 
-=head2 UserBucket => Paws::EC2::UserBucketDetails
+=head2 UserBucket => L<Paws::EC2::UserBucketDetails>
 
   
 

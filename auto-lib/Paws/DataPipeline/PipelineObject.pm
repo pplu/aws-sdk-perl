@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> fields => ArrayRef[Paws::DataPipeline::Field]
+=head2 B<REQUIRED> fields => ArrayRef[L<Paws::DataPipeline::Field>]
 
   Key-value pairs that define the properties of the object.
 

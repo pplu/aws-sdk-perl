@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Constraints => Paws::KMS::GrantConstraints
+=head2 Constraints => L<Paws::KMS::GrantConstraints>
 
   Specifies the conditions under which the actions specified by the
 C<Operations> parameter are allowed.

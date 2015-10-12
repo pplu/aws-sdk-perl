@@ -17,7 +17,7 @@ Paws::IoT::ListTopicRulesResponse
 =head2 nextToken => Str
 
   A token used to retrieve the next value.
-=head2 rules => ArrayRef[Paws::IoT::TopicRuleListItem]
+=head2 rules => ArrayRef[L<Paws::IoT::TopicRuleListItem>]
 
   The rules.
 

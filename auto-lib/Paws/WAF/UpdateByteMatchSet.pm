@@ -44,7 +44,7 @@ ListByteMatchSets.
 
   The value returned by the most recent call to GetChangeToken.
 
-=head2 B<REQUIRED> Updates => ArrayRef[Paws::WAF::ByteMatchSetUpdate]
+=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAF::ByteMatchSetUpdate>]
 
   An array of C<ByteMatchSetUpdate> objects that you want to insert into
 or delete from a ByteMatchSet. For more information, see the applicable

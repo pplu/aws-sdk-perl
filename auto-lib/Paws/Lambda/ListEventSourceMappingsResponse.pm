@@ -14,7 +14,7 @@ Paws::Lambda::ListEventSourceMappingsResponse
 
 =head1 ATTRIBUTES
 
-=head2 EventSourceMappings => ArrayRef[Paws::Lambda::EventSourceMappingConfiguration]
+=head2 EventSourceMappings => ArrayRef[L<Paws::Lambda::EventSourceMappingConfiguration>]
 
   An array of C<EventSourceMappingConfiguration> objects.
 =head2 NextMarker => Str

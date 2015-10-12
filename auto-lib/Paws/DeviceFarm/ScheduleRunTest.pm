@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   The test's filter.
 
-=head2 parameters => Paws::DeviceFarm::TestParameters
+=head2 parameters => L<Paws::DeviceFarm::TestParameters>
 
   The test's parameters, such as test framework parameters and fixture
 settings.

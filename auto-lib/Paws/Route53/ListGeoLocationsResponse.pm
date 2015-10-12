@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> GeoLocationDetailsList => ArrayRef[Paws::Route53::GeoLocationDetails]
+=head2 B<REQUIRED> GeoLocationDetailsList => ArrayRef[L<Paws::Route53::GeoLocationDetails>]
 
   A complex type that contains information about the geo locations that
 are returned by the request.

@@ -34,7 +34,7 @@ jobs in the list. If there are no more parts, this value is C<null>.
 =head2 MultipartUploadId => Str
 
   The ID of the upload to which the parts are associated.
-=head2 Parts => ArrayRef[Paws::Glacier::PartListElement]
+=head2 Parts => ArrayRef[L<Paws::Glacier::PartListElement>]
 
   A list of the part sizes of the multipart upload.
 =head2 PartSizeInBytes => Int

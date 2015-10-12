@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
 =head1 ATTRIBUTES
 
-=head2 Details => ArrayRef[Paws::EC2::InstanceStatusDetails]
+=head2 Details => ArrayRef[L<Paws::EC2::InstanceStatusDetails>]
 
   The system instance health or application instance health.
 

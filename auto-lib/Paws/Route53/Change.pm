@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ch
 
 Valid values: C<CREATE> | C<DELETE> | C<UPSERT>
 
-=head2 B<REQUIRED> ResourceRecordSet => Paws::Route53::ResourceRecordSet
+=head2 B<REQUIRED> ResourceRecordSet => L<Paws::Route53::ResourceRecordSet>
 
   Information about the resource record set to create or delete.
 

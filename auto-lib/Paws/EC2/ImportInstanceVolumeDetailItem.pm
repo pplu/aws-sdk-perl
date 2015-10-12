@@ -49,7 +49,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Import
 
   A description of the task.
 
-=head2 B<REQUIRED> Image => Paws::EC2::DiskImageDescription
+=head2 B<REQUIRED> Image => L<Paws::EC2::DiskImageDescription>
 
   The image.
 
@@ -61,7 +61,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Import
 
   The status information or errors related to the disk image.
 
-=head2 B<REQUIRED> Volume => Paws::EC2::DiskImageVolumeDescription
+=head2 B<REQUIRED> Volume => L<Paws::EC2::DiskImageVolumeDescription>
 
   The volume.
 

@@ -43,7 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
   The application name.
 
-=head2 autoScalingGroups => ArrayRef[Paws::CodeDeploy::AutoScalingGroup]
+=head2 autoScalingGroups => ArrayRef[L<Paws::CodeDeploy::AutoScalingGroup>]
 
   A list of associated Auto Scaling groups.
 
@@ -59,11 +59,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
   The deployment group name.
 
-=head2 ec2TagFilters => ArrayRef[Paws::CodeDeploy::EC2TagFilter]
+=head2 ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
   The Amazon EC2 tags to filter on.
 
-=head2 onPremisesInstanceTagFilters => ArrayRef[Paws::CodeDeploy::TagFilter]
+=head2 onPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
   The on-premises instance tags to filter on.
 
@@ -71,7 +71,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
   A service role ARN.
 
-=head2 targetRevision => Paws::CodeDeploy::RevisionLocation
+=head2 targetRevision => L<Paws::CodeDeploy::RevisionLocation>
 
   Information about the deployment group's target revision, including the
 revision's type and its location.

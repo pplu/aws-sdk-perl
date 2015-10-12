@@ -93,7 +93,7 @@ information, see Instances
   The instance Availability Zone. For more information, see Regions and
 Endpoints.
 
-=head2 BlockDeviceMappings => ArrayRef[Paws::OpsWorks::BlockDeviceMapping]
+=head2 BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>]
 
   An array of C<BlockDeviceMapping> objects that specify the instance's
 block device mappings.
@@ -197,7 +197,7 @@ DescribeServiceErrors.
 
   The instance's reported AWS OpsWorks agent version.
 
-=head2 ReportedOs => Paws::OpsWorks::ReportedOs
+=head2 ReportedOs => L<Paws::OpsWorks::ReportedOs>
 
   For registered instances, the reported operating system.
 

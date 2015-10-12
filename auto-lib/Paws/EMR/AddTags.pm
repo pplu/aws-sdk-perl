@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The Amazon EMR resource identifier to which tags will be added. This
 value must be a cluster identifier.
 
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::EMR::Tag]
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EMR::Tag>]
 
   A list of tags to associate with a cluster and propagate to Amazon EC2
 instances. Tags are user-defined key/value pairs that consist of a

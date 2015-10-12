@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> attachments => ArrayRef[Paws::Support::Attachment]
+=head2 B<REQUIRED> attachments => ArrayRef[L<Paws::Support::Attachment>]
 
   One or more attachments to add to the set. The limit is 3 attachments
 per set, and the size limit is 5 MB per attachment.

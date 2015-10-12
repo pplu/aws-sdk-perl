@@ -29,7 +29,7 @@ results.
   When C<IsTruncated> is C<true>, this element is present and contains
 the value to use for the C<Marker> parameter in a subsequent pagination
 request.
-=head2 B<REQUIRED> MFADevices => ArrayRef[Paws::IAM::MFADevice]
+=head2 B<REQUIRED> MFADevices => ArrayRef[L<Paws::IAM::MFADevice>]
 
   A list of MFA devices.
 

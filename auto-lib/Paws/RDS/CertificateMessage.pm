@@ -14,7 +14,7 @@ Paws::RDS::CertificateMessage
 
 =head1 ATTRIBUTES
 
-=head2 Certificates => ArrayRef[Paws::RDS::Certificate]
+=head2 Certificates => ArrayRef[L<Paws::RDS::Certificate>]
 
   The list of Certificate objects for the AWS account.
 =head2 Marker => Str

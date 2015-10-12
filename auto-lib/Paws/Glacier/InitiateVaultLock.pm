@@ -46,7 +46,7 @@ account ID associated with the credentials used to sign the request. If
 you specify your account ID, do not include any hyphens (apos-apos) in
 the ID.
 
-=head2 policy => Paws::Glacier::VaultLockPolicy
+=head2 policy => L<Paws::Glacier::VaultLockPolicy>
 
   The vault lock policy as a JSON string, which uses "\" as an escape
 character.

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> DocumentSuggesterOptions => Paws::CloudSearch::DocumentSuggesterOptions
+=head2 B<REQUIRED> DocumentSuggesterOptions => L<Paws::CloudSearch::DocumentSuggesterOptions>
 
   
 

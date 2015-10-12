@@ -42,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Bundle
 
   The ID of the bundle task.
 
-=head2 BundleTaskError => Paws::EC2::BundleTaskError
+=head2 BundleTaskError => L<Paws::EC2::BundleTaskError>
 
   If the task fails, a description of the error.
 
@@ -62,7 +62,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Bundle
 
   The state of the task.
 
-=head2 Storage => Paws::EC2::Storage
+=head2 Storage => L<Paws::EC2::Storage>
 
   The Amazon S3 storage locations.
 

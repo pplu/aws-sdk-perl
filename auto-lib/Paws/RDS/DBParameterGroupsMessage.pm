@@ -14,7 +14,7 @@ Paws::RDS::DBParameterGroupsMessage
 
 =head1 ATTRIBUTES
 
-=head2 DBParameterGroups => ArrayRef[Paws::RDS::DBParameterGroup]
+=head2 DBParameterGroups => ArrayRef[L<Paws::RDS::DBParameterGroup>]
 
   A list of DBParameterGroup instances.
 =head2 Marker => Str

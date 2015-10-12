@@ -52,7 +52,7 @@ Required: Yes
 
   The authorization key for .fi domains
 
-=head2 B<REQUIRED> Nameservers => ArrayRef[Paws::Route53Domains::Nameserver]
+=head2 B<REQUIRED> Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>]
 
   A list of new name servers for the domain.
 

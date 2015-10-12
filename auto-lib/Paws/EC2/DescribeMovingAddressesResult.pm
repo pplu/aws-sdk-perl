@@ -14,7 +14,7 @@ Paws::EC2::DescribeMovingAddressesResult
 
 =head1 ATTRIBUTES
 
-=head2 MovingAddressStatuses => ArrayRef[Paws::EC2::MovingAddressStatus]
+=head2 MovingAddressStatuses => ArrayRef[L<Paws::EC2::MovingAddressStatus>]
 
   The status for each Elastic IP address.
 =head2 NextToken => Str

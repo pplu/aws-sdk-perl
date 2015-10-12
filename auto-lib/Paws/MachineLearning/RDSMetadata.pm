@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head1 ATTRIBUTES
 
-=head2 Database => Paws::MachineLearning::RDSDatabase
+=head2 Database => L<Paws::MachineLearning::RDSDatabase>
 
   The database details required to connect to an Amazon RDS.
 

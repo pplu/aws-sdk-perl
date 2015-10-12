@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::TopicCo
 
   
 
-=head2 Filter => Paws::S3::NotificationConfigurationFilter
+=head2 Filter => L<Paws::S3::NotificationConfigurationFilter>
 
   
 

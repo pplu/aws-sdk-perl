@@ -37,11 +37,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::D
 
   The ID of the destination.
 
-=head2 RedshiftDestinationDescription => Paws::Firehose::RedshiftDestinationDescription
+=head2 RedshiftDestinationDescription => L<Paws::Firehose::RedshiftDestinationDescription>
 
   The destination in Amazon Redshift.
 
-=head2 S3DestinationDescription => Paws::Firehose::S3DestinationDescription
+=head2 S3DestinationDescription => L<Paws::Firehose::S3DestinationDescription>
 
   The Amazon S3 destination.
 

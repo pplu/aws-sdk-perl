@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 ATTRIBUTES
 
-=head2 CachedMethods => Paws::CloudFront::CachedMethods
+=head2 CachedMethods => L<Paws::CloudFront::CachedMethods>
 
   
 

@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 EncryptionContext => Paws::KMS::EncryptionContextType
+=head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
 
   Name/value pair that specifies the encryption context to be used for
 authenticated encryption. If used here, the same value must be supplied

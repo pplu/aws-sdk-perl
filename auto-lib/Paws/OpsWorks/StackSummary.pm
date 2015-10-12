@@ -44,7 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::S
 
   The stack's ARN.
 
-=head2 InstancesCount => Paws::OpsWorks::InstancesCount
+=head2 InstancesCount => L<Paws::OpsWorks::InstancesCount>
 
   An C<InstancesCount> object with the number of instances in each
 status.

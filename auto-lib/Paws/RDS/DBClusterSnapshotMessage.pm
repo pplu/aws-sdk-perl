@@ -14,7 +14,7 @@ Paws::RDS::DBClusterSnapshotMessage
 
 =head1 ATTRIBUTES
 
-=head2 DBClusterSnapshots => ArrayRef[Paws::RDS::DBClusterSnapshot]
+=head2 DBClusterSnapshots => ArrayRef[L<Paws::RDS::DBClusterSnapshot>]
 
   Provides a list of DB cluster snapshots for the user.
 =head2 Marker => Str

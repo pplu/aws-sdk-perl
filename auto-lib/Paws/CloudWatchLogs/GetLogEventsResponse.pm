@@ -14,7 +14,7 @@ Paws::CloudWatchLogs::GetLogEventsResponse
 
 =head1 ATTRIBUTES
 
-=head2 events => ArrayRef[Paws::CloudWatchLogs::OutputLogEvent]
+=head2 events => ArrayRef[L<Paws::CloudWatchLogs::OutputLogEvent>]
 
   
 =head2 nextBackwardToken => Str

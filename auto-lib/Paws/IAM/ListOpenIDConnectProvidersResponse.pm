@@ -13,7 +13,7 @@ Paws::IAM::ListOpenIDConnectProvidersResponse
 
 =head1 ATTRIBUTES
 
-=head2 OpenIDConnectProviderList => ArrayRef[Paws::IAM::OpenIDConnectProviderListEntry]
+=head2 OpenIDConnectProviderList => ArrayRef[L<Paws::IAM::OpenIDConnectProviderListEntry>]
 
   The list of IAM OpenID Connect providers in the AWS account.
 

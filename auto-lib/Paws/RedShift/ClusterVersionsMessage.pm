@@ -14,7 +14,7 @@ Paws::RedShift::ClusterVersionsMessage
 
 =head1 ATTRIBUTES
 
-=head2 ClusterVersions => ArrayRef[Paws::RedShift::ClusterVersion]
+=head2 ClusterVersions => ArrayRef[L<Paws::RedShift::ClusterVersion>]
 
   A list of C<Version> elements.
 =head2 Marker => Str

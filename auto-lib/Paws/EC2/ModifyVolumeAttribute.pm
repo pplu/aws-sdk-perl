@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 AutoEnableIO => Paws::EC2::AttributeBooleanValue
+=head2 AutoEnableIO => L<Paws::EC2::AttributeBooleanValue>
 
   Indicates whether the volume should be auto-enabled for I/O operations.
 

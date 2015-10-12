@@ -32,12 +32,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Options => Paws::CloudSearch::Expression
+=head2 B<REQUIRED> Options => L<Paws::CloudSearch::Expression>
 
   The expression that is evaluated for sorting while processing a search
 request.
 
-=head2 B<REQUIRED> Status => Paws::CloudSearch::OptionStatus
+=head2 B<REQUIRED> Status => L<Paws::CloudSearch::OptionStatus>
 
   
 

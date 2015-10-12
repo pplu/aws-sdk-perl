@@ -12,7 +12,7 @@ Paws::Support::DescribeTrustedAdvisorChecksResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> checks => ArrayRef[Paws::Support::TrustedAdvisorCheckDescription]
+=head2 B<REQUIRED> checks => ArrayRef[L<Paws::Support::TrustedAdvisorCheckDescription>]
 
   Information about all available Trusted Advisor checks.
 

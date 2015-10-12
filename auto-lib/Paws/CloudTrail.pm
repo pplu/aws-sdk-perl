@@ -134,7 +134,7 @@ included with each AWS API call listed in the log files.
 
 =head1 METHODS
 
-=head2 AddTags(ResourceId => Str, [TagsList => ArrayRef[Paws::CloudTrail::Tag]])
+=head2 AddTags(ResourceId => Str, [TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]])
 
 Each argument is described in detail in: L<Paws::CloudTrail::AddTags>
 
@@ -293,7 +293,7 @@ Lists the tags for the trail in the current region.
 
 
 
-=head2 LookupEvents([EndTime => Str, LookupAttributes => ArrayRef[Paws::CloudTrail::LookupAttribute], MaxResults => Int, NextToken => Str, StartTime => Str])
+=head2 LookupEvents([EndTime => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
 
 Each argument is described in detail in: L<Paws::CloudTrail::LookupEvents>
 
@@ -328,7 +328,7 @@ lookup if CloudTrail logging was not enabled when the events occurred.
 
 
 
-=head2 RemoveTags(ResourceId => Str, [TagsList => ArrayRef[Paws::CloudTrail::Tag]])
+=head2 RemoveTags(ResourceId => Str, [TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]])
 
 Each argument is described in detail in: L<Paws::CloudTrail::RemoveTags>
 

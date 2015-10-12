@@ -73,7 +73,7 @@ started to carry on the workflow.
   The time when the workflow execution was closed. Set only if the
 execution status is CLOSED.
 
-=head2 B<REQUIRED> execution => Paws::SimpleWorkflow::WorkflowExecution
+=head2 B<REQUIRED> execution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The workflow execution this information is about.
 
@@ -81,7 +81,7 @@ execution status is CLOSED.
 
   The current status of the execution.
 
-=head2 parent => Paws::SimpleWorkflow::WorkflowExecution
+=head2 parent => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   If this workflow execution is a child of another execution then
 contains the workflow execution that started this execution.
@@ -96,7 +96,7 @@ contains the workflow execution that started this execution.
 used to identify and list workflow executions of interest through the
 visibility APIs. A workflow execution can have a maximum of 5 tags.
 
-=head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
+=head2 B<REQUIRED> workflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
   The type of the workflow execution.
 

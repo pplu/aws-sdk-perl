@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head1 ATTRIBUTES
 
-=head2 Dimensions => ArrayRef[Paws::CloudWatch::Dimension]
+=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
   A list of dimensions associated with the metric. Note, when using the
 Dimensions value in a query, you need to append .member.N to it (e.g.,
@@ -46,7 +46,7 @@ Dimensions.member.N).
 
   The name of the metric.
 
-=head2 StatisticValues => Paws::CloudWatch::StatisticSet
+=head2 StatisticValues => L<Paws::CloudWatch::StatisticSet>
 
   A set of statistical values describing the metric.
 

@@ -45,7 +45,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Re
 
 - The resource type for hosted zones is C<hostedzone>.
 
-=head2 Tags => ArrayRef[Paws::Route53::Tag]
+=head2 Tags => ArrayRef[L<Paws::Route53::Tag>]
 
   The tags associated with the specified resource.
 

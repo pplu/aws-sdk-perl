@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The C<HostedZoneId> value sent in the request.
 
-=head2 B<REQUIRED> HostedZones => ArrayRef[Paws::Route53::HostedZone]
+=head2 B<REQUIRED> HostedZones => ArrayRef[L<Paws::Route53::HostedZone>]
 
   A complex type that contains information about the hosted zones
 associated with the current AWS account.

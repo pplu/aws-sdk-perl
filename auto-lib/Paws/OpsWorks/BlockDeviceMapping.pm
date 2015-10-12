@@ -41,7 +41,7 @@ For the root device, you can use the explicit device name or you can
 set this parameter to C<ROOT_DEVICE> and AWS OpsWorks will provide the
 correct device name.
 
-=head2 Ebs => Paws::OpsWorks::EbsBlockDevice
+=head2 Ebs => L<Paws::OpsWorks::EbsBlockDevice>
 
   An C<EBSBlockDevice> that defines how to configure an Amazon EBS volume
 when the instance is launched.

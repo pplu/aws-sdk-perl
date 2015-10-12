@@ -18,7 +18,7 @@ Paws::EC2::DescribePrefixListsResult
 
   The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
-=head2 PrefixLists => ArrayRef[Paws::EC2::PrefixList]
+=head2 PrefixLists => ArrayRef[L<Paws::EC2::PrefixList>]
 
   All available prefix lists.
 

@@ -76,7 +76,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Reserv
 
   The description of the reserved DB instance.
 
-=head2 RecurringCharges => ArrayRef[Paws::RDS::RecurringCharge]
+=head2 RecurringCharges => ArrayRef[L<Paws::RDS::RecurringCharge>]
 
   The recurring price charged to run this reserved DB instance.
 

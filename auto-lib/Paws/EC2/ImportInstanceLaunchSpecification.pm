@@ -73,7 +73,7 @@ Compute Cloud User Guide.
 
   Indicates whether monitoring is enabled.
 
-=head2 Placement => Paws::EC2::Placement
+=head2 Placement => L<Paws::EC2::Placement>
 
   The placement information for the instance.
 
@@ -86,7 +86,7 @@ subnet.
 
   [EC2-VPC] The ID of the subnet in which to launch the instance.
 
-=head2 UserData => Paws::EC2::UserData
+=head2 UserData => L<Paws::EC2::UserData>
 
   The Base64-encoded MIME user data to be made available to the instance.
 

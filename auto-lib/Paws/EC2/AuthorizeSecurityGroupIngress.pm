@@ -66,7 +66,7 @@ number. For the ICMP type number, use C<-1> to specify all ICMP types.
 
   [EC2-Classic, default VPC] The name of the security group.
 
-=head2 IpPermissions => ArrayRef[Paws::EC2::IpPermission]
+=head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
   A set of IP permissions. Can be used to specify multiple rules in a
 single command.

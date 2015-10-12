@@ -46,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::D
 
   The app ID.
 
-=head2 Command => Paws::OpsWorks::DeploymentCommand
+=head2 Command => L<Paws::OpsWorks::DeploymentCommand>
 
   
 

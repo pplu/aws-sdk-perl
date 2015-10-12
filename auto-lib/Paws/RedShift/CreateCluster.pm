@@ -336,7 +336,7 @@ Constraints: Minimum 30-minute window.
 
   If C<true>, the cluster can be accessed from a public network.
 
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   A list of tag instances.
 

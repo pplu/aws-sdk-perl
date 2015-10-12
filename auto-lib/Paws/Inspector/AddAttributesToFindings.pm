@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 attributes => ArrayRef[Paws::Inspector::Attribute]
+=head2 attributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
   The array of attributes that you want to assign to specified findings.
 

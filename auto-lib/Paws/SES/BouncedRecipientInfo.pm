@@ -51,7 +51,7 @@ that permits you to receive email for the recipient of the bounced
 email. For more information about sending authorization, see the Amazon
 SES Developer Guide.
 
-=head2 RecipientDsnFields => Paws::SES::RecipientDsnFields
+=head2 RecipientDsnFields => L<Paws::SES::RecipientDsnFields>
 
   Recipient-related DSN fields, most of which would normally be filled in
 automatically when provided with a C<BounceType>. You must provide

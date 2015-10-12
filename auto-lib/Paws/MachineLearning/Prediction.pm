@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head1 ATTRIBUTES
 
-=head2 details => Paws::MachineLearning::DetailsMap
+=head2 details => L<Paws::MachineLearning::DetailsMap>
 
   
 
@@ -42,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
   The prediction label for either a BINARY or MULTICLASS C<MLModel>.
 
-=head2 predictedScores => Paws::MachineLearning::ScoreValuePerLabelMap
+=head2 predictedScores => L<Paws::MachineLearning::ScoreValuePerLabelMap>
 
   
 

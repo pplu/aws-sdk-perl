@@ -20,7 +20,7 @@ Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult
 
 =head1 ATTRIBUTES
 
-=head2 ApplicationMetrics => Paws::ElasticBeanstalk::ApplicationMetrics
+=head2 ApplicationMetrics => L<Paws::ElasticBeanstalk::ApplicationMetrics>
 
   
 =head2 Causes => ArrayRef[Str]
@@ -38,7 +38,7 @@ Statuses.
 
   Contains the response body with information about the health of the
 environment.
-=head2 InstancesHealth => Paws::ElasticBeanstalk::InstanceHealthSummary
+=head2 InstancesHealth => L<Paws::ElasticBeanstalk::InstanceHealthSummary>
 
   
 =head2 RefreshedAt => Str

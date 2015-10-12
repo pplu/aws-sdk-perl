@@ -13,7 +13,7 @@ Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage
 
 =head1 ATTRIBUTES
 
-=head2 ApplicationVersions => ArrayRef[Paws::ElasticBeanstalk::ApplicationVersionDescription]
+=head2 ApplicationVersions => ArrayRef[L<Paws::ElasticBeanstalk::ApplicationVersionDescription>]
 
   A list of ApplicationVersionDescription .
 

@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Replica
   Amazon Resource Name (ARN) of an IAM role for Amazon S3 to assume when
 replicating the objects.
 
-=head2 B<REQUIRED> Rules => ArrayRef[Paws::S3::ReplicationRule]
+=head2 B<REQUIRED> Rules => ArrayRef[L<Paws::S3::ReplicationRule>]
 
   Container for information about a particular replication rule.
 Replication configuration must have at least one rule and can contain

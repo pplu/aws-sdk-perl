@@ -14,7 +14,7 @@ Paws::RDS::DescribeDBLogFilesResponse
 
 =head1 ATTRIBUTES
 
-=head2 DescribeDBLogFiles => ArrayRef[Paws::RDS::DescribeDBLogFilesDetails]
+=head2 DescribeDBLogFiles => ArrayRef[L<Paws::RDS::DescribeDBLogFilesDetails>]
 
   The DB log files returned.
 =head2 Marker => Str

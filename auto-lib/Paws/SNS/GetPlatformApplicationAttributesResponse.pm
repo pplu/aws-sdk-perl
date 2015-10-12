@@ -13,7 +13,7 @@ Paws::SNS::GetPlatformApplicationAttributesResponse
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => Paws::SNS::MapStringToString
+=head2 Attributes => L<Paws::SNS::MapStringToString>
 
   Attributes include the following:
 

@@ -283,7 +283,7 @@ application revisions.
 
 =head1 METHODS
 
-=head2 AddTagsToOnPremisesInstances(instanceNames => ArrayRef[Str], tags => ArrayRef[Paws::CodeDeploy::Tag])
+=head2 AddTagsToOnPremisesInstances(instanceNames => ArrayRef[Str], tags => ArrayRef[L<Paws::CodeDeploy::Tag>])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::AddTagsToOnPremisesInstances>
 
@@ -383,7 +383,7 @@ Creates a new application.
 
 
 
-=head2 CreateDeployment(applicationName => Str, [deploymentConfigName => Str, deploymentGroupName => Str, description => Str, ignoreApplicationStopFailures => Bool, revision => Paws::CodeDeploy::RevisionLocation])
+=head2 CreateDeployment(applicationName => Str, [deploymentConfigName => Str, deploymentGroupName => Str, description => Str, ignoreApplicationStopFailures => Bool, revision => L<Paws::CodeDeploy::RevisionLocation>])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeployment>
 
@@ -403,7 +403,7 @@ Deploys an application revision through the specified deployment group.
 
 
 
-=head2 CreateDeploymentConfig(deploymentConfigName => Str, [minimumHealthyHosts => Paws::CodeDeploy::MinimumHealthyHosts])
+=head2 CreateDeploymentConfig(deploymentConfigName => Str, [minimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentConfig>
 
@@ -423,7 +423,7 @@ Creates a new deployment configuration.
 
 
 
-=head2 CreateDeploymentGroup(applicationName => Str, deploymentGroupName => Str, serviceRoleArn => Str, [autoScalingGroups => ArrayRef[Str], deploymentConfigName => Str, ec2TagFilters => ArrayRef[Paws::CodeDeploy::EC2TagFilter], onPremisesInstanceTagFilters => ArrayRef[Paws::CodeDeploy::TagFilter]])
+=head2 CreateDeploymentGroup(applicationName => Str, deploymentGroupName => Str, serviceRoleArn => Str, [autoScalingGroups => ArrayRef[Str], deploymentConfigName => Str, ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], onPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentGroup>
 
@@ -547,7 +547,7 @@ Gets information about an application.
 
 
 
-=head2 GetApplicationRevision(applicationName => Str, revision => Paws::CodeDeploy::RevisionLocation)
+=head2 GetApplicationRevision(applicationName => Str, revision => L<Paws::CodeDeploy::RevisionLocation>)
 
 Each argument is described in detail in: L<Paws::CodeDeploy::GetApplicationRevision>
 
@@ -771,7 +771,7 @@ user or AWS account.
 
 
 
-=head2 ListDeployments([applicationName => Str, createTimeRange => Paws::CodeDeploy::TimeRange, deploymentGroupName => Str, includeOnlyStatuses => ArrayRef[Str], nextToken => Str])
+=head2 ListDeployments([applicationName => Str, createTimeRange => L<Paws::CodeDeploy::TimeRange>, deploymentGroupName => Str, includeOnlyStatuses => ArrayRef[Str], nextToken => Str])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::ListDeployments>
 
@@ -792,7 +792,7 @@ registered with the applicable IAM user or AWS account.
 
 
 
-=head2 ListOnPremisesInstances([nextToken => Str, registrationStatus => Str, tagFilters => ArrayRef[Paws::CodeDeploy::TagFilter]])
+=head2 ListOnPremisesInstances([nextToken => Str, registrationStatus => Str, tagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::ListOnPremisesInstances>
 
@@ -817,7 +817,7 @@ parameter.
 
 
 
-=head2 RegisterApplicationRevision(applicationName => Str, revision => Paws::CodeDeploy::RevisionLocation, [description => Str])
+=head2 RegisterApplicationRevision(applicationName => Str, revision => L<Paws::CodeDeploy::RevisionLocation>, [description => Str])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::RegisterApplicationRevision>
 
@@ -857,7 +857,7 @@ Registers an on-premises instance.
 
 
 
-=head2 RemoveTagsFromOnPremisesInstances(instanceNames => ArrayRef[Str], tags => ArrayRef[Paws::CodeDeploy::Tag])
+=head2 RemoveTagsFromOnPremisesInstances(instanceNames => ArrayRef[Str], tags => ArrayRef[L<Paws::CodeDeploy::Tag>])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::RemoveTagsFromOnPremisesInstances>
 
@@ -917,7 +917,7 @@ Changes an existing application's name.
 
 
 
-=head2 UpdateDeploymentGroup(applicationName => Str, currentDeploymentGroupName => Str, [autoScalingGroups => ArrayRef[Str], deploymentConfigName => Str, ec2TagFilters => ArrayRef[Paws::CodeDeploy::EC2TagFilter], newDeploymentGroupName => Str, onPremisesInstanceTagFilters => ArrayRef[Paws::CodeDeploy::TagFilter], serviceRoleArn => Str])
+=head2 UpdateDeploymentGroup(applicationName => Str, currentDeploymentGroupName => Str, [autoScalingGroups => ArrayRef[Str], deploymentConfigName => Str, ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], newDeploymentGroupName => Str, onPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], serviceRoleArn => Str])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::UpdateDeploymentGroup>
 

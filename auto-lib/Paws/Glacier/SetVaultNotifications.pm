@@ -49,7 +49,7 @@ ID.
 
   The name of the vault.
 
-=head2 vaultNotificationConfig => Paws::Glacier::VaultNotificationConfig
+=head2 vaultNotificationConfig => L<Paws::Glacier::VaultNotificationConfig>
 
   Provides options for specifying notification configuration.
 

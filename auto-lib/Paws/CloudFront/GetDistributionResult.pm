@@ -28,7 +28,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Distribution => Paws::CloudFront::Distribution
+=head2 Distribution => L<Paws::CloudFront::Distribution>
 
   The distribution's information.
 

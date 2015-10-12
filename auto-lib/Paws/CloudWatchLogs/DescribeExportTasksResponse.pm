@@ -13,7 +13,7 @@ Paws::CloudWatchLogs::DescribeExportTasksResponse
 
 =head1 ATTRIBUTES
 
-=head2 exportTasks => ArrayRef[Paws::CloudWatchLogs::ExportTask]
+=head2 exportTasks => ArrayRef[L<Paws::CloudWatchLogs::ExportTask>]
 
   
 =head2 nextToken => Str

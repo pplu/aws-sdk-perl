@@ -51,7 +51,7 @@ instance that is roughly four times more expensive would result in the
 normalized instance hours being incremented by four. This result is
 only an approximation and does not reflect the actual billing rate.
 
-=head2 Status => Paws::EMR::ClusterStatus
+=head2 Status => L<Paws::EMR::ClusterStatus>
 
   The details about the current status of the cluster.
 

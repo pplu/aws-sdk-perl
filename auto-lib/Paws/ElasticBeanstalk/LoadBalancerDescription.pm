@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   The domain name of the LoadBalancer.
 
-=head2 Listeners => ArrayRef[Paws::ElasticBeanstalk::Listener]
+=head2 Listeners => ArrayRef[L<Paws::ElasticBeanstalk::Listener>]
 
   A list of Listeners used by the LoadBalancer.
 

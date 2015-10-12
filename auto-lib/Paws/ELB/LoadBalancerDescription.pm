@@ -50,7 +50,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::LoadBa
 
   The Availability Zones for the load balancer.
 
-=head2 BackendServerDescriptions => ArrayRef[Paws::ELB::BackendServerDescription]
+=head2 BackendServerDescriptions => ArrayRef[L<Paws::ELB::BackendServerDescription>]
 
   Information about the back-end servers.
 
@@ -74,15 +74,15 @@ balancer.
 
   The external DNS name of the load balancer.
 
-=head2 HealthCheck => Paws::ELB::HealthCheck
+=head2 HealthCheck => L<Paws::ELB::HealthCheck>
 
   Information about the health checks conducted on the load balancer.
 
-=head2 Instances => ArrayRef[Paws::ELB::Instance]
+=head2 Instances => ArrayRef[L<Paws::ELB::Instance>]
 
   The IDs of the instances for the load balancer.
 
-=head2 ListenerDescriptions => ArrayRef[Paws::ELB::ListenerDescription]
+=head2 ListenerDescriptions => ArrayRef[L<Paws::ELB::ListenerDescription>]
 
   The listeners for the load balancer.
 
@@ -90,7 +90,7 @@ balancer.
 
   The name of the load balancer.
 
-=head2 Policies => Paws::ELB::Policies
+=head2 Policies => L<Paws::ELB::Policies>
 
   The policies defined for the load balancer.
 
@@ -109,7 +109,7 @@ that resolves to a private IP address.
   The security groups for the load balancer. Valid only for load
 balancers in a VPC.
 
-=head2 SourceSecurityGroup => Paws::ELB::SourceSecurityGroup
+=head2 SourceSecurityGroup => L<Paws::ELB::SourceSecurityGroup>
 
   The security group that you can use as part of your inbound rules for
 your load balancer's back-end application instances. To only allow

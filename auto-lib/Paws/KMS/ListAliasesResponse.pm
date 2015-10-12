@@ -14,7 +14,7 @@ Paws::KMS::ListAliasesResponse
 
 =head1 ATTRIBUTES
 
-=head2 Aliases => ArrayRef[Paws::KMS::AliasListEntry]
+=head2 Aliases => ArrayRef[L<Paws::KMS::AliasListEntry>]
 
   A list of key aliases in the user's account.
 =head2 NextMarker => Str

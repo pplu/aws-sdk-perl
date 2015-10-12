@@ -14,13 +14,13 @@ Paws::DataPipeline::GetPipelineDefinitionOutput
 
 =head1 ATTRIBUTES
 
-=head2 parameterObjects => ArrayRef[Paws::DataPipeline::ParameterObject]
+=head2 parameterObjects => ArrayRef[L<Paws::DataPipeline::ParameterObject>]
 
   The parameter objects used in the pipeline definition.
-=head2 parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue]
+=head2 parameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]
 
   The parameter values used in the pipeline definition.
-=head2 pipelineObjects => ArrayRef[Paws::DataPipeline::PipelineObject]
+=head2 pipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>]
 
   The objects defined in the pipeline.
 

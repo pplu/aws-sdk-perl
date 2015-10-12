@@ -25,7 +25,7 @@ recovery points that were listed for description ended.
 Use this marker in your next request to list the next set of virtual
 tape recovery points in the list. If there are no more recovery points
 to describe, this field does not appear in the response.
-=head2 TapeRecoveryPointInfos => ArrayRef[Paws::StorageGateway::TapeRecoveryPointInfo]
+=head2 TapeRecoveryPointInfos => ArrayRef[L<Paws::StorageGateway::TapeRecoveryPointInfo>]
 
   An array of TapeRecoveryPointInfos that are available for the specified
 gateway.

@@ -20,7 +20,7 @@ Paws::CloudFront::CreateCloudFrontOriginAccessIdentityResult
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> CloudFrontOriginAccessIdentityConfig => Paws::CloudFront::CloudFrontOriginAccessIdentityConfig
+=head2 B<REQUIRED> CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>
 
   The origin access identity's configuration information.
 

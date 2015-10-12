@@ -48,7 +48,7 @@ version of an object.
 
   Date and time the object was last modified.
 
-=head2 Owner => Paws::S3::Owner
+=head2 Owner => L<Paws::S3::Owner>
 
   
 

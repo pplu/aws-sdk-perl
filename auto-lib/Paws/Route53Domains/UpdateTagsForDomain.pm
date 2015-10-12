@@ -52,7 +52,7 @@ Punycode.
 
 Required: Yes
 
-=head2 TagsToUpdate => ArrayRef[Paws::Route53Domains::Tag]
+=head2 TagsToUpdate => ArrayRef[L<Paws::Route53Domains::Tag>]
 
   A list of the tag keys and values that you want to add or update. If
 you specify a key that already exists, the corresponding value will be

@@ -464,7 +464,7 @@ Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
-=head2 CreateCluster(ClusterIdentifier => Str, MasterUsername => Str, MasterUserPassword => Str, NodeType => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ClusterType => Str, ClusterVersion => Str, DBName => Str, ElasticIp => Str, Encrypted => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, KmsKeyId => Str, NumberOfNodes => Int, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, Tags => ArrayRef[Paws::RedShift::Tag], VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 CreateCluster(ClusterIdentifier => Str, MasterUsername => Str, MasterUserPassword => Str, NodeType => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ClusterType => Str, ClusterVersion => Str, DBName => Str, ElasticIp => Str, Encrypted => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, KmsKeyId => Str, NumberOfNodes => Int, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, Tags => ArrayRef[L<Paws::RedShift::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateCluster>
 
@@ -490,7 +490,7 @@ Redshift Cluster Management Guide> .
 
 
 
-=head2 CreateClusterParameterGroup(Description => Str, ParameterGroupFamily => Str, ParameterGroupName => Str, [Tags => ArrayRef[Paws::RedShift::Tag]])
+=head2 CreateClusterParameterGroup(Description => Str, ParameterGroupFamily => Str, ParameterGroupName => Str, [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateClusterParameterGroup>
 
@@ -520,7 +520,7 @@ in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
-=head2 CreateClusterSecurityGroup(ClusterSecurityGroupName => Str, Description => Str, [Tags => ArrayRef[Paws::RedShift::Tag]])
+=head2 CreateClusterSecurityGroup(ClusterSecurityGroupName => Str, Description => Str, [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateClusterSecurityGroup>
 
@@ -545,7 +545,7 @@ Guide>.
 
 
 
-=head2 CreateClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [Tags => ArrayRef[Paws::RedShift::Tag]])
+=head2 CreateClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateClusterSnapshot>
 
@@ -569,7 +569,7 @@ Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
-=head2 CreateClusterSubnetGroup(ClusterSubnetGroupName => Str, Description => Str, SubnetIds => ArrayRef[Str], [Tags => ArrayRef[Paws::RedShift::Tag]])
+=head2 CreateClusterSubnetGroup(ClusterSubnetGroupName => Str, Description => Str, SubnetIds => ArrayRef[Str], [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateClusterSubnetGroup>
 
@@ -594,7 +594,7 @@ Subnet Groups in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
-=head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str], Severity => Str, SourceIds => ArrayRef[Str], SourceType => Str, Tags => ArrayRef[Paws::RedShift::Tag]])
+=head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str], Severity => Str, SourceIds => ArrayRef[Str], SourceType => Str, Tags => ArrayRef[L<Paws::RedShift::Tag>]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateEventSubscription>
 
@@ -637,7 +637,7 @@ if you specify a source ID.
 
 
 
-=head2 CreateHsmClientCertificate(HsmClientCertificateIdentifier => Str, [Tags => ArrayRef[Paws::RedShift::Tag]])
+=head2 CreateHsmClientCertificate(HsmClientCertificateIdentifier => Str, [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateHsmClientCertificate>
 
@@ -666,7 +666,7 @@ Cluster Management Guide.
 
 
 
-=head2 CreateHsmConfiguration(Description => Str, HsmConfigurationIdentifier => Str, HsmIpAddress => Str, HsmPartitionName => Str, HsmPartitionPassword => Str, HsmServerPublicCertificate => Str, [Tags => ArrayRef[Paws::RedShift::Tag]])
+=head2 CreateHsmConfiguration(Description => Str, HsmConfigurationIdentifier => Str, HsmIpAddress => Str, HsmPartitionName => Str, HsmPartitionPassword => Str, HsmServerPublicCertificate => Str, [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateHsmConfiguration>
 
@@ -694,7 +694,7 @@ Modules in the Amazon Redshift Cluster Management Guide.
 
 
 
-=head2 CreateSnapshotCopyGrant(SnapshotCopyGrantName => Str, [KmsKeyId => Str, Tags => ArrayRef[Paws::RedShift::Tag]])
+=head2 CreateSnapshotCopyGrant(SnapshotCopyGrantName => Str, [KmsKeyId => Str, Tags => ArrayRef[L<Paws::RedShift::Tag>]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateSnapshotCopyGrant>
 
@@ -720,7 +720,7 @@ Management Guide>.
 
 
 
-=head2 CreateTags(ResourceName => Str, Tags => ArrayRef[Paws::RedShift::Tag])
+=head2 CreateTags(ResourceName => Str, Tags => ArrayRef[L<Paws::RedShift::Tag>])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateTags>
 
@@ -1695,7 +1695,7 @@ not change.
 
 
 
-=head2 ModifyClusterParameterGroup(ParameterGroupName => Str, Parameters => ArrayRef[Paws::RedShift::Parameter])
+=head2 ModifyClusterParameterGroup(ParameterGroupName => Str, Parameters => ArrayRef[L<Paws::RedShift::Parameter>])
 
 Each argument is described in detail in: L<Paws::RedShift::ModifyClusterParameterGroup>
 
@@ -1836,7 +1836,7 @@ Management Guide>
 
 
 
-=head2 ResetClusterParameterGroup(ParameterGroupName => Str, [Parameters => ArrayRef[Paws::RedShift::Parameter], ResetAllParameters => Bool])
+=head2 ResetClusterParameterGroup(ParameterGroupName => Str, [Parameters => ArrayRef[L<Paws::RedShift::Parameter>], ResetAllParameters => Bool])
 
 Each argument is described in detail in: L<Paws::RedShift::ResetClusterParameterGroup>
 

@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   Each active trusted signer.
 
-=head2 Items => ArrayRef[Paws::CloudFront::Signer]
+=head2 Items => ArrayRef[L<Paws::CloudFront::Signer>]
 
   A complex type that contains one Signer complex type for each unique
 trusted signer that is specified in the TrustedSigners complex type,

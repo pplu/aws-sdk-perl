@@ -12,7 +12,7 @@ Paws::CodeDeploy::GetDeploymentInstanceOutput
 
 =head1 ATTRIBUTES
 
-=head2 instanceSummary => Paws::CodeDeploy::InstanceSummary
+=head2 instanceSummary => L<Paws::CodeDeploy::InstanceSummary>
 
   Information about the instance.
 

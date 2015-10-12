@@ -47,7 +47,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The ARN of the project for the device pool.
 
-=head2 B<REQUIRED> rules => ArrayRef[Paws::DeviceFarm::Rule]
+=head2 B<REQUIRED> rules => ArrayRef[L<Paws::DeviceFarm::Rule>]
 
   The device pool's rules.
 

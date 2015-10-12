@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 If this parameter is null, the new rule will be inserted at the
 beginning of the rule list.
 
-=head2 B<REQUIRED> Rule => Paws::SES::ReceiptRule
+=head2 B<REQUIRED> Rule => L<Paws::SES::ReceiptRule>
 
   A data structure that contains the specified rule's name, actions,
 recipients, domains, enabled status, scan status, and TLS policy.

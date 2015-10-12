@@ -47,7 +47,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
   A timestamp indicating when the instance information was last updated.
 
-=head2 lifecycleEvents => ArrayRef[Paws::CodeDeploy::LifecycleEvent]
+=head2 lifecycleEvents => ArrayRef[L<Paws::CodeDeploy::LifecycleEvent>]
 
   A list of lifecycle events for this instance.
 

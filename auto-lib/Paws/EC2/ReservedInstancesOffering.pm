@@ -79,7 +79,7 @@ Marketplace offering, this is C<true>.
 
   The Reserved Instance offering type.
 
-=head2 PricingDetails => ArrayRef[Paws::EC2::PricingDetail]
+=head2 PricingDetails => ArrayRef[L<Paws::EC2::PricingDetail>]
 
   The pricing details of the Reserved Instance offering.
 
@@ -87,7 +87,7 @@ Marketplace offering, this is C<true>.
 
   The Reserved Instance product platform description.
 
-=head2 RecurringCharges => ArrayRef[Paws::EC2::RecurringCharge]
+=head2 RecurringCharges => ArrayRef[L<Paws::EC2::RecurringCharge>]
 
   The recurring charge tag assigned to the resource.
 

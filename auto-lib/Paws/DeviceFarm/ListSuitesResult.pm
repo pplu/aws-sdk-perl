@@ -19,7 +19,7 @@ Paws::DeviceFarm::ListSuitesResult
 is an identifier that is also returned, which can be used in a
 subsequent call to this operation to return the next set of items in
 the list.
-=head2 suites => ArrayRef[Paws::DeviceFarm::Suite]
+=head2 suites => ArrayRef[L<Paws::DeviceFarm::Suite>]
 
   Information about the suites.
 

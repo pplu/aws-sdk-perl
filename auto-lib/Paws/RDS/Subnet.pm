@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Subnet
 
 =head1 ATTRIBUTES
 
-=head2 SubnetAvailabilityZone => Paws::RDS::AvailabilityZone
+=head2 SubnetAvailabilityZone => L<Paws::RDS::AvailabilityZone>
 
   
 

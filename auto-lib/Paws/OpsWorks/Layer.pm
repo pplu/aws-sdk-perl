@@ -51,7 +51,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::L
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => Paws::OpsWorks::LayerAttributes
+=head2 Attributes => L<Paws::OpsWorks::LayerAttributes>
 
   The layer attributes.
 
@@ -87,7 +87,7 @@ instances. For more information about IAM ARNs, see Using Identifiers.
   A JSON formatted string containing the layer's custom stack
 configuration and deployment attributes.
 
-=head2 CustomRecipes => Paws::OpsWorks::Recipes
+=head2 CustomRecipes => L<Paws::OpsWorks::Recipes>
 
   A C<LayerCustomRecipes> object that specifies the layer's custom
 recipes.
@@ -96,7 +96,7 @@ recipes.
 
   An array containing the layer's custom security group IDs.
 
-=head2 DefaultRecipes => Paws::OpsWorks::Recipes
+=head2 DefaultRecipes => L<Paws::OpsWorks::Recipes>
 
   
 
@@ -124,7 +124,7 @@ that your instances have the latest security updates.
 
   The layer ID.
 
-=head2 LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration
+=head2 LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>
 
   A C<LifeCycleEventConfiguration> object that specifies the Shutdown
 event configuration.
@@ -153,7 +153,7 @@ event configuration.
 
   Whether the layer uses Amazon EBS-optimized instances.
 
-=head2 VolumeConfigurations => ArrayRef[Paws::OpsWorks::VolumeConfiguration]
+=head2 VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]
 
   A C<VolumeConfigurations> object that describes the layer's Amazon EBS
 volumes.

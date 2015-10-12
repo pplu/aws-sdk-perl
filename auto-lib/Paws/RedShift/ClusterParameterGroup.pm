@@ -47,7 +47,7 @@ parameter group is compatible with.
 
   The name of the cluster parameter group.
 
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   The list of tags for the cluster parameter group.
 

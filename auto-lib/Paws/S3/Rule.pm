@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Rule ob
 
 =head1 ATTRIBUTES
 
-=head2 Expiration => Paws::S3::LifecycleExpiration
+=head2 Expiration => L<Paws::S3::LifecycleExpiration>
 
   
 
@@ -46,11 +46,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Rule ob
   Unique identifier for the rule. The value cannot be longer than 255
 characters.
 
-=head2 NoncurrentVersionExpiration => Paws::S3::NoncurrentVersionExpiration
+=head2 NoncurrentVersionExpiration => L<Paws::S3::NoncurrentVersionExpiration>
 
   
 
-=head2 NoncurrentVersionTransition => Paws::S3::NoncurrentVersionTransition
+=head2 NoncurrentVersionTransition => L<Paws::S3::NoncurrentVersionTransition>
 
   
 
@@ -63,7 +63,7 @@ characters.
   If 'Enabled', the rule is currently being applied. If 'Disabled', the
 rule is not currently being applied.
 
-=head2 Transition => Paws::S3::Transition
+=head2 Transition => L<Paws::S3::Transition>
 
   
 

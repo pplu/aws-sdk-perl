@@ -179,7 +179,7 @@ devices in the cloud.
 
 =head1 METHODS
 
-=head2 CreateDevicePool(name => Str, projectArn => Str, rules => ArrayRef[Paws::DeviceFarm::Rule], [description => Str])
+=head2 CreateDevicePool(name => Str, projectArn => Str, rules => ArrayRef[L<Paws::DeviceFarm::Rule>], [description => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::CreateDevicePool>
 
@@ -660,7 +660,7 @@ Gets information about uploads.
 
 
 
-=head2 ScheduleRun(appArn => Str, devicePoolArn => Str, projectArn => Str, test => Paws::DeviceFarm::ScheduleRunTest, [configuration => Paws::DeviceFarm::ScheduleRunConfiguration, name => Str])
+=head2 ScheduleRun(appArn => Str, devicePoolArn => Str, projectArn => Str, test => L<Paws::DeviceFarm::ScheduleRunTest>, [configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>, name => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ScheduleRun>
 

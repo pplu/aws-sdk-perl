@@ -54,11 +54,11 @@ configuration with the new configuration.
 
   The ID of the destination.
 
-=head2 RedshiftDestinationUpdate => Paws::Firehose::RedshiftDestinationUpdate
+=head2 RedshiftDestinationUpdate => L<Paws::Firehose::RedshiftDestinationUpdate>
 
   
 
-=head2 S3DestinationUpdate => Paws::Firehose::S3DestinationUpdate
+=head2 S3DestinationUpdate => L<Paws::Firehose::S3DestinationUpdate>
 
   
 

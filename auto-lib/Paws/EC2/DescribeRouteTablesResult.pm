@@ -13,7 +13,7 @@ Paws::EC2::DescribeRouteTablesResult
 
 =head1 ATTRIBUTES
 
-=head2 RouteTables => ArrayRef[Paws::EC2::RouteTable]
+=head2 RouteTables => ArrayRef[L<Paws::EC2::RouteTable>]
 
   Information about one or more route tables.
 

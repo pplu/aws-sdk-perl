@@ -12,7 +12,7 @@ Paws::DataPipeline::DescribePipelinesOutput
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> pipelineDescriptionList => ArrayRef[Paws::DataPipeline::PipelineDescription]
+=head2 B<REQUIRED> pipelineDescriptionList => ArrayRef[L<Paws::DataPipeline::PipelineDescription>]
 
   An array of descriptions for the specified pipelines.
 

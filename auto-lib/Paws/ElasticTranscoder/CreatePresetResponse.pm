@@ -14,7 +14,7 @@ Paws::ElasticTranscoder::CreatePresetResponse
 
 =head1 ATTRIBUTES
 
-=head2 Preset => Paws::ElasticTranscoder::Preset
+=head2 Preset => L<Paws::ElasticTranscoder::Preset>
 
   A section of the response body that provides information about the
 preset that is created.

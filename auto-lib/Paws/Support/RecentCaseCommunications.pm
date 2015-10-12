@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Re
 
 =head1 ATTRIBUTES
 
-=head2 communications => ArrayRef[Paws::Support::Communication]
+=head2 communications => ArrayRef[L<Paws::Support::Communication>]
 
   The five most recent communications associated with the case.
 

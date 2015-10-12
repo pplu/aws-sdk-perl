@@ -47,11 +47,11 @@ details.
   A system-generated token, such as a AWS CodeDeploy deployment ID, that
 a job uses in order to continue the job asynchronously.
 
-=head2 currentRevision => Paws::CodePipeline::CurrentRevision
+=head2 currentRevision => L<Paws::CodePipeline::CurrentRevision>
 
   
 
-=head2 executionDetails => Paws::CodePipeline::ExecutionDetails
+=head2 executionDetails => L<Paws::CodePipeline::ExecutionDetails>
 
   
 

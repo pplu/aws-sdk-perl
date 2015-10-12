@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Entries => ArrayRef[Paws::SQS::DeleteMessageBatchRequestEntry]
+=head2 B<REQUIRED> Entries => ArrayRef[L<Paws::SQS::DeleteMessageBatchRequestEntry>]
 
   A list of receipt handles for the messages to be deleted.
 

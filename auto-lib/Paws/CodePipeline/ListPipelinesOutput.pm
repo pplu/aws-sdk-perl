@@ -18,7 +18,7 @@ Paws::CodePipeline::ListPipelinesOutput
   If the amount of returned information is significantly large, an
 identifier is also returned which can be used in a subsequent list
 pipelines call to return the next set of pipelines in the list.
-=head2 pipelines => ArrayRef[Paws::CodePipeline::PipelineSummary]
+=head2 pipelines => ArrayRef[L<Paws::CodePipeline::PipelineSummary>]
 
   The list of pipelines.
 

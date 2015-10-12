@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
   The device name exposed to the EC2 instance (for example, C</dev/sdh>
 or C<xvdh>).
 
-=head2 Ebs => Paws::AutoScaling::Ebs
+=head2 Ebs => L<Paws::AutoScaling::Ebs>
 
   The information about the Amazon EBS volume.
 

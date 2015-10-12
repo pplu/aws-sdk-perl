@@ -13,7 +13,7 @@ Paws::IAM::GetPolicyResponse
 
 =head1 ATTRIBUTES
 
-=head2 Policy => Paws::IAM::Policy
+=head2 Policy => L<Paws::IAM::Policy>
 
   Information about the policy.
 

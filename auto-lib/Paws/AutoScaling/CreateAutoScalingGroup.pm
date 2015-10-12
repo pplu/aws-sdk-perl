@@ -137,7 +137,7 @@ I<Auto Scaling Developer Guide>.
 instances, if any. For more information, see Placement Groups in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
-=head2 Tags => ArrayRef[Paws::AutoScaling::Tag]
+=head2 Tags => ArrayRef[L<Paws::AutoScaling::Tag>]
 
   The tag to be created or updated. Each tag should be defined by its
 resource type, resource ID, key, value, and a propagate flag. Valid

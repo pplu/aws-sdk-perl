@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Ordera
 
 =head1 ATTRIBUTES
 
-=head2 AvailabilityZones => ArrayRef[Paws::RDS::AvailabilityZone]
+=head2 AvailabilityZones => ArrayRef[L<Paws::RDS::AvailabilityZone>]
 
   A list of Availability Zones for the orderable DB instance.
 

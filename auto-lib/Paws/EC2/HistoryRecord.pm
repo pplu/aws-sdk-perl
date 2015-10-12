@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Histor
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> EventInformation => Paws::EC2::EventInformation
+=head2 B<REQUIRED> EventInformation => L<Paws::EC2::EventInformation>
 
   Information about the event.
 

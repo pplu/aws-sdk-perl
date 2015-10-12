@@ -77,7 +77,7 @@ to 0. The value "NONE" can be used to specify unlimited duration.
   The default IAM role to use when a workflow execution invokes a AWS
 Lambda function.
 
-=head2 defaultTaskList => Paws::SimpleWorkflow::TaskList
+=head2 defaultTaskList => L<Paws::SimpleWorkflow::TaskList>
 
   I<Optional.> The default task list, specified when registering the
 workflow type, for decisions tasks scheduled for workflow executions of

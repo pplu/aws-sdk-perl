@@ -44,7 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::St
 
   The current retention period, in hours.
 
-=head2 B<REQUIRED> Shards => ArrayRef[Paws::Kinesis::Shard]
+=head2 B<REQUIRED> Shards => ArrayRef[L<Paws::Kinesis::Shard>]
 
   The shards that comprise the stream.
 

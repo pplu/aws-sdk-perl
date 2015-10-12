@@ -18,7 +18,7 @@ Paws::IoT::ListPoliciesResponse
 
   The marker for the next set of results, or null if there are no
 additional results.
-=head2 policies => ArrayRef[Paws::IoT::Policy]
+=head2 policies => ArrayRef[L<Paws::IoT::Policy>]
 
   The descriptions of the policies.
 

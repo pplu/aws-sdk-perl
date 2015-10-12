@@ -82,7 +82,7 @@ C<OnFailure> or C<DisableRollback>, but not both.
 
 Default: C<ROLLBACK>
 
-=head2 Parameters => ArrayRef[Paws::CloudFormation::Parameter]
+=head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
   A list of C<Parameter> structures that specify input parameters for the
 stack.
@@ -129,7 +129,7 @@ policy (max size: 16KB) located in an S3 bucket in the same region as
 the stack. You can specify either the C<StackPolicyBody> or the
 C<StackPolicyURL> parameter, but not both.
 
-=head2 Tags => ArrayRef[Paws::CloudFormation::Tag]
+=head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
 
   A set of user-defined C<Tags> to associate with this stack, represented
 by key/value pairs. Tags defined for the stack are propagated to EC2

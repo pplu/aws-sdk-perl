@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   A message about the unique problems' result.
 
-=head2 problems => ArrayRef[Paws::DeviceFarm::Problem]
+=head2 problems => ArrayRef[L<Paws::DeviceFarm::Problem>]
 
   Information about the problems.
 

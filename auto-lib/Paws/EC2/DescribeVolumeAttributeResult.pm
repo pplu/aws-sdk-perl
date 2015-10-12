@@ -15,10 +15,10 @@ Paws::EC2::DescribeVolumeAttributeResult
 
 =head1 ATTRIBUTES
 
-=head2 AutoEnableIO => Paws::EC2::AttributeBooleanValue
+=head2 AutoEnableIO => L<Paws::EC2::AttributeBooleanValue>
 
   The state of C<autoEnableIO> attribute.
-=head2 ProductCodes => ArrayRef[Paws::EC2::ProductCode]
+=head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
   A list of product codes.
 =head2 VolumeId => Str

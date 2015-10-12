@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::R
 
   The database connection string.
 
-=head2 B<REQUIRED> CopyCommand => Paws::Firehose::CopyCommand
+=head2 B<REQUIRED> CopyCommand => L<Paws::Firehose::CopyCommand>
 
   The C<COPY> command.
 
@@ -52,7 +52,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::R
 
   The ARN of the AWS credentials.
 
-=head2 B<REQUIRED> S3Configuration => Paws::Firehose::S3DestinationConfiguration
+=head2 B<REQUIRED> S3Configuration => L<Paws::Firehose::S3DestinationConfiguration>
 
   The S3 configuration for the intermediate location from which Amazon
 Redshift obtains data. Restrictions are described in the topic for

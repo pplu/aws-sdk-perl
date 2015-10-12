@@ -48,11 +48,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::A
 
   The app ID.
 
-=head2 AppSource => Paws::OpsWorks::Source
+=head2 AppSource => L<Paws::OpsWorks::Source>
 
   A C<Source> object that describes the app repository.
 
-=head2 Attributes => Paws::OpsWorks::AppAttributes
+=head2 Attributes => L<Paws::OpsWorks::AppAttributes>
 
   The stack attributes.
 
@@ -60,7 +60,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::A
 
   When the app was created.
 
-=head2 DataSources => ArrayRef[Paws::OpsWorks::DataSource]
+=head2 DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>]
 
   The app's data sources.
 
@@ -77,7 +77,7 @@ example: C<'www.example.com, example.com'>
 
   Whether to enable SSL for the app.
 
-=head2 Environment => ArrayRef[Paws::OpsWorks::EnvironmentVariable]
+=head2 Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>]
 
   An array of C<EnvironmentVariable> objects that specify environment
 variables to be associated with the app. After you deploy the app,
@@ -99,7 +99,7 @@ an "Environment: is too large (maximum is 10KB)" message.
 
   The app's short name.
 
-=head2 SslConfiguration => Paws::OpsWorks::SslConfiguration
+=head2 SslConfiguration => L<Paws::OpsWorks::SslConfiguration>
 
   An C<SslConfiguration> object with the SSL configuration.
 

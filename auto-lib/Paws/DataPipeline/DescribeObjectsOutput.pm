@@ -22,7 +22,7 @@ Paws::DataPipeline::DescribeObjectsOutput
   The starting point for the next page of results. To view the next page
 of results, call C<DescribeObjects> again with this marker value. If
 the value is null, there are no more results.
-=head2 B<REQUIRED> pipelineObjects => ArrayRef[Paws::DataPipeline::PipelineObject]
+=head2 B<REQUIRED> pipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>]
 
   An array of object definitions.
 

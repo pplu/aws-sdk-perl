@@ -46,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Import
 
   The instance operating system.
 
-=head2 B<REQUIRED> Volumes => ArrayRef[Paws::EC2::ImportInstanceVolumeDetailItem]
+=head2 B<REQUIRED> Volumes => ArrayRef[L<Paws::EC2::ImportInstanceVolumeDetailItem>]
 
   One or more volumes.
 

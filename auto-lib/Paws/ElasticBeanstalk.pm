@@ -295,7 +295,7 @@ C<default> and no application versions.
 
 
 
-=head2 CreateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [AutoCreateApplication => Bool, Description => Str, SourceBundle => Paws::ElasticBeanstalk::S3Location])
+=head2 CreateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [AutoCreateApplication => Bool, Description => Str, SourceBundle => L<Paws::ElasticBeanstalk::S3Location>])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateApplicationVersion>
 
@@ -320,7 +320,7 @@ attempt to launch an environment from the application version.
 
 
 
-=head2 CreateConfigurationTemplate(ApplicationName => Str, TemplateName => Str, [Description => Str, EnvironmentId => Str, OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], SolutionStackName => Str, SourceConfiguration => Paws::ElasticBeanstalk::SourceConfiguration])
+=head2 CreateConfigurationTemplate(ApplicationName => Str, TemplateName => Str, [Description => Str, EnvironmentId => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], SolutionStackName => Str, SourceConfiguration => L<Paws::ElasticBeanstalk::SourceConfiguration>])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateConfigurationTemplate>
 
@@ -354,7 +354,7 @@ Related Topics
 
 
 
-=head2 CreateEnvironment(ApplicationName => Str, EnvironmentName => Str, [CNAMEPrefix => Str, Description => Str, OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification], SolutionStackName => Str, Tags => ArrayRef[Paws::ElasticBeanstalk::Tag], TemplateName => Str, Tier => Paws::ElasticBeanstalk::EnvironmentTier, VersionLabel => Str])
+=head2 CreateEnvironment(ApplicationName => Str, EnvironmentName => Str, [CNAMEPrefix => Str, Description => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>], TemplateName => Str, Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateEnvironment>
 
@@ -538,7 +538,7 @@ Returns descriptions for existing application versions.
 
 
 
-=head2 DescribeConfigurationOptions([ApplicationName => Str, EnvironmentName => Str, Options => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification], SolutionStackName => Str, TemplateName => Str])
+=head2 DescribeConfigurationOptions([ApplicationName => Str, EnvironmentName => Str, Options => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, TemplateName => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeConfigurationOptions>
 
@@ -925,7 +925,7 @@ remains unchanged. To clear properties, specify an empty string.
 
 
 
-=head2 UpdateConfigurationTemplate(ApplicationName => Str, TemplateName => Str, [Description => Str, OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]])
+=head2 UpdateConfigurationTemplate(ApplicationName => Str, TemplateName => Str, [Description => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateConfigurationTemplate>
 
@@ -958,7 +958,7 @@ Related Topics
 
 
 
-=head2 UpdateEnvironment([Description => Str, EnvironmentId => Str, EnvironmentName => Str, OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification], SolutionStackName => Str, TemplateName => Str, Tier => Paws::ElasticBeanstalk::EnvironmentTier, VersionLabel => Str])
+=head2 UpdateEnvironment([Description => Str, EnvironmentId => Str, EnvironmentName => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, TemplateName => Str, Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateEnvironment>
 
@@ -990,7 +990,7 @@ descriptions with different C<DeploymentStatus> values.
 
 
 
-=head2 ValidateConfigurationSettings(ApplicationName => Str, OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting], [EnvironmentName => Str, TemplateName => Str])
+=head2 ValidateConfigurationSettings(ApplicationName => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], [EnvironmentName => Str, TemplateName => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::ValidateConfigurationSettings>
 

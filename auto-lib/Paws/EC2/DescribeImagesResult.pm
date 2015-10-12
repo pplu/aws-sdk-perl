@@ -13,7 +13,7 @@ Paws::EC2::DescribeImagesResult
 
 =head1 ATTRIBUTES
 
-=head2 Images => ArrayRef[Paws::EC2::Image]
+=head2 Images => ArrayRef[L<Paws::EC2::Image>]
 
   Information about one or more images.
 

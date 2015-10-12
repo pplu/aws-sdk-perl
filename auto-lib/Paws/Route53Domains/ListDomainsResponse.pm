@@ -13,7 +13,7 @@ Paws::Route53Domains::ListDomainsResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Domains => ArrayRef[Paws::Route53Domains::DomainSummary]
+=head2 B<REQUIRED> Domains => ArrayRef[L<Paws::Route53Domains::DomainSummary>]
 
   A summary of domains.
 

@@ -13,11 +13,11 @@ Paws::WorkSpaces::CreateWorkspacesResult
 
 =head1 ATTRIBUTES
 
-=head2 FailedRequests => ArrayRef[Paws::WorkSpaces::FailedCreateWorkspaceRequest]
+=head2 FailedRequests => ArrayRef[L<Paws::WorkSpaces::FailedCreateWorkspaceRequest>]
 
   An array of structures that represent the WorkSpaces that could not be
 created.
-=head2 PendingRequests => ArrayRef[Paws::WorkSpaces::Workspace]
+=head2 PendingRequests => ArrayRef[L<Paws::WorkSpaces::Workspace>]
 
   An array of structures that represent the WorkSpaces that were created.
 

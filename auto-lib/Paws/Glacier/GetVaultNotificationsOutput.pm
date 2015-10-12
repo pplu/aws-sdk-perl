@@ -13,7 +13,7 @@ Paws::Glacier::GetVaultNotificationsOutput
 
 =head1 ATTRIBUTES
 
-=head2 vaultNotificationConfig => Paws::Glacier::VaultNotificationConfig
+=head2 vaultNotificationConfig => L<Paws::Glacier::VaultNotificationConfig>
 
   Returns the notification configuration set on the vault.
 

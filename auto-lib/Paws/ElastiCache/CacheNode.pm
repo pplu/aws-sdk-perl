@@ -55,7 +55,7 @@ identifies every cache node used in a customer's AWS account.
 
   The Availability Zone where this node was created and now resides.
 
-=head2 Endpoint => Paws::ElastiCache::Endpoint
+=head2 Endpoint => L<Paws::ElastiCache::Endpoint>
 
   The hostname for connecting to this cache node.
 

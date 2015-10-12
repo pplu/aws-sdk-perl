@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Events => Paws::CognitoSync::Events
+=head2 B<REQUIRED> Events => L<Paws::CognitoSync::Events>
 
   The events to configure
 

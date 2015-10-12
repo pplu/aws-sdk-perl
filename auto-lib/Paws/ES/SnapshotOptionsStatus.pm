@@ -32,12 +32,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::Snapsho
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Options => Paws::ES::SnapshotOptions
+=head2 B<REQUIRED> Options => L<Paws::ES::SnapshotOptions>
 
   Specifies the daily snapshot options specified for the Elasticsearch
 domain.
 
-=head2 B<REQUIRED> Status => Paws::ES::OptionStatus
+=head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
 
   Specifies the status of a daily automated snapshot.
 

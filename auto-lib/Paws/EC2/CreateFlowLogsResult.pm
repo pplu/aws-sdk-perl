@@ -22,7 +22,7 @@ of the request.
 =head2 FlowLogIds => ArrayRef[Str]
 
   The IDs of the flow logs.
-=head2 Unsuccessful => ArrayRef[Paws::EC2::UnsuccessfulItem]
+=head2 Unsuccessful => ArrayRef[L<Paws::EC2::UnsuccessfulItem>]
 
   Information about the flow logs that could not be created successfully.
 

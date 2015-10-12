@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   Ciphertext of the data to re-encrypt.
 
-=head2 DestinationEncryptionContext => Paws::KMS::EncryptionContextType
+=head2 DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>
 
   Encryption context to be used when the data is re-encrypted.
 
@@ -69,7 +69,7 @@ arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
 
   For more information, see Grant Tokens.
 
-=head2 SourceEncryptionContext => Paws::KMS::EncryptionContextType
+=head2 SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>
 
   Encryption context used to encrypt and decrypt the data specified in
 the C<CiphertextBlob> parameter.

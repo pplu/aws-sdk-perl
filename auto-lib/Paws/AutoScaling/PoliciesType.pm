@@ -18,7 +18,7 @@ Paws::AutoScaling::PoliciesType
 
   The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
-=head2 ScalingPolicies => ArrayRef[Paws::AutoScaling::ScalingPolicy]
+=head2 ScalingPolicies => ArrayRef[L<Paws::AutoScaling::ScalingPolicy>]
 
   The scaling policies.
 

@@ -42,7 +42,7 @@ Paws::CognitoSync::ListRecordsResponse
 =head2 NextToken => Str
 
   A pagination token for obtaining the next page of results.
-=head2 Records => ArrayRef[Paws::CognitoSync::Record]
+=head2 Records => ArrayRef[L<Paws::CognitoSync::Record>]
 
   A list of all records.
 =head2 SyncSessionToken => Str

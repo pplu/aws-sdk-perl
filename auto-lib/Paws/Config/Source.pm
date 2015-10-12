@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Sou
   Indicates whether AWS or the customer owns and manages the AWS Config
 rule.
 
-=head2 SourceDetails => ArrayRef[Paws::Config::SourceDetail]
+=head2 SourceDetails => ArrayRef[L<Paws::Config::SourceDetail>]
 
   Provides the source and type of the event that causes AWS Config to
 evaluate your AWS resources.

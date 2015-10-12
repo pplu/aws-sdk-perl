@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   A description for the conversion task or the resource being exported.
 The maximum length is 255 bytes.
 
-=head2 ExportToS3Task => Paws::EC2::ExportToS3TaskSpecification
+=head2 ExportToS3Task => L<Paws::EC2::ExportToS3TaskSpecification>
 
   The format and location for an instance export task.
 

@@ -107,7 +107,7 @@ subscription was created.
   The date and time the Amazon Redshift event notification subscription
 was created.
 
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   The list of tags for the event subscription.
 

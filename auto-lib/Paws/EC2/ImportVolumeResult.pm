@@ -13,7 +13,7 @@ Paws::EC2::ImportVolumeResult
 
 =head1 ATTRIBUTES
 
-=head2 ConversionTask => Paws::EC2::ConversionTask
+=head2 ConversionTask => L<Paws::EC2::ConversionTask>
 
   Information about the conversion task.
 

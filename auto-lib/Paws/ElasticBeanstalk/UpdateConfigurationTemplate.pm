@@ -49,12 +49,12 @@ error.
 
   A new description for the configuration.
 
-=head2 OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]
+=head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
 
   A list of configuration option settings to update with the new
 specified option value.
 
-=head2 OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]
+=head2 OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]
 
   A list of configuration options to remove from the configuration set.
 

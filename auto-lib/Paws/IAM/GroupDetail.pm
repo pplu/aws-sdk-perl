@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::GroupD
 
   
 
-=head2 AttachedManagedPolicies => ArrayRef[Paws::IAM::AttachedPolicy]
+=head2 AttachedManagedPolicies => ArrayRef[L<Paws::IAM::AttachedPolicy>]
 
   A list of the managed policies attached to the group.
 
@@ -59,7 +59,7 @@ information about IDs, see IAM Identifiers in the I<Using IAM> guide.
 
   The friendly name that identifies the group.
 
-=head2 GroupPolicyList => ArrayRef[Paws::IAM::PolicyDetail]
+=head2 GroupPolicyList => ArrayRef[L<Paws::IAM::PolicyDetail>]
 
   A list of the inline policies embedded in the group.
 

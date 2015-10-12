@@ -35,11 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 parameterObjects => ArrayRef[Paws::DataPipeline::ParameterObject]
+=head2 parameterObjects => ArrayRef[L<Paws::DataPipeline::ParameterObject>]
 
   The parameter objects used with the pipeline.
 
-=head2 parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue]
+=head2 parameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]
 
   The parameter values used with the pipeline.
 
@@ -47,7 +47,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The ID of the pipeline.
 
-=head2 B<REQUIRED> pipelineObjects => ArrayRef[Paws::DataPipeline::PipelineObject]
+=head2 B<REQUIRED> pipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>]
 
   The objects that define the pipeline changes to validate against the
 pipeline.

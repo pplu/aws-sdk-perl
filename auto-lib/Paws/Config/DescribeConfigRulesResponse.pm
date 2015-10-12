@@ -13,7 +13,7 @@ Paws::Config::DescribeConfigRulesResponse
 
 =head1 ATTRIBUTES
 
-=head2 ConfigRules => ArrayRef[Paws::Config::ConfigRule]
+=head2 ConfigRules => ArrayRef[L<Paws::Config::ConfigRule>]
 
   The details about your AWS Config rules.
 =head2 NextToken => Str

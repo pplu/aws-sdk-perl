@@ -17,7 +17,7 @@ Paws::EC2::DescribeSpotFleetRequestHistoryResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> HistoryRecords => ArrayRef[Paws::EC2::HistoryRecord]
+=head2 B<REQUIRED> HistoryRecords => ArrayRef[L<Paws::EC2::HistoryRecord>]
 
   Information about the events in the history of the Spot fleet request.
 =head2 B<REQUIRED> LastEvaluatedTime => Str

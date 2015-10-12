@@ -13,7 +13,7 @@ Paws::CloudTrail::LookupEventsResponse
 
 =head1 ATTRIBUTES
 
-=head2 Events => ArrayRef[Paws::CloudTrail::Event]
+=head2 Events => ArrayRef[L<Paws::CloudTrail::Event>]
 
   A list of events returned based on the lookup attributes specified and
 the CloudTrail event. The events list is sorted by time. The most

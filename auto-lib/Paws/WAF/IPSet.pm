@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::IPSet 
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> IPSetDescriptors => ArrayRef[Paws::WAF::IPSetDescriptor]
+=head2 B<REQUIRED> IPSetDescriptors => ArrayRef[L<Paws::WAF::IPSetDescriptor>]
 
   The IP address type (C<IPV4>) and the IP address range (in CIDR
 notation) that web requests originate from. If the C<WebACL> is

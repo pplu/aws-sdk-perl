@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepSu
   This specifies what action to take when the cluster step fails.
 Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.
 
-=head2 Config => Paws::EMR::HadoopStepConfig
+=head2 Config => L<Paws::EMR::HadoopStepConfig>
 
   The Hadoop job configuration of the cluster step.
 
@@ -52,7 +52,7 @@ Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.
 
   The name of the cluster step.
 
-=head2 Status => Paws::EMR::StepStatus
+=head2 Status => L<Paws::EMR::StepStatus>
 
   The current execution status details of the cluster step.
 

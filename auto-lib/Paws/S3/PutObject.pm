@@ -96,7 +96,7 @@ object.
 =head2 B<REQUIRED> Key => Str
 
   
-=head2 Metadata => Paws::S3::Metadata
+=head2 Metadata => L<Paws::S3::Metadata>
 
   A map of metadata to store with the object in S3.
 =head2 RequestPayer => Str

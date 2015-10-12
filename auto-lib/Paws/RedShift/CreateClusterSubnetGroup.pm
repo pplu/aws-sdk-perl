@@ -65,7 +65,7 @@ Example: C<examplesubnetgroup>
   An array of VPC subnet IDs. A maximum of 20 subnets can be modified in
 a single request.
 
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   A list of tag instances.
 

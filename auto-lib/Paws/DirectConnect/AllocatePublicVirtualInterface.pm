@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Default: None
 
-=head2 B<REQUIRED> newPublicVirtualInterfaceAllocation => Paws::DirectConnect::NewPublicVirtualInterfaceAllocation
+=head2 B<REQUIRED> newPublicVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPublicVirtualInterfaceAllocation>
 
   Detailed information for the public virtual interface to be
 provisioned.

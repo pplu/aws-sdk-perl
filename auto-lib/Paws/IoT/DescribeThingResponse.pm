@@ -15,7 +15,7 @@ Paws::IoT::DescribeThingResponse
 
 =head1 ATTRIBUTES
 
-=head2 attributes => Paws::IoT::Attributes
+=head2 attributes => L<Paws::IoT::Attributes>
 
   The attributes which are name/value pairs in JSON format. For example:
 

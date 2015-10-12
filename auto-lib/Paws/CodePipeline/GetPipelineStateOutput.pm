@@ -27,7 +27,7 @@ Paws::CodePipeline::GetPipelineStateOutput
   The version number of the pipeline.
 
 A newly-created pipeline is always assigned a version number of C<1>.
-=head2 stageStates => ArrayRef[Paws::CodePipeline::StageState]
+=head2 stageStates => ArrayRef[L<Paws::CodePipeline::StageState>]
 
   A list of the pipeline stage output information, including stage name,
 state, most recent run details, whether the stage is disabled, and

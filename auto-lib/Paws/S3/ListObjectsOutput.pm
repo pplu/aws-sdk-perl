@@ -36,11 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 CommonPrefixes => ArrayRef[Paws::S3::CommonPrefix]
+=head2 CommonPrefixes => ArrayRef[L<Paws::S3::CommonPrefix>]
 
   
 
-=head2 Contents => ArrayRef[Paws::S3::Object]
+=head2 Contents => ArrayRef[L<Paws::S3::Object>]
 
   
 

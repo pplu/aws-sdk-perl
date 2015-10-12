@@ -12,7 +12,7 @@ Paws::DataPipeline::PollForTaskOutput
 
 =head1 ATTRIBUTES
 
-=head2 taskObject => Paws::DataPipeline::TaskObject
+=head2 taskObject => L<Paws::DataPipeline::TaskObject>
 
   The information needed to complete the task that is being assigned to
 the task runner. One of the fields returned in this object is

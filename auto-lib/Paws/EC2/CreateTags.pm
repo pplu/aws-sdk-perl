@@ -45,7 +45,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
   The IDs of one or more resources to tag. For example, ami-1a2b3c4d.
 
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::EC2::Tag]
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   One or more tags. The C<value> parameter is required, but if you don't
 want the tag to have a value, specify the parameter with no value, and

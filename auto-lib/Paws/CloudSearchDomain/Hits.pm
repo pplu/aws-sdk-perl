@@ -43,7 +43,7 @@ documents when you want to page through a large result set.
 
   The total number of documents that match the search request.
 
-=head2 hit => ArrayRef[Paws::CloudSearchDomain::Hit]
+=head2 hit => ArrayRef[L<Paws::CloudSearchDomain::Hit>]
 
   A document that matches the search request.
 

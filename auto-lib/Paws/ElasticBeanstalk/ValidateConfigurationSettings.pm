@@ -47,7 +47,7 @@ environment belongs to.
 Condition: You cannot specify both this and a configuration template
 name.
 
-=head2 B<REQUIRED> OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]
+=head2 B<REQUIRED> OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
 
   A list of the options and desired values to evaluate.
 

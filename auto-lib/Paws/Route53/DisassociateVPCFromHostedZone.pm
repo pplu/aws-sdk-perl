@@ -31,7 +31,7 @@ C<DisassociateVPCFromHostedZoneRequest>.
   The ID of the hosted zone you want to disassociate your VPC from.
 
 Note that you cannot disassociate the last VPC from a hosted zone.
-=head2 B<REQUIRED> VPC => Paws::Route53::VPC
+=head2 B<REQUIRED> VPC => L<Paws::Route53::VPC>
 
   The VPC that you want your hosted zone to be disassociated from.
 

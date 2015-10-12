@@ -39,7 +39,7 @@ cookies to the origin that is associated with this cache behavior. You
 can specify all, none or whitelist. If you choose All, CloudFront
 forwards all cookies regardless of how many your application uses.
 
-=head2 WhitelistedNames => Paws::CloudFront::CookieNames
+=head2 WhitelistedNames => L<Paws::CloudFront::CookieNames>
 
   A complex type that specifies the whitelisted cookies, if any, that you
 want CloudFront to forward to your origin that is associated with this

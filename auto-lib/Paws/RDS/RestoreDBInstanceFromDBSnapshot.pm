@@ -227,7 +227,7 @@ parameter.
 Default: C<io1> if the C<Iops> parameter is specified; otherwise
 C<standard>
 
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 

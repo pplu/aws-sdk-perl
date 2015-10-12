@@ -18,7 +18,7 @@ Paws::IAM::GetAccountAuthorizationDetailsResponse
 
 =head1 ATTRIBUTES
 
-=head2 GroupDetailList => ArrayRef[Paws::IAM::GroupDetail]
+=head2 GroupDetailList => ArrayRef[L<Paws::IAM::GroupDetail>]
 
   A list containing information about IAM groups.
 =head2 IsTruncated => Bool
@@ -35,13 +35,13 @@ results.
   When C<IsTruncated> is C<true>, this element is present and contains
 the value to use for the C<Marker> parameter in a subsequent pagination
 request.
-=head2 Policies => ArrayRef[Paws::IAM::ManagedPolicyDetail]
+=head2 Policies => ArrayRef[L<Paws::IAM::ManagedPolicyDetail>]
 
   A list containing information about managed policies.
-=head2 RoleDetailList => ArrayRef[Paws::IAM::RoleDetail]
+=head2 RoleDetailList => ArrayRef[L<Paws::IAM::RoleDetail>]
 
   A list containing information about IAM roles.
-=head2 UserDetailList => ArrayRef[Paws::IAM::UserDetail]
+=head2 UserDetailList => ArrayRef[L<Paws::IAM::UserDetail>]
 
   A list containing information about IAM users.
 

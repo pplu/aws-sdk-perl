@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Filter => Paws::SES::ReceiptFilter
+=head2 B<REQUIRED> Filter => L<Paws::SES::ReceiptFilter>
 
   A data structure that describes the IP address filter to create, which
 consists of a name, an IP address range, and whether to allow or block

@@ -57,7 +57,7 @@ C<Base32String> value is Base64-encoded.
 
   The serial number associated with C<VirtualMFADevice>.
 
-=head2 User => Paws::IAM::User
+=head2 User => L<Paws::IAM::User>
 
   
 

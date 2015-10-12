@@ -13,7 +13,7 @@ Paws::SSM::ListAssociationsResult
 
 =head1 ATTRIBUTES
 
-=head2 Associations => ArrayRef[Paws::SSM::Association]
+=head2 Associations => ArrayRef[L<Paws::SSM::Association>]
 
   The associations.
 =head2 NextToken => Str

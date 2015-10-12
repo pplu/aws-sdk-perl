@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Volume
 
 =head1 ATTRIBUTES
 
-=head2 Actions => ArrayRef[Paws::EC2::VolumeStatusAction]
+=head2 Actions => ArrayRef[L<Paws::EC2::VolumeStatusAction>]
 
   The details of the operation.
 
@@ -43,7 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Volume
 
   The Availability Zone of the volume.
 
-=head2 Events => ArrayRef[Paws::EC2::VolumeStatusEvent]
+=head2 Events => ArrayRef[L<Paws::EC2::VolumeStatusEvent>]
 
   A list of events associated with the volume.
 
@@ -51,7 +51,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Volume
 
   The volume ID.
 
-=head2 VolumeStatus => Paws::EC2::VolumeStatusInfo
+=head2 VolumeStatus => L<Paws::EC2::VolumeStatusInfo>
 
   The volume status.
 

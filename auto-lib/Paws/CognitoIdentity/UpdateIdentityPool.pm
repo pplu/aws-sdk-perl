@@ -57,7 +57,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   A list of OpendID Connect provider ARNs.
 
-=head2 SupportedLoginProviders => Paws::CognitoIdentity::IdentityProviders
+=head2 SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>
 
   Optional key:value pairs mapping provider names to provider app IDs.
 

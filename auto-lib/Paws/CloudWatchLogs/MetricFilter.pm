@@ -46,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
   
 
-=head2 metricTransformations => ArrayRef[Paws::CloudWatchLogs::MetricTransformation]
+=head2 metricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>]
 
   
 

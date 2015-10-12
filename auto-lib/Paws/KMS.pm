@@ -294,7 +294,7 @@ another account.
 
 
 
-=head2 CreateGrant(GranteePrincipal => Str, KeyId => Str, [Constraints => Paws::KMS::GrantConstraints, GrantTokens => ArrayRef[Str], Operations => ArrayRef[Str], RetiringPrincipal => Str])
+=head2 CreateGrant(GranteePrincipal => Str, KeyId => Str, [Constraints => L<Paws::KMS::GrantConstraints>, GrantTokens => ArrayRef[Str], Operations => ArrayRef[Str], RetiringPrincipal => Str])
 
 Each argument is described in detail in: L<Paws::KMS::CreateGrant>
 
@@ -352,7 +352,7 @@ GenerateDataKey and GenerateDataKeyWithoutPlaintext.
 
 
 
-=head2 Decrypt(CiphertextBlob => Str, [EncryptionContext => Paws::KMS::EncryptionContextType, GrantTokens => ArrayRef[Str]])
+=head2 Decrypt(CiphertextBlob => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::KMS::Decrypt>
 
@@ -515,7 +515,7 @@ Enables rotation of the specified customer master key.
 
 
 
-=head2 Encrypt(KeyId => Str, Plaintext => Str, [EncryptionContext => Paws::KMS::EncryptionContextType, GrantTokens => ArrayRef[Str]])
+=head2 Encrypt(KeyId => Str, Plaintext => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::KMS::Encrypt>
 
@@ -561,7 +561,7 @@ of your choosing.
 
 
 
-=head2 GenerateDataKey(KeyId => Str, [EncryptionContext => Paws::KMS::EncryptionContextType, GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
+=head2 GenerateDataKey(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
 
 Each argument is described in detail in: L<Paws::KMS::GenerateDataKey>
 
@@ -614,7 +614,7 @@ use this log to help track the use of particular data.
 
 
 
-=head2 GenerateDataKeyWithoutPlaintext(KeyId => Str, [EncryptionContext => Paws::KMS::EncryptionContextType, GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
+=head2 GenerateDataKeyWithoutPlaintext(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
 
 Each argument is described in detail in: L<Paws::KMS::GenerateDataKeyWithoutPlaintext>
 
@@ -799,7 +799,7 @@ Attaches a policy to the specified key.
 
 
 
-=head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [DestinationEncryptionContext => Paws::KMS::EncryptionContextType, GrantTokens => ArrayRef[Str], SourceEncryptionContext => Paws::KMS::EncryptionContextType])
+=head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>])
 
 Each argument is described in detail in: L<Paws::KMS::ReEncrypt>
 

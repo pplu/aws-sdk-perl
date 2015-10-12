@@ -42,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   The valid range of values for the parameter.
 
-=head2 CacheNodeTypeSpecificValues => ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificValue]
+=head2 CacheNodeTypeSpecificValues => ArrayRef[L<Paws::ElastiCache::CacheNodeTypeSpecificValue>]
 
   A list of cache node types and their corresponding values for this
 parameter.

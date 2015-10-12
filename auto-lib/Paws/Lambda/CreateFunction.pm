@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Code => Paws::Lambda::FunctionCode
+=head2 B<REQUIRED> Code => L<Paws::Lambda::FunctionCode>
 
   The code for the Lambda function.
 

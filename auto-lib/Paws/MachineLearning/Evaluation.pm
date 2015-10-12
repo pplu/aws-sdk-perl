@@ -83,7 +83,7 @@ C<MLModel>.
 
   A user-supplied name or description of the C<Evaluation>.
 
-=head2 PerformanceMetrics => Paws::MachineLearning::PerformanceMetrics
+=head2 PerformanceMetrics => L<Paws::MachineLearning::PerformanceMetrics>
 
   Measurements of how well the C<MLModel> performed, using observations
 referenced by the C<DataSource>. One of the following metrics is

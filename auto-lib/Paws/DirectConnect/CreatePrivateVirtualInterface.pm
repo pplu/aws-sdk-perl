@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-=head2 B<REQUIRED> newPrivateVirtualInterface => Paws::DirectConnect::NewPrivateVirtualInterface
+=head2 B<REQUIRED> newPrivateVirtualInterface => L<Paws::DirectConnect::NewPrivateVirtualInterface>
 
   Detailed information for the private virtual interface to be created.
 

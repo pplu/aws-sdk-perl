@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> BouncedRecipientInfoList => ArrayRef[Paws::SES::BouncedRecipientInfo]
+=head2 B<REQUIRED> BouncedRecipientInfoList => ArrayRef[L<Paws::SES::BouncedRecipientInfo>]
 
   A list of recipients of the bounced message, including the information
 required to create the Delivery Status Notifications (DSNs) for the
@@ -63,7 +63,7 @@ Developer Guide.
 not specified, the text will be auto-generated based on the bounced
 recipient information.
 
-=head2 MessageDsn => Paws::SES::MessageDsn
+=head2 MessageDsn => L<Paws::SES::MessageDsn>
 
   Message-related DSN fields. If not specified, Amazon SES will choose
 the values.

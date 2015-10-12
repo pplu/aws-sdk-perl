@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 ClientData => Paws::EC2::ClientData
+=head2 ClientData => L<Paws::EC2::ClientData>
 
   The client-specific data.
 
@@ -49,7 +49,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The description string for the import snapshot task.
 
-=head2 DiskContainer => Paws::EC2::SnapshotDiskContainer
+=head2 DiskContainer => L<Paws::EC2::SnapshotDiskContainer>
 
   Information about the disk container.
 

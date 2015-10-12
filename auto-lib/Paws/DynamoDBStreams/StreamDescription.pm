@@ -43,7 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
   The date and time when the request to create this stream was issued.
 
-=head2 KeySchema => ArrayRef[Paws::DynamoDBStreams::KeySchemaElement]
+=head2 KeySchema => ArrayRef[L<Paws::DynamoDBStreams::KeySchemaElement>]
 
   The key attribute(s) of the stream's DynamoDB table.
 
@@ -61,7 +61,7 @@ that there is more data in the result set. The only way to know when
 you have reached the end of the result set is when
 C<LastEvaluatedShardId> is empty.
 
-=head2 Shards => ArrayRef[Paws::DynamoDBStreams::Shard]
+=head2 Shards => ArrayRef[L<Paws::DynamoDBStreams::Shard>]
 
   The shards that comprise the stream.
 

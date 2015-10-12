@@ -323,7 +323,7 @@ actions:
 
 
 
-=head2 CreateTags(FileSystemId => Str, Tags => ArrayRef[Paws::EFS::Tag])
+=head2 CreateTags(FileSystemId => Str, Tags => ArrayRef[L<Paws::EFS::Tag>])
 
 Each argument is described in detail in: L<Paws::EFS::CreateTags>
 

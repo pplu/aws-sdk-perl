@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head1 ATTRIBUTES
 
-=head2 Properties => Paws::MachineLearning::PerformanceMetricsProperties
+=head2 Properties => L<Paws::MachineLearning::PerformanceMetricsProperties>
 
   
 

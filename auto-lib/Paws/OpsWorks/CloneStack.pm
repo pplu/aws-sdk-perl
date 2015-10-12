@@ -78,12 +78,12 @@ DescribeAgentVersions.
 You can also specify an agent version when you create or update an
 instance, which overrides the stack's default setting.
 
-=head2 Attributes => Paws::OpsWorks::StackAttributes
+=head2 Attributes => L<Paws::OpsWorks::StackAttributes>
 
   A list of stack attributes and values as key/value pairs to be added to
 the cloned stack.
 
-=head2 ChefConfiguration => Paws::OpsWorks::ChefConfiguration
+=head2 ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>
 
   A C<ChefConfiguration> object that specifies whether to enable
 Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more
@@ -97,13 +97,13 @@ information, see Create a New Stack.
 
   Whether to clone the source stack's permissions.
 
-=head2 ConfigurationManager => Paws::OpsWorks::StackConfigurationManager
+=head2 ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>
 
   The configuration manager. When you clone a Linux stack we recommend
 that you use the configuration manager to specify the Chef version:
 0.9, 11.4, or 11.10. The default value is currently 11.10.
 
-=head2 CustomCookbooksSource => Paws::OpsWorks::Source
+=head2 CustomCookbooksSource => L<Paws::OpsWorks::Source>
 
   
 

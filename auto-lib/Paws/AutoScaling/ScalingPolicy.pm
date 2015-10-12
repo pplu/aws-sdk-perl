@@ -49,7 +49,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 interpreted. Valid values are C<ChangeInCapacity>, C<ExactCapacity>,
 and C<PercentChangeInCapacity>.
 
-=head2 Alarms => ArrayRef[Paws::AutoScaling::Alarm]
+=head2 Alarms => ArrayRef[L<Paws::AutoScaling::Alarm>]
 
   The CloudWatch alarms related to the policy.
 
@@ -102,7 +102,7 @@ instead.
 positive value adds to the current capacity while a negative number
 removes from the current capacity.
 
-=head2 StepAdjustments => ArrayRef[Paws::AutoScaling::StepAdjustment]
+=head2 StepAdjustments => ArrayRef[L<Paws::AutoScaling::StepAdjustment>]
 
   A set of adjustments that enable you to scale based on the size of the
 alarm breach.

@@ -99,7 +99,7 @@ than this value.
 
   A unique namespace identifying the option's associated AWS resource.
 
-=head2 Regex => Paws::ElasticBeanstalk::OptionRestrictionRegex
+=head2 Regex => L<Paws::ElasticBeanstalk::OptionRestrictionRegex>
 
   If specified, the configuration option must be a string value that
 satisfies this regular expression.

@@ -18,7 +18,7 @@ Paws::EC2::CreateVpcEndpointResult
 
   Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request.
-=head2 VpcEndpoint => Paws::EC2::VpcEndpoint
+=head2 VpcEndpoint => L<Paws::EC2::VpcEndpoint>
 
   Information about the endpoint.
 

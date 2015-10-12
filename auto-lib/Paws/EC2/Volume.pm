@@ -24,7 +24,7 @@ Paws::EC2::Volume
 
 =head1 ATTRIBUTES
 
-=head2 Attachments => ArrayRef[Paws::EC2::VolumeAttachment]
+=head2 Attachments => ArrayRef[L<Paws::EC2::VolumeAttachment>]
 
   Information about the volume attachments.
 =head2 AvailabilityZone => Str
@@ -67,7 +67,7 @@ the volume.
 =head2 State => Str
 
   The volume state.
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the volume.
 =head2 VolumeId => Str

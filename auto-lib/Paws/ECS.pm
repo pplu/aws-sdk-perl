@@ -223,7 +223,7 @@ C<CreateCluster> action.
 
 
 
-=head2 CreateService(desiredCount => Int, serviceName => Str, taskDefinition => Str, [clientToken => Str, cluster => Str, loadBalancers => ArrayRef[Paws::ECS::LoadBalancer], role => Str])
+=head2 CreateService(desiredCount => Int, serviceName => Str, taskDefinition => Str, [clientToken => Str, cluster => Str, loadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], role => Str])
 
 Each argument is described in detail in: L<Paws::ECS::CreateService>
 
@@ -614,7 +614,7 @@ and C<desiredStatus> parameters.
 
 
 
-=head2 RegisterContainerInstance([attributes => ArrayRef[Paws::ECS::Attribute], cluster => Str, containerInstanceArn => Str, instanceIdentityDocument => Str, instanceIdentityDocumentSignature => Str, totalResources => ArrayRef[Paws::ECS::Resource], versionInfo => Paws::ECS::VersionInfo])
+=head2 RegisterContainerInstance([attributes => ArrayRef[L<Paws::ECS::Attribute>], cluster => Str, containerInstanceArn => Str, instanceIdentityDocument => Str, instanceIdentityDocumentSignature => Str, totalResources => ArrayRef[L<Paws::ECS::Resource>], versionInfo => L<Paws::ECS::VersionInfo>])
 
 Each argument is described in detail in: L<Paws::ECS::RegisterContainerInstance>
 
@@ -638,7 +638,7 @@ becomes available to place containers on.
 
 
 
-=head2 RegisterTaskDefinition(containerDefinitions => ArrayRef[Paws::ECS::ContainerDefinition], family => Str, [volumes => ArrayRef[Paws::ECS::Volume]])
+=head2 RegisterTaskDefinition(containerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], family => Str, [volumes => ArrayRef[L<Paws::ECS::Volume>]])
 
 Each argument is described in detail in: L<Paws::ECS::RegisterTaskDefinition>
 
@@ -662,7 +662,7 @@ Definitions in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 
-=head2 RunTask(taskDefinition => Str, [cluster => Str, count => Int, overrides => Paws::ECS::TaskOverride, startedBy => Str])
+=head2 RunTask(taskDefinition => Str, [cluster => Str, count => Int, overrides => L<Paws::ECS::TaskOverride>, startedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::RunTask>
 
@@ -686,7 +686,7 @@ The C<count> parameter is limited to 10 tasks per call.
 
 
 
-=head2 StartTask(containerInstances => ArrayRef[Str], taskDefinition => Str, [cluster => Str, overrides => Paws::ECS::TaskOverride, startedBy => Str])
+=head2 StartTask(containerInstances => ArrayRef[Str], taskDefinition => Str, [cluster => Str, overrides => L<Paws::ECS::TaskOverride>, startedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::StartTask>
 
@@ -737,7 +737,7 @@ C<SIGKILL> is sent.
 
 
 
-=head2 SubmitContainerStateChange([cluster => Str, containerName => Str, exitCode => Int, networkBindings => ArrayRef[Paws::ECS::NetworkBinding], reason => Str, status => Str, task => Str])
+=head2 SubmitContainerStateChange([cluster => Str, containerName => Str, exitCode => Int, networkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>], reason => Str, status => Str, task => Str])
 
 Each argument is described in detail in: L<Paws::ECS::SubmitContainerStateChange>
 

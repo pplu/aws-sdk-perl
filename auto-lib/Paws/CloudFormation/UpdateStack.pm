@@ -63,7 +63,7 @@ InsufficientCapabilities error.
   Update the ARNs for the Amazon SNS topics that are associated with the
 stack.
 
-=head2 Parameters => ArrayRef[Paws::CloudFormation::Parameter]
+=head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
   A list of C<Parameter> structures that specify input parameters for the
 stack. For more information, see the Parameter data type.

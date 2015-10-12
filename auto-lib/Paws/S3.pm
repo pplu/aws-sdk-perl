@@ -439,7 +439,7 @@ ensure the parts list is empty.
 
 
 
-=head2 CompleteMultipartUpload(Bucket => Str, Key => Str, UploadId => Str, [MultipartUpload => Paws::S3::CompletedMultipartUpload, RequestPayer => Str])
+=head2 CompleteMultipartUpload(Bucket => Str, Key => Str, UploadId => Str, [MultipartUpload => L<Paws::S3::CompletedMultipartUpload>, RequestPayer => Str])
 
 Each argument is described in detail in: L<Paws::S3::CompleteMultipartUpload>
 
@@ -459,7 +459,7 @@ Completes a multipart upload by assembling previously uploaded parts.
 
 
 
-=head2 CopyObject(Bucket => Str, CopySource => Str, Key => Str, [ACL => Str, CacheControl => Str, ContentDisposition => Str, ContentEncoding => Str, ContentLanguage => Str, ContentType => Str, CopySourceIfMatch => Str, CopySourceIfModifiedSince => Str, CopySourceIfNoneMatch => Str, CopySourceIfUnmodifiedSince => Str, CopySourceSSECustomerAlgorithm => Str, CopySourceSSECustomerKey => Str, CopySourceSSECustomerKeyMD5 => Str, Expires => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWriteACP => Str, Metadata => Paws::S3::Metadata, MetadataDirective => Str, RequestPayer => Str, ServerSideEncryption => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, SSEKMSKeyId => Str, StorageClass => Str, WebsiteRedirectLocation => Str])
+=head2 CopyObject(Bucket => Str, CopySource => Str, Key => Str, [ACL => Str, CacheControl => Str, ContentDisposition => Str, ContentEncoding => Str, ContentLanguage => Str, ContentType => Str, CopySourceIfMatch => Str, CopySourceIfModifiedSince => Str, CopySourceIfNoneMatch => Str, CopySourceIfUnmodifiedSince => Str, CopySourceSSECustomerAlgorithm => Str, CopySourceSSECustomerKey => Str, CopySourceSSECustomerKeyMD5 => Str, Expires => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWriteACP => Str, Metadata => L<Paws::S3::Metadata>, MetadataDirective => Str, RequestPayer => Str, ServerSideEncryption => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, SSEKMSKeyId => Str, StorageClass => Str, WebsiteRedirectLocation => Str])
 
 Each argument is described in detail in: L<Paws::S3::CopyObject>
 
@@ -479,7 +479,7 @@ Creates a copy of an object that is already stored in Amazon S3.
 
 
 
-=head2 CreateBucket(Bucket => Str, [ACL => Str, CreateBucketConfiguration => Paws::S3::CreateBucketConfiguration, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str])
+=head2 CreateBucket(Bucket => Str, [ACL => Str, CreateBucketConfiguration => L<Paws::S3::CreateBucketConfiguration>, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str])
 
 Each argument is described in detail in: L<Paws::S3::CreateBucket>
 
@@ -499,7 +499,7 @@ Creates a new bucket.
 
 
 
-=head2 CreateMultipartUpload(Bucket => Str, Key => Str, [ACL => Str, CacheControl => Str, ContentDisposition => Str, ContentEncoding => Str, ContentLanguage => Str, ContentType => Str, Expires => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWriteACP => Str, Metadata => Paws::S3::Metadata, RequestPayer => Str, ServerSideEncryption => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, SSEKMSKeyId => Str, StorageClass => Str, WebsiteRedirectLocation => Str])
+=head2 CreateMultipartUpload(Bucket => Str, Key => Str, [ACL => Str, CacheControl => Str, ContentDisposition => Str, ContentEncoding => Str, ContentLanguage => Str, ContentType => Str, Expires => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWriteACP => Str, Metadata => L<Paws::S3::Metadata>, RequestPayer => Str, ServerSideEncryption => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, SSEKMSKeyId => Str, StorageClass => Str, WebsiteRedirectLocation => Str])
 
 Each argument is described in detail in: L<Paws::S3::CreateMultipartUpload>
 
@@ -678,7 +678,7 @@ isn't a null version, Amazon S3 does not remove any objects.
 
 
 
-=head2 DeleteObjects(Bucket => Str, Delete => Paws::S3::Delete, [MFA => Str, RequestPayer => Str])
+=head2 DeleteObjects(Bucket => Str, Delete => L<Paws::S3::Delete>, [MFA => Str, RequestPayer => Str])
 
 Each argument is described in detail in: L<Paws::S3::DeleteObjects>
 
@@ -1178,7 +1178,7 @@ upload.
 
 
 
-=head2 PutBucketAcl(Bucket => Str, [AccessControlPolicy => Paws::S3::AccessControlPolicy, ACL => Str, ContentMD5 => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str])
+=head2 PutBucketAcl(Bucket => Str, [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>, ACL => Str, ContentMD5 => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketAcl>
 
@@ -1198,7 +1198,7 @@ Sets the permissions on a bucket using access control lists (ACL).
 
 
 
-=head2 PutBucketCors(Bucket => Str, CORSConfiguration => Paws::S3::CORSConfiguration, [ContentMD5 => Str])
+=head2 PutBucketCors(Bucket => Str, CORSConfiguration => L<Paws::S3::CORSConfiguration>, [ContentMD5 => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketCors>
 
@@ -1218,7 +1218,7 @@ Sets the cors configuration for a bucket.
 
 
 
-=head2 PutBucketLifecycle(Bucket => Str, [ContentMD5 => Str, LifecycleConfiguration => Paws::S3::LifecycleConfiguration])
+=head2 PutBucketLifecycle(Bucket => Str, [ContentMD5 => Str, LifecycleConfiguration => L<Paws::S3::LifecycleConfiguration>])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketLifecycle>
 
@@ -1238,7 +1238,7 @@ Deprecated, see the PutBucketLifecycleConfiguration operation.
 
 
 
-=head2 PutBucketLifecycleConfiguration(Bucket => Str, [LifecycleConfiguration => Paws::S3::BucketLifecycleConfiguration])
+=head2 PutBucketLifecycleConfiguration(Bucket => Str, [LifecycleConfiguration => L<Paws::S3::BucketLifecycleConfiguration>])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketLifecycleConfiguration>
 
@@ -1259,7 +1259,7 @@ configuration exists, it replaces it.
 
 
 
-=head2 PutBucketLogging(Bucket => Str, BucketLoggingStatus => Paws::S3::BucketLoggingStatus, [ContentMD5 => Str])
+=head2 PutBucketLogging(Bucket => Str, BucketLoggingStatus => L<Paws::S3::BucketLoggingStatus>, [ContentMD5 => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketLogging>
 
@@ -1281,7 +1281,7 @@ status of a bucket, you must be the bucket owner.
 
 
 
-=head2 PutBucketNotification(Bucket => Str, NotificationConfiguration => Paws::S3::NotificationConfigurationDeprecated, [ContentMD5 => Str])
+=head2 PutBucketNotification(Bucket => Str, NotificationConfiguration => L<Paws::S3::NotificationConfigurationDeprecated>, [ContentMD5 => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketNotification>
 
@@ -1301,7 +1301,7 @@ Deprecated, see the PutBucketNotificationConfiguraiton operation.
 
 
 
-=head2 PutBucketNotificationConfiguration(Bucket => Str, NotificationConfiguration => Paws::S3::NotificationConfiguration)
+=head2 PutBucketNotificationConfiguration(Bucket => Str, NotificationConfiguration => L<Paws::S3::NotificationConfiguration>)
 
 Each argument is described in detail in: L<Paws::S3::PutBucketNotificationConfiguration>
 
@@ -1342,7 +1342,7 @@ one in this request completely replaces it.
 
 
 
-=head2 PutBucketReplication(Bucket => Str, ReplicationConfiguration => Paws::S3::ReplicationConfiguration, [ContentMD5 => Str])
+=head2 PutBucketReplication(Bucket => Str, ReplicationConfiguration => L<Paws::S3::ReplicationConfiguration>, [ContentMD5 => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketReplication>
 
@@ -1363,7 +1363,7 @@ if present).
 
 
 
-=head2 PutBucketRequestPayment(Bucket => Str, RequestPaymentConfiguration => Paws::S3::RequestPaymentConfiguration, [ContentMD5 => Str])
+=head2 PutBucketRequestPayment(Bucket => Str, RequestPaymentConfiguration => L<Paws::S3::RequestPaymentConfiguration>, [ContentMD5 => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketRequestPayment>
 
@@ -1388,7 +1388,7 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html
 
 
 
-=head2 PutBucketTagging(Bucket => Str, Tagging => Paws::S3::Tagging, [ContentMD5 => Str])
+=head2 PutBucketTagging(Bucket => Str, Tagging => L<Paws::S3::Tagging>, [ContentMD5 => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketTagging>
 
@@ -1408,7 +1408,7 @@ Sets the tags for a bucket.
 
 
 
-=head2 PutBucketVersioning(Bucket => Str, VersioningConfiguration => Paws::S3::VersioningConfiguration, [ContentMD5 => Str, MFA => Str])
+=head2 PutBucketVersioning(Bucket => Str, VersioningConfiguration => L<Paws::S3::VersioningConfiguration>, [ContentMD5 => Str, MFA => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketVersioning>
 
@@ -1429,7 +1429,7 @@ state, you must be the bucket owner.
 
 
 
-=head2 PutBucketWebsite(Bucket => Str, WebsiteConfiguration => Paws::S3::WebsiteConfiguration, [ContentMD5 => Str])
+=head2 PutBucketWebsite(Bucket => Str, WebsiteConfiguration => L<Paws::S3::WebsiteConfiguration>, [ContentMD5 => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketWebsite>
 
@@ -1449,7 +1449,7 @@ Set the website configuration for a bucket.
 
 
 
-=head2 PutObject(Bucket => Str, Key => Str, [ACL => Str, Body => Str, CacheControl => Str, ContentDisposition => Str, ContentEncoding => Str, ContentLanguage => Str, ContentLength => Int, ContentMD5 => Str, ContentType => Str, Expires => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWriteACP => Str, Metadata => Paws::S3::Metadata, RequestPayer => Str, ServerSideEncryption => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, SSEKMSKeyId => Str, StorageClass => Str, WebsiteRedirectLocation => Str])
+=head2 PutObject(Bucket => Str, Key => Str, [ACL => Str, Body => Str, CacheControl => Str, ContentDisposition => Str, ContentEncoding => Str, ContentLanguage => Str, ContentLength => Int, ContentMD5 => Str, ContentType => Str, Expires => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWriteACP => Str, Metadata => L<Paws::S3::Metadata>, RequestPayer => Str, ServerSideEncryption => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, SSEKMSKeyId => Str, StorageClass => Str, WebsiteRedirectLocation => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutObject>
 
@@ -1469,7 +1469,7 @@ Adds an object to a bucket.
 
 
 
-=head2 PutObjectAcl(Bucket => Str, Key => Str, [AccessControlPolicy => Paws::S3::AccessControlPolicy, ACL => Str, ContentMD5 => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str, RequestPayer => Str])
+=head2 PutObjectAcl(Bucket => Str, Key => Str, [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>, ACL => Str, ContentMD5 => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str, RequestPayer => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutObjectAcl>
 
@@ -1490,7 +1490,7 @@ permissions for an object that already exists in a bucket
 
 
 
-=head2 RestoreObject(Bucket => Str, Key => Str, [RequestPayer => Str, RestoreRequest => Paws::S3::RestoreRequest, VersionId => Str])
+=head2 RestoreObject(Bucket => Str, Key => Str, [RequestPayer => Str, RestoreRequest => L<Paws::S3::RestoreRequest>, VersionId => Str])
 
 Each argument is described in detail in: L<Paws::S3::RestoreObject>
 

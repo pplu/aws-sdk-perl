@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head1 ATTRIBUTES
 
-=head2 gitHubLocation => Paws::CodeDeploy::GitHubLocation
+=head2 gitHubLocation => L<Paws::CodeDeploy::GitHubLocation>
 
   
 
@@ -49,7 +49,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =back
 
-=head2 s3Location => Paws::CodeDeploy::S3Location
+=head2 s3Location => L<Paws::CodeDeploy::S3Location>
 
   
 

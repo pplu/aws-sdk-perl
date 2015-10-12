@@ -47,7 +47,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Evalua
 
   The ARN of the resource that the indicated API action was tested on.
 
-=head2 MatchedStatements => ArrayRef[Paws::IAM::Statement]
+=head2 MatchedStatements => ArrayRef[L<Paws::IAM::Statement>]
 
   A list of the statements in the input policies that determine the
 result for this scenario. Remember that even if multiple statements

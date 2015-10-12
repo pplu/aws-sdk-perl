@@ -20,7 +20,7 @@ Paws::SimpleWorkflow::ActivityTask
 =head2 B<REQUIRED> activityId => Str
 
   The unique ID of the task.
-=head2 B<REQUIRED> activityType => Paws::SimpleWorkflow::ActivityType
+=head2 B<REQUIRED> activityType => L<Paws::SimpleWorkflow::ActivityType>
 
   The type of this activity task.
 =head2 input => Str
@@ -36,7 +36,7 @@ implementation.
   The opaque string used as a handle on the task. This token is used by
 workers to communicate progress and response information back to the
 system about the task.
-=head2 B<REQUIRED> workflowExecution => Paws::SimpleWorkflow::WorkflowExecution
+=head2 B<REQUIRED> workflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The workflow execution that started this activity task.
 

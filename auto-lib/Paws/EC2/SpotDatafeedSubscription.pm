@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::SpotDa
 
   The Amazon S3 bucket where the Spot instance data feed is located.
 
-=head2 Fault => Paws::EC2::SpotInstanceStateFault
+=head2 Fault => L<Paws::EC2::SpotInstanceStateFault>
 
   The fault codes for the Spot instance request, if any.
 

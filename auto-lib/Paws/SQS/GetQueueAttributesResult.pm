@@ -13,7 +13,7 @@ Paws::SQS::GetQueueAttributesResult
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => Paws::SQS::QueueAttributeMap
+=head2 Attributes => L<Paws::SQS::QueueAttributeMap>
 
   A map of attributes to the respective values.
 

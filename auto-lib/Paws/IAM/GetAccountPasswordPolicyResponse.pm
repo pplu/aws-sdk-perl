@@ -13,7 +13,7 @@ Paws::IAM::GetAccountPasswordPolicyResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> PasswordPolicy => Paws::IAM::PasswordPolicy
+=head2 B<REQUIRED> PasswordPolicy => L<Paws::IAM::PasswordPolicy>
 
   
 

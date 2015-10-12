@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the parameter group to be modified.
 
-=head2 B<REQUIRED> Parameters => ArrayRef[Paws::RedShift::Parameter]
+=head2 B<REQUIRED> Parameters => ArrayRef[L<Paws::RedShift::Parameter>]
 
   An array of parameters to be modified. A maximum of 20 parameters can
 be modified in a single request.

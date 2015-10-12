@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 attributes => ArrayRef[Paws::ECS::Attribute]
+=head2 attributes => ArrayRef[L<Paws::ECS::Attribute>]
 
   The container instance attributes that this container instance
 supports.
@@ -68,11 +68,11 @@ register. This signature can be found by running the following command
 from the instance: C<curl
 http://169.254.169.254/latest/dynamic/instance-identity/signature/>
 
-=head2 totalResources => ArrayRef[Paws::ECS::Resource]
+=head2 totalResources => ArrayRef[L<Paws::ECS::Resource>]
 
   The resources available on the instance.
 
-=head2 versionInfo => Paws::ECS::VersionInfo
+=head2 versionInfo => L<Paws::ECS::VersionInfo>
 
   The version information for the Amazon ECS container agent and Docker
 daemon running on the container instance.

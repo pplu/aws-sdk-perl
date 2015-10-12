@@ -70,7 +70,7 @@ specified string.
   Filters the available log files for files larger than the specified
 size.
 
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
   This parameter is not currently supported.
 

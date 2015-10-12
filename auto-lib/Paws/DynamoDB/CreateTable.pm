@@ -38,12 +38,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> AttributeDefinitions => ArrayRef[Paws::DynamoDB::AttributeDefinition]
+=head2 B<REQUIRED> AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]
 
   An array of attributes that describe the key schema for the table and
 indexes.
 
-=head2 GlobalSecondaryIndexes => ArrayRef[Paws::DynamoDB::GlobalSecondaryIndex]
+=head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]
 
   One or more global secondary indexes (the maximum is five) to be
 created on the table. Each global secondary index in the array includes
@@ -109,7 +109,7 @@ global secondary index, consisting of read and write capacity units.
 
 =back
 
-=head2 B<REQUIRED> KeySchema => ArrayRef[Paws::DynamoDB::KeySchemaElement]
+=head2 B<REQUIRED> KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
   Specifies the attributes that make up the primary key for a table or an
 index. The attributes in I<KeySchema> must also be defined in the
@@ -142,7 +142,7 @@ I<KeyType> of C<RANGE>.
 For more information, see Specifying the Primary Key in the I<Amazon
 DynamoDB Developer Guide>.
 
-=head2 LocalSecondaryIndexes => ArrayRef[Paws::DynamoDB::LocalSecondaryIndex]
+=head2 LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]
 
   One or more local secondary indexes (the maximum is five) to be created
 on the table. Each index is scoped to a given hash key value. There is
@@ -208,11 +208,11 @@ attributes when determining the total.
 
 =back
 
-=head2 B<REQUIRED> ProvisionedThroughput => Paws::DynamoDB::ProvisionedThroughput
+=head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
   
 
-=head2 StreamSpecification => Paws::DynamoDB::StreamSpecification
+=head2 StreamSpecification => L<Paws::DynamoDB::StreamSpecification>
 
   The settings for DynamoDB Streams on the table. These settings consist
 of:

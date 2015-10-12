@@ -72,7 +72,7 @@ I<available>, I<creating>, I<deleted>, I<deleting>,
 I<incompatible-network>, I<modifying>, I<rebooting cache cluster
 nodes>, I<restore-failed>, or I<snapshotting>.
 
-=head2 CacheNodes => ArrayRef[Paws::ElastiCache::CacheNode]
+=head2 CacheNodes => ArrayRef[L<Paws::ElastiCache::CacheNode>]
 
   A list of cache nodes that are members of the cache cluster.
 
@@ -133,11 +133,11 @@ Amazon ElastiCache Product Features and Details and Cache Node
 Type-Specific Parameters for Memcached or Cache Node Type-Specific
 Parameters for Redis.
 
-=head2 CacheParameterGroup => Paws::ElastiCache::CacheParameterGroupStatus
+=head2 CacheParameterGroup => L<Paws::ElastiCache::CacheParameterGroupStatus>
 
   
 
-=head2 CacheSecurityGroups => ArrayRef[Paws::ElastiCache::CacheSecurityGroupMembership]
+=head2 CacheSecurityGroups => ArrayRef[L<Paws::ElastiCache::CacheSecurityGroupMembership>]
 
   A list of cache security group elements, composed of name and status
 sub-elements.
@@ -151,7 +151,7 @@ sub-elements.
   The URL of the web page where you can download the latest ElastiCache
 client library.
 
-=head2 ConfigurationEndpoint => Paws::ElastiCache::Endpoint
+=head2 ConfigurationEndpoint => L<Paws::ElastiCache::Endpoint>
 
   
 
@@ -165,7 +165,7 @@ this cache cluster.
   The version of the cache engine version that is used in this cache
 cluster.
 
-=head2 NotificationConfiguration => Paws::ElastiCache::NotificationConfiguration
+=head2 NotificationConfiguration => L<Paws::ElastiCache::NotificationConfiguration>
 
   
 
@@ -176,7 +176,7 @@ cluster.
 For clusters running Redis, this value must be 1. For clusters running
 Memcached, this value must be between 1 and 20.
 
-=head2 PendingModifiedValues => Paws::ElastiCache::PendingModifiedValues
+=head2 PendingModifiedValues => L<Paws::ElastiCache::PendingModifiedValues>
 
   
 
@@ -219,7 +219,7 @@ Example: C<sun:05:00-sun:09:00>
 field is empty, the cache cluster is not associated with any
 replication group.
 
-=head2 SecurityGroups => ArrayRef[Paws::ElastiCache::SecurityGroupMembership]
+=head2 SecurityGroups => ArrayRef[L<Paws::ElastiCache::SecurityGroupMembership>]
 
   A list of VPC Security Groups associated with the cache cluster.
 

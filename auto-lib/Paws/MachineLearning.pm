@@ -212,7 +212,7 @@ specified by the C<OutputUri> parameter.
 
 
 
-=head2 CreateDataSourceFromRDS(DataSourceId => Str, RDSData => Paws::MachineLearning::RDSDataSpec, RoleARN => Str, [ComputeStatistics => Bool, DataSourceName => Str])
+=head2 CreateDataSourceFromRDS(DataSourceId => Str, RDSData => L<Paws::MachineLearning::RDSDataSpec>, RoleARN => Str, [ComputeStatistics => Bool, DataSourceName => Str])
 
 Each argument is described in detail in: L<Paws::MachineLearning::CreateDataSourceFromRDS>
 
@@ -247,7 +247,7 @@ attribute of the GetDataSource operation response.
 
 
 
-=head2 CreateDataSourceFromRedshift(DataSourceId => Str, DataSpec => Paws::MachineLearning::RedshiftDataSpec, RoleARN => Str, [ComputeStatistics => Bool, DataSourceName => Str])
+=head2 CreateDataSourceFromRedshift(DataSourceId => Str, DataSpec => L<Paws::MachineLearning::RedshiftDataSpec>, RoleARN => Str, [ComputeStatistics => Bool, DataSourceName => Str])
 
 Each argument is described in detail in: L<Paws::MachineLearning::CreateDataSourceFromRedshift>
 
@@ -297,7 +297,7 @@ Machine Learning Developer Guide.
 
 
 
-=head2 CreateDataSourceFromS3(DataSourceId => Str, DataSpec => Paws::MachineLearning::S3DataSpec, [ComputeStatistics => Bool, DataSourceName => Str])
+=head2 CreateDataSourceFromS3(DataSourceId => Str, DataSpec => L<Paws::MachineLearning::S3DataSpec>, [ComputeStatistics => Bool, DataSourceName => Str])
 
 Each argument is described in detail in: L<Paws::MachineLearning::CreateDataSourceFromS3>
 
@@ -388,7 +388,7 @@ evaluation during the creation operation.
 
 
 
-=head2 CreateMLModel(MLModelId => Str, MLModelType => Str, TrainingDataSourceId => Str, [MLModelName => Str, Parameters => Paws::MachineLearning::TrainingParameters, Recipe => Str, RecipeUri => Str])
+=head2 CreateMLModel(MLModelId => Str, MLModelType => Str, TrainingDataSourceId => Str, [MLModelName => Str, Parameters => L<Paws::MachineLearning::TrainingParameters>, Recipe => Str, RecipeUri => Str])
 
 Each argument is described in detail in: L<Paws::MachineLearning::CreateMLModel>
 
@@ -753,7 +753,7 @@ C<GetMLModel> provides results in normal or verbose format.
 
 
 
-=head2 Predict(MLModelId => Str, PredictEndpoint => Str, Record => Paws::MachineLearning::Record)
+=head2 Predict(MLModelId => Str, PredictEndpoint => Str, Record => L<Paws::MachineLearning::Record>)
 
 Each argument is described in detail in: L<Paws::MachineLearning::Predict>
 

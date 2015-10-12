@@ -23,7 +23,7 @@ subsequent call.
   The starting point for the next page of results. To view the next page
 of results, call C<ListPipelinesOutput> again with this marker value.
 If the value is null, there are no more results.
-=head2 B<REQUIRED> pipelineIdList => ArrayRef[Paws::DataPipeline::PipelineIdName]
+=head2 B<REQUIRED> pipelineIdList => ArrayRef[L<Paws::DataPipeline::PipelineIdName>]
 
   The pipeline identifiers. If you require additional information about
 the pipelines, you can use these identifiers to call DescribePipelines

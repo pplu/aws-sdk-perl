@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Policy
 
   A description of the policy type.
 
-=head2 PolicyAttributeTypeDescriptions => ArrayRef[Paws::ELB::PolicyAttributeTypeDescription]
+=head2 PolicyAttributeTypeDescriptions => ArrayRef[L<Paws::ELB::PolicyAttributeTypeDescription>]
 
   The description of the policy attributes associated with the policies
 defined by Elastic Load Balancing.

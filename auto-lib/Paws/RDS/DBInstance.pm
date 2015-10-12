@@ -155,22 +155,22 @@ Contains the Oracle System ID (SID) of the created DB instance. Not
 shown when the returned parameters do not apply to an Oracle DB
 instance.
 
-=head2 DBParameterGroups => ArrayRef[Paws::RDS::DBParameterGroupStatus]
+=head2 DBParameterGroups => ArrayRef[L<Paws::RDS::DBParameterGroupStatus>]
 
   Provides the list of DB parameter groups applied to this DB instance.
 
-=head2 DBSecurityGroups => ArrayRef[Paws::RDS::DBSecurityGroupMembership]
+=head2 DBSecurityGroups => ArrayRef[L<Paws::RDS::DBSecurityGroupMembership>]
 
   Provides List of DB security group elements containing only
 C<DBSecurityGroup.Name> and C<DBSecurityGroup.Status> subelements.
 
-=head2 DBSubnetGroup => Paws::RDS::DBSubnetGroup
+=head2 DBSubnetGroup => L<Paws::RDS::DBSubnetGroup>
 
   Specifies information on the subnet group associated with the DB
 instance, including the name, description, and subnets in the subnet
 group.
 
-=head2 Endpoint => Paws::RDS::Endpoint
+=head2 Endpoint => L<Paws::RDS::Endpoint>
 
   Specifies the connection endpoint.
 
@@ -213,11 +213,11 @@ point-in-time restore.
 
   Specifies if the DB instance is a Multi-AZ deployment.
 
-=head2 OptionGroupMemberships => ArrayRef[Paws::RDS::OptionGroupMembership]
+=head2 OptionGroupMemberships => ArrayRef[L<Paws::RDS::OptionGroupMembership>]
 
   Provides the list of option group memberships for this DB instance.
 
-=head2 PendingModifiedValues => Paws::RDS::PendingModifiedValues
+=head2 PendingModifiedValues => L<Paws::RDS::PendingModifiedValues>
 
   Specifies that changes to the DB instance are pending. This element is
 only included when changes are pending. Specific changes are identified
@@ -275,7 +275,7 @@ is a Read Replica.
   If present, specifies the name of the secondary Availability Zone for a
 DB instance with multi-AZ support.
 
-=head2 StatusInfos => ArrayRef[Paws::RDS::DBInstanceStatusInfo]
+=head2 StatusInfos => ArrayRef[L<Paws::RDS::DBInstanceStatusInfo>]
 
   The status of a Read Replica. If the instance is not a Read Replica,
 this will be blank.
@@ -293,7 +293,7 @@ this will be blank.
   The ARN from the Key Store with which the instance is associated for
 TDE encryption.
 
-=head2 VpcSecurityGroups => ArrayRef[Paws::RDS::VpcSecurityGroupMembership]
+=head2 VpcSecurityGroups => ArrayRef[L<Paws::RDS::VpcSecurityGroupMembership>]
 
   Provides List of VPC security group elements that the DB instance
 belongs to.

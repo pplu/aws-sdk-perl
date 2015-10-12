@@ -44,17 +44,17 @@ applied.
 
   A description of the security group.
 
-=head2 EC2SecurityGroups => ArrayRef[Paws::RedShift::EC2SecurityGroup]
+=head2 EC2SecurityGroups => ArrayRef[L<Paws::RedShift::EC2SecurityGroup>]
 
   A list of EC2 security groups that are permitted to access clusters
 associated with this cluster security group.
 
-=head2 IPRanges => ArrayRef[Paws::RedShift::IPRange]
+=head2 IPRanges => ArrayRef[L<Paws::RedShift::IPRange>]
 
   A list of IP ranges (CIDR blocks) that are permitted to access clusters
 associated with this cluster security group.
 
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   The list of tags for the cluster security group.
 

@@ -15,7 +15,7 @@ Paws::EC2::DescribeSpotFleetInstancesResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> ActiveInstances => ArrayRef[Paws::EC2::ActiveInstance]
+=head2 B<REQUIRED> ActiveInstances => ArrayRef[L<Paws::EC2::ActiveInstance>]
 
   The running instances. Note that this list is refreshed periodically
 and might be out of date.

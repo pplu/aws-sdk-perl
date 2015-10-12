@@ -64,7 +64,7 @@ behalf when you cancel its Spot fleet request using
 CancelSpotFleetRequests or when the Spot fleet request expires, if you
 set C<terminateInstancesWithExpiration>.
 
-=head2 B<REQUIRED> LaunchSpecifications => ArrayRef[Paws::EC2::SpotFleetLaunchSpecification]
+=head2 B<REQUIRED> LaunchSpecifications => ArrayRef[L<Paws::EC2::SpotFleetLaunchSpecification>]
 
   Information about the launch specifications for the Spot fleet request.
 

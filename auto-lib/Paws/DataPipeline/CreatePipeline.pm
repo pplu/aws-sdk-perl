@@ -45,7 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 pipelines associated with your AWS account, because AWS Data Pipeline
 assigns each pipeline a unique pipeline identifier.
 
-=head2 tags => ArrayRef[Paws::DataPipeline::Tag]
+=head2 tags => ArrayRef[L<Paws::DataPipeline::Tag>]
 
   A list of tags to associate with the pipeline at creation. Tags let you
 control access to pipelines. For more information, see Controlling User

@@ -37,11 +37,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   Whether the result was compatible with the device pool.
 
-=head2 device => Paws::DeviceFarm::Device
+=head2 device => L<Paws::DeviceFarm::Device>
 
   
 
-=head2 incompatibilityMessages => ArrayRef[Paws::DeviceFarm::IncompatibilityMessage]
+=head2 incompatibilityMessages => ArrayRef[L<Paws::DeviceFarm::IncompatibilityMessage>]
 
   Information about the compatibility.
 

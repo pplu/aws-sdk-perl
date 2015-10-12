@@ -12,7 +12,7 @@ Paws::CodeDeploy::GetApplicationOutput
 
 =head1 ATTRIBUTES
 
-=head2 application => Paws::CodeDeploy::ApplicationInfo
+=head2 application => L<Paws::CodeDeploy::ApplicationInfo>
 
   Information about the application.
 

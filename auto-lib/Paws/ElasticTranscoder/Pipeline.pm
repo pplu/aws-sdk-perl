@@ -57,7 +57,7 @@ provide an AWS-KMS key only if you want to use a non-default AWS-KMS
 key, or if you are using an C<Encryption:Mode> of C<AES-PKCS7>,
 C<AES-CTR>, or C<AES-GCM>.
 
-=head2 ContentConfig => Paws::ElasticTranscoder::PipelineOutputConfig
+=head2 ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>
 
   Information about the Amazon S3 bucket in which you want Elastic
 Transcoder to save transcoded files and playlists. Either you specify
@@ -140,7 +140,7 @@ the AWS account, but uniqueness is not enforced.
 
 Constraints: Maximum 40 characters
 
-=head2 Notifications => Paws::ElasticTranscoder::Notifications
+=head2 Notifications => L<Paws::ElasticTranscoder::Notifications>
 
   The Amazon Simple Notification Service (Amazon SNS) topic that you want
 to notify to report job status.
@@ -188,7 +188,7 @@ uses to transcode jobs for this pipeline.
 
 =back
 
-=head2 ThumbnailConfig => Paws::ElasticTranscoder::PipelineOutputConfig
+=head2 ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>
 
   Information about the Amazon S3 bucket in which you want Elastic
 Transcoder to save thumbnail files. Either you specify both

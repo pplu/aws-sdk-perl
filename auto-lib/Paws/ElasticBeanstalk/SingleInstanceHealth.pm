@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head1 ATTRIBUTES
 
-=head2 ApplicationMetrics => Paws::ElasticBeanstalk::ApplicationMetrics
+=head2 ApplicationMetrics => L<Paws::ElasticBeanstalk::ApplicationMetrics>
 
   
 
@@ -65,7 +65,7 @@ information, see Health Colors and Statuses.
 
   The time at which the EC2 instance was launched.
 
-=head2 System => Paws::ElasticBeanstalk::SystemStatus
+=head2 System => L<Paws::ElasticBeanstalk::SystemStatus>
 
   
 

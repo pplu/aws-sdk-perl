@@ -14,7 +14,7 @@ Paws::CognitoIdentity::ListIdentitiesResponse
 
 =head1 ATTRIBUTES
 
-=head2 Identities => ArrayRef[Paws::CognitoIdentity::IdentityDescription]
+=head2 Identities => ArrayRef[L<Paws::CognitoIdentity::IdentityDescription>]
 
   An object containing a set of identities and associated mappings.
 =head2 IdentityPoolId => Str

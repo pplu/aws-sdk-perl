@@ -66,7 +66,7 @@ will store their database encryption keys.
   The HSMs public certificate file. When using Cloud HSM, the file name
 is server.pem.
 
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   A list of tag instances.
 

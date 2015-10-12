@@ -25,7 +25,7 @@ this field.
 request, you can provide the value of C<NextMarker> as the value of the
 C<Marker> parameter in your next request to retrieve the next set of
 tags.
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::EFS::Tag]
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EFS::Tag>]
 
   Returns tags associated with the file system as an array of C<Tag>
 objects.

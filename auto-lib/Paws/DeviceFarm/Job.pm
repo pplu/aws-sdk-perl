@@ -45,7 +45,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   The job's ARN.
 
-=head2 counters => Paws::DeviceFarm::Counters
+=head2 counters => L<Paws::DeviceFarm::Counters>
 
   The job's result counters.
 
@@ -53,7 +53,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   When the job was created.
 
-=head2 device => Paws::DeviceFarm::Device
+=head2 device => L<Paws::DeviceFarm::Device>
 
   
 

@@ -12,7 +12,7 @@ Paws::CodePipeline::CreateCustomActionTypeOutput
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> actionType => Paws::CodePipeline::ActionType
+=head2 B<REQUIRED> actionType => L<Paws::CodePipeline::ActionType>
 
   
 

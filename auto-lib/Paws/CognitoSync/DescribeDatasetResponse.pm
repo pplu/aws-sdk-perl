@@ -13,7 +13,7 @@ Paws::CognitoSync::DescribeDatasetResponse
 
 =head1 ATTRIBUTES
 
-=head2 Dataset => Paws::CognitoSync::Dataset
+=head2 Dataset => L<Paws::CognitoSync::Dataset>
 
   Meta data for a collection of data for an identity. An identity can
 have multiple datasets. A dataset can be general or associated with a

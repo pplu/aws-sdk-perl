@@ -19,7 +19,7 @@ Paws::DeviceFarm::ListTestsResult
 is an identifier that is also returned, which can be used in a
 subsequent call to this operation to return the next set of items in
 the list.
-=head2 tests => ArrayRef[Paws::DeviceFarm::Test]
+=head2 tests => ArrayRef[L<Paws::DeviceFarm::Test>]
 
   Information about the tests.
 

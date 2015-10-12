@@ -28,7 +28,7 @@ Paws::S3::
 
 =head1 ATTRIBUTES
 
-=head2 AccessControlPolicy => Paws::S3::AccessControlPolicy
+=head2 AccessControlPolicy => L<Paws::S3::AccessControlPolicy>
 
   
 =head2 ACL => Str

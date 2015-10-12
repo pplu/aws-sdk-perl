@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the cache parameter group to reset.
 
-=head2 B<REQUIRED> ParameterNameValues => ArrayRef[Paws::ElastiCache::ParameterNameValue]
+=head2 B<REQUIRED> ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>]
 
   An array of parameter names to be reset. If you are not resetting the
 entire cache parameter group, you must specify at least one parameter

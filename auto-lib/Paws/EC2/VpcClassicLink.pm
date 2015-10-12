@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpcCla
 
   Indicates whether the VPC is enabled for ClassicLink.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the VPC.
 

@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The format of a trail ARN is
 C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>.
 
-=head2 TagsList => ArrayRef[Paws::CloudTrail::Tag]
+=head2 TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]
 
   Contains a list of CloudTrail tags, up to a limit of 10.
 

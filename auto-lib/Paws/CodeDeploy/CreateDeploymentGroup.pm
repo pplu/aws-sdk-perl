@@ -94,11 +94,11 @@ configuration operation.
 
   The name of an existing deployment group for the specified application.
 
-=head2 ec2TagFilters => ArrayRef[Paws::CodeDeploy::EC2TagFilter]
+=head2 ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
   The Amazon EC2 tags to filter on.
 
-=head2 onPremisesInstanceTagFilters => ArrayRef[Paws::CodeDeploy::TagFilter]
+=head2 onPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
   The on-premises instance tags to filter on.
 

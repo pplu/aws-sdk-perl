@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::WebACL
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> DefaultAction => Paws::WAF::WafAction
+=head2 B<REQUIRED> DefaultAction => L<Paws::WAF::WafAction>
 
   The action to perform if none of the C<Rules> contained in the
 C<WebACL> match. The action is specified by the WafAction object.
@@ -49,7 +49,7 @@ C<WebACL> match. The action is specified by the WafAction object.
   A friendly name or description of the C<WebACL>. You can't change the
 name of a C<WebACL> after you create it.
 
-=head2 B<REQUIRED> Rules => ArrayRef[Paws::WAF::ActivatedRule]
+=head2 B<REQUIRED> Rules => ArrayRef[L<Paws::WAF::ActivatedRule>]
 
   An array that contains the action for each C<Rule> in a C<WebACL>, the
 priority of the C<Rule>, and the ID of the C<Rule>.

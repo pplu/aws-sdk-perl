@@ -49,7 +49,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Default: For Amazon EBS-backed AMIs, C<i386>. For instance store-backed
 AMIs, the architecture specified in the manifest file.
 
-=head2 BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping]
+=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
   One or more block device mapping entries.
 

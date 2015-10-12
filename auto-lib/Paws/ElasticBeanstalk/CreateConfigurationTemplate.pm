@@ -52,7 +52,7 @@ Beanstalk returns an C<InvalidParameterValue> error.
 
   The ID of the environment used with this configuration template.
 
-=head2 OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]
+=head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
 
   If specified, AWS Elastic Beanstalk sets the specified configuration
 option to the requested value. The new value overrides the value
@@ -76,7 +76,7 @@ If a solution stack name is not specified and the source configuration
 parameter is specified, AWS Elastic Beanstalk uses the same solution
 stack as the source configuration template.
 
-=head2 SourceConfiguration => Paws::ElasticBeanstalk::SourceConfiguration
+=head2 SourceConfiguration => L<Paws::ElasticBeanstalk::SourceConfiguration>
 
   If specified, AWS Elastic Beanstalk uses the configuration values from
 the specified configuration template to create a new configuration.

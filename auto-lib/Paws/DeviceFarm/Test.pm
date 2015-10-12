@@ -44,7 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   The test's ARN.
 
-=head2 counters => Paws::DeviceFarm::Counters
+=head2 counters => L<Paws::DeviceFarm::Counters>
 
   The test's result counters.
 

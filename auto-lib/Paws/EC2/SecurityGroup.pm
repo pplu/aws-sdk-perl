@@ -50,11 +50,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Securi
 
   The name of the security group.
 
-=head2 IpPermissions => ArrayRef[Paws::EC2::IpPermission]
+=head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
   One or more inbound rules associated with the security group.
 
-=head2 IpPermissionsEgress => ArrayRef[Paws::EC2::IpPermission]
+=head2 IpPermissionsEgress => ArrayRef[L<Paws::EC2::IpPermission>]
 
   [EC2-VPC] One or more outbound rules associated with the security
 group.
@@ -63,7 +63,7 @@ group.
 
   The AWS account ID of the owner of the security group.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the security group.
 

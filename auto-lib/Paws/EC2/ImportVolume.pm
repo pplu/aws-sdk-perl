@@ -51,11 +51,11 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-=head2 B<REQUIRED> Image => Paws::EC2::DiskImageDetail
+=head2 B<REQUIRED> Image => L<Paws::EC2::DiskImageDetail>
 
   The disk image.
 
-=head2 B<REQUIRED> Volume => Paws::EC2::VolumeDetail
+=head2 B<REQUIRED> Volume => L<Paws::EC2::VolumeDetail>
 
   The volume size.
 

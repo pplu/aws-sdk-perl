@@ -14,7 +14,7 @@ Paws::CloudWatchLogs::FilterLogEventsResponse
 
 =head1 ATTRIBUTES
 
-=head2 events => ArrayRef[Paws::CloudWatchLogs::FilteredLogEvent]
+=head2 events => ArrayRef[L<Paws::CloudWatchLogs::FilteredLogEvent>]
 
   A list of C<FilteredLogEvent> objects representing the matched events
 from the request.
@@ -22,7 +22,7 @@ from the request.
 
   A pagination token obtained from a C<FilterLogEvents> response to
 continue paginating the FilterLogEvents results.
-=head2 searchedLogStreams => ArrayRef[Paws::CloudWatchLogs::SearchedLogStream]
+=head2 searchedLogStreams => ArrayRef[L<Paws::CloudWatchLogs::SearchedLogStream>]
 
   A list of C<SearchedLogStream> objects indicating which log streams
 have been searched in this request and whether each has been searched

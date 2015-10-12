@@ -42,7 +42,7 @@ message. Messages with a positive C<DelaySeconds> value become
 available for processing after the delay time is finished. If you don't
 specify a value, the default value for the queue applies.
 
-=head2 MessageAttributes => Paws::SQS::MessageAttributeMap
+=head2 MessageAttributes => L<Paws::SQS::MessageAttributeMap>
 
   Each message attribute consists of a Name, Type, and Value. For more
 information, see Message Attribute Items.

@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-=head2 B<REQUIRED> Suggester => Paws::CloudSearch::Suggester
+=head2 B<REQUIRED> Suggester => L<Paws::CloudSearch::Suggester>
 
   
 

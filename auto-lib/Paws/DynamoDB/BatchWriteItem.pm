@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> RequestItems => Paws::DynamoDB::BatchWriteItemRequestMap
+=head2 B<REQUIRED> RequestItems => L<Paws::DynamoDB::BatchWriteItemRequestMap>
 
   A map of one or more table names and, for each table, a list of
 operations to be performed (I<DeleteRequest> or I<PutRequest>). Each

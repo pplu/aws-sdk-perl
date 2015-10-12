@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> actionTypeId => Paws::CodePipeline::ActionTypeId
+=head2 B<REQUIRED> actionTypeId => L<Paws::CodePipeline::ActionTypeId>
 
   
 
@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The maximum number of jobs to return in a poll for jobs call.
 
-=head2 queryParam => Paws::CodePipeline::QueryParamMap
+=head2 queryParam => L<Paws::CodePipeline::QueryParamMap>
 
   A map of property names and values. For an action type with no
 queryable properties, this value must be null or an empty map. For an

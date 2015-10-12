@@ -44,7 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::T
 
 =head1 ATTRIBUTES
 
-=head2 AttributeDefinitions => ArrayRef[Paws::DynamoDB::AttributeDefinition]
+=head2 AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]
 
   An array of I<AttributeDefinition> objects. Each of these objects
 describes one attribute in the table and index key schema.
@@ -68,7 +68,7 @@ I<AttributeType> - The data type for the attribute.
   The date and time when the table was created, in UNIX epoch time
 format.
 
-=head2 GlobalSecondaryIndexes => ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexDescription]
+=head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexDescription>]
 
   The global secondary indexes, if any, on the table. Each index is
 scoped to a given hash key value. Each element is composed of:
@@ -190,7 +190,7 @@ will be returned.
 approximately every six hours. Recent changes might not be reflected in
 this value.
 
-=head2 KeySchema => ArrayRef[Paws::DynamoDB::KeySchemaElement]
+=head2 KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
   The primary key structure for the table. Each I<KeySchemaElement>
 consists of:
@@ -241,7 +241,7 @@ the I<StreamLabel>.
 
 =back
 
-=head2 LocalSecondaryIndexes => ArrayRef[Paws::DynamoDB::LocalSecondaryIndexDescription]
+=head2 LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndexDescription>]
 
   Represents one or more local secondary indexes on the table. Each index
 is scoped to a given hash key value. Tables with one or more local
@@ -321,13 +321,13 @@ not be reflected in this value.
 If the table is in the C<DELETING> state, no information about indexes
 will be returned.
 
-=head2 ProvisionedThroughput => Paws::DynamoDB::ProvisionedThroughputDescription
+=head2 ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughputDescription>
 
   The provisioned throughput settings for the table, consisting of read
 and write capacity units, along with data about increases and
 decreases.
 
-=head2 StreamSpecification => Paws::DynamoDB::StreamSpecification
+=head2 StreamSpecification => L<Paws::DynamoDB::StreamSpecification>
 
   The current DynamoDB Streams configuration for the table.
 

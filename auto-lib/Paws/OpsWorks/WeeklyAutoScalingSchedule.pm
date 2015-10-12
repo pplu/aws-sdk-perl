@@ -37,31 +37,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::W
 
 =head1 ATTRIBUTES
 
-=head2 Friday => Paws::OpsWorks::DailyAutoScalingSchedule
+=head2 Friday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
 
   The schedule for Friday.
 
-=head2 Monday => Paws::OpsWorks::DailyAutoScalingSchedule
+=head2 Monday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
 
   The schedule for Monday.
 
-=head2 Saturday => Paws::OpsWorks::DailyAutoScalingSchedule
+=head2 Saturday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
 
   The schedule for Saturday.
 
-=head2 Sunday => Paws::OpsWorks::DailyAutoScalingSchedule
+=head2 Sunday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
 
   The schedule for Sunday.
 
-=head2 Thursday => Paws::OpsWorks::DailyAutoScalingSchedule
+=head2 Thursday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
 
   The schedule for Thursday.
 
-=head2 Tuesday => Paws::OpsWorks::DailyAutoScalingSchedule
+=head2 Tuesday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
 
   The schedule for Tuesday.
 
-=head2 Wednesday => Paws::OpsWorks::DailyAutoScalingSchedule
+=head2 Wednesday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
 
   The schedule for Wednesday.
 

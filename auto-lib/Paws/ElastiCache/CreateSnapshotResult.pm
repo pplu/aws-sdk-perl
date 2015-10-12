@@ -13,7 +13,7 @@ Paws::ElastiCache::CreateSnapshotResult
 
 =head1 ATTRIBUTES
 
-=head2 Snapshot => Paws::ElastiCache::Snapshot
+=head2 Snapshot => L<Paws::ElastiCache::Snapshot>
 
   
 

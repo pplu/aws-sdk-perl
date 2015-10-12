@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The ARN specifying the assessment whose agents you want to list.
 
-=head2 filter => Paws::Inspector::AgentsFilter
+=head2 filter => L<Paws::Inspector::AgentsFilter>
 
   You can use this parameter to specify a subset of data to be included
 in the action's response.

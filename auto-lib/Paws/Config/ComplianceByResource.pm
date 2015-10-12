@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 
 =head1 ATTRIBUTES
 
-=head2 Compliance => Paws::Config::Compliance
+=head2 Compliance => L<Paws::Config::Compliance>
 
   Indicates whether the AWS resource complies with all of the AWS Config
 rules that evaluated it.

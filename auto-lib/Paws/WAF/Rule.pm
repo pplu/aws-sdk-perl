@@ -43,7 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::Rule o
   The friendly name or description for the C<Rule>. You can't change the
 name of a C<Rule> after you create it.
 
-=head2 B<REQUIRED> Predicates => ArrayRef[Paws::WAF::Predicate]
+=head2 B<REQUIRED> Predicates => ArrayRef[L<Paws::WAF::Predicate>]
 
   The C<Predicates> object contains one C<Predicate> element for each
 ByteMatchSet, IPSet, or SqlInjectionMatchSet object that you want to

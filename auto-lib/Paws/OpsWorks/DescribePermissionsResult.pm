@@ -12,7 +12,7 @@ Paws::OpsWorks::DescribePermissionsResult
 
 =head1 ATTRIBUTES
 
-=head2 Permissions => ArrayRef[Paws::OpsWorks::Permission]
+=head2 Permissions => ArrayRef[L<Paws::OpsWorks::Permission>]
 
   An array of C<Permission> objects that describe the stack permissions.
 

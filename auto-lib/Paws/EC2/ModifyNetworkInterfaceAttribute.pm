@@ -37,13 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Attachment => Paws::EC2::NetworkInterfaceAttachmentChanges
+=head2 Attachment => L<Paws::EC2::NetworkInterfaceAttachmentChanges>
 
   Information about the interface attachment. If modifying the 'delete on
 termination' attribute, you must specify the ID of the interface
 attachment.
 
-=head2 Description => Paws::EC2::AttributeValue
+=head2 Description => L<Paws::EC2::AttributeValue>
 
   A description for the network interface.
 
@@ -65,7 +65,7 @@ must specify the ID of the security group, not the name.
 
   The ID of the network interface.
 
-=head2 SourceDestCheck => Paws::EC2::AttributeBooleanValue
+=head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
 
   Indicates whether source/destination checking is enabled. A value of
 C<true> means checking is enabled, and C<false> means checking is

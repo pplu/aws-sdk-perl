@@ -51,7 +51,7 @@ Constraints:
 
 =back
 
-=head2 B<REQUIRED> Parameters => ArrayRef[Paws::RDS::Parameter]
+=head2 B<REQUIRED> Parameters => ArrayRef[L<Paws::RDS::Parameter>]
 
   An array of parameter names, values, and the apply method for the
 parameter update. At least one parameter name, value, and apply method

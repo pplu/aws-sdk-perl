@@ -33,11 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Cookies => Paws::CloudFront::CookiePreference
+=head2 B<REQUIRED> Cookies => L<Paws::CloudFront::CookiePreference>
 
   A complex type that specifies how CloudFront handles cookies.
 
-=head2 Headers => Paws::CloudFront::Headers
+=head2 Headers => L<Paws::CloudFront::Headers>
 
   A complex type that specifies the Headers, if any, that you want
 CloudFront to vary upon for this cache behavior.

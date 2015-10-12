@@ -15,10 +15,10 @@ Paws::STS::GetFederationTokenResponse
 
 =head1 ATTRIBUTES
 
-=head2 Credentials => Paws::STS::Credentials
+=head2 Credentials => L<Paws::STS::Credentials>
 
   Credentials for the service API authentication.
-=head2 FederatedUser => Paws::STS::FederatedUser
+=head2 FederatedUser => L<Paws::STS::FederatedUser>
 
   Identifiers for the federated user associated with the credentials
 (such as C<arn:aws:sts::123456789012:federated-user/Bob> or

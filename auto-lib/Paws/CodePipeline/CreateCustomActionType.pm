@@ -43,15 +43,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The category of the custom action, such as a source action or a build
 action.
 
-=head2 configurationProperties => ArrayRef[Paws::CodePipeline::ActionConfigurationProperty]
+=head2 configurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>]
 
   The configuration properties for the custom action.
 
-=head2 B<REQUIRED> inputArtifactDetails => Paws::CodePipeline::ArtifactDetails
+=head2 B<REQUIRED> inputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
 
   
 
-=head2 B<REQUIRED> outputArtifactDetails => Paws::CodePipeline::ArtifactDetails
+=head2 B<REQUIRED> outputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
 
   
 
@@ -60,7 +60,7 @@ action.
   The provider of the service used in the custom action, such as AWS
 CodeDeploy.
 
-=head2 settings => Paws::CodePipeline::ActionTypeSettings
+=head2 settings => L<Paws::CodePipeline::ActionTypeSettings>
 
   
 

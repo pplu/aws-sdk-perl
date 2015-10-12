@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::S3KeyFi
 
 =head1 ATTRIBUTES
 
-=head2 FilterRules => ArrayRef[Paws::S3::FilterRule]
+=head2 FilterRules => ArrayRef[L<Paws::S3::FilterRule>]
 
   
 

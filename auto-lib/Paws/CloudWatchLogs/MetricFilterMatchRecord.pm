@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
   
 
-=head2 extractedValues => Paws::CloudWatchLogs::ExtractedValues
+=head2 extractedValues => L<Paws::CloudWatchLogs::ExtractedValues>
 
   
 

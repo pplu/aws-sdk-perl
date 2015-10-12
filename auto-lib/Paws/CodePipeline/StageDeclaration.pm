@@ -33,11 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> actions => ArrayRef[Paws::CodePipeline::ActionDeclaration]
+=head2 B<REQUIRED> actions => ArrayRef[L<Paws::CodePipeline::ActionDeclaration>]
 
   The actions included in a stage.
 
-=head2 blockers => ArrayRef[Paws::CodePipeline::BlockerDeclaration]
+=head2 blockers => ArrayRef[L<Paws::CodePipeline::BlockerDeclaration>]
 
   The gates included in a stage.
 

@@ -50,12 +50,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
   The identifier that Elastic Transcoder assigned to the job. You use
 this value to get settings for the job or to delete the job.
 
-=head2 Input => Paws::ElasticTranscoder::JobInput
+=head2 Input => L<Paws::ElasticTranscoder::JobInput>
 
   A section of the request or response body that provides information
 about the file that is being transcoded.
 
-=head2 Output => Paws::ElasticTranscoder::JobOutput
+=head2 Output => L<Paws::ElasticTranscoder::JobOutput>
 
   If you specified one output for a job, information about that output.
 If you specified multiple outputs for a job, the Output object lists
@@ -72,7 +72,7 @@ names of all files that this job creates, including output files,
 thumbnails, and playlists. We recommend that you add a / or some other
 delimiter to the end of the C<OutputKeyPrefix>.
 
-=head2 Outputs => ArrayRef[Paws::ElasticTranscoder::JobOutput]
+=head2 Outputs => ArrayRef[L<Paws::ElasticTranscoder::JobOutput>]
 
   Information about the output files. We recommend that you use the
 C<Outputs> syntax for all jobs, even when you want Elastic Transcoder
@@ -92,7 +92,7 @@ Amazon S3 bucket from which Elastic Transcoder gets the files to
 transcode and the bucket into which Elastic Transcoder puts the
 transcoded files.
 
-=head2 Playlists => ArrayRef[Paws::ElasticTranscoder::Playlist]
+=head2 Playlists => ArrayRef[L<Paws::ElasticTranscoder::Playlist>]
 
   Outputs in Fragmented MP4 or MPEG-TS format only.If you specify a
 preset in C<PresetId> for which the value of C<Container> is fmp4
@@ -106,11 +106,11 @@ The maximum number of master playlists in a job is 30.
   The status of the job: C<Submitted>, C<Progressing>, C<Complete>,
 C<Canceled>, or C<Error>.
 
-=head2 Timing => Paws::ElasticTranscoder::Timing
+=head2 Timing => L<Paws::ElasticTranscoder::Timing>
 
   Details about the timing of a job.
 
-=head2 UserMetadata => Paws::ElasticTranscoder::UserMetadata
+=head2 UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>
 
   User-defined metadata that you want to associate with an Elastic
 Transcoder job. You specify metadata in C<key/value> pairs, and you can

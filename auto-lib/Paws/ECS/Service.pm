@@ -47,7 +47,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Servic
   The Amazon Resource Name (ARN) of the of the cluster that hosts the
 service.
 
-=head2 deployments => ArrayRef[Paws::ECS::Deployment]
+=head2 deployments => ArrayRef[L<Paws::ECS::Deployment>]
 
   The current state of deployments for the service.
 
@@ -57,12 +57,12 @@ service.
 running on the service. This value is specified when the service is
 created with CreateService, and it can be modified with UpdateService.
 
-=head2 events => ArrayRef[Paws::ECS::ServiceEvent]
+=head2 events => ArrayRef[L<Paws::ECS::ServiceEvent>]
 
   The event stream for your service. A maximum of 100 of the latest
 events are displayed.
 
-=head2 loadBalancers => ArrayRef[Paws::ECS::LoadBalancer]
+=head2 loadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
 
   A list of load balancer objects, containing the load balancer name, the
 container name (as it appears in a container definition), and the

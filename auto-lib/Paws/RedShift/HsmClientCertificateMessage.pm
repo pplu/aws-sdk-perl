@@ -14,7 +14,7 @@ Paws::RedShift::HsmClientCertificateMessage
 
 =head1 ATTRIBUTES
 
-=head2 HsmClientCertificates => ArrayRef[Paws::RedShift::HsmClientCertificate]
+=head2 HsmClientCertificates => ArrayRef[L<Paws::RedShift::HsmClientCertificate>]
 
   A list of the identifiers for one or more HSM client certificates used
 by Amazon Redshift clusters to store and retrieve database encryption

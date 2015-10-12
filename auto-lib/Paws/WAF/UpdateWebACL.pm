@@ -39,11 +39,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The value returned by the most recent call to GetChangeToken.
 
-=head2 DefaultAction => Paws::WAF::WafAction
+=head2 DefaultAction => L<Paws::WAF::WafAction>
 
   
 
-=head2 Updates => ArrayRef[Paws::WAF::WebACLUpdate]
+=head2 Updates => ArrayRef[L<Paws::WAF::WebACLUpdate>]
 
   An array of updates to make to the WebACL.
 

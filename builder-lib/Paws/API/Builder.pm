@@ -252,7 +252,7 @@ package Paws::API::Builder {
 
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
-=head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% member.perl_type %]
+=head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% c.perl_type_to_pod(member.perl_type) %]
 
   [% c.doc_for_param_name_in_shape(shape, param_name) %]
 [% END %]
@@ -285,7 +285,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
-=head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% member.perl_type %]
+=head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% c.perl_type_to_pod(member.perl_type) %]
 
   [% c.doc_for_param_name_in_shape(shape, param_name) %]
 
@@ -339,7 +339,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 [%- req_list = out_shape.required.sort %]
 [%- FOREACH out_name IN req_list.sort -%]
   [%- member = c.shape(out_shape.members.$out_name.shape) -%]
-  [%- out_name %] => [% member.perl_type %]
+  [%- out_name %] => [% c.perl_type_to_pod(member.perl_type) %]
   [%- IF (NOT loop.last) %], [% END %]
 [%- END %]
 [%- opt_list = c.optional_params_in_shape(out_shape) %]
@@ -347,7 +347,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 [%- IF (req_list.size > 0) %], [% END %][
 [%- FOREACH out_name IN opt_list.sort %]
   [%- member = c.shape(out_shape.members.$out_name.shape) -%]
-  [%- out_name %] => [% member.perl_type %]
+  [%- out_name %] => [% c.perl_type_to_pod(member.perl_type) %]
   [%- IF (NOT loop.last) %], [% END %]
 [%- END %]]
 [%- END %])
@@ -403,7 +403,7 @@ Use accessors for each attribute. If Att1 is expected to be an [% inner_class %]
 
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
-=head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% member.perl_type %]
+=head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% c.perl_type_to_pod(member.perl_type) %]
 
   [% c.doc_for_param_name_in_shape(shape, param_name) %]
 
@@ -635,6 +635,18 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
     my $class_out = $self->process_template($self->service_class_template, { c => $self });
     $self->save_class($self->api, $class_out);
+  }
+
+  sub perl_type_to_pod {
+    my ($self, $type) = @_;
+    if ($type =~ m/^(\w+Ref)\[(.+?)\]$/) {
+      my ($param_type, $inner_type) = ($1, $2);
+      return "$param_type\[L<$inner_type>\]" if ($type =~ m/\:\:/);
+      return $type;
+    } else {
+      return "L<$type>" if ($type =~ m/\:\:/);
+      return $type;  
+    }
   }
 
   sub doc_for_shape {

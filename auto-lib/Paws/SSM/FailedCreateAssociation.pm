@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Failed
 
 =head1 ATTRIBUTES
 
-=head2 Entry => Paws::SSM::CreateAssociationBatchRequestEntry
+=head2 Entry => L<Paws::SSM::CreateAssociationBatchRequestEntry>
 
   The association.
 

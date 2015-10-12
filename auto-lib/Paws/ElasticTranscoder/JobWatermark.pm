@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head1 ATTRIBUTES
 
-=head2 Encryption => Paws::ElasticTranscoder::Encryption
+=head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your watermarks.

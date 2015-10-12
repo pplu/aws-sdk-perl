@@ -49,11 +49,11 @@ request is idempotent. For more information, see Ensuring Idempotency.
 
   The time the listing was created.
 
-=head2 InstanceCounts => ArrayRef[Paws::EC2::InstanceCount]
+=head2 InstanceCounts => ArrayRef[L<Paws::EC2::InstanceCount>]
 
   The number of instances in this state.
 
-=head2 PriceSchedules => ArrayRef[Paws::EC2::PriceSchedule]
+=head2 PriceSchedules => ArrayRef[L<Paws::EC2::PriceSchedule>]
 
   The price of the Reserved Instance listing.
 
@@ -74,7 +74,7 @@ request is idempotent. For more information, see Ensuring Idempotency.
   The reason for the current status of the Reserved Instance listing. The
 response can be blank.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the resource.
 

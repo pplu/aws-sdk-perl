@@ -50,7 +50,7 @@ C<SqlInjectionMatchSet> into a C<Rule> or delete one from a C<Rule>
 C<SqlInjectionMatchSetId> is returned by CreateSqlInjectionMatchSet and
 by ListSqlInjectionMatchSets.
 
-=head2 B<REQUIRED> SqlInjectionMatchTuples => ArrayRef[Paws::WAF::SqlInjectionMatchTuple]
+=head2 B<REQUIRED> SqlInjectionMatchTuples => ArrayRef[L<Paws::WAF::SqlInjectionMatchTuple>]
 
   Specifies the parts of web requests that you want to inspect for
 snippets of malicious SQL code.

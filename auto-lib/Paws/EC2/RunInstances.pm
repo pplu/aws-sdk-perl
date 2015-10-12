@@ -58,7 +58,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   Reserved.
 
-=head2 BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping]
+=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
   The block device mapping.
 
@@ -99,7 +99,7 @@ usage charges apply when using an EBS-optimized instance.
 
 Default: C<false>
 
-=head2 IamInstanceProfile => Paws::EC2::IamInstanceProfileSpecification
+=head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>
 
   The IAM instance profile.
 
@@ -162,15 +162,15 @@ specified instance type. For more information about the default limits,
 and how to request an increase, see How many instances can I run in
 Amazon EC2 in the Amazon EC2 General FAQ.
 
-=head2 Monitoring => Paws::EC2::RunInstancesMonitoringEnabled
+=head2 Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>
 
   The monitoring for the instance.
 
-=head2 NetworkInterfaces => ArrayRef[Paws::EC2::InstanceNetworkInterfaceSpecification]
+=head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>]
 
   One or more network interfaces.
 
-=head2 Placement => Paws::EC2::Placement
+=head2 Placement => L<Paws::EC2::Placement>
 
   The placement for the instance.
 

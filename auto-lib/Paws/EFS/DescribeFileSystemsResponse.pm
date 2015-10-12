@@ -15,7 +15,7 @@ Paws::EFS::DescribeFileSystemsResponse
 
 =head1 ATTRIBUTES
 
-=head2 FileSystems => ArrayRef[Paws::EFS::FileSystemDescription]
+=head2 FileSystems => ArrayRef[L<Paws::EFS::FileSystemDescription>]
 
   An array of file system descriptions.
 =head2 Marker => Str

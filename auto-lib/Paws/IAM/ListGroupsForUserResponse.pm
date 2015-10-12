@@ -15,7 +15,7 @@ Paws::IAM::ListGroupsForUserResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Groups => ArrayRef[Paws::IAM::Group]
+=head2 B<REQUIRED> Groups => ArrayRef[L<Paws::IAM::Group>]
 
   A list of groups.
 =head2 IsTruncated => Bool

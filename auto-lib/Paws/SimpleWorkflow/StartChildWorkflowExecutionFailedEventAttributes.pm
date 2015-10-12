@@ -68,7 +68,7 @@ this event.
 
   The C<workflowId> of the child workflow execution.
 
-=head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
+=head2 B<REQUIRED> workflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
   The workflow type provided in the C<StartChildWorkflowExecution>
 decision that failed.

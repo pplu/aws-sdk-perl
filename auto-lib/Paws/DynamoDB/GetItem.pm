@@ -62,7 +62,7 @@ size, not on the amount of data that is returned to an application.
 operation uses strongly consistent reads; otherwise, the operation uses
 eventually consistent reads.
 
-=head2 ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap
+=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
   One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
@@ -128,7 +128,7 @@ values>, which are placeholders for the actual value at runtime.
 For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
-=head2 B<REQUIRED> Key => Paws::DynamoDB::Key
+=head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
 
   A map of attribute names to I<AttributeValue> objects, representing the
 primary key of the item to retrieve.

@@ -27,7 +27,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> TagSet => ArrayRef[Paws::S3::Tag]
+=head2 B<REQUIRED> TagSet => ArrayRef[L<Paws::S3::Tag>]
 
   
 

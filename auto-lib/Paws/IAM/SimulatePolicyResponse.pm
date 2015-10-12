@@ -15,7 +15,7 @@ Paws::IAM::SimulatePolicyResponse
 
 =head1 ATTRIBUTES
 
-=head2 EvaluationResults => ArrayRef[Paws::IAM::EvaluationResult]
+=head2 EvaluationResults => ArrayRef[L<Paws::IAM::EvaluationResult>]
 
   The results of the simulation.
 =head2 IsTruncated => Bool

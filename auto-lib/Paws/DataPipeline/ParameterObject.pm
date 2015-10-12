@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> attributes => ArrayRef[Paws::DataPipeline::ParameterAttribute]
+=head2 B<REQUIRED> attributes => ArrayRef[L<Paws::DataPipeline::ParameterAttribute>]
 
   The attributes of the parameter object.
 

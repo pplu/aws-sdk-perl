@@ -43,7 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Option
 
   The configuration of options to include in a group.
 
-=head2 OptionSettings => ArrayRef[Paws::RDS::OptionSetting]
+=head2 OptionSettings => ArrayRef[L<Paws::RDS::OptionSetting>]
 
   The option settings to include in an option group.
 

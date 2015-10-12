@@ -115,7 +115,7 @@ specify a maximum of 5 tags. You can list workflow executions with a
 specific tag by calling ListOpenWorkflowExecutions or
 ListClosedWorkflowExecutions and specifying a TagFilter.
 
-=head2 taskList => Paws::SimpleWorkflow::TaskList
+=head2 taskList => L<Paws::SimpleWorkflow::TaskList>
 
   The task list to use for the decision tasks generated for this workflow
 execution. This overrides the C<defaultTaskList> specified when
@@ -172,7 +172,7 @@ contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
-=head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
+=head2 B<REQUIRED> workflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
   The type of the workflow to start.
 

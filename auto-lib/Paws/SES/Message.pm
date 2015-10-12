@@ -32,11 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Messag
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Body => Paws::SES::Body
+=head2 B<REQUIRED> Body => L<Paws::SES::Body>
 
   The message body.
 
-=head2 B<REQUIRED> Subject => Paws::SES::Content
+=head2 B<REQUIRED> Subject => L<Paws::SES::Content>
 
   The subject of the message: A short summary of the content, which will
 appear in the recipient's inbox.

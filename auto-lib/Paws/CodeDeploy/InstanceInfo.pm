@@ -57,7 +57,7 @@ on-premises instance was deregistered.
 
   The time that the on-premises instance was registered.
 
-=head2 tags => ArrayRef[Paws::CodeDeploy::Tag]
+=head2 tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
 
   The tags that are currently associated with the on-premises instance.
 

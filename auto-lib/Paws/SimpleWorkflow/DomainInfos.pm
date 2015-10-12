@@ -13,7 +13,7 @@ Paws::SimpleWorkflow::DomainInfos
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> domainInfos => ArrayRef[Paws::SimpleWorkflow::DomainInfo]
+=head2 B<REQUIRED> domainInfos => ArrayRef[L<Paws::SimpleWorkflow::DomainInfo>]
 
   A list of DomainInfo structures.
 =head2 nextPageToken => Str

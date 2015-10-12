@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 ATTRIBUTES
 
-=head2 encryptionKey => Paws::CodePipeline::EncryptionKey
+=head2 encryptionKey => L<Paws::CodePipeline::EncryptionKey>
 
   The AWS Key Management Service (AWS KMS) key used to encrypt the data
 in the artifact store. If this is undefined, the default key for Amazon

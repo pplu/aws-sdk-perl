@@ -48,7 +48,7 @@ to be listed in the Reserved Instance Marketplace. This number should
 be less than or equal to the instance count associated with the
 Reserved Instance ID specified in this call.
 
-=head2 B<REQUIRED> PriceSchedules => ArrayRef[Paws::EC2::PriceScheduleSpecification]
+=head2 B<REQUIRED> PriceSchedules => ArrayRef[L<Paws::EC2::PriceScheduleSpecification>]
 
   A list specifying the price of the Reserved Instance for each month
 remaining in the Reserved Instance term.

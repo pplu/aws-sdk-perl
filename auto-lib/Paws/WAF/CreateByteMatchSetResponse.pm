@@ -13,7 +13,7 @@ Paws::WAF::CreateByteMatchSetResponse
 
 =head1 ATTRIBUTES
 
-=head2 ByteMatchSet => Paws::WAF::ByteMatchSet
+=head2 ByteMatchSet => L<Paws::WAF::ByteMatchSet>
 
   A ByteMatchSet that contains no C<ByteMatchTuple> objects.
 =head2 ChangeToken => Str

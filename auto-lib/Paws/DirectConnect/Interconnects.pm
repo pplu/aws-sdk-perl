@@ -12,7 +12,7 @@ Paws::DirectConnect::Interconnects
 
 =head1 ATTRIBUTES
 
-=head2 interconnects => ArrayRef[Paws::DirectConnect::Interconnect]
+=head2 interconnects => ArrayRef[L<Paws::DirectConnect::Interconnect>]
 
   A list of interconnects.
 

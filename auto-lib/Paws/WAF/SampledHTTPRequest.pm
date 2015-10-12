@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::Sample
   The action for the C<Rule> that the request matched: C<ALLOW>,
 C<BLOCK>, or C<COUNT>.
 
-=head2 B<REQUIRED> Request => Paws::WAF::HTTPRequest
+=head2 B<REQUIRED> Request => L<Paws::WAF::HTTPRequest>
 
   A complex type that contains detailed information about the request.
 

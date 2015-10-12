@@ -44,11 +44,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Export
 
   The ID of the export task.
 
-=head2 ExportToS3Task => Paws::EC2::ExportToS3Task
+=head2 ExportToS3Task => L<Paws::EC2::ExportToS3Task>
 
   Information about the export task.
 
-=head2 InstanceExportDetails => Paws::EC2::InstanceExportDetails
+=head2 InstanceExportDetails => L<Paws::EC2::InstanceExportDetails>
 
   Information about the instance to export.
 

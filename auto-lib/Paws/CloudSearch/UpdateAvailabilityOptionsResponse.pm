@@ -13,7 +13,7 @@ Paws::CloudSearch::UpdateAvailabilityOptionsResponse
 
 =head1 ATTRIBUTES
 
-=head2 AvailabilityOptions => Paws::CloudSearch::AvailabilityOptionsStatus
+=head2 AvailabilityOptions => L<Paws::CloudSearch::AvailabilityOptionsStatus>
 
   The newly-configured availability options. Indicates whether Multi-AZ
 is enabled for the domain.

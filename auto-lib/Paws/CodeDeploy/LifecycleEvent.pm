@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head1 ATTRIBUTES
 
-=head2 diagnostics => Paws::CodeDeploy::Diagnostics
+=head2 diagnostics => L<Paws::CodeDeploy::Diagnostics>
 
   Diagnostic information about the deployment lifecycle event.
 

@@ -12,7 +12,7 @@ Paws::OpsWorks::DescribeInstancesResult
 
 =head1 ATTRIBUTES
 
-=head2 Instances => ArrayRef[Paws::OpsWorks::Instance]
+=head2 Instances => ArrayRef[L<Paws::OpsWorks::Instance>]
 
   An array of C<Instance> objects that describe the instances.
 

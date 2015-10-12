@@ -111,7 +111,7 @@ C<H.264>, C<mpeg2>, and C<vp8>. You can only specify C<vp8> when the
 container type is C<webm>, C<gif> when the container type is C<gif>,
 and C<mpeg2> when the container type is C<mpg>.
 
-=head2 CodecOptions => Paws::ElasticTranscoder::CodecOptions
+=head2 CodecOptions => L<Paws::ElasticTranscoder::CodecOptions>
 
   B<Profile (H.264/VP8 Only)>
 
@@ -532,7 +532,7 @@ the video up.
 
 =back
 
-=head2 Watermarks => ArrayRef[Paws::ElasticTranscoder::PresetWatermark]
+=head2 Watermarks => ArrayRef[L<Paws::ElasticTranscoder::PresetWatermark>]
 
   Settings for the size, location, and opacity of graphics that you want
 Elastic Transcoder to overlay over videos that are transcoded using

@@ -20,11 +20,11 @@ Paws::DataPipeline::PutPipelineDefinitionOutput
 definition is stored but cannot be activated until you correct the
 pipeline and call C<PutPipelineDefinition> to commit the corrected
 pipeline.
-=head2 validationErrors => ArrayRef[Paws::DataPipeline::ValidationError]
+=head2 validationErrors => ArrayRef[L<Paws::DataPipeline::ValidationError>]
 
   The validation errors that are associated with the objects defined in
 C<pipelineObjects>.
-=head2 validationWarnings => ArrayRef[Paws::DataPipeline::ValidationWarning]
+=head2 validationWarnings => ArrayRef[L<Paws::DataPipeline::ValidationWarning>]
 
   The validation warnings that are associated with the objects defined in
 C<pipelineObjects>.

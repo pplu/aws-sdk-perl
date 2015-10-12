@@ -46,7 +46,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
   The ID of the resource. For example, ami-1a2b3c4d. You can specify more
 than one resource ID.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   One or more tags to delete. If you omit the C<value> parameter, we
 delete the tag regardless of its value. If you specify this parameter

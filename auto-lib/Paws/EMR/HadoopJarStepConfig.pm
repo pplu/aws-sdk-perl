@@ -49,7 +49,7 @@ when executed.
 specified, the JAR file should specify a Main-Class in its manifest
 file.
 
-=head2 Properties => ArrayRef[Paws::EMR::KeyValue]
+=head2 Properties => ArrayRef[L<Paws::EMR::KeyValue>]
 
   A list of Java properties that are set when the step runs. You can use
 these properties to pass key value pairs to your main function.

@@ -19,7 +19,7 @@ Paws::CodeDeploy::ListApplicationRevisionsOutput
 an identifier will also be returned, which can be used in a subsequent
 list application revisions call to return the next set of application
 revisions in the list.
-=head2 revisions => ArrayRef[Paws::CodeDeploy::RevisionLocation]
+=head2 revisions => ArrayRef[L<Paws::CodeDeploy::RevisionLocation>]
 
   A list of revision locations that contain the matching revisions.
 

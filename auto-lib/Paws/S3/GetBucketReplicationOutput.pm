@@ -27,7 +27,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 ReplicationConfiguration => Paws::S3::ReplicationConfiguration
+=head2 ReplicationConfiguration => L<Paws::S3::ReplicationConfiguration>
 
   
 

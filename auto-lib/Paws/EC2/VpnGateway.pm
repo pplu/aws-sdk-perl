@@ -44,7 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpnGat
 
   The current state of the virtual private gateway.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the virtual private gateway.
 
@@ -52,7 +52,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpnGat
 
   The type of VPN connection the virtual private gateway supports.
 
-=head2 VpcAttachments => ArrayRef[Paws::EC2::VpcAttachment]
+=head2 VpcAttachments => ArrayRef[L<Paws::EC2::VpcAttachment>]
 
   Any VPCs attached to the virtual private gateway.
 

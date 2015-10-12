@@ -14,7 +14,7 @@ Paws::RedShift::EventsMessage
 
 =head1 ATTRIBUTES
 
-=head2 Events => ArrayRef[Paws::RedShift::Event]
+=head2 Events => ArrayRef[L<Paws::RedShift::Event>]
 
   A list of Event instances.
 =head2 Marker => Str

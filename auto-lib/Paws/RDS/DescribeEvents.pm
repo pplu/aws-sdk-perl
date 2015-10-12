@@ -59,7 +59,7 @@ Example: 2009-07-08T18:00Z
   A list of event categories that trigger notifications for a event
 notification subscription.
 
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
   This parameter is not currently supported.
 

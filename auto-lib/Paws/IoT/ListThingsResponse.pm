@@ -17,7 +17,7 @@ Paws::IoT::ListThingsResponse
 =head2 nextToken => Str
 
   A token used to retrieve the next value.
-=head2 things => ArrayRef[Paws::IoT::ThingAttribute]
+=head2 things => ArrayRef[L<Paws::IoT::ThingAttribute>]
 
   The things.
 

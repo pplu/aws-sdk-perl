@@ -12,7 +12,7 @@ Paws::EMR::DescribeStepOutput
 
 =head1 ATTRIBUTES
 
-=head2 Step => Paws::EMR::Step
+=head2 Step => L<Paws::EMR::Step>
 
   The step details for the requested step identifier.
 

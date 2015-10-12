@@ -33,11 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Polici
 
 =head1 ATTRIBUTES
 
-=head2 AppCookieStickinessPolicies => ArrayRef[Paws::ELB::AppCookieStickinessPolicy]
+=head2 AppCookieStickinessPolicies => ArrayRef[L<Paws::ELB::AppCookieStickinessPolicy>]
 
   The stickiness policies created using CreateAppCookieStickinessPolicy.
 
-=head2 LBCookieStickinessPolicies => ArrayRef[Paws::ELB::LBCookieStickinessPolicy]
+=head2 LBCookieStickinessPolicies => ArrayRef[L<Paws::ELB::LBCookieStickinessPolicy>]
 
   The stickiness policies created using CreateLBCookieStickinessPolicy.
 

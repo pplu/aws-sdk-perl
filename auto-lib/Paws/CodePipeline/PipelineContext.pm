@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 ATTRIBUTES
 
-=head2 action => Paws::CodePipeline::ActionContext
+=head2 action => L<Paws::CodePipeline::ActionContext>
 
   
 
@@ -43,7 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 names must be unique across all pipeline names under an Amazon Web
 Services account.
 
-=head2 stage => Paws::CodePipeline::StageContext
+=head2 stage => L<Paws::CodePipeline::StageContext>
 
   The stage of the pipeline.
 

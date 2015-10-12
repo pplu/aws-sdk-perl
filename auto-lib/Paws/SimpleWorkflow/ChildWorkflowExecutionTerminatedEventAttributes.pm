@@ -49,11 +49,11 @@ child workflow execution was started. This information can be useful
 for diagnosing problems by tracing back the chain of events leading up
 to this event.
 
-=head2 B<REQUIRED> workflowExecution => Paws::SimpleWorkflow::WorkflowExecution
+=head2 B<REQUIRED> workflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The child workflow execution that was terminated.
 
-=head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
+=head2 B<REQUIRED> workflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
   The type of the child workflow execution.
 

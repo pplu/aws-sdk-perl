@@ -45,7 +45,7 @@ DeleteByteMatchSet).
 C<ByteMatchSetId> is returned by CreateByteMatchSet and by
 ListByteMatchSets.
 
-=head2 B<REQUIRED> ByteMatchTuples => ArrayRef[Paws::WAF::ByteMatchTuple]
+=head2 B<REQUIRED> ByteMatchTuples => ArrayRef[L<Paws::WAF::ByteMatchTuple>]
 
   Specifies the bytes (typically a string that corresponds with ASCII
 characters) that you want AWS WAF to search for in web requests, the

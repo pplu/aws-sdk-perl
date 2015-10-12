@@ -69,7 +69,7 @@ For more information about Amazon Redshift resource types and
 constructing ARNs, go to Constructing an Amazon Redshift Amazon
 Resource Name (ARN) in the Amazon Redshift Cluster Management Guide.
 
-=head2 Tag => Paws::RedShift::Tag
+=head2 Tag => L<Paws::RedShift::Tag>
 
   The tag for the resource.
 

@@ -46,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Associ
 
   The name of the configuration document.
 
-=head2 Status => Paws::SSM::AssociationStatus
+=head2 Status => L<Paws::SSM::AssociationStatus>
 
   The association status.
 

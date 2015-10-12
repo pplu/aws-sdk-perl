@@ -44,7 +44,7 @@ useful for diagnosing problems by tracing back the chain of events
 leading up to this event. This field is set only if the signal was
 initiated by another workflow execution.
 
-=head2 externalWorkflowExecution => Paws::SimpleWorkflow::WorkflowExecution
+=head2 externalWorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The workflow execution that sent the signal. This is set only of the
 signal was sent by another workflow execution.

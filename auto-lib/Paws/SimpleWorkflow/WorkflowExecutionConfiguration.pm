@@ -70,7 +70,7 @@ to 0. The value "NONE" can be used to specify unlimited duration.
   The IAM role used by this workflow execution when invoking AWS Lambda
 functions.
 
-=head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
+=head2 B<REQUIRED> taskList => L<Paws::SimpleWorkflow::TaskList>
 
   The task list used for the decision tasks generated for this workflow
 execution.

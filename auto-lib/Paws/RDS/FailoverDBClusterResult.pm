@@ -13,7 +13,7 @@ Paws::RDS::FailoverDBClusterResult
 
 =head1 ATTRIBUTES
 
-=head2 DBCluster => Paws::RDS::DBCluster
+=head2 DBCluster => L<Paws::RDS::DBCluster>
 
   
 

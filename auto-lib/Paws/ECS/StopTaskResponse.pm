@@ -12,7 +12,7 @@ Paws::ECS::StopTaskResponse
 
 =head1 ATTRIBUTES
 
-=head2 task => Paws::ECS::Task
+=head2 task => L<Paws::ECS::Task>
 
   
 

@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The ARN of the app to schedule a run.
 
-=head2 configuration => Paws::DeviceFarm::ScheduleRunConfiguration
+=head2 configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>
 
   Information about the settings for the run to be scheduled.
 
@@ -57,7 +57,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The ARN of the project for the run to be scheduled.
 
-=head2 B<REQUIRED> test => Paws::DeviceFarm::ScheduleRunTest
+=head2 B<REQUIRED> test => L<Paws::DeviceFarm::ScheduleRunTest>
 
   Information about the test for the run to be scheduled.
 

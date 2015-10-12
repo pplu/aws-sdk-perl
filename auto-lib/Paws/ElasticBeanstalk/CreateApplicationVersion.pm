@@ -71,7 +71,7 @@ Valid Values: C<true> | C<false>
 
   Describes this version.
 
-=head2 SourceBundle => Paws::ElasticBeanstalk::S3Location
+=head2 SourceBundle => L<Paws::ElasticBeanstalk::S3Location>
 
   The Amazon S3 bucket and key that identify the location of the source
 bundle for this version.

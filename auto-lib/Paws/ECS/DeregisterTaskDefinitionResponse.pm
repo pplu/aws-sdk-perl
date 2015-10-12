@@ -12,7 +12,7 @@ Paws::ECS::DeregisterTaskDefinitionResponse
 
 =head1 ATTRIBUTES
 
-=head2 taskDefinition => Paws::ECS::TaskDefinition
+=head2 taskDefinition => L<Paws::ECS::TaskDefinition>
 
   The full description of the deregistered task.
 

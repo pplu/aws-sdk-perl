@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 =head1 ATTRIBUTES
 
-=head2 selectors => ArrayRef[Paws::DataPipeline::Selector]
+=head2 selectors => ArrayRef[L<Paws::DataPipeline::Selector>]
 
   List of selectors that define the query. An object must satisfy all of
 the selectors to match the query.

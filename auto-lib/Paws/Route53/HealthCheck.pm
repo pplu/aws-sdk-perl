@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::He
 
   A unique string that identifies the request to create the health check.
 
-=head2 B<REQUIRED> HealthCheckConfig => Paws::Route53::HealthCheckConfig
+=head2 B<REQUIRED> HealthCheckConfig => L<Paws::Route53::HealthCheckConfig>
 
   A complex type that contains the health check configuration.
 

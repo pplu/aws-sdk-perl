@@ -31,13 +31,13 @@ results.
   When C<IsTruncated> is C<true>, this element is present and contains
 the value to use for the C<Marker> parameter in a subsequent pagination
 request.
-=head2 PolicyGroups => ArrayRef[Paws::IAM::PolicyGroup]
+=head2 PolicyGroups => ArrayRef[L<Paws::IAM::PolicyGroup>]
 
   A list of groups that the policy is attached to.
-=head2 PolicyRoles => ArrayRef[Paws::IAM::PolicyRole]
+=head2 PolicyRoles => ArrayRef[L<Paws::IAM::PolicyRole>]
 
   A list of roles that the policy is attached to.
-=head2 PolicyUsers => ArrayRef[Paws::IAM::PolicyUser]
+=head2 PolicyUsers => ArrayRef[L<Paws::IAM::PolicyUser>]
 
   A list of users that the policy is attached to.
 

@@ -47,11 +47,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Import
 
   The description you provided when starting the import volume task.
 
-=head2 B<REQUIRED> Image => Paws::EC2::DiskImageDescription
+=head2 B<REQUIRED> Image => L<Paws::EC2::DiskImageDescription>
 
   The image.
 
-=head2 B<REQUIRED> Volume => Paws::EC2::DiskImageVolumeDescription
+=head2 B<REQUIRED> Volume => L<Paws::EC2::DiskImageVolumeDescription>
 
   The volume.
 

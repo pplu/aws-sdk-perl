@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
   The ID of the AWS account to use when performing the job.
 
-=head2 data => Paws::CodePipeline::JobData
+=head2 data => L<Paws::CodePipeline::JobData>
 
   Additional data about a job.
 

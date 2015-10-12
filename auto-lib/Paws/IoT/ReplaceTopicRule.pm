@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the rule.
 
-=head2 B<REQUIRED> topicRulePayload => Paws::IoT::TopicRulePayload
+=head2 B<REQUIRED> topicRulePayload => L<Paws::IoT::TopicRulePayload>
 
   The rule payload.
 

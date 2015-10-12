@@ -53,7 +53,7 @@ the available offerings matching the specified DB instance class.
   The engine version filter value. Specify this parameter to show only
 the available offerings matching the specified engine version.
 
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
   This parameter is not currently supported.
 

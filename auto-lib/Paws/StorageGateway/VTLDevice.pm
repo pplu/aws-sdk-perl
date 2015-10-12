@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
 =head1 ATTRIBUTES
 
-=head2 DeviceiSCSIAttributes => Paws::StorageGateway::DeviceiSCSIAttributes
+=head2 DeviceiSCSIAttributes => L<Paws::StorageGateway::DeviceiSCSIAttributes>
 
   A list of iSCSI information about a VTL device.
 

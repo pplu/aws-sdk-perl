@@ -13,7 +13,7 @@ Paws::IAM::CreateAccessKeyResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> AccessKey => Paws::IAM::AccessKey
+=head2 B<REQUIRED> AccessKey => L<Paws::IAM::AccessKey>
 
   Information about the access key.
 

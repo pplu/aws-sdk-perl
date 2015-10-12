@@ -12,7 +12,7 @@ Paws::OpsWorks::DescribeAgentVersionsResult
 
 =head1 ATTRIBUTES
 
-=head2 AgentVersions => ArrayRef[Paws::OpsWorks::AgentVersion]
+=head2 AgentVersions => ArrayRef[L<Paws::OpsWorks::AgentVersion>]
 
   The agent versions for the specified stack or configuration manager.
 Note that this value is the complete version number, not the

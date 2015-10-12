@@ -105,7 +105,7 @@ together and terminate together.
 
 Default: Instances are launched and terminated individually
 
-=head2 LaunchSpecification => Paws::EC2::RequestSpotLaunchSpecification
+=head2 LaunchSpecification => L<Paws::EC2::RequestSpotLaunchSpecification>
 
   
 

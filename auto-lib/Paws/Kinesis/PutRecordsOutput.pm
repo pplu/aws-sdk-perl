@@ -17,7 +17,7 @@ Paws::Kinesis::PutRecordsOutput
 
   The number of unsuccessfully processed records in a C<PutRecords>
 request.
-=head2 B<REQUIRED> Records => ArrayRef[Paws::Kinesis::PutRecordsResultEntry]
+=head2 B<REQUIRED> Records => ArrayRef[L<Paws::Kinesis::PutRecordsResultEntry>]
 
   An array of successfully and unsuccessfully processed record results,
 correlated with the request by natural ordering. A record that is

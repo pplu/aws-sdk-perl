@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the DB cluster parameter group to reset.
 
-=head2 Parameters => ArrayRef[Paws::RDS::Parameter]
+=head2 Parameters => ArrayRef[L<Paws::RDS::Parameter>]
 
   A list of parameter names in the DB cluster parameter group to reset to
 the default values. You cannot use this parameter if the

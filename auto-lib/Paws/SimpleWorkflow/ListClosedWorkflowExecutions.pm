@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 closeStatusFilter => Paws::SimpleWorkflow::CloseStatusFilter
+=head2 closeStatusFilter => L<Paws::SimpleWorkflow::CloseStatusFilter>
 
   If specified, only workflow executions that match this I<close status>
 are listed. For example, if TERMINATED is specified, then only
@@ -51,7 +51,7 @@ C<closeStatusFilter>, C<executionFilter>, C<typeFilter> and
 C<tagFilter> are mutually exclusive. You can specify at most one of
 these in a request.
 
-=head2 closeTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter
+=head2 closeTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
 
   If specified, the workflow executions are included in the returned
 results based on whether their close times are within the range
@@ -65,7 +65,7 @@ must specify one of these in a request but not both.
 
   The name of the domain that contains the workflow executions to list.
 
-=head2 executionFilter => Paws::SimpleWorkflow::WorkflowExecutionFilter
+=head2 executionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>
 
   If specified, only workflow executions matching the workflow ID
 specified in the filter are returned.
@@ -100,7 +100,7 @@ returned in a single call.
 the results are returned in descending order of the start or the close
 time of the executions.
 
-=head2 startTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter
+=head2 startTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
 
   If specified, the workflow executions are included in the returned
 results based on whether their start times are within the range
@@ -110,7 +110,7 @@ returned results are ordered by their start times.
 C<startTimeFilter> and C<closeTimeFilter> are mutually exclusive. You
 must specify one of these in a request but not both.
 
-=head2 tagFilter => Paws::SimpleWorkflow::TagFilter
+=head2 tagFilter => L<Paws::SimpleWorkflow::TagFilter>
 
   If specified, only executions that have the matching tag are listed.
 
@@ -118,7 +118,7 @@ C<closeStatusFilter>, C<executionFilter>, C<typeFilter> and
 C<tagFilter> are mutually exclusive. You can specify at most one of
 these in a request.
 
-=head2 typeFilter => Paws::SimpleWorkflow::WorkflowTypeFilter
+=head2 typeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>
 
   If specified, only executions of the type specified in the filter are
 returned.

@@ -13,7 +13,7 @@ Paws::RedShift::CreateSnapshotCopyGrantResult
 
 =head1 ATTRIBUTES
 
-=head2 SnapshotCopyGrant => Paws::RedShift::SnapshotCopyGrant
+=head2 SnapshotCopyGrant => L<Paws::RedShift::SnapshotCopyGrant>
 
   
 

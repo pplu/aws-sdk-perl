@@ -46,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
   The deployment configuration name.
 
-=head2 minimumHealthyHosts => Paws::CodeDeploy::MinimumHealthyHosts
+=head2 minimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>
 
   Information about the number or percentage of minimum healthy
 instances.

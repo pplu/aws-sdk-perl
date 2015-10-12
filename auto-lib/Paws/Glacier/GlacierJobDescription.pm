@@ -56,7 +56,7 @@ job is in progress, the value will be null.
 
   The UTC date when the job was created. A string representation of ISO
 8601 date format, for example, "2012-03-20T17:03:43.221Z".
-=head2 InventoryRetrievalParameters => Paws::Glacier::InventoryRetrievalJobDescription
+=head2 InventoryRetrievalParameters => L<Paws::Glacier::InventoryRetrievalJobDescription>
 
   Parameters used for range inventory retrieval.
 =head2 InventorySizeInBytes => Int

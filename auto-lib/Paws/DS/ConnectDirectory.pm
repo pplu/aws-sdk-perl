@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> ConnectSettings => Paws::DS::DirectoryConnectSettings
+=head2 B<REQUIRED> ConnectSettings => L<Paws::DS::DirectoryConnectSettings>
 
   A DirectoryConnectSettings object that contains additional information
 for the operation.

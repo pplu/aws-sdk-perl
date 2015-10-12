@@ -308,7 +308,7 @@ value you set with the C<ChangeMessageVisibility> action.
 
 
 
-=head2 ChangeMessageVisibilityBatch(Entries => ArrayRef[Paws::SQS::ChangeMessageVisibilityBatchRequestEntry], QueueUrl => Str)
+=head2 ChangeMessageVisibilityBatch(Entries => ArrayRef[L<Paws::SQS::ChangeMessageVisibilityBatchRequestEntry>], QueueUrl => Str)
 
 Each argument is described in detail in: L<Paws::SQS::ChangeMessageVisibilityBatch>
 
@@ -343,7 +343,7 @@ C<&Attribute.2=that>
 
 
 
-=head2 CreateQueue(QueueName => Str, [Attributes => Paws::SQS::QueueAttributeMap])
+=head2 CreateQueue(QueueName => Str, [Attributes => L<Paws::SQS::QueueAttributeMap>])
 
 Each argument is described in detail in: L<Paws::SQS::CreateQueue>
 
@@ -433,7 +433,7 @@ not a problem.
 
 
 
-=head2 DeleteMessageBatch(Entries => ArrayRef[Paws::SQS::DeleteMessageBatchRequestEntry], QueueUrl => Str)
+=head2 DeleteMessageBatch(Entries => ArrayRef[L<Paws::SQS::DeleteMessageBatchRequestEntry>], QueueUrl => Str)
 
 Each argument is described in detail in: L<Paws::SQS::DeleteMessageBatch>
 
@@ -789,7 +789,7 @@ C<Label> parameter. Only the owner of the queue can remove permissions.
 
 
 
-=head2 SendMessage(MessageBody => Str, QueueUrl => Str, [DelaySeconds => Int, MessageAttributes => Paws::SQS::MessageAttributeMap])
+=head2 SendMessage(MessageBody => Str, QueueUrl => Str, [DelaySeconds => Int, MessageAttributes => L<Paws::SQS::MessageAttributeMap>])
 
 Each argument is described in detail in: L<Paws::SQS::SendMessage>
 
@@ -821,7 +821,7 @@ not included in the list, your request will be rejected.
 
 
 
-=head2 SendMessageBatch(Entries => ArrayRef[Paws::SQS::SendMessageBatchRequestEntry], QueueUrl => Str)
+=head2 SendMessageBatch(Entries => ArrayRef[L<Paws::SQS::SendMessageBatchRequestEntry>], QueueUrl => Str)
 
 Each argument is described in detail in: L<Paws::SQS::SendMessageBatch>
 
@@ -870,7 +870,7 @@ C<&Attribute.2=that>
 
 
 
-=head2 SetQueueAttributes(Attributes => Paws::SQS::QueueAttributeMap, QueueUrl => Str)
+=head2 SetQueueAttributes(Attributes => L<Paws::SQS::QueueAttributeMap>, QueueUrl => Str)
 
 Each argument is described in detail in: L<Paws::SQS::SetQueueAttributes>
 

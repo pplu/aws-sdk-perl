@@ -28,7 +28,7 @@ Paws::S3::
 =head2 ContentMD5 => Str
 
   
-=head2 LifecycleConfiguration => Paws::S3::LifecycleConfiguration
+=head2 LifecycleConfiguration => L<Paws::S3::LifecycleConfiguration>
 
   
 

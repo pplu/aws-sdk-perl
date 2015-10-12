@@ -40,12 +40,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Input => Paws::ElasticTranscoder::JobInput
+=head2 B<REQUIRED> Input => L<Paws::ElasticTranscoder::JobInput>
 
   A section of the request body that provides information about the file
 that is being transcoded.
 
-=head2 Output => Paws::ElasticTranscoder::CreateJobOutput
+=head2 Output => L<Paws::ElasticTranscoder::CreateJobOutput>
 
   
 
@@ -55,7 +55,7 @@ that is being transcoded.
 names of all files that this job creates, including output files,
 thumbnails, and playlists.
 
-=head2 Outputs => ArrayRef[Paws::ElasticTranscoder::CreateJobOutput]
+=head2 Outputs => ArrayRef[L<Paws::ElasticTranscoder::CreateJobOutput>]
 
   A section of the request body that provides information about the
 transcoded (target) files. We recommend that you use the C<Outputs>
@@ -69,7 +69,7 @@ Amazon S3 bucket from which Elastic Transcoder gets the files to
 transcode and the bucket into which Elastic Transcoder puts the
 transcoded files.
 
-=head2 Playlists => ArrayRef[Paws::ElasticTranscoder::CreateJobPlaylist]
+=head2 Playlists => ArrayRef[L<Paws::ElasticTranscoder::CreateJobPlaylist>]
 
   If you specify a preset in C<PresetId> for which the value of
 C<Container> is fmp4 (Fragmented MP4) or ts (MPEG-TS), Playlists
@@ -78,7 +78,7 @@ Transcoder to create.
 
 The maximum number of master playlists in a job is 30.
 
-=head2 UserMetadata => Paws::ElasticTranscoder::UserMetadata
+=head2 UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>
 
   User-defined metadata that you want to associate with an Elastic
 Transcoder job. You specify metadata in C<key/value> pairs, and you can

@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::BucketL
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Rules => ArrayRef[Paws::S3::LifecycleRule]
+=head2 B<REQUIRED> Rules => ArrayRef[L<Paws::S3::LifecycleRule>]
 
   
 

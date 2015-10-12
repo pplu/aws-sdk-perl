@@ -34,16 +34,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head1 ATTRIBUTES
 
-=head2 exprs => Paws::CloudSearchDomain::Exprs
+=head2 exprs => L<Paws::CloudSearchDomain::Exprs>
 
   The expressions returned from a document that matches the search
 request.
 
-=head2 fields => Paws::CloudSearchDomain::Fields
+=head2 fields => L<Paws::CloudSearchDomain::Fields>
 
   The fields returned from a document that matches the search request.
 
-=head2 highlights => Paws::CloudSearchDomain::Highlights
+=head2 highlights => L<Paws::CloudSearchDomain::Highlights>
 
   The highlights returned from a document that matches the search
 request.

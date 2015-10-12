@@ -64,7 +64,7 @@ the same instance serves as both the master and slave node. If the
 value is greater than 1, one instance is the master node and all others
 are slave nodes.
 
-=head2 InstanceGroups => ArrayRef[Paws::EMR::InstanceGroupDetail]
+=head2 InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupDetail>]
 
   Details about the job flow's instance groups.
 
@@ -94,7 +94,7 @@ instance that is roughly four times more expensive would result in the
 normalized instance hours being incremented by four. This result is
 only an approximation and does not reflect the actual billing rate.
 
-=head2 Placement => Paws::EMR::PlacementType
+=head2 Placement => L<Paws::EMR::PlacementType>
 
   The Amazon EC2 Availability Zone for the job flow.
 

@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 CopyObjectResult => Paws::S3::CopyObjectResult
+=head2 CopyObjectResult => L<Paws::S3::CopyObjectResult>
 
   
 

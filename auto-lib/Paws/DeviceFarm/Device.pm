@@ -52,7 +52,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   The device's carrier.
 
-=head2 cpu => Paws::DeviceFarm::CPU
+=head2 cpu => L<Paws::DeviceFarm::CPU>
 
   Information about the device's CPU.
 
@@ -124,7 +124,7 @@ IOS: The iOS platform.
 
   The device's radio.
 
-=head2 resolution => Paws::DeviceFarm::Resolution
+=head2 resolution => L<Paws::DeviceFarm::Resolution>
 
   
 

@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glacier::Da
 
 =head1 ATTRIBUTES
 
-=head2 Rules => ArrayRef[Paws::Glacier::DataRetrievalRule]
+=head2 Rules => ArrayRef[L<Paws::Glacier::DataRetrievalRule>]
 
   The policy rule. Although this is a list type, currently there must be
 only one rule, which contains a Strategy field and optionally a

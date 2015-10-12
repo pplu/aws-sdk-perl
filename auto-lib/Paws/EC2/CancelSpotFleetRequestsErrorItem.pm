@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Cancel
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Error => Paws::EC2::CancelSpotFleetRequestsError
+=head2 B<REQUIRED> Error => L<Paws::EC2::CancelSpotFleetRequestsError>
 
   The error.
 

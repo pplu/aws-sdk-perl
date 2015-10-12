@@ -60,7 +60,7 @@ node offering.
   The anticipated utilization of the reserved node, as defined in the
 reserved node offering.
 
-=head2 RecurringCharges => ArrayRef[Paws::RedShift::RecurringCharge]
+=head2 RecurringCharges => ArrayRef[L<Paws::RedShift::RecurringCharge>]
 
   The charge to your account regardless of whether you are creating any
 clusters using the node offering. Recurring charges are only in effect

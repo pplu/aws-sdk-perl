@@ -46,11 +46,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Networ
   Indicates whether the rule is an egress rule (applied to traffic
 leaving the subnet).
 
-=head2 IcmpTypeCode => Paws::EC2::IcmpTypeCode
+=head2 IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>
 
   ICMP protocol: The ICMP type and code.
 
-=head2 PortRange => Paws::EC2::PortRange
+=head2 PortRange => L<Paws::EC2::PortRange>
 
   TCP or UDP protocols: The range of ports the rule applies to.
 

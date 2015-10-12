@@ -68,7 +68,7 @@ numeric string.
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.
 
-=head2 recentCommunications => Paws::Support::RecentCaseCommunications
+=head2 recentCommunications => L<Paws::Support::RecentCaseCommunications>
 
   The five most recent communications between you and AWS Support Center,
 including the IDs of any attachments to the communications. Also

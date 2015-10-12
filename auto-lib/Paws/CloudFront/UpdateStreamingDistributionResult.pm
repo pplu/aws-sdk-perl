@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The current version of the configuration. For example: E2QWRUHAPOMQZL.
 
-=head2 StreamingDistribution => Paws::CloudFront::StreamingDistribution
+=head2 StreamingDistribution => L<Paws::CloudFront::StreamingDistribution>
 
   The streaming distribution's information.
 

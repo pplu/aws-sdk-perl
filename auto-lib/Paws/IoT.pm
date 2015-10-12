@@ -446,7 +446,7 @@ Creates a new version of the specified AWS IoT policy.
 
 
 
-=head2 CreateThing(thingName => Str, [attributePayload => Paws::IoT::AttributePayload])
+=head2 CreateThing(thingName => Str, [attributePayload => L<Paws::IoT::AttributePayload>])
 
 Each argument is described in detail in: L<Paws::IoT::CreateThing>
 
@@ -466,7 +466,7 @@ Creates a thing in the thing registry.
 
 
 
-=head2 CreateTopicRule(ruleName => Str, topicRulePayload => Paws::IoT::TopicRulePayload)
+=head2 CreateTopicRule(ruleName => Str, topicRulePayload => L<Paws::IoT::TopicRulePayload>)
 
 Each argument is described in detail in: L<Paws::IoT::CreateTopicRule>
 
@@ -993,7 +993,7 @@ INACTIVE state.
 
 
 
-=head2 ReplaceTopicRule(ruleName => Str, topicRulePayload => Paws::IoT::TopicRulePayload)
+=head2 ReplaceTopicRule(ruleName => Str, topicRulePayload => L<Paws::IoT::TopicRulePayload>)
 
 Each argument is described in detail in: L<Paws::IoT::ReplaceTopicRule>
 
@@ -1035,7 +1035,7 @@ policy.
 
 
 
-=head2 SetLoggingOptions([loggingOptionsPayload => Paws::IoT::LoggingOptionsPayload])
+=head2 SetLoggingOptions([loggingOptionsPayload => L<Paws::IoT::LoggingOptionsPayload>])
 
 Each argument is described in detail in: L<Paws::IoT::SetLoggingOptions>
 
@@ -1114,7 +1114,7 @@ IoT using a certificate.
 
 
 
-=head2 UpdateThing(attributePayload => Paws::IoT::AttributePayload, thingName => Str)
+=head2 UpdateThing(attributePayload => L<Paws::IoT::AttributePayload>, thingName => Str)
 
 Each argument is described in detail in: L<Paws::IoT::UpdateThing>
 

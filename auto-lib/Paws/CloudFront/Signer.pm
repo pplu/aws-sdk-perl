@@ -39,7 +39,7 @@ which indicates that the AWS account that was used to create the
 distribution can created signed URLs, or an AWS account number. Omit
 the dashes in the account number.
 
-=head2 KeyPairIds => Paws::CloudFront::KeyPairIds
+=head2 KeyPairIds => L<Paws::CloudFront::KeyPairIds>
 
   A complex type that lists the active CloudFront key pairs, if any, that
 are associated with AwsAccountNumber.

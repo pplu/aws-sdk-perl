@@ -13,7 +13,7 @@ Paws::CognitoIdentity::ListIdentityPoolsResponse
 
 =head1 ATTRIBUTES
 
-=head2 IdentityPools => ArrayRef[Paws::CognitoIdentity::IdentityPoolShortDescription]
+=head2 IdentityPools => ArrayRef[L<Paws::CognitoIdentity::IdentityPoolShortDescription>]
 
   The identity pools returned by the ListIdentityPools action.
 =head2 NextToken => Str

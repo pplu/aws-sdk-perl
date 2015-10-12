@@ -27,7 +27,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 LoggingEnabled => Paws::S3::LoggingEnabled
+=head2 LoggingEnabled => L<Paws::S3::LoggingEnabled>
 
   
 

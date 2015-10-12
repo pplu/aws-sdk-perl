@@ -57,7 +57,7 @@ add this parameter to your request to specify the output format. If you
 are initiating an inventory job and do not specify a Format field, JSON
 is the default format. Valid values are "CSV" and "JSON".
 
-=head2 InventoryRetrievalParameters => Paws::Glacier::InventoryRetrievalJobInput
+=head2 InventoryRetrievalParameters => L<Paws::Glacier::InventoryRetrievalJobInput>
 
   Input parameters used for range inventory retrieval.
 

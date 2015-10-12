@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head1 ATTRIBUTES
 
-=head2 Dimensions => ArrayRef[Paws::CloudWatch::Dimension]
+=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
   A list of dimensions associated with the metric.
 

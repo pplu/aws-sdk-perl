@@ -32,12 +32,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::Elastic
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Options => Paws::ES::ElasticsearchClusterConfig
+=head2 B<REQUIRED> Options => L<Paws::ES::ElasticsearchClusterConfig>
 
   Specifies the cluster configuration for the specified Elasticsearch
 domain.
 
-=head2 B<REQUIRED> Status => Paws::ES::OptionStatus
+=head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
 
   Specifies the status of the configuration for the specified
 Elasticsearch domain.

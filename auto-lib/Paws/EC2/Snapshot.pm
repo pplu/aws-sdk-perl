@@ -73,7 +73,7 @@ copy operation fails (for example, if the proper AWS Key Management
 Service (AWS KMS) permissions are not obtained) this field displays
 error state details to help you diagnose why the error occurred. This
 parameter is only returned by the DescribeSnapshots API operation.
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the snapshot.
 =head2 VolumeId => Str

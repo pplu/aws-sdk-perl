@@ -38,35 +38,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Action
 
 =head1 ATTRIBUTES
 
-=head2 dynamoDB => Paws::IoT::DynamoDBAction
+=head2 dynamoDB => L<Paws::IoT::DynamoDBAction>
 
   Write to a DynamoDB table.
 
-=head2 firehose => Paws::IoT::FirehoseAction
+=head2 firehose => L<Paws::IoT::FirehoseAction>
 
   
 
-=head2 kinesis => Paws::IoT::KinesisAction
+=head2 kinesis => L<Paws::IoT::KinesisAction>
 
   Write data to a Kinesis stream.
 
-=head2 lambda => Paws::IoT::LambdaAction
+=head2 lambda => L<Paws::IoT::LambdaAction>
 
   Invoke a Lambda function.
 
-=head2 republish => Paws::IoT::RepublishAction
+=head2 republish => L<Paws::IoT::RepublishAction>
 
   Publish to another MQTT topic.
 
-=head2 s3 => Paws::IoT::S3Action
+=head2 s3 => L<Paws::IoT::S3Action>
 
   Write to an S3 bucket.
 
-=head2 sns => Paws::IoT::SnsAction
+=head2 sns => L<Paws::IoT::SnsAction>
 
   Publish to an SNS topic.
 
-=head2 sqs => Paws::IoT::SqsAction
+=head2 sqs => L<Paws::IoT::SqsAction>
 
   Publish to an SQS queue.
 

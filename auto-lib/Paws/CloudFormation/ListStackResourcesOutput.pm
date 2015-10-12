@@ -18,7 +18,7 @@ Paws::CloudFormation::ListStackResourcesOutput
 
   String that identifies the start of the next list of stack resources,
 if there is one.
-=head2 StackResourceSummaries => ArrayRef[Paws::CloudFormation::StackResourceSummary]
+=head2 StackResourceSummaries => ArrayRef[L<Paws::CloudFormation::StackResourceSummary>]
 
   A list of C<StackResourceSummary> structures.
 

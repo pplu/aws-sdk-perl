@@ -405,7 +405,7 @@ not immediately represent all issued operations.
 
 
 
-=head2 RegisterDomain(AdminContact => Paws::Route53Domains::ContactDetail, DomainName => Str, DurationInYears => Int, RegistrantContact => Paws::Route53Domains::ContactDetail, TechContact => Paws::Route53Domains::ContactDetail, [AutoRenew => Bool, IdnLangCode => Str, PrivacyProtectAdminContact => Bool, PrivacyProtectRegistrantContact => Bool, PrivacyProtectTechContact => Bool])
+=head2 RegisterDomain(AdminContact => L<Paws::Route53Domains::ContactDetail>, DomainName => Str, DurationInYears => Int, RegistrantContact => L<Paws::Route53Domains::ContactDetail>, TechContact => L<Paws::Route53Domains::ContactDetail>, [AutoRenew => Bool, IdnLangCode => Str, PrivacyProtectAdminContact => Bool, PrivacyProtectRegistrantContact => Bool, PrivacyProtectTechContact => Bool])
 
 Each argument is described in detail in: L<Paws::Route53Domains::RegisterDomain>
 
@@ -476,7 +476,7 @@ registrar.
 
 
 
-=head2 TransferDomain(AdminContact => Paws::Route53Domains::ContactDetail, DomainName => Str, DurationInYears => Int, RegistrantContact => Paws::Route53Domains::ContactDetail, TechContact => Paws::Route53Domains::ContactDetail, [AuthCode => Str, AutoRenew => Bool, IdnLangCode => Str, Nameservers => ArrayRef[Paws::Route53Domains::Nameserver], PrivacyProtectAdminContact => Bool, PrivacyProtectRegistrantContact => Bool, PrivacyProtectTechContact => Bool])
+=head2 TransferDomain(AdminContact => L<Paws::Route53Domains::ContactDetail>, DomainName => Str, DurationInYears => Int, RegistrantContact => L<Paws::Route53Domains::ContactDetail>, TechContact => L<Paws::Route53Domains::ContactDetail>, [AuthCode => Str, AutoRenew => Bool, IdnLangCode => Str, Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>], PrivacyProtectAdminContact => Bool, PrivacyProtectRegistrantContact => Bool, PrivacyProtectTechContact => Bool])
 
 Each argument is described in detail in: L<Paws::Route53Domains::TransferDomain>
 
@@ -520,7 +520,7 @@ notified by email.
 
 
 
-=head2 UpdateDomainContact(DomainName => Str, [AdminContact => Paws::Route53Domains::ContactDetail, RegistrantContact => Paws::Route53Domains::ContactDetail, TechContact => Paws::Route53Domains::ContactDetail])
+=head2 UpdateDomainContact(DomainName => Str, [AdminContact => L<Paws::Route53Domains::ContactDetail>, RegistrantContact => L<Paws::Route53Domains::ContactDetail>, TechContact => L<Paws::Route53Domains::ContactDetail>])
 
 Each argument is described in detail in: L<Paws::Route53Domains::UpdateDomainContact>
 
@@ -577,7 +577,7 @@ successfully, the domain registrant will be notified by email.
 
 
 
-=head2 UpdateDomainNameservers(DomainName => Str, Nameservers => ArrayRef[Paws::Route53Domains::Nameserver], [FIAuthKey => Str])
+=head2 UpdateDomainNameservers(DomainName => Str, Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>], [FIAuthKey => Str])
 
 Each argument is described in detail in: L<Paws::Route53Domains::UpdateDomainNameservers>
 
@@ -605,7 +605,7 @@ email.
 
 
 
-=head2 UpdateTagsForDomain(DomainName => Str, [TagsToUpdate => ArrayRef[Paws::Route53Domains::Tag]])
+=head2 UpdateTagsForDomain(DomainName => Str, [TagsToUpdate => ArrayRef[L<Paws::Route53Domains::Tag>]])
 
 Each argument is described in detail in: L<Paws::Route53Domains::UpdateTagsForDomain>
 

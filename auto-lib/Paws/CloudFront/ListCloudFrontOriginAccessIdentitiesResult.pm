@@ -27,7 +27,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 CloudFrontOriginAccessIdentityList => Paws::CloudFront::CloudFrontOriginAccessIdentityList
+=head2 CloudFrontOriginAccessIdentityList => L<Paws::CloudFront::CloudFrontOriginAccessIdentityList>
 
   The CloudFrontOriginAccessIdentityList type.
 

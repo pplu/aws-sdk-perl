@@ -89,7 +89,7 @@ This default can be overridden when starting a workflow execution using
 the StartWorkflowExecution action or the C<StartChildWorkflowExecution>
 and C<ContinueAsNewWorkflowExecution> decision.
 
-=head2 defaultTaskList => Paws::SimpleWorkflow::TaskList
+=head2 defaultTaskList => L<Paws::SimpleWorkflow::TaskList>
 
   If set, specifies the default task list to use for scheduling decision
 tasks for executions of this workflow type. This default is used only

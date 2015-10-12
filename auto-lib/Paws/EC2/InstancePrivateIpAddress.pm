@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
 =head1 ATTRIBUTES
 
-=head2 Association => Paws::EC2::InstanceNetworkInterfaceAssociation
+=head2 Association => L<Paws::EC2::InstanceNetworkInterfaceAssociation>
 
   The association information for an Elastic IP address for the network
 interface.

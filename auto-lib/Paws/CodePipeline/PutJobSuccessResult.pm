@@ -40,12 +40,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   A system-generated token, such as a AWS CodeDeploy deployment ID, that
 the successful job used to complete a job asynchronously.
 
-=head2 currentRevision => Paws::CodePipeline::CurrentRevision
+=head2 currentRevision => L<Paws::CodePipeline::CurrentRevision>
 
   The ID of the current revision of the artifact successfully worked upon
 by the job.
 
-=head2 executionDetails => Paws::CodePipeline::ExecutionDetails
+=head2 executionDetails => L<Paws::CodePipeline::ExecutionDetails>
 
   The execution details of the successful job, such as the actions taken
 by the job worker.

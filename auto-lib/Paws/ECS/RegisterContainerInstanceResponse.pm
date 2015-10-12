@@ -12,7 +12,7 @@ Paws::ECS::RegisterContainerInstanceResponse
 
 =head1 ATTRIBUTES
 
-=head2 containerInstance => Paws::ECS::ContainerInstance
+=head2 containerInstance => L<Paws::ECS::ContainerInstance>
 
   
 

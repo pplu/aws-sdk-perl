@@ -20,7 +20,7 @@ Paws::ElasticTranscoder::ListPresetsResponse
 results, if any. When the presets fit on one page or when you've
 reached the last page of results, the value of C<NextPageToken> is
 C<null>.
-=head2 Presets => ArrayRef[Paws::ElasticTranscoder::Preset]
+=head2 Presets => ArrayRef[L<Paws::ElasticTranscoder::Preset>]
 
   An array of C<Preset> objects.
 

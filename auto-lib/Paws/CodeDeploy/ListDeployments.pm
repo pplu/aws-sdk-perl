@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
 
-=head2 createTimeRange => Paws::CodeDeploy::TimeRange
+=head2 createTimeRange => L<Paws::CodeDeploy::TimeRange>
 
   A deployment creation start- and end-time range for returning a subset
 of the list of deployments.

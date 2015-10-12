@@ -61,17 +61,17 @@ or a version number for a fixed agent version.
 
   The stack's ARN.
 
-=head2 Attributes => Paws::OpsWorks::StackAttributes
+=head2 Attributes => L<Paws::OpsWorks::StackAttributes>
 
   The stack's attributes.
 
-=head2 ChefConfiguration => Paws::OpsWorks::ChefConfiguration
+=head2 ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>
 
   A C<ChefConfiguration> object that specifies whether to enable
 Berkshelf and the Berkshelf version. For more information, see Create a
 New Stack.
 
-=head2 ConfigurationManager => Paws::OpsWorks::StackConfigurationManager
+=head2 ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>
 
   The configuration manager.
 
@@ -79,7 +79,7 @@ New Stack.
 
   The date when the stack was created.
 
-=head2 CustomCookbooksSource => Paws::OpsWorks::Source
+=head2 CustomCookbooksSource => L<Paws::OpsWorks::Source>
 
   
 

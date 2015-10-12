@@ -12,7 +12,7 @@ Paws::OpsWorks::DescribeElasticLoadBalancersResult
 
 =head1 ATTRIBUTES
 
-=head2 ElasticLoadBalancers => ArrayRef[Paws::OpsWorks::ElasticLoadBalancer]
+=head2 ElasticLoadBalancers => ArrayRef[L<Paws::OpsWorks::ElasticLoadBalancer>]
 
   A list of C<ElasticLoadBalancer> objects that describe the specified
 Elastic Load Balancing instances.

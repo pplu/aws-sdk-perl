@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 format of a trail ARN is
 C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>.
 
-=head2 TagsList => ArrayRef[Paws::CloudTrail::Tag]
+=head2 TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]
 
   Specifies a list of tags to be removed.
 

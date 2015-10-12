@@ -14,10 +14,10 @@ Paws::AutoScaling::DescribeMetricCollectionTypesAnswer
 
 =head1 ATTRIBUTES
 
-=head2 Granularities => ArrayRef[Paws::AutoScaling::MetricGranularityType]
+=head2 Granularities => ArrayRef[L<Paws::AutoScaling::MetricGranularityType>]
 
   The granularities for the metrics.
-=head2 Metrics => ArrayRef[Paws::AutoScaling::MetricCollectionType]
+=head2 Metrics => ArrayRef[L<Paws::AutoScaling::MetricCollectionType>]
 
   One or more metrics.
 

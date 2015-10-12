@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 ATTRIBUTES
 
-=head2 SubnetAvailabilityZone => Paws::ElastiCache::AvailabilityZone
+=head2 SubnetAvailabilityZone => L<Paws::ElastiCache::AvailabilityZone>
 
   The Availability Zone associated with the subnet.
 

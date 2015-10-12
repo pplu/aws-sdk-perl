@@ -32,13 +32,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Body o
 
 =head1 ATTRIBUTES
 
-=head2 Html => Paws::SES::Content
+=head2 Html => L<Paws::SES::Content>
 
   The content of the message, in HTML format. Use this for email clients
 that can process HTML. You can include clickable links, formatted text,
 and much more in an HTML message.
 
-=head2 Text => Paws::SES::Content
+=head2 Text => L<Paws::SES::Content>
 
   The content of the message, in text format. Use this for text-based
 email clients, or clients on high-latency networks (such as mobile

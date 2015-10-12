@@ -14,7 +14,7 @@ Paws::RDS::DBSecurityGroupMessage
 
 =head1 ATTRIBUTES
 
-=head2 DBSecurityGroups => ArrayRef[Paws::RDS::DBSecurityGroup]
+=head2 DBSecurityGroups => ArrayRef[L<Paws::RDS::DBSecurityGroup>]
 
   A list of DBSecurityGroup instances.
 =head2 Marker => Str

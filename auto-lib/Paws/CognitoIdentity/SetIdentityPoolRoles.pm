@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   An identity pool ID in the format REGION:GUID.
 
-=head2 B<REQUIRED> Roles => Paws::CognitoIdentity::RolesMap
+=head2 B<REQUIRED> Roles => L<Paws::CognitoIdentity::RolesMap>
 
   The map of roles associated with this pool. For a given role, the key
 will be either "authenticated" or "unauthenticated" and the value will

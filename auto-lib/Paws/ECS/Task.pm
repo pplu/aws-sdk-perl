@@ -49,7 +49,7 @@ task.
   The Amazon Resource Name (ARN) of the container instances that host the
 task.
 
-=head2 containers => ArrayRef[Paws::ECS::Container]
+=head2 containers => ArrayRef[L<Paws::ECS::Container>]
 
   The containers associated with the task.
 
@@ -61,7 +61,7 @@ task.
 
   The last known status of the task.
 
-=head2 overrides => Paws::ECS::TaskOverride
+=head2 overrides => L<Paws::ECS::TaskOverride>
 
   One or more container overrides.
 

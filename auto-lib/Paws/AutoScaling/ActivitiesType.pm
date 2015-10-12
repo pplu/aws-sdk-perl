@@ -14,7 +14,7 @@ Paws::AutoScaling::ActivitiesType
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Activities => ArrayRef[Paws::AutoScaling::Activity]
+=head2 B<REQUIRED> Activities => ArrayRef[L<Paws::AutoScaling::Activity>]
 
   The scaling activities.
 =head2 NextToken => Str

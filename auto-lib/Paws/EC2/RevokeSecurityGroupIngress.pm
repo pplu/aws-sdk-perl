@@ -67,7 +67,7 @@ nondefault VPC.
 
   [EC2-Classic, default VPC] The name of the security group.
 
-=head2 IpPermissions => ArrayRef[Paws::EC2::IpPermission]
+=head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
   A set of IP permissions. You can't specify a source security group and
 a CIDR IP address range.

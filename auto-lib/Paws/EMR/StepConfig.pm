@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepCo
 
   The action to take if the job flow step fails.
 
-=head2 B<REQUIRED> HadoopJarStep => Paws::EMR::HadoopJarStepConfig
+=head2 B<REQUIRED> HadoopJarStep => L<Paws::EMR::HadoopJarStepConfig>
 
   The JAR file used for the job flow step.
 

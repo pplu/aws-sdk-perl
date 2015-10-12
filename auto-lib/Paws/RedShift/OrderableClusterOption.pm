@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::O
 
 =head1 ATTRIBUTES
 
-=head2 AvailabilityZones => ArrayRef[Paws::RedShift::AvailabilityZone]
+=head2 AvailabilityZones => ArrayRef[L<Paws::RedShift::AvailabilityZone>]
 
   A list of availability zones for the orderable cluster.
 

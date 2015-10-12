@@ -13,7 +13,7 @@ Paws::ElasticBeanstalk::RetrieveEnvironmentInfoResultMessage
 
 =head1 ATTRIBUTES
 
-=head2 EnvironmentInfo => ArrayRef[Paws::ElasticBeanstalk::EnvironmentInfoDescription]
+=head2 EnvironmentInfo => ArrayRef[L<Paws::ElasticBeanstalk::EnvironmentInfoDescription>]
 
   The EnvironmentInfoDescription of the environment.
 

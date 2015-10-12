@@ -58,7 +58,7 @@ load balancer to send the request
 from. For a current list of country codes, see the Wikipedia entry ISO
 3166-1 alpha-2.
 
-=head2 Headers => ArrayRef[Paws::WAF::HTTPHeader]
+=head2 Headers => ArrayRef[L<Paws::WAF::HTTPHeader>]
 
   A complex type that contains two values for each header in the sampled
 web request: the name of the header and the value of the header.

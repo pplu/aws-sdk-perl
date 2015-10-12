@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Eva
 
 =head1 ATTRIBUTES
 
-=head2 EvaluationResultQualifier => Paws::Config::EvaluationResultQualifier
+=head2 EvaluationResultQualifier => L<Paws::Config::EvaluationResultQualifier>
 
   Identifies an AWS Config rule used to evaluate an AWS resource, and
 provides the type and ID of the evaluated resource.

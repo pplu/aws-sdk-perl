@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The locale that you want to translate a textual identifier into.
 
-=head2 localizedTexts => ArrayRef[Paws::Inspector::LocalizedText]
+=head2 localizedTexts => ArrayRef[L<Paws::Inspector::LocalizedText>]
 
   A list of textual identifiers.
 

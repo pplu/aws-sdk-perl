@@ -18,7 +18,7 @@ Paws::SimpleWorkflow::DecisionTask
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> events => ArrayRef[Paws::SimpleWorkflow::HistoryEvent]
+=head2 B<REQUIRED> events => ArrayRef[L<Paws::SimpleWorkflow::HistoryEvent>]
 
   A paginated list of history events of the workflow execution. The
 decider uses this during the processing of the decision task.
@@ -45,10 +45,10 @@ decision task received by the decider.
   The opaque string used as a handle on the task. This token is used by
 workers to communicate progress and response information back to the
 system about the task.
-=head2 B<REQUIRED> workflowExecution => Paws::SimpleWorkflow::WorkflowExecution
+=head2 B<REQUIRED> workflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The workflow execution for which this decision task was created.
-=head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
+=head2 B<REQUIRED> workflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
   The type of the workflow execution for which this decision task was
 created.

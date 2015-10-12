@@ -53,7 +53,7 @@ provide an AWS-KMS key only if you want to use a non-default AWS-KMS
 key, or if you are using an C<Encryption:Mode> of C<AES-PKCS7>,
 C<AES-CTR>, or C<AES-GCM>.
 
-=head2 ContentConfig => Paws::ElasticTranscoder::PipelineOutputConfig
+=head2 ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>
 
   The optional C<ContentConfig> object specifies information about the
 Amazon S3 bucket in which you want Elastic Transcoder to save
@@ -151,7 +151,7 @@ the AWS account, but uniqueness is not enforced.
 
 Constraints: Maximum 40 characters
 
-=head2 Notifications => Paws::ElasticTranscoder::Notifications
+=head2 Notifications => L<Paws::ElasticTranscoder::Notifications>
 
   
 
@@ -160,7 +160,7 @@ Constraints: Maximum 40 characters
   The IAM Amazon Resource Name (ARN) for the role that you want Elastic
 Transcoder to use to transcode jobs for this pipeline.
 
-=head2 ThumbnailConfig => Paws::ElasticTranscoder::PipelineOutputConfig
+=head2 ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>
 
   The C<ThumbnailConfig> object specifies several values, including the
 Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail

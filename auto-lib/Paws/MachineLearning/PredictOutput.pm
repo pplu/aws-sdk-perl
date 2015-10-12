@@ -12,7 +12,7 @@ Paws::MachineLearning::PredictOutput
 
 =head1 ATTRIBUTES
 
-=head2 Prediction => Paws::MachineLearning::Prediction
+=head2 Prediction => L<Paws::MachineLearning::Prediction>
 
   
 

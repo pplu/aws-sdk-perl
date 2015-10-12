@@ -14,7 +14,7 @@ Paws::IoT::ListCertificatesResponse
 
 =head1 ATTRIBUTES
 
-=head2 certificates => ArrayRef[Paws::IoT::Certificate]
+=head2 certificates => ArrayRef[L<Paws::IoT::Certificate>]
 
   The descriptions of the certificates.
 =head2 nextMarker => Str

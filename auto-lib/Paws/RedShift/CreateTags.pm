@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The Amazon Resource Name (ARN) to which you want to add the tag or
 tags. For example, C<arn:aws:redshift:us-east-1:123456789:cluster:t1>.
 
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   One or more name/value pairs to add as tags to the specified resource.
 Each tag name is passed in with the parameter C<Key> and the

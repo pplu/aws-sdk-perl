@@ -90,7 +90,7 @@ CloudWatch Developer Guide>.
 C<Statistic> and C<Threshold>. The specified C<Statistic> value is used
 as the first operand.
 
-=head2 Dimensions => ArrayRef[Paws::CloudWatch::Dimension]
+=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
   The list of dimensions associated with the alarm's associated metric.
 

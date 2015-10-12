@@ -19,7 +19,7 @@ Paws::EFS::DescribeMountTargetsResponse
 
   If the request included the C<Marker>, the response returns that value
 in this field.
-=head2 MountTargets => ArrayRef[Paws::EFS::MountTargetDescription]
+=head2 MountTargets => ArrayRef[L<Paws::EFS::MountTargetDescription>]
 
   Returns the file system's mount targets as an array of
 C<MountTargetDescription> objects.

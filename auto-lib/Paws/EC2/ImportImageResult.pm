@@ -47,7 +47,7 @@ Paws::EC2::ImportImageResult
 =head2 Progress => Str
 
   The progress of the task.
-=head2 SnapshotDetails => ArrayRef[Paws::EC2::SnapshotDetail]
+=head2 SnapshotDetails => ArrayRef[L<Paws::EC2::SnapshotDetail>]
 
   Information about the snapshots.
 =head2 Status => Str

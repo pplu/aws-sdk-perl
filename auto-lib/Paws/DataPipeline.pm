@@ -170,7 +170,7 @@ service.
 
 =head1 METHODS
 
-=head2 ActivatePipeline(pipelineId => Str, [parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue], startTimestamp => Str])
+=head2 ActivatePipeline(pipelineId => Str, [parameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>], startTimestamp => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ActivatePipeline>
 
@@ -197,7 +197,7 @@ and then activate it.
 
 
 
-=head2 AddTags(pipelineId => Str, tags => ArrayRef[Paws::DataPipeline::Tag])
+=head2 AddTags(pipelineId => Str, tags => ArrayRef[L<Paws::DataPipeline::Tag>])
 
 Each argument is described in detail in: L<Paws::DataPipeline::AddTags>
 
@@ -217,7 +217,7 @@ Adds or modifies tags for the specified pipeline.
 
 
 
-=head2 CreatePipeline(name => Str, uniqueId => Str, [description => Str, tags => ArrayRef[Paws::DataPipeline::Tag]])
+=head2 CreatePipeline(name => Str, uniqueId => Str, [description => Str, tags => ArrayRef[L<Paws::DataPipeline::Tag>]])
 
 Each argument is described in detail in: L<Paws::DataPipeline::CreatePipeline>
 
@@ -406,7 +406,7 @@ permission to access.
 
 
 
-=head2 PollForTask(workerGroup => Str, [hostname => Str, instanceIdentity => Paws::DataPipeline::InstanceIdentity])
+=head2 PollForTask(workerGroup => Str, [hostname => Str, instanceIdentity => L<Paws::DataPipeline::InstanceIdentity>])
 
 Each argument is described in detail in: L<Paws::DataPipeline::PollForTask>
 
@@ -440,7 +440,7 @@ response, and this can take up to 90 seconds.
 
 
 
-=head2 PutPipelineDefinition(pipelineId => Str, pipelineObjects => ArrayRef[Paws::DataPipeline::PipelineObject], [parameterObjects => ArrayRef[Paws::DataPipeline::ParameterObject], parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue]])
+=head2 PutPipelineDefinition(pipelineId => Str, pipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>], [parameterObjects => ArrayRef[L<Paws::DataPipeline::ParameterObject>], parameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]])
 
 Each argument is described in detail in: L<Paws::DataPipeline::PutPipelineDefinition>
 
@@ -481,7 +481,7 @@ action and returned by the GetPipelineDefinition action.
 
 
 
-=head2 QueryObjects(pipelineId => Str, sphere => Str, [limit => Int, marker => Str, query => Paws::DataPipeline::Query])
+=head2 QueryObjects(pipelineId => Str, sphere => Str, [limit => Int, marker => Str, query => L<Paws::DataPipeline::Query>])
 
 Each argument is described in detail in: L<Paws::DataPipeline::QueryObjects>
 
@@ -522,7 +522,7 @@ Removes existing tags from the specified pipeline.
 
 
 
-=head2 ReportTaskProgress(taskId => Str, [fields => ArrayRef[Paws::DataPipeline::Field]])
+=head2 ReportTaskProgress(taskId => Str, [fields => ArrayRef[L<Paws::DataPipeline::Field>]])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ReportTaskProgress>
 
@@ -628,7 +628,7 @@ ReportTaskProgress.
 
 
 
-=head2 ValidatePipelineDefinition(pipelineId => Str, pipelineObjects => ArrayRef[Paws::DataPipeline::PipelineObject], [parameterObjects => ArrayRef[Paws::DataPipeline::ParameterObject], parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue]])
+=head2 ValidatePipelineDefinition(pipelineId => Str, pipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>], [parameterObjects => ArrayRef[L<Paws::DataPipeline::ParameterObject>], parameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ValidatePipelineDefinition>
 

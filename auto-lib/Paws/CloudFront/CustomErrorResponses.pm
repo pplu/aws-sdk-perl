@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 ATTRIBUTES
 
-=head2 Items => ArrayRef[Paws::CloudFront::CustomErrorResponse]
+=head2 Items => ArrayRef[L<Paws::CloudFront::CustomErrorResponse>]
 
   Optional: A complex type that contains custom error responses for this
 distribution. If Quantity is 0, you can omit Items.

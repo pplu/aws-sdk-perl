@@ -60,7 +60,7 @@ to.
 
   Specifies the name of the option group.
 
-=head2 Options => ArrayRef[Paws::RDS::Option]
+=head2 Options => ArrayRef[L<Paws::RDS::Option>]
 
   Indicates what options are available in the option group.
 

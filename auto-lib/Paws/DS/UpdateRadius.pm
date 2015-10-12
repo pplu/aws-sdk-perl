@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The identifier of the directory to update the RADIUS server information
 for.
 
-=head2 B<REQUIRED> RadiusSettings => Paws::DS::RadiusSettings
+=head2 B<REQUIRED> RadiusSettings => L<Paws::DS::RadiusSettings>
 
   A RadiusSettings object that contains information about the RADIUS
 server.

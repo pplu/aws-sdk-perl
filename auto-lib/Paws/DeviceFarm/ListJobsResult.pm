@@ -13,7 +13,7 @@ Paws::DeviceFarm::ListJobsResult
 
 =head1 ATTRIBUTES
 
-=head2 jobs => ArrayRef[Paws::DeviceFarm::Job]
+=head2 jobs => ArrayRef[L<Paws::DeviceFarm::Job>]
 
   Information about the jobs.
 =head2 nextToken => Str

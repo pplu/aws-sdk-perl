@@ -49,7 +49,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 AWS account ID, C<self> (the sender of the request), or C<all> (public
 AMIs).
 
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
   One or more filters.
 

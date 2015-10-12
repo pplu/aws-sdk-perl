@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 CognitoStreams => Paws::CognitoSync::CognitoStreams
+=head2 CognitoStreams => L<Paws::CognitoSync::CognitoStreams>
 
   Options to apply to this identity pool for Amazon Cognito streams.
 
@@ -46,7 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. This is the ID of the pool to modify.
 
-=head2 PushSync => Paws::CognitoSync::PushSync
+=head2 PushSync => L<Paws::CognitoSync::PushSync>
 
   Options to apply to this identity pool for push synchronization.
 

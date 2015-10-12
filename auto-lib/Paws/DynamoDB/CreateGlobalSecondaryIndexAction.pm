@@ -38,15 +38,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::C
 
   The name of the global secondary index to be created.
 
-=head2 B<REQUIRED> KeySchema => ArrayRef[Paws::DynamoDB::KeySchemaElement]
+=head2 B<REQUIRED> KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
   The key schema for the global secondary index.
 
-=head2 B<REQUIRED> Projection => Paws::DynamoDB::Projection
+=head2 B<REQUIRED> Projection => L<Paws::DynamoDB::Projection>
 
   
 
-=head2 B<REQUIRED> ProvisionedThroughput => Paws::DynamoDB::ProvisionedThroughput
+=head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
   
 

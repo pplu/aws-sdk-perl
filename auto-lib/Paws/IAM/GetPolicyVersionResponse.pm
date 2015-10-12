@@ -13,7 +13,7 @@ Paws::IAM::GetPolicyVersionResponse
 
 =head1 ATTRIBUTES
 
-=head2 PolicyVersion => Paws::IAM::PolicyVersion
+=head2 PolicyVersion => L<Paws::IAM::PolicyVersion>
 
   Information about the policy version.
 

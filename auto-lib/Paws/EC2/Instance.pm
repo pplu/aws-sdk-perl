@@ -76,7 +76,7 @@ launch group.
 
   The architecture of the image.
 
-=head2 BlockDeviceMappings => ArrayRef[Paws::EC2::InstanceBlockDeviceMapping]
+=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMapping>]
 
   Any block device mapping entries for the instance.
 
@@ -96,7 +96,7 @@ charges apply when using an EBS Optimized instance.
 
   The hypervisor type of the instance.
 
-=head2 IamInstanceProfile => Paws::EC2::IamInstanceProfile
+=head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfile>
 
   The IAM instance profile associated with the instance.
 
@@ -129,15 +129,15 @@ associated key pair.
 
   The time the instance was launched.
 
-=head2 Monitoring => Paws::EC2::Monitoring
+=head2 Monitoring => L<Paws::EC2::Monitoring>
 
   The monitoring information for the instance.
 
-=head2 NetworkInterfaces => ArrayRef[Paws::EC2::InstanceNetworkInterface]
+=head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterface>]
 
   [EC2-VPC] One or more network interfaces for the instance.
 
-=head2 Placement => Paws::EC2::Placement
+=head2 Placement => L<Paws::EC2::Placement>
 
   The location where the instance launched.
 
@@ -155,7 +155,7 @@ the instance enters the C<running> state.
 
   The private IP address assigned to the instance.
 
-=head2 ProductCodes => ArrayRef[Paws::EC2::ProductCode]
+=head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
   The product codes attached to this instance.
 
@@ -181,7 +181,7 @@ available until the instance enters the C<running> state.
   The root device type used by the AMI. The AMI can use an EBS volume or
 an instance store volume.
 
-=head2 SecurityGroups => ArrayRef[Paws::EC2::GroupIdentifier]
+=head2 SecurityGroups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
   One or more security groups for the instance.
 
@@ -202,11 +202,11 @@ I<Amazon Virtual Private Cloud User Guide>.
 
   Specifies whether enhanced networking is enabled.
 
-=head2 State => Paws::EC2::InstanceState
+=head2 State => L<Paws::EC2::InstanceState>
 
   The current state of the instance.
 
-=head2 StateReason => Paws::EC2::StateReason
+=head2 StateReason => L<Paws::EC2::StateReason>
 
   The reason for the most recent state transition.
 
@@ -219,7 +219,7 @@ string.
 
   The ID of the subnet in which the instance is running.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the instance.
 

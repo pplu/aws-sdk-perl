@@ -49,7 +49,7 @@ for the container instances on which you would like to place your task.
 
 The list of container instances to start tasks on is limited to 10.
 
-=head2 overrides => Paws::ECS::TaskOverride
+=head2 overrides => L<Paws::ECS::TaskOverride>
 
   A list of container overrides in JSON format that specify the name of a
 container in the specified task definition and the overrides it should

@@ -61,7 +61,7 @@ transcoded files or the permissions the users have, or change the
 Amazon S3 storage class, omit OutputBucket and specify values for
 C<ContentConfig> and C<ThumbnailConfig> instead.
 
-=head2 Permissions => ArrayRef[Paws::ElasticTranscoder::Permission]
+=head2 Permissions => ArrayRef[L<Paws::ElasticTranscoder::Permission>]
 
   Optional. The C<Permissions> object specifies which users and/or
 predefined Amazon S3 groups you want to have access to transcoded files

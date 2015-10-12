@@ -52,7 +52,7 @@ type was deprecated.
 
   The current status of the workflow type.
 
-=head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
+=head2 B<REQUIRED> workflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
   The workflow type this information is about.
 

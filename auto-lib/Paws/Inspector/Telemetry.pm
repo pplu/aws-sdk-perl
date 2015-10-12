@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 ATTRIBUTES
 
-=head2 messageTypeTelemetries => ArrayRef[Paws::Inspector::MessageTypeTelemetry]
+=head2 messageTypeTelemetries => ArrayRef[L<Paws::Inspector::MessageTypeTelemetry>]
 
   Counts of individual metrics received by Inspector from the agent.
 

@@ -43,7 +43,7 @@ be listed. If your results were truncated, you can make a follow-up
 pagination request using the Marker request parameter to retrieve more
 items in the list.
 
-=head2 Items => ArrayRef[Paws::CloudFront::CloudFrontOriginAccessIdentitySummary]
+=head2 Items => ArrayRef[L<Paws::CloudFront::CloudFrontOriginAccessIdentitySummary>]
 
   A complex type that contains one CloudFrontOriginAccessIdentitySummary
 element for each origin access identity that was created by the current

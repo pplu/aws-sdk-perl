@@ -110,7 +110,7 @@ Endpoints.
 
 =head1 METHODS
 
-=head2 AddTags(ARN => Str, TagList => ArrayRef[Paws::ES::Tag])
+=head2 AddTags(ARN => Str, TagList => ArrayRef[L<Paws::ES::Tag>])
 
 Each argument is described in detail in: L<Paws::ES::AddTags>
 
@@ -133,7 +133,7 @@ information.
 
 
 
-=head2 CreateElasticsearchDomain(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => Paws::ES::AdvancedOptions, EBSOptions => Paws::ES::EBSOptions, ElasticsearchClusterConfig => Paws::ES::ElasticsearchClusterConfig, SnapshotOptions => Paws::ES::SnapshotOptions])
+=head2 CreateElasticsearchDomain(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => L<Paws::ES::AdvancedOptions>, EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, SnapshotOptions => L<Paws::ES::SnapshotOptions>])
 
 Each argument is described in detail in: L<Paws::ES::CreateElasticsearchDomain>
 
@@ -304,7 +304,7 @@ domain.
 
 
 
-=head2 UpdateElasticsearchDomainConfig(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => Paws::ES::AdvancedOptions, EBSOptions => Paws::ES::EBSOptions, ElasticsearchClusterConfig => Paws::ES::ElasticsearchClusterConfig, SnapshotOptions => Paws::ES::SnapshotOptions])
+=head2 UpdateElasticsearchDomainConfig(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => L<Paws::ES::AdvancedOptions>, EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, SnapshotOptions => L<Paws::ES::SnapshotOptions>])
 
 Each argument is described in detail in: L<Paws::ES::UpdateElasticsearchDomainConfig>
 

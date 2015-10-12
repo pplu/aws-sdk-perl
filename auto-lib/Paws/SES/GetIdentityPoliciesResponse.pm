@@ -13,7 +13,7 @@ Paws::SES::GetIdentityPoliciesResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Policies => Paws::SES::PolicyMap
+=head2 B<REQUIRED> Policies => L<Paws::SES::PolicyMap>
 
   A map of policy names to policies.
 

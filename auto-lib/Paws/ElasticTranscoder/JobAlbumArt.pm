@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head1 ATTRIBUTES
 
-=head2 Artwork => ArrayRef[Paws::ElasticTranscoder::Artwork]
+=head2 Artwork => ArrayRef[L<Paws::ElasticTranscoder::Artwork>]
 
   The file to be used as album art. There can be multiple artworks
 associated with an audio file, to a maximum of 20. Valid formats are

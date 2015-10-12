@@ -15,13 +15,13 @@ Paws::CloudSearchDomain::SearchResponse
 
 =head1 ATTRIBUTES
 
-=head2 facets => Paws::CloudSearchDomain::Facets
+=head2 facets => L<Paws::CloudSearchDomain::Facets>
 
   The requested facet information.
-=head2 hits => Paws::CloudSearchDomain::Hits
+=head2 hits => L<Paws::CloudSearchDomain::Hits>
 
   The documents that match the search criteria.
-=head2 status => Paws::CloudSearchDomain::SearchStatus
+=head2 status => L<Paws::CloudSearchDomain::SearchStatus>
 
   The status information returned for the search request.
 

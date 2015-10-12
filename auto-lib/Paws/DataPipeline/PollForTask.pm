@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The public DNS name of the calling task runner.
 
-=head2 instanceIdentity => Paws::DataPipeline::InstanceIdentity
+=head2 instanceIdentity => L<Paws::DataPipeline::InstanceIdentity>
 
   Identity information for the EC2 instance that is hosting the task
 runner. You can get this value from the instance using

@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the domain that contains the task list.
 
-=head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
+=head2 B<REQUIRED> taskList => L<Paws::SimpleWorkflow::TaskList>
 
   The name of the task list.
 

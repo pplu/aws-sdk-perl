@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   Name of the bucket to which the multipart upload was initiated.
 
-=head2 CommonPrefixes => ArrayRef[Paws::S3::CommonPrefix]
+=head2 CommonPrefixes => ArrayRef[L<Paws::S3::CommonPrefix>]
 
   
 
@@ -91,7 +91,7 @@ specified prefix.
 
   Upload ID after which listing began.
 
-=head2 Uploads => ArrayRef[Paws::S3::MultipartUpload]
+=head2 Uploads => ArrayRef[L<Paws::S3::MultipartUpload>]
 
   
 

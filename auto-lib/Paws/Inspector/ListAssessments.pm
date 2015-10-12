@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   A list of ARNs specifying the applications the assessments of which you
 want to list.
 
-=head2 filter => Paws::Inspector::AssessmentsFilter
+=head2 filter => L<Paws::Inspector::AssessmentsFilter>
 
   You can use this parameter to specify a subset of data to be included
 in the action's response.

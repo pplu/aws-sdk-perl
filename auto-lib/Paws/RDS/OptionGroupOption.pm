@@ -66,7 +66,7 @@ option.
 
   The name of the option.
 
-=head2 OptionGroupOptionSettings => ArrayRef[Paws::RDS::OptionGroupOptionSetting]
+=head2 OptionGroupOptionSettings => ArrayRef[L<Paws::RDS::OptionGroupOptionSetting>]
 
   Specifies the option settings that are available (and the default
 value) for each option in an option group.

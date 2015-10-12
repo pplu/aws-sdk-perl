@@ -130,7 +130,7 @@ time processing of streaming big data.
 
 =head1 METHODS
 
-=head2 AddTagsToStream(StreamName => Str, Tags => Paws::Kinesis::TagMap)
+=head2 AddTagsToStream(StreamName => Str, Tags => L<Paws::Kinesis::TagMap>)
 
 Each argument is described in detail in: L<Paws::Kinesis::AddTagsToStream>
 
@@ -670,7 +670,7 @@ IncreaseStreamRetentionPeriod operations.
 
 
 
-=head2 PutRecords(Records => ArrayRef[Paws::Kinesis::PutRecordsRequestEntry], StreamName => Str)
+=head2 PutRecords(Records => ArrayRef[L<Paws::Kinesis::PutRecordsRequestEntry>], StreamName => Str)
 
 Each argument is described in detail in: L<Paws::Kinesis::PutRecords>
 

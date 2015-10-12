@@ -16,7 +16,7 @@ Paws::CloudWatchLogs::PutLogEventsResponse
 =head2 nextSequenceToken => Str
 
   
-=head2 rejectedLogEventsInfo => Paws::CloudWatchLogs::RejectedLogEventsInfo
+=head2 rejectedLogEventsInfo => L<Paws::CloudWatchLogs::RejectedLogEventsInfo>
 
   
 

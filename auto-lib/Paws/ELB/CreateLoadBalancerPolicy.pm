@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the load balancer.
 
-=head2 PolicyAttributes => ArrayRef[Paws::ELB::PolicyAttribute]
+=head2 PolicyAttributes => ArrayRef[L<Paws::ELB::PolicyAttribute>]
 
   The attributes for the policy.
 

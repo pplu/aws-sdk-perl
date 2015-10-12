@@ -45,7 +45,7 @@ C<ActivityTaskStarted> event in the workflow history. This enables
 diagnostic tracing when problems arise. The form of this identity is
 user defined.
 
-=head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
+=head2 B<REQUIRED> taskList => L<Paws::SimpleWorkflow::TaskList>
 
   Specifies the task list to poll for activity tasks.
 

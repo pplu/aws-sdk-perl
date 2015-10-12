@@ -32,11 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 ATTRIBUTES
 
-=head2 key => Paws::Inspector::LocalizedTextKey
+=head2 key => L<Paws::Inspector::LocalizedTextKey>
 
   The facility and id properties of the LocalizedTextKey data type.
 
-=head2 parameters => ArrayRef[Paws::Inspector::Parameter]
+=head2 parameters => ArrayRef[L<Paws::Inspector::Parameter>]
 
   Values for the dynamic elements of the string specified by the textual
 identifier.

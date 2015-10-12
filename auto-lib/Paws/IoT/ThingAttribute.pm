@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::ThingA
 
 =head1 ATTRIBUTES
 
-=head2 attributes => Paws::IoT::Attributes
+=head2 attributes => L<Paws::IoT::Attributes>
 
   The attributes.
 

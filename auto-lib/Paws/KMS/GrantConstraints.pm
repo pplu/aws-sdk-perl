@@ -32,12 +32,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KMS::GrantC
 
 =head1 ATTRIBUTES
 
-=head2 EncryptionContextEquals => Paws::KMS::EncryptionContextType
+=head2 EncryptionContextEquals => L<Paws::KMS::EncryptionContextType>
 
   The constraint contains additional key/value pairs that serve to
 further limit the grant.
 
-=head2 EncryptionContextSubset => Paws::KMS::EncryptionContextType
+=head2 EncryptionContextSubset => L<Paws::KMS::EncryptionContextType>
 
   The constraint equals the full encryption context.
 

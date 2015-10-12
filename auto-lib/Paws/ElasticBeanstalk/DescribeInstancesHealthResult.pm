@@ -15,7 +15,7 @@ Paws::ElasticBeanstalk::DescribeInstancesHealthResult
 
 =head1 ATTRIBUTES
 
-=head2 InstanceHealthList => ArrayRef[Paws::ElasticBeanstalk::SingleInstanceHealth]
+=head2 InstanceHealthList => ArrayRef[L<Paws::ElasticBeanstalk::SingleInstanceHealth>]
 
   Contains the response body with information about the health of the
 instance.

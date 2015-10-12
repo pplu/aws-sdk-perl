@@ -60,7 +60,7 @@ information about IDs, see IAM Identifiers in the I<Using IAM> guide.
   The path to the instance profile. For more information about paths, see
 IAM Identifiers in the I<Using IAM> guide.
 
-=head2 B<REQUIRED> Roles => ArrayRef[Paws::IAM::Role]
+=head2 B<REQUIRED> Roles => ArrayRef[L<Paws::IAM::Role>]
 
   The role associated with the instance profile.
 

@@ -12,7 +12,7 @@ Paws::CloudWatchLogs::PutDestinationResponse
 
 =head1 ATTRIBUTES
 
-=head2 destination => Paws::CloudWatchLogs::Destination
+=head2 destination => L<Paws::CloudWatchLogs::Destination>
 
   
 

@@ -12,7 +12,7 @@ Paws::CodePipeline::PollForJobsOutput
 
 =head1 ATTRIBUTES
 
-=head2 jobs => ArrayRef[Paws::CodePipeline::Job]
+=head2 jobs => ArrayRef[L<Paws::CodePipeline::Job>]
 
   Information about the jobs to take action on.
 

@@ -32,11 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::AccessC
 
 =head1 ATTRIBUTES
 
-=head2 Grants => ArrayRef[Paws::S3::Grant]
+=head2 Grants => ArrayRef[L<Paws::S3::Grant>]
 
   A list of grants.
 
-=head2 Owner => Paws::S3::Owner
+=head2 Owner => L<Paws::S3::Owner>
 
   
 

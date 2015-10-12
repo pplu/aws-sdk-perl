@@ -38,11 +38,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Destination => Paws::SES::Destination
+=head2 B<REQUIRED> Destination => L<Paws::SES::Destination>
 
   The destination for this email, composed of To:, CC:, and BCC: fields.
 
-=head2 B<REQUIRED> Message => Paws::SES::Message
+=head2 B<REQUIRED> Message => L<Paws::SES::Message>
 
   The message to be sent.
 

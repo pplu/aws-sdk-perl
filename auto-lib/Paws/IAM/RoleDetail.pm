@@ -47,7 +47,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::RoleDe
 
   The trust policy that grants permission to assume the role.
 
-=head2 AttachedManagedPolicies => ArrayRef[Paws::IAM::AttachedPolicy]
+=head2 AttachedManagedPolicies => ArrayRef[L<Paws::IAM::AttachedPolicy>]
 
   A list of managed policies attached to the role. These policies are the
 role's access (permissions) policies.
@@ -57,7 +57,7 @@ role's access (permissions) policies.
   The date and time, in ISO 8601 date-time format, when the role was
 created.
 
-=head2 InstanceProfileList => ArrayRef[Paws::IAM::InstanceProfile]
+=head2 InstanceProfileList => ArrayRef[L<Paws::IAM::InstanceProfile>]
 
   
 
@@ -75,7 +75,7 @@ about IDs, see IAM Identifiers in the I<Using IAM> guide.
 
   The friendly name that identifies the role.
 
-=head2 RolePolicyList => ArrayRef[Paws::IAM::PolicyDetail]
+=head2 RolePolicyList => ArrayRef[L<Paws::IAM::PolicyDetail>]
 
   A list of inline policies embedded in the role. These policies are the
 role's access (permissions) policies.

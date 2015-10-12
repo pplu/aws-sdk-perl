@@ -45,12 +45,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Aliases => Paws::CloudFront::Aliases
+=head2 B<REQUIRED> Aliases => L<Paws::CloudFront::Aliases>
 
   A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this distribution.
 
-=head2 B<REQUIRED> CacheBehaviors => Paws::CloudFront::CacheBehaviors
+=head2 B<REQUIRED> CacheBehaviors => L<Paws::CloudFront::CacheBehaviors>
 
   A complex type that contains zero or more CacheBehavior elements.
 
@@ -58,12 +58,12 @@ names), if any, for this distribution.
 
   The comment originally specified when this distribution was created.
 
-=head2 B<REQUIRED> CustomErrorResponses => Paws::CloudFront::CustomErrorResponses
+=head2 B<REQUIRED> CustomErrorResponses => L<Paws::CloudFront::CustomErrorResponses>
 
   A complex type that contains zero or more CustomErrorResponses
 elements.
 
-=head2 B<REQUIRED> DefaultCacheBehavior => Paws::CloudFront::DefaultCacheBehavior
+=head2 B<REQUIRED> DefaultCacheBehavior => L<Paws::CloudFront::DefaultCacheBehavior>
 
   A complex type that describes the default cache behavior if you do not
 specify a CacheBehavior element or if files don't match any of the
@@ -88,7 +88,7 @@ content.
 
   The date and time the distribution was last modified.
 
-=head2 B<REQUIRED> Origins => Paws::CloudFront::Origins
+=head2 B<REQUIRED> Origins => L<Paws::CloudFront::Origins>
 
   A complex type that contains information about origins for this
 distribution.
@@ -97,7 +97,7 @@ distribution.
 
   
 
-=head2 B<REQUIRED> Restrictions => Paws::CloudFront::Restrictions
+=head2 B<REQUIRED> Restrictions => L<Paws::CloudFront::Restrictions>
 
   
 
@@ -107,7 +107,7 @@ distribution.
 When the status is Deployed, the distribution's information is fully
 propagated throughout the Amazon CloudFront system.
 
-=head2 B<REQUIRED> ViewerCertificate => Paws::CloudFront::ViewerCertificate
+=head2 B<REQUIRED> ViewerCertificate => L<Paws::CloudFront::ViewerCertificate>
 
   
 

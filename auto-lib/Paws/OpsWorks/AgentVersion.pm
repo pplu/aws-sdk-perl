@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::A
 
 =head1 ATTRIBUTES
 
-=head2 ConfigurationManager => Paws::OpsWorks::StackConfigurationManager
+=head2 ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>
 
   The configuration manager.
 

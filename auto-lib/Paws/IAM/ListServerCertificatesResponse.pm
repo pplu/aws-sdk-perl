@@ -29,7 +29,7 @@ results.
   When C<IsTruncated> is C<true>, this element is present and contains
 the value to use for the C<Marker> parameter in a subsequent pagination
 request.
-=head2 B<REQUIRED> ServerCertificateMetadataList => ArrayRef[Paws::IAM::ServerCertificateMetadata]
+=head2 B<REQUIRED> ServerCertificateMetadataList => ArrayRef[L<Paws::IAM::ServerCertificateMetadata>]
 
   A list of server certificates.
 

@@ -47,7 +47,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => Paws::OpsWorks::LayerAttributes
+=head2 Attributes => L<Paws::OpsWorks::LayerAttributes>
 
   One or more user-defined key/value pairs to be added to the stack
 attributes.
@@ -74,7 +74,7 @@ instances. For more information about IAM ARNs, see Using Identifiers.
 deployment attributes to be installed on the layer's instances. For
 more information, see Using Custom JSON.
 
-=head2 CustomRecipes => Paws::OpsWorks::Recipes
+=head2 CustomRecipes => L<Paws::OpsWorks::Recipes>
 
   A C<LayerCustomRecipes> object that specifies the layer's custom
 recipes.
@@ -103,7 +103,7 @@ that your instances have the latest security updates.
 
   The layer ID.
 
-=head2 LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration
+=head2 LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>
 
   
 
@@ -130,7 +130,7 @@ information, see the Layer Reference
 
   Whether to use Amazon EBS-optimized instances.
 
-=head2 VolumeConfigurations => ArrayRef[Paws::OpsWorks::VolumeConfiguration]
+=head2 VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]
 
   A C<VolumeConfigurations> object that describes the layer's Amazon EBS
 volumes.

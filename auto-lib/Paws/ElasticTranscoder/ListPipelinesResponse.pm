@@ -20,7 +20,7 @@ Paws::ElasticTranscoder::ListPipelinesResponse
 results, if any. When the pipelines fit on one page or when you've
 reached the last page of results, the value of C<NextPageToken> is
 C<null>.
-=head2 Pipelines => ArrayRef[Paws::ElasticTranscoder::Pipeline]
+=head2 Pipelines => ArrayRef[L<Paws::ElasticTranscoder::Pipeline>]
 
   An array of C<Pipeline> objects.
 

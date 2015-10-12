@@ -13,7 +13,7 @@ Paws::IAM::GetRoleResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Role => Paws::IAM::Role
+=head2 B<REQUIRED> Role => L<Paws::IAM::Role>
 
   Information about the role.
 

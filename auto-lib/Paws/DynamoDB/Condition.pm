@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::C
 
 =head1 ATTRIBUTES
 
-=head2 AttributeValueList => ArrayRef[Paws::DynamoDB::AttributeValue]
+=head2 AttributeValueList => ArrayRef[L<Paws::DynamoDB::AttributeValue>]
 
   One or more values to evaluate against the supplied attribute. The
 number of values in the list depends on the I<ComparisonOperator> being

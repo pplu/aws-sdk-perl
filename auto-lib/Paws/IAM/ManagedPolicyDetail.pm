@@ -90,7 +90,7 @@ guide.
 
   The friendly name (not ARN) identifying the policy.
 
-=head2 PolicyVersionList => ArrayRef[Paws::IAM::PolicyVersion]
+=head2 PolicyVersionList => ArrayRef[L<Paws::IAM::PolicyVersion>]
 
   A list containing information about the versions of the policy.
 

@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 ATTRIBUTES
 
-=head2 CacheNodeTypeSpecificParameters => ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificParameter]
+=head2 CacheNodeTypeSpecificParameters => ArrayRef[L<Paws::ElastiCache::CacheNodeTypeSpecificParameter>]
 
   A list of parameters specific to a particular cache node type. Each
 element in the list contains detailed information about one parameter.
@@ -48,7 +48,7 @@ engine default parameters apply.
 
   Provides an identifier to allow retrieval of paginated results.
 
-=head2 Parameters => ArrayRef[Paws::ElastiCache::Parameter]
+=head2 Parameters => ArrayRef[L<Paws::ElastiCache::Parameter>]
 
   Contains a list of engine default parameters.
 

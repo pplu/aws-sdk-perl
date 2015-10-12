@@ -49,7 +49,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
   Flag that indicates whether the parameter value is shown as plain text
 in logs and in the AWS Management Console.
 
-=head2 ParameterConstraints => Paws::CloudFormation::ParameterConstraints
+=head2 ParameterConstraints => L<Paws::CloudFormation::ParameterConstraints>
 
   The criteria that AWS CloudFormation uses to validate parameter values.
 

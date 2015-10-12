@@ -236,7 +236,7 @@ For more information, see Amazon Inspector User Guide.
 
 =head1 METHODS
 
-=head2 AddAttributesToFindings([attributes => ArrayRef[Paws::Inspector::Attribute], findingArns => ArrayRef[Str]])
+=head2 AddAttributesToFindings([attributes => ArrayRef[L<Paws::Inspector::Attribute>], findingArns => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::Inspector::AddAttributesToFindings>
 
@@ -301,7 +301,7 @@ more information, see Inspector Applications.
 
 
 
-=head2 CreateAssessment([applicationArn => Str, assessmentName => Str, durationInSeconds => Int, userAttributesForFindings => ArrayRef[Paws::Inspector::Attribute]])
+=head2 CreateAssessment([applicationArn => Str, assessmentName => Str, durationInSeconds => Int, userAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]])
 
 Each argument is described in detail in: L<Paws::Inspector::CreateAssessment>
 
@@ -588,7 +588,7 @@ for the assessment specified by the assessment ARN.
 
 
 
-=head2 ListApplications([filter => Paws::Inspector::ApplicationsFilter, maxResults => Int, nextToken => Str])
+=head2 ListApplications([filter => L<Paws::Inspector::ApplicationsFilter>, maxResults => Int, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::ListApplications>
 
@@ -609,7 +609,7 @@ information about applications, see Inspector Applications.
 
 
 
-=head2 ListAssessmentAgents([assessmentArn => Str, filter => Paws::Inspector::AgentsFilter, maxResults => Int, nextToken => Str])
+=head2 ListAssessmentAgents([assessmentArn => Str, filter => L<Paws::Inspector::AgentsFilter>, maxResults => Int, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::ListAssessmentAgents>
 
@@ -629,7 +629,7 @@ Lists the agents of the assessment specified by the assessment ARN.
 
 
 
-=head2 ListAssessments([applicationArns => ArrayRef[Str], filter => Paws::Inspector::AssessmentsFilter, maxResults => Int, nextToken => Str])
+=head2 ListAssessments([applicationArns => ArrayRef[Str], filter => L<Paws::Inspector::AssessmentsFilter>, maxResults => Int, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::ListAssessments>
 
@@ -650,7 +650,7 @@ applications' ARNs.
 
 
 
-=head2 ListAttachedAssessments([filter => Paws::Inspector::AssessmentsFilter, maxResults => Int, nextToken => Str, rulesPackageArn => Str])
+=head2 ListAttachedAssessments([filter => L<Paws::Inspector::AssessmentsFilter>, maxResults => Int, nextToken => Str, rulesPackageArn => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::ListAttachedAssessments>
 
@@ -692,7 +692,7 @@ assessment ARN.
 
 
 
-=head2 ListFindings([filter => Paws::Inspector::FindingsFilter, maxResults => Int, nextToken => Str, runArns => ArrayRef[Str]])
+=head2 ListFindings([filter => L<Paws::Inspector::FindingsFilter>, maxResults => Int, nextToken => Str, runArns => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::Inspector::ListFindings>
 
@@ -733,7 +733,7 @@ Lists all available Inspector rules packages.
 
 
 
-=head2 ListRuns([assessmentArns => ArrayRef[Str], filter => Paws::Inspector::RunsFilter, maxResults => Int, nextToken => Str])
+=head2 ListRuns([assessmentArns => ArrayRef[Str], filter => L<Paws::Inspector::RunsFilter>, maxResults => Int, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::ListRuns>
 
@@ -774,7 +774,7 @@ Lists all tags associated with a resource.
 
 
 
-=head2 LocalizeText([locale => Str, localizedTexts => ArrayRef[Paws::Inspector::LocalizedText]])
+=head2 LocalizeText([locale => Str, localizedTexts => ArrayRef[L<Paws::Inspector::LocalizedText>]])
 
 Each argument is described in detail in: L<Paws::Inspector::LocalizeText>
 
@@ -881,7 +881,7 @@ ARN.
 
 
 
-=head2 SetTagsForResource([resourceArn => Str, tags => ArrayRef[Paws::Inspector::Tag]])
+=head2 SetTagsForResource([resourceArn => Str, tags => ArrayRef[L<Paws::Inspector::Tag>]])
 
 Each argument is described in detail in: L<Paws::Inspector::SetTagsForResource>
 

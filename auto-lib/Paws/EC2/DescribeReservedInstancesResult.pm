@@ -13,7 +13,7 @@ Paws::EC2::DescribeReservedInstancesResult
 
 =head1 ATTRIBUTES
 
-=head2 ReservedInstances => ArrayRef[Paws::EC2::ReservedInstances]
+=head2 ReservedInstances => ArrayRef[L<Paws::EC2::ReservedInstances>]
 
   A list of Reserved Instances.
 

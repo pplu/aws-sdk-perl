@@ -47,7 +47,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
   The EC2 instance ID where the agent is installed that is used during
 the assessment that generates the finding.
 
-=head2 attributes => ArrayRef[Paws::Inspector::Attribute]
+=head2 attributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
   The system-defined attributes for the finding.
 
@@ -56,11 +56,11 @@ the assessment that generates the finding.
   The autoscaling group of the EC2 instance where the agent is installed
 that is used during the assessment that generates the finding.
 
-=head2 description => Paws::Inspector::LocalizedText
+=head2 description => L<Paws::Inspector::LocalizedText>
 
   The description of the finding.
 
-=head2 finding => Paws::Inspector::LocalizedText
+=head2 finding => L<Paws::Inspector::LocalizedText>
 
   A short description that identifies the finding.
 
@@ -68,7 +68,7 @@ that is used during the assessment that generates the finding.
 
   The ARN specifying the finding.
 
-=head2 recommendation => Paws::Inspector::LocalizedText
+=head2 recommendation => L<Paws::Inspector::LocalizedText>
 
   The recommendation for the finding.
 
@@ -89,7 +89,7 @@ that is used during the assessment that generates the finding.
   The finding severity. Values can be set to I<High>, I<Medium>, I<Low>,
 and I<Informational>.
 
-=head2 userAttributes => ArrayRef[Paws::Inspector::Attribute]
+=head2 userAttributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
   The user-defined attributes that are assigned to the finding.
 

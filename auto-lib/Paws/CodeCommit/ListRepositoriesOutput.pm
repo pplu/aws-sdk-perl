@@ -19,7 +19,7 @@ Paws::CodeCommit::ListRepositoriesOutput
 the operation. Batch sizes are 1,000 for list repository operations.
 When the client sends the token back to AWS CodeCommit, another page of
 1,000 records is retrieved.
-=head2 repositories => ArrayRef[Paws::CodeCommit::RepositoryNameIdPair]
+=head2 repositories => ArrayRef[L<Paws::CodeCommit::RepositoryNameIdPair>]
 
   Lists the repositories called by the list repositories operation.
 

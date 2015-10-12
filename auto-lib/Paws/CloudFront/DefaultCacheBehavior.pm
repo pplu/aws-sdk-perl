@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 ATTRIBUTES
 
-=head2 AllowedMethods => Paws::CloudFront::AllowedMethods
+=head2 AllowedMethods => L<Paws::CloudFront::AllowedMethods>
 
   
 
@@ -54,7 +54,7 @@ when your origin does not add HTTP headers such as Cache-Control
 max-age, Cache-Control s-maxage, and Expires to objects. You can
 specify a value from 0 to 3,153,600,000 seconds (100 years).
 
-=head2 B<REQUIRED> ForwardedValues => Paws::CloudFront::ForwardedValues
+=head2 B<REQUIRED> ForwardedValues => L<Paws::CloudFront::ForwardedValues>
 
   A complex type that specifies how CloudFront handles query strings,
 cookies and headers.
@@ -87,7 +87,7 @@ cache behavior. If so, specify true; if not, specify false.
 requests to when a request matches the path pattern either for a cache
 behavior or for the default cache behavior.
 
-=head2 B<REQUIRED> TrustedSigners => Paws::CloudFront::TrustedSigners
+=head2 B<REQUIRED> TrustedSigners => L<Paws::CloudFront::TrustedSigners>
 
   A complex type that specifies the AWS accounts, if any, that you want
 to allow to create signed URLs for private content. If you want to

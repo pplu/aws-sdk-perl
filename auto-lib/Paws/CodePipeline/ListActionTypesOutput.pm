@@ -13,7 +13,7 @@ Paws::CodePipeline::ListActionTypesOutput
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> actionTypes => ArrayRef[Paws::CodePipeline::ActionType]
+=head2 B<REQUIRED> actionTypes => ArrayRef[L<Paws::CodePipeline::ActionType>]
 
   Provides details of the action types.
 =head2 nextToken => Str

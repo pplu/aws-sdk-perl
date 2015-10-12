@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Server
 
   The contents of the public key certificate chain.
 
-=head2 B<REQUIRED> ServerCertificateMetadata => Paws::IAM::ServerCertificateMetadata
+=head2 B<REQUIRED> ServerCertificateMetadata => L<Paws::IAM::ServerCertificateMetadata>
 
   The meta information of the server certificate, such as its name, path,
 ID, and ARN.

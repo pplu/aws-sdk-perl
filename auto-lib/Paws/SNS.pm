@@ -235,7 +235,7 @@ only when the C<AuthenticateOnUnsubscribe> flag is set to "true".
 
 
 
-=head2 CreatePlatformApplication(Attributes => Paws::SNS::MapStringToString, Name => Str, Platform => Str)
+=head2 CreatePlatformApplication(Attributes => L<Paws::SNS::MapStringToString>, Name => Str, Platform => Str)
 
 Each argument is described in detail in: L<Paws::SNS::CreatePlatformApplication>
 
@@ -269,7 +269,7 @@ Amazon SNS Mobile Push Notifications.
 
 
 
-=head2 CreatePlatformEndpoint(PlatformApplicationArn => Str, Token => Str, [Attributes => Paws::SNS::MapStringToString, CustomUserData => Str])
+=head2 CreatePlatformEndpoint(PlatformApplicationArn => Str, Token => Str, [Attributes => L<Paws::SNS::MapStringToString>, CustomUserData => Str])
 
 Each argument is described in detail in: L<Paws::SNS::CreatePlatformEndpoint>
 
@@ -606,7 +606,7 @@ call to get further results.
 
 
 
-=head2 Publish(Message => Str, [MessageAttributes => Paws::SNS::MessageAttributeMap, MessageStructure => Str, Subject => Str, TargetArn => Str, TopicArn => Str])
+=head2 Publish(Message => Str, [MessageAttributes => L<Paws::SNS::MessageAttributeMap>, MessageStructure => Str, Subject => Str, TargetArn => Str, TopicArn => Str])
 
 Each argument is described in detail in: L<Paws::SNS::Publish>
 
@@ -656,7 +656,7 @@ Removes a statement from a topic's access control policy.
 
 
 
-=head2 SetEndpointAttributes(Attributes => Paws::SNS::MapStringToString, EndpointArn => Str)
+=head2 SetEndpointAttributes(Attributes => L<Paws::SNS::MapStringToString>, EndpointArn => Str)
 
 Each argument is described in detail in: L<Paws::SNS::SetEndpointAttributes>
 
@@ -678,7 +678,7 @@ information, see Using Amazon SNS Mobile Push Notifications.
 
 
 
-=head2 SetPlatformApplicationAttributes(Attributes => Paws::SNS::MapStringToString, PlatformApplicationArn => Str)
+=head2 SetPlatformApplicationAttributes(Attributes => L<Paws::SNS::MapStringToString>, PlatformApplicationArn => Str)
 
 Each argument is described in detail in: L<Paws::SNS::SetPlatformApplicationAttributes>
 

@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 DocumentFilterList => ArrayRef[Paws::SSM::DocumentFilter]
+=head2 DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>]
 
   One or more filters. Use a filter to return a more specific list of
 results.

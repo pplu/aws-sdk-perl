@@ -95,7 +95,7 @@ AWS Lambda functions.
 
   The list of tags associated with the new workflow execution.
 
-=head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
+=head2 B<REQUIRED> taskList => L<Paws::SimpleWorkflow::TaskList>
 
   
 
@@ -110,7 +110,7 @@ AWS Lambda functions.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-=head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
+=head2 B<REQUIRED> workflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
   
 

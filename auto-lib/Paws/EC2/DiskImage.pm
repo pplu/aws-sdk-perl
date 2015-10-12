@@ -37,11 +37,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::DiskIm
 
   A description of the disk image.
 
-=head2 Image => Paws::EC2::DiskImageDetail
+=head2 Image => L<Paws::EC2::DiskImageDetail>
 
   Information about the disk image.
 
-=head2 Volume => Paws::EC2::VolumeDetail
+=head2 Volume => L<Paws::EC2::VolumeDetail>
 
   Information about the volume.
 

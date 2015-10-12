@@ -45,7 +45,7 @@ account ID associated with the credentials used to sign the request. If
 you specify your account ID, do not include any hyphens (apos-apos) in
 the ID.
 
-=head2 Policy => Paws::Glacier::DataRetrievalPolicy
+=head2 Policy => L<Paws::Glacier::DataRetrievalPolicy>
 
   The data retrieval policy in JSON format.
 

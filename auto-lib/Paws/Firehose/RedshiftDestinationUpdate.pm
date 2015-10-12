@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::R
 
   The database connection string.
 
-=head2 CopyCommand => Paws::Firehose::CopyCommand
+=head2 CopyCommand => L<Paws::Firehose::CopyCommand>
 
   The C<COPY> command.
 
@@ -52,7 +52,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::R
 
   The ARN of the AWS credentials.
 
-=head2 S3Update => Paws::Firehose::S3DestinationUpdate
+=head2 S3Update => L<Paws::Firehose::S3DestinationUpdate>
 
   The Amazon S3 destination.
 

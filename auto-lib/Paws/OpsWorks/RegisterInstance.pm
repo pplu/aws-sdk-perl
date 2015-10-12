@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The instance's hostname.
 
-=head2 InstanceIdentity => Paws::OpsWorks::InstanceIdentity
+=head2 InstanceIdentity => L<Paws::OpsWorks::InstanceIdentity>
 
   An InstanceIdentity object that contains the instance's identity.
 

@@ -12,7 +12,7 @@ Paws::DeviceFarm::GetJobResult
 
 =head1 ATTRIBUTES
 
-=head2 job => Paws::DeviceFarm::Job
+=head2 job => L<Paws::DeviceFarm::Job>
 
   
 

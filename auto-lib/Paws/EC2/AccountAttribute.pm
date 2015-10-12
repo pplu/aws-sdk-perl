@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Accoun
 
   The name of the account attribute.
 
-=head2 AttributeValues => ArrayRef[Paws::EC2::AccountAttributeValue]
+=head2 AttributeValues => ArrayRef[L<Paws::EC2::AccountAttributeValue>]
 
   One or more values for the account attribute.
 

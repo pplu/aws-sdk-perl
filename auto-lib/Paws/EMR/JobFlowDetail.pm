@@ -49,15 +49,15 @@ job flow. For a list of AMI versions currently supported by Amazon
 ElasticMapReduce, go to AMI Versions Supported in Elastic MapReduce in
 the I<Amazon Elastic MapReduce Developer Guide.>
 
-=head2 BootstrapActions => ArrayRef[Paws::EMR::BootstrapActionDetail]
+=head2 BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionDetail>]
 
   A list of the bootstrap actions run by the job flow.
 
-=head2 B<REQUIRED> ExecutionStatusDetail => Paws::EMR::JobFlowExecutionStatusDetail
+=head2 B<REQUIRED> ExecutionStatusDetail => L<Paws::EMR::JobFlowExecutionStatusDetail>
 
   Describes the execution status of the job flow.
 
-=head2 B<REQUIRED> Instances => Paws::EMR::JobFlowInstancesDetail
+=head2 B<REQUIRED> Instances => L<Paws::EMR::JobFlowInstancesDetail>
 
   Describes the Amazon EC2 instances of the job flow.
 
@@ -83,7 +83,7 @@ instances of the job flow assume this role.
   The IAM role that will be assumed by the Amazon EMR service to access
 AWS resources on your behalf.
 
-=head2 Steps => ArrayRef[Paws::EMR::StepDetail]
+=head2 Steps => ArrayRef[L<Paws::EMR::StepDetail>]
 
   A list of steps run by the job flow.
 

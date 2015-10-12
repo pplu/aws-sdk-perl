@@ -50,7 +50,7 @@ Paws::DirectConnect::VirtualInterface
 =head2 ownerAccount => Str
 
   
-=head2 routeFilterPrefixes => ArrayRef[Paws::DirectConnect::RouteFilterPrefix]
+=head2 routeFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
 
   
 =head2 virtualGatewayId => Str

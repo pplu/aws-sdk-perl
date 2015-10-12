@@ -12,7 +12,7 @@ Paws::Inspector::DescribeRulesPackageResponse
 
 =head1 ATTRIBUTES
 
-=head2 rulesPackage => Paws::Inspector::RulesPackage
+=head2 rulesPackage => L<Paws::Inspector::RulesPackage>
 
   Information about the rules package.
 

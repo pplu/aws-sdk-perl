@@ -13,7 +13,7 @@ Paws::EMR::ListClustersOutput
 
 =head1 ATTRIBUTES
 
-=head2 Clusters => ArrayRef[Paws::EMR::ClusterSummary]
+=head2 Clusters => ArrayRef[L<Paws::EMR::ClusterSummary>]
 
   The list of clusters for the account based on the given filters.
 =head2 Marker => Str

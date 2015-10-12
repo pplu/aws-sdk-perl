@@ -13,7 +13,7 @@ Paws::RDS::DescribeEngineDefaultClusterParametersResult
 
 =head1 ATTRIBUTES
 
-=head2 EngineDefaults => Paws::RDS::EngineDefaults
+=head2 EngineDefaults => L<Paws::RDS::EngineDefaults>
 
   
 

@@ -764,7 +764,7 @@ destination.
 
 
 
-=head2 PutLogEvents(logEvents => ArrayRef[Paws::CloudWatchLogs::InputLogEvent], logGroupName => Str, logStreamName => Str, [sequenceToken => Str])
+=head2 PutLogEvents(logEvents => ArrayRef[L<Paws::CloudWatchLogs::InputLogEvent>], logGroupName => Str, logStreamName => Str, [sequenceToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutLogEvents>
 
@@ -809,7 +809,7 @@ their C<timestamp>.
 
 
 
-=head2 PutMetricFilter(filterName => Str, filterPattern => Str, logGroupName => Str, metricTransformations => ArrayRef[Paws::CloudWatchLogs::MetricTransformation])
+=head2 PutMetricFilter(filterName => Str, filterPattern => Str, logGroupName => Str, metricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutMetricFilter>
 

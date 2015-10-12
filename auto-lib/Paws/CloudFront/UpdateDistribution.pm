@@ -22,7 +22,7 @@ Paws::CloudFront::UpdateDistributionResult
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> DistributionConfig => Paws::CloudFront::DistributionConfig
+=head2 B<REQUIRED> DistributionConfig => L<Paws::CloudFront::DistributionConfig>
 
   The distribution's configuration information.
 =head2 B<REQUIRED> Id => Str

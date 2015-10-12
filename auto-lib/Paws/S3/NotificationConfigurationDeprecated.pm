@@ -29,15 +29,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 CloudFunctionConfiguration => Paws::S3::CloudFunctionConfiguration
+=head2 CloudFunctionConfiguration => L<Paws::S3::CloudFunctionConfiguration>
 
   
 
-=head2 QueueConfiguration => Paws::S3::QueueConfigurationDeprecated
+=head2 QueueConfiguration => L<Paws::S3::QueueConfigurationDeprecated>
 
   
 
-=head2 TopicConfiguration => Paws::S3::TopicConfigurationDeprecated
+=head2 TopicConfiguration => L<Paws::S3::TopicConfigurationDeprecated>
 
   
 

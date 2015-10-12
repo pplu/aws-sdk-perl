@@ -139,7 +139,7 @@ source cache cluster.
   The version of the cache engine version that is used by the source
 cache cluster.
 
-=head2 NodeSnapshots => ArrayRef[Paws::ElastiCache::NodeSnapshot]
+=head2 NodeSnapshots => ArrayRef[L<Paws::ElastiCache::NodeSnapshot>]
 
   A list of the cache nodes in the source cache cluster.
 

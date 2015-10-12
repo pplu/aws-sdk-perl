@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   IAM access policy as a JSON-formatted string.
 
-=head2 AdvancedOptions => Paws::ES::AdvancedOptions
+=head2 AdvancedOptions => L<Paws::ES::AdvancedOptions>
 
   Modifies the advanced option to allow references to indices in an HTTP
 request body. Must be C<false> when configuring access to individual
@@ -54,15 +54,15 @@ Advanced Options for more information.
 
   The name of the Elasticsearch domain that you are updating.
 
-=head2 EBSOptions => Paws::ES::EBSOptions
+=head2 EBSOptions => L<Paws::ES::EBSOptions>
 
   Specify the type and size of the EBS volume that you want to use.
 
-=head2 ElasticsearchClusterConfig => Paws::ES::ElasticsearchClusterConfig
+=head2 ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>
 
   The type and number of instances to instantiate for the domain cluster.
 
-=head2 SnapshotOptions => Paws::ES::SnapshotOptions
+=head2 SnapshotOptions => L<Paws::ES::SnapshotOptions>
 
   Option to set the time, in UTC format, for the daily automated
 snapshot. Default value is C<0> hours.

@@ -15,7 +15,7 @@ Paws::IAM::ListAccessKeysResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> AccessKeyMetadata => ArrayRef[Paws::IAM::AccessKeyMetadata]
+=head2 B<REQUIRED> AccessKeyMetadata => ArrayRef[L<Paws::IAM::AccessKeyMetadata>]
 
   A list of access key metadata.
 =head2 IsTruncated => Bool

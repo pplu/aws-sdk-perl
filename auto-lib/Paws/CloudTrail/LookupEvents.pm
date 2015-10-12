@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 are returned. If the specified end time is before the specified start
 time, an error is returned.
 
-=head2 LookupAttributes => ArrayRef[Paws::CloudTrail::LookupAttribute]
+=head2 LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>]
 
   Contains a list of lookup attributes. Currently the list can contain
 only one item.

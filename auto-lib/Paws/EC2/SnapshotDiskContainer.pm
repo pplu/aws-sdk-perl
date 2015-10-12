@@ -49,7 +49,7 @@ Valid values: C<RAW> | C<VHD> | C<VMDK> | C<OVA>
   The URL to the Amazon S3-based disk image being imported. It can either
 be a https URL (https://..) or an Amazon S3 URL (s3://..).
 
-=head2 UserBucket => Paws::EC2::UserBucket
+=head2 UserBucket => L<Paws::EC2::UserBucket>
 
   
 

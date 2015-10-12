@@ -674,7 +674,7 @@ string for the C<nextToken> parameter.
 
 
 
-=head2 PutConfigRule(ConfigRule => Paws::Config::ConfigRule)
+=head2 PutConfigRule(ConfigRule => L<Paws::Config::ConfigRule>)
 
 Each argument is described in detail in: L<Paws::Config::PutConfigRule>
 
@@ -727,7 +727,7 @@ Config Developer Guide>.
 
 
 
-=head2 PutConfigurationRecorder(ConfigurationRecorder => Paws::Config::ConfigurationRecorder)
+=head2 PutConfigurationRecorder(ConfigurationRecorder => L<Paws::Config::ConfigurationRecorder>)
 
 Each argument is described in detail in: L<Paws::Config::PutConfigurationRecorder>
 
@@ -758,7 +758,7 @@ types.
 
 
 
-=head2 PutDeliveryChannel(DeliveryChannel => Paws::Config::DeliveryChannel)
+=head2 PutDeliveryChannel(DeliveryChannel => L<Paws::Config::DeliveryChannel>)
 
 Each argument is described in detail in: L<Paws::Config::PutDeliveryChannel>
 
@@ -788,7 +788,7 @@ Currently, you can specify only one delivery channel per account.
 
 
 
-=head2 PutEvaluations(ResultToken => Str, [Evaluations => ArrayRef[Paws::Config::Evaluation]])
+=head2 PutEvaluations(ResultToken => Str, [Evaluations => ArrayRef[L<Paws::Config::Evaluation>]])
 
 Each argument is described in detail in: L<Paws::Config::PutEvaluations>
 

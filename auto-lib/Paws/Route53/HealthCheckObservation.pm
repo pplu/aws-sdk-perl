@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::He
   The IP address of the Route 53 health checker that performed the health
 check.
 
-=head2 StatusReport => Paws::Route53::StatusReport
+=head2 StatusReport => L<Paws::Route53::StatusReport>
 
   A complex type that contains information about the health check status
 for the current observation.

@@ -197,7 +197,7 @@ a hosted connection on the given interconnect.
 
 
 
-=head2 AllocatePrivateVirtualInterface(connectionId => Str, newPrivateVirtualInterfaceAllocation => Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation, ownerAccount => Str)
+=head2 AllocatePrivateVirtualInterface(connectionId => Str, newPrivateVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation>, ownerAccount => Str)
 
 Each argument is described in detail in: L<Paws::DirectConnect::AllocatePrivateVirtualInterface>
 
@@ -226,7 +226,7 @@ Until this step has been completed, the virtual interface will be in
 
 
 
-=head2 AllocatePublicVirtualInterface(connectionId => Str, newPublicVirtualInterfaceAllocation => Paws::DirectConnect::NewPublicVirtualInterfaceAllocation, ownerAccount => Str)
+=head2 AllocatePublicVirtualInterface(connectionId => Str, newPublicVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPublicVirtualInterfaceAllocation>, ownerAccount => Str)
 
 Each argument is described in detail in: L<Paws::DirectConnect::AllocatePublicVirtualInterface>
 
@@ -395,7 +395,7 @@ using the VLAN assigned to them by the AWS Direct Connect partner.
 
 
 
-=head2 CreatePrivateVirtualInterface(connectionId => Str, newPrivateVirtualInterface => Paws::DirectConnect::NewPrivateVirtualInterface)
+=head2 CreatePrivateVirtualInterface(connectionId => Str, newPrivateVirtualInterface => L<Paws::DirectConnect::NewPrivateVirtualInterface>)
 
 Each argument is described in detail in: L<Paws::DirectConnect::CreatePrivateVirtualInterface>
 
@@ -418,7 +418,7 @@ interface supports sending traffic to a single virtual private cloud
 
 
 
-=head2 CreatePublicVirtualInterface(connectionId => Str, newPublicVirtualInterface => Paws::DirectConnect::NewPublicVirtualInterface)
+=head2 CreatePublicVirtualInterface(connectionId => Str, newPublicVirtualInterface => L<Paws::DirectConnect::NewPublicVirtualInterface>)
 
 Each argument is described in detail in: L<Paws::DirectConnect::CreatePublicVirtualInterface>
 

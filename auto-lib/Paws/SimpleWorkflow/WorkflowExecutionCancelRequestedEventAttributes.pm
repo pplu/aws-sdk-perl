@@ -49,7 +49,7 @@ found in the history of the source workflow execution. This information
 can be useful for diagnosing problems by tracing back the chain of
 events leading up to this event.
 
-=head2 externalWorkflowExecution => Paws::SimpleWorkflow::WorkflowExecution
+=head2 externalWorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The external workflow execution for which the cancellation was
 requested.

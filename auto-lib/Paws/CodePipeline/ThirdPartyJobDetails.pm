@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 ATTRIBUTES
 
-=head2 data => Paws::CodePipeline::ThirdPartyJobData
+=head2 data => L<Paws::CodePipeline::ThirdPartyJobData>
 
   The data to be returned by the third party job worker.
 

@@ -340,7 +340,7 @@ partner actions.
 
 
 
-=head2 CreateCustomActionType(category => Str, inputArtifactDetails => Paws::CodePipeline::ArtifactDetails, outputArtifactDetails => Paws::CodePipeline::ArtifactDetails, provider => Str, version => Str, [configurationProperties => ArrayRef[Paws::CodePipeline::ActionConfigurationProperty], settings => Paws::CodePipeline::ActionTypeSettings])
+=head2 CreateCustomActionType(category => Str, inputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>, outputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>, provider => Str, version => Str, [configurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>], settings => L<Paws::CodePipeline::ActionTypeSettings>])
 
 Each argument is described in detail in: L<Paws::CodePipeline::CreateCustomActionType>
 
@@ -361,7 +361,7 @@ associated with the AWS account. Only used for custom actions.
 
 
 
-=head2 CreatePipeline(pipeline => Paws::CodePipeline::PipelineDeclaration)
+=head2 CreatePipeline(pipeline => L<Paws::CodePipeline::PipelineDeclaration>)
 
 Each argument is described in detail in: L<Paws::CodePipeline::CreatePipeline>
 
@@ -605,7 +605,7 @@ Gets a summary of all of the pipelines associated with your account.
 
 
 
-=head2 PollForJobs(actionTypeId => Paws::CodePipeline::ActionTypeId, [maxBatchSize => Int, queryParam => Paws::CodePipeline::QueryParamMap])
+=head2 PollForJobs(actionTypeId => L<Paws::CodePipeline::ActionTypeId>, [maxBatchSize => Int, queryParam => L<Paws::CodePipeline::QueryParamMap>])
 
 Each argument is described in detail in: L<Paws::CodePipeline::PollForJobs>
 
@@ -631,7 +631,7 @@ the action.
 
 
 
-=head2 PollForThirdPartyJobs(actionTypeId => Paws::CodePipeline::ActionTypeId, [maxBatchSize => Int])
+=head2 PollForThirdPartyJobs(actionTypeId => L<Paws::CodePipeline::ActionTypeId>, [maxBatchSize => Int])
 
 Each argument is described in detail in: L<Paws::CodePipeline::PollForThirdPartyJobs>
 
@@ -657,7 +657,7 @@ artifacts.
 
 
 
-=head2 PutActionRevision(actionName => Str, actionRevision => Paws::CodePipeline::ActionRevision, pipelineName => Str, stageName => Str)
+=head2 PutActionRevision(actionName => Str, actionRevision => L<Paws::CodePipeline::ActionRevision>, pipelineName => Str, stageName => Str)
 
 Each argument is described in detail in: L<Paws::CodePipeline::PutActionRevision>
 
@@ -678,7 +678,7 @@ source.
 
 
 
-=head2 PutJobFailureResult(failureDetails => Paws::CodePipeline::FailureDetails, jobId => Str)
+=head2 PutJobFailureResult(failureDetails => L<Paws::CodePipeline::FailureDetails>, jobId => Str)
 
 Each argument is described in detail in: L<Paws::CodePipeline::PutJobFailureResult>
 
@@ -699,7 +699,7 @@ worker. Only used for custom actions.
 
 
 
-=head2 PutJobSuccessResult(jobId => Str, [continuationToken => Str, currentRevision => Paws::CodePipeline::CurrentRevision, executionDetails => Paws::CodePipeline::ExecutionDetails])
+=head2 PutJobSuccessResult(jobId => Str, [continuationToken => Str, currentRevision => L<Paws::CodePipeline::CurrentRevision>, executionDetails => L<Paws::CodePipeline::ExecutionDetails>])
 
 Each argument is described in detail in: L<Paws::CodePipeline::PutJobSuccessResult>
 
@@ -720,7 +720,7 @@ worker. Only used for custom actions.
 
 
 
-=head2 PutThirdPartyJobFailureResult(clientToken => Str, failureDetails => Paws::CodePipeline::FailureDetails, jobId => Str)
+=head2 PutThirdPartyJobFailureResult(clientToken => Str, failureDetails => L<Paws::CodePipeline::FailureDetails>, jobId => Str)
 
 Each argument is described in detail in: L<Paws::CodePipeline::PutThirdPartyJobFailureResult>
 
@@ -741,7 +741,7 @@ by a job worker. Only used for partner actions.
 
 
 
-=head2 PutThirdPartyJobSuccessResult(clientToken => Str, jobId => Str, [continuationToken => Str, currentRevision => Paws::CodePipeline::CurrentRevision, executionDetails => Paws::CodePipeline::ExecutionDetails])
+=head2 PutThirdPartyJobSuccessResult(clientToken => Str, jobId => Str, [continuationToken => Str, currentRevision => L<Paws::CodePipeline::CurrentRevision>, executionDetails => L<Paws::CodePipeline::ExecutionDetails>])
 
 Each argument is described in detail in: L<Paws::CodePipeline::PutThirdPartyJobSuccessResult>
 
@@ -783,7 +783,7 @@ latest commit to the source location specified as part of the pipeline.
 
 
 
-=head2 UpdatePipeline(pipeline => Paws::CodePipeline::PipelineDeclaration)
+=head2 UpdatePipeline(pipeline => L<Paws::CodePipeline::PipelineDeclaration>)
 
 Each argument is described in detail in: L<Paws::CodePipeline::UpdatePipeline>
 

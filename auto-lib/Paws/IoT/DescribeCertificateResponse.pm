@@ -13,7 +13,7 @@ Paws::IoT::DescribeCertificateResponse
 
 =head1 ATTRIBUTES
 
-=head2 certificateDescription => Paws::IoT::CertificateDescription
+=head2 certificateDescription => L<Paws::IoT::CertificateDescription>
 
   The description of the certificate.
 

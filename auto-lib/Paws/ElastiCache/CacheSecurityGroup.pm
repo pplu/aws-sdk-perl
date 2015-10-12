@@ -42,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   The description of the cache security group.
 
-=head2 EC2SecurityGroups => ArrayRef[Paws::ElastiCache::EC2SecurityGroup]
+=head2 EC2SecurityGroups => ArrayRef[L<Paws::ElastiCache::EC2SecurityGroup>]
 
   A list of Amazon EC2 security groups that are associated with this
 cache security group.

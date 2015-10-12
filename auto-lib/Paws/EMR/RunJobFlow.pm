@@ -74,26 +74,26 @@ For details about the AMI versions currently supported by Amazon
 Elastic MapReduce, go to AMI Versions Supported in Elastic MapReduce in
 the I<Amazon Elastic MapReduce Developer's Guide.>
 
-=head2 Applications => ArrayRef[Paws::EMR::Application]
+=head2 Applications => ArrayRef[L<Paws::EMR::Application>]
 
   Amazon EMR releases 4.x or later.
 
 A list of applications for the cluster. Valid values are: "Hadoop",
 "Hive", "Mahout", "Pig", and "Spark." They are case insensitive.
 
-=head2 BootstrapActions => ArrayRef[Paws::EMR::BootstrapActionConfig]
+=head2 BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>]
 
   A list of bootstrap actions that will be run before Hadoop is started
 on the cluster nodes.
 
-=head2 Configurations => ArrayRef[Paws::EMR::Configuration]
+=head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
 
   Amazon EMR releases 4.x or later.
 
 The list of configurations supplied for the EMR cluster you are
 creating.
 
-=head2 B<REQUIRED> Instances => Paws::EMR::JobFlowInstancesConfig
+=head2 B<REQUIRED> Instances => L<Paws::EMR::JobFlowInstancesConfig>
 
   A specification of the number and type of Amazon EC2 instances on which
 to run the job flow.
@@ -113,7 +113,7 @@ value is not provided, logs are not created.
 
   The name of the job flow.
 
-=head2 NewSupportedProducts => ArrayRef[Paws::EMR::SupportedProductConfig]
+=head2 NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>]
 
   For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
 greater, use Applications.
@@ -160,7 +160,7 @@ The release label for the Amazon EMR release. For Amazon EMR 3.x and
   The IAM role that will be assumed by the Amazon EMR service to access
 AWS resources on your behalf.
 
-=head2 Steps => ArrayRef[Paws::EMR::StepConfig]
+=head2 Steps => ArrayRef[L<Paws::EMR::StepConfig>]
 
   A list of steps to be executed by the job flow.
 
@@ -181,7 +181,7 @@ Amazon EMR. Currently supported values are:
 
 =back
 
-=head2 Tags => ArrayRef[Paws::EMR::Tag]
+=head2 Tags => ArrayRef[L<Paws::EMR::Tag>]
 
   A list of tags to associate with a cluster and propagate to Amazon EC2
 instances.

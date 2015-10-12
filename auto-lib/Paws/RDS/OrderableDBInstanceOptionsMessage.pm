@@ -20,7 +20,7 @@ Paws::RDS::OrderableDBInstanceOptionsMessage
 OrderableDBInstanceOptions request. If this parameter is specified, the
 response includes only records beyond the marker, up to the value
 specified by C<MaxRecords> .
-=head2 OrderableDBInstanceOptions => ArrayRef[Paws::RDS::OrderableDBInstanceOption]
+=head2 OrderableDBInstanceOptions => ArrayRef[L<Paws::RDS::OrderableDBInstanceOption>]
 
   An OrderableDBInstanceOption structure containing information about
 orderable options for the DB instance.

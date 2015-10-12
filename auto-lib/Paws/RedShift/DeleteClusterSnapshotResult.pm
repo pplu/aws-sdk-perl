@@ -13,7 +13,7 @@ Paws::RedShift::DeleteClusterSnapshotResult
 
 =head1 ATTRIBUTES
 
-=head2 Snapshot => Paws::RedShift::Snapshot
+=head2 Snapshot => L<Paws::RedShift::Snapshot>
 
   
 

@@ -45,7 +45,7 @@ previous request to create a distribution but the content of any Path
 is different from the original request, CloudFront returns an
 InvalidationBatchAlreadyExists error.
 
-=head2 B<REQUIRED> Paths => Paws::CloudFront::Paths
+=head2 B<REQUIRED> Paths => L<Paws::CloudFront::Paths>
 
   The path of the object to invalidate. The path is relative to the
 distribution and must begin with a slash (/). You must enclose each

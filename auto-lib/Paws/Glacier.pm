@@ -321,7 +321,7 @@ state or if there is no policy associated with the vault.
 
 
 
-=head2 AddTagsToVault(accountId => Str, vaultName => Str, [Tags => Paws::Glacier::TagMap])
+=head2 AddTagsToVault(accountId => Str, vaultName => Str, [Tags => L<Paws::Glacier::TagMap>])
 
 Each argument is described in detail in: L<Paws::Glacier::AddTagsToVault>
 
@@ -939,7 +939,7 @@ Configuration in the I<Amazon Glacier Developer Guide>.
 
 
 
-=head2 InitiateJob(accountId => Str, vaultName => Str, [jobParameters => Paws::Glacier::JobParameters])
+=head2 InitiateJob(accountId => Str, vaultName => Str, [jobParameters => L<Paws::Glacier::JobParameters>])
 
 Each argument is described in detail in: L<Paws::Glacier::InitiateJob>
 
@@ -1153,7 +1153,7 @@ Upload in the I<Amazon Glacier Developer Guide>.
 
 
 
-=head2 InitiateVaultLock(accountId => Str, vaultName => Str, [policy => Paws::Glacier::VaultLockPolicy])
+=head2 InitiateVaultLock(accountId => Str, vaultName => Str, [policy => L<Paws::Glacier::VaultLockPolicy>])
 
 Each argument is described in detail in: L<Paws::Glacier::InitiateVaultLock>
 
@@ -1456,7 +1456,7 @@ successful, even if there are no tags attached to the vault.
 
 
 
-=head2 SetDataRetrievalPolicy(accountId => Str, [Policy => Paws::Glacier::DataRetrievalPolicy])
+=head2 SetDataRetrievalPolicy(accountId => Str, [Policy => L<Paws::Glacier::DataRetrievalPolicy>])
 
 Each argument is described in detail in: L<Paws::Glacier::SetDataRetrievalPolicy>
 
@@ -1483,7 +1483,7 @@ retrieval policies, see Amazon Glacier Data Retrieval Policies.
 
 
 
-=head2 SetVaultAccessPolicy(accountId => Str, vaultName => Str, [policy => Paws::Glacier::VaultAccessPolicy])
+=head2 SetVaultAccessPolicy(accountId => Str, vaultName => Str, [policy => L<Paws::Glacier::VaultAccessPolicy>])
 
 Each argument is described in detail in: L<Paws::Glacier::SetVaultAccessPolicy>
 
@@ -1509,7 +1509,7 @@ policies, see Amazon Glacier Access Control with Vault Access Policies.
 
 
 
-=head2 SetVaultNotifications(accountId => Str, vaultName => Str, [vaultNotificationConfig => Paws::Glacier::VaultNotificationConfig])
+=head2 SetVaultNotifications(accountId => Str, vaultName => Str, [vaultNotificationConfig => L<Paws::Glacier::VaultNotificationConfig>])
 
 Each argument is described in detail in: L<Paws::Glacier::SetVaultNotifications>
 

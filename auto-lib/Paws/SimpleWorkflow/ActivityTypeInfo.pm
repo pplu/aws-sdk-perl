@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> activityType => Paws::SimpleWorkflow::ActivityType
+=head2 B<REQUIRED> activityType => L<Paws::SimpleWorkflow::ActivityType>
 
   The ActivityType type structure representing the activity type.
 

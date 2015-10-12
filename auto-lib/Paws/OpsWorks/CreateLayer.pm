@@ -48,7 +48,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => Paws::OpsWorks::LayerAttributes
+=head2 Attributes => L<Paws::OpsWorks::LayerAttributes>
 
   One or more user-defined key-value pairs to be added to the stack
 attributes.
@@ -78,7 +78,7 @@ more information about IAM ARNs, see Using Identifiers.
 deployment attributes to be installed on the layer's instances. For
 more information, see Using Custom JSON.
 
-=head2 CustomRecipes => Paws::OpsWorks::Recipes
+=head2 CustomRecipes => L<Paws::OpsWorks::Recipes>
 
   A C<LayerCustomRecipes> object that specifies the layer custom recipes.
 
@@ -102,7 +102,7 @@ C<update_dependencies> stack command or by manually running C<yum>
 To ensure that your instances have the latest security updates, we
 strongly recommend using the default value of C<true>.
 
-=head2 LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration
+=head2 LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>
 
   A C<LifeCycleEventConfiguration> object that you can use to configure
 the Shutdown event to specify an execution timeout and enable or
@@ -140,7 +140,7 @@ same type. It can have any number of custom layers.
 
   Whether to use Amazon EBS-optimized instances.
 
-=head2 VolumeConfigurations => ArrayRef[Paws::OpsWorks::VolumeConfiguration]
+=head2 VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]
 
   A C<VolumeConfigurations> object that describes the layer's Amazon EBS
 volumes.

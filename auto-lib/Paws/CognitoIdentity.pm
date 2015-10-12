@@ -177,7 +177,7 @@ Mobile SDK. To learn more, see the AWS Mobile SDK Developer Guide.
 
 =head1 METHODS
 
-=head2 CreateIdentityPool(AllowUnauthenticatedIdentities => Bool, IdentityPoolName => Str, [DeveloperProviderName => Str, OpenIdConnectProviderARNs => ArrayRef[Str], SupportedLoginProviders => Paws::CognitoIdentity::IdentityProviders])
+=head2 CreateIdentityPool(AllowUnauthenticatedIdentities => Bool, IdentityPoolName => Str, [DeveloperProviderName => Str, OpenIdConnectProviderARNs => ArrayRef[Str], SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::CreateIdentityPool>
 
@@ -308,7 +308,7 @@ You must use AWS Developer credentials to call this API.
 
 
 
-=head2 GetCredentialsForIdentity(IdentityId => Str, [Logins => Paws::CognitoIdentity::LoginsMap])
+=head2 GetCredentialsForIdentity(IdentityId => Str, [Logins => L<Paws::CognitoIdentity::LoginsMap>])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::GetCredentialsForIdentity>
 
@@ -333,7 +333,7 @@ This is a public API. You do not need any credentials to call this API.
 
 
 
-=head2 GetId(IdentityPoolId => Str, [AccountId => Str, Logins => Paws::CognitoIdentity::LoginsMap])
+=head2 GetId(IdentityPoolId => Str, [AccountId => Str, Logins => L<Paws::CognitoIdentity::LoginsMap>])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::GetId>
 
@@ -378,7 +378,7 @@ You must use AWS Developer credentials to call this API.
 
 
 
-=head2 GetOpenIdToken(IdentityId => Str, [Logins => Paws::CognitoIdentity::LoginsMap])
+=head2 GetOpenIdToken(IdentityId => Str, [Logins => L<Paws::CognitoIdentity::LoginsMap>])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::GetOpenIdToken>
 
@@ -404,7 +404,7 @@ This is a public API. You do not need any credentials to call this API.
 
 
 
-=head2 GetOpenIdTokenForDeveloperIdentity(IdentityPoolId => Str, Logins => Paws::CognitoIdentity::LoginsMap, [IdentityId => Str, TokenDuration => Int])
+=head2 GetOpenIdTokenForDeveloperIdentity(IdentityPoolId => Str, Logins => L<Paws::CognitoIdentity::LoginsMap>, [IdentityId => Str, TokenDuration => Int])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentity>
 
@@ -545,7 +545,7 @@ You must use AWS Developer credentials to call this API.
 
 
 
-=head2 SetIdentityPoolRoles(IdentityPoolId => Str, Roles => Paws::CognitoIdentity::RolesMap)
+=head2 SetIdentityPoolRoles(IdentityPoolId => Str, Roles => L<Paws::CognitoIdentity::RolesMap>)
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::SetIdentityPoolRoles>
 
@@ -594,7 +594,7 @@ You must use AWS Developer credentials to call this API.
 
 
 
-=head2 UnlinkIdentity(IdentityId => Str, Logins => Paws::CognitoIdentity::LoginsMap, LoginsToRemove => ArrayRef[Str])
+=head2 UnlinkIdentity(IdentityId => Str, Logins => L<Paws::CognitoIdentity::LoginsMap>, LoginsToRemove => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::UnlinkIdentity>
 
@@ -618,7 +618,7 @@ This is a public API. You do not need any credentials to call this API.
 
 
 
-=head2 UpdateIdentityPool(AllowUnauthenticatedIdentities => Bool, IdentityPoolId => Str, IdentityPoolName => Str, [DeveloperProviderName => Str, OpenIdConnectProviderARNs => ArrayRef[Str], SupportedLoginProviders => Paws::CognitoIdentity::IdentityProviders])
+=head2 UpdateIdentityPool(AllowUnauthenticatedIdentities => Bool, IdentityPoolId => Str, IdentityPoolName => Str, [DeveloperProviderName => Str, OpenIdConnectProviderARNs => ArrayRef[Str], SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::UpdateIdentityPool>
 

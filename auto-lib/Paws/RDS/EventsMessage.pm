@@ -14,7 +14,7 @@ Paws::RDS::EventsMessage
 
 =head1 ATTRIBUTES
 
-=head2 Events => ArrayRef[Paws::RDS::Event]
+=head2 Events => ArrayRef[L<Paws::RDS::Event>]
 
   A list of Event instances.
 =head2 Marker => Str

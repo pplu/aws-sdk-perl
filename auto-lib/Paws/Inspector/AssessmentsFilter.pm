@@ -55,21 +55,21 @@ property of the Assessment data type.
 property must be the exact match of the value of the B<dataCollected>
 property of the Assessment data type.
 
-=head2 durationRange => Paws::Inspector::DurationRange
+=head2 durationRange => L<Paws::Inspector::DurationRange>
 
   For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum
 and maximum values of the B<durationInSeconds> property of the
 Assessment data type.
 
-=head2 endTimeRange => Paws::Inspector::TimestampRange
+=head2 endTimeRange => L<Paws::Inspector::TimestampRange>
 
   For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum
 and maximum values of the B<endTime> property of the Assessment data
 type.
 
-=head2 startTimeRange => Paws::Inspector::TimestampRange
+=head2 startTimeRange => L<Paws::Inspector::TimestampRange>
 
   For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum

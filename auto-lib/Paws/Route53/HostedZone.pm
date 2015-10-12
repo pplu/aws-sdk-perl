@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ho
 
   A unique string that identifies the request to create the hosted zone.
 
-=head2 Config => Paws::Route53::HostedZoneConfig
+=head2 Config => L<Paws::Route53::HostedZoneConfig>
 
   A complex type that contains the C<Comment> element.
 

@@ -406,7 +406,7 @@ configure as cache.
 
 
 
-=head2 AddTagsToResource(ResourceARN => Str, Tags => ArrayRef[Paws::StorageGateway::Tag])
+=head2 AddTagsToResource(ResourceARN => Str, Tags => ArrayRef[L<Paws::StorageGateway::Tag>])
 
 Each argument is described in detail in: L<Paws::StorageGateway::AddTagsToResource>
 

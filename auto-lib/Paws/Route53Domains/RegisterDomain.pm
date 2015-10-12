@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> AdminContact => Paws::Route53Domains::ContactDetail
+=head2 B<REQUIRED> AdminContact => L<Paws::Route53Domains::ContactDetail>
 
   Provides detailed contact information.
 
@@ -145,7 +145,7 @@ Valid values: C<true> | C<false>
 
 Required: No
 
-=head2 B<REQUIRED> RegistrantContact => Paws::Route53Domains::ContactDetail
+=head2 B<REQUIRED> RegistrantContact => L<Paws::Route53Domains::ContactDetail>
 
   Provides detailed contact information.
 
@@ -158,7 +158,7 @@ C<ExtraParams>
 
 Required: Yes
 
-=head2 B<REQUIRED> TechContact => Paws::Route53Domains::ContactDetail
+=head2 B<REQUIRED> TechContact => L<Paws::Route53Domains::ContactDetail>
 
   Provides detailed contact information.
 

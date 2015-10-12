@@ -42,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
   Bid price for each Amazon EC2 instance in the instance group when
 launching nodes as Spot Instances, expressed in USD.
 
-=head2 Configurations => ArrayRef[Paws::EMR::Configuration]
+=head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
 
   Amazon EMR releases 4.x or later.
 

@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Website
 
 =head1 ATTRIBUTES
 
-=head2 ErrorDocument => Paws::S3::ErrorDocument
+=head2 ErrorDocument => L<Paws::S3::ErrorDocument>
 
   
 
-=head2 IndexDocument => Paws::S3::IndexDocument
+=head2 IndexDocument => L<Paws::S3::IndexDocument>
 
   
 
-=head2 RedirectAllRequestsTo => Paws::S3::RedirectAllRequestsTo
+=head2 RedirectAllRequestsTo => L<Paws::S3::RedirectAllRequestsTo>
 
   
 
-=head2 RoutingRules => ArrayRef[Paws::S3::RoutingRule]
+=head2 RoutingRules => ArrayRef[L<Paws::S3::RoutingRule>]
 
   
 

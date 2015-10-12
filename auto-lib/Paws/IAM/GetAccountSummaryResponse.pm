@@ -13,7 +13,7 @@ Paws::IAM::GetAccountSummaryResponse
 
 =head1 ATTRIBUTES
 
-=head2 SummaryMap => Paws::IAM::summaryMapType
+=head2 SummaryMap => L<Paws::IAM::summaryMapType>
 
   A set of key value pairs containing information about IAM entity usage
 and IAM quotas.

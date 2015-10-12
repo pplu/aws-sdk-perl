@@ -49,7 +49,7 @@ You must specify at least one Availability Zone.
 You can add more Availability Zones after you create the load balancer
 using EnableAvailabilityZonesForLoadBalancer.
 
-=head2 B<REQUIRED> Listeners => ArrayRef[Paws::ELB::Listener]
+=head2 B<REQUIRED> Listeners => ArrayRef[L<Paws::ELB::Listener>]
 
   The listeners.
 
@@ -87,7 +87,7 @@ that resolves to private IP addresses.
 Specify one subnet per Availability Zone specified in
 C<AvailabilityZones>.
 
-=head2 Tags => ArrayRef[Paws::ELB::Tag]
+=head2 Tags => ArrayRef[L<Paws::ELB::Tag>]
 
   A list of tags to assign to the load balancer.
 

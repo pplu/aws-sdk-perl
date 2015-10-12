@@ -12,7 +12,7 @@ Paws::DynamoDB::DeleteTableOutput
 
 =head1 ATTRIBUTES
 
-=head2 TableDescription => Paws::DynamoDB::TableDescription
+=head2 TableDescription => L<Paws::DynamoDB::TableDescription>
 
   
 

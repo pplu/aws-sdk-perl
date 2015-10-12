@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Co
 
 =head1 ATTRIBUTES
 
-=head2 attachmentSet => ArrayRef[Paws::Support::AttachmentDetails]
+=head2 attachmentSet => ArrayRef[L<Paws::Support::AttachmentDetails>]
 
   Information about the attachments to the case communication.
 

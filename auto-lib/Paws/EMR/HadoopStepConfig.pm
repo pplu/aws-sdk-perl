@@ -49,7 +49,7 @@ function for execution.
 specified, the JAR file should specify a main class in its manifest
 file.
 
-=head2 Properties => Paws::EMR::StringMap
+=head2 Properties => L<Paws::EMR::StringMap>
 
   The list of Java properties that are set when the step runs. You can
 use these properties to pass key value pairs to your main function.

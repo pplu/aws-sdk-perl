@@ -13,7 +13,7 @@ Paws::EC2::AcceptVpcPeeringConnectionResult
 
 =head1 ATTRIBUTES
 
-=head2 VpcPeeringConnection => Paws::EC2::VpcPeeringConnection
+=head2 VpcPeeringConnection => L<Paws::EC2::VpcPeeringConnection>
 
   Information about the VPC peering connection.
 

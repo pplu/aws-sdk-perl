@@ -29,7 +29,7 @@ Paws::CloudFront::UpdateStreamingDistributionResult
 
   The value of the ETag header you received when retrieving the streaming
 distribution's configuration. For example: E2QWRUHAPOMQZL.
-=head2 B<REQUIRED> StreamingDistributionConfig => Paws::CloudFront::StreamingDistributionConfig
+=head2 B<REQUIRED> StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>
 
   The streaming distribution's configuration information.
 

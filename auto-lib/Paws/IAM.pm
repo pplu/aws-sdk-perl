@@ -3310,7 +3310,7 @@ Inline Policies in the I<IAM User Guide>.
 
 
 
-=head2 SimulateCustomPolicy(ActionNames => ArrayRef[Str], PolicyInputList => ArrayRef[Str], [ContextEntries => ArrayRef[Paws::IAM::ContextEntry], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str]])
+=head2 SimulateCustomPolicy(ActionNames => ArrayRef[Str], PolicyInputList => ArrayRef[Str], [ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::IAM::SimulateCustomPolicy>
 
@@ -3348,7 +3348,7 @@ C<MaxItems> and C<Marker> parameters.
 
 
 
-=head2 SimulatePrincipalPolicy(ActionNames => ArrayRef[Str], PolicySourceArn => Str, [ContextEntries => ArrayRef[Paws::IAM::ContextEntry], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str], ResourceArns => ArrayRef[Str]])
+=head2 SimulatePrincipalPolicy(ActionNames => ArrayRef[Str], PolicySourceArn => Str, [ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str], ResourceArns => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::IAM::SimulatePrincipalPolicy>
 

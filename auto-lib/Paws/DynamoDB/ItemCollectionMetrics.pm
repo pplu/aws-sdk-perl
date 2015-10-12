@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::I
 
 =head1 ATTRIBUTES
 
-=head2 ItemCollectionKey => Paws::DynamoDB::ItemCollectionKeyAttributeMap
+=head2 ItemCollectionKey => L<Paws::DynamoDB::ItemCollectionKeyAttributeMap>
 
   The hash key value of the item collection. This value is the same as
 the hash key of the item.

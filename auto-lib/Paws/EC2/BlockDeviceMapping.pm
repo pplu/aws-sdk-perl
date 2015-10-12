@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::BlockD
   The device name exposed to the instance (for example, C</dev/sdh> or
 C<xvdh>).
 
-=head2 Ebs => Paws::EC2::EbsBlockDevice
+=head2 Ebs => L<Paws::EC2::EbsBlockDevice>
 
   Parameters used to automatically set up EBS volumes when the instance
 is launched.

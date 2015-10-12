@@ -38,15 +38,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 ATTRIBUTES
 
-=head2 actionConfiguration => Paws::CodePipeline::ActionConfiguration
+=head2 actionConfiguration => L<Paws::CodePipeline::ActionConfiguration>
 
   
 
-=head2 actionTypeId => Paws::CodePipeline::ActionTypeId
+=head2 actionTypeId => L<Paws::CodePipeline::ActionTypeId>
 
   
 
-=head2 artifactCredentials => Paws::CodePipeline::AWSSessionCredentials
+=head2 artifactCredentials => L<Paws::CodePipeline::AWSSessionCredentials>
 
   
 
@@ -55,19 +55,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
   A system-generated token, such as a AWS CodeDeploy deployment ID, that
 a job requires in order to continue the job asynchronously.
 
-=head2 encryptionKey => Paws::CodePipeline::EncryptionKey
+=head2 encryptionKey => L<Paws::CodePipeline::EncryptionKey>
 
   
 
-=head2 inputArtifacts => ArrayRef[Paws::CodePipeline::Artifact]
+=head2 inputArtifacts => ArrayRef[L<Paws::CodePipeline::Artifact>]
 
   The artifact supplied to the job.
 
-=head2 outputArtifacts => ArrayRef[Paws::CodePipeline::Artifact]
+=head2 outputArtifacts => ArrayRef[L<Paws::CodePipeline::Artifact>]
 
   The output of the job.
 
-=head2 pipelineContext => Paws::CodePipeline::PipelineContext
+=head2 pipelineContext => L<Paws::CodePipeline::PipelineContext>
 
   
 

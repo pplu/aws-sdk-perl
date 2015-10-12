@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> GeoRestriction => Paws::CloudFront::GeoRestriction
+=head2 B<REQUIRED> GeoRestriction => L<Paws::CloudFront::GeoRestriction>
 
   
 

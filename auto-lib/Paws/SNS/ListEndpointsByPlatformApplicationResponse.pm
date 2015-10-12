@@ -14,7 +14,7 @@ Paws::SNS::ListEndpointsByPlatformApplicationResponse
 
 =head1 ATTRIBUTES
 
-=head2 Endpoints => ArrayRef[Paws::SNS::Endpoint]
+=head2 Endpoints => ArrayRef[L<Paws::SNS::Endpoint>]
 
   Endpoints returned for ListEndpointsByPlatformApplication action.
 =head2 NextToken => Str

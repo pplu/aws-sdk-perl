@@ -53,7 +53,7 @@ Example: myreservationID
 
 Example: 438012d3-4052-4cc7-b2e3-8d3372e0e706
 
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 

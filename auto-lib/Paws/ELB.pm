@@ -206,7 +206,7 @@ succeeds with a 200 OK response code.
 
 =head1 METHODS
 
-=head2 AddTags(LoadBalancerNames => ArrayRef[Str], Tags => ArrayRef[Paws::ELB::Tag])
+=head2 AddTags(LoadBalancerNames => ArrayRef[Str], Tags => ArrayRef[L<Paws::ELB::Tag>])
 
 Each argument is described in detail in: L<Paws::ELB::AddTags>
 
@@ -284,7 +284,7 @@ Balancer in a VPC in the I<Elastic Load Balancing Developer Guide>.
 
 
 
-=head2 ConfigureHealthCheck(HealthCheck => Paws::ELB::HealthCheck, LoadBalancerName => Str)
+=head2 ConfigureHealthCheck(HealthCheck => L<Paws::ELB::HealthCheck>, LoadBalancerName => Str)
 
 Each argument is described in detail in: L<Paws::ELB::ConfigureHealthCheck>
 
@@ -381,7 +381,7 @@ I<Elastic Load Balancing Developer Guide>.
 
 
 
-=head2 CreateLoadBalancer(Listeners => ArrayRef[Paws::ELB::Listener], LoadBalancerName => Str, [AvailabilityZones => ArrayRef[Str], Scheme => Str, SecurityGroups => ArrayRef[Str], Subnets => ArrayRef[Str], Tags => ArrayRef[Paws::ELB::Tag]])
+=head2 CreateLoadBalancer(Listeners => ArrayRef[L<Paws::ELB::Listener>], LoadBalancerName => Str, [AvailabilityZones => ArrayRef[Str], Scheme => Str, SecurityGroups => ArrayRef[Str], Subnets => ArrayRef[Str], Tags => ArrayRef[L<Paws::ELB::Tag>]])
 
 Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancer>
 
@@ -412,7 +412,7 @@ I<Elastic Load Balancing Developer Guide>.
 
 
 
-=head2 CreateLoadBalancerListeners(Listeners => ArrayRef[Paws::ELB::Listener], LoadBalancerName => Str)
+=head2 CreateLoadBalancerListeners(Listeners => ArrayRef[L<Paws::ELB::Listener>], LoadBalancerName => Str)
 
 Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancerListeners>
 
@@ -438,7 +438,7 @@ I<Elastic Load Balancing Developer Guide>.
 
 
 
-=head2 CreateLoadBalancerPolicy(LoadBalancerName => Str, PolicyName => Str, PolicyTypeName => Str, [PolicyAttributes => ArrayRef[Paws::ELB::PolicyAttribute]])
+=head2 CreateLoadBalancerPolicy(LoadBalancerName => Str, PolicyName => Str, PolicyTypeName => Str, [PolicyAttributes => ArrayRef[L<Paws::ELB::PolicyAttribute>]])
 
 Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancerPolicy>
 
@@ -533,7 +533,7 @@ policy must not be enabled for any listeners.
 
 
 
-=head2 DeregisterInstancesFromLoadBalancer(Instances => ArrayRef[Paws::ELB::Instance], LoadBalancerName => Str)
+=head2 DeregisterInstancesFromLoadBalancer(Instances => ArrayRef[L<Paws::ELB::Instance>], LoadBalancerName => Str)
 
 Each argument is described in detail in: L<Paws::ELB::DeregisterInstancesFromLoadBalancer>
 
@@ -561,7 +561,7 @@ in the I<Elastic Load Balancing Developer Guide>.
 
 
 
-=head2 DescribeInstanceHealth(LoadBalancerName => Str, [Instances => ArrayRef[Paws::ELB::Instance]])
+=head2 DescribeInstanceHealth(LoadBalancerName => Str, [Instances => ArrayRef[L<Paws::ELB::Instance>]])
 
 Each argument is described in detail in: L<Paws::ELB::DescribeInstanceHealth>
 
@@ -781,7 +781,7 @@ Balancing Developer Guide>.
 
 
 
-=head2 ModifyLoadBalancerAttributes(LoadBalancerAttributes => Paws::ELB::LoadBalancerAttributes, LoadBalancerName => Str)
+=head2 ModifyLoadBalancerAttributes(LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>, LoadBalancerName => Str)
 
 Each argument is described in detail in: L<Paws::ELB::ModifyLoadBalancerAttributes>
 
@@ -822,7 +822,7 @@ Developer Guide>:
 
 
 
-=head2 RegisterInstancesWithLoadBalancer(Instances => ArrayRef[Paws::ELB::Instance], LoadBalancerName => Str)
+=head2 RegisterInstancesWithLoadBalancer(Instances => ArrayRef[L<Paws::ELB::Instance>], LoadBalancerName => Str)
 
 Each argument is described in detail in: L<Paws::ELB::RegisterInstancesWithLoadBalancer>
 
@@ -871,7 +871,7 @@ I<Elastic Load Balancing Developer Guide>.
 
 
 
-=head2 RemoveTags(LoadBalancerNames => ArrayRef[Str], Tags => ArrayRef[Paws::ELB::TagKeyOnly])
+=head2 RemoveTags(LoadBalancerNames => ArrayRef[Str], Tags => ArrayRef[L<Paws::ELB::TagKeyOnly>])
 
 Each argument is described in detail in: L<Paws::ELB::RemoveTags>
 

@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Statem
 
 =head1 ATTRIBUTES
 
-=head2 EndPosition => Paws::IAM::Position
+=head2 EndPosition => L<Paws::IAM::Position>
 
   The row and column of the end of a C<Statement> in an IAM policy.
 
@@ -46,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Statem
 
   The type of the policy.
 
-=head2 StartPosition => Paws::IAM::Position
+=head2 StartPosition => L<Paws::IAM::Position>
 
   The row and column of the beginning of the C<Statement> in an IAM
 policy.

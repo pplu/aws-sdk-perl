@@ -498,7 +498,7 @@ subscription.
 
 
 
-=head2 AddTagsToResource(ResourceName => Str, Tags => ArrayRef[Paws::RDS::Tag])
+=head2 AddTagsToResource(ResourceName => Str, Tags => ArrayRef[L<Paws::RDS::Tag>])
 
 Each argument is described in detail in: L<Paws::RDS::AddTagsToResource>
 
@@ -579,7 +579,7 @@ For an overview of CIDR ranges, go to the Wikipedia Tutorial.
 
 
 
-=head2 CopyDBClusterSnapshot(SourceDBClusterSnapshotIdentifier => Str, TargetDBClusterSnapshotIdentifier => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CopyDBClusterSnapshot(SourceDBClusterSnapshotIdentifier => Str, TargetDBClusterSnapshotIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CopyDBClusterSnapshot>
 
@@ -600,7 +600,7 @@ Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
 
 
 
-=head2 CopyDBParameterGroup(SourceDBParameterGroupIdentifier => Str, TargetDBParameterGroupDescription => Str, TargetDBParameterGroupIdentifier => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CopyDBParameterGroup(SourceDBParameterGroupIdentifier => Str, TargetDBParameterGroupDescription => Str, TargetDBParameterGroupIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CopyDBParameterGroup>
 
@@ -620,7 +620,7 @@ Copies the specified DB parameter group.
 
 
 
-=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CopyDBSnapshot>
 
@@ -641,7 +641,7 @@ Copies the specified DBSnapshot. The source DBSnapshot must be in the
 
 
 
-=head2 CopyOptionGroup(SourceOptionGroupIdentifier => Str, TargetOptionGroupDescription => Str, TargetOptionGroupIdentifier => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CopyOptionGroup(SourceOptionGroupIdentifier => Str, TargetOptionGroupDescription => Str, TargetOptionGroupIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CopyOptionGroup>
 
@@ -661,7 +661,7 @@ Copies the specified option group.
 
 
 
-=head2 CreateDBCluster(DBClusterIdentifier => Str, Engine => Str, MasterUsername => Str, MasterUserPassword => Str, [AvailabilityZones => ArrayRef[Str], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EngineVersion => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, Tags => ArrayRef[Paws::RDS::Tag], VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 CreateDBCluster(DBClusterIdentifier => Str, Engine => Str, MasterUsername => Str, MasterUserPassword => Str, [AvailabilityZones => ArrayRef[Str], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EngineVersion => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBCluster>
 
@@ -682,7 +682,7 @@ Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
 
 
 
-=head2 CreateDBClusterParameterGroup(DBClusterParameterGroupName => Str, DBParameterGroupFamily => Str, Description => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CreateDBClusterParameterGroup(DBClusterParameterGroupName => Str, DBParameterGroupFamily => Str, Description => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBClusterParameterGroup>
 
@@ -730,7 +730,7 @@ I<Amazon RDS User Guide.>
 
 
 
-=head2 CreateDBClusterSnapshot(DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CreateDBClusterSnapshot(DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBClusterSnapshot>
 
@@ -751,7 +751,7 @@ Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
 
 
 
-=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], DBSubnetGroupName => Str, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag], TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], DBSubnetGroupName => Str, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstance>
 
@@ -771,7 +771,7 @@ Creates a new DB instance.
 
 
 
-=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, Iops => Int, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, Iops => Int, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstanceReadReplica>
 
@@ -799,7 +799,7 @@ The source DB instance must have backup retention enabled.
 
 
 
-=head2 CreateDBParameterGroup(DBParameterGroupFamily => Str, DBParameterGroupName => Str, Description => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CreateDBParameterGroup(DBParameterGroupFamily => Str, DBParameterGroupName => Str, Description => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBParameterGroup>
 
@@ -841,7 +841,7 @@ modified.
 
 
 
-=head2 CreateDBSecurityGroup(DBSecurityGroupDescription => Str, DBSecurityGroupName => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CreateDBSecurityGroup(DBSecurityGroupDescription => Str, DBSecurityGroupName => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBSecurityGroup>
 
@@ -862,7 +862,7 @@ DB instance.
 
 
 
-=head2 CreateDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CreateDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBSnapshot>
 
@@ -883,7 +883,7 @@ state.
 
 
 
-=head2 CreateDBSubnetGroup(DBSubnetGroupDescription => Str, DBSubnetGroupName => Str, SubnetIds => ArrayRef[Str], [Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CreateDBSubnetGroup(DBSubnetGroupDescription => Str, DBSubnetGroupName => Str, SubnetIds => ArrayRef[Str], [Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBSubnetGroup>
 
@@ -904,7 +904,7 @@ one subnet in at least two AZs in the region.
 
 
 
-=head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str], SourceIds => ArrayRef[Str], SourceType => Str, Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str], SourceIds => ArrayRef[Str], SourceType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateEventSubscription>
 
@@ -944,7 +944,7 @@ your customer account.
 
 
 
-=head2 CreateOptionGroup(EngineName => Str, MajorEngineVersion => Str, OptionGroupDescription => Str, OptionGroupName => Str, [Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 CreateOptionGroup(EngineName => Str, MajorEngineVersion => Str, OptionGroupDescription => Str, OptionGroupName => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateOptionGroup>
 
@@ -1232,7 +1232,7 @@ This command does not take any parameters.
 
 
 
-=head2 DescribeCertificates([CertificateIdentifier => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
+=head2 DescribeCertificates([CertificateIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeCertificates>
 
@@ -1253,7 +1253,7 @@ account.
 
 
 
-=head2 DescribeDBClusterParameterGroups([DBClusterParameterGroupName => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
+=head2 DescribeDBClusterParameterGroups([DBClusterParameterGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterParameterGroups>
 
@@ -1279,7 +1279,7 @@ I<Amazon RDS User Guide.>
 
 
 
-=head2 DescribeDBClusterParameters(DBClusterParameterGroupName => Str, [Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, Source => Str])
+=head2 DescribeDBClusterParameters(DBClusterParameterGroupName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterParameters>
 
@@ -1303,7 +1303,7 @@ I<Amazon RDS User Guide.>
 
 
 
-=head2 DescribeDBClusters([DBClusterIdentifier => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
+=head2 DescribeDBClusters([DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBClusters>
 
@@ -1327,7 +1327,7 @@ I<Amazon RDS User Guide.>
 
 
 
-=head2 DescribeDBClusterSnapshots([DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, SnapshotType => Str])
+=head2 DescribeDBClusterSnapshots([DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterSnapshots>
 
@@ -1351,7 +1351,7 @@ I<Amazon RDS User Guide.>
 
 
 
-=head2 DescribeDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[Paws::RDS::Filter], ListSupportedCharacterSets => Bool, Marker => Str, MaxRecords => Int])
+=head2 DescribeDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], ListSupportedCharacterSets => Bool, Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBEngineVersions>
 
@@ -1371,7 +1371,7 @@ Returns a list of the available DB engines.
 
 
 
-=head2 DescribeDBInstances([DBInstanceIdentifier => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
+=head2 DescribeDBInstances([DBInstanceIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBInstances>
 
@@ -1392,7 +1392,7 @@ pagination.
 
 
 
-=head2 DescribeDBLogFiles(DBInstanceIdentifier => Str, [FileLastWritten => Int, FilenameContains => Str, FileSize => Int, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
+=head2 DescribeDBLogFiles(DBInstanceIdentifier => Str, [FileLastWritten => Int, FilenameContains => Str, FileSize => Int, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBLogFiles>
 
@@ -1412,7 +1412,7 @@ Returns a list of DB log files for the DB instance.
 
 
 
-=head2 DescribeDBParameterGroups([DBParameterGroupName => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
+=head2 DescribeDBParameterGroups([DBParameterGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBParameterGroups>
 
@@ -1434,7 +1434,7 @@ description of the specified DB parameter group.
 
 
 
-=head2 DescribeDBParameters(DBParameterGroupName => Str, [Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, Source => Str])
+=head2 DescribeDBParameters(DBParameterGroupName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBParameters>
 
@@ -1455,7 +1455,7 @@ group.
 
 
 
-=head2 DescribeDBSecurityGroups([DBSecurityGroupName => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
+=head2 DescribeDBSecurityGroups([DBSecurityGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBSecurityGroups>
 
@@ -1477,7 +1477,7 @@ descriptions of the specified DB security group.
 
 
 
-=head2 DescribeDBSnapshots([DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, SnapshotType => Str])
+=head2 DescribeDBSnapshots([DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBSnapshots>
 
@@ -1497,7 +1497,7 @@ Returns information about DB snapshots. This API supports pagination.
 
 
 
-=head2 DescribeDBSubnetGroups([DBSubnetGroupName => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
+=head2 DescribeDBSubnetGroups([DBSubnetGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBSubnetGroups>
 
@@ -1521,7 +1521,7 @@ For an overview of CIDR ranges, go to the Wikipedia Tutorial.
 
 
 
-=head2 DescribeEngineDefaultClusterParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
+=head2 DescribeEngineDefaultClusterParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeEngineDefaultClusterParameters>
 
@@ -1545,7 +1545,7 @@ I<Amazon RDS User Guide.>
 
 
 
-=head2 DescribeEngineDefaultParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int])
+=head2 DescribeEngineDefaultParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeEngineDefaultParameters>
 
@@ -1566,7 +1566,7 @@ specified database engine.
 
 
 
-=head2 DescribeEventCategories([Filters => ArrayRef[Paws::RDS::Filter], SourceType => Str])
+=head2 DescribeEventCategories([Filters => ArrayRef[L<Paws::RDS::Filter>], SourceType => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeEventCategories>
 
@@ -1589,7 +1589,7 @@ User Guide.>
 
 
 
-=head2 DescribeEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str], Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str], Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeEvents>
 
@@ -1613,7 +1613,7 @@ as a parameter. By default, the past hour of events are returned.
 
 
 
-=head2 DescribeEventSubscriptions([Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+=head2 DescribeEventSubscriptions([Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeEventSubscriptions>
 
@@ -1638,7 +1638,7 @@ subscription.
 
 
 
-=head2 DescribeOptionGroupOptions(EngineName => Str, [Filters => ArrayRef[Paws::RDS::Filter], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])
+=head2 DescribeOptionGroupOptions(EngineName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeOptionGroupOptions>
 
@@ -1658,7 +1658,7 @@ Describes all available options.
 
 
 
-=head2 DescribeOptionGroups([EngineName => Str, Filters => ArrayRef[Paws::RDS::Filter], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int, OptionGroupName => Str])
+=head2 DescribeOptionGroups([EngineName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int, OptionGroupName => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeOptionGroups>
 
@@ -1678,7 +1678,7 @@ Describes the available option groups.
 
 
 
-=head2 DescribeOrderableDBInstanceOptions(Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[Paws::RDS::Filter], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
+=head2 DescribeOrderableDBInstanceOptions(Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeOrderableDBInstanceOptions>
 
@@ -1699,7 +1699,7 @@ engine.
 
 
 
-=head2 DescribePendingMaintenanceActions([Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
+=head2 DescribePendingMaintenanceActions([Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribePendingMaintenanceActions>
 
@@ -1720,7 +1720,7 @@ least one pending maintenance action.
 
 
 
-=head2 DescribeReservedDBInstances([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
+=head2 DescribeReservedDBInstances([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeReservedDBInstances>
 
@@ -1741,7 +1741,7 @@ about a specified reserved DB instance.
 
 
 
-=head2 DescribeReservedDBInstancesOfferings([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[Paws::RDS::Filter], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstancesOfferingId => Str])
+=head2 DescribeReservedDBInstancesOfferings([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstancesOfferingId => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeReservedDBInstancesOfferings>
 
@@ -1816,7 +1816,7 @@ I<Amazon RDS User Guide.>
 
 
 
-=head2 ListTagsForResource(ResourceName => Str, [Filters => ArrayRef[Paws::RDS::Filter]])
+=head2 ListTagsForResource(ResourceName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>]])
 
 Each argument is described in detail in: L<Paws::RDS::ListTagsForResource>
 
@@ -1862,7 +1862,7 @@ Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
 
 
 
-=head2 ModifyDBClusterParameterGroup(DBClusterParameterGroupName => Str, Parameters => ArrayRef[Paws::RDS::Parameter])
+=head2 ModifyDBClusterParameterGroup(DBClusterParameterGroupName => Str, Parameters => ArrayRef[L<Paws::RDS::Parameter>])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBClusterParameterGroup>
 
@@ -1926,7 +1926,7 @@ values in the request.
 
 
 
-=head2 ModifyDBParameterGroup(DBParameterGroupName => Str, Parameters => ArrayRef[Paws::RDS::Parameter])
+=head2 ModifyDBParameterGroup(DBParameterGroupName => Str, Parameters => ArrayRef[L<Paws::RDS::Parameter>])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBParameterGroup>
 
@@ -2014,7 +2014,7 @@ B<DescribeEventCategories> action.
 
 
 
-=head2 ModifyOptionGroup(OptionGroupName => Str, [ApplyImmediately => Bool, OptionsToInclude => ArrayRef[Paws::RDS::OptionConfiguration], OptionsToRemove => ArrayRef[Str]])
+=head2 ModifyOptionGroup(OptionGroupName => Str, [ApplyImmediately => Bool, OptionsToInclude => ArrayRef[L<Paws::RDS::OptionConfiguration>], OptionsToRemove => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyOptionGroup>
 
@@ -2059,7 +2059,7 @@ primary instance, backups are taken based on your backup settings.
 
 
 
-=head2 PurchaseReservedDBInstancesOffering(ReservedDBInstancesOfferingId => Str, [DBInstanceCount => Int, ReservedDBInstanceId => Str, Tags => ArrayRef[Paws::RDS::Tag]])
+=head2 PurchaseReservedDBInstancesOffering(ReservedDBInstancesOfferingId => Str, [DBInstanceCount => Int, ReservedDBInstanceId => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::PurchaseReservedDBInstancesOffering>
 
@@ -2161,7 +2161,7 @@ RDS Resources.
 
 
 
-=head2 ResetDBClusterParameterGroup(DBClusterParameterGroupName => Str, [Parameters => ArrayRef[Paws::RDS::Parameter], ResetAllParameters => Bool])
+=head2 ResetDBClusterParameterGroup(DBClusterParameterGroupName => Str, [Parameters => ArrayRef[L<Paws::RDS::Parameter>], ResetAllParameters => Bool])
 
 Each argument is described in detail in: L<Paws::RDS::ResetDBClusterParameterGroup>
 
@@ -2194,7 +2194,7 @@ I<Amazon RDS User Guide.>
 
 
 
-=head2 ResetDBParameterGroup(DBParameterGroupName => Str, [Parameters => ArrayRef[Paws::RDS::Parameter], ResetAllParameters => Bool])
+=head2 ResetDBParameterGroup(DBParameterGroupName => Str, [Parameters => ArrayRef[L<Paws::RDS::Parameter>], ResetAllParameters => Bool])
 
 Each argument is described in detail in: L<Paws::RDS::ResetDBParameterGroup>
 
@@ -2221,7 +2221,7 @@ or C<RebootDBInstance> request.
 
 
 
-=head2 RestoreDBClusterFromSnapshot(DBClusterIdentifier => Str, Engine => Str, SnapshotIdentifier => Str, [AvailabilityZones => ArrayRef[Str], DatabaseName => Str, DBSubnetGroupName => Str, EngineVersion => Str, OptionGroupName => Str, Port => Int, Tags => ArrayRef[Paws::RDS::Tag], VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 RestoreDBClusterFromSnapshot(DBClusterIdentifier => Str, Engine => Str, SnapshotIdentifier => Str, [AvailabilityZones => ArrayRef[Str], DatabaseName => Str, DBSubnetGroupName => Str, EngineVersion => Str, OptionGroupName => Str, Port => Int, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterFromSnapshot>
 
@@ -2247,7 +2247,7 @@ I<Amazon RDS User Guide.>
 
 
 
-=head2 RestoreDBClusterToPointInTime(DBClusterIdentifier => Str, SourceDBClusterIdentifier => Str, [DBSubnetGroupName => Str, OptionGroupName => Str, Port => Int, RestoreToTime => Str, Tags => ArrayRef[Paws::RDS::Tag], UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 RestoreDBClusterToPointInTime(DBClusterIdentifier => Str, SourceDBClusterIdentifier => Str, [DBSubnetGroupName => Str, OptionGroupName => Str, Port => Int, RestoreToTime => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterToPointInTime>
 
@@ -2275,7 +2275,7 @@ I<Amazon RDS User Guide.>
 
 
 
-=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag], TdeCredentialArn => Str, TdeCredentialPassword => Str])
+=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceFromDBSnapshot>
 
@@ -2313,7 +2313,7 @@ snapshot.
 
 
 
-=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[Paws::RDS::Tag], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])
+=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceToPointInTime>
 

@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 ATTRIBUTES
 
-=head2 attributes => ArrayRef[Paws::Inspector::Attribute]
+=head2 attributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
   For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<attributes>
@@ -59,7 +59,7 @@ property of the Finding data type.
 property must be the exact match of the value of the B<severity>
 property of the Finding data type.
 
-=head2 userAttributes => ArrayRef[Paws::Inspector::Attribute]
+=head2 userAttributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
   For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<userAttributes>

@@ -52,7 +52,7 @@ parameter to show only reservations for this duration.
 
 Valid Values: C<1 | 3 | 31536000 | 94608000>
 
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
   This parameter is not currently supported.
 

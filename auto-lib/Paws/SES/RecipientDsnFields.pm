@@ -48,7 +48,7 @@ This is required by RFC 3464.
   An extended explanation of what went wrong; this is usually an SMTP
 response. See RFC 3463 for the correct formatting of this parameter.
 
-=head2 ExtensionFields => ArrayRef[Paws::SES::ExtensionField]
+=head2 ExtensionFields => ArrayRef[L<Paws::SES::ExtensionField>]
 
   Additional X-headers to include in the DSN.
 

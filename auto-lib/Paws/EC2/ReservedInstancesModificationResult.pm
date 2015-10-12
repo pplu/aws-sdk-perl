@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Reserv
 modification request. This field is only available when the
 modification is fulfilled.
 
-=head2 TargetConfiguration => Paws::EC2::ReservedInstancesConfiguration
+=head2 TargetConfiguration => L<Paws::EC2::ReservedInstancesConfiguration>
 
   The target Reserved Instances configurations supplied as part of the
 modification request.

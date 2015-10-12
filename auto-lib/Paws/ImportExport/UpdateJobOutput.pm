@@ -15,7 +15,7 @@ Paws::ImportExport::UpdateJobOutput
 
 =head1 ATTRIBUTES
 
-=head2 ArtifactList => ArrayRef[Paws::ImportExport::Artifact]
+=head2 ArtifactList => ArrayRef[L<Paws::ImportExport::Artifact>]
 
   
 =head2 Success => Bool

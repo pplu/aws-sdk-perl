@@ -14,7 +14,7 @@ Paws::RDS::DBClusterParameterGroupsMessage
 
 =head1 ATTRIBUTES
 
-=head2 DBClusterParameterGroups => ArrayRef[Paws::RDS::DBClusterParameterGroup]
+=head2 DBClusterParameterGroups => ArrayRef[L<Paws::RDS::DBClusterParameterGroup>]
 
   A list of DB cluster parameter groups.
 =head2 Marker => Str

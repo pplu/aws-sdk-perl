@@ -13,7 +13,7 @@ Paws::SNS::GetTopicAttributesResponse
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => Paws::SNS::TopicAttributesMap
+=head2 Attributes => L<Paws::SNS::TopicAttributesMap>
 
   A map of the topic's attributes. Attributes in this map include the
 following:

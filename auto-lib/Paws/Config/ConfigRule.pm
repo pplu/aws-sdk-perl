@@ -88,7 +88,7 @@ of C<ConfigSnapshotDeliveryProperties>. To update the frequency with
 which AWS Config delivers your snapshots, use the C<PutDeliveryChannel>
 action.
 
-=head2 Scope => Paws::Config::Scope
+=head2 Scope => L<Paws::Config::Scope>
 
   Defines which resources the AWS Config rule evaluates. The scope can
 include one or more resource types, a combination of a tag key and
@@ -97,7 +97,7 @@ IDs. Specify a scope to constrain the resources that are evaluated. If
 you do not specify a scope, the AWS Config Rule evaluates all resources
 in the recording group.
 
-=head2 B<REQUIRED> Source => Paws::Config::Source
+=head2 B<REQUIRED> Source => L<Paws::Config::Source>
 
   Provides the rule owner (AWS or customer), the rule identifier, and the
 events that cause the function to evaluate your AWS resources.

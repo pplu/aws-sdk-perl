@@ -17,7 +17,7 @@ Paws::ElastiCache::ReplicationGroupMessage
 =head2 Marker => Str
 
   Provides an identifier to allow retrieval of paginated results.
-=head2 ReplicationGroups => ArrayRef[Paws::ElastiCache::ReplicationGroup]
+=head2 ReplicationGroups => ArrayRef[L<Paws::ElastiCache::ReplicationGroup>]
 
   A list of replication groups. Each item in the list contains detailed
 information about one replication group.

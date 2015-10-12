@@ -32,7 +32,7 @@ C<AssociateVPCWithHostedZoneRequest>.
 
 Note that you cannot associate a VPC with a hosted zone that doesn't
 have an existing VPC association.
-=head2 B<REQUIRED> VPC => Paws::Route53::VPC
+=head2 B<REQUIRED> VPC => L<Paws::Route53::VPC>
 
   The VPC that you want your hosted zone to be associated with.
 

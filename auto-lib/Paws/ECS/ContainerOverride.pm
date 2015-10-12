@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Contai
   The command to send to the container that overrides the default command
 from the Docker image or the task definition.
 
-=head2 environment => ArrayRef[Paws::ECS::KeyValuePair]
+=head2 environment => ArrayRef[L<Paws::ECS::KeyValuePair>]
 
   The environment variables to send to the container. You can add new
 environment variables, which are added to the container at launch, or

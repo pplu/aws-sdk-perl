@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the DB cluster parameter group to modify.
 
-=head2 B<REQUIRED> Parameters => ArrayRef[Paws::RDS::Parameter]
+=head2 B<REQUIRED> Parameters => ArrayRef[L<Paws::RDS::Parameter>]
 
   A list of parameters in the DB cluster parameter group to modify.
 

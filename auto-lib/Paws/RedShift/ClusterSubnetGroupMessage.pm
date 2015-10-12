@@ -14,7 +14,7 @@ Paws::RedShift::ClusterSubnetGroupMessage
 
 =head1 ATTRIBUTES
 
-=head2 ClusterSubnetGroups => ArrayRef[Paws::RedShift::ClusterSubnetGroup]
+=head2 ClusterSubnetGroups => ArrayRef[L<Paws::RedShift::ClusterSubnetGroup>]
 
   A list of ClusterSubnetGroup instances.
 =head2 Marker => Str

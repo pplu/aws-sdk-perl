@@ -49,7 +49,7 @@ contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
-=head2 B<REQUIRED> activityType => Paws::SimpleWorkflow::ActivityType
+=head2 B<REQUIRED> activityType => L<Paws::SimpleWorkflow::ActivityType>
 
   B<Required.> The type of the activity task to schedule.
 
@@ -117,7 +117,7 @@ either as a default for the activity type or through this field. If
 neither this field is set nor a default start-to-close timeout was
 specified at registration time then a fault will be returned.
 
-=head2 taskList => Paws::SimpleWorkflow::TaskList
+=head2 taskList => L<Paws::SimpleWorkflow::TaskList>
 
   If set, specifies the name of the task list in which to schedule the
 activity task. If not specified, the C<defaultTaskList> registered with

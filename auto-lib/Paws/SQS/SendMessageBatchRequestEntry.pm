@@ -44,7 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::SendMe
 communicate the result. Note that the C<Id>s of a batch request need to
 be unique within the request.
 
-=head2 MessageAttributes => Paws::SQS::MessageAttributeMap
+=head2 MessageAttributes => L<Paws::SQS::MessageAttributeMap>
 
   Each message attribute consists of a Name, Type, and Value. For more
 information, see Message Attribute Items.

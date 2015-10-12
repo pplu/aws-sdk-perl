@@ -392,7 +392,7 @@ Terminating State in the I<Auto Scaling Developer Guide>.
 
 
 
-=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [AvailabilityZones => ArrayRef[Str], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, InstanceId => Str, LaunchConfigurationName => Str, LoadBalancerNames => ArrayRef[Str], PlacementGroup => Str, Tags => ArrayRef[Paws::AutoScaling::Tag], TerminationPolicies => ArrayRef[Str], VPCZoneIdentifier => Str])
+=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [AvailabilityZones => ArrayRef[Str], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, InstanceId => Str, LaunchConfigurationName => Str, LoadBalancerNames => ArrayRef[Str], PlacementGroup => Str, Tags => ArrayRef[L<Paws::AutoScaling::Tag>], TerminationPolicies => ArrayRef[Str], VPCZoneIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::CreateAutoScalingGroup>
 
@@ -419,7 +419,7 @@ Developer Guide>.
 
 
 
-=head2 CreateLaunchConfiguration(LaunchConfigurationName => Str, [AssociatePublicIpAddress => Bool, BlockDeviceMappings => ArrayRef[Paws::AutoScaling::BlockDeviceMapping], ClassicLinkVPCId => Str, ClassicLinkVPCSecurityGroups => ArrayRef[Str], EbsOptimized => Bool, IamInstanceProfile => Str, ImageId => Str, InstanceId => Str, InstanceMonitoring => Paws::AutoScaling::InstanceMonitoring, InstanceType => Str, KernelId => Str, KeyName => Str, PlacementTenancy => Str, RamdiskId => Str, SecurityGroups => ArrayRef[Str], SpotPrice => Str, UserData => Str])
+=head2 CreateLaunchConfiguration(LaunchConfigurationName => Str, [AssociatePublicIpAddress => Bool, BlockDeviceMappings => ArrayRef[L<Paws::AutoScaling::BlockDeviceMapping>], ClassicLinkVPCId => Str, ClassicLinkVPCSecurityGroups => ArrayRef[Str], EbsOptimized => Bool, IamInstanceProfile => Str, ImageId => Str, InstanceId => Str, InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>, InstanceType => Str, KernelId => Str, KeyName => Str, PlacementTenancy => Str, RamdiskId => Str, SecurityGroups => ArrayRef[Str], SpotPrice => Str, UserData => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::CreateLaunchConfiguration>
 
@@ -446,7 +446,7 @@ Developer Guide>.
 
 
 
-=head2 CreateOrUpdateTags(Tags => ArrayRef[Paws::AutoScaling::Tag])
+=head2 CreateOrUpdateTags(Tags => ArrayRef[L<Paws::AutoScaling::Tag>])
 
 Each argument is described in detail in: L<Paws::AutoScaling::CreateOrUpdateTags>
 
@@ -614,7 +614,7 @@ Deletes the specified scheduled action.
 
 
 
-=head2 DeleteTags(Tags => ArrayRef[Paws::AutoScaling::Tag])
+=head2 DeleteTags(Tags => ArrayRef[L<Paws::AutoScaling::Tag>])
 
 Each argument is described in detail in: L<Paws::AutoScaling::DeleteTags>
 
@@ -952,7 +952,7 @@ DescribeScalingActivities.
 
 
 
-=head2 DescribeTags([Filters => ArrayRef[Paws::AutoScaling::Filter], MaxRecords => Int, NextToken => Str])
+=head2 DescribeTags([Filters => ArrayRef[L<Paws::AutoScaling::Filter>], MaxRecords => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeTags>
 
@@ -1244,7 +1244,7 @@ This configuration overwrites an existing configuration.
 
 
 
-=head2 PutScalingPolicy(AdjustmentType => Str, AutoScalingGroupName => Str, PolicyName => Str, [Cooldown => Int, EstimatedInstanceWarmup => Int, MetricAggregationType => Str, MinAdjustmentMagnitude => Int, MinAdjustmentStep => Int, PolicyType => Str, ScalingAdjustment => Int, StepAdjustments => ArrayRef[Paws::AutoScaling::StepAdjustment]])
+=head2 PutScalingPolicy(AdjustmentType => Str, AutoScalingGroupName => Str, PolicyName => Str, [Cooldown => Int, EstimatedInstanceWarmup => Int, MetricAggregationType => Str, MinAdjustmentMagnitude => Int, MinAdjustmentStep => Int, PolicyType => Str, ScalingAdjustment => Int, StepAdjustments => ArrayRef[L<Paws::AutoScaling::StepAdjustment>]])
 
 Each argument is described in detail in: L<Paws::AutoScaling::PutScalingPolicy>
 

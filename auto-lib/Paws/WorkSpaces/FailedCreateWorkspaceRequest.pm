@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
   The textual error message.
 
-=head2 WorkspaceRequest => Paws::WorkSpaces::WorkspaceRequest
+=head2 WorkspaceRequest => L<Paws::WorkSpaces::WorkspaceRequest>
 
   A WorkspaceRequest object that contains the information about the
 WorkSpace that could not be created.

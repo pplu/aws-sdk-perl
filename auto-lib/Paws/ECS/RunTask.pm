@@ -49,7 +49,7 @@ cluster.
 
 The C<count> parameter is limited to 10 tasks per call.
 
-=head2 overrides => Paws::ECS::TaskOverride
+=head2 overrides => L<Paws::ECS::TaskOverride>
 
   A list of container overrides in JSON format that specify the name of a
 container in the specified task definition and the overrides it should

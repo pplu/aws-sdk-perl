@@ -12,7 +12,7 @@ Paws::Config::PutEvaluationsResponse
 
 =head1 ATTRIBUTES
 
-=head2 FailedEvaluations => ArrayRef[Paws::Config::Evaluation]
+=head2 FailedEvaluations => ArrayRef[L<Paws::Config::Evaluation>]
 
   Requests that failed because of a client or server error.
 

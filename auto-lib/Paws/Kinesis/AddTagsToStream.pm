@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the stream.
 
-=head2 B<REQUIRED> Tags => Paws::Kinesis::TagMap
+=head2 B<REQUIRED> Tags => L<Paws::Kinesis::TagMap>
 
   The set of key-value pairs to use to create the tags.
 

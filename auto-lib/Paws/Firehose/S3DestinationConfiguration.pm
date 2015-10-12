@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::S
 
   The ARN of the S3 bucket.
 
-=head2 BufferingHints => Paws::Firehose::BufferingHints
+=head2 BufferingHints => L<Paws::Firehose::BufferingHints>
 
   The buffering option. If no value is specified, C<BufferingHints>
 object default values are used.
@@ -54,7 +54,7 @@ The compression formats C<SNAPPY> or C<ZIP> cannot be specified for
 Amazon Redshift destinations because they are not supported by the
 Amazon Redshift C<COPY> operation that reads from the S3 bucket.
 
-=head2 EncryptionConfiguration => Paws::Firehose::EncryptionConfiguration
+=head2 EncryptionConfiguration => L<Paws::Firehose::EncryptionConfiguration>
 
   The encryption configuration. If no value is specified, the default is
 no encryption.

@@ -234,7 +234,7 @@ of the locations of Amazon Route 53 DNS servers, see The Amazon Route
 
 =head1 METHODS
 
-=head2 AssociateVPCWithHostedZone(HostedZoneId => Str, VPC => Paws::Route53::VPC, [Comment => Str])
+=head2 AssociateVPCWithHostedZone(HostedZoneId => Str, VPC => L<Paws::Route53::VPC>, [Comment => Str])
 
 Each argument is described in detail in: L<Paws::Route53::AssociateVPCWithHostedZone>
 
@@ -263,7 +263,7 @@ operation for how to track the progress of your change.
 
 
 
-=head2 ChangeResourceRecordSets(ChangeBatch => Paws::Route53::ChangeBatch, HostedZoneId => Str)
+=head2 ChangeResourceRecordSets(ChangeBatch => L<Paws::Route53::ChangeBatch>, HostedZoneId => Str)
 
 Each argument is described in detail in: L<Paws::Route53::ChangeResourceRecordSets>
 
@@ -313,7 +313,7 @@ elements in a request cannot exceed 32,000 characters.
 
 
 
-=head2 ChangeTagsForResource(ResourceId => Str, ResourceType => Str, [AddTags => ArrayRef[Paws::Route53::Tag], RemoveTagKeys => ArrayRef[Str]])
+=head2 ChangeTagsForResource(ResourceId => Str, ResourceType => Str, [AddTags => ArrayRef[L<Paws::Route53::Tag>], RemoveTagKeys => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::Route53::ChangeTagsForResource>
 
@@ -322,7 +322,7 @@ Returns: a L<Paws::Route53::ChangeTagsForResourceResponse> instance
   
 
 
-=head2 CreateHealthCheck(CallerReference => Str, HealthCheckConfig => Paws::Route53::HealthCheckConfig)
+=head2 CreateHealthCheck(CallerReference => Str, HealthCheckConfig => L<Paws::Route53::HealthCheckConfig>)
 
 Each argument is described in detail in: L<Paws::Route53::CreateHealthCheck>
 
@@ -348,7 +348,7 @@ about the health check.
 
 
 
-=head2 CreateHostedZone(CallerReference => Str, Name => Str, [DelegationSetId => Str, HostedZoneConfig => Paws::Route53::HostedZoneConfig, VPC => Paws::Route53::VPC])
+=head2 CreateHostedZone(CallerReference => Str, Name => Str, [DelegationSetId => Str, HostedZoneConfig => L<Paws::Route53::HostedZoneConfig>, VPC => L<Paws::Route53::VPC>])
 
 Each argument is described in detail in: L<Paws::Route53::CreateHostedZone>
 
@@ -511,7 +511,7 @@ deny your request with a C<DelegationSetInUse> error.
 
 
 
-=head2 DisassociateVPCFromHostedZone(HostedZoneId => Str, VPC => Paws::Route53::VPC, [Comment => Str])
+=head2 DisassociateVPCFromHostedZone(HostedZoneId => Str, VPC => L<Paws::Route53::VPC>, [Comment => Str])
 
 Each argument is described in detail in: L<Paws::Route53::DisassociateVPCFromHostedZone>
 

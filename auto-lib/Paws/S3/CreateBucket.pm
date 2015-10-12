@@ -33,7 +33,7 @@ Paws::S3::CreateBucketOutput
 =head2 B<REQUIRED> Bucket => Str
 
   
-=head2 CreateBucketConfiguration => Paws::S3::CreateBucketConfiguration
+=head2 CreateBucketConfiguration => L<Paws::S3::CreateBucketConfiguration>
 
   
 =head2 GrantFullControl => Str

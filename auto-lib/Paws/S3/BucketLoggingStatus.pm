@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::BucketL
 
 =head1 ATTRIBUTES
 
-=head2 LoggingEnabled => Paws::S3::LoggingEnabled
+=head2 LoggingEnabled => L<Paws::S3::LoggingEnabled>
 
   
 

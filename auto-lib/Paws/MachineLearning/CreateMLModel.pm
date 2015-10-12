@@ -66,7 +66,7 @@ number of values.
 
 For more information, see the Amazon Machine Learning Developer Guide.
 
-=head2 Parameters => Paws::MachineLearning::TrainingParameters
+=head2 Parameters => L<Paws::MachineLearning::TrainingParameters>
 
   A list of the training parameters in the C<MLModel>. The list is
 implemented as a map of key/value pairs.

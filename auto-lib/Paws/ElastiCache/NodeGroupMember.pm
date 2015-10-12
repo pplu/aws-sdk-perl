@@ -53,7 +53,7 @@ I<replica>.
 
   The name of the Availability Zone in which the node is located.
 
-=head2 ReadEndpoint => Paws::ElastiCache::Endpoint
+=head2 ReadEndpoint => L<Paws::ElastiCache::Endpoint>
 
   
 

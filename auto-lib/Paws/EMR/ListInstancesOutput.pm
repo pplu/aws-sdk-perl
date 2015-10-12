@@ -13,7 +13,7 @@ Paws::EMR::ListInstancesOutput
 
 =head1 ATTRIBUTES
 
-=head2 Instances => ArrayRef[Paws::EMR::Instance]
+=head2 Instances => ArrayRef[L<Paws::EMR::Instance>]
 
   The list of instances for the cluster and given filters.
 =head2 Marker => Str

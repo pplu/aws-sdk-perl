@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 AdminContact => Paws::Route53Domains::ContactDetail
+=head2 AdminContact => L<Paws::Route53Domains::ContactDetail>
 
   Provides detailed contact information.
 
@@ -62,7 +62,7 @@ are not supported.
 
 Required: Yes
 
-=head2 RegistrantContact => Paws::Route53Domains::ContactDetail
+=head2 RegistrantContact => L<Paws::Route53Domains::ContactDetail>
 
   Provides detailed contact information.
 
@@ -75,7 +75,7 @@ C<ExtraParams>
 
 Required: Yes
 
-=head2 TechContact => Paws::Route53Domains::ContactDetail
+=head2 TechContact => L<Paws::Route53Domains::ContactDetail>
 
   Provides detailed contact information.
 

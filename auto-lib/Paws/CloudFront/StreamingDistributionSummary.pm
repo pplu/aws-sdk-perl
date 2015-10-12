@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Aliases => Paws::CloudFront::Aliases
+=head2 B<REQUIRED> Aliases => L<Paws::CloudFront::Aliases>
 
   A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this streaming distribution.
@@ -71,7 +71,7 @@ content.
 
   
 
-=head2 B<REQUIRED> S3Origin => Paws::CloudFront::S3Origin
+=head2 B<REQUIRED> S3Origin => L<Paws::CloudFront::S3Origin>
 
   A complex type that contains information about the Amazon S3 bucket
 from which you want CloudFront to get your media files for
@@ -83,7 +83,7 @@ distribution.
 Deployed, the distribution's information is fully propagated throughout
 the Amazon CloudFront system.
 
-=head2 B<REQUIRED> TrustedSigners => Paws::CloudFront::TrustedSigners
+=head2 B<REQUIRED> TrustedSigners => L<Paws::CloudFront::TrustedSigners>
 
   A complex type that specifies the AWS accounts, if any, that you want
 to allow to create signed URLs for private content. If you want to

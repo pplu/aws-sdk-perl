@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> DhcpConfigurations => ArrayRef[Paws::EC2::NewDhcpConfiguration]
+=head2 B<REQUIRED> DhcpConfigurations => ArrayRef[L<Paws::EC2::NewDhcpConfiguration>]
 
   A DHCP configuration option.
 

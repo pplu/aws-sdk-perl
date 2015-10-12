@@ -58,7 +58,7 @@ specified C<WebACL>.
 
 =back
 
-=head2 B<REQUIRED> TimeWindow => Paws::WAF::TimeWindow
+=head2 B<REQUIRED> TimeWindow => L<Paws::WAF::TimeWindow>
 
   The start date and time and the end date and time of the range for
 which you want C<GetSampledRequests> to return a sample of requests.

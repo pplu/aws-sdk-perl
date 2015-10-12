@@ -50,7 +50,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
   
 
-=head2 VolumeiSCSIAttributes => Paws::StorageGateway::VolumeiSCSIAttributes
+=head2 VolumeiSCSIAttributes => L<Paws::StorageGateway::VolumeiSCSIAttributes>
 
   
 

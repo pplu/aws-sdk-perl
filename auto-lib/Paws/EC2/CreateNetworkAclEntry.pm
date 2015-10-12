@@ -57,7 +57,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
   Indicates whether this is an egress rule (rule is applied to traffic
 leaving the subnet).
 
-=head2 IcmpTypeCode => Paws::EC2::IcmpTypeCode
+=head2 IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>
 
   ICMP protocol: The ICMP type and code. Required if specifying ICMP for
 the protocol.
@@ -66,7 +66,7 @@ the protocol.
 
   The ID of the network ACL.
 
-=head2 PortRange => Paws::EC2::PortRange
+=head2 PortRange => L<Paws::EC2::PortRange>
 
   TCP or UDP protocols: The range of ports the rule applies to.
 

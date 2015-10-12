@@ -47,7 +47,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Valid values: C<i386> | C<x86_64>
 
-=head2 ClientData => Paws::EC2::ClientData
+=head2 ClientData => L<Paws::EC2::ClientData>
 
   The client-specific data.
 
@@ -59,7 +59,7 @@ Valid values: C<i386> | C<x86_64>
 
   A description string for the import image task.
 
-=head2 DiskContainers => ArrayRef[Paws::EC2::ImageDiskContainer]
+=head2 DiskContainers => ArrayRef[L<Paws::EC2::ImageDiskContainer>]
 
   Information about the disk containers.
 

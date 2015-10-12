@@ -114,7 +114,7 @@ Constraints:
 
 =back
 
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   The tags to be assigned to the restored DB cluster.
 

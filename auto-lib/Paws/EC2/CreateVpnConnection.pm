@@ -47,7 +47,7 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-=head2 Options => Paws::EC2::VpnConnectionOptionsSpecification
+=head2 Options => L<Paws::EC2::VpnConnectionOptionsSpecification>
 
   Indicates whether the VPN connection requires static routes. If you are
 creating a VPN connection for a device that does not support BGP, you

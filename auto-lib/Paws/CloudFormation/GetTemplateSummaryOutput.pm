@@ -38,7 +38,7 @@ template.
 =head2 Metadata => Str
 
   The value that is defined for the C<Metadata> property of the template.
-=head2 Parameters => ArrayRef[Paws::CloudFormation::ParameterDeclaration]
+=head2 Parameters => ArrayRef[L<Paws::CloudFormation::ParameterDeclaration>]
 
   A list of parameter declarations that describe various properties for
 each parameter.

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Receip
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> IpFilter => Paws::SES::ReceiptIpFilter
+=head2 B<REQUIRED> IpFilter => L<Paws::SES::ReceiptIpFilter>
 
   A structure that provides the IP addresses to block or allow, and
 whether to block or allow incoming mail from them.

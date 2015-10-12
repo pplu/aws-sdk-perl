@@ -52,12 +52,12 @@ request is idempotent. For more information, see Ensuring Idempotency.
 
   The time for the modification to become effective.
 
-=head2 ModificationResults => ArrayRef[Paws::EC2::ReservedInstancesModificationResult]
+=head2 ModificationResults => ArrayRef[L<Paws::EC2::ReservedInstancesModificationResult>]
 
   Contains target configurations along with their corresponding new
 Reserved Instance IDs.
 
-=head2 ReservedInstancesIds => ArrayRef[Paws::EC2::ReservedInstancesId]
+=head2 ReservedInstancesIds => ArrayRef[L<Paws::EC2::ReservedInstancesId>]
 
   The IDs of one or more Reserved Instances.
 

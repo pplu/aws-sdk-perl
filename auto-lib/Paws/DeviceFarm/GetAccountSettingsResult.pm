@@ -12,7 +12,7 @@ Paws::DeviceFarm::GetAccountSettingsResult
 
 =head1 ATTRIBUTES
 
-=head2 accountSettings => Paws::DeviceFarm::AccountSettings
+=head2 accountSettings => L<Paws::DeviceFarm::AccountSettings>
 
   
 

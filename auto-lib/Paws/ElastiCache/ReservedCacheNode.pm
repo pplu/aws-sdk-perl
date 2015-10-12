@@ -118,7 +118,7 @@ Parameters for Redis.
 
   The description of the reserved cache node.
 
-=head2 RecurringCharges => ArrayRef[Paws::ElastiCache::RecurringCharge]
+=head2 RecurringCharges => ArrayRef[L<Paws::ElastiCache::RecurringCharge>]
 
   The recurring price charged to run this reserved cache node.
 

@@ -13,7 +13,7 @@ Paws::EMR::ListBootstrapActionsOutput
 
 =head1 ATTRIBUTES
 
-=head2 BootstrapActions => ArrayRef[Paws::EMR::Command]
+=head2 BootstrapActions => ArrayRef[L<Paws::EMR::Command>]
 
   The bootstrap actions associated with the cluster .
 =head2 Marker => Str

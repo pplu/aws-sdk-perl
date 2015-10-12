@@ -33,12 +33,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head1 ATTRIBUTES
 
-=head2 CaptionFormats => ArrayRef[Paws::ElasticTranscoder::CaptionFormat]
+=head2 CaptionFormats => ArrayRef[L<Paws::ElasticTranscoder::CaptionFormat>]
 
   The array of file formats for the output captions. If you leave this
 value blank, Elastic Transcoder returns an error.
 
-=head2 CaptionSources => ArrayRef[Paws::ElasticTranscoder::CaptionSource]
+=head2 CaptionSources => ArrayRef[L<Paws::ElasticTranscoder::CaptionSource>]
 
   Source files for the input sidecar captions used during the transcoding
 process. To omit all sidecar captions, leave C<CaptionSources> blank.

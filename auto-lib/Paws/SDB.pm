@@ -135,7 +135,7 @@ Visit http://aws.amazon.com/simpledb/ for more information.
 
 =head1 METHODS
 
-=head2 BatchDeleteAttributes(DomainName => Str, Items => ArrayRef[Paws::SDB::DeletableItem])
+=head2 BatchDeleteAttributes(DomainName => Str, Items => ArrayRef[L<Paws::SDB::DeletableItem>])
 
 Each argument is described in detail in: L<Paws::SDB::BatchDeleteAttributes>
 
@@ -167,7 +167,7 @@ The following limitations are enforced for this operation:
 
 
 
-=head2 BatchPutAttributes(DomainName => Str, Items => ArrayRef[Paws::SDB::ReplaceableItem])
+=head2 BatchPutAttributes(DomainName => Str, Items => ArrayRef[L<Paws::SDB::ReplaceableItem>])
 
 Each argument is described in detail in: L<Paws::SDB::BatchPutAttributes>
 
@@ -270,7 +270,7 @@ http://aws.amazon.com/contact-us/simpledb-limit-request/.
 
 
 
-=head2 DeleteAttributes(DomainName => Str, ItemName => Str, [Attributes => ArrayRef[Paws::SDB::Attribute], Expected => Paws::SDB::UpdateCondition])
+=head2 DeleteAttributes(DomainName => Str, ItemName => Str, [Attributes => ArrayRef[L<Paws::SDB::Attribute>], Expected => L<Paws::SDB::UpdateCondition>])
 
 Each argument is described in detail in: L<Paws::SDB::DeleteAttributes>
 
@@ -396,7 +396,7 @@ call.
 
 
 
-=head2 PutAttributes(Attributes => ArrayRef[Paws::SDB::ReplaceableAttribute], DomainName => Str, ItemName => Str, [Expected => Paws::SDB::UpdateCondition])
+=head2 PutAttributes(Attributes => ArrayRef[L<Paws::SDB::ReplaceableAttribute>], DomainName => Str, ItemName => Str, [Expected => L<Paws::SDB::UpdateCondition>])
 
 Each argument is described in detail in: L<Paws::SDB::PutAttributes>
 

@@ -42,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   The name of the cache subnet group.
 
-=head2 Subnets => ArrayRef[Paws::ElastiCache::Subnet]
+=head2 Subnets => ArrayRef[L<Paws::ElastiCache::Subnet>]
 
   A list of subnets associated with the cache subnet group.
 

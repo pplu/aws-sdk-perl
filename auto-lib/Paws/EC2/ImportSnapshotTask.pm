@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Import
 
   The ID of the import snapshot task.
 
-=head2 SnapshotTaskDetail => Paws::EC2::SnapshotTaskDetail
+=head2 SnapshotTaskDetail => L<Paws::EC2::SnapshotTaskDetail>
 
   Describes an import snapshot task.
 

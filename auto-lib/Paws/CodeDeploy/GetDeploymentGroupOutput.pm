@@ -12,7 +12,7 @@ Paws::CodeDeploy::GetDeploymentGroupOutput
 
 =head1 ATTRIBUTES
 
-=head2 deploymentGroupInfo => Paws::CodeDeploy::DeploymentGroupInfo
+=head2 deploymentGroupInfo => L<Paws::CodeDeploy::DeploymentGroupInfo>
 
   Information about the deployment group.
 

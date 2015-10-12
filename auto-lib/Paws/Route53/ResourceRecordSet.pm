@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Re
 
 =head1 ATTRIBUTES
 
-=head2 AliasTarget => Paws::Route53::AliasTarget
+=head2 AliasTarget => L<Paws::Route53::AliasTarget>
 
   I<Alias resource record sets only:> Information about the AWS resource
 to which you are redirecting traffic.
@@ -66,7 +66,7 @@ resource record set.
 
 Valid values: C<PRIMARY> | C<SECONDARY>
 
-=head2 GeoLocation => Paws::Route53::GeoLocation
+=head2 GeoLocation => L<Paws::Route53::GeoLocation>
 
   I<Geo location resource record sets only:> Among resource record sets
 that have the same combination of DNS name and type, a value that
@@ -88,7 +88,7 @@ check associated with the resource record set.
 that have the same combination of DNS name and type, a value that
 specifies the AWS region for the current resource record set.
 
-=head2 ResourceRecords => ArrayRef[Paws::Route53::ResourceRecord]
+=head2 ResourceRecords => ArrayRef[L<Paws::Route53::ResourceRecord>]
 
   A complex type that contains the resource records for the current
 resource record set.

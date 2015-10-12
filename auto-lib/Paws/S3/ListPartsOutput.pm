@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   Name of the bucket to which the multipart upload was initiated.
 
-=head2 Initiator => Paws::S3::Initiator
+=head2 Initiator => L<Paws::S3::Initiator>
 
   Identifies who initiated the multipart upload.
 
@@ -64,7 +64,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 list, as well as the value to use for the part-number-marker request
 parameter in a subsequent request.
 
-=head2 Owner => Paws::S3::Owner
+=head2 Owner => L<Paws::S3::Owner>
 
   
 
@@ -72,7 +72,7 @@ parameter in a subsequent request.
 
   Part number after which listing begins.
 
-=head2 Parts => ArrayRef[Paws::S3::Part]
+=head2 Parts => ArrayRef[L<Paws::S3::Part>]
 
   
 

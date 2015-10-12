@@ -55,11 +55,11 @@ to this event.
   The type of the timeout that caused the child workflow execution to
 time out.
 
-=head2 B<REQUIRED> workflowExecution => Paws::SimpleWorkflow::WorkflowExecution
+=head2 B<REQUIRED> workflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The child workflow execution that timed out.
 
-=head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
+=head2 B<REQUIRED> workflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
   The type of the child workflow execution.
 

@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> attributePayload => Paws::IoT::AttributePayload
+=head2 B<REQUIRED> attributePayload => L<Paws::IoT::AttributePayload>
 
   The attribute payload, a JSON string containing up to three key-value
 pairs.

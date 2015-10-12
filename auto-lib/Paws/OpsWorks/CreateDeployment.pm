@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The app ID. This parameter is required for app deployments, but not for
 other deployment commands.
 
-=head2 B<REQUIRED> Command => Paws::OpsWorks::DeploymentCommand
+=head2 B<REQUIRED> Command => L<Paws::OpsWorks::DeploymentCommand>
 
   A C<DeploymentCommand> object that specifies the deployment command and
 any associated arguments.

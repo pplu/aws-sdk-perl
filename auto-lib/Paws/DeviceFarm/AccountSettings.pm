@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   The AWS account number specified in the C<AccountSettings> container.
 
-=head2 unmeteredDevices => Paws::DeviceFarm::PurchasedDevicesMap
+=head2 unmeteredDevices => L<Paws::DeviceFarm::PurchasedDevicesMap>
 
   Returns the unmetered devices you have purchased.
 

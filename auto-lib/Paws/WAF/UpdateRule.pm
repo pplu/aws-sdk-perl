@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The C<RuleId> of the C<Rule> that you want to update. C<RuleId> is
 returned by C<CreateRule> and by ListRules.
 
-=head2 B<REQUIRED> Updates => ArrayRef[Paws::WAF::RuleUpdate]
+=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAF::RuleUpdate>]
 
   An array of C<RuleUpdate> objects that you want to insert into or
 delete from a Rule. For more information, see the applicable data

@@ -53,7 +53,7 @@ Example: C<mySubnetgroup>
 
   The EC2 Subnet IDs for the DB subnet group.
 
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 

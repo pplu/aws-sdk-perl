@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> artifactStore => Paws::CodePipeline::ArtifactStore
+=head2 B<REQUIRED> artifactStore => L<Paws::CodePipeline::ArtifactStore>
 
   
 
@@ -49,7 +49,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 perform actions with no actionRoleArn, or to use to assume roles for
 actions with an actionRoleArn.
 
-=head2 B<REQUIRED> stages => ArrayRef[Paws::CodePipeline::StageDeclaration]
+=head2 B<REQUIRED> stages => ArrayRef[L<Paws::CodePipeline::StageDeclaration>]
 
   The stage in which to perform the action.
 

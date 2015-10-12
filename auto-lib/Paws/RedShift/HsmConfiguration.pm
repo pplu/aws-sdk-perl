@@ -53,7 +53,7 @@ HSM.
   The name of the partition in the HSM where the Amazon Redshift clusters
 will store their database encryption keys.
 
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   The list of tags for the HSM configuration.
 

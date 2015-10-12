@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 ATTRIBUTES
 
-=head2 CustomOriginConfig => Paws::CloudFront::CustomOriginConfig
+=head2 CustomOriginConfig => L<Paws::CloudFront::CustomOriginConfig>
 
   A complex type that contains information about a custom origin. If the
 origin is an Amazon S3 bucket, use the S3OriginConfig element instead.
@@ -64,7 +64,7 @@ include the OriginPath element, specify the directory name, beginning
 with a /. CloudFront appends the directory name to the value of
 DomainName.
 
-=head2 S3OriginConfig => Paws::CloudFront::S3OriginConfig
+=head2 S3OriginConfig => L<Paws::CloudFront::S3OriginConfig>
 
   A complex type that contains information about the Amazon S3 origin. If
 the origin is a custom origin, use the CustomOriginConfig element

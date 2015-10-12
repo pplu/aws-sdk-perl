@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::ByteMa
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> FieldToMatch => Paws::WAF::FieldToMatch
+=head2 B<REQUIRED> FieldToMatch => L<Paws::WAF::FieldToMatch>
 
   The part of a web request that you want AWS WAF to search, such as a
 specified header or a query string. For more information, see

@@ -13,7 +13,7 @@ Paws::SES::GetIdentityVerificationAttributesResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> VerificationAttributes => Paws::SES::VerificationAttributes
+=head2 B<REQUIRED> VerificationAttributes => L<Paws::SES::VerificationAttributes>
 
   A map of Identities to IdentityVerificationAttributes objects.
 

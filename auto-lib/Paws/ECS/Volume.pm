@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Volume
 
 =head1 ATTRIBUTES
 
-=head2 host => Paws::ECS::HostVolumeProperties
+=head2 host => L<Paws::ECS::HostVolumeProperties>
 
   The path on the host container instance that is presented to the
 containers which access the volume. If this parameter is empty, then

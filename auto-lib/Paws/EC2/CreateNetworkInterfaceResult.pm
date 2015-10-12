@@ -13,7 +13,7 @@ Paws::EC2::CreateNetworkInterfaceResult
 
 =head1 ATTRIBUTES
 
-=head2 NetworkInterface => Paws::EC2::NetworkInterface
+=head2 NetworkInterface => L<Paws::EC2::NetworkInterface>
 
   Information about the network interface.
 

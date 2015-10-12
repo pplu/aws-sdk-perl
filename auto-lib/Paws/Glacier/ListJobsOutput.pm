@@ -14,7 +14,7 @@ Paws::Glacier::ListJobsOutput
 
 =head1 ATTRIBUTES
 
-=head2 JobList => ArrayRef[Paws::Glacier::GlacierJobDescription]
+=head2 JobList => ArrayRef[L<Paws::Glacier::GlacierJobDescription>]
 
   A list of job objects. Each job object contains metadata describing the
 job.

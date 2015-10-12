@@ -12,7 +12,7 @@ Paws::EMR::DescribeClusterOutput
 
 =head1 ATTRIBUTES
 
-=head2 Cluster => Paws::EMR::Cluster
+=head2 Cluster => L<Paws::EMR::Cluster>
 
   This output contains the details for the requested cluster.
 

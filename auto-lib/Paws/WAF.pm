@@ -423,7 +423,7 @@ HTTP requests, see the AWS WAF Developer Guide.
 
 
 
-=head2 CreateWebACL(ChangeToken => Str, DefaultAction => Paws::WAF::WafAction, MetricName => Str, Name => Str)
+=head2 CreateWebACL(ChangeToken => Str, DefaultAction => L<Paws::WAF::WafAction>, MetricName => Str, Name => Str)
 
 Each argument is described in detail in: L<Paws::WAF::CreateWebACL>
 
@@ -801,7 +801,7 @@ in the C<GetRule> request.
 
 
 
-=head2 GetSampledRequests(MaxItems => Int, RuleId => Str, TimeWindow => Paws::WAF::TimeWindow, WebAclId => Str)
+=head2 GetSampledRequests(MaxItems => Int, RuleId => Str, TimeWindow => L<Paws::WAF::TimeWindow>, WebAclId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::GetSampledRequests>
 
@@ -973,7 +973,7 @@ Returns an array of WebACLSummary objects in the response.
 
 
 
-=head2 UpdateByteMatchSet(ByteMatchSetId => Str, ChangeToken => Str, Updates => ArrayRef[Paws::WAF::ByteMatchSetUpdate])
+=head2 UpdateByteMatchSet(ByteMatchSetId => Str, ChangeToken => Str, Updates => ArrayRef[L<Paws::WAF::ByteMatchSetUpdate>])
 
 Each argument is described in detail in: L<Paws::WAF::UpdateByteMatchSet>
 
@@ -1040,7 +1040,7 @@ HTTP requests, see the AWS WAF Developer Guide.
 
 
 
-=head2 UpdateIPSet(ChangeToken => Str, IPSetId => Str, Updates => ArrayRef[Paws::WAF::IPSetUpdate])
+=head2 UpdateIPSet(ChangeToken => Str, IPSetId => Str, Updates => ArrayRef[L<Paws::WAF::IPSetUpdate>])
 
 Each argument is described in detail in: L<Paws::WAF::UpdateIPSet>
 
@@ -1108,7 +1108,7 @@ HTTP requests, see the AWS WAF Developer Guide.
 
 
 
-=head2 UpdateRule(ChangeToken => Str, RuleId => Str, Updates => ArrayRef[Paws::WAF::RuleUpdate])
+=head2 UpdateRule(ChangeToken => Str, RuleId => Str, Updates => ArrayRef[L<Paws::WAF::RuleUpdate>])
 
 Each argument is described in detail in: L<Paws::WAF::UpdateRule>
 
@@ -1174,7 +1174,7 @@ HTTP requests, see the AWS WAF Developer Guide.
 
 
 
-=head2 UpdateSqlInjectionMatchSet(ChangeToken => Str, SqlInjectionMatchSetId => Str, Updates => ArrayRef[Paws::WAF::SqlInjectionMatchSetUpdate])
+=head2 UpdateSqlInjectionMatchSet(ChangeToken => Str, SqlInjectionMatchSetId => Str, Updates => ArrayRef[L<Paws::WAF::SqlInjectionMatchSetUpdate>])
 
 Each argument is described in detail in: L<Paws::WAF::UpdateSqlInjectionMatchSet>
 
@@ -1238,7 +1238,7 @@ HTTP requests, see the AWS WAF Developer Guide.
 
 
 
-=head2 UpdateWebACL(ChangeToken => Str, WebACLId => Str, [DefaultAction => Paws::WAF::WafAction, Updates => ArrayRef[Paws::WAF::WebACLUpdate]])
+=head2 UpdateWebACL(ChangeToken => Str, WebACLId => Str, [DefaultAction => L<Paws::WAF::WafAction>, Updates => ArrayRef[L<Paws::WAF::WebACLUpdate>]])
 
 Each argument is described in detail in: L<Paws::WAF::UpdateWebACL>
 

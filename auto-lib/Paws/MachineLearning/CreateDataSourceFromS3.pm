@@ -51,7 +51,7 @@ be used for C<MLModel> training
 
   A user-supplied name or description of the C<DataSource>.
 
-=head2 B<REQUIRED> DataSpec => Paws::MachineLearning::S3DataSpec
+=head2 B<REQUIRED> DataSpec => L<Paws::MachineLearning::S3DataSpec>
 
   The data specification of a C<DataSource>:
 

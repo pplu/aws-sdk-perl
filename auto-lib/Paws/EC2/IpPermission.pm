@@ -51,11 +51,11 @@ the name (for example, C<tcp>, C<udp>, or C<icmp>). For a list of
 protocol numbers, see Protocol Numbers. (VPC only) When you call
 AuthorizeSecurityGroupIngress, you can use C<-1> to specify all.
 
-=head2 IpRanges => ArrayRef[Paws::EC2::IpRange]
+=head2 IpRanges => ArrayRef[L<Paws::EC2::IpRange>]
 
   One or more IP ranges.
 
-=head2 PrefixListIds => ArrayRef[Paws::EC2::PrefixListId]
+=head2 PrefixListIds => ArrayRef[L<Paws::EC2::PrefixListId>]
 
   (Valid for AuthorizeSecurityGroupEgress, RevokeSecurityGroupEgress and
 DescribeSecurityGroups only) One or more prefix list IDs for an AWS
@@ -68,7 +68,7 @@ associated with the security group.
   The end of port range for the TCP and UDP protocols, or an ICMP code. A
 value of C<-1> indicates all ICMP codes for the specified ICMP type.
 
-=head2 UserIdGroupPairs => ArrayRef[Paws::EC2::UserIdGroupPair]
+=head2 UserIdGroupPairs => ArrayRef[L<Paws::EC2::UserIdGroupPair>]
 
   One or more security group and AWS account ID pairs.
 

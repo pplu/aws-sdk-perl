@@ -280,7 +280,7 @@ This action is throttled at one request per second.
 
 
 
-=head2 CreateReceiptFilter(Filter => Paws::SES::ReceiptFilter)
+=head2 CreateReceiptFilter(Filter => L<Paws::SES::ReceiptFilter>)
 
 Each argument is described in detail in: L<Paws::SES::CreateReceiptFilter>
 
@@ -305,7 +305,7 @@ This action is throttled at one request per second.
 
 
 
-=head2 CreateReceiptRule(Rule => Paws::SES::ReceiptRule, RuleSetName => Str, [After => Str])
+=head2 CreateReceiptRule(Rule => L<Paws::SES::ReceiptRule>, RuleSetName => Str, [After => Str])
 
 Each argument is described in detail in: L<Paws::SES::CreateReceiptRule>
 
@@ -962,7 +962,7 @@ This action is throttled at one request per second.
 
 
 
-=head2 SendBounce(BouncedRecipientInfoList => ArrayRef[Paws::SES::BouncedRecipientInfo], BounceSender => Str, OriginalMessageId => Str, [BounceSenderArn => Str, Explanation => Str, MessageDsn => Paws::SES::MessageDsn])
+=head2 SendBounce(BouncedRecipientInfoList => ArrayRef[L<Paws::SES::BouncedRecipientInfo>], BounceSender => Str, OriginalMessageId => Str, [BounceSenderArn => Str, Explanation => Str, MessageDsn => L<Paws::SES::MessageDsn>])
 
 Each argument is described in detail in: L<Paws::SES::SendBounce>
 
@@ -992,7 +992,7 @@ This action is throttled at one request per second.
 
 
 
-=head2 SendEmail(Destination => Paws::SES::Destination, Message => Paws::SES::Message, Source => Str, [ReplyToAddresses => ArrayRef[Str], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str])
+=head2 SendEmail(Destination => L<Paws::SES::Destination>, Message => L<Paws::SES::Message>, Source => Str, [ReplyToAddresses => ArrayRef[Str], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str])
 
 Each argument is described in detail in: L<Paws::SES::SendEmail>
 
@@ -1041,7 +1041,7 @@ about your sending quota, go to the Amazon SES Developer Guide.
 
 
 
-=head2 SendRawEmail(RawMessage => Paws::SES::RawMessage, [Destinations => ArrayRef[Str], FromArn => Str, ReturnPathArn => Str, Source => Str, SourceArn => Str])
+=head2 SendRawEmail(RawMessage => L<Paws::SES::RawMessage>, [Destinations => ArrayRef[Str], FromArn => Str, ReturnPathArn => Str, Source => Str, SourceArn => Str])
 
 Each argument is described in detail in: L<Paws::SES::SendRawEmail>
 
@@ -1283,7 +1283,7 @@ This action is throttled at one request per second.
 
 
 
-=head2 UpdateReceiptRule(Rule => Paws::SES::ReceiptRule, RuleSetName => Str)
+=head2 UpdateReceiptRule(Rule => L<Paws::SES::ReceiptRule>, RuleSetName => Str)
 
 Each argument is described in detail in: L<Paws::SES::UpdateReceiptRule>
 

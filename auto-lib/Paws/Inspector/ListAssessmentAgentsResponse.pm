@@ -13,7 +13,7 @@ Paws::Inspector::ListAssessmentAgentsResponse
 
 =head1 ATTRIBUTES
 
-=head2 agentList => ArrayRef[Paws::Inspector::Agent]
+=head2 agentList => ArrayRef[L<Paws::Inspector::Agent>]
 
   A list of ARNs specifying the agents returned by the action.
 =head2 nextToken => Str

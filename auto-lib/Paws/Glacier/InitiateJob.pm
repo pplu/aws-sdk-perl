@@ -45,7 +45,7 @@ account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
-=head2 jobParameters => Paws::Glacier::JobParameters
+=head2 jobParameters => L<Paws::Glacier::JobParameters>
 
   Provides options for specifying job information.
 

@@ -12,7 +12,7 @@ Paws::Config::DescribeConfigurationRecorderStatusResponse
 
 =head1 ATTRIBUTES
 
-=head2 ConfigurationRecordersStatus => ArrayRef[Paws::Config::ConfigurationRecorderStatus]
+=head2 ConfigurationRecordersStatus => ArrayRef[L<Paws::Config::ConfigurationRecorderStatus>]
 
   A list that contains status of the specified recorders.
 

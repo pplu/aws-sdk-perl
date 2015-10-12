@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SNS::Endpoi
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => Paws::SNS::MapStringToString
+=head2 Attributes => L<Paws::SNS::MapStringToString>
 
   Attributes for endpoint.
 

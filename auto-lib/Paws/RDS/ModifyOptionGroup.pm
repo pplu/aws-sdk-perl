@@ -50,7 +50,7 @@ TDE, cannot be removed from an option group, and that option group
 cannot be removed from a DB instance once it is associated with a DB
 instance
 
-=head2 OptionsToInclude => ArrayRef[Paws::RDS::OptionConfiguration]
+=head2 OptionsToInclude => ArrayRef[L<Paws::RDS::OptionConfiguration>]
 
   Options in this list are added to the option group or, if already
 present, the specified configuration is used to update the existing

@@ -52,7 +52,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   The description of this application version.
 
-=head2 SourceBundle => Paws::ElasticBeanstalk::S3Location
+=head2 SourceBundle => L<Paws::ElasticBeanstalk::S3Location>
 
   The location where the source bundle is located for this version.
 

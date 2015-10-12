@@ -51,7 +51,7 @@ Default: None
 
 Required: Yes
 
-=head2 B<REQUIRED> Storage => Paws::EC2::Storage
+=head2 B<REQUIRED> Storage => L<Paws::EC2::Storage>
 
   The bucket in which to store the AMI. You can specify a bucket that you
 already own or a new bucket that Amazon EC2 creates on your behalf. If

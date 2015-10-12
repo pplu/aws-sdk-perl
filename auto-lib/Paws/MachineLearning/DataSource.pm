@@ -98,11 +98,11 @@ C<DataSource>.
 
   The number of data files referenced by the C<DataSource>.
 
-=head2 RDSMetadata => Paws::MachineLearning::RDSMetadata
+=head2 RDSMetadata => L<Paws::MachineLearning::RDSMetadata>
 
   
 
-=head2 RedshiftMetadata => Paws::MachineLearning::RedshiftMetadata
+=head2 RedshiftMetadata => L<Paws::MachineLearning::RedshiftMetadata>
 
   
 

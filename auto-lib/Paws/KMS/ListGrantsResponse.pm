@@ -14,7 +14,7 @@ Paws::KMS::ListGrantsResponse
 
 =head1 ATTRIBUTES
 
-=head2 Grants => ArrayRef[Paws::KMS::GrantListEntry]
+=head2 Grants => ArrayRef[L<Paws::KMS::GrantListEntry>]
 
   A list of grants.
 =head2 NextMarker => Str

@@ -187,7 +187,7 @@ your resources.
 
 =head1 METHODS
 
-=head2 AddAttachmentsToSet(attachments => ArrayRef[Paws::Support::Attachment], [attachmentSetId => Str])
+=head2 AddAttachmentsToSet(attachments => ArrayRef[L<Paws::Support::Attachment>], [attachmentSetId => Str])
 
 Each argument is described in detail in: L<Paws::Support::AddAttachmentsToSet>
 

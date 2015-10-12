@@ -69,7 +69,7 @@ successfully deploy.
 =head2 EnvironmentName => Str
 
   If not C<null>, the name of the environment for this configuration set.
-=head2 OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]
+=head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
 
   A list of the configuration options and their values in this
 configuration set.

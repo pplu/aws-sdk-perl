@@ -82,11 +82,11 @@ cluster during the maintenance window.
 
   The unique identifier of the cluster.
 
-=head2 ClusterNodes => ArrayRef[Paws::RedShift::ClusterNode]
+=head2 ClusterNodes => ArrayRef[L<Paws::RedShift::ClusterNode>]
 
   The nodes in a cluster.
 
-=head2 ClusterParameterGroups => ArrayRef[Paws::RedShift::ClusterParameterGroupStatus]
+=head2 ClusterParameterGroups => ArrayRef[L<Paws::RedShift::ClusterParameterGroupStatus>]
 
   The list of cluster parameter groups that are associated with this
 cluster. Each parameter group in the list is returned with its status.
@@ -99,7 +99,7 @@ cluster. Each parameter group in the list is returned with its status.
 
   The specific revision number of the database in the cluster.
 
-=head2 ClusterSecurityGroups => ArrayRef[Paws::RedShift::ClusterSecurityGroupMembership]
+=head2 ClusterSecurityGroups => ArrayRef[L<Paws::RedShift::ClusterSecurityGroupMembership>]
 
   A list of cluster security group that are associated with the cluster.
 Each security group is represented by an element that contains
@@ -110,7 +110,7 @@ Cluster security groups are used when the cluster is not created in a
 VPC. Clusters that are created in a VPC use VPC security groups, which
 are listed by the B<VpcSecurityGroups> parameter.
 
-=head2 ClusterSnapshotCopyStatus => Paws::RedShift::ClusterSnapshotCopyStatus
+=head2 ClusterSnapshotCopyStatus => L<Paws::RedShift::ClusterSnapshotCopyStatus>
 
   Returns the destination region and retention period that are configured
 for cross-region snapshot copy.
@@ -138,7 +138,7 @@ created. This same name is returned for the life of the cluster. If an
 initial database was not specified, a database named "dev" was created
 by default.
 
-=head2 ElasticIpStatus => Paws::RedShift::ElasticIpStatus
+=head2 ElasticIpStatus => L<Paws::RedShift::ElasticIpStatus>
 
   Describes the status of the elastic IP (EIP) address.
 
@@ -146,11 +146,11 @@ by default.
 
   If C<true>, data in the cluster is encrypted at rest.
 
-=head2 Endpoint => Paws::RedShift::Endpoint
+=head2 Endpoint => L<Paws::RedShift::Endpoint>
 
   The connection endpoint.
 
-=head2 HsmStatus => Paws::RedShift::HsmStatus
+=head2 HsmStatus => L<Paws::RedShift::HsmStatus>
 
   Reports whether the Amazon Redshift cluster has finished applying any
 HSM settings changes specified in a modify cluster command.
@@ -179,7 +179,7 @@ the database that is specified in B<DBName>.
 
   The number of compute nodes in the cluster.
 
-=head2 PendingModifiedValues => Paws::RedShift::PendingModifiedValues
+=head2 PendingModifiedValues => L<Paws::RedShift::PendingModifiedValues>
 
   If present, changes to the cluster are pending. Specific pending
 changes are identified by subelements.
@@ -193,12 +193,12 @@ occur.
 
   If C<true>, the cluster can be accessed from a public network.
 
-=head2 RestoreStatus => Paws::RedShift::RestoreStatus
+=head2 RestoreStatus => L<Paws::RedShift::RestoreStatus>
 
   Describes the status of a cluster restore action. Returns null if the
 cluster was not created by restoring a snapshot.
 
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   The list of tags for the cluster.
 
@@ -207,7 +207,7 @@ cluster was not created by restoring a snapshot.
   The identifier of the VPC the cluster is in, if the cluster is in a
 VPC.
 
-=head2 VpcSecurityGroups => ArrayRef[Paws::RedShift::VpcSecurityGroupMembership]
+=head2 VpcSecurityGroups => ArrayRef[L<Paws::RedShift::VpcSecurityGroupMembership>]
 
   A list of Virtual Private Cloud (VPC) security groups that are
 associated with the cluster. This parameter is returned only if the

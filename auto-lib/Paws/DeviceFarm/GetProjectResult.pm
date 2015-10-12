@@ -12,7 +12,7 @@ Paws::DeviceFarm::GetProjectResult
 
 =head1 ATTRIBUTES
 
-=head2 project => Paws::DeviceFarm::Project
+=head2 project => L<Paws::DeviceFarm::Project>
 
   
 

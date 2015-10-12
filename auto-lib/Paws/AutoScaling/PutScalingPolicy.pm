@@ -112,7 +112,7 @@ removes from the current capacity.
 This parameter is required if the policy type is C<SimpleScaling> and
 not supported otherwise.
 
-=head2 StepAdjustments => ArrayRef[Paws::AutoScaling::StepAdjustment]
+=head2 StepAdjustments => ArrayRef[L<Paws::AutoScaling::StepAdjustment>]
 
   A set of adjustments that enable you to scale based on the size of the
 alarm breach.

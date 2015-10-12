@@ -14,10 +14,10 @@ Paws::ElasticTranscoder::UpdatePipelineResponse
 
 =head1 ATTRIBUTES
 
-=head2 Pipeline => Paws::ElasticTranscoder::Pipeline
+=head2 Pipeline => L<Paws::ElasticTranscoder::Pipeline>
 
   
-=head2 Warnings => ArrayRef[Paws::ElasticTranscoder::Warning]
+=head2 Warnings => ArrayRef[L<Paws::ElasticTranscoder::Warning>]
 
   Elastic Transcoder returns a warning if the resources used by your
 pipeline are not in the same region as the pipeline.

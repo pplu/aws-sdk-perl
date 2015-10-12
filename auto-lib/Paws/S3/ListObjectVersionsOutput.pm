@@ -39,11 +39,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 CommonPrefixes => ArrayRef[Paws::S3::CommonPrefix]
+=head2 CommonPrefixes => ArrayRef[L<Paws::S3::CommonPrefix>]
 
   
 
-=head2 DeleteMarkers => ArrayRef[Paws::S3::DeleteMarkerEntry]
+=head2 DeleteMarkers => ArrayRef[L<Paws::S3::DeleteMarkerEntry>]
 
   
 
@@ -93,7 +93,7 @@ request.
 
   
 
-=head2 Versions => ArrayRef[Paws::S3::ObjectVersion]
+=head2 Versions => ArrayRef[L<Paws::S3::ObjectVersion>]
 
   
 

@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   A required parameter. Options available for the given engine name will
 be described.
 
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
   This parameter is not currently supported.
 

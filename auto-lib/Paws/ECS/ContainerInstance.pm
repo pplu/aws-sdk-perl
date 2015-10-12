@@ -53,7 +53,7 @@ accept placement requests.
   The status of the most recent agent update. If an update has never been
 requested, this value is C<NULL>.
 
-=head2 attributes => ArrayRef[Paws::ECS::Attribute]
+=head2 attributes => ArrayRef[L<Paws::ECS::Attribute>]
 
   The attributes set for the container instance by the Amazon ECS
 container agent at instance registration.
@@ -76,12 +76,12 @@ arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_
   The number of tasks on the container instance that are in the
 C<PENDING> status.
 
-=head2 registeredResources => ArrayRef[Paws::ECS::Resource]
+=head2 registeredResources => ArrayRef[L<Paws::ECS::Resource>]
 
   The registered resources on the container instance that are in use by
 current tasks.
 
-=head2 remainingResources => ArrayRef[Paws::ECS::Resource]
+=head2 remainingResources => ArrayRef[L<Paws::ECS::Resource>]
 
   The remaining resources of the container instance that are available
 for new tasks.
@@ -97,7 +97,7 @@ C<RUNNING> status.
 C<INACTIVE>. C<ACTIVE> indicates that the container instance can accept
 tasks.
 
-=head2 versionInfo => Paws::ECS::VersionInfo
+=head2 versionInfo => L<Paws::ECS::VersionInfo>
 
   The version information for the Amazon ECS container agent and Docker
 daemon running on the container instance.

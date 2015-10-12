@@ -98,7 +98,7 @@ information about CloudTrail, see What is AWS CloudTrail?.
 An empty field indicates that the current configuration was not
 initiated by any event.
 
-=head2 relationships => ArrayRef[Paws::Config::Relationship]
+=head2 relationships => ArrayRef[L<Paws::Config::Relationship>]
 
   A list of related AWS resources.
 
@@ -118,7 +118,7 @@ initiated by any event.
 
   The type of AWS resource.
 
-=head2 tags => Paws::Config::Tags
+=head2 tags => L<Paws::Config::Tags>
 
   A mapping of key value tags associated with the resource.
 

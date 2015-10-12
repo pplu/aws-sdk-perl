@@ -14,7 +14,7 @@ Paws::RDS::EventSubscriptionsMessage
 
 =head1 ATTRIBUTES
 
-=head2 EventSubscriptionsList => ArrayRef[Paws::RDS::EventSubscription]
+=head2 EventSubscriptionsList => ArrayRef[L<Paws::RDS::EventSubscription>]
 
   A list of EventSubscriptions data types.
 =head2 Marker => Str

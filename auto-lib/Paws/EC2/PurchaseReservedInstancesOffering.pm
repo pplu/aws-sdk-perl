@@ -46,7 +46,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
   The number of Reserved Instances to purchase.
 
-=head2 LimitPrice => Paws::EC2::ReservedInstanceLimitPrice
+=head2 LimitPrice => L<Paws::EC2::ReservedInstanceLimitPrice>
 
   Specified for Reserved Instance Marketplace offerings to limit the
 total order and ensure that the Reserved Instances are not purchased at

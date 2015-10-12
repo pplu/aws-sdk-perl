@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Tagging
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> TagSet => ArrayRef[Paws::S3::Tag]
+=head2 B<REQUIRED> TagSet => ArrayRef[L<Paws::S3::Tag>]
 
   
 

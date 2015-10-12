@@ -52,7 +52,7 @@ be used for C<MLModel> training
 
   A user-supplied name or description of the C<DataSource>.
 
-=head2 B<REQUIRED> DataSpec => Paws::MachineLearning::RedshiftDataSpec
+=head2 B<REQUIRED> DataSpec => L<Paws::MachineLearning::RedshiftDataSpec>
 
   The data specification of an Amazon Redshift C<DataSource>:
 

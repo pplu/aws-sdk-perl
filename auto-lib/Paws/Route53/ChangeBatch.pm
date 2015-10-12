@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ch
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Changes => ArrayRef[Paws::Route53::Change]
+=head2 B<REQUIRED> Changes => ArrayRef[L<Paws::Route53::Change>]
 
   A complex type that contains one C<Change> element for each resource
 record set that you want to create or delete.

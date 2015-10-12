@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::D
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Key => Paws::DynamoDB::Key
+=head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
 
   A map of attribute name to attribute values, representing the primary
 key of the item to delete. All of the table's primary key attributes

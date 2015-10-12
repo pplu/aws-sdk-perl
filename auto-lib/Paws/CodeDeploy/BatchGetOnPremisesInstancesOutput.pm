@@ -12,7 +12,7 @@ Paws::CodeDeploy::BatchGetOnPremisesInstancesOutput
 
 =head1 ATTRIBUTES
 
-=head2 instanceInfos => ArrayRef[Paws::CodeDeploy::InstanceInfo]
+=head2 instanceInfos => ArrayRef[L<Paws::CodeDeploy::InstanceInfo>]
 
   Information about the on-premises instances.
 

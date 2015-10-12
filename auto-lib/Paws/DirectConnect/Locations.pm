@@ -12,7 +12,7 @@ Paws::DirectConnect::Locations
 
 =head1 ATTRIBUTES
 
-=head2 locations => ArrayRef[Paws::DirectConnect::Location]
+=head2 locations => ArrayRef[L<Paws::DirectConnect::Location>]
 
   
 

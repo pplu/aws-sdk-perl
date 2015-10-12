@@ -52,7 +52,7 @@ retrieve the next set of results.
 
   The ID of the pipeline.
 
-=head2 query => Paws::DataPipeline::Query
+=head2 query => L<Paws::DataPipeline::Query>
 
   The query that defines the objects to be returned. The C<Query> object
 can contain a maximum of ten selectors. The conditions in the query are

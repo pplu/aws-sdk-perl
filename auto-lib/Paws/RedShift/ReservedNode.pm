@@ -67,7 +67,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::R
   The anticipated utilization of the reserved node, as defined in the
 reserved node offering.
 
-=head2 RecurringCharges => ArrayRef[Paws::RedShift::RecurringCharge]
+=head2 RecurringCharges => ArrayRef[L<Paws::RedShift::RecurringCharge>]
 
   The recurring charges for the reserved node.
 

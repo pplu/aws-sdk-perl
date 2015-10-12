@@ -13,7 +13,7 @@ Paws::DeviceFarm::ListDevicePoolsResult
 
 =head1 ATTRIBUTES
 
-=head2 devicePools => ArrayRef[Paws::DeviceFarm::DevicePool]
+=head2 devicePools => ArrayRef[L<Paws::DeviceFarm::DevicePool>]
 
   Information about the device pools.
 =head2 nextToken => Str

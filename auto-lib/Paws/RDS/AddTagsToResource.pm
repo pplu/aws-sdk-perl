@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Amazon Resource Name (ARN). For information about creating an ARN, see
 Constructing an RDS Amazon Resource Name (ARN).
 
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::RDS::Tag]
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   The tags to be assigned to the Amazon RDS resource.
 

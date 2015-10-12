@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The C<IPSetId> of the IPSet that you want to update. C<IPSetId> is
 returned by CreateIPSet and by ListIPSets.
 
-=head2 B<REQUIRED> Updates => ArrayRef[Paws::WAF::IPSetUpdate]
+=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAF::IPSetUpdate>]
 
   An array of C<IPSetUpdate> objects that you want to insert into or
 delete from an IPSet. For more information, see the applicable data

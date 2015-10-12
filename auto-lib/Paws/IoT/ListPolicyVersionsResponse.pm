@@ -13,7 +13,7 @@ Paws::IoT::ListPolicyVersionsResponse
 
 =head1 ATTRIBUTES
 
-=head2 policyVersions => ArrayRef[Paws::IoT::PolicyVersion]
+=head2 policyVersions => ArrayRef[L<Paws::IoT::PolicyVersion>]
 
   The policy versions.
 

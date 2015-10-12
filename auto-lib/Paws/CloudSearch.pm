@@ -224,7 +224,7 @@ Search Domain in the I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DefineAnalysisScheme(AnalysisScheme => Paws::CloudSearch::AnalysisScheme, DomainName => Str)
+=head2 DefineAnalysisScheme(AnalysisScheme => L<Paws::CloudSearch::AnalysisScheme>, DomainName => Str)
 
 Each argument is described in detail in: L<Paws::CloudSearch::DefineAnalysisScheme>
 
@@ -247,7 +247,7 @@ I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DefineExpression(DomainName => Str, Expression => Paws::CloudSearch::Expression)
+=head2 DefineExpression(DomainName => Str, Expression => L<Paws::CloudSearch::Expression>)
 
 Each argument is described in detail in: L<Paws::CloudSearch::DefineExpression>
 
@@ -270,7 +270,7 @@ Configuring Expressions in the I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DefineIndexField(DomainName => Str, IndexField => Paws::CloudSearch::IndexField)
+=head2 DefineIndexField(DomainName => Str, IndexField => L<Paws::CloudSearch::IndexField>)
 
 Each argument is described in detail in: L<Paws::CloudSearch::DefineIndexField>
 
@@ -297,7 +297,7 @@ Configuring Index Fields in the I<Amazon CloudSearch Developer Guide>.
 
 
 
-=head2 DefineSuggester(DomainName => Str, Suggester => Paws::CloudSearch::Suggester)
+=head2 DefineSuggester(DomainName => Str, Suggester => L<Paws::CloudSearch::Suggester>)
 
 Each argument is described in detail in: L<Paws::CloudSearch::DefineSuggester>
 
@@ -699,7 +699,7 @@ Guide>.
 
 
 
-=head2 UpdateScalingParameters(DomainName => Str, ScalingParameters => Paws::CloudSearch::ScalingParameters)
+=head2 UpdateScalingParameters(DomainName => Str, ScalingParameters => L<Paws::CloudSearch::ScalingParameters>)
 
 Each argument is described in detail in: L<Paws::CloudSearch::UpdateScalingParameters>
 

@@ -57,7 +57,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 Default: If no value is specified, we replace the ingress rule.
 
-=head2 IcmpTypeCode => Paws::EC2::IcmpTypeCode
+=head2 IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>
 
   ICMP protocol: The ICMP type and code. Required if specifying 1 (ICMP)
 for the protocol.
@@ -66,7 +66,7 @@ for the protocol.
 
   The ID of the ACL.
 
-=head2 PortRange => Paws::EC2::PortRange
+=head2 PortRange => L<Paws::EC2::PortRange>
 
   TCP or UDP protocols: The range of ports the rule applies to. Required
 if specifying 6 (TCP) or 17 (UDP) for the protocol.

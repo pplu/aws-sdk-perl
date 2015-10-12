@@ -12,7 +12,7 @@ Paws::DirectConnect::Connections
 
 =head1 ATTRIBUTES
 
-=head2 connections => ArrayRef[Paws::DirectConnect::Connection]
+=head2 connections => ArrayRef[L<Paws::DirectConnect::Connection>]
 
   A list of connections.
 

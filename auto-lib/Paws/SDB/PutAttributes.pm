@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Attributes => ArrayRef[Paws::SDB::ReplaceableAttribute]
+=head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::SDB::ReplaceableAttribute>]
 
   The list of attributes.
 
@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the domain in which to perform the operation.
 
-=head2 Expected => Paws::SDB::UpdateCondition
+=head2 Expected => L<Paws::SDB::UpdateCondition>
 
   The update condition which, if specified, determines whether the
 specified attributes will be updated or not. The update condition must

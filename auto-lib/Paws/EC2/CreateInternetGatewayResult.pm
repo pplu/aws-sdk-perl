@@ -13,7 +13,7 @@ Paws::EC2::CreateInternetGatewayResult
 
 =head1 ATTRIBUTES
 
-=head2 InternetGateway => Paws::EC2::InternetGateway
+=head2 InternetGateway => L<Paws::EC2::InternetGateway>
 
   Information about the Internet gateway.
 

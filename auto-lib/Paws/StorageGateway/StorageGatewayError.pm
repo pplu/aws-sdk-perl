@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
   Additional information about the error.
 
-=head2 errorDetails => Paws::StorageGateway::errorDetails
+=head2 errorDetails => L<Paws::StorageGateway::errorDetails>
 
   Human-readable text that provides detail about the error that occurred.
 

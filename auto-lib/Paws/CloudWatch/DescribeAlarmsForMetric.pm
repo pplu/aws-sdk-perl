@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Dimensions => ArrayRef[Paws::CloudWatch::Dimension]
+=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
   The list of dimensions associated with the metric.
 

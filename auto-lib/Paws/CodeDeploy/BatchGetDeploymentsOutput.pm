@@ -12,7 +12,7 @@ Paws::CodeDeploy::BatchGetDeploymentsOutput
 
 =head1 ATTRIBUTES
 
-=head2 deploymentsInfo => ArrayRef[Paws::CodeDeploy::DeploymentInfo]
+=head2 deploymentsInfo => ArrayRef[L<Paws::CodeDeploy::DeploymentInfo>]
 
   Information about the deployments.
 

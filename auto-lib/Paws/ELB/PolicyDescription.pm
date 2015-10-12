@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Policy
 
 =head1 ATTRIBUTES
 
-=head2 PolicyAttributeDescriptions => ArrayRef[Paws::ELB::PolicyAttributeDescription]
+=head2 PolicyAttributeDescriptions => ArrayRef[L<Paws::ELB::PolicyAttributeDescription>]
 
   The policy attributes.
 

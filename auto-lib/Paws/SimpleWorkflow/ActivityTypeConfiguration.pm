@@ -53,7 +53,7 @@ activity worker should clean up the activity task.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-=head2 defaultTaskList => Paws::SimpleWorkflow::TaskList
+=head2 defaultTaskList => L<Paws::SimpleWorkflow::TaskList>
 
   I<Optional.> The default task list specified for this activity type at
 registration. This default is used if a task list is not provided when

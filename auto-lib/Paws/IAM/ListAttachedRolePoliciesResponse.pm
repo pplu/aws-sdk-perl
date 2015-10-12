@@ -15,7 +15,7 @@ Paws::IAM::ListAttachedRolePoliciesResponse
 
 =head1 ATTRIBUTES
 
-=head2 AttachedPolicies => ArrayRef[Paws::IAM::AttachedPolicy]
+=head2 AttachedPolicies => ArrayRef[L<Paws::IAM::AttachedPolicy>]
 
   A list of the attached policies.
 =head2 IsTruncated => Bool

@@ -44,7 +44,7 @@ default parameters apply to.
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by C<MaxRecords> .
 
-=head2 Parameters => ArrayRef[Paws::RDS::Parameter]
+=head2 Parameters => ArrayRef[L<Paws::RDS::Parameter>]
 
   Contains a list of engine default parameters.
 

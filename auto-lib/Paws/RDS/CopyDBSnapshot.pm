@@ -64,7 +64,7 @@ Example: C<rds:mydb-2012-04-02-00-01>
 Example:
 C<arn:aws:rds:rr-regn-1:123456789012:snapshot:mysql-instance1-snapshot-20130805>
 
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 

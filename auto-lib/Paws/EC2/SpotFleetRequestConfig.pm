@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::SpotFl
 
   The creation date and time of the request.
 
-=head2 B<REQUIRED> SpotFleetRequestConfig => Paws::EC2::SpotFleetRequestConfigData
+=head2 B<REQUIRED> SpotFleetRequestConfig => L<Paws::EC2::SpotFleetRequestConfigData>
 
   Information about the configuration of the Spot fleet request.
 

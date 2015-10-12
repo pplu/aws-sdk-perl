@@ -96,7 +96,7 @@ the history of the source workflow execution. This information can be
 useful for diagnosing problems by tracing back the chain of events
 leading up to this event.
 
-=head2 parentWorkflowExecution => Paws::SimpleWorkflow::WorkflowExecution
+=head2 parentWorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The source workflow execution that started this workflow execution. The
 member is not set if the workflow execution was not started by a
@@ -107,7 +107,7 @@ workflow.
   The list of tags associated with this workflow execution. An execution
 can have up to 5 tags.
 
-=head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
+=head2 B<REQUIRED> taskList => L<Paws::SimpleWorkflow::TaskList>
 
   The name of the task list for scheduling the decision tasks for this
 workflow execution.
@@ -123,7 +123,7 @@ workflow execution.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-=head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
+=head2 B<REQUIRED> workflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
   The workflow type of this execution.
 

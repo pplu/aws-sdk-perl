@@ -12,7 +12,7 @@ Paws::CodePipeline::UpdatePipelineOutput
 
 =head1 ATTRIBUTES
 
-=head2 pipeline => Paws::CodePipeline::PipelineDeclaration
+=head2 pipeline => L<Paws::CodePipeline::PipelineDeclaration>
 
   The structure of the updated pipeline.
 

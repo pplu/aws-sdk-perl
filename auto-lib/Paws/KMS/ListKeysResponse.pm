@@ -14,7 +14,7 @@ Paws::KMS::ListKeysResponse
 
 =head1 ATTRIBUTES
 
-=head2 Keys => ArrayRef[Paws::KMS::KeyListEntry]
+=head2 Keys => ArrayRef[L<Paws::KMS::KeyListEntry>]
 
   A list of keys.
 =head2 NextMarker => Str

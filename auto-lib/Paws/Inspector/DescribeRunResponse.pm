@@ -12,7 +12,7 @@ Paws::Inspector::DescribeRunResponse
 
 =head1 ATTRIBUTES
 
-=head2 run => Paws::Inspector::Run
+=head2 run => L<Paws::Inspector::Run>
 
   Information about the assessment run.
 

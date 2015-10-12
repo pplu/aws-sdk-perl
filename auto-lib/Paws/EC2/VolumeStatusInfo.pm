@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Volume
 
 =head1 ATTRIBUTES
 
-=head2 Details => ArrayRef[Paws::EC2::VolumeStatusDetails]
+=head2 Details => ArrayRef[L<Paws::EC2::VolumeStatusDetails>]
 
   The details of the volume status.
 

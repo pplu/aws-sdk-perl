@@ -163,7 +163,7 @@ configuration document with the new configuration document.
 
 
 
-=head2 CreateAssociationBatch(Entries => ArrayRef[Paws::SSM::CreateAssociationBatchRequestEntry])
+=head2 CreateAssociationBatch(Entries => ArrayRef[L<Paws::SSM::CreateAssociationBatchRequestEntry>])
 
 Each argument is described in detail in: L<Paws::SSM::CreateAssociationBatch>
 
@@ -326,7 +326,7 @@ Gets the contents of the specified configuration document.
 
 
 
-=head2 ListAssociations(AssociationFilterList => ArrayRef[Paws::SSM::AssociationFilter], [MaxResults => Int, NextToken => Str])
+=head2 ListAssociations(AssociationFilterList => ArrayRef[L<Paws::SSM::AssociationFilter>], [MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SSM::ListAssociations>
 
@@ -347,7 +347,7 @@ instance.
 
 
 
-=head2 ListDocuments([DocumentFilterList => ArrayRef[Paws::SSM::DocumentFilter], MaxResults => Int, NextToken => Str])
+=head2 ListDocuments([DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SSM::ListDocuments>
 
@@ -367,7 +367,7 @@ Describes one or more of your configuration documents.
 
 
 
-=head2 UpdateAssociationStatus(AssociationStatus => Paws::SSM::AssociationStatus, InstanceId => Str, Name => Str)
+=head2 UpdateAssociationStatus(AssociationStatus => L<Paws::SSM::AssociationStatus>, InstanceId => Str, Name => Str)
 
 Each argument is described in detail in: L<Paws::SSM::UpdateAssociationStatus>
 

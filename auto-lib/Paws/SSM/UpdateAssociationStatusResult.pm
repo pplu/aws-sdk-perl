@@ -12,7 +12,7 @@ Paws::SSM::UpdateAssociationStatusResult
 
 =head1 ATTRIBUTES
 
-=head2 AssociationDescription => Paws::SSM::AssociationDescription
+=head2 AssociationDescription => L<Paws::SSM::AssociationDescription>
 
   Information about the association.
 

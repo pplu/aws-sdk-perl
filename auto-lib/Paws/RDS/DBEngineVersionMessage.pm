@@ -14,7 +14,7 @@ Paws::RDS::DBEngineVersionMessage
 
 =head1 ATTRIBUTES
 
-=head2 DBEngineVersions => ArrayRef[Paws::RDS::DBEngineVersion]
+=head2 DBEngineVersions => ArrayRef[L<Paws::RDS::DBEngineVersion>]
 
   A list of C<DBEngineVersion> elements.
 =head2 Marker => Str

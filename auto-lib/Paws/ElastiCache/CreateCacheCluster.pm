@@ -334,7 +334,7 @@ automatically choose an appropriate time range.
 B<Note:> This parameter is only valid if the C<Engine> parameter is
 C<redis>.
 
-=head2 Tags => ArrayRef[Paws::ElastiCache::Tag]
+=head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
 
   A list of cost allocation tags to be added to this resource. A tag is a
 key-value pair. A tag key must be accompanied by a tag value.

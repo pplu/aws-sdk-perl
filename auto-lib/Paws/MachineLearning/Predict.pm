@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-=head2 B<REQUIRED> Record => Paws::MachineLearning::Record
+=head2 B<REQUIRED> Record => L<Paws::MachineLearning::Record>
 
   
 

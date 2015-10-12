@@ -24,7 +24,7 @@ that were fetched for description ended. Use the marker in your next
 request to fetch the next set of VTL devices in the list. If there are
 no more VTL devices to describe, this field does not appear in the
 response.
-=head2 VTLDevices => ArrayRef[Paws::StorageGateway::VTLDevice]
+=head2 VTLDevices => ArrayRef[L<Paws::StorageGateway::VTLDevice>]
 
   An array of VTL device objects composed of the Amazon Resource
 Name(ARN) of the VTL devices.

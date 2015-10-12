@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The identifier of the pipeline for which you want to change
 notification settings.
 
-=head2 B<REQUIRED> Notifications => Paws::ElasticTranscoder::Notifications
+=head2 B<REQUIRED> Notifications => L<Paws::ElasticTranscoder::Notifications>
 
   The topic ARN for the Amazon Simple Notification Service (Amazon SNS)
 topic that you want to notify to report job status.

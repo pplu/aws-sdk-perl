@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 filter => Paws::Inspector::FindingsFilter
+=head2 filter => L<Paws::Inspector::FindingsFilter>
 
   You can use this parameter to specify a subset of data to be included
 in the action's response.

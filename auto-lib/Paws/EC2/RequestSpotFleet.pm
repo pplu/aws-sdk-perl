@@ -40,7 +40,7 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-=head2 B<REQUIRED> SpotFleetRequestConfig => Paws::EC2::SpotFleetRequestConfigData
+=head2 B<REQUIRED> SpotFleetRequestConfig => L<Paws::EC2::SpotFleetRequestConfigData>
 
   The configuration for the Spot fleet request.
 

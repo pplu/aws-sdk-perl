@@ -57,7 +57,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Image 
 
   The architecture of the image.
 
-=head2 BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping]
+=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
   Any block device mapping entries.
 
@@ -107,7 +107,7 @@ machine images.
 
   The value is C<Windows> for Windows AMIs; otherwise blank.
 
-=head2 ProductCodes => ArrayRef[Paws::EC2::ProductCode]
+=head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
   Any product codes associated with the AMI.
 
@@ -141,11 +141,11 @@ or an instance store volume.
   The current state of the AMI. If the state is C<available>, the image
 is successfully registered and can be used to launch an instance.
 
-=head2 StateReason => Paws::EC2::StateReason
+=head2 StateReason => L<Paws::EC2::StateReason>
 
   The reason for the state change.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the image.
 

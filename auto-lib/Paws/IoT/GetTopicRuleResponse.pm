@@ -13,7 +13,7 @@ Paws::IoT::GetTopicRuleResponse
 
 =head1 ATTRIBUTES
 
-=head2 rule => Paws::IoT::TopicRule
+=head2 rule => L<Paws::IoT::TopicRule>
 
   The rule.
 

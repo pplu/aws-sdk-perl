@@ -12,7 +12,7 @@ Paws::Config::DescribeConfigurationRecordersResponse
 
 =head1 ATTRIBUTES
 
-=head2 ConfigurationRecorders => ArrayRef[Paws::Config::ConfigurationRecorder]
+=head2 ConfigurationRecorders => ArrayRef[L<Paws::Config::ConfigurationRecorder>]
 
   A list that contains the descriptions of the specified configuration
 recorders.

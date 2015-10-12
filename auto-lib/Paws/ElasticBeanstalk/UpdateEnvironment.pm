@@ -66,13 +66,13 @@ Condition: You must specify either this or an EnvironmentId, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
 
-=head2 OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]
+=head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
 
   If specified, AWS Elastic Beanstalk updates the configuration set
 associated with the running environment and sets the specified
 configuration options to the requested value.
 
-=head2 OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]
+=head2 OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]
 
   A list of custom user-defined configuration options to remove from the
 configuration set for this environment.
@@ -89,7 +89,7 @@ configuration template to the environment. If no such configuration
 template is found, AWS Elastic Beanstalk returns an
 C<InvalidParameterValue> error.
 
-=head2 Tier => Paws::ElasticBeanstalk::EnvironmentTier
+=head2 Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>
 
   This specifies the tier to use to update the environment.
 

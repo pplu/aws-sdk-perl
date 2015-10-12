@@ -29,7 +29,7 @@ results.
   When C<IsTruncated> is C<true>, this element is present and contains
 the value to use for the C<Marker> parameter in a subsequent pagination
 request.
-=head2 SSHPublicKeys => ArrayRef[Paws::IAM::SSHPublicKeyMetadata]
+=head2 SSHPublicKeys => ArrayRef[L<Paws::IAM::SSHPublicKeyMetadata>]
 
   A list of SSH public keys.
 

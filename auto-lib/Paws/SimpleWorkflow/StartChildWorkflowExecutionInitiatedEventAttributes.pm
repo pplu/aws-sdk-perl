@@ -98,7 +98,7 @@ AWS Lambda functions.
 
   The list of tags to associated with the child workflow execution.
 
-=head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
+=head2 B<REQUIRED> taskList => L<Paws::SimpleWorkflow::TaskList>
 
   The name of the task list used for the decision tasks of the child
 workflow execution.
@@ -125,7 +125,7 @@ to 0. The value "NONE" can be used to specify unlimited duration.
 
   The C<workflowId> of the child workflow execution.
 
-=head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
+=head2 B<REQUIRED> workflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
   The type of the child workflow execution.
 

@@ -41,12 +41,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> DatabaseCredentials => Paws::MachineLearning::RDSDatabaseCredentials
+=head2 B<REQUIRED> DatabaseCredentials => L<Paws::MachineLearning::RDSDatabaseCredentials>
 
   The AWS Identity and Access Management (IAM) credentials that are used
 connect to the Amazon RDS database.
 
-=head2 B<REQUIRED> DatabaseInformation => Paws::MachineLearning::RDSDatabase
+=head2 B<REQUIRED> DatabaseInformation => L<Paws::MachineLearning::RDSDatabase>
 
   Describes the C<DatabaseName> and C<InstanceIdentifier> of an an Amazon
 RDS database.

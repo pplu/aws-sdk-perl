@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   Filters the list of option groups to only include groups associated
 with a specific database engine.
 
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
   This parameter is not currently supported.
 

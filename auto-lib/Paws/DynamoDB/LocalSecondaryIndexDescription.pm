@@ -56,12 +56,12 @@ reflected in this value.
 approximately every six hours. Recent changes might not be reflected in
 this value.
 
-=head2 KeySchema => ArrayRef[Paws::DynamoDB::KeySchemaElement]
+=head2 KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
   The complete index key schema, which consists of one or more pairs of
 attribute names and key types (C<HASH> or C<RANGE>).
 
-=head2 Projection => Paws::DynamoDB::Projection
+=head2 Projection => L<Paws::DynamoDB::Projection>
 
   
 

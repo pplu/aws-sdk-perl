@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 the name "default" when creating the configuration recorder. You cannot
 change the assigned name.
 
-=head2 recordingGroup => Paws::Config::RecordingGroup
+=head2 recordingGroup => L<Paws::Config::RecordingGroup>
 
   The recording group specifies either to record configurations for all
 supported resources or to provide a list of resource types to record.

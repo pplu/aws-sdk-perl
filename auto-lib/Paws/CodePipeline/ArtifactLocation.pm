@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 ATTRIBUTES
 
-=head2 s3Location => Paws::CodePipeline::S3ArtifactLocation
+=head2 s3Location => L<Paws::CodePipeline::S3ArtifactLocation>
 
   The Amazon S3 bucket that contains the artifact.
 

@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
 
 =head1 ATTRIBUTES
 
-=head2 ClusterParameterStatusList => ArrayRef[Paws::RedShift::ClusterParameterStatus]
+=head2 ClusterParameterStatusList => ArrayRef[L<Paws::RedShift::ClusterParameterStatus>]
 
   The list of parameter statuses.
 

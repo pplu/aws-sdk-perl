@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Option
 
 =head1 ATTRIBUTES
 
-=head2 DBSecurityGroupMemberships => ArrayRef[Paws::RDS::DBSecurityGroupMembership]
+=head2 DBSecurityGroupMemberships => ArrayRef[L<Paws::RDS::DBSecurityGroupMembership>]
 
   If the option requires access to a port, then this DB security group
 allows access to the port.
@@ -51,7 +51,7 @@ allows access to the port.
 
   The name of the option.
 
-=head2 OptionSettings => ArrayRef[Paws::RDS::OptionSetting]
+=head2 OptionSettings => ArrayRef[L<Paws::RDS::OptionSetting>]
 
   The option settings for this option.
 
@@ -67,7 +67,7 @@ allows access to the port.
 
   If required, the port configured for this option to use.
 
-=head2 VpcSecurityGroupMemberships => ArrayRef[Paws::RDS::VpcSecurityGroupMembership]
+=head2 VpcSecurityGroupMemberships => ArrayRef[L<Paws::RDS::VpcSecurityGroupMembership>]
 
   If the option requires access to a port, then this VPC security group
 allows access to the port.

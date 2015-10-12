@@ -12,7 +12,7 @@ Paws::DynamoDBStreams::DescribeStreamOutput
 
 =head1 ATTRIBUTES
 
-=head2 StreamDescription => Paws::DynamoDBStreams::StreamDescription
+=head2 StreamDescription => L<Paws::DynamoDBStreams::StreamDescription>
 
   A complete description of the stream, including its creation date and
 time, the DynamoDB table associated with the stream, the shard IDs

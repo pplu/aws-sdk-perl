@@ -26,7 +26,7 @@ If C<LastEvaluatedStreamArn> is not empty, it does not necessarily mean
 that there is more data in the result set. The only way to know when
 you have reached the end of the result set is when
 C<LastEvaluatedStreamArn> is empty.
-=head2 Streams => ArrayRef[Paws::DynamoDBStreams::Stream]
+=head2 Streams => ArrayRef[L<Paws::DynamoDBStreams::Stream>]
 
   A list of stream descriptors associated with the current account and
 endpoint.

@@ -93,7 +93,7 @@ use only time-based instances.
   The instance Availability Zone. For more information, see Regions and
 Endpoints.
 
-=head2 BlockDeviceMappings => ArrayRef[Paws::OpsWorks::BlockDeviceMapping]
+=head2 BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>]
 
   An array of C<BlockDeviceMapping> objects that specify the instance's
 block devices. For more information, see Block Device Mapping.

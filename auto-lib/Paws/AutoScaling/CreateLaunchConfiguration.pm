@@ -65,7 +65,7 @@ is C<true>. If the instance is launched into a nondefault subnet, the
 default is C<false>. For more information, see Supported Platforms in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
-=head2 BlockDeviceMappings => ArrayRef[Paws::AutoScaling::BlockDeviceMapping]
+=head2 BlockDeviceMappings => ArrayRef[L<Paws::AutoScaling::BlockDeviceMapping>]
 
   One or more mappings that specify how block devices are exposed to the
 instance. For more information, see Block Device Mapping in the
@@ -127,7 +127,7 @@ same request.
 For more information, see Create a Launch Configuration Using an EC2
 Instance in the I<Auto Scaling Developer Guide>.
 
-=head2 InstanceMonitoring => Paws::AutoScaling::InstanceMonitoring
+=head2 InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>
 
   Enables detailed monitoring if it is disabled. Detailed monitoring is
 enabled by default.

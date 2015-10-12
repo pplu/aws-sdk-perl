@@ -57,7 +57,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 retrieving the price history data, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
   One or more filters.
 

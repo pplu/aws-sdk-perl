@@ -21,7 +21,7 @@ request. When the results of a C<DescribeSnapshots> request exceed
 C<MaxResults>, this value can be used to retrieve the next page of
 results. This value is C<null> when there are no more results to
 return.
-=head2 Snapshots => ArrayRef[Paws::EC2::Snapshot]
+=head2 Snapshots => ArrayRef[L<Paws::EC2::Snapshot>]
 
   Information about the snapshots.
 

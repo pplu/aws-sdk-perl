@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 
 =head1 ATTRIBUTES
 
-=head2 ComplianceSummary => Paws::Config::ComplianceSummary
+=head2 ComplianceSummary => L<Paws::Config::ComplianceSummary>
 
   The number of AWS resources that are compliant or noncompliant, up to a
 maximum of 100 for each compliance.

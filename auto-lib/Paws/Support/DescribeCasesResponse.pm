@@ -13,7 +13,7 @@ Paws::Support::DescribeCasesResponse
 
 =head1 ATTRIBUTES
 
-=head2 cases => ArrayRef[Paws::Support::CaseDetails]
+=head2 cases => ArrayRef[L<Paws::Support::CaseDetails>]
 
   The details for the cases that match the request.
 =head2 nextToken => Str

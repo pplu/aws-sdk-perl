@@ -208,7 +208,7 @@ and tracks, see C<Audio:AudioPackingMode>.
   The audio codec for the output file. Valid values include C<aac>,
 C<flac>, C<mp2>, C<mp3>, C<pcm>, and C<vorbis>.
 
-=head2 CodecOptions => Paws::ElasticTranscoder::AudioCodecOptions
+=head2 CodecOptions => L<Paws::ElasticTranscoder::AudioCodecOptions>
 
   If you specified C<AAC> for C<Audio:Codec>, this is the C<AAC>
 compression profile to use. Valid values include:

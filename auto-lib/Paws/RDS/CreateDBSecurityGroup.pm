@@ -61,7 +61,7 @@ Constraints:
 
 Example: C<mysecuritygroup>
 
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 

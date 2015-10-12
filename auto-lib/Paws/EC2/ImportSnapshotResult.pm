@@ -21,7 +21,7 @@ Paws::EC2::ImportSnapshotResult
 =head2 ImportTaskId => Str
 
   The ID of the import snapshot task.
-=head2 SnapshotTaskDetail => Paws::EC2::SnapshotTaskDetail
+=head2 SnapshotTaskDetail => L<Paws::EC2::SnapshotTaskDetail>
 
   Information about the import snapshot task.
 

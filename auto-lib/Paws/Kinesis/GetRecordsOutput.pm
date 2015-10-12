@@ -25,7 +25,7 @@ no new records to process at this moment.
   The next position in the shard from which to start sequentially reading
 data records. If set to C<null>, the shard has been closed and the
 requested iterator will not return any more data.
-=head2 B<REQUIRED> Records => ArrayRef[Paws::Kinesis::Record]
+=head2 B<REQUIRED> Records => ArrayRef[L<Paws::Kinesis::Record>]
 
   The data records retrieved from the shard.
 

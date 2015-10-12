@@ -12,7 +12,7 @@ Paws::CodeDeploy::DeleteDeploymentGroupOutput
 
 =head1 ATTRIBUTES
 
-=head2 hooksNotCleanedUp => ArrayRef[Paws::CodeDeploy::AutoScalingGroup]
+=head2 hooksNotCleanedUp => ArrayRef[L<Paws::CodeDeploy::AutoScalingGroup>]
 
   If the output contains no data, and the corresponding deployment group
 contained at least one Auto Scaling group, AWS CodeDeploy successfully

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 
 =head1 ATTRIBUTES
 
-=head2 ComplianceContributorCount => Paws::Config::ComplianceContributorCount
+=head2 ComplianceContributorCount => L<Paws::Config::ComplianceContributorCount>
 
   The number of AWS resources or AWS Config rules that cause a result of
 C<NON_COMPLIANT>, up to a maximum of 25.

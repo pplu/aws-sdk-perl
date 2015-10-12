@@ -45,7 +45,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   The unique ID of the activity task.
 
-=head2 B<REQUIRED> activityType => Paws::SimpleWorkflow::ActivityType
+=head2 B<REQUIRED> activityType => L<Paws::SimpleWorkflow::ActivityType>
 
   The type of the activity task.
 
@@ -87,7 +87,7 @@ a worker.
   The maximum amount of time a worker may take to process the activity
 task.
 
-=head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
+=head2 B<REQUIRED> taskList => L<Paws::SimpleWorkflow::TaskList>
 
   The task list in which the activity task has been scheduled.
 

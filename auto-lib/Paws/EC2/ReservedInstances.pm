@@ -88,7 +88,7 @@ C<USD>.
 
   The Reserved Instance product platform description.
 
-=head2 RecurringCharges => ArrayRef[Paws::EC2::RecurringCharge]
+=head2 RecurringCharges => ArrayRef[L<Paws::EC2::RecurringCharge>]
 
   The recurring charge tag assigned to the resource.
 
@@ -104,7 +104,7 @@ C<USD>.
 
   The state of the Reserved Instance purchase.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the resource.
 

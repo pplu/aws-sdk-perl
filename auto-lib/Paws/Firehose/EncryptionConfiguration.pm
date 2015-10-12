@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::E
 
 =head1 ATTRIBUTES
 
-=head2 KMSEncryptionConfig => Paws::Firehose::KMSEncryptionConfig
+=head2 KMSEncryptionConfig => L<Paws::Firehose::KMSEncryptionConfig>
 
   The encryption key.
 

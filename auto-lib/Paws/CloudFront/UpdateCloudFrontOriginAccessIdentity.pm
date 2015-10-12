@@ -22,7 +22,7 @@ Paws::CloudFront::UpdateCloudFrontOriginAccessIdentityResult
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> CloudFrontOriginAccessIdentityConfig => Paws::CloudFront::CloudFrontOriginAccessIdentityConfig
+=head2 B<REQUIRED> CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>
 
   The identity's configuration information.
 =head2 B<REQUIRED> Id => Str

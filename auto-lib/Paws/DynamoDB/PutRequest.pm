@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::P
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Item => Paws::DynamoDB::PutItemInputAttributeMap
+=head2 B<REQUIRED> Item => L<Paws::DynamoDB::PutItemInputAttributeMap>
 
   A map of attribute name to attribute values, representing the primary
 key of an item to be processed by I<PutItem>. All of the table's

@@ -17,7 +17,7 @@ Paws::EMR::ListStepsOutput
 
   The pagination token that indicates the next set of results to
 retrieve.
-=head2 Steps => ArrayRef[Paws::EMR::StepSummary]
+=head2 Steps => ArrayRef[L<Paws::EMR::StepSummary>]
 
   The filtered list of steps for the cluster.
 

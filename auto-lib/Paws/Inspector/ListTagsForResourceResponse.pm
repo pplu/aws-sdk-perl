@@ -12,7 +12,7 @@ Paws::Inspector::ListTagsForResourceResponse
 
 =head1 ATTRIBUTES
 
-=head2 tagList => ArrayRef[Paws::Inspector::Tag]
+=head2 tagList => ArrayRef[L<Paws::Inspector::Tag>]
 
   A collection of key and value pairs.
 

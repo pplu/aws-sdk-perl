@@ -44,7 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 action is evaluated for each resource. Each action must include the
 service identifier, such as C<iam:CreateUser>.
 
-=head2 ContextEntries => ArrayRef[Paws::IAM::ContextEntry]
+=head2 ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>]
 
   A list of context keys and corresponding values that are used by the
 simulation. Whenever a context key is evaluated by a C<Condition>

@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> failureDetails => Paws::CodePipeline::FailureDetails
+=head2 B<REQUIRED> failureDetails => L<Paws::CodePipeline::FailureDetails>
 
   The details about the failure of a job.
 

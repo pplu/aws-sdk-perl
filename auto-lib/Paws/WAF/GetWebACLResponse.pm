@@ -12,7 +12,7 @@ Paws::WAF::GetWebACLResponse
 
 =head1 ATTRIBUTES
 
-=head2 WebACL => Paws::WAF::WebACL
+=head2 WebACL => L<Paws::WAF::WebACL>
 
   Information about the WebACL that you specified in the C<GetWebACL>
 request. For more information, see the following topics:

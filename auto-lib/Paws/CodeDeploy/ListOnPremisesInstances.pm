@@ -54,7 +54,7 @@ on-premises instances.
 
 =back
 
-=head2 tagFilters => ArrayRef[Paws::CodeDeploy::TagFilter]
+=head2 tagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
   The on-premises instance tags that will be used to restrict the
 corresponding on-premises instance names that are returned.

@@ -47,7 +47,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   The device pool's name.
 
-=head2 rules => ArrayRef[Paws::DeviceFarm::Rule]
+=head2 rules => ArrayRef[L<Paws::DeviceFarm::Rule>]
 
   Information about the device pool's rules.
 

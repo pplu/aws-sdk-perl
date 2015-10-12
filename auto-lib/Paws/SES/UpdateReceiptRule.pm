@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Rule => Paws::SES::ReceiptRule
+=head2 B<REQUIRED> Rule => L<Paws::SES::ReceiptRule>
 
   A data structure that contains the updated receipt rule information.
 

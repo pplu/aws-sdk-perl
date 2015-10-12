@@ -12,7 +12,7 @@ Paws::Firehose::DescribeDeliveryStreamOutput
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> DeliveryStreamDescription => Paws::Firehose::DeliveryStreamDescription
+=head2 B<REQUIRED> DeliveryStreamDescription => L<Paws::Firehose::DeliveryStreamDescription>
 
   Information about the delivery stream.
 

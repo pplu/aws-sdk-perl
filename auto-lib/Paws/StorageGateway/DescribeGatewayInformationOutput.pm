@@ -29,7 +29,7 @@ Paws::StorageGateway::DescribeGatewayInformationOutput
 =head2 GatewayName => Str
 
   The gateway name.
-=head2 GatewayNetworkInterfaces => ArrayRef[Paws::StorageGateway::NetworkInterface]
+=head2 GatewayNetworkInterfaces => ArrayRef[L<Paws::StorageGateway::NetworkInterface>]
 
   A NetworkInterface array that contains descriptions of the gateway
 network interfaces.

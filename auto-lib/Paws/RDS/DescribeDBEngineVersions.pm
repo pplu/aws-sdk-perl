@@ -70,7 +70,7 @@ engine and major version combination is returned.
 
 Example: C<5.1.49>
 
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
   Not currently supported.
 

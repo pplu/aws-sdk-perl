@@ -74,14 +74,14 @@ Default: If the CNAME parameter is not specified, the environment name
 becomes part of the CNAME, and therefore part of the visible URL for
 your application.
 
-=head2 OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]
+=head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
 
   If specified, AWS Elastic Beanstalk sets the specified configuration
 options to the requested value in the configuration set for the new
 environment. These override the values obtained from the solution stack
 or the configuration template.
 
-=head2 OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]
+=head2 OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]
 
   A list of custom user-defined configuration options to remove from the
 configuration set for this new environment.
@@ -97,7 +97,7 @@ both. If you specify both, AWS Elastic Beanstalk returns an
 C<InvalidParameterCombination> error. If you do not specify either, AWS
 Elastic Beanstalk returns a C<MissingRequiredParameter> error.
 
-=head2 Tags => ArrayRef[Paws::ElasticBeanstalk::Tag]
+=head2 Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]
 
   This specifies the tags applied to resources in the environment.
 
@@ -113,7 +113,7 @@ Beanstalk returns an C<InvalidParameterCombination> error. If you do
 not specify either, AWS Elastic Beanstalk returns a
 C<MissingRequiredParameter> error.
 
-=head2 Tier => Paws::ElasticBeanstalk::EnvironmentTier
+=head2 Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>
 
   This specifies the tier to use for creating this environment.
 

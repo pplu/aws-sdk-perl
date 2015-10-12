@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> logEvents => ArrayRef[Paws::CloudWatchLogs::InputLogEvent]
+=head2 B<REQUIRED> logEvents => ArrayRef[L<Paws::CloudWatchLogs::InputLogEvent>]
 
   
 

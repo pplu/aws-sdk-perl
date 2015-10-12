@@ -97,17 +97,17 @@ I<ACTIVE> - The index is ready for use.
 approximately every six hours. Recent changes might not be reflected in
 this value.
 
-=head2 KeySchema => ArrayRef[Paws::DynamoDB::KeySchemaElement]
+=head2 KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
   The complete key schema for the global secondary index, consisting of
 one or more pairs of attribute names and key types (C<HASH> or
 C<RANGE>).
 
-=head2 Projection => Paws::DynamoDB::Projection
+=head2 Projection => L<Paws::DynamoDB::Projection>
 
   
 
-=head2 ProvisionedThroughput => Paws::DynamoDB::ProvisionedThroughputDescription
+=head2 ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughputDescription>
 
   
 

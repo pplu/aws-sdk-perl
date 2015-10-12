@@ -43,16 +43,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 AppSource => Paws::OpsWorks::Source
+=head2 AppSource => L<Paws::OpsWorks::Source>
 
   A C<Source> object that specifies the app repository.
 
-=head2 Attributes => Paws::OpsWorks::AppAttributes
+=head2 Attributes => L<Paws::OpsWorks::AppAttributes>
 
   One or more user-defined key/value pairs to be added to the stack
 attributes.
 
-=head2 DataSources => ArrayRef[Paws::OpsWorks::DataSource]
+=head2 DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>]
 
   The app's data source.
 
@@ -69,7 +69,7 @@ commas. For example: C<'www.example.com, example.com'>
 
   Whether to enable SSL for the app.
 
-=head2 Environment => ArrayRef[Paws::OpsWorks::EnvironmentVariable]
+=head2 Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>]
 
   An array of C<EnvironmentVariable> objects that specify environment
 variables to be associated with the app. After you deploy the app,
@@ -95,7 +95,7 @@ stack's Chef version.
 
   The app's short name.
 
-=head2 SslConfiguration => Paws::OpsWorks::SslConfiguration
+=head2 SslConfiguration => L<Paws::OpsWorks::SslConfiguration>
 
   An C<SslConfiguration> object with the SSL configuration.
 

@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Multipa
 
   Date and time at which the multipart upload was initiated.
 
-=head2 Initiator => Paws::S3::Initiator
+=head2 Initiator => L<Paws::S3::Initiator>
 
   Identifies who initiated the multipart upload.
 
@@ -48,7 +48,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Multipa
 
   Key of the object for which the multipart upload was initiated.
 
-=head2 Owner => Paws::S3::Owner
+=head2 Owner => L<Paws::S3::Owner>
 
   
 

@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The name of the load balancer. You can specify one load balancer only.
 
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::ELB::Tag]
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::ELB::Tag>]
 
   The tags.
 

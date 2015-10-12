@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Attributes => Paws::SQS::QueueAttributeMap
+=head2 B<REQUIRED> Attributes => L<Paws::SQS::QueueAttributeMap>
 
   A map of attributes to set.
 

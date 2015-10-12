@@ -12,7 +12,7 @@ Paws::CodeDeploy::GetDeploymentOutput
 
 =head1 ATTRIBUTES
 
-=head2 deploymentInfo => Paws::CodeDeploy::DeploymentInfo
+=head2 deploymentInfo => L<Paws::CodeDeploy::DeploymentInfo>
 
   Information about the deployment.
 

@@ -124,7 +124,7 @@ Strongly consistent reads are not supported on global secondary
 indexes. If you scan a global secondary index with I<ConsistentRead>
 set to true, you will receive a I<ValidationException>.
 
-=head2 ExclusiveStartKey => Paws::DynamoDB::Key
+=head2 ExclusiveStartKey => L<Paws::DynamoDB::Key>
 
   The primary key of the first item that this operation will evaluate.
 Use the value that was returned for I<LastEvaluatedKey> in the previous
@@ -137,7 +137,7 @@ In a parallel scan, a I<Scan> request that includes
 I<ExclusiveStartKey> must specify the same segment whose previous
 I<Scan> returned the corresponding value of I<LastEvaluatedKey>.
 
-=head2 ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap
+=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
   One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
@@ -203,7 +203,7 @@ values>, which are placeholders for the actual value at runtime.
 For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
-=head2 ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap
+=head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
 
   One or more values that can be substituted in an expression.
 
@@ -283,7 +283,7 @@ parameter.
 
   
 
-=head2 ScanFilter => Paws::DynamoDB::FilterConditionMap
+=head2 ScanFilter => L<Paws::DynamoDB::FilterConditionMap>
 
   This is a legacy parameter, for backward compatibility. New
 applications should use I<FilterExpression> instead. Do not combine

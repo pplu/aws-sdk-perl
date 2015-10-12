@@ -58,7 +58,7 @@ For information about when to use this parameter, see the description
 of C<SendRawEmail> in this guide, or see the Amazon SES Developer
 Guide.
 
-=head2 B<REQUIRED> RawMessage => Paws::SES::RawMessage
+=head2 B<REQUIRED> RawMessage => L<Paws::SES::RawMessage>
 
   The raw text of the message. The client is responsible for ensuring the
 following:

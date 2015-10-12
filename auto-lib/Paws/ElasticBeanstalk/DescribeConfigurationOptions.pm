@@ -48,7 +48,7 @@ environment.
   The name of the environment whose configuration options you want to
 describe.
 
-=head2 Options => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]
+=head2 Options => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]
 
   If specified, restricts the descriptions to only the specified options.
 

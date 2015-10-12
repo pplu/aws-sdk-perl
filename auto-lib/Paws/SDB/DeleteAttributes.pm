@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => ArrayRef[Paws::SDB::Attribute]
+=head2 Attributes => ArrayRef[L<Paws::SDB::Attribute>]
 
   A list of Attributes. Similar to columns on a spreadsheet, attributes
 represent categories of data that can be assigned to items.
@@ -44,7 +44,7 @@ represent categories of data that can be assigned to items.
 
   The name of the domain in which to perform the operation.
 
-=head2 Expected => Paws::SDB::UpdateCondition
+=head2 Expected => L<Paws::SDB::UpdateCondition>
 
   The update condition which, if specified, determines whether the
 specified attributes will be deleted or not. The update condition must

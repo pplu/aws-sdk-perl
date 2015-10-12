@@ -45,7 +45,7 @@ account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
-=head2 Tags => Paws::Glacier::TagMap
+=head2 Tags => L<Paws::Glacier::TagMap>
 
   The tags to add to the vault. Each tag is composed of a key and a
 value. The value can be an empty string.

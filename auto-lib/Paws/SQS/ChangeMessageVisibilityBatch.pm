@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Entries => ArrayRef[Paws::SQS::ChangeMessageVisibilityBatchRequestEntry]
+=head2 B<REQUIRED> Entries => ArrayRef[L<Paws::SQS::ChangeMessageVisibilityBatchRequestEntry>]
 
   A list of receipt handles of the messages for which the visibility
 timeout must be changed.

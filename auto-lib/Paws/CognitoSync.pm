@@ -460,7 +460,7 @@ Cognito Identity. You cannot call this API with developer credentials.
 
 
 
-=head2 SetCognitoEvents(Events => Paws::CognitoSync::Events, IdentityPoolId => Str)
+=head2 SetCognitoEvents(Events => L<Paws::CognitoSync::Events>, IdentityPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoSync::SetCognitoEvents>
 
@@ -487,7 +487,7 @@ Identity.
 
 
 
-=head2 SetIdentityPoolConfiguration(IdentityPoolId => Str, [CognitoStreams => Paws::CognitoSync::CognitoStreams, PushSync => Paws::CognitoSync::PushSync])
+=head2 SetIdentityPoolConfiguration(IdentityPoolId => Str, [CognitoStreams => L<Paws::CognitoSync::CognitoStreams>, PushSync => L<Paws::CognitoSync::PushSync>])
 
 Each argument is described in detail in: L<Paws::CognitoSync::SetIdentityPoolConfiguration>
 
@@ -559,7 +559,7 @@ Cognito Identity. You cannot call this API with developer credentials.
 
 
 
-=head2 UpdateRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, SyncSessionToken => Str, [ClientContext => Str, DeviceId => Str, RecordPatches => ArrayRef[Paws::CognitoSync::RecordPatch]])
+=head2 UpdateRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, SyncSessionToken => Str, [ClientContext => Str, DeviceId => Str, RecordPatches => ArrayRef[L<Paws::CognitoSync::RecordPatch>]])
 
 Each argument is described in detail in: L<Paws::CognitoSync::UpdateRecords>
 

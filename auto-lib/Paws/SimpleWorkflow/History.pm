@@ -13,7 +13,7 @@ Paws::SimpleWorkflow::History
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> events => ArrayRef[Paws::SimpleWorkflow::HistoryEvent]
+=head2 B<REQUIRED> events => ArrayRef[L<Paws::SimpleWorkflow::HistoryEvent>]
 
   The list of history events.
 =head2 nextPageToken => Str

@@ -59,7 +59,7 @@ Constraints:
 
 Example: C<my-snapshot-id>
 
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   A list of tag instances.
 

@@ -13,7 +13,7 @@ Paws::Support::DescribeCommunicationsResponse
 
 =head1 ATTRIBUTES
 
-=head2 communications => ArrayRef[Paws::Support::Communication]
+=head2 communications => ArrayRef[L<Paws::Support::Communication>]
 
   The communications for the case.
 =head2 nextToken => Str

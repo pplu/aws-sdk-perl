@@ -48,7 +48,7 @@ of ingested log events.
 
   The name of the log group to associate the metric filter with.
 
-=head2 B<REQUIRED> metricTransformations => ArrayRef[Paws::CloudWatchLogs::MetricTransformation]
+=head2 B<REQUIRED> metricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>]
 
   A collection of information needed to define how metric data gets
 emitted.

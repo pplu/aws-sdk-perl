@@ -40,7 +40,7 @@ bytes.
 
   The delegation set id of the reusable delgation set whose NS records
 you want to assign to the new hosted zone.
-=head2 HostedZoneConfig => Paws::Route53::HostedZoneConfig
+=head2 HostedZoneConfig => L<Paws::Route53::HostedZoneConfig>
 
   A complex type that contains an optional comment about your hosted
 zone.
@@ -56,7 +56,7 @@ This is the name you have registered with your DNS registrar. You
 should ask your registrar to change the authoritative name servers for
 your domain to the set of C<NameServers> elements returned in
 C<DelegationSet>.
-=head2 VPC => Paws::Route53::VPC
+=head2 VPC => L<Paws::Route53::VPC>
 
   The VPC that you want your hosted zone to be associated with. By
 providing this parameter, your newly created hosted cannot be resolved

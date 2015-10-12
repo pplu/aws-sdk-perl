@@ -13,7 +13,7 @@ Paws::AutoScaling::ProcessesType
 
 =head1 ATTRIBUTES
 
-=head2 Processes => ArrayRef[Paws::AutoScaling::ProcessType]
+=head2 Processes => ArrayRef[L<Paws::AutoScaling::ProcessType>]
 
   The names of the process types.
 

@@ -38,7 +38,7 @@ epoch time.
   The AWS user account from which the C<MLModel> was created. The account
 type can be either an AWS root account or an AWS Identity and Access
 Management (IAM) user account.
-=head2 EndpointInfo => Paws::MachineLearning::RealtimeEndpointInfo
+=head2 EndpointInfo => L<Paws::MachineLearning::RealtimeEndpointInfo>
 
   The current endpoint of the C<MLModel>
 =head2 InputDataLocationS3 => Str
@@ -134,7 +134,7 @@ usable.
 =head2 TrainingDataSourceId => Str
 
   The ID of the training C<DataSource>.
-=head2 TrainingParameters => Paws::MachineLearning::TrainingParameters
+=head2 TrainingParameters => L<Paws::MachineLearning::TrainingParameters>
 
   A list of the training parameters in the C<MLModel>. The list is
 implemented as a map of key/value pairs.

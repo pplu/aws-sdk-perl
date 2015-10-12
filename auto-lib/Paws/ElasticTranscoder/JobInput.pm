@@ -61,11 +61,11 @@ C<3gp>, C<aac>, C<asf>, C<avi>, C<divx>, C<flv>, C<m4a>, C<mkv>,
 C<mov>, C<mp3>, C<mp4>, C<mpeg>, C<mpeg-ps>, C<mpeg-ts>, C<mxf>,
 C<ogg>, C<vob>, C<wav>, C<webm>
 
-=head2 DetectedProperties => Paws::ElasticTranscoder::DetectedProperties
+=head2 DetectedProperties => L<Paws::ElasticTranscoder::DetectedProperties>
 
   The detected properties of the input file.
 
-=head2 Encryption => Paws::ElasticTranscoder::Encryption
+=head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
 
   The encryption settings, if any, that are used for decrypting your
 input files. If your input file is encrypted, you must specify the mode

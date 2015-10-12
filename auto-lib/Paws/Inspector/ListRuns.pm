@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The ARNs specifying the assessments whose runs you want to list.
 
-=head2 filter => Paws::Inspector::RunsFilter
+=head2 filter => L<Paws::Inspector::RunsFilter>
 
   You can use this parameter to specify a subset of data to be included
 in the action's response.

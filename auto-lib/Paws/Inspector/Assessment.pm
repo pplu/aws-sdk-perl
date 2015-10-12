@@ -79,7 +79,7 @@ process is completed.
 
   The assessment start time.
 
-=head2 userAttributesForFindings => ArrayRef[Paws::Inspector::Attribute]
+=head2 userAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]
 
   The user-defined attributes that are assigned to every generated
 finding.

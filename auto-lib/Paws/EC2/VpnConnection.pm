@@ -52,11 +52,11 @@ C<pending> or C<available> state.
 
   The ID of the customer gateway at your end of the VPN connection.
 
-=head2 Options => Paws::EC2::VpnConnectionOptions
+=head2 Options => L<Paws::EC2::VpnConnectionOptions>
 
   The VPN connection options.
 
-=head2 Routes => ArrayRef[Paws::EC2::VpnStaticRoute]
+=head2 Routes => ArrayRef[L<Paws::EC2::VpnStaticRoute>]
 
   The static routes associated with the VPN connection.
 
@@ -64,7 +64,7 @@ C<pending> or C<available> state.
 
   The current state of the VPN connection.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the VPN connection.
 
@@ -72,7 +72,7 @@ C<pending> or C<available> state.
 
   The type of VPN connection.
 
-=head2 VgwTelemetry => ArrayRef[Paws::EC2::VgwTelemetry]
+=head2 VgwTelemetry => ArrayRef[L<Paws::EC2::VgwTelemetry>]
 
   Information about the VPN tunnel.
 

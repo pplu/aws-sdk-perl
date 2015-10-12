@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Notific
 
 =head1 ATTRIBUTES
 
-=head2 Key => Paws::S3::S3KeyFilter
+=head2 Key => L<Paws::S3::S3KeyFilter>
 
   
 

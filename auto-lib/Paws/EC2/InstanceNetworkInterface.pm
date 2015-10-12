@@ -44,12 +44,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
 =head1 ATTRIBUTES
 
-=head2 Association => Paws::EC2::InstanceNetworkInterfaceAssociation
+=head2 Association => L<Paws::EC2::InstanceNetworkInterfaceAssociation>
 
   The association information for an Elastic IP associated with the
 network interface.
 
-=head2 Attachment => Paws::EC2::InstanceNetworkInterfaceAttachment
+=head2 Attachment => L<Paws::EC2::InstanceNetworkInterfaceAttachment>
 
   The network interface attachment.
 
@@ -57,7 +57,7 @@ network interface.
 
   The description.
 
-=head2 Groups => ArrayRef[Paws::EC2::GroupIdentifier]
+=head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
   One or more security groups.
 
@@ -81,7 +81,7 @@ network interface.
 
   The IP address of the network interface within the subnet.
 
-=head2 PrivateIpAddresses => ArrayRef[Paws::EC2::InstancePrivateIpAddress]
+=head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::InstancePrivateIpAddress>]
 
   The private IP addresses associated with the network interface.
 

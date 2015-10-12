@@ -73,7 +73,7 @@ ApplicationStop deployment lifecycle event to fail to a specific
 instance, the deployment will stop to that instance, and the deployment
 to that instance will be considered to have failed.
 
-=head2 revision => Paws::CodeDeploy::RevisionLocation
+=head2 revision => L<Paws::CodeDeploy::RevisionLocation>
 
   The type of revision to deploy, along with information about the
 revision's location.

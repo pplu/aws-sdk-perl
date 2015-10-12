@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Receip
 
 =head1 ATTRIBUTES
 
-=head2 Actions => ArrayRef[Paws::SES::ReceiptAction]
+=head2 Actions => ArrayRef[L<Paws::SES::ReceiptAction>]
 
   An ordered list of actions to perform on messages that match at least
 one of the recipient email addresses or domains specified in the

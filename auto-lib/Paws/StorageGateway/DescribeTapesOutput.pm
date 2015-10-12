@@ -20,7 +20,7 @@ DescribeTapes call to retrieve the next page of results.
 
 If a response does not contain a marker, then there are no more results
 to be retrieved.
-=head2 Tapes => ArrayRef[Paws::StorageGateway::Tape]
+=head2 Tapes => ArrayRef[L<Paws::StorageGateway::Tape>]
 
   An array of virtual tape descriptions.
 

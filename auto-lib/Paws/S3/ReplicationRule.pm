@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Replica
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Destination => Paws::S3::Destination
+=head2 B<REQUIRED> Destination => L<Paws::S3::Destination>
 
   
 

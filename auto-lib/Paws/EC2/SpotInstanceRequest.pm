@@ -69,7 +69,7 @@ in the same Availability Zone.
   The date and time when the Spot instance request was created, in UTC
 format (for example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 
-=head2 Fault => Paws::EC2::SpotInstanceStateFault
+=head2 Fault => L<Paws::EC2::SpotInstanceStateFault>
 
   The fault codes for the Spot instance request, if any.
 
@@ -87,7 +87,7 @@ instance request.
   The instance launch group. Launch groups are Spot instances that launch
 together and terminate together.
 
-=head2 LaunchSpecification => Paws::EC2::LaunchSpecification
+=head2 LaunchSpecification => L<Paws::EC2::LaunchSpecification>
 
   Additional information for launching instances.
 
@@ -110,12 +110,12 @@ fulfill the request.
 help you track your Spot instance requests. For more information, see
 Spot Bid Status in the I<Amazon Elastic Compute Cloud User Guide>.
 
-=head2 Status => Paws::EC2::SpotInstanceStatus
+=head2 Status => L<Paws::EC2::SpotInstanceStatus>
 
   The status code and status message describing the Spot instance
 request.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the resource.
 

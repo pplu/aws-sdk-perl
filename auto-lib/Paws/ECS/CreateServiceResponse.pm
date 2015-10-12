@@ -12,7 +12,7 @@ Paws::ECS::CreateServiceResponse
 
 =head1 ATTRIBUTES
 
-=head2 service => Paws::ECS::Service
+=head2 service => L<Paws::ECS::Service>
 
   The full description of your service following the create call.
 

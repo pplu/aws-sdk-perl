@@ -58,7 +58,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::S
 
 =head1 ATTRIBUTES
 
-=head2 AccountsWithRestoreAccess => ArrayRef[Paws::RedShift::AccountWithRestoreAccess]
+=head2 AccountsWithRestoreAccess => ArrayRef[L<Paws::RedShift::AccountWithRestoreAccess>]
 
   A list of the AWS customer accounts authorized to restore the snapshot.
 Returns C<null> if no accounts are authorized. Visible only to the
@@ -188,7 +188,7 @@ operation used.
 
 =back
 
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   The list of tags for the cluster snapshot.
 

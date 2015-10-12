@@ -53,7 +53,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
   
 
-=head2 B<REQUIRED> routeFilterPrefixes => ArrayRef[Paws::DirectConnect::RouteFilterPrefix]
+=head2 B<REQUIRED> routeFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
 
   
 

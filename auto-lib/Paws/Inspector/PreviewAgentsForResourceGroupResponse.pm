@@ -13,7 +13,7 @@ Paws::Inspector::PreviewAgentsForResourceGroupResponse
 
 =head1 ATTRIBUTES
 
-=head2 agentPreviewList => ArrayRef[Paws::Inspector::AgentPreview]
+=head2 agentPreviewList => ArrayRef[L<Paws::Inspector::AgentPreview>]
 
   The resulting list of agents.
 =head2 nextToken => Str

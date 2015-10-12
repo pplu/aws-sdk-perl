@@ -92,7 +92,7 @@ used.
 
   The number of Amazon EC2 instances used to execute the job flow.
 
-=head2 InstanceGroups => ArrayRef[Paws::EMR::InstanceGroupConfig]
+=head2 InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupConfig>]
 
   Configuration for the job flow's instance groups.
 
@@ -105,7 +105,7 @@ all steps.
 
   The EC2 instance type of the master node.
 
-=head2 Placement => Paws::EMR::PlacementType
+=head2 Placement => L<Paws::EMR::PlacementType>
 
   The Availability Zone the job flow will run in.
 

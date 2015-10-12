@@ -57,7 +57,7 @@ app's sandbox for iOS.
 
   Information about the locale that is used for the run.
 
-=head2 location => Paws::DeviceFarm::Location
+=head2 location => L<Paws::DeviceFarm::Location>
 
   Information about the location that is used for the run.
 
@@ -65,7 +65,7 @@ app's sandbox for iOS.
 
   Reserved for internal use.
 
-=head2 radios => Paws::DeviceFarm::Radios
+=head2 radios => L<Paws::DeviceFarm::Radios>
 
   Information about the radio states for the run.
 

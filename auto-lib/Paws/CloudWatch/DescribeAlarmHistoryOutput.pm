@@ -14,7 +14,7 @@ Paws::CloudWatch::DescribeAlarmHistoryOutput
 
 =head1 ATTRIBUTES
 
-=head2 AlarmHistoryItems => ArrayRef[Paws::CloudWatch::AlarmHistoryItem]
+=head2 AlarmHistoryItems => ArrayRef[L<Paws::CloudWatch::AlarmHistoryItem>]
 
   A list of alarm histories in JSON format.
 =head2 NextToken => Str

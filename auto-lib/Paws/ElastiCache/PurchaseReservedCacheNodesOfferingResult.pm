@@ -13,7 +13,7 @@ Paws::ElastiCache::PurchaseReservedCacheNodesOfferingResult
 
 =head1 ATTRIBUTES
 
-=head2 ReservedCacheNode => Paws::ElastiCache::ReservedCacheNode
+=head2 ReservedCacheNode => L<Paws::ElastiCache::ReservedCacheNode>
 
   
 

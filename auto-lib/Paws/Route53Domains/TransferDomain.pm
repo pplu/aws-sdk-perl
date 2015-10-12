@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> AdminContact => Paws::Route53Domains::ContactDetail
+=head2 B<REQUIRED> AdminContact => L<Paws::Route53Domains::ContactDetail>
 
   Provides detailed contact information.
 
@@ -111,7 +111,7 @@ Required: Yes
 
   Reserved for future use.
 
-=head2 Nameservers => ArrayRef[Paws::Route53Domains::Nameserver]
+=head2 Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>]
 
   Contains details for the host and glue IP addresses.
 
@@ -166,7 +166,7 @@ Valid values: C<true> | C<false>
 
 Required: No
 
-=head2 B<REQUIRED> RegistrantContact => Paws::Route53Domains::ContactDetail
+=head2 B<REQUIRED> RegistrantContact => L<Paws::Route53Domains::ContactDetail>
 
   Provides detailed contact information.
 
@@ -179,7 +179,7 @@ C<ExtraParams>
 
 Required: Yes
 
-=head2 B<REQUIRED> TechContact => Paws::Route53Domains::ContactDetail
+=head2 B<REQUIRED> TechContact => L<Paws::Route53Domains::ContactDetail>
 
   Provides detailed contact information.
 

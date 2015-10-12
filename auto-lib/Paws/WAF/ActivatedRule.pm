@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::Activa
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Action => Paws::WAF::WafAction
+=head2 B<REQUIRED> Action => L<Paws::WAF::WafAction>
 
   Specifies the action that CloudFront or AWS WAF takes when a web
 request matches the conditions in the C<Rule>. Valid values for

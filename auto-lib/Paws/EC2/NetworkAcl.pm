@@ -36,11 +36,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Networ
 
 =head1 ATTRIBUTES
 
-=head2 Associations => ArrayRef[Paws::EC2::NetworkAclAssociation]
+=head2 Associations => ArrayRef[L<Paws::EC2::NetworkAclAssociation>]
 
   Any associations between the network ACL and one or more subnets
 
-=head2 Entries => ArrayRef[Paws::EC2::NetworkAclEntry]
+=head2 Entries => ArrayRef[L<Paws::EC2::NetworkAclEntry>]
 
   One or more entries (rules) in the network ACL.
 
@@ -52,7 +52,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Networ
 
   The ID of the network ACL.
 
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the network ACL.
 

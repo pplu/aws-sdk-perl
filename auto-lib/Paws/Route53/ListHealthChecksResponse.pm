@@ -31,7 +31,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> HealthChecks => ArrayRef[Paws::Route53::HealthCheck]
+=head2 B<REQUIRED> HealthChecks => ArrayRef[L<Paws::Route53::HealthCheck>]
 
   A complex type that contains information about the health checks
 associated with the current AWS account.

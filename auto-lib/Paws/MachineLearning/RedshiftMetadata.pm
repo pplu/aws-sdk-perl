@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
   
 
-=head2 RedshiftDatabase => Paws::MachineLearning::RedshiftDatabase
+=head2 RedshiftDatabase => L<Paws::MachineLearning::RedshiftDatabase>
 
   
 

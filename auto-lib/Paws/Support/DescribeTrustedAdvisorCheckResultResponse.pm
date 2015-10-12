@@ -12,7 +12,7 @@ Paws::Support::DescribeTrustedAdvisorCheckResultResponse
 
 =head1 ATTRIBUTES
 
-=head2 result => Paws::Support::TrustedAdvisorCheckResult
+=head2 result => L<Paws::Support::TrustedAdvisorCheckResult>
 
   The detailed results of the Trusted Advisor check.
 

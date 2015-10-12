@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Availa
 
 =head1 ATTRIBUTES
 
-=head2 Messages => ArrayRef[Paws::EC2::AvailabilityZoneMessage]
+=head2 Messages => ArrayRef[L<Paws::EC2::AvailabilityZoneMessage>]
 
   Any messages about the Availability Zone.
 

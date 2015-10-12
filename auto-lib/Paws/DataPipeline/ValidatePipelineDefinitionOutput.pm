@@ -17,10 +17,10 @@ Paws::DataPipeline::ValidatePipelineDefinitionOutput
 =head2 B<REQUIRED> errored => Bool
 
   Indicates whether there were validation errors.
-=head2 validationErrors => ArrayRef[Paws::DataPipeline::ValidationError]
+=head2 validationErrors => ArrayRef[L<Paws::DataPipeline::ValidationError>]
 
   Any validation errors that were found.
-=head2 validationWarnings => ArrayRef[Paws::DataPipeline::ValidationWarning]
+=head2 validationWarnings => ArrayRef[L<Paws::DataPipeline::ValidationWarning>]
 
   Any validation warnings that were found.
 

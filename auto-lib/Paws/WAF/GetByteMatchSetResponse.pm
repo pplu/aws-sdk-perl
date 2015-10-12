@@ -12,7 +12,7 @@ Paws::WAF::GetByteMatchSetResponse
 
 =head1 ATTRIBUTES
 
-=head2 ByteMatchSet => Paws::WAF::ByteMatchSet
+=head2 ByteMatchSet => L<Paws::WAF::ByteMatchSet>
 
   Information about the ByteMatchSet that you specified in the
 C<GetByteMatchSet> request. For more information, see the following

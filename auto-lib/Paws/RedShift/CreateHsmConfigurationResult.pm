@@ -13,7 +13,7 @@ Paws::RedShift::CreateHsmConfigurationResult
 
 =head1 ATTRIBUTES
 
-=head2 HsmConfiguration => Paws::RedShift::HsmConfiguration
+=head2 HsmConfiguration => L<Paws::RedShift::HsmConfiguration>
 
   
 

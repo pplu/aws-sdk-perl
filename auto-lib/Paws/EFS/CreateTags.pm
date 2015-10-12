@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   String. The ID of the file system whose tags you want to modify. This
 operation modifies only the tags and not the file system.
 
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::EFS::Tag]
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EFS::Tag>]
 
   An array of C<Tag> objects to add. Each C<Tag> object is a key-value
 pair.

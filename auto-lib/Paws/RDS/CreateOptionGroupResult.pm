@@ -13,7 +13,7 @@ Paws::RDS::CreateOptionGroupResult
 
 =head1 ATTRIBUTES
 
-=head2 OptionGroup => Paws::RDS::OptionGroup
+=head2 OptionGroup => L<Paws::RDS::OptionGroup>
 
   
 

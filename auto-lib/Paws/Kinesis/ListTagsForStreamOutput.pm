@@ -17,7 +17,7 @@ Paws::Kinesis::ListTagsForStreamOutput
 
   If set to C<true>, more tags are available. To request additional tags,
 set C<ExclusiveStartTagKey> to the key of the last tag returned.
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::Kinesis::Tag]
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::Kinesis::Tag>]
 
   A list of tags associated with C<StreamName>, starting with the first
 tag after C<ExclusiveStartTagKey> and up to the specified C<Limit>.

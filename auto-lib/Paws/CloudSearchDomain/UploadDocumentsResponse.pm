@@ -25,7 +25,7 @@ Paws::CloudSearchDomain::UploadDocumentsResponse
 =head2 status => Str
 
   The status of an C<UploadDocumentsRequest>.
-=head2 warnings => ArrayRef[Paws::CloudSearchDomain::DocumentServiceWarning]
+=head2 warnings => ArrayRef[L<Paws::CloudSearchDomain::DocumentServiceWarning>]
 
   Any warnings returned by the document service about the documents being
 uploaded.

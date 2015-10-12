@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::S
 
 =head1 ATTRIBUTES
 
-=head2 SubnetAvailabilityZone => Paws::RedShift::AvailabilityZone
+=head2 SubnetAvailabilityZone => L<Paws::RedShift::AvailabilityZone>
 
   
 

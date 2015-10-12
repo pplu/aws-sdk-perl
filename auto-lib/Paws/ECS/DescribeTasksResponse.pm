@@ -13,10 +13,10 @@ Paws::ECS::DescribeTasksResponse
 
 =head1 ATTRIBUTES
 
-=head2 failures => ArrayRef[Paws::ECS::Failure]
+=head2 failures => ArrayRef[L<Paws::ECS::Failure>]
 
   Any failures associated with the call.
-=head2 tasks => ArrayRef[Paws::ECS::Task]
+=head2 tasks => ArrayRef[L<Paws::ECS::Task>]
 
   The list of tasks.
 

@@ -91,7 +91,7 @@ Redshift.
 
 =head1 METHODS
 
-=head2 CreateDeliveryStream(DeliveryStreamName => Str, [RedshiftDestinationConfiguration => Paws::Firehose::RedshiftDestinationConfiguration, S3DestinationConfiguration => Paws::Firehose::S3DestinationConfiguration])
+=head2 CreateDeliveryStream(DeliveryStreamName => Str, [RedshiftDestinationConfiguration => L<Paws::Firehose::RedshiftDestinationConfiguration>, S3DestinationConfiguration => L<Paws::Firehose::S3DestinationConfiguration>])
 
 Each argument is described in detail in: L<Paws::Firehose::CreateDeliveryStream>
 
@@ -254,7 +254,7 @@ C<ExclusiveStartDeliveryStreamName> parameter of a subsequent call.
 
 
 
-=head2 PutRecord(DeliveryStreamName => Str, Record => Paws::Firehose::Record)
+=head2 PutRecord(DeliveryStreamName => Str, Record => L<Paws::Firehose::Record>)
 
 Each argument is described in detail in: L<Paws::Firehose::PutRecord>
 
@@ -315,7 +315,7 @@ for more than 24 hours, the data is no longer available.
 
 
 
-=head2 PutRecordBatch(DeliveryStreamName => Str, Records => ArrayRef[Paws::Firehose::Record])
+=head2 PutRecordBatch(DeliveryStreamName => Str, Records => ArrayRef[L<Paws::Firehose::Record>])
 
 Each argument is described in detail in: L<Paws::Firehose::PutRecordBatch>
 
@@ -397,7 +397,7 @@ for more than 24 hours, the data is no longer available.
 
 
 
-=head2 UpdateDestination(CurrentDeliveryStreamVersionId => Str, DeliveryStreamName => Str, DestinationId => Str, [RedshiftDestinationUpdate => Paws::Firehose::RedshiftDestinationUpdate, S3DestinationUpdate => Paws::Firehose::S3DestinationUpdate])
+=head2 UpdateDestination(CurrentDeliveryStreamVersionId => Str, DeliveryStreamName => Str, DestinationId => Str, [RedshiftDestinationUpdate => L<Paws::Firehose::RedshiftDestinationUpdate>, S3DestinationUpdate => L<Paws::Firehose::S3DestinationUpdate>])
 
 Each argument is described in detail in: L<Paws::Firehose::UpdateDestination>
 

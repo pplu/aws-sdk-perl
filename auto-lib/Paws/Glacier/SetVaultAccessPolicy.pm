@@ -45,7 +45,7 @@ account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
-=head2 policy => Paws::Glacier::VaultAccessPolicy
+=head2 policy => L<Paws::Glacier::VaultAccessPolicy>
 
   The vault access policy as a JSON string.
 

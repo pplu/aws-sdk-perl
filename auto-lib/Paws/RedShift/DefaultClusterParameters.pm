@@ -47,7 +47,7 @@ for the request.
   The name of the cluster parameter group family to which the engine
 default parameters apply.
 
-=head2 Parameters => ArrayRef[Paws::RedShift::Parameter]
+=head2 Parameters => ArrayRef[L<Paws::RedShift::Parameter>]
 
   The list of cluster default parameters.
 
